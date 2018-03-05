@@ -65,7 +65,7 @@ namespace LoginForm.CustomControls
 
         private void btnSupplier_Click(object sender, EventArgs e)
         {
-            SupplierMain supplierMain = new SupplierMain();
+            CemSupplierMainCem supplierMain = new CemSupplierMainCem();
             supplierMain.ShowDialog();
         }
 
@@ -92,12 +92,6 @@ namespace LoginForm.CustomControls
         {
             PurchaseOrderMain form = new PurchaseOrderMain();
             form.ShowDialog();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            CemSupplierMainCem supplierMain = new CemSupplierMainCem();
-            supplierMain.ShowDialog();
         }
     }
 }

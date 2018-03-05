@@ -67,9 +67,7 @@
             this.panel23 = new System.Windows.Forms.Panel();
             this.panel22 = new System.Windows.Forms.Panel();
             this.panel21 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.tableRightPanel.SuspendLayout();
-            this.panel27.SuspendLayout();
             this.panel16.SuspendLayout();
             this.panel15.SuspendLayout();
             this.panel14.SuspendLayout();
@@ -161,7 +159,6 @@
             // 
             // panel27
             // 
-            this.panel27.Controls.Add(this.button1);
             this.panel27.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel27.Location = new System.Drawing.Point(753, 462);
             this.panel27.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -233,7 +230,7 @@
             this.btnSalesOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalesOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnSalesOrder.Location = new System.Drawing.Point(0, 0);
-            this.btnSalesOrder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSalesOrder.Margin = new System.Windows.Forms.Padding(4);
             this.btnSalesOrder.Name = "btnSalesOrder";
             this.btnSalesOrder.Size = new System.Drawing.Size(144, 111);
             this.btnSalesOrder.TabIndex = 13;
@@ -260,7 +257,7 @@
             this.btnItemCard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnItemCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnItemCard.Location = new System.Drawing.Point(0, 0);
-            this.btnItemCard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnItemCard.Margin = new System.Windows.Forms.Padding(4);
             this.btnItemCard.Name = "btnItemCard";
             this.btnItemCard.Size = new System.Drawing.Size(144, 111);
             this.btnItemCard.TabIndex = 12;
@@ -333,7 +330,7 @@
             this.btnPurchaseOrders.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPurchaseOrders.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnPurchaseOrders.Location = new System.Drawing.Point(0, 0);
-            this.btnPurchaseOrders.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPurchaseOrders.Margin = new System.Windows.Forms.Padding(4);
             this.btnPurchaseOrders.Name = "btnPurchaseOrders";
             this.btnPurchaseOrders.Size = new System.Drawing.Size(144, 111);
             this.btnPurchaseOrders.TabIndex = 15;
@@ -545,23 +542,6 @@
             this.panel21.Size = new System.Drawing.Size(144, 111);
             this.panel21.TabIndex = 52;
             // 
-            // button1
-            // 
-            this.button1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(145, 113);
-            this.button1.TabIndex = 31;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // DevelopmentControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -572,7 +552,6 @@
             this.Name = "DevelopmentControl";
             this.Size = new System.Drawing.Size(901, 577);
             this.tableRightPanel.ResumeLayout(false);
-            this.panel27.ResumeLayout(false);
             this.panel16.ResumeLayout(false);
             this.panel15.ResumeLayout(false);
             this.panel14.ResumeLayout(false);
@@ -626,6 +605,5 @@
         private System.Windows.Forms.Panel panel21;
         private System.Windows.Forms.Button btnSalesOrder;
         private System.Windows.Forms.Button btnPurchaseOrders;
-        private System.Windows.Forms.Button button1;
     }
 }

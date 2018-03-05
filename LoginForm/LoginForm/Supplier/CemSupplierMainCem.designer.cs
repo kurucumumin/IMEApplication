@@ -133,14 +133,6 @@ namespace LoginForm
             this.label38 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
             this.dgSupplier = new System.Windows.Forms.DataGridView();
-            this.btnModify = new System.Windows.Forms.Button();
-            this.btnExit = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.supplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.snameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.paymentmethodIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -166,6 +158,14 @@ namespace LoginForm
             this.supplierSubCategoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.supplierAddressesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.supplierWorkersDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.supplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnModify = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.tabgenel.SuspendLayout();
             this.tabInfo.SuspendLayout();
             this.tabAccount.SuspendLayout();
@@ -173,9 +173,9 @@ namespace LoginForm
             this.tabAccounting.SuspendLayout();
             this.tabBank.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgSupplier)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tabgenel
@@ -192,7 +192,7 @@ namespace LoginForm
             this.tabgenel.Name = "tabgenel";
             this.tabgenel.SelectedIndex = 0;
             this.tabgenel.Size = new System.Drawing.Size(1225, 252);
-            this.tabgenel.TabIndex = 0;
+            this.tabgenel.TabIndex = 58;
             // 
             // tabInfo
             // 
@@ -236,7 +236,7 @@ namespace LoginForm
             this.cmbMainContact.Margin = new System.Windows.Forms.Padding(4);
             this.cmbMainContact.Name = "cmbMainContact";
             this.cmbMainContact.Size = new System.Drawing.Size(214, 28);
-            this.cmbMainContact.TabIndex = 35;
+            this.cmbMainContact.TabIndex = 11;
             // 
             // label28
             // 
@@ -255,7 +255,7 @@ namespace LoginForm
             this.txtWeb.Margin = new System.Windows.Forms.Padding(4);
             this.txtWeb.Name = "txtWeb";
             this.txtWeb.Size = new System.Drawing.Size(183, 26);
-            this.txtWeb.TabIndex = 23;
+            this.txtWeb.TabIndex = 4;
             // 
             // label18
             // 
@@ -274,7 +274,7 @@ namespace LoginForm
             this.btnSubCategoryAdd.Margin = new System.Windows.Forms.Padding(4);
             this.btnSubCategoryAdd.Name = "btnSubCategoryAdd";
             this.btnSubCategoryAdd.Size = new System.Drawing.Size(32, 28);
-            this.btnSubCategoryAdd.TabIndex = 21;
+            this.btnSubCategoryAdd.TabIndex = 8;
             this.btnSubCategoryAdd.Text = "+";
             this.btnSubCategoryAdd.UseVisualStyleBackColor = true;
             this.btnSubCategoryAdd.Click += new System.EventHandler(this.btnSubCategoryAdd_Click);
@@ -286,7 +286,7 @@ namespace LoginForm
             this.btnMainCategoryAdd.Margin = new System.Windows.Forms.Padding(4);
             this.btnMainCategoryAdd.Name = "btnMainCategoryAdd";
             this.btnMainCategoryAdd.Size = new System.Drawing.Size(32, 28);
-            this.btnMainCategoryAdd.TabIndex = 20;
+            this.btnMainCategoryAdd.TabIndex = 6;
             this.btnMainCategoryAdd.Text = "+";
             this.btnMainCategoryAdd.UseVisualStyleBackColor = true;
             this.btnMainCategoryAdd.Click += new System.EventHandler(this.btnMainCategoryAdd_Click);
@@ -301,7 +301,7 @@ namespace LoginForm
             this.cmbSubCategory.Margin = new System.Windows.Forms.Padding(4);
             this.cmbSubCategory.Name = "cmbSubCategory";
             this.cmbSubCategory.Size = new System.Drawing.Size(193, 28);
-            this.cmbSubCategory.TabIndex = 6;
+            this.cmbSubCategory.TabIndex = 7;
             // 
             // label42
             // 
@@ -322,7 +322,7 @@ namespace LoginForm
             this.txtTaxNumber.Margin = new System.Windows.Forms.Padding(4);
             this.txtTaxNumber.Name = "txtTaxNumber";
             this.txtTaxNumber.Size = new System.Drawing.Size(233, 26);
-            this.txtTaxNumber.TabIndex = 7;
+            this.txtTaxNumber.TabIndex = 10;
             // 
             // txtTaxOffice
             // 
@@ -332,7 +332,7 @@ namespace LoginForm
             this.txtTaxOffice.Margin = new System.Windows.Forms.Padding(4);
             this.txtTaxOffice.Name = "txtTaxOffice";
             this.txtTaxOffice.Size = new System.Drawing.Size(233, 26);
-            this.txtTaxOffice.TabIndex = 5;
+            this.txtTaxOffice.TabIndex = 9;
             // 
             // label25
             // 
@@ -365,7 +365,7 @@ namespace LoginForm
             this.txtSupplierNotes.Multiline = true;
             this.txtSupplierNotes.Name = "txtSupplierNotes";
             this.txtSupplierNotes.Size = new System.Drawing.Size(214, 134);
-            this.txtSupplierNotes.TabIndex = 8;
+            this.txtSupplierNotes.TabIndex = 12;
             // 
             // cmbMainCategory
             // 
@@ -377,7 +377,7 @@ namespace LoginForm
             this.cmbMainCategory.Margin = new System.Windows.Forms.Padding(4);
             this.cmbMainCategory.Name = "cmbMainCategory";
             this.cmbMainCategory.Size = new System.Drawing.Size(193, 28);
-            this.cmbMainCategory.TabIndex = 4;
+            this.cmbMainCategory.TabIndex = 5;
             this.cmbMainCategory.SelectedIndexChanged += new System.EventHandler(this.cmbMainCategory_SelectedIndexChanged);
             // 
             // txtName
@@ -498,7 +498,7 @@ namespace LoginForm
             this.txtAccountNotes.Multiline = true;
             this.txtAccountNotes.Name = "txtAccountNotes";
             this.txtAccountNotes.Size = new System.Drawing.Size(227, 172);
-            this.txtAccountNotes.TabIndex = 15;
+            this.txtAccountNotes.TabIndex = 18;
             this.txtAccountNotes.Visible = false;
             // 
             // cmbCurrency
@@ -510,7 +510,7 @@ namespace LoginForm
             this.cmbCurrency.Margin = new System.Windows.Forms.Padding(4);
             this.cmbCurrency.Name = "cmbCurrency";
             this.cmbCurrency.Size = new System.Drawing.Size(160, 28);
-            this.cmbCurrency.TabIndex = 13;
+            this.cmbCurrency.TabIndex = 17;
             // 
             // txtDiscountRate
             // 
@@ -519,7 +519,7 @@ namespace LoginForm
             this.txtDiscountRate.Margin = new System.Windows.Forms.Padding(4);
             this.txtDiscountRate.Name = "txtDiscountRate";
             this.txtDiscountRate.Size = new System.Drawing.Size(160, 26);
-            this.txtDiscountRate.TabIndex = 12;
+            this.txtDiscountRate.TabIndex = 16;
             // 
             // cmbAccountMethod
             // 
@@ -530,7 +530,7 @@ namespace LoginForm
             this.cmbAccountMethod.Margin = new System.Windows.Forms.Padding(4);
             this.cmbAccountMethod.Name = "cmbAccountMethod";
             this.cmbAccountMethod.Size = new System.Drawing.Size(160, 28);
-            this.cmbAccountMethod.TabIndex = 11;
+            this.cmbAccountMethod.TabIndex = 15;
             // 
             // cmbAccountTerms
             // 
@@ -541,7 +541,7 @@ namespace LoginForm
             this.cmbAccountTerms.Margin = new System.Windows.Forms.Padding(4);
             this.cmbAccountTerms.Name = "cmbAccountTerms";
             this.cmbAccountTerms.Size = new System.Drawing.Size(160, 28);
-            this.cmbAccountTerms.TabIndex = 10;
+            this.cmbAccountTerms.TabIndex = 14;
             // 
             // cmbAccountRep
             // 
@@ -552,7 +552,7 @@ namespace LoginForm
             this.cmbAccountRep.Margin = new System.Windows.Forms.Padding(4);
             this.cmbAccountRep.Name = "cmbAccountRep";
             this.cmbAccountRep.Size = new System.Drawing.Size(160, 28);
-            this.cmbAccountRep.TabIndex = 9;
+            this.cmbAccountRep.TabIndex = 13;
             // 
             // label15
             // 
@@ -668,7 +668,7 @@ namespace LoginForm
             this.txtAddressTitle.Margin = new System.Windows.Forms.Padding(4);
             this.txtAddressTitle.Name = "txtAddressTitle";
             this.txtAddressTitle.Size = new System.Drawing.Size(132, 26);
-            this.txtAddressTitle.TabIndex = 25;
+            this.txtAddressTitle.TabIndex = 19;
             // 
             // label23
             // 
@@ -687,7 +687,7 @@ namespace LoginForm
             this.btnAddressDelete.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddressDelete.Name = "btnAddressDelete";
             this.btnAddressDelete.Size = new System.Drawing.Size(48, 32);
-            this.btnAddressDelete.TabIndex = 23;
+            this.btnAddressDelete.TabIndex = 32;
             this.btnAddressDelete.Text = "Del";
             this.btnAddressDelete.UseVisualStyleBackColor = true;
             this.btnAddressDelete.Click += new System.EventHandler(this.btnAddressDelete_Click);
@@ -699,7 +699,7 @@ namespace LoginForm
             this.btnAddressUpdate.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddressUpdate.Name = "btnAddressUpdate";
             this.btnAddressUpdate.Size = new System.Drawing.Size(48, 32);
-            this.btnAddressUpdate.TabIndex = 22;
+            this.btnAddressUpdate.TabIndex = 30;
             this.btnAddressUpdate.Text = "Upd";
             this.btnAddressUpdate.UseVisualStyleBackColor = true;
             this.btnAddressUpdate.Click += new System.EventHandler(this.btnAddressUpdate_Click);
@@ -711,7 +711,7 @@ namespace LoginForm
             this.btnAddressAdd.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddressAdd.Name = "btnAddressAdd";
             this.btnAddressAdd.Size = new System.Drawing.Size(48, 32);
-            this.btnAddressAdd.TabIndex = 21;
+            this.btnAddressAdd.TabIndex = 28;
             this.btnAddressAdd.Text = "Add";
             this.btnAddressAdd.UseVisualStyleBackColor = true;
             this.btnAddressAdd.Click += new System.EventHandler(this.btnAddressAdd_Click);
@@ -734,7 +734,7 @@ namespace LoginForm
             this.btnAddressDone.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddressDone.Name = "btnAddressDone";
             this.btnAddressDone.Size = new System.Drawing.Size(76, 32);
-            this.btnAddressDone.TabIndex = 19;
+            this.btnAddressDone.TabIndex = 29;
             this.btnAddressDone.Text = "Done";
             this.btnAddressDone.UseVisualStyleBackColor = true;
             this.btnAddressDone.Visible = false;
@@ -746,7 +746,7 @@ namespace LoginForm
             this.btnAddressCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddressCancel.Name = "btnAddressCancel";
             this.btnAddressCancel.Size = new System.Drawing.Size(76, 32);
-            this.btnAddressCancel.TabIndex = 20;
+            this.btnAddressCancel.TabIndex = 31;
             this.btnAddressCancel.Text = "Cancel";
             this.btnAddressCancel.UseVisualStyleBackColor = true;
             this.btnAddressCancel.Visible = false;
@@ -759,7 +759,7 @@ namespace LoginForm
             this.txtPoBox.Margin = new System.Windows.Forms.Padding(4);
             this.txtPoBox.Name = "txtPoBox";
             this.txtPoBox.Size = new System.Drawing.Size(167, 26);
-            this.txtPoBox.TabIndex = 6;
+            this.txtPoBox.TabIndex = 25;
             // 
             // label14
             // 
@@ -779,7 +779,7 @@ namespace LoginForm
             this.txtAddressDetail.Multiline = true;
             this.txtAddressDetail.Name = "txtAddressDetail";
             this.txtAddressDetail.Size = new System.Drawing.Size(193, 152);
-            this.txtAddressDetail.TabIndex = 18;
+            this.txtAddressDetail.TabIndex = 27;
             // 
             // label24
             // 
@@ -800,7 +800,7 @@ namespace LoginForm
             this.cmbTown.Margin = new System.Windows.Forms.Padding(4);
             this.cmbTown.Name = "cmbTown";
             this.cmbTown.Size = new System.Drawing.Size(160, 28);
-            this.cmbTown.TabIndex = 15;
+            this.cmbTown.TabIndex = 24;
             // 
             // cmbCity
             // 
@@ -811,7 +811,7 @@ namespace LoginForm
             this.cmbCity.Margin = new System.Windows.Forms.Padding(4);
             this.cmbCity.Name = "cmbCity";
             this.cmbCity.Size = new System.Drawing.Size(160, 28);
-            this.cmbCity.TabIndex = 14;
+            this.cmbCity.TabIndex = 23;
             this.cmbCity.SelectedIndexChanged += new System.EventHandler(this.cmbCity_SelectedIndexChanged);
             // 
             // cmbCountry
@@ -823,7 +823,7 @@ namespace LoginForm
             this.cmbCountry.Margin = new System.Windows.Forms.Padding(4);
             this.cmbCountry.Name = "cmbCountry";
             this.cmbCountry.Size = new System.Drawing.Size(160, 28);
-            this.cmbCountry.TabIndex = 13;
+            this.cmbCountry.TabIndex = 22;
             this.cmbCountry.SelectedIndexChanged += new System.EventHandler(this.cmbCounrty_SelectedIndexChanged);
             // 
             // label22
@@ -863,7 +863,7 @@ namespace LoginForm
             this.txtPostCode.Margin = new System.Windows.Forms.Padding(4);
             this.txtPostCode.Name = "txtPostCode";
             this.txtPostCode.Size = new System.Drawing.Size(167, 26);
-            this.txtPostCode.TabIndex = 16;
+            this.txtPostCode.TabIndex = 26;
             // 
             // txtFax
             // 
@@ -872,7 +872,7 @@ namespace LoginForm
             this.txtFax.Margin = new System.Windows.Forms.Padding(4);
             this.txtFax.Name = "txtFax";
             this.txtFax.Size = new System.Drawing.Size(132, 26);
-            this.txtFax.TabIndex = 5;
+            this.txtFax.TabIndex = 21;
             // 
             // txtPhone
             // 
@@ -881,7 +881,7 @@ namespace LoginForm
             this.txtPhone.Margin = new System.Windows.Forms.Padding(4);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(132, 26);
-            this.txtPhone.TabIndex = 4;
+            this.txtPhone.TabIndex = 20;
             // 
             // label19
             // 
@@ -973,7 +973,7 @@ namespace LoginForm
             this.cmbContactAddress.Margin = new System.Windows.Forms.Padding(4);
             this.cmbContactAddress.Name = "cmbContactAddress";
             this.cmbContactAddress.Size = new System.Drawing.Size(204, 28);
-            this.cmbContactAddress.TabIndex = 35;
+            this.cmbContactAddress.TabIndex = 44;
             // 
             // txtExternalNumber
             // 
@@ -982,15 +982,15 @@ namespace LoginForm
             this.txtExternalNumber.Margin = new System.Windows.Forms.Padding(4);
             this.txtExternalNumber.Name = "txtExternalNumber";
             this.txtExternalNumber.Size = new System.Drawing.Size(61, 26);
-            this.txtExternalNumber.TabIndex = 5;
+            this.txtExternalNumber.TabIndex = 39;
             // 
             // btnContactCancel
             // 
-            this.btnContactCancel.Location = new System.Drawing.Point(1094, 180);
+            this.btnContactCancel.Location = new System.Drawing.Point(1095, 180);
             this.btnContactCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnContactCancel.Name = "btnContactCancel";
             this.btnContactCancel.Size = new System.Drawing.Size(85, 28);
-            this.btnContactCancel.TabIndex = 14;
+            this.btnContactCancel.TabIndex = 49;
             this.btnContactCancel.Text = "Cancel";
             this.btnContactCancel.UseVisualStyleBackColor = true;
             this.btnContactCancel.Visible = false;
@@ -1002,7 +1002,7 @@ namespace LoginForm
             this.btnContactDone.Margin = new System.Windows.Forms.Padding(4);
             this.btnContactDone.Name = "btnContactDone";
             this.btnContactDone.Size = new System.Drawing.Size(100, 28);
-            this.btnContactDone.TabIndex = 13;
+            this.btnContactDone.TabIndex = 47;
             this.btnContactDone.Text = "Done";
             this.btnContactDone.UseVisualStyleBackColor = true;
             this.btnContactDone.Visible = false;
@@ -1015,7 +1015,7 @@ namespace LoginForm
             this.btnContactDelete.Margin = new System.Windows.Forms.Padding(4);
             this.btnContactDelete.Name = "btnContactDelete";
             this.btnContactDelete.Size = new System.Drawing.Size(73, 28);
-            this.btnContactDelete.TabIndex = 17;
+            this.btnContactDelete.TabIndex = 50;
             this.btnContactDelete.Text = "Delete";
             this.btnContactDelete.UseVisualStyleBackColor = true;
             this.btnContactDelete.Click += new System.EventHandler(this.btnContactDelete_Click);
@@ -1027,7 +1027,7 @@ namespace LoginForm
             this.btnContactUpdate.Margin = new System.Windows.Forms.Padding(4);
             this.btnContactUpdate.Name = "btnContactUpdate";
             this.btnContactUpdate.Size = new System.Drawing.Size(67, 28);
-            this.btnContactUpdate.TabIndex = 16;
+            this.btnContactUpdate.TabIndex = 48;
             this.btnContactUpdate.Text = "Update";
             this.btnContactUpdate.UseVisualStyleBackColor = true;
             this.btnContactUpdate.Click += new System.EventHandler(this.btnContactUpdate_Click);
@@ -1039,7 +1039,7 @@ namespace LoginForm
             this.btnContactNew.Margin = new System.Windows.Forms.Padding(4);
             this.btnContactNew.Name = "btnContactNew";
             this.btnContactNew.Size = new System.Drawing.Size(57, 28);
-            this.btnContactNew.TabIndex = 15;
+            this.btnContactNew.TabIndex = 46;
             this.btnContactNew.Text = "New";
             this.btnContactNew.UseVisualStyleBackColor = true;
             this.btnContactNew.Click += new System.EventHandler(this.btnContactNew_Click);
@@ -1063,7 +1063,7 @@ namespace LoginForm
             this.btnPos.Margin = new System.Windows.Forms.Padding(4);
             this.btnPos.Name = "btnPos";
             this.btnPos.Size = new System.Drawing.Size(32, 28);
-            this.btnPos.TabIndex = 19;
+            this.btnPos.TabIndex = 36;
             this.btnPos.Text = "+";
             this.btnPos.UseVisualStyleBackColor = true;
             // 
@@ -1074,7 +1074,7 @@ namespace LoginForm
             this.btnDep.Margin = new System.Windows.Forms.Padding(4);
             this.btnDep.Name = "btnDep";
             this.btnDep.Size = new System.Drawing.Size(32, 28);
-            this.btnDep.TabIndex = 18;
+            this.btnDep.TabIndex = 34;
             this.btnDep.Text = "+";
             this.btnDep.UseVisualStyleBackColor = true;
             // 
@@ -1086,7 +1086,7 @@ namespace LoginForm
             this.txtContactNotes.Multiline = true;
             this.txtContactNotes.Name = "txtContactNotes";
             this.txtContactNotes.Size = new System.Drawing.Size(204, 81);
-            this.txtContactNotes.TabIndex = 12;
+            this.txtContactNotes.TabIndex = 45;
             // 
             // cmbLanguage
             // 
@@ -1097,7 +1097,7 @@ namespace LoginForm
             this.cmbLanguage.Margin = new System.Windows.Forms.Padding(4);
             this.cmbLanguage.Name = "cmbLanguage";
             this.cmbLanguage.Size = new System.Drawing.Size(204, 28);
-            this.cmbLanguage.TabIndex = 10;
+            this.cmbLanguage.TabIndex = 43;
             // 
             // txtContactFax
             // 
@@ -1106,7 +1106,7 @@ namespace LoginForm
             this.txtContactFax.Margin = new System.Windows.Forms.Padding(4);
             this.txtContactFax.Name = "txtContactFax";
             this.txtContactFax.Size = new System.Drawing.Size(160, 26);
-            this.txtContactFax.TabIndex = 9;
+            this.txtContactFax.TabIndex = 41;
             // 
             // txtContactMobile
             // 
@@ -1115,7 +1115,7 @@ namespace LoginForm
             this.txtContactMobile.Margin = new System.Windows.Forms.Padding(4);
             this.txtContactMobile.Name = "txtContactMobile";
             this.txtContactMobile.Size = new System.Drawing.Size(160, 26);
-            this.txtContactMobile.TabIndex = 8;
+            this.txtContactMobile.TabIndex = 42;
             // 
             // txtContactPhone
             // 
@@ -1124,7 +1124,7 @@ namespace LoginForm
             this.txtContactPhone.Margin = new System.Windows.Forms.Padding(4);
             this.txtContactPhone.Name = "txtContactPhone";
             this.txtContactPhone.Size = new System.Drawing.Size(132, 26);
-            this.txtContactPhone.TabIndex = 4;
+            this.txtContactPhone.TabIndex = 38;
             // 
             // txtContactMail
             // 
@@ -1133,7 +1133,7 @@ namespace LoginForm
             this.txtContactMail.Margin = new System.Windows.Forms.Padding(4);
             this.txtContactMail.Name = "txtContactMail";
             this.txtContactMail.Size = new System.Drawing.Size(157, 26);
-            this.txtContactMail.TabIndex = 6;
+            this.txtContactMail.TabIndex = 40;
             // 
             // txtContactName
             // 
@@ -1142,7 +1142,7 @@ namespace LoginForm
             this.txtContactName.Margin = new System.Windows.Forms.Padding(4);
             this.txtContactName.Name = "txtContactName";
             this.txtContactName.Size = new System.Drawing.Size(203, 26);
-            this.txtContactName.TabIndex = 3;
+            this.txtContactName.TabIndex = 37;
             // 
             // cmbPosition
             // 
@@ -1153,7 +1153,7 @@ namespace LoginForm
             this.cmbPosition.Margin = new System.Windows.Forms.Padding(4);
             this.cmbPosition.Name = "cmbPosition";
             this.cmbPosition.Size = new System.Drawing.Size(164, 28);
-            this.cmbPosition.TabIndex = 2;
+            this.cmbPosition.TabIndex = 35;
             // 
             // cmbDepartment
             // 
@@ -1164,7 +1164,7 @@ namespace LoginForm
             this.cmbDepartment.Margin = new System.Windows.Forms.Padding(4);
             this.cmbDepartment.Name = "cmbDepartment";
             this.cmbDepartment.Size = new System.Drawing.Size(160, 28);
-            this.cmbDepartment.TabIndex = 1;
+            this.cmbDepartment.TabIndex = 33;
             this.cmbDepartment.SelectedIndexChanged += new System.EventHandler(this.cmbDepartment_SelectedIndexChanged);
             // 
             // label36
@@ -1295,7 +1295,7 @@ namespace LoginForm
             this.cmbBankName.Margin = new System.Windows.Forms.Padding(4);
             this.cmbBankName.Name = "cmbBankName";
             this.cmbBankName.Size = new System.Drawing.Size(247, 28);
-            this.cmbBankName.TabIndex = 1;
+            this.cmbBankName.TabIndex = 50;
             // 
             // txtBankIban
             // 
@@ -1304,7 +1304,7 @@ namespace LoginForm
             this.txtBankIban.Margin = new System.Windows.Forms.Padding(4);
             this.txtBankIban.Name = "txtBankIban";
             this.txtBankIban.Size = new System.Drawing.Size(247, 26);
-            this.txtBankIban.TabIndex = 4;
+            this.txtBankIban.TabIndex = 53;
             // 
             // txtBankAccountNumber
             // 
@@ -1313,7 +1313,7 @@ namespace LoginForm
             this.txtBankAccountNumber.Margin = new System.Windows.Forms.Padding(4);
             this.txtBankAccountNumber.Name = "txtBankAccountNumber";
             this.txtBankAccountNumber.Size = new System.Drawing.Size(247, 26);
-            this.txtBankAccountNumber.TabIndex = 3;
+            this.txtBankAccountNumber.TabIndex = 52;
             // 
             // txtBankBranchCode
             // 
@@ -1322,7 +1322,7 @@ namespace LoginForm
             this.txtBankBranchCode.Margin = new System.Windows.Forms.Padding(4);
             this.txtBankBranchCode.Name = "txtBankBranchCode";
             this.txtBankBranchCode.Size = new System.Drawing.Size(247, 26);
-            this.txtBankBranchCode.TabIndex = 2;
+            this.txtBankBranchCode.TabIndex = 51;
             // 
             // label40
             // 
@@ -1407,105 +1407,6 @@ namespace LoginForm
             this.dgSupplier.Size = new System.Drawing.Size(1225, 225);
             this.dgSupplier.TabIndex = 1;
             this.dgSupplier.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgSupplier_CellClick);
-            // 
-            // btnModify
-            // 
-            this.btnModify.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnModify.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModify.ForeColor = System.Drawing.Color.SteelBlue;
-            this.btnModify.Location = new System.Drawing.Point(805, 2);
-            this.btnModify.Margin = new System.Windows.Forms.Padding(4);
-            this.btnModify.Name = "btnModify";
-            this.btnModify.Size = new System.Drawing.Size(188, 69);
-            this.btnModify.TabIndex = 51;
-            this.btnModify.Text = "Modify";
-            this.btnModify.UseVisualStyleBackColor = true;
-            this.btnModify.Click += new System.EventHandler(this.btnModify_Click);
-            // 
-            // btnExit
-            // 
-            this.btnExit.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.ForeColor = System.Drawing.Color.Red;
-            this.btnExit.Location = new System.Drawing.Point(1007, 2);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(4);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(177, 69);
-            this.btnExit.TabIndex = 53;
-            this.btnExit.Text = "Exit";
-            this.btnExit.UseVisualStyleBackColor = true;
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.ForeColor = System.Drawing.Color.LimeGreen;
-            this.btnAdd.Location = new System.Drawing.Point(621, 2);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(4);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(176, 69);
-            this.btnAdd.TabIndex = 50;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(13, 30);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(124, 20);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Supplier Name:";
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(163, 27);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(4);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(164, 26);
-            this.txtSearch.TabIndex = 52;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.dgSupplier, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.tabgenel, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 260F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 85F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1233, 578);
-            this.tableLayoutPanel1.TabIndex = 7;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.txtSearch);
-            this.panel1.Controls.Add(this.btnModify);
-            this.panel1.Controls.Add(this.btnExit);
-            this.panel1.Controls.Add(this.btnAdd);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 262);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1227, 81);
-            this.panel1.TabIndex = 2;
-            // 
-            // supplierBindingSource
-            // 
-            this.supplierBindingSource.DataSource = typeof(LoginForm.DataSet.Supplier);
             // 
             // iDDataGridViewTextBoxColumn
             // 
@@ -1682,6 +1583,105 @@ namespace LoginForm
             this.supplierWorkersDataGridViewTextBoxColumn.Name = "supplierWorkersDataGridViewTextBoxColumn";
             this.supplierWorkersDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // supplierBindingSource
+            // 
+            this.supplierBindingSource.DataSource = typeof(LoginForm.DataSet.Supplier);
+            // 
+            // btnModify
+            // 
+            this.btnModify.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnModify.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModify.ForeColor = System.Drawing.Color.SteelBlue;
+            this.btnModify.Location = new System.Drawing.Point(805, 2);
+            this.btnModify.Margin = new System.Windows.Forms.Padding(4);
+            this.btnModify.Name = "btnModify";
+            this.btnModify.Size = new System.Drawing.Size(188, 69);
+            this.btnModify.TabIndex = 56;
+            this.btnModify.Text = "Modify";
+            this.btnModify.UseVisualStyleBackColor = true;
+            this.btnModify.Click += new System.EventHandler(this.btnModify_Click);
+            // 
+            // btnExit
+            // 
+            this.btnExit.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.ForeColor = System.Drawing.Color.Red;
+            this.btnExit.Location = new System.Drawing.Point(1007, 2);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(4);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(177, 69);
+            this.btnExit.TabIndex = 57;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = true;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.ForeColor = System.Drawing.Color.LimeGreen;
+            this.btnAdd.Location = new System.Drawing.Point(621, 2);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(176, 69);
+            this.btnAdd.TabIndex = 55;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(13, 30);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(124, 20);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Supplier Name:";
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(163, 27);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(164, 26);
+            this.txtSearch.TabIndex = 54;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.dgSupplier, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.tabgenel, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 260F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 85F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1233, 578);
+            this.tableLayoutPanel1.TabIndex = 7;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.txtSearch);
+            this.panel1.Controls.Add(this.btnModify);
+            this.panel1.Controls.Add(this.btnExit);
+            this.panel1.Controls.Add(this.btnAdd);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 262);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1227, 81);
+            this.panel1.TabIndex = 2;
+            // 
             // CemSupplierMainCem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1708,10 +1708,10 @@ namespace LoginForm
             this.tabBank.ResumeLayout(false);
             this.tabBank.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgSupplier)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

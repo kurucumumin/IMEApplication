@@ -239,6 +239,8 @@ namespace LoginForm
                                 EnableAddressInput(false);
                                 EnableContactInput(false);
 
+                                gridSupplierList = BringSuppierList(txtSearch.Text);
+
                                 btnAdd.Text = SupplierModeAdd;
                                 btnModify.Text = SupplierModeModify;
                             }
@@ -323,6 +325,7 @@ namespace LoginForm
                     {
                         // Just close Inputs
                     }
+                    dgSupplier.ClearSelection();
                     AddressButtonsMode(AddressButtonsModeClose);
                     ContactButtonsMode(ContactButtonsModeClose);
                     SupplierAddMode = String.Empty;
@@ -813,7 +816,7 @@ namespace LoginForm
             txtAddressTitle.Text = address.Title;
             txtPhone.Text = address.Phone;
             txtFax.Text = (address.Fax != null) ? address.Fax : String.Empty;
-            txtPoBox.Text = address.TownID.ToString();
+            txtPoBox.Text = address.PoBox.ToString();
             txtPostCode.Text = address.PostCode;
             txtAddressDetail.Text = address.AdressDetails;
 
@@ -1243,9 +1246,24 @@ namespace LoginForm
                     {
                         ErrorLog.Add("Phone must not be empty!");
                     }
-                    else if (!Utils.HasOnlyNumbers(txtContactName.Text))
+                    else if (!Utils.HasOnlyNumbers(txtContactPhone.Text))
                     {
                         ErrorLog.Add("The Phone number must be a numerical string!");
+                    }
+
+                    if (txtContactMobile.Text.Trim() != String.Empty && !Utils.HasOnlyNumbers(txtContactMobile.Text))
+                    {
+                        ErrorLog.Add("The Mobile number must be a numerical string!");
+                    }
+
+                    if (txtContactFax.Text.Trim() != String.Empty && !Utils.HasOnlyNumbers(txtContactFax.Text))
+                    {
+                        ErrorLog.Add("The Fax number must be a numerical string!");
+                    }
+
+                    if (txtExternalNumber.Text.Trim() != String.Empty && !Utils.HasOnlyNumbers(txtExternalNumber.Text))
+                    {
+                        ErrorLog.Add("The Extension number must be a numerical string!");
                     }
 
                     if (cmbLanguage.SelectedIndex <= 0)
@@ -1277,6 +1295,11 @@ namespace LoginForm
                 #region Address
                 case "Address":
 
+                    //if (txtExternalNumber.Text.Trim() != String.Empty && !Utils.HasOnlyNumbers(txtExternalNumber.Text))
+                    //{
+                    //    ErrorLog.Add("The Extension number must be a numerical string!");
+                    //}
+
                     if (txtAddressTitle.Text.Trim() == String.Empty)
                     {
                         ErrorLog.Add("Title must not be empty!");
@@ -1286,9 +1309,14 @@ namespace LoginForm
                     {
                         ErrorLog.Add("Phone must not be empty!");
                     }
-                    else if (!Utils.HasOnlyNumbers(txtContactName.Text))
+                    else if (!Utils.HasOnlyNumbers(txtPhone.Text))
                     {
                         ErrorLog.Add("The Phone number must be a numerical string!");
+                    }
+
+                    if (txtFax.Text.Trim() != String.Empty && !Utils.HasOnlyNumbers(txtFax.Text))
+                    {
+                        ErrorLog.Add("The Fax number must be a numerical string!");
                     }
 
                     if (txtPoBox.Text.Trim() == String.Empty)
@@ -1395,7 +1423,7 @@ namespace LoginForm
                     {
                         ErrorLog.Add("Discount Rate must not be empty!");
                     }
-                    else if (!Utils.HasOnlyNumbers(txtTaxNumber.Text))
+                    else if (!Utils.HasOnlyNumbers(txtDiscountRate.Text))
                     {
                         ErrorLog.Add("Discount rate must be a numerical string!");
                     }
