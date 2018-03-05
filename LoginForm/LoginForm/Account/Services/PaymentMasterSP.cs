@@ -507,5 +507,20 @@ namespace LoginForm.Account.Services
             }
             return dtbl;
         }
+
+        public decimal paymentMasterIdView(decimal decVouchertypeid, string strVoucherNo)
+        {
+            IMEEntities IME = new IMEEntities();
+            decimal decid = 0;
+            try
+            {
+                decid = Convert.ToDecimal(IME.paymentMasterIdView(decVouchertypeid, strVoucherNo).FirstOrDefault());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return decid;
+        }
     }
 }

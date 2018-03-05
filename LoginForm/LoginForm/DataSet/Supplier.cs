@@ -40,9 +40,11 @@ namespace LoginForm.DataSet
         public Nullable<int> CategoryID { get; set; }
         public Nullable<int> SubCategoryID { get; set; }
         public Nullable<decimal> DefaultCurrency { get; set; }
+        public Nullable<int> AccountNoteID { get; set; }
     
         public virtual Currency Currency { get; set; }
         public virtual Note Note { get; set; }
+        public virtual Note Note1 { get; set; }
         public virtual PaymentMethod PaymentMethod { get; set; }
         public virtual PaymentTerm PaymentTerm { get; set; }
         public virtual Worker Worker { get; set; }

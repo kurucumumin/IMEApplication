@@ -2012,6 +2012,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="CategoryID" Type="int" />
           <Property Name="SubCategoryID" Type="int" />
           <Property Name="DefaultCurrency" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="AccountNoteID" Type="int" />
         </EntityType>
         <EntityType Name="SupplierAddress">
           <Key>
@@ -5825,6 +5826,18 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Supplier__Accoun__430CD787">
+          <End Role="Notes" Type="Self.Notes" Multiplicity="0..1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Notes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="AccountNoteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Supplier__BankID__0C50D423">
           <End Role="SupplierBank" Type="Self.SupplierBank" Multiplicity="0..1" />
           <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
@@ -6334,6 +6347,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Parameter Name="branchCode" Type="varchar(max)" Mode="In" />
           <Parameter Name="areaId" Type="numeric" Mode="In" />
         </Function>
+        <Function Name="AccountLedgerGetByDebtorAndCreditorWithBalance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="AccountLedgerGetGroupUnderFunction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="accountGroupId" Type="varchar" Mode="In" />
           <ReturnType>
@@ -6401,6 +6415,34 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
           <Parameter Name="financialYearId" Type="numeric" Mode="In" />
           <Parameter Name="IsAutomatic" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="AgeingReportFillByPayable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ageingDate" Type="datetime" Mode="In" />
+          <Parameter Name="status" Type="varchar" Mode="In" />
+          <Parameter Name="ledgerId" Type="varchar" Mode="In" />
+          <Parameter Name="ledgerBy" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="AgeingReportFillByReceivable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ageingDate" Type="datetime" Mode="In" />
+          <Parameter Name="status" Type="varchar" Mode="In" />
+          <Parameter Name="ledgerId" Type="varchar" Mode="In" />
+          <Parameter Name="ledgerBy" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="AgeingReportLedgerPayable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ageingDate" Type="datetime" Mode="In" />
+          <Parameter Name="ledgerId" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="AgeingReportLedgerReceivable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ageingDate" Type="datetime" Mode="In" />
+          <Parameter Name="ledgerId" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="AgeingReportVoucherPayable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ageingDate" Type="datetime" Mode="In" />
+          <Parameter Name="ledgerId" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="AgeingReportVoucherReceivable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ageingDate" Type="datetime" Mode="In" />
+          <Parameter Name="ledgerId" Type="numeric" Mode="In" />
         </Function>
         <Function Name="AreaDeleteReference" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="areaId" Type="numeric" Mode="In" />
@@ -6476,6 +6518,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
         <Function Name="BudgetVariance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="budgetMasterId" Type="numeric" Mode="In" />
         </Function>
+        <Function Name="CashFlowReportPrintCompany" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="CashOrBankComboFill" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="CheckForDefaultVoucherType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
@@ -6501,6 +6544,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
         <Function Name="ChequeReportPartyComboFill" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="CompanyView" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="companyId" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="CreditNoteMasterIdView" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
+          <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
         </Function>
         <Function Name="CreditNoteRegisterSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
@@ -6538,6 +6585,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
         <Function Name="DayBookSalesInvoiceOrPOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="salesMasterId" Type="numeric" Mode="In" />
           <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="DebitNoteMasterIdView" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
+          <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
         </Function>
         <Function Name="DebitNoteReportSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="fromDate" Type="datetime" Mode="In" />
@@ -6695,6 +6746,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Parameter Name="voucherNumber" Type="varchar(max)" Mode="In" />
           <Parameter Name="date" Type="datetime" Mode="In" />
         </Function>
+        <Function Name="JournalMasterIdView" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
+          <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
+        </Function>
         <Function Name="JournalRegisterSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
           <Parameter Name="fromDate" Type="datetime" Mode="In" />
@@ -6806,6 +6861,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Parameter Name="payHeadId" Type="numeric" Mode="In" />
         </Function>
         <Function Name="PayHeadGetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="paymentMasterIdView" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
+          <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
+        </Function>
         <Function Name="PaymentMasterSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="FromDate" Type="datetime" Mode="In" />
           <Parameter Name="ToDate" Type="datetime" Mode="In" />
@@ -6828,6 +6887,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Parameter Name="bankId" Type="decimal" Mode="In" />
           <Parameter Name="status" Type="varchar(max)" Mode="In" />
         </Function>
+        <Function Name="PdcPayableMasterIdView" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
+          <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
+        </Function>
         <Function Name="PdcPayableReportSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="fromDate" Type="datetime" Mode="In" />
           <Parameter Name="toDate" Type="datetime" Mode="In" />
@@ -6837,6 +6900,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Parameter Name="chequeDateTo" Type="datetime" Mode="In" />
           <Parameter Name="status" Type="varchar(max)" Mode="In" />
           <Parameter Name="chequeNo" Type="varchar(max)" Mode="In" />
+          <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="PdcReceivableMasterIdView" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
           <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
         </Function>
         <Function Name="PdcReceivableReportSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -7089,6 +7156,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Parameter Name="transportationCompany" Type="varchar(max)" Mode="In" />
           <Parameter Name="financialYearId" Type="numeric" Mode="In" />
         </Function>
+        <Function Name="PurchaseMasterIdViewByvoucherNoAndVoucherType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
+          <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
+        </Function>
         <Function Name="PurchaseMasterReferenceCheck" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="purchaseMasterId" Type="numeric" Mode="In" />
           <Parameter Name="purchaseDetailsId" Type="numeric" Mode="In" />
@@ -7188,6 +7259,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
         </Function>
         <Function Name="RackFillForStock" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="godownId" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="ReceiptMasterIdView" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
+          <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
         </Function>
         <Function Name="ReminderAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="fromDate" Type="datetime" Mode="In" />
@@ -7415,6 +7490,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Parameter Name="extraDate" Type="datetime" Mode="In" />
           <Parameter Name="extra1" Type="varchar(max)" Mode="In" />
           <Parameter Name="extra2" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="SalesMasterIdViewByvoucherNoAndVoucherType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
+          <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
         </Function>
         <Function Name="SalesMasterView" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="salesMasterId" Type="numeric" Mode="In" />
@@ -9221,6 +9300,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="Worker" EntitySet="Worker" />
             <End Role="Supplier" EntitySet="Supplier" />
           </AssociationSet>
+          <AssociationSet Name="FK__Supplier__Accoun__430CD787" Association="Self.FK__Supplier__Accoun__430CD787">
+            <End Role="Notes" EntitySet="Notes" />
+            <End Role="Supplier" EntitySet="Supplier" />
+          </AssociationSet>
           <AssociationSet Name="FK__Supplier__BankID__0C50D423" Association="Self.FK__Supplier__BankID__0C50D423">
             <End Role="SupplierBank" EntitySet="SupplierBank" />
             <End Role="Supplier" EntitySet="Supplier" />
@@ -10363,7 +10446,8 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <NavigationProperty Name="ItemNotes" Relationship="Self.FK__ItemNote__NoteID__2B0A656D" FromRole="Notes" ToRole="ItemNote" />
           <NavigationProperty Name="Quotations" Relationship="Self.FK__Quotation__NoteF__0169315C" FromRole="Notes" ToRole="Quotation" />
           <NavigationProperty Name="Quotations1" Relationship="Self.FK__Quotation__NoteF__025D5595" FromRole="Notes" ToRole="Quotation" />
-          <NavigationProperty Name="Suppliers" Relationship="Self.FK__Supplier__Suppli__09746778" FromRole="Notes" ToRole="Supplier" />
+          <NavigationProperty Name="Suppliers" Relationship="Self.FK__Supplier__Accoun__430CD787" FromRole="Notes" ToRole="Supplier" />
+          <NavigationProperty Name="Suppliers1" Relationship="Self.FK__Supplier__Suppli__09746778" FromRole="Notes" ToRole="Supplier" />
           <NavigationProperty Name="SupplierWorkers" Relationship="Self.FK__SupplierW__suppl__73852659" FromRole="Notes" ToRole="SupplierWorker" />
           <NavigationProperty Name="Workers" Relationship="Self.FK__Worker__WorkerNo__4BAC3F29" FromRole="Notes" ToRole="Worker" />
         </EntityType>
@@ -11873,8 +11957,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="CategoryID" Type="Int32" />
           <Property Name="SubCategoryID" Type="Int32" />
           <Property Name="DefaultCurrency" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="AccountNoteID" Type="Int32" />
           <NavigationProperty Name="Currency" Relationship="Self.FK__Supplier__Defaul__30EE274C" FromRole="Supplier" ToRole="Currency" />
-          <NavigationProperty Name="Note" Relationship="Self.FK__Supplier__Suppli__09746778" FromRole="Supplier" ToRole="Notes" />
+          <NavigationProperty Name="Note" Relationship="Self.FK__Supplier__Accoun__430CD787" FromRole="Supplier" ToRole="Notes" />
+          <NavigationProperty Name="Note1" Relationship="Self.FK__Supplier__Suppli__09746778" FromRole="Supplier" ToRole="Notes" />
           <NavigationProperty Name="PaymentMethod" Relationship="Self.FK__Supplier__paymen__634EBE90" FromRole="Supplier" ToRole="PaymentMethod" />
           <NavigationProperty Name="PaymentTerm" Relationship="Self.FK__Supplier__paymen__6442E2C9" FromRole="Supplier" ToRole="PaymentTerm" />
           <NavigationProperty Name="Worker" Relationship="Self.FK__Supplier__accoun__2DB1C7EE" FromRole="Supplier" ToRole="Worker" />
@@ -14442,6 +14528,18 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Principal>
             <Dependent Role="Quotation">
               <PropertyRef Name="NoteForCustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Supplier__Accoun__430CD787">
+          <End Role="Notes" Type="Self.Note" Multiplicity="0..1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Notes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="AccountNoteID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -17073,6 +17171,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="Notes" EntitySet="Notes" />
             <End Role="Quotation" EntitySet="Quotations" />
           </AssociationSet>
+          <AssociationSet Name="FK__Supplier__Accoun__430CD787" Association="Self.FK__Supplier__Accoun__430CD787">
+            <End Role="Notes" EntitySet="Notes" />
+            <End Role="Supplier" EntitySet="Suppliers" />
+          </AssociationSet>
           <AssociationSet Name="FK__Supplier__Suppli__09746778" Association="Self.FK__Supplier__Suppli__09746778">
             <End Role="Notes" EntitySet="Notes" />
             <End Role="Supplier" EntitySet="Suppliers" />
@@ -17758,6 +17860,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <Parameter Name="branchCode" Mode="In" Type="String" />
             <Parameter Name="areaId" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="AccountLedgerGetByDebtorAndCreditorWithBalance" ReturnType="Collection(IMEModel.AccountLedgerGetByDebtorAndCreditorWithBalance_Result)" />
           <FunctionImport Name="AccountLedgerIdGetByName" ReturnType="Collection(Decimal)">
             <Parameter Name="ledgerName" Mode="In" Type="String" />
           </FunctionImport>
@@ -17815,6 +17918,34 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
             <Parameter Name="financialYearId" Mode="In" Type="Decimal" />
             <Parameter Name="IsAutomatic" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="AgeingReportFillByPayable" ReturnType="Collection(IMEModel.AgeingReportFillByPayable_Result)">
+            <Parameter Name="ageingDate" Mode="In" Type="DateTime" />
+            <Parameter Name="status" Mode="In" Type="String" />
+            <Parameter Name="ledgerId" Mode="In" Type="String" />
+            <Parameter Name="ledgerBy" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AgeingReportFillByReceivable" ReturnType="Collection(IMEModel.AgeingReportFillByReceivable_Result)">
+            <Parameter Name="ageingDate" Mode="In" Type="DateTime" />
+            <Parameter Name="status" Mode="In" Type="String" />
+            <Parameter Name="ledgerId" Mode="In" Type="String" />
+            <Parameter Name="ledgerBy" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AgeingReportLedgerPayable" ReturnType="Collection(IMEModel.AgeingReportLedgerPayable_Result)">
+            <Parameter Name="ageingDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ledgerId" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="AgeingReportLedgerReceivable" ReturnType="Collection(IMEModel.AgeingReportLedgerReceivable_Result)">
+            <Parameter Name="ageingDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ledgerId" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="AgeingReportVoucherPayable" ReturnType="Collection(IMEModel.AgeingReportVoucherPayable_Result)">
+            <Parameter Name="ageingDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ledgerId" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="AgeingReportVoucherReceivable" ReturnType="Collection(IMEModel.AgeingReportVoucherReceivable_Result)">
+            <Parameter Name="ageingDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ledgerId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="AreaDeleteReference">
             <Parameter Name="areaId" Mode="In" Type="Decimal" />
@@ -17890,6 +18021,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <FunctionImport Name="BudgetVariance" ReturnType="Collection(IMEModel.BudgetVariance_Result)">
             <Parameter Name="budgetMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="CashFlowReportPrintCompany" ReturnType="Collection(IMEModel.CashFlowReportPrintCompany_Result)" />
           <FunctionImport Name="CashOrBankComboFill" ReturnType="Collection(IMEModel.CashOrBankComboFill_Result)" />
           <FunctionImport Name="CheckForDefaultVoucherType" ReturnType="Collection(Int32)">
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
@@ -17915,6 +18047,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <FunctionImport Name="ChequeReportPartyComboFill" ReturnType="Collection(IMEModel.ChequeReportPartyComboFill_Result)" />
           <FunctionImport Name="CompanyView" ReturnType="Collection(IMEModel.CompanyView_Result)">
             <Parameter Name="companyId" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="CreditNoteMasterIdView" ReturnType="Collection(Decimal)">
+            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
+            <Parameter Name="voucherNo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="CreditNoteRegisterSearch" ReturnType="Collection(IMEModel.CreditNoteRegisterSearch_Result)">
             <Parameter Name="voucherNo" Mode="In" Type="String" />
@@ -17952,6 +18088,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <FunctionImport Name="DayBookSalesInvoiceOrPOS" ReturnType="Collection(Boolean)">
             <Parameter Name="salesMasterId" Mode="In" Type="Decimal" />
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="DebitNoteMasterIdView" ReturnType="Collection(Decimal)">
+            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
+            <Parameter Name="voucherNo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DebitNoteReportSearch" ReturnType="Collection(IMEModel.DebitNoteReportSearch_Result)">
             <Parameter Name="fromDate" Mode="In" Type="DateTime" />
@@ -18098,6 +18238,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="GroupNameViewForComboFill" ReturnType="Collection(IMEModel.GroupNameViewForComboFill_Result)" />
+          <FunctionImport Name="JournalMasterIdView" ReturnType="Collection(Decimal)">
+            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
+            <Parameter Name="voucherNo" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="JournalRegisterSearch" ReturnType="Collection(IMEModel.JournalRegisterSearch_Result)">
             <Parameter Name="voucherNo" Mode="In" Type="String" />
             <Parameter Name="fromDate" Mode="In" Type="DateTime" />
@@ -18209,6 +18353,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <Parameter Name="payHeadId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="PayHeadGetAll" ReturnType="Collection(IMEModel.PayHeadGetAll_Result)" />
+          <FunctionImport Name="paymentMasterIdView" ReturnType="Collection(Decimal)">
+            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
+            <Parameter Name="voucherNo" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="PaymentMasterSearch" ReturnType="Collection(IMEModel.PaymentMasterSearch_Result)">
             <Parameter Name="FromDate" Mode="In" Type="DateTime" />
             <Parameter Name="ToDate" Mode="In" Type="DateTime" />
@@ -18231,6 +18379,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <Parameter Name="bankId" Mode="In" Type="Decimal" />
             <Parameter Name="status" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="PdcPayableMasterIdView" ReturnType="Collection(Decimal)">
+            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
+            <Parameter Name="voucherNo" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="PdcPayableReportSearch" ReturnType="Collection(IMEModel.PdcPayableReportSearch_Result)">
             <Parameter Name="fromDate" Mode="In" Type="DateTime" />
             <Parameter Name="toDate" Mode="In" Type="DateTime" />
@@ -18240,6 +18392,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <Parameter Name="chequeDateTo" Mode="In" Type="DateTime" />
             <Parameter Name="status" Mode="In" Type="String" />
             <Parameter Name="chequeNo" Mode="In" Type="String" />
+            <Parameter Name="voucherNo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PdcReceivableMasterIdView" ReturnType="Collection(Decimal)">
+            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
             <Parameter Name="voucherNo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="PdcReceivableReportSearch" ReturnType="Collection(IMEModel.PdcReceivableReportSearch_Result)">
@@ -18492,6 +18648,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <Parameter Name="transportationCompany" Mode="In" Type="String" />
             <Parameter Name="financialYearId" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="PurchaseMasterIdViewByvoucherNoAndVoucherType" ReturnType="Collection(Decimal)">
+            <Parameter Name="voucherNo" Mode="In" Type="String" />
+            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
+          </FunctionImport>
           <FunctionImport Name="PurchaseMasterReferenceCheck" ReturnType="Collection(Int32)">
             <Parameter Name="purchaseMasterId" Mode="In" Type="Decimal" />
             <Parameter Name="purchaseDetailsId" Mode="In" Type="Decimal" />
@@ -18591,6 +18751,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           </FunctionImport>
           <FunctionImport Name="RackFillForStock" ReturnType="Collection(IMEModel.RackFillForStock_Result)">
             <Parameter Name="godownId" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="ReceiptMasterIdView" ReturnType="Collection(Decimal)">
+            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
+            <Parameter Name="voucherNo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ReminderAdd">
             <Parameter Name="fromDate" Mode="In" Type="DateTime" />
@@ -18818,6 +18982,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <Parameter Name="extraDate" Mode="In" Type="DateTime" />
             <Parameter Name="extra1" Mode="In" Type="String" />
             <Parameter Name="extra2" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SalesMasterIdViewByvoucherNoAndVoucherType" ReturnType="Collection(Decimal)">
+            <Parameter Name="voucherNo" Mode="In" Type="String" />
+            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SalesMasterView" ReturnType="Collection(IMEModel.SalesMasterView_Result)">
             <Parameter Name="salesMasterId" Mode="In" Type="Decimal" />
@@ -19284,6 +19452,11 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="String" Name="nature" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="affectGrossProfit" Nullable="true" MaxLength="50" />
         </ComplexType>
+        <ComplexType Name="AccountLedgerGetByDebtorAndCreditorWithBalance_Result">
+          <Property Type="Decimal" Name="ledgerId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="ledgerName" Nullable="true" />
+          <Property Type="String" Name="balance" Nullable="true" MaxLength="32" />
+        </ComplexType>
         <ComplexType Name="AccountLedgerSearchForServiceAccountUnderIncome_Result">
           <Property Type="Decimal" Name="ledgerId" Nullable="false" Precision="18" Scale="0" />
           <Property Type="Int32" Name="accountGroupId" Nullable="true" />
@@ -19362,6 +19535,94 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="Decimal" Name="Identity" Nullable="true" Precision="38" Scale="0" />
           <Property Type="String" Name="UpdatedVoucherNo" Nullable="true" />
           <Property Type="String" Name="UpdatedInvoiceNo" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="AgeingReportFillByPayable_Result">
+          <Property Type="Int64" Name="Sl_NO" Nullable="true" />
+          <Property Type="String" Name="Account_Ledger" Nullable="true" />
+          <Property Type="String" Name="ledgerId" Nullable="false" MaxLength="1" />
+          <Property Type="Decimal" Name="masterId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="voucherTypeId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="typeOfVoucher" Nullable="true" />
+          <Property Type="String" Name="Date" Nullable="true" MaxLength="8000" />
+          <Property Type="String" Name="Voucher_Type" Nullable="true" />
+          <Property Type="String" Name="Voucher_No" Nullable="true" />
+          <Property Type="Decimal" Name="C1_to_30" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="C31_to_60" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="C61_to_90" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="C90_above" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="String" Name="Narration" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="AgeingReportFillByReceivable_Result">
+          <Property Type="Int64" Name="Sl_NO" Nullable="true" />
+          <Property Type="String" Name="Account_Ledger" Nullable="true" />
+          <Property Type="String" Name="ledgerId" Nullable="false" MaxLength="1" />
+          <Property Type="Decimal" Name="masterId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="voucherTypeId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="typeOfVoucher" Nullable="true" />
+          <Property Type="String" Name="Date" Nullable="true" MaxLength="8000" />
+          <Property Type="String" Name="Voucher_Type" Nullable="true" />
+          <Property Type="String" Name="Voucher_No" Nullable="true" />
+          <Property Type="Decimal" Name="C1_to_30" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="C31_to_60" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="C61_to_90" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="C90_above" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="String" Name="Narration" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="AgeingReportLedgerPayable_Result">
+          <Property Type="Int64" Name="Sl_NO" Nullable="true" />
+          <Property Type="String" Name="Account_Ledger" Nullable="true" />
+          <Property Type="String" Name="VoucherType" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="VoucherNo" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="Date" Nullable="true" MaxLength="20" />
+          <Property Type="Decimal" Name="ledgerId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="masterId" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="voucherTypeId" Nullable="false" MaxLength="1" />
+          <Property Type="Decimal" Name="C1_to_30" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="C31_to_60" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="C61_to_90" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="C90_above" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="AgeingReportLedgerReceivable_Result">
+          <Property Type="Int64" Name="Sl_NO" Nullable="true" />
+          <Property Type="String" Name="Account_Ledger" Nullable="true" />
+          <Property Type="String" Name="VoucherType" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="VoucherNo" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="Date" Nullable="true" MaxLength="20" />
+          <Property Type="Decimal" Name="ledgerId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="masterId" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="voucherTypeId" Nullable="false" MaxLength="1" />
+          <Property Type="Decimal" Name="C1_to_30" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="C31_to_60" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="C61_to_90" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="C90_above" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="AgeingReportVoucherPayable_Result">
+          <Property Type="Int64" Name="Sl_NO" Nullable="true" />
+          <Property Type="String" Name="Account_Ledger" Nullable="true" />
+          <Property Type="Decimal" Name="ledgerId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="VoucherType" Nullable="true" />
+          <Property Type="String" Name="VoucherNo" Nullable="true" />
+          <Property Type="String" Name="Date" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="masterId" Nullable="false" MaxLength="1" />
+          <Property Type="Decimal" Name="voucherTypeId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="C1_to_30" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="C31_to_60" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="C61_to_90" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="C90_above" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="AgeingReportVoucherReceivable_Result">
+          <Property Type="Int64" Name="Sl_NO" Nullable="true" />
+          <Property Type="String" Name="Account_Ledger" Nullable="true" />
+          <Property Type="String" Name="VoucherType" Nullable="true" />
+          <Property Type="String" Name="VoucherNo" Nullable="true" />
+          <Property Type="String" Name="Date" Nullable="true" MaxLength="20" />
+          <Property Type="Decimal" Name="ledgerId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="masterId" Nullable="false" MaxLength="1" />
+          <Property Type="Decimal" Name="voucherTypeId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="C1_to_30" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="C31_to_60" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="C61_to_90" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="C90_above" Nullable="true" Precision="38" Scale="2" />
         </ComplexType>
         <ComplexType Name="AreaOnlyViewAll_Result">
           <Property Type="Decimal" Name="areaId" Nullable="false" Precision="18" Scale="0" />
@@ -19484,6 +19745,13 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="Decimal" Name="BudgetCr" Nullable="true" Precision="28" Scale="2" />
           <Property Type="Decimal" Name="ActualCr" Nullable="true" Precision="28" Scale="2" />
           <Property Type="Decimal" Name="VarianceCr" Nullable="true" Precision="28" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="CashFlowReportPrintCompany_Result">
+          <Property Type="String" Name="companyName" Nullable="true" />
+          <Property Type="String" Name="address" Nullable="true" />
+          <Property Type="String" Name="phone" Nullable="true" />
+          <Property Type="String" Name="email" Nullable="true" />
+          <Property Type="String" Name="currencyName" Nullable="true" />
         </ComplexType>
         <ComplexType Name="CashOrBankComboFill_Result">
           <Property Type="String" Name="ledgerName" Nullable="true" />
@@ -22761,6 +23029,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
                 <ScalarProperty Name="SubCategoryID" ColumnName="SubCategoryID" />
                 <ScalarProperty Name="DefaultCurrency" ColumnName="DefaultCurrency" />
+                <ScalarProperty Name="AccountNoteID" ColumnName="AccountNoteID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -23094,6 +23363,15 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="AccountLedgerAddWithIdentity" FunctionName="IMEModel.Store.AccountLedgerAddWithIdentity" />
           <FunctionImportMapping FunctionImportName="AccountLedgerEdit" FunctionName="IMEModel.Store.AccountLedgerEdit" />
+          <FunctionImportMapping FunctionImportName="AccountLedgerGetByDebtorAndCreditorWithBalance" FunctionName="IMEModel.Store.AccountLedgerGetByDebtorAndCreditorWithBalance">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.AccountLedgerGetByDebtorAndCreditorWithBalance_Result">
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+                <ScalarProperty Name="ledgerName" ColumnName="ledgerName" />
+                <ScalarProperty Name="balance" ColumnName="balance" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="AccountLedgerIdGetByName" FunctionName="IMEModel.Store.AccountLedgerIdGetByName" />
           <FunctionImportMapping FunctionImportName="AccountLedgerSearchForServiceAccountUnderIncome" FunctionName="IMEModel.Store.AccountLedgerSearchForServiceAccountUnderIncome">
             <ResultMapping>
@@ -23207,6 +23485,118 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="Identity" ColumnName="Identity" />
                 <ScalarProperty Name="UpdatedVoucherNo" ColumnName="UpdatedVoucherNo" />
                 <ScalarProperty Name="UpdatedInvoiceNo" ColumnName="UpdatedInvoiceNo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AgeingReportFillByPayable" FunctionName="IMEModel.Store.AgeingReportFillByPayable">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.AgeingReportFillByPayable_Result">
+                <ScalarProperty Name="Sl_NO" ColumnName="Sl NO" />
+                <ScalarProperty Name="Account_Ledger" ColumnName="Account Ledger" />
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+                <ScalarProperty Name="masterId" ColumnName="masterId" />
+                <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
+                <ScalarProperty Name="typeOfVoucher" ColumnName="typeOfVoucher" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Voucher_Type" ColumnName="Voucher Type" />
+                <ScalarProperty Name="Voucher_No" ColumnName="Voucher No" />
+                <ScalarProperty Name="C1_to_30" ColumnName="1 to 30" />
+                <ScalarProperty Name="C31_to_60" ColumnName="31 to 60" />
+                <ScalarProperty Name="C61_to_90" ColumnName="61 to 90" />
+                <ScalarProperty Name="C90_above" ColumnName="90 above" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AgeingReportFillByReceivable" FunctionName="IMEModel.Store.AgeingReportFillByReceivable">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.AgeingReportFillByReceivable_Result">
+                <ScalarProperty Name="Sl_NO" ColumnName="Sl NO" />
+                <ScalarProperty Name="Account_Ledger" ColumnName="Account Ledger" />
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+                <ScalarProperty Name="masterId" ColumnName="masterId" />
+                <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
+                <ScalarProperty Name="typeOfVoucher" ColumnName="typeOfVoucher" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Voucher_Type" ColumnName="Voucher Type" />
+                <ScalarProperty Name="Voucher_No" ColumnName="Voucher No" />
+                <ScalarProperty Name="C1_to_30" ColumnName="1 to 30" />
+                <ScalarProperty Name="C31_to_60" ColumnName="31 to 60" />
+                <ScalarProperty Name="C61_to_90" ColumnName="61 to 90" />
+                <ScalarProperty Name="C90_above" ColumnName="90 above" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AgeingReportLedgerPayable" FunctionName="IMEModel.Store.AgeingReportLedgerPayable">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.AgeingReportLedgerPayable_Result">
+                <ScalarProperty Name="Sl_NO" ColumnName="Sl NO" />
+                <ScalarProperty Name="Account_Ledger" ColumnName="Account_Ledger" />
+                <ScalarProperty Name="VoucherType" ColumnName="VoucherType" />
+                <ScalarProperty Name="VoucherNo" ColumnName="VoucherNo" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+                <ScalarProperty Name="masterId" ColumnName="masterId" />
+                <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
+                <ScalarProperty Name="C1_to_30" ColumnName="1 to 30" />
+                <ScalarProperty Name="C31_to_60" ColumnName="31 to 60" />
+                <ScalarProperty Name="C61_to_90" ColumnName="61 to 90" />
+                <ScalarProperty Name="C90_above" ColumnName="90 above" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AgeingReportLedgerReceivable" FunctionName="IMEModel.Store.AgeingReportLedgerReceivable">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.AgeingReportLedgerReceivable_Result">
+                <ScalarProperty Name="Sl_NO" ColumnName="Sl NO" />
+                <ScalarProperty Name="Account_Ledger" ColumnName="Account_Ledger" />
+                <ScalarProperty Name="VoucherType" ColumnName="VoucherType" />
+                <ScalarProperty Name="VoucherNo" ColumnName="VoucherNo" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+                <ScalarProperty Name="masterId" ColumnName="masterId" />
+                <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
+                <ScalarProperty Name="C1_to_30" ColumnName="1 to 30" />
+                <ScalarProperty Name="C31_to_60" ColumnName="31 to 60" />
+                <ScalarProperty Name="C61_to_90" ColumnName="61 to 90" />
+                <ScalarProperty Name="C90_above" ColumnName="90 above" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AgeingReportVoucherPayable" FunctionName="IMEModel.Store.AgeingReportVoucherPayable">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.AgeingReportVoucherPayable_Result">
+                <ScalarProperty Name="Sl_NO" ColumnName="Sl NO" />
+                <ScalarProperty Name="Account_Ledger" ColumnName="Account_Ledger" />
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+                <ScalarProperty Name="VoucherType" ColumnName="VoucherType" />
+                <ScalarProperty Name="VoucherNo" ColumnName="VoucherNo" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="masterId" ColumnName="masterId" />
+                <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
+                <ScalarProperty Name="C1_to_30" ColumnName="1 to 30" />
+                <ScalarProperty Name="C31_to_60" ColumnName="31 to 60" />
+                <ScalarProperty Name="C61_to_90" ColumnName="61 to 90" />
+                <ScalarProperty Name="C90_above" ColumnName="90 above" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AgeingReportVoucherReceivable" FunctionName="IMEModel.Store.AgeingReportVoucherReceivable">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.AgeingReportVoucherReceivable_Result">
+                <ScalarProperty Name="Sl_NO" ColumnName="Sl NO" />
+                <ScalarProperty Name="Account_Ledger" ColumnName="Account_Ledger" />
+                <ScalarProperty Name="VoucherType" ColumnName="VoucherType" />
+                <ScalarProperty Name="VoucherNo" ColumnName="VoucherNo" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+                <ScalarProperty Name="masterId" ColumnName="masterId" />
+                <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
+                <ScalarProperty Name="C1_to_30" ColumnName="1 to 30" />
+                <ScalarProperty Name="C31_to_60" ColumnName="31 to 60" />
+                <ScalarProperty Name="C61_to_90" ColumnName="61 to 90" />
+                <ScalarProperty Name="C90_above" ColumnName="90 above" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -23403,6 +23793,17 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CashFlowReportPrintCompany" FunctionName="IMEModel.Store.CashFlowReportPrintCompany">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.CashFlowReportPrintCompany_Result">
+                <ScalarProperty Name="companyName" ColumnName="companyName" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="currencyName" ColumnName="currencyName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="CashOrBankComboFill" FunctionName="IMEModel.Store.CashOrBankComboFill">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.CashOrBankComboFill_Result">
@@ -23459,6 +23860,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CreditNoteMasterIdView" FunctionName="IMEModel.Store.CreditNoteMasterIdView" />
           <FunctionImportMapping FunctionImportName="CreditNoteRegisterSearch" FunctionName="IMEModel.Store.CreditNoteRegisterSearch">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.CreditNoteRegisterSearch_Result">
@@ -23526,6 +23928,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="DayBookSalesInvoiceOrPOS" FunctionName="IMEModel.Store.DayBookSalesInvoiceOrPOS" />
+          <FunctionImportMapping FunctionImportName="DebitNoteMasterIdView" FunctionName="IMEModel.Store.DebitNoteMasterIdView" />
           <FunctionImportMapping FunctionImportName="DebitNoteReportSearch" FunctionName="IMEModel.Store.DebitNoteReportSearch">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.DebitNoteReportSearch_Result">
@@ -23679,6 +24082,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="JournalMasterIdView" FunctionName="IMEModel.Store.JournalMasterIdView" />
           <FunctionImportMapping FunctionImportName="JournalRegisterSearch" FunctionName="IMEModel.Store.JournalRegisterSearch">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.JournalRegisterSearch_Result">
@@ -23863,6 +24267,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="paymentMasterIdView" FunctionName="IMEModel.Store.paymentMasterIdView" />
           <FunctionImportMapping FunctionImportName="PaymentMasterSearch" FunctionName="IMEModel.Store.PaymentMasterSearch">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.PaymentMasterSearch_Result">
@@ -23915,6 +24320,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PdcPayableMasterIdView" FunctionName="IMEModel.Store.PdcPayableMasterIdView" />
           <FunctionImportMapping FunctionImportName="PdcPayableReportSearch" FunctionName="IMEModel.Store.PdcPayableReportSearch">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.PdcPayableReportSearch_Result">
@@ -23931,6 +24337,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PdcReceivableMasterIdView" FunctionName="IMEModel.Store.PdcReceivableMasterIdView" />
           <FunctionImportMapping FunctionImportName="PdcReceivableReportSearch" FunctionName="IMEModel.Store.PdcReceivableReportSearch">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.PdcReceivableReportSearch_Result">
@@ -24365,6 +24772,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <FunctionImportMapping FunctionImportName="PurchaseMasterAdd" FunctionName="IMEModel.Store.PurchaseMasterAdd" />
           <FunctionImportMapping FunctionImportName="PurchaseMasterDelete" FunctionName="IMEModel.Store.PurchaseMasterDelete" />
           <FunctionImportMapping FunctionImportName="PurchaseMasterEdit" FunctionName="IMEModel.Store.PurchaseMasterEdit" />
+          <FunctionImportMapping FunctionImportName="PurchaseMasterIdViewByvoucherNoAndVoucherType" FunctionName="IMEModel.Store.PurchaseMasterIdViewByvoucherNoAndVoucherType" />
           <FunctionImportMapping FunctionImportName="PurchaseMasterReferenceCheck" FunctionName="IMEModel.Store.PurchaseMasterReferenceCheck" />
           <FunctionImportMapping FunctionImportName="PurchaseMasterView" FunctionName="IMEModel.Store.PurchaseMasterView">
             <ResultMapping>
@@ -24535,6 +24943,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ReceiptMasterIdView" FunctionName="IMEModel.Store.ReceiptMasterIdView" />
           <FunctionImportMapping FunctionImportName="ReminderAdd" FunctionName="IMEModel.Store.ReminderAdd" />
           <FunctionImportMapping FunctionImportName="ReminderDelete" FunctionName="IMEModel.Store.ReminderDelete" />
           <FunctionImportMapping FunctionImportName="ReminderEdit" FunctionName="IMEModel.Store.ReminderEdit" />
@@ -24730,6 +25139,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SalesMasterAdd" FunctionName="IMEModel.Store.SalesMasterAdd" />
           <FunctionImportMapping FunctionImportName="SalesMasterEdit" FunctionName="IMEModel.Store.SalesMasterEdit" />
+          <FunctionImportMapping FunctionImportName="SalesMasterIdViewByvoucherNoAndVoucherType" FunctionName="IMEModel.Store.SalesMasterIdViewByvoucherNoAndVoucherType" />
           <FunctionImportMapping FunctionImportName="SalesMasterView" FunctionName="IMEModel.Store.SalesMasterView">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.SalesMasterView_Result">

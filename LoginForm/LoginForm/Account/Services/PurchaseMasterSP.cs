@@ -372,5 +372,20 @@ namespace LoginForm.Account.Services
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        public decimal PurchaseMasterIdViewByvoucherNoAndVoucherType(decimal decVouchertypeid, string strVoucherNo)
+        {
+            IMEEntities IME = new IMEEntities();
+            decimal decid = 0;
+            try
+            {
+                decid = Convert.ToDecimal(IME.PurchaseMasterIdViewByvoucherNoAndVoucherType(strVoucherNo, decVouchertypeid).FirstOrDefault());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return decid;
+        }
     }
 }

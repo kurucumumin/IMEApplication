@@ -243,5 +243,229 @@ namespace LoginForm.Account.Services
             return partybalanceinfo;
         }
 
+        public DataTable AccountLedgerGetByDebtorAndCreditorWithBalance()
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = IME.AccountLedgerGetByDebtorAndCreditorWithBalance().ToList();
+
+                dtbl.Columns.Add("ledgerId");
+                dtbl.Columns.Add("ledgerName");
+                dtbl.Columns.Add("balance");
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["ledgerId"] = item.ledgerId;
+                    row["ledgerName"] = item.ledgerName;
+                    row["balance"] = item.balance;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            return dtbl;
+        }
+
+        public DataTable AgeingReportLedgerReceivable(DateTime ageingDate, decimal decledgerId)
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = IME.AgeingReportLedgerReceivable(ageingDate, decledgerId).ToList();
+
+                dtbl.Columns.Add("Sl_NO");
+                dtbl.Columns.Add("Account_Ledger");
+                dtbl.Columns.Add("VoucherType");
+                dtbl.Columns.Add("VoucherNo");
+                dtbl.Columns.Add("Date");
+                dtbl.Columns.Add("ledgerId");
+                dtbl.Columns.Add("masterId");
+                dtbl.Columns.Add("voucherTypeId");
+                dtbl.Columns.Add("1 to 30");
+                dtbl.Columns.Add("31 to 60");
+                dtbl.Columns.Add("61 to 90");
+                dtbl.Columns.Add("90 above");
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["Sl_NO"] = item.Sl_NO;
+                    row["Account_Ledger"] = item.Account_Ledger;
+                    row["VoucherType"] = item.VoucherType;
+                    row["VoucherNo"] = item.VoucherNo;
+                    row["Date"] = item.Date;
+                    row["ledgerId"] = item.ledgerId;
+                    row["masterId"] = item.masterId;
+                    row["voucherTypeId"] = item.voucherTypeId;
+                    row["1 to 30"] = item.C1_to_30;
+                    row["31 to 60"] = item.C31_to_60;
+                    row["61 to 90"] = item.C61_to_90;
+                    row["90 above"] = item.C90_above;
+
+                    dtbl.Rows.Add(row);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("MRSP1:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            return dtbl;
+        }
+
+        public DataTable AgeingReportLedgerPayable(DateTime ageingDate, decimal decledgerId)
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = IME.AgeingReportLedgerPayable(ageingDate, decledgerId).ToList();
+
+                dtbl.Columns.Add("Sl_NO");
+                dtbl.Columns.Add("Account_Ledger");
+                dtbl.Columns.Add("VoucherType");
+                dtbl.Columns.Add("VoucherNo");
+                dtbl.Columns.Add("Date");
+                dtbl.Columns.Add("ledgerId");
+                dtbl.Columns.Add("masterId");
+                dtbl.Columns.Add("voucherTypeId");
+                dtbl.Columns.Add("1 to 30");
+                dtbl.Columns.Add("31 to 60");
+                dtbl.Columns.Add("61 to 90");
+                dtbl.Columns.Add("90 above");
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["Sl_NO"] = item.Sl_NO;
+                    row["Account_Ledger"] = item.Account_Ledger;
+                    row["VoucherType"] = item.VoucherType;
+                    row["VoucherNo"] = item.VoucherNo;
+                    row["Date"] = item.Date;
+                    row["ledgerId"] = item.ledgerId;
+                    row["masterId"] = item.masterId;
+                    row["voucherTypeId"] = item.voucherTypeId;
+                    row["1 to 30"] = item.C1_to_30;
+                    row["31 to 60"] = item.C31_to_60;
+                    row["61 to 90"] = item.C61_to_90;
+                    row["90 above"] = item.C90_above;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("MRSP1:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            return dtbl;
+        }
+
+        public DataTable AgeingReportVoucherPayable(DateTime ageingDate, decimal decledgerId)
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = IME.AgeingReportVoucherPayable(ageingDate, decledgerId).ToList();
+
+                dtbl.Columns.Add("Sl_NO");
+                dtbl.Columns.Add("Account_Ledger");
+                dtbl.Columns.Add("VoucherType");
+                dtbl.Columns.Add("VoucherNo");
+                dtbl.Columns.Add("Date");
+                dtbl.Columns.Add("ledgerId");
+                dtbl.Columns.Add("masterId");
+                dtbl.Columns.Add("voucherTypeId");
+                dtbl.Columns.Add("1 to 30");
+                dtbl.Columns.Add("31 to 60");
+                dtbl.Columns.Add("61 to 90");
+                dtbl.Columns.Add("90 above");
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["Sl_NO"] = item.Sl_NO;
+                    row["Account_Ledger"] = item.Account_Ledger;
+                    row["VoucherType"] = item.VoucherType;
+                    row["VoucherNo"] = item.VoucherNo;
+                    row["Date"] = item.Date;
+                    row["ledgerId"] = item.ledgerId;
+                    row["masterId"] = item.masterId;
+                    row["voucherTypeId"] = item.voucherTypeId;
+                    row["1 to 30"] = item.C1_to_30;
+                    row["31 to 60"] = item.C31_to_60;
+                    row["61 to 90"] = item.C61_to_90;
+                    row["90 above"] = item.C90_above;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("MRSP1:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            return dtbl;
+        }
+
+        public DataTable AgeingReportVoucherReceivable(DateTime ageingDate, decimal decledgerId)
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = IME.AgeingReportVoucherReceivable(ageingDate, decledgerId).ToList();
+
+                dtbl.Columns.Add("Sl_NO");
+                dtbl.Columns.Add("Account_Ledger");
+                dtbl.Columns.Add("VoucherType");
+                dtbl.Columns.Add("VoucherNo");
+                dtbl.Columns.Add("Date");
+                dtbl.Columns.Add("ledgerId");
+                dtbl.Columns.Add("masterId");
+                dtbl.Columns.Add("voucherTypeId");
+                dtbl.Columns.Add("1 to 30");
+                dtbl.Columns.Add("31 to 60");
+                dtbl.Columns.Add("61 to 90");
+                dtbl.Columns.Add("90 above");
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["Sl_NO"] = item.Sl_NO;
+                    row["Account_Ledger"] = item.Account_Ledger;
+                    row["VoucherType"] = item.VoucherType;
+                    row["VoucherNo"] = item.VoucherNo;
+                    row["Date"] = item.Date;
+                    row["ledgerId"] = item.ledgerId;
+                    row["masterId"] = item.masterId;
+                    row["voucherTypeId"] = item.voucherTypeId;
+                    row["1 to 30"] = item.C1_to_30;
+                    row["31 to 60"] = item.C31_to_60;
+                    row["61 to 90"] = item.C61_to_90;
+                    row["90 above"] = item.C90_above;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("MRSP1:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            return dtbl;
+        }
+
+
     }
 }

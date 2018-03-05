@@ -887,6 +887,7 @@ namespace LoginForm.Account.Services
                 dtbl.Columns.Add("address");
                 dtbl.Columns.Add("phone");
                 dtbl.Columns.Add("email");
+                dtbl.Columns.Add("currencyName");
 
 
                 foreach (var item in adaptor)
@@ -897,6 +898,7 @@ namespace LoginForm.Account.Services
                     row["address"] = item.address;
                     row["phone"] = item.phone;
                     row["email"] = item.email;
+                    row["currencyName"] = item.currencyName;
 
                     dtbl.Rows.Add(row);
                 }

@@ -321,6 +321,18 @@
     <Compile Include="Account\Reminder\frmStock.designer.cs">
       <DependentUpon>frmStock.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\Reports\frmAgeingReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Reports\frmAgeingReport.designer.cs">
+      <DependentUpon>frmAgeingReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Reports\frmChequeReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Reports\frmChequeReport.designer.cs">
+      <DependentUpon>frmChequeReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\Reports\frmCreditNoteReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -635,6 +647,9 @@
     <Compile Include="DataSet\AccountLedger.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\AccountLedgerGetByDebtorAndCreditorWithBalance_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\AccountLedgerGetGroupUnderFunction_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -666,6 +681,24 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\AdvancePaymentAddWithIdentity_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\AgeingReportFillByPayable_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\AgeingReportFillByReceivable_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\AgeingReportLedgerPayable_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\AgeingReportLedgerReceivable_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\AgeingReportVoucherPayable_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\AgeingReportVoucherReceivable_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Area.cs">
@@ -743,7 +776,16 @@
     <Compile Include="DataSet\Capital.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\CashFlowReportPrintCompany_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\CashOrBankComboFill_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ChequeReportGridFill_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ChequeReportPartyComboFill_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\City.cs">
@@ -1869,6 +1911,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Reminder\frmStock.resx">
       <DependentUpon>frmStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\Reports\frmAgeingReport.resx">
+      <DependentUpon>frmAgeingReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\Reports\frmChequeReport.resx">
+      <DependentUpon>frmChequeReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Reports\frmCreditNoteReport.resx">
       <DependentUpon>frmCreditNoteReport.cs</DependentUpon>
