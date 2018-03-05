@@ -874,5 +874,38 @@ namespace LoginForm.Account.Services
             }
             return dtbl;
         }
+
+        public DataTable CashflowReportPrintCompany(decimal decCompanyId)
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = IME.CashflowReportPrintCompany(decCompanyId).ToList();
+
+                dtbl.Columns.Add("companyName");
+                dtbl.Columns.Add("address");
+                dtbl.Columns.Add("phone");
+                dtbl.Columns.Add("email");
+
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["companyName"] = item.companyName;
+                    row["address"] = item.address;
+                    row["phone"] = item.phone;
+                    row["email"] = item.email;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return dtbl;
+        }
     }
 }
