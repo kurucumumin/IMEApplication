@@ -50,6 +50,7 @@ namespace LoginForm.DataSet
         public virtual Worker Worker { get; set; }
         public virtual SupplierBank SupplierBank { get; set; }
         public virtual SupplierCategory SupplierCategory { get; set; }
+        public virtual SupplierWorker SupplierWorker { get; set; }
         public virtual Worker Worker1 { get; set; }
         public virtual SupplierSubCategory SupplierSubCategory { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
