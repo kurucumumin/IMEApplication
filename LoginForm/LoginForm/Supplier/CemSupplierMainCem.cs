@@ -180,7 +180,6 @@ namespace LoginForm
                                 s.branchcode = txtBankBranchCode.Text;
                                 s.accountnumber = txtBankAccountNumber.Text;
                                 s.iban = txtBankIban.Text;
-                                s.MainContactID = ((SupplierWorker)cmbMainContact.SelectedItem).ID;
 
                                 s.webadress = (txtWeb.Text != String.Empty) ? txtWeb.Text : null;
 
@@ -225,6 +224,8 @@ namespace LoginForm
                                     db.SupplierWorkers.Add(worker);
                                     db.SaveChanges();
                                 }
+                                s.MainContactID = db.SupplierWorkers.Where(x => x.supplierID == s.ID).FirstOrDefault().ID;
+                                db.SaveChanges();
                             }
                             catch (Exception ex)
                             {
@@ -348,6 +349,8 @@ namespace LoginForm
 
         private void dgSupplier_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            SavedAddresses.Clear();
+            SavedContacts.Clear();
             FillSupplierInfo(dgSupplier.Rows[e.RowIndex].Cells[iDDataGridViewTextBoxColumn.Index].Value.ToString());
         }
 
@@ -359,8 +362,15 @@ namespace LoginForm
             txtName.Text = s.s_name;
             txtTaxOffice.Text = s.taxoffice;
             txtTaxNumber.Text = s.taxnumber;
-            txtSupplierNotes.Text = s.Note.Note_name;
+            txtDiscountRate.Text = s.discountrate.ToString();
+            txtBankAccountNumber.Text = s.accountnumber;
+            txtBankBranchCode.Text = s.branchcode;
+            txtBankIban.Text = s.iban;
 
+            txtWeb.Text = s.webadress ?? String.Empty;
+            txtSupplierNotes.Text = (s.Note != null) ? s.Note.Note_name : String.Empty;
+            txtAccountNotes.Text = (s.Note1 != null) ? s.Note1.Note_name : String.Empty;
+            
             string name = s.Worker1.NameLastName;
             cmbRepresentative.SelectedIndex = cmbRepresentative.FindStringExact(name);
 
@@ -370,9 +380,43 @@ namespace LoginForm
             name = s.SupplierSubCategory.subcategoryname;
             cmbSubCategory.SelectedIndex = cmbSubCategory.FindStringExact(name);
 
+            name = s.Worker.NameLastName;
+            cmbAccountRep.SelectedIndex = cmbAccountRep.FindString(name);
 
-            
+            name = s.PaymentTerm.term_name;
+            cmbAccountTerms.SelectedIndex = cmbAccountTerms.FindString(name);
 
+            name = s.PaymentMethod.Payment;
+            cmbAccountMethod.SelectedIndex = cmbAccountMethod.FindString(name);
+
+            name = s.Currency.currencyName;
+            cmbCurrency.SelectedIndex = cmbCurrency.FindStringExact(name);
+
+            name = s.SupplierBank.bankname;
+            cmbBankName.SelectedIndex = cmbBankName.FindStringExact(name);
+
+
+            foreach(SupplierAddress sa in s.SupplierAddresses)
+            {
+                SavedAddresses.Add(sa);
+            }
+            lbAddressList.DataSource = null;
+            lbAddressList.DataSource = SavedAddresses;
+            lbAddressList.DisplayMember = "Title";
+            lbAddressList.ClearSelected();
+            lbAddressList.Enabled = true;
+
+            cmbContactAddress.DataSource = s.SupplierAddresses.ToList();
+
+            foreach (SupplierWorker sw in s.SupplierWorkers)
+            {
+                SavedContacts.Add(sw);
+            }
+            lbContacts.DataSource = null;
+            lbContacts.DataSource = SavedContacts;
+            lbContacts.DisplayMember = "sw_name";
+            lbContacts.ClearSelected();
+            lbContacts.Enabled = true;
         }
 
         private void ClearGeneralInputs()
@@ -444,9 +488,16 @@ namespace LoginForm
                     cmbSubCategory.Items.AddRange(new IMEEntities().SupplierSubCategories.Where(x => x.categoryID == id).ToArray());
                     cmbSubCategory.Items.Insert(0, "Choose");
                     cmbSubCategory.SelectedIndex = 0;
-
-                    cmbSubCategory.Enabled = true;
-                    btnSubCategoryAdd.Enabled = true;
+                    if (SupplierAddMode == String.Empty)
+                    {
+                        cmbSubCategory.Enabled = false;
+                        btnSubCategoryAdd.Enabled = false;
+                    }
+                    else
+                    {
+                        cmbSubCategory.Enabled = true;
+                        btnSubCategoryAdd.Enabled = true;
+                    }
                 }
                 else
                 {
@@ -1369,7 +1420,6 @@ namespace LoginForm
                 #endregion
                 #region General
                 case "General":
-
                     if (cmbRepresentative.SelectedIndex <= 0)
                     {
                         ErrorLog.Add("You should choose a Representative!");
@@ -1427,7 +1477,7 @@ namespace LoginForm
                     {
                         ErrorLog.Add("Discount rate must be a numerical string!");
                     }
-
+                    
                     if (cmbCurrency.SelectedIndex <= 0)
                     {
                         ErrorLog.Add("You should choose a Currency!");

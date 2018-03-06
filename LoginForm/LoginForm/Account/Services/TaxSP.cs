@@ -656,7 +656,7 @@ namespace LoginForm.Account.Services
                     row["Bill_No"] = item.Bill_No;
                     row["Item"] = item.Item;
                     row["Bill_Amount"] = item.Bill_Amount;
-                    row["Tax"] = item.Tax;
+                    //row["Tax"] = item.Tax;
                     row["Tax_Amount"] = item.Tax_Amount;
                     row["Total_Amount"] = item.Total_Amount;
 
