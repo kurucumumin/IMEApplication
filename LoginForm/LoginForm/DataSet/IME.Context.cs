@@ -2041,6 +2041,53 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("MultipleAccountLedgerCrOrDr", accountGroupNameParameter);
         }
     
+        public virtual ObjectResult<OutstandingPartyFillView_Result> OutstandingPartyFillView()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<OutstandingPartyFillView_Result>("OutstandingPartyFillView");
+        }
+    
+        public virtual ObjectResult<string> OutstandingViewAll1(Nullable<decimal> ledgerId, string accountGroup, Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var ledgerIdParameter = ledgerId.HasValue ?
+                new ObjectParameter("ledgerId", ledgerId) :
+                new ObjectParameter("ledgerId", typeof(decimal));
+    
+            var accountGroupParameter = accountGroup != null ?
+                new ObjectParameter("AccountGroup", accountGroup) :
+                new ObjectParameter("AccountGroup", typeof(string));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("OutstandingViewAll1", ledgerIdParameter, accountGroupParameter, fromDateParameter, toDateParameter);
+        }
+    
+        public virtual ObjectResult<string> OutstandingViewAll2(Nullable<decimal> ledgerId, string accountGroup, Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var ledgerIdParameter = ledgerId.HasValue ?
+                new ObjectParameter("ledgerId", ledgerId) :
+                new ObjectParameter("ledgerId", typeof(decimal));
+    
+            var accountGroupParameter = accountGroup != null ?
+                new ObjectParameter("AccountGroup", accountGroup) :
+                new ObjectParameter("AccountGroup", typeof(string));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("OutstandingViewAll2", ledgerIdParameter, accountGroupParameter, fromDateParameter, toDateParameter);
+        }
+    
         public virtual ObjectResult<OverduePurchaseOrdersCorrespondingAccountLedger_Result> OverduePurchaseOrdersCorrespondingAccountLedger(Nullable<decimal> accountLedgerId)
         {
             var accountLedgerIdParameter = accountLedgerId.HasValue ?

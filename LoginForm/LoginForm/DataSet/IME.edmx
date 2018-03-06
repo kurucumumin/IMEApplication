@@ -6805,6 +6805,19 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
         <Function Name="MultipleAccountLedgerCrOrDr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="accountGroupName" Type="varchar(max)" Mode="In" />
         </Function>
+        <Function Name="OutstandingPartyFillView" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="OutstandingViewAll1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ledgerId" Type="numeric" Mode="In" />
+          <Parameter Name="AccountGroup" Type="varchar(max)" Mode="In" />
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="OutstandingViewAll2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ledgerId" Type="numeric" Mode="In" />
+          <Parameter Name="AccountGroup" Type="varchar(max)" Mode="In" />
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
         <Function Name="OverduePurchaseOrdersCorrespondingAccountLedger" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="accountLedgerId" Type="decimal" Mode="In" />
         </Function>
@@ -18297,6 +18310,19 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <FunctionImport Name="MultipleAccountLedgerCrOrDr" ReturnType="Collection(String)">
             <Parameter Name="accountGroupName" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="OutstandingPartyFillView" ReturnType="Collection(IMEModel.OutstandingPartyFillView_Result)" />
+          <FunctionImport Name="OutstandingViewAll1" ReturnType="Collection(String)">
+            <Parameter Name="ledgerId" Mode="In" Type="Decimal" />
+            <Parameter Name="AccountGroup" Mode="In" Type="String" />
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="OutstandingViewAll2" ReturnType="Collection(String)">
+            <Parameter Name="ledgerId" Mode="In" Type="Decimal" />
+            <Parameter Name="AccountGroup" Mode="In" Type="String" />
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
           <FunctionImport Name="OverduePurchaseOrdersCorrespondingAccountLedger" ReturnType="Collection(IMEModel.OverduePurchaseOrdersCorrespondingAccountLedger_Result)">
             <Parameter Name="accountLedgerId" Mode="In" Type="Decimal" />
           </FunctionImport>
@@ -19995,6 +20021,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="Int32" Name="accountGroupId" Nullable="false" />
           <Property Type="String" Name="accountGroupName" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="nature" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="OutstandingPartyFillView_Result">
+          <Property Type="Decimal" Name="ledgerId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="ledgerName" Nullable="true" />
         </ComplexType>
         <ComplexType Name="OverduePurchaseOrdersCorrespondingAccountLedger_Result">
           <Property Type="String" Name="FicheNo" Nullable="true" MaxLength="100" />
@@ -24194,6 +24224,16 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="MultipleAccountLedgerCrOrDr" FunctionName="IMEModel.Store.MultipleAccountLedgerCrOrDr" />
+          <FunctionImportMapping FunctionImportName="OutstandingPartyFillView" FunctionName="IMEModel.Store.OutstandingPartyFillView">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.OutstandingPartyFillView_Result">
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+                <ScalarProperty Name="ledgerName" ColumnName="ledgerName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="OutstandingViewAll1" FunctionName="IMEModel.Store.OutstandingViewAll1" />
+          <FunctionImportMapping FunctionImportName="OutstandingViewAll2" FunctionName="IMEModel.Store.OutstandingViewAll2" />
           <FunctionImportMapping FunctionImportName="OverduePurchaseOrdersCorrespondingAccountLedger" FunctionName="IMEModel.Store.OverduePurchaseOrdersCorrespondingAccountLedger">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.OverduePurchaseOrdersCorrespondingAccountLedger_Result">

@@ -466,6 +466,77 @@ namespace LoginForm.Account.Services
             return dtbl;
         }
 
+        public DataTable OutstandingPartyView()
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = IME.OutstandingPartyFillView().ToList();
 
+                dtbl.Columns.Add("ledgerId");
+                dtbl.Columns.Add("ledgerName");
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["ledgerId"] = item.ledgerId;
+                    row["ledgerName"] = item.ledgerName;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
+
+        public System.Data.DataSet OutstandingViewAll(decimal decledgerId, string strAccountGroup, DateTime dtfromdate, DateTime dttodate)
+        {
+            IMEEntities IME = new IMEEntities();
+            System.Data.DataSet dts = new System.Data.DataSet();
+            dts.Tables.Add(new DataTable());
+            try
+            {
+                DataTable dtbl1 = new DataTable();
+
+                //var adaptor1 = (IME.OutstandingViewAll1(decledgerId, strAccountGroup, dtfromdate, dttodate)).FirstOrDefault();
+                //foreach (var item in adaptor1)
+                //{
+                //    DataRow row = dtbl1.NewRow();
+                //    row["companyName"] = item.;
+                //    row["address"] = item.address;
+                //    row["phone"] = item.phone;
+                //    row["email"] = item.email;
+
+                //    dts.Tables[0].Rows.Add(row);
+                //}
+                //dts.Tables.Add(dtbl1);
+
+
+                //DataTable dtbl2 = new DataTable();
+
+                //var adaptor2 = (IME.OutstandingViewAll2(decledgerId, strAccountGroup, dtfromdate, dttodate)).ToList();
+                //foreach (var item in adaptor2)
+                //{
+                //    DataRow row = dtbl1.NewRow();
+                //    row["companyName"] = item.companyName;
+                //    row["address"] = item.address;
+                //    row["phone"] = item.phone;
+                //    row["email"] = item.email;
+
+                //    dts.Tables[0].Rows.Add(row);
+                //}
+                //dts.Tables.Add(dtbl2);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dts;
+        }
     }
 }

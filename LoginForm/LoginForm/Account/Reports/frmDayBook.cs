@@ -1068,41 +1068,41 @@ namespace LoginForm
                         //}
                         else if (strVoucherType == "Daily Salary Voucher")
                         {
-                            frmDailySalaryVoucher frmDailySalaryVoucher = new frmDailySalaryVoucher();
-                            frmDailySalaryVoucher open = Application.OpenForms["frmDailySalaryVoucher"] as frmDailySalaryVoucher;
-                            if (open == null)
-                            {
-                                frmDailySalaryVoucher.WindowState = FormWindowState.Normal;
-                                //frmDailySalaryVoucher.MdiParent = formMDI.MDIObj;
-                                //frmDailySalaryVoucher.CallFromDayBook(this, decMasterId);
-                            }
-                            else
-                            {
-                                if (open.WindowState == FormWindowState.Minimized)
-                                {
-                                    open.WindowState = FormWindowState.Normal;
-                                }
-                                //open.CallFromDayBook(this, decMasterId);
-                            }
+                            //frmDailySalaryVoucher frmDailySalaryVoucher = new frmDailySalaryVoucher();
+                            //frmDailySalaryVoucher open = Application.OpenForms["frmDailySalaryVoucher"] as frmDailySalaryVoucher;
+                            //if (open == null)
+                            //{
+                            //    frmDailySalaryVoucher.WindowState = FormWindowState.Normal;
+                            //    //frmDailySalaryVoucher.MdiParent = formMDI.MDIObj;
+                            //    //frmDailySalaryVoucher.CallFromDayBook(this, decMasterId);
+                            //}
+                            //else
+                            //{
+                            //    if (open.WindowState == FormWindowState.Minimized)
+                            //    {
+                            //        open.WindowState = FormWindowState.Normal;
+                            //    }
+                            //    //open.CallFromDayBook(this, decMasterId);
+                            //}
                         }
                         else if (strVoucherType == "Monthly Salary Voucher")
                         {
-                            frmMonthlySalaryVoucher frmMonthlySalaryVoucher = new frmMonthlySalaryVoucher();
-                            frmMonthlySalaryVoucher open = Application.OpenForms["frmMonthlySalaryVoucher"] as frmMonthlySalaryVoucher;
-                            if (open == null)
-                            {
-                                frmMonthlySalaryVoucher.WindowState = FormWindowState.Normal;
-                                //frmMonthlySalaryVoucher.MdiParent = formMDI.MDIObj;
-                                //frmMonthlySalaryVoucher.CallFromDayBook(this, decMasterId);
-                            }
-                            else
-                            {
-                                if (open.WindowState == FormWindowState.Minimized)
-                                {
-                                    open.WindowState = FormWindowState.Normal;
-                                }
-                                //open.CallFromDayBook(this, decMasterId);
-                            }
+                            //frmMonthlySalaryVoucher frmMonthlySalaryVoucher = new frmMonthlySalaryVoucher();
+                            //frmMonthlySalaryVoucher open = Application.OpenForms["frmMonthlySalaryVoucher"] as frmMonthlySalaryVoucher;
+                            //if (open == null)
+                            //{
+                            //    frmMonthlySalaryVoucher.WindowState = FormWindowState.Normal;
+                            //    //frmMonthlySalaryVoucher.MdiParent = formMDI.MDIObj;
+                            //    //frmMonthlySalaryVoucher.CallFromDayBook(this, decMasterId);
+                            //}
+                            //else
+                            //{
+                            //    if (open.WindowState == FormWindowState.Minimized)
+                            //    {
+                            //        open.WindowState = FormWindowState.Normal;
+                            //    }
+                            //    //open.CallFromDayBook(this, decMasterId);
+                            //}
                         }
                         else if (strVoucherType == "Advance Payment")
                         {

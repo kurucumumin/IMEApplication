@@ -881,7 +881,8 @@ namespace LoginForm.Account.Services
             DataTable dtbl = new DataTable();
             try
             {
-                var adaptor = IME.CashflowReportPrintCompany(decCompanyId).ToList();
+                var adaptor = IME.CashFlowReportPrintCompany().ToList();
+
 
                 dtbl.Columns.Add("companyName");
                 dtbl.Columns.Add("address");
