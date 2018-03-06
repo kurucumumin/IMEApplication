@@ -157,7 +157,7 @@ namespace LoginForm.Account.Services
                         dcstockValue = Convert.ToDecimal(IME.StockValueOnDateByLastPurchaseRate(date));
                     }
                 }
-                
+
             }
             catch (Exception ex)
             {
@@ -279,7 +279,7 @@ namespace LoginForm.Account.Services
                     row["OpBalance"] = item.OpBalance;
                     row["Balance"] = item.Balance;
                     row["Balance1"] = item.Balance1;
-                    
+
                     dts.Tables[0].Rows.Add(row);
                 }
                 dts.Tables.Add(dtbl);
@@ -292,12 +292,12 @@ namespace LoginForm.Account.Services
                 {
                     DataRow row = dtbl.NewRow();
 
-                    
+
                     row["Name"] = item.Name;
                     row["credit"] = item.credit;
                     row["debit"] = item.debit;
                     row["OpeningBalance"] = item.OpeningBalance;
-                   
+
 
                     dts.Tables[0].Rows.Add(row);
                 }
@@ -311,12 +311,12 @@ namespace LoginForm.Account.Services
                 {
                     DataRow row = dtbl.NewRow();
 
-                    
+
                     row["Name"] = item.Name;
                     row["credit"] = item.credit;
                     row["debit"] = item.debit;
                     row["OpeningBalance"] = item.OpeningBalance;
-                    
+
 
                     dts.Tables[0].Rows.Add(row);
                 }
@@ -882,6 +882,7 @@ namespace LoginForm.Account.Services
             try
             {
                 var adaptor = IME.CashFlowReportPrintCompany().ToList();
+
 
                 dtbl.Columns.Add("companyName");
                 dtbl.Columns.Add("address");

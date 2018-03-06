@@ -346,7 +346,7 @@ namespace LoginForm
             try
             {
                 FinancialStatementSP spfinancial = new FinancialStatementSP();
-                
+
                 DataTable dtblDayBook = GetDataTable();
                 DataTable dtblCompany = new DataTable();
                 dtblCompany = spfinancial.DayBookReportPrintCompany();
@@ -359,7 +359,7 @@ namespace LoginForm
             }
             return dsDayBookReportCondensed;
         }
-        
+
         public void Print(DateTime fromDate, DateTime toDate, decimal decVoucherTypeId, decimal decLedgerId, bool blCondenced)
         {
             try
@@ -572,8 +572,8 @@ namespace LoginForm
                 MessageBox.Show("DB17:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        
-        
+
+
         /// <summary>
         /// When doubleclicking on the grid
         /// </summary>
@@ -1066,44 +1066,44 @@ namespace LoginForm
                         //        open.CallFromDayBook(this, decMasterId);
                         //    }
                         //}
-                        //else if (strVoucherType == "Daily Salary Voucher")
-                        //{
-                        //    frmDailySalaryVoucher frmDailySalaryVoucher = new frmDailySalaryVoucher();
-                        //    frmDailySalaryVoucher open = Application.OpenForms["frmDailySalaryVoucher"] as frmDailySalaryVoucher;
-                        //    if (open == null)
-                        //    {
-                        //        frmDailySalaryVoucher.WindowState = FormWindowState.Normal;
-                        //        //frmDailySalaryVoucher.MdiParent = formMDI.MDIObj;
-                        //        //frmDailySalaryVoucher.CallFromDayBook(this, decMasterId);
-                        //    }
-                        //    else
-                        //    {
-                        //        if (open.WindowState == FormWindowState.Minimized)
-                        //        {
-                        //            open.WindowState = FormWindowState.Normal;
-                        //        }
-                        //        //open.CallFromDayBook(this, decMasterId);
-                        //    }
-                        //}
-                        //else if (strVoucherType == "Monthly Salary Voucher")
-                        //{
-                        //    frmMonthlySalaryVoucher frmMonthlySalaryVoucher = new frmMonthlySalaryVoucher();
-                        //    frmMonthlySalaryVoucher open = Application.OpenForms["frmMonthlySalaryVoucher"] as frmMonthlySalaryVoucher;
-                        //    if (open == null)
-                        //    {
-                        //        frmMonthlySalaryVoucher.WindowState = FormWindowState.Normal;
-                        //        //frmMonthlySalaryVoucher.MdiParent = formMDI.MDIObj;
-                        //        //frmMonthlySalaryVoucher.CallFromDayBook(this, decMasterId);
-                        //    }
-                        //    else
-                        //    {
-                        //        if (open.WindowState == FormWindowState.Minimized)
-                        //        {
-                        //            open.WindowState = FormWindowState.Normal;
-                        //        }
-                        //        //open.CallFromDayBook(this, decMasterId);
-                        //    }
-                        //}
+                        else if (strVoucherType == "Daily Salary Voucher")
+                        {
+                            //frmDailySalaryVoucher frmDailySalaryVoucher = new frmDailySalaryVoucher();
+                            //frmDailySalaryVoucher open = Application.OpenForms["frmDailySalaryVoucher"] as frmDailySalaryVoucher;
+                            //if (open == null)
+                            //{
+                            //    frmDailySalaryVoucher.WindowState = FormWindowState.Normal;
+                            //    //frmDailySalaryVoucher.MdiParent = formMDI.MDIObj;
+                            //    //frmDailySalaryVoucher.CallFromDayBook(this, decMasterId);
+                            //}
+                            //else
+                            //{
+                            //    if (open.WindowState == FormWindowState.Minimized)
+                            //    {
+                            //        open.WindowState = FormWindowState.Normal;
+                            //    }
+                            //    //open.CallFromDayBook(this, decMasterId);
+                            //}
+                        }
+                        else if (strVoucherType == "Monthly Salary Voucher")
+                        {
+                            //frmMonthlySalaryVoucher frmMonthlySalaryVoucher = new frmMonthlySalaryVoucher();
+                            //frmMonthlySalaryVoucher open = Application.OpenForms["frmMonthlySalaryVoucher"] as frmMonthlySalaryVoucher;
+                            //if (open == null)
+                            //{
+                            //    frmMonthlySalaryVoucher.WindowState = FormWindowState.Normal;
+                            //    //frmMonthlySalaryVoucher.MdiParent = formMDI.MDIObj;
+                            //    //frmMonthlySalaryVoucher.CallFromDayBook(this, decMasterId);
+                            //}
+                            //else
+                            //{
+                            //    if (open.WindowState == FormWindowState.Minimized)
+                            //    {
+                            //        open.WindowState = FormWindowState.Normal;
+                            //    }
+                            //    //open.CallFromDayBook(this, decMasterId);
+                            //}
+                        }
                         else if (strVoucherType == "Advance Payment")
                         {
                             frmAdvancePayment frmAdvancePayment = new frmAdvancePayment();
@@ -1165,7 +1165,7 @@ namespace LoginForm
                 {
                     Messages.CloseMessage(this);
                     this.Close();
-                 
+
                 }
                 if (e.KeyCode == Keys.P && Control.ModifierKeys == Keys.Control)
                 {
