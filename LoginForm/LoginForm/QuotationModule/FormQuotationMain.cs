@@ -95,6 +95,14 @@ namespace LoginForm.QuotationModule
             {
                btnDeleteQuotation.Enabled = false;
             }
+            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1125).FirstOrDefault() == null)//Can Delete edit
+            {
+                btnModifyQuotation.Enabled = false;
+            }
+            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1127).FirstOrDefault() == null)//Can Delete Quotation
+            {
+                btnNewQuotation.Enabled = false;
+            }
             BringQuotationList();
         }
 

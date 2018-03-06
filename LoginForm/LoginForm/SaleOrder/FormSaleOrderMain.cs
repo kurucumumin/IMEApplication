@@ -27,8 +27,23 @@ namespace LoginForm.nsSaleOrder
             }
         }
 
+
+        private void ControlAutorization()
+        {
+            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1105).FirstOrDefault() == null)
+            {
+                btnNew.Visible = false;
+            }
+            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1106).FirstOrDefault() == null)
+            {
+                btnModify.Visible = false;
+            }
+        }
+
+
         private void FormSalesOrderMain_Load(object sender, EventArgs e)
         {
+            ControlAutorization();
             datetimeEnd.MaxDate = DateTime.Today.Date;
             datetimeEnd.Value = DateTime.Today.Date;
             datetimeStart.Value = DateTime.Today.AddDays(-7);

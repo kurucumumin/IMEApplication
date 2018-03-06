@@ -80,9 +80,16 @@ namespace LoginForm.PurchaseOrder
                 this.Close();
             }
         }
-
+        private void ControlAutorization()
+        {
+            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1093).FirstOrDefault() == null)
+            {
+                btnCreate.Visible = false;
+            }
+        }
         private void PurchaseOrderMain_Load(object sender, EventArgs e)
         {
+            ControlAutorization();
             PurchaseOrderFill(DateTime.Today, DateTime.Today.AddDays(-7));
         }
 

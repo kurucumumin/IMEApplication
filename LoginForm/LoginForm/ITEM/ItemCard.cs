@@ -4,6 +4,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using LoginForm.Services;
 
 namespace LoginForm.Item
 {
@@ -669,9 +670,18 @@ namespace LoginForm.Item
             }
         }
 
+        private void ControlAutorization()
+        {
+            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1102).FirstOrDefault() == null && Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1103).FirstOrDefault() == null)
+            {
+                btnUpdateNote.Visible = false;
+            }
+        }
+
+
         private void ItemCard_Load(object sender, EventArgs e)
         {
-
+            ControlAutorization();
         }
     }
 }

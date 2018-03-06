@@ -42,7 +42,6 @@ namespace LoginForm
             comboBox1.DataSource = IME.CustomerCategories.ToList();
             comboBox1.ValueMember = "ID";
             comboBox1.DisplayMember = "categoryname";
-            
         }
 
         private void button2_Click(object sender, EventArgs e)

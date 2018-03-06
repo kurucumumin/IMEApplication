@@ -105,8 +105,21 @@ namespace LoginForm
             }
         }
 
+        private void ControlAutorization()
+        {
+            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1090).FirstOrDefault() == null)
+            {
+                btnCreate.Visible = false;
+            }
+            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1091).FirstOrDefault() == null)
+            {
+                btnUpdate.Visible = false;
+            }
+        }
+
         private void CustomerMain_Load(object sender, EventArgs e)
         {
+            ControlAutorization();
             this.CompanyNotes.KeyDown += new KeyEventHandler(CompanyNotes_KeyDown);
             #region ComboboxFiller
             ContactDepartment.DataSource = IME.CustomerDepartments.ToList();

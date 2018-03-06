@@ -42,8 +42,20 @@ namespace LoginForm
             InitializeComponent();
             this.dgSupplier.AutoGenerateColumns = false;
         }
+        private void ControlAutorization()
+        {
+            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1095).FirstOrDefault() == null)
+            {
+                btnAdd.Visible = false;
+            }
+            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1096).FirstOrDefault() == null)
+            {
+                btnModify.Visible = false;
+            }
+        }
         private void CSupplierMain_Load(object sender, EventArgs e)
         {
+            ControlAutorization();
             dgSupplier.DataSource = BringSuppierList(txtSearch.Text);
             dgSupplier.ClearSelection();
             initFillComboBoxes();

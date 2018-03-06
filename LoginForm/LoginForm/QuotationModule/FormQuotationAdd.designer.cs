@@ -180,6 +180,34 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.tabItemDetails = new System.Windows.Forms.TabPage();
+            this.gbCost = new System.Windows.Forms.GroupBox();
+            this.txtWeb5 = new System.Windows.Forms.TextBox();
+            this.txtWeb2 = new System.Windows.Forms.TextBox();
+            this.txtWeb3 = new System.Windows.Forms.TextBox();
+            this.txtWeb1 = new System.Windows.Forms.TextBox();
+            this.txtWeb4 = new System.Windows.Forms.TextBox();
+            this.txtCost1 = new System.Windows.Forms.TextBox();
+            this.txtMargin5 = new System.Windows.Forms.TextBox();
+            this.txtUK5 = new System.Windows.Forms.TextBox();
+            this.txtUK2 = new System.Windows.Forms.TextBox();
+            this.txtCost5 = new System.Windows.Forms.TextBox();
+            this.txtMargin1 = new System.Windows.Forms.TextBox();
+            this.txtMargin2 = new System.Windows.Forms.TextBox();
+            this.txtUK3 = new System.Windows.Forms.TextBox();
+            this.txtUK1 = new System.Windows.Forms.TextBox();
+            this.txtCost3 = new System.Windows.Forms.TextBox();
+            this.txtMargin4 = new System.Windows.Forms.TextBox();
+            this.txtCost4 = new System.Windows.Forms.TextBox();
+            this.txtCost2 = new System.Windows.Forms.TextBox();
+            this.txtMargin3 = new System.Windows.Forms.TextBox();
+            this.txtUK4 = new System.Windows.Forms.TextBox();
+            this.txtUnitCount5 = new System.Windows.Forms.TextBox();
+            this.txtUnitCount2 = new System.Windows.Forms.TextBox();
+            this.txtUnitCount1 = new System.Windows.Forms.TextBox();
+            this.txtUnitCount4 = new System.Windows.Forms.TextBox();
+            this.txtUnitCount3 = new System.Windows.Forms.TextBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label50 = new System.Windows.Forms.Label();
             this.textBox14 = new System.Windows.Forms.TextBox();
             this.txtSupersectionName = new System.Windows.Forms.TextBox();
             this.txtCofO = new System.Windows.Forms.TextBox();
@@ -216,31 +244,6 @@
             this.txtWidth = new System.Windows.Forms.TextBox();
             this.txtGrossWeight = new System.Windows.Forms.TextBox();
             this.txtLength = new System.Windows.Forms.TextBox();
-            this.txtWeb5 = new System.Windows.Forms.TextBox();
-            this.txtWeb2 = new System.Windows.Forms.TextBox();
-            this.txtWeb3 = new System.Windows.Forms.TextBox();
-            this.txtWeb1 = new System.Windows.Forms.TextBox();
-            this.txtWeb4 = new System.Windows.Forms.TextBox();
-            this.txtCost1 = new System.Windows.Forms.TextBox();
-            this.txtMargin5 = new System.Windows.Forms.TextBox();
-            this.txtUK5 = new System.Windows.Forms.TextBox();
-            this.txtUK2 = new System.Windows.Forms.TextBox();
-            this.txtCost5 = new System.Windows.Forms.TextBox();
-            this.txtMargin1 = new System.Windows.Forms.TextBox();
-            this.txtMargin2 = new System.Windows.Forms.TextBox();
-            this.txtUK3 = new System.Windows.Forms.TextBox();
-            this.txtUK1 = new System.Windows.Forms.TextBox();
-            this.txtCost3 = new System.Windows.Forms.TextBox();
-            this.txtMargin4 = new System.Windows.Forms.TextBox();
-            this.txtCost4 = new System.Windows.Forms.TextBox();
-            this.txtCost2 = new System.Windows.Forms.TextBox();
-            this.txtMargin3 = new System.Windows.Forms.TextBox();
-            this.txtUK4 = new System.Windows.Forms.TextBox();
-            this.txtUnitCount5 = new System.Windows.Forms.TextBox();
-            this.txtUnitCount2 = new System.Windows.Forms.TextBox();
-            this.txtUnitCount1 = new System.Windows.Forms.TextBox();
-            this.txtUnitCount4 = new System.Windows.Forms.TextBox();
-            this.txtUnitCount3 = new System.Windows.Forms.TextBox();
             this.label51 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -281,8 +284,6 @@
             this.label48 = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
             this.lblWeb = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
-            this.label50 = new System.Windows.Forms.Label();
             this.label57 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSave = new System.Windows.Forms.Button();
@@ -333,6 +334,7 @@
             this.tabCustomerDetails.SuspendLayout();
             this.gbCustomer.SuspendLayout();
             this.tabItemDetails.SuspendLayout();
+            this.gbCost.SuspendLayout();
             this.panel1.SuspendLayout();
             this.LandingCost.SuspendLayout();
             this.groupBox11.SuspendLayout();
@@ -1579,6 +1581,7 @@
             // 
             // tabItemDetails
             // 
+            this.tabItemDetails.Controls.Add(this.gbCost);
             this.tabItemDetails.Controls.Add(this.textBox14);
             this.tabItemDetails.Controls.Add(this.txtSupersectionName);
             this.tabItemDetails.Controls.Add(this.txtCofO);
@@ -1615,31 +1618,6 @@
             this.tabItemDetails.Controls.Add(this.txtWidth);
             this.tabItemDetails.Controls.Add(this.txtGrossWeight);
             this.tabItemDetails.Controls.Add(this.txtLength);
-            this.tabItemDetails.Controls.Add(this.txtWeb5);
-            this.tabItemDetails.Controls.Add(this.txtWeb2);
-            this.tabItemDetails.Controls.Add(this.txtWeb3);
-            this.tabItemDetails.Controls.Add(this.txtWeb1);
-            this.tabItemDetails.Controls.Add(this.txtWeb4);
-            this.tabItemDetails.Controls.Add(this.txtCost1);
-            this.tabItemDetails.Controls.Add(this.txtMargin5);
-            this.tabItemDetails.Controls.Add(this.txtUK5);
-            this.tabItemDetails.Controls.Add(this.txtUK2);
-            this.tabItemDetails.Controls.Add(this.txtCost5);
-            this.tabItemDetails.Controls.Add(this.txtMargin1);
-            this.tabItemDetails.Controls.Add(this.txtMargin2);
-            this.tabItemDetails.Controls.Add(this.txtUK3);
-            this.tabItemDetails.Controls.Add(this.txtUK1);
-            this.tabItemDetails.Controls.Add(this.txtCost3);
-            this.tabItemDetails.Controls.Add(this.txtMargin4);
-            this.tabItemDetails.Controls.Add(this.txtCost4);
-            this.tabItemDetails.Controls.Add(this.txtCost2);
-            this.tabItemDetails.Controls.Add(this.txtMargin3);
-            this.tabItemDetails.Controls.Add(this.txtUK4);
-            this.tabItemDetails.Controls.Add(this.txtUnitCount5);
-            this.tabItemDetails.Controls.Add(this.txtUnitCount2);
-            this.tabItemDetails.Controls.Add(this.txtUnitCount1);
-            this.tabItemDetails.Controls.Add(this.txtUnitCount4);
-            this.tabItemDetails.Controls.Add(this.txtUnitCount3);
             this.tabItemDetails.Controls.Add(this.label51);
             this.tabItemDetails.Controls.Add(this.label24);
             this.tabItemDetails.Controls.Add(this.label11);
@@ -1679,10 +1657,6 @@
             this.tabItemDetails.Controls.Add(this.label47);
             this.tabItemDetails.Controls.Add(this.label48);
             this.tabItemDetails.Controls.Add(this.label49);
-            this.tabItemDetails.Controls.Add(this.lblWeb);
-            this.tabItemDetails.Controls.Add(this.label36);
-            this.tabItemDetails.Controls.Add(this.label50);
-            this.tabItemDetails.Controls.Add(this.label57);
             this.tabItemDetails.Location = new System.Drawing.Point(4, 22);
             this.tabItemDetails.Margin = new System.Windows.Forms.Padding(2);
             this.tabItemDetails.Name = "tabItemDetails";
@@ -1691,6 +1665,305 @@
             this.tabItemDetails.TabIndex = 1;
             this.tabItemDetails.Text = "Item Details";
             this.tabItemDetails.UseVisualStyleBackColor = true;
+            // 
+            // gbCost
+            // 
+            this.gbCost.Controls.Add(this.txtWeb5);
+            this.gbCost.Controls.Add(this.txtWeb2);
+            this.gbCost.Controls.Add(this.txtWeb3);
+            this.gbCost.Controls.Add(this.txtWeb1);
+            this.gbCost.Controls.Add(this.txtWeb4);
+            this.gbCost.Controls.Add(this.txtCost1);
+            this.gbCost.Controls.Add(this.txtMargin5);
+            this.gbCost.Controls.Add(this.txtUK5);
+            this.gbCost.Controls.Add(this.txtUK2);
+            this.gbCost.Controls.Add(this.txtCost5);
+            this.gbCost.Controls.Add(this.txtMargin1);
+            this.gbCost.Controls.Add(this.txtMargin2);
+            this.gbCost.Controls.Add(this.txtUK3);
+            this.gbCost.Controls.Add(this.txtUK1);
+            this.gbCost.Controls.Add(this.txtCost3);
+            this.gbCost.Controls.Add(this.txtMargin4);
+            this.gbCost.Controls.Add(this.txtCost4);
+            this.gbCost.Controls.Add(this.txtCost2);
+            this.gbCost.Controls.Add(this.txtMargin3);
+            this.gbCost.Controls.Add(this.txtUK4);
+            this.gbCost.Controls.Add(this.txtUnitCount5);
+            this.gbCost.Controls.Add(this.txtUnitCount2);
+            this.gbCost.Controls.Add(this.txtUnitCount1);
+            this.gbCost.Controls.Add(this.txtUnitCount4);
+            this.gbCost.Controls.Add(this.txtUnitCount3);
+            this.gbCost.Controls.Add(this.label36);
+            this.gbCost.Controls.Add(this.label50);
+            this.gbCost.Controls.Add(this.lblWeb);
+            this.gbCost.Controls.Add(this.label57);
+            this.gbCost.Location = new System.Drawing.Point(940, -2);
+            this.gbCost.Name = "gbCost";
+            this.gbCost.Size = new System.Drawing.Size(293, 172);
+            this.gbCost.TabIndex = 510;
+            this.gbCost.TabStop = false;
+            // 
+            // txtWeb5
+            // 
+            this.txtWeb5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtWeb5.Location = new System.Drawing.Point(53, 127);
+            this.txtWeb5.Name = "txtWeb5";
+            this.txtWeb5.ReadOnly = true;
+            this.txtWeb5.Size = new System.Drawing.Size(60, 20);
+            this.txtWeb5.TabIndex = 431;
+            // 
+            // txtWeb2
+            // 
+            this.txtWeb2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtWeb2.Location = new System.Drawing.Point(53, 50);
+            this.txtWeb2.Name = "txtWeb2";
+            this.txtWeb2.ReadOnly = true;
+            this.txtWeb2.Size = new System.Drawing.Size(60, 20);
+            this.txtWeb2.TabIndex = 435;
+            // 
+            // txtWeb3
+            // 
+            this.txtWeb3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtWeb3.Location = new System.Drawing.Point(53, 76);
+            this.txtWeb3.Name = "txtWeb3";
+            this.txtWeb3.ReadOnly = true;
+            this.txtWeb3.Size = new System.Drawing.Size(60, 20);
+            this.txtWeb3.TabIndex = 434;
+            // 
+            // txtWeb1
+            // 
+            this.txtWeb1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtWeb1.Location = new System.Drawing.Point(53, 25);
+            this.txtWeb1.Name = "txtWeb1";
+            this.txtWeb1.ReadOnly = true;
+            this.txtWeb1.Size = new System.Drawing.Size(60, 20);
+            this.txtWeb1.TabIndex = 436;
+            // 
+            // txtWeb4
+            // 
+            this.txtWeb4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtWeb4.Location = new System.Drawing.Point(53, 102);
+            this.txtWeb4.Name = "txtWeb4";
+            this.txtWeb4.ReadOnly = true;
+            this.txtWeb4.Size = new System.Drawing.Size(60, 20);
+            this.txtWeb4.TabIndex = 433;
+            // 
+            // txtCost1
+            // 
+            this.txtCost1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtCost1.Location = new System.Drawing.Point(183, 25);
+            this.txtCost1.Name = "txtCost1";
+            this.txtCost1.ReadOnly = true;
+            this.txtCost1.Size = new System.Drawing.Size(60, 20);
+            this.txtCost1.TabIndex = 427;
+            this.txtCost1.Visible = false;
+            // 
+            // txtMargin5
+            // 
+            this.txtMargin5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtMargin5.Location = new System.Drawing.Point(248, 127);
+            this.txtMargin5.Name = "txtMargin5";
+            this.txtMargin5.ReadOnly = true;
+            this.txtMargin5.Size = new System.Drawing.Size(32, 20);
+            this.txtMargin5.TabIndex = 415;
+            this.txtMargin5.Visible = false;
+            // 
+            // txtUK5
+            // 
+            this.txtUK5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtUK5.Location = new System.Drawing.Point(118, 127);
+            this.txtUK5.Name = "txtUK5";
+            this.txtUK5.ReadOnly = true;
+            this.txtUK5.Size = new System.Drawing.Size(60, 20);
+            this.txtUK5.TabIndex = 416;
+            this.txtUK5.Visible = false;
+            // 
+            // txtUK2
+            // 
+            this.txtUK2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtUK2.Location = new System.Drawing.Point(118, 50);
+            this.txtUK2.Name = "txtUK2";
+            this.txtUK2.ReadOnly = true;
+            this.txtUK2.Size = new System.Drawing.Size(60, 20);
+            this.txtUK2.TabIndex = 426;
+            this.txtUK2.Visible = false;
+            // 
+            // txtCost5
+            // 
+            this.txtCost5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtCost5.Location = new System.Drawing.Point(183, 127);
+            this.txtCost5.Name = "txtCost5";
+            this.txtCost5.ReadOnly = true;
+            this.txtCost5.Size = new System.Drawing.Size(60, 20);
+            this.txtCost5.TabIndex = 417;
+            this.txtCost5.Visible = false;
+            // 
+            // txtMargin1
+            // 
+            this.txtMargin1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtMargin1.Location = new System.Drawing.Point(248, 25);
+            this.txtMargin1.Name = "txtMargin1";
+            this.txtMargin1.ReadOnly = true;
+            this.txtMargin1.Size = new System.Drawing.Size(32, 20);
+            this.txtMargin1.TabIndex = 421;
+            this.txtMargin1.Visible = false;
+            // 
+            // txtMargin2
+            // 
+            this.txtMargin2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtMargin2.Location = new System.Drawing.Point(248, 50);
+            this.txtMargin2.Name = "txtMargin2";
+            this.txtMargin2.ReadOnly = true;
+            this.txtMargin2.Size = new System.Drawing.Size(32, 20);
+            this.txtMargin2.TabIndex = 421;
+            this.txtMargin2.Visible = false;
+            // 
+            // txtUK3
+            // 
+            this.txtUK3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtUK3.Location = new System.Drawing.Point(118, 76);
+            this.txtUK3.Name = "txtUK3";
+            this.txtUK3.ReadOnly = true;
+            this.txtUK3.Size = new System.Drawing.Size(60, 20);
+            this.txtUK3.TabIndex = 425;
+            this.txtUK3.Visible = false;
+            // 
+            // txtUK1
+            // 
+            this.txtUK1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtUK1.Location = new System.Drawing.Point(118, 25);
+            this.txtUK1.Name = "txtUK1";
+            this.txtUK1.ReadOnly = true;
+            this.txtUK1.Size = new System.Drawing.Size(60, 20);
+            this.txtUK1.TabIndex = 429;
+            this.txtUK1.Visible = false;
+            // 
+            // txtCost3
+            // 
+            this.txtCost3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtCost3.Location = new System.Drawing.Point(183, 76);
+            this.txtCost3.Name = "txtCost3";
+            this.txtCost3.ReadOnly = true;
+            this.txtCost3.Size = new System.Drawing.Size(60, 20);
+            this.txtCost3.TabIndex = 423;
+            this.txtCost3.Visible = false;
+            // 
+            // txtMargin4
+            // 
+            this.txtMargin4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtMargin4.Location = new System.Drawing.Point(248, 102);
+            this.txtMargin4.Name = "txtMargin4";
+            this.txtMargin4.ReadOnly = true;
+            this.txtMargin4.Size = new System.Drawing.Size(32, 20);
+            this.txtMargin4.TabIndex = 422;
+            this.txtMargin4.Visible = false;
+            // 
+            // txtCost4
+            // 
+            this.txtCost4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtCost4.Location = new System.Drawing.Point(183, 102);
+            this.txtCost4.Name = "txtCost4";
+            this.txtCost4.ReadOnly = true;
+            this.txtCost4.Size = new System.Drawing.Size(60, 20);
+            this.txtCost4.TabIndex = 428;
+            this.txtCost4.Visible = false;
+            // 
+            // txtCost2
+            // 
+            this.txtCost2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtCost2.Location = new System.Drawing.Point(183, 50);
+            this.txtCost2.Name = "txtCost2";
+            this.txtCost2.ReadOnly = true;
+            this.txtCost2.Size = new System.Drawing.Size(60, 20);
+            this.txtCost2.TabIndex = 430;
+            this.txtCost2.Visible = false;
+            // 
+            // txtMargin3
+            // 
+            this.txtMargin3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtMargin3.Location = new System.Drawing.Point(248, 76);
+            this.txtMargin3.Name = "txtMargin3";
+            this.txtMargin3.ReadOnly = true;
+            this.txtMargin3.Size = new System.Drawing.Size(32, 20);
+            this.txtMargin3.TabIndex = 420;
+            this.txtMargin3.Visible = false;
+            // 
+            // txtUK4
+            // 
+            this.txtUK4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtUK4.Location = new System.Drawing.Point(118, 102);
+            this.txtUK4.Name = "txtUK4";
+            this.txtUK4.ReadOnly = true;
+            this.txtUK4.Size = new System.Drawing.Size(60, 20);
+            this.txtUK4.TabIndex = 424;
+            this.txtUK4.Visible = false;
+            // 
+            // txtUnitCount5
+            // 
+            this.txtUnitCount5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtUnitCount5.Location = new System.Drawing.Point(3, 125);
+            this.txtUnitCount5.Name = "txtUnitCount5";
+            this.txtUnitCount5.ReadOnly = true;
+            this.txtUnitCount5.Size = new System.Drawing.Size(44, 20);
+            this.txtUnitCount5.TabIndex = 409;
+            // 
+            // txtUnitCount2
+            // 
+            this.txtUnitCount2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtUnitCount2.Location = new System.Drawing.Point(3, 49);
+            this.txtUnitCount2.Name = "txtUnitCount2";
+            this.txtUnitCount2.ReadOnly = true;
+            this.txtUnitCount2.Size = new System.Drawing.Size(44, 20);
+            this.txtUnitCount2.TabIndex = 411;
+            // 
+            // txtUnitCount1
+            // 
+            this.txtUnitCount1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtUnitCount1.Location = new System.Drawing.Point(3, 23);
+            this.txtUnitCount1.Name = "txtUnitCount1";
+            this.txtUnitCount1.ReadOnly = true;
+            this.txtUnitCount1.Size = new System.Drawing.Size(44, 20);
+            this.txtUnitCount1.TabIndex = 413;
+            // 
+            // txtUnitCount4
+            // 
+            this.txtUnitCount4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtUnitCount4.Location = new System.Drawing.Point(3, 101);
+            this.txtUnitCount4.Name = "txtUnitCount4";
+            this.txtUnitCount4.ReadOnly = true;
+            this.txtUnitCount4.Size = new System.Drawing.Size(44, 20);
+            this.txtUnitCount4.TabIndex = 412;
+            // 
+            // txtUnitCount3
+            // 
+            this.txtUnitCount3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtUnitCount3.Location = new System.Drawing.Point(3, 76);
+            this.txtUnitCount3.Name = "txtUnitCount3";
+            this.txtUnitCount3.ReadOnly = true;
+            this.txtUnitCount3.Size = new System.Drawing.Size(44, 20);
+            this.txtUnitCount3.TabIndex = 410;
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(190, 8);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(43, 13);
+            this.label36.TabIndex = 418;
+            this.label36.Text = "Cost (£)";
+            this.label36.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label36.Visible = false;
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Location = new System.Drawing.Point(128, 8);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(37, 13);
+            this.label50.TabIndex = 419;
+            this.label50.Text = "UK (£)";
+            this.label50.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label50.Visible = false;
             // 
             // textBox14
             // 
@@ -2018,246 +2291,6 @@
             this.txtLength.Size = new System.Drawing.Size(59, 20);
             this.txtLength.TabIndex = 444;
             this.txtLength.TextChanged += new System.EventHandler(this.txtLength_TextChanged);
-            // 
-            // txtWeb5
-            // 
-            this.txtWeb5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtWeb5.Location = new System.Drawing.Point(994, 125);
-            this.txtWeb5.Name = "txtWeb5";
-            this.txtWeb5.ReadOnly = true;
-            this.txtWeb5.Size = new System.Drawing.Size(60, 20);
-            this.txtWeb5.TabIndex = 431;
-            // 
-            // txtWeb2
-            // 
-            this.txtWeb2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtWeb2.Location = new System.Drawing.Point(994, 48);
-            this.txtWeb2.Name = "txtWeb2";
-            this.txtWeb2.ReadOnly = true;
-            this.txtWeb2.Size = new System.Drawing.Size(60, 20);
-            this.txtWeb2.TabIndex = 435;
-            // 
-            // txtWeb3
-            // 
-            this.txtWeb3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtWeb3.Location = new System.Drawing.Point(994, 74);
-            this.txtWeb3.Name = "txtWeb3";
-            this.txtWeb3.ReadOnly = true;
-            this.txtWeb3.Size = new System.Drawing.Size(60, 20);
-            this.txtWeb3.TabIndex = 434;
-            // 
-            // txtWeb1
-            // 
-            this.txtWeb1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtWeb1.Location = new System.Drawing.Point(994, 23);
-            this.txtWeb1.Name = "txtWeb1";
-            this.txtWeb1.ReadOnly = true;
-            this.txtWeb1.Size = new System.Drawing.Size(60, 20);
-            this.txtWeb1.TabIndex = 436;
-            // 
-            // txtWeb4
-            // 
-            this.txtWeb4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtWeb4.Location = new System.Drawing.Point(994, 100);
-            this.txtWeb4.Name = "txtWeb4";
-            this.txtWeb4.ReadOnly = true;
-            this.txtWeb4.Size = new System.Drawing.Size(60, 20);
-            this.txtWeb4.TabIndex = 433;
-            // 
-            // txtCost1
-            // 
-            this.txtCost1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtCost1.Location = new System.Drawing.Point(1124, 23);
-            this.txtCost1.Name = "txtCost1";
-            this.txtCost1.ReadOnly = true;
-            this.txtCost1.Size = new System.Drawing.Size(60, 20);
-            this.txtCost1.TabIndex = 427;
-            this.txtCost1.Visible = false;
-            // 
-            // txtMargin5
-            // 
-            this.txtMargin5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtMargin5.Location = new System.Drawing.Point(1189, 125);
-            this.txtMargin5.Name = "txtMargin5";
-            this.txtMargin5.ReadOnly = true;
-            this.txtMargin5.Size = new System.Drawing.Size(32, 20);
-            this.txtMargin5.TabIndex = 415;
-            this.txtMargin5.Visible = false;
-            // 
-            // txtUK5
-            // 
-            this.txtUK5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtUK5.Location = new System.Drawing.Point(1059, 125);
-            this.txtUK5.Name = "txtUK5";
-            this.txtUK5.ReadOnly = true;
-            this.txtUK5.Size = new System.Drawing.Size(60, 20);
-            this.txtUK5.TabIndex = 416;
-            this.txtUK5.Visible = false;
-            // 
-            // txtUK2
-            // 
-            this.txtUK2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtUK2.Location = new System.Drawing.Point(1059, 48);
-            this.txtUK2.Name = "txtUK2";
-            this.txtUK2.ReadOnly = true;
-            this.txtUK2.Size = new System.Drawing.Size(60, 20);
-            this.txtUK2.TabIndex = 426;
-            this.txtUK2.Visible = false;
-            // 
-            // txtCost5
-            // 
-            this.txtCost5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtCost5.Location = new System.Drawing.Point(1124, 125);
-            this.txtCost5.Name = "txtCost5";
-            this.txtCost5.ReadOnly = true;
-            this.txtCost5.Size = new System.Drawing.Size(60, 20);
-            this.txtCost5.TabIndex = 417;
-            this.txtCost5.Visible = false;
-            // 
-            // txtMargin1
-            // 
-            this.txtMargin1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtMargin1.Location = new System.Drawing.Point(1189, 23);
-            this.txtMargin1.Name = "txtMargin1";
-            this.txtMargin1.ReadOnly = true;
-            this.txtMargin1.Size = new System.Drawing.Size(32, 20);
-            this.txtMargin1.TabIndex = 421;
-            this.txtMargin1.Visible = false;
-            // 
-            // txtMargin2
-            // 
-            this.txtMargin2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtMargin2.Location = new System.Drawing.Point(1189, 48);
-            this.txtMargin2.Name = "txtMargin2";
-            this.txtMargin2.ReadOnly = true;
-            this.txtMargin2.Size = new System.Drawing.Size(32, 20);
-            this.txtMargin2.TabIndex = 421;
-            this.txtMargin2.Visible = false;
-            // 
-            // txtUK3
-            // 
-            this.txtUK3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtUK3.Location = new System.Drawing.Point(1059, 74);
-            this.txtUK3.Name = "txtUK3";
-            this.txtUK3.ReadOnly = true;
-            this.txtUK3.Size = new System.Drawing.Size(60, 20);
-            this.txtUK3.TabIndex = 425;
-            this.txtUK3.Visible = false;
-            // 
-            // txtUK1
-            // 
-            this.txtUK1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtUK1.Location = new System.Drawing.Point(1059, 23);
-            this.txtUK1.Name = "txtUK1";
-            this.txtUK1.ReadOnly = true;
-            this.txtUK1.Size = new System.Drawing.Size(60, 20);
-            this.txtUK1.TabIndex = 429;
-            this.txtUK1.Visible = false;
-            // 
-            // txtCost3
-            // 
-            this.txtCost3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtCost3.Location = new System.Drawing.Point(1124, 74);
-            this.txtCost3.Name = "txtCost3";
-            this.txtCost3.ReadOnly = true;
-            this.txtCost3.Size = new System.Drawing.Size(60, 20);
-            this.txtCost3.TabIndex = 423;
-            this.txtCost3.Visible = false;
-            // 
-            // txtMargin4
-            // 
-            this.txtMargin4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtMargin4.Location = new System.Drawing.Point(1189, 100);
-            this.txtMargin4.Name = "txtMargin4";
-            this.txtMargin4.ReadOnly = true;
-            this.txtMargin4.Size = new System.Drawing.Size(32, 20);
-            this.txtMargin4.TabIndex = 422;
-            this.txtMargin4.Visible = false;
-            // 
-            // txtCost4
-            // 
-            this.txtCost4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtCost4.Location = new System.Drawing.Point(1124, 100);
-            this.txtCost4.Name = "txtCost4";
-            this.txtCost4.ReadOnly = true;
-            this.txtCost4.Size = new System.Drawing.Size(60, 20);
-            this.txtCost4.TabIndex = 428;
-            this.txtCost4.Visible = false;
-            // 
-            // txtCost2
-            // 
-            this.txtCost2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtCost2.Location = new System.Drawing.Point(1124, 48);
-            this.txtCost2.Name = "txtCost2";
-            this.txtCost2.ReadOnly = true;
-            this.txtCost2.Size = new System.Drawing.Size(60, 20);
-            this.txtCost2.TabIndex = 430;
-            this.txtCost2.Visible = false;
-            // 
-            // txtMargin3
-            // 
-            this.txtMargin3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtMargin3.Location = new System.Drawing.Point(1189, 74);
-            this.txtMargin3.Name = "txtMargin3";
-            this.txtMargin3.ReadOnly = true;
-            this.txtMargin3.Size = new System.Drawing.Size(32, 20);
-            this.txtMargin3.TabIndex = 420;
-            this.txtMargin3.Visible = false;
-            // 
-            // txtUK4
-            // 
-            this.txtUK4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtUK4.Location = new System.Drawing.Point(1059, 100);
-            this.txtUK4.Name = "txtUK4";
-            this.txtUK4.ReadOnly = true;
-            this.txtUK4.Size = new System.Drawing.Size(60, 20);
-            this.txtUK4.TabIndex = 424;
-            this.txtUK4.Visible = false;
-            // 
-            // txtUnitCount5
-            // 
-            this.txtUnitCount5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtUnitCount5.Location = new System.Drawing.Point(944, 123);
-            this.txtUnitCount5.Name = "txtUnitCount5";
-            this.txtUnitCount5.ReadOnly = true;
-            this.txtUnitCount5.Size = new System.Drawing.Size(44, 20);
-            this.txtUnitCount5.TabIndex = 409;
-            // 
-            // txtUnitCount2
-            // 
-            this.txtUnitCount2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtUnitCount2.Location = new System.Drawing.Point(944, 47);
-            this.txtUnitCount2.Name = "txtUnitCount2";
-            this.txtUnitCount2.ReadOnly = true;
-            this.txtUnitCount2.Size = new System.Drawing.Size(44, 20);
-            this.txtUnitCount2.TabIndex = 411;
-            // 
-            // txtUnitCount1
-            // 
-            this.txtUnitCount1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtUnitCount1.Location = new System.Drawing.Point(944, 21);
-            this.txtUnitCount1.Name = "txtUnitCount1";
-            this.txtUnitCount1.ReadOnly = true;
-            this.txtUnitCount1.Size = new System.Drawing.Size(44, 20);
-            this.txtUnitCount1.TabIndex = 413;
-            // 
-            // txtUnitCount4
-            // 
-            this.txtUnitCount4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtUnitCount4.Location = new System.Drawing.Point(944, 99);
-            this.txtUnitCount4.Name = "txtUnitCount4";
-            this.txtUnitCount4.ReadOnly = true;
-            this.txtUnitCount4.Size = new System.Drawing.Size(44, 20);
-            this.txtUnitCount4.TabIndex = 412;
-            // 
-            // txtUnitCount3
-            // 
-            this.txtUnitCount3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtUnitCount3.Location = new System.Drawing.Point(944, 74);
-            this.txtUnitCount3.Name = "txtUnitCount3";
-            this.txtUnitCount3.ReadOnly = true;
-            this.txtUnitCount3.Size = new System.Drawing.Size(44, 20);
-            this.txtUnitCount3.TabIndex = 410;
             // 
             // label51
             // 
@@ -2642,7 +2675,7 @@
             // lblWeb
             // 
             this.lblWeb.AutoSize = true;
-            this.lblWeb.Location = new System.Drawing.Point(1005, 4);
+            this.lblWeb.Location = new System.Drawing.Point(68, 9);
             this.lblWeb.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblWeb.Name = "lblWeb";
             this.lblWeb.Size = new System.Drawing.Size(45, 13);
@@ -2650,33 +2683,11 @@
             this.lblWeb.Text = "Web (£)";
             this.lblWeb.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(1131, 6);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(43, 13);
-            this.label36.TabIndex = 418;
-            this.label36.Text = "Cost (£)";
-            this.label36.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label36.Visible = false;
-            // 
-            // label50
-            // 
-            this.label50.AutoSize = true;
-            this.label50.Location = new System.Drawing.Point(1069, 6);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(37, 13);
-            this.label50.TabIndex = 419;
-            this.label50.Text = "UK (£)";
-            this.label50.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label50.Visible = false;
-            // 
             // label57
             // 
             this.label57.AutoSize = true;
             this.label57.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label57.Location = new System.Drawing.Point(941, 4);
+            this.label57.Location = new System.Drawing.Point(6, 9);
             this.label57.Name = "label57";
             this.label57.Size = new System.Drawing.Size(41, 13);
             this.label57.TabIndex = 414;
@@ -3111,6 +3122,8 @@
             this.gbCustomer.PerformLayout();
             this.tabItemDetails.ResumeLayout(false);
             this.tabItemDetails.PerformLayout();
+            this.gbCost.ResumeLayout(false);
+            this.gbCost.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.LandingCost.ResumeLayout(false);
             this.LandingCost.PerformLayout();
@@ -3391,5 +3404,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgCustDescription1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn35;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn36;
+        private System.Windows.Forms.GroupBox gbCost;
     }
 }

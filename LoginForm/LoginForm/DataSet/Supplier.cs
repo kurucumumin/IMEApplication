@@ -40,14 +40,17 @@ namespace LoginForm.DataSet
         public Nullable<int> CategoryID { get; set; }
         public Nullable<int> SubCategoryID { get; set; }
         public Nullable<decimal> DefaultCurrency { get; set; }
+        public Nullable<int> AccountNoteID { get; set; }
     
         public virtual Currency Currency { get; set; }
         public virtual Note Note { get; set; }
+        public virtual Note Note1 { get; set; }
         public virtual PaymentMethod PaymentMethod { get; set; }
         public virtual PaymentTerm PaymentTerm { get; set; }
         public virtual Worker Worker { get; set; }
         public virtual SupplierBank SupplierBank { get; set; }
         public virtual SupplierCategory SupplierCategory { get; set; }
+        public virtual SupplierWorker SupplierWorker { get; set; }
         public virtual Worker Worker1 { get; set; }
         public virtual SupplierSubCategory SupplierSubCategory { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

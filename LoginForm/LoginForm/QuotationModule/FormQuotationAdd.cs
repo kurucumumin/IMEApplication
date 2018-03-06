@@ -172,9 +172,23 @@ namespace LoginForm.QuotationModule
                 groupBox3.Enabled = false;
             }
         }
-       
+
+        private void ControlAutorization()
+        {
+            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1020).FirstOrDefault() == null)
+            {
+                gbCost.Visible = false;
+                
+            }
+            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1021).FirstOrDefault() == null)
+            {
+                txtTotalMarge.Visible = false;
+                label42.Visible = false;
+            }
+        }
         private void QuotationForm_Load(object sender, EventArgs e)
         {
+            ControlAutorization();
             DataGridViewComboBoxColumn deliveryColumn = (DataGridViewComboBoxColumn)dgQuotationAddedItems.Columns[dgDelivery.Index];
             if (deliveryColumn.DataSource==null)
             {

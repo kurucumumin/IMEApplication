@@ -519,6 +519,11 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AccountLedgerEdit", ledgerIdParameter, accountGroupIdParameter, ledgerNameParameter, openingBalanceParameter, crOrDrParameter, narrationParameter, mailingNameParameter, addressParameter, isDefaultParameter, phoneParameter, mobileParameter, emailParameter, creditPeriodParameter, creditLimitParameter, pricinglevelIdParameter, billByBillParameter, tinParameter, cstParameter, panParameter, routeIdParameter, bankAccountNumberParameter, branchNameParameter, branchCodeParameter, areaIdParameter);
         }
     
+        public virtual ObjectResult<AccountLedgerGetByDebtorAndCreditorWithBalance_Result> AccountLedgerGetByDebtorAndCreditorWithBalance()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountLedgerGetByDebtorAndCreditorWithBalance_Result>("AccountLedgerGetByDebtorAndCreditorWithBalance");
+        }
+    
         public virtual ObjectResult<Nullable<decimal>> AccountLedgerIdGetByName(string ledgerName)
         {
             var ledgerNameParameter = ledgerName != null ?
@@ -728,6 +733,87 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AdvancePaymentAddWithIdentity_Result>("AdvancePaymentAddWithIdentity", employeeIdParameter, ledgerIdParameter, voucherNoParameter, invoiceNoParameter, dateParameter, amountParameter, salaryMonthParameter, chequenumberParameter, chequeDateParameter, narrationParameter, suffixPrefixIdParameter, voucherTypeIdParameter, financialYearIdParameter, isAutomaticParameter);
         }
     
+        public virtual ObjectResult<AgeingReportFillByPayable_Result> AgeingReportFillByPayable(Nullable<System.DateTime> ageingDate, string status, string ledgerId, string ledgerBy)
+        {
+            var ageingDateParameter = ageingDate.HasValue ?
+                new ObjectParameter("ageingDate", ageingDate) :
+                new ObjectParameter("ageingDate", typeof(System.DateTime));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("status", status) :
+                new ObjectParameter("status", typeof(string));
+    
+            var ledgerIdParameter = ledgerId != null ?
+                new ObjectParameter("ledgerId", ledgerId) :
+                new ObjectParameter("ledgerId", typeof(string));
+    
+            var ledgerByParameter = ledgerBy != null ?
+                new ObjectParameter("ledgerBy", ledgerBy) :
+                new ObjectParameter("ledgerBy", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AgeingReportFillByPayable_Result>("AgeingReportFillByPayable", ageingDateParameter, statusParameter, ledgerIdParameter, ledgerByParameter);
+        }
+    
+        public virtual ObjectResult<AgeingReportFillByReceivable_Result> AgeingReportFillByReceivable(Nullable<System.DateTime> ageingDate, string status, string ledgerId, string ledgerBy)
+        {
+            var ageingDateParameter = ageingDate.HasValue ?
+                new ObjectParameter("ageingDate", ageingDate) :
+                new ObjectParameter("ageingDate", typeof(System.DateTime));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("status", status) :
+                new ObjectParameter("status", typeof(string));
+    
+            var ledgerIdParameter = ledgerId != null ?
+                new ObjectParameter("ledgerId", ledgerId) :
+                new ObjectParameter("ledgerId", typeof(string));
+    
+            var ledgerByParameter = ledgerBy != null ?
+                new ObjectParameter("ledgerBy", ledgerBy) :
+                new ObjectParameter("ledgerBy", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AgeingReportFillByReceivable_Result>("AgeingReportFillByReceivable", ageingDateParameter, statusParameter, ledgerIdParameter, ledgerByParameter);
+        }
+    
+        public virtual ObjectResult<AgeingReportLedgerReceivable_Result> AgeingReportLedgerReceivable(Nullable<System.DateTime> ageingDate, Nullable<decimal> ledgerId)
+        {
+            var ageingDateParameter = ageingDate.HasValue ?
+                new ObjectParameter("ageingDate", ageingDate) :
+                new ObjectParameter("ageingDate", typeof(System.DateTime));
+    
+            var ledgerIdParameter = ledgerId.HasValue ?
+                new ObjectParameter("ledgerId", ledgerId) :
+                new ObjectParameter("ledgerId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AgeingReportLedgerReceivable_Result>("AgeingReportLedgerReceivable", ageingDateParameter, ledgerIdParameter);
+        }
+    
+        public virtual ObjectResult<AgeingReportVoucherPayable_Result> AgeingReportVoucherPayable(Nullable<System.DateTime> ageingDate, Nullable<decimal> ledgerId)
+        {
+            var ageingDateParameter = ageingDate.HasValue ?
+                new ObjectParameter("ageingDate", ageingDate) :
+                new ObjectParameter("ageingDate", typeof(System.DateTime));
+    
+            var ledgerIdParameter = ledgerId.HasValue ?
+                new ObjectParameter("ledgerId", ledgerId) :
+                new ObjectParameter("ledgerId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AgeingReportVoucherPayable_Result>("AgeingReportVoucherPayable", ageingDateParameter, ledgerIdParameter);
+        }
+    
+        public virtual ObjectResult<AgeingReportVoucherReceivable_Result> AgeingReportVoucherReceivable(Nullable<System.DateTime> ageingDate, Nullable<decimal> ledgerId)
+        {
+            var ageingDateParameter = ageingDate.HasValue ?
+                new ObjectParameter("ageingDate", ageingDate) :
+                new ObjectParameter("ageingDate", typeof(System.DateTime));
+    
+            var ledgerIdParameter = ledgerId.HasValue ?
+                new ObjectParameter("ledgerId", ledgerId) :
+                new ObjectParameter("ledgerId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AgeingReportVoucherReceivable_Result>("AgeingReportVoucherReceivable", ageingDateParameter, ledgerIdParameter);
+        }
+    
         public virtual int AreaDeleteReference(Nullable<decimal> areaId)
         {
             var areaIdParameter = areaId.HasValue ?
@@ -839,7 +925,7 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BalanceSheetAssets_Result>("BalanceSheetAssets", toDateParameter, fromDateParameter);
         }
     
-        public virtual int BalanceSheetDifference(Nullable<System.DateTime> toDate, Nullable<System.DateTime> fromDate)
+        public virtual ObjectResult<BalanceSheetDifference_Result> BalanceSheetDifference(Nullable<System.DateTime> toDate, Nullable<System.DateTime> fromDate)
         {
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
@@ -849,7 +935,7 @@ namespace LoginForm.DataSet
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("BalanceSheetDifference", toDateParameter, fromDateParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BalanceSheetDifference_Result>("BalanceSheetDifference", toDateParameter, fromDateParameter);
         }
     
         public virtual ObjectResult<BalanceSheetLiabilities_Result> BalanceSheetLiabilities(Nullable<System.DateTime> toDate, Nullable<System.DateTime> fromDate)
@@ -967,6 +1053,11 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BudgetVariance_Result>("BudgetVariance", budgetMasterIdParameter);
         }
     
+        public virtual ObjectResult<CashFlowReportPrintCompany_Result> CashFlowReportPrintCompany()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CashFlowReportPrintCompany_Result>("CashFlowReportPrintCompany");
+        }
+    
         public virtual ObjectResult<CashOrBankComboFill_Result> CashOrBankComboFill()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CashOrBankComboFill_Result>("CashOrBankComboFill");
@@ -1007,6 +1098,48 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("CheckSalaryAlreadyPaidOrNotForAdvancePayment", employeeIdParameter, monthParameter);
         }
     
+        public virtual ObjectResult<ChequeReportGridFill_Result> ChequeReportGridFill(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, Nullable<System.DateTime> chequefromDate, Nullable<System.DateTime> chequetoDate, Nullable<bool> issued, string ledgerId, string startText, string startNo)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            var chequefromDateParameter = chequefromDate.HasValue ?
+                new ObjectParameter("chequefromDate", chequefromDate) :
+                new ObjectParameter("chequefromDate", typeof(System.DateTime));
+    
+            var chequetoDateParameter = chequetoDate.HasValue ?
+                new ObjectParameter("chequetoDate", chequetoDate) :
+                new ObjectParameter("chequetoDate", typeof(System.DateTime));
+    
+            var issuedParameter = issued.HasValue ?
+                new ObjectParameter("issued", issued) :
+                new ObjectParameter("issued", typeof(bool));
+    
+            var ledgerIdParameter = ledgerId != null ?
+                new ObjectParameter("ledgerId", ledgerId) :
+                new ObjectParameter("ledgerId", typeof(string));
+    
+            var startTextParameter = startText != null ?
+                new ObjectParameter("startText", startText) :
+                new ObjectParameter("startText", typeof(string));
+    
+            var startNoParameter = startNo != null ?
+                new ObjectParameter("startNo", startNo) :
+                new ObjectParameter("startNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ChequeReportGridFill_Result>("ChequeReportGridFill", fromDateParameter, toDateParameter, chequefromDateParameter, chequetoDateParameter, issuedParameter, ledgerIdParameter, startTextParameter, startNoParameter);
+        }
+    
+        public virtual ObjectResult<ChequeReportPartyComboFill_Result> ChequeReportPartyComboFill()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ChequeReportPartyComboFill_Result>("ChequeReportPartyComboFill");
+        }
+    
         public virtual ObjectResult<CompanyView_Result> CompanyView(Nullable<decimal> companyId)
         {
             var companyIdParameter = companyId.HasValue ?
@@ -1014,6 +1147,19 @@ namespace LoginForm.DataSet
                 new ObjectParameter("companyId", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CompanyView_Result>("CompanyView", companyIdParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> CreditNoteMasterIdView(Nullable<decimal> voucherTypeId, string voucherNo)
+        {
+            var voucherTypeIdParameter = voucherTypeId.HasValue ?
+                new ObjectParameter("voucherTypeId", voucherTypeId) :
+                new ObjectParameter("voucherTypeId", typeof(decimal));
+    
+            var voucherNoParameter = voucherNo != null ?
+                new ObjectParameter("voucherNo", voucherNo) :
+                new ObjectParameter("voucherNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("CreditNoteMasterIdView", voucherTypeIdParameter, voucherNoParameter);
         }
     
         public virtual ObjectResult<CreditNoteRegisterSearch_Result> CreditNoteRegisterSearch(string voucherNo, Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
@@ -1144,6 +1290,19 @@ namespace LoginForm.DataSet
                 new ObjectParameter("voucherTypeId", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("DayBookSalesInvoiceOrPOS", salesMasterIdParameter, voucherTypeIdParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> DebitNoteMasterIdView(Nullable<decimal> voucherTypeId, string voucherNo)
+        {
+            var voucherTypeIdParameter = voucherTypeId.HasValue ?
+                new ObjectParameter("voucherTypeId", voucherTypeId) :
+                new ObjectParameter("voucherTypeId", typeof(decimal));
+    
+            var voucherNoParameter = voucherNo != null ?
+                new ObjectParameter("voucherNo", voucherNo) :
+                new ObjectParameter("voucherNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("DebitNoteMasterIdView", voucherTypeIdParameter, voucherNoParameter);
         }
     
         public virtual ObjectResult<DebitNoteReportSearch_Result> DebitNoteReportSearch(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, Nullable<decimal> voucherTypeId, Nullable<decimal> ledgerId)
@@ -1464,7 +1623,7 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ExtendedRangeADD", articleNoParameter, brandParameter, mPNParameter, articleDescriptionParameter, extendedRangeLengthParameter, widthParameter, heightParameter, dimensionUoMParameter, weightUoMParameter, cCCNParameter, countryofOriginParameter, unitofMeasureParameter, packSizeParameter, salesUoMParameter, costPriceCurrencyParameter, col1PriceParameter, col2PriceParameter, col3PriceParameter, col4PriceParameter, col5PriceParameter, col1BreakParameter, col2BreakParameter, col3BreakParameter, col4BreakParameter, col5BreakParameter, discountedPrice1Parameter, discountedPrice2Parameter, discountedPrice3Parameter, discountedPrice4Parameter, discountedPrice5Parameter, manufacturerCodeParameter, extendedRangeWeightParameter);
         }
     
-        public virtual int FundFlow1(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        public virtual ObjectResult<FundFlow1_Result> FundFlow1(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
@@ -1474,10 +1633,10 @@ namespace LoginForm.DataSet
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FundFlow1", fromDateParameter, toDateParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FundFlow1_Result>("FundFlow1", fromDateParameter, toDateParameter);
         }
     
-        public virtual int FundFlow2(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        public virtual ObjectResult<FundFlow2_Result> FundFlow2(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
@@ -1487,10 +1646,10 @@ namespace LoginForm.DataSet
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FundFlow2", fromDateParameter, toDateParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FundFlow2_Result>("FundFlow2", fromDateParameter, toDateParameter);
         }
     
-        public virtual int FundFlow3(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        public virtual ObjectResult<FundFlow3_Result> FundFlow3(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
@@ -1500,10 +1659,10 @@ namespace LoginForm.DataSet
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FundFlow3", fromDateParameter, toDateParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FundFlow3_Result>("FundFlow3", fromDateParameter, toDateParameter);
         }
     
-        public virtual int FundFlow4(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        public virtual ObjectResult<FundFlow4_Result> FundFlow4(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
@@ -1513,10 +1672,10 @@ namespace LoginForm.DataSet
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FundFlow4", fromDateParameter, toDateParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FundFlow4_Result>("FundFlow4", fromDateParameter, toDateParameter);
         }
     
-        public virtual int FundFlow5(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        public virtual ObjectResult<FundFlow5_Result> FundFlow5(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
@@ -1526,10 +1685,10 @@ namespace LoginForm.DataSet
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FundFlow5", fromDateParameter, toDateParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FundFlow5_Result>("FundFlow5", fromDateParameter, toDateParameter);
         }
     
-        public virtual int FundFlow6(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        public virtual ObjectResult<FundFlow6_Result> FundFlow6(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
@@ -1539,7 +1698,7 @@ namespace LoginForm.DataSet
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FundFlow6", fromDateParameter, toDateParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FundFlow6_Result>("FundFlow6", fromDateParameter, toDateParameter);
         }
     
         public virtual ObjectResult<GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI_Result> GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI(Nullable<decimal> ledgerId, Nullable<decimal> salesMasterId, Nullable<decimal> voucherTypeId)
@@ -1666,6 +1825,19 @@ namespace LoginForm.DataSet
         public virtual ObjectResult<GroupNameViewForComboFill_Result> GroupNameViewForComboFill()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GroupNameViewForComboFill_Result>("GroupNameViewForComboFill");
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> JournalMasterIdView(Nullable<decimal> voucherTypeId, string voucherNo)
+        {
+            var voucherTypeIdParameter = voucherTypeId.HasValue ?
+                new ObjectParameter("voucherTypeId", voucherTypeId) :
+                new ObjectParameter("voucherTypeId", typeof(decimal));
+    
+            var voucherNoParameter = voucherNo != null ?
+                new ObjectParameter("voucherNo", voucherNo) :
+                new ObjectParameter("voucherNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("JournalMasterIdView", voucherTypeIdParameter, voucherNoParameter);
         }
     
         public virtual ObjectResult<JournalRegisterSearch_Result> JournalRegisterSearch(string voucherNo, Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
@@ -1865,6 +2037,15 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<OverduePurchaseOrdersCorrespondingAccountLedger_Result>("OverduePurchaseOrdersCorrespondingAccountLedger", accountLedgerIdParameter);
         }
     
+        public virtual ObjectResult<OverdueSalesOrderCorrespondingAccountLedger_Result> OverdueSalesOrderCorrespondingAccountLedger(string accountLedgerId)
+        {
+            var accountLedgerIdParameter = accountLedgerId != null ?
+                new ObjectParameter("accountLedgerId", accountLedgerId) :
+                new ObjectParameter("accountLedgerId", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<OverdueSalesOrderCorrespondingAccountLedger_Result>("OverdueSalesOrderCorrespondingAccountLedger", accountLedgerIdParameter);
+        }
+    
         public virtual ObjectResult<Nullable<decimal>> PartyBalanceAmountViewByVoucherNoVoucherTypeIdAndReferenceType(string voucherNo, Nullable<decimal> voucherTypeId, string referenceType)
         {
             var voucherNoParameter = voucherNo != null ?
@@ -2042,6 +2223,19 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PayHeadGetAll_Result>("PayHeadGetAll");
         }
     
+        public virtual ObjectResult<Nullable<decimal>> paymentMasterIdView(Nullable<decimal> voucherTypeId, string voucherNo)
+        {
+            var voucherTypeIdParameter = voucherTypeId.HasValue ?
+                new ObjectParameter("voucherTypeId", voucherTypeId) :
+                new ObjectParameter("voucherTypeId", typeof(decimal));
+    
+            var voucherNoParameter = voucherNo != null ?
+                new ObjectParameter("voucherNo", voucherNo) :
+                new ObjectParameter("voucherNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("paymentMasterIdView", voucherTypeIdParameter, voucherNoParameter);
+        }
+    
         public virtual ObjectResult<PaymentMasterSearch_Result> PaymentMasterSearch(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, string ledgerId, string voucherNo)
         {
             var fromDateParameter = fromDate.HasValue ?
@@ -2118,6 +2312,19 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PDCClearanceRegisterSearch_Result>("PDCClearanceRegisterSearch", voucherTypeNameParameter, ledgerNameParameter, toDateParameter, fromDateParameter, chequeNoParameter, bankIdParameter, statusParameter);
         }
     
+        public virtual ObjectResult<Nullable<decimal>> PdcPayableMasterIdView(Nullable<decimal> voucherTypeId, string voucherNo)
+        {
+            var voucherTypeIdParameter = voucherTypeId.HasValue ?
+                new ObjectParameter("voucherTypeId", voucherTypeId) :
+                new ObjectParameter("voucherTypeId", typeof(decimal));
+    
+            var voucherNoParameter = voucherNo != null ?
+                new ObjectParameter("voucherNo", voucherNo) :
+                new ObjectParameter("voucherNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("PdcPayableMasterIdView", voucherTypeIdParameter, voucherNoParameter);
+        }
+    
         public virtual ObjectResult<PdcPayableReportSearch_Result> PdcPayableReportSearch(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, string voucherTypeName, string ledgerName, Nullable<System.DateTime> chequeDateFrom, Nullable<System.DateTime> chequeDateTo, string status, string chequeNo, string voucherNo)
         {
             var fromDateParameter = fromDate.HasValue ?
@@ -2157,6 +2364,19 @@ namespace LoginForm.DataSet
                 new ObjectParameter("voucherNo", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PdcPayableReportSearch_Result>("PdcPayableReportSearch", fromDateParameter, toDateParameter, voucherTypeNameParameter, ledgerNameParameter, chequeDateFromParameter, chequeDateToParameter, statusParameter, chequeNoParameter, voucherNoParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> PdcReceivableMasterIdView(Nullable<decimal> voucherTypeId, string voucherNo)
+        {
+            var voucherTypeIdParameter = voucherTypeId.HasValue ?
+                new ObjectParameter("voucherTypeId", voucherTypeId) :
+                new ObjectParameter("voucherTypeId", typeof(decimal));
+    
+            var voucherNoParameter = voucherNo != null ?
+                new ObjectParameter("voucherNo", voucherNo) :
+                new ObjectParameter("voucherNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("PdcReceivableMasterIdView", voucherTypeIdParameter, voucherNoParameter);
         }
     
         public virtual ObjectResult<PdcReceivableReportSearch_Result> PdcReceivableReportSearch(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, string voucherTypeName, string ledgerName, Nullable<System.DateTime> chequeDateFrom, Nullable<System.DateTime> chequeDateTo, string status, string chequeNo, string voucherNo)
@@ -3035,6 +3255,19 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PurchaseMasterEdit", purchaseMasterIdParameter, voucherNoParameter, invoiceNoParameter, suffixPrefixIdParameter, voucherTypeIdParameter, dateParameter, ledgerIdParameter, vendorInvoiceNoParameter, vendorInvoiceDateParameter, creditPeriodParameter, exchangeRateIdParameter, narrationParameter, purchaseAccountParameter, purchaseOrderMasterIdParameter, materialReceiptMasterIdParameter, additionalCostParameter, totalTaxParameter, billDiscountParameter, grandTotalParameter, totalAmountParameter, userIdParameter, lrNoParameter, transportationCompanyParameter, financialYearIdParameter);
         }
     
+        public virtual ObjectResult<Nullable<decimal>> PurchaseMasterIdViewByvoucherNoAndVoucherType(string voucherNo, Nullable<decimal> voucherTypeId)
+        {
+            var voucherNoParameter = voucherNo != null ?
+                new ObjectParameter("voucherNo", voucherNo) :
+                new ObjectParameter("voucherNo", typeof(string));
+    
+            var voucherTypeIdParameter = voucherTypeId.HasValue ?
+                new ObjectParameter("voucherTypeId", voucherTypeId) :
+                new ObjectParameter("voucherTypeId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("PurchaseMasterIdViewByvoucherNoAndVoucherType", voucherNoParameter, voucherTypeIdParameter);
+        }
+    
         public virtual ObjectResult<Nullable<int>> PurchaseMasterReferenceCheck(Nullable<decimal> purchaseMasterId, Nullable<decimal> purchaseDetailsId)
         {
             var purchaseMasterIdParameter = purchaseMasterId.HasValue ?
@@ -3388,6 +3621,19 @@ namespace LoginForm.DataSet
                 new ObjectParameter("godownId", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RackFillForStock_Result>("RackFillForStock", godownIdParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> ReceiptMasterIdView(Nullable<decimal> voucherTypeId, string voucherNo)
+        {
+            var voucherTypeIdParameter = voucherTypeId.HasValue ?
+                new ObjectParameter("voucherTypeId", voucherTypeId) :
+                new ObjectParameter("voucherTypeId", typeof(decimal));
+    
+            var voucherNoParameter = voucherNo != null ?
+                new ObjectParameter("voucherNo", voucherNo) :
+                new ObjectParameter("voucherNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("ReceiptMasterIdView", voucherTypeIdParameter, voucherNoParameter);
         }
     
         public virtual int ReminderAdd(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, string remindAbout)
@@ -4218,6 +4464,19 @@ namespace LoginForm.DataSet
                 new ObjectParameter("extra2", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SalesMasterEdit", salesMasterIdParameter, voucherNoParameter, invoiceNoParameter, voucherTypeIdParameter, suffixPrefixIdParameter, dateParameter, creditPeriodParameter, ledgerIdParameter, pricinglevelIdParameter, employeeIdParameter, salesAccountParameter, deliveryNoteMasterIdParameter, orderMasterIdParameter, narrationParameter, customerNameParameter, exchangeRateIdParameter, taxAmountParameter, additionalCostParameter, billDiscountParameter, grandTotalParameter, totalAmountParameter, userIdParameter, lrNoParameter, transportationCompanyParameter, quotationMasterIdParameter, pOSParameter, counterIdParameter, financialYearIdParameter, extraDateParameter, extra1Parameter, extra2Parameter);
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> SalesMasterIdViewByvoucherNoAndVoucherType(string voucherNo, Nullable<decimal> voucherTypeId)
+        {
+            var voucherNoParameter = voucherNo != null ?
+                new ObjectParameter("voucherNo", voucherNo) :
+                new ObjectParameter("voucherNo", typeof(string));
+    
+            var voucherTypeIdParameter = voucherTypeId.HasValue ?
+                new ObjectParameter("voucherTypeId", voucherTypeId) :
+                new ObjectParameter("voucherTypeId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("SalesMasterIdViewByvoucherNoAndVoucherType", voucherNoParameter, voucherTypeIdParameter);
         }
     
         public virtual ObjectResult<SalesMasterView_Result> SalesMasterView(Nullable<decimal> salesMasterId)
@@ -5400,6 +5659,64 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SuperDiskPAdd", article_NoParameter, article_DescParameter, pack_CodeParameter, pack_QuantityParameter, unit_ContentParameter, unit_MeasureParameter, uk_Col_1Parameter, standard_WeightParameter, hazardous_IndParameter, calibration_IndParameter, obsolete_FlagParameter, mH1Parameter, low_Discount_IndParameter, licensed_IndParameter, shelf_LifeParameter, cofOParameter, eUR1_IndicatorParameter, cCCN_NoParameter, supercede_DateParameter, current_Cat_pageParameter, uk_Intro_DateParameter, fillerParameter, uk_Disc_DateParameter, substitute_ByParameter, bHC_FlagParameter, filler1Parameter, future_Sell_PriceParameter, int_CatParameter, new_Prod_Change_IndParameter, out_of_Stock_Prohibit_change_indParameter, disc_Change_IndParameter, superceded_Change_IndParameter, pack_Size_Change_IndParameter, rolled_Product_Change_IndParameter, expiring_Product_Change_IndParameter, manufacturerParameter, mPNParameter, mH_Code_Level_1Parameter, heighParameter, widthParameter, lengthParameter);
         }
     
+        public virtual ObjectResult<TaxCrystalReportGridFillByBillWise_Result> TaxCrystalReportGridFillByBillWise(Nullable<decimal> companyId, Nullable<System.DateTime> fromdate, Nullable<System.DateTime> todate, Nullable<decimal> taxId, Nullable<decimal> voucherTypeId, Nullable<bool> input)
+        {
+            var companyIdParameter = companyId.HasValue ?
+                new ObjectParameter("companyId", companyId) :
+                new ObjectParameter("companyId", typeof(decimal));
+    
+            var fromdateParameter = fromdate.HasValue ?
+                new ObjectParameter("fromdate", fromdate) :
+                new ObjectParameter("fromdate", typeof(System.DateTime));
+    
+            var todateParameter = todate.HasValue ?
+                new ObjectParameter("todate", todate) :
+                new ObjectParameter("todate", typeof(System.DateTime));
+    
+            var taxIdParameter = taxId.HasValue ?
+                new ObjectParameter("taxId", taxId) :
+                new ObjectParameter("taxId", typeof(decimal));
+    
+            var voucherTypeIdParameter = voucherTypeId.HasValue ?
+                new ObjectParameter("voucherTypeId", voucherTypeId) :
+                new ObjectParameter("voucherTypeId", typeof(decimal));
+    
+            var inputParameter = input.HasValue ?
+                new ObjectParameter("input", input) :
+                new ObjectParameter("input", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TaxCrystalReportGridFillByBillWise_Result>("TaxCrystalReportGridFillByBillWise", companyIdParameter, fromdateParameter, todateParameter, taxIdParameter, voucherTypeIdParameter, inputParameter);
+        }
+    
+        public virtual ObjectResult<TaxCrystalReportGridFillByProductwise_Result> TaxCrystalReportGridFillByProductwise(Nullable<decimal> companyId, Nullable<System.DateTime> fromdate, Nullable<System.DateTime> todate, Nullable<decimal> taxId, Nullable<decimal> voucherTypeId, Nullable<bool> input)
+        {
+            var companyIdParameter = companyId.HasValue ?
+                new ObjectParameter("companyId", companyId) :
+                new ObjectParameter("companyId", typeof(decimal));
+    
+            var fromdateParameter = fromdate.HasValue ?
+                new ObjectParameter("fromdate", fromdate) :
+                new ObjectParameter("fromdate", typeof(System.DateTime));
+    
+            var todateParameter = todate.HasValue ?
+                new ObjectParameter("todate", todate) :
+                new ObjectParameter("todate", typeof(System.DateTime));
+    
+            var taxIdParameter = taxId.HasValue ?
+                new ObjectParameter("taxId", taxId) :
+                new ObjectParameter("taxId", typeof(decimal));
+    
+            var voucherTypeIdParameter = voucherTypeId.HasValue ?
+                new ObjectParameter("voucherTypeId", voucherTypeId) :
+                new ObjectParameter("voucherTypeId", typeof(decimal));
+    
+            var inputParameter = input.HasValue ?
+                new ObjectParameter("input", input) :
+                new ObjectParameter("input", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TaxCrystalReportGridFillByProductwise_Result>("TaxCrystalReportGridFillByProductwise", companyIdParameter, fromdateParameter, todateParameter, taxIdParameter, voucherTypeIdParameter, inputParameter);
+        }
+    
         public virtual ObjectResult<Nullable<int>> TaxDetailsViewAllByTaxId(Nullable<decimal> taxId)
         {
             var taxIdParameter = taxId.HasValue ?
@@ -5418,7 +5735,7 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("TaxIdForTaxSelectionUpdate", taxIdParameter);
         }
     
-        public virtual int TaxReportGridFillByBillWise(Nullable<System.DateTime> fromdate, Nullable<System.DateTime> todate, Nullable<decimal> taxId, Nullable<decimal> voucherTypeId, string typeOfVoucher, Nullable<bool> input)
+        public virtual ObjectResult<TaxReportGridFillByBillWise_Result> TaxReportGridFillByBillWise(Nullable<System.DateTime> fromdate, Nullable<System.DateTime> todate, Nullable<decimal> taxId, Nullable<decimal> voucherTypeId, string typeOfVoucher, Nullable<bool> input)
         {
             var fromdateParameter = fromdate.HasValue ?
                 new ObjectParameter("fromdate", fromdate) :
@@ -5444,10 +5761,10 @@ namespace LoginForm.DataSet
                 new ObjectParameter("input", input) :
                 new ObjectParameter("input", typeof(bool));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("TaxReportGridFillByBillWise", fromdateParameter, todateParameter, taxIdParameter, voucherTypeIdParameter, typeOfVoucherParameter, inputParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TaxReportGridFillByBillWise_Result>("TaxReportGridFillByBillWise", fromdateParameter, todateParameter, taxIdParameter, voucherTypeIdParameter, typeOfVoucherParameter, inputParameter);
         }
     
-        public virtual int TaxReportGridFillByProductwise(Nullable<System.DateTime> fromdate, Nullable<System.DateTime> todate, Nullable<decimal> taxId, Nullable<decimal> voucherTypeId, string typeOfVoucher, Nullable<bool> input)
+        public virtual ObjectResult<TaxReportGridFillByProductwise_Result> TaxReportGridFillByProductwise(Nullable<System.DateTime> fromdate, Nullable<System.DateTime> todate, Nullable<decimal> taxId, Nullable<decimal> voucherTypeId, string typeOfVoucher, Nullable<bool> input)
         {
             var fromdateParameter = fromdate.HasValue ?
                 new ObjectParameter("fromdate", fromdate) :
@@ -5473,7 +5790,7 @@ namespace LoginForm.DataSet
                 new ObjectParameter("input", input) :
                 new ObjectParameter("input", typeof(bool));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("TaxReportGridFillByProductwise", fromdateParameter, todateParameter, taxIdParameter, voucherTypeIdParameter, typeOfVoucherParameter, inputParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TaxReportGridFillByProductwise_Result>("TaxReportGridFillByProductwise", fromdateParameter, todateParameter, taxIdParameter, voucherTypeIdParameter, typeOfVoucherParameter, inputParameter);
         }
     
         public virtual ObjectResult<TaxSearch_Result> TaxSearch(string taxName, string applicableOn, string calculatingMode, string isActive)
