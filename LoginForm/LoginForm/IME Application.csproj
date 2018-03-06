@@ -996,6 +996,9 @@
     <Compile Include="DataSet\OnSale.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\OutstandingPartyFillView_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\OverduePurchaseOrdersCorrespondingAccountLedger_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1749,11 +1752,11 @@
     <Compile Include="Supplier\frmSupplierSubCategoryAdd.designer.cs">
       <DependentUpon>frmSupplierSubCategoryAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="Supplier\SupplierMain.cs">
+    <Compile Include="Supplier\DeletedSupplierMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Supplier\SupplierMain.Designer.cs">
-      <DependentUpon>SupplierMain.cs</DependentUpon>
+    <Compile Include="Supplier\DeletedSupplierMain.Designer.cs">
+      <DependentUpon>DeletedSupplierMain.cs</DependentUpon>
     </Compile>
     <Compile Include="User\FormUsersMain.cs">
       <SubType>Form</SubType>
@@ -2096,8 +2099,8 @@
     <EmbeddedResource Include="Supplier\frmSupplierSubCategoryAdd.resx">
       <DependentUpon>frmSupplierSubCategoryAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Supplier\SupplierMain.resx">
-      <DependentUpon>SupplierMain.cs</DependentUpon>
+    <EmbeddedResource Include="Supplier\DeletedSupplierMain.resx">
+      <DependentUpon>DeletedSupplierMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\FormUsersMain.resx">
       <DependentUpon>FormUsersMain.cs</DependentUpon>

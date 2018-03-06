@@ -192,7 +192,6 @@ namespace LoginForm
                                 s.branchcode = txtBankBranchCode.Text;
                                 s.accountnumber = txtBankAccountNumber.Text;
                                 s.iban = txtBankIban.Text;
-                                s.MainContactID = ((SupplierWorker)cmbMainContact.SelectedItem).ID;
 
                                 s.webadress = (txtWeb.Text != String.Empty) ? txtWeb.Text : null;
 
@@ -237,6 +236,8 @@ namespace LoginForm
                                     db.SupplierWorkers.Add(worker);
                                     db.SaveChanges();
                                 }
+                                s.MainContactID = db.SupplierWorkers.Where(x => x.supplierID == s.ID).FirstOrDefault().ID;
+                                db.SaveChanges();
                             }
                             catch (Exception ex)
                             {
@@ -250,6 +251,8 @@ namespace LoginForm
                                 EnableGeneralInput(false);
                                 EnableAddressInput(false);
                                 EnableContactInput(false);
+
+                                gridSupplierList = BringSuppierList(txtSearch.Text);
 
                                 btnAdd.Text = SupplierModeAdd;
                                 btnModify.Text = SupplierModeModify;
@@ -335,6 +338,7 @@ namespace LoginForm
                     {
                         // Just close Inputs
                     }
+                    dgSupplier.ClearSelection();
                     AddressButtonsMode(AddressButtonsModeClose);
                     ContactButtonsMode(ContactButtonsModeClose);
                     SupplierAddMode = String.Empty;
@@ -357,6 +361,8 @@ namespace LoginForm
 
         private void dgSupplier_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            SavedAddresses.Clear();
+            SavedContacts.Clear();
             FillSupplierInfo(dgSupplier.Rows[e.RowIndex].Cells[iDDataGridViewTextBoxColumn.Index].Value.ToString());
         }
 
@@ -368,8 +374,15 @@ namespace LoginForm
             txtName.Text = s.s_name;
             txtTaxOffice.Text = s.taxoffice;
             txtTaxNumber.Text = s.taxnumber;
-            txtSupplierNotes.Text = s.Note.Note_name;
+            txtDiscountRate.Text = s.discountrate.ToString();
+            txtBankAccountNumber.Text = s.accountnumber;
+            txtBankBranchCode.Text = s.branchcode;
+            txtBankIban.Text = s.iban;
 
+            txtWeb.Text = s.webadress ?? String.Empty;
+            txtSupplierNotes.Text = (s.Note != null) ? s.Note.Note_name : String.Empty;
+            txtAccountNotes.Text = (s.Note1 != null) ? s.Note1.Note_name : String.Empty;
+            
             string name = s.Worker1.NameLastName;
             cmbRepresentative.SelectedIndex = cmbRepresentative.FindStringExact(name);
 
@@ -379,9 +392,43 @@ namespace LoginForm
             name = s.SupplierSubCategory.subcategoryname;
             cmbSubCategory.SelectedIndex = cmbSubCategory.FindStringExact(name);
 
+            name = s.Worker.NameLastName;
+            cmbAccountRep.SelectedIndex = cmbAccountRep.FindString(name);
 
-            
+            name = s.PaymentTerm.term_name;
+            cmbAccountTerms.SelectedIndex = cmbAccountTerms.FindString(name);
 
+            name = s.PaymentMethod.Payment;
+            cmbAccountMethod.SelectedIndex = cmbAccountMethod.FindString(name);
+
+            name = s.Currency.currencyName;
+            cmbCurrency.SelectedIndex = cmbCurrency.FindStringExact(name);
+
+            name = s.SupplierBank.bankname;
+            cmbBankName.SelectedIndex = cmbBankName.FindStringExact(name);
+
+
+            foreach(SupplierAddress sa in s.SupplierAddresses)
+            {
+                SavedAddresses.Add(sa);
+            }
+            lbAddressList.DataSource = null;
+            lbAddressList.DataSource = SavedAddresses;
+            lbAddressList.DisplayMember = "Title";
+            lbAddressList.ClearSelected();
+            lbAddressList.Enabled = true;
+
+            cmbContactAddress.DataSource = s.SupplierAddresses.ToList();
+
+            foreach (SupplierWorker sw in s.SupplierWorkers)
+            {
+                SavedContacts.Add(sw);
+            }
+            lbContacts.DataSource = null;
+            lbContacts.DataSource = SavedContacts;
+            lbContacts.DisplayMember = "sw_name";
+            lbContacts.ClearSelected();
+            lbContacts.Enabled = true;
         }
 
         private void ClearGeneralInputs()
@@ -453,9 +500,16 @@ namespace LoginForm
                     cmbSubCategory.Items.AddRange(new IMEEntities().SupplierSubCategories.Where(x => x.categoryID == id).ToArray());
                     cmbSubCategory.Items.Insert(0, "Choose");
                     cmbSubCategory.SelectedIndex = 0;
-
-                    cmbSubCategory.Enabled = true;
-                    btnSubCategoryAdd.Enabled = true;
+                    if (SupplierAddMode == String.Empty)
+                    {
+                        cmbSubCategory.Enabled = false;
+                        btnSubCategoryAdd.Enabled = false;
+                    }
+                    else
+                    {
+                        cmbSubCategory.Enabled = true;
+                        btnSubCategoryAdd.Enabled = true;
+                    }
                 }
                 else
                 {
@@ -825,7 +879,7 @@ namespace LoginForm
             txtAddressTitle.Text = address.Title;
             txtPhone.Text = address.Phone;
             txtFax.Text = (address.Fax != null) ? address.Fax : String.Empty;
-            txtPoBox.Text = address.TownID.ToString();
+            txtPoBox.Text = address.PoBox.ToString();
             txtPostCode.Text = address.PostCode;
             txtAddressDetail.Text = address.AdressDetails;
 
@@ -1255,9 +1309,24 @@ namespace LoginForm
                     {
                         ErrorLog.Add("Phone must not be empty!");
                     }
-                    else if (!Utils.HasOnlyNumbers(txtContactName.Text))
+                    else if (!Utils.HasOnlyNumbers(txtContactPhone.Text))
                     {
                         ErrorLog.Add("The Phone number must be a numerical string!");
+                    }
+
+                    if (txtContactMobile.Text.Trim() != String.Empty && !Utils.HasOnlyNumbers(txtContactMobile.Text))
+                    {
+                        ErrorLog.Add("The Mobile number must be a numerical string!");
+                    }
+
+                    if (txtContactFax.Text.Trim() != String.Empty && !Utils.HasOnlyNumbers(txtContactFax.Text))
+                    {
+                        ErrorLog.Add("The Fax number must be a numerical string!");
+                    }
+
+                    if (txtExternalNumber.Text.Trim() != String.Empty && !Utils.HasOnlyNumbers(txtExternalNumber.Text))
+                    {
+                        ErrorLog.Add("The Extension number must be a numerical string!");
                     }
 
                     if (cmbLanguage.SelectedIndex <= 0)
@@ -1289,6 +1358,11 @@ namespace LoginForm
                 #region Address
                 case "Address":
 
+                    //if (txtExternalNumber.Text.Trim() != String.Empty && !Utils.HasOnlyNumbers(txtExternalNumber.Text))
+                    //{
+                    //    ErrorLog.Add("The Extension number must be a numerical string!");
+                    //}
+
                     if (txtAddressTitle.Text.Trim() == String.Empty)
                     {
                         ErrorLog.Add("Title must not be empty!");
@@ -1298,9 +1372,14 @@ namespace LoginForm
                     {
                         ErrorLog.Add("Phone must not be empty!");
                     }
-                    else if (!Utils.HasOnlyNumbers(txtContactName.Text))
+                    else if (!Utils.HasOnlyNumbers(txtPhone.Text))
                     {
                         ErrorLog.Add("The Phone number must be a numerical string!");
+                    }
+
+                    if (txtFax.Text.Trim() != String.Empty && !Utils.HasOnlyNumbers(txtFax.Text))
+                    {
+                        ErrorLog.Add("The Fax number must be a numerical string!");
                     }
 
                     if (txtPoBox.Text.Trim() == String.Empty)
@@ -1353,7 +1432,6 @@ namespace LoginForm
                 #endregion
                 #region General
                 case "General":
-
                     if (cmbRepresentative.SelectedIndex <= 0)
                     {
                         ErrorLog.Add("You should choose a Representative!");
@@ -1407,11 +1485,11 @@ namespace LoginForm
                     {
                         ErrorLog.Add("Discount Rate must not be empty!");
                     }
-                    else if (!Utils.HasOnlyNumbers(txtTaxNumber.Text))
+                    else if (!Utils.HasOnlyNumbers(txtDiscountRate.Text))
                     {
                         ErrorLog.Add("Discount rate must be a numerical string!");
                     }
-
+                    
                     if (cmbCurrency.SelectedIndex <= 0)
                     {
                         ErrorLog.Add("You should choose a Currency!");
