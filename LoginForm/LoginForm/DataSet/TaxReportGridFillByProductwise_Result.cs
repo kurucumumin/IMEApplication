@@ -10,7 +10,7 @@
 namespace LoginForm.DataSet
 {
     using System;
-
+    
     public partial class TaxReportGridFillByProductwise_Result
     {
         public decimal ID { get; set; }
@@ -21,7 +21,7 @@ namespace LoginForm.DataSet
         public string Bill_No { get; set; }
         public string Item { get; set; }
         public Nullable<decimal> Bill_Amount { get; set; }
-        public decimal Tax__ { get; set; }
+        public decimal Tax { get; set; }
         public Nullable<decimal> Tax_Amount { get; set; }
         public Nullable<decimal> Total_Amount { get; set; }
     }
