@@ -6,9 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data;
 using System.Data.SqlClient;
-using LoginForm.DataSet;
 
 namespace LoginForm.Account.Services
 {
@@ -21,7 +19,8 @@ namespace LoginForm.Account.Services
             DataTable dtbl = new DataTable();
             try
             {
-                //var adaptor = db.SalesInvoiceGridfillAgainestQuotationUsingQuotationDetails().ToList();
+                //TO DO: Sonradan Yapılacak.
+                //var adaptor = db.SalesInvoiceGridfillAgainestQuotationUsingQuotationDetails(decQuotationMasterId,salesOrderMasterId, voucherTypeId).ToList();
                 
             }
             catch (Exception ex)

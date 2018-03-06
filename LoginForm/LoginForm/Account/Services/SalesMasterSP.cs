@@ -537,5 +537,20 @@ namespace LoginForm.Account.Services
             }
             return isPos;
         }
+
+        public decimal SalesMasterIdViewByvoucherNoAndVoucherType(decimal decVoucherTypeId, string strVoucherNo)
+        {
+            IMEEntities IME = new IMEEntities();
+            decimal decStock = 0;
+            try
+            {
+                decStock = Convert.ToDecimal(IME.SalesMasterIdViewByvoucherNoAndVoucherType(strVoucherNo, decVoucherTypeId).FirstOrDefault());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return decStock;
+        }
     }
 }

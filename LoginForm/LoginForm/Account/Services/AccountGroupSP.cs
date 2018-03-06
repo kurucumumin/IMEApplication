@@ -11,7 +11,7 @@ namespace LoginForm.Account.Services
 {
     class AccountGroupSP
     {
-        
+
         public DataTable AccountGroupViewAllComboFillForAccountLedger()
         {
             DataTable dtbl = new DataTable();
@@ -48,7 +48,7 @@ namespace LoginForm.Account.Services
             }
             return dtbl;
         }
-       
+
         public decimal AccountGroupAddWithIdentity(AccountGroup a)
         {
             decimal decAccountGroupId = 0;
@@ -82,7 +82,7 @@ namespace LoginForm.Account.Services
             bool isEdit = false;
             try
             {
-                
+
                 int inAffectedRows = new IMEEntities().AccountGroupEdit(a.accountGroupId,
                     a.accountGroupName,
                     a.groupUnder.ToString(),
@@ -316,7 +316,7 @@ namespace LoginForm.Account.Services
             dtblAccountGroup.Columns.Add("AccountGroupId");
             dtblAccountGroup.Columns.Add("AccountGroupName");
             dtblAccountGroup.Columns.Add("Under");
-            
+
             try
             {
                 var adaptor = new IMEEntities().AccountGroupSearch(strAccountGroupName, strGroupUnder).ToList();
@@ -360,7 +360,7 @@ namespace LoginForm.Account.Services
             DataTable dtbl = new DataTable();
             try
             {
-                var adaptor = db.AccountGroupViewAllByGroupUnder(decaccountGroupId);
+                var adaptor = db.AccountGroupViewAllByGroupUnder(decaccountGroupId).ToList();
 
                 dtbl.Columns.Add("accountGroupId");
                 dtbl.Columns.Add("accountGroupName");

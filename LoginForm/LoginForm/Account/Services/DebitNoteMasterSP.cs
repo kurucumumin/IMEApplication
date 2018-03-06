@@ -282,5 +282,20 @@ namespace LoginForm.Account.Services
             }
             return debitnotemasterinfo;
         }
+
+        public decimal DebitNoteMasterIdView(decimal decVouchertypeid, string strVoucherNo)
+        {
+            IMEEntities IME = new IMEEntities();
+            decimal decid = 0;
+            try
+            {
+                decid = Convert.ToDecimal(IME.DebitNoteMasterIdView(decVouchertypeid, strVoucherNo).FirstOrDefault());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return decid;
+        }
     }
 }

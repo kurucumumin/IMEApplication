@@ -143,8 +143,6 @@ namespace LoginForm.Account.Services
             return dtbl;
         }
 
-
-
         public DataTable JournalReportSearchwithVoucherTypeId(string strFromDate, string strToDate, decimal decVoucherTypeId)
         {
             IMEEntities IME = new IMEEntities();
@@ -324,6 +322,21 @@ namespace LoginForm.Account.Services
             //    MessageBox.Show(ex.ToString());
             //}
             return dtbl;
+        }
+
+        public decimal JournalMasterIdView(decimal decVouchertypeid, string strVoucherNo)
+        {
+            IMEEntities IME = new IMEEntities();
+            decimal decid = 0;
+            try
+            {
+                decid = Convert.ToDecimal(IME.JournalMasterIdView(decVouchertypeid, strVoucherNo).FirstOrDefault());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return decid;
         }
     }
 }

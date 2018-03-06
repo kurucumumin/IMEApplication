@@ -454,5 +454,96 @@ namespace LoginForm.Account.Services
             }
             return dtbl;
         }
+
+        public DataTable ChequeReportGridFill(DateTime dtFromDate, DateTime dtTodate, DateTime dtChequefromDate, DateTime dtChequetoDate, bool isIssued, decimal decParty, string strChequeNo)
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            dtbl.Columns.Add("SlNo", typeof(decimal));
+            dtbl.Columns["SlNo"].AutoIncrement = true;
+            dtbl.Columns["SlNo"].AutoIncrementSeed = 1;
+            dtbl.Columns["SlNo"].AutoIncrementStep = 1;
+            string startext = "";
+            try
+            {
+                var adaptor = IME.ChequeReportGridFill(dtFromDate, dtTodate, dtChequefromDate, dtChequetoDate, isIssued, decParty.ToString(), startext, strChequeNo).ToList();
+
+                dtbl.Columns.Add("MasterId");
+                dtbl.Columns.Add("Voucher_Type");
+                dtbl.Columns.Add("Voucher_No");
+                dtbl.Columns.Add("Issued_Date");
+                dtbl.Columns.Add("Party");
+                dtbl.Columns.Add("Amount");
+                dtbl.Columns.Add("Cheque_No");
+                dtbl.Columns.Add("Cheque_Date");
+                dtbl.Columns.Add("ledgerId");
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["MasterId"] = item.MasterId;
+                    row["Voucher_Type"] = item.Voucher_Type;
+                    row["Voucher_No"] = item.Voucher_No;
+                    row["Issued_Date"] = item.Issued_Date;
+                    row["Party"] = item.Party;
+                    row["Amount"] = item.Amount;
+                    row["Cheque_No"] = item.Cheque_No;
+                    row["Cheque_Date"] = item.Cheque_Date;
+                    row["ledgerId"] = item.ledgerId;
+
+                    dtbl.Rows.Add(row);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
+
+        public DataTable ChequeReportPartyComboFill()
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = IME.ChequeReportPartyComboFill().ToList();
+
+                dtbl.Columns.Add("ledgerName");
+                dtbl.Columns.Add("ledgerId");
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["ledgerName"] = item.ledgerName;
+                    row["ledgerId"] = item.ledgerId;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
+
+        public decimal PdcPayableMasterIdView(decimal decVouchertypeid, string strVoucherNo)
+        {
+            IMEEntities IME = new IMEEntities();
+            decimal decid = 0;
+            try
+            {
+                decid = Convert.ToDecimal(IME.PdcPayableMasterIdView(decVouchertypeid, strVoucherNo).FirstOrDefault());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return decid;
+        }
     }
 }
