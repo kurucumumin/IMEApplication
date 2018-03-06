@@ -56,11 +56,11 @@ namespace LoginForm
         private void CSupplierMain_Load(object sender, EventArgs e)
         {
             ControlAutorization();
-            dgSupplier.DataSource = BringSuppierList(txtSearch.Text);
+            dgSupplier.DataSource = BringSupplierList(txtSearch.Text);
             dgSupplier.ClearSelection();
             initFillComboBoxes();
         }
-        private List<Supplier> BringSuppierList(string SupplierName)
+        private List<Supplier> BringSupplierList(string SupplierName)
         {
             if (SupplierName == null)
             {
@@ -233,6 +233,14 @@ namespace LoginForm
                                         db.SaveChanges();
                                         worker.supplierNoteID = n.ID;
                                     }
+
+                                    if(worker.SupplierAddress != null)
+                                    {
+                                        int addressID = db.SupplierAddresses.Where(x => x.SupplierID == s.ID && x.Title == worker.SupplierAddress.Title).FirstOrDefault().ID;
+                                        worker.SupplierAddress = null;
+                                        worker.supplieradressID = addressID;
+                                    }
+
                                     db.SupplierWorkers.Add(worker);
                                     db.SaveChanges();
                                 }
@@ -252,7 +260,7 @@ namespace LoginForm
                                 EnableAddressInput(false);
                                 EnableContactInput(false);
 
-                                gridSupplierList = BringSuppierList(txtSearch.Text);
+                                BringSupplierList(txtSearch.Text);
 
                                 btnAdd.Text = SupplierModeAdd;
                                 btnModify.Text = SupplierModeModify;
@@ -380,9 +388,14 @@ namespace LoginForm
             txtBankIban.Text = s.iban;
 
             txtWeb.Text = s.webadress ?? String.Empty;
-            txtSupplierNotes.Text = (s.Note != null) ? s.Note.Note_name : String.Empty;
-            txtAccountNotes.Text = (s.Note1 != null) ? s.Note1.Note_name : String.Empty;
+            txtSupplierNotes.Text = (s.Note1 != null) ? s.Note1.Note_name : String.Empty;
+            //txtAccountNotes.Text = (s.Note != null) ? s.Note.Note_name : String.Empty;
             
+            cmbContactAddress.DataSource = s.SupplierAddresses.ToList();
+            cmbContactAddress.DisplayMember = "Title";
+
+            cmbMainContact.DataSource = s.SupplierWorkers.ToList();
+
             string name = s.Worker1.NameLastName;
             cmbRepresentative.SelectedIndex = cmbRepresentative.FindStringExact(name);
 
@@ -407,8 +420,14 @@ namespace LoginForm
             name = s.SupplierBank.bankname;
             cmbBankName.SelectedIndex = cmbBankName.FindStringExact(name);
 
+            name = s.SupplierWorker.sw_name;
+            cmbMainContact.SelectedIndex = cmbMainContact.FindStringExact(name);
 
-            foreach(SupplierAddress sa in s.SupplierAddresses)
+            name = s.SupplierWorker.sw_name;
+            cmbMainContact.SelectedIndex = cmbMainContact.FindStringExact(name);
+
+
+            foreach (SupplierAddress sa in s.SupplierAddresses)
             {
                 SavedAddresses.Add(sa);
             }
@@ -418,7 +437,6 @@ namespace LoginForm
             lbAddressList.ClearSelected();
             lbAddressList.Enabled = true;
 
-            cmbContactAddress.DataSource = s.SupplierAddresses.ToList();
 
             foreach (SupplierWorker sw in s.SupplierWorkers)
             {
@@ -1139,7 +1157,7 @@ namespace LoginForm
 
                     if (cmbDepartment.SelectedIndex > 0) { worker.departmentID = ((CustomerDepartment)cmbDepartment.SelectedItem).ID; }
                     if (cmbPosition.SelectedIndex > 0) { worker.titleID = ((CustomerTitle)cmbPosition.SelectedItem).ID; }
-                    if (cmbContactAddress.SelectedIndex > 0) { worker.SupplierAddress = (SupplierAddress)cmbContactAddress.SelectedItem; }
+                    if (cmbContactAddress.SelectedIndex >= 0) { worker.SupplierAddress = (SupplierAddress)cmbContactAddress.SelectedItem; }
 
                     if (txtContactNotes.Text != String.Empty)
                     {
