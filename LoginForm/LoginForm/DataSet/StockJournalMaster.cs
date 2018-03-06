@@ -18,6 +18,7 @@ namespace LoginForm.DataSet
         public StockJournalMaster()
         {
             this.StockJournalDetails = new HashSet<StockJournalDetail>();
+            this.StockJournalDetails1 = new HashSet<StockJournalDetail>();
         }
     
         public decimal stockJournalMasterId { get; set; }
@@ -35,6 +36,8 @@ namespace LoginForm.DataSet
         public virtual FinancialYear FinancialYear { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StockJournalDetail> StockJournalDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StockJournalDetail> StockJournalDetails1 { get; set; }
         public virtual SuffixPrefix SuffixPrefix { get; set; }
         public virtual VoucherType VoucherType { get; set; }
     }

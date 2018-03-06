@@ -665,6 +665,9 @@
     <Compile Include="DataSet\AgeingReportFillByReceivable_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\AgeingReportLedgerPayable_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\AgeingReportLedgerReceivable_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
