@@ -337,27 +337,31 @@ namespace LoginForm
                     }
                     break;
                 case "Cancel":
-                    if (SupplierAddMode == "Add")
-                    {
-                        // Clear all input areas and close them
-                        
-                    }
-                    else
-                    {
-                        // Just close Inputs
-                    }
-                    dgSupplier.ClearSelection();
-                    AddressButtonsMode(AddressButtonsModeClose);
-                    ContactButtonsMode(ContactButtonsModeClose);
-                    SupplierAddMode = String.Empty;
-                    EnableAddressInput(false);
-                    EnableContactInput(false);
-                    btnAdd.Text = "Add";
-                    btnModify.Text = "Modify";
-                    EnableGeneralInput(false);
                     ClearGeneralInputs();
                     ClearAddressInputs();
                     ClearContactInputs();
+
+                    if (SupplierAddMode == "Add")
+                    {
+                        dgSupplier.ClearSelection();
+                    }
+                    else
+                    {
+                        FillSupplierInfo(dgSupplier.CurrentRow.Cells[iDDataGridViewTextBoxColumn.Index].Value.ToString());
+                        lbAddressList.Enabled = true;
+                        lbContacts.Enabled = true;
+
+                    }
+                    AddressButtonsMode(AddressButtonsModeClose);
+                    ContactButtonsMode(ContactButtonsModeClose);
+
+                    EnableAddressInput(false);
+                    EnableContactInput(false);
+                    EnableGeneralInput(false);
+                    EnableGeneralInput(false);
+                    btnAdd.Text = "Add";
+                    btnModify.Text = "Modify";
+                    SupplierAddMode = String.Empty;
 
 
                     break;
@@ -394,6 +398,7 @@ namespace LoginForm
             cmbContactAddress.DataSource = s.SupplierAddresses.ToList();
             cmbContactAddress.DisplayMember = "Title";
 
+            cmbMainContact.DisplayMember = "sw_name";
             cmbMainContact.DataSource = s.SupplierWorkers.ToList();
 
             string name = s.Worker1.NameLastName;
@@ -423,10 +428,7 @@ namespace LoginForm
             name = s.SupplierWorker.sw_name;
             cmbMainContact.SelectedIndex = cmbMainContact.FindStringExact(name);
 
-            name = s.SupplierWorker.sw_name;
-            cmbMainContact.SelectedIndex = cmbMainContact.FindStringExact(name);
-
-
+            SavedAddresses.Clear();
             foreach (SupplierAddress sa in s.SupplierAddresses)
             {
                 SavedAddresses.Add(sa);
@@ -437,7 +439,7 @@ namespace LoginForm
             lbAddressList.ClearSelected();
             lbAddressList.Enabled = true;
 
-
+            SavedContacts.Clear();
             foreach (SupplierWorker sw in s.SupplierWorkers)
             {
                 SavedContacts.Add(sw);
@@ -465,8 +467,6 @@ namespace LoginForm
             cmbAccountMethod.SelectedIndex = 0;
             txtDiscountRate.Clear();
             cmbCurrency.SelectedIndex = 0;
-            //cmbInvoiceCurrency.SelectedIndex = 0;
-            //txtAccountNotes.Clear();
 
             cmbBankName.SelectedIndex = 0;
             txtBankBranchCode.Clear();
