@@ -321,11 +321,29 @@
     <Compile Include="Account\Reminder\frmStock.designer.cs">
       <DependentUpon>frmStock.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\Reports\frmAgeingReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Reports\frmAgeingReport.designer.cs">
+      <DependentUpon>frmAgeingReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Reports\frmChequeReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Reports\frmChequeReport.designer.cs">
+      <DependentUpon>frmChequeReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\Reports\frmCreditNoteReport.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Account\Reports\frmCreditNoteReport.designer.cs">
       <DependentUpon>frmCreditNoteReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Reports\frmDayBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Reports\frmDayBook.designer.cs">
+      <DependentUpon>frmDayBook.cs</DependentUpon>
     </Compile>
     <Compile Include="Account\Reports\frmJournalReport.cs">
       <SubType>Form</SubType>
@@ -380,6 +398,12 @@
     </Compile>
     <Compile Include="Account\Reports\frmSalesReturnReport.Designer.cs">
       <DependentUpon>frmSalesReturnReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Reports\frmTaxReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Reports\frmTaxReport.designer.cs">
+      <DependentUpon>frmTaxReport.cs</DependentUpon>
     </Compile>
     <Compile Include="Account\Search\frmVoucherSearch.cs">
       <SubType>Form</SubType>
@@ -1749,6 +1773,12 @@
     <Compile Include="Supplier\CemSupplierMainCem.designer.cs">
       <DependentUpon>CemSupplierMainCem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Supplier\DeletedSupplierMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supplier\DeletedSupplierMain.Designer.cs">
+      <DependentUpon>DeletedSupplierMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Supplier\frmSupplierCategoryAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1760,12 +1790,6 @@
     </Compile>
     <Compile Include="Supplier\frmSupplierSubCategoryAdd.designer.cs">
       <DependentUpon>frmSupplierSubCategoryAdd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Supplier\DeletedSupplierMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Supplier\DeletedSupplierMain.Designer.cs">
-      <DependentUpon>DeletedSupplierMain.cs</DependentUpon>
     </Compile>
     <Compile Include="User\FormUsersMain.cs">
       <SubType>Form</SubType>
@@ -1897,8 +1921,17 @@
     <EmbeddedResource Include="Account\Reminder\frmStock.resx">
       <DependentUpon>frmStock.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Account\Reports\frmAgeingReport.resx">
+      <DependentUpon>frmAgeingReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\Reports\frmChequeReport.resx">
+      <DependentUpon>frmChequeReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Account\Reports\frmCreditNoteReport.resx">
       <DependentUpon>frmCreditNoteReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\Reports\frmDayBook.resx">
+      <DependentUpon>frmDayBook.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Reports\frmJournalReport.resx">
       <DependentUpon>frmJournalReport.cs</DependentUpon>
@@ -1926,6 +1959,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Reports\frmSalesReturnReport.resx">
       <DependentUpon>frmSalesReturnReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\Reports\frmTaxReport.resx">
+      <DependentUpon>frmTaxReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Search\frmVoucherSearch.resx">
       <DependentUpon>frmVoucherSearch.cs</DependentUpon>
@@ -2105,14 +2141,14 @@
     <EmbeddedResource Include="Supplier\CemSupplierMainCem.resx">
       <DependentUpon>CemSupplierMainCem.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Supplier\DeletedSupplierMain.resx">
+      <DependentUpon>DeletedSupplierMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Supplier\frmSupplierCategoryAdd.resx">
       <DependentUpon>frmSupplierCategoryAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Supplier\frmSupplierSubCategoryAdd.resx">
       <DependentUpon>frmSupplierSubCategoryAdd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Supplier\DeletedSupplierMain.resx">
-      <DependentUpon>DeletedSupplierMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\FormUsersMain.resx">
       <DependentUpon>FormUsersMain.cs</DependentUpon>
