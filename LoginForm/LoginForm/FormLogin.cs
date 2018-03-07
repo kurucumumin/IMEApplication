@@ -78,15 +78,15 @@ namespace LoginForm
 
             //
             ////for admin to see everything
-            RoleValue admin = IME.RoleValues.Where(a => a.RoleID == 1009).FirstOrDefault();
-            foreach (AuthorizationValue item in IME.AuthorizationValues)
-            {
-                if (admin.AuthorizationValues.Where(a => a.AuthorizationID == item.AuthorizationID).FirstOrDefault() == null)
-                {
-                    admin.AuthorizationValues.Add(item);
-                }
-            }
-            IME.SaveChanges();
+            //RoleValue admin = IME.RoleValues.Where(a => a.RoleID == 1009).FirstOrDefault();
+            //foreach (AuthorizationValue item in IME.AuthorizationValues)
+            //{
+            //    if (admin.AuthorizationValues.Where(a => a.AuthorizationID == item.AuthorizationID).FirstOrDefault() == null)
+            //    {
+            //        admin.AuthorizationValues.Add(item);
+            //    }
+            //}
+            //IME.SaveChanges();
 
             //txtReader.excelCustomerCategory1();
             //Rate DolarRate1 = new Rate();
