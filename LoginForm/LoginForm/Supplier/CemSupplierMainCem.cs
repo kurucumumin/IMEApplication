@@ -159,6 +159,10 @@ namespace LoginForm
             switch (btnAdd.Text)
             {
                 case "Add":
+                    ClearGeneralInputs();
+                    ClearAddressInputs();
+                    ClearContactInputs();
+                    cmbMainContact.DataSource = null;
                     SupplierAddMode = SupplierModeAdd;
                     EnableGeneralInput(true);
 
@@ -170,104 +174,249 @@ namespace LoginForm
                 case "Save":
                     if (SupplierAddMode == SupplierModeAdd)
                     {
-                        if (!InputErrorExist(EmptyCheckTypeGeneral))
+                        SaveNewSupplier();
+                    }else if (SupplierAddMode == SupplierModeModify)
+                    {
+                        SaveModifiedSupplier();
+                    }
+                    break;
+            }
+        }
+
+        private void SaveModifiedSupplier()
+        {
+            if (!InputErrorExist(EmptyCheckTypeGeneral))
+            {
+                IMEEntities db = new IMEEntities();
+                try
+                {
+                    Supplier s = db.Suppliers.Where(x => x.ID == txtSupplierCode.Text).FirstOrDefault();
+                    s.representaryID = ((Worker)cmbRepresentative.SelectedItem).WorkerID;
+                    s.s_name = txtName.Text;
+                    s.CategoryID = ((SupplierCategory)cmbMainCategory.SelectedItem).ID;
+                    s.SubCategoryID = ((SupplierSubCategory)cmbSubCategory.SelectedItem).ID;
+                    s.taxoffice = txtTaxOffice.Text;
+                    s.taxnumber = txtTaxNumber.Text;
+                    s.accountrepresentaryID = ((Worker)cmbAccountRep.SelectedItem).WorkerID;
+                    s.payment_termID = ((PaymentTerm)cmbAccountTerms.SelectedItem).ID;
+                    s.paymentmethodID = ((PaymentMethod)cmbAccountMethod.SelectedItem).ID;
+                    s.discountrate = Convert.ToDecimal(txtDiscountRate.Text);
+                    s.DefaultCurrency = ((Currency)cmbCurrency.SelectedItem).currencyID;
+                    s.BankID = ((SupplierBank)cmbBankName.SelectedItem).ID;
+                    s.branchcode = txtBankBranchCode.Text;
+                    s.accountnumber = txtBankAccountNumber.Text;
+                    s.iban = txtBankIban.Text;
+
+                    s.webadress = (txtWeb.Text != String.Empty) ? txtWeb.Text : null;
+
+                    if (s.Note1 == null)
+                    {
+                        if (txtSupplierNotes.Text != String.Empty)
                         {
-                            IMEEntities db = new IMEEntities();
                             try
                             {
-                                Supplier s = new Supplier();
-                                s.ID = txtSupplierCode.Text;
-                                s.representaryID = ((Worker)cmbRepresentative.SelectedItem).WorkerID;
-                                s.s_name = txtName.Text;
-                                s.CategoryID = ((SupplierCategory)cmbMainCategory.SelectedItem).ID;
-                                s.SubCategoryID = ((SupplierSubCategory)cmbSubCategory.SelectedItem).ID;
-                                s.taxoffice = txtTaxOffice.Text;
-                                s.taxnumber = txtTaxNumber.Text;
-                                s.accountrepresentaryID = ((Worker)cmbAccountRep.SelectedItem).WorkerID;
-                                s.payment_termID = ((PaymentTerm)cmbAccountTerms.SelectedItem).ID;
-                                s.paymentmethodID = ((PaymentMethod)cmbAccountMethod.SelectedItem).ID;
-                                s.discountrate = Convert.ToDecimal(txtDiscountRate.Text);
-                                s.DefaultCurrency = ((Currency)cmbCurrency.SelectedItem).currencyID;
-                                s.BankID = ((SupplierBank)cmbBankName.SelectedItem).ID;
-                                s.branchcode = txtBankBranchCode.Text;
-                                s.accountnumber = txtBankAccountNumber.Text;
-                                s.iban = txtBankIban.Text;
-
-                                s.webadress = (txtWeb.Text != String.Empty) ? txtWeb.Text : null;
-
-                                if (txtSupplierNotes.Text != String.Empty)
-                                {
-                                    try
-                                    {
-                                        Note n = new Note();
-                                        n.Note_name = txtSupplierNotes.Text;
-                                        db.Notes.Add(n);
-                                        db.SaveChanges();
-
-                                        s.SupplierNoteID = n.ID;
-                                    }
-                                    catch (Exception ex)
-                                    {
-                                        MessageBox.Show("SN1: SupplierNote could not be added!." + "/n" + ex.ToString(), "Note Saving Error");
-                                    }
-                                }
-
-                                db.Suppliers.Add(s);
+                                Note n = new Note();
+                                n.Note_name = txtSupplierNotes.Text;
+                                db.Notes.Add(n);
                                 db.SaveChanges();
 
-
-                                foreach (SupplierAddress address in SavedAddresses)
-                                {
-                                    db.SupplierAddresses.Add(address);
-                                    db.SaveChanges();
-                                }
-
-
-                                foreach (SupplierWorker worker in SavedContacts)
-                                {
-                                    if(worker.Note != null)
-                                    {
-                                        Note n = worker.Note;
-                                        worker.Note = null;
-                                        db.Notes.Add(n);
-                                        db.SaveChanges();
-                                        worker.supplierNoteID = n.ID;
-                                    }
-
-                                    if(worker.SupplierAddress != null)
-                                    {
-                                        int addressID = db.SupplierAddresses.Where(x => x.SupplierID == s.ID && x.Title == worker.SupplierAddress.Title).FirstOrDefault().ID;
-                                        worker.SupplierAddress = null;
-                                        worker.supplieradressID = addressID;
-                                    }
-
-                                    db.SupplierWorkers.Add(worker);
-                                    db.SaveChanges();
-                                }
-                                s.MainContactID = db.SupplierWorkers.Where(x => x.supplierID == s.ID).FirstOrDefault().ID;
-                                db.SaveChanges();
+                                s.SupplierNoteID = n.ID;
                             }
                             catch (Exception ex)
                             {
-                                MessageBox.Show("S1:An error occured while saving the Supplier! Try Again Later /n" + ex.ToString() , "Error");
-                                throw;
-                            }
-                            finally
-                            {
-                                SupplierAddMode = String.Empty;
-                                dgSupplier.DataSource = new IMEEntities().Suppliers.ToList();
-                                EnableGeneralInput(false);
-                                EnableAddressInput(false);
-                                EnableContactInput(false);
-
-                                BringSupplierList(txtSearch.Text);
-
-                                btnAdd.Text = SupplierModeAdd;
-                                btnModify.Text = SupplierModeModify;
+                                MessageBox.Show("SN1: SupplierNote could not been updated!." + "/n" + ex.ToString(), "Note Update Error");
                             }
                         }
                     }
-                    break;
+                    else
+                    {
+                        Note n = db.Notes.Where(x => x.ID == s.Note1.ID).FirstOrDefault();
+                        if (txtSupplierNotes.Text != String.Empty)
+                        {
+                            n.Note_name = txtSupplierNotes.Text;
+                        }
+                        else
+                        {
+                            db.Notes.Remove(n);
+                            s.Note1 = null;
+                        }
+                        db.SaveChanges();
+                    }
+                    db.SaveChanges();
+
+
+                    foreach (SupplierAddress a in SavedAddresses)
+                    {
+                        if (a.ID == 0)
+                        {
+                            db.SupplierAddresses.Add(a);
+                        }
+                        else
+                        {
+                            SupplierAddress sa = db.SupplierAddresses.Where(x => x.ID == a.ID).FirstOrDefault();
+                            sa.AdressDetails = a.AdressDetails;
+                            sa.TownID = a.TownID;
+                            sa.CityID = a.CityID;
+                            sa.CountryID = a.CountryID;
+                            sa.Fax = a.Fax;
+                            sa.Phone = a.Phone;
+                            sa.PoBox = a.PoBox;
+                            sa.PostCode = a.PostCode;
+                            sa.Title = a.Title;
+                        }
+                        db.SaveChanges();
+                    }
+
+
+                    foreach (SupplierWorker worker in SavedContacts)
+                    {
+                        SupplierWorker w = db.SupplierWorkers.Where(x => x.ID == worker.ID).FirstOrDefault();
+                        if (worker.Note != null)
+                        {
+                            Note n = db.Notes.Where(x => x.ID == worker.Note.ID).FirstOrDefault();
+                            if (worker.Note.Note_name == String.Empty)
+                            {
+                                db.Notes.Remove(n);
+                            }
+                            else
+                            {
+                                n.Note_name = worker.Note.Note_name;
+                                worker.supplierNoteID = n.ID;
+                                worker.Note = null;
+                            }
+                            db.SaveChanges();
+                        }
+
+                        if (worker.SupplierAddress != null)
+                        {
+                            int addressID = db.SupplierAddresses.Where(x => x.SupplierID == s.ID && x.Title == worker.SupplierAddress.Title).FirstOrDefault().ID;
+                            worker.SupplierAddress = null;
+                            worker.supplieradressID = addressID;
+                        }
+                        db.SaveChanges();
+                    }
+                    s.MainContactID = db.SupplierWorkers.Where(x => x.supplierID == s.ID).FirstOrDefault().ID;
+                    db.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("S1:An error occured while updating the Supplier! Try Again Later /n" + ex.ToString(), "Error");
+                    throw;
+                }
+                finally
+                {
+                    SupplierAddMode = String.Empty;
+                    dgSupplier.DataSource = new IMEEntities().Suppliers.ToList();
+                    EnableGeneralInput(false);
+                    EnableAddressInput(false);
+                    EnableContactInput(false);
+
+                    BringSupplierList(txtSearch.Text);
+
+                    btnAdd.Text = SupplierModeAdd;
+                    btnModify.Text = SupplierModeModify;
+                }
+
+            }
+        }
+
+        private void SaveNewSupplier()
+        {
+            if (!InputErrorExist(EmptyCheckTypeGeneral))
+            {
+                IMEEntities db = new IMEEntities();
+                try
+                {
+                    Supplier s = new Supplier();
+                    s.ID = txtSupplierCode.Text;
+                    s.representaryID = ((Worker)cmbRepresentative.SelectedItem).WorkerID;
+                    s.s_name = txtName.Text;
+                    s.CategoryID = ((SupplierCategory)cmbMainCategory.SelectedItem).ID;
+                    s.SubCategoryID = ((SupplierSubCategory)cmbSubCategory.SelectedItem).ID;
+                    s.taxoffice = txtTaxOffice.Text;
+                    s.taxnumber = txtTaxNumber.Text;
+                    s.accountrepresentaryID = ((Worker)cmbAccountRep.SelectedItem).WorkerID;
+                    s.payment_termID = ((PaymentTerm)cmbAccountTerms.SelectedItem).ID;
+                    s.paymentmethodID = ((PaymentMethod)cmbAccountMethod.SelectedItem).ID;
+                    s.discountrate = Convert.ToDecimal(txtDiscountRate.Text);
+                    s.DefaultCurrency = ((Currency)cmbCurrency.SelectedItem).currencyID;
+                    s.BankID = ((SupplierBank)cmbBankName.SelectedItem).ID;
+                    s.branchcode = txtBankBranchCode.Text;
+                    s.accountnumber = txtBankAccountNumber.Text;
+                    s.iban = txtBankIban.Text;
+
+                    s.webadress = (txtWeb.Text != String.Empty) ? txtWeb.Text : null;
+
+                    if (txtSupplierNotes.Text != String.Empty)
+                    {
+                        try
+                        {
+                            Note n = new Note();
+                            n.Note_name = txtSupplierNotes.Text;
+                            db.Notes.Add(n);
+                            db.SaveChanges();
+
+                            s.SupplierNoteID = n.ID;
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("SN1: SupplierNote could not be added!." + "/n" + ex.ToString(), "Note Saving Error");
+                        }
+                    }
+
+                    db.Suppliers.Add(s);
+                    db.SaveChanges();
+
+
+                    foreach (SupplierAddress address in SavedAddresses)
+                    {
+                        db.SupplierAddresses.Add(address);
+                        db.SaveChanges();
+                    }
+
+
+                    foreach (SupplierWorker worker in SavedContacts)
+                    {
+                        if (worker.Note != null)
+                        {
+                            Note n = worker.Note;
+                            worker.Note = null;
+                            db.Notes.Add(n);
+                            db.SaveChanges();
+                            worker.supplierNoteID = n.ID;
+                        }
+
+                        if (worker.SupplierAddress != null)
+                        {
+                            int addressID = db.SupplierAddresses.Where(x => x.SupplierID == s.ID && x.Title == worker.SupplierAddress.Title).FirstOrDefault().ID;
+                            worker.SupplierAddress = null;
+                            worker.supplieradressID = addressID;
+                        }
+
+                        db.SupplierWorkers.Add(worker);
+                        db.SaveChanges();
+                    }
+                    s.MainContactID = db.SupplierWorkers.Where(x => x.supplierID == s.ID).FirstOrDefault().ID;
+                    db.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("S1:An error occured while saving the Supplier! Try Again Later /n" + ex.ToString(), "Error");
+                    throw;
+                }
+                finally
+                {
+                    SupplierAddMode = String.Empty;
+                    dgSupplier.DataSource = new IMEEntities().Suppliers.ToList();
+                    EnableGeneralInput(false);
+                    EnableAddressInput(false);
+                    EnableContactInput(false);
+
+                    BringSupplierList(txtSearch.Text);
+
+                    btnAdd.Text = SupplierModeAdd;
+                    btnModify.Text = SupplierModeModify;
+                }
             }
         }
 
@@ -311,13 +460,11 @@ namespace LoginForm
             txtBankAccountNumber.Enabled = state;
             txtBankIban.Enabled = state;
             if (!state)
-            {
+            {   
                 cmbCountry.SelectedIndex = 0;
             }
         }
-
         
-
         private void btnModify_Click(object sender, EventArgs e)
         {
             switch (btnModify.Text)
@@ -1499,11 +1646,12 @@ namespace LoginForm
                         ErrorLog.Add("You should choose a Payment Method!");
                     }
 
+                    decimal rate;
                     if (txtDiscountRate.Text.Trim() == String.Empty)
                     {
                         ErrorLog.Add("Discount Rate must not be empty!");
                     }
-                    else if (!Utils.HasOnlyNumbers(txtDiscountRate.Text))
+                    else if (!Decimal.TryParse(txtDiscountRate.Text,out rate))
                     {
                         ErrorLog.Add("Discount rate must be a numerical string!");
                     }
