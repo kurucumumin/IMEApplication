@@ -910,5 +910,47 @@ namespace LoginForm.Account.Services
             }
             return dtbl;
         }
+
+        public DataTable CashOrBankBookGridFill(DateTime fromDate, DateTime toDate, bool isShowOpBalance)
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = IME.CashOrBankBookGridFill(fromDate, toDate, isShowOpBalance).ToList();
+
+
+                dtbl.Columns.Add("accountGroupId");
+                dtbl.Columns.Add("SlNO");
+                dtbl.Columns.Add("accountGroupName");
+                dtbl.Columns.Add("Opening");
+                dtbl.Columns.Add("op");
+                dtbl.Columns.Add("Credit");
+                dtbl.Columns.Add("Debit");
+                dtbl.Columns.Add("Balance");
+
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["accountGroupId"] = item.accountGroupId;
+                    row["SlNO"] = item.SlNO;
+                    row["accountGroupName"] = item.accountGroupName;
+                    row["Opening"] = item.Opening;
+                    row["op"] = item.op;
+                    row["Credit"] = item.Credit;
+                    row["Debit"] = item.Debit;
+                    row["Balance"] = item.Balance;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("CB01" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            return dtbl;
+        }
     }
 }

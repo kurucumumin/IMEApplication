@@ -1114,6 +1114,23 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CashFlowReportPrintCompany_Result>("CashFlowReportPrintCompany");
         }
     
+        public virtual ObjectResult<CashOrBankBookGridFill_Result> CashOrBankBookGridFill(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, Nullable<bool> isShowOpeningBalance)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            var isShowOpeningBalanceParameter = isShowOpeningBalance.HasValue ?
+                new ObjectParameter("isShowOpeningBalance", isShowOpeningBalance) :
+                new ObjectParameter("isShowOpeningBalance", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CashOrBankBookGridFill_Result>("CashOrBankBookGridFill", fromDateParameter, toDateParameter, isShowOpeningBalanceParameter);
+        }
+    
         public virtual ObjectResult<CashOrBankComboFill_Result> CashOrBankComboFill()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CashOrBankComboFill_Result>("CashOrBankComboFill");

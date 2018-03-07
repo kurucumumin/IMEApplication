@@ -6736,6 +6736,11 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Parameter Name="budgetMasterId" Type="numeric" Mode="In" />
         </Function>
         <Function Name="CashFlowReportPrintCompany" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="CashOrBankBookGridFill" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+          <Parameter Name="isShowOpeningBalance" Type="bit" Mode="In" />
+        </Function>
         <Function Name="CashOrBankComboFill" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="CheckForDefaultVoucherType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
@@ -18653,6 +18658,11 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <Parameter Name="budgetMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="CashFlowReportPrintCompany" ReturnType="Collection(IMEModel.CashFlowReportPrintCompany_Result)" />
+          <FunctionImport Name="CashOrBankBookGridFill" ReturnType="Collection(IMEModel.CashOrBankBookGridFill_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+            <Parameter Name="isShowOpeningBalance" Mode="In" Type="Boolean" />
+          </FunctionImport>
           <FunctionImport Name="CashOrBankComboFill" ReturnType="Collection(IMEModel.CashOrBankComboFill_Result)" />
           <FunctionImport Name="CheckForDefaultVoucherType" ReturnType="Collection(Int32)">
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
@@ -20435,6 +20445,16 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="String" Name="phone" Nullable="true" />
           <Property Type="String" Name="email" Nullable="true" />
           <Property Type="String" Name="currencyName" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="CashOrBankBookGridFill_Result">
+          <Property Type="Int32" Name="accountGroupId" Nullable="false" />
+          <Property Type="Int64" Name="SlNO" Nullable="true" />
+          <Property Type="String" Name="accountGroupName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Opening" Nullable="true" />
+          <Property Type="Decimal" Name="op" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Credit" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Debit" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="Balance" Nullable="true" />
         </ComplexType>
         <ComplexType Name="CashOrBankComboFill_Result">
           <Property Type="String" Name="ledgerName" Nullable="true" />
@@ -24541,6 +24561,20 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="phone" ColumnName="phone" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="currencyName" ColumnName="currencyName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CashOrBankBookGridFill" FunctionName="IMEModel.Store.CashOrBankBookGridFill">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.CashOrBankBookGridFill_Result">
+                <ScalarProperty Name="accountGroupId" ColumnName="accountGroupId" />
+                <ScalarProperty Name="SlNO" ColumnName="SlNO" />
+                <ScalarProperty Name="accountGroupName" ColumnName="accountGroupName" />
+                <ScalarProperty Name="Opening" ColumnName="Opening" />
+                <ScalarProperty Name="op" ColumnName="op" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+                <ScalarProperty Name="Debit" ColumnName="Debit" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
