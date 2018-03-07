@@ -641,6 +641,7 @@
     <Compile Include="DataSet\AccountGroupHierarchy_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\AccountGroupReportViewAll_Result.cs" />
     <Compile Include="DataSet\AccountGroupSearch_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -665,6 +666,7 @@
     <Compile Include="DataSet\AccountLedgerGetGroupUnderFunction_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\AccountLedgerReportFill_Result.cs" />
     <Compile Include="DataSet\AccountLedgerSearchForServiceAccountUnderIncome_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -677,6 +679,7 @@
     <Compile Include="DataSet\AccountLedgerViewAll_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\AccountLedgerViewByAccountGroup_Result.cs" />
     <Compile Include="DataSet\AccountLedgerViewForAdditionalCost_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -791,6 +794,7 @@
     <Compile Include="DataSet\CashFlowReportPrintCompany_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\CashOrBankBookGridFill_Result.cs" />
     <Compile Include="DataSet\CashOrBankComboFill_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -807,6 +811,7 @@
     <Compile Include="DataSet\Company.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\CompanyViewAll_Result.cs" />
     <Compile Include="DataSet\CompanyView_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>

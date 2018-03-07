@@ -293,6 +293,15 @@ namespace LoginForm
                             worker.SupplierAddress = null;
                             worker.supplieradressID = addressID;
                         }
+                        w.departmentID = worker.departmentID;
+                        w.languageID = worker.languageID;
+                        w.mobilephone = worker.mobilephone;
+                        w.phone = worker.phone;
+                        w.fax = worker.fax;
+                        w.PhoneExternalNum = worker.PhoneExternalNum;
+                        w.sw_email = worker.sw_email;
+                        w.sw_name = worker.sw_name;
+                        w.titleID = worker.titleID;
                         db.SaveChanges();
                     }
                     s.MainContactID = db.SupplierWorkers.Where(x => x.supplierID == s.ID).FirstOrDefault().ID;
@@ -452,8 +461,16 @@ namespace LoginForm
             //txtAccountNotes.Enabled = state;
 
             btnAddressAdd.Enabled = state;
+            if(lbAddressList.Items.Count > 0)
+            {
+                btnAddressUpdate.Enabled = state;
+            }
 
             btnContactNew.Enabled = state;
+            if (lbContacts.Items.Count > 0)
+            {
+                btnContactUpdate.Enabled = state;
+            }
 
             cmbBankName.Enabled = state;
             txtBankBranchCode.Enabled = state;
