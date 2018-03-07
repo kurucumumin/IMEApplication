@@ -1222,6 +1222,11 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CompanyView_Result>("CompanyView", companyIdParameter);
         }
     
+        public virtual ObjectResult<CompanyViewAll_Result> CompanyViewAll()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CompanyViewAll_Result>("CompanyViewAll");
+        }
+    
         public virtual ObjectResult<Nullable<decimal>> CreditNoteMasterIdView(Nullable<decimal> voucherTypeId, string voucherNo)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
@@ -3998,6 +4003,19 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("RSInvoiceADD", shipmentReferenceParameter, billingDocumentReferenceParameter, shippingConditionParameter, billingDocumentDateParameter, supplyingECCompanyParameter, customerReferenceParameter, invoiceTaxValueParameter, invoiceGoodsValueParameter, invoiceNettValueParameter, currencyParameter, airwayBillNumberParameter);
         }
     
+        public virtual ObjectResult<string> SaleMasterGetPos(Nullable<decimal> salemasterId, string voucherName)
+        {
+            var salemasterIdParameter = salemasterId.HasValue ?
+                new ObjectParameter("salemasterId", salemasterId) :
+                new ObjectParameter("salemasterId", typeof(decimal));
+    
+            var voucherNameParameter = voucherName != null ?
+                new ObjectParameter("voucherName", voucherName) :
+                new ObjectParameter("voucherName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SaleMasterGetPos", salemasterIdParameter, voucherNameParameter);
+        }
+    
         public virtual ObjectResult<SalesAccountComboFill_Result> SalesAccountComboFill()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SalesAccountComboFill_Result>("SalesAccountComboFill");
@@ -6108,6 +6126,40 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UnitConversionIdAndConRateViewallByProductId_Result>("UnitConversionIdAndConRateViewallByProductId", productIdParameter);
         }
     
+        public virtual int VatGridFill(Nullable<System.DateTime> fromdate, Nullable<System.DateTime> todate, string voucherName, Nullable<decimal> voucherTypeId, string format, string tax)
+        {
+            var fromdateParameter = fromdate.HasValue ?
+                new ObjectParameter("fromdate", fromdate) :
+                new ObjectParameter("fromdate", typeof(System.DateTime));
+    
+            var todateParameter = todate.HasValue ?
+                new ObjectParameter("todate", todate) :
+                new ObjectParameter("todate", typeof(System.DateTime));
+    
+            var voucherNameParameter = voucherName != null ?
+                new ObjectParameter("voucherName", voucherName) :
+                new ObjectParameter("voucherName", typeof(string));
+    
+            var voucherTypeIdParameter = voucherTypeId.HasValue ?
+                new ObjectParameter("voucherTypeId", voucherTypeId) :
+                new ObjectParameter("voucherTypeId", typeof(decimal));
+    
+            var formatParameter = format != null ?
+                new ObjectParameter("format", format) :
+                new ObjectParameter("format", typeof(string));
+    
+            var taxParameter = tax != null ?
+                new ObjectParameter("tax", tax) :
+                new ObjectParameter("tax", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("VatGridFill", fromdateParameter, todateParameter, voucherNameParameter, voucherTypeIdParameter, formatParameter, taxParameter);
+        }
+    
+        public virtual ObjectResult<string> VatViewTaxNames()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("VatViewTaxNames");
+        }
+    
         public virtual ObjectResult<Nullable<decimal>> VoucherNumberAutomaicGeneration(Nullable<decimal> voucherTypeId, Nullable<System.DateTime> date, string tab_name, Nullable<decimal> txtBox)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
@@ -6127,6 +6179,19 @@ namespace LoginForm.DataSet
                 new ObjectParameter("txtBox", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("VoucherNumberAutomaicGeneration", voucherTypeIdParameter, dateParameter, tab_nameParameter, txtBoxParameter);
+        }
+    
+        public virtual int VoucherreportsumQty(Nullable<decimal> salesMasterId, string voucherTypeName)
+        {
+            var salesMasterIdParameter = salesMasterId.HasValue ?
+                new ObjectParameter("salesMasterId", salesMasterId) :
+                new ObjectParameter("salesMasterId", typeof(decimal));
+    
+            var voucherTypeNameParameter = voucherTypeName != null ?
+                new ObjectParameter("voucherTypeName", voucherTypeName) :
+                new ObjectParameter("voucherTypeName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("VoucherreportsumQty", salesMasterIdParameter, voucherTypeNameParameter);
         }
     
         public virtual ObjectResult<VoucherTypeNameCorrespondingToTypeOfVoucher_Result> VoucherTypeNameCorrespondingToTypeOfVoucher(string typeOfVoucher)

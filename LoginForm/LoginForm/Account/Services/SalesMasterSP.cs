@@ -552,5 +552,22 @@ namespace LoginForm.Account.Services
             }
             return decStock;
         }
+
+        public string SaleMasterGetPos(decimal saleMasterId, string voucherName)
+        {
+            IMEEntities IME = new IMEEntities();
+            string pos = "";
+            
+            try
+            {
+                pos = IME.SaleMasterGetPos(saleMasterId, voucherName).ToString();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return pos;
+        }
+
     }
 }
