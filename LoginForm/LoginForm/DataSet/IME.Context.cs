@@ -276,6 +276,19 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AccountGroupReferenceDelete", accountGroupIdParameter);
         }
     
+        public virtual ObjectResult<AccountGroupReportViewAll_Result> AccountGroupReportViewAll(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountGroupReportViewAll_Result>("AccountGroupReportViewAll", fromDateParameter, toDateParameter);
+        }
+    
         public virtual ObjectResult<AccountGroupSearch_Result> AccountGroupSearch(string accountGroupName, string under)
         {
             var accountGroupNameParameter = accountGroupName != null ?

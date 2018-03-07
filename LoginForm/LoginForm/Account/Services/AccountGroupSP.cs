@@ -379,5 +379,40 @@ namespace LoginForm.Account.Services
             }
             return dtbl;
         }
+
+        public DataTable AccountGroupReportFill(DateTime dtmFromDate, DateTime dtmToDate)
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dt = new DataTable();
+            try
+            {
+                var adaptor = IME.AccountGroupReportViewAll(dtmFromDate,dtmToDate).ToList();
+
+                dt.Columns.Add("accountGroupId");
+                dt.Columns.Add("accountGroupName");
+                dt.Columns.Add("debit");
+                dt.Columns.Add("credit");
+                dt.Columns.Add("nature");
+                dt.Columns.Add("affectGrossProfit");
+
+                foreach (var item in adaptor)
+                {
+                    var row = dt.NewRow();
+
+                    row["accountGroupId"] = item.accountGroupId;
+                    row["accountGroupName"] = item.accountGroupName;
+                    row["debit"] = item.debit;
+                    row["credit"] = item.credit;
+
+                    dt.Rows.Add(row);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("AGSP :3" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            return dt;
+        }
     }
 }

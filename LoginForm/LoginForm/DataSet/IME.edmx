@@ -6486,6 +6486,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
         <Function Name="AccountGroupReferenceDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="accountGroupId" Type="numeric" Mode="In" />
         </Function>
+        <Function Name="AccountGroupReportViewAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
         <Function Name="AccountGroupSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="AccountGroupName" Type="varchar(max)" Mode="In" />
           <Parameter Name="Under" Type="varchar(max)" Mode="In" />
@@ -18409,6 +18413,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <FunctionImport Name="AccountGroupReferenceDelete">
             <Parameter Name="accountGroupId" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="AccountGroupReportViewAll" ReturnType="Collection(IMEModel.AccountGroupReportViewAll_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
           <FunctionImport Name="AccountGroupSearch" ReturnType="Collection(IMEModel.AccountGroupSearch_Result)">
             <Parameter Name="AccountGroupName" Mode="In" Type="String" />
             <Parameter Name="Under" Mode="In" Type="String" />
@@ -20066,6 +20074,16 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <Parameter Name="ledgerId" Mode="In" Type="Decimal" />
           </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="AccountGroupReportViewAll_Result">
+          <Property Type="Int32" Name="accountGroupId" Nullable="false" />
+          <Property Type="String" Name="accountGroupName" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="debit" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="credit" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="OpeningBalance" Nullable="true" />
+          <Property Type="Decimal" Name="OpBalance" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="balance" Nullable="true" />
+          <Property Type="String" Name="balance1" Nullable="true" />
+        </ComplexType>
         <ComplexType Name="AccountGroupSearch_Result">
           <Property Type="Int32" Name="AccountGroupId" Nullable="false" />
           <Property Type="String" Name="AccountGroupName" Nullable="true" MaxLength="50" />
@@ -23990,6 +24008,20 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <FunctionImportMapping FunctionImportName="AccountGroupEdit" FunctionName="IMEModel.Store.AccountGroupEdit" />
           <FunctionImportMapping FunctionImportName="AccountGroupNatureUnderGroup" FunctionName="IMEModel.Store.AccountGroupNatureUnderGroup" />
           <FunctionImportMapping FunctionImportName="AccountGroupReferenceDelete" FunctionName="IMEModel.Store.AccountGroupReferenceDelete" />
+          <FunctionImportMapping FunctionImportName="AccountGroupReportViewAll" FunctionName="IMEModel.Store.AccountGroupReportViewAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.AccountGroupReportViewAll_Result">
+                <ScalarProperty Name="accountGroupId" ColumnName="accountGroupId" />
+                <ScalarProperty Name="accountGroupName" ColumnName="accountGroupName" />
+                <ScalarProperty Name="debit" ColumnName="debit" />
+                <ScalarProperty Name="credit" ColumnName="credit" />
+                <ScalarProperty Name="OpeningBalance" ColumnName="OpeningBalance" />
+                <ScalarProperty Name="OpBalance" ColumnName="OpBalance" />
+                <ScalarProperty Name="balance" ColumnName="balance" />
+                <ScalarProperty Name="balance1" ColumnName="balance1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="AccountGroupSearch" FunctionName="IMEModel.Store.AccountGroupSearch">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.AccountGroupSearch_Result">
