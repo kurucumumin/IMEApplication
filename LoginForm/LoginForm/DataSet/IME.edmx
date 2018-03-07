@@ -6767,6 +6767,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
         <Function Name="CompanyView" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="companyId" Type="numeric" Mode="In" />
         </Function>
+        <Function Name="CompanyViewAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="CreditNoteMasterIdView" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
           <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
@@ -7566,6 +7567,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Parameter Name="Currency" Type="nvarchar" Mode="In" />
           <Parameter Name="AirwayBillNumber" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="SaleMasterGetPos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="salemasterId" Type="numeric" Mode="In" />
+          <Parameter Name="voucherName" Type="varchar(max)" Mode="In" />
+        </Function>
         <Function Name="SalesAccountComboFill" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SalesBillTaxEditBySalesMasterIdAndTaxId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="salesMasterId" Type="numeric" Mode="In" />
@@ -8153,6 +8158,15 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
         <Function Name="UnitConversionIdAndConRateViewallByProductId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="productId" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="VatGridFill" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromdate" Type="datetime" Mode="In" />
+          <Parameter Name="todate" Type="datetime" Mode="In" />
+          <Parameter Name="voucherName" Type="varchar(max)" Mode="In" />
+          <Parameter Name="voucherTypeId" Type="decimal" Mode="In" />
+          <Parameter Name="format" Type="varchar(max)" Mode="In" />
+          <Parameter Name="tax" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="VatViewTaxNames" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="VoucherNumberAutomaicGeneration" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="voucherTypeId" Type="decimal" Mode="In" />
           <Parameter Name="date" Type="datetime" Mode="In" />
@@ -8164,6 +8178,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Parameter Name="date" Type="datetime" Mode="In" />
           <Parameter Name="tab_name" Type="varchar" Mode="In" />
           <Parameter Name="txtBox" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="VoucherreportsumQty" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="salesMasterId" Type="numeric" Mode="In" />
+          <Parameter Name="voucherTypeName" Type="varchar(max)" Mode="In" />
         </Function>
         <Function Name="VoucherTypeNameCorrespondingToTypeOfVoucher" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="typeOfVoucher" Type="varchar(max)" Mode="In" />
@@ -18689,6 +18707,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <FunctionImport Name="CompanyView" ReturnType="Collection(IMEModel.CompanyView_Result)">
             <Parameter Name="companyId" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="CompanyViewAll" ReturnType="Collection(IMEModel.CompanyViewAll_Result)" />
           <FunctionImport Name="CreditNoteMasterIdView" ReturnType="Collection(Decimal)">
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
             <Parameter Name="voucherNo" Mode="In" Type="String" />
@@ -19477,6 +19496,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <Parameter Name="Currency" Mode="In" Type="String" />
             <Parameter Name="AirwayBillNumber" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="SaleMasterGetPos" ReturnType="Collection(String)">
+            <Parameter Name="salemasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="voucherName" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="SalesAccountComboFill" ReturnType="Collection(IMEModel.SalesAccountComboFill_Result)" />
           <FunctionImport Name="SalesBillTaxEditBySalesMasterIdAndTaxId">
             <Parameter Name="salesMasterId" Mode="In" Type="Decimal" />
@@ -20064,11 +20087,24 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <FunctionImport Name="UnitConversionIdAndConRateViewallByProductId" ReturnType="Collection(IMEModel.UnitConversionIdAndConRateViewallByProductId_Result)">
             <Parameter Name="productId" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="VatGridFill">
+            <Parameter Name="fromdate" Mode="In" Type="DateTime" />
+            <Parameter Name="todate" Mode="In" Type="DateTime" />
+            <Parameter Name="voucherName" Mode="In" Type="String" />
+            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
+            <Parameter Name="format" Mode="In" Type="String" />
+            <Parameter Name="tax" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="VatViewTaxNames" ReturnType="Collection(String)" />
           <FunctionImport Name="VoucherNumberAutomaicGeneration" ReturnType="Collection(Decimal)">
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
             <Parameter Name="date" Mode="In" Type="DateTime" />
             <Parameter Name="tab_name" Mode="In" Type="String" />
             <Parameter Name="txtBox" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="VoucherreportsumQty">
+            <Parameter Name="salesMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="voucherTypeName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="VoucherTypeNameCorrespondingToTypeOfVoucher" ReturnType="Collection(IMEModel.VoucherTypeNameCorrespondingToTypeOfVoucher_Result)">
             <Parameter Name="typeOfVoucher" Mode="In" Type="String" />
@@ -20489,6 +20525,24 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="Decimal" Name="currencyId" Nullable="true" Precision="18" Scale="0" />
           <Property Type="String" Name="financialYearFrom" Nullable="true" MaxLength="20" />
           <Property Type="String" Name="booksBeginingFrom" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="tin" Nullable="true" />
+          <Property Type="String" Name="cst" Nullable="true" />
+          <Property Type="String" Name="pan" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="CompanyViewAll_Result">
+          <Property Type="Decimal" Name="companyId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="companyName" Nullable="true" />
+          <Property Type="String" Name="mailingName" Nullable="true" />
+          <Property Type="String" Name="address" Nullable="true" />
+          <Property Type="String" Name="phone" Nullable="true" />
+          <Property Type="String" Name="mobile" Nullable="true" />
+          <Property Type="String" Name="web" Nullable="true" />
+          <Property Type="String" Name="country" Nullable="true" />
+          <Property Type="String" Name="state" Nullable="true" />
+          <Property Type="String" Name="pin" Nullable="true" />
+          <Property Type="Decimal" Name="currencyId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="DateTime" Name="financialYearFrom" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="booksBeginingFrom" Nullable="true" Precision="23" />
           <Property Type="String" Name="tin" Nullable="true" />
           <Property Type="String" Name="cst" Nullable="true" />
           <Property Type="String" Name="pan" Nullable="true" />
@@ -24634,6 +24688,28 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CompanyViewAll" FunctionName="IMEModel.Store.CompanyViewAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.CompanyViewAll_Result">
+                <ScalarProperty Name="companyId" ColumnName="companyId" />
+                <ScalarProperty Name="companyName" ColumnName="companyName" />
+                <ScalarProperty Name="mailingName" ColumnName="mailingName" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="web" ColumnName="web" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="pin" ColumnName="pin" />
+                <ScalarProperty Name="currencyId" ColumnName="currencyId" />
+                <ScalarProperty Name="financialYearFrom" ColumnName="financialYearFrom" />
+                <ScalarProperty Name="booksBeginingFrom" ColumnName="booksBeginingFrom" />
+                <ScalarProperty Name="tin" ColumnName="tin" />
+                <ScalarProperty Name="cst" ColumnName="cst" />
+                <ScalarProperty Name="pan" ColumnName="pan" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="CreditNoteMasterIdView" FunctionName="IMEModel.Store.CreditNoteMasterIdView" />
           <FunctionImportMapping FunctionImportName="CreditNoteRegisterSearch" FunctionName="IMEModel.Store.CreditNoteRegisterSearch">
             <ResultMapping>
@@ -25786,6 +25862,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="RS_InvoiceDetailsADD" FunctionName="IMEModel.Store.RS_InvoiceDetailsADD" />
           <FunctionImportMapping FunctionImportName="RSInvoiceADD" FunctionName="IMEModel.Store.RSInvoiceADD" />
+          <FunctionImportMapping FunctionImportName="SaleMasterGetPos" FunctionName="IMEModel.Store.SaleMasterGetPos" />
           <FunctionImportMapping FunctionImportName="SalesAccountComboFill" FunctionName="IMEModel.Store.SalesAccountComboFill">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.SalesAccountComboFill_Result">
@@ -26357,7 +26434,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="VatGridFill" FunctionName="IMEModel.Store.VatGridFill" />
+          <FunctionImportMapping FunctionImportName="VatViewTaxNames" FunctionName="IMEModel.Store.VatViewTaxNames" />
           <FunctionImportMapping FunctionImportName="VoucherNumberAutomaicGeneration" FunctionName="IMEModel.Store.VoucherNumberAutomaicGeneration" />
+          <FunctionImportMapping FunctionImportName="VoucherreportsumQty" FunctionName="IMEModel.Store.VoucherreportsumQty" />
           <FunctionImportMapping FunctionImportName="VoucherTypeNameCorrespondingToTypeOfVoucher" FunctionName="IMEModel.Store.VoucherTypeNameCorrespondingToTypeOfVoucher">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.VoucherTypeNameCorrespondingToTypeOfVoucher_Result">
