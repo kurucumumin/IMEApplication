@@ -533,6 +533,27 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("AccountLedgerIdGetByName", ledgerNameParameter);
         }
     
+        public virtual ObjectResult<AccountLedgerReportFill_Result> AccountLedgerReportFill(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, Nullable<decimal> accountGroupId, Nullable<decimal> ledgerId)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            var accountGroupIdParameter = accountGroupId.HasValue ?
+                new ObjectParameter("accountGroupId", accountGroupId) :
+                new ObjectParameter("accountGroupId", typeof(decimal));
+    
+            var ledgerIdParameter = ledgerId.HasValue ?
+                new ObjectParameter("ledgerId", ledgerId) :
+                new ObjectParameter("ledgerId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountLedgerReportFill_Result>("AccountLedgerReportFill", fromDateParameter, toDateParameter, accountGroupIdParameter, ledgerIdParameter);
+        }
+    
         public virtual ObjectResult<AccountLedgerSearchForServiceAccountUnderIncome_Result> AccountLedgerSearchForServiceAccountUnderIncome()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountLedgerSearchForServiceAccountUnderIncome_Result>("AccountLedgerSearchForServiceAccountUnderIncome");
@@ -564,6 +585,15 @@ namespace LoginForm.DataSet
         public virtual ObjectResult<AccountLedgerViewAllForComboBox_Result> AccountLedgerViewAllForComboBox()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountLedgerViewAllForComboBox_Result>("AccountLedgerViewAllForComboBox");
+        }
+    
+        public virtual ObjectResult<AccountLedgerViewByAccountGroup_Result> AccountLedgerViewByAccountGroup(Nullable<decimal> accountGroupId)
+        {
+            var accountGroupIdParameter = accountGroupId.HasValue ?
+                new ObjectParameter("accountGroupId", accountGroupId) :
+                new ObjectParameter("accountGroupId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountLedgerViewByAccountGroup_Result>("AccountLedgerViewByAccountGroup", accountGroupIdParameter);
         }
     
         public virtual ObjectResult<AccountLedgerViewForAdditionalCost_Result> AccountLedgerViewForAdditionalCost()

@@ -964,5 +964,73 @@ namespace LoginForm.Account.Services
             }
             return dtbl;
         }
+
+        public DataTable AccountLedgerViewByAccountGroup(decimal decAccounGroupId)
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = IME.AccountLedgerViewByAccountGroup(decAccounGroupId);
+
+                dtbl.Columns.Add("ledgerId");
+                dtbl.Columns.Add("ledgerName");
+
+                foreach (var item in adaptor)
+                {
+                    DataRow row = dtbl.NewRow();
+                    row["ledgerId"] = item.ledgerId;
+                    row["ledgerName"] = item.ledgerName;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
+
+        public DataTable AccountLedgerReportFill(DateTime dtFromDate, DateTime dtToDate, decimal decAccountGroupId, decimal decLedgerId)
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = IME.AccountLedgerReportFill(dtFromDate, dtToDate, decAccountGroupId, decLedgerId);
+
+                dtbl.Columns.Add("slNO");
+                dtbl.Columns.Add("ledgerId");
+                dtbl.Columns.Add("ledgerName");
+                dtbl.Columns.Add("Opening");
+                dtbl.Columns.Add("op");
+                dtbl.Columns.Add("Debit");
+                dtbl.Columns.Add("Credit");
+                dtbl.Columns.Add("Closing");
+                dtbl.Columns.Add("Closing1");
+
+                foreach (var item in adaptor)
+                {
+                    DataRow row = dtbl.NewRow();
+                    row["slNO"] = item.slNO;
+                    row["ledgerId"] = item.ledgerId;
+                    row["ledgerName"] = item.ledgerName;
+                    row["Opening"] = item.Opening;
+                    row["op"] = item.op;
+                    row["Debit"] = item.Debit;
+                    row["Credit"] = item.Credit;
+                    row["Closing"] = item.Closing;
+                    row["Closing1"] = item.Closing1;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
     }
 }
