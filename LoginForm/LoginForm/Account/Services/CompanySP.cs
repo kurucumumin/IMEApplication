@@ -179,5 +179,60 @@ namespace LoginForm.Account.Services
             }
             return dtbl;
         }
+
+        public DataTable CompanyViewAll()
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = IME.CompanyViewAll().ToList();
+
+                dtbl.Columns.Add("companyName");
+                dtbl.Columns.Add("mailingName");
+                dtbl.Columns.Add("address");
+                dtbl.Columns.Add("phone");
+                dtbl.Columns.Add("mobile");
+                dtbl.Columns.Add("email");
+                dtbl.Columns.Add("web");
+                dtbl.Columns.Add("country");
+                dtbl.Columns.Add("state");
+                dtbl.Columns.Add("pin");
+                dtbl.Columns.Add("currencyId");
+                dtbl.Columns.Add("financialYearFrom");
+                dtbl.Columns.Add("booksBeginingFrom");
+                dtbl.Columns.Add("tin");
+                dtbl.Columns.Add("cst");
+                dtbl.Columns.Add("pan");
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["companyName"] = item.companyName;
+                    row["mailingName"] = item.mailingName;
+                    row["address"] = item.address;
+                    row["phone"] = item.phone;
+                    row["mobile"] = item.mobile;
+                    row["web"] = item.web;
+                    row["country"] = item.country;
+                    row["state"] = item.state;
+                    row["pin"] = item.pin;
+                    row["currencyId"] = item.currencyId;
+                    row["financialYearFrom"] = item.financialYearFrom;
+                    row["booksBeginingFrom"] = item.booksBeginingFrom;
+                    row["tin"] = item.tin;
+                    row["cst"] = item.cst;
+                    row["pan"] = item.pan;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
     }
 }

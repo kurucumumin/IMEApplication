@@ -58,7 +58,7 @@ namespace LoginForm
             try
             {
                 DataTable dtbl = new DataTable();
-                dtbl = spFinancialStatement.CashOrBankBookGridFill(Convert.ToDateTime(txtFromDate.Text), Convert.ToDateTime(txtToDate.Text), "", true);
+                dtbl = spFinancialStatement.CashOrBankBookGridFill(Convert.ToDateTime(txtFromDate.Text), Convert.ToDateTime(txtToDate.Text), true);
                 dgvCashOrBank.DataSource = dtbl;
             }
             catch (Exception ex)

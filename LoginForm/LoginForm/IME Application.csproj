@@ -321,11 +321,29 @@
     <Compile Include="Account\Reminder\frmStock.designer.cs">
       <DependentUpon>frmStock.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\Reports\frmAccountGroupReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Reports\frmAccountGroupReport.Designer.cs">
+      <DependentUpon>frmAccountGroupReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Reports\frmAccountLedgerReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Reports\frmAccountLedgerReport.designer.cs">
+      <DependentUpon>frmAccountLedgerReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\Reports\frmAgeingReport.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Account\Reports\frmAgeingReport.designer.cs">
       <DependentUpon>frmAgeingReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Reports\frmCashBankbook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Reports\frmCashBankbook.designer.cs">
+      <DependentUpon>frmCashBankbook.cs</DependentUpon>
     </Compile>
     <Compile Include="Account\Reports\frmChequeReport.cs">
       <SubType>Form</SubType>
@@ -410,6 +428,12 @@
     </Compile>
     <Compile Include="Account\Reports\frmTaxReport.designer.cs">
       <DependentUpon>frmTaxReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Reports\frmVatReturnReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Reports\frmVatReturnReport.designer.cs">
+      <DependentUpon>frmVatReturnReport.cs</DependentUpon>
     </Compile>
     <Compile Include="Account\Search\frmVoucherSearch.cs">
       <SubType>Form</SubType>
@@ -641,6 +665,9 @@
     <Compile Include="DataSet\AccountGroupHierarchy_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\AccountGroupReportViewAll_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\AccountGroupSearch_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -665,6 +692,9 @@
     <Compile Include="DataSet\AccountLedgerGetGroupUnderFunction_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\AccountLedgerReportFill_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\AccountLedgerSearchForServiceAccountUnderIncome_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -675,6 +705,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\AccountLedgerViewAll_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\AccountLedgerViewByAccountGroup_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\AccountLedgerViewForAdditionalCost_Result.cs">
@@ -791,6 +824,9 @@
     <Compile Include="DataSet\CashFlowReportPrintCompany_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\CashOrBankBookGridFill_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\CashOrBankComboFill_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -805,6 +841,9 @@
     </Compile>
     <Compile Include="DataSet\classExchangeRate.cs" />
     <Compile Include="DataSet\Company.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\CompanyViewAll_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\CompanyView_Result.cs">
@@ -1933,8 +1972,17 @@
     <EmbeddedResource Include="Account\Reminder\frmStock.resx">
       <DependentUpon>frmStock.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Account\Reports\frmAccountGroupReport.resx">
+      <DependentUpon>frmAccountGroupReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\Reports\frmAccountLedgerReport.resx">
+      <DependentUpon>frmAccountLedgerReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Account\Reports\frmAgeingReport.resx">
       <DependentUpon>frmAgeingReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\Reports\frmCashBankbook.resx">
+      <DependentUpon>frmCashBankbook.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Reports\frmChequeReport.resx">
       <DependentUpon>frmChequeReport.cs</DependentUpon>
@@ -1977,6 +2025,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Reports\frmTaxReport.resx">
       <DependentUpon>frmTaxReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\Reports\frmVatReturnReport.resx">
+      <DependentUpon>frmVatReturnReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Search\frmVoucherSearch.resx">
       <DependentUpon>frmVoucherSearch.cs</DependentUpon>

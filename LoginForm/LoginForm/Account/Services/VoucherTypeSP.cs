@@ -316,11 +316,7 @@ namespace LoginForm.Account.Services
             }
             return dtblSearch;
         }
-        /// <summary>
-        /// Function to get tax id for tax selection based on parameter
-        /// </summary>
-        /// <param name="decVoucherTypeId"></param>
-        /// <returns></returns>
+       
         public DataTable GetTaxIdForTaxSelection(decimal decVoucherTypeId)
         {
             IMEEntities db = new IMEEntities();
@@ -347,11 +343,7 @@ namespace LoginForm.Account.Services
             return dtbl;
         }
 
-        /// <summary>
-        /// Function to  Check For Default VoucherType based on parameter
-        /// </summary>
-        /// <param name="decVoucherTypeId"></param>
-        /// <returns></returns>
+        
         public bool CheckForDefaultVoucherType(decimal decVoucherTypeId)
         {
             IMEEntities db = new IMEEntities();
@@ -432,6 +424,77 @@ namespace LoginForm.Account.Services
                 MessageBox.Show(ex.ToString());
             }
             return dtbl;
+        }
+
+        public DataTable VatGridFill(DateTime fromDate, DateTime toDate, string voucherName, decimal decVoucherTypeId, string format, string tax)
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                //TO DO:
+
+                //var adaptor = IME.VatGridFill(fromDate, toDate, voucherName, decVoucherTypeId, format, tax).ToList();
+
+                //dtbl.Columns.Add("voucherTypeId");
+                //dtbl.Columns.Add("typeOfVoucher");
+
+                //foreach (var item in adaptor)
+                //{
+                //    DataRow row = dtbl.NewRow();
+
+                //    row["voucherTypeId"] = item.voucherTypeId;
+                //    row["typeOfVoucher"] = item.typeOfVoucher;
+
+                //    dtbl.Rows.Add(row);
+                //}
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return dtbl;
+        }
+
+        public DataTable VatViewTaxNames()
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                //var adaptor = IME.VatViewTaxNames().ToList();
+
+                //dtbl.Columns.Add("taxName");
+
+                //foreach (var item in adaptor)
+                //{
+                //    DataRow row = dtbl.NewRow();
+
+                //    row["taxName"] = item.taxName;
+
+                //    dtbl.Rows.Add(row);
+                //}
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return dtbl;
+        }
+
+        public string VoucherreportsumQty(decimal dSalesId, string strVoucherType)
+        {
+            IMEEntities IME = new IMEEntities();
+            string sonuc = "";
+            try
+            {
+                sonuc = IME.VoucherreportsumQty(dSalesId, strVoucherType).ToString();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return sonuc;
         }
     }
 }
