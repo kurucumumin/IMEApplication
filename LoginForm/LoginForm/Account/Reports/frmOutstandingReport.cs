@@ -22,7 +22,7 @@ namespace LoginForm
         /// Public variable declaration part
         /// </summary>
         decimal decLedgerId;
-        string strAccountGroup = string.Empty;
+        string strAccountGroup = string.Empty;  
         PartyBalanceSP spPartyBalance = new PartyBalanceSP();
         # endregion
         # region Functions

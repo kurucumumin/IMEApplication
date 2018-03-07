@@ -886,5 +886,83 @@ namespace LoginForm.Account.Services
             }
             return dtbl;
         }
+
+        public DataTable PartyAddressBookSearch(string strType, string strmobile, string strphone, string stremail, string strledgerName)
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            dtbl.Columns.Add("Sl No", typeof(int));
+            dtbl.Columns["Sl No"].AutoIncrement = true;
+            dtbl.Columns["Sl No"].AutoIncrementSeed = 1;
+            dtbl.Columns["Sl No"].AutoIncrementStep = 1;
+            try
+            {
+                var adaptor = IME.PartyAddressBookSearch(strType, strmobile, strphone, stremail, strledgerName);
+
+                dtbl.Columns.Add("accountGroupName");
+                dtbl.Columns.Add("ledgerName");
+                dtbl.Columns.Add("phone");
+                dtbl.Columns.Add("mobile");
+                dtbl.Columns.Add("email");
+                dtbl.Columns.Add("address");
+
+                foreach (var item in adaptor)
+                {
+                    DataRow row = dtbl.NewRow();
+                    row["accountGroupName"] = item.accountGroupName;
+                    row["ledgerName"] = item.ledgerName;
+                    row["phone"] = item.phone;
+                    row["mobile"] = item.mobile;
+                    row["email"] = item.email;
+                    row["address"] = item.address;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
+
+        internal DataTable PartyAddressBookPrint(string strType, string strmobile, string strphone, string stremail, string strledgerName)
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            dtbl.Columns.Add("SlNo", typeof(int));
+            dtbl.Columns["SlNo"].AutoIncrement = true;
+            dtbl.Columns["SlNo"].AutoIncrementSeed = 1;
+            dtbl.Columns["SlNo"].AutoIncrementStep = 1;
+            try
+            {
+                var adaptor = IME.PartyAddressBookPrint(strType, strmobile, strphone, stremail, strledgerName);
+
+                dtbl.Columns.Add("accountGroupName");
+                dtbl.Columns.Add("ledgerName");
+                dtbl.Columns.Add("phone");
+                dtbl.Columns.Add("mobile");
+                dtbl.Columns.Add("email");
+                dtbl.Columns.Add("address");
+
+                foreach (var item in adaptor)
+                {
+                    DataRow row = dtbl.NewRow();
+                    row["accountGroupName"] = item.accountGroupName;
+                    row["ledgerName"] = item.ledgerName;
+                    row["phone"] = item.phone;
+                    row["mobile"] = item.mobile;
+                    row["email"] = item.email;
+                    row["address"] = item.address;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
     }
 }
