@@ -2106,6 +2106,56 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<OverdueSalesOrderCorrespondingAccountLedger_Result>("OverdueSalesOrderCorrespondingAccountLedger", accountLedgerIdParameter);
         }
     
+        public virtual ObjectResult<PartyAddressBookPrint_Result> PartyAddressBookPrint(string type, string ledgerName, string mobile, string phone, string email)
+        {
+            var typeParameter = type != null ?
+                new ObjectParameter("type", type) :
+                new ObjectParameter("type", typeof(string));
+    
+            var ledgerNameParameter = ledgerName != null ?
+                new ObjectParameter("ledgerName", ledgerName) :
+                new ObjectParameter("ledgerName", typeof(string));
+    
+            var mobileParameter = mobile != null ?
+                new ObjectParameter("mobile", mobile) :
+                new ObjectParameter("mobile", typeof(string));
+    
+            var phoneParameter = phone != null ?
+                new ObjectParameter("phone", phone) :
+                new ObjectParameter("phone", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("email", email) :
+                new ObjectParameter("email", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PartyAddressBookPrint_Result>("PartyAddressBookPrint", typeParameter, ledgerNameParameter, mobileParameter, phoneParameter, emailParameter);
+        }
+    
+        public virtual ObjectResult<PartyAddressBookSearch_Result> PartyAddressBookSearch(string type, string ledgerName, string mobile, string phone, string email)
+        {
+            var typeParameter = type != null ?
+                new ObjectParameter("type", type) :
+                new ObjectParameter("type", typeof(string));
+    
+            var ledgerNameParameter = ledgerName != null ?
+                new ObjectParameter("ledgerName", ledgerName) :
+                new ObjectParameter("ledgerName", typeof(string));
+    
+            var mobileParameter = mobile != null ?
+                new ObjectParameter("mobile", mobile) :
+                new ObjectParameter("mobile", typeof(string));
+    
+            var phoneParameter = phone != null ?
+                new ObjectParameter("phone", phone) :
+                new ObjectParameter("phone", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("email", email) :
+                new ObjectParameter("email", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PartyAddressBookSearch_Result>("PartyAddressBookSearch", typeParameter, ledgerNameParameter, mobileParameter, phoneParameter, emailParameter);
+        }
+    
         public virtual ObjectResult<Nullable<decimal>> PartyBalanceAmountViewByVoucherNoVoucherTypeIdAndReferenceType(string voucherNo, Nullable<decimal> voucherTypeId, string referenceType)
         {
             var voucherNoParameter = voucherNo != null ?

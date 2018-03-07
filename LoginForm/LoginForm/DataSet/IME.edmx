@@ -7028,6 +7028,20 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
         <Function Name="OverdueSalesOrderCorrespondingAccountLedger" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="accountLedgerId" Type="varchar(max)" Mode="In" />
         </Function>
+        <Function Name="PartyAddressBookPrint" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="type" Type="varchar" Mode="In" />
+          <Parameter Name="ledgerName" Type="varchar(max)" Mode="In" />
+          <Parameter Name="mobile" Type="varchar(max)" Mode="In" />
+          <Parameter Name="phone" Type="varchar(max)" Mode="In" />
+          <Parameter Name="email" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="PartyAddressBookSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="type" Type="varchar" Mode="In" />
+          <Parameter Name="ledgerName" Type="varchar(max)" Mode="In" />
+          <Parameter Name="mobile" Type="varchar(max)" Mode="In" />
+          <Parameter Name="phone" Type="varchar(max)" Mode="In" />
+          <Parameter Name="email" Type="varchar(max)" Mode="In" />
+        </Function>
         <Function Name="PartyBalanceAmountViewByVoucherNoVoucherTypeIdAndReferenceType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
           <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
@@ -18907,6 +18921,20 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <FunctionImport Name="OverdueSalesOrderCorrespondingAccountLedger" ReturnType="Collection(IMEModel.OverdueSalesOrderCorrespondingAccountLedger_Result)">
             <Parameter Name="accountLedgerId" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="PartyAddressBookPrint" ReturnType="Collection(IMEModel.PartyAddressBookPrint_Result)">
+            <Parameter Name="type" Mode="In" Type="String" />
+            <Parameter Name="ledgerName" Mode="In" Type="String" />
+            <Parameter Name="mobile" Mode="In" Type="String" />
+            <Parameter Name="phone" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PartyAddressBookSearch" ReturnType="Collection(IMEModel.PartyAddressBookSearch_Result)">
+            <Parameter Name="type" Mode="In" Type="String" />
+            <Parameter Name="ledgerName" Mode="In" Type="String" />
+            <Parameter Name="mobile" Mode="In" Type="String" />
+            <Parameter Name="phone" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="PartyBalanceAmountViewByVoucherNoVoucherTypeIdAndReferenceType" ReturnType="Collection(Decimal)">
             <Parameter Name="voucherNo" Mode="In" Type="String" />
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
@@ -20622,6 +20650,22 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="String" Name="dueDate" Nullable="true" />
           <Property Type="Decimal" Name="totalAmount" Nullable="true" Precision="18" Scale="2" />
           <Property Type="String" Name="QuotationNo" Nullable="false" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="PartyAddressBookPrint_Result">
+          <Property Type="String" Name="accountGroupName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="phone" Nullable="true" />
+          <Property Type="String" Name="ledgerName" Nullable="true" />
+          <Property Type="String" Name="mobile" Nullable="true" />
+          <Property Type="String" Name="email" Nullable="true" />
+          <Property Type="String" Name="address" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="PartyAddressBookSearch_Result">
+          <Property Type="String" Name="accountGroupName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ledgerName" Nullable="true" />
+          <Property Type="String" Name="phone" Nullable="true" />
+          <Property Type="String" Name="mobile" Nullable="true" />
+          <Property Type="String" Name="email" Nullable="true" />
+          <Property Type="String" Name="address" Nullable="true" />
         </ComplexType>
         <ComplexType Name="PartyBalanceViewByVoucherNoAndVoucherType_Result">
           <Property Type="Decimal" Name="LedgerId" Nullable="true" Precision="18" Scale="0" />
@@ -24836,6 +24880,30 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="dueDate" ColumnName="dueDate" />
                 <ScalarProperty Name="totalAmount" ColumnName="totalAmount" />
                 <ScalarProperty Name="QuotationNo" ColumnName="QuotationNo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PartyAddressBookPrint" FunctionName="IMEModel.Store.PartyAddressBookPrint">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.PartyAddressBookPrint_Result">
+                <ScalarProperty Name="accountGroupName" ColumnName="accountGroupName" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="ledgerName" ColumnName="ledgerName" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="address" ColumnName="address" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PartyAddressBookSearch" FunctionName="IMEModel.Store.PartyAddressBookSearch">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.PartyAddressBookSearch_Result">
+                <ScalarProperty Name="accountGroupName" ColumnName="accountGroupName" />
+                <ScalarProperty Name="ledgerName" ColumnName="ledgerName" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="address" ColumnName="address" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

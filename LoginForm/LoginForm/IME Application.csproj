@@ -357,6 +357,12 @@
     <Compile Include="Account\Reports\frmOutstandingReport.designer.cs">
       <DependentUpon>frmOutstandingReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\Reports\frmPartyAddressBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Reports\frmPartyAddressBook.Designer.cs">
+      <DependentUpon>frmPartyAddressBook.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\Reports\frmPaymentReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1036,6 +1042,12 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\OverdueSalesOrderCorrespondingAccountLedger_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PartyAddressBookPrint_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PartyAddressBookSearch_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\PartyBalance.cs">
@@ -1938,6 +1950,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Reports\frmOutstandingReport.resx">
       <DependentUpon>frmOutstandingReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\Reports\frmPartyAddressBook.resx">
+      <DependentUpon>frmPartyAddressBook.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Reports\frmPaymentReport.resx">
       <DependentUpon>frmPaymentReport.cs</DependentUpon>

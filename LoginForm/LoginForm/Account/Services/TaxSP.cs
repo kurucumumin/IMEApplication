@@ -641,7 +641,6 @@ namespace LoginForm.Account.Services
                 dtbl.Columns.Add("Bill_No");
                 dtbl.Columns.Add("Item");
                 dtbl.Columns.Add("Bill_Amount");
-                dtbl.Columns.Add("Tax");
                 dtbl.Columns.Add("Tax_Amount");
                 dtbl.Columns.Add("Total_Amount");
 
@@ -656,7 +655,6 @@ namespace LoginForm.Account.Services
                     row["Bill_No"] = item.Bill_No;
                     row["Item"] = item.Item;
                     row["Bill_Amount"] = item.Bill_Amount;
-                    //row["Tax"] = item.Tax;
                     row["Tax_Amount"] = item.Tax_Amount;
                     row["Total_Amount"] = item.Total_Amount;
 
