@@ -1842,17 +1842,11 @@
     <Compile Include="Services\ToolTipService.cs" />
     <Compile Include="Services\txtCreate.cs" />
     <Compile Include="Services\XmlToObject.cs" />
-    <Compile Include="Supplier\CemSupplierMainCem.cs">
+    <Compile Include="Supplier\SupplierMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Supplier\CemSupplierMainCem.designer.cs">
-      <DependentUpon>CemSupplierMainCem.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Supplier\DeletedSupplierMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Supplier\DeletedSupplierMain.Designer.cs">
-      <DependentUpon>DeletedSupplierMain.cs</DependentUpon>
+    <Compile Include="Supplier\SupplierMain.designer.cs">
+      <DependentUpon>SupplierMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Supplier\frmSupplierCategoryAdd.cs">
       <SubType>Form</SubType>
@@ -2231,11 +2225,8 @@
     <EmbeddedResource Include="SaleOrder\FormSaleGridCustomize.resx">
       <DependentUpon>FormSaleGridCustomize.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Supplier\CemSupplierMainCem.resx">
-      <DependentUpon>CemSupplierMainCem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Supplier\DeletedSupplierMain.resx">
-      <DependentUpon>DeletedSupplierMain.cs</DependentUpon>
+    <EmbeddedResource Include="Supplier\SupplierMain.resx">
+      <DependentUpon>SupplierMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Supplier\frmSupplierCategoryAdd.resx">
       <DependentUpon>frmSupplierCategoryAdd.cs</DependentUpon>

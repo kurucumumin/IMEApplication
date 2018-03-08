@@ -12,7 +12,7 @@ using System.Windows.Forms;
 namespace LoginForm
 {
     //deneme
-    public partial class CemSupplierMainCem : Form
+    public partial class SupplierMain : Form
     {
         private static string AddressButtonsModeOpen = "Open";
         private static string AddressButtonsModeClose = "Close";
@@ -37,7 +37,7 @@ namespace LoginForm
 
         private List<Supplier> gridSupplierList;
 
-        public CemSupplierMainCem()
+        public SupplierMain()
         {
             InitializeComponent();
             this.dgSupplier.AutoGenerateColumns = false;

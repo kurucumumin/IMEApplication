@@ -65,7 +65,7 @@ namespace LoginForm.CustomControls
 
         private void btnSupplier_Click(object sender, EventArgs e)
         {
-            CemSupplierMainCem supplierMain = new CemSupplierMainCem();
+            SupplierMain supplierMain = new SupplierMain();
             supplierMain.ShowDialog();
         }
 
