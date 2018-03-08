@@ -511,8 +511,8 @@ namespace LoginForm.Account.Services
         /// <param name="frmCompanyCreation"></param>
         /// 
 
-        //TO DO: FORMU EKLENİCEK
-
+        //TODO: FORMU EKLENİCEK
+        
         //public void CallFromChangeCurrentDate(frmCompanyCreation frmCompanyCreation)
         //{
         //    try
