@@ -13,58 +13,63 @@ namespace LoginForm.CustomControls
         public ManagementControl()
         {
             InitializeComponent();
+        }
+        private void ManagementControl_Load(object sender, EventArgs e)
+        {
             checkAuthorities();
         }
         public void checkAuthorities()
         {
-            var currentuserAuthorizationValues = Utils.getCurrentUser().AuthorizationValues;
-            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1107).Count() <= 0)//Can Edit Low Margin Limit
+            if(Utils.getCurrentUser() != null)
             {
-                lblLowMarginLimit.Visible = false;
-                txtLowMarginLimit.Visible = false;
+                System.Collections.Generic.List<AuthorizationValue> authList = Utils.getCurrentUser().AuthorizationValues.ToList();
+                if (authList.Where(a => a.AuthorizationID == 1107).Count() <= 0)//Can Edit Low Margin Limit
+                {
+                    lblLowMarginLimit.Visible = false;
+                    txtLowMarginLimit.Visible = false;
+                }
+                if (authList.Where(a => a.AuthorizationID == 1108).Count() <= 0)//Can Edit VAT
+                {
+                    lblVAT.Visible = false;
+                    txtVAT.Visible = false;
+                }
+                if (authList.Where(a => a.AuthorizationID == 1109).Count() <= 0)//Can Edit Default Currency
+                {
+                    lblDefaultCurrency.Visible = false;
+                    cbCurrency.Visible = false;
+                }
+                if (authList.Where(a => a.AuthorizationID == 1110).Count() <= 0)//Can Edit Factor
+                {
+                    lblFactor.Visible = false;
+                    numericFactor.Visible = false;
+                }
+                if (authList.Where(a => a.AuthorizationID == 1111).Count() <= 0)//Can Edit Data Seperator
+                {
+                    label1.Visible = false;
+                    txtDataSeperator.Visible = false;
+                }
+                if (authList.Where(a => a.AuthorizationID == 1112).Count() <= 0)//Can Edit Data Branch Code
+                {
+                    label2.Visible = false;
+                    txtBranchCode.Visible = false;
+                }
+                if (authList.Where(a => a.AuthorizationID == 1113).Count() <= 0)//Can Edit Data Exchange Rate
+                {
+                    btnExchangeRate.Visible = false;
+                }
+                if (authList.Where(a => a.AuthorizationID == 1122).Count() <= 0)//Can Edit Terms of Payment
+                {
+                    btnTermsOfPayment.Visible = false;
+                }
+                if (authList.Where(a => a.AuthorizationID == 1123).Count() <= 0)//Can Edit Roles and Authorities
+                {
+                    btnRolesAuthorities.Visible = false;
+                }
+                if (authList.Where(a => a.AuthorizationID == 1124).Count() <= 0)//Can Edit Category and SubCategory
+                {
+                    btnCategorySubCategory.Visible = false;
+                }
             }
-            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1108).Count() <= 0)//Can Edit VAT
-            {
-                lblVAT.Visible = false;
-                txtVAT.Visible = false;
-            }
-            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1109).Count() <= 0)//Can Edit Default Currency
-            {
-                lblDefaultCurrency.Visible = false;
-                cbCurrency.Visible = false;
-            }
-            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1110).Count() <= 0)//Can Edit Factor
-            {
-                lblFactor.Visible = false;
-                numericFactor.Visible = false;
-            }
-            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1111).Count() <= 0)//Can Edit Data Seperator
-            {
-                label1.Visible = false;
-                txtDataSeperator.Visible = false;
-            }
-            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1112).Count() <= 0)//Can Edit Data Branch Code
-            {
-                label2.Visible = false;
-                txtBranchCode.Visible = false;
-            }
-            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1113).Count() <= 0)//Can Edit Data Exchange Rate
-            {
-                btnExchangeRate.Visible = false;
-            }
-            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1122).Count() <= 0)//Can Edit Terms of Payment
-            {
-                btnTermsOfPayment.Visible = false;
-            }
-            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1123).Count() <= 0)//Can Edit Roles and Authorities
-            {
-                btnRolesAuthorities.Visible = false;
-            }
-            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1124).Count() <= 0)//Can Edit Category and SubCategory
-            {
-                btnCategorySubCategory.Visible = false;
-            }
-
         }
         public void setManagementModule(Management m)
         {

@@ -551,6 +551,7 @@
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "DevelopmentControl";
             this.Size = new System.Drawing.Size(901, 577);
+            this.Load += new System.EventHandler(this.DevelopmentControl_Load);
             this.tableRightPanel.ResumeLayout(false);
             this.panel16.ResumeLayout(false);
             this.panel15.ResumeLayout(false);

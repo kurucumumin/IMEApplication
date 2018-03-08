@@ -9,6 +9,7 @@ using LoginForm.Services;
 using System.Data;
 using System.Linq;
 using System.Collections.Generic;
+using LoginForm.DataSet;
 
 namespace LoginForm.CustomControls
 {
@@ -17,40 +18,47 @@ namespace LoginForm.CustomControls
         public DevelopmentControl()
         {
             InitializeComponent();
-            checkAuthorities();
         }
 
-        private void checkAuthorities()
+        private void DevelopmentControl_Load(object sender, EventArgs e)
         {
-            List<DataSet.AuthorizationValue> AuthList = Utils.getCurrentUser().AuthorizationValues.ToList();
+            //checkAuthorities();
+        }
 
-            if (AuthList.Where(a => a.AuthorizationID == 1089).Count() <= 0)//Can See Customer Module
+        public void checkAuthorities()
+        {
+            if (Utils.getCurrentUser() != null)
             {
-                btnCustomer.Visible = false;
-            }
-            if (AuthList.Where(a => a.AuthorizationID == 1121).Count() <= 0)//Can See Quotation Module
-            {
-                btnQuotation.Visible = false;
-            }
-            if (AuthList.Where(a => a.AuthorizationID == 1094).Count() <= 0)//Can See Supplier Module
-            {
-                btnSupplier.Visible = false;
-            }
-            if (AuthList.Where(a => a.AuthorizationID == 1092).Count() <= 0)//Can See Purchase Order Module
-            {
-                btnPurchaseOrders.Visible = false;
-            }
-            if (AuthList.Where(a => a.AuthorizationID == 1097).Count() <= 0)//Can See User Module
-            {
-                btnWorker.Visible = false;
-            }
-            if (AuthList.Where(a => a.AuthorizationID == 1100).Count() <= 0)//Can See Item Card Module
-            {
-                btnItemCard.Visible = false;
-            }
-            if (AuthList.Where(a => a.AuthorizationID == 1104).Count() <= 0)//Can See Sale Order Module
-            {
-                btnSalesOrder.Visible = false;
+                List<AuthorizationValue> AuthList = Utils.getCurrentUser().AuthorizationValues.ToList();
+
+                if (AuthList.Where(a => a.AuthorizationID == 1089).Count() <= 0)//Can See Customer Module
+                {
+                    btnCustomer.Visible = false;
+                }
+                if (AuthList.Where(a => a.AuthorizationID == 1121).Count() <= 0)//Can See Quotation Module
+                {
+                    btnQuotation.Visible = false;
+                }
+                if (AuthList.Where(a => a.AuthorizationID == 1094).Count() <= 0)//Can See Supplier Module
+                {
+                    btnSupplier.Visible = false;
+                }
+                if (AuthList.Where(a => a.AuthorizationID == 1092).Count() <= 0)//Can See Purchase Order Module
+                {
+                    btnPurchaseOrders.Visible = false;
+                }
+                if (AuthList.Where(a => a.AuthorizationID == 1097).Count() <= 0)//Can See User Module
+                {
+                    btnWorker.Visible = false;
+                }
+                if (AuthList.Where(a => a.AuthorizationID == 1100).Count() <= 0)//Can See Item Card Module
+                {
+                    btnItemCard.Visible = false;
+                }
+                if (AuthList.Where(a => a.AuthorizationID == 1104).Count() <= 0)//Can See Sale Order Module
+                {
+                    btnSalesOrder.Visible = false;
+                }
             }
         }
 
@@ -96,5 +104,7 @@ namespace LoginForm.CustomControls
             PurchaseOrderMain form = new PurchaseOrderMain();
             form.ShowDialog();
         }
+
+        
     }
 }

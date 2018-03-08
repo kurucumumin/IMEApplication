@@ -24,6 +24,7 @@ namespace LoginForm
         private void btnDevelopment_Click(object sender, EventArgs e)
         {
             controlDevelopment.BringToFront();
+            //controlDevelopment.checkAuthorities();
         }
 
         private void FormMain_Load(object sender, EventArgs e)
@@ -34,6 +35,7 @@ namespace LoginForm
         private void btnManagement_Click(object sender, EventArgs e)
         {
             controlManagement.BringToFront();
+            //controlManagement.checkAuthorities();
         }
 
         public void setManagementControl()
