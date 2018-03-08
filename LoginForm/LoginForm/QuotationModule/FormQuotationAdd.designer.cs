@@ -208,6 +208,8 @@
             this.txtUnitCount3 = new System.Windows.Forms.TextBox();
             this.label36 = new System.Windows.Forms.Label();
             this.label50 = new System.Windows.Forms.Label();
+            this.lblWeb = new System.Windows.Forms.Label();
+            this.label57 = new System.Windows.Forms.Label();
             this.textBox14 = new System.Windows.Forms.TextBox();
             this.txtSupersectionName = new System.Windows.Forms.TextBox();
             this.txtCofO = new System.Windows.Forms.TextBox();
@@ -283,8 +285,6 @@
             this.label47 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
-            this.lblWeb = new System.Windows.Forms.Label();
-            this.label57 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
@@ -1965,6 +1965,28 @@
             this.label50.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label50.Visible = false;
             // 
+            // lblWeb
+            // 
+            this.lblWeb.AutoSize = true;
+            this.lblWeb.Location = new System.Drawing.Point(68, 9);
+            this.lblWeb.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblWeb.Name = "lblWeb";
+            this.lblWeb.Size = new System.Drawing.Size(45, 13);
+            this.lblWeb.TabIndex = 432;
+            this.lblWeb.Text = "Web (£)";
+            this.lblWeb.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label57.Location = new System.Drawing.Point(6, 9);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(41, 13);
+            this.label57.TabIndex = 414;
+            this.label57.Text = "Col Qty";
+            this.label57.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // textBox14
             // 
             this.textBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -2672,28 +2694,6 @@
             this.label49.Text = "Length";
             this.label49.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // lblWeb
-            // 
-            this.lblWeb.AutoSize = true;
-            this.lblWeb.Location = new System.Drawing.Point(68, 9);
-            this.lblWeb.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblWeb.Name = "lblWeb";
-            this.lblWeb.Size = new System.Drawing.Size(45, 13);
-            this.lblWeb.TabIndex = 432;
-            this.lblWeb.Text = "Web (£)";
-            this.lblWeb.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label57
-            // 
-            this.label57.AutoSize = true;
-            this.label57.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label57.Location = new System.Drawing.Point(6, 9);
-            this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(41, 13);
-            this.label57.TabIndex = 414;
-            this.label57.Text = "Col Qty";
-            this.label57.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.btnSave);
@@ -2850,7 +2850,7 @@
             // lblTotalExtra
             // 
             this.lblTotalExtra.AutoSize = true;
-            this.lblTotalExtra.Location = new System.Drawing.Point(193, 57);
+            this.lblTotalExtra.Location = new System.Drawing.Point(178, 57);
             this.lblTotalExtra.Name = "lblTotalExtra";
             this.lblTotalExtra.Size = new System.Drawing.Size(28, 13);
             this.lblTotalExtra.TabIndex = 57;
@@ -2888,7 +2888,7 @@
             // lbltotal
             // 
             this.lbltotal.AutoSize = true;
-            this.lbltotal.Location = new System.Drawing.Point(193, 38);
+            this.lbltotal.Location = new System.Drawing.Point(178, 38);
             this.lbltotal.Name = "lbltotal";
             this.lbltotal.Size = new System.Drawing.Size(28, 13);
             this.lbltotal.TabIndex = 53;
@@ -2936,7 +2936,7 @@
             // lblVatTotal
             // 
             this.lblVatTotal.AutoSize = true;
-            this.lblVatTotal.Location = new System.Drawing.Point(193, 78);
+            this.lblVatTotal.Location = new System.Drawing.Point(178, 78);
             this.lblVatTotal.Name = "lblVatTotal";
             this.lblVatTotal.Size = new System.Drawing.Size(28, 13);
             this.lblVatTotal.TabIndex = 18;
@@ -2985,7 +2985,7 @@
             // lblGrossTotal
             // 
             this.lblGrossTotal.AutoSize = true;
-            this.lblGrossTotal.Location = new System.Drawing.Point(193, 97);
+            this.lblGrossTotal.Location = new System.Drawing.Point(178, 97);
             this.lblGrossTotal.Name = "lblGrossTotal";
             this.lblGrossTotal.Size = new System.Drawing.Size(28, 13);
             this.lblGrossTotal.TabIndex = 12;
