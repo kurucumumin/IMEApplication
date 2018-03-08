@@ -28,6 +28,7 @@ namespace LoginForm
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tabgenel = new System.Windows.Forms.TabControl();
             this.tabInfo = new System.Windows.Forms.TabPage();
             this.cmbMainContact = new System.Windows.Forms.ComboBox();
@@ -139,6 +140,27 @@ namespace LoginForm
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.supplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gWebAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gTaxOffice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gTaxNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gDiscountrate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gIban = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gBranchcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gAccountNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currencyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.noteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.note1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.paymentMethodDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.paymentTermDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.workerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.supplierBankDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.supplierCategoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.supplierWorkerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.worker1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.supplierSubCategoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabgenel.SuspendLayout();
             this.tabInfo.SuspendLayout();
             this.tabAccount.SuspendLayout();
@@ -148,6 +170,7 @@ namespace LoginForm
             ((System.ComponentModel.ISupportInitialize)(this.dgSupplier)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tabgenel
@@ -1340,7 +1363,30 @@ namespace LoginForm
             // 
             this.dgSupplier.AllowUserToAddRows = false;
             this.dgSupplier.AllowUserToDeleteRows = false;
+            this.dgSupplier.AutoGenerateColumns = false;
             this.dgSupplier.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgSupplier.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.iDDataGridViewTextBoxColumn,
+            this.gName,
+            this.gWebAddress,
+            this.gTaxOffice,
+            this.gTaxNumber,
+            this.gDiscountrate,
+            this.gIban,
+            this.gBranchcode,
+            this.gAccountNumber,
+            this.currencyDataGridViewTextBoxColumn,
+            this.noteDataGridViewTextBoxColumn,
+            this.note1DataGridViewTextBoxColumn,
+            this.paymentMethodDataGridViewTextBoxColumn,
+            this.paymentTermDataGridViewTextBoxColumn,
+            this.workerDataGridViewTextBoxColumn,
+            this.supplierBankDataGridViewTextBoxColumn,
+            this.supplierCategoryDataGridViewTextBoxColumn,
+            this.supplierWorkerDataGridViewTextBoxColumn,
+            this.worker1DataGridViewTextBoxColumn,
+            this.supplierSubCategoryDataGridViewTextBoxColumn});
+            this.dgSupplier.DataSource = this.supplierBindingSource;
             this.dgSupplier.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgSupplier.Location = new System.Drawing.Point(4, 349);
             this.dgSupplier.Margin = new System.Windows.Forms.Padding(4);
@@ -1447,6 +1493,152 @@ namespace LoginForm
             this.panel1.Size = new System.Drawing.Size(1227, 81);
             this.panel1.TabIndex = 2;
             // 
+            // supplierBindingSource
+            // 
+            this.supplierBindingSource.DataSource = typeof(LoginForm.DataSet.Supplier);
+            // 
+            // iDDataGridViewTextBoxColumn
+            // 
+            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
+            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // gName
+            // 
+            this.gName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.gName.DataPropertyName = "s_name";
+            this.gName.HeaderText = "Name";
+            this.gName.Name = "gName";
+            this.gName.ReadOnly = true;
+            this.gName.Width = 74;
+            // 
+            // gWebAddress
+            // 
+            this.gWebAddress.DataPropertyName = "webadress";
+            this.gWebAddress.HeaderText = "Web";
+            this.gWebAddress.Name = "gWebAddress";
+            this.gWebAddress.ReadOnly = true;
+            // 
+            // gTaxOffice
+            // 
+            this.gTaxOffice.DataPropertyName = "taxoffice";
+            this.gTaxOffice.HeaderText = "Tax Office";
+            this.gTaxOffice.Name = "gTaxOffice";
+            this.gTaxOffice.ReadOnly = true;
+            // 
+            // gTaxNumber
+            // 
+            this.gTaxNumber.DataPropertyName = "taxnumber";
+            this.gTaxNumber.HeaderText = "Tax Number";
+            this.gTaxNumber.Name = "gTaxNumber";
+            this.gTaxNumber.ReadOnly = true;
+            // 
+            // gDiscountrate
+            // 
+            this.gDiscountrate.DataPropertyName = "discountrate";
+            this.gDiscountrate.HeaderText = "Discount Rate";
+            this.gDiscountrate.Name = "gDiscountrate";
+            this.gDiscountrate.ReadOnly = true;
+            // 
+            // gIban
+            // 
+            this.gIban.DataPropertyName = "iban";
+            this.gIban.HeaderText = "IBAN";
+            this.gIban.Name = "gIban";
+            this.gIban.ReadOnly = true;
+            // 
+            // gBranchcode
+            // 
+            this.gBranchcode.DataPropertyName = "branchcode";
+            this.gBranchcode.HeaderText = "Branch Code";
+            this.gBranchcode.Name = "gBranchcode";
+            this.gBranchcode.ReadOnly = true;
+            // 
+            // gAccountNumber
+            // 
+            this.gAccountNumber.DataPropertyName = "accountnumber";
+            this.gAccountNumber.HeaderText = "Account Number";
+            this.gAccountNumber.Name = "gAccountNumber";
+            this.gAccountNumber.ReadOnly = true;
+            // 
+            // currencyDataGridViewTextBoxColumn
+            // 
+            this.currencyDataGridViewTextBoxColumn.DataPropertyName = "Currency";
+            this.currencyDataGridViewTextBoxColumn.HeaderText = "Currency";
+            this.currencyDataGridViewTextBoxColumn.Name = "currencyDataGridViewTextBoxColumn";
+            this.currencyDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // noteDataGridViewTextBoxColumn
+            // 
+            this.noteDataGridViewTextBoxColumn.DataPropertyName = "Note";
+            this.noteDataGridViewTextBoxColumn.HeaderText = "Note";
+            this.noteDataGridViewTextBoxColumn.Name = "noteDataGridViewTextBoxColumn";
+            this.noteDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // note1DataGridViewTextBoxColumn
+            // 
+            this.note1DataGridViewTextBoxColumn.DataPropertyName = "Note1";
+            this.note1DataGridViewTextBoxColumn.HeaderText = "Note1";
+            this.note1DataGridViewTextBoxColumn.Name = "note1DataGridViewTextBoxColumn";
+            this.note1DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // paymentMethodDataGridViewTextBoxColumn
+            // 
+            this.paymentMethodDataGridViewTextBoxColumn.DataPropertyName = "PaymentMethod";
+            this.paymentMethodDataGridViewTextBoxColumn.HeaderText = "PaymentMethod";
+            this.paymentMethodDataGridViewTextBoxColumn.Name = "paymentMethodDataGridViewTextBoxColumn";
+            this.paymentMethodDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // paymentTermDataGridViewTextBoxColumn
+            // 
+            this.paymentTermDataGridViewTextBoxColumn.DataPropertyName = "PaymentTerm";
+            this.paymentTermDataGridViewTextBoxColumn.HeaderText = "PaymentTerm";
+            this.paymentTermDataGridViewTextBoxColumn.Name = "paymentTermDataGridViewTextBoxColumn";
+            this.paymentTermDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // workerDataGridViewTextBoxColumn
+            // 
+            this.workerDataGridViewTextBoxColumn.DataPropertyName = "Worker";
+            this.workerDataGridViewTextBoxColumn.HeaderText = "Worker";
+            this.workerDataGridViewTextBoxColumn.Name = "workerDataGridViewTextBoxColumn";
+            this.workerDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // supplierBankDataGridViewTextBoxColumn
+            // 
+            this.supplierBankDataGridViewTextBoxColumn.DataPropertyName = "SupplierBank";
+            this.supplierBankDataGridViewTextBoxColumn.HeaderText = "SupplierBank";
+            this.supplierBankDataGridViewTextBoxColumn.Name = "supplierBankDataGridViewTextBoxColumn";
+            this.supplierBankDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // supplierCategoryDataGridViewTextBoxColumn
+            // 
+            this.supplierCategoryDataGridViewTextBoxColumn.DataPropertyName = "SupplierCategory";
+            this.supplierCategoryDataGridViewTextBoxColumn.HeaderText = "SupplierCategory";
+            this.supplierCategoryDataGridViewTextBoxColumn.Name = "supplierCategoryDataGridViewTextBoxColumn";
+            this.supplierCategoryDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // supplierWorkerDataGridViewTextBoxColumn
+            // 
+            this.supplierWorkerDataGridViewTextBoxColumn.DataPropertyName = "SupplierWorker";
+            this.supplierWorkerDataGridViewTextBoxColumn.HeaderText = "SupplierWorker";
+            this.supplierWorkerDataGridViewTextBoxColumn.Name = "supplierWorkerDataGridViewTextBoxColumn";
+            this.supplierWorkerDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // worker1DataGridViewTextBoxColumn
+            // 
+            this.worker1DataGridViewTextBoxColumn.DataPropertyName = "Worker1";
+            this.worker1DataGridViewTextBoxColumn.HeaderText = "Worker1";
+            this.worker1DataGridViewTextBoxColumn.Name = "worker1DataGridViewTextBoxColumn";
+            this.worker1DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // supplierSubCategoryDataGridViewTextBoxColumn
+            // 
+            this.supplierSubCategoryDataGridViewTextBoxColumn.DataPropertyName = "SupplierSubCategory";
+            this.supplierSubCategoryDataGridViewTextBoxColumn.HeaderText = "SupplierSubCategory";
+            this.supplierSubCategoryDataGridViewTextBoxColumn.Name = "supplierSubCategoryDataGridViewTextBoxColumn";
+            this.supplierSubCategoryDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // SupplierMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1476,6 +1668,7 @@ namespace LoginForm
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1606,5 +1799,26 @@ namespace LoginForm
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gWebAddress;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gTaxOffice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gTaxNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gDiscountrate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gIban;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gBranchcode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gAccountNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn currencyDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn noteDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn note1DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn paymentMethodDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn paymentTermDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn workerDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn supplierBankDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn supplierCategoryDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn supplierWorkerDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn worker1DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn supplierSubCategoryDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource supplierBindingSource;
     }
 }
