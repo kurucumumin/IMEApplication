@@ -515,6 +515,12 @@
     <Compile Include="Account\Services\UnitConvertionSP.cs" />
     <Compile Include="Account\Services\UnitSP.cs" />
     <Compile Include="Account\Services\VoucherTypeSP.cs" />
+    <Compile Include="Account\Settings\frmSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Settings\frmSettings.designer.cs">
+      <DependentUpon>frmSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\Transaction\frmBankReconciliation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1467,6 +1473,24 @@
     <Compile Include="DataSet\Setting.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\SettingsToCopy.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SettingsToCopyViewAll_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SettingsToCopyView_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SettingsViewAll_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SettingsView_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SettinsCheckReference_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\SlidingPrice.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -2032,6 +2056,9 @@
     <EmbeddedResource Include="Account\Search\frmVoucherSearch.resx">
       <DependentUpon>frmVoucherSearch.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Account\Settings\frmSettings.resx">
+      <DependentUpon>frmSettings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Account\Transaction\frmBankReconciliation.resx">
       <DependentUpon>frmBankReconciliation.cs</DependentUpon>
     </EmbeddedResource>
@@ -2340,5 +2367,6 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
