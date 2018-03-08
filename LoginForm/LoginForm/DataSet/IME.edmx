@@ -1779,6 +1779,14 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="settingsName" Type="varchar(max)" />
           <Property Name="status" Type="varchar(max)" />
         </EntityType>
+        <EntityType Name="SettingsToCopy">
+          <Key>
+            <PropertyRef Name="settingsId" />
+          </Key>
+          <Property Name="settingsId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="settingsName" Type="varchar(max)" />
+          <Property Name="status" Type="varchar(max)" />
+        </EntityType>
         <EntityType Name="SlidingPrice">
           <Key>
             <PropertyRef Name="ArticleNo" />
@@ -7776,6 +7784,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Parameter Name="employeeId" Type="numeric" Mode="In" />
           <Parameter Name="productCode" Type="varchar(max)" Mode="In" />
         </Function>
+        <Function Name="ServiceCheckExistence" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="serviceId" Type="numeric" Mode="In" />
+          <Parameter Name="serviceName" Type="varchar(max)" Mode="In" />
+        </Function>
         <Function Name="ServiceDetailsAddReturnWithIdentity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="serviceMasterId" Type="numeric" Mode="In" />
           <Parameter Name="serviceId" Type="numeric" Mode="In" />
@@ -7857,6 +7869,22 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
         <Function Name="ServiceVoucherMasterMax" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
         </Function>
+        <Function Name="SettingsEdit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="status" Type="varchar(max)" Mode="In" />
+          <Parameter Name="settingsId" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="SettingsGetId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SettingsName" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="SettingsToCopyView" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="settingsName" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="SettingsToCopyViewAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SettingsView" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="settingsName" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="SettingsViewAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SettinsCheckReference" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SlidingPriceAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ArticleNo" Type="nvarchar" Mode="In" />
           <Parameter Name="ArticleDescription" Type="nvarchar" Mode="In" />
@@ -8311,6 +8339,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <EntitySet Name="ServiceDetails" EntityType="Self.ServiceDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ServiceMaster" EntityType="Self.ServiceMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Settings" EntityType="Self.Settings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SettingsToCopy" EntityType="Self.SettingsToCopy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SlidingPrice" EntityType="Self.SlidingPrice" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Stock" EntityType="Self.Stock" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StockJournalDetail" EntityType="Self.StockJournalDetail" Schema="dbo" store:Type="Tables" />
@@ -12021,6 +12050,14 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <NavigationProperty Name="VoucherType" Relationship="Self.FK__ServiceMa__vouch__2121D3D7" FromRole="ServiceMaster" ToRole="VoucherType" />
         </EntityType>
         <EntityType Name="Setting">
+          <Key>
+            <PropertyRef Name="settingsId" />
+          </Key>
+          <Property Name="settingsId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="settingsName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SettingsToCopy">
           <Key>
             <PropertyRef Name="settingsId" />
           </Key>
@@ -16978,6 +17015,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <EntitySet Name="ServiceDetails" EntityType="Self.ServiceDetail" />
           <EntitySet Name="ServiceMasters" EntityType="Self.ServiceMaster" />
           <EntitySet Name="Settings" EntityType="Self.Setting" />
+          <EntitySet Name="SettingsToCopies" EntityType="Self.SettingsToCopy" />
           <EntitySet Name="SlidingPrices" EntityType="Self.SlidingPrice" />
           <EntitySet Name="Stocks" EntityType="Self.Stock" />
           <EntitySet Name="StockJournalDetails" EntityType="Self.StockJournalDetail" />
@@ -19705,6 +19743,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <Parameter Name="employeeId" Mode="In" Type="Decimal" />
             <Parameter Name="productCode" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="ServiceCheckExistence" ReturnType="Collection(Int32)">
+            <Parameter Name="serviceId" Mode="In" Type="Decimal" />
+            <Parameter Name="serviceName" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="ServiceDetailsAddReturnWithIdentity" ReturnType="Collection(Decimal)">
             <Parameter Name="serviceMasterId" Mode="In" Type="Decimal" />
             <Parameter Name="serviceId" Mode="In" Type="Decimal" />
@@ -19786,6 +19828,22 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <FunctionImport Name="ServiceVoucherMasterMax" ReturnType="Collection(Decimal)">
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="SettingsEdit">
+            <Parameter Name="status" Mode="In" Type="String" />
+            <Parameter Name="settingsId" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SettingsGetId" ReturnType="Collection(Decimal)">
+            <Parameter Name="SettingsName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SettingsToCopyView" ReturnType="Collection(IMEModel.SettingsToCopyView_Result)">
+            <Parameter Name="settingsName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SettingsToCopyViewAll" ReturnType="Collection(IMEModel.SettingsToCopyViewAll_Result)" />
+          <FunctionImport Name="SettingsView" ReturnType="Collection(IMEModel.SettingsView_Result)">
+            <Parameter Name="settingsName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SettingsViewAll" ReturnType="Collection(IMEModel.SettingsViewAll_Result)" />
+          <FunctionImport Name="SettinsCheckReference" ReturnType="Collection(IMEModel.SettinsCheckReference_Result)" />
           <FunctionImport Name="SlidingPriceAdd">
             <Parameter Name="ArticleNo" Mode="In" Type="String" />
             <Parameter Name="ArticleDescription" Mode="In" Type="String" />
@@ -21547,6 +21605,32 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="Decimal" Name="serviceCategoryId" Nullable="true" Precision="18" Scale="0" />
           <Property Type="Decimal" Name="rate" Nullable="true" Precision="18" Scale="5" />
           <Property Type="String" Name="narration" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SettingsToCopyView_Result">
+          <Property Type="Decimal" Name="settingsId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="settingsName" Nullable="true" />
+          <Property Type="String" Name="status" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SettingsToCopyViewAll_Result">
+          <Property Type="Decimal" Name="settingsId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="settingsName" Nullable="true" />
+          <Property Type="String" Name="status" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SettingsView_Result">
+          <Property Type="Decimal" Name="settingsId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="settingsName" Nullable="true" />
+          <Property Type="String" Name="status" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SettingsViewAll_Result">
+          <Property Type="Decimal" Name="settingsId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="settingsName" Nullable="true" />
+          <Property Type="String" Name="status" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SettinsCheckReference_Result">
+          <Property Type="Boolean" Name="CurrencyExist" Nullable="true" />
+          <Property Type="Boolean" Name="Godown" Nullable="true" />
+          <Property Type="Boolean" Name="Rack" Nullable="true" />
+          <Property Type="Boolean" Name="BillByBillExist" Nullable="true" />
         </ComplexType>
         <ComplexType Name="TaxCrystalReportGridFillByBillWise_Result">
           <Property Type="String" Name="companyName" Nullable="true" />
@@ -23560,6 +23644,15 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <EntitySetMapping Name="Settings">
             <EntityTypeMapping TypeName="IMEModel.Setting">
               <MappingFragment StoreEntitySet="Settings">
+                <ScalarProperty Name="settingsId" ColumnName="settingsId" />
+                <ScalarProperty Name="settingsName" ColumnName="settingsName" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SettingsToCopies">
+            <EntityTypeMapping TypeName="IMEModel.SettingsToCopy">
+              <MappingFragment StoreEntitySet="SettingsToCopy">
                 <ScalarProperty Name="settingsId" ColumnName="settingsId" />
                 <ScalarProperty Name="settingsName" ColumnName="settingsName" />
                 <ScalarProperty Name="status" ColumnName="status" />
@@ -26136,6 +26229,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ServiceCheckExistence" FunctionName="IMEModel.Store.ServiceCheckExistence" />
           <FunctionImportMapping FunctionImportName="ServiceDetailsAddReturnWithIdentity" FunctionName="IMEModel.Store.ServiceDetailsAddReturnWithIdentity" />
           <FunctionImportMapping FunctionImportName="ServiceDetailsDelete" FunctionName="IMEModel.Store.ServiceDetailsDelete" />
           <FunctionImportMapping FunctionImportName="ServiceDetailsDeleteWithMasterId" FunctionName="IMEModel.Store.ServiceDetailsDeleteWithMasterId" />
@@ -26201,6 +26295,54 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <FunctionImportMapping FunctionImportName="ServiceVoucherCheckExistence" FunctionName="IMEModel.Store.ServiceVoucherCheckExistence" />
           <FunctionImportMapping FunctionImportName="ServiceVoucherDelete" FunctionName="IMEModel.Store.ServiceVoucherDelete" />
           <FunctionImportMapping FunctionImportName="ServiceVoucherMasterMax" FunctionName="IMEModel.Store.ServiceVoucherMasterMax" />
+          <FunctionImportMapping FunctionImportName="SettingsEdit" FunctionName="IMEModel.Store.SettingsEdit" />
+          <FunctionImportMapping FunctionImportName="SettingsGetId" FunctionName="IMEModel.Store.SettingsGetId" />
+          <FunctionImportMapping FunctionImportName="SettingsToCopyView" FunctionName="IMEModel.Store.SettingsToCopyView">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.SettingsToCopyView_Result">
+                <ScalarProperty Name="settingsId" ColumnName="settingsId" />
+                <ScalarProperty Name="settingsName" ColumnName="settingsName" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SettingsToCopyViewAll" FunctionName="IMEModel.Store.SettingsToCopyViewAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.SettingsToCopyViewAll_Result">
+                <ScalarProperty Name="settingsId" ColumnName="settingsId" />
+                <ScalarProperty Name="settingsName" ColumnName="settingsName" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SettingsView" FunctionName="IMEModel.Store.SettingsView">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.SettingsView_Result">
+                <ScalarProperty Name="settingsId" ColumnName="settingsId" />
+                <ScalarProperty Name="settingsName" ColumnName="settingsName" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SettingsViewAll" FunctionName="IMEModel.Store.SettingsViewAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.SettingsViewAll_Result">
+                <ScalarProperty Name="settingsId" ColumnName="settingsId" />
+                <ScalarProperty Name="settingsName" ColumnName="settingsName" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SettinsCheckReference" FunctionName="IMEModel.Store.SettinsCheckReference">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.SettinsCheckReference_Result">
+                <ScalarProperty Name="CurrencyExist" ColumnName="CurrencyExist" />
+                <ScalarProperty Name="Godown" ColumnName="Godown" />
+                <ScalarProperty Name="Rack" ColumnName="Rack" />
+                <ScalarProperty Name="BillByBillExist" ColumnName="BillByBillExist" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SlidingPriceAdd" FunctionName="IMEModel.Store.SlidingPriceAdd" />
           <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="IMEModel.Store.sp_alterdiagram" />
           <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="IMEModel.Store.sp_creatediagram" />

@@ -104,8 +104,8 @@
             // clbUserAuthorityList
             // 
             this.clbUserAuthorityList.CheckOnClick = true;
-            this.clbUserAuthorityList.FormattingEnabled = true;
             resources.ApplyResources(this.clbUserAuthorityList, "clbUserAuthorityList");
+            this.clbUserAuthorityList.FormattingEnabled = true;
             this.clbUserAuthorityList.Name = "clbUserAuthorityList";
             this.clbUserAuthorityList.MouseClick += new System.Windows.Forms.MouseEventHandler(this.clbUserAuthorityList_MouseClick);
             // 
@@ -120,8 +120,8 @@
             // 
             this.lbRoles.DataSource = this.roleValueBindingSource;
             this.lbRoles.DisplayMember = "roleName";
-            this.lbRoles.FormattingEnabled = true;
             resources.ApplyResources(this.lbRoles, "lbRoles");
+            this.lbRoles.FormattingEnabled = true;
             this.lbRoles.Name = "lbRoles";
             this.lbRoles.ValueMember = "RoleID";
             this.lbRoles.SelectedIndexChanged += new System.EventHandler(this.lbRoles_SelectedIndexChanged);
@@ -148,8 +148,8 @@
             // clbAuthorities
             // 
             this.clbAuthorities.CheckOnClick = true;
-            this.clbAuthorities.FormattingEnabled = true;
             resources.ApplyResources(this.clbAuthorities, "clbAuthorities");
+            this.clbAuthorities.FormattingEnabled = true;
             this.clbAuthorities.Name = "clbAuthorities";
             this.clbAuthorities.MouseClick += new System.Windows.Forms.MouseEventHandler(this.clbAuthorities_MouseClick);
             // 
