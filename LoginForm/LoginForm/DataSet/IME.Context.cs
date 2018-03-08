@@ -140,6 +140,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<ServiceDetail> ServiceDetails { get; set; }
         public virtual DbSet<ServiceMaster> ServiceMasters { get; set; }
         public virtual DbSet<Setting> Settings { get; set; }
+        public virtual DbSet<SettingsToCopy> SettingsToCopies { get; set; }
         public virtual DbSet<SlidingPrice> SlidingPrices { get; set; }
         public virtual DbSet<Stock> Stocks { get; set; }
         public virtual DbSet<StockJournalDetail> StockJournalDetails { get; set; }
@@ -4757,6 +4758,19 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SalesReturnReportGrideFill_Result>("SalesReturnReportGrideFill", fromDateParameter, toDateParameter, ledgerIdParameter, voucherTypeIdParameter, voucherNoParameter, employeeIdParameter, productCodeParameter);
         }
     
+        public virtual ObjectResult<Nullable<int>> ServiceCheckExistence(Nullable<decimal> serviceId, string serviceName)
+        {
+            var serviceIdParameter = serviceId.HasValue ?
+                new ObjectParameter("serviceId", serviceId) :
+                new ObjectParameter("serviceId", typeof(decimal));
+    
+            var serviceNameParameter = serviceName != null ?
+                new ObjectParameter("serviceName", serviceName) :
+                new ObjectParameter("serviceName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("ServiceCheckExistence", serviceIdParameter, serviceNameParameter);
+        }
+    
         public virtual ObjectResult<Nullable<decimal>> ServiceDetailsAddReturnWithIdentity(Nullable<decimal> serviceMasterId, Nullable<decimal> serviceId, string measure, Nullable<decimal> amount)
         {
             var serviceMasterIdParameter = serviceMasterId.HasValue ?
@@ -5044,6 +5058,61 @@ namespace LoginForm.DataSet
                 new ObjectParameter("voucherTypeId", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("ServiceVoucherMasterMax", voucherTypeIdParameter);
+        }
+    
+        public virtual int SettingsEdit(string status, Nullable<decimal> settingsId)
+        {
+            var statusParameter = status != null ?
+                new ObjectParameter("status", status) :
+                new ObjectParameter("status", typeof(string));
+    
+            var settingsIdParameter = settingsId.HasValue ?
+                new ObjectParameter("settingsId", settingsId) :
+                new ObjectParameter("settingsId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SettingsEdit", statusParameter, settingsIdParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> SettingsGetId(string settingsName)
+        {
+            var settingsNameParameter = settingsName != null ?
+                new ObjectParameter("SettingsName", settingsName) :
+                new ObjectParameter("SettingsName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("SettingsGetId", settingsNameParameter);
+        }
+    
+        public virtual ObjectResult<SettingsToCopyView_Result> SettingsToCopyView(string settingsName)
+        {
+            var settingsNameParameter = settingsName != null ?
+                new ObjectParameter("settingsName", settingsName) :
+                new ObjectParameter("settingsName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SettingsToCopyView_Result>("SettingsToCopyView", settingsNameParameter);
+        }
+    
+        public virtual ObjectResult<SettingsToCopyViewAll_Result> SettingsToCopyViewAll()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SettingsToCopyViewAll_Result>("SettingsToCopyViewAll");
+        }
+    
+        public virtual ObjectResult<SettingsView_Result> SettingsView(string settingsName)
+        {
+            var settingsNameParameter = settingsName != null ?
+                new ObjectParameter("settingsName", settingsName) :
+                new ObjectParameter("settingsName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SettingsView_Result>("SettingsView", settingsNameParameter);
+        }
+    
+        public virtual ObjectResult<SettingsViewAll_Result> SettingsViewAll()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SettingsViewAll_Result>("SettingsViewAll");
+        }
+    
+        public virtual ObjectResult<SettinsCheckReference_Result> SettinsCheckReference()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SettinsCheckReference_Result>("SettinsCheckReference");
         }
     
         public virtual int SlidingPriceAdd(string articleNo, string articleDescription, Nullable<int> itemTypeCode, string itemTypeDesc, string introductionDate, string discontinuedDate, Nullable<int> quantity1, Nullable<decimal> col1Price, Nullable<decimal> col2Price, Nullable<decimal> col3Price, Nullable<decimal> col4Price, Nullable<decimal> col5Price, Nullable<int> col1Break, Nullable<int> col2Break, Nullable<int> col3Break, Nullable<int> col4Break, Nullable<int> col5Break, Nullable<decimal> discountedPrice1, Nullable<decimal> discountedPrice2, Nullable<decimal> discountedPrice3, Nullable<decimal> discountedPrice4, Nullable<decimal> discountedPrice5, string superSectionNo, string supersectionName, string brandID, string brandname, string sectionID, string sectionName)
