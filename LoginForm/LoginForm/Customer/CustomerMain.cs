@@ -249,7 +249,7 @@ namespace LoginForm
             CustomerFax.Text = c.fax ?? CustomerFax.Text;
             TaxOffice.Text = c.taxoffice ?? TaxOffice.Text;
             taxNumber.Text = c.taxnumber ?? taxNumber.Text;
-            PaymentMethod.SelectedValue = c.paymentmethodID ?? PaymentMethod.SelectedValue;
+            PaymentMethod.SelectedValue = (c.paymentmethodID != null) ? c.paymentmethodID : -1;
             factor.Text = c.factor.ToString() ?? factor.Text;
             DiscountRate.Text = c.discountrate.ToString() ?? DiscountRate.Text;
         }
