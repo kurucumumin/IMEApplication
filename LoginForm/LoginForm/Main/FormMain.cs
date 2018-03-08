@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
@@ -42,7 +43,8 @@ namespace LoginForm
         
         public void checkAuthorities()
         {
-            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1024).Count() <= 0)
+            List<DataSet.AuthorizationValue> authList = Utils.getCurrentUser().AuthorizationValues.ToList();
+            if (authList.Where(a => a.AuthorizationID == 1024).Count() <= 0)
             {
                 btnManagement.Visible = false;
             }
@@ -52,7 +54,7 @@ namespace LoginForm
                 setManagementControl();
             }
 
-            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1022).Count() <= 0)
+            if (authList.Where(a => a.AuthorizationID == 1022).Count() <= 0)
             {
                 btnLoader.Visible = false;
             }
@@ -61,7 +63,7 @@ namespace LoginForm
                 btnLoader.Visible = true;
             }
 
-            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1023).Count() <= 0)
+            if (authList.Where(a => a.AuthorizationID == 1023).Count() <= 0)
             {
                 btnDevelopment.Visible = false;
             }

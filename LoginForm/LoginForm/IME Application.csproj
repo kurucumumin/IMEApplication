@@ -1842,11 +1842,11 @@
     <Compile Include="Services\ToolTipService.cs" />
     <Compile Include="Services\txtCreate.cs" />
     <Compile Include="Services\XmlToObject.cs" />
-    <Compile Include="Supplier\SupplierMain.cs">
+    <Compile Include="Supplier\frmSupplierMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Supplier\SupplierMain.designer.cs">
-      <DependentUpon>SupplierMain.cs</DependentUpon>
+    <Compile Include="Supplier\frmSupplierMain.designer.cs">
+      <DependentUpon>frmSupplierMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Supplier\frmSupplierCategoryAdd.cs">
       <SubType>Form</SubType>
@@ -2225,8 +2225,8 @@
     <EmbeddedResource Include="SaleOrder\FormSaleGridCustomize.resx">
       <DependentUpon>FormSaleGridCustomize.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Supplier\SupplierMain.resx">
-      <DependentUpon>SupplierMain.cs</DependentUpon>
+    <EmbeddedResource Include="Supplier\frmSupplierMain.resx">
+      <DependentUpon>frmSupplierMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Supplier\frmSupplierCategoryAdd.resx">
       <DependentUpon>frmSupplierCategoryAdd.cs</DependentUpon>
@@ -2268,6 +2268,7 @@
     <None Include="Properties\DataSources\LoginForm.DataSet.QuotationDetail.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.RoleValue.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.Supplier.datasource" />
+    <None Include="Properties\DataSources\LoginForm.DataSet.Supplier1.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.Worker.datasource" />
     <None Include="Properties\DataSources\LoginForm.PurchaseOrder.MailForm.datasource" />
     <None Include="Properties\DataSources\LoginForm.SaleOrder.FormSaleOrderAdd.datasource" />

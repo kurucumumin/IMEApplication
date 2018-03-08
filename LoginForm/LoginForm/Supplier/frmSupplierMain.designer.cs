@@ -1,6 +1,6 @@
 namespace LoginForm
 {
-    partial class SupplierMain
+    partial class frmSupplierMain
     {
         /// <summary>
         ///Gerekli tasarımcı değişkeni.
@@ -133,14 +133,6 @@ namespace LoginForm
             this.label38 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
             this.dgSupplier = new System.Windows.Forms.DataGridView();
-            this.btnModify = new System.Windows.Forms.Button();
-            this.btnExit = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.supplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gWebAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -161,6 +153,14 @@ namespace LoginForm
             this.supplierWorkerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.worker1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.supplierSubCategoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.supplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnModify = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.tabgenel.SuspendLayout();
             this.tabInfo.SuspendLayout();
             this.tabAccount.SuspendLayout();
@@ -168,9 +168,9 @@ namespace LoginForm
             this.tabAccounting.SuspendLayout();
             this.tabBank.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgSupplier)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tabgenel
@@ -1398,105 +1398,6 @@ namespace LoginForm
             this.dgSupplier.TabIndex = 1;
             this.dgSupplier.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgSupplier_CellClick);
             // 
-            // btnModify
-            // 
-            this.btnModify.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnModify.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModify.ForeColor = System.Drawing.Color.SteelBlue;
-            this.btnModify.Location = new System.Drawing.Point(805, 2);
-            this.btnModify.Margin = new System.Windows.Forms.Padding(4);
-            this.btnModify.Name = "btnModify";
-            this.btnModify.Size = new System.Drawing.Size(188, 69);
-            this.btnModify.TabIndex = 56;
-            this.btnModify.Text = "Modify";
-            this.btnModify.UseVisualStyleBackColor = true;
-            this.btnModify.Click += new System.EventHandler(this.btnModify_Click);
-            // 
-            // btnExit
-            // 
-            this.btnExit.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.ForeColor = System.Drawing.Color.Red;
-            this.btnExit.Location = new System.Drawing.Point(1007, 2);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(4);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(177, 69);
-            this.btnExit.TabIndex = 57;
-            this.btnExit.Text = "Exit";
-            this.btnExit.UseVisualStyleBackColor = true;
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.ForeColor = System.Drawing.Color.LimeGreen;
-            this.btnAdd.Location = new System.Drawing.Point(621, 2);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(4);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(176, 69);
-            this.btnAdd.TabIndex = 55;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(13, 30);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(124, 20);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Supplier Name:";
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(163, 27);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(4);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(164, 26);
-            this.txtSearch.TabIndex = 54;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.dgSupplier, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.tabgenel, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 260F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 85F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1233, 578);
-            this.tableLayoutPanel1.TabIndex = 7;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.txtSearch);
-            this.panel1.Controls.Add(this.btnModify);
-            this.panel1.Controls.Add(this.btnExit);
-            this.panel1.Controls.Add(this.btnAdd);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 262);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1227, 81);
-            this.panel1.TabIndex = 2;
-            // 
-            // supplierBindingSource
-            // 
-            this.supplierBindingSource.DataSource = typeof(LoginForm.DataSet.Supplier);
-            // 
             // iDDataGridViewTextBoxColumn
             // 
             this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
@@ -1639,7 +1540,106 @@ namespace LoginForm
             this.supplierSubCategoryDataGridViewTextBoxColumn.Name = "supplierSubCategoryDataGridViewTextBoxColumn";
             this.supplierSubCategoryDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // SupplierMain
+            // supplierBindingSource
+            // 
+            this.supplierBindingSource.DataSource = typeof(LoginForm.DataSet.Supplier);
+            // 
+            // btnModify
+            // 
+            this.btnModify.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnModify.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModify.ForeColor = System.Drawing.Color.SteelBlue;
+            this.btnModify.Location = new System.Drawing.Point(805, 2);
+            this.btnModify.Margin = new System.Windows.Forms.Padding(4);
+            this.btnModify.Name = "btnModify";
+            this.btnModify.Size = new System.Drawing.Size(188, 69);
+            this.btnModify.TabIndex = 56;
+            this.btnModify.Text = "Modify";
+            this.btnModify.UseVisualStyleBackColor = true;
+            this.btnModify.Click += new System.EventHandler(this.btnModify_Click);
+            // 
+            // btnExit
+            // 
+            this.btnExit.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.ForeColor = System.Drawing.Color.Red;
+            this.btnExit.Location = new System.Drawing.Point(1007, 2);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(4);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(177, 69);
+            this.btnExit.TabIndex = 57;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = true;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.ForeColor = System.Drawing.Color.LimeGreen;
+            this.btnAdd.Location = new System.Drawing.Point(621, 2);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(176, 69);
+            this.btnAdd.TabIndex = 55;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(13, 30);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(124, 20);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Supplier Name:";
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(163, 27);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(164, 26);
+            this.txtSearch.TabIndex = 54;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.dgSupplier, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.tabgenel, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 260F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 85F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1233, 578);
+            this.tableLayoutPanel1.TabIndex = 7;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.txtSearch);
+            this.panel1.Controls.Add(this.btnModify);
+            this.panel1.Controls.Add(this.btnExit);
+            this.panel1.Controls.Add(this.btnAdd);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 262);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1227, 81);
+            this.panel1.TabIndex = 2;
+            // 
+            // frmSupplierMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1648,7 +1648,7 @@ namespace LoginForm
             this.Controls.Add(this.tableLayoutPanel1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1249, 614);
-            this.Name = "SupplierMain";
+            this.Name = "frmSupplierMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Supplier";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -1665,10 +1665,10 @@ namespace LoginForm
             this.tabBank.ResumeLayout(false);
             this.tabBank.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgSupplier)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
