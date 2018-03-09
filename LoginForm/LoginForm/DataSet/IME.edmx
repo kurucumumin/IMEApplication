@@ -6827,6 +6827,33 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
           <Parameter Name="ledgerId" Type="numeric" Mode="In" />
         </Function>
+        <Function Name="DesignationAddWithReturnIdentity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="designationName" Type="varchar(max)" Mode="In" />
+          <Parameter Name="leaveDays" Type="decimal" Mode="In" />
+          <Parameter Name="advanceAmount" Type="varchar(max)" Mode="In" />
+          <Parameter Name="narration" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="DesignationCheckExistanceOfName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="designationName" Type="varchar(max)" Mode="In" />
+          <Parameter Name="designationId" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="DesignationDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="designationId" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="DesignationEdit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="designationId" Type="numeric" Mode="In" />
+          <Parameter Name="designationName" Type="varchar(max)" Mode="In" />
+          <Parameter Name="leaveDays" Type="numeric" Mode="In" />
+          <Parameter Name="advanceAmount" Type="varchar(max)" Mode="In" />
+          <Parameter Name="narration" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="DesignationGridFill" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="DesignationSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="designation" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="DesignationView" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="designationId" Type="numeric" Mode="In" />
+        </Function>
         <Function Name="EmployeeCodeCheckExistance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="employeeCode" Type="varchar(max)" Mode="In" />
           <Parameter Name="employeeId" Type="numeric" Mode="In" />
@@ -18797,6 +18824,33 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
             <Parameter Name="ledgerId" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="DesignationAddWithReturnIdentity" ReturnType="Collection(Decimal)">
+            <Parameter Name="designationName" Mode="In" Type="String" />
+            <Parameter Name="leaveDays" Mode="In" Type="Decimal" />
+            <Parameter Name="advanceAmount" Mode="In" Type="String" />
+            <Parameter Name="narration" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DesignationCheckExistanceOfName" ReturnType="Collection(Int32)">
+            <Parameter Name="designationName" Mode="In" Type="String" />
+            <Parameter Name="designationId" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="DesignationDelete" ReturnType="Collection(String)">
+            <Parameter Name="designationId" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="DesignationEdit">
+            <Parameter Name="designationId" Mode="In" Type="Decimal" />
+            <Parameter Name="designationName" Mode="In" Type="String" />
+            <Parameter Name="leaveDays" Mode="In" Type="Decimal" />
+            <Parameter Name="advanceAmount" Mode="In" Type="String" />
+            <Parameter Name="narration" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DesignationGridFill" ReturnType="Collection(IMEModel.DesignationGridFill_Result)" />
+          <FunctionImport Name="DesignationSearch" ReturnType="Collection(IMEModel.DesignationSearch_Result)">
+            <Parameter Name="designation" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DesignationView" ReturnType="Collection(IMEModel.DesignationView_Result)">
+            <Parameter Name="designationId" Mode="In" Type="Decimal" />
+          </FunctionImport>
           <FunctionImport Name="EmployeeCodeCheckExistance" ReturnType="Collection(Int32)">
             <Parameter Name="employeeCode" Mode="In" Type="String" />
             <Parameter Name="employeeId" Mode="In" Type="Decimal" />
@@ -20655,6 +20709,21 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="Decimal" Name="totalAmount" Nullable="true" Precision="18" Scale="2" />
           <Property Type="String" Name="narration" Nullable="true" />
           <Property Type="String" Name="userName" Nullable="false" MaxLength="25" />
+        </ComplexType>
+        <ComplexType Name="DesignationGridFill_Result">
+          <Property Type="Decimal" Name="designationId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="designationName" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="DesignationSearch_Result">
+          <Property Type="Decimal" Name="designationId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="designationName" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="DesignationView_Result">
+          <Property Type="Decimal" Name="designationId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="designationName" Nullable="true" />
+          <Property Type="Decimal" Name="leaveDays" Nullable="true" Precision="18" Scale="1" />
+          <Property Type="Decimal" Name="advanceAmount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="narration" Nullable="true" />
         </ComplexType>
         <ComplexType Name="FundFlow1_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
@@ -24882,6 +24951,37 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="totalAmount" ColumnName="totalAmount" />
                 <ScalarProperty Name="narration" ColumnName="narration" />
                 <ScalarProperty Name="userName" ColumnName="userName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DesignationAddWithReturnIdentity" FunctionName="IMEModel.Store.DesignationAddWithReturnIdentity" />
+          <FunctionImportMapping FunctionImportName="DesignationCheckExistanceOfName" FunctionName="IMEModel.Store.DesignationCheckExistanceOfName" />
+          <FunctionImportMapping FunctionImportName="DesignationDelete" FunctionName="IMEModel.Store.DesignationDelete" />
+          <FunctionImportMapping FunctionImportName="DesignationEdit" FunctionName="IMEModel.Store.DesignationEdit" />
+          <FunctionImportMapping FunctionImportName="DesignationGridFill" FunctionName="IMEModel.Store.DesignationGridFill">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.DesignationGridFill_Result">
+                <ScalarProperty Name="designationId" ColumnName="designationId" />
+                <ScalarProperty Name="designationName" ColumnName="designationName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DesignationSearch" FunctionName="IMEModel.Store.DesignationSearch">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.DesignationSearch_Result">
+                <ScalarProperty Name="designationId" ColumnName="designationId" />
+                <ScalarProperty Name="designationName" ColumnName="designationName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DesignationView" FunctionName="IMEModel.Store.DesignationView">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.DesignationView_Result">
+                <ScalarProperty Name="designationId" ColumnName="designationId" />
+                <ScalarProperty Name="designationName" ColumnName="designationName" />
+                <ScalarProperty Name="leaveDays" ColumnName="leaveDays" />
+                <ScalarProperty Name="advanceAmount" ColumnName="advanceAmount" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

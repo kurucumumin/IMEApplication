@@ -1405,6 +1405,97 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DebitNoteReportSearch_Result>("DebitNoteReportSearch", fromDateParameter, toDateParameter, voucherTypeIdParameter, ledgerIdParameter);
         }
     
+        public virtual ObjectResult<Nullable<decimal>> DesignationAddWithReturnIdentity(string designationName, Nullable<decimal> leaveDays, string advanceAmount, string narration)
+        {
+            var designationNameParameter = designationName != null ?
+                new ObjectParameter("designationName", designationName) :
+                new ObjectParameter("designationName", typeof(string));
+    
+            var leaveDaysParameter = leaveDays.HasValue ?
+                new ObjectParameter("leaveDays", leaveDays) :
+                new ObjectParameter("leaveDays", typeof(decimal));
+    
+            var advanceAmountParameter = advanceAmount != null ?
+                new ObjectParameter("advanceAmount", advanceAmount) :
+                new ObjectParameter("advanceAmount", typeof(string));
+    
+            var narrationParameter = narration != null ?
+                new ObjectParameter("narration", narration) :
+                new ObjectParameter("narration", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("DesignationAddWithReturnIdentity", designationNameParameter, leaveDaysParameter, advanceAmountParameter, narrationParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> DesignationCheckExistanceOfName(string designationName, Nullable<decimal> designationId)
+        {
+            var designationNameParameter = designationName != null ?
+                new ObjectParameter("designationName", designationName) :
+                new ObjectParameter("designationName", typeof(string));
+    
+            var designationIdParameter = designationId.HasValue ?
+                new ObjectParameter("designationId", designationId) :
+                new ObjectParameter("designationId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("DesignationCheckExistanceOfName", designationNameParameter, designationIdParameter);
+        }
+    
+        public virtual ObjectResult<string> DesignationDelete(Nullable<decimal> designationId)
+        {
+            var designationIdParameter = designationId.HasValue ?
+                new ObjectParameter("designationId", designationId) :
+                new ObjectParameter("designationId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("DesignationDelete", designationIdParameter);
+        }
+    
+        public virtual int DesignationEdit(Nullable<decimal> designationId, string designationName, Nullable<decimal> leaveDays, string advanceAmount, string narration)
+        {
+            var designationIdParameter = designationId.HasValue ?
+                new ObjectParameter("designationId", designationId) :
+                new ObjectParameter("designationId", typeof(decimal));
+    
+            var designationNameParameter = designationName != null ?
+                new ObjectParameter("designationName", designationName) :
+                new ObjectParameter("designationName", typeof(string));
+    
+            var leaveDaysParameter = leaveDays.HasValue ?
+                new ObjectParameter("leaveDays", leaveDays) :
+                new ObjectParameter("leaveDays", typeof(decimal));
+    
+            var advanceAmountParameter = advanceAmount != null ?
+                new ObjectParameter("advanceAmount", advanceAmount) :
+                new ObjectParameter("advanceAmount", typeof(string));
+    
+            var narrationParameter = narration != null ?
+                new ObjectParameter("narration", narration) :
+                new ObjectParameter("narration", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DesignationEdit", designationIdParameter, designationNameParameter, leaveDaysParameter, advanceAmountParameter, narrationParameter);
+        }
+    
+        public virtual ObjectResult<DesignationGridFill_Result> DesignationGridFill()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DesignationGridFill_Result>("DesignationGridFill");
+        }
+    
+        public virtual ObjectResult<DesignationSearch_Result> DesignationSearch(string designation)
+        {
+            var designationParameter = designation != null ?
+                new ObjectParameter("designation", designation) :
+                new ObjectParameter("designation", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DesignationSearch_Result>("DesignationSearch", designationParameter);
+        }
+    
+        public virtual ObjectResult<DesignationView_Result> DesignationView(Nullable<decimal> designationId)
+        {
+            var designationIdParameter = designationId.HasValue ?
+                new ObjectParameter("designationId", designationId) :
+                new ObjectParameter("designationId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DesignationView_Result>("DesignationView", designationIdParameter);
+        }
+    
         public virtual ObjectResult<Nullable<int>> EmployeeCodeCheckExistance(string employeeCode, Nullable<decimal> employeeId)
         {
             var employeeCodeParameter = employeeCode != null ?
