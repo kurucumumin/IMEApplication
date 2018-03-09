@@ -1268,7 +1268,7 @@ namespace LoginForm.QuotationModule
                 {
 
                     txtMargin2.Text = ((1 - ((Decimal.Parse(txtMargin2.Text)) / (decimal.Parse(txtWeb1.Text)))) * 100).ToString();
-                    txtMargin3.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked, Int32.Parse(sp1.Col3Break.ToString()))).ToString("G29");
+                    try { txtMargin3.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked, Int32.Parse(sp1.Col3Break.ToString()))).ToString("G29");
                     if (Decimal.Parse(txtWeb3.Text) != 0) txtMargin3.Text = ((1 - ((Decimal.Parse(txtMargin3.Text)) / (decimal.Parse(txtWeb3.Text)))) * 100).ToString();
                     if (sp1.Col4Break != 0)
                     {
@@ -1282,6 +1282,10 @@ namespace LoginForm.QuotationModule
                             txtMargin5.Text = ((1 - ((Decimal.Parse(txtMargin5.Text)) / (decimal.Parse(txtWeb5.Text)))) * 100).ToString();
                         }
                     }
+                    }
+                    catch { }
+
+
 
                 }
 
@@ -2768,7 +2772,15 @@ namespace LoginForm.QuotationModule
                 decimal margin = 0;
                 if (!cbDeliverDiscount.Checked)
                 {
-                    Itemtotal = decimal.Parse(dgQuotationAddedItems.Rows[i].Cells[dgTotal.Index].Value.ToString());
+                    if (dgQuotationAddedItems.Rows[i].Cells[dgTotal.Index].Value == "")
+                    {
+                        Itemtotal = 0;
+                    }
+                    else
+                    {
+                        Itemtotal = decimal.Parse(dgQuotationAddedItems.Rows[i].Cells[dgTotal.Index].Value.ToString());
+                    }
+                    
                     decimal disc = 0;
                     if(txtTotalDis.Text!="")disc=decimal.Parse(txtTotalDis.Text);
                     Itemtotal = Itemtotal * (1 - ( disc/100));
