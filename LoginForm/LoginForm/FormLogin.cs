@@ -75,7 +75,7 @@ namespace LoginForm
         private void FormLogin_Load(object sender, EventArgs e)
         {
             txtID.Focus();
-
+            
             //
             ////for admin to see everything
             //RoleValue admin = IME.RoleValues.Where(a => a.RoleID == 1009).FirstOrDefault();
