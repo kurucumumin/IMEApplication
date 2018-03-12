@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using System.Data;
 using System.Linq;
 using LoginForm.DataSet;
+using LoginForm.Services;
 
 namespace LoginForm.Account.Services
 {
@@ -233,6 +234,139 @@ namespace LoginForm.Account.Services
                 MessageBox.Show(ex.ToString());
             }
             return dtbl;
+        }
+        /// <summary>
+        /// Function to check existance of company
+        /// </summary>
+        /// <param name="strCompanyName"></param>
+        /// <param name="decCompanyId"></param>
+        /// <returns></returns>
+        public bool CompanyCheckExistence(String strCompanyName, decimal decCompanyId)
+        {
+            try
+            {
+                object obj = new IMEEntities().CompanyCheckExistence(strCompanyName, decCompanyId).FirstOrDefault();
+                decimal decCount = 0;
+                if (obj != null)
+                {
+                    decCount = Convert.ToDecimal(obj.ToString());
+                }
+                if (decCount > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Messages.ErrorMessage(ex.ToString());
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Function to insert values to Company Table
+        /// </summary>
+        /// <param name="companyinfo"></param>
+        /// <returns></returns>
+        public decimal CompanyAddParticularFeilds(Company companyinfo)
+        {
+            object decCopmanyId = 0;
+            try
+            {
+
+                decCopmanyId = new IMEEntities().CompanyAddParticularFeilds(
+                    companyinfo.companyName,
+                    companyinfo.mailingName,
+                    companyinfo.address,
+                    companyinfo.phone,
+                    companyinfo.mobile,
+                    companyinfo.email,
+                    companyinfo.web,
+                    companyinfo.country,
+                    companyinfo.state,
+                    companyinfo.pin,
+                    companyinfo.currencyId,
+                    companyinfo.financialYearFrom,
+                    companyinfo.booksBeginingFrom,
+                    companyinfo.tin,
+                    companyinfo.cst,
+                    companyinfo.pan);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return Convert.ToDecimal(decCopmanyId);
+        }
+
+        /// <summary>
+        /// Function to insert values to Company Table
+        /// </summary>
+        /// <param name="companyinfo"></param>
+        public void CompanyAdd(Company companyinfo)
+        {
+            try
+            {
+                new IMEEntities().CompanyAdd(
+                    companyinfo.companyId,
+                    companyinfo.companyName,
+                    companyinfo.mailingName,
+                    companyinfo.address,
+                    companyinfo.phone,
+                    companyinfo.mobile,
+                    companyinfo.email,
+                    companyinfo.web,
+                    companyinfo.country,
+                    companyinfo.state,
+                    companyinfo.pin,
+                    companyinfo.currencyId,
+                    companyinfo.financialYearFrom,
+                    companyinfo.booksBeginingFrom,
+                    companyinfo.tin,
+                    companyinfo.cst,
+                    companyinfo.pan);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        /// <summary>
+        /// Function to Update values in Company Table
+        /// </summary>
+        /// <param name="companyinfo"></param>
+        public void CompanyEdit(Company companyinfo)
+        {
+            try
+            {
+                new IMEEntities().CompanyEdit(
+                    companyinfo.companyId,
+                    companyinfo.companyName,
+                    companyinfo.mailingName,
+                    companyinfo.address,
+                    companyinfo.phone,
+                    companyinfo.mobile,
+                    companyinfo.email,
+                    companyinfo.web,
+                    companyinfo.country,
+                    companyinfo.state,
+                    companyinfo.pin,
+                    companyinfo.currencyId,
+                    companyinfo.financialYearFrom,
+                    companyinfo.booksBeginingFrom,
+                    companyinfo.tin,
+                    companyinfo.cst,
+                    companyinfo.pan);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }

@@ -10,6 +10,9 @@ namespace LoginForm
     public partial class FormMain : Form
     {
         public static FormMain MDIObj;
+        public static string strEstimateCompanyPath = string.Empty;
+        public static bool isEstimateDB = false;
+        public static bool demoProject = false;
 
         public FormMain()
         {

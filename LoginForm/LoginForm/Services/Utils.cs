@@ -8,6 +8,7 @@ namespace LoginForm.Services
     class Utils
     {
         private static Worker worker;
+        public static decimal _decCurrentCompanyId;
 
         public static string MD5Hash(string input)
         {
