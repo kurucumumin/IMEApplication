@@ -41,6 +41,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<Capital> Capitals { get; set; }
         public virtual DbSet<City> Cities { get; set; }
         public virtual DbSet<Company> Companies { get; set; }
+        public virtual DbSet<CompanyPath> CompanyPaths { get; set; }
         public virtual DbSet<ContactType> ContactTypes { get; set; }
         public virtual DbSet<ContraDetail> ContraDetails { get; set; }
         public virtual DbSet<ContraMaster> ContraMasters { get; set; }
@@ -55,6 +56,8 @@ namespace LoginForm.DataSet
         public virtual DbSet<CustomerSubCategory> CustomerSubCategories { get; set; }
         public virtual DbSet<CustomerTitle> CustomerTitles { get; set; }
         public virtual DbSet<CustomerWorker> CustomerWorkers { get; set; }
+        public virtual DbSet<DailyAttendanceDetail> DailyAttendanceDetails { get; set; }
+        public virtual DbSet<DailyAttendanceMaster> DailyAttendanceMasters { get; set; }
         public virtual DbSet<DailyDiscontinued> DailyDiscontinueds { get; set; }
         public virtual DbSet<DailySalaryVoucherDetail> DailySalaryVoucherDetails { get; set; }
         public virtual DbSet<DailySalaryVoucherMaster> DailySalaryVoucherMasters { get; set; }
@@ -167,6 +170,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<AdditionalCost> AdditionalCosts { get; set; }
         public virtual DbSet<SalaryVoucherDetail> SalaryVoucherDetails { get; set; }
         public virtual DbSet<V_Product> V_Product { get; set; }
+        public virtual DbSet<Holiday> Holidays { get; set; }
     
         [DbFunction("IMEEntities", "AccountGroupHierarchy")]
         public virtual IQueryable<AccountGroupHierarchy_Result> AccountGroupHierarchy(Nullable<decimal> groupId)
@@ -275,19 +279,6 @@ namespace LoginForm.DataSet
                 new ObjectParameter("accountGroupId", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AccountGroupReferenceDelete", accountGroupIdParameter);
-        }
-    
-        public virtual ObjectResult<AccountGroupReportViewAll_Result> AccountGroupReportViewAll(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
-        {
-            var fromDateParameter = fromDate.HasValue ?
-                new ObjectParameter("fromDate", fromDate) :
-                new ObjectParameter("fromDate", typeof(System.DateTime));
-    
-            var toDateParameter = toDate.HasValue ?
-                new ObjectParameter("toDate", toDate) :
-                new ObjectParameter("toDate", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountGroupReportViewAll_Result>("AccountGroupReportViewAll", fromDateParameter, toDateParameter);
         }
     
         public virtual ObjectResult<AccountGroupSearch_Result> AccountGroupSearch(string accountGroupName, string under)
@@ -545,27 +536,6 @@ namespace LoginForm.DataSet
                 new ObjectParameter("ledgerName", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("AccountLedgerIdGetByName", ledgerNameParameter);
-        }
-    
-        public virtual ObjectResult<AccountLedgerReportFill_Result> AccountLedgerReportFill(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, Nullable<decimal> accountGroupId, Nullable<decimal> ledgerId)
-        {
-            var fromDateParameter = fromDate.HasValue ?
-                new ObjectParameter("fromDate", fromDate) :
-                new ObjectParameter("fromDate", typeof(System.DateTime));
-    
-            var toDateParameter = toDate.HasValue ?
-                new ObjectParameter("toDate", toDate) :
-                new ObjectParameter("toDate", typeof(System.DateTime));
-    
-            var accountGroupIdParameter = accountGroupId.HasValue ?
-                new ObjectParameter("accountGroupId", accountGroupId) :
-                new ObjectParameter("accountGroupId", typeof(decimal));
-    
-            var ledgerIdParameter = ledgerId.HasValue ?
-                new ObjectParameter("ledgerId", ledgerId) :
-                new ObjectParameter("ledgerId", typeof(decimal));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountLedgerReportFill_Result>("AccountLedgerReportFill", fromDateParameter, toDateParameter, accountGroupIdParameter, ledgerIdParameter);
         }
     
         public virtual ObjectResult<AccountLedgerSearchForServiceAccountUnderIncome_Result> AccountLedgerSearchForServiceAccountUnderIncome()
@@ -1214,6 +1184,105 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ChequeReportPartyComboFill_Result>("ChequeReportPartyComboFill");
         }
     
+        public virtual ObjectResult<Nullable<decimal>> CompanyAddParticularFeilds(string companyName, string mailingName, string address, string phone, string mobile, string emailId, string web, string country, string state, string pin, Nullable<decimal> currencyId, Nullable<System.DateTime> financialYearFrom, Nullable<System.DateTime> booksBeginingFrom, string tin, string cst, string pan)
+        {
+            var companyNameParameter = companyName != null ?
+                new ObjectParameter("companyName", companyName) :
+                new ObjectParameter("companyName", typeof(string));
+    
+            var mailingNameParameter = mailingName != null ?
+                new ObjectParameter("mailingName", mailingName) :
+                new ObjectParameter("mailingName", typeof(string));
+    
+            var addressParameter = address != null ?
+                new ObjectParameter("address", address) :
+                new ObjectParameter("address", typeof(string));
+    
+            var phoneParameter = phone != null ?
+                new ObjectParameter("phone", phone) :
+                new ObjectParameter("phone", typeof(string));
+    
+            var mobileParameter = mobile != null ?
+                new ObjectParameter("mobile", mobile) :
+                new ObjectParameter("mobile", typeof(string));
+    
+            var emailIdParameter = emailId != null ?
+                new ObjectParameter("emailId", emailId) :
+                new ObjectParameter("emailId", typeof(string));
+    
+            var webParameter = web != null ?
+                new ObjectParameter("web", web) :
+                new ObjectParameter("web", typeof(string));
+    
+            var countryParameter = country != null ?
+                new ObjectParameter("country", country) :
+                new ObjectParameter("country", typeof(string));
+    
+            var stateParameter = state != null ?
+                new ObjectParameter("state", state) :
+                new ObjectParameter("state", typeof(string));
+    
+            var pinParameter = pin != null ?
+                new ObjectParameter("pin", pin) :
+                new ObjectParameter("pin", typeof(string));
+    
+            var currencyIdParameter = currencyId.HasValue ?
+                new ObjectParameter("currencyId", currencyId) :
+                new ObjectParameter("currencyId", typeof(decimal));
+    
+            var financialYearFromParameter = financialYearFrom.HasValue ?
+                new ObjectParameter("financialYearFrom", financialYearFrom) :
+                new ObjectParameter("financialYearFrom", typeof(System.DateTime));
+    
+            var booksBeginingFromParameter = booksBeginingFrom.HasValue ?
+                new ObjectParameter("booksBeginingFrom", booksBeginingFrom) :
+                new ObjectParameter("booksBeginingFrom", typeof(System.DateTime));
+    
+            var tinParameter = tin != null ?
+                new ObjectParameter("tin", tin) :
+                new ObjectParameter("tin", typeof(string));
+    
+            var cstParameter = cst != null ?
+                new ObjectParameter("cst", cst) :
+                new ObjectParameter("cst", typeof(string));
+    
+            var panParameter = pan != null ?
+                new ObjectParameter("pan", pan) :
+                new ObjectParameter("pan", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("CompanyAddParticularFeilds", companyNameParameter, mailingNameParameter, addressParameter, phoneParameter, mobileParameter, emailIdParameter, webParameter, countryParameter, stateParameter, pinParameter, currencyIdParameter, financialYearFromParameter, booksBeginingFromParameter, tinParameter, cstParameter, panParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> CompanyCheckExistence(string companyName, Nullable<decimal> companyId)
+        {
+            var companyNameParameter = companyName != null ?
+                new ObjectParameter("companyName", companyName) :
+                new ObjectParameter("companyName", typeof(string));
+    
+            var companyIdParameter = companyId.HasValue ?
+                new ObjectParameter("companyId", companyId) :
+                new ObjectParameter("companyId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("CompanyCheckExistence", companyNameParameter, companyIdParameter);
+        }
+    
+        public virtual int CompanyPathAdd(string companyName, string companyPath, Nullable<bool> isDefault)
+        {
+            var companyNameParameter = companyName != null ?
+                new ObjectParameter("companyName", companyName) :
+                new ObjectParameter("companyName", typeof(string));
+    
+            var companyPathParameter = companyPath != null ?
+                new ObjectParameter("companyPath", companyPath) :
+                new ObjectParameter("companyPath", typeof(string));
+    
+            var isDefaultParameter = isDefault.HasValue ?
+                new ObjectParameter("isDefault", isDefault) :
+                new ObjectParameter("isDefault", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CompanyPathAdd", companyNameParameter, companyPathParameter, isDefaultParameter);
+        }
+    
         public virtual ObjectResult<CompanyView_Result> CompanyView(Nullable<decimal> companyId)
         {
             var companyIdParameter = companyId.HasValue ?
@@ -1328,6 +1397,45 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.DateTime>>("CurrentDate");
         }
     
+        public virtual int DailyAttendanceDetailsAddUsingMasterId(Nullable<decimal> dailyAttendanceMasterId, Nullable<decimal> workerId, string status, string narration)
+        {
+            var dailyAttendanceMasterIdParameter = dailyAttendanceMasterId.HasValue ?
+                new ObjectParameter("dailyAttendanceMasterId", dailyAttendanceMasterId) :
+                new ObjectParameter("dailyAttendanceMasterId", typeof(decimal));
+    
+            var workerIdParameter = workerId.HasValue ?
+                new ObjectParameter("WorkerId", workerId) :
+                new ObjectParameter("WorkerId", typeof(decimal));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("status", status) :
+                new ObjectParameter("status", typeof(string));
+    
+            var narrationParameter = narration != null ?
+                new ObjectParameter("narration", narration) :
+                new ObjectParameter("narration", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DailyAttendanceDetailsAddUsingMasterId", dailyAttendanceMasterIdParameter, workerIdParameter, statusParameter, narrationParameter);
+        }
+    
+        public virtual ObjectResult<DailyAttendanceDetailsSearchGridFill_Result> DailyAttendanceDetailsSearchGridFill(Nullable<System.DateTime> date)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DailyAttendanceDetailsSearchGridFill_Result>("DailyAttendanceDetailsSearchGridFill", dateParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> DailyAttendanceMasterMasterIdSearch(string date)
+        {
+            var dateParameter = date != null ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("DailyAttendanceMasterMasterIdSearch", dateParameter);
+        }
+    
         public virtual ObjectResult<DayBook_Result> DayBook(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, Nullable<decimal> voucherTypeId, Nullable<decimal> ledgerId, Nullable<bool> iscondensed)
         {
             var fromDateParameter = fromDate.HasValue ?
@@ -1403,6 +1511,97 @@ namespace LoginForm.DataSet
                 new ObjectParameter("ledgerId", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DebitNoteReportSearch_Result>("DebitNoteReportSearch", fromDateParameter, toDateParameter, voucherTypeIdParameter, ledgerIdParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> DesignationAddWithReturnIdentity(string designationName, Nullable<decimal> leaveDays, string advanceAmount, string narration)
+        {
+            var designationNameParameter = designationName != null ?
+                new ObjectParameter("designationName", designationName) :
+                new ObjectParameter("designationName", typeof(string));
+    
+            var leaveDaysParameter = leaveDays.HasValue ?
+                new ObjectParameter("leaveDays", leaveDays) :
+                new ObjectParameter("leaveDays", typeof(decimal));
+    
+            var advanceAmountParameter = advanceAmount != null ?
+                new ObjectParameter("advanceAmount", advanceAmount) :
+                new ObjectParameter("advanceAmount", typeof(string));
+    
+            var narrationParameter = narration != null ?
+                new ObjectParameter("narration", narration) :
+                new ObjectParameter("narration", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("DesignationAddWithReturnIdentity", designationNameParameter, leaveDaysParameter, advanceAmountParameter, narrationParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> DesignationCheckExistanceOfName(string designationName, Nullable<decimal> designationId)
+        {
+            var designationNameParameter = designationName != null ?
+                new ObjectParameter("designationName", designationName) :
+                new ObjectParameter("designationName", typeof(string));
+    
+            var designationIdParameter = designationId.HasValue ?
+                new ObjectParameter("designationId", designationId) :
+                new ObjectParameter("designationId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("DesignationCheckExistanceOfName", designationNameParameter, designationIdParameter);
+        }
+    
+        public virtual ObjectResult<string> DesignationDelete(Nullable<decimal> designationId)
+        {
+            var designationIdParameter = designationId.HasValue ?
+                new ObjectParameter("designationId", designationId) :
+                new ObjectParameter("designationId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("DesignationDelete", designationIdParameter);
+        }
+    
+        public virtual int DesignationEdit(Nullable<decimal> designationId, string designationName, Nullable<decimal> leaveDays, string advanceAmount, string narration)
+        {
+            var designationIdParameter = designationId.HasValue ?
+                new ObjectParameter("designationId", designationId) :
+                new ObjectParameter("designationId", typeof(decimal));
+    
+            var designationNameParameter = designationName != null ?
+                new ObjectParameter("designationName", designationName) :
+                new ObjectParameter("designationName", typeof(string));
+    
+            var leaveDaysParameter = leaveDays.HasValue ?
+                new ObjectParameter("leaveDays", leaveDays) :
+                new ObjectParameter("leaveDays", typeof(decimal));
+    
+            var advanceAmountParameter = advanceAmount != null ?
+                new ObjectParameter("advanceAmount", advanceAmount) :
+                new ObjectParameter("advanceAmount", typeof(string));
+    
+            var narrationParameter = narration != null ?
+                new ObjectParameter("narration", narration) :
+                new ObjectParameter("narration", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DesignationEdit", designationIdParameter, designationNameParameter, leaveDaysParameter, advanceAmountParameter, narrationParameter);
+        }
+    
+        public virtual ObjectResult<DesignationGridFill_Result> DesignationGridFill()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DesignationGridFill_Result>("DesignationGridFill");
+        }
+    
+        public virtual ObjectResult<DesignationSearch_Result> DesignationSearch(string designation)
+        {
+            var designationParameter = designation != null ?
+                new ObjectParameter("designation", designation) :
+                new ObjectParameter("designation", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DesignationSearch_Result>("DesignationSearch", designationParameter);
+        }
+    
+        public virtual ObjectResult<DesignationView_Result> DesignationView(Nullable<decimal> designationId)
+        {
+            var designationIdParameter = designationId.HasValue ?
+                new ObjectParameter("designationId", designationId) :
+                new ObjectParameter("designationId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DesignationView_Result>("DesignationView", designationIdParameter);
         }
     
         public virtual ObjectResult<Nullable<int>> EmployeeCodeCheckExistance(string employeeCode, Nullable<decimal> employeeId)
@@ -6301,6 +6500,130 @@ namespace LoginForm.DataSet
                 new ObjectParameter("ledgerId", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<VoucherTypeViewAllByLedgerId_Result>("VoucherTypeViewAllByLedgerId", ledgerIdParameter);
+        }
+    
+        public virtual int DailyAttendanceDetailsEditUsingMasterId(Nullable<decimal> dailyAttendanceDetailsId, Nullable<decimal> dailyAttendanceMasterId, Nullable<int> workerID, string status, string narration)
+        {
+            var dailyAttendanceDetailsIdParameter = dailyAttendanceDetailsId.HasValue ?
+                new ObjectParameter("dailyAttendanceDetailsId", dailyAttendanceDetailsId) :
+                new ObjectParameter("dailyAttendanceDetailsId", typeof(decimal));
+    
+            var dailyAttendanceMasterIdParameter = dailyAttendanceMasterId.HasValue ?
+                new ObjectParameter("dailyAttendanceMasterId", dailyAttendanceMasterId) :
+                new ObjectParameter("dailyAttendanceMasterId", typeof(decimal));
+    
+            var workerIDParameter = workerID.HasValue ?
+                new ObjectParameter("WorkerID", workerID) :
+                new ObjectParameter("WorkerID", typeof(int));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("status", status) :
+                new ObjectParameter("status", typeof(string));
+    
+            var narrationParameter = narration != null ?
+                new ObjectParameter("narration", narration) :
+                new ObjectParameter("narration", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DailyAttendanceDetailsEditUsingMasterId", dailyAttendanceDetailsIdParameter, dailyAttendanceMasterIdParameter, workerIDParameter, statusParameter, narrationParameter);
+        }
+    
+        public virtual int DailyAttendanceDetailsDeleteAll(Nullable<decimal> dailyAttendanceMasterId)
+        {
+            var dailyAttendanceMasterIdParameter = dailyAttendanceMasterId.HasValue ?
+                new ObjectParameter("dailyAttendanceMasterId", dailyAttendanceMasterId) :
+                new ObjectParameter("dailyAttendanceMasterId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DailyAttendanceDetailsDeleteAll", dailyAttendanceMasterIdParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> DailyAttendanceAddToMaster(Nullable<System.DateTime> date, string narration)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            var narrationParameter = narration != null ?
+                new ObjectParameter("narration", narration) :
+                new ObjectParameter("narration", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("DailyAttendanceAddToMaster", dateParameter, narrationParameter);
+        }
+    
+        public virtual int DailyAttendanceEditMaster(Nullable<decimal> dailyAttendanceMasterId, Nullable<System.DateTime> date, string narration)
+        {
+            var dailyAttendanceMasterIdParameter = dailyAttendanceMasterId.HasValue ?
+                new ObjectParameter("dailyAttendanceMasterId", dailyAttendanceMasterId) :
+                new ObjectParameter("dailyAttendanceMasterId", typeof(decimal));
+    
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            var narrationParameter = narration != null ?
+                new ObjectParameter("narration", narration) :
+                new ObjectParameter("narration", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DailyAttendanceEditMaster", dailyAttendanceMasterIdParameter, dateParameter, narrationParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> HolliDayChecking(Nullable<System.DateTime> date)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("HolliDayChecking", dateParameter);
+        }
+    
+        public virtual ObjectResult<AccountGroupReportViewAll_Result> AccountGroupReportViewAll(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountGroupReportViewAll_Result>("AccountGroupReportViewAll", fromDateParameter, toDateParameter);
+        }
+    
+        public virtual ObjectResult<AccountLedgerReportFill_Result> AccountLedgerReportFill(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, Nullable<decimal> accountGroupId, Nullable<decimal> ledgerId)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            var accountGroupIdParameter = accountGroupId.HasValue ?
+                new ObjectParameter("accountGroupId", accountGroupId) :
+                new ObjectParameter("accountGroupId", typeof(decimal));
+    
+            var ledgerIdParameter = ledgerId.HasValue ?
+                new ObjectParameter("ledgerId", ledgerId) :
+                new ObjectParameter("ledgerId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountLedgerReportFill_Result>("AccountLedgerReportFill", fromDateParameter, toDateParameter, accountGroupIdParameter, ledgerIdParameter);
+        }
+    
+        public virtual int ExchangeRateAdd(Nullable<decimal> currencyId, Nullable<System.DateTime> date, Nullable<decimal> rate)
+        {
+            var currencyIdParameter = currencyId.HasValue ?
+                new ObjectParameter("currencyId", currencyId) :
+                new ObjectParameter("currencyId", typeof(decimal));
+    
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            var rateParameter = rate.HasValue ?
+                new ObjectParameter("rate", rate) :
+                new ObjectParameter("rate", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ExchangeRateAdd", currencyIdParameter, dateParameter, rateParameter);
         }
     }
 }

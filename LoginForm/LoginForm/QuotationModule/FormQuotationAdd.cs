@@ -3044,7 +3044,8 @@ namespace LoginForm.QuotationModule
                 }
                 else { MessageBox.Show("Please choose an item to add Quotation"); }
             }
-            //dgQuotationAddedItems.Sort()
+           
+             //dgQuotationAddedItems.Sort()
             for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
             {
                 dgQuotationAddedItems.Rows[i].Cells[0].Value = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString());
