@@ -41,6 +41,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<Capital> Capitals { get; set; }
         public virtual DbSet<City> Cities { get; set; }
         public virtual DbSet<Company> Companies { get; set; }
+        public virtual DbSet<CompanyPath> CompanyPaths { get; set; }
         public virtual DbSet<ContactType> ContactTypes { get; set; }
         public virtual DbSet<ContraDetail> ContraDetails { get; set; }
         public virtual DbSet<ContraMaster> ContraMasters { get; set; }
@@ -55,6 +56,8 @@ namespace LoginForm.DataSet
         public virtual DbSet<CustomerSubCategory> CustomerSubCategories { get; set; }
         public virtual DbSet<CustomerTitle> CustomerTitles { get; set; }
         public virtual DbSet<CustomerWorker> CustomerWorkers { get; set; }
+        public virtual DbSet<DailyAttendanceDetail> DailyAttendanceDetails { get; set; }
+        public virtual DbSet<DailyAttendanceMaster> DailyAttendanceMasters { get; set; }
         public virtual DbSet<DailyDiscontinued> DailyDiscontinueds { get; set; }
         public virtual DbSet<DailySalaryVoucherDetail> DailySalaryVoucherDetails { get; set; }
         public virtual DbSet<DailySalaryVoucherMaster> DailySalaryVoucherMasters { get; set; }
@@ -70,6 +73,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<FinancialYear> FinancialYears { get; set; }
         public virtual DbSet<Godown> Godowns { get; set; }
         public virtual DbSet<Hazardou> Hazardous { get; set; }
+        public virtual DbSet<Holiday> Holidays { get; set; }
         public virtual DbSet<ItemNote> ItemNotes { get; set; }
         public virtual DbSet<JournalDetail> JournalDetails { get; set; }
         public virtual DbSet<JournalMaster> JournalMasters { get; set; }
@@ -1214,6 +1218,280 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ChequeReportPartyComboFill_Result>("ChequeReportPartyComboFill");
         }
     
+        public virtual int CompanyAdd(Nullable<decimal> companyId, string companyName, string mailingName, string address, string phone, string mobile, string emailId, string web, string country, string state, string pin, Nullable<decimal> currencyId, Nullable<System.DateTime> financialYearFrom, Nullable<System.DateTime> booksBeginingFrom, string tin, string cst, string pan)
+        {
+            var companyIdParameter = companyId.HasValue ?
+                new ObjectParameter("companyId", companyId) :
+                new ObjectParameter("companyId", typeof(decimal));
+    
+            var companyNameParameter = companyName != null ?
+                new ObjectParameter("companyName", companyName) :
+                new ObjectParameter("companyName", typeof(string));
+    
+            var mailingNameParameter = mailingName != null ?
+                new ObjectParameter("mailingName", mailingName) :
+                new ObjectParameter("mailingName", typeof(string));
+    
+            var addressParameter = address != null ?
+                new ObjectParameter("address", address) :
+                new ObjectParameter("address", typeof(string));
+    
+            var phoneParameter = phone != null ?
+                new ObjectParameter("phone", phone) :
+                new ObjectParameter("phone", typeof(string));
+    
+            var mobileParameter = mobile != null ?
+                new ObjectParameter("mobile", mobile) :
+                new ObjectParameter("mobile", typeof(string));
+    
+            var emailIdParameter = emailId != null ?
+                new ObjectParameter("emailId", emailId) :
+                new ObjectParameter("emailId", typeof(string));
+    
+            var webParameter = web != null ?
+                new ObjectParameter("web", web) :
+                new ObjectParameter("web", typeof(string));
+    
+            var countryParameter = country != null ?
+                new ObjectParameter("country", country) :
+                new ObjectParameter("country", typeof(string));
+    
+            var stateParameter = state != null ?
+                new ObjectParameter("state", state) :
+                new ObjectParameter("state", typeof(string));
+    
+            var pinParameter = pin != null ?
+                new ObjectParameter("pin", pin) :
+                new ObjectParameter("pin", typeof(string));
+    
+            var currencyIdParameter = currencyId.HasValue ?
+                new ObjectParameter("currencyId", currencyId) :
+                new ObjectParameter("currencyId", typeof(decimal));
+    
+            var financialYearFromParameter = financialYearFrom.HasValue ?
+                new ObjectParameter("financialYearFrom", financialYearFrom) :
+                new ObjectParameter("financialYearFrom", typeof(System.DateTime));
+    
+            var booksBeginingFromParameter = booksBeginingFrom.HasValue ?
+                new ObjectParameter("booksBeginingFrom", booksBeginingFrom) :
+                new ObjectParameter("booksBeginingFrom", typeof(System.DateTime));
+    
+            var tinParameter = tin != null ?
+                new ObjectParameter("tin", tin) :
+                new ObjectParameter("tin", typeof(string));
+    
+            var cstParameter = cst != null ?
+                new ObjectParameter("cst", cst) :
+                new ObjectParameter("cst", typeof(string));
+    
+            var panParameter = pan != null ?
+                new ObjectParameter("pan", pan) :
+                new ObjectParameter("pan", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CompanyAdd", companyIdParameter, companyNameParameter, mailingNameParameter, addressParameter, phoneParameter, mobileParameter, emailIdParameter, webParameter, countryParameter, stateParameter, pinParameter, currencyIdParameter, financialYearFromParameter, booksBeginingFromParameter, tinParameter, cstParameter, panParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> CompanyAddParticularFeilds(string companyName, string mailingName, string address, string phone, string mobile, string emailId, string web, string country, string state, string pin, Nullable<decimal> currencyId, Nullable<System.DateTime> financialYearFrom, Nullable<System.DateTime> booksBeginingFrom, string tin, string cst, string pan)
+        {
+            var companyNameParameter = companyName != null ?
+                new ObjectParameter("companyName", companyName) :
+                new ObjectParameter("companyName", typeof(string));
+    
+            var mailingNameParameter = mailingName != null ?
+                new ObjectParameter("mailingName", mailingName) :
+                new ObjectParameter("mailingName", typeof(string));
+    
+            var addressParameter = address != null ?
+                new ObjectParameter("address", address) :
+                new ObjectParameter("address", typeof(string));
+    
+            var phoneParameter = phone != null ?
+                new ObjectParameter("phone", phone) :
+                new ObjectParameter("phone", typeof(string));
+    
+            var mobileParameter = mobile != null ?
+                new ObjectParameter("mobile", mobile) :
+                new ObjectParameter("mobile", typeof(string));
+    
+            var emailIdParameter = emailId != null ?
+                new ObjectParameter("emailId", emailId) :
+                new ObjectParameter("emailId", typeof(string));
+    
+            var webParameter = web != null ?
+                new ObjectParameter("web", web) :
+                new ObjectParameter("web", typeof(string));
+    
+            var countryParameter = country != null ?
+                new ObjectParameter("country", country) :
+                new ObjectParameter("country", typeof(string));
+    
+            var stateParameter = state != null ?
+                new ObjectParameter("state", state) :
+                new ObjectParameter("state", typeof(string));
+    
+            var pinParameter = pin != null ?
+                new ObjectParameter("pin", pin) :
+                new ObjectParameter("pin", typeof(string));
+    
+            var currencyIdParameter = currencyId.HasValue ?
+                new ObjectParameter("currencyId", currencyId) :
+                new ObjectParameter("currencyId", typeof(decimal));
+    
+            var financialYearFromParameter = financialYearFrom.HasValue ?
+                new ObjectParameter("financialYearFrom", financialYearFrom) :
+                new ObjectParameter("financialYearFrom", typeof(System.DateTime));
+    
+            var booksBeginingFromParameter = booksBeginingFrom.HasValue ?
+                new ObjectParameter("booksBeginingFrom", booksBeginingFrom) :
+                new ObjectParameter("booksBeginingFrom", typeof(System.DateTime));
+    
+            var tinParameter = tin != null ?
+                new ObjectParameter("tin", tin) :
+                new ObjectParameter("tin", typeof(string));
+    
+            var cstParameter = cst != null ?
+                new ObjectParameter("cst", cst) :
+                new ObjectParameter("cst", typeof(string));
+    
+            var panParameter = pan != null ?
+                new ObjectParameter("pan", pan) :
+                new ObjectParameter("pan", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("CompanyAddParticularFeilds", companyNameParameter, mailingNameParameter, addressParameter, phoneParameter, mobileParameter, emailIdParameter, webParameter, countryParameter, stateParameter, pinParameter, currencyIdParameter, financialYearFromParameter, booksBeginingFromParameter, tinParameter, cstParameter, panParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> CompanyCheckExistence(string companyName, Nullable<decimal> companyId)
+        {
+            var companyNameParameter = companyName != null ?
+                new ObjectParameter("companyName", companyName) :
+                new ObjectParameter("companyName", typeof(string));
+    
+            var companyIdParameter = companyId.HasValue ?
+                new ObjectParameter("companyId", companyId) :
+                new ObjectParameter("companyId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("CompanyCheckExistence", companyNameParameter, companyIdParameter);
+        }
+    
+        public virtual int CompanyEdit(Nullable<decimal> companyId, string companyName, string mailingName, string address, string phone, string mobile, string emailId, string web, string country, string state, string pin, Nullable<decimal> currencyId, Nullable<System.DateTime> financialYearFrom, Nullable<System.DateTime> booksBeginingFrom, string tin, string cst, string pan)
+        {
+            var companyIdParameter = companyId.HasValue ?
+                new ObjectParameter("companyId", companyId) :
+                new ObjectParameter("companyId", typeof(decimal));
+    
+            var companyNameParameter = companyName != null ?
+                new ObjectParameter("companyName", companyName) :
+                new ObjectParameter("companyName", typeof(string));
+    
+            var mailingNameParameter = mailingName != null ?
+                new ObjectParameter("mailingName", mailingName) :
+                new ObjectParameter("mailingName", typeof(string));
+    
+            var addressParameter = address != null ?
+                new ObjectParameter("address", address) :
+                new ObjectParameter("address", typeof(string));
+    
+            var phoneParameter = phone != null ?
+                new ObjectParameter("phone", phone) :
+                new ObjectParameter("phone", typeof(string));
+    
+            var mobileParameter = mobile != null ?
+                new ObjectParameter("mobile", mobile) :
+                new ObjectParameter("mobile", typeof(string));
+    
+            var emailIdParameter = emailId != null ?
+                new ObjectParameter("emailId", emailId) :
+                new ObjectParameter("emailId", typeof(string));
+    
+            var webParameter = web != null ?
+                new ObjectParameter("web", web) :
+                new ObjectParameter("web", typeof(string));
+    
+            var countryParameter = country != null ?
+                new ObjectParameter("country", country) :
+                new ObjectParameter("country", typeof(string));
+    
+            var stateParameter = state != null ?
+                new ObjectParameter("state", state) :
+                new ObjectParameter("state", typeof(string));
+    
+            var pinParameter = pin != null ?
+                new ObjectParameter("pin", pin) :
+                new ObjectParameter("pin", typeof(string));
+    
+            var currencyIdParameter = currencyId.HasValue ?
+                new ObjectParameter("currencyId", currencyId) :
+                new ObjectParameter("currencyId", typeof(decimal));
+    
+            var financialYearFromParameter = financialYearFrom.HasValue ?
+                new ObjectParameter("financialYearFrom", financialYearFrom) :
+                new ObjectParameter("financialYearFrom", typeof(System.DateTime));
+    
+            var booksBeginingFromParameter = booksBeginingFrom.HasValue ?
+                new ObjectParameter("booksBeginingFrom", booksBeginingFrom) :
+                new ObjectParameter("booksBeginingFrom", typeof(System.DateTime));
+    
+            var tinParameter = tin != null ?
+                new ObjectParameter("tin", tin) :
+                new ObjectParameter("tin", typeof(string));
+    
+            var cstParameter = cst != null ?
+                new ObjectParameter("cst", cst) :
+                new ObjectParameter("cst", typeof(string));
+    
+            var panParameter = pan != null ?
+                new ObjectParameter("pan", pan) :
+                new ObjectParameter("pan", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CompanyEdit", companyIdParameter, companyNameParameter, mailingNameParameter, addressParameter, phoneParameter, mobileParameter, emailIdParameter, webParameter, countryParameter, stateParameter, pinParameter, currencyIdParameter, financialYearFromParameter, booksBeginingFromParameter, tinParameter, cstParameter, panParameter);
+        }
+    
+        public virtual int CompanyPathAdd(string companyName, string companyPath, Nullable<bool> isDefault)
+        {
+            var companyNameParameter = companyName != null ?
+                new ObjectParameter("companyName", companyName) :
+                new ObjectParameter("companyName", typeof(string));
+    
+            var companyPathParameter = companyPath != null ?
+                new ObjectParameter("companyPath", companyPath) :
+                new ObjectParameter("companyPath", typeof(string));
+    
+            var isDefaultParameter = isDefault.HasValue ?
+                new ObjectParameter("isDefault", isDefault) :
+                new ObjectParameter("isDefault", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CompanyPathAdd", companyNameParameter, companyPathParameter, isDefaultParameter);
+        }
+    
+        public virtual int CompanyPathEdit(Nullable<decimal> companyId, string companyName, string companyPath, Nullable<bool> isDefault, string extra1, string extra2)
+        {
+            var companyIdParameter = companyId.HasValue ?
+                new ObjectParameter("companyId", companyId) :
+                new ObjectParameter("companyId", typeof(decimal));
+    
+            var companyNameParameter = companyName != null ?
+                new ObjectParameter("companyName", companyName) :
+                new ObjectParameter("companyName", typeof(string));
+    
+            var companyPathParameter = companyPath != null ?
+                new ObjectParameter("companyPath", companyPath) :
+                new ObjectParameter("companyPath", typeof(string));
+    
+            var isDefaultParameter = isDefault.HasValue ?
+                new ObjectParameter("isDefault", isDefault) :
+                new ObjectParameter("isDefault", typeof(bool));
+    
+            var extra1Parameter = extra1 != null ?
+                new ObjectParameter("extra1", extra1) :
+                new ObjectParameter("extra1", typeof(string));
+    
+            var extra2Parameter = extra2 != null ?
+                new ObjectParameter("extra2", extra2) :
+                new ObjectParameter("extra2", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CompanyPathEdit", companyIdParameter, companyNameParameter, companyPathParameter, isDefaultParameter, extra1Parameter, extra2Parameter);
+        }
+    
         public virtual ObjectResult<CompanyView_Result> CompanyView(Nullable<decimal> companyId)
         {
             var companyIdParameter = companyId.HasValue ?
@@ -1328,6 +1606,100 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.DateTime>>("CurrentDate");
         }
     
+        public virtual ObjectResult<Nullable<decimal>> DailyAttendanceAddToMaster(Nullable<System.DateTime> date, string narration)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            var narrationParameter = narration != null ?
+                new ObjectParameter("narration", narration) :
+                new ObjectParameter("narration", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("DailyAttendanceAddToMaster", dateParameter, narrationParameter);
+        }
+    
+        public virtual int DailyAttendanceDetailsAddUsingMasterId(Nullable<decimal> dailyAttendanceMasterId, Nullable<decimal> workerId, string status, string narration)
+        {
+            var dailyAttendanceMasterIdParameter = dailyAttendanceMasterId.HasValue ?
+                new ObjectParameter("dailyAttendanceMasterId", dailyAttendanceMasterId) :
+                new ObjectParameter("dailyAttendanceMasterId", typeof(decimal));
+    
+            var workerIdParameter = workerId.HasValue ?
+                new ObjectParameter("WorkerId", workerId) :
+                new ObjectParameter("WorkerId", typeof(decimal));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("status", status) :
+                new ObjectParameter("status", typeof(string));
+    
+            var narrationParameter = narration != null ?
+                new ObjectParameter("narration", narration) :
+                new ObjectParameter("narration", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DailyAttendanceDetailsAddUsingMasterId", dailyAttendanceMasterIdParameter, workerIdParameter, statusParameter, narrationParameter);
+        }
+    
+        public virtual int DailyAttendanceDetailsEditUsingMasterId(Nullable<decimal> dailyAttendanceDetailsId, Nullable<decimal> dailyAttendanceMasterId, Nullable<int> workerID, string status, string narration)
+        {
+            var dailyAttendanceDetailsIdParameter = dailyAttendanceDetailsId.HasValue ?
+                new ObjectParameter("dailyAttendanceDetailsId", dailyAttendanceDetailsId) :
+                new ObjectParameter("dailyAttendanceDetailsId", typeof(decimal));
+    
+            var dailyAttendanceMasterIdParameter = dailyAttendanceMasterId.HasValue ?
+                new ObjectParameter("dailyAttendanceMasterId", dailyAttendanceMasterId) :
+                new ObjectParameter("dailyAttendanceMasterId", typeof(decimal));
+    
+            var workerIDParameter = workerID.HasValue ?
+                new ObjectParameter("WorkerID", workerID) :
+                new ObjectParameter("WorkerID", typeof(int));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("status", status) :
+                new ObjectParameter("status", typeof(string));
+    
+            var narrationParameter = narration != null ?
+                new ObjectParameter("narration", narration) :
+                new ObjectParameter("narration", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DailyAttendanceDetailsEditUsingMasterId", dailyAttendanceDetailsIdParameter, dailyAttendanceMasterIdParameter, workerIDParameter, statusParameter, narrationParameter);
+        }
+    
+        public virtual ObjectResult<DailyAttendanceDetailsSearchGridFill_Result> DailyAttendanceDetailsSearchGridFill(Nullable<System.DateTime> date)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DailyAttendanceDetailsSearchGridFill_Result>("DailyAttendanceDetailsSearchGridFill", dateParameter);
+        }
+    
+        public virtual int DailyAttendanceEditMaster(Nullable<decimal> dailyAttendanceMasterId, Nullable<System.DateTime> date, string narration)
+        {
+            var dailyAttendanceMasterIdParameter = dailyAttendanceMasterId.HasValue ?
+                new ObjectParameter("dailyAttendanceMasterId", dailyAttendanceMasterId) :
+                new ObjectParameter("dailyAttendanceMasterId", typeof(decimal));
+    
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            var narrationParameter = narration != null ?
+                new ObjectParameter("narration", narration) :
+                new ObjectParameter("narration", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DailyAttendanceEditMaster", dailyAttendanceMasterIdParameter, dateParameter, narrationParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> DailyAttendanceMasterMasterIdSearch(string date)
+        {
+            var dateParameter = date != null ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("DailyAttendanceMasterMasterIdSearch", dateParameter);
+        }
+    
         public virtual ObjectResult<DayBook_Result> DayBook(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, Nullable<decimal> voucherTypeId, Nullable<decimal> ledgerId, Nullable<bool> iscondensed)
         {
             var fromDateParameter = fromDate.HasValue ?
@@ -1403,6 +1775,15 @@ namespace LoginForm.DataSet
                 new ObjectParameter("ledgerId", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DebitNoteReportSearch_Result>("DebitNoteReportSearch", fromDateParameter, toDateParameter, voucherTypeIdParameter, ledgerIdParameter);
+        }
+    
+        public virtual int DefaultCurrencySet(Nullable<decimal> currencyId)
+        {
+            var currencyIdParameter = currencyId.HasValue ?
+                new ObjectParameter("currencyId", currencyId) :
+                new ObjectParameter("currencyId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DefaultCurrencySet", currencyIdParameter);
         }
     
         public virtual ObjectResult<Nullable<decimal>> DesignationAddWithReturnIdentity(string designationName, Nullable<decimal> leaveDays, string advanceAmount, string narration)
@@ -1649,6 +2030,44 @@ namespace LoginForm.DataSet
                 new ObjectParameter("defaultPackageId", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("EmployeeForTakingEmployeeId", designationIdParameter, employeeNameParameter, employeeCodeParameter, dobParameter, maritalStatusParameter, genderParameter, qualificationParameter, addressParameter, phoneNumberParameter, mobileNumberParameter, emailParameter, joiningDateParameter, terminationDateParameter, activeParameter, narrationParameter, bloodGroupParameter, passportNoParameter, passportExpiryDateParameter, labourCardNumberParameter, labourCardExpiryDateParameter, visaNumberParameter, visaExpiryDateParameter, salaryTypeParameter, dailyWageParameter, bankNameParameter, branchNameParameter, bankAccountNumberParameter, branchCodeParameter, panNumberParameter, pfNumberParameter, esiNumberParameter, defaultPackageIdParameter);
+        }
+    
+        public virtual int ExchangeRateAdd(Nullable<decimal> currencyId, Nullable<System.DateTime> date, Nullable<decimal> rate)
+        {
+            var currencyIdParameter = currencyId.HasValue ?
+                new ObjectParameter("currencyId", currencyId) :
+                new ObjectParameter("currencyId", typeof(decimal));
+    
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            var rateParameter = rate.HasValue ?
+                new ObjectParameter("rate", rate) :
+                new ObjectParameter("rate", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ExchangeRateAdd", currencyIdParameter, dateParameter, rateParameter);
+        }
+    
+        public virtual int ExchangeRateEdit(Nullable<decimal> exchangeRateId, Nullable<decimal> currencyId, Nullable<System.DateTime> date, Nullable<decimal> rate)
+        {
+            var exchangeRateIdParameter = exchangeRateId.HasValue ?
+                new ObjectParameter("exchangeRateId", exchangeRateId) :
+                new ObjectParameter("exchangeRateId", typeof(decimal));
+    
+            var currencyIdParameter = currencyId.HasValue ?
+                new ObjectParameter("currencyId", currencyId) :
+                new ObjectParameter("currencyId", typeof(decimal));
+    
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            var rateParameter = rate.HasValue ?
+                new ObjectParameter("rate", rate) :
+                new ObjectParameter("rate", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ExchangeRateEdit", exchangeRateIdParameter, currencyIdParameter, dateParameter, rateParameter);
         }
     
         public virtual ObjectResult<Nullable<decimal>> ExchangeRateViewByExchangeRateId(Nullable<decimal> exchangeRateId)
@@ -1995,6 +2414,45 @@ namespace LoginForm.DataSet
         public virtual ObjectResult<GroupNameViewForComboFill_Result> GroupNameViewForComboFill()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GroupNameViewForComboFill_Result>("GroupNameViewForComboFill");
+        }
+    
+        public virtual ObjectResult<HoildaySettingsViewAllLimited_Result> HoildaySettingsViewAllLimited(string month, string year)
+        {
+            var monthParameter = month != null ?
+                new ObjectParameter("Month", month) :
+                new ObjectParameter("Month", typeof(string));
+    
+            var yearParameter = year != null ?
+                new ObjectParameter("Year", year) :
+                new ObjectParameter("Year", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<HoildaySettingsViewAllLimited_Result>("HoildaySettingsViewAllLimited", monthParameter, yearParameter);
+        }
+    
+        public virtual int HolidayAddWithIdentity(Nullable<System.DateTime> date, string holidayName, string narration)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            var holidayNameParameter = holidayName != null ?
+                new ObjectParameter("holidayName", holidayName) :
+                new ObjectParameter("holidayName", typeof(string));
+    
+            var narrationParameter = narration != null ?
+                new ObjectParameter("narration", narration) :
+                new ObjectParameter("narration", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("HolidayAddWithIdentity", dateParameter, holidayNameParameter, narrationParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> HolliDayChecking(Nullable<System.DateTime> date)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("HolliDayChecking", dateParameter);
         }
     
         public virtual ObjectResult<Nullable<decimal>> JournalMasterIdView(Nullable<decimal> voucherTypeId, string voucherNo)
@@ -2488,6 +2946,29 @@ namespace LoginForm.DataSet
         public virtual ObjectResult<PayHeadGetAll_Result> PayHeadGetAll()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PayHeadGetAll_Result>("PayHeadGetAll");
+        }
+    
+        public virtual ObjectResult<string> PayHeadTypeView(Nullable<decimal> payHeadId)
+        {
+            var payHeadIdParameter = payHeadId.HasValue ?
+                new ObjectParameter("payHeadId", payHeadId) :
+                new ObjectParameter("payHeadId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("PayHeadTypeView", payHeadIdParameter);
+        }
+    
+        public virtual ObjectResult<PayHeadView_Result> PayHeadView(Nullable<decimal> payHeadId)
+        {
+            var payHeadIdParameter = payHeadId.HasValue ?
+                new ObjectParameter("payHeadId", payHeadId) :
+                new ObjectParameter("payHeadId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PayHeadView_Result>("PayHeadView", payHeadIdParameter);
+        }
+    
+        public virtual ObjectResult<PayHeadViewAll_Result> PayHeadViewAll()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PayHeadViewAll_Result>("PayHeadViewAll");
         }
     
         public virtual ObjectResult<Nullable<decimal>> paymentMasterIdView(Nullable<decimal> voucherTypeId, string voucherNo)
@@ -4093,6 +4574,109 @@ namespace LoginForm.DataSet
                 new ObjectParameter("AirwayBillNumber", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("RSInvoiceADD", shipmentReferenceParameter, billingDocumentReferenceParameter, shippingConditionParameter, billingDocumentDateParameter, supplyingECCompanyParameter, customerReferenceParameter, invoiceTaxValueParameter, invoiceGoodsValueParameter, invoiceNettValueParameter, currencyParameter, airwayBillNumberParameter);
+        }
+    
+        public virtual int SalaryPackageAdd(string salaryPackageName, Nullable<bool> isActive, string narration, Nullable<decimal> totalAmount)
+        {
+            var salaryPackageNameParameter = salaryPackageName != null ?
+                new ObjectParameter("salaryPackageName", salaryPackageName) :
+                new ObjectParameter("salaryPackageName", typeof(string));
+    
+            var isActiveParameter = isActive.HasValue ?
+                new ObjectParameter("isActive", isActive) :
+                new ObjectParameter("isActive", typeof(bool));
+    
+            var narrationParameter = narration != null ?
+                new ObjectParameter("narration", narration) :
+                new ObjectParameter("narration", typeof(string));
+    
+            var totalAmountParameter = totalAmount.HasValue ?
+                new ObjectParameter("totalAmount", totalAmount) :
+                new ObjectParameter("totalAmount", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SalaryPackageAdd", salaryPackageNameParameter, isActiveParameter, narrationParameter, totalAmountParameter);
+        }
+    
+        public virtual int SalaryPackageDelete(Nullable<decimal> salaryPackageId)
+        {
+            var salaryPackageIdParameter = salaryPackageId.HasValue ?
+                new ObjectParameter("salaryPackageId", salaryPackageId) :
+                new ObjectParameter("salaryPackageId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SalaryPackageDelete", salaryPackageIdParameter);
+        }
+    
+        public virtual int SalaryPackageDeleteAll(Nullable<decimal> salaryPackageId)
+        {
+            var salaryPackageIdParameter = salaryPackageId.HasValue ?
+                new ObjectParameter("salaryPackageId", salaryPackageId) :
+                new ObjectParameter("salaryPackageId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SalaryPackageDeleteAll", salaryPackageIdParameter);
+        }
+    
+        public virtual int SalaryPackageDetailsAdd(Nullable<decimal> salaryPackageId, Nullable<decimal> payHeadId, Nullable<decimal> amount, string narration)
+        {
+            var salaryPackageIdParameter = salaryPackageId.HasValue ?
+                new ObjectParameter("salaryPackageId", salaryPackageId) :
+                new ObjectParameter("salaryPackageId", typeof(decimal));
+    
+            var payHeadIdParameter = payHeadId.HasValue ?
+                new ObjectParameter("payHeadId", payHeadId) :
+                new ObjectParameter("payHeadId", typeof(decimal));
+    
+            var amountParameter = amount.HasValue ?
+                new ObjectParameter("amount", amount) :
+                new ObjectParameter("amount", typeof(decimal));
+    
+            var narrationParameter = narration != null ?
+                new ObjectParameter("narration", narration) :
+                new ObjectParameter("narration", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SalaryPackageDetailsAdd", salaryPackageIdParameter, payHeadIdParameter, amountParameter, narrationParameter);
+        }
+    
+        public virtual int SalaryPackageDetailsDeleteWithSalaryPackageId(Nullable<decimal> salaryPackageId)
+        {
+            var salaryPackageIdParameter = salaryPackageId.HasValue ?
+                new ObjectParameter("salaryPackageId", salaryPackageId) :
+                new ObjectParameter("salaryPackageId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SalaryPackageDetailsDeleteWithSalaryPackageId", salaryPackageIdParameter);
+        }
+    
+        public virtual int SalaryPackageEdit(Nullable<decimal> salaryPackageId, string salaryPackageName, Nullable<bool> isActive, string narration, Nullable<decimal> totalAmount)
+        {
+            var salaryPackageIdParameter = salaryPackageId.HasValue ?
+                new ObjectParameter("salaryPackageId", salaryPackageId) :
+                new ObjectParameter("salaryPackageId", typeof(decimal));
+    
+            var salaryPackageNameParameter = salaryPackageName != null ?
+                new ObjectParameter("salaryPackageName", salaryPackageName) :
+                new ObjectParameter("salaryPackageName", typeof(string));
+    
+            var isActiveParameter = isActive.HasValue ?
+                new ObjectParameter("isActive", isActive) :
+                new ObjectParameter("isActive", typeof(bool));
+    
+            var narrationParameter = narration != null ?
+                new ObjectParameter("narration", narration) :
+                new ObjectParameter("narration", typeof(string));
+    
+            var totalAmountParameter = totalAmount.HasValue ?
+                new ObjectParameter("totalAmount", totalAmount) :
+                new ObjectParameter("totalAmount", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SalaryPackageEdit", salaryPackageIdParameter, salaryPackageNameParameter, isActiveParameter, narrationParameter, totalAmountParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> SalaryPackageNameCheckExistance(string salaryPackageName)
+        {
+            var salaryPackageNameParameter = salaryPackageName != null ?
+                new ObjectParameter("salaryPackageName", salaryPackageName) :
+                new ObjectParameter("salaryPackageName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("SalaryPackageNameCheckExistance", salaryPackageNameParameter);
         }
     
         public virtual ObjectResult<string> SaleMasterGetPos(Nullable<decimal> salemasterId, string voucherName)

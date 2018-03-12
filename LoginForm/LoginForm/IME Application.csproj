@@ -22,7 +22,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>83</ApplicationRevision>
+    <ApplicationRevision>84</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -225,11 +225,23 @@
     <Compile Include="Account\PayRoll\frmBonusDeduction.Designer.cs">
       <DependentUpon>frmBonusDeduction.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\PayRoll\frmDesignation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\PayRoll\frmDesignation.Designer.cs">
+      <DependentUpon>frmDesignation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\PayRoll\frmPayHead.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Account\PayRoll\frmPayHead.designer.cs">
       <DependentUpon>frmPayHead.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\PayRoll\frmSalaryPackageCreation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\PayRoll\frmSalaryPackageCreation.Designer.cs">
+      <DependentUpon>frmSalaryPackageCreation.cs</DependentUpon>
     </Compile>
     <Compile Include="Account\Register\frmCreditNoteRegister.cs">
       <SubType>Form</SubType>
@@ -459,6 +471,7 @@
     <Compile Include="Account\Services\DebitNoteMasterSP.cs" />
     <Compile Include="Account\Services\DeliveryNoteDetailsSP.cs" />
     <Compile Include="Account\Services\DeliveryNoteMasterSP.cs" />
+    <Compile Include="Account\Services\DesignationSP.cs" />
     <Compile Include="Account\Services\EmployeeSP.cs" />
     <Compile Include="Account\Services\ExchangeRateSP.cs" />
     <Compile Include="Account\Services\ExportNew.cs" />
@@ -492,6 +505,8 @@
     <Compile Include="Account\Services\ReceiptMasterSP.cs" />
     <Compile Include="Account\Services\ReminderSP.cs" />
     <Compile Include="Account\Services\RouteSP.cs" />
+    <Compile Include="Account\Services\SalaryPackageDetailsSP.cs" />
+    <Compile Include="Account\Services\SalaryPackageSP.cs" />
     <Compile Include="Account\Services\SalesBillTaxSP.cs" />
     <Compile Include="Account\Services\SalesDetailsSP.cs" />
     <Compile Include="Account\Services\SalesMasterSP.cs" />
@@ -849,6 +864,9 @@
     <Compile Include="DataSet\Company.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\CompanyPath.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\CompanyViewAll_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -906,6 +924,15 @@
     <Compile Include="DataSet\CustomerWorker.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\DailyAttendanceDetail.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\DailyAttendanceDetailsSearchGridFill_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\DailyAttendanceMaster.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\DailyDiscontinued.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -937,6 +964,15 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Designation.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\DesignationGridFill_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\DesignationSearch_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\DesignationView_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\DiscountValue.cs">
@@ -1003,6 +1039,12 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Hazardou.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\HoildaySettingsViewAllLimited_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\Holiday.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\IME.Context.cs">
@@ -1108,6 +1150,12 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\PayHeadGet_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PayHeadViewAll_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PayHeadView_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\PaymentDetail.cs">
@@ -1942,8 +1990,14 @@
     <EmbeddedResource Include="Account\PayRoll\frmBonusDeduction.resx">
       <DependentUpon>frmBonusDeduction.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Account\PayRoll\frmDesignation.resx">
+      <DependentUpon>frmDesignation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Account\PayRoll\frmPayHead.resx">
       <DependentUpon>frmPayHead.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\PayRoll\frmSalaryPackageCreation.resx">
+      <DependentUpon>frmSalaryPackageCreation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Register\frmCreditNoteRegister.resx">
       <DependentUpon>frmCreditNoteRegister.cs</DependentUpon>

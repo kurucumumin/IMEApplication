@@ -92,5 +92,37 @@ namespace LoginForm.Account.Services
             return dtbl;
         }
 
+        public DataTable PayHeadViewAll()
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = IME.PayHeadViewAll().ToList();
+
+                dtbl.Columns.Add("payHeadId");
+                dtbl.Columns.Add("payHeadName");
+                dtbl.Columns.Add("type");
+                dtbl.Columns.Add("narration");
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["payHeadId"] = item.payHeadId;
+                    row["payHeadName"] = item.payHeadName;
+                    row["type"] = item.type;
+                    row["narration"] = item.narration;
+
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
     }
 }
