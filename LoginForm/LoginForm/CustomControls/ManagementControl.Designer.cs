@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.currencyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel31 = new System.Windows.Forms.Panel();
             this.txtBranchCode = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -40,7 +41,6 @@
             this.numericFactor = new System.Windows.Forms.NumericUpDown();
             this.lblFactor = new System.Windows.Forms.Label();
             this.cbCurrency = new System.Windows.Forms.ComboBox();
-            this.currencyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lblDefaultCurrency = new System.Windows.Forms.Label();
             this.btnTermsOfPayment = new System.Windows.Forms.Button();
             this.txtVAT = new System.Windows.Forms.TextBox();
@@ -50,19 +50,17 @@
             this.txtLowMarginLimit = new System.Windows.Forms.TextBox();
             this.lblLowMarginLimit = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.currencyBindingSource)).BeginInit();
             this.panel31.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericFactor)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.currencyBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
-            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.71202F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.34389F));
-            this.tableLayoutPanel1.Controls.Add(this.panel31, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel31, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -71,8 +69,12 @@
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1023, 553);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(518, 642);
             this.tableLayoutPanel1.TabIndex = 2;
+            // 
+            // currencyBindingSource
+            // 
+            this.currencyBindingSource.DataSource = typeof(LoginForm.DataSet.Currency);
             // 
             // panel31
             // 
@@ -95,11 +97,11 @@
             this.panel31.Controls.Add(this.txtLowMarginLimit);
             this.panel31.Controls.Add(this.lblLowMarginLimit);
             this.panel31.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel31.Location = new System.Drawing.Point(204, 0);
+            this.panel31.Location = new System.Drawing.Point(0, 0);
             this.panel31.Margin = new System.Windows.Forms.Padding(0);
             this.panel31.Name = "panel31";
-            this.panel31.Size = new System.Drawing.Size(334, 553);
-            this.panel31.TabIndex = 0;
+            this.panel31.Size = new System.Drawing.Size(518, 642);
+            this.panel31.TabIndex = 1;
             // 
             // txtBranchCode
             // 
@@ -108,7 +110,7 @@
             this.txtBranchCode.Location = new System.Drawing.Point(191, 255);
             this.txtBranchCode.Margin = new System.Windows.Forms.Padding(3, 2, 16, 2);
             this.txtBranchCode.Name = "txtBranchCode";
-            this.txtBranchCode.Size = new System.Drawing.Size(125, 24);
+            this.txtBranchCode.Size = new System.Drawing.Size(309, 24);
             this.txtBranchCode.TabIndex = 19;
             // 
             // label2
@@ -128,7 +130,7 @@
             this.txtDataSeperator.Location = new System.Drawing.Point(191, 207);
             this.txtDataSeperator.Margin = new System.Windows.Forms.Padding(3, 2, 16, 2);
             this.txtDataSeperator.Name = "txtDataSeperator";
-            this.txtDataSeperator.Size = new System.Drawing.Size(125, 24);
+            this.txtDataSeperator.Size = new System.Drawing.Size(309, 24);
             this.txtDataSeperator.TabIndex = 17;
             // 
             // label1
@@ -148,14 +150,13 @@
             this.btnCategorySubCategory.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
             this.btnCategorySubCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCategorySubCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCategorySubCategory.Location = new System.Drawing.Point(-1, 459);
+            this.btnCategorySubCategory.Location = new System.Drawing.Point(-1, 548);
             this.btnCategorySubCategory.Margin = new System.Windows.Forms.Padding(0);
             this.btnCategorySubCategory.Name = "btnCategorySubCategory";
-            this.btnCategorySubCategory.Size = new System.Drawing.Size(338, 37);
+            this.btnCategorySubCategory.Size = new System.Drawing.Size(522, 37);
             this.btnCategorySubCategory.TabIndex = 15;
             this.btnCategorySubCategory.Text = "Category & Sub Category";
             this.btnCategorySubCategory.UseVisualStyleBackColor = false;
-            this.btnCategorySubCategory.Click += new System.EventHandler(this.btnCategorySubCategory_Click);
             // 
             // btnExchangeRate
             // 
@@ -165,14 +166,13 @@
             this.btnExchangeRate.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
             this.btnExchangeRate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExchangeRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExchangeRate.Location = new System.Drawing.Point(-3, 348);
+            this.btnExchangeRate.Location = new System.Drawing.Point(-3, 437);
             this.btnExchangeRate.Margin = new System.Windows.Forms.Padding(0);
             this.btnExchangeRate.Name = "btnExchangeRate";
-            this.btnExchangeRate.Size = new System.Drawing.Size(334, 37);
+            this.btnExchangeRate.Size = new System.Drawing.Size(518, 37);
             this.btnExchangeRate.TabIndex = 14;
             this.btnExchangeRate.Text = "Exchange Rate";
             this.btnExchangeRate.UseVisualStyleBackColor = false;
-            this.btnExchangeRate.Click += new System.EventHandler(this.btnExchangeRate_Click);
             // 
             // numericFactor
             // 
@@ -187,7 +187,7 @@
             this.numericFactor.Location = new System.Drawing.Point(191, 162);
             this.numericFactor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.numericFactor.Name = "numericFactor";
-            this.numericFactor.Size = new System.Drawing.Size(125, 24);
+            this.numericFactor.Size = new System.Drawing.Size(309, 24);
             this.numericFactor.TabIndex = 13;
             // 
             // lblFactor
@@ -210,13 +210,9 @@
             this.cbCurrency.Location = new System.Drawing.Point(191, 114);
             this.cbCurrency.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbCurrency.Name = "cbCurrency";
-            this.cbCurrency.Size = new System.Drawing.Size(125, 26);
+            this.cbCurrency.Size = new System.Drawing.Size(309, 26);
             this.cbCurrency.TabIndex = 10;
             this.cbCurrency.ValueMember = "currencyID";
-            // 
-            // currencyBindingSource
-            // 
-            this.currencyBindingSource.DataSource = typeof(LoginForm.DataSet.Currency);
             // 
             // lblDefaultCurrency
             // 
@@ -235,14 +231,13 @@
             this.btnTermsOfPayment.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
             this.btnTermsOfPayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTermsOfPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTermsOfPayment.Location = new System.Drawing.Point(-3, 385);
+            this.btnTermsOfPayment.Location = new System.Drawing.Point(-3, 474);
             this.btnTermsOfPayment.Margin = new System.Windows.Forms.Padding(0);
             this.btnTermsOfPayment.Name = "btnTermsOfPayment";
-            this.btnTermsOfPayment.Size = new System.Drawing.Size(334, 37);
+            this.btnTermsOfPayment.Size = new System.Drawing.Size(518, 37);
             this.btnTermsOfPayment.TabIndex = 8;
             this.btnTermsOfPayment.Text = "Terms of Payment";
             this.btnTermsOfPayment.UseVisualStyleBackColor = false;
-            this.btnTermsOfPayment.Click += new System.EventHandler(this.btnTermsOfPayment_Click);
             // 
             // txtVAT
             // 
@@ -251,7 +246,7 @@
             this.txtVAT.Location = new System.Drawing.Point(191, 71);
             this.txtVAT.Margin = new System.Windows.Forms.Padding(3, 2, 16, 2);
             this.txtVAT.Name = "txtVAT";
-            this.txtVAT.Size = new System.Drawing.Size(125, 24);
+            this.txtVAT.Size = new System.Drawing.Size(309, 24);
             this.txtVAT.TabIndex = 7;
             // 
             // lblVAT
@@ -272,14 +267,13 @@
             this.btnRolesAuthorities.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
             this.btnRolesAuthorities.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRolesAuthorities.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRolesAuthorities.Location = new System.Drawing.Point(-3, 422);
+            this.btnRolesAuthorities.Location = new System.Drawing.Point(-3, 511);
             this.btnRolesAuthorities.Margin = new System.Windows.Forms.Padding(0);
             this.btnRolesAuthorities.Name = "btnRolesAuthorities";
-            this.btnRolesAuthorities.Size = new System.Drawing.Size(334, 37);
+            this.btnRolesAuthorities.Size = new System.Drawing.Size(518, 37);
             this.btnRolesAuthorities.TabIndex = 5;
             this.btnRolesAuthorities.Text = "Roles and Authorities";
             this.btnRolesAuthorities.UseVisualStyleBackColor = false;
-            this.btnRolesAuthorities.Click += new System.EventHandler(this.btnRolesAuthorities_Click);
             // 
             // btnSave
             // 
@@ -288,14 +282,13 @@
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(0, 496);
+            this.btnSave.Location = new System.Drawing.Point(0, 585);
             this.btnSave.Margin = new System.Windows.Forms.Padding(0);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(332, 55);
+            this.btnSave.Size = new System.Drawing.Size(516, 55);
             this.btnSave.TabIndex = 2;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // txtLowMarginLimit
             // 
@@ -304,7 +297,7 @@
             this.txtLowMarginLimit.Location = new System.Drawing.Point(191, 27);
             this.txtLowMarginLimit.Margin = new System.Windows.Forms.Padding(3, 2, 16, 2);
             this.txtLowMarginLimit.Name = "txtLowMarginLimit";
-            this.txtLowMarginLimit.Size = new System.Drawing.Size(125, 24);
+            this.txtLowMarginLimit.Size = new System.Drawing.Size(309, 24);
             this.txtLowMarginLimit.TabIndex = 1;
             // 
             // lblLowMarginLimit
@@ -324,13 +317,13 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ManagementControl";
-            this.Size = new System.Drawing.Size(1023, 553);
+            this.Size = new System.Drawing.Size(518, 642);
             this.Load += new System.EventHandler(this.ManagementControl_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.currencyBindingSource)).EndInit();
             this.panel31.ResumeLayout(false);
             this.panel31.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericFactor)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.currencyBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -338,24 +331,24 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Panel panel31;
-        private System.Windows.Forms.TextBox txtLowMarginLimit;
-        private System.Windows.Forms.Label lblLowMarginLimit;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnRolesAuthorities;
-        private System.Windows.Forms.TextBox txtVAT;
-        private System.Windows.Forms.Label lblVAT;
-        private System.Windows.Forms.Button btnTermsOfPayment;
-        private System.Windows.Forms.ComboBox cbCurrency;
-        private System.Windows.Forms.Label lblDefaultCurrency;
-        private System.Windows.Forms.Label lblFactor;
-        private System.Windows.Forms.NumericUpDown numericFactor;
-        private System.Windows.Forms.Button btnExchangeRate;
-        private System.Windows.Forms.Button btnCategorySubCategory;
         private System.Windows.Forms.BindingSource currencyBindingSource;
-        private System.Windows.Forms.TextBox txtDataSeperator;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel31;
         private System.Windows.Forms.TextBox txtBranchCode;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtDataSeperator;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnCategorySubCategory;
+        private System.Windows.Forms.Button btnExchangeRate;
+        private System.Windows.Forms.NumericUpDown numericFactor;
+        private System.Windows.Forms.Label lblFactor;
+        private System.Windows.Forms.ComboBox cbCurrency;
+        private System.Windows.Forms.Label lblDefaultCurrency;
+        private System.Windows.Forms.Button btnTermsOfPayment;
+        private System.Windows.Forms.TextBox txtVAT;
+        private System.Windows.Forms.Label lblVAT;
+        private System.Windows.Forms.Button btnRolesAuthorities;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.TextBox txtLowMarginLimit;
+        private System.Windows.Forms.Label lblLowMarginLimit;
     }
 }

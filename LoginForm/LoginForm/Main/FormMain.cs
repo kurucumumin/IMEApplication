@@ -14,6 +14,9 @@ namespace LoginForm
         public static bool isEstimateDB = false;
         public static bool demoProject = false;
 
+        private UserControl CurrentNavTabLvl1;
+        private UserControl CurrentNavTabLvl2;
+
         public FormMain()
         {
             InitializeComponent();
@@ -21,13 +24,22 @@ namespace LoginForm
 
         private void btnLoader_Click(object sender, EventArgs e)
         {
-            controlLoader.BringToFront();
+            OpenNavTabLvl1(controlLoader);
+        }
+
+        public void OpenNavTabLvl1(UserControl NavControlLvl1)
+        {
+            if (CurrentNavTabLvl1 != null)
+            {
+                CurrentNavTabLvl1.Visible = false;
+            }
+            CurrentNavTabLvl1 = NavControlLvl1;
+            CurrentNavTabLvl1.Visible = true;
         }
 
         private void btnDevelopment_Click(object sender, EventArgs e)
         {
-            controlDevelopment.BringToFront();
-            //controlDevelopment.checkAuthorities();
+            OpenNavTabLvl1(controlDevelopment);
         }
 
         private void FormMain_Load(object sender, EventArgs e)
@@ -37,8 +49,7 @@ namespace LoginForm
 
         private void btnManagement_Click(object sender, EventArgs e)
         {
-            controlManagement.BringToFront();
-            //controlManagement.checkAuthorities();
+            OpenNavTabLvl1(controlManagement);
         }
 
         public void setManagementControl()
@@ -76,22 +87,25 @@ namespace LoginForm
 
         private void btnAccounting_Click(object sender, EventArgs e)
         {
-            controlAccounting.BringToFront();
+            OpenNavTabLvl1(controlAccounting);
         }
 
         private void btnBudgetMasterPayroll_Click(object sender, EventArgs e)
         {
-            controlBudgetMasterPayroll.BringToFront();
+            OpenNavTabLvl1(controlBudgetMasterPayroll);
         }
 
         private void btnRegisterReminderSearchOther_Click(object sender, EventArgs e)
         {
-            controlRegisterReminderSearchOther.BringToFront();
+            OpenNavTabLvl1(controlRegisterReminderSearchOther);
         }
 
         private void brnTransactionsReports_Click(object sender, EventArgs e)
         {
-            controlTransactionsReports.BringToFront();
+            OpenNavTabLvl1(controlTransactionsReports);
         }
+        
+
+        
     }
 }

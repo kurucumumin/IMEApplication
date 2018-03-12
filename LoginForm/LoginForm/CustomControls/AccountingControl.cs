@@ -5,6 +5,7 @@ namespace LoginForm.CustomControls
 {
     public partial class AccountingControl : UserControl
     {
+        FormMain parent;
         public AccountingControl()
         {
             InitializeComponent();
@@ -62,6 +63,16 @@ namespace LoginForm.CustomControls
         {
             frmSalesInvoice form = new frmSalesInvoice();
             form.ShowDialog();
+        }
+
+        private void btnBudgets_Click(object sender, EventArgs e)
+        {
+            parent.subControlBudget.Visible = true;
+        }
+
+        private void AccountingControl_Load(object sender, EventArgs e)
+        {
+            this.parent = (FormMain)ParentForm;
         }
     }
 }
