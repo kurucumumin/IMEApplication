@@ -253,6 +253,12 @@
     <Compile Include="Account\PayRoll\frmSalaryPackageCreation.Designer.cs">
       <DependentUpon>frmSalaryPackageCreation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\PayRoll\frmSalaryPackageRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\PayRoll\frmSalaryPackageRegister.designer.cs">
+      <DependentUpon>frmSalaryPackageRegister.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\Register\frmCreditNoteRegister.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -492,6 +498,7 @@
     <Compile Include="Account\Services\FinancialStatementSP.cs" />
     <Compile Include="Account\Services\FinancialYearSP.cs" />
     <Compile Include="Account\Services\GodownSP.cs" />
+    <Compile Include="Account\Services\HolidaySP.cs" />
     <Compile Include="Account\Services\JournalMasterSP.cs" />
     <Compile Include="Account\Services\LedgerPostingSP.cs" />
     <Compile Include="Account\Services\MaterialReceiptDetailsSP.cs" />
@@ -700,6 +707,9 @@
     <Compile Include="DataSet\AccountGroupHierarchy_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\AccountGroupReportViewAll_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\AccountGroupSearch_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -722,6 +732,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\AccountLedgerGetGroupUnderFunction_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\AccountLedgerReportFill_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\AccountLedgerSearchForServiceAccountUnderIncome_Result.cs">
@@ -1430,6 +1443,15 @@
     <Compile Include="DataSet\SalaryPackageDetail.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\SalaryPackageDetailsViewWithSalaryPackageId_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SalaryPackageregisterSearch_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SalaryPackageView_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\SalaryVoucherDetail.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -2010,6 +2032,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Account\PayRoll\frmSalaryPackageCreation.resx">
       <DependentUpon>frmSalaryPackageCreation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\PayRoll\frmSalaryPackageRegister.resx">
+      <DependentUpon>frmSalaryPackageRegister.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Register\frmCreditNoteRegister.resx">
       <DependentUpon>frmCreditNoteRegister.cs</DependentUpon>

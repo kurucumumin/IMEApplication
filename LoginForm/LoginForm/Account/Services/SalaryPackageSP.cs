@@ -102,5 +102,67 @@ namespace LoginForm.Account.Services
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        public SalaryPackage SalaryPackageView(decimal salaryPackageId)
+        {
+            IMEEntities IME = new IMEEntities();
+            SalaryPackage sp= new SalaryPackage();
+            
+            try
+            {
+                var a = IME.SalaryPackageView(salaryPackageId).FirstOrDefault();
+
+                sp.salaryPackageId = a.salaryPackageId;
+                sp.salaryPackageName = a.salaryPackageName;
+                sp.isActive= a.isActive;
+                sp.narration = a.narration;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return sp;
+        }
+
+        public DataTable SalaryPackageregisterSearch(string strSalaryPackageName, string strStatus)
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            dtbl.Columns.Add("SL.NO", typeof(decimal));
+            dtbl.Columns["SL.NO"].AutoIncrement = true;
+            dtbl.Columns["SL.NO"].AutoIncrementSeed = 1;
+            dtbl.Columns["SL.NO"].AutoIncrementStep = 1;
+            try
+            {
+                var adaptor = IME.SalaryPackageregisterSearch(strSalaryPackageName, strStatus).ToList();
+
+
+                dtbl.Columns.Add("salaryPackageId");
+                dtbl.Columns.Add("salaryPackageName");
+                dtbl.Columns.Add("isActive");
+                dtbl.Columns.Add("totalAmount");
+
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["salaryPackageId"] = item.salaryPackageId;
+                    row["salaryPackageName"] = item.salaryPackageName;
+                    row["isActive"] = item.isActive;
+                    row["totalAmount"] = item.totalAmount;
+
+
+                    dtbl.Rows.Add(row);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
     }
 }

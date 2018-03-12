@@ -25,7 +25,7 @@ namespace LoginForm
         public decimal decSalaryPackageId;
         public string strSalaryPackageName = string.Empty;
         public DataTable dtblCheck = new DataTable();
-       // frmSalaryPackageRegister frmSalaryPackageRegisterObj;
+        frmSalaryPackageRegister frmSalaryPackageRegisterObj;
         //frmEmployeeCreation frmEmployeeCreationObj;
         int inNarrationCount = 0;
         int q = 0;
@@ -84,48 +84,47 @@ namespace LoginForm
         /// </summary>
         /// <param name="decSalaryPackageIdFromRegister"></param>
         /// <param name="frm"></param>
-        //public void CallFromSalaryPackageRegister(decimal decSalaryPackageIdFromRegister, frmSalaryPackageRegister frm)
-        //{
-        //    try
-        //    {
-        //        frmSalaryPackageRegisterObj = frm;
-        //        DataTable dtblSalaryPackageDetails = new DataTable();
-        //        infoSalaryPackage = spSalaryPackage.SalaryPackageView(decSalaryPackageIdFromRegister);
-        //        decSalaryPackageId = infoSalaryPackage.SalaryPackageId;
-        //        txtPackageName.Text = infoSalaryPackage.SalaryPackageName;
-        //        strSalaryPackageName = infoSalaryPackage.SalaryPackageName;
-                
-        //        txtNarration.Text = infoSalaryPackage.Narration;
-        //        dtblSalaryPackageDetails = spSalarypackageDetails.SalaryPackageDetailsViewWithSalaryPackageId(decSalaryPackageIdFromRegister);
-        //        foreach (DataRow dtblRow in dtblSalaryPackageDetails.Rows)
-        //        {
-        //            if (dtblRow != null)
-        //            {
-        //                dgvSalaryPackage.Rows.Add();
+        public void CallFromSalaryPackageRegister(decimal decSalaryPackageIdFromRegister, frmSalaryPackageRegister frm)
+        {
+            try
+            {
+                frmSalaryPackageRegisterObj = frm;
+                DataTable dtblSalaryPackageDetails = new DataTable();
+                infoSalaryPackage = spSalaryPackage.SalaryPackageView(decSalaryPackageIdFromRegister);
+                decSalaryPackageId = infoSalaryPackage.salaryPackageId;
+                txtPackageName.Text = infoSalaryPackage.salaryPackageName;
+                strSalaryPackageName = infoSalaryPackage.salaryPackageName;
+                txtNarration.Text = infoSalaryPackage.narration;
+                dtblSalaryPackageDetails = spSalarypackageDetails.SalaryPackageDetailsViewWithSalaryPackageId(decSalaryPackageIdFromRegister);
+                foreach (DataRow dtblRow in dtblSalaryPackageDetails.Rows)
+                {
+                    if (dtblRow != null)
+                    {
+                        dgvSalaryPackage.Rows.Add();
 
-        //                dgvSalaryPackage.Rows[dgvSalaryPackage.NewRowIndex - 1].Cells["dgvtxtSlNo"].Value = dtblRow["SL.NO"];
-        //                dgvSalaryPackage.Rows[dgvSalaryPackage.NewRowIndex - 1].Cells["dgvcmbPayHead"].Value = dtblRow["payHeadId"];
-        //                dgvSalaryPackage.Rows[dgvSalaryPackage.NewRowIndex - 1].Cells["dgvtxtAmount"].Value = dtblRow["amount"];
-        //                dgvSalaryPackage.Rows[dgvSalaryPackage.NewRowIndex - 1].Cells["dgvtxtStatus"].Value = "Complete";
-        //            }
-        //        }
-        //        btnSave.Text = "Update";
-        //        btnDelete.Enabled = true;
-        //        base.Show();
-        //        if (infoSalaryPackage.IsActive)
-        //        {
-        //            cmbActive.SelectedIndex = 0;
-        //        }
-        //        else 
-        //        {
-        //            cmbActive.SelectedIndex = 1;
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("SPC2" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+                        dgvSalaryPackage.Rows[dgvSalaryPackage.NewRowIndex - 1].Cells["dgvtxtSlNo"].Value = dtblRow["SL.NO"];
+                        dgvSalaryPackage.Rows[dgvSalaryPackage.NewRowIndex - 1].Cells["dgvcmbPayHead"].Value = dtblRow["payHeadId"];
+                        dgvSalaryPackage.Rows[dgvSalaryPackage.NewRowIndex - 1].Cells["dgvtxtAmount"].Value = dtblRow["amount"];
+                        dgvSalaryPackage.Rows[dgvSalaryPackage.NewRowIndex - 1].Cells["dgvtxtStatus"].Value = "Complete";
+                    }
+                }
+                btnSave.Text = "Update";
+                btnDelete.Enabled = true;
+                base.Show();
+                if (Convert.ToBoolean(infoSalaryPackage.isActive))
+                {
+                    cmbActive.SelectedIndex = 0;
+                }
+                else
+                {
+                    cmbActive.SelectedIndex = 1;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("SPC2" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
         /// <summary>
         /// Function for Delete
         /// </summary>
@@ -477,11 +476,11 @@ namespace LoginForm
         {
             try
             {
-                //if (frmSalaryPackageRegisterObj != null)
-                //{
-                //    frmSalaryPackageRegisterObj.Enabled = true;
-                //    frmSalaryPackageRegisterObj.Clear();
-                //}
+                if (frmSalaryPackageRegisterObj != null)
+                {
+                    frmSalaryPackageRegisterObj.Enabled = true;
+                    frmSalaryPackageRegisterObj.Clear();
+                }
                 //if (frmEmployeeCreationObj != null)
                 //{
                 //    frmEmployeeCreationObj.ReturnFromSalaryPackageForm(decSalaryPackageId);
