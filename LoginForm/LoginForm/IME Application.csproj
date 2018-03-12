@@ -12,7 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\pomak\Desktop\</PublishUrl>
+    <PublishUrl>C:\Users\nebib\Desktop\IMEApp\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -22,7 +22,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>84</ApplicationRevision>
+    <ApplicationRevision>81</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -235,23 +235,29 @@
     <Compile Include="Account\PayRoll\frmBonusDeduction.Designer.cs">
       <DependentUpon>frmBonusDeduction.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\PayRoll\frmBonusDeductionRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\PayRoll\frmBonusDeductionRegister.designer.cs">
+      <DependentUpon>frmBonusDeductionRegister.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\PayRoll\frmDesignation.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Account\PayRoll\frmDesignation.Designer.cs">
       <DependentUpon>frmDesignation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\PayRoll\frmHolydaySettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\PayRoll\frmHolydaySettings.Designer.cs">
+      <DependentUpon>frmHolydaySettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\PayRoll\frmPayHead.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Account\PayRoll\frmPayHead.designer.cs">
       <DependentUpon>frmPayHead.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Account\PayRoll\frmSalaryPackageCreation.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Account\PayRoll\frmSalaryPackageCreation.Designer.cs">
-      <DependentUpon>frmSalaryPackageCreation.cs</DependentUpon>
     </Compile>
     <Compile Include="Account\Register\frmCreditNoteRegister.cs">
       <SubType>Form</SubType>
@@ -470,6 +476,7 @@
     <Compile Include="Account\Services\AreaSP.cs" />
     <Compile Include="Account\Services\BankReconciliationSP.cs" />
     <Compile Include="Account\Services\BatchSP.cs" />
+    <Compile Include="Account\Services\BonusDedutionSP.cs" />
     <Compile Include="Account\Services\BrandSP.cs" />
     <Compile Include="Account\Services\BudgetDetailsSP.cs" />
     <Compile Include="Account\Services\BudgetMasterSP.cs" />
@@ -492,6 +499,8 @@
     <Compile Include="Account\Services\FinancialStatementSP.cs" />
     <Compile Include="Account\Services\FinancialYearSP.cs" />
     <Compile Include="Account\Services\GodownSP.cs" />
+    <Compile Include="Account\Services\HolidayInfo.cs" />
+    <Compile Include="Account\Services\HolidaySP.cs" />
     <Compile Include="Account\Services\JournalMasterSP.cs" />
     <Compile Include="Account\Services\LedgerPostingSP.cs" />
     <Compile Include="Account\Services\MaterialReceiptDetailsSP.cs" />
@@ -519,8 +528,6 @@
     <Compile Include="Account\Services\ReceiptMasterSP.cs" />
     <Compile Include="Account\Services\ReminderSP.cs" />
     <Compile Include="Account\Services\RouteSP.cs" />
-    <Compile Include="Account\Services\SalaryPackageDetailsSP.cs" />
-    <Compile Include="Account\Services\SalaryPackageSP.cs" />
     <Compile Include="Account\Services\SalesBillTaxSP.cs" />
     <Compile Include="Account\Services\SalesDetailsSP.cs" />
     <Compile Include="Account\Services\SalesMasterSP.cs" />
@@ -700,6 +707,9 @@
     <Compile Include="DataSet\AccountGroupHierarchy_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\AccountGroupReportViewAll_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\AccountGroupSearch_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -722,6 +732,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\AccountLedgerGetGroupUnderFunction_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\AccountLedgerReportFill_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\AccountLedgerSearchForServiceAccountUnderIncome_Result.cs">
@@ -832,6 +845,9 @@
     <Compile Include="DataSet\BonusDeduction.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\BonusDeductionSearch_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\Brand.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -875,6 +891,9 @@
     <Compile Include="DataSet\CompanyPath.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\CompanyPathView_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\CompanyViewAll_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -909,6 +928,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\CurrencySearch_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\CurrencyViewAllForCombo_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Customer.cs">
@@ -987,6 +1009,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\DualUse.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\EmployeeViewAll_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\ExchangeRate.cs">
@@ -1428,6 +1453,15 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SalaryPackageDetail.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SalaryPackageDetailsViewWithSalaryPackageId_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SalaryPackageregisterSearch_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SalaryPackageView_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SalaryVoucherDetail.cs">
@@ -2002,14 +2036,17 @@
     <EmbeddedResource Include="Account\PayRoll\frmBonusDeduction.resx">
       <DependentUpon>frmBonusDeduction.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Account\PayRoll\frmBonusDeductionRegister.resx">
+      <DependentUpon>frmBonusDeductionRegister.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Account\PayRoll\frmDesignation.resx">
       <DependentUpon>frmDesignation.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Account\PayRoll\frmHolydaySettings.resx">
+      <DependentUpon>frmHolydaySettings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Account\PayRoll\frmPayHead.resx">
       <DependentUpon>frmPayHead.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Account\PayRoll\frmSalaryPackageCreation.resx">
-      <DependentUpon>frmSalaryPackageCreation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Register\frmCreditNoteRegister.resx">
       <DependentUpon>frmCreditNoteRegister.cs</DependentUpon>
@@ -2413,12 +2450,12 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 ve x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1 </ProductName>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>

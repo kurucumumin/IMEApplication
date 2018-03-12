@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9818c16ca48a48f4a038efdc70bb5265" Name="Diagram1">
+      <Diagram DiagramId="ea76a5200b104718953038acc08f5233" Name="Diagram1">
         <EntityTypeShape EntityType="IMEModel.AccountGroup" Width="1.5" PointX="9.75" PointY="59.375" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.AccountLedger" Width="1.5" PointX="12" PointY="58.25" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.AdvancePayment" Width="1.5" PointX="20.25" PointY="83.625" IsExpanded="true" />
@@ -245,8 +245,8 @@
         <AssociationConnector Association="IMEModel.FK__SaleOrder__Conta__1DD065E0" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__SaleOrder__Conta__1EC48A19" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__SaleOrder__Deliv__1FB8AE52" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__DailyAtte__daily__1BBE003C" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__DailyAtte__Worke__1AC9DC03" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__DailyAtte__daily__2CE88C3E" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__DailyAtte__Worke__2BF46805" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__DailySala__daily__08E035F2" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__DailySala__finan__0603C947" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__DailySala__suffi__041B80D5" ManuallyRouted="false" />
