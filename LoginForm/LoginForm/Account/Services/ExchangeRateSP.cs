@@ -53,5 +53,44 @@ namespace LoginForm.Account.Services
             }
             return exchangeRate;
         }
+
+        /// <summary>
+        /// Function to insert values to ExchangeRate Table
+        /// </summary>
+        /// <param name="exchangerateinfo"></param>
+        public void ExchangeRateAdd(ExchangeRate exchangerateinfo)
+        {
+            try
+            {
+                new IMEEntities().ExchangeRateAdd(
+                exchangerateinfo.currencyId,
+                exchangerateinfo.date,
+                exchangerateinfo.rate);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        /// <summary>
+        /// Function to Update values in ExchangeRate Table
+        /// </summary>
+        /// <param name="exchangerateinfo"></param>
+        public void ExchangeRateEdit(ExchangeRate exchangerateinfo)
+        {
+            try
+            {
+                new IMEEntities().ExchangeRateEdit(
+                    exchangerateinfo.exchangeRateID,
+                    exchangerateinfo.currencyId,
+                    exchangerateinfo.date,
+                    exchangerateinfo.rate);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
     }
 }

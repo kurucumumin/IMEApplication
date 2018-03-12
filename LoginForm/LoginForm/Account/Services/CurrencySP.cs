@@ -123,5 +123,51 @@ namespace LoginForm.Account.Services
             }
             return false;
         }
+
+        public void DefaultCurrencySet(decimal decCurrencyId)
+        {
+            try
+            {
+                new IMEEntities().DefaultCurrencySet(decCurrencyId);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        /// <summary>
+        /// Function to view for Currency combofill
+        /// </summary>
+        /// <returns></returns>
+        public DataTable CurrencyViewAllForCombo()
+        {
+            IMEEntities db = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = db.CurrencyViewAllForCombo().ToList();
+
+                dtbl.Columns.Add("currencyId");
+                dtbl.Columns.Add("currencySymbol");
+                dtbl.Columns.Add("currencyName");
+
+                foreach (var item in adaptor)
+                {
+                    DataRow row = dtbl.NewRow();
+
+                    row["currencyId"] = item.currencyId;
+                    row["currencySymbol"] = item.currencySymbol;
+                    row["currencyName"] = item.currencyName;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
     }
 }

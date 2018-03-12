@@ -451,6 +451,7 @@
     <Compile Include="Account\Services\BrandSP.cs" />
     <Compile Include="Account\Services\BudgetDetailsSP.cs" />
     <Compile Include="Account\Services\BudgetMasterSP.cs" />
+    <Compile Include="Account\Services\CompanyPathSP.cs" />
     <Compile Include="Account\Services\CompanySP.cs" />
     <Compile Include="Account\Services\CreditNoteDetailsSP.cs" />
     <Compile Include="Account\Services\CreditNoteMasterSP.cs" />
@@ -514,6 +515,7 @@
     <Compile Include="Account\Services\TransactionsGeneralFill.cs" />
     <Compile Include="Account\Services\UnitConvertionSP.cs" />
     <Compile Include="Account\Services\UnitSP.cs" />
+    <Compile Include="Account\Services\UserSP.cs" />
     <Compile Include="Account\Services\VoucherTypeSP.cs" />
     <Compile Include="Account\Settings\frmSettings.cs">
       <SubType>Form</SubType>
@@ -809,6 +811,9 @@
     <Compile Include="DataSet\BonusDeduction.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\BonusDeductionSearch_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\Brand.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -849,6 +854,12 @@
     <Compile Include="DataSet\Company.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\CompanyPath.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\CompanyPathView_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\CompanyViewAll_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -885,6 +896,9 @@
     <Compile Include="DataSet\CurrencySearch_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\CurrencyViewAllForCombo_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\Customer.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -904,6 +918,15 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\CustomerWorker.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\DailyAttendanceDetail.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\DailyAttendanceDetailsSearchGridFill_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\DailyAttendanceMaster.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\DailyDiscontinued.cs">
@@ -939,10 +962,22 @@
     <Compile Include="DataSet\Designation.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\DesignationGridFill_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\DesignationSearch_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\DesignationView_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\DiscountValue.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\DualUse.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\EmployeeViewAll_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\ExchangeRate.cs">
@@ -1003,6 +1038,12 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Hazardou.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\HoildaySettingsViewAllLimited_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\Holiday.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\IME.Context.cs">
@@ -1108,6 +1149,12 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\PayHeadGet_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PayHeadViewAll_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PayHeadView_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\PaymentDetail.cs">
@@ -1372,6 +1419,15 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SalaryPackageDetail.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SalaryPackageDetailsViewWithSalaryPackageId_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SalaryPackageregisterSearch_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SalaryPackageView_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SalaryVoucherDetail.cs">
@@ -1700,9 +1756,19 @@
     <Compile Include="ModulePurchaseInvoice\frmPurchaseInvoiceLoader.Designer.cs">
       <DependentUpon>frmPurchaseInvoiceLoader.cs</DependentUpon>
     </Compile>
+    <Compile Include="nCompany\frmCompanyCreation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nCompany\frmCompanyCreation.designer.cs">
+      <DependentUpon>frmCompanyCreation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs" />
+    <Compile Include="Properties\Resources1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="PurchaseOrder\ExcelPurchaseOrder.cs" />
     <Compile Include="PurchaseOrder\FormBillTo.cs">
       <SubType>Form</SubType>
@@ -2161,7 +2227,13 @@
     <EmbeddedResource Include="ModulePurchaseInvoice\frmPurchaseInvoiceLoader.resx">
       <DependentUpon>frmPurchaseInvoiceLoader.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx" />
+    <EmbeddedResource Include="nCompany\frmCompanyCreation.resx">
+      <DependentUpon>frmCompanyCreation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="PurchaseOrder\FormBillTo.resx">
       <DependentUpon>FormBillTo.cs</DependentUpon>
     </EmbeddedResource>
@@ -2308,6 +2380,7 @@
     <None Include="Resources\button_delete1.png" />
     <None Include="Resources\button_disabled.png" />
     <None Include="Resources\close.png" />
+    <None Include="Resources\button_delete.bmp" />
     <Content Include="Resources\close_icon.jpg" />
     <None Include="Resources\cybrosys_technologies.png" />
     <Content Include="Resources\excel_icon.png" />
