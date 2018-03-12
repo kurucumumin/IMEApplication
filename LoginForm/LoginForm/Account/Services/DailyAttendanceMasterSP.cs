@@ -40,6 +40,7 @@ namespace LoginForm
             try
             {
                 incount=Decimal.Parse(IME.DailyAttendanceAddToMaster(dailyattendancemasterinfo.Date, dailyattendancemasterinfo.Narration).ToString());
+                IME.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -54,6 +55,7 @@ namespace LoginForm
             try
             {
                 IME.DailyAttendanceEditMaster(dailyattendancemasterinfo.DailyAttendanceMasterId, dailyattendancemasterinfo.Date, dailyattendancemasterinfo.Narration);
+                IME.SaveChanges();
             }
             catch (Exception ex)
             {

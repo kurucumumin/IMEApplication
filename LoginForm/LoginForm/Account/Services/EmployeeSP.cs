@@ -238,5 +238,84 @@ namespace LoginForm.Account.Services
             }
             return decEmployee;
         }
+
+        public DataTable EmployeeViewAll()
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+
+            dtbl.Columns.Add("WorkerID");
+            dtbl.Columns.Add("designationId");
+            dtbl.Columns.Add("NameLastName");
+            dtbl.Columns.Add("dob");
+            dtbl.Columns.Add("maritalStatus");
+            dtbl.Columns.Add("gender");
+            dtbl.Columns.Add("qualification");
+            dtbl.Columns.Add("address");
+            dtbl.Columns.Add("mobileNumber");
+            dtbl.Columns.Add("email");
+            dtbl.Columns.Add("terminationDate");
+            dtbl.Columns.Add("isActive");
+            dtbl.Columns.Add("narration");
+            dtbl.Columns.Add("passportNo");
+            dtbl.Columns.Add("bloodGroup");
+            dtbl.Columns.Add("passportExpiryDate");
+            dtbl.Columns.Add("labourCardNumber");
+            dtbl.Columns.Add("labourCardExpiryDate");
+            dtbl.Columns.Add("visaNumber");
+            dtbl.Columns.Add("visaExpiryDate");
+            dtbl.Columns.Add("salaryType");
+            dtbl.Columns.Add("dailyWage");
+            dtbl.Columns.Add("bankName");
+            dtbl.Columns.Add("branchName");
+            dtbl.Columns.Add("bankAccountNumber");
+            dtbl.Columns.Add("branchCode");
+            dtbl.Columns.Add("panNumber");
+            dtbl.Columns.Add("pfNumber");
+            dtbl.Columns.Add("esiNumber");
+            dtbl.Columns.Add("defaultPackageId");
+            dtbl.Columns.Add("dailyWage");
+            foreach (var item in IME.EmployeeViewAll())
+            {
+                var row = dtbl.NewRow();
+
+                row["WorkerID"] = item.WorkerID;
+                row["designationId"] = item.designationId;
+                row["NameLastName"] = item.NameLastName;
+                row["dob"] = item.dob;
+                row["maritalStatus"] = item.maritalStatus;
+                row["gender"] = item.gender;
+                row["qualification"] = item.qualification;
+                row["address"] = item.address;
+                row["mobileNumber"] = item.mobileNumber;
+                row["email"] = item.email;
+                row["terminationDate"] = item.terminationDate;
+                row["isActive"] = item.isActive;
+                row["narration"] = item.narration;
+                row["passportNo"] = item.passportNo;
+                row["bloodGroup"] = item.bloodGroup;
+                row["passportExpiryDate"] = item.passportExpiryDate;
+                row["labourCardNumber"] = item.labourCardNumber;
+                row["labourCardExpiryDate"] = item.labourCardExpiryDate;
+                row["visaNumber"] = item.visaNumber;
+                row["visaExpiryDate"] = item.visaExpiryDate;
+                row["salaryType"] = item.salaryType;
+                row["dailyWage"] = item.dailyWage;
+                row["bankName"] = item.bankName;
+                row["branchName"] = item.branchName;
+                row["bankAccountNumber"] = item.bankAccountNumber;
+                row["branchCode"] = item.branchCode;
+                row["panNumber"] = item.panNumber;
+                row["pfNumber"] = item.pfNumber;
+                row["esiNumber"] = item.esiNumber;
+                row["dailyWage"] = item.dailyWage;
+
+
+                dtbl.Rows.Add(row);
+            }
+
+
+            return dtbl;
+        }
     }
 }
