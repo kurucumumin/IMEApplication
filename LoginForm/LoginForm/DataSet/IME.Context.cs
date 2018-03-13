@@ -1118,7 +1118,6 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BillAllocationAccountGroupFill_Result>("BillAllocationAccountGroupFill");
         }
     
-<<<<<<< HEAD
         public virtual ObjectResult<BillAllocationLedgerFill_Result> BillAllocationLedgerFill(string accountGroupName)
         {
             var accountGroupNameParameter = accountGroupName != null ?
@@ -1128,8 +1127,6 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BillAllocationLedgerFill_Result>("BillAllocationLedgerFill", accountGroupNameParameter);
         }
     
-=======
->>>>>>> cd5e10c41b8d1ad076a69bdd8b867d69898652a1
         public virtual ObjectResult<BillAllocationSearch_Result> BillAllocationSearch(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, string accountGroupName, string ledgerName)
         {
             var fromDateParameter = fromDate.HasValue ?
@@ -1790,6 +1787,15 @@ namespace LoginForm.DataSet
                 new ObjectParameter("date", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("DailyAttendanceMasterMasterIdSearch", dateParameter);
+        }
+    
+        public virtual ObjectResult<DailySalaryVoucherViewFromRegister_Result> DailySalaryVoucherViewFromRegister(Nullable<decimal> dailySalaryVoucherMasterId)
+        {
+            var dailySalaryVoucherMasterIdParameter = dailySalaryVoucherMasterId.HasValue ?
+                new ObjectParameter("dailySalaryVoucherMasterId", dailySalaryVoucherMasterId) :
+                new ObjectParameter("dailySalaryVoucherMasterId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DailySalaryVoucherViewFromRegister_Result>("DailySalaryVoucherViewFromRegister", dailySalaryVoucherMasterIdParameter);
         }
     
         public virtual ObjectResult<DayBook_Result> DayBook(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, Nullable<decimal> voucherTypeId, Nullable<decimal> ledgerId, Nullable<bool> iscondensed)
@@ -2856,8 +2862,6 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MonthlySalaryDetailsEditUsingMasterIdAndDetailsId", monthlySalaryIdParameter, monthlySalaryDetailsIdParameter, employeeIdParameter, salaryPackageIdParameter);
         }
     
-<<<<<<< HEAD
-=======
         public virtual int MonthlySalarySettingsDetailsIdDelete(Nullable<decimal> monthlySalaryDetailsId)
         {
             var monthlySalaryDetailsIdParameter = monthlySalaryDetailsId.HasValue ?
@@ -2867,7 +2871,6 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MonthlySalarySettingsDetailsIdDelete", monthlySalaryDetailsIdParameter);
         }
     
->>>>>>> cd5e10c41b8d1ad076a69bdd8b867d69898652a1
         public virtual int MonthlySalarySettingsEdit(Nullable<decimal> monthlySalaryId, string salaryMonth, string narration)
         {
             var monthlySalaryIdParameter = monthlySalaryId.HasValue ?

@@ -223,6 +223,12 @@
     <Compile Include="Account\PayRoll\frmAdvancePayment.designer.cs">
       <DependentUpon>frmAdvancePayment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\PayRoll\frmAdvanceRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\PayRoll\frmAdvanceRegister.Designer.cs">
+      <DependentUpon>frmAdvanceRegister.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\PayRoll\frmAttendance.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1017,6 +1023,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\DailySalaryVoucherMaster.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\DailySalaryVoucherViewFromRegister_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\DayBookReportPrintCompany_Result.cs">
@@ -2100,6 +2109,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Account\PayRoll\frmAdvancePayment.resx">
       <DependentUpon>frmAdvancePayment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\PayRoll\frmAdvanceRegister.resx">
+      <DependentUpon>frmAdvanceRegister.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Account\PayRoll\frmAttendance.resx">
       <DependentUpon>frmAttendance.cs</DependentUpon>
