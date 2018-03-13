@@ -12,10 +12,7 @@ using LoginForm.Services;
 using LoginForm.Account.Services;
 
 namespace LoginForm
-
-
-{
-   
+{   
     public partial class frmBonusDeductionRegister : Form
     {
         #region Public Variables
