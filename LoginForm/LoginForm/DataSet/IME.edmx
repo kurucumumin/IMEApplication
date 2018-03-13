@@ -6847,6 +6847,9 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Parameter Name="productId" Type="varchar(max)" Mode="In" />
         </Function>
         <Function Name="BillAllocationAccountGroupFill" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="BillAllocationLedgerFill" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="accountGroupName" Type="varchar(max)" Mode="In" />
+        </Function>
         <Function Name="BillAllocationSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="fromDate" Type="datetime" Mode="In" />
           <Parameter Name="toDate" Type="datetime" Mode="In" />
@@ -6883,6 +6886,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
         <Function Name="CheckSalaryAlreadyPaidOrNotForAdvancePayment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="employeeId" Type="decimal" Mode="In" />
           <Parameter Name="month" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="CheckWhetherDailySalaryAlreadyPaid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="employeeId" Type="numeric" Mode="In" />
+          <Parameter Name="salaryDate" Type="date" Mode="In" />
         </Function>
         <Function Name="ChequeReportGridFill" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="fromDate" Type="datetime" Mode="In" />
@@ -7033,6 +7040,73 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
         </Function>
         <Function Name="DailyAttendanceMasterMasterIdSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="date" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="DailySalaryRegisterSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="voucherDateFrom" Type="datetime" Mode="In" />
+          <Parameter Name="voucherDateTo" Type="datetime" Mode="In" />
+          <Parameter Name="salaryDateFrom" Type="datetime" Mode="In" />
+          <Parameter Name="salaryDateTo" Type="datetime" Mode="In" />
+          <Parameter Name="invoiceNo" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="DailySalaryVoucherCheckExistence" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
+          <Parameter Name="dailySalaryVoucherMasterId" Type="numeric" Mode="In" />
+          <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="DailySalaryVoucherDetailsAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dailySalaryVoucherMasterId" Type="numeric" Mode="In" />
+          <Parameter Name="employeeId" Type="numeric" Mode="In" />
+          <Parameter Name="wage" Type="decimal" Mode="In" />
+          <Parameter Name="status" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="DailySalaryVoucherDetailsCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dailySalaryVoucherMasterId" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="DailySalaryVoucherDetailsDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dailySalaryVoucherDetailsId" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="DailySalaryVoucherDetailsDeleteUsingMasterId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dailySalaryVoucherMasterId" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="DailySalaryVoucherDetailsGridViewall" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="salaryDate" Type="datetime" Mode="In" />
+          <Parameter Name="VOucherNoforEdit" Type="numeric" Mode="In" />
+          <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="DailySalaryVoucherMasterAddWithIdentity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ledgerId" Type="numeric" Mode="In" />
+          <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
+          <Parameter Name="invoiceNo" Type="varchar(max)" Mode="In" />
+          <Parameter Name="date" Type="datetime" Mode="In" />
+          <Parameter Name="salaryDate" Type="datetime" Mode="In" />
+          <Parameter Name="totalAmount" Type="decimal" Mode="In" />
+          <Parameter Name="narration" Type="varchar(max)" Mode="In" />
+          <Parameter Name="suffixPrefixId" Type="numeric" Mode="In" />
+          <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
+          <Parameter Name="financialYearId" Type="numeric" Mode="In" />
+          <Parameter Name="isAutomatic" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="DailySalaryVoucherMasterDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dailySalaryVoucherMasterId" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="DailySalaryVoucherMasterEdit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dailySalaryVoucherMasterId" Type="numeric" Mode="In" />
+          <Parameter Name="ledgerId" Type="numeric" Mode="In" />
+          <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
+          <Parameter Name="invoiceNo" Type="varchar(max)" Mode="In" />
+          <Parameter Name="date" Type="datetime" Mode="In" />
+          <Parameter Name="salaryDate" Type="datetime" Mode="In" />
+          <Parameter Name="totalAmount" Type="decimal" Mode="In" />
+          <Parameter Name="narration" Type="varchar(max)" Mode="In" />
+          <Parameter Name="suffixPrefixId" Type="numeric" Mode="In" />
+          <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
+          <Parameter Name="financialYearId" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="DailySalaryVoucherMasterMax" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="DailySalaryVoucherViewFromRegister" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dailySalaryVoucherMasterId" Type="numeric" Mode="In" />
         </Function>
         <Function Name="DayBook" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="fromDate" Type="datetime" Mode="In" />
@@ -7350,6 +7424,14 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Parameter Name="employeeId" Type="numeric" Mode="In" />
           <Parameter Name="salaryPackageId" Type="numeric" Mode="In" />
         </Function>
+        <Function Name="MonthlySalaryRegisterSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dateFrom" Type="datetime" Mode="In" />
+          <Parameter Name="dateTo" Type="datetime" Mode="In" />
+          <Parameter Name="month" Type="datetime" Mode="In" />
+          <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
+          <Parameter Name="ledgerName" Type="varchar(max)" Mode="In" />
+          <Parameter Name="voucherTypeName" Type="varchar(max)" Mode="In" />
+        </Function>
         <Function Name="MonthlySalarySettingsDetailsIdDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="monthlySalaryDetailsId" Type="numeric" Mode="In" />
         </Function>
@@ -7470,6 +7552,21 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Parameter Name="ToDate" Type="datetime" Mode="In" />
           <Parameter Name="ledgerId" Type="varchar" Mode="In" />
           <Parameter Name="voucherNo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PaySlipPrinting" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="WorkerId" Type="numeric" Mode="In" />
+          <Parameter Name="salaryMonth" Type="datetime" Mode="In" />
+          <Parameter Name="companyId" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="PaySlipPrinting_2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="WorkerId" Type="numeric" Mode="In" />
+          <Parameter Name="salaryMonth" Type="datetime" Mode="In" />
+          <Parameter Name="companyId" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="PaySlipPrinting_3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="WorkerId" Type="numeric" Mode="In" />
+          <Parameter Name="salaryMonth" Type="datetime" Mode="In" />
+          <Parameter Name="companyId" Type="numeric" Mode="In" />
         </Function>
         <Function Name="PDCClearanceFillDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="voucherTypeName" Type="varchar(max)" Mode="In" />
@@ -7607,6 +7704,24 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
         <Function Name="ProfitAndLossAnalysisUpToaDateForBalansheetSalesAcount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="fromDate" Type="datetime" Mode="In" />
           <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="ProfitAndLossAnalysisUpToaDateForPreviousYearsDirectExpenses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="ProfitAndLossAnalysisUpToaDateForPreviousYearsDirectIncome" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="ProfitAndLossAnalysisUpToaDateForPreviousYearsIndirectExpenses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="ProfitAndLossAnalysisUpToaDateForPreviousYearsIndirectIncome" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="ProfitAndLossAnalysisUpToaDateForPreviousYearsPurchaseAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="ProfitAndLossAnalysisUpToaDateForPreviousYearsSalesAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
         </Function>
         <Function Name="ProfitAndLossReportPrintCompany" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="companyId" Type="numeric" Mode="In" />
@@ -7959,6 +8074,9 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Parameter Name="salaryPackageId" Type="numeric" Mode="In" />
         </Function>
         <Function Name="SalaryPackageViewAllForMonthlySalarySettings" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SalaryVoucherMasterMax" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
+        </Function>
         <Function Name="SaleMasterGetPos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="salemasterId" Type="numeric" Mode="In" />
           <Parameter Name="voucherName" Type="varchar(max)" Mode="In" />
@@ -8595,6 +8713,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Parameter Name="salesMasterId" Type="numeric" Mode="In" />
           <Parameter Name="voucherTypeName" Type="varchar(max)" Mode="In" />
         </Function>
+        <Function Name="VoucherTypeNameComboFill" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="VoucherTypeNameComboFillAdvanceRegister" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="VoucherTypeNameCorrespondingToTypeOfVoucher" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="typeOfVoucher" Type="varchar(max)" Mode="In" />
@@ -19262,6 +19381,9 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <Parameter Name="productId" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="BillAllocationAccountGroupFill" ReturnType="Collection(IMEModel.BillAllocationAccountGroupFill_Result)" />
+          <FunctionImport Name="BillAllocationLedgerFill" ReturnType="Collection(IMEModel.BillAllocationLedgerFill_Result)">
+            <Parameter Name="accountGroupName" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="BillAllocationSearch" ReturnType="Collection(IMEModel.BillAllocationSearch_Result)">
             <Parameter Name="fromDate" Mode="In" Type="DateTime" />
             <Parameter Name="toDate" Mode="In" Type="DateTime" />
@@ -19298,6 +19420,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <FunctionImport Name="CheckSalaryAlreadyPaidOrNotForAdvancePayment" ReturnType="Collection(String)">
             <Parameter Name="employeeId" Mode="In" Type="Decimal" />
             <Parameter Name="month" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="CheckWhetherDailySalaryAlreadyPaid" ReturnType="Collection(String)">
+            <Parameter Name="employeeId" Mode="In" Type="Decimal" />
+            <Parameter Name="salaryDate" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="ChequeReportGridFill" ReturnType="Collection(IMEModel.ChequeReportGridFill_Result)">
             <Parameter Name="fromDate" Mode="In" Type="DateTime" />
@@ -19448,6 +19574,73 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           </FunctionImport>
           <FunctionImport Name="DailyAttendanceMasterMasterIdSearch" ReturnType="Collection(Decimal)">
             <Parameter Name="date" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DailySalaryRegisterSearch" ReturnType="Collection(IMEModel.DailySalaryRegisterSearch_Result)">
+            <Parameter Name="voucherDateFrom" Mode="In" Type="DateTime" />
+            <Parameter Name="voucherDateTo" Mode="In" Type="DateTime" />
+            <Parameter Name="salaryDateFrom" Mode="In" Type="DateTime" />
+            <Parameter Name="salaryDateTo" Mode="In" Type="DateTime" />
+            <Parameter Name="invoiceNo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DailySalaryVoucherCheckExistence" ReturnType="Collection(Int32)">
+            <Parameter Name="voucherNo" Mode="In" Type="String" />
+            <Parameter Name="dailySalaryVoucherMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="DailySalaryVoucherDetailsAdd">
+            <Parameter Name="dailySalaryVoucherMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="employeeId" Mode="In" Type="Decimal" />
+            <Parameter Name="wage" Mode="In" Type="Decimal" />
+            <Parameter Name="status" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DailySalaryVoucherDetailsCount" ReturnType="Collection(Int32)">
+            <Parameter Name="dailySalaryVoucherMasterId" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="DailySalaryVoucherDetailsDelete">
+            <Parameter Name="dailySalaryVoucherDetailsId" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="DailySalaryVoucherDetailsDeleteUsingMasterId">
+            <Parameter Name="dailySalaryVoucherMasterId" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="DailySalaryVoucherDetailsGridViewall" ReturnType="Collection(IMEModel.DailySalaryVoucherDetailsGridViewall_Result)">
+            <Parameter Name="salaryDate" Mode="In" Type="DateTime" />
+            <Parameter Name="VOucherNoforEdit" Mode="In" Type="Decimal" />
+            <Parameter Name="voucherNo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DailySalaryVoucherMasterAddWithIdentity" ReturnType="Collection(IMEModel.DailySalaryVoucherMasterAddWithIdentity_Result)">
+            <Parameter Name="ledgerId" Mode="In" Type="Decimal" />
+            <Parameter Name="voucherNo" Mode="In" Type="String" />
+            <Parameter Name="invoiceNo" Mode="In" Type="String" />
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="salaryDate" Mode="In" Type="DateTime" />
+            <Parameter Name="totalAmount" Mode="In" Type="Decimal" />
+            <Parameter Name="narration" Mode="In" Type="String" />
+            <Parameter Name="suffixPrefixId" Mode="In" Type="Decimal" />
+            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
+            <Parameter Name="financialYearId" Mode="In" Type="Decimal" />
+            <Parameter Name="isAutomatic" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="DailySalaryVoucherMasterDelete">
+            <Parameter Name="dailySalaryVoucherMasterId" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="DailySalaryVoucherMasterEdit">
+            <Parameter Name="dailySalaryVoucherMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="ledgerId" Mode="In" Type="Decimal" />
+            <Parameter Name="voucherNo" Mode="In" Type="String" />
+            <Parameter Name="invoiceNo" Mode="In" Type="String" />
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="salaryDate" Mode="In" Type="DateTime" />
+            <Parameter Name="totalAmount" Mode="In" Type="Decimal" />
+            <Parameter Name="narration" Mode="In" Type="String" />
+            <Parameter Name="suffixPrefixId" Mode="In" Type="Decimal" />
+            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
+            <Parameter Name="financialYearId" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="DailySalaryVoucherMasterMax" ReturnType="Collection(Decimal)">
+            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="DailySalaryVoucherViewFromRegister" ReturnType="Collection(IMEModel.DailySalaryVoucherViewFromRegister_Result)">
+            <Parameter Name="dailySalaryVoucherMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="DayBook" ReturnType="Collection(IMEModel.DayBook_Result)">
             <Parameter Name="fromDate" Mode="In" Type="DateTime" />
@@ -19754,6 +19947,14 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <Parameter Name="employeeId" Mode="In" Type="Decimal" />
             <Parameter Name="salaryPackageId" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="MonthlySalaryRegisterSearch" ReturnType="Collection(IMEModel.MonthlySalaryRegisterSearch_Result)">
+            <Parameter Name="dateFrom" Mode="In" Type="DateTime" />
+            <Parameter Name="dateTo" Mode="In" Type="DateTime" />
+            <Parameter Name="month" Mode="In" Type="DateTime" />
+            <Parameter Name="voucherNo" Mode="In" Type="String" />
+            <Parameter Name="ledgerName" Mode="In" Type="String" />
+            <Parameter Name="voucherTypeName" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="MonthlySalarySettingsDetailsIdDelete">
             <Parameter Name="monthlySalaryDetailsId" Mode="In" Type="Decimal" />
           </FunctionImport>
@@ -19874,6 +20075,21 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <Parameter Name="ToDate" Mode="In" Type="DateTime" />
             <Parameter Name="ledgerId" Mode="In" Type="String" />
             <Parameter Name="voucherNo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PaySlipPrinting" ReturnType="Collection(IMEModel.PaySlipPrinting_Result)">
+            <Parameter Name="WorkerId" Mode="In" Type="Decimal" />
+            <Parameter Name="salaryMonth" Mode="In" Type="DateTime" />
+            <Parameter Name="companyId" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="PaySlipPrinting_2" ReturnType="Collection(IMEModel.PaySlipPrinting_2_Result)">
+            <Parameter Name="WorkerId" Mode="In" Type="Decimal" />
+            <Parameter Name="salaryMonth" Mode="In" Type="DateTime" />
+            <Parameter Name="companyId" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="PaySlipPrinting_3" ReturnType="Collection(IMEModel.PaySlipPrinting_3_Result)">
+            <Parameter Name="WorkerId" Mode="In" Type="Decimal" />
+            <Parameter Name="salaryMonth" Mode="In" Type="DateTime" />
+            <Parameter Name="companyId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="PDCClearanceFillDetails" ReturnType="Collection(IMEModel.PDCClearanceFillDetails_Result)">
             <Parameter Name="voucherTypeName" Mode="In" Type="String" />
@@ -20011,6 +20227,24 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <FunctionImport Name="ProfitAndLossAnalysisUpToaDateForBalansheetSalesAcount" ReturnType="Collection(IMEModel.ProfitAndLossAnalysisUpToaDateForBalansheetSalesAcount_Result)">
             <Parameter Name="fromDate" Mode="In" Type="DateTime" />
             <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="ProfitAndLossAnalysisUpToaDateForPreviousYearsDirectExpenses" ReturnType="Collection(IMEModel.ProfitAndLossAnalysisUpToaDateForPreviousYearsDirectExpenses_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="ProfitAndLossAnalysisUpToaDateForPreviousYearsDirectIncome" ReturnType="Collection(IMEModel.ProfitAndLossAnalysisUpToaDateForPreviousYearsDirectIncome_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="ProfitAndLossAnalysisUpToaDateForPreviousYearsIndirectExpenses" ReturnType="Collection(IMEModel.ProfitAndLossAnalysisUpToaDateForPreviousYearsIndirectExpenses_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="ProfitAndLossAnalysisUpToaDateForPreviousYearsIndirectIncome" ReturnType="Collection(IMEModel.ProfitAndLossAnalysisUpToaDateForPreviousYearsIndirectIncome_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="ProfitAndLossAnalysisUpToaDateForPreviousYearsPurchaseAccount" ReturnType="Collection(IMEModel.ProfitAndLossAnalysisUpToaDateForPreviousYearsPurchaseAccount_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="ProfitAndLossAnalysisUpToaDateForPreviousYearsSalesAccount" ReturnType="Collection(IMEModel.ProfitAndLossAnalysisUpToaDateForPreviousYearsSalesAccount_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="ProfitAndLossReportPrintCompany" ReturnType="Collection(IMEModel.ProfitAndLossReportPrintCompany_Result)">
             <Parameter Name="companyId" Mode="In" Type="Decimal" />
@@ -20363,6 +20597,9 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <Parameter Name="salaryPackageId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SalaryPackageViewAllForMonthlySalarySettings" ReturnType="Collection(IMEModel.SalaryPackageViewAllForMonthlySalarySettings_Result)" />
+          <FunctionImport Name="SalaryVoucherMasterMax" ReturnType="Collection(Decimal)">
+            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
+          </FunctionImport>
           <FunctionImport Name="SaleMasterGetPos" ReturnType="Collection(String)">
             <Parameter Name="salemasterId" Mode="In" Type="Decimal" />
             <Parameter Name="voucherName" Mode="In" Type="String" />
@@ -20993,6 +21230,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <Parameter Name="salesMasterId" Mode="In" Type="Decimal" />
             <Parameter Name="voucherTypeName" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="VoucherTypeNameComboFill" ReturnType="Collection(IMEModel.VoucherTypeNameComboFill_Result)" />
           <FunctionImport Name="VoucherTypeNameComboFillAdvanceRegister" ReturnType="Collection(IMEModel.VoucherTypeNameComboFillAdvanceRegister_Result)" />
           <FunctionImport Name="VoucherTypeNameCorrespondingToTypeOfVoucher" ReturnType="Collection(IMEModel.VoucherTypeNameCorrespondingToTypeOfVoucher_Result)">
             <Parameter Name="typeOfVoucher" Mode="In" Type="String" />
@@ -21362,6 +21600,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="Int32" Name="accountGroupId" Nullable="false" />
           <Property Type="String" Name="accountGroupName" Nullable="true" MaxLength="50" />
         </ComplexType>
+        <ComplexType Name="BillAllocationLedgerFill_Result">
+          <Property Type="String" Name="ledgerName" Nullable="true" />
+          <Property Type="Decimal" Name="ledgerId" Nullable="false" Precision="18" Scale="0" />
+        </ComplexType>
         <ComplexType Name="BillAllocationSearch_Result">
           <Property Type="String" Name="ledgerName" Nullable="true" />
           <Property Type="String" Name="date" Nullable="true" MaxLength="8000" />
@@ -21510,6 +21752,40 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="String" Name="status" Nullable="true" />
           <Property Type="String" Name="narration" Nullable="true" />
           <Property Type="String" Name="MasterNarration" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="DailySalaryRegisterSearch_Result">
+          <Property Type="String" Name="date" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="voucherTypeName" Nullable="true" />
+          <Property Type="String" Name="invoiceNo" Nullable="true" />
+          <Property Type="String" Name="salaryDate" Nullable="true" MaxLength="20" />
+          <Property Type="Decimal" Name="dailySalaryVoucherMasterId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="ledgerId" Nullable="true" Precision="18" Scale="0" />
+        </ComplexType>
+        <ComplexType Name="DailySalaryVoucherDetailsGridViewall_Result">
+          <Property Type="Int32" Name="WorkerID" Nullable="false" />
+          <Property Type="String" Name="NameLastName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="25" />
+          <Property Type="Decimal" Name="dailyWage" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="attendance" Nullable="true" />
+          <Property Type="String" Name="status" Nullable="true" />
+          <Property Type="Decimal" Name="DetailsId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="MasterId" Nullable="true" Precision="18" Scale="0" />
+        </ComplexType>
+        <ComplexType Name="DailySalaryVoucherMasterAddWithIdentity_Result">
+          <Property Type="Decimal" Name="Identity" Nullable="true" Precision="38" Scale="0" />
+          <Property Type="String" Name="UpdatedVoucherNo" Nullable="true" />
+          <Property Type="String" Name="UpdatedInvoiceNo" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="DailySalaryVoucherViewFromRegister_Result">
+          <Property Type="DateTime" Name="date" Nullable="true" Precision="23" />
+          <Property Type="String" Name="voucherNo" Nullable="true" />
+          <Property Type="DateTime" Name="salaryDate" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="ledgerId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="totalAmount" Nullable="true" Precision="18" Scale="5" />
+          <Property Type="String" Name="narration" Nullable="true" />
+          <Property Type="String" Name="invoiceNo" Nullable="true" />
+          <Property Type="Decimal" Name="voucherTypeId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="suffixPrefixId" Nullable="true" Precision="18" Scale="0" />
         </ComplexType>
         <ComplexType Name="DayBook_Result">
           <Property Type="String" Name="Date" Nullable="true" MaxLength="20" />
@@ -21745,6 +22021,18 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="Decimal" Name="currencyId" Nullable="true" Precision="18" Scale="0" />
           <Property Type="String" Name="Refer" Nullable="true" MaxLength="1" />
         </ComplexType>
+        <ComplexType Name="MonthlySalaryRegisterSearch_Result">
+          <Property Type="Decimal" Name="salaryVoucherMasterId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="ledgerId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="voucherTypeName" Nullable="true" />
+          <Property Type="String" Name="voucherNo" Nullable="true" />
+          <Property Type="String" Name="invoiceNo" Nullable="true" />
+          <Property Type="String" Name="date" Nullable="true" />
+          <Property Type="String" Name="month" Nullable="true" MaxLength="61" />
+          <Property Type="String" Name="ledgerName" Nullable="true" />
+          <Property Type="Decimal" Name="amount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="financialYearId" Nullable="true" Precision="18" Scale="0" />
+        </ComplexType>
         <ComplexType Name="MonthlySalarySettingsEmployeeViewAll_Result">
           <Property Type="Int32" Name="WorkerId" Nullable="false" />
           <Property Type="String" Name="NameLastName" Nullable="false" MaxLength="50" />
@@ -21858,6 +22146,48 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="String" Name="ledgerName" Nullable="true" />
           <Property Type="String" Name="narration" Nullable="true" />
           <Property Type="Decimal" Name="voucherTypeId" Nullable="true" Precision="18" Scale="0" />
+        </ComplexType>
+        <ComplexType Name="PaySlipPrinting_Result">
+          <Property Type="Decimal" Name="companyId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="companyName" Nullable="true" />
+          <Property Type="String" Name="mailingName" Nullable="true" />
+          <Property Type="String" Name="address" Nullable="true" />
+          <Property Type="String" Name="phone" Nullable="true" />
+          <Property Type="String" Name="mobile" Nullable="true" />
+          <Property Type="String" Name="email" Nullable="true" />
+          <Property Type="String" Name="web" Nullable="true" />
+          <Property Type="String" Name="country" Nullable="true" />
+          <Property Type="String" Name="state" Nullable="true" />
+          <Property Type="String" Name="pin" Nullable="true" />
+          <Property Type="Decimal" Name="currencyId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="tin" Nullable="true" />
+          <Property Type="String" Name="cst" Nullable="true" />
+          <Property Type="String" Name="pan" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="PaySlipPrinting_2_Result">
+          <Property Type="Int32" Name="WorkerId" Nullable="false" />
+          <Property Type="String" Name="NameLastName" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="designationId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="designationName" Nullable="true" />
+          <Property Type="Decimal" Name="leaveDays" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="Month" Nullable="true" MaxLength="8000" />
+          <Property Type="String" Name="Date" Nullable="true" MaxLength="8000" />
+          <Property Type="Decimal" Name="payHeadId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="ADDpayheadName" Nullable="true" />
+          <Property Type="Decimal" Name="ADDamount" Nullable="true" Precision="18" Scale="5" />
+          <Property Type="String" Name="DEDpayheadName" Nullable="true" />
+          <Property Type="Decimal" Name="DEDamount" Nullable="true" Precision="18" Scale="5" />
+          <Property Type="Decimal" Name="Advance" Nullable="true" Precision="24" Scale="2" />
+          <Property Type="Decimal" Name="Bonus" Nullable="true" Precision="18" Scale="5" />
+          <Property Type="Decimal" Name="Deduction" Nullable="true" Precision="18" Scale="5" />
+          <Property Type="Decimal" Name="LOP" Nullable="true" Precision="18" Scale="5" />
+          <Property Type="Decimal" Name="Salary" Nullable="true" Precision="18" Scale="5" />
+        </ComplexType>
+        <ComplexType Name="PaySlipPrinting_3_Result">
+          <Property Type="Int32" Name="WorkerId" Nullable="false" />
+          <Property Type="Int32" Name="WorkingDay" Nullable="true" />
+          <Property Type="Decimal" Name="LeaveDays" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="PresentDays" Nullable="true" Precision="13" Scale="1" />
         </ComplexType>
         <ComplexType Name="PDCClearanceFillDetails_Result">
           <Property Type="String" Name="voucherTypeName" Nullable="true" />
@@ -22063,6 +22393,36 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="Decimal" Name="Debit" Nullable="true" Precision="38" Scale="2" />
         </ComplexType>
         <ComplexType Name="ProfitAndLossAnalysisUpToaDateForBalansheetSalesAcount_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Credit" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="ProfitAndLossAnalysisUpToaDateForPreviousYearsDirectExpenses_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Debit" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="ProfitAndLossAnalysisUpToaDateForPreviousYearsDirectIncome_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Credit" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="ProfitAndLossAnalysisUpToaDateForPreviousYearsIndirectExpenses_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Debit" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="ProfitAndLossAnalysisUpToaDateForPreviousYearsIndirectIncome_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Credit" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="ProfitAndLossAnalysisUpToaDateForPreviousYearsPurchaseAccount_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Debit" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="ProfitAndLossAnalysisUpToaDateForPreviousYearsSalesAccount_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
           <Property Type="Decimal" Name="Credit" Nullable="true" Precision="38" Scale="2" />
@@ -22756,6 +23116,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="Decimal" Name="unitconversionId" Nullable="false" Precision="18" Scale="0" />
           <Property Type="Decimal" Name="conversionRate" Nullable="true" Precision="18" Scale="5" />
           <Property Type="String" Name="defaulunitId" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="VoucherTypeNameComboFill_Result">
+          <Property Type="Decimal" Name="voucherTypeId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="voucherTypeName" Nullable="true" />
         </ComplexType>
         <ComplexType Name="VoucherTypeNameComboFillAdvanceRegister_Result">
           <Property Type="Decimal" Name="voucherTypeId" Nullable="false" Precision="18" Scale="0" />
@@ -25743,6 +26107,14 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="BillAllocationLedgerFill" FunctionName="IMEModel.Store.BillAllocationLedgerFill">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.BillAllocationLedgerFill_Result">
+                <ScalarProperty Name="ledgerName" ColumnName="ledgerName" />
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="BillAllocationSearch" FunctionName="IMEModel.Store.BillAllocationSearch">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.BillAllocationSearch_Result">
@@ -25831,6 +26203,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <FunctionImportMapping FunctionImportName="CheckForDefaultVoucherType" FunctionName="IMEModel.Store.CheckForDefaultVoucherType" />
           <FunctionImportMapping FunctionImportName="CheckSalaryAlreadyPaidOrNot" FunctionName="IMEModel.Store.CheckSalaryAlreadyPaidOrNot" />
           <FunctionImportMapping FunctionImportName="CheckSalaryAlreadyPaidOrNotForAdvancePayment" FunctionName="IMEModel.Store.CheckSalaryAlreadyPaidOrNotForAdvancePayment" />
+          <FunctionImportMapping FunctionImportName="CheckWhetherDailySalaryAlreadyPaid" FunctionName="IMEModel.Store.CheckWhetherDailySalaryAlreadyPaid" />
           <FunctionImportMapping FunctionImportName="ChequeReportGridFill" FunctionName="IMEModel.Store.ChequeReportGridFill">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.ChequeReportGridFill_Result">
@@ -25981,6 +26354,64 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="DailyAttendanceEditMaster" FunctionName="IMEModel.Store.DailyAttendanceEditMaster" />
           <FunctionImportMapping FunctionImportName="DailyAttendanceMasterMasterIdSearch" FunctionName="IMEModel.Store.DailyAttendanceMasterMasterIdSearch" />
+          <FunctionImportMapping FunctionImportName="DailySalaryRegisterSearch" FunctionName="IMEModel.Store.DailySalaryRegisterSearch">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.DailySalaryRegisterSearch_Result">
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="voucherTypeName" ColumnName="voucherTypeName" />
+                <ScalarProperty Name="invoiceNo" ColumnName="invoiceNo" />
+                <ScalarProperty Name="salaryDate" ColumnName="salaryDate" />
+                <ScalarProperty Name="dailySalaryVoucherMasterId" ColumnName="dailySalaryVoucherMasterId" />
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DailySalaryVoucherCheckExistence" FunctionName="IMEModel.Store.DailySalaryVoucherCheckExistence" />
+          <FunctionImportMapping FunctionImportName="DailySalaryVoucherDetailsAdd" FunctionName="IMEModel.Store.DailySalaryVoucherDetailsAdd" />
+          <FunctionImportMapping FunctionImportName="DailySalaryVoucherDetailsCount" FunctionName="IMEModel.Store.DailySalaryVoucherDetailsCount" />
+          <FunctionImportMapping FunctionImportName="DailySalaryVoucherDetailsDelete" FunctionName="IMEModel.Store.DailySalaryVoucherDetailsDelete" />
+          <FunctionImportMapping FunctionImportName="DailySalaryVoucherDetailsDeleteUsingMasterId" FunctionName="IMEModel.Store.DailySalaryVoucherDetailsDeleteUsingMasterId" />
+          <FunctionImportMapping FunctionImportName="DailySalaryVoucherDetailsGridViewall" FunctionName="IMEModel.Store.DailySalaryVoucherDetailsGridViewall">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.DailySalaryVoucherDetailsGridViewall_Result">
+                <ScalarProperty Name="WorkerID" ColumnName="WorkerID" />
+                <ScalarProperty Name="NameLastName" ColumnName="NameLastName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="dailyWage" ColumnName="dailyWage" />
+                <ScalarProperty Name="attendance" ColumnName="attendance" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="DetailsId" ColumnName="DetailsId" />
+                <ScalarProperty Name="MasterId" ColumnName="MasterId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DailySalaryVoucherMasterAddWithIdentity" FunctionName="IMEModel.Store.DailySalaryVoucherMasterAddWithIdentity">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.DailySalaryVoucherMasterAddWithIdentity_Result">
+                <ScalarProperty Name="Identity" ColumnName="Identity" />
+                <ScalarProperty Name="UpdatedVoucherNo" ColumnName="UpdatedVoucherNo" />
+                <ScalarProperty Name="UpdatedInvoiceNo" ColumnName="UpdatedInvoiceNo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DailySalaryVoucherMasterDelete" FunctionName="IMEModel.Store.DailySalaryVoucherMasterDelete" />
+          <FunctionImportMapping FunctionImportName="DailySalaryVoucherMasterEdit" FunctionName="IMEModel.Store.DailySalaryVoucherMasterEdit" />
+          <FunctionImportMapping FunctionImportName="DailySalaryVoucherMasterMax" FunctionName="IMEModel.Store.DailySalaryVoucherMasterMax" />
+          <FunctionImportMapping FunctionImportName="DailySalaryVoucherViewFromRegister" FunctionName="IMEModel.Store.DailySalaryVoucherViewFromRegister">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.DailySalaryVoucherViewFromRegister_Result">
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="voucherNo" ColumnName="voucherNo" />
+                <ScalarProperty Name="salaryDate" ColumnName="salaryDate" />
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+                <ScalarProperty Name="totalAmount" ColumnName="totalAmount" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+                <ScalarProperty Name="invoiceNo" ColumnName="invoiceNo" />
+                <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
+                <ScalarProperty Name="suffixPrefixId" ColumnName="suffixPrefixId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="DayBook" FunctionName="IMEModel.Store.DayBook">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.DayBook_Result">
@@ -26362,6 +26793,22 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <FunctionImportMapping FunctionImportName="MonthlySalaryDeleteAll" FunctionName="IMEModel.Store.MonthlySalaryDeleteAll" />
           <FunctionImportMapping FunctionImportName="MonthlySalaryDetailsAddWithMonthlySalaryId" FunctionName="IMEModel.Store.MonthlySalaryDetailsAddWithMonthlySalaryId" />
           <FunctionImportMapping FunctionImportName="MonthlySalaryDetailsEditUsingMasterIdAndDetailsId" FunctionName="IMEModel.Store.MonthlySalaryDetailsEditUsingMasterIdAndDetailsId" />
+          <FunctionImportMapping FunctionImportName="MonthlySalaryRegisterSearch" FunctionName="IMEModel.Store.MonthlySalaryRegisterSearch">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.MonthlySalaryRegisterSearch_Result">
+                <ScalarProperty Name="salaryVoucherMasterId" ColumnName="salaryVoucherMasterId" />
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+                <ScalarProperty Name="voucherTypeName" ColumnName="voucherTypeName" />
+                <ScalarProperty Name="voucherNo" ColumnName="voucherNo" />
+                <ScalarProperty Name="invoiceNo" ColumnName="invoiceNo" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="month" ColumnName="month" />
+                <ScalarProperty Name="ledgerName" ColumnName="ledgerName" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="financialYearId" ColumnName="financialYearId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="MonthlySalarySettingsDetailsIdDelete" FunctionName="IMEModel.Store.MonthlySalarySettingsDetailsIdDelete" />
           <FunctionImportMapping FunctionImportName="MonthlySalarySettingsEdit" FunctionName="IMEModel.Store.MonthlySalarySettingsEdit" />
           <FunctionImportMapping FunctionImportName="MonthlySalarySettingsEmployeeViewAll" FunctionName="IMEModel.Store.MonthlySalarySettingsEmployeeViewAll">
@@ -26543,6 +26990,60 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="ledgerName" ColumnName="ledgerName" />
                 <ScalarProperty Name="narration" ColumnName="narration" />
                 <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PaySlipPrinting" FunctionName="IMEModel.Store.PaySlipPrinting">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.PaySlipPrinting_Result">
+                <ScalarProperty Name="companyId" ColumnName="companyId" />
+                <ScalarProperty Name="companyName" ColumnName="companyName" />
+                <ScalarProperty Name="mailingName" ColumnName="mailingName" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="web" ColumnName="web" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="pin" ColumnName="pin" />
+                <ScalarProperty Name="currencyId" ColumnName="currencyId" />
+                <ScalarProperty Name="tin" ColumnName="tin" />
+                <ScalarProperty Name="cst" ColumnName="cst" />
+                <ScalarProperty Name="pan" ColumnName="pan" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PaySlipPrinting_2" FunctionName="IMEModel.Store.PaySlipPrinting_2">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.PaySlipPrinting_2_Result">
+                <ScalarProperty Name="WorkerId" ColumnName="WorkerId" />
+                <ScalarProperty Name="NameLastName" ColumnName="NameLastName" />
+                <ScalarProperty Name="designationId" ColumnName="designationId" />
+                <ScalarProperty Name="designationName" ColumnName="designationName" />
+                <ScalarProperty Name="leaveDays" ColumnName="leaveDays" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="payHeadId" ColumnName="payHeadId" />
+                <ScalarProperty Name="ADDpayheadName" ColumnName="ADDpayheadName" />
+                <ScalarProperty Name="ADDamount" ColumnName="ADDamount" />
+                <ScalarProperty Name="DEDpayheadName" ColumnName="DEDpayheadName" />
+                <ScalarProperty Name="DEDamount" ColumnName="DEDamount" />
+                <ScalarProperty Name="Advance" ColumnName="Advance" />
+                <ScalarProperty Name="Bonus" ColumnName="Bonus" />
+                <ScalarProperty Name="Deduction" ColumnName="Deduction" />
+                <ScalarProperty Name="LOP" ColumnName="LOP" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PaySlipPrinting_3" FunctionName="IMEModel.Store.PaySlipPrinting_3">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.PaySlipPrinting_3_Result">
+                <ScalarProperty Name="WorkerId" ColumnName="WorkerId" />
+                <ScalarProperty Name="WorkingDay" ColumnName="WorkingDay" />
+                <ScalarProperty Name="LeaveDays" ColumnName="LeaveDays" />
+                <ScalarProperty Name="PresentDays" ColumnName="PresentDays" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -26867,6 +27368,60 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <FunctionImportMapping FunctionImportName="ProfitAndLossAnalysisUpToaDateForBalansheetSalesAcount" FunctionName="IMEModel.Store.ProfitAndLossAnalysisUpToaDateForBalansheetSalesAcount">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.ProfitAndLossAnalysisUpToaDateForBalansheetSalesAcount_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProfitAndLossAnalysisUpToaDateForPreviousYearsDirectExpenses" FunctionName="IMEModel.Store.ProfitAndLossAnalysisUpToaDateForPreviousYearsDirectExpenses">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.ProfitAndLossAnalysisUpToaDateForPreviousYearsDirectExpenses_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Debit" ColumnName="Debit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProfitAndLossAnalysisUpToaDateForPreviousYearsDirectIncome" FunctionName="IMEModel.Store.ProfitAndLossAnalysisUpToaDateForPreviousYearsDirectIncome">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.ProfitAndLossAnalysisUpToaDateForPreviousYearsDirectIncome_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProfitAndLossAnalysisUpToaDateForPreviousYearsIndirectExpenses" FunctionName="IMEModel.Store.ProfitAndLossAnalysisUpToaDateForPreviousYearsIndirectExpenses">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.ProfitAndLossAnalysisUpToaDateForPreviousYearsIndirectExpenses_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Debit" ColumnName="Debit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProfitAndLossAnalysisUpToaDateForPreviousYearsIndirectIncome" FunctionName="IMEModel.Store.ProfitAndLossAnalysisUpToaDateForPreviousYearsIndirectIncome">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.ProfitAndLossAnalysisUpToaDateForPreviousYearsIndirectIncome_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProfitAndLossAnalysisUpToaDateForPreviousYearsPurchaseAccount" FunctionName="IMEModel.Store.ProfitAndLossAnalysisUpToaDateForPreviousYearsPurchaseAccount">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.ProfitAndLossAnalysisUpToaDateForPreviousYearsPurchaseAccount_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Debit" ColumnName="Debit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProfitAndLossAnalysisUpToaDateForPreviousYearsSalesAccount" FunctionName="IMEModel.Store.ProfitAndLossAnalysisUpToaDateForPreviousYearsSalesAccount">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.ProfitAndLossAnalysisUpToaDateForPreviousYearsSalesAccount_Result">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Credit" ColumnName="Credit" />
@@ -27285,6 +27840,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SalaryVoucherMasterMax" FunctionName="IMEModel.Store.SalaryVoucherMasterMax" />
           <FunctionImportMapping FunctionImportName="SaleMasterGetPos" FunctionName="IMEModel.Store.SaleMasterGetPos" />
           <FunctionImportMapping FunctionImportName="SalesAccountComboFill" FunctionName="IMEModel.Store.SalesAccountComboFill">
             <ResultMapping>
@@ -27910,6 +28466,14 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <FunctionImportMapping FunctionImportName="VatViewTaxNames" FunctionName="IMEModel.Store.VatViewTaxNames" />
           <FunctionImportMapping FunctionImportName="VoucherNumberAutomaicGeneration" FunctionName="IMEModel.Store.VoucherNumberAutomaicGeneration" />
           <FunctionImportMapping FunctionImportName="VoucherreportsumQty" FunctionName="IMEModel.Store.VoucherreportsumQty" />
+          <FunctionImportMapping FunctionImportName="VoucherTypeNameComboFill" FunctionName="IMEModel.Store.VoucherTypeNameComboFill">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.VoucherTypeNameComboFill_Result">
+                <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
+                <ScalarProperty Name="voucherTypeName" ColumnName="voucherTypeName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="VoucherTypeNameComboFillAdvanceRegister" FunctionName="IMEModel.Store.VoucherTypeNameComboFillAdvanceRegister">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.VoucherTypeNameComboFillAdvanceRegister_Result">

@@ -223,6 +223,12 @@
     <Compile Include="Account\PayRoll\frmAdvancePayment.designer.cs">
       <DependentUpon>frmAdvancePayment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\PayRoll\frmAdvanceRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\PayRoll\frmAdvanceRegister.Designer.cs">
+      <DependentUpon>frmAdvanceRegister.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\PayRoll\frmAttendance.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -240,6 +246,18 @@
     </Compile>
     <Compile Include="Account\PayRoll\frmBonusDeductionRegister.designer.cs">
       <DependentUpon>frmBonusDeductionRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\PayRoll\frmDailySalaryRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\PayRoll\frmDailySalaryRegister.designer.cs">
+      <DependentUpon>frmDailySalaryRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\PayRoll\frmDailySalaryVoucher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\PayRoll\frmDailySalaryVoucher.Designer.cs">
+      <DependentUpon>frmDailySalaryVoucher.cs</DependentUpon>
     </Compile>
     <Compile Include="Account\PayRoll\frmDesignation.cs">
       <SubType>Form</SubType>
@@ -507,6 +525,8 @@
     <Compile Include="Account\Services\DailyAttendanceDetailsSP.cs" />
     <Compile Include="Account\Services\DailyAttendanceMasterInfo.cs" />
     <Compile Include="Account\Services\DailyAttendanceMasterSP.cs" />
+    <Compile Include="Account\Services\DailySalaryVoucherDetailsSP.cs" />
+    <Compile Include="Account\Services\DailySalaryVoucherMasterSP.cs" />
     <Compile Include="Account\Services\DebitNoteDetailsSP.cs" />
     <Compile Include="Account\Services\DebitNoteMasterSP.cs" />
     <Compile Include="Account\Services\DeliveryNoteDetailsSP.cs" />
@@ -799,6 +819,9 @@
     <Compile Include="DataSet\AdvancePaymentAddWithIdentity_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\AdvanceRegisterSearch_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\AgeingReportFillByPayable_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -869,6 +892,15 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Batch.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\BillAllocationAccountGroupFill_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\BillAllocationLedgerFill_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\BillAllocationSearch_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\BonusDeduction.cs">
@@ -995,10 +1027,22 @@
     <Compile Include="DataSet\DailyDiscontinued.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\DailySalaryRegisterSearch_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\DailySalaryVoucherDetail.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\DailySalaryVoucherDetailsGridViewall_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\DailySalaryVoucherMaster.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\DailySalaryVoucherMasterAddWithIdentity_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\DailySalaryVoucherViewFromRegister_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\DayBookReportPrintCompany_Result.cs">
@@ -1181,6 +1225,9 @@
     <Compile Include="DataSet\MonthlySalaryDetail.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\MonthlySalaryRegisterSearch_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\MonthlySalarySettingsEmployeeViewAll_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1245,6 +1292,15 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\PaymentTerm.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PaySlipPrinting_2_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PaySlipPrinting_3_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PaySlipPrinting_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\PDCClearanceFillDetails_Result.cs">
@@ -1350,6 +1406,24 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\ProfitAndLossAnalysisUpToaDateForBalansheet_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ProfitAndLossAnalysisUpToaDateForPreviousYearsDirectExpenses_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ProfitAndLossAnalysisUpToaDateForPreviousYearsDirectIncome_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ProfitAndLossAnalysisUpToaDateForPreviousYearsIndirectExpenses_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ProfitAndLossAnalysisUpToaDateForPreviousYearsIndirectIncome_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ProfitAndLossAnalysisUpToaDateForPreviousYearsPurchaseAccount_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ProfitAndLossAnalysisUpToaDateForPreviousYearsSalesAccount_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\ProfitAndLossReportPrintCompany_Result.cs">
@@ -1739,6 +1813,12 @@
     <Compile Include="DataSet\VoucherType.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\VoucherTypeNameComboFillAdvanceRegister_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\VoucherTypeNameComboFill_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\VoucherTypeNameCorrespondingToTypeOfVoucher_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -2080,6 +2160,9 @@
     <EmbeddedResource Include="Account\PayRoll\frmAdvancePayment.resx">
       <DependentUpon>frmAdvancePayment.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Account\PayRoll\frmAdvanceRegister.resx">
+      <DependentUpon>frmAdvanceRegister.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Account\PayRoll\frmAttendance.resx">
       <DependentUpon>frmAttendance.cs</DependentUpon>
     </EmbeddedResource>
@@ -2088,6 +2171,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Account\PayRoll\frmBonusDeductionRegister.resx">
       <DependentUpon>frmBonusDeductionRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\PayRoll\frmDailySalaryRegister.resx">
+      <DependentUpon>frmDailySalaryRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\PayRoll\frmDailySalaryVoucher.resx">
+      <DependentUpon>frmDailySalaryVoucher.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Account\PayRoll\frmDesignation.resx">
       <DependentUpon>frmDesignation.cs</DependentUpon>
