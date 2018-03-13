@@ -538,5 +538,54 @@ namespace LoginForm.Account.Services
             }
             return dts;
         }
+
+        /// <summary>
+        /// Function for billallocation search from partybalance table
+        /// </summary>
+        /// <param name="dtfromdate"></param>
+        /// <param name="dttodate"></param>
+        /// <param name="straccountgroup"></param>
+        /// <param name="strledgername"></param>
+        /// <returns></returns>
+        public DataTable BillAllocationSearch(DateTime dtfromdate, DateTime dttodate, string straccountgroup, string strledgername)
+        {
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = new IMEEntities().BillAllocationSearch(dtfromdate, dttodate,straccountgroup, strledgername).ToList();
+
+                dtbl.Columns.Add("ledgerName");
+                dtbl.Columns.Add("date");
+                dtbl.Columns.Add("voucherNo");
+                dtbl.Columns.Add("debit");
+                dtbl.Columns.Add("credit");
+                dtbl.Columns.Add("voucherTypeName");
+                dtbl.Columns.Add("typeOfVoucher");
+                dtbl.Columns.Add("accountGroupName");
+                dtbl.Columns.Add("voucherTypeId");
+
+                foreach (var item in adaptor)
+                {
+                    DataRow row = dtbl.NewRow();
+
+                    row["ledgerName"] = item.ledgerName;
+                    row["date"] = item.date;
+                    row["voucherNo"] = item.voucherNo;
+                    row["debit"] = item.debit;
+                    row["credit"] = item.credit;
+                    row["voucherTypeName"] = item.voucherTypeName;
+                    row["typeOfVoucher"] = item.typeOfVoucher;
+                    row["accountGroupName"] = item.accountGroupName;
+                    row["voucherTypeId"] = item.voucherTypeId;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
     }
 }

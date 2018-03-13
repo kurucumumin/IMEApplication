@@ -49,7 +49,7 @@ namespace LoginForm
         //frmPartyBalance frmPartyBalanceObj = null;//To use in call from PartyBalance class
         DataTable dtblPartyBalance = new DataTable();//To store PartyBalance entries while clicking btn_Save in CreditNote
         ArrayList arrlstOfDeletedPartyBalanceRow;
-       // frmBillallocation frmBillallocationObj = null;
+        frmBillallocation frmBillallocationObj = null;
         frmVoucherSearch objVoucherSearch = null;
         public string strVocherNo;
        // frmDayBook frmDayBookObj = null;//To use in call from frmDayBook
@@ -1609,10 +1609,10 @@ namespace LoginForm
                     //{
                     //    this.Close();
                     //}
-                    //else if (frmBillallocationObj != null)
-                    //{
-                    //    this.Close();
-                    //}
+                    else if (frmBillallocationObj != null)
+                    {
+                        this.Close();
+                    }
                     //else if (frmLedgerDetailsObj != null)
                     //{
                     //    this.Close();
@@ -2210,29 +2210,29 @@ namespace LoginForm
             }
         }
 
-       
+
         /// <summary>
         /// Function to load the form while calling from BillAllocation form
         /// </summary>
         /// <param name="frmBillallocation"></param>
         /// <param name="deccreditMasterId"></param>
-        //public void CallFromBillAllocation(frmBillallocation frmBillallocation, decimal deccreditMasterId)
-        //{
-        //    try
-        //    {
-        //        frmBillallocation.Enabled = false;
-        //        base.Show();
-        //        isEditMode = true;
-        //        btnDelete.Enabled = true;
-        //        frmBillallocationObj = frmBillallocation;
-        //        decCreditNoteMasterIdForEdit = deccreditMasterId;
-        //        FillFunction();
-        //    }
-        //    catch(Exception ex)
-        //    {
-        //        MessageBox.Show("CRNT:36" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+        public void CallFromBillAllocation(frmBillallocation frmBillallocation, decimal deccreditMasterId)
+        {
+            try
+            {
+                frmBillallocation.Enabled = false;
+                base.Show();
+                isEditMode = true;
+                btnDelete.Enabled = true;
+                frmBillallocationObj = frmBillallocation;
+                decCreditNoteMasterIdForEdit = deccreditMasterId;
+                FillFunction();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("CRNT:36" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
 
         /// <summary>
         /// Function to fill the controlls
@@ -2696,11 +2696,11 @@ namespace LoginForm
                 //    frmAgeingObj.Close();
                 //    frmAgeingObj = null;
                 //}
-                //if (frmBillallocationObj != null)
-                //{
-                //    frmBillallocationObj.Close();
-                //    frmBillallocationObj = null;
-                //}
+                if (frmBillallocationObj != null)
+                {
+                    frmBillallocationObj.Close();
+                    frmBillallocationObj = null;
+                }
                 //if (frmCurrencyObj != null)
                 //{
                 //    frmCurrencyObj.Close();
@@ -3300,12 +3300,12 @@ namespace LoginForm
                     frmCreditNoteReportObj.Enabled = true;
                     frmCreditNoteReportObj.Search();
                 }
-                //if (frmBillallocationObj != null)
-                //{
-                //    frmBillallocationObj.Enabled = true;
-                //    frmBillallocationObj.BillAllocationGridFill();
-                //    frmBillallocationObj.Activate();
-                //}
+                if (frmBillallocationObj != null)
+                {
+                    frmBillallocationObj.Enabled = true;
+                    frmBillallocationObj.BillAllocationGridFill();
+                    frmBillallocationObj.Activate();
+                }
                 //if (frmDayBookObj != null)
                 //{
                 //    frmDayBookObj.Enabled = true;

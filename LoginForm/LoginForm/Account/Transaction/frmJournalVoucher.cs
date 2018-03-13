@@ -45,6 +45,7 @@ namespace LoginForm
         int inUpdatingRowIndexForPartyRemove = -1;
         decimal decUpdatingLedgerForPartyremove = 0;
         frmJournalReport frmJournalReportObj = null;
+        frmBillallocation frmBillallocationObj = null;
         #endregion
 
         #region Functions
@@ -1053,37 +1054,37 @@ namespace LoginForm
                 }
                 DeletePartyBalanceOfRemovedRow();
                 MessageBox.Show("Updated successfully");
-                //if (cbxPrintAfterSave.Checked)
-                //{
-                //    if (spSettings.SettingsStatusCheck("Printer") == "Dot Matrix")
-                //    {
-                //        PrintForDotMatrix(infoJournalMaster.JournalMasterId);
-                //    }
-                //    else
-                //    {
-                //        Print(infoJournalMaster.JournalMasterId);
-                //    }
-                //}
-                //if (journalRegisterObj != null)
-                //{
-                //    this.Close();
-                //    journalRegisterObj.Enabled = true;
-                //}
-                //else if (frmJournalReportObj != null)
-                //{
-                //    this.Close();
-                //    frmJournalReportObj.Enabled = true;
-                //}
-                //else if (frmDayBookObj != null)
-                //{
-                //    this.Close();
+            //if (cbxPrintAfterSave.Checked)
+            //{
+            //    if (spSettings.SettingsStatusCheck("Printer") == "Dot Matrix")
+            //    {
+            //        PrintForDotMatrix(infoJournalMaster.JournalMasterId);
+            //    }
+            //    else
+            //    {
+            //        Print(infoJournalMaster.JournalMasterId);
+            //    }
+            //}
+            if (journalRegisterObj != null)
+            {
+                this.Close();
+                journalRegisterObj.Enabled = true;
+            }
+            else if (frmJournalReportObj != null)
+            {
+                this.Close();
+                frmJournalReportObj.Enabled = true;
+            }
+            //else if (frmDayBookObj != null)
+            //{
+            //    this.Close();
 
-                //}
-                //else if (frmBillallocationObj != null)
-                //{
-                //    this.Close();
+            //}
+            else if (frmBillallocationObj != null)
+            {
+                this.Close();
 
-                //}
+            }
 
         }
 
@@ -2008,24 +2009,24 @@ namespace LoginForm
         /// </summary>
         /// <param name="frmBillallocation"></param>
         /// <param name="decJournalMasterId"></param>
-        //public void CallFromBillAllocation(frmBillallocation frmBillallocation, decimal decJournalMasterId)
-        //{
-        //    try
-        //    {
-        //        frmBillallocation.Enabled = false;
-        //        base.Show();
-        //        isEditMode = true;
-        //        btnDelete.Enabled = true;
-        //        frmBillallocationObj = frmBillallocation;
-        //        decJournalMasterIdForEdit = decJournalMasterId;
-        //        FillFunction();
-        //    }
-        //    catch (Exception ex)
-        //    {
+        public void CallFromBillAllocation(frmBillallocation frmBillallocation, decimal decJournalMasterId)
+        {
+            try
+            {
+                frmBillallocation.Enabled = false;
+                base.Show();
+                isEditMode = true;
+                btnDelete.Enabled = true;
+                frmBillallocationObj = frmBillallocation;
+                decJournalMasterIdForEdit = decJournalMasterId;
+                FillFunction();
+            }
+            catch (Exception ex)
+            {
 
-        //        MessageBox.Show("JV36:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+                MessageBox.Show("JV36:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
 
         /// <summary>
         /// Function to fill the fields for edit or delete

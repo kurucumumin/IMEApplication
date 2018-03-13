@@ -1032,5 +1032,50 @@ namespace LoginForm.Account.Services
             }
             return dtbl;
         }
+
+        /// <summary>
+        /// Bill allocation ledger fill
+        /// </summary>
+        /// <param name="cmbAccountLedger"></param>
+        /// <param name="strAccountGroup"></param>
+        /// <param name="isAll"></param>
+        /// <returns></returns>
+        public DataTable BillAllocationLedgerFill(System.Windows.Forms.ComboBox cmbAccountLedger, string strAccountGroup, bool isAll)
+        {
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = new IMEEntities().BillAllocationLedgerFill(strAccountGroup).ToList();
+
+                dtbl.Columns.Add("ledgerName");
+                dtbl.Columns.Add("ledgerId");
+
+                foreach (var item in adaptor)
+                {
+                    DataRow row = dtbl.NewRow();
+
+                    row["ledgerName"] = item.ledgerName;
+                    row["ledgerId"] = item.ledgerId;
+
+                    dtbl.Rows.Add(row);
+                }
+
+                if (isAll)
+                {
+                    DataRow dr = dtbl.NewRow();
+                    dr["ledgerName"] = "All";
+                    dr["ledgerId"] = 0;
+                    dtbl.Rows.InsertAt(dr, 0);
+                }
+                cmbAccountLedger.DataSource = dtbl;
+                cmbAccountLedger.DisplayMember = "ledgerName";
+                cmbAccountLedger.ValueMember = "ledgerId";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
     }
 }

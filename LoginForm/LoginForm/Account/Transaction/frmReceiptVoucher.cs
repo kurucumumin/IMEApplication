@@ -49,7 +49,7 @@ namespace LoginForm
         ArrayList arrlstOfRemove = new ArrayList();
         SettingsSP spSettings = new SettingsSP();//to select data from settings table
         int inArrOfRemoveIndex = 0;//number of rows removed by clicking remove button
-        //frmBillallocation frmBillallocationObj = null;
+        frmBillallocation frmBillallocationObj = null;
         public string strVocherNo;
         int inUpdatingRowIndexForPartyRemove = -1;
         decimal decUpdatingLedgerForPartyremove = 0;
@@ -189,10 +189,10 @@ namespace LoginForm
                     //{
                     //    this.Close();
                     //}
-                    //if (frmBillallocationObj != null)
-                    //{
-                    //    this.Close();
-                    //}
+                    if (frmBillallocationObj != null)
+                    {
+                        this.Close();
+                    }
                     this.Close();
                 }
                 else
@@ -727,10 +727,10 @@ namespace LoginForm
                 //{
                 //    this.Close();
                 //}
-                //if (frmBillallocationObj != null)
-                //{
-                //    this.Close();
-                //}
+                if (frmBillallocationObj != null)
+                {
+                    this.Close();
+                }
                 this.Close();
             }
             catch (Exception ex)
@@ -1660,23 +1660,23 @@ namespace LoginForm
         /// </summary>
         /// <param name="frmBillallocation"></param>
         /// <param name="decReceiptId"></param>
-        //public void CallFromBillAllocation(frmBillallocation frmBillallocation, decimal decReceiptId)
-        //{
-        //    try
-        //    {
-        //        frmBillallocation.Enabled = false;
-        //        base.Show();
-        //        btnSave.Text = "Update";
-        //        btnDelete.Enabled = true;
-        //        frmBillallocationObj = frmBillallocation;
-        //        decRecieptmasterId = decReceiptId;
-        //        FillFunction();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("RV30:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+        public void CallFromBillAllocation(frmBillallocation frmBillallocation, decimal decReceiptId)
+        {
+            try
+            {
+                frmBillallocation.Enabled = false;
+                base.Show();
+                btnSave.Text = "Update";
+                btnDelete.Enabled = true;
+                frmBillallocationObj = frmBillallocation;
+                decRecieptmasterId = decReceiptId;
+                FillFunction();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("RV30:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
         /// <summary>
         /// Function to call this form from frmDayBook to view details and for updation 
         /// </summary>
@@ -2363,11 +2363,11 @@ namespace LoginForm
                 //    frmAgeingObj.Close();
                 //    frmAgeingObj = null;
                 //}
-                //if (frmBillallocationObj != null)
-                //{
-                //    frmBillallocationObj.Close();
-                //    frmBillallocationObj = null;
-                //}
+                if (frmBillallocationObj != null)
+                {
+                    frmBillallocationObj.Close();
+                    frmBillallocationObj = null;
+                }
                 //if (frmChequeReportObj != null)
                 //{
                 //    frmChequeReportObj.Close();
@@ -2421,11 +2421,11 @@ namespace LoginForm
                 //    frmReceiptRegisterObj.Enabled = true;
                 //    frmReceiptRegisterObj.CallFromReceiptVoucher(this);
                 //}
-                //if (frmBillallocationObj != null)
-                //{
-                //    frmBillallocationObj.Enabled = true;
-                //    frmBillallocationObj.BillAllocationGridFill();
-                //}
+                if (frmBillallocationObj != null)
+                {
+                    frmBillallocationObj.Enabled = true;
+                    frmBillallocationObj.BillAllocationGridFill();
+                }
                 //if (frmDayBookObj != null)
                 //{
                 //    frmDayBookObj.Enabled = true;

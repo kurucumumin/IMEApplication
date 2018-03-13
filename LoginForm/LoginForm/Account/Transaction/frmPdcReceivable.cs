@@ -48,7 +48,7 @@ namespace LoginForm
         string strOldBankLedgerId = string.Empty;//To keep the  bank ledgerId 
         frmPDCReceivableRegister PDCReceivableRegisterObj = null;
         //frmPDCRecievableReport PDCReceivableReportObj = null;
-        //frmBillallocation frmBillallocationObj = null;
+        frmBillallocation frmBillallocationObj = null;
         //frmLedgerDetails frmLedgerDetailsObj;
         #endregion
 
@@ -1223,24 +1223,24 @@ namespace LoginForm
         /// </summary>
         /// <param name="frmBillallocation"></param>
         /// <param name="decPdcReceivableMasterId"></param>
-        //public void CallFromBillAllocation(frmBillallocation frmBillallocation, decimal decPdcReceivableMasterId)
-        //{
-        //    try
-        //    {
-        //        frmBillallocation.Enabled = false;
-        //        base.Show();
-        //        isInEditMode = true;
-        //        btnDelete.Enabled = true;
-        //        frmBillallocationObj = frmBillallocation;
-        //        decPDCReceivableEditId = decPdcReceivableMasterId;
-        //        FillFunction();
-        //    }
-        //    catch (Exception ex)
-        //    {
+        public void CallFromBillAllocation(frmBillallocation frmBillallocation, decimal decPdcReceivableMasterId)
+        {
+            try
+            {
+                frmBillallocation.Enabled = false;
+                base.Show();
+                isInEditMode = true;
+                btnDelete.Enabled = true;
+                frmBillallocationObj = frmBillallocation;
+                decPDCReceivableEditId = decPdcReceivableMasterId;
+                FillFunction();
+            }
+            catch (Exception ex)
+            {
 
-        //        MessageBox.Show("PR26:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+                MessageBox.Show("PR26:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
         /// <summary>
         /// Function to call this form from frmDayBook to view details and for updation
         /// </summary>
@@ -1723,11 +1723,11 @@ namespace LoginForm
             //        frmChequeReportObj.Enabled = true;
             //        frmChequeReportObj.ChequeReportFillGrid();
             //    }
-            //    if (frmBillallocationObj != null)
-            //    {
-            //        frmBillallocationObj.Enabled = true;
-            //        frmBillallocationObj.BillAllocationGridFill();
-            //    }
+            if (frmBillallocationObj != null)
+            {
+                frmBillallocationObj.Enabled = true;
+                frmBillallocationObj.BillAllocationGridFill();
+            }
             //    if (frmLedgerDetailsObj != null)
             //    {
             //        frmLedgerDetailsObj.Enabled = true;

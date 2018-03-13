@@ -42,7 +42,7 @@ namespace LoginForm
        // frmDebitNoteReport frmDebitNoteReportObj = null;
         ArrayList arrlstOfRemove = new ArrayList();
         ArrayList arrlstOfRemovedLedgerPostingId = new ArrayList();
-        //frmBillallocation frmBillallocationObj = null;
+        frmBillallocation frmBillallocationObj = null;
         //frmAgeingReport frmAgeingObj = null;//To use in call from frmAgeing
         public string strVocherNo;
         decimal decSelectedCurrencyRate = 0;
@@ -2165,24 +2165,24 @@ namespace LoginForm
         /// </summary>
         /// <param name="frmBillallocation"></param>
         /// <param name="decdebitMasterId"></param>
-        //public void CallFromBillAllocation(frmBillallocation frmBillallocation, decimal decdebitMasterId)
-        //{
-        //    try
-        //    {
-        //        frmBillallocation.Enabled = false;
-        //        base.Show();
-        //        isEditMode = true;
-        //        btnDelete.Enabled = true;
-        //        frmBillallocationObj = frmBillallocation;
-        //        decDebitNoteMasterIdForEdit = decdebitMasterId;
-        //        FillFunction();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("DRNT36:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
+        public void CallFromBillAllocation(frmBillallocation frmBillallocation, decimal decdebitMasterId)
+        {
+            try
+            {
+                frmBillallocation.Enabled = false;
+                base.Show();
+                isEditMode = true;
+                btnDelete.Enabled = true;
+                frmBillallocationObj = frmBillallocation;
+                decDebitNoteMasterIdForEdit = decdebitMasterId;
+                FillFunction();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("DRNT36:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
-        //}
+        }
 
         /// <summary>
         /// Function to fill the fields for edit or delete
@@ -2893,11 +2893,11 @@ namespace LoginForm
                 //    frmDebitNoteReportObj.Enabled = true;
                 //    frmDebitNoteReportObj.Search();
                 //}
-                //if (frmBillallocationObj != null)
-                //{
-                //    frmBillallocationObj.Enabled = true;
-                //    frmBillallocationObj.BillAllocationGridFill();
-                //}
+                if (frmBillallocationObj != null)
+                {
+                    frmBillallocationObj.Enabled = true;
+                    frmBillallocationObj.BillAllocationGridFill();
+                }
                 //if (frmDayBookObj != null)
                 //{
                 //    frmDayBookObj.Enabled = true;

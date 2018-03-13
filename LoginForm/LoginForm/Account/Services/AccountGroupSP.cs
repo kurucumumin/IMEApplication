@@ -414,5 +414,49 @@ namespace LoginForm.Account.Services
             }
             return dt;
         }
+
+        /// <summary>
+        /// Function to Bill Allocation Account Group Fill
+        /// </summary>
+        /// <param name="cmbAccountGroup"></param>
+        /// <param name="isAll"></param>
+        /// <returns></returns>
+        public DataTable BillAllocationAccountGroupFill(ComboBox cmbAccountGroup, bool isAll)
+        {
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = new IMEEntities().BillAllocationAccountGroupFill().ToList();
+
+                dtbl.Columns.Add("accountGroupId");
+                dtbl.Columns.Add("accountGroupName");
+
+                foreach (var item in adaptor)
+                {
+                    DataRow row = dtbl.NewRow();
+
+                    row["accountGroupId"] = item.accountGroupId;
+                    row["accountGroupName"] = item.accountGroupName;
+
+                    dtbl.Rows.Add(row);
+                }
+
+                if (isAll)
+                {
+                    DataRow dr = dtbl.NewRow();
+                    dr["accountGroupName"] = "All";
+                    dr["accountGroupId"] = 0;
+                    dtbl.Rows.InsertAt(dr, 0);
+                }
+                cmbAccountGroup.DataSource = dtbl;
+                cmbAccountGroup.DisplayMember = "accountGroupName";
+                cmbAccountGroup.ValueMember = "accountGroupId";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
     }
 }

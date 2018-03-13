@@ -49,7 +49,7 @@ namespace LoginForm
         //frmPartyBalance frmPartyBalanceObj = new frmPartyBalance();//To use in call from PartyBalance class
         frmPDCPayableRegister PDCPayableRegisterObj = null;//To use in call from PdcPayableRegister class
         frmPDCPayableReport PDCpayableReportObj = null;//To use in call from pdcpayableReport
-        //frmBillallocation BillallocationObj = null;//To use in call from Billallocation
+        frmBillallocation BillallocationObj = null;//To use in call from Billallocation
         frmVoucherSearch frmVoucherSearch = null;
         //frmDayBook frmDayBookObj = null;//To use in call from frmDayBook
         //frmAgeingReport frmAgeingObj = null;//To use in call from frmDayBook
@@ -1221,23 +1221,23 @@ namespace LoginForm
         /// </summary>
         /// <param name="frmBillallocation"></param>
         /// <param name="decPdcPayableMasterId"></param>
-        //public void CallFromBillAllocation(frmBillallocation frmBillallocation, decimal decPdcPayableMasterId)
-        //{
-        //    try
-        //    {
-        //        frmBillallocation.Enabled = false;
-        //        base.Show();
-        //        isInEditMode = true;
-        //        btnDelete.Enabled = true;
-        //        BillallocationObj = frmBillallocation;
-        //        decPDCpayableEditId = decPdcPayableMasterId;
-        //        FillFunction();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("PP26:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+        public void CallFromBillAllocation(frmBillallocation frmBillallocation, decimal decPdcPayableMasterId)
+        {
+            try
+            {
+                frmBillallocation.Enabled = false;
+                base.Show();
+                isInEditMode = true;
+                btnDelete.Enabled = true;
+                BillallocationObj = frmBillallocation;
+                decPDCpayableEditId = decPdcPayableMasterId;
+                FillFunction();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("PP26:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
         /// <summary>
         /// Function to call this form from frmDayBook to view details and for updation
         /// </summary>
@@ -1767,11 +1767,11 @@ namespace LoginForm
             //        PDCpayableReportObj.Enabled = true;
             //        PDCpayableReportObj.Search();
             //    }
-            //    if (BillallocationObj != null)
-            //    {
-            //        BillallocationObj.Enabled = true;
-            //        BillallocationObj.BillAllocationGridFill();
-            //    }
+            if (BillallocationObj != null)
+            {
+                BillallocationObj.Enabled = true;
+                BillallocationObj.BillAllocationGridFill();
+            }
             //    if (frmDayBookObj != null)
             //    {
             //        frmDayBookObj.Enabled = true;

@@ -47,6 +47,7 @@ namespace LoginForm
         ArrayList arrlstOfRemovedLedgerPostingId = new ArrayList();
         ArrayList arrlstOfRemove = new ArrayList();
         frmVoucherSearch _frmVoucherSearch = null;
+        frmBillallocation frmBillallocationObj = null;
         int inUpdatingRowIndexForPartyRemove = -1;
         decimal decUpdatingLedgerForPartyremove = 0;
         #endregion
@@ -1045,10 +1046,10 @@ namespace LoginForm
                 //{
                 //    this.Close();
                 //}
-                //if (frmBillallocationObj != null)
-                //{
-                //    this.Close();
-                //}
+                if (frmBillallocationObj != null)
+                {
+                    this.Close();
+                }
                 this.Close();
             }
             catch (Exception ex)
@@ -1121,10 +1122,10 @@ namespace LoginForm
                 //{
                 //    this.Close();
                 //}
-                //if (frmBillallocationObj != null)
-                //{
-                //    this.Close();
-                //}
+                if (frmBillallocationObj != null)
+                {
+                    this.Close();
+                }
 
             }
                 else
@@ -1746,26 +1747,26 @@ namespace LoginForm
         /// </summary>
         /// <param name="frmBillallocation"></param>
         /// <param name="decPayementId"></param>
-        //public void CallFromBillAllocation(frmBillallocation frmBillallocation, decimal decPayementId)
-        //{
-        //    try
-        //    {
-        //        frmBillallocation.Enabled = false;
-        //        base.Show();
-        //        isUpdated = true;
-        //        btnSave.Text = "Update";
-        //        btnDelete.Enabled = true;
-        //        frmBillallocationObj = frmBillallocation;
-        //        decPaymentmasterId = decPayementId;
-        //        FillFunction();
-        //    }
-        //    catch (Exception ex)
-        //    {
+        public void CallFromBillAllocation(frmBillallocation frmBillallocation, decimal decPayementId)
+        {
+            try
+            {
+                frmBillallocation.Enabled = false;
+                base.Show();
+                isUpdated = true;
+                btnSave.Text = "Update";
+                btnDelete.Enabled = true;
+                frmBillallocationObj = frmBillallocation;
+                decPaymentmasterId = decPayementId;
+                FillFunction();
+            }
+            catch (Exception ex)
+            {
 
-        //        MessageBox.Show("PV32:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
+                MessageBox.Show("PV32:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
-        //}
+        }
         /// <summary>
         /// Function to call this form from frmDayBook to view details and for updation 
         /// </summary>
