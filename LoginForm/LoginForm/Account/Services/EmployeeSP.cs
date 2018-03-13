@@ -317,5 +317,18 @@ namespace LoginForm.Account.Services
 
             return dtbl;
         }
+
+        public void EmployeePackageEdit(decimal decEmployeeId, decimal decPackageId)
+        {
+            IMEEntities IME = new IMEEntities();
+            try
+            {
+                IME.EmployeePackageEdit(decEmployeeId, decPackageId);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
     }
 }
