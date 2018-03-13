@@ -133,6 +133,12 @@
     <Compile Include="Account\Budget\frmBudgetVariance.Designer.cs">
       <DependentUpon>frmBudgetVariance.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\FinancialStatements\frmCashFlow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\FinancialStatements\frmCashFlow.Designer.cs">
+      <DependentUpon>frmCashFlow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\FinancialStatements\frmChartOfAccount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -600,11 +606,23 @@
     <Compile Include="Account\Settings\frmSettings.designer.cs">
       <DependentUpon>frmSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\Transaction\frmBalanceSheet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Transaction\frmBalanceSheet.Designer.cs">
+      <DependentUpon>frmBalanceSheet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\Transaction\frmBankReconciliation.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Account\Transaction\frmBankReconciliation.designer.cs">
       <DependentUpon>frmBankReconciliation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Transaction\frmBillallocation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Transaction\frmBillallocation.designer.cs">
+      <DependentUpon>frmBillallocation.cs</DependentUpon>
     </Compile>
     <Compile Include="Account\Transaction\frmCreditNote.cs">
       <SubType>Form</SubType>
@@ -2115,6 +2133,9 @@
     <EmbeddedResource Include="Account\Budget\frmBudgetVariance.resx">
       <DependentUpon>frmBudgetVariance.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Account\FinancialStatements\frmCashFlow.resx">
+      <DependentUpon>frmCashFlow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Account\FinancialStatements\frmChartOfAccount.resx">
       <DependentUpon>frmChartOfAccount.cs</DependentUpon>
     </EmbeddedResource>
@@ -2304,8 +2325,14 @@
     <EmbeddedResource Include="Account\Settings\frmSettings.resx">
       <DependentUpon>frmSettings.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Account\Transaction\frmBalanceSheet.resx">
+      <DependentUpon>frmBalanceSheet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Account\Transaction\frmBankReconciliation.resx">
       <DependentUpon>frmBankReconciliation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\Transaction\frmBillallocation.resx">
+      <DependentUpon>frmBillallocation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Transaction\frmCreditNote.resx">
       <DependentUpon>frmCreditNote.cs</DependentUpon>

@@ -14,19 +14,19 @@ namespace LoginForm.DataSet
     using System.Data.Entity.Infrastructure;
     using System.Data.Entity.Core.Objects;
     using System.Linq;
-
+    
     public partial class IMEEntities : DbContext
     {
         public IMEEntities()
             : base("name=IMEEntities")
         {
         }
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-
+    
         public virtual DbSet<AccountGroup> AccountGroups { get; set; }
         public virtual DbSet<AccountLedger> AccountLedgers { get; set; }
         public virtual DbSet<AdvancePayment> AdvancePayments { get; set; }
@@ -172,7507 +172,7707 @@ namespace LoginForm.DataSet
         public virtual DbSet<AdditionalCost> AdditionalCosts { get; set; }
         public virtual DbSet<SalaryVoucherDetail> SalaryVoucherDetails { get; set; }
         public virtual DbSet<V_Product> V_Product { get; set; }
-
+    
         [DbFunction("IMEEntities", "AccountGroupHierarchy")]
         public virtual IQueryable<AccountGroupHierarchy_Result> AccountGroupHierarchy(Nullable<decimal> groupId)
         {
             var groupIdParameter = groupId.HasValue ?
                 new ObjectParameter("groupId", groupId) :
                 new ObjectParameter("groupId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<AccountGroupHierarchy_Result>("[IMEEntities].[AccountGroupHierarchy](@groupId)", groupIdParameter);
         }
-
+    
         [DbFunction("IMEEntities", "AccountLedgerGetGroupUnderFunction")]
         public virtual IQueryable<AccountLedgerGetGroupUnderFunction_Result> AccountLedgerGetGroupUnderFunction(string accountGroupId)
         {
             var accountGroupIdParameter = accountGroupId != null ?
                 new ObjectParameter("accountGroupId", accountGroupId) :
                 new ObjectParameter("accountGroupId", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<AccountLedgerGetGroupUnderFunction_Result>("[IMEEntities].[AccountLedgerGetGroupUnderFunction](@accountGroupId)", accountGroupIdParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> AccountGroupAddWithIdentity(string accountGroupName, string groupUnder, string narration, Nullable<bool> isDefault, string nature, string affectGrossProfit)
         {
             var accountGroupNameParameter = accountGroupName != null ?
                 new ObjectParameter("accountGroupName", accountGroupName) :
                 new ObjectParameter("accountGroupName", typeof(string));
-
+    
             var groupUnderParameter = groupUnder != null ?
                 new ObjectParameter("groupUnder", groupUnder) :
                 new ObjectParameter("groupUnder", typeof(string));
-
+    
             var narrationParameter = narration != null ?
                 new ObjectParameter("narration", narration) :
                 new ObjectParameter("narration", typeof(string));
-
+    
             var isDefaultParameter = isDefault.HasValue ?
                 new ObjectParameter("isDefault", isDefault) :
                 new ObjectParameter("isDefault", typeof(bool));
-
+    
             var natureParameter = nature != null ?
                 new ObjectParameter("nature", nature) :
                 new ObjectParameter("nature", typeof(string));
-
+    
             var affectGrossProfitParameter = affectGrossProfit != null ?
                 new ObjectParameter("affectGrossProfit", affectGrossProfit) :
                 new ObjectParameter("affectGrossProfit", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("AccountGroupAddWithIdentity", accountGroupNameParameter, groupUnderParameter, narrationParameter, isDefaultParameter, natureParameter, affectGrossProfitParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<int>> AccountGroupCheckExistenceOfUnderGroup(Nullable<decimal> accountGroupId)
         {
             var accountGroupIdParameter = accountGroupId.HasValue ?
                 new ObjectParameter("accountGroupId", accountGroupId) :
                 new ObjectParameter("accountGroupId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("AccountGroupCheckExistenceOfUnderGroup", accountGroupIdParameter);
         }
-
+    
         public virtual int AccountGroupEdit(Nullable<decimal> accountGroupId, string accountGroupName, string groupUnder, string narration, Nullable<bool> isDefault, string nature, string affectGrossProfit)
         {
             var accountGroupIdParameter = accountGroupId.HasValue ?
                 new ObjectParameter("accountGroupId", accountGroupId) :
                 new ObjectParameter("accountGroupId", typeof(decimal));
-
+    
             var accountGroupNameParameter = accountGroupName != null ?
                 new ObjectParameter("accountGroupName", accountGroupName) :
                 new ObjectParameter("accountGroupName", typeof(string));
-
+    
             var groupUnderParameter = groupUnder != null ?
                 new ObjectParameter("groupUnder", groupUnder) :
                 new ObjectParameter("groupUnder", typeof(string));
-
+    
             var narrationParameter = narration != null ?
                 new ObjectParameter("narration", narration) :
                 new ObjectParameter("narration", typeof(string));
-
+    
             var isDefaultParameter = isDefault.HasValue ?
                 new ObjectParameter("isDefault", isDefault) :
                 new ObjectParameter("isDefault", typeof(bool));
-
+    
             var natureParameter = nature != null ?
                 new ObjectParameter("nature", nature) :
                 new ObjectParameter("nature", typeof(string));
-
+    
             var affectGrossProfitParameter = affectGrossProfit != null ?
                 new ObjectParameter("affectGrossProfit", affectGrossProfit) :
                 new ObjectParameter("affectGrossProfit", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AccountGroupEdit", accountGroupIdParameter, accountGroupNameParameter, groupUnderParameter, narrationParameter, isDefaultParameter, natureParameter, affectGrossProfitParameter);
         }
-
+    
         public virtual ObjectResult<string> AccountGroupNatureUnderGroup(Nullable<decimal> accountGroupId)
         {
             var accountGroupIdParameter = accountGroupId.HasValue ?
                 new ObjectParameter("accountGroupId", accountGroupId) :
                 new ObjectParameter("accountGroupId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("AccountGroupNatureUnderGroup", accountGroupIdParameter);
         }
-
+    
         public virtual int AccountGroupReferenceDelete(Nullable<decimal> accountGroupId)
         {
             var accountGroupIdParameter = accountGroupId.HasValue ?
                 new ObjectParameter("accountGroupId", accountGroupId) :
                 new ObjectParameter("accountGroupId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AccountGroupReferenceDelete", accountGroupIdParameter);
         }
-
+    
         public virtual ObjectResult<AccountGroupReportViewAll_Result> AccountGroupReportViewAll(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountGroupReportViewAll_Result>("AccountGroupReportViewAll", fromDateParameter, toDateParameter);
         }
-
+    
         public virtual ObjectResult<AccountGroupSearch_Result> AccountGroupSearch(string accountGroupName, string under)
         {
             var accountGroupNameParameter = accountGroupName != null ?
                 new ObjectParameter("AccountGroupName", accountGroupName) :
                 new ObjectParameter("AccountGroupName", typeof(string));
-
+    
             var underParameter = under != null ?
                 new ObjectParameter("Under", under) :
                 new ObjectParameter("Under", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountGroupSearch_Result>("AccountGroupSearch", accountGroupNameParameter, underParameter);
         }
-
+    
         public virtual ObjectResult<AccountGroupView_Result> AccountGroupView(Nullable<decimal> accountGroupId)
         {
             var accountGroupIdParameter = accountGroupId.HasValue ?
                 new ObjectParameter("accountGroupId", accountGroupId) :
                 new ObjectParameter("accountGroupId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountGroupView_Result>("AccountGroupView", accountGroupIdParameter);
         }
-
+    
         public virtual ObjectResult<AccountGroupViewAllByGroupUnder_Result> AccountGroupViewAllByGroupUnder(Nullable<decimal> accountGroupId)
         {
             var accountGroupIdParameter = accountGroupId.HasValue ?
                 new ObjectParameter("accountGroupId", accountGroupId) :
                 new ObjectParameter("accountGroupId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountGroupViewAllByGroupUnder_Result>("AccountGroupViewAllByGroupUnder", accountGroupIdParameter);
         }
-
+    
         public virtual ObjectResult<AccountGroupViewAllComboFillForAccountLedger_Result> AccountGroupViewAllComboFillForAccountLedger()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountGroupViewAllComboFillForAccountLedger_Result>("AccountGroupViewAllComboFillForAccountLedger");
         }
-
+    
         public virtual ObjectResult<AccountGroupViewForUpdate_Result> AccountGroupViewForUpdate(Nullable<decimal> accountGroupId)
         {
             var accountGroupIdParameter = accountGroupId.HasValue ?
                 new ObjectParameter("accountGroupId", accountGroupId) :
                 new ObjectParameter("accountGroupId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountGroupViewForUpdate_Result>("AccountGroupViewForUpdate", accountGroupIdParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> AccountLedgerAddWithIdentity(Nullable<decimal> accountGroupId, string ledgerName, Nullable<decimal> openingBalance, string crOrDr, string narration, string mailingName, string address, Nullable<bool> isDefault, string phone, string mobile, string email, Nullable<int> creditPeriod, Nullable<decimal> creditLimit, Nullable<decimal> pricinglevelId, Nullable<bool> billByBill, string tin, string cst, string pan, Nullable<decimal> routeId, string bankAccountNumber, string branchName, string branchCode, Nullable<decimal> areaId)
         {
             var accountGroupIdParameter = accountGroupId.HasValue ?
                 new ObjectParameter("accountGroupId", accountGroupId) :
                 new ObjectParameter("accountGroupId", typeof(decimal));
-
+    
             var ledgerNameParameter = ledgerName != null ?
                 new ObjectParameter("ledgerName", ledgerName) :
                 new ObjectParameter("ledgerName", typeof(string));
-
+    
             var openingBalanceParameter = openingBalance.HasValue ?
                 new ObjectParameter("openingBalance", openingBalance) :
                 new ObjectParameter("openingBalance", typeof(decimal));
-
+    
             var crOrDrParameter = crOrDr != null ?
                 new ObjectParameter("crOrDr", crOrDr) :
                 new ObjectParameter("crOrDr", typeof(string));
-
+    
             var narrationParameter = narration != null ?
                 new ObjectParameter("narration", narration) :
                 new ObjectParameter("narration", typeof(string));
-
+    
             var mailingNameParameter = mailingName != null ?
                 new ObjectParameter("mailingName", mailingName) :
                 new ObjectParameter("mailingName", typeof(string));
-
+    
             var addressParameter = address != null ?
                 new ObjectParameter("address", address) :
                 new ObjectParameter("address", typeof(string));
-
+    
             var isDefaultParameter = isDefault.HasValue ?
                 new ObjectParameter("isDefault", isDefault) :
                 new ObjectParameter("isDefault", typeof(bool));
-
+    
             var phoneParameter = phone != null ?
                 new ObjectParameter("phone", phone) :
                 new ObjectParameter("phone", typeof(string));
-
+    
             var mobileParameter = mobile != null ?
                 new ObjectParameter("mobile", mobile) :
                 new ObjectParameter("mobile", typeof(string));
-
+    
             var emailParameter = email != null ?
                 new ObjectParameter("email", email) :
                 new ObjectParameter("email", typeof(string));
-
+    
             var creditPeriodParameter = creditPeriod.HasValue ?
                 new ObjectParameter("creditPeriod", creditPeriod) :
                 new ObjectParameter("creditPeriod", typeof(int));
-
+    
             var creditLimitParameter = creditLimit.HasValue ?
                 new ObjectParameter("creditLimit", creditLimit) :
                 new ObjectParameter("creditLimit", typeof(decimal));
-
+    
             var pricinglevelIdParameter = pricinglevelId.HasValue ?
                 new ObjectParameter("pricinglevelId", pricinglevelId) :
                 new ObjectParameter("pricinglevelId", typeof(decimal));
-
+    
             var billByBillParameter = billByBill.HasValue ?
                 new ObjectParameter("billByBill", billByBill) :
                 new ObjectParameter("billByBill", typeof(bool));
-
+    
             var tinParameter = tin != null ?
                 new ObjectParameter("tin", tin) :
                 new ObjectParameter("tin", typeof(string));
-
+    
             var cstParameter = cst != null ?
                 new ObjectParameter("cst", cst) :
                 new ObjectParameter("cst", typeof(string));
-
+    
             var panParameter = pan != null ?
                 new ObjectParameter("pan", pan) :
                 new ObjectParameter("pan", typeof(string));
-
+    
             var routeIdParameter = routeId.HasValue ?
                 new ObjectParameter("routeId", routeId) :
                 new ObjectParameter("routeId", typeof(decimal));
-
+    
             var bankAccountNumberParameter = bankAccountNumber != null ?
                 new ObjectParameter("bankAccountNumber", bankAccountNumber) :
                 new ObjectParameter("bankAccountNumber", typeof(string));
-
+    
             var branchNameParameter = branchName != null ?
                 new ObjectParameter("branchName", branchName) :
                 new ObjectParameter("branchName", typeof(string));
-
+    
             var branchCodeParameter = branchCode != null ?
                 new ObjectParameter("branchCode", branchCode) :
                 new ObjectParameter("branchCode", typeof(string));
-
+    
             var areaIdParameter = areaId.HasValue ?
                 new ObjectParameter("areaId", areaId) :
                 new ObjectParameter("areaId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("AccountLedgerAddWithIdentity", accountGroupIdParameter, ledgerNameParameter, openingBalanceParameter, crOrDrParameter, narrationParameter, mailingNameParameter, addressParameter, isDefaultParameter, phoneParameter, mobileParameter, emailParameter, creditPeriodParameter, creditLimitParameter, pricinglevelIdParameter, billByBillParameter, tinParameter, cstParameter, panParameter, routeIdParameter, bankAccountNumberParameter, branchNameParameter, branchCodeParameter, areaIdParameter);
         }
-
+    
         public virtual int AccountLedgerEdit(Nullable<decimal> ledgerId, Nullable<decimal> accountGroupId, string ledgerName, Nullable<decimal> openingBalance, string crOrDr, string narration, string mailingName, string address, Nullable<bool> isDefault, string phone, string mobile, string email, Nullable<int> creditPeriod, Nullable<decimal> creditLimit, Nullable<decimal> pricinglevelId, Nullable<bool> billByBill, string tin, string cst, string pan, Nullable<decimal> routeId, string bankAccountNumber, string branchName, string branchCode, Nullable<decimal> areaId)
         {
             var ledgerIdParameter = ledgerId.HasValue ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(decimal));
-
+    
             var accountGroupIdParameter = accountGroupId.HasValue ?
                 new ObjectParameter("accountGroupId", accountGroupId) :
                 new ObjectParameter("accountGroupId", typeof(decimal));
-
+    
             var ledgerNameParameter = ledgerName != null ?
                 new ObjectParameter("ledgerName", ledgerName) :
                 new ObjectParameter("ledgerName", typeof(string));
-
+    
             var openingBalanceParameter = openingBalance.HasValue ?
                 new ObjectParameter("openingBalance", openingBalance) :
                 new ObjectParameter("openingBalance", typeof(decimal));
-
+    
             var crOrDrParameter = crOrDr != null ?
                 new ObjectParameter("crOrDr", crOrDr) :
                 new ObjectParameter("crOrDr", typeof(string));
-
+    
             var narrationParameter = narration != null ?
                 new ObjectParameter("narration", narration) :
                 new ObjectParameter("narration", typeof(string));
-
+    
             var mailingNameParameter = mailingName != null ?
                 new ObjectParameter("mailingName", mailingName) :
                 new ObjectParameter("mailingName", typeof(string));
-
+    
             var addressParameter = address != null ?
                 new ObjectParameter("address", address) :
                 new ObjectParameter("address", typeof(string));
-
+    
             var isDefaultParameter = isDefault.HasValue ?
                 new ObjectParameter("isDefault", isDefault) :
                 new ObjectParameter("isDefault", typeof(bool));
-
+    
             var phoneParameter = phone != null ?
                 new ObjectParameter("phone", phone) :
                 new ObjectParameter("phone", typeof(string));
-
+    
             var mobileParameter = mobile != null ?
                 new ObjectParameter("mobile", mobile) :
                 new ObjectParameter("mobile", typeof(string));
-
+    
             var emailParameter = email != null ?
                 new ObjectParameter("email", email) :
                 new ObjectParameter("email", typeof(string));
-
+    
             var creditPeriodParameter = creditPeriod.HasValue ?
                 new ObjectParameter("creditPeriod", creditPeriod) :
                 new ObjectParameter("creditPeriod", typeof(int));
-
+    
             var creditLimitParameter = creditLimit.HasValue ?
                 new ObjectParameter("creditLimit", creditLimit) :
                 new ObjectParameter("creditLimit", typeof(decimal));
-
+    
             var pricinglevelIdParameter = pricinglevelId.HasValue ?
                 new ObjectParameter("pricinglevelId", pricinglevelId) :
                 new ObjectParameter("pricinglevelId", typeof(decimal));
-
+    
             var billByBillParameter = billByBill.HasValue ?
                 new ObjectParameter("billByBill", billByBill) :
                 new ObjectParameter("billByBill", typeof(bool));
-
+    
             var tinParameter = tin != null ?
                 new ObjectParameter("tin", tin) :
                 new ObjectParameter("tin", typeof(string));
-
+    
             var cstParameter = cst != null ?
                 new ObjectParameter("cst", cst) :
                 new ObjectParameter("cst", typeof(string));
-
+    
             var panParameter = pan != null ?
                 new ObjectParameter("pan", pan) :
                 new ObjectParameter("pan", typeof(string));
-
+    
             var routeIdParameter = routeId.HasValue ?
                 new ObjectParameter("routeId", routeId) :
                 new ObjectParameter("routeId", typeof(decimal));
-
+    
             var bankAccountNumberParameter = bankAccountNumber != null ?
                 new ObjectParameter("bankAccountNumber", bankAccountNumber) :
                 new ObjectParameter("bankAccountNumber", typeof(string));
-
+    
             var branchNameParameter = branchName != null ?
                 new ObjectParameter("branchName", branchName) :
                 new ObjectParameter("branchName", typeof(string));
-
+    
             var branchCodeParameter = branchCode != null ?
                 new ObjectParameter("branchCode", branchCode) :
                 new ObjectParameter("branchCode", typeof(string));
-
+    
             var areaIdParameter = areaId.HasValue ?
                 new ObjectParameter("areaId", areaId) :
                 new ObjectParameter("areaId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AccountLedgerEdit", ledgerIdParameter, accountGroupIdParameter, ledgerNameParameter, openingBalanceParameter, crOrDrParameter, narrationParameter, mailingNameParameter, addressParameter, isDefaultParameter, phoneParameter, mobileParameter, emailParameter, creditPeriodParameter, creditLimitParameter, pricinglevelIdParameter, billByBillParameter, tinParameter, cstParameter, panParameter, routeIdParameter, bankAccountNumberParameter, branchNameParameter, branchCodeParameter, areaIdParameter);
         }
-
+    
         public virtual ObjectResult<AccountLedgerGetByDebtorAndCreditorWithBalance_Result> AccountLedgerGetByDebtorAndCreditorWithBalance()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountLedgerGetByDebtorAndCreditorWithBalance_Result>("AccountLedgerGetByDebtorAndCreditorWithBalance");
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> AccountLedgerIdGetByName(string ledgerName)
         {
             var ledgerNameParameter = ledgerName != null ?
                 new ObjectParameter("ledgerName", ledgerName) :
                 new ObjectParameter("ledgerName", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("AccountLedgerIdGetByName", ledgerNameParameter);
         }
-
+    
         public virtual ObjectResult<AccountLedgerReportFill_Result> AccountLedgerReportFill(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, Nullable<decimal> accountGroupId, Nullable<decimal> ledgerId)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             var accountGroupIdParameter = accountGroupId.HasValue ?
                 new ObjectParameter("accountGroupId", accountGroupId) :
                 new ObjectParameter("accountGroupId", typeof(decimal));
-
+    
             var ledgerIdParameter = ledgerId.HasValue ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountLedgerReportFill_Result>("AccountLedgerReportFill", fromDateParameter, toDateParameter, accountGroupIdParameter, ledgerIdParameter);
         }
-
+    
         public virtual ObjectResult<AccountLedgerSearchForServiceAccountUnderIncome_Result> AccountLedgerSearchForServiceAccountUnderIncome()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountLedgerSearchForServiceAccountUnderIncome_Result>("AccountLedgerSearchForServiceAccountUnderIncome");
         }
-
+    
         public virtual ObjectResult<AccountLedgerView_Result> AccountLedgerView(Nullable<decimal> ledgerId)
         {
             var ledgerIdParameter = ledgerId.HasValue ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountLedgerView_Result>("AccountLedgerView", ledgerIdParameter);
         }
-
+    
         public virtual ObjectResult<AccountLedgerViewAll_Result> AccountLedgerViewAll()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountLedgerViewAll_Result>("AccountLedgerViewAll");
         }
-
+    
         public virtual ObjectResult<AccountLedgerViewAllByLedgerName_Result> AccountLedgerViewAllByLedgerName(Nullable<decimal> accountGroupId)
         {
             var accountGroupIdParameter = accountGroupId.HasValue ?
                 new ObjectParameter("accountGroupId", accountGroupId) :
                 new ObjectParameter("accountGroupId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountLedgerViewAllByLedgerName_Result>("AccountLedgerViewAllByLedgerName", accountGroupIdParameter);
         }
-
+    
         public virtual ObjectResult<AccountLedgerViewAllForComboBox_Result> AccountLedgerViewAllForComboBox()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountLedgerViewAllForComboBox_Result>("AccountLedgerViewAllForComboBox");
         }
-
+    
         public virtual ObjectResult<AccountLedgerViewByAccountGroup_Result> AccountLedgerViewByAccountGroup(Nullable<decimal> accountGroupId)
         {
             var accountGroupIdParameter = accountGroupId.HasValue ?
                 new ObjectParameter("accountGroupId", accountGroupId) :
                 new ObjectParameter("accountGroupId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountLedgerViewByAccountGroup_Result>("AccountLedgerViewByAccountGroup", accountGroupIdParameter);
         }
-
+    
         public virtual ObjectResult<AccountLedgerViewForAdditionalCost_Result> AccountLedgerViewForAdditionalCost()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountLedgerViewForAdditionalCost_Result>("AccountLedgerViewForAdditionalCost");
         }
-
+    
         public virtual int AdditionalCostAdd(Nullable<decimal> voucherTypeId, string voucherNo, Nullable<decimal> ledgerId, Nullable<decimal> debit, Nullable<decimal> credit)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             var ledgerIdParameter = ledgerId.HasValue ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(decimal));
-
+    
             var debitParameter = debit.HasValue ?
                 new ObjectParameter("debit", debit) :
                 new ObjectParameter("debit", typeof(decimal));
-
+    
             var creditParameter = credit.HasValue ?
                 new ObjectParameter("credit", credit) :
                 new ObjectParameter("credit", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AdditionalCostAdd", voucherTypeIdParameter, voucherNoParameter, ledgerIdParameter, debitParameter, creditParameter);
         }
-
+    
         public virtual int AdditionalCostDelete(Nullable<decimal> additionalCostId)
         {
             var additionalCostIdParameter = additionalCostId.HasValue ?
                 new ObjectParameter("additionalCostId", additionalCostId) :
                 new ObjectParameter("additionalCostId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AdditionalCostDelete", additionalCostIdParameter);
         }
-
+    
         public virtual int AdditionalCostEdit(Nullable<decimal> additionalCostId, Nullable<decimal> voucherTypeId, string voucherNo, Nullable<decimal> ledgerId, Nullable<decimal> debit, Nullable<decimal> credit)
         {
             var additionalCostIdParameter = additionalCostId.HasValue ?
                 new ObjectParameter("additionalCostId", additionalCostId) :
                 new ObjectParameter("additionalCostId", typeof(decimal));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             var ledgerIdParameter = ledgerId.HasValue ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(decimal));
-
+    
             var debitParameter = debit.HasValue ?
                 new ObjectParameter("debit", debit) :
                 new ObjectParameter("debit", typeof(decimal));
-
+    
             var creditParameter = credit.HasValue ?
                 new ObjectParameter("credit", credit) :
                 new ObjectParameter("credit", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AdditionalCostEdit", additionalCostIdParameter, voucherTypeIdParameter, voucherNoParameter, ledgerIdParameter, debitParameter, creditParameter);
         }
-
+    
         public virtual int AdditionalCostEditByVoucherTypeIdAndVoucherNo(Nullable<decimal> voucherTypeId, string voucherNo, Nullable<decimal> ledgerId, Nullable<decimal> debit, Nullable<decimal> credit)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             var ledgerIdParameter = ledgerId.HasValue ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(decimal));
-
+    
             var debitParameter = debit.HasValue ?
                 new ObjectParameter("debit", debit) :
                 new ObjectParameter("debit", typeof(decimal));
-
+    
             var creditParameter = credit.HasValue ?
                 new ObjectParameter("credit", credit) :
                 new ObjectParameter("credit", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AdditionalCostEditByVoucherTypeIdAndVoucherNo", voucherTypeIdParameter, voucherNoParameter, ledgerIdParameter, debitParameter, creditParameter);
         }
-
+    
         public virtual ObjectResult<AdditionalCostViewAllByVoucherTypeIdAndVoucherNo_Result> AdditionalCostViewAllByVoucherTypeIdAndVoucherNo(Nullable<decimal> voucherTypeId, string voucherNo)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AdditionalCostViewAllByVoucherTypeIdAndVoucherNo_Result>("AdditionalCostViewAllByVoucherTypeIdAndVoucherNo", voucherTypeIdParameter, voucherNoParameter);
         }
-
+    
         public virtual ObjectResult<AdvancePaymentAddWithIdentity_Result> AdvancePaymentAddWithIdentity(Nullable<decimal> employeeId, Nullable<decimal> ledgerId, string voucherNo, string invoiceNo, Nullable<System.DateTime> date, Nullable<decimal> amount, Nullable<System.DateTime> salaryMonth, string chequenumber, Nullable<System.DateTime> chequeDate, string narration, Nullable<decimal> suffixPrefixId, Nullable<decimal> voucherTypeId, Nullable<decimal> financialYearId, Nullable<bool> isAutomatic)
         {
             var employeeIdParameter = employeeId.HasValue ?
                 new ObjectParameter("employeeId", employeeId) :
                 new ObjectParameter("employeeId", typeof(decimal));
-
+    
             var ledgerIdParameter = ledgerId.HasValue ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(decimal));
-
+    
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             var invoiceNoParameter = invoiceNo != null ?
                 new ObjectParameter("invoiceNo", invoiceNo) :
                 new ObjectParameter("invoiceNo", typeof(string));
-
+    
             var dateParameter = date.HasValue ?
                 new ObjectParameter("date", date) :
                 new ObjectParameter("date", typeof(System.DateTime));
-
+    
             var amountParameter = amount.HasValue ?
                 new ObjectParameter("amount", amount) :
                 new ObjectParameter("amount", typeof(decimal));
-
+    
             var salaryMonthParameter = salaryMonth.HasValue ?
                 new ObjectParameter("salaryMonth", salaryMonth) :
                 new ObjectParameter("salaryMonth", typeof(System.DateTime));
-
+    
             var chequenumberParameter = chequenumber != null ?
                 new ObjectParameter("chequenumber", chequenumber) :
                 new ObjectParameter("chequenumber", typeof(string));
-
+    
             var chequeDateParameter = chequeDate.HasValue ?
                 new ObjectParameter("chequeDate", chequeDate) :
                 new ObjectParameter("chequeDate", typeof(System.DateTime));
-
+    
             var narrationParameter = narration != null ?
                 new ObjectParameter("narration", narration) :
                 new ObjectParameter("narration", typeof(string));
-
+    
             var suffixPrefixIdParameter = suffixPrefixId.HasValue ?
                 new ObjectParameter("suffixPrefixId", suffixPrefixId) :
                 new ObjectParameter("suffixPrefixId", typeof(decimal));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var financialYearIdParameter = financialYearId.HasValue ?
                 new ObjectParameter("financialYearId", financialYearId) :
                 new ObjectParameter("financialYearId", typeof(decimal));
-
+    
             var isAutomaticParameter = isAutomatic.HasValue ?
                 new ObjectParameter("IsAutomatic", isAutomatic) :
                 new ObjectParameter("IsAutomatic", typeof(bool));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AdvancePaymentAddWithIdentity_Result>("AdvancePaymentAddWithIdentity", employeeIdParameter, ledgerIdParameter, voucherNoParameter, invoiceNoParameter, dateParameter, amountParameter, salaryMonthParameter, chequenumberParameter, chequeDateParameter, narrationParameter, suffixPrefixIdParameter, voucherTypeIdParameter, financialYearIdParameter, isAutomaticParameter);
         }
-
+    
         public virtual ObjectResult<AdvanceRegisterSearch_Result> AdvanceRegisterSearch(string voucherNo, string date, string employeeName, string employeeCode, string voucherTypeName)
         {
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             var dateParameter = date != null ?
                 new ObjectParameter("date", date) :
                 new ObjectParameter("date", typeof(string));
-
+    
             var employeeNameParameter = employeeName != null ?
                 new ObjectParameter("employeeName", employeeName) :
                 new ObjectParameter("employeeName", typeof(string));
-
+    
             var employeeCodeParameter = employeeCode != null ?
                 new ObjectParameter("employeeCode", employeeCode) :
                 new ObjectParameter("employeeCode", typeof(string));
-
+    
             var voucherTypeNameParameter = voucherTypeName != null ?
                 new ObjectParameter("VoucherTypeName", voucherTypeName) :
                 new ObjectParameter("VoucherTypeName", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AdvanceRegisterSearch_Result>("AdvanceRegisterSearch", voucherNoParameter, dateParameter, employeeNameParameter, employeeCodeParameter, voucherTypeNameParameter);
         }
-
+    
         public virtual ObjectResult<AgeingReportFillByPayable_Result> AgeingReportFillByPayable(Nullable<System.DateTime> ageingDate, string status, string ledgerId, string ledgerBy)
         {
             var ageingDateParameter = ageingDate.HasValue ?
                 new ObjectParameter("ageingDate", ageingDate) :
                 new ObjectParameter("ageingDate", typeof(System.DateTime));
-
+    
             var statusParameter = status != null ?
                 new ObjectParameter("status", status) :
                 new ObjectParameter("status", typeof(string));
-
+    
             var ledgerIdParameter = ledgerId != null ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(string));
-
+    
             var ledgerByParameter = ledgerBy != null ?
                 new ObjectParameter("ledgerBy", ledgerBy) :
                 new ObjectParameter("ledgerBy", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AgeingReportFillByPayable_Result>("AgeingReportFillByPayable", ageingDateParameter, statusParameter, ledgerIdParameter, ledgerByParameter);
         }
-
+    
         public virtual ObjectResult<AgeingReportFillByReceivable_Result> AgeingReportFillByReceivable(Nullable<System.DateTime> ageingDate, string status, string ledgerId, string ledgerBy)
         {
             var ageingDateParameter = ageingDate.HasValue ?
                 new ObjectParameter("ageingDate", ageingDate) :
                 new ObjectParameter("ageingDate", typeof(System.DateTime));
-
+    
             var statusParameter = status != null ?
                 new ObjectParameter("status", status) :
                 new ObjectParameter("status", typeof(string));
-
+    
             var ledgerIdParameter = ledgerId != null ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(string));
-
+    
             var ledgerByParameter = ledgerBy != null ?
                 new ObjectParameter("ledgerBy", ledgerBy) :
                 new ObjectParameter("ledgerBy", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AgeingReportFillByReceivable_Result>("AgeingReportFillByReceivable", ageingDateParameter, statusParameter, ledgerIdParameter, ledgerByParameter);
         }
-
+    
         public virtual ObjectResult<AgeingReportLedgerPayable_Result> AgeingReportLedgerPayable(Nullable<System.DateTime> ageingDate, Nullable<decimal> ledgerId)
         {
             var ageingDateParameter = ageingDate.HasValue ?
                 new ObjectParameter("ageingDate", ageingDate) :
                 new ObjectParameter("ageingDate", typeof(System.DateTime));
-
+    
             var ledgerIdParameter = ledgerId.HasValue ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AgeingReportLedgerPayable_Result>("AgeingReportLedgerPayable", ageingDateParameter, ledgerIdParameter);
         }
-
+    
         public virtual ObjectResult<AgeingReportLedgerReceivable_Result> AgeingReportLedgerReceivable(Nullable<System.DateTime> ageingDate, Nullable<decimal> ledgerId)
         {
             var ageingDateParameter = ageingDate.HasValue ?
                 new ObjectParameter("ageingDate", ageingDate) :
                 new ObjectParameter("ageingDate", typeof(System.DateTime));
-
+    
             var ledgerIdParameter = ledgerId.HasValue ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AgeingReportLedgerReceivable_Result>("AgeingReportLedgerReceivable", ageingDateParameter, ledgerIdParameter);
         }
-
+    
         public virtual ObjectResult<AgeingReportVoucherPayable_Result> AgeingReportVoucherPayable(Nullable<System.DateTime> ageingDate, Nullable<decimal> ledgerId)
         {
             var ageingDateParameter = ageingDate.HasValue ?
                 new ObjectParameter("ageingDate", ageingDate) :
                 new ObjectParameter("ageingDate", typeof(System.DateTime));
-
+    
             var ledgerIdParameter = ledgerId.HasValue ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AgeingReportVoucherPayable_Result>("AgeingReportVoucherPayable", ageingDateParameter, ledgerIdParameter);
         }
-
+    
         public virtual ObjectResult<AgeingReportVoucherReceivable_Result> AgeingReportVoucherReceivable(Nullable<System.DateTime> ageingDate, Nullable<decimal> ledgerId)
         {
             var ageingDateParameter = ageingDate.HasValue ?
                 new ObjectParameter("ageingDate", ageingDate) :
                 new ObjectParameter("ageingDate", typeof(System.DateTime));
-
+    
             var ledgerIdParameter = ledgerId.HasValue ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AgeingReportVoucherReceivable_Result>("AgeingReportVoucherReceivable", ageingDateParameter, ledgerIdParameter);
         }
-
+    
         public virtual int AreaDeleteReference(Nullable<decimal> areaId)
         {
             var areaIdParameter = areaId.HasValue ?
                 new ObjectParameter("areaId", areaId) :
                 new ObjectParameter("areaId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AreaDeleteReference", areaIdParameter);
         }
-
+    
         public virtual ObjectResult<AreaOnlyViewAll_Result> AreaOnlyViewAll()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AreaOnlyViewAll_Result>("AreaOnlyViewAll");
         }
-
+    
         public virtual ObjectResult<AreaWithNarrationView_Result> AreaWithNarrationView(Nullable<decimal> areaId)
         {
             var areaIdParameter = areaId.HasValue ?
                 new ObjectParameter("areaId", areaId) :
                 new ObjectParameter("areaId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AreaWithNarrationView_Result>("AreaWithNarrationView", areaIdParameter);
         }
-
+    
         public virtual ObjectResult<ArticleSearch_Result> ArticleSearch(string articleNo)
         {
             var articleNoParameter = articleNo != null ?
                 new ObjectParameter("articleNo", articleNo) :
                 new ObjectParameter("articleNo", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ArticleSearch_Result>("ArticleSearch", articleNoParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<int>> ArticleSearchCheckExistence(string articleNo)
         {
             var articleNoParameter = articleNo != null ?
                 new ObjectParameter("articleNo", articleNo) :
                 new ObjectParameter("articleNo", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("ArticleSearchCheckExistence", articleNoParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<int>> ArticleSearchHasMultipleItems(string articleNo)
         {
             var articleNoParameter = articleNo != null ?
                 new ObjectParameter("articleNo", articleNo) :
                 new ObjectParameter("articleNo", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("ArticleSearchHasMultipleItems", articleNoParameter);
         }
-
+    
         public virtual ObjectResult<ArticleSearchWithAll_Result> ArticleSearchWithAll(string articleNo, string articleDesc, string mPNNo, string note)
         {
             var articleNoParameter = articleNo != null ?
                 new ObjectParameter("articleNo", articleNo) :
                 new ObjectParameter("articleNo", typeof(string));
-
+    
             var articleDescParameter = articleDesc != null ?
                 new ObjectParameter("articleDesc", articleDesc) :
                 new ObjectParameter("articleDesc", typeof(string));
-
+    
             var mPNNoParameter = mPNNo != null ?
                 new ObjectParameter("MPNNo", mPNNo) :
                 new ObjectParameter("MPNNo", typeof(string));
-
+    
             var noteParameter = note != null ?
                 new ObjectParameter("note", note) :
                 new ObjectParameter("note", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ArticleSearchWithAll_Result>("ArticleSearchWithAll", articleNoParameter, articleDescParameter, mPNNoParameter, noteParameter);
         }
-
+    
         public virtual ObjectResult<ArticleSearchwithMPN_Result> ArticleSearchwithMPN(string mPNNo)
         {
             var mPNNoParameter = mPNNo != null ?
                 new ObjectParameter("MPNNo", mPNNo) :
                 new ObjectParameter("MPNNo", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ArticleSearchwithMPN_Result>("ArticleSearchwithMPN", mPNNoParameter);
         }
-
+    
         public virtual ObjectResult<ArticleSelectAll_Result> ArticleSelectAll()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ArticleSelectAll_Result>("ArticleSelectAll");
         }
-
+    
         public virtual ObjectResult<BalanceSheet_Result> BalanceSheet(Nullable<System.DateTime> toDate, Nullable<System.DateTime> fromDate)
         {
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BalanceSheet_Result>("BalanceSheet", toDateParameter, fromDateParameter);
         }
-
+    
         public virtual ObjectResult<BalanceSheetAssets_Result> BalanceSheetAssets(Nullable<System.DateTime> toDate, Nullable<System.DateTime> fromDate)
         {
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BalanceSheetAssets_Result>("BalanceSheetAssets", toDateParameter, fromDateParameter);
         }
-
+    
         public virtual ObjectResult<BalanceSheetDifference_Result> BalanceSheetDifference(Nullable<System.DateTime> toDate, Nullable<System.DateTime> fromDate)
         {
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BalanceSheetDifference_Result>("BalanceSheetDifference", toDateParameter, fromDateParameter);
         }
-
+    
         public virtual ObjectResult<BalanceSheetLiabilities_Result> BalanceSheetLiabilities(Nullable<System.DateTime> toDate, Nullable<System.DateTime> fromDate)
         {
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BalanceSheetLiabilities_Result>("BalanceSheetLiabilities", toDateParameter, fromDateParameter);
         }
-
+    
         public virtual ObjectResult<BalanceSheetProfitAndLoss_Result> BalanceSheetProfitAndLoss(Nullable<System.DateTime> toDate, Nullable<System.DateTime> fromDate)
         {
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BalanceSheetProfitAndLoss_Result>("BalanceSheetProfitAndLoss", toDateParameter, fromDateParameter);
         }
-
+    
         public virtual ObjectResult<BalanceSheetProfitAndLossAccount_Result> BalanceSheetProfitAndLossAccount(Nullable<System.DateTime> toDate, Nullable<System.DateTime> fromDate)
         {
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BalanceSheetProfitAndLossAccount_Result>("BalanceSheetProfitAndLossAccount", toDateParameter, fromDateParameter);
         }
-
+    
         public virtual ObjectResult<BankAccountComboFill_Result> BankAccountComboFill()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BankAccountComboFill_Result>("BankAccountComboFill");
         }
-
+    
         public virtual ObjectResult<BankReconciliationFillUnrecon_Result> BankReconciliationFillUnrecon(Nullable<decimal> ledgerId, Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var ledgerIdParameter = ledgerId.HasValue ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(decimal));
-
+    
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BankReconciliationFillUnrecon_Result>("BankReconciliationFillUnrecon", ledgerIdParameter, fromDateParameter, toDateParameter);
         }
-
+    
         public virtual ObjectResult<string> BarcodeViewByBatchId(Nullable<decimal> batchId)
         {
             var batchIdParameter = batchId.HasValue ?
                 new ObjectParameter("batchId", batchId) :
                 new ObjectParameter("batchId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("BarcodeViewByBatchId", batchIdParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> BatchIdViewByProductId(Nullable<decimal> productId)
         {
             var productIdParameter = productId.HasValue ?
                 new ObjectParameter("productId", productId) :
                 new ObjectParameter("productId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("BatchIdViewByProductId", productIdParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> BatchViewByProductId(string productId)
         {
             var productIdParameter = productId != null ?
                 new ObjectParameter("productId", productId) :
                 new ObjectParameter("productId", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("BatchViewByProductId", productIdParameter);
         }
-
+    
         public virtual ObjectResult<BillAllocationAccountGroupFill_Result> BillAllocationAccountGroupFill()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BillAllocationAccountGroupFill_Result>("BillAllocationAccountGroupFill");
         }
-
+    
         public virtual ObjectResult<BillAllocationLedgerFill_Result> BillAllocationLedgerFill(string accountGroupName)
         {
             var accountGroupNameParameter = accountGroupName != null ?
                 new ObjectParameter("accountGroupName", accountGroupName) :
                 new ObjectParameter("accountGroupName", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BillAllocationLedgerFill_Result>("BillAllocationLedgerFill", accountGroupNameParameter);
         }
-
+    
         public virtual ObjectResult<BillAllocationSearch_Result> BillAllocationSearch(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, string accountGroupName, string ledgerName)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             var accountGroupNameParameter = accountGroupName != null ?
                 new ObjectParameter("accountGroupName", accountGroupName) :
                 new ObjectParameter("accountGroupName", typeof(string));
-
+    
             var ledgerNameParameter = ledgerName != null ?
                 new ObjectParameter("ledgerName", ledgerName) :
                 new ObjectParameter("ledgerName", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BillAllocationSearch_Result>("BillAllocationSearch", fromDateParameter, toDateParameter, accountGroupNameParameter, ledgerNameParameter);
         }
-
+    
         public virtual ObjectResult<BonusDeductionSearch_Result> BonusDeductionSearch(string workerName, Nullable<System.DateTime> month)
         {
             var workerNameParameter = workerName != null ?
                 new ObjectParameter("WorkerName", workerName) :
                 new ObjectParameter("WorkerName", typeof(string));
-
+    
             var monthParameter = month.HasValue ?
                 new ObjectParameter("month", month) :
                 new ObjectParameter("month", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BonusDeductionSearch_Result>("BonusDeductionSearch", workerNameParameter, monthParameter);
         }
-
+    
         public virtual ObjectResult<BrandView_Result> BrandView(Nullable<decimal> brandId)
         {
             var brandIdParameter = brandId.HasValue ?
                 new ObjectParameter("brandId", brandId) :
                 new ObjectParameter("brandId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BrandView_Result>("BrandView", brandIdParameter);
         }
-
+    
         public virtual int BudgetDetailsDeleteWithMasterId(Nullable<decimal> budgetMasterId)
         {
             var budgetMasterIdParameter = budgetMasterId.HasValue ?
                 new ObjectParameter("budgetMasterId", budgetMasterId) :
                 new ObjectParameter("budgetMasterId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("BudgetDetailsDeleteWithMasterId", budgetMasterIdParameter);
         }
-
+    
         public virtual ObjectResult<BudgetVariance_Result> BudgetVariance(Nullable<decimal> budgetMasterId)
         {
             var budgetMasterIdParameter = budgetMasterId.HasValue ?
                 new ObjectParameter("budgetMasterId", budgetMasterId) :
                 new ObjectParameter("budgetMasterId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BudgetVariance_Result>("BudgetVariance", budgetMasterIdParameter);
         }
-
+    
+        public virtual ObjectResult<CashFlow1_Result> CashFlow1(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CashFlow1_Result>("CashFlow1", fromDateParameter, toDateParameter);
+        }
+    
+        public virtual ObjectResult<CashFlow10_Result> CashFlow10(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CashFlow10_Result>("CashFlow10", fromDateParameter, toDateParameter);
+        }
+    
+        public virtual ObjectResult<CashFlow11_Result> CashFlow11(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CashFlow11_Result>("CashFlow11", fromDateParameter, toDateParameter);
+        }
+    
+        public virtual ObjectResult<CashFlow12_Result> CashFlow12(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CashFlow12_Result>("CashFlow12", fromDateParameter, toDateParameter);
+        }
+    
+        public virtual ObjectResult<CashFlow13_Result> CashFlow13(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CashFlow13_Result>("CashFlow13", fromDateParameter, toDateParameter);
+        }
+    
+        public virtual ObjectResult<CashFlow14_Result> CashFlow14(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CashFlow14_Result>("CashFlow14", fromDateParameter, toDateParameter);
+        }
+    
+        public virtual ObjectResult<CashFlow15_Result> CashFlow15(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CashFlow15_Result>("CashFlow15", fromDateParameter, toDateParameter);
+        }
+    
+        public virtual ObjectResult<CashFlow2_Result> CashFlow2(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CashFlow2_Result>("CashFlow2", fromDateParameter, toDateParameter);
+        }
+    
+        public virtual ObjectResult<CashFlow3_Result> CashFlow3(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CashFlow3_Result>("CashFlow3", fromDateParameter, toDateParameter);
+        }
+    
+        public virtual ObjectResult<CashFlow4_Result> CashFlow4(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CashFlow4_Result>("CashFlow4", fromDateParameter, toDateParameter);
+        }
+    
+        public virtual ObjectResult<CashFlow5_Result> CashFlow5(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CashFlow5_Result>("CashFlow5", fromDateParameter, toDateParameter);
+        }
+    
+        public virtual ObjectResult<CashFlow6_Result> CashFlow6(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CashFlow6_Result>("CashFlow6", fromDateParameter, toDateParameter);
+        }
+    
+        public virtual ObjectResult<CashFlow7_Result> CashFlow7(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CashFlow7_Result>("CashFlow7", fromDateParameter, toDateParameter);
+        }
+    
+        public virtual ObjectResult<CashFlow8_Result> CashFlow8(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CashFlow8_Result>("CashFlow8", fromDateParameter, toDateParameter);
+        }
+    
+        public virtual ObjectResult<CashFlow9_Result> CashFlow9(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CashFlow9_Result>("CashFlow9", fromDateParameter, toDateParameter);
+        }
+    
         public virtual ObjectResult<CashFlowReportPrintCompany_Result> CashFlowReportPrintCompany()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CashFlowReportPrintCompany_Result>("CashFlowReportPrintCompany");
         }
-
+    
         public virtual ObjectResult<CashOrBankBookGridFill_Result> CashOrBankBookGridFill(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, Nullable<bool> isShowOpeningBalance)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             var isShowOpeningBalanceParameter = isShowOpeningBalance.HasValue ?
                 new ObjectParameter("isShowOpeningBalance", isShowOpeningBalance) :
                 new ObjectParameter("isShowOpeningBalance", typeof(bool));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CashOrBankBookGridFill_Result>("CashOrBankBookGridFill", fromDateParameter, toDateParameter, isShowOpeningBalanceParameter);
         }
-
+    
         public virtual ObjectResult<CashOrBankComboFill_Result> CashOrBankComboFill()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CashOrBankComboFill_Result>("CashOrBankComboFill");
         }
-
+    
         public virtual ObjectResult<Nullable<int>> CheckForDefaultVoucherType(Nullable<decimal> voucherTypeId)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("CheckForDefaultVoucherType", voucherTypeIdParameter);
         }
-
+    
         public virtual ObjectResult<string> CheckSalaryAlreadyPaidOrNot(Nullable<decimal> employeeId, Nullable<System.DateTime> month)
         {
             var employeeIdParameter = employeeId.HasValue ?
                 new ObjectParameter("employeeId", employeeId) :
                 new ObjectParameter("employeeId", typeof(decimal));
-
+    
             var monthParameter = month.HasValue ?
                 new ObjectParameter("month", month) :
                 new ObjectParameter("month", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("CheckSalaryAlreadyPaidOrNot", employeeIdParameter, monthParameter);
         }
-
+    
         public virtual ObjectResult<string> CheckSalaryAlreadyPaidOrNotForAdvancePayment(Nullable<decimal> employeeId, Nullable<System.DateTime> month)
         {
             var employeeIdParameter = employeeId.HasValue ?
                 new ObjectParameter("employeeId", employeeId) :
                 new ObjectParameter("employeeId", typeof(decimal));
-
+    
             var monthParameter = month.HasValue ?
                 new ObjectParameter("month", month) :
                 new ObjectParameter("month", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("CheckSalaryAlreadyPaidOrNotForAdvancePayment", employeeIdParameter, monthParameter);
         }
-
+    
         public virtual ObjectResult<string> CheckWhetherDailySalaryAlreadyPaid(Nullable<decimal> employeeId, Nullable<System.DateTime> salaryDate)
         {
             var employeeIdParameter = employeeId.HasValue ?
                 new ObjectParameter("employeeId", employeeId) :
                 new ObjectParameter("employeeId", typeof(decimal));
-
+    
             var salaryDateParameter = salaryDate.HasValue ?
                 new ObjectParameter("salaryDate", salaryDate) :
                 new ObjectParameter("salaryDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("CheckWhetherDailySalaryAlreadyPaid", employeeIdParameter, salaryDateParameter);
         }
-
+    
         public virtual ObjectResult<ChequeReportGridFill_Result> ChequeReportGridFill(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, Nullable<System.DateTime> chequefromDate, Nullable<System.DateTime> chequetoDate, Nullable<bool> issued, string ledgerId, string startText, string startNo)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             var chequefromDateParameter = chequefromDate.HasValue ?
                 new ObjectParameter("chequefromDate", chequefromDate) :
                 new ObjectParameter("chequefromDate", typeof(System.DateTime));
-
+    
             var chequetoDateParameter = chequetoDate.HasValue ?
                 new ObjectParameter("chequetoDate", chequetoDate) :
                 new ObjectParameter("chequetoDate", typeof(System.DateTime));
-
+    
             var issuedParameter = issued.HasValue ?
                 new ObjectParameter("issued", issued) :
                 new ObjectParameter("issued", typeof(bool));
-
+    
             var ledgerIdParameter = ledgerId != null ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(string));
-
+    
             var startTextParameter = startText != null ?
                 new ObjectParameter("startText", startText) :
                 new ObjectParameter("startText", typeof(string));
-
+    
             var startNoParameter = startNo != null ?
                 new ObjectParameter("startNo", startNo) :
                 new ObjectParameter("startNo", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ChequeReportGridFill_Result>("ChequeReportGridFill", fromDateParameter, toDateParameter, chequefromDateParameter, chequetoDateParameter, issuedParameter, ledgerIdParameter, startTextParameter, startNoParameter);
         }
-
+    
         public virtual ObjectResult<ChequeReportPartyComboFill_Result> ChequeReportPartyComboFill()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ChequeReportPartyComboFill_Result>("ChequeReportPartyComboFill");
         }
-
+    
         public virtual int CompanyAdd(Nullable<decimal> companyId, string companyName, string mailingName, string address, string phone, string mobile, string emailId, string web, string country, string state, string pin, Nullable<decimal> currencyId, Nullable<System.DateTime> financialYearFrom, Nullable<System.DateTime> booksBeginingFrom, string tin, string cst, string pan)
         {
             var companyIdParameter = companyId.HasValue ?
                 new ObjectParameter("companyId", companyId) :
                 new ObjectParameter("companyId", typeof(decimal));
-
+    
             var companyNameParameter = companyName != null ?
                 new ObjectParameter("companyName", companyName) :
                 new ObjectParameter("companyName", typeof(string));
-
+    
             var mailingNameParameter = mailingName != null ?
                 new ObjectParameter("mailingName", mailingName) :
                 new ObjectParameter("mailingName", typeof(string));
-
+    
             var addressParameter = address != null ?
                 new ObjectParameter("address", address) :
                 new ObjectParameter("address", typeof(string));
-
+    
             var phoneParameter = phone != null ?
                 new ObjectParameter("phone", phone) :
                 new ObjectParameter("phone", typeof(string));
-
+    
             var mobileParameter = mobile != null ?
                 new ObjectParameter("mobile", mobile) :
                 new ObjectParameter("mobile", typeof(string));
-
+    
             var emailIdParameter = emailId != null ?
                 new ObjectParameter("emailId", emailId) :
                 new ObjectParameter("emailId", typeof(string));
-
+    
             var webParameter = web != null ?
                 new ObjectParameter("web", web) :
                 new ObjectParameter("web", typeof(string));
-
+    
             var countryParameter = country != null ?
                 new ObjectParameter("country", country) :
                 new ObjectParameter("country", typeof(string));
-
+    
             var stateParameter = state != null ?
                 new ObjectParameter("state", state) :
                 new ObjectParameter("state", typeof(string));
-
+    
             var pinParameter = pin != null ?
                 new ObjectParameter("pin", pin) :
                 new ObjectParameter("pin", typeof(string));
-
+    
             var currencyIdParameter = currencyId.HasValue ?
                 new ObjectParameter("currencyId", currencyId) :
                 new ObjectParameter("currencyId", typeof(decimal));
-
+    
             var financialYearFromParameter = financialYearFrom.HasValue ?
                 new ObjectParameter("financialYearFrom", financialYearFrom) :
                 new ObjectParameter("financialYearFrom", typeof(System.DateTime));
-
+    
             var booksBeginingFromParameter = booksBeginingFrom.HasValue ?
                 new ObjectParameter("booksBeginingFrom", booksBeginingFrom) :
                 new ObjectParameter("booksBeginingFrom", typeof(System.DateTime));
-
+    
             var tinParameter = tin != null ?
                 new ObjectParameter("tin", tin) :
                 new ObjectParameter("tin", typeof(string));
-
+    
             var cstParameter = cst != null ?
                 new ObjectParameter("cst", cst) :
                 new ObjectParameter("cst", typeof(string));
-
+    
             var panParameter = pan != null ?
                 new ObjectParameter("pan", pan) :
                 new ObjectParameter("pan", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CompanyAdd", companyIdParameter, companyNameParameter, mailingNameParameter, addressParameter, phoneParameter, mobileParameter, emailIdParameter, webParameter, countryParameter, stateParameter, pinParameter, currencyIdParameter, financialYearFromParameter, booksBeginingFromParameter, tinParameter, cstParameter, panParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> CompanyAddParticularFeilds(string companyName, string mailingName, string address, string phone, string mobile, string emailId, string web, string country, string state, string pin, Nullable<decimal> currencyId, Nullable<System.DateTime> financialYearFrom, Nullable<System.DateTime> booksBeginingFrom, string tin, string cst, string pan)
         {
             var companyNameParameter = companyName != null ?
                 new ObjectParameter("companyName", companyName) :
                 new ObjectParameter("companyName", typeof(string));
-
+    
             var mailingNameParameter = mailingName != null ?
                 new ObjectParameter("mailingName", mailingName) :
                 new ObjectParameter("mailingName", typeof(string));
-
+    
             var addressParameter = address != null ?
                 new ObjectParameter("address", address) :
                 new ObjectParameter("address", typeof(string));
-
+    
             var phoneParameter = phone != null ?
                 new ObjectParameter("phone", phone) :
                 new ObjectParameter("phone", typeof(string));
-
+    
             var mobileParameter = mobile != null ?
                 new ObjectParameter("mobile", mobile) :
                 new ObjectParameter("mobile", typeof(string));
-
+    
             var emailIdParameter = emailId != null ?
                 new ObjectParameter("emailId", emailId) :
                 new ObjectParameter("emailId", typeof(string));
-
+    
             var webParameter = web != null ?
                 new ObjectParameter("web", web) :
                 new ObjectParameter("web", typeof(string));
-
+    
             var countryParameter = country != null ?
                 new ObjectParameter("country", country) :
                 new ObjectParameter("country", typeof(string));
-
+    
             var stateParameter = state != null ?
                 new ObjectParameter("state", state) :
                 new ObjectParameter("state", typeof(string));
-
+    
             var pinParameter = pin != null ?
                 new ObjectParameter("pin", pin) :
                 new ObjectParameter("pin", typeof(string));
-
+    
             var currencyIdParameter = currencyId.HasValue ?
                 new ObjectParameter("currencyId", currencyId) :
                 new ObjectParameter("currencyId", typeof(decimal));
-
+    
             var financialYearFromParameter = financialYearFrom.HasValue ?
                 new ObjectParameter("financialYearFrom", financialYearFrom) :
                 new ObjectParameter("financialYearFrom", typeof(System.DateTime));
-
+    
             var booksBeginingFromParameter = booksBeginingFrom.HasValue ?
                 new ObjectParameter("booksBeginingFrom", booksBeginingFrom) :
                 new ObjectParameter("booksBeginingFrom", typeof(System.DateTime));
-
+    
             var tinParameter = tin != null ?
                 new ObjectParameter("tin", tin) :
                 new ObjectParameter("tin", typeof(string));
-
+    
             var cstParameter = cst != null ?
                 new ObjectParameter("cst", cst) :
                 new ObjectParameter("cst", typeof(string));
-
+    
             var panParameter = pan != null ?
                 new ObjectParameter("pan", pan) :
                 new ObjectParameter("pan", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("CompanyAddParticularFeilds", companyNameParameter, mailingNameParameter, addressParameter, phoneParameter, mobileParameter, emailIdParameter, webParameter, countryParameter, stateParameter, pinParameter, currencyIdParameter, financialYearFromParameter, booksBeginingFromParameter, tinParameter, cstParameter, panParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<int>> CompanyCheckExistence(string companyName, Nullable<decimal> companyId)
         {
             var companyNameParameter = companyName != null ?
                 new ObjectParameter("companyName", companyName) :
                 new ObjectParameter("companyName", typeof(string));
-
+    
             var companyIdParameter = companyId.HasValue ?
                 new ObjectParameter("companyId", companyId) :
                 new ObjectParameter("companyId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("CompanyCheckExistence", companyNameParameter, companyIdParameter);
         }
-
+    
         public virtual int CompanyEdit(Nullable<decimal> companyId, string companyName, string mailingName, string address, string phone, string mobile, string emailId, string web, string country, string state, string pin, Nullable<decimal> currencyId, Nullable<System.DateTime> financialYearFrom, Nullable<System.DateTime> booksBeginingFrom, string tin, string cst, string pan)
         {
             var companyIdParameter = companyId.HasValue ?
                 new ObjectParameter("companyId", companyId) :
                 new ObjectParameter("companyId", typeof(decimal));
-
+    
             var companyNameParameter = companyName != null ?
                 new ObjectParameter("companyName", companyName) :
                 new ObjectParameter("companyName", typeof(string));
-
+    
             var mailingNameParameter = mailingName != null ?
                 new ObjectParameter("mailingName", mailingName) :
                 new ObjectParameter("mailingName", typeof(string));
-
+    
             var addressParameter = address != null ?
                 new ObjectParameter("address", address) :
                 new ObjectParameter("address", typeof(string));
-
+    
             var phoneParameter = phone != null ?
                 new ObjectParameter("phone", phone) :
                 new ObjectParameter("phone", typeof(string));
-
+    
             var mobileParameter = mobile != null ?
                 new ObjectParameter("mobile", mobile) :
                 new ObjectParameter("mobile", typeof(string));
-
+    
             var emailIdParameter = emailId != null ?
                 new ObjectParameter("emailId", emailId) :
                 new ObjectParameter("emailId", typeof(string));
-
+    
             var webParameter = web != null ?
                 new ObjectParameter("web", web) :
                 new ObjectParameter("web", typeof(string));
-
+    
             var countryParameter = country != null ?
                 new ObjectParameter("country", country) :
                 new ObjectParameter("country", typeof(string));
-
+    
             var stateParameter = state != null ?
                 new ObjectParameter("state", state) :
                 new ObjectParameter("state", typeof(string));
-
+    
             var pinParameter = pin != null ?
                 new ObjectParameter("pin", pin) :
                 new ObjectParameter("pin", typeof(string));
-
+    
             var currencyIdParameter = currencyId.HasValue ?
                 new ObjectParameter("currencyId", currencyId) :
                 new ObjectParameter("currencyId", typeof(decimal));
-
+    
             var financialYearFromParameter = financialYearFrom.HasValue ?
                 new ObjectParameter("financialYearFrom", financialYearFrom) :
                 new ObjectParameter("financialYearFrom", typeof(System.DateTime));
-
+    
             var booksBeginingFromParameter = booksBeginingFrom.HasValue ?
                 new ObjectParameter("booksBeginingFrom", booksBeginingFrom) :
                 new ObjectParameter("booksBeginingFrom", typeof(System.DateTime));
-
+    
             var tinParameter = tin != null ?
                 new ObjectParameter("tin", tin) :
                 new ObjectParameter("tin", typeof(string));
-
+    
             var cstParameter = cst != null ?
                 new ObjectParameter("cst", cst) :
                 new ObjectParameter("cst", typeof(string));
-
+    
             var panParameter = pan != null ?
                 new ObjectParameter("pan", pan) :
                 new ObjectParameter("pan", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CompanyEdit", companyIdParameter, companyNameParameter, mailingNameParameter, addressParameter, phoneParameter, mobileParameter, emailIdParameter, webParameter, countryParameter, stateParameter, pinParameter, currencyIdParameter, financialYearFromParameter, booksBeginingFromParameter, tinParameter, cstParameter, panParameter);
         }
-
+    
         public virtual int CompanyPathAdd(string companyName, string companyPath, Nullable<bool> isDefault)
         {
             var companyNameParameter = companyName != null ?
                 new ObjectParameter("companyName", companyName) :
                 new ObjectParameter("companyName", typeof(string));
-
+    
             var companyPathParameter = companyPath != null ?
                 new ObjectParameter("companyPath", companyPath) :
                 new ObjectParameter("companyPath", typeof(string));
-
+    
             var isDefaultParameter = isDefault.HasValue ?
                 new ObjectParameter("isDefault", isDefault) :
                 new ObjectParameter("isDefault", typeof(bool));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CompanyPathAdd", companyNameParameter, companyPathParameter, isDefaultParameter);
         }
-
+    
         public virtual int CompanyPathEdit(Nullable<decimal> companyId, string companyName, string companyPath, Nullable<bool> isDefault)
         {
             var companyIdParameter = companyId.HasValue ?
                 new ObjectParameter("companyId", companyId) :
                 new ObjectParameter("companyId", typeof(decimal));
-
+    
             var companyNameParameter = companyName != null ?
                 new ObjectParameter("companyName", companyName) :
                 new ObjectParameter("companyName", typeof(string));
-
+    
             var companyPathParameter = companyPath != null ?
                 new ObjectParameter("companyPath", companyPath) :
                 new ObjectParameter("companyPath", typeof(string));
-
+    
             var isDefaultParameter = isDefault.HasValue ?
                 new ObjectParameter("isDefault", isDefault) :
                 new ObjectParameter("isDefault", typeof(bool));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CompanyPathEdit", companyIdParameter, companyNameParameter, companyPathParameter, isDefaultParameter);
         }
-
+    
         public virtual ObjectResult<CompanyPathView_Result> CompanyPathView(Nullable<decimal> companyId)
         {
             var companyIdParameter = companyId.HasValue ?
                 new ObjectParameter("companyId", companyId) :
                 new ObjectParameter("companyId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CompanyPathView_Result>("CompanyPathView", companyIdParameter);
         }
-
+    
         public virtual ObjectResult<CompanyView_Result> CompanyView(Nullable<decimal> companyId)
         {
             var companyIdParameter = companyId.HasValue ?
                 new ObjectParameter("companyId", companyId) :
                 new ObjectParameter("companyId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CompanyView_Result>("CompanyView", companyIdParameter);
         }
-
+    
         public virtual ObjectResult<CompanyViewAll_Result> CompanyViewAll()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CompanyViewAll_Result>("CompanyViewAll");
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> CreditNoteMasterIdView(Nullable<decimal> voucherTypeId, string voucherNo)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("CreditNoteMasterIdView", voucherTypeIdParameter, voucherNoParameter);
         }
-
+    
         public virtual ObjectResult<CreditNoteRegisterSearch_Result> CreditNoteRegisterSearch(string voucherNo, Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CreditNoteRegisterSearch_Result>("CreditNoteRegisterSearch", voucherNoParameter, fromDateParameter, toDateParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<int>> CreteNewSaleOrderNo()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("CreteNewSaleOrderNo");
         }
-
+    
         public virtual ObjectResult<CurrencyComboByDate_Result> CurrencyComboByDate(Nullable<System.DateTime> date)
         {
             var dateParameter = date.HasValue ?
                 new ObjectParameter("date", date) :
                 new ObjectParameter("date", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CurrencyComboByDate_Result>("CurrencyComboByDate", dateParameter);
         }
-
+    
         public virtual int CurrencyEdit(Nullable<decimal> currencyId, string currencySymbol, string currencyName, string subunitName)
         {
             var currencyIdParameter = currencyId.HasValue ?
                 new ObjectParameter("currencyId", currencyId) :
                 new ObjectParameter("currencyId", typeof(decimal));
-
+    
             var currencySymbolParameter = currencySymbol != null ?
                 new ObjectParameter("currencySymbol", currencySymbol) :
                 new ObjectParameter("currencySymbol", typeof(string));
-
+    
             var currencyNameParameter = currencyName != null ?
                 new ObjectParameter("currencyName", currencyName) :
                 new ObjectParameter("currencyName", typeof(string));
-
+    
             var subunitNameParameter = subunitName != null ?
                 new ObjectParameter("subunitName", subunitName) :
                 new ObjectParameter("subunitName", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CurrencyEdit", currencyIdParameter, currencySymbolParameter, currencyNameParameter, subunitNameParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<int>> CurrencyNameCheckExistence(string currencyName, Nullable<decimal> currencyId, string currencySymbol)
         {
             var currencyNameParameter = currencyName != null ?
                 new ObjectParameter("currencyName", currencyName) :
                 new ObjectParameter("currencyName", typeof(string));
-
+    
             var currencyIdParameter = currencyId.HasValue ?
                 new ObjectParameter("currencyId", currencyId) :
                 new ObjectParameter("currencyId", typeof(decimal));
-
+    
             var currencySymbolParameter = currencySymbol != null ?
                 new ObjectParameter("currencySymbol", currencySymbol) :
                 new ObjectParameter("currencySymbol", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("CurrencyNameCheckExistence", currencyNameParameter, currencyIdParameter, currencySymbolParameter);
         }
-
+    
         public virtual ObjectResult<CurrencySearch_Result> CurrencySearch(string currencyName, string currencySymbol)
         {
             var currencyNameParameter = currencyName != null ?
                 new ObjectParameter("currencyName", currencyName) :
                 new ObjectParameter("currencyName", typeof(string));
-
+    
             var currencySymbolParameter = currencySymbol != null ?
                 new ObjectParameter("currencySymbol", currencySymbol) :
                 new ObjectParameter("currencySymbol", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CurrencySearch_Result>("CurrencySearch", currencyNameParameter, currencySymbolParameter);
         }
-
+    
         public virtual ObjectResult<CurrencyViewAllForCombo_Result> CurrencyViewAllForCombo()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CurrencyViewAllForCombo_Result>("CurrencyViewAllForCombo");
         }
-
+    
         public virtual ObjectResult<Nullable<System.DateTime>> CurrentDate()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.DateTime>>("CurrentDate");
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> DailyAttendanceAddToMaster(Nullable<System.DateTime> date, string narration)
         {
             var dateParameter = date.HasValue ?
                 new ObjectParameter("date", date) :
                 new ObjectParameter("date", typeof(System.DateTime));
-
+    
             var narrationParameter = narration != null ?
                 new ObjectParameter("narration", narration) :
                 new ObjectParameter("narration", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("DailyAttendanceAddToMaster", dateParameter, narrationParameter);
         }
-
+    
         public virtual int DailyAttendanceDetailsAddUsingMasterId(Nullable<decimal> dailyAttendanceMasterId, Nullable<decimal> workerId, string status, string narration)
         {
             var dailyAttendanceMasterIdParameter = dailyAttendanceMasterId.HasValue ?
                 new ObjectParameter("dailyAttendanceMasterId", dailyAttendanceMasterId) :
                 new ObjectParameter("dailyAttendanceMasterId", typeof(decimal));
-
+    
             var workerIdParameter = workerId.HasValue ?
                 new ObjectParameter("WorkerId", workerId) :
                 new ObjectParameter("WorkerId", typeof(decimal));
-
+    
             var statusParameter = status != null ?
                 new ObjectParameter("status", status) :
                 new ObjectParameter("status", typeof(string));
-
+    
             var narrationParameter = narration != null ?
                 new ObjectParameter("narration", narration) :
                 new ObjectParameter("narration", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DailyAttendanceDetailsAddUsingMasterId", dailyAttendanceMasterIdParameter, workerIdParameter, statusParameter, narrationParameter);
         }
-
+    
         public virtual int DailyAttendanceDetailsDeleteAll(Nullable<decimal> dailyAttendanceMasterId)
         {
             var dailyAttendanceMasterIdParameter = dailyAttendanceMasterId.HasValue ?
                 new ObjectParameter("dailyAttendanceMasterId", dailyAttendanceMasterId) :
                 new ObjectParameter("dailyAttendanceMasterId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DailyAttendanceDetailsDeleteAll", dailyAttendanceMasterIdParameter);
         }
-
+    
         public virtual int DailyAttendanceDetailsEditUsingMasterId(Nullable<decimal> dailyAttendanceDetailsId, Nullable<decimal> dailyAttendanceMasterId, Nullable<int> workerID, string status, string narration)
         {
             var dailyAttendanceDetailsIdParameter = dailyAttendanceDetailsId.HasValue ?
                 new ObjectParameter("dailyAttendanceDetailsId", dailyAttendanceDetailsId) :
                 new ObjectParameter("dailyAttendanceDetailsId", typeof(decimal));
-
+    
             var dailyAttendanceMasterIdParameter = dailyAttendanceMasterId.HasValue ?
                 new ObjectParameter("dailyAttendanceMasterId", dailyAttendanceMasterId) :
                 new ObjectParameter("dailyAttendanceMasterId", typeof(decimal));
-
+    
             var workerIDParameter = workerID.HasValue ?
                 new ObjectParameter("WorkerID", workerID) :
                 new ObjectParameter("WorkerID", typeof(int));
-
+    
             var statusParameter = status != null ?
                 new ObjectParameter("status", status) :
                 new ObjectParameter("status", typeof(string));
-
+    
             var narrationParameter = narration != null ?
                 new ObjectParameter("narration", narration) :
                 new ObjectParameter("narration", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DailyAttendanceDetailsEditUsingMasterId", dailyAttendanceDetailsIdParameter, dailyAttendanceMasterIdParameter, workerIDParameter, statusParameter, narrationParameter);
         }
-
+    
         public virtual ObjectResult<DailyAttendanceDetailsSearchGridFill_Result> DailyAttendanceDetailsSearchGridFill(Nullable<System.DateTime> date)
         {
             var dateParameter = date.HasValue ?
                 new ObjectParameter("date", date) :
                 new ObjectParameter("date", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DailyAttendanceDetailsSearchGridFill_Result>("DailyAttendanceDetailsSearchGridFill", dateParameter);
         }
-
+    
         public virtual int DailyAttendanceEditMaster(Nullable<decimal> dailyAttendanceMasterId, Nullable<System.DateTime> date, string narration)
         {
             var dailyAttendanceMasterIdParameter = dailyAttendanceMasterId.HasValue ?
                 new ObjectParameter("dailyAttendanceMasterId", dailyAttendanceMasterId) :
                 new ObjectParameter("dailyAttendanceMasterId", typeof(decimal));
-
+    
             var dateParameter = date.HasValue ?
                 new ObjectParameter("date", date) :
                 new ObjectParameter("date", typeof(System.DateTime));
-
+    
             var narrationParameter = narration != null ?
                 new ObjectParameter("narration", narration) :
                 new ObjectParameter("narration", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DailyAttendanceEditMaster", dailyAttendanceMasterIdParameter, dateParameter, narrationParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> DailyAttendanceMasterMasterIdSearch(string date)
         {
             var dateParameter = date != null ?
                 new ObjectParameter("date", date) :
                 new ObjectParameter("date", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("DailyAttendanceMasterMasterIdSearch", dateParameter);
         }
-
+    
         public virtual ObjectResult<DailySalaryRegisterSearch_Result> DailySalaryRegisterSearch(Nullable<System.DateTime> voucherDateFrom, Nullable<System.DateTime> voucherDateTo, Nullable<System.DateTime> salaryDateFrom, Nullable<System.DateTime> salaryDateTo, string invoiceNo)
         {
             var voucherDateFromParameter = voucherDateFrom.HasValue ?
                 new ObjectParameter("voucherDateFrom", voucherDateFrom) :
                 new ObjectParameter("voucherDateFrom", typeof(System.DateTime));
-
+    
             var voucherDateToParameter = voucherDateTo.HasValue ?
                 new ObjectParameter("voucherDateTo", voucherDateTo) :
                 new ObjectParameter("voucherDateTo", typeof(System.DateTime));
-
+    
             var salaryDateFromParameter = salaryDateFrom.HasValue ?
                 new ObjectParameter("salaryDateFrom", salaryDateFrom) :
                 new ObjectParameter("salaryDateFrom", typeof(System.DateTime));
-
+    
             var salaryDateToParameter = salaryDateTo.HasValue ?
                 new ObjectParameter("salaryDateTo", salaryDateTo) :
                 new ObjectParameter("salaryDateTo", typeof(System.DateTime));
-
+    
             var invoiceNoParameter = invoiceNo != null ?
                 new ObjectParameter("invoiceNo", invoiceNo) :
                 new ObjectParameter("invoiceNo", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DailySalaryRegisterSearch_Result>("DailySalaryRegisterSearch", voucherDateFromParameter, voucherDateToParameter, salaryDateFromParameter, salaryDateToParameter, invoiceNoParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<int>> DailySalaryVoucherCheckExistence(string voucherNo, Nullable<decimal> dailySalaryVoucherMasterId, Nullable<decimal> voucherTypeId)
         {
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             var dailySalaryVoucherMasterIdParameter = dailySalaryVoucherMasterId.HasValue ?
                 new ObjectParameter("dailySalaryVoucherMasterId", dailySalaryVoucherMasterId) :
                 new ObjectParameter("dailySalaryVoucherMasterId", typeof(decimal));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("DailySalaryVoucherCheckExistence", voucherNoParameter, dailySalaryVoucherMasterIdParameter, voucherTypeIdParameter);
         }
-
+    
         public virtual int DailySalaryVoucherDetailsAdd(Nullable<decimal> dailySalaryVoucherMasterId, Nullable<decimal> employeeId, Nullable<decimal> wage, string status)
         {
             var dailySalaryVoucherMasterIdParameter = dailySalaryVoucherMasterId.HasValue ?
                 new ObjectParameter("dailySalaryVoucherMasterId", dailySalaryVoucherMasterId) :
                 new ObjectParameter("dailySalaryVoucherMasterId", typeof(decimal));
-
+    
             var employeeIdParameter = employeeId.HasValue ?
                 new ObjectParameter("employeeId", employeeId) :
                 new ObjectParameter("employeeId", typeof(decimal));
-
+    
             var wageParameter = wage.HasValue ?
                 new ObjectParameter("wage", wage) :
                 new ObjectParameter("wage", typeof(decimal));
-
+    
             var statusParameter = status != null ?
                 new ObjectParameter("status", status) :
                 new ObjectParameter("status", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DailySalaryVoucherDetailsAdd", dailySalaryVoucherMasterIdParameter, employeeIdParameter, wageParameter, statusParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<int>> DailySalaryVoucherDetailsCount(Nullable<decimal> dailySalaryVoucherMasterId)
         {
             var dailySalaryVoucherMasterIdParameter = dailySalaryVoucherMasterId.HasValue ?
                 new ObjectParameter("dailySalaryVoucherMasterId", dailySalaryVoucherMasterId) :
                 new ObjectParameter("dailySalaryVoucherMasterId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("DailySalaryVoucherDetailsCount", dailySalaryVoucherMasterIdParameter);
         }
-
+    
         public virtual int DailySalaryVoucherDetailsDelete(Nullable<decimal> dailySalaryVoucherDetailsId)
         {
             var dailySalaryVoucherDetailsIdParameter = dailySalaryVoucherDetailsId.HasValue ?
                 new ObjectParameter("dailySalaryVoucherDetailsId", dailySalaryVoucherDetailsId) :
                 new ObjectParameter("dailySalaryVoucherDetailsId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DailySalaryVoucherDetailsDelete", dailySalaryVoucherDetailsIdParameter);
         }
-
+    
         public virtual int DailySalaryVoucherDetailsDeleteUsingMasterId(Nullable<decimal> dailySalaryVoucherMasterId)
         {
             var dailySalaryVoucherMasterIdParameter = dailySalaryVoucherMasterId.HasValue ?
                 new ObjectParameter("dailySalaryVoucherMasterId", dailySalaryVoucherMasterId) :
                 new ObjectParameter("dailySalaryVoucherMasterId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DailySalaryVoucherDetailsDeleteUsingMasterId", dailySalaryVoucherMasterIdParameter);
         }
-
+    
         public virtual ObjectResult<DailySalaryVoucherDetailsGridViewall_Result> DailySalaryVoucherDetailsGridViewall(Nullable<System.DateTime> salaryDate, Nullable<decimal> vOucherNoforEdit, string voucherNo)
         {
             var salaryDateParameter = salaryDate.HasValue ?
                 new ObjectParameter("salaryDate", salaryDate) :
                 new ObjectParameter("salaryDate", typeof(System.DateTime));
-
+    
             var vOucherNoforEditParameter = vOucherNoforEdit.HasValue ?
                 new ObjectParameter("VOucherNoforEdit", vOucherNoforEdit) :
                 new ObjectParameter("VOucherNoforEdit", typeof(decimal));
-
+    
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DailySalaryVoucherDetailsGridViewall_Result>("DailySalaryVoucherDetailsGridViewall", salaryDateParameter, vOucherNoforEditParameter, voucherNoParameter);
         }
-
+    
         public virtual ObjectResult<DailySalaryVoucherMasterAddWithIdentity_Result> DailySalaryVoucherMasterAddWithIdentity(Nullable<decimal> ledgerId, string voucherNo, string invoiceNo, Nullable<System.DateTime> date, Nullable<System.DateTime> salaryDate, Nullable<decimal> totalAmount, string narration, Nullable<decimal> suffixPrefixId, Nullable<decimal> voucherTypeId, Nullable<decimal> financialYearId, Nullable<bool> isAutomatic)
         {
             var ledgerIdParameter = ledgerId.HasValue ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(decimal));
-
+    
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             var invoiceNoParameter = invoiceNo != null ?
                 new ObjectParameter("invoiceNo", invoiceNo) :
                 new ObjectParameter("invoiceNo", typeof(string));
-
+    
             var dateParameter = date.HasValue ?
                 new ObjectParameter("date", date) :
                 new ObjectParameter("date", typeof(System.DateTime));
-
+    
             var salaryDateParameter = salaryDate.HasValue ?
                 new ObjectParameter("salaryDate", salaryDate) :
                 new ObjectParameter("salaryDate", typeof(System.DateTime));
-
+    
             var totalAmountParameter = totalAmount.HasValue ?
                 new ObjectParameter("totalAmount", totalAmount) :
                 new ObjectParameter("totalAmount", typeof(decimal));
-
+    
             var narrationParameter = narration != null ?
                 new ObjectParameter("narration", narration) :
                 new ObjectParameter("narration", typeof(string));
-
+    
             var suffixPrefixIdParameter = suffixPrefixId.HasValue ?
                 new ObjectParameter("suffixPrefixId", suffixPrefixId) :
                 new ObjectParameter("suffixPrefixId", typeof(decimal));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var financialYearIdParameter = financialYearId.HasValue ?
                 new ObjectParameter("financialYearId", financialYearId) :
                 new ObjectParameter("financialYearId", typeof(decimal));
-
+    
             var isAutomaticParameter = isAutomatic.HasValue ?
                 new ObjectParameter("isAutomatic", isAutomatic) :
                 new ObjectParameter("isAutomatic", typeof(bool));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DailySalaryVoucherMasterAddWithIdentity_Result>("DailySalaryVoucherMasterAddWithIdentity", ledgerIdParameter, voucherNoParameter, invoiceNoParameter, dateParameter, salaryDateParameter, totalAmountParameter, narrationParameter, suffixPrefixIdParameter, voucherTypeIdParameter, financialYearIdParameter, isAutomaticParameter);
         }
-
+    
         public virtual int DailySalaryVoucherMasterDelete(Nullable<decimal> dailySalaryVoucherMasterId)
         {
             var dailySalaryVoucherMasterIdParameter = dailySalaryVoucherMasterId.HasValue ?
                 new ObjectParameter("dailySalaryVoucherMasterId", dailySalaryVoucherMasterId) :
                 new ObjectParameter("dailySalaryVoucherMasterId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DailySalaryVoucherMasterDelete", dailySalaryVoucherMasterIdParameter);
         }
-
+    
         public virtual int DailySalaryVoucherMasterEdit(Nullable<decimal> dailySalaryVoucherMasterId, Nullable<decimal> ledgerId, string voucherNo, string invoiceNo, Nullable<System.DateTime> date, Nullable<System.DateTime> salaryDate, Nullable<decimal> totalAmount, string narration, Nullable<decimal> suffixPrefixId, Nullable<decimal> voucherTypeId, Nullable<decimal> financialYearId)
         {
             var dailySalaryVoucherMasterIdParameter = dailySalaryVoucherMasterId.HasValue ?
                 new ObjectParameter("dailySalaryVoucherMasterId", dailySalaryVoucherMasterId) :
                 new ObjectParameter("dailySalaryVoucherMasterId", typeof(decimal));
-
+    
             var ledgerIdParameter = ledgerId.HasValue ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(decimal));
-
+    
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             var invoiceNoParameter = invoiceNo != null ?
                 new ObjectParameter("invoiceNo", invoiceNo) :
                 new ObjectParameter("invoiceNo", typeof(string));
-
+    
             var dateParameter = date.HasValue ?
                 new ObjectParameter("date", date) :
                 new ObjectParameter("date", typeof(System.DateTime));
-
+    
             var salaryDateParameter = salaryDate.HasValue ?
                 new ObjectParameter("salaryDate", salaryDate) :
                 new ObjectParameter("salaryDate", typeof(System.DateTime));
-
+    
             var totalAmountParameter = totalAmount.HasValue ?
                 new ObjectParameter("totalAmount", totalAmount) :
                 new ObjectParameter("totalAmount", typeof(decimal));
-
+    
             var narrationParameter = narration != null ?
                 new ObjectParameter("narration", narration) :
                 new ObjectParameter("narration", typeof(string));
-
+    
             var suffixPrefixIdParameter = suffixPrefixId.HasValue ?
                 new ObjectParameter("suffixPrefixId", suffixPrefixId) :
                 new ObjectParameter("suffixPrefixId", typeof(decimal));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var financialYearIdParameter = financialYearId.HasValue ?
                 new ObjectParameter("financialYearId", financialYearId) :
                 new ObjectParameter("financialYearId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DailySalaryVoucherMasterEdit", dailySalaryVoucherMasterIdParameter, ledgerIdParameter, voucherNoParameter, invoiceNoParameter, dateParameter, salaryDateParameter, totalAmountParameter, narrationParameter, suffixPrefixIdParameter, voucherTypeIdParameter, financialYearIdParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> DailySalaryVoucherMasterMax(Nullable<decimal> voucherTypeId)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("DailySalaryVoucherMasterMax", voucherTypeIdParameter);
         }
-
+    
         public virtual ObjectResult<DailySalaryVoucherViewFromRegister_Result> DailySalaryVoucherViewFromRegister(Nullable<decimal> dailySalaryVoucherMasterId)
         {
             var dailySalaryVoucherMasterIdParameter = dailySalaryVoucherMasterId.HasValue ?
                 new ObjectParameter("dailySalaryVoucherMasterId", dailySalaryVoucherMasterId) :
                 new ObjectParameter("dailySalaryVoucherMasterId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DailySalaryVoucherViewFromRegister_Result>("DailySalaryVoucherViewFromRegister", dailySalaryVoucherMasterIdParameter);
         }
-
+    
         public virtual ObjectResult<DayBook_Result> DayBook(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, Nullable<decimal> voucherTypeId, Nullable<decimal> ledgerId, Nullable<bool> iscondensed)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var ledgerIdParameter = ledgerId.HasValue ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(decimal));
-
+    
             var iscondensedParameter = iscondensed.HasValue ?
                 new ObjectParameter("iscondensed", iscondensed) :
                 new ObjectParameter("iscondensed", typeof(bool));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DayBook_Result>("DayBook", fromDateParameter, toDateParameter, voucherTypeIdParameter, ledgerIdParameter, iscondensedParameter);
         }
-
+    
         public virtual ObjectResult<DayBookReportPrintCompany_Result> DayBookReportPrintCompany()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DayBookReportPrintCompany_Result>("DayBookReportPrintCompany");
         }
-
+    
         public virtual ObjectResult<Nullable<bool>> DayBookSalesInvoiceOrPOS(Nullable<decimal> salesMasterId, Nullable<decimal> voucherTypeId)
         {
             var salesMasterIdParameter = salesMasterId.HasValue ?
                 new ObjectParameter("salesMasterId", salesMasterId) :
                 new ObjectParameter("salesMasterId", typeof(decimal));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("DayBookSalesInvoiceOrPOS", salesMasterIdParameter, voucherTypeIdParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> DebitNoteMasterIdView(Nullable<decimal> voucherTypeId, string voucherNo)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("DebitNoteMasterIdView", voucherTypeIdParameter, voucherNoParameter);
         }
-
+    
         public virtual ObjectResult<DebitNoteReportSearch_Result> DebitNoteReportSearch(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, Nullable<decimal> voucherTypeId, Nullable<decimal> ledgerId)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var ledgerIdParameter = ledgerId.HasValue ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DebitNoteReportSearch_Result>("DebitNoteReportSearch", fromDateParameter, toDateParameter, voucherTypeIdParameter, ledgerIdParameter);
         }
-
+    
         public virtual int DefaultCurrencySet(Nullable<decimal> currencyId)
         {
             var currencyIdParameter = currencyId.HasValue ?
                 new ObjectParameter("currencyId", currencyId) :
                 new ObjectParameter("currencyId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DefaultCurrencySet", currencyIdParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> DesignationAddWithReturnIdentity(string designationName, Nullable<decimal> leaveDays, string advanceAmount, string narration)
         {
             var designationNameParameter = designationName != null ?
                 new ObjectParameter("designationName", designationName) :
                 new ObjectParameter("designationName", typeof(string));
-
+    
             var leaveDaysParameter = leaveDays.HasValue ?
                 new ObjectParameter("leaveDays", leaveDays) :
                 new ObjectParameter("leaveDays", typeof(decimal));
-
+    
             var advanceAmountParameter = advanceAmount != null ?
                 new ObjectParameter("advanceAmount", advanceAmount) :
                 new ObjectParameter("advanceAmount", typeof(string));
-
+    
             var narrationParameter = narration != null ?
                 new ObjectParameter("narration", narration) :
                 new ObjectParameter("narration", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("DesignationAddWithReturnIdentity", designationNameParameter, leaveDaysParameter, advanceAmountParameter, narrationParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<int>> DesignationCheckExistanceOfName(string designationName, Nullable<decimal> designationId)
         {
             var designationNameParameter = designationName != null ?
                 new ObjectParameter("designationName", designationName) :
                 new ObjectParameter("designationName", typeof(string));
-
+    
             var designationIdParameter = designationId.HasValue ?
                 new ObjectParameter("designationId", designationId) :
                 new ObjectParameter("designationId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("DesignationCheckExistanceOfName", designationNameParameter, designationIdParameter);
         }
-
+    
         public virtual ObjectResult<string> DesignationDelete(Nullable<decimal> designationId)
         {
             var designationIdParameter = designationId.HasValue ?
                 new ObjectParameter("designationId", designationId) :
                 new ObjectParameter("designationId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("DesignationDelete", designationIdParameter);
         }
-
+    
         public virtual int DesignationEdit(Nullable<decimal> designationId, string designationName, Nullable<decimal> leaveDays, string advanceAmount, string narration)
         {
             var designationIdParameter = designationId.HasValue ?
                 new ObjectParameter("designationId", designationId) :
                 new ObjectParameter("designationId", typeof(decimal));
-
+    
             var designationNameParameter = designationName != null ?
                 new ObjectParameter("designationName", designationName) :
                 new ObjectParameter("designationName", typeof(string));
-
+    
             var leaveDaysParameter = leaveDays.HasValue ?
                 new ObjectParameter("leaveDays", leaveDays) :
                 new ObjectParameter("leaveDays", typeof(decimal));
-
+    
             var advanceAmountParameter = advanceAmount != null ?
                 new ObjectParameter("advanceAmount", advanceAmount) :
                 new ObjectParameter("advanceAmount", typeof(string));
-
+    
             var narrationParameter = narration != null ?
                 new ObjectParameter("narration", narration) :
                 new ObjectParameter("narration", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DesignationEdit", designationIdParameter, designationNameParameter, leaveDaysParameter, advanceAmountParameter, narrationParameter);
         }
-
+    
         public virtual ObjectResult<DesignationGridFill_Result> DesignationGridFill()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DesignationGridFill_Result>("DesignationGridFill");
         }
-
+    
         public virtual ObjectResult<DesignationSearch_Result> DesignationSearch(string designation)
         {
             var designationParameter = designation != null ?
                 new ObjectParameter("designation", designation) :
                 new ObjectParameter("designation", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DesignationSearch_Result>("DesignationSearch", designationParameter);
         }
-
+    
         public virtual ObjectResult<DesignationView_Result> DesignationView(Nullable<decimal> designationId)
         {
             var designationIdParameter = designationId.HasValue ?
                 new ObjectParameter("designationId", designationId) :
                 new ObjectParameter("designationId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DesignationView_Result>("DesignationView", designationIdParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<int>> EmployeeCodeCheckExistance(string employeeCode, Nullable<decimal> employeeId)
         {
             var employeeCodeParameter = employeeCode != null ?
                 new ObjectParameter("employeeCode", employeeCode) :
                 new ObjectParameter("employeeCode", typeof(string));
-
+    
             var employeeIdParameter = employeeId.HasValue ?
                 new ObjectParameter("employeeId", employeeId) :
                 new ObjectParameter("employeeId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("EmployeeCodeCheckExistance", employeeCodeParameter, employeeIdParameter);
         }
-
+    
         public virtual int EmployeeDelete(Nullable<decimal> employeeId)
         {
             var employeeIdParameter = employeeId.HasValue ?
                 new ObjectParameter("employeeId", employeeId) :
                 new ObjectParameter("employeeId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EmployeeDelete", employeeIdParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> EmployeeForTakingEmployeeId(Nullable<decimal> designationId, string employeeName, string employeeCode, Nullable<System.DateTime> dob, string maritalStatus, string gender, string qualification, string address, string phoneNumber, string mobileNumber, string email, Nullable<System.DateTime> joiningDate, Nullable<System.DateTime> terminationDate, Nullable<int> active, string narration, string bloodGroup, string passportNo, Nullable<System.DateTime> passportExpiryDate, string labourCardNumber, Nullable<System.DateTime> labourCardExpiryDate, string visaNumber, Nullable<System.DateTime> visaExpiryDate, string salaryType, Nullable<decimal> dailyWage, string bankName, string branchName, string bankAccountNumber, string branchCode, string panNumber, string pfNumber, string esiNumber, Nullable<decimal> defaultPackageId)
         {
             var designationIdParameter = designationId.HasValue ?
                 new ObjectParameter("designationId", designationId) :
                 new ObjectParameter("designationId", typeof(decimal));
-
+    
             var employeeNameParameter = employeeName != null ?
                 new ObjectParameter("employeeName", employeeName) :
                 new ObjectParameter("employeeName", typeof(string));
-
+    
             var employeeCodeParameter = employeeCode != null ?
                 new ObjectParameter("employeeCode", employeeCode) :
                 new ObjectParameter("employeeCode", typeof(string));
-
+    
             var dobParameter = dob.HasValue ?
                 new ObjectParameter("dob", dob) :
                 new ObjectParameter("dob", typeof(System.DateTime));
-
+    
             var maritalStatusParameter = maritalStatus != null ?
                 new ObjectParameter("maritalStatus", maritalStatus) :
                 new ObjectParameter("maritalStatus", typeof(string));
-
+    
             var genderParameter = gender != null ?
                 new ObjectParameter("gender", gender) :
                 new ObjectParameter("gender", typeof(string));
-
+    
             var qualificationParameter = qualification != null ?
                 new ObjectParameter("qualification", qualification) :
                 new ObjectParameter("qualification", typeof(string));
-
+    
             var addressParameter = address != null ?
                 new ObjectParameter("address", address) :
                 new ObjectParameter("address", typeof(string));
-
+    
             var phoneNumberParameter = phoneNumber != null ?
                 new ObjectParameter("phoneNumber", phoneNumber) :
                 new ObjectParameter("phoneNumber", typeof(string));
-
+    
             var mobileNumberParameter = mobileNumber != null ?
                 new ObjectParameter("mobileNumber", mobileNumber) :
                 new ObjectParameter("mobileNumber", typeof(string));
-
+    
             var emailParameter = email != null ?
                 new ObjectParameter("email", email) :
                 new ObjectParameter("email", typeof(string));
-
+    
             var joiningDateParameter = joiningDate.HasValue ?
                 new ObjectParameter("joiningDate", joiningDate) :
                 new ObjectParameter("joiningDate", typeof(System.DateTime));
-
+    
             var terminationDateParameter = terminationDate.HasValue ?
                 new ObjectParameter("terminationDate", terminationDate) :
                 new ObjectParameter("terminationDate", typeof(System.DateTime));
-
+    
             var activeParameter = active.HasValue ?
                 new ObjectParameter("active", active) :
                 new ObjectParameter("active", typeof(int));
-
+    
             var narrationParameter = narration != null ?
                 new ObjectParameter("narration", narration) :
                 new ObjectParameter("narration", typeof(string));
-
+    
             var bloodGroupParameter = bloodGroup != null ?
                 new ObjectParameter("bloodGroup", bloodGroup) :
                 new ObjectParameter("bloodGroup", typeof(string));
-
+    
             var passportNoParameter = passportNo != null ?
                 new ObjectParameter("passportNo", passportNo) :
                 new ObjectParameter("passportNo", typeof(string));
-
+    
             var passportExpiryDateParameter = passportExpiryDate.HasValue ?
                 new ObjectParameter("passportExpiryDate", passportExpiryDate) :
                 new ObjectParameter("passportExpiryDate", typeof(System.DateTime));
-
+    
             var labourCardNumberParameter = labourCardNumber != null ?
                 new ObjectParameter("labourCardNumber", labourCardNumber) :
                 new ObjectParameter("labourCardNumber", typeof(string));
-
+    
             var labourCardExpiryDateParameter = labourCardExpiryDate.HasValue ?
                 new ObjectParameter("labourCardExpiryDate", labourCardExpiryDate) :
                 new ObjectParameter("labourCardExpiryDate", typeof(System.DateTime));
-
+    
             var visaNumberParameter = visaNumber != null ?
                 new ObjectParameter("visaNumber", visaNumber) :
                 new ObjectParameter("visaNumber", typeof(string));
-
+    
             var visaExpiryDateParameter = visaExpiryDate.HasValue ?
                 new ObjectParameter("visaExpiryDate", visaExpiryDate) :
                 new ObjectParameter("visaExpiryDate", typeof(System.DateTime));
-
+    
             var salaryTypeParameter = salaryType != null ?
                 new ObjectParameter("salaryType", salaryType) :
                 new ObjectParameter("salaryType", typeof(string));
-
+    
             var dailyWageParameter = dailyWage.HasValue ?
                 new ObjectParameter("dailyWage", dailyWage) :
                 new ObjectParameter("dailyWage", typeof(decimal));
-
+    
             var bankNameParameter = bankName != null ?
                 new ObjectParameter("bankName", bankName) :
                 new ObjectParameter("bankName", typeof(string));
-
+    
             var branchNameParameter = branchName != null ?
                 new ObjectParameter("branchName", branchName) :
                 new ObjectParameter("branchName", typeof(string));
-
+    
             var bankAccountNumberParameter = bankAccountNumber != null ?
                 new ObjectParameter("bankAccountNumber", bankAccountNumber) :
                 new ObjectParameter("bankAccountNumber", typeof(string));
-
+    
             var branchCodeParameter = branchCode != null ?
                 new ObjectParameter("branchCode", branchCode) :
                 new ObjectParameter("branchCode", typeof(string));
-
+    
             var panNumberParameter = panNumber != null ?
                 new ObjectParameter("panNumber", panNumber) :
                 new ObjectParameter("panNumber", typeof(string));
-
+    
             var pfNumberParameter = pfNumber != null ?
                 new ObjectParameter("pfNumber", pfNumber) :
                 new ObjectParameter("pfNumber", typeof(string));
-
+    
             var esiNumberParameter = esiNumber != null ?
                 new ObjectParameter("esiNumber", esiNumber) :
                 new ObjectParameter("esiNumber", typeof(string));
-
+    
             var defaultPackageIdParameter = defaultPackageId.HasValue ?
                 new ObjectParameter("defaultPackageId", defaultPackageId) :
                 new ObjectParameter("defaultPackageId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("EmployeeForTakingEmployeeId", designationIdParameter, employeeNameParameter, employeeCodeParameter, dobParameter, maritalStatusParameter, genderParameter, qualificationParameter, addressParameter, phoneNumberParameter, mobileNumberParameter, emailParameter, joiningDateParameter, terminationDateParameter, activeParameter, narrationParameter, bloodGroupParameter, passportNoParameter, passportExpiryDateParameter, labourCardNumberParameter, labourCardExpiryDateParameter, visaNumberParameter, visaExpiryDateParameter, salaryTypeParameter, dailyWageParameter, bankNameParameter, branchNameParameter, bankAccountNumberParameter, branchCodeParameter, panNumberParameter, pfNumberParameter, esiNumberParameter, defaultPackageIdParameter);
         }
-
+    
         public virtual int EmployeePackageEdit(Nullable<decimal> defaultPackageId, Nullable<decimal> employeeId)
         {
             var defaultPackageIdParameter = defaultPackageId.HasValue ?
                 new ObjectParameter("defaultPackageId", defaultPackageId) :
                 new ObjectParameter("defaultPackageId", typeof(decimal));
-
+    
             var employeeIdParameter = employeeId.HasValue ?
                 new ObjectParameter("employeeId", employeeId) :
                 new ObjectParameter("employeeId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EmployeePackageEdit", defaultPackageIdParameter, employeeIdParameter);
         }
-
+    
         public virtual ObjectResult<EmployeeViewAll_Result> EmployeeViewAll()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EmployeeViewAll_Result>("EmployeeViewAll");
         }
-
+    
         public virtual ObjectResult<EmployeeViewForPaySlip_Result> EmployeeViewForPaySlip()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EmployeeViewForPaySlip_Result>("EmployeeViewForPaySlip");
         }
-
+    
         public virtual int ExchangeRateAdd(Nullable<decimal> currencyId, Nullable<System.DateTime> date, Nullable<decimal> rate)
         {
             var currencyIdParameter = currencyId.HasValue ?
                 new ObjectParameter("currencyId", currencyId) :
                 new ObjectParameter("currencyId", typeof(decimal));
-
+    
             var dateParameter = date.HasValue ?
                 new ObjectParameter("date", date) :
                 new ObjectParameter("date", typeof(System.DateTime));
-
+    
             var rateParameter = rate.HasValue ?
                 new ObjectParameter("rate", rate) :
                 new ObjectParameter("rate", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ExchangeRateAdd", currencyIdParameter, dateParameter, rateParameter);
         }
-
+    
         public virtual int ExchangeRateEdit(Nullable<decimal> exchangeRateId, Nullable<decimal> currencyId, Nullable<System.DateTime> date, Nullable<decimal> rate)
         {
             var exchangeRateIdParameter = exchangeRateId.HasValue ?
                 new ObjectParameter("exchangeRateId", exchangeRateId) :
                 new ObjectParameter("exchangeRateId", typeof(decimal));
-
+    
             var currencyIdParameter = currencyId.HasValue ?
                 new ObjectParameter("currencyId", currencyId) :
                 new ObjectParameter("currencyId", typeof(decimal));
-
+    
             var dateParameter = date.HasValue ?
                 new ObjectParameter("date", date) :
                 new ObjectParameter("date", typeof(System.DateTime));
-
+    
             var rateParameter = rate.HasValue ?
                 new ObjectParameter("rate", rate) :
                 new ObjectParameter("rate", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ExchangeRateEdit", exchangeRateIdParameter, currencyIdParameter, dateParameter, rateParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> ExchangeRateViewByExchangeRateId(Nullable<decimal> exchangeRateId)
         {
             var exchangeRateIdParameter = exchangeRateId.HasValue ?
                 new ObjectParameter("exchangeRateId", exchangeRateId) :
                 new ObjectParameter("exchangeRateId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("ExchangeRateViewByExchangeRateId", exchangeRateIdParameter);
         }
-
+    
         public virtual int ExtendedRangeADD(string articleNo, string brand, string mPN, string articleDescription, Nullable<decimal> extendedRangeLength, Nullable<decimal> width, Nullable<decimal> height, string dimensionUoM, string weightUoM, Nullable<int> cCCN, string countryofOrigin, string unitofMeasure, Nullable<int> packSize, Nullable<int> salesUoM, string costPriceCurrency, Nullable<decimal> col1Price, Nullable<decimal> col2Price, Nullable<decimal> col3Price, Nullable<decimal> col4Price, Nullable<decimal> col5Price, Nullable<int> col1Break, Nullable<int> col2Break, Nullable<int> col3Break, Nullable<int> col4Break, Nullable<int> col5Break, Nullable<decimal> discountedPrice1, Nullable<decimal> discountedPrice2, Nullable<decimal> discountedPrice3, Nullable<decimal> discountedPrice4, Nullable<decimal> discountedPrice5, string manufacturerCode, Nullable<decimal> extendedRangeWeight)
         {
             var articleNoParameter = articleNo != null ?
                 new ObjectParameter("ArticleNo", articleNo) :
                 new ObjectParameter("ArticleNo", typeof(string));
-
+    
             var brandParameter = brand != null ?
                 new ObjectParameter("Brand", brand) :
                 new ObjectParameter("Brand", typeof(string));
-
+    
             var mPNParameter = mPN != null ?
                 new ObjectParameter("MPN", mPN) :
                 new ObjectParameter("MPN", typeof(string));
-
+    
             var articleDescriptionParameter = articleDescription != null ?
                 new ObjectParameter("ArticleDescription", articleDescription) :
                 new ObjectParameter("ArticleDescription", typeof(string));
-
+    
             var extendedRangeLengthParameter = extendedRangeLength.HasValue ?
                 new ObjectParameter("ExtendedRangeLength", extendedRangeLength) :
                 new ObjectParameter("ExtendedRangeLength", typeof(decimal));
-
+    
             var widthParameter = width.HasValue ?
                 new ObjectParameter("Width", width) :
                 new ObjectParameter("Width", typeof(decimal));
-
+    
             var heightParameter = height.HasValue ?
                 new ObjectParameter("Height", height) :
                 new ObjectParameter("Height", typeof(decimal));
-
+    
             var dimensionUoMParameter = dimensionUoM != null ?
                 new ObjectParameter("DimensionUoM", dimensionUoM) :
                 new ObjectParameter("DimensionUoM", typeof(string));
-
+    
             var weightUoMParameter = weightUoM != null ?
                 new ObjectParameter("WeightUoM", weightUoM) :
                 new ObjectParameter("WeightUoM", typeof(string));
-
+    
             var cCCNParameter = cCCN.HasValue ?
                 new ObjectParameter("CCCN", cCCN) :
                 new ObjectParameter("CCCN", typeof(int));
-
+    
             var countryofOriginParameter = countryofOrigin != null ?
                 new ObjectParameter("CountryofOrigin", countryofOrigin) :
                 new ObjectParameter("CountryofOrigin", typeof(string));
-
+    
             var unitofMeasureParameter = unitofMeasure != null ?
                 new ObjectParameter("UnitofMeasure", unitofMeasure) :
                 new ObjectParameter("UnitofMeasure", typeof(string));
-
+    
             var packSizeParameter = packSize.HasValue ?
                 new ObjectParameter("PackSize", packSize) :
                 new ObjectParameter("PackSize", typeof(int));
-
+    
             var salesUoMParameter = salesUoM.HasValue ?
                 new ObjectParameter("SalesUoM", salesUoM) :
                 new ObjectParameter("SalesUoM", typeof(int));
-
+    
             var costPriceCurrencyParameter = costPriceCurrency != null ?
                 new ObjectParameter("CostPriceCurrency", costPriceCurrency) :
                 new ObjectParameter("CostPriceCurrency", typeof(string));
-
+    
             var col1PriceParameter = col1Price.HasValue ?
                 new ObjectParameter("Col1Price", col1Price) :
                 new ObjectParameter("Col1Price", typeof(decimal));
-
+    
             var col2PriceParameter = col2Price.HasValue ?
                 new ObjectParameter("Col2Price", col2Price) :
                 new ObjectParameter("Col2Price", typeof(decimal));
-
+    
             var col3PriceParameter = col3Price.HasValue ?
                 new ObjectParameter("Col3Price", col3Price) :
                 new ObjectParameter("Col3Price", typeof(decimal));
-
+    
             var col4PriceParameter = col4Price.HasValue ?
                 new ObjectParameter("Col4Price", col4Price) :
                 new ObjectParameter("Col4Price", typeof(decimal));
-
+    
             var col5PriceParameter = col5Price.HasValue ?
                 new ObjectParameter("Col5Price", col5Price) :
                 new ObjectParameter("Col5Price", typeof(decimal));
-
+    
             var col1BreakParameter = col1Break.HasValue ?
                 new ObjectParameter("Col1Break", col1Break) :
                 new ObjectParameter("Col1Break", typeof(int));
-
+    
             var col2BreakParameter = col2Break.HasValue ?
                 new ObjectParameter("Col2Break", col2Break) :
                 new ObjectParameter("Col2Break", typeof(int));
-
+    
             var col3BreakParameter = col3Break.HasValue ?
                 new ObjectParameter("Col3Break", col3Break) :
                 new ObjectParameter("Col3Break", typeof(int));
-
+    
             var col4BreakParameter = col4Break.HasValue ?
                 new ObjectParameter("Col4Break", col4Break) :
                 new ObjectParameter("Col4Break", typeof(int));
-
+    
             var col5BreakParameter = col5Break.HasValue ?
                 new ObjectParameter("Col5Break", col5Break) :
                 new ObjectParameter("Col5Break", typeof(int));
-
+    
             var discountedPrice1Parameter = discountedPrice1.HasValue ?
                 new ObjectParameter("DiscountedPrice1", discountedPrice1) :
                 new ObjectParameter("DiscountedPrice1", typeof(decimal));
-
+    
             var discountedPrice2Parameter = discountedPrice2.HasValue ?
                 new ObjectParameter("DiscountedPrice2", discountedPrice2) :
                 new ObjectParameter("DiscountedPrice2", typeof(decimal));
-
+    
             var discountedPrice3Parameter = discountedPrice3.HasValue ?
                 new ObjectParameter("DiscountedPrice3", discountedPrice3) :
                 new ObjectParameter("DiscountedPrice3", typeof(decimal));
-
+    
             var discountedPrice4Parameter = discountedPrice4.HasValue ?
                 new ObjectParameter("DiscountedPrice4", discountedPrice4) :
                 new ObjectParameter("DiscountedPrice4", typeof(decimal));
-
+    
             var discountedPrice5Parameter = discountedPrice5.HasValue ?
                 new ObjectParameter("DiscountedPrice5", discountedPrice5) :
                 new ObjectParameter("DiscountedPrice5", typeof(decimal));
-
+    
             var manufacturerCodeParameter = manufacturerCode != null ?
                 new ObjectParameter("ManufacturerCode", manufacturerCode) :
                 new ObjectParameter("ManufacturerCode", typeof(string));
-
+    
             var extendedRangeWeightParameter = extendedRangeWeight.HasValue ?
                 new ObjectParameter("ExtendedRangeWeight", extendedRangeWeight) :
                 new ObjectParameter("ExtendedRangeWeight", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ExtendedRangeADD", articleNoParameter, brandParameter, mPNParameter, articleDescriptionParameter, extendedRangeLengthParameter, widthParameter, heightParameter, dimensionUoMParameter, weightUoMParameter, cCCNParameter, countryofOriginParameter, unitofMeasureParameter, packSizeParameter, salesUoMParameter, costPriceCurrencyParameter, col1PriceParameter, col2PriceParameter, col3PriceParameter, col4PriceParameter, col5PriceParameter, col1BreakParameter, col2BreakParameter, col3BreakParameter, col4BreakParameter, col5BreakParameter, discountedPrice1Parameter, discountedPrice2Parameter, discountedPrice3Parameter, discountedPrice4Parameter, discountedPrice5Parameter, manufacturerCodeParameter, extendedRangeWeightParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> FinancialYearAddWithReturnIdentity(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("FinancialYearAddWithReturnIdentity", fromDateParameter, toDateParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<int>> FinancialYearExistenceCheck(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("FinancialYearExistenceCheck", fromDateParameter, toDateParameter);
         }
-
+    
         public virtual ObjectResult<FundFlow1_Result> FundFlow1(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FundFlow1_Result>("FundFlow1", fromDateParameter, toDateParameter);
         }
-
+    
         public virtual ObjectResult<FundFlow2_Result> FundFlow2(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FundFlow2_Result>("FundFlow2", fromDateParameter, toDateParameter);
         }
-
+    
         public virtual ObjectResult<FundFlow3_Result> FundFlow3(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FundFlow3_Result>("FundFlow3", fromDateParameter, toDateParameter);
         }
-
+    
         public virtual ObjectResult<FundFlow4_Result> FundFlow4(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FundFlow4_Result>("FundFlow4", fromDateParameter, toDateParameter);
         }
-
+    
         public virtual ObjectResult<FundFlow5_Result> FundFlow5(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FundFlow5_Result>("FundFlow5", fromDateParameter, toDateParameter);
         }
-
+    
         public virtual ObjectResult<FundFlow6_Result> FundFlow6(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FundFlow6_Result>("FundFlow6", fromDateParameter, toDateParameter);
         }
-
+    
         public virtual ObjectResult<GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI_Result> GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI(Nullable<decimal> ledgerId, Nullable<decimal> salesMasterId, Nullable<decimal> voucherTypeId)
         {
             var ledgerIdParameter = ledgerId.HasValue ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(decimal));
-
+    
             var salesMasterIdParameter = salesMasterId.HasValue ?
                 new ObjectParameter("salesMasterId", salesMasterId) :
                 new ObjectParameter("salesMasterId", typeof(decimal));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI_Result>("GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI", ledgerIdParameter, salesMasterIdParameter, voucherTypeIdParameter);
         }
-
+    
         public virtual ObjectResult<GetInvoiceNoCorrespondingtoLedger_Result> GetInvoiceNoCorrespondingtoLedger(Nullable<decimal> ledgerId, Nullable<decimal> voucherTypeId)
         {
             var ledgerIdParameter = ledgerId.HasValue ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(decimal));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetInvoiceNoCorrespondingtoLedger_Result>("GetInvoiceNoCorrespondingtoLedger", ledgerIdParameter, voucherTypeIdParameter);
         }
-
+    
         public virtual ObjectResult<GetInvoiceNoCorrespondingtoLedgerInRegister_Result> GetInvoiceNoCorrespondingtoLedgerInRegister()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetInvoiceNoCorrespondingtoLedgerInRegister_Result>("GetInvoiceNoCorrespondingtoLedgerInRegister");
         }
-
+    
         public virtual ObjectResult<GetMaterialReceiptNoCorrespondingtoLedgerByNotInCurrPI_Result> GetMaterialReceiptNoCorrespondingtoLedgerByNotInCurrPI(string ledgerId, string purchaseMasterId)
         {
             var ledgerIdParameter = ledgerId != null ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(string));
-
+    
             var purchaseMasterIdParameter = purchaseMasterId != null ?
                 new ObjectParameter("purchaseMasterId", purchaseMasterId) :
                 new ObjectParameter("purchaseMasterId", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetMaterialReceiptNoCorrespondingtoLedgerByNotInCurrPI_Result>("GetMaterialReceiptNoCorrespondingtoLedgerByNotInCurrPI", ledgerIdParameter, purchaseMasterIdParameter);
         }
-
+    
         public virtual ObjectResult<GetOrderNoCorrespondingtoLedgerByNotInCurrPI_Result> GetOrderNoCorrespondingtoLedgerByNotInCurrPI(Nullable<decimal> ledgerId, Nullable<decimal> purchaseMasterId)
         {
             var ledgerIdParameter = ledgerId.HasValue ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(decimal));
-
+    
             var purchaseMasterIdParameter = purchaseMasterId.HasValue ?
                 new ObjectParameter("purchaseMasterId", purchaseMasterId) :
                 new ObjectParameter("purchaseMasterId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetOrderNoCorrespondingtoLedgerByNotInCurrPI_Result>("GetOrderNoCorrespondingtoLedgerByNotInCurrPI", ledgerIdParameter, purchaseMasterIdParameter);
         }
-
+    
         public virtual ObjectResult<GetPurchaseReturnInvoiceNoCorrespondingtoLedger_Result> GetPurchaseReturnInvoiceNoCorrespondingtoLedger(Nullable<decimal> ledgerId, Nullable<decimal> purchaseReturnMasterId, Nullable<decimal> voucherTypeId)
         {
             var ledgerIdParameter = ledgerId.HasValue ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(decimal));
-
+    
             var purchaseReturnMasterIdParameter = purchaseReturnMasterId.HasValue ?
                 new ObjectParameter("purchaseReturnMasterId", purchaseReturnMasterId) :
                 new ObjectParameter("purchaseReturnMasterId", typeof(decimal));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetPurchaseReturnInvoiceNoCorrespondingtoLedger_Result>("GetPurchaseReturnInvoiceNoCorrespondingtoLedger", ledgerIdParameter, purchaseReturnMasterIdParameter, voucherTypeIdParameter);
         }
-
+    
         public virtual ObjectResult<GetSalesOrderNoIncludePendingCorrespondingtoLedgerforSI_Result> GetSalesOrderNoIncludePendingCorrespondingtoLedgerforSI(Nullable<decimal> ledgerId, Nullable<decimal> salesMasterId, Nullable<decimal> voucherTypeId)
         {
             var ledgerIdParameter = ledgerId.HasValue ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(decimal));
-
+    
             var salesMasterIdParameter = salesMasterId.HasValue ?
                 new ObjectParameter("salesMasterId", salesMasterId) :
                 new ObjectParameter("salesMasterId", typeof(decimal));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetSalesOrderNoIncludePendingCorrespondingtoLedgerforSI_Result>("GetSalesOrderNoIncludePendingCorrespondingtoLedgerforSI", ledgerIdParameter, salesMasterIdParameter, voucherTypeIdParameter);
         }
-
+    
         public virtual ObjectResult<GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI_Result> GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI(string ledgerId, string salesMasterId, Nullable<decimal> voucherTypeId)
         {
             var ledgerIdParameter = ledgerId != null ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(string));
-
+    
             var salesMasterIdParameter = salesMasterId != null ?
                 new ObjectParameter("salesMasterId", salesMasterId) :
                 new ObjectParameter("salesMasterId", typeof(string));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI_Result>("GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI", ledgerIdParameter, salesMasterIdParameter, voucherTypeIdParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<int>> GetTaxIdForTaxSelection(Nullable<decimal> voucherTypeId)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("GetTaxIdForTaxSelection", voucherTypeIdParameter);
         }
-
+    
         public virtual ObjectResult<GroupNameViewForComboFill_Result> GroupNameViewForComboFill()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GroupNameViewForComboFill_Result>("GroupNameViewForComboFill");
         }
-
+    
         public virtual ObjectResult<HoildaySettingsViewAllLimited_Result> HoildaySettingsViewAllLimited(string month, string year)
         {
             var monthParameter = month != null ?
                 new ObjectParameter("Month", month) :
                 new ObjectParameter("Month", typeof(string));
-
+    
             var yearParameter = year != null ?
                 new ObjectParameter("Year", year) :
                 new ObjectParameter("Year", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<HoildaySettingsViewAllLimited_Result>("HoildaySettingsViewAllLimited", monthParameter, yearParameter);
         }
-
+    
         public virtual int HolidayAddWithIdentity(Nullable<System.DateTime> date, string holidayName, string narration)
         {
             var dateParameter = date.HasValue ?
                 new ObjectParameter("date", date) :
                 new ObjectParameter("date", typeof(System.DateTime));
-
+    
             var holidayNameParameter = holidayName != null ?
                 new ObjectParameter("holidayName", holidayName) :
                 new ObjectParameter("holidayName", typeof(string));
-
+    
             var narrationParameter = narration != null ?
                 new ObjectParameter("narration", narration) :
                 new ObjectParameter("narration", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("HolidayAddWithIdentity", dateParameter, holidayNameParameter, narrationParameter);
         }
-
+    
         public virtual int HolidaySettingsDeleteByMonth(string month, string year)
         {
             var monthParameter = month != null ?
                 new ObjectParameter("Month", month) :
                 new ObjectParameter("Month", typeof(string));
-
+    
             var yearParameter = year != null ?
                 new ObjectParameter("Year", year) :
                 new ObjectParameter("Year", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("HolidaySettingsDeleteByMonth", monthParameter, yearParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<int>> HolliDayChecking(Nullable<System.DateTime> date)
         {
             var dateParameter = date.HasValue ?
                 new ObjectParameter("date", date) :
                 new ObjectParameter("date", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("HolliDayChecking", dateParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> JournalMasterIdView(Nullable<decimal> voucherTypeId, string voucherNo)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("JournalMasterIdView", voucherTypeIdParameter, voucherNoParameter);
         }
-
+    
         public virtual ObjectResult<JournalRegisterSearch_Result> JournalRegisterSearch(string voucherNo, Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<JournalRegisterSearch_Result>("JournalRegisterSearch", voucherNoParameter, fromDateParameter, toDateParameter);
         }
-
+    
         public virtual ObjectResult<LedgerPopupSearch_Result> LedgerPopupSearch(string ledgerName, string accountGroupName, Nullable<decimal> id1, Nullable<decimal> id2)
         {
             var ledgerNameParameter = ledgerName != null ?
                 new ObjectParameter("ledgerName", ledgerName) :
                 new ObjectParameter("ledgerName", typeof(string));
-
+    
             var accountGroupNameParameter = accountGroupName != null ?
                 new ObjectParameter("accountGroupName", accountGroupName) :
                 new ObjectParameter("accountGroupName", typeof(string));
-
+    
             var id1Parameter = id1.HasValue ?
                 new ObjectParameter("id1", id1) :
                 new ObjectParameter("id1", typeof(decimal));
-
+    
             var id2Parameter = id2.HasValue ?
                 new ObjectParameter("id2", id2) :
                 new ObjectParameter("id2", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<LedgerPopupSearch_Result>("LedgerPopupSearch", ledgerNameParameter, accountGroupNameParameter, id1Parameter, id2Parameter);
         }
-
+    
         public virtual int LedgerPostDelete(Nullable<decimal> voucherTypeId, string voucherNo)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("LedgerPostDelete", voucherTypeIdParameter, voucherNoParameter);
         }
-
+    
         public virtual int LedgerPostingDeleteByVoucherTypeAndVoucherNo(string voucherNo, Nullable<decimal> voucherTypeId)
         {
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("LedgerPostingDeleteByVoucherTypeAndVoucherNo", voucherNoParameter, voucherTypeIdParameter);
         }
-
+    
         public virtual int LedgerPostingDeleteByVoucherTypeIdAndLedgerIdAndVoucherNoAndExtra(Nullable<decimal> voucherTypeId, Nullable<decimal> ledgerId, string voucherNo)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var ledgerIdParameter = ledgerId.HasValue ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(decimal));
-
+    
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("LedgerPostingDeleteByVoucherTypeIdAndLedgerIdAndVoucherNoAndExtra", voucherTypeIdParameter, ledgerIdParameter, voucherNoParameter);
         }
-
+    
         public virtual int LedgerPostingEditByVoucherTypeAndVoucherNoAndLedgerid(Nullable<System.DateTime> date, Nullable<decimal> voucherTypeId, string voucherNo, Nullable<decimal> ledgerId, string debit, string credit, Nullable<decimal> detailsId, Nullable<decimal> yearId, string invoiceNo, string chequeNo, Nullable<System.DateTime> chequeDate)
         {
             var dateParameter = date.HasValue ?
                 new ObjectParameter("date", date) :
                 new ObjectParameter("date", typeof(System.DateTime));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             var ledgerIdParameter = ledgerId.HasValue ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(decimal));
-
+    
             var debitParameter = debit != null ?
                 new ObjectParameter("debit", debit) :
                 new ObjectParameter("debit", typeof(string));
-
+    
             var creditParameter = credit != null ?
                 new ObjectParameter("credit", credit) :
                 new ObjectParameter("credit", typeof(string));
-
+    
             var detailsIdParameter = detailsId.HasValue ?
                 new ObjectParameter("detailsId", detailsId) :
                 new ObjectParameter("detailsId", typeof(decimal));
-
+    
             var yearIdParameter = yearId.HasValue ?
                 new ObjectParameter("yearId", yearId) :
                 new ObjectParameter("yearId", typeof(decimal));
-
+    
             var invoiceNoParameter = invoiceNo != null ?
                 new ObjectParameter("invoiceNo", invoiceNo) :
                 new ObjectParameter("invoiceNo", typeof(string));
-
+    
             var chequeNoParameter = chequeNo != null ?
                 new ObjectParameter("chequeNo", chequeNo) :
                 new ObjectParameter("chequeNo", typeof(string));
-
+    
             var chequeDateParameter = chequeDate.HasValue ?
                 new ObjectParameter("chequeDate", chequeDate) :
                 new ObjectParameter("chequeDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("LedgerPostingEditByVoucherTypeAndVoucherNoAndLedgerid", dateParameter, voucherTypeIdParameter, voucherNoParameter, ledgerIdParameter, debitParameter, creditParameter, detailsIdParameter, yearIdParameter, invoiceNoParameter, chequeNoParameter, chequeDateParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> LedgerPostingIdByServiceMaasterId(Nullable<decimal> serviceMasterId)
         {
             var serviceMasterIdParameter = serviceMasterId.HasValue ?
                 new ObjectParameter("serviceMasterId", serviceMasterId) :
                 new ObjectParameter("serviceMasterId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("LedgerPostingIdByServiceMaasterId", serviceMasterIdParameter);
         }
-
+    
         public virtual ObjectResult<MaterialReceiptDetailsViewByMaterialReceiptMasterIdWithRemainingByNotInCurrPI_Result> MaterialReceiptDetailsViewByMaterialReceiptMasterIdWithRemainingByNotInCurrPI(string materialReceiptMasterId, string purchaseMasterId, Nullable<decimal> voucherTypeId)
         {
             var materialReceiptMasterIdParameter = materialReceiptMasterId != null ?
                 new ObjectParameter("materialReceiptMasterId", materialReceiptMasterId) :
                 new ObjectParameter("materialReceiptMasterId", typeof(string));
-
+    
             var purchaseMasterIdParameter = purchaseMasterId != null ?
                 new ObjectParameter("purchaseMasterId", purchaseMasterId) :
                 new ObjectParameter("purchaseMasterId", typeof(string));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MaterialReceiptDetailsViewByMaterialReceiptMasterIdWithRemainingByNotInCurrPI_Result>("MaterialReceiptDetailsViewByMaterialReceiptMasterIdWithRemainingByNotInCurrPI", materialReceiptMasterIdParameter, purchaseMasterIdParameter, voucherTypeIdParameter);
         }
-
+    
         public virtual ObjectResult<MaterialReceiptMasterView_Result> MaterialReceiptMasterView(Nullable<decimal> materialReceiptMasterId)
         {
             var materialReceiptMasterIdParameter = materialReceiptMasterId.HasValue ?
                 new ObjectParameter("materialReceiptMasterId", materialReceiptMasterId) :
                 new ObjectParameter("materialReceiptMasterId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MaterialReceiptMasterView_Result>("MaterialReceiptMasterView", materialReceiptMasterIdParameter);
         }
-
+    
         public virtual ObjectResult<MaterialReceiptMasterViewByReceiptMasterId_Result> MaterialReceiptMasterViewByReceiptMasterId(Nullable<decimal> materialReceiptMasterId)
         {
             var materialReceiptMasterIdParameter = materialReceiptMasterId.HasValue ?
                 new ObjectParameter("MaterialReceiptMasterId", materialReceiptMasterId) :
                 new ObjectParameter("MaterialReceiptMasterId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MaterialReceiptMasterViewByReceiptMasterId_Result>("MaterialReceiptMasterViewByReceiptMasterId", materialReceiptMasterIdParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> MonthlySalaryAddWithIdentity(Nullable<System.DateTime> salaryMonth, string narration)
         {
             var salaryMonthParameter = salaryMonth.HasValue ?
                 new ObjectParameter("salaryMonth", salaryMonth) :
                 new ObjectParameter("salaryMonth", typeof(System.DateTime));
-
+    
             var narrationParameter = narration != null ?
                 new ObjectParameter("narration", narration) :
                 new ObjectParameter("narration", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("MonthlySalaryAddWithIdentity", salaryMonthParameter, narrationParameter);
         }
-
+    
         public virtual int MonthlySalaryDeleteAll(Nullable<decimal> monthlySalaryId)
         {
             var monthlySalaryIdParameter = monthlySalaryId.HasValue ?
                 new ObjectParameter("monthlySalaryId", monthlySalaryId) :
                 new ObjectParameter("monthlySalaryId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MonthlySalaryDeleteAll", monthlySalaryIdParameter);
         }
-
+    
         public virtual int MonthlySalaryDetailsAddWithMonthlySalaryId(Nullable<decimal> employeeId, Nullable<decimal> salaryPackageId, Nullable<decimal> monthlySalaryId)
         {
             var employeeIdParameter = employeeId.HasValue ?
                 new ObjectParameter("employeeId", employeeId) :
                 new ObjectParameter("employeeId", typeof(decimal));
-
+    
             var salaryPackageIdParameter = salaryPackageId.HasValue ?
                 new ObjectParameter("salaryPackageId", salaryPackageId) :
                 new ObjectParameter("salaryPackageId", typeof(decimal));
-
+    
             var monthlySalaryIdParameter = monthlySalaryId.HasValue ?
                 new ObjectParameter("monthlySalaryId", monthlySalaryId) :
                 new ObjectParameter("monthlySalaryId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MonthlySalaryDetailsAddWithMonthlySalaryId", employeeIdParameter, salaryPackageIdParameter, monthlySalaryIdParameter);
         }
-
+    
         public virtual int MonthlySalaryDetailsEditUsingMasterIdAndDetailsId(Nullable<decimal> monthlySalaryId, Nullable<decimal> monthlySalaryDetailsId, Nullable<decimal> employeeId, Nullable<decimal> salaryPackageId)
         {
             var monthlySalaryIdParameter = monthlySalaryId.HasValue ?
                 new ObjectParameter("monthlySalaryId", monthlySalaryId) :
                 new ObjectParameter("monthlySalaryId", typeof(decimal));
-
+    
             var monthlySalaryDetailsIdParameter = monthlySalaryDetailsId.HasValue ?
                 new ObjectParameter("monthlySalaryDetailsId", monthlySalaryDetailsId) :
                 new ObjectParameter("monthlySalaryDetailsId", typeof(decimal));
-
+    
             var employeeIdParameter = employeeId.HasValue ?
                 new ObjectParameter("employeeId", employeeId) :
                 new ObjectParameter("employeeId", typeof(decimal));
-
+    
             var salaryPackageIdParameter = salaryPackageId.HasValue ?
                 new ObjectParameter("salaryPackageId", salaryPackageId) :
                 new ObjectParameter("salaryPackageId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MonthlySalaryDetailsEditUsingMasterIdAndDetailsId", monthlySalaryIdParameter, monthlySalaryDetailsIdParameter, employeeIdParameter, salaryPackageIdParameter);
         }
-
+    
         public virtual ObjectResult<MonthlySalaryRegisterSearch_Result> MonthlySalaryRegisterSearch(Nullable<System.DateTime> dateFrom, Nullable<System.DateTime> dateTo, Nullable<System.DateTime> month, string voucherNo, string ledgerName, string voucherTypeName)
         {
             var dateFromParameter = dateFrom.HasValue ?
                 new ObjectParameter("dateFrom", dateFrom) :
                 new ObjectParameter("dateFrom", typeof(System.DateTime));
-
+    
             var dateToParameter = dateTo.HasValue ?
                 new ObjectParameter("dateTo", dateTo) :
                 new ObjectParameter("dateTo", typeof(System.DateTime));
-
+    
             var monthParameter = month.HasValue ?
                 new ObjectParameter("month", month) :
                 new ObjectParameter("month", typeof(System.DateTime));
-
+    
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             var ledgerNameParameter = ledgerName != null ?
                 new ObjectParameter("ledgerName", ledgerName) :
                 new ObjectParameter("ledgerName", typeof(string));
-
+    
             var voucherTypeNameParameter = voucherTypeName != null ?
                 new ObjectParameter("voucherTypeName", voucherTypeName) :
                 new ObjectParameter("voucherTypeName", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MonthlySalaryRegisterSearch_Result>("MonthlySalaryRegisterSearch", dateFromParameter, dateToParameter, monthParameter, voucherNoParameter, ledgerNameParameter, voucherTypeNameParameter);
         }
-
+    
         public virtual int MonthlySalarySettingsDetailsIdDelete(Nullable<decimal> monthlySalaryDetailsId)
         {
             var monthlySalaryDetailsIdParameter = monthlySalaryDetailsId.HasValue ?
                 new ObjectParameter("monthlySalaryDetailsId", monthlySalaryDetailsId) :
                 new ObjectParameter("monthlySalaryDetailsId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MonthlySalarySettingsDetailsIdDelete", monthlySalaryDetailsIdParameter);
         }
-
+    
         public virtual int MonthlySalarySettingsEdit(Nullable<decimal> monthlySalaryId, string salaryMonth, string narration)
         {
             var monthlySalaryIdParameter = monthlySalaryId.HasValue ?
                 new ObjectParameter("monthlySalaryId", monthlySalaryId) :
                 new ObjectParameter("monthlySalaryId", typeof(decimal));
-
+    
             var salaryMonthParameter = salaryMonth != null ?
                 new ObjectParameter("salaryMonth", salaryMonth) :
                 new ObjectParameter("salaryMonth", typeof(string));
-
+    
             var narrationParameter = narration != null ?
                 new ObjectParameter("narration", narration) :
                 new ObjectParameter("narration", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MonthlySalarySettingsEdit", monthlySalaryIdParameter, salaryMonthParameter, narrationParameter);
         }
-
+    
         public virtual ObjectResult<MonthlySalarySettingsEmployeeViewAll_Result> MonthlySalarySettingsEmployeeViewAll(Nullable<System.DateTime> salaryMonth)
         {
             var salaryMonthParameter = salaryMonth.HasValue ?
                 new ObjectParameter("salaryMonth", salaryMonth) :
                 new ObjectParameter("salaryMonth", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MonthlySalarySettingsEmployeeViewAll_Result>("MonthlySalarySettingsEmployeeViewAll", salaryMonthParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> MonthlySalarySettingsMonthlySalaryIdSearchUsingSalaryMonth(Nullable<System.DateTime> salaryMonth)
         {
             var salaryMonthParameter = salaryMonth.HasValue ?
                 new ObjectParameter("salaryMonth", salaryMonth) :
                 new ObjectParameter("salaryMonth", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("MonthlySalarySettingsMonthlySalaryIdSearchUsingSalaryMonth", salaryMonthParameter);
         }
-
+    
         public virtual ObjectResult<MonthlySalarySettingsWorkerViewAll_Result> MonthlySalarySettingsWorkerViewAll(Nullable<System.DateTime> salaryMonth)
         {
             var salaryMonthParameter = salaryMonth.HasValue ?
                 new ObjectParameter("salaryMonth", salaryMonth) :
                 new ObjectParameter("salaryMonth", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MonthlySalarySettingsWorkerViewAll_Result>("MonthlySalarySettingsWorkerViewAll", salaryMonthParameter);
         }
-
+    
         public virtual ObjectResult<MultipleAccountLedgerComboFill_Result> MultipleAccountLedgerComboFill()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MultipleAccountLedgerComboFill_Result>("MultipleAccountLedgerComboFill");
         }
-
+    
         public virtual ObjectResult<string> MultipleAccountLedgerCrOrDr(string accountGroupName)
         {
             var accountGroupNameParameter = accountGroupName != null ?
                 new ObjectParameter("accountGroupName", accountGroupName) :
                 new ObjectParameter("accountGroupName", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("MultipleAccountLedgerCrOrDr", accountGroupNameParameter);
         }
-
+    
         public virtual ObjectResult<OutstandingPartyFillView_Result> OutstandingPartyFillView()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<OutstandingPartyFillView_Result>("OutstandingPartyFillView");
         }
-
+    
         public virtual ObjectResult<string> OutstandingViewAll1(Nullable<decimal> ledgerId, string accountGroup, Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var ledgerIdParameter = ledgerId.HasValue ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(decimal));
-
+    
             var accountGroupParameter = accountGroup != null ?
                 new ObjectParameter("AccountGroup", accountGroup) :
                 new ObjectParameter("AccountGroup", typeof(string));
-
+    
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("OutstandingViewAll1", ledgerIdParameter, accountGroupParameter, fromDateParameter, toDateParameter);
         }
-
+    
         public virtual ObjectResult<string> OutstandingViewAll2(Nullable<decimal> ledgerId, string accountGroup, Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var ledgerIdParameter = ledgerId.HasValue ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(decimal));
-
+    
             var accountGroupParameter = accountGroup != null ?
                 new ObjectParameter("AccountGroup", accountGroup) :
                 new ObjectParameter("AccountGroup", typeof(string));
-
+    
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("OutstandingViewAll2", ledgerIdParameter, accountGroupParameter, fromDateParameter, toDateParameter);
         }
-
+    
         public virtual ObjectResult<OverduePurchaseOrdersCorrespondingAccountLedger_Result> OverduePurchaseOrdersCorrespondingAccountLedger(Nullable<decimal> accountLedgerId)
         {
             var accountLedgerIdParameter = accountLedgerId.HasValue ?
                 new ObjectParameter("accountLedgerId", accountLedgerId) :
                 new ObjectParameter("accountLedgerId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<OverduePurchaseOrdersCorrespondingAccountLedger_Result>("OverduePurchaseOrdersCorrespondingAccountLedger", accountLedgerIdParameter);
         }
-
+    
         public virtual ObjectResult<OverdueSalesOrderCorrespondingAccountLedger_Result> OverdueSalesOrderCorrespondingAccountLedger(string accountLedgerId)
         {
             var accountLedgerIdParameter = accountLedgerId != null ?
                 new ObjectParameter("accountLedgerId", accountLedgerId) :
                 new ObjectParameter("accountLedgerId", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<OverdueSalesOrderCorrespondingAccountLedger_Result>("OverdueSalesOrderCorrespondingAccountLedger", accountLedgerIdParameter);
         }
-
+    
         public virtual ObjectResult<PartyAddressBookPrint_Result> PartyAddressBookPrint(string type, string ledgerName, string mobile, string phone, string email)
         {
             var typeParameter = type != null ?
                 new ObjectParameter("type", type) :
                 new ObjectParameter("type", typeof(string));
-
+    
             var ledgerNameParameter = ledgerName != null ?
                 new ObjectParameter("ledgerName", ledgerName) :
                 new ObjectParameter("ledgerName", typeof(string));
-
+    
             var mobileParameter = mobile != null ?
                 new ObjectParameter("mobile", mobile) :
                 new ObjectParameter("mobile", typeof(string));
-
+    
             var phoneParameter = phone != null ?
                 new ObjectParameter("phone", phone) :
                 new ObjectParameter("phone", typeof(string));
-
+    
             var emailParameter = email != null ?
                 new ObjectParameter("email", email) :
                 new ObjectParameter("email", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PartyAddressBookPrint_Result>("PartyAddressBookPrint", typeParameter, ledgerNameParameter, mobileParameter, phoneParameter, emailParameter);
         }
-
+    
         public virtual ObjectResult<PartyAddressBookSearch_Result> PartyAddressBookSearch(string type, string ledgerName, string mobile, string phone, string email)
         {
             var typeParameter = type != null ?
                 new ObjectParameter("type", type) :
                 new ObjectParameter("type", typeof(string));
-
+    
             var ledgerNameParameter = ledgerName != null ?
                 new ObjectParameter("ledgerName", ledgerName) :
                 new ObjectParameter("ledgerName", typeof(string));
-
+    
             var mobileParameter = mobile != null ?
                 new ObjectParameter("mobile", mobile) :
                 new ObjectParameter("mobile", typeof(string));
-
+    
             var phoneParameter = phone != null ?
                 new ObjectParameter("phone", phone) :
                 new ObjectParameter("phone", typeof(string));
-
+    
             var emailParameter = email != null ?
                 new ObjectParameter("email", email) :
                 new ObjectParameter("email", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PartyAddressBookSearch_Result>("PartyAddressBookSearch", typeParameter, ledgerNameParameter, mobileParameter, phoneParameter, emailParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> PartyBalanceAmountViewByVoucherNoVoucherTypeIdAndReferenceType(string voucherNo, Nullable<decimal> voucherTypeId, string referenceType)
         {
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var referenceTypeParameter = referenceType != null ?
                 new ObjectParameter("referenceType", referenceType) :
                 new ObjectParameter("referenceType", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("PartyBalanceAmountViewByVoucherNoVoucherTypeIdAndReferenceType", voucherNoParameter, voucherTypeIdParameter, referenceTypeParameter);
         }
-
+    
         public virtual int PartyBalanceDeleteByVoucherTypeVoucherNoAndReferenceType(string voucherNo, Nullable<decimal> voucherTypeId)
         {
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PartyBalanceDeleteByVoucherTypeVoucherNoAndReferenceType", voucherNoParameter, voucherTypeIdParameter);
         }
-
+    
         public virtual int PartyBalanceEditByVoucherNoVoucherTypeIdAndReferenceType(Nullable<System.DateTime> date, Nullable<decimal> ledgerId, Nullable<decimal> voucherTypeId, string voucherNo, Nullable<decimal> againstVoucherTypeId, string againstVoucherNo, string invoiceNo, string againstInvoiceNo, string referenceType, Nullable<decimal> debit, Nullable<decimal> credit, Nullable<int> creditPeriod, Nullable<decimal> exchangeRateId, Nullable<decimal> financialYearId)
         {
             var dateParameter = date.HasValue ?
                 new ObjectParameter("date", date) :
                 new ObjectParameter("date", typeof(System.DateTime));
-
+    
             var ledgerIdParameter = ledgerId.HasValue ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(decimal));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             var againstVoucherTypeIdParameter = againstVoucherTypeId.HasValue ?
                 new ObjectParameter("againstVoucherTypeId", againstVoucherTypeId) :
                 new ObjectParameter("againstVoucherTypeId", typeof(decimal));
-
+    
             var againstVoucherNoParameter = againstVoucherNo != null ?
                 new ObjectParameter("againstVoucherNo", againstVoucherNo) :
                 new ObjectParameter("againstVoucherNo", typeof(string));
-
+    
             var invoiceNoParameter = invoiceNo != null ?
                 new ObjectParameter("invoiceNo", invoiceNo) :
                 new ObjectParameter("invoiceNo", typeof(string));
-
+    
             var againstInvoiceNoParameter = againstInvoiceNo != null ?
                 new ObjectParameter("againstInvoiceNo", againstInvoiceNo) :
                 new ObjectParameter("againstInvoiceNo", typeof(string));
-
+    
             var referenceTypeParameter = referenceType != null ?
                 new ObjectParameter("referenceType", referenceType) :
                 new ObjectParameter("referenceType", typeof(string));
-
+    
             var debitParameter = debit.HasValue ?
                 new ObjectParameter("debit", debit) :
                 new ObjectParameter("debit", typeof(decimal));
-
+    
             var creditParameter = credit.HasValue ?
                 new ObjectParameter("credit", credit) :
                 new ObjectParameter("credit", typeof(decimal));
-
+    
             var creditPeriodParameter = creditPeriod.HasValue ?
                 new ObjectParameter("creditPeriod", creditPeriod) :
                 new ObjectParameter("creditPeriod", typeof(int));
-
+    
             var exchangeRateIdParameter = exchangeRateId.HasValue ?
                 new ObjectParameter("exchangeRateId", exchangeRateId) :
                 new ObjectParameter("exchangeRateId", typeof(decimal));
-
+    
             var financialYearIdParameter = financialYearId.HasValue ?
                 new ObjectParameter("financialYearId", financialYearId) :
                 new ObjectParameter("financialYearId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PartyBalanceEditByVoucherNoVoucherTypeIdAndReferenceType", dateParameter, ledgerIdParameter, voucherTypeIdParameter, voucherNoParameter, againstVoucherTypeIdParameter, againstVoucherNoParameter, invoiceNoParameter, againstInvoiceNoParameter, referenceTypeParameter, debitParameter, creditParameter, creditPeriodParameter, exchangeRateIdParameter, financialYearIdParameter);
         }
-
+    
         public virtual ObjectResult<PartyBalanceViewByVoucherNoAndVoucherType_Result> PartyBalanceViewByVoucherNoAndVoucherType(Nullable<decimal> voucherTypeId, string voucherNo, Nullable<System.DateTime> date)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             var dateParameter = date.HasValue ?
                 new ObjectParameter("date", date) :
                 new ObjectParameter("date", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PartyBalanceViewByVoucherNoAndVoucherType_Result>("PartyBalanceViewByVoucherNoAndVoucherType", voucherTypeIdParameter, voucherNoParameter, dateParameter);
         }
-
+    
         public virtual int PayHeadAdd(string payHeadName, string type, string narration, Nullable<System.DateTime> extraDate)
         {
             var payHeadNameParameter = payHeadName != null ?
                 new ObjectParameter("payHeadName", payHeadName) :
                 new ObjectParameter("payHeadName", typeof(string));
-
+    
             var typeParameter = type != null ?
                 new ObjectParameter("type", type) :
                 new ObjectParameter("type", typeof(string));
-
+    
             var narrationParameter = narration != null ?
                 new ObjectParameter("narration", narration) :
                 new ObjectParameter("narration", typeof(string));
-
+    
             var extraDateParameter = extraDate.HasValue ?
                 new ObjectParameter("extraDate", extraDate) :
                 new ObjectParameter("extraDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PayHeadAdd", payHeadNameParameter, typeParameter, narrationParameter, extraDateParameter);
         }
-
+    
         public virtual int PayHeadDelete(Nullable<decimal> payHeadId)
         {
             var payHeadIdParameter = payHeadId.HasValue ?
                 new ObjectParameter("payHeadId", payHeadId) :
                 new ObjectParameter("payHeadId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PayHeadDelete", payHeadIdParameter);
         }
-
+    
         public virtual int PayHeadEdit(Nullable<decimal> payHeadId, string payHeadName, string type, string narration, Nullable<System.DateTime> extraDate)
         {
             var payHeadIdParameter = payHeadId.HasValue ?
                 new ObjectParameter("payHeadId", payHeadId) :
                 new ObjectParameter("payHeadId", typeof(decimal));
-
+    
             var payHeadNameParameter = payHeadName != null ?
                 new ObjectParameter("payHeadName", payHeadName) :
                 new ObjectParameter("payHeadName", typeof(string));
-
+    
             var typeParameter = type != null ?
                 new ObjectParameter("type", type) :
                 new ObjectParameter("type", typeof(string));
-
+    
             var narrationParameter = narration != null ?
                 new ObjectParameter("narration", narration) :
                 new ObjectParameter("narration", typeof(string));
-
+    
             var extraDateParameter = extraDate.HasValue ?
                 new ObjectParameter("extraDate", extraDate) :
                 new ObjectParameter("extraDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PayHeadEdit", payHeadIdParameter, payHeadNameParameter, typeParameter, narrationParameter, extraDateParameter);
         }
-
+    
         public virtual ObjectResult<PayHeadGet_Result> PayHeadGet(Nullable<decimal> payHeadId)
         {
             var payHeadIdParameter = payHeadId.HasValue ?
                 new ObjectParameter("payHeadId", payHeadId) :
                 new ObjectParameter("payHeadId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PayHeadGet_Result>("PayHeadGet", payHeadIdParameter);
         }
-
+    
         public virtual ObjectResult<PayHeadGetAll_Result> PayHeadGetAll()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PayHeadGetAll_Result>("PayHeadGetAll");
         }
-
+    
         public virtual ObjectResult<string> PayHeadTypeView(Nullable<decimal> payHeadId)
         {
             var payHeadIdParameter = payHeadId.HasValue ?
                 new ObjectParameter("payHeadId", payHeadId) :
                 new ObjectParameter("payHeadId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("PayHeadTypeView", payHeadIdParameter);
         }
-
+    
         public virtual ObjectResult<PayHeadView_Result> PayHeadView(Nullable<decimal> payHeadId)
         {
             var payHeadIdParameter = payHeadId.HasValue ?
                 new ObjectParameter("payHeadId", payHeadId) :
                 new ObjectParameter("payHeadId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PayHeadView_Result>("PayHeadView", payHeadIdParameter);
         }
-
+    
         public virtual ObjectResult<PayHeadViewAll_Result> PayHeadViewAll()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PayHeadViewAll_Result>("PayHeadViewAll");
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> paymentMasterIdView(Nullable<decimal> voucherTypeId, string voucherNo)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("paymentMasterIdView", voucherTypeIdParameter, voucherNoParameter);
         }
-
+    
         public virtual ObjectResult<PaymentMasterSearch_Result> PaymentMasterSearch(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, string ledgerId, string voucherNo)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("FromDate", fromDate) :
                 new ObjectParameter("FromDate", typeof(System.DateTime));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("ToDate", toDate) :
                 new ObjectParameter("ToDate", typeof(System.DateTime));
-
+    
             var ledgerIdParameter = ledgerId != null ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(string));
-
+    
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PaymentMasterSearch_Result>("PaymentMasterSearch", fromDateParameter, toDateParameter, ledgerIdParameter, voucherNoParameter);
         }
-
+    
         public virtual ObjectResult<PaySlipPrinting_Result> PaySlipPrinting(Nullable<decimal> workerId, Nullable<System.DateTime> salaryMonth, Nullable<decimal> companyId)
         {
             var workerIdParameter = workerId.HasValue ?
                 new ObjectParameter("WorkerId", workerId) :
                 new ObjectParameter("WorkerId", typeof(decimal));
-
+    
             var salaryMonthParameter = salaryMonth.HasValue ?
                 new ObjectParameter("salaryMonth", salaryMonth) :
                 new ObjectParameter("salaryMonth", typeof(System.DateTime));
-
+    
             var companyIdParameter = companyId.HasValue ?
                 new ObjectParameter("companyId", companyId) :
                 new ObjectParameter("companyId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PaySlipPrinting_Result>("PaySlipPrinting", workerIdParameter, salaryMonthParameter, companyIdParameter);
         }
-
+    
         public virtual ObjectResult<PaySlipPrinting_2_Result> PaySlipPrinting_2(Nullable<decimal> workerId, Nullable<System.DateTime> salaryMonth, Nullable<decimal> companyId)
         {
             var workerIdParameter = workerId.HasValue ?
                 new ObjectParameter("WorkerId", workerId) :
                 new ObjectParameter("WorkerId", typeof(decimal));
-
+    
             var salaryMonthParameter = salaryMonth.HasValue ?
                 new ObjectParameter("salaryMonth", salaryMonth) :
                 new ObjectParameter("salaryMonth", typeof(System.DateTime));
-
+    
             var companyIdParameter = companyId.HasValue ?
                 new ObjectParameter("companyId", companyId) :
                 new ObjectParameter("companyId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PaySlipPrinting_2_Result>("PaySlipPrinting_2", workerIdParameter, salaryMonthParameter, companyIdParameter);
         }
-
+    
         public virtual ObjectResult<PaySlipPrinting_3_Result> PaySlipPrinting_3(Nullable<decimal> workerId, Nullable<System.DateTime> salaryMonth, Nullable<decimal> companyId)
         {
             var workerIdParameter = workerId.HasValue ?
                 new ObjectParameter("WorkerId", workerId) :
                 new ObjectParameter("WorkerId", typeof(decimal));
-
+    
             var salaryMonthParameter = salaryMonth.HasValue ?
                 new ObjectParameter("salaryMonth", salaryMonth) :
                 new ObjectParameter("salaryMonth", typeof(System.DateTime));
-
+    
             var companyIdParameter = companyId.HasValue ?
                 new ObjectParameter("companyId", companyId) :
                 new ObjectParameter("companyId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PaySlipPrinting_3_Result>("PaySlipPrinting_3", workerIdParameter, salaryMonthParameter, companyIdParameter);
         }
-
+    
         public virtual ObjectResult<PDCClearanceFillDetails_Result> PDCClearanceFillDetails(string voucherTypeName, Nullable<decimal> masterId)
         {
             var voucherTypeNameParameter = voucherTypeName != null ?
                 new ObjectParameter("voucherTypeName", voucherTypeName) :
                 new ObjectParameter("voucherTypeName", typeof(string));
-
+    
             var masterIdParameter = masterId.HasValue ?
                 new ObjectParameter("MasterId", masterId) :
                 new ObjectParameter("MasterId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PDCClearanceFillDetails_Result>("PDCClearanceFillDetails", voucherTypeNameParameter, masterIdParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> PDCClearanceMaxUnderVoucherType(Nullable<decimal> voucherTypeId)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("PDCClearanceMaxUnderVoucherType", voucherTypeIdParameter);
         }
-
+    
         public virtual ObjectResult<PDCClearanceRegisterSearch_Result> PDCClearanceRegisterSearch(string voucherTypeName, string ledgerName, Nullable<System.DateTime> toDate, Nullable<System.DateTime> fromDate, string chequeNo, Nullable<decimal> bankId, string status)
         {
             var voucherTypeNameParameter = voucherTypeName != null ?
                 new ObjectParameter("voucherTypeName", voucherTypeName) :
                 new ObjectParameter("voucherTypeName", typeof(string));
-
+    
             var ledgerNameParameter = ledgerName != null ?
                 new ObjectParameter("ledgerName", ledgerName) :
                 new ObjectParameter("ledgerName", typeof(string));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             var chequeNoParameter = chequeNo != null ?
                 new ObjectParameter("chequeNo", chequeNo) :
                 new ObjectParameter("chequeNo", typeof(string));
-
+    
             var bankIdParameter = bankId.HasValue ?
                 new ObjectParameter("bankId", bankId) :
                 new ObjectParameter("bankId", typeof(decimal));
-
+    
             var statusParameter = status != null ?
                 new ObjectParameter("status", status) :
                 new ObjectParameter("status", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PDCClearanceRegisterSearch_Result>("PDCClearanceRegisterSearch", voucherTypeNameParameter, ledgerNameParameter, toDateParameter, fromDateParameter, chequeNoParameter, bankIdParameter, statusParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> PdcPayableMasterIdView(Nullable<decimal> voucherTypeId, string voucherNo)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("PdcPayableMasterIdView", voucherTypeIdParameter, voucherNoParameter);
         }
-
+    
         public virtual ObjectResult<PdcPayableReportSearch_Result> PdcPayableReportSearch(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, string voucherTypeName, string ledgerName, Nullable<System.DateTime> chequeDateFrom, Nullable<System.DateTime> chequeDateTo, string status, string chequeNo, string voucherNo)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             var voucherTypeNameParameter = voucherTypeName != null ?
                 new ObjectParameter("voucherTypeName", voucherTypeName) :
                 new ObjectParameter("voucherTypeName", typeof(string));
-
+    
             var ledgerNameParameter = ledgerName != null ?
                 new ObjectParameter("ledgerName", ledgerName) :
                 new ObjectParameter("ledgerName", typeof(string));
-
+    
             var chequeDateFromParameter = chequeDateFrom.HasValue ?
                 new ObjectParameter("chequeDateFrom", chequeDateFrom) :
                 new ObjectParameter("chequeDateFrom", typeof(System.DateTime));
-
+    
             var chequeDateToParameter = chequeDateTo.HasValue ?
                 new ObjectParameter("chequeDateTo", chequeDateTo) :
                 new ObjectParameter("chequeDateTo", typeof(System.DateTime));
-
+    
             var statusParameter = status != null ?
                 new ObjectParameter("status", status) :
                 new ObjectParameter("status", typeof(string));
-
+    
             var chequeNoParameter = chequeNo != null ?
                 new ObjectParameter("chequeNo", chequeNo) :
                 new ObjectParameter("chequeNo", typeof(string));
-
+    
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PdcPayableReportSearch_Result>("PdcPayableReportSearch", fromDateParameter, toDateParameter, voucherTypeNameParameter, ledgerNameParameter, chequeDateFromParameter, chequeDateToParameter, statusParameter, chequeNoParameter, voucherNoParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> PdcReceivableMasterIdView(Nullable<decimal> voucherTypeId, string voucherNo)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("PdcReceivableMasterIdView", voucherTypeIdParameter, voucherNoParameter);
         }
-
+    
         public virtual ObjectResult<PdcReceivableReportSearch_Result> PdcReceivableReportSearch(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, string voucherTypeName, string ledgerName, Nullable<System.DateTime> chequeDateFrom, Nullable<System.DateTime> chequeDateTo, string status, string chequeNo, string voucherNo)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             var voucherTypeNameParameter = voucherTypeName != null ?
                 new ObjectParameter("voucherTypeName", voucherTypeName) :
                 new ObjectParameter("voucherTypeName", typeof(string));
-
+    
             var ledgerNameParameter = ledgerName != null ?
                 new ObjectParameter("ledgerName", ledgerName) :
                 new ObjectParameter("ledgerName", typeof(string));
-
+    
             var chequeDateFromParameter = chequeDateFrom.HasValue ?
                 new ObjectParameter("chequeDateFrom", chequeDateFrom) :
                 new ObjectParameter("chequeDateFrom", typeof(System.DateTime));
-
+    
             var chequeDateToParameter = chequeDateTo.HasValue ?
                 new ObjectParameter("chequeDateTo", chequeDateTo) :
                 new ObjectParameter("chequeDateTo", typeof(System.DateTime));
-
+    
             var statusParameter = status != null ?
                 new ObjectParameter("status", status) :
                 new ObjectParameter("status", typeof(string));
-
+    
             var chequeNoParameter = chequeNo != null ?
                 new ObjectParameter("chequeNo", chequeNo) :
                 new ObjectParameter("chequeNo", typeof(string));
-
+    
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PdcReceivableReportSearch_Result>("PdcReceivableReportSearch", fromDateParameter, toDateParameter, voucherTypeNameParameter, ledgerNameParameter, chequeDateFromParameter, chequeDateToParameter, statusParameter, chequeNoParameter, voucherNoParameter);
         }
-
+    
         public virtual ObjectResult<PricingLevelViewAll_Result> PricingLevelViewAll()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PricingLevelViewAll_Result>("PricingLevelViewAll");
         }
-
+    
         public virtual ObjectResult<string> PrintAfterSave()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("PrintAfterSave");
         }
-
+    
         public virtual ObjectResult<string> ProductBatchBarcodeViewByBatchId(Nullable<decimal> batchId)
         {
             var batchIdParameter = batchId.HasValue ?
                 new ObjectParameter("batchId", batchId) :
                 new ObjectParameter("batchId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ProductBatchBarcodeViewByBatchId", batchIdParameter);
         }
-
+    
         public virtual ObjectResult<ProductCodeAndBarcodeByBatchId_Result> ProductCodeAndBarcodeByBatchId(Nullable<decimal> batchId)
         {
             var batchIdParameter = batchId.HasValue ?
                 new ObjectParameter("BatchId", batchId) :
                 new ObjectParameter("BatchId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProductCodeAndBarcodeByBatchId_Result>("ProductCodeAndBarcodeByBatchId", batchIdParameter);
         }
-
+    
         public virtual ObjectResult<string> ProductCodeViewByProductName(string productName)
         {
             var productNameParameter = productName != null ?
                 new ObjectParameter("productName", productName) :
                 new ObjectParameter("productName", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ProductCodeViewByProductName", productNameParameter);
         }
-
+    
         public virtual ObjectResult<ProductView_Result> ProductView(string articleNo)
         {
             var articleNoParameter = articleNo != null ?
                 new ObjectParameter("articleNo", articleNo) :
                 new ObjectParameter("articleNo", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProductView_Result>("ProductView", articleNoParameter);
         }
-
+    
         public virtual ObjectResult<ProductViewAll_Result> ProductViewAll()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProductViewAll_Result>("ProductViewAll");
         }
-
+    
         public virtual ObjectResult<ProductViewAllForComboBox_Result> ProductViewAllForComboBox()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProductViewAllForComboBox_Result>("ProductViewAllForComboBox");
         }
-
+    
         public virtual ObjectResult<productviewbybarcodeforSR_Result> productviewbybarcodeforSR(Nullable<decimal> voucherTypeId, string barcode)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var barcodeParameter = barcode != null ?
                 new ObjectParameter("barcode", barcode) :
                 new ObjectParameter("barcode", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<productviewbybarcodeforSR_Result>("productviewbybarcodeforSR", voucherTypeIdParameter, barcodeParameter);
         }
-
+    
         public virtual ObjectResult<ProductViewByCode_Result> ProductViewByCode(string productCode)
         {
             var productCodeParameter = productCode != null ?
                 new ObjectParameter("productCode", productCode) :
                 new ObjectParameter("productCode", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProductViewByCode_Result>("ProductViewByCode", productCodeParameter);
         }
-
+    
         public virtual ObjectResult<ProductViewByName_Result> ProductViewByName(string productName)
         {
             var productNameParameter = productName != null ?
                 new ObjectParameter("productName", productName) :
                 new ObjectParameter("productName", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProductViewByName_Result>("ProductViewByName", productNameParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> ProductViewByPartNoOrBarcode(string partNo, string barcode)
         {
             var partNoParameter = partNo != null ?
                 new ObjectParameter("partNo", partNo) :
                 new ObjectParameter("partNo", typeof(string));
-
+    
             var barcodeParameter = barcode != null ?
                 new ObjectParameter("barcode", barcode) :
                 new ObjectParameter("barcode", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("ProductViewByPartNoOrBarcode", partNoParameter, barcodeParameter);
         }
-
+    
         public virtual ObjectResult<productviewbyproductcodeforSR_Result> productviewbyproductcodeforSR(string productCode)
         {
             var productCodeParameter = productCode != null ?
                 new ObjectParameter("productCode", productCode) :
                 new ObjectParameter("productCode", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<productviewbyproductcodeforSR_Result>("productviewbyproductcodeforSR", productCodeParameter);
         }
-
+    
         public virtual ObjectResult<productviewbyproductNameforSR_Result> productviewbyproductNameforSR(string productName)
         {
             var productNameParameter = productName != null ?
                 new ObjectParameter("productName", productName) :
                 new ObjectParameter("productName", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<productviewbyproductNameforSR_Result>("productviewbyproductNameforSR", productNameParameter);
         }
-
+    
         public virtual ObjectResult<ProductViewWithID_Result> ProductViewWithID(string productID)
         {
             var productIDParameter = productID != null ?
                 new ObjectParameter("productID", productID) :
                 new ObjectParameter("productID", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProductViewWithID_Result>("ProductViewWithID", productIDParameter);
         }
-
+    
         public virtual ObjectResult<ProfitAndLossAnalysisDirectExpenses_Result> ProfitAndLossAnalysisDirectExpenses(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProfitAndLossAnalysisDirectExpenses_Result>("ProfitAndLossAnalysisDirectExpenses", fromDateParameter, toDateParameter);
         }
-
+    
         public virtual ObjectResult<ProfitAndLossAnalysisDirectIncome_Result> ProfitAndLossAnalysisDirectIncome(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProfitAndLossAnalysisDirectIncome_Result>("ProfitAndLossAnalysisDirectIncome", fromDateParameter, toDateParameter);
         }
-
+    
         public virtual ObjectResult<ProfitAndLossAnalysisInDirectExpenses_Result> ProfitAndLossAnalysisInDirectExpenses(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProfitAndLossAnalysisInDirectExpenses_Result>("ProfitAndLossAnalysisInDirectExpenses", fromDateParameter, toDateParameter);
         }
-
+    
         public virtual ObjectResult<ProfitAndLossAnalysisInDirectIncome_Result> ProfitAndLossAnalysisInDirectIncome(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProfitAndLossAnalysisInDirectIncome_Result>("ProfitAndLossAnalysisInDirectIncome", fromDateParameter, toDateParameter);
         }
-
+    
         public virtual ObjectResult<ProfitAndLossAnalysisPurchaseAccount_Result> ProfitAndLossAnalysisPurchaseAccount(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProfitAndLossAnalysisPurchaseAccount_Result>("ProfitAndLossAnalysisPurchaseAccount", fromDateParameter, toDateParameter);
         }
-
+    
         public virtual ObjectResult<ProfitAndLossAnalysisSalesAccount_Result> ProfitAndLossAnalysisSalesAccount(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProfitAndLossAnalysisSalesAccount_Result>("ProfitAndLossAnalysisSalesAccount", fromDateParameter, toDateParameter);
         }
-
+    
         public virtual ObjectResult<ProfitAndLossAnalysisUpToaDateForBalansheet_Result> ProfitAndLossAnalysisUpToaDateForBalansheet(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProfitAndLossAnalysisUpToaDateForBalansheet_Result>("ProfitAndLossAnalysisUpToaDateForBalansheet", fromDateParameter, toDateParameter);
         }
-
+    
         public virtual ObjectResult<ProfitAndLossAnalysisUpToaDateForBalansheetDirectExpenses_Result> ProfitAndLossAnalysisUpToaDateForBalansheetDirectExpenses(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProfitAndLossAnalysisUpToaDateForBalansheetDirectExpenses_Result>("ProfitAndLossAnalysisUpToaDateForBalansheetDirectExpenses", fromDateParameter, toDateParameter);
         }
-
+    
         public virtual ObjectResult<ProfitAndLossAnalysisUpToaDateForBalansheetDirectincome_Result> ProfitAndLossAnalysisUpToaDateForBalansheetDirectincome(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProfitAndLossAnalysisUpToaDateForBalansheetDirectincome_Result>("ProfitAndLossAnalysisUpToaDateForBalansheetDirectincome", fromDateParameter, toDateParameter);
         }
-
+    
         public virtual ObjectResult<ProfitAndLossAnalysisUpToaDateForBalansheetIndirectExpenses_Result> ProfitAndLossAnalysisUpToaDateForBalansheetIndirectExpenses(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProfitAndLossAnalysisUpToaDateForBalansheetIndirectExpenses_Result>("ProfitAndLossAnalysisUpToaDateForBalansheetIndirectExpenses", fromDateParameter, toDateParameter);
         }
-
+    
         public virtual ObjectResult<ProfitAndLossAnalysisUpToaDateForBalansheetIndirectincome_Result> ProfitAndLossAnalysisUpToaDateForBalansheetIndirectincome(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProfitAndLossAnalysisUpToaDateForBalansheetIndirectincome_Result>("ProfitAndLossAnalysisUpToaDateForBalansheetIndirectincome", fromDateParameter, toDateParameter);
         }
-
+    
         public virtual ObjectResult<ProfitAndLossAnalysisUpToaDateForBalansheetPurchaseAcount_Result> ProfitAndLossAnalysisUpToaDateForBalansheetPurchaseAcount(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProfitAndLossAnalysisUpToaDateForBalansheetPurchaseAcount_Result>("ProfitAndLossAnalysisUpToaDateForBalansheetPurchaseAcount", fromDateParameter, toDateParameter);
         }
-
+    
         public virtual ObjectResult<ProfitAndLossAnalysisUpToaDateForBalansheetSalesAcount_Result> ProfitAndLossAnalysisUpToaDateForBalansheetSalesAcount(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProfitAndLossAnalysisUpToaDateForBalansheetSalesAcount_Result>("ProfitAndLossAnalysisUpToaDateForBalansheetSalesAcount", fromDateParameter, toDateParameter);
         }
-
+    
         public virtual ObjectResult<ProfitAndLossAnalysisUpToaDateForPreviousYearsDirectExpenses_Result> ProfitAndLossAnalysisUpToaDateForPreviousYearsDirectExpenses(Nullable<System.DateTime> fromDate)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProfitAndLossAnalysisUpToaDateForPreviousYearsDirectExpenses_Result>("ProfitAndLossAnalysisUpToaDateForPreviousYearsDirectExpenses", fromDateParameter);
         }
-
+    
         public virtual ObjectResult<ProfitAndLossAnalysisUpToaDateForPreviousYearsDirectIncome_Result> ProfitAndLossAnalysisUpToaDateForPreviousYearsDirectIncome(Nullable<System.DateTime> fromDate)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProfitAndLossAnalysisUpToaDateForPreviousYearsDirectIncome_Result>("ProfitAndLossAnalysisUpToaDateForPreviousYearsDirectIncome", fromDateParameter);
         }
-
+    
         public virtual ObjectResult<ProfitAndLossAnalysisUpToaDateForPreviousYearsIndirectExpenses_Result> ProfitAndLossAnalysisUpToaDateForPreviousYearsIndirectExpenses(Nullable<System.DateTime> fromDate)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProfitAndLossAnalysisUpToaDateForPreviousYearsIndirectExpenses_Result>("ProfitAndLossAnalysisUpToaDateForPreviousYearsIndirectExpenses", fromDateParameter);
         }
-
+    
         public virtual ObjectResult<ProfitAndLossAnalysisUpToaDateForPreviousYearsIndirectIncome_Result> ProfitAndLossAnalysisUpToaDateForPreviousYearsIndirectIncome(Nullable<System.DateTime> fromDate)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProfitAndLossAnalysisUpToaDateForPreviousYearsIndirectIncome_Result>("ProfitAndLossAnalysisUpToaDateForPreviousYearsIndirectIncome", fromDateParameter);
         }
-
+    
         public virtual ObjectResult<ProfitAndLossAnalysisUpToaDateForPreviousYearsPurchaseAccount_Result> ProfitAndLossAnalysisUpToaDateForPreviousYearsPurchaseAccount(Nullable<System.DateTime> fromDate)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProfitAndLossAnalysisUpToaDateForPreviousYearsPurchaseAccount_Result>("ProfitAndLossAnalysisUpToaDateForPreviousYearsPurchaseAccount", fromDateParameter);
         }
-
+    
         public virtual ObjectResult<ProfitAndLossAnalysisUpToaDateForPreviousYearsSalesAccount_Result> ProfitAndLossAnalysisUpToaDateForPreviousYearsSalesAccount(Nullable<System.DateTime> fromDate)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProfitAndLossAnalysisUpToaDateForPreviousYearsSalesAccount_Result>("ProfitAndLossAnalysisUpToaDateForPreviousYearsSalesAccount", fromDateParameter);
         }
-
+    
         public virtual ObjectResult<ProfitAndLossReportPrintCompany_Result> ProfitAndLossReportPrintCompany(Nullable<decimal> companyId)
         {
             var companyIdParameter = companyId.HasValue ?
                 new ObjectParameter("companyId", companyId) :
                 new ObjectParameter("companyId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProfitAndLossReportPrintCompany_Result>("ProfitAndLossReportPrintCompany", companyIdParameter);
         }
-
+    
         public virtual int PurchaseBillTaxAdd(Nullable<decimal> purchaseMasterId, Nullable<decimal> taxId, Nullable<decimal> taxAmount)
         {
             var purchaseMasterIdParameter = purchaseMasterId.HasValue ?
                 new ObjectParameter("purchaseMasterId", purchaseMasterId) :
                 new ObjectParameter("purchaseMasterId", typeof(decimal));
-
+    
             var taxIdParameter = taxId.HasValue ?
                 new ObjectParameter("taxId", taxId) :
                 new ObjectParameter("taxId", typeof(decimal));
-
+    
             var taxAmountParameter = taxAmount.HasValue ?
                 new ObjectParameter("taxAmount", taxAmount) :
                 new ObjectParameter("taxAmount", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PurchaseBillTaxAdd", purchaseMasterIdParameter, taxIdParameter, taxAmountParameter);
         }
-
+    
         public virtual int PurchaseBillTaxDelete(Nullable<decimal> purchaseBillTaxId)
         {
             var purchaseBillTaxIdParameter = purchaseBillTaxId.HasValue ?
                 new ObjectParameter("purchaseBillTaxId", purchaseBillTaxId) :
                 new ObjectParameter("purchaseBillTaxId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PurchaseBillTaxDelete", purchaseBillTaxIdParameter);
         }
-
+    
         public virtual int PurchaseBillTaxEdit(Nullable<decimal> purchaseBillTaxId, Nullable<decimal> purchaseMasterId, Nullable<decimal> taxId, Nullable<decimal> taxAmount)
         {
             var purchaseBillTaxIdParameter = purchaseBillTaxId.HasValue ?
                 new ObjectParameter("purchaseBillTaxId", purchaseBillTaxId) :
                 new ObjectParameter("purchaseBillTaxId", typeof(decimal));
-
+    
             var purchaseMasterIdParameter = purchaseMasterId.HasValue ?
                 new ObjectParameter("purchaseMasterId", purchaseMasterId) :
                 new ObjectParameter("purchaseMasterId", typeof(decimal));
-
+    
             var taxIdParameter = taxId.HasValue ?
                 new ObjectParameter("taxId", taxId) :
                 new ObjectParameter("taxId", typeof(decimal));
-
+    
             var taxAmountParameter = taxAmount.HasValue ?
                 new ObjectParameter("taxAmount", taxAmount) :
                 new ObjectParameter("taxAmount", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PurchaseBillTaxEdit", purchaseBillTaxIdParameter, purchaseMasterIdParameter, taxIdParameter, taxAmountParameter);
         }
-
+    
         public virtual ObjectResult<PurchaseBillTaxViewAllByPurchaseMasterId_Result> PurchaseBillTaxViewAllByPurchaseMasterId(Nullable<decimal> purchaseMasterId)
         {
             var purchaseMasterIdParameter = purchaseMasterId.HasValue ?
                 new ObjectParameter("purchaseMasterId", purchaseMasterId) :
                 new ObjectParameter("purchaseMasterId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PurchaseBillTaxViewAllByPurchaseMasterId_Result>("PurchaseBillTaxViewAllByPurchaseMasterId", purchaseMasterIdParameter);
         }
-
+    
         public virtual int PurchaseDetailsAdd(Nullable<decimal> purchaseMasterId, Nullable<decimal> receiptDetailsId, Nullable<decimal> orderDetailsId, string productId, Nullable<decimal> qty, Nullable<decimal> rate, Nullable<decimal> unitId, Nullable<decimal> unitConversionId, Nullable<decimal> discount, Nullable<decimal> taxId, Nullable<decimal> batchId, Nullable<decimal> godownId, Nullable<decimal> rackId, Nullable<decimal> taxAmount, Nullable<decimal> grossAmount, Nullable<decimal> netAmount, Nullable<decimal> amount, Nullable<int> slNo)
         {
             var purchaseMasterIdParameter = purchaseMasterId.HasValue ?
                 new ObjectParameter("purchaseMasterId", purchaseMasterId) :
                 new ObjectParameter("purchaseMasterId", typeof(decimal));
-
+    
             var receiptDetailsIdParameter = receiptDetailsId.HasValue ?
                 new ObjectParameter("receiptDetailsId", receiptDetailsId) :
                 new ObjectParameter("receiptDetailsId", typeof(decimal));
-
+    
             var orderDetailsIdParameter = orderDetailsId.HasValue ?
                 new ObjectParameter("orderDetailsId", orderDetailsId) :
                 new ObjectParameter("orderDetailsId", typeof(decimal));
-
+    
             var productIdParameter = productId != null ?
                 new ObjectParameter("productId", productId) :
                 new ObjectParameter("productId", typeof(string));
-
+    
             var qtyParameter = qty.HasValue ?
                 new ObjectParameter("qty", qty) :
                 new ObjectParameter("qty", typeof(decimal));
-
+    
             var rateParameter = rate.HasValue ?
                 new ObjectParameter("rate", rate) :
                 new ObjectParameter("rate", typeof(decimal));
-
+    
             var unitIdParameter = unitId.HasValue ?
                 new ObjectParameter("unitId", unitId) :
                 new ObjectParameter("unitId", typeof(decimal));
-
+    
             var unitConversionIdParameter = unitConversionId.HasValue ?
                 new ObjectParameter("unitConversionId", unitConversionId) :
                 new ObjectParameter("unitConversionId", typeof(decimal));
-
+    
             var discountParameter = discount.HasValue ?
                 new ObjectParameter("discount", discount) :
                 new ObjectParameter("discount", typeof(decimal));
-
+    
             var taxIdParameter = taxId.HasValue ?
                 new ObjectParameter("taxId", taxId) :
                 new ObjectParameter("taxId", typeof(decimal));
-
+    
             var batchIdParameter = batchId.HasValue ?
                 new ObjectParameter("batchId", batchId) :
                 new ObjectParameter("batchId", typeof(decimal));
-
+    
             var godownIdParameter = godownId.HasValue ?
                 new ObjectParameter("godownId", godownId) :
                 new ObjectParameter("godownId", typeof(decimal));
-
+    
             var rackIdParameter = rackId.HasValue ?
                 new ObjectParameter("rackId", rackId) :
                 new ObjectParameter("rackId", typeof(decimal));
-
+    
             var taxAmountParameter = taxAmount.HasValue ?
                 new ObjectParameter("taxAmount", taxAmount) :
                 new ObjectParameter("taxAmount", typeof(decimal));
-
+    
             var grossAmountParameter = grossAmount.HasValue ?
                 new ObjectParameter("grossAmount", grossAmount) :
                 new ObjectParameter("grossAmount", typeof(decimal));
-
+    
             var netAmountParameter = netAmount.HasValue ?
                 new ObjectParameter("netAmount", netAmount) :
                 new ObjectParameter("netAmount", typeof(decimal));
-
+    
             var amountParameter = amount.HasValue ?
                 new ObjectParameter("amount", amount) :
                 new ObjectParameter("amount", typeof(decimal));
-
+    
             var slNoParameter = slNo.HasValue ?
                 new ObjectParameter("slNo", slNo) :
                 new ObjectParameter("slNo", typeof(int));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PurchaseDetailsAdd", purchaseMasterIdParameter, receiptDetailsIdParameter, orderDetailsIdParameter, productIdParameter, qtyParameter, rateParameter, unitIdParameter, unitConversionIdParameter, discountParameter, taxIdParameter, batchIdParameter, godownIdParameter, rackIdParameter, taxAmountParameter, grossAmountParameter, netAmountParameter, amountParameter, slNoParameter);
         }
-
+    
         public virtual int PurchaseDetailsDelete(Nullable<decimal> purchaseDetailsId)
         {
             var purchaseDetailsIdParameter = purchaseDetailsId.HasValue ?
                 new ObjectParameter("purchaseDetailsId", purchaseDetailsId) :
                 new ObjectParameter("purchaseDetailsId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PurchaseDetailsDelete", purchaseDetailsIdParameter);
         }
-
+    
         public virtual int PurchaseDetailsDeleteByPurchaseMasterId(Nullable<decimal> purchaseMasterId)
         {
             var purchaseMasterIdParameter = purchaseMasterId.HasValue ?
                 new ObjectParameter("purchaseMasterId", purchaseMasterId) :
                 new ObjectParameter("purchaseMasterId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PurchaseDetailsDeleteByPurchaseMasterId", purchaseMasterIdParameter);
         }
-
+    
         public virtual int PurchaseDetailsEdit(Nullable<decimal> purchaseDetailsId, Nullable<decimal> purchaseMasterId, Nullable<decimal> receiptDetailsId, Nullable<decimal> orderDetailsId, Nullable<decimal> productId, Nullable<decimal> qty, Nullable<decimal> rate, Nullable<decimal> unitId, Nullable<decimal> unitConversionId, Nullable<decimal> discount, Nullable<decimal> taxId, Nullable<decimal> batchId, Nullable<decimal> godownId, Nullable<decimal> rackId, Nullable<decimal> taxAmount, Nullable<decimal> grossAmount, Nullable<decimal> netAmount, Nullable<decimal> amount, Nullable<int> slNo)
         {
             var purchaseDetailsIdParameter = purchaseDetailsId.HasValue ?
                 new ObjectParameter("purchaseDetailsId", purchaseDetailsId) :
                 new ObjectParameter("purchaseDetailsId", typeof(decimal));
-
+    
             var purchaseMasterIdParameter = purchaseMasterId.HasValue ?
                 new ObjectParameter("purchaseMasterId", purchaseMasterId) :
                 new ObjectParameter("purchaseMasterId", typeof(decimal));
-
+    
             var receiptDetailsIdParameter = receiptDetailsId.HasValue ?
                 new ObjectParameter("receiptDetailsId", receiptDetailsId) :
                 new ObjectParameter("receiptDetailsId", typeof(decimal));
-
+    
             var orderDetailsIdParameter = orderDetailsId.HasValue ?
                 new ObjectParameter("orderDetailsId", orderDetailsId) :
                 new ObjectParameter("orderDetailsId", typeof(decimal));
-
+    
             var productIdParameter = productId.HasValue ?
                 new ObjectParameter("productId", productId) :
                 new ObjectParameter("productId", typeof(decimal));
-
+    
             var qtyParameter = qty.HasValue ?
                 new ObjectParameter("qty", qty) :
                 new ObjectParameter("qty", typeof(decimal));
-
+    
             var rateParameter = rate.HasValue ?
                 new ObjectParameter("rate", rate) :
                 new ObjectParameter("rate", typeof(decimal));
-
+    
             var unitIdParameter = unitId.HasValue ?
                 new ObjectParameter("unitId", unitId) :
                 new ObjectParameter("unitId", typeof(decimal));
-
+    
             var unitConversionIdParameter = unitConversionId.HasValue ?
                 new ObjectParameter("unitConversionId", unitConversionId) :
                 new ObjectParameter("unitConversionId", typeof(decimal));
-
+    
             var discountParameter = discount.HasValue ?
                 new ObjectParameter("discount", discount) :
                 new ObjectParameter("discount", typeof(decimal));
-
+    
             var taxIdParameter = taxId.HasValue ?
                 new ObjectParameter("taxId", taxId) :
                 new ObjectParameter("taxId", typeof(decimal));
-
+    
             var batchIdParameter = batchId.HasValue ?
                 new ObjectParameter("batchId", batchId) :
                 new ObjectParameter("batchId", typeof(decimal));
-
+    
             var godownIdParameter = godownId.HasValue ?
                 new ObjectParameter("godownId", godownId) :
                 new ObjectParameter("godownId", typeof(decimal));
-
+    
             var rackIdParameter = rackId.HasValue ?
                 new ObjectParameter("rackId", rackId) :
                 new ObjectParameter("rackId", typeof(decimal));
-
+    
             var taxAmountParameter = taxAmount.HasValue ?
                 new ObjectParameter("taxAmount", taxAmount) :
                 new ObjectParameter("taxAmount", typeof(decimal));
-
+    
             var grossAmountParameter = grossAmount.HasValue ?
                 new ObjectParameter("grossAmount", grossAmount) :
                 new ObjectParameter("grossAmount", typeof(decimal));
-
+    
             var netAmountParameter = netAmount.HasValue ?
                 new ObjectParameter("netAmount", netAmount) :
                 new ObjectParameter("netAmount", typeof(decimal));
-
+    
             var amountParameter = amount.HasValue ?
                 new ObjectParameter("amount", amount) :
                 new ObjectParameter("amount", typeof(decimal));
-
+    
             var slNoParameter = slNo.HasValue ?
                 new ObjectParameter("slNo", slNo) :
                 new ObjectParameter("slNo", typeof(int));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PurchaseDetailsEdit", purchaseDetailsIdParameter, purchaseMasterIdParameter, receiptDetailsIdParameter, orderDetailsIdParameter, productIdParameter, qtyParameter, rateParameter, unitIdParameter, unitConversionIdParameter, discountParameter, taxIdParameter, batchIdParameter, godownIdParameter, rackIdParameter, taxAmountParameter, grossAmountParameter, netAmountParameter, amountParameter, slNoParameter);
         }
-
+    
         public virtual ObjectResult<PurchaseDetailsViewByBarcodeForPI_Result> PurchaseDetailsViewByBarcodeForPI(Nullable<decimal> voucherTypeId, string barcode)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var barcodeParameter = barcode != null ?
                 new ObjectParameter("barcode", barcode) :
                 new ObjectParameter("barcode", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PurchaseDetailsViewByBarcodeForPI_Result>("PurchaseDetailsViewByBarcodeForPI", voucherTypeIdParameter, barcodeParameter);
         }
-
+    
         public virtual ObjectResult<PurchaseDetailsViewByProductCodeForPI_Result> PurchaseDetailsViewByProductCodeForPI(Nullable<decimal> voucherTypeId, string productCode)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var productCodeParameter = productCode != null ?
                 new ObjectParameter("productCode", productCode) :
                 new ObjectParameter("productCode", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PurchaseDetailsViewByProductCodeForPI_Result>("PurchaseDetailsViewByProductCodeForPI", voucherTypeIdParameter, productCodeParameter);
         }
-
+    
         public virtual ObjectResult<PurchaseDetailsViewByProductNameForPI_Result> PurchaseDetailsViewByProductNameForPI(Nullable<decimal> voucherTypeId, string productName)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var productNameParameter = productName != null ?
                 new ObjectParameter("productName", productName) :
                 new ObjectParameter("productName", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PurchaseDetailsViewByProductNameForPI_Result>("PurchaseDetailsViewByProductNameForPI", voucherTypeIdParameter, productNameParameter);
         }
-
+    
         public virtual ObjectResult<PurchaseDetailsViewByPurchaseMasterId_Result> PurchaseDetailsViewByPurchaseMasterId(Nullable<decimal> purchaseMasterId)
         {
             var purchaseMasterIdParameter = purchaseMasterId.HasValue ?
                 new ObjectParameter("purchaseMasterId", purchaseMasterId) :
                 new ObjectParameter("purchaseMasterId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PurchaseDetailsViewByPurchaseMasterId_Result>("PurchaseDetailsViewByPurchaseMasterId", purchaseMasterIdParameter);
         }
-
+    
         public virtual ObjectResult<PurchaseDetailsViewByPurchaseMasterIdWithRemaining_Result> PurchaseDetailsViewByPurchaseMasterIdWithRemaining(Nullable<decimal> purchaseMasterId, Nullable<decimal> purchaseReturnMasterId, Nullable<decimal> voucherTypeId)
         {
             var purchaseMasterIdParameter = purchaseMasterId.HasValue ?
                 new ObjectParameter("purchaseMasterId", purchaseMasterId) :
                 new ObjectParameter("purchaseMasterId", typeof(decimal));
-
+    
             var purchaseReturnMasterIdParameter = purchaseReturnMasterId.HasValue ?
                 new ObjectParameter("purchaseReturnMasterId", purchaseReturnMasterId) :
                 new ObjectParameter("purchaseReturnMasterId", typeof(decimal));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PurchaseDetailsViewByPurchaseMasterIdWithRemaining_Result>("PurchaseDetailsViewByPurchaseMasterIdWithRemaining", purchaseMasterIdParameter, purchaseReturnMasterIdParameter, voucherTypeIdParameter);
         }
-
+    
         public virtual ObjectResult<PurchaseInvoicePurchaseAccountComboFill_Result> PurchaseInvoicePurchaseAccountComboFill()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PurchaseInvoicePurchaseAccountComboFill_Result>("PurchaseInvoicePurchaseAccountComboFill");
         }
-
+    
         public virtual ObjectResult<Nullable<int>> PurchaseInvoiceVoucherNoCheckExistance(string invoiceNo, string voucherNo, Nullable<decimal> voucherTypeId, Nullable<decimal> purchaseMasterId)
         {
             var invoiceNoParameter = invoiceNo != null ?
                 new ObjectParameter("invoiceNo", invoiceNo) :
                 new ObjectParameter("invoiceNo", typeof(string));
-
+    
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var purchaseMasterIdParameter = purchaseMasterId.HasValue ?
                 new ObjectParameter("purchaseMasterId", purchaseMasterId) :
                 new ObjectParameter("purchaseMasterId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("PurchaseInvoiceVoucherNoCheckExistance", invoiceNoParameter, voucherNoParameter, voucherTypeIdParameter, purchaseMasterIdParameter);
         }
-
+    
         public virtual int PurchaseMasterAdd(string voucherNo, string invoiceNo, Nullable<decimal> suffixPrefixId, Nullable<decimal> voucherTypeId, Nullable<System.DateTime> date, Nullable<decimal> ledgerId, string vendorInvoiceNo, Nullable<System.DateTime> vendorInvoiceDate, string creditPeriod, Nullable<decimal> exchangeRateId, string narration, Nullable<decimal> purchaseAccount, string purchaseOrderMasterId, Nullable<decimal> materialReceiptMasterId, Nullable<decimal> additionalCost, Nullable<decimal> totalTax, Nullable<decimal> billDiscount, Nullable<decimal> grandTotal, Nullable<decimal> totalAmount, Nullable<decimal> userId, string lrNo, string transportationCompany, Nullable<decimal> financialYearId)
         {
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             var invoiceNoParameter = invoiceNo != null ?
                 new ObjectParameter("invoiceNo", invoiceNo) :
                 new ObjectParameter("invoiceNo", typeof(string));
-
+    
             var suffixPrefixIdParameter = suffixPrefixId.HasValue ?
                 new ObjectParameter("suffixPrefixId", suffixPrefixId) :
                 new ObjectParameter("suffixPrefixId", typeof(decimal));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var dateParameter = date.HasValue ?
                 new ObjectParameter("date", date) :
                 new ObjectParameter("date", typeof(System.DateTime));
-
+    
             var ledgerIdParameter = ledgerId.HasValue ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(decimal));
-
+    
             var vendorInvoiceNoParameter = vendorInvoiceNo != null ?
                 new ObjectParameter("vendorInvoiceNo", vendorInvoiceNo) :
                 new ObjectParameter("vendorInvoiceNo", typeof(string));
-
+    
             var vendorInvoiceDateParameter = vendorInvoiceDate.HasValue ?
                 new ObjectParameter("vendorInvoiceDate", vendorInvoiceDate) :
                 new ObjectParameter("vendorInvoiceDate", typeof(System.DateTime));
-
+    
             var creditPeriodParameter = creditPeriod != null ?
                 new ObjectParameter("creditPeriod", creditPeriod) :
                 new ObjectParameter("creditPeriod", typeof(string));
-
+    
             var exchangeRateIdParameter = exchangeRateId.HasValue ?
                 new ObjectParameter("exchangeRateId", exchangeRateId) :
                 new ObjectParameter("exchangeRateId", typeof(decimal));
-
+    
             var narrationParameter = narration != null ?
                 new ObjectParameter("narration", narration) :
                 new ObjectParameter("narration", typeof(string));
-
+    
             var purchaseAccountParameter = purchaseAccount.HasValue ?
                 new ObjectParameter("purchaseAccount", purchaseAccount) :
                 new ObjectParameter("purchaseAccount", typeof(decimal));
-
+    
             var purchaseOrderMasterIdParameter = purchaseOrderMasterId != null ?
                 new ObjectParameter("purchaseOrderMasterId", purchaseOrderMasterId) :
                 new ObjectParameter("purchaseOrderMasterId", typeof(string));
-
+    
             var materialReceiptMasterIdParameter = materialReceiptMasterId.HasValue ?
                 new ObjectParameter("materialReceiptMasterId", materialReceiptMasterId) :
                 new ObjectParameter("materialReceiptMasterId", typeof(decimal));
-
+    
             var additionalCostParameter = additionalCost.HasValue ?
                 new ObjectParameter("additionalCost", additionalCost) :
                 new ObjectParameter("additionalCost", typeof(decimal));
-
+    
             var totalTaxParameter = totalTax.HasValue ?
                 new ObjectParameter("totalTax", totalTax) :
                 new ObjectParameter("totalTax", typeof(decimal));
-
+    
             var billDiscountParameter = billDiscount.HasValue ?
                 new ObjectParameter("billDiscount", billDiscount) :
                 new ObjectParameter("billDiscount", typeof(decimal));
-
+    
             var grandTotalParameter = grandTotal.HasValue ?
                 new ObjectParameter("grandTotal", grandTotal) :
                 new ObjectParameter("grandTotal", typeof(decimal));
-
+    
             var totalAmountParameter = totalAmount.HasValue ?
                 new ObjectParameter("totalAmount", totalAmount) :
                 new ObjectParameter("totalAmount", typeof(decimal));
-
+    
             var userIdParameter = userId.HasValue ?
                 new ObjectParameter("userId", userId) :
                 new ObjectParameter("userId", typeof(decimal));
-
+    
             var lrNoParameter = lrNo != null ?
                 new ObjectParameter("lrNo", lrNo) :
                 new ObjectParameter("lrNo", typeof(string));
-
+    
             var transportationCompanyParameter = transportationCompany != null ?
                 new ObjectParameter("transportationCompany", transportationCompany) :
                 new ObjectParameter("transportationCompany", typeof(string));
-
+    
             var financialYearIdParameter = financialYearId.HasValue ?
                 new ObjectParameter("financialYearId", financialYearId) :
                 new ObjectParameter("financialYearId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PurchaseMasterAdd", voucherNoParameter, invoiceNoParameter, suffixPrefixIdParameter, voucherTypeIdParameter, dateParameter, ledgerIdParameter, vendorInvoiceNoParameter, vendorInvoiceDateParameter, creditPeriodParameter, exchangeRateIdParameter, narrationParameter, purchaseAccountParameter, purchaseOrderMasterIdParameter, materialReceiptMasterIdParameter, additionalCostParameter, totalTaxParameter, billDiscountParameter, grandTotalParameter, totalAmountParameter, userIdParameter, lrNoParameter, transportationCompanyParameter, financialYearIdParameter);
         }
-
+    
         public virtual int PurchaseMasterDelete(Nullable<decimal> purchaseMasterId)
         {
             var purchaseMasterIdParameter = purchaseMasterId.HasValue ?
                 new ObjectParameter("purchaseMasterId", purchaseMasterId) :
                 new ObjectParameter("purchaseMasterId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PurchaseMasterDelete", purchaseMasterIdParameter);
         }
-
+    
         public virtual int PurchaseMasterEdit(Nullable<decimal> purchaseMasterId, string voucherNo, string invoiceNo, Nullable<decimal> suffixPrefixId, Nullable<decimal> voucherTypeId, Nullable<System.DateTime> date, Nullable<decimal> ledgerId, string vendorInvoiceNo, Nullable<System.DateTime> vendorInvoiceDate, string creditPeriod, Nullable<decimal> exchangeRateId, string narration, Nullable<decimal> purchaseAccount, string purchaseOrderMasterId, Nullable<decimal> materialReceiptMasterId, Nullable<decimal> additionalCost, Nullable<decimal> totalTax, Nullable<decimal> billDiscount, Nullable<decimal> grandTotal, Nullable<decimal> totalAmount, Nullable<decimal> userId, string lrNo, string transportationCompany, Nullable<decimal> financialYearId)
         {
             var purchaseMasterIdParameter = purchaseMasterId.HasValue ?
                 new ObjectParameter("purchaseMasterId", purchaseMasterId) :
                 new ObjectParameter("purchaseMasterId", typeof(decimal));
-
+    
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             var invoiceNoParameter = invoiceNo != null ?
                 new ObjectParameter("invoiceNo", invoiceNo) :
                 new ObjectParameter("invoiceNo", typeof(string));
-
+    
             var suffixPrefixIdParameter = suffixPrefixId.HasValue ?
                 new ObjectParameter("suffixPrefixId", suffixPrefixId) :
                 new ObjectParameter("suffixPrefixId", typeof(decimal));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var dateParameter = date.HasValue ?
                 new ObjectParameter("date", date) :
                 new ObjectParameter("date", typeof(System.DateTime));
-
+    
             var ledgerIdParameter = ledgerId.HasValue ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(decimal));
-
+    
             var vendorInvoiceNoParameter = vendorInvoiceNo != null ?
                 new ObjectParameter("vendorInvoiceNo", vendorInvoiceNo) :
                 new ObjectParameter("vendorInvoiceNo", typeof(string));
-
+    
             var vendorInvoiceDateParameter = vendorInvoiceDate.HasValue ?
                 new ObjectParameter("vendorInvoiceDate", vendorInvoiceDate) :
                 new ObjectParameter("vendorInvoiceDate", typeof(System.DateTime));
-
+    
             var creditPeriodParameter = creditPeriod != null ?
                 new ObjectParameter("creditPeriod", creditPeriod) :
                 new ObjectParameter("creditPeriod", typeof(string));
-
+    
             var exchangeRateIdParameter = exchangeRateId.HasValue ?
                 new ObjectParameter("exchangeRateId", exchangeRateId) :
                 new ObjectParameter("exchangeRateId", typeof(decimal));
-
+    
             var narrationParameter = narration != null ?
                 new ObjectParameter("narration", narration) :
                 new ObjectParameter("narration", typeof(string));
-
+    
             var purchaseAccountParameter = purchaseAccount.HasValue ?
                 new ObjectParameter("purchaseAccount", purchaseAccount) :
                 new ObjectParameter("purchaseAccount", typeof(decimal));
-
+    
             var purchaseOrderMasterIdParameter = purchaseOrderMasterId != null ?
                 new ObjectParameter("purchaseOrderMasterId", purchaseOrderMasterId) :
                 new ObjectParameter("purchaseOrderMasterId", typeof(string));
-
+    
             var materialReceiptMasterIdParameter = materialReceiptMasterId.HasValue ?
                 new ObjectParameter("materialReceiptMasterId", materialReceiptMasterId) :
                 new ObjectParameter("materialReceiptMasterId", typeof(decimal));
-
+    
             var additionalCostParameter = additionalCost.HasValue ?
                 new ObjectParameter("additionalCost", additionalCost) :
                 new ObjectParameter("additionalCost", typeof(decimal));
-
+    
             var totalTaxParameter = totalTax.HasValue ?
                 new ObjectParameter("totalTax", totalTax) :
                 new ObjectParameter("totalTax", typeof(decimal));
-
+    
             var billDiscountParameter = billDiscount.HasValue ?
                 new ObjectParameter("billDiscount", billDiscount) :
                 new ObjectParameter("billDiscount", typeof(decimal));
-
+    
             var grandTotalParameter = grandTotal.HasValue ?
                 new ObjectParameter("grandTotal", grandTotal) :
                 new ObjectParameter("grandTotal", typeof(decimal));
-
+    
             var totalAmountParameter = totalAmount.HasValue ?
                 new ObjectParameter("totalAmount", totalAmount) :
                 new ObjectParameter("totalAmount", typeof(decimal));
-
+    
             var userIdParameter = userId.HasValue ?
                 new ObjectParameter("userId", userId) :
                 new ObjectParameter("userId", typeof(decimal));
-
+    
             var lrNoParameter = lrNo != null ?
                 new ObjectParameter("lrNo", lrNo) :
                 new ObjectParameter("lrNo", typeof(string));
-
+    
             var transportationCompanyParameter = transportationCompany != null ?
                 new ObjectParameter("transportationCompany", transportationCompany) :
                 new ObjectParameter("transportationCompany", typeof(string));
-
+    
             var financialYearIdParameter = financialYearId.HasValue ?
                 new ObjectParameter("financialYearId", financialYearId) :
                 new ObjectParameter("financialYearId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PurchaseMasterEdit", purchaseMasterIdParameter, voucherNoParameter, invoiceNoParameter, suffixPrefixIdParameter, voucherTypeIdParameter, dateParameter, ledgerIdParameter, vendorInvoiceNoParameter, vendorInvoiceDateParameter, creditPeriodParameter, exchangeRateIdParameter, narrationParameter, purchaseAccountParameter, purchaseOrderMasterIdParameter, materialReceiptMasterIdParameter, additionalCostParameter, totalTaxParameter, billDiscountParameter, grandTotalParameter, totalAmountParameter, userIdParameter, lrNoParameter, transportationCompanyParameter, financialYearIdParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> PurchaseMasterIdViewByvoucherNoAndVoucherType(string voucherNo, Nullable<decimal> voucherTypeId)
         {
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("PurchaseMasterIdViewByvoucherNoAndVoucherType", voucherNoParameter, voucherTypeIdParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<int>> PurchaseMasterReferenceCheck(Nullable<decimal> purchaseMasterId, Nullable<decimal> purchaseDetailsId)
         {
             var purchaseMasterIdParameter = purchaseMasterId.HasValue ?
                 new ObjectParameter("purchaseMasterId", purchaseMasterId) :
                 new ObjectParameter("purchaseMasterId", typeof(decimal));
-
+    
             var purchaseDetailsIdParameter = purchaseDetailsId.HasValue ?
                 new ObjectParameter("purchaseDetailsId", purchaseDetailsId) :
                 new ObjectParameter("purchaseDetailsId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("PurchaseMasterReferenceCheck", purchaseMasterIdParameter, purchaseDetailsIdParameter);
         }
-
+    
         public virtual ObjectResult<PurchaseMasterView_Result> PurchaseMasterView(Nullable<decimal> purchaseMasterId)
         {
             var purchaseMasterIdParameter = purchaseMasterId.HasValue ?
                 new ObjectParameter("purchaseMasterId", purchaseMasterId) :
                 new ObjectParameter("purchaseMasterId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PurchaseMasterView_Result>("PurchaseMasterView", purchaseMasterIdParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> PurchaseMasterVoucherMax(Nullable<decimal> voucherTypeId)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("PurchaseMasterVoucherMax", voucherTypeIdParameter);
         }
-
+    
         public virtual ObjectResult<PurchaseOrderDetailsViewByOrderMasterIdWithRemainingByNotInCurrPI_Result> PurchaseOrderDetailsViewByOrderMasterIdWithRemainingByNotInCurrPI(string purchaseOrderMasterId, Nullable<decimal> purchaseMasterId, Nullable<decimal> voucherTypeId)
         {
             var purchaseOrderMasterIdParameter = purchaseOrderMasterId != null ?
                 new ObjectParameter("purchaseOrderMasterId", purchaseOrderMasterId) :
                 new ObjectParameter("purchaseOrderMasterId", typeof(string));
-
+    
             var purchaseMasterIdParameter = purchaseMasterId.HasValue ?
                 new ObjectParameter("purchaseMasterId", purchaseMasterId) :
                 new ObjectParameter("purchaseMasterId", typeof(decimal));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PurchaseOrderDetailsViewByOrderMasterIdWithRemainingByNotInCurrPI_Result>("PurchaseOrderDetailsViewByOrderMasterIdWithRemainingByNotInCurrPI", purchaseOrderMasterIdParameter, purchaseMasterIdParameter, voucherTypeIdParameter);
         }
-
+    
         public virtual ObjectResult<PurchaseOrderMasterView_Result> PurchaseOrderMasterView(Nullable<decimal> purchaseOrderMasterId)
         {
             var purchaseOrderMasterIdParameter = purchaseOrderMasterId.HasValue ?
                 new ObjectParameter("purchaseOrderMasterId", purchaseOrderMasterId) :
                 new ObjectParameter("purchaseOrderMasterId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PurchaseOrderMasterView_Result>("PurchaseOrderMasterView", purchaseOrderMasterIdParameter);
         }
-
+    
         public virtual ObjectResult<PurchaseOrderMasterViewByOrderMasterId_Result> PurchaseOrderMasterViewByOrderMasterId(string orderMasterId)
         {
             var orderMasterIdParameter = orderMasterId != null ?
                 new ObjectParameter("orderMasterId", orderMasterId) :
                 new ObjectParameter("orderMasterId", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PurchaseOrderMasterViewByOrderMasterId_Result>("PurchaseOrderMasterViewByOrderMasterId", orderMasterIdParameter);
         }
-
+    
         public virtual int PurchaseReturnDetailsDelete(Nullable<decimal> purchaseReturnDetailsId)
         {
             var purchaseReturnDetailsIdParameter = purchaseReturnDetailsId.HasValue ?
                 new ObjectParameter("purchaseReturnDetailsId", purchaseReturnDetailsId) :
                 new ObjectParameter("purchaseReturnDetailsId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PurchaseReturnDetailsDelete", purchaseReturnDetailsIdParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> PurchaseReturnDetailsQtyViewByPurchaseDetailsId(Nullable<decimal> purchaseDetailsId)
         {
             var purchaseDetailsIdParameter = purchaseDetailsId.HasValue ?
                 new ObjectParameter("purchaseDetailsId", purchaseDetailsId) :
                 new ObjectParameter("purchaseDetailsId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("PurchaseReturnDetailsQtyViewByPurchaseDetailsId", purchaseDetailsIdParameter);
         }
-
+    
         public virtual ObjectResult<PurchaseReturnDetailsViewByMasterId_Result> PurchaseReturnDetailsViewByMasterId(Nullable<decimal> purchaseReturnMasterId)
         {
             var purchaseReturnMasterIdParameter = purchaseReturnMasterId.HasValue ?
                 new ObjectParameter("purchaseReturnMasterId", purchaseReturnMasterId) :
                 new ObjectParameter("purchaseReturnMasterId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PurchaseReturnDetailsViewByMasterId_Result>("PurchaseReturnDetailsViewByMasterId", purchaseReturnMasterIdParameter);
         }
-
+    
         public virtual int PurchaseReturnMasterAndDetailsDelete(Nullable<decimal> purchaseReturnMasterId)
         {
             var purchaseReturnMasterIdParameter = purchaseReturnMasterId.HasValue ?
                 new ObjectParameter("purchaseReturnMasterId", purchaseReturnMasterId) :
                 new ObjectParameter("purchaseReturnMasterId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PurchaseReturnMasterAndDetailsDelete", purchaseReturnMasterIdParameter);
         }
-
+    
         public virtual ObjectResult<PurchaseReturnMasterViewAllByPurchaseMasterId_Result> PurchaseReturnMasterViewAllByPurchaseMasterId(Nullable<decimal> purchaseMasterId)
         {
             var purchaseMasterIdParameter = purchaseMasterId.HasValue ?
                 new ObjectParameter("purchaseMasterId", purchaseMasterId) :
                 new ObjectParameter("purchaseMasterId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PurchaseReturnMasterViewAllByPurchaseMasterId_Result>("PurchaseReturnMasterViewAllByPurchaseMasterId", purchaseMasterIdParameter);
         }
-
+    
         public virtual ObjectResult<PurchaseReturnViewByPurchaseReturnMasterId_Result> PurchaseReturnViewByPurchaseReturnMasterId(Nullable<decimal> purchaseReturnMasterId)
         {
             var purchaseReturnMasterIdParameter = purchaseReturnMasterId.HasValue ?
                 new ObjectParameter("purchaseReturnMasterId", purchaseReturnMasterId) :
                 new ObjectParameter("purchaseReturnMasterId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PurchaseReturnViewByPurchaseReturnMasterId_Result>("PurchaseReturnViewByPurchaseReturnMasterId", purchaseReturnMasterIdParameter);
         }
-
+    
         public virtual int QuotationADD(string customerID, Nullable<int> noteForUsID, Nullable<int> noteForCustomerID, Nullable<int> forFinancelIsTrue, Nullable<int> shippingMethodID, Nullable<int> isItemCost, Nullable<int> isWeightCost, Nullable<int> isCustomsDuties, Nullable<decimal> discOnSubTotal2, Nullable<decimal> extraCharges, Nullable<decimal> subTotal, Nullable<System.DateTime> startDate, Nullable<int> validationDay, Nullable<int> paymentID, Nullable<decimal> curr, Nullable<decimal> factor, Nullable<int> isVatValue, Nullable<decimal> vatValue, string currName, string quotationNo, string rFQNo, string currType, Nullable<int> quotationMainContact, Nullable<decimal> ledgerId, Nullable<decimal> voucherTypeId, Nullable<bool> approved, string invoiceNo, string voucherNo, Nullable<int> representativeID, Nullable<int> representativeID2, Nullable<int> exchangeRateID, Nullable<decimal> suffixPrefixId, Nullable<System.DateTime> deliveryDate, Nullable<decimal> grossTotal)
         {
             var customerIDParameter = customerID != null ?
                 new ObjectParameter("CustomerID", customerID) :
                 new ObjectParameter("CustomerID", typeof(string));
-
+    
             var noteForUsIDParameter = noteForUsID.HasValue ?
                 new ObjectParameter("NoteForUsID", noteForUsID) :
                 new ObjectParameter("NoteForUsID", typeof(int));
-
+    
             var noteForCustomerIDParameter = noteForCustomerID.HasValue ?
                 new ObjectParameter("NoteForCustomerID", noteForCustomerID) :
                 new ObjectParameter("NoteForCustomerID", typeof(int));
-
+    
             var forFinancelIsTrueParameter = forFinancelIsTrue.HasValue ?
                 new ObjectParameter("ForFinancelIsTrue", forFinancelIsTrue) :
                 new ObjectParameter("ForFinancelIsTrue", typeof(int));
-
+    
             var shippingMethodIDParameter = shippingMethodID.HasValue ?
                 new ObjectParameter("ShippingMethodID", shippingMethodID) :
                 new ObjectParameter("ShippingMethodID", typeof(int));
-
+    
             var isItemCostParameter = isItemCost.HasValue ?
                 new ObjectParameter("IsItemCost", isItemCost) :
                 new ObjectParameter("IsItemCost", typeof(int));
-
+    
             var isWeightCostParameter = isWeightCost.HasValue ?
                 new ObjectParameter("IsWeightCost", isWeightCost) :
                 new ObjectParameter("IsWeightCost", typeof(int));
-
+    
             var isCustomsDutiesParameter = isCustomsDuties.HasValue ?
                 new ObjectParameter("IsCustomsDuties", isCustomsDuties) :
                 new ObjectParameter("IsCustomsDuties", typeof(int));
-
+    
             var discOnSubTotal2Parameter = discOnSubTotal2.HasValue ?
                 new ObjectParameter("DiscOnSubTotal2", discOnSubTotal2) :
                 new ObjectParameter("DiscOnSubTotal2", typeof(decimal));
-
+    
             var extraChargesParameter = extraCharges.HasValue ?
                 new ObjectParameter("ExtraCharges", extraCharges) :
                 new ObjectParameter("ExtraCharges", typeof(decimal));
-
+    
             var subTotalParameter = subTotal.HasValue ?
                 new ObjectParameter("SubTotal", subTotal) :
                 new ObjectParameter("SubTotal", typeof(decimal));
-
+    
             var startDateParameter = startDate.HasValue ?
                 new ObjectParameter("StartDate", startDate) :
                 new ObjectParameter("StartDate", typeof(System.DateTime));
-
+    
             var validationDayParameter = validationDay.HasValue ?
                 new ObjectParameter("ValidationDay", validationDay) :
                 new ObjectParameter("ValidationDay", typeof(int));
-
+    
             var paymentIDParameter = paymentID.HasValue ?
                 new ObjectParameter("PaymentID", paymentID) :
                 new ObjectParameter("PaymentID", typeof(int));
-
+    
             var currParameter = curr.HasValue ?
                 new ObjectParameter("Curr", curr) :
                 new ObjectParameter("Curr", typeof(decimal));
-
+    
             var factorParameter = factor.HasValue ?
                 new ObjectParameter("Factor", factor) :
                 new ObjectParameter("Factor", typeof(decimal));
-
+    
             var isVatValueParameter = isVatValue.HasValue ?
                 new ObjectParameter("IsVatValue", isVatValue) :
                 new ObjectParameter("IsVatValue", typeof(int));
-
+    
             var vatValueParameter = vatValue.HasValue ?
                 new ObjectParameter("VatValue", vatValue) :
                 new ObjectParameter("VatValue", typeof(decimal));
-
+    
             var currNameParameter = currName != null ?
                 new ObjectParameter("CurrName", currName) :
                 new ObjectParameter("CurrName", typeof(string));
-
+    
             var quotationNoParameter = quotationNo != null ?
                 new ObjectParameter("QuotationNo", quotationNo) :
                 new ObjectParameter("QuotationNo", typeof(string));
-
+    
             var rFQNoParameter = rFQNo != null ?
                 new ObjectParameter("RFQNo", rFQNo) :
                 new ObjectParameter("RFQNo", typeof(string));
-
+    
             var currTypeParameter = currType != null ?
                 new ObjectParameter("CurrType", currType) :
                 new ObjectParameter("CurrType", typeof(string));
-
+    
             var quotationMainContactParameter = quotationMainContact.HasValue ?
                 new ObjectParameter("QuotationMainContact", quotationMainContact) :
                 new ObjectParameter("QuotationMainContact", typeof(int));
-
+    
             var ledgerIdParameter = ledgerId.HasValue ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(decimal));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var approvedParameter = approved.HasValue ?
                 new ObjectParameter("approved", approved) :
                 new ObjectParameter("approved", typeof(bool));
-
+    
             var invoiceNoParameter = invoiceNo != null ?
                 new ObjectParameter("invoiceNo", invoiceNo) :
                 new ObjectParameter("invoiceNo", typeof(string));
-
+    
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             var representativeIDParameter = representativeID.HasValue ?
                 new ObjectParameter("RepresentativeID", representativeID) :
                 new ObjectParameter("RepresentativeID", typeof(int));
-
+    
             var representativeID2Parameter = representativeID2.HasValue ?
                 new ObjectParameter("RepresentativeID2", representativeID2) :
                 new ObjectParameter("RepresentativeID2", typeof(int));
-
+    
             var exchangeRateIDParameter = exchangeRateID.HasValue ?
                 new ObjectParameter("ExchangeRateID", exchangeRateID) :
                 new ObjectParameter("ExchangeRateID", typeof(int));
-
+    
             var suffixPrefixIdParameter = suffixPrefixId.HasValue ?
                 new ObjectParameter("suffixPrefixId", suffixPrefixId) :
                 new ObjectParameter("suffixPrefixId", typeof(decimal));
-
+    
             var deliveryDateParameter = deliveryDate.HasValue ?
                 new ObjectParameter("DeliveryDate", deliveryDate) :
                 new ObjectParameter("DeliveryDate", typeof(System.DateTime));
-
+    
             var grossTotalParameter = grossTotal.HasValue ?
                 new ObjectParameter("GrossTotal", grossTotal) :
                 new ObjectParameter("GrossTotal", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("QuotationADD", customerIDParameter, noteForUsIDParameter, noteForCustomerIDParameter, forFinancelIsTrueParameter, shippingMethodIDParameter, isItemCostParameter, isWeightCostParameter, isCustomsDutiesParameter, discOnSubTotal2Parameter, extraChargesParameter, subTotalParameter, startDateParameter, validationDayParameter, paymentIDParameter, currParameter, factorParameter, isVatValueParameter, vatValueParameter, currNameParameter, quotationNoParameter, rFQNoParameter, currTypeParameter, quotationMainContactParameter, ledgerIdParameter, voucherTypeIdParameter, approvedParameter, invoiceNoParameter, voucherNoParameter, representativeIDParameter, representativeID2Parameter, exchangeRateIDParameter, suffixPrefixIdParameter, deliveryDateParameter, grossTotalParameter);
         }
-
+    
         public virtual int QuotationDetailsADD(Nullable<int> dgNo, string itemCode, Nullable<int> qty, Nullable<decimal> uCUPCurr, Nullable<decimal> disc, Nullable<decimal> total, Nullable<decimal> targetUP, string competitor, string customerDescription, string customerStockCode, Nullable<int> isDeleted, string quotationNo, Nullable<decimal> uPIME, Nullable<decimal> marge, string unitOfMeasure, Nullable<int> uC, Nullable<int> sSM, Nullable<decimal> unitWeight, string dependantTable, Nullable<decimal> unitConversionId)
         {
             var dgNoParameter = dgNo.HasValue ?
                 new ObjectParameter("dgNo", dgNo) :
                 new ObjectParameter("dgNo", typeof(int));
-
+    
             var itemCodeParameter = itemCode != null ?
                 new ObjectParameter("ItemCode", itemCode) :
                 new ObjectParameter("ItemCode", typeof(string));
-
+    
             var qtyParameter = qty.HasValue ?
                 new ObjectParameter("Qty", qty) :
                 new ObjectParameter("Qty", typeof(int));
-
+    
             var uCUPCurrParameter = uCUPCurr.HasValue ?
                 new ObjectParameter("UCUPCurr", uCUPCurr) :
                 new ObjectParameter("UCUPCurr", typeof(decimal));
-
+    
             var discParameter = disc.HasValue ?
                 new ObjectParameter("Disc", disc) :
                 new ObjectParameter("Disc", typeof(decimal));
-
+    
             var totalParameter = total.HasValue ?
                 new ObjectParameter("Total", total) :
                 new ObjectParameter("Total", typeof(decimal));
-
+    
             var targetUPParameter = targetUP.HasValue ?
                 new ObjectParameter("TargetUP", targetUP) :
                 new ObjectParameter("TargetUP", typeof(decimal));
-
+    
             var competitorParameter = competitor != null ?
                 new ObjectParameter("Competitor", competitor) :
                 new ObjectParameter("Competitor", typeof(string));
-
+    
             var customerDescriptionParameter = customerDescription != null ?
                 new ObjectParameter("CustomerDescription", customerDescription) :
                 new ObjectParameter("CustomerDescription", typeof(string));
-
+    
             var customerStockCodeParameter = customerStockCode != null ?
                 new ObjectParameter("CustomerStockCode", customerStockCode) :
                 new ObjectParameter("CustomerStockCode", typeof(string));
-
+    
             var isDeletedParameter = isDeleted.HasValue ?
                 new ObjectParameter("IsDeleted", isDeleted) :
                 new ObjectParameter("IsDeleted", typeof(int));
-
+    
             var quotationNoParameter = quotationNo != null ?
                 new ObjectParameter("QuotationNo", quotationNo) :
                 new ObjectParameter("QuotationNo", typeof(string));
-
+    
             var uPIMEParameter = uPIME.HasValue ?
                 new ObjectParameter("UPIME", uPIME) :
                 new ObjectParameter("UPIME", typeof(decimal));
-
+    
             var margeParameter = marge.HasValue ?
                 new ObjectParameter("Marge", marge) :
                 new ObjectParameter("Marge", typeof(decimal));
-
+    
             var unitOfMeasureParameter = unitOfMeasure != null ?
                 new ObjectParameter("UnitOfMeasure", unitOfMeasure) :
                 new ObjectParameter("UnitOfMeasure", typeof(string));
-
+    
             var uCParameter = uC.HasValue ?
                 new ObjectParameter("UC", uC) :
                 new ObjectParameter("UC", typeof(int));
-
+    
             var sSMParameter = sSM.HasValue ?
                 new ObjectParameter("SSM", sSM) :
                 new ObjectParameter("SSM", typeof(int));
-
+    
             var unitWeightParameter = unitWeight.HasValue ?
                 new ObjectParameter("UnitWeight", unitWeight) :
                 new ObjectParameter("UnitWeight", typeof(decimal));
-
+    
             var dependantTableParameter = dependantTable != null ?
                 new ObjectParameter("DependantTable", dependantTable) :
                 new ObjectParameter("DependantTable", typeof(string));
-
+    
             var unitConversionIdParameter = unitConversionId.HasValue ?
                 new ObjectParameter("unitConversionId", unitConversionId) :
                 new ObjectParameter("unitConversionId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("QuotationDetailsADD", dgNoParameter, itemCodeParameter, qtyParameter, uCUPCurrParameter, discParameter, totalParameter, targetUPParameter, competitorParameter, customerDescriptionParameter, customerStockCodeParameter, isDeletedParameter, quotationNoParameter, uPIMEParameter, margeParameter, unitOfMeasureParameter, uCParameter, sSMParameter, unitWeightParameter, dependantTableParameter, unitConversionIdParameter);
         }
-
+    
         public virtual ObjectResult<RackFillForStock_Result> RackFillForStock(Nullable<decimal> godownId)
         {
             var godownIdParameter = godownId.HasValue ?
                 new ObjectParameter("godownId", godownId) :
                 new ObjectParameter("godownId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RackFillForStock_Result>("RackFillForStock", godownIdParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> ReceiptMasterIdView(Nullable<decimal> voucherTypeId, string voucherNo)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("ReceiptMasterIdView", voucherTypeIdParameter, voucherNoParameter);
         }
-
+    
         public virtual int ReminderAdd(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, string remindAbout)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             var remindAboutParameter = remindAbout != null ?
                 new ObjectParameter("remindAbout", remindAbout) :
                 new ObjectParameter("remindAbout", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ReminderAdd", fromDateParameter, toDateParameter, remindAboutParameter);
         }
-
+    
         public virtual int ReminderDelete(Nullable<decimal> reminderId)
         {
             var reminderIdParameter = reminderId.HasValue ?
                 new ObjectParameter("reminderId", reminderId) :
                 new ObjectParameter("reminderId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ReminderDelete", reminderIdParameter);
         }
-
+    
         public virtual int ReminderEdit(Nullable<decimal> reminderId, Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, string remindAbout)
         {
             var reminderIdParameter = reminderId.HasValue ?
                 new ObjectParameter("reminderId", reminderId) :
                 new ObjectParameter("reminderId", typeof(decimal));
-
+    
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             var remindAboutParameter = remindAbout != null ?
                 new ObjectParameter("remindAbout", remindAbout) :
                 new ObjectParameter("remindAbout", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ReminderEdit", reminderIdParameter, fromDateParameter, toDateParameter, remindAboutParameter);
         }
-
+    
         public virtual ObjectResult<ReminderSearch_Result> ReminderSearch(Nullable<System.DateTime> fromdate, Nullable<System.DateTime> todate)
         {
             var fromdateParameter = fromdate.HasValue ?
                 new ObjectParameter("fromdate", fromdate) :
                 new ObjectParameter("fromdate", typeof(System.DateTime));
-
+    
             var todateParameter = todate.HasValue ?
                 new ObjectParameter("todate", todate) :
                 new ObjectParameter("todate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ReminderSearch_Result>("ReminderSearch", fromdateParameter, todateParameter);
         }
-
+    
         public virtual ObjectResult<ReminderView_Result> ReminderView(Nullable<decimal> reminderId)
         {
             var reminderIdParameter = reminderId.HasValue ?
                 new ObjectParameter("reminderId", reminderId) :
                 new ObjectParameter("reminderId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ReminderView_Result>("ReminderView", reminderIdParameter);
         }
-
+    
         public virtual ObjectResult<ReminderViewAll_Result> ReminderViewAll()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ReminderViewAll_Result>("ReminderViewAll");
         }
-
+    
         public virtual int RS_InvoiceDetailsADD(Nullable<int> rS_InvoiceID, string purchaseOrderNumber, Nullable<int> purchaseOrderItemNumber, string productNumber, Nullable<int> billingItemNumber, Nullable<decimal> quantity, string salesUnit, Nullable<decimal> unitPrice, Nullable<decimal> discount, Nullable<decimal> goodsValue, Nullable<decimal> amount, string cCCNNO, string countryofOrigin, string articleDescription, Nullable<int> deliveryNumber, Nullable<int> deliveryItemNumber)
         {
             var rS_InvoiceIDParameter = rS_InvoiceID.HasValue ?
                 new ObjectParameter("RS_InvoiceID", rS_InvoiceID) :
                 new ObjectParameter("RS_InvoiceID", typeof(int));
-
+    
             var purchaseOrderNumberParameter = purchaseOrderNumber != null ?
                 new ObjectParameter("PurchaseOrderNumber", purchaseOrderNumber) :
                 new ObjectParameter("PurchaseOrderNumber", typeof(string));
-
+    
             var purchaseOrderItemNumberParameter = purchaseOrderItemNumber.HasValue ?
                 new ObjectParameter("PurchaseOrderItemNumber", purchaseOrderItemNumber) :
                 new ObjectParameter("PurchaseOrderItemNumber", typeof(int));
-
+    
             var productNumberParameter = productNumber != null ?
                 new ObjectParameter("ProductNumber", productNumber) :
                 new ObjectParameter("ProductNumber", typeof(string));
-
+    
             var billingItemNumberParameter = billingItemNumber.HasValue ?
                 new ObjectParameter("BillingItemNumber", billingItemNumber) :
                 new ObjectParameter("BillingItemNumber", typeof(int));
-
+    
             var quantityParameter = quantity.HasValue ?
                 new ObjectParameter("Quantity", quantity) :
                 new ObjectParameter("Quantity", typeof(decimal));
-
+    
             var salesUnitParameter = salesUnit != null ?
                 new ObjectParameter("SalesUnit", salesUnit) :
                 new ObjectParameter("SalesUnit", typeof(string));
-
+    
             var unitPriceParameter = unitPrice.HasValue ?
                 new ObjectParameter("UnitPrice", unitPrice) :
                 new ObjectParameter("UnitPrice", typeof(decimal));
-
+    
             var discountParameter = discount.HasValue ?
                 new ObjectParameter("Discount", discount) :
                 new ObjectParameter("Discount", typeof(decimal));
-
+    
             var goodsValueParameter = goodsValue.HasValue ?
                 new ObjectParameter("GoodsValue", goodsValue) :
                 new ObjectParameter("GoodsValue", typeof(decimal));
-
+    
             var amountParameter = amount.HasValue ?
                 new ObjectParameter("Amount", amount) :
                 new ObjectParameter("Amount", typeof(decimal));
-
+    
             var cCCNNOParameter = cCCNNO != null ?
                 new ObjectParameter("CCCNNO", cCCNNO) :
                 new ObjectParameter("CCCNNO", typeof(string));
-
+    
             var countryofOriginParameter = countryofOrigin != null ?
                 new ObjectParameter("CountryofOrigin", countryofOrigin) :
                 new ObjectParameter("CountryofOrigin", typeof(string));
-
+    
             var articleDescriptionParameter = articleDescription != null ?
                 new ObjectParameter("ArticleDescription", articleDescription) :
                 new ObjectParameter("ArticleDescription", typeof(string));
-
+    
             var deliveryNumberParameter = deliveryNumber.HasValue ?
                 new ObjectParameter("DeliveryNumber", deliveryNumber) :
                 new ObjectParameter("DeliveryNumber", typeof(int));
-
+    
             var deliveryItemNumberParameter = deliveryItemNumber.HasValue ?
                 new ObjectParameter("DeliveryItemNumber", deliveryItemNumber) :
                 new ObjectParameter("DeliveryItemNumber", typeof(int));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("RS_InvoiceDetailsADD", rS_InvoiceIDParameter, purchaseOrderNumberParameter, purchaseOrderItemNumberParameter, productNumberParameter, billingItemNumberParameter, quantityParameter, salesUnitParameter, unitPriceParameter, discountParameter, goodsValueParameter, amountParameter, cCCNNOParameter, countryofOriginParameter, articleDescriptionParameter, deliveryNumberParameter, deliveryItemNumberParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> RSInvoiceADD(string shipmentReference, string billingDocumentReference, string shippingCondition, Nullable<System.DateTime> billingDocumentDate, string supplyingECCompany, string customerReference, Nullable<decimal> invoiceTaxValue, Nullable<decimal> invoiceGoodsValue, Nullable<decimal> invoiceNettValue, string currency, string airwayBillNumber)
         {
             var shipmentReferenceParameter = shipmentReference != null ?
                 new ObjectParameter("ShipmentReference", shipmentReference) :
                 new ObjectParameter("ShipmentReference", typeof(string));
-
+    
             var billingDocumentReferenceParameter = billingDocumentReference != null ?
                 new ObjectParameter("BillingDocumentReference", billingDocumentReference) :
                 new ObjectParameter("BillingDocumentReference", typeof(string));
-
+    
             var shippingConditionParameter = shippingCondition != null ?
                 new ObjectParameter("ShippingCondition", shippingCondition) :
                 new ObjectParameter("ShippingCondition", typeof(string));
-
+    
             var billingDocumentDateParameter = billingDocumentDate.HasValue ?
                 new ObjectParameter("BillingDocumentDate", billingDocumentDate) :
                 new ObjectParameter("BillingDocumentDate", typeof(System.DateTime));
-
+    
             var supplyingECCompanyParameter = supplyingECCompany != null ?
                 new ObjectParameter("SupplyingECCompany", supplyingECCompany) :
                 new ObjectParameter("SupplyingECCompany", typeof(string));
-
+    
             var customerReferenceParameter = customerReference != null ?
                 new ObjectParameter("CustomerReference", customerReference) :
                 new ObjectParameter("CustomerReference", typeof(string));
-
+    
             var invoiceTaxValueParameter = invoiceTaxValue.HasValue ?
                 new ObjectParameter("InvoiceTaxValue", invoiceTaxValue) :
                 new ObjectParameter("InvoiceTaxValue", typeof(decimal));
-
+    
             var invoiceGoodsValueParameter = invoiceGoodsValue.HasValue ?
                 new ObjectParameter("InvoiceGoodsValue", invoiceGoodsValue) :
                 new ObjectParameter("InvoiceGoodsValue", typeof(decimal));
-
+    
             var invoiceNettValueParameter = invoiceNettValue.HasValue ?
                 new ObjectParameter("InvoiceNettValue", invoiceNettValue) :
                 new ObjectParameter("InvoiceNettValue", typeof(decimal));
-
+    
             var currencyParameter = currency != null ?
                 new ObjectParameter("Currency", currency) :
                 new ObjectParameter("Currency", typeof(string));
-
+    
             var airwayBillNumberParameter = airwayBillNumber != null ?
                 new ObjectParameter("AirwayBillNumber", airwayBillNumber) :
                 new ObjectParameter("AirwayBillNumber", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("RSInvoiceADD", shipmentReferenceParameter, billingDocumentReferenceParameter, shippingConditionParameter, billingDocumentDateParameter, supplyingECCompanyParameter, customerReferenceParameter, invoiceTaxValueParameter, invoiceGoodsValueParameter, invoiceNettValueParameter, currencyParameter, airwayBillNumberParameter);
         }
-
+    
         public virtual int SalaryPackageAdd(string salaryPackageName, Nullable<bool> isActive, string narration, Nullable<decimal> totalAmount)
         {
             var salaryPackageNameParameter = salaryPackageName != null ?
                 new ObjectParameter("salaryPackageName", salaryPackageName) :
                 new ObjectParameter("salaryPackageName", typeof(string));
-
+    
             var isActiveParameter = isActive.HasValue ?
                 new ObjectParameter("isActive", isActive) :
                 new ObjectParameter("isActive", typeof(bool));
-
+    
             var narrationParameter = narration != null ?
                 new ObjectParameter("narration", narration) :
                 new ObjectParameter("narration", typeof(string));
-
+    
             var totalAmountParameter = totalAmount.HasValue ?
                 new ObjectParameter("totalAmount", totalAmount) :
                 new ObjectParameter("totalAmount", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SalaryPackageAdd", salaryPackageNameParameter, isActiveParameter, narrationParameter, totalAmountParameter);
         }
-
+    
         public virtual int SalaryPackageDelete(Nullable<decimal> salaryPackageId)
         {
             var salaryPackageIdParameter = salaryPackageId.HasValue ?
                 new ObjectParameter("salaryPackageId", salaryPackageId) :
                 new ObjectParameter("salaryPackageId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SalaryPackageDelete", salaryPackageIdParameter);
         }
-
+    
         public virtual int SalaryPackageDeleteAll(Nullable<decimal> salaryPackageId)
         {
             var salaryPackageIdParameter = salaryPackageId.HasValue ?
                 new ObjectParameter("salaryPackageId", salaryPackageId) :
                 new ObjectParameter("salaryPackageId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SalaryPackageDeleteAll", salaryPackageIdParameter);
         }
-
+    
         public virtual int SalaryPackageDetailsAdd(Nullable<decimal> salaryPackageId, Nullable<decimal> payHeadId, Nullable<decimal> amount, string narration)
         {
             var salaryPackageIdParameter = salaryPackageId.HasValue ?
                 new ObjectParameter("salaryPackageId", salaryPackageId) :
                 new ObjectParameter("salaryPackageId", typeof(decimal));
-
+    
             var payHeadIdParameter = payHeadId.HasValue ?
                 new ObjectParameter("payHeadId", payHeadId) :
                 new ObjectParameter("payHeadId", typeof(decimal));
-
+    
             var amountParameter = amount.HasValue ?
                 new ObjectParameter("amount", amount) :
                 new ObjectParameter("amount", typeof(decimal));
-
+    
             var narrationParameter = narration != null ?
                 new ObjectParameter("narration", narration) :
                 new ObjectParameter("narration", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SalaryPackageDetailsAdd", salaryPackageIdParameter, payHeadIdParameter, amountParameter, narrationParameter);
         }
-
+    
         public virtual int SalaryPackageDetailsDeleteWithSalaryPackageId(Nullable<decimal> salaryPackageId)
         {
             var salaryPackageIdParameter = salaryPackageId.HasValue ?
                 new ObjectParameter("salaryPackageId", salaryPackageId) :
                 new ObjectParameter("salaryPackageId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SalaryPackageDetailsDeleteWithSalaryPackageId", salaryPackageIdParameter);
         }
-
+    
         public virtual ObjectResult<SalaryPackageDetailsViewWithSalaryPackageId_Result> SalaryPackageDetailsViewWithSalaryPackageId(Nullable<decimal> salaryPackageId)
         {
             var salaryPackageIdParameter = salaryPackageId.HasValue ?
                 new ObjectParameter("salaryPackageId", salaryPackageId) :
                 new ObjectParameter("salaryPackageId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SalaryPackageDetailsViewWithSalaryPackageId_Result>("SalaryPackageDetailsViewWithSalaryPackageId", salaryPackageIdParameter);
         }
-
+    
         public virtual int SalaryPackageEdit(Nullable<decimal> salaryPackageId, string salaryPackageName, Nullable<bool> isActive, string narration, Nullable<decimal> totalAmount)
         {
             var salaryPackageIdParameter = salaryPackageId.HasValue ?
                 new ObjectParameter("salaryPackageId", salaryPackageId) :
                 new ObjectParameter("salaryPackageId", typeof(decimal));
-
+    
             var salaryPackageNameParameter = salaryPackageName != null ?
                 new ObjectParameter("salaryPackageName", salaryPackageName) :
                 new ObjectParameter("salaryPackageName", typeof(string));
-
+    
             var isActiveParameter = isActive.HasValue ?
                 new ObjectParameter("isActive", isActive) :
                 new ObjectParameter("isActive", typeof(bool));
-
+    
             var narrationParameter = narration != null ?
                 new ObjectParameter("narration", narration) :
                 new ObjectParameter("narration", typeof(string));
-
+    
             var totalAmountParameter = totalAmount.HasValue ?
                 new ObjectParameter("totalAmount", totalAmount) :
                 new ObjectParameter("totalAmount", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SalaryPackageEdit", salaryPackageIdParameter, salaryPackageNameParameter, isActiveParameter, narrationParameter, totalAmountParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> SalaryPackageNameCheckExistance(string salaryPackageName)
         {
             var salaryPackageNameParameter = salaryPackageName != null ?
                 new ObjectParameter("salaryPackageName", salaryPackageName) :
                 new ObjectParameter("salaryPackageName", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("SalaryPackageNameCheckExistance", salaryPackageNameParameter);
         }
-
+    
         public virtual ObjectResult<SalaryPackageregisterSearch_Result> SalaryPackageregisterSearch(string salaryPackageName, string isActive)
         {
             var salaryPackageNameParameter = salaryPackageName != null ?
                 new ObjectParameter("salaryPackageName", salaryPackageName) :
                 new ObjectParameter("salaryPackageName", typeof(string));
-
+    
             var isActiveParameter = isActive != null ?
                 new ObjectParameter("isActive", isActive) :
                 new ObjectParameter("isActive", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SalaryPackageregisterSearch_Result>("SalaryPackageregisterSearch", salaryPackageNameParameter, isActiveParameter);
         }
-
+    
         public virtual ObjectResult<SalaryPackageView_Result> SalaryPackageView(Nullable<decimal> salaryPackageId)
         {
             var salaryPackageIdParameter = salaryPackageId.HasValue ?
                 new ObjectParameter("salaryPackageId", salaryPackageId) :
                 new ObjectParameter("salaryPackageId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SalaryPackageView_Result>("SalaryPackageView", salaryPackageIdParameter);
         }
-
+    
         public virtual ObjectResult<SalaryPackageViewAllForMonthlySalarySettings_Result> SalaryPackageViewAllForMonthlySalarySettings()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SalaryPackageViewAllForMonthlySalarySettings_Result>("SalaryPackageViewAllForMonthlySalarySettings");
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> SalaryVoucherMasterMax(Nullable<decimal> voucherTypeId)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("SalaryVoucherMasterMax", voucherTypeIdParameter);
         }
-
+    
+        public virtual ObjectResult<SalaryVoucherMasterViewAll_Result> SalaryVoucherMasterViewAll()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SalaryVoucherMasterViewAll_Result>("SalaryVoucherMasterViewAll");
+        }
+    
         public virtual ObjectResult<string> SaleMasterGetPos(Nullable<decimal> salemasterId, string voucherName)
         {
             var salemasterIdParameter = salemasterId.HasValue ?
                 new ObjectParameter("salemasterId", salemasterId) :
                 new ObjectParameter("salemasterId", typeof(decimal));
-
+    
             var voucherNameParameter = voucherName != null ?
                 new ObjectParameter("voucherName", voucherName) :
                 new ObjectParameter("voucherName", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SaleMasterGetPos", salemasterIdParameter, voucherNameParameter);
         }
-
+    
         public virtual ObjectResult<SalesAccountComboFill_Result> SalesAccountComboFill()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SalesAccountComboFill_Result>("SalesAccountComboFill");
         }
-
+    
         public virtual int SalesBillTaxEditBySalesMasterIdAndTaxId(Nullable<decimal> salesMasterId, Nullable<decimal> taxId, Nullable<decimal> taxAmount, Nullable<System.DateTime> extraDate, string extra1, string extra2)
         {
             var salesMasterIdParameter = salesMasterId.HasValue ?
                 new ObjectParameter("salesMasterId", salesMasterId) :
                 new ObjectParameter("salesMasterId", typeof(decimal));
-
+    
             var taxIdParameter = taxId.HasValue ?
                 new ObjectParameter("taxId", taxId) :
                 new ObjectParameter("taxId", typeof(decimal));
-
+    
             var taxAmountParameter = taxAmount.HasValue ?
                 new ObjectParameter("taxAmount", taxAmount) :
                 new ObjectParameter("taxAmount", typeof(decimal));
-
+    
             var extraDateParameter = extraDate.HasValue ?
                 new ObjectParameter("extraDate", extraDate) :
                 new ObjectParameter("extraDate", typeof(System.DateTime));
-
+    
             var extra1Parameter = extra1 != null ?
                 new ObjectParameter("extra1", extra1) :
                 new ObjectParameter("extra1", typeof(string));
-
+    
             var extra2Parameter = extra2 != null ?
                 new ObjectParameter("extra2", extra2) :
                 new ObjectParameter("extra2", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SalesBillTaxEditBySalesMasterIdAndTaxId", salesMasterIdParameter, taxIdParameter, taxAmountParameter, extraDateParameter, extra1Parameter, extra2Parameter);
         }
-
+    
         public virtual int SalesDetailsDelete(Nullable<decimal> salesDetailsId)
         {
             var salesDetailsIdParameter = salesDetailsId.HasValue ?
                 new ObjectParameter("salesDetailsId", salesDetailsId) :
                 new ObjectParameter("salesDetailsId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SalesDetailsDelete", salesDetailsIdParameter);
         }
-
+    
         public virtual int SalesDetailsEdit(Nullable<decimal> salesDetailsId, Nullable<decimal> salesMasterId, Nullable<decimal> deliveryNoteDetailsId, Nullable<decimal> orderDetailsId, Nullable<decimal> quotationDetailsId, Nullable<decimal> productId, Nullable<decimal> qty, Nullable<decimal> rate, Nullable<decimal> unitId, Nullable<decimal> unitConversionId, Nullable<decimal> discount, Nullable<decimal> taxId, Nullable<decimal> batchId, Nullable<decimal> godownId, Nullable<decimal> rackId, Nullable<decimal> taxAmount, Nullable<decimal> grossAmount, Nullable<decimal> netAmount, Nullable<decimal> amount, Nullable<int> slNo)
         {
             var salesDetailsIdParameter = salesDetailsId.HasValue ?
                 new ObjectParameter("salesDetailsId", salesDetailsId) :
                 new ObjectParameter("salesDetailsId", typeof(decimal));
-
+    
             var salesMasterIdParameter = salesMasterId.HasValue ?
                 new ObjectParameter("salesMasterId", salesMasterId) :
                 new ObjectParameter("salesMasterId", typeof(decimal));
-
+    
             var deliveryNoteDetailsIdParameter = deliveryNoteDetailsId.HasValue ?
                 new ObjectParameter("deliveryNoteDetailsId", deliveryNoteDetailsId) :
                 new ObjectParameter("deliveryNoteDetailsId", typeof(decimal));
-
+    
             var orderDetailsIdParameter = orderDetailsId.HasValue ?
                 new ObjectParameter("orderDetailsId", orderDetailsId) :
                 new ObjectParameter("orderDetailsId", typeof(decimal));
-
+    
             var quotationDetailsIdParameter = quotationDetailsId.HasValue ?
                 new ObjectParameter("quotationDetailsId", quotationDetailsId) :
                 new ObjectParameter("quotationDetailsId", typeof(decimal));
-
+    
             var productIdParameter = productId.HasValue ?
                 new ObjectParameter("productId", productId) :
                 new ObjectParameter("productId", typeof(decimal));
-
+    
             var qtyParameter = qty.HasValue ?
                 new ObjectParameter("qty", qty) :
                 new ObjectParameter("qty", typeof(decimal));
-
+    
             var rateParameter = rate.HasValue ?
                 new ObjectParameter("rate", rate) :
                 new ObjectParameter("rate", typeof(decimal));
-
+    
             var unitIdParameter = unitId.HasValue ?
                 new ObjectParameter("unitId", unitId) :
                 new ObjectParameter("unitId", typeof(decimal));
-
+    
             var unitConversionIdParameter = unitConversionId.HasValue ?
                 new ObjectParameter("unitConversionId", unitConversionId) :
                 new ObjectParameter("unitConversionId", typeof(decimal));
-
+    
             var discountParameter = discount.HasValue ?
                 new ObjectParameter("discount", discount) :
                 new ObjectParameter("discount", typeof(decimal));
-
+    
             var taxIdParameter = taxId.HasValue ?
                 new ObjectParameter("taxId", taxId) :
                 new ObjectParameter("taxId", typeof(decimal));
-
+    
             var batchIdParameter = batchId.HasValue ?
                 new ObjectParameter("batchId", batchId) :
                 new ObjectParameter("batchId", typeof(decimal));
-
+    
             var godownIdParameter = godownId.HasValue ?
                 new ObjectParameter("godownId", godownId) :
                 new ObjectParameter("godownId", typeof(decimal));
-
+    
             var rackIdParameter = rackId.HasValue ?
                 new ObjectParameter("rackId", rackId) :
                 new ObjectParameter("rackId", typeof(decimal));
-
+    
             var taxAmountParameter = taxAmount.HasValue ?
                 new ObjectParameter("taxAmount", taxAmount) :
                 new ObjectParameter("taxAmount", typeof(decimal));
-
+    
             var grossAmountParameter = grossAmount.HasValue ?
                 new ObjectParameter("grossAmount", grossAmount) :
                 new ObjectParameter("grossAmount", typeof(decimal));
-
+    
             var netAmountParameter = netAmount.HasValue ?
                 new ObjectParameter("netAmount", netAmount) :
                 new ObjectParameter("netAmount", typeof(decimal));
-
+    
             var amountParameter = amount.HasValue ?
                 new ObjectParameter("amount", amount) :
                 new ObjectParameter("amount", typeof(decimal));
-
+    
             var slNoParameter = slNo.HasValue ?
                 new ObjectParameter("slNo", slNo) :
                 new ObjectParameter("slNo", typeof(int));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SalesDetailsEdit", salesDetailsIdParameter, salesMasterIdParameter, deliveryNoteDetailsIdParameter, orderDetailsIdParameter, quotationDetailsIdParameter, productIdParameter, qtyParameter, rateParameter, unitIdParameter, unitConversionIdParameter, discountParameter, taxIdParameter, batchIdParameter, godownIdParameter, rackIdParameter, taxAmountParameter, grossAmountParameter, netAmountParameter, amountParameter, slNoParameter);
         }
-
+    
         public virtual ObjectResult<SalesInvoiceAdditionalCostViewByVoucherNoUnderVoucherType_Result> SalesInvoiceAdditionalCostViewByVoucherNoUnderVoucherType(Nullable<decimal> voucherTypeId, string voucherNo)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SalesInvoiceAdditionalCostViewByVoucherNoUnderVoucherType_Result>("SalesInvoiceAdditionalCostViewByVoucherNoUnderVoucherType", voucherTypeIdParameter, voucherNoParameter);
         }
-
+    
         public virtual int SalesInvoiceDelete(Nullable<decimal> salesMasterId, Nullable<decimal> voucherTypeId, string voucherNo)
         {
             var salesMasterIdParameter = salesMasterId.HasValue ?
                 new ObjectParameter("salesMasterId", salesMasterId) :
                 new ObjectParameter("salesMasterId", typeof(decimal));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SalesInvoiceDelete", salesMasterIdParameter, voucherTypeIdParameter, voucherNoParameter);
         }
-
+    
         public virtual ObjectResult<SalesInvoiceDetailsViewByBarcodeForSI_Result> SalesInvoiceDetailsViewByBarcodeForSI(Nullable<decimal> voucherTypeId, string barcode)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var barcodeParameter = barcode != null ?
                 new ObjectParameter("barcode", barcode) :
                 new ObjectParameter("barcode", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SalesInvoiceDetailsViewByBarcodeForSI_Result>("SalesInvoiceDetailsViewByBarcodeForSI", voucherTypeIdParameter, barcodeParameter);
         }
-
+    
         public virtual ObjectResult<SalesInvoiceDetailsViewByProductCodeForSI_Result> SalesInvoiceDetailsViewByProductCodeForSI(Nullable<decimal> voucherTypeId, string productCode)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var productCodeParameter = productCode != null ?
                 new ObjectParameter("productCode", productCode) :
                 new ObjectParameter("productCode", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SalesInvoiceDetailsViewByProductCodeForSI_Result>("SalesInvoiceDetailsViewByProductCodeForSI", voucherTypeIdParameter, productCodeParameter);
         }
-
+    
         public virtual ObjectResult<SalesInvoiceDetailsViewByProductNameForSI_Result> SalesInvoiceDetailsViewByProductNameForSI(Nullable<decimal> voucherTypeId, string productName)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var productNameParameter = productName != null ?
                 new ObjectParameter("productName", productName) :
                 new ObjectParameter("productName", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SalesInvoiceDetailsViewByProductNameForSI_Result>("SalesInvoiceDetailsViewByProductNameForSI", voucherTypeIdParameter, productNameParameter);
         }
-
+    
         public virtual ObjectResult<SalesInvoiceGridfillAgainestDeliveryNoteUsingDeliveryNoteDetails_Result> SalesInvoiceGridfillAgainestDeliveryNoteUsingDeliveryNoteDetails(Nullable<decimal> deliveryNoteMasterId, Nullable<decimal> salesMasterId, Nullable<decimal> voucherTypeId)
         {
             var deliveryNoteMasterIdParameter = deliveryNoteMasterId.HasValue ?
                 new ObjectParameter("deliveryNoteMasterId", deliveryNoteMasterId) :
                 new ObjectParameter("deliveryNoteMasterId", typeof(decimal));
-
+    
             var salesMasterIdParameter = salesMasterId.HasValue ?
                 new ObjectParameter("salesMasterId", salesMasterId) :
                 new ObjectParameter("salesMasterId", typeof(decimal));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SalesInvoiceGridfillAgainestDeliveryNoteUsingDeliveryNoteDetails_Result>("SalesInvoiceGridfillAgainestDeliveryNoteUsingDeliveryNoteDetails", deliveryNoteMasterIdParameter, salesMasterIdParameter, voucherTypeIdParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<int>> SalesInvoiceQuantityDetailsAgainstSalesReturn(Nullable<decimal> voucherTypeId, string voucherNo)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("SalesInvoiceQuantityDetailsAgainstSalesReturn", voucherTypeIdParameter, voucherNoParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> SalesInvoiceReciptVoucherDetailsAgainstSI(Nullable<decimal> voucherTypeId, string voucherNo)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("SalesInvoiceReciptVoucherDetailsAgainstSI", voucherTypeIdParameter, voucherNoParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<int>> SalesInvoiceReferenceCheckForEdit(Nullable<decimal> salesMasterId)
         {
             var salesMasterIdParameter = salesMasterId.HasValue ?
                 new ObjectParameter("salesMasterId", salesMasterId) :
                 new ObjectParameter("salesMasterId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("SalesInvoiceReferenceCheckForEdit", salesMasterIdParameter);
         }
-
+    
         public virtual int SalesInvoiceReportFill(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, Nullable<decimal> voucherTypeId, Nullable<decimal> ledgerId, Nullable<decimal> areaId, string salesMode, Nullable<decimal> employeeId, string productName, string voucherNo, string status, Nullable<decimal> routeId, string productCode)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var ledgerIdParameter = ledgerId.HasValue ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(decimal));
-
+    
             var areaIdParameter = areaId.HasValue ?
                 new ObjectParameter("areaId", areaId) :
                 new ObjectParameter("areaId", typeof(decimal));
-
+    
             var salesModeParameter = salesMode != null ?
                 new ObjectParameter("salesMode", salesMode) :
                 new ObjectParameter("salesMode", typeof(string));
-
+    
             var employeeIdParameter = employeeId.HasValue ?
                 new ObjectParameter("employeeId", employeeId) :
                 new ObjectParameter("employeeId", typeof(decimal));
-
+    
             var productNameParameter = productName != null ?
                 new ObjectParameter("productName", productName) :
                 new ObjectParameter("productName", typeof(string));
-
+    
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             var statusParameter = status != null ?
                 new ObjectParameter("status", status) :
                 new ObjectParameter("status", typeof(string));
-
+    
             var routeIdParameter = routeId.HasValue ?
                 new ObjectParameter("routeId", routeId) :
                 new ObjectParameter("routeId", typeof(decimal));
-
+    
             var productCodeParameter = productCode != null ?
                 new ObjectParameter("productCode", productCode) :
                 new ObjectParameter("productCode", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SalesInvoiceReportFill", fromDateParameter, toDateParameter, voucherTypeIdParameter, ledgerIdParameter, areaIdParameter, salesModeParameter, employeeIdParameter, productNameParameter, voucherNoParameter, statusParameter, routeIdParameter, productCodeParameter);
         }
-
+    
         public virtual ObjectResult<SalesInvoiceSalesBillTaxViewAllBySalesMasterId_Result> SalesInvoiceSalesBillTaxViewAllBySalesMasterId(Nullable<decimal> salesMasterId)
         {
             var salesMasterIdParameter = salesMasterId.HasValue ?
                 new ObjectParameter("SalesMasterId", salesMasterId) :
                 new ObjectParameter("SalesMasterId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SalesInvoiceSalesBillTaxViewAllBySalesMasterId_Result>("SalesInvoiceSalesBillTaxViewAllBySalesMasterId", salesMasterIdParameter);
         }
-
+    
         public virtual int SalesmanCheckReferenceAndDelete(Nullable<decimal> workerID)
         {
             var workerIDParameter = workerID.HasValue ?
                 new ObjectParameter("WorkerID", workerID) :
                 new ObjectParameter("WorkerID", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SalesmanCheckReferenceAndDelete", workerIDParameter);
         }
-
+    
         public virtual int SalesmanEdit(Nullable<decimal> employeeId, string employeeCode, string employeeName, string email, string phoneNumber, string mobileNumber, string address, string narration, Nullable<bool> isActive)
         {
             var employeeIdParameter = employeeId.HasValue ?
                 new ObjectParameter("employeeId", employeeId) :
                 new ObjectParameter("employeeId", typeof(decimal));
-
+    
             var employeeCodeParameter = employeeCode != null ?
                 new ObjectParameter("employeeCode", employeeCode) :
                 new ObjectParameter("employeeCode", typeof(string));
-
+    
             var employeeNameParameter = employeeName != null ?
                 new ObjectParameter("employeeName", employeeName) :
                 new ObjectParameter("employeeName", typeof(string));
-
+    
             var emailParameter = email != null ?
                 new ObjectParameter("email", email) :
                 new ObjectParameter("email", typeof(string));
-
+    
             var phoneNumberParameter = phoneNumber != null ?
                 new ObjectParameter("phoneNumber", phoneNumber) :
                 new ObjectParameter("phoneNumber", typeof(string));
-
+    
             var mobileNumberParameter = mobileNumber != null ?
                 new ObjectParameter("mobileNumber", mobileNumber) :
                 new ObjectParameter("mobileNumber", typeof(string));
-
+    
             var addressParameter = address != null ?
                 new ObjectParameter("address", address) :
                 new ObjectParameter("address", typeof(string));
-
+    
             var narrationParameter = narration != null ?
                 new ObjectParameter("narration", narration) :
                 new ObjectParameter("narration", typeof(string));
-
+    
             var isActiveParameter = isActive.HasValue ?
                 new ObjectParameter("isActive", isActive) :
                 new ObjectParameter("isActive", typeof(bool));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SalesmanEdit", employeeIdParameter, employeeCodeParameter, employeeNameParameter, emailParameter, phoneNumberParameter, mobileNumberParameter, addressParameter, narrationParameter, isActiveParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> SalesManGetDesignationId()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("SalesManGetDesignationId");
         }
-
+    
         public virtual ObjectResult<SalesmanSearch_Result> SalesmanSearch(string employeeCode, string employeeName, string mobileNumber, string phoneNumber, string isActive)
         {
             var employeeCodeParameter = employeeCode != null ?
                 new ObjectParameter("employeeCode", employeeCode) :
                 new ObjectParameter("employeeCode", typeof(string));
-
+    
             var employeeNameParameter = employeeName != null ?
                 new ObjectParameter("employeeName", employeeName) :
                 new ObjectParameter("employeeName", typeof(string));
-
+    
             var mobileNumberParameter = mobileNumber != null ?
                 new ObjectParameter("mobileNumber", mobileNumber) :
                 new ObjectParameter("mobileNumber", typeof(string));
-
+    
             var phoneNumberParameter = phoneNumber != null ?
                 new ObjectParameter("phoneNumber", phoneNumber) :
                 new ObjectParameter("phoneNumber", typeof(string));
-
+    
             var isActiveParameter = isActive != null ?
                 new ObjectParameter("isActive", isActive) :
                 new ObjectParameter("isActive", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SalesmanSearch_Result>("SalesmanSearch", employeeCodeParameter, employeeNameParameter, mobileNumberParameter, phoneNumberParameter, isActiveParameter);
         }
-
+    
         public virtual ObjectResult<SalesmanViewSpecificFeilds_Result> SalesmanViewSpecificFeilds(Nullable<decimal> employeeId)
         {
             var employeeIdParameter = employeeId.HasValue ?
                 new ObjectParameter("employeeId", employeeId) :
                 new ObjectParameter("employeeId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SalesmanViewSpecificFeilds_Result>("SalesmanViewSpecificFeilds", employeeIdParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> SalesMasterAdd(string voucherNo, string invoiceNo, Nullable<decimal> voucherTypeId, Nullable<decimal> suffixPrefixId, Nullable<System.DateTime> date, Nullable<int> creditPeriod, Nullable<decimal> ledgerId, Nullable<decimal> pricinglevelId, Nullable<decimal> salesAccount, Nullable<decimal> deliveryNoteMasterId, Nullable<decimal> orderMasterId, string narration, string customerName, Nullable<decimal> exchangeRateId, Nullable<decimal> taxAmount, Nullable<decimal> additionalCost, Nullable<decimal> billDiscount, Nullable<decimal> grandTotal, Nullable<decimal> totalAmount, Nullable<decimal> workerId, string lrNo, string transportationCompany, string quotationNoId, Nullable<bool> pOS, Nullable<decimal> counterId, Nullable<decimal> financialYearId)
         {
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             var invoiceNoParameter = invoiceNo != null ?
                 new ObjectParameter("invoiceNo", invoiceNo) :
                 new ObjectParameter("invoiceNo", typeof(string));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var suffixPrefixIdParameter = suffixPrefixId.HasValue ?
                 new ObjectParameter("suffixPrefixId", suffixPrefixId) :
                 new ObjectParameter("suffixPrefixId", typeof(decimal));
-
+    
             var dateParameter = date.HasValue ?
                 new ObjectParameter("date", date) :
                 new ObjectParameter("date", typeof(System.DateTime));
-
+    
             var creditPeriodParameter = creditPeriod.HasValue ?
                 new ObjectParameter("creditPeriod", creditPeriod) :
                 new ObjectParameter("creditPeriod", typeof(int));
-
+    
             var ledgerIdParameter = ledgerId.HasValue ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(decimal));
-
+    
             var pricinglevelIdParameter = pricinglevelId.HasValue ?
                 new ObjectParameter("pricinglevelId", pricinglevelId) :
                 new ObjectParameter("pricinglevelId", typeof(decimal));
-
+    
             var salesAccountParameter = salesAccount.HasValue ?
                 new ObjectParameter("salesAccount", salesAccount) :
                 new ObjectParameter("salesAccount", typeof(decimal));
-
+    
             var deliveryNoteMasterIdParameter = deliveryNoteMasterId.HasValue ?
                 new ObjectParameter("deliveryNoteMasterId", deliveryNoteMasterId) :
                 new ObjectParameter("deliveryNoteMasterId", typeof(decimal));
-
+    
             var orderMasterIdParameter = orderMasterId.HasValue ?
                 new ObjectParameter("orderMasterId", orderMasterId) :
                 new ObjectParameter("orderMasterId", typeof(decimal));
-
+    
             var narrationParameter = narration != null ?
                 new ObjectParameter("narration", narration) :
                 new ObjectParameter("narration", typeof(string));
-
+    
             var customerNameParameter = customerName != null ?
                 new ObjectParameter("customerName", customerName) :
                 new ObjectParameter("customerName", typeof(string));
-
+    
             var exchangeRateIdParameter = exchangeRateId.HasValue ?
                 new ObjectParameter("exchangeRateId", exchangeRateId) :
                 new ObjectParameter("exchangeRateId", typeof(decimal));
-
+    
             var taxAmountParameter = taxAmount.HasValue ?
                 new ObjectParameter("taxAmount", taxAmount) :
                 new ObjectParameter("taxAmount", typeof(decimal));
-
+    
             var additionalCostParameter = additionalCost.HasValue ?
                 new ObjectParameter("additionalCost", additionalCost) :
                 new ObjectParameter("additionalCost", typeof(decimal));
-
+    
             var billDiscountParameter = billDiscount.HasValue ?
                 new ObjectParameter("billDiscount", billDiscount) :
                 new ObjectParameter("billDiscount", typeof(decimal));
-
+    
             var grandTotalParameter = grandTotal.HasValue ?
                 new ObjectParameter("grandTotal", grandTotal) :
                 new ObjectParameter("grandTotal", typeof(decimal));
-
+    
             var totalAmountParameter = totalAmount.HasValue ?
                 new ObjectParameter("totalAmount", totalAmount) :
                 new ObjectParameter("totalAmount", typeof(decimal));
-
+    
             var workerIdParameter = workerId.HasValue ?
                 new ObjectParameter("WorkerId", workerId) :
                 new ObjectParameter("WorkerId", typeof(decimal));
-
+    
             var lrNoParameter = lrNo != null ?
                 new ObjectParameter("lrNo", lrNo) :
                 new ObjectParameter("lrNo", typeof(string));
-
+    
             var transportationCompanyParameter = transportationCompany != null ?
                 new ObjectParameter("transportationCompany", transportationCompany) :
                 new ObjectParameter("transportationCompany", typeof(string));
-
+    
             var quotationNoIdParameter = quotationNoId != null ?
                 new ObjectParameter("quotationNoId", quotationNoId) :
                 new ObjectParameter("quotationNoId", typeof(string));
-
+    
             var pOSParameter = pOS.HasValue ?
                 new ObjectParameter("POS", pOS) :
                 new ObjectParameter("POS", typeof(bool));
-
+    
             var counterIdParameter = counterId.HasValue ?
                 new ObjectParameter("counterId", counterId) :
                 new ObjectParameter("counterId", typeof(decimal));
-
+    
             var financialYearIdParameter = financialYearId.HasValue ?
                 new ObjectParameter("financialYearId", financialYearId) :
                 new ObjectParameter("financialYearId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("SalesMasterAdd", voucherNoParameter, invoiceNoParameter, voucherTypeIdParameter, suffixPrefixIdParameter, dateParameter, creditPeriodParameter, ledgerIdParameter, pricinglevelIdParameter, salesAccountParameter, deliveryNoteMasterIdParameter, orderMasterIdParameter, narrationParameter, customerNameParameter, exchangeRateIdParameter, taxAmountParameter, additionalCostParameter, billDiscountParameter, grandTotalParameter, totalAmountParameter, workerIdParameter, lrNoParameter, transportationCompanyParameter, quotationNoIdParameter, pOSParameter, counterIdParameter, financialYearIdParameter);
         }
-
+    
         public virtual int SalesMasterEdit(Nullable<decimal> salesMasterId, string voucherNo, string invoiceNo, Nullable<decimal> voucherTypeId, Nullable<decimal> suffixPrefixId, Nullable<System.DateTime> date, Nullable<int> creditPeriod, Nullable<decimal> ledgerId, Nullable<decimal> pricinglevelId, Nullable<decimal> employeeId, Nullable<decimal> salesAccount, Nullable<decimal> deliveryNoteMasterId, Nullable<decimal> orderMasterId, string narration, string customerName, Nullable<decimal> exchangeRateId, Nullable<decimal> taxAmount, Nullable<decimal> additionalCost, Nullable<decimal> billDiscount, Nullable<decimal> grandTotal, Nullable<decimal> totalAmount, Nullable<decimal> userId, string lrNo, string transportationCompany, Nullable<decimal> quotationMasterId, Nullable<bool> pOS, Nullable<decimal> counterId, Nullable<decimal> financialYearId, Nullable<System.DateTime> extraDate, string extra1, string extra2)
         {
             var salesMasterIdParameter = salesMasterId.HasValue ?
                 new ObjectParameter("salesMasterId", salesMasterId) :
                 new ObjectParameter("salesMasterId", typeof(decimal));
-
+    
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             var invoiceNoParameter = invoiceNo != null ?
                 new ObjectParameter("invoiceNo", invoiceNo) :
                 new ObjectParameter("invoiceNo", typeof(string));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var suffixPrefixIdParameter = suffixPrefixId.HasValue ?
                 new ObjectParameter("suffixPrefixId", suffixPrefixId) :
                 new ObjectParameter("suffixPrefixId", typeof(decimal));
-
+    
             var dateParameter = date.HasValue ?
                 new ObjectParameter("date", date) :
                 new ObjectParameter("date", typeof(System.DateTime));
-
+    
             var creditPeriodParameter = creditPeriod.HasValue ?
                 new ObjectParameter("creditPeriod", creditPeriod) :
                 new ObjectParameter("creditPeriod", typeof(int));
-
+    
             var ledgerIdParameter = ledgerId.HasValue ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(decimal));
-
+    
             var pricinglevelIdParameter = pricinglevelId.HasValue ?
                 new ObjectParameter("pricinglevelId", pricinglevelId) :
                 new ObjectParameter("pricinglevelId", typeof(decimal));
-
+    
             var employeeIdParameter = employeeId.HasValue ?
                 new ObjectParameter("employeeId", employeeId) :
                 new ObjectParameter("employeeId", typeof(decimal));
-
+    
             var salesAccountParameter = salesAccount.HasValue ?
                 new ObjectParameter("salesAccount", salesAccount) :
                 new ObjectParameter("salesAccount", typeof(decimal));
-
+    
             var deliveryNoteMasterIdParameter = deliveryNoteMasterId.HasValue ?
                 new ObjectParameter("deliveryNoteMasterId", deliveryNoteMasterId) :
                 new ObjectParameter("deliveryNoteMasterId", typeof(decimal));
-
+    
             var orderMasterIdParameter = orderMasterId.HasValue ?
                 new ObjectParameter("orderMasterId", orderMasterId) :
                 new ObjectParameter("orderMasterId", typeof(decimal));
-
+    
             var narrationParameter = narration != null ?
                 new ObjectParameter("narration", narration) :
                 new ObjectParameter("narration", typeof(string));
-
+    
             var customerNameParameter = customerName != null ?
                 new ObjectParameter("customerName", customerName) :
                 new ObjectParameter("customerName", typeof(string));
-
+    
             var exchangeRateIdParameter = exchangeRateId.HasValue ?
                 new ObjectParameter("exchangeRateId", exchangeRateId) :
                 new ObjectParameter("exchangeRateId", typeof(decimal));
-
+    
             var taxAmountParameter = taxAmount.HasValue ?
                 new ObjectParameter("taxAmount", taxAmount) :
                 new ObjectParameter("taxAmount", typeof(decimal));
-
+    
             var additionalCostParameter = additionalCost.HasValue ?
                 new ObjectParameter("additionalCost", additionalCost) :
                 new ObjectParameter("additionalCost", typeof(decimal));
-
+    
             var billDiscountParameter = billDiscount.HasValue ?
                 new ObjectParameter("billDiscount", billDiscount) :
                 new ObjectParameter("billDiscount", typeof(decimal));
-
+    
             var grandTotalParameter = grandTotal.HasValue ?
                 new ObjectParameter("grandTotal", grandTotal) :
                 new ObjectParameter("grandTotal", typeof(decimal));
-
+    
             var totalAmountParameter = totalAmount.HasValue ?
                 new ObjectParameter("totalAmount", totalAmount) :
                 new ObjectParameter("totalAmount", typeof(decimal));
-
+    
             var userIdParameter = userId.HasValue ?
                 new ObjectParameter("userId", userId) :
                 new ObjectParameter("userId", typeof(decimal));
-
+    
             var lrNoParameter = lrNo != null ?
                 new ObjectParameter("lrNo", lrNo) :
                 new ObjectParameter("lrNo", typeof(string));
-
+    
             var transportationCompanyParameter = transportationCompany != null ?
                 new ObjectParameter("transportationCompany", transportationCompany) :
                 new ObjectParameter("transportationCompany", typeof(string));
-
+    
             var quotationMasterIdParameter = quotationMasterId.HasValue ?
                 new ObjectParameter("quotationMasterId", quotationMasterId) :
                 new ObjectParameter("quotationMasterId", typeof(decimal));
-
+    
             var pOSParameter = pOS.HasValue ?
                 new ObjectParameter("POS", pOS) :
                 new ObjectParameter("POS", typeof(bool));
-
+    
             var counterIdParameter = counterId.HasValue ?
                 new ObjectParameter("counterId", counterId) :
                 new ObjectParameter("counterId", typeof(decimal));
-
+    
             var financialYearIdParameter = financialYearId.HasValue ?
                 new ObjectParameter("financialYearId", financialYearId) :
                 new ObjectParameter("financialYearId", typeof(decimal));
-
+    
             var extraDateParameter = extraDate.HasValue ?
                 new ObjectParameter("extraDate", extraDate) :
                 new ObjectParameter("extraDate", typeof(System.DateTime));
-
+    
             var extra1Parameter = extra1 != null ?
                 new ObjectParameter("extra1", extra1) :
                 new ObjectParameter("extra1", typeof(string));
-
+    
             var extra2Parameter = extra2 != null ?
                 new ObjectParameter("extra2", extra2) :
                 new ObjectParameter("extra2", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SalesMasterEdit", salesMasterIdParameter, voucherNoParameter, invoiceNoParameter, voucherTypeIdParameter, suffixPrefixIdParameter, dateParameter, creditPeriodParameter, ledgerIdParameter, pricinglevelIdParameter, employeeIdParameter, salesAccountParameter, deliveryNoteMasterIdParameter, orderMasterIdParameter, narrationParameter, customerNameParameter, exchangeRateIdParameter, taxAmountParameter, additionalCostParameter, billDiscountParameter, grandTotalParameter, totalAmountParameter, userIdParameter, lrNoParameter, transportationCompanyParameter, quotationMasterIdParameter, pOSParameter, counterIdParameter, financialYearIdParameter, extraDateParameter, extra1Parameter, extra2Parameter);
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> SalesMasterIdViewByvoucherNoAndVoucherType(string voucherNo, Nullable<decimal> voucherTypeId)
         {
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("SalesMasterIdViewByvoucherNoAndVoucherType", voucherNoParameter, voucherTypeIdParameter);
         }
-
+    
         public virtual ObjectResult<SalesMasterView_Result> SalesMasterView(Nullable<decimal> salesMasterId)
         {
             var salesMasterIdParameter = salesMasterId.HasValue ?
                 new ObjectParameter("salesMasterId", salesMasterId) :
                 new ObjectParameter("salesMasterId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SalesMasterView_Result>("SalesMasterView", salesMasterIdParameter);
         }
-
+    
         public virtual ObjectResult<SalesMasterViewForComboFillSelection_Result> SalesMasterViewForComboFillSelection(Nullable<decimal> salesMasterId)
         {
             var salesMasterIdParameter = salesMasterId.HasValue ?
                 new ObjectParameter("salesMasterId", salesMasterId) :
                 new ObjectParameter("salesMasterId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SalesMasterViewForComboFillSelection_Result>("SalesMasterViewForComboFillSelection", salesMasterIdParameter);
         }
-
+    
         public virtual ObjectResult<string> SalesReturnCheckReferenceForSIDelete(Nullable<decimal> salesMasterId)
         {
             var salesMasterIdParameter = salesMasterId.HasValue ?
                 new ObjectParameter("salesMasterId", salesMasterId) :
                 new ObjectParameter("salesMasterId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SalesReturnCheckReferenceForSIDelete", salesMasterIdParameter);
         }
-
+    
         public virtual ObjectResult<SalesReturnGrideFillNew_Result> SalesReturnGrideFillNew(Nullable<decimal> salesMasterId, Nullable<decimal> salesReturnMasterId)
         {
             var salesMasterIdParameter = salesMasterId.HasValue ?
                 new ObjectParameter("salesMasterId", salesMasterId) :
                 new ObjectParameter("salesMasterId", typeof(decimal));
-
+    
             var salesReturnMasterIdParameter = salesReturnMasterId.HasValue ?
                 new ObjectParameter("salesReturnMasterId", salesReturnMasterId) :
                 new ObjectParameter("salesReturnMasterId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SalesReturnGrideFillNew_Result>("SalesReturnGrideFillNew", salesMasterIdParameter, salesReturnMasterIdParameter);
         }
-
+    
         public virtual ObjectResult<SalesReturnInvoiceNoComboFill_Result> SalesReturnInvoiceNoComboFill(Nullable<decimal> ledgerId, Nullable<decimal> salesReturnMasterId, Nullable<decimal> voucherTypeId)
         {
             var ledgerIdParameter = ledgerId.HasValue ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(decimal));
-
+    
             var salesReturnMasterIdParameter = salesReturnMasterId.HasValue ?
                 new ObjectParameter("salesReturnMasterId", salesReturnMasterId) :
                 new ObjectParameter("salesReturnMasterId", typeof(decimal));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SalesReturnInvoiceNoComboFill_Result>("SalesReturnInvoiceNoComboFill", ledgerIdParameter, salesReturnMasterIdParameter, voucherTypeIdParameter);
         }
-
+    
         public virtual ObjectResult<SalesReturnReportGrideFill_Result> SalesReturnReportGrideFill(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, Nullable<decimal> ledgerId, Nullable<decimal> voucherTypeId, string voucherNo, Nullable<decimal> employeeId, string productCode)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             var ledgerIdParameter = ledgerId.HasValue ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(decimal));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             var employeeIdParameter = employeeId.HasValue ?
                 new ObjectParameter("employeeId", employeeId) :
                 new ObjectParameter("employeeId", typeof(decimal));
-
+    
             var productCodeParameter = productCode != null ?
                 new ObjectParameter("productCode", productCode) :
                 new ObjectParameter("productCode", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SalesReturnReportGrideFill_Result>("SalesReturnReportGrideFill", fromDateParameter, toDateParameter, ledgerIdParameter, voucherTypeIdParameter, voucherNoParameter, employeeIdParameter, productCodeParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<int>> ServiceCheckExistence(Nullable<decimal> serviceId, string serviceName)
         {
             var serviceIdParameter = serviceId.HasValue ?
                 new ObjectParameter("serviceId", serviceId) :
                 new ObjectParameter("serviceId", typeof(decimal));
-
+    
             var serviceNameParameter = serviceName != null ?
                 new ObjectParameter("serviceName", serviceName) :
                 new ObjectParameter("serviceName", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("ServiceCheckExistence", serviceIdParameter, serviceNameParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> ServiceDetailsAddReturnWithIdentity(Nullable<decimal> serviceMasterId, Nullable<decimal> serviceId, string measure, Nullable<decimal> amount)
         {
             var serviceMasterIdParameter = serviceMasterId.HasValue ?
                 new ObjectParameter("serviceMasterId", serviceMasterId) :
                 new ObjectParameter("serviceMasterId", typeof(decimal));
-
+    
             var serviceIdParameter = serviceId.HasValue ?
                 new ObjectParameter("serviceId", serviceId) :
                 new ObjectParameter("serviceId", typeof(decimal));
-
+    
             var measureParameter = measure != null ?
                 new ObjectParameter("measure", measure) :
                 new ObjectParameter("measure", typeof(string));
-
+    
             var amountParameter = amount.HasValue ?
                 new ObjectParameter("amount", amount) :
                 new ObjectParameter("amount", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("ServiceDetailsAddReturnWithIdentity", serviceMasterIdParameter, serviceIdParameter, measureParameter, amountParameter);
         }
-
+    
         public virtual int ServiceDetailsDelete(Nullable<decimal> serviceDetailsId)
         {
             var serviceDetailsIdParameter = serviceDetailsId.HasValue ?
                 new ObjectParameter("serviceDetailsId", serviceDetailsId) :
                 new ObjectParameter("serviceDetailsId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ServiceDetailsDelete", serviceDetailsIdParameter);
         }
-
+    
         public virtual int ServiceDetailsDeleteWithMasterId(Nullable<decimal> serviceMasterId)
         {
             var serviceMasterIdParameter = serviceMasterId.HasValue ?
                 new ObjectParameter("serviceMasterId", serviceMasterId) :
                 new ObjectParameter("serviceMasterId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ServiceDetailsDeleteWithMasterId", serviceMasterIdParameter);
         }
-
+    
         public virtual int ServiceDetailsEdit(Nullable<decimal> serviceDetailsId, Nullable<decimal> serviceMasterId, Nullable<decimal> serviceId, string measure, Nullable<decimal> amount)
         {
             var serviceDetailsIdParameter = serviceDetailsId.HasValue ?
                 new ObjectParameter("serviceDetailsId", serviceDetailsId) :
                 new ObjectParameter("serviceDetailsId", typeof(decimal));
-
+    
             var serviceMasterIdParameter = serviceMasterId.HasValue ?
                 new ObjectParameter("serviceMasterId", serviceMasterId) :
                 new ObjectParameter("serviceMasterId", typeof(decimal));
-
+    
             var serviceIdParameter = serviceId.HasValue ?
                 new ObjectParameter("serviceId", serviceId) :
                 new ObjectParameter("serviceId", typeof(decimal));
-
+    
             var measureParameter = measure != null ?
                 new ObjectParameter("measure", measure) :
                 new ObjectParameter("measure", typeof(string));
-
+    
             var amountParameter = amount.HasValue ?
                 new ObjectParameter("amount", amount) :
                 new ObjectParameter("amount", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ServiceDetailsEdit", serviceDetailsIdParameter, serviceMasterIdParameter, serviceIdParameter, measureParameter, amountParameter);
         }
-
+    
         public virtual ObjectResult<ServiceDetailsViewWithMasterId_Result> ServiceDetailsViewWithMasterId(Nullable<decimal> serviceMasterId)
         {
             var serviceMasterIdParameter = serviceMasterId.HasValue ?
                 new ObjectParameter("serviceMasterId", serviceMasterId) :
                 new ObjectParameter("serviceMasterId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ServiceDetailsViewWithMasterId_Result>("ServiceDetailsViewWithMasterId", serviceMasterIdParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> ServiceMasterAddReturnWithIdentity(string voucherNo, string invoiceNo, Nullable<decimal> suffixPrefixId, Nullable<System.DateTime> date, Nullable<decimal> ledgerId, Nullable<decimal> totalAmount, string narration, Nullable<int> creditPeriod, Nullable<decimal> serviceAccount, Nullable<decimal> exchangeRateId, Nullable<decimal> employeeId, string customer, Nullable<decimal> discount, Nullable<decimal> grandTotal, Nullable<decimal> voucherTypeId, Nullable<decimal> financialYearId)
         {
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             var invoiceNoParameter = invoiceNo != null ?
                 new ObjectParameter("invoiceNo", invoiceNo) :
                 new ObjectParameter("invoiceNo", typeof(string));
-
+    
             var suffixPrefixIdParameter = suffixPrefixId.HasValue ?
                 new ObjectParameter("suffixPrefixId", suffixPrefixId) :
                 new ObjectParameter("suffixPrefixId", typeof(decimal));
-
+    
             var dateParameter = date.HasValue ?
                 new ObjectParameter("date", date) :
                 new ObjectParameter("date", typeof(System.DateTime));
-
+    
             var ledgerIdParameter = ledgerId.HasValue ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(decimal));
-
+    
             var totalAmountParameter = totalAmount.HasValue ?
                 new ObjectParameter("totalAmount", totalAmount) :
                 new ObjectParameter("totalAmount", typeof(decimal));
-
+    
             var narrationParameter = narration != null ?
                 new ObjectParameter("narration", narration) :
                 new ObjectParameter("narration", typeof(string));
-
+    
             var creditPeriodParameter = creditPeriod.HasValue ?
                 new ObjectParameter("creditPeriod", creditPeriod) :
                 new ObjectParameter("creditPeriod", typeof(int));
-
+    
             var serviceAccountParameter = serviceAccount.HasValue ?
                 new ObjectParameter("serviceAccount", serviceAccount) :
                 new ObjectParameter("serviceAccount", typeof(decimal));
-
+    
             var exchangeRateIdParameter = exchangeRateId.HasValue ?
                 new ObjectParameter("exchangeRateId", exchangeRateId) :
                 new ObjectParameter("exchangeRateId", typeof(decimal));
-
+    
             var employeeIdParameter = employeeId.HasValue ?
                 new ObjectParameter("employeeId", employeeId) :
                 new ObjectParameter("employeeId", typeof(decimal));
-
+    
             var customerParameter = customer != null ?
                 new ObjectParameter("customer", customer) :
                 new ObjectParameter("customer", typeof(string));
-
+    
             var discountParameter = discount.HasValue ?
                 new ObjectParameter("discount", discount) :
                 new ObjectParameter("discount", typeof(decimal));
-
+    
             var grandTotalParameter = grandTotal.HasValue ?
                 new ObjectParameter("grandTotal", grandTotal) :
                 new ObjectParameter("grandTotal", typeof(decimal));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var financialYearIdParameter = financialYearId.HasValue ?
                 new ObjectParameter("financialYearId", financialYearId) :
                 new ObjectParameter("financialYearId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("ServiceMasterAddReturnWithIdentity", voucherNoParameter, invoiceNoParameter, suffixPrefixIdParameter, dateParameter, ledgerIdParameter, totalAmountParameter, narrationParameter, creditPeriodParameter, serviceAccountParameter, exchangeRateIdParameter, employeeIdParameter, customerParameter, discountParameter, grandTotalParameter, voucherTypeIdParameter, financialYearIdParameter);
         }
-
+    
         public virtual int ServiceMasterEdit(Nullable<decimal> serviceMasterId, Nullable<decimal> suffixPrefixId, Nullable<System.DateTime> date, Nullable<decimal> ledgerId, Nullable<decimal> totalAmount, string narration, Nullable<int> creditPeriod, Nullable<decimal> serviceAccount, Nullable<decimal> exchangeRateId, Nullable<decimal> employeeId, string customer, Nullable<decimal> discount, Nullable<decimal> grandTotal, Nullable<decimal> voucherTypeId, Nullable<decimal> financialYearId)
         {
             var serviceMasterIdParameter = serviceMasterId.HasValue ?
                 new ObjectParameter("serviceMasterId", serviceMasterId) :
                 new ObjectParameter("serviceMasterId", typeof(decimal));
-
+    
             var suffixPrefixIdParameter = suffixPrefixId.HasValue ?
                 new ObjectParameter("suffixPrefixId", suffixPrefixId) :
                 new ObjectParameter("suffixPrefixId", typeof(decimal));
-
+    
             var dateParameter = date.HasValue ?
                 new ObjectParameter("date", date) :
                 new ObjectParameter("date", typeof(System.DateTime));
-
+    
             var ledgerIdParameter = ledgerId.HasValue ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(decimal));
-
+    
             var totalAmountParameter = totalAmount.HasValue ?
                 new ObjectParameter("totalAmount", totalAmount) :
                 new ObjectParameter("totalAmount", typeof(decimal));
-
+    
             var narrationParameter = narration != null ?
                 new ObjectParameter("narration", narration) :
                 new ObjectParameter("narration", typeof(string));
-
+    
             var creditPeriodParameter = creditPeriod.HasValue ?
                 new ObjectParameter("creditPeriod", creditPeriod) :
                 new ObjectParameter("creditPeriod", typeof(int));
-
+    
             var serviceAccountParameter = serviceAccount.HasValue ?
                 new ObjectParameter("serviceAccount", serviceAccount) :
                 new ObjectParameter("serviceAccount", typeof(decimal));
-
+    
             var exchangeRateIdParameter = exchangeRateId.HasValue ?
                 new ObjectParameter("exchangeRateId", exchangeRateId) :
                 new ObjectParameter("exchangeRateId", typeof(decimal));
-
+    
             var employeeIdParameter = employeeId.HasValue ?
                 new ObjectParameter("employeeId", employeeId) :
                 new ObjectParameter("employeeId", typeof(decimal));
-
+    
             var customerParameter = customer != null ?
                 new ObjectParameter("customer", customer) :
                 new ObjectParameter("customer", typeof(string));
-
+    
             var discountParameter = discount.HasValue ?
                 new ObjectParameter("discount", discount) :
                 new ObjectParameter("discount", typeof(decimal));
-
+    
             var grandTotalParameter = grandTotal.HasValue ?
                 new ObjectParameter("grandTotal", grandTotal) :
                 new ObjectParameter("grandTotal", typeof(decimal));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var financialYearIdParameter = financialYearId.HasValue ?
                 new ObjectParameter("financialYearId", financialYearId) :
                 new ObjectParameter("financialYearId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ServiceMasterEdit", serviceMasterIdParameter, suffixPrefixIdParameter, dateParameter, ledgerIdParameter, totalAmountParameter, narrationParameter, creditPeriodParameter, serviceAccountParameter, exchangeRateIdParameter, employeeIdParameter, customerParameter, discountParameter, grandTotalParameter, voucherTypeIdParameter, financialYearIdParameter);
         }
-
+    
         public virtual ObjectResult<ServiceMasterView_Result> ServiceMasterView(Nullable<decimal> serviceMasterId)
         {
             var serviceMasterIdParameter = serviceMasterId.HasValue ?
                 new ObjectParameter("serviceMasterId", serviceMasterId) :
                 new ObjectParameter("serviceMasterId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ServiceMasterView_Result>("ServiceMasterView", serviceMasterIdParameter);
         }
-
+    
         public virtual ObjectResult<ServiceRegisterSearch_Result> ServiceRegisterSearch(Nullable<System.DateTime> dateFrom, Nullable<System.DateTime> dateTo, string voucherNo, string ledgerName)
         {
             var dateFromParameter = dateFrom.HasValue ?
                 new ObjectParameter("dateFrom", dateFrom) :
                 new ObjectParameter("dateFrom", typeof(System.DateTime));
-
+    
             var dateToParameter = dateTo.HasValue ?
                 new ObjectParameter("dateTo", dateTo) :
                 new ObjectParameter("dateTo", typeof(System.DateTime));
-
+    
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             var ledgerNameParameter = ledgerName != null ?
                 new ObjectParameter("ledgerName", ledgerName) :
                 new ObjectParameter("ledgerName", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ServiceRegisterSearch_Result>("ServiceRegisterSearch", dateFromParameter, dateToParameter, voucherNoParameter, ledgerNameParameter);
         }
-
+    
         public virtual ObjectResult<ServiceViewAll_Result> ServiceViewAll()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ServiceViewAll_Result>("ServiceViewAll");
         }
-
+    
         public virtual ObjectResult<Nullable<int>> ServiceVoucherCheckExistence(string invoiceNo, Nullable<decimal> serviceMasterId, Nullable<decimal> voucherTypeId)
         {
             var invoiceNoParameter = invoiceNo != null ?
                 new ObjectParameter("invoiceNo", invoiceNo) :
                 new ObjectParameter("invoiceNo", typeof(string));
-
+    
             var serviceMasterIdParameter = serviceMasterId.HasValue ?
                 new ObjectParameter("serviceMasterId", serviceMasterId) :
                 new ObjectParameter("serviceMasterId", typeof(decimal));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("ServiceVoucherCheckExistence", invoiceNoParameter, serviceMasterIdParameter, voucherTypeIdParameter);
         }
-
+    
         public virtual int ServiceVoucherDelete(Nullable<decimal> partyBalanceId, Nullable<decimal> voucherTypeId, string voucherNo, Nullable<decimal> serviceMasterId)
         {
             var partyBalanceIdParameter = partyBalanceId.HasValue ?
                 new ObjectParameter("partyBalanceId", partyBalanceId) :
                 new ObjectParameter("partyBalanceId", typeof(decimal));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             var serviceMasterIdParameter = serviceMasterId.HasValue ?
                 new ObjectParameter("serviceMasterId", serviceMasterId) :
                 new ObjectParameter("serviceMasterId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ServiceVoucherDelete", partyBalanceIdParameter, voucherTypeIdParameter, voucherNoParameter, serviceMasterIdParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> ServiceVoucherMasterMax(Nullable<decimal> voucherTypeId)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("ServiceVoucherMasterMax", voucherTypeIdParameter);
         }
-
+    
         public virtual int SettingsEdit(string status, Nullable<decimal> settingsId)
         {
             var statusParameter = status != null ?
                 new ObjectParameter("status", status) :
                 new ObjectParameter("status", typeof(string));
-
+    
             var settingsIdParameter = settingsId.HasValue ?
                 new ObjectParameter("settingsId", settingsId) :
                 new ObjectParameter("settingsId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SettingsEdit", statusParameter, settingsIdParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> SettingsGetId(string settingsName)
         {
             var settingsNameParameter = settingsName != null ?
                 new ObjectParameter("SettingsName", settingsName) :
                 new ObjectParameter("SettingsName", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("SettingsGetId", settingsNameParameter);
         }
-
+    
         public virtual ObjectResult<SettingsToCopyView_Result> SettingsToCopyView(string settingsName)
         {
             var settingsNameParameter = settingsName != null ?
                 new ObjectParameter("settingsName", settingsName) :
                 new ObjectParameter("settingsName", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SettingsToCopyView_Result>("SettingsToCopyView", settingsNameParameter);
         }
-
+    
         public virtual ObjectResult<SettingsToCopyViewAll_Result> SettingsToCopyViewAll()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SettingsToCopyViewAll_Result>("SettingsToCopyViewAll");
         }
-
+    
         public virtual ObjectResult<SettingsView_Result> SettingsView(string settingsName)
         {
             var settingsNameParameter = settingsName != null ?
                 new ObjectParameter("settingsName", settingsName) :
                 new ObjectParameter("settingsName", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SettingsView_Result>("SettingsView", settingsNameParameter);
         }
-
+    
         public virtual ObjectResult<SettingsViewAll_Result> SettingsViewAll()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SettingsViewAll_Result>("SettingsViewAll");
         }
-
+    
         public virtual ObjectResult<SettinsCheckReference_Result> SettinsCheckReference()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SettinsCheckReference_Result>("SettinsCheckReference");
         }
-
+    
         public virtual int SlidingPriceAdd(string articleNo, string articleDescription, Nullable<int> itemTypeCode, string itemTypeDesc, string introductionDate, string discontinuedDate, Nullable<int> quantity1, Nullable<decimal> col1Price, Nullable<decimal> col2Price, Nullable<decimal> col3Price, Nullable<decimal> col4Price, Nullable<decimal> col5Price, Nullable<int> col1Break, Nullable<int> col2Break, Nullable<int> col3Break, Nullable<int> col4Break, Nullable<int> col5Break, Nullable<decimal> discountedPrice1, Nullable<decimal> discountedPrice2, Nullable<decimal> discountedPrice3, Nullable<decimal> discountedPrice4, Nullable<decimal> discountedPrice5, string superSectionNo, string supersectionName, string brandID, string brandname, string sectionID, string sectionName)
         {
             var articleNoParameter = articleNo != null ?
                 new ObjectParameter("ArticleNo", articleNo) :
                 new ObjectParameter("ArticleNo", typeof(string));
-
+    
             var articleDescriptionParameter = articleDescription != null ?
                 new ObjectParameter("ArticleDescription", articleDescription) :
                 new ObjectParameter("ArticleDescription", typeof(string));
-
+    
             var itemTypeCodeParameter = itemTypeCode.HasValue ?
                 new ObjectParameter("ItemTypeCode", itemTypeCode) :
                 new ObjectParameter("ItemTypeCode", typeof(int));
-
+    
             var itemTypeDescParameter = itemTypeDesc != null ?
                 new ObjectParameter("ItemTypeDesc", itemTypeDesc) :
                 new ObjectParameter("ItemTypeDesc", typeof(string));
-
+    
             var introductionDateParameter = introductionDate != null ?
                 new ObjectParameter("IntroductionDate", introductionDate) :
                 new ObjectParameter("IntroductionDate", typeof(string));
-
+    
             var discontinuedDateParameter = discontinuedDate != null ?
                 new ObjectParameter("DiscontinuedDate", discontinuedDate) :
                 new ObjectParameter("DiscontinuedDate", typeof(string));
-
+    
             var quantity1Parameter = quantity1.HasValue ?
                 new ObjectParameter("Quantity1", quantity1) :
                 new ObjectParameter("Quantity1", typeof(int));
-
+    
             var col1PriceParameter = col1Price.HasValue ?
                 new ObjectParameter("Col1Price", col1Price) :
                 new ObjectParameter("Col1Price", typeof(decimal));
-
+    
             var col2PriceParameter = col2Price.HasValue ?
                 new ObjectParameter("Col2Price", col2Price) :
                 new ObjectParameter("Col2Price", typeof(decimal));
-
+    
             var col3PriceParameter = col3Price.HasValue ?
                 new ObjectParameter("Col3Price", col3Price) :
                 new ObjectParameter("Col3Price", typeof(decimal));
-
+    
             var col4PriceParameter = col4Price.HasValue ?
                 new ObjectParameter("Col4Price", col4Price) :
                 new ObjectParameter("Col4Price", typeof(decimal));
-
+    
             var col5PriceParameter = col5Price.HasValue ?
                 new ObjectParameter("Col5Price", col5Price) :
                 new ObjectParameter("Col5Price", typeof(decimal));
-
+    
             var col1BreakParameter = col1Break.HasValue ?
                 new ObjectParameter("Col1Break", col1Break) :
                 new ObjectParameter("Col1Break", typeof(int));
-
+    
             var col2BreakParameter = col2Break.HasValue ?
                 new ObjectParameter("Col2Break", col2Break) :
                 new ObjectParameter("Col2Break", typeof(int));
-
+    
             var col3BreakParameter = col3Break.HasValue ?
                 new ObjectParameter("Col3Break", col3Break) :
                 new ObjectParameter("Col3Break", typeof(int));
-
+    
             var col4BreakParameter = col4Break.HasValue ?
                 new ObjectParameter("Col4Break", col4Break) :
                 new ObjectParameter("Col4Break", typeof(int));
-
+    
             var col5BreakParameter = col5Break.HasValue ?
                 new ObjectParameter("Col5Break", col5Break) :
                 new ObjectParameter("Col5Break", typeof(int));
-
+    
             var discountedPrice1Parameter = discountedPrice1.HasValue ?
                 new ObjectParameter("DiscountedPrice1", discountedPrice1) :
                 new ObjectParameter("DiscountedPrice1", typeof(decimal));
-
+    
             var discountedPrice2Parameter = discountedPrice2.HasValue ?
                 new ObjectParameter("DiscountedPrice2", discountedPrice2) :
                 new ObjectParameter("DiscountedPrice2", typeof(decimal));
-
+    
             var discountedPrice3Parameter = discountedPrice3.HasValue ?
                 new ObjectParameter("DiscountedPrice3", discountedPrice3) :
                 new ObjectParameter("DiscountedPrice3", typeof(decimal));
-
+    
             var discountedPrice4Parameter = discountedPrice4.HasValue ?
                 new ObjectParameter("DiscountedPrice4", discountedPrice4) :
                 new ObjectParameter("DiscountedPrice4", typeof(decimal));
-
+    
             var discountedPrice5Parameter = discountedPrice5.HasValue ?
                 new ObjectParameter("DiscountedPrice5", discountedPrice5) :
                 new ObjectParameter("DiscountedPrice5", typeof(decimal));
-
+    
             var superSectionNoParameter = superSectionNo != null ?
                 new ObjectParameter("SuperSectionNo", superSectionNo) :
                 new ObjectParameter("SuperSectionNo", typeof(string));
-
+    
             var supersectionNameParameter = supersectionName != null ?
                 new ObjectParameter("SupersectionName", supersectionName) :
                 new ObjectParameter("SupersectionName", typeof(string));
-
+    
             var brandIDParameter = brandID != null ?
                 new ObjectParameter("BrandID", brandID) :
                 new ObjectParameter("BrandID", typeof(string));
-
+    
             var brandnameParameter = brandname != null ?
                 new ObjectParameter("Brandname", brandname) :
                 new ObjectParameter("Brandname", typeof(string));
-
+    
             var sectionIDParameter = sectionID != null ?
                 new ObjectParameter("SectionID", sectionID) :
                 new ObjectParameter("SectionID", typeof(string));
-
+    
             var sectionNameParameter = sectionName != null ?
                 new ObjectParameter("SectionName", sectionName) :
                 new ObjectParameter("SectionName", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SlidingPriceAdd", articleNoParameter, articleDescriptionParameter, itemTypeCodeParameter, itemTypeDescParameter, introductionDateParameter, discontinuedDateParameter, quantity1Parameter, col1PriceParameter, col2PriceParameter, col3PriceParameter, col4PriceParameter, col5PriceParameter, col1BreakParameter, col2BreakParameter, col3BreakParameter, col4BreakParameter, col5BreakParameter, discountedPrice1Parameter, discountedPrice2Parameter, discountedPrice3Parameter, discountedPrice4Parameter, discountedPrice5Parameter, superSectionNoParameter, supersectionNameParameter, brandIDParameter, brandnameParameter, sectionIDParameter, sectionNameParameter);
         }
-
+    
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
             var diagramnameParameter = diagramname != null ?
                 new ObjectParameter("diagramname", diagramname) :
                 new ObjectParameter("diagramname", typeof(string));
-
+    
             var owner_idParameter = owner_id.HasValue ?
                 new ObjectParameter("owner_id", owner_id) :
                 new ObjectParameter("owner_id", typeof(int));
-
+    
             var versionParameter = version.HasValue ?
                 new ObjectParameter("version", version) :
                 new ObjectParameter("version", typeof(int));
-
+    
             var definitionParameter = definition != null ?
                 new ObjectParameter("definition", definition) :
                 new ObjectParameter("definition", typeof(byte[]));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_alterdiagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
         }
-
+    
         public virtual int sp_creatediagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
             var diagramnameParameter = diagramname != null ?
                 new ObjectParameter("diagramname", diagramname) :
                 new ObjectParameter("diagramname", typeof(string));
-
+    
             var owner_idParameter = owner_id.HasValue ?
                 new ObjectParameter("owner_id", owner_id) :
                 new ObjectParameter("owner_id", typeof(int));
-
+    
             var versionParameter = version.HasValue ?
                 new ObjectParameter("version", version) :
                 new ObjectParameter("version", typeof(int));
-
+    
             var definitionParameter = definition != null ?
                 new ObjectParameter("definition", definition) :
                 new ObjectParameter("definition", typeof(byte[]));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_creatediagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
         }
-
+    
         public virtual int sp_dropdiagram(string diagramname, Nullable<int> owner_id)
         {
             var diagramnameParameter = diagramname != null ?
                 new ObjectParameter("diagramname", diagramname) :
                 new ObjectParameter("diagramname", typeof(string));
-
+    
             var owner_idParameter = owner_id.HasValue ?
                 new ObjectParameter("owner_id", owner_id) :
                 new ObjectParameter("owner_id", typeof(int));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
         }
-
+    
         public virtual int sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
         {
             var diagramnameParameter = diagramname != null ?
                 new ObjectParameter("diagramname", diagramname) :
                 new ObjectParameter("diagramname", typeof(string));
-
+    
             var owner_idParameter = owner_id.HasValue ?
                 new ObjectParameter("owner_id", owner_id) :
                 new ObjectParameter("owner_id", typeof(int));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
         }
-
+    
         public virtual int sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
         {
             var diagramnameParameter = diagramname != null ?
                 new ObjectParameter("diagramname", diagramname) :
                 new ObjectParameter("diagramname", typeof(string));
-
+    
             var owner_idParameter = owner_id.HasValue ?
                 new ObjectParameter("owner_id", owner_id) :
                 new ObjectParameter("owner_id", typeof(int));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
         }
-
+    
         public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
         {
             var diagramnameParameter = diagramname != null ?
                 new ObjectParameter("diagramname", diagramname) :
                 new ObjectParameter("diagramname", typeof(string));
-
+    
             var owner_idParameter = owner_id.HasValue ?
                 new ObjectParameter("owner_id", owner_id) :
                 new ObjectParameter("owner_id", typeof(int));
-
+    
             var new_diagramnameParameter = new_diagramname != null ?
                 new ObjectParameter("new_diagramname", new_diagramname) :
                 new ObjectParameter("new_diagramname", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_renamediagram", diagramnameParameter, owner_idParameter, new_diagramnameParameter);
         }
-
+    
         public virtual int sp_upgraddiagrams()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> StockCheckForProductSale(string productId, Nullable<decimal> batchId)
         {
             var productIdParameter = productId != null ?
                 new ObjectParameter("productId", productId) :
                 new ObjectParameter("productId", typeof(string));
-
+    
             var batchIdParameter = batchId.HasValue ?
                 new ObjectParameter("batchId", batchId) :
                 new ObjectParameter("batchId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("StockCheckForProductSale", productIdParameter, batchIdParameter);
         }
-
+    
         public virtual int StockPostingDeleteByagainstVoucherTypeIdAndagainstVoucherNoAndVoucherNoAndVoucherType(Nullable<decimal> againstvoucherTypeId, string againstVoucherNo, string voucherNo, Nullable<decimal> voucherTypeId)
         {
             var againstvoucherTypeIdParameter = againstvoucherTypeId.HasValue ?
                 new ObjectParameter("againstvoucherTypeId", againstvoucherTypeId) :
                 new ObjectParameter("againstvoucherTypeId", typeof(decimal));
-
+    
             var againstVoucherNoParameter = againstVoucherNo != null ?
                 new ObjectParameter("againstVoucherNo", againstVoucherNo) :
                 new ObjectParameter("againstVoucherNo", typeof(string));
-
+    
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StockPostingDeleteByagainstVoucherTypeIdAndagainstVoucherNoAndVoucherNoAndVoucherType", againstvoucherTypeIdParameter, againstVoucherNoParameter, voucherNoParameter, voucherTypeIdParameter);
         }
-
+    
         public virtual int StockPostingDeleteByVoucherTypeAndVoucherNo(string againstVoucherNo, Nullable<decimal> againstVoucherTypeId)
         {
             var againstVoucherNoParameter = againstVoucherNo != null ?
                 new ObjectParameter("againstVoucherNo", againstVoucherNo) :
                 new ObjectParameter("againstVoucherNo", typeof(string));
-
+    
             var againstVoucherTypeIdParameter = againstVoucherTypeId.HasValue ?
                 new ObjectParameter("againstVoucherTypeId", againstVoucherTypeId) :
                 new ObjectParameter("againstVoucherTypeId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StockPostingDeleteByVoucherTypeAndVoucherNo", againstVoucherNoParameter, againstVoucherTypeIdParameter);
         }
-
+    
         public virtual int StockPostingDeleteForSalesInvoiceAgainstDeliveryNote(Nullable<decimal> againstvoucherTypeId, string againstVoucherNo, string voucherNo, Nullable<decimal> voucherTypeId)
         {
             var againstvoucherTypeIdParameter = againstvoucherTypeId.HasValue ?
                 new ObjectParameter("againstvoucherTypeId", againstvoucherTypeId) :
                 new ObjectParameter("againstvoucherTypeId", typeof(decimal));
-
+    
             var againstVoucherNoParameter = againstVoucherNo != null ?
                 new ObjectParameter("againstVoucherNo", againstVoucherNo) :
                 new ObjectParameter("againstVoucherNo", typeof(string));
-
+    
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StockPostingDeleteForSalesInvoiceAgainstDeliveryNote", againstvoucherTypeIdParameter, againstVoucherNoParameter, voucherNoParameter, voucherTypeIdParameter);
         }
-
+    
         public virtual int StockValueOnDateByAVCO(Nullable<System.DateTime> date)
         {
             var dateParameter = date.HasValue ?
                 new ObjectParameter("date", date) :
                 new ObjectParameter("date", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StockValueOnDateByAVCO", dateParameter);
         }
-
+    
         public virtual int StockValueOnDateByAVCOForOpeningStock(Nullable<System.DateTime> date, Nullable<System.DateTime> fromDate)
         {
             var dateParameter = date.HasValue ?
                 new ObjectParameter("date", date) :
                 new ObjectParameter("date", typeof(System.DateTime));
-
+    
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StockValueOnDateByAVCOForOpeningStock", dateParameter, fromDateParameter);
         }
-
+    
         public virtual int StockValueOnDateByAVCOForOpeningStockForBalanceSheet(Nullable<System.DateTime> date, Nullable<System.DateTime> fromDate)
         {
             var dateParameter = date.HasValue ?
                 new ObjectParameter("date", date) :
                 new ObjectParameter("date", typeof(System.DateTime));
-
+    
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StockValueOnDateByAVCOForOpeningStockForBalanceSheet", dateParameter, fromDateParameter);
         }
-
+    
         public virtual int StockValueOnDateByFIFO(Nullable<System.DateTime> date)
         {
             var dateParameter = date.HasValue ?
                 new ObjectParameter("date", date) :
                 new ObjectParameter("date", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StockValueOnDateByFIFO", dateParameter);
         }
-
+    
         public virtual int StockValueOnDateByFIFOForOpeningStock(Nullable<System.DateTime> date, Nullable<System.DateTime> fromDate)
         {
             var dateParameter = date.HasValue ?
                 new ObjectParameter("date", date) :
                 new ObjectParameter("date", typeof(System.DateTime));
-
+    
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StockValueOnDateByFIFOForOpeningStock", dateParameter, fromDateParameter);
         }
-
+    
         public virtual int StockValueOnDateByFIFOForOpeningStockForBalancesheet(Nullable<System.DateTime> date, Nullable<System.DateTime> fromDate)
         {
             var dateParameter = date.HasValue ?
                 new ObjectParameter("date", date) :
                 new ObjectParameter("date", typeof(System.DateTime));
-
+    
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StockValueOnDateByFIFOForOpeningStockForBalancesheet", dateParameter, fromDateParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> StockValueOnDateByHighCost(Nullable<System.DateTime> date)
         {
             var dateParameter = date.HasValue ?
                 new ObjectParameter("date", date) :
                 new ObjectParameter("date", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("StockValueOnDateByHighCost", dateParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> StockValueOnDateByHighCostForOpeningStock(Nullable<System.DateTime> date, Nullable<System.DateTime> fromDate)
         {
             var dateParameter = date.HasValue ?
                 new ObjectParameter("date", date) :
                 new ObjectParameter("date", typeof(System.DateTime));
-
+    
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("StockValueOnDateByHighCostForOpeningStock", dateParameter, fromDateParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> StockValueOnDateByHighCostForOpeningStockBlncSheet(Nullable<System.DateTime> date, Nullable<System.DateTime> fromDate)
         {
             var dateParameter = date.HasValue ?
                 new ObjectParameter("date", date) :
                 new ObjectParameter("date", typeof(System.DateTime));
-
+    
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("StockValueOnDateByHighCostForOpeningStockBlncSheet", dateParameter, fromDateParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> StockValueOnDateByLastPurchaseRate(Nullable<System.DateTime> date)
         {
             var dateParameter = date.HasValue ?
                 new ObjectParameter("date", date) :
                 new ObjectParameter("date", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("StockValueOnDateByLastPurchaseRate", dateParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> StockValueOnDateByLastPurchaseRateForOpeningStock(Nullable<System.DateTime> date, Nullable<System.DateTime> fromDate)
         {
             var dateParameter = date.HasValue ?
                 new ObjectParameter("date", date) :
                 new ObjectParameter("date", typeof(System.DateTime));
-
+    
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("StockValueOnDateByLastPurchaseRateForOpeningStock", dateParameter, fromDateParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> StockValueOnDateByLastPurchaseRateForOpeningStockBlncSheet(Nullable<System.DateTime> date, Nullable<System.DateTime> fromDate)
         {
             var dateParameter = date.HasValue ?
                 new ObjectParameter("date", date) :
                 new ObjectParameter("date", typeof(System.DateTime));
-
+    
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("StockValueOnDateByLastPurchaseRateForOpeningStockBlncSheet", dateParameter, fromDateParameter);
         }
-
+    
         public virtual int StockValueOnDateByLowCost(Nullable<System.DateTime> date)
         {
             var dateParameter = date.HasValue ?
                 new ObjectParameter("date", date) :
                 new ObjectParameter("date", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StockValueOnDateByLowCost", dateParameter);
         }
-
+    
         public virtual int StockValueOnDateByLowCostForOpeningStock(Nullable<System.DateTime> date, Nullable<System.DateTime> fromDate)
         {
             var dateParameter = date.HasValue ?
                 new ObjectParameter("date", date) :
                 new ObjectParameter("date", typeof(System.DateTime));
-
+    
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StockValueOnDateByLowCostForOpeningStock", dateParameter, fromDateParameter);
         }
-
+    
         public virtual int StockValueOnDateByLowCostForOpeningStockForBlncSheet(Nullable<System.DateTime> date, Nullable<System.DateTime> fromDate)
         {
             var dateParameter = date.HasValue ?
                 new ObjectParameter("date", date) :
                 new ObjectParameter("date", typeof(System.DateTime));
-
+    
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StockValueOnDateByLowCostForOpeningStockForBlncSheet", dateParameter, fromDateParameter);
         }
-
+    
         public virtual int SuperDiskAdd(string article_No, string article_Desc, Nullable<int> pack_Code, Nullable<int> pack_Quantity, Nullable<int> unit_Content, string unit_Measure, Nullable<decimal> uk_Col_1, Nullable<decimal> standard_Weight, string hazardous_Ind, string calibration_Ind, string obsolete_Flag, string mH1, string low_Discount_Ind, string licensed_Ind, string shelf_Life, string cofO, string eUR1_Indicator, string cCCN_No, string supercede_Date, string current_Cat_page, string uk_Intro_Date, string filler, string uk_Disc_Date, string substitute_By, string bHC_Flag, string filler1, Nullable<decimal> future_Sell_Price, string int_Cat, string new_Prod_Change_Ind, string out_of_Stock_Prohibit_change_ind, string disc_Change_Ind, string superceded_Change_Ind, string pack_Size_Change_Ind, string rolled_Product_Change_Ind, string expiring_Product_Change_Ind, string manufacturer, string mPN, string mH_Code_Level_1, Nullable<decimal> heigh, Nullable<decimal> width, Nullable<decimal> length)
         {
             var article_NoParameter = article_No != null ?
                 new ObjectParameter("Article_No", article_No) :
                 new ObjectParameter("Article_No", typeof(string));
-
+    
             var article_DescParameter = article_Desc != null ?
                 new ObjectParameter("Article_Desc", article_Desc) :
                 new ObjectParameter("Article_Desc", typeof(string));
-
+    
             var pack_CodeParameter = pack_Code.HasValue ?
                 new ObjectParameter("Pack_Code", pack_Code) :
                 new ObjectParameter("Pack_Code", typeof(int));
-
+    
             var pack_QuantityParameter = pack_Quantity.HasValue ?
                 new ObjectParameter("Pack_Quantity", pack_Quantity) :
                 new ObjectParameter("Pack_Quantity", typeof(int));
-
+    
             var unit_ContentParameter = unit_Content.HasValue ?
                 new ObjectParameter("Unit_Content", unit_Content) :
                 new ObjectParameter("Unit_Content", typeof(int));
-
+    
             var unit_MeasureParameter = unit_Measure != null ?
                 new ObjectParameter("Unit_Measure", unit_Measure) :
                 new ObjectParameter("Unit_Measure", typeof(string));
-
+    
             var uk_Col_1Parameter = uk_Col_1.HasValue ?
                 new ObjectParameter("Uk_Col_1", uk_Col_1) :
                 new ObjectParameter("Uk_Col_1", typeof(decimal));
-
+    
             var standard_WeightParameter = standard_Weight.HasValue ?
                 new ObjectParameter("Standard_Weight", standard_Weight) :
                 new ObjectParameter("Standard_Weight", typeof(decimal));
-
+    
             var hazardous_IndParameter = hazardous_Ind != null ?
                 new ObjectParameter("Hazardous_Ind", hazardous_Ind) :
                 new ObjectParameter("Hazardous_Ind", typeof(string));
-
+    
             var calibration_IndParameter = calibration_Ind != null ?
                 new ObjectParameter("Calibration_Ind", calibration_Ind) :
                 new ObjectParameter("Calibration_Ind", typeof(string));
-
+    
             var obsolete_FlagParameter = obsolete_Flag != null ?
                 new ObjectParameter("Obsolete_Flag", obsolete_Flag) :
                 new ObjectParameter("Obsolete_Flag", typeof(string));
-
+    
             var mH1Parameter = mH1 != null ?
                 new ObjectParameter("MH1", mH1) :
                 new ObjectParameter("MH1", typeof(string));
-
+    
             var low_Discount_IndParameter = low_Discount_Ind != null ?
                 new ObjectParameter("Low_Discount_Ind", low_Discount_Ind) :
                 new ObjectParameter("Low_Discount_Ind", typeof(string));
-
+    
             var licensed_IndParameter = licensed_Ind != null ?
                 new ObjectParameter("Licensed_Ind", licensed_Ind) :
                 new ObjectParameter("Licensed_Ind", typeof(string));
-
+    
             var shelf_LifeParameter = shelf_Life != null ?
                 new ObjectParameter("Shelf_Life", shelf_Life) :
                 new ObjectParameter("Shelf_Life", typeof(string));
-
+    
             var cofOParameter = cofO != null ?
                 new ObjectParameter("CofO", cofO) :
                 new ObjectParameter("CofO", typeof(string));
-
+    
             var eUR1_IndicatorParameter = eUR1_Indicator != null ?
                 new ObjectParameter("EUR1_Indicator", eUR1_Indicator) :
                 new ObjectParameter("EUR1_Indicator", typeof(string));
-
+    
             var cCCN_NoParameter = cCCN_No != null ?
                 new ObjectParameter("CCCN_No", cCCN_No) :
                 new ObjectParameter("CCCN_No", typeof(string));
-
+    
             var supercede_DateParameter = supercede_Date != null ?
                 new ObjectParameter("Supercede_Date", supercede_Date) :
                 new ObjectParameter("Supercede_Date", typeof(string));
-
+    
             var current_Cat_pageParameter = current_Cat_page != null ?
                 new ObjectParameter("Current_Cat_page", current_Cat_page) :
                 new ObjectParameter("Current_Cat_page", typeof(string));
-
+    
             var uk_Intro_DateParameter = uk_Intro_Date != null ?
                 new ObjectParameter("Uk_Intro_Date", uk_Intro_Date) :
                 new ObjectParameter("Uk_Intro_Date", typeof(string));
-
+    
             var fillerParameter = filler != null ?
                 new ObjectParameter("Filler", filler) :
                 new ObjectParameter("Filler", typeof(string));
-
+    
             var uk_Disc_DateParameter = uk_Disc_Date != null ?
                 new ObjectParameter("Uk_Disc_Date", uk_Disc_Date) :
                 new ObjectParameter("Uk_Disc_Date", typeof(string));
-
+    
             var substitute_ByParameter = substitute_By != null ?
                 new ObjectParameter("Substitute_By", substitute_By) :
                 new ObjectParameter("Substitute_By", typeof(string));
-
+    
             var bHC_FlagParameter = bHC_Flag != null ?
                 new ObjectParameter("BHC_Flag", bHC_Flag) :
                 new ObjectParameter("BHC_Flag", typeof(string));
-
+    
             var filler1Parameter = filler1 != null ?
                 new ObjectParameter("Filler1", filler1) :
                 new ObjectParameter("Filler1", typeof(string));
-
+    
             var future_Sell_PriceParameter = future_Sell_Price.HasValue ?
                 new ObjectParameter("Future_Sell_Price", future_Sell_Price) :
                 new ObjectParameter("Future_Sell_Price", typeof(decimal));
-
+    
             var int_CatParameter = int_Cat != null ?
                 new ObjectParameter("Int_Cat", int_Cat) :
                 new ObjectParameter("Int_Cat", typeof(string));
-
+    
             var new_Prod_Change_IndParameter = new_Prod_Change_Ind != null ?
                 new ObjectParameter("New_Prod_Change_Ind", new_Prod_Change_Ind) :
                 new ObjectParameter("New_Prod_Change_Ind", typeof(string));
-
+    
             var out_of_Stock_Prohibit_change_indParameter = out_of_Stock_Prohibit_change_ind != null ?
                 new ObjectParameter("Out_of_Stock_Prohibit_change_ind", out_of_Stock_Prohibit_change_ind) :
                 new ObjectParameter("Out_of_Stock_Prohibit_change_ind", typeof(string));
-
+    
             var disc_Change_IndParameter = disc_Change_Ind != null ?
                 new ObjectParameter("Disc_Change_Ind", disc_Change_Ind) :
                 new ObjectParameter("Disc_Change_Ind", typeof(string));
-
+    
             var superceded_Change_IndParameter = superceded_Change_Ind != null ?
                 new ObjectParameter("Superceded_Change_Ind", superceded_Change_Ind) :
                 new ObjectParameter("Superceded_Change_Ind", typeof(string));
-
+    
             var pack_Size_Change_IndParameter = pack_Size_Change_Ind != null ?
                 new ObjectParameter("Pack_Size_Change_Ind", pack_Size_Change_Ind) :
                 new ObjectParameter("Pack_Size_Change_Ind", typeof(string));
-
+    
             var rolled_Product_Change_IndParameter = rolled_Product_Change_Ind != null ?
                 new ObjectParameter("Rolled_Product_Change_Ind", rolled_Product_Change_Ind) :
                 new ObjectParameter("Rolled_Product_Change_Ind", typeof(string));
-
+    
             var expiring_Product_Change_IndParameter = expiring_Product_Change_Ind != null ?
                 new ObjectParameter("Expiring_Product_Change_Ind", expiring_Product_Change_Ind) :
                 new ObjectParameter("Expiring_Product_Change_Ind", typeof(string));
-
+    
             var manufacturerParameter = manufacturer != null ?
                 new ObjectParameter("Manufacturer", manufacturer) :
                 new ObjectParameter("Manufacturer", typeof(string));
-
+    
             var mPNParameter = mPN != null ?
                 new ObjectParameter("MPN", mPN) :
                 new ObjectParameter("MPN", typeof(string));
-
+    
             var mH_Code_Level_1Parameter = mH_Code_Level_1 != null ?
                 new ObjectParameter("MH_Code_Level_1", mH_Code_Level_1) :
                 new ObjectParameter("MH_Code_Level_1", typeof(string));
-
+    
             var heighParameter = heigh.HasValue ?
                 new ObjectParameter("Heigh", heigh) :
                 new ObjectParameter("Heigh", typeof(decimal));
-
+    
             var widthParameter = width.HasValue ?
                 new ObjectParameter("Width", width) :
                 new ObjectParameter("Width", typeof(decimal));
-
+    
             var lengthParameter = length.HasValue ?
                 new ObjectParameter("Length", length) :
                 new ObjectParameter("Length", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SuperDiskAdd", article_NoParameter, article_DescParameter, pack_CodeParameter, pack_QuantityParameter, unit_ContentParameter, unit_MeasureParameter, uk_Col_1Parameter, standard_WeightParameter, hazardous_IndParameter, calibration_IndParameter, obsolete_FlagParameter, mH1Parameter, low_Discount_IndParameter, licensed_IndParameter, shelf_LifeParameter, cofOParameter, eUR1_IndicatorParameter, cCCN_NoParameter, supercede_DateParameter, current_Cat_pageParameter, uk_Intro_DateParameter, fillerParameter, uk_Disc_DateParameter, substitute_ByParameter, bHC_FlagParameter, filler1Parameter, future_Sell_PriceParameter, int_CatParameter, new_Prod_Change_IndParameter, out_of_Stock_Prohibit_change_indParameter, disc_Change_IndParameter, superceded_Change_IndParameter, pack_Size_Change_IndParameter, rolled_Product_Change_IndParameter, expiring_Product_Change_IndParameter, manufacturerParameter, mPNParameter, mH_Code_Level_1Parameter, heighParameter, widthParameter, lengthParameter);
         }
-
+    
         public virtual int SuperDiskPAdd(string article_No, string article_Desc, Nullable<int> pack_Code, Nullable<int> pack_Quantity, Nullable<int> unit_Content, string unit_Measure, Nullable<decimal> uk_Col_1, Nullable<decimal> standard_Weight, string hazardous_Ind, string calibration_Ind, string obsolete_Flag, string mH1, string low_Discount_Ind, string licensed_Ind, string shelf_Life, string cofO, string eUR1_Indicator, string cCCN_No, string supercede_Date, string current_Cat_page, string uk_Intro_Date, string filler, string uk_Disc_Date, string substitute_By, string bHC_Flag, string filler1, Nullable<decimal> future_Sell_Price, string int_Cat, string new_Prod_Change_Ind, string out_of_Stock_Prohibit_change_ind, string disc_Change_Ind, string superceded_Change_Ind, string pack_Size_Change_Ind, string rolled_Product_Change_Ind, string expiring_Product_Change_Ind, string manufacturer, string mPN, string mH_Code_Level_1, Nullable<decimal> heigh, Nullable<decimal> width, Nullable<decimal> length)
         {
             var article_NoParameter = article_No != null ?
                 new ObjectParameter("Article_No", article_No) :
                 new ObjectParameter("Article_No", typeof(string));
-
+    
             var article_DescParameter = article_Desc != null ?
                 new ObjectParameter("Article_Desc", article_Desc) :
                 new ObjectParameter("Article_Desc", typeof(string));
-
+    
             var pack_CodeParameter = pack_Code.HasValue ?
                 new ObjectParameter("Pack_Code", pack_Code) :
                 new ObjectParameter("Pack_Code", typeof(int));
-
+    
             var pack_QuantityParameter = pack_Quantity.HasValue ?
                 new ObjectParameter("Pack_Quantity", pack_Quantity) :
                 new ObjectParameter("Pack_Quantity", typeof(int));
-
+    
             var unit_ContentParameter = unit_Content.HasValue ?
                 new ObjectParameter("Unit_Content", unit_Content) :
                 new ObjectParameter("Unit_Content", typeof(int));
-
+    
             var unit_MeasureParameter = unit_Measure != null ?
                 new ObjectParameter("Unit_Measure", unit_Measure) :
                 new ObjectParameter("Unit_Measure", typeof(string));
-
+    
             var uk_Col_1Parameter = uk_Col_1.HasValue ?
                 new ObjectParameter("Uk_Col_1", uk_Col_1) :
                 new ObjectParameter("Uk_Col_1", typeof(decimal));
-
+    
             var standard_WeightParameter = standard_Weight.HasValue ?
                 new ObjectParameter("Standard_Weight", standard_Weight) :
                 new ObjectParameter("Standard_Weight", typeof(decimal));
-
+    
             var hazardous_IndParameter = hazardous_Ind != null ?
                 new ObjectParameter("Hazardous_Ind", hazardous_Ind) :
                 new ObjectParameter("Hazardous_Ind", typeof(string));
-
+    
             var calibration_IndParameter = calibration_Ind != null ?
                 new ObjectParameter("Calibration_Ind", calibration_Ind) :
                 new ObjectParameter("Calibration_Ind", typeof(string));
-
+    
             var obsolete_FlagParameter = obsolete_Flag != null ?
                 new ObjectParameter("Obsolete_Flag", obsolete_Flag) :
                 new ObjectParameter("Obsolete_Flag", typeof(string));
-
+    
             var mH1Parameter = mH1 != null ?
                 new ObjectParameter("MH1", mH1) :
                 new ObjectParameter("MH1", typeof(string));
-
+    
             var low_Discount_IndParameter = low_Discount_Ind != null ?
                 new ObjectParameter("Low_Discount_Ind", low_Discount_Ind) :
                 new ObjectParameter("Low_Discount_Ind", typeof(string));
-
+    
             var licensed_IndParameter = licensed_Ind != null ?
                 new ObjectParameter("Licensed_Ind", licensed_Ind) :
                 new ObjectParameter("Licensed_Ind", typeof(string));
-
+    
             var shelf_LifeParameter = shelf_Life != null ?
                 new ObjectParameter("Shelf_Life", shelf_Life) :
                 new ObjectParameter("Shelf_Life", typeof(string));
-
+    
             var cofOParameter = cofO != null ?
                 new ObjectParameter("CofO", cofO) :
                 new ObjectParameter("CofO", typeof(string));
-
+    
             var eUR1_IndicatorParameter = eUR1_Indicator != null ?
                 new ObjectParameter("EUR1_Indicator", eUR1_Indicator) :
                 new ObjectParameter("EUR1_Indicator", typeof(string));
-
+    
             var cCCN_NoParameter = cCCN_No != null ?
                 new ObjectParameter("CCCN_No", cCCN_No) :
                 new ObjectParameter("CCCN_No", typeof(string));
-
+    
             var supercede_DateParameter = supercede_Date != null ?
                 new ObjectParameter("Supercede_Date", supercede_Date) :
                 new ObjectParameter("Supercede_Date", typeof(string));
-
+    
             var current_Cat_pageParameter = current_Cat_page != null ?
                 new ObjectParameter("Current_Cat_page", current_Cat_page) :
                 new ObjectParameter("Current_Cat_page", typeof(string));
-
+    
             var uk_Intro_DateParameter = uk_Intro_Date != null ?
                 new ObjectParameter("Uk_Intro_Date", uk_Intro_Date) :
                 new ObjectParameter("Uk_Intro_Date", typeof(string));
-
+    
             var fillerParameter = filler != null ?
                 new ObjectParameter("Filler", filler) :
                 new ObjectParameter("Filler", typeof(string));
-
+    
             var uk_Disc_DateParameter = uk_Disc_Date != null ?
                 new ObjectParameter("Uk_Disc_Date", uk_Disc_Date) :
                 new ObjectParameter("Uk_Disc_Date", typeof(string));
-
+    
             var substitute_ByParameter = substitute_By != null ?
                 new ObjectParameter("Substitute_By", substitute_By) :
                 new ObjectParameter("Substitute_By", typeof(string));
-
+    
             var bHC_FlagParameter = bHC_Flag != null ?
                 new ObjectParameter("BHC_Flag", bHC_Flag) :
                 new ObjectParameter("BHC_Flag", typeof(string));
-
+    
             var filler1Parameter = filler1 != null ?
                 new ObjectParameter("Filler1", filler1) :
                 new ObjectParameter("Filler1", typeof(string));
-
+    
             var future_Sell_PriceParameter = future_Sell_Price.HasValue ?
                 new ObjectParameter("Future_Sell_Price", future_Sell_Price) :
                 new ObjectParameter("Future_Sell_Price", typeof(decimal));
-
+    
             var int_CatParameter = int_Cat != null ?
                 new ObjectParameter("Int_Cat", int_Cat) :
                 new ObjectParameter("Int_Cat", typeof(string));
-
+    
             var new_Prod_Change_IndParameter = new_Prod_Change_Ind != null ?
                 new ObjectParameter("New_Prod_Change_Ind", new_Prod_Change_Ind) :
                 new ObjectParameter("New_Prod_Change_Ind", typeof(string));
-
+    
             var out_of_Stock_Prohibit_change_indParameter = out_of_Stock_Prohibit_change_ind != null ?
                 new ObjectParameter("Out_of_Stock_Prohibit_change_ind", out_of_Stock_Prohibit_change_ind) :
                 new ObjectParameter("Out_of_Stock_Prohibit_change_ind", typeof(string));
-
+    
             var disc_Change_IndParameter = disc_Change_Ind != null ?
                 new ObjectParameter("Disc_Change_Ind", disc_Change_Ind) :
                 new ObjectParameter("Disc_Change_Ind", typeof(string));
-
+    
             var superceded_Change_IndParameter = superceded_Change_Ind != null ?
                 new ObjectParameter("Superceded_Change_Ind", superceded_Change_Ind) :
                 new ObjectParameter("Superceded_Change_Ind", typeof(string));
-
+    
             var pack_Size_Change_IndParameter = pack_Size_Change_Ind != null ?
                 new ObjectParameter("Pack_Size_Change_Ind", pack_Size_Change_Ind) :
                 new ObjectParameter("Pack_Size_Change_Ind", typeof(string));
-
+    
             var rolled_Product_Change_IndParameter = rolled_Product_Change_Ind != null ?
                 new ObjectParameter("Rolled_Product_Change_Ind", rolled_Product_Change_Ind) :
                 new ObjectParameter("Rolled_Product_Change_Ind", typeof(string));
-
+    
             var expiring_Product_Change_IndParameter = expiring_Product_Change_Ind != null ?
                 new ObjectParameter("Expiring_Product_Change_Ind", expiring_Product_Change_Ind) :
                 new ObjectParameter("Expiring_Product_Change_Ind", typeof(string));
-
+    
             var manufacturerParameter = manufacturer != null ?
                 new ObjectParameter("Manufacturer", manufacturer) :
                 new ObjectParameter("Manufacturer", typeof(string));
-
+    
             var mPNParameter = mPN != null ?
                 new ObjectParameter("MPN", mPN) :
                 new ObjectParameter("MPN", typeof(string));
-
+    
             var mH_Code_Level_1Parameter = mH_Code_Level_1 != null ?
                 new ObjectParameter("MH_Code_Level_1", mH_Code_Level_1) :
                 new ObjectParameter("MH_Code_Level_1", typeof(string));
-
+    
             var heighParameter = heigh.HasValue ?
                 new ObjectParameter("Heigh", heigh) :
                 new ObjectParameter("Heigh", typeof(decimal));
-
+    
             var widthParameter = width.HasValue ?
                 new ObjectParameter("Width", width) :
                 new ObjectParameter("Width", typeof(decimal));
-
+    
             var lengthParameter = length.HasValue ?
                 new ObjectParameter("Length", length) :
                 new ObjectParameter("Length", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SuperDiskPAdd", article_NoParameter, article_DescParameter, pack_CodeParameter, pack_QuantityParameter, unit_ContentParameter, unit_MeasureParameter, uk_Col_1Parameter, standard_WeightParameter, hazardous_IndParameter, calibration_IndParameter, obsolete_FlagParameter, mH1Parameter, low_Discount_IndParameter, licensed_IndParameter, shelf_LifeParameter, cofOParameter, eUR1_IndicatorParameter, cCCN_NoParameter, supercede_DateParameter, current_Cat_pageParameter, uk_Intro_DateParameter, fillerParameter, uk_Disc_DateParameter, substitute_ByParameter, bHC_FlagParameter, filler1Parameter, future_Sell_PriceParameter, int_CatParameter, new_Prod_Change_IndParameter, out_of_Stock_Prohibit_change_indParameter, disc_Change_IndParameter, superceded_Change_IndParameter, pack_Size_Change_IndParameter, rolled_Product_Change_IndParameter, expiring_Product_Change_IndParameter, manufacturerParameter, mPNParameter, mH_Code_Level_1Parameter, heighParameter, widthParameter, lengthParameter);
         }
-
+    
         public virtual ObjectResult<TaxCrystalReportGridFillByBillWise_Result> TaxCrystalReportGridFillByBillWise(Nullable<decimal> companyId, Nullable<System.DateTime> fromdate, Nullable<System.DateTime> todate, Nullable<decimal> taxId, Nullable<decimal> voucherTypeId, Nullable<bool> input)
         {
             var companyIdParameter = companyId.HasValue ?
                 new ObjectParameter("companyId", companyId) :
                 new ObjectParameter("companyId", typeof(decimal));
-
+    
             var fromdateParameter = fromdate.HasValue ?
                 new ObjectParameter("fromdate", fromdate) :
                 new ObjectParameter("fromdate", typeof(System.DateTime));
-
+    
             var todateParameter = todate.HasValue ?
                 new ObjectParameter("todate", todate) :
                 new ObjectParameter("todate", typeof(System.DateTime));
-
+    
             var taxIdParameter = taxId.HasValue ?
                 new ObjectParameter("taxId", taxId) :
                 new ObjectParameter("taxId", typeof(decimal));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var inputParameter = input.HasValue ?
                 new ObjectParameter("input", input) :
                 new ObjectParameter("input", typeof(bool));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TaxCrystalReportGridFillByBillWise_Result>("TaxCrystalReportGridFillByBillWise", companyIdParameter, fromdateParameter, todateParameter, taxIdParameter, voucherTypeIdParameter, inputParameter);
         }
-
+    
         public virtual ObjectResult<TaxCrystalReportGridFillByProductwise_Result> TaxCrystalReportGridFillByProductwise(Nullable<decimal> companyId, Nullable<System.DateTime> fromdate, Nullable<System.DateTime> todate, Nullable<decimal> taxId, Nullable<decimal> voucherTypeId, Nullable<bool> input)
         {
             var companyIdParameter = companyId.HasValue ?
                 new ObjectParameter("companyId", companyId) :
                 new ObjectParameter("companyId", typeof(decimal));
-
+    
             var fromdateParameter = fromdate.HasValue ?
                 new ObjectParameter("fromdate", fromdate) :
                 new ObjectParameter("fromdate", typeof(System.DateTime));
-
+    
             var todateParameter = todate.HasValue ?
                 new ObjectParameter("todate", todate) :
                 new ObjectParameter("todate", typeof(System.DateTime));
-
+    
             var taxIdParameter = taxId.HasValue ?
                 new ObjectParameter("taxId", taxId) :
                 new ObjectParameter("taxId", typeof(decimal));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var inputParameter = input.HasValue ?
                 new ObjectParameter("input", input) :
                 new ObjectParameter("input", typeof(bool));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TaxCrystalReportGridFillByProductwise_Result>("TaxCrystalReportGridFillByProductwise", companyIdParameter, fromdateParameter, todateParameter, taxIdParameter, voucherTypeIdParameter, inputParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<int>> TaxDetailsViewAllByTaxId(Nullable<decimal> taxId)
         {
             var taxIdParameter = taxId.HasValue ?
                 new ObjectParameter("taxId", taxId) :
                 new ObjectParameter("taxId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("TaxDetailsViewAllByTaxId", taxIdParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<int>> TaxIdForTaxSelectionUpdate(Nullable<decimal> taxId)
         {
             var taxIdParameter = taxId.HasValue ?
                 new ObjectParameter("taxId", taxId) :
                 new ObjectParameter("taxId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("TaxIdForTaxSelectionUpdate", taxIdParameter);
         }
-
+    
         public virtual ObjectResult<TaxReportGridFillByBillWise_Result> TaxReportGridFillByBillWise(Nullable<System.DateTime> fromdate, Nullable<System.DateTime> todate, Nullable<decimal> taxId, Nullable<decimal> voucherTypeId, string typeOfVoucher, Nullable<bool> input)
         {
             var fromdateParameter = fromdate.HasValue ?
                 new ObjectParameter("fromdate", fromdate) :
                 new ObjectParameter("fromdate", typeof(System.DateTime));
-
+    
             var todateParameter = todate.HasValue ?
                 new ObjectParameter("todate", todate) :
                 new ObjectParameter("todate", typeof(System.DateTime));
-
+    
             var taxIdParameter = taxId.HasValue ?
                 new ObjectParameter("taxId", taxId) :
                 new ObjectParameter("taxId", typeof(decimal));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var typeOfVoucherParameter = typeOfVoucher != null ?
                 new ObjectParameter("typeOfVoucher", typeOfVoucher) :
                 new ObjectParameter("typeOfVoucher", typeof(string));
-
+    
             var inputParameter = input.HasValue ?
                 new ObjectParameter("input", input) :
                 new ObjectParameter("input", typeof(bool));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TaxReportGridFillByBillWise_Result>("TaxReportGridFillByBillWise", fromdateParameter, todateParameter, taxIdParameter, voucherTypeIdParameter, typeOfVoucherParameter, inputParameter);
         }
-
+    
         public virtual ObjectResult<TaxReportGridFillByProductwise_Result> TaxReportGridFillByProductwise(Nullable<System.DateTime> fromdate, Nullable<System.DateTime> todate, Nullable<decimal> taxId, Nullable<decimal> voucherTypeId, string typeOfVoucher, Nullable<bool> input)
         {
             var fromdateParameter = fromdate.HasValue ?
                 new ObjectParameter("fromdate", fromdate) :
                 new ObjectParameter("fromdate", typeof(System.DateTime));
-
+    
             var todateParameter = todate.HasValue ?
                 new ObjectParameter("todate", todate) :
                 new ObjectParameter("todate", typeof(System.DateTime));
-
+    
             var taxIdParameter = taxId.HasValue ?
                 new ObjectParameter("taxId", taxId) :
                 new ObjectParameter("taxId", typeof(decimal));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var typeOfVoucherParameter = typeOfVoucher != null ?
                 new ObjectParameter("typeOfVoucher", typeOfVoucher) :
                 new ObjectParameter("typeOfVoucher", typeof(string));
-
+    
             var inputParameter = input.HasValue ?
                 new ObjectParameter("input", input) :
                 new ObjectParameter("input", typeof(bool));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TaxReportGridFillByProductwise_Result>("TaxReportGridFillByProductwise", fromdateParameter, todateParameter, taxIdParameter, voucherTypeIdParameter, typeOfVoucherParameter, inputParameter);
         }
-
+    
         public virtual ObjectResult<TaxSearch_Result> TaxSearch(string taxName, string applicableOn, string calculatingMode, string isActive)
         {
             var taxNameParameter = taxName != null ?
                 new ObjectParameter("taxName", taxName) :
                 new ObjectParameter("taxName", typeof(string));
-
+    
             var applicableOnParameter = applicableOn != null ?
                 new ObjectParameter("applicableOn", applicableOn) :
                 new ObjectParameter("applicableOn", typeof(string));
-
+    
             var calculatingModeParameter = calculatingMode != null ?
                 new ObjectParameter("calculatingMode", calculatingMode) :
                 new ObjectParameter("calculatingMode", typeof(string));
-
+    
             var isActiveParameter = isActive != null ?
                 new ObjectParameter("isActive", isActive) :
                 new ObjectParameter("isActive", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TaxSearch_Result>("TaxSearch", taxNameParameter, applicableOnParameter, calculatingModeParameter, isActiveParameter);
         }
-
+    
         public virtual ObjectResult<TaxViewAllByVoucherTypeId_Result> TaxViewAllByVoucherTypeId(Nullable<decimal> voucherTypeId)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TaxViewAllByVoucherTypeId_Result>("TaxViewAllByVoucherTypeId", voucherTypeIdParameter);
         }
-
+    
         public virtual ObjectResult<TaxViewAllByVoucherTypeIdApplicaleForProduct_Result> TaxViewAllByVoucherTypeIdApplicaleForProduct(Nullable<decimal> voucherTypeId)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TaxViewAllByVoucherTypeIdApplicaleForProduct_Result>("TaxViewAllByVoucherTypeIdApplicaleForProduct", voucherTypeIdParameter);
         }
-
+    
         public virtual ObjectResult<TaxViewAllByVoucherTypeIdForPurchaseInvoice_Result> TaxViewAllByVoucherTypeIdForPurchaseInvoice(Nullable<decimal> voucherTypeId)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TaxViewAllByVoucherTypeIdForPurchaseInvoice_Result>("TaxViewAllByVoucherTypeIdForPurchaseInvoice", voucherTypeIdParameter);
         }
-
+    
         public virtual ObjectResult<TaxViewAllForProduct_Result> TaxViewAllForProduct()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TaxViewAllForProduct_Result>("TaxViewAllForProduct");
         }
-
+    
         public virtual ObjectResult<TaxViewAllForTaxSelection_Result> TaxViewAllForTaxSelection()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TaxViewAllForTaxSelection_Result>("TaxViewAllForTaxSelection");
         }
-
+    
         public virtual ObjectResult<TaxViewAllForVoucherType_Result> TaxViewAllForVoucherType()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TaxViewAllForVoucherType_Result>("TaxViewAllForVoucherType");
         }
-
+    
         public virtual ObjectResult<Trialbalance_Result> Trialbalance(Nullable<decimal> accountGroupId, Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var accountGroupIdParameter = accountGroupId.HasValue ?
                 new ObjectParameter("accountGroupId", accountGroupId) :
                 new ObjectParameter("accountGroupId", typeof(decimal));
-
+    
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Trialbalance_Result>("Trialbalance", accountGroupIdParameter, fromDateParameter, toDateParameter);
         }
-
+    
         public virtual ObjectResult<Trialbalance1_Result> Trialbalance1(Nullable<decimal> accountGroupId, Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var accountGroupIdParameter = accountGroupId.HasValue ?
                 new ObjectParameter("accountGroupId", accountGroupId) :
                 new ObjectParameter("accountGroupId", typeof(decimal));
-
+    
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Trialbalance1_Result>("Trialbalance1", accountGroupIdParameter, fromDateParameter, toDateParameter);
         }
-
+    
         public virtual ObjectResult<Trialbalance2_Result> Trialbalance2(Nullable<decimal> accountGroupId, Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var accountGroupIdParameter = accountGroupId.HasValue ?
                 new ObjectParameter("accountGroupId", accountGroupId) :
                 new ObjectParameter("accountGroupId", typeof(decimal));
-
+    
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Trialbalance2_Result>("Trialbalance2", accountGroupIdParameter, fromDateParameter, toDateParameter);
         }
-
+    
         public virtual ObjectResult<Trialbalance3_Result> Trialbalance3(Nullable<decimal> accountGroupId, Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var accountGroupIdParameter = accountGroupId.HasValue ?
                 new ObjectParameter("accountGroupId", accountGroupId) :
                 new ObjectParameter("accountGroupId", typeof(decimal));
-
+    
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-
+    
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Trialbalance3_Result>("Trialbalance3", accountGroupIdParameter, fromDateParameter, toDateParameter);
         }
-
+    
         public virtual ObjectResult<TypeOfVoucherCombofillForVatAndTaxReport_Result> TypeOfVoucherCombofillForVatAndTaxReport()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TypeOfVoucherCombofillForVatAndTaxReport_Result>("TypeOfVoucherCombofillForVatAndTaxReport");
         }
-
+    
         public virtual ObjectResult<UnitConversionIdAndConRateViewallByProductId_Result> UnitConversionIdAndConRateViewallByProductId(string productId)
         {
             var productIdParameter = productId != null ?
                 new ObjectParameter("productId", productId) :
                 new ObjectParameter("productId", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UnitConversionIdAndConRateViewallByProductId_Result>("UnitConversionIdAndConRateViewallByProductId", productIdParameter);
         }
-
+    
         public virtual int VatGridFill(Nullable<System.DateTime> fromdate, Nullable<System.DateTime> todate, string voucherName, Nullable<decimal> voucherTypeId, string format, string tax)
         {
             var fromdateParameter = fromdate.HasValue ?
                 new ObjectParameter("fromdate", fromdate) :
                 new ObjectParameter("fromdate", typeof(System.DateTime));
-
+    
             var todateParameter = todate.HasValue ?
                 new ObjectParameter("todate", todate) :
                 new ObjectParameter("todate", typeof(System.DateTime));
-
+    
             var voucherNameParameter = voucherName != null ?
                 new ObjectParameter("voucherName", voucherName) :
                 new ObjectParameter("voucherName", typeof(string));
-
+    
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var formatParameter = format != null ?
                 new ObjectParameter("format", format) :
                 new ObjectParameter("format", typeof(string));
-
+    
             var taxParameter = tax != null ?
                 new ObjectParameter("tax", tax) :
                 new ObjectParameter("tax", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("VatGridFill", fromdateParameter, todateParameter, voucherNameParameter, voucherTypeIdParameter, formatParameter, taxParameter);
         }
-
+    
         public virtual ObjectResult<string> VatViewTaxNames()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("VatViewTaxNames");
         }
-
+    
         public virtual ObjectResult<Nullable<decimal>> VoucherNumberAutomaicGeneration(Nullable<decimal> voucherTypeId, Nullable<System.DateTime> date, string tab_name, Nullable<decimal> txtBox)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             var dateParameter = date.HasValue ?
                 new ObjectParameter("date", date) :
                 new ObjectParameter("date", typeof(System.DateTime));
-
+    
             var tab_nameParameter = tab_name != null ?
                 new ObjectParameter("tab_name", tab_name) :
                 new ObjectParameter("tab_name", typeof(string));
-
+    
             var txtBoxParameter = txtBox.HasValue ?
                 new ObjectParameter("txtBox", txtBox) :
                 new ObjectParameter("txtBox", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("VoucherNumberAutomaicGeneration", voucherTypeIdParameter, dateParameter, tab_nameParameter, txtBoxParameter);
         }
-
+    
         public virtual int VoucherreportsumQty(Nullable<decimal> salesMasterId, string voucherTypeName)
         {
             var salesMasterIdParameter = salesMasterId.HasValue ?
                 new ObjectParameter("salesMasterId", salesMasterId) :
                 new ObjectParameter("salesMasterId", typeof(decimal));
-
+    
             var voucherTypeNameParameter = voucherTypeName != null ?
                 new ObjectParameter("voucherTypeName", voucherTypeName) :
                 new ObjectParameter("voucherTypeName", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("VoucherreportsumQty", salesMasterIdParameter, voucherTypeNameParameter);
         }
-
+    
         public virtual ObjectResult<VoucherTypeNameComboFill_Result> VoucherTypeNameComboFill()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<VoucherTypeNameComboFill_Result>("VoucherTypeNameComboFill");
         }
-
+    
         public virtual ObjectResult<VoucherTypeNameComboFillAdvanceRegister_Result> VoucherTypeNameComboFillAdvanceRegister()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<VoucherTypeNameComboFillAdvanceRegister_Result>("VoucherTypeNameComboFillAdvanceRegister");
         }
-
+    
         public virtual ObjectResult<VoucherTypeNameCorrespondingToTypeOfVoucher_Result> VoucherTypeNameCorrespondingToTypeOfVoucher(string typeOfVoucher)
         {
             var typeOfVoucherParameter = typeOfVoucher != null ?
                 new ObjectParameter("typeOfVoucher", typeOfVoucher) :
                 new ObjectParameter("typeOfVoucher", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<VoucherTypeNameCorrespondingToTypeOfVoucher_Result>("VoucherTypeNameCorrespondingToTypeOfVoucher", typeOfVoucherParameter);
         }
-
+    
         public virtual ObjectResult<VoucherTypeSearch_Result> VoucherTypeSearch(string voucherTypeName, string typeOfVoucher)
         {
             var voucherTypeNameParameter = voucherTypeName != null ?
                 new ObjectParameter("voucherTypeName", voucherTypeName) :
                 new ObjectParameter("voucherTypeName", typeof(string));
-
+    
             var typeOfVoucherParameter = typeOfVoucher != null ?
                 new ObjectParameter("typeOfVoucher", typeOfVoucher) :
                 new ObjectParameter("typeOfVoucher", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<VoucherTypeSearch_Result>("VoucherTypeSearch", voucherTypeNameParameter, typeOfVoucherParameter);
         }
-
+    
         public virtual ObjectResult<VoucherTypeView_Result> VoucherTypeView(Nullable<decimal> voucherTypeId)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<VoucherTypeView_Result>("VoucherTypeView", voucherTypeIdParameter);
         }
-
+    
         public virtual ObjectResult<VoucherTypeViewAllByLedgerId_Result> VoucherTypeViewAllByLedgerId(Nullable<decimal> ledgerId)
         {
             var ledgerIdParameter = ledgerId.HasValue ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<VoucherTypeViewAllByLedgerId_Result>("VoucherTypeViewAllByLedgerId", ledgerIdParameter);
         }
     }

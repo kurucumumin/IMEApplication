@@ -1084,5 +1084,307 @@ namespace LoginForm.Account.Services
             }
             return dset;
         }
+
+        public System.Data.DataSet CashFlow(DateTime strfromDate, DateTime strtoDate)
+        {
+            IMEEntities db = new IMEEntities();
+            System.Data.DataSet dset = new System.Data.DataSet();
+            try
+            {
+                DataTable dt1 = new DataTable();
+                var adaptor1 = db.CashFlow1(strfromDate, strtoDate).ToList();
+
+                dt1.Columns.Add("accountGroupId");
+                dt1.Columns.Add("accountGroupName");
+                dt1.Columns.Add("Balance");
+
+                foreach (var item in adaptor1)
+                {
+                    DataRow row = dt1.NewRow();
+
+                    row["accountGroupId"] = item.accountGroupId;
+                    row["accountGroupName"] = item.accountGroupName;
+                    row["Balance"] = item.Balance;
+
+                    dt1.Rows.Add(row);
+                }
+                dset.Tables.Add(dt1);
+
+                DataTable dt2 = new DataTable();
+                var adaptor2 = db.CashFlow2(strfromDate, strtoDate).ToList();
+
+                dt2.Columns.Add("accountGroupId");
+                dt2.Columns.Add("accountGroupName");
+                dt2.Columns.Add("Balance");
+
+                foreach (var item in adaptor2)
+                {
+                    DataRow row = dt2.NewRow();
+
+                    row["accountGroupId"] = item.accountGroupId;
+                    row["accountGroupName"] = item.accountGroupName;
+                    row["Balance"] = item.Balance;
+
+
+                    dt2.Rows.Add(row);
+                }
+                dset.Tables.Add(dt2);
+
+                DataTable dt3 = new DataTable();
+                var adaptor3 = db.CashFlow3(strfromDate, strtoDate).ToList();
+
+                dt3.Columns.Add("accountGroupId");
+                dt3.Columns.Add("accountGroupName");
+                dt3.Columns.Add("Balance");
+
+                foreach (var item in adaptor3)
+                {
+                    DataRow row = dt3.NewRow();
+
+                    row["accountGroupId"] = item.accountGroupId;
+                    row["accountGroupName"] = item.accountGroupName;
+                    row["Balance"] = item.Balance;
+
+
+                    dt3.Rows.Add(row);
+                }
+                dset.Tables.Add(dt3);
+
+                DataTable dt4 = new DataTable();
+                var adaptor4 = db.CashFlow4(strfromDate, strtoDate).ToList();
+
+                dt4.Columns.Add("accountGroupId");
+                dt4.Columns.Add("accountGroupName");
+                dt4.Columns.Add("Balance");
+
+                foreach (var item in adaptor4)
+                {
+                    DataRow row = dt4.NewRow();
+
+                    row["accountGroupId"] = item.accountGroupId;
+                    row["accountGroupName"] = item.accountGroupName;
+                    row["Balance"] = item.Balance;
+
+                    dt4.Rows.Add(row);
+                }
+                dset.Tables.Add(dt4);
+
+                DataTable dt5 = new DataTable();
+                var adaptor5 = db.CashFlow5(strfromDate, strtoDate).ToList();
+
+                dt5.Columns.Add("accountGroupId");
+                dt5.Columns.Add("accountGroupName");
+                dt5.Columns.Add("Balance");
+
+                foreach (var item in adaptor5)
+                {
+                    DataRow row = dt5.NewRow();
+
+                    row["accountGroupId"] = item.accountGroupId;
+                    row["accountGroupName"] = item.accountGroupName;
+                    row["Balance"] = item.Balance;
+
+                    dt4.Rows.Add(row);
+                }
+                dset.Tables.Add(dt5);
+
+                DataTable dt6 = new DataTable();
+                var adaptor6 = db.CashFlow6(strfromDate, strtoDate).ToList();
+
+                dt6.Columns.Add("accountGroupId");
+                dt6.Columns.Add("accountGroupName");
+                dt6.Columns.Add("Balance");
+
+                foreach (var item in adaptor6)
+                {
+                    DataRow row = dt6.NewRow();
+
+                    row["accountGroupId"] = item.accountGroupId;
+                    row["accountGroupName"] = item.accountGroupName;
+                    row["Balance"] = item.Balance;
+
+                    dt6.Rows.Add(row);
+                }
+                dset.Tables.Add(dt6);
+
+                DataTable dt7 = new DataTable();
+                var adaptor7 = db.CashFlow7(strfromDate, strtoDate).ToList();
+
+                dt7.Columns.Add("accountGroupId");
+                dt7.Columns.Add("accountGroupName");
+                dt7.Columns.Add("Balance");
+
+                foreach (var item in adaptor7)
+                {
+                    DataRow row = dt7.NewRow();
+
+                    row["accountGroupId"] = item.accountGroupId;
+                    row["accountGroupName"] = item.accountGroupName;
+                    row["Balance"] = item.Balance;
+
+                    dt7.Rows.Add(row);
+                }
+                dset.Tables.Add(dt7);
+
+                DataTable dt8 = new DataTable();
+                var adaptor8 = db.CashFlow8(strfromDate, strtoDate).ToList();
+
+                dt8.Columns.Add("accountGroupId");
+                dt8.Columns.Add("accountGroupName");
+                dt8.Columns.Add("Balance");
+
+                foreach (var item in adaptor8)
+                {
+                    DataRow row = dt8.NewRow();
+
+                    row["accountGroupId"] = item.accountGroupId;
+                    row["accountGroupName"] = item.accountGroupName;
+                    row["Balance"] = item.Balance;
+
+
+                    dt8.Rows.Add(row);
+                }
+                dset.Tables.Add(dt8);
+
+                DataTable dt9 = new DataTable();
+                var adaptor9 = db.CashFlow9(strfromDate, strtoDate).ToList();
+
+                dt9.Columns.Add("accountGroupId");
+                dt9.Columns.Add("accountGroupName");
+                dt9.Columns.Add("Balance");
+
+                foreach (var item in adaptor9)
+                {
+                    DataRow row = dt9.NewRow();
+
+                    row["accountGroupId"] = item.accountGroupId;
+                    row["accountGroupName"] = item.accountGroupName1;
+                    row["Balance"] = item.Balance1;
+
+
+                    dt9.Rows.Add(row);
+                }
+                dset.Tables.Add(dt9);
+
+                DataTable dt10 = new DataTable();
+                var adaptor10 = db.CashFlow10(strfromDate, strtoDate).ToList();
+
+                dt10.Columns.Add("accountGroupId");
+                dt10.Columns.Add("accountGroupName");
+                dt10.Columns.Add("Balance");
+
+                foreach (var item in adaptor10)
+                {
+                    DataRow row = dt10.NewRow();
+
+                    row["accountGroupId"] = item.accountGroupId;
+                    row["accountGroupName"] = item.accountGroupName1;
+                    row["Balance"] = item.Balance1;
+
+                    dt10.Rows.Add(row);
+                }
+                dset.Tables.Add(dt10);
+
+                DataTable dt11 = new DataTable();
+                var adaptor11 = db.CashFlow11(strfromDate, strtoDate).ToList();
+
+                dt11.Columns.Add("accountGroupId");
+                dt11.Columns.Add("accountGroupName");
+                dt11.Columns.Add("Balance");
+
+                foreach (var item in adaptor11)
+                {
+                    DataRow row = dt11.NewRow();
+
+                    row["accountGroupId"] = item.accountGroupId;
+                    row["accountGroupName"] = item.accountGroupName1;
+                    row["Balance"] = item.Balance1;
+
+                    dt11.Rows.Add(row);
+                }
+                dset.Tables.Add(dt11);
+
+                DataTable dt12 = new DataTable();
+                var adaptor12 = db.CashFlow12(strfromDate, strtoDate).ToList();
+
+                dt12.Columns.Add("accountGroupId");
+                dt12.Columns.Add("accountGroupName");
+                dt12.Columns.Add("Balance");
+
+                foreach (var item in adaptor12)
+                {
+                    DataRow row = dt12.NewRow();
+
+                    row["accountGroupId"] = item.accountGroupId;
+                    row["accountGroupName"] = item.accountGroupName1;
+                    row["Balance"] = item.Balance1;
+
+                    dt12.Rows.Add(row);
+                }
+                dset.Tables.Add(dt12);
+
+                DataTable dt13 = new DataTable();
+                var adaptor13 = db.CashFlow13(strfromDate, strtoDate).ToList();
+
+                dt13.Columns.Add("accountGroupId");
+                dt13.Columns.Add("accountGroupName");
+                dt13.Columns.Add("Balance");
+
+                foreach (var item in adaptor13)
+                {
+                    DataRow row = dt13.NewRow();
+
+                    row["accountGroupId"] = item.accountGroupId;
+                    row["accountGroupName"] = item.accountGroupName1;
+                    row["Balance"] = item.Balance1;
+
+                    dt13.Rows.Add(row);
+                }
+                dset.Tables.Add(dt13);
+
+                DataTable dt14 = new DataTable();
+                var adaptor14 = db.CashFlow14(strfromDate, strtoDate).ToList();
+
+                dt14.Columns.Add("accountGroupId");
+                dt14.Columns.Add("accountGroupName");
+                dt14.Columns.Add("Balance");
+
+                foreach (var item in adaptor14)
+                {
+                    DataRow row = dt14.NewRow();
+
+                    row["accountGroupId"] = item.accountGroupId;
+                    row["accountGroupName"] = item.accountGroupName1;
+                    row["Balance"] = item.Balance1;
+
+                    dt14.Rows.Add(row);
+                }
+                dset.Tables.Add(dt14);
+
+                DataTable dt15 = new DataTable();
+                var adaptor15 = db.CashFlow12(strfromDate, strtoDate).ToList();
+
+                dt15.Columns.Add("accountGroupId");
+                dt15.Columns.Add("accountGroupName");
+                dt15.Columns.Add("Balance");
+
+                foreach (var item in adaptor15)
+                {
+                    DataRow row = dt15.NewRow();
+
+                    row["accountGroupId"] = item.accountGroupId;
+                    row["accountGroupName"] = item.accountGroupName1;
+                    row["Balance"] = item.Balance1;
+
+                    dt15.Rows.Add(row);
+                }
+                dset.Tables.Add(dt15);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return dset;
+        }
     }
 }

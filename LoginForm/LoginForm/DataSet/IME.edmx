@@ -6869,6 +6869,66 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
         <Function Name="BudgetVariance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="budgetMasterId" Type="numeric" Mode="In" />
         </Function>
+        <Function Name="CashFlow1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="CashFlow10" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="CashFlow11" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="CashFlow12" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="CashFlow13" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="CashFlow14" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="CashFlow15" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="CashFlow2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="CashFlow3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="CashFlow4" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="CashFlow5" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="CashFlow6" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="CashFlow7" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="CashFlow8" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="CashFlow9" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
         <Function Name="CashFlowReportPrintCompany" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="CashOrBankBookGridFill" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="fromDate" Type="datetime" Mode="In" />
@@ -8077,6 +8137,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
         <Function Name="SalaryVoucherMasterMax" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
         </Function>
+        <Function Name="SalaryVoucherMasterViewAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SaleMasterGetPos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="salemasterId" Type="numeric" Mode="In" />
           <Parameter Name="voucherName" Type="varchar(max)" Mode="In" />
@@ -8874,34 +8935,34 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <EntitySet Name="VoucherTypeTax" EntityType="Self.VoucherTypeTax" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Worker" EntityType="Self.Worker" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AdditionalCost" EntityType="Self.AdditionalCost" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT
-    [AdditionalCost].[additionalCostId] AS [additionalCostId],
-    [AdditionalCost].[voucherTypeId] AS [voucherTypeId],
-    [AdditionalCost].[voucherNo] AS [voucherNo],
-    [AdditionalCost].[ledgerId] AS [ledgerId],
-    [AdditionalCost].[debit] AS [debit],
+            <DefiningQuery>SELECT 
+    [AdditionalCost].[additionalCostId] AS [additionalCostId], 
+    [AdditionalCost].[voucherTypeId] AS [voucherTypeId], 
+    [AdditionalCost].[voucherNo] AS [voucherNo], 
+    [AdditionalCost].[ledgerId] AS [ledgerId], 
+    [AdditionalCost].[debit] AS [debit], 
     [AdditionalCost].[credit] AS [credit]
     FROM [dbo].[AdditionalCost] AS [AdditionalCost]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="SalaryVoucherDetail" EntityType="Self.SalaryVoucherDetail" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT
-    [SalaryVoucherDetail].[salaryVoucherDetailsId] AS [salaryVoucherDetailsId],
-    [SalaryVoucherDetail].[salaryVoucherMasterId] AS [salaryVoucherMasterId],
-    [SalaryVoucherDetail].[employeeId] AS [employeeId],
-    [SalaryVoucherDetail].[bonus] AS [bonus],
-    [SalaryVoucherDetail].[deduction] AS [deduction],
-    [SalaryVoucherDetail].[advance] AS [advance],
-    [SalaryVoucherDetail].[lop] AS [lop],
-    [SalaryVoucherDetail].[salary] AS [salary],
+            <DefiningQuery>SELECT 
+    [SalaryVoucherDetail].[salaryVoucherDetailsId] AS [salaryVoucherDetailsId], 
+    [SalaryVoucherDetail].[salaryVoucherMasterId] AS [salaryVoucherMasterId], 
+    [SalaryVoucherDetail].[employeeId] AS [employeeId], 
+    [SalaryVoucherDetail].[bonus] AS [bonus], 
+    [SalaryVoucherDetail].[deduction] AS [deduction], 
+    [SalaryVoucherDetail].[advance] AS [advance], 
+    [SalaryVoucherDetail].[lop] AS [lop], 
+    [SalaryVoucherDetail].[salary] AS [salary], 
     [SalaryVoucherDetail].[status] AS [status]
     FROM [dbo].[SalaryVoucherDetail] AS [SalaryVoucherDetail]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="V_Product" EntityType="Self.V_Product" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT
-    [V_Product].[productId] AS [productId],
-    [V_Product].[productCode] AS [productCode],
-    [V_Product].[Unit_Measure] AS [Unit_Measure],
-    [V_Product].[Brandname] AS [Brandname],
+            <DefiningQuery>SELECT 
+    [V_Product].[productId] AS [productId], 
+    [V_Product].[productCode] AS [productCode], 
+    [V_Product].[Unit_Measure] AS [Unit_Measure], 
+    [V_Product].[Brandname] AS [Brandname], 
     [V_Product].[dependantTable] AS [dependantTable]
     FROM [dbo].[V_Product] AS [V_Product]</DefiningQuery>
           </EntitySet>
@@ -19403,6 +19464,66 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <FunctionImport Name="BudgetVariance" ReturnType="Collection(IMEModel.BudgetVariance_Result)">
             <Parameter Name="budgetMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="CashFlow1" ReturnType="Collection(IMEModel.CashFlow1_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="CashFlow10" ReturnType="Collection(IMEModel.CashFlow10_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="CashFlow11" ReturnType="Collection(IMEModel.CashFlow11_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="CashFlow12" ReturnType="Collection(IMEModel.CashFlow12_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="CashFlow13" ReturnType="Collection(IMEModel.CashFlow13_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="CashFlow14" ReturnType="Collection(IMEModel.CashFlow14_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="CashFlow15" ReturnType="Collection(IMEModel.CashFlow15_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="CashFlow2" ReturnType="Collection(IMEModel.CashFlow2_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="CashFlow3" ReturnType="Collection(IMEModel.CashFlow3_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="CashFlow4" ReturnType="Collection(IMEModel.CashFlow4_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="CashFlow5" ReturnType="Collection(IMEModel.CashFlow5_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="CashFlow6" ReturnType="Collection(IMEModel.CashFlow6_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="CashFlow7" ReturnType="Collection(IMEModel.CashFlow7_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="CashFlow8" ReturnType="Collection(IMEModel.CashFlow8_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="CashFlow9" ReturnType="Collection(IMEModel.CashFlow9_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
           <FunctionImport Name="CashFlowReportPrintCompany" ReturnType="Collection(IMEModel.CashFlowReportPrintCompany_Result)" />
           <FunctionImport Name="CashOrBankBookGridFill" ReturnType="Collection(IMEModel.CashOrBankBookGridFill_Result)">
             <Parameter Name="fromDate" Mode="In" Type="DateTime" />
@@ -20600,6 +20721,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <FunctionImport Name="SalaryVoucherMasterMax" ReturnType="Collection(Decimal)">
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="SalaryVoucherMasterViewAll" ReturnType="Collection(IMEModel.SalaryVoucherMasterViewAll_Result)" />
           <FunctionImport Name="SaleMasterGetPos" ReturnType="Collection(String)">
             <Parameter Name="salemasterId" Mode="In" Type="Decimal" />
             <Parameter Name="voucherName" Mode="In" Type="String" />
@@ -21638,6 +21760,81 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="Decimal" Name="BudgetCr" Nullable="true" Precision="28" Scale="2" />
           <Property Type="Decimal" Name="ActualCr" Nullable="true" Precision="28" Scale="2" />
           <Property Type="Decimal" Name="VarianceCr" Nullable="true" Precision="28" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="CashFlow1_Result">
+          <Property Type="String" Name="accountGroupName" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="accountGroupId" Nullable="false" MaxLength="1" />
+          <Property Type="Decimal" Name="Balance" Nullable="true" Precision="24" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="CashFlow10_Result">
+          <Property Type="String" Name="accountGroupName1" Nullable="false" MaxLength="12" />
+          <Property Type="String" Name="accountGroupId" Nullable="false" MaxLength="1" />
+          <Property Type="Decimal" Name="Balance1" Nullable="true" Precision="24" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="CashFlow11_Result">
+          <Property Type="String" Name="accountGroupName1" Nullable="false" MaxLength="11" />
+          <Property Type="String" Name="accountGroupId" Nullable="false" MaxLength="1" />
+          <Property Type="Decimal" Name="Balance1" Nullable="true" Precision="24" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="CashFlow12_Result">
+          <Property Type="String" Name="accountGroupName1" Nullable="false" MaxLength="21" />
+          <Property Type="String" Name="accountGroupId" Nullable="false" MaxLength="1" />
+          <Property Type="Decimal" Name="Balance1" Nullable="true" Precision="24" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="CashFlow13_Result">
+          <Property Type="String" Name="accountGroupName1" Nullable="false" MaxLength="16" />
+          <Property Type="String" Name="accountGroupId" Nullable="false" MaxLength="2" />
+          <Property Type="Decimal" Name="Balance1" Nullable="true" Precision="24" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="CashFlow14_Result">
+          <Property Type="String" Name="accountGroupName1" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="accountGroupId" Nullable="false" MaxLength="2" />
+          <Property Type="Decimal" Name="Balance1" Nullable="true" Precision="24" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="CashFlow15_Result">
+          <Property Type="String" Name="accountGroupName1" Nullable="false" MaxLength="17" />
+          <Property Type="String" Name="accountGroupId" Nullable="false" MaxLength="2" />
+          <Property Type="Decimal" Name="Balance1" Nullable="true" Precision="24" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="CashFlow2_Result">
+          <Property Type="String" Name="accountGroupName" Nullable="false" MaxLength="17" />
+          <Property Type="String" Name="accountGroupId" Nullable="false" MaxLength="1" />
+          <Property Type="Decimal" Name="Balance" Nullable="true" Precision="24" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="CashFlow3_Result">
+          <Property Type="String" Name="accountGroupName" Nullable="false" MaxLength="14" />
+          <Property Type="String" Name="accountGroupId" Nullable="false" MaxLength="1" />
+          <Property Type="Decimal" Name="Balance" Nullable="true" Precision="24" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="CashFlow4_Result">
+          <Property Type="String" Name="accountGroupName" Nullable="false" MaxLength="17" />
+          <Property Type="String" Name="accountGroupId" Nullable="false" MaxLength="1" />
+          <Property Type="Decimal" Name="Balance" Nullable="true" Precision="24" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="CashFlow5_Result">
+          <Property Type="String" Name="accountGroupName" Nullable="false" MaxLength="12" />
+          <Property Type="String" Name="accountGroupId" Nullable="false" MaxLength="1" />
+          <Property Type="Decimal" Name="Balance" Nullable="true" Precision="24" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="CashFlow6_Result">
+          <Property Type="String" Name="accountGroupName" Nullable="false" MaxLength="13" />
+          <Property Type="String" Name="accountGroupId" Nullable="false" MaxLength="2" />
+          <Property Type="Decimal" Name="Balance" Nullable="true" Precision="24" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="CashFlow7_Result">
+          <Property Type="String" Name="accountGroupName" Nullable="false" MaxLength="13" />
+          <Property Type="String" Name="accountGroupId" Nullable="false" MaxLength="2" />
+          <Property Type="Decimal" Name="Balance" Nullable="true" Precision="24" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="CashFlow8_Result">
+          <Property Type="String" Name="accountGroupName" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="accountGroupId" Nullable="false" MaxLength="2" />
+          <Property Type="Decimal" Name="Balance" Nullable="true" Precision="24" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="CashFlow9_Result">
+          <Property Type="String" Name="accountGroupName1" Nullable="false" MaxLength="19" />
+          <Property Type="String" Name="accountGroupId" Nullable="false" MaxLength="1" />
+          <Property Type="Decimal" Name="Balance1" Nullable="true" Precision="24" Scale="2" />
         </ComplexType>
         <ComplexType Name="CashFlowReportPrintCompany_Result">
           <Property Type="String" Name="companyName" Nullable="true" />
@@ -22714,6 +22911,19 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
         <ComplexType Name="SalaryPackageViewAllForMonthlySalarySettings_Result">
           <Property Type="Decimal" Name="salaryPackageId" Nullable="false" Precision="18" Scale="0" />
           <Property Type="String" Name="salaryPackageName" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SalaryVoucherMasterViewAll_Result">
+          <Property Type="Decimal" Name="salaryVoucherMasterId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="ledgerId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="voucherNo" Nullable="true" />
+          <Property Type="String" Name="invoiceNo" Nullable="true" />
+          <Property Type="DateTime" Name="date" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="month" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="totalAmount" Nullable="true" Precision="18" Scale="5" />
+          <Property Type="String" Name="narration" Nullable="true" />
+          <Property Type="Decimal" Name="suffixPrefixId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="voucherTypeId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="financialYearId" Nullable="true" Precision="18" Scale="0" />
         </ComplexType>
         <ComplexType Name="SalesAccountComboFill_Result">
           <Property Type="String" Name="ledgerName" Nullable="true" />
@@ -26167,6 +26377,141 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CashFlow1" FunctionName="IMEModel.Store.CashFlow1">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.CashFlow1_Result">
+                <ScalarProperty Name="accountGroupName" ColumnName="accountGroupName" />
+                <ScalarProperty Name="accountGroupId" ColumnName="accountGroupId" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CashFlow10" FunctionName="IMEModel.Store.CashFlow10">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.CashFlow10_Result">
+                <ScalarProperty Name="accountGroupName1" ColumnName="accountGroupName1" />
+                <ScalarProperty Name="accountGroupId" ColumnName="accountGroupId" />
+                <ScalarProperty Name="Balance1" ColumnName="Balance1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CashFlow11" FunctionName="IMEModel.Store.CashFlow11">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.CashFlow11_Result">
+                <ScalarProperty Name="accountGroupName1" ColumnName="accountGroupName1" />
+                <ScalarProperty Name="accountGroupId" ColumnName="accountGroupId" />
+                <ScalarProperty Name="Balance1" ColumnName="Balance1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CashFlow12" FunctionName="IMEModel.Store.CashFlow12">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.CashFlow12_Result">
+                <ScalarProperty Name="accountGroupName1" ColumnName="accountGroupName1" />
+                <ScalarProperty Name="accountGroupId" ColumnName="accountGroupId" />
+                <ScalarProperty Name="Balance1" ColumnName="Balance1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CashFlow13" FunctionName="IMEModel.Store.CashFlow13">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.CashFlow13_Result">
+                <ScalarProperty Name="accountGroupName1" ColumnName="accountGroupName1" />
+                <ScalarProperty Name="accountGroupId" ColumnName="accountGroupId" />
+                <ScalarProperty Name="Balance1" ColumnName="Balance1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CashFlow14" FunctionName="IMEModel.Store.CashFlow14">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.CashFlow14_Result">
+                <ScalarProperty Name="accountGroupName1" ColumnName="accountGroupName1" />
+                <ScalarProperty Name="accountGroupId" ColumnName="accountGroupId" />
+                <ScalarProperty Name="Balance1" ColumnName="Balance1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CashFlow15" FunctionName="IMEModel.Store.CashFlow15">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.CashFlow15_Result">
+                <ScalarProperty Name="accountGroupName1" ColumnName="accountGroupName1" />
+                <ScalarProperty Name="accountGroupId" ColumnName="accountGroupId" />
+                <ScalarProperty Name="Balance1" ColumnName="Balance1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CashFlow2" FunctionName="IMEModel.Store.CashFlow2">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.CashFlow2_Result">
+                <ScalarProperty Name="accountGroupName" ColumnName="accountGroupName" />
+                <ScalarProperty Name="accountGroupId" ColumnName="accountGroupId" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CashFlow3" FunctionName="IMEModel.Store.CashFlow3">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.CashFlow3_Result">
+                <ScalarProperty Name="accountGroupName" ColumnName="accountGroupName" />
+                <ScalarProperty Name="accountGroupId" ColumnName="accountGroupId" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CashFlow4" FunctionName="IMEModel.Store.CashFlow4">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.CashFlow4_Result">
+                <ScalarProperty Name="accountGroupName" ColumnName="accountGroupName" />
+                <ScalarProperty Name="accountGroupId" ColumnName="accountGroupId" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CashFlow5" FunctionName="IMEModel.Store.CashFlow5">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.CashFlow5_Result">
+                <ScalarProperty Name="accountGroupName" ColumnName="accountGroupName" />
+                <ScalarProperty Name="accountGroupId" ColumnName="accountGroupId" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CashFlow6" FunctionName="IMEModel.Store.CashFlow6">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.CashFlow6_Result">
+                <ScalarProperty Name="accountGroupName" ColumnName="accountGroupName" />
+                <ScalarProperty Name="accountGroupId" ColumnName="accountGroupId" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CashFlow7" FunctionName="IMEModel.Store.CashFlow7">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.CashFlow7_Result">
+                <ScalarProperty Name="accountGroupName" ColumnName="accountGroupName" />
+                <ScalarProperty Name="accountGroupId" ColumnName="accountGroupId" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CashFlow8" FunctionName="IMEModel.Store.CashFlow8">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.CashFlow8_Result">
+                <ScalarProperty Name="accountGroupName" ColumnName="accountGroupName" />
+                <ScalarProperty Name="accountGroupId" ColumnName="accountGroupId" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CashFlow9" FunctionName="IMEModel.Store.CashFlow9">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.CashFlow9_Result">
+                <ScalarProperty Name="accountGroupName1" ColumnName="accountGroupName1" />
+                <ScalarProperty Name="accountGroupId" ColumnName="accountGroupId" />
+                <ScalarProperty Name="Balance1" ColumnName="Balance1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="CashFlowReportPrintCompany" FunctionName="IMEModel.Store.CashFlowReportPrintCompany">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.CashFlowReportPrintCompany_Result">
@@ -27841,6 +28186,23 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SalaryVoucherMasterMax" FunctionName="IMEModel.Store.SalaryVoucherMasterMax" />
+          <FunctionImportMapping FunctionImportName="SalaryVoucherMasterViewAll" FunctionName="IMEModel.Store.SalaryVoucherMasterViewAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.SalaryVoucherMasterViewAll_Result">
+                <ScalarProperty Name="salaryVoucherMasterId" ColumnName="salaryVoucherMasterId" />
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+                <ScalarProperty Name="voucherNo" ColumnName="voucherNo" />
+                <ScalarProperty Name="invoiceNo" ColumnName="invoiceNo" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="month" ColumnName="month" />
+                <ScalarProperty Name="totalAmount" ColumnName="totalAmount" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+                <ScalarProperty Name="suffixPrefixId" ColumnName="suffixPrefixId" />
+                <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
+                <ScalarProperty Name="financialYearId" ColumnName="financialYearId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SaleMasterGetPos" FunctionName="IMEModel.Store.SaleMasterGetPos" />
           <FunctionImportMapping FunctionImportName="SalesAccountComboFill" FunctionName="IMEModel.Store.SalesAccountComboFill">
             <ResultMapping>
