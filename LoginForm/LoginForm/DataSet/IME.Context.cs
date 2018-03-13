@@ -1118,6 +1118,7 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BillAllocationAccountGroupFill_Result>("BillAllocationAccountGroupFill");
         }
     
+<<<<<<< HEAD
         public virtual ObjectResult<BillAllocationLedgerFill_Result> BillAllocationLedgerFill(string accountGroupName)
         {
             var accountGroupNameParameter = accountGroupName != null ?
@@ -1127,6 +1128,8 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BillAllocationLedgerFill_Result>("BillAllocationLedgerFill", accountGroupNameParameter);
         }
     
+=======
+>>>>>>> cd5e10c41b8d1ad076a69bdd8b867d69898652a1
         public virtual ObjectResult<BillAllocationSearch_Result> BillAllocationSearch(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, string accountGroupName, string ledgerName)
         {
             var fromDateParameter = fromDate.HasValue ?
@@ -2853,6 +2856,18 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MonthlySalaryDetailsEditUsingMasterIdAndDetailsId", monthlySalaryIdParameter, monthlySalaryDetailsIdParameter, employeeIdParameter, salaryPackageIdParameter);
         }
     
+<<<<<<< HEAD
+=======
+        public virtual int MonthlySalarySettingsDetailsIdDelete(Nullable<decimal> monthlySalaryDetailsId)
+        {
+            var monthlySalaryDetailsIdParameter = monthlySalaryDetailsId.HasValue ?
+                new ObjectParameter("monthlySalaryDetailsId", monthlySalaryDetailsId) :
+                new ObjectParameter("monthlySalaryDetailsId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MonthlySalarySettingsDetailsIdDelete", monthlySalaryDetailsIdParameter);
+        }
+    
+>>>>>>> cd5e10c41b8d1ad076a69bdd8b867d69898652a1
         public virtual int MonthlySalarySettingsEdit(Nullable<decimal> monthlySalaryId, string salaryMonth, string narration)
         {
             var monthlySalaryIdParameter = monthlySalaryId.HasValue ?
@@ -4868,6 +4883,27 @@ namespace LoginForm.DataSet
                 new ObjectParameter("salaryPackageId", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SalaryPackageDeleteAll", salaryPackageIdParameter);
+        }
+    
+        public virtual int SalaryPackageDetailsAdd(Nullable<decimal> salaryPackageId, Nullable<decimal> payHeadId, Nullable<decimal> amount, string narration)
+        {
+            var salaryPackageIdParameter = salaryPackageId.HasValue ?
+                new ObjectParameter("salaryPackageId", salaryPackageId) :
+                new ObjectParameter("salaryPackageId", typeof(decimal));
+    
+            var payHeadIdParameter = payHeadId.HasValue ?
+                new ObjectParameter("payHeadId", payHeadId) :
+                new ObjectParameter("payHeadId", typeof(decimal));
+    
+            var amountParameter = amount.HasValue ?
+                new ObjectParameter("amount", amount) :
+                new ObjectParameter("amount", typeof(decimal));
+    
+            var narrationParameter = narration != null ?
+                new ObjectParameter("narration", narration) :
+                new ObjectParameter("narration", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SalaryPackageDetailsAdd", salaryPackageIdParameter, payHeadIdParameter, amountParameter, narrationParameter);
         }
     
         public virtual int SalaryPackageDetailsDeleteWithSalaryPackageId(Nullable<decimal> salaryPackageId)

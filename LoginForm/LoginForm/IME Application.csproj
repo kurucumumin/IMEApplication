@@ -12,7 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\nebib\Desktop\IMEApp\</PublishUrl>
+    <PublishUrl>C:\Users\pomak\Desktop\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -22,7 +22,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>81</ApplicationRevision>
+    <ApplicationRevision>84</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -90,6 +90,10 @@
       <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="Microsoft.SqlServer.ConnectionInfo, Version=14.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SqlServer.ConnectionInfoExtended, Version=14.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SqlServer.Smo, Version=14.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SqlServer.SmoExtended, Version=14.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="NeoSmart.Unicode, Version=0.1.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Unicode.net.0.1.2\lib\net45\NeoSmart.Unicode.dll</HintPath>
     </Reference>
@@ -219,17 +223,59 @@
     <Compile Include="Account\PayRoll\frmAdvancePayment.designer.cs">
       <DependentUpon>frmAdvancePayment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\PayRoll\frmAttendance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\PayRoll\frmAttendance.Designer.cs">
+      <DependentUpon>frmAttendance.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\PayRoll\frmBonusDeduction.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Account\PayRoll\frmBonusDeduction.Designer.cs">
       <DependentUpon>frmBonusDeduction.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\PayRoll\frmBonusDeductionRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\PayRoll\frmBonusDeductionRegister.designer.cs">
+      <DependentUpon>frmBonusDeductionRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\PayRoll\frmDesignation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\PayRoll\frmDesignation.Designer.cs">
+      <DependentUpon>frmDesignation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\PayRoll\frmHolydaySettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\PayRoll\frmHolydaySettings.Designer.cs">
+      <DependentUpon>frmHolydaySettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\PayRoll\frmMonthlySalarySettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\PayRoll\frmMonthlySalarySettings.Designer.cs">
+      <DependentUpon>frmMonthlySalarySettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\PayRoll\frmPayHead.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Account\PayRoll\frmPayHead.designer.cs">
       <DependentUpon>frmPayHead.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\PayRoll\frmSalaryPackageCreation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\PayRoll\frmSalaryPackageCreation.Designer.cs">
+      <DependentUpon>frmSalaryPackageCreation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\PayRoll\frmSalaryPackageRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\PayRoll\frmSalaryPackageRegister.designer.cs">
+      <DependentUpon>frmSalaryPackageRegister.cs</DependentUpon>
     </Compile>
     <Compile Include="Account\Register\frmCreditNoteRegister.cs">
       <SubType>Form</SubType>
@@ -448,6 +494,7 @@
     <Compile Include="Account\Services\AreaSP.cs" />
     <Compile Include="Account\Services\BankReconciliationSP.cs" />
     <Compile Include="Account\Services\BatchSP.cs" />
+    <Compile Include="Account\Services\BonusDedutionSP.cs" />
     <Compile Include="Account\Services\BrandSP.cs" />
     <Compile Include="Account\Services\BudgetDetailsSP.cs" />
     <Compile Include="Account\Services\BudgetMasterSP.cs" />
@@ -456,20 +503,28 @@
     <Compile Include="Account\Services\CreditNoteDetailsSP.cs" />
     <Compile Include="Account\Services\CreditNoteMasterSP.cs" />
     <Compile Include="Account\Services\CurrencySP.cs" />
+    <Compile Include="Account\Services\DailyAttendanceDetailsInfo.cs" />
+    <Compile Include="Account\Services\DailyAttendanceDetailsSP.cs" />
+    <Compile Include="Account\Services\DailyAttendanceMasterInfo.cs" />
+    <Compile Include="Account\Services\DailyAttendanceMasterSP.cs" />
     <Compile Include="Account\Services\DebitNoteDetailsSP.cs" />
     <Compile Include="Account\Services\DebitNoteMasterSP.cs" />
     <Compile Include="Account\Services\DeliveryNoteDetailsSP.cs" />
     <Compile Include="Account\Services\DeliveryNoteMasterSP.cs" />
+    <Compile Include="Account\Services\DesignationSP.cs" />
     <Compile Include="Account\Services\EmployeeSP.cs" />
     <Compile Include="Account\Services\ExchangeRateSP.cs" />
     <Compile Include="Account\Services\ExportNew.cs" />
     <Compile Include="Account\Services\FinancialStatementSP.cs" />
     <Compile Include="Account\Services\FinancialYearSP.cs" />
     <Compile Include="Account\Services\GodownSP.cs" />
+    <Compile Include="Account\Services\HolidayInfo.cs" />
+    <Compile Include="Account\Services\HolidaySP.cs" />
     <Compile Include="Account\Services\JournalMasterSP.cs" />
     <Compile Include="Account\Services\LedgerPostingSP.cs" />
     <Compile Include="Account\Services\MaterialReceiptDetailsSP.cs" />
     <Compile Include="Account\Services\MaterialReceiptMasterSP.cs" />
+    <Compile Include="Account\Services\MonthlySalaryDetailsSP.cs" />
     <Compile Include="Account\Services\MonthlySalarySP.cs" />
     <Compile Include="Account\Services\NumToText.cs" />
     <Compile Include="Account\Services\PartyBalanceSP.cs" />
@@ -493,6 +548,8 @@
     <Compile Include="Account\Services\ReceiptMasterSP.cs" />
     <Compile Include="Account\Services\ReminderSP.cs" />
     <Compile Include="Account\Services\RouteSP.cs" />
+    <Compile Include="Account\Services\SalaryPackageDetailsSP.cs" />
+    <Compile Include="Account\Services\SalaryPackageSP.cs" />
     <Compile Include="Account\Services\SalesBillTaxSP.cs" />
     <Compile Include="Account\Services\SalesDetailsSP.cs" />
     <Compile Include="Account\Services\SalesMasterSP.cs" />
@@ -1806,11 +1863,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
+    <Compile Include="Properties\Resources1.Designer.cs" />
     <Compile Include="PurchaseOrder\ExcelPurchaseOrder.cs" />
     <Compile Include="PurchaseOrder\FormBillTo.cs">
       <SubType>Form</SubType>
@@ -1939,6 +1992,7 @@
       <DependentUpon>FormSaleGridCustomize.cs</DependentUpon>
     </Compile>
     <Compile Include="SaleOrder\SalesOrderHelper.cs" />
+    <Compile Include="Services\BackUpAndRestore.cs" />
     <Compile Include="Services\Common.cs" />
     <Compile Include="Services\DateValidation.cs" />
     <Compile Include="Services\dgv.cs" />
@@ -2047,11 +2101,32 @@
     <EmbeddedResource Include="Account\PayRoll\frmAdvancePayment.resx">
       <DependentUpon>frmAdvancePayment.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Account\PayRoll\frmAttendance.resx">
+      <DependentUpon>frmAttendance.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Account\PayRoll\frmBonusDeduction.resx">
       <DependentUpon>frmBonusDeduction.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Account\PayRoll\frmBonusDeductionRegister.resx">
+      <DependentUpon>frmBonusDeductionRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\PayRoll\frmDesignation.resx">
+      <DependentUpon>frmDesignation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\PayRoll\frmHolydaySettings.resx">
+      <DependentUpon>frmHolydaySettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\PayRoll\frmMonthlySalarySettings.resx">
+      <DependentUpon>frmMonthlySalarySettings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Account\PayRoll\frmPayHead.resx">
       <DependentUpon>frmPayHead.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\PayRoll\frmSalaryPackageCreation.resx">
+      <DependentUpon>frmSalaryPackageCreation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\PayRoll\frmSalaryPackageRegister.resx">
+      <DependentUpon>frmSalaryPackageRegister.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Register\frmCreditNoteRegister.resx">
       <DependentUpon>frmCreditNoteRegister.cs</DependentUpon>
@@ -2278,10 +2353,7 @@
     <EmbeddedResource Include="nCompany\frmCompanyCreation.resx">
       <DependentUpon>frmCompanyCreation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx" />
     <EmbeddedResource Include="PurchaseOrder\FormBillTo.resx">
       <DependentUpon>FormBillTo.cs</DependentUpon>
     </EmbeddedResource>
@@ -2374,6 +2446,7 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\LoginForm.DataSet.AuthorizationValue.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.AuthRole.datasource" />
+    <None Include="Properties\DataSources\LoginForm.DataSet.Currency.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.Customer.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.CustomerAddress.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.CustomerCategory.datasource" />
@@ -2428,7 +2501,6 @@
     <None Include="Resources\button_delete1.png" />
     <None Include="Resources\button_disabled.png" />
     <None Include="Resources\close.png" />
-    <None Include="Resources\button_delete.bmp" />
     <Content Include="Resources\close_icon.jpg" />
     <None Include="Resources\cybrosys_technologies.png" />
     <Content Include="Resources\excel_icon.png" />
@@ -2468,12 +2540,12 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 ve x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <ProductName>.NET Framework 3.5 SP1 </ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>

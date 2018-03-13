@@ -99,5 +99,78 @@ namespace LoginForm.Account.Services
             }
             return Max;
         }
+
+        public DataTable AdvanceRegisterSearch(string strAdvanceVoucher, string strEmployeeCode, string strEmployeeName, string dtpDate, string strVouchertypeName)
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = (IME.AdvanceRegisterSearch(strAdvanceVoucher, strEmployeeCode, strEmployeeName, dtpDate, strVouchertypeName)).ToList();
+
+
+                dtbl.Columns.Add("voucherNo");
+                dtbl.Columns.Add("date");
+                dtbl.Columns.Add("employeeName");
+                dtbl.Columns.Add("employeeCode");
+                dtbl.Columns.Add("VoucherTypeName");
+
+
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["voucherNo"] = item.voucherNo;
+                    row["date"] = item.date;
+                    row["employeeName"] = item.NameLastName;
+                    row["employeeCode"] = item.UserName;
+                    row["VoucherTypeName"] = item.voucherTypeName;
+
+
+                    dtbl.Rows.Add(row);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
+
+        public DataTable VoucherTypeNameComboFillAdvanceRegister()
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = IME.VoucherTypeNameComboFillAdvanceRegister().ToList();
+
+
+                dtbl.Columns.Add("voucherTypeId");
+                dtbl.Columns.Add("VoucherTypeName");
+
+
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["voucherTypeId"] = item.voucherTypeId;
+                    row["VoucherTypeName"] = item.voucherTypeName;
+
+
+                    dtbl.Rows.Add(row);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+
+            }
+            return dtbl;
+        }
     }
 }
