@@ -164,5 +164,34 @@ namespace LoginForm.Account.Services
             }
             return dtbl;
         }
+
+        public DataTable SalaryPackageViewAllForMonthlySalarySettings()
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = IME.SalaryPackageViewAllForMonthlySalarySettings().ToList();
+
+
+                dtbl.Columns.Add("salaryPackageId");
+                dtbl.Columns.Add("salaryPackageName");
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["salaryPackageId"] = item.salaryPackageId;
+                    row["salaryPackageName"] = item.salaryPackageName;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
     }
 }

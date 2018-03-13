@@ -17,6 +17,7 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SalaryPackage()
         {
+            this.MonthlySalaryDetails = new HashSet<MonthlySalaryDetail>();
             this.SalaryPackageDetails = new HashSet<SalaryPackageDetail>();
             this.Workers = new HashSet<Worker>();
         }
@@ -27,6 +28,8 @@ namespace LoginForm.DataSet
         public string narration { get; set; }
         public Nullable<decimal> totalAmount { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MonthlySalaryDetail> MonthlySalaryDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SalaryPackageDetail> SalaryPackageDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

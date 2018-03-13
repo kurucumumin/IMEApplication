@@ -235,11 +235,29 @@
     <Compile Include="Account\PayRoll\frmBonusDeduction.Designer.cs">
       <DependentUpon>frmBonusDeduction.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\PayRoll\frmBonusDeductionRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\PayRoll\frmBonusDeductionRegister.designer.cs">
+      <DependentUpon>frmBonusDeductionRegister.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\PayRoll\frmDesignation.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Account\PayRoll\frmDesignation.Designer.cs">
       <DependentUpon>frmDesignation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\PayRoll\frmHolydaySettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\PayRoll\frmHolydaySettings.Designer.cs">
+      <DependentUpon>frmHolydaySettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\PayRoll\frmMonthlySalarySettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\PayRoll\frmMonthlySalarySettings.Designer.cs">
+      <DependentUpon>frmMonthlySalarySettings.cs</DependentUpon>
     </Compile>
     <Compile Include="Account\PayRoll\frmPayHead.cs">
       <SubType>Form</SubType>
@@ -476,6 +494,7 @@
     <Compile Include="Account\Services\AreaSP.cs" />
     <Compile Include="Account\Services\BankReconciliationSP.cs" />
     <Compile Include="Account\Services\BatchSP.cs" />
+    <Compile Include="Account\Services\BonusDedutionSP.cs" />
     <Compile Include="Account\Services\BrandSP.cs" />
     <Compile Include="Account\Services\BudgetDetailsSP.cs" />
     <Compile Include="Account\Services\BudgetMasterSP.cs" />
@@ -498,11 +517,13 @@
     <Compile Include="Account\Services\FinancialStatementSP.cs" />
     <Compile Include="Account\Services\FinancialYearSP.cs" />
     <Compile Include="Account\Services\GodownSP.cs" />
+    <Compile Include="Account\Services\HolidayInfo.cs" />
     <Compile Include="Account\Services\HolidaySP.cs" />
     <Compile Include="Account\Services\JournalMasterSP.cs" />
     <Compile Include="Account\Services\LedgerPostingSP.cs" />
     <Compile Include="Account\Services\MaterialReceiptDetailsSP.cs" />
     <Compile Include="Account\Services\MaterialReceiptMasterSP.cs" />
+    <Compile Include="Account\Services\MonthlySalaryDetailsSP.cs" />
     <Compile Include="Account\Services\MonthlySalarySP.cs" />
     <Compile Include="Account\Services\NumToText.cs" />
     <Compile Include="Account\Services\PartyBalanceSP.cs" />
@@ -845,6 +866,9 @@
     <Compile Include="DataSet\BonusDeduction.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\BonusDeductionSearch_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\Brand.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -888,6 +912,9 @@
     <Compile Include="DataSet\CompanyPath.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\CompanyPathView_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\CompanyViewAll_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -922,6 +949,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\CurrencySearch_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\CurrencyViewAllForCombo_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Customer.cs">
@@ -1000,6 +1030,12 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\DualUse.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\EmployeeViewAll_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\EmployeeViewForPaySlip_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\ExchangeRate.cs">
@@ -1132,6 +1168,15 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\MonthlySalary.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\MonthlySalaryDetail.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\MonthlySalarySettingsEmployeeViewAll_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\MonthlySalarySettingsWorkerViewAll_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\MultipleAccountLedgerComboFill_Result.cs">
@@ -1447,6 +1492,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SalaryPackageregisterSearch_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SalaryPackageViewAllForMonthlySalarySettings_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SalaryPackageView_Result.cs">
@@ -2024,8 +2072,17 @@
     <EmbeddedResource Include="Account\PayRoll\frmBonusDeduction.resx">
       <DependentUpon>frmBonusDeduction.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Account\PayRoll\frmBonusDeductionRegister.resx">
+      <DependentUpon>frmBonusDeductionRegister.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Account\PayRoll\frmDesignation.resx">
       <DependentUpon>frmDesignation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\PayRoll\frmHolydaySettings.resx">
+      <DependentUpon>frmHolydaySettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\PayRoll\frmMonthlySalarySettings.resx">
+      <DependentUpon>frmMonthlySalarySettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Account\PayRoll\frmPayHead.resx">
       <DependentUpon>frmPayHead.cs</DependentUpon>
