@@ -15,7 +15,7 @@ namespace LoginForm
         public static bool demoProject = false;
 
         private UserControl CurrentNavTabLvl1;
-        private UserControl CurrentNavTabLvl2;
+        public UserControl CurrentNavTabLvl2;
 
         public FormMain()
         {
@@ -29,6 +29,11 @@ namespace LoginForm
 
         public void OpenNavTabLvl1(UserControl NavControlLvl1)
         {
+            if(CurrentNavTabLvl2 != null && CurrentNavTabLvl2.Visible == true)
+            {
+                CurrentNavTabLvl2.Visible = false;
+            }
+
             if (CurrentNavTabLvl1 != null)
             {
                 CurrentNavTabLvl1.Visible = false;

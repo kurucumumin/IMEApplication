@@ -952,5 +952,137 @@ namespace LoginForm.Account.Services
             }
             return dtbl;
         }
+
+        /// <summary>
+        /// Function to Profit And Loss Analysis UpTo a Date For Previous Years
+        /// </summary>
+        /// <param name="toDate"></param>
+        /// <returns></returns>
+        public System.Data.DataSet ProfitAndLossAnalysisUpToaDateForPreviousYears(DateTime toDate)
+        {
+            IMEEntities db = new IMEEntities();
+            System.Data.DataSet dset = new System.Data.DataSet();
+            try
+            {
+                DataTable dt1 = new DataTable();
+                var adaptor1 = db.ProfitAndLossAnalysisUpToaDateForPreviousYearsPurchaseAccount(toDate).ToList();
+
+                dt1.Columns.Add("ID");
+                dt1.Columns.Add("Name");
+                dt1.Columns.Add("Debit");
+
+                foreach (var item in adaptor1)
+                {
+                    DataRow row = dt1.NewRow();
+
+                    row["ID"] = item.ID;
+                    row["Name"] = item.Name;
+                    row["Debit"] = item.Debit;
+
+                    dt1.Rows.Add(row);
+                }
+                dset.Tables.Add(dt1);
+
+                DataTable dt2 = new DataTable();
+                var adaptor2 = db.ProfitAndLossAnalysisUpToaDateForPreviousYearsSalesAccount(toDate).ToList();
+
+                dt2.Columns.Add("ID");
+                dt2.Columns.Add("Name");
+                dt2.Columns.Add("Credit");
+
+                foreach (var item in adaptor2)
+                {
+                    DataRow row = dt2.NewRow();
+
+                    row["ID"] = item.ID;
+                    row["Name"] = item.Name;
+                    row["Credit"] = item.Credit;
+
+                    dt2.Rows.Add(row);
+                }
+                dset.Tables.Add(dt2);
+
+                DataTable dt3 = new DataTable();
+                var adaptor3 = db.ProfitAndLossAnalysisUpToaDateForPreviousYearsDirectExpenses(toDate).ToList();
+
+                dt3.Columns.Add("ID");
+                dt3.Columns.Add("Name");
+                dt3.Columns.Add("Debit");
+
+                foreach (var item in adaptor3)
+                {
+                    DataRow row = dt3.NewRow();
+
+                    row["ID"] = item.ID;
+                    row["Name"] = item.Name;
+                    row["Debit"] = item.Debit;
+
+                    dt3.Rows.Add(row);
+                }
+                dset.Tables.Add(dt3);
+
+                DataTable dt4 = new DataTable();
+                var adaptor4 = db.ProfitAndLossAnalysisUpToaDateForPreviousYearsDirectIncome(toDate).ToList();
+
+                dt4.Columns.Add("ID");
+                dt4.Columns.Add("Name");
+                dt4.Columns.Add("Credit");
+
+                foreach (var item in adaptor4)
+                {
+                    DataRow row = dt4.NewRow();
+
+                    row["ID"] = item.ID;
+                    row["Name"] = item.Name;
+                    row["Credit"] = item.Credit;
+
+                    dt4.Rows.Add(row);
+                }
+                dset.Tables.Add(dt4);
+
+                DataTable dt5 = new DataTable();
+                var adaptor5 = db.ProfitAndLossAnalysisUpToaDateForPreviousYearsIndirectExpenses(toDate).ToList();
+
+                dt5.Columns.Add("ID");
+                dt5.Columns.Add("Name");
+                dt5.Columns.Add("Debit");
+
+                foreach (var item in adaptor5)
+                {
+                    DataRow row = dt5.NewRow();
+
+                    row["ID"] = item.ID;
+                    row["Name"] = item.Name;
+                    row["Debit"] = item.Debit;
+
+                    dt4.Rows.Add(row);
+                }
+                dset.Tables.Add(dt5);
+
+                DataTable dt6 = new DataTable();
+                var adaptor6 = db.ProfitAndLossAnalysisUpToaDateForPreviousYearsIndirectIncome(toDate).ToList();
+
+                dt6.Columns.Add("ID");
+                dt6.Columns.Add("Name");
+                dt6.Columns.Add("Credit");
+
+                foreach (var item in adaptor6)
+                {
+                    DataRow row = dt6.NewRow();
+
+                    row["ID"] = item.ID;
+                    row["Name"] = item.Name;
+                    row["Credit"] = item.Credit;
+
+                    dt4.Rows.Add(row);
+                }
+                dset.Tables.Add(dt6);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            return dset;
+        }
     }
 }

@@ -68,6 +68,7 @@ namespace LoginForm.CustomControls
         private void btnBudgets_Click(object sender, EventArgs e)
         {
             parent.subControlBudget.Visible = true;
+            parent.CurrentNavTabLvl2 = parent.subControlBudget;
         }
 
         private void AccountingControl_Load(object sender, EventArgs e)
