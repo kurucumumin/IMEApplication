@@ -21,7 +21,7 @@ namespace LoginForm
         string strLedgerId;
         string str = string.Empty;
         int decUserId = Utils.getCurrentUser().WorkerID;
-        string strFormName = "frmAdvancePayment";
+        //string strFormName = "frmAdvancePayment";
         static string strPaymentVoucherTypeId = string.Empty;
         decimal decPaymentSuffixPrefixId = 0;
         decimal decAdvancePaymentsId;
@@ -516,22 +516,22 @@ namespace LoginForm
 
 
 
-        //public void CallFromAdvanceRegister(decimal decAdvancePaymentId, frmAdvanceRegister frm)
-        //{
-        //    try
-        //    {
-        //        base.Show();
-        //        decAdvancePaymentEditId = decAdvancePaymentId;
-        //        frmAdvanceRegisterObj = frm;
-        //        frm.Enabled = false;
-        //        fillFunction();
+        public void CallFromAdvanceRegister(decimal decAdvancePaymentId, frmAdvanceRegister frm)
+        {
+            try
+            {
+                base.Show();
+                decAdvancePaymentEditId = decAdvancePaymentId;
+                frmAdvanceRegister frmAdvanceRegisterObj = frm;
+                frm.Enabled = false;
+                fillFunction();
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("AP9:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("AP9:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
 
 
 

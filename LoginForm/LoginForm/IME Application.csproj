@@ -498,6 +498,7 @@
     <Compile Include="Account\Services\BrandSP.cs" />
     <Compile Include="Account\Services\BudgetDetailsSP.cs" />
     <Compile Include="Account\Services\BudgetMasterSP.cs" />
+    <Compile Include="Account\Services\CompanyPathSP.cs" />
     <Compile Include="Account\Services\CompanySP.cs" />
     <Compile Include="Account\Services\CreditNoteDetailsSP.cs" />
     <Compile Include="Account\Services\CreditNoteMasterSP.cs" />
@@ -571,6 +572,7 @@
     <Compile Include="Account\Services\TransactionsGeneralFill.cs" />
     <Compile Include="Account\Services\UnitConvertionSP.cs" />
     <Compile Include="Account\Services\UnitSP.cs" />
+    <Compile Include="Account\Services\UserSP.cs" />
     <Compile Include="Account\Services\VoucherTypeSP.cs" />
     <Compile Include="Account\Settings\frmSettings.cs">
       <SubType>Form</SubType>
@@ -661,6 +663,12 @@
     </Compile>
     <Compile Include="Account\Transaction\frmServiceVoucher.Designer.cs">
       <DependentUpon>frmServiceVoucher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\AccountCustomControl\BudgetControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\AccountCustomControl\BudgetControl.Designer.cs">
+      <DependentUpon>BudgetControl.cs</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\AccountCustomControl\BudgetMasterPayroll.cs">
       <SubType>UserControl</SubType>
@@ -1826,9 +1834,15 @@
     <Compile Include="ModulePurchaseInvoice\frmPurchaseInvoiceLoader.Designer.cs">
       <DependentUpon>frmPurchaseInvoiceLoader.cs</DependentUpon>
     </Compile>
+    <Compile Include="nCompany\frmCompanyCreation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nCompany\frmCompanyCreation.designer.cs">
+      <DependentUpon>frmCompanyCreation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs" />
+    <Compile Include="Properties\Resources1.Designer.cs" />
     <Compile Include="PurchaseOrder\ExcelPurchaseOrder.cs" />
     <Compile Include="PurchaseOrder\FormBillTo.cs">
       <SubType>Form</SubType>
@@ -2243,6 +2257,9 @@
     <EmbeddedResource Include="Account\Transaction\frmServiceVoucher.resx">
       <DependentUpon>frmServiceVoucher.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\AccountCustomControl\BudgetControl.resx">
+      <DependentUpon>BudgetControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\AccountCustomControl\BudgetMasterPayroll.resx">
       <DependentUpon>BudgetMasterPayroll.cs</DependentUpon>
     </EmbeddedResource>
@@ -2308,6 +2325,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModulePurchaseInvoice\frmPurchaseInvoiceLoader.resx">
       <DependentUpon>frmPurchaseInvoiceLoader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nCompany\frmCompanyCreation.resx">
+      <DependentUpon>frmCompanyCreation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx" />
     <EmbeddedResource Include="PurchaseOrder\FormBillTo.resx">
@@ -2402,6 +2422,7 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\LoginForm.DataSet.AuthorizationValue.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.AuthRole.datasource" />
+    <None Include="Properties\DataSources\LoginForm.DataSet.Currency.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.Customer.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.CustomerAddress.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.CustomerCategory.datasource" />
