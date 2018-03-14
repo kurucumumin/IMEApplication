@@ -1285,6 +1285,9 @@
     <Compile Include="DataSet\MonthlySalarySettingsWorkerViewAll_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\MonthlySalaryVoucherMasterAddWithIdentity_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\MultipleAccountLedgerComboFill_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1640,6 +1643,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SalaryVoucherMasterViewAll_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SalaryVoucherMasterView_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SaleOrder.cs">
