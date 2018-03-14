@@ -3376,7 +3376,7 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MonthlySalarySettingsWorkerViewAll_Result>("MonthlySalarySettingsWorkerViewAll", salaryMonthParameter);
         }
     
-        public virtual int MonthlySalaryVoucherDetailsViewAll_1(string strMonth, string month, string monthYear, Nullable<decimal> isEditMode, string voucherNo)
+        public virtual ObjectResult<Nullable<int>> MonthlySalaryVoucherDetailsViewAll_1(string strMonth, string month, string monthYear, Nullable<decimal> isEditMode, string voucherNo)
         {
             var strMonthParameter = strMonth != null ?
                 new ObjectParameter("strMonth", strMonth) :
@@ -3398,10 +3398,10 @@ namespace LoginForm.DataSet
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MonthlySalaryVoucherDetailsViewAll_1", strMonthParameter, monthParameter, monthYearParameter, isEditModeParameter, voucherNoParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("MonthlySalaryVoucherDetailsViewAll_1", strMonthParameter, monthParameter, monthYearParameter, isEditModeParameter, voucherNoParameter);
         }
     
-        public virtual ObjectResult<Nullable<int>> MonthlySalaryVoucherDetailsViewAll_3(string strMonth, string month, string monthYear, Nullable<decimal> isEditMode, string voucherNo)
+        public virtual int MonthlySalaryVoucherDetailsViewAll_3(string strMonth, string month, string monthYear, Nullable<decimal> isEditMode, string voucherNo)
         {
             var strMonthParameter = strMonth != null ?
                 new ObjectParameter("strMonth", strMonth) :
@@ -3423,7 +3423,7 @@ namespace LoginForm.DataSet
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("MonthlySalaryVoucherDetailsViewAll_3", strMonthParameter, monthParameter, monthYearParameter, isEditModeParameter, voucherNoParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MonthlySalaryVoucherDetailsViewAll_3", strMonthParameter, monthParameter, monthYearParameter, isEditModeParameter, voucherNoParameter);
         }
     
         public virtual int MonthlySalaryVoucherDetailsViewAll_4(string strMonth, string month, string monthYear, Nullable<decimal> isEditMode, string voucherNo)

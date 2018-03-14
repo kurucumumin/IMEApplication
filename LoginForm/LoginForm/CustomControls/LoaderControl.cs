@@ -4,11 +4,13 @@ using System.Windows.Forms;
 
 namespace LoginForm.CustomControls
 {
-    public partial class LoaderControl : UserControl
+    public partial class LoaderControl : NavigationControl
     {
         public LoaderControl()
         {
             InitializeComponent();
+            idleButtonColor = btnOnSale.BackColor;
+            pressedButtonColor = btnOnSale.FlatAppearance.MouseOverBackColor;
         }
 
         private void GoToLoaderPage()

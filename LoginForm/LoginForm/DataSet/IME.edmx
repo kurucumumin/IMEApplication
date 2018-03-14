@@ -20175,14 +20175,14 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <FunctionImport Name="MonthlySalarySettingsWorkerViewAll" ReturnType="Collection(IMEModel.MonthlySalarySettingsWorkerViewAll_Result)">
             <Parameter Name="salaryMonth" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <FunctionImport Name="MonthlySalaryVoucherDetailsViewAll_1">
+          <FunctionImport Name="MonthlySalaryVoucherDetailsViewAll_1" ReturnType="Collection(Int32)">
             <Parameter Name="strMonth" Mode="In" Type="String" />
             <Parameter Name="Month" Mode="In" Type="String" />
             <Parameter Name="monthYear" Mode="In" Type="String" />
             <Parameter Name="isEditMode" Mode="In" Type="Decimal" />
             <Parameter Name="voucherNo" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="MonthlySalaryVoucherDetailsViewAll_3" ReturnType="Collection(Int32)">
+          <FunctionImport Name="MonthlySalaryVoucherDetailsViewAll_3">
             <Parameter Name="strMonth" Mode="In" Type="String" />
             <Parameter Name="Month" Mode="In" Type="String" />
             <Parameter Name="monthYear" Mode="In" Type="String" />

@@ -1,74 +1,76 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace LoginForm.CustomControls
 {
-    public partial class AccountingControl : UserControl
+    public partial class AccountingControl : NavigationControl
     {
-        public FormMain parent;
+
         public AccountingControl()
         {
             InitializeComponent();
+            idleButtonColor = btnBudgets.BackColor;
+            pressedButtonColor = btnBudgets.FlatAppearance.MouseOverBackColor;
         }
-
-        private void btnAccountGroup_Click(object sender, EventArgs e)
+        private void ButtonClick(Button button, UserControl subControl)
         {
-            frmAccountGroup form = new frmAccountGroup();
-            form.ShowDialog();
-        }
+            ChangeToDefaultDesign();
+            pressedButton = button;
 
-        private void btnAccountLedger_Click(object sender, EventArgs e)
-        {
-            frmAccountLedger form = new frmAccountLedger();
-            form.ShowDialog();
-        }
-
-        private void btnExchangeRate_Click(object sender, EventArgs e)
-        {
-            frmExchangeRate form = new frmExchangeRate();
-            form.ShowDialog();
-        }
-
-        private void btnTax_Click(object sender, EventArgs e)
-        {
-            frmTax form = new frmTax();
-            form.ShowDialog();
-        }
-
-        private void btnVoucherType_Click(object sender, EventArgs e)
-        {
-            frmVoucherType form = new frmVoucherType();
-            form.ShowDialog();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            frmCurrency form = new frmCurrency();
-            form.ShowDialog();
-        }
-
-        private void btnArea_Click(object sender, EventArgs e)
-        {
-            frmArea form = new frmArea();
-            form.ShowDialog();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            frmJournalVoucher form = new frmJournalVoucher();
-            form.ShowDialog();
-        }
-
-        private void btnSalesInvoice_Click(object sender, EventArgs e)
-        {
-            frmSalesInvoice form = new frmSalesInvoice();
-            form.ShowDialog();
+            button.BackColor = pressedButtonColor;
+            subControl.Visible = true;
+            parent.CurrentNavTabLvl2 = subControl;
         }
 
         private void btnBudgets_Click(object sender, EventArgs e)
         {
-            parent.subControlBudget.Visible = true;
-            parent.CurrentNavTabLvl2 = parent.subControlBudget;
+            ButtonClick((Button)sender, parent.subControlBudget);
+        }
+
+        private void btnReminders_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPayroll_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnReports_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnFinancialStatements_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnOthers_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnTransactions_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnMasters_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

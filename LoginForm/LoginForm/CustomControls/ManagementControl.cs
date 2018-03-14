@@ -8,7 +8,7 @@ using System.Data;
 
 namespace LoginForm.CustomControls
 {
-    public partial class ManagementControl : UserControl
+    public partial class ManagementControl : NavigationControl
     {
         public ManagementControl()
         {

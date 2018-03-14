@@ -40,10 +40,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.controlManagement = new LoginForm.CustomControls.ManagementControl();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.subControlBudget = new LoginForm.CustomControls.BudgetControl();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.controlManagement = new LoginForm.CustomControls.ManagementControl();
+            this.subControlBudget = new LoginForm.CustomControls.BudgetControl();
             this.controlAccounting = new LoginForm.CustomControls.AccountingControl();
             this.controlLoader = new LoginForm.CustomControls.LoaderControl();
             this.controlDevelopment = new LoginForm.CustomControls.DevelopmentControl();
@@ -100,7 +100,7 @@
             this.gbMainMenu.Location = new System.Drawing.Point(3, 171);
             this.gbMainMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbMainMenu.Name = "gbMainMenu";
-            this.gbMainMenu.Padding = new System.Windows.Forms.Padding(0, 4, 0, 8);
+            this.gbMainMenu.Padding = new System.Windows.Forms.Padding(0);
             this.gbMainMenu.Size = new System.Drawing.Size(213, 456);
             this.gbMainMenu.TabIndex = 32;
             this.gbMainMenu.TabStop = false;
@@ -111,9 +111,10 @@
             this.btnManagement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(199)))), ((int)(((byte)(132)))));
             this.btnManagement.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnManagement.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
+            this.btnManagement.FlatAppearance.BorderSize = 0;
             this.btnManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnManagement.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnManagement.Location = new System.Drawing.Point(0, 174);
+            this.btnManagement.Location = new System.Drawing.Point(0, 170);
             this.btnManagement.Margin = new System.Windows.Forms.Padding(0);
             this.btnManagement.Name = "btnManagement";
             this.btnManagement.Size = new System.Drawing.Size(213, 50);
@@ -127,9 +128,10 @@
             this.btnAccounting.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(199)))), ((int)(((byte)(132)))));
             this.btnAccounting.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnAccounting.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
+            this.btnAccounting.FlatAppearance.BorderSize = 0;
             this.btnAccounting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAccounting.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAccounting.Location = new System.Drawing.Point(0, 124);
+            this.btnAccounting.Location = new System.Drawing.Point(0, 120);
             this.btnAccounting.Margin = new System.Windows.Forms.Padding(0);
             this.btnAccounting.Name = "btnAccounting";
             this.btnAccounting.Size = new System.Drawing.Size(213, 50);
@@ -143,9 +145,10 @@
             this.btnDevelopment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(199)))), ((int)(((byte)(132)))));
             this.btnDevelopment.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnDevelopment.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
+            this.btnDevelopment.FlatAppearance.BorderSize = 0;
             this.btnDevelopment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDevelopment.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDevelopment.Location = new System.Drawing.Point(0, 74);
+            this.btnDevelopment.Location = new System.Drawing.Point(0, 70);
             this.btnDevelopment.Margin = new System.Windows.Forms.Padding(0);
             this.btnDevelopment.Name = "btnDevelopment";
             this.btnDevelopment.Size = new System.Drawing.Size(213, 50);
@@ -159,9 +162,10 @@
             this.btnLoader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(199)))), ((int)(((byte)(132)))));
             this.btnLoader.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnLoader.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
+            this.btnLoader.FlatAppearance.BorderSize = 0;
             this.btnLoader.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLoader.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLoader.Location = new System.Drawing.Point(0, 24);
+            this.btnLoader.Location = new System.Drawing.Point(0, 20);
             this.btnLoader.Margin = new System.Windows.Forms.Padding(0);
             this.btnLoader.Name = "btnLoader";
             this.btnLoader.Size = new System.Drawing.Size(213, 50);
@@ -224,16 +228,6 @@
             this.panel4.Size = new System.Drawing.Size(663, 607);
             this.panel4.TabIndex = 6;
             // 
-            // controlManagement
-            // 
-            this.controlManagement.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.controlManagement.Location = new System.Drawing.Point(0, 0);
-            this.controlManagement.Margin = new System.Windows.Forms.Padding(2);
-            this.controlManagement.Name = "controlManagement";
-            this.controlManagement.Size = new System.Drawing.Size(663, 607);
-            this.controlManagement.TabIndex = 2;
-            this.controlManagement.Visible = false;
-            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.subControlBudget);
@@ -243,17 +237,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(334, 613);
             this.panel3.TabIndex = 4;
-            // 
-            // subControlBudget
-            // 
-            this.subControlBudget.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
-            this.subControlBudget.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.subControlBudget.Location = new System.Drawing.Point(0, 0);
-            this.subControlBudget.Margin = new System.Windows.Forms.Padding(0);
-            this.subControlBudget.Name = "subControlBudget";
-            this.subControlBudget.Size = new System.Drawing.Size(334, 613);
-            this.subControlBudget.TabIndex = 5;
-            this.subControlBudget.Visible = false;
             // 
             // panel2
             // 
@@ -266,6 +249,27 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(334, 613);
             this.panel2.TabIndex = 2;
+            // 
+            // controlManagement
+            // 
+            this.controlManagement.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.controlManagement.Location = new System.Drawing.Point(0, 0);
+            this.controlManagement.Margin = new System.Windows.Forms.Padding(2);
+            this.controlManagement.Name = "controlManagement";
+            this.controlManagement.Size = new System.Drawing.Size(663, 607);
+            this.controlManagement.TabIndex = 2;
+            this.controlManagement.Visible = false;
+            // 
+            // subControlBudget
+            // 
+            this.subControlBudget.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
+            this.subControlBudget.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.subControlBudget.Location = new System.Drawing.Point(0, 0);
+            this.subControlBudget.Margin = new System.Windows.Forms.Padding(0);
+            this.subControlBudget.Name = "subControlBudget";
+            this.subControlBudget.Size = new System.Drawing.Size(334, 613);
+            this.subControlBudget.TabIndex = 5;
+            this.subControlBudget.Visible = false;
             // 
             // controlAccounting
             // 
@@ -310,6 +314,7 @@
             this.Controls.Add(this.tableMain);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IsMdiContainer = true;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MinimumSize = new System.Drawing.Size(1011, 510);
             this.Name = "FormMain";

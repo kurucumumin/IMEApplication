@@ -66,66 +66,77 @@
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(16, 544);
-            this.button1.Margin = new System.Windows.Forms.Padding(16, 8, 16, 8);
+            this.button1.Location = new System.Drawing.Point(0, 320);
+            this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(269, 50);
+            this.button1.Size = new System.Drawing.Size(301, 40);
             this.button1.TabIndex = 42;
             this.button1.Text = "Settings";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // btnReminders
             // 
             this.btnReminders.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnReminders.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
+            this.btnReminders.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
             this.btnReminders.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnReminders.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
+            this.btnReminders.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnReminders.FlatAppearance.BorderSize = 0;
+            this.btnReminders.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnReminders.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReminders.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReminders.Location = new System.Drawing.Point(16, 346);
-            this.btnReminders.Margin = new System.Windows.Forms.Padding(16, 8, 16, 8);
+            this.btnReminders.Location = new System.Drawing.Point(0, 200);
+            this.btnReminders.Margin = new System.Windows.Forms.Padding(0);
             this.btnReminders.Name = "btnReminders";
-            this.btnReminders.Size = new System.Drawing.Size(269, 50);
+            this.btnReminders.Size = new System.Drawing.Size(301, 40);
             this.btnReminders.TabIndex = 36;
             this.btnReminders.Text = "Reminders";
             this.btnReminders.UseVisualStyleBackColor = false;
+            this.btnReminders.Click += new System.EventHandler(this.btnReminders_Click);
             // 
             // btnPayroll
             // 
             this.btnPayroll.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPayroll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
+            this.btnPayroll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
             this.btnPayroll.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnPayroll.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
+            this.btnPayroll.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnPayroll.FlatAppearance.BorderSize = 0;
+            this.btnPayroll.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnPayroll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPayroll.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPayroll.Location = new System.Drawing.Point(16, 280);
-            this.btnPayroll.Margin = new System.Windows.Forms.Padding(16, 8, 16, 8);
+            this.btnPayroll.Location = new System.Drawing.Point(0, 160);
+            this.btnPayroll.Margin = new System.Windows.Forms.Padding(0);
             this.btnPayroll.Name = "btnPayroll";
-            this.btnPayroll.Size = new System.Drawing.Size(269, 50);
+            this.btnPayroll.Size = new System.Drawing.Size(301, 40);
             this.btnPayroll.TabIndex = 39;
             this.btnPayroll.Text = "Register";
             this.btnPayroll.UseVisualStyleBackColor = false;
+            this.btnPayroll.Click += new System.EventHandler(this.btnPayroll_Click);
             // 
             // btnBudgets
             // 
             this.btnBudgets.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBudgets.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
+            this.btnBudgets.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
             this.btnBudgets.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBudgets.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
+            this.btnBudgets.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnBudgets.FlatAppearance.BorderSize = 0;
+            this.btnBudgets.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnBudgets.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBudgets.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBudgets.Location = new System.Drawing.Point(16, 16);
-            this.btnBudgets.Margin = new System.Windows.Forms.Padding(16, 16, 16, 8);
+            this.btnBudgets.Location = new System.Drawing.Point(0, 0);
+            this.btnBudgets.Margin = new System.Windows.Forms.Padding(0);
             this.btnBudgets.Name = "btnBudgets";
-            this.btnBudgets.Size = new System.Drawing.Size(269, 50);
+            this.btnBudgets.Size = new System.Drawing.Size(301, 40);
             this.btnBudgets.TabIndex = 37;
             this.btnBudgets.Text = "Budgets";
             this.btnBudgets.UseVisualStyleBackColor = false;
@@ -135,103 +146,121 @@
             // 
             this.btnReports.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnReports.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
+            this.btnReports.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
             this.btnReports.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnReports.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
+            this.btnReports.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnReports.FlatAppearance.BorderSize = 0;
+            this.btnReports.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReports.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReports.Location = new System.Drawing.Point(16, 412);
-            this.btnReports.Margin = new System.Windows.Forms.Padding(16, 8, 16, 8);
+            this.btnReports.Location = new System.Drawing.Point(0, 240);
+            this.btnReports.Margin = new System.Windows.Forms.Padding(0);
             this.btnReports.Name = "btnReports";
-            this.btnReports.Size = new System.Drawing.Size(269, 50);
+            this.btnReports.Size = new System.Drawing.Size(301, 40);
             this.btnReports.TabIndex = 38;
             this.btnReports.Text = "Reports";
             this.btnReports.UseVisualStyleBackColor = false;
+            this.btnReports.Click += new System.EventHandler(this.btnReports_Click);
             // 
             // btnFinancialStatements
             // 
             this.btnFinancialStatements.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFinancialStatements.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
+            this.btnFinancialStatements.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
             this.btnFinancialStatements.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnFinancialStatements.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
+            this.btnFinancialStatements.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnFinancialStatements.FlatAppearance.BorderSize = 0;
+            this.btnFinancialStatements.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnFinancialStatements.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFinancialStatements.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFinancialStatements.Location = new System.Drawing.Point(16, 82);
-            this.btnFinancialStatements.Margin = new System.Windows.Forms.Padding(16, 8, 16, 8);
+            this.btnFinancialStatements.Location = new System.Drawing.Point(0, 40);
+            this.btnFinancialStatements.Margin = new System.Windows.Forms.Padding(0);
             this.btnFinancialStatements.Name = "btnFinancialStatements";
-            this.btnFinancialStatements.Size = new System.Drawing.Size(269, 50);
+            this.btnFinancialStatements.Size = new System.Drawing.Size(301, 40);
             this.btnFinancialStatements.TabIndex = 41;
             this.btnFinancialStatements.Text = "Financial Statements";
             this.btnFinancialStatements.UseVisualStyleBackColor = false;
+            this.btnFinancialStatements.Click += new System.EventHandler(this.btnFinancialStatements_Click);
             // 
             // btnSearch
             // 
             this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
+            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
             this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSearch.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
+            this.btnSearch.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnSearch.FlatAppearance.BorderSize = 0;
+            this.btnSearch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(16, 478);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(16, 8, 16, 8);
+            this.btnSearch.Location = new System.Drawing.Point(0, 280);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(0);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(269, 50);
+            this.btnSearch.Size = new System.Drawing.Size(301, 40);
             this.btnSearch.TabIndex = 34;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnOthers
             // 
             this.btnOthers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOthers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
+            this.btnOthers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
             this.btnOthers.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnOthers.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
+            this.btnOthers.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnOthers.FlatAppearance.BorderSize = 0;
+            this.btnOthers.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnOthers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOthers.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOthers.Location = new System.Drawing.Point(16, 214);
-            this.btnOthers.Margin = new System.Windows.Forms.Padding(16, 8, 16, 8);
+            this.btnOthers.Location = new System.Drawing.Point(0, 120);
+            this.btnOthers.Margin = new System.Windows.Forms.Padding(0);
             this.btnOthers.Name = "btnOthers";
-            this.btnOthers.Size = new System.Drawing.Size(269, 50);
+            this.btnOthers.Size = new System.Drawing.Size(301, 40);
             this.btnOthers.TabIndex = 35;
             this.btnOthers.Text = "Others";
             this.btnOthers.UseVisualStyleBackColor = false;
+            this.btnOthers.Click += new System.EventHandler(this.btnOthers_Click);
             // 
             // btnTransactions
             // 
             this.btnTransactions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTransactions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
+            this.btnTransactions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
             this.btnTransactions.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnTransactions.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
+            this.btnTransactions.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnTransactions.FlatAppearance.BorderSize = 0;
+            this.btnTransactions.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnTransactions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTransactions.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTransactions.Location = new System.Drawing.Point(16, 610);
-            this.btnTransactions.Margin = new System.Windows.Forms.Padding(16, 8, 16, 8);
+            this.btnTransactions.Location = new System.Drawing.Point(0, 360);
+            this.btnTransactions.Margin = new System.Windows.Forms.Padding(0);
             this.btnTransactions.Name = "btnTransactions";
-            this.btnTransactions.Size = new System.Drawing.Size(269, 50);
+            this.btnTransactions.Size = new System.Drawing.Size(301, 40);
             this.btnTransactions.TabIndex = 33;
             this.btnTransactions.Text = "Transactions";
             this.btnTransactions.UseVisualStyleBackColor = false;
+            this.btnTransactions.Click += new System.EventHandler(this.btnTransactions_Click);
             // 
             // btnMasters
             // 
             this.btnMasters.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMasters.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
+            this.btnMasters.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
             this.btnMasters.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnMasters.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
+            this.btnMasters.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnMasters.FlatAppearance.BorderSize = 0;
+            this.btnMasters.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnMasters.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMasters.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMasters.Location = new System.Drawing.Point(16, 148);
-            this.btnMasters.Margin = new System.Windows.Forms.Padding(16, 8, 16, 8);
+            this.btnMasters.Location = new System.Drawing.Point(0, 80);
+            this.btnMasters.Margin = new System.Windows.Forms.Padding(0);
             this.btnMasters.Name = "btnMasters";
-            this.btnMasters.Size = new System.Drawing.Size(269, 50);
+            this.btnMasters.Size = new System.Drawing.Size(301, 40);
             this.btnMasters.TabIndex = 40;
             this.btnMasters.Text = "Masters";
             this.btnMasters.UseVisualStyleBackColor = false;
+            this.btnMasters.Click += new System.EventHandler(this.btnMasters_Click);
             // 
             // AccountingControl
             // 

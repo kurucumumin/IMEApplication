@@ -13,7 +13,7 @@ using LoginForm.DataSet;
 
 namespace LoginForm.CustomControls
 {
-    public partial class DevelopmentControl : UserControl
+    public partial class DevelopmentControl : NavigationControl
     {
         public DevelopmentControl()
         {

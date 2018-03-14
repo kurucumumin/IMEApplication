@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
+using LoginForm.CustomControls;
 using LoginForm.Services;
 
 namespace LoginForm
@@ -14,7 +15,7 @@ namespace LoginForm
         public static bool isEstimateDB = false;
         public static bool demoProject = false;
 
-        private UserControl CurrentNavTabLvl1;
+        private NavigationControl CurrentNavTabLvl1;
         public UserControl CurrentNavTabLvl2;
 
         public FormMain()
@@ -27,7 +28,7 @@ namespace LoginForm
             OpenNavTabLvl1(controlLoader);
         }
 
-        public void OpenNavTabLvl1(UserControl NavControlLvl1)
+        public void OpenNavTabLvl1(NavigationControl NavControlLvl1)
         {
             if(CurrentNavTabLvl2 != null && CurrentNavTabLvl2.Visible == true)
             {
@@ -37,6 +38,7 @@ namespace LoginForm
             if (CurrentNavTabLvl1 != null)
             {
                 CurrentNavTabLvl1.Visible = false;
+                CurrentNavTabLvl1.ChangeToDefaultDesign();
             }
             CurrentNavTabLvl1 = NavControlLvl1;
             CurrentNavTabLvl1.Visible = true;
@@ -54,7 +56,19 @@ namespace LoginForm
 
         private void btnManagement_Click(object sender, EventArgs e)
         {
-            OpenNavTabLvl1(controlManagement);
+            if (CurrentNavTabLvl2 != null && CurrentNavTabLvl2.Visible == true)
+            {
+                CurrentNavTabLvl2.Visible = false;
+                CurrentNavTabLvl2 = null;
+            }
+
+            if (CurrentNavTabLvl1 != null && CurrentNavTabLvl1.Visible == true)
+            {
+                CurrentNavTabLvl1.Visible = false;
+                CurrentNavTabLvl1 = null;
+            }
+            CurrentNavTabLvl1 = controlManagement;
+            CurrentNavTabLvl1.Visible = true;
         }
 
         public void setManagementControl()
