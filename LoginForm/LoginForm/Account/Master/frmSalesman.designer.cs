@@ -103,9 +103,11 @@ namespace LoginForm
             this.gbxSalesMan.Controls.Add(this.txtNarration);
             this.gbxSalesMan.Controls.Add(this.lblSalesmanCode);
             this.gbxSalesMan.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.gbxSalesMan.Location = new System.Drawing.Point(16, 13);
+            this.gbxSalesMan.Location = new System.Drawing.Point(21, 16);
+            this.gbxSalesMan.Margin = new System.Windows.Forms.Padding(4);
             this.gbxSalesMan.Name = "gbxSalesMan";
-            this.gbxSalesMan.Size = new System.Drawing.Size(766, 192);
+            this.gbxSalesMan.Padding = new System.Windows.Forms.Padding(4);
+            this.gbxSalesMan.Size = new System.Drawing.Size(1021, 236);
             this.gbxSalesMan.TabIndex = 0;
             this.gbxSalesMan.TabStop = false;
             this.gbxSalesMan.Text = "Salesman";
@@ -114,10 +116,10 @@ namespace LoginForm
             // 
             this.lblNameValidator.AutoSize = true;
             this.lblNameValidator.ForeColor = System.Drawing.Color.Red;
-            this.lblNameValidator.Location = new System.Drawing.Point(739, 30);
-            this.lblNameValidator.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblNameValidator.Location = new System.Drawing.Point(985, 37);
+            this.lblNameValidator.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblNameValidator.Name = "lblNameValidator";
-            this.lblNameValidator.Size = new System.Drawing.Size(11, 13);
+            this.lblNameValidator.Size = new System.Drawing.Size(13, 17);
             this.lblNameValidator.TabIndex = 412;
             this.lblNameValidator.Text = "*";
             // 
@@ -125,10 +127,10 @@ namespace LoginForm
             // 
             this.lblSalesmanCodeValidator.AutoSize = true;
             this.lblSalesmanCodeValidator.ForeColor = System.Drawing.Color.Red;
-            this.lblSalesmanCodeValidator.Location = new System.Drawing.Point(327, 29);
-            this.lblSalesmanCodeValidator.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblSalesmanCodeValidator.Location = new System.Drawing.Point(436, 36);
+            this.lblSalesmanCodeValidator.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblSalesmanCodeValidator.Name = "lblSalesmanCodeValidator";
-            this.lblSalesmanCodeValidator.Size = new System.Drawing.Size(11, 13);
+            this.lblSalesmanCodeValidator.Size = new System.Drawing.Size(13, 17);
             this.lblSalesmanCodeValidator.TabIndex = 411;
             this.lblSalesmanCodeValidator.Text = "*";
             // 
@@ -138,10 +140,10 @@ namespace LoginForm
             this.cbxActive.Checked = true;
             this.cbxActive.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbxActive.ForeColor = System.Drawing.Color.White;
-            this.cbxActive.Location = new System.Drawing.Point(534, 128);
-            this.cbxActive.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.cbxActive.Location = new System.Drawing.Point(712, 158);
+            this.cbxActive.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.cbxActive.Name = "cbxActive";
-            this.cbxActive.Size = new System.Drawing.Size(56, 17);
+            this.cbxActive.Size = new System.Drawing.Size(68, 21);
             this.cbxActive.TabIndex = 7;
             this.cbxActive.Text = "Active";
             this.cbxActive.UseVisualStyleBackColor = true;
@@ -151,20 +153,20 @@ namespace LoginForm
             // 
             this.lblAddress.AutoSize = true;
             this.lblAddress.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblAddress.Location = new System.Drawing.Point(424, 80);
-            this.lblAddress.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblAddress.Location = new System.Drawing.Point(565, 98);
+            this.lblAddress.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblAddress.Name = "lblAddress";
-            this.lblAddress.Size = new System.Drawing.Size(45, 13);
+            this.lblAddress.Size = new System.Drawing.Size(60, 17);
             this.lblAddress.TabIndex = 410;
             this.lblAddress.Text = "Address";
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(534, 76);
-            this.txtAddress.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtAddress.Location = new System.Drawing.Point(712, 94);
+            this.txtAddress.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(200, 50);
+            this.txtAddress.Size = new System.Drawing.Size(265, 61);
             this.txtAddress.TabIndex = 5;
             this.txtAddress.WordWrap = false;
             this.txtAddress.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAddress_KeyDown);
@@ -172,10 +174,10 @@ namespace LoginForm
             // 
             // txtMobile
             // 
-            this.txtMobile.Location = new System.Drawing.Point(127, 75);
-            this.txtMobile.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtMobile.Location = new System.Drawing.Point(169, 92);
+            this.txtMobile.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtMobile.Name = "txtMobile";
-            this.txtMobile.Size = new System.Drawing.Size(200, 20);
+            this.txtMobile.Size = new System.Drawing.Size(265, 22);
             this.txtMobile.TabIndex = 4;
             this.txtMobile.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtMobile_KeyDown);
             // 
@@ -183,19 +185,19 @@ namespace LoginForm
             // 
             this.lblMobile.AutoSize = true;
             this.lblMobile.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblMobile.Location = new System.Drawing.Point(17, 79);
-            this.lblMobile.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblMobile.Location = new System.Drawing.Point(23, 97);
+            this.lblMobile.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblMobile.Name = "lblMobile";
-            this.lblMobile.Size = new System.Drawing.Size(38, 13);
+            this.lblMobile.Size = new System.Drawing.Size(49, 17);
             this.lblMobile.TabIndex = 409;
             this.lblMobile.Text = "Mobile";
             // 
             // txtPhone
             // 
-            this.txtPhone.Location = new System.Drawing.Point(534, 51);
-            this.txtPhone.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtPhone.Location = new System.Drawing.Point(712, 63);
+            this.txtPhone.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(200, 20);
+            this.txtPhone.Size = new System.Drawing.Size(265, 22);
             this.txtPhone.TabIndex = 3;
             this.txtPhone.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPhone_KeyDown);
             // 
@@ -203,28 +205,28 @@ namespace LoginForm
             // 
             this.lblPhone.AutoSize = true;
             this.lblPhone.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblPhone.Location = new System.Drawing.Point(424, 55);
-            this.lblPhone.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblPhone.Location = new System.Drawing.Point(565, 68);
+            this.lblPhone.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblPhone.Name = "lblPhone";
-            this.lblPhone.Size = new System.Drawing.Size(38, 13);
+            this.lblPhone.Size = new System.Drawing.Size(49, 17);
             this.lblPhone.TabIndex = 408;
             this.lblPhone.Text = "Phone";
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(127, 50);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtEmail.Location = new System.Drawing.Point(169, 62);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(200, 20);
+            this.txtEmail.Size = new System.Drawing.Size(265, 22);
             this.txtEmail.TabIndex = 2;
             this.txtEmail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtEmail_KeyDown);
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(534, 26);
-            this.txtName.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtName.Location = new System.Drawing.Point(712, 32);
+            this.txtName.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(200, 20);
+            this.txtName.Size = new System.Drawing.Size(265, 22);
             this.txtName.TabIndex = 1;
             this.txtName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyDown);
             // 
@@ -232,10 +234,10 @@ namespace LoginForm
             // 
             this.lblName.AutoSize = true;
             this.lblName.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblName.Location = new System.Drawing.Point(424, 30);
-            this.lblName.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblName.Location = new System.Drawing.Point(565, 37);
+            this.lblName.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(35, 13);
+            this.lblName.Size = new System.Drawing.Size(45, 17);
             this.lblName.TabIndex = 407;
             this.lblName.Text = "Name";
             // 
@@ -245,10 +247,10 @@ namespace LoginForm
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(664, 148);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.btnClose.Location = new System.Drawing.Point(885, 182);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(85, 27);
+            this.btnClose.Size = new System.Drawing.Size(113, 33);
             this.btnClose.TabIndex = 11;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -257,14 +259,14 @@ namespace LoginForm
             // 
             // btnDelete
             // 
-            this.btnDelete.BackColor = System.Drawing.Color.Red;
+            this.btnDelete.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDelete.BackgroundImage")));
             this.btnDelete.FlatAppearance.BorderSize = 0;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(573, 148);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.btnDelete.Location = new System.Drawing.Point(764, 182);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(85, 27);
+            this.btnDelete.Size = new System.Drawing.Size(113, 33);
             this.btnDelete.TabIndex = 10;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
@@ -277,10 +279,10 @@ namespace LoginForm
             this.btnClear.FlatAppearance.BorderSize = 0;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.ForeColor = System.Drawing.Color.White;
-            this.btnClear.Location = new System.Drawing.Point(482, 148);
-            this.btnClear.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.btnClear.Location = new System.Drawing.Point(643, 182);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(85, 27);
+            this.btnClear.Size = new System.Drawing.Size(113, 33);
             this.btnClear.TabIndex = 9;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
@@ -289,10 +291,10 @@ namespace LoginForm
             // 
             // txtSalesmanCode
             // 
-            this.txtSalesmanCode.Location = new System.Drawing.Point(127, 25);
-            this.txtSalesmanCode.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtSalesmanCode.Location = new System.Drawing.Point(169, 31);
+            this.txtSalesmanCode.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtSalesmanCode.Name = "txtSalesmanCode";
-            this.txtSalesmanCode.Size = new System.Drawing.Size(200, 20);
+            this.txtSalesmanCode.Size = new System.Drawing.Size(265, 22);
             this.txtSalesmanCode.TabIndex = 0;
             this.txtSalesmanCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSalesmanCode_KeyDown);
             // 
@@ -300,10 +302,10 @@ namespace LoginForm
             // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblEmail.Location = new System.Drawing.Point(17, 54);
-            this.lblEmail.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblEmail.Location = new System.Drawing.Point(23, 66);
+            this.lblEmail.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(35, 13);
+            this.lblEmail.Size = new System.Drawing.Size(47, 17);
             this.lblEmail.TabIndex = 406;
             this.lblEmail.Text = "E-mail";
             // 
@@ -313,10 +315,10 @@ namespace LoginForm
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(391, 148);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.btnSave.Location = new System.Drawing.Point(521, 182);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(85, 27);
+            this.btnSave.Size = new System.Drawing.Size(113, 33);
             this.btnSave.TabIndex = 8;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -327,20 +329,20 @@ namespace LoginForm
             // 
             this.lblNarration.AutoSize = true;
             this.lblNarration.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblNarration.Location = new System.Drawing.Point(17, 100);
-            this.lblNarration.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblNarration.Location = new System.Drawing.Point(23, 123);
+            this.lblNarration.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblNarration.Name = "lblNarration";
-            this.lblNarration.Size = new System.Drawing.Size(50, 13);
+            this.lblNarration.Size = new System.Drawing.Size(67, 17);
             this.lblNarration.TabIndex = 405;
             this.lblNarration.Text = "Narration";
             // 
             // txtNarration
             // 
-            this.txtNarration.Location = new System.Drawing.Point(127, 100);
-            this.txtNarration.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtNarration.Location = new System.Drawing.Point(169, 123);
+            this.txtNarration.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtNarration.Multiline = true;
             this.txtNarration.Name = "txtNarration";
-            this.txtNarration.Size = new System.Drawing.Size(200, 50);
+            this.txtNarration.Size = new System.Drawing.Size(265, 61);
             this.txtNarration.TabIndex = 6;
             this.txtNarration.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNarration_KeyDown);
             this.txtNarration.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNarration_KeyPress);
@@ -349,10 +351,10 @@ namespace LoginForm
             // 
             this.lblSalesmanCode.AutoSize = true;
             this.lblSalesmanCode.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblSalesmanCode.Location = new System.Drawing.Point(17, 29);
-            this.lblSalesmanCode.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblSalesmanCode.Location = new System.Drawing.Point(23, 36);
+            this.lblSalesmanCode.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblSalesmanCode.Name = "lblSalesmanCode";
-            this.lblSalesmanCode.Size = new System.Drawing.Size(81, 13);
+            this.lblSalesmanCode.Size = new System.Drawing.Size(107, 17);
             this.lblSalesmanCode.TabIndex = 404;
             this.lblSalesmanCode.Text = "Salesman Code";
             // 
@@ -372,9 +374,11 @@ namespace LoginForm
             this.gbxSearch.Controls.Add(this.lblCode);
             this.gbxSearch.Controls.Add(this.dgvSalesman);
             this.gbxSearch.ForeColor = System.Drawing.Color.White;
-            this.gbxSearch.Location = new System.Drawing.Point(16, 211);
+            this.gbxSearch.Location = new System.Drawing.Point(21, 260);
+            this.gbxSearch.Margin = new System.Windows.Forms.Padding(4);
             this.gbxSearch.Name = "gbxSearch";
-            this.gbxSearch.Size = new System.Drawing.Size(763, 369);
+            this.gbxSearch.Padding = new System.Windows.Forms.Padding(4);
+            this.gbxSearch.Size = new System.Drawing.Size(1017, 454);
             this.gbxSearch.TabIndex = 1;
             this.gbxSearch.TabStop = false;
             this.gbxSearch.Text = "Search";
@@ -385,9 +389,10 @@ namespace LoginForm
             this.btnClearSearch.FlatAppearance.BorderSize = 0;
             this.btnClearSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClearSearch.ForeColor = System.Drawing.Color.White;
-            this.btnClearSearch.Location = new System.Drawing.Point(638, 68);
+            this.btnClearSearch.Location = new System.Drawing.Point(851, 84);
+            this.btnClearSearch.Margin = new System.Windows.Forms.Padding(4);
             this.btnClearSearch.Name = "btnClearSearch";
-            this.btnClearSearch.Size = new System.Drawing.Size(85, 27);
+            this.btnClearSearch.Size = new System.Drawing.Size(113, 33);
             this.btnClearSearch.TabIndex = 6;
             this.btnClearSearch.Text = "Clear";
             this.btnClearSearch.UseVisualStyleBackColor = true;
@@ -399,9 +404,10 @@ namespace LoginForm
             this.btnSearch.FlatAppearance.BorderSize = 0;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Location = new System.Drawing.Point(547, 68);
+            this.btnSearch.Location = new System.Drawing.Point(729, 84);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(4);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(85, 27);
+            this.btnSearch.Size = new System.Drawing.Size(113, 33);
             this.btnSearch.TabIndex = 5;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -418,10 +424,10 @@ namespace LoginForm
             "All",
             "Yes",
             "No"});
-            this.cmbIsActive.Location = new System.Drawing.Point(127, 70);
-            this.cmbIsActive.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.cmbIsActive.Location = new System.Drawing.Point(169, 86);
+            this.cmbIsActive.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.cmbIsActive.Name = "cmbIsActive";
-            this.cmbIsActive.Size = new System.Drawing.Size(200, 21);
+            this.cmbIsActive.Size = new System.Drawing.Size(265, 24);
             this.cmbIsActive.TabIndex = 4;
             this.cmbIsActive.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbIsActive_KeyDown);
             // 
@@ -429,19 +435,19 @@ namespace LoginForm
             // 
             this.lblActive.AutoSize = true;
             this.lblActive.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblActive.Location = new System.Drawing.Point(17, 74);
-            this.lblActive.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblActive.Location = new System.Drawing.Point(23, 91);
+            this.lblActive.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblActive.Name = "lblActive";
-            this.lblActive.Size = new System.Drawing.Size(37, 13);
+            this.lblActive.Size = new System.Drawing.Size(46, 17);
             this.lblActive.TabIndex = 402;
             this.lblActive.Text = "Active";
             // 
             // txtPhoneSearch
             // 
-            this.txtPhoneSearch.Location = new System.Drawing.Point(547, 45);
-            this.txtPhoneSearch.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtPhoneSearch.Location = new System.Drawing.Point(729, 55);
+            this.txtPhoneSearch.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtPhoneSearch.Name = "txtPhoneSearch";
-            this.txtPhoneSearch.Size = new System.Drawing.Size(200, 20);
+            this.txtPhoneSearch.Size = new System.Drawing.Size(265, 22);
             this.txtPhoneSearch.TabIndex = 3;
             this.txtPhoneSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPhoneSearch_KeyDown);
             // 
@@ -449,28 +455,28 @@ namespace LoginForm
             // 
             this.lblPhoneSearch.AutoSize = true;
             this.lblPhoneSearch.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblPhoneSearch.Location = new System.Drawing.Point(452, 49);
-            this.lblPhoneSearch.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblPhoneSearch.Location = new System.Drawing.Point(603, 60);
+            this.lblPhoneSearch.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblPhoneSearch.Name = "lblPhoneSearch";
-            this.lblPhoneSearch.Size = new System.Drawing.Size(38, 13);
+            this.lblPhoneSearch.Size = new System.Drawing.Size(49, 17);
             this.lblPhoneSearch.TabIndex = 401;
             this.lblPhoneSearch.Text = "Phone";
             // 
             // txtMobileSearch
             // 
-            this.txtMobileSearch.Location = new System.Drawing.Point(127, 45);
-            this.txtMobileSearch.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtMobileSearch.Location = new System.Drawing.Point(169, 55);
+            this.txtMobileSearch.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtMobileSearch.Name = "txtMobileSearch";
-            this.txtMobileSearch.Size = new System.Drawing.Size(200, 20);
+            this.txtMobileSearch.Size = new System.Drawing.Size(265, 22);
             this.txtMobileSearch.TabIndex = 2;
             this.txtMobileSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtMobileSearch_KeyDown);
             // 
             // txtNameSearch
             // 
-            this.txtNameSearch.Location = new System.Drawing.Point(547, 20);
-            this.txtNameSearch.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtNameSearch.Location = new System.Drawing.Point(729, 25);
+            this.txtNameSearch.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtNameSearch.Name = "txtNameSearch";
-            this.txtNameSearch.Size = new System.Drawing.Size(200, 20);
+            this.txtNameSearch.Size = new System.Drawing.Size(265, 22);
             this.txtNameSearch.TabIndex = 1;
             this.txtNameSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNameSearch_KeyDown);
             // 
@@ -478,19 +484,19 @@ namespace LoginForm
             // 
             this.lblNameSearch.AutoSize = true;
             this.lblNameSearch.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblNameSearch.Location = new System.Drawing.Point(452, 24);
-            this.lblNameSearch.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblNameSearch.Location = new System.Drawing.Point(603, 30);
+            this.lblNameSearch.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblNameSearch.Name = "lblNameSearch";
-            this.lblNameSearch.Size = new System.Drawing.Size(35, 13);
+            this.lblNameSearch.Size = new System.Drawing.Size(45, 17);
             this.lblNameSearch.TabIndex = 400;
             this.lblNameSearch.Text = "Name";
             // 
             // txtCode
             // 
-            this.txtCode.Location = new System.Drawing.Point(127, 20);
-            this.txtCode.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtCode.Location = new System.Drawing.Point(169, 25);
+            this.txtCode.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(200, 20);
+            this.txtCode.Size = new System.Drawing.Size(265, 22);
             this.txtCode.TabIndex = 0;
             this.txtCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCode_KeyDown);
             // 
@@ -498,10 +504,10 @@ namespace LoginForm
             // 
             this.lblMobileSearch.AutoSize = true;
             this.lblMobileSearch.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblMobileSearch.Location = new System.Drawing.Point(17, 49);
-            this.lblMobileSearch.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblMobileSearch.Location = new System.Drawing.Point(23, 60);
+            this.lblMobileSearch.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblMobileSearch.Name = "lblMobileSearch";
-            this.lblMobileSearch.Size = new System.Drawing.Size(38, 13);
+            this.lblMobileSearch.Size = new System.Drawing.Size(49, 17);
             this.lblMobileSearch.TabIndex = 399;
             this.lblMobileSearch.Text = "Mobile";
             // 
@@ -509,10 +515,10 @@ namespace LoginForm
             // 
             this.lblCode.AutoSize = true;
             this.lblCode.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblCode.Location = new System.Drawing.Point(17, 24);
-            this.lblCode.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblCode.Location = new System.Drawing.Point(23, 30);
+            this.lblCode.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblCode.Name = "lblCode";
-            this.lblCode.Size = new System.Drawing.Size(32, 13);
+            this.lblCode.Size = new System.Drawing.Size(41, 17);
             this.lblCode.TabIndex = 398;
             this.lblCode.Text = "Code";
             // 
@@ -553,14 +559,14 @@ namespace LoginForm
             this.dgvSalesman.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvSalesman.EnableHeadersVisualStyles = false;
             this.dgvSalesman.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvSalesman.Location = new System.Drawing.Point(20, 102);
-            this.dgvSalesman.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.dgvSalesman.Location = new System.Drawing.Point(27, 126);
+            this.dgvSalesman.Margin = new System.Windows.Forms.Padding(4, 4, 4, 0);
             this.dgvSalesman.MultiSelect = false;
             this.dgvSalesman.Name = "dgvSalesman";
             this.dgvSalesman.ReadOnly = true;
             this.dgvSalesman.RowHeadersVisible = false;
             this.dgvSalesman.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSalesman.Size = new System.Drawing.Size(727, 254);
+            this.dgvSalesman.Size = new System.Drawing.Size(969, 313);
             this.dgvSalesman.TabIndex = 20;
             this.dgvSalesman.TabStop = false;
             this.dgvSalesman.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSalesman_CellDoubleClick);
@@ -626,19 +632,19 @@ namespace LoginForm
             // 
             // frmSalesman
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(111)))), ((int)(((byte)(155)))));
-            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(1067, 738);
             this.Controls.Add(this.gbxSearch);
             this.Controls.Add(this.gbxSalesMan);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "frmSalesman";
-            this.Opacity = 0.85D;
-            this.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
+            this.Padding = new System.Windows.Forms.Padding(20, 12, 20, 12);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Salesman";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmSalesman_FormClosing);

@@ -109,8 +109,5 @@ namespace LoginForm
             OpenNavTabLvl1(controlAccounting);
             controlAccounting.parent = this;
         }
-        
-
-        
     }
 }

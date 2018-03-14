@@ -708,6 +708,12 @@
     <Compile Include="CustomControls\AccountCustomControl\FinancialStatementsControl.Designer.cs">
       <DependentUpon>FinancialStatementsControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomControls\AccountCustomControl\MastersControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\AccountCustomControl\MastersControl.Designer.cs">
+      <DependentUpon>MastersControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomControls\AccountCustomControl\TempControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1993,7 +1999,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources1.Designer.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="PurchaseOrder\ExcelPurchaseOrder.cs" />
     <Compile Include="PurchaseOrder\FormBillTo.cs">
       <SubType>Form</SubType>
@@ -2429,6 +2439,9 @@
     <EmbeddedResource Include="CustomControls\AccountCustomControl\FinancialStatementsControl.resx">
       <DependentUpon>FinancialStatementsControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\AccountCustomControl\MastersControl.resx">
+      <DependentUpon>MastersControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\AccountCustomControl\TempControl.resx">
       <DependentUpon>TempControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -2495,7 +2508,10 @@
     <EmbeddedResource Include="Management\frmCompanyCreation.resx">
       <DependentUpon>frmCompanyCreation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="PurchaseOrder\FormBillTo.resx">
       <DependentUpon>FormBillTo.cs</DependentUpon>
     </EmbeddedResource>
