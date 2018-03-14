@@ -39,5 +39,10 @@ namespace LoginForm.CustomControls
         {
             OpenSubNavigationMenu((Button)sender, parent.subControlFinancialStatement);
         }
+
+        private void btnMasters_Click(object sender, EventArgs e)
+        {
+            OpenSubNavigationMenu((Button)sender, parent.subControlMasters);
+        }
     }
 }

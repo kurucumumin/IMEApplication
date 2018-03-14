@@ -40,11 +40,12 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.controlManagement = new LoginForm.CustomControls.ManagementControl();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.subControlMasters = new LoginForm.CustomControls.MastersControl();
             this.subControlFinancialStatement = new LoginForm.CustomControls.FinancialStatementsControl();
             this.subControlBudget = new LoginForm.CustomControls.BudgetControl();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.controlAccounting = new LoginForm.CustomControls.AccountingControl();
             this.controlLoader = new LoginForm.CustomControls.LoaderControl();
             this.controlDevelopment = new LoginForm.CustomControls.DevelopmentControl();
@@ -229,29 +230,6 @@
             this.panel4.Size = new System.Drawing.Size(663, 607);
             this.panel4.TabIndex = 6;
             // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.subControlFinancialStatement);
-            this.panel3.Controls.Add(this.subControlBudget);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(334, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(334, 613);
-            this.panel3.TabIndex = 4;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.controlAccounting);
-            this.panel2.Controls.Add(this.controlLoader);
-            this.panel2.Controls.Add(this.controlDevelopment);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(334, 613);
-            this.panel2.TabIndex = 2;
-            // 
             // controlManagement
             // 
             this.controlManagement.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -261,6 +239,29 @@
             this.controlManagement.Size = new System.Drawing.Size(663, 607);
             this.controlManagement.TabIndex = 2;
             this.controlManagement.Visible = false;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.subControlMasters);
+            this.panel3.Controls.Add(this.subControlFinancialStatement);
+            this.panel3.Controls.Add(this.subControlBudget);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(334, 0);
+            this.panel3.Margin = new System.Windows.Forms.Padding(0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(334, 613);
+            this.panel3.TabIndex = 4;
+            // 
+            // subControlMasters
+            // 
+            this.subControlMasters.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
+            this.subControlMasters.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.subControlMasters.Location = new System.Drawing.Point(0, 0);
+            this.subControlMasters.Margin = new System.Windows.Forms.Padding(0);
+            this.subControlMasters.Name = "subControlMasters";
+            this.subControlMasters.Size = new System.Drawing.Size(334, 613);
+            this.subControlMasters.TabIndex = 7;
+            this.subControlMasters.Visible = false;
             // 
             // subControlFinancialStatement
             // 
@@ -283,6 +284,18 @@
             this.subControlBudget.Size = new System.Drawing.Size(334, 613);
             this.subControlBudget.TabIndex = 5;
             this.subControlBudget.Visible = false;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.controlAccounting);
+            this.panel2.Controls.Add(this.controlLoader);
+            this.panel2.Controls.Add(this.controlDevelopment);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(334, 613);
+            this.panel2.TabIndex = 2;
             // 
             // controlAccounting
             // 
@@ -370,5 +383,6 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;
         public CustomControls.FinancialStatementsControl subControlFinancialStatement;
+        public CustomControls.MastersControl subControlMasters;
     }
 }

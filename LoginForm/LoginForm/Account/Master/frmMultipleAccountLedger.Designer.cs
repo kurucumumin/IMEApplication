@@ -40,7 +40,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lnklblRemove = new System.Windows.Forms.LinkLabel();
             this.lblMultipleAccountledgerValidator = new System.Windows.Forms.Label();
-            this.dgvMultipleAccountLedger = new dgv.DataGridViewEnter();
+            this.dgvMultipleAccountLedger = new LoginForm.dgv.DataGridViewEnter();
             this.dgvtxtSlNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxtLedgerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxtOpeningBalance = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,9 +67,11 @@
             this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Controls.Add(this.lblAccountGroup);
             this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(18, 20);
+            this.groupBox1.Location = new System.Drawing.Point(24, 25);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(764, 589);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(1019, 725);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Multiple Account ledger";
@@ -78,10 +80,10 @@
             // 
             this.lnklblRemove.AutoSize = true;
             this.lnklblRemove.LinkColor = System.Drawing.Color.Yellow;
-            this.lnklblRemove.Location = new System.Drawing.Point(696, 522);
-            this.lnklblRemove.Margin = new System.Windows.Forms.Padding(5);
+            this.lnklblRemove.Location = new System.Drawing.Point(928, 642);
+            this.lnklblRemove.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.lnklblRemove.Name = "lnklblRemove";
-            this.lnklblRemove.Size = new System.Drawing.Size(47, 13);
+            this.lnklblRemove.Size = new System.Drawing.Size(60, 17);
             this.lnklblRemove.TabIndex = 466;
             this.lnklblRemove.TabStop = true;
             this.lnklblRemove.Text = "Remove";
@@ -91,10 +93,10 @@
             // 
             this.lblMultipleAccountledgerValidator.AutoSize = true;
             this.lblMultipleAccountledgerValidator.ForeColor = System.Drawing.Color.Red;
-            this.lblMultipleAccountledgerValidator.Location = new System.Drawing.Point(326, 25);
-            this.lblMultipleAccountledgerValidator.Margin = new System.Windows.Forms.Padding(5);
+            this.lblMultipleAccountledgerValidator.Location = new System.Drawing.Point(435, 31);
+            this.lblMultipleAccountledgerValidator.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.lblMultipleAccountledgerValidator.Name = "lblMultipleAccountledgerValidator";
-            this.lblMultipleAccountledgerValidator.Size = new System.Drawing.Size(11, 13);
+            this.lblMultipleAccountledgerValidator.Size = new System.Drawing.Size(13, 17);
             this.lblMultipleAccountledgerValidator.TabIndex = 465;
             this.lblMultipleAccountledgerValidator.Text = "*";
             // 
@@ -133,7 +135,8 @@
             this.dgvMultipleAccountLedger.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgvMultipleAccountLedger.EnableHeadersVisualStyles = false;
             this.dgvMultipleAccountLedger.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvMultipleAccountLedger.Location = new System.Drawing.Point(19, 55);
+            this.dgvMultipleAccountLedger.Location = new System.Drawing.Point(25, 68);
+            this.dgvMultipleAccountLedger.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvMultipleAccountLedger.MultiSelect = false;
             this.dgvMultipleAccountLedger.Name = "dgvMultipleAccountLedger";
             this.dgvMultipleAccountLedger.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -147,7 +150,7 @@
             this.dgvMultipleAccountLedger.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvMultipleAccountLedger.RowHeadersWidth = 40;
             this.dgvMultipleAccountLedger.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvMultipleAccountLedger.Size = new System.Drawing.Size(724, 462);
+            this.dgvMultipleAccountLedger.Size = new System.Drawing.Size(965, 569);
             this.dgvMultipleAccountLedger.TabIndex = 2;
             this.dgvMultipleAccountLedger.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMultipleAccountLedger_CellEnter);
             this.dgvMultipleAccountLedger.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMultipleAccountLedger_CellValueChanged);
@@ -215,10 +218,10 @@
             // 
             this.cmbAccountGroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAccountGroup.FormattingEnabled = true;
-            this.cmbAccountGroup.Location = new System.Drawing.Point(126, 21);
-            this.cmbAccountGroup.Margin = new System.Windows.Forms.Padding(5);
+            this.cmbAccountGroup.Location = new System.Drawing.Point(168, 26);
+            this.cmbAccountGroup.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.cmbAccountGroup.Name = "cmbAccountGroup";
-            this.cmbAccountGroup.Size = new System.Drawing.Size(200, 21);
+            this.cmbAccountGroup.Size = new System.Drawing.Size(265, 24);
             this.cmbAccountGroup.TabIndex = 0;
             this.cmbAccountGroup.TextChanged += new System.EventHandler(this.cmbAccountGroup_TextChanged);
             this.cmbAccountGroup.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbAccountGroup_KeyDown);
@@ -230,9 +233,10 @@
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(658, 543);
+            this.btnClose.Location = new System.Drawing.Point(877, 668);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(85, 27);
+            this.btnClose.Size = new System.Drawing.Size(113, 33);
             this.btnClose.TabIndex = 5;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -244,9 +248,10 @@
             this.btnClear.FlatAppearance.BorderSize = 0;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.ForeColor = System.Drawing.Color.White;
-            this.btnClear.Location = new System.Drawing.Point(567, 543);
+            this.btnClear.Location = new System.Drawing.Point(756, 668);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(85, 27);
+            this.btnClear.Size = new System.Drawing.Size(113, 33);
             this.btnClear.TabIndex = 4;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
@@ -258,9 +263,10 @@
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(476, 543);
+            this.btnSave.Location = new System.Drawing.Point(635, 668);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(85, 27);
+            this.btnSave.Size = new System.Drawing.Size(113, 33);
             this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -270,27 +276,27 @@
             // lblAccountGroup
             // 
             this.lblAccountGroup.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblAccountGroup.Location = new System.Drawing.Point(16, 21);
-            this.lblAccountGroup.Margin = new System.Windows.Forms.Padding(5);
+            this.lblAccountGroup.Location = new System.Drawing.Point(21, 26);
+            this.lblAccountGroup.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.lblAccountGroup.Name = "lblAccountGroup";
-            this.lblAccountGroup.Size = new System.Drawing.Size(100, 20);
+            this.lblAccountGroup.Size = new System.Drawing.Size(133, 25);
             this.lblAccountGroup.TabIndex = 464;
             this.lblAccountGroup.Text = "Account Group";
             // 
-            // frmmultipleAccountLedger
+            // frmMultipleAccountLedger
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(111)))), ((int)(((byte)(155)))));
-            this.ClientSize = new System.Drawing.Size(800, 622);
+            this.ClientSize = new System.Drawing.Size(1067, 766);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
-            this.Name = "frmmultipleAccountLedger";
-            this.Opacity = 0.85D;
-            this.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
+            this.Name = "frmMultipleAccountLedger";
+            this.Padding = new System.Windows.Forms.Padding(20, 12, 20, 12);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Multiple Account Ledger";
             this.Load += new System.EventHandler(this.frmmultipleAccountLedger_Load);

@@ -253,6 +253,7 @@
             this.btnMasters.TabIndex = 40;
             this.btnMasters.Text = "Masters";
             this.btnMasters.UseVisualStyleBackColor = false;
+            this.btnMasters.Click += new System.EventHandler(this.btnMasters_Click);
             // 
             // AccountingControl
             // 
