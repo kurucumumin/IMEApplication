@@ -38,9 +38,15 @@ namespace LoginForm.Item
             //
             if (rbProductCode.Checked == true)
             {
+                #region Itemcode Format
+                if (txtSelected.ToString().Contains("-")) { txtSelected = txtSelected.ToString().Replace("-", string.Empty).ToString(); }
+                if (txtSelected != null && txtSelected.ToString().Length == 6 || (txtSelected.ToString().Contains("P") && txtSelected.ToString().Length == 7)) { txtSelected = 0.ToString() + txtSelected.ToString(); }
+                //0100-124 => 0100124
+                #endregion
+               
                 //List Birleştirme
                 #region List Birleştirme
-                
+
                 var gridAdapterPC = (from a in IME.SuperDisks.Where(a => a.Article_No.Contains(txtSelected))
                                      join customerworker in IME.ItemNotes on a.Article_No equals customerworker.ArticleNo into customerworkeres
                                      let customerworker = customerworkeres.Select(customerworker1 => customerworker1).FirstOrDefault()
@@ -81,6 +87,8 @@ namespace LoginForm.Item
                 //
                 #endregion
                 dgItemList.DataSource = gridAdapterPC;
+                dgItemList.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
                 if (gridAdapterPC.Count != 0)
                 {
                     ArticleNoSearch = gridAdapterPC[gridselectedindex].ArticleNo;
@@ -134,6 +142,7 @@ namespace LoginForm.Item
                 //
                 #endregion
                 dgItemList.DataSource = gridAdapterPC;
+                dgItemList.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 if (gridAdapterPC.Count != 0)
                 {
                     ArticleNoSearch = gridAdapterPC[gridselectedindex].ArticleNo;
@@ -189,6 +198,7 @@ namespace LoginForm.Item
                 //
                 #endregion
                 dgItemList.DataSource = gridAdapterPC;
+                dgItemList.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 if (gridAdapterPC.Count != 0)
                 {
                     ArticleNoSearch = gridAdapterPC[gridselectedindex].ArticleNo;
@@ -235,6 +245,7 @@ namespace LoginForm.Item
                 //
                 #endregion
                 dgItemList.DataSource = gridAdapterPC;
+                dgItemList.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 if (gridAdapterPC.Count != 0)
                 {
                     ArticleNoSearch = gridAdapterPC[gridselectedindex].ArticleNo;
@@ -277,7 +288,8 @@ namespace LoginForm.Item
                 txtSSM.Text = sd.Pack_Quantity.ToString();
                 txtUC.Text = sd.Unit_Content.ToString();
                 txtUM.Text = sd.Unit_Measure;
-                if (sd.Standard_Weight != 0) { txtStandartWeight.Text = ((decimal)(sd.Standard_Weight) / (decimal)1000).ToString("G29"); } else { }
+                if (sd.Standard_Weight != 0) { txtStandartWeight.Text = Decimal.Parse(String.Format("{0:0.0000}",((decimal)(sd.Standard_Weight) / (decimal)1000).ToString("G29"))).ToString();
+                    txtStandartWeight.Text = String.Format("{0:0.0000}", Decimal.Parse(txtStandartWeight.Text)).ToString();} else { }
                 txtHazardousInd.Text = sd.Hazardous_Ind;
                 txtCalibrationInd.Text = sd.Calibration_Ind;
                 //ObsoluteFlag.Text = sd.Obsolete_Flag.ToString();
@@ -295,9 +307,12 @@ namespace LoginForm.Item
                 txtMPN.Text = sd.MPN;
                 txtMHCodeLevel1.Text = sd.MH_Code_Level_1;
                 txtCCCN.Text = sd.CCCN_No.ToString();
-                txtHeight.Text = ((decimal)(sd.Heigh * ((Decimal)100))).ToString("G29");
-                txtWidth.Text = ((decimal)(sd.Width * ((Decimal)100))).ToString("G29");
-                txtLength.Text = ((decimal)(sd.Length * ((Decimal)100))).ToString("G29");
+                txtHeight.Text = String.Format("{0:0.0000}",((decimal)(sd.Heigh * ((Decimal)100))).ToString("G29"));
+                txtHeight.Text = String.Format("{0:0.0000}", Decimal.Parse(txtHeight.Text)).ToString();
+                txtWidth.Text = String.Format("{0:0.0000}",((decimal)(sd.Width * ((Decimal)100))).ToString("G29"));
+                txtWidth.Text = String.Format("{0:0.0000}", Decimal.Parse(txtWidth.Text)).ToString();
+                txtLength.Text = String.Format("{0:0.0000}",((decimal)(sd.Length * ((Decimal)100))).ToString("G29"));
+                txtLength.Text = String.Format("{0:0.0000}", Decimal.Parse(txtLength.Text)).ToString();
             }
 
             if (sdP != null)
@@ -307,7 +322,7 @@ namespace LoginForm.Item
                 txtSSM.Text = sdP.Pack_Quantity.ToString();
                 txtUC.Text = sdP.Unit_Content.ToString();
                 txtUM.Text = sdP.Unit_Measure;
-                if (sdP.Standard_Weight != 0) { txtStandartWeight.Text = ((decimal)(sdP.Standard_Weight) / (decimal)1000).ToString("G29"); }
+                if (sdP.Standard_Weight != 0) { txtStandartWeight.Text = String.Format("{0:0.0000}",((decimal)(sdP.Standard_Weight) / (decimal)1000).ToString("G29")); }
                 txtHazardousInd.Text = sdP.Hazardous_Ind;
                 txtCalibrationInd.Text = sdP.Calibration_Ind;
                 //ObsoluteFlag.Text = sdP.Obsolete_Flag.ToString();
@@ -325,19 +340,30 @@ namespace LoginForm.Item
                 txtMPN.Text = sdP.MPN;
                 txtMHCodeLevel1.Text = sdP.MH_Code_Level_1;
                 txtCCCN.Text = sdP.CCCN_No.ToString();
-                txtHeight.Text = ((decimal)(sdP.Heigh * ((Decimal)100))).ToString("G29");
-                txtWidth.Text = ((decimal)(sdP.Width * ((Decimal)100))).ToString("G29");
-                txtLength.Text = ((decimal)(sdP.Length * ((Decimal)100))).ToString("G29");
+                txtHeight.Text = String.Format("{0:0.0000}",((decimal)(sdP.Heigh * ((Decimal)100))).ToString("G29"));
+                txtHeight.Text = String.Format("{0:0.0000}", Decimal.Parse(txtHeight.Text)).ToString();
+                txtWidth.Text = String.Format("{0:0.0000}",((decimal)(sdP.Width * ((Decimal)100))).ToString("G29"));
+                txtWidth.Text = String.Format("{0:0.0000}", Decimal.Parse(txtWidth.Text)).ToString();
+                txtLength.Text = String.Format("{0:0.0000}",((decimal)(sdP.Length * ((Decimal)100))).ToString("G29"));
+                txtLength.Text = String.Format("{0:0.0000}", Decimal.Parse(txtLength.Text)).ToString();
             }
             if (er != null)
             {
                 txtStockNo.Text = er.ArticleNo;
                 txtDesc.Text = er.ArticleDescription;
                 txtMPN.Text = er.MPN;
-                if (txtLength.Text != "") { txtLength.Text = ((decimal)(er.ExtendedRangeLength * ((Decimal)100))).ToString("G29"); }
-                if (txtWidth.Text != "") { txtWidth.Text = ((decimal)(er.Width * ((Decimal)100))).ToString("G29"); }
-                if (txtHeight.Text != "") { txtHeight.Text = ((decimal)(er.Height * ((Decimal)100))).ToString("G29"); }
-                if (er.ExtendedRangeWeight != null) { txtStandartWeight.Text = ((decimal)(er.ExtendedRangeWeight) / (decimal)1000).ToString("G29"); }
+                if (txtLength.Text != "") { txtLength.Text = String.Format("{0:0.0000}", ((decimal)(er.ExtendedRangeLength * ((Decimal)100))).ToString("G29"));
+                    txtLength.Text = String.Format("{0:0.0000}", Decimal.Parse(txtLength.Text)).ToString();
+                }
+                if (txtWidth.Text != "") { txtWidth.Text = String.Format("{0:0.0000}", ((decimal)(er.Width * ((Decimal)100))).ToString("G29"));
+                    txtWidth.Text = String.Format("{0:0.0000}", Decimal.Parse(txtWidth.Text)).ToString();
+                }
+                if (txtHeight.Text != "") { txtHeight.Text = String.Format("{0:0.0000}", ((decimal)(er.Height * ((Decimal)100))).ToString("G29"));
+                    txtHeight.Text = String.Format("{0:0.0000}", Decimal.Parse(txtHeight.Text)).ToString();
+                }
+                if (er.ExtendedRangeWeight != null) { txtStandartWeight.Text = String.Format("{0:0.0000}",((decimal)(er.ExtendedRangeWeight) / (decimal)1000).ToString("G29"));
+                    txtStandartWeight.Text = String.Format("{0:0.0000}", Decimal.Parse(txtStandartWeight.Text)).ToString();
+                }
                 txtCCCN.Text = er.CCCN.ToString();
                 txtCoO.Text = er.CountryofOrigin;
                 txtUM.Text = er.UnitofMeasure;
@@ -378,7 +404,7 @@ namespace LoginForm.Item
                 txtCost4.Text = sp.DiscountedPrice4.ToString();
                 txtCost5.Text = sp.DiscountedPrice5.ToString();
                 txtSupersectionName.Text = sp.SupersectionName;
-                txtDesc.Text = sp.ItemTypeDesc;
+                txtDesc.Text = sp.ArticleDescription;
             }
             if (h != null)
             {
@@ -596,7 +622,10 @@ namespace LoginForm.Item
         private void Length_TextChanged(object sender, EventArgs e)
         {
             txtGrossWeight.Text = "";
-            if (txtHeight.Text != "" && txtLength.Text != "" && txtWidth.Text != "") { txtGrossWeight.Text = (Decimal.Parse(txtLength.Text) * Decimal.Parse(txtWidth.Text) * Decimal.Parse(txtHeight.Text) / 6000).ToString(); }
+            if (txtHeight.Text != "" && txtLength.Text != "" && txtWidth.Text != "") { txtGrossWeight.Text = String.Format("{0:0.0000}",(Decimal.Parse(txtLength.Text) * Decimal.Parse(txtWidth.Text) * Decimal.Parse(txtHeight.Text) / 6000).ToString());
+                txtGrossWeight.Text = String.Format("{0:0.0000}", Decimal.Parse(txtGrossWeight.Text)).ToString();}
+
+            
         }
 
         private void ArticleNo_TextChanged(object sender, EventArgs e)
@@ -644,11 +673,6 @@ namespace LoginForm.Item
         }
 
 
-        private void dgItemList_CellEnter(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void dgItemList_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (dgItemList.CurrentCell != null)
@@ -678,10 +702,17 @@ namespace LoginForm.Item
             }
         }
 
-
         private void ItemCard_Load(object sender, EventArgs e)
         {
             ControlAutorization();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are You Sure To Exit Programme ?", "Exit", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                this.Close();
+            }
         }
     }
 }

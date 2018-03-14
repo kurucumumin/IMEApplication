@@ -321,6 +321,7 @@
             this.cbSMethod = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtNoteForCustomer = new System.Windows.Forms.TextBox();
+            this.lblMargine = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -1668,6 +1669,7 @@
             // 
             // gbCost
             // 
+            this.gbCost.Controls.Add(this.lblMargine);
             this.gbCost.Controls.Add(this.txtWeb5);
             this.gbCost.Controls.Add(this.txtWeb2);
             this.gbCost.Controls.Add(this.txtWeb3);
@@ -3093,6 +3095,15 @@
             this.txtNoteForCustomer.Size = new System.Drawing.Size(404, 36);
             this.txtNoteForCustomer.TabIndex = 0;
             // 
+            // lblMargine
+            // 
+            this.lblMargine.AutoSize = true;
+            this.lblMargine.Location = new System.Drawing.Point(239, 7);
+            this.lblMargine.Name = "lblMargine";
+            this.lblMargine.Size = new System.Drawing.Size(45, 13);
+            this.lblMargine.TabIndex = 437;
+            this.lblMargine.Text = "Margine";
+            // 
             // FormQuotationAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3405,5 +3416,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn35;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn36;
         private System.Windows.Forms.GroupBox gbCost;
+        private System.Windows.Forms.Label lblMargine;
     }
 }

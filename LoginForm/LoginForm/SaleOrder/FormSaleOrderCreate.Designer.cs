@@ -131,7 +131,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearchCustomer.Location = new System.Drawing.Point(16, 48);
             this.txtSearchCustomer.Name = "txtSearchCustomer";
-            this.txtSearchCustomer.Size = new System.Drawing.Size(286, 24);
+            this.txtSearchCustomer.Size = new System.Drawing.Size(286, 21);
             this.txtSearchCustomer.TabIndex = 10;
             this.txtSearchCustomer.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearchCustomer_KeyDown);
             // 
@@ -142,7 +142,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(16, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(114, 18);
+            this.label1.Size = new System.Drawing.Size(95, 15);
             this.label1.TabIndex = 9;
             this.label1.Text = "Customer List";
             // 
@@ -156,7 +156,7 @@
             this.lbCustomerList.DisplayMember = "c_name";
             this.lbCustomerList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCustomerList.FormattingEnabled = true;
-            this.lbCustomerList.ItemHeight = 20;
+            this.lbCustomerList.ItemHeight = 16;
             this.lbCustomerList.Location = new System.Drawing.Point(16, 91);
             this.lbCustomerList.Margin = new System.Windows.Forms.Padding(4);
             this.lbCustomerList.Name = "lbCustomerList";
@@ -300,12 +300,12 @@
             this.paymentMethodDataGridViewTextBoxColumn});
             this.dgQuotations.DataSource = this.quotationBindingSource;
             this.dgQuotations.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgQuotations.Location = new System.Drawing.Point(3, 22);
+            this.dgQuotations.Location = new System.Drawing.Point(3, 19);
             this.dgQuotations.Name = "dgQuotations";
             this.dgQuotations.ReadOnly = true;
             this.dgQuotations.RowTemplate.Height = 24;
             this.dgQuotations.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgQuotations.Size = new System.Drawing.Size(929, 177);
+            this.dgQuotations.Size = new System.Drawing.Size(929, 180);
             this.dgQuotations.TabIndex = 0;
             this.dgQuotations.SelectionChanged += new System.EventHandler(this.dgQuotations_SelectionChanged);
             // 
@@ -507,13 +507,13 @@
             this.tableLayoutPanel5.Controls.Add(this.dgItems, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.panel3, 0, 1);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 17);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 14);
             this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(935, 237);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(935, 240);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
             // dgItems
@@ -548,7 +548,7 @@
             this.dgItems.Name = "dgItems";
             this.dgItems.RowTemplate.Height = 24;
             this.dgItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgItems.Size = new System.Drawing.Size(929, 191);
+            this.dgItems.Size = new System.Drawing.Size(929, 194);
             this.dgItems.TabIndex = 0;
             // 
             // chk
@@ -556,7 +556,7 @@
             this.chk.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.chk.HeaderText = "Choose";
             this.chk.Name = "chk";
-            this.chk.Width = 67;
+            this.chk.Width = 55;
             // 
             // ID
             // 
@@ -686,7 +686,7 @@
             this.panel3.Controls.Add(this.btnClearAll);
             this.panel3.Controls.Add(this.btnSelectAll);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(3, 200);
+            this.panel3.Location = new System.Drawing.Point(3, 203);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(929, 34);
             this.panel3.TabIndex = 1;
@@ -713,7 +713,7 @@
             // 
             // FormSaleOrderCreate
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1281, 606);
             this.Controls.Add(this.tableLayoutPanel3);
