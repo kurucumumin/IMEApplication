@@ -688,24 +688,6 @@
     <Compile Include="CustomControls\AccountCustomControl\BudgetControl.Designer.cs">
       <DependentUpon>BudgetControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="CustomControls\AccountCustomControl\BudgetMasterPayroll.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CustomControls\AccountCustomControl\BudgetMasterPayroll.designer.cs">
-      <DependentUpon>BudgetMasterPayroll.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CustomControls\AccountCustomControl\RegisterReminderSearchOther.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CustomControls\AccountCustomControl\RegisterReminderSearchOther.designer.cs">
-      <DependentUpon>RegisterReminderSearchOther.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CustomControls\AccountCustomControl\TransactionsReports.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CustomControls\AccountCustomControl\TransactionsReports.designer.cs">
-      <DependentUpon>TransactionsReports.cs</DependentUpon>
-    </Compile>
     <Compile Include="CustomControls\AccountingControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1217,6 +1199,9 @@
     <Compile Include="DataSet\MonthlySalaryDetail.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\MonthlySalaryRegisterSearch_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\MonthlySalarySettingsEmployeeViewAll_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1281,6 +1266,15 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\PaymentTerm.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PaySlipPrinting_2_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PaySlipPrinting_3_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PaySlipPrinting_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\PDCClearanceFillDetails_Result.cs">
@@ -1796,6 +1790,9 @@
     <Compile Include="DataSet\VoucherTypeNameComboFillAdvanceRegister_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\VoucherTypeNameComboFill_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\VoucherTypeNameCorrespondingToTypeOfVoucher_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1891,10 +1888,10 @@
     <Compile Include="ModulePurchaseInvoice\frmPurchaseInvoiceLoader.Designer.cs">
       <DependentUpon>frmPurchaseInvoiceLoader.cs</DependentUpon>
     </Compile>
-    <Compile Include="nCompany\frmCompanyCreation.cs">
+    <Compile Include="Management\frmCompanyCreation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="nCompany\frmCompanyCreation.designer.cs">
+    <Compile Include="Management\frmCompanyCreation.designer.cs">
       <DependentUpon>frmCompanyCreation.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -2326,15 +2323,6 @@
     <EmbeddedResource Include="CustomControls\AccountCustomControl\BudgetControl.resx">
       <DependentUpon>BudgetControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CustomControls\AccountCustomControl\BudgetMasterPayroll.resx">
-      <DependentUpon>BudgetMasterPayroll.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CustomControls\AccountCustomControl\RegisterReminderSearchOther.resx">
-      <DependentUpon>RegisterReminderSearchOther.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CustomControls\AccountCustomControl\TransactionsReports.resx">
-      <DependentUpon>TransactionsReports.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\AccountingControl.resx">
       <DependentUpon>AccountingControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -2392,7 +2380,7 @@
     <EmbeddedResource Include="ModulePurchaseInvoice\frmPurchaseInvoiceLoader.resx">
       <DependentUpon>frmPurchaseInvoiceLoader.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="nCompany\frmCompanyCreation.resx">
+    <EmbeddedResource Include="Management\frmCompanyCreation.resx">
       <DependentUpon>frmCompanyCreation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx" />

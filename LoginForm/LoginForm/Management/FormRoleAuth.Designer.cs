@@ -66,7 +66,7 @@
             this.cbRole.Location = new System.Drawing.Point(168, 13);
             this.cbRole.Margin = new System.Windows.Forms.Padding(4);
             this.cbRole.Name = "cbRole";
-            this.cbRole.Size = new System.Drawing.Size(210, 23);
+            this.cbRole.Size = new System.Drawing.Size(210, 26);
             this.cbRole.TabIndex = 0;
             this.cbRole.ValueMember = "RoleID";
             this.cbRole.SelectedIndexChanged += new System.EventHandler(this.cbRole_SelectedIndexChanged);
@@ -78,7 +78,7 @@
             this.lblRoletobeEdited.Location = new System.Drawing.Point(22, 18);
             this.lblRoletobeEdited.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRoletobeEdited.Name = "lblRoletobeEdited";
-            this.lblRoletobeEdited.Size = new System.Drawing.Size(97, 15);
+            this.lblRoletobeEdited.Size = new System.Drawing.Size(113, 18);
             this.lblRoletobeEdited.TabIndex = 4;
             this.lblRoletobeEdited.Text = "Selected Role";
             // 
@@ -87,7 +87,7 @@
             this.chcNewRole.AutoSize = true;
             this.chcNewRole.Location = new System.Drawing.Point(168, 60);
             this.chcNewRole.Name = "chcNewRole";
-            this.chcNewRole.Size = new System.Drawing.Size(80, 19);
+            this.chcNewRole.Size = new System.Drawing.Size(95, 22);
             this.chcNewRole.TabIndex = 6;
             this.chcNewRole.Text = "New Role";
             this.chcNewRole.UseVisualStyleBackColor = true;
@@ -97,7 +97,7 @@
             // 
             this.txtNewRoleName.Location = new System.Drawing.Point(168, 101);
             this.txtNewRoleName.Name = "txtNewRoleName";
-            this.txtNewRoleName.Size = new System.Drawing.Size(210, 21);
+            this.txtNewRoleName.Size = new System.Drawing.Size(210, 24);
             this.txtNewRoleName.TabIndex = 7;
             // 
             // tableLayoutPanel1
@@ -153,7 +153,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearchRole.Location = new System.Drawing.Point(16, 48);
             this.txtSearchRole.Name = "txtSearchRole";
-            this.txtSearchRole.Size = new System.Drawing.Size(325, 21);
+            this.txtSearchRole.Size = new System.Drawing.Size(325, 24);
             this.txtSearchRole.TabIndex = 10;
             this.txtSearchRole.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearchRole_KeyDown);
             // 
@@ -164,7 +164,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(16, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 15);
+            this.label1.Size = new System.Drawing.Size(75, 18);
             this.label1.TabIndex = 9;
             this.label1.Text = "Role List";
             // 
@@ -176,7 +176,7 @@
             this.lbRoleList.DisplayMember = "roleName";
             this.lbRoleList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbRoleList.FormattingEnabled = true;
-            this.lbRoleList.ItemHeight = 16;
+            this.lbRoleList.ItemHeight = 20;
             this.lbRoleList.Location = new System.Drawing.Point(16, 91);
             this.lbRoleList.Margin = new System.Windows.Forms.Padding(4);
             this.lbRoleList.Name = "lbRoleList";
@@ -204,7 +204,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearchAuthority.Location = new System.Drawing.Point(19, 48);
             this.txtSearchAuthority.Name = "txtSearchAuthority";
-            this.txtSearchAuthority.Size = new System.Drawing.Size(325, 21);
+            this.txtSearchAuthority.Size = new System.Drawing.Size(325, 24);
             this.txtSearchAuthority.TabIndex = 11;
             this.txtSearchAuthority.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearchAuthority_KeyDown);
             // 
@@ -215,7 +215,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(16, 16);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 15);
+            this.label2.Size = new System.Drawing.Size(106, 18);
             this.label2.TabIndex = 11;
             this.label2.Text = "Authority List";
             // 
@@ -230,7 +230,7 @@
             this.clbAuthorizationList.Location = new System.Drawing.Point(19, 95);
             this.clbAuthorizationList.Margin = new System.Windows.Forms.Padding(4);
             this.clbAuthorizationList.Name = "clbAuthorizationList";
-            this.clbAuthorizationList.Size = new System.Drawing.Size(325, 292);
+            this.clbAuthorizationList.Size = new System.Drawing.Size(325, 277);
             this.clbAuthorizationList.TabIndex = 10;
             this.clbAuthorizationList.MouseClick += new System.Windows.Forms.MouseEventHandler(this.clbAuthorizationList_MouseClick);
             // 
@@ -253,7 +253,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearchUserAuthority.Location = new System.Drawing.Point(19, 48);
             this.txtSearchUserAuthority.Name = "txtSearchUserAuthority";
-            this.txtSearchUserAuthority.Size = new System.Drawing.Size(326, 21);
+            this.txtSearchUserAuthority.Size = new System.Drawing.Size(326, 24);
             this.txtSearchUserAuthority.TabIndex = 13;
             this.txtSearchUserAuthority.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearchUserAuthority_KeyDown);
             // 
@@ -264,7 +264,7 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(16, 16);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(121, 15);
+            this.label3.Size = new System.Drawing.Size(144, 18);
             this.label3.TabIndex = 12;
             this.label3.Text = "New Authority List";
             // 
@@ -279,7 +279,7 @@
             this.clbNewAuthorizations.Location = new System.Drawing.Point(19, 95);
             this.clbNewAuthorizations.Margin = new System.Windows.Forms.Padding(4);
             this.clbNewAuthorizations.Name = "clbNewAuthorizations";
-            this.clbNewAuthorizations.Size = new System.Drawing.Size(326, 292);
+            this.clbNewAuthorizations.Size = new System.Drawing.Size(326, 277);
             this.clbNewAuthorizations.TabIndex = 11;
             this.clbNewAuthorizations.MouseClick += new System.Windows.Forms.MouseEventHandler(this.clbNewAuthorizations_MouseClick);
             // 
@@ -340,13 +340,13 @@
             this.lblNewRoleName.Location = new System.Drawing.Point(68, 104);
             this.lblNewRoleName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNewRoleName.Name = "lblNewRoleName";
-            this.lblNewRoleName.Size = new System.Drawing.Size(79, 15);
+            this.lblNewRoleName.Size = new System.Drawing.Size(92, 18);
             this.lblNewRoleName.TabIndex = 8;
             this.lblNewRoleName.Text = "Role Name";
             // 
             // FormRoleAuths
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1172, 606);
             this.Controls.Add(this.tableLayoutPanel1);

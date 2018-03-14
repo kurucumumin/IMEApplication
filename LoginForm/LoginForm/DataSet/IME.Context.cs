@@ -1840,6 +1840,33 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DailySalaryVoucherDetailsAdd", dailySalaryVoucherMasterIdParameter, employeeIdParameter, wageParameter, statusParameter);
         }
     
+        public virtual ObjectResult<Nullable<int>> DailySalaryVoucherDetailsCount(Nullable<decimal> dailySalaryVoucherMasterId)
+        {
+            var dailySalaryVoucherMasterIdParameter = dailySalaryVoucherMasterId.HasValue ?
+                new ObjectParameter("dailySalaryVoucherMasterId", dailySalaryVoucherMasterId) :
+                new ObjectParameter("dailySalaryVoucherMasterId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("DailySalaryVoucherDetailsCount", dailySalaryVoucherMasterIdParameter);
+        }
+    
+        public virtual int DailySalaryVoucherDetailsDelete(Nullable<decimal> dailySalaryVoucherDetailsId)
+        {
+            var dailySalaryVoucherDetailsIdParameter = dailySalaryVoucherDetailsId.HasValue ?
+                new ObjectParameter("dailySalaryVoucherDetailsId", dailySalaryVoucherDetailsId) :
+                new ObjectParameter("dailySalaryVoucherDetailsId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DailySalaryVoucherDetailsDelete", dailySalaryVoucherDetailsIdParameter);
+        }
+    
+        public virtual int DailySalaryVoucherDetailsDeleteUsingMasterId(Nullable<decimal> dailySalaryVoucherMasterId)
+        {
+            var dailySalaryVoucherMasterIdParameter = dailySalaryVoucherMasterId.HasValue ?
+                new ObjectParameter("dailySalaryVoucherMasterId", dailySalaryVoucherMasterId) :
+                new ObjectParameter("dailySalaryVoucherMasterId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DailySalaryVoucherDetailsDeleteUsingMasterId", dailySalaryVoucherMasterIdParameter);
+        }
+    
         public virtual ObjectResult<DailySalaryVoucherMasterAddWithIdentity_Result> DailySalaryVoucherMasterAddWithIdentity(Nullable<decimal> ledgerId, string voucherNo, string invoiceNo, Nullable<System.DateTime> date, Nullable<System.DateTime> salaryDate, Nullable<decimal> totalAmount, string narration, Nullable<decimal> suffixPrefixId, Nullable<decimal> voucherTypeId, Nullable<decimal> financialYearId, Nullable<bool> isAutomatic)
         {
             var ledgerIdParameter = ledgerId.HasValue ?
@@ -1887,6 +1914,64 @@ namespace LoginForm.DataSet
                 new ObjectParameter("isAutomatic", typeof(bool));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DailySalaryVoucherMasterAddWithIdentity_Result>("DailySalaryVoucherMasterAddWithIdentity", ledgerIdParameter, voucherNoParameter, invoiceNoParameter, dateParameter, salaryDateParameter, totalAmountParameter, narrationParameter, suffixPrefixIdParameter, voucherTypeIdParameter, financialYearIdParameter, isAutomaticParameter);
+        }
+    
+        public virtual int DailySalaryVoucherMasterDelete(Nullable<decimal> dailySalaryVoucherMasterId)
+        {
+            var dailySalaryVoucherMasterIdParameter = dailySalaryVoucherMasterId.HasValue ?
+                new ObjectParameter("dailySalaryVoucherMasterId", dailySalaryVoucherMasterId) :
+                new ObjectParameter("dailySalaryVoucherMasterId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DailySalaryVoucherMasterDelete", dailySalaryVoucherMasterIdParameter);
+        }
+    
+        public virtual int DailySalaryVoucherMasterEdit(Nullable<decimal> dailySalaryVoucherMasterId, Nullable<decimal> ledgerId, string voucherNo, string invoiceNo, Nullable<System.DateTime> date, Nullable<System.DateTime> salaryDate, Nullable<decimal> totalAmount, string narration, Nullable<decimal> suffixPrefixId, Nullable<decimal> voucherTypeId, Nullable<decimal> financialYearId)
+        {
+            var dailySalaryVoucherMasterIdParameter = dailySalaryVoucherMasterId.HasValue ?
+                new ObjectParameter("dailySalaryVoucherMasterId", dailySalaryVoucherMasterId) :
+                new ObjectParameter("dailySalaryVoucherMasterId", typeof(decimal));
+    
+            var ledgerIdParameter = ledgerId.HasValue ?
+                new ObjectParameter("ledgerId", ledgerId) :
+                new ObjectParameter("ledgerId", typeof(decimal));
+    
+            var voucherNoParameter = voucherNo != null ?
+                new ObjectParameter("voucherNo", voucherNo) :
+                new ObjectParameter("voucherNo", typeof(string));
+    
+            var invoiceNoParameter = invoiceNo != null ?
+                new ObjectParameter("invoiceNo", invoiceNo) :
+                new ObjectParameter("invoiceNo", typeof(string));
+    
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            var salaryDateParameter = salaryDate.HasValue ?
+                new ObjectParameter("salaryDate", salaryDate) :
+                new ObjectParameter("salaryDate", typeof(System.DateTime));
+    
+            var totalAmountParameter = totalAmount.HasValue ?
+                new ObjectParameter("totalAmount", totalAmount) :
+                new ObjectParameter("totalAmount", typeof(decimal));
+    
+            var narrationParameter = narration != null ?
+                new ObjectParameter("narration", narration) :
+                new ObjectParameter("narration", typeof(string));
+    
+            var suffixPrefixIdParameter = suffixPrefixId.HasValue ?
+                new ObjectParameter("suffixPrefixId", suffixPrefixId) :
+                new ObjectParameter("suffixPrefixId", typeof(decimal));
+    
+            var voucherTypeIdParameter = voucherTypeId.HasValue ?
+                new ObjectParameter("voucherTypeId", voucherTypeId) :
+                new ObjectParameter("voucherTypeId", typeof(decimal));
+    
+            var financialYearIdParameter = financialYearId.HasValue ?
+                new ObjectParameter("financialYearId", financialYearId) :
+                new ObjectParameter("financialYearId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DailySalaryVoucherMasterEdit", dailySalaryVoucherMasterIdParameter, ledgerIdParameter, voucherNoParameter, invoiceNoParameter, dateParameter, salaryDateParameter, totalAmountParameter, narrationParameter, suffixPrefixIdParameter, voucherTypeIdParameter, financialYearIdParameter);
         }
     
         public virtual ObjectResult<Nullable<decimal>> DailySalaryVoucherMasterMax(Nullable<decimal> voucherTypeId)
@@ -2971,6 +3056,35 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MonthlySalaryDetailsEditUsingMasterIdAndDetailsId", monthlySalaryIdParameter, monthlySalaryDetailsIdParameter, employeeIdParameter, salaryPackageIdParameter);
         }
     
+        public virtual ObjectResult<MonthlySalaryRegisterSearch_Result> MonthlySalaryRegisterSearch(Nullable<System.DateTime> dateFrom, Nullable<System.DateTime> dateTo, Nullable<System.DateTime> month, string voucherNo, string ledgerName, string voucherTypeName)
+        {
+            var dateFromParameter = dateFrom.HasValue ?
+                new ObjectParameter("dateFrom", dateFrom) :
+                new ObjectParameter("dateFrom", typeof(System.DateTime));
+    
+            var dateToParameter = dateTo.HasValue ?
+                new ObjectParameter("dateTo", dateTo) :
+                new ObjectParameter("dateTo", typeof(System.DateTime));
+    
+            var monthParameter = month.HasValue ?
+                new ObjectParameter("month", month) :
+                new ObjectParameter("month", typeof(System.DateTime));
+    
+            var voucherNoParameter = voucherNo != null ?
+                new ObjectParameter("voucherNo", voucherNo) :
+                new ObjectParameter("voucherNo", typeof(string));
+    
+            var ledgerNameParameter = ledgerName != null ?
+                new ObjectParameter("ledgerName", ledgerName) :
+                new ObjectParameter("ledgerName", typeof(string));
+    
+            var voucherTypeNameParameter = voucherTypeName != null ?
+                new ObjectParameter("voucherTypeName", voucherTypeName) :
+                new ObjectParameter("voucherTypeName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MonthlySalaryRegisterSearch_Result>("MonthlySalaryRegisterSearch", dateFromParameter, dateToParameter, monthParameter, voucherNoParameter, ledgerNameParameter, voucherTypeNameParameter);
+        }
+    
         public virtual int MonthlySalarySettingsDetailsIdDelete(Nullable<decimal> monthlySalaryDetailsId)
         {
             var monthlySalaryDetailsIdParameter = monthlySalaryDetailsId.HasValue ?
@@ -3385,6 +3499,57 @@ namespace LoginForm.DataSet
                 new ObjectParameter("voucherNo", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PaymentMasterSearch_Result>("PaymentMasterSearch", fromDateParameter, toDateParameter, ledgerIdParameter, voucherNoParameter);
+        }
+    
+        public virtual ObjectResult<PaySlipPrinting_Result> PaySlipPrinting(Nullable<decimal> workerId, Nullable<System.DateTime> salaryMonth, Nullable<decimal> companyId)
+        {
+            var workerIdParameter = workerId.HasValue ?
+                new ObjectParameter("WorkerId", workerId) :
+                new ObjectParameter("WorkerId", typeof(decimal));
+    
+            var salaryMonthParameter = salaryMonth.HasValue ?
+                new ObjectParameter("salaryMonth", salaryMonth) :
+                new ObjectParameter("salaryMonth", typeof(System.DateTime));
+    
+            var companyIdParameter = companyId.HasValue ?
+                new ObjectParameter("companyId", companyId) :
+                new ObjectParameter("companyId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PaySlipPrinting_Result>("PaySlipPrinting", workerIdParameter, salaryMonthParameter, companyIdParameter);
+        }
+    
+        public virtual ObjectResult<PaySlipPrinting_2_Result> PaySlipPrinting_2(Nullable<decimal> workerId, Nullable<System.DateTime> salaryMonth, Nullable<decimal> companyId)
+        {
+            var workerIdParameter = workerId.HasValue ?
+                new ObjectParameter("WorkerId", workerId) :
+                new ObjectParameter("WorkerId", typeof(decimal));
+    
+            var salaryMonthParameter = salaryMonth.HasValue ?
+                new ObjectParameter("salaryMonth", salaryMonth) :
+                new ObjectParameter("salaryMonth", typeof(System.DateTime));
+    
+            var companyIdParameter = companyId.HasValue ?
+                new ObjectParameter("companyId", companyId) :
+                new ObjectParameter("companyId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PaySlipPrinting_2_Result>("PaySlipPrinting_2", workerIdParameter, salaryMonthParameter, companyIdParameter);
+        }
+    
+        public virtual ObjectResult<PaySlipPrinting_3_Result> PaySlipPrinting_3(Nullable<decimal> workerId, Nullable<System.DateTime> salaryMonth, Nullable<decimal> companyId)
+        {
+            var workerIdParameter = workerId.HasValue ?
+                new ObjectParameter("WorkerId", workerId) :
+                new ObjectParameter("WorkerId", typeof(decimal));
+    
+            var salaryMonthParameter = salaryMonth.HasValue ?
+                new ObjectParameter("salaryMonth", salaryMonth) :
+                new ObjectParameter("salaryMonth", typeof(System.DateTime));
+    
+            var companyIdParameter = companyId.HasValue ?
+                new ObjectParameter("companyId", companyId) :
+                new ObjectParameter("companyId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PaySlipPrinting_3_Result>("PaySlipPrinting_3", workerIdParameter, salaryMonthParameter, companyIdParameter);
         }
     
         public virtual ObjectResult<PDCClearanceFillDetails_Result> PDCClearanceFillDetails(string voucherTypeName, Nullable<decimal> masterId)
@@ -5149,6 +5314,15 @@ namespace LoginForm.DataSet
         public virtual ObjectResult<SalaryPackageViewAllForMonthlySalarySettings_Result> SalaryPackageViewAllForMonthlySalarySettings()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SalaryPackageViewAllForMonthlySalarySettings_Result>("SalaryPackageViewAllForMonthlySalarySettings");
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> SalaryVoucherMasterMax(Nullable<decimal> voucherTypeId)
+        {
+            var voucherTypeIdParameter = voucherTypeId.HasValue ?
+                new ObjectParameter("voucherTypeId", voucherTypeId) :
+                new ObjectParameter("voucherTypeId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("SalaryVoucherMasterMax", voucherTypeIdParameter);
         }
     
         public virtual ObjectResult<string> SaleMasterGetPos(Nullable<decimal> salemasterId, string voucherName)
@@ -7408,6 +7582,11 @@ namespace LoginForm.DataSet
                 new ObjectParameter("voucherTypeName", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("VoucherreportsumQty", salesMasterIdParameter, voucherTypeNameParameter);
+        }
+    
+        public virtual ObjectResult<VoucherTypeNameComboFill_Result> VoucherTypeNameComboFill()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<VoucherTypeNameComboFill_Result>("VoucherTypeNameComboFill");
         }
     
         public virtual ObjectResult<VoucherTypeNameComboFillAdvanceRegister_Result> VoucherTypeNameComboFillAdvanceRegister()

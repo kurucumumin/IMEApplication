@@ -93,21 +93,7 @@ namespace LoginForm
         private void btnAccounting_Click(object sender, EventArgs e)
         {
             OpenNavTabLvl1(controlAccounting);
-        }
-
-        private void btnBudgetMasterPayroll_Click(object sender, EventArgs e)
-        {
-            OpenNavTabLvl1(controlBudgetMasterPayroll);
-        }
-
-        private void btnRegisterReminderSearchOther_Click(object sender, EventArgs e)
-        {
-            OpenNavTabLvl1(controlRegisterReminderSearchOther);
-        }
-
-        private void brnTransactionsReports_Click(object sender, EventArgs e)
-        {
-            OpenNavTabLvl1(controlTransactionsReports);
+            controlAccounting.parent = this;
         }
         
 

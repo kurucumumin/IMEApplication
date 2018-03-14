@@ -32,9 +32,6 @@
             this.tableLeftPanel = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.gbMainMenu = new System.Windows.Forms.GroupBox();
-            this.brnTransactionsReports = new System.Windows.Forms.Button();
-            this.btnRegisterReminderSearchOther = new System.Windows.Forms.Button();
-            this.btnBudgetMasterPayroll = new System.Windows.Forms.Button();
             this.btnManagement = new System.Windows.Forms.Button();
             this.btnAccounting = new System.Windows.Forms.Button();
             this.btnDevelopment = new System.Windows.Forms.Button();
@@ -42,14 +39,11 @@
             this.tableMain = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.controlRegisterReminderSearchOther = new LoginForm.CustomControls.RegisterReminderSearchOther();
             this.controlManagement = new LoginForm.CustomControls.ManagementControl();
-            this.controlBudgetMasterPayroll = new LoginForm.CustomControls.BudgetMasterPayroll();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.subControlBudget = new LoginForm.CustomControls.BudgetControl();
-            this.controlTransactionsReports = new LoginForm.CustomControls.TransactionsReports();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.controlAccounting = new LoginForm.CustomControls.AccountingControl();
             this.controlLoader = new LoginForm.CustomControls.LoaderControl();
             this.controlDevelopment = new LoginForm.CustomControls.DevelopmentControl();
@@ -59,9 +53,9 @@
             this.tableMain.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLeftPanel
@@ -97,9 +91,6 @@
             // gbMainMenu
             // 
             this.gbMainMenu.AutoSize = true;
-            this.gbMainMenu.Controls.Add(this.brnTransactionsReports);
-            this.gbMainMenu.Controls.Add(this.btnRegisterReminderSearchOther);
-            this.gbMainMenu.Controls.Add(this.btnBudgetMasterPayroll);
             this.gbMainMenu.Controls.Add(this.btnManagement);
             this.gbMainMenu.Controls.Add(this.btnAccounting);
             this.gbMainMenu.Controls.Add(this.btnDevelopment);
@@ -114,54 +105,6 @@
             this.gbMainMenu.TabIndex = 32;
             this.gbMainMenu.TabStop = false;
             this.gbMainMenu.Text = "Menu";
-            // 
-            // brnTransactionsReports
-            // 
-            this.brnTransactionsReports.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(199)))), ((int)(((byte)(132)))));
-            this.brnTransactionsReports.Dock = System.Windows.Forms.DockStyle.Top;
-            this.brnTransactionsReports.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
-            this.brnTransactionsReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.brnTransactionsReports.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.brnTransactionsReports.Location = new System.Drawing.Point(0, 324);
-            this.brnTransactionsReports.Margin = new System.Windows.Forms.Padding(0);
-            this.brnTransactionsReports.Name = "brnTransactionsReports";
-            this.brnTransactionsReports.Size = new System.Drawing.Size(213, 50);
-            this.brnTransactionsReports.TabIndex = 38;
-            this.brnTransactionsReports.Text = "TransactionsReports";
-            this.brnTransactionsReports.UseVisualStyleBackColor = false;
-            this.brnTransactionsReports.Click += new System.EventHandler(this.brnTransactionsReports_Click);
-            // 
-            // btnRegisterReminderSearchOther
-            // 
-            this.btnRegisterReminderSearchOther.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(199)))), ((int)(((byte)(132)))));
-            this.btnRegisterReminderSearchOther.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnRegisterReminderSearchOther.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
-            this.btnRegisterReminderSearchOther.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegisterReminderSearchOther.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegisterReminderSearchOther.Location = new System.Drawing.Point(0, 274);
-            this.btnRegisterReminderSearchOther.Margin = new System.Windows.Forms.Padding(0);
-            this.btnRegisterReminderSearchOther.Name = "btnRegisterReminderSearchOther";
-            this.btnRegisterReminderSearchOther.Size = new System.Drawing.Size(213, 50);
-            this.btnRegisterReminderSearchOther.TabIndex = 37;
-            this.btnRegisterReminderSearchOther.Text = "RegisterReminderSearchOther";
-            this.btnRegisterReminderSearchOther.UseVisualStyleBackColor = false;
-            this.btnRegisterReminderSearchOther.Click += new System.EventHandler(this.btnRegisterReminderSearchOther_Click);
-            // 
-            // btnBudgetMasterPayroll
-            // 
-            this.btnBudgetMasterPayroll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(199)))), ((int)(((byte)(132)))));
-            this.btnBudgetMasterPayroll.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnBudgetMasterPayroll.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
-            this.btnBudgetMasterPayroll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBudgetMasterPayroll.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBudgetMasterPayroll.Location = new System.Drawing.Point(0, 224);
-            this.btnBudgetMasterPayroll.Margin = new System.Windows.Forms.Padding(0);
-            this.btnBudgetMasterPayroll.Name = "btnBudgetMasterPayroll";
-            this.btnBudgetMasterPayroll.Size = new System.Drawing.Size(213, 50);
-            this.btnBudgetMasterPayroll.TabIndex = 36;
-            this.btnBudgetMasterPayroll.Text = "BudgetMasterPayroll";
-            this.btnBudgetMasterPayroll.UseVisualStyleBackColor = false;
-            this.btnBudgetMasterPayroll.Click += new System.EventHandler(this.btnBudgetMasterPayroll_Click);
             // 
             // btnManagement
             // 
@@ -262,7 +205,6 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.panel4, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel3, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.controlTransactionsReports, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -273,17 +215,24 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1337, 633);
             this.tableLayoutPanel1.TabIndex = 7;
             // 
-            // panel2
+            // panel4
             // 
-            this.panel2.Controls.Add(this.controlAccounting);
-            this.panel2.Controls.Add(this.controlLoader);
-            this.panel2.Controls.Add(this.controlDevelopment);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(334, 613);
-            this.panel2.TabIndex = 2;
+            this.panel4.Controls.Add(this.controlManagement);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(671, 3);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(663, 607);
+            this.panel4.TabIndex = 6;
+            // 
+            // controlManagement
+            // 
+            this.controlManagement.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.controlManagement.Location = new System.Drawing.Point(0, 0);
+            this.controlManagement.Margin = new System.Windows.Forms.Padding(2);
+            this.controlManagement.Name = "controlManagement";
+            this.controlManagement.Size = new System.Drawing.Size(663, 607);
+            this.controlManagement.TabIndex = 2;
+            this.controlManagement.Visible = false;
             // 
             // panel3
             // 
@@ -294,43 +243,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(334, 613);
             this.panel3.TabIndex = 4;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.controlRegisterReminderSearchOther);
-            this.panel4.Controls.Add(this.controlManagement);
-            this.panel4.Controls.Add(this.controlBudgetMasterPayroll);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(671, 3);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(663, 607);
-            this.panel4.TabIndex = 6;
-            this.panel4.Visible = false;
-            // 
-            // controlRegisterReminderSearchOther
-            // 
-            this.controlRegisterReminderSearchOther.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
-            this.controlRegisterReminderSearchOther.Location = new System.Drawing.Point(54, 2);
-            this.controlRegisterReminderSearchOther.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.controlRegisterReminderSearchOther.Name = "controlRegisterReminderSearchOther";
-            this.controlRegisterReminderSearchOther.Size = new System.Drawing.Size(263, 633);
-            this.controlRegisterReminderSearchOther.TabIndex = 5;
-            // 
-            // controlManagement
-            // 
-            this.controlManagement.Location = new System.Drawing.Point(54, -47);
-            this.controlManagement.Margin = new System.Windows.Forms.Padding(2);
-            this.controlManagement.Name = "controlManagement";
-            this.controlManagement.Size = new System.Drawing.Size(361, 629);
-            this.controlManagement.TabIndex = 2;
-            // 
-            // controlBudgetMasterPayroll
-            // 
-            this.controlBudgetMasterPayroll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
-            this.controlBudgetMasterPayroll.Location = new System.Drawing.Point(54, 0);
-            this.controlBudgetMasterPayroll.Name = "controlBudgetMasterPayroll";
-            this.controlBudgetMasterPayroll.Size = new System.Drawing.Size(202, 627);
-            this.controlBudgetMasterPayroll.TabIndex = 4;
             // 
             // subControlBudget
             // 
@@ -343,13 +255,17 @@
             this.subControlBudget.TabIndex = 5;
             this.subControlBudget.Visible = false;
             // 
-            // controlTransactionsReports
+            // panel2
             // 
-            this.controlTransactionsReports.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
-            this.controlTransactionsReports.Location = new System.Drawing.Point(3, 616);
-            this.controlTransactionsReports.Name = "controlTransactionsReports";
-            this.controlTransactionsReports.Size = new System.Drawing.Size(249, 14);
-            this.controlTransactionsReports.TabIndex = 6;
+            this.panel2.Controls.Add(this.controlAccounting);
+            this.panel2.Controls.Add(this.controlLoader);
+            this.panel2.Controls.Add(this.controlDevelopment);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(334, 613);
+            this.panel2.TabIndex = 2;
             // 
             // controlAccounting
             // 
@@ -408,9 +324,9 @@
             this.tableMain.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -430,12 +346,6 @@
         private System.Windows.Forms.Button btnManagement;
         private System.Windows.Forms.Button btnAccounting;
         private CustomControls.AccountingControl controlAccounting;
-        private System.Windows.Forms.Button brnTransactionsReports;
-        private System.Windows.Forms.Button btnRegisterReminderSearchOther;
-        private System.Windows.Forms.Button btnBudgetMasterPayroll;
-        private CustomControls.RegisterReminderSearchOther controlRegisterReminderSearchOther;
-        private CustomControls.BudgetMasterPayroll controlBudgetMasterPayroll;
-        private CustomControls.TransactionsReports controlTransactionsReports;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel2;
         public CustomControls.BudgetControl subControlBudget;
