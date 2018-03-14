@@ -13,8 +13,15 @@ namespace LoginForm.CustomControls
             idleButtonColor = btnBudgets.BackColor;
             pressedButtonColor = btnBudgets.FlatAppearance.MouseOverBackColor;
         }
-        private void ButtonClick(Button button, UserControl subControl)
+        private void OpenSubNavigationMenu(Button button, UserControl subControl)
         {
+            FormMain parent = this.ParentForm as FormMain;
+            if (parent.CurrentNavTabLvl2 != null && parent.CurrentNavTabLvl2.Visible == true)
+            {
+                parent.CurrentNavTabLvl2.Visible = false;
+                parent.CurrentNavTabLvl2 = null;
+            }
+
             ChangeToDefaultDesign();
             pressedButton = button;
 
@@ -25,52 +32,12 @@ namespace LoginForm.CustomControls
 
         private void btnBudgets_Click(object sender, EventArgs e)
         {
-            ButtonClick((Button)sender, parent.subControlBudget);
-        }
-
-        private void btnReminders_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnPayroll_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnReports_Click(object sender, EventArgs e)
-        {
-
+            OpenSubNavigationMenu((Button)sender, parent.subControlBudget);
         }
 
         private void btnFinancialStatements_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnOthers_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnTransactions_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnMasters_Click(object sender, EventArgs e)
-        {
-
+            OpenSubNavigationMenu((Button)sender, parent.subControlFinancialStatement);
         }
     }
 }

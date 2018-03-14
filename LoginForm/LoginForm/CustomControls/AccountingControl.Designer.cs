@@ -80,7 +80,6 @@
             this.button1.TabIndex = 42;
             this.button1.Text = "Settings";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // btnReminders
             // 
@@ -100,7 +99,6 @@
             this.btnReminders.TabIndex = 36;
             this.btnReminders.Text = "Reminders";
             this.btnReminders.UseVisualStyleBackColor = false;
-            this.btnReminders.Click += new System.EventHandler(this.btnReminders_Click);
             // 
             // btnPayroll
             // 
@@ -120,7 +118,6 @@
             this.btnPayroll.TabIndex = 39;
             this.btnPayroll.Text = "Register";
             this.btnPayroll.UseVisualStyleBackColor = false;
-            this.btnPayroll.Click += new System.EventHandler(this.btnPayroll_Click);
             // 
             // btnBudgets
             // 
@@ -160,7 +157,6 @@
             this.btnReports.TabIndex = 38;
             this.btnReports.Text = "Reports";
             this.btnReports.UseVisualStyleBackColor = false;
-            this.btnReports.Click += new System.EventHandler(this.btnReports_Click);
             // 
             // btnFinancialStatements
             // 
@@ -200,7 +196,6 @@
             this.btnSearch.TabIndex = 34;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = false;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnOthers
             // 
@@ -220,7 +215,6 @@
             this.btnOthers.TabIndex = 35;
             this.btnOthers.Text = "Others";
             this.btnOthers.UseVisualStyleBackColor = false;
-            this.btnOthers.Click += new System.EventHandler(this.btnOthers_Click);
             // 
             // btnTransactions
             // 
@@ -240,7 +234,6 @@
             this.btnTransactions.TabIndex = 33;
             this.btnTransactions.Text = "Transactions";
             this.btnTransactions.UseVisualStyleBackColor = false;
-            this.btnTransactions.Click += new System.EventHandler(this.btnTransactions_Click);
             // 
             // btnMasters
             // 
@@ -260,7 +253,6 @@
             this.btnMasters.TabIndex = 40;
             this.btnMasters.Text = "Masters";
             this.btnMasters.UseVisualStyleBackColor = false;
-            this.btnMasters.Click += new System.EventHandler(this.btnMasters_Click);
             // 
             // AccountingControl
             // 
