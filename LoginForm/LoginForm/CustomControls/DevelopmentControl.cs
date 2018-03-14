@@ -82,7 +82,7 @@ namespace LoginForm.CustomControls
 
         private void btnWorker_Click(object sender, EventArgs e)
         {
-            FormMain formMain = (FormMain) this.Parent.Parent.Parent;
+            FormMain formMain = (FormMain) this.ParentForm;
             FormUserMain roles = new FormUserMain(formMain);
             roles.ShowDialog();
         }
