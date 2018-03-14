@@ -702,6 +702,18 @@
     <Compile Include="Account\Transaction\frmServiceVoucher.Designer.cs">
       <DependentUpon>frmServiceVoucher.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomControls\AccountCustomControl\FinancialStatementsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\AccountCustomControl\FinancialStatementsControl.Designer.cs">
+      <DependentUpon>FinancialStatementsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\AccountCustomControl\TempControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\AccountCustomControl\TempControl.Designer.cs">
+      <DependentUpon>TempControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomControls\AccountCustomControl\BudgetControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -2407,6 +2419,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Transaction\frmServiceVoucher.resx">
       <DependentUpon>frmServiceVoucher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\AccountCustomControl\FinancialStatementsControl.resx">
+      <DependentUpon>FinancialStatementsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\AccountCustomControl\TempControl.resx">
+      <DependentUpon>TempControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\AccountCustomControl\BudgetControl.resx">
       <DependentUpon>BudgetControl.cs</DependentUpon>

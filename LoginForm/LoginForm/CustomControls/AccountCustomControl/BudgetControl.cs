@@ -26,7 +26,7 @@ namespace LoginForm.CustomControls
             frmBudget open = Application.OpenForms["frmBudget"] as frmBudget;
             if (open == null)
             {
-                frm.MdiParent = this.ParentForm;
+                //frm.MdiParent = this.ParentForm;
                 frm.Show();
             }
             else
@@ -47,7 +47,7 @@ namespace LoginForm.CustomControls
                 frmBudgetVariance open = Application.OpenForms["frmBudgetVariance"] as frmBudgetVariance;
                 if (open == null)
                 {
-                    frm.MdiParent = this.ParentForm;
+                    //frm.MdiParent = this.ParentForm;
                     frm.Show();
                 }
                 else

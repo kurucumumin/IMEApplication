@@ -43,6 +43,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.controlManagement = new LoginForm.CustomControls.ManagementControl();
+            this.subControlFinancialStatement = new LoginForm.CustomControls.FinancialStatementsControl();
             this.subControlBudget = new LoginForm.CustomControls.BudgetControl();
             this.controlAccounting = new LoginForm.CustomControls.AccountingControl();
             this.controlLoader = new LoginForm.CustomControls.LoaderControl();
@@ -230,6 +231,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.subControlFinancialStatement);
             this.panel3.Controls.Add(this.subControlBudget);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(334, 0);
@@ -259,6 +261,17 @@
             this.controlManagement.Size = new System.Drawing.Size(663, 607);
             this.controlManagement.TabIndex = 2;
             this.controlManagement.Visible = false;
+            // 
+            // subControlFinancialStatement
+            // 
+            this.subControlFinancialStatement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
+            this.subControlFinancialStatement.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.subControlFinancialStatement.Location = new System.Drawing.Point(0, 0);
+            this.subControlFinancialStatement.Margin = new System.Windows.Forms.Padding(0);
+            this.subControlFinancialStatement.Name = "subControlFinancialStatement";
+            this.subControlFinancialStatement.Size = new System.Drawing.Size(334, 613);
+            this.subControlFinancialStatement.TabIndex = 6;
+            this.subControlFinancialStatement.Visible = false;
             // 
             // subControlBudget
             // 
@@ -356,5 +369,6 @@
         public CustomControls.BudgetControl subControlBudget;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;
+        public CustomControls.FinancialStatementsControl subControlFinancialStatement;
     }
 }
