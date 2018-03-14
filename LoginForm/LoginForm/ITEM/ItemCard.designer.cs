@@ -163,6 +163,7 @@ namespace LoginForm.Item
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.txtNote = new System.Windows.Forms.TextBox();
             this.btnUpdateNote = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -1813,17 +1814,20 @@ namespace LoginForm.Item
             // 
             // tableLayoutPanel3
             // 
-            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 89F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 81F));
             this.tableLayoutPanel3.Controls.Add(this.txtNote, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.btnUpdateNote, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.btnClose, 2, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 328);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 105F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(689, 105);
             this.tableLayoutPanel3.TabIndex = 2;
             // 
@@ -1834,21 +1838,34 @@ namespace LoginForm.Item
             this.txtNote.Margin = new System.Windows.Forms.Padding(6);
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
-            this.txtNote.Size = new System.Drawing.Size(527, 93);
+            this.txtNote.Size = new System.Drawing.Size(507, 93);
             this.txtNote.TabIndex = 273;
             // 
             // btnUpdateNote
             // 
             this.btnUpdateNote.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnUpdateNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdateNote.Location = new System.Drawing.Point(546, 12);
+            this.btnUpdateNote.Location = new System.Drawing.Point(525, 12);
             this.btnUpdateNote.MaximumSize = new System.Drawing.Size(135, 81);
             this.btnUpdateNote.Name = "btnUpdateNote";
-            this.btnUpdateNote.Size = new System.Drawing.Size(135, 81);
+            this.btnUpdateNote.Size = new System.Drawing.Size(77, 81);
             this.btnUpdateNote.TabIndex = 274;
             this.btnUpdateNote.Text = "Update Note";
             this.btnUpdateNote.UseVisualStyleBackColor = true;
             this.btnUpdateNote.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Location = new System.Drawing.Point(612, 12);
+            this.btnClose.MaximumSize = new System.Drawing.Size(135, 81);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(72, 81);
+            this.btnClose.TabIndex = 275;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // tableLayoutPanel4
             // 
@@ -2118,7 +2135,6 @@ namespace LoginForm.Item
             this.dgItemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgItemList.Size = new System.Drawing.Size(565, 133);
             this.dgItemList.TabIndex = 75;
-            this.dgItemList.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgItemList_CellEnter);
             this.dgItemList.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgItemList_RowEnter);
             this.dgItemList.Click += new System.EventHandler(this.dataGridView1_Click);
             // 
@@ -2376,5 +2392,6 @@ namespace LoginForm.Item
         private System.Windows.Forms.TableLayoutPanel tblTop;
         private System.Windows.Forms.Panel panelSearch;
         private System.Windows.Forms.TableLayoutPanel tblMain;
+        private System.Windows.Forms.Button btnClose;
     }
 }
