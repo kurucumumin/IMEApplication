@@ -5,7 +5,7 @@ namespace LoginForm.CustomControls
 {
     public partial class AccountingControl : UserControl
     {
-        FormMain parent;
+        public FormMain parent;
         public AccountingControl()
         {
             InitializeComponent();
@@ -69,11 +69,6 @@ namespace LoginForm.CustomControls
         {
             parent.subControlBudget.Visible = true;
             parent.CurrentNavTabLvl2 = parent.subControlBudget;
-        }
-
-        private void AccountingControl_Load(object sender, EventArgs e)
-        {
-            this.parent = (FormMain)ParentForm;
         }
     }
 }
