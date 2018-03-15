@@ -55,8 +55,7 @@ namespace LoginForm.Account.Services
             try
             {
                 var adaptor = IME.MonthlySalarySettingsEmployeeViewAll(dtSalaryMonth).ToList();
-
-
+                
                 dtbl.Columns.Add("WorkerId");
                 dtbl.Columns.Add("NameLastName");
                 dtbl.Columns.Add("UserName");
