@@ -722,21 +722,6 @@
     <Compile Include="Account\Transaction\frmServiceVoucher.Designer.cs">
       <DependentUpon>frmServiceVoucher.cs</DependentUpon>
     </Compile>
-<<<<<<< HEAD
-    <Compile Include="CustomControls\AccountCustomControl\BudgetControl.cs" />
-    <Compile Include="CustomControls\AccountCustomControl\BudgetControl.Designer.cs">
-      <DependentUpon>BudgetControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CustomControls\AccountCustomControl\FinancialStatementsControl.cs" />
-    <Compile Include="CustomControls\AccountCustomControl\FinancialStatementsControl.Designer.cs">
-      <DependentUpon>FinancialStatementsControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CustomControls\AccountCustomControl\MastersControl.cs" />
-    <Compile Include="CustomControls\AccountCustomControl\MastersControl.Designer.cs">
-      <DependentUpon>MastersControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CustomControls\AccountCustomControl\TempControl.cs" />
-=======
     <Compile Include="CustomControls\AccountCustomControl\BudgetControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -758,7 +743,6 @@
     <Compile Include="CustomControls\AccountCustomControl\TempControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
->>>>>>> NebiDevelop
     <Compile Include="CustomControls\AccountCustomControl\TempControl.Designer.cs">
       <DependentUpon>TempControl.cs</DependentUpon>
     </Compile>
@@ -768,13 +752,9 @@
     <Compile Include="CustomControls\AccountingControl.Designer.cs">
       <DependentUpon>AccountingControl.cs</DependentUpon>
     </Compile>
-<<<<<<< HEAD
-    <Compile Include="CustomControls\NavigationControl.cs" />
-=======
     <Compile Include="CustomControls\NavigationControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
->>>>>>> NebiDevelop
     <Compile Include="Customer\CustomerDepartmentAdd.cs">
       <SubType>Form</SubType>
     </Compile>

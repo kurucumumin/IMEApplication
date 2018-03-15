@@ -10,17 +10,16 @@
 namespace LoginForm.DataSet
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class MonthlySalaryDetail
+    public partial class MonthlySalarySettingsEmployeeViewAll_Result
     {
-        public decimal monthlySalaryDetailsId { get; set; }
-        public Nullable<int> employeeId { get; set; }
+        public int WorkerId { get; set; }
+        public string NameLastName { get; set; }
+        public string UserName { get; set; }
+        public Nullable<decimal> defaultPackageId { get; set; }
         public Nullable<decimal> salaryPackageId { get; set; }
         public Nullable<decimal> monthlySalaryId { get; set; }
-    
-        public virtual MonthlySalary MonthlySalary { get; set; }
-        public virtual Worker Worker { get; set; }
-        public virtual SalaryPackage SalaryPackage { get; set; }
+        public Nullable<decimal> monthlySalaryDetailsId { get; set; }
+        public string narration { get; set; }
     }
 }
