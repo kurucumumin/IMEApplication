@@ -20207,13 +20207,21 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <Parameter Name="salaryMonth" Mode="In" Type="String" />
             <Parameter Name="narration" Mode="In" Type="String" />
           </FunctionImport>
+<<<<<<< HEAD
           <FunctionImport Name="MonthlySalarySettingsEmployeeViewAll" ReturnType="Collection(IMEModel.MonthlySalarySettingsEmployeeViewAll_Result)">
+=======
+          <FunctionImport Name="MonthlySalarySettingsEmployeeViewAll">
+>>>>>>> NebiDevelop
             <Parameter Name="salaryMonth" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="MonthlySalarySettingsMonthlySalaryIdSearchUsingSalaryMonth" ReturnType="Collection(Decimal)">
             <Parameter Name="salaryMonth" Mode="In" Type="DateTime" />
           </FunctionImport>
+<<<<<<< HEAD
           <FunctionImport Name="MonthlySalarySettingsWorkerViewAll" ReturnType="Collection(IMEModel.MonthlySalarySettingsWorkerViewAll_Result)">
+=======
+          <FunctionImport Name="MonthlySalarySettingsWorkerViewAll">
+>>>>>>> NebiDevelop
             <Parameter Name="salaryMonth" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="MonthlySalaryVoucherDetailViewAll">
@@ -22422,6 +22430,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="Decimal" Name="amount" Nullable="true" Precision="18" Scale="2" />
           <Property Type="Decimal" Name="financialYearId" Nullable="true" Precision="18" Scale="0" />
         </ComplexType>
+<<<<<<< HEAD
         <ComplexType Name="MonthlySalarySettingsEmployeeViewAll_Result">
           <Property Type="Int32" Name="WorkerId" Nullable="false" />
           <Property Type="String" Name="NameLastName" Nullable="false" MaxLength="50" />
@@ -22442,6 +22451,8 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="Decimal" Name="monthlySalaryDetailsId" Nullable="true" Precision="18" Scale="0" />
           <Property Type="String" Name="narration" Nullable="true" />
         </ComplexType>
+=======
+>>>>>>> NebiDevelop
         <ComplexType Name="MonthlySalaryVoucherMasterAddWithIdentity_Result">
           <Property Type="Decimal" Name="Identity" Nullable="true" Precision="38" Scale="0" />
           <Property Type="String" Name="UpdatedVoucherNo" Nullable="true" />
@@ -27376,6 +27387,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="MonthlySalarySettingsDetailsIdDelete" FunctionName="IMEModel.Store.MonthlySalarySettingsDetailsIdDelete" />
           <FunctionImportMapping FunctionImportName="MonthlySalarySettingsEdit" FunctionName="IMEModel.Store.MonthlySalarySettingsEdit" />
+<<<<<<< HEAD
           <FunctionImportMapping FunctionImportName="MonthlySalarySettingsEmployeeViewAll" FunctionName="IMEModel.Store.MonthlySalarySettingsEmployeeViewAll">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.MonthlySalarySettingsEmployeeViewAll_Result">
@@ -27405,6 +27417,11 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+=======
+          <FunctionImportMapping FunctionImportName="MonthlySalarySettingsEmployeeViewAll" FunctionName="IMEModel.Store.MonthlySalarySettingsEmployeeViewAll" />
+          <FunctionImportMapping FunctionImportName="MonthlySalarySettingsMonthlySalaryIdSearchUsingSalaryMonth" FunctionName="IMEModel.Store.MonthlySalarySettingsMonthlySalaryIdSearchUsingSalaryMonth" />
+          <FunctionImportMapping FunctionImportName="MonthlySalarySettingsWorkerViewAll" FunctionName="IMEModel.Store.MonthlySalarySettingsWorkerViewAll" />
+>>>>>>> NebiDevelop
           <FunctionImportMapping FunctionImportName="MonthlySalaryVoucherDetailViewAll" FunctionName="IMEModel.Store.MonthlySalaryVoucherDetailViewAll" />
           <FunctionImportMapping FunctionImportName="MonthlySalaryVoucherMasterAddWithIdentity" FunctionName="IMEModel.Store.MonthlySalaryVoucherMasterAddWithIdentity">
             <ResultMapping>

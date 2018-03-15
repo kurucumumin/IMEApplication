@@ -3349,13 +3349,21 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MonthlySalarySettingsEdit", monthlySalaryIdParameter, salaryMonthParameter, narrationParameter);
         }
     
+<<<<<<< HEAD
         public virtual ObjectResult<MonthlySalarySettingsEmployeeViewAll_Result> MonthlySalarySettingsEmployeeViewAll(Nullable<System.DateTime> salaryMonth)
+=======
+        public virtual int MonthlySalarySettingsEmployeeViewAll(Nullable<System.DateTime> salaryMonth)
+>>>>>>> NebiDevelop
         {
             var salaryMonthParameter = salaryMonth.HasValue ?
                 new ObjectParameter("salaryMonth", salaryMonth) :
                 new ObjectParameter("salaryMonth", typeof(System.DateTime));
     
+<<<<<<< HEAD
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MonthlySalarySettingsEmployeeViewAll_Result>("MonthlySalarySettingsEmployeeViewAll", salaryMonthParameter);
+=======
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MonthlySalarySettingsEmployeeViewAll", salaryMonthParameter);
+>>>>>>> NebiDevelop
         }
     
         public virtual ObjectResult<Nullable<decimal>> MonthlySalarySettingsMonthlySalaryIdSearchUsingSalaryMonth(Nullable<System.DateTime> salaryMonth)
@@ -3367,13 +3375,21 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("MonthlySalarySettingsMonthlySalaryIdSearchUsingSalaryMonth", salaryMonthParameter);
         }
     
+<<<<<<< HEAD
         public virtual ObjectResult<MonthlySalarySettingsWorkerViewAll_Result> MonthlySalarySettingsWorkerViewAll(Nullable<System.DateTime> salaryMonth)
+=======
+        public virtual int MonthlySalarySettingsWorkerViewAll(Nullable<System.DateTime> salaryMonth)
+>>>>>>> NebiDevelop
         {
             var salaryMonthParameter = salaryMonth.HasValue ?
                 new ObjectParameter("salaryMonth", salaryMonth) :
                 new ObjectParameter("salaryMonth", typeof(System.DateTime));
     
+<<<<<<< HEAD
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MonthlySalarySettingsWorkerViewAll_Result>("MonthlySalarySettingsWorkerViewAll", salaryMonthParameter);
+=======
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MonthlySalarySettingsWorkerViewAll", salaryMonthParameter);
+>>>>>>> NebiDevelop
         }
     
         public virtual int MonthlySalaryVoucherDetailViewAll(string strMonth, string month, string monthYear, Nullable<decimal> isEditMode, string voucherNo)

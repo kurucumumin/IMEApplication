@@ -722,6 +722,7 @@
     <Compile Include="Account\Transaction\frmServiceVoucher.Designer.cs">
       <DependentUpon>frmServiceVoucher.cs</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="CustomControls\AccountCustomControl\BudgetControl.cs" />
     <Compile Include="CustomControls\AccountCustomControl\BudgetControl.Designer.cs">
       <DependentUpon>BudgetControl.cs</DependentUpon>
@@ -735,6 +736,29 @@
       <DependentUpon>MastersControl.cs</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\AccountCustomControl\TempControl.cs" />
+=======
+    <Compile Include="CustomControls\AccountCustomControl\BudgetControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\AccountCustomControl\BudgetControl.Designer.cs">
+      <DependentUpon>BudgetControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\AccountCustomControl\FinancialStatementsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\AccountCustomControl\FinancialStatementsControl.Designer.cs">
+      <DependentUpon>FinancialStatementsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\AccountCustomControl\MastersControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\AccountCustomControl\MastersControl.Designer.cs">
+      <DependentUpon>MastersControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\AccountCustomControl\TempControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+>>>>>>> NebiDevelop
     <Compile Include="CustomControls\AccountCustomControl\TempControl.Designer.cs">
       <DependentUpon>TempControl.cs</DependentUpon>
     </Compile>
@@ -744,7 +768,13 @@
     <Compile Include="CustomControls\AccountingControl.Designer.cs">
       <DependentUpon>AccountingControl.cs</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="CustomControls\NavigationControl.cs" />
+=======
+    <Compile Include="CustomControls\NavigationControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+>>>>>>> NebiDevelop
     <Compile Include="Customer\CustomerDepartmentAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2672,6 +2702,7 @@
     <None Include="Resources\button_delete1.png" />
     <None Include="Resources\button_disabled.png" />
     <None Include="Resources\close.png" />
+    <Content Include="Resources\button_delete.bmp" />
     <Content Include="Resources\close_icon.jpg" />
     <None Include="Resources\cybrosys_technologies.png" />
     <Content Include="Resources\excel_icon.png" />
