@@ -64,5 +64,10 @@ namespace LoginForm.CustomControls
         {
             OpenSubNavigationMenu((Button)sender, parent.subControlReports);
         }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            OpenSubNavigationMenu((Button)sender, parent.subControlSearch);
+        }
     }
 }

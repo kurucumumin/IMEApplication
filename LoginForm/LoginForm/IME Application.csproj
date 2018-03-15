@@ -728,6 +728,12 @@
     <Compile Include="Account\Transaction\frmServiceVoucher.Designer.cs">
       <DependentUpon>frmServiceVoucher.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomControls\AccountCustomControl\SearchControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\AccountCustomControl\SearchControl.Designer.cs">
+      <DependentUpon>SearchControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomControls\AccountCustomControl\ReportsControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -2494,6 +2500,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Transaction\frmServiceVoucher.resx">
       <DependentUpon>frmServiceVoucher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\AccountCustomControl\SearchControl.resx">
+      <DependentUpon>SearchControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\AccountCustomControl\ReportsControl.resx">
       <DependentUpon>ReportsControl.cs</DependentUpon>
