@@ -185,6 +185,8 @@ namespace LoginForm.Item
             this.tblTop = new System.Windows.Forms.TableLayoutPanel();
             this.panelSearch = new System.Windows.Forms.Panel();
             this.tblMain = new System.Windows.Forms.TableLayoutPanel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             this.groupBox9.SuspendLayout();
@@ -218,7 +220,7 @@ namespace LoginForm.Item
             // 
             this.txtSupplierID.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtSupplierID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtSupplierID.Location = new System.Drawing.Point(74, 49);
+            this.txtSupplierID.Location = new System.Drawing.Point(75, 111);
             this.txtSupplierID.Name = "txtSupplierID";
             this.txtSupplierID.ReadOnly = true;
             this.txtSupplierID.Size = new System.Drawing.Size(62, 23);
@@ -228,7 +230,7 @@ namespace LoginForm.Item
             // 
             this.txtSupplierName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtSupplierName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtSupplierName.Location = new System.Drawing.Point(141, 49);
+            this.txtSupplierName.Location = new System.Drawing.Point(142, 111);
             this.txtSupplierName.Name = "txtSupplierName";
             this.txtSupplierName.ReadOnly = true;
             this.txtSupplierName.Size = new System.Drawing.Size(116, 23);
@@ -238,7 +240,7 @@ namespace LoginForm.Item
             // 
             this.txtStockNo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtStockNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtStockNo.Location = new System.Drawing.Point(74, 17);
+            this.txtStockNo.Location = new System.Drawing.Point(75, 79);
             this.txtStockNo.Name = "txtStockNo";
             this.txtStockNo.ReadOnly = true;
             this.txtStockNo.Size = new System.Drawing.Size(182, 26);
@@ -249,7 +251,7 @@ namespace LoginForm.Item
             // 
             this.txtGrossWeight.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtGrossWeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtGrossWeight.Location = new System.Drawing.Point(77, 149);
+            this.txtGrossWeight.Location = new System.Drawing.Point(77, 183);
             this.txtGrossWeight.Name = "txtGrossWeight";
             this.txtGrossWeight.ReadOnly = true;
             this.txtGrossWeight.Size = new System.Drawing.Size(71, 23);
@@ -260,7 +262,7 @@ namespace LoginForm.Item
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(6, 150);
+            this.label8.Location = new System.Drawing.Point(6, 184);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(67, 17);
             this.label8.TabIndex = 291;
@@ -272,7 +274,7 @@ namespace LoginForm.Item
             this.label12.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label12.Location = new System.Drawing.Point(149, 23);
+            this.label12.Location = new System.Drawing.Point(149, 57);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(24, 15);
             this.label12.TabIndex = 297;
@@ -284,7 +286,7 @@ namespace LoginForm.Item
             this.label31.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label31.AutoSize = true;
             this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.Location = new System.Drawing.Point(6, 85);
+            this.label31.Location = new System.Drawing.Point(6, 119);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(52, 17);
             this.label31.TabIndex = 285;
@@ -295,7 +297,7 @@ namespace LoginForm.Item
             // 
             this.txtLength.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtLength.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtLength.Location = new System.Drawing.Point(77, 84);
+            this.txtLength.Location = new System.Drawing.Point(77, 118);
             this.txtLength.Name = "txtLength";
             this.txtLength.ReadOnly = true;
             this.txtLength.Size = new System.Drawing.Size(71, 23);
@@ -319,7 +321,7 @@ namespace LoginForm.Item
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(168, 140);
+            this.groupBox1.Size = new System.Drawing.Size(169, 196);
             this.groupBox1.TabIndex = 265;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Disc. Info";
@@ -328,7 +330,7 @@ namespace LoginForm.Item
             // 
             this.txtDiscontinuationDate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtDiscontinuationDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtDiscontinuationDate.Location = new System.Drawing.Point(77, 40);
+            this.txtDiscontinuationDate.Location = new System.Drawing.Point(77, 68);
             this.txtDiscontinuationDate.Name = "txtDiscontinuationDate";
             this.txtDiscontinuationDate.ReadOnly = true;
             this.txtDiscontinuationDate.Size = new System.Drawing.Size(71, 23);
@@ -338,7 +340,7 @@ namespace LoginForm.Item
             // 
             this.txtUKDiscDate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtUKDiscDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtUKDiscDate.Location = new System.Drawing.Point(77, 15);
+            this.txtUKDiscDate.Location = new System.Drawing.Point(77, 43);
             this.txtUKDiscDate.Name = "txtUKDiscDate";
             this.txtUKDiscDate.ReadOnly = true;
             this.txtUKDiscDate.Size = new System.Drawing.Size(71, 23);
@@ -349,7 +351,7 @@ namespace LoginForm.Item
             this.label21.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(6, 17);
+            this.label21.Location = new System.Drawing.Point(6, 45);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(73, 17);
             this.label21.TabIndex = 266;
@@ -360,7 +362,7 @@ namespace LoginForm.Item
             // 
             this.txtSubstitutedBy.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtSubstitutedBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtSubstitutedBy.Location = new System.Drawing.Point(77, 65);
+            this.txtSubstitutedBy.Location = new System.Drawing.Point(77, 93);
             this.txtSubstitutedBy.Name = "txtSubstitutedBy";
             this.txtSubstitutedBy.ReadOnly = true;
             this.txtSubstitutedBy.Size = new System.Drawing.Size(71, 23);
@@ -371,7 +373,7 @@ namespace LoginForm.Item
             this.label60.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label60.AutoSize = true;
             this.label60.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label60.Location = new System.Drawing.Point(6, 69);
+            this.label60.Location = new System.Drawing.Point(6, 97);
             this.label60.Name = "label60";
             this.label60.Size = new System.Drawing.Size(46, 17);
             this.label60.TabIndex = 213;
@@ -382,7 +384,7 @@ namespace LoginForm.Item
             // 
             this.txtRunOn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtRunOn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtRunOn.Location = new System.Drawing.Point(77, 90);
+            this.txtRunOn.Location = new System.Drawing.Point(77, 118);
             this.txtRunOn.Name = "txtRunOn";
             this.txtRunOn.ReadOnly = true;
             this.txtRunOn.Size = new System.Drawing.Size(71, 23);
@@ -393,7 +395,7 @@ namespace LoginForm.Item
             this.label54.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label54.AutoSize = true;
             this.label54.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label54.Location = new System.Drawing.Point(6, 93);
+            this.label54.Location = new System.Drawing.Point(6, 121);
             this.label54.Name = "label54";
             this.label54.Size = new System.Drawing.Size(54, 17);
             this.label54.TabIndex = 230;
@@ -404,7 +406,7 @@ namespace LoginForm.Item
             // 
             this.txtReferral.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtReferral.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtReferral.Location = new System.Drawing.Point(77, 115);
+            this.txtReferral.Location = new System.Drawing.Point(77, 143);
             this.txtReferral.Name = "txtReferral";
             this.txtReferral.ReadOnly = true;
             this.txtReferral.Size = new System.Drawing.Size(71, 23);
@@ -415,7 +417,7 @@ namespace LoginForm.Item
             this.label58.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label58.AutoSize = true;
             this.label58.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label58.Location = new System.Drawing.Point(6, 118);
+            this.label58.Location = new System.Drawing.Point(6, 146);
             this.label58.Name = "label58";
             this.label58.Size = new System.Drawing.Size(59, 17);
             this.label58.TabIndex = 218;
@@ -427,7 +429,7 @@ namespace LoginForm.Item
             this.label62.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label62.AutoSize = true;
             this.label62.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label62.Location = new System.Drawing.Point(6, 43);
+            this.label62.Location = new System.Drawing.Point(6, 71);
             this.label62.Name = "label62";
             this.label62.Size = new System.Drawing.Size(73, 17);
             this.label62.TabIndex = 269;
@@ -439,7 +441,7 @@ namespace LoginForm.Item
             this.label39.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label39.AutoSize = true;
             this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label39.Location = new System.Drawing.Point(10, 52);
+            this.label39.Location = new System.Drawing.Point(11, 114);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(60, 17);
             this.label39.TabIndex = 265;
@@ -453,13 +455,13 @@ namespace LoginForm.Item
             this.tableLayoutPanel6.Controls.Add(this.groupBox9, 0, 1);
             this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel7, 0, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(277, 0);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(279, 0);
             this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(242, 326);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(244, 451);
             this.tableLayoutPanel6.TabIndex = 2;
             // 
             // groupBox9
@@ -472,10 +474,10 @@ namespace LoginForm.Item
             this.groupBox9.Controls.Add(this.txtRSOnOrder);
             this.groupBox9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox9.Location = new System.Drawing.Point(3, 247);
+            this.groupBox9.Location = new System.Drawing.Point(3, 341);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox9.Size = new System.Drawing.Size(236, 76);
+            this.groupBox9.Size = new System.Drawing.Size(238, 107);
             this.groupBox9.TabIndex = 281;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "RS Stock Info";
@@ -484,7 +486,7 @@ namespace LoginForm.Item
             // 
             this.textBox14.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox14.Location = new System.Drawing.Point(164, 19);
+            this.textBox14.Location = new System.Drawing.Point(165, 34);
             this.textBox14.Name = "textBox14";
             this.textBox14.ReadOnly = true;
             this.textBox14.Size = new System.Drawing.Size(62, 23);
@@ -494,7 +496,7 @@ namespace LoginForm.Item
             // 
             this.textBox13.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBox13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox13.Location = new System.Drawing.Point(164, 45);
+            this.textBox13.Location = new System.Drawing.Point(165, 60);
             this.textBox13.Name = "textBox13";
             this.textBox13.ReadOnly = true;
             this.textBox13.Size = new System.Drawing.Size(62, 23);
@@ -505,7 +507,7 @@ namespace LoginForm.Item
             this.label59.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label59.AutoSize = true;
             this.label59.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label59.Location = new System.Drawing.Point(16, 23);
+            this.label59.Location = new System.Drawing.Point(17, 38);
             this.label59.Name = "label59";
             this.label59.Size = new System.Drawing.Size(48, 17);
             this.label59.TabIndex = 216;
@@ -517,7 +519,7 @@ namespace LoginForm.Item
             this.label56.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label56.AutoSize = true;
             this.label56.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label56.Location = new System.Drawing.Point(16, 49);
+            this.label56.Location = new System.Drawing.Point(17, 64);
             this.label56.Name = "label56";
             this.label56.Size = new System.Drawing.Size(68, 17);
             this.label56.TabIndex = 222;
@@ -528,7 +530,7 @@ namespace LoginForm.Item
             // 
             this.txtRSStock.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtRSStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtRSStock.Location = new System.Drawing.Point(87, 19);
+            this.txtRSStock.Location = new System.Drawing.Point(88, 34);
             this.txtRSStock.Name = "txtRSStock";
             this.txtRSStock.ReadOnly = true;
             this.txtRSStock.Size = new System.Drawing.Size(62, 23);
@@ -538,7 +540,7 @@ namespace LoginForm.Item
             // 
             this.txtRSOnOrder.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtRSOnOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtRSOnOrder.Location = new System.Drawing.Point(87, 45);
+            this.txtRSOnOrder.Location = new System.Drawing.Point(88, 60);
             this.txtRSOnOrder.Name = "txtRSOnOrder";
             this.txtRSOnOrder.ReadOnly = true;
             this.txtRSOnOrder.Size = new System.Drawing.Size(62, 23);
@@ -557,7 +559,7 @@ namespace LoginForm.Item
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(242, 244);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(244, 338);
             this.tableLayoutPanel7.TabIndex = 282;
             // 
             // groupBox4
@@ -581,10 +583,10 @@ namespace LoginForm.Item
             this.groupBox4.Controls.Add(this.label25);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(164, 3);
+            this.groupBox4.Location = new System.Drawing.Point(165, 3);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox4.Size = new System.Drawing.Size(75, 238);
+            this.groupBox4.Size = new System.Drawing.Size(76, 332);
             this.groupBox4.TabIndex = 274;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Indicators";
@@ -593,7 +595,7 @@ namespace LoginForm.Item
             // 
             this.txtExpiringPro.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtExpiringPro.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtExpiringPro.Location = new System.Drawing.Point(40, 214);
+            this.txtExpiringPro.Location = new System.Drawing.Point(41, 261);
             this.txtExpiringPro.Name = "txtExpiringPro";
             this.txtExpiringPro.ReadOnly = true;
             this.txtExpiringPro.Size = new System.Drawing.Size(21, 23);
@@ -603,7 +605,7 @@ namespace LoginForm.Item
             // 
             this.txtHazardousInd.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtHazardousInd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtHazardousInd.Location = new System.Drawing.Point(40, 15);
+            this.txtHazardousInd.Location = new System.Drawing.Point(41, 62);
             this.txtHazardousInd.Name = "txtHazardousInd";
             this.txtHazardousInd.ReadOnly = true;
             this.txtHazardousInd.Size = new System.Drawing.Size(21, 23);
@@ -613,7 +615,7 @@ namespace LoginForm.Item
             // 
             this.txtDiscCharge.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtDiscCharge.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtDiscCharge.Location = new System.Drawing.Point(40, 187);
+            this.txtDiscCharge.Location = new System.Drawing.Point(41, 234);
             this.txtDiscCharge.Name = "txtDiscCharge";
             this.txtDiscCharge.ReadOnly = true;
             this.txtDiscCharge.Size = new System.Drawing.Size(21, 23);
@@ -624,7 +626,7 @@ namespace LoginForm.Item
             this.label53.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label53.AutoSize = true;
             this.label53.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label53.Location = new System.Drawing.Point(10, 46);
+            this.label53.Location = new System.Drawing.Point(11, 93);
             this.label53.Name = "label53";
             this.label53.Size = new System.Drawing.Size(27, 17);
             this.label53.TabIndex = 256;
@@ -636,7 +638,7 @@ namespace LoginForm.Item
             this.txtEnvironment.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtEnvironment.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtEnvironment.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.txtEnvironment.Location = new System.Drawing.Point(40, 45);
+            this.txtEnvironment.Location = new System.Drawing.Point(41, 92);
             this.txtEnvironment.Name = "txtEnvironment";
             this.txtEnvironment.ReadOnly = true;
             this.txtEnvironment.Size = new System.Drawing.Size(21, 23);
@@ -647,7 +649,7 @@ namespace LoginForm.Item
             // 
             this.txtLithium.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtLithium.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtLithium.Location = new System.Drawing.Point(40, 101);
+            this.txtLithium.Location = new System.Drawing.Point(41, 148);
             this.txtLithium.Name = "txtLithium";
             this.txtLithium.ReadOnly = true;
             this.txtLithium.Size = new System.Drawing.Size(21, 23);
@@ -659,7 +661,7 @@ namespace LoginForm.Item
             this.label64.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label64.AutoSize = true;
             this.label64.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label64.Location = new System.Drawing.Point(13, 103);
+            this.label64.Location = new System.Drawing.Point(14, 150);
             this.label64.Name = "label64";
             this.label64.Size = new System.Drawing.Size(19, 17);
             this.label64.TabIndex = 228;
@@ -670,7 +672,7 @@ namespace LoginForm.Item
             // 
             this.txtShipping.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtShipping.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtShipping.Location = new System.Drawing.Point(40, 72);
+            this.txtShipping.Location = new System.Drawing.Point(41, 119);
             this.txtShipping.Name = "txtShipping";
             this.txtShipping.ReadOnly = true;
             this.txtShipping.Size = new System.Drawing.Size(21, 23);
@@ -682,7 +684,7 @@ namespace LoginForm.Item
             this.label63.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label63.AutoSize = true;
             this.label63.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label63.Location = new System.Drawing.Point(10, 75);
+            this.label63.Location = new System.Drawing.Point(11, 122);
             this.label63.Name = "label63";
             this.label63.Size = new System.Drawing.Size(27, 17);
             this.label63.TabIndex = 226;
@@ -693,7 +695,7 @@ namespace LoginForm.Item
             // 
             this.txtLicenceType.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtLicenceType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtLicenceType.Location = new System.Drawing.Point(40, 158);
+            this.txtLicenceType.Location = new System.Drawing.Point(41, 205);
             this.txtLicenceType.Name = "txtLicenceType";
             this.txtLicenceType.ReadOnly = true;
             this.txtLicenceType.Size = new System.Drawing.Size(21, 23);
@@ -703,7 +705,7 @@ namespace LoginForm.Item
             // 
             this.txtCalibrationInd.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtCalibrationInd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtCalibrationInd.Location = new System.Drawing.Point(40, 129);
+            this.txtCalibrationInd.Location = new System.Drawing.Point(41, 176);
             this.txtCalibrationInd.Name = "txtCalibrationInd";
             this.txtCalibrationInd.ReadOnly = true;
             this.txtCalibrationInd.Size = new System.Drawing.Size(21, 23);
@@ -714,7 +716,7 @@ namespace LoginForm.Item
             this.label11.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(11, 131);
+            this.label11.Location = new System.Drawing.Point(12, 178);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(25, 17);
             this.label11.TabIndex = 193;
@@ -726,7 +728,7 @@ namespace LoginForm.Item
             this.label28.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(10, 218);
+            this.label28.Location = new System.Drawing.Point(11, 265);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(30, 17);
             this.label28.TabIndex = 277;
@@ -738,7 +740,7 @@ namespace LoginForm.Item
             this.label55.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label55.AutoSize = true;
             this.label55.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label55.Location = new System.Drawing.Point(11, 161);
+            this.label55.Location = new System.Drawing.Point(12, 208);
             this.label55.Name = "label55";
             this.label55.Size = new System.Drawing.Size(25, 17);
             this.label55.TabIndex = 254;
@@ -750,7 +752,7 @@ namespace LoginForm.Item
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(10, 19);
+            this.label10.Location = new System.Drawing.Point(11, 66);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(27, 17);
             this.label10.TabIndex = 184;
@@ -762,7 +764,7 @@ namespace LoginForm.Item
             this.label25.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(10, 188);
+            this.label25.Location = new System.Drawing.Point(11, 235);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(31, 17);
             this.label25.TabIndex = 276;
@@ -782,7 +784,7 @@ namespace LoginForm.Item
             this.tableLayoutPanel8.RowCount = 2;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(161, 244);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(162, 338);
             this.tableLayoutPanel8.TabIndex = 275;
             // 
             // groupBox5
@@ -799,10 +801,10 @@ namespace LoginForm.Item
             this.groupBox5.Controls.Add(this.label36);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(3, 100);
+            this.groupBox5.Location = new System.Drawing.Point(3, 138);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox5.Size = new System.Drawing.Size(155, 141);
+            this.groupBox5.Size = new System.Drawing.Size(156, 197);
             this.groupBox5.TabIndex = 274;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "IME Stock Info";
@@ -811,7 +813,7 @@ namespace LoginForm.Item
             // 
             this.txtIME04.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtIME04.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtIME04.Location = new System.Drawing.Point(89, 87);
+            this.txtIME04.Location = new System.Drawing.Point(90, 115);
             this.txtIME04.Name = "txtIME04";
             this.txtIME04.ReadOnly = true;
             this.txtIME04.Size = new System.Drawing.Size(62, 23);
@@ -823,7 +825,7 @@ namespace LoginForm.Item
             this.label33.AutoSize = true;
             this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label33.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.label33.Location = new System.Drawing.Point(4, 90);
+            this.label33.Location = new System.Drawing.Point(5, 118);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(51, 17);
             this.label33.TabIndex = 261;
@@ -834,7 +836,7 @@ namespace LoginForm.Item
             // 
             this.txtIME03.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtIME03.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtIME03.Location = new System.Drawing.Point(89, 63);
+            this.txtIME03.Location = new System.Drawing.Point(90, 91);
             this.txtIME03.Name = "txtIME03";
             this.txtIME03.ReadOnly = true;
             this.txtIME03.Size = new System.Drawing.Size(62, 23);
@@ -846,7 +848,7 @@ namespace LoginForm.Item
             this.label35.AutoSize = true;
             this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label35.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.label35.Location = new System.Drawing.Point(4, 66);
+            this.label35.Location = new System.Drawing.Point(5, 94);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(51, 17);
             this.label35.TabIndex = 262;
@@ -857,7 +859,7 @@ namespace LoginForm.Item
             // 
             this.txtIME02.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtIME02.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtIME02.Location = new System.Drawing.Point(89, 38);
+            this.txtIME02.Location = new System.Drawing.Point(90, 66);
             this.txtIME02.Name = "txtIME02";
             this.txtIME02.ReadOnly = true;
             this.txtIME02.Size = new System.Drawing.Size(62, 23);
@@ -869,7 +871,7 @@ namespace LoginForm.Item
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.label23.Location = new System.Drawing.Point(4, 42);
+            this.label23.Location = new System.Drawing.Point(5, 70);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(51, 17);
             this.label23.TabIndex = 259;
@@ -880,7 +882,7 @@ namespace LoginForm.Item
             // 
             this.txtIME01.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtIME01.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtIME01.Location = new System.Drawing.Point(89, 14);
+            this.txtIME01.Location = new System.Drawing.Point(90, 42);
             this.txtIME01.Name = "txtIME01";
             this.txtIME01.ReadOnly = true;
             this.txtIME01.Size = new System.Drawing.Size(62, 23);
@@ -892,7 +894,7 @@ namespace LoginForm.Item
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.label7.Location = new System.Drawing.Point(4, 17);
+            this.label7.Location = new System.Drawing.Point(5, 45);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(51, 17);
             this.label7.TabIndex = 259;
@@ -903,7 +905,7 @@ namespace LoginForm.Item
             // 
             this.txtIMEOnOrder.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtIMEOnOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtIMEOnOrder.Location = new System.Drawing.Point(89, 112);
+            this.txtIMEOnOrder.Location = new System.Drawing.Point(90, 140);
             this.txtIMEOnOrder.Name = "txtIMEOnOrder";
             this.txtIMEOnOrder.ReadOnly = true;
             this.txtIMEOnOrder.Size = new System.Drawing.Size(62, 23);
@@ -915,7 +917,7 @@ namespace LoginForm.Item
             this.label36.AutoSize = true;
             this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label36.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.label36.Location = new System.Drawing.Point(4, 115);
+            this.label36.Location = new System.Drawing.Point(5, 143);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(69, 17);
             this.label36.TabIndex = 259;
@@ -924,6 +926,8 @@ namespace LoginForm.Item
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.textBox1);
+            this.groupBox8.Controls.Add(this.label5);
             this.groupBox8.Controls.Add(this.txtUM);
             this.groupBox8.Controls.Add(this.txtUC);
             this.groupBox8.Controls.Add(this.label52);
@@ -936,7 +940,7 @@ namespace LoginForm.Item
             this.groupBox8.Margin = new System.Windows.Forms.Padding(0);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox8.Size = new System.Drawing.Size(161, 97);
+            this.groupBox8.Size = new System.Drawing.Size(162, 135);
             this.groupBox8.TabIndex = 273;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Packing Info";
@@ -945,7 +949,7 @@ namespace LoginForm.Item
             // 
             this.txtUM.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtUM.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtUM.Location = new System.Drawing.Point(92, 68);
+            this.txtUM.Location = new System.Drawing.Point(93, 77);
             this.txtUM.Name = "txtUM";
             this.txtUM.ReadOnly = true;
             this.txtUM.Size = new System.Drawing.Size(62, 23);
@@ -955,7 +959,7 @@ namespace LoginForm.Item
             // 
             this.txtUC.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtUC.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtUC.Location = new System.Drawing.Point(92, 41);
+            this.txtUC.Location = new System.Drawing.Point(93, 50);
             this.txtUC.Name = "txtUC";
             this.txtUC.ReadOnly = true;
             this.txtUC.Size = new System.Drawing.Size(62, 23);
@@ -966,7 +970,7 @@ namespace LoginForm.Item
             this.label52.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label52.AutoSize = true;
             this.label52.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label52.Location = new System.Drawing.Point(11, 69);
+            this.label52.Location = new System.Drawing.Point(12, 78);
             this.label52.Name = "label52";
             this.label52.Size = new System.Drawing.Size(33, 17);
             this.label52.TabIndex = 236;
@@ -978,7 +982,7 @@ namespace LoginForm.Item
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(11, 41);
+            this.label4.Location = new System.Drawing.Point(12, 50);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(31, 17);
             this.label4.TabIndex = 235;
@@ -991,7 +995,7 @@ namespace LoginForm.Item
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.label2.Location = new System.Drawing.Point(11, 13);
+            this.label2.Location = new System.Drawing.Point(12, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 17);
             this.label2.TabIndex = 196;
@@ -1002,7 +1006,7 @@ namespace LoginForm.Item
             // 
             this.txtSSM.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtSSM.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtSSM.Location = new System.Drawing.Point(92, 12);
+            this.txtSSM.Location = new System.Drawing.Point(93, 21);
             this.txtSSM.Name = "txtSSM";
             this.txtSSM.ReadOnly = true;
             this.txtSSM.Size = new System.Drawing.Size(62, 23);
@@ -1014,7 +1018,7 @@ namespace LoginForm.Item
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.label1.Location = new System.Drawing.Point(10, 22);
+            this.label1.Location = new System.Drawing.Point(11, 84);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 17);
             this.label1.TabIndex = 178;
@@ -1026,7 +1030,7 @@ namespace LoginForm.Item
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(6, 119);
+            this.label9.Location = new System.Drawing.Point(6, 153);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(58, 17);
             this.label9.TabIndex = 283;
@@ -1037,7 +1041,7 @@ namespace LoginForm.Item
             // 
             this.txtHeight.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtHeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtHeight.Location = new System.Drawing.Point(77, 19);
+            this.txtHeight.Location = new System.Drawing.Point(77, 53);
             this.txtHeight.Name = "txtHeight";
             this.txtHeight.ReadOnly = true;
             this.txtHeight.Size = new System.Drawing.Size(71, 23);
@@ -1048,7 +1052,7 @@ namespace LoginForm.Item
             this.label34.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label34.AutoSize = true;
             this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label34.Location = new System.Drawing.Point(149, 120);
+            this.label34.Location = new System.Drawing.Point(149, 154);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(20, 15);
             this.label34.TabIndex = 293;
@@ -1060,7 +1064,7 @@ namespace LoginForm.Item
             this.label32.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label32.AutoSize = true;
             this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label32.Location = new System.Drawing.Point(149, 152);
+            this.label32.Location = new System.Drawing.Point(149, 186);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(20, 15);
             this.label32.TabIndex = 294;
@@ -1072,7 +1076,7 @@ namespace LoginForm.Item
             this.label22.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label22.Location = new System.Drawing.Point(149, 88);
+            this.label22.Location = new System.Drawing.Point(149, 122);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(24, 15);
             this.label22.TabIndex = 295;
@@ -1084,7 +1088,7 @@ namespace LoginForm.Item
             this.label29.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label29.AutoSize = true;
             this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.Location = new System.Drawing.Point(6, 52);
+            this.label29.Location = new System.Drawing.Point(6, 86);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(44, 17);
             this.label29.TabIndex = 284;
@@ -1096,7 +1100,7 @@ namespace LoginForm.Item
             this.label15.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label15.Location = new System.Drawing.Point(149, 53);
+            this.label15.Location = new System.Drawing.Point(149, 87);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(24, 15);
             this.label15.TabIndex = 296;
@@ -1107,7 +1111,7 @@ namespace LoginForm.Item
             // 
             this.txtWidth.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtWidth.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtWidth.Location = new System.Drawing.Point(77, 49);
+            this.txtWidth.Location = new System.Drawing.Point(77, 83);
             this.txtWidth.Name = "txtWidth";
             this.txtWidth.ReadOnly = true;
             this.txtWidth.Size = new System.Drawing.Size(71, 23);
@@ -1118,7 +1122,7 @@ namespace LoginForm.Item
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(10, 81);
+            this.label3.Location = new System.Drawing.Point(11, 143);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(40, 17);
             this.label3.TabIndex = 252;
@@ -1129,7 +1133,7 @@ namespace LoginForm.Item
             // 
             this.txtSection.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtSection.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtSection.Location = new System.Drawing.Point(74, 239);
+            this.txtSection.Location = new System.Drawing.Point(75, 301);
             this.txtSection.Name = "txtSection";
             this.txtSection.ReadOnly = true;
             this.txtSection.Size = new System.Drawing.Size(183, 23);
@@ -1139,7 +1143,7 @@ namespace LoginForm.Item
             // 
             this.txtDesc.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtDesc.Location = new System.Drawing.Point(74, 77);
+            this.txtDesc.Location = new System.Drawing.Point(75, 139);
             this.txtDesc.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
             this.txtDesc.Multiline = true;
             this.txtDesc.Name = "txtDesc";
@@ -1151,7 +1155,7 @@ namespace LoginForm.Item
             // 
             this.txtSupersectionName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtSupersectionName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtSupersectionName.Location = new System.Drawing.Point(74, 212);
+            this.txtSupersectionName.Location = new System.Drawing.Point(75, 274);
             this.txtSupersectionName.Name = "txtSupersectionName";
             this.txtSupersectionName.ReadOnly = true;
             this.txtSupersectionName.Size = new System.Drawing.Size(183, 23);
@@ -1163,7 +1167,7 @@ namespace LoginForm.Item
             this.label51.AutoEllipsis = true;
             this.label51.AutoSize = true;
             this.label51.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label51.Location = new System.Drawing.Point(10, 214);
+            this.label51.Location = new System.Drawing.Point(11, 276);
             this.label51.Name = "label51";
             this.label51.Size = new System.Drawing.Size(68, 17);
             this.label51.TabIndex = 260;
@@ -1174,7 +1178,7 @@ namespace LoginForm.Item
             // 
             this.txtCoO.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtCoO.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtCoO.Location = new System.Drawing.Point(74, 298);
+            this.txtCoO.Location = new System.Drawing.Point(75, 360);
             this.txtCoO.Name = "txtCoO";
             this.txtCoO.ReadOnly = true;
             this.txtCoO.Size = new System.Drawing.Size(36, 23);
@@ -1185,7 +1189,7 @@ namespace LoginForm.Item
             this.label27.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(10, 133);
+            this.label27.Location = new System.Drawing.Point(11, 195);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(38, 17);
             this.label27.TabIndex = 185;
@@ -1197,7 +1201,7 @@ namespace LoginForm.Item
             this.label24.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(10, 160);
+            this.label24.Location = new System.Drawing.Point(11, 222);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(28, 17);
             this.label24.TabIndex = 181;
@@ -1208,7 +1212,7 @@ namespace LoginForm.Item
             // 
             this.txtMPN.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtMPN.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtMPN.Location = new System.Drawing.Point(74, 129);
+            this.txtMPN.Location = new System.Drawing.Point(75, 191);
             this.txtMPN.Name = "txtMPN";
             this.txtMPN.ReadOnly = true;
             this.txtMPN.Size = new System.Drawing.Size(183, 23);
@@ -1218,7 +1222,7 @@ namespace LoginForm.Item
             // 
             this.txtManufacturer.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtManufacturer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtManufacturer.Location = new System.Drawing.Point(74, 159);
+            this.txtManufacturer.Location = new System.Drawing.Point(75, 221);
             this.txtManufacturer.Name = "txtManufacturer";
             this.txtManufacturer.ReadOnly = true;
             this.txtManufacturer.Size = new System.Drawing.Size(183, 23);
@@ -1228,7 +1232,7 @@ namespace LoginForm.Item
             // 
             this.txtCCCN.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtCCCN.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtCCCN.Location = new System.Drawing.Point(170, 298);
+            this.txtCCCN.Location = new System.Drawing.Point(171, 360);
             this.txtCCCN.Name = "txtCCCN";
             this.txtCCCN.ReadOnly = true;
             this.txtCCCN.Size = new System.Drawing.Size(88, 23);
@@ -1238,7 +1242,7 @@ namespace LoginForm.Item
             // 
             this.txtBrand.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtBrand.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtBrand.Location = new System.Drawing.Point(74, 185);
+            this.txtBrand.Location = new System.Drawing.Point(75, 247);
             this.txtBrand.Name = "txtBrand";
             this.txtBrand.ReadOnly = true;
             this.txtBrand.Size = new System.Drawing.Size(183, 23);
@@ -1248,7 +1252,7 @@ namespace LoginForm.Item
             // 
             this.txtStandartWeight.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtStandartWeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtStandartWeight.Location = new System.Drawing.Point(77, 117);
+            this.txtStandartWeight.Location = new System.Drawing.Point(77, 151);
             this.txtStandartWeight.Name = "txtStandartWeight";
             this.txtStandartWeight.ReadOnly = true;
             this.txtStandartWeight.Size = new System.Drawing.Size(71, 23);
@@ -1259,7 +1263,7 @@ namespace LoginForm.Item
             this.label16.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(120, 300);
+            this.label16.Location = new System.Drawing.Point(121, 362);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(45, 17);
             this.label16.TabIndex = 179;
@@ -1303,7 +1307,7 @@ namespace LoginForm.Item
             this.groupPrices.Location = new System.Drawing.Point(3, 42);
             this.groupPrices.Name = "groupPrices";
             this.groupPrices.Padding = new System.Windows.Forms.Padding(2);
-            this.groupPrices.Size = new System.Drawing.Size(309, 192);
+            this.groupPrices.Size = new System.Drawing.Size(311, 283);
             this.groupPrices.TabIndex = 271;
             this.groupPrices.TabStop = false;
             this.groupPrices.Text = "Prices";
@@ -1312,7 +1316,7 @@ namespace LoginForm.Item
             // 
             this.txtWeb5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtWeb5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtWeb5.Location = new System.Drawing.Point(57, 156);
+            this.txtWeb5.Location = new System.Drawing.Point(58, 201);
             this.txtWeb5.Margin = new System.Windows.Forms.Padding(0);
             this.txtWeb5.Name = "txtWeb5";
             this.txtWeb5.ReadOnly = true;
@@ -1323,7 +1327,7 @@ namespace LoginForm.Item
             // 
             this.txtWeb2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtWeb2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtWeb2.Location = new System.Drawing.Point(57, 65);
+            this.txtWeb2.Location = new System.Drawing.Point(58, 110);
             this.txtWeb2.Margin = new System.Windows.Forms.Padding(0);
             this.txtWeb2.Name = "txtWeb2";
             this.txtWeb2.ReadOnly = true;
@@ -1335,7 +1339,7 @@ namespace LoginForm.Item
             this.label65.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label65.AutoSize = true;
             this.label65.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label65.Location = new System.Drawing.Point(62, 15);
+            this.label65.Location = new System.Drawing.Point(63, 60);
             this.label65.Name = "label65";
             this.label65.Size = new System.Drawing.Size(59, 17);
             this.label65.TabIndex = 232;
@@ -1346,7 +1350,7 @@ namespace LoginForm.Item
             // 
             this.txtWeb3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtWeb3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtWeb3.Location = new System.Drawing.Point(57, 93);
+            this.txtWeb3.Location = new System.Drawing.Point(58, 138);
             this.txtWeb3.Margin = new System.Windows.Forms.Padding(0);
             this.txtWeb3.Name = "txtWeb3";
             this.txtWeb3.ReadOnly = true;
@@ -1357,7 +1361,7 @@ namespace LoginForm.Item
             // 
             this.txtWeb1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtWeb1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtWeb1.Location = new System.Drawing.Point(57, 36);
+            this.txtWeb1.Location = new System.Drawing.Point(58, 81);
             this.txtWeb1.Margin = new System.Windows.Forms.Padding(0);
             this.txtWeb1.Name = "txtWeb1";
             this.txtWeb1.ReadOnly = true;
@@ -1368,7 +1372,7 @@ namespace LoginForm.Item
             // 
             this.txtWeb4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtWeb4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtWeb4.Location = new System.Drawing.Point(57, 126);
+            this.txtWeb4.Location = new System.Drawing.Point(58, 171);
             this.txtWeb4.Margin = new System.Windows.Forms.Padding(0);
             this.txtWeb4.Name = "txtWeb4";
             this.txtWeb4.ReadOnly = true;
@@ -1379,7 +1383,7 @@ namespace LoginForm.Item
             // 
             this.txtCost1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtCost1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtCost1.Location = new System.Drawing.Point(194, 36);
+            this.txtCost1.Location = new System.Drawing.Point(195, 81);
             this.txtCost1.Margin = new System.Windows.Forms.Padding(0);
             this.txtCost1.Name = "txtCost1";
             this.txtCost1.ReadOnly = true;
@@ -1390,7 +1394,7 @@ namespace LoginForm.Item
             // 
             this.txtMargin5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtMargin5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtMargin5.Location = new System.Drawing.Point(263, 156);
+            this.txtMargin5.Location = new System.Drawing.Point(264, 201);
             this.txtMargin5.Margin = new System.Windows.Forms.Padding(0);
             this.txtMargin5.Name = "txtMargin5";
             this.txtMargin5.ReadOnly = true;
@@ -1401,7 +1405,7 @@ namespace LoginForm.Item
             // 
             this.txtUnitCount5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtUnitCount5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtUnitCount5.Location = new System.Drawing.Point(5, 156);
+            this.txtUnitCount5.Location = new System.Drawing.Point(6, 201);
             this.txtUnitCount5.Margin = new System.Windows.Forms.Padding(0);
             this.txtUnitCount5.Name = "txtUnitCount5";
             this.txtUnitCount5.ReadOnly = true;
@@ -1413,7 +1417,7 @@ namespace LoginForm.Item
             this.label44.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label44.AutoSize = true;
             this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label44.Location = new System.Drawing.Point(194, 15);
+            this.label44.Location = new System.Drawing.Point(195, 60);
             this.label44.Name = "label44";
             this.label44.Size = new System.Drawing.Size(58, 17);
             this.label44.TabIndex = 154;
@@ -1424,7 +1428,7 @@ namespace LoginForm.Item
             // 
             this.txtUK5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtUK5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtUK5.Location = new System.Drawing.Point(125, 156);
+            this.txtUK5.Location = new System.Drawing.Point(126, 201);
             this.txtUK5.Margin = new System.Windows.Forms.Padding(0);
             this.txtUK5.Name = "txtUK5";
             this.txtUK5.ReadOnly = true;
@@ -1435,7 +1439,7 @@ namespace LoginForm.Item
             // 
             this.txtUK2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtUK2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtUK2.Location = new System.Drawing.Point(125, 65);
+            this.txtUK2.Location = new System.Drawing.Point(126, 110);
             this.txtUK2.Margin = new System.Windows.Forms.Padding(0);
             this.txtUK2.Name = "txtUK2";
             this.txtUK2.ReadOnly = true;
@@ -1447,7 +1451,7 @@ namespace LoginForm.Item
             this.label38.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label38.AutoSize = true;
             this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label38.Location = new System.Drawing.Point(128, 15);
+            this.label38.Location = new System.Drawing.Point(129, 60);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(49, 17);
             this.label38.TabIndex = 158;
@@ -1458,7 +1462,7 @@ namespace LoginForm.Item
             // 
             this.txtCost5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtCost5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtCost5.Location = new System.Drawing.Point(194, 156);
+            this.txtCost5.Location = new System.Drawing.Point(195, 201);
             this.txtCost5.Margin = new System.Windows.Forms.Padding(0);
             this.txtCost5.Name = "txtCost5";
             this.txtCost5.ReadOnly = true;
@@ -1469,7 +1473,7 @@ namespace LoginForm.Item
             // 
             this.txtMargin2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtMargin2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtMargin2.Location = new System.Drawing.Point(263, 65);
+            this.txtMargin2.Location = new System.Drawing.Point(264, 110);
             this.txtMargin2.Margin = new System.Windows.Forms.Padding(0);
             this.txtMargin2.Name = "txtMargin2";
             this.txtMargin2.ReadOnly = true;
@@ -1480,7 +1484,7 @@ namespace LoginForm.Item
             // 
             this.txtUnitCount2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtUnitCount2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtUnitCount2.Location = new System.Drawing.Point(5, 65);
+            this.txtUnitCount2.Location = new System.Drawing.Point(6, 110);
             this.txtUnitCount2.Margin = new System.Windows.Forms.Padding(0);
             this.txtUnitCount2.Name = "txtUnitCount2";
             this.txtUnitCount2.ReadOnly = true;
@@ -1491,7 +1495,7 @@ namespace LoginForm.Item
             // 
             this.txtMargin1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtMargin1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtMargin1.Location = new System.Drawing.Point(263, 36);
+            this.txtMargin1.Location = new System.Drawing.Point(264, 81);
             this.txtMargin1.Margin = new System.Windows.Forms.Padding(0);
             this.txtMargin1.Name = "txtMargin1";
             this.txtMargin1.ReadOnly = true;
@@ -1502,7 +1506,7 @@ namespace LoginForm.Item
             // 
             this.txtUK3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtUK3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtUK3.Location = new System.Drawing.Point(125, 93);
+            this.txtUK3.Location = new System.Drawing.Point(126, 138);
             this.txtUK3.Margin = new System.Windows.Forms.Padding(0);
             this.txtUK3.Name = "txtUK3";
             this.txtUK3.ReadOnly = true;
@@ -1514,7 +1518,7 @@ namespace LoginForm.Item
             this.label14.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label14.Location = new System.Drawing.Point(2, 15);
+            this.label14.Location = new System.Drawing.Point(3, 60);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(54, 17);
             this.label14.TabIndex = 224;
@@ -1525,7 +1529,7 @@ namespace LoginForm.Item
             // 
             this.txtUnitCount1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtUnitCount1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtUnitCount1.Location = new System.Drawing.Point(5, 36);
+            this.txtUnitCount1.Location = new System.Drawing.Point(6, 81);
             this.txtUnitCount1.Margin = new System.Windows.Forms.Padding(0);
             this.txtUnitCount1.Name = "txtUnitCount1";
             this.txtUnitCount1.ReadOnly = true;
@@ -1536,7 +1540,7 @@ namespace LoginForm.Item
             // 
             this.txtUK1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtUK1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtUK1.Location = new System.Drawing.Point(125, 36);
+            this.txtUK1.Location = new System.Drawing.Point(126, 81);
             this.txtUK1.Margin = new System.Windows.Forms.Padding(0);
             this.txtUK1.Name = "txtUK1";
             this.txtUK1.ReadOnly = true;
@@ -1547,7 +1551,7 @@ namespace LoginForm.Item
             // 
             this.txtCost3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtCost3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtCost3.Location = new System.Drawing.Point(194, 93);
+            this.txtCost3.Location = new System.Drawing.Point(195, 138);
             this.txtCost3.Margin = new System.Windows.Forms.Padding(0);
             this.txtCost3.Name = "txtCost3";
             this.txtCost3.ReadOnly = true;
@@ -1558,7 +1562,7 @@ namespace LoginForm.Item
             // 
             this.txtMargin4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtMargin4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtMargin4.Location = new System.Drawing.Point(263, 126);
+            this.txtMargin4.Location = new System.Drawing.Point(264, 171);
             this.txtMargin4.Margin = new System.Windows.Forms.Padding(0);
             this.txtMargin4.Name = "txtMargin4";
             this.txtMargin4.ReadOnly = true;
@@ -1569,7 +1573,7 @@ namespace LoginForm.Item
             // 
             this.txtCost4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtCost4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtCost4.Location = new System.Drawing.Point(194, 126);
+            this.txtCost4.Location = new System.Drawing.Point(195, 171);
             this.txtCost4.Margin = new System.Windows.Forms.Padding(0);
             this.txtCost4.Name = "txtCost4";
             this.txtCost4.ReadOnly = true;
@@ -1580,7 +1584,7 @@ namespace LoginForm.Item
             // 
             this.txtUnitCount4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtUnitCount4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtUnitCount4.Location = new System.Drawing.Point(5, 126);
+            this.txtUnitCount4.Location = new System.Drawing.Point(6, 171);
             this.txtUnitCount4.Margin = new System.Windows.Forms.Padding(0);
             this.txtUnitCount4.Name = "txtUnitCount4";
             this.txtUnitCount4.ReadOnly = true;
@@ -1591,7 +1595,7 @@ namespace LoginForm.Item
             // 
             this.txtCost2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtCost2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtCost2.Location = new System.Drawing.Point(194, 65);
+            this.txtCost2.Location = new System.Drawing.Point(195, 110);
             this.txtCost2.Margin = new System.Windows.Forms.Padding(0);
             this.txtCost2.Name = "txtCost2";
             this.txtCost2.ReadOnly = true;
@@ -1602,7 +1606,7 @@ namespace LoginForm.Item
             // 
             this.txtMargin3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtMargin3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtMargin3.Location = new System.Drawing.Point(263, 93);
+            this.txtMargin3.Location = new System.Drawing.Point(264, 138);
             this.txtMargin3.Margin = new System.Windows.Forms.Padding(0);
             this.txtMargin3.Name = "txtMargin3";
             this.txtMargin3.ReadOnly = true;
@@ -1613,7 +1617,7 @@ namespace LoginForm.Item
             // 
             this.txtUK4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtUK4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtUK4.Location = new System.Drawing.Point(125, 126);
+            this.txtUK4.Location = new System.Drawing.Point(126, 171);
             this.txtUK4.Margin = new System.Windows.Forms.Padding(0);
             this.txtUK4.Name = "txtUK4";
             this.txtUK4.ReadOnly = true;
@@ -1624,7 +1628,7 @@ namespace LoginForm.Item
             // 
             this.txtUnitCount3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtUnitCount3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtUnitCount3.Location = new System.Drawing.Point(5, 93);
+            this.txtUnitCount3.Location = new System.Drawing.Point(6, 138);
             this.txtUnitCount3.Margin = new System.Windows.Forms.Padding(0);
             this.txtUnitCount3.Name = "txtUnitCount3";
             this.txtUnitCount3.ReadOnly = true;
@@ -1636,7 +1640,7 @@ namespace LoginForm.Item
             this.label13.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(251, 15);
+            this.label13.Location = new System.Drawing.Point(252, 60);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(67, 17);
             this.label13.TabIndex = 177;
@@ -1648,16 +1652,16 @@ namespace LoginForm.Item
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.label19);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 237);
+            this.panel2.Location = new System.Drawing.Point(0, 328);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(315, 194);
+            this.panel2.Size = new System.Drawing.Size(317, 270);
             this.panel2.TabIndex = 1;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.Location = new System.Drawing.Point(8, 32);
+            this.pictureBox1.Location = new System.Drawing.Point(9, 70);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(296, 149);
@@ -1669,7 +1673,7 @@ namespace LoginForm.Item
             this.label19.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label19.Location = new System.Drawing.Point(8, 14);
+            this.label19.Location = new System.Drawing.Point(9, 52);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(98, 17);
             this.label19.TabIndex = 293;
@@ -1681,7 +1685,7 @@ namespace LoginForm.Item
             this.label26.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(6, 22);
+            this.label26.Location = new System.Drawing.Point(6, 56);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(49, 17);
             this.label26.TabIndex = 286;
@@ -1701,7 +1705,7 @@ namespace LoginForm.Item
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(315, 237);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(317, 328);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // panel1
@@ -1715,7 +1719,7 @@ namespace LoginForm.Item
             this.panel1.Location = new System.Drawing.Point(2, 2);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(311, 35);
+            this.panel1.Size = new System.Drawing.Size(313, 35);
             this.panel1.TabIndex = 0;
             // 
             // label6
@@ -1723,7 +1727,7 @@ namespace LoginForm.Item
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label6.Location = new System.Drawing.Point(2, 8);
+            this.label6.Location = new System.Drawing.Point(3, 8);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(30, 17);
             this.label6.TabIndex = 267;
@@ -1734,7 +1738,7 @@ namespace LoginForm.Item
             // 
             this.txtUnitPrice.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtUnitPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtUnitPrice.Location = new System.Drawing.Point(182, 4);
+            this.txtUnitPrice.Location = new System.Drawing.Point(183, 4);
             this.txtUnitPrice.Margin = new System.Windows.Forms.Padding(0);
             this.txtUnitPrice.Name = "txtUnitPrice";
             this.txtUnitPrice.ReadOnly = true;
@@ -1745,7 +1749,7 @@ namespace LoginForm.Item
             // 
             this.txtQuantitiy.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtQuantitiy.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtQuantitiy.Location = new System.Drawing.Point(41, 4);
+            this.txtQuantitiy.Location = new System.Drawing.Point(42, 4);
             this.txtQuantitiy.Margin = new System.Windows.Forms.Padding(0);
             this.txtQuantitiy.Name = "txtQuantitiy";
             this.txtQuantitiy.Size = new System.Drawing.Size(89, 26);
@@ -1757,7 +1761,7 @@ namespace LoginForm.Item
             this.Price1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Price1.AutoSize = true;
             this.Price1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Price1.Location = new System.Drawing.Point(134, 8);
+            this.Price1.Location = new System.Drawing.Point(135, 8);
             this.Price1.Name = "Price1";
             this.Price1.Size = new System.Drawing.Size(40, 17);
             this.Price1.TabIndex = 268;
@@ -1771,13 +1775,13 @@ namespace LoginForm.Item
             this.tblBRight.Controls.Add(this.panel2, 0, 1);
             this.tblBRight.Controls.Add(this.tableLayoutPanel1, 0, 0);
             this.tblBRight.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tblBRight.Location = new System.Drawing.Point(695, 2);
+            this.tblBRight.Location = new System.Drawing.Point(700, 2);
             this.tblBRight.Margin = new System.Windows.Forms.Padding(2);
             this.tblBRight.Name = "tblBRight";
             this.tblBRight.RowCount = 2;
             this.tblBRight.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55F));
             this.tblBRight.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
-            this.tblBRight.Size = new System.Drawing.Size(315, 431);
+            this.tblBRight.Size = new System.Drawing.Size(317, 598);
             this.tblBRight.TabIndex = 0;
             // 
             // tblBottom
@@ -1788,12 +1792,12 @@ namespace LoginForm.Item
             this.tblBottom.Controls.Add(this.tblBRight, 1, 0);
             this.tblBottom.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tblBottom.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tblBottom.Location = new System.Drawing.Point(2, 139);
+            this.tblBottom.Location = new System.Drawing.Point(2, 190);
             this.tblBottom.Margin = new System.Windows.Forms.Padding(2);
             this.tblBottom.Name = "tblBottom";
             this.tblBottom.RowCount = 1;
             this.tblBottom.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblBottom.Size = new System.Drawing.Size(1012, 435);
+            this.tblBottom.Size = new System.Drawing.Size(1019, 602);
             this.tblBottom.TabIndex = 1;
             // 
             // tableLayoutPanel2
@@ -1809,7 +1813,7 @@ namespace LoginForm.Item
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(693, 435);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(698, 602);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // tableLayoutPanel3
@@ -1822,13 +1826,13 @@ namespace LoginForm.Item
             this.tableLayoutPanel3.Controls.Add(this.btnUpdateNote, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.btnClose, 2, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 328);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 453);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 105F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(689, 105);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(694, 147);
             this.tableLayoutPanel3.TabIndex = 2;
             // 
             // txtNote
@@ -1838,14 +1842,14 @@ namespace LoginForm.Item
             this.txtNote.Margin = new System.Windows.Forms.Padding(6);
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
-            this.txtNote.Size = new System.Drawing.Size(507, 93);
+            this.txtNote.Size = new System.Drawing.Size(512, 135);
             this.txtNote.TabIndex = 273;
             // 
             // btnUpdateNote
             // 
             this.btnUpdateNote.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnUpdateNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdateNote.Location = new System.Drawing.Point(525, 12);
+            this.btnUpdateNote.Location = new System.Drawing.Point(530, 33);
             this.btnUpdateNote.MaximumSize = new System.Drawing.Size(135, 81);
             this.btnUpdateNote.Name = "btnUpdateNote";
             this.btnUpdateNote.Size = new System.Drawing.Size(77, 81);
@@ -1858,7 +1862,7 @@ namespace LoginForm.Item
             // 
             this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(612, 12);
+            this.btnClose.Location = new System.Drawing.Point(617, 33);
             this.btnClose.MaximumSize = new System.Drawing.Size(135, 81);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(72, 81);
@@ -1882,7 +1886,7 @@ namespace LoginForm.Item
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(693, 326);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(698, 451);
             this.tableLayoutPanel4.TabIndex = 3;
             // 
             // panel3
@@ -1892,7 +1896,7 @@ namespace LoginForm.Item
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(277, 326);
+            this.panel3.Size = new System.Drawing.Size(279, 451);
             this.panel3.TabIndex = 0;
             // 
             // groupBox6
@@ -1926,7 +1930,7 @@ namespace LoginForm.Item
             this.groupBox6.Margin = new System.Windows.Forms.Padding(0);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox6.Size = new System.Drawing.Size(277, 326);
+            this.groupBox6.Size = new System.Drawing.Size(279, 451);
             this.groupBox6.TabIndex = 272;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "General Info";
@@ -1935,7 +1939,7 @@ namespace LoginForm.Item
             // 
             this.txtMHCodeLevel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtMHCodeLevel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtMHCodeLevel1.Location = new System.Drawing.Point(74, 268);
+            this.txtMHCodeLevel1.Location = new System.Drawing.Point(75, 330);
             this.txtMHCodeLevel1.Name = "txtMHCodeLevel1";
             this.txtMHCodeLevel1.ReadOnly = true;
             this.txtMHCodeLevel1.Size = new System.Drawing.Size(183, 23);
@@ -1946,7 +1950,7 @@ namespace LoginForm.Item
             this.label30.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label30.AutoSize = true;
             this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(10, 272);
+            this.label30.Location = new System.Drawing.Point(11, 334);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(29, 17);
             this.label30.TabIndex = 198;
@@ -1958,7 +1962,7 @@ namespace LoginForm.Item
             this.label37.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label37.AutoSize = true;
             this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label37.Location = new System.Drawing.Point(10, 188);
+            this.label37.Location = new System.Drawing.Point(11, 250);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(46, 17);
             this.label37.TabIndex = 181;
@@ -1970,7 +1974,7 @@ namespace LoginForm.Item
             this.label17.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(10, 240);
+            this.label17.Location = new System.Drawing.Point(11, 302);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(55, 17);
             this.label17.TabIndex = 260;
@@ -1982,7 +1986,7 @@ namespace LoginForm.Item
             this.label20.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(10, 300);
+            this.label20.Location = new System.Drawing.Point(11, 362);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(36, 17);
             this.label20.TabIndex = 202;
@@ -1996,13 +2000,13 @@ namespace LoginForm.Item
             this.tableLayoutPanel5.Controls.Add(this.groupBox2, 0, 1);
             this.tableLayoutPanel5.Controls.Add(this.groupBox1, 0, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(519, 0);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(523, 0);
             this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(174, 326);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(175, 451);
             this.tableLayoutPanel5.TabIndex = 1;
             // 
             // groupBox2
@@ -2024,11 +2028,11 @@ namespace LoginForm.Item
             this.groupBox2.Controls.Add(this.txtLength);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(2, 148);
+            this.groupBox2.Location = new System.Drawing.Point(2, 204);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Size = new System.Drawing.Size(170, 176);
+            this.groupBox2.Size = new System.Drawing.Size(171, 245);
             this.groupBox2.TabIndex = 275;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dimensions";
@@ -2118,7 +2122,7 @@ namespace LoginForm.Item
             this.groupBox7.Controls.Add(this.btnSearch);
             this.groupBox7.Controls.Add(this.txtSearchBox);
             this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox7.Location = new System.Drawing.Point(8, 15);
+            this.groupBox7.Location = new System.Drawing.Point(8, 41);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(435, 102);
             this.groupBox7.TabIndex = 73;
@@ -2133,7 +2137,7 @@ namespace LoginForm.Item
             this.dgItemList.Margin = new System.Windows.Forms.Padding(0);
             this.dgItemList.Name = "dgItemList";
             this.dgItemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgItemList.Size = new System.Drawing.Size(565, 133);
+            this.dgItemList.Size = new System.Drawing.Size(572, 184);
             this.dgItemList.TabIndex = 75;
             this.dgItemList.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgItemList_RowEnter);
             this.dgItemList.Click += new System.EventHandler(this.dataGridView1_Click);
@@ -2151,7 +2155,7 @@ namespace LoginForm.Item
             this.tblTop.Name = "tblTop";
             this.tblTop.RowCount = 1;
             this.tblTop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblTop.Size = new System.Drawing.Size(1012, 133);
+            this.tblTop.Size = new System.Drawing.Size(1019, 184);
             this.tblTop.TabIndex = 0;
             // 
             // panelSearch
@@ -2161,8 +2165,9 @@ namespace LoginForm.Item
             this.panelSearch.Location = new System.Drawing.Point(0, 0);
             this.panelSearch.Margin = new System.Windows.Forms.Padding(0);
             this.panelSearch.Name = "panelSearch";
-            this.panelSearch.Size = new System.Drawing.Size(447, 133);
+            this.panelSearch.Size = new System.Drawing.Size(447, 184);
             this.panelSearch.TabIndex = 74;
+            this.panelSearch.Paint += new System.Windows.Forms.PaintEventHandler(this.panelSearch_Paint);
             // 
             // tblMain
             // 
@@ -2177,14 +2182,36 @@ namespace LoginForm.Item
             this.tblMain.RowCount = 2;
             this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23.79471F));
             this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 76.20528F));
-            this.tblMain.Size = new System.Drawing.Size(1016, 576);
+            this.tblMain.Size = new System.Drawing.Size(1023, 794);
             this.tblMain.TabIndex = 1;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.textBox1.Location = new System.Drawing.Point(93, 105);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(62, 23);
+            this.textBox1.TabIndex = 240;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(12, 106);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(78, 17);
+            this.label5.TabIndex = 239;
+            this.label5.Text = "Supplied In";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // ItemCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1016, 576);
+            this.ClientSize = new System.Drawing.Size(1023, 794);
             this.Controls.Add(this.tblMain);
             this.MinimumSize = new System.Drawing.Size(1026, 595);
             this.Name = "ItemCard";
@@ -2393,5 +2420,7 @@ namespace LoginForm.Item
         private System.Windows.Forms.Panel panelSearch;
         private System.Windows.Forms.TableLayoutPanel tblMain;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label5;
     }
 }

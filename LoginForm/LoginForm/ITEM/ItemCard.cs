@@ -714,5 +714,10 @@ namespace LoginForm.Item
                 this.Close();
             }
         }
+
+        private void panelSearch_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
