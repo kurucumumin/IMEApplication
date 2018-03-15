@@ -1,4 +1,5 @@
-﻿using LoginForm.DataSet;
+﻿using LoginForm.Account.Services;
+using LoginForm.DataSet;
 using LoginForm.Services;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,9 @@ namespace LoginForm.QuotationModule
         List<Tuple<int, decimal>> SubDeletingTotal = new List<Tuple<int, decimal>>();
         ContextMenu DeletedQuotationMenu = new ContextMenu();
         ExchangeRate curr = new ExchangeRate();
+        decimal decsalesQuotationTypeId = 0;
+        decimal decSalesQuotationPreffixSuffixId = 0;
+        bool isAutomatic = false;
         Decimal CurrValue = 1;
         Decimal CurrValue1 = 1;
         decimal Currfactor = 1;
@@ -3243,6 +3247,30 @@ namespace LoginForm.QuotationModule
             foreach (var item in quotationVisibleFalseNames)
             {
                 dgQuotationAddedItems.Columns[item].Visible = false;
+            }
+        }
+
+        public void CallFromVoucherTypeSelection(decimal decVoucherTypeId, string strVoucherTypeName)
+        {
+            try
+            {
+                decsalesQuotationTypeId = decVoucherTypeId;
+                VoucherTypeSP SPVoucherType = new VoucherTypeSP();
+                isAutomatic = SPVoucherType.CheckMethodOfVoucherNumbering(decsalesQuotationTypeId);
+                SuffixPrefixSP SPSuffixPrefix = new SuffixPrefixSP();
+                SuffixPrefix InfoSuffixPrefix = new SuffixPrefix();
+                InfoSuffixPrefix = SPSuffixPrefix.GetSuffixPrefixDetails(decsalesQuotationTypeId, dtpDate.Value);
+                decSalesQuotationPreffixSuffixId = InfoSuffixPrefix.suffixprefixId;
+                this.Text = strVoucherTypeName;
+                base.Show();
+                if (isAutomatic)
+                {
+                    dtpDate.Focus();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("SQ:14" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

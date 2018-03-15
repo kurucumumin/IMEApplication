@@ -1,4 +1,5 @@
-﻿using LoginForm.DataSet;
+﻿using LoginForm.Account.Services;
+using LoginForm.DataSet;
 using LoginForm.QuotationModule;
 using LoginForm.Services;
 using System;
@@ -30,6 +31,8 @@ namespace LoginForm.nmSaleOrder
         Decimal CurrValue = 1;
         Decimal CurrValue1 = 1;
         decimal Currfactor = 1;
+        decimal decSalesOrderTypeId = 0;
+        bool isAutomatic = false;
         decimal CurrentDis;
         decimal LowMarginLimit;
         bool modifyMod = false;
@@ -45,6 +48,39 @@ namespace LoginForm.nmSaleOrder
             dtpDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
             dtpDate.Enabled = false;
             fillCustomer();
+        }
+
+        public void CallFromVoucherTypeSelection(decimal decVoucherTypeId, string strVoucherTypeName)
+        {
+            try
+            {
+                decimal decSalesOrderSuffixPrefixId = 0;
+                string strSuffix = string.Empty;
+                string strPrefix = string.Empty;
+                decSalesOrderTypeId = decVoucherTypeId;
+                VoucherTypeSP spVoucherType = new VoucherTypeSP();
+                isAutomatic = spVoucherType.CheckMethodOfVoucherNumbering(decSalesOrderTypeId);
+                SuffixPrefixSP spSuffisprefix = new SuffixPrefixSP();
+                SuffixPrefix infoSuffixPrefix = new SuffixPrefix();
+                infoSuffixPrefix = spSuffisprefix.GetSuffixPrefixDetails(decSalesOrderTypeId, dtpDate.Value);
+                decSalesOrderSuffixPrefixId = infoSuffixPrefix.suffixprefixId;
+                strPrefix = infoSuffixPrefix.prefix;
+                strSuffix = infoSuffixPrefix.suffix;
+                this.Text = strVoucherTypeName;
+                base.Show();
+                if (isAutomatic)
+                {
+                    dtpDate.Focus();
+                }
+                else
+                {
+                    txtSaleOrderNo.Focus();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("SO1:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         public FormSaleOrderAdd()

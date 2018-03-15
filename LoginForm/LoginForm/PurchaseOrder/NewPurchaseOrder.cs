@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using LoginForm.DataSet;
 using LoginForm.Services;
 using System.Data.SqlClient;
-
+using LoginForm.Account.Services;
 
 namespace LoginForm.PurchaseOrder
 {
@@ -19,6 +19,11 @@ namespace LoginForm.PurchaseOrder
         IMEEntities IME = new IMEEntities();
         List<SaleOrderDetail> saleItemList = new List<SaleOrderDetail>();
         int purchasecode;
+        string strPrefix = string.Empty;
+        string strSuffix = string.Empty;
+        decimal decPurchaseSuffixPrefixId = 0;
+        decimal decPurchaseOrderTypeId = 0;
+        bool isAutomatic = false;
 
         public NewPurchaseOrder()
         {
@@ -271,6 +276,30 @@ namespace LoginForm.PurchaseOrder
             dgPurchase.Columns[14].ReadOnly = true;
             txtOrderNumber.Enabled = false;
             btnCreate.Enabled = false;
+        }
+
+        public void CallFromVoucherTypeSelection(decimal decPurchaseTypeId, string strPurchaseOrderTypeName)
+        {
+            try
+            {
+                DateTime date = IME.CurrentDate().FirstOrDefault().Value;
+                VoucherTypeSP spVoucherType = new VoucherTypeSP();
+                SuffixPrefix infoSuffixPrefix = new SuffixPrefix();
+                SuffixPrefixSP spSuffisprefix = new SuffixPrefixSP();
+                decPurchaseOrderTypeId = decPurchaseTypeId;
+                isAutomatic = spVoucherType.CheckMethodOfVoucherNumbering(decPurchaseOrderTypeId);
+                infoSuffixPrefix = spSuffisprefix.GetSuffixPrefixDetails(decPurchaseOrderTypeId, date);
+                decPurchaseSuffixPrefixId = infoSuffixPrefix.suffixprefixId;
+                strPrefix = infoSuffixPrefix.prefix;
+                strSuffix = infoSuffixPrefix.suffix;
+                this.Text = strPurchaseOrderTypeName;
+                base.Show();
+                //Clear();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("PO29:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }
