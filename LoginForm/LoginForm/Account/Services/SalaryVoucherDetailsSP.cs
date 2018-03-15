@@ -61,67 +61,45 @@ namespace LoginForm.Account.Services
             IMEEntities IME = new IMEEntities();
             decimal decEditMode = 0;
             DataTable dtbl = new DataTable();
-            //TODO MonthlySalaryVoucherDetailViewAll procedure ü yazılacak
-            //try
-            //{
-            //    if (isEditMode == true)
-            //    {
-            //        decEditMode = 1;
-            //    }
-            //    else
-            //    {
-            //        decEditMode = 0;
-            //        strVoucherNoforEdit = "0";
-            //    }
+
+            try
+            {
+                if (isEditMode == true)
+                {
+                    decEditMode = 1;
+                }
+                else
+                {
+                    decEditMode = 0;
+                    strVoucherNoforEdit = "0";
+                }
 
 
-            //    dtbl.Columns.Add("SlNo", typeof(decimal));
-            //    dtbl.Columns["SlNo"].AutoIncrement = true;
-            //    dtbl.Columns["SlNo"].AutoIncrementSeed = 1;
-            //    dtbl.Columns["SlNo"].AutoIncrementStep = 1;
-            //    if (isEditMode == true)
-            //    {
-            //        DataRow row = null;
-            //        foreach (var item in IME.MonthlySalaryVoucherDetailsViewAll_1(strMonth, Month, monthYear, decEditMode, strVoucherNoforEdit))
-            //        {
+                dtbl.Columns.Add("SlNo", typeof(decimal));
+                dtbl.Columns["SlNo"].AutoIncrement = true;
+                dtbl.Columns["SlNo"].AutoIncrementSeed = 1;
+                dtbl.Columns["SlNo"].AutoIncrementStep = 1;
+                if (isEditMode == true)
+                {
+                    DataRow row = null;
+                    ////TODO MonthlySalaryVoucherDetailViewAll tekrar bakılacak
+                    foreach (var item in IME.MonthlySalaryVoucherDetailsViewAll(strMonth, Month, monthYear, decEditMode, strVoucherNoforEdit))
+                    {
 
-            //            row = dtbl.NewRow();
-            //            row["voucherTypeId"] = item;
-            //            dtbl.Rows.Add(row);
-            //        }
+                        row = dtbl.NewRow();
+                        row["voucherTypeId"] = item;
+                        dtbl.Rows.Add(row);
+                    }
 
-            //        foreach (var item in IME.MonthlySalaryVoucherDetailViewAll_2(strMonth, Month, monthYear, decEditMode, strVoucherNoforEdit))
-            //        {
 
-            //            row = dtbl.NewRow();
-            //            row["voucherTypeId"] = item.;
-            //            dtbl.Rows.Add(row);
-            //        }
-            //    }
-            //    else
-            //    {
-            //        DataRow row = null;
-            //        foreach (var item in IME.MonthlySalaryVoucherDetailsViewAll_3(strMonth, Month, monthYear, decEditMode, strVoucherNoforEdit))
-            //        {
+                }
 
-            //            row = dtbl.NewRow();
-            //            row["voucherTypeId"] = item.;
-            //            dtbl.Rows.Add(row);
-            //        }
-            //        foreach (var item in IME.MonthlySalaryVoucherDetailsViewAll_4(strMonth, Month, monthYear, decEditMode, strVoucherNoforEdit))
-            //        {
 
-            //            row = dtbl.NewRow();
-            //            row["voucherTypeId"] = item.;
-            //            dtbl.Rows.Add(row);
-            //        }
-            //    }
-
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.ToString());
-            //}
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
 
             return dtbl;
         }
