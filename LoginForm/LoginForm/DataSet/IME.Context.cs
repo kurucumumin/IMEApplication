@@ -3392,6 +3392,31 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MonthlySalaryVoucherDetailsViewAll_Result>("MonthlySalaryVoucherDetailsViewAll", strMonthParameter, monthParameter, monthYearParameter, isEditModeParameter, voucherNoParameter);
         }
     
+        public virtual int MonthlySalaryVoucherDetailViewAll(string strMonth, string month, string monthYear, Nullable<decimal> isEditMode, string voucherNo)
+        {
+            var strMonthParameter = strMonth != null ?
+                new ObjectParameter("strMonth", strMonth) :
+                new ObjectParameter("strMonth", typeof(string));
+    
+            var monthParameter = month != null ?
+                new ObjectParameter("Month", month) :
+                new ObjectParameter("Month", typeof(string));
+    
+            var monthYearParameter = monthYear != null ?
+                new ObjectParameter("monthYear", monthYear) :
+                new ObjectParameter("monthYear", typeof(string));
+    
+            var isEditModeParameter = isEditMode.HasValue ?
+                new ObjectParameter("isEditMode", isEditMode) :
+                new ObjectParameter("isEditMode", typeof(decimal));
+    
+            var voucherNoParameter = voucherNo != null ?
+                new ObjectParameter("voucherNo", voucherNo) :
+                new ObjectParameter("voucherNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MonthlySalaryVoucherDetailViewAll", strMonthParameter, monthParameter, monthYearParameter, isEditModeParameter, voucherNoParameter);
+        }
+    
         public virtual ObjectResult<MonthlySalaryVoucherMasterAddWithIdentity_Result> MonthlySalaryVoucherMasterAddWithIdentity(Nullable<decimal> ledgerId, string voucherNo, string invoiceNo, Nullable<System.DateTime> date, Nullable<System.DateTime> month, Nullable<decimal> totalAmount, string narration, Nullable<decimal> suffixPrefixId, Nullable<decimal> voucherTypeId, Nullable<decimal> financialYearId, Nullable<bool> isAutomatic)
         {
             var ledgerIdParameter = ledgerId.HasValue ?
