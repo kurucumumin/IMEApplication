@@ -839,25 +839,25 @@ namespace LoginForm
         /// </summary>
         /// <param name="frmMonthlySalaryVoucher"></param>
         /// //TODO OpenMiracle Function
-        //public void CallFromMonthlySalaryVoucher(frmMonthlySalaryVoucher frmMonthlySalaryVoucher)
-        //{
-        //try
-        //{
-        //    dgvAccountLedger.Enabled = false;
-        //    txtLedgerNameSearch.Enabled = false;
-        //    btnSearch.Enabled = false;
-        //    cmbGroupSearch.Enabled = false;
-        //    dgvAccountLedger.Enabled = false;
-        //    lblLedgerNameSearch.Enabled = false;
-        //    lblGroupSearch.Enabled = false;
-        //    this.frmMonthlySalaryVoucherObj = frmMonthlySalaryVoucher;
-        //    base.Show();
-        //}
-        //catch (Exception ex)
-        //{
-        //    MessageBox.Show("AL16:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //}
-        //}
+        public void CallFromMonthlySalaryVoucher(frmMonthlySalaryVoucher frmMonthlySalaryVoucher)
+        {
+            try
+            {
+                dgvAccountLedger.Enabled = false;
+                txtLedgerNameSearch.Enabled = false;
+                btnSearch.Enabled = false;
+                cmbGroupSearch.Enabled = false;
+                dgvAccountLedger.Enabled = false;
+                lblLedgerNameSearch.Enabled = false;
+                lblGroupSearch.Enabled = false;
+                //this.frmMonthlySalaryVoucherObj = frmMonthlySalaryVoucher;
+                base.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("AL16:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
         /// <summary>
         /// Function to call this form from frmReceiptVoucher for creating new account ledger
         /// </summary>
