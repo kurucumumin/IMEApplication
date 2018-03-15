@@ -133,6 +133,12 @@
     <Compile Include="Account\Budget\frmBudgetVariance.Designer.cs">
       <DependentUpon>frmBudgetVariance.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\FinancialStatements\frmCashFlow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\FinancialStatements\frmCashFlow.Designer.cs">
+      <DependentUpon>frmCashFlow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\FinancialStatements\frmChartOfAccount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -223,6 +229,12 @@
     <Compile Include="Account\PayRoll\frmAdvancePayment.designer.cs">
       <DependentUpon>frmAdvancePayment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\PayRoll\frmAdvanceRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\PayRoll\frmAdvanceRegister.Designer.cs">
+      <DependentUpon>frmAdvanceRegister.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\PayRoll\frmAttendance.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -241,6 +253,18 @@
     <Compile Include="Account\PayRoll\frmBonusDeductionRegister.designer.cs">
       <DependentUpon>frmBonusDeductionRegister.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\PayRoll\frmDailySalaryRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\PayRoll\frmDailySalaryRegister.designer.cs">
+      <DependentUpon>frmDailySalaryRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\PayRoll\frmDailySalaryVoucher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\PayRoll\frmDailySalaryVoucher.Designer.cs">
+      <DependentUpon>frmDailySalaryVoucher.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\PayRoll\frmDesignation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -258,6 +282,12 @@
     </Compile>
     <Compile Include="Account\PayRoll\frmMonthlySalaryRegister.designer.cs">
       <DependentUpon>frmMonthlySalaryRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\PayRoll\frmMonthlySalarySettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\PayRoll\frmMonthlySalarySettings.Designer.cs">
+      <DependentUpon>frmMonthlySalarySettings.cs</DependentUpon>
     </Compile>
     <Compile Include="Account\PayRoll\frmMonthlySalaryVoucher.cs">
       <SubType>Form</SubType>
@@ -519,6 +549,8 @@
     <Compile Include="Account\Services\DailyAttendanceDetailsSP.cs" />
     <Compile Include="Account\Services\DailyAttendanceMasterInfo.cs" />
     <Compile Include="Account\Services\DailyAttendanceMasterSP.cs" />
+    <Compile Include="Account\Services\DailySalaryVoucherDetailsSP.cs" />
+    <Compile Include="Account\Services\DailySalaryVoucherMasterSP.cs" />
     <Compile Include="Account\Services\DebitNoteDetailsSP.cs" />
     <Compile Include="Account\Services\DebitNoteMasterSP.cs" />
     <Compile Include="Account\Services\DeliveryNoteDetailsSP.cs" />
@@ -536,6 +568,7 @@
     <Compile Include="Account\Services\LedgerPostingSP.cs" />
     <Compile Include="Account\Services\MaterialReceiptDetailsSP.cs" />
     <Compile Include="Account\Services\MaterialReceiptMasterSP.cs" />
+    <Compile Include="Account\Services\MonthlySalaryDetailsSP.cs" />
     <Compile Include="Account\Services\MonthlySalarySP.cs" />
     <Compile Include="Account\Services\NumToText.cs" />
     <Compile Include="Account\Services\PartyBalanceSP.cs" />
@@ -593,11 +626,23 @@
     <Compile Include="Account\Settings\frmSettings.designer.cs">
       <DependentUpon>frmSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\Transaction\frmBalanceSheet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Transaction\frmBalanceSheet.Designer.cs">
+      <DependentUpon>frmBalanceSheet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\Transaction\frmBankReconciliation.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Account\Transaction\frmBankReconciliation.designer.cs">
       <DependentUpon>frmBankReconciliation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Transaction\frmBillallocation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Transaction\frmBillallocation.designer.cs">
+      <DependentUpon>frmBillallocation.cs</DependentUpon>
     </Compile>
     <Compile Include="Account\Transaction\frmCreditNote.cs">
       <SubType>Form</SubType>
@@ -1256,7 +1301,16 @@
     <Compile Include="DataSet\MonthlySalaryDetail.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\MonthlySalaryDetail1.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\MonthlySalaryRegisterSearch_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\MonthlySalarySettingsEmployeeViewAll_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\MonthlySalarySettingsWorkerViewAll_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\MonthlySalaryVoucherMasterAddWithIdentity_Result.cs">
@@ -1604,6 +1658,9 @@
     <Compile Include="DataSet\SalaryPackageregisterSearch_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\SalaryPackageViewAllForMonthlySalarySettings_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\SalaryPackageView_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1871,7 +1928,6 @@
     <Compile Include="DataSet\Worker.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\WorkerApp.cs" />
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1938,6 +1994,12 @@
     <Compile Include="Management\FormTermsOfPayment.Designer.cs">
       <DependentUpon>FormTermsOfPayment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Management\frmCompanyCreation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Management\frmCompanyCreation.designer.cs">
+      <DependentUpon>frmCompanyCreation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\SaleItem.cs" />
     <Compile Include="ModulePurchaseInvoice\frmPurchaseInvoiceLoader.cs">
       <SubType>Form</SubType>
@@ -1945,13 +2007,9 @@
     <Compile Include="ModulePurchaseInvoice\frmPurchaseInvoiceLoader.Designer.cs">
       <DependentUpon>frmPurchaseInvoiceLoader.cs</DependentUpon>
     </Compile>
-    <Compile Include="nCompany\frmCompanyCreation.cs" />
-    <Compile Include="nCompany\frmCompanyCreation.designer.cs">
-      <DependentUpon>frmCompanyCreation.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources1.Designer.cs" />
+    <Compile Include="Properties\Resources.Designer.cs" />
     <Compile Include="PurchaseOrder\ExcelPurchaseOrder.cs" />
     <Compile Include="PurchaseOrder\FormBillTo.cs">
       <SubType>Form</SubType>
@@ -2145,6 +2203,9 @@
     <EmbeddedResource Include="Account\Budget\frmBudgetVariance.resx">
       <DependentUpon>frmBudgetVariance.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Account\FinancialStatements\frmCashFlow.resx">
+      <DependentUpon>frmCashFlow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Account\FinancialStatements\frmChartOfAccount.resx">
       <DependentUpon>frmChartOfAccount.cs</DependentUpon>
     </EmbeddedResource>
@@ -2190,6 +2251,9 @@
     <EmbeddedResource Include="Account\PayRoll\frmAdvancePayment.resx">
       <DependentUpon>frmAdvancePayment.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Account\PayRoll\frmAdvanceRegister.resx">
+      <DependentUpon>frmAdvanceRegister.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Account\PayRoll\frmAttendance.resx">
       <DependentUpon>frmAttendance.cs</DependentUpon>
     </EmbeddedResource>
@@ -2199,6 +2263,12 @@
     <EmbeddedResource Include="Account\PayRoll\frmBonusDeductionRegister.resx">
       <DependentUpon>frmBonusDeductionRegister.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Account\PayRoll\frmDailySalaryRegister.resx">
+      <DependentUpon>frmDailySalaryRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\PayRoll\frmDailySalaryVoucher.resx">
+      <DependentUpon>frmDailySalaryVoucher.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Account\PayRoll\frmDesignation.resx">
       <DependentUpon>frmDesignation.cs</DependentUpon>
     </EmbeddedResource>
@@ -2207,6 +2277,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Account\PayRoll\frmMonthlySalaryRegister.resx">
       <DependentUpon>frmMonthlySalaryRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\PayRoll\frmMonthlySalarySettings.resx">
+      <DependentUpon>frmMonthlySalarySettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Account\PayRoll\frmMonthlySalaryVoucher.resx">
       <DependentUpon>frmMonthlySalaryVoucher.cs</DependentUpon>
@@ -2331,8 +2404,14 @@
     <EmbeddedResource Include="Account\Settings\frmSettings.resx">
       <DependentUpon>frmSettings.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Account\Transaction\frmBalanceSheet.resx">
+      <DependentUpon>frmBalanceSheet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Account\Transaction\frmBankReconciliation.resx">
       <DependentUpon>frmBankReconciliation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\Transaction\frmBillallocation.resx">
+      <DependentUpon>frmBillallocation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Transaction\frmCreditNote.resx">
       <DependentUpon>frmCreditNote.cs</DependentUpon>
@@ -2439,11 +2518,11 @@
     <EmbeddedResource Include="Management\FormTermsOfPayment.resx">
       <DependentUpon>FormTermsOfPayment.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Management\frmCompanyCreation.resx">
+      <DependentUpon>frmCompanyCreation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModulePurchaseInvoice\frmPurchaseInvoiceLoader.resx">
       <DependentUpon>frmPurchaseInvoiceLoader.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="nCompany\frmCompanyCreation.resx">
-      <DependentUpon>frmCompanyCreation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx" />
     <EmbeddedResource Include="PurchaseOrder\FormBillTo.resx">
@@ -2538,6 +2617,7 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\LoginForm.DataSet.AuthorizationValue.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.AuthRole.datasource" />
+    <None Include="Properties\DataSources\LoginForm.DataSet.Currency.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.Customer.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.CustomerAddress.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.CustomerCategory.datasource" />
