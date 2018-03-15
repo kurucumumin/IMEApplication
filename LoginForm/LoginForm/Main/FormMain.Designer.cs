@@ -102,7 +102,7 @@
             this.gbMainMenu.Location = new System.Drawing.Point(3, 171);
             this.gbMainMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbMainMenu.Name = "gbMainMenu";
-            this.gbMainMenu.Padding = new System.Windows.Forms.Padding(0);
+            this.gbMainMenu.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
             this.gbMainMenu.Size = new System.Drawing.Size(213, 456);
             this.gbMainMenu.TabIndex = 32;
             this.gbMainMenu.TabStop = false;
@@ -116,7 +116,7 @@
             this.btnManagement.FlatAppearance.BorderSize = 0;
             this.btnManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnManagement.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnManagement.Location = new System.Drawing.Point(0, 170);
+            this.btnManagement.Location = new System.Drawing.Point(0, 180);
             this.btnManagement.Margin = new System.Windows.Forms.Padding(0);
             this.btnManagement.Name = "btnManagement";
             this.btnManagement.Size = new System.Drawing.Size(213, 50);
@@ -133,7 +133,7 @@
             this.btnAccounting.FlatAppearance.BorderSize = 0;
             this.btnAccounting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAccounting.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAccounting.Location = new System.Drawing.Point(0, 120);
+            this.btnAccounting.Location = new System.Drawing.Point(0, 130);
             this.btnAccounting.Margin = new System.Windows.Forms.Padding(0);
             this.btnAccounting.Name = "btnAccounting";
             this.btnAccounting.Size = new System.Drawing.Size(213, 50);
@@ -150,7 +150,7 @@
             this.btnDevelopment.FlatAppearance.BorderSize = 0;
             this.btnDevelopment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDevelopment.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDevelopment.Location = new System.Drawing.Point(0, 70);
+            this.btnDevelopment.Location = new System.Drawing.Point(0, 80);
             this.btnDevelopment.Margin = new System.Windows.Forms.Padding(0);
             this.btnDevelopment.Name = "btnDevelopment";
             this.btnDevelopment.Size = new System.Drawing.Size(213, 50);
@@ -167,7 +167,7 @@
             this.btnLoader.FlatAppearance.BorderSize = 0;
             this.btnLoader.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLoader.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLoader.Location = new System.Drawing.Point(0, 20);
+            this.btnLoader.Location = new System.Drawing.Point(0, 30);
             this.btnLoader.Margin = new System.Windows.Forms.Padding(0);
             this.btnLoader.Name = "btnLoader";
             this.btnLoader.Size = new System.Drawing.Size(213, 50);

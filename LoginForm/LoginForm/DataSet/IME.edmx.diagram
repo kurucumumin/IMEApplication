@@ -4,9 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-<<<<<<< HEAD
-<<<<<<< HEAD
+
       <Diagram DiagramId="c96b2446b2b842eb8405e60eac268f51" Name="Diagram1">
+
+      <Diagram DiagramId="0be1c3d30d094cfb95a85b2ec6b55ceb" Name="Diagram1">
+
         <EntityTypeShape EntityType="IMEModel.AccountGroup" Width="1.5" PointX="9.75" PointY="61" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.AccountLedger" Width="1.5" PointX="12" PointY="60" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.AdvancePayment" Width="1.5" PointX="20.25" PointY="85.375" IsExpanded="true" />
@@ -85,11 +87,7 @@
         <EntityTypeShape EntityType="IMEModel.PrintFormat" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.PurchaseBillTax" Width="1.5" PointX="13.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.PurchaseDetail" Width="1.5" PointX="42" PointY="84.5" IsExpanded="true" />
-=======
-      <Diagram DiagramId="dbc057c80e0949048a90a6c2f9bd12bc" Name="Diagram1" ZoomLevel="88">
-=======
-      <Diagram DiagramId="566af9bd76a1475e9caaadb8a638973b" Name="Diagram1">
->>>>>>> parent of 4784dc6... IME
+
         <EntityTypeShape EntityType="IMEModel.AccountGroup" Width="1.5" PointX="9.75" PointY="59.375" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.AccountLedger" Width="1.5" PointX="12" PointY="58.25" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.AdvancePayment" Width="1.5" PointX="20.25" PointY="83.625" IsExpanded="true" />
@@ -167,7 +165,7 @@
         <EntityTypeShape EntityType="IMEModel.PrintFormat" Width="1.5" PointX="0.75" PointY="13.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.PurchaseBillTax" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.PurchaseDetail" Width="1.5" PointX="42" PointY="82.75" IsExpanded="true" />
->>>>>>> NebiDevelop
+
         <EntityTypeShape EntityType="IMEModel.PurchaseInvoice" Width="1.5" PointX="5.75" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.PurchaseInvoiceDetail" Width="1.5" PointX="8" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.PurchaseMaster" Width="1.5" PointX="25.5" PointY="82.375" IsExpanded="true" />

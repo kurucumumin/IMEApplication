@@ -1307,9 +1307,6 @@
     <Compile Include="DataSet\MonthlySalarySettingsEmployeeViewAll_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\MonthlySalarySettingsWorkerViewAll_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\MonthlySalaryVoucherMasterAddWithIdentity_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
