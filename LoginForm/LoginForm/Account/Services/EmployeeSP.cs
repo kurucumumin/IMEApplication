@@ -9,6 +9,7 @@ namespace LoginForm.Account.Services
 {
     class EmployeeSP
     {
+        
         public DataTable SalesmanSearch(String strEmployeeCode, String strEmployeeName, String strPhoneNumber, String strMobileNumber, String strIsActive)
         {
             IMEEntities IME = new IMEEntities();
@@ -315,6 +316,34 @@ namespace LoginForm.Account.Services
             }
 
 
+            return dtbl;
+        }
+
+        public DataTable EmployeeViewForPaySlip()
+        {
+            DataTable dtbl = new DataTable();
+            IMEEntities IME = new IMEEntities();
+            try
+            {
+                var adaptor = IME.EmployeeViewForPaySlip();
+
+                dtbl.Columns.Add("WorkerID");
+                dtbl.Columns.Add("NameLastName");
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["WorkerID"] = item.WorkerID;
+                    row["NameLastName"] = item.NameLastName;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
             return dtbl;
         }
     }

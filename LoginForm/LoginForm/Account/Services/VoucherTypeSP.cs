@@ -11,6 +11,31 @@ namespace LoginForm.Account.Services
 {
     class VoucherTypeSP
     {
+        public DataTable VoucherTypeNameComboFill()
+        {
+            DataTable dtbl = new DataTable();
+            IMEEntities IME = new IMEEntities();
+            try
+            {
+                dtbl.Columns.Add("voucherTypeId");
+                dtbl.Columns.Add("voucherTypeName");
+               
+                DataRow drow = null;
+                foreach (var item in IME.VoucherTypeNameComboFill())
+                {
+                    drow = dtbl.NewRow();
+                    drow["voucherTypeId"] = item.voucherTypeId;
+                    drow["voucherTypeName"] = item.voucherTypeName;
+                    dtbl.Rows.Add(drow);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return dtbl;
+        }
+
         public bool CheckMethodOfVoucherNumbering(decimal voucherTypeId)
         {
             VoucherType infoVoucherType = new VoucherType();

@@ -151,28 +151,28 @@ namespace LoginForm
         /// <param name="frmMonthlySalaryReg"></param>
         /// <param name="decId"></param>
         /// <param name="strComboType"></param>
-        //public void CallFromMonthlySalaryRegister(frmMonthlySalaryRegister frmMonthlySalaryReg, decimal decId, string strComboType)
-        //{
-        //    try
-        //    {
-        //        strComboTypes = strComboType;
-        //        base.Show();
-        //        this.frmMonthlySalaryRegisterObj = frmMonthlySalaryReg;
-        //        int inRowCount = dgvLedgerPopup.Rows.Count;
-        //        for (int i = 0; i < inRowCount; i++)
-        //        {
-        //            if (Convert.ToDecimal(dgvLedgerPopup.Rows[i].Cells["dgvtxtLedgerId"].Value.ToString()) == decId)
-        //            {
-        //                dgvLedgerPopup.Rows[i].DefaultCellStyle.BackColor = Color.MediumSeaGreen;
-        //            }
-        //        }
-        //        txtLedgerName.Focus();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("LP5:" + ex.Message, "Open Miracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+        public void CallFromMonthlySalaryRegister(frmMonthlySalaryRegister frmMonthlySalaryReg, decimal decId, string strComboType)
+        {
+            try
+            {
+                strComboTypes = strComboType;
+                base.Show();
+                //this.frmMonthlySalaryRegisterObj = frmMonthlySalaryReg;
+                int inRowCount = dgvLedgerPopup.Rows.Count;
+                for (int i = 0; i < inRowCount; i++)
+                {
+                    if (Convert.ToDecimal(dgvLedgerPopup.Rows[i].Cells["dgvtxtLedgerId"].Value.ToString()) == decId)
+                    {
+                        dgvLedgerPopup.Rows[i].DefaultCellStyle.BackColor = Color.MediumSeaGreen;
+                    }
+                }
+                txtLedgerName.Focus();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("LP5:" + ex.Message, "Open Miracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+       }
         /// <summary>
         /// Function to call this form from frmPurchaseOrder
         /// </summary>
@@ -323,28 +323,28 @@ namespace LoginForm
         /// <param name="frmMonthlySalary"></param>
         /// <param name="decId"></param>
         /// <param name="strComboType"></param>
-        //public void CallFromMonthlySalaryVoucher(frmMonthlySalaryVoucher frmMonthlySalary, decimal decId, string strComboType) //PopUp
-        //{
-        //    try
-        //    {
-        //        strComboTypes = strComboType;
-        //        base.Show();
-        //        this.frmMonthlySalaryVoucherObj = frmMonthlySalary;
-        //        int inRowCount = dgvLedgerPopup.Rows.Count;
-        //        for (int i = 0; i < inRowCount; i++)
-        //        {
-        //            if (Convert.ToDecimal(dgvLedgerPopup.Rows[i].Cells["dgvtxtLedgerId"].Value.ToString()) == decId)
-        //            {
-        //                dgvLedgerPopup.Rows[i].DefaultCellStyle.BackColor = Color.MediumSeaGreen;
-        //            }
-        //        }
-        //        txtLedgerName.Focus();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("LP11:" + ex.Message, "Open Miracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+        public void CallFromMonthlySalaryVoucher(frmMonthlySalaryVoucher frmMonthlySalary, decimal decId, string strComboType) //PopUp
+        {
+            try
+            {
+                strComboTypes = strComboType;
+                base.Show();
+                //this.frmMonthlySalaryVoucherObj = frmMonthlySalary;
+                int inRowCount = dgvLedgerPopup.Rows.Count;
+                for (int i = 0; i < inRowCount; i++)
+                {
+                    if (Convert.ToDecimal(dgvLedgerPopup.Rows[i].Cells["dgvtxtLedgerId"].Value.ToString()) == decId)
+                    {
+                        dgvLedgerPopup.Rows[i].DefaultCellStyle.BackColor = Color.MediumSeaGreen;
+                    }
+                }
+                txtLedgerName.Focus();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("LP11:" + ex.Message, "Open Miracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
         /// <summary>
         /// Function to call this form from frmDailySalaryVoucher
         /// </summary>

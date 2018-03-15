@@ -14,8 +14,17 @@ namespace LoginForm.DataSet
     
     public partial class MonthlySalary
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public MonthlySalary()
+        {
+            this.MonthlySalaryDetails = new HashSet<MonthlySalaryDetail>();
+        }
+    
         public decimal monthlySalaryId { get; set; }
         public Nullable<System.DateTime> salaryMonth { get; set; }
         public string narration { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MonthlySalaryDetail> MonthlySalaryDetails { get; set; }
     }
 }

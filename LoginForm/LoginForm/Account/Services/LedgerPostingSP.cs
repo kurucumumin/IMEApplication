@@ -29,7 +29,7 @@ namespace LoginForm.Account.Services
             IME.LedgerPostDelete(decVoucherTypeId, strVoucherNo);
         }
 
-        public DataTable GetLedgerPostingIds(string v1, int v2)
+        public DataTable GetLedgerPostingIds(string v1, decimal v2)
         {
             IMEEntities db = new IMEEntities();
             DataTable dt = new DataTable();
