@@ -26,9 +26,9 @@ namespace LoginForm.DataSet
         public string narration { get; set; }
 <<<<<<< HEAD
     
-<<<<<<< HEAD
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MonthlySalaryDetail1> MonthlySalaryDetails { get; set; }
+<<<<<<< HEAD
 =======
 >>>>>>> NebiDevelop
 =======
@@ -36,6 +36,8 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MonthlySalaryDetail1> MonthlySalaryDetails { get; set; }
 >>>>>>> parent of 4784dc6... IME
+=======
+>>>>>>> Develop
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MonthlySalaryDetail> MonthlySalaryDetails1 { get; set; }
     }

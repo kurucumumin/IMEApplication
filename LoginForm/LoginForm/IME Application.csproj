@@ -679,6 +679,7 @@
     </Compile>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <Compile Include="CustomControls\AccountCustomControl\BudgetControl.cs" />
     <Compile Include="CustomControls\AccountCustomControl\BudgetControl.Designer.cs">
       <DependentUpon>BudgetControl.cs</DependentUpon>
@@ -693,6 +694,8 @@
     </Compile>
     <Compile Include="CustomControls\AccountCustomControl\TempControl.cs" />
 =======
+=======
+>>>>>>> Develop
     <Compile Include="CustomControls\AccountCustomControl\BudgetControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -718,7 +721,10 @@
       <SubType>UserControl</SubType>
     </Compile>
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> NebiDevelop
+=======
+>>>>>>> Develop
     <Compile Include="CustomControls\AccountCustomControl\TempControl.Designer.cs">
       <DependentUpon>TempControl.cs</DependentUpon>
 =======
@@ -734,6 +740,7 @@
     </Compile>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <Compile Include="CustomControls\NavigationControl.cs" />
 =======
     <Compile Include="CustomControls\NavigationControl.cs">
@@ -742,6 +749,11 @@
 >>>>>>> NebiDevelop
 =======
 >>>>>>> parent of 4784dc6... IME
+=======
+    <Compile Include="CustomControls\NavigationControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+>>>>>>> Develop
     <Compile Include="Customer\CustomerDepartmentAdd.cs">
       <SubType>Form</SubType>
     </Compile>
