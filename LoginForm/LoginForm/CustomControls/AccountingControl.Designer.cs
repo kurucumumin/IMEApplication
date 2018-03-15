@@ -31,12 +31,12 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.btnReminders = new System.Windows.Forms.Button();
-            this.btnPayroll = new System.Windows.Forms.Button();
+            this.btnRegister = new System.Windows.Forms.Button();
             this.btnBudgets = new System.Windows.Forms.Button();
             this.btnReports = new System.Windows.Forms.Button();
             this.btnFinancialStatements = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.btnOthers = new System.Windows.Forms.Button();
+            this.btnPayroll = new System.Windows.Forms.Button();
             this.btnTransactions = new System.Windows.Forms.Button();
             this.btnMasters = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
@@ -47,12 +47,12 @@
             this.panel1.AutoScroll = true;
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.btnReminders);
-            this.panel1.Controls.Add(this.btnPayroll);
+            this.panel1.Controls.Add(this.btnRegister);
             this.panel1.Controls.Add(this.btnBudgets);
             this.panel1.Controls.Add(this.btnReports);
             this.panel1.Controls.Add(this.btnFinancialStatements);
             this.panel1.Controls.Add(this.btnSearch);
-            this.panel1.Controls.Add(this.btnOthers);
+            this.panel1.Controls.Add(this.btnPayroll);
             this.panel1.Controls.Add(this.btnTransactions);
             this.panel1.Controls.Add(this.btnMasters);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -100,24 +100,25 @@
             this.btnReminders.Text = "Reminders";
             this.btnReminders.UseVisualStyleBackColor = false;
             // 
-            // btnPayroll
+            // btnRegister
             // 
-            this.btnPayroll.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnRegister.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPayroll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
-            this.btnPayroll.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnPayroll.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnPayroll.FlatAppearance.BorderSize = 0;
-            this.btnPayroll.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnPayroll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPayroll.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPayroll.Location = new System.Drawing.Point(0, 160);
-            this.btnPayroll.Margin = new System.Windows.Forms.Padding(0);
-            this.btnPayroll.Name = "btnPayroll";
-            this.btnPayroll.Size = new System.Drawing.Size(301, 40);
-            this.btnPayroll.TabIndex = 39;
-            this.btnPayroll.Text = "Register";
-            this.btnPayroll.UseVisualStyleBackColor = false;
+            this.btnRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
+            this.btnRegister.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRegister.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnRegister.FlatAppearance.BorderSize = 0;
+            this.btnRegister.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegister.Location = new System.Drawing.Point(0, 160);
+            this.btnRegister.Margin = new System.Windows.Forms.Padding(0);
+            this.btnRegister.Name = "btnRegister";
+            this.btnRegister.Size = new System.Drawing.Size(301, 40);
+            this.btnRegister.TabIndex = 39;
+            this.btnRegister.Text = "Register";
+            this.btnRegister.UseVisualStyleBackColor = false;
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
             // btnBudgets
             // 
@@ -197,24 +198,25 @@
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = false;
             // 
-            // btnOthers
+            // btnPayroll
             // 
-            this.btnOthers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnPayroll.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOthers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
-            this.btnOthers.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnOthers.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnOthers.FlatAppearance.BorderSize = 0;
-            this.btnOthers.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnOthers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOthers.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOthers.Location = new System.Drawing.Point(0, 120);
-            this.btnOthers.Margin = new System.Windows.Forms.Padding(0);
-            this.btnOthers.Name = "btnOthers";
-            this.btnOthers.Size = new System.Drawing.Size(301, 40);
-            this.btnOthers.TabIndex = 35;
-            this.btnOthers.Text = "Others";
-            this.btnOthers.UseVisualStyleBackColor = false;
+            this.btnPayroll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
+            this.btnPayroll.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnPayroll.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnPayroll.FlatAppearance.BorderSize = 0;
+            this.btnPayroll.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnPayroll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPayroll.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPayroll.Location = new System.Drawing.Point(0, 120);
+            this.btnPayroll.Margin = new System.Windows.Forms.Padding(0);
+            this.btnPayroll.Name = "btnPayroll";
+            this.btnPayroll.Size = new System.Drawing.Size(301, 40);
+            this.btnPayroll.TabIndex = 35;
+            this.btnPayroll.Text = "Payroll";
+            this.btnPayroll.UseVisualStyleBackColor = false;
+            this.btnPayroll.Click += new System.EventHandler(this.btnPayroll_Click);
             // 
             // btnTransactions
             // 
@@ -273,12 +275,12 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnReminders;
-        private System.Windows.Forms.Button btnPayroll;
+        private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.Button btnBudgets;
         private System.Windows.Forms.Button btnReports;
         private System.Windows.Forms.Button btnFinancialStatements;
         private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.Button btnOthers;
+        private System.Windows.Forms.Button btnPayroll;
         private System.Windows.Forms.Button btnTransactions;
         private System.Windows.Forms.Button btnMasters;
         private System.Windows.Forms.Button button1;
