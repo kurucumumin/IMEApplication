@@ -61,7 +61,10 @@ namespace LoginForm.Account.Services
             IMEEntities IME = new IMEEntities();
             decimal decEditMode = 0;
             DataTable dtbl = new DataTable();
-
+            dtbl.Columns.Add("SlNo", typeof(decimal));
+            dtbl.Columns["SlNo"].AutoIncrement = true;
+            dtbl.Columns["SlNo"].AutoIncrementSeed = 1;
+            dtbl.Columns["SlNo"].AutoIncrementStep = 1;
             try
             {
                 if (isEditMode == true)
@@ -73,28 +76,30 @@ namespace LoginForm.Account.Services
                     decEditMode = 0;
                     strVoucherNoforEdit = "0";
                 }
-
-
-                dtbl.Columns.Add("SlNo", typeof(decimal));
-                dtbl.Columns["SlNo"].AutoIncrement = true;
-                dtbl.Columns["SlNo"].AutoIncrementSeed = 1;
-                dtbl.Columns["SlNo"].AutoIncrementStep = 1;
                 if (isEditMode == true)
                 {
                     DataRow row = null;
                     ////TODO MonthlySalaryVoucherDetailViewAll tekrar bakılacak
-                    foreach (var item in IME.MonthlySalaryVoucherDetailsViewAll(strMonth, Month, monthYear, decEditMode, strVoucherNoforEdit))
+                    var adapter = IME.MonthlySalaryVoucherDetailsViewAll(strMonth, Month, monthYear, decEditMode, strVoucherNoforEdit).ToList();
+
+                    foreach (var item in adapter)
                     {
 
                         row = dtbl.NewRow();
-                        row["voucherTypeId"] = item;
+                        row["WorkerID"] = item.WorkerID;
+                        row["UserName"] = item.UserName;
+                        row["NameLastName"] = item.NameLastName;
+                        row["masterId"] = item.masterId;
+                        row["detailsId"] = item.detailsId;
+                        row["bonusAmount"] = item.bonusAmount;
+                        row["deductionAmount"] = item.deductionAmount;
+                        row["amount"] = item.amount;
+                        row["lop"] = item.lop;
+                        row["status"] = item.status;
+                        row["salary"] = item.salary;
                         dtbl.Rows.Add(row);
                     }
-
-
                 }
-
-
             }
             catch (Exception ex)
             {
@@ -127,9 +132,22 @@ namespace LoginForm.Account.Services
 
             try
             {
+                DataRow row = null;
                 foreach (var item in IME.SalaryVoucherMasterViewAll())
                 {
-
+                    row = dtbl.NewRow();
+                    row["salaryVoucherMasterId"] = item.salaryVoucherMasterId;
+                    row["ledgerId"] = item.ledgerId;
+                    row["voucherNo"] = item.voucherNo;
+                    row["invoiceNo"] = item.invoiceNo;
+                    row["date"] = item.date;
+                    row["month"] = item.month;
+                    row["totalAmount"] = item.totalAmount;
+                    row["narration"] = item.narration;
+                    row["suffixPrefixId"] = item.suffixPrefixId;
+                    row["voucherTypeId"] = item.voucherTypeId;
+                    row["financialYearId"] = item.financialYearId;
+                    dtbl.Rows.Add(row);
                 }
             }
             catch (Exception ex)
