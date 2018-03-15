@@ -52,6 +52,7 @@
             this.controlAccounting = new LoginForm.CustomControls.AccountingControl();
             this.controlLoader = new LoginForm.CustomControls.LoaderControl();
             this.controlDevelopment = new LoginForm.CustomControls.DevelopmentControl();
+            this.subControlReports = new LoginForm.CustomControls.ReportsControl();
             this.tableLeftPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.gbMainMenu.SuspendLayout();
@@ -245,6 +246,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.subControlReports);
             this.panel3.Controls.Add(this.subControlReminder);
             this.panel3.Controls.Add(this.subControlRegister);
             this.panel3.Controls.Add(this.subControlPayroll);
@@ -371,6 +373,17 @@
             this.controlDevelopment.TabIndex = 1;
             this.controlDevelopment.Visible = false;
             // 
+            // subControlReports
+            // 
+            this.subControlReports.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
+            this.subControlReports.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.subControlReports.Location = new System.Drawing.Point(0, 0);
+            this.subControlReports.Margin = new System.Windows.Forms.Padding(0);
+            this.subControlReports.Name = "subControlReports";
+            this.subControlReports.Size = new System.Drawing.Size(334, 613);
+            this.subControlReports.TabIndex = 11;
+            this.subControlReports.Visible = false;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -426,5 +439,6 @@
         public CustomControls.PayrollControl subControlPayroll;
         public CustomControls.RegistersControl subControlRegister;
         public CustomControls.ReminderControl subControlReminder;
+        public CustomControls.ReportsControl subControlReports;
     }
 }
