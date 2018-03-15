@@ -99,6 +99,7 @@
             this.btnReminders.TabIndex = 36;
             this.btnReminders.Text = "Reminders";
             this.btnReminders.UseVisualStyleBackColor = false;
+            this.btnReminders.Click += new System.EventHandler(this.btnReminders_Click);
             // 
             // btnRegister
             // 

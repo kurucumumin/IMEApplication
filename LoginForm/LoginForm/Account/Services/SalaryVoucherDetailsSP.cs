@@ -154,7 +154,7 @@ namespace LoginForm.Account.Services
             {
                 MessageBox.Show(ex.ToString());
             }
-           
+
             return dtbl;
         }
 
@@ -179,7 +179,7 @@ namespace LoginForm.Account.Services
             {
                 MessageBox.Show(ex.ToString());
             }
-            
+
         }
 
         public void SalaryVoucherDetailsDelete(decimal SalaryVoucherDetailsId)
@@ -194,7 +194,7 @@ namespace LoginForm.Account.Services
             {
                 MessageBox.Show(ex.ToString());
             }
-          
+
         }
 
         public int SalaryVoucherDetailsCount(decimal decMasterId)
@@ -209,7 +209,7 @@ namespace LoginForm.Account.Services
             {
                 MessageBox.Show(ex.ToString());
             }
-           
+
             return max;
         }
 
@@ -225,7 +225,7 @@ namespace LoginForm.Account.Services
             {
                 MessageBox.Show(ex.ToString());
             }
-            
+
         }
     }
 }
