@@ -223,7 +223,9 @@
     <Compile Include="Account\Other\frmLedgerPopup.designer.cs">
       <DependentUpon>frmLedgerPopup.cs</DependentUpon>
     </Compile>
-    <Compile Include="Account\Other\frmReminderPopUp.cs" />
+    <Compile Include="Account\Other\frmReminderPopUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Account\Other\frmReminderPopUp.Designer.cs">
       <DependentUpon>frmReminderPopUp.cs</DependentUpon>
     </Compile>
@@ -726,19 +728,7 @@
     <Compile Include="Account\Transaction\frmServiceVoucher.Designer.cs">
       <DependentUpon>frmServiceVoucher.cs</DependentUpon>
     </Compile>
-    <Compile Include="CustomControls\AccountCustomControl\SearchControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CustomControls\AccountCustomControl\SearchControl.Designer.cs">
-      <DependentUpon>SearchControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CustomControls\AccountCustomControl\ReportsControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CustomControls\AccountCustomControl\RegistersControl.Designer.cs">
-      <DependentUpon>RegistersControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CustomControls\AccountCustomControl\PayrollControl.cs">
+    <Compile Include="CustomControls\AccountCustomControl\%40TempControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="CustomControls\AccountCustomControl\%40TempControl.Designer.cs">
@@ -773,6 +763,24 @@
     </Compile>
     <Compile Include="CustomControls\AccountCustomControl\RegistersControl.Designer.cs">
       <DependentUpon>RegistersControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\AccountCustomControl\ReminderControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\AccountCustomControl\ReminderControl.Designer.cs">
+      <DependentUpon>ReminderControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\AccountCustomControl\ReportsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\AccountCustomControl\ReportsControl.Designer.cs">
+      <DependentUpon>ReportsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\AccountCustomControl\SearchControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\AccountCustomControl\SearchControl.Designer.cs">
+      <DependentUpon>SearchControl.cs</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\AccountingControl.cs">
       <SubType>UserControl</SubType>
@@ -2493,23 +2501,8 @@
     <EmbeddedResource Include="Account\Transaction\frmServiceVoucher.resx">
       <DependentUpon>frmServiceVoucher.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CustomControls\AccountCustomControl\SearchControl.resx">
-      <DependentUpon>SearchControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CustomControls\AccountCustomControl\ReportsControl.resx">
-      <DependentUpon>ReportsControl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\AccountCustomControl\%40TempControl.resx">
       <DependentUpon>%40TempControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CustomControls\AccountCustomControl\ReminderControl.resx">
-      <DependentUpon>ReminderControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CustomControls\AccountCustomControl\RegistersControl.resx">
-      <DependentUpon>RegistersControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CustomControls\AccountCustomControl\PayrollControl.resx">
-      <DependentUpon>PayrollControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\AccountCustomControl\BudgetControl.resx">
       <DependentUpon>BudgetControl.cs</DependentUpon>
@@ -2525,6 +2518,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\AccountCustomControl\RegistersControl.resx">
       <DependentUpon>RegistersControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\AccountCustomControl\ReminderControl.resx">
+      <DependentUpon>ReminderControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\AccountCustomControl\ReportsControl.resx">
+      <DependentUpon>ReportsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\AccountCustomControl\SearchControl.resx">
+      <DependentUpon>SearchControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\AccountingControl.resx">
       <DependentUpon>AccountingControl.cs</DependentUpon>
