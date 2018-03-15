@@ -1250,16 +1250,16 @@ namespace LoginForm.Account.Services
                 var adaptor9 = db.CashFlow9(strfromDate, strtoDate).ToList();
 
                 dt9.Columns.Add("accountGroupId");
-                dt9.Columns.Add("accountGroupName");
-                dt9.Columns.Add("Balance");
+                dt9.Columns.Add("accountGroupName1");
+                dt9.Columns.Add("Balance1");
 
                 foreach (var item in adaptor9)
                 {
                     DataRow row = dt9.NewRow();
 
                     row["accountGroupId"] = item.accountGroupId;
-                    row["accountGroupName"] = item.accountGroupName1;
-                    row["Balance"] = item.Balance1;
+                    row["accountGroupName1"] = item.accountGroupName1;
+                    row["Balance1"] = item.Balance1;
 
 
                     dt9.Rows.Add(row);
@@ -1270,16 +1270,16 @@ namespace LoginForm.Account.Services
                 var adaptor10 = db.CashFlow10(strfromDate, strtoDate).ToList();
 
                 dt10.Columns.Add("accountGroupId");
-                dt10.Columns.Add("accountGroupName");
-                dt10.Columns.Add("Balance");
+                dt10.Columns.Add("accountGroupName1");
+                dt10.Columns.Add("Balance1");
 
                 foreach (var item in adaptor10)
                 {
                     DataRow row = dt10.NewRow();
 
                     row["accountGroupId"] = item.accountGroupId;
-                    row["accountGroupName"] = item.accountGroupName1;
-                    row["Balance"] = item.Balance1;
+                    row["accountGroupName1"] = item.accountGroupName1;
+                    row["Balance1"] = item.Balance1;
 
                     dt10.Rows.Add(row);
                 }
@@ -1289,16 +1289,16 @@ namespace LoginForm.Account.Services
                 var adaptor11 = db.CashFlow11(strfromDate, strtoDate).ToList();
 
                 dt11.Columns.Add("accountGroupId");
-                dt11.Columns.Add("accountGroupName");
-                dt11.Columns.Add("Balance");
+                dt11.Columns.Add("accountGroupName1");
+                dt11.Columns.Add("Balance1");
 
                 foreach (var item in adaptor11)
                 {
                     DataRow row = dt11.NewRow();
 
                     row["accountGroupId"] = item.accountGroupId;
-                    row["accountGroupName"] = item.accountGroupName1;
-                    row["Balance"] = item.Balance1;
+                    row["accountGroupName1"] = item.accountGroupName1;
+                    row["Balance1"] = item.Balance1;
 
                     dt11.Rows.Add(row);
                 }
@@ -1308,16 +1308,16 @@ namespace LoginForm.Account.Services
                 var adaptor12 = db.CashFlow12(strfromDate, strtoDate).ToList();
 
                 dt12.Columns.Add("accountGroupId");
-                dt12.Columns.Add("accountGroupName");
-                dt12.Columns.Add("Balance");
+                dt12.Columns.Add("accountGroupName1");
+                dt12.Columns.Add("Balance1");
 
                 foreach (var item in adaptor12)
                 {
                     DataRow row = dt12.NewRow();
 
                     row["accountGroupId"] = item.accountGroupId;
-                    row["accountGroupName"] = item.accountGroupName1;
-                    row["Balance"] = item.Balance1;
+                    row["accountGroupName1"] = item.accountGroupName1;
+                    row["Balance1"] = item.Balance1;
 
                     dt12.Rows.Add(row);
                 }
@@ -1327,16 +1327,16 @@ namespace LoginForm.Account.Services
                 var adaptor13 = db.CashFlow13(strfromDate, strtoDate).ToList();
 
                 dt13.Columns.Add("accountGroupId");
-                dt13.Columns.Add("accountGroupName");
-                dt13.Columns.Add("Balance");
+                dt13.Columns.Add("accountGroupName1");
+                dt13.Columns.Add("Balance1");
 
                 foreach (var item in adaptor13)
                 {
                     DataRow row = dt13.NewRow();
 
                     row["accountGroupId"] = item.accountGroupId;
-                    row["accountGroupName"] = item.accountGroupName1;
-                    row["Balance"] = item.Balance1;
+                    row["accountGroupName1"] = item.accountGroupName1;
+                    row["Balance1"] = item.Balance1;
 
                     dt13.Rows.Add(row);
                 }
@@ -1346,16 +1346,16 @@ namespace LoginForm.Account.Services
                 var adaptor14 = db.CashFlow14(strfromDate, strtoDate).ToList();
 
                 dt14.Columns.Add("accountGroupId");
-                dt14.Columns.Add("accountGroupName");
-                dt14.Columns.Add("Balance");
+                dt14.Columns.Add("accountGroupName1");
+                dt14.Columns.Add("Balance1");
 
                 foreach (var item in adaptor14)
                 {
                     DataRow row = dt14.NewRow();
 
                     row["accountGroupId"] = item.accountGroupId;
-                    row["accountGroupName"] = item.accountGroupName1;
-                    row["Balance"] = item.Balance1;
+                    row["accountGroupName1"] = item.accountGroupName1;
+                    row["Balance1"] = item.Balance1;
 
                     dt14.Rows.Add(row);
                 }
@@ -1365,16 +1365,16 @@ namespace LoginForm.Account.Services
                 var adaptor15 = db.CashFlow12(strfromDate, strtoDate).ToList();
 
                 dt15.Columns.Add("accountGroupId");
-                dt15.Columns.Add("accountGroupName");
-                dt15.Columns.Add("Balance");
+                dt15.Columns.Add("accountGroupName1");
+                dt15.Columns.Add("Balance1");
 
                 foreach (var item in adaptor15)
                 {
                     DataRow row = dt15.NewRow();
 
                     row["accountGroupId"] = item.accountGroupId;
-                    row["accountGroupName"] = item.accountGroupName1;
-                    row["Balance"] = item.Balance1;
+                    row["accountGroupName1"] = item.accountGroupName1;
+                    row["Balance1"] = item.Balance1;
 
                     dt15.Rows.Add(row);
                 }
