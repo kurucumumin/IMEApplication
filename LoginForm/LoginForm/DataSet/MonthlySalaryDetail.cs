@@ -15,12 +15,10 @@ namespace LoginForm.DataSet
     public partial class MonthlySalaryDetail
     {
         public decimal monthlySalaryDetailsId { get; set; }
-        public Nullable<int> employeeId { get; set; }
+        public Nullable<decimal> employeeId { get; set; }
         public Nullable<decimal> salaryPackageId { get; set; }
         public Nullable<decimal> monthlySalaryId { get; set; }
-
+    
         public virtual MonthlySalary MonthlySalary { get; set; }
-        public virtual Worker Worker { get; set; }
-        public virtual SalaryPackage SalaryPackage { get; set; }
     }
 }
