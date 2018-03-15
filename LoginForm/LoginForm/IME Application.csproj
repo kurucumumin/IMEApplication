@@ -223,6 +223,10 @@
     <Compile Include="Account\Other\frmLedgerPopup.designer.cs">
       <DependentUpon>frmLedgerPopup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\Other\frmReminderPopUp.cs" />
+    <Compile Include="Account\Other\frmReminderPopUp.Designer.cs">
+      <DependentUpon>frmReminderPopUp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\Other\frmVoucherTypeSelection.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -396,12 +400,6 @@
     </Compile>
     <Compile Include="Account\Reminder\frmPersonalReminder.designer.cs">
       <DependentUpon>frmPersonalReminder.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Account\Reminder\frmReminderPopUp.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Account\Reminder\frmReminderPopUp.Designer.cs">
-      <DependentUpon>frmReminderPopUp.cs</DependentUpon>
     </Compile>
     <Compile Include="Account\Reminder\frmShortExpiry.cs">
       <SubType>Form</SubType>
@@ -728,6 +726,7 @@
     <Compile Include="Account\Transaction\frmServiceVoucher.Designer.cs">
       <DependentUpon>frmServiceVoucher.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomControls\AccountCustomControl\%40TempControl.cs" />
     <Compile Include="CustomControls\AccountCustomControl\ReminderControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -2288,6 +2287,9 @@
     <EmbeddedResource Include="Account\Other\frmLedgerPopup.resx">
       <DependentUpon>frmLedgerPopup.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Account\Other\frmReminderPopUp.resx">
+      <DependentUpon>frmReminderPopUp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Account\Other\frmVoucherTypeSelection.resx">
       <DependentUpon>frmVoucherTypeSelection.cs</DependentUpon>
     </EmbeddedResource>
@@ -2374,9 +2376,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Reminder\frmPersonalReminder.resx">
       <DependentUpon>frmPersonalReminder.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Account\Reminder\frmReminderPopUp.resx">
-      <DependentUpon>frmReminderPopUp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Reminder\frmShortExpiry.resx">
       <DependentUpon>frmShortExpiry.cs</DependentUpon>
@@ -2494,6 +2493,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Transaction\frmServiceVoucher.resx">
       <DependentUpon>frmServiceVoucher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\AccountCustomControl\%40TempControl.resx">
+      <DependentUpon>%40TempControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\AccountCustomControl\ReminderControl.resx">
       <DependentUpon>ReminderControl.cs</DependentUpon>
