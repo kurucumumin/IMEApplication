@@ -39,19 +39,19 @@ namespace LoginForm.CustomControls
                 }
                 if (IsActivate == false)
                 {
-                    //TODO Formu ekledikten sonra açılacak
-                    //string strVoucherType = "Advance Payment";
-                    //frmVoucherTypeSelection frm = new frmVoucherTypeSelection();
-                    //frmVoucherTypeSelection open = Application.OpenForms["frmVoucherTypeSelection"] as frmVoucherTypeSelection;
-                    //if (open == null)
-                    //{
-                    //    //frm.MdiParent = this;
-                    //    frm.CallFromVoucherMenu(strVoucherType);
-                    //}
-                    //else
-                    //{
-                    //    open.CallFromVoucherMenu(strVoucherType);
-                    //}
+                    
+                    string strVoucherType = "Advance Payment";
+                    frmVoucherTypeSelection frm = new frmVoucherTypeSelection();
+                    frmVoucherTypeSelection open = Application.OpenForms["frmVoucherTypeSelection"] as frmVoucherTypeSelection;
+                    if (open == null)
+                    {
+                        //frm.MdiParent = this;
+                        frm.CallFromVoucherMenu(strVoucherType);
+                    }
+                    else
+                    {
+                        open.CallFromVoucherMenu(strVoucherType);
+                    }
                 }
             }
             catch (Exception ex)
@@ -209,19 +209,18 @@ namespace LoginForm.CustomControls
                 }
                 if (IsActivate == false)
                 {
-                    //TODO Formu ekledikten sonra açılacak
-                    //string strVoucherType = "Daily Salary Voucher";
-                    //frmVoucherTypeSelection frm = new frmVoucherTypeSelection();
-                    //frmVoucherTypeSelection open = Application.OpenForms["frmVoucherTypeSelection"] as frmVoucherTypeSelection;
-                    //if (open == null)
-                    //{
-                    //    //frm.MdiParent = this;
-                    //    frm.CallFromVoucherMenu(strVoucherType);
-                    //}
-                    //else
-                    //{
-                    //    open.CallFromVoucherMenu(strVoucherType);
-                    //}
+                    string strVoucherType = "Daily Salary Voucher";
+                    frmVoucherTypeSelection frm = new frmVoucherTypeSelection();
+                    frmVoucherTypeSelection open = Application.OpenForms["frmVoucherTypeSelection"] as frmVoucherTypeSelection;
+                    if (open == null)
+                    {
+                        //frm.MdiParent = this;
+                        frm.CallFromVoucherMenu(strVoucherType);
+                    }
+                    else
+                    {
+                        open.CallFromVoucherMenu(strVoucherType);
+                    }
                 }
             }
             catch (Exception ex)
@@ -353,19 +352,18 @@ namespace LoginForm.CustomControls
                 }
                 if (IsActivate == false)
                 {
-                    //TODO Formu ekledikten sonra açılacak
-                    //string strVoucherType = "Monthly Salary Voucher";
-                    //frmVoucherTypeSelection frm = new frmVoucherTypeSelection();
-                    //frmVoucherTypeSelection open = Application.OpenForms["frmVoucherTypeSelection"] as frmVoucherTypeSelection;
-                    //if (open == null)
-                    //{
-                    //    //frm.MdiParent = this;
-                    //    frm.CallFromVoucherMenu(strVoucherType);
-                    //}
-                    //else
-                    //{
-                    //    open.CallFromVoucherMenu(strVoucherType);
-                    //}
+                    string strVoucherType = "Monthly Salary Voucher";
+                    frmVoucherTypeSelection frm = new frmVoucherTypeSelection();
+                    frmVoucherTypeSelection open = Application.OpenForms["frmVoucherTypeSelection"] as frmVoucherTypeSelection;
+                    if (open == null)
+                    {
+                        //frm.MdiParent = this;
+                        frm.CallFromVoucherMenu(strVoucherType);
+                    }
+                    else
+                    {
+                        open.CallFromVoucherMenu(strVoucherType);
+                    }
                 }
             }
             catch (Exception ex)

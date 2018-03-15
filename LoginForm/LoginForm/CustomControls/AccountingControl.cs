@@ -54,5 +54,10 @@ namespace LoginForm.CustomControls
         {
             OpenSubNavigationMenu((Button)sender, parent.subControlRegister);
         }
+
+        private void btnReminders_Click(object sender, EventArgs e)
+        {
+            OpenSubNavigationMenu((Button)sender, parent.subControlReminder);
+        }
     }
 }
