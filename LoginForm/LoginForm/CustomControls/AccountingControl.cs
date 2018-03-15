@@ -44,5 +44,15 @@ namespace LoginForm.CustomControls
         {
             OpenSubNavigationMenu((Button)sender, parent.subControlMasters);
         }
+
+        private void btnPayroll_Click(object sender, EventArgs e)
+        {
+            OpenSubNavigationMenu((Button)sender, parent.subControlPayroll);
+        }
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            OpenSubNavigationMenu((Button)sender, parent.subControlRegister);
+        }
     }
 }

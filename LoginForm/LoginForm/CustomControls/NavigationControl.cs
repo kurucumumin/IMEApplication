@@ -2,7 +2,7 @@
 
 namespace LoginForm.CustomControls
 {
-    public class NavigationControl : UserControl
+    public partial class NavigationControl : UserControl
     {
         public FormMain parent;
         public Button pressedButton;

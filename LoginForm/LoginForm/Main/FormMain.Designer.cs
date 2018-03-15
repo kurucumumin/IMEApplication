@@ -40,15 +40,17 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.controlManagement = new LoginForm.CustomControls.ManagementControl();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.controlManagement = new LoginForm.CustomControls.ManagementControl();
+            this.subControlPayroll = new LoginForm.CustomControls.PayrollControl();
             this.subControlMasters = new LoginForm.CustomControls.MastersControl();
             this.subControlFinancialStatement = new LoginForm.CustomControls.FinancialStatementsControl();
             this.subControlBudget = new LoginForm.CustomControls.BudgetControl();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.controlAccounting = new LoginForm.CustomControls.AccountingControl();
             this.controlLoader = new LoginForm.CustomControls.LoaderControl();
             this.controlDevelopment = new LoginForm.CustomControls.DevelopmentControl();
+            this.subControlRegister = new LoginForm.CustomControls.RegistersControl();
             this.tableLeftPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.gbMainMenu.SuspendLayout();
@@ -230,6 +232,32 @@
             this.panel4.Size = new System.Drawing.Size(663, 607);
             this.panel4.TabIndex = 6;
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.subControlRegister);
+            this.panel3.Controls.Add(this.subControlPayroll);
+            this.panel3.Controls.Add(this.subControlMasters);
+            this.panel3.Controls.Add(this.subControlFinancialStatement);
+            this.panel3.Controls.Add(this.subControlBudget);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(334, 0);
+            this.panel3.Margin = new System.Windows.Forms.Padding(0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(334, 613);
+            this.panel3.TabIndex = 4;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.controlAccounting);
+            this.panel2.Controls.Add(this.controlLoader);
+            this.panel2.Controls.Add(this.controlDevelopment);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(334, 613);
+            this.panel2.TabIndex = 2;
+            // 
             // controlManagement
             // 
             this.controlManagement.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -240,17 +268,16 @@
             this.controlManagement.TabIndex = 2;
             this.controlManagement.Visible = false;
             // 
-            // panel3
+            // subControlPayroll
             // 
-            this.panel3.Controls.Add(this.subControlMasters);
-            this.panel3.Controls.Add(this.subControlFinancialStatement);
-            this.panel3.Controls.Add(this.subControlBudget);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(334, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(334, 613);
-            this.panel3.TabIndex = 4;
+            this.subControlPayroll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
+            this.subControlPayroll.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.subControlPayroll.Location = new System.Drawing.Point(0, 0);
+            this.subControlPayroll.Margin = new System.Windows.Forms.Padding(0);
+            this.subControlPayroll.Name = "subControlPayroll";
+            this.subControlPayroll.Size = new System.Drawing.Size(334, 613);
+            this.subControlPayroll.TabIndex = 8;
+            this.subControlPayroll.Visible = false;
             // 
             // subControlMasters
             // 
@@ -284,18 +311,6 @@
             this.subControlBudget.Size = new System.Drawing.Size(334, 613);
             this.subControlBudget.TabIndex = 5;
             this.subControlBudget.Visible = false;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.controlAccounting);
-            this.panel2.Controls.Add(this.controlLoader);
-            this.panel2.Controls.Add(this.controlDevelopment);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(334, 613);
-            this.panel2.TabIndex = 2;
             // 
             // controlAccounting
             // 
@@ -331,6 +346,17 @@
             this.controlDevelopment.Size = new System.Drawing.Size(334, 613);
             this.controlDevelopment.TabIndex = 1;
             this.controlDevelopment.Visible = false;
+            // 
+            // subControlRegister
+            // 
+            this.subControlRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
+            this.subControlRegister.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.subControlRegister.Location = new System.Drawing.Point(0, 0);
+            this.subControlRegister.Margin = new System.Windows.Forms.Padding(0);
+            this.subControlRegister.Name = "subControlRegister";
+            this.subControlRegister.Size = new System.Drawing.Size(334, 613);
+            this.subControlRegister.TabIndex = 9;
+            this.subControlRegister.Visible = false;
             // 
             // FormMain
             // 
@@ -384,5 +410,7 @@
         private System.Windows.Forms.Panel panel3;
         public CustomControls.FinancialStatementsControl subControlFinancialStatement;
         public CustomControls.MastersControl subControlMasters;
+        public CustomControls.PayrollControl subControlPayroll;
+        public CustomControls.RegistersControl subControlRegister;
     }
 }

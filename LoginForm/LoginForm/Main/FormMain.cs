@@ -14,6 +14,7 @@ namespace LoginForm
         public static string strEstimateCompanyPath = string.Empty;
         public static bool isEstimateDB = false;
         public static bool demoProject = false;
+        public static string strVouchertype;
 
         private NavigationControl CurrentNavTabLvl1;
         public UserControl CurrentNavTabLvl2;
