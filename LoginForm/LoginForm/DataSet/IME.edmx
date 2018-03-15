@@ -7527,31 +7527,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
         <Function Name="MonthlySalarySettingsMonthlySalaryIdSearchUsingSalaryMonth" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="salaryMonth" Type="datetime" Mode="In" />
         </Function>
-        <Function Name="MonthlySalarySettingsWorkerViewAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="salaryMonth" Type="datetime" Mode="In" />
-        </Function>
-        <Function Name="MonthlySalaryVoucherDetailsViewAll_1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="strMonth" Type="varchar(max)" Mode="In" />
-          <Parameter Name="Month" Type="varchar(max)" Mode="In" />
-          <Parameter Name="monthYear" Type="varchar(max)" Mode="In" />
-          <Parameter Name="isEditMode" Type="numeric" Mode="In" />
-          <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
-        </Function>
-        <Function Name="MonthlySalaryVoucherDetailsViewAll_3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="strMonth" Type="varchar(max)" Mode="In" />
-          <Parameter Name="Month" Type="varchar(max)" Mode="In" />
-          <Parameter Name="monthYear" Type="varchar(max)" Mode="In" />
-          <Parameter Name="isEditMode" Type="numeric" Mode="In" />
-          <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
-        </Function>
-        <Function Name="MonthlySalaryVoucherDetailsViewAll_4" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="strMonth" Type="varchar(max)" Mode="In" />
-          <Parameter Name="Month" Type="varchar(max)" Mode="In" />
-          <Parameter Name="monthYear" Type="varchar(max)" Mode="In" />
-          <Parameter Name="isEditMode" Type="numeric" Mode="In" />
-          <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
-        </Function>
-        <Function Name="MonthlySalaryVoucherDetailViewAll_2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+        <Function Name="MonthlySalaryVoucherDetailViewAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="strMonth" Type="varchar(max)" Mode="In" />
           <Parameter Name="Month" Type="varchar(max)" Mode="In" />
           <Parameter Name="monthYear" Type="varchar(max)" Mode="In" />
@@ -20234,31 +20210,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <FunctionImport Name="MonthlySalarySettingsMonthlySalaryIdSearchUsingSalaryMonth" ReturnType="Collection(Decimal)">
             <Parameter Name="salaryMonth" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <FunctionImport Name="MonthlySalarySettingsWorkerViewAll" ReturnType="Collection(IMEModel.MonthlySalarySettingsWorkerViewAll_Result)">
-            <Parameter Name="salaryMonth" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="MonthlySalaryVoucherDetailsViewAll_1" ReturnType="Collection(Int32)">
-            <Parameter Name="strMonth" Mode="In" Type="String" />
-            <Parameter Name="Month" Mode="In" Type="String" />
-            <Parameter Name="monthYear" Mode="In" Type="String" />
-            <Parameter Name="isEditMode" Mode="In" Type="Decimal" />
-            <Parameter Name="voucherNo" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="MonthlySalaryVoucherDetailsViewAll_3">
-            <Parameter Name="strMonth" Mode="In" Type="String" />
-            <Parameter Name="Month" Mode="In" Type="String" />
-            <Parameter Name="monthYear" Mode="In" Type="String" />
-            <Parameter Name="isEditMode" Mode="In" Type="Decimal" />
-            <Parameter Name="voucherNo" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="MonthlySalaryVoucherDetailsViewAll_4">
-            <Parameter Name="strMonth" Mode="In" Type="String" />
-            <Parameter Name="Month" Mode="In" Type="String" />
-            <Parameter Name="monthYear" Mode="In" Type="String" />
-            <Parameter Name="isEditMode" Mode="In" Type="Decimal" />
-            <Parameter Name="voucherNo" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="MonthlySalaryVoucherDetailViewAll_2">
+          <FunctionImport Name="MonthlySalaryVoucherDetailViewAll">
             <Parameter Name="strMonth" Mode="In" Type="String" />
             <Parameter Name="Month" Mode="In" Type="String" />
             <Parameter Name="monthYear" Mode="In" Type="String" />
@@ -22465,16 +22417,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="Decimal" Name="financialYearId" Nullable="true" Precision="18" Scale="0" />
         </ComplexType>
         <ComplexType Name="MonthlySalarySettingsEmployeeViewAll_Result">
-          <Property Type="Int32" Name="WorkerId" Nullable="false" />
-          <Property Type="String" Name="NameLastName" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="UserName" Nullable="false" MaxLength="25" />
-          <Property Type="Decimal" Name="defaultPackageId" Nullable="true" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="salaryPackageId" Nullable="true" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="monthlySalaryId" Nullable="true" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="monthlySalaryDetailsId" Nullable="true" Precision="18" Scale="0" />
-          <Property Type="String" Name="narration" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="MonthlySalarySettingsWorkerViewAll_Result">
           <Property Type="Int32" Name="WorkerId" Nullable="false" />
           <Property Type="String" Name="NameLastName" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="UserName" Nullable="false" MaxLength="25" />
@@ -27433,24 +27375,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="MonthlySalarySettingsMonthlySalaryIdSearchUsingSalaryMonth" FunctionName="IMEModel.Store.MonthlySalarySettingsMonthlySalaryIdSearchUsingSalaryMonth" />
-          <FunctionImportMapping FunctionImportName="MonthlySalarySettingsWorkerViewAll" FunctionName="IMEModel.Store.MonthlySalarySettingsWorkerViewAll">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="IMEModel.MonthlySalarySettingsWorkerViewAll_Result">
-                <ScalarProperty Name="WorkerId" ColumnName="WorkerId" />
-                <ScalarProperty Name="NameLastName" ColumnName="NameLastName" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="defaultPackageId" ColumnName="defaultPackageId" />
-                <ScalarProperty Name="salaryPackageId" ColumnName="salaryPackageId" />
-                <ScalarProperty Name="monthlySalaryId" ColumnName="monthlySalaryId" />
-                <ScalarProperty Name="monthlySalaryDetailsId" ColumnName="monthlySalaryDetailsId" />
-                <ScalarProperty Name="narration" ColumnName="narration" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="MonthlySalaryVoucherDetailsViewAll_1" FunctionName="IMEModel.Store.MonthlySalaryVoucherDetailsViewAll_1" />
-          <FunctionImportMapping FunctionImportName="MonthlySalaryVoucherDetailsViewAll_3" FunctionName="IMEModel.Store.MonthlySalaryVoucherDetailsViewAll_3" />
-          <FunctionImportMapping FunctionImportName="MonthlySalaryVoucherDetailsViewAll_4" FunctionName="IMEModel.Store.MonthlySalaryVoucherDetailsViewAll_4" />
-          <FunctionImportMapping FunctionImportName="MonthlySalaryVoucherDetailViewAll_2" FunctionName="IMEModel.Store.MonthlySalaryVoucherDetailViewAll_2" />
+          <FunctionImportMapping FunctionImportName="MonthlySalaryVoucherDetailViewAll" FunctionName="IMEModel.Store.MonthlySalaryVoucherDetailViewAll" />
           <FunctionImportMapping FunctionImportName="MonthlySalaryVoucherMasterAddWithIdentity" FunctionName="IMEModel.Store.MonthlySalaryVoucherMasterAddWithIdentity">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.MonthlySalaryVoucherMasterAddWithIdentity_Result">
