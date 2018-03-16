@@ -11,6 +11,7 @@ using System.Linq;
 using System.Collections.Generic;
 using LoginForm.DataSet;
 using LoginForm.Account;
+using Open_Miracle;
 
 namespace LoginForm.CustomControls
 {
@@ -183,6 +184,39 @@ namespace LoginForm.CustomControls
             catch (Exception ex)
             {
                 MessageBox.Show("MDI 216 : " + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnBalanceSheet_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //if (CheckUserPrivilege.PrivilegeCheck(PublicVariables._decCurrentUserId, "frmBalanceSheet", "View"))
+                //{
+                    frmBalanceSheet objBalanceSheet = new frmBalanceSheet();
+                    frmBalanceSheet open = Application.OpenForms["frmBalanceSheet"] as frmBalanceSheet;
+                    if (open == null)
+                    {
+                        //objBalanceSheet.MdiParent = this;
+                        objBalanceSheet.Show();
+                    }
+                    else
+                    {
+                        open.Activate();
+                        if (open.WindowState == FormWindowState.Minimized)
+                        {
+                            open.WindowState = FormWindowState.Normal;
+                        }
+                    }
+                //}
+                //else
+                //{
+                //    Messages.NoPrivillageMessage();
+                //}
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("MDI 217: " + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }
