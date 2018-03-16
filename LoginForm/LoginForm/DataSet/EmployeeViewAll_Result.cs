@@ -42,6 +42,6 @@ namespace LoginForm.DataSet
         public string panNumber { get; set; }
         public string pfNumber { get; set; }
         public string esiNumber { get; set; }
-        public Nullable<decimal> dailyWage1 { get; set; }
+        public Nullable<decimal> defaultPackageId { get; set; }
     }
 }
