@@ -507,6 +507,8 @@
         <AssociationConnector Association="IMEModel.FK__SalaryVou__emplo__78F3E6EC" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.AuthRole" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.UserAuthorization" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="IMEModel.OtherBanchesStock" Width="1.5" PointX="34.5" PointY="67.25" />
+        <AssociationConnector Association="IMEModel.FK__OtherBanc__Compa__457F2FDE" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

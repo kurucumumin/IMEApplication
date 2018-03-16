@@ -1371,6 +1371,12 @@
     <Compile Include="DataSet\OnSale.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\OtherBanchesStock.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\OtherBranchStockSearch_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\OutstandingPartyFillView_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>

@@ -18,6 +18,7 @@ namespace LoginForm.DataSet
         public Company()
         {
             this.Managements = new HashSet<Management>();
+            this.OtherBanchesStocks = new HashSet<OtherBanchesStock>();
         }
     
         public decimal companyId { get; set; }
@@ -42,5 +43,7 @@ namespace LoginForm.DataSet
         public virtual Currency Currency { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Management> Managements { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OtherBanchesStock> OtherBanchesStocks { get; set; }
     }
 }
