@@ -133,6 +133,12 @@
     <Compile Include="Account\Budget\frmBudgetVariance.Designer.cs">
       <DependentUpon>frmBudgetVariance.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\FinancialStatements\frmBalanceSheet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\FinancialStatements\frmBalanceSheet.Designer.cs">
+      <DependentUpon>frmBalanceSheet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\FinancialStatements\frmCashFlow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -632,12 +638,6 @@
     <Compile Include="Account\Settings\frmSettings.designer.cs">
       <DependentUpon>frmSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Account\Transaction\frmBalanceSheet.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Account\Transaction\frmBalanceSheet.Designer.cs">
-      <DependentUpon>frmBalanceSheet.cs</DependentUpon>
-    </Compile>
     <Compile Include="Account\Transaction\frmBankReconciliation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -728,12 +728,6 @@
     <Compile Include="Account\Transaction\frmServiceVoucher.Designer.cs">
       <DependentUpon>frmServiceVoucher.cs</DependentUpon>
     </Compile>
-    <Compile Include="CustomControls\AccountCustomControl\%40TempControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CustomControls\AccountCustomControl\%40TempControl.Designer.cs">
-      <DependentUpon>%40TempControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="CustomControls\AccountCustomControl\BudgetControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -775,6 +769,24 @@
     </Compile>
     <Compile Include="CustomControls\AccountCustomControl\ReportsControl.Designer.cs">
       <DependentUpon>ReportsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\AccountCustomControl\SearchControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\AccountCustomControl\SearchControl.Designer.cs">
+      <DependentUpon>SearchControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\AccountCustomControl\SettingsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\AccountCustomControl\SettingsControl.Designer.cs">
+      <DependentUpon>SettingsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\AccountCustomControl\TransactionsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\AccountCustomControl\TransactionsControl.Designer.cs">
+      <DependentUpon>TransactionsControl.cs</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\AccountingControl.cs">
       <SubType>UserControl</SubType>
@@ -1363,6 +1375,12 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\OnSale.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\OtherBanchesStock.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\OtherBranchStockSearch_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\OutstandingPartyFillView_Result.cs">
@@ -2243,6 +2261,9 @@
     <EmbeddedResource Include="Account\Budget\frmBudgetVariance.resx">
       <DependentUpon>frmBudgetVariance.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Account\FinancialStatements\frmBalanceSheet.resx">
+      <DependentUpon>frmBalanceSheet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Account\FinancialStatements\frmCashFlow.resx">
       <DependentUpon>frmCashFlow.cs</DependentUpon>
     </EmbeddedResource>
@@ -2447,9 +2468,6 @@
     <EmbeddedResource Include="Account\Settings\frmSettings.resx">
       <DependentUpon>frmSettings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Account\Transaction\frmBalanceSheet.resx">
-      <DependentUpon>frmBalanceSheet.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Account\Transaction\frmBankReconciliation.resx">
       <DependentUpon>frmBankReconciliation.cs</DependentUpon>
     </EmbeddedResource>
@@ -2495,9 +2513,6 @@
     <EmbeddedResource Include="Account\Transaction\frmServiceVoucher.resx">
       <DependentUpon>frmServiceVoucher.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CustomControls\AccountCustomControl\%40TempControl.resx">
-      <DependentUpon>%40TempControl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\AccountCustomControl\BudgetControl.resx">
       <DependentUpon>BudgetControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -2518,6 +2533,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\AccountCustomControl\ReportsControl.resx">
       <DependentUpon>ReportsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\AccountCustomControl\SearchControl.resx">
+      <DependentUpon>SearchControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\AccountCustomControl\SettingsControl.resx">
+      <DependentUpon>SettingsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\AccountCustomControl\TransactionsControl.resx">
+      <DependentUpon>TransactionsControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\AccountingControl.resx">
       <DependentUpon>AccountingControl.cs</DependentUpon>
