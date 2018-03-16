@@ -90,6 +90,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<MonthlySalaryDetail1> MonthlySalaryDetails1 { get; set; }
         public virtual DbSet<Note> Notes { get; set; }
         public virtual DbSet<OnSale> OnSales { get; set; }
+        public virtual DbSet<OtherBanchesStock> OtherBanchesStocks { get; set; }
         public virtual DbSet<PartyBalance> PartyBalances { get; set; }
         public virtual DbSet<PayHead> PayHeads { get; set; }
         public virtual DbSet<PaymentDetail> PaymentDetails { get; set; }
@@ -3392,31 +3393,6 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MonthlySalaryVoucherDetailsViewAll_Result>("MonthlySalaryVoucherDetailsViewAll", strMonthParameter, monthParameter, monthYearParameter, isEditModeParameter, voucherNoParameter);
         }
     
-        public virtual int MonthlySalaryVoucherDetailViewAll(string strMonth, string month, string monthYear, Nullable<decimal> isEditMode, string voucherNo)
-        {
-            var strMonthParameter = strMonth != null ?
-                new ObjectParameter("strMonth", strMonth) :
-                new ObjectParameter("strMonth", typeof(string));
-    
-            var monthParameter = month != null ?
-                new ObjectParameter("Month", month) :
-                new ObjectParameter("Month", typeof(string));
-    
-            var monthYearParameter = monthYear != null ?
-                new ObjectParameter("monthYear", monthYear) :
-                new ObjectParameter("monthYear", typeof(string));
-    
-            var isEditModeParameter = isEditMode.HasValue ?
-                new ObjectParameter("isEditMode", isEditMode) :
-                new ObjectParameter("isEditMode", typeof(decimal));
-    
-            var voucherNoParameter = voucherNo != null ?
-                new ObjectParameter("voucherNo", voucherNo) :
-                new ObjectParameter("voucherNo", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MonthlySalaryVoucherDetailViewAll", strMonthParameter, monthParameter, monthYearParameter, isEditModeParameter, voucherNoParameter);
-        }
-    
         public virtual ObjectResult<MonthlySalaryVoucherMasterAddWithIdentity_Result> MonthlySalaryVoucherMasterAddWithIdentity(Nullable<decimal> ledgerId, string voucherNo, string invoiceNo, Nullable<System.DateTime> date, Nullable<System.DateTime> month, Nullable<decimal> totalAmount, string narration, Nullable<decimal> suffixPrefixId, Nullable<decimal> voucherTypeId, Nullable<decimal> financialYearId, Nullable<bool> isAutomatic)
         {
             var ledgerIdParameter = ledgerId.HasValue ?
@@ -3478,6 +3454,15 @@ namespace LoginForm.DataSet
                 new ObjectParameter("accountGroupName", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("MultipleAccountLedgerCrOrDr", accountGroupNameParameter);
+        }
+    
+        public virtual ObjectResult<OtherBranchStockSearch_Result> OtherBranchStockSearch(string articleNo)
+        {
+            var articleNoParameter = articleNo != null ?
+                new ObjectParameter("articleNo", articleNo) :
+                new ObjectParameter("articleNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<OtherBranchStockSearch_Result>("OtherBranchStockSearch", articleNoParameter);
         }
     
         public virtual ObjectResult<OutstandingPartyFillView_Result> OutstandingPartyFillView()
