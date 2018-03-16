@@ -66,16 +66,15 @@
             // 
             // btnOnSale
             // 
-            this.btnOnSale.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOnSale.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
             this.btnOnSale.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnOnSale.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnOnSale.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
             this.btnOnSale.FlatAppearance.BorderSize = 0;
             this.btnOnSale.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnOnSale.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOnSale.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOnSale.Location = new System.Drawing.Point(0, 320);
+            this.btnOnSale.Location = new System.Drawing.Point(0, 400);
             this.btnOnSale.Margin = new System.Windows.Forms.Padding(0);
             this.btnOnSale.Name = "btnOnSale";
             this.btnOnSale.Size = new System.Drawing.Size(301, 40);
@@ -86,16 +85,15 @@
             // 
             // btnSuperDisk
             // 
-            this.btnSuperDisk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSuperDisk.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
             this.btnSuperDisk.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSuperDisk.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnSuperDisk.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
             this.btnSuperDisk.FlatAppearance.BorderSize = 0;
             this.btnSuperDisk.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnSuperDisk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSuperDisk.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSuperDisk.Location = new System.Drawing.Point(0, 280);
+            this.btnSuperDisk.Location = new System.Drawing.Point(0, 360);
             this.btnSuperDisk.Margin = new System.Windows.Forms.Padding(0);
             this.btnSuperDisk.Name = "btnSuperDisk";
             this.btnSuperDisk.Size = new System.Drawing.Size(301, 40);
@@ -106,16 +104,15 @@
             // 
             // btnSlidingPriceList
             // 
-            this.btnSlidingPriceList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSlidingPriceList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
             this.btnSlidingPriceList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSlidingPriceList.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnSlidingPriceList.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
             this.btnSlidingPriceList.FlatAppearance.BorderSize = 0;
             this.btnSlidingPriceList.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnSlidingPriceList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSlidingPriceList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSlidingPriceList.Location = new System.Drawing.Point(0, 240);
+            this.btnSlidingPriceList.Location = new System.Drawing.Point(0, 320);
             this.btnSlidingPriceList.Margin = new System.Windows.Forms.Padding(0);
             this.btnSlidingPriceList.Name = "btnSlidingPriceList";
             this.btnSlidingPriceList.Size = new System.Drawing.Size(301, 40);
@@ -126,16 +123,15 @@
             // 
             // btnDiscontinuedList
             // 
-            this.btnDiscontinuedList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDiscontinuedList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
             this.btnDiscontinuedList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnDiscontinuedList.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnDiscontinuedList.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
             this.btnDiscontinuedList.FlatAppearance.BorderSize = 0;
             this.btnDiscontinuedList.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnDiscontinuedList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDiscontinuedList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDiscontinuedList.Location = new System.Drawing.Point(0, 200);
+            this.btnDiscontinuedList.Location = new System.Drawing.Point(0, 280);
             this.btnDiscontinuedList.Margin = new System.Windows.Forms.Padding(0);
             this.btnDiscontinuedList.Name = "btnDiscontinuedList";
             this.btnDiscontinuedList.Size = new System.Drawing.Size(301, 40);
@@ -146,16 +142,15 @@
             // 
             // btnExtendedRangePrice
             // 
-            this.btnExtendedRangePrice.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExtendedRangePrice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
             this.btnExtendedRangePrice.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnExtendedRangePrice.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnExtendedRangePrice.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
             this.btnExtendedRangePrice.FlatAppearance.BorderSize = 0;
             this.btnExtendedRangePrice.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnExtendedRangePrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExtendedRangePrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExtendedRangePrice.Location = new System.Drawing.Point(0, 160);
+            this.btnExtendedRangePrice.Location = new System.Drawing.Point(0, 240);
             this.btnExtendedRangePrice.Margin = new System.Windows.Forms.Padding(0);
             this.btnExtendedRangePrice.Name = "btnExtendedRangePrice";
             this.btnExtendedRangePrice.Size = new System.Drawing.Size(301, 40);
@@ -166,16 +161,15 @@
             // 
             // btnHazardousFile
             // 
-            this.btnHazardousFile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnHazardousFile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
             this.btnHazardousFile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnHazardousFile.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnHazardousFile.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
             this.btnHazardousFile.FlatAppearance.BorderSize = 0;
             this.btnHazardousFile.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnHazardousFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHazardousFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHazardousFile.Location = new System.Drawing.Point(0, 120);
+            this.btnHazardousFile.Location = new System.Drawing.Point(0, 200);
             this.btnHazardousFile.Margin = new System.Windows.Forms.Padding(0);
             this.btnHazardousFile.Name = "btnHazardousFile";
             this.btnHazardousFile.Size = new System.Drawing.Size(301, 40);
@@ -186,16 +180,15 @@
             // 
             // btnDualUsedArticles
             // 
-            this.btnDualUsedArticles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDualUsedArticles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
             this.btnDualUsedArticles.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnDualUsedArticles.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnDualUsedArticles.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
             this.btnDualUsedArticles.FlatAppearance.BorderSize = 0;
             this.btnDualUsedArticles.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnDualUsedArticles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDualUsedArticles.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDualUsedArticles.Location = new System.Drawing.Point(0, 360);
+            this.btnDualUsedArticles.Location = new System.Drawing.Point(0, 160);
             this.btnDualUsedArticles.Margin = new System.Windows.Forms.Padding(0);
             this.btnDualUsedArticles.Name = "btnDualUsedArticles";
             this.btnDualUsedArticles.Size = new System.Drawing.Size(301, 40);
@@ -206,16 +199,15 @@
             // 
             // btnSuperDiskwithP
             // 
-            this.btnSuperDiskwithP.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSuperDiskwithP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
             this.btnSuperDiskwithP.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSuperDiskwithP.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnSuperDiskwithP.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
             this.btnSuperDiskwithP.FlatAppearance.BorderSize = 0;
             this.btnSuperDiskwithP.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnSuperDiskwithP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSuperDiskwithP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSuperDiskwithP.Location = new System.Drawing.Point(0, 400);
+            this.btnSuperDiskwithP.Location = new System.Drawing.Point(0, 120);
             this.btnSuperDiskwithP.Margin = new System.Windows.Forms.Padding(0);
             this.btnSuperDiskwithP.Name = "btnSuperDiskwithP";
             this.btnSuperDiskwithP.Size = new System.Drawing.Size(301, 40);
@@ -226,10 +218,9 @@
             // 
             // btnTSEList
             // 
-            this.btnTSEList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnTSEList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
             this.btnTSEList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnTSEList.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnTSEList.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
             this.btnTSEList.FlatAppearance.BorderSize = 0;
             this.btnTSEList.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
@@ -246,10 +237,9 @@
             // 
             // btnRSProList
             // 
-            this.btnRSProList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRSProList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
             this.btnRSProList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRSProList.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnRSProList.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
             this.btnRSProList.FlatAppearance.BorderSize = 0;
             this.btnRSProList.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
@@ -266,10 +256,9 @@
             // 
             // btnRSInvoice
             // 
-            this.btnRSInvoice.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRSInvoice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
             this.btnRSInvoice.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRSInvoice.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnRSInvoice.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
             this.btnRSInvoice.FlatAppearance.BorderSize = 0;
             this.btnRSInvoice.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));

@@ -63,17 +63,16 @@
             // 
             // btnAccountLedger
             // 
-            this.btnAccountLedger.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAccountLedger.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnAccountLedger.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnAccountLedger.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAccountLedger.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnAccountLedger.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnAccountLedger.FlatAppearance.BorderSize = 0;
             this.btnAccountLedger.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnAccountLedger.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAccountLedger.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAccountLedger.Location = new System.Drawing.Point(0, 40);
+            this.btnAccountLedger.Location = new System.Drawing.Point(0, 320);
             this.btnAccountLedger.Margin = new System.Windows.Forms.Padding(0);
             this.btnAccountLedger.Name = "btnAccountLedger";
             this.btnAccountLedger.Size = new System.Drawing.Size(301, 40);
@@ -84,17 +83,16 @@
             // 
             // btnArea
             // 
-            this.btnArea.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnArea.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnArea.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnArea.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnArea.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnArea.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnArea.FlatAppearance.BorderSize = 0;
             this.btnArea.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnArea.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnArea.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnArea.Location = new System.Drawing.Point(0, 80);
+            this.btnArea.Location = new System.Drawing.Point(0, 280);
             this.btnArea.Margin = new System.Windows.Forms.Padding(0);
             this.btnArea.Name = "btnArea";
             this.btnArea.Size = new System.Drawing.Size(301, 40);
@@ -105,17 +103,16 @@
             // 
             // btnCurrency
             // 
-            this.btnCurrency.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCurrency.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnCurrency.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnCurrency.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCurrency.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnCurrency.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnCurrency.FlatAppearance.BorderSize = 0;
             this.btnCurrency.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnCurrency.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCurrency.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCurrency.Location = new System.Drawing.Point(0, 120);
+            this.btnCurrency.Location = new System.Drawing.Point(0, 240);
             this.btnCurrency.Margin = new System.Windows.Forms.Padding(0);
             this.btnCurrency.Name = "btnCurrency";
             this.btnCurrency.Size = new System.Drawing.Size(301, 40);
@@ -126,17 +123,16 @@
             // 
             // btnExchangeRate
             // 
-            this.btnExchangeRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExchangeRate.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnExchangeRate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnExchangeRate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnExchangeRate.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnExchangeRate.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnExchangeRate.FlatAppearance.BorderSize = 0;
             this.btnExchangeRate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnExchangeRate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExchangeRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExchangeRate.Location = new System.Drawing.Point(0, 160);
+            this.btnExchangeRate.Location = new System.Drawing.Point(0, 200);
             this.btnExchangeRate.Margin = new System.Windows.Forms.Padding(0);
             this.btnExchangeRate.Name = "btnExchangeRate";
             this.btnExchangeRate.Size = new System.Drawing.Size(301, 40);
@@ -147,17 +143,16 @@
             // 
             // btnMultipleAccountLedger
             // 
-            this.btnMultipleAccountLedger.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMultipleAccountLedger.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnMultipleAccountLedger.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnMultipleAccountLedger.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnMultipleAccountLedger.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnMultipleAccountLedger.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnMultipleAccountLedger.FlatAppearance.BorderSize = 0;
             this.btnMultipleAccountLedger.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnMultipleAccountLedger.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMultipleAccountLedger.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMultipleAccountLedger.Location = new System.Drawing.Point(0, 200);
+            this.btnMultipleAccountLedger.Location = new System.Drawing.Point(0, 160);
             this.btnMultipleAccountLedger.Margin = new System.Windows.Forms.Padding(0);
             this.btnMultipleAccountLedger.Name = "btnMultipleAccountLedger";
             this.btnMultipleAccountLedger.Size = new System.Drawing.Size(301, 40);
@@ -168,17 +163,16 @@
             // 
             // btnSalesman
             // 
-            this.btnSalesman.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSalesman.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnSalesman.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnSalesman.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSalesman.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnSalesman.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnSalesman.FlatAppearance.BorderSize = 0;
             this.btnSalesman.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnSalesman.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalesman.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalesman.Location = new System.Drawing.Point(0, 240);
+            this.btnSalesman.Location = new System.Drawing.Point(0, 120);
             this.btnSalesman.Margin = new System.Windows.Forms.Padding(0);
             this.btnSalesman.Name = "btnSalesman";
             this.btnSalesman.Size = new System.Drawing.Size(301, 40);
@@ -189,17 +183,16 @@
             // 
             // btnTax
             // 
-            this.btnTax.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnTax.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnTax.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnTax.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnTax.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnTax.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnTax.FlatAppearance.BorderSize = 0;
             this.btnTax.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnTax.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTax.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTax.Location = new System.Drawing.Point(0, 280);
+            this.btnTax.Location = new System.Drawing.Point(0, 80);
             this.btnTax.Margin = new System.Windows.Forms.Padding(0);
             this.btnTax.Name = "btnTax";
             this.btnTax.Size = new System.Drawing.Size(301, 40);
@@ -210,17 +203,16 @@
             // 
             // btnVoucherType
             // 
-            this.btnVoucherType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnVoucherType.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnVoucherType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnVoucherType.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnVoucherType.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnVoucherType.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnVoucherType.FlatAppearance.BorderSize = 0;
             this.btnVoucherType.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnVoucherType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVoucherType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVoucherType.Location = new System.Drawing.Point(0, 320);
+            this.btnVoucherType.Location = new System.Drawing.Point(0, 40);
             this.btnVoucherType.Margin = new System.Windows.Forms.Padding(0);
             this.btnVoucherType.Name = "btnVoucherType";
             this.btnVoucherType.Size = new System.Drawing.Size(301, 40);
@@ -231,11 +223,10 @@
             // 
             // btnAccountGroup
             // 
-            this.btnAccountGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAccountGroup.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnAccountGroup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnAccountGroup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAccountGroup.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnAccountGroup.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnAccountGroup.FlatAppearance.BorderSize = 0;
             this.btnAccountGroup.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));

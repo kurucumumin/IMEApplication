@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnBalanceSheet = new System.Windows.Forms.Button();
             this.btnChartOfAccounts = new System.Windows.Forms.Button();
             this.btnFundFlow = new System.Windows.Forms.Button();
             this.btnProfitAndLoss = new System.Windows.Forms.Button();
             this.btnTrialBalance = new System.Windows.Forms.Button();
             this.btnCashFlow = new System.Windows.Forms.Button();
-            this.btnBalanceSheet = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,19 +55,38 @@
             this.panel1.Size = new System.Drawing.Size(301, 577);
             this.panel1.TabIndex = 0;
             // 
+            // btnBalanceSheet
+            // 
+            this.btnBalanceSheet.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnBalanceSheet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnBalanceSheet.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBalanceSheet.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnBalanceSheet.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnBalanceSheet.FlatAppearance.BorderSize = 0;
+            this.btnBalanceSheet.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
+            this.btnBalanceSheet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBalanceSheet.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBalanceSheet.Location = new System.Drawing.Point(0, 200);
+            this.btnBalanceSheet.Margin = new System.Windows.Forms.Padding(0);
+            this.btnBalanceSheet.Name = "btnBalanceSheet";
+            this.btnBalanceSheet.Size = new System.Drawing.Size(301, 40);
+            this.btnBalanceSheet.TabIndex = 49;
+            this.btnBalanceSheet.Text = "Balance Sheet";
+            this.btnBalanceSheet.UseVisualStyleBackColor = false;
+            this.btnBalanceSheet.Click += new System.EventHandler(this.btnBalanceSheet_Click);
+            // 
             // btnChartOfAccounts
             // 
-            this.btnChartOfAccounts.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnChartOfAccounts.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnChartOfAccounts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnChartOfAccounts.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnChartOfAccounts.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnChartOfAccounts.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnChartOfAccounts.FlatAppearance.BorderSize = 0;
             this.btnChartOfAccounts.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnChartOfAccounts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnChartOfAccounts.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChartOfAccounts.Location = new System.Drawing.Point(0, 80);
+            this.btnChartOfAccounts.Location = new System.Drawing.Point(0, 160);
             this.btnChartOfAccounts.Margin = new System.Windows.Forms.Padding(0);
             this.btnChartOfAccounts.Name = "btnChartOfAccounts";
             this.btnChartOfAccounts.Size = new System.Drawing.Size(301, 40);
@@ -78,11 +97,10 @@
             // 
             // btnFundFlow
             // 
-            this.btnFundFlow.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFundFlow.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnFundFlow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnFundFlow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnFundFlow.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnFundFlow.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnFundFlow.FlatAppearance.BorderSize = 0;
             this.btnFundFlow.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
@@ -99,17 +117,16 @@
             // 
             // btnProfitAndLoss
             // 
-            this.btnProfitAndLoss.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnProfitAndLoss.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnProfitAndLoss.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnProfitAndLoss.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnProfitAndLoss.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnProfitAndLoss.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnProfitAndLoss.FlatAppearance.BorderSize = 0;
             this.btnProfitAndLoss.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnProfitAndLoss.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProfitAndLoss.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProfitAndLoss.Location = new System.Drawing.Point(0, 160);
+            this.btnProfitAndLoss.Location = new System.Drawing.Point(0, 80);
             this.btnProfitAndLoss.Margin = new System.Windows.Forms.Padding(0);
             this.btnProfitAndLoss.Name = "btnProfitAndLoss";
             this.btnProfitAndLoss.Size = new System.Drawing.Size(301, 40);
@@ -120,17 +137,16 @@
             // 
             // btnTrialBalance
             // 
-            this.btnTrialBalance.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnTrialBalance.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnTrialBalance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnTrialBalance.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnTrialBalance.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnTrialBalance.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnTrialBalance.FlatAppearance.BorderSize = 0;
             this.btnTrialBalance.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnTrialBalance.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTrialBalance.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTrialBalance.Location = new System.Drawing.Point(0, 200);
+            this.btnTrialBalance.Location = new System.Drawing.Point(0, 40);
             this.btnTrialBalance.Margin = new System.Windows.Forms.Padding(0);
             this.btnTrialBalance.Name = "btnTrialBalance";
             this.btnTrialBalance.Size = new System.Drawing.Size(301, 40);
@@ -141,17 +157,16 @@
             // 
             // btnCashFlow
             // 
-            this.btnCashFlow.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCashFlow.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnCashFlow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnCashFlow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCashFlow.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnCashFlow.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnCashFlow.FlatAppearance.BorderSize = 0;
             this.btnCashFlow.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnCashFlow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCashFlow.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCashFlow.Location = new System.Drawing.Point(0, 40);
+            this.btnCashFlow.Location = new System.Drawing.Point(0, 0);
             this.btnCashFlow.Margin = new System.Windows.Forms.Padding(0);
             this.btnCashFlow.Name = "btnCashFlow";
             this.btnCashFlow.Size = new System.Drawing.Size(301, 40);
@@ -159,27 +174,6 @@
             this.btnCashFlow.Text = "Cash Flow";
             this.btnCashFlow.UseVisualStyleBackColor = false;
             this.btnCashFlow.Click += new System.EventHandler(this.btnCashFlow_Click);
-            // 
-            // btnBalanceSheet
-            // 
-            this.btnBalanceSheet.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBalanceSheet.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnBalanceSheet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnBalanceSheet.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBalanceSheet.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnBalanceSheet.FlatAppearance.BorderSize = 0;
-            this.btnBalanceSheet.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
-            this.btnBalanceSheet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBalanceSheet.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBalanceSheet.Location = new System.Drawing.Point(0, 0);
-            this.btnBalanceSheet.Margin = new System.Windows.Forms.Padding(0);
-            this.btnBalanceSheet.Name = "btnBalanceSheet";
-            this.btnBalanceSheet.Size = new System.Drawing.Size(301, 40);
-            this.btnBalanceSheet.TabIndex = 49;
-            this.btnBalanceSheet.Text = "Balance Sheet";
-            this.btnBalanceSheet.UseVisualStyleBackColor = false;
-            this.btnBalanceSheet.Click += new System.EventHandler(this.btnBalanceSheet_Click);
             // 
             // FinancialStatementsControl
             // 

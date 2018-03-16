@@ -49,11 +49,10 @@
             // 
             // btnBudgetVariance
             // 
-            this.btnBudgetVariance.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBudgetVariance.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnBudgetVariance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnBudgetVariance.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBudgetVariance.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnBudgetVariance.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnBudgetVariance.FlatAppearance.BorderSize = 0;
             this.btnBudgetVariance.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
@@ -70,11 +69,10 @@
             // 
             // btnBudget
             // 
-            this.btnBudget.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBudget.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnBudget.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnBudget.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBudget.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnBudget.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnBudget.FlatAppearance.BorderSize = 0;
             this.btnBudget.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));

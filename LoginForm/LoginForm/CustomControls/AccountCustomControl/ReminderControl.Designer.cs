@@ -55,17 +55,16 @@
             // 
             // btnOverdueSalesOrder
             // 
-            this.btnOverdueSalesOrder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOverdueSalesOrder.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnOverdueSalesOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnOverdueSalesOrder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnOverdueSalesOrder.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnOverdueSalesOrder.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnOverdueSalesOrder.FlatAppearance.BorderSize = 0;
             this.btnOverdueSalesOrder.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnOverdueSalesOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOverdueSalesOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOverdueSalesOrder.Location = new System.Drawing.Point(0, 40);
+            this.btnOverdueSalesOrder.Location = new System.Drawing.Point(0, 160);
             this.btnOverdueSalesOrder.Margin = new System.Windows.Forms.Padding(0);
             this.btnOverdueSalesOrder.Name = "btnOverdueSalesOrder";
             this.btnOverdueSalesOrder.Size = new System.Drawing.Size(301, 40);
@@ -76,11 +75,10 @@
             // 
             // btnShortExpiry
             // 
-            this.btnShortExpiry.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnShortExpiry.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnShortExpiry.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnShortExpiry.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnShortExpiry.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnShortExpiry.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnShortExpiry.FlatAppearance.BorderSize = 0;
             this.btnShortExpiry.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
@@ -97,17 +95,16 @@
             // 
             // btnStock
             // 
-            this.btnStock.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnStock.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnStock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnStock.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnStock.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnStock.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnStock.FlatAppearance.BorderSize = 0;
             this.btnStock.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStock.Location = new System.Drawing.Point(0, 160);
+            this.btnStock.Location = new System.Drawing.Point(0, 80);
             this.btnStock.Margin = new System.Windows.Forms.Padding(0);
             this.btnStock.Name = "btnStock";
             this.btnStock.Size = new System.Drawing.Size(301, 40);
@@ -118,17 +115,16 @@
             // 
             // btnPersonalReminder
             // 
-            this.btnPersonalReminder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPersonalReminder.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnPersonalReminder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnPersonalReminder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnPersonalReminder.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnPersonalReminder.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnPersonalReminder.FlatAppearance.BorderSize = 0;
             this.btnPersonalReminder.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnPersonalReminder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPersonalReminder.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPersonalReminder.Location = new System.Drawing.Point(0, 80);
+            this.btnPersonalReminder.Location = new System.Drawing.Point(0, 40);
             this.btnPersonalReminder.Margin = new System.Windows.Forms.Padding(0);
             this.btnPersonalReminder.Name = "btnPersonalReminder";
             this.btnPersonalReminder.Size = new System.Drawing.Size(301, 40);
@@ -139,11 +135,10 @@
             // 
             // btnOverduePurchaseOrder
             // 
-            this.btnOverduePurchaseOrder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOverduePurchaseOrder.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnOverduePurchaseOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnOverduePurchaseOrder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnOverduePurchaseOrder.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnOverduePurchaseOrder.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
             this.btnOverduePurchaseOrder.FlatAppearance.BorderSize = 0;
             this.btnOverduePurchaseOrder.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));

@@ -142,16 +142,15 @@
             // 
             // btnCategorySubCategory
             // 
-            this.btnCategorySubCategory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCategorySubCategory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(187)))), ((int)(((byte)(106)))));
+            this.btnCategorySubCategory.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnCategorySubCategory.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
             this.btnCategorySubCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCategorySubCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCategorySubCategory.Location = new System.Drawing.Point(-1, 548);
+            this.btnCategorySubCategory.Location = new System.Drawing.Point(0, 437);
             this.btnCategorySubCategory.Margin = new System.Windows.Forms.Padding(0);
             this.btnCategorySubCategory.Name = "btnCategorySubCategory";
-            this.btnCategorySubCategory.Size = new System.Drawing.Size(522, 37);
+            this.btnCategorySubCategory.Size = new System.Drawing.Size(516, 37);
             this.btnCategorySubCategory.TabIndex = 15;
             this.btnCategorySubCategory.Text = "Category & Sub Category";
             this.btnCategorySubCategory.UseVisualStyleBackColor = false;
@@ -159,16 +158,15 @@
             // 
             // btnExchangeRate
             // 
-            this.btnExchangeRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExchangeRate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(187)))), ((int)(((byte)(106)))));
+            this.btnExchangeRate.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnExchangeRate.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
             this.btnExchangeRate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExchangeRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExchangeRate.Location = new System.Drawing.Point(-3, 437);
+            this.btnExchangeRate.Location = new System.Drawing.Point(0, 474);
             this.btnExchangeRate.Margin = new System.Windows.Forms.Padding(0);
             this.btnExchangeRate.Name = "btnExchangeRate";
-            this.btnExchangeRate.Size = new System.Drawing.Size(518, 37);
+            this.btnExchangeRate.Size = new System.Drawing.Size(516, 37);
             this.btnExchangeRate.TabIndex = 14;
             this.btnExchangeRate.Text = "Exchange Rate";
             this.btnExchangeRate.UseVisualStyleBackColor = false;
@@ -229,16 +227,15 @@
             // 
             // btnTermsOfPayment
             // 
-            this.btnTermsOfPayment.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnTermsOfPayment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(187)))), ((int)(((byte)(106)))));
+            this.btnTermsOfPayment.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnTermsOfPayment.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
             this.btnTermsOfPayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTermsOfPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTermsOfPayment.Location = new System.Drawing.Point(-3, 474);
+            this.btnTermsOfPayment.Location = new System.Drawing.Point(0, 511);
             this.btnTermsOfPayment.Margin = new System.Windows.Forms.Padding(0);
             this.btnTermsOfPayment.Name = "btnTermsOfPayment";
-            this.btnTermsOfPayment.Size = new System.Drawing.Size(518, 37);
+            this.btnTermsOfPayment.Size = new System.Drawing.Size(516, 37);
             this.btnTermsOfPayment.TabIndex = 8;
             this.btnTermsOfPayment.Text = "Terms of Payment";
             this.btnTermsOfPayment.UseVisualStyleBackColor = false;
@@ -266,16 +263,15 @@
             // 
             // btnRolesAuthorities
             // 
-            this.btnRolesAuthorities.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRolesAuthorities.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(187)))), ((int)(((byte)(106)))));
+            this.btnRolesAuthorities.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnRolesAuthorities.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
             this.btnRolesAuthorities.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRolesAuthorities.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRolesAuthorities.Location = new System.Drawing.Point(-3, 511);
+            this.btnRolesAuthorities.Location = new System.Drawing.Point(0, 548);
             this.btnRolesAuthorities.Margin = new System.Windows.Forms.Padding(0);
             this.btnRolesAuthorities.Name = "btnRolesAuthorities";
-            this.btnRolesAuthorities.Size = new System.Drawing.Size(518, 37);
+            this.btnRolesAuthorities.Size = new System.Drawing.Size(516, 37);
             this.btnRolesAuthorities.TabIndex = 5;
             this.btnRolesAuthorities.Text = "Roles and Authorities";
             this.btnRolesAuthorities.UseVisualStyleBackColor = false;
