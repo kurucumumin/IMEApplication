@@ -198,7 +198,7 @@ namespace LoginForm
                     System.Data.DataSet dsetFinancial = new System.Data.DataSet();
                     Setting InfoSettings = new Setting();
                     SettingsSP SpSettings = new SettingsSP();
-                    //--------------- Selection Of Calculation Method According To Settings ------------------// 
+                    //--------------- Selection Of Calculation Method According To Settings ------------------//
                     if (SpSettings.SettingsStatusCheck("StockValueCalculationMethod") == "FIFO")
                     {
                         strCalculationMethod = "FIFO";
@@ -286,7 +286,8 @@ namespace LoginForm
                         {
                             if (dtbl.Rows.Count > 0)
                             {
-                                dcSum = Convert.ToDecimal(dtbl.Compute("Sum(Credit)", string.Empty).ToString());
+                                dcSum = dtbl.AsEnumerable().Sum(x => Convert.ToDecimal(x["Debit"]));
+
                                 dcProfit = dcProfit + dcSum;
                             }
                         }
@@ -294,9 +295,9 @@ namespace LoginForm
                         {
                             if (dtbl.Rows.Count > 0)
                             {
-                                dcSum = Convert.ToDecimal(dtbl.Compute("Sum(Debit)", string.Empty).ToString());
+                                dcSum = dtbl.AsEnumerable().Sum(x => Convert.ToDecimal(x["Credit"]));
                                 dcProfit = dcProfit - dcSum;
-                                
+
                             }
                         }
                     }
@@ -403,32 +404,36 @@ namespace LoginForm
                     decimal decOpen = 0;
                     decimal decClose = 0;
                     decimal decWork = 0;
-                    decOpen = Convert.ToDecimal(dgvFundFlow2.Rows[0].Cells[3].Value.ToString()) - Convert.ToDecimal(dgvFundFlow2.Rows[1].Cells[3].Value.ToString());
-                    decClose = Convert.ToDecimal(dgvFundFlow2.Rows[0].Cells[5].Value.ToString()) - Convert.ToDecimal(dgvFundFlow2.Rows[1].Cells[5].Value.ToString());
-                    decWork = Convert.ToDecimal(dgvFundFlow2.Rows[0].Cells[6].Value.ToString()) - Convert.ToDecimal(dgvFundFlow2.Rows[1].Cells[6].Value.ToString());
-                    decimal decW1 = Convert.ToDecimal(dgvFundFlow2.Rows[0].Cells[6].Value.ToString());
-                    decimal decW2 = Convert.ToDecimal(dgvFundFlow2.Rows[1].Cells[6].Value.ToString());
-                    dgvFundFlow2.Rows.Add();
-                    dgvFundFlow2.Rows[dgvFundFlow2.Rows.Count - 1].Cells["dgvtxtParticulars"].Value = "Working Capital";
-                    if (decOpen > 0)
+                    if (dgvFundFlow2.Rows.Count > 1)
                     {
-                        dgvFundFlow2.Rows[dgvFundFlow2.Rows.Count - 1].Cells["dgvtxtOpeningBalance"].Value = decOpen.ToString() + "Dr";
+                        decOpen = Convert.ToDecimal(dgvFundFlow2.Rows[0].Cells[3].Value.ToString()) - Convert.ToDecimal(dgvFundFlow2.Rows[1].Cells[3].Value.ToString());
+                        decClose = Convert.ToDecimal(dgvFundFlow2.Rows[0].Cells[5].Value.ToString()) - Convert.ToDecimal(dgvFundFlow2.Rows[1].Cells[5].Value.ToString());
+                        decWork = Convert.ToDecimal(dgvFundFlow2.Rows[0].Cells[6].Value.ToString()) - Convert.ToDecimal(dgvFundFlow2.Rows[1].Cells[6].Value.ToString());
+                        decimal decW1 = Convert.ToDecimal(dgvFundFlow2.Rows[0].Cells[6].Value.ToString());
+                        decimal decW2 = Convert.ToDecimal(dgvFundFlow2.Rows[1].Cells[6].Value.ToString());
+                        dgvFundFlow2.Rows.Add();
+                        dgvFundFlow2.Rows[dgvFundFlow2.Rows.Count - 1].Cells["dgvtxtParticulars"].Value = "Working Capital";
+                        if (decOpen > 0)
+                        {
+                            dgvFundFlow2.Rows[dgvFundFlow2.Rows.Count - 1].Cells["dgvtxtOpeningBalance"].Value = decOpen.ToString() + "Dr";
+                        }
+                        else
+                        {
+                            decOpen *= -1;
+                            dgvFundFlow2.Rows[dgvFundFlow2.Rows.Count - 1].Cells["dgvtxtOpeningBalance"].Value = decOpen.ToString() + "Cr";
+                        }
+                        if (decClose > 0)
+                        {
+                            dgvFundFlow2.Rows[dgvFundFlow2.Rows.Count - 1].Cells["dgvtxtClosingBalance"].Value = decClose.ToString() + "Dr";
+                        }
+                        else
+                        {
+                            decClose *= -1;
+                            dgvFundFlow2.Rows[dgvFundFlow2.Rows.Count - 1].Cells["dgvtxtClosingBalance"].Value = decClose.ToString() + "Cr";
+                        }
+                        dgvFundFlow2.Rows[dgvFundFlow2.Rows.Count - 1].Cells["dgvtxtWorkingCapitalIncrease"].Value = decWork.ToString();
                     }
-                    else
-                    {
-                        decOpen *= -1;
-                        dgvFundFlow2.Rows[dgvFundFlow2.Rows.Count - 1].Cells["dgvtxtOpeningBalance"].Value = decOpen.ToString() + "Cr";
-                    }
-                    if (decClose > 0)
-                    {
-                        dgvFundFlow2.Rows[dgvFundFlow2.Rows.Count - 1].Cells["dgvtxtClosingBalance"].Value = decClose.ToString() + "Dr";
-                    }
-                    else
-                    {
-                        decClose *= -1;
-                        dgvFundFlow2.Rows[dgvFundFlow2.Rows.Count - 1].Cells["dgvtxtClosingBalance"].Value = decClose.ToString() + "Cr";
-                    }
-                    dgvFundFlow2.Rows[dgvFundFlow2.Rows.Count - 1].Cells["dgvtxtWorkingCapitalIncrease"].Value = decWork.ToString();
+
                 }
             }
             catch (Exception ex)

@@ -356,13 +356,13 @@ namespace LoginForm.Account.Services
 
                 dtbl1.Columns.Add("ID");
                 dtbl1.Columns.Add("Name");
-                dtbl1.Columns.Add("SUM(Credit)");
+                dtbl1.Columns.Add("Credit");
                 foreach (var item in adaptor1)
                 {
                     DataRow row = dtbl1.NewRow();
                     row["ID"] = item.ID;
                     row["Name"] = item.Name;
-                    row["SUM(Credit)"] = item.Credit;
+                    row["Credit"] = item.Credit;
 
 
                     dtbl1.Rows.Add(row);
@@ -371,34 +371,34 @@ namespace LoginForm.Account.Services
 
 
 
-                DataTable dtbl2 = new DataTable(); 
+                DataTable dtbl2 = new DataTable();
                  var adaptor2 = (IME.ProfitAndLossAnalysisUpToaDateForBalansheetPurchaseAcount(fromDate, toDate)).ToList();
                 dtbl2.Columns.Add("ID");
                 dtbl2.Columns.Add("Name");
-                dtbl2.Columns.Add("SUM(Debit)");
+                dtbl2.Columns.Add("Debit");
                 foreach (var item in adaptor2)
                 {
                     DataRow row = dtbl2.NewRow();
                     row["ID"] = item.ID;
                     row["Name"] = item.Name;
-                    row["SUM(Debit)"] = item.Debit;
+                    row["Debit"] = item.Debit;
 
                     dtbl2.Rows.Add(row);
                 }
                 dts.Tables.Add(dtbl2);
 
 
-                DataTable dtbl3 = new DataTable(); 
+                DataTable dtbl3 = new DataTable();
                  var adaptor3 = (IME.ProfitAndLossAnalysisUpToaDateForBalansheetDirectincome(fromDate, toDate)).ToList();
                 dtbl3.Columns.Add("ID");
                 dtbl3.Columns.Add("Name");
-                dtbl3.Columns.Add("SUM(Credit)");
+                dtbl3.Columns.Add("Credit");
                 foreach (var item in adaptor3)
                 {
                     DataRow row = dtbl3.NewRow();
                     row["ID"] = item.ID;
                     row["Name"] = item.Name;
-                    row["SUM(Credit)"] = item.Credit;
+                    row["Credit"] = item.Credit;
 
                     dtbl3.Rows.Add(row);
                 }
@@ -410,30 +410,30 @@ namespace LoginForm.Account.Services
                 var adaptor4 = (IME.ProfitAndLossAnalysisUpToaDateForBalansheetDirectExpenses(fromDate, toDate)).ToList();
                 dtbl4.Columns.Add("ID");
                 dtbl4.Columns.Add("Name");
-                dtbl4.Columns.Add("SUM(Debit)");
+                dtbl4.Columns.Add("Debit");
                 foreach (var item in adaptor4)
                 {
                     DataRow row = dtbl4.NewRow();
                     row["ID"] = item.ID;
                     row["Name"] = item.Name;
-                    row["SUM(Debit)"] = item.Debit;
+                    row["Debit"] = item.Debit;
 
                     dtbl4.Rows.Add(row);
                 }
                 dts.Tables.Add(dtbl4);
 
 
-                DataTable dtbl5 = new DataTable(); 
+                DataTable dtbl5 = new DataTable();
                  var adaptor5 = (IME.ProfitAndLossAnalysisUpToaDateForBalansheetIndirectincome(fromDate, toDate)).ToList();
                 dtbl5.Columns.Add("ID");
                 dtbl5.Columns.Add("Name");
-                dtbl5.Columns.Add("SUM(Credit)");
+                dtbl5.Columns.Add("Credit");
                 foreach (var item in adaptor5)
                 {
                     DataRow row = dtbl5.NewRow();
                     row["ID"] = item.ID;
                     row["Name"] = item.Name;
-                    row["SUM(Credit)"] = item.Credit;
+                    row["Credit"] = item.Credit;
 
                     dtbl5.Rows.Add(row);
                 }
@@ -444,13 +444,13 @@ namespace LoginForm.Account.Services
                 var adaptor6 = (IME.ProfitAndLossAnalysisUpToaDateForBalansheetIndirectExpenses(fromDate, toDate)).ToList();
                 dtbl6.Columns.Add("ID");
                 dtbl6.Columns.Add("Name");
-                dtbl6.Columns.Add("SUM(Debit)");
+                dtbl6.Columns.Add("Debit");
                 foreach (var item in adaptor6)
                 {
                     DataRow row = dtbl6.NewRow();
                     row["ID"] = item.ID;
                     row["Name"] = item.Name;
-                    row["SUM(Debit)"] = item.Debit;
+                    row["Debit"] = item.Debit;
 
                     dtbl6.Rows.Add(row);
                 }
@@ -481,7 +481,7 @@ namespace LoginForm.Account.Services
                     DataRow row = dtbl1.NewRow();
                     row["ID"] = item.ID;
                     row["Name"] = item.Name;
-                    row["Debit"] = item.Debit;
+                    row["Debit"] = Convert.ToDecimal(item.Debit);
 
                     dtbl1.Rows.Add(row);
                 }
@@ -499,7 +499,7 @@ namespace LoginForm.Account.Services
                     DataRow row = dtbl2.NewRow();
                     row["ID"] = item.ID;
                     row["Name"] = item.Name;
-                    row["Credit"] = item.Credit;
+                    row["Credit"] = Convert.ToDecimal(item.Credit);
 
                     dtbl2.Rows.Add(row);
                 }
@@ -516,7 +516,7 @@ namespace LoginForm.Account.Services
                     DataRow row = dtbl3.NewRow();
                     row["ID"] = item.ID;
                     row["Name"] = item.Name;
-                    row["Debit"] = item.Debit;
+                    row["Debit"] = Convert.ToDecimal(item.Debit);
 
                     dtbl3.Rows.Add(row);
                 }
@@ -534,7 +534,7 @@ namespace LoginForm.Account.Services
                     DataRow row = dtbl4.NewRow();
                     row["ID"] = item.ID;
                     row["Name"] = item.Name;
-                    row["Credit"] = item.Credit;
+                    row["Credit"] = Convert.ToDecimal(item.Credit);
 
                     dtbl4.Rows.Add(row);
                 }
@@ -551,7 +551,7 @@ namespace LoginForm.Account.Services
                     DataRow row = dtbl5.NewRow();
                     row["ID"] = item.ID;
                     row["Name"] = item.Name;
-                    row["Debit"] = item.Debit;
+                    row["Debit"] = Convert.ToDecimal(item.Debit);
 
                     dtbl5.Rows.Add(row);
                 }
@@ -568,7 +568,7 @@ namespace LoginForm.Account.Services
                     DataRow row = dtbl6.NewRow();
                     row["ID"] = item.ID;
                     row["Name"] = item.Name;
-                    row["Credit"] = item.Credit;
+                    row["Credit"] = Convert.ToDecimal(item.Credit);
 
                     dtbl6.Rows.Add(row);
                 }
