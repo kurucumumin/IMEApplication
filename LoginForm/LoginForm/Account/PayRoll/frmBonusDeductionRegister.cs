@@ -44,8 +44,8 @@ namespace LoginForm
                 dr[2] = "All";
                 dtblEmployeeName.Rows.InsertAt(dr, 0);
                 cmbEmployeeName.DataSource = dtblEmployeeName;
-                cmbEmployeeName.ValueMember = "employeeId";
-                cmbEmployeeName.DisplayMember = "employeeName";
+                cmbEmployeeName.ValueMember = "WorkerID";
+                cmbEmployeeName.DisplayMember = "NameLastName";
             }
             catch (Exception ex)
             {
@@ -60,9 +60,12 @@ namespace LoginForm
             try
             {
                 cmbEmployeeName.SelectedIndex = 0;
-                dtpMonth.Value = (DateTime)IME.CurrentDate().First();
-                dtpMonth.MinDate =  (DateTime)IME.FinancialYears.Where(a => a.fromDate <= Convert.ToDateTime(IME.CurrentDate().First())).Where(b => b.toDate >= Convert.ToDateTime(IME.CurrentDate().First())).FirstOrDefault().fromDate; 
-                dtpMonth.MaxDate = (DateTime)IME.FinancialYears.Where(a => a.fromDate <= Convert.ToDateTime(IME.CurrentDate().First())).Where(b => b.toDate >= Convert.ToDateTime(IME.CurrentDate().First())).FirstOrDefault().toDate;
+                //dtpMonth.Value = (DateTime)IME.CurrentDate().First().Value;
+                //dtpMonth.MinDate =  (DateTime)IME.FinancialYears.Where(a => a.fromDate <= Convert.ToDateTime(IME.CurrentDate().First().Value)).Where(b => b.toDate >= Convert.ToDateTime(IME.CurrentDate().First().Value)).FirstOrDefault().fromDate; 
+                //dtpMonth.MaxDate = (DateTime)IME.FinancialYears.Where(a => a.fromDate <= Convert.ToDateTime(IME.CurrentDate().First().Value)).Where(b => b.toDate >= Convert.ToDateTime(IME.CurrentDate().First().Value)).FirstOrDefault().toDate;
+                dtpMonth.Value = IME.CurrentDate().FirstOrDefault().Value;
+                dtpMonth.MinDate = Utils.getManagement().FinancialYear.fromDate.Value;
+                dtpMonth.MaxDate = Utils.getManagement().FinancialYear.toDate.Value;
                 GridFill();
                 cmbEmployeeName.Focus();
             }

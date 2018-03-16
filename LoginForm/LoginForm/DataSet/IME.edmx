@@ -3581,7 +3581,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OtherBanc__Compa__457F2FDE">
+        <Association Name="FK__OtherBanc__Compa__1C7D1A4B">
           <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
           <End Role="OtherBanchesStocks" Type="Self.OtherBanchesStocks" Multiplicity="*" />
           <ReferentialConstraint>
@@ -9520,7 +9520,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="SalaryPackage" EntitySet="SalaryPackage" />
             <End Role="MonthlySalaryDetail" EntitySet="MonthlySalaryDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__OtherBanc__Compa__457F2FDE" Association="Self.FK__OtherBanc__Compa__457F2FDE">
+          <AssociationSet Name="FK__OtherBanc__Compa__1C7D1A4B" Association="Self.FK__OtherBanc__Compa__1C7D1A4B">
             <End Role="Company" EntitySet="Company" />
             <End Role="OtherBanchesStocks" EntitySet="OtherBanchesStocks" />
           </AssociationSet>
@@ -22324,7 +22324,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="String" Name="panNumber" Nullable="true" />
           <Property Type="String" Name="pfNumber" Nullable="true" />
           <Property Type="String" Name="esiNumber" Nullable="true" />
-          <Property Type="Decimal" Name="dailyWage1" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="defaultPackageId" Nullable="true" Precision="18" Scale="0" />
         </ComplexType>
         <ComplexType Name="EmployeeViewForPaySlip_Result">
           <Property Type="Int32" Name="WorkerID" Nullable="false" />
@@ -27181,7 +27181,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="panNumber" ColumnName="panNumber" />
                 <ScalarProperty Name="pfNumber" ColumnName="pfNumber" />
                 <ScalarProperty Name="esiNumber" ColumnName="esiNumber" />
-                <ScalarProperty Name="dailyWage1" ColumnName="dailyWage1" />
+                <ScalarProperty Name="defaultPackageId" ColumnName="defaultPackageId" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
