@@ -45,7 +45,15 @@ namespace LoginForm
         {
             try
             {
-                VoucherType = strVoucherType;
+                if (FormMain.strVouchertype == "POS")
+                {
+                    VoucherType = "POS";
+                }
+                else
+                {
+                    VoucherType = strVoucherType;
+                }
+                    
                 VoucherTypeSP spVoucherType = new VoucherTypeSP();
                 DataTable dtblVouchetType = new DataTable();
                 dtblVouchetType = spVoucherType.VoucherTypeSelectionComboFill(strVoucherType);
@@ -57,7 +65,7 @@ namespace LoginForm
                 if (inCount == 1)
                 {
                     cmbVoucherType.SelectedValue = dtblVouchetType.Rows[0].ItemArray[0].ToString();
-                    //btnGo_Click(btnGo, EventArgs.Empty);
+                    btnGo_Click(btnGo, EventArgs.Empty);
                 }
                 else
                 {
