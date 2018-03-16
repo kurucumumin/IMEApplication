@@ -83,13 +83,13 @@ namespace LoginForm.Account.Services
                 {
                     DataRow row = null;
                     ////TODO MonthlySalaryVoucherDetailViewAll tekrar bakılacak
-                    foreach (var item in IME.MonthlySalaryVoucherDetailsViewAll(strMonth, Month, monthYear, decEditMode, strVoucherNoforEdit))
-                    {
+                    //foreach (var item in IME.MonthlySalaryVoucherDetailsViewAll(strMonth, Month, monthYear, decEditMode, strVoucherNoforEdit))
+                    //{
 
-                        row = dtbl.NewRow();
-                        row["voucherTypeId"] = item;
-                        dtbl.Rows.Add(row);
-                    }
+                    //    row = dtbl.NewRow();
+                    //    row["voucherTypeId"] = item;
+                    //    dtbl.Rows.Add(row);
+                    //}
 
 
                 }

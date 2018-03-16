@@ -87,7 +87,10 @@ namespace LoginForm.Item
                 //
                 #endregion
                 dgItemList.DataSource = gridAdapterPC;
-                dgItemList.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                for (int i = 0; i < dgItemList.ColumnCount; i++)
+                {
+                    dgItemList.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                }
 
                 if (gridAdapterPC.Count != 0)
                 {
@@ -285,9 +288,16 @@ namespace LoginForm.Item
             {
                 txtStockNo.Text = sd.Article_No;
                 txtDesc.Text = sd.Article_Desc;
-                txtSSM.Text = sd.Pack_Quantity.ToString();
+               
                 txtUC.Text = sd.Unit_Content.ToString();
-                txtUM.Text = sd.Unit_Measure;
+                if (sd.Unit_Measure != null && sd.Unit_Measure != "")
+                { txtUM.Text = sd.Unit_Measure; }
+                else
+                {
+                    txtUM.Text = "Each";
+                    SuppliedIn.Text = "";
+                }
+                txtSSM.Text = sd.Pack_Quantity.ToString();
                 if (sd.Standard_Weight != 0) { txtStandartWeight.Text = Decimal.Parse(String.Format("{0:0.0000}",((decimal)(sd.Standard_Weight) / (decimal)1000).ToString("G29"))).ToString();
                     txtStandartWeight.Text = String.Format("{0:0.0000}", Decimal.Parse(txtStandartWeight.Text)).ToString();} else { }
                 txtHazardousInd.Text = sd.Hazardous_Ind;
@@ -319,9 +329,15 @@ namespace LoginForm.Item
             {
                 txtStockNo.Text = sdP.Article_No;
                 txtDesc.Text = sdP.Article_Desc;
-                txtSSM.Text = sdP.Pack_Quantity.ToString();
-                txtUC.Text = sdP.Unit_Content.ToString();
-                txtUM.Text = sdP.Unit_Measure;
+                txtUC.Text = sd.Unit_Content.ToString();
+                if (sd.Unit_Measure != null && sd.Unit_Measure != "")
+                { txtUM.Text = sd.Unit_Measure; }
+                else
+                {
+                    txtUM.Text = "Each";
+                    SuppliedIn.Text = "";
+                }
+                txtSSM.Text = sd.Pack_Quantity.ToString();
                 if (sdP.Standard_Weight != 0) { txtStandartWeight.Text = String.Format("{0:0.0000}",((decimal)(sdP.Standard_Weight) / (decimal)1000).ToString("G29")); }
                 txtHazardousInd.Text = sdP.Hazardous_Ind;
                 txtCalibrationInd.Text = sdP.Calibration_Ind;
@@ -580,27 +596,33 @@ namespace LoginForm.Item
 
         private void Number_TextChanged(object sender, EventArgs e)
         {
-            if ((txtStockNo.Text!="" && txtStockNo.Text!=null) &&(!(txtQuantitiy.Text==string.Empty|| Int32.Parse(txtQuantitiy.Text)==0))) {
-                if ((Int32.Parse(txtQuantitiy.Text) < Int32.Parse(txtUnitCount2.Text) && Int32.Parse(txtUnitCount1.Text) != 0) || Int32.Parse(txtUnitCount2.Text) == 0)
-                {
-                    txtUnitPrice.Text = txtUK1.Text;
+            try {
+                if ((txtStockNo.Text != "" && txtStockNo.Text != null) && (!(txtQuantitiy.Text == string.Empty || Int32.Parse(txtQuantitiy.Text) == 0))) {
+                    if ((Int32.Parse(txtQuantitiy.Text) < Int32.Parse(txtUnitCount2.Text) && Int32.Parse(txtUnitCount1.Text) != 0) || Int32.Parse(txtUnitCount2.Text) == 0)
+                    {
+                        txtUnitPrice.Text = txtUK1.Text;
+                    }
+                    else if ((Int32.Parse(txtQuantitiy.Text) < Int32.Parse(txtUnitCount3.Text) && Int32.Parse(txtUnitCount2.Text) != 0) || Int32.Parse(txtUnitCount3.Text) == 0)
+                    {
+                        txtUnitPrice.Text = txtUK2.Text;
+                    }
+                    else if ((Int32.Parse(txtQuantitiy.Text) < Int32.Parse(txtUnitCount4.Text) && Int32.Parse(txtUnitCount3.Text) != 0) || Int32.Parse(txtUnitCount4.Text) == 0)
+                    {
+                        txtUnitPrice.Text = txtUK3.Text;
+                    }
+                    else if ((Int32.Parse(txtQuantitiy.Text) < Int32.Parse(txtUnitCount5.Text) && Int32.Parse(txtUnitCount4.Text) != 0) || Int32.Parse(txtUnitCount5.Text) == 0)
+                    {
+                        txtUnitPrice.Text = txtUK4.Text;
+                    }
+                    else if (Int32.Parse(txtUnitCount5.Text) != 0) { txtUnitPrice.Text = txtUK5.Text; }
                 }
-                else if ((Int32.Parse(txtQuantitiy.Text) < Int32.Parse(txtUnitCount3.Text) && Int32.Parse(txtUnitCount2.Text) != 0) || Int32.Parse(txtUnitCount3.Text) == 0)
-                {
-                    txtUnitPrice.Text = txtUK2.Text;
-                }
-                else if ((Int32.Parse(txtQuantitiy.Text) < Int32.Parse(txtUnitCount4.Text) && Int32.Parse(txtUnitCount3.Text) != 0) || Int32.Parse(txtUnitCount4.Text) == 0)
-                {
-                    txtUnitPrice.Text = txtUK3.Text;
-                }
-                else if ((Int32.Parse(txtQuantitiy.Text) < Int32.Parse(txtUnitCount5.Text) && Int32.Parse(txtUnitCount4.Text) != 0) || Int32.Parse(txtUnitCount5.Text) == 0)
-                {
-                    txtUnitPrice.Text = txtUK4.Text;
-                }
-                else if (Int32.Parse(txtUnitCount5.Text) != 0) { txtUnitPrice.Text = txtUK5.Text; }
+                else { txtUnitPrice.Text = string.Empty; }
             }
-            else { txtUnitPrice.Text = string.Empty; }
-           
+            catch
+            {
+                txtUnitPrice.Text = string.Empty;
+                MessageBox.Show("Please enter a alid number");
+            }
         }
 
         private void Environment_TextChanged(object sender, EventArgs e)
@@ -718,6 +740,24 @@ namespace LoginForm.Item
         private void panelSearch_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void txtSSM_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Int32.Parse(txtSSM.Text)>1)
+                {
+                    SuppliedIn.Text = "Package of " + txtSSM.Text;
+                }else if (Int32.Parse(txtUC.Text) > 1)
+                {
+                    SuppliedIn.Text = txtUM.Text+ " of " + txtUC.Text;
+                }
+            }
+            catch
+            {
+
+            }
         }
     }
 }

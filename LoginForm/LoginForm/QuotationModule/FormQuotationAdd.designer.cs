@@ -181,6 +181,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.tabItemDetails = new System.Windows.Forms.TabPage();
             this.gbCost = new System.Windows.Forms.GroupBox();
+            this.lblMargine = new System.Windows.Forms.Label();
             this.txtWeb5 = new System.Windows.Forms.TextBox();
             this.txtWeb2 = new System.Windows.Forms.TextBox();
             this.txtWeb3 = new System.Windows.Forms.TextBox();
@@ -321,7 +322,6 @@
             this.cbSMethod = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtNoteForCustomer = new System.Windows.Forms.TextBox();
-            this.lblMargine = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -1705,6 +1705,15 @@
             this.gbCost.TabIndex = 510;
             this.gbCost.TabStop = false;
             // 
+            // lblMargine
+            // 
+            this.lblMargine.AutoSize = true;
+            this.lblMargine.Location = new System.Drawing.Point(239, 7);
+            this.lblMargine.Name = "lblMargine";
+            this.lblMargine.Size = new System.Drawing.Size(45, 13);
+            this.lblMargine.TabIndex = 437;
+            this.lblMargine.Text = "Margine";
+            // 
             // txtWeb5
             // 
             this.txtWeb5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -2844,7 +2853,7 @@
             this.cbDeliverDiscount.Name = "cbDeliverDiscount";
             this.cbDeliverDiscount.Size = new System.Drawing.Size(70, 32);
             this.cbDeliverDiscount.TabIndex = 58;
-            this.cbDeliverDiscount.Text = "Deliver Discount";
+            this.cbDeliverDiscount.Text = "Distribute Discount";
             this.cbDeliverDiscount.UseVisualStyleBackColor = true;
             this.cbDeliverDiscount.Visible = false;
             this.cbDeliverDiscount.CheckedChanged += new System.EventHandler(this.cbDeliverDiscount_CheckedChanged);
@@ -3094,15 +3103,6 @@
             this.txtNoteForCustomer.Name = "txtNoteForCustomer";
             this.txtNoteForCustomer.Size = new System.Drawing.Size(404, 36);
             this.txtNoteForCustomer.TabIndex = 0;
-            // 
-            // lblMargine
-            // 
-            this.lblMargine.AutoSize = true;
-            this.lblMargine.Location = new System.Drawing.Point(239, 7);
-            this.lblMargine.Name = "lblMargine";
-            this.lblMargine.Size = new System.Drawing.Size(45, 13);
-            this.lblMargine.TabIndex = 437;
-            this.lblMargine.Text = "Margine";
             // 
             // FormQuotationAdd
             // 
