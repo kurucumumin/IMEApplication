@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.currencyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel31 = new System.Windows.Forms.Panel();
             this.txtBranchCode = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -41,6 +40,7 @@
             this.numericFactor = new System.Windows.Forms.NumericUpDown();
             this.lblFactor = new System.Windows.Forms.Label();
             this.cbCurrency = new System.Windows.Forms.ComboBox();
+            this.currencyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lblDefaultCurrency = new System.Windows.Forms.Label();
             this.btnTermsOfPayment = new System.Windows.Forms.Button();
             this.txtVAT = new System.Windows.Forms.TextBox();
@@ -50,9 +50,9 @@
             this.txtLowMarginLimit = new System.Windows.Forms.TextBox();
             this.lblLowMarginLimit = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.currencyBindingSource)).BeginInit();
             this.panel31.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericFactor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.currencyBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -71,10 +71,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(518, 642);
             this.tableLayoutPanel1.TabIndex = 2;
-            // 
-            // currencyBindingSource
-            // 
-            this.currencyBindingSource.DataSource = typeof(LoginForm.DataSet.Currency);
             // 
             // panel31
             // 
@@ -107,6 +103,7 @@
             // 
             this.txtBranchCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBranchCode.Enabled = false;
             this.txtBranchCode.Location = new System.Drawing.Point(191, 255);
             this.txtBranchCode.Margin = new System.Windows.Forms.Padding(3, 2, 16, 2);
             this.txtBranchCode.Name = "txtBranchCode";
@@ -116,6 +113,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Enabled = false;
             this.label2.Location = new System.Drawing.Point(16, 258);
             this.label2.Margin = new System.Windows.Forms.Padding(16, 0, 3, 0);
             this.label2.Name = "label2";
@@ -157,6 +155,7 @@
             this.btnCategorySubCategory.TabIndex = 15;
             this.btnCategorySubCategory.Text = "Category & Sub Category";
             this.btnCategorySubCategory.UseVisualStyleBackColor = false;
+            this.btnCategorySubCategory.Click += new System.EventHandler(this.btnCategorySubCategory_Click);
             // 
             // btnExchangeRate
             // 
@@ -173,6 +172,7 @@
             this.btnExchangeRate.TabIndex = 14;
             this.btnExchangeRate.Text = "Exchange Rate";
             this.btnExchangeRate.UseVisualStyleBackColor = false;
+            this.btnExchangeRate.Click += new System.EventHandler(this.btnExchangeRate_Click);
             // 
             // numericFactor
             // 
@@ -214,6 +214,10 @@
             this.cbCurrency.TabIndex = 10;
             this.cbCurrency.ValueMember = "currencyID";
             // 
+            // currencyBindingSource
+            // 
+            this.currencyBindingSource.DataSource = typeof(LoginForm.DataSet.Currency);
+            // 
             // lblDefaultCurrency
             // 
             this.lblDefaultCurrency.AutoSize = true;
@@ -238,6 +242,7 @@
             this.btnTermsOfPayment.TabIndex = 8;
             this.btnTermsOfPayment.Text = "Terms of Payment";
             this.btnTermsOfPayment.UseVisualStyleBackColor = false;
+            this.btnTermsOfPayment.Click += new System.EventHandler(this.btnTermsOfPayment_Click);
             // 
             // txtVAT
             // 
@@ -274,6 +279,7 @@
             this.btnRolesAuthorities.TabIndex = 5;
             this.btnRolesAuthorities.Text = "Roles and Authorities";
             this.btnRolesAuthorities.UseVisualStyleBackColor = false;
+            this.btnRolesAuthorities.Click += new System.EventHandler(this.btnRolesAuthorities_Click);
             // 
             // btnSave
             // 
@@ -289,6 +295,7 @@
             this.btnSave.TabIndex = 2;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // txtLowMarginLimit
             // 
@@ -320,10 +327,10 @@
             this.Size = new System.Drawing.Size(518, 642);
             this.Load += new System.EventHandler(this.ManagementControl_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.currencyBindingSource)).EndInit();
             this.panel31.ResumeLayout(false);
             this.panel31.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericFactor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.currencyBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

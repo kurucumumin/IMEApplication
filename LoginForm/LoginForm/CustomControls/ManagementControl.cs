@@ -92,9 +92,10 @@ namespace LoginForm.CustomControls
                 Management management = IME.Managements.First();
                 management.LowMarginLimit = Convert.ToDecimal(txtLowMarginLimit.Text);
                 management.VAT = Convert.ToDecimal(txtVAT.Text);
-                management.DefaultCurrency = Convert.ToDecimal(cbCurrency.SelectedValue);
                 management.Factor = numericFactor.Value;
+                management.DefaultCurrency = Convert.ToDecimal(cbCurrency.SelectedValue);
                 management.DataSeperetor = txtDataSeperator.Text;
+                //management.BranchCode = txtBranchCode.Text;
                 IME.SaveChanges();
 
                 Company c = IME.Companies.Where(x => x.companyId == management.CurrentCompanyId).FirstOrDefault();
@@ -102,7 +103,7 @@ namespace LoginForm.CustomControls
 
                 IME.SaveChanges();
 
-                MessageBox.Show("Changes Saved");
+                MessageBox.Show("Changes Saved", "Success");
             }
             catch (Exception ex)
             {
