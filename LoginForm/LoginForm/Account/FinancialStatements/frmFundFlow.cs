@@ -239,7 +239,7 @@ namespace LoginForm
                     decimal dcTotalAsset = 0;
                     if (dtbl.Rows.Count > 0)
                     {
-                        dcTotalAsset = decimal.Parse(dtbl.Compute("Sum(Balance)", string.Empty).ToString());
+                        dcTotalAsset = dtbl.AsEnumerable().Sum(x => Convert.ToDecimal(x["Balance"]));
                     }
                     ////-----------------Application------------------------------------------------------------
                     dtbl = new DataTable();
@@ -265,7 +265,7 @@ namespace LoginForm
                     decimal dcTotalLiability = 0;
                     if (dtbl.Rows.Count > 0)
                     {
-                        dcTotalLiability = Convert.ToDecimal(dtbl.Compute("Sum(Balance)", string.Empty).ToString());
+                        dcTotalLiability = dtbl.AsEnumerable().Sum(x => Convert.ToDecimal(x["Balance"]));
                     }
                     //-------------------- Closing Stock -----------------------//  With Calculation
                     dcClosingStock = spFinancial.StockValueGetOnDate(Convert.ToDateTime(txtFundflowToDate.Text), strCalculationMethod, false, false);
