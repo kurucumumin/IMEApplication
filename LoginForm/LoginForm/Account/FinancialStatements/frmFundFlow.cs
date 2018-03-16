@@ -286,16 +286,17 @@ namespace LoginForm
                         {
                             if (dtbl.Rows.Count > 0)
                             {
-                                dcSum = Convert.ToDecimal(dtbl.Compute("Sum(Debit)", string.Empty).ToString());
-                                dcProfit = dcProfit - dcSum;
+                                dcSum = Convert.ToDecimal(dtbl.Compute("Sum(Credit)", string.Empty).ToString());
+                                dcProfit = dcProfit + dcSum;
                             }
                         }
                         else
                         {
                             if (dtbl.Rows.Count > 0)
                             {
-                                dcSum = Convert.ToDecimal(dtbl.Compute("Sum(Credit)", string.Empty).ToString());
-                                dcProfit = dcProfit + dcSum;
+                                dcSum = Convert.ToDecimal(dtbl.Compute("Sum(Debit)", string.Empty).ToString());
+                                dcProfit = dcProfit - dcSum;
+                                
                             }
                         }
                     }
