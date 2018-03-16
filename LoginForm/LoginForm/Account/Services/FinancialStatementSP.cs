@@ -265,7 +265,15 @@ namespace LoginForm.Account.Services
             {
                 DataTable dtbl = new DataTable();
                 var adaptor = (IME.Trialbalance1(decAccountGroupId, fromDate, toDate)).ToList();
-
+                dtbl.Columns.Add("Sl_No");
+                dtbl.Columns.Add("accountGroupId");
+                dtbl.Columns.Add("Name");
+                dtbl.Columns.Add("crdit");
+                dtbl.Columns.Add("debit");
+                dtbl.Columns.Add("OpeningBalance");
+                dtbl.Columns.Add("OpBalance");
+                dtbl.Columns.Add("Balance");
+                dtbl.Columns.Add("Balance1");
                 foreach (var item in adaptor)
                 {
                     DataRow row = dtbl.NewRow();
@@ -280,14 +288,17 @@ namespace LoginForm.Account.Services
                     row["Balance"] = item.Balance;
                     row["Balance1"] = item.Balance1;
 
-                    dts.Tables[0].Rows.Add(row);
+                    dtbl.Rows.Add(row);
                 }
                 dts.Tables.Add(dtbl);
 
 
                 DataTable dtbl2 = new DataTable();
                 var adaptor2 = (IME.Trialbalance2(decAccountGroupId, fromDate, toDate)).ToList();
-
+                dtbl2.Columns.Add("Name");
+                dtbl2.Columns.Add("crdit");
+                dtbl2.Columns.Add("debit");
+                dtbl2.Columns.Add("OpeningBalance");
                 foreach (var item in adaptor2)
                 {
                     DataRow row = dtbl.NewRow();
@@ -299,14 +310,17 @@ namespace LoginForm.Account.Services
                     row["OpeningBalance"] = item.OpeningBalance;
 
 
-                    dts.Tables[0].Rows.Add(row);
+                    dtbl2.Rows.Add(row);
                 }
                 dts.Tables.Add(dtbl2);
 
 
                 DataTable dtbl3 = new DataTable();
                 var adaptor3 = (IME.Trialbalance3(decAccountGroupId, fromDate, toDate)).ToList();
-
+                dtbl3.Columns.Add("Name");
+                dtbl3.Columns.Add("crdit");
+                dtbl3.Columns.Add("debit");
+                dtbl3.Columns.Add("OpeningBalance");
                 foreach (var item in adaptor3)
                 {
                     DataRow row = dtbl.NewRow();
@@ -318,7 +332,7 @@ namespace LoginForm.Account.Services
                     row["OpeningBalance"] = item.OpeningBalance;
 
 
-                    dts.Tables[0].Rows.Add(row);
+                    dtbl2.Rows.Add(row);
                 }
                 dts.Tables.Add(dtbl3);
             }
@@ -338,92 +352,107 @@ namespace LoginForm.Account.Services
             {
                 DataTable dtbl1 = new DataTable();
 
-                var adaptor1 = (IME.ProfitAndLossAnalysisUpToaDateForBalansheetPurchaseAcount(fromDate, toDate)).ToList();
+                var adaptor1 = (IME.ProfitAndLossAnalysisUpToaDateForBalansheetSalesAcount(fromDate, toDate)).ToList();
+
+                dtbl1.Columns.Add("ID");
+                dtbl1.Columns.Add("Name");
+                dtbl1.Columns.Add("SUM(Credit)");
                 foreach (var item in adaptor1)
                 {
                     DataRow row = dtbl1.NewRow();
                     row["ID"] = item.ID;
                     row["Name"] = item.Name;
-                    row["Debit"] = item.Debit;
+                    row["SUM(Credit)"] = item.Credit;
 
-                    dts.Tables[0].Rows.Add(row);
+
+                    dtbl1.Rows.Add(row);
                 }
                 dts.Tables.Add(dtbl1);
 
 
 
-                DataTable dtbl2 = new DataTable();
-                var adaptor2 = (IME.ProfitAndLossAnalysisUpToaDateForBalansheetSalesAcount(fromDate, toDate)).ToList();
-
+                DataTable dtbl2 = new DataTable(); 
+                 var adaptor2 = (IME.ProfitAndLossAnalysisUpToaDateForBalansheetPurchaseAcount(fromDate, toDate)).ToList();
+                dtbl2.Columns.Add("ID");
+                dtbl2.Columns.Add("Name");
+                dtbl2.Columns.Add("SUM(Debit)");
                 foreach (var item in adaptor2)
                 {
                     DataRow row = dtbl2.NewRow();
                     row["ID"] = item.ID;
                     row["Name"] = item.Name;
-                    row["Credit"] = item.Credit;
+                    row["SUM(Debit)"] = item.Debit;
 
-                    dts.Tables[1].Rows.Add(row);
+                    dtbl2.Rows.Add(row);
                 }
                 dts.Tables.Add(dtbl2);
 
 
-                DataTable dtbl3 = new DataTable();
-                var adaptor3 = (IME.ProfitAndLossAnalysisUpToaDateForBalansheetDirectExpenses(fromDate, toDate)).ToList();
-
+                DataTable dtbl3 = new DataTable(); 
+                 var adaptor3 = (IME.ProfitAndLossAnalysisUpToaDateForBalansheetDirectincome(fromDate, toDate)).ToList();
+                dtbl3.Columns.Add("ID");
+                dtbl3.Columns.Add("Name");
+                dtbl3.Columns.Add("SUM(Credit)");
                 foreach (var item in adaptor3)
                 {
                     DataRow row = dtbl3.NewRow();
                     row["ID"] = item.ID;
                     row["Name"] = item.Name;
-                    row["Debit"] = item.Debit;
+                    row["SUM(Credit)"] = item.Credit;
 
-                    dts.Tables[2].Rows.Add(row);
+                    dtbl3.Rows.Add(row);
                 }
                 dts.Tables.Add(dtbl3);
 
 
 
                 DataTable dtbl4 = new DataTable();
-                var adaptor4 = (IME.ProfitAndLossAnalysisUpToaDateForBalansheetDirectincome(fromDate, toDate)).ToList();
-
+                var adaptor4 = (IME.ProfitAndLossAnalysisUpToaDateForBalansheetDirectExpenses(fromDate, toDate)).ToList();
+                dtbl4.Columns.Add("ID");
+                dtbl4.Columns.Add("Name");
+                dtbl4.Columns.Add("SUM(Debit)");
                 foreach (var item in adaptor4)
                 {
                     DataRow row = dtbl4.NewRow();
                     row["ID"] = item.ID;
                     row["Name"] = item.Name;
-                    row["Credit"] = item.Credit;
+                    row["SUM(Debit)"] = item.Debit;
 
-                    dts.Tables[3].Rows.Add(row);
+                    dtbl4.Rows.Add(row);
                 }
                 dts.Tables.Add(dtbl4);
 
 
-                DataTable dtbl5 = new DataTable();
-                var adaptor5 = (IME.ProfitAndLossAnalysisUpToaDateForBalansheetIndirectExpenses(fromDate, toDate)).ToList();
-
+                DataTable dtbl5 = new DataTable(); 
+                 var adaptor5 = (IME.ProfitAndLossAnalysisUpToaDateForBalansheetIndirectincome(fromDate, toDate)).ToList();
+                dtbl5.Columns.Add("ID");
+                dtbl5.Columns.Add("Name");
+                dtbl5.Columns.Add("SUM(Credit)");
                 foreach (var item in adaptor5)
                 {
                     DataRow row = dtbl5.NewRow();
                     row["ID"] = item.ID;
                     row["Name"] = item.Name;
-                    row["Debit"] = item.Debit;
+                    row["SUM(Credit)"] = item.Credit;
 
-                    dts.Tables[4].Rows.Add(row);
+                    dtbl5.Rows.Add(row);
                 }
                 dts.Tables.Add(dtbl5);
 
 
                 DataTable dtbl6 = new DataTable();
-                var adaptor6 = (IME.ProfitAndLossAnalysisUpToaDateForBalansheetIndirectincome(fromDate, toDate)).ToList();
-
+                var adaptor6 = (IME.ProfitAndLossAnalysisUpToaDateForBalansheetIndirectExpenses(fromDate, toDate)).ToList();
+                dtbl6.Columns.Add("ID");
+                dtbl6.Columns.Add("Name");
+                dtbl6.Columns.Add("SUM(Debit)");
                 foreach (var item in adaptor6)
                 {
                     DataRow row = dtbl6.NewRow();
                     row["ID"] = item.ID;
                     row["Name"] = item.Name;
-                    row["Credit"] = item.Credit;
+                    row["SUM(Debit)"] = item.Debit;
 
-                    dts.Tables[5].Rows.Add(row);
+                    dtbl6.Rows.Add(row);
                 }
                 dts.Tables.Add(dtbl6);
             }
@@ -444,6 +473,9 @@ namespace LoginForm.Account.Services
                 DataTable dtbl1 = new DataTable();
 
                 var adaptor1 = (IME.ProfitAndLossAnalysisPurchaseAccount(fromDate, toDate)).ToList();
+                dtbl1.Columns.Add("ID");
+                dtbl1.Columns.Add("Name");
+                dtbl1.Columns.Add("Debit");
                 foreach (var item in adaptor1)
                 {
                     DataRow row = dtbl1.NewRow();
@@ -451,7 +483,7 @@ namespace LoginForm.Account.Services
                     row["Name"] = item.Name;
                     row["Debit"] = item.Debit;
 
-                    dts.Tables[0].Rows.Add(row);
+                    dtbl1.Rows.Add(row);
                 }
                 dts.Tables.Add(dtbl1);
 
@@ -459,7 +491,9 @@ namespace LoginForm.Account.Services
 
                 DataTable dtbl2 = new DataTable();
                 var adaptor2 = (IME.ProfitAndLossAnalysisSalesAccount(fromDate, toDate)).ToList();
-
+                dtbl2.Columns.Add("ID");
+                dtbl2.Columns.Add("Name");
+                dtbl2.Columns.Add("Credit");
                 foreach (var item in adaptor2)
                 {
                     DataRow row = dtbl2.NewRow();
@@ -467,14 +501,16 @@ namespace LoginForm.Account.Services
                     row["Name"] = item.Name;
                     row["Credit"] = item.Credit;
 
-                    dts.Tables[1].Rows.Add(row);
+                    dtbl2.Rows.Add(row);
                 }
                 dts.Tables.Add(dtbl2);
 
 
                 DataTable dtbl3 = new DataTable();
                 var adaptor3 = (IME.ProfitAndLossAnalysisDirectExpenses(fromDate, toDate)).ToList();
-
+                dtbl3.Columns.Add("ID");
+                dtbl3.Columns.Add("Name");
+                dtbl3.Columns.Add("Debit");
                 foreach (var item in adaptor3)
                 {
                     DataRow row = dtbl3.NewRow();
@@ -482,7 +518,7 @@ namespace LoginForm.Account.Services
                     row["Name"] = item.Name;
                     row["Debit"] = item.Debit;
 
-                    dts.Tables[2].Rows.Add(row);
+                    dtbl3.Rows.Add(row);
                 }
                 dts.Tables.Add(dtbl3);
 
@@ -490,7 +526,9 @@ namespace LoginForm.Account.Services
 
                 DataTable dtbl4 = new DataTable();
                 var adaptor4 = (IME.ProfitAndLossAnalysisDirectIncome(fromDate, toDate)).ToList();
-
+                dtbl4.Columns.Add("ID");
+                dtbl4.Columns.Add("Name");
+                dtbl4.Columns.Add("Credit");
                 foreach (var item in adaptor4)
                 {
                     DataRow row = dtbl4.NewRow();
@@ -498,14 +536,16 @@ namespace LoginForm.Account.Services
                     row["Name"] = item.Name;
                     row["Credit"] = item.Credit;
 
-                    dts.Tables[3].Rows.Add(row);
+                    dtbl4.Rows.Add(row);
                 }
                 dts.Tables.Add(dtbl4);
 
 
                 DataTable dtbl5 = new DataTable();
                 var adaptor5 = (IME.ProfitAndLossAnalysisInDirectExpenses(fromDate, toDate)).ToList();
-
+                dtbl5.Columns.Add("ID");
+                dtbl5.Columns.Add("Name");
+                dtbl5.Columns.Add("Debit");
                 foreach (var item in adaptor5)
                 {
                     DataRow row = dtbl5.NewRow();
@@ -513,14 +553,16 @@ namespace LoginForm.Account.Services
                     row["Name"] = item.Name;
                     row["Debit"] = item.Debit;
 
-                    dts.Tables[4].Rows.Add(row);
+                    dtbl5.Rows.Add(row);
                 }
                 dts.Tables.Add(dtbl5);
 
 
                 DataTable dtbl6 = new DataTable();
                 var adaptor6 = (IME.ProfitAndLossAnalysisInDirectIncome(fromDate, toDate)).ToList();
-
+                dtbl6.Columns.Add("ID");
+                dtbl6.Columns.Add("Name");
+                dtbl6.Columns.Add("Credit");
                 foreach (var item in adaptor6)
                 {
                     DataRow row = dtbl6.NewRow();
@@ -528,7 +570,7 @@ namespace LoginForm.Account.Services
                     row["Name"] = item.Name;
                     row["Credit"] = item.Credit;
 
-                    dts.Tables[5].Rows.Add(row);
+                    dtbl6.Rows.Add(row);
                 }
                 dts.Tables.Add(dtbl6);
             }
@@ -689,6 +731,9 @@ namespace LoginForm.Account.Services
                 DataTable dtbl1 = new DataTable();
 
                 var adaptor1 = (IME.FundFlow1(fromDate, toDate)).ToList();
+                dtbl1.Columns.Add("ID");
+                dtbl1.Columns.Add("Name");
+                dtbl1.Columns.Add("Balance");
                 foreach (var item in adaptor1)
                 {
                     DataRow row = dtbl1.NewRow();
@@ -696,7 +741,7 @@ namespace LoginForm.Account.Services
                     row["Name"] = item.Name;
                     row["Balance"] = item.Balance;
 
-                    dts.Tables[0].Rows.Add(row);
+                    dtbl1.Rows.Add(row);
                 }
                 dts.Tables.Add(dtbl1);
 
@@ -704,7 +749,9 @@ namespace LoginForm.Account.Services
 
                 DataTable dtbl2 = new DataTable();
                 var adaptor2 = (IME.FundFlow2(fromDate, toDate)).ToList();
-
+                dtbl2.Columns.Add("ID");
+                dtbl2.Columns.Add("Name");
+                dtbl2.Columns.Add("Balance");
                 foreach (var item in adaptor2)
                 {
                     DataRow row = dtbl2.NewRow();
@@ -712,14 +759,19 @@ namespace LoginForm.Account.Services
                     row["Name"] = item.Name;
                     row["Balance"] = item.Balance;
 
-                    dts.Tables[1].Rows.Add(row);
+                    dtbl2.Rows.Add(row);
                 }
                 dts.Tables.Add(dtbl2);
 
 
                 DataTable dtbl3 = new DataTable();
                 var adaptor3 = (IME.FundFlow3(fromDate, toDate)).ToList();
-
+                dtbl3.Columns.Add("ID");
+                dtbl3.Columns.Add("Name");
+                dtbl3.Columns.Add("OpeningBalance");
+                dtbl3.Columns.Add("debit");
+                dtbl3.Columns.Add("credit");
+                dtbl3.Columns.Add("ClosingBalance");
                 foreach (var item in adaptor3)
                 {
                     DataRow row = dtbl3.NewRow();
@@ -730,7 +782,7 @@ namespace LoginForm.Account.Services
                     row["Credit"] = item.credit;
                     row["ClosingBalance"] = item.ClosingBalance;
 
-                    dts.Tables[2].Rows.Add(row);
+                    dtbl3.Rows.Add(row);
                 }
                 dts.Tables.Add(dtbl3);
 
@@ -738,7 +790,10 @@ namespace LoginForm.Account.Services
 
                 DataTable dtbl4 = new DataTable();
                 var adaptor4 = (IME.FundFlow4(fromDate, toDate)).ToList();
-
+                dtbl4.Columns.Add("ID");
+                dtbl4.Columns.Add("Name");
+                dtbl4.Columns.Add("OpeningBalance");
+                dtbl4.Columns.Add("ClosingBalance");
                 foreach (var item in adaptor4)
                 {
                     DataRow row = dtbl4.NewRow();
@@ -747,32 +802,40 @@ namespace LoginForm.Account.Services
                     row["OpeningBalance"] = item.OpeningBalance;
                     row["ClosingBalance"] = item.ClosingBalance;
 
-                    dts.Tables[3].Rows.Add(row);
+                    dtbl4.Rows.Add(row);
                 }
                 dts.Tables.Add(dtbl4);
 
 
                 DataTable dtbl5 = new DataTable();
                 var adaptor5 = (IME.FundFlow5(fromDate, toDate)).ToList();
-
+                dtbl5.Columns.Add("ID");
+                dtbl5.Columns.Add("Name");
+                dtbl5.Columns.Add("OpeningBalance");
+                dtbl5.Columns.Add("debit");
+                dtbl5.Columns.Add("credit");
+                dtbl5.Columns.Add("ClosingBalance");
                 foreach (var item in adaptor5)
                 {
                     DataRow row = dtbl5.NewRow();
                     row["ID"] = item.ID;
                     row["Name"] = item.Name;
                     row["OpeningBalance"] = item.OpeningBalance;
-                    row["Debit"] = item.debit;
-                    row["Credit"] = item.credit;
+                    row["debit"] = item.debit;
+                    row["credit"] = item.credit;
                     row["ClosingBalance"] = item.ClosingBalance;
 
-                    dts.Tables[4].Rows.Add(row);
+                    dtbl5.Rows.Add(row);
                 }
                 dts.Tables.Add(dtbl5);
 
 
                 DataTable dtbl6 = new DataTable();
                 var adaptor6 = (IME.FundFlow6(fromDate, toDate)).ToList();
-
+                dtbl6.Columns.Add("ID");
+                dtbl6.Columns.Add("Name");
+                dtbl6.Columns.Add("OpeningBalance");
+                dtbl6.Columns.Add("ClosingBalance");
                 foreach (var item in adaptor6)
                 {
                     DataRow row = dtbl6.NewRow();
@@ -781,7 +844,7 @@ namespace LoginForm.Account.Services
                     row["OpeningBalance"] = item.OpeningBalance;
                     row["ClosingBalance"] = item.ClosingBalance;
 
-                    dts.Tables[5].Rows.Add(row);
+                    dtbl6.Rows.Add(row);
                 }
                 dts.Tables.Add(dtbl6);
             }

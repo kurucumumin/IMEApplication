@@ -12,7 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\cm_gn\Desktop\Shaji\</PublishUrl>
+    <PublishUrl>C:\Users\pomak\Desktop\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -22,7 +22,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>86</ApplicationRevision>
+    <ApplicationRevision>84</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -632,10 +632,10 @@
     <Compile Include="Account\Settings\frmSettings.designer.cs">
       <DependentUpon>frmSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Account\FinancialStatements\frmBalanceSheet.cs">
+    <Compile Include="Account\Transaction\frmBalanceSheet.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Account\FinancialStatements\frmBalanceSheet.Designer.cs">
+    <Compile Include="Account\Transaction\frmBalanceSheet.Designer.cs">
       <DependentUpon>frmBalanceSheet.cs</DependentUpon>
     </Compile>
     <Compile Include="Account\Transaction\frmBankReconciliation.cs">
@@ -728,17 +728,11 @@
     <Compile Include="Account\Transaction\frmServiceVoucher.Designer.cs">
       <DependentUpon>frmServiceVoucher.cs</DependentUpon>
     </Compile>
-    <Compile Include="CustomControls\AccountCustomControl\TransactionsControl.cs">
+    <Compile Include="CustomControls\AccountCustomControl\%40TempControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CustomControls\AccountCustomControl\TransactionsControl.Designer.cs">
-      <DependentUpon>TransactionsControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CustomControls\AccountCustomControl\SettingsControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CustomControls\AccountCustomControl\SettingsControl.Designer.cs">
-      <DependentUpon>SettingsControl.cs</DependentUpon>
+    <Compile Include="CustomControls\AccountCustomControl\%40TempControl.Designer.cs">
+      <DependentUpon>%40TempControl.cs</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\AccountCustomControl\BudgetControl.cs">
       <SubType>UserControl</SubType>
@@ -781,12 +775,6 @@
     </Compile>
     <Compile Include="CustomControls\AccountCustomControl\ReportsControl.Designer.cs">
       <DependentUpon>ReportsControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CustomControls\AccountCustomControl\SearchControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CustomControls\AccountCustomControl\SearchControl.Designer.cs">
-      <DependentUpon>SearchControl.cs</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\AccountingControl.cs">
       <SubType>UserControl</SubType>
@@ -2459,7 +2447,7 @@
     <EmbeddedResource Include="Account\Settings\frmSettings.resx">
       <DependentUpon>frmSettings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Account\FinancialStatements\frmBalanceSheet.resx">
+    <EmbeddedResource Include="Account\Transaction\frmBalanceSheet.resx">
       <DependentUpon>frmBalanceSheet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Transaction\frmBankReconciliation.resx">
@@ -2507,11 +2495,8 @@
     <EmbeddedResource Include="Account\Transaction\frmServiceVoucher.resx">
       <DependentUpon>frmServiceVoucher.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CustomControls\AccountCustomControl\TransactionsControl.resx">
-      <DependentUpon>TransactionsControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CustomControls\AccountCustomControl\SettingsControl.resx">
-      <DependentUpon>SettingsControl.cs</DependentUpon>
+    <EmbeddedResource Include="CustomControls\AccountCustomControl\%40TempControl.resx">
+      <DependentUpon>%40TempControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\AccountCustomControl\BudgetControl.resx">
       <DependentUpon>BudgetControl.cs</DependentUpon>
@@ -2533,9 +2518,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\AccountCustomControl\ReportsControl.resx">
       <DependentUpon>ReportsControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CustomControls\AccountCustomControl\SearchControl.resx">
-      <DependentUpon>SearchControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\AccountingControl.resx">
       <DependentUpon>AccountingControl.cs</DependentUpon>
@@ -2785,12 +2767,12 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 ve x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <ProductName>.NET Framework 3.5 SP1 </ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
