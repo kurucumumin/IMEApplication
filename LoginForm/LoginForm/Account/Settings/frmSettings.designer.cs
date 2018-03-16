@@ -77,10 +77,10 @@
             // 
             this.cbxPayroll.AutoSize = true;
             this.cbxPayroll.ForeColor = System.Drawing.Color.White;
-            this.cbxPayroll.Location = new System.Drawing.Point(18, 13);
-            this.cbxPayroll.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.cbxPayroll.Location = new System.Drawing.Point(24, 16);
+            this.cbxPayroll.Margin = new System.Windows.Forms.Padding(4, 4, 4, 6);
             this.cbxPayroll.Name = "cbxPayroll";
-            this.cbxPayroll.Size = new System.Drawing.Size(57, 17);
+            this.cbxPayroll.Size = new System.Drawing.Size(73, 21);
             this.cbxPayroll.TabIndex = 0;
             this.cbxPayroll.Text = "Payroll";
             this.cbxPayroll.UseVisualStyleBackColor = true;
@@ -90,10 +90,10 @@
             // 
             this.cbxBudget.AutoSize = true;
             this.cbxBudget.ForeColor = System.Drawing.Color.White;
-            this.cbxBudget.Location = new System.Drawing.Point(18, 38);
-            this.cbxBudget.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.cbxBudget.Location = new System.Drawing.Point(24, 47);
+            this.cbxBudget.Margin = new System.Windows.Forms.Padding(4, 4, 4, 6);
             this.cbxBudget.Name = "cbxBudget";
-            this.cbxBudget.Size = new System.Drawing.Size(60, 17);
+            this.cbxBudget.Size = new System.Drawing.Size(75, 21);
             this.cbxBudget.TabIndex = 1;
             this.cbxBudget.Text = "Budget";
             this.cbxBudget.UseVisualStyleBackColor = true;
@@ -103,10 +103,10 @@
             // 
             this.cbxMultiCurrency.AutoSize = true;
             this.cbxMultiCurrency.ForeColor = System.Drawing.Color.White;
-            this.cbxMultiCurrency.Location = new System.Drawing.Point(18, 88);
-            this.cbxMultiCurrency.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.cbxMultiCurrency.Location = new System.Drawing.Point(24, 108);
+            this.cbxMultiCurrency.Margin = new System.Windows.Forms.Padding(4, 4, 4, 6);
             this.cbxMultiCurrency.Name = "cbxMultiCurrency";
-            this.cbxMultiCurrency.Size = new System.Drawing.Size(93, 17);
+            this.cbxMultiCurrency.Size = new System.Drawing.Size(120, 21);
             this.cbxMultiCurrency.TabIndex = 3;
             this.cbxMultiCurrency.Text = "Multi Currency";
             this.cbxMultiCurrency.UseVisualStyleBackColor = true;
@@ -116,10 +116,10 @@
             // 
             this.cbxTax.AutoSize = true;
             this.cbxTax.ForeColor = System.Drawing.Color.White;
-            this.cbxTax.Location = new System.Drawing.Point(18, 63);
-            this.cbxTax.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.cbxTax.Location = new System.Drawing.Point(24, 78);
+            this.cbxTax.Margin = new System.Windows.Forms.Padding(4, 4, 4, 6);
             this.cbxTax.Name = "cbxTax";
-            this.cbxTax.Size = new System.Drawing.Size(44, 17);
+            this.cbxTax.Size = new System.Drawing.Size(53, 21);
             this.cbxTax.TabIndex = 2;
             this.cbxTax.Text = "Tax";
             this.cbxTax.UseVisualStyleBackColor = true;
@@ -129,10 +129,10 @@
             // 
             this.cbxTickPrintAfterSave.AutoSize = true;
             this.cbxTickPrintAfterSave.ForeColor = System.Drawing.Color.White;
-            this.cbxTickPrintAfterSave.Location = new System.Drawing.Point(18, 188);
-            this.cbxTickPrintAfterSave.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.cbxTickPrintAfterSave.Location = new System.Drawing.Point(24, 231);
+            this.cbxTickPrintAfterSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 6);
             this.cbxTickPrintAfterSave.Name = "cbxTickPrintAfterSave";
-            this.cbxTickPrintAfterSave.Size = new System.Drawing.Size(124, 17);
+            this.cbxTickPrintAfterSave.Size = new System.Drawing.Size(159, 21);
             this.cbxTickPrintAfterSave.TabIndex = 7;
             this.cbxTickPrintAfterSave.Text = "Tick Print After Save";
             this.cbxTickPrintAfterSave.UseVisualStyleBackColor = true;
@@ -142,10 +142,10 @@
             // 
             this.cbxShowCurrencySymbol.AutoSize = true;
             this.cbxShowCurrencySymbol.ForeColor = System.Drawing.Color.White;
-            this.cbxShowCurrencySymbol.Location = new System.Drawing.Point(18, 163);
-            this.cbxShowCurrencySymbol.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.cbxShowCurrencySymbol.Location = new System.Drawing.Point(24, 201);
+            this.cbxShowCurrencySymbol.Margin = new System.Windows.Forms.Padding(4, 4, 4, 6);
             this.cbxShowCurrencySymbol.Name = "cbxShowCurrencySymbol";
-            this.cbxShowCurrencySymbol.Size = new System.Drawing.Size(135, 17);
+            this.cbxShowCurrencySymbol.Size = new System.Drawing.Size(175, 21);
             this.cbxShowCurrencySymbol.TabIndex = 6;
             this.cbxShowCurrencySymbol.Text = "Show Currency Symbol";
             this.cbxShowCurrencySymbol.UseVisualStyleBackColor = true;
@@ -155,10 +155,10 @@
             // 
             this.cbxAllowZeroValueEntry.AutoSize = true;
             this.cbxAllowZeroValueEntry.ForeColor = System.Drawing.Color.White;
-            this.cbxAllowZeroValueEntry.Location = new System.Drawing.Point(18, 138);
-            this.cbxAllowZeroValueEntry.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.cbxAllowZeroValueEntry.Location = new System.Drawing.Point(24, 170);
+            this.cbxAllowZeroValueEntry.Margin = new System.Windows.Forms.Padding(4, 4, 4, 6);
             this.cbxAllowZeroValueEntry.Name = "cbxAllowZeroValueEntry";
-            this.cbxAllowZeroValueEntry.Size = new System.Drawing.Size(133, 17);
+            this.cbxAllowZeroValueEntry.Size = new System.Drawing.Size(173, 21);
             this.cbxAllowZeroValueEntry.TabIndex = 5;
             this.cbxAllowZeroValueEntry.Text = "Allow Zero Value Entry";
             this.cbxAllowZeroValueEntry.UseVisualStyleBackColor = true;
@@ -168,10 +168,10 @@
             // 
             this.cbxBillByBill.AutoSize = true;
             this.cbxBillByBill.ForeColor = System.Drawing.Color.White;
-            this.cbxBillByBill.Location = new System.Drawing.Point(18, 113);
-            this.cbxBillByBill.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.cbxBillByBill.Location = new System.Drawing.Point(24, 139);
+            this.cbxBillByBill.Margin = new System.Windows.Forms.Padding(4, 4, 4, 6);
             this.cbxBillByBill.Name = "cbxBillByBill";
-            this.cbxBillByBill.Size = new System.Drawing.Size(70, 17);
+            this.cbxBillByBill.Size = new System.Drawing.Size(90, 21);
             this.cbxBillByBill.TabIndex = 4;
             this.cbxBillByBill.Text = "Bill By Bill";
             this.cbxBillByBill.UseVisualStyleBackColor = true;
@@ -181,10 +181,10 @@
             // 
             this.cbxAllowRack.AutoSize = true;
             this.cbxAllowRack.ForeColor = System.Drawing.Color.White;
-            this.cbxAllowRack.Location = new System.Drawing.Point(256, 38);
-            this.cbxAllowRack.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.cbxAllowRack.Location = new System.Drawing.Point(341, 47);
+            this.cbxAllowRack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 6);
             this.cbxAllowRack.Name = "cbxAllowRack";
-            this.cbxAllowRack.Size = new System.Drawing.Size(80, 17);
+            this.cbxAllowRack.Size = new System.Drawing.Size(98, 21);
             this.cbxAllowRack.TabIndex = 14;
             this.cbxAllowRack.Text = "Allow Rack";
             this.cbxAllowRack.UseVisualStyleBackColor = true;
@@ -194,10 +194,10 @@
             // 
             this.cbxAllowGodown.AutoSize = true;
             this.cbxAllowGodown.ForeColor = System.Drawing.Color.White;
-            this.cbxAllowGodown.Location = new System.Drawing.Point(256, 13);
-            this.cbxAllowGodown.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.cbxAllowGodown.Location = new System.Drawing.Point(341, 16);
+            this.cbxAllowGodown.Margin = new System.Windows.Forms.Padding(4, 4, 4, 6);
             this.cbxAllowGodown.Name = "cbxAllowGodown";
-            this.cbxAllowGodown.Size = new System.Drawing.Size(94, 17);
+            this.cbxAllowGodown.Size = new System.Drawing.Size(118, 21);
             this.cbxAllowGodown.TabIndex = 13;
             this.cbxAllowGodown.Text = "Allow Godown";
             this.cbxAllowGodown.UseVisualStyleBackColor = true;
@@ -208,10 +208,10 @@
             // 
             this.cbxAllowModelNo.AutoSize = true;
             this.cbxAllowModelNo.ForeColor = System.Drawing.Color.White;
-            this.cbxAllowModelNo.Location = new System.Drawing.Point(18, 313);
-            this.cbxAllowModelNo.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.cbxAllowModelNo.Location = new System.Drawing.Point(24, 385);
+            this.cbxAllowModelNo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 6);
             this.cbxAllowModelNo.Name = "cbxAllowModelNo";
-            this.cbxAllowModelNo.Size = new System.Drawing.Size(100, 17);
+            this.cbxAllowModelNo.Size = new System.Drawing.Size(126, 21);
             this.cbxAllowModelNo.TabIndex = 12;
             this.cbxAllowModelNo.Text = "Allow Model No";
             this.cbxAllowModelNo.UseVisualStyleBackColor = true;
@@ -221,10 +221,10 @@
             // 
             this.cbxAllowSize.AutoSize = true;
             this.cbxAllowSize.ForeColor = System.Drawing.Color.White;
-            this.cbxAllowSize.Location = new System.Drawing.Point(18, 288);
-            this.cbxAllowSize.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.cbxAllowSize.Location = new System.Drawing.Point(24, 354);
+            this.cbxAllowSize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 6);
             this.cbxAllowSize.Name = "cbxAllowSize";
-            this.cbxAllowSize.Size = new System.Drawing.Size(74, 17);
+            this.cbxAllowSize.Size = new System.Drawing.Size(93, 21);
             this.cbxAllowSize.TabIndex = 11;
             this.cbxAllowSize.Text = "Allow Size";
             this.cbxAllowSize.UseVisualStyleBackColor = true;
@@ -234,10 +234,10 @@
             // 
             this.cbxAllowBatch.AutoSize = true;
             this.cbxAllowBatch.ForeColor = System.Drawing.Color.White;
-            this.cbxAllowBatch.Location = new System.Drawing.Point(18, 263);
-            this.cbxAllowBatch.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.cbxAllowBatch.Location = new System.Drawing.Point(24, 324);
+            this.cbxAllowBatch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 6);
             this.cbxAllowBatch.Name = "cbxAllowBatch";
-            this.cbxAllowBatch.Size = new System.Drawing.Size(82, 17);
+            this.cbxAllowBatch.Size = new System.Drawing.Size(102, 21);
             this.cbxAllowBatch.TabIndex = 10;
             this.cbxAllowBatch.Text = "Allow Batch";
             this.cbxAllowBatch.UseVisualStyleBackColor = true;
@@ -247,10 +247,10 @@
             // 
             this.cbxBarcode.AutoSize = true;
             this.cbxBarcode.ForeColor = System.Drawing.Color.White;
-            this.cbxBarcode.Location = new System.Drawing.Point(18, 238);
-            this.cbxBarcode.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.cbxBarcode.Location = new System.Drawing.Point(24, 293);
+            this.cbxBarcode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 6);
             this.cbxBarcode.Name = "cbxBarcode";
-            this.cbxBarcode.Size = new System.Drawing.Size(66, 17);
+            this.cbxBarcode.Size = new System.Drawing.Size(83, 21);
             this.cbxBarcode.TabIndex = 9;
             this.cbxBarcode.Text = "Barcode";
             this.cbxBarcode.UseVisualStyleBackColor = true;
@@ -260,10 +260,10 @@
             // 
             this.cbxAutomaticProductCodeGeneration.AutoSize = true;
             this.cbxAutomaticProductCodeGeneration.ForeColor = System.Drawing.Color.White;
-            this.cbxAutomaticProductCodeGeneration.Location = new System.Drawing.Point(18, 213);
-            this.cbxAutomaticProductCodeGeneration.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.cbxAutomaticProductCodeGeneration.Location = new System.Drawing.Point(24, 262);
+            this.cbxAutomaticProductCodeGeneration.Margin = new System.Windows.Forms.Padding(4, 4, 4, 6);
             this.cbxAutomaticProductCodeGeneration.Name = "cbxAutomaticProductCodeGeneration";
-            this.cbxAutomaticProductCodeGeneration.Size = new System.Drawing.Size(199, 17);
+            this.cbxAutomaticProductCodeGeneration.Size = new System.Drawing.Size(261, 21);
             this.cbxAutomaticProductCodeGeneration.TabIndex = 8;
             this.cbxAutomaticProductCodeGeneration.Text = "Automatic  Product Code Generation";
             this.cbxAutomaticProductCodeGeneration.UseVisualStyleBackColor = true;
@@ -273,10 +273,10 @@
             // 
             this.cbxShowDiscountPercentage.AutoSize = true;
             this.cbxShowDiscountPercentage.ForeColor = System.Drawing.Color.White;
-            this.cbxShowDiscountPercentage.Location = new System.Drawing.Point(256, 285);
-            this.cbxShowDiscountPercentage.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.cbxShowDiscountPercentage.Location = new System.Drawing.Point(341, 351);
+            this.cbxShowDiscountPercentage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 6);
             this.cbxShowDiscountPercentage.Name = "cbxShowDiscountPercentage";
-            this.cbxShowDiscountPercentage.Size = new System.Drawing.Size(156, 17);
+            this.cbxShowDiscountPercentage.Size = new System.Drawing.Size(200, 21);
             this.cbxShowDiscountPercentage.TabIndex = 23;
             this.cbxShowDiscountPercentage.Text = "Show Discount Percentage";
             this.cbxShowDiscountPercentage.UseVisualStyleBackColor = true;
@@ -285,10 +285,10 @@
             // 
             this.cbxShowBrand.AutoSize = true;
             this.cbxShowBrand.ForeColor = System.Drawing.Color.White;
-            this.cbxShowBrand.Location = new System.Drawing.Point(256, 260);
-            this.cbxShowBrand.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.cbxShowBrand.Location = new System.Drawing.Point(341, 320);
+            this.cbxShowBrand.Margin = new System.Windows.Forms.Padding(4, 4, 4, 6);
             this.cbxShowBrand.Name = "cbxShowBrand";
-            this.cbxShowBrand.Size = new System.Drawing.Size(84, 17);
+            this.cbxShowBrand.Size = new System.Drawing.Size(106, 21);
             this.cbxShowBrand.TabIndex = 22;
             this.cbxShowBrand.Text = "Show Brand";
             this.cbxShowBrand.UseVisualStyleBackColor = true;
@@ -298,10 +298,10 @@
             // 
             this.cbxShowProductCode.AutoSize = true;
             this.cbxShowProductCode.ForeColor = System.Drawing.Color.White;
-            this.cbxShowProductCode.Location = new System.Drawing.Point(256, 235);
-            this.cbxShowProductCode.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.cbxShowProductCode.Location = new System.Drawing.Point(341, 289);
+            this.cbxShowProductCode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 6);
             this.cbxShowProductCode.Name = "cbxShowProductCode";
-            this.cbxShowProductCode.Size = new System.Drawing.Size(121, 17);
+            this.cbxShowProductCode.Size = new System.Drawing.Size(154, 21);
             this.cbxShowProductCode.TabIndex = 21;
             this.cbxShowProductCode.Text = "Show Product Code";
             this.cbxShowProductCode.UseVisualStyleBackColor = true;
@@ -311,10 +311,10 @@
             // 
             this.cbxShowDiscountAmount.AutoSize = true;
             this.cbxShowDiscountAmount.ForeColor = System.Drawing.Color.White;
-            this.cbxShowDiscountAmount.Location = new System.Drawing.Point(256, 210);
-            this.cbxShowDiscountAmount.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.cbxShowDiscountAmount.Location = new System.Drawing.Point(341, 258);
+            this.cbxShowDiscountAmount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 6);
             this.cbxShowDiscountAmount.Name = "cbxShowDiscountAmount";
-            this.cbxShowDiscountAmount.Size = new System.Drawing.Size(137, 17);
+            this.cbxShowDiscountAmount.Size = new System.Drawing.Size(175, 21);
             this.cbxShowDiscountAmount.TabIndex = 20;
             this.cbxShowDiscountAmount.Text = "Show Discount Amount";
             this.cbxShowDiscountAmount.UseVisualStyleBackColor = true;
@@ -324,10 +324,10 @@
             // 
             this.cbxShowModelNo.AutoSize = true;
             this.cbxShowModelNo.ForeColor = System.Drawing.Color.White;
-            this.cbxShowModelNo.Location = new System.Drawing.Point(256, 185);
-            this.cbxShowModelNo.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.cbxShowModelNo.Location = new System.Drawing.Point(341, 228);
+            this.cbxShowModelNo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 6);
             this.cbxShowModelNo.Name = "cbxShowModelNo";
-            this.cbxShowModelNo.Size = new System.Drawing.Size(102, 17);
+            this.cbxShowModelNo.Size = new System.Drawing.Size(128, 21);
             this.cbxShowModelNo.TabIndex = 19;
             this.cbxShowModelNo.Text = "Show Model No";
             this.cbxShowModelNo.UseVisualStyleBackColor = true;
@@ -337,10 +337,10 @@
             // 
             this.cbxShowSize.AutoSize = true;
             this.cbxShowSize.ForeColor = System.Drawing.Color.White;
-            this.cbxShowSize.Location = new System.Drawing.Point(256, 160);
-            this.cbxShowSize.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.cbxShowSize.Location = new System.Drawing.Point(341, 197);
+            this.cbxShowSize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 6);
             this.cbxShowSize.Name = "cbxShowSize";
-            this.cbxShowSize.Size = new System.Drawing.Size(76, 17);
+            this.cbxShowSize.Size = new System.Drawing.Size(95, 21);
             this.cbxShowSize.TabIndex = 18;
             this.cbxShowSize.Text = "Show Size";
             this.cbxShowSize.UseVisualStyleBackColor = true;
@@ -350,10 +350,10 @@
             // 
             this.cbxShowUnit.AutoSize = true;
             this.cbxShowUnit.ForeColor = System.Drawing.Color.White;
-            this.cbxShowUnit.Location = new System.Drawing.Point(256, 135);
-            this.cbxShowUnit.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.cbxShowUnit.Location = new System.Drawing.Point(341, 166);
+            this.cbxShowUnit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 6);
             this.cbxShowUnit.Name = "cbxShowUnit";
-            this.cbxShowUnit.Size = new System.Drawing.Size(75, 17);
+            this.cbxShowUnit.Size = new System.Drawing.Size(93, 21);
             this.cbxShowUnit.TabIndex = 17;
             this.cbxShowUnit.Text = "Show Unit";
             this.cbxShowUnit.UseVisualStyleBackColor = true;
@@ -363,10 +363,10 @@
             // 
             this.cbxShowMRP.AutoSize = true;
             this.cbxShowMRP.ForeColor = System.Drawing.Color.White;
-            this.cbxShowMRP.Location = new System.Drawing.Point(256, 88);
-            this.cbxShowMRP.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.cbxShowMRP.Location = new System.Drawing.Point(341, 108);
+            this.cbxShowMRP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 6);
             this.cbxShowMRP.Name = "cbxShowMRP";
-            this.cbxShowMRP.Size = new System.Drawing.Size(80, 17);
+            this.cbxShowMRP.Size = new System.Drawing.Size(98, 21);
             this.cbxShowMRP.TabIndex = 16;
             this.cbxShowMRP.Text = "Show MRP";
             this.cbxShowMRP.UseVisualStyleBackColor = true;
@@ -376,10 +376,10 @@
             // 
             this.cbxShowSalesRate.AutoSize = true;
             this.cbxShowSalesRate.ForeColor = System.Drawing.Color.White;
-            this.cbxShowSalesRate.Location = new System.Drawing.Point(256, 63);
-            this.cbxShowSalesRate.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.cbxShowSalesRate.Location = new System.Drawing.Point(341, 78);
+            this.cbxShowSalesRate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 6);
             this.cbxShowSalesRate.Name = "cbxShowSalesRate";
-            this.cbxShowSalesRate.Size = new System.Drawing.Size(108, 17);
+            this.cbxShowSalesRate.Size = new System.Drawing.Size(137, 21);
             this.cbxShowSalesRate.TabIndex = 15;
             this.cbxShowSalesRate.Text = "Show Sales Rate";
             this.cbxShowSalesRate.UseVisualStyleBackColor = true;
@@ -391,10 +391,10 @@
             this.cmbPrinter.Items.AddRange(new object[] {
             "Dot Matrix",
             "Other"});
-            this.cmbPrinter.Location = new System.Drawing.Point(580, 188);
-            this.cmbPrinter.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.cmbPrinter.Location = new System.Drawing.Point(773, 231);
+            this.cmbPrinter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 6);
             this.cmbPrinter.Name = "cmbPrinter";
-            this.cmbPrinter.Size = new System.Drawing.Size(202, 21);
+            this.cmbPrinter.Size = new System.Drawing.Size(268, 24);
             this.cmbPrinter.TabIndex = 29;
             this.cmbPrinter.SelectedIndexChanged += new System.EventHandler(this.cmbPrinter_SelectedIndexChanged);
             this.cmbPrinter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbPrinter_KeyDown);
@@ -402,9 +402,10 @@
             // lblPrinter
             // 
             this.lblPrinter.ForeColor = System.Drawing.Color.White;
-            this.lblPrinter.Location = new System.Drawing.Point(437, 191);
+            this.lblPrinter.Location = new System.Drawing.Point(583, 235);
+            this.lblPrinter.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPrinter.Name = "lblPrinter";
-            this.lblPrinter.Size = new System.Drawing.Size(100, 20);
+            this.lblPrinter.Size = new System.Drawing.Size(133, 25);
             this.lblPrinter.TabIndex = 1228;
             this.lblPrinter.Text = "Printer";
             // 
@@ -412,10 +413,10 @@
             // 
             this.cbxDirectPrint.AutoSize = true;
             this.cbxDirectPrint.ForeColor = System.Drawing.Color.White;
-            this.cbxDirectPrint.Location = new System.Drawing.Point(580, 217);
-            this.cbxDirectPrint.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.cbxDirectPrint.Location = new System.Drawing.Point(773, 267);
+            this.cbxDirectPrint.Margin = new System.Windows.Forms.Padding(4, 4, 4, 6);
             this.cbxDirectPrint.Name = "cbxDirectPrint";
-            this.cbxDirectPrint.Size = new System.Drawing.Size(78, 17);
+            this.cbxDirectPrint.Size = new System.Drawing.Size(100, 21);
             this.cbxDirectPrint.TabIndex = 30;
             this.cbxDirectPrint.Text = "Direct Print";
             this.cbxDirectPrint.UseVisualStyleBackColor = true;
@@ -428,10 +429,10 @@
             "Warn",
             "Block",
             "Ignore"});
-            this.cmbNegativeCashTransaction.Location = new System.Drawing.Point(626, 281);
-            this.cmbNegativeCashTransaction.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.cmbNegativeCashTransaction.Location = new System.Drawing.Point(835, 346);
+            this.cmbNegativeCashTransaction.Margin = new System.Windows.Forms.Padding(4, 4, 4, 6);
             this.cmbNegativeCashTransaction.Name = "cmbNegativeCashTransaction";
-            this.cmbNegativeCashTransaction.Size = new System.Drawing.Size(152, 21);
+            this.cmbNegativeCashTransaction.Size = new System.Drawing.Size(201, 24);
             this.cmbNegativeCashTransaction.TabIndex = 31;
             this.cmbNegativeCashTransaction.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbNegativeCashTransaction_KeyDown);
             // 
@@ -439,9 +440,10 @@
             // 
             this.lblNegativeCashTransaction.AutoSize = true;
             this.lblNegativeCashTransaction.ForeColor = System.Drawing.Color.White;
-            this.lblNegativeCashTransaction.Location = new System.Drawing.Point(437, 289);
+            this.lblNegativeCashTransaction.Location = new System.Drawing.Point(583, 356);
+            this.lblNegativeCashTransaction.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNegativeCashTransaction.Name = "lblNegativeCashTransaction";
-            this.lblNegativeCashTransaction.Size = new System.Drawing.Size(136, 13);
+            this.lblNegativeCashTransaction.Size = new System.Drawing.Size(179, 17);
             this.lblNegativeCashTransaction.TabIndex = 1233;
             this.lblNegativeCashTransaction.Text = "Negative Cash Transaction";
             // 
@@ -454,10 +456,10 @@
             "Low Cost",
             "High Cost",
             "Last Purchase Rate"});
-            this.cmbStockValueCalculationMethod.Location = new System.Drawing.Point(626, 306);
-            this.cmbStockValueCalculationMethod.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.cmbStockValueCalculationMethod.Location = new System.Drawing.Point(835, 377);
+            this.cmbStockValueCalculationMethod.Margin = new System.Windows.Forms.Padding(4, 4, 4, 6);
             this.cmbStockValueCalculationMethod.Name = "cmbStockValueCalculationMethod";
-            this.cmbStockValueCalculationMethod.Size = new System.Drawing.Size(152, 21);
+            this.cmbStockValueCalculationMethod.Size = new System.Drawing.Size(201, 24);
             this.cmbStockValueCalculationMethod.TabIndex = 32;
             this.cmbStockValueCalculationMethod.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmblblStockValueCalculationMethod_KeyDown);
             // 
@@ -465,9 +467,10 @@
             // 
             this.lblStockValueCalculationMethod.AutoSize = true;
             this.lblStockValueCalculationMethod.ForeColor = System.Drawing.Color.White;
-            this.lblStockValueCalculationMethod.Location = new System.Drawing.Point(437, 314);
+            this.lblStockValueCalculationMethod.Location = new System.Drawing.Point(583, 386);
+            this.lblStockValueCalculationMethod.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblStockValueCalculationMethod.Name = "lblStockValueCalculationMethod";
-            this.lblStockValueCalculationMethod.Size = new System.Drawing.Size(159, 13);
+            this.lblStockValueCalculationMethod.Size = new System.Drawing.Size(207, 17);
             this.lblStockValueCalculationMethod.TabIndex = 1235;
             this.lblStockValueCalculationMethod.Text = "Stock Value Calculation Method";
             // 
@@ -478,10 +481,10 @@
             "Warn",
             "Block",
             "Ignore"});
-            this.cmbNegativeStockStatus.Location = new System.Drawing.Point(626, 331);
-            this.cmbNegativeStockStatus.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.cmbNegativeStockStatus.Location = new System.Drawing.Point(835, 407);
+            this.cmbNegativeStockStatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 6);
             this.cmbNegativeStockStatus.Name = "cmbNegativeStockStatus";
-            this.cmbNegativeStockStatus.Size = new System.Drawing.Size(152, 21);
+            this.cmbNegativeStockStatus.Size = new System.Drawing.Size(201, 24);
             this.cmbNegativeStockStatus.TabIndex = 33;
             this.cmbNegativeStockStatus.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbNegativeStockStatus_KeyDown);
             // 
@@ -489,9 +492,10 @@
             // 
             this.lblNegativeStockStatus.AutoSize = true;
             this.lblNegativeStockStatus.ForeColor = System.Drawing.Color.White;
-            this.lblNegativeStockStatus.Location = new System.Drawing.Point(437, 339);
+            this.lblNegativeStockStatus.Location = new System.Drawing.Point(583, 417);
+            this.lblNegativeStockStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNegativeStockStatus.Name = "lblNegativeStockStatus";
-            this.lblNegativeStockStatus.Size = new System.Drawing.Size(114, 13);
+            this.lblNegativeStockStatus.Size = new System.Drawing.Size(147, 17);
             this.lblNegativeStockStatus.TabIndex = 1237;
             this.lblNegativeStockStatus.Text = "Negative Stock Status";
             // 
@@ -501,9 +505,10 @@
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ForeColor = System.Drawing.Color.Black;
-            this.btnClose.Location = new System.Drawing.Point(697, 359);
+            this.btnClose.Location = new System.Drawing.Point(929, 442);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(85, 27);
+            this.btnClose.Size = new System.Drawing.Size(113, 33);
             this.btnClose.TabIndex = 36;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -516,9 +521,10 @@
             this.btnReset.FlatAppearance.BorderSize = 0;
             this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReset.ForeColor = System.Drawing.Color.Black;
-            this.btnReset.Location = new System.Drawing.Point(606, 359);
+            this.btnReset.Location = new System.Drawing.Point(808, 442);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(85, 27);
+            this.btnReset.Size = new System.Drawing.Size(113, 33);
             this.btnReset.TabIndex = 35;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = false;
@@ -531,9 +537,10 @@
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.ForeColor = System.Drawing.Color.Black;
-            this.btnSave.Location = new System.Drawing.Point(515, 359);
+            this.btnSave.Location = new System.Drawing.Point(687, 442);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(85, 27);
+            this.btnSave.Size = new System.Drawing.Size(113, 33);
             this.btnSave.TabIndex = 34;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -544,10 +551,10 @@
             // 
             this.cbxAddConfirmationFor.AutoSize = true;
             this.cbxAddConfirmationFor.ForeColor = System.Drawing.Color.White;
-            this.cbxAddConfirmationFor.Location = new System.Drawing.Point(578, 13);
-            this.cbxAddConfirmationFor.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.cbxAddConfirmationFor.Location = new System.Drawing.Point(771, 16);
+            this.cbxAddConfirmationFor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 6);
             this.cbxAddConfirmationFor.Name = "cbxAddConfirmationFor";
-            this.cbxAddConfirmationFor.Size = new System.Drawing.Size(124, 17);
+            this.cbxAddConfirmationFor.Size = new System.Drawing.Size(163, 21);
             this.cbxAddConfirmationFor.TabIndex = 24;
             this.cbxAddConfirmationFor.Text = "Add Confirmation For";
             this.cbxAddConfirmationFor.UseVisualStyleBackColor = true;
@@ -557,10 +564,10 @@
             // 
             this.cbxAdd.AutoSize = true;
             this.cbxAdd.ForeColor = System.Drawing.Color.White;
-            this.cbxAdd.Location = new System.Drawing.Point(626, 42);
-            this.cbxAdd.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.cbxAdd.Location = new System.Drawing.Point(835, 52);
+            this.cbxAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 6);
             this.cbxAdd.Name = "cbxAdd";
-            this.cbxAdd.Size = new System.Drawing.Size(45, 17);
+            this.cbxAdd.Size = new System.Drawing.Size(55, 21);
             this.cbxAdd.TabIndex = 25;
             this.cbxAdd.Text = "Add";
             this.cbxAdd.UseVisualStyleBackColor = true;
@@ -570,10 +577,10 @@
             // 
             this.cbxEdit.AutoSize = true;
             this.cbxEdit.ForeColor = System.Drawing.Color.White;
-            this.cbxEdit.Location = new System.Drawing.Point(626, 67);
-            this.cbxEdit.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.cbxEdit.Location = new System.Drawing.Point(835, 82);
+            this.cbxEdit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 6);
             this.cbxEdit.Name = "cbxEdit";
-            this.cbxEdit.Size = new System.Drawing.Size(44, 17);
+            this.cbxEdit.Size = new System.Drawing.Size(54, 21);
             this.cbxEdit.TabIndex = 26;
             this.cbxEdit.Text = "Edit";
             this.cbxEdit.UseVisualStyleBackColor = true;
@@ -583,10 +590,10 @@
             // 
             this.cbxDelete.AutoSize = true;
             this.cbxDelete.ForeColor = System.Drawing.Color.White;
-            this.cbxDelete.Location = new System.Drawing.Point(626, 92);
-            this.cbxDelete.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.cbxDelete.Location = new System.Drawing.Point(835, 113);
+            this.cbxDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 6);
             this.cbxDelete.Name = "cbxDelete";
-            this.cbxDelete.Size = new System.Drawing.Size(57, 17);
+            this.cbxDelete.Size = new System.Drawing.Size(71, 21);
             this.cbxDelete.TabIndex = 27;
             this.cbxDelete.Text = "Delete";
             this.cbxDelete.UseVisualStyleBackColor = true;
@@ -596,10 +603,10 @@
             // 
             this.cbxClose.AutoSize = true;
             this.cbxClose.ForeColor = System.Drawing.Color.White;
-            this.cbxClose.Location = new System.Drawing.Point(626, 117);
-            this.cbxClose.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.cbxClose.Location = new System.Drawing.Point(835, 144);
+            this.cbxClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 6);
             this.cbxClose.Name = "cbxClose";
-            this.cbxClose.Size = new System.Drawing.Size(52, 17);
+            this.cbxClose.Size = new System.Drawing.Size(65, 21);
             this.cbxClose.TabIndex = 28;
             this.cbxClose.Text = "Close";
             this.cbxClose.UseVisualStyleBackColor = true;
@@ -609,20 +616,20 @@
             // 
             this.cbxShowPurchaseRate.AutoSize = true;
             this.cbxShowPurchaseRate.ForeColor = System.Drawing.Color.White;
-            this.cbxShowPurchaseRate.Location = new System.Drawing.Point(256, 112);
-            this.cbxShowPurchaseRate.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.cbxShowPurchaseRate.Location = new System.Drawing.Point(341, 138);
+            this.cbxShowPurchaseRate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 6);
             this.cbxShowPurchaseRate.Name = "cbxShowPurchaseRate";
-            this.cbxShowPurchaseRate.Size = new System.Drawing.Size(127, 17);
+            this.cbxShowPurchaseRate.Size = new System.Drawing.Size(162, 21);
             this.cbxShowPurchaseRate.TabIndex = 1238;
             this.cbxShowPurchaseRate.Text = "Show Purchase Rate";
             this.cbxShowPurchaseRate.UseVisualStyleBackColor = true;
             // 
             // frmSettings
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(111)))), ((int)(((byte)(155)))));
-            this.ClientSize = new System.Drawing.Size(800, 399);
+            this.ClientSize = new System.Drawing.Size(1067, 491);
             this.Controls.Add(this.cbxShowPurchaseRate);
             this.Controls.Add(this.cbxClose);
             this.Controls.Add(this.cbxDelete);
@@ -668,10 +675,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "frmSettings";
-            this.Opacity = 0.85D;
-            this.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
+            this.Padding = new System.Windows.Forms.Padding(20, 12, 20, 12);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Settings";
             this.Load += new System.EventHandler(this.frmSettings_Load);

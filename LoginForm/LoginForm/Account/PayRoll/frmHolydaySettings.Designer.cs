@@ -62,9 +62,10 @@
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnClose.Location = new System.Drawing.Point(697, 333);
+            this.btnClose.Location = new System.Drawing.Point(929, 410);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(85, 27);
+            this.btnClose.Size = new System.Drawing.Size(113, 33);
             this.btnClose.TabIndex = 6;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -76,9 +77,10 @@
             this.btnClear.FlatAppearance.BorderSize = 0;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnClear.Location = new System.Drawing.Point(606, 333);
+            this.btnClear.Location = new System.Drawing.Point(808, 410);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(4);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(85, 27);
+            this.btnClear.Size = new System.Drawing.Size(113, 33);
             this.btnClear.TabIndex = 5;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = false;
@@ -90,9 +92,10 @@
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnSave.Location = new System.Drawing.Point(515, 333);
+            this.btnSave.Location = new System.Drawing.Point(687, 410);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(85, 27);
+            this.btnSave.Size = new System.Drawing.Size(113, 33);
             this.btnSave.TabIndex = 4;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -131,12 +134,13 @@
             this.dgvHolidayRegister.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvHolidayRegister.EnableHeadersVisualStyles = false;
             this.dgvHolidayRegister.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvHolidayRegister.Location = new System.Drawing.Point(406, 41);
+            this.dgvHolidayRegister.Location = new System.Drawing.Point(541, 50);
+            this.dgvHolidayRegister.Margin = new System.Windows.Forms.Padding(4);
             this.dgvHolidayRegister.MultiSelect = false;
             this.dgvHolidayRegister.Name = "dgvHolidayRegister";
             this.dgvHolidayRegister.RowHeadersVisible = false;
             this.dgvHolidayRegister.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvHolidayRegister.Size = new System.Drawing.Size(376, 281);
+            this.dgvHolidayRegister.Size = new System.Drawing.Size(501, 346);
             this.dgvHolidayRegister.TabIndex = 3;
             this.dgvHolidayRegister.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvHolidayRegister_DataBindingComplete);
             // 
@@ -159,10 +163,10 @@
             // 
             this.lblYear.AutoSize = true;
             this.lblYear.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblYear.Location = new System.Drawing.Point(274, 19);
-            this.lblYear.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblYear.Location = new System.Drawing.Point(365, 23);
+            this.lblYear.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblYear.Name = "lblYear";
-            this.lblYear.Size = new System.Drawing.Size(29, 13);
+            this.lblYear.Size = new System.Drawing.Size(38, 17);
             this.lblYear.TabIndex = 35;
             this.lblYear.Text = "Year";
             // 
@@ -170,10 +174,10 @@
             // 
             this.lblMonth.AutoSize = true;
             this.lblMonth.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblMonth.Location = new System.Drawing.Point(20, 19);
-            this.lblMonth.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblMonth.Location = new System.Drawing.Point(27, 23);
+            this.lblMonth.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblMonth.Name = "lblMonth";
-            this.lblMonth.Size = new System.Drawing.Size(37, 13);
+            this.lblMonth.Size = new System.Drawing.Size(47, 17);
             this.lblMonth.TabIndex = 34;
             this.lblMonth.Text = "Month";
             // 
@@ -214,11 +218,12 @@
             this.dgvCalender.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvCalender.EnableHeadersVisualStyles = false;
             this.dgvCalender.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvCalender.Location = new System.Drawing.Point(18, 41);
+            this.dgvCalender.Location = new System.Drawing.Point(24, 50);
+            this.dgvCalender.Margin = new System.Windows.Forms.Padding(4);
             this.dgvCalender.Name = "dgvCalender";
             this.dgvCalender.ReadOnly = true;
             this.dgvCalender.RowHeadersVisible = false;
-            this.dgvCalender.Size = new System.Drawing.Size(365, 281);
+            this.dgvCalender.Size = new System.Drawing.Size(487, 346);
             this.dgvCalender.TabIndex = 2;
             this.dgvCalender.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCalender_CellClick);
             this.dgvCalender.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCalender_CellMouseEnter);
@@ -278,11 +283,11 @@
             // 
             this.dtpMonth.CustomFormat = "MMM";
             this.dtpMonth.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpMonth.Location = new System.Drawing.Point(67, 15);
-            this.dtpMonth.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.dtpMonth.Location = new System.Drawing.Point(89, 18);
+            this.dtpMonth.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.dtpMonth.Name = "dtpMonth";
             this.dtpMonth.ShowUpDown = true;
-            this.dtpMonth.Size = new System.Drawing.Size(70, 20);
+            this.dtpMonth.Size = new System.Drawing.Size(92, 22);
             this.dtpMonth.TabIndex = 0;
             this.dtpMonth.ValueChanged += new System.EventHandler(this.dtpMonth_ValueChanged);
             this.dtpMonth.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtpMonth_KeyDown);
@@ -291,11 +296,11 @@
             // 
             this.dtpYear.CustomFormat = "yyyy";
             this.dtpYear.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpYear.Location = new System.Drawing.Point(313, 15);
-            this.dtpYear.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.dtpYear.Location = new System.Drawing.Point(417, 18);
+            this.dtpYear.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.dtpYear.Name = "dtpYear";
             this.dtpYear.ShowUpDown = true;
-            this.dtpYear.Size = new System.Drawing.Size(70, 20);
+            this.dtpYear.Size = new System.Drawing.Size(92, 22);
             this.dtpYear.TabIndex = 1;
             this.dtpYear.ValueChanged += new System.EventHandler(this.dtpMonth_ValueChanged);
             this.dtpYear.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtpYear_KeyDown);
@@ -307,10 +312,10 @@
             // 
             // frmHolydaySettings
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(111)))), ((int)(((byte)(155)))));
-            this.ClientSize = new System.Drawing.Size(800, 373);
+            this.ClientSize = new System.Drawing.Size(1067, 459);
             this.Controls.Add(this.dtpYear);
             this.Controls.Add(this.dtpMonth);
             this.Controls.Add(this.dgvCalender);
@@ -322,12 +327,12 @@
             this.Controls.Add(this.lblMonth);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "frmHolydaySettings";
-            this.Opacity = 0.85D;
-            this.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
+            this.Padding = new System.Windows.Forms.Padding(20, 12, 20, 12);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Holiday Settings";
+            this.Text = "Holyday Settings";
             this.ttpPopup.SetToolTip(this, "\"\"");
             this.Load += new System.EventHandler(this.frmHolydaySettings_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmHolydaySettings_KeyDown);

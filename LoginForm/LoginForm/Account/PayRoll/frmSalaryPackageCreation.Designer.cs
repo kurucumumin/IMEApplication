@@ -63,9 +63,10 @@ namespace LoginForm
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ForeColor = System.Drawing.Color.Black;
-            this.btnClose.Location = new System.Drawing.Point(697, 560);
+            this.btnClose.Location = new System.Drawing.Point(929, 689);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(85, 27);
+            this.btnClose.Size = new System.Drawing.Size(113, 33);
             this.btnClose.TabIndex = 7;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -79,9 +80,10 @@ namespace LoginForm
             this.btnDelete.FlatAppearance.BorderSize = 0;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.ForeColor = System.Drawing.Color.Black;
-            this.btnDelete.Location = new System.Drawing.Point(606, 560);
+            this.btnDelete.Location = new System.Drawing.Point(808, 689);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(85, 27);
+            this.btnDelete.Size = new System.Drawing.Size(113, 33);
             this.btnDelete.TabIndex = 6;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
@@ -90,10 +92,10 @@ namespace LoginForm
             // 
             // txtPackageName
             // 
-            this.txtPackageName.Location = new System.Drawing.Point(125, 15);
-            this.txtPackageName.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtPackageName.Location = new System.Drawing.Point(167, 18);
+            this.txtPackageName.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtPackageName.Name = "txtPackageName";
-            this.txtPackageName.Size = new System.Drawing.Size(200, 20);
+            this.txtPackageName.Size = new System.Drawing.Size(265, 22);
             this.txtPackageName.TabIndex = 0;
             this.txtPackageName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPackageName_KeyDown);
             // 
@@ -101,10 +103,10 @@ namespace LoginForm
             // 
             this.lblnarration.AutoSize = true;
             this.lblnarration.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblnarration.Location = new System.Drawing.Point(15, 66);
-            this.lblnarration.Margin = new System.Windows.Forms.Padding(5);
+            this.lblnarration.Location = new System.Drawing.Point(20, 81);
+            this.lblnarration.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.lblnarration.Name = "lblnarration";
-            this.lblnarration.Size = new System.Drawing.Size(50, 13);
+            this.lblnarration.Size = new System.Drawing.Size(67, 17);
             this.lblnarration.TabIndex = 20;
             this.lblnarration.Text = "Narration";
             // 
@@ -112,10 +114,10 @@ namespace LoginForm
             // 
             this.lblactive.AutoSize = true;
             this.lblactive.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblactive.Location = new System.Drawing.Point(15, 44);
-            this.lblactive.Margin = new System.Windows.Forms.Padding(5);
+            this.lblactive.Location = new System.Drawing.Point(20, 54);
+            this.lblactive.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.lblactive.Name = "lblactive";
-            this.lblactive.Size = new System.Drawing.Size(37, 13);
+            this.lblactive.Size = new System.Drawing.Size(46, 17);
             this.lblactive.TabIndex = 18;
             this.lblactive.Text = "Active";
             // 
@@ -123,10 +125,10 @@ namespace LoginForm
             // 
             this.lblpackageName.AutoSize = true;
             this.lblpackageName.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblpackageName.Location = new System.Drawing.Point(15, 19);
-            this.lblpackageName.Margin = new System.Windows.Forms.Padding(5);
+            this.lblpackageName.Location = new System.Drawing.Point(20, 23);
+            this.lblpackageName.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.lblpackageName.Name = "lblpackageName";
-            this.lblpackageName.Size = new System.Drawing.Size(81, 13);
+            this.lblpackageName.Size = new System.Drawing.Size(104, 17);
             this.lblpackageName.TabIndex = 16;
             this.lblpackageName.Text = "Package Name";
             // 
@@ -136,9 +138,10 @@ namespace LoginForm
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.ForeColor = System.Drawing.Color.Black;
-            this.btnSave.Location = new System.Drawing.Point(424, 560);
+            this.btnSave.Location = new System.Drawing.Point(565, 689);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(85, 27);
+            this.btnSave.Size = new System.Drawing.Size(113, 33);
             this.btnSave.TabIndex = 4;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -151,9 +154,10 @@ namespace LoginForm
             this.btnClear.FlatAppearance.BorderSize = 0;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.ForeColor = System.Drawing.Color.Black;
-            this.btnClear.Location = new System.Drawing.Point(515, 560);
+            this.btnClear.Location = new System.Drawing.Point(687, 689);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(85, 27);
+            this.btnClear.Size = new System.Drawing.Size(113, 33);
             this.btnClear.TabIndex = 5;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = false;
@@ -193,11 +197,12 @@ namespace LoginForm
             this.dgvSalaryPackage.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvSalaryPackage.EnableHeadersVisualStyles = false;
             this.dgvSalaryPackage.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvSalaryPackage.Location = new System.Drawing.Point(18, 124);
+            this.dgvSalaryPackage.Location = new System.Drawing.Point(24, 153);
+            this.dgvSalaryPackage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvSalaryPackage.Name = "dgvSalaryPackage";
             this.dgvSalaryPackage.RowHeadersVisible = false;
             this.dgvSalaryPackage.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvSalaryPackage.Size = new System.Drawing.Size(764, 384);
+            this.dgvSalaryPackage.Size = new System.Drawing.Size(1019, 473);
             this.dgvSalaryPackage.TabIndex = 3;
             this.dgvSalaryPackage.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvSalaryPackage_CellBeginEdit);
             this.dgvSalaryPackage.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSalaryPackage_CellEnter);
@@ -251,11 +256,11 @@ namespace LoginForm
             // 
             // txtNarration
             // 
-            this.txtNarration.Location = new System.Drawing.Point(125, 66);
-            this.txtNarration.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtNarration.Location = new System.Drawing.Point(167, 81);
+            this.txtNarration.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtNarration.Multiline = true;
             this.txtNarration.Name = "txtNarration";
-            this.txtNarration.Size = new System.Drawing.Size(200, 50);
+            this.txtNarration.Size = new System.Drawing.Size(265, 61);
             this.txtNarration.TabIndex = 2;
             this.txtNarration.Enter += new System.EventHandler(this.txtNarration_Enter);
             this.txtNarration.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNarration_KeyDown);
@@ -268,10 +273,10 @@ namespace LoginForm
             this.cmbActive.Items.AddRange(new object[] {
             "Yes",
             "No"});
-            this.cmbActive.Location = new System.Drawing.Point(125, 40);
-            this.cmbActive.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.cmbActive.Location = new System.Drawing.Point(167, 49);
+            this.cmbActive.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.cmbActive.Name = "cmbActive";
-            this.cmbActive.Size = new System.Drawing.Size(200, 21);
+            this.cmbActive.Size = new System.Drawing.Size(265, 24);
             this.cmbActive.TabIndex = 1;
             this.cmbActive.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbActive_KeyDown);
             // 
@@ -279,10 +284,10 @@ namespace LoginForm
             // 
             this.lblSalary.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSalary.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblSalary.Location = new System.Drawing.Point(594, 533);
-            this.lblSalary.Margin = new System.Windows.Forms.Padding(5);
+            this.lblSalary.Location = new System.Drawing.Point(792, 656);
+            this.lblSalary.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.lblSalary.Name = "lblSalary";
-            this.lblSalary.Size = new System.Drawing.Size(53, 20);
+            this.lblSalary.Size = new System.Drawing.Size(71, 25);
             this.lblSalary.TabIndex = 101;
             this.lblSalary.Text = "Salary:";
             // 
@@ -290,10 +295,10 @@ namespace LoginForm
             // 
             this.lblSalaryAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSalaryAmount.ForeColor = System.Drawing.Color.Yellow;
-            this.lblSalaryAmount.Location = new System.Drawing.Point(639, 533);
-            this.lblSalaryAmount.Margin = new System.Windows.Forms.Padding(5);
+            this.lblSalaryAmount.Location = new System.Drawing.Point(852, 656);
+            this.lblSalaryAmount.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.lblSalaryAmount.Name = "lblSalaryAmount";
-            this.lblSalaryAmount.Size = new System.Drawing.Size(143, 20);
+            this.lblSalaryAmount.Size = new System.Drawing.Size(191, 25);
             this.lblSalaryAmount.TabIndex = 101;
             this.lblSalaryAmount.Text = "0.00";
             this.lblSalaryAmount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -303,9 +308,10 @@ namespace LoginForm
             this.lnklblRemove.AutoSize = true;
             this.lnklblRemove.ForeColor = System.Drawing.Color.Yellow;
             this.lnklblRemove.LinkColor = System.Drawing.Color.Yellow;
-            this.lnklblRemove.Location = new System.Drawing.Point(735, 515);
+            this.lnklblRemove.Location = new System.Drawing.Point(980, 634);
+            this.lnklblRemove.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lnklblRemove.Name = "lnklblRemove";
-            this.lnklblRemove.Size = new System.Drawing.Size(47, 13);
+            this.lnklblRemove.Size = new System.Drawing.Size(60, 17);
             this.lnklblRemove.TabIndex = 102;
             this.lnklblRemove.TabStop = true;
             this.lnklblRemove.Text = "Remove";
@@ -315,20 +321,20 @@ namespace LoginForm
             // 
             this.lblSalaryTypeValidator.AutoSize = true;
             this.lblSalaryTypeValidator.ForeColor = System.Drawing.Color.Red;
-            this.lblSalaryTypeValidator.Location = new System.Drawing.Point(331, 22);
-            this.lblSalaryTypeValidator.Margin = new System.Windows.Forms.Padding(5);
+            this.lblSalaryTypeValidator.Location = new System.Drawing.Point(441, 27);
+            this.lblSalaryTypeValidator.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.lblSalaryTypeValidator.Name = "lblSalaryTypeValidator";
-            this.lblSalaryTypeValidator.Size = new System.Drawing.Size(11, 13);
+            this.lblSalaryTypeValidator.Size = new System.Drawing.Size(13, 17);
             this.lblSalaryTypeValidator.TabIndex = 114;
             this.lblSalaryTypeValidator.Text = "*";
             // 
             // frmSalaryPackageCreation
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(111)))), ((int)(((byte)(155)))));
-            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(1067, 738);
             this.Controls.Add(this.lblSalaryTypeValidator);
             this.Controls.Add(this.lnklblRemove);
             this.Controls.Add(this.lblSalaryAmount);
@@ -347,10 +353,10 @@ namespace LoginForm
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "frmSalaryPackageCreation";
-            this.Opacity = 0.85D;
-            this.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
+            this.Padding = new System.Windows.Forms.Padding(20, 12, 20, 12);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Salary Package";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmSalaryPackageCreation_FormClosing);

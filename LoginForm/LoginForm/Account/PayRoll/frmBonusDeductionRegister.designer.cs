@@ -87,13 +87,14 @@
             this.dgvBonusDeduction.EnableHeadersVisualStyles = false;
             this.dgvBonusDeduction.GridColor = System.Drawing.Color.SteelBlue;
             this.dgvBonusDeduction.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.dgvBonusDeduction.Location = new System.Drawing.Point(18, 100);
+            this.dgvBonusDeduction.Location = new System.Drawing.Point(24, 123);
+            this.dgvBonusDeduction.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvBonusDeduction.MultiSelect = false;
             this.dgvBonusDeduction.Name = "dgvBonusDeduction";
             this.dgvBonusDeduction.ReadOnly = true;
             this.dgvBonusDeduction.RowHeadersVisible = false;
             this.dgvBonusDeduction.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvBonusDeduction.Size = new System.Drawing.Size(764, 481);
+            this.dgvBonusDeduction.Size = new System.Drawing.Size(1019, 592);
             this.dgvBonusDeduction.TabIndex = 5;
             this.dgvBonusDeduction.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBonusDeduction_CellDoubleClick);
             this.dgvBonusDeduction.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvBonusDeduction_DataBindingComplete);
@@ -163,10 +164,10 @@
             // 
             this.cmbEmployeeName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEmployeeName.FormattingEnabled = true;
-            this.cmbEmployeeName.Location = new System.Drawing.Point(128, 16);
-            this.cmbEmployeeName.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.cmbEmployeeName.Location = new System.Drawing.Point(171, 20);
+            this.cmbEmployeeName.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.cmbEmployeeName.Name = "cmbEmployeeName";
-            this.cmbEmployeeName.Size = new System.Drawing.Size(200, 21);
+            this.cmbEmployeeName.Size = new System.Drawing.Size(265, 24);
             this.cmbEmployeeName.TabIndex = 0;
             this.cmbEmployeeName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbEmployeeName_KeyDown);
             // 
@@ -174,10 +175,10 @@
             // 
             this.lblEmpolyeeName.AutoSize = true;
             this.lblEmpolyeeName.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblEmpolyeeName.Location = new System.Drawing.Point(20, 19);
-            this.lblEmpolyeeName.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblEmpolyeeName.Location = new System.Drawing.Point(27, 23);
+            this.lblEmpolyeeName.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblEmpolyeeName.Name = "lblEmpolyeeName";
-            this.lblEmpolyeeName.Size = new System.Drawing.Size(84, 13);
+            this.lblEmpolyeeName.Size = new System.Drawing.Size(111, 17);
             this.lblEmpolyeeName.TabIndex = 57;
             this.lblEmpolyeeName.Text = "Employee Name";
             // 
@@ -185,10 +186,10 @@
             // 
             this.lblMonth.AutoSize = true;
             this.lblMonth.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblMonth.Location = new System.Drawing.Point(20, 46);
-            this.lblMonth.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblMonth.Location = new System.Drawing.Point(27, 57);
+            this.lblMonth.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblMonth.Name = "lblMonth";
-            this.lblMonth.Size = new System.Drawing.Size(37, 13);
+            this.lblMonth.Size = new System.Drawing.Size(47, 17);
             this.lblMonth.TabIndex = 59;
             this.lblMonth.Text = "Month";
             // 
@@ -197,9 +198,10 @@
             this.btnSearch.FlatAppearance.BorderSize = 0;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Location = new System.Drawing.Point(128, 67);
+            this.btnSearch.Location = new System.Drawing.Point(171, 82);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(85, 27);
+            this.btnSearch.Size = new System.Drawing.Size(113, 33);
             this.btnSearch.TabIndex = 2;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -211,9 +213,10 @@
             this.btnClear.FlatAppearance.BorderSize = 0;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.ForeColor = System.Drawing.Color.White;
-            this.btnClear.Location = new System.Drawing.Point(219, 67);
+            this.btnClear.Location = new System.Drawing.Point(292, 82);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(85, 27);
+            this.btnClear.Size = new System.Drawing.Size(113, 33);
             this.btnClear.TabIndex = 3;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
@@ -223,19 +226,19 @@
             // 
             this.dtpMonth.CustomFormat = "MMMMyyyy";
             this.dtpMonth.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpMonth.Location = new System.Drawing.Point(128, 42);
-            this.dtpMonth.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.dtpMonth.Location = new System.Drawing.Point(171, 52);
+            this.dtpMonth.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.dtpMonth.Name = "dtpMonth";
-            this.dtpMonth.Size = new System.Drawing.Size(200, 20);
+            this.dtpMonth.Size = new System.Drawing.Size(265, 22);
             this.dtpMonth.TabIndex = 1;
             this.dtpMonth.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtpMonth_KeyDown);
             // 
             // frmBonusDeductionRegister
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(111)))), ((int)(((byte)(155)))));
-            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(1067, 738);
             this.Controls.Add(this.dtpMonth);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnSearch);
@@ -245,10 +248,10 @@
             this.Controls.Add(this.dgvBonusDeduction);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "frmBonusDeductionRegister";
-            this.Opacity = 0.85D;
-            this.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
+            this.Padding = new System.Windows.Forms.Padding(20, 12, 20, 12);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bonus or Deduction Register";
             this.Load += new System.EventHandler(this.frmBonusDeductionRegister_Load);

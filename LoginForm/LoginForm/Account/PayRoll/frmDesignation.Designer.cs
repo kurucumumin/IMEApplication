@@ -57,10 +57,10 @@
             // 
             this.lblDesignationName.AutoSize = true;
             this.lblDesignationName.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblDesignationName.Location = new System.Drawing.Point(12, 19);
-            this.lblDesignationName.Margin = new System.Windows.Forms.Padding(5);
+            this.lblDesignationName.Location = new System.Drawing.Point(16, 23);
+            this.lblDesignationName.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.lblDesignationName.Name = "lblDesignationName";
-            this.lblDesignationName.Size = new System.Drawing.Size(35, 13);
+            this.lblDesignationName.Size = new System.Drawing.Size(45, 17);
             this.lblDesignationName.TabIndex = 0;
             this.lblDesignationName.Text = "Name";
             // 
@@ -68,10 +68,10 @@
             // 
             this.lblClInMonth.AutoSize = true;
             this.lblClInMonth.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblClInMonth.Location = new System.Drawing.Point(12, 44);
-            this.lblClInMonth.Margin = new System.Windows.Forms.Padding(5);
+            this.lblClInMonth.Location = new System.Drawing.Point(16, 54);
+            this.lblClInMonth.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.lblClInMonth.Name = "lblClInMonth";
-            this.lblClInMonth.Size = new System.Drawing.Size(73, 13);
+            this.lblClInMonth.Size = new System.Drawing.Size(95, 17);
             this.lblClInMonth.TabIndex = 2;
             this.lblClInMonth.Text = "CL In a month";
             // 
@@ -79,10 +79,10 @@
             // 
             this.lblAdvanceAmount.AutoSize = true;
             this.lblAdvanceAmount.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblAdvanceAmount.Location = new System.Drawing.Point(12, 69);
-            this.lblAdvanceAmount.Margin = new System.Windows.Forms.Padding(5);
+            this.lblAdvanceAmount.Location = new System.Drawing.Point(16, 85);
+            this.lblAdvanceAmount.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.lblAdvanceAmount.Name = "lblAdvanceAmount";
-            this.lblAdvanceAmount.Size = new System.Drawing.Size(88, 13);
+            this.lblAdvanceAmount.Size = new System.Drawing.Size(114, 17);
             this.lblAdvanceAmount.TabIndex = 3;
             this.lblAdvanceAmount.Text = "Advance amount";
             // 
@@ -90,30 +90,30 @@
             // 
             this.lblNarration.AutoSize = true;
             this.lblNarration.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblNarration.Location = new System.Drawing.Point(11, 90);
-            this.lblNarration.Margin = new System.Windows.Forms.Padding(5);
+            this.lblNarration.Location = new System.Drawing.Point(15, 111);
+            this.lblNarration.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.lblNarration.Name = "lblNarration";
-            this.lblNarration.Size = new System.Drawing.Size(50, 13);
+            this.lblNarration.Size = new System.Drawing.Size(67, 17);
             this.lblNarration.TabIndex = 4;
             this.lblNarration.Text = "Narration";
             // 
             // txtDesignationName
             // 
-            this.txtDesignationName.Location = new System.Drawing.Point(122, 15);
-            this.txtDesignationName.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtDesignationName.Location = new System.Drawing.Point(163, 18);
+            this.txtDesignationName.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtDesignationName.Name = "txtDesignationName";
-            this.txtDesignationName.Size = new System.Drawing.Size(200, 20);
+            this.txtDesignationName.Size = new System.Drawing.Size(265, 22);
             this.txtDesignationName.TabIndex = 0;
             this.txtDesignationName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDesignationName_KeyDown);
             // 
             // txtCLInMonth
             // 
-            this.txtCLInMonth.Location = new System.Drawing.Point(122, 40);
-            this.txtCLInMonth.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtCLInMonth.Location = new System.Drawing.Point(163, 49);
+            this.txtCLInMonth.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtCLInMonth.MaxLength = 3;
             this.txtCLInMonth.Multiline = true;
             this.txtCLInMonth.Name = "txtCLInMonth";
-            this.txtCLInMonth.Size = new System.Drawing.Size(200, 20);
+            this.txtCLInMonth.Size = new System.Drawing.Size(265, 24);
             this.txtCLInMonth.TabIndex = 1;
             this.txtCLInMonth.Text = "0";
             this.txtCLInMonth.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCLInMonth_KeyDown);
@@ -121,11 +121,11 @@
             // 
             // txtAdvanceAmount
             // 
-            this.txtAdvanceAmount.Location = new System.Drawing.Point(122, 65);
-            this.txtAdvanceAmount.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtAdvanceAmount.Location = new System.Drawing.Point(163, 80);
+            this.txtAdvanceAmount.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtAdvanceAmount.MaxLength = 9;
             this.txtAdvanceAmount.Name = "txtAdvanceAmount";
-            this.txtAdvanceAmount.Size = new System.Drawing.Size(200, 20);
+            this.txtAdvanceAmount.Size = new System.Drawing.Size(265, 22);
             this.txtAdvanceAmount.TabIndex = 2;
             this.txtAdvanceAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtAdvanceAmount.Enter += new System.EventHandler(this.txtAdvanceAmount_Enter);
@@ -135,11 +135,11 @@
             // 
             // txtNarration
             // 
-            this.txtNarration.Location = new System.Drawing.Point(121, 90);
-            this.txtNarration.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtNarration.Location = new System.Drawing.Point(161, 111);
+            this.txtNarration.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtNarration.Multiline = true;
             this.txtNarration.Name = "txtNarration";
-            this.txtNarration.Size = new System.Drawing.Size(200, 50);
+            this.txtNarration.Size = new System.Drawing.Size(265, 61);
             this.txtNarration.TabIndex = 3;
             this.txtNarration.Enter += new System.EventHandler(this.txtNarration_Enter);
             this.txtNarration.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNarration_KeyDown);
@@ -176,14 +176,15 @@
             this.dgvDesignation.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDesignation.EnableHeadersVisualStyles = false;
             this.dgvDesignation.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvDesignation.Location = new System.Drawing.Point(18, 204);
+            this.dgvDesignation.Location = new System.Drawing.Point(24, 251);
+            this.dgvDesignation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvDesignation.MultiSelect = false;
             this.dgvDesignation.Name = "dgvDesignation";
             this.dgvDesignation.ReadOnly = true;
             this.dgvDesignation.RowHeadersVisible = false;
             this.dgvDesignation.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvDesignation.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDesignation.Size = new System.Drawing.Size(764, 373);
+            this.dgvDesignation.Size = new System.Drawing.Size(1019, 459);
             this.dgvDesignation.TabIndex = 9;
             this.dgvDesignation.TabStop = false;
             this.dgvDesignation.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDesignation_CellDoubleClick);
@@ -220,19 +221,19 @@
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label6.Location = new System.Drawing.Point(20, 183);
-            this.label6.Margin = new System.Windows.Forms.Padding(5);
+            this.label6.Location = new System.Drawing.Point(27, 225);
+            this.label6.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(41, 13);
+            this.label6.Size = new System.Drawing.Size(53, 17);
             this.label6.TabIndex = 10;
             this.label6.Text = "Search";
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(122, 179);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtSearch.Location = new System.Drawing.Point(163, 220);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(200, 20);
+            this.txtSearch.Size = new System.Drawing.Size(265, 22);
             this.txtSearch.TabIndex = 8;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
@@ -243,9 +244,10 @@
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.ForeColor = System.Drawing.Color.Black;
-            this.btnSave.Location = new System.Drawing.Point(122, 144);
+            this.btnSave.Location = new System.Drawing.Point(163, 177);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(85, 27);
+            this.btnSave.Size = new System.Drawing.Size(113, 33);
             this.btnSave.TabIndex = 4;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -258,9 +260,10 @@
             this.btnClear.FlatAppearance.BorderSize = 0;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.ForeColor = System.Drawing.Color.Black;
-            this.btnClear.Location = new System.Drawing.Point(213, 144);
+            this.btnClear.Location = new System.Drawing.Point(284, 177);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(85, 27);
+            this.btnClear.Size = new System.Drawing.Size(113, 33);
             this.btnClear.TabIndex = 5;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = false;
@@ -272,9 +275,10 @@
             this.btnDelete.FlatAppearance.BorderSize = 0;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.ForeColor = System.Drawing.Color.Black;
-            this.btnDelete.Location = new System.Drawing.Point(304, 144);
+            this.btnDelete.Location = new System.Drawing.Point(405, 177);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(85, 27);
+            this.btnDelete.Size = new System.Drawing.Size(113, 33);
             this.btnDelete.TabIndex = 6;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
@@ -286,9 +290,10 @@
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ForeColor = System.Drawing.Color.Black;
-            this.btnClose.Location = new System.Drawing.Point(395, 144);
+            this.btnClose.Location = new System.Drawing.Point(527, 177);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(85, 27);
+            this.btnClose.Size = new System.Drawing.Size(113, 33);
             this.btnClose.TabIndex = 7;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -299,18 +304,19 @@
             // 
             this.lblStar.AutoSize = true;
             this.lblStar.ForeColor = System.Drawing.Color.Red;
-            this.lblStar.Location = new System.Drawing.Point(330, 19);
+            this.lblStar.Location = new System.Drawing.Point(440, 23);
+            this.lblStar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblStar.Name = "lblStar";
-            this.lblStar.Size = new System.Drawing.Size(11, 13);
+            this.lblStar.Size = new System.Drawing.Size(13, 17);
             this.lblStar.TabIndex = 16;
             this.lblStar.Text = "*";
             // 
             // frmDesignation
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(111)))), ((int)(((byte)(155)))));
-            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(1067, 738);
             this.Controls.Add(this.lblStar);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnDelete);
@@ -330,10 +336,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "frmDesignation";
-            this.Opacity = 0.95D;
-            this.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
+            this.Padding = new System.Windows.Forms.Padding(20, 12, 20, 12);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Designation";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmDesignation_FormClosing);

@@ -60,9 +60,10 @@
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ForeColor = System.Drawing.Color.Black;
-            this.btnClose.Location = new System.Drawing.Point(702, 560);
+            this.btnClose.Location = new System.Drawing.Point(936, 689);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(85, 27);
+            this.btnClose.Size = new System.Drawing.Size(113, 33);
             this.btnClose.TabIndex = 6;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -74,9 +75,10 @@
             this.btnDelete.FlatAppearance.BorderSize = 0;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.ForeColor = System.Drawing.Color.Black;
-            this.btnDelete.Location = new System.Drawing.Point(611, 560);
+            this.btnDelete.Location = new System.Drawing.Point(815, 689);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(85, 27);
+            this.btnDelete.Size = new System.Drawing.Size(113, 33);
             this.btnDelete.TabIndex = 5;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
@@ -86,10 +88,10 @@
             // 
             this.lblNarration.AutoSize = true;
             this.lblNarration.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblNarration.Location = new System.Drawing.Point(478, 470);
-            this.lblNarration.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblNarration.Location = new System.Drawing.Point(637, 578);
+            this.lblNarration.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblNarration.Name = "lblNarration";
-            this.lblNarration.Size = new System.Drawing.Size(50, 13);
+            this.lblNarration.Size = new System.Drawing.Size(67, 17);
             this.lblNarration.TabIndex = 48;
             this.lblNarration.Text = "Narration";
             // 
@@ -97,10 +99,10 @@
             // 
             this.lblDate.AutoSize = true;
             this.lblDate.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblDate.Location = new System.Drawing.Point(492, 17);
-            this.lblDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblDate.Location = new System.Drawing.Point(656, 21);
+            this.lblDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(30, 13);
+            this.lblDate.Size = new System.Drawing.Size(38, 17);
             this.lblDate.TabIndex = 47;
             this.lblDate.Text = "Date";
             // 
@@ -110,9 +112,10 @@
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.ForeColor = System.Drawing.Color.Black;
-            this.btnSave.Location = new System.Drawing.Point(429, 560);
+            this.btnSave.Location = new System.Drawing.Point(572, 689);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(85, 27);
+            this.btnSave.Size = new System.Drawing.Size(113, 33);
             this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -125,9 +128,10 @@
             this.btnClear.FlatAppearance.BorderSize = 0;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.ForeColor = System.Drawing.Color.Black;
-            this.btnClear.Location = new System.Drawing.Point(520, 560);
+            this.btnClear.Location = new System.Drawing.Point(693, 689);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(85, 27);
+            this.btnClear.Size = new System.Drawing.Size(113, 33);
             this.btnClear.TabIndex = 4;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = false;
@@ -172,12 +176,13 @@
             this.dgvAttendance.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvAttendance.EnableHeadersVisualStyles = false;
             this.dgvAttendance.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvAttendance.Location = new System.Drawing.Point(18, 41);
+            this.dgvAttendance.Location = new System.Drawing.Point(24, 50);
+            this.dgvAttendance.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvAttendance.MultiSelect = false;
             this.dgvAttendance.Name = "dgvAttendance";
             this.dgvAttendance.RowHeadersVisible = false;
             this.dgvAttendance.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvAttendance.Size = new System.Drawing.Size(770, 418);
+            this.dgvAttendance.Size = new System.Drawing.Size(1027, 514);
             this.dgvAttendance.TabIndex = 1;
             this.dgvAttendance.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvAttendance_CurrentCellDirtyStateChanged);
             this.dgvAttendance.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvAttendance_DataBindingComplete);
@@ -269,11 +274,11 @@
             // 
             // txtNarrationInMaster
             // 
-            this.txtNarrationInMaster.Location = new System.Drawing.Point(538, 467);
-            this.txtNarrationInMaster.Margin = new System.Windows.Forms.Padding(5);
+            this.txtNarrationInMaster.Location = new System.Drawing.Point(717, 575);
+            this.txtNarrationInMaster.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.txtNarrationInMaster.Multiline = true;
             this.txtNarrationInMaster.Name = "txtNarrationInMaster";
-            this.txtNarrationInMaster.Size = new System.Drawing.Size(250, 85);
+            this.txtNarrationInMaster.Size = new System.Drawing.Size(332, 104);
             this.txtNarrationInMaster.TabIndex = 2;
             this.txtNarrationInMaster.Enter += new System.EventHandler(this.txtNarrationInMaster_Enter);
             this.txtNarrationInMaster.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNarrationInMaster_KeyDown);
@@ -281,10 +286,10 @@
             // 
             // txtCompanyCurrentdate
             // 
-            this.txtCompanyCurrentdate.Location = new System.Drawing.Point(587, 13);
-            this.txtCompanyCurrentdate.Margin = new System.Windows.Forms.Padding(5);
+            this.txtCompanyCurrentdate.Location = new System.Drawing.Point(783, 16);
+            this.txtCompanyCurrentdate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.txtCompanyCurrentdate.Name = "txtCompanyCurrentdate";
-            this.txtCompanyCurrentdate.Size = new System.Drawing.Size(179, 20);
+            this.txtCompanyCurrentdate.Size = new System.Drawing.Size(237, 22);
             this.txtCompanyCurrentdate.TabIndex = 0;
             this.txtCompanyCurrentdate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCompanyCurrentdate_KeyDown);
             this.txtCompanyCurrentdate.Leave += new System.EventHandler(this.txtCompanyCurrentdate_Leave);
@@ -293,9 +298,10 @@
             // 
             this.dtpCompanyCurrentDate.CustomFormat = "dd MMMM yyyy";
             this.dtpCompanyCurrentDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpCompanyCurrentDate.Location = new System.Drawing.Point(765, 13);
+            this.dtpCompanyCurrentDate.Location = new System.Drawing.Point(1020, 16);
+            this.dtpCompanyCurrentDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtpCompanyCurrentDate.Name = "dtpCompanyCurrentDate";
-            this.dtpCompanyCurrentDate.Size = new System.Drawing.Size(22, 20);
+            this.dtpCompanyCurrentDate.Size = new System.Drawing.Size(28, 22);
             this.dtpCompanyCurrentDate.TabIndex = 22;
             this.dtpCompanyCurrentDate.TabStop = false;
             this.dtpCompanyCurrentDate.ValueChanged += new System.EventHandler(this.dtpCompanyCurrentDate_ValueChanged);
@@ -305,17 +311,18 @@
             // 
             this.lblHolidayChecking.AutoSize = true;
             this.lblHolidayChecking.ForeColor = System.Drawing.Color.Red;
-            this.lblHolidayChecking.Location = new System.Drawing.Point(27, 13);
+            this.lblHolidayChecking.Location = new System.Drawing.Point(36, 16);
+            this.lblHolidayChecking.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblHolidayChecking.Name = "lblHolidayChecking";
-            this.lblHolidayChecking.Size = new System.Drawing.Size(0, 13);
+            this.lblHolidayChecking.Size = new System.Drawing.Size(0, 17);
             this.lblHolidayChecking.TabIndex = 49;
             // 
             // frmAttendance
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(111)))), ((int)(((byte)(155)))));
-            this.ClientSize = new System.Drawing.Size(805, 600);
+            this.ClientSize = new System.Drawing.Size(1073, 738);
             this.Controls.Add(this.lblHolidayChecking);
             this.Controls.Add(this.dtpCompanyCurrentDate);
             this.Controls.Add(this.txtCompanyCurrentdate);
@@ -329,10 +336,10 @@
             this.Controls.Add(this.txtNarrationInMaster);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "frmAttendance";
-            this.Opacity = 0.85D;
-            this.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
+            this.Padding = new System.Windows.Forms.Padding(20, 12, 20, 12);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Attendance";
             this.Load += new System.EventHandler(this.frmAttendance_Load);

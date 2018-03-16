@@ -49,10 +49,10 @@
             // 
             // txtPackageName
             // 
-            this.txtPackageName.Location = new System.Drawing.Point(129, 15);
-            this.txtPackageName.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtPackageName.Location = new System.Drawing.Point(172, 18);
+            this.txtPackageName.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtPackageName.Name = "txtPackageName";
-            this.txtPackageName.Size = new System.Drawing.Size(200, 20);
+            this.txtPackageName.Size = new System.Drawing.Size(265, 22);
             this.txtPackageName.TabIndex = 0;
             this.txtPackageName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPackageName_KeyDown);
             // 
@@ -60,10 +60,10 @@
             // 
             this.lblStatus.AutoSize = true;
             this.lblStatus.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblStatus.Location = new System.Drawing.Point(470, 19);
-            this.lblStatus.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblStatus.Location = new System.Drawing.Point(627, 23);
+            this.lblStatus.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(37, 13);
+            this.lblStatus.Size = new System.Drawing.Size(46, 17);
             this.lblStatus.TabIndex = 149;
             this.lblStatus.Text = "Active";
             // 
@@ -73,9 +73,10 @@
             this.btnSearch.FlatAppearance.BorderSize = 0;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.ForeColor = System.Drawing.Color.Black;
-            this.btnSearch.Location = new System.Drawing.Point(580, 39);
+            this.btnSearch.Location = new System.Drawing.Point(773, 48);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(85, 27);
+            this.btnSearch.Size = new System.Drawing.Size(113, 33);
             this.btnSearch.TabIndex = 2;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = false;
@@ -88,9 +89,10 @@
             this.btnClear.FlatAppearance.BorderSize = 0;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.ForeColor = System.Drawing.Color.Black;
-            this.btnClear.Location = new System.Drawing.Point(671, 39);
+            this.btnClear.Location = new System.Drawing.Point(895, 48);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(85, 27);
+            this.btnClear.Size = new System.Drawing.Size(113, 33);
             this.btnClear.TabIndex = 3;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = false;
@@ -101,10 +103,10 @@
             // 
             this.lblPackageName.AutoSize = true;
             this.lblPackageName.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblPackageName.Location = new System.Drawing.Point(20, 19);
-            this.lblPackageName.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblPackageName.Location = new System.Drawing.Point(27, 23);
+            this.lblPackageName.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblPackageName.Name = "lblPackageName";
-            this.lblPackageName.Size = new System.Drawing.Size(81, 13);
+            this.lblPackageName.Size = new System.Drawing.Size(104, 17);
             this.lblPackageName.TabIndex = 145;
             this.lblPackageName.Text = "Package Name";
             // 
@@ -144,13 +146,14 @@
             this.dgvSalaryPackageRegister.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvSalaryPackageRegister.EnableHeadersVisualStyles = false;
             this.dgvSalaryPackageRegister.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvSalaryPackageRegister.Location = new System.Drawing.Point(18, 72);
+            this.dgvSalaryPackageRegister.Location = new System.Drawing.Point(24, 89);
+            this.dgvSalaryPackageRegister.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvSalaryPackageRegister.MultiSelect = false;
             this.dgvSalaryPackageRegister.Name = "dgvSalaryPackageRegister";
             this.dgvSalaryPackageRegister.ReadOnly = true;
             this.dgvSalaryPackageRegister.RowHeadersVisible = false;
             this.dgvSalaryPackageRegister.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSalaryPackageRegister.Size = new System.Drawing.Size(764, 511);
+            this.dgvSalaryPackageRegister.Size = new System.Drawing.Size(1019, 629);
             this.dgvSalaryPackageRegister.TabIndex = 7;
             this.dgvSalaryPackageRegister.TabStop = false;
             this.dgvSalaryPackageRegister.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSalaryPackageRegister_CellDoubleClick);
@@ -216,19 +219,19 @@
             "All",
             "Yes",
             "No"});
-            this.cmbStatus.Location = new System.Drawing.Point(580, 15);
-            this.cmbStatus.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.cmbStatus.Location = new System.Drawing.Point(773, 18);
+            this.cmbStatus.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.cmbStatus.Name = "cmbStatus";
-            this.cmbStatus.Size = new System.Drawing.Size(200, 21);
+            this.cmbStatus.Size = new System.Drawing.Size(265, 24);
             this.cmbStatus.TabIndex = 1;
             this.cmbStatus.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbStatus_KeyDown);
             // 
             // frmSalaryPackageRegister
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(111)))), ((int)(((byte)(155)))));
-            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(1067, 738);
             this.Controls.Add(this.cmbStatus);
             this.Controls.Add(this.txtPackageName);
             this.Controls.Add(this.lblStatus);
@@ -239,10 +242,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "frmSalaryPackageRegister";
-            this.Opacity = 0.85D;
-            this.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
+            this.Padding = new System.Windows.Forms.Padding(20, 12, 20, 12);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Salary Package Register";
             this.Activated += new System.EventHandler(this.frmSalaryPackageRegister_Activated);

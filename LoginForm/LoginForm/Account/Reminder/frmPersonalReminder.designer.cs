@@ -68,10 +68,10 @@
             // 
             this.lblFromDate.AutoSize = true;
             this.lblFromDate.ForeColor = System.Drawing.Color.White;
-            this.lblFromDate.Location = new System.Drawing.Point(22, 19);
-            this.lblFromDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblFromDate.Location = new System.Drawing.Point(29, 23);
+            this.lblFromDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblFromDate.Name = "lblFromDate";
-            this.lblFromDate.Size = new System.Drawing.Size(56, 13);
+            this.lblFromDate.Size = new System.Drawing.Size(74, 17);
             this.lblFromDate.TabIndex = 1179;
             this.lblFromDate.Text = "From Date";
             // 
@@ -79,10 +79,10 @@
             // 
             this.lblToDate.AutoSize = true;
             this.lblToDate.ForeColor = System.Drawing.Color.White;
-            this.lblToDate.Location = new System.Drawing.Point(22, 44);
-            this.lblToDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblToDate.Location = new System.Drawing.Point(29, 54);
+            this.lblToDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblToDate.Name = "lblToDate";
-            this.lblToDate.Size = new System.Drawing.Size(49, 13);
+            this.lblToDate.Size = new System.Drawing.Size(63, 17);
             this.lblToDate.TabIndex = 1181;
             this.lblToDate.Text = "To  Date";
             // 
@@ -90,20 +90,20 @@
             // 
             this.lblRemindAbout.AutoSize = true;
             this.lblRemindAbout.ForeColor = System.Drawing.Color.White;
-            this.lblRemindAbout.Location = new System.Drawing.Point(22, 65);
-            this.lblRemindAbout.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblRemindAbout.Location = new System.Drawing.Point(29, 80);
+            this.lblRemindAbout.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblRemindAbout.Name = "lblRemindAbout";
-            this.lblRemindAbout.Size = new System.Drawing.Size(74, 13);
+            this.lblRemindAbout.Size = new System.Drawing.Size(97, 17);
             this.lblRemindAbout.TabIndex = 1183;
             this.lblRemindAbout.Text = "Remind About";
             // 
             // txtRemindAbout
             // 
-            this.txtRemindAbout.Location = new System.Drawing.Point(128, 65);
-            this.txtRemindAbout.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtRemindAbout.Location = new System.Drawing.Point(171, 80);
+            this.txtRemindAbout.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtRemindAbout.Multiline = true;
             this.txtRemindAbout.Name = "txtRemindAbout";
-            this.txtRemindAbout.Size = new System.Drawing.Size(200, 50);
+            this.txtRemindAbout.Size = new System.Drawing.Size(265, 61);
             this.txtRemindAbout.TabIndex = 2;
             this.txtRemindAbout.Enter += new System.EventHandler(this.txtRemindAbout_Enter);
             this.txtRemindAbout.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtRemindAbout_KeyDown);
@@ -114,9 +114,10 @@
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.ForeColor = System.Drawing.Color.Black;
-            this.btnSave.Location = new System.Drawing.Point(128, 121);
+            this.btnSave.Location = new System.Drawing.Point(171, 149);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(85, 27);
+            this.btnSave.Size = new System.Drawing.Size(113, 33);
             this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -129,9 +130,10 @@
             this.btnClear.FlatAppearance.BorderSize = 0;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.ForeColor = System.Drawing.Color.Black;
-            this.btnClear.Location = new System.Drawing.Point(219, 121);
+            this.btnClear.Location = new System.Drawing.Point(292, 149);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(85, 27);
+            this.btnClear.Size = new System.Drawing.Size(113, 33);
             this.btnClear.TabIndex = 4;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = false;
@@ -143,9 +145,10 @@
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ForeColor = System.Drawing.Color.Black;
-            this.btnClose.Location = new System.Drawing.Point(401, 121);
+            this.btnClose.Location = new System.Drawing.Point(535, 149);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(85, 27);
+            this.btnClose.Size = new System.Drawing.Size(113, 33);
             this.btnClose.TabIndex = 6;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -157,9 +160,10 @@
             this.btnDelete.FlatAppearance.BorderSize = 0;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.ForeColor = System.Drawing.Color.Black;
-            this.btnDelete.Location = new System.Drawing.Point(310, 121);
+            this.btnDelete.Location = new System.Drawing.Point(413, 149);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(85, 27);
+            this.btnDelete.Size = new System.Drawing.Size(113, 33);
             this.btnDelete.TabIndex = 5;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
@@ -176,29 +180,31 @@
             this.gbxDetails.Controls.Add(this.lblToDateSearch);
             this.gbxDetails.Controls.Add(this.lblFromDateSearch);
             this.gbxDetails.ForeColor = System.Drawing.Color.White;
-            this.gbxDetails.Location = new System.Drawing.Point(18, 154);
+            this.gbxDetails.Location = new System.Drawing.Point(24, 190);
+            this.gbxDetails.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gbxDetails.Name = "gbxDetails";
-            this.gbxDetails.Size = new System.Drawing.Size(764, 423);
+            this.gbxDetails.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbxDetails.Size = new System.Drawing.Size(1019, 521);
             this.gbxDetails.TabIndex = 1202;
             this.gbxDetails.TabStop = false;
             this.gbxDetails.Text = "Details";
             // 
             // txtToDateSearch
             // 
-            this.txtToDateSearch.Location = new System.Drawing.Point(530, 19);
-            this.txtToDateSearch.Margin = new System.Windows.Forms.Padding(5);
+            this.txtToDateSearch.Location = new System.Drawing.Point(707, 23);
+            this.txtToDateSearch.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.txtToDateSearch.Name = "txtToDateSearch";
-            this.txtToDateSearch.Size = new System.Drawing.Size(184, 20);
+            this.txtToDateSearch.Size = new System.Drawing.Size(244, 22);
             this.txtToDateSearch.TabIndex = 1;
             this.txtToDateSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtToDateSearch_KeyDown);
             this.txtToDateSearch.Leave += new System.EventHandler(this.txtToDateSearch_Leave);
             // 
             // txtFromDateSearch
             // 
-            this.txtFromDateSearch.Location = new System.Drawing.Point(110, 19);
-            this.txtFromDateSearch.Margin = new System.Windows.Forms.Padding(5);
+            this.txtFromDateSearch.Location = new System.Drawing.Point(147, 23);
+            this.txtFromDateSearch.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.txtFromDateSearch.Name = "txtFromDateSearch";
-            this.txtFromDateSearch.Size = new System.Drawing.Size(184, 20);
+            this.txtFromDateSearch.Size = new System.Drawing.Size(244, 22);
             this.txtFromDateSearch.TabIndex = 0;
             this.txtFromDateSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFromDateSearch_KeyDown);
             this.txtFromDateSearch.Leave += new System.EventHandler(this.txtFromDateSearch_Leave);
@@ -208,10 +214,10 @@
             this.dtpToDateSearch.CalendarTitleBackColor = System.Drawing.Color.Blue;
             this.dtpToDateSearch.CustomFormat = "dd-MMM-yyyy";
             this.dtpToDateSearch.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpToDateSearch.Location = new System.Drawing.Point(713, 19);
-            this.dtpToDateSearch.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.dtpToDateSearch.Location = new System.Drawing.Point(951, 23);
+            this.dtpToDateSearch.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.dtpToDateSearch.Name = "dtpToDateSearch";
-            this.dtpToDateSearch.Size = new System.Drawing.Size(17, 20);
+            this.dtpToDateSearch.Size = new System.Drawing.Size(21, 22);
             this.dtpToDateSearch.TabIndex = 1209;
             this.dtpToDateSearch.ValueChanged += new System.EventHandler(this.dtpToDateSearch_ValueChanged);
             // 
@@ -220,10 +226,10 @@
             this.dtpFromDateSeach.CalendarTitleBackColor = System.Drawing.Color.Blue;
             this.dtpFromDateSeach.CustomFormat = "dd-MMM-yyyy";
             this.dtpFromDateSeach.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFromDateSeach.Location = new System.Drawing.Point(292, 19);
-            this.dtpFromDateSeach.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.dtpFromDateSeach.Location = new System.Drawing.Point(389, 23);
+            this.dtpFromDateSeach.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.dtpFromDateSeach.Name = "dtpFromDateSeach";
-            this.dtpFromDateSeach.Size = new System.Drawing.Size(18, 20);
+            this.dtpFromDateSeach.Size = new System.Drawing.Size(23, 22);
             this.dtpFromDateSeach.TabIndex = 1208;
             this.dtpFromDateSeach.ValueChanged += new System.EventHandler(this.dtpFromDateSeach_ValueChanged);
             // 
@@ -259,13 +265,13 @@
             this.dgvRemainder.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvRemainder.EnableHeadersVisualStyles = false;
             this.dgvRemainder.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvRemainder.Location = new System.Drawing.Point(16, 77);
-            this.dgvRemainder.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
+            this.dgvRemainder.Location = new System.Drawing.Point(21, 95);
+            this.dgvRemainder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 12);
             this.dgvRemainder.Name = "dgvRemainder";
             this.dgvRemainder.ReadOnly = true;
             this.dgvRemainder.RowHeadersVisible = false;
             this.dgvRemainder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvRemainder.Size = new System.Drawing.Size(730, 333);
+            this.dgvRemainder.Size = new System.Drawing.Size(973, 410);
             this.dgvRemainder.TabIndex = 1207;
             this.dgvRemainder.TabStop = false;
             this.dgvRemainder.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRemainder_CellDoubleClick);
@@ -325,9 +331,10 @@
             this.btnSearch.FlatAppearance.BorderSize = 0;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.ForeColor = System.Drawing.Color.Black;
-            this.btnSearch.Location = new System.Drawing.Point(530, 44);
+            this.btnSearch.Location = new System.Drawing.Point(707, 54);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(85, 27);
+            this.btnSearch.Size = new System.Drawing.Size(113, 33);
             this.btnSearch.TabIndex = 2;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = false;
@@ -338,10 +345,10 @@
             // 
             this.lblToDateSearch.AutoSize = true;
             this.lblToDateSearch.ForeColor = System.Drawing.Color.White;
-            this.lblToDateSearch.Location = new System.Drawing.Point(454, 23);
-            this.lblToDateSearch.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblToDateSearch.Location = new System.Drawing.Point(605, 28);
+            this.lblToDateSearch.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblToDateSearch.Name = "lblToDateSearch";
-            this.lblToDateSearch.Size = new System.Drawing.Size(46, 13);
+            this.lblToDateSearch.Size = new System.Drawing.Size(59, 17);
             this.lblToDateSearch.TabIndex = 1206;
             this.lblToDateSearch.Text = "To Date";
             // 
@@ -349,10 +356,10 @@
             // 
             this.lblFromDateSearch.AutoSize = true;
             this.lblFromDateSearch.ForeColor = System.Drawing.Color.White;
-            this.lblFromDateSearch.Location = new System.Drawing.Point(13, 23);
-            this.lblFromDateSearch.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblFromDateSearch.Location = new System.Drawing.Point(17, 28);
+            this.lblFromDateSearch.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblFromDateSearch.Name = "lblFromDateSearch";
-            this.lblFromDateSearch.Size = new System.Drawing.Size(56, 13);
+            this.lblFromDateSearch.Size = new System.Drawing.Size(74, 17);
             this.lblFromDateSearch.TabIndex = 1204;
             this.lblFromDateSearch.Text = "From Date";
             // 
@@ -361,10 +368,10 @@
             this.dtpFromDate.CalendarTitleBackColor = System.Drawing.Color.Blue;
             this.dtpFromDate.CustomFormat = "dd-MMM-yyyy";
             this.dtpFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFromDate.Location = new System.Drawing.Point(310, 16);
-            this.dtpFromDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.dtpFromDate.Location = new System.Drawing.Point(413, 20);
+            this.dtpFromDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.dtpFromDate.Name = "dtpFromDate";
-            this.dtpFromDate.Size = new System.Drawing.Size(18, 20);
+            this.dtpFromDate.Size = new System.Drawing.Size(23, 22);
             this.dtpFromDate.TabIndex = 1203;
             this.dtpFromDate.ValueChanged += new System.EventHandler(this.dtpFromDate_ValueChanged);
             // 
@@ -373,29 +380,29 @@
             this.dtpToDate.CalendarTitleBackColor = System.Drawing.Color.Blue;
             this.dtpToDate.CustomFormat = "dd-MMM-yyyy";
             this.dtpToDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpToDate.Location = new System.Drawing.Point(310, 40);
-            this.dtpToDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.dtpToDate.Location = new System.Drawing.Point(413, 49);
+            this.dtpToDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.dtpToDate.Name = "dtpToDate";
-            this.dtpToDate.Size = new System.Drawing.Size(18, 20);
+            this.dtpToDate.Size = new System.Drawing.Size(23, 22);
             this.dtpToDate.TabIndex = 1204;
             this.dtpToDate.ValueChanged += new System.EventHandler(this.dtpToDate_ValueChanged);
             // 
             // txtFromDate
             // 
-            this.txtFromDate.Location = new System.Drawing.Point(127, 16);
-            this.txtFromDate.Margin = new System.Windows.Forms.Padding(5);
+            this.txtFromDate.Location = new System.Drawing.Point(169, 20);
+            this.txtFromDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.txtFromDate.Name = "txtFromDate";
-            this.txtFromDate.Size = new System.Drawing.Size(184, 20);
+            this.txtFromDate.Size = new System.Drawing.Size(244, 22);
             this.txtFromDate.TabIndex = 0;
             this.txtFromDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFromDate_KeyDown);
             this.txtFromDate.Leave += new System.EventHandler(this.txtFromDate_Leave);
             // 
             // txtToDate
             // 
-            this.txtToDate.Location = new System.Drawing.Point(127, 40);
-            this.txtToDate.Margin = new System.Windows.Forms.Padding(5);
+            this.txtToDate.Location = new System.Drawing.Point(169, 49);
+            this.txtToDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.txtToDate.Name = "txtToDate";
-            this.txtToDate.Size = new System.Drawing.Size(184, 20);
+            this.txtToDate.Size = new System.Drawing.Size(244, 22);
             this.txtToDate.TabIndex = 1;
             this.txtToDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtToDate_KeyDown);
             this.txtToDate.Leave += new System.EventHandler(this.txtToDate_Leave);
@@ -404,18 +411,19 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(337, 72);
+            this.label1.Location = new System.Drawing.Point(449, 89);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(11, 13);
+            this.label1.Size = new System.Drawing.Size(13, 17);
             this.label1.TabIndex = 1208;
             this.label1.Text = "*";
             // 
             // frmPersonalReminder
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(111)))), ((int)(((byte)(155)))));
-            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(1067, 738);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtToDate);
             this.Controls.Add(this.txtFromDate);
@@ -433,10 +441,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "frmPersonalReminder";
-            this.Opacity = 0.85D;
-            this.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
+            this.Padding = new System.Windows.Forms.Padding(20, 12, 20, 12);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Personal Reminder";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmPersonalReminder_FormClosing);

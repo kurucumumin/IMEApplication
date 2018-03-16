@@ -76,10 +76,10 @@
             // 
             this.cmbVouchertype.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbVouchertype.FormattingEnabled = true;
-            this.cmbVouchertype.Location = new System.Drawing.Point(580, 38);
-            this.cmbVouchertype.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.cmbVouchertype.Location = new System.Drawing.Point(773, 47);
+            this.cmbVouchertype.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.cmbVouchertype.Name = "cmbVouchertype";
-            this.cmbVouchertype.Size = new System.Drawing.Size(200, 21);
+            this.cmbVouchertype.Size = new System.Drawing.Size(265, 24);
             this.cmbVouchertype.TabIndex = 2;
             this.cmbVouchertype.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbVouchertype_KeyDown);
             // 
@@ -87,10 +87,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(23, 44);
-            this.label3.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.label3.Location = new System.Drawing.Point(31, 54);
+            this.label3.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 13);
+            this.label3.Size = new System.Drawing.Size(113, 17);
             this.label3.TabIndex = 1243;
             this.label3.Text = "Type of Voucher";
             // 
@@ -98,10 +98,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(473, 19);
-            this.label4.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.label4.Location = new System.Drawing.Point(631, 23);
+            this.label4.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 13);
+            this.label4.Size = new System.Drawing.Size(59, 17);
             this.label4.TabIndex = 1238;
             this.label4.Text = "To Date";
             // 
@@ -109,10 +109,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(23, 19);
-            this.label1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.label1.Location = new System.Drawing.Point(31, 23);
+            this.label1.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 13);
+            this.label1.Size = new System.Drawing.Size(74, 17);
             this.label1.TabIndex = 1240;
             this.label1.Text = "From Date";
             // 
@@ -122,9 +122,10 @@
             this.btnReset.FlatAppearance.BorderSize = 0;
             this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReset.ForeColor = System.Drawing.Color.Black;
-            this.btnReset.Location = new System.Drawing.Point(671, 86);
+            this.btnReset.Location = new System.Drawing.Point(895, 106);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(85, 27);
+            this.btnReset.Size = new System.Drawing.Size(113, 33);
             this.btnReset.TabIndex = 7;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = false;
@@ -137,9 +138,10 @@
             this.btnSearch.FlatAppearance.BorderSize = 0;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.ForeColor = System.Drawing.Color.Black;
-            this.btnSearch.Location = new System.Drawing.Point(580, 86);
+            this.btnSearch.Location = new System.Drawing.Point(773, 106);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(85, 27);
+            this.btnSearch.Size = new System.Drawing.Size(113, 33);
             this.btnSearch.TabIndex = 6;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = false;
@@ -193,12 +195,12 @@
             this.dgvVatreturn.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvVatreturn.EnableHeadersVisualStyles = false;
             this.dgvVatreturn.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvVatreturn.Location = new System.Drawing.Point(18, 119);
-            this.dgvVatreturn.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.dgvVatreturn.Location = new System.Drawing.Point(24, 146);
+            this.dgvVatreturn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 0);
             this.dgvVatreturn.Name = "dgvVatreturn";
             this.dgvVatreturn.ReadOnly = true;
             this.dgvVatreturn.RowHeadersVisible = false;
-            this.dgvVatreturn.Size = new System.Drawing.Size(764, 435);
+            this.dgvVatreturn.Size = new System.Drawing.Size(1019, 535);
             this.dgvVatreturn.TabIndex = 9;
             this.dgvVatreturn.TabStop = false;
             this.dgvVatreturn.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVatreturn_CellDoubleClick);
@@ -359,10 +361,10 @@
             // 
             this.rbtnFormat1.AutoSize = true;
             this.rbtnFormat1.ForeColor = System.Drawing.Color.White;
-            this.rbtnFormat1.Location = new System.Drawing.Point(580, 66);
-            this.rbtnFormat1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.rbtnFormat1.Location = new System.Drawing.Point(773, 81);
+            this.rbtnFormat1.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.rbtnFormat1.Name = "rbtnFormat1";
-            this.rbtnFormat1.Size = new System.Drawing.Size(66, 17);
+            this.rbtnFormat1.Size = new System.Drawing.Size(85, 21);
             this.rbtnFormat1.TabIndex = 4;
             this.rbtnFormat1.Text = "Format 1";
             this.rbtnFormat1.UseVisualStyleBackColor = true;
@@ -372,10 +374,10 @@
             // 
             this.rbtnFormat2.AutoSize = true;
             this.rbtnFormat2.ForeColor = System.Drawing.Color.White;
-            this.rbtnFormat2.Location = new System.Drawing.Point(656, 66);
-            this.rbtnFormat2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.rbtnFormat2.Location = new System.Drawing.Point(875, 81);
+            this.rbtnFormat2.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.rbtnFormat2.Name = "rbtnFormat2";
-            this.rbtnFormat2.Size = new System.Drawing.Size(66, 17);
+            this.rbtnFormat2.Size = new System.Drawing.Size(85, 21);
             this.rbtnFormat2.TabIndex = 5;
             this.rbtnFormat2.Text = "Format 2";
             this.rbtnFormat2.UseVisualStyleBackColor = true;
@@ -383,37 +385,38 @@
             // 
             // dtpFrmDate
             // 
-            this.dtpFrmDate.Location = new System.Drawing.Point(309, 15);
-            this.dtpFrmDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.dtpFrmDate.Location = new System.Drawing.Point(412, 18);
+            this.dtpFrmDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.dtpFrmDate.Name = "dtpFrmDate";
-            this.dtpFrmDate.Size = new System.Drawing.Size(21, 20);
+            this.dtpFrmDate.Size = new System.Drawing.Size(27, 22);
             this.dtpFrmDate.TabIndex = 1466;
             this.dtpFrmDate.ValueChanged += new System.EventHandler(this.dtpFrmDate_ValueChanged);
             // 
             // txtFromDate
             // 
-            this.txtFromDate.Location = new System.Drawing.Point(129, 15);
-            this.txtFromDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtFromDate.Location = new System.Drawing.Point(172, 18);
+            this.txtFromDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtFromDate.Name = "txtFromDate";
-            this.txtFromDate.Size = new System.Drawing.Size(182, 20);
+            this.txtFromDate.Size = new System.Drawing.Size(241, 22);
             this.txtFromDate.TabIndex = 0;
             this.txtFromDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFromDate_KeyDown);
             this.txtFromDate.Leave += new System.EventHandler(this.txtFromDate_Leave);
             // 
             // dtpToDate
             // 
-            this.dtpToDate.Location = new System.Drawing.Point(760, 15);
+            this.dtpToDate.Location = new System.Drawing.Point(1013, 18);
+            this.dtpToDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtpToDate.Name = "dtpToDate";
-            this.dtpToDate.Size = new System.Drawing.Size(21, 20);
+            this.dtpToDate.Size = new System.Drawing.Size(27, 22);
             this.dtpToDate.TabIndex = 1468;
             this.dtpToDate.ValueChanged += new System.EventHandler(this.dtpToDate_ValueChanged);
             // 
             // txtToDate
             // 
-            this.txtToDate.Location = new System.Drawing.Point(580, 15);
-            this.txtToDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtToDate.Location = new System.Drawing.Point(773, 18);
+            this.txtToDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtToDate.Name = "txtToDate";
-            this.txtToDate.Size = new System.Drawing.Size(182, 20);
+            this.txtToDate.Size = new System.Drawing.Size(241, 22);
             this.txtToDate.TabIndex = 1;
             this.txtToDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtToDate_KeyDown);
             this.txtToDate.Leave += new System.EventHandler(this.txtToDate_Leave);
@@ -426,9 +429,10 @@
             this.btnPrint.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrint.ForeColor = System.Drawing.Color.Black;
-            this.btnPrint.Location = new System.Drawing.Point(604, 561);
+            this.btnPrint.Location = new System.Drawing.Point(805, 690);
+            this.btnPrint.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(85, 27);
+            this.btnPrint.Size = new System.Drawing.Size(113, 33);
             this.btnPrint.TabIndex = 8;
             this.btnPrint.Text = "Print";
             this.btnPrint.UseVisualStyleBackColor = false;
@@ -438,10 +442,10 @@
             // 
             this.cmbTax.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTax.FormattingEnabled = true;
-            this.cmbTax.Location = new System.Drawing.Point(130, 66);
-            this.cmbTax.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.cmbTax.Location = new System.Drawing.Point(173, 81);
+            this.cmbTax.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.cmbTax.Name = "cmbTax";
-            this.cmbTax.Size = new System.Drawing.Size(200, 21);
+            this.cmbTax.Size = new System.Drawing.Size(265, 24);
             this.cmbTax.TabIndex = 3;
             this.cmbTax.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbTax_KeyDown);
             // 
@@ -449,10 +453,10 @@
             // 
             this.lblTax.AutoSize = true;
             this.lblTax.ForeColor = System.Drawing.Color.White;
-            this.lblTax.Location = new System.Drawing.Point(26, 71);
-            this.lblTax.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblTax.Location = new System.Drawing.Point(35, 87);
+            this.lblTax.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblTax.Name = "lblTax";
-            this.lblTax.Size = new System.Drawing.Size(25, 13);
+            this.lblTax.Size = new System.Drawing.Size(31, 17);
             this.lblTax.TabIndex = 1471;
             this.lblTax.Text = "Tax";
             // 
@@ -460,10 +464,10 @@
             // 
             this.cmbTypeofVoucher.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTypeofVoucher.FormattingEnabled = true;
-            this.cmbTypeofVoucher.Location = new System.Drawing.Point(129, 39);
-            this.cmbTypeofVoucher.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.cmbTypeofVoucher.Location = new System.Drawing.Point(172, 48);
+            this.cmbTypeofVoucher.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.cmbTypeofVoucher.Name = "cmbTypeofVoucher";
-            this.cmbTypeofVoucher.Size = new System.Drawing.Size(201, 21);
+            this.cmbTypeofVoucher.Size = new System.Drawing.Size(267, 24);
             this.cmbTypeofVoucher.TabIndex = 1472;
             this.cmbTypeofVoucher.SelectedIndexChanged += new System.EventHandler(this.cmbTypeofVoucher_SelectedIndexChanged);
             // 
@@ -471,10 +475,10 @@
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(474, 43);
-            this.label7.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.label7.Location = new System.Drawing.Point(632, 53);
+            this.label7.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(74, 13);
+            this.label7.Size = new System.Drawing.Size(97, 17);
             this.label7.TabIndex = 1473;
             this.label7.Text = "Voucher Type";
             // 
@@ -484,9 +488,10 @@
             this.btnExport.FlatAppearance.BorderSize = 0;
             this.btnExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExport.ForeColor = System.Drawing.Color.Black;
-            this.btnExport.Location = new System.Drawing.Point(695, 561);
+            this.btnExport.Location = new System.Drawing.Point(927, 690);
+            this.btnExport.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(85, 26);
+            this.btnExport.Size = new System.Drawing.Size(113, 32);
             this.btnExport.TabIndex = 9;
             this.btnExport.Text = "Export";
             this.btnExport.UseVisualStyleBackColor = false;
@@ -494,10 +499,10 @@
             // 
             // frmVatReturnReport
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(111)))), ((int)(((byte)(155)))));
-            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(1067, 738);
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.cmbTypeofVoucher);
             this.Controls.Add(this.label7);
@@ -520,10 +525,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "frmVatReturnReport";
-            this.Opacity = 0.85D;
-            this.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
+            this.Padding = new System.Windows.Forms.Padding(20, 12, 20, 12);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VAT Return Report";
             this.Load += new System.EventHandler(this.frmVatReturnReport_Load);

@@ -42,22 +42,22 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.controlManagement = new LoginForm.CustomControls.ManagementControl();
-            this.subControlTransactions = new LoginForm.CustomControls.TransactionsControl();
-            this.subControlSettings = new LoginForm.CustomControls.SettingsControl();
-            this.subControlSearch = new LoginForm.CustomControls.SearchControl();
-            this.subControlReports = new LoginForm.CustomControls.ReportsControl();
-            this.subControlReminder = new LoginForm.CustomControls.ReminderControl();
-            this.subControlRegister = new LoginForm.CustomControls.RegistersControl();
-            this.subControlPayroll = new LoginForm.CustomControls.PayrollControl();
-            this.subControlMasters = new LoginForm.CustomControls.MastersControl();
-            this.subControlFinancialStatement = new LoginForm.CustomControls.FinancialStatementsControl();
-            this.subControlBudget = new LoginForm.CustomControls.BudgetControl();
-            this.controlAccounting = new LoginForm.CustomControls.AccountingControl();
-            this.controlLoader = new LoginForm.CustomControls.LoaderControl();
-            this.controlDevelopment = new LoginForm.CustomControls.DevelopmentControl();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.controlDevelopment = new LoginForm.CustomControls.DevelopmentControl();
+            this.controlLoader = new LoginForm.CustomControls.LoaderControl();
+            this.controlAccounting = new LoginForm.CustomControls.AccountingControl();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.subControlPayroll = new LoginForm.CustomControls.PayrollControl();
+            this.subControlRegister = new LoginForm.CustomControls.RegistersControl();
+            this.subControlMasters = new LoginForm.CustomControls.MastersControl();
+            this.subControlReminder = new LoginForm.CustomControls.ReminderControl();
+            this.subControlFinancialStatement = new LoginForm.CustomControls.FinancialStatementsControl();
+            this.subControlReports = new LoginForm.CustomControls.ReportsControl();
+            this.subControlBudget = new LoginForm.CustomControls.BudgetControl();
+            this.subControlSearch = new LoginForm.CustomControls.SearchControl();
+            this.subControlSettings = new LoginForm.CustomControls.SettingsControl();
+            this.subControlTransactions = new LoginForm.CustomControls.TransactionsControl();
             this.tableLeftPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.gbMainMenu.SuspendLayout();
@@ -257,150 +257,6 @@
             this.controlManagement.TabIndex = 2;
             this.controlManagement.Visible = false;
             // 
-            // subControlTransactions
-            // 
-            this.subControlTransactions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
-            this.subControlTransactions.Location = new System.Drawing.Point(7, 34);
-            this.subControlTransactions.Margin = new System.Windows.Forms.Padding(0);
-            this.subControlTransactions.Name = "subControlTransactions";
-            this.subControlTransactions.Size = new System.Drawing.Size(334, 633);
-            this.subControlTransactions.TabIndex = 14;
-            this.subControlTransactions.Visible = false;
-            // 
-            // subControlSettings
-            // 
-            this.subControlSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
-            this.subControlSettings.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.subControlSettings.Location = new System.Drawing.Point(0, 0);
-            this.subControlSettings.Margin = new System.Windows.Forms.Padding(0);
-            this.subControlSettings.Name = "subControlSettings";
-            this.subControlSettings.Size = new System.Drawing.Size(334, 633);
-            this.subControlSettings.TabIndex = 13;
-            this.subControlSettings.Visible = false;
-            // 
-            // subControlSearch
-            // 
-            this.subControlSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
-            this.subControlSearch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.subControlSearch.Location = new System.Drawing.Point(0, 0);
-            this.subControlSearch.Margin = new System.Windows.Forms.Padding(0);
-            this.subControlSearch.Name = "subControlSearch";
-            this.subControlSearch.Size = new System.Drawing.Size(334, 633);
-            this.subControlSearch.TabIndex = 12;
-            this.subControlSearch.Visible = false;
-            // 
-            // subControlReports
-            // 
-            this.subControlReports.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
-            this.subControlReports.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.subControlReports.Location = new System.Drawing.Point(0, 0);
-            this.subControlReports.Margin = new System.Windows.Forms.Padding(0);
-            this.subControlReports.Name = "subControlReports";
-            this.subControlReports.Size = new System.Drawing.Size(334, 633);
-            this.subControlReports.TabIndex = 11;
-            this.subControlReports.Visible = false;
-            // 
-            // subControlReminder
-            // 
-            this.subControlReminder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
-            this.subControlReminder.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.subControlReminder.Location = new System.Drawing.Point(0, 0);
-            this.subControlReminder.Margin = new System.Windows.Forms.Padding(0);
-            this.subControlReminder.Name = "subControlReminder";
-            this.subControlReminder.Size = new System.Drawing.Size(334, 633);
-            this.subControlReminder.TabIndex = 10;
-            this.subControlReminder.Visible = false;
-            // 
-            // subControlRegister
-            // 
-            this.subControlRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
-            this.subControlRegister.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.subControlRegister.Location = new System.Drawing.Point(0, 0);
-            this.subControlRegister.Margin = new System.Windows.Forms.Padding(0);
-            this.subControlRegister.Name = "subControlRegister";
-            this.subControlRegister.Size = new System.Drawing.Size(334, 633);
-            this.subControlRegister.TabIndex = 9;
-            this.subControlRegister.Visible = false;
-            // 
-            // subControlPayroll
-            // 
-            this.subControlPayroll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
-            this.subControlPayroll.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.subControlPayroll.Location = new System.Drawing.Point(0, 0);
-            this.subControlPayroll.Margin = new System.Windows.Forms.Padding(0);
-            this.subControlPayroll.Name = "subControlPayroll";
-            this.subControlPayroll.Size = new System.Drawing.Size(334, 633);
-            this.subControlPayroll.TabIndex = 8;
-            this.subControlPayroll.Visible = false;
-            // 
-            // subControlMasters
-            // 
-            this.subControlMasters.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
-            this.subControlMasters.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.subControlMasters.Location = new System.Drawing.Point(0, 0);
-            this.subControlMasters.Margin = new System.Windows.Forms.Padding(0);
-            this.subControlMasters.Name = "subControlMasters";
-            this.subControlMasters.Size = new System.Drawing.Size(334, 633);
-            this.subControlMasters.TabIndex = 7;
-            this.subControlMasters.Visible = false;
-            // 
-            // subControlFinancialStatement
-            // 
-            this.subControlFinancialStatement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
-            this.subControlFinancialStatement.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.subControlFinancialStatement.Location = new System.Drawing.Point(0, 0);
-            this.subControlFinancialStatement.Margin = new System.Windows.Forms.Padding(0);
-            this.subControlFinancialStatement.Name = "subControlFinancialStatement";
-            this.subControlFinancialStatement.Size = new System.Drawing.Size(334, 633);
-            this.subControlFinancialStatement.TabIndex = 6;
-            this.subControlFinancialStatement.Visible = false;
-            // 
-            // subControlBudget
-            // 
-            this.subControlBudget.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
-            this.subControlBudget.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.subControlBudget.Location = new System.Drawing.Point(0, 0);
-            this.subControlBudget.Margin = new System.Windows.Forms.Padding(0);
-            this.subControlBudget.Name = "subControlBudget";
-            this.subControlBudget.Size = new System.Drawing.Size(334, 633);
-            this.subControlBudget.TabIndex = 5;
-            this.subControlBudget.Visible = false;
-            // 
-            // controlAccounting
-            // 
-            this.controlAccounting.AutoScroll = true;
-            this.controlAccounting.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
-            this.controlAccounting.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.controlAccounting.Location = new System.Drawing.Point(0, 0);
-            this.controlAccounting.Margin = new System.Windows.Forms.Padding(2);
-            this.controlAccounting.Name = "controlAccounting";
-            this.controlAccounting.Size = new System.Drawing.Size(334, 633);
-            this.controlAccounting.TabIndex = 3;
-            this.controlAccounting.Visible = false;
-            // 
-            // controlLoader
-            // 
-            this.controlLoader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
-            this.controlLoader.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.controlLoader.Location = new System.Drawing.Point(0, 0);
-            this.controlLoader.Margin = new System.Windows.Forms.Padding(2);
-            this.controlLoader.Name = "controlLoader";
-            this.controlLoader.Size = new System.Drawing.Size(334, 633);
-            this.controlLoader.TabIndex = 0;
-            this.controlLoader.Visible = false;
-            // 
-            // controlDevelopment
-            // 
-            this.controlDevelopment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
-            this.controlDevelopment.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.controlDevelopment.Location = new System.Drawing.Point(0, 0);
-            this.controlDevelopment.Margin = new System.Windows.Forms.Padding(0);
-            this.controlDevelopment.MinimumSize = new System.Drawing.Size(0, 544);
-            this.controlDevelopment.Name = "controlDevelopment";
-            this.controlDevelopment.Size = new System.Drawing.Size(334, 633);
-            this.controlDevelopment.TabIndex = 1;
-            this.controlDevelopment.Visible = false;
-            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 2;
@@ -429,6 +285,41 @@
             this.panel3.Size = new System.Drawing.Size(334, 633);
             this.panel3.TabIndex = 0;
             // 
+            // controlDevelopment
+            // 
+            this.controlDevelopment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
+            this.controlDevelopment.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.controlDevelopment.Location = new System.Drawing.Point(0, 0);
+            this.controlDevelopment.Margin = new System.Windows.Forms.Padding(0);
+            this.controlDevelopment.MinimumSize = new System.Drawing.Size(0, 544);
+            this.controlDevelopment.Name = "controlDevelopment";
+            this.controlDevelopment.Size = new System.Drawing.Size(334, 633);
+            this.controlDevelopment.TabIndex = 1;
+            this.controlDevelopment.Visible = false;
+            // 
+            // controlLoader
+            // 
+            this.controlLoader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
+            this.controlLoader.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.controlLoader.Location = new System.Drawing.Point(0, 0);
+            this.controlLoader.Margin = new System.Windows.Forms.Padding(2);
+            this.controlLoader.Name = "controlLoader";
+            this.controlLoader.Size = new System.Drawing.Size(334, 633);
+            this.controlLoader.TabIndex = 0;
+            this.controlLoader.Visible = false;
+            // 
+            // controlAccounting
+            // 
+            this.controlAccounting.AutoScroll = true;
+            this.controlAccounting.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
+            this.controlAccounting.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.controlAccounting.Location = new System.Drawing.Point(0, 0);
+            this.controlAccounting.Margin = new System.Windows.Forms.Padding(2);
+            this.controlAccounting.Name = "controlAccounting";
+            this.controlAccounting.Size = new System.Drawing.Size(334, 633);
+            this.controlAccounting.TabIndex = 3;
+            this.controlAccounting.Visible = false;
+            // 
             // panel5
             // 
             this.panel5.Controls.Add(this.subControlPayroll);
@@ -447,6 +338,116 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(334, 633);
             this.panel5.TabIndex = 1;
+            // 
+            // subControlPayroll
+            // 
+            this.subControlPayroll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
+            this.subControlPayroll.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.subControlPayroll.Location = new System.Drawing.Point(0, 0);
+            this.subControlPayroll.Margin = new System.Windows.Forms.Padding(0);
+            this.subControlPayroll.Name = "subControlPayroll";
+            this.subControlPayroll.Size = new System.Drawing.Size(334, 633);
+            this.subControlPayroll.TabIndex = 8;
+            this.subControlPayroll.Visible = false;
+            // 
+            // subControlRegister
+            // 
+            this.subControlRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
+            this.subControlRegister.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.subControlRegister.Location = new System.Drawing.Point(0, 0);
+            this.subControlRegister.Margin = new System.Windows.Forms.Padding(0);
+            this.subControlRegister.Name = "subControlRegister";
+            this.subControlRegister.Size = new System.Drawing.Size(334, 633);
+            this.subControlRegister.TabIndex = 9;
+            this.subControlRegister.Visible = false;
+            // 
+            // subControlMasters
+            // 
+            this.subControlMasters.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
+            this.subControlMasters.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.subControlMasters.Location = new System.Drawing.Point(0, 0);
+            this.subControlMasters.Margin = new System.Windows.Forms.Padding(0);
+            this.subControlMasters.Name = "subControlMasters";
+            this.subControlMasters.Size = new System.Drawing.Size(334, 633);
+            this.subControlMasters.TabIndex = 7;
+            this.subControlMasters.Visible = false;
+            // 
+            // subControlReminder
+            // 
+            this.subControlReminder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
+            this.subControlReminder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.subControlReminder.Location = new System.Drawing.Point(0, 0);
+            this.subControlReminder.Margin = new System.Windows.Forms.Padding(0);
+            this.subControlReminder.Name = "subControlReminder";
+            this.subControlReminder.Size = new System.Drawing.Size(334, 633);
+            this.subControlReminder.TabIndex = 10;
+            this.subControlReminder.Visible = false;
+            // 
+            // subControlFinancialStatement
+            // 
+            this.subControlFinancialStatement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
+            this.subControlFinancialStatement.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.subControlFinancialStatement.Location = new System.Drawing.Point(0, 0);
+            this.subControlFinancialStatement.Margin = new System.Windows.Forms.Padding(0);
+            this.subControlFinancialStatement.Name = "subControlFinancialStatement";
+            this.subControlFinancialStatement.Size = new System.Drawing.Size(334, 633);
+            this.subControlFinancialStatement.TabIndex = 6;
+            this.subControlFinancialStatement.Visible = false;
+            // 
+            // subControlReports
+            // 
+            this.subControlReports.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
+            this.subControlReports.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.subControlReports.Location = new System.Drawing.Point(0, 0);
+            this.subControlReports.Margin = new System.Windows.Forms.Padding(0);
+            this.subControlReports.Name = "subControlReports";
+            this.subControlReports.Size = new System.Drawing.Size(334, 633);
+            this.subControlReports.TabIndex = 11;
+            this.subControlReports.Visible = false;
+            // 
+            // subControlBudget
+            // 
+            this.subControlBudget.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
+            this.subControlBudget.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.subControlBudget.Location = new System.Drawing.Point(0, 0);
+            this.subControlBudget.Margin = new System.Windows.Forms.Padding(0);
+            this.subControlBudget.Name = "subControlBudget";
+            this.subControlBudget.Size = new System.Drawing.Size(334, 633);
+            this.subControlBudget.TabIndex = 5;
+            this.subControlBudget.Visible = false;
+            // 
+            // subControlSearch
+            // 
+            this.subControlSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
+            this.subControlSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.subControlSearch.Location = new System.Drawing.Point(0, 0);
+            this.subControlSearch.Margin = new System.Windows.Forms.Padding(0);
+            this.subControlSearch.Name = "subControlSearch";
+            this.subControlSearch.Size = new System.Drawing.Size(334, 633);
+            this.subControlSearch.TabIndex = 12;
+            this.subControlSearch.Visible = false;
+            // 
+            // subControlSettings
+            // 
+            this.subControlSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
+            this.subControlSettings.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.subControlSettings.Location = new System.Drawing.Point(0, 0);
+            this.subControlSettings.Margin = new System.Windows.Forms.Padding(0);
+            this.subControlSettings.Name = "subControlSettings";
+            this.subControlSettings.Size = new System.Drawing.Size(334, 633);
+            this.subControlSettings.TabIndex = 13;
+            this.subControlSettings.Visible = false;
+            // 
+            // subControlTransactions
+            // 
+            this.subControlTransactions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
+            this.subControlTransactions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.subControlTransactions.Location = new System.Drawing.Point(0, 0);
+            this.subControlTransactions.Margin = new System.Windows.Forms.Padding(0);
+            this.subControlTransactions.Name = "subControlTransactions";
+            this.subControlTransactions.Size = new System.Drawing.Size(334, 633);
+            this.subControlTransactions.TabIndex = 14;
+            this.subControlTransactions.Visible = false;
             // 
             // FormMain
             // 

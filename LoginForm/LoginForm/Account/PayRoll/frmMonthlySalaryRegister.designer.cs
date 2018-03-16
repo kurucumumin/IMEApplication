@@ -66,11 +66,11 @@
             // 
             // txtVoucherNo
             // 
-            this.txtVoucherNo.Location = new System.Drawing.Point(580, 40);
-            this.txtVoucherNo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtVoucherNo.Location = new System.Drawing.Point(773, 49);
+            this.txtVoucherNo.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtVoucherNo.MaxLength = 15;
             this.txtVoucherNo.Name = "txtVoucherNo";
-            this.txtVoucherNo.Size = new System.Drawing.Size(200, 20);
+            this.txtVoucherNo.Size = new System.Drawing.Size(265, 22);
             this.txtVoucherNo.TabIndex = 3;
             this.txtVoucherNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVoucherNo_KeyDown);
             // 
@@ -78,10 +78,10 @@
             // 
             this.lblVoucherNo.AutoSize = true;
             this.lblVoucherNo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblVoucherNo.Location = new System.Drawing.Point(474, 44);
-            this.lblVoucherNo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblVoucherNo.Location = new System.Drawing.Point(632, 54);
+            this.lblVoucherNo.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblVoucherNo.Name = "lblVoucherNo";
-            this.lblVoucherNo.Size = new System.Drawing.Size(67, 13);
+            this.lblVoucherNo.Size = new System.Drawing.Size(87, 17);
             this.lblVoucherNo.TabIndex = 165;
             this.lblVoucherNo.Text = "Voucher No.";
             // 
@@ -89,10 +89,10 @@
             // 
             this.lblSalaryMonth.AutoSize = true;
             this.lblSalaryMonth.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblSalaryMonth.Location = new System.Drawing.Point(20, 44);
-            this.lblSalaryMonth.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblSalaryMonth.Location = new System.Drawing.Point(27, 54);
+            this.lblSalaryMonth.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblSalaryMonth.Name = "lblSalaryMonth";
-            this.lblSalaryMonth.Size = new System.Drawing.Size(69, 13);
+            this.lblSalaryMonth.Size = new System.Drawing.Size(91, 17);
             this.lblSalaryMonth.TabIndex = 164;
             this.lblSalaryMonth.Text = "Salary Month";
             // 
@@ -100,10 +100,10 @@
             // 
             this.lblVoucherDateTo.AutoSize = true;
             this.lblVoucherDateTo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblVoucherDateTo.Location = new System.Drawing.Point(474, 19);
-            this.lblVoucherDateTo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblVoucherDateTo.Location = new System.Drawing.Point(632, 23);
+            this.lblVoucherDateTo.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblVoucherDateTo.Name = "lblVoucherDateTo";
-            this.lblVoucherDateTo.Size = new System.Drawing.Size(89, 13);
+            this.lblVoucherDateTo.Size = new System.Drawing.Size(116, 17);
             this.lblVoucherDateTo.TabIndex = 163;
             this.lblVoucherDateTo.Text = "Voucher Date To";
             // 
@@ -113,9 +113,10 @@
             this.btnSearch.FlatAppearance.BorderSize = 0;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Location = new System.Drawing.Point(580, 90);
+            this.btnSearch.Location = new System.Drawing.Point(773, 111);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(85, 27);
+            this.btnSearch.Size = new System.Drawing.Size(113, 33);
             this.btnSearch.TabIndex = 6;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -128,9 +129,10 @@
             this.btnClear.FlatAppearance.BorderSize = 0;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.ForeColor = System.Drawing.Color.White;
-            this.btnClear.Location = new System.Drawing.Point(671, 90);
+            this.btnClear.Location = new System.Drawing.Point(895, 111);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(85, 27);
+            this.btnClear.Size = new System.Drawing.Size(113, 33);
             this.btnClear.TabIndex = 7;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
@@ -140,10 +142,10 @@
             // 
             this.lblVoucherDateFrom.AutoSize = true;
             this.lblVoucherDateFrom.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblVoucherDateFrom.Location = new System.Drawing.Point(20, 19);
-            this.lblVoucherDateFrom.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblVoucherDateFrom.Location = new System.Drawing.Point(27, 23);
+            this.lblVoucherDateFrom.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblVoucherDateFrom.Name = "lblVoucherDateFrom";
-            this.lblVoucherDateFrom.Size = new System.Drawing.Size(99, 13);
+            this.lblVoucherDateFrom.Size = new System.Drawing.Size(131, 17);
             this.lblVoucherDateFrom.TabIndex = 159;
             this.lblVoucherDateFrom.Text = "Voucher Date From";
             // 
@@ -189,18 +191,18 @@
             this.dgvMonthlySalaryRegister.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvMonthlySalaryRegister.EnableHeadersVisualStyles = false;
             this.dgvMonthlySalaryRegister.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvMonthlySalaryRegister.Location = new System.Drawing.Point(18, 123);
-            this.dgvMonthlySalaryRegister.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
+            this.dgvMonthlySalaryRegister.Location = new System.Drawing.Point(24, 151);
+            this.dgvMonthlySalaryRegister.Margin = new System.Windows.Forms.Padding(4, 4, 4, 12);
             this.dgvMonthlySalaryRegister.MultiSelect = false;
             this.dgvMonthlySalaryRegister.Name = "dgvMonthlySalaryRegister";
             this.dgvMonthlySalaryRegister.ReadOnly = true;
             this.dgvMonthlySalaryRegister.RowHeadersVisible = false;
             this.dgvMonthlySalaryRegister.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMonthlySalaryRegister.Size = new System.Drawing.Size(764, 483);
+            this.dgvMonthlySalaryRegister.Size = new System.Drawing.Size(1019, 594);
             this.dgvMonthlySalaryRegister.TabIndex = 9;
             this.dgvMonthlySalaryRegister.TabStop = false;
             this.dgvMonthlySalaryRegister.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMonthlySalaryRegister_CellDoubleClick);
-           this.dgvMonthlySalaryRegister.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvMonthlySalaryRegister_KeyUp);
+            this.dgvMonthlySalaryRegister.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvMonthlySalaryRegister_KeyUp);
             // 
             // dgvtxtSlNo
             // 
@@ -310,21 +312,21 @@
             // 
             this.cmbCashBankAC.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCashBankAC.FormattingEnabled = true;
-            this.cmbCashBankAC.Location = new System.Drawing.Point(130, 65);
-            this.cmbCashBankAC.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.cmbCashBankAC.Location = new System.Drawing.Point(173, 80);
+            this.cmbCashBankAC.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.cmbCashBankAC.Name = "cmbCashBankAC";
-            this.cmbCashBankAC.Size = new System.Drawing.Size(200, 21);
+            this.cmbCashBankAC.Size = new System.Drawing.Size(265, 24);
             this.cmbCashBankAC.TabIndex = 4;
             this.cmbCashBankAC.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbCashBankAC_KeyDown);
-             // 
+            // 
             // lblCashBankAC
             // 
             this.lblCashBankAC.AutoSize = true;
             this.lblCashBankAC.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblCashBankAC.Location = new System.Drawing.Point(20, 69);
-            this.lblCashBankAC.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblCashBankAC.Location = new System.Drawing.Point(27, 85);
+            this.lblCashBankAC.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblCashBankAC.Name = "lblCashBankAC";
-            this.lblCashBankAC.Size = new System.Drawing.Size(81, 13);
+            this.lblCashBankAC.Size = new System.Drawing.Size(99, 17);
             this.lblCashBankAC.TabIndex = 172;
             this.lblCashBankAC.Text = "Cash/Bank a/c";
             // 
@@ -332,30 +334,30 @@
             // 
             this.dtpVoucherDateFrom.CustomFormat = "dd-MMM-yyyy";
             this.dtpVoucherDateFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpVoucherDateFrom.Location = new System.Drawing.Point(308, 15);
-            this.dtpVoucherDateFrom.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.dtpVoucherDateFrom.Location = new System.Drawing.Point(411, 18);
+            this.dtpVoucherDateFrom.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.dtpVoucherDateFrom.Name = "dtpVoucherDateFrom";
-            this.dtpVoucherDateFrom.Size = new System.Drawing.Size(22, 20);
+            this.dtpVoucherDateFrom.Size = new System.Drawing.Size(28, 22);
             this.dtpVoucherDateFrom.TabIndex = 174;
             this.dtpVoucherDateFrom.TabStop = false;
             this.dtpVoucherDateFrom.ValueChanged += new System.EventHandler(this.dtpVoucherDateFrom_ValueChanged);
             // 
             // txtVoucherDateFrom
             // 
-            this.txtVoucherDateFrom.Location = new System.Drawing.Point(130, 15);
-            this.txtVoucherDateFrom.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtVoucherDateFrom.Location = new System.Drawing.Point(173, 18);
+            this.txtVoucherDateFrom.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtVoucherDateFrom.Name = "txtVoucherDateFrom";
-            this.txtVoucherDateFrom.Size = new System.Drawing.Size(179, 20);
+            this.txtVoucherDateFrom.Size = new System.Drawing.Size(237, 22);
             this.txtVoucherDateFrom.TabIndex = 0;
             this.txtVoucherDateFrom.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVoucherDateFrom_KeyDown);
             this.txtVoucherDateFrom.Leave += new System.EventHandler(this.txtVoucherDateFrom_Leave);
             // 
             // txtVoucherDateTo
             // 
-            this.txtVoucherDateTo.Location = new System.Drawing.Point(580, 15);
-            this.txtVoucherDateTo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtVoucherDateTo.Location = new System.Drawing.Point(773, 18);
+            this.txtVoucherDateTo.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtVoucherDateTo.Name = "txtVoucherDateTo";
-            this.txtVoucherDateTo.Size = new System.Drawing.Size(179, 20);
+            this.txtVoucherDateTo.Size = new System.Drawing.Size(237, 22);
             this.txtVoucherDateTo.TabIndex = 1;
             this.txtVoucherDateTo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVoucherDateTo_KeyDown);
             this.txtVoucherDateTo.Leave += new System.EventHandler(this.txtVoucherDateTo_Leave);
@@ -364,10 +366,10 @@
             // 
             this.dtpVoucherDateTo.CustomFormat = "dd-MMM-yyyy";
             this.dtpVoucherDateTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpVoucherDateTo.Location = new System.Drawing.Point(757, 15);
-            this.dtpVoucherDateTo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.dtpVoucherDateTo.Location = new System.Drawing.Point(1009, 18);
+            this.dtpVoucherDateTo.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.dtpVoucherDateTo.Name = "dtpVoucherDateTo";
-            this.dtpVoucherDateTo.Size = new System.Drawing.Size(23, 20);
+            this.dtpVoucherDateTo.Size = new System.Drawing.Size(29, 22);
             this.dtpVoucherDateTo.TabIndex = 176;
             this.dtpVoucherDateTo.TabStop = false;
             this.dtpVoucherDateTo.ValueChanged += new System.EventHandler(this.dtpVoucherDateTo_ValueChanged);
@@ -376,10 +378,10 @@
             // 
             this.dtpSalaryMonth.CustomFormat = "MMMM yyyy";
             this.dtpSalaryMonth.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpSalaryMonth.Location = new System.Drawing.Point(130, 40);
-            this.dtpSalaryMonth.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.dtpSalaryMonth.Location = new System.Drawing.Point(173, 49);
+            this.dtpSalaryMonth.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.dtpSalaryMonth.Name = "dtpSalaryMonth";
-            this.dtpSalaryMonth.Size = new System.Drawing.Size(200, 20);
+            this.dtpSalaryMonth.Size = new System.Drawing.Size(265, 22);
             this.dtpSalaryMonth.TabIndex = 2;
             this.dtpSalaryMonth.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtpSalaryMonth_KeyDown);
             // 
@@ -387,10 +389,10 @@
             // 
             this.cmbVoucherTypeName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbVoucherTypeName.FormattingEnabled = true;
-            this.cmbVoucherTypeName.Location = new System.Drawing.Point(580, 65);
-            this.cmbVoucherTypeName.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.cmbVoucherTypeName.Location = new System.Drawing.Point(773, 80);
+            this.cmbVoucherTypeName.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.cmbVoucherTypeName.Name = "cmbVoucherTypeName";
-            this.cmbVoucherTypeName.Size = new System.Drawing.Size(200, 21);
+            this.cmbVoucherTypeName.Size = new System.Drawing.Size(265, 24);
             this.cmbVoucherTypeName.TabIndex = 5;
             this.cmbVoucherTypeName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbVoucherTypeName_KeyDown);
             // 
@@ -398,19 +400,19 @@
             // 
             this.lblVoucherType.AutoSize = true;
             this.lblVoucherType.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblVoucherType.Location = new System.Drawing.Point(474, 69);
-            this.lblVoucherType.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblVoucherType.Location = new System.Drawing.Point(632, 85);
+            this.lblVoucherType.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblVoucherType.Name = "lblVoucherType";
-            this.lblVoucherType.Size = new System.Drawing.Size(74, 13);
+            this.lblVoucherType.Size = new System.Drawing.Size(97, 17);
             this.lblVoucherType.TabIndex = 178;
             this.lblVoucherType.Text = "Voucher Type";
             // 
             // frmMonthlySalaryRegister
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(111)))), ((int)(((byte)(155)))));
-            this.ClientSize = new System.Drawing.Size(800, 626);
+            this.ClientSize = new System.Drawing.Size(1067, 770);
             this.Controls.Add(this.lblVoucherType);
             this.Controls.Add(this.cmbVoucherTypeName);
             this.Controls.Add(this.dtpSalaryMonth);
@@ -431,10 +433,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "frmMonthlySalaryRegister";
-            this.Opacity = 0.85D;
-            this.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
+            this.Padding = new System.Windows.Forms.Padding(20, 12, 20, 12);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Monthly Salary Register";
             this.Load += new System.EventHandler(this.frmMonthlySalaryRegister_Load);

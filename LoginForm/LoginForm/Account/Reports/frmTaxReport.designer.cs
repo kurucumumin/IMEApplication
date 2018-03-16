@@ -84,10 +84,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(15, 19);
-            this.label1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.label1.Location = new System.Drawing.Point(20, 23);
+            this.label1.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 13);
+            this.label1.Size = new System.Drawing.Size(74, 17);
             this.label1.TabIndex = 1232;
             this.label1.Text = "From Date";
             // 
@@ -95,10 +95,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(480, 19);
-            this.label4.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.label4.Location = new System.Drawing.Point(640, 23);
+            this.label4.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 13);
+            this.label4.Size = new System.Drawing.Size(59, 17);
             this.label4.TabIndex = 1230;
             this.label4.Text = "To Date";
             // 
@@ -106,10 +106,10 @@
             // 
             this.cmbTax.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTax.FormattingEnabled = true;
-            this.cmbTax.Location = new System.Drawing.Point(121, 64);
-            this.cmbTax.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.cmbTax.Location = new System.Drawing.Point(161, 79);
+            this.cmbTax.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.cmbTax.Name = "cmbTax";
-            this.cmbTax.Size = new System.Drawing.Size(200, 21);
+            this.cmbTax.Size = new System.Drawing.Size(265, 24);
             this.cmbTax.TabIndex = 2;
             this.cmbTax.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbTax_KeyDown);
             // 
@@ -117,10 +117,10 @@
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(15, 68);
-            this.label6.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.label6.Location = new System.Drawing.Point(20, 84);
+            this.label6.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(25, 13);
+            this.label6.Size = new System.Drawing.Size(31, 17);
             this.label6.TabIndex = 1244;
             this.label6.Text = "Tax";
             // 
@@ -128,10 +128,10 @@
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(480, 44);
-            this.label7.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.label7.Location = new System.Drawing.Point(640, 54);
+            this.label7.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(74, 13);
+            this.label7.Size = new System.Drawing.Size(97, 17);
             this.label7.TabIndex = 1242;
             this.label7.Text = "Voucher Type";
             // 
@@ -141,9 +141,10 @@
             this.btnReset.FlatAppearance.BorderSize = 0;
             this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReset.ForeColor = System.Drawing.Color.Black;
-            this.btnReset.Location = new System.Drawing.Point(678, 64);
+            this.btnReset.Location = new System.Drawing.Point(904, 79);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(85, 27);
+            this.btnReset.Size = new System.Drawing.Size(113, 33);
             this.btnReset.TabIndex = 7;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = false;
@@ -155,9 +156,10 @@
             this.btnSearch.FlatAppearance.BorderSize = 0;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.ForeColor = System.Drawing.Color.Black;
-            this.btnSearch.Location = new System.Drawing.Point(587, 64);
+            this.btnSearch.Location = new System.Drawing.Point(783, 79);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(85, 27);
+            this.btnSearch.Size = new System.Drawing.Size(113, 33);
             this.btnSearch.TabIndex = 6;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = false;
@@ -209,13 +211,13 @@
             this.dgvTaxReport.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvTaxReport.EnableHeadersVisualStyles = false;
             this.dgvTaxReport.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvTaxReport.Location = new System.Drawing.Point(18, 137);
-            this.dgvTaxReport.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.dgvTaxReport.Location = new System.Drawing.Point(24, 169);
+            this.dgvTaxReport.Margin = new System.Windows.Forms.Padding(4, 4, 4, 0);
             this.dgvTaxReport.Name = "dgvTaxReport";
             this.dgvTaxReport.ReadOnly = true;
             this.dgvTaxReport.RowHeadersVisible = false;
             this.dgvTaxReport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTaxReport.Size = new System.Drawing.Size(764, 418);
+            this.dgvTaxReport.Size = new System.Drawing.Size(1019, 514);
             this.dgvTaxReport.TabIndex = 1248;
             this.dgvTaxReport.TabStop = false;
             // 
@@ -368,9 +370,10 @@
             this.btnPrint.FlatAppearance.BorderSize = 0;
             this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrint.ForeColor = System.Drawing.Color.Black;
-            this.btnPrint.Location = new System.Drawing.Point(596, 565);
+            this.btnPrint.Location = new System.Drawing.Point(795, 695);
+            this.btnPrint.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(85, 27);
+            this.btnPrint.Size = new System.Drawing.Size(113, 33);
             this.btnPrint.TabIndex = 8;
             this.btnPrint.Text = "Print";
             this.btnPrint.UseVisualStyleBackColor = false;
@@ -379,38 +382,38 @@
             // 
             // dtpFromDate
             // 
-            this.dtpFromDate.Location = new System.Drawing.Point(300, 15);
-            this.dtpFromDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.dtpFromDate.Location = new System.Drawing.Point(400, 18);
+            this.dtpFromDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.dtpFromDate.Name = "dtpFromDate";
-            this.dtpFromDate.Size = new System.Drawing.Size(22, 20);
+            this.dtpFromDate.Size = new System.Drawing.Size(28, 22);
             this.dtpFromDate.TabIndex = 1251;
             this.dtpFromDate.ValueChanged += new System.EventHandler(this.dtpFromDate_ValueChanged);
             // 
             // txtFromDate
             // 
-            this.txtFromDate.Location = new System.Drawing.Point(121, 15);
-            this.txtFromDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtFromDate.Location = new System.Drawing.Point(161, 18);
+            this.txtFromDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtFromDate.Name = "txtFromDate";
-            this.txtFromDate.Size = new System.Drawing.Size(186, 20);
+            this.txtFromDate.Size = new System.Drawing.Size(247, 22);
             this.txtFromDate.TabIndex = 0;
             this.txtFromDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFromDate_KeyDown);
             this.txtFromDate.Leave += new System.EventHandler(this.txtFromDate_Leave);
             // 
             // dtpToDate
             // 
-            this.dtpToDate.Location = new System.Drawing.Point(758, 15);
-            this.dtpToDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.dtpToDate.Location = new System.Drawing.Point(1011, 18);
+            this.dtpToDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.dtpToDate.Name = "dtpToDate";
-            this.dtpToDate.Size = new System.Drawing.Size(22, 20);
+            this.dtpToDate.Size = new System.Drawing.Size(28, 22);
             this.dtpToDate.TabIndex = 1253;
             this.dtpToDate.ValueChanged += new System.EventHandler(this.dtpToDate_ValueChanged);
             // 
             // txtToDate
             // 
-            this.txtToDate.Location = new System.Drawing.Point(587, 15);
-            this.txtToDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtToDate.Location = new System.Drawing.Point(783, 18);
+            this.txtToDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtToDate.Name = "txtToDate";
-            this.txtToDate.Size = new System.Drawing.Size(176, 20);
+            this.txtToDate.Size = new System.Drawing.Size(233, 22);
             this.txtToDate.TabIndex = 1;
             this.txtToDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtToDate_KeyDown);
             this.txtToDate.Leave += new System.EventHandler(this.txtToDate_Leave);
@@ -419,10 +422,10 @@
             // 
             this.cmbVoucherType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbVoucherType.FormattingEnabled = true;
-            this.cmbVoucherType.Location = new System.Drawing.Point(587, 40);
-            this.cmbVoucherType.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.cmbVoucherType.Location = new System.Drawing.Point(783, 49);
+            this.cmbVoucherType.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.cmbVoucherType.Name = "cmbVoucherType";
-            this.cmbVoucherType.Size = new System.Drawing.Size(193, 21);
+            this.cmbVoucherType.Size = new System.Drawing.Size(256, 24);
             this.cmbVoucherType.TabIndex = 3;
             this.cmbVoucherType.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbVoucherType_KeyDown);
             // 
@@ -430,9 +433,11 @@
             // 
             this.gbxIpOp.Controls.Add(this.rbtnOutput);
             this.gbxIpOp.Controls.Add(this.rbtnInput);
-            this.gbxIpOp.Location = new System.Drawing.Point(121, 89);
+            this.gbxIpOp.Location = new System.Drawing.Point(161, 110);
+            this.gbxIpOp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gbxIpOp.Name = "gbxIpOp";
-            this.gbxIpOp.Size = new System.Drawing.Size(200, 40);
+            this.gbxIpOp.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbxIpOp.Size = new System.Drawing.Size(267, 49);
             this.gbxIpOp.TabIndex = 4;
             this.gbxIpOp.TabStop = false;
             // 
@@ -440,10 +445,10 @@
             // 
             this.rbtnOutput.AutoSize = true;
             this.rbtnOutput.ForeColor = System.Drawing.Color.White;
-            this.rbtnOutput.Location = new System.Drawing.Point(101, 14);
-            this.rbtnOutput.Margin = new System.Windows.Forms.Padding(5);
+            this.rbtnOutput.Location = new System.Drawing.Point(135, 17);
+            this.rbtnOutput.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.rbtnOutput.Name = "rbtnOutput";
-            this.rbtnOutput.Size = new System.Drawing.Size(57, 17);
+            this.rbtnOutput.Size = new System.Drawing.Size(72, 21);
             this.rbtnOutput.TabIndex = 1;
             this.rbtnOutput.TabStop = true;
             this.rbtnOutput.Text = "Output";
@@ -455,10 +460,10 @@
             // 
             this.rbtnInput.AutoSize = true;
             this.rbtnInput.ForeColor = System.Drawing.Color.White;
-            this.rbtnInput.Location = new System.Drawing.Point(17, 14);
-            this.rbtnInput.Margin = new System.Windows.Forms.Padding(5);
+            this.rbtnInput.Location = new System.Drawing.Point(23, 17);
+            this.rbtnInput.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.rbtnInput.Name = "rbtnInput";
-            this.rbtnInput.Size = new System.Drawing.Size(49, 17);
+            this.rbtnInput.Size = new System.Drawing.Size(60, 21);
             this.rbtnInput.TabIndex = 0;
             this.rbtnInput.TabStop = true;
             this.rbtnInput.Text = "Input";
@@ -470,9 +475,11 @@
             // 
             this.gbxBillProd.Controls.Add(this.rbtnProductwise);
             this.gbxBillProd.Controls.Add(this.rbtnBillwise);
-            this.gbxBillProd.Location = new System.Drawing.Point(326, 88);
+            this.gbxBillProd.Location = new System.Drawing.Point(435, 108);
+            this.gbxBillProd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gbxBillProd.Name = "gbxBillProd";
-            this.gbxBillProd.Size = new System.Drawing.Size(200, 41);
+            this.gbxBillProd.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbxBillProd.Size = new System.Drawing.Size(267, 50);
             this.gbxBillProd.TabIndex = 5;
             this.gbxBillProd.TabStop = false;
             // 
@@ -480,10 +487,10 @@
             // 
             this.rbtnProductwise.AutoSize = true;
             this.rbtnProductwise.ForeColor = System.Drawing.Color.White;
-            this.rbtnProductwise.Location = new System.Drawing.Point(93, 14);
-            this.rbtnProductwise.Margin = new System.Windows.Forms.Padding(5);
+            this.rbtnProductwise.Location = new System.Drawing.Point(124, 17);
+            this.rbtnProductwise.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.rbtnProductwise.Name = "rbtnProductwise";
-            this.rbtnProductwise.Size = new System.Drawing.Size(83, 17);
+            this.rbtnProductwise.Size = new System.Drawing.Size(105, 21);
             this.rbtnProductwise.TabIndex = 1;
             this.rbtnProductwise.TabStop = true;
             this.rbtnProductwise.Text = "Productwise";
@@ -495,10 +502,10 @@
             // 
             this.rbtnBillwise.AutoSize = true;
             this.rbtnBillwise.ForeColor = System.Drawing.Color.White;
-            this.rbtnBillwise.Location = new System.Drawing.Point(24, 14);
-            this.rbtnBillwise.Margin = new System.Windows.Forms.Padding(5);
+            this.rbtnBillwise.Location = new System.Drawing.Point(32, 17);
+            this.rbtnBillwise.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.rbtnBillwise.Name = "rbtnBillwise";
-            this.rbtnBillwise.Size = new System.Drawing.Size(59, 17);
+            this.rbtnBillwise.Size = new System.Drawing.Size(74, 21);
             this.rbtnBillwise.TabIndex = 0;
             this.rbtnBillwise.TabStop = true;
             this.rbtnBillwise.Text = "Billwise";
@@ -510,10 +517,10 @@
             // 
             this.cmbTypeOfVoucher.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTypeOfVoucher.FormattingEnabled = true;
-            this.cmbTypeOfVoucher.Location = new System.Drawing.Point(121, 39);
-            this.cmbTypeOfVoucher.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.cmbTypeOfVoucher.Location = new System.Drawing.Point(161, 48);
+            this.cmbTypeOfVoucher.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.cmbTypeOfVoucher.Name = "cmbTypeOfVoucher";
-            this.cmbTypeOfVoucher.Size = new System.Drawing.Size(201, 21);
+            this.cmbTypeOfVoucher.Size = new System.Drawing.Size(267, 24);
             this.cmbTypeOfVoucher.TabIndex = 1254;
             this.cmbTypeOfVoucher.SelectedIndexChanged += new System.EventHandler(this.cmbTypeOfVoucher_SelectedIndexChanged);
             this.cmbTypeOfVoucher.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbTypeOfVoucher_KeyDown);
@@ -522,10 +529,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(14, 43);
-            this.label2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.label2.Location = new System.Drawing.Point(19, 53);
+            this.label2.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 13);
+            this.label2.Size = new System.Drawing.Size(117, 17);
             this.label2.TabIndex = 1255;
             this.label2.Text = "Type of Voucher ";
             // 
@@ -535,9 +542,10 @@
             this.btnExport.FlatAppearance.BorderSize = 0;
             this.btnExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExport.ForeColor = System.Drawing.Color.Black;
-            this.btnExport.Location = new System.Drawing.Point(687, 565);
+            this.btnExport.Location = new System.Drawing.Point(916, 695);
+            this.btnExport.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(85, 26);
+            this.btnExport.Size = new System.Drawing.Size(113, 32);
             this.btnExport.TabIndex = 9;
             this.btnExport.Text = "Export";
             this.btnExport.UseVisualStyleBackColor = false;
@@ -545,10 +553,10 @@
             // 
             // frmTaxReport
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(111)))), ((int)(((byte)(155)))));
-            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(1067, 738);
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cmbTypeOfVoucher);
@@ -571,10 +579,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "frmTaxReport";
-            this.Opacity = 0.85D;
-            this.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
+            this.Padding = new System.Windows.Forms.Padding(20, 12, 20, 12);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tax Report";
             this.Load += new System.EventHandler(this.frmTaxReport_Load);

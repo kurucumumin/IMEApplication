@@ -72,10 +72,10 @@
             // 
             this.cmbCashorBankAccount.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCashorBankAccount.FormattingEnabled = true;
-            this.cmbCashorBankAccount.Location = new System.Drawing.Point(548, 40);
-            this.cmbCashorBankAccount.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.cmbCashorBankAccount.Location = new System.Drawing.Point(731, 49);
+            this.cmbCashorBankAccount.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.cmbCashorBankAccount.Name = "cmbCashorBankAccount";
-            this.cmbCashorBankAccount.Size = new System.Drawing.Size(200, 21);
+            this.cmbCashorBankAccount.Size = new System.Drawing.Size(265, 24);
             this.cmbCashorBankAccount.TabIndex = 3;
             this.cmbCashorBankAccount.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbCashorBankAccount_KeyDown);
             // 
@@ -85,9 +85,10 @@
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ForeColor = System.Drawing.Color.Black;
-            this.btnClose.Location = new System.Drawing.Point(697, 560);
+            this.btnClose.Location = new System.Drawing.Point(929, 689);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(85, 27);
+            this.btnClose.Size = new System.Drawing.Size(113, 33);
             this.btnClose.TabIndex = 9;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -100,9 +101,10 @@
             this.btnDelete.FlatAppearance.BorderSize = 0;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.ForeColor = System.Drawing.Color.Black;
-            this.btnDelete.Location = new System.Drawing.Point(606, 560);
+            this.btnDelete.Location = new System.Drawing.Point(808, 689);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(85, 27);
+            this.btnDelete.Size = new System.Drawing.Size(113, 33);
             this.btnDelete.TabIndex = 8;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
@@ -112,10 +114,10 @@
             // 
             this.lblNarration.AutoSize = true;
             this.lblNarration.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblNarration.Location = new System.Drawing.Point(422, 470);
-            this.lblNarration.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblNarration.Location = new System.Drawing.Point(563, 578);
+            this.lblNarration.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblNarration.Name = "lblNarration";
-            this.lblNarration.Size = new System.Drawing.Size(50, 13);
+            this.lblNarration.Size = new System.Drawing.Size(67, 17);
             this.lblNarration.TabIndex = 48;
             this.lblNarration.Text = "Narration";
             // 
@@ -123,10 +125,10 @@
             // 
             this.lblCashorBankAccount.AutoSize = true;
             this.lblCashorBankAccount.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblCashorBankAccount.Location = new System.Drawing.Point(451, 44);
-            this.lblCashorBankAccount.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblCashorBankAccount.Location = new System.Drawing.Point(601, 54);
+            this.lblCashorBankAccount.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblCashorBankAccount.Name = "lblCashorBankAccount";
-            this.lblCashorBankAccount.Size = new System.Drawing.Size(87, 13);
+            this.lblCashorBankAccount.Size = new System.Drawing.Size(107, 17);
             this.lblCashorBankAccount.TabIndex = 47;
             this.lblCashorBankAccount.Text = "Cash / Bank a/c";
             // 
@@ -134,10 +136,10 @@
             // 
             this.lblSalaryDate.AutoSize = true;
             this.lblSalaryDate.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblSalaryDate.Location = new System.Drawing.Point(17, 44);
-            this.lblSalaryDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblSalaryDate.Location = new System.Drawing.Point(23, 54);
+            this.lblSalaryDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblSalaryDate.Name = "lblSalaryDate";
-            this.lblSalaryDate.Size = new System.Drawing.Size(62, 13);
+            this.lblSalaryDate.Size = new System.Drawing.Size(82, 17);
             this.lblSalaryDate.TabIndex = 45;
             this.lblSalaryDate.Text = "Salary Date";
             // 
@@ -147,9 +149,10 @@
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.ForeColor = System.Drawing.Color.Black;
-            this.btnSave.Location = new System.Drawing.Point(424, 560);
+            this.btnSave.Location = new System.Drawing.Point(565, 689);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(85, 27);
+            this.btnSave.Size = new System.Drawing.Size(113, 33);
             this.btnSave.TabIndex = 6;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -162,9 +165,10 @@
             this.btnClear.FlatAppearance.BorderSize = 0;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.ForeColor = System.Drawing.Color.Black;
-            this.btnClear.Location = new System.Drawing.Point(515, 560);
+            this.btnClear.Location = new System.Drawing.Point(687, 689);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(85, 27);
+            this.btnClear.Size = new System.Drawing.Size(113, 33);
             this.btnClear.TabIndex = 7;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = false;
@@ -209,11 +213,12 @@
             this.dgvDailySalaryVoucher.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvDailySalaryVoucher.EnableHeadersVisualStyles = false;
             this.dgvDailySalaryVoucher.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvDailySalaryVoucher.Location = new System.Drawing.Point(18, 69);
+            this.dgvDailySalaryVoucher.Location = new System.Drawing.Point(24, 85);
+            this.dgvDailySalaryVoucher.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvDailySalaryVoucher.Name = "dgvDailySalaryVoucher";
             this.dgvDailySalaryVoucher.RowHeadersVisible = false;
             this.dgvDailySalaryVoucher.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvDailySalaryVoucher.Size = new System.Drawing.Size(764, 375);
+            this.dgvDailySalaryVoucher.Size = new System.Drawing.Size(1019, 462);
             this.dgvDailySalaryVoucher.TabIndex = 4;
             this.dgvDailySalaryVoucher.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDailySalaryVoucher_CellValueChanged);
             this.dgvDailySalaryVoucher.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvDailySalaryVoucher_CurrentCellDirtyStateChanged);
@@ -298,11 +303,11 @@
             // 
             // txtNarration
             // 
-            this.txtNarration.Location = new System.Drawing.Point(532, 470);
-            this.txtNarration.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtNarration.Location = new System.Drawing.Point(709, 578);
+            this.txtNarration.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtNarration.Multiline = true;
             this.txtNarration.Name = "txtNarration";
-            this.txtNarration.Size = new System.Drawing.Size(250, 85);
+            this.txtNarration.Size = new System.Drawing.Size(332, 104);
             this.txtNarration.TabIndex = 5;
             this.txtNarration.Enter += new System.EventHandler(this.txtNarration_Enter);
             this.txtNarration.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNarration_KeyDown);
@@ -310,10 +315,10 @@
             // 
             // txtVoucherNo
             // 
-            this.txtVoucherNo.Location = new System.Drawing.Point(127, 15);
-            this.txtVoucherNo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtVoucherNo.Location = new System.Drawing.Point(169, 18);
+            this.txtVoucherNo.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtVoucherNo.Name = "txtVoucherNo";
-            this.txtVoucherNo.Size = new System.Drawing.Size(200, 20);
+            this.txtVoucherNo.Size = new System.Drawing.Size(265, 22);
             this.txtVoucherNo.TabIndex = 0;
             this.txtVoucherNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVoucherNo_KeyDown);
             // 
@@ -321,10 +326,10 @@
             // 
             this.lblVoucherNo.AutoSize = true;
             this.lblVoucherNo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblVoucherNo.Location = new System.Drawing.Point(17, 19);
-            this.lblVoucherNo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblVoucherNo.Location = new System.Drawing.Point(23, 23);
+            this.lblVoucherNo.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblVoucherNo.Name = "lblVoucherNo";
-            this.lblVoucherNo.Size = new System.Drawing.Size(67, 13);
+            this.lblVoucherNo.Size = new System.Drawing.Size(87, 17);
             this.lblVoucherNo.TabIndex = 57;
             this.lblVoucherNo.Text = "Voucher No.";
             // 
@@ -332,10 +337,10 @@
             // 
             this.lblDate.AutoSize = true;
             this.lblDate.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblDate.Location = new System.Drawing.Point(451, 19);
-            this.lblDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblDate.Location = new System.Drawing.Point(601, 23);
+            this.lblDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(30, 13);
+            this.lblDate.Size = new System.Drawing.Size(38, 17);
             this.lblDate.TabIndex = 59;
             this.lblDate.Text = "Date";
             // 
@@ -343,9 +348,10 @@
             // 
             this.dtpDate.CustomFormat = "dd-MMM-yyyy";
             this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpDate.Location = new System.Drawing.Point(723, 15);
+            this.dtpDate.Location = new System.Drawing.Point(964, 18);
+            this.dtpDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtpDate.Name = "dtpDate";
-            this.dtpDate.Size = new System.Drawing.Size(25, 20);
+            this.dtpDate.Size = new System.Drawing.Size(32, 22);
             this.dtpDate.TabIndex = 1;
             this.dtpDate.ValueChanged += new System.EventHandler(this.dtpDate_ValueChanged);
             // 
@@ -353,9 +359,10 @@
             // 
             this.dtpSalaryDate.CustomFormat = "dd-MMM-yyyy";
             this.dtpSalaryDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpSalaryDate.Location = new System.Drawing.Point(302, 40);
+            this.dtpSalaryDate.Location = new System.Drawing.Point(403, 49);
+            this.dtpSalaryDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtpSalaryDate.Name = "dtpSalaryDate";
-            this.dtpSalaryDate.Size = new System.Drawing.Size(25, 20);
+            this.dtpSalaryDate.Size = new System.Drawing.Size(32, 22);
             this.dtpSalaryDate.TabIndex = 2;
             this.dtpSalaryDate.ValueChanged += new System.EventHandler(this.dtpSalaryDate_ValueChanged);
             // 
@@ -364,10 +371,10 @@
             this.lblTotelAmount.AutoSize = true;
             this.lblTotelAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotelAmount.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblTotelAmount.Location = new System.Drawing.Point(602, 452);
-            this.lblTotelAmount.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblTotelAmount.Location = new System.Drawing.Point(803, 556);
+            this.lblTotelAmount.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblTotelAmount.Name = "lblTotelAmount";
-            this.lblTotelAmount.Size = new System.Drawing.Size(70, 13);
+            this.lblTotelAmount.Size = new System.Drawing.Size(92, 17);
             this.lblTotelAmount.TabIndex = 60;
             this.lblTotelAmount.Text = "Total Amount";
             // 
@@ -376,9 +383,10 @@
             this.lblShowTotelamount.BackColor = System.Drawing.Color.Transparent;
             this.lblShowTotelamount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblShowTotelamount.ForeColor = System.Drawing.Color.Yellow;
-            this.lblShowTotelamount.Location = new System.Drawing.Point(680, 450);
+            this.lblShowTotelamount.Location = new System.Drawing.Point(907, 554);
+            this.lblShowTotelamount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblShowTotelamount.Name = "lblShowTotelamount";
-            this.lblShowTotelamount.Size = new System.Drawing.Size(106, 13);
+            this.lblShowTotelamount.Size = new System.Drawing.Size(141, 16);
             this.lblShowTotelamount.TabIndex = 61;
             this.lblShowTotelamount.Text = "0.00";
             this.lblShowTotelamount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -387,10 +395,10 @@
             // 
             this.lblVoucherNoValidator.AutoSize = true;
             this.lblVoucherNoValidator.ForeColor = System.Drawing.Color.Red;
-            this.lblVoucherNoValidator.Location = new System.Drawing.Point(328, 22);
-            this.lblVoucherNoValidator.Margin = new System.Windows.Forms.Padding(5);
+            this.lblVoucherNoValidator.Location = new System.Drawing.Point(437, 27);
+            this.lblVoucherNoValidator.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.lblVoucherNoValidator.Name = "lblVoucherNoValidator";
-            this.lblVoucherNoValidator.Size = new System.Drawing.Size(11, 13);
+            this.lblVoucherNoValidator.Size = new System.Drawing.Size(13, 17);
             this.lblVoucherNoValidator.TabIndex = 114;
             this.lblVoucherNoValidator.Text = "*";
             // 
@@ -398,10 +406,10 @@
             // 
             this.lblSalaryDateValidator.AutoSize = true;
             this.lblSalaryDateValidator.ForeColor = System.Drawing.Color.Red;
-            this.lblSalaryDateValidator.Location = new System.Drawing.Point(328, 47);
-            this.lblSalaryDateValidator.Margin = new System.Windows.Forms.Padding(5);
+            this.lblSalaryDateValidator.Location = new System.Drawing.Point(437, 58);
+            this.lblSalaryDateValidator.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.lblSalaryDateValidator.Name = "lblSalaryDateValidator";
-            this.lblSalaryDateValidator.Size = new System.Drawing.Size(11, 13);
+            this.lblSalaryDateValidator.Size = new System.Drawing.Size(13, 17);
             this.lblSalaryDateValidator.TabIndex = 115;
             this.lblSalaryDateValidator.Text = "*";
             // 
@@ -409,10 +417,10 @@
             // 
             this.lblDateValidator.AutoSize = true;
             this.lblDateValidator.ForeColor = System.Drawing.Color.Red;
-            this.lblDateValidator.Location = new System.Drawing.Point(748, 19);
-            this.lblDateValidator.Margin = new System.Windows.Forms.Padding(5);
+            this.lblDateValidator.Location = new System.Drawing.Point(997, 23);
+            this.lblDateValidator.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.lblDateValidator.Name = "lblDateValidator";
-            this.lblDateValidator.Size = new System.Drawing.Size(11, 13);
+            this.lblDateValidator.Size = new System.Drawing.Size(13, 17);
             this.lblDateValidator.TabIndex = 116;
             this.lblDateValidator.Text = "*";
             // 
@@ -420,10 +428,10 @@
             // 
             this.lblCashorBankLedgerValidator.AutoSize = true;
             this.lblCashorBankLedgerValidator.ForeColor = System.Drawing.Color.Red;
-            this.lblCashorBankLedgerValidator.Location = new System.Drawing.Point(748, 51);
-            this.lblCashorBankLedgerValidator.Margin = new System.Windows.Forms.Padding(5);
+            this.lblCashorBankLedgerValidator.Location = new System.Drawing.Point(997, 63);
+            this.lblCashorBankLedgerValidator.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.lblCashorBankLedgerValidator.Name = "lblCashorBankLedgerValidator";
-            this.lblCashorBankLedgerValidator.Size = new System.Drawing.Size(11, 13);
+            this.lblCashorBankLedgerValidator.Size = new System.Drawing.Size(13, 17);
             this.lblCashorBankLedgerValidator.TabIndex = 117;
             this.lblCashorBankLedgerValidator.Text = "*";
             // 
@@ -432,19 +440,20 @@
             this.btnAccountLedgerAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnAccountLedgerAdd.FlatAppearance.BorderSize = 0;
             this.btnAccountLedgerAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAccountLedgerAdd.Location = new System.Drawing.Point(762, 41);
+            this.btnAccountLedgerAdd.Location = new System.Drawing.Point(1016, 50);
+            this.btnAccountLedgerAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAccountLedgerAdd.Name = "btnAccountLedgerAdd";
-            this.btnAccountLedgerAdd.Size = new System.Drawing.Size(20, 20);
+            this.btnAccountLedgerAdd.Size = new System.Drawing.Size(27, 25);
             this.btnAccountLedgerAdd.TabIndex = 118;
             this.btnAccountLedgerAdd.UseVisualStyleBackColor = true;
             this.btnAccountLedgerAdd.Click += new System.EventHandler(this.btnAccountLedgerAdd_Click);
             // 
             // txtSalaryDate
             // 
-            this.txtSalaryDate.Location = new System.Drawing.Point(127, 40);
-            this.txtSalaryDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtSalaryDate.Location = new System.Drawing.Point(169, 49);
+            this.txtSalaryDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtSalaryDate.Name = "txtSalaryDate";
-            this.txtSalaryDate.Size = new System.Drawing.Size(180, 20);
+            this.txtSalaryDate.Size = new System.Drawing.Size(239, 22);
             this.txtSalaryDate.TabIndex = 2;
             this.txtSalaryDate.TextChanged += new System.EventHandler(this.txtSalaryDate_TextChanged);
             this.txtSalaryDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSalaryDate_KeyDown);
@@ -452,20 +461,20 @@
             // 
             // txtDate
             // 
-            this.txtDate.Location = new System.Drawing.Point(548, 15);
-            this.txtDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtDate.Location = new System.Drawing.Point(731, 18);
+            this.txtDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtDate.Name = "txtDate";
-            this.txtDate.Size = new System.Drawing.Size(180, 20);
+            this.txtDate.Size = new System.Drawing.Size(239, 22);
             this.txtDate.TabIndex = 1;
             this.txtDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDate_KeyDown);
             this.txtDate.Leave += new System.EventHandler(this.txtDate_Leave);
             // 
             // frmDailySalaryVoucher
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(111)))), ((int)(((byte)(155)))));
-            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(1067, 738);
             this.Controls.Add(this.txtDate);
             this.Controls.Add(this.txtSalaryDate);
             this.Controls.Add(this.btnAccountLedgerAdd);
@@ -493,10 +502,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "frmDailySalaryVoucher";
-            this.Opacity = 0.85D;
-            this.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
+            this.Padding = new System.Windows.Forms.Padding(20, 12, 20, 12);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " Daily Salary Voucher";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmDailySalaryVoucher_FormClosing);

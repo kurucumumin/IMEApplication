@@ -59,10 +59,10 @@
             // 
             // txtAdvanceVoucher
             // 
-            this.txtAdvanceVoucher.Location = new System.Drawing.Point(147, 15);
-            this.txtAdvanceVoucher.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtAdvanceVoucher.Location = new System.Drawing.Point(196, 18);
+            this.txtAdvanceVoucher.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtAdvanceVoucher.Name = "txtAdvanceVoucher";
-            this.txtAdvanceVoucher.Size = new System.Drawing.Size(200, 20);
+            this.txtAdvanceVoucher.Size = new System.Drawing.Size(265, 22);
             this.txtAdvanceVoucher.TabIndex = 0;
             this.txtAdvanceVoucher.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAdvanceVoucher_KeyDown);
             // 
@@ -70,10 +70,10 @@
             // 
             this.lblSalaryMonth.AutoSize = true;
             this.lblSalaryMonth.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblSalaryMonth.Location = new System.Drawing.Point(485, 44);
-            this.lblSalaryMonth.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblSalaryMonth.Location = new System.Drawing.Point(647, 54);
+            this.lblSalaryMonth.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblSalaryMonth.Name = "lblSalaryMonth";
-            this.lblSalaryMonth.Size = new System.Drawing.Size(69, 13);
+            this.lblSalaryMonth.Size = new System.Drawing.Size(91, 17);
             this.lblSalaryMonth.TabIndex = 47;
             this.lblSalaryMonth.Text = "Salary Month";
             // 
@@ -81,10 +81,10 @@
             // 
             this.lblAdvanceVoucher.AutoSize = true;
             this.lblAdvanceVoucher.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblAdvanceVoucher.Location = new System.Drawing.Point(15, 19);
-            this.lblAdvanceVoucher.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblAdvanceVoucher.Location = new System.Drawing.Point(20, 23);
+            this.lblAdvanceVoucher.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblAdvanceVoucher.Name = "lblAdvanceVoucher";
-            this.lblAdvanceVoucher.Size = new System.Drawing.Size(113, 13);
+            this.lblAdvanceVoucher.Size = new System.Drawing.Size(146, 17);
             this.lblAdvanceVoucher.TabIndex = 45;
             this.lblAdvanceVoucher.Text = "Advance Voucher No.";
             // 
@@ -94,9 +94,10 @@
             this.btnSearch.FlatAppearance.BorderSize = 0;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.ForeColor = System.Drawing.Color.Black;
-            this.btnSearch.Location = new System.Drawing.Point(595, 65);
+            this.btnSearch.Location = new System.Drawing.Point(793, 80);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(85, 27);
+            this.btnSearch.Size = new System.Drawing.Size(113, 33);
             this.btnSearch.TabIndex = 5;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = false;
@@ -109,9 +110,10 @@
             this.btnClear.FlatAppearance.BorderSize = 0;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.ForeColor = System.Drawing.Color.Black;
-            this.btnClear.Location = new System.Drawing.Point(686, 65);
+            this.btnClear.Location = new System.Drawing.Point(915, 80);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(85, 27);
+            this.btnClear.Size = new System.Drawing.Size(113, 33);
             this.btnClear.TabIndex = 6;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = false;
@@ -157,13 +159,14 @@
             this.dgvAdvanceRegister.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvAdvanceRegister.EnableHeadersVisualStyles = false;
             this.dgvAdvanceRegister.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvAdvanceRegister.Location = new System.Drawing.Point(18, 98);
+            this.dgvAdvanceRegister.Location = new System.Drawing.Point(24, 121);
+            this.dgvAdvanceRegister.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvAdvanceRegister.MultiSelect = false;
             this.dgvAdvanceRegister.Name = "dgvAdvanceRegister";
             this.dgvAdvanceRegister.ReadOnly = true;
             this.dgvAdvanceRegister.RowHeadersVisible = false;
             this.dgvAdvanceRegister.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAdvanceRegister.Size = new System.Drawing.Size(779, 484);
+            this.dgvAdvanceRegister.Size = new System.Drawing.Size(1039, 596);
             this.dgvAdvanceRegister.TabIndex = 10;
             this.dgvAdvanceRegister.TabStop = false;
             this.dgvAdvanceRegister.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAdvanceRegister_CellDoubleClick);
@@ -258,19 +261,19 @@
             // 
             this.lblEmployeeCode.AutoSize = true;
             this.lblEmployeeCode.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblEmployeeCode.Location = new System.Drawing.Point(485, 19);
-            this.lblEmployeeCode.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblEmployeeCode.Location = new System.Drawing.Point(647, 23);
+            this.lblEmployeeCode.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblEmployeeCode.Name = "lblEmployeeCode";
-            this.lblEmployeeCode.Size = new System.Drawing.Size(81, 13);
+            this.lblEmployeeCode.Size = new System.Drawing.Size(107, 17);
             this.lblEmployeeCode.TabIndex = 57;
             this.lblEmployeeCode.Text = "Employee Code";
             // 
             // txtEmployeeName
             // 
-            this.txtEmployeeName.Location = new System.Drawing.Point(147, 40);
-            this.txtEmployeeName.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtEmployeeName.Location = new System.Drawing.Point(196, 49);
+            this.txtEmployeeName.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtEmployeeName.Name = "txtEmployeeName";
-            this.txtEmployeeName.Size = new System.Drawing.Size(200, 20);
+            this.txtEmployeeName.Size = new System.Drawing.Size(265, 22);
             this.txtEmployeeName.TabIndex = 2;
             this.txtEmployeeName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtEmployeeName_KeyDown);
             // 
@@ -278,10 +281,10 @@
             // 
             this.lblChequeNo.AutoSize = true;
             this.lblChequeNo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblChequeNo.Location = new System.Drawing.Point(15, 44);
-            this.lblChequeNo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblChequeNo.Location = new System.Drawing.Point(20, 54);
+            this.lblChequeNo.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblChequeNo.Name = "lblChequeNo";
-            this.lblChequeNo.Size = new System.Drawing.Size(84, 13);
+            this.lblChequeNo.Size = new System.Drawing.Size(111, 17);
             this.lblChequeNo.TabIndex = 59;
             this.lblChequeNo.Text = "Employee Name";
             // 
@@ -289,20 +292,20 @@
             // 
             this.dtpSalaryMonth.CustomFormat = "MMMM yyyy";
             this.dtpSalaryMonth.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpSalaryMonth.Location = new System.Drawing.Point(595, 40);
-            this.dtpSalaryMonth.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.dtpSalaryMonth.Location = new System.Drawing.Point(793, 49);
+            this.dtpSalaryMonth.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.dtpSalaryMonth.Name = "dtpSalaryMonth";
-            this.dtpSalaryMonth.Size = new System.Drawing.Size(200, 20);
+            this.dtpSalaryMonth.Size = new System.Drawing.Size(265, 22);
             this.dtpSalaryMonth.TabIndex = 3;
             this.dtpSalaryMonth.Value = new System.DateTime(2013, 3, 30, 0, 0, 0, 0);
             this.dtpSalaryMonth.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtpSalaryMonth_KeyDown);
             // 
             // txtEmployeeCode
             // 
-            this.txtEmployeeCode.Location = new System.Drawing.Point(595, 15);
-            this.txtEmployeeCode.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtEmployeeCode.Location = new System.Drawing.Point(793, 18);
+            this.txtEmployeeCode.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtEmployeeCode.Name = "txtEmployeeCode";
-            this.txtEmployeeCode.Size = new System.Drawing.Size(200, 20);
+            this.txtEmployeeCode.Size = new System.Drawing.Size(265, 22);
             this.txtEmployeeCode.TabIndex = 1;
             this.txtEmployeeCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtEmployeeCode_KeyDown);
             // 
@@ -310,10 +313,10 @@
             // 
             this.lblVoucherType.AutoSize = true;
             this.lblVoucherType.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblVoucherType.Location = new System.Drawing.Point(15, 69);
-            this.lblVoucherType.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblVoucherType.Location = new System.Drawing.Point(20, 85);
+            this.lblVoucherType.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblVoucherType.Name = "lblVoucherType";
-            this.lblVoucherType.Size = new System.Drawing.Size(74, 13);
+            this.lblVoucherType.Size = new System.Drawing.Size(97, 17);
             this.lblVoucherType.TabIndex = 59;
             this.lblVoucherType.Text = "Voucher Type";
             // 
@@ -321,19 +324,19 @@
             // 
             this.cmbVoucherType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbVoucherType.FormattingEnabled = true;
-            this.cmbVoucherType.Location = new System.Drawing.Point(147, 65);
-            this.cmbVoucherType.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.cmbVoucherType.Location = new System.Drawing.Point(196, 80);
+            this.cmbVoucherType.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.cmbVoucherType.Name = "cmbVoucherType";
-            this.cmbVoucherType.Size = new System.Drawing.Size(200, 21);
+            this.cmbVoucherType.Size = new System.Drawing.Size(265, 24);
             this.cmbVoucherType.TabIndex = 4;
             this.cmbVoucherType.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbVoucherType_KeyDown);
             // 
             // frmAdvanceRegister
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(111)))), ((int)(((byte)(155)))));
-            this.ClientSize = new System.Drawing.Size(815, 600);
+            this.ClientSize = new System.Drawing.Size(1087, 738);
             this.Controls.Add(this.cmbVoucherType);
             this.Controls.Add(this.txtEmployeeCode);
             this.Controls.Add(this.dtpSalaryMonth);
@@ -350,10 +353,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "frmAdvanceRegister";
-            this.Opacity = 0.85D;
-            this.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
+            this.Padding = new System.Windows.Forms.Padding(20, 12, 20, 12);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Advance Register";
             this.Activated += new System.EventHandler(this.frmAdvanceRegister_Activated);

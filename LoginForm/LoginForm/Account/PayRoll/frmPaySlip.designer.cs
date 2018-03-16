@@ -42,10 +42,10 @@
             // 
             this.lblSalaryMonth.AutoSize = true;
             this.lblSalaryMonth.ForeColor = System.Drawing.Color.White;
-            this.lblSalaryMonth.Location = new System.Drawing.Point(70, 76);
-            this.lblSalaryMonth.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblSalaryMonth.Location = new System.Drawing.Point(93, 94);
+            this.lblSalaryMonth.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblSalaryMonth.Name = "lblSalaryMonth";
-            this.lblSalaryMonth.Size = new System.Drawing.Size(69, 13);
+            this.lblSalaryMonth.Size = new System.Drawing.Size(91, 17);
             this.lblSalaryMonth.TabIndex = 11;
             this.lblSalaryMonth.Text = "Salary Month";
             // 
@@ -53,10 +53,10 @@
             // 
             this.cmbEmployee.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbEmployee.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbEmployee.Location = new System.Drawing.Point(176, 98);
-            this.cmbEmployee.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.cmbEmployee.Location = new System.Drawing.Point(235, 121);
+            this.cmbEmployee.Margin = new System.Windows.Forms.Padding(4, 4, 4, 6);
             this.cmbEmployee.Name = "cmbEmployee";
-            this.cmbEmployee.Size = new System.Drawing.Size(200, 21);
+            this.cmbEmployee.Size = new System.Drawing.Size(265, 24);
             this.cmbEmployee.TabIndex = 1;
             this.cmbEmployee.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbEmployee_KeyDown);
             // 
@@ -64,10 +64,10 @@
             // 
             this.lblEmployee.AutoSize = true;
             this.lblEmployee.ForeColor = System.Drawing.Color.White;
-            this.lblEmployee.Location = new System.Drawing.Point(70, 102);
-            this.lblEmployee.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblEmployee.Location = new System.Drawing.Point(93, 126);
+            this.lblEmployee.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblEmployee.Name = "lblEmployee";
-            this.lblEmployee.Size = new System.Drawing.Size(53, 13);
+            this.lblEmployee.Size = new System.Drawing.Size(70, 17);
             this.lblEmployee.TabIndex = 13;
             this.lblEmployee.Text = "Employee";
             // 
@@ -77,9 +77,10 @@
             this.btnPrint.FlatAppearance.BorderSize = 0;
             this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrint.ForeColor = System.Drawing.Color.Black;
-            this.btnPrint.Location = new System.Drawing.Point(176, 127);
+            this.btnPrint.Location = new System.Drawing.Point(235, 156);
+            this.btnPrint.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(85, 27);
+            this.btnPrint.Size = new System.Drawing.Size(113, 33);
             this.btnPrint.TabIndex = 2;
             this.btnPrint.Text = "Print";
             this.btnPrint.UseVisualStyleBackColor = false;
@@ -92,9 +93,10 @@
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ForeColor = System.Drawing.Color.Black;
-            this.btnClose.Location = new System.Drawing.Point(267, 127);
+            this.btnClose.Location = new System.Drawing.Point(356, 156);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(85, 27);
+            this.btnClose.Size = new System.Drawing.Size(113, 33);
             this.btnClose.TabIndex = 3;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -105,9 +107,10 @@
             // 
             this.dtpSalaryMonth.CustomFormat = "MMM  yyyy";
             this.dtpSalaryMonth.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpSalaryMonth.Location = new System.Drawing.Point(176, 72);
+            this.dtpSalaryMonth.Location = new System.Drawing.Point(235, 89);
+            this.dtpSalaryMonth.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtpSalaryMonth.Name = "dtpSalaryMonth";
-            this.dtpSalaryMonth.Size = new System.Drawing.Size(200, 20);
+            this.dtpSalaryMonth.Size = new System.Drawing.Size(265, 22);
             this.dtpSalaryMonth.TabIndex = 0;
             this.dtpSalaryMonth.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtpSalaryMonth_KeyDown);
             // 
@@ -115,10 +118,10 @@
             // 
             this.lblSalaryMonthValidator.AutoSize = true;
             this.lblSalaryMonthValidator.ForeColor = System.Drawing.Color.Red;
-            this.lblSalaryMonthValidator.Location = new System.Drawing.Point(380, 79);
-            this.lblSalaryMonthValidator.Margin = new System.Windows.Forms.Padding(5);
+            this.lblSalaryMonthValidator.Location = new System.Drawing.Point(507, 97);
+            this.lblSalaryMonthValidator.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.lblSalaryMonthValidator.Name = "lblSalaryMonthValidator";
-            this.lblSalaryMonthValidator.Size = new System.Drawing.Size(11, 13);
+            this.lblSalaryMonthValidator.Size = new System.Drawing.Size(13, 17);
             this.lblSalaryMonthValidator.TabIndex = 114;
             this.lblSalaryMonthValidator.Text = "*";
             // 
@@ -126,19 +129,19 @@
             // 
             this.lblEmployeeValidator.AutoSize = true;
             this.lblEmployeeValidator.ForeColor = System.Drawing.Color.Red;
-            this.lblEmployeeValidator.Location = new System.Drawing.Point(380, 106);
-            this.lblEmployeeValidator.Margin = new System.Windows.Forms.Padding(5);
+            this.lblEmployeeValidator.Location = new System.Drawing.Point(507, 130);
+            this.lblEmployeeValidator.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.lblEmployeeValidator.Name = "lblEmployeeValidator";
-            this.lblEmployeeValidator.Size = new System.Drawing.Size(11, 13);
+            this.lblEmployeeValidator.Size = new System.Drawing.Size(13, 17);
             this.lblEmployeeValidator.TabIndex = 115;
             this.lblEmployeeValidator.Text = "*";
             // 
             // frmPaySlip
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(111)))), ((int)(((byte)(155)))));
-            this.ClientSize = new System.Drawing.Size(470, 250);
+            this.ClientSize = new System.Drawing.Size(627, 308);
             this.Controls.Add(this.lblEmployeeValidator);
             this.Controls.Add(this.lblSalaryMonthValidator);
             this.Controls.Add(this.dtpSalaryMonth);
@@ -149,10 +152,10 @@
             this.Controls.Add(this.lblSalaryMonth);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "frmPaySlip";
-            this.Opacity = 0.85D;
-            this.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
+            this.Padding = new System.Windows.Forms.Padding(20, 12, 20, 12);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pay Slip";
             this.Load += new System.EventHandler(this.frmPaySlip_Load);

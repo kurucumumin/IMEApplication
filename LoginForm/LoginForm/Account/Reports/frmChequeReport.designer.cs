@@ -75,10 +75,10 @@
             // 
             this.lblChequeNo.AutoSize = true;
             this.lblChequeNo.ForeColor = System.Drawing.Color.White;
-            this.lblChequeNo.Location = new System.Drawing.Point(475, 41);
-            this.lblChequeNo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblChequeNo.Location = new System.Drawing.Point(633, 50);
+            this.lblChequeNo.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblChequeNo.Name = "lblChequeNo";
-            this.lblChequeNo.Size = new System.Drawing.Size(61, 13);
+            this.lblChequeNo.Size = new System.Drawing.Size(79, 17);
             this.lblChequeNo.TabIndex = 1246;
             this.lblChequeNo.Text = "Cheque No";
             // 
@@ -86,10 +86,10 @@
             // 
             this.rbtnReceived.AutoSize = true;
             this.rbtnReceived.ForeColor = System.Drawing.Color.White;
-            this.rbtnReceived.Location = new System.Drawing.Point(179, 15);
-            this.rbtnReceived.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.rbtnReceived.Location = new System.Drawing.Point(239, 18);
+            this.rbtnReceived.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.rbtnReceived.Name = "rbtnReceived";
-            this.rbtnReceived.Size = new System.Drawing.Size(71, 17);
+            this.rbtnReceived.Size = new System.Drawing.Size(88, 21);
             this.rbtnReceived.TabIndex = 1;
             this.rbtnReceived.TabStop = true;
             this.rbtnReceived.Text = "Received";
@@ -99,10 +99,10 @@
             // 
             this.rbtnPayed.AutoSize = true;
             this.rbtnPayed.ForeColor = System.Drawing.Color.White;
-            this.rbtnPayed.Location = new System.Drawing.Point(114, 15);
-            this.rbtnPayed.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.rbtnPayed.Location = new System.Drawing.Point(152, 18);
+            this.rbtnPayed.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.rbtnPayed.Name = "rbtnPayed";
-            this.rbtnPayed.Size = new System.Drawing.Size(46, 17);
+            this.rbtnPayed.Size = new System.Drawing.Size(57, 21);
             this.rbtnPayed.TabIndex = 0;
             this.rbtnPayed.TabStop = true;
             this.rbtnPayed.Text = "Paid";
@@ -112,10 +112,10 @@
             // 
             this.cmbParty.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbParty.FormattingEnabled = true;
-            this.cmbParty.Location = new System.Drawing.Point(115, 37);
-            this.cmbParty.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.cmbParty.Location = new System.Drawing.Point(153, 46);
+            this.cmbParty.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.cmbParty.Name = "cmbParty";
-            this.cmbParty.Size = new System.Drawing.Size(200, 21);
+            this.cmbParty.Size = new System.Drawing.Size(265, 24);
             this.cmbParty.TabIndex = 2;
             this.cmbParty.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbParty_KeyDown);
             // 
@@ -123,10 +123,10 @@
             // 
             this.lblparty.AutoSize = true;
             this.lblparty.ForeColor = System.Drawing.Color.White;
-            this.lblparty.Location = new System.Drawing.Point(20, 40);
-            this.lblparty.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblparty.Location = new System.Drawing.Point(27, 49);
+            this.lblparty.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblparty.Name = "lblparty";
-            this.lblparty.Size = new System.Drawing.Size(31, 13);
+            this.lblparty.Size = new System.Drawing.Size(41, 17);
             this.lblparty.TabIndex = 1252;
             this.lblparty.Text = "Party";
             // 
@@ -139,47 +139,49 @@
             this.groupBox1.Controls.Add(this.lblIssueToDate);
             this.groupBox1.Controls.Add(this.lblIssueFromDate);
             this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(20, 63);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(5);
+            this.groupBox1.Location = new System.Drawing.Point(27, 78);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(10);
-            this.groupBox1.Size = new System.Drawing.Size(760, 61);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(13, 12, 13, 12);
+            this.groupBox1.Size = new System.Drawing.Size(1013, 75);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Issue Date";
             // 
             // dtpIssueToDate
             // 
-            this.dtpIssueToDate.Location = new System.Drawing.Point(718, 22);
+            this.dtpIssueToDate.Location = new System.Drawing.Point(957, 27);
+            this.dtpIssueToDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtpIssueToDate.Name = "dtpIssueToDate";
-            this.dtpIssueToDate.Size = new System.Drawing.Size(21, 20);
+            this.dtpIssueToDate.Size = new System.Drawing.Size(27, 22);
             this.dtpIssueToDate.TabIndex = 8678;
             this.dtpIssueToDate.ValueChanged += new System.EventHandler(this.dtpIssueToDate_ValueChanged);
             // 
             // txtIssueToDate
             // 
-            this.txtIssueToDate.Location = new System.Drawing.Point(537, 22);
-            this.txtIssueToDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtIssueToDate.Location = new System.Drawing.Point(716, 27);
+            this.txtIssueToDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtIssueToDate.Name = "txtIssueToDate";
-            this.txtIssueToDate.Size = new System.Drawing.Size(182, 20);
+            this.txtIssueToDate.Size = new System.Drawing.Size(241, 22);
             this.txtIssueToDate.TabIndex = 1;
             this.txtIssueToDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtIssueToDate_KeyDown);
             this.txtIssueToDate.Leave += new System.EventHandler(this.txtIssueToDate_Leave);
             // 
             // dtpIssueFromDate
             // 
-            this.dtpIssueFromDate.Location = new System.Drawing.Point(274, 22);
+            this.dtpIssueFromDate.Location = new System.Drawing.Point(365, 27);
+            this.dtpIssueFromDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtpIssueFromDate.Name = "dtpIssueFromDate";
-            this.dtpIssueFromDate.Size = new System.Drawing.Size(21, 20);
+            this.dtpIssueFromDate.Size = new System.Drawing.Size(27, 22);
             this.dtpIssueFromDate.TabIndex = 46457;
             this.dtpIssueFromDate.ValueChanged += new System.EventHandler(this.dtpIssueFromDate_ValueChanged);
             // 
             // txtIssueFromDate
             // 
-            this.txtIssueFromDate.Location = new System.Drawing.Point(94, 22);
-            this.txtIssueFromDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtIssueFromDate.Location = new System.Drawing.Point(125, 27);
+            this.txtIssueFromDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtIssueFromDate.Name = "txtIssueFromDate";
-            this.txtIssueFromDate.Size = new System.Drawing.Size(182, 20);
+            this.txtIssueFromDate.Size = new System.Drawing.Size(241, 22);
             this.txtIssueFromDate.TabIndex = 0;
             this.txtIssueFromDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtIssueFromDate_KeyDown);
             this.txtIssueFromDate.Leave += new System.EventHandler(this.txtIssueFromDate_Leave);
@@ -188,10 +190,10 @@
             // 
             this.lblIssueToDate.AutoSize = true;
             this.lblIssueToDate.ForeColor = System.Drawing.Color.White;
-            this.lblIssueToDate.Location = new System.Drawing.Point(455, 26);
-            this.lblIssueToDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblIssueToDate.Location = new System.Drawing.Point(607, 32);
+            this.lblIssueToDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblIssueToDate.Name = "lblIssueToDate";
-            this.lblIssueToDate.Size = new System.Drawing.Size(46, 13);
+            this.lblIssueToDate.Size = new System.Drawing.Size(59, 17);
             this.lblIssueToDate.TabIndex = 1258;
             this.lblIssueToDate.Text = "To Date";
             // 
@@ -199,10 +201,10 @@
             // 
             this.lblIssueFromDate.AutoSize = true;
             this.lblIssueFromDate.ForeColor = System.Drawing.Color.White;
-            this.lblIssueFromDate.Location = new System.Drawing.Point(17, 26);
-            this.lblIssueFromDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblIssueFromDate.Location = new System.Drawing.Point(23, 32);
+            this.lblIssueFromDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblIssueFromDate.Name = "lblIssueFromDate";
-            this.lblIssueFromDate.Size = new System.Drawing.Size(56, 13);
+            this.lblIssueFromDate.Size = new System.Drawing.Size(74, 17);
             this.lblIssueFromDate.TabIndex = 1256;
             this.lblIssueFromDate.Text = "From Date";
             // 
@@ -215,49 +217,49 @@
             this.groupBox2.Controls.Add(this.lblChequeToDate);
             this.groupBox2.Controls.Add(this.lblChequeFromDate);
             this.groupBox2.ForeColor = System.Drawing.Color.White;
-            this.groupBox2.Location = new System.Drawing.Point(20, 134);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(5);
+            this.groupBox2.Location = new System.Drawing.Point(27, 165);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(10);
-            this.groupBox2.Size = new System.Drawing.Size(760, 64);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(13, 12, 13, 12);
+            this.groupBox2.Size = new System.Drawing.Size(1013, 79);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Cheque Date";
             // 
             // dtpChequeToDate
             // 
-            this.dtpChequeToDate.Location = new System.Drawing.Point(717, 26);
-            this.dtpChequeToDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.dtpChequeToDate.Location = new System.Drawing.Point(956, 32);
+            this.dtpChequeToDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.dtpChequeToDate.Name = "dtpChequeToDate";
-            this.dtpChequeToDate.Size = new System.Drawing.Size(21, 20);
+            this.dtpChequeToDate.Size = new System.Drawing.Size(27, 22);
             this.dtpChequeToDate.TabIndex = 67968;
             this.dtpChequeToDate.ValueChanged += new System.EventHandler(this.dtpChequeToDate_ValueChanged);
             // 
             // txtChequeToDate
             // 
-            this.txtChequeToDate.Location = new System.Drawing.Point(537, 26);
-            this.txtChequeToDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtChequeToDate.Location = new System.Drawing.Point(716, 32);
+            this.txtChequeToDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtChequeToDate.Name = "txtChequeToDate";
-            this.txtChequeToDate.Size = new System.Drawing.Size(182, 20);
+            this.txtChequeToDate.Size = new System.Drawing.Size(241, 22);
             this.txtChequeToDate.TabIndex = 1;
             this.txtChequeToDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtChequeToDate_KeyDown);
             this.txtChequeToDate.Leave += new System.EventHandler(this.txtChequeToDate_Leave);
             // 
             // dtpChequeFromDate
             // 
-            this.dtpChequeFromDate.Location = new System.Drawing.Point(273, 26);
-            this.dtpChequeFromDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.dtpChequeFromDate.Location = new System.Drawing.Point(364, 32);
+            this.dtpChequeFromDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.dtpChequeFromDate.Name = "dtpChequeFromDate";
-            this.dtpChequeFromDate.Size = new System.Drawing.Size(21, 20);
+            this.dtpChequeFromDate.Size = new System.Drawing.Size(27, 22);
             this.dtpChequeFromDate.TabIndex = 5688;
             this.dtpChequeFromDate.ValueChanged += new System.EventHandler(this.dtpChequeFromDate_ValueChanged);
             // 
             // txtChequeFromDate
             // 
-            this.txtChequeFromDate.Location = new System.Drawing.Point(93, 26);
-            this.txtChequeFromDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtChequeFromDate.Location = new System.Drawing.Point(124, 32);
+            this.txtChequeFromDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtChequeFromDate.Name = "txtChequeFromDate";
-            this.txtChequeFromDate.Size = new System.Drawing.Size(182, 20);
+            this.txtChequeFromDate.Size = new System.Drawing.Size(241, 22);
             this.txtChequeFromDate.TabIndex = 0;
             this.txtChequeFromDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtChequeFromDate_KeyDown);
             this.txtChequeFromDate.Leave += new System.EventHandler(this.txtChequeFromDate_Leave);
@@ -266,10 +268,10 @@
             // 
             this.lblChequeToDate.AutoSize = true;
             this.lblChequeToDate.ForeColor = System.Drawing.Color.White;
-            this.lblChequeToDate.Location = new System.Drawing.Point(460, 30);
-            this.lblChequeToDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblChequeToDate.Location = new System.Drawing.Point(613, 37);
+            this.lblChequeToDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblChequeToDate.Name = "lblChequeToDate";
-            this.lblChequeToDate.Size = new System.Drawing.Size(46, 13);
+            this.lblChequeToDate.Size = new System.Drawing.Size(59, 17);
             this.lblChequeToDate.TabIndex = 1258;
             this.lblChequeToDate.Text = "To Date";
             // 
@@ -277,10 +279,10 @@
             // 
             this.lblChequeFromDate.AutoSize = true;
             this.lblChequeFromDate.ForeColor = System.Drawing.Color.White;
-            this.lblChequeFromDate.Location = new System.Drawing.Point(17, 30);
-            this.lblChequeFromDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblChequeFromDate.Location = new System.Drawing.Point(23, 37);
+            this.lblChequeFromDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblChequeFromDate.Name = "lblChequeFromDate";
-            this.lblChequeFromDate.Size = new System.Drawing.Size(56, 13);
+            this.lblChequeFromDate.Size = new System.Drawing.Size(74, 17);
             this.lblChequeFromDate.TabIndex = 1256;
             this.lblChequeFromDate.Text = "From Date";
             // 
@@ -290,9 +292,10 @@
             this.btnReset.FlatAppearance.BorderSize = 0;
             this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReset.ForeColor = System.Drawing.Color.Black;
-            this.btnReset.Location = new System.Drawing.Point(697, 206);
+            this.btnReset.Location = new System.Drawing.Point(929, 254);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(85, 27);
+            this.btnReset.Size = new System.Drawing.Size(113, 33);
             this.btnReset.TabIndex = 7;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = false;
@@ -304,9 +307,10 @@
             this.btnSearch.FlatAppearance.BorderSize = 0;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.ForeColor = System.Drawing.Color.Black;
-            this.btnSearch.Location = new System.Drawing.Point(606, 206);
+            this.btnSearch.Location = new System.Drawing.Point(808, 254);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(85, 27);
+            this.btnSearch.Size = new System.Drawing.Size(113, 33);
             this.btnSearch.TabIndex = 6;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = false;
@@ -349,13 +353,13 @@
             this.dgvChequeReport.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvChequeReport.EnableHeadersVisualStyles = false;
             this.dgvChequeReport.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvChequeReport.Location = new System.Drawing.Point(20, 239);
-            this.dgvChequeReport.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.dgvChequeReport.Location = new System.Drawing.Point(27, 294);
+            this.dgvChequeReport.Margin = new System.Windows.Forms.Padding(4, 4, 4, 0);
             this.dgvChequeReport.Name = "dgvChequeReport";
             this.dgvChequeReport.ReadOnly = true;
             this.dgvChequeReport.RowHeadersVisible = false;
             this.dgvChequeReport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvChequeReport.Size = new System.Drawing.Size(762, 318);
+            this.dgvChequeReport.Size = new System.Drawing.Size(1016, 391);
             this.dgvChequeReport.TabIndex = 20;
             this.dgvChequeReport.TabStop = false;
             this.dgvChequeReport.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvChequeReport_CellDoubleClick);
@@ -449,9 +453,10 @@
             this.btnPrint.FlatAppearance.BorderSize = 0;
             this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrint.ForeColor = System.Drawing.Color.Black;
-            this.btnPrint.Location = new System.Drawing.Point(602, 560);
+            this.btnPrint.Location = new System.Drawing.Point(803, 689);
+            this.btnPrint.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(85, 27);
+            this.btnPrint.Size = new System.Drawing.Size(113, 33);
             this.btnPrint.TabIndex = 8;
             this.btnPrint.Text = "Print";
             this.btnPrint.UseVisualStyleBackColor = false;
@@ -459,10 +464,10 @@
             // 
             // txtChequeNo
             // 
-            this.txtChequeNo.Location = new System.Drawing.Point(558, 37);
-            this.txtChequeNo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtChequeNo.Location = new System.Drawing.Point(744, 46);
+            this.txtChequeNo.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtChequeNo.Name = "txtChequeNo";
-            this.txtChequeNo.Size = new System.Drawing.Size(222, 20);
+            this.txtChequeNo.Size = new System.Drawing.Size(295, 22);
             this.txtChequeNo.TabIndex = 3;
             this.txtChequeNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtChequeNo_KeyDown);
             // 
@@ -472,9 +477,10 @@
             this.btnExport.FlatAppearance.BorderSize = 0;
             this.btnExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExport.ForeColor = System.Drawing.Color.Black;
-            this.btnExport.Location = new System.Drawing.Point(693, 560);
+            this.btnExport.Location = new System.Drawing.Point(924, 689);
+            this.btnExport.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(85, 26);
+            this.btnExport.Size = new System.Drawing.Size(113, 32);
             this.btnExport.TabIndex = 9;
             this.btnExport.Text = "Export";
             this.btnExport.UseVisualStyleBackColor = false;
@@ -482,10 +488,10 @@
             // 
             // frmChequeReport
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(111)))), ((int)(((byte)(155)))));
-            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(1067, 738);
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.txtChequeNo);
             this.Controls.Add(this.btnPrint);
@@ -502,10 +508,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "frmChequeReport";
-            this.Opacity = 0.85D;
-            this.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
+            this.Padding = new System.Windows.Forms.Padding(20, 12, 20, 12);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cheque Report";
             this.Load += new System.EventHandler(this.frmChequeReport_Load);
