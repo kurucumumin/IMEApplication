@@ -88,17 +88,17 @@ namespace LoginForm
         {
             try
             {
-                txtVoucherDateFrom.Text = IME.FinancialYears.Where(a => a.fromDate <= Convert.ToDateTime(IME.CurrentDate().First())).Where(b => b.toDate >= Convert.ToDateTime(IME.CurrentDate().First())).FirstOrDefault().fromDate?.ToString("dd-MMM-yyyy");
-                txtVoucherDateTo.Text = IME.FinancialYears.Where(a => a.fromDate <= Convert.ToDateTime(IME.CurrentDate().First())).Where(b => b.toDate >= Convert.ToDateTime(IME.CurrentDate().First())).FirstOrDefault().toDate?.ToString("dd-MMM-yyyy");
-                dtpVoucherDateFrom.Value = DateTime.Parse(IME.CurrentDate().ToString());
-                dtpVoucherDateFrom.MinDate = (DateTime)IME.FinancialYears.Where(a => a.fromDate <= Convert.ToDateTime(IME.CurrentDate().First())).Where(b => b.toDate >= Convert.ToDateTime(IME.CurrentDate().First())).FirstOrDefault().fromDate;
-                dtpVoucherDateFrom.MaxDate = (DateTime)IME.FinancialYears.Where(a => a.fromDate <= Convert.ToDateTime(IME.CurrentDate().First())).Where(b => b.toDate >= Convert.ToDateTime(IME.CurrentDate().First())).FirstOrDefault().toDate;
-                dtpVoucherDateTo.Value = DateTime.Parse(IME.CurrentDate().ToString());
-                dtpVoucherDateTo.MinDate = (DateTime)IME.FinancialYears.Where(a => a.fromDate <= Convert.ToDateTime(IME.CurrentDate().First())).Where(b => b.toDate >= Convert.ToDateTime(IME.CurrentDate().First())).FirstOrDefault().fromDate;
-                dtpVoucherDateTo.MaxDate = (DateTime)IME.FinancialYears.Where(a => a.fromDate <= Convert.ToDateTime(IME.CurrentDate().First())).Where(b => b.toDate >= Convert.ToDateTime(IME.CurrentDate().First())).FirstOrDefault().toDate; 
-                dtpSalaryMonth.Value = DateTime.Parse(IME.CurrentDate().ToString());
-                dtpSalaryMonth.MinDate = (DateTime)IME.FinancialYears.Where(a => a.fromDate <= Convert.ToDateTime(IME.CurrentDate().First())).Where(b => b.toDate >= Convert.ToDateTime(IME.CurrentDate().First())).FirstOrDefault().fromDate;
-                dtpSalaryMonth.MaxDate = (DateTime)IME.FinancialYears.Where(a => a.fromDate <= Convert.ToDateTime(IME.CurrentDate().First())).Where(b => b.toDate >= Convert.ToDateTime(IME.CurrentDate().First())).FirstOrDefault().toDate;
+                txtVoucherDateFrom.Text = IME.CurrentDate().FirstOrDefault().Value.ToString("dd-MMM-yyyy");
+                txtVoucherDateTo.Text = IME.CurrentDate().FirstOrDefault().Value.ToString("dd-MMM-yyyy");
+                dtpVoucherDateFrom.Value = IME.CurrentDate().FirstOrDefault().Value;
+                dtpVoucherDateFrom.MinDate = Utils.getManagement().FinancialYear.fromDate.Value;
+                dtpVoucherDateFrom.MaxDate = Utils.getManagement().FinancialYear.toDate.Value;
+                dtpVoucherDateTo.Value = IME.CurrentDate().FirstOrDefault().Value;
+                dtpVoucherDateTo.MinDate = Utils.getManagement().FinancialYear.fromDate.Value;
+                dtpVoucherDateTo.MaxDate = Utils.getManagement().FinancialYear.toDate.Value;
+                dtpSalaryMonth.Value = IME.CurrentDate().FirstOrDefault().Value;
+                dtpSalaryMonth.MinDate = Utils.getManagement().FinancialYear.fromDate.Value;
+                dtpSalaryMonth.MaxDate = Utils.getManagement().FinancialYear.toDate.Value;
                 txtVoucherNo.Clear();
                 cmbVoucherTypeName.SelectedIndex = -1;
                 VoucherTypeNameComboFill();
@@ -200,7 +200,7 @@ namespace LoginForm
                 objDateValidation.DateValidationFunction(txtVoucherDateFrom);
                 if (txtVoucherDateFrom.Text == string.Empty)
                 {
-                    txtVoucherDateFrom.Text = DateTime.Parse(IME.CurrentDate().ToString()).ToString("dd-MMM-yyyy");
+                    txtVoucherDateFrom.Text = IME.CurrentDate().FirstOrDefault().Value.ToString("dd-MMM-yyyy");
                 }
             }
             catch (Exception ex)
@@ -221,7 +221,7 @@ namespace LoginForm
                 objDateValidation.DateValidationFunction(txtVoucherDateTo);
                 if (txtVoucherDateTo.Text == string.Empty)
                 {
-                    txtVoucherDateTo.Text = DateTime.Parse(IME.CurrentDate().ToString()).ToString("dd-MMM-yyyy");
+                    txtVoucherDateTo.Text = IME.CurrentDate().FirstOrDefault().Value.ToString("dd-MMM-yyyy");
                 }
             }
             catch (Exception ex)
