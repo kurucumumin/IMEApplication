@@ -108,7 +108,8 @@ namespace Open_Miracle
                     decimal dcTotalAsset = 0;
                     if (dtbl.Rows.Count > 0)
                     {
-                        dcTotalAsset = decimal.Parse(dtbl.Compute("Sum(Balance)", string.Empty).ToString());
+                        
+                        dcTotalAsset = dtbl.AsEnumerable().Sum(x => Convert.ToDecimal(x["Balance"]));
                     }
                     //------------------------ Liability ---------------------//
                     dtbl = new DataTable();
@@ -134,7 +135,7 @@ namespace Open_Miracle
                     decimal dcTotalLiability = 0;
                     if (dtbl.Rows.Count > 0)
                     {
-                        dcTotalLiability = decimal.Parse(dtbl.Compute("Sum(Balance)", string.Empty).ToString());
+                        dcTotalLiability = dtbl.AsEnumerable().Sum(x => Convert.ToDecimal(x["Balance"]));
                     }
                     decimal dcClosingStock = SpFinance.StockValueGetOnDate(Convert.ToDateTime(txtToDate.Text), calculationMethod, false, false);
                     dcClosingStock = Math.Round(dcClosingStock, inDecimalPlaces);
@@ -153,7 +154,7 @@ namespace Open_Miracle
                         {
                             if (dtbl.Rows.Count > 0)
                             {
-                                dcSum = decimal.Parse(dtbl.Compute("Sum(Debit)", string.Empty).ToString());
+                                dcSum = dtbl.AsEnumerable().Sum(x => Convert.ToDecimal(x["Debit"]));
                                 dcProfit = dcProfit - dcSum;
                             }
                         }
@@ -161,7 +162,7 @@ namespace Open_Miracle
                         {
                             if (dtbl.Rows.Count > 0)
                             {
-                                dcSum = decimal.Parse(dtbl.Compute("Sum(Credit)", string.Empty).ToString());
+                                dcSum = dtbl.AsEnumerable().Sum(x => Convert.ToDecimal(x["Credit"]));
                                 dcProfit = dcProfit + dcSum;
                             }
                         }
@@ -181,7 +182,7 @@ namespace Open_Miracle
                         {
                             if (dtbl.Rows.Count > 0)
                             {
-                                dcSum = decimal.Parse(dtbl.Compute("Sum(Debit)", string.Empty).ToString());
+                                dcSum = dtbl.AsEnumerable().Sum(x => Convert.ToDecimal(x["Debit"]));
                                 dcProfitOpening = dcProfitOpening - dcSum;
                             }
                         }
@@ -189,7 +190,7 @@ namespace Open_Miracle
                         {
                             if (dtbl.Rows.Count > 0)
                             {
-                                dcSum = decimal.Parse(dtbl.Compute("Sum(Credit)", string.Empty).ToString());
+                                dcSum = dtbl.AsEnumerable().Sum(x => Convert.ToDecimal(x["Credit"]));
                                 dcProfitOpening = dcProfitOpening + dcSum;
                             }
                         }
@@ -206,7 +207,7 @@ namespace Open_Miracle
                     decimal decProfitLedger = 0;
                     if (dtblProf.Rows.Count > 0)
                     {
-                        decProfitLedger = decimal.Parse(dtblProf.Compute("Sum(Balance)", string.Empty).ToString());
+                        decProfitLedger = dtblProf.AsEnumerable().Sum(x => Convert.ToDecimal(x["Balance"]));
                     }
                     decimal decTotalProfitAndLoss = 0;
                     if (dcProfitOpening >= 0)

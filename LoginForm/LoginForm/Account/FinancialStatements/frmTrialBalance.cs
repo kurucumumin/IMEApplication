@@ -111,14 +111,14 @@ namespace LoginForm.Account
                         {
                             if (dtbl1.Rows.Count > 0)
                             {
-                                dcSum = decimal.Parse(dtbl1.Compute("Sum(Debit)", string.Empty).ToString());
+                                dcSum = dtbl1.AsEnumerable().Sum(x => Convert.ToDecimal(x["Debit"]));
                             }
                         }
                         else
                         {
                             if (dtbl1.Rows.Count > 0)
                             {
-                                dcSum = decimal.Parse(dtbl1.Compute("Sum(Credit)", string.Empty).ToString());
+                                dcSum = dtbl1.AsEnumerable().Sum(x => Convert.ToDecimal(x["Credit"]));
                             }
                         }
                     }
@@ -156,8 +156,8 @@ namespace LoginForm.Account
                     dtblProfitAndLossAcc = dsTrial.Tables[1];
                     if (dgvTrailBalance.RowCount > 0)
                     {
-                        dcTotalCredit = decimal.Parse(dtblTrail.Compute("Sum(credit)", string.Empty).ToString());
-                        dcTotalDebit = decimal.Parse(dtblTrail.Compute("Sum(debit)", string.Empty).ToString());
+                        dcTotalCredit = dtblTrail.AsEnumerable().Sum(x => Convert.ToDecimal(x["Credit"]));
+                        dcTotalDebit = dtblTrail.AsEnumerable().Sum(x => Convert.ToDecimal(x["Debit"]));
                     }
                     for (int i = 0; i < dtblTrail.Rows.Count; ++i)
                     {
@@ -209,8 +209,8 @@ namespace LoginForm.Account
                     dtblProfitAndLossAcc1 = dsTrial.Tables[2];
                     if (dgvTrailBalance.RowCount > 0)
                     {
-                        decimal dcTotalCredit1 = decimal.Parse(dtblTrail.Compute("Sum(credit)", string.Empty).ToString());
-                        decimal dcTotalDebit1 = decimal.Parse(dtblTrail.Compute("Sum(debit)", string.Empty).ToString());
+                        decimal dcTotalCredit1 = dtblTrail.AsEnumerable().Sum(x => Convert.ToDecimal(x["Credit"]));
+                        decimal dcTotalDebit1 = dtblTrail.AsEnumerable().Sum(x => Convert.ToDecimal(x["Debit"]));
                         OpeningProfit = dcTotalCredit1 + dcTotalDebit1;
                     }
                     System.Data.DataSet DsetBalanceSheet = new System.Data.DataSet();
@@ -221,7 +221,8 @@ namespace LoginForm.Account
                     decimal decProfitLedger = 0;
                     if (dtblProf.Rows.Count > 0)
                     {
-                        decProfitLedger = decimal.Parse(dtblProf.Compute("Sum(Balance)", string.Empty).ToString());
+                        
+                        decProfitLedger = dtblProf.AsEnumerable().Sum(x => Convert.ToDecimal(x["Balance"]));
                     }
                     DataTable dtblProfitLedgerOpening = new DataTable();
                     dtblProfitLedgerOpening = DsetBalanceSheet.Tables[3];
@@ -237,31 +238,34 @@ namespace LoginForm.Account
                     dgvTrailBalance.Rows[dgvTrailBalance.Rows.Count - 1].Cells["dgvtxtSlNo"].Value = "  ";
                     dgvTrailBalance.Rows[dgvTrailBalance.Rows.Count - 1].Cells["accountGroupName"].Value = "Profit and Loss";
                     dgvTrailBalance.Rows[dgvTrailBalance.Rows.Count - 1].Cells["dgvtxtAccountGroupId"].Value = "0";
-                    openingBalance = Convert.ToDecimal(dtblProfitAndLossAcc.Rows[0]["OpeningBalance"].ToString());
+                    if (dtblProfitAndLossAcc.Rows.Count > 0)
                     {
-                        if (openingBalance > 0)
+                        openingBalance = Convert.ToDecimal(dtblProfitAndLossAcc.Rows[0]["OpeningBalance"].ToString());
                         {
-                            dgvTrailBalance.Rows[dgvTrailBalance.Rows.Count - 1].Cells["openingBalance"].Value = openingBalance + "Dr";
+                            if (openingBalance > 0)
+                            {
+                                dgvTrailBalance.Rows[dgvTrailBalance.Rows.Count - 1].Cells["openingBalance"].Value = openingBalance + "Dr";
+                            }
+                            else
+                                dgvTrailBalance.Rows[dgvTrailBalance.Rows.Count - 1].Cells["openingBalance"].Value = (-1) * openingBalance + "Cr";
                         }
-                        else
-                            dgvTrailBalance.Rows[dgvTrailBalance.Rows.Count - 1].Cells["openingBalance"].Value = (-1) * openingBalance + "Cr";
+                        dgvTrailBalance.Rows[dgvTrailBalance.Rows.Count - 1].Cells["dgvtxtSlNo"].Value = dgvTrailBalance.Rows.Count.ToString();
+                        dgvTrailBalance.Rows[dgvTrailBalance.Rows.Count - 1].DefaultCellStyle.ForeColor = Color.Blue;
+                        dgvTrailBalance.Rows[dgvTrailBalance.Rows.Count - 1].DefaultCellStyle.Font = new Font(dgvTrailBalance.Font, FontStyle.Regular);
+                        dgvTrailBalance.Rows[dgvTrailBalance.Rows.Count - 1].Cells["credit"].Value = dtblProfitAndLossAcc.Rows[0]["credit"].ToString();
+                        dgvTrailBalance.Rows[dgvTrailBalance.Rows.Count - 1].Cells["debit"].Value = dtblProfitAndLossAcc.Rows[0]["debit"].ToString();
+                        OpeningProfit1 = (Convert.ToDecimal(dtblProfitAndLossAcc.Rows[0]["OpeningBalance"].ToString())) + Convert.ToDecimal(dtblProfitAndLossAcc.Rows[0]["debit"].ToString()) - Convert.ToDecimal(dtblProfitAndLossAcc.Rows[0]["credit"].ToString());
+                        {
+                            if (OpeningProfit1 > 0)
+                            {
+                                dgvTrailBalance.Rows[dgvTrailBalance.Rows.Count - 1].Cells["dgvtxtBalance"].Value = decTotalProfitAndLoss + dcProfit + "Dr";
+                            }
+                            else
+                                dgvTrailBalance.Rows[dgvTrailBalance.Rows.Count - 1].Cells["dgvtxtBalance"].Value = (-1) * decTotalProfitAndLoss - dcProfit + "Cr";
+                        };
+                        dcTotalCredit = dcTotalCredit + Convert.ToDecimal(dtblProfitAndLossAcc.Rows[0]["credit"].ToString());
+                        dcTotalDebit = dcTotalDebit + Convert.ToDecimal(dtblProfitAndLossAcc.Rows[0]["debit"].ToString());
                     }
-                    dgvTrailBalance.Rows[dgvTrailBalance.Rows.Count - 1].Cells["dgvtxtSlNo"].Value = dgvTrailBalance.Rows.Count.ToString();
-                    dgvTrailBalance.Rows[dgvTrailBalance.Rows.Count - 1].DefaultCellStyle.ForeColor = Color.Blue;
-                    dgvTrailBalance.Rows[dgvTrailBalance.Rows.Count - 1].DefaultCellStyle.Font = new Font(dgvTrailBalance.Font, FontStyle.Regular);
-                    dgvTrailBalance.Rows[dgvTrailBalance.Rows.Count - 1].Cells["credit"].Value = dtblProfitAndLossAcc.Rows[0]["credit"].ToString();
-                    dgvTrailBalance.Rows[dgvTrailBalance.Rows.Count - 1].Cells["debit"].Value = dtblProfitAndLossAcc.Rows[0]["debit"].ToString();
-                    OpeningProfit1 = (Convert.ToDecimal(dtblProfitAndLossAcc.Rows[0]["OpeningBalance"].ToString())) + Convert.ToDecimal(dtblProfitAndLossAcc.Rows[0]["debit"].ToString()) - Convert.ToDecimal(dtblProfitAndLossAcc.Rows[0]["credit"].ToString());
-                    {
-                        if (OpeningProfit1 > 0)
-                        {
-                            dgvTrailBalance.Rows[dgvTrailBalance.Rows.Count - 1].Cells["dgvtxtBalance"].Value = decTotalProfitAndLoss + dcProfit + "Dr";
-                        }
-                        else
-                            dgvTrailBalance.Rows[dgvTrailBalance.Rows.Count - 1].Cells["dgvtxtBalance"].Value = (-1) * decTotalProfitAndLoss - dcProfit + "Cr";
-                    };
-                    dcTotalCredit = dcTotalCredit + Convert.ToDecimal(dtblProfitAndLossAcc.Rows[0]["credit"].ToString());
-                    dcTotalDebit = dcTotalDebit + Convert.ToDecimal(dtblProfitAndLossAcc.Rows[0]["debit"].ToString());
                     //=================================Net profit and NetLoss transation for previousyear==============
                     decimal decprofitLossbal = 0;
                     decimal decbalance = 0;
@@ -546,10 +550,10 @@ namespace LoginForm.Account
                        // frmAccountGroupwiseReport frmAccountGroupwiseReportObjt = new frmAccountGroupwiseReport();
                        // frmAccountGroupwiseReportObjt.WindowState = FormWindowState.Normal;
                         //frmAccountGroupwiseReportObjt.MdiParent = formMDI.MDIObj;
-                        if (dgvTrailBalance.Rows[e.RowIndex].Cells["dgvtxtBalance"].Value.ToString() != "0.00Dr" && dgvTrailBalance.Rows[e.RowIndex].Cells["dgvtxtBalance"].Value.ToString() != "0.00Cr")
-                        {
+                        //if (dgvTrailBalance.Rows[e.RowIndex].Cells["dgvtxtBalance"].Value.ToString() != "0.00Dr" && dgvTrailBalance.Rows[e.RowIndex].Cells["dgvtxtBalance"].Value.ToString() != "0.00Cr")
+                        //{
                             //frmAccountGroupwiseReportObjt.CallFromTrailBalance(dtpTrialFromDate.Value.ToString(), ddtpTrialToDate.Value.ToString(), decAccountGroupId, this);
-                        }
+                        //}
                     }
                 }
             }
