@@ -258,8 +258,8 @@ namespace LoginForm.Account.Services
             dtbl.Columns.Add("terminationDate");
             dtbl.Columns.Add("isActive");
             dtbl.Columns.Add("narration");
-            dtbl.Columns.Add("passportNo");
             dtbl.Columns.Add("bloodGroup");
+            dtbl.Columns.Add("passportNo");
             dtbl.Columns.Add("passportExpiryDate");
             dtbl.Columns.Add("labourCardNumber");
             dtbl.Columns.Add("labourCardExpiryDate");
@@ -275,7 +275,6 @@ namespace LoginForm.Account.Services
             dtbl.Columns.Add("pfNumber");
             dtbl.Columns.Add("esiNumber");
             dtbl.Columns.Add("defaultPackageId");
-            dtbl.Columns.Add("dailyWage");
             foreach (var item in IME.EmployeeViewAll())
             {
                 var row = dtbl.NewRow();
@@ -293,8 +292,8 @@ namespace LoginForm.Account.Services
                 row["terminationDate"] = item.terminationDate;
                 row["isActive"] = item.isActive;
                 row["narration"] = item.narration;
-                row["passportNo"] = item.passportNo;
                 row["bloodGroup"] = item.bloodGroup;
+                row["passportNo"] = item.passportNo;
                 row["passportExpiryDate"] = item.passportExpiryDate;
                 row["labourCardNumber"] = item.labourCardNumber;
                 row["labourCardExpiryDate"] = item.labourCardExpiryDate;
@@ -309,7 +308,7 @@ namespace LoginForm.Account.Services
                 row["panNumber"] = item.panNumber;
                 row["pfNumber"] = item.pfNumber;
                 row["esiNumber"] = item.esiNumber;
-                row["dailyWage"] = item.dailyWage;
+                row["defaultPackageId"] = item.defaultPackageId;
 
 
                 dtbl.Rows.Add(row);
