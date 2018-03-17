@@ -395,9 +395,9 @@ namespace LoginForm
         {
             try
             {
-                dtpCompanyCurrentDate.MinDate = (DateTime)IME.FinancialYears.Where(a => a.fromDate <= Convert.ToDateTime(IME.CurrentDate().First())).Where(b => b.toDate >= Convert.ToDateTime(IME.CurrentDate().First())).FirstOrDefault().fromDate; 
-                dtpCompanyCurrentDate.MaxDate = (DateTime)IME.FinancialYears.Where(a => a.fromDate <= Convert.ToDateTime(IME.CurrentDate().First())).Where(b => b.toDate >= Convert.ToDateTime(IME.CurrentDate().First())).FirstOrDefault().toDate; ;
-                dtpCompanyCurrentDate.Value =DateTime.Parse(IME.CurrentDate().ToString());
+                dtpCompanyCurrentDate.MinDate = Utils.getManagement().FinancialYear.fromDate.Value;
+                dtpCompanyCurrentDate.MaxDate = Utils.getManagement().FinancialYear.toDate.Value;
+                dtpCompanyCurrentDate.Value = IME.CurrentDate().FirstOrDefault().Value;
                 HolidayIndication();
                 GridFill();
             }

@@ -97,7 +97,7 @@ namespace LoginForm
                     dgvCalender[inColumnNumber, inRowNumber].Value = i;
                     dtDate = new DateTime(dtpYear.Value.Year, dtpMonth.Value.Month, i);
                     int inDay = int.Parse(dtDate.Month.ToString());
-                    if (dtDate <= (DateTime)IME.FinancialYears.Where(a => a.fromDate <= Convert.ToDateTime(IME.CurrentDate().First())).Where(b => b.toDate >= Convert.ToDateTime(IME.CurrentDate().First())).FirstOrDefault().fromDate  || dtDate >= (DateTime)IME.FinancialYears.Where(a => a.fromDate <= Convert.ToDateTime(IME.CurrentDate().First())).Where(b => b.toDate >= Convert.ToDateTime(IME.CurrentDate().First())).FirstOrDefault().toDate )
+                    if (dtDate <= Utils.getManagement().FinancialYear.fromDate.Value  || dtDate >= (Utils.getManagement().FinancialYear.toDate.Value))
                     {
                         dgvCalender[inColumnNumber, inRowNumber].Style.BackColor = Color.DarkRed;
                     }
@@ -148,10 +148,10 @@ namespace LoginForm
             try
             {
                 btnSave.Text = "Save";
-                dtpYear.MinDate = (DateTime)IME.FinancialYears.Where(a => a.fromDate <= Convert.ToDateTime(IME.CurrentDate().First())).Where(b => b.toDate >= Convert.ToDateTime(IME.CurrentDate().First())).FirstOrDefault().fromDate; ;
-                dtpYear.MaxDate = (DateTime)IME.FinancialYears.Where(a => a.fromDate <= Convert.ToDateTime(IME.CurrentDate().First())).Where(b => b.toDate >= Convert.ToDateTime(IME.CurrentDate().First())).FirstOrDefault().toDate; ;
-                dtpMonth.Value = (DateTime)IME.CurrentDate().First();
-                dtpYear.Value = (DateTime)IME.CurrentDate().First();
+                dtpYear.MinDate = Utils.getManagement().FinancialYear.fromDate.Value;
+                dtpYear.MaxDate = Utils.getManagement().FinancialYear.toDate.Value;
+                dtpMonth.Value = IME.CurrentDate().FirstOrDefault().Value;
+                dtpYear.Value = IME.CurrentDate().FirstOrDefault().Value;
                 CalenderFill();
                 dgvHolidayRegisterFill();
                 dgvCalender.ClearSelection();
