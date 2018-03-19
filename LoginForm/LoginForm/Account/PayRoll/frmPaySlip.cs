@@ -43,8 +43,8 @@ namespace LoginForm
                 dr[1] = "--Select--";
                 dtbl.Rows.InsertAt(dr, 0);
                 cmbEmployee.DataSource = dtbl;
-                cmbEmployee.ValueMember = "employeeId";
-                cmbEmployee.DisplayMember = "employeeName";
+                cmbEmployee.ValueMember = "WorkerID";
+                cmbEmployee.DisplayMember = "NameLastName";
             }
             catch (Exception ex)
             {
