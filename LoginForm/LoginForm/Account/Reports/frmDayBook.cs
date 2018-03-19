@@ -130,8 +130,8 @@ namespace LoginForm
                 {
                     decDebitTotal = Convert.ToDecimal(dtbl.Compute("Sum(Debit)", string.Empty).ToString());
                     decCreditTotal = Convert.ToDecimal(dtbl.Compute("Sum(Credit)", string.Empty).ToString());
-                    decInwrdTotal = Convert.ToDecimal(dtbl.Compute("Sum([Inward Qty])", string.Empty).ToString());
-                    decOtwrdTotal = Convert.ToDecimal(dtbl.Compute("Sum([Outward Qty])", string.Empty).ToString());
+                    decInwrdTotal = Convert.ToDecimal(dtbl.Compute("Sum([Inward_Qty])", string.Empty).ToString());
+                    decOtwrdTotal = Convert.ToDecimal(dtbl.Compute("Sum([Outward_Qty])", string.Empty).ToString());
                 }
                 else
                 {
@@ -157,12 +157,12 @@ namespace LoginForm
                     decBalQty = decOtwrdTotal - decInwrdTotal;
                 }
                 dtbl.Rows.Add();
-                dtbl.Rows[dtbl.Rows.Count - 1]["Invoice No"] = string.Empty;
-                dtbl.Rows[dtbl.Rows.Count - 1]["Voucher Type"] = string.Empty;
+                dtbl.Rows[dtbl.Rows.Count - 1]["Invoice_No"] = string.Empty;
+                dtbl.Rows[dtbl.Rows.Count - 1]["Voucher_Type"] = string.Empty;
                 dtbl.Rows.Add();
                 if (rbtnCondensed.Checked == true)
                 {
-                    dtbl.Rows[dtbl.Rows.Count - 1]["Invoice No"] = "Total :";
+                    dtbl.Rows[dtbl.Rows.Count - 1]["Invoice_No"] = "Total :";
                 }
                 else
                 {
@@ -170,20 +170,20 @@ namespace LoginForm
                 }
                 dtbl.Rows[dtbl.Rows.Count - 1]["Debit"] = decDebitTotal.ToString();
                 dtbl.Rows[dtbl.Rows.Count - 1]["Credit"] = decCreditTotal.ToString();
-                dtbl.Rows[dtbl.Rows.Count - 1]["Inward Qty"] = decInwrdTotal.ToString();
-                dtbl.Rows[dtbl.Rows.Count - 1]["Outward Qty"] = decOtwrdTotal.ToString();
+                dtbl.Rows[dtbl.Rows.Count - 1]["Inward_Qty"] = decInwrdTotal.ToString();
+                dtbl.Rows[dtbl.Rows.Count - 1]["Outward_Qty"] = decOtwrdTotal.ToString();
                 dtbl.Rows.Add();
                 if (rbtnCondensed.Checked == true)
                 {
-                    dtbl.Rows[dtbl.Rows.Count - 1]["Voucher Type"] = "Balance :";
-                    dtbl.Rows[dtbl.Rows.Count - 1]["Invoice No"] = (decDebitTotal > decCreditTotal ? decBalance + "Dr" : decBalance + "Cr");
+                    dtbl.Rows[dtbl.Rows.Count - 1]["Voucher_Type"] = "Balance :";
+                    dtbl.Rows[dtbl.Rows.Count - 1]["Invoice_No"] = (decDebitTotal > decCreditTotal ? decBalance + "Dr" : decBalance + "Cr");
                 }
                 else
                 {
-                    dtbl.Rows[dtbl.Rows.Count - 1]["Invoice No"] = "Balance :";
+                    dtbl.Rows[dtbl.Rows.Count - 1]["Invoice_No"] = "Balance :";
                     dtbl.Rows[dtbl.Rows.Count - 1]["Ledger"] = (decDebitTotal > decCreditTotal ? decBalance + "Dr" : decBalance + "Cr");
                 }
-                dtbl.Rows[dtbl.Rows.Count - 1]["Inward Qty"] = decBalQty.ToString();
+                dtbl.Rows[dtbl.Rows.Count - 1]["Inward_Qty"] = decBalQty.ToString();
                 dgvDayBook.DataSource = dtbl;
                 dgvDayBook.Columns["typeOfVoucher"].Visible = false;
                 dgvDayBook.Columns["voucherTypeId"].Visible = false;
@@ -193,21 +193,21 @@ namespace LoginForm
                 if (dgvDayBook.RowCount > 0)
                 {
                     index++;
-                    dgvDayBook.Rows[0].Cells["Sl No"].Value = index.ToString();
+                    //dgvDayBook.Rows[0].Cells["Sl_No"].Value = index.ToString();
                     int i = 0;
                     string date = dgvDayBook.Rows[i].Cells["Date"].Value.ToString();
-                    string voucherType = dgvDayBook.Rows[i].Cells["Voucher Type"].Value.ToString();
-                    string voucherNo = dgvDayBook.Rows[i].Cells["Invoice No"].Value.ToString();
+                    string voucherType = dgvDayBook.Rows[i].Cells["Voucher_Type"].Value.ToString();
+                    string voucherNo = dgvDayBook.Rows[i].Cells["Invoice_No"].Value.ToString();
                     i++;
                     for (; i < dgvDayBook.RowCount; )
                     {
                         if (i >= dgvDayBook.RowCount)
                             break;
-                        while ((dgvDayBook.Rows[i].Cells["Date"].Value.ToString() == date || dgvDayBook.Rows[i].Cells["Date"].Value.ToString() == "") && dgvDayBook.Rows[i].Cells["Voucher Type"].Value.ToString() == voucherType && dgvDayBook.Rows[i].Cells["Invoice No"].Value.ToString() == voucherNo)
+                        while ((dgvDayBook.Rows[i].Cells["Date"].Value.ToString() == date || dgvDayBook.Rows[i].Cells["Date"].Value.ToString() == "") && dgvDayBook.Rows[i].Cells["Voucher_Type"].Value.ToString() == voucherType && dgvDayBook.Rows[i].Cells["Invoice_No"].Value.ToString() == voucherNo)
                         {
                             dgvDayBook.Rows[i].Cells["Date"].Value = string.Empty;
-                            dgvDayBook.Rows[i].Cells["Voucher Type"].Value = string.Empty;
-                            dgvDayBook.Rows[i].Cells["Invoice No"].Value = string.Empty;
+                            dgvDayBook.Rows[i].Cells["Voucher_Type"].Value = string.Empty;
+                            dgvDayBook.Rows[i].Cells["Invoice_No"].Value = string.Empty;
                             i++;
                             if (i >= dgvDayBook.RowCount)
                                 break;
@@ -215,14 +215,14 @@ namespace LoginForm
                         if (i >= dgvDayBook.RowCount)
                             break;
                         index++;
-                        dgvDayBook.Rows[i].Cells["Sl No"].Value = index.ToString();
+                        //dgvDayBook.Rows[i].Cells["Sl_No"].Value = index.ToString();
                         date = dgvDayBook.Rows[i].Cells["Date"].Value.ToString();
-                        voucherType = dgvDayBook.Rows[i].Cells["Voucher Type"].Value.ToString();
-                        voucherNo = dgvDayBook.Rows[i].Cells["Invoice No"].Value.ToString();
+                        voucherType = dgvDayBook.Rows[i].Cells["Voucher_Type"].Value.ToString();
+                        voucherNo = dgvDayBook.Rows[i].Cells["Invoice_No"].Value.ToString();
                         i++;
-                        dgvDayBook.Rows[dgvDayBook.Rows.Count - 1].Cells["Sl No"].Value = string.Empty;
-                        dgvDayBook.Rows[dgvDayBook.Rows.Count - 2].Cells["Sl No"].Value = string.Empty;
-                        dgvDayBook.Rows[dgvDayBook.Rows.Count - 3].Cells["Sl No"].Value = string.Empty;
+                        //dgvDayBook.Rows[dgvDayBook.Rows.Count - 1].Cells["Sl_No"].Value = string.Empty;
+                        //dgvDayBook.Rows[dgvDayBook.Rows.Count - 2].Cells["Sl_No"].Value = string.Empty;
+                        //dgvDayBook.Rows[dgvDayBook.Rows.Count - 3].Cells["Sl_No"].Value = string.Empty;
                     }
                     for (int incolIndex = 0; incolIndex < dgvDayBook.Columns.Count; ++incolIndex)//to set columns in the grid not sortable
                         dgvDayBook.Columns[incolIndex].SortMode = DataGridViewColumnSortMode.NotSortable;
@@ -237,8 +237,8 @@ namespace LoginForm
                 {
                     dgvDayBook.Columns["Debit"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                     dgvDayBook.Columns["Credit"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    dgvDayBook.Columns["Inward Qty"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    dgvDayBook.Columns["Outward Qty"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    dgvDayBook.Columns["Inward_Qty"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    dgvDayBook.Columns["Outward_Qty"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 }
             }
             catch (Exception ex)

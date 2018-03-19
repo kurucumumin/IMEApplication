@@ -1290,8 +1290,8 @@
       <DependentUpon>IME.Context.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\IME.cs">
-      <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\IME.Designer.cs">
