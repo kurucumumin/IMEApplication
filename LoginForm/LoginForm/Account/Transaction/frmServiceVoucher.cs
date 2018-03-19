@@ -237,7 +237,7 @@ namespace LoginForm
                 Company infoComapany = new Company();
                 CompanySP spCompany = new CompanySP();
                 infoComapany = spCompany.CompanyView(1);
-                DateTime dtVoucherDate = Convert.ToDateTime(IME.CurrentDate());
+                DateTime dtVoucherDate = Convert.ToDateTime(IME.CurrentDate().FirstOrDefault().Value);
                 dtpVoucherDate.Value = dtVoucherDate;
                 txtVoucherDate.Text = dtVoucherDate.ToString("dd-MMM-yyyy");
                 dtpVoucherDate.Value = Convert.ToDateTime(txtVoucherDate.Text);
@@ -413,9 +413,12 @@ namespace LoginForm
                 SuffixPrefixSP spSuffisprefix = new SuffixPrefixSP();
                 SuffixPrefix infoSuffixPrefix = new SuffixPrefix();
                 infoSuffixPrefix = spSuffisprefix.GetSuffixPrefixDetails(DecServicetVoucherTypeId, dtpVoucherDate.Value);
-                decServiceSuffixPrefixId = infoSuffixPrefix.suffixprefixId;
-                strPrefix = infoSuffixPrefix.prefix;
-                strSuffix = infoSuffixPrefix.suffix;
+                if(infoSuffixPrefix != null)
+                {
+                    decServiceSuffixPrefixId = infoSuffixPrefix.suffixprefixId;
+                    strPrefix = infoSuffixPrefix.prefix;
+                    strSuffix = infoSuffixPrefix.suffix;
+                }
                 this.Text = strServiceVoucherTypeName;
                 base.Show();
             }
