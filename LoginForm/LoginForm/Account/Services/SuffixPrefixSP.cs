@@ -1,6 +1,7 @@
 ﻿using LoginForm.DataSet;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,7 +19,19 @@ namespace LoginForm.Account.Services
             SuffixPrefix suffixprefixinfo = new SuffixPrefix();
             try
             {
-                suffixprefixinfo = db.SuffixPrefixes.Where(x => x.voucherTypeId == vouchertypeId && (x.fromDate < date && x.toDate > date)).FirstOrDefault();
+                var a = db.GetSuffixPrefixDetails(vouchertypeId, date).FirstOrDefault();
+
+
+                suffixprefixinfo.suffixprefixId = a.suffixprefixId;
+                suffixprefixinfo.voucherTypeId = a.voucherTypeId;
+                suffixprefixinfo.fromDate = a.fromDate;
+                suffixprefixinfo.toDate = a.toDate;
+                suffixprefixinfo.startIndex = a.startIndex;
+                suffixprefixinfo.prefix = a.prefix;
+                suffixprefixinfo.suffix = a.suffix;
+                suffixprefixinfo.widthOfNumericalPart = a.widthOfNumericalPart;
+                suffixprefixinfo.prefillWithZero = a.prefillWithZero;
+                suffixprefixinfo.narration = a.narration;
             }
             catch (Exception ex)
             {
