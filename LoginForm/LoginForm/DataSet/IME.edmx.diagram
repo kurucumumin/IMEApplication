@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="43df79efdf3944d7806043bf0686989e" Name="Diagram1">
+      <Diagram DiagramId="a956ff6c2f604a939fb04ce90388c442" Name="Diagram1">
         <EntityTypeShape EntityType="IMEModel.AccountGroup" Width="1.5" PointX="9.75" PointY="61" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.AccountLedger" Width="1.5" PointX="12" PointY="60" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.AdvancePayment" Width="1.5" PointX="20.25" PointY="85.375" IsExpanded="true" />
@@ -203,7 +203,7 @@
         <AssociationConnector Association="IMEModel.FK__SupplierA__CityI__40C49C62" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__Town__CityID__2EFAF1E2" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__Company__currenc__0371755F" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__OtherBanc__Compa__42A2C333" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__OtherBanc__Compa__457F2FDE" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK_ManagementCompany" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__CustomerW__Conta__4CC05EF3" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__ContraDet__contr__1269A02C" ManuallyRouted="false" />

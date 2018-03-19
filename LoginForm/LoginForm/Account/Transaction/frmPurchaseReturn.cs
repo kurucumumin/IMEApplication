@@ -827,12 +827,17 @@ namespace LoginForm
                     SuffixPrefixSP spSuffisprefix = new SuffixPrefixSP();
                     SuffixPrefix infoSuffixPrefix = new SuffixPrefix();
                     infoSuffixPrefix = spSuffisprefix.GetSuffixPrefixDetails(decPurchaseReturnVoucherTypeId, dtpDate.Value);
-                    strPrefix = infoSuffixPrefix.prefix;
-                    strSuffix = infoSuffixPrefix.suffix;
-                    decPurchaseReturnSuffixPrefixId = infoSuffixPrefix.suffixprefixId;
-                    strReturnNo = strPrefix + strVoucherNo + strSuffix;
-                    txtReturnNo.Text = strReturnNo;
-                    txtReturnNo.ReadOnly = true;
+                    if (infoSuffixPrefix != null)
+                    {
+                        strPrefix = infoSuffixPrefix.prefix;
+                        strSuffix = infoSuffixPrefix.suffix;
+                        decPurchaseReturnSuffixPrefixId = infoSuffixPrefix.suffixprefixId;
+                         strReturnNo = strPrefix + strVoucherNo + strSuffix;
+                        txtReturnNo.Text = strReturnNo;
+                        txtReturnNo.ReadOnly = true;
+                    }
+                        
+                   
                 }
             }
             catch (Exception ex)
@@ -1237,15 +1242,14 @@ namespace LoginForm
         /// <param name="strVoucherTypeName"></param>
         public void CallFromVoucherTypeSelection(decimal decVoucherTypeId, string strVoucherTypeName)
         {
-            try
-            {
+           
                 decPurchaseReturnVoucherTypeId = decVoucherTypeId;
                 VoucherTypeSP spVoucherType = new VoucherTypeSP();
                 isAutomatic = spVoucherType.CheckMethodOfVoucherNumbering(decPurchaseReturnVoucherTypeId);
                 SuffixPrefixSP spSuffisprefix = new SuffixPrefixSP();
                 SuffixPrefix infoSuffixPrefix = new SuffixPrefix();
                 infoSuffixPrefix = spSuffisprefix.GetSuffixPrefixDetails(decPurchaseReturnVoucherTypeId, dtpDate.Value);
-                decPurchaseReturnSuffixPrefixId = infoSuffixPrefix.suffixprefixId;
+                if(infoSuffixPrefix!=null) decPurchaseReturnSuffixPrefixId = infoSuffixPrefix.suffixprefixId;
                 this.Text = strVoucherTypeName;
                 base.Show();
                 if (isAutomatic)
@@ -1256,11 +1260,7 @@ namespace LoginForm
                 {
                     txtReturnNo.Focus();
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("PR:41" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            
         }
         /// <summary>
         /// Function for Product details fill in grid corresponding to invoice number

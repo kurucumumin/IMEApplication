@@ -5057,6 +5057,15 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PurchaseReturnMasterAndDetailsDelete", purchaseReturnMasterIdParameter);
         }
     
+        public virtual ObjectResult<Nullable<decimal>> PurchaseReturnMasterMax(Nullable<decimal> voucherTypeId)
+        {
+            var voucherTypeIdParameter = voucherTypeId.HasValue ?
+                new ObjectParameter("voucherTypeId", voucherTypeId) :
+                new ObjectParameter("voucherTypeId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("PurchaseReturnMasterMax", voucherTypeIdParameter);
+        }
+    
         public virtual ObjectResult<PurchaseReturnMasterViewAllByPurchaseMasterId_Result> PurchaseReturnMasterViewAllByPurchaseMasterId(Nullable<decimal> purchaseMasterId)
         {
             var purchaseMasterIdParameter = purchaseMasterId.HasValue ?
