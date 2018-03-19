@@ -21,7 +21,6 @@ namespace LoginForm.Account.Services
             {
                 var a = db.GetSuffixPrefixDetails(vouchertypeId, date).FirstOrDefault();
 
-
                 suffixprefixinfo.suffixprefixId = a.suffixprefixId;
                 suffixprefixinfo.voucherTypeId = a.voucherTypeId;
                 suffixprefixinfo.fromDate = a.fromDate;
