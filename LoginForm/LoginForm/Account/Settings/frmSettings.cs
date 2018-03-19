@@ -588,13 +588,13 @@ namespace LoginForm.Account.Services
                     {
                         SaveOrEdit();
                         Messages.SavedMessage();
-                        foreach (Form child in this.MdiParent.MdiChildren)
-                        {
-                            if (this != child)
-                            {
-                                child.Close();
-                            }
-                        }
+                        //foreach (Form child in this.MdiParent.MdiChildren)
+                        //{
+                        //    if (this != child)
+                        //    {
+                        //        child.Close();
+                        //    }
+                        //}
                         //formMDI.MDIObj.CurrentSettings();
                         //formMDI.MDIObj.ShowQuickLaunchMenu();
                         this.Close();
@@ -602,7 +602,7 @@ namespace LoginForm.Account.Services
                 //}
                 //else
                 //{
-                    Messages.NoPrivillageMessage();
+                    //Messages.NoPrivillageMessage();
                 //}
             }
             catch (Exception ex)

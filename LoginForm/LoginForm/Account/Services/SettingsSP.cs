@@ -62,7 +62,7 @@ namespace LoginForm.Account.Services
             decimal decSettingsId = 0;
             try
             {
-                decSettingsId = Convert.ToDecimal(IME.SettingsGetId(strsettingsName));
+                decSettingsId = Convert.ToDecimal(IME.SettingsGetId(strsettingsName).FirstOrDefault());
             }
             catch (Exception ex)
             {
