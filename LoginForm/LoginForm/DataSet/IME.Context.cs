@@ -2991,6 +2991,19 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI_Result>("GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI", ledgerIdParameter, salesMasterIdParameter, voucherTypeIdParameter);
         }
     
+        public virtual ObjectResult<GetSuffixPrefixDetails_Result> GetSuffixPrefixDetails(Nullable<decimal> voucherId, Nullable<System.DateTime> date)
+        {
+            var voucherIdParameter = voucherId.HasValue ?
+                new ObjectParameter("voucherId", voucherId) :
+                new ObjectParameter("voucherId", typeof(decimal));
+    
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetSuffixPrefixDetails_Result>("GetSuffixPrefixDetails", voucherIdParameter, dateParameter);
+        }
+    
         public virtual ObjectResult<Nullable<int>> GetTaxIdForTaxSelection(Nullable<decimal> voucherTypeId)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
@@ -3400,31 +3413,6 @@ namespace LoginForm.DataSet
                 new ObjectParameter("voucherNo", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MonthlySalaryVoucherDetailsViewAll_Result>("MonthlySalaryVoucherDetailsViewAll", strMonthParameter, monthParameter, monthYearParameter, isEditModeParameter, voucherNoParameter);
-        }
-    
-        public virtual int MonthlySalaryVoucherDetailViewAll(string strMonth, string month, string monthYear, Nullable<decimal> isEditMode, string voucherNo)
-        {
-            var strMonthParameter = strMonth != null ?
-                new ObjectParameter("strMonth", strMonth) :
-                new ObjectParameter("strMonth", typeof(string));
-    
-            var monthParameter = month != null ?
-                new ObjectParameter("Month", month) :
-                new ObjectParameter("Month", typeof(string));
-    
-            var monthYearParameter = monthYear != null ?
-                new ObjectParameter("monthYear", monthYear) :
-                new ObjectParameter("monthYear", typeof(string));
-    
-            var isEditModeParameter = isEditMode.HasValue ?
-                new ObjectParameter("isEditMode", isEditMode) :
-                new ObjectParameter("isEditMode", typeof(decimal));
-    
-            var voucherNoParameter = voucherNo != null ?
-                new ObjectParameter("voucherNo", voucherNo) :
-                new ObjectParameter("voucherNo", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MonthlySalaryVoucherDetailViewAll", strMonthParameter, monthParameter, monthYearParameter, isEditModeParameter, voucherNoParameter);
         }
     
         public virtual ObjectResult<MonthlySalaryVoucherMasterAddWithIdentity_Result> MonthlySalaryVoucherMasterAddWithIdentity(Nullable<decimal> ledgerId, string voucherNo, string invoiceNo, Nullable<System.DateTime> date, Nullable<System.DateTime> month, Nullable<decimal> totalAmount, string narration, Nullable<decimal> suffixPrefixId, Nullable<decimal> voucherTypeId, Nullable<decimal> financialYearId, Nullable<bool> isAutomatic)
@@ -5415,7 +5403,7 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ReminderViewAll_Result>("ReminderViewAll");
         }
     
-        public virtual int RS_InvoiceDetailsADD(Nullable<int> rS_InvoiceID, string purchaseOrderNumber, Nullable<int> purchaseOrderItemNumber, string productNumber, Nullable<int> billingItemNumber, Nullable<decimal> quantity, string salesUnit, Nullable<decimal> unitPrice, Nullable<decimal> discount, Nullable<decimal> goodsValue, Nullable<decimal> amount, string cCCNNO, string countryofOrigin, string articleDescription, Nullable<int> deliveryNumber, Nullable<int> deliveryItemNumber)
+        public virtual int RS_InvoiceDetailsADD(Nullable<int> rS_InvoiceID, string purchaseOrderNumber, Nullable<int> purchaseOrderItemNumber, string productNumber, Nullable<int> billingItemNumber, Nullable<decimal> quantity, string salesUnit, Nullable<decimal> unitPrice, Nullable<decimal> discount, Nullable<decimal> goodsValue, Nullable<decimal> amount, string cCCNNO, string countryofOrigin, string articleDescription, Nullable<decimal> deliveryNumber, Nullable<int> deliveryItemNumber)
         {
             var rS_InvoiceIDParameter = rS_InvoiceID.HasValue ?
                 new ObjectParameter("RS_InvoiceID", rS_InvoiceID) :
@@ -5475,7 +5463,7 @@ namespace LoginForm.DataSet
     
             var deliveryNumberParameter = deliveryNumber.HasValue ?
                 new ObjectParameter("DeliveryNumber", deliveryNumber) :
-                new ObjectParameter("DeliveryNumber", typeof(int));
+                new ObjectParameter("DeliveryNumber", typeof(decimal));
     
             var deliveryItemNumberParameter = deliveryItemNumber.HasValue ?
                 new ObjectParameter("DeliveryItemNumber", deliveryItemNumber) :
@@ -6083,6 +6071,23 @@ namespace LoginForm.DataSet
                 new ObjectParameter("voucherTypeId", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SalesInvoiceGridfillAgainestDeliveryNoteUsingDeliveryNoteDetails_Result>("SalesInvoiceGridfillAgainestDeliveryNoteUsingDeliveryNoteDetails", deliveryNoteMasterIdParameter, salesMasterIdParameter, voucherTypeIdParameter);
+        }
+    
+        public virtual ObjectResult<SalesInvoiceGridfillAgainestSalesOrderUsingSalesDetails_Result> SalesInvoiceGridfillAgainestSalesOrderUsingSalesDetails(Nullable<decimal> salesOrderMasterId, Nullable<decimal> salesMasterId, Nullable<decimal> voucherTypeId)
+        {
+            var salesOrderMasterIdParameter = salesOrderMasterId.HasValue ?
+                new ObjectParameter("salesOrderMasterId", salesOrderMasterId) :
+                new ObjectParameter("salesOrderMasterId", typeof(decimal));
+    
+            var salesMasterIdParameter = salesMasterId.HasValue ?
+                new ObjectParameter("salesMasterId", salesMasterId) :
+                new ObjectParameter("salesMasterId", typeof(decimal));
+    
+            var voucherTypeIdParameter = voucherTypeId.HasValue ?
+                new ObjectParameter("voucherTypeId", voucherTypeId) :
+                new ObjectParameter("voucherTypeId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SalesInvoiceGridfillAgainestSalesOrderUsingSalesDetails_Result>("SalesInvoiceGridfillAgainestSalesOrderUsingSalesDetails", salesOrderMasterIdParameter, salesMasterIdParameter, voucherTypeIdParameter);
         }
     
         public virtual ObjectResult<Nullable<int>> SalesInvoiceQuantityDetailsAgainstSalesReturn(Nullable<decimal> voucherTypeId, string voucherNo)
