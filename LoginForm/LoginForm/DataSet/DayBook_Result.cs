@@ -19,7 +19,6 @@ namespace LoginForm.DataSet
         public string Voucher_Type { get; set; }
         public string Invoice_No { get; set; }
         public string typeOfVoucher { get; set; }
-        public string Ledger { get; set; }
         public Nullable<decimal> Debit { get; set; }
         public Nullable<decimal> Credit { get; set; }
         public Nullable<decimal> Inward_Qty { get; set; }

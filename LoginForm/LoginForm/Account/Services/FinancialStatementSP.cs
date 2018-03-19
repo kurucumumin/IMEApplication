@@ -881,7 +881,6 @@ namespace LoginForm.Account.Services
                 dtbl.Columns.Add("Voucher_Type");
                 dtbl.Columns.Add("Invoice_No");
                 dtbl.Columns.Add("typeOfVoucher");
-                dtbl.Columns.Add("Ledger");
                 dtbl.Columns.Add("Debit");
                 dtbl.Columns.Add("Credit");
                 dtbl.Columns.Add("Inward_Qty");
@@ -899,7 +898,6 @@ namespace LoginForm.Account.Services
                     row["Voucher_Type"] = item.Voucher_Type;
                     row["Invoice_No"] = item.Invoice_No;
                     row["typeOfVoucher"] = item.typeOfVoucher;
-                    row["Ledger"] = item.Ledger;
                     row["Debit"] = item.Debit;
                     row["Credit"] = item.Credit;
                     row["Inward_Qty"] = item.Inward_Qty;
