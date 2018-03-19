@@ -64,7 +64,7 @@ namespace LoginForm
                 cmbVoucherType.SelectedIndex = -1;
                 if (inCount == 1)
                 {
-                    cmbVoucherType.SelectedValue = dtblVouchetType.Rows[0].ItemArray[0].ToString();
+                    cmbVoucherType.SelectedIndex = 0;
                     btnGo_Click(btnGo, EventArgs.Empty);
                 }
                 else

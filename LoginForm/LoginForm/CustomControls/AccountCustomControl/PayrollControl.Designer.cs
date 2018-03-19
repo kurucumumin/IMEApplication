@@ -36,7 +36,7 @@
             this.btnMontlySalaryVoucher = new System.Windows.Forms.Button();
             this.btnMontlySalarySettings = new System.Windows.Forms.Button();
             this.btnMontlySalaryRegister = new System.Windows.Forms.Button();
-            this.btnHolidaySettings = new System.Windows.Forms.Button();
+            this.btnHolydaySettings = new System.Windows.Forms.Button();
             this.btnDailySalaryVoucher = new System.Windows.Forms.Button();
             this.btnDesignation = new System.Windows.Forms.Button();
             this.btnAdvanceRegister = new System.Windows.Forms.Button();
@@ -59,7 +59,7 @@
             this.panel1.Controls.Add(this.btnMontlySalaryVoucher);
             this.panel1.Controls.Add(this.btnMontlySalarySettings);
             this.panel1.Controls.Add(this.btnMontlySalaryRegister);
-            this.panel1.Controls.Add(this.btnHolidaySettings);
+            this.panel1.Controls.Add(this.btnHolydaySettings);
             this.panel1.Controls.Add(this.btnDailySalaryVoucher);
             this.panel1.Controls.Add(this.btnDesignation);
             this.panel1.Controls.Add(this.btnAdvanceRegister);
@@ -215,25 +215,25 @@
             this.btnMontlySalaryRegister.UseVisualStyleBackColor = false;
             this.btnMontlySalaryRegister.Click += new System.EventHandler(this.btnMontlySalaryRegister_Click);
             // 
-            // btnHolidaySettings
+            // btnHolydaySettings
             // 
-            this.btnHolidaySettings.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnHolidaySettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnHolidaySettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnHolidaySettings.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnHolidaySettings.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnHolidaySettings.FlatAppearance.BorderSize = 0;
-            this.btnHolidaySettings.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
-            this.btnHolidaySettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHolidaySettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHolidaySettings.Location = new System.Drawing.Point(0, 320);
-            this.btnHolidaySettings.Margin = new System.Windows.Forms.Padding(0);
-            this.btnHolidaySettings.Name = "btnHolidaySettings";
-            this.btnHolidaySettings.Size = new System.Drawing.Size(301, 40);
-            this.btnHolidaySettings.TabIndex = 52;
-            this.btnHolidaySettings.Text = "Holiday Settings";
-            this.btnHolidaySettings.UseVisualStyleBackColor = false;
-            this.btnHolidaySettings.Click += new System.EventHandler(this.btnHolidaySettings_Click);
+            this.btnHolydaySettings.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnHolydaySettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnHolydaySettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnHolydaySettings.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnHolydaySettings.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnHolydaySettings.FlatAppearance.BorderSize = 0;
+            this.btnHolydaySettings.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
+            this.btnHolydaySettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHolydaySettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHolydaySettings.Location = new System.Drawing.Point(0, 320);
+            this.btnHolydaySettings.Margin = new System.Windows.Forms.Padding(0);
+            this.btnHolydaySettings.Name = "btnHolydaySettings";
+            this.btnHolydaySettings.Size = new System.Drawing.Size(301, 40);
+            this.btnHolydaySettings.TabIndex = 52;
+            this.btnHolydaySettings.Text = "Holyday Settings";
+            this.btnHolydaySettings.UseVisualStyleBackColor = false;
+            this.btnHolydaySettings.Click += new System.EventHandler(this.btnHolidaySettings_Click);
             // 
             // btnDailySalaryVoucher
             // 
@@ -420,7 +420,7 @@
         private System.Windows.Forms.Button btnMontlySalaryVoucher;
         private System.Windows.Forms.Button btnMontlySalarySettings;
         private System.Windows.Forms.Button btnMontlySalaryRegister;
-        private System.Windows.Forms.Button btnHolidaySettings;
+        private System.Windows.Forms.Button btnHolydaySettings;
         private System.Windows.Forms.Button btnDailySalaryVoucher;
         private System.Windows.Forms.Button btnDesignation;
         private System.Windows.Forms.Button btnAdvanceRegister;

@@ -35,7 +35,7 @@ namespace LoginForm.Account.Services
             decimal i = 0;
             try
             {
-                i = Convert.ToDecimal(IME.MonthlySalarySettingsMonthlySalaryIdSearchUsingSalaryMonth(dtSalaryMonth));
+                i = Convert.ToDecimal(IME.MonthlySalarySettingsMonthlySalaryIdSearchUsingSalaryMonth(dtSalaryMonth).FirstOrDefault());
             }
             catch (Exception ex)
             {
