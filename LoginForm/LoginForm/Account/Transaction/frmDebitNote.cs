@@ -147,6 +147,7 @@ namespace LoginForm
             {
                 TransactionsGeneralFill obj = new TransactionsGeneralFill();
                 DebitNoteMasterSP spDebitNoteMaster = new DebitNoteMasterSP();
+                IMEEntities IME = new IMEEntities();
 
                 //-----------------------------------VoucherNo automatic generation-------------------------------------------//
 
@@ -197,6 +198,7 @@ namespace LoginForm
                 {
                     SuffixPrefixSP spSuffisprefix = new SuffixPrefixSP();
                     SuffixPrefix infoSuffixPrefix = new SuffixPrefix();
+                    dtpVoucherDate.Text = IME.CurrentDate().FirstOrDefault().Value.ToString("dd-MMM-yyyy");
                     infoSuffixPrefix = spSuffisprefix.GetSuffixPrefixDetails(decDebitNoteVoucherTypeId, dtpVoucherDate.Value);
                     if (infoSuffixPrefix==null)
                     {
