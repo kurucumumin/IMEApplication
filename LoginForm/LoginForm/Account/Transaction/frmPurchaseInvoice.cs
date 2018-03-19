@@ -242,7 +242,7 @@ namespace LoginForm
                 SuffixPrefixSP spSuffisprefix = new SuffixPrefixSP();
                 SuffixPrefix infoSuffixPrefix = new SuffixPrefix();
                 infoSuffixPrefix = spSuffisprefix.GetSuffixPrefixDetails(decPurchaseInvoiceVoucherTypeId, dtpVoucherDate.Value);
-                decPurchaseInvoiceSuffixPrefixId = infoSuffixPrefix.suffixprefixId;
+               if(infoSuffixPrefix!=null) decPurchaseInvoiceSuffixPrefixId = infoSuffixPrefix.suffixprefixId;
                 this.Text = strVoucherTypeName;
                 base.Show();
                 if (isAutomatic)
@@ -287,11 +287,15 @@ namespace LoginForm
                     SuffixPrefixSP spSuffisprefix = new SuffixPrefixSP();
                     SuffixPrefix infoSuffixPrefix = new SuffixPrefix();
                     infoSuffixPrefix = spSuffisprefix.GetSuffixPrefixDetails(decPurchaseInvoiceVoucherTypeId, dtpVoucherDate.Value);
-                    strPrefix = infoSuffixPrefix.prefix;
-                    strSuffix = infoSuffixPrefix.suffix;
-                    decPurchaseInvoiceSuffixPrefixId = infoSuffixPrefix.suffixprefixId;
-                    txtVoucherNo.Text = strPrefix + strVoucherNo + strSuffix;
-                    txtVoucherNo.ReadOnly = true;
+                    if (infoSuffixPrefix!=null)
+                    {
+                        strPrefix = infoSuffixPrefix.prefix;
+                        strSuffix = infoSuffixPrefix.suffix;
+                        decPurchaseInvoiceSuffixPrefixId = infoSuffixPrefix.suffixprefixId;
+                        txtVoucherNo.Text = strPrefix + strVoucherNo + strSuffix;
+                        txtVoucherNo.ReadOnly = true;
+                    }
+                   
                 }
             }
             catch (Exception ex)

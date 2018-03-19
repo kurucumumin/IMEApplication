@@ -81,7 +81,7 @@ namespace LoginForm.Account.Services
                 }
                 else
                 {
-                    decVoucherNoMax = Convert.ToDecimal(db.PurchaseMasterVoucherMax(decVoucherTypeId));
+                    decVoucherNoMax = Convert.ToDecimal(db.PurchaseMasterVoucherMax(decVoucherTypeId).FirstOrDefault());
                 }
                 
             }

@@ -134,10 +134,7 @@ namespace LoginForm.Account.Services
             decimal max = 0;
             try
             {
-                decimal? adapter = (from dn in IME.DebitNoteMasters.Where(p => p.voucherTypeId == decVoucherTypeId)
-                                    select new { dn.voucherNo }).Max(x => Convert.ToDecimal(x.voucherNo));
-
-                max = (adapter != null) ? (decimal)adapter : 0;
+                max = (decimal)IME.DebitNoteMasterMax(decVoucherTypeId).FirstOrDefault();
             }
             catch (Exception ex)
             {
@@ -146,16 +143,14 @@ namespace LoginForm.Account.Services
             return max + 1;
         }
 
-        public int DebitNoteMasterGetMax(decimal decVoucherTypeId)
+        public decimal DebitNoteMasterGetMax(decimal decVoucherTypeId)
         {
             IMEEntities IME = new IMEEntities();
-            int max = 0;
+            decimal max = 0;
             try
             {
-                int? adapter = (from dn in IME.DebitNoteMasters.Where(p => p.voucherTypeId == decVoucherTypeId)
-                                    select new { dn.voucherNo }).Max(x => Convert.ToInt32(x.voucherNo));
-
-                max = (adapter != null) ? (int)adapter : 0;
+                 max = (decimal)IME.DebitNoteMasterMax(decVoucherTypeId).FirstOrDefault();
+                
             }
             catch (Exception ex)
             {

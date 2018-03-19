@@ -15,6 +15,5 @@ namespace LoginForm.DataSet
     {
         public int WorkerID { get; set; }
         public string NameLastName { get; set; }
-        public string UserName { get; set; }
     }
 }
