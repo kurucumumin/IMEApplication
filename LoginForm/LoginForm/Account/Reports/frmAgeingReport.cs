@@ -169,6 +169,10 @@ namespace LoginForm
                         dgvReport.Columns["61 to 90"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                         dgvReport.Columns["90 above"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                     }
+                    else
+                    {
+                        MessageBox.Show("Data Not Found", "Warning");
+                    }
                     
                     
                     lblTotOne.Text = "1 to 30: " + dcTotOne.ToString();
