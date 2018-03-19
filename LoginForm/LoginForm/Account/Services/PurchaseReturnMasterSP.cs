@@ -18,10 +18,7 @@ namespace LoginForm.Account.Services
             decimal max = 0;
             try
             {
-                decimal? adapter = (from pr in IME.PurchaseReturnMasters.Where(p => p.voucherTypeId == decVoucherTypeId)
-                                    select new { pr.voucherNo }).Max(x => Convert.ToDecimal(x.voucherNo));
-
-                max = (adapter != null) ? (decimal)adapter : 0;
+               max = Convert.ToDecimal(IME.PurchaseReturnMasterMax(decVoucherTypeId).FirstOrDefault());
             }
             catch (Exception ex)
             {
