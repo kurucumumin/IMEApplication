@@ -132,41 +132,45 @@ namespace LoginForm
                         dcTotTwo = decimal.Parse(dtbl.Compute("Sum([31 to 60])", string.Empty).ToString());
                         dcTotThree = decimal.Parse(dtbl.Compute("Sum([61 to 90])", string.Empty).ToString());
                         dcTotFour = decimal.Parse(dtbl.Compute("Sum([90 above])", string.Empty).ToString());
-                    }
-                    dtbl.Rows.Add();
-                    dtbl.Rows[dtbl.Rows.Count - 1]["Account Ledger"] = "Total :";
-                    dtbl.Rows[dtbl.Rows.Count - 1]["1 to 30"] = dcTotOne;
-                    dtbl.Rows[dtbl.Rows.Count - 1]["31 to 60"] = dcTotTwo;
-                    dtbl.Rows[dtbl.Rows.Count - 1]["61 to 90"] = dcTotThree;
-                    dtbl.Rows[dtbl.Rows.Count - 1]["90 above"] = dcTotFour;
-                    dgvReport.DataSource = dtbl;
-                    if (dgvReport.Columns.Count > 0)
-                    {
-                        if (rbtnLedgerWise.Checked == true)
+
+                        dtbl.Rows.Add();
+                        dtbl.Rows[dtbl.Rows.Count - 1]["Account Ledger"] = "Total :";
+                        dtbl.Rows[dtbl.Rows.Count - 1]["1 to 30"] = dcTotOne;
+                        dtbl.Rows[dtbl.Rows.Count - 1]["31 to 60"] = dcTotTwo;
+                        dtbl.Rows[dtbl.Rows.Count - 1]["61 to 90"] = dcTotThree;
+                        dtbl.Rows[dtbl.Rows.Count - 1]["90 above"] = dcTotFour;
+                        dgvReport.DataSource = dtbl;
+
+                        if (dgvReport.Columns.Count > 0)
                         {
-                            dgvReport.Columns["ledgerId"].Visible = false;
-                            dgvReport.Columns["masterId"].Visible = false;
-                            dgvReport.Columns["voucherTypeId"].Visible = false;
-                            dgvReport.Columns["VoucherType"].Visible = false;
-                            dgvReport.Columns["VoucherNo"].Visible = false;
-                            dgvReport.Columns["Date"].Visible = true;
-                            dgvReport.Columns["Account Ledger"].Visible = true;
+                            if (rbtnLedgerWise.Checked == true)
+                            {
+                                dgvReport.Columns["ledgerId"].Visible = false;
+                                dgvReport.Columns["masterId"].Visible = false;
+                                dgvReport.Columns["voucherTypeId"].Visible = false;
+                                dgvReport.Columns["VoucherType"].Visible = false;
+                                dgvReport.Columns["VoucherNo"].Visible = false;
+                                dgvReport.Columns["Date"].Visible = true;
+                                dgvReport.Columns["Account Ledger"].Visible = true;
+                            }
+                            else
+                            {
+                                dgvReport.Columns["masterId"].Visible = false;
+                                dgvReport.Columns["ledgerId"].Visible = false;
+                                dgvReport.Columns["voucherTypeId"].Visible = false;
+                                dgvReport.Columns["VoucherType"].Visible = true;
+                                dgvReport.Columns["VoucherNo"].Visible = true;
+                                dgvReport.Columns["Date"].Visible = true;
+                                dgvReport.Columns["Account Ledger"].Visible = false;
+                            }
                         }
-                        else
-                        {
-                            dgvReport.Columns["masterId"].Visible = false;
-                            dgvReport.Columns["ledgerId"].Visible = false;
-                            dgvReport.Columns["voucherTypeId"].Visible = false;
-                            dgvReport.Columns["VoucherType"].Visible = true;
-                            dgvReport.Columns["VoucherNo"].Visible = true;
-                            dgvReport.Columns["Date"].Visible = true;
-                            dgvReport.Columns["Account Ledger"].Visible = false;
-                        }
+                        dgvReport.Columns["1 to 30"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                        dgvReport.Columns["31 to 60"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                        dgvReport.Columns["61 to 90"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                        dgvReport.Columns["90 above"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                     }
-                    dgvReport.Columns["1 to 30"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    dgvReport.Columns["31 to 60"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    dgvReport.Columns["61 to 90"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    dgvReport.Columns["90 above"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    
+                    
                     lblTotOne.Text = "1 to 30: " + dcTotOne.ToString();
                     lblTotTwo.Text = "31 to 60: " + dcTotTwo.ToString();
                     lblTotThree.Text = "61 to 90: " + dcTotThree.ToString();
