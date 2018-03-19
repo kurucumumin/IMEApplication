@@ -69,10 +69,13 @@ namespace LoginForm
             if (IME.VoucherTypes.Where(a => a.voucherTypeId == decJournalVoucherTypeId).FirstOrDefault().methodOfVoucherNumbering == "Automatic") isAutomatic = true;
 
             SuffixPrefix sp = IME.SuffixPrefixes.Where(a => a.voucherTypeId == decJournalVoucherTypeId).Where(b => b.fromDate < dtpVoucherDate.Value).Where(c => c.toDate > dtpVoucherDate.Value).FirstOrDefault();
-
-            decJournalSuffixPrefixId = sp.suffixprefixId;
-            strPrefix = sp.prefix;
-            strSuffix = sp.suffix;
+            if (sp!=null)
+            {
+                decJournalSuffixPrefixId = sp.suffixprefixId;
+                strPrefix = sp.prefix;
+                strSuffix = sp.suffix;
+            }
+            
             this.Text = strVoucherTypeName;
             base.Show();
             clear();
@@ -192,12 +195,17 @@ namespace LoginForm
                 //===================================================================================================================//
                 if (isAutomatic)
                 {
+
                     SuffixPrefix sp = IME.SuffixPrefixes.Where(a => a.voucherTypeId == decJournalVoucherTypeId).Where(b => b.fromDate < dtpVoucherDate.Value).Where(c => c.toDate > dtpVoucherDate.Value).FirstOrDefault();
+                if (sp!=null)
+                {
                     strPrefix = sp.prefix;
                     strSuffix = sp.suffix;
                     strInvoiceNo = strPrefix + strVoucherNo + strSuffix;
                     txtVoucherNo.Text = strInvoiceNo;
                     txtVoucherNo.ReadOnly = true;
+                }
+                    
                 }
                 else
                 {

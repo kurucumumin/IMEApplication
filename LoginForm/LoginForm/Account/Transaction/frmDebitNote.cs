@@ -80,15 +80,30 @@ namespace LoginForm
         {
             try
             {
+                
                 decDebitNoteVoucherTypeId = decVoucherTypeId;
                 VoucherTypeSP spVoucherType = new VoucherTypeSP();
                 isAutomatic = spVoucherType.CheckMethodOfVoucherNumbering(decDebitNoteVoucherTypeId);
                 SuffixPrefixSP spSuffisprefix = new SuffixPrefixSP();
                 SuffixPrefix infoSuffixPrefix = new SuffixPrefix();
-                infoSuffixPrefix = spSuffisprefix.GetSuffixPrefixDetails(decDebitNoteVoucherTypeId, dtpVoucherDate.Value);
-                decDebitNoteSuffixPrefixId = infoSuffixPrefix.suffixprefixId;
-                strPrefix = infoSuffixPrefix.prefix;
-                strSuffix = infoSuffixPrefix.suffix;
+                //bu fonksiyondan emin değilim
+                if (dtpVoucherDate == null)
+                {
+                    infoSuffixPrefix = spSuffisprefix.GetSuffixPrefixDetails(decDebitNoteVoucherTypeId, DateTime.Now);
+                }
+                else
+                {
+                    infoSuffixPrefix = spSuffisprefix.GetSuffixPrefixDetails(decDebitNoteVoucherTypeId, dtpVoucherDate.Value);
+                }
+             
+                if (infoSuffixPrefix != null)
+                {
+                    decDebitNoteSuffixPrefixId = infoSuffixPrefix.suffixprefixId;
+                    strPrefix = infoSuffixPrefix.prefix;
+                    strSuffix = infoSuffixPrefix.suffix;
+                }
+                
+
                 this.Text = strDebitNoteVoucherTypeName;
                 base.Show();
                 Clear();
@@ -140,16 +155,40 @@ namespace LoginForm
                   
                     strVoucherNo = "0"; //strMax;
                 }
-                strVoucherNo = obj.VoucherNumberAutomaicGeneration(decDebitNoteVoucherTypeId, Convert.ToDecimal(strVoucherNo), dtpVoucherDate.Value, tableName);
+                if (dtpVoucherDate == null)
+                {
+                    strVoucherNo = obj.VoucherNumberAutomaicGeneration(decDebitNoteVoucherTypeId, Convert.ToDecimal(strVoucherNo), DateTime.Now, tableName);
+                }
+                else
+                {
+                    strVoucherNo = obj.VoucherNumberAutomaicGeneration(decDebitNoteVoucherTypeId, Convert.ToDecimal(strVoucherNo), dtpVoucherDate.Value, tableName);
+                }
+                   
 
                 if (Convert.ToDecimal(strVoucherNo) != spDebitNoteMaster.DebitNoteMasterGetMaxPlusOne(decDebitNoteVoucherTypeId))
                 {
                     strVoucherNo = spDebitNoteMaster.DebitNoteMasterGetMax(decDebitNoteVoucherTypeId).ToString();
-                    strVoucherNo = obj.VoucherNumberAutomaicGeneration(decDebitNoteVoucherTypeId, Convert.ToDecimal(strVoucherNo), dtpVoucherDate.Value, tableName);
-                    if (spDebitNoteMaster.DebitNoteMasterGetMax(decDebitNoteVoucherTypeId).ToString() == "0")
+                    if (dtpVoucherDate==null)
+                    {
+                        strVoucherNo = obj.VoucherNumberAutomaicGeneration(decDebitNoteVoucherTypeId, Convert.ToDecimal(strVoucherNo), DateTime.Now, tableName);
+                    }
+                    else
+                    {
+                        strVoucherNo = obj.VoucherNumberAutomaicGeneration(decDebitNoteVoucherTypeId, Convert.ToDecimal(strVoucherNo), dtpVoucherDate.Value, tableName);
+                    }
+                        
+                    if (spDebitNoteMaster.DebitNoteMasterGetMax(decDebitNoteVoucherTypeId)==0)
                     {
                         strVoucherNo = "0";
-                        strVoucherNo = obj.VoucherNumberAutomaicGeneration(decDebitNoteVoucherTypeId, Convert.ToDecimal(strVoucherNo), dtpVoucherDate.Value, tableName);
+                        if (dtpVoucherDate == null)
+                        {
+                            strVoucherNo = obj.VoucherNumberAutomaicGeneration(decDebitNoteVoucherTypeId, Convert.ToDecimal(strVoucherNo), DateTime.Now, tableName);
+                        }
+                        else
+                        {
+                            strVoucherNo = obj.VoucherNumberAutomaicGeneration(decDebitNoteVoucherTypeId, Convert.ToDecimal(strVoucherNo), dtpVoucherDate.Value, tableName);
+                        }
+                        
                     }
                 }
 
@@ -158,13 +197,17 @@ namespace LoginForm
                 {
                     SuffixPrefixSP spSuffisprefix = new SuffixPrefixSP();
                     SuffixPrefix infoSuffixPrefix = new SuffixPrefix();
-
                     infoSuffixPrefix = spSuffisprefix.GetSuffixPrefixDetails(decDebitNoteVoucherTypeId, dtpVoucherDate.Value);
-                    strPrefix = infoSuffixPrefix.prefix;
-                    strSuffix = infoSuffixPrefix.suffix;
-                    strInvoiceNo = strPrefix + strVoucherNo + strSuffix;
-                    txtVoucherNo.Text = strInvoiceNo;
-                    txtVoucherNo.ReadOnly = true;
+                    if (infoSuffixPrefix==null)
+                    {
+                        strPrefix = infoSuffixPrefix.prefix;
+                        strSuffix = infoSuffixPrefix.suffix;
+                        strInvoiceNo = strPrefix + strVoucherNo + strSuffix;
+                        txtVoucherNo.Text = strInvoiceNo;
+                        txtVoucherNo.ReadOnly = true;
+                    }
+                    
+                   
                 }
                 else
                 {
