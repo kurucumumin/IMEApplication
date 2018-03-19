@@ -22,7 +22,7 @@ namespace LoginForm.CustomControls
 
         private void DevelopmentControl_Load(object sender, EventArgs e)
         {
-            //checkAuthorities();
+            checkAuthorities();
         }
 
         public void checkAuthorities()
