@@ -2165,6 +2165,12 @@
     <Compile Include="QuotationModule\ViewProductHistory.Designer.cs">
       <DependentUpon>ViewProductHistory.cs</DependentUpon>
     </Compile>
+    <Compile Include="SaleOrder\SaleDevelopment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleOrder\SaleDevelopment.designer.cs">
+      <DependentUpon>SaleDevelopment.cs</DependentUpon>
+    </Compile>
     <Compile Include="SaleOrder\FormSaleOrderAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2651,6 +2657,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuotationModule\ViewProductHistory.resx">
       <DependentUpon>ViewProductHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaleOrder\SaleDevelopment.resx">
+      <DependentUpon>SaleDevelopment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SaleOrder\FormSaleOrderAdd.resx">
       <DependentUpon>FormSaleOrderAdd.cs</DependentUpon>
