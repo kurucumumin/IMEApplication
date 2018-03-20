@@ -107,11 +107,12 @@ namespace LoginForm.nsSaleOrder
                     }
                 }
                 this.Close();
-                FormSaleOrderAdd form1 = new FormSaleOrderAdd((Customer)lbCustomerList.SelectedItem, list, quotationIDs);
-                //TODO form tekrar açılıp kapatımış. Doğru olan yöntemi bul
-                FormSalesOrderMain f = new FormSalesOrderMain();
-                f.Close();
-                form1.ShowDialog();
+                SaleDevelopment form1 = new SaleDevelopment((Customer)lbCustomerList.SelectedItem, list, quotationIDs);
+                ////TODO form tekrar açılıp kapatımış. Doğru olan yöntemi bul
+                //FormSalesOrderMain f = new FormSalesOrderMain();
+                //f.Close();
+                form1.Show();
+                form1.Activate();
 
             }
             else
