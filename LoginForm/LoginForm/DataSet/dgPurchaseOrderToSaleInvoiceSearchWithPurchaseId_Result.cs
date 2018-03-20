@@ -10,9 +10,8 @@
 namespace LoginForm.DataSet
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class RS_InvoiceDetails
+    public partial class dgPurchaseOrderToSaleInvoiceSearchWithPurchaseId_Result
     {
         public int ID { get; set; }
         public Nullable<int> RS_InvoiceID { get; set; }
@@ -32,7 +31,5 @@ namespace LoginForm.DataSet
         public Nullable<decimal> DeliveryNumber { get; set; }
         public Nullable<int> DeliveryItemNumber { get; set; }
         public Nullable<int> IsSaleInvoiced { get; set; }
-    
-        public virtual RS_Invoice RS_Invoice { get; set; }
     }
 }

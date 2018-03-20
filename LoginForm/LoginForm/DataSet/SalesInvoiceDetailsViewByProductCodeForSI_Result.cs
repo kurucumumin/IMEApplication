@@ -20,9 +20,6 @@ namespace LoginForm.DataSet
         public string barcode { get; set; }
         public string Article_No { get; set; }
         public string Article_Desc { get; set; }
-        public decimal unitConversionId { get; set; }
-        public Nullable<decimal> conversionRate { get; set; }
-        public Nullable<decimal> batchId { get; set; }
         public Nullable<decimal> discountPercent { get; set; }
         public Nullable<decimal> discount { get; set; }
         public Nullable<decimal> netvalue { get; set; }

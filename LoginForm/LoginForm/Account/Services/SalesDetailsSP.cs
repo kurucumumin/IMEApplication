@@ -370,8 +370,8 @@ namespace LoginForm.Account.Services
                     row["barcode"] = item.barcode;
                     row["Article_No"] = item.Article_No;
                     row["Article_Desc"] = item.Article_Desc;
-                    row["unitConversionId"] =  item.unitConversionId;
-                    row["conversionRate"] = item.conversionRate;
+                    //row["unitConversionId"] =  item.unitConversionId;
+                    //row["conversionRate"] = item.conversionRate;
                     row["discountPercent"] = item.discountPercent;
                     row["netvalue"] = item.netvalue;
                     row["discount"] = item.discount;

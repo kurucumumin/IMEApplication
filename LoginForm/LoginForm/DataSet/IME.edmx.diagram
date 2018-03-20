@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e8aed317712d492b9111063997f4ea6c" Name="Diagram1">
+      <Diagram DiagramId="087e47d6de6c41988386ca5c6e2be2a3" Name="Diagram1">
         <EntityTypeShape EntityType="IMEModel.AccountGroup" Width="1.5" PointX="9.75" PointY="61" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.AccountLedger" Width="1.5" PointX="12" PointY="60" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.AdvancePayment" Width="1.5" PointX="20.25" PointY="85.375" IsExpanded="true" />
@@ -106,7 +106,7 @@
         <EntityTypeShape EntityType="IMEModel.Reminder" Width="1.5" PointX="13.75" PointY="12.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.RoleValue" Width="1.5" PointX="9" PointY="54" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.Route" Width="1.5" PointX="9.75" PointY="67.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.RS_Invoice" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.RS_Invoice" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.RS_InvoiceDetails" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.RSPro" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.SalaryPackage" Width="1.5" PointX="6.75" PointY="95.25" IsExpanded="true" />
