@@ -106,23 +106,21 @@ namespace LoginForm.nsSaleOrder
                         quotationIDs += " , ";
                     }
                 }
-                this.Close();
+                
                 SaleDevelopment form1 = new SaleDevelopment((Customer)lbCustomerList.SelectedItem, list, quotationIDs);
                 ////TODO form tekrar açılıp kapatımış. Doğru olan yöntemi bul
                 //FormSalesOrderMain f = new FormSalesOrderMain();
                 //f.Close();
                 form1.Show();
-                form1.Activate();
-
+                this.Close();
             }
             else
             {
-                this.Close();
-                FormSaleOrderAdd form1 = new FormSaleOrderAdd((Customer)lbCustomerList.SelectedItem);
+                SaleDevelopment form1 = new SaleDevelopment((Customer)lbCustomerList.SelectedItem);
                 //TODO form tekrar açılıp kapatımış. Doğru olan yöntemi bul
                 FormSalesOrderMain f = new FormSalesOrderMain();
-                f.Close();
-                form1.ShowDialog();
+                form1.Show();
+                this.Close();
             }
         }
 
@@ -145,11 +143,11 @@ namespace LoginForm.nsSaleOrder
 
         private void txtSearchCustomer_KeyDown(object sender, KeyEventArgs e)
         {
-            int i = 0;
+            //int i = 0;
             if (e.KeyCode == Keys.Enter)
             {
-                tempCustomerList = customerList.Where(c => c.c_name.IndexOf(txtSearchCustomer.Text, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
-                i++;
+                tempCustomerList = customerList.ToList().Where(c => c.c_name.IndexOf(txtSearchCustomer.Text, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+                //i++;
                 lbCustomerList.DataSource = null;
                 lbCustomerList.DataSource = tempCustomerList;
                 lbCustomerList.DisplayMember = "c_name";
