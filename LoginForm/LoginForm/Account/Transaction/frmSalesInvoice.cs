@@ -568,7 +568,7 @@ namespace LoginForm
         /// </summary>
         /// <param name="decSalesInvoiceVoucherTypeId"></param>
         /// <param name="strVoucherTypeName"></param>
-        public void CallFromVoucherTypeSelection(decimal decSalesInvoiceVoucherTypeId, string strVoucherTypeName)
+        public void  CallFromVoucherTypeSelection(decimal decSalesInvoiceVoucherTypeId, string strVoucherTypeName)
         {
             decimal decDailySuffixPrefixId = 0;
             VoucherTypeSP spVoucherType = new VoucherTypeSP();
@@ -4924,12 +4924,33 @@ namespace LoginForm
 
         private void frmSalesInvoice_Load(object sender, EventArgs e)
         {
+            if (dgvSalesInvoice.Rows[0].Cells[dgvtxtSalesInvoiceProductCode.Index].Value==null)
+            {
                 SalesInvoiceSettingsCheck();
                 formLoadDefaultFunctions();
                 Clear();
+            }
+                
            
         }
 
+        public frmSalesInvoice(DataTable dt)
+        {
+            InitializeComponent();
+
+            foreach (DataRow item in dt.Rows)
+            {
+                DataGridViewRow row = (DataGridViewRow)dgvSalesInvoice.Rows[0].Clone();
+                row.Cells[dgvtxtSalesInvoiceProductCode.Index].Value = item["ProductID"].ToString();
+                row.Cells[dgvtxtSalesInvoiceQty.Index].Value = item["Quantity"].ToString();
+                row.Cells[dgvtxtSalesInvoiceDiscountAmount.Index].Value = item["Discount"].ToString();
+                dgvSalesInvoice.Rows.Add(row);
+               
+            }
+            this.Show();
+            //dgvSalesInvoice.DataSource = grid.DataSource;
+           
+        }
 
         private void btnNewLedger_Click(object sender, EventArgs e)
         {

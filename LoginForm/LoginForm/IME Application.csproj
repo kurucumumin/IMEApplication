@@ -12,7 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\pomak\Desktop\</PublishUrl>
+    <PublishUrl>C:\Users\cm_gn\Desktop\Shaji\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -22,7 +22,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>87</ApplicationRevision>
+    <ApplicationRevision>86</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -1206,6 +1206,9 @@
     <Compile Include="DataSet\DesignationView_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\dgPurchaseOrderToSaleInvoiceSearchWithPurchaseId_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\DiscountValue.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -2111,6 +2114,12 @@
     <Compile Include="PurchaseOrder\PurchaseOrderMain.Designer.cs">
       <DependentUpon>PurchaseOrderMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="PurchaseOrder\RSInvToSaleInv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseOrder\RSInvToSaleInv.Designer.cs">
+      <DependentUpon>RSInvToSaleInv.cs</DependentUpon>
+    </Compile>
     <Compile Include="QuotationModule\FormQuaotationCustomerSearch.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2170,12 +2179,6 @@
     </Compile>
     <Compile Include="QuotationModule\ViewProductHistory.Designer.cs">
       <DependentUpon>ViewProductHistory.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SaleOrder\SaleDevelopment.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SaleOrder\SaleDevelopment.designer.cs">
-      <DependentUpon>SaleDevelopment.cs</DependentUpon>
     </Compile>
     <Compile Include="SaleOrder\FormSaleOrderAdd.cs">
       <SubType>Form</SubType>
@@ -2634,6 +2637,9 @@
     <EmbeddedResource Include="PurchaseOrder\PurchaseOrderMain.resx">
       <DependentUpon>PurchaseOrderMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseOrder\RSInvToSaleInv.resx">
+      <DependentUpon>RSInvToSaleInv.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="QuotationModule\FormQuaotationCustomerSearch.resx">
       <DependentUpon>FormQuaotationCustomerSearch.cs</DependentUpon>
     </EmbeddedResource>
@@ -2663,9 +2669,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuotationModule\ViewProductHistory.resx">
       <DependentUpon>ViewProductHistory.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SaleOrder\SaleDevelopment.resx">
-      <DependentUpon>SaleDevelopment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SaleOrder\FormSaleOrderAdd.resx">
       <DependentUpon>FormSaleOrderAdd.cs</DependentUpon>
@@ -2806,12 +2809,12 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 ve x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1 </ProductName>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
