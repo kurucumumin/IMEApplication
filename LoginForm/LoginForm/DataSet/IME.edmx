@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="IMEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="IMEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AccountGroup">
           <Key>
             <PropertyRef Name="accountGroupId" />
@@ -1496,9 +1496,9 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="BillingDocumentDate" Type="datetime" />
           <Property Name="SupplyingECCompany" Type="nvarchar" MaxLength="4" />
           <Property Name="CustomerReference" Type="nvarchar" MaxLength="10" />
-          <Property Name="InvoiceTaxValue" Type="decimal" Precision="15" Scale="2" />
-          <Property Name="InvoiceGoodsValue" Type="decimal" Precision="15" Scale="2" />
-          <Property Name="InvoiceNettValue" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="InvoiceTaxValue" Type="decimal" Precision="17" Scale="2" />
+          <Property Name="InvoiceGoodsValue" Type="decimal" Precision="17" Scale="2" />
+          <Property Name="InvoiceNettValue" Type="decimal" Precision="17" Scale="2" />
           <Property Name="Currency" Type="nvarchar" MaxLength="3" />
           <Property Name="AirwayBillNumber" Type="nvarchar" MaxLength="20" />
         </EntityType>
@@ -1512,16 +1512,16 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="PurchaseOrderItemNumber" Type="int" />
           <Property Name="ProductNumber" Type="nvarchar" MaxLength="18" />
           <Property Name="BillingItemNumber" Type="int" />
-          <Property Name="Quantity" Type="decimal" Precision="11" Scale="3" />
+          <Property Name="Quantity" Type="decimal" Precision="14" Scale="3" />
           <Property Name="SalesUnit" Type="nvarchar" MaxLength="3" />
-          <Property Name="UnitPrice" Type="decimal" Precision="6" Scale="4" />
-          <Property Name="Discount" Type="decimal" Precision="8" Scale="2" />
-          <Property Name="GoodsValue" Type="decimal" Precision="8" Scale="2" />
-          <Property Name="Amount" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="UnitPrice" Type="decimal" Precision="10" Scale="4" />
+          <Property Name="Discount" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="GoodsValue" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Amount" Type="decimal" Precision="10" Scale="2" />
           <Property Name="CCCNNO" Type="nvarchar" MaxLength="15" />
           <Property Name="CountryofOrigin" Type="nvarchar" MaxLength="3" />
           <Property Name="ArticleDescription" Type="nvarchar" MaxLength="40" />
-          <Property Name="DeliveryNumber" Type="int" />
+          <Property Name="DeliveryNumber" Type="decimal" Precision="10" Scale="0" />
           <Property Name="DeliveryItemNumber" Type="int" />
         </EntityType>
         <EntityType Name="RSPro">
@@ -2291,6 +2291,12 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="Brandname" Type="nvarchar" MaxLength="100" />
           <Property Name="dependantTable" Type="varchar" MaxLength="3" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="vwMaxRate">
+          <Property Name="max" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="date" Type="datetime" />
+        </EntityType>-->
         <Association Name="FK__AccountLe__accou__5E74FADA">
           <End Role="AccountGroup" Type="Self.AccountGroup" Multiplicity="0..1" />
           <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="*" />
@@ -2867,7 +2873,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DailyAtte__daily__1BBE003C">
+        <Association Name="FK__DailyAtte__daily__18E19391">
           <End Role="DailyAttendanceMaster" Type="Self.DailyAttendanceMaster" Multiplicity="0..1" />
           <End Role="DailyAttendanceDetails" Type="Self.DailyAttendanceDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2879,7 +2885,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DailyAtte__Worke__1AC9DC03">
+        <Association Name="FK__DailyAtte__Worke__17ED6F58">
           <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
           <End Role="DailyAttendanceDetails" Type="Self.DailyAttendanceDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3527,7 +3533,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MonthlySa__emplo__43CBF196">
+        <Association Name="FK__MonthlySa__emplo__5402595F">
           <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
           <End Role="MonthlySalaryDetail" Type="Self.MonthlySalaryDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3539,7 +3545,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MonthlySa__month__04A590BA">
+        <Association Name="FK__MonthlySa__month__1E6562BD">
           <End Role="MonthlySalary" Type="Self.MonthlySalary" Multiplicity="0..1" />
           <End Role="MonthlySalaryDetails" Type="Self.MonthlySalaryDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3551,7 +3557,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MonthlySa__month__45B43A08">
+        <Association Name="FK__MonthlySa__month__55EAA1D1">
           <End Role="MonthlySalary" Type="Self.MonthlySalary" Multiplicity="0..1" />
           <End Role="MonthlySalaryDetail" Type="Self.MonthlySalaryDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3563,7 +3569,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MonthlySa__salar__44C015CF">
+        <Association Name="FK__MonthlySa__salar__54F67D98">
           <End Role="SalaryPackage" Type="Self.SalaryPackage" Multiplicity="0..1" />
           <End Role="MonthlySalaryDetail" Type="Self.MonthlySalaryDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3575,7 +3581,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OtherBanc__Compa__1C7D1A4B">
+        <Association Name="FK__OtherBanc__Compa__457F2FDE">
           <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
           <End Role="OtherBanchesStocks" Type="Self.OtherBanchesStocks" Multiplicity="*" />
           <ReferentialConstraint>
@@ -5039,7 +5045,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__RS_Invoic__RS_In__51C50B32">
+        <Association Name="FK__RS_Invoic__RS_In__5C629536">
           <End Role="RS_Invoice" Type="Self.RS_Invoice" Multiplicity="0..1" />
           <End Role="RS_InvoiceDetails" Type="Self.RS_InvoiceDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -7431,6 +7437,10 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Parameter Name="salesMasterId" Type="varchar" Mode="In" />
           <Parameter Name="voucherTypeId" Type="decimal" Mode="In" />
         </Function>
+        <Function Name="GetSuffixPrefixDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="voucherId" Type="decimal" Mode="In" />
+          <Parameter Name="date" Type="datetime" Mode="In" />
+        </Function>
         <Function Name="GetTaxIdForTaxSelection" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="voucherTypeId" Type="decimal" Mode="In" />
         </Function>
@@ -7552,6 +7562,13 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Parameter Name="salaryMonth" Type="datetime" Mode="In" />
         </Function>
         <Function Name="MonthlySalaryVoucherDetailsViewAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="strMonth" Type="varchar(max)" Mode="In" />
+          <Parameter Name="Month" Type="varchar(max)" Mode="In" />
+          <Parameter Name="monthYear" Type="varchar(max)" Mode="In" />
+          <Parameter Name="isEditMode" Type="numeric" Mode="In" />
+          <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="MonthlySalaryVoucherDetailViewAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="strMonth" Type="varchar(max)" Mode="In" />
           <Parameter Name="Month" Type="varchar(max)" Mode="In" />
           <Parameter Name="monthYear" Type="varchar(max)" Mode="In" />
@@ -8144,7 +8161,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Parameter Name="CCCNNO" Type="nvarchar" Mode="In" />
           <Parameter Name="CountryofOrigin" Type="nvarchar" Mode="In" />
           <Parameter Name="ArticleDescription" Type="nvarchar" Mode="In" />
-          <Parameter Name="DeliveryNumber" Type="int" Mode="In" />
+          <Parameter Name="DeliveryNumber" Type="decimal" Mode="In" />
           <Parameter Name="DeliveryItemNumber" Type="int" Mode="In" />
         </Function>
         <Function Name="RSInvoiceADD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -8316,6 +8333,11 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
         </Function>
         <Function Name="SalesInvoiceGridfillAgainestDeliveryNoteUsingDeliveryNoteDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="deliveryNoteMasterId" Type="numeric" Mode="In" />
+          <Parameter Name="salesMasterId" Type="numeric" Mode="In" />
+          <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="SalesInvoiceGridfillAgainestSalesOrderUsingSalesDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="salesOrderMasterId" Type="numeric" Mode="In" />
           <Parameter Name="salesMasterId" Type="numeric" Mode="In" />
           <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
         </Function>
@@ -9277,11 +9299,11 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <End Role="CustomerTitle" EntitySet="CustomerTitle" />
             <End Role="CustomerWorker" EntitySet="CustomerWorker" />
           </AssociationSet>
-          <AssociationSet Name="FK__DailyAtte__daily__1BBE003C" Association="Self.FK__DailyAtte__daily__1BBE003C">
+          <AssociationSet Name="FK__DailyAtte__daily__18E19391" Association="Self.FK__DailyAtte__daily__18E19391">
             <End Role="DailyAttendanceMaster" EntitySet="DailyAttendanceMaster" />
             <End Role="DailyAttendanceDetails" EntitySet="DailyAttendanceDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__DailyAtte__Worke__1AC9DC03" Association="Self.FK__DailyAtte__Worke__1AC9DC03">
+          <AssociationSet Name="FK__DailyAtte__Worke__17ED6F58" Association="Self.FK__DailyAtte__Worke__17ED6F58">
             <End Role="Worker" EntitySet="Worker" />
             <End Role="DailyAttendanceDetails" EntitySet="DailyAttendanceDetails" />
           </AssociationSet>
@@ -9497,23 +9519,23 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="MaterialReceiptMaster" EntitySet="MaterialReceiptMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__MonthlySa__emplo__43CBF196" Association="Self.FK__MonthlySa__emplo__43CBF196">
+          <AssociationSet Name="FK__MonthlySa__emplo__5402595F" Association="Self.FK__MonthlySa__emplo__5402595F">
             <End Role="Worker" EntitySet="Worker" />
             <End Role="MonthlySalaryDetail" EntitySet="MonthlySalaryDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__MonthlySa__month__04A590BA" Association="Self.FK__MonthlySa__month__04A590BA">
+          <AssociationSet Name="FK__MonthlySa__month__1E6562BD" Association="Self.FK__MonthlySa__month__1E6562BD">
             <End Role="MonthlySalary" EntitySet="MonthlySalary" />
             <End Role="MonthlySalaryDetails" EntitySet="MonthlySalaryDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__MonthlySa__month__45B43A08" Association="Self.FK__MonthlySa__month__45B43A08">
+          <AssociationSet Name="FK__MonthlySa__month__55EAA1D1" Association="Self.FK__MonthlySa__month__55EAA1D1">
             <End Role="MonthlySalary" EntitySet="MonthlySalary" />
             <End Role="MonthlySalaryDetail" EntitySet="MonthlySalaryDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__MonthlySa__salar__44C015CF" Association="Self.FK__MonthlySa__salar__44C015CF">
+          <AssociationSet Name="FK__MonthlySa__salar__54F67D98" Association="Self.FK__MonthlySa__salar__54F67D98">
             <End Role="SalaryPackage" EntitySet="SalaryPackage" />
             <End Role="MonthlySalaryDetail" EntitySet="MonthlySalaryDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__OtherBanc__Compa__1C7D1A4B" Association="Self.FK__OtherBanc__Compa__1C7D1A4B">
+          <AssociationSet Name="FK__OtherBanc__Compa__457F2FDE" Association="Self.FK__OtherBanc__Compa__457F2FDE">
             <End Role="Company" EntitySet="Company" />
             <End Role="OtherBanchesStocks" EntitySet="OtherBanchesStocks" />
           </AssociationSet>
@@ -10001,7 +10023,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <End Role="Area" EntitySet="Area" />
             <End Role="Route" EntitySet="Route" />
           </AssociationSet>
-          <AssociationSet Name="FK__RS_Invoic__RS_In__51C50B32" Association="Self.FK__RS_Invoic__RS_In__51C50B32">
+          <AssociationSet Name="FK__RS_Invoic__RS_In__5C629536" Association="Self.FK__RS_Invoic__RS_In__5C629536">
             <End Role="RS_Invoice" EntitySet="RS_Invoice" />
             <End Role="RS_InvoiceDetails" EntitySet="RS_InvoiceDetails" />
           </AssociationSet>
@@ -10522,7 +10544,8 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <End Role="SaleOrderDetail" EntitySet="SaleOrderDetail" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="IMEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -10772,7 +10795,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="pan" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="BranchCode" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Currency" Relationship="Self.FK__Company__currenc__0371755F" FromRole="Company" ToRole="Currency" />
-          <NavigationProperty Name="OtherBanchesStocks" Relationship="Self.FK__OtherBanc__Compa__1C7D1A4B" FromRole="Company" ToRole="OtherBanchesStocks" />
+          <NavigationProperty Name="OtherBanchesStocks" Relationship="Self.FK__OtherBanc__Compa__457F2FDE" FromRole="Company" ToRole="OtherBanchesStocks" />
           <NavigationProperty Name="Managements" Relationship="Self.FK_ManagementCompany" FromRole="Company" ToRole="Management" />
         </EntityType>
         <EntityType Name="CompanyPath">
@@ -11033,8 +11056,8 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="WorkerId" Type="Int32" />
           <Property Name="status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="DailyAttendanceMaster" Relationship="Self.FK__DailyAtte__daily__1BBE003C" FromRole="DailyAttendanceDetails" ToRole="DailyAttendanceMaster" />
-          <NavigationProperty Name="Worker" Relationship="Self.FK__DailyAtte__Worke__1AC9DC03" FromRole="DailyAttendanceDetails" ToRole="Worker" />
+          <NavigationProperty Name="DailyAttendanceMaster" Relationship="Self.FK__DailyAtte__daily__18E19391" FromRole="DailyAttendanceDetails" ToRole="DailyAttendanceMaster" />
+          <NavigationProperty Name="Worker" Relationship="Self.FK__DailyAtte__Worke__17ED6F58" FromRole="DailyAttendanceDetails" ToRole="Worker" />
         </EntityType>
         <EntityType Name="DailyAttendanceMaster">
           <Key>
@@ -11043,7 +11066,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="dailyAttendanceMasterId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="date" Type="DateTime" Precision="3" />
           <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="DailyAttendanceDetails" Relationship="Self.FK__DailyAtte__daily__1BBE003C" FromRole="DailyAttendanceMaster" ToRole="DailyAttendanceDetails" />
+          <NavigationProperty Name="DailyAttendanceDetails" Relationship="Self.FK__DailyAtte__daily__18E19391" FromRole="DailyAttendanceMaster" ToRole="DailyAttendanceDetails" />
         </EntityType>
         <EntityType Name="DailyDiscontinued">
           <Key>
@@ -11560,8 +11583,8 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="monthlySalaryId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="salaryMonth" Type="DateTime" Precision="3" />
           <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="MonthlySalaryDetails" Relationship="Self.FK__MonthlySa__month__04A590BA" FromRole="MonthlySalary" ToRole="MonthlySalaryDetails" />
-          <NavigationProperty Name="MonthlySalaryDetails1" Relationship="Self.FK__MonthlySa__month__45B43A08" FromRole="MonthlySalary" ToRole="MonthlySalaryDetail" />
+          <NavigationProperty Name="MonthlySalaryDetails" Relationship="Self.FK__MonthlySa__month__1E6562BD" FromRole="MonthlySalary" ToRole="MonthlySalaryDetails" />
+          <NavigationProperty Name="MonthlySalaryDetails1" Relationship="Self.FK__MonthlySa__month__55EAA1D1" FromRole="MonthlySalary" ToRole="MonthlySalaryDetail" />
         </EntityType>
         <EntityType Name="MonthlySalaryDetail">
           <Key>
@@ -11571,9 +11594,9 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="employeeId" Type="Int32" />
           <Property Name="salaryPackageId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="monthlySalaryId" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="MonthlySalary" Relationship="Self.FK__MonthlySa__month__45B43A08" FromRole="MonthlySalaryDetail" ToRole="MonthlySalary" />
-          <NavigationProperty Name="Worker" Relationship="Self.FK__MonthlySa__emplo__43CBF196" FromRole="MonthlySalaryDetail" ToRole="Worker" />
-          <NavigationProperty Name="SalaryPackage" Relationship="Self.FK__MonthlySa__salar__44C015CF" FromRole="MonthlySalaryDetail" ToRole="SalaryPackage" />
+          <NavigationProperty Name="MonthlySalary" Relationship="Self.FK__MonthlySa__month__55EAA1D1" FromRole="MonthlySalaryDetail" ToRole="MonthlySalary" />
+          <NavigationProperty Name="Worker" Relationship="Self.FK__MonthlySa__emplo__5402595F" FromRole="MonthlySalaryDetail" ToRole="Worker" />
+          <NavigationProperty Name="SalaryPackage" Relationship="Self.FK__MonthlySa__salar__54F67D98" FromRole="MonthlySalaryDetail" ToRole="SalaryPackage" />
         </EntityType>
         <EntityType Name="MonthlySalaryDetail1">
           <Key>
@@ -11583,7 +11606,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="employeeId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="salaryPackageId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="monthlySalaryId" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="MonthlySalary" Relationship="Self.FK__MonthlySa__month__04A590BA" FromRole="MonthlySalaryDetails" ToRole="MonthlySalary" />
+          <NavigationProperty Name="MonthlySalary" Relationship="Self.FK__MonthlySa__month__1E6562BD" FromRole="MonthlySalaryDetails" ToRole="MonthlySalary" />
         </EntityType>
         <EntityType Name="Note">
           <Key>
@@ -11627,7 +11650,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="CompanyID" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="ArticleCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Quantity" Type="Int32" />
-          <NavigationProperty Name="Company" Relationship="Self.FK__OtherBanc__Compa__1C7D1A4B" FromRole="OtherBanchesStocks" ToRole="Company" />
+          <NavigationProperty Name="Company" Relationship="Self.FK__OtherBanc__Compa__457F2FDE" FromRole="OtherBanchesStocks" ToRole="Company" />
         </EntityType>
         <EntityType Name="PartyBalance">
           <Key>
@@ -12442,12 +12465,12 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="BillingDocumentDate" Type="DateTime" Precision="3" />
           <Property Name="SupplyingECCompany" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
           <Property Name="CustomerReference" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="InvoiceTaxValue" Type="Decimal" Precision="15" Scale="2" />
-          <Property Name="InvoiceGoodsValue" Type="Decimal" Precision="15" Scale="2" />
-          <Property Name="InvoiceNettValue" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="InvoiceTaxValue" Type="Decimal" Precision="17" Scale="2" />
+          <Property Name="InvoiceGoodsValue" Type="Decimal" Precision="17" Scale="2" />
+          <Property Name="InvoiceNettValue" Type="Decimal" Precision="17" Scale="2" />
           <Property Name="Currency" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
           <Property Name="AirwayBillNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="RS_InvoiceDetails" Relationship="Self.FK__RS_Invoic__RS_In__51C50B32" FromRole="RS_Invoice" ToRole="RS_InvoiceDetails" />
+          <NavigationProperty Name="RS_InvoiceDetails" Relationship="Self.FK__RS_Invoic__RS_In__5C629536" FromRole="RS_Invoice" ToRole="RS_InvoiceDetails" />
         </EntityType>
         <EntityType Name="RS_InvoiceDetails">
           <Key>
@@ -12459,18 +12482,18 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="PurchaseOrderItemNumber" Type="Int32" />
           <Property Name="ProductNumber" Type="String" MaxLength="18" FixedLength="false" Unicode="true" />
           <Property Name="BillingItemNumber" Type="Int32" />
-          <Property Name="Quantity" Type="Decimal" Precision="11" Scale="3" />
+          <Property Name="Quantity" Type="Decimal" Precision="14" Scale="3" />
           <Property Name="SalesUnit" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
-          <Property Name="UnitPrice" Type="Decimal" Precision="6" Scale="4" />
-          <Property Name="Discount" Type="Decimal" Precision="8" Scale="2" />
-          <Property Name="GoodsValue" Type="Decimal" Precision="8" Scale="2" />
-          <Property Name="Amount" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="UnitPrice" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="Discount" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="GoodsValue" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Amount" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="CCCNNO" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="CountryofOrigin" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
           <Property Name="ArticleDescription" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-          <Property Name="DeliveryNumber" Type="Int32" />
+          <Property Name="DeliveryNumber" Type="Decimal" Precision="10" Scale="0" />
           <Property Name="DeliveryItemNumber" Type="Int32" />
-          <NavigationProperty Name="RS_Invoice" Relationship="Self.FK__RS_Invoic__RS_In__51C50B32" FromRole="RS_InvoiceDetails" ToRole="RS_Invoice" />
+          <NavigationProperty Name="RS_Invoice" Relationship="Self.FK__RS_Invoic__RS_In__5C629536" FromRole="RS_InvoiceDetails" ToRole="RS_Invoice" />
         </EntityType>
         <EntityType Name="RSPro">
           <Key>
@@ -12493,7 +12516,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="isActive" Type="Boolean" />
           <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="totalAmount" Type="Decimal" Precision="18" Scale="5" />
-          <NavigationProperty Name="MonthlySalaryDetails" Relationship="Self.FK__MonthlySa__salar__44C015CF" FromRole="SalaryPackage" ToRole="MonthlySalaryDetail" />
+          <NavigationProperty Name="MonthlySalaryDetails" Relationship="Self.FK__MonthlySa__salar__54F67D98" FromRole="SalaryPackage" ToRole="MonthlySalaryDetail" />
           <NavigationProperty Name="SalaryPackageDetails" Relationship="Self.FK__SalaryPac__salar__5689C04F" FromRole="SalaryPackage" ToRole="SalaryPackageDetail" />
           <NavigationProperty Name="Workers" Relationship="Self.FK__Worker__defaultP__587208C1" FromRole="SalaryPackage" ToRole="Worker" />
         </EntityType>
@@ -13440,14 +13463,14 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <NavigationProperty Name="Customers" Relationship="Self.FK__Customer__accoun__6EF57B66" FromRole="Worker" ToRole="Customer" />
           <NavigationProperty Name="Customers1" Relationship="Self.FK__Customer__repres__3F466844" FromRole="Worker" ToRole="Customer" />
           <NavigationProperty Name="Customers2" Relationship="Self.FK__Customer__repres__6E01572D" FromRole="Worker" ToRole="Customer" />
-          <NavigationProperty Name="DailyAttendanceDetails" Relationship="Self.FK__DailyAtte__Worke__1AC9DC03" FromRole="Worker" ToRole="DailyAttendanceDetails" />
+          <NavigationProperty Name="DailyAttendanceDetails" Relationship="Self.FK__DailyAtte__Worke__17ED6F58" FromRole="Worker" ToRole="DailyAttendanceDetails" />
           <NavigationProperty Name="DebitNoteMasters" Relationship="Self.FK__DebitNote__userI__55AAAAAF" FromRole="Worker" ToRole="DebitNoteMaster" />
           <NavigationProperty Name="DeliveryNoteMasters" Relationship="Self.FK__DeliveryN__userI__24134F1B" FromRole="Worker" ToRole="DeliveryNoteMaster" />
           <NavigationProperty Name="Designation" Relationship="Self.FK__Worker__designat__6F6A7CB2" FromRole="Worker" ToRole="Designation" />
           <NavigationProperty Name="DiscountValues" Relationship="Self.FK__DiscountV__Repre__6F4A8121" FromRole="Worker" ToRole="DiscountValues" />
           <NavigationProperty Name="JournalMasters" Relationship="Self.FK__JournalMa__userI__7CF981FA" FromRole="Worker" ToRole="JournalMaster" />
           <NavigationProperty Name="MaterialReceiptMasters" Relationship="Self.FK__MaterialR__userI__5634BA94" FromRole="Worker" ToRole="MaterialReceiptMaster" />
-          <NavigationProperty Name="MonthlySalaryDetails" Relationship="Self.FK__MonthlySa__emplo__43CBF196" FromRole="Worker" ToRole="MonthlySalaryDetail" />
+          <NavigationProperty Name="MonthlySalaryDetails" Relationship="Self.FK__MonthlySa__emplo__5402595F" FromRole="Worker" ToRole="MonthlySalaryDetail" />
           <NavigationProperty Name="Note" Relationship="Self.FK__Worker__WorkerNo__4BAC3F29" FromRole="Worker" ToRole="Notes" />
           <NavigationProperty Name="PaymentMasters" Relationship="Self.FK__PaymentMa__userI__4A6E022D" FromRole="Worker" ToRole="PaymentMaster" />
           <NavigationProperty Name="PDCClearanceMasters" Relationship="Self.FK__PDCCleara__userI__4C214075" FromRole="Worker" ToRole="PDCClearanceMaster" />
@@ -14122,7 +14145,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OtherBanc__Compa__1C7D1A4B">
+        <Association Name="FK__OtherBanc__Compa__457F2FDE">
           <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
           <End Role="OtherBanchesStocks" Type="Self.OtherBanchesStock" Multiplicity="*" />
           <ReferentialConstraint>
@@ -14674,7 +14697,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DailyAtte__daily__1BBE003C">
+        <Association Name="FK__DailyAtte__daily__18E19391">
           <End Role="DailyAttendanceMaster" Type="Self.DailyAttendanceMaster" Multiplicity="0..1" />
           <End Role="DailyAttendanceDetails" Type="Self.DailyAttendanceDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -14686,7 +14709,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DailyAtte__Worke__1AC9DC03">
+        <Association Name="FK__DailyAtte__Worke__17ED6F58">
           <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
           <End Role="DailyAttendanceDetails" Type="Self.DailyAttendanceDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -15814,7 +15837,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MonthlySa__month__04A590BA">
+        <Association Name="FK__MonthlySa__month__1E6562BD">
           <End Role="MonthlySalary" Type="Self.MonthlySalary" Multiplicity="0..1" />
           <End Role="MonthlySalaryDetails" Type="Self.MonthlySalaryDetail1" Multiplicity="*" />
           <ReferentialConstraint>
@@ -15826,7 +15849,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MonthlySa__month__45B43A08">
+        <Association Name="FK__MonthlySa__month__55EAA1D1">
           <End Role="MonthlySalary" Type="Self.MonthlySalary" Multiplicity="0..1" />
           <End Role="MonthlySalaryDetail" Type="Self.MonthlySalaryDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -15838,7 +15861,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MonthlySa__emplo__43CBF196">
+        <Association Name="FK__MonthlySa__emplo__5402595F">
           <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
           <End Role="MonthlySalaryDetail" Type="Self.MonthlySalaryDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -15850,7 +15873,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MonthlySa__salar__44C015CF">
+        <Association Name="FK__MonthlySa__salar__54F67D98">
           <End Role="SalaryPackage" Type="Self.SalaryPackage" Multiplicity="0..1" />
           <End Role="MonthlySalaryDetail" Type="Self.MonthlySalaryDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -17014,7 +17037,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__RS_Invoic__RS_In__51C50B32">
+        <Association Name="FK__RS_Invoic__RS_In__5C629536">
           <End Role="RS_Invoice" Type="Self.RS_Invoice" Multiplicity="0..1" />
           <End Role="RS_InvoiceDetails" Type="Self.RS_InvoiceDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -18130,7 +18153,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <End Role="Currency" EntitySet="Currencies" />
             <End Role="Company" EntitySet="Companies" />
           </AssociationSet>
-          <AssociationSet Name="FK__OtherBanc__Compa__1C7D1A4B" Association="Self.FK__OtherBanc__Compa__1C7D1A4B">
+          <AssociationSet Name="FK__OtherBanc__Compa__457F2FDE" Association="Self.FK__OtherBanc__Compa__457F2FDE">
             <End Role="Company" EntitySet="Companies" />
             <End Role="OtherBanchesStocks" EntitySet="OtherBanchesStocks" />
           </AssociationSet>
@@ -18314,11 +18337,11 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <End Role="CustomerWorker" EntitySet="CustomerWorkers" />
             <End Role="SaleOrder" EntitySet="SaleOrders" />
           </AssociationSet>
-          <AssociationSet Name="FK__DailyAtte__daily__1BBE003C" Association="Self.FK__DailyAtte__daily__1BBE003C">
+          <AssociationSet Name="FK__DailyAtte__daily__18E19391" Association="Self.FK__DailyAtte__daily__18E19391">
             <End Role="DailyAttendanceMaster" EntitySet="DailyAttendanceMasters" />
             <End Role="DailyAttendanceDetails" EntitySet="DailyAttendanceDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__DailyAtte__Worke__1AC9DC03" Association="Self.FK__DailyAtte__Worke__1AC9DC03">
+          <AssociationSet Name="FK__DailyAtte__Worke__17ED6F58" Association="Self.FK__DailyAtte__Worke__17ED6F58">
             <End Role="Worker" EntitySet="Workers" />
             <End Role="DailyAttendanceDetails" EntitySet="DailyAttendanceDetails" />
           </AssociationSet>
@@ -18694,19 +18717,19 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <End Role="MaterialReceiptMaster" EntitySet="MaterialReceiptMasters" />
             <End Role="RejectionOutMaster" EntitySet="RejectionOutMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__MonthlySa__month__04A590BA" Association="Self.FK__MonthlySa__month__04A590BA">
+          <AssociationSet Name="FK__MonthlySa__month__1E6562BD" Association="Self.FK__MonthlySa__month__1E6562BD">
             <End Role="MonthlySalary" EntitySet="MonthlySalaries" />
             <End Role="MonthlySalaryDetails" EntitySet="MonthlySalaryDetails1" />
           </AssociationSet>
-          <AssociationSet Name="FK__MonthlySa__month__45B43A08" Association="Self.FK__MonthlySa__month__45B43A08">
+          <AssociationSet Name="FK__MonthlySa__month__55EAA1D1" Association="Self.FK__MonthlySa__month__55EAA1D1">
             <End Role="MonthlySalary" EntitySet="MonthlySalaries" />
             <End Role="MonthlySalaryDetail" EntitySet="MonthlySalaryDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__MonthlySa__emplo__43CBF196" Association="Self.FK__MonthlySa__emplo__43CBF196">
+          <AssociationSet Name="FK__MonthlySa__emplo__5402595F" Association="Self.FK__MonthlySa__emplo__5402595F">
             <End Role="Worker" EntitySet="Workers" />
             <End Role="MonthlySalaryDetail" EntitySet="MonthlySalaryDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__MonthlySa__salar__44C015CF" Association="Self.FK__MonthlySa__salar__44C015CF">
+          <AssociationSet Name="FK__MonthlySa__salar__54F67D98" Association="Self.FK__MonthlySa__salar__54F67D98">
             <End Role="SalaryPackage" EntitySet="SalaryPackages" />
             <End Role="MonthlySalaryDetail" EntitySet="MonthlySalaryDetails" />
           </AssociationSet>
@@ -19094,7 +19117,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <End Role="VoucherType" EntitySet="VoucherTypes" />
             <End Role="RejectionOutMaster" EntitySet="RejectionOutMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__RS_Invoic__RS_In__51C50B32" Association="Self.FK__RS_Invoic__RS_In__51C50B32">
+          <AssociationSet Name="FK__RS_Invoic__RS_In__5C629536" Association="Self.FK__RS_Invoic__RS_In__5C629536">
             <End Role="RS_Invoice" EntitySet="RS_Invoice" />
             <End Role="RS_InvoiceDetails" EntitySet="RS_InvoiceDetails" />
           </AssociationSet>
@@ -19355,10 +19378,10 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <End Role="Worker" EntitySet="Workers" />
           </AssociationSet>
           <FunctionImport Name="AccountGroupHierarchy" IsComposable="true" ReturnType="Collection(IMEModel.AccountGroupHierarchy_Result)">
-          <Parameter Name="groupId" Mode="In" Type="Decimal" />
+            <Parameter Name="groupId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="AccountLedgerGetGroupUnderFunction" IsComposable="true" ReturnType="Collection(IMEModel.AccountLedgerGetGroupUnderFunction_Result)">
-          <Parameter Name="accountGroupId" Mode="In" Type="String" />
+            <Parameter Name="accountGroupId" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="AccountGroupAddWithIdentity" ReturnType="Collection(Decimal)">
             <Parameter Name="accountGroupName" Mode="In" Type="String" />
@@ -19369,7 +19392,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="affectGrossProfit" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="AccountGroupCheckExistenceOfUnderGroup" ReturnType="Collection(Int32)">
-          <Parameter Name="accountGroupId" Mode="In" Type="Decimal" />
+            <Parameter Name="accountGroupId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="AccountGroupEdit">
             <Parameter Name="accountGroupId" Mode="In" Type="Decimal" />
@@ -19381,10 +19404,10 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="affectGrossProfit" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="AccountGroupNatureUnderGroup" ReturnType="Collection(String)">
-          <Parameter Name="accountGroupId" Mode="In" Type="Decimal" />
+            <Parameter Name="accountGroupId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="AccountGroupReferenceDelete">
-          <Parameter Name="accountGroupId" Mode="In" Type="Decimal" />
+            <Parameter Name="accountGroupId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="AccountGroupReportViewAll" ReturnType="Collection(IMEModel.AccountGroupReportViewAll_Result)">
             <Parameter Name="fromDate" Mode="In" Type="DateTime" />
@@ -19395,14 +19418,14 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="Under" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="AccountGroupView" ReturnType="Collection(IMEModel.AccountGroupView_Result)">
-          <Parameter Name="accountGroupId" Mode="In" Type="Decimal" />
+            <Parameter Name="accountGroupId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="AccountGroupViewAllByGroupUnder" ReturnType="Collection(IMEModel.AccountGroupViewAllByGroupUnder_Result)">
-          <Parameter Name="accountGroupId" Mode="In" Type="Decimal" />
+            <Parameter Name="accountGroupId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="AccountGroupViewAllComboFillForAccountLedger" ReturnType="Collection(IMEModel.AccountGroupViewAllComboFillForAccountLedger_Result)" />
           <FunctionImport Name="AccountGroupViewForUpdate" ReturnType="Collection(IMEModel.AccountGroupViewForUpdate_Result)">
-          <Parameter Name="accountGroupId" Mode="In" Type="Decimal" />
+            <Parameter Name="accountGroupId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="AccountLedgerAddWithIdentity" ReturnType="Collection(Decimal)">
             <Parameter Name="accountGroupId" Mode="In" Type="Decimal" />
@@ -19457,7 +19480,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           </FunctionImport>
           <FunctionImport Name="AccountLedgerGetByDebtorAndCreditorWithBalance" ReturnType="Collection(IMEModel.AccountLedgerGetByDebtorAndCreditorWithBalance_Result)" />
           <FunctionImport Name="AccountLedgerIdGetByName" ReturnType="Collection(Decimal)">
-          <Parameter Name="ledgerName" Mode="In" Type="String" />
+            <Parameter Name="ledgerName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="AccountLedgerReportFill" ReturnType="Collection(IMEModel.AccountLedgerReportFill_Result)">
             <Parameter Name="fromDate" Mode="In" Type="DateTime" />
@@ -19467,15 +19490,15 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           </FunctionImport>
           <FunctionImport Name="AccountLedgerSearchForServiceAccountUnderIncome" ReturnType="Collection(IMEModel.AccountLedgerSearchForServiceAccountUnderIncome_Result)" />
           <FunctionImport Name="AccountLedgerView" ReturnType="Collection(IMEModel.AccountLedgerView_Result)">
-          <Parameter Name="ledgerId" Mode="In" Type="Decimal" />
+            <Parameter Name="ledgerId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="AccountLedgerViewAll" ReturnType="Collection(IMEModel.AccountLedgerViewAll_Result)" />
           <FunctionImport Name="AccountLedgerViewAllByLedgerName" ReturnType="Collection(IMEModel.AccountLedgerViewAllByLedgerName_Result)">
-          <Parameter Name="accountGroupId" Mode="In" Type="Decimal" />
+            <Parameter Name="accountGroupId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="AccountLedgerViewAllForComboBox" ReturnType="Collection(IMEModel.AccountLedgerViewAllForComboBox_Result)" />
           <FunctionImport Name="AccountLedgerViewByAccountGroup" ReturnType="Collection(IMEModel.AccountLedgerViewByAccountGroup_Result)">
-          <Parameter Name="accountGroupId" Mode="In" Type="Decimal" />
+            <Parameter Name="accountGroupId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="AccountLedgerViewForAdditionalCost" ReturnType="Collection(IMEModel.AccountLedgerViewForAdditionalCost_Result)" />
           <FunctionImport Name="AdditionalCostAdd">
@@ -19486,7 +19509,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="credit" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="AdditionalCostDelete">
-          <Parameter Name="additionalCostId" Mode="In" Type="Decimal" />
+            <Parameter Name="additionalCostId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="AdditionalCostEdit">
             <Parameter Name="additionalCostId" Mode="In" Type="Decimal" />
@@ -19559,20 +19582,20 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="ledgerId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="AreaDeleteReference">
-          <Parameter Name="areaId" Mode="In" Type="Decimal" />
+            <Parameter Name="areaId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="AreaOnlyViewAll" ReturnType="Collection(IMEModel.AreaOnlyViewAll_Result)" />
           <FunctionImport Name="AreaWithNarrationView" ReturnType="Collection(IMEModel.AreaWithNarrationView_Result)">
-          <Parameter Name="areaId" Mode="In" Type="Decimal" />
+            <Parameter Name="areaId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="ArticleSearch" ReturnType="Collection(IMEModel.ArticleSearch_Result)">
-          <Parameter Name="articleNo" Mode="In" Type="String" />
+            <Parameter Name="articleNo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ArticleSearchCheckExistence" ReturnType="Collection(Int32)">
-          <Parameter Name="articleNo" Mode="In" Type="String" />
+            <Parameter Name="articleNo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ArticleSearchHasMultipleItems" ReturnType="Collection(Int32)">
-          <Parameter Name="articleNo" Mode="In" Type="String" />
+            <Parameter Name="articleNo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ArticleSearchWithAll" ReturnType="Collection(IMEModel.ArticleSearchWithAll_Result)">
             <Parameter Name="articleNo" Mode="In" Type="String" />
@@ -19581,7 +19604,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="note" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ArticleSearchwithMPN" ReturnType="Collection(IMEModel.ArticleSearchwithMPN_Result)">
-          <Parameter Name="MPNNo" Mode="In" Type="String" />
+            <Parameter Name="MPNNo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ArticleSelectAll" ReturnType="Collection(IMEModel.ArticleSelectAll_Result)" />
           <FunctionImport Name="BalanceSheet" ReturnType="Collection(IMEModel.BalanceSheet_Result)">
@@ -19615,17 +19638,17 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="toDate" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="BarcodeViewByBatchId" ReturnType="Collection(String)">
-          <Parameter Name="batchId" Mode="In" Type="Decimal" />
+            <Parameter Name="batchId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="BatchIdViewByProductId" ReturnType="Collection(Decimal)">
-          <Parameter Name="productId" Mode="In" Type="Decimal" />
+            <Parameter Name="productId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="BatchViewByProductId" ReturnType="Collection(Decimal)">
-          <Parameter Name="productId" Mode="In" Type="String" />
+            <Parameter Name="productId" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="BillAllocationAccountGroupFill" ReturnType="Collection(IMEModel.BillAllocationAccountGroupFill_Result)" />
           <FunctionImport Name="BillAllocationLedgerFill" ReturnType="Collection(IMEModel.BillAllocationLedgerFill_Result)">
-          <Parameter Name="accountGroupName" Mode="In" Type="String" />
+            <Parameter Name="accountGroupName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="BillAllocationSearch" ReturnType="Collection(IMEModel.BillAllocationSearch_Result)">
             <Parameter Name="fromDate" Mode="In" Type="DateTime" />
@@ -19638,13 +19661,13 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="month" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="BrandView" ReturnType="Collection(IMEModel.BrandView_Result)">
-          <Parameter Name="brandId" Mode="In" Type="Decimal" />
+            <Parameter Name="brandId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="BudgetDetailsDeleteWithMasterId">
-          <Parameter Name="budgetMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="budgetMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="BudgetVariance" ReturnType="Collection(IMEModel.BudgetVariance_Result)">
-          <Parameter Name="budgetMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="budgetMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="CashFlow1" ReturnType="Collection(IMEModel.CashFlow1_Result)">
             <Parameter Name="fromDate" Mode="In" Type="DateTime" />
@@ -19714,7 +19737,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           </FunctionImport>
           <FunctionImport Name="CashOrBankComboFill" ReturnType="Collection(IMEModel.CashOrBankComboFill_Result)" />
           <FunctionImport Name="CheckForDefaultVoucherType" ReturnType="Collection(Int32)">
-          <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
+            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="CheckSalaryAlreadyPaidOrNot" ReturnType="Collection(String)">
             <Parameter Name="employeeId" Mode="In" Type="Decimal" />
@@ -19811,10 +19834,10 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="isDefault" Mode="In" Type="Boolean" />
           </FunctionImport>
           <FunctionImport Name="CompanyPathView" ReturnType="Collection(IMEModel.CompanyPathView_Result)">
-          <Parameter Name="companyId" Mode="In" Type="Decimal" />
+            <Parameter Name="companyId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="CompanyView" ReturnType="Collection(IMEModel.CompanyView_Result)">
-          <Parameter Name="companyId" Mode="In" Type="Decimal" />
+            <Parameter Name="companyId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="CompanyViewAll" ReturnType="Collection(IMEModel.CompanyViewAll_Result)" />
           <FunctionImport Name="CreditNoteMasterIdView" ReturnType="Collection(Decimal)">
@@ -19828,7 +19851,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           </FunctionImport>
           <FunctionImport Name="CreteNewSaleOrderNo" ReturnType="Collection(Int32)" />
           <FunctionImport Name="CurrencyComboByDate" ReturnType="Collection(IMEModel.CurrencyComboByDate_Result)">
-          <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="date" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="CurrencyEdit">
             <Parameter Name="currencyId" Mode="In" Type="Decimal" />
@@ -19858,7 +19881,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="narration" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DailyAttendanceDetailsDeleteAll">
-          <Parameter Name="dailyAttendanceMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="dailyAttendanceMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="DailyAttendanceDetailsEditUsingMasterId">
             <Parameter Name="dailyAttendanceDetailsId" Mode="In" Type="Decimal" />
@@ -19868,7 +19891,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="narration" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DailyAttendanceDetailsSearchGridFill" ReturnType="Collection(IMEModel.DailyAttendanceDetailsSearchGridFill_Result)">
-          <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="date" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="DailyAttendanceEditMaster">
             <Parameter Name="dailyAttendanceMasterId" Mode="In" Type="Decimal" />
@@ -19876,7 +19899,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="narration" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DailyAttendanceMasterMasterIdSearch" ReturnType="Collection(Decimal)">
-          <Parameter Name="date" Mode="In" Type="String" />
+            <Parameter Name="date" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DailySalaryRegisterSearch" ReturnType="Collection(IMEModel.DailySalaryRegisterSearch_Result)">
             <Parameter Name="voucherDateFrom" Mode="In" Type="DateTime" />
@@ -19897,13 +19920,13 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="status" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DailySalaryVoucherDetailsCount" ReturnType="Collection(Int32)">
-          <Parameter Name="dailySalaryVoucherMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="dailySalaryVoucherMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="DailySalaryVoucherDetailsDelete">
-          <Parameter Name="dailySalaryVoucherDetailsId" Mode="In" Type="Decimal" />
+            <Parameter Name="dailySalaryVoucherDetailsId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="DailySalaryVoucherDetailsDeleteUsingMasterId">
-          <Parameter Name="dailySalaryVoucherMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="dailySalaryVoucherMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="DailySalaryVoucherDetailsGridViewall" ReturnType="Collection(IMEModel.DailySalaryVoucherDetailsGridViewall_Result)">
             <Parameter Name="salaryDate" Mode="In" Type="DateTime" />
@@ -19924,7 +19947,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="isAutomatic" Mode="In" Type="Boolean" />
           </FunctionImport>
           <FunctionImport Name="DailySalaryVoucherMasterDelete">
-          <Parameter Name="dailySalaryVoucherMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="dailySalaryVoucherMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="DailySalaryVoucherMasterEdit">
             <Parameter Name="dailySalaryVoucherMasterId" Mode="In" Type="Decimal" />
@@ -19940,10 +19963,10 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="financialYearId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="DailySalaryVoucherMasterMax" ReturnType="Collection(Decimal)">
-          <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
+            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="DailySalaryVoucherViewFromRegister" ReturnType="Collection(IMEModel.DailySalaryVoucherViewFromRegister_Result)">
-          <Parameter Name="dailySalaryVoucherMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="dailySalaryVoucherMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="DayBook" ReturnType="Collection(IMEModel.DayBook_Result)">
             <Parameter Name="fromDate" Mode="In" Type="DateTime" />
@@ -19961,6 +19984,9 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
             <Parameter Name="voucherNo" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="DebitNoteMasterMax" ReturnType="Collection(Decimal)">
+            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
+          </FunctionImport>
           <FunctionImport Name="DebitNoteReportSearch" ReturnType="Collection(IMEModel.DebitNoteReportSearch_Result)">
             <Parameter Name="fromDate" Mode="In" Type="DateTime" />
             <Parameter Name="toDate" Mode="In" Type="DateTime" />
@@ -19968,7 +19994,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="ledgerId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="DefaultCurrencySet">
-          <Parameter Name="currencyId" Mode="In" Type="Decimal" />
+            <Parameter Name="currencyId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="DesignationAddWithReturnIdentity" ReturnType="Collection(Decimal)">
             <Parameter Name="designationName" Mode="In" Type="String" />
@@ -19981,7 +20007,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="designationId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="DesignationDelete" ReturnType="Collection(String)">
-          <Parameter Name="designationId" Mode="In" Type="Decimal" />
+            <Parameter Name="designationId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="DesignationEdit">
             <Parameter Name="designationId" Mode="In" Type="Decimal" />
@@ -19992,17 +20018,17 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           </FunctionImport>
           <FunctionImport Name="DesignationGridFill" ReturnType="Collection(IMEModel.DesignationGridFill_Result)" />
           <FunctionImport Name="DesignationSearch" ReturnType="Collection(IMEModel.DesignationSearch_Result)">
-          <Parameter Name="designation" Mode="In" Type="String" />
+            <Parameter Name="designation" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DesignationView" ReturnType="Collection(IMEModel.DesignationView_Result)">
-          <Parameter Name="designationId" Mode="In" Type="Decimal" />
+            <Parameter Name="designationId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="EmployeeCodeCheckExistance" ReturnType="Collection(Int32)">
             <Parameter Name="employeeCode" Mode="In" Type="String" />
             <Parameter Name="employeeId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="EmployeeDelete">
-          <Parameter Name="employeeId" Mode="In" Type="Decimal" />
+            <Parameter Name="employeeId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="EmployeeForTakingEmployeeId" ReturnType="Collection(Decimal)">
             <Parameter Name="designationId" Mode="In" Type="Decimal" />
@@ -20056,7 +20082,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="rate" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="ExchangeRateViewByExchangeRateId" ReturnType="Collection(Decimal)">
-          <Parameter Name="exchangeRateId" Mode="In" Type="Decimal" />
+            <Parameter Name="exchangeRateId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="ExtendedRangeADD">
             <Parameter Name="ArticleNo" Mode="In" Type="String" />
@@ -20157,8 +20183,12 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="salesMasterId" Mode="In" Type="String" />
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="GetSuffixPrefixDetails" ReturnType="Collection(IMEModel.GetSuffixPrefixDetails_Result)">
+            <Parameter Name="voucherId" Mode="In" Type="Decimal" />
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+          </FunctionImport>
           <FunctionImport Name="GetTaxIdForTaxSelection" ReturnType="Collection(Int32)">
-          <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
+            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="GroupNameViewForComboFill" ReturnType="Collection(IMEModel.GroupNameViewForComboFill_Result)" />
           <FunctionImport Name="HoildaySettingsViewAllLimited" ReturnType="Collection(IMEModel.HoildaySettingsViewAllLimited_Result)">
@@ -20175,7 +20205,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="Year" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="HolliDayChecking" ReturnType="Collection(Int32)">
-          <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="date" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="JournalMasterIdView" ReturnType="Collection(Decimal)">
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
@@ -20219,7 +20249,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="chequeDate" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="LedgerPostingIdByServiceMaasterId" ReturnType="Collection(Decimal)">
-          <Parameter Name="serviceMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="serviceMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="MaterialReceiptDetailsViewByMaterialReceiptMasterIdWithRemainingByNotInCurrPI" ReturnType="Collection(IMEModel.MaterialReceiptDetailsViewByMaterialReceiptMasterIdWithRemainingByNotInCurrPI_Result)">
             <Parameter Name="materialReceiptMasterId" Mode="In" Type="String" />
@@ -20227,17 +20257,17 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="MaterialReceiptMasterView" ReturnType="Collection(IMEModel.MaterialReceiptMasterView_Result)">
-          <Parameter Name="materialReceiptMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="materialReceiptMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="MaterialReceiptMasterViewByReceiptMasterId" ReturnType="Collection(IMEModel.MaterialReceiptMasterViewByReceiptMasterId_Result)">
-          <Parameter Name="MaterialReceiptMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="MaterialReceiptMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="MonthlySalaryAddWithIdentity" ReturnType="Collection(Decimal)">
             <Parameter Name="salaryMonth" Mode="In" Type="DateTime" />
             <Parameter Name="narration" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="MonthlySalaryDeleteAll">
-          <Parameter Name="monthlySalaryId" Mode="In" Type="Decimal" />
+            <Parameter Name="monthlySalaryId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="MonthlySalaryDetailsAddWithMonthlySalaryId">
             <Parameter Name="employeeId" Mode="In" Type="Decimal" />
@@ -20259,7 +20289,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="voucherTypeName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="MonthlySalarySettingsDetailsIdDelete">
-          <Parameter Name="monthlySalaryDetailsId" Mode="In" Type="Decimal" />
+            <Parameter Name="monthlySalaryDetailsId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="MonthlySalarySettingsEdit">
             <Parameter Name="monthlySalaryId" Mode="In" Type="Decimal" />
@@ -20267,12 +20297,19 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="narration" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="MonthlySalarySettingsEmployeeViewAll" ReturnType="Collection(IMEModel.MonthlySalarySettingsEmployeeViewAll_Result)">
-          <Parameter Name="salaryMonth" Mode="In" Type="DateTime" />
+            <Parameter Name="salaryMonth" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="MonthlySalarySettingsMonthlySalaryIdSearchUsingSalaryMonth" ReturnType="Collection(Decimal)">
-          <Parameter Name="salaryMonth" Mode="In" Type="DateTime" />
+            <Parameter Name="salaryMonth" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="MonthlySalaryVoucherDetailsViewAll" ReturnType="Collection(IMEModel.MonthlySalaryVoucherDetailsViewAll_Result)">
+            <Parameter Name="strMonth" Mode="In" Type="String" />
+            <Parameter Name="Month" Mode="In" Type="String" />
+            <Parameter Name="monthYear" Mode="In" Type="String" />
+            <Parameter Name="isEditMode" Mode="In" Type="Decimal" />
+            <Parameter Name="voucherNo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="MonthlySalaryVoucherDetailViewAll">
             <Parameter Name="strMonth" Mode="In" Type="String" />
             <Parameter Name="Month" Mode="In" Type="String" />
             <Parameter Name="monthYear" Mode="In" Type="String" />
@@ -20294,10 +20331,10 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           </FunctionImport>
           <FunctionImport Name="MultipleAccountLedgerComboFill" ReturnType="Collection(IMEModel.MultipleAccountLedgerComboFill_Result)" />
           <FunctionImport Name="MultipleAccountLedgerCrOrDr" ReturnType="Collection(String)">
-          <Parameter Name="accountGroupName" Mode="In" Type="String" />
+            <Parameter Name="accountGroupName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="OtherBranchStockSearch" ReturnType="Collection(IMEModel.OtherBranchStockSearch_Result)">
-          <Parameter Name="articleNo" Mode="In" Type="String" />
+            <Parameter Name="articleNo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="OutstandingPartyFillView" ReturnType="Collection(IMEModel.OutstandingPartyFillView_Result)" />
           <FunctionImport Name="OutstandingViewAll1" ReturnType="Collection(String)">
@@ -20313,10 +20350,10 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="toDate" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="OverduePurchaseOrdersCorrespondingAccountLedger" ReturnType="Collection(IMEModel.OverduePurchaseOrdersCorrespondingAccountLedger_Result)">
-          <Parameter Name="accountLedgerId" Mode="In" Type="Decimal" />
+            <Parameter Name="accountLedgerId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="OverdueSalesOrderCorrespondingAccountLedger" ReturnType="Collection(IMEModel.OverdueSalesOrderCorrespondingAccountLedger_Result)">
-          <Parameter Name="accountLedgerId" Mode="In" Type="String" />
+            <Parameter Name="accountLedgerId" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="PartyAddressBookPrint" ReturnType="Collection(IMEModel.PartyAddressBookPrint_Result)">
             <Parameter Name="type" Mode="In" Type="String" />
@@ -20369,7 +20406,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="extraDate" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="PayHeadDelete">
-          <Parameter Name="payHeadId" Mode="In" Type="Decimal" />
+            <Parameter Name="payHeadId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="PayHeadEdit">
             <Parameter Name="payHeadId" Mode="In" Type="Decimal" />
@@ -20379,14 +20416,14 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="extraDate" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="PayHeadGet" ReturnType="Collection(IMEModel.PayHeadGet_Result)">
-          <Parameter Name="payHeadId" Mode="In" Type="Decimal" />
+            <Parameter Name="payHeadId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="PayHeadGetAll" ReturnType="Collection(IMEModel.PayHeadGetAll_Result)" />
           <FunctionImport Name="PayHeadTypeView" ReturnType="Collection(String)">
-          <Parameter Name="payHeadId" Mode="In" Type="Decimal" />
+            <Parameter Name="payHeadId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="PayHeadView" ReturnType="Collection(IMEModel.PayHeadView_Result)">
-          <Parameter Name="payHeadId" Mode="In" Type="Decimal" />
+            <Parameter Name="payHeadId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="PayHeadViewAll" ReturnType="Collection(IMEModel.PayHeadViewAll_Result)" />
           <FunctionImport Name="paymentMasterIdView" ReturnType="Collection(Decimal)">
@@ -20419,7 +20456,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="MasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="PDCClearanceMaxUnderVoucherType" ReturnType="Collection(Decimal)">
-          <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
+            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="PDCClearanceRegisterSearch" ReturnType="Collection(IMEModel.PDCClearanceRegisterSearch_Result)">
             <Parameter Name="voucherTypeName" Mode="In" Type="String" />
@@ -20463,16 +20500,16 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <FunctionImport Name="PricingLevelViewAll" ReturnType="Collection(IMEModel.PricingLevelViewAll_Result)" />
           <FunctionImport Name="PrintAfterSave" ReturnType="Collection(String)" />
           <FunctionImport Name="ProductBatchBarcodeViewByBatchId" ReturnType="Collection(String)">
-          <Parameter Name="batchId" Mode="In" Type="Decimal" />
+            <Parameter Name="batchId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="ProductCodeAndBarcodeByBatchId" ReturnType="Collection(IMEModel.ProductCodeAndBarcodeByBatchId_Result)">
-          <Parameter Name="BatchId" Mode="In" Type="Decimal" />
+            <Parameter Name="BatchId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="ProductCodeViewByProductName" ReturnType="Collection(String)">
-          <Parameter Name="productName" Mode="In" Type="String" />
+            <Parameter Name="productName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ProductView" ReturnType="Collection(IMEModel.ProductView_Result)">
-          <Parameter Name="articleNo" Mode="In" Type="String" />
+            <Parameter Name="articleNo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ProductViewAll" ReturnType="Collection(IMEModel.ProductViewAll_Result)" />
           <FunctionImport Name="ProductViewAllForComboBox" ReturnType="Collection(IMEModel.ProductViewAllForComboBox_Result)" />
@@ -20481,23 +20518,23 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="barcode" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ProductViewByCode" ReturnType="Collection(IMEModel.ProductViewByCode_Result)">
-          <Parameter Name="productCode" Mode="In" Type="String" />
+            <Parameter Name="productCode" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ProductViewByName" ReturnType="Collection(IMEModel.ProductViewByName_Result)">
-          <Parameter Name="productName" Mode="In" Type="String" />
+            <Parameter Name="productName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ProductViewByPartNoOrBarcode" ReturnType="Collection(Decimal)">
             <Parameter Name="partNo" Mode="In" Type="String" />
             <Parameter Name="barcode" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="productviewbyproductcodeforSR" ReturnType="Collection(IMEModel.productviewbyproductcodeforSR_Result)">
-          <Parameter Name="productCode" Mode="In" Type="String" />
+            <Parameter Name="productCode" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="productviewbyproductNameforSR" ReturnType="Collection(IMEModel.productviewbyproductNameforSR_Result)">
-          <Parameter Name="productName" Mode="In" Type="String" />
+            <Parameter Name="productName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ProductViewWithID" ReturnType="Collection(IMEModel.ProductViewWithID_Result)">
-          <Parameter Name="productID" Mode="In" Type="String" />
+            <Parameter Name="productID" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ProfitAndLossAnalysisDirectExpenses" ReturnType="Collection(IMEModel.ProfitAndLossAnalysisDirectExpenses_Result)">
             <Parameter Name="fromDate" Mode="In" Type="DateTime" />
@@ -20552,25 +20589,25 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="toDate" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="ProfitAndLossAnalysisUpToaDateForPreviousYearsDirectExpenses" ReturnType="Collection(IMEModel.ProfitAndLossAnalysisUpToaDateForPreviousYearsDirectExpenses_Result)">
-          <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="ProfitAndLossAnalysisUpToaDateForPreviousYearsDirectIncome" ReturnType="Collection(IMEModel.ProfitAndLossAnalysisUpToaDateForPreviousYearsDirectIncome_Result)">
-          <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="ProfitAndLossAnalysisUpToaDateForPreviousYearsIndirectExpenses" ReturnType="Collection(IMEModel.ProfitAndLossAnalysisUpToaDateForPreviousYearsIndirectExpenses_Result)">
-          <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="ProfitAndLossAnalysisUpToaDateForPreviousYearsIndirectIncome" ReturnType="Collection(IMEModel.ProfitAndLossAnalysisUpToaDateForPreviousYearsIndirectIncome_Result)">
-          <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="ProfitAndLossAnalysisUpToaDateForPreviousYearsPurchaseAccount" ReturnType="Collection(IMEModel.ProfitAndLossAnalysisUpToaDateForPreviousYearsPurchaseAccount_Result)">
-          <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="ProfitAndLossAnalysisUpToaDateForPreviousYearsSalesAccount" ReturnType="Collection(IMEModel.ProfitAndLossAnalysisUpToaDateForPreviousYearsSalesAccount_Result)">
-          <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="ProfitAndLossReportPrintCompany" ReturnType="Collection(IMEModel.ProfitAndLossReportPrintCompany_Result)">
-          <Parameter Name="companyId" Mode="In" Type="Decimal" />
+            <Parameter Name="companyId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="PurchaseBillTaxAdd">
             <Parameter Name="purchaseMasterId" Mode="In" Type="Decimal" />
@@ -20578,7 +20615,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="taxAmount" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="PurchaseBillTaxDelete">
-          <Parameter Name="purchaseBillTaxId" Mode="In" Type="Decimal" />
+            <Parameter Name="purchaseBillTaxId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="PurchaseBillTaxEdit">
             <Parameter Name="purchaseBillTaxId" Mode="In" Type="Decimal" />
@@ -20587,7 +20624,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="taxAmount" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="PurchaseBillTaxViewAllByPurchaseMasterId" ReturnType="Collection(IMEModel.PurchaseBillTaxViewAllByPurchaseMasterId_Result)">
-          <Parameter Name="purchaseMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="purchaseMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="PurchaseDetailsAdd">
             <Parameter Name="purchaseMasterId" Mode="In" Type="Decimal" />
@@ -20610,10 +20647,10 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="slNo" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="PurchaseDetailsDelete">
-          <Parameter Name="purchaseDetailsId" Mode="In" Type="Decimal" />
+            <Parameter Name="purchaseDetailsId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="PurchaseDetailsDeleteByPurchaseMasterId">
-          <Parameter Name="purchaseMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="purchaseMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="PurchaseDetailsEdit">
             <Parameter Name="purchaseDetailsId" Mode="In" Type="Decimal" />
@@ -20649,7 +20686,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="productName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="PurchaseDetailsViewByPurchaseMasterId" ReturnType="Collection(IMEModel.PurchaseDetailsViewByPurchaseMasterId_Result)">
-          <Parameter Name="purchaseMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="purchaseMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="PurchaseDetailsViewByPurchaseMasterIdWithRemaining" ReturnType="Collection(IMEModel.PurchaseDetailsViewByPurchaseMasterIdWithRemaining_Result)">
             <Parameter Name="purchaseMasterId" Mode="In" Type="Decimal" />
@@ -20689,7 +20726,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="financialYearId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="PurchaseMasterDelete">
-          <Parameter Name="purchaseMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="purchaseMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="PurchaseMasterEdit">
             <Parameter Name="purchaseMasterId" Mode="In" Type="Decimal" />
@@ -20726,10 +20763,10 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="purchaseDetailsId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="PurchaseMasterView" ReturnType="Collection(IMEModel.PurchaseMasterView_Result)">
-          <Parameter Name="purchaseMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="purchaseMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="PurchaseMasterVoucherMax" ReturnType="Collection(Decimal)">
-          <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
+            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="PurchaseOrderDetailsViewByOrderMasterIdWithRemainingByNotInCurrPI" ReturnType="Collection(IMEModel.PurchaseOrderDetailsViewByOrderMasterIdWithRemainingByNotInCurrPI_Result)">
             <Parameter Name="purchaseOrderMasterId" Mode="In" Type="String" />
@@ -20737,31 +20774,31 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="PurchaseOrderMasterView" ReturnType="Collection(IMEModel.PurchaseOrderMasterView_Result)">
-          <Parameter Name="purchaseOrderMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="purchaseOrderMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="PurchaseOrderMasterViewByOrderMasterId" ReturnType="Collection(IMEModel.PurchaseOrderMasterViewByOrderMasterId_Result)">
-          <Parameter Name="orderMasterId" Mode="In" Type="String" />
+            <Parameter Name="orderMasterId" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="PurchaseReturnDetailsDelete">
-          <Parameter Name="purchaseReturnDetailsId" Mode="In" Type="Decimal" />
+            <Parameter Name="purchaseReturnDetailsId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="PurchaseReturnDetailsQtyViewByPurchaseDetailsId" ReturnType="Collection(Decimal)">
-          <Parameter Name="purchaseDetailsId" Mode="In" Type="Decimal" />
+            <Parameter Name="purchaseDetailsId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="PurchaseReturnDetailsViewByMasterId" ReturnType="Collection(IMEModel.PurchaseReturnDetailsViewByMasterId_Result)">
-          <Parameter Name="purchaseReturnMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="purchaseReturnMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="PurchaseReturnMasterAndDetailsDelete">
-          <Parameter Name="purchaseReturnMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="purchaseReturnMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="PurchaseReturnMasterMax" ReturnType="Collection(Decimal)">
-          <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
+            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="PurchaseReturnMasterViewAllByPurchaseMasterId" ReturnType="Collection(IMEModel.PurchaseReturnMasterViewAllByPurchaseMasterId_Result)">
-          <Parameter Name="purchaseMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="purchaseMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="PurchaseReturnViewByPurchaseReturnMasterId" ReturnType="Collection(IMEModel.PurchaseReturnViewByPurchaseReturnMasterId_Result)">
-          <Parameter Name="purchaseReturnMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="purchaseReturnMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="QuotationADD">
             <Parameter Name="CustomerID" Mode="In" Type="String" />
@@ -20822,7 +20859,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="unitConversionId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="RackFillForStock" ReturnType="Collection(IMEModel.RackFillForStock_Result)">
-          <Parameter Name="godownId" Mode="In" Type="Decimal" />
+            <Parameter Name="godownId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="ReceiptMasterIdView" ReturnType="Collection(Decimal)">
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
@@ -20834,7 +20871,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="remindAbout" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ReminderDelete">
-          <Parameter Name="reminderId" Mode="In" Type="Decimal" />
+            <Parameter Name="reminderId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="ReminderEdit">
             <Parameter Name="reminderId" Mode="In" Type="Decimal" />
@@ -20847,7 +20884,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="todate" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="ReminderView" ReturnType="Collection(IMEModel.ReminderView_Result)">
-          <Parameter Name="reminderId" Mode="In" Type="Decimal" />
+            <Parameter Name="reminderId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="ReminderViewAll" ReturnType="Collection(IMEModel.ReminderViewAll_Result)" />
           <FunctionImport Name="RS_InvoiceDetailsADD">
@@ -20865,7 +20902,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="CCCNNO" Mode="In" Type="String" />
             <Parameter Name="CountryofOrigin" Mode="In" Type="String" />
             <Parameter Name="ArticleDescription" Mode="In" Type="String" />
-            <Parameter Name="DeliveryNumber" Mode="In" Type="Int32" />
+            <Parameter Name="DeliveryNumber" Mode="In" Type="Decimal" />
             <Parameter Name="DeliveryItemNumber" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="RSInvoiceADD" ReturnType="Collection(Decimal)">
@@ -20888,10 +20925,10 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="totalAmount" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SalaryPackageDelete">
-          <Parameter Name="salaryPackageId" Mode="In" Type="Decimal" />
+            <Parameter Name="salaryPackageId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SalaryPackageDeleteAll">
-          <Parameter Name="salaryPackageId" Mode="In" Type="Decimal" />
+            <Parameter Name="salaryPackageId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SalaryPackageDetailsAdd">
             <Parameter Name="salaryPackageId" Mode="In" Type="Decimal" />
@@ -20900,10 +20937,10 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="narration" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SalaryPackageDetailsDeleteWithSalaryPackageId">
-          <Parameter Name="salaryPackageId" Mode="In" Type="Decimal" />
+            <Parameter Name="salaryPackageId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SalaryPackageDetailsViewWithSalaryPackageId" ReturnType="Collection(IMEModel.SalaryPackageDetailsViewWithSalaryPackageId_Result)">
-          <Parameter Name="salaryPackageId" Mode="In" Type="Decimal" />
+            <Parameter Name="salaryPackageId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SalaryPackageEdit">
             <Parameter Name="salaryPackageId" Mode="In" Type="Decimal" />
@@ -20913,14 +20950,14 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="totalAmount" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SalaryPackageNameCheckExistance" ReturnType="Collection(Decimal)">
-          <Parameter Name="salaryPackageName" Mode="In" Type="String" />
+            <Parameter Name="salaryPackageName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SalaryPackageregisterSearch" ReturnType="Collection(IMEModel.SalaryPackageregisterSearch_Result)">
             <Parameter Name="salaryPackageName" Mode="In" Type="String" />
             <Parameter Name="isActive" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SalaryPackageView" ReturnType="Collection(IMEModel.SalaryPackageView_Result)">
-          <Parameter Name="salaryPackageId" Mode="In" Type="Decimal" />
+            <Parameter Name="salaryPackageId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SalaryPackageViewAllForMonthlySalarySettings" ReturnType="Collection(IMEModel.SalaryPackageViewAllForMonthlySalarySettings_Result)" />
           <FunctionImport Name="SalaryVoucherDetailsAdd">
@@ -20934,13 +20971,13 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="status" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SalaryVoucherDetailsCount" ReturnType="Collection(Int32)">
-          <Parameter Name="salaryVoucherMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="salaryVoucherMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SalaryVoucherDetailsDelete">
-          <Parameter Name="salaryVoucherDetailsId" Mode="In" Type="Decimal" />
+            <Parameter Name="salaryVoucherDetailsId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SalaryVoucherDetailsDeleteUsingMasterId">
-          <Parameter Name="salaryVoucherMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="salaryVoucherMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SalaryVoucherDetailsEdit">
             <Parameter Name="salaryVoucherDetailsId" Mode="In" Type="Decimal" />
@@ -20954,7 +20991,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="status" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SalaryVoucherMasterDelete">
-          <Parameter Name="salaryVoucherMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="salaryVoucherMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SalaryVoucherMasterEdit">
             <Parameter Name="salaryVoucherMasterId" Mode="In" Type="Decimal" />
@@ -20970,10 +21007,10 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="financialYearId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SalaryVoucherMasterMax" ReturnType="Collection(Decimal)">
-          <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
+            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SalaryVoucherMasterView" ReturnType="Collection(IMEModel.SalaryVoucherMasterView_Result)">
-          <Parameter Name="salaryVoucherMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="salaryVoucherMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SalaryVoucherMasterViewAll" ReturnType="Collection(IMEModel.SalaryVoucherMasterViewAll_Result)" />
           <FunctionImport Name="SaleMasterGetPos" ReturnType="Collection(String)">
@@ -20990,7 +21027,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="extra2" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SalesDetailsDelete">
-          <Parameter Name="salesDetailsId" Mode="In" Type="Decimal" />
+            <Parameter Name="salesDetailsId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SalesDetailsEdit">
             <Parameter Name="salesDetailsId" Mode="In" Type="Decimal" />
@@ -21040,6 +21077,11 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="salesMasterId" Mode="In" Type="Decimal" />
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="SalesInvoiceGridfillAgainestSalesOrderUsingSalesDetails" ReturnType="Collection(IMEModel.SalesInvoiceGridfillAgainestSalesOrderUsingSalesDetails_Result)">
+            <Parameter Name="salesOrderMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="salesMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
+          </FunctionImport>
           <FunctionImport Name="SalesInvoiceQuantityDetailsAgainstSalesReturn" ReturnType="Collection(Int32)">
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
             <Parameter Name="voucherNo" Mode="In" Type="String" />
@@ -21049,7 +21091,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="voucherNo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SalesInvoiceReferenceCheckForEdit" ReturnType="Collection(Int32)">
-          <Parameter Name="salesMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="salesMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SalesInvoiceReportFill">
             <Parameter Name="fromDate" Mode="In" Type="DateTime" />
@@ -21066,10 +21108,10 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="productCode" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SalesInvoiceSalesBillTaxViewAllBySalesMasterId" ReturnType="Collection(IMEModel.SalesInvoiceSalesBillTaxViewAllBySalesMasterId_Result)">
-          <Parameter Name="SalesMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="SalesMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SalesmanCheckReferenceAndDelete">
-          <Parameter Name="WorkerID" Mode="In" Type="Decimal" />
+            <Parameter Name="WorkerID" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SalesmanEdit">
             <Parameter Name="employeeId" Mode="In" Type="Decimal" />
@@ -21091,7 +21133,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="isActive" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SalesmanViewSpecificFeilds" ReturnType="Collection(IMEModel.SalesmanViewSpecificFeilds_Result)">
-          <Parameter Name="employeeId" Mode="In" Type="Decimal" />
+            <Parameter Name="employeeId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SalesMasterAdd" ReturnType="Collection(Decimal)">
             <Parameter Name="voucherNo" Mode="In" Type="String" />
@@ -21159,13 +21201,13 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SalesMasterView" ReturnType="Collection(IMEModel.SalesMasterView_Result)">
-          <Parameter Name="salesMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="salesMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SalesMasterViewForComboFillSelection" ReturnType="Collection(IMEModel.SalesMasterViewForComboFillSelection_Result)">
-          <Parameter Name="salesMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="salesMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SalesReturnCheckReferenceForSIDelete" ReturnType="Collection(String)">
-          <Parameter Name="salesMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="salesMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SalesReturnGrideFillNew" ReturnType="Collection(IMEModel.SalesReturnGrideFillNew_Result)">
             <Parameter Name="salesMasterId" Mode="In" Type="Decimal" />
@@ -21196,10 +21238,10 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="amount" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="ServiceDetailsDelete">
-          <Parameter Name="serviceDetailsId" Mode="In" Type="Decimal" />
+            <Parameter Name="serviceDetailsId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="ServiceDetailsDeleteWithMasterId">
-          <Parameter Name="serviceMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="serviceMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="ServiceDetailsEdit">
             <Parameter Name="serviceDetailsId" Mode="In" Type="Decimal" />
@@ -21209,7 +21251,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="amount" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="ServiceDetailsViewWithMasterId" ReturnType="Collection(IMEModel.ServiceDetailsViewWithMasterId_Result)">
-          <Parameter Name="serviceMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="serviceMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="ServiceMasterAddReturnWithIdentity" ReturnType="Collection(Decimal)">
             <Parameter Name="voucherNo" Mode="In" Type="String" />
@@ -21247,7 +21289,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="financialYearId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="ServiceMasterView" ReturnType="Collection(IMEModel.ServiceMasterView_Result)">
-          <Parameter Name="serviceMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="serviceMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="ServiceRegisterSearch" ReturnType="Collection(IMEModel.ServiceRegisterSearch_Result)">
             <Parameter Name="dateFrom" Mode="In" Type="DateTime" />
@@ -21268,21 +21310,21 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="serviceMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="ServiceVoucherMasterMax" ReturnType="Collection(Decimal)">
-          <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
+            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SettingsEdit">
             <Parameter Name="status" Mode="In" Type="String" />
             <Parameter Name="settingsId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SettingsGetId" ReturnType="Collection(Decimal)">
-          <Parameter Name="SettingsName" Mode="In" Type="String" />
+            <Parameter Name="SettingsName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SettingsToCopyView" ReturnType="Collection(IMEModel.SettingsToCopyView_Result)">
-          <Parameter Name="settingsName" Mode="In" Type="String" />
+            <Parameter Name="settingsName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SettingsToCopyViewAll" ReturnType="Collection(IMEModel.SettingsToCopyViewAll_Result)" />
           <FunctionImport Name="SettingsView" ReturnType="Collection(IMEModel.SettingsView_Result)">
-          <Parameter Name="settingsName" Mode="In" Type="String" />
+            <Parameter Name="settingsName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SettingsViewAll" ReturnType="Collection(IMEModel.SettingsViewAll_Result)" />
           <FunctionImport Name="SettinsCheckReference" ReturnType="Collection(IMEModel.SettinsCheckReference_Result)" />
@@ -21367,7 +21409,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="StockValueOnDateByAVCO">
-          <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="date" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="StockValueOnDateByAVCOForOpeningStock">
             <Parameter Name="date" Mode="In" Type="DateTime" />
@@ -21378,7 +21420,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="fromDate" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="StockValueOnDateByFIFO">
-          <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="date" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="StockValueOnDateByFIFOForOpeningStock">
             <Parameter Name="date" Mode="In" Type="DateTime" />
@@ -21389,7 +21431,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="fromDate" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="StockValueOnDateByHighCost" ReturnType="Collection(Decimal)">
-          <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="date" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="StockValueOnDateByHighCostForOpeningStock" ReturnType="Collection(Decimal)">
             <Parameter Name="date" Mode="In" Type="DateTime" />
@@ -21400,7 +21442,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="fromDate" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="StockValueOnDateByLastPurchaseRate" ReturnType="Collection(Decimal)">
-          <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="date" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="StockValueOnDateByLastPurchaseRateForOpeningStock" ReturnType="Collection(Decimal)">
             <Parameter Name="date" Mode="In" Type="DateTime" />
@@ -21411,7 +21453,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="fromDate" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="StockValueOnDateByLowCost">
-          <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="date" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="StockValueOnDateByLowCostForOpeningStock">
             <Parameter Name="date" Mode="In" Type="DateTime" />
@@ -21524,10 +21566,10 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="input" Mode="In" Type="Boolean" />
           </FunctionImport>
           <FunctionImport Name="TaxDetailsViewAllByTaxId" ReturnType="Collection(Int32)">
-          <Parameter Name="taxId" Mode="In" Type="Decimal" />
+            <Parameter Name="taxId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="TaxIdForTaxSelectionUpdate" ReturnType="Collection(Int32)">
-          <Parameter Name="taxId" Mode="In" Type="Decimal" />
+            <Parameter Name="taxId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="TaxReportGridFillByBillWise" ReturnType="Collection(IMEModel.TaxReportGridFillByBillWise_Result)">
             <Parameter Name="fromdate" Mode="In" Type="DateTime" />
@@ -21552,13 +21594,13 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="isActive" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="TaxViewAllByVoucherTypeId" ReturnType="Collection(IMEModel.TaxViewAllByVoucherTypeId_Result)">
-          <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
+            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="TaxViewAllByVoucherTypeIdApplicaleForProduct" ReturnType="Collection(IMEModel.TaxViewAllByVoucherTypeIdApplicaleForProduct_Result)">
-          <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
+            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="TaxViewAllByVoucherTypeIdForPurchaseInvoice" ReturnType="Collection(IMEModel.TaxViewAllByVoucherTypeIdForPurchaseInvoice_Result)">
-          <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
+            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="TaxViewAllForProduct" ReturnType="Collection(IMEModel.TaxViewAllForProduct_Result)" />
           <FunctionImport Name="TaxViewAllForTaxSelection" ReturnType="Collection(IMEModel.TaxViewAllForTaxSelection_Result)" />
@@ -21585,7 +21627,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           </FunctionImport>
           <FunctionImport Name="TypeOfVoucherCombofillForVatAndTaxReport" ReturnType="Collection(IMEModel.TypeOfVoucherCombofillForVatAndTaxReport_Result)" />
           <FunctionImport Name="UnitConversionIdAndConRateViewallByProductId" ReturnType="Collection(IMEModel.UnitConversionIdAndConRateViewallByProductId_Result)">
-          <Parameter Name="productId" Mode="In" Type="String" />
+            <Parameter Name="productId" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="VatGridFill">
             <Parameter Name="fromdate" Mode="In" Type="DateTime" />
@@ -21609,20 +21651,17 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <FunctionImport Name="VoucherTypeNameComboFill" ReturnType="Collection(IMEModel.VoucherTypeNameComboFill_Result)" />
           <FunctionImport Name="VoucherTypeNameComboFillAdvanceRegister" ReturnType="Collection(IMEModel.VoucherTypeNameComboFillAdvanceRegister_Result)" />
           <FunctionImport Name="VoucherTypeNameCorrespondingToTypeOfVoucher" ReturnType="Collection(IMEModel.VoucherTypeNameCorrespondingToTypeOfVoucher_Result)">
-          <Parameter Name="typeOfVoucher" Mode="In" Type="String" />
+            <Parameter Name="typeOfVoucher" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="VoucherTypeSearch" ReturnType="Collection(IMEModel.VoucherTypeSearch_Result)">
             <Parameter Name="voucherTypeName" Mode="In" Type="String" />
             <Parameter Name="typeOfVoucher" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="VoucherTypeView" ReturnType="Collection(IMEModel.VoucherTypeView_Result)">
-          <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
+            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="VoucherTypeViewAllByLedgerId" ReturnType="Collection(IMEModel.VoucherTypeViewAllByLedgerId_Result)">
-          <Parameter Name="ledgerId" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="DebitNoteMasterMax" ReturnType="Collection(Decimal)">
-            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
+            <Parameter Name="ledgerId" Mode="In" Type="Decimal" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="AccountGroupReportViewAll_Result">
@@ -22390,6 +22429,18 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
         <ComplexType Name="GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI_Result">
           <Property Type="String" Name="QuotationNo" Nullable="false" MaxLength="20" />
           <Property Type="String" Name="invoiceNo" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetSuffixPrefixDetails_Result">
+          <Property Type="Decimal" Name="suffixprefixId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="voucherTypeId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="DateTime" Name="fromDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="toDate" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="startIndex" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="prefix" Nullable="true" />
+          <Property Type="String" Name="suffix" Nullable="true" />
+          <Property Type="Int32" Name="widthOfNumericalPart" Nullable="false" />
+          <Property Type="Boolean" Name="prefillWithZero" Nullable="false" />
+          <Property Type="String" Name="narration" Nullable="true" />
         </ComplexType>
         <ComplexType Name="GroupNameViewForComboFill_Result">
           <Property Type="Int32" Name="accountGroupId" Nullable="false" />
@@ -23292,6 +23343,22 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Type="Decimal" Name="voucherTypeId" Nullable="true" Precision="18" Scale="0" />
           <Property Type="Decimal" Name="conversionRate" Nullable="true" Precision="18" Scale="5" />
           <Property Type="Decimal" Name="amount" Nullable="true" Precision="24" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="SalesInvoiceGridfillAgainestSalesOrderUsingSalesDetails_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Decimal" Name="SaleOrderID" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="ItemCode" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="unitName" Nullable="true" />
+          <Property Type="String" Name="Article_No" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Article_Desc" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="qty" Nullable="true" Precision="24" Scale="2" />
+          <Property Type="Decimal" Name="currencyId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="unitConversionId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Int32" Name="taxId" Nullable="false" />
+          <Property Type="Decimal" Name="voucherNo" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="invoiceNo" Nullable="true" />
+          <Property Type="Decimal" Name="voucherTypeId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="conversionRate" Nullable="true" Precision="18" Scale="5" />
         </ComplexType>
         <ComplexType Name="SalesInvoiceSalesBillTaxViewAllBySalesMasterId_Result">
           <Property Type="Int32" Name="taxId" Nullable="false" />
@@ -27090,6 +27157,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="DayBookSalesInvoiceOrPOS" FunctionName="IMEModel.Store.DayBookSalesInvoiceOrPOS" />
           <FunctionImportMapping FunctionImportName="DebitNoteMasterIdView" FunctionName="IMEModel.Store.DebitNoteMasterIdView" />
+          <FunctionImportMapping FunctionImportName="DebitNoteMasterMax" FunctionName="IMEModel.Store.DebitNoteMasterMax" />
           <FunctionImportMapping FunctionImportName="DebitNoteReportSearch" FunctionName="IMEModel.Store.DebitNoteReportSearch">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.DebitNoteReportSearch_Result">
@@ -27316,6 +27384,22 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetSuffixPrefixDetails" FunctionName="IMEModel.Store.GetSuffixPrefixDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.GetSuffixPrefixDetails_Result">
+                <ScalarProperty Name="suffixprefixId" ColumnName="suffixprefixId" />
+                <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
+                <ScalarProperty Name="fromDate" ColumnName="fromDate" />
+                <ScalarProperty Name="toDate" ColumnName="toDate" />
+                <ScalarProperty Name="startIndex" ColumnName="startIndex" />
+                <ScalarProperty Name="prefix" ColumnName="prefix" />
+                <ScalarProperty Name="suffix" ColumnName="suffix" />
+                <ScalarProperty Name="widthOfNumericalPart" ColumnName="widthOfNumericalPart" />
+                <ScalarProperty Name="prefillWithZero" ColumnName="prefillWithZero" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetTaxIdForTaxSelection" FunctionName="IMEModel.Store.GetTaxIdForTaxSelection" />
           <FunctionImportMapping FunctionImportName="GroupNameViewForComboFill" FunctionName="IMEModel.Store.GroupNameViewForComboFill">
             <ResultMapping>
@@ -27492,6 +27576,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="MonthlySalaryVoucherDetailViewAll" FunctionName="IMEModel.Store.MonthlySalaryVoucherDetailViewAll" />
           <FunctionImportMapping FunctionImportName="MonthlySalaryVoucherMasterAddWithIdentity" FunctionName="IMEModel.Store.MonthlySalaryVoucherMasterAddWithIdentity">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.MonthlySalaryVoucherMasterAddWithIdentity_Result">
@@ -28667,6 +28752,26 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SalesInvoiceGridfillAgainestSalesOrderUsingSalesDetails" FunctionName="IMEModel.Store.SalesInvoiceGridfillAgainestSalesOrderUsingSalesDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.SalesInvoiceGridfillAgainestSalesOrderUsingSalesDetails_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SaleOrderID" ColumnName="SaleOrderID" />
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="unitName" ColumnName="unitName" />
+                <ScalarProperty Name="Article_No" ColumnName="Article_No" />
+                <ScalarProperty Name="Article_Desc" ColumnName="Article_Desc" />
+                <ScalarProperty Name="qty" ColumnName="qty" />
+                <ScalarProperty Name="currencyId" ColumnName="currencyId" />
+                <ScalarProperty Name="unitConversionId" ColumnName="unitConversionId" />
+                <ScalarProperty Name="taxId" ColumnName="taxId" />
+                <ScalarProperty Name="voucherNo" ColumnName="voucherNo" />
+                <ScalarProperty Name="invoiceNo" ColumnName="invoiceNo" />
+                <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
+                <ScalarProperty Name="conversionRate" ColumnName="conversionRate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SalesInvoiceQuantityDetailsAgainstSalesReturn" FunctionName="IMEModel.Store.SalesInvoiceQuantityDetailsAgainstSalesReturn" />
           <FunctionImportMapping FunctionImportName="SalesInvoiceReciptVoucherDetailsAgainstSI" FunctionName="IMEModel.Store.SalesInvoiceReciptVoucherDetailsAgainstSI" />
           <FunctionImportMapping FunctionImportName="SalesInvoiceReferenceCheckForEdit" FunctionName="IMEModel.Store.SalesInvoiceReferenceCheckForEdit" />
@@ -29239,7 +29344,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="DebitNoteMasterMax" FunctionName="IMEModel.Store.DebitNoteMasterMax" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

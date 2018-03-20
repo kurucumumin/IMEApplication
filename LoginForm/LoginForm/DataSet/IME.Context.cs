@@ -2287,6 +2287,15 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("DebitNoteMasterIdView", voucherTypeIdParameter, voucherNoParameter);
         }
     
+        public virtual ObjectResult<Nullable<decimal>> DebitNoteMasterMax(Nullable<decimal> voucherTypeId)
+        {
+            var voucherTypeIdParameter = voucherTypeId.HasValue ?
+                new ObjectParameter("voucherTypeId", voucherTypeId) :
+                new ObjectParameter("voucherTypeId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("DebitNoteMasterMax", voucherTypeIdParameter);
+        }
+    
         public virtual ObjectResult<DebitNoteReportSearch_Result> DebitNoteReportSearch(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, Nullable<decimal> voucherTypeId, Nullable<decimal> ledgerId)
         {
             var fromDateParameter = fromDate.HasValue ?
@@ -2980,6 +2989,19 @@ namespace LoginForm.DataSet
                 new ObjectParameter("voucherTypeId", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI_Result>("GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI", ledgerIdParameter, salesMasterIdParameter, voucherTypeIdParameter);
+        }
+    
+        public virtual ObjectResult<GetSuffixPrefixDetails_Result> GetSuffixPrefixDetails(Nullable<decimal> voucherId, Nullable<System.DateTime> date)
+        {
+            var voucherIdParameter = voucherId.HasValue ?
+                new ObjectParameter("voucherId", voucherId) :
+                new ObjectParameter("voucherId", typeof(decimal));
+    
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetSuffixPrefixDetails_Result>("GetSuffixPrefixDetails", voucherIdParameter, dateParameter);
         }
     
         public virtual ObjectResult<Nullable<int>> GetTaxIdForTaxSelection(Nullable<decimal> voucherTypeId)
@@ -5406,7 +5428,7 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ReminderViewAll_Result>("ReminderViewAll");
         }
     
-        public virtual int RS_InvoiceDetailsADD(Nullable<int> rS_InvoiceID, string purchaseOrderNumber, Nullable<int> purchaseOrderItemNumber, string productNumber, Nullable<int> billingItemNumber, Nullable<decimal> quantity, string salesUnit, Nullable<decimal> unitPrice, Nullable<decimal> discount, Nullable<decimal> goodsValue, Nullable<decimal> amount, string cCCNNO, string countryofOrigin, string articleDescription, Nullable<int> deliveryNumber, Nullable<int> deliveryItemNumber)
+        public virtual int RS_InvoiceDetailsADD(Nullable<int> rS_InvoiceID, string purchaseOrderNumber, Nullable<int> purchaseOrderItemNumber, string productNumber, Nullable<int> billingItemNumber, Nullable<decimal> quantity, string salesUnit, Nullable<decimal> unitPrice, Nullable<decimal> discount, Nullable<decimal> goodsValue, Nullable<decimal> amount, string cCCNNO, string countryofOrigin, string articleDescription, Nullable<decimal> deliveryNumber, Nullable<int> deliveryItemNumber)
         {
             var rS_InvoiceIDParameter = rS_InvoiceID.HasValue ?
                 new ObjectParameter("RS_InvoiceID", rS_InvoiceID) :
@@ -5466,7 +5488,7 @@ namespace LoginForm.DataSet
     
             var deliveryNumberParameter = deliveryNumber.HasValue ?
                 new ObjectParameter("DeliveryNumber", deliveryNumber) :
-                new ObjectParameter("DeliveryNumber", typeof(int));
+                new ObjectParameter("DeliveryNumber", typeof(decimal));
     
             var deliveryItemNumberParameter = deliveryItemNumber.HasValue ?
                 new ObjectParameter("DeliveryItemNumber", deliveryItemNumber) :
@@ -6074,6 +6096,23 @@ namespace LoginForm.DataSet
                 new ObjectParameter("voucherTypeId", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SalesInvoiceGridfillAgainestDeliveryNoteUsingDeliveryNoteDetails_Result>("SalesInvoiceGridfillAgainestDeliveryNoteUsingDeliveryNoteDetails", deliveryNoteMasterIdParameter, salesMasterIdParameter, voucherTypeIdParameter);
+        }
+    
+        public virtual ObjectResult<SalesInvoiceGridfillAgainestSalesOrderUsingSalesDetails_Result> SalesInvoiceGridfillAgainestSalesOrderUsingSalesDetails(Nullable<decimal> salesOrderMasterId, Nullable<decimal> salesMasterId, Nullable<decimal> voucherTypeId)
+        {
+            var salesOrderMasterIdParameter = salesOrderMasterId.HasValue ?
+                new ObjectParameter("salesOrderMasterId", salesOrderMasterId) :
+                new ObjectParameter("salesOrderMasterId", typeof(decimal));
+    
+            var salesMasterIdParameter = salesMasterId.HasValue ?
+                new ObjectParameter("salesMasterId", salesMasterId) :
+                new ObjectParameter("salesMasterId", typeof(decimal));
+    
+            var voucherTypeIdParameter = voucherTypeId.HasValue ?
+                new ObjectParameter("voucherTypeId", voucherTypeId) :
+                new ObjectParameter("voucherTypeId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SalesInvoiceGridfillAgainestSalesOrderUsingSalesDetails_Result>("SalesInvoiceGridfillAgainestSalesOrderUsingSalesDetails", salesOrderMasterIdParameter, salesMasterIdParameter, voucherTypeIdParameter);
         }
     
         public virtual ObjectResult<Nullable<int>> SalesInvoiceQuantityDetailsAgainstSalesReturn(Nullable<decimal> voucherTypeId, string voucherNo)
@@ -8156,15 +8195,6 @@ namespace LoginForm.DataSet
                 new ObjectParameter("ledgerId", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<VoucherTypeViewAllByLedgerId_Result>("VoucherTypeViewAllByLedgerId", ledgerIdParameter);
-        }
-    
-        public virtual ObjectResult<Nullable<decimal>> DebitNoteMasterMax(Nullable<decimal> voucherTypeId)
-        {
-            var voucherTypeIdParameter = voucherTypeId.HasValue ?
-                new ObjectParameter("voucherTypeId", voucherTypeId) :
-                new ObjectParameter("voucherTypeId", typeof(decimal));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("DebitNoteMasterMax", voucherTypeIdParameter);
         }
     }
 }
