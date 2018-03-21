@@ -76,9 +76,7 @@ namespace LoginForm.QuotationModule
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            FormQuotationAdd frm = new FormQuotationAdd();
-            this.Hide();
-            frm.Show();
+            this.Close();
         }
 
       

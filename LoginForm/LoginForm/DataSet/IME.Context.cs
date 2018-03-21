@@ -90,6 +90,8 @@ namespace LoginForm.DataSet
         public virtual DbSet<MonthlySalaryDetail1> MonthlySalaryDetails1 { get; set; }
         public virtual DbSet<Note> Notes { get; set; }
         public virtual DbSet<OnSale> OnSales { get; set; }
+        public virtual DbSet<OrderAcknowledgement> OrderAcknowledgements { get; set; }
+        public virtual DbSet<OrderAcknowledgementDetail> OrderAcknowledgementDetails { get; set; }
         public virtual DbSet<OtherBanchesStock> OtherBanchesStocks { get; set; }
         public virtual DbSet<PartyBalance> PartyBalances { get; set; }
         public virtual DbSet<PayHead> PayHeads { get; set; }
@@ -2422,6 +2424,15 @@ namespace LoginForm.DataSet
         public virtual ObjectResult<string> dgPurchaseOrder()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("dgPurchaseOrder");
+        }
+    
+        public virtual ObjectResult<dgPurchaseOrderToSaleInvoiceSearchWithPurchaseId_Result> dgPurchaseOrderToSaleInvoiceSearchWithPurchaseId(string purchaseID)
+        {
+            var purchaseIDParameter = purchaseID != null ?
+                new ObjectParameter("PurchaseID", purchaseID) :
+                new ObjectParameter("PurchaseID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<dgPurchaseOrderToSaleInvoiceSearchWithPurchaseId_Result>("dgPurchaseOrderToSaleInvoiceSearchWithPurchaseId", purchaseIDParameter);
         }
     
         public virtual ObjectResult<Nullable<int>> EmployeeCodeCheckExistance(string employeeCode, Nullable<decimal> employeeId)

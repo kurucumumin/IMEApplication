@@ -32,8 +32,8 @@ namespace LoginForm.PurchaseOrder
         private void dgPurchaseOrder_SelectionChanged(object sender, EventArgs e)
         {
             IMEEntities IME = new IMEEntities();
-            
-            
+
+
             IME.dgPurchaseOrderToSaleInvoiceSearchWithPurchaseId("");
         }
 
@@ -63,7 +63,7 @@ namespace LoginForm.PurchaseOrder
 
 
                 dgSaleInvoice.Rows.Add(row);
-               
+
             }
             dgSaleInvoice.AllowUserToAddRows = false;
             IME.dgPurchaseOrderToSaleInvoiceSearchWithPurchaseId(listBox1.SelectedItem.ToString());
@@ -72,12 +72,12 @@ namespace LoginForm.PurchaseOrder
 
         private void btnSelectAll_Click(object sender, EventArgs e)
         {
-           
+
                 for (int i = 0; i < dgSaleInvoice.RowCount; i++)
                 {
                 dgSaleInvoice.Rows[i].Cells[0].Selected = true;
                 }
-            
+
         }
 
         private void btnClearAll_Click(object sender, EventArgs e)
