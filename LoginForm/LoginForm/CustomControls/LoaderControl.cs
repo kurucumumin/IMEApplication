@@ -95,5 +95,12 @@ namespace LoginForm.CustomControls
             txtReader.LoaderType = "RSInvoice";
             GoToLoaderPage();
         }
+
+        private void btnOrderAcknowledgement_Click(object sender, EventArgs e)
+        {
+            txtReader.LoaderType = "";
+            txtReader.LoaderType = "OrderAcknowledgementtxtReader";
+            GoToLoaderPage();
+        }
     }
 }
