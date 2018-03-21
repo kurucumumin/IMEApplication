@@ -2210,6 +2210,12 @@
     <Compile Include="SaleOrder\FormSaleGridCustomize.Designer.cs">
       <DependentUpon>FormSaleGridCustomize.cs</DependentUpon>
     </Compile>
+    <Compile Include="SaleOrder\SaleDevelopment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleOrder\SaleDevelopment.designer.cs">
+      <DependentUpon>SaleDevelopment.cs</DependentUpon>
+    </Compile>
     <Compile Include="SaleOrder\SalesOrderHelper.cs" />
     <Compile Include="Services\BackUpAndRestore.cs" />
     <Compile Include="Services\Common.cs" />
@@ -2684,6 +2690,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SaleOrder\FormSaleGridCustomize.resx">
       <DependentUpon>FormSaleGridCustomize.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaleOrder\SaleDevelopment.resx">
+      <DependentUpon>SaleDevelopment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Supplier\frmSupplierMain.resx">
       <DependentUpon>frmSupplierMain.cs</DependentUpon>

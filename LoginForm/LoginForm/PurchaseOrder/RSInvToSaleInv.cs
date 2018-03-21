@@ -94,12 +94,19 @@ namespace LoginForm.PurchaseOrder
             dt.Columns.Add("Quantity");
             dt.Columns.Add("ProductID");
             dt.Columns.Add("Discount");
+            dt.Columns.Add("Amount");
+            dt.Columns.Add("NetAmount");
+            dt.Columns.Add("ProductDesc");
             for (int i = 0; i < dgSaleInvoice.RowCount; i++)
             {
                 DataRow row = dt.NewRow();
                 row["Quantity"] = dgSaleInvoice.Rows[i].Cells[dgQuantity.Index].Value.ToString();
                 row["ProductID"] = dgSaleInvoice.Rows[i].Cells[dgProductNumber.Index].Value.ToString();
                 row["Discount"] = dgSaleInvoice.Rows[i].Cells[dgDiscount.Index].Value.ToString();
+                row["Amount"] =
+                    (decimal.Parse(dgSaleInvoice.Rows[i].Cells[dgAmount.Index].Value.ToString()) + decimal.Parse(dgSaleInvoice.Rows[i].Cells[dgDiscount.Index].Value.ToString())).ToString();
+                row["NetAmount"] = dgSaleInvoice.Rows[i].Cells[dgAmount.Index].Value.ToString();
+                row["ProductDesc"] = dgSaleInvoice.Rows[i].Cells[dgArticleDescription.Index].Value.ToString();
                 dt.Rows.Add(row);
             }
             frmSalesInvoice form = new frmSalesInvoice(dt);

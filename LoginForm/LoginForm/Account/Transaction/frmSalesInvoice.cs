@@ -2292,6 +2292,11 @@ namespace LoginForm
         /// <param name="strProduct"></param>
         /// <param name="inRowIndex"></param>
         /// <param name="strFillMode"></param>
+        /// 
+
+
+
+
         public void ProductDetailsFill(string strProduct, int inRowIndex, string strFillMode)
         {
             PurchaseDetailsSP spPurchaseDetails = new PurchaseDetailsSP();
@@ -2315,43 +2320,64 @@ namespace LoginForm
                 if (dtbl.Rows.Count != 0)
                 {
                     IsSetGridValueChange = false;
-                    dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceSalesDetailsId"].Value = dtbl.Rows[0]["salseDetailsId"];
-                    dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSISalesOrderDetailsId"].Value = dtbl.Rows[0]["salesOrderDetailsId"];
-                    dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceDeliveryNoteDetailsId"].Value = dtbl.Rows[0]["deliveryNoteDetailsId"];
-                    dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceQuotationDetailsId"].Value = dtbl.Rows[0]["salesQuotationDetailsId"];
-                    dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceProductId"].Value = dtbl.Rows[0]["productId"];
-                    dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceBrand"].Value = dtbl.Rows[0]["brandName"];
-                    dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoicePurchaseRate"].Value = dtbl.Rows[0]["purchaseRate"];
-                    dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceSalesRate"].Value = dtbl.Rows[0]["salesRate"];
-                    dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceMrp"].Value = dtbl.Rows[0]["Mrp"];
-                    decimal decProductId = Convert.ToDecimal(dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceProductId"].Value.ToString());
-                    dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceBarcode"].Value = dtbl.Rows[0]["barcode"];
-                    dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceProductCode"].Value = dtbl.Rows[0]["productCode"];
-                    dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceProductName"].Value = dtbl.Rows[0]["productName"];
-                    dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoicembUnitName"].Value = Convert.ToDecimal(dtbl.Rows[0]["unitId"].ToString());
-                    dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceUnitConversionId"].Value = dtbl.Rows[0]["unitConversionId"];
-                    dgvSalesInvoice.Rows[inRowIndex].Cells["dgvcmbSalesInvoiceBatch"].Value = Convert.ToDecimal(dtbl.Rows[0]["batchId"].ToString());
-                    decimal decBatchId = Convert.ToDecimal(dgvSalesInvoice.Rows[inRowIndex].Cells["dgvcmbSalesInvoiceBatch"].Value.ToString());
-                    getProductRate(inRowIndex, decProductId, decBatchId);
-                    dgvSalesInvoice.Rows[inRowIndex].Cells["dgvcmbSalesInvoiceGodown"].Value = Convert.ToDecimal(dtbl.Rows[0]["godownId"].ToString());
-                    RackComboFill(Convert.ToDecimal(dgvSalesInvoice.Rows[inRowIndex].Cells["dgvcmbSalesInvoiceGodown"].Value.ToString()), inRowIndex, dgvSalesInvoice.Rows[inRowIndex].Cells["dgvcmbSalesInvoiceRack"].ColumnIndex);
-                    dgvSalesInvoice.Rows[inRowIndex].Cells["dgvcmbSalesInvoiceRack"].Value = Convert.ToDecimal(dtbl.Rows[0]["rackId"].ToString());
-                    dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceDiscountPercentage"].Value = dtbl.Rows[0]["discountPercent"].ToString();
-                    dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceDiscountAmount"].Value = dtbl.Rows[0]["discount"];
-                    dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceNetAmount"].Value = dtbl.Rows[0]["netvalue"];
-                    dgvSalesInvoice.Rows[inRowIndex].Cells["dgvcmbSalesInvoiceTaxName"].Value = dtbl.Rows[0]["taxId"];
-                    dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceTaxAmount"].Value = dtbl.Rows[0]["taxAmount"];
-                    dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceAmount"].Value = dtbl.Rows[0]["amount"];
-                    dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceConversionRate"].Value = dtbl.Rows[0]["conversionRate"];
-                    GrossValueCalculation(inRowIndex);
-                    DiscountCalculation(inRowIndex, 22);
-                    DiscountCalculation(inRowIndex, 23);
-                    taxAndGridTotalAmountCalculation(inRowIndex);
-                    decCurrentRate = Convert.ToDecimal(dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceRate"].Value.ToString());
-                    decCurrentConversionRate = Convert.ToDecimal(dtbl.Rows[0]["conversionRate"].ToString());
-                    UnitConversionCalc(inRowIndex);
-                    SiGridTotalAmountCalculation();
-                    IsSetGridValueChange = true;
+                   
+                    try { dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceProductName"].Value = dtbl.Rows[0]["Article_Desc"].ToString(); } catch { }
+                    try { dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceSalesDetailsId"].Value = dtbl.Rows[0]["salseDetailsId"].ToString(); } catch { }
+                    try { dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSISalesOrderDetailsId"].Value = dtbl.Rows[0]["salesOrderDetailsId"].ToString(); } catch { }
+                    try
+                    {
+                        dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceDeliveryNoteDetailsId"].Value = dtbl.Rows[0]["deliveryNoteDetailsId"].ToString();
+                    }
+                    catch { }
+                    try
+                    {
+                        dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceQuotationDetailsId"].Value = dtbl.Rows[0]["salesQuotationDetailsId"].ToString();
+                    }
+                    catch { }
+                    try
+                    {
+                        dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceProductId"].Value = dtbl.Rows[0]["productId"].ToString();
+                    }
+                    catch { }
+                    try
+                    { dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceBrand"].Value = dtbl.Rows[0]["brandName"].ToString(); }
+                    catch { }
+                    try { dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoicePurchaseRate"].Value = dtbl.Rows[0]["purchaseRate"].ToString(); } catch { }
+                    try { dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceSalesRate"].Value = dtbl.Rows[0]["salesRate"].ToString(); } catch { }
+                    try { dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceMrp"].Value = dtbl.Rows[0]["Mrp"].ToString(); } catch { }
+
+                    try { dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceBarcode"].Value = dtbl.Rows[0]["barcode"].ToString(); } catch { }
+                    try { dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceProductCode"].Value = dtbl.Rows[0]["productCode"].ToString(); } catch { }
+                    try { dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceProductName"].Value = dtbl.Rows[0]["productName"].ToString(); } catch { }
+                    try { dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoicembUnitName"].Value = Convert.ToDecimal(dtbl.Rows[0]["unitId"].ToString()); } catch { }
+                    try { dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceUnitConversionId"].Value = dtbl.Rows[0]["unitConversionId"].ToString(); } catch { }
+                    try { dgvSalesInvoice.Rows[inRowIndex].Cells["dgvcmbSalesInvoiceBatch"].Value = Convert.ToDecimal(dtbl.Rows[0]["batchId"].ToString()); } catch { }
+                    try
+                    {
+                        decimal decBatchId = Convert.ToDecimal(dgvSalesInvoice.Rows[inRowIndex].Cells["dgvcmbSalesInvoiceBatch"].Value.ToString());
+                        decimal decProductId = Convert.ToDecimal(dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceProductId"].Value.ToString());
+                        getProductRate(inRowIndex, decProductId, decBatchId);
+                    }
+                    catch { }
+                    try { dgvSalesInvoice.Rows[inRowIndex].Cells["dgvcmbSalesInvoiceGodown"].Value = Convert.ToDecimal(dtbl.Rows[0]["godownId"].ToString()); } catch { }
+                    try { RackComboFill(Convert.ToDecimal(dgvSalesInvoice.Rows[inRowIndex].Cells["dgvcmbSalesInvoiceGodown"].Value.ToString()), inRowIndex, dgvSalesInvoice.Rows[inRowIndex].Cells["dgvcmbSalesInvoiceRack"].ColumnIndex); } catch { }
+                    try { dgvSalesInvoice.Rows[inRowIndex].Cells["dgvcmbSalesInvoiceRack"].Value = Convert.ToDecimal(dtbl.Rows[0]["rackId"].ToString()); } catch { }
+                    try { dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceDiscountPercentage"].Value = dtbl.Rows[0]["discountPercent"].ToString(); } catch { }
+                    try { dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceDiscountAmount"].Value = dtbl.Rows[0]["discount"].ToString(); } catch { }
+                    try { dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceNetAmount"].Value = dtbl.Rows[0]["netvalue"].ToString(); } catch { }
+                    try { dgvSalesInvoice.Rows[inRowIndex].Cells["dgvcmbSalesInvoiceTaxName"].Value = dtbl.Rows[0]["taxId"].ToString(); } catch { }
+                    try { dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceTaxAmount"].Value = dtbl.Rows[0]["taxAmount"].ToString(); } catch { }
+                    try { dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceAmount"].Value = dtbl.Rows[0]["amount"].ToString(); } catch { }
+                    try { dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceConversionRate"].Value = dtbl.Rows[0]["conversionRate"].ToString(); } catch { }
+                    try { GrossValueCalculation(inRowIndex); } catch { }
+                    try { DiscountCalculation(inRowIndex, 22); } catch { }
+                    try { DiscountCalculation(inRowIndex, 23); } catch { }
+                    try { taxAndGridTotalAmountCalculation(inRowIndex); } catch { }
+                    try { decCurrentRate = Convert.ToDecimal(dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceRate"].Value.ToString()); } catch { }
+                    try { decCurrentConversionRate = Convert.ToDecimal(dtbl.Rows[0]["conversionRate"].ToString()); } catch { }
+                    try { UnitConversionCalc(inRowIndex); } catch { }
+                    try { SiGridTotalAmountCalculation(); } catch { }
+                    try { IsSetGridValueChange = true; } catch { }
                 }
                 //else
                 //{
@@ -4944,8 +4970,10 @@ namespace LoginForm
                 row.Cells[dgvtxtSalesInvoiceProductCode.Index].Value = item["ProductID"].ToString();
                 row.Cells[dgvtxtSalesInvoiceQty.Index].Value = item["Quantity"].ToString();
                 row.Cells[dgvtxtSalesInvoiceDiscountAmount.Index].Value = item["Discount"].ToString();
+                row.Cells[dgvtxtSalesInvoiceAmount.Index].Value = item["Amount"].ToString();
+                row.Cells[dgvtxtSalesInvoiceNetAmount.Index].Value = item["NetAmount"].ToString();
+                row.Cells[dgvtxtSalesInvoiceProductName.Index].Value = item["ProductDesc"].ToString();
                 dgvSalesInvoice.Rows.Add(row);
-               
             }
             this.Show();
             //dgvSalesInvoice.DataSource = grid.DataSource;
