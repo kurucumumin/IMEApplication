@@ -2417,6 +2417,11 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DesignationView_Result>("DesignationView", designationIdParameter);
         }
     
+        public virtual ObjectResult<string> dgPurchaseOrder()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("dgPurchaseOrder");
+        }
+    
         public virtual ObjectResult<Nullable<int>> EmployeeCodeCheckExistance(string employeeCode, Nullable<decimal> employeeId)
         {
             var employeeCodeParameter = employeeCode != null ?

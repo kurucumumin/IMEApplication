@@ -31,6 +31,7 @@ namespace LoginForm.DataSet
         public string ArticleDescription { get; set; }
         public Nullable<decimal> DeliveryNumber { get; set; }
         public Nullable<int> DeliveryItemNumber { get; set; }
+        public Nullable<int> IsSaleInvoiced { get; set; }
     
         public virtual RS_Invoice RS_Invoice { get; set; }
     }

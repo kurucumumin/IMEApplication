@@ -186,128 +186,128 @@ namespace LoginForm
         public void SalesInvoiceSettingsCheck()
         {
             SettingsSP spSettings = new SettingsSP();
-            //cmbCashOrbank.Visible = false;
-            //lblcashOrBank.Visible = false;
-            //if (spSettings.SettingsStatusCheck("AllowGodown") == "Yes")
-            //{
-            //    dgvSalesInvoice.Columns["dgvcmbSalesInvoiceGodown"].Visible = true;
-            //}
-            //else
-            //{
-            //    dgvSalesInvoice.Columns["dgvcmbSalesInvoiceGodown"].Visible = false;
-            //}
-            //if (spSettings.SettingsStatusCheck("AllowRack") == "Yes")
-            //{
-            //    dgvSalesInvoice.Columns["dgvcmbSalesInvoiceRack"].Visible = true;
-            //}
-            //else
-            //{
-            //    dgvSalesInvoice.Columns["dgvcmbSalesInvoiceRack"].Visible = false;
-            //}
-            //if (spSettings.SettingsStatusCheck("ShowBrand") == "Yes")
-            //{
-            //    dgvSalesInvoice.Columns["dgvtxtSalesInvoiceBrand"].Visible = true;
-            //}
-            //else
-            //{
-            //    dgvSalesInvoice.Columns["dgvtxtSalesInvoiceBrand"].Visible = false;
-            //}
-            //if (spSettings.SettingsStatusCheck("ShowSalesRate") == "yes")
-            //{
-            //    dgvSalesInvoice.Columns["dgvtxtSalesInvoiceSalesRate"].Visible = true;
-            //}
-            //else
-            //{
-            //    dgvSalesInvoice.Columns["dgvtxtSalesInvoiceSalesRate"].Visible = false;
-            //}
-            //if (spSettings.SettingsStatusCheck("ShowMRP") == "Yes")
-            //{
-            //    dgvSalesInvoice.Columns["dgvtxtSalesInvoiceMrp"].Visible = true;
-            //}
-            //else
-            //{
-            //    dgvSalesInvoice.Columns["dgvtxtSalesInvoiceMrp"].Visible = false;
-            //}
-            //if (spSettings.SettingsStatusCheck("MultiCurrency") == "Yes")
-            //{
-            //    cmbCurrency.Enabled = true;
-            //}
-            //else
-            //{
-            //    cmbCurrency.Enabled = false;
-            //}
-            //if (spSettings.SettingsStatusCheck("ShowUnit") == "Yes")
-            //{
-            //    dgvSalesInvoice.Columns["dgvtxtSalesInvoicembUnitName"].Visible = true;
-            //}
-            //else
-            //{
-            //    dgvSalesInvoice.Columns["dgvtxtSalesInvoicembUnitName"].Visible = false;
-            //}
-            //if (spSettings.SettingsStatusCheck("ShowDiscountAmount") == "Yes")
-            //{
-            //    dgvSalesInvoice.Columns["dgvtxtSalesInvoiceDiscountAmount"].Visible = true;
-            //}
-            //else
-            //{
-            //    dgvSalesInvoice.Columns["dgvtxtSalesInvoiceDiscountAmount"].Visible = false;
-            //}
-            //if (spSettings.SettingsStatusCheck("ShowProductCode") == "Yes")
-            //{
-            //    dgvSalesInvoice.Columns["dgvtxtSalesInvoiceProductCode"].Visible = true;
-            //}
-            //else
-            //{
-            //    dgvSalesInvoice.Columns["dgvtxtSalesInvoiceProductCode"].Visible = false;
-            //}
-            //if (spSettings.SettingsStatusCheck("Barcode") == "Yes")
-            //{
-            //    dgvSalesInvoice.Columns["dgvtxtSalesInvoiceBarcode"].Visible = true;
-            //}
-            //else
-            //{
-            //    dgvSalesInvoice.Columns["dgvtxtSalesInvoiceBarcode"].Visible = false;
-            //}
-            //if (spSettings.SettingsStatusCheck("ShowDiscountPercentage") == "Yes")
-            //{
-            //    dgvSalesInvoice.Columns["dgvtxtSalesInvoiceDiscountPercentage"].Visible = true;
-            //}
-            //else
-            //{
-            //    dgvSalesInvoice.Columns["dgvtxtSalesInvoiceDiscountPercentage"].Visible = false;
-            //}
-            //if (spSettings.SettingsStatusCheck("AllowBatch") == "Yes")
-            //{
-            //    dgvSalesInvoice.Columns["dgvcmbSalesInvoiceBatch"].Visible = true;
-            //}
-            //else
-            //{
-            //    dgvSalesInvoice.Columns["dgvcmbSalesInvoiceBatch"].Visible = false;
-            //}
-            //if (spSettings.SettingsStatusCheck("ShowPurchaseRate") == "Yes")
-            //{
-            //    dgvSalesInvoice.Columns["dgvtxtSalesInvoicePurchaseRate"].Visible = true;
-            //}
-            //else
-            //{
-            //    dgvSalesInvoice.Columns["dgvtxtSalesInvoicePurchaseRate"].Visible = false;
-            //}
-            //if (spSettings.SettingsStatusCheck("Tax") == "Yes")
-            //{
-            //    dgvSalesInvoice.Columns["dgvcmbSalesInvoiceTaxName"].Visible = true;
-            //    dgvSalesInvoice.Columns["dgvtxtSalesInvoiceTaxAmount"].Visible = true;
-            //    dgvSalesInvoiceTax.Visible = true;
-            //    lblTaxTotal.Visible = true;
-            //    lblTaxTotalAmount.Visible = true;
-            //}
-            //else
-            //{
-            //    dgvSalesInvoice.Columns["dgvcmbSalesInvoiceTaxName"].Visible = false;
-            //    dgvSalesInvoice.Columns["dgvtxtSalesInvoiceTaxAmount"].Visible = false;
-            //    dgvSalesInvoiceTax.Visible = false;
-            //    lblTaxTotal.Visible = false;
-            //    lblTaxTotalAmount.Visible = false;
-            //}
+            cmbCashOrbank.Visible = false;
+            lblcashOrBank.Visible = false;
+            if (spSettings.SettingsStatusCheck("AllowGodown") == "Yes")
+            {
+                dgvSalesInvoice.Columns["dgvcmbSalesInvoiceGodown"].Visible = true;
+            }
+            else
+            {
+                dgvSalesInvoice.Columns["dgvcmbSalesInvoiceGodown"].Visible = false;
+            }
+            if (spSettings.SettingsStatusCheck("AllowRack") == "Yes")
+            {
+                dgvSalesInvoice.Columns["dgvcmbSalesInvoiceRack"].Visible = true;
+            }
+            else
+            {
+                dgvSalesInvoice.Columns["dgvcmbSalesInvoiceRack"].Visible = false;
+            }
+            if (spSettings.SettingsStatusCheck("ShowBrand") == "Yes")
+            {
+                dgvSalesInvoice.Columns["dgvtxtSalesInvoiceBrand"].Visible = true;
+            }
+            else
+            {
+                dgvSalesInvoice.Columns["dgvtxtSalesInvoiceBrand"].Visible = false;
+            }
+            if (spSettings.SettingsStatusCheck("ShowSalesRate") == "yes")
+            {
+                dgvSalesInvoice.Columns["dgvtxtSalesInvoiceSalesRate"].Visible = true;
+            }
+            else
+            {
+                dgvSalesInvoice.Columns["dgvtxtSalesInvoiceSalesRate"].Visible = false;
+            }
+            if (spSettings.SettingsStatusCheck("ShowMRP") == "Yes")
+            {
+                dgvSalesInvoice.Columns["dgvtxtSalesInvoiceMrp"].Visible = true;
+            }
+            else
+            {
+                dgvSalesInvoice.Columns["dgvtxtSalesInvoiceMrp"].Visible = false;
+            }
+            if (spSettings.SettingsStatusCheck("MultiCurrency") == "Yes")
+            {
+                cmbCurrency.Enabled = true;
+            }
+            else
+            {
+                cmbCurrency.Enabled = false;
+            }
+            if (spSettings.SettingsStatusCheck("ShowUnit") == "Yes")
+            {
+                dgvSalesInvoice.Columns["dgvtxtSalesInvoicembUnitName"].Visible = true;
+            }
+            else
+            {
+                dgvSalesInvoice.Columns["dgvtxtSalesInvoicembUnitName"].Visible = false;
+            }
+            if (spSettings.SettingsStatusCheck("ShowDiscountAmount") == "Yes")
+            {
+                dgvSalesInvoice.Columns["dgvtxtSalesInvoiceDiscountAmount"].Visible = true;
+            }
+            else
+            {
+                dgvSalesInvoice.Columns["dgvtxtSalesInvoiceDiscountAmount"].Visible = false;
+            }
+            if (spSettings.SettingsStatusCheck("ShowProductCode") == "Yes")
+            {
+                dgvSalesInvoice.Columns["dgvtxtSalesInvoiceProductCode"].Visible = true;
+            }
+            else
+            {
+                dgvSalesInvoice.Columns["dgvtxtSalesInvoiceProductCode"].Visible = false;
+            }
+            if (spSettings.SettingsStatusCheck("Barcode") == "Yes")
+            {
+                dgvSalesInvoice.Columns["dgvtxtSalesInvoiceBarcode"].Visible = true;
+            }
+            else
+            {
+                dgvSalesInvoice.Columns["dgvtxtSalesInvoiceBarcode"].Visible = false;
+            }
+            if (spSettings.SettingsStatusCheck("ShowDiscountPercentage") == "Yes")
+            {
+                dgvSalesInvoice.Columns["dgvtxtSalesInvoiceDiscountPercentage"].Visible = true;
+            }
+            else
+            {
+                dgvSalesInvoice.Columns["dgvtxtSalesInvoiceDiscountPercentage"].Visible = false;
+            }
+            if (spSettings.SettingsStatusCheck("AllowBatch") == "Yes")
+            {
+                dgvSalesInvoice.Columns["dgvcmbSalesInvoiceBatch"].Visible = true;
+            }
+            else
+            {
+                dgvSalesInvoice.Columns["dgvcmbSalesInvoiceBatch"].Visible = false;
+            }
+            if (spSettings.SettingsStatusCheck("ShowPurchaseRate") == "Yes")
+            {
+                dgvSalesInvoice.Columns["dgvtxtSalesInvoicePurchaseRate"].Visible = true;
+            }
+            else
+            {
+                dgvSalesInvoice.Columns["dgvtxtSalesInvoicePurchaseRate"].Visible = false;
+            }
+            if (spSettings.SettingsStatusCheck("Tax") == "Yes")
+            {
+                dgvSalesInvoice.Columns["dgvcmbSalesInvoiceTaxName"].Visible = true;
+                dgvSalesInvoice.Columns["dgvtxtSalesInvoiceTaxAmount"].Visible = true;
+                dgvSalesInvoiceTax.Visible = true;
+                lblTaxTotal.Visible = true;
+                lblTaxTotalAmount.Visible = true;
+            }
+            else
+            {
+                dgvSalesInvoice.Columns["dgvcmbSalesInvoiceTaxName"].Visible = false;
+                dgvSalesInvoice.Columns["dgvtxtSalesInvoiceTaxAmount"].Visible = false;
+                dgvSalesInvoiceTax.Visible = false;
+                lblTaxTotal.Visible = false;
+                lblTaxTotalAmount.Visible = false;
+            }
 
         }
         /// <summary>
@@ -816,9 +816,9 @@ namespace LoginForm
                 UnitSP spUnit = new UnitSP();
                 DataTable dtblUnit = new DataTable();
                 dtblUnit = spUnit.UnitViewAll();
-                dgvtxtSalesInvoicembUnitName.DataSource = dtblUnit;
-                dgvtxtSalesInvoicembUnitName.ValueMember = "unitId";
-                dgvtxtSalesInvoicembUnitName.DisplayMember = "unitName";
+                //dgvtxtSalesInvoicembUnitName.DataSource = dtblUnit;
+                //dgvtxtSalesInvoicembUnitName.ValueMember = "unitId";
+                //dgvtxtSalesInvoicembUnitName.DisplayMember = "unitName";
             }
             catch (Exception ex)
             {
@@ -835,13 +835,18 @@ namespace LoginForm
         {
             try
             {
-                DataTable dtbl = new DataTable();
-                UnitSP spUnit = new UnitSP();
-                dtbl = spUnit.UnitViewAllByProductId(decProductId);
-                DataGridViewComboBoxCell dgvcmbUnitCell = (DataGridViewComboBoxCell)dgvSalesInvoice.Rows[inRow].Cells[inColumn];
-                dgvcmbUnitCell.DataSource = dtbl;
-                dgvcmbUnitCell.DisplayMember = "unitName";
-                dgvcmbUnitCell.ValueMember = "unitId";
+                //DataTable dtbl = new DataTable();
+                //UnitSP spUnit = new UnitSP();
+                //dtbl = spUnit.UnitViewAllByProductId(decProductId);
+                //DataGridViewComboBoxCell dgvcmbUnitCell = (DataGridViewComboBoxCell)dgvSalesInvoice.Rows[inRow].Cells[inColumn];
+                //dgvcmbUnitCell.DataSource = dtbl;
+                //dgvcmbUnitCell.DisplayMember = "unitName";
+                //dgvcmbUnitCell.ValueMember = "unitId";
+
+                DataGridViewTextBoxCell dgvcmbUnitCell = (DataGridViewTextBoxCell)dgvSalesInvoice.Rows[inRow].Cells[inColumn];
+                string unit = IME.V_Product.Where(x => x.productId == decProductId).FirstOrDefault().Unit_Measure.ToString();
+                dgvcmbUnitCell.Value = (unit == String.Empty || unit == null) ? "Each" : unit;
+
             }
             catch (Exception ex)
             {
@@ -2319,36 +2324,45 @@ namespace LoginForm
                     dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSISalesOrderDetailsId"].Value = dtbl.Rows[0]["salesOrderDetailsId"];
                     dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceDeliveryNoteDetailsId"].Value = dtbl.Rows[0]["deliveryNoteDetailsId"];
                     dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceQuotationDetailsId"].Value = dtbl.Rows[0]["salesQuotationDetailsId"];
-                    dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceProductId"].Value = dtbl.Rows[0]["productId"];
-                    dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceBrand"].Value = dtbl.Rows[0]["brandName"];
-                    dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoicePurchaseRate"].Value = dtbl.Rows[0]["purchaseRate"];
-                    dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceSalesRate"].Value = dtbl.Rows[0]["salesRate"];
-                    dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceMrp"].Value = dtbl.Rows[0]["Mrp"];
+                    dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceProductId"].Value = dtbl.Rows[0]["Article_No"];
+                    //dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceBrand"].Value = dtbl.Rows[0]["brandName"];
+                    //dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoicePurchaseRate"].Value = dtbl.Rows[0]["purchaseRate"];
+                    //dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceSalesRate"].Value = dtbl.Rows[0]["salesRate"];
+                    //dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceMrp"].Value = dtbl.Rows[0]["Mrp"];
                     decimal decProductId = Convert.ToDecimal(dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceProductId"].Value.ToString());
                     dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceBarcode"].Value = dtbl.Rows[0]["barcode"];
-                    dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceProductCode"].Value = dtbl.Rows[0]["productCode"];
-                    dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceProductName"].Value = dtbl.Rows[0]["productName"];
-                    dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoicembUnitName"].Value = Convert.ToDecimal(dtbl.Rows[0]["unitId"].ToString());
-                    dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceUnitConversionId"].Value = dtbl.Rows[0]["unitConversionId"];
-                    dgvSalesInvoice.Rows[inRowIndex].Cells["dgvcmbSalesInvoiceBatch"].Value = Convert.ToDecimal(dtbl.Rows[0]["batchId"].ToString());
-                    decimal decBatchId = Convert.ToDecimal(dgvSalesInvoice.Rows[inRowIndex].Cells["dgvcmbSalesInvoiceBatch"].Value.ToString());
-                    getProductRate(inRowIndex, decProductId, decBatchId);
-                    dgvSalesInvoice.Rows[inRowIndex].Cells["dgvcmbSalesInvoiceGodown"].Value = Convert.ToDecimal(dtbl.Rows[0]["godownId"].ToString());
-                    RackComboFill(Convert.ToDecimal(dgvSalesInvoice.Rows[inRowIndex].Cells["dgvcmbSalesInvoiceGodown"].Value.ToString()), inRowIndex, dgvSalesInvoice.Rows[inRowIndex].Cells["dgvcmbSalesInvoiceRack"].ColumnIndex);
-                    dgvSalesInvoice.Rows[inRowIndex].Cells["dgvcmbSalesInvoiceRack"].Value = Convert.ToDecimal(dtbl.Rows[0]["rackId"].ToString());
+                    dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceProductCode"].Value = dtbl.Rows[0]["Article_No"];
+                    dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceProductName"].Value = dtbl.Rows[0]["Article_Desc"];
+                    dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoicembUnitName"].Value = (dtbl.Rows[0]["unit"].ToString() != String.Empty) ? dtbl.Rows[0]["unit"] : "Each" ;
+                    //dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoicembUnitName"].Value = Convert.ToDecimal(dtbl.Rows[0]["unitId"].ToString());
+                    //dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceUnitConversionId"].Value = dtbl.Rows[0]["unitConversionId"];
+                    //dgvSalesInvoice.Rows[inRowIndex].Cells["dgvcmbSalesInvoiceBatch"].Value = Convert.ToDecimal(dtbl.Rows[0]["batchId"].ToString());
+                    //decimal decBatchId = Convert.ToDecimal(dgvSalesInvoice.Rows[inRowIndex].Cells["dgvcmbSalesInvoiceBatch"].Value.ToString());
+                    //getProductRate(inRowIndex, decProductId, decBatchId);
+                    //dgvSalesInvoice.Rows[inRowIndex].Cells["dgvcmbSalesInvoiceGodown"].Value = Convert.ToDecimal(dtbl.Rows[0]["godownId"].ToString());
+                    //RackComboFill(Convert.ToDecimal(dgvSalesInvoice.Rows[inRowIndex].Cells["dgvcmbSalesInvoiceGodown"].Value.ToString()), inRowIndex, dgvSalesInvoice.Rows[inRowIndex].Cells["dgvcmbSalesInvoiceRack"].ColumnIndex);
+                    //dgvSalesInvoice.Rows[inRowIndex].Cells["dgvcmbSalesInvoiceRack"].Value = Convert.ToDecimal(dtbl.Rows[0]["rackId"].ToString());
                     dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceDiscountPercentage"].Value = dtbl.Rows[0]["discountPercent"].ToString();
                     dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceDiscountAmount"].Value = dtbl.Rows[0]["discount"];
                     dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceNetAmount"].Value = dtbl.Rows[0]["netvalue"];
                     dgvSalesInvoice.Rows[inRowIndex].Cells["dgvcmbSalesInvoiceTaxName"].Value = dtbl.Rows[0]["taxId"];
                     dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceTaxAmount"].Value = dtbl.Rows[0]["taxAmount"];
                     dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceAmount"].Value = dtbl.Rows[0]["amount"];
-                    dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceConversionRate"].Value = dtbl.Rows[0]["conversionRate"];
+                    //dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceConversionRate"].Value = dtbl.Rows[0]["conversionRate"];
                     GrossValueCalculation(inRowIndex);
                     DiscountCalculation(inRowIndex, 22);
                     DiscountCalculation(inRowIndex, 23);
                     taxAndGridTotalAmountCalculation(inRowIndex);
-                    decCurrentRate = Convert.ToDecimal(dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceRate"].Value.ToString());
-                    decCurrentConversionRate = Convert.ToDecimal(dtbl.Rows[0]["conversionRate"].ToString());
+                    //if (dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceSalesRate"].Value==null)
+                    //{
+                    //    decCurrentRate = Convert.ToDecimal(IME.CurrentDate().FirstOrDefault().Value);
+                    //}
+                    //else
+                    //{
+                    //    decCurrentRate = Convert.ToDecimal(dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceRate"].Value.ToString());
+                    //}
+                    decCurrentRate = Convert.ToDecimal(dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceRate"].Value);
+                    //decCurrentConversionRate = Convert.ToDecimal(dtbl.Rows[0]["conversionRate"].ToString());
                     UnitConversionCalc(inRowIndex);
                     SiGridTotalAmountCalculation();
                     IsSetGridValueChange = true;
@@ -6131,11 +6145,11 @@ namespace LoginForm
                     {
                         if (dgvSalesInvoice.Columns[e.ColumnIndex].Name == "dgvtxtSalesInvoicembUnitName")
                         {
-                            decCurrentConversionRate = Convert.ToDecimal(dgvSalesInvoice.Rows[e.RowIndex].Cells["dgvtxtSalesInvoiceConversionRate"].Value.ToString());
-                            decCurrentRate = Convert.ToDecimal(dgvSalesInvoice.Rows[e.RowIndex].Cells["dgvtxtSalesInvoiceRate"].Value.ToString());
+                            decCurrentConversionRate = Convert.ToDecimal(dgvSalesInvoice.Rows[e.RowIndex].Cells["dgvtxtSalesInvoiceConversionRate"].Value);
+                            decCurrentRate = Convert.ToDecimal(dgvSalesInvoice.Rows[e.RowIndex].Cells["dgvtxtSalesInvoiceRate"].Value);
                         }
-                        decCurrentConversionRate = Convert.ToDecimal(dgvSalesInvoice.Rows[e.RowIndex].Cells["dgvtxtSalesInvoiceConversionRate"].Value.ToString());
-                        decCurrentRate = Convert.ToDecimal(dgvSalesInvoice.Rows[e.RowIndex].Cells["dgvtxtSalesInvoiceRate"].Value.ToString());
+                        decCurrentConversionRate = Convert.ToDecimal(dgvSalesInvoice.Rows[e.RowIndex].Cells["dgvtxtSalesInvoiceConversionRate"].Value);
+                        decCurrentRate = Convert.ToDecimal(dgvSalesInvoice.Rows[e.RowIndex].Cells["dgvtxtSalesInvoiceRate"].Value);
                     }
                     if (e.ColumnIndex == dgvSalesInvoice.Columns["dgvcmbSalesInvoiceBatch"].Index)
                     {
