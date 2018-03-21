@@ -178,7 +178,7 @@ namespace LoginForm
                 txtTotalAmount.Text = "0.00";
                 txtGrandTotal.Text = "0.00";
                 lblTotalQuantitydisplay.Text = "0";
-           
+
         }
         /// <summary>
         /// Checking the settings and arrange the form controlls based on settings
@@ -186,128 +186,128 @@ namespace LoginForm
         public void SalesInvoiceSettingsCheck()
         {
             SettingsSP spSettings = new SettingsSP();
-            //cmbCashOrbank.Visible = false;
-            //lblcashOrBank.Visible = false;
-            //if (spSettings.SettingsStatusCheck("AllowGodown") == "Yes")
-            //{
-            //    dgvSalesInvoice.Columns["dgvcmbSalesInvoiceGodown"].Visible = true;
-            //}
-            //else
-            //{
-            //    dgvSalesInvoice.Columns["dgvcmbSalesInvoiceGodown"].Visible = false;
-            //}
-            //if (spSettings.SettingsStatusCheck("AllowRack") == "Yes")
-            //{
-            //    dgvSalesInvoice.Columns["dgvcmbSalesInvoiceRack"].Visible = true;
-            //}
-            //else
-            //{
-            //    dgvSalesInvoice.Columns["dgvcmbSalesInvoiceRack"].Visible = false;
-            //}
-            //if (spSettings.SettingsStatusCheck("ShowBrand") == "Yes")
-            //{
-            //    dgvSalesInvoice.Columns["dgvtxtSalesInvoiceBrand"].Visible = true;
-            //}
-            //else
-            //{
-            //    dgvSalesInvoice.Columns["dgvtxtSalesInvoiceBrand"].Visible = false;
-            //}
-            //if (spSettings.SettingsStatusCheck("ShowSalesRate") == "yes")
-            //{
-            //    dgvSalesInvoice.Columns["dgvtxtSalesInvoiceSalesRate"].Visible = true;
-            //}
-            //else
-            //{
-            //    dgvSalesInvoice.Columns["dgvtxtSalesInvoiceSalesRate"].Visible = false;
-            //}
-            //if (spSettings.SettingsStatusCheck("ShowMRP") == "Yes")
-            //{
-            //    dgvSalesInvoice.Columns["dgvtxtSalesInvoiceMrp"].Visible = true;
-            //}
-            //else
-            //{
-            //    dgvSalesInvoice.Columns["dgvtxtSalesInvoiceMrp"].Visible = false;
-            //}
-            //if (spSettings.SettingsStatusCheck("MultiCurrency") == "Yes")
-            //{
-            //    cmbCurrency.Enabled = true;
-            //}
-            //else
-            //{
-            //    cmbCurrency.Enabled = false;
-            //}
-            //if (spSettings.SettingsStatusCheck("ShowUnit") == "Yes")
-            //{
-            //    dgvSalesInvoice.Columns["dgvtxtSalesInvoicembUnitName"].Visible = true;
-            //}
-            //else
-            //{
-            //    dgvSalesInvoice.Columns["dgvtxtSalesInvoicembUnitName"].Visible = false;
-            //}
-            //if (spSettings.SettingsStatusCheck("ShowDiscountAmount") == "Yes")
-            //{
-            //    dgvSalesInvoice.Columns["dgvtxtSalesInvoiceDiscountAmount"].Visible = true;
-            //}
-            //else
-            //{
-            //    dgvSalesInvoice.Columns["dgvtxtSalesInvoiceDiscountAmount"].Visible = false;
-            //}
-            //if (spSettings.SettingsStatusCheck("ShowProductCode") == "Yes")
-            //{
-            //    dgvSalesInvoice.Columns["dgvtxtSalesInvoiceProductCode"].Visible = true;
-            //}
-            //else
-            //{
-            //    dgvSalesInvoice.Columns["dgvtxtSalesInvoiceProductCode"].Visible = false;
-            //}
-            //if (spSettings.SettingsStatusCheck("Barcode") == "Yes")
-            //{
-            //    dgvSalesInvoice.Columns["dgvtxtSalesInvoiceBarcode"].Visible = true;
-            //}
-            //else
-            //{
-            //    dgvSalesInvoice.Columns["dgvtxtSalesInvoiceBarcode"].Visible = false;
-            //}
-            //if (spSettings.SettingsStatusCheck("ShowDiscountPercentage") == "Yes")
-            //{
-            //    dgvSalesInvoice.Columns["dgvtxtSalesInvoiceDiscountPercentage"].Visible = true;
-            //}
-            //else
-            //{
-            //    dgvSalesInvoice.Columns["dgvtxtSalesInvoiceDiscountPercentage"].Visible = false;
-            //}
-            //if (spSettings.SettingsStatusCheck("AllowBatch") == "Yes")
-            //{
-            //    dgvSalesInvoice.Columns["dgvcmbSalesInvoiceBatch"].Visible = true;
-            //}
-            //else
-            //{
-            //    dgvSalesInvoice.Columns["dgvcmbSalesInvoiceBatch"].Visible = false;
-            //}
-            //if (spSettings.SettingsStatusCheck("ShowPurchaseRate") == "Yes")
-            //{
-            //    dgvSalesInvoice.Columns["dgvtxtSalesInvoicePurchaseRate"].Visible = true;
-            //}
-            //else
-            //{
-            //    dgvSalesInvoice.Columns["dgvtxtSalesInvoicePurchaseRate"].Visible = false;
-            //}
-            //if (spSettings.SettingsStatusCheck("Tax") == "Yes")
-            //{
-            //    dgvSalesInvoice.Columns["dgvcmbSalesInvoiceTaxName"].Visible = true;
-            //    dgvSalesInvoice.Columns["dgvtxtSalesInvoiceTaxAmount"].Visible = true;
-            //    dgvSalesInvoiceTax.Visible = true;
-            //    lblTaxTotal.Visible = true;
-            //    lblTaxTotalAmount.Visible = true;
-            //}
-            //else
-            //{
-            //    dgvSalesInvoice.Columns["dgvcmbSalesInvoiceTaxName"].Visible = false;
-            //    dgvSalesInvoice.Columns["dgvtxtSalesInvoiceTaxAmount"].Visible = false;
-            //    dgvSalesInvoiceTax.Visible = false;
-            //    lblTaxTotal.Visible = false;
-            //    lblTaxTotalAmount.Visible = false;
-            //}
+            cmbCashOrbank.Visible = false;
+            lblcashOrBank.Visible = false;
+            if (spSettings.SettingsStatusCheck("AllowGodown") == "Yes")
+            {
+                dgvSalesInvoice.Columns["dgvcmbSalesInvoiceGodown"].Visible = true;
+            }
+            else
+            {
+                dgvSalesInvoice.Columns["dgvcmbSalesInvoiceGodown"].Visible = false;
+            }
+            if (spSettings.SettingsStatusCheck("AllowRack") == "Yes")
+            {
+                dgvSalesInvoice.Columns["dgvcmbSalesInvoiceRack"].Visible = true;
+            }
+            else
+            {
+                dgvSalesInvoice.Columns["dgvcmbSalesInvoiceRack"].Visible = false;
+            }
+            if (spSettings.SettingsStatusCheck("ShowBrand") == "Yes")
+            {
+                dgvSalesInvoice.Columns["dgvtxtSalesInvoiceBrand"].Visible = true;
+            }
+            else
+            {
+                dgvSalesInvoice.Columns["dgvtxtSalesInvoiceBrand"].Visible = false;
+            }
+            if (spSettings.SettingsStatusCheck("ShowSalesRate") == "yes")
+            {
+                dgvSalesInvoice.Columns["dgvtxtSalesInvoiceSalesRate"].Visible = true;
+            }
+            else
+            {
+                dgvSalesInvoice.Columns["dgvtxtSalesInvoiceSalesRate"].Visible = false;
+            }
+            if (spSettings.SettingsStatusCheck("ShowMRP") == "Yes")
+            {
+                dgvSalesInvoice.Columns["dgvtxtSalesInvoiceMrp"].Visible = true;
+            }
+            else
+            {
+                dgvSalesInvoice.Columns["dgvtxtSalesInvoiceMrp"].Visible = false;
+            }
+            if (spSettings.SettingsStatusCheck("MultiCurrency") == "Yes")
+            {
+                cmbCurrency.Enabled = true;
+            }
+            else
+            {
+                cmbCurrency.Enabled = false;
+            }
+            if (spSettings.SettingsStatusCheck("ShowUnit") == "Yes")
+            {
+                dgvSalesInvoice.Columns["dgvtxtSalesInvoicembUnitName"].Visible = true;
+            }
+            else
+            {
+                dgvSalesInvoice.Columns["dgvtxtSalesInvoicembUnitName"].Visible = false;
+            }
+            if (spSettings.SettingsStatusCheck("ShowDiscountAmount") == "Yes")
+            {
+                dgvSalesInvoice.Columns["dgvtxtSalesInvoiceDiscountAmount"].Visible = true;
+            }
+            else
+            {
+                dgvSalesInvoice.Columns["dgvtxtSalesInvoiceDiscountAmount"].Visible = false;
+            }
+            if (spSettings.SettingsStatusCheck("ShowProductCode") == "Yes")
+            {
+                dgvSalesInvoice.Columns["dgvtxtSalesInvoiceProductCode"].Visible = true;
+            }
+            else
+            {
+                dgvSalesInvoice.Columns["dgvtxtSalesInvoiceProductCode"].Visible = false;
+            }
+            if (spSettings.SettingsStatusCheck("Barcode") == "Yes")
+            {
+                dgvSalesInvoice.Columns["dgvtxtSalesInvoiceBarcode"].Visible = true;
+            }
+            else
+            {
+                dgvSalesInvoice.Columns["dgvtxtSalesInvoiceBarcode"].Visible = false;
+            }
+            if (spSettings.SettingsStatusCheck("ShowDiscountPercentage") == "Yes")
+            {
+                dgvSalesInvoice.Columns["dgvtxtSalesInvoiceDiscountPercentage"].Visible = true;
+            }
+            else
+            {
+                dgvSalesInvoice.Columns["dgvtxtSalesInvoiceDiscountPercentage"].Visible = false;
+            }
+            if (spSettings.SettingsStatusCheck("AllowBatch") == "Yes")
+            {
+                dgvSalesInvoice.Columns["dgvcmbSalesInvoiceBatch"].Visible = true;
+            }
+            else
+            {
+                dgvSalesInvoice.Columns["dgvcmbSalesInvoiceBatch"].Visible = false;
+            }
+            if (spSettings.SettingsStatusCheck("ShowPurchaseRate") == "Yes")
+            {
+                dgvSalesInvoice.Columns["dgvtxtSalesInvoicePurchaseRate"].Visible = true;
+            }
+            else
+            {
+                dgvSalesInvoice.Columns["dgvtxtSalesInvoicePurchaseRate"].Visible = false;
+            }
+            if (spSettings.SettingsStatusCheck("Tax") == "Yes")
+            {
+                dgvSalesInvoice.Columns["dgvcmbSalesInvoiceTaxName"].Visible = true;
+                dgvSalesInvoice.Columns["dgvtxtSalesInvoiceTaxAmount"].Visible = true;
+                dgvSalesInvoiceTax.Visible = true;
+                lblTaxTotal.Visible = true;
+                lblTaxTotalAmount.Visible = true;
+            }
+            else
+            {
+                dgvSalesInvoice.Columns["dgvcmbSalesInvoiceTaxName"].Visible = false;
+                dgvSalesInvoice.Columns["dgvtxtSalesInvoiceTaxAmount"].Visible = false;
+                dgvSalesInvoiceTax.Visible = false;
+                lblTaxTotal.Visible = false;
+                lblTaxTotalAmount.Visible = false;
+            }
 
         }
         /// <summary>
@@ -322,8 +322,8 @@ namespace LoginForm
                     isTick = true;
                 }
 
-            
-            
+
+
             return isTick;
         }
         /// <summary>
@@ -377,7 +377,7 @@ namespace LoginForm
         public void PricingLevelComboFill()
         {
                 TransactionGeneralFillObj.PricingLevelViewAll(cmbPricingLevel, false);
-            
+
         }
         /// <summary>
         /// Cash and bank combofill function
@@ -386,12 +386,12 @@ namespace LoginForm
         {
             DataTable dtbl = new DataTable();
             TransactionsGeneralFill spSalesDetails = new TransactionsGeneralFill();
-            
+
                 dtbl = spSalesDetails.BankOrCashComboFill(true);
                 cmbCashOrbank.DataSource = dtbl;
                 cmbCashOrbank.ValueMember = "ledgerId";
                 cmbCashOrbank.DisplayMember = "ledgerName";
-            
+
         }
         /// <summary>
         /// Vouchertype combofill function
@@ -592,7 +592,7 @@ namespace LoginForm
             }
         }
         /// <summary>
-        /// Function to call this form from frmVoucherSearch to view details and for updation 
+        /// Function to call this form from frmVoucherSearch to view details and for updation
         /// </summary>
         /// <param name="frm"></param>
         /// <param name="decId"></param>
@@ -611,7 +611,7 @@ namespace LoginForm
             }
         }
         /// <summary>
-        /// Function to call this form from frmDayBook to view details and for updation 
+        /// Function to call this form from frmDayBook to view details and for updation
         /// </summary>
         /// <param name="frmDayBook"></param>
         /// <param name="decMasterId"></param>
@@ -633,7 +633,7 @@ namespace LoginForm
         //    }
         //}
         /// <summary>
-        /// Function to call this form from frmVatReturnReport to view details and for updation 
+        /// Function to call this form from frmVatReturnReport to view details and for updation
         /// </summary>
         /// <param name="frmVatRetnRpot"></param>
         /// <param name="decMasterId"></param>
@@ -687,7 +687,7 @@ namespace LoginForm
             }
         }
         /// <summary>
-        /// Function to fill Account ledger combobox while return from Account ledger creation when creating new ledger 
+        /// Function to fill Account ledger combobox while return from Account ledger creation when creating new ledger
         /// </summary>
         /// <param name="decAccountLedgerId"></param>
         public void ReturnFromAccountLedger(decimal decAccountLedgerId)
@@ -718,7 +718,7 @@ namespace LoginForm
             }
         }
         /// <summary>
-        /// Function to fill Account ledger combobox while return from Account ledger creation when creating new ledger 
+        /// Function to fill Account ledger combobox while return from Account ledger creation when creating new ledger
         /// </summary>
         /// <param name="decSalesAccountId"></param>
         public void ReturnFromSalesAccount(decimal decSalesAccountId)
@@ -749,7 +749,7 @@ namespace LoginForm
             }
         }
         /// <summary>
-        /// Function to fill Pricing level combobox while return from Pricing level creation when creating new ledger 
+        /// Function to fill Pricing level combobox while return from Pricing level creation when creating new ledger
         /// </summary>
         /// <param name="decPricingLevelId"></param>
         public void ReturnFromPricingLevel(decimal decPricingLevelId)
@@ -835,13 +835,18 @@ namespace LoginForm
         {
             try
             {
-                DataTable dtbl = new DataTable();
-                UnitSP spUnit = new UnitSP();
-                dtbl = spUnit.UnitViewAllByProductId(decProductId);
-                DataGridViewComboBoxCell dgvcmbUnitCell = (DataGridViewComboBoxCell)dgvSalesInvoice.Rows[inRow].Cells[inColumn];
-                dgvcmbUnitCell.DataSource = dtbl;
-                dgvcmbUnitCell.DisplayMember = "unitName";
-                dgvcmbUnitCell.ValueMember = "unitId";
+                //DataTable dtbl = new DataTable();
+                //UnitSP spUnit = new UnitSP();
+                //dtbl = spUnit.UnitViewAllByProductId(decProductId);
+                //DataGridViewComboBoxCell dgvcmbUnitCell = (DataGridViewComboBoxCell)dgvSalesInvoice.Rows[inRow].Cells[inColumn];
+                //dgvcmbUnitCell.DataSource = dtbl;
+                //dgvcmbUnitCell.DisplayMember = "unitName";
+                //dgvcmbUnitCell.ValueMember = "unitId";
+
+                DataGridViewTextBoxCell dgvcmbUnitCell = (DataGridViewTextBoxCell)dgvSalesInvoice.Rows[inRow].Cells[inColumn];
+                string unit = IME.V_Product.Where(x => x.productId == decProductId).FirstOrDefault().Unit_Measure.ToString();
+                dgvcmbUnitCell.Value = (unit == String.Empty || unit == null) ? "Each" : unit;
+
             }
             catch (Exception ex)
             {
@@ -1060,7 +1065,7 @@ namespace LoginForm
             try
             {
                 DateTime dtcurrentDate = Convert.ToDateTime(IME.CurrentDate().First()); ;
-                
+
                 decPricingLevelId = Convert.ToDecimal(cmbPricingLevel.SelectedValue.ToString());
 
                 decimal decRate = spProduct.SalesInvoiceProductRateForSales((int)cmbCurrency.SelectedValue);
@@ -2292,7 +2297,7 @@ namespace LoginForm
         /// <param name="strProduct"></param>
         /// <param name="inRowIndex"></param>
         /// <param name="strFillMode"></param>
-        /// 
+        ///
 
 
 
@@ -2320,7 +2325,7 @@ namespace LoginForm
                 if (dtbl.Rows.Count != 0)
                 {
                     IsSetGridValueChange = false;
-                   
+
                     try { dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceProductName"].Value = dtbl.Rows[0]["Article_Desc"].ToString(); } catch { }
                     try { dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceSalesDetailsId"].Value = dtbl.Rows[0]["salseDetailsId"].ToString(); } catch { }
                     try { dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSISalesOrderDetailsId"].Value = dtbl.Rows[0]["salesOrderDetailsId"].ToString(); } catch { }
@@ -2349,7 +2354,7 @@ namespace LoginForm
                     try { dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceBarcode"].Value = dtbl.Rows[0]["barcode"].ToString(); } catch { }
                     try { dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceProductCode"].Value = dtbl.Rows[0]["productCode"].ToString(); } catch { }
                     try { dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceProductName"].Value = dtbl.Rows[0]["productName"].ToString(); } catch { }
-                    try { dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoicembUnitName"].Value = Convert.ToDecimal(dtbl.Rows[0]["unitId"].ToString()); } catch { }
+                    try { dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoicembUnitName"].Value = (dtbl.Rows[0]["unit"].ToString() != String.Empty) ? dtbl.Rows[0]["unit"] : "Each" ;} catch { }
                     try { dgvSalesInvoice.Rows[inRowIndex].Cells["dgvtxtSalesInvoiceUnitConversionId"].Value = dtbl.Rows[0]["unitConversionId"].ToString(); } catch { }
                     try { dgvSalesInvoice.Rows[inRowIndex].Cells["dgvcmbSalesInvoiceBatch"].Value = Convert.ToDecimal(dtbl.Rows[0]["batchId"].ToString()); } catch { }
                     try
@@ -2425,7 +2430,7 @@ namespace LoginForm
         public void FillProducts(bool isProductName, DataGridViewTextBoxEditingControl editControl)
         {
             ProductSP spProduct = new ProductSP();
-           
+
                 DataTable dtblProducts = new DataTable();
                 dtblProducts = spProduct.ProductViewAll();
                 ProductNames = new AutoCompleteStringCollection();
@@ -2435,7 +2440,7 @@ namespace LoginForm
                     ProductNames.Add(dr["productName"].ToString());
                     ProductCodes.Add(dr["productCode"].ToString());
                 }
-           
+
         }
         /// <summary>
         /// To validation of Qty, Rate and Discount as Decimal values
@@ -2606,7 +2611,7 @@ namespace LoginForm
             return isOk;
         }
         /// <summary>
-        /// To get Total Net Amount For LedgerPosting 
+        /// To get Total Net Amount For LedgerPosting
         /// </summary>
         /// <returns></returns>
         public decimal TotalNetAmountForLedgerPosting()
@@ -4816,7 +4821,7 @@ namespace LoginForm
             return dgvSalesInvoice.Rows.Count > 1 ? true : false;
         }
         /// <summary>
-        /// Function to fill Sales invoice grid while return from Product creation when creating Product 
+        /// Function to fill Sales invoice grid while return from Product creation when creating Product
         /// </summary>
         /// <param name="decProductId"></param>
         public void ReturnFromProductCreation(string decProductId)
@@ -4956,8 +4961,8 @@ namespace LoginForm
                 formLoadDefaultFunctions();
                 Clear();
             }
-                
-           
+
+
         }
 
         public frmSalesInvoice(DataTable dt)
@@ -4979,7 +4984,7 @@ namespace LoginForm
             }
             this.Show();
             //dgvSalesInvoice.DataSource = grid.DataSource;
-           
+
         }
 
         private void btnNewLedger_Click(object sender, EventArgs e)
@@ -5174,7 +5179,7 @@ namespace LoginForm
 
         private void cmbCashOrParty_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
                 GetSalesDetailsIdToDelete();
                 AccountLedgerSP SpAccountLedger = new AccountLedgerSP();
                 AccountLedger InfoAccountLedger = new AccountLedger();
@@ -5197,7 +5202,7 @@ namespace LoginForm
                             }
                             txtCreditPeriod.Text = InfoAccountLedger.creditPeriod.ToString();
                         }
-                            
+
                         }
                     }
                 }
@@ -5206,7 +5211,7 @@ namespace LoginForm
                     Clear();
                 }
                 againstOrderComboFill();
-            
+
         }
 
 
@@ -6125,7 +6130,7 @@ namespace LoginForm
         //}
         /// <summary>
         /// "e"></param>
-        /// private void cmbVoucherType combo index change 
+        /// private void cmbVoucherType combo index change
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -6182,11 +6187,11 @@ namespace LoginForm
                     {
                         if (dgvSalesInvoice.Columns[e.ColumnIndex].Name == "dgvtxtSalesInvoicembUnitName")
                         {
-                            decCurrentConversionRate = Convert.ToDecimal(dgvSalesInvoice.Rows[e.RowIndex].Cells["dgvtxtSalesInvoiceConversionRate"].Value.ToString());
-                            decCurrentRate = Convert.ToDecimal(dgvSalesInvoice.Rows[e.RowIndex].Cells["dgvtxtSalesInvoiceRate"].Value.ToString());
+                            decCurrentConversionRate = Convert.ToDecimal(dgvSalesInvoice.Rows[e.RowIndex].Cells["dgvtxtSalesInvoiceConversionRate"].Value);
+                            decCurrentRate = Convert.ToDecimal(dgvSalesInvoice.Rows[e.RowIndex].Cells["dgvtxtSalesInvoiceRate"].Value);
                         }
-                        decCurrentConversionRate = Convert.ToDecimal(dgvSalesInvoice.Rows[e.RowIndex].Cells["dgvtxtSalesInvoiceConversionRate"].Value.ToString());
-                        decCurrentRate = Convert.ToDecimal(dgvSalesInvoice.Rows[e.RowIndex].Cells["dgvtxtSalesInvoiceRate"].Value.ToString());
+                        decCurrentConversionRate = Convert.ToDecimal(dgvSalesInvoice.Rows[e.RowIndex].Cells["dgvtxtSalesInvoiceConversionRate"].Value);
+                        decCurrentRate = Convert.ToDecimal(dgvSalesInvoice.Rows[e.RowIndex].Cells["dgvtxtSalesInvoiceRate"].Value);
                     }
                     if (e.ColumnIndex == dgvSalesInvoice.Columns["dgvcmbSalesInvoiceBatch"].Index)
                     {

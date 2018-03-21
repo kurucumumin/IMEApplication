@@ -2417,13 +2417,9 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DesignationView_Result>("DesignationView", designationIdParameter);
         }
     
-        public virtual ObjectResult<dgPurchaseOrderToSaleInvoiceSearchWithPurchaseId_Result> dgPurchaseOrderToSaleInvoiceSearchWithPurchaseId(string purchaseID)
+        public virtual ObjectResult<string> dgPurchaseOrder()
         {
-            var purchaseIDParameter = purchaseID != null ?
-                new ObjectParameter("PurchaseID", purchaseID) :
-                new ObjectParameter("PurchaseID", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<dgPurchaseOrderToSaleInvoiceSearchWithPurchaseId_Result>("dgPurchaseOrderToSaleInvoiceSearchWithPurchaseId", purchaseIDParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("dgPurchaseOrder");
         }
     
         public virtual ObjectResult<Nullable<int>> EmployeeCodeCheckExistance(string employeeCode, Nullable<decimal> employeeId)
@@ -3422,31 +3418,6 @@ namespace LoginForm.DataSet
                 new ObjectParameter("voucherNo", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MonthlySalaryVoucherDetailsViewAll_Result>("MonthlySalaryVoucherDetailsViewAll", strMonthParameter, monthParameter, monthYearParameter, isEditModeParameter, voucherNoParameter);
-        }
-    
-        public virtual int MonthlySalaryVoucherDetailViewAll(string strMonth, string month, string monthYear, Nullable<decimal> isEditMode, string voucherNo)
-        {
-            var strMonthParameter = strMonth != null ?
-                new ObjectParameter("strMonth", strMonth) :
-                new ObjectParameter("strMonth", typeof(string));
-    
-            var monthParameter = month != null ?
-                new ObjectParameter("Month", month) :
-                new ObjectParameter("Month", typeof(string));
-    
-            var monthYearParameter = monthYear != null ?
-                new ObjectParameter("monthYear", monthYear) :
-                new ObjectParameter("monthYear", typeof(string));
-    
-            var isEditModeParameter = isEditMode.HasValue ?
-                new ObjectParameter("isEditMode", isEditMode) :
-                new ObjectParameter("isEditMode", typeof(decimal));
-    
-            var voucherNoParameter = voucherNo != null ?
-                new ObjectParameter("voucherNo", voucherNo) :
-                new ObjectParameter("voucherNo", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MonthlySalaryVoucherDetailViewAll", strMonthParameter, monthParameter, monthYearParameter, isEditModeParameter, voucherNoParameter);
         }
     
         public virtual ObjectResult<MonthlySalaryVoucherMasterAddWithIdentity_Result> MonthlySalaryVoucherMasterAddWithIdentity(Nullable<decimal> ledgerId, string voucherNo, string invoiceNo, Nullable<System.DateTime> date, Nullable<System.DateTime> month, Nullable<decimal> totalAmount, string narration, Nullable<decimal> suffixPrefixId, Nullable<decimal> voucherTypeId, Nullable<decimal> financialYearId, Nullable<bool> isAutomatic)
@@ -8204,11 +8175,6 @@ namespace LoginForm.DataSet
                 new ObjectParameter("ledgerId", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<VoucherTypeViewAllByLedgerId_Result>("VoucherTypeViewAllByLedgerId", ledgerIdParameter);
-        }
-    
-        public virtual ObjectResult<string> dgPurchaseOrder()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("dgPurchaseOrder");
         }
     }
 }
