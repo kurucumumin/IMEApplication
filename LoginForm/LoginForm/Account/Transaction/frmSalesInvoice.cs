@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using LoginForm.QuotationModule;
-
+using LoginForm.PurchaseOrder;
 
 namespace LoginForm
 {
@@ -946,10 +946,10 @@ namespace LoginForm
             DataTable dtbl = new DataTable();
             try
             {
-                dtbl = TransactionGeneralFillObj.CurrencyComboByDate(dtpDate.Value);
-                cmbCurrency.DataSource = dtbl;
+               // dtbl = TransactionGeneralFillObj.CurrencyComboByDate(dtpDate.Value);
+                cmbCurrency.DataSource = IME.Currencies.ToList() ;
                 cmbCurrency.DisplayMember = "currencyName";
-                cmbCurrency.ValueMember = "exchangeRateId";
+                cmbCurrency.ValueMember = "currencyID";
                 cmbCurrency.SelectedValue = 1;
                 if (spSettings.SettingsStatusCheck("MultiCurrency") == "Yes")
                 {
@@ -964,6 +964,7 @@ namespace LoginForm
             {
                 MessageBox.Show("SI: 30" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            
         }
         /// <summary>
         /// Tax combofill in the grid under the vouchertype id
@@ -4968,7 +4969,10 @@ namespace LoginForm
         public frmSalesInvoice(DataTable dt)
         {
             InitializeComponent();
-
+            IME = new IMEEntities();
+            int PurchaseOrderNo = 0 ;
+            string CurrencyName = "";
+            formLoadDefaultFunctions();
             foreach (DataRow item in dt.Rows)
             {
                 DataGridViewRow row = (DataGridViewRow)dgvSalesInvoice.Rows[0].Clone();
@@ -4978,16 +4982,35 @@ namespace LoginForm
                 row.Cells[dgvtxtSalesInvoiceAmount.Index].Value = item["Amount"].ToString();
                 row.Cells[dgvtxtSalesInvoiceNetAmount.Index].Value = item["NetAmount"].ToString();
                 row.Cells[dgvtxtSalesInvoiceProductName.Index].Value = item["ProductDesc"].ToString();
-
-
+                txtDate.Text= item["BillingDocumentDate"].ToString();
+                
+                //TODO diğer para değerleri de yazılmalı
+                if (item["Currency"].ToString() == "GBP")
+                {
+                    CurrencyName = "Pound";
+                }
+                
+                
+                int textIndex = item["PurchaseOrderNo"].ToString().IndexOf("RS");
+                PurchaseOrderNo = Int32.Parse(item["PurchaseOrderNo"].ToString().Substring(0, textIndex));
+                
+               
                 dgvSalesInvoice.Rows.Add(row);
             }
+            if (IME.PurchaseOrders.Where(a => a.purchaseOrderId == PurchaseOrderNo).FirstOrDefault() != null)
+            {
+                txtCustomer.Text = IME.PurchaseOrders.Where(a => a.purchaseOrderId == PurchaseOrderNo).FirstOrDefault().Customer.c_name;
+                cmbSalesMan.SelectedValue = IME.PurchaseOrders.Where(a => a.purchaseOrderId == PurchaseOrderNo).FirstOrDefault().Worker.WorkerID;
+            }
+            cmbCurrency.SelectedValue = IME.Currencies.Where(a => a.currencyName == CurrencyName).FirstOrDefault().currencyID;
             this.Show();
-            //dgvSalesInvoice.DataSource = grid.DataSource;
-
+            SiGridTotalAmountCalculation();
+          
         }
 
-        private void btnNewLedger_Click(object sender, EventArgs e)
+       
+
+    private void btnNewLedger_Click(object sender, EventArgs e)
         {
             try
             {
@@ -5944,7 +5967,9 @@ namespace LoginForm
         {
             try
             {
-                if (dgvSalesInvoice.RowCount == 1 || dgvSalesInvoice.Rows[0].Cells["dgvtxtSalesInvoiceProductId"].Value.ToString() == string.Empty)
+                if (dgvSalesInvoice.RowCount == 1 
+                    //|| dgvSalesInvoice.Rows[0].Cells["dgvtxtSalesInvoiceProductId"].Value.ToString() == string.Empty
+                    )
                 {
                     Messages.InformationMessage("Can't save Sales Invoice without atleast one product with complete details");
                     dgvSalesInvoice.Focus();
@@ -7165,5 +7190,12 @@ namespace LoginForm
             }
         }
         #endregion
+
+        private void btnTakeFromRSInvoice_Click(object sender, EventArgs e)
+        {
+            RSInvToSaleInv frm = new RSInvToSaleInv();
+            frm.Show();
+            this.Close();
+        }
     }
 }

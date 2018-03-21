@@ -32,8 +32,8 @@ namespace LoginForm.PurchaseOrder
         private void dgPurchaseOrder_SelectionChanged(object sender, EventArgs e)
         {
             IMEEntities IME = new IMEEntities();
-            
-            
+
+
             IME.dgPurchaseOrderToSaleInvoiceSearchWithPurchaseId("");
         }
 
@@ -63,7 +63,7 @@ namespace LoginForm.PurchaseOrder
 
 
                 dgSaleInvoice.Rows.Add(row);
-               
+
             }
             dgSaleInvoice.AllowUserToAddRows = false;
             IME.dgPurchaseOrderToSaleInvoiceSearchWithPurchaseId(listBox1.SelectedItem.ToString());
@@ -72,12 +72,12 @@ namespace LoginForm.PurchaseOrder
 
         private void btnSelectAll_Click(object sender, EventArgs e)
         {
-           
+
                 for (int i = 0; i < dgSaleInvoice.RowCount; i++)
                 {
                 dgSaleInvoice.Rows[i].Cells[0].Selected = true;
                 }
-            
+
         }
 
         private void btnClearAll_Click(object sender, EventArgs e)
@@ -98,7 +98,9 @@ namespace LoginForm.PurchaseOrder
             dt.Columns.Add("Amount");
             dt.Columns.Add("NetAmount");
             dt.Columns.Add("ProductDesc");
-            dt.Columns.Add("RS_InvoiceID");
+            dt.Columns.Add("BillingDocumentDate");
+            dt.Columns.Add("PurchaseOrderNo");
+            dt.Columns.Add("Currency");
             for (int i = 0; i < dgSaleInvoice.RowCount; i++)
             {
                 DataRow row = dt.NewRow();
@@ -109,7 +111,9 @@ namespace LoginForm.PurchaseOrder
                     (decimal.Parse(dgSaleInvoice.Rows[i].Cells[dgAmount.Index].Value.ToString()) + decimal.Parse(dgSaleInvoice.Rows[i].Cells[dgDiscount.Index].Value.ToString())).ToString();
                 row["NetAmount"] = dgSaleInvoice.Rows[i].Cells[dgAmount.Index].Value.ToString();
                 row["ProductDesc"] = dgSaleInvoice.Rows[i].Cells[dgArticleDescription.Index].Value.ToString();
-                //row["RS_InvoiceID"] = 
+                row["BillingDocumentDate"] = IME.RS_InvoiceDetails.Where(a => a.PurchaseOrderNumber == listBox1.SelectedItem.ToString()).FirstOrDefault().RS_Invoice.BillingDocumentDate;
+                row["Currency"] = IME.RS_InvoiceDetails.Where(a => a.PurchaseOrderNumber == listBox1.SelectedItem.ToString()).FirstOrDefault().RS_Invoice.Currency;
+                row["PurchaseOrderNo"] = dgSaleInvoice.Rows[i].Cells[dgPurchaseOrderNumber.Index].Value.ToString();
                 dt.Rows.Add(row);
             }
             frmSalesInvoice form = new frmSalesInvoice(dt);
