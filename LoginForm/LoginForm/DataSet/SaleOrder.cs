@@ -28,7 +28,7 @@ namespace LoginForm.DataSet
         public int PaymentTermID { get; set; }
         public Nullable<System.DateTime> RequestedDeliveryDate { get; set; }
         public Nullable<decimal> Vat { get; set; }
-        public decimal TotalPrice { get; set; }
+        public Nullable<decimal> TotalPrice { get; set; }
         public string CustomerID { get; set; }
         public int ContactID { get; set; }
         public int DeliveryContactID { get; set; }
