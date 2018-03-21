@@ -340,49 +340,48 @@ namespace LoginForm.Account.Services
 
             public DataTable SalesInvoiceDetailsViewByProductCodeForSI(decimal decVoucherTypeId, string strProductCode)
             {
-                DataTable dt = new DataTable();
-                IMEEntities IME = new IMEEntities();
-                var adaptor=IME.SalesInvoiceDetailsViewByProductCodeForSI(decVoucherTypeId, strProductCode);
-                dt.Columns.Add("salseDetailsId");
-                dt.Columns.Add("salesOrderDetailsId");
-                dt.Columns.Add("salesQuotationDetailsId");
-                dt.Columns.Add("deliveryNoteDetailsId");
-                dt.Columns.Add("barcode");
-                dt.Columns.Add("Article_No");
-                dt.Columns.Add("Article_Desc");
-                dt.Columns.Add("unitConversionId");
-                dt.Columns.Add("conversionRate");
-                dt.Columns.Add("discountPercent");
-                dt.Columns.Add("netvalue");
-                dt.Columns.Add("discount");
-                dt.Columns.Add("taxId");
-                dt.Columns.Add("taxAmount");
-                dt.Columns.Add("amount");
-                //
-                foreach (var item in adaptor)
-                {
-                    var row = dt.NewRow();
+            DataTable dt = new DataTable();
+            IMEEntities IME = new IMEEntities();
+            var adaptor = IME.SalesInvoiceDetailsViewByProductCodeForSI(decVoucherTypeId, strProductCode).ToList();
+            dt.Columns.Add("salseDetailsId");
+            dt.Columns.Add("salesOrderDetailsId");
+            dt.Columns.Add("salesQuotationDetailsId");
+            dt.Columns.Add("deliveryNoteDetailsId");
+            dt.Columns.Add("barcode");
+            dt.Columns.Add("Article_No");
+            dt.Columns.Add("Article_Desc");
+            dt.Columns.Add("discountPercent");
+            dt.Columns.Add("netvalue");
+            dt.Columns.Add("discount");
+            dt.Columns.Add("taxId");
+            dt.Columns.Add("taxAmount");
+            dt.Columns.Add("amount");
+            dt.Columns.Add("unit");
+            
+            foreach (var item in adaptor)
+            {
+                var row = dt.NewRow();
 
-                    row["salseDetailsId"] = item.salseDetailsId;
-                    row["salesOrderDetailsId"] = item.salesOrderDetailsId;
-                    row["salesQuotationDetailsId"] = item.salesQuotationDetailsId;
-                    row["deliveryNoteDetailsId"] = item.deliveryNoteDetailsId;
-                    row["barcode"] = item.barcode;
-                    row["Article_No"] = item.Article_No;
-                    row["Article_Desc"] = item.Article_Desc;
-                    //row["unitConversionId"] =  item.unitConversionId;
-                    //row["conversionRate"] = item.conversionRate;
-                    row["discountPercent"] = item.discountPercent;
-                    row["netvalue"] = item.netvalue;
-                    row["discount"] = item.discount;
-                    row["taxId"] = item.taxId;
-                    row["taxAmount"] = item.taxAmount;
-                    row["amount"] = item.Amount;
-                    dt.Rows.Add(row);
-                }
+                row["salseDetailsId"] = item.salseDetailsId;
+                row["salesOrderDetailsId"] = item.salesOrderDetailsId;
+                row["salesQuotationDetailsId"] = item.salesQuotationDetailsId;
+                row["deliveryNoteDetailsId"] = item.deliveryNoteDetailsId;
+                row["barcode"] = item.barcode;
+                row["Article_No"] = item.Article_No;
+                row["Article_Desc"] = item.Article_Desc;
+                row["discountPercent"] = item.discountPercent;
+                row["netvalue"] = item.netvalue;
+                row["discount"] = item.discount;
+                row["taxId"] = item.taxId;
+                row["taxAmount"] = item.taxAmount;
+                row["amount"] = item.Amount;
+                row["unit"] = item.unit;
 
-                return dt;
+                dt.Rows.Add(row);
             }
+
+            return dt;
+        }
 
             public void SalesDetailsEdit(SalesDetail salesdetailsinfo)
             {
