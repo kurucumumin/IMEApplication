@@ -109,7 +109,7 @@ namespace LoginForm.PurchaseOrder
                     (decimal.Parse(dgSaleInvoice.Rows[i].Cells[dgAmount.Index].Value.ToString()) + decimal.Parse(dgSaleInvoice.Rows[i].Cells[dgDiscount.Index].Value.ToString())).ToString();
                 row["NetAmount"] = dgSaleInvoice.Rows[i].Cells[dgAmount.Index].Value.ToString();
                 row["ProductDesc"] = dgSaleInvoice.Rows[i].Cells[dgArticleDescription.Index].Value.ToString();
-                row["RS_InvoiceID"] = 
+                //row["RS_InvoiceID"] = 
                 dt.Rows.Add(row);
             }
             frmSalesInvoice form = new frmSalesInvoice(dt);

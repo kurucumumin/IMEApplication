@@ -2422,6 +2422,15 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("dgPurchaseOrder");
         }
     
+        public virtual ObjectResult<dgPurchaseOrderToSaleInvoiceSearchWithPurchaseId_Result> dgPurchaseOrderToSaleInvoiceSearchWithPurchaseId(string purchaseID)
+        {
+            var purchaseIDParameter = purchaseID != null ?
+                new ObjectParameter("PurchaseID", purchaseID) :
+                new ObjectParameter("PurchaseID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<dgPurchaseOrderToSaleInvoiceSearchWithPurchaseId_Result>("dgPurchaseOrderToSaleInvoiceSearchWithPurchaseId", purchaseIDParameter);
+        }
+    
         public virtual ObjectResult<Nullable<int>> EmployeeCodeCheckExistance(string employeeCode, Nullable<decimal> employeeId)
         {
             var employeeCodeParameter = employeeCode != null ?

@@ -131,7 +131,6 @@ namespace LoginForm.nmSaleOrder
             if (customer.MainContactID != null) cbWorkers.SelectedIndex = (int)customer.MainContactID;
             CustomerCode.Enabled = false;
             txtCustomerName.Enabled = false;
-            btnSave.Enabled = false;
             LowMarginLimit = (Decimal)Utils.getManagement().LowMarginLimit;
             modifyQuotation(items);
 
@@ -223,6 +222,8 @@ namespace LoginForm.nmSaleOrder
             {
                 dgSaleAddedItems.Columns[item].Visible = false;
             }
+
+
             DeletedQuotationMenu.MenuItems.Add(new MenuItem("Add to Quotation", DeletedQuotationMenu_Click));
 
             DataGridViewRow dgRow = (DataGridViewRow)dgSaleAddedItems.RowTemplate.Clone();
@@ -280,6 +281,8 @@ namespace LoginForm.nmSaleOrder
             //}
             GetCurrency(dtpDate.Value);
             GetAutorities();
+
+            cbPaymentTerm.DataSource = IME.PaymentTerms.ToList();
         }
 
         private void GetAutorities()
@@ -319,32 +322,77 @@ namespace LoginForm.nmSaleOrder
 
         private void fillCustomer()
         {
-            if (txtCustomerName.Text != null || txtCustomerName.Text != "")
+            CustomerCode.Text = customer.ID;
+            txtCustomerName.Text = customer.c_name;
+            List<CustomerAddress> addressList = customer.CustomerAddresses.ToList();
+            if (addressList.Count != 0)
             {
-                btnContactAdd.Enabled = true;
-                btnContactUpdate.Enabled = true;
-            }
+                cbInvoiceAdress.DataSource = addressList.ToList();
+                cbDeliveryAddress.DataSource = addressList.ToList();
 
-            CustomerCode.Text = classQuotationAdd.customerID;
-            txtCustomerName.Text = classQuotationAdd.customername;
+                CustomerAddress inv = new CustomerAddress();
+                CustomerAddress delv = new CustomerAddress();
 
-            var c = IME.Customers.Where(a => a.ID == CustomerCode.Text).FirstOrDefault();
-            if (c != null)
-            {
-                txtCustomerName.Text = c.c_name;
-                if (c.CurrNameQuo != null) cbCurrency.SelectedValue = cbCurrency.FindStringExact(c.CurrNameQuo);
-                //cbCurrType.SelectedIndex = cbCurrType.FindStringExact(c.CurrTypeQuo);
-                //if(c.MainContactID!=null) cbWorkers.SelectedIndex = (int)c.MainContactID;
-                if (c.paymentmethodID != null)
+                try
                 {
-                    cbPaymentType.SelectedIndex = cbPaymentType.FindStringExact(c.PaymentMethod.Payment);
+                    inv = addressList.Where(x => x.AddressType.ToUpper().Contains("invoice".ToUpper())).FirstOrDefault();
                 }
-                try { txtContactNote.Text = c.CustomerWorker.Note.Note_name; } catch { }
-                try { txtCustomerNote.Text = c.Note.Note_name; } catch { }
-                try { txtAccountingNote.Text = IME.Notes.Where(a => a.ID == c.customerAccountantNoteID).FirstOrDefault().Note_name; } catch { }
-                if (c.Worker != null) cbRep.SelectedValue = c.Worker.WorkerID;
-                cbCurrency.SelectedItem = cbCurrency.FindStringExact(c.CurrNameQuo);
+                catch (Exception) { }
+
+                try
+                {
+                    delv = addressList.Where(x => x.isDeliveryAddress == true).FirstOrDefault();
+                }
+                catch (Exception) { }
+
+
+                if (inv != null)
+                {
+                    cbInvoiceAdress.SelectedValue = inv.ID;
+                }
+                if (delv != null)
+                {
+                    cbDeliveryAddress.SelectedValue = delv.ID;
+                }
+                else
+                {
+                    if (inv != null)
+                    {
+                        cbDeliveryAddress.SelectedValue = inv.ID;
+                    }
+                }
             }
+
+            List<CustomerWorker> customerWorkerList = customer.CustomerWorkers.ToList();
+
+            if (customerWorkerList != null)
+            {
+                cbWorkers.DataSource = customerWorkerList.ToList();
+                if (customer.MainContactID != null) cbWorkers.SelectedValue = (int)customer.MainContactID;
+                cbDeliveryContact.DataSource = customerWorkerList.ToList();
+                CustomerWorker cw = new CustomerWorker();
+                try
+                {
+                    cw = customerWorkerList.Where(x => x.ID == (int)cbWorkers.SelectedValue).FirstOrDefault();
+                }
+                catch (Exception) { }
+
+                if (cw != null) { cbDeliveryContact.SelectedValue = cw.ID; }
+
+            }
+
+            //cbCurrency.SelectedIndex = cbCurrency.FindStringExact(customer.CurrNameQuo);
+            //cbCurrType.SelectedIndex = cbCurrType.FindStringExact(c.CurrTypeQuo);
+            //if(c.MainContactID!=null) cbWorkers.SelectedIndex = (int)c.MainContactID;
+            if (customer.paymentmethodID != null)
+            {
+                cbPaymentType.SelectedIndex = cbPaymentType.FindStringExact(customer.PaymentMethod.Payment);
+            }
+            try { txtContactNote.Text = customer.CustomerWorker.Note.Note_name; } catch { }
+            try { txtCustomerNote.Text = customer.Note.Note_name; } catch { }
+            try { txtAccountingNote.Text = IME.Notes.Where(a => a.ID == customer.customerAccountantNoteID).FirstOrDefault().Note_name; } catch { }
+            if (customer.Worker != null) cbRep.SelectedValue = customer.Worker.WorkerID;
+            cbCurrency.SelectedItem = cbCurrency.FindStringExact(customer.CurrNameQuo);
         }
 
         private void customerDetailsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -3581,7 +3629,7 @@ namespace LoginForm.nmSaleOrder
             {
                 foreach (DataGridViewRow row in dgSaleAddedItems.Rows)
                 {
-                    if (row.Cells[dgQty.Index].Value == null || row.Cells[dgQty.Index].Value.ToString() == String.Empty)
+                    if ((row.Cells[dgProductCode.Index].Value != null && row.Cells[dgProductCode.Index].Value.ToString() != String.Empty) && (row.Cells[dgQty.Index].Value == null || row.Cells[dgQty.Index].Value.ToString() == String.Empty))
                     {
                         nullAreaList.Add("Check for Items' Quantities and Margins!");
                     }
