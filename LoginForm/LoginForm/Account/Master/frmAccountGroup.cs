@@ -225,10 +225,9 @@ namespace LoginForm
                 MessageBox.Show("AG10:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        /// <summary>
-        ///  Function to call this form from account group register
-        /// </summary>
-        /// <param name="frmAccountledger"></param>
+        
+
+
         public void CallFromAccountLedger(frmAccountLedger frmAccountledger)
         {
             try

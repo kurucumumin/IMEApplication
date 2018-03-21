@@ -10,7 +10,7 @@
 namespace LoginForm.DataSet
 {
     using System;
-    
+
     public partial class SalesInvoiceDetailsViewByProductCodeForSI_Result
     {
         public Nullable<decimal> salseDetailsId { get; set; }
@@ -20,7 +20,6 @@ namespace LoginForm.DataSet
         public string barcode { get; set; }
         public string Article_No { get; set; }
         public string Article_Desc { get; set; }
-        public string unit { get; set; }
         public Nullable<decimal> discountPercent { get; set; }
         public Nullable<decimal> discount { get; set; }
         public Nullable<decimal> netvalue { get; set; }

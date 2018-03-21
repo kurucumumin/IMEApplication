@@ -272,7 +272,7 @@ namespace LoginForm.Account.Services
 
             public DataTable SalesInvoiceDetailsViewByProductNameForSI(decimal decVoucherTypeId, string strProductName)
             {
-                
+
                 DataTable dt = new DataTable();
                 IMEEntities IME = new IMEEntities();
                 var adaptor= IME.SalesInvoiceDetailsViewByProductNameForSI(decVoucherTypeId, strProductName);
@@ -298,7 +298,7 @@ namespace LoginForm.Account.Services
                 dt.Columns.Add("conversionRate");
                 dt.Columns.Add("batchId");
                 dt.Columns.Add("taxId");
-                
+
                 foreach (var item in adaptor)
                 {
                     var row = dt.NewRow();
@@ -329,6 +329,7 @@ namespace LoginForm.Account.Services
             }
 
 
+
             public DataTable SalesInvoiceDetailsViewByBarcodeForSI(decimal decVoucherTypeId, string strBarcode)
             {
                 DataTable dtbl = new DataTable();
@@ -341,7 +342,7 @@ namespace LoginForm.Account.Services
             {
                 DataTable dt = new DataTable();
                 IMEEntities IME = new IMEEntities();
-                var adaptor=IME.SalesInvoiceDetailsViewByProductCodeForSI(decVoucherTypeId, strProductCode).ToList();
+                var adaptor=IME.SalesInvoiceDetailsViewByProductCodeForSI(decVoucherTypeId, strProductCode);
                 dt.Columns.Add("salseDetailsId");
                 dt.Columns.Add("salesOrderDetailsId");
                 dt.Columns.Add("salesQuotationDetailsId");
@@ -349,17 +350,16 @@ namespace LoginForm.Account.Services
                 dt.Columns.Add("barcode");
                 dt.Columns.Add("Article_No");
                 dt.Columns.Add("Article_Desc");
-                //dt.Columns.Add("unitConversionId");
-                //dt.Columns.Add("conversionRate");
+                dt.Columns.Add("unitConversionId");
+                dt.Columns.Add("conversionRate");
                 dt.Columns.Add("discountPercent");
-                dt.Columns.Add("discount");
                 dt.Columns.Add("netvalue");
+                dt.Columns.Add("discount");
                 dt.Columns.Add("taxId");
                 dt.Columns.Add("taxAmount");
                 dt.Columns.Add("amount");
-                dt.Columns.Add("unit");
-           
-            foreach (var item in adaptor)
+                //
+                foreach (var item in adaptor)
                 {
                     var row = dt.NewRow();
 
@@ -370,13 +370,14 @@ namespace LoginForm.Account.Services
                     row["barcode"] = item.barcode;
                     row["Article_No"] = item.Article_No;
                     row["Article_Desc"] = item.Article_Desc;
+                    //row["unitConversionId"] =  item.unitConversionId;
+                    //row["conversionRate"] = item.conversionRate;
                     row["discountPercent"] = item.discountPercent;
-                    row["discount"] = item.discount;
                     row["netvalue"] = item.netvalue;
+                    row["discount"] = item.discount;
                     row["taxId"] = item.taxId;
                     row["taxAmount"] = item.taxAmount;
                     row["amount"] = item.Amount;
-                    row["unit"] = item.unit;
                     dt.Rows.Add(row);
                 }
 

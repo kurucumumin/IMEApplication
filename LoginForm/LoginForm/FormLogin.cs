@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LoginForm.DataSet;
 using LoginForm.Services;
+using System.Globalization;
 //using LoginForm.Quotation;
 
 namespace LoginForm
@@ -75,7 +76,8 @@ namespace LoginForm
         private void FormLogin_Load(object sender, EventArgs e)
         {
             txtID.Focus();
-            
+            CultureInfo culture = new CultureInfo("en-US");
+            CultureInfo.DefaultThreadCurrentCulture = culture;
             //
             ////for admin to see everything
             //RoleValue admin = IME.RoleValues.Where(a => a.RoleID == 1009).FirstOrDefault();

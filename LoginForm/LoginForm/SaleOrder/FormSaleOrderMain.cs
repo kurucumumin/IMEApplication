@@ -94,7 +94,7 @@ namespace LoginForm.nsSaleOrder
         private void btnNew_Click(object sender, EventArgs e)
         {
             FormSaleOrderCreate form = new FormSaleOrderCreate();
-            form.ShowDialog();
+            form.Show();
             BringSalesList();
         }
         private void dgSales_KeyDown(object sender, KeyEventArgs e)
@@ -191,6 +191,11 @@ namespace LoginForm.nsSaleOrder
         private void btnRefreshList_Click(object sender, EventArgs e)
         {
             BringSalesList(datetimeEnd.Value.Date, datetimeStart.Value.Date);
+        }
+
+        private void FormSalesOrderMain_Activated(object sender, EventArgs e)
+        {
+            BringSalesList();
         }
     }
 }
