@@ -509,6 +509,9 @@
         <AssociationConnector Association="IMEModel.FK__SalaryVou__emplo__78F3E6EC" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.AuthRole" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.UserAuthorization" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="IMEModel.OrderAcknowledgement" Width="1.5" PointX="12.375" PointY="18.25" />
+        <EntityTypeShape EntityType="IMEModel.OrderAcknowledgementDetail" Width="1.5" PointX="14.625" PointY="18" />
+        <AssociationConnector Association="IMEModel.FK__OrderAckn__Order__630F92C5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -16,6 +16,98 @@ namespace LoginForm
     {
         public static string LoaderType;
 
+        public static void OrderAcknowledgementtxtReader()
+        {
+            IMEEntities IME = new IMEEntities();
+
+            //Show the dialog and get result.
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "txt files (*.txt)|*.txt";
+            DialogResult result1 = openFileDialog1.ShowDialog();
+            if (result1 == DialogResult.OK) // Test result.
+            {
+
+                string[] lines = System.IO.File.ReadAllLines(openFileDialog1.FileName);
+                int a = 0;
+                bool isItem = false;
+                OrderAcknowledgement oa = new OrderAcknowledgement();
+                OrderAcknowledgementDetail oad = new OrderAcknowledgementDetail();
+                while (lines.Count() > a)
+                {
+                    if (lines[a] != "")
+                    {
+                        if (lines[a].Substring(0, 2) == "FH")
+                        {
+                            oa.CountryCode = lines[a].Substring(2, 3);
+                            oa.OrderDate = lines[a].Substring(5, 10);
+                            oa.OrderTime = lines[a].Substring(15, 5);
+                            oa.SupplierTelephoneNumber = lines[a].Substring(20, 14);
+                        }
+                        else if (lines[a].Substring(0, 2) == "OA")
+                        {
+                            oa.CustomerDistOrderReference = lines[a].Substring(2, 30);
+                            oa.ShippingCondition = lines[a].Substring(32, 2);
+                            oa.CustomerPONumber = lines[a].Substring(34, 22);
+                            oa.SupplyingECCompany = lines[a].Substring(56, 4);
+                            oa.CustomerReference = lines[a].Substring(60, 10);
+                            oa.HeaderDeliveryBlock = lines[a].Substring(70, 2);
+                            oa.RSLSalesOrderNumber = lines[a].Substring(72, 10);
+                        }
+                        else if (lines[a].Substring(0, 2) == "FT")
+                        {
+                            oa.ScheduleLineConfirmedQuantity = lines[a].Substring(2, 13);
+                            oa.ScheduleLineControl = lines[a].Substring(15, 4);
+                        }
+                    }
+                    a++;
+                }
+                
+                IME.OrderAcknowledgements.Add(oa);
+                IME.SaveChanges();
+                int OrderAcknowledgementID = oa.ID;
+                a = 0;
+                while (lines.Count() > a)
+                {
+                    if (lines[a] != "")
+                    {
+                        if (lines[a].Substring(0, 2) == "OI")
+                        {
+                            oad.PurchaseOrderItemNumber = lines[a].Substring(2, 6);
+                            oad.ProductNumber = lines[a].Substring(8, 18);
+                            oad.ReasonCode = lines[a].Substring(26, 2);
+                            oad.ReasonCodeText = lines[a].Substring(28, 40);
+                            oad.OrderQuantity = lines[a].Substring(68, 15);
+                            oad.SalesUnit = lines[a].Substring(83, 3);
+                        }
+                        else if (lines[a].Substring(0, 2) == "SL")
+                        {
+                            oad.PurchaseOrderItem = lines[a].Substring(2, 6);
+                            oad.ScheduleLineNumber = lines[a].Substring(8, 4);
+                            oad.ScheduleLineDate = lines[a].Substring(12, 8);
+                            oad.ScheduleLineConfirmedQty = lines[a].Substring(20, 13);
+                            oad.ScheduleLineDeliveredQty = lines[a].Substring(33, 13);
+                            oad.SecheduleLineDeliveryBlock = lines[a].Substring(46, 2);
+                        }
+                        else if (lines[a].Substring(0, 2) == "SC")
+                        {
+                            oad.PurchaseOrderItemNumber_SC = lines[a].Substring(2, 6);
+                            oad.TotalNumberofScheduleLines = lines[a].Substring(8, 4);
+                            oad.OrderAcknowledgementID = OrderAcknowledgementID;
+                            IME.OrderAcknowledgementDetails.Add(oad);
+                            IME.SaveChanges();
+                            oad = new OrderAcknowledgementDetail();
+                        }
+                    }
+                    a++;
+                }
+
+
+
+
+
+            }
+        }
+
         public static void PurchaseInvoicetxtReader()
         {
             IMEEntities IME = new IMEEntities();
