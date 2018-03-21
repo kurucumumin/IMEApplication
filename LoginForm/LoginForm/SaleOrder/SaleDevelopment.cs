@@ -114,6 +114,7 @@ namespace LoginForm.nmSaleOrder
 
             Management m = Utils.getManagement();
             cbCurrency.DataSource = IME.Currencies.ToList();
+            txtQuotationNo.Text = QuotationNOs;
             cbCurrency.DisplayMember = "currencyName";
             cbCurrency.ValueMember = "currencyID";
             cbCurrency.SelectedIndex = 0;
@@ -228,7 +229,7 @@ namespace LoginForm.nmSaleOrder
 
             DataGridViewRow dgRow = (DataGridViewRow)dgSaleAddedItems.RowTemplate.Clone();
             dgSaleAddedItems.Rows.Add(dgRow);
-            txtSalesOrderNo.Text = NewQuotationID();
+            txtSalesOrderNo.Text = "SO" + IME.CreteNewSaleOrderNo().FirstOrDefault().ToString();
             //dgQuotationAddedItems.Rows[0].Cells["dgQty"].Value = "0";
             dgSaleAddedItems.Rows[0].Cells[0].Value = 1.ToString();
             LowMarginLimit = Decimal.Parse(IME.Managements.FirstOrDefault().LowMarginLimit.ToString());
@@ -368,6 +369,8 @@ namespace LoginForm.nmSaleOrder
             if (customerWorkerList != null)
             {
                 cbWorkers.DataSource = customerWorkerList.ToList();
+                cbWorkers.DisplayMember = "cw_name";
+                cbWorkers.ValueMember = "ID";
                 if (customer.MainContactID != null) cbWorkers.SelectedValue = (int)customer.MainContactID;
                 cbDeliveryContact.DataSource = customerWorkerList.ToList();
                 CustomerWorker cw = new CustomerWorker();
@@ -1302,8 +1305,8 @@ namespace LoginForm.nmSaleOrder
             if (h != null)
             {
                 if (h.Environment != null) { txtEnvironment.Text = "Y"; } else { txtEnvironment.Text = ""; }
-                if (h.Lithium != null) { txtLithium.Text = "Y"; } else { txtLithium.Text = ""; }
-                if (h.Shipping != null) { txtShipping.Text = "Y"; } else { txtShipping.Text = ""; }
+                txtLithium.Text = (h.Lithium != null && h.Lithium != String.Empty) ? "Y" : "";
+                txtShipping.Text = (h.Shipping != null && h.Shipping != String.Empty) ? "Y" : "";
             }
             else
             {
@@ -1327,7 +1330,7 @@ namespace LoginForm.nmSaleOrder
             if (du != null) { txtLicenceType.Text = du.LicenceType; }
             //
             #endregion
-            if (dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgUOM"].Value == "" && dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgUC"].Value != null) { dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgUOM"].Value = "Each"; }
+            if (dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgUOM"].Value.ToString() == "" && dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgUC"].Value != null) { dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgUOM"].Value = "Each"; }
             #region ItemMarginFiller
             string articleNo = dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString();
             SlidingPrice sp1 = IME.SlidingPrices.Where(a => a.ArticleNo == articleNo).FirstOrDefault();
@@ -1679,6 +1682,7 @@ namespace LoginForm.nmSaleOrder
         private bool ControlSave()
         {
             //if (txtCustomerName.Text == null || txtCustomerName.Text == String.Empty) { MessageBox.Show("Please Enter a Customer"); return false; }
+            
             for (int i = 0; i < dgSaleAddedItems.RowCount - 1; i++)
             {
                 if (dgSaleAddedItems.Rows[i].Cells["dgMargin"].Value != null && Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgMargin"].Value.ToString()) < Utils.getCurrentUser().MinMarge) { MessageBox.Show("Please Check Margin of Products "); return false; }
@@ -1688,7 +1692,7 @@ namespace LoginForm.nmSaleOrder
                     return false;
                 }
             }
-            for (int i = 0; i < dgSaleAddedItems.RowCount; i++)
+            for (int i = 0; i < dgSaleAddedItems.RowCount-1; i++)
             {
                 if (((DataGridViewComboBoxCell)dgSaleAddedItems.Rows[i].Cells[dgDelivery.Index]).Value == null)
                 {
@@ -1864,6 +1868,7 @@ namespace LoginForm.nmSaleOrder
                 s.SubTotal = Convert.ToDecimal(lblsubtotal.Text);
                 s.DiscOnSubtotal = (txtTotalDis.Text != null && txtTotalDis.Text != String.Empty) ? Convert.ToDecimal(txtTotalDis.Text) : 0;
                 s.ExtraCharges = (txtExtraCharges.Text != null && txtExtraCharges.Text != String.Empty) ? Convert.ToDecimal(txtExtraCharges.Text) : 0;
+                s.financialYearId = (decimal)Utils.getManagement().CurrentFinancialYear;
 
 
 
@@ -2666,24 +2671,6 @@ namespace LoginForm.nmSaleOrder
                 }
             }
             return q1;
-        }
-
-        private void btnCreateRev_Click(object sender, EventArgs e)
-        {
-            //try
-            //{
-            //string newID = NewQuotationID();
-            //if (txtQuotationNo.Text != newID) { txtQuotationNo.Text = newID; }
-            if (ControlSave())
-            {
-                QuotationSave(txtSalesOrderNo.Text);
-                QuotationDetailsSave();
-            }
-            //}
-            //catch
-            //{
-            //    MessageBox.Show("Error Occured", "Failure");
-            //}
         }
 
         private void CustomerCode_MouseDoubleClick(object sender, MouseEventArgs e)

@@ -90,6 +90,8 @@ namespace LoginForm.DataSet
         public virtual DbSet<MonthlySalaryDetail1> MonthlySalaryDetails1 { get; set; }
         public virtual DbSet<Note> Notes { get; set; }
         public virtual DbSet<OnSale> OnSales { get; set; }
+        public virtual DbSet<OrderAcknowledgement> OrderAcknowledgements { get; set; }
+        public virtual DbSet<OrderAcknowledgementDetail> OrderAcknowledgementDetails { get; set; }
         public virtual DbSet<OtherBanchesStock> OtherBanchesStocks { get; set; }
         public virtual DbSet<PartyBalance> PartyBalances { get; set; }
         public virtual DbSet<PayHead> PayHeads { get; set; }

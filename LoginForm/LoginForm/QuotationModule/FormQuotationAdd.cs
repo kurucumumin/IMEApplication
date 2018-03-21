@@ -1219,8 +1219,8 @@ namespace LoginForm.QuotationModule
             if (h != null)
             {
                 if (h.Environment != null) { txtEnvironment.Text = "Y"; } else { txtEnvironment.Text = ""; }
-                if (h.Lithium != null) { txtLithium.Text = "Y"; } else { txtLithium.Text = ""; }
-                if (h.Shipping != null) { txtShipping.Text = "Y"; } else { txtShipping.Text = ""; }
+                txtLithium.Text = (h.Lithium != null && h.Lithium != String.Empty) ? "Y" : "";
+                txtShipping.Text = (h.Shipping != null && h.Shipping != String.Empty) ? "Y" : "";
             }
             else
             {

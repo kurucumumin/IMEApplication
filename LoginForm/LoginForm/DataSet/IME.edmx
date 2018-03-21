@@ -848,6 +848,46 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="SubstitutedBy" Type="int" />
           <Property Name="SubstitutedFor" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="OrderAcknowledgement">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryCode" Type="nvarchar" MaxLength="3" />
+          <Property Name="OrderDate" Type="nvarchar" MaxLength="10" />
+          <Property Name="OrderTime" Type="nvarchar" MaxLength="5" />
+          <Property Name="SupplierTelephoneNumber" Type="nvarchar" MaxLength="14" />
+          <Property Name="CustomerDistOrderReference" Type="nvarchar" MaxLength="30" />
+          <Property Name="ShippingCondition" Type="nvarchar" MaxLength="2" />
+          <Property Name="CustomerPONumber" Type="nvarchar" MaxLength="22" />
+          <Property Name="SupplyingECCompany" Type="nvarchar" MaxLength="4" />
+          <Property Name="CustomerReference" Type="nvarchar" MaxLength="10" />
+          <Property Name="HeaderDeliveryBlock" Type="nvarchar" MaxLength="2" />
+          <Property Name="RSLSalesOrderNumber" Type="nvarchar" MaxLength="10" />
+          <Property Name="ScheduleLineConfirmedQuantity" Type="nvarchar" MaxLength="13" />
+          <Property Name="ScheduleLineControl" Type="nvarchar" MaxLength="4" />
+        </EntityType>
+        <EntityType Name="OrderAcknowledgementDetails">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PurchaseOrderItemNumber" Type="nvarchar" MaxLength="6" />
+          <Property Name="ProductNumber" Type="nvarchar" MaxLength="18" />
+          <Property Name="ReasonCode" Type="nvarchar" MaxLength="2" />
+          <Property Name="ReasonCodeText" Type="nvarchar" MaxLength="40" />
+          <Property Name="OrderQuantity" Type="nvarchar" MaxLength="15" />
+          <Property Name="SalesUnit" Type="nvarchar" MaxLength="3" />
+          <Property Name="PurchaseOrderItem" Type="nvarchar" MaxLength="6" />
+          <Property Name="ScheduleLineNumber" Type="nvarchar" MaxLength="4" />
+          <Property Name="ScheduleLineDate" Type="nvarchar" MaxLength="8" />
+          <Property Name="ScheduleLineConfirmedQty" Type="nvarchar" MaxLength="13" />
+          <Property Name="ScheduleLineDeliveredQty" Type="nvarchar" MaxLength="13" />
+          <Property Name="SecheduleLineDeliveryBlock" Type="nvarchar" MaxLength="2" />
+          <Property Name="PurchaseOrderItemNumber_SC" Type="nvarchar" MaxLength="6" />
+          <Property Name="TotalNumberofScheduleLines" Type="nvarchar" MaxLength="4" />
+          <Property Name="OrderAcknowledgementID" Type="int" />
+        </EntityType>
         <EntityType Name="OtherBanchesStocks">
           <Key>
             <PropertyRef Name="ID" />
@@ -3579,6 +3619,18 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Principal>
             <Dependent Role="MonthlySalaryDetail">
               <PropertyRef Name="salaryPackageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderAckn__Order__12BEA5E7">
+          <End Role="OrderAcknowledgement" Type="Self.OrderAcknowledgement" Multiplicity="0..1" />
+          <End Role="OrderAcknowledgementDetails" Type="Self.OrderAcknowledgementDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderAcknowledgement">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderAcknowledgementDetails">
+              <PropertyRef Name="OrderAcknowledgementID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -9010,6 +9062,8 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <EntitySet Name="MonthlySalaryDetails" EntityType="Self.MonthlySalaryDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Notes" EntityType="Self.Notes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OnSale" EntityType="Self.OnSale" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderAcknowledgement" EntityType="Self.OrderAcknowledgement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderAcknowledgementDetails" EntityType="Self.OrderAcknowledgementDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OtherBanchesStocks" EntityType="Self.OtherBanchesStocks" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PartyBalance" EntityType="Self.PartyBalance" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PayHead" EntityType="Self.PayHead" Schema="dbo" store:Type="Tables" />
@@ -9551,6 +9605,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <AssociationSet Name="FK__MonthlySa__salar__54F67D98" Association="Self.FK__MonthlySa__salar__54F67D98">
             <End Role="SalaryPackage" EntitySet="SalaryPackage" />
             <End Role="MonthlySalaryDetail" EntitySet="MonthlySalaryDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderAckn__Order__12BEA5E7" Association="Self.FK__OrderAckn__Order__12BEA5E7">
+            <End Role="OrderAcknowledgement" EntitySet="OrderAcknowledgement" />
+            <End Role="OrderAcknowledgementDetails" EntitySet="OrderAcknowledgementDetails" />
           </AssociationSet>
           <AssociationSet Name="FK__OtherBanc__Compa__42A2C333" Association="Self.FK__OtherBanc__Compa__42A2C333">
             <End Role="Company" EntitySet="Company" />
@@ -11662,6 +11720,48 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="SmallOrderProtectionLevel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SubstitutedBy" Type="Int32" />
           <Property Name="SubstitutedFor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="OrderAcknowledgement">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryCode" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="OrderDate" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="OrderTime" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="SupplierTelephoneNumber" Type="String" MaxLength="14" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerDistOrderReference" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="ShippingCondition" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerPONumber" Type="String" MaxLength="22" FixedLength="false" Unicode="true" />
+          <Property Name="SupplyingECCompany" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerReference" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="HeaderDeliveryBlock" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="RSLSalesOrderNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ScheduleLineConfirmedQuantity" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="ScheduleLineControl" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OrderAcknowledgementDetails" Relationship="Self.FK__OrderAckn__Order__12BEA5E7" FromRole="OrderAcknowledgement" ToRole="OrderAcknowledgementDetails" />
+        </EntityType>
+        <EntityType Name="OrderAcknowledgementDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PurchaseOrderItemNumber" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="ProductNumber" Type="String" MaxLength="18" FixedLength="false" Unicode="true" />
+          <Property Name="ReasonCode" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="ReasonCodeText" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="OrderQuantity" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="SalesUnit" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="PurchaseOrderItem" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="ScheduleLineNumber" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="ScheduleLineDate" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="ScheduleLineConfirmedQty" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="ScheduleLineDeliveredQty" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="SecheduleLineDeliveryBlock" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="PurchaseOrderItemNumber_SC" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="TotalNumberofScheduleLines" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="OrderAcknowledgementID" Type="Int32" />
+          <NavigationProperty Name="OrderAcknowledgement" Relationship="Self.FK__OrderAckn__Order__12BEA5E7" FromRole="OrderAcknowledgementDetails" ToRole="OrderAcknowledgement" />
         </EntityType>
         <EntityType Name="OtherBanchesStock">
           <Key>
@@ -15981,6 +16081,18 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__OrderAckn__Order__12BEA5E7">
+          <End Role="OrderAcknowledgement" Type="Self.OrderAcknowledgement" Multiplicity="0..1" />
+          <End Role="OrderAcknowledgementDetails" Type="Self.OrderAcknowledgementDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderAcknowledgement">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderAcknowledgementDetails">
+              <PropertyRef Name="OrderAcknowledgementID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__PartyBala__again__59B045BD">
           <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
           <End Role="PartyBalance" Type="Self.PartyBalance" Multiplicity="*" />
@@ -17901,6 +18013,8 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <EntitySet Name="MonthlySalaryDetails1" EntityType="Self.MonthlySalaryDetail1" />
           <EntitySet Name="Notes" EntityType="Self.Note" />
           <EntitySet Name="OnSales" EntityType="Self.OnSale" />
+          <EntitySet Name="OrderAcknowledgements" EntityType="Self.OrderAcknowledgement" />
+          <EntitySet Name="OrderAcknowledgementDetails" EntityType="Self.OrderAcknowledgementDetail" />
           <EntitySet Name="OtherBanchesStocks" EntityType="Self.OtherBanchesStock" />
           <EntitySet Name="PartyBalances" EntityType="Self.PartyBalance" />
           <EntitySet Name="PayHeads" EntityType="Self.PayHead" />
@@ -18792,6 +18906,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <AssociationSet Name="FK__Worker__WorkerNo__4BAC3F29" Association="Self.FK__Worker__WorkerNo__4BAC3F29">
             <End Role="Notes" EntitySet="Notes" />
             <End Role="Worker" EntitySet="Workers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderAckn__Order__12BEA5E7" Association="Self.FK__OrderAckn__Order__12BEA5E7">
+            <End Role="OrderAcknowledgement" EntitySet="OrderAcknowledgements" />
+            <End Role="OrderAcknowledgementDetails" EntitySet="OrderAcknowledgementDetails" />
           </AssociationSet>
           <AssociationSet Name="FK__PartyBala__again__59B045BD" Association="Self.FK__PartyBala__again__59B045BD">
             <End Role="VoucherType" EntitySet="VoucherTypes" />
@@ -24664,6 +24782,48 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="SmallOrderProtectionLevel" ColumnName="SmallOrderProtectionLevel" />
                 <ScalarProperty Name="SubstitutedBy" ColumnName="SubstitutedBy" />
                 <ScalarProperty Name="SubstitutedFor" ColumnName="SubstitutedFor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderAcknowledgements">
+            <EntityTypeMapping TypeName="IMEModel.OrderAcknowledgement">
+              <MappingFragment StoreEntitySet="OrderAcknowledgement">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="OrderTime" ColumnName="OrderTime" />
+                <ScalarProperty Name="SupplierTelephoneNumber" ColumnName="SupplierTelephoneNumber" />
+                <ScalarProperty Name="CustomerDistOrderReference" ColumnName="CustomerDistOrderReference" />
+                <ScalarProperty Name="ShippingCondition" ColumnName="ShippingCondition" />
+                <ScalarProperty Name="CustomerPONumber" ColumnName="CustomerPONumber" />
+                <ScalarProperty Name="SupplyingECCompany" ColumnName="SupplyingECCompany" />
+                <ScalarProperty Name="CustomerReference" ColumnName="CustomerReference" />
+                <ScalarProperty Name="HeaderDeliveryBlock" ColumnName="HeaderDeliveryBlock" />
+                <ScalarProperty Name="RSLSalesOrderNumber" ColumnName="RSLSalesOrderNumber" />
+                <ScalarProperty Name="ScheduleLineConfirmedQuantity" ColumnName="ScheduleLineConfirmedQuantity" />
+                <ScalarProperty Name="ScheduleLineControl" ColumnName="ScheduleLineControl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderAcknowledgementDetails">
+            <EntityTypeMapping TypeName="IMEModel.OrderAcknowledgementDetail">
+              <MappingFragment StoreEntitySet="OrderAcknowledgementDetails">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PurchaseOrderItemNumber" ColumnName="PurchaseOrderItemNumber" />
+                <ScalarProperty Name="ProductNumber" ColumnName="ProductNumber" />
+                <ScalarProperty Name="ReasonCode" ColumnName="ReasonCode" />
+                <ScalarProperty Name="ReasonCodeText" ColumnName="ReasonCodeText" />
+                <ScalarProperty Name="OrderQuantity" ColumnName="OrderQuantity" />
+                <ScalarProperty Name="SalesUnit" ColumnName="SalesUnit" />
+                <ScalarProperty Name="PurchaseOrderItem" ColumnName="PurchaseOrderItem" />
+                <ScalarProperty Name="ScheduleLineNumber" ColumnName="ScheduleLineNumber" />
+                <ScalarProperty Name="ScheduleLineDate" ColumnName="ScheduleLineDate" />
+                <ScalarProperty Name="ScheduleLineConfirmedQty" ColumnName="ScheduleLineConfirmedQty" />
+                <ScalarProperty Name="ScheduleLineDeliveredQty" ColumnName="ScheduleLineDeliveredQty" />
+                <ScalarProperty Name="SecheduleLineDeliveryBlock" ColumnName="SecheduleLineDeliveryBlock" />
+                <ScalarProperty Name="PurchaseOrderItemNumber_SC" ColumnName="PurchaseOrderItemNumber_SC" />
+                <ScalarProperty Name="TotalNumberofScheduleLines" ColumnName="TotalNumberofScheduleLines" />
+                <ScalarProperty Name="OrderAcknowledgementID" ColumnName="OrderAcknowledgementID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
