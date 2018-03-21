@@ -90,6 +90,7 @@ namespace LoginForm.PurchaseOrder
 
         private void btnSaleInvoice_Click(object sender, EventArgs e)
         {
+            IMEEntities IME = new IMEEntities();
             DataTable dt = new DataTable();
             dt.Columns.Add("Quantity");
             dt.Columns.Add("ProductID");
@@ -97,6 +98,7 @@ namespace LoginForm.PurchaseOrder
             dt.Columns.Add("Amount");
             dt.Columns.Add("NetAmount");
             dt.Columns.Add("ProductDesc");
+            dt.Columns.Add("RS_InvoiceID");
             for (int i = 0; i < dgSaleInvoice.RowCount; i++)
             {
                 DataRow row = dt.NewRow();
@@ -107,6 +109,7 @@ namespace LoginForm.PurchaseOrder
                     (decimal.Parse(dgSaleInvoice.Rows[i].Cells[dgAmount.Index].Value.ToString()) + decimal.Parse(dgSaleInvoice.Rows[i].Cells[dgDiscount.Index].Value.ToString())).ToString();
                 row["NetAmount"] = dgSaleInvoice.Rows[i].Cells[dgAmount.Index].Value.ToString();
                 row["ProductDesc"] = dgSaleInvoice.Rows[i].Cells[dgArticleDescription.Index].Value.ToString();
+                row["RS_InvoiceID"] = 
                 dt.Rows.Add(row);
             }
             frmSalesInvoice form = new frmSalesInvoice(dt);

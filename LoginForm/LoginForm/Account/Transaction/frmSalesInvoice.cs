@@ -816,9 +816,9 @@ namespace LoginForm
                 UnitSP spUnit = new UnitSP();
                 DataTable dtblUnit = new DataTable();
                 dtblUnit = spUnit.UnitViewAll();
-                dgvtxtSalesInvoicembUnitName.DataSource = dtblUnit;
-                dgvtxtSalesInvoicembUnitName.ValueMember = "unitId";
-                dgvtxtSalesInvoicembUnitName.DisplayMember = "unitName";
+                //dgvtxtSalesInvoicembUnitName.DataSource = dtblUnit;
+                //dgvtxtSalesInvoicembUnitName.ValueMember = "unitId";
+                //dgvtxtSalesInvoicembUnitName.DisplayMember = "unitName";
             }
             catch (Exception ex)
             {
@@ -4973,6 +4973,8 @@ namespace LoginForm
                 row.Cells[dgvtxtSalesInvoiceAmount.Index].Value = item["Amount"].ToString();
                 row.Cells[dgvtxtSalesInvoiceNetAmount.Index].Value = item["NetAmount"].ToString();
                 row.Cells[dgvtxtSalesInvoiceProductName.Index].Value = item["ProductDesc"].ToString();
+
+
                 dgvSalesInvoice.Rows.Add(row);
             }
             this.Show();
