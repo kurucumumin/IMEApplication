@@ -54,7 +54,7 @@
             // panel1
             // 
             this.panel1.AutoScroll = true;
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
             this.panel1.Controls.Add(this.btnPDCPayableReport);
             this.panel1.Controls.Add(this.btnReceiptReport);
             this.panel1.Controls.Add(this.btnSalesReport);
@@ -84,11 +84,10 @@
             // btnPDCPayableReport
             // 
             this.btnPDCPayableReport.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnPDCPayableReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnPDCPayableReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnPDCPayableReport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnPDCPayableReport.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnPDCPayableReport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnPDCPayableReport.FlatAppearance.BorderSize = 0;
+            this.btnPDCPayableReport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnPDCPayableReport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnPDCPayableReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPDCPayableReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -104,11 +103,10 @@
             // btnReceiptReport
             // 
             this.btnReceiptReport.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnReceiptReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnReceiptReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnReceiptReport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnReceiptReport.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnReceiptReport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnReceiptReport.FlatAppearance.BorderSize = 0;
+            this.btnReceiptReport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnReceiptReport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnReceiptReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReceiptReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -124,11 +122,10 @@
             // btnSalesReport
             // 
             this.btnSalesReport.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnSalesReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnSalesReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnSalesReport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSalesReport.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnSalesReport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnSalesReport.FlatAppearance.BorderSize = 0;
+            this.btnSalesReport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnSalesReport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnSalesReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalesReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -144,11 +141,10 @@
             // btnSalesReturnReport
             // 
             this.btnSalesReturnReport.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnSalesReturnReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnSalesReturnReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnSalesReturnReport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSalesReturnReport.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnSalesReturnReport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnSalesReturnReport.FlatAppearance.BorderSize = 0;
+            this.btnSalesReturnReport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnSalesReturnReport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnSalesReturnReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalesReturnReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -164,11 +160,10 @@
             // btnTaxReport
             // 
             this.btnTaxReport.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnTaxReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnTaxReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnTaxReport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnTaxReport.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnTaxReport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnTaxReport.FlatAppearance.BorderSize = 0;
+            this.btnTaxReport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnTaxReport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnTaxReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTaxReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -184,11 +179,10 @@
             // btnPaymentReport
             // 
             this.btnPaymentReport.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnPaymentReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnPaymentReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnPaymentReport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnPaymentReport.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnPaymentReport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnPaymentReport.FlatAppearance.BorderSize = 0;
+            this.btnPaymentReport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnPaymentReport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnPaymentReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPaymentReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -204,11 +198,10 @@
             // btnPDCClearanceReport
             // 
             this.btnPDCClearanceReport.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnPDCClearanceReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnPDCClearanceReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnPDCClearanceReport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnPDCClearanceReport.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnPDCClearanceReport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnPDCClearanceReport.FlatAppearance.BorderSize = 0;
+            this.btnPDCClearanceReport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnPDCClearanceReport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnPDCClearanceReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPDCClearanceReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -224,11 +217,10 @@
             // btnVatReturnReport
             // 
             this.btnVatReturnReport.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnVatReturnReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnVatReturnReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnVatReturnReport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnVatReturnReport.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnVatReturnReport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnVatReturnReport.FlatAppearance.BorderSize = 0;
+            this.btnVatReturnReport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnVatReturnReport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnVatReturnReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVatReturnReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -244,11 +236,10 @@
             // btnPDCRecievableReport
             // 
             this.btnPDCRecievableReport.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnPDCRecievableReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnPDCRecievableReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnPDCRecievableReport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnPDCRecievableReport.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnPDCRecievableReport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnPDCRecievableReport.FlatAppearance.BorderSize = 0;
+            this.btnPDCRecievableReport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnPDCRecievableReport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnPDCRecievableReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPDCRecievableReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -264,11 +255,10 @@
             // btnAccountLedgerReport
             // 
             this.btnAccountLedgerReport.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnAccountLedgerReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnAccountLedgerReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnAccountLedgerReport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAccountLedgerReport.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAccountLedgerReport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnAccountLedgerReport.FlatAppearance.BorderSize = 0;
+            this.btnAccountLedgerReport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnAccountLedgerReport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnAccountLedgerReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAccountLedgerReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -284,11 +274,10 @@
             // btnAgeingReport
             // 
             this.btnAgeingReport.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnAgeingReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnAgeingReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnAgeingReport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAgeingReport.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAgeingReport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnAgeingReport.FlatAppearance.BorderSize = 0;
+            this.btnAgeingReport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnAgeingReport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnAgeingReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgeingReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -304,11 +293,10 @@
             // btnCashBankBook
             // 
             this.btnCashBankBook.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnCashBankBook.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnCashBankBook.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnCashBankBook.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCashBankBook.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnCashBankBook.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnCashBankBook.FlatAppearance.BorderSize = 0;
+            this.btnCashBankBook.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnCashBankBook.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnCashBankBook.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCashBankBook.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -324,11 +312,10 @@
             // btnChequeReport
             // 
             this.btnChequeReport.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnChequeReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnChequeReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnChequeReport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnChequeReport.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnChequeReport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnChequeReport.FlatAppearance.BorderSize = 0;
+            this.btnChequeReport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnChequeReport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnChequeReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnChequeReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -344,11 +331,10 @@
             // btnCreditNoteReport
             // 
             this.btnCreditNoteReport.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnCreditNoteReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnCreditNoteReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnCreditNoteReport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCreditNoteReport.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnCreditNoteReport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnCreditNoteReport.FlatAppearance.BorderSize = 0;
+            this.btnCreditNoteReport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnCreditNoteReport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnCreditNoteReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreditNoteReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -364,11 +350,10 @@
             // btnDayBook
             // 
             this.btnDayBook.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnDayBook.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnDayBook.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnDayBook.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnDayBook.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnDayBook.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnDayBook.FlatAppearance.BorderSize = 0;
+            this.btnDayBook.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnDayBook.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnDayBook.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDayBook.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -384,11 +369,10 @@
             // btnJournalReport
             // 
             this.btnJournalReport.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnJournalReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnJournalReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnJournalReport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnJournalReport.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnJournalReport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnJournalReport.FlatAppearance.BorderSize = 0;
+            this.btnJournalReport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnJournalReport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnJournalReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnJournalReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -404,11 +388,10 @@
             // btnOutstandingReport
             // 
             this.btnOutstandingReport.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnOutstandingReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnOutstandingReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnOutstandingReport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnOutstandingReport.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnOutstandingReport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnOutstandingReport.FlatAppearance.BorderSize = 0;
+            this.btnOutstandingReport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnOutstandingReport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnOutstandingReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOutstandingReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -424,11 +407,10 @@
             // btnPartyAddressBook
             // 
             this.btnPartyAddressBook.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnPartyAddressBook.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnPartyAddressBook.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnPartyAddressBook.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnPartyAddressBook.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnPartyAddressBook.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnPartyAddressBook.FlatAppearance.BorderSize = 0;
+            this.btnPartyAddressBook.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnPartyAddressBook.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnPartyAddressBook.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPartyAddressBook.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -444,11 +426,10 @@
             // btnAccountGroupReport
             // 
             this.btnAccountGroupReport.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnAccountGroupReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnAccountGroupReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnAccountGroupReport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAccountGroupReport.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAccountGroupReport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnAccountGroupReport.FlatAppearance.BorderSize = 0;
+            this.btnAccountGroupReport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnAccountGroupReport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnAccountGroupReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAccountGroupReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

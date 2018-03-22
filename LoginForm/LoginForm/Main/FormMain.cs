@@ -15,23 +15,39 @@ namespace LoginForm
         public static bool isEstimateDB = false;
         public static bool demoProject = false;
         public static string strVouchertype;
+        private System.Drawing.Color defaultNavButtonColor;
 
         private NavigationControl CurrentNavTabLvl1;
         public UserControl CurrentNavTabLvl2;
 
+        private Button currentNavButton;
+
+        private void ChangeCurrentNavButton(Button newNavButton)
+        {
+            if(currentNavButton != null)
+            {
+                currentNavButton.BackColor = defaultNavButtonColor;
+            }
+            currentNavButton = newNavButton;
+            currentNavButton.BackColor = currentNavButton.FlatAppearance.MouseDownBackColor;
+        }
+
         public FormMain()
         {
             InitializeComponent();
+            defaultNavButtonColor = btnLoader.BackColor;
         }
 
         private void btnLoader_Click(object sender, EventArgs e)
         {
-            OpenNavTabLvl1(controlLoader);
+            OpenNavTabLvl1(controlLoader, (Button)sender);
         }
 
-        public void OpenNavTabLvl1(NavigationControl NavControlLvl1)
+        public void OpenNavTabLvl1(NavigationControl NavControlLvl1, Button clickedNavButton)
         {
-            if(CurrentNavTabLvl2 != null && CurrentNavTabLvl2.Visible == true)
+            ChangeCurrentNavButton(clickedNavButton);
+
+            if (CurrentNavTabLvl2 != null && CurrentNavTabLvl2.Visible == true)
             {
                 CurrentNavTabLvl2.Visible = false;
             }
@@ -47,7 +63,7 @@ namespace LoginForm
 
         private void btnDevelopment_Click(object sender, EventArgs e)
         {
-            OpenNavTabLvl1(controlDevelopment);
+            OpenNavTabLvl1(controlDevelopment, (Button)sender);
         }
 
         private void FormMain_Load(object sender, EventArgs e)
@@ -57,6 +73,8 @@ namespace LoginForm
 
         private void btnManagement_Click(object sender, EventArgs e)
         {
+            ChangeCurrentNavButton((Button)sender);
+
             if (CurrentNavTabLvl2 != null && CurrentNavTabLvl2.Visible == true)
             {
                 CurrentNavTabLvl2.Visible = false;
@@ -107,7 +125,7 @@ namespace LoginForm
 
         private void btnAccounting_Click(object sender, EventArgs e)
         {
-            OpenNavTabLvl1(controlAccounting);
+            OpenNavTabLvl1(controlAccounting, (Button)sender);
             controlAccounting.parent = this;
         }
     }

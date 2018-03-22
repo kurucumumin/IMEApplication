@@ -40,7 +40,7 @@
             // panel1
             // 
             this.panel1.AutoScroll = true;
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
             this.panel1.Controls.Add(this.btnOverdueSalesOrder);
             this.panel1.Controls.Add(this.btnShortExpiry);
             this.panel1.Controls.Add(this.btnStock);
@@ -56,11 +56,10 @@
             // btnOverdueSalesOrder
             // 
             this.btnOverdueSalesOrder.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnOverdueSalesOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnOverdueSalesOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnOverdueSalesOrder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnOverdueSalesOrder.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnOverdueSalesOrder.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnOverdueSalesOrder.FlatAppearance.BorderSize = 0;
+            this.btnOverdueSalesOrder.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnOverdueSalesOrder.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnOverdueSalesOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOverdueSalesOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -76,11 +75,10 @@
             // btnShortExpiry
             // 
             this.btnShortExpiry.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnShortExpiry.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnShortExpiry.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnShortExpiry.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnShortExpiry.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnShortExpiry.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnShortExpiry.FlatAppearance.BorderSize = 0;
+            this.btnShortExpiry.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnShortExpiry.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnShortExpiry.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnShortExpiry.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -96,11 +94,10 @@
             // btnStock
             // 
             this.btnStock.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnStock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnStock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnStock.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnStock.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnStock.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnStock.FlatAppearance.BorderSize = 0;
+            this.btnStock.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnStock.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -116,11 +113,10 @@
             // btnPersonalReminder
             // 
             this.btnPersonalReminder.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnPersonalReminder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnPersonalReminder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnPersonalReminder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnPersonalReminder.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnPersonalReminder.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnPersonalReminder.FlatAppearance.BorderSize = 0;
+            this.btnPersonalReminder.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnPersonalReminder.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnPersonalReminder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPersonalReminder.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -136,11 +132,10 @@
             // btnOverduePurchaseOrder
             // 
             this.btnOverduePurchaseOrder.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnOverduePurchaseOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnOverduePurchaseOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnOverduePurchaseOrder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnOverduePurchaseOrder.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnOverduePurchaseOrder.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnOverduePurchaseOrder.FlatAppearance.BorderSize = 0;
+            this.btnOverduePurchaseOrder.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnOverduePurchaseOrder.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnOverduePurchaseOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOverduePurchaseOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

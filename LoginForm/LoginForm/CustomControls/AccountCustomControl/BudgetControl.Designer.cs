@@ -37,24 +37,23 @@
             // panel1
             // 
             this.panel1.AutoScroll = true;
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
             this.panel1.Controls.Add(this.btnBudgetVariance);
             this.panel1.Controls.Add(this.btnBudget);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(301, 577);
+            this.panel1.Size = new System.Drawing.Size(301, 416);
             this.panel1.TabIndex = 0;
             // 
             // btnBudgetVariance
             // 
             this.btnBudgetVariance.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnBudgetVariance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnBudgetVariance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnBudgetVariance.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnBudgetVariance.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnBudgetVariance.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnBudgetVariance.FlatAppearance.BorderSize = 0;
+            this.btnBudgetVariance.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnBudgetVariance.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnBudgetVariance.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBudgetVariance.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -70,11 +69,10 @@
             // btnBudget
             // 
             this.btnBudget.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnBudget.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnBudget.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnBudget.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnBudget.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnBudget.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnBudget.FlatAppearance.BorderSize = 0;
+            this.btnBudget.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnBudget.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnBudget.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBudget.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -95,7 +93,7 @@
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "BudgetControl";
-            this.Size = new System.Drawing.Size(301, 577);
+            this.Size = new System.Drawing.Size(301, 416);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

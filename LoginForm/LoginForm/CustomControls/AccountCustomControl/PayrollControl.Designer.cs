@@ -51,7 +51,7 @@
             // panel1
             // 
             this.panel1.AutoScroll = true;
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
             this.panel1.Controls.Add(this.btnSalaryPackageRegister);
             this.panel1.Controls.Add(this.btnSalaryPackageCreation);
             this.panel1.Controls.Add(this.btnPaySlip);
@@ -78,11 +78,10 @@
             // btnSalaryPackageRegister
             // 
             this.btnSalaryPackageRegister.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnSalaryPackageRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnSalaryPackageRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnSalaryPackageRegister.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSalaryPackageRegister.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnSalaryPackageRegister.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnSalaryPackageRegister.FlatAppearance.BorderSize = 0;
+            this.btnSalaryPackageRegister.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnSalaryPackageRegister.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnSalaryPackageRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalaryPackageRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -98,11 +97,10 @@
             // btnSalaryPackageCreation
             // 
             this.btnSalaryPackageCreation.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnSalaryPackageCreation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnSalaryPackageCreation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnSalaryPackageCreation.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSalaryPackageCreation.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnSalaryPackageCreation.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnSalaryPackageCreation.FlatAppearance.BorderSize = 0;
+            this.btnSalaryPackageCreation.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnSalaryPackageCreation.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnSalaryPackageCreation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalaryPackageCreation.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -118,11 +116,10 @@
             // btnPaySlip
             // 
             this.btnPaySlip.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnPaySlip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnPaySlip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnPaySlip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnPaySlip.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnPaySlip.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnPaySlip.FlatAppearance.BorderSize = 0;
+            this.btnPaySlip.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnPaySlip.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnPaySlip.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPaySlip.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -138,11 +135,10 @@
             // btnPayHead
             // 
             this.btnPayHead.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnPayHead.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnPayHead.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnPayHead.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnPayHead.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnPayHead.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnPayHead.FlatAppearance.BorderSize = 0;
+            this.btnPayHead.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnPayHead.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnPayHead.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPayHead.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -158,11 +154,10 @@
             // btnMontlySalaryVoucher
             // 
             this.btnMontlySalaryVoucher.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnMontlySalaryVoucher.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnMontlySalaryVoucher.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnMontlySalaryVoucher.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnMontlySalaryVoucher.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnMontlySalaryVoucher.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnMontlySalaryVoucher.FlatAppearance.BorderSize = 0;
+            this.btnMontlySalaryVoucher.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnMontlySalaryVoucher.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnMontlySalaryVoucher.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMontlySalaryVoucher.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -178,11 +173,10 @@
             // btnMontlySalarySettings
             // 
             this.btnMontlySalarySettings.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnMontlySalarySettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnMontlySalarySettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnMontlySalarySettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnMontlySalarySettings.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnMontlySalarySettings.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnMontlySalarySettings.FlatAppearance.BorderSize = 0;
+            this.btnMontlySalarySettings.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnMontlySalarySettings.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnMontlySalarySettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMontlySalarySettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -198,11 +192,10 @@
             // btnMontlySalaryRegister
             // 
             this.btnMontlySalaryRegister.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnMontlySalaryRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnMontlySalaryRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnMontlySalaryRegister.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnMontlySalaryRegister.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnMontlySalaryRegister.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnMontlySalaryRegister.FlatAppearance.BorderSize = 0;
+            this.btnMontlySalaryRegister.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnMontlySalaryRegister.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnMontlySalaryRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMontlySalaryRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -218,11 +211,10 @@
             // btnHolydaySettings
             // 
             this.btnHolydaySettings.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnHolydaySettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnHolydaySettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnHolydaySettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnHolydaySettings.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnHolydaySettings.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnHolydaySettings.FlatAppearance.BorderSize = 0;
+            this.btnHolydaySettings.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnHolydaySettings.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnHolydaySettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHolydaySettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -238,11 +230,10 @@
             // btnDailySalaryVoucher
             // 
             this.btnDailySalaryVoucher.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnDailySalaryVoucher.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnDailySalaryVoucher.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnDailySalaryVoucher.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnDailySalaryVoucher.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnDailySalaryVoucher.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnDailySalaryVoucher.FlatAppearance.BorderSize = 0;
+            this.btnDailySalaryVoucher.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnDailySalaryVoucher.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnDailySalaryVoucher.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDailySalaryVoucher.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -258,11 +249,10 @@
             // btnDesignation
             // 
             this.btnDesignation.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnDesignation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnDesignation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnDesignation.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnDesignation.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnDesignation.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnDesignation.FlatAppearance.BorderSize = 0;
+            this.btnDesignation.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnDesignation.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnDesignation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDesignation.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -278,11 +268,10 @@
             // btnAdvanceRegister
             // 
             this.btnAdvanceRegister.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnAdvanceRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnAdvanceRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnAdvanceRegister.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAdvanceRegister.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAdvanceRegister.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnAdvanceRegister.FlatAppearance.BorderSize = 0;
+            this.btnAdvanceRegister.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnAdvanceRegister.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnAdvanceRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdvanceRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -298,11 +287,10 @@
             // btnAttendance
             // 
             this.btnAttendance.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnAttendance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnAttendance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnAttendance.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAttendance.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAttendance.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnAttendance.FlatAppearance.BorderSize = 0;
+            this.btnAttendance.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnAttendance.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnAttendance.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAttendance.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -318,11 +306,10 @@
             // btnBonusDeduction
             // 
             this.btnBonusDeduction.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnBonusDeduction.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnBonusDeduction.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnBonusDeduction.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnBonusDeduction.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnBonusDeduction.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnBonusDeduction.FlatAppearance.BorderSize = 0;
+            this.btnBonusDeduction.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnBonusDeduction.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnBonusDeduction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBonusDeduction.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -338,11 +325,10 @@
             // btnBonusDeductionRegister
             // 
             this.btnBonusDeductionRegister.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnBonusDeductionRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnBonusDeductionRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnBonusDeductionRegister.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnBonusDeductionRegister.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnBonusDeductionRegister.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnBonusDeductionRegister.FlatAppearance.BorderSize = 0;
+            this.btnBonusDeductionRegister.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnBonusDeductionRegister.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnBonusDeductionRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBonusDeductionRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -358,11 +344,10 @@
             // btnDailySalaryRegister
             // 
             this.btnDailySalaryRegister.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnDailySalaryRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnDailySalaryRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnDailySalaryRegister.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnDailySalaryRegister.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnDailySalaryRegister.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnDailySalaryRegister.FlatAppearance.BorderSize = 0;
+            this.btnDailySalaryRegister.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnDailySalaryRegister.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnDailySalaryRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDailySalaryRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -378,11 +363,10 @@
             // btnAdvancePayment
             // 
             this.btnAdvancePayment.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnAdvancePayment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
+            this.btnAdvancePayment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnAdvancePayment.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAdvancePayment.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAdvancePayment.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(201)))), ((int)(((byte)(249)))));
-            this.btnAdvancePayment.FlatAppearance.BorderSize = 0;
+            this.btnAdvancePayment.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnAdvancePayment.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnAdvancePayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdvancePayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

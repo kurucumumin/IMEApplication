@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnOrderAcknowledgement = new System.Windows.Forms.Button();
             this.btnOnSale = new System.Windows.Forms.Button();
             this.btnSuperDisk = new System.Windows.Forms.Button();
             this.btnSlidingPriceList = new System.Windows.Forms.Button();
@@ -40,7 +41,6 @@
             this.btnTSEList = new System.Windows.Forms.Button();
             this.btnRSProList = new System.Windows.Forms.Button();
             this.btnRSInvoice = new System.Windows.Forms.Button();
-            this.btnOrderAcknowledgement = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,23 +63,40 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(226, 612);
+            this.panel1.Size = new System.Drawing.Size(301, 753);
             this.panel1.TabIndex = 0;
+            // 
+            // btnOrderAcknowledgement
+            // 
+            this.btnOrderAcknowledgement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
+            this.btnOrderAcknowledgement.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnOrderAcknowledgement.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnOrderAcknowledgement.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
+            this.btnOrderAcknowledgement.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
+            this.btnOrderAcknowledgement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOrderAcknowledgement.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOrderAcknowledgement.Location = new System.Drawing.Point(0, 429);
+            this.btnOrderAcknowledgement.Margin = new System.Windows.Forms.Padding(0);
+            this.btnOrderAcknowledgement.Name = "btnOrderAcknowledgement";
+            this.btnOrderAcknowledgement.Size = new System.Drawing.Size(301, 39);
+            this.btnOrderAcknowledgement.TabIndex = 44;
+            this.btnOrderAcknowledgement.Text = "OrderAcknowledgement File";
+            this.btnOrderAcknowledgement.UseVisualStyleBackColor = false;
+            this.btnOrderAcknowledgement.Click += new System.EventHandler(this.btnOrderAcknowledgement_Click);
             // 
             // btnOnSale
             // 
-            this.btnOnSale.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
+            this.btnOnSale.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnOnSale.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnOnSale.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnOnSale.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
-            this.btnOnSale.FlatAppearance.BorderSize = 0;
+            this.btnOnSale.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnOnSale.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnOnSale.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOnSale.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOnSale.Location = new System.Drawing.Point(0, 320);
+            this.btnOnSale.Location = new System.Drawing.Point(0, 390);
             this.btnOnSale.Margin = new System.Windows.Forms.Padding(0);
             this.btnOnSale.Name = "btnOnSale";
-            this.btnOnSale.Size = new System.Drawing.Size(226, 32);
+            this.btnOnSale.Size = new System.Drawing.Size(301, 39);
             this.btnOnSale.TabIndex = 39;
             this.btnOnSale.Text = "OnSale File";
             this.btnOnSale.UseVisualStyleBackColor = false;
@@ -87,18 +104,17 @@
             // 
             // btnSuperDisk
             // 
-            this.btnSuperDisk.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
+            this.btnSuperDisk.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnSuperDisk.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSuperDisk.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnSuperDisk.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
-            this.btnSuperDisk.FlatAppearance.BorderSize = 0;
+            this.btnSuperDisk.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnSuperDisk.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnSuperDisk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSuperDisk.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSuperDisk.Location = new System.Drawing.Point(0, 288);
+            this.btnSuperDisk.Location = new System.Drawing.Point(0, 351);
             this.btnSuperDisk.Margin = new System.Windows.Forms.Padding(0);
             this.btnSuperDisk.Name = "btnSuperDisk";
-            this.btnSuperDisk.Size = new System.Drawing.Size(226, 32);
+            this.btnSuperDisk.Size = new System.Drawing.Size(301, 39);
             this.btnSuperDisk.TabIndex = 41;
             this.btnSuperDisk.Text = "Super Disk";
             this.btnSuperDisk.UseVisualStyleBackColor = false;
@@ -106,18 +122,17 @@
             // 
             // btnSlidingPriceList
             // 
-            this.btnSlidingPriceList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
+            this.btnSlidingPriceList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnSlidingPriceList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSlidingPriceList.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnSlidingPriceList.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
-            this.btnSlidingPriceList.FlatAppearance.BorderSize = 0;
+            this.btnSlidingPriceList.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnSlidingPriceList.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnSlidingPriceList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSlidingPriceList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSlidingPriceList.Location = new System.Drawing.Point(0, 256);
+            this.btnSlidingPriceList.Location = new System.Drawing.Point(0, 312);
             this.btnSlidingPriceList.Margin = new System.Windows.Forms.Padding(0);
             this.btnSlidingPriceList.Name = "btnSlidingPriceList";
-            this.btnSlidingPriceList.Size = new System.Drawing.Size(226, 32);
+            this.btnSlidingPriceList.Size = new System.Drawing.Size(301, 39);
             this.btnSlidingPriceList.TabIndex = 42;
             this.btnSlidingPriceList.Text = "Sliding Price List";
             this.btnSlidingPriceList.UseVisualStyleBackColor = false;
@@ -125,18 +140,17 @@
             // 
             // btnDiscontinuedList
             // 
-            this.btnDiscontinuedList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
+            this.btnDiscontinuedList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnDiscontinuedList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnDiscontinuedList.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnDiscontinuedList.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
-            this.btnDiscontinuedList.FlatAppearance.BorderSize = 0;
+            this.btnDiscontinuedList.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnDiscontinuedList.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnDiscontinuedList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDiscontinuedList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDiscontinuedList.Location = new System.Drawing.Point(0, 224);
+            this.btnDiscontinuedList.Location = new System.Drawing.Point(0, 273);
             this.btnDiscontinuedList.Margin = new System.Windows.Forms.Padding(0);
             this.btnDiscontinuedList.Name = "btnDiscontinuedList";
-            this.btnDiscontinuedList.Size = new System.Drawing.Size(226, 32);
+            this.btnDiscontinuedList.Size = new System.Drawing.Size(301, 39);
             this.btnDiscontinuedList.TabIndex = 33;
             this.btnDiscontinuedList.Text = "Discontinued List";
             this.btnDiscontinuedList.UseVisualStyleBackColor = false;
@@ -144,18 +158,17 @@
             // 
             // btnExtendedRangePrice
             // 
-            this.btnExtendedRangePrice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
+            this.btnExtendedRangePrice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnExtendedRangePrice.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnExtendedRangePrice.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnExtendedRangePrice.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
-            this.btnExtendedRangePrice.FlatAppearance.BorderSize = 0;
+            this.btnExtendedRangePrice.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnExtendedRangePrice.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnExtendedRangePrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExtendedRangePrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExtendedRangePrice.Location = new System.Drawing.Point(0, 192);
+            this.btnExtendedRangePrice.Location = new System.Drawing.Point(0, 234);
             this.btnExtendedRangePrice.Margin = new System.Windows.Forms.Padding(0);
             this.btnExtendedRangePrice.Name = "btnExtendedRangePrice";
-            this.btnExtendedRangePrice.Size = new System.Drawing.Size(226, 32);
+            this.btnExtendedRangePrice.Size = new System.Drawing.Size(301, 39);
             this.btnExtendedRangePrice.TabIndex = 35;
             this.btnExtendedRangePrice.Text = "Extended Range Price File";
             this.btnExtendedRangePrice.UseVisualStyleBackColor = false;
@@ -163,18 +176,17 @@
             // 
             // btnHazardousFile
             // 
-            this.btnHazardousFile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
+            this.btnHazardousFile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnHazardousFile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnHazardousFile.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnHazardousFile.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
-            this.btnHazardousFile.FlatAppearance.BorderSize = 0;
+            this.btnHazardousFile.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnHazardousFile.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnHazardousFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHazardousFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHazardousFile.Location = new System.Drawing.Point(0, 160);
+            this.btnHazardousFile.Location = new System.Drawing.Point(0, 195);
             this.btnHazardousFile.Margin = new System.Windows.Forms.Padding(0);
             this.btnHazardousFile.Name = "btnHazardousFile";
-            this.btnHazardousFile.Size = new System.Drawing.Size(226, 32);
+            this.btnHazardousFile.Size = new System.Drawing.Size(301, 39);
             this.btnHazardousFile.TabIndex = 34;
             this.btnHazardousFile.Text = "Hazardous File";
             this.btnHazardousFile.UseVisualStyleBackColor = false;
@@ -182,18 +194,17 @@
             // 
             // btnDualUsedArticles
             // 
-            this.btnDualUsedArticles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
+            this.btnDualUsedArticles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnDualUsedArticles.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnDualUsedArticles.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnDualUsedArticles.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
-            this.btnDualUsedArticles.FlatAppearance.BorderSize = 0;
+            this.btnDualUsedArticles.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnDualUsedArticles.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnDualUsedArticles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDualUsedArticles.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDualUsedArticles.Location = new System.Drawing.Point(0, 128);
+            this.btnDualUsedArticles.Location = new System.Drawing.Point(0, 156);
             this.btnDualUsedArticles.Margin = new System.Windows.Forms.Padding(0);
             this.btnDualUsedArticles.Name = "btnDualUsedArticles";
-            this.btnDualUsedArticles.Size = new System.Drawing.Size(226, 32);
+            this.btnDualUsedArticles.Size = new System.Drawing.Size(301, 39);
             this.btnDualUsedArticles.TabIndex = 43;
             this.btnDualUsedArticles.Text = "Daul Used Articles (EUU-Licance)";
             this.btnDualUsedArticles.UseVisualStyleBackColor = false;
@@ -201,18 +212,17 @@
             // 
             // btnSuperDiskwithP
             // 
-            this.btnSuperDiskwithP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
+            this.btnSuperDiskwithP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnSuperDiskwithP.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSuperDiskwithP.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnSuperDiskwithP.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
-            this.btnSuperDiskwithP.FlatAppearance.BorderSize = 0;
+            this.btnSuperDiskwithP.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnSuperDiskwithP.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnSuperDiskwithP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSuperDiskwithP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSuperDiskwithP.Location = new System.Drawing.Point(0, 96);
+            this.btnSuperDiskwithP.Location = new System.Drawing.Point(0, 117);
             this.btnSuperDiskwithP.Margin = new System.Windows.Forms.Padding(0);
             this.btnSuperDiskwithP.Name = "btnSuperDiskwithP";
-            this.btnSuperDiskwithP.Size = new System.Drawing.Size(226, 32);
+            this.btnSuperDiskwithP.Size = new System.Drawing.Size(301, 39);
             this.btnSuperDiskwithP.TabIndex = 40;
             this.btnSuperDiskwithP.Text = "Superdisk with P";
             this.btnSuperDiskwithP.UseVisualStyleBackColor = false;
@@ -220,18 +230,17 @@
             // 
             // btnTSEList
             // 
-            this.btnTSEList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
+            this.btnTSEList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnTSEList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnTSEList.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnTSEList.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
-            this.btnTSEList.FlatAppearance.BorderSize = 0;
+            this.btnTSEList.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnTSEList.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnTSEList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTSEList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTSEList.Location = new System.Drawing.Point(0, 64);
+            this.btnTSEList.Location = new System.Drawing.Point(0, 78);
             this.btnTSEList.Margin = new System.Windows.Forms.Padding(0);
             this.btnTSEList.Name = "btnTSEList";
-            this.btnTSEList.Size = new System.Drawing.Size(226, 32);
+            this.btnTSEList.Size = new System.Drawing.Size(301, 39);
             this.btnTSEList.TabIndex = 36;
             this.btnTSEList.Text = "TSE List";
             this.btnTSEList.UseVisualStyleBackColor = false;
@@ -239,18 +248,17 @@
             // 
             // btnRSProList
             // 
-            this.btnRSProList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
+            this.btnRSProList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnRSProList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnRSProList.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnRSProList.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
-            this.btnRSProList.FlatAppearance.BorderSize = 0;
+            this.btnRSProList.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnRSProList.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnRSProList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRSProList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRSProList.Location = new System.Drawing.Point(0, 32);
+            this.btnRSProList.Location = new System.Drawing.Point(0, 39);
             this.btnRSProList.Margin = new System.Windows.Forms.Padding(0);
             this.btnRSProList.Name = "btnRSProList";
-            this.btnRSProList.Size = new System.Drawing.Size(226, 32);
+            this.btnRSProList.Size = new System.Drawing.Size(301, 39);
             this.btnRSProList.TabIndex = 37;
             this.btnRSProList.Text = "RS Pro List";
             this.btnRSProList.UseVisualStyleBackColor = false;
@@ -258,51 +266,31 @@
             // 
             // btnRSInvoice
             // 
-            this.btnRSInvoice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
+            this.btnRSInvoice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnRSInvoice.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnRSInvoice.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnRSInvoice.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
-            this.btnRSInvoice.FlatAppearance.BorderSize = 0;
+            this.btnRSInvoice.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnRSInvoice.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnRSInvoice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRSInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRSInvoice.Location = new System.Drawing.Point(0, 0);
             this.btnRSInvoice.Margin = new System.Windows.Forms.Padding(0);
             this.btnRSInvoice.Name = "btnRSInvoice";
-            this.btnRSInvoice.Size = new System.Drawing.Size(226, 32);
+            this.btnRSInvoice.Size = new System.Drawing.Size(301, 39);
             this.btnRSInvoice.TabIndex = 38;
             this.btnRSInvoice.Text = "RS Invoice";
             this.btnRSInvoice.UseVisualStyleBackColor = false;
             this.btnRSInvoice.Click += new System.EventHandler(this.btnRSInvoice_Click);
             // 
-            // btnOrderAcknowledgement
-            // 
-            this.btnOrderAcknowledgement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
-            this.btnOrderAcknowledgement.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnOrderAcknowledgement.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnOrderAcknowledgement.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
-            this.btnOrderAcknowledgement.FlatAppearance.BorderSize = 0;
-            this.btnOrderAcknowledgement.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
-            this.btnOrderAcknowledgement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOrderAcknowledgement.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOrderAcknowledgement.Location = new System.Drawing.Point(0, 352);
-            this.btnOrderAcknowledgement.Margin = new System.Windows.Forms.Padding(0);
-            this.btnOrderAcknowledgement.Name = "btnOrderAcknowledgement";
-            this.btnOrderAcknowledgement.Size = new System.Drawing.Size(226, 32);
-            this.btnOrderAcknowledgement.TabIndex = 44;
-            this.btnOrderAcknowledgement.Text = "OrderAcknowledgement File";
-            this.btnOrderAcknowledgement.UseVisualStyleBackColor = false;
-            this.btnOrderAcknowledgement.Click += new System.EventHandler(this.btnOrderAcknowledgement_Click);
-            // 
             // LoaderControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "LoaderControl";
-            this.Size = new System.Drawing.Size(226, 612);
+            this.Size = new System.Drawing.Size(301, 753);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
