@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6be75cd5f75e4efb85a8c088f46b3dc6" Name="Diagram1">
+      <Diagram DiagramId="f2ddc6c1ef7643ea993eb429192a914f" Name="Diagram1">
         <EntityTypeShape EntityType="IMEModel.AccountGroup" Width="1.5" PointX="9.75" PointY="61" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.AccountLedger" Width="1.5" PointX="12" PointY="60" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.AdvancePayment" Width="1.5" PointX="20.25" PointY="85.375" IsExpanded="true" />
@@ -513,9 +513,6 @@
         <AssociationConnector Association="IMEModel.FK__SalaryVou__emplo__78F3E6EC" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.AuthRole" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.UserAuthorization" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="IMEModel.OrderAcknowledgement" Width="1.5" PointX="12.375" PointY="18.25" />
-        <EntityTypeShape EntityType="IMEModel.OrderAcknowledgementDetail" Width="1.5" PointX="14.625" PointY="18" />
-        <AssociationConnector Association="IMEModel.FK__OrderAckn__Order__630F92C5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

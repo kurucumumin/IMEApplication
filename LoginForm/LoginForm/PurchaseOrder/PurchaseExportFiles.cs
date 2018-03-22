@@ -132,7 +132,7 @@ namespace LoginForm.PurchaseOrder
             {
                 PurchaseOrderDetail pod = new PurchaseOrderDetail();
 
-                pod.QuotationNo = row.Cells[2].Value.ToString();
+                //pod.QuotationNo = row.Cells[2].Value.ToString();
                 pod.SaleOrderID = Convert.ToDecimal(row.Cells[3].Value);
                 pod.ItemCode = row.Cells[4].Value.ToString();
                 pod.ItemDescription = row.Cells[5].Value.ToString();
