@@ -176,6 +176,8 @@ namespace LoginForm.DataSet
         public virtual DbSet<AdditionalCost> AdditionalCosts { get; set; }
         public virtual DbSet<SalaryVoucherDetail> SalaryVoucherDetails { get; set; }
         public virtual DbSet<V_Product> V_Product { get; set; }
+        public virtual DbSet<OrderAcknowledgement> OrderAcknowledgements { get; set; }
+        public virtual DbSet<OrderAcknowledgementDetail> OrderAcknowledgementDetails { get; set; }
     
         [DbFunction("IMEEntities", "AccountGroupHierarchy")]
         public virtual IQueryable<AccountGroupHierarchy_Result> AccountGroupHierarchy(Nullable<decimal> groupId)
@@ -8292,6 +8294,40 @@ namespace LoginForm.DataSet
                 new ObjectParameter("ledgerId", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<VoucherTypeViewAllByLedgerId_Result>("VoucherTypeViewAllByLedgerId", ledgerIdParameter);
+        }
+    
+        public virtual ObjectResult<dgPurchaseOrderToSaleInvoiceSearchWithPurchaseId_Result> dgPurchaseOrderToSaleInvoiceSearchWithPurchaseId(string purchaseID)
+        {
+            var purchaseIDParameter = purchaseID != null ?
+                new ObjectParameter("PurchaseID", purchaseID) :
+                new ObjectParameter("PurchaseID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<dgPurchaseOrderToSaleInvoiceSearchWithPurchaseId_Result>("dgPurchaseOrderToSaleInvoiceSearchWithPurchaseId", purchaseIDParameter);
+        }
+    
+        public virtual int MonthlySalaryVoucherDetailViewAll(string strMonth, string month, string monthYear, Nullable<decimal> isEditMode, string voucherNo)
+        {
+            var strMonthParameter = strMonth != null ?
+                new ObjectParameter("strMonth", strMonth) :
+                new ObjectParameter("strMonth", typeof(string));
+    
+            var monthParameter = month != null ?
+                new ObjectParameter("Month", month) :
+                new ObjectParameter("Month", typeof(string));
+    
+            var monthYearParameter = monthYear != null ?
+                new ObjectParameter("monthYear", monthYear) :
+                new ObjectParameter("monthYear", typeof(string));
+    
+            var isEditModeParameter = isEditMode.HasValue ?
+                new ObjectParameter("isEditMode", isEditMode) :
+                new ObjectParameter("isEditMode", typeof(decimal));
+    
+            var voucherNoParameter = voucherNo != null ?
+                new ObjectParameter("voucherNo", voucherNo) :
+                new ObjectParameter("voucherNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MonthlySalaryVoucherDetailViewAll", strMonthParameter, monthParameter, monthYearParameter, isEditModeParameter, voucherNoParameter);
         }
     }
 }
