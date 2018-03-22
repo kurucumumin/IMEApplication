@@ -599,7 +599,7 @@ namespace LoginForm.Account.Services
         {
             IMEEntities IME = new IMEEntities();
             string pos = "";
-            
+
             try
             {
                 pos = IME.SaleMasterGetPos(saleMasterId, voucherName).ToString();

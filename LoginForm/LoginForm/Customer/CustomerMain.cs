@@ -350,7 +350,7 @@ namespace LoginForm
             ContactType.Enabled = false;
             ContactDepartment.Enabled = false;
             departmentAdd.Enabled = false;
-            cbMainContact.Enabled = false;
+           
             ContactTitle.Enabled = false;
             titleAdd.Enabled = false;
             ContactName.Enabled = false;
@@ -406,7 +406,7 @@ namespace LoginForm
             departmentAdd.Enabled = true;
             ContactTitle.Enabled = true;
             titleAdd.Enabled = true;
-            cbMainContact.Enabled = true;
+            
             ContactName.Enabled = true;
             ContactEmail.Enabled = true;
             ContactPhone.Enabled = true;
@@ -1028,8 +1028,8 @@ namespace LoginForm
                         c.MainContactID = (int)cbMainContact.SelectedValue;
                         c.CurrNameQuo = ((DataSet.Currency)QuoCurrencyName.SelectedItem).currencyName;
                         c.CurrNameInv = ((DataSet.Currency)InvCurrencyName.SelectedItem).currencyName;
-                        c.factor = Decimal.Parse(factor.Text);
-                        c.Capital = Capital.SelectedItem.ToString();
+                        if(factor.Text!="") c.factor = Decimal.Parse(factor.Text);
+                        if (Capital.SelectedItem != null) c.Capital = Capital.SelectedItem.ToString();
 
                         //Notes kısmına kayıt ediliyor
                         Note n1 = new Note();
@@ -1188,7 +1188,7 @@ namespace LoginForm
             Represantative1.Enabled = false;
             CompanyNotes.Enabled = false;
             WebAdress.Enabled = false;
-            cbMainContact.Enabled = false;
+            
             CustomerFax.Enabled = false;
             CustomerName.Enabled = false;
             txt3partyCode.Enabled = false;
