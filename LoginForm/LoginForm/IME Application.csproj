@@ -1064,6 +1064,9 @@
     <Compile Include="DataSet\CashOrBankComboFill_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\CashOrPartyUnderSundryDrComboFill_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\ChequeReportGridFill_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>

@@ -50,10 +50,10 @@ namespace LoginForm.DataSet
         public Nullable<decimal> counterId { get; set; }
         public Nullable<decimal> financialYearId { get; set; }
     
+        public virtual AccountLedger AccountLedger { get; set; }
         public virtual DeliveryNoteMaster DeliveryNoteMaster { get; set; }
         public virtual ExchangeRate ExchangeRate { get; set; }
         public virtual FinancialYear FinancialYear { get; set; }
-        public virtual LedgerPosting LedgerPosting { get; set; }
         public virtual PricingLevel PricingLevel { get; set; }
         public virtual Quotation Quotation { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -457,7 +457,6 @@ namespace LoginForm.Account.Services
             decimal decSalesMasterId = 0;
             try
             {
-
                 object obj = IME.SalesMasterAdd(
                 salesmasterinfo.voucherNo,
                 salesmasterinfo.invoiceNo,

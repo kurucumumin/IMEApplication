@@ -2914,7 +2914,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DailyAtte__daily__1BBE003C">
+        <Association Name="FK__DailyAtte__daily__18E19391">
           <End Role="DailyAttendanceMaster" Type="Self.DailyAttendanceMaster" Multiplicity="0..1" />
           <End Role="DailyAttendanceDetails" Type="Self.DailyAttendanceDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2926,7 +2926,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DailyAtte__Worke__1AC9DC03">
+        <Association Name="FK__DailyAtte__Worke__17ED6F58">
           <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
           <End Role="DailyAttendanceDetails" Type="Self.DailyAttendanceDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3574,7 +3574,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MonthlySa__emplo__43CBF196">
+        <Association Name="FK__MonthlySa__emplo__5402595F">
           <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
           <End Role="MonthlySalaryDetail" Type="Self.MonthlySalaryDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3586,7 +3586,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MonthlySa__month__04A590BA">
+        <Association Name="FK__MonthlySa__month__1E6562BD">
           <End Role="MonthlySalary" Type="Self.MonthlySalary" Multiplicity="0..1" />
           <End Role="MonthlySalaryDetails" Type="Self.MonthlySalaryDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3598,7 +3598,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MonthlySa__month__45B43A08">
+        <Association Name="FK__MonthlySa__month__55EAA1D1">
           <End Role="MonthlySalary" Type="Self.MonthlySalary" Multiplicity="0..1" />
           <End Role="MonthlySalaryDetail" Type="Self.MonthlySalaryDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3610,7 +3610,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MonthlySa__salar__44C015CF">
+        <Association Name="FK__MonthlySa__salar__54F67D98">
           <End Role="SalaryPackage" Type="Self.SalaryPackage" Multiplicity="0..1" />
           <End Role="MonthlySalaryDetail" Type="Self.MonthlySalaryDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3622,7 +3622,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderAckn__Order__2E9BCA86">
+        <Association Name="FK__OrderAckn__Order__12BEA5E7">
           <End Role="OrderAcknowledgement" Type="Self.OrderAcknowledgement" Multiplicity="0..1" />
           <End Role="OrderAcknowledgementDetails" Type="Self.OrderAcknowledgementDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3634,7 +3634,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OtherBanc__Compa__1C7D1A4B">
+        <Association Name="FK__OtherBanc__Compa__42A2C333">
           <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
           <End Role="OtherBanchesStocks" Type="Self.OtherBanchesStocks" Multiplicity="*" />
           <ReferentialConstraint>
@@ -5098,7 +5098,19 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__RS_Invoic__RS_In__27EECCF7">
+        <Association Name="FK__RS_Invoic__RS_In__7AE71C56">
+          <End Role="RS_Invoice" Type="Self.RS_Invoice" Multiplicity="0..1" />
+          <End Role="RS_InvoiceDetails" Type="Self.RS_InvoiceDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Invoice">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RS_InvoiceDetails">
+              <PropertyRef Name="RS_InvoiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RS_Invoic__RS_In__7DC38901">
           <End Role="RS_Invoice" Type="Self.RS_Invoice" Multiplicity="0..1" />
           <End Role="RS_InvoiceDetails" Type="Self.RS_InvoiceDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -5506,12 +5518,12 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SalesMast__ledge__7211DF33">
-          <End Role="LedgerPosting" Type="Self.LedgerPosting" Multiplicity="0..1" />
+        <Association Name="FK__SalesMast__ledge__168F36CB">
+          <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
           <End Role="SalesMaster" Type="Self.SalesMaster" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="LedgerPosting">
-              <PropertyRef Name="ledgerPostingId" />
+            <Principal Role="AccountLedger">
+              <PropertyRef Name="ledgerId" />
             </Principal>
             <Dependent Role="SalesMaster">
               <PropertyRef Name="ledgerId" />
@@ -7037,6 +7049,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Parameter Name="isShowOpeningBalance" Type="bit" Mode="In" />
         </Function>
         <Function Name="CashOrBankComboFill" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="CashOrPartyUnderSundryDrComboFill" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="CheckForDefaultVoucherType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
         </Function>
@@ -7619,6 +7632,13 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Parameter Name="salaryMonth" Type="datetime" Mode="In" />
         </Function>
         <Function Name="MonthlySalaryVoucherDetailsViewAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="strMonth" Type="varchar(max)" Mode="In" />
+          <Parameter Name="Month" Type="varchar(max)" Mode="In" />
+          <Parameter Name="monthYear" Type="varchar(max)" Mode="In" />
+          <Parameter Name="isEditMode" Type="numeric" Mode="In" />
+          <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="MonthlySalaryVoucherDetailViewAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="strMonth" Type="varchar(max)" Mode="In" />
           <Parameter Name="Month" Type="varchar(max)" Mode="In" />
           <Parameter Name="monthYear" Type="varchar(max)" Mode="In" />
@@ -9148,34 +9168,34 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <EntitySet Name="VoucherTypeTax" EntityType="Self.VoucherTypeTax" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Worker" EntityType="Self.Worker" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AdditionalCost" EntityType="Self.AdditionalCost" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT
-    [AdditionalCost].[additionalCostId] AS [additionalCostId],
-    [AdditionalCost].[voucherTypeId] AS [voucherTypeId],
-    [AdditionalCost].[voucherNo] AS [voucherNo],
-    [AdditionalCost].[ledgerId] AS [ledgerId],
-    [AdditionalCost].[debit] AS [debit],
+            <DefiningQuery>SELECT 
+    [AdditionalCost].[additionalCostId] AS [additionalCostId], 
+    [AdditionalCost].[voucherTypeId] AS [voucherTypeId], 
+    [AdditionalCost].[voucherNo] AS [voucherNo], 
+    [AdditionalCost].[ledgerId] AS [ledgerId], 
+    [AdditionalCost].[debit] AS [debit], 
     [AdditionalCost].[credit] AS [credit]
     FROM [dbo].[AdditionalCost] AS [AdditionalCost]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="SalaryVoucherDetail" EntityType="Self.SalaryVoucherDetail" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT
-    [SalaryVoucherDetail].[salaryVoucherDetailsId] AS [salaryVoucherDetailsId],
-    [SalaryVoucherDetail].[salaryVoucherMasterId] AS [salaryVoucherMasterId],
-    [SalaryVoucherDetail].[employeeId] AS [employeeId],
-    [SalaryVoucherDetail].[bonus] AS [bonus],
-    [SalaryVoucherDetail].[deduction] AS [deduction],
-    [SalaryVoucherDetail].[advance] AS [advance],
-    [SalaryVoucherDetail].[lop] AS [lop],
-    [SalaryVoucherDetail].[salary] AS [salary],
+            <DefiningQuery>SELECT 
+    [SalaryVoucherDetail].[salaryVoucherDetailsId] AS [salaryVoucherDetailsId], 
+    [SalaryVoucherDetail].[salaryVoucherMasterId] AS [salaryVoucherMasterId], 
+    [SalaryVoucherDetail].[employeeId] AS [employeeId], 
+    [SalaryVoucherDetail].[bonus] AS [bonus], 
+    [SalaryVoucherDetail].[deduction] AS [deduction], 
+    [SalaryVoucherDetail].[advance] AS [advance], 
+    [SalaryVoucherDetail].[lop] AS [lop], 
+    [SalaryVoucherDetail].[salary] AS [salary], 
     [SalaryVoucherDetail].[status] AS [status]
     FROM [dbo].[SalaryVoucherDetail] AS [SalaryVoucherDetail]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="V_Product" EntityType="Self.V_Product" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT
-    [V_Product].[productId] AS [productId],
-    [V_Product].[productCode] AS [productCode],
-    [V_Product].[Unit_Measure] AS [Unit_Measure],
-    [V_Product].[Brandname] AS [Brandname],
+            <DefiningQuery>SELECT 
+    [V_Product].[productId] AS [productId], 
+    [V_Product].[productCode] AS [productCode], 
+    [V_Product].[Unit_Measure] AS [Unit_Measure], 
+    [V_Product].[Brandname] AS [Brandname], 
     [V_Product].[dependantTable] AS [dependantTable]
     FROM [dbo].[V_Product] AS [V_Product]</DefiningQuery>
           </EntitySet>
@@ -9371,11 +9391,11 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="CustomerTitle" EntitySet="CustomerTitle" />
             <End Role="CustomerWorker" EntitySet="CustomerWorker" />
           </AssociationSet>
-          <AssociationSet Name="FK__DailyAtte__daily__1BBE003C" Association="Self.FK__DailyAtte__daily__1BBE003C">
+          <AssociationSet Name="FK__DailyAtte__daily__18E19391" Association="Self.FK__DailyAtte__daily__18E19391">
             <End Role="DailyAttendanceMaster" EntitySet="DailyAttendanceMaster" />
             <End Role="DailyAttendanceDetails" EntitySet="DailyAttendanceDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__DailyAtte__Worke__1AC9DC03" Association="Self.FK__DailyAtte__Worke__1AC9DC03">
+          <AssociationSet Name="FK__DailyAtte__Worke__17ED6F58" Association="Self.FK__DailyAtte__Worke__17ED6F58">
             <End Role="Worker" EntitySet="Worker" />
             <End Role="DailyAttendanceDetails" EntitySet="DailyAttendanceDetails" />
           </AssociationSet>
@@ -9591,27 +9611,27 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="MaterialReceiptMaster" EntitySet="MaterialReceiptMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__MonthlySa__emplo__43CBF196" Association="Self.FK__MonthlySa__emplo__43CBF196">
+          <AssociationSet Name="FK__MonthlySa__emplo__5402595F" Association="Self.FK__MonthlySa__emplo__5402595F">
             <End Role="Worker" EntitySet="Worker" />
             <End Role="MonthlySalaryDetail" EntitySet="MonthlySalaryDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__MonthlySa__month__04A590BA" Association="Self.FK__MonthlySa__month__04A590BA">
+          <AssociationSet Name="FK__MonthlySa__month__1E6562BD" Association="Self.FK__MonthlySa__month__1E6562BD">
             <End Role="MonthlySalary" EntitySet="MonthlySalary" />
             <End Role="MonthlySalaryDetails" EntitySet="MonthlySalaryDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__MonthlySa__month__45B43A08" Association="Self.FK__MonthlySa__month__45B43A08">
+          <AssociationSet Name="FK__MonthlySa__month__55EAA1D1" Association="Self.FK__MonthlySa__month__55EAA1D1">
             <End Role="MonthlySalary" EntitySet="MonthlySalary" />
             <End Role="MonthlySalaryDetail" EntitySet="MonthlySalaryDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__MonthlySa__salar__44C015CF" Association="Self.FK__MonthlySa__salar__44C015CF">
+          <AssociationSet Name="FK__MonthlySa__salar__54F67D98" Association="Self.FK__MonthlySa__salar__54F67D98">
             <End Role="SalaryPackage" EntitySet="SalaryPackage" />
             <End Role="MonthlySalaryDetail" EntitySet="MonthlySalaryDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderAckn__Order__2E9BCA86" Association="Self.FK__OrderAckn__Order__2E9BCA86">
+          <AssociationSet Name="FK__OrderAckn__Order__12BEA5E7" Association="Self.FK__OrderAckn__Order__12BEA5E7">
             <End Role="OrderAcknowledgement" EntitySet="OrderAcknowledgement" />
             <End Role="OrderAcknowledgementDetails" EntitySet="OrderAcknowledgementDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__OtherBanc__Compa__1C7D1A4B" Association="Self.FK__OtherBanc__Compa__1C7D1A4B">
+          <AssociationSet Name="FK__OtherBanc__Compa__42A2C333" Association="Self.FK__OtherBanc__Compa__42A2C333">
             <End Role="Company" EntitySet="Company" />
             <End Role="OtherBanchesStocks" EntitySet="OtherBanchesStocks" />
           </AssociationSet>
@@ -10099,7 +10119,11 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="Area" EntitySet="Area" />
             <End Role="Route" EntitySet="Route" />
           </AssociationSet>
-          <AssociationSet Name="FK__RS_Invoic__RS_In__27EECCF7" Association="Self.FK__RS_Invoic__RS_In__27EECCF7">
+          <AssociationSet Name="FK__RS_Invoic__RS_In__7AE71C56" Association="Self.FK__RS_Invoic__RS_In__7AE71C56">
+            <End Role="RS_Invoice" EntitySet="RS_Invoice" />
+            <End Role="RS_InvoiceDetails" EntitySet="RS_InvoiceDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RS_Invoic__RS_In__7DC38901" Association="Self.FK__RS_Invoic__RS_In__7DC38901">
             <End Role="RS_Invoice" EntitySet="RS_Invoice" />
             <End Role="RS_InvoiceDetails" EntitySet="RS_InvoiceDetails" />
           </AssociationSet>
@@ -10235,8 +10259,8 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="FinancialYear" EntitySet="FinancialYear" />
             <End Role="SalesMaster" EntitySet="SalesMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__SalesMast__ledge__7211DF33" Association="Self.FK__SalesMast__ledge__7211DF33">
-            <End Role="LedgerPosting" EntitySet="LedgerPosting" />
+          <AssociationSet Name="FK__SalesMast__ledge__168F36CB" Association="Self.FK__SalesMast__ledge__168F36CB">
+            <End Role="AccountLedger" EntitySet="AccountLedger" />
             <End Role="SalesMaster" EntitySet="SalesMaster" />
           </AssociationSet>
           <AssociationSet Name="FK__SalesMast__prici__7306036C" Association="Self.FK__SalesMast__prici__7306036C">
@@ -10700,6 +10724,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <NavigationProperty Name="RejectionOutMasters" Relationship="Self.FK__Rejection__ledge__6A3BB341" FromRole="AccountLedger" ToRole="RejectionOutMaster" />
           <NavigationProperty Name="SalaryVoucherMasters" Relationship="Self.FK__SalaryVou__ledge__76177A41" FromRole="AccountLedger" ToRole="SalaryVoucherMaster" />
           <NavigationProperty Name="SaleOrders" Relationship="Self.FK__SaleOrder__ledge__4A03EDD9" FromRole="AccountLedger" ToRole="SaleOrder" />
+          <NavigationProperty Name="SalesMasters" Relationship="Self.FK__SalesMast__ledge__168F36CB" FromRole="AccountLedger" ToRole="SalesMaster" />
         </EntityType>
         <EntityType Name="AdvancePayment">
           <Key>
@@ -10871,7 +10896,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="pan" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="BranchCode" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Currency" Relationship="Self.FK__Company__currenc__0371755F" FromRole="Company" ToRole="Currency" />
-          <NavigationProperty Name="OtherBanchesStocks" Relationship="Self.FK__OtherBanc__Compa__1C7D1A4B" FromRole="Company" ToRole="OtherBanchesStocks" />
+          <NavigationProperty Name="OtherBanchesStocks" Relationship="Self.FK__OtherBanc__Compa__42A2C333" FromRole="Company" ToRole="OtherBanchesStocks" />
           <NavigationProperty Name="Managements" Relationship="Self.FK_ManagementCompany" FromRole="Company" ToRole="Management" />
         </EntityType>
         <EntityType Name="CompanyPath">
@@ -11132,8 +11157,8 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="WorkerId" Type="Int32" />
           <Property Name="status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="DailyAttendanceMaster" Relationship="Self.FK__DailyAtte__daily__1BBE003C" FromRole="DailyAttendanceDetails" ToRole="DailyAttendanceMaster" />
-          <NavigationProperty Name="Worker" Relationship="Self.FK__DailyAtte__Worke__1AC9DC03" FromRole="DailyAttendanceDetails" ToRole="Worker" />
+          <NavigationProperty Name="DailyAttendanceMaster" Relationship="Self.FK__DailyAtte__daily__18E19391" FromRole="DailyAttendanceDetails" ToRole="DailyAttendanceMaster" />
+          <NavigationProperty Name="Worker" Relationship="Self.FK__DailyAtte__Worke__17ED6F58" FromRole="DailyAttendanceDetails" ToRole="Worker" />
         </EntityType>
         <EntityType Name="DailyAttendanceMaster">
           <Key>
@@ -11142,7 +11167,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="dailyAttendanceMasterId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="date" Type="DateTime" Precision="3" />
           <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="DailyAttendanceDetails" Relationship="Self.FK__DailyAtte__daily__1BBE003C" FromRole="DailyAttendanceMaster" ToRole="DailyAttendanceDetails" />
+          <NavigationProperty Name="DailyAttendanceDetails" Relationship="Self.FK__DailyAtte__daily__18E19391" FromRole="DailyAttendanceMaster" ToRole="DailyAttendanceDetails" />
         </EntityType>
         <EntityType Name="DailyDiscontinued">
           <Key>
@@ -11533,7 +11558,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <NavigationProperty Name="BankReconciliations" Relationship="Self.FK__BankRecon__ledge__3726238F" FromRole="LedgerPosting" ToRole="BankReconciliation" />
           <NavigationProperty Name="FinancialYear" Relationship="Self.FK__LedgerPos__yearI__61516785" FromRole="LedgerPosting" ToRole="FinancialYear" />
           <NavigationProperty Name="VoucherType" Relationship="Self.FK__LedgerPos__vouch__5F691F13" FromRole="LedgerPosting" ToRole="VoucherType" />
-          <NavigationProperty Name="SalesMasters" Relationship="Self.FK__SalesMast__ledge__7211DF33" FromRole="LedgerPosting" ToRole="SalesMaster" />
           <NavigationProperty Name="ServiceMasters" Relationship="Self.FK__ServiceMa__ledge__1F398B65" FromRole="LedgerPosting" ToRole="ServiceMaster" />
         </EntityType>
         <EntityType Name="LoaderDate">
@@ -11659,8 +11683,8 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="monthlySalaryId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="salaryMonth" Type="DateTime" Precision="3" />
           <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="MonthlySalaryDetails" Relationship="Self.FK__MonthlySa__month__04A590BA" FromRole="MonthlySalary" ToRole="MonthlySalaryDetails" />
-          <NavigationProperty Name="MonthlySalaryDetails1" Relationship="Self.FK__MonthlySa__month__45B43A08" FromRole="MonthlySalary" ToRole="MonthlySalaryDetail" />
+          <NavigationProperty Name="MonthlySalaryDetails" Relationship="Self.FK__MonthlySa__month__1E6562BD" FromRole="MonthlySalary" ToRole="MonthlySalaryDetails" />
+          <NavigationProperty Name="MonthlySalaryDetails1" Relationship="Self.FK__MonthlySa__month__55EAA1D1" FromRole="MonthlySalary" ToRole="MonthlySalaryDetail" />
         </EntityType>
         <EntityType Name="MonthlySalaryDetail">
           <Key>
@@ -11670,9 +11694,9 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="employeeId" Type="Int32" />
           <Property Name="salaryPackageId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="monthlySalaryId" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="MonthlySalary" Relationship="Self.FK__MonthlySa__month__45B43A08" FromRole="MonthlySalaryDetail" ToRole="MonthlySalary" />
-          <NavigationProperty Name="Worker" Relationship="Self.FK__MonthlySa__emplo__43CBF196" FromRole="MonthlySalaryDetail" ToRole="Worker" />
-          <NavigationProperty Name="SalaryPackage" Relationship="Self.FK__MonthlySa__salar__44C015CF" FromRole="MonthlySalaryDetail" ToRole="SalaryPackage" />
+          <NavigationProperty Name="MonthlySalary" Relationship="Self.FK__MonthlySa__month__55EAA1D1" FromRole="MonthlySalaryDetail" ToRole="MonthlySalary" />
+          <NavigationProperty Name="Worker" Relationship="Self.FK__MonthlySa__emplo__5402595F" FromRole="MonthlySalaryDetail" ToRole="Worker" />
+          <NavigationProperty Name="SalaryPackage" Relationship="Self.FK__MonthlySa__salar__54F67D98" FromRole="MonthlySalaryDetail" ToRole="SalaryPackage" />
         </EntityType>
         <EntityType Name="MonthlySalaryDetail1">
           <Key>
@@ -11682,7 +11706,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="employeeId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="salaryPackageId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="monthlySalaryId" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="MonthlySalary" Relationship="Self.FK__MonthlySa__month__04A590BA" FromRole="MonthlySalaryDetails" ToRole="MonthlySalary" />
+          <NavigationProperty Name="MonthlySalary" Relationship="Self.FK__MonthlySa__month__1E6562BD" FromRole="MonthlySalaryDetails" ToRole="MonthlySalary" />
         </EntityType>
         <EntityType Name="Note">
           <Key>
@@ -11736,7 +11760,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="RSLSalesOrderNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="ScheduleLineConfirmedQuantity" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
           <Property Name="ScheduleLineControl" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="OrderAcknowledgementDetails" Relationship="Self.FK__OrderAckn__Order__2E9BCA86" FromRole="OrderAcknowledgement" ToRole="OrderAcknowledgementDetails" />
+          <NavigationProperty Name="OrderAcknowledgementDetails" Relationship="Self.FK__OrderAckn__Order__12BEA5E7" FromRole="OrderAcknowledgement" ToRole="OrderAcknowledgementDetails" />
         </EntityType>
         <EntityType Name="OrderAcknowledgementDetail">
           <Key>
@@ -11758,7 +11782,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="PurchaseOrderItemNumber_SC" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
           <Property Name="TotalNumberofScheduleLines" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
           <Property Name="OrderAcknowledgementID" Type="Int32" />
-          <NavigationProperty Name="OrderAcknowledgement" Relationship="Self.FK__OrderAckn__Order__2E9BCA86" FromRole="OrderAcknowledgementDetails" ToRole="OrderAcknowledgement" />
+          <NavigationProperty Name="OrderAcknowledgement" Relationship="Self.FK__OrderAckn__Order__12BEA5E7" FromRole="OrderAcknowledgementDetails" ToRole="OrderAcknowledgement" />
         </EntityType>
         <EntityType Name="OtherBanchesStock">
           <Key>
@@ -11768,7 +11792,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="CompanyID" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="ArticleCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Quantity" Type="Int32" />
-          <NavigationProperty Name="Company" Relationship="Self.FK__OtherBanc__Compa__1C7D1A4B" FromRole="OtherBanchesStocks" ToRole="Company" />
+          <NavigationProperty Name="Company" Relationship="Self.FK__OtherBanc__Compa__42A2C333" FromRole="OtherBanchesStocks" ToRole="Company" />
         </EntityType>
         <EntityType Name="PartyBalance">
           <Key>
@@ -12588,7 +12612,8 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="InvoiceNettValue" Type="Decimal" Precision="17" Scale="2" />
           <Property Name="Currency" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
           <Property Name="AirwayBillNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="RS_InvoiceDetails" Relationship="Self.FK__RS_Invoic__RS_In__27EECCF7" FromRole="RS_Invoice" ToRole="RS_InvoiceDetails" />
+          <NavigationProperty Name="RS_InvoiceDetails" Relationship="Self.FK__RS_Invoic__RS_In__7AE71C56" FromRole="RS_Invoice" ToRole="RS_InvoiceDetails" />
+          <NavigationProperty Name="RS_InvoiceDetails1" Relationship="Self.FK__RS_Invoic__RS_In__7DC38901" FromRole="RS_Invoice" ToRole="RS_InvoiceDetails" />
         </EntityType>
         <EntityType Name="RS_InvoiceDetails">
           <Key>
@@ -12612,7 +12637,8 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="DeliveryNumber" Type="Decimal" Precision="10" Scale="0" />
           <Property Name="DeliveryItemNumber" Type="Int32" />
           <Property Name="IsSaleInvoiced" Type="Int32" />
-          <NavigationProperty Name="RS_Invoice" Relationship="Self.FK__RS_Invoic__RS_In__27EECCF7" FromRole="RS_InvoiceDetails" ToRole="RS_Invoice" />
+          <NavigationProperty Name="RS_Invoice" Relationship="Self.FK__RS_Invoic__RS_In__7AE71C56" FromRole="RS_InvoiceDetails" ToRole="RS_Invoice" />
+          <NavigationProperty Name="RS_Invoice1" Relationship="Self.FK__RS_Invoic__RS_In__7DC38901" FromRole="RS_InvoiceDetails" ToRole="RS_Invoice" />
         </EntityType>
         <EntityType Name="RSPro">
           <Key>
@@ -12635,7 +12661,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="isActive" Type="Boolean" />
           <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="totalAmount" Type="Decimal" Precision="18" Scale="5" />
-          <NavigationProperty Name="MonthlySalaryDetails" Relationship="Self.FK__MonthlySa__salar__44C015CF" FromRole="SalaryPackage" ToRole="MonthlySalaryDetail" />
+          <NavigationProperty Name="MonthlySalaryDetails" Relationship="Self.FK__MonthlySa__salar__54F67D98" FromRole="SalaryPackage" ToRole="MonthlySalaryDetail" />
           <NavigationProperty Name="SalaryPackageDetails" Relationship="Self.FK__SalaryPac__salar__5689C04F" FromRole="SalaryPackage" ToRole="SalaryPackageDetail" />
           <NavigationProperty Name="Workers" Relationship="Self.FK__Worker__defaultP__587208C1" FromRole="SalaryPackage" ToRole="Worker" />
         </EntityType>
@@ -12838,10 +12864,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="POS" Type="Boolean" />
           <Property Name="counterId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="financialYearId" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="AccountLedger" Relationship="Self.FK__SalesMast__ledge__168F36CB" FromRole="SalesMaster" ToRole="AccountLedger" />
           <NavigationProperty Name="DeliveryNoteMaster" Relationship="Self.FK__SalesMast__deliv__74EE4BDE" FromRole="SalesMaster" ToRole="DeliveryNoteMaster" />
           <NavigationProperty Name="ExchangeRate" Relationship="Self.FK__SalesMast__excha__76D69450" FromRole="SalesMaster" ToRole="ExchangeRate" />
           <NavigationProperty Name="FinancialYear" Relationship="Self.FK__SalesMast__finan__7AA72534" FromRole="SalesMaster" ToRole="FinancialYear" />
-          <NavigationProperty Name="LedgerPosting" Relationship="Self.FK__SalesMast__ledge__7211DF33" FromRole="SalesMaster" ToRole="LedgerPosting" />
           <NavigationProperty Name="PricingLevel" Relationship="Self.FK__SalesMast__prici__7306036C" FromRole="SalesMaster" ToRole="PricingLevel" />
           <NavigationProperty Name="Quotation" Relationship="Self.FK__SalesMast__quota__79B300FB" FromRole="SalesMaster" ToRole="Quotation" />
           <NavigationProperty Name="SalesBillTaxes" Relationship="Self.FK__tbl_Sales__sales__5AF96FB1" FromRole="SalesMaster" ToRole="SalesBillTax" />
@@ -13582,14 +13608,14 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <NavigationProperty Name="Customers" Relationship="Self.FK__Customer__accoun__6EF57B66" FromRole="Worker" ToRole="Customer" />
           <NavigationProperty Name="Customers1" Relationship="Self.FK__Customer__repres__3F466844" FromRole="Worker" ToRole="Customer" />
           <NavigationProperty Name="Customers2" Relationship="Self.FK__Customer__repres__6E01572D" FromRole="Worker" ToRole="Customer" />
-          <NavigationProperty Name="DailyAttendanceDetails" Relationship="Self.FK__DailyAtte__Worke__1AC9DC03" FromRole="Worker" ToRole="DailyAttendanceDetails" />
+          <NavigationProperty Name="DailyAttendanceDetails" Relationship="Self.FK__DailyAtte__Worke__17ED6F58" FromRole="Worker" ToRole="DailyAttendanceDetails" />
           <NavigationProperty Name="DebitNoteMasters" Relationship="Self.FK__DebitNote__userI__55AAAAAF" FromRole="Worker" ToRole="DebitNoteMaster" />
           <NavigationProperty Name="DeliveryNoteMasters" Relationship="Self.FK__DeliveryN__userI__24134F1B" FromRole="Worker" ToRole="DeliveryNoteMaster" />
           <NavigationProperty Name="Designation" Relationship="Self.FK__Worker__designat__6F6A7CB2" FromRole="Worker" ToRole="Designation" />
           <NavigationProperty Name="DiscountValues" Relationship="Self.FK__DiscountV__Repre__6F4A8121" FromRole="Worker" ToRole="DiscountValues" />
           <NavigationProperty Name="JournalMasters" Relationship="Self.FK__JournalMa__userI__7CF981FA" FromRole="Worker" ToRole="JournalMaster" />
           <NavigationProperty Name="MaterialReceiptMasters" Relationship="Self.FK__MaterialR__userI__5634BA94" FromRole="Worker" ToRole="MaterialReceiptMaster" />
-          <NavigationProperty Name="MonthlySalaryDetails" Relationship="Self.FK__MonthlySa__emplo__43CBF196" FromRole="Worker" ToRole="MonthlySalaryDetail" />
+          <NavigationProperty Name="MonthlySalaryDetails" Relationship="Self.FK__MonthlySa__emplo__5402595F" FromRole="Worker" ToRole="MonthlySalaryDetail" />
           <NavigationProperty Name="Note" Relationship="Self.FK__Worker__WorkerNo__4BAC3F29" FromRole="Worker" ToRole="Notes" />
           <NavigationProperty Name="PaymentMasters" Relationship="Self.FK__PaymentMa__userI__4A6E022D" FromRole="Worker" ToRole="PaymentMaster" />
           <NavigationProperty Name="PDCClearanceMasters" Relationship="Self.FK__PDCCleara__userI__4C214075" FromRole="Worker" ToRole="PDCClearanceMaster" />
@@ -13964,6 +13990,18 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__SalesMast__ledge__168F36CB">
+          <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
+          <End Role="SalesMaster" Type="Self.SalesMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountLedger">
+              <PropertyRef Name="ledgerId" />
+            </Principal>
+            <Dependent Role="SalesMaster">
+              <PropertyRef Name="ledgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__AdvancePa__emplo__4D4A6ED8">
           <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
           <End Role="AdvancePayment" Type="Self.AdvancePayment" Multiplicity="*" />
@@ -14264,7 +14302,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OtherBanc__Compa__1C7D1A4B">
+        <Association Name="FK__OtherBanc__Compa__42A2C333">
           <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
           <End Role="OtherBanchesStocks" Type="Self.OtherBanchesStock" Multiplicity="*" />
           <ReferentialConstraint>
@@ -14816,7 +14854,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DailyAtte__daily__1BBE003C">
+        <Association Name="FK__DailyAtte__daily__18E19391">
           <End Role="DailyAttendanceMaster" Type="Self.DailyAttendanceMaster" Multiplicity="0..1" />
           <End Role="DailyAttendanceDetails" Type="Self.DailyAttendanceDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -14828,7 +14866,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DailyAtte__Worke__1AC9DC03">
+        <Association Name="FK__DailyAtte__Worke__17ED6F58">
           <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
           <End Role="DailyAttendanceDetails" Type="Self.DailyAttendanceDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -15800,18 +15838,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SalesMast__ledge__7211DF33">
-          <End Role="LedgerPosting" Type="Self.LedgerPosting" Multiplicity="0..1" />
-          <End Role="SalesMaster" Type="Self.SalesMaster" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="LedgerPosting">
-              <PropertyRef Name="ledgerPostingId" />
-            </Principal>
-            <Dependent Role="SalesMaster">
-              <PropertyRef Name="ledgerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__ServiceMa__ledge__1F398B65">
           <End Role="LedgerPosting" Type="Self.LedgerPosting" Multiplicity="0..1" />
           <End Role="ServiceMaster" Type="Self.ServiceMaster" Multiplicity="*" />
@@ -15956,7 +15982,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MonthlySa__month__04A590BA">
+        <Association Name="FK__MonthlySa__month__1E6562BD">
           <End Role="MonthlySalary" Type="Self.MonthlySalary" Multiplicity="0..1" />
           <End Role="MonthlySalaryDetails" Type="Self.MonthlySalaryDetail1" Multiplicity="*" />
           <ReferentialConstraint>
@@ -15968,7 +15994,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MonthlySa__month__45B43A08">
+        <Association Name="FK__MonthlySa__month__55EAA1D1">
           <End Role="MonthlySalary" Type="Self.MonthlySalary" Multiplicity="0..1" />
           <End Role="MonthlySalaryDetail" Type="Self.MonthlySalaryDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -15980,7 +16006,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MonthlySa__emplo__43CBF196">
+        <Association Name="FK__MonthlySa__emplo__5402595F">
           <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
           <End Role="MonthlySalaryDetail" Type="Self.MonthlySalaryDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -15992,7 +16018,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MonthlySa__salar__44C015CF">
+        <Association Name="FK__MonthlySa__salar__54F67D98">
           <End Role="SalaryPackage" Type="Self.SalaryPackage" Multiplicity="0..1" />
           <End Role="MonthlySalaryDetail" Type="Self.MonthlySalaryDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -16076,7 +16102,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderAckn__Order__2E9BCA86">
+        <Association Name="FK__OrderAckn__Order__12BEA5E7">
           <End Role="OrderAcknowledgement" Type="Self.OrderAcknowledgement" Multiplicity="0..1" />
           <End Role="OrderAcknowledgementDetails" Type="Self.OrderAcknowledgementDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -17168,7 +17194,19 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__RS_Invoic__RS_In__27EECCF7">
+        <Association Name="FK__RS_Invoic__RS_In__7AE71C56">
+          <End Role="RS_Invoice" Type="Self.RS_Invoice" Multiplicity="0..1" />
+          <End Role="RS_InvoiceDetails" Type="Self.RS_InvoiceDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Invoice">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RS_InvoiceDetails">
+              <PropertyRef Name="RS_InvoiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RS_Invoic__RS_In__7DC38901">
           <End Role="RS_Invoice" Type="Self.RS_Invoice" Multiplicity="0..1" />
           <End Role="RS_InvoiceDetails" Type="Self.RS_InvoiceDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -18186,6 +18224,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
             <End Role="SaleOrder" EntitySet="SaleOrders" />
           </AssociationSet>
+          <AssociationSet Name="FK__SalesMast__ledge__168F36CB" Association="Self.FK__SalesMast__ledge__168F36CB">
+            <End Role="AccountLedger" EntitySet="AccountLedgers" />
+            <End Role="SalesMaster" EntitySet="SalesMasters" />
+          </AssociationSet>
           <AssociationSet Name="FK__AdvancePa__emplo__4D4A6ED8" Association="Self.FK__AdvancePa__emplo__4D4A6ED8">
             <End Role="Worker" EntitySet="Workers" />
             <End Role="AdvancePayment" EntitySet="AdvancePayments" />
@@ -18286,7 +18328,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="Currency" EntitySet="Currencies" />
             <End Role="Company" EntitySet="Companies" />
           </AssociationSet>
-          <AssociationSet Name="FK__OtherBanc__Compa__1C7D1A4B" Association="Self.FK__OtherBanc__Compa__1C7D1A4B">
+          <AssociationSet Name="FK__OtherBanc__Compa__42A2C333" Association="Self.FK__OtherBanc__Compa__42A2C333">
             <End Role="Company" EntitySet="Companies" />
             <End Role="OtherBanchesStocks" EntitySet="OtherBanchesStocks" />
           </AssociationSet>
@@ -18470,11 +18512,11 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="CustomerWorker" EntitySet="CustomerWorkers" />
             <End Role="SaleOrder" EntitySet="SaleOrders" />
           </AssociationSet>
-          <AssociationSet Name="FK__DailyAtte__daily__1BBE003C" Association="Self.FK__DailyAtte__daily__1BBE003C">
+          <AssociationSet Name="FK__DailyAtte__daily__18E19391" Association="Self.FK__DailyAtte__daily__18E19391">
             <End Role="DailyAttendanceMaster" EntitySet="DailyAttendanceMasters" />
             <End Role="DailyAttendanceDetails" EntitySet="DailyAttendanceDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__DailyAtte__Worke__1AC9DC03" Association="Self.FK__DailyAtte__Worke__1AC9DC03">
+          <AssociationSet Name="FK__DailyAtte__Worke__17ED6F58" Association="Self.FK__DailyAtte__Worke__17ED6F58">
             <End Role="Worker" EntitySet="Workers" />
             <End Role="DailyAttendanceDetails" EntitySet="DailyAttendanceDetails" />
           </AssociationSet>
@@ -18798,10 +18840,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="VoucherType" EntitySet="VoucherTypes" />
             <End Role="LedgerPosting" EntitySet="LedgerPostings" />
           </AssociationSet>
-          <AssociationSet Name="FK__SalesMast__ledge__7211DF33" Association="Self.FK__SalesMast__ledge__7211DF33">
-            <End Role="LedgerPosting" EntitySet="LedgerPostings" />
-            <End Role="SalesMaster" EntitySet="SalesMasters" />
-          </AssociationSet>
           <AssociationSet Name="FK__ServiceMa__ledge__1F398B65" Association="Self.FK__ServiceMa__ledge__1F398B65">
             <End Role="LedgerPosting" EntitySet="LedgerPostings" />
             <End Role="ServiceMaster" EntitySet="ServiceMasters" />
@@ -18850,19 +18888,19 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="MaterialReceiptMaster" EntitySet="MaterialReceiptMasters" />
             <End Role="RejectionOutMaster" EntitySet="RejectionOutMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__MonthlySa__month__04A590BA" Association="Self.FK__MonthlySa__month__04A590BA">
+          <AssociationSet Name="FK__MonthlySa__month__1E6562BD" Association="Self.FK__MonthlySa__month__1E6562BD">
             <End Role="MonthlySalary" EntitySet="MonthlySalaries" />
             <End Role="MonthlySalaryDetails" EntitySet="MonthlySalaryDetails1" />
           </AssociationSet>
-          <AssociationSet Name="FK__MonthlySa__month__45B43A08" Association="Self.FK__MonthlySa__month__45B43A08">
+          <AssociationSet Name="FK__MonthlySa__month__55EAA1D1" Association="Self.FK__MonthlySa__month__55EAA1D1">
             <End Role="MonthlySalary" EntitySet="MonthlySalaries" />
             <End Role="MonthlySalaryDetail" EntitySet="MonthlySalaryDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__MonthlySa__emplo__43CBF196" Association="Self.FK__MonthlySa__emplo__43CBF196">
+          <AssociationSet Name="FK__MonthlySa__emplo__5402595F" Association="Self.FK__MonthlySa__emplo__5402595F">
             <End Role="Worker" EntitySet="Workers" />
             <End Role="MonthlySalaryDetail" EntitySet="MonthlySalaryDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__MonthlySa__salar__44C015CF" Association="Self.FK__MonthlySa__salar__44C015CF">
+          <AssociationSet Name="FK__MonthlySa__salar__54F67D98" Association="Self.FK__MonthlySa__salar__54F67D98">
             <End Role="SalaryPackage" EntitySet="SalaryPackages" />
             <End Role="MonthlySalaryDetail" EntitySet="MonthlySalaryDetails" />
           </AssociationSet>
@@ -18890,7 +18928,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="Notes" EntitySet="Notes" />
             <End Role="Worker" EntitySet="Workers" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderAckn__Order__2E9BCA86" Association="Self.FK__OrderAckn__Order__2E9BCA86">
+          <AssociationSet Name="FK__OrderAckn__Order__12BEA5E7" Association="Self.FK__OrderAckn__Order__12BEA5E7">
             <End Role="OrderAcknowledgement" EntitySet="OrderAcknowledgements" />
             <End Role="OrderAcknowledgementDetails" EntitySet="OrderAcknowledgementDetails" />
           </AssociationSet>
@@ -19254,7 +19292,11 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="VoucherType" EntitySet="VoucherTypes" />
             <End Role="RejectionOutMaster" EntitySet="RejectionOutMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__RS_Invoic__RS_In__27EECCF7" Association="Self.FK__RS_Invoic__RS_In__27EECCF7">
+          <AssociationSet Name="FK__RS_Invoic__RS_In__7AE71C56" Association="Self.FK__RS_Invoic__RS_In__7AE71C56">
+            <End Role="RS_Invoice" EntitySet="RS_Invoice" />
+            <End Role="RS_InvoiceDetails" EntitySet="RS_InvoiceDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RS_Invoic__RS_In__7DC38901" Association="Self.FK__RS_Invoic__RS_In__7DC38901">
             <End Role="RS_Invoice" EntitySet="RS_Invoice" />
             <End Role="RS_InvoiceDetails" EntitySet="RS_InvoiceDetails" />
           </AssociationSet>
@@ -19873,6 +19915,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <Parameter Name="isShowOpeningBalance" Mode="In" Type="Boolean" />
           </FunctionImport>
           <FunctionImport Name="CashOrBankComboFill" ReturnType="Collection(IMEModel.CashOrBankComboFill_Result)" />
+          <FunctionImport Name="CashOrPartyUnderSundryDrComboFill" ReturnType="Collection(IMEModel.CashOrPartyUnderSundryDrComboFill_Result)" />
           <FunctionImport Name="CheckForDefaultVoucherType" ReturnType="Collection(Int32)">
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
           </FunctionImport>
@@ -20444,6 +20487,13 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <Parameter Name="salaryMonth" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="MonthlySalaryVoucherDetailsViewAll" ReturnType="Collection(IMEModel.MonthlySalaryVoucherDetailsViewAll_Result)">
+            <Parameter Name="strMonth" Mode="In" Type="String" />
+            <Parameter Name="Month" Mode="In" Type="String" />
+            <Parameter Name="monthYear" Mode="In" Type="String" />
+            <Parameter Name="isEditMode" Mode="In" Type="Decimal" />
+            <Parameter Name="voucherNo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="MonthlySalaryVoucherDetailViewAll">
             <Parameter Name="strMonth" Mode="In" Type="String" />
             <Parameter Name="Month" Mode="In" Type="String" />
             <Parameter Name="monthYear" Mode="In" Type="String" />
@@ -21290,7 +21340,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <FunctionImport Name="SalesmanViewSpecificFeilds" ReturnType="Collection(IMEModel.SalesmanViewSpecificFeilds_Result)">
             <Parameter Name="employeeId" Mode="In" Type="Decimal" />
           </FunctionImport>
-          <FunctionImport Name="SalesMasterAdd" ReturnType="Collection(Decimal)">
+          <FunctionImport Name="SalesMasterAdd">
             <Parameter Name="voucherNo" Mode="In" Type="String" />
             <Parameter Name="invoiceNo" Mode="In" Type="String" />
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
@@ -22304,6 +22354,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="String" Name="Balance" Nullable="true" />
         </ComplexType>
         <ComplexType Name="CashOrBankComboFill_Result">
+          <Property Type="String" Name="ledgerName" Nullable="true" />
+          <Property Type="Decimal" Name="ledgerId" Nullable="false" Precision="18" Scale="0" />
+        </ComplexType>
+        <ComplexType Name="CashOrPartyUnderSundryDrComboFill_Result">
           <Property Type="String" Name="ledgerName" Nullable="true" />
           <Property Type="Decimal" Name="ledgerId" Nullable="false" Precision="18" Scale="0" />
         </ComplexType>
@@ -27131,6 +27185,14 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CashOrPartyUnderSundryDrComboFill" FunctionName="IMEModel.Store.CashOrPartyUnderSundryDrComboFill">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.CashOrPartyUnderSundryDrComboFill_Result">
+                <ScalarProperty Name="ledgerName" ColumnName="ledgerName" />
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="CheckForDefaultVoucherType" FunctionName="IMEModel.Store.CheckForDefaultVoucherType" />
           <FunctionImportMapping FunctionImportName="CheckSalaryAlreadyPaidOrNot" FunctionName="IMEModel.Store.CheckSalaryAlreadyPaidOrNot" />
           <FunctionImportMapping FunctionImportName="CheckSalaryAlreadyPaidOrNotForAdvancePayment" FunctionName="IMEModel.Store.CheckSalaryAlreadyPaidOrNotForAdvancePayment" />
@@ -27816,6 +27878,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="MonthlySalaryVoucherDetailViewAll" FunctionName="IMEModel.Store.MonthlySalaryVoucherDetailViewAll" />
           <FunctionImportMapping FunctionImportName="MonthlySalaryVoucherMasterAddWithIdentity" FunctionName="IMEModel.Store.MonthlySalaryVoucherMasterAddWithIdentity">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.MonthlySalaryVoucherMasterAddWithIdentity_Result">

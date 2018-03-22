@@ -2987,7 +2987,7 @@ namespace LoginForm
                 }
                 else
                 {
-                    InfoSalesMaster.orderMasterId = 0;
+                    InfoSalesMaster.orderMasterId = null;
                 }
                 if (cmbSalesMode.Text == "Against Delivery Note")
                 {
@@ -2995,7 +2995,7 @@ namespace LoginForm
                 }
                 else
                 {
-                    InfoSalesMaster.deliveryNoteMasterId = 0;
+                    InfoSalesMaster.deliveryNoteMasterId = null;
                 }
                 if (cmbSalesMode.Text == "Against Quotation")
                 {
@@ -3003,7 +3003,7 @@ namespace LoginForm
                 }
                 else
                 {
-                    InfoSalesMaster.quotationNoId = "0";
+                    InfoSalesMaster.quotationNoId = null;
                 }
                 InfoSalesMaster.narration = txtNarration.Text.Trim();
                 try
@@ -3018,7 +3018,7 @@ namespace LoginForm
                 {
                     InfoSalesMaster.taxAmount = 0;
                 }
-                InfoSalesMaster.WorkerId = Utils.getCurrentUser().WorkerID;
+                InfoSalesMaster.WorkerId = Convert.ToInt32(cmbSalesMan.SelectedValue.ToString());
                 InfoSalesMaster.lrNo = txtVehicleNo.Text;
                 InfoSalesMaster.transportationCompany = txtTransportCompany.Text.Trim();
                 InfoSalesMaster.POS = false;
@@ -3988,7 +3988,7 @@ namespace LoginForm
                 }
                 else
                 {
-                    InfoSalesMaster.orderMasterId = 0;
+                    InfoSalesMaster.orderMasterId = null;
                 }
                 if (cmbSalesMode.Text == "Against Delivery Note")
                 {
@@ -3996,7 +3996,7 @@ namespace LoginForm
                 }
                 else
                 {
-                    InfoSalesMaster.deliveryNoteMasterId = 0;
+                    InfoSalesMaster.deliveryNoteMasterId = null;
                 }
                 if (cmbSalesMode.Text == "Against Quotation")
                 {
@@ -4004,7 +4004,7 @@ namespace LoginForm
                 }
                 else
                 {
-                    InfoSalesMaster.quotationNoId = "";
+                    InfoSalesMaster.quotationNoId = null;
                 }
                 InfoSalesMaster.narration = txtNarration.Text.Trim();
                 InfoSalesMaster.pricinglevelId = Convert.ToDecimal(cmbPricingLevel.SelectedValue.ToString());

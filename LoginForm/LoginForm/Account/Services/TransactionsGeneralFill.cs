@@ -233,53 +233,36 @@ namespace LoginForm.Account.Services
 
         public void CashOrPartyUnderSundryDrComboFill(ComboBox cmbCashOrParty, bool isAll)
         {
-            IMEEntities db = new IMEEntities();
-            DataTable dtbl = new DataTable();
-            dtbl.Columns.Add("SlNo", typeof(decimal));
-            dtbl.Columns["SlNo"].AutoIncrement = true;
-            dtbl.Columns["SlNo"].AutoIncrementSeed = 1;
-            dtbl.Columns["SlNo"].AutoIncrementStep = 1;
+            // Fill All  Cash or party Under Sundry Debter
+            DataTable dtblCashOrParty = new DataTable();
             try
             {
-                var adaptor = (from ag in db.AccountGroups.Where(x => x.accountGroupName == "Cash-in Hand" || x.accountGroupName == "Sundry Debtors")
-                               select new
-                               {
-                                   AccountGroupId = ag.accountGroupId,
-                                   AccountGroupName = ag.accountGroupName,
-                                   hierarchyLevel = 1
-                               }).ToList();
-                var adaptor2 = (from ag in db.AccountGroups.Where(x => x.accountGroupName == "Cash-in Hand" || x.accountGroupName == "Sundry Debtors")
-                                where ag.groupUnder==ag.accountGroupId
-                                select new
-                                {
-                                    AccountGroupId = ag.accountGroupId,
-                                    AccountGroupName = ag.accountGroupName,
-                                    hierarchyLevel = 2
-                                }).ToList();
 
-                foreach (var item in adaptor2)
+                var adapter = new IMEEntities().CashOrPartyUnderSundryDrComboFill().ToList();
+
+                dtblCashOrParty.Columns.Add("ledgerName");
+                dtblCashOrParty.Columns.Add("ledgerId");
+
+                foreach (var item in adapter)
                 {
-                    if (!adaptor.Exists(x => x.AccountGroupId == item.AccountGroupId))
-                    {
-                        adaptor.Add(item);
-                    }
+                    DataRow row = dtblCashOrParty.NewRow();
+
+                    row["ledgerName"] = item.ledgerName;
+                    row["ledgerId"] = item.ledgerId;
+
+                    dtblCashOrParty.Rows.Add(row);
                 }
 
-                dtbl.Columns.Add("AccountGroupId");
-                dtbl.Columns.Add("AccountGroupName");
-                foreach (var item in adaptor)
+                if (isAll)
                 {
-                    var row = dtbl.NewRow();
-
-                    row["AccountGroupId"] = item.AccountGroupId;
-                    row["AccountGroupName"] = item.AccountGroupName;
-                    dtbl.Rows.Add(row);
+                    DataRow dr = dtblCashOrParty.NewRow();
+                    dr["ledgerName"] = "All";
+                    dr["ledgerId"] = 0;
+                    dtblCashOrParty.Rows.InsertAt(dr, 0);
                 }
-
-                cmbCashOrParty.DataSource = dtbl;
-                cmbCashOrParty.ValueMember = "AccountGroupId";
-                cmbCashOrParty.DisplayMember = "AccountGroupName";
-                cmbCashOrParty.SelectedIndex = -1;
+                cmbCashOrParty.DataSource = dtblCashOrParty;
+                cmbCashOrParty.ValueMember = "ledgerId";
+                cmbCashOrParty.DisplayMember = "ledgerName";
             }
             catch (Exception ex)
             {
