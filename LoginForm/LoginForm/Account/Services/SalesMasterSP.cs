@@ -454,8 +454,8 @@ namespace LoginForm.Account.Services
             public decimal SalesMasterAdd(SalesMaster salesmasterinfo)
             {
                 IMEEntities IME = new IMEEntities();
-                var decSalesMasterId =IME.SalesMasterAdd(salesmasterinfo.voucherNo, salesmasterinfo.invoiceNo, salesmasterinfo.voucherTypeId, salesmasterinfo.suffixPrefixId ,salesmasterinfo.date, salesmasterinfo.creditPeriod, salesmasterinfo.ledgerId, salesmasterinfo.pricinglevelId, salesmasterinfo.salesAccount, salesmasterinfo.deliveryNoteMasterId, salesmasterinfo.orderMasterId, salesmasterinfo.narration, salesmasterinfo.customerName, salesmasterinfo.exchangeRateId, salesmasterinfo.taxAmount, salesmasterinfo.additionalCost, salesmasterinfo.billDiscount, salesmasterinfo.grandTotal, salesmasterinfo.totalAmount, salesmasterinfo.WorkerId, salesmasterinfo.lrNo, salesmasterinfo.transportationCompany, salesmasterinfo.quotationNoId, salesmasterinfo.POS, salesmasterinfo.counterId, salesmasterinfo.financialYearId);
-                return decimal.Parse(decSalesMasterId.ToString());
+                //var decSalesMasterId =IME.SalesMasterAdd(salesmasterinfo.voucherNo, salesmasterinfo.invoiceNo, salesmasterinfo.voucherTypeId, salesmasterinfo.suffixPrefixId ,salesmasterinfo.date, salesmasterinfo.creditPeriod, salesmasterinfo.ledgerId, salesmasterinfo.pricinglevelId, salesmasterinfo.salesAccount, salesmasterinfo.deliveryNoteMasterId, salesmasterinfo.orderMasterId, salesmasterinfo.narration, salesmasterinfo.customerName, salesmasterinfo.exchangeRateId, salesmasterinfo.taxAmount, salesmasterinfo.additionalCost, salesmasterinfo.billDiscount, salesmasterinfo.grandTotal, salesmasterinfo.totalAmount, salesmasterinfo.WorkerId, salesmasterinfo.lrNo, salesmasterinfo.transportationCompany, salesmasterinfo.quotationNoId, salesmasterinfo.POS, salesmasterinfo.counterId, salesmasterinfo.financialYearId);
+                return decimal.Parse(null);
             }
 
             public DataTable salesinvoiceAdditionalCostCheckdrOrCrforSiEdit(decimal decVoucherTypeId, string strVoucherNo)
