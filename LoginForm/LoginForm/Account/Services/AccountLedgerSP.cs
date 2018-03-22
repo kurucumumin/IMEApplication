@@ -20,15 +20,7 @@ namespace LoginForm.Account.Services
             DataTable dtbl = new DataTable();
             IMEEntities IME = new IMEEntities();
 
-            var accountGroup = IME.AccountGroups.Where(a => a.accountGroupName == "Indirect Expenses").ToList();
-            var adaptor = (from al in IME.AccountLedgers
-                           from ac in accountGroup
-                           where (al.accountGroupID == ac.accountGroupId)
-                           select new
-                           {
-                               al.ledgerName,
-                               al.ledgerId
-                           }).ToList();
+            var adaptor = IME.AccountLedgerViewForAdditionalCost().ToList();
 
             dtbl.Columns.Add("ledgerName");
             dtbl.Columns.Add("ledgerId");

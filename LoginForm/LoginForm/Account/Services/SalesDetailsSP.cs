@@ -383,92 +383,88 @@ namespace LoginForm.Account.Services
             return dt;
         }
 
-            public void SalesDetailsEdit(SalesDetail salesdetailsinfo)
-            {
-                IMEEntities IME = new IMEEntities();
-                IME.SalesDetailsEdit(salesdetailsinfo.salesDetailsId, salesdetailsinfo.salesMasterId, salesdetailsinfo.deliveryNoteDetailsId, salesdetailsinfo.orderDetailsId, salesdetailsinfo.quotationDetailsId, salesdetailsinfo.productId, salesdetailsinfo.qty, salesdetailsinfo.rate, salesdetailsinfo.unitId, salesdetailsinfo.unitConversionId, salesdetailsinfo.discount, salesdetailsinfo.taxId, salesdetailsinfo.batchId, salesdetailsinfo.godownId, salesdetailsinfo.rackId, salesdetailsinfo.taxAmount, salesdetailsinfo.grossAmount, salesdetailsinfo.netAmount, salesdetailsinfo.amount, salesdetailsinfo.slNo);
-                    //SqlCommand sccmd = new SqlCommand("SalesDetailsEdit", sqlcon);
+        public void SalesDetailsEdit(SalesDetail salesdetailsinfo)
+        {
+            IMEEntities IME = new IMEEntities();
+            IME.SalesDetailsEdit(salesdetailsinfo.salesDetailsId, salesdetailsinfo.salesMasterId, salesdetailsinfo.deliveryNoteDetailsId, salesdetailsinfo.orderDetailsId, Convert.ToDecimal(salesdetailsinfo.quotationDetailsId), salesdetailsinfo.productId, salesdetailsinfo.qty, salesdetailsinfo.rate, salesdetailsinfo.unitId, salesdetailsinfo.unitConversionId, salesdetailsinfo.discount, Convert.ToDecimal(salesdetailsinfo.taxId), salesdetailsinfo.batchId, salesdetailsinfo.godownId, salesdetailsinfo.rackId, salesdetailsinfo.taxAmount, salesdetailsinfo.grossAmount, salesdetailsinfo.netAmount, salesdetailsinfo.amount, salesdetailsinfo.slNo);
+            //SqlCommand sccmd = new SqlCommand("SalesDetailsEdit", sqlcon);
 
-            }
-
-            public void SalesDetailsDelete(decimal SalesDetailsId)
-            {
-                IMEEntities IME = new IMEEntities();
-                IME.SalesDetailsDelete(SalesDetailsId);
-            }
-
-            public decimal SalesInvoiceReciptVoucherDetailsAgainstSI(decimal decvoucherTypeId, string strvoucherNo)
-            {
-                //decimal decBalAmount = 0;
-                IMEEntities IME = new IMEEntities();
-                var decBalAmount = IME.SalesInvoiceReciptVoucherDetailsAgainstSI(decvoucherTypeId, strvoucherNo);
-                return decimal.Parse(decBalAmount.ToString());
-            }
-
-            public DataTable SalesInvoiceSalesDetailsViewBySalesMasterId(decimal dcSalesMasterId)
-            {
-                DataTable dt = new DataTable();
-                IMEEntities IME = new IMEEntities();
-
-                return dt;
-            }
-
-            public void SalesDetailsAdd(SalesDetail salesdetailsinfo)
-            {
-                IMEEntities IME = new IMEEntities();
-                SalesDetail sd = new SalesDetail();
-                sd.amount = salesdetailsinfo.amount;
-                sd.batchId = salesdetailsinfo.batchId;
-                sd.deliveryNoteDetailsId = salesdetailsinfo.deliveryNoteDetailsId;
-                sd.discount = salesdetailsinfo.discount;
-                sd.godownId = salesdetailsinfo.godownId;
-                sd.grossAmount = salesdetailsinfo.grossAmount;
-                sd.netAmount = salesdetailsinfo.netAmount;
-                sd.orderDetailsId = salesdetailsinfo.orderDetailsId;
-                sd.productId = salesdetailsinfo.productId;
-                sd.qty = salesdetailsinfo.qty;
-                sd.quotationDetailsId = salesdetailsinfo.quotationDetailsId;
-                sd.rackId = salesdetailsinfo.rackId;
-                sd.rate = salesdetailsinfo.rate;
-                sd.salesDetailsId = salesdetailsinfo.salesDetailsId;
-                sd.salesMasterId = salesdetailsinfo.salesMasterId;
-                sd.slNo = salesdetailsinfo.slNo;
-                sd.taxAmount = salesdetailsinfo.taxAmount;
-                sd.taxId = salesdetailsinfo.taxId;
-                sd.unitConversionId = salesdetailsinfo.unitConversionId;
-                sd.unitId = salesdetailsinfo.unitId;
-                IME.SalesDetails.Add(sd);
-                IME.SaveChanges();
-
-
-            }
-
-            //public DataTable VoucherTypesBasedOnTypeOfVouchers(string typeOfVouchers)
-            //{
-            //    IMEEntities db = new IMEEntities();
-            //    DataTable dt = new DataTable();
-            //    var adaptor = (from vt in db.VoucherTypes
-            //                   where (vt.typeOfVoucher== typeOfVouchers)
-            //                   select new
-            //                   {
-            //                       vt.voucherTypeId,
-            //                       vt.voucherTypeName,
-            //                       vt.typeOfVoucher
-            //                   }).ToList();
-            //    dt.Columns.Add("voucherTypeId");
-            //    dt.Columns.Add("voucherTypeName");
-            //    dt.Columns.Add("typeOfVoucher");
-            //    foreach (var item in adaptor)
-            //    {
-            //        var row = dt.NewRow();
-
-            //        row["voucherTypeId"] = item.voucherTypeId;
-            //        row["voucherTypeName"] = item.voucherTypeName;
-            //        row["voucherTypeName"] = item.voucherTypeName;
-            //        dt.Rows.Add(row);
-            //    }
-            //    return dt;
-            //}
         }
+
+        public void SalesDetailsDelete(decimal SalesDetailsId)
+        {
+            IMEEntities IME = new IMEEntities();
+            IME.SalesDetailsDelete(SalesDetailsId);
+        }
+
+        public decimal SalesInvoiceReciptVoucherDetailsAgainstSI(decimal decvoucherTypeId, string strvoucherNo)
+        {
+            //decimal decBalAmount = 0;
+            IMEEntities IME = new IMEEntities();
+            var decBalAmount = IME.SalesInvoiceReciptVoucherDetailsAgainstSI(decvoucherTypeId, strvoucherNo);
+            return decimal.Parse(decBalAmount.ToString());
+        }
+
+        public DataTable SalesInvoiceSalesDetailsViewBySalesMasterId(decimal dcSalesMasterId)
+        {
+            DataTable dt = new DataTable();
+            IMEEntities IME = new IMEEntities();
+
+            return dt;
+        }
+
+        public void SalesDetailsAdd(SalesDetail s)
+        {
+            IMEEntities IME = new IMEEntities();
+
+            IME.SalesDetailsAdd(s.salesMasterId,
+                s.deliveryNoteDetailsId,
+                s.orderDetailsId,
+                Convert.ToDecimal(s.quotationDetailsId),
+                s.productId,
+                s.qty,
+                s.rate,
+                s.unitId,
+                s.unitConversionId,
+                s.discount,
+                Convert.ToDecimal(s.taxId),
+                s.batchId,
+                s.godownId,
+                s.rackId,
+                s.taxAmount,
+                s.grossAmount,
+                s.netAmount,
+                s.amount,
+                s.slNo);
+            IME.SaveChanges();
+        }
+
+        //public DataTable VoucherTypesBasedOnTypeOfVouchers(string typeOfVouchers)
+        //{
+        //    IMEEntities db = new IMEEntities();
+        //    DataTable dt = new DataTable();
+        //    var adaptor = (from vt in db.VoucherTypes
+        //                   where (vt.typeOfVoucher== typeOfVouchers)
+        //                   select new
+        //                   {
+        //                       vt.voucherTypeId,
+        //                       vt.voucherTypeName,
+        //                       vt.typeOfVoucher
+        //                   }).ToList();
+        //    dt.Columns.Add("voucherTypeId");
+        //    dt.Columns.Add("voucherTypeName");
+        //    dt.Columns.Add("typeOfVoucher");
+        //    foreach (var item in adaptor)
+        //    {
+        //        var row = dt.NewRow();
+
+        //        row["voucherTypeId"] = item.voucherTypeId;
+        //        row["voucherTypeName"] = item.voucherTypeName;
+        //        row["voucherTypeName"] = item.voucherTypeName;
+        //        dt.Rows.Add(row);
+        //    }
+        //    return dt;
+        //}
+    }
 
 }

@@ -451,14 +451,57 @@ namespace LoginForm.Account.Services
                 return isBillByBill;
             }
 
-            public decimal SalesMasterAdd(SalesMaster salesmasterinfo)
+        public decimal SalesMasterAdd(SalesMaster salesmasterinfo)
+        {
+            IMEEntities IME = new IMEEntities();
+            decimal decSalesMasterId = 0;
+            try
             {
-                IMEEntities IME = new IMEEntities();
-                var decSalesMasterId =IME.SalesMasterAdd(salesmasterinfo.voucherNo, salesmasterinfo.invoiceNo, salesmasterinfo.voucherTypeId, salesmasterinfo.suffixPrefixId ,salesmasterinfo.date, salesmasterinfo.creditPeriod, salesmasterinfo.ledgerId, salesmasterinfo.pricinglevelId, salesmasterinfo.salesAccount, salesmasterinfo.deliveryNoteMasterId, salesmasterinfo.orderMasterId, salesmasterinfo.narration, salesmasterinfo.customerName, salesmasterinfo.exchangeRateId, salesmasterinfo.taxAmount, salesmasterinfo.additionalCost, salesmasterinfo.billDiscount, salesmasterinfo.grandTotal, salesmasterinfo.totalAmount, salesmasterinfo.WorkerId, salesmasterinfo.lrNo, salesmasterinfo.transportationCompany, salesmasterinfo.quotationNoId, salesmasterinfo.POS, salesmasterinfo.counterId, salesmasterinfo.financialYearId);
-                return decimal.Parse(decSalesMasterId.ToString());
-            }
 
-            public DataTable salesinvoiceAdditionalCostCheckdrOrCrforSiEdit(decimal decVoucherTypeId, string strVoucherNo)
+                object obj = IME.SalesMasterAdd(
+                salesmasterinfo.voucherNo,
+                salesmasterinfo.invoiceNo,
+                salesmasterinfo.voucherTypeId,
+                salesmasterinfo.suffixPrefixId,
+                salesmasterinfo.date,
+                salesmasterinfo.creditPeriod,
+                salesmasterinfo.ledgerId,
+                salesmasterinfo.salesAccount,
+                salesmasterinfo.deliveryNoteMasterId,
+                salesmasterinfo.orderMasterId,
+                salesmasterinfo.narration,
+                salesmasterinfo.customerName,
+                salesmasterinfo.exchangeRateId,
+                salesmasterinfo.taxAmount,
+                salesmasterinfo.additionalCost,
+                salesmasterinfo.billDiscount,
+                salesmasterinfo.grandTotal,
+                salesmasterinfo.totalAmount,
+                salesmasterinfo.WorkerId,
+                salesmasterinfo.lrNo,
+                salesmasterinfo.transportationCompany,
+                salesmasterinfo.quotationNoId,
+                salesmasterinfo.POS,
+                salesmasterinfo.counterId,
+                salesmasterinfo.financialYearId);
+
+                if (obj != null)
+                {
+                    decSalesMasterId = decimal.Parse(obj.ToString());
+                }
+                else
+                {
+                    decSalesMasterId = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return decSalesMasterId;
+        }
+
+        public DataTable salesinvoiceAdditionalCostCheckdrOrCrforSiEdit(decimal decVoucherTypeId, string strVoucherNo)
             {
                 DataTable dtbl = new DataTable();
                 IMEEntities IME = new IMEEntities();

@@ -21,15 +21,15 @@ namespace LoginForm.Account.Services
 
             var adaptor = IME.GetSalesOrderNoIncludePendingCorrespondingtoLedgerforSI(decLedgerId, decSalesMasterId, decVoucherTypeId);
             dt.Columns.Add("invoiceNo");
-            dt.Columns.Add("SaleOrderNo");
+            dt.Columns.Add("SaleOrderID");
 
             foreach (var item in adaptor)
             {
                 var row = dt.NewRow();
                 row["invoiceNo"] = item.invoiceNo;
-                row["SaleOrderNo"] = item.SaleOrderID;
+                row["SaleOrderID"] = item.SaleOrderID;
 
-                                dt.Rows.Add(row);
+                dt.Rows.Add(row);
             }
             return dt;
         }

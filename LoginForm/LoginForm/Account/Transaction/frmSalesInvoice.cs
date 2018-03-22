@@ -44,7 +44,7 @@ namespace LoginForm
         string strInvoiceNoTostockPost = string.Empty; //' stock post
         decimal decVouchertypeIdTostockPost = 0; //' stock post
         decimal DecSalesInvoiceVoucherTypeId = 0;//to get the selected voucher type id from frmVoucherTypeSelection
-        decimal decSalseInvoiceSuffixPrefixId = 0;
+        decimal decSalseInvoiceSuffixPrefixId = -1;
         decimal decGodownId = 0; // for fill rack using godown Id
         decimal decBankOrCashIdForEdit = 0; // to use delete the ledger posting cash or bank row
         decimal decCurrentConversionRate = 0;
@@ -60,6 +60,8 @@ namespace LoginForm
         bool IsSetGridValueChange = false;
         decimal decDeliveryNoteQty = 0;//To check quantity of sale against delivery note
         DataTable dtblDeliveryNoteDetails = new DataTable();
+        public static Customer customer;
+        
         #endregion
         #region Functions
         /// <summary>
@@ -130,7 +132,7 @@ namespace LoginForm
                 cmbDrorCr.SelectedIndex = -1;
                 cmbCashOrbank.SelectedIndex = -1;
                 cmbCurrency.Enabled = true;
-                txtCustomer.Text = cmbCashOrParty.Text;
+                //txtCustomer.Text = cmbCashOrParty.Text;
                 txtTransportCompany.Text = string.Empty;
                 txtVehicleNo.Text = string.Empty;
                 txtNarration.Text = string.Empty;
@@ -500,11 +502,11 @@ namespace LoginForm
                         dtbl = spSalesOrderMaster.GetSalesOrderNoIncludePendingCorrespondingtoLedgerforSI(Convert.ToDecimal(cmbCashOrParty.SelectedValue.ToString()), decSalesInvoiceIdToEdit, Convert.ToDecimal(cmbVoucherType.SelectedValue.ToString()));
                         DataRow dr = dtbl.NewRow();
                         dr["invoiceNo"] = "";
-                        dr["salesOrderMasterId"] = 0;
+                        dr["SaleOrderID"] = 0;
                         dtbl.Rows.InsertAt(dr, 0);
                         isFromEditMode = true;
                         cmbSalesModeOrderNo.DataSource = dtbl;
-                        cmbSalesModeOrderNo.ValueMember = "salesOrderMasterId";
+                        cmbSalesModeOrderNo.ValueMember = "SaleOrderID";
                         cmbSalesModeOrderNo.DisplayMember = "invoiceNo";
                         isFromEditMode = false;
                     }
@@ -526,11 +528,11 @@ namespace LoginForm
                         dtbl = spSalesQuotationMasterSp.GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI(Convert.ToDecimal(cmbCashOrParty.SelectedValue.ToString()), decSalesInvoiceIdToEdit, Convert.ToDecimal(cmbVoucherType.SelectedValue.ToString()));
                         DataRow dr = dtbl.NewRow();
                         dr["invoiceNo"] = "";
-                        dr["quotationMasterId"] = 0;
+                        dr["QuotationNo"] = 0;
                         dtbl.Rows.InsertAt(dr, 0);
                         isFromEditMode = true;
                         cmbSalesModeOrderNo.DataSource = dtbl;
-                        cmbSalesModeOrderNo.ValueMember = "quotationMasterId";
+                        cmbSalesModeOrderNo.ValueMember = "QuotationNo";
                         cmbSalesModeOrderNo.DisplayMember = "invoiceNo";
                         isFromEditMode = false;
                     }
@@ -2113,24 +2115,24 @@ namespace LoginForm
                             dgvSalesInvoice.CurrentRow.HeaderCell.Value = "X";
                             dgvSalesInvoice.CurrentRow.HeaderCell.Style.ForeColor = Color.Red;
                         }
-                        else if (dgvSalesInvoice.CurrentRow.Cells["dgvtxtSalesInvoiceRate"].Value == null || dgvSalesInvoice.CurrentRow.Cells["dgvtxtSalesInvoiceRate"].Value.ToString().Trim() == string.Empty)
-                        {
-                            isValueChanged = true;
-                            dgvSalesInvoice.CurrentRow.HeaderCell.Value = "X";
-                            dgvSalesInvoice.CurrentRow.HeaderCell.Style.ForeColor = Color.Red;
-                        }
-                        else if (dgvSalesInvoice.CurrentRow.Cells["dgvtxtSalesInvoiceGrossValue"].Value == null || dgvSalesInvoice.CurrentRow.Cells["dgvtxtSalesInvoiceGrossValue"].Value.ToString().Trim() == string.Empty)
-                        {
-                            isValueChanged = true;
-                            dgvSalesInvoice.CurrentRow.HeaderCell.Value = "X";
-                            dgvSalesInvoice.CurrentRow.HeaderCell.Style.ForeColor = Color.Red;
-                        }
-                        else if (dgvSalesInvoice.CurrentRow.Cells["dgvtxtSalesInvoiceAmount"].Value == null || dgvSalesInvoice.CurrentRow.Cells["dgvtxtSalesInvoiceAmount"].Value.ToString().Trim() == string.Empty)
-                        {
-                            isValueChanged = true;
-                            dgvSalesInvoice.CurrentRow.HeaderCell.Value = "X";
-                            dgvSalesInvoice.CurrentRow.HeaderCell.Style.ForeColor = Color.Red;
-                        }
+                        //else if (dgvSalesInvoice.CurrentRow.Cells["dgvtxtSalesInvoiceRate"].Value == null || dgvSalesInvoice.CurrentRow.Cells["dgvtxtSalesInvoiceRate"].Value.ToString().Trim() == string.Empty)
+                        //{
+                        //    isValueChanged = true;
+                        //    dgvSalesInvoice.CurrentRow.HeaderCell.Value = "X";
+                        //    dgvSalesInvoice.CurrentRow.HeaderCell.Style.ForeColor = Color.Red;
+                        //}
+                        //else if (dgvSalesInvoice.CurrentRow.Cells["dgvtxtSalesInvoiceGrossValue"].Value == null || dgvSalesInvoice.CurrentRow.Cells["dgvtxtSalesInvoiceGrossValue"].Value.ToString().Trim() == string.Empty)
+                        //{
+                        //    isValueChanged = true;
+                        //    dgvSalesInvoice.CurrentRow.HeaderCell.Value = "X";
+                        //    dgvSalesInvoice.CurrentRow.HeaderCell.Style.ForeColor = Color.Red;
+                        //}
+                        //else if (dgvSalesInvoice.CurrentRow.Cells["dgvtxtSalesInvoiceAmount"].Value == null || dgvSalesInvoice.CurrentRow.Cells["dgvtxtSalesInvoiceAmount"].Value.ToString().Trim() == string.Empty)
+                        //{
+                        //    isValueChanged = true;
+                        //    dgvSalesInvoice.CurrentRow.HeaderCell.Value = "X";
+                        //    dgvSalesInvoice.CurrentRow.HeaderCell.Style.ForeColor = Color.Red;
+                        //}
                         else if (spSettings.SettingsStatusCheck("AllowZeroValueEntry") == "No" && Convert.ToDecimal(dgvSalesInvoice.CurrentRow.Cells["dgvtxtSalesInvoiceRate"].Value) == 0)
                         {
                             isValueChanged = true;
@@ -2763,7 +2765,9 @@ namespace LoginForm
                 {
                     if (RemoveIncompleteRowsFromGrid())
                     {
-                        if (dgvSalesInvoice.Rows[0].Cells["dgvtxtSalesInvoiceProductName"].Value == null && dgvSalesInvoice.Rows[0].Cells["dgvtxtSalesInvoiceQty"].Value == null)
+                        //if (dgvSalesInvoice.Rows[dgvSalesInvoice.CurrentCell.RowIndex].Cells[8].Value == null && dgvSalesInvoice.Rows[dgvSalesInvoice.CurrentCell.RowIndex].Cells[10].Value == null)
+
+                            if (dgvSalesInvoice.Rows[0].Cells["dgvtxtSalesInvoiceProductName"].Value == null && dgvSalesInvoice.Rows[0].Cells["dgvtxtSalesInvoiceQty"].Value == null) 
                         {
                             MessageBox.Show("Can't save Sales Invoice without atleast one product with complete details", "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             dgvSalesInvoice.ClearSelection();
@@ -2950,7 +2954,7 @@ namespace LoginForm
                 InfoSalesMaster.additionalCost = Convert.ToDecimal(lblLedgerTotalAmount.Text);
                 InfoSalesMaster.billDiscount = Convert.ToDecimal(txtBillDiscount.Text.Trim());
                 InfoSalesMaster.creditPeriod = Convert.ToInt32(txtCreditPeriod.Text.Trim().ToString());
-                InfoSalesMaster.customerName = txtCustomer.Text.Trim();
+                InfoSalesMaster.customerName = txtCustomerName.Text.Trim();
                 InfoSalesMaster.date = Convert.ToDateTime(txtDate.Text.ToString());
                 InfoSalesMaster.exchangeRateId = Convert.ToInt32(cmbCurrency.SelectedValue.ToString());
                 InfoSalesMaster.WorkerId = Convert.ToInt32(cmbSalesMan.SelectedValue.ToString());
@@ -2958,11 +2962,17 @@ namespace LoginForm
                 InfoSalesMaster.grandTotal = Convert.ToDecimal(txtGrandTotal.Text.Trim());
                 InfoSalesMaster.ledgerId = Convert.ToDecimal(cmbCashOrParty.SelectedValue.ToString());
                 InfoSalesMaster.voucherTypeId = DecSalesInvoiceVoucherTypeId;
+                InfoSalesMaster.narration = txtNarration.Text.Trim();
+                InfoSalesMaster.transportationCompany = txtTransportCompany.Text.Trim();
                 if (isAutomatic)
                 {
                     InfoSalesMaster.invoiceNo = txtInvoiceNo.Text.Trim();
                     InfoSalesMaster.voucherNo = strVoucherNo;
-                    InfoSalesMaster.suffixPrefixId = decSalseInvoiceSuffixPrefixId;
+                    if (decSalseInvoiceSuffixPrefixId != -1)
+                    {
+                        InfoSalesMaster.suffixPrefixId = decSalseInvoiceSuffixPrefixId;
+                    }
+                    
                 }
                 else
                 {
@@ -2995,7 +3005,8 @@ namespace LoginForm
                     InfoSalesMaster.quotationNoId = "0";
                 }
                 InfoSalesMaster.narration = txtNarration.Text.Trim();
-                InfoSalesMaster.pricinglevelId = Convert.ToDecimal(cmbPricingLevel.SelectedValue.ToString());
+                try
+                {  InfoSalesMaster.pricinglevelId = Convert.ToDecimal(cmbPricingLevel.SelectedValue.ToString()); } catch{  }
                 InfoSalesMaster.salesAccount = Convert.ToDecimal(cmbSalesAccount.SelectedValue.ToString());
                 InfoSalesMaster.totalAmount = Convert.ToDecimal(txtTotalAmount.Text.Trim());
                 if (dgvSalesInvoice.Columns["dgvcmbSalesInvoiceTaxName"].Visible)
@@ -3046,13 +3057,13 @@ namespace LoginForm
                                 InfoSalesDetails.quotationDetailsId = 0;
                             }
                             InfoSalesDetails.slNo = Convert.ToInt32(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceSlno"].Value.ToString());
-                            InfoSalesDetails.productId = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceProductId"].Value.ToString());
+                            InfoSalesDetails.productId = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceProductCode"].Value.ToString());
                             InfoSalesDetails.qty = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceQty"].Value.ToString());
                             InfoSalesDetails.rate = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceRate"].Value.ToString());
-                            InfoSalesDetails.unitId = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoicembUnitName"].Value.ToString());
-                            InfoSalesDetails.unitConversionId = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceUnitConversionId"].Value.ToString());
+                            try{InfoSalesDetails.unitId = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoicembUnitName"].Value.ToString()); } catch {}
+                            try{ InfoSalesDetails.unitConversionId = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceUnitConversionId"].Value.ToString()); }  catch {}
                             InfoSalesDetails.discount = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceDiscountAmount"].Value.ToString());
-                            InfoSalesDetails.batchId = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvcmbSalesInvoiceBatch"].Value.ToString());
+                            try{ InfoSalesDetails.batchId = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvcmbSalesInvoiceBatch"].Value.ToString()); } catch { }
                             if (dgvSalesInvoice.Rows[inI].Cells["dgvcmbSalesInvoiceGodown"].Value != null && dgvSalesInvoice.Rows[inI].Cells["dgvcmbSalesInvoiceGodown"].Value.ToString() != string.Empty)
                             {
                                 InfoSalesDetails.godownId = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvcmbSalesInvoiceGodown"].Value.ToString());
@@ -3085,7 +3096,7 @@ namespace LoginForm
                             spSalesDetails.SalesDetailsAdd(InfoSalesDetails);
                             infoStockPosting.date = Convert.ToDateTime(txtDate.Text.Trim().ToString());
                             // TODO 3 : Product ID Int olmayacak
-                            infoStockPosting.productId = Convert.ToInt32(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceProductId"].Value);
+                            infoStockPosting.productId = Convert.ToInt32(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceProductCode"].Value);
                             infoStockPosting.batchId = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvcmbSalesInvoiceBatch"].Value.ToString());
                             infoStockPosting.unitId = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoicembUnitName"].Value.ToString());
                             if (dgvSalesInvoice.Rows[inI].Cells["dgvcmbSalesInvoiceGodown"].Value != null && dgvSalesInvoice.Rows[inI].Cells["dgvcmbSalesInvoiceGodown"].Value.ToString() != string.Empty)
@@ -3724,7 +3735,7 @@ namespace LoginForm
                 cmbCashOrParty.SelectedValue = dtblMaster.Rows[0]["ledgerId"].ToString();
                 cmbSalesAccount.SelectedValue = dtblMaster.Rows[0]["salesAccount"].ToString();
                 cmbSalesMan.SelectedValue = dtblMaster.Rows[0]["employeeId"].ToString();
-                txtCustomer.Text = dtblMaster.Rows[0]["customerName"].ToString();
+                txtCustomerName.Text = dtblMaster.Rows[0]["customerName"].ToString();
                 txtTransportCompany.Text = dtblMaster.Rows[0]["transportationCompany"].ToString();
                 txtVehicleNo.Text = dtblMaster.Rows[0]["lrNo"].ToString();
                 txtNarration.Text = dtblMaster.Rows[0]["narration"].ToString();
@@ -3952,7 +3963,7 @@ namespace LoginForm
                 InfoSalesMaster.additionalCost = Convert.ToDecimal(lblLedgerTotalAmount.Text);
                 InfoSalesMaster.billDiscount = Convert.ToDecimal(txtBillDiscount.Text.Trim());
                 InfoSalesMaster.creditPeriod = Convert.ToInt32(txtCreditPeriod.Text.Trim().ToString());
-                InfoSalesMaster.customerName = txtCustomer.Text.Trim();
+                InfoSalesMaster.customerName = txtCustomerName.Text.Trim();
                 InfoSalesMaster.date = Convert.ToDateTime(txtDate.Text.ToString());
                 InfoSalesMaster.exchangeRateId = Convert.ToInt32(cmbCurrency.SelectedValue.ToString());
                 InfoSalesMaster.WorkerId = Convert.ToInt32(cmbSalesMan.SelectedValue.ToString());
@@ -5194,7 +5205,7 @@ namespace LoginForm
                             InfoAccountLedger = IME.AccountLedgers.Where(a => a.accountGroupID == deccmbCashOrParty).FirstOrDefault();
                         if (InfoAccountLedger!=null)
                         {
-                            txtCustomer.Text = InfoAccountLedger.ledgerName;
+                            //txtCustomerName.Text = InfoAccountLedger.ledgerName;
                             cmbPricingLevel.SelectedValue = InfoAccountLedger.pricinglevelId == 0 ? 1 : InfoAccountLedger.pricinglevelId;
                             if (InfoAccountLedger.pricinglevelId == 0)
                             {
@@ -5944,7 +5955,7 @@ namespace LoginForm
         {
             try
             {
-                if (dgvSalesInvoice.RowCount == 1 || dgvSalesInvoice.Rows[0].Cells["dgvtxtSalesInvoiceProductId"].Value.ToString() == string.Empty)
+                if (dgvSalesInvoice.RowCount == 1 || dgvSalesInvoice.Rows[0].Cells["dgvtxtSalesInvoiceProductCode"].Value == null)
                 {
                     Messages.InformationMessage("Can't save Sales Invoice without atleast one product with complete details");
                     dgvSalesInvoice.Focus();
@@ -7165,5 +7176,42 @@ namespace LoginForm
             }
         }
         #endregion
+
+        private void txtCustomer_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            CustomerSearchInput();
+        }
+
+        public void CustomerSearchInput()
+        {
+            classQuotationAdd.customersearchID = txtCustomer.Text;
+            classQuotationAdd.customersearchname = "";
+            FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch(customer);
+            this.Enabled = false;
+            var result = form.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                customer = form.customer;
+                //cbWorkers.DataSource = customer.CustomerWorkers.ToList();
+                //cbWorkers.DisplayMember = "cw_name";
+                //cbWorkers.ValueMember = "ID";
+            }
+            this.Enabled = true;
+            fillCustomer();
+        }
+
+        private void fillCustomer()
+        {
+
+            txtCustomer.Text = classQuotationAdd.customerID;
+            txtCustomerName.Text = classQuotationAdd.customername;
+
+            var c = IME.Customers.Where(a => a.ID == txtCustomer.Text).FirstOrDefault();
+            if (c != null)
+            {
+                txtCustomerName.Text = c.c_name; 
+            }
+        }
     }
 }
