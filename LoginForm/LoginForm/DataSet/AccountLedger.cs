@@ -40,6 +40,7 @@ namespace LoginForm.DataSet
             this.RejectionOutMasters = new HashSet<RejectionOutMaster>();
             this.SalaryVoucherMasters = new HashSet<SalaryVoucherMaster>();
             this.SaleOrders = new HashSet<SaleOrder>();
+            this.SalesMasters = new HashSet<SalesMaster>();
         }
     
         public decimal ledgerId { get; set; }
@@ -117,5 +118,7 @@ namespace LoginForm.DataSet
         public virtual ICollection<SalaryVoucherMaster> SalaryVoucherMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SaleOrder> SaleOrders { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SalesMaster> SalesMasters { get; set; }
     }
 }

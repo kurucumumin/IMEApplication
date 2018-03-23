@@ -18,7 +18,6 @@ namespace LoginForm.DataSet
         public LedgerPosting()
         {
             this.BankReconciliations = new HashSet<BankReconciliation>();
-            this.SalesMasters = new HashSet<SalesMaster>();
             this.ServiceMasters = new HashSet<ServiceMaster>();
         }
     
@@ -43,8 +42,6 @@ namespace LoginForm.DataSet
         public virtual ICollection<BankReconciliation> BankReconciliations { get; set; }
         public virtual FinancialYear FinancialYear { get; set; }
         public virtual VoucherType VoucherType { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SalesMaster> SalesMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ServiceMaster> ServiceMasters { get; set; }
     }
