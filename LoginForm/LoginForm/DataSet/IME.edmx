@@ -5506,7 +5506,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SalesMast__ledge__168F36CB">
+        <Association Name="FK__SalesMast__ledge__64F7DB37">
           <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
           <End Role="SalesMaster" Type="Self.SalesMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -10243,7 +10243,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="FinancialYear" EntitySet="FinancialYear" />
             <End Role="SalesMaster" EntitySet="SalesMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__SalesMast__ledge__168F36CB" Association="Self.FK__SalesMast__ledge__168F36CB">
+          <AssociationSet Name="FK__SalesMast__ledge__64F7DB37" Association="Self.FK__SalesMast__ledge__64F7DB37">
             <End Role="AccountLedger" EntitySet="AccountLedger" />
             <End Role="SalesMaster" EntitySet="SalesMaster" />
           </AssociationSet>
@@ -10708,7 +10708,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <NavigationProperty Name="RejectionOutMasters" Relationship="Self.FK__Rejection__ledge__6A3BB341" FromRole="AccountLedger" ToRole="RejectionOutMaster" />
           <NavigationProperty Name="SalaryVoucherMasters" Relationship="Self.FK__SalaryVou__ledge__76177A41" FromRole="AccountLedger" ToRole="SalaryVoucherMaster" />
           <NavigationProperty Name="SaleOrders" Relationship="Self.FK__SaleOrder__ledge__4A03EDD9" FromRole="AccountLedger" ToRole="SaleOrder" />
-          <NavigationProperty Name="SalesMasters" Relationship="Self.FK__SalesMast__ledge__168F36CB" FromRole="AccountLedger" ToRole="SalesMaster" />
+          <NavigationProperty Name="SalesMasters" Relationship="Self.FK__SalesMast__ledge__64F7DB37" FromRole="AccountLedger" ToRole="SalesMaster" />
         </EntityType>
         <EntityType Name="AdvancePayment">
           <Key>
@@ -12846,7 +12846,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="POS" Type="Boolean" />
           <Property Name="counterId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="financialYearId" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="AccountLedger" Relationship="Self.FK__SalesMast__ledge__168F36CB" FromRole="SalesMaster" ToRole="AccountLedger" />
+          <NavigationProperty Name="AccountLedger" Relationship="Self.FK__SalesMast__ledge__64F7DB37" FromRole="SalesMaster" ToRole="AccountLedger" />
           <NavigationProperty Name="DeliveryNoteMaster" Relationship="Self.FK__SalesMast__deliv__74EE4BDE" FromRole="SalesMaster" ToRole="DeliveryNoteMaster" />
           <NavigationProperty Name="ExchangeRate" Relationship="Self.FK__SalesMast__excha__76D69450" FromRole="SalesMaster" ToRole="ExchangeRate" />
           <NavigationProperty Name="FinancialYear" Relationship="Self.FK__SalesMast__finan__7AA72534" FromRole="SalesMaster" ToRole="FinancialYear" />
@@ -13972,7 +13972,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SalesMast__ledge__168F36CB">
+        <Association Name="FK__SalesMast__ledge__64F7DB37">
           <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
           <End Role="SalesMaster" Type="Self.SalesMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -18194,7 +18194,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
             <End Role="SaleOrder" EntitySet="SaleOrders" />
           </AssociationSet>
-          <AssociationSet Name="FK__SalesMast__ledge__168F36CB" Association="Self.FK__SalesMast__ledge__168F36CB">
+          <AssociationSet Name="FK__SalesMast__ledge__64F7DB37" Association="Self.FK__SalesMast__ledge__64F7DB37">
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
             <End Role="SalesMaster" EntitySet="SalesMasters" />
           </AssociationSet>

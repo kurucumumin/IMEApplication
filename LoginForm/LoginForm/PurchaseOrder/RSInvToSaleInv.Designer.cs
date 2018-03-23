@@ -57,6 +57,7 @@
             // 
             // dgSaleInvoice
             // 
+            this.dgSaleInvoice.AllowUserToOrderColumns = true;
             this.dgSaleInvoice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgSaleInvoice.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CheckBox,

@@ -7199,14 +7199,6 @@ namespace LoginForm
             }
         }
         #endregion
-
-private void btnTakeFromRSInvoice_Click(object sender, EventArgs e)
-{
-    RSInvToSaleInv frm = new RSInvToSaleInv();
-    frm.Show();
-    this.Close();
-  }
-
         private void txtCustomer_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             CustomerSearchInput();
@@ -7242,6 +7234,14 @@ private void btnTakeFromRSInvoice_Click(object sender, EventArgs e)
             {
                 txtCustomerName.Text = c.c_name;
             }
+        }
+
+
+        private void btnTakeFromRSInvoice_Click(object sender, EventArgs e)
+        {
+            RSInvToSaleInv frm = new RSInvToSaleInv();
+            frm.Show();
+            this.Close();
         }
     }
 }

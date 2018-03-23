@@ -72,20 +72,22 @@ namespace LoginForm.PurchaseOrder
 
         private void btnSelectAll_Click(object sender, EventArgs e)
         {
-
-                for (int i = 0; i < dgSaleInvoice.RowCount; i++)
-                {
-                dgSaleInvoice.Rows[i].Cells[0].Selected = true;
-                }
-
+            foreach (DataGridViewRow row in dgSaleInvoice.Rows)
+            {
+                DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[0];
+                chk.Value = true;
+            }
         }
 
         private void btnClearAll_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < dgSaleInvoice.RowCount; i++)
+
+            foreach (DataGridViewRow row in dgSaleInvoice.Rows)
             {
-                dgSaleInvoice.Rows[i].Cells[0].Selected = false;
+                DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[0];
+                chk.Value = true;
             }
+            
         }
 
         private void btnSaleInvoice_Click(object sender, EventArgs e)

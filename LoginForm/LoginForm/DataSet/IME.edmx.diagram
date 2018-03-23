@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="06d1f76e7c6443298547aec646f212a5" Name="Diagram1">
+      <Diagram DiagramId="9652ca80678c4b7f9a96d8cd6a90eea7" Name="Diagram1">
         <EntityTypeShape EntityType="IMEModel.AccountGroup" Width="1.5" PointX="9.75" PointY="61" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.AccountLedger" Width="1.5" PointX="12" PointY="59.875" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.AdvancePayment" Width="1.5" PointX="20.25" PointY="85.375" IsExpanded="true" />
@@ -180,7 +180,7 @@
         <AssociationConnector Association="IMEModel.FK__Rejection__ledge__6A3BB341" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__SalaryVou__ledge__76177A41" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__SaleOrder__ledge__4A03EDD9" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__SalesMast__ledge__168F36CB" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__SalesMast__ledge__64F7DB37" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__AdvancePa__emplo__4D4A6ED8" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__AdvancePa__finan__4E3E9311" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__AdvancePa__vouch__5026DB83" ManuallyRouted="false" />
