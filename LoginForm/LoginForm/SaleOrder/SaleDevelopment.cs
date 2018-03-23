@@ -325,6 +325,7 @@ namespace LoginForm.nmSaleOrder
         {
             CustomerCode.Text = customer.ID;
             txtCustomerName.Text = customer.c_name;
+            cbCurrency.SelectedIndex = cbCurrency.FindStringExact(customer.CurrNameQuo);
             List<CustomerAddress> addressList = customer.CustomerAddresses.ToList();
             if (addressList.Count != 0)
             {
@@ -3140,6 +3141,7 @@ namespace LoginForm.nmSaleOrder
             cbCurrency.DataSource = IME.Currencies.ToList();
             cbCurrency.DisplayMember = "currencyName";
             cbCurrency.ValueMember = "currencyID";
+            cbCurrency.SelectedIndex = 0;
             GetAllMargin();
         }
 
