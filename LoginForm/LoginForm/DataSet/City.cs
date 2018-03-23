@@ -25,7 +25,12 @@ namespace LoginForm.DataSet
         public int ID { get; set; }
         public string City_name { get; set; }
         public Nullable<int> CountryID { get; set; }
-    
+
+        public override string ToString()
+        {
+            return City_name.ToString();
+        }
+
         public virtual Country Country { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CustomerAddress> CustomerAddresses { get; set; }

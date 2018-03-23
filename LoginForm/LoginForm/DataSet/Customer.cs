@@ -56,7 +56,12 @@ namespace LoginForm.DataSet
         public Nullable<int> subcategoryID { get; set; }
         public string ThirdPartyCode { get; set; }
         public string Capital { get; set; }
-    
+
+        public override string ToString()
+        {
+            return c_name.ToString();
+        }
+        
         public virtual Worker Worker { get; set; }
         public virtual CustomerCategory CustomerCategory { get; set; }
         public virtual Note Note { get; set; }
