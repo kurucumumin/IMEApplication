@@ -78,14 +78,12 @@ namespace LoginForm.Account.Services
 
 
         }
-        public string UnitConversionCheck(decimal decUnitId, decimal decProductId)
+        public string UnitConversionCheck(decimal decUnitId, string decProductId)
         {
-            IMEEntities IME = new IMEEntities();
             string strQuantities = string.Empty;
             try
             {
-                ProductViewAll_Result aa = new ProductViewAll_Result();
-                strQuantities = IME.UnitConvertions.Where(x => Convert.ToDecimal(x.productId) == decProductId && x.unitId == decUnitId).FirstOrDefault().quantities;
+                strQuantities = new IMEEntities().UnitConversionCheck(decUnitId, decProductId).FirstOrDefault();
             }
             catch (Exception ex)
             {

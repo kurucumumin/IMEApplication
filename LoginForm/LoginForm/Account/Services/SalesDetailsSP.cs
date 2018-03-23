@@ -416,11 +416,16 @@ namespace LoginForm.Account.Services
         public void SalesDetailsAdd(SalesDetail s)
         {
             IMEEntities IME = new IMEEntities();
+            decimal? quoID = null;
+            if(s.quotationDetailsId != null)
+            {
+                quoID = Convert.ToDecimal(s.quotationDetailsId);
+            }
 
             IME.SalesDetailsAdd(s.salesMasterId,
                 s.deliveryNoteDetailsId,
                 s.orderDetailsId,
-                Convert.ToDecimal(s.quotationDetailsId),
+                quoID,
                 s.productId,
                 s.qty,
                 s.rate,

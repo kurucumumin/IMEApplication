@@ -1769,7 +1769,7 @@ namespace LoginForm
                             infoStockPosting.godownId = infoPurchaseDetails.godownId;
                             infoStockPosting.inwardQty = infoPurchaseDetails.qty; /// spUnitConvertion.UnitConversionRateByUnitConversionId(infoPurchaseDetails.UnitConversionId);
                             infoStockPosting.outwardQty = 0;
-                            infoStockPosting.productId = Convert.ToDecimal(infoPurchaseDetails.productId);
+                            infoStockPosting.productId = infoPurchaseDetails.productId;
                             infoStockPosting.rackId = infoPurchaseDetails.rackId;
                             infoStockPosting.rate = infoPurchaseDetails.rate;
                             infoStockPosting.unitId = infoPurchaseDetails.unitId;
@@ -2105,7 +2105,7 @@ namespace LoginForm
                             infoStockPosting.godownId = infoPurchaseDetails.godownId;
                             infoStockPosting.inwardQty = infoPurchaseDetails.qty; /// spUnitConvertion.UnitConversionRateByUnitConversionId(infoPurchaseDetails.UnitConversionId);
                             infoStockPosting.outwardQty = 0;
-                            infoStockPosting.productId = Convert.ToDecimal(infoPurchaseDetails.productId);
+                            infoStockPosting.productId = infoPurchaseDetails.productId;
                             infoStockPosting.rackId = infoPurchaseDetails.rackId;
                             infoStockPosting.rate = infoPurchaseDetails.rate;
                             infoStockPosting.unitId = infoPurchaseDetails.unitId;
@@ -4011,7 +4011,7 @@ namespace LoginForm
             decimal decOldConversionRate = 0;
             decimal decNewConversionRate = 0;
             decimal decUnitId = 0;
-            decimal decProductId = 0;
+            string decProductId = String.Empty;
             UnitConvertionSP spUnitConvertion = new UnitConvertionSP();
             try
             {
@@ -4037,7 +4037,7 @@ namespace LoginForm
                                     decOldUnitConversionId = Convert.ToDecimal(dgvProductDetails.CurrentRow.Cells["dgvtxtUnitConversionId"].Value.ToString());
                                     decOldConversionRate = spUnitConvertion.UnitConversionRateByUnitConversionId(decOldUnitConversionId);
                                     decUnitId = Convert.ToDecimal(dgvProductDetails.CurrentRow.Cells["dgvcmbUnit"].Value.ToString());
-                                    decProductId = Convert.ToDecimal(dgvProductDetails.CurrentRow.Cells["dgvtxtProductId"].Value.ToString());
+                                    decProductId = dgvProductDetails.CurrentRow.Cells["dgvtxtProductId"].Value.ToString();
                                     decNewUnitConversionId = spUnitConvertion.UnitconversionIdViewByUnitIdAndProductId(decUnitId, decProductId);
                                     decNewConversionRate = spUnitConvertion.UnitConversionRateByUnitConversionId(decNewUnitConversionId);
                                     dgvProductDetails.CurrentRow.Cells["dgvtxtUnitConversionId"].Value = decNewUnitConversionId;

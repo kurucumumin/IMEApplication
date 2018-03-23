@@ -482,7 +482,7 @@ namespace LoginForm.Account.Services
                 salesmasterinfo.quotationNoId,
                 salesmasterinfo.POS,
                 salesmasterinfo.counterId,
-                salesmasterinfo.financialYearId);
+                salesmasterinfo.financialYearId).FirstOrDefault();
 
                 if (obj != null)
                 {
