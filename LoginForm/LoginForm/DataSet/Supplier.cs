@@ -41,7 +41,12 @@ namespace LoginForm.DataSet
         public Nullable<int> SubCategoryID { get; set; }
         public Nullable<decimal> DefaultCurrency { get; set; }
         public Nullable<int> AccountNoteID { get; set; }
-    
+        public override string ToString()
+        {
+            return s_name.ToString();
+        }
+
+
         public virtual Currency Currency { get; set; }
         public virtual Note Note { get; set; }
         public virtual Note Note1 { get; set; }

@@ -25,6 +25,11 @@ namespace LoginForm.DataSet
         public string areaName { get; set; }
         public string narration { get; set; }
         public Nullable<System.DateTime> extraDate { get; set; }
+
+        public override string ToString()
+        {
+            return areaName;
+        }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AccountLedger> AccountLedgers { get; set; }

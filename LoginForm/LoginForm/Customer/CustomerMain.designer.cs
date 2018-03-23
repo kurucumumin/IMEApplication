@@ -173,7 +173,7 @@
             this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(939, 372);
+            this.tabControl1.Size = new System.Drawing.Size(1244, 372);
             this.tabControl1.TabIndex = 0;
             // 
             // tab_company
@@ -214,7 +214,7 @@
             this.tab_company.Margin = new System.Windows.Forms.Padding(4);
             this.tab_company.Name = "tab_company";
             this.tab_company.Padding = new System.Windows.Forms.Padding(4);
-            this.tab_company.Size = new System.Drawing.Size(931, 339);
+            this.tab_company.Size = new System.Drawing.Size(1236, 339);
             this.tab_company.TabIndex = 0;
             this.tab_company.Text = "Company Info";
             this.tab_company.UseVisualStyleBackColor = true;
@@ -1504,13 +1504,14 @@
             this.CustomerDataGrid.AllowUserToDeleteRows = false;
             this.CustomerDataGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.CustomerDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.CustomerDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CustomerDataGrid.Location = new System.Drawing.Point(9, 464);
             this.CustomerDataGrid.Margin = new System.Windows.Forms.Padding(4);
             this.CustomerDataGrid.MultiSelect = false;
             this.CustomerDataGrid.Name = "CustomerDataGrid";
             this.CustomerDataGrid.ReadOnly = true;
             this.CustomerDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.CustomerDataGrid.Size = new System.Drawing.Size(939, 350);
+            this.CustomerDataGrid.Size = new System.Drawing.Size(1244, 350);
             this.CustomerDataGrid.TabIndex = 56;
             this.CustomerDataGrid.TabStop = false;
             this.CustomerDataGrid.SelectionChanged += new System.EventHandler(this.CustomerDataGrid_SelectionChanged);
@@ -1588,7 +1589,7 @@
             this.tableMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 380F));
             this.tableMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tableMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableMain.Size = new System.Drawing.Size(957, 822);
+            this.tableMain.Size = new System.Drawing.Size(1262, 822);
             this.tableMain.TabIndex = 6;
             // 
             // panel1
@@ -1602,14 +1603,14 @@
             this.panel1.Location = new System.Drawing.Point(8, 387);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(941, 71);
+            this.panel1.Size = new System.Drawing.Size(1246, 71);
             this.panel1.TabIndex = 2;
             // 
             // CustomerMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(957, 822);
+            this.ClientSize = new System.Drawing.Size(1262, 822);
             this.Controls.Add(this.tableMain);
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4);
