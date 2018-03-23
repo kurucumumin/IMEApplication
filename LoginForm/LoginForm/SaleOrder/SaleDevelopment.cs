@@ -129,7 +129,7 @@ namespace LoginForm.nmSaleOrder
             cbWorkers.DataSource = IME.CustomerWorkers.Where(a => a.customerID == customer.ID).ToList();
             cbWorkers.DisplayMember = "cw_name";
             cbWorkers.ValueMember = "ID";
-            if (customer.MainContactID != null) cbWorkers.SelectedIndex = (int)customer.MainContactID;
+            if (customer.MainContactID != null) cbWorkers.SelectedValue = (int)customer.MainContactID;
             CustomerCode.Enabled = false;
             txtCustomerName.Enabled = false;
             LowMarginLimit = (Decimal)Utils.getManagement().LowMarginLimit;
