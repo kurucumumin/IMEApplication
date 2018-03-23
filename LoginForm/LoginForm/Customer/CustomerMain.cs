@@ -1736,10 +1736,7 @@ namespace LoginForm
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            //if (txtAdressTitle.Text != string.Empty || txtAdressTitle.Text != null)
-            //{
-            //    AddressType.Text = string.Empty;
-            //}
+            MakeTextUpperCase((TextBox)sender);
         }
 
         private void AddressType_SelectedIndexChanged(object sender, EventArgs e)
@@ -1814,6 +1811,31 @@ namespace LoginForm
             itemsClear();
             gridselectedindex = CustomerDataGrid.CurrentCell.RowIndex;
             customerClicksearch();
+        }
+
+        private void MakeTextUpperCase(TextBox txtBox)
+        {
+            txtBox.Text = txtBox.Text.ToUpperInvariant();
+        }
+
+        private void CustomerName_Leave(object sender, EventArgs e)
+        {
+            MakeTextUpperCase((TextBox)sender);
+        }
+
+        private void txtAdressTitle_Leave(object sender, EventArgs e)
+        {
+            MakeTextUpperCase((TextBox)sender);
+        }
+
+        private void ContactName_Leave(object sender, EventArgs e)
+        {
+            MakeTextUpperCase((TextBox)sender);
+        }
+
+        private void TaxOffice_Leave(object sender, EventArgs e)
+        {
+            MakeTextUpperCase((TextBox)sender);
         }
 
         //public static void EnableTab(TabPage page, bool enable)

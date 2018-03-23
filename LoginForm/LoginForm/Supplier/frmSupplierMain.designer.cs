@@ -328,6 +328,7 @@ namespace LoginForm
             this.txtTaxOffice.Name = "txtTaxOffice";
             this.txtTaxOffice.Size = new System.Drawing.Size(233, 26);
             this.txtTaxOffice.TabIndex = 9;
+            this.txtTaxOffice.Leave += new System.EventHandler(this.txtTaxOffice_Leave);
             // 
             // label25
             // 
@@ -384,6 +385,7 @@ namespace LoginForm
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(183, 26);
             this.txtName.TabIndex = 3;
+            this.txtName.Leave += new System.EventHandler(this.txtName_Leave);
             // 
             // cmbRepresentative
             // 
@@ -664,6 +666,7 @@ namespace LoginForm
             this.txtAddressTitle.Name = "txtAddressTitle";
             this.txtAddressTitle.Size = new System.Drawing.Size(132, 26);
             this.txtAddressTitle.TabIndex = 19;
+            this.txtAddressTitle.Leave += new System.EventHandler(this.txtAddressTitle_Leave);
             // 
             // label23
             // 
@@ -1138,6 +1141,7 @@ namespace LoginForm
             this.txtContactName.Name = "txtContactName";
             this.txtContactName.Size = new System.Drawing.Size(203, 26);
             this.txtContactName.TabIndex = 37;
+            this.txtContactName.Leave += new System.EventHandler(this.txtContactName_Leave);
             // 
             // cmbPosition
             // 

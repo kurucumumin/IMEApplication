@@ -1727,6 +1727,29 @@ namespace LoginForm
                     return false;
             }
         }
-        
+        private void MakeTextUpperCase(TextBox txtBox)
+        {
+            txtBox.Text = txtBox.Text.ToUpperInvariant();
+        }
+
+        private void txtName_Leave(object sender, EventArgs e)
+        {
+            MakeTextUpperCase((TextBox)sender);
+        }
+
+        private void txtTaxOffice_Leave(object sender, EventArgs e)
+        {
+            MakeTextUpperCase((TextBox)sender);
+        }
+
+        private void txtAddressTitle_Leave(object sender, EventArgs e)
+        {
+            MakeTextUpperCase((TextBox)sender);
+        }
+
+        private void txtContactName_Leave(object sender, EventArgs e)
+        {
+            MakeTextUpperCase((TextBox)sender);
+        }
     }
 }

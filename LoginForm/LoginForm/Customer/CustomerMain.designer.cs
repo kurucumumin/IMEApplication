@@ -496,6 +496,7 @@
             this.CustomerName.Name = "CustomerName";
             this.CustomerName.Size = new System.Drawing.Size(241, 26);
             this.CustomerName.TabIndex = 2;
+            this.CustomerName.Leave += new System.EventHandler(this.CustomerName_Leave);
             // 
             // Telephone
             // 
@@ -585,7 +586,7 @@
             this.tab_account.Margin = new System.Windows.Forms.Padding(4);
             this.tab_account.Name = "tab_account";
             this.tab_account.Padding = new System.Windows.Forms.Padding(4);
-            this.tab_account.Size = new System.Drawing.Size(931, 339);
+            this.tab_account.Size = new System.Drawing.Size(1236, 339);
             this.tab_account.TabIndex = 2;
             this.tab_account.Text = "Account";
             this.tab_account.UseVisualStyleBackColor = true;
@@ -818,6 +819,7 @@
             this.TaxOffice.Name = "TaxOffice";
             this.TaxOffice.Size = new System.Drawing.Size(231, 26);
             this.TaxOffice.TabIndex = 2;
+            this.TaxOffice.Leave += new System.EventHandler(this.TaxOffice_Leave);
             // 
             // label21
             // 
@@ -873,7 +875,7 @@
             this.tab_adresses.Location = new System.Drawing.Point(4, 29);
             this.tab_adresses.Margin = new System.Windows.Forms.Padding(4);
             this.tab_adresses.Name = "tab_adresses";
-            this.tab_adresses.Size = new System.Drawing.Size(931, 339);
+            this.tab_adresses.Size = new System.Drawing.Size(1236, 339);
             this.tab_adresses.TabIndex = 3;
             this.tab_adresses.Text = "Adresses";
             this.tab_adresses.UseVisualStyleBackColor = true;
@@ -1079,6 +1081,7 @@
             this.txtAdressTitle.Size = new System.Drawing.Size(200, 26);
             this.txtAdressTitle.TabIndex = 1;
             this.txtAdressTitle.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txtAdressTitle.Leave += new System.EventHandler(this.txtAdressTitle_Leave);
             // 
             // label41
             // 
@@ -1169,7 +1172,7 @@
             this.tab_contact.Location = new System.Drawing.Point(4, 29);
             this.tab_contact.Margin = new System.Windows.Forms.Padding(4);
             this.tab_contact.Name = "tab_contact";
-            this.tab_contact.Size = new System.Drawing.Size(931, 339);
+            this.tab_contact.Size = new System.Drawing.Size(1236, 339);
             this.tab_contact.TabIndex = 4;
             this.tab_contact.Text = "Contact";
             this.tab_contact.UseVisualStyleBackColor = true;
@@ -1424,6 +1427,7 @@
             this.ContactName.Name = "ContactName";
             this.ContactName.Size = new System.Drawing.Size(232, 26);
             this.ContactName.TabIndex = 4;
+            this.ContactName.Leave += new System.EventHandler(this.ContactName_Leave);
             // 
             // ContactEmail
             // 
