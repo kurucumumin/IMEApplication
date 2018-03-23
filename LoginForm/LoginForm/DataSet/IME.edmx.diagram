@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="06d1f76e7c6443298547aec646f212a5" Name="Diagram1">
+      <Diagram DiagramId="3f4222004ea6435c912b831e755be8ce" Name="Diagram1">
         <EntityTypeShape EntityType="IMEModel.AccountGroup" Width="1.5" PointX="9.75" PointY="61" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.AccountLedger" Width="1.5" PointX="12" PointY="59.875" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.AdvancePayment" Width="1.5" PointX="20.25" PointY="85.375" IsExpanded="true" />
@@ -180,7 +180,7 @@
         <AssociationConnector Association="IMEModel.FK__Rejection__ledge__6A3BB341" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__SalaryVou__ledge__76177A41" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__SaleOrder__ledge__4A03EDD9" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__SalesMast__ledge__168F36CB" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__SalesMast__ledge__308412F8" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__AdvancePa__emplo__4D4A6ED8" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__AdvancePa__finan__4E3E9311" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__AdvancePa__vouch__5026DB83" ManuallyRouted="false" />
@@ -206,7 +206,7 @@
         <AssociationConnector Association="IMEModel.FK__SupplierA__CityI__40C49C62" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__Town__CityID__2EFAF1E2" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__Company__currenc__0371755F" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__OtherBanc__Compa__457F2FDE" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__OtherBanc__Compa__1C7D1A4B" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK_ManagementCompany" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__CustomerW__Conta__4CC05EF3" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__ContraDet__contr__1269A02C" ManuallyRouted="false" />
@@ -252,8 +252,8 @@
         <AssociationConnector Association="IMEModel.FK__SaleOrder__Conta__1DD065E0" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__SaleOrder__Conta__1EC48A19" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__SaleOrder__Deliv__1FB8AE52" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__DailyAtte__daily__18E19391" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__DailyAtte__Worke__17ED6F58" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__DailyAtte__daily__1BBE003C" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__DailyAtte__Worke__1AC9DC03" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__DailySala__daily__08E035F2" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__DailySala__finan__0603C947" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__DailySala__suffi__041B80D5" ManuallyRouted="false" />
@@ -346,17 +346,17 @@
         <AssociationConnector Association="IMEModel.FK__MaterialR__userI__5634BA94" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__MaterialR__vouch__526429B0" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__Rejection__mater__68536ACF" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__MonthlySa__month__1E6562BD" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__MonthlySa__month__55EAA1D1" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__MonthlySa__emplo__5402595F" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__MonthlySa__salar__54F67D98" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__MonthlySa__month__04A590BA" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__MonthlySa__month__45B43A08" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__MonthlySa__emplo__43CBF196" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__MonthlySa__salar__44C015CF" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__Quotation__NoteF__0169315C" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__Quotation__NoteF__025D5595" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__Supplier__Accoun__552B87C2" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__Supplier__Suppli__09746778" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__SupplierW__suppl__73852659" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__Worker__WorkerNo__4BAC3F29" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__OrderAckn__Order__630F92C5" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__OrderAckn__Order__2E9BCA86" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__PartyBala__again__59B045BD" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__PartyBala__vouch__58BC2184" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__SalaryPac__payHe__577DE488" ManuallyRouted="false" />
@@ -447,7 +447,7 @@
         <AssociationConnector Association="IMEModel.FK__Rejection__suffi__666B225D" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__Rejection__userI__6B2FD77A" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__Rejection__vouch__675F4696" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__RS_Invoic__RS_In__5C629536" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__RS_Invoic__RS_In__27EECCF7" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__SalaryPac__salar__5689C04F" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__Worker__defaultP__587208C1" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__SalaryVou__salar__77FFC2B3" ManuallyRouted="false" />
