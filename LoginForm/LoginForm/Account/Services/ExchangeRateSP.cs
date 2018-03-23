@@ -41,17 +41,26 @@ namespace LoginForm.Account.Services
         public decimal ExchangeRateViewByExchangeRateId(decimal decExchangeRateId)
         {
             IMEEntities db = new IMEEntities();
-            decimal exchangeRate = 0;
+            decimal? exchangeRate = 0;
             try
             {
-                exchangeRate = Convert.ToDecimal(db.ExchangeRateViewByExchangeRateId(decExchangeRateId));
+                decimal? excID = decExchangeRateId;
+                if (db.ExchangeRateViewByExchangeRateId(decExchangeRateId)==null)
+                {
+                    exchangeRate = 0;
+                }
+                else
+                {
+                    exchangeRate = db.ExchangeRateViewByExchangeRateId(excID).FirstOrDefault();
+                }
+
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
-            return exchangeRate;
+            return (decimal)exchangeRate;
         }
 
         /// <summary>
