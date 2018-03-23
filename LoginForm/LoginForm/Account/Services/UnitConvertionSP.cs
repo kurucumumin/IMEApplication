@@ -114,13 +114,12 @@ namespace LoginForm.Account.Services
             return decConversionRate;
         }
 
-        public decimal UnitconversionIdViewByUnitIdAndProductId(decimal unitId, decimal productId)
+        public decimal UnitconversionIdViewByUnitIdAndProductId(decimal unitId, string productId)
         {
-            IMEEntities IME = new IMEEntities();
             decimal decValue = 0;
             try
             {
-                decValue = IME.UnitConvertions.Where(x => x.unitId == unitId && x.productId == productId.ToString()).FirstOrDefault().unitconversionId;
+                decValue = (decimal)new IMEEntities().UnitconversionIdViewByUnitIdAndProductId(unitId, productId).FirstOrDefault();
             }
             catch (Exception ex)
             {

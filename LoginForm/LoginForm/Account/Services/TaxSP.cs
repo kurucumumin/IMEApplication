@@ -49,34 +49,34 @@ namespace LoginForm.Account.Services
             return dtbl;
         }
 
-        public DataTable TaxViewAllByVoucherTypeIdApplicaleForProduct(decimal decVoucherTypeId)
-        {
-            DataTable dtbl = new DataTable();
+        //public DataTable TaxViewAllByVoucherTypeIdApplicaleForProduct(decimal decVoucherTypeId)
+        //{
+        //    DataTable dtbl = new DataTable();
 
-            IMEEntities IME = new IMEEntities();
+        //    IMEEntities IME = new IMEEntities();
 
-            var adaptor = (from TX in IME.Taxes
-                           from VTX in IME.VoucherTypeTaxes
-                           where (TX.TaxID == VTX.taxId) && (VTX.voucherTypeId == decVoucherTypeId) && (TX.ApplicationOn == "Product")
-                           && (TX.isActive == true)
-                           select new
-                           {
-                               TX.TaxID,
-                               TX.taxName
-                           }).ToList();
+        //    var adaptor = (from TX in IME.Taxes
+        //                   from VTX in IME.VoucherTypeTaxes
+        //                   where (TX.TaxID == VTX.taxId) && (VTX.voucherTypeId == decVoucherTypeId) && (TX.ApplicationOn == "Product")
+        //                   && (TX.isActive == true)
+        //                   select new
+        //                   {
+        //                       TX.TaxID,
+        //                       TX.taxName
+        //                   }).ToList();
 
-            dtbl.Columns.Add("TaxID");
-            dtbl.Columns.Add("taxName");
-            foreach (var item in adaptor)
-            {
-                var row = dtbl.NewRow();
-                row["TaxID"] = item.TaxID;
-                row["taxName"] = item.taxName;
-                dtbl.Rows.Add(row);
-            }
+        //    dtbl.Columns.Add("TaxID");
+        //    dtbl.Columns.Add("taxName");
+        //    foreach (var item in adaptor)
+        //    {
+        //        var row = dtbl.NewRow();
+        //        row["TaxID"] = item.TaxID;
+        //        row["taxName"] = item.taxName;
+        //        dtbl.Rows.Add(row);
+        //    }
 
-            return dtbl;
-        }
+        //    return dtbl;
+        //}
 
         public DataTable TaxViewAllByVoucherTypeIdForPurchaseInvoice(decimal decVoucherTypeId)
         {
@@ -559,34 +559,34 @@ namespace LoginForm.Account.Services
             return dtbl;
         }
 
-        //public DataTable TaxViewAllByVoucherTypeIdApplicaleForProduct(decimal decVoucherTypeId)
-        //{
-        //    IMEEntities IME = new IMEEntities();
-        //    DataTable dtbl = new DataTable();
-        //    try
-        //    {
-        //        var adaptor = IME.TaxViewAllByVoucherTypeIdApplicaleForProduct(decVoucherTypeId);
+        public DataTable TaxViewAllByVoucherTypeIdApplicaleForProduct(decimal decVoucherTypeId)
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = IME.TaxViewAllByVoucherTypeIdApplicaleForProduct(decVoucherTypeId).ToList();
 
-        //        dtbl.Columns.Add("taxId");
-        //        dtbl.Columns.Add("taxName");
+                dtbl.Columns.Add("taxId");
+                dtbl.Columns.Add("taxName");
 
-        //        foreach (var item in adaptor)
-        //        {
-        //            var row = dtbl.NewRow();
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
 
-        //            row["taxId"] = item.taxId;
-        //            row["taxName"] = item.taxName;
+                    row["taxId"] = item.taxId;
+                    row["taxName"] = item.taxName;
 
 
-        //            dtbl.Rows.Add(row);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.ToString());
-        //    }
-        //    return dtbl;
-        //}
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
 
         //public DataTable TaxViewAllByVoucherTypeId(decimal decVoucherTypeId)
         //{

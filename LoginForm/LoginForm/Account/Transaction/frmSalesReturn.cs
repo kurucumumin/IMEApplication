@@ -1879,7 +1879,7 @@ namespace LoginForm
                         if (DGVSalesReturn.Cells["productId"].Value != null && DGVSalesReturn.Cells["productId"].Value.ToString() != string.Empty)
                         {
                             infoSalesReturnDetailsInfo.salesReturnMasterId = decSalesReturnMasterId;
-                            infoSalesReturnDetailsInfo.productId = Convert.ToDecimal(DGVSalesReturn.Cells["productId"].Value.ToString());
+                            infoSalesReturnDetailsInfo.productId = DGVSalesReturn.Cells["productId"].Value.ToString();
                             if (DGVSalesReturn.Cells["dgvTextQty"].Value != null)
                             {
                                 infoSalesReturnDetailsInfo.qty = Convert.ToDecimal(DGVSalesReturn.Cells["dgvTextQty"].Value.ToString());
@@ -2017,7 +2017,7 @@ namespace LoginForm
                             infoStockPosting.unitId = infoSalesReturnDetailsInfo.unitId;
                             infoStockPosting.godownId = infoSalesReturnDetailsInfo.godownId;
                             infoStockPosting.rackId = infoSalesReturnDetailsInfo.rackId;
-                            if (infoSalesReturnDetailsInfo.productId != 0 && infoSalesReturnDetailsInfo.unitId != 0)
+                            if (infoSalesReturnDetailsInfo.productId != "" && infoSalesReturnDetailsInfo.unitId != 0)
                             {
                                 decimal decUnitConvertionRate = 0;
                                 infoProduct = spProduct.ProductView(infoSalesReturnDetailsInfo.productId.ToString());
@@ -2026,7 +2026,7 @@ namespace LoginForm
                                 {
                                     decUnitConvertionRate = Convert.ToDecimal(drowDetails["conversionRate"].ToString());
                                 }  
-                                strQuantities = spUnit.UnitConversionCheck((decimal)infoSalesReturnDetailsInfo.unitId, (decimal)infoSalesReturnDetailsInfo.productId);
+                                strQuantities = spUnit.UnitConversionCheck((decimal)infoSalesReturnDetailsInfo.unitId, infoSalesReturnDetailsInfo.productId);
                                 if (strQuantities != string.Empty)
                                 {
                                     infoStockPosting.inwardQty = infoSalesReturnDetailsInfo.qty / decUnitConvertionRate;
