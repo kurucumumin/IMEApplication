@@ -3061,7 +3061,8 @@ namespace LoginForm
                             InfoSalesDetails.slNo = Convert.ToInt32(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceSlno"].Value.ToString());
                             InfoSalesDetails.productId = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceProductCode"].Value.ToString());
                             InfoSalesDetails.qty = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceQty"].Value.ToString());
-                            InfoSalesDetails.rate = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceRate"].Value.ToString());
+                            //TODO: Rate olayını düzeltmemiz lazım.
+                            InfoSalesDetails.rate = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceRate"].Value);
                             try{InfoSalesDetails.unitId = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoicembUnitName"].Value.ToString()); } catch {}
                             try{ InfoSalesDetails.unitConversionId = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceUnitConversionId"].Value.ToString()); }  catch {}
                             InfoSalesDetails.discount = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceDiscountAmount"].Value.ToString());
@@ -3092,7 +3093,8 @@ namespace LoginForm
                                 InfoSalesDetails.taxId = 1;
                                 InfoSalesDetails.taxAmount = 0;
                             }
-                            InfoSalesDetails.grossAmount = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceGrossValue"].Value.ToString());
+                            //TODO: GrossAmount olayını düzeltmemiz lazım.
+                            InfoSalesDetails.grossAmount = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceGrossValue"].Value);
                             InfoSalesDetails.netAmount = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceNetAmount"].Value.ToString());
                             InfoSalesDetails.amount = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceAmount"].Value.ToString());
                             spSalesDetails.SalesDetailsAdd(InfoSalesDetails);
@@ -3119,7 +3121,8 @@ namespace LoginForm
                             {
                                 infoStockPosting.rackId = null;
                             }
-                            infoStockPosting.rate = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceRate"].Value.ToString());
+                            // TODO 3 : Rate
+                            infoStockPosting.rate = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceRate"].Value);
                             infoStockPosting.financialYearId = (decimal)Utils.getManagement().CurrentFinancialYear;
                             if (dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceDeliveryNoteDetailsId"].Value != null)
                             {
@@ -3261,6 +3264,7 @@ namespace LoginForm
         /// </summary>
         public void ledgerPostingAdd()
         {
+            IMEEntities IME = new IMEEntities();
             LedgerPosting infoLedgerPosting = new LedgerPosting();
             SalesMaster InfoSalesMaster = new SalesMaster();
             LedgerPostingSP spLedgerPosting = new LedgerPostingSP();
@@ -3272,7 +3276,7 @@ namespace LoginForm
             {
                 decimalGrantTotal = Convert.ToDecimal(txtGrandTotal.Text.Trim());
 
-                decRate = (decimal)IME.ExchangeRates.Where(a => a.exchangeRateID == Convert.ToInt32(cmbCurrency.SelectedValue.ToString())).FirstOrDefault().rate;
+                decRate = spExchangeRate.ExchangeRateViewByExchangeRateId(Convert.ToDecimal(cmbCurrency.SelectedValue.ToString()));
                 decimalGrantTotal = decimalGrantTotal * decRate;
                 infoLedgerPosting.debit = decimalGrantTotal;
                 infoLedgerPosting.credit = 0;
@@ -3287,7 +3291,7 @@ namespace LoginForm
                 infoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                 spLedgerPosting.LedgerPostingAdd(infoLedgerPosting);
                 decTotalAmount = TotalNetAmountForLedgerPosting();
-                decRate = (decimal)IME.ExchangeRates.Where(a => a.exchangeRateID == Convert.ToInt32(cmbCurrency.SelectedValue.ToString())).FirstOrDefault().rate;
+                decRate = spExchangeRate.ExchangeRateViewByExchangeRateId(Convert.ToDecimal(cmbCurrency.SelectedValue.ToString()));
                 decTotalAmount = decTotalAmount * decRate;
                 infoLedgerPosting.debit = 0;
                 infoLedgerPosting.credit = decTotalAmount;
@@ -3303,7 +3307,7 @@ namespace LoginForm
                 spLedgerPosting.LedgerPostingAdd(infoLedgerPosting);
                 decimal decBillDis = 0;
                 decBillDis = Convert.ToDecimal(txtBillDiscount.Text.Trim().ToString());
-                decRate = (decimal)IME.ExchangeRates.Where(a => a.exchangeRateID == Convert.ToInt32(cmbCurrency.SelectedValue.ToString())).FirstOrDefault().rate;
+                decRate = spExchangeRate.ExchangeRateViewByExchangeRateId(Convert.ToDecimal(cmbCurrency.SelectedValue.ToString()));
                 decBillDis = decBillDis * decRate;
                 if (decBillDis > 0)
                 {
@@ -3328,7 +3332,7 @@ namespace LoginForm
                         {
                             decimal decTaxAmount = 0;
                             decTaxAmount = Convert.ToDecimal(dgvrow.Cells["dgvtxtTtaxAmount"].Value.ToString());
-                            decRate = (decimal)IME.ExchangeRates.Where(a => a.exchangeRateID == Convert.ToInt32(cmbCurrency.SelectedValue.ToString())).FirstOrDefault().rate;
+                            decRate = spExchangeRate.ExchangeRateViewByExchangeRateId(Convert.ToDecimal(cmbCurrency.SelectedValue.ToString()));
                             decTaxAmount = decTaxAmount * decRate;
                             if (decTaxAmount > 0)
                             {
@@ -3356,7 +3360,7 @@ namespace LoginForm
                         {
                             decimal decAmount = 0;
                             decAmount = Convert.ToDecimal(dgvrow.Cells["dgvtxtAdditionalCoastledgerAmount"].Value.ToString());
-                            decRate = (decimal)IME.ExchangeRates.Where(a => a.exchangeRateID == Convert.ToInt32(cmbCurrency.SelectedValue.ToString())).FirstOrDefault().rate;
+                            decRate = spExchangeRate.ExchangeRateViewByExchangeRateId(Convert.ToDecimal(cmbCurrency.SelectedValue.ToString()));
                             decAmount = decAmount * decRate;
                             if (decAmount > 0)
                             {
@@ -3379,7 +3383,7 @@ namespace LoginForm
                     decBankOrCashId = Convert.ToDecimal(cmbCashOrbank.SelectedValue.ToString());
                     decimal decAmountForCr = 0;
                     decAmountForCr = Convert.ToDecimal(lblLedgerTotalAmount.Text.ToString());
-                    decRate = (decimal)IME.ExchangeRates.Where(a => a.exchangeRateID == Convert.ToInt32(cmbCurrency.SelectedValue.ToString())).FirstOrDefault().rate;
+                    decRate = spExchangeRate.ExchangeRateViewByExchangeRateId(Convert.ToDecimal(cmbCurrency.SelectedValue.ToString()));
                     decAmountForCr = decAmountForCr * decRate;
                     if (decAmountForCr > 0)
                     {
@@ -3405,7 +3409,7 @@ namespace LoginForm
                         {
                             decimal decAmount = 0;
                             decAmount = Convert.ToDecimal(dgvrow.Cells["dgvtxtAdditionalCoastledgerAmount"].Value.ToString());
-                            decRate = (decimal)IME.ExchangeRates.Where(a => a.exchangeRateID == Convert.ToInt32(cmbCurrency.SelectedValue.ToString())).FirstOrDefault().rate;
+                            decRate = spExchangeRate.ExchangeRateViewByExchangeRateId(Convert.ToDecimal(cmbCurrency.SelectedValue.ToString()));
                             decAmount = decAmount * decRate;
                             if (decAmount > 0)
                             {
@@ -6269,8 +6273,8 @@ namespace LoginForm
                         }
                         else
                         {
-                            DataGridViewComboBoxCell dgvcmbUnitCell = (DataGridViewComboBoxCell)dgvSalesInvoice.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                            dgvcmbUnitCell.DataSource = null;
+                            DataGridViewTextBoxCell dgvcmbUnitCell = (DataGridViewTextBoxCell)dgvSalesInvoice.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                            dgvcmbUnitCell.Value = null;
                         }
                     }
                 }
