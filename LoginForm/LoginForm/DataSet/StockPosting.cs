@@ -19,7 +19,7 @@ namespace LoginForm.DataSet
         public Nullable<decimal> voucherTypeId { get; set; }
         public string voucherNo { get; set; }
         public string invoiceNo { get; set; }
-        public Nullable<decimal> productId { get; set; }
+        public string productId { get; set; }
         public Nullable<decimal> batchId { get; set; }
         public Nullable<decimal> unitId { get; set; }
         public Nullable<decimal> godownId { get; set; }
