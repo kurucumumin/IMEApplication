@@ -2220,11 +2220,15 @@ namespace LoginForm.QuotationModule
 
         private void GetCurrency(DateTime date)
         {
-            decimal cb = (cbCurrency.SelectedItem as Currency).currencyID;
-            curr = IME.ExchangeRates.Where(a => a.currencyId == cb).OrderByDescending(b => b.date).FirstOrDefault();
+            if (cbCurrency.SelectedItem != null)
+            {
+                decimal cb = (cbCurrency.SelectedItem as Currency).currencyID;
+                curr = IME.ExchangeRates.Where(a => a.currencyId == cb).OrderByDescending(b => b.date).FirstOrDefault();
 
-            if (CurrValue1 != CurrValue) CurrValue1 = CurrValue;
-            CurrValue = (decimal)curr.rate;
+                if (CurrValue1 != CurrValue) CurrValue1 = CurrValue;
+                CurrValue = (decimal)curr.rate;
+            }
+            
         }
 
         private void cbCurrency_SelectedIndexChanged(object sender, EventArgs e)

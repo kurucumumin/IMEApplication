@@ -129,7 +129,7 @@ namespace LoginForm.nmSaleOrder
             cbWorkers.DataSource = IME.CustomerWorkers.Where(a => a.customerID == customer.ID).ToList();
             cbWorkers.DisplayMember = "cw_name";
             cbWorkers.ValueMember = "ID";
-            if (customer.MainContactID != null) cbWorkers.SelectedIndex = (int)customer.MainContactID;
+            if (customer.MainContactID != null) cbWorkers.SelectedValue = (int)customer.MainContactID;
             CustomerCode.Enabled = false;
             txtCustomerName.Enabled = false;
             LowMarginLimit = (Decimal)Utils.getManagement().LowMarginLimit;
@@ -325,6 +325,7 @@ namespace LoginForm.nmSaleOrder
         {
             CustomerCode.Text = customer.ID;
             txtCustomerName.Text = customer.c_name;
+            cbCurrency.SelectedIndex = cbCurrency.FindStringExact(customer.CurrNameQuo);
             List<CustomerAddress> addressList = customer.CustomerAddresses.ToList();
             if (addressList.Count != 0)
             {
@@ -3140,6 +3141,7 @@ namespace LoginForm.nmSaleOrder
             cbCurrency.DataSource = IME.Currencies.ToList();
             cbCurrency.DisplayMember = "currencyName";
             cbCurrency.ValueMember = "currencyID";
+            cbCurrency.SelectedIndex = 0;
             GetAllMargin();
         }
 
