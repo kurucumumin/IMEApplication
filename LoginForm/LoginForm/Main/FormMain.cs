@@ -64,6 +64,7 @@ namespace LoginForm
         private void btnDevelopment_Click(object sender, EventArgs e)
         {
             OpenNavTabLvl1(controlDevelopment, (Button)sender);
+            controlDevelopment.parent = this;
         }
 
         private void FormMain_Load(object sender, EventArgs e)

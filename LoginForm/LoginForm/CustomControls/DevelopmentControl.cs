@@ -18,6 +18,8 @@ namespace LoginForm.CustomControls
         public DevelopmentControl()
         {
             InitializeComponent();
+            idleButtonColor = btnCustomer.BackColor;
+            pressedButtonColor = btnCustomer.FlatAppearance.MouseOverBackColor;
         }
 
         private void DevelopmentControl_Load(object sender, EventArgs e)
@@ -95,8 +97,7 @@ namespace LoginForm.CustomControls
 
         private void btnSalesOrder_Click(object sender, EventArgs e)
         {
-            FormSalesOrderMain form = new FormSalesOrderMain();
-            form.ShowDialog();
+            OpenSubNavigationMenu((Button)sender, parent.subControlSalesOrder);
         }
 
         private void btnPurchaseOrders_Click(object sender, EventArgs e)
@@ -105,6 +106,21 @@ namespace LoginForm.CustomControls
             form.ShowDialog();
         }
 
-        
+        private void OpenSubNavigationMenu(Button button, UserControl subControl)
+        {
+            FormMain parent = this.ParentForm as FormMain;
+            if (parent.CurrentNavTabLvl2 != null && parent.CurrentNavTabLvl2.Visible == true)
+            {
+                parent.CurrentNavTabLvl2.Visible = false;
+                parent.CurrentNavTabLvl2 = null;
+            }
+
+            ChangeToDefaultDesign();
+            pressedButton = button;
+
+            button.BackColor = pressedButtonColor;
+            subControl.Visible = true;
+            parent.CurrentNavTabLvl2 = subControl;
+        }
     }
 }
