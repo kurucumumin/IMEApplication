@@ -203,6 +203,7 @@ namespace LoginForm.QuotationModule
                 deliveryColumn.DataSource = IME.QuotationDeliveries.ToList();
                 deliveryColumn.DisplayMember = "DeliveryName";
                 deliveryColumn.ValueMember = "ID";
+                
             }
 
             if (txtCustomerName.Text == null || txtCustomerName.Text == "")
@@ -405,7 +406,6 @@ namespace LoginForm.QuotationModule
                 case 7://PRODUCT CODE
                     {
                         #region PRODUCT CODE
-
 
                         if (dgQuotationAddedItems.CurrentCell.Value != null)
                         {
