@@ -110,21 +110,23 @@ namespace LoginForm.PurchaseOrder
                                p.Reason
                            }).ToList();
 
-            foreach (var item in adapter)
-            {
-                int rowIndex = dgPurchase.Rows.Add();
-                DataGridViewRow row = dgPurchase.Rows[rowIndex];
+            //foreach (var item in adapter)
+            //{
+            //    int rowIndex = dgPurchase.Rows.Add();
+            //    DataGridViewRow row = dgPurchase.Rows[rowIndex];
 
-                row.Cells[purchaseOrderId.Index].Value = item.purchaseOrderId;
-                row.Cells[FicheNo.Index].Value = item.FicheNo;
-                row.Cells[PurchaseOrderDate.Index].Value = item.PurchaseOrderDate;
-                row.Cells[CustomerID.Index].Value = item.CustomerID;
-                row.Cells[c_name.Index].Value = item.c_name;
-                row.Cells[CameDate.Index].Value = item.CameDate;
-                row.Cells[Reason.Index].Value = item.Reason;
-            }
+            //    row.Cells[purchaseOrderId.Index].Value = item.purchaseOrderId;
+            //    row.Cells[FicheNo.Index].Value = item.FicheNo;
+            //    row.Cells[PurchaseOrderDate.Index].Value = item.PurchaseOrderDate;
+            //    row.Cells[CustomerID.Index].Value = item.CustomerID;
+            //    row.Cells[c_name.Index].Value = item.c_name;
+            //    row.Cells[CameDate.Index].Value = item.CameDate;
+            //    row.Cells[Reason.Index].Value = item.Reason;
+
+            //}
+            dgPurchase.DataSource = null;
+            dgPurchase.DataSource = adapter;
             #endregion
-
         }
 
         private void btnPurchaseOrders_Click(object sender, EventArgs e)
@@ -238,21 +240,21 @@ namespace LoginForm.PurchaseOrder
                                po.Reason
                            }).ToList();
 
-            foreach (var item in adapter)
-            {
-                int rowIndex = dgPurchase.Rows.Add();
-                DataGridViewRow row = dgPurchase.Rows[rowIndex];
+            //foreach (var item in adapter)
+            //{
+            //    int rowIndex = dgPurchase.Rows.Add();
+            //    DataGridViewRow row = dgPurchase.Rows[rowIndex];
 
-                row.Cells[purchaseOrderId.Index].Value = item.purchaseOrderId;
-                row.Cells[FicheNo.Index].Value = item.FicheNo;
-                row.Cells[PurchaseOrderDate.Index].Value = item.PurchaseOrderDate;
-                row.Cells[CustomerID.Index].Value = item.CustomerID;
-                row.Cells[c_name.Index].Value = item.c_name;
-                row.Cells[CameDate.Index].Value = item.CameDate;
-                row.Cells[Reason.Index].Value = item.Reason;
-            }
-
-           // dgPurchase.DataSource = adapter;
+            //    row.Cells[purchaseOrderId.Index].Value = item.purchaseOrderId;
+            //    row.Cells[FicheNo.Index].Value = item.FicheNo;
+            //    row.Cells[PurchaseOrderDate.Index].Value = item.PurchaseOrderDate;
+            //    row.Cells[CustomerID.Index].Value = item.CustomerID;
+            //    row.Cells[c_name.Index].Value = item.c_name;
+            //    row.Cells[CameDate.Index].Value = item.CameDate;
+            //    row.Cells[Reason.Index].Value = item.Reason;
+            //}
+            dgPurchase.DataSource = null;
+            dgPurchase.DataSource = adapter;
         }
 
         private void btnExcel_Click(object sender, EventArgs e)
