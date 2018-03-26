@@ -198,6 +198,7 @@ namespace LoginForm.PurchaseOrder
                 row.Cells[UPIME.Index].Value = item.Unit;
                 Decimal sonuc = Decimal.Parse(row.Cells[Quantity.Index].Value.ToString()) * Decimal.Parse(row.Cells[UPIME.Index].Value.ToString());
                 row.Cells[Total.Index].Value = sonuc.ToString();
+                row.Cells[SLC.Index].ReadOnly = true;
             }
             #endregion
 
