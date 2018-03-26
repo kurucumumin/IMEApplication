@@ -14,6 +14,7 @@ namespace LoginForm.QuotationModule
 {
     public partial class FormQuotationAdd : Form
     {
+        private static string QuoStatusActive = "Active";
         #region Definitions
         GetWorkerService GetWorkerService = new GetWorkerService();
         DataTable TotalCostList = new DataTable();
@@ -1638,6 +1639,7 @@ namespace LoginForm.QuotationModule
         private void QuotationSave()
         {
             DataSet.Quotation q = new DataSet.Quotation();
+            q.stats = QuoStatusActive;
             string qNo = txtQuotationNo.Text;
 
             if(IME.Quotations.Where(a => a.QuotationNo == qNo).FirstOrDefault() != null)
@@ -1711,6 +1713,7 @@ namespace LoginForm.QuotationModule
                 txtQuotationNo.Text = q1.QuotationNo + "v1";
             }
             Quotation q = new Quotation();
+            q.stats = QuoStatusActive;
             q.QuotationNo = txtQuotationNo.Text;
             q.RFQNo = txtRFQNo.Text;
             try { q.SubTotal = decimal.Parse(lblsubtotal.Text); } catch { }

@@ -2424,9 +2424,9 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DesignationView_Result>("DesignationView", designationIdParameter);
         }
     
-        public virtual ObjectResult<string> dgPurchaseOrder()
+        public virtual ObjectResult<dgPurchaseOrder_Result> dgPurchaseOrder()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("dgPurchaseOrder");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<dgPurchaseOrder_Result>("dgPurchaseOrder");
         }
     
         public virtual ObjectResult<dgPurchaseOrderToSaleInvoiceSearchWithPurchaseId_Result> dgPurchaseOrderToSaleInvoiceSearchWithPurchaseId(string purchaseID)
