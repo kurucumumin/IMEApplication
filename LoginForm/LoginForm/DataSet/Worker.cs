@@ -90,13 +90,7 @@ namespace LoginForm.DataSet
         public string pfNumber { get; set; }
         public string esiNumber { get; set; }
         public Nullable<decimal> defaultPackageId { get; set; }
-
-        public override string ToString()
-        {
-            return NameLastName.ToString();
-        }
-
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AdvancePayment> AdvancePayments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

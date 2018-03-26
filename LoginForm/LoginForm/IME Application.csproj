@@ -728,6 +728,33 @@
     <Compile Include="Account\Transaction\frmServiceVoucher.Designer.cs">
       <DependentUpon>frmServiceVoucher.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomControls\AccountingControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\AccountingControl.Designer.cs">
+      <DependentUpon>AccountingControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\DevelopmentControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\DevelopmentControl.Designer.cs">
+      <DependentUpon>DevelopmentControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\LoaderControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\LoaderControl.Designer.cs">
+      <DependentUpon>LoaderControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\ManagementControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\ManagementControl.Designer.cs">
+      <DependentUpon>ManagementControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\NavigationControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="CustomControls\SubAccountCustomControl\BudgetControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -788,20 +815,11 @@
     <Compile Include="CustomControls\SubAccountCustomControl\TransactionsControl.Designer.cs">
       <DependentUpon>TransactionsControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="CustomControls\AccountingControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CustomControls\AccountingControl.Designer.cs">
-      <DependentUpon>AccountingControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="CustomControls\SubDevelopmentCustomControl\SalesOrderControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="CustomControls\SubDevelopmentCustomControl\SalesOrderControl.Designer.cs">
       <DependentUpon>SalesOrderControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CustomControls\NavigationControl.cs">
-      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Customer\CustomerDepartmentAdd.cs">
       <SubType>Form</SubType>
@@ -1216,6 +1234,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\dgPurchaseOrderToSaleInvoiceSearchWithPurchaseId_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\dgPurchaseOrder_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\DiscountValue.cs">
@@ -2034,29 +2055,11 @@
     <Compile Include="Item\LoaderPage.designer.cs">
       <DependentUpon>LoaderPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="CustomControls\DevelopmentControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CustomControls\DevelopmentControl.Designer.cs">
-      <DependentUpon>DevelopmentControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="Main\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Main\FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CustomControls\LoaderControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CustomControls\LoaderControl.Designer.cs">
-      <DependentUpon>LoaderControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CustomControls\ManagementControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CustomControls\ManagementControl.Designer.cs">
-      <DependentUpon>ManagementControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Management\FormCategorySubCategory.cs">
       <SubType>Form</SubType>
@@ -2553,6 +2556,18 @@
     <EmbeddedResource Include="Account\Transaction\frmServiceVoucher.resx">
       <DependentUpon>frmServiceVoucher.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\AccountingControl.resx">
+      <DependentUpon>AccountingControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\DevelopmentControl.resx">
+      <DependentUpon>DevelopmentControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\LoaderControl.resx">
+      <DependentUpon>LoaderControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\ManagementControl.resx">
+      <DependentUpon>ManagementControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\SubAccountCustomControl\BudgetControl.resx">
       <DependentUpon>BudgetControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -2582,9 +2597,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\SubAccountCustomControl\TransactionsControl.resx">
       <DependentUpon>TransactionsControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CustomControls\AccountingControl.resx">
-      <DependentUpon>AccountingControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\SubDevelopmentCustomControl\SalesOrderControl.resx">
       <DependentUpon>SalesOrderControl.cs</DependentUpon>
@@ -2619,17 +2631,8 @@
     <EmbeddedResource Include="Item\LoaderPage.resx">
       <DependentUpon>LoaderPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CustomControls\DevelopmentControl.resx">
-      <DependentUpon>DevelopmentControl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Main\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CustomControls\LoaderControl.resx">
-      <DependentUpon>LoaderControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CustomControls\ManagementControl.resx">
-      <DependentUpon>ManagementControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Management\FormCategorySubCategory.resx">
       <DependentUpon>FormCategorySubCategory.cs</DependentUpon>
