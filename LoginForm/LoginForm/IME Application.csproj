@@ -713,7 +713,7 @@
     <Compile Include="Account\Transaction\frmSalesInvoice.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Account\Transaction\frmSalesInvoice.Designer.cs">
+    <Compile Include="Account\Transaction\frmSalesInvoice.designer.cs">
       <DependentUpon>frmSalesInvoice.cs</DependentUpon>
     </Compile>
     <Compile Include="Account\Transaction\frmSalesReturn.cs">
@@ -1216,9 +1216,6 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\dgPurchaseOrderToSaleInvoiceSearchWithPurchaseId_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\dgPurchaseOrder_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\DiscountValue.cs">
