@@ -11,7 +11,7 @@ namespace LoginForm.DataSet
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class Quotation
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,7 +22,7 @@ namespace LoginForm.DataSet
             this.QuotationDetails = new HashSet<QuotationDetail>();
             this.SalesMasters = new HashSet<SalesMaster>();
         }
-
+    
         public string CustomerID { get; set; }
         public Nullable<int> NoteForUsID { get; set; }
         public Nullable<int> NoteForCustomerID { get; set; }
@@ -59,7 +59,7 @@ namespace LoginForm.DataSet
         public Nullable<decimal> GrossTotal { get; set; }
         public Nullable<decimal> CurrencyID { get; set; }
         public string status { get; set; }
-
+    
         public virtual Currency Currency { get; set; }
         public virtual Customer Customer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
