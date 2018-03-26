@@ -20211,7 +20211,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <FunctionImport Name="DesignationView" ReturnType="Collection(IMEModel.DesignationView_Result)">
             <Parameter Name="designationId" Mode="In" Type="Decimal" />
           </FunctionImport>
-          <FunctionImport Name="dgPurchaseOrder" ReturnType="Collection(String)" />
+          <FunctionImport Name="dgPurchaseOrder" ReturnType="Collection(IMEModel.dgPurchaseOrder_Result)" />
           <FunctionImport Name="dgPurchaseOrderToSaleInvoiceSearchWithPurchaseId" ReturnType="Collection(IMEModel.dgPurchaseOrderToSaleInvoiceSearchWithPurchaseId_Result)">
             <Parameter Name="PurchaseID" Mode="In" Type="String" />
           </FunctionImport>
@@ -22546,6 +22546,12 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="Decimal" Name="leaveDays" Nullable="true" Precision="18" Scale="1" />
           <Property Type="Decimal" Name="advanceAmount" Nullable="true" Precision="18" Scale="2" />
           <Property Type="String" Name="narration" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="dgPurchaseOrder_Result">
+          <Property Type="String" Name="PurchaseOrderNumber" Nullable="true" MaxLength="30" />
+          <Property Type="Decimal" Name="InvoiceNettValue" Nullable="true" Precision="17" Scale="2" />
+          <Property Type="DateTime" Name="BillingDocumentDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="c_name" Nullable="true" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="dgPurchaseOrderToSaleInvoiceSearchWithPurchaseId_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
@@ -27496,7 +27502,16 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="dgPurchaseOrder" FunctionName="IMEModel.Store.dgPurchaseOrder" />
+          <FunctionImportMapping FunctionImportName="dgPurchaseOrder" FunctionName="IMEModel.Store.dgPurchaseOrder">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.dgPurchaseOrder_Result">
+                <ScalarProperty Name="PurchaseOrderNumber" ColumnName="PurchaseOrderNumber" />
+                <ScalarProperty Name="InvoiceNettValue" ColumnName="InvoiceNettValue" />
+                <ScalarProperty Name="BillingDocumentDate" ColumnName="BillingDocumentDate" />
+                <ScalarProperty Name="c_name" ColumnName="c_name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="dgPurchaseOrderToSaleInvoiceSearchWithPurchaseId" FunctionName="IMEModel.Store.dgPurchaseOrderToSaleInvoiceSearchWithPurchaseId">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.dgPurchaseOrderToSaleInvoiceSearchWithPurchaseId_Result">
