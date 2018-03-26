@@ -9,6 +9,9 @@ namespace LoginForm.nsSaleOrder
 {
     public partial class FormSaleOrderCreate : Form
     {
+        private static string QuoStatusActive = "Active";
+        private static string QuoStatusPassive = "Passive";
+
         IMEEntities IME = new IMEEntities();
 
         List<Customer> customerList = new List<Customer>();
@@ -23,7 +26,37 @@ namespace LoginForm.nsSaleOrder
 
         private void FormSaleOrderCustList_Load(object sender, EventArgs e)
         {
-            customerList = IME.Customers.ToList();
+            //List<Customer> tempCList = IME.Customers.ToList();
+
+            //foreach (Customer c in tempCList)
+            //{
+            //    if(c.Quotations.Count > 0)
+            //    {
+            //        for(int i = 0; i < c.Quotations.Count; i++)
+            //        {
+            //            if(c.Quotations.ElementAt(i).stats == "Active")
+            //            {
+            //                customerList.Add(c);
+            //                break;
+            //            }
+            //        }
+            //    }
+            //}
+
+            List<Quotation> QuoList = IME.Quotations.Where(x=>x.stats == "Active").ToList();
+
+            foreach (Quotation q in QuoList)
+            {
+                if(customerList.Where(x=>x.ID == q.Customer.ID).Count() == 0)
+                {
+                    customerList.Add(q.Customer);
+                }
+            }
+            if(customerList.Count <= 0)
+            {
+                btnCreate.Enabled = false;
+            }
+
             tempCustomerList = customerList.ToList();
             lbCustomerList.DataSource = customerList;
             lbCustomerList.DisplayMember = "c_name";
