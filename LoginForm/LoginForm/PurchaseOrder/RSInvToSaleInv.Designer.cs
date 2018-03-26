@@ -52,7 +52,9 @@
             this.dgArticleDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgDeliveryNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgDeliveryItemNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgSaleInvoice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // dgSaleInvoice
@@ -76,9 +78,9 @@
             this.dgArticleDescription,
             this.dgDeliveryNumber,
             this.dgDeliveryItemNumber});
-            this.dgSaleInvoice.Location = new System.Drawing.Point(162, 29);
+            this.dgSaleInvoice.Location = new System.Drawing.Point(339, 29);
             this.dgSaleInvoice.Name = "dgSaleInvoice";
-            this.dgSaleInvoice.Size = new System.Drawing.Size(716, 251);
+            this.dgSaleInvoice.Size = new System.Drawing.Size(539, 251);
             this.dgSaleInvoice.TabIndex = 0;
             // 
             // btnExit
@@ -103,7 +105,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(159, 10);
+            this.label1.Location = new System.Drawing.Point(336, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(116, 13);
             this.label1.TabIndex = 2;
@@ -114,13 +116,13 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(12, 29);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(144, 251);
+            this.listBox1.Size = new System.Drawing.Size(321, 251);
             this.listBox1.TabIndex = 3;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // btnSelectAll
             // 
-            this.btnSelectAll.Location = new System.Drawing.Point(162, 286);
+            this.btnSelectAll.Location = new System.Drawing.Point(339, 286);
             this.btnSelectAll.Name = "btnSelectAll";
             this.btnSelectAll.Size = new System.Drawing.Size(60, 23);
             this.btnSelectAll.TabIndex = 4;
@@ -130,7 +132,7 @@
             // 
             // btnClearAll
             // 
-            this.btnClearAll.Location = new System.Drawing.Point(228, 286);
+            this.btnClearAll.Location = new System.Drawing.Point(409, 286);
             this.btnClearAll.Name = "btnClearAll";
             this.btnClearAll.Size = new System.Drawing.Size(60, 23);
             this.btnClearAll.TabIndex = 4;
@@ -152,6 +154,7 @@
             // 
             this.CheckBox.HeaderText = "";
             this.CheckBox.Name = "CheckBox";
+            this.CheckBox.Width = 20;
             // 
             // dgPurchaseOrderNumber
             // 
@@ -243,11 +246,20 @@
             this.dgDeliveryItemNumber.Name = "dgDeliveryItemNumber";
             this.dgDeliveryItemNumber.ReadOnly = true;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(15, 30);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(275, 250);
+            this.dataGridView1.TabIndex = 5;
+            // 
             // RSInvToSaleInv
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(890, 353);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnClearAll);
             this.Controls.Add(this.btnSelectAll);
             this.Controls.Add(this.listBox1);
@@ -260,6 +272,7 @@
             this.Text = "RSInvToSaleInv";
             this.Load += new System.EventHandler(this.RSInvToSaleInv_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgSaleInvoice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -291,5 +304,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgArticleDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgDeliveryNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgDeliveryItemNumber;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

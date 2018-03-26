@@ -26,7 +26,7 @@ namespace LoginForm.PurchaseOrder
         private void RSInvToSaleInv_Load(object sender, EventArgs e)
         {
             IMEEntities IME = new IMEEntities();
-            listBox1.DataSource= IME.dgPurchaseOrder().ToList();
+            listBox1.DataSource = IME.dgPurchaseOrder();
         }
 
         private void dgPurchaseOrder_SelectionChanged(object sender, EventArgs e)

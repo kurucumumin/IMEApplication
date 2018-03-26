@@ -18,6 +18,7 @@ namespace LoginForm.DataSet
         public RS_Invoice()
         {
             this.RS_InvoiceDetails = new HashSet<RS_InvoiceDetails>();
+            this.RS_InvoiceDetails1 = new HashSet<RS_InvoiceDetails>();
         }
     
         public int ID { get; set; }
@@ -35,5 +36,7 @@ namespace LoginForm.DataSet
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RS_InvoiceDetails> RS_InvoiceDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RS_InvoiceDetails> RS_InvoiceDetails1 { get; set; }
     }
 }

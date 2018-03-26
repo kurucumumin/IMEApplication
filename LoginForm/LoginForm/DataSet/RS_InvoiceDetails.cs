@@ -34,5 +34,6 @@ namespace LoginForm.DataSet
         public Nullable<int> IsSaleInvoiced { get; set; }
     
         public virtual RS_Invoice RS_Invoice { get; set; }
+        public virtual RS_Invoice RS_Invoice1 { get; set; }
     }
 }

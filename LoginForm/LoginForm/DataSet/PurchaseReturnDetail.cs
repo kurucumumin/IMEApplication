@@ -16,7 +16,7 @@ namespace LoginForm.DataSet
     {
         public decimal purchaseReturnDetailsId { get; set; }
         public Nullable<decimal> purchaseReturnMasterId { get; set; }
-        public Nullable<decimal> productId { get; set; }
+        public string productId { get; set; }
         public Nullable<decimal> qty { get; set; }
         public Nullable<decimal> rate { get; set; }
         public Nullable<decimal> unitId { get; set; }
