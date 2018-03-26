@@ -1236,6 +1236,9 @@
     <Compile Include="DataSet\dgPurchaseOrderToSaleInvoiceSearchWithPurchaseId_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\dgPurchaseOrder_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\DiscountValue.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>

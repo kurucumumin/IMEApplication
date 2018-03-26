@@ -12,7 +12,6 @@ namespace LoginForm.Account.Services
 {
     class StockPostingSP
     {
-
         public decimal StockCheckForProductSale(string decProductId, decimal decBatchId)
         {
             IMEEntities IME = new IMEEntities();
