@@ -29,12 +29,7 @@ namespace LoginForm.DataSet
         public string currencySymbol { get; set; }
         public string currencyName { get; set; }
         public string subunitName { get; set; }
-        public override string ToString()
-        {
-            return currencyName.ToString();
-        }
-
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Company> Companies { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
