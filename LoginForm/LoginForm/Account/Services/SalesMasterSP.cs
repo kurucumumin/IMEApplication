@@ -13,6 +13,42 @@ namespace LoginForm.Account.Services
     class SalesMasterSP
     {
 
+        //public DataSet salesInvoicePrintAfterSave(decimal decsalesMasterId, decimal decCompanyId, decimal decOrderMasterId, decimal decDeliveryNoteMasterId, decimal decQuotationMasterId)
+        //{
+        //    DataSet ds = new DataSet();
+        //    try
+        //    {
+        //        if (sqlcon.State == ConnectionState.Closed)
+        //        {
+        //            sqlcon.Open();
+        //        }
+        //        SqlDataAdapter sqlda = new SqlDataAdapter("salesInvoicePrintAfterSave", sqlcon);
+        //        sqlda.SelectCommand.CommandType = CommandType.StoredProcedure;
+        //        SqlParameter sprmparam = new SqlParameter();
+        //        sprmparam = sqlda.SelectCommand.Parameters.Add("@salesMasterId", SqlDbType.Decimal);
+        //        sprmparam.Value = decsalesMasterId;
+        //        sprmparam = sqlda.SelectCommand.Parameters.Add("@companyId", SqlDbType.Decimal);
+        //        sprmparam.Value = decCompanyId;
+        //        sprmparam = sqlda.SelectCommand.Parameters.Add("@orderMasterId", SqlDbType.Decimal);
+        //        sprmparam.Value = decOrderMasterId;
+        //        sprmparam = sqlda.SelectCommand.Parameters.Add("@deliveryNoteMasterId", SqlDbType.Decimal);
+        //        sprmparam.Value = decDeliveryNoteMasterId;
+        //        sprmparam = sqlda.SelectCommand.Parameters.Add("@quotationMasterId", SqlDbType.Decimal);
+        //        sprmparam.Value = decQuotationMasterId;
+        //        sqlda.Fill(ds);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.ToString());
+        //    }
+        //    finally
+        //    {
+        //        sqlcon.Close();
+        //    }
+        //    return ds;
+        //}
+
+
         public DataTable SalesInvoiceReportFill(DateTime dtfromDate, DateTime dttoDate, decimal decVoucherTypeId, decimal decLedgerId, decimal decAreaId, string strSalesMode, decimal decEmployeeId, string strProductName, string strVoucherNo, string strstatus, decimal decRouteId, decimal decModelNoId, string strProductCode)
         {
             IMEEntities IME = new IMEEntities();

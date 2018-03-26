@@ -95,6 +95,7 @@ namespace LoginForm.QuotationModule
             deliveryColumn.DataSource = IME.QuotationDeliveries.ToList();
             deliveryColumn.DisplayMember = "DeliveryName";
             deliveryColumn.ValueMember = "ID";
+
             //Son versiyonu açmayı sağlıyor
             Quotation q1 = IME.Quotations.Where(a => a.QuotationNo.Contains(quotation.QuotationNo)).OrderByDescending(b => b.QuotationNo).FirstOrDefault();
             this.Text = "Edit Quotation";
@@ -199,6 +200,7 @@ namespace LoginForm.QuotationModule
                 deliveryColumn.DataSource = IME.QuotationDeliveries.ToList();
                 deliveryColumn.DisplayMember = "DeliveryName";
                 deliveryColumn.ValueMember = "ID";
+                
             }
 
             if (txtCustomerName.Text == null || txtCustomerName.Text == "")
@@ -401,7 +403,6 @@ namespace LoginForm.QuotationModule
                 case 7://PRODUCT CODE
                     {
                         #region PRODUCT CODE
-
 
                         if (dgQuotationAddedItems.CurrentCell.Value != null)
                         {

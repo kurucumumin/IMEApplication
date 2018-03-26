@@ -489,17 +489,19 @@ namespace LoginForm
         /// </summary>
         public void againstOrderComboFill()
         {
-            try
-            {
+            //try
+            //{
                 SalesOrderMasterSP spSalesOrderMaster = new SalesOrderMasterSP();
                 DeliveryNoteMasterSP spDeliveryNoteMasterSp = new DeliveryNoteMasterSP();
                 SalesQuotationMasterSP spSalesQuotationMasterSp = new SalesQuotationMasterSP();
                 DataTable dtbl = new DataTable();
-                if (cmbCashOrParty.SelectedValue != null)
+                if (cmbCashOrParty.DataSource != null)
                 {
                     if (cmbSalesMode.Text == "Against SalesOrder")
                     {
-                        dtbl = spSalesOrderMaster.GetSalesOrderNoIncludePendingCorrespondingtoLedgerforSI(Convert.ToDecimal(cmbCashOrParty.SelectedValue.ToString()), decSalesInvoiceIdToEdit, Convert.ToDecimal(cmbVoucherType.SelectedValue.ToString()));
+                        dtbl = spSalesOrderMaster.GetSalesOrderNoIncludePendingCorrespondingtoLedgerforSI(Convert.ToDecimal(((System.Data.DataRowView)cmbCashOrParty.SelectedValue).Row.ItemArray[1]), decSalesInvoiceIdToEdit, Convert.ToDecimal(
+                               cmbVoucherType.SelectedValue.ToString()
+                                ));
                         DataRow dr = dtbl.NewRow();
                         dr["invoiceNo"] = "";
                         dr["SaleOrderID"] = 0;
@@ -537,11 +539,11 @@ namespace LoginForm
                         isFromEditMode = false;
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("SI: 13" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("SI: 13" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
         /// <summary>
         /// Function to call this form from frmVoucherWiseProductSearch to view details and for updation
@@ -3473,10 +3475,10 @@ namespace LoginForm
         //public void Print(decimal decSalesMasterId)
         //{
         //    SalesMasterSP spSalesMaster = new SalesMasterSP();
-        //    SalesMasterInfo InfoSalesMaster = new SalesMasterInfo();
+        //    SalesMaster InfoSalesMaster = new SalesMaster();
         //    try
         //    {
-        //        DataSet dsSalesInvoice = spSalesMaster.salesInvoicePrintAfterSave(decSalesMasterId, 1, InfoSalesMaster.OrderMasterId, InfoSalesMaster.DeliveryNoteMasterId, InfoSalesMaster.QuotationMasterId);
+        //        DataSet  dsSalesInvoice = spSalesMaster.salesInvoicePrintAfterSave(decSalesMasterId, 1, InfoSalesMaster.OrderMasterId, InfoSalesMaster.DeliveryNoteMasterId, InfoSalesMaster.QuotationMasterId);
         //        frmReport frmReport = new frmReport();
         //        frmReport.MdiParent = formMDI.MDIObj;
         //        frmReport.SalesInvoicePrinting(dsSalesInvoice);
@@ -4987,6 +4989,8 @@ namespace LoginForm
         public frmSalesInvoice(DataTable dt)
         {
             InitializeComponent();
+            cmbSalesMode.SelectedIndex = 1;
+            cmbSalesMode.Enabled = false;
             IME = new IMEEntities();
             int PurchaseOrderNo = 0 ;
             string CurrencyName = "";

@@ -58,6 +58,7 @@ namespace LoginForm.DataSet
         public Nullable<System.DateTime> DeliveryDate { get; set; }
         public Nullable<decimal> GrossTotal { get; set; }
         public Nullable<decimal> CurrencyID { get; set; }
+        public string status { get; set; }
     
         public virtual Currency Currency { get; set; }
         public virtual Customer Customer { get; set; }

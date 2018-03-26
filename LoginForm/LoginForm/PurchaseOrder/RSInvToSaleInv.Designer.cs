@@ -29,13 +29,6 @@
         private void InitializeComponent()
         {
             this.dgSaleInvoice = new System.Windows.Forms.DataGridView();
-            this.btnExit = new System.Windows.Forms.Button();
-            this.lblPurchaseOrder = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.btnSelectAll = new System.Windows.Forms.Button();
-            this.btnClearAll = new System.Windows.Forms.Button();
-            this.btnSaleInvoice = new System.Windows.Forms.Button();
             this.CheckBox = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dgPurchaseOrderNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgPurchaseOrderItemNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,6 +45,12 @@
             this.dgArticleDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgDeliveryNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgDeliveryItemNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.lblPurchaseOrder = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnSelectAll = new System.Windows.Forms.Button();
+            this.btnClearAll = new System.Windows.Forms.Button();
+            this.btnSaleInvoice = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgSaleInvoice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -78,77 +77,10 @@
             this.dgArticleDescription,
             this.dgDeliveryNumber,
             this.dgDeliveryItemNumber});
-            this.dgSaleInvoice.Location = new System.Drawing.Point(339, 29);
+            this.dgSaleInvoice.Location = new System.Drawing.Point(396, 29);
             this.dgSaleInvoice.Name = "dgSaleInvoice";
-            this.dgSaleInvoice.Size = new System.Drawing.Size(539, 251);
+            this.dgSaleInvoice.Size = new System.Drawing.Size(482, 251);
             this.dgSaleInvoice.TabIndex = 0;
-            // 
-            // btnExit
-            // 
-            this.btnExit.Location = new System.Drawing.Point(755, 286);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(123, 50);
-            this.btnExit.TabIndex = 1;
-            this.btnExit.Text = "Exit";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
-            // lblPurchaseOrder
-            // 
-            this.lblPurchaseOrder.AutoSize = true;
-            this.lblPurchaseOrder.Location = new System.Drawing.Point(12, 13);
-            this.lblPurchaseOrder.Name = "lblPurchaseOrder";
-            this.lblPurchaseOrder.Size = new System.Drawing.Size(81, 13);
-            this.lblPurchaseOrder.TabIndex = 2;
-            this.lblPurchaseOrder.Text = "Purchase Order";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(336, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(116, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Purchase Order Details";
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(12, 29);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(321, 251);
-            this.listBox1.TabIndex = 3;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
-            // 
-            // btnSelectAll
-            // 
-            this.btnSelectAll.Location = new System.Drawing.Point(339, 286);
-            this.btnSelectAll.Name = "btnSelectAll";
-            this.btnSelectAll.Size = new System.Drawing.Size(60, 23);
-            this.btnSelectAll.TabIndex = 4;
-            this.btnSelectAll.Text = "SelectAll";
-            this.btnSelectAll.UseVisualStyleBackColor = true;
-            this.btnSelectAll.Click += new System.EventHandler(this.btnSelectAll_Click);
-            // 
-            // btnClearAll
-            // 
-            this.btnClearAll.Location = new System.Drawing.Point(409, 286);
-            this.btnClearAll.Name = "btnClearAll";
-            this.btnClearAll.Size = new System.Drawing.Size(60, 23);
-            this.btnClearAll.TabIndex = 4;
-            this.btnClearAll.Text = "ClearAll";
-            this.btnClearAll.UseVisualStyleBackColor = true;
-            this.btnClearAll.Click += new System.EventHandler(this.btnClearAll_Click);
-            // 
-            // btnSaleInvoice
-            // 
-            this.btnSaleInvoice.Location = new System.Drawing.Point(626, 286);
-            this.btnSaleInvoice.Name = "btnSaleInvoice";
-            this.btnSaleInvoice.Size = new System.Drawing.Size(123, 50);
-            this.btnSaleInvoice.TabIndex = 1;
-            this.btnSaleInvoice.Text = "Create Sale Invoice";
-            this.btnSaleInvoice.UseVisualStyleBackColor = true;
-            this.btnSaleInvoice.Click += new System.EventHandler(this.btnSaleInvoice_Click);
             // 
             // CheckBox
             // 
@@ -246,23 +178,81 @@
             this.dgDeliveryItemNumber.Name = "dgDeliveryItemNumber";
             this.dgDeliveryItemNumber.ReadOnly = true;
             // 
+            // btnExit
+            // 
+            this.btnExit.Location = new System.Drawing.Point(755, 286);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(123, 50);
+            this.btnExit.TabIndex = 1;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // lblPurchaseOrder
+            // 
+            this.lblPurchaseOrder.AutoSize = true;
+            this.lblPurchaseOrder.Location = new System.Drawing.Point(12, 13);
+            this.lblPurchaseOrder.Name = "lblPurchaseOrder";
+            this.lblPurchaseOrder.Size = new System.Drawing.Size(81, 13);
+            this.lblPurchaseOrder.TabIndex = 2;
+            this.lblPurchaseOrder.Text = "Purchase Order";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(393, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(116, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Purchase Order Details";
+            // 
+            // btnSelectAll
+            // 
+            this.btnSelectAll.Location = new System.Drawing.Point(396, 286);
+            this.btnSelectAll.Name = "btnSelectAll";
+            this.btnSelectAll.Size = new System.Drawing.Size(60, 23);
+            this.btnSelectAll.TabIndex = 4;
+            this.btnSelectAll.Text = "SelectAll";
+            this.btnSelectAll.UseVisualStyleBackColor = true;
+            this.btnSelectAll.Click += new System.EventHandler(this.btnSelectAll_Click);
+            // 
+            // btnClearAll
+            // 
+            this.btnClearAll.Location = new System.Drawing.Point(465, 286);
+            this.btnClearAll.Name = "btnClearAll";
+            this.btnClearAll.Size = new System.Drawing.Size(60, 23);
+            this.btnClearAll.TabIndex = 4;
+            this.btnClearAll.Text = "ClearAll";
+            this.btnClearAll.UseVisualStyleBackColor = true;
+            this.btnClearAll.Click += new System.EventHandler(this.btnClearAll_Click);
+            // 
+            // btnSaleInvoice
+            // 
+            this.btnSaleInvoice.Location = new System.Drawing.Point(626, 286);
+            this.btnSaleInvoice.Name = "btnSaleInvoice";
+            this.btnSaleInvoice.Size = new System.Drawing.Size(123, 50);
+            this.btnSaleInvoice.TabIndex = 1;
+            this.btnSaleInvoice.Text = "Create Sale Invoice";
+            this.btnSaleInvoice.UseVisualStyleBackColor = true;
+            this.btnSaleInvoice.Click += new System.EventHandler(this.btnSaleInvoice_Click);
+            // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(15, 30);
+            this.dataGridView1.Location = new System.Drawing.Point(15, 29);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(275, 250);
+            this.dataGridView1.Size = new System.Drawing.Size(375, 251);
             this.dataGridView1.TabIndex = 5;
+            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
             // RSInvToSaleInv
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(890, 353);
+            this.ClientSize = new System.Drawing.Size(890, 340);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnClearAll);
             this.Controls.Add(this.btnSelectAll);
-            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblPurchaseOrder);
             this.Controls.Add(this.btnSaleInvoice);
@@ -284,7 +274,6 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label lblPurchaseOrder;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button btnSelectAll;
         private System.Windows.Forms.Button btnClearAll;
         private System.Windows.Forms.Button btnSaleInvoice;
