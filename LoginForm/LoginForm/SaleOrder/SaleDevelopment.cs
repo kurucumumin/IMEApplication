@@ -1438,6 +1438,8 @@ namespace LoginForm.nmSaleOrder
                 #endregion
 
             }
+
+            (dgSaleAddedItems.CurrentRow.Cells[dgDelivery.Index] as DataGridViewComboBoxCell).Value = 3;
         }
 
         private void CustomerCode_KeyDown(object sender, KeyEventArgs e)

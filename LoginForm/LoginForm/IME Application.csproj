@@ -2763,6 +2763,7 @@
     <None Include="Properties\DataSources\LoginForm.DataSet.PurchaseOrder.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.PurchaseOrderDetail.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.Quotation.datasource" />
+    <None Include="Properties\DataSources\LoginForm.DataSet.QuotationDelivery.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.QuotationDetail.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.RoleValue.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.Supplier.datasource" />
