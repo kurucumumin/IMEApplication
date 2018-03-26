@@ -128,6 +128,13 @@ namespace LoginForm.nmSaleOrder
             this.Text = "Edit Quotation";
             //modifyMod = true;
             InitializeComponent();
+
+            DataGridViewComboBoxColumn deliveryColumn = (DataGridViewComboBoxColumn)dgSaleAddedItems.Columns[dgDelivery.Index];
+
+            deliveryColumn.DataSource = IME.QuotationDeliveries.ToList();
+            deliveryColumn.DisplayMember = "DeliveryName";
+            deliveryColumn.ValueMember = "ID";
+
             txtQuotationNo.Text = QuotationNOs;
             dtpDate.Value = DateTime.Today.Date;
             //dtpDate.MaxDate = DateTime.Today.Date;
@@ -177,6 +184,12 @@ namespace LoginForm.nmSaleOrder
 
         private void SaleSaleForm_Load(object sender, EventArgs e)
         {
+            DataGridViewComboBoxColumn deliveryColumn = (DataGridViewComboBoxColumn)dgSaleAddedItems.Columns[dgDelivery.Index];
+
+            deliveryColumn.DataSource = IME.QuotationDeliveries.ToList();
+            deliveryColumn.DisplayMember = "DeliveryName";
+            deliveryColumn.ValueMember = "ID";
+
             DeletedSaleMenu.MenuItems.Add(new MenuItem("Add to Quotation", DeletedQuotationMenu_Click));
             if (!modifyMod)
             {
@@ -1231,7 +1244,7 @@ namespace LoginForm.nmSaleOrder
 
             #endregion
 
-
+             (dgSaleAddedItems.CurrentRow.Cells[dgDelivery.Index] as DataGridViewComboBoxCell).Value = 3;
         }
 
         private void CustomerCode_KeyDown(object sender, KeyEventArgs e)
@@ -1504,6 +1517,12 @@ namespace LoginForm.nmSaleOrder
             for (int i = 0; i < dgSaleAddedItems.RowCount - 1; i++)
             {
                 if (dgSaleAddedItems.Rows[i].Cells["dgMargin"].Value != null && Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgMargin"].Value.ToString()) < Utils.getCurrentUser().MinMarge) { MessageBox.Show("Please Check Merge of Products "); return false; }
+
+                if (((DataGridViewComboBoxCell)dgSaleAddedItems.Rows[i].Cells[dgDelivery.Index]).Value == null)
+                {
+                    MessageBox.Show("Delivery part cannot be left blank. Please check Delivery Parts of Items");
+                    return false;
+                }
             }
             return true;
         }

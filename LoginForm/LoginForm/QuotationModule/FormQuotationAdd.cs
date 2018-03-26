@@ -95,6 +95,7 @@ namespace LoginForm.QuotationModule
             deliveryColumn.DataSource = IME.QuotationDeliveries.ToList();
             deliveryColumn.DisplayMember = "DeliveryName";
             deliveryColumn.ValueMember = "ID";
+
             //Son versiyonu açmayı sağlıyor
             Quotation q1 = IME.Quotations.Where(a => a.QuotationNo.Contains(quotation.QuotationNo)).OrderByDescending(b => b.QuotationNo).FirstOrDefault();
             this.Text = "Edit Quotation";
@@ -149,6 +150,8 @@ namespace LoginForm.QuotationModule
                 dgQuotationAddedItems.Rows[i].Cells["dgCustDescription"].ReadOnly = false;
                 dgQuotationAddedItems.Rows[i].Cells["dgCustDescription"].Style = dgQuotationAddedItems.DefaultCellStyle;
 
+                
+
                 GetMarginMark(i);
             }
             for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
@@ -194,7 +197,7 @@ namespace LoginForm.QuotationModule
         {
             ControlAutorization();
             DataGridViewComboBoxColumn deliveryColumn = (DataGridViewComboBoxColumn)dgQuotationAddedItems.Columns[dgDelivery.Index];
-            if (deliveryColumn.DataSource==null)
+            if (deliveryColumn.DataSource == null)
             {
                 deliveryColumn.DataSource = IME.QuotationDeliveries.ToList();
                 deliveryColumn.DisplayMember = "DeliveryName";
@@ -450,7 +453,6 @@ namespace LoginForm.QuotationModule
                                         FillProductCodeItem();
                                         dgQuotationAddedItems.CurrentRow.Cells["dgQty"].ReadOnly = false;
                                         dgQuotationAddedItems.CurrentRow.Cells["dgQty"].Style = dgQuotationAddedItems.DefaultCellStyle;
-
                                     }
                                 }
                                 else
@@ -536,28 +538,28 @@ namespace LoginForm.QuotationModule
                     #region Quantity
                     {
 
-                            if (LandingCost.Enabled == false) LandingCost.Enabled = true;
-                            GetQuotationQuantity(dgQuotationAddedItems.CurrentCell.RowIndex);
+                        if (LandingCost.Enabled == false) LandingCost.Enabled = true;
+                        GetQuotationQuantity(dgQuotationAddedItems.CurrentCell.RowIndex);
 
-                            dgQuotationAddedItems.CurrentRow.Cells["dgUCUPCurr"].ReadOnly = false;
-                            dgQuotationAddedItems.CurrentRow.Cells["dgUCUPCurr"].Style = dgQuotationAddedItems.DefaultCellStyle;
+                        dgQuotationAddedItems.CurrentRow.Cells["dgUCUPCurr"].ReadOnly = false;
+                        dgQuotationAddedItems.CurrentRow.Cells["dgUCUPCurr"].Style = dgQuotationAddedItems.DefaultCellStyle;
 
-                            dgQuotationAddedItems.CurrentRow.Cells["dgTargetUP"].ReadOnly = false;
-                            dgQuotationAddedItems.CurrentRow.Cells["dgTargetUP"].Style = dgQuotationAddedItems.DefaultCellStyle;
+                        dgQuotationAddedItems.CurrentRow.Cells["dgTargetUP"].ReadOnly = false;
+                        dgQuotationAddedItems.CurrentRow.Cells["dgTargetUP"].Style = dgQuotationAddedItems.DefaultCellStyle;
 
-                            dgQuotationAddedItems.CurrentRow.Cells["dgCompetitor"].ReadOnly = false;
-                            dgQuotationAddedItems.CurrentRow.Cells["dgCompetitor"].Style = dgQuotationAddedItems.DefaultCellStyle;
+                        dgQuotationAddedItems.CurrentRow.Cells["dgCompetitor"].ReadOnly = false;
+                        dgQuotationAddedItems.CurrentRow.Cells["dgCompetitor"].Style = dgQuotationAddedItems.DefaultCellStyle;
 
-                            dgQuotationAddedItems.CurrentRow.Cells["dgDelivery"].ReadOnly = false;
-                            dgQuotationAddedItems.CurrentRow.Cells["dgDelivery"].Style = dgQuotationAddedItems.DefaultCellStyle;
+                        dgQuotationAddedItems.CurrentRow.Cells["dgDelivery"].ReadOnly = false;
+                        dgQuotationAddedItems.CurrentRow.Cells["dgDelivery"].Style = dgQuotationAddedItems.DefaultCellStyle;
 
-                            dgQuotationAddedItems.CurrentRow.Cells["dgCustStkCode"].ReadOnly = false;
-                            dgQuotationAddedItems.CurrentRow.Cells["dgCustStkCode"].Style = dgQuotationAddedItems.DefaultCellStyle;
+                        dgQuotationAddedItems.CurrentRow.Cells["dgCustStkCode"].ReadOnly = false;
+                        dgQuotationAddedItems.CurrentRow.Cells["dgCustStkCode"].Style = dgQuotationAddedItems.DefaultCellStyle;
 
-                            dgQuotationAddedItems.CurrentRow.Cells["dgCustDescription"].ReadOnly = false;
-                            dgQuotationAddedItems.CurrentRow.Cells["dgCustDescription"].Style = dgQuotationAddedItems.DefaultCellStyle;
+                        dgQuotationAddedItems.CurrentRow.Cells["dgCustDescription"].ReadOnly = false;
+                        dgQuotationAddedItems.CurrentRow.Cells["dgCustDescription"].Style = dgQuotationAddedItems.DefaultCellStyle;
 
-                        }
+                    }
                     if (dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index].Value != "")
                     {
                         //LOW MARGIN
@@ -1272,24 +1274,24 @@ namespace LoginForm.QuotationModule
                 {
 
                     txtMargin2.Text = ((1 - ((Decimal.Parse(txtMargin2.Text)) / (decimal.Parse(txtWeb1.Text)))) * 100).ToString();
-                    try { txtMargin3.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked, Int32.Parse(sp1.Col3Break.ToString()))).ToString("G29");
-                    if (Decimal.Parse(txtWeb3.Text) != 0) txtMargin3.Text = ((1 - ((Decimal.Parse(txtMargin3.Text)) / (decimal.Parse(txtWeb3.Text)))) * 100).ToString();
-                    if (sp1.Col4Break != 0)
+                    try
                     {
-                        txtMargin4.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
-                    , Int32.Parse(sp1.Col4Break.ToString()))).ToString("G29");
-                        txtMargin4.Text = ((1 - ((Decimal.Parse(txtMargin4.Text)) / (decimal.Parse(txtWeb4.Text)))) * 100).ToString();
-                        if (sp1.Col5Break != 0)
+                        txtMargin3.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked, Int32.Parse(sp1.Col3Break.ToString()))).ToString("G29");
+                        if (Decimal.Parse(txtWeb3.Text) != 0) txtMargin3.Text = ((1 - ((Decimal.Parse(txtMargin3.Text)) / (decimal.Parse(txtWeb3.Text)))) * 100).ToString();
+                        if (sp1.Col4Break != 0)
                         {
-                            txtMargin5.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
-                        , Int32.Parse(sp1.Col5Break.ToString()))).ToString("G29");
-                            txtMargin5.Text = ((1 - ((Decimal.Parse(txtMargin5.Text)) / (decimal.Parse(txtWeb5.Text)))) * 100).ToString();
+                            txtMargin4.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
+                        , Int32.Parse(sp1.Col4Break.ToString()))).ToString("G29");
+                            txtMargin4.Text = ((1 - ((Decimal.Parse(txtMargin4.Text)) / (decimal.Parse(txtWeb4.Text)))) * 100).ToString();
+                            if (sp1.Col5Break != 0)
+                            {
+                                txtMargin5.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
+                            , Int32.Parse(sp1.Col5Break.ToString()))).ToString("G29");
+                                txtMargin5.Text = ((1 - ((Decimal.Parse(txtMargin5.Text)) / (decimal.Parse(txtWeb5.Text)))) * 100).ToString();
+                            }
                         }
                     }
-                    }
                     catch { }
-
-
 
                 }
 
@@ -1352,6 +1354,7 @@ namespace LoginForm.QuotationModule
                 #endregion
 
             }
+            (dgQuotationAddedItems.CurrentRow.Cells[dgDelivery.Index] as DataGridViewComboBoxCell).Value = 3;
         }
 
         private void CustomerCode_KeyDown(object sender, KeyEventArgs e)
