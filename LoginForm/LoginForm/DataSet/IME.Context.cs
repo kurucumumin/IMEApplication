@@ -155,6 +155,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<StockJournalDetail> StockJournalDetails { get; set; }
         public virtual DbSet<StockJournalMaster> StockJournalMasters { get; set; }
         public virtual DbSet<StockPosting> StockPostings { get; set; }
+        public virtual DbSet<StockReserve> StockReserves { get; set; }
         public virtual DbSet<SuffixPrefix> SuffixPrefixes { get; set; }
         public virtual DbSet<SuperDisk> SuperDisks { get; set; }
         public virtual DbSet<SuperDiskP> SuperDiskPs { get; set; }
@@ -175,7 +176,6 @@ namespace LoginForm.DataSet
         public virtual DbSet<Worker> Workers { get; set; }
         public virtual DbSet<AdditionalCost> AdditionalCosts { get; set; }
         public virtual DbSet<SalaryVoucherDetail> SalaryVoucherDetails { get; set; }
-        public virtual DbSet<V_Product> V_Product { get; set; }
     
         [DbFunction("IMEEntities", "AccountGroupHierarchy")]
         public virtual IQueryable<AccountGroupHierarchy_Result> AccountGroupHierarchy(Nullable<decimal> groupId)

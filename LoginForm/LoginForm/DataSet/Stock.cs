@@ -14,18 +14,18 @@ namespace LoginForm.DataSet
     
     public partial class Stock
     {
-        public int StockID { get; set; }
-        public string ItemCode { get; set; }
-        public Nullable<int> Quantitiy { get; set; }
-        public Nullable<decimal> againstVoucherTypeId { get; set; }
-        public string againstVoucherNo { get; set; }
-        public Nullable<decimal> voucherTypeId { get; set; }
+        public decimal StockID { get; set; }
+        public string ProductID { get; set; }
+        public int Qty { get; set; }
+        public int ReserveQty { get; set; }
+        public string ProductName { get; set; }
         public string voucherNo { get; set; }
-        public string ItemDesc { get; set; }
-        public Nullable<decimal> Rate { get; set; }
-        public Nullable<decimal> currencyID { get; set; }
+        public Nullable<decimal> voucherTypeId { get; set; }
+        public string againstVoucherNo { get; set; }
+        public Nullable<decimal> againstVoucherTypeId { get; set; }
     
-        public virtual Currency Currency { get; set; }
         public virtual VoucherType VoucherType { get; set; }
+        public virtual VoucherType VoucherType1 { get; set; }
+        public virtual StockReserve StockReserve { get; set; }
     }
 }
