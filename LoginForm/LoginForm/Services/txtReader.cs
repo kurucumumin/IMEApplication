@@ -3189,17 +3189,47 @@ namespace LoginForm
                             if (lines[a].Substring(203, 6).ToString().Trim() != "") rs.DeliveryItemNumber = Int32.Parse(lines[a].Substring(203, 6).ToString().Trim());
                             //For Stock Table
                             #region StockApplication
-                            int poID = Int32.Parse(rs.PurchaseOrderNumber.ToString().Substring(1, rs.PurchaseOrderNumber.ToString().IndexOf("RS")));
-                            
-                            if (IME.PurchaseOrders.Where(x => x.purchaseOrderId == poID).FirstOrDefault().CustomerID != null && IME.PurchaseOrders.Where(x => x.purchaseOrderId == poID).FirstOrDefault().CustomerID != "")
+                            int poID=Convert.ToInt32(rs.PurchaseOrderNumber.ToString().Substring(1, rs.PurchaseOrderNumber.ToString().IndexOf("RS")-1).ToString());
+                            string product = rs.ProductNumber;
+                            int Qty = Convert.ToInt32(rs.Quantity);
+                            if (IME.PurchaseOrders.Where(x => x.purchaseOrderId == poID).FirstOrDefault() != null && IME.PurchaseOrders.Where(x => x.purchaseOrderId == poID).FirstOrDefault().Customer!=null)
                             {
-                                string product = rs.ProductNumber;
-                                int Qty = Int32.Parse(rs.Quantity.ToString());
-                                IME.Stocks.Where()
+                                
+                                Stock StockInfo= IME.Stocks.Where(x => x.ProductID == product).FirstOrDefault();
+                                if (StockInfo==null)
+                                {
+                                    StockInfo = new Stock();
+                                    StockInfo.ProductID = product;
+                                    StockInfo.Qty = Qty;
+                                    StockInfo.ReserveQty = Qty;
+                                    IME.Stocks.Add(StockInfo);
+                                    IME.SaveChanges();
+                                    StockReserve sr = new StockReserve();
+                                    sr.Qty = Qty;
+                                    sr.StockID = StockInfo.StockID;
+                                    sr.IsFromRSInvoice = true;
+                                    IME.StockReserves.Add(sr);
+                                    IME.SaveChanges();
+                                }
+                                else
+                                {
+                                    StockInfo.Qty = StockInfo.Qty+Qty;
+                                    StockInfo.ReserveQty = StockInfo.ReserveQty + Qty;
+                                    IME.SaveChanges();
+                                    StockReserve sr = new StockReserve();
+                                    sr.Qty = Qty;
+                                    sr.StockID = StockInfo.StockID;
+                                    sr.IsFromRSInvoice = true;
+                                    IME.StockReserves.Add(sr);
+                                    IME.SaveChanges();
+                                }
                             }
                             else
-                            {
-
+                            {//Bizim stockumuz için demek
+                                Stock stockInfo = new Stock();
+                                stockInfo.ProductID = product;
+                                stockInfo.Qty = Qty;
+                                stockInfo.ReserveQty = 0;
                             }
                             #endregion
 
