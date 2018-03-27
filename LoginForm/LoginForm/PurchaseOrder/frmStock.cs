@@ -66,7 +66,7 @@ namespace LoginForm.PurchaseOrder
             {
                 dgStock.DataSource = IME.Stocks.Where(a => a.ProductID == ProductCodeSearch.Text).ToList();
             }
-            
+
         }
 
         private void btnClear_Click(object sender, EventArgs e)
