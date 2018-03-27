@@ -1,6 +1,6 @@
 ﻿namespace LoginForm.PurchaseOrder
 {
-    partial class frmStock
+    partial class frmStockDelete
     {
         /// <summary>
         /// Required designer variable.

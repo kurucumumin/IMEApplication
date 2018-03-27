@@ -1930,16 +1930,15 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Key>
             <PropertyRef Name="StockID" />
           </Key>
-          <Property Name="StockID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ItemCode" Type="nvarchar" MaxLength="20" />
-          <Property Name="Quantitiy" Type="int" />
-          <Property Name="againstVoucherTypeId" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="againstVoucherNo" Type="varchar(max)" />
-          <Property Name="voucherTypeId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="StockID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductID" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Qty" Type="int" Nullable="false" />
+          <Property Name="ReserveQty" Type="int" Nullable="false" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="50" />
           <Property Name="voucherNo" Type="varchar(max)" />
-          <Property Name="ItemDesc" Type="nvarchar" MaxLength="50" />
-          <Property Name="Rate" Type="decimal" Precision="18" Scale="5" />
-          <Property Name="currencyID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="voucherTypeId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="againstVoucherNo" Type="varchar(max)" />
+          <Property Name="againstVoucherTypeId" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="StockJournalDetail">
           <Key>
@@ -1995,6 +1994,17 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="outwardQty" Type="decimal" Precision="18" Scale="5" />
           <Property Name="rate" Type="decimal" Precision="18" Scale="5" />
           <Property Name="financialYearId" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="StockReserve">
+          <Key>
+            <PropertyRef Name="StockID" />
+          </Key>
+          <Property Name="ReserveID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StockID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Qty" Type="int" Nullable="false" />
+          <Property Name="CustomerID" Type="nvarchar" MaxLength="15" />
+          <Property Name="ValidationDate" Type="datetime" />
+          <Property Name="IsFromRSInvoice" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="SuffixPrefix">
           <Key>
@@ -5820,19 +5830,19 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Stock__currencyI__2156DE01">
-          <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+        <Association Name="FK__Stock__againstVo__2C7E77EA">
+          <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
           <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Currency">
-              <PropertyRef Name="currencyID" />
+            <Principal Role="VoucherType">
+              <PropertyRef Name="voucherTypeId" />
             </Principal>
             <Dependent Role="Stock">
-              <PropertyRef Name="currencyID" />
+              <PropertyRef Name="againstVoucherTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Stock__voucherTy__47E69B3D">
+        <Association Name="FK__Stock__voucherTy__2D729C23">
           <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
           <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
           <ReferentialConstraint>
@@ -5845,42 +5855,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__StockJour__batch__19169DBB">
-          <End Role="Batch" Type="Self.Batch" Multiplicity="0..1" />
-          <End Role="StockJournalDetail" Type="Self.StockJournalDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Batch">
-              <PropertyRef Name="batchId" />
-            </Principal>
-            <Dependent Role="StockJournalDetail">
-              <PropertyRef Name="batchId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__StockJour__batch__20B7BF83">
-          <End Role="Batch" Type="Self.Batch" Multiplicity="0..1" />
-          <End Role="StockJournalDetail" Type="Self.StockJournalDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Batch">
-              <PropertyRef Name="batchId" />
-            </Principal>
-            <Dependent Role="StockJournalDetail">
-              <PropertyRef Name="batchId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__StockJour__batch__2D1D9668">
-          <End Role="Batch" Type="Self.Batch" Multiplicity="0..1" />
-          <End Role="StockJournalDetail" Type="Self.StockJournalDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Batch">
-              <PropertyRef Name="batchId" />
-            </Principal>
-            <Dependent Role="StockJournalDetail">
-              <PropertyRef Name="batchId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__StockJour__batch__32D66FBE">
           <End Role="Batch" Type="Self.Batch" Multiplicity="0..1" />
           <End Role="StockJournalDetail" Type="Self.StockJournalDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -5928,42 +5902,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__StockJour__godow__22A007F5">
-          <End Role="Godown" Type="Self.Godown" Multiplicity="0..1" />
-          <End Role="StockJournalDetail" Type="Self.StockJournalDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Godown">
-              <PropertyRef Name="godownId" />
-            </Principal>
-            <Dependent Role="StockJournalDetail">
-              <PropertyRef Name="godownId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__StockJour__godow__2F05DEDA">
-          <End Role="Godown" Type="Self.Godown" Multiplicity="0..1" />
-          <End Role="StockJournalDetail" Type="Self.StockJournalDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Godown">
-              <PropertyRef Name="godownId" />
-            </Principal>
-            <Dependent Role="StockJournalDetail">
-              <PropertyRef Name="godownId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__StockJour__godow__34BEB830">
-          <End Role="Godown" Type="Self.Godown" Multiplicity="0..1" />
-          <End Role="StockJournalDetail" Type="Self.StockJournalDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Godown">
-              <PropertyRef Name="godownId" />
-            </Principal>
-            <Dependent Role="StockJournalDetail">
-              <PropertyRef Name="godownId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__StockJour__rackI__1A0AC1F4">
           <End Role="Rack" Type="Self.Rack" Multiplicity="0..1" />
           <End Role="StockJournalDetail" Type="Self.StockJournalDetail" Multiplicity="*" />
@@ -5976,55 +5914,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__StockJour__rackI__21ABE3BC">
-          <End Role="Rack" Type="Self.Rack" Multiplicity="0..1" />
-          <End Role="StockJournalDetail" Type="Self.StockJournalDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Rack">
-              <PropertyRef Name="rackId" />
-            </Principal>
-            <Dependent Role="StockJournalDetail">
-              <PropertyRef Name="rackId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__StockJour__rackI__2E11BAA1">
-          <End Role="Rack" Type="Self.Rack" Multiplicity="0..1" />
-          <End Role="StockJournalDetail" Type="Self.StockJournalDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Rack">
-              <PropertyRef Name="rackId" />
-            </Principal>
-            <Dependent Role="StockJournalDetail">
-              <PropertyRef Name="rackId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__StockJour__rackI__33CA93F7">
-          <End Role="Rack" Type="Self.Rack" Multiplicity="0..1" />
-          <End Role="StockJournalDetail" Type="Self.StockJournalDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Rack">
-              <PropertyRef Name="rackId" />
-            </Principal>
-            <Dependent Role="StockJournalDetail">
-              <PropertyRef Name="rackId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__StockJour__stock__2A4129BD">
-          <End Role="StockJournalMaster" Type="Self.StockJournalMaster" Multiplicity="0..1" />
-          <End Role="StockJournalDetail" Type="Self.StockJournalDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="StockJournalMaster">
-              <PropertyRef Name="stockJournalMasterId" />
-            </Principal>
-            <Dependent Role="StockJournalDetail">
-              <PropertyRef Name="stockJournalMasterId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__StockJour__stock__2FFA0313">
           <End Role="StockJournalMaster" Type="Self.StockJournalMaster" Multiplicity="0..1" />
           <End Role="StockJournalDetail" Type="Self.StockJournalDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -6060,79 +5950,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__StockJour__unitC__1FC39B4A">
-          <End Role="UnitConvertion" Type="Self.UnitConvertion" Multiplicity="0..1" />
-          <End Role="StockJournalDetail" Type="Self.StockJournalDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UnitConvertion">
-              <PropertyRef Name="unitconversionId" />
-            </Principal>
-            <Dependent Role="StockJournalDetail">
-              <PropertyRef Name="unitConversionId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__StockJour__unitC__2C29722F">
-          <End Role="UnitConvertion" Type="Self.UnitConvertion" Multiplicity="0..1" />
-          <End Role="StockJournalDetail" Type="Self.StockJournalDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UnitConvertion">
-              <PropertyRef Name="unitconversionId" />
-            </Principal>
-            <Dependent Role="StockJournalDetail">
-              <PropertyRef Name="unitConversionId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__StockJour__unitC__31E24B85">
-          <End Role="UnitConvertion" Type="Self.UnitConvertion" Multiplicity="0..1" />
-          <End Role="StockJournalDetail" Type="Self.StockJournalDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UnitConvertion">
-              <PropertyRef Name="unitconversionId" />
-            </Principal>
-            <Dependent Role="StockJournalDetail">
-              <PropertyRef Name="unitConversionId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__StockJour__unitI__172E5549">
-          <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
-          <End Role="StockJournalDetail" Type="Self.StockJournalDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Unit">
-              <PropertyRef Name="unitId" />
-            </Principal>
-            <Dependent Role="StockJournalDetail">
-              <PropertyRef Name="unitId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__StockJour__unitI__1ECF7711">
-          <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
-          <End Role="StockJournalDetail" Type="Self.StockJournalDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Unit">
-              <PropertyRef Name="unitId" />
-            </Principal>
-            <Dependent Role="StockJournalDetail">
-              <PropertyRef Name="unitId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__StockJour__unitI__2B354DF6">
-          <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
-          <End Role="StockJournalDetail" Type="Self.StockJournalDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Unit">
-              <PropertyRef Name="unitId" />
-            </Principal>
-            <Dependent Role="StockJournalDetail">
-              <PropertyRef Name="unitId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__StockJour__unitI__30EE274C">
           <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
           <End Role="StockJournalDetail" Type="Self.StockJournalDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -6213,6 +6031,30 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Principal>
             <Dependent Role="StockPosting">
               <PropertyRef Name="voucherTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StockRese__Custo__2A962F78">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="StockReserve" Type="Self.StockReserve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StockReserve">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StockRese__Stock__2B8A53B1">
+          <End Role="Stock" Type="Self.Stock" Multiplicity="1" />
+          <End Role="StockReserve" Type="Self.StockReserve" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Stock">
+              <PropertyRef Name="StockID" />
+            </Principal>
+            <Dependent Role="StockReserve">
+              <PropertyRef Name="StockID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -9158,6 +9000,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <EntitySet Name="StockJournalDetail" EntityType="Self.StockJournalDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StockJournalMaster" EntityType="Self.StockJournalMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StockPosting" EntityType="Self.StockPosting" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StockReserve" EntityType="Self.StockReserve" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SuffixPrefix" EntityType="Self.SuffixPrefix" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SuperDisk" EntityType="Self.SuperDisk" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SuperDiskP" EntityType="Self.SuperDiskP" Schema="dbo" store:Type="Tables" />
@@ -10369,27 +10212,15 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="ServiceMaster" EntitySet="ServiceMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__Stock__currencyI__2156DE01" Association="Self.FK__Stock__currencyI__2156DE01">
-            <End Role="Currency" EntitySet="Currency" />
+          <AssociationSet Name="FK__Stock__againstVo__2C7E77EA" Association="Self.FK__Stock__againstVo__2C7E77EA">
+            <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="Stock" EntitySet="Stock" />
           </AssociationSet>
-          <AssociationSet Name="FK__Stock__voucherTy__47E69B3D" Association="Self.FK__Stock__voucherTy__47E69B3D">
+          <AssociationSet Name="FK__Stock__voucherTy__2D729C23" Association="Self.FK__Stock__voucherTy__2D729C23">
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="Stock" EntitySet="Stock" />
           </AssociationSet>
           <AssociationSet Name="FK__StockJour__batch__19169DBB" Association="Self.FK__StockJour__batch__19169DBB">
-            <End Role="Batch" EntitySet="Batch" />
-            <End Role="StockJournalDetail" EntitySet="StockJournalDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK__StockJour__batch__20B7BF83" Association="Self.FK__StockJour__batch__20B7BF83">
-            <End Role="Batch" EntitySet="Batch" />
-            <End Role="StockJournalDetail" EntitySet="StockJournalDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK__StockJour__batch__2D1D9668" Association="Self.FK__StockJour__batch__2D1D9668">
-            <End Role="Batch" EntitySet="Batch" />
-            <End Role="StockJournalDetail" EntitySet="StockJournalDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK__StockJour__batch__32D66FBE" Association="Self.FK__StockJour__batch__32D66FBE">
             <End Role="Batch" EntitySet="Batch" />
             <End Role="StockJournalDetail" EntitySet="StockJournalDetail" />
           </AssociationSet>
@@ -10405,39 +10236,11 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="Godown" EntitySet="Godown" />
             <End Role="StockJournalDetail" EntitySet="StockJournalDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__StockJour__godow__22A007F5" Association="Self.FK__StockJour__godow__22A007F5">
-            <End Role="Godown" EntitySet="Godown" />
-            <End Role="StockJournalDetail" EntitySet="StockJournalDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK__StockJour__godow__2F05DEDA" Association="Self.FK__StockJour__godow__2F05DEDA">
-            <End Role="Godown" EntitySet="Godown" />
-            <End Role="StockJournalDetail" EntitySet="StockJournalDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK__StockJour__godow__34BEB830" Association="Self.FK__StockJour__godow__34BEB830">
-            <End Role="Godown" EntitySet="Godown" />
-            <End Role="StockJournalDetail" EntitySet="StockJournalDetail" />
-          </AssociationSet>
           <AssociationSet Name="FK__StockJour__rackI__1A0AC1F4" Association="Self.FK__StockJour__rackI__1A0AC1F4">
             <End Role="Rack" EntitySet="Rack" />
             <End Role="StockJournalDetail" EntitySet="StockJournalDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__StockJour__rackI__21ABE3BC" Association="Self.FK__StockJour__rackI__21ABE3BC">
-            <End Role="Rack" EntitySet="Rack" />
-            <End Role="StockJournalDetail" EntitySet="StockJournalDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK__StockJour__rackI__2E11BAA1" Association="Self.FK__StockJour__rackI__2E11BAA1">
-            <End Role="Rack" EntitySet="Rack" />
-            <End Role="StockJournalDetail" EntitySet="StockJournalDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK__StockJour__rackI__33CA93F7" Association="Self.FK__StockJour__rackI__33CA93F7">
-            <End Role="Rack" EntitySet="Rack" />
-            <End Role="StockJournalDetail" EntitySet="StockJournalDetail" />
-          </AssociationSet>
           <AssociationSet Name="FK__StockJour__stock__2A4129BD" Association="Self.FK__StockJour__stock__2A4129BD">
-            <End Role="StockJournalMaster" EntitySet="StockJournalMaster" />
-            <End Role="StockJournalDetail" EntitySet="StockJournalDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK__StockJour__stock__2FFA0313" Association="Self.FK__StockJour__stock__2FFA0313">
             <End Role="StockJournalMaster" EntitySet="StockJournalMaster" />
             <End Role="StockJournalDetail" EntitySet="StockJournalDetail" />
           </AssociationSet>
@@ -10449,31 +10252,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="UnitConvertion" EntitySet="UnitConvertion" />
             <End Role="StockJournalDetail" EntitySet="StockJournalDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__StockJour__unitC__1FC39B4A" Association="Self.FK__StockJour__unitC__1FC39B4A">
-            <End Role="UnitConvertion" EntitySet="UnitConvertion" />
-            <End Role="StockJournalDetail" EntitySet="StockJournalDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK__StockJour__unitC__2C29722F" Association="Self.FK__StockJour__unitC__2C29722F">
-            <End Role="UnitConvertion" EntitySet="UnitConvertion" />
-            <End Role="StockJournalDetail" EntitySet="StockJournalDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK__StockJour__unitC__31E24B85" Association="Self.FK__StockJour__unitC__31E24B85">
-            <End Role="UnitConvertion" EntitySet="UnitConvertion" />
-            <End Role="StockJournalDetail" EntitySet="StockJournalDetail" />
-          </AssociationSet>
           <AssociationSet Name="FK__StockJour__unitI__172E5549" Association="Self.FK__StockJour__unitI__172E5549">
-            <End Role="Unit" EntitySet="Unit" />
-            <End Role="StockJournalDetail" EntitySet="StockJournalDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK__StockJour__unitI__1ECF7711" Association="Self.FK__StockJour__unitI__1ECF7711">
-            <End Role="Unit" EntitySet="Unit" />
-            <End Role="StockJournalDetail" EntitySet="StockJournalDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK__StockJour__unitI__2B354DF6" Association="Self.FK__StockJour__unitI__2B354DF6">
-            <End Role="Unit" EntitySet="Unit" />
-            <End Role="StockJournalDetail" EntitySet="StockJournalDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK__StockJour__unitI__30EE274C" Association="Self.FK__StockJour__unitI__30EE274C">
             <End Role="Unit" EntitySet="Unit" />
             <End Role="StockJournalDetail" EntitySet="StockJournalDetail" />
           </AssociationSet>
@@ -10500,6 +10279,14 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <AssociationSet Name="FK__StockPost__vouch__0F6D37F0" Association="Self.FK__StockPost__vouch__0F6D37F0">
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="StockPosting" EntitySet="StockPosting" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StockRese__Custo__2A962F78" Association="Self.FK__StockRese__Custo__2A962F78">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="StockReserve" EntitySet="StockReserve" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StockRese__Stock__2B8A53B1" Association="Self.FK__StockRese__Stock__2B8A53B1">
+            <End Role="Stock" EntitySet="Stock" />
+            <End Role="StockReserve" EntitySet="StockReserve" />
           </AssociationSet>
           <AssociationSet Name="FK__SuffixPre__vouch__7740A8A4" Association="Self.FK__SuffixPre__vouch__7740A8A4">
             <End Role="VoucherType" EntitySet="VoucherType" />
@@ -10812,9 +10599,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <NavigationProperty Name="RejectionOutDetails" Relationship="Self.FK__Rejection__batch__73C51D7B" FromRole="Batch" ToRole="RejectionOutDetails" />
           <NavigationProperty Name="SalesDetails" Relationship="Self.FK__SalesDeta__batch__1FD8A9E3" FromRole="Batch" ToRole="SalesDetails" />
           <NavigationProperty Name="StockJournalDetails" Relationship="Self.FK__StockJour__batch__19169DBB" FromRole="Batch" ToRole="StockJournalDetail" />
-          <NavigationProperty Name="StockJournalDetails1" Relationship="Self.FK__StockJour__batch__20B7BF83" FromRole="Batch" ToRole="StockJournalDetail" />
-          <NavigationProperty Name="StockJournalDetails2" Relationship="Self.FK__StockJour__batch__2D1D9668" FromRole="Batch" ToRole="StockJournalDetail" />
-          <NavigationProperty Name="StockJournalDetails3" Relationship="Self.FK__StockJour__batch__32D66FBE" FromRole="Batch" ToRole="StockJournalDetail" />
           <NavigationProperty Name="StockPostings" Relationship="Self.FK__StockPost__batch__10615C29" FromRole="Batch" ToRole="StockPosting" />
         </EntityType>
         <EntityType Name="BonusDeduction">
@@ -11018,7 +10802,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <NavigationProperty Name="Companies" Relationship="Self.FK__Company__currenc__0371755F" FromRole="Currency" ToRole="Company" />
           <NavigationProperty Name="Managements" Relationship="Self.FK__Managemen__Defau__253C7D7E" FromRole="Currency" ToRole="Management" />
           <NavigationProperty Name="Quotations" Relationship="Self.FK__Quotation__Curre__0A096455" FromRole="Currency" ToRole="Quotation" />
-          <NavigationProperty Name="Stocks" Relationship="Self.FK__Stock__currencyI__2156DE01" FromRole="Currency" ToRole="Stock" />
           <NavigationProperty Name="Suppliers" Relationship="Self.FK__Supplier__Defaul__4218B34E" FromRole="Currency" ToRole="Supplier" />
           <NavigationProperty Name="ExchangeRates" Relationship="Self.FK__tbl_Excha__curre__52442E1F" FromRole="Currency" ToRole="ExchangeRate" />
         </EntityType>
@@ -11072,6 +10855,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <NavigationProperty Name="PurchaseOrders" Relationship="Self.FK__PurchaseO__Custo__420DC656" FromRole="Customer" ToRole="PurchaseOrder" />
           <NavigationProperty Name="Quotations" Relationship="Self.FK__Quotation__Custo__00750D23" FromRole="Customer" ToRole="Quotation" />
           <NavigationProperty Name="SaleOrders" Relationship="Self.FK__SaleOrder__Custo__1CDC41A7" FromRole="Customer" ToRole="SaleOrder" />
+          <NavigationProperty Name="StockReserves" Relationship="Self.FK__StockRese__Custo__2A962F78" FromRole="Customer" ToRole="StockReserve" />
         </EntityType>
         <EntityType Name="CustomerAddress">
           <Key>
@@ -11468,9 +11252,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <NavigationProperty Name="RejectionOutDetails" Relationship="Self.FK__Rejection__godow__74B941B4" FromRole="Godown" ToRole="RejectionOutDetails" />
           <NavigationProperty Name="SalesDetails" Relationship="Self.FK__SalesDeta__godow__20CCCE1C" FromRole="Godown" ToRole="SalesDetails" />
           <NavigationProperty Name="StockJournalDetails" Relationship="Self.FK__StockJour__godow__1AFEE62D" FromRole="Godown" ToRole="StockJournalDetail" />
-          <NavigationProperty Name="StockJournalDetails1" Relationship="Self.FK__StockJour__godow__22A007F5" FromRole="Godown" ToRole="StockJournalDetail" />
-          <NavigationProperty Name="StockJournalDetails2" Relationship="Self.FK__StockJour__godow__2F05DEDA" FromRole="Godown" ToRole="StockJournalDetail" />
-          <NavigationProperty Name="StockJournalDetails3" Relationship="Self.FK__StockJour__godow__34BEB830" FromRole="Godown" ToRole="StockJournalDetail" />
           <NavigationProperty Name="StockPostings" Relationship="Self.FK__StockPost__godow__1249A49B" FromRole="Godown" ToRole="StockPosting" />
         </EntityType>
         <EntityType Name="Hazardou">
@@ -12423,9 +12204,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <NavigationProperty Name="RejectionOutDetails" Relationship="Self.FK__Rejection__rackI__75AD65ED" FromRole="Rack" ToRole="RejectionOutDetails" />
           <NavigationProperty Name="SalesDetails" Relationship="Self.FK__SalesDeta__rackI__21C0F255" FromRole="Rack" ToRole="SalesDetails" />
           <NavigationProperty Name="StockJournalDetails" Relationship="Self.FK__StockJour__rackI__1A0AC1F4" FromRole="Rack" ToRole="StockJournalDetail" />
-          <NavigationProperty Name="StockJournalDetails1" Relationship="Self.FK__StockJour__rackI__21ABE3BC" FromRole="Rack" ToRole="StockJournalDetail" />
-          <NavigationProperty Name="StockJournalDetails2" Relationship="Self.FK__StockJour__rackI__2E11BAA1" FromRole="Rack" ToRole="StockJournalDetail" />
-          <NavigationProperty Name="StockJournalDetails3" Relationship="Self.FK__StockJour__rackI__33CA93F7" FromRole="Rack" ToRole="StockJournalDetail" />
           <NavigationProperty Name="StockPostings" Relationship="Self.FK__StockPost__rackI__133DC8D4" FromRole="Rack" ToRole="StockPosting" />
         </EntityType>
         <EntityType Name="Rate">
@@ -13074,18 +12852,18 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Key>
             <PropertyRef Name="StockID" />
           </Key>
-          <Property Name="StockID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ItemCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Quantitiy" Type="Int32" />
-          <Property Name="againstVoucherTypeId" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="againstVoucherNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="voucherTypeId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="StockID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Qty" Type="Int32" Nullable="false" />
+          <Property Name="ReserveQty" Type="Int32" Nullable="false" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="voucherNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ItemDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Rate" Type="Decimal" Precision="18" Scale="5" />
-          <Property Name="currencyID" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="Currency" Relationship="Self.FK__Stock__currencyI__2156DE01" FromRole="Stock" ToRole="Currency" />
-          <NavigationProperty Name="VoucherType" Relationship="Self.FK__Stock__voucherTy__47E69B3D" FromRole="Stock" ToRole="VoucherType" />
+          <Property Name="voucherTypeId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="againstVoucherNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="againstVoucherTypeId" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="VoucherType" Relationship="Self.FK__Stock__againstVo__2C7E77EA" FromRole="Stock" ToRole="VoucherType" />
+          <NavigationProperty Name="VoucherType1" Relationship="Self.FK__Stock__voucherTy__2D729C23" FromRole="Stock" ToRole="VoucherType" />
+          <NavigationProperty Name="StockReserve" Relationship="Self.FK__StockRese__Stock__2B8A53B1" FromRole="Stock" ToRole="StockReserve" />
         </EntityType>
         <EntityType Name="StockJournalDetail">
           <Key>
@@ -13105,27 +12883,11 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="consumptionOrProduction" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="slno" Type="Int32" />
           <NavigationProperty Name="Batch" Relationship="Self.FK__StockJour__batch__19169DBB" FromRole="StockJournalDetail" ToRole="Batch" />
-          <NavigationProperty Name="Batch1" Relationship="Self.FK__StockJour__batch__20B7BF83" FromRole="StockJournalDetail" ToRole="Batch" />
-          <NavigationProperty Name="Batch2" Relationship="Self.FK__StockJour__batch__2D1D9668" FromRole="StockJournalDetail" ToRole="Batch" />
-          <NavigationProperty Name="Batch3" Relationship="Self.FK__StockJour__batch__32D66FBE" FromRole="StockJournalDetail" ToRole="Batch" />
           <NavigationProperty Name="Godown" Relationship="Self.FK__StockJour__godow__1AFEE62D" FromRole="StockJournalDetail" ToRole="Godown" />
-          <NavigationProperty Name="Godown1" Relationship="Self.FK__StockJour__godow__22A007F5" FromRole="StockJournalDetail" ToRole="Godown" />
-          <NavigationProperty Name="Godown2" Relationship="Self.FK__StockJour__godow__2F05DEDA" FromRole="StockJournalDetail" ToRole="Godown" />
-          <NavigationProperty Name="Godown3" Relationship="Self.FK__StockJour__godow__34BEB830" FromRole="StockJournalDetail" ToRole="Godown" />
           <NavigationProperty Name="Rack" Relationship="Self.FK__StockJour__rackI__1A0AC1F4" FromRole="StockJournalDetail" ToRole="Rack" />
-          <NavigationProperty Name="Rack1" Relationship="Self.FK__StockJour__rackI__21ABE3BC" FromRole="StockJournalDetail" ToRole="Rack" />
-          <NavigationProperty Name="Rack2" Relationship="Self.FK__StockJour__rackI__2E11BAA1" FromRole="StockJournalDetail" ToRole="Rack" />
-          <NavigationProperty Name="Rack3" Relationship="Self.FK__StockJour__rackI__33CA93F7" FromRole="StockJournalDetail" ToRole="Rack" />
           <NavigationProperty Name="StockJournalMaster" Relationship="Self.FK__StockJour__stock__2A4129BD" FromRole="StockJournalDetail" ToRole="StockJournalMaster" />
-          <NavigationProperty Name="StockJournalMaster1" Relationship="Self.FK__StockJour__stock__2FFA0313" FromRole="StockJournalDetail" ToRole="StockJournalMaster" />
           <NavigationProperty Name="UnitConvertion" Relationship="Self.FK__StockJour__unitC__18227982" FromRole="StockJournalDetail" ToRole="UnitConvertion" />
-          <NavigationProperty Name="UnitConvertion1" Relationship="Self.FK__StockJour__unitC__1FC39B4A" FromRole="StockJournalDetail" ToRole="UnitConvertion" />
-          <NavigationProperty Name="UnitConvertion2" Relationship="Self.FK__StockJour__unitC__2C29722F" FromRole="StockJournalDetail" ToRole="UnitConvertion" />
-          <NavigationProperty Name="UnitConvertion3" Relationship="Self.FK__StockJour__unitC__31E24B85" FromRole="StockJournalDetail" ToRole="UnitConvertion" />
           <NavigationProperty Name="Unit" Relationship="Self.FK__StockJour__unitI__172E5549" FromRole="StockJournalDetail" ToRole="Unit" />
-          <NavigationProperty Name="Unit1" Relationship="Self.FK__StockJour__unitI__1ECF7711" FromRole="StockJournalDetail" ToRole="Unit" />
-          <NavigationProperty Name="Unit2" Relationship="Self.FK__StockJour__unitI__2B354DF6" FromRole="StockJournalDetail" ToRole="Unit" />
-          <NavigationProperty Name="Unit3" Relationship="Self.FK__StockJour__unitI__30EE274C" FromRole="StockJournalDetail" ToRole="Unit" />
         </EntityType>
         <EntityType Name="StockJournalMaster">
           <Key>
@@ -13144,7 +12906,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <NavigationProperty Name="ExchangeRate" Relationship="Self.FK__StockJour__excha__2858E14B" FromRole="StockJournalMaster" ToRole="ExchangeRate" />
           <NavigationProperty Name="FinancialYear" Relationship="Self.FK__StockJour__finan__2764BD12" FromRole="StockJournalMaster" ToRole="FinancialYear" />
           <NavigationProperty Name="StockJournalDetails" Relationship="Self.FK__StockJour__stock__2A4129BD" FromRole="StockJournalMaster" ToRole="StockJournalDetail" />
-          <NavigationProperty Name="StockJournalDetails1" Relationship="Self.FK__StockJour__stock__2FFA0313" FromRole="StockJournalMaster" ToRole="StockJournalDetail" />
           <NavigationProperty Name="SuffixPrefix" Relationship="Self.FK__StockJour__suffi__257C74A0" FromRole="StockJournalMaster" ToRole="SuffixPrefix" />
           <NavigationProperty Name="VoucherType" Relationship="Self.FK__StockJour__vouch__267098D9" FromRole="StockJournalMaster" ToRole="VoucherType" />
         </EntityType>
@@ -13174,6 +12935,19 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <NavigationProperty Name="Rack" Relationship="Self.FK__StockPost__rackI__133DC8D4" FromRole="StockPosting" ToRole="Rack" />
           <NavigationProperty Name="Unit" Relationship="Self.FK__StockPost__unitI__11558062" FromRole="StockPosting" ToRole="Unit" />
           <NavigationProperty Name="VoucherType" Relationship="Self.FK__StockPost__vouch__0F6D37F0" FromRole="StockPosting" ToRole="VoucherType" />
+        </EntityType>
+        <EntityType Name="StockReserve">
+          <Key>
+            <PropertyRef Name="StockID" />
+          </Key>
+          <Property Name="ReserveID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StockID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Qty" Type="Int32" Nullable="false" />
+          <Property Name="CustomerID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="ValidationDate" Type="DateTime" Precision="3" />
+          <Property Name="IsFromRSInvoice" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__StockRese__Custo__2A962F78" FromRole="StockReserve" ToRole="Customer" />
+          <NavigationProperty Name="Stock" Relationship="Self.FK__StockRese__Stock__2B8A53B1" FromRole="StockReserve" ToRole="Stock" />
         </EntityType>
         <EntityType Name="SuffixPrefix">
           <Key>
@@ -13480,9 +13254,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <NavigationProperty Name="RejectionOutDetails" Relationship="Self.FK__Rejection__unitI__71DCD509" FromRole="Unit" ToRole="RejectionOutDetails" />
           <NavigationProperty Name="SalesDetails" Relationship="Self.FK__SalesDeta__unitI__1CFC3D38" FromRole="Unit" ToRole="SalesDetails" />
           <NavigationProperty Name="StockJournalDetails" Relationship="Self.FK__StockJour__unitI__172E5549" FromRole="Unit" ToRole="StockJournalDetail" />
-          <NavigationProperty Name="StockJournalDetails1" Relationship="Self.FK__StockJour__unitI__1ECF7711" FromRole="Unit" ToRole="StockJournalDetail" />
-          <NavigationProperty Name="StockJournalDetails2" Relationship="Self.FK__StockJour__unitI__2B354DF6" FromRole="Unit" ToRole="StockJournalDetail" />
-          <NavigationProperty Name="StockJournalDetails3" Relationship="Self.FK__StockJour__unitI__30EE274C" FromRole="Unit" ToRole="StockJournalDetail" />
           <NavigationProperty Name="StockPostings" Relationship="Self.FK__StockPost__unitI__11558062" FromRole="Unit" ToRole="StockPosting" />
           <NavigationProperty Name="UnitConvertions" Relationship="Self.FK__UnitConve__unitI__322C6448" FromRole="Unit" ToRole="UnitConvertion" />
         </EntityType>
@@ -13504,9 +13275,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <NavigationProperty Name="RejectionOutDetails" Relationship="Self.FK__Rejection__unitC__72D0F942" FromRole="UnitConvertion" ToRole="RejectionOutDetails" />
           <NavigationProperty Name="SalesDetails" Relationship="Self.FK__SalesDeta__unitC__1DF06171" FromRole="UnitConvertion" ToRole="SalesDetails" />
           <NavigationProperty Name="StockJournalDetails" Relationship="Self.FK__StockJour__unitC__18227982" FromRole="UnitConvertion" ToRole="StockJournalDetail" />
-          <NavigationProperty Name="StockJournalDetails1" Relationship="Self.FK__StockJour__unitC__1FC39B4A" FromRole="UnitConvertion" ToRole="StockJournalDetail" />
-          <NavigationProperty Name="StockJournalDetails2" Relationship="Self.FK__StockJour__unitC__2C29722F" FromRole="UnitConvertion" ToRole="StockJournalDetail" />
-          <NavigationProperty Name="StockJournalDetails3" Relationship="Self.FK__StockJour__unitC__31E24B85" FromRole="UnitConvertion" ToRole="StockJournalDetail" />
           <NavigationProperty Name="Unit" Relationship="Self.FK__UnitConve__unitI__322C6448" FromRole="UnitConvertion" ToRole="Unit" />
         </EntityType>
         <EntityType Name="VoucherType">
@@ -13554,7 +13322,8 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <NavigationProperty Name="SalesMasters" Relationship="Self.FK__SalesMast__vouch__702996C1" FromRole="VoucherType" ToRole="SalesMaster" />
           <NavigationProperty Name="SalesReturnMasters" Relationship="Self.FK__SalesRetu__vouch__65AC084E" FromRole="VoucherType" ToRole="SalesReturnMaster" />
           <NavigationProperty Name="ServiceMasters" Relationship="Self.FK__ServiceMa__vouch__2121D3D7" FromRole="VoucherType" ToRole="ServiceMaster" />
-          <NavigationProperty Name="Stocks" Relationship="Self.FK__Stock__voucherTy__47E69B3D" FromRole="VoucherType" ToRole="Stock" />
+          <NavigationProperty Name="Stocks" Relationship="Self.FK__Stock__againstVo__2C7E77EA" FromRole="VoucherType" ToRole="Stock" />
+          <NavigationProperty Name="Stocks1" Relationship="Self.FK__Stock__voucherTy__2D729C23" FromRole="VoucherType" ToRole="Stock" />
           <NavigationProperty Name="StockJournalMasters" Relationship="Self.FK__StockJour__vouch__267098D9" FromRole="VoucherType" ToRole="StockJournalMaster" />
           <NavigationProperty Name="StockPostings" Relationship="Self.FK__StockPost__vouch__0F6D37F0" FromRole="VoucherType" ToRole="StockPosting" />
           <NavigationProperty Name="SuffixPrefixes" Relationship="Self.FK__SuffixPre__vouch__7740A8A4" FromRole="VoucherType" ToRole="SuffixPrefix" />
@@ -14182,42 +13951,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__StockJour__batch__20B7BF83">
-          <End Role="Batch" Type="Self.Batch" Multiplicity="0..1" />
-          <End Role="StockJournalDetail" Type="Self.StockJournalDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Batch">
-              <PropertyRef Name="batchId" />
-            </Principal>
-            <Dependent Role="StockJournalDetail">
-              <PropertyRef Name="batchId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__StockJour__batch__2D1D9668">
-          <End Role="Batch" Type="Self.Batch" Multiplicity="0..1" />
-          <End Role="StockJournalDetail" Type="Self.StockJournalDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Batch">
-              <PropertyRef Name="batchId" />
-            </Principal>
-            <Dependent Role="StockJournalDetail">
-              <PropertyRef Name="batchId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__StockJour__batch__32D66FBE">
-          <End Role="Batch" Type="Self.Batch" Multiplicity="0..1" />
-          <End Role="StockJournalDetail" Type="Self.StockJournalDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Batch">
-              <PropertyRef Name="batchId" />
-            </Principal>
-            <Dependent Role="StockJournalDetail">
-              <PropertyRef Name="batchId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__StockPost__batch__10615C29">
           <End Role="Batch" Type="Self.Batch" Multiplicity="0..1" />
           <End Role="StockPosting" Type="Self.StockPosting" Multiplicity="*" />
@@ -14518,18 +14251,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Stock__currencyI__2156DE01">
-          <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
-          <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Currency">
-              <PropertyRef Name="currencyID" />
-            </Principal>
-            <Dependent Role="Stock">
-              <PropertyRef Name="currencyID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Supplier__Defaul__4218B34E">
           <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
           <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
@@ -14730,6 +14451,18 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="SaleOrder">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StockRese__Custo__2A962F78">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="StockReserve" Type="Self.StockReserve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StockReserve">
               <PropertyRef Name="CustomerID" />
             </Dependent>
           </ReferentialConstraint>
@@ -15707,42 +15440,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__StockJour__godow__1AFEE62D">
-          <End Role="Godown" Type="Self.Godown" Multiplicity="0..1" />
-          <End Role="StockJournalDetail" Type="Self.StockJournalDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Godown">
-              <PropertyRef Name="godownId" />
-            </Principal>
-            <Dependent Role="StockJournalDetail">
-              <PropertyRef Name="godownId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__StockJour__godow__22A007F5">
-          <End Role="Godown" Type="Self.Godown" Multiplicity="0..1" />
-          <End Role="StockJournalDetail" Type="Self.StockJournalDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Godown">
-              <PropertyRef Name="godownId" />
-            </Principal>
-            <Dependent Role="StockJournalDetail">
-              <PropertyRef Name="godownId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__StockJour__godow__2F05DEDA">
-          <End Role="Godown" Type="Self.Godown" Multiplicity="0..1" />
-          <End Role="StockJournalDetail" Type="Self.StockJournalDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Godown">
-              <PropertyRef Name="godownId" />
-            </Principal>
-            <Dependent Role="StockJournalDetail">
-              <PropertyRef Name="godownId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__StockJour__godow__34BEB830">
           <End Role="Godown" Type="Self.Godown" Multiplicity="0..1" />
           <End Role="StockJournalDetail" Type="Self.StockJournalDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -17002,42 +16699,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__StockJour__rackI__21ABE3BC">
-          <End Role="Rack" Type="Self.Rack" Multiplicity="0..1" />
-          <End Role="StockJournalDetail" Type="Self.StockJournalDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Rack">
-              <PropertyRef Name="rackId" />
-            </Principal>
-            <Dependent Role="StockJournalDetail">
-              <PropertyRef Name="rackId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__StockJour__rackI__2E11BAA1">
-          <End Role="Rack" Type="Self.Rack" Multiplicity="0..1" />
-          <End Role="StockJournalDetail" Type="Self.StockJournalDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Rack">
-              <PropertyRef Name="rackId" />
-            </Principal>
-            <Dependent Role="StockJournalDetail">
-              <PropertyRef Name="rackId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__StockJour__rackI__33CA93F7">
-          <End Role="Rack" Type="Self.Rack" Multiplicity="0..1" />
-          <End Role="StockJournalDetail" Type="Self.StockJournalDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Rack">
-              <PropertyRef Name="rackId" />
-            </Principal>
-            <Dependent Role="StockJournalDetail">
-              <PropertyRef Name="rackId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__StockPost__rackI__133DC8D4">
           <End Role="Rack" Type="Self.Rack" Multiplicity="0..1" />
           <End Role="StockPosting" Type="Self.StockPosting" Multiplicity="*" />
@@ -17578,7 +17239,19 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Stock__voucherTy__47E69B3D">
+        <Association Name="FK__Stock__againstVo__2C7E77EA">
+          <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
+          <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VoucherType">
+              <PropertyRef Name="voucherTypeId" />
+            </Principal>
+            <Dependent Role="Stock">
+              <PropertyRef Name="againstVoucherTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Stock__voucherTy__2D729C23">
           <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
           <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
           <ReferentialConstraint>
@@ -17590,19 +17263,19 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__StockJour__stock__2A4129BD">
-          <End Role="StockJournalMaster" Type="Self.StockJournalMaster" Multiplicity="0..1" />
-          <End Role="StockJournalDetail" Type="Self.StockJournalDetail" Multiplicity="*" />
+        <Association Name="FK__StockRese__Stock__2B8A53B1">
+          <End Role="Stock" Type="Self.Stock" Multiplicity="1" />
+          <End Role="StockReserve" Type="Self.StockReserve" Multiplicity="0..1" />
           <ReferentialConstraint>
-            <Principal Role="StockJournalMaster">
-              <PropertyRef Name="stockJournalMasterId" />
+            <Principal Role="Stock">
+              <PropertyRef Name="StockID" />
             </Principal>
-            <Dependent Role="StockJournalDetail">
-              <PropertyRef Name="stockJournalMasterId" />
+            <Dependent Role="StockReserve">
+              <PropertyRef Name="StockID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__StockJour__stock__2FFA0313">
+        <Association Name="FK__StockJour__stock__2A4129BD">
           <End Role="StockJournalMaster" Type="Self.StockJournalMaster" Multiplicity="0..1" />
           <End Role="StockJournalDetail" Type="Self.StockJournalDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -17626,79 +17299,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__StockJour__unitC__1FC39B4A">
-          <End Role="UnitConvertion" Type="Self.UnitConvertion" Multiplicity="0..1" />
-          <End Role="StockJournalDetail" Type="Self.StockJournalDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UnitConvertion">
-              <PropertyRef Name="unitconversionId" />
-            </Principal>
-            <Dependent Role="StockJournalDetail">
-              <PropertyRef Name="unitConversionId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__StockJour__unitC__2C29722F">
-          <End Role="UnitConvertion" Type="Self.UnitConvertion" Multiplicity="0..1" />
-          <End Role="StockJournalDetail" Type="Self.StockJournalDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UnitConvertion">
-              <PropertyRef Name="unitconversionId" />
-            </Principal>
-            <Dependent Role="StockJournalDetail">
-              <PropertyRef Name="unitConversionId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__StockJour__unitC__31E24B85">
-          <End Role="UnitConvertion" Type="Self.UnitConvertion" Multiplicity="0..1" />
-          <End Role="StockJournalDetail" Type="Self.StockJournalDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UnitConvertion">
-              <PropertyRef Name="unitconversionId" />
-            </Principal>
-            <Dependent Role="StockJournalDetail">
-              <PropertyRef Name="unitConversionId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__StockJour__unitI__172E5549">
-          <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
-          <End Role="StockJournalDetail" Type="Self.StockJournalDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Unit">
-              <PropertyRef Name="unitId" />
-            </Principal>
-            <Dependent Role="StockJournalDetail">
-              <PropertyRef Name="unitId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__StockJour__unitI__1ECF7711">
-          <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
-          <End Role="StockJournalDetail" Type="Self.StockJournalDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Unit">
-              <PropertyRef Name="unitId" />
-            </Principal>
-            <Dependent Role="StockJournalDetail">
-              <PropertyRef Name="unitId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__StockJour__unitI__2B354DF6">
-          <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
-          <End Role="StockJournalDetail" Type="Self.StockJournalDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Unit">
-              <PropertyRef Name="unitId" />
-            </Principal>
-            <Dependent Role="StockJournalDetail">
-              <PropertyRef Name="unitId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__StockJour__unitI__30EE274C">
           <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
           <End Role="StockJournalDetail" Type="Self.StockJournalDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -18111,6 +17712,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <EntitySet Name="StockJournalDetails" EntityType="Self.StockJournalDetail" />
           <EntitySet Name="StockJournalMasters" EntityType="Self.StockJournalMaster" />
           <EntitySet Name="StockPostings" EntityType="Self.StockPosting" />
+          <EntitySet Name="StockReserves" EntityType="Self.StockReserve" />
           <EntitySet Name="SuffixPrefixes" EntityType="Self.SuffixPrefix" />
           <EntitySet Name="SuperDisks" EntityType="Self.SuperDisk" />
           <EntitySet Name="SuperDiskPs" EntityType="Self.SuperDiskP" />
@@ -18296,18 +17898,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="Batch" EntitySet="Batches" />
             <End Role="StockJournalDetail" EntitySet="StockJournalDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__StockJour__batch__20B7BF83" Association="Self.FK__StockJour__batch__20B7BF83">
-            <End Role="Batch" EntitySet="Batches" />
-            <End Role="StockJournalDetail" EntitySet="StockJournalDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK__StockJour__batch__2D1D9668" Association="Self.FK__StockJour__batch__2D1D9668">
-            <End Role="Batch" EntitySet="Batches" />
-            <End Role="StockJournalDetail" EntitySet="StockJournalDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK__StockJour__batch__32D66FBE" Association="Self.FK__StockJour__batch__32D66FBE">
-            <End Role="Batch" EntitySet="Batches" />
-            <End Role="StockJournalDetail" EntitySet="StockJournalDetails" />
-          </AssociationSet>
           <AssociationSet Name="FK__StockPost__batch__10615C29" Association="Self.FK__StockPost__batch__10615C29">
             <End Role="Batch" EntitySet="Batches" />
             <End Role="StockPosting" EntitySet="StockPostings" />
@@ -18408,10 +17998,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="Currency" EntitySet="Currencies" />
             <End Role="Quotation" EntitySet="Quotations" />
           </AssociationSet>
-          <AssociationSet Name="FK__Stock__currencyI__2156DE01" Association="Self.FK__Stock__currencyI__2156DE01">
-            <End Role="Currency" EntitySet="Currencies" />
-            <End Role="Stock" EntitySet="Stocks" />
-          </AssociationSet>
           <AssociationSet Name="FK__Supplier__Defaul__4218B34E" Association="Self.FK__Supplier__Defaul__4218B34E">
             <End Role="Currency" EntitySet="Currencies" />
             <End Role="Supplier" EntitySet="Suppliers" />
@@ -18479,6 +18065,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <AssociationSet Name="FK__SaleOrder__Custo__1CDC41A7" Association="Self.FK__SaleOrder__Custo__1CDC41A7">
             <End Role="Customer" EntitySet="Customers" />
             <End Role="SaleOrder" EntitySet="SaleOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StockRese__Custo__2A962F78" Association="Self.FK__StockRese__Custo__2A962F78">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="StockReserve" EntitySet="StockReserves" />
           </AssociationSet>
           <AssociationSet Name="FK__CustomerA__TownI__2FEF161B" Association="Self.FK__CustomerA__TownI__2FEF161B">
             <End Role="Town" EntitySet="Towns" />
@@ -18805,18 +18395,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="SalesDetails" EntitySet="SalesDetails" />
           </AssociationSet>
           <AssociationSet Name="FK__StockJour__godow__1AFEE62D" Association="Self.FK__StockJour__godow__1AFEE62D">
-            <End Role="Godown" EntitySet="Godowns" />
-            <End Role="StockJournalDetail" EntitySet="StockJournalDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK__StockJour__godow__22A007F5" Association="Self.FK__StockJour__godow__22A007F5">
-            <End Role="Godown" EntitySet="Godowns" />
-            <End Role="StockJournalDetail" EntitySet="StockJournalDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK__StockJour__godow__2F05DEDA" Association="Self.FK__StockJour__godow__2F05DEDA">
-            <End Role="Godown" EntitySet="Godowns" />
-            <End Role="StockJournalDetail" EntitySet="StockJournalDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK__StockJour__godow__34BEB830" Association="Self.FK__StockJour__godow__34BEB830">
             <End Role="Godown" EntitySet="Godowns" />
             <End Role="StockJournalDetail" EntitySet="StockJournalDetails" />
           </AssociationSet>
@@ -19236,18 +18814,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="Rack" EntitySet="Racks" />
             <End Role="StockJournalDetail" EntitySet="StockJournalDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__StockJour__rackI__21ABE3BC" Association="Self.FK__StockJour__rackI__21ABE3BC">
-            <End Role="Rack" EntitySet="Racks" />
-            <End Role="StockJournalDetail" EntitySet="StockJournalDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK__StockJour__rackI__2E11BAA1" Association="Self.FK__StockJour__rackI__2E11BAA1">
-            <End Role="Rack" EntitySet="Racks" />
-            <End Role="StockJournalDetail" EntitySet="StockJournalDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK__StockJour__rackI__33CA93F7" Association="Self.FK__StockJour__rackI__33CA93F7">
-            <End Role="Rack" EntitySet="Racks" />
-            <End Role="StockJournalDetail" EntitySet="StockJournalDetails" />
-          </AssociationSet>
           <AssociationSet Name="FK__StockPost__rackI__133DC8D4" Association="Self.FK__StockPost__rackI__133DC8D4">
             <End Role="Rack" EntitySet="Racks" />
             <End Role="StockPosting" EntitySet="StockPostings" />
@@ -19428,15 +18994,19 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="VoucherType" EntitySet="VoucherTypes" />
             <End Role="ServiceMaster" EntitySet="ServiceMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__Stock__voucherTy__47E69B3D" Association="Self.FK__Stock__voucherTy__47E69B3D">
+          <AssociationSet Name="FK__Stock__againstVo__2C7E77EA" Association="Self.FK__Stock__againstVo__2C7E77EA">
             <End Role="VoucherType" EntitySet="VoucherTypes" />
             <End Role="Stock" EntitySet="Stocks" />
           </AssociationSet>
-          <AssociationSet Name="FK__StockJour__stock__2A4129BD" Association="Self.FK__StockJour__stock__2A4129BD">
-            <End Role="StockJournalMaster" EntitySet="StockJournalMasters" />
-            <End Role="StockJournalDetail" EntitySet="StockJournalDetails" />
+          <AssociationSet Name="FK__Stock__voucherTy__2D729C23" Association="Self.FK__Stock__voucherTy__2D729C23">
+            <End Role="VoucherType" EntitySet="VoucherTypes" />
+            <End Role="Stock" EntitySet="Stocks" />
           </AssociationSet>
-          <AssociationSet Name="FK__StockJour__stock__2FFA0313" Association="Self.FK__StockJour__stock__2FFA0313">
+          <AssociationSet Name="FK__StockRese__Stock__2B8A53B1" Association="Self.FK__StockRese__Stock__2B8A53B1">
+            <End Role="Stock" EntitySet="Stocks" />
+            <End Role="StockReserve" EntitySet="StockReserves" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StockJour__stock__2A4129BD" Association="Self.FK__StockJour__stock__2A4129BD">
             <End Role="StockJournalMaster" EntitySet="StockJournalMasters" />
             <End Role="StockJournalDetail" EntitySet="StockJournalDetails" />
           </AssociationSet>
@@ -19444,31 +19014,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="UnitConvertion" EntitySet="UnitConvertions" />
             <End Role="StockJournalDetail" EntitySet="StockJournalDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__StockJour__unitC__1FC39B4A" Association="Self.FK__StockJour__unitC__1FC39B4A">
-            <End Role="UnitConvertion" EntitySet="UnitConvertions" />
-            <End Role="StockJournalDetail" EntitySet="StockJournalDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK__StockJour__unitC__2C29722F" Association="Self.FK__StockJour__unitC__2C29722F">
-            <End Role="UnitConvertion" EntitySet="UnitConvertions" />
-            <End Role="StockJournalDetail" EntitySet="StockJournalDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK__StockJour__unitC__31E24B85" Association="Self.FK__StockJour__unitC__31E24B85">
-            <End Role="UnitConvertion" EntitySet="UnitConvertions" />
-            <End Role="StockJournalDetail" EntitySet="StockJournalDetails" />
-          </AssociationSet>
           <AssociationSet Name="FK__StockJour__unitI__172E5549" Association="Self.FK__StockJour__unitI__172E5549">
-            <End Role="Unit" EntitySet="Units" />
-            <End Role="StockJournalDetail" EntitySet="StockJournalDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK__StockJour__unitI__1ECF7711" Association="Self.FK__StockJour__unitI__1ECF7711">
-            <End Role="Unit" EntitySet="Units" />
-            <End Role="StockJournalDetail" EntitySet="StockJournalDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK__StockJour__unitI__2B354DF6" Association="Self.FK__StockJour__unitI__2B354DF6">
-            <End Role="Unit" EntitySet="Units" />
-            <End Role="StockJournalDetail" EntitySet="StockJournalDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK__StockJour__unitI__30EE274C" Association="Self.FK__StockJour__unitI__30EE274C">
             <End Role="Unit" EntitySet="Units" />
             <End Role="StockJournalDetail" EntitySet="StockJournalDetails" />
           </AssociationSet>
@@ -21299,7 +20845,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <Parameter Name="salesMasterId" Mode="In" Type="Decimal" />
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
           </FunctionImport>
-          <FunctionImport Name="SalesInvoiceQuantityDetailsAgainstSalesReturn" ReturnType="Collection(Int32)">
+          <FunctionImport Name="SalesInvoiceQuantityDetailsAgainstSalesReturn">
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
             <Parameter Name="voucherNo" Mode="In" Type="String" />
           </FunctionImport>
@@ -25995,15 +25541,14 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <EntityTypeMapping TypeName="IMEModel.Stock">
               <MappingFragment StoreEntitySet="Stock">
                 <ScalarProperty Name="StockID" ColumnName="StockID" />
-                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
-                <ScalarProperty Name="Quantitiy" ColumnName="Quantitiy" />
-                <ScalarProperty Name="againstVoucherTypeId" ColumnName="againstVoucherTypeId" />
-                <ScalarProperty Name="againstVoucherNo" ColumnName="againstVoucherNo" />
-                <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="ReserveQty" ColumnName="ReserveQty" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
                 <ScalarProperty Name="voucherNo" ColumnName="voucherNo" />
-                <ScalarProperty Name="ItemDesc" ColumnName="ItemDesc" />
-                <ScalarProperty Name="Rate" ColumnName="Rate" />
-                <ScalarProperty Name="currencyID" ColumnName="currencyID" />
+                <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
+                <ScalarProperty Name="againstVoucherNo" ColumnName="againstVoucherNo" />
+                <ScalarProperty Name="againstVoucherTypeId" ColumnName="againstVoucherTypeId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -26062,6 +25607,18 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="outwardQty" ColumnName="outwardQty" />
                 <ScalarProperty Name="rate" ColumnName="rate" />
                 <ScalarProperty Name="financialYearId" ColumnName="financialYearId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StockReserves">
+            <EntityTypeMapping TypeName="IMEModel.StockReserve">
+              <MappingFragment StoreEntitySet="StockReserve">
+                <ScalarProperty Name="ReserveID" ColumnName="ReserveID" />
+                <ScalarProperty Name="StockID" ColumnName="StockID" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="ValidationDate" ColumnName="ValidationDate" />
+                <ScalarProperty Name="IsFromRSInvoice" ColumnName="IsFromRSInvoice" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

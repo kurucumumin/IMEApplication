@@ -1893,6 +1893,12 @@
     <Compile Include="DataSet\SlidingPrice.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\sp_helpdiagrams_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\Stock.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1903,6 +1909,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\StockPosting.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\StockReserve.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SuffixPrefix.cs">
@@ -2106,6 +2115,12 @@
     <Compile Include="PurchaseOrder\FormBillTo.Designer.cs">
       <DependentUpon>FormBillTo.cs</DependentUpon>
     </Compile>
+    <Compile Include="PurchaseOrder\StockDevelopment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseOrder\StockDevelopment.Designer.cs">
+      <DependentUpon>StockDevelopment.cs</DependentUpon>
+    </Compile>
     <Compile Include="PurchaseOrder\frmStock.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2202,12 +2217,6 @@
     <Compile Include="QuotationModule\ViewProductHistory.Designer.cs">
       <DependentUpon>ViewProductHistory.cs</DependentUpon>
     </Compile>
-    <Compile Include="SaleOrder\FormSaleOrderAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SaleOrder\FormSaleOrderAdd.designer.cs">
-      <DependentUpon>FormSaleOrderAdd.cs</DependentUpon>
-    </Compile>
     <Compile Include="SaleOrder\FormSaleOrderCreate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2232,11 +2241,11 @@
     <Compile Include="SaleOrder\FormSaleGridCustomize.Designer.cs">
       <DependentUpon>FormSaleGridCustomize.cs</DependentUpon>
     </Compile>
-    <Compile Include="SaleOrder\SaleDevelopment.cs">
+    <Compile Include="SaleOrder\FormSaleOrderAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SaleOrder\SaleDevelopment.designer.cs">
-      <DependentUpon>SaleDevelopment.cs</DependentUpon>
+    <Compile Include="SaleOrder\FormSaleOrderAdd.designer.cs">
+      <DependentUpon>FormSaleOrderAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="SaleOrder\SalesOrderHelper.cs" />
     <Compile Include="Services\BackUpAndRestore.cs" />
@@ -2656,6 +2665,9 @@
     <EmbeddedResource Include="PurchaseOrder\FormBillTo.resx">
       <DependentUpon>FormBillTo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseOrder\StockDevelopment.resx">
+      <DependentUpon>StockDevelopment.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PurchaseOrder\frmStock.resx">
       <DependentUpon>frmStock.cs</DependentUpon>
     </EmbeddedResource>
@@ -2704,9 +2716,6 @@
     <EmbeddedResource Include="QuotationModule\ViewProductHistory.resx">
       <DependentUpon>ViewProductHistory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SaleOrder\FormSaleOrderAdd.resx">
-      <DependentUpon>FormSaleOrderAdd.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="SaleOrder\FormSaleOrderCreate.resx">
       <DependentUpon>FormSaleOrderCreate.cs</DependentUpon>
     </EmbeddedResource>
@@ -2719,8 +2728,8 @@
     <EmbeddedResource Include="SaleOrder\FormSaleGridCustomize.resx">
       <DependentUpon>FormSaleGridCustomize.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SaleOrder\SaleDevelopment.resx">
-      <DependentUpon>SaleDevelopment.cs</DependentUpon>
+    <EmbeddedResource Include="SaleOrder\FormSaleOrderAdd.resx">
+      <DependentUpon>FormSaleOrderAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Supplier\frmSupplierMain.resx">
       <DependentUpon>frmSupplierMain.cs</DependentUpon>
@@ -2766,6 +2775,7 @@
     <None Include="Properties\DataSources\LoginForm.DataSet.QuotationDelivery.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.QuotationDetail.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.RoleValue.datasource" />
+    <None Include="Properties\DataSources\LoginForm.DataSet.Stock.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.Supplier.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.Supplier1.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.Worker.datasource" />

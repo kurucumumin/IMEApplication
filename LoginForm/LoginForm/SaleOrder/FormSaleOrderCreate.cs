@@ -43,7 +43,7 @@ namespace LoginForm.nsSaleOrder
             //    }
             //}
 
-            List<Quotation> QuoList = IME.Quotations.Where(x=>x.stats == "Active").ToList();
+            List<Quotation> QuoList = IME.Quotations.Where(x=>x.status == "Active").ToList();
 
             foreach (Quotation q in QuoList)
             {
@@ -139,8 +139,8 @@ namespace LoginForm.nsSaleOrder
                         quotationIDs += " , ";
                     }
                 }
-                
-                SaleDevelopment form1 = new SaleDevelopment((Customer)lbCustomerList.SelectedItem, list, quotationIDs);
+
+                FormSaleOrderAdd form1 = new FormSaleOrderAdd((Customer)lbCustomerList.SelectedItem, list, quotationIDs);
                 ////TODO form tekrar açılıp kapatımış. Doğru olan yöntemi bul
                 //FormSalesOrderMain f = new FormSalesOrderMain();
                 //f.Close();
@@ -149,7 +149,7 @@ namespace LoginForm.nsSaleOrder
             }
             else
             {
-                SaleDevelopment form1 = new SaleDevelopment((Customer)lbCustomerList.SelectedItem);
+                FormSaleOrderAdd form1 = new FormSaleOrderAdd((Customer)lbCustomerList.SelectedItem);
                 //TODO form tekrar açılıp kapatımış. Doğru olan yöntemi bul
                 FormSalesOrderMain f = new FormSalesOrderMain();
                 form1.Show();

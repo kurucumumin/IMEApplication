@@ -45,6 +45,7 @@ namespace LoginForm.DataSet
             this.SalesReturnMasters = new HashSet<SalesReturnMaster>();
             this.ServiceMasters = new HashSet<ServiceMaster>();
             this.Stocks = new HashSet<Stock>();
+            this.Stocks1 = new HashSet<Stock>();
             this.StockJournalMasters = new HashSet<StockJournalMaster>();
             this.StockPostings = new HashSet<StockPosting>();
             this.SuffixPrefixes = new HashSet<SuffixPrefix>();
@@ -123,6 +124,8 @@ namespace LoginForm.DataSet
         public virtual ICollection<ServiceMaster> ServiceMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Stock> Stocks { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Stock> Stocks1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StockJournalMaster> StockJournalMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
