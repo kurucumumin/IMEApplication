@@ -3187,6 +3187,22 @@ namespace LoginForm
                             if (lines[a].Substring(153, 40).ToString().Trim() != "") rs.ArticleDescription = lines[a].Substring(153, 40).ToString().Trim();
                             if (lines[a].Substring(193, 10).ToString().Trim() != "") rs.DeliveryNumber = decimal.Parse(lines[a].Substring(193, 10).ToString().Trim());
                             if (lines[a].Substring(203, 6).ToString().Trim() != "") rs.DeliveryItemNumber = Int32.Parse(lines[a].Substring(203, 6).ToString().Trim());
+                            //For Stock Table
+                            #region StockApplication
+                            int poID = Int32.Parse(rs.PurchaseOrderNumber.ToString().Substring(1, rs.PurchaseOrderNumber.ToString().IndexOf("RS")));
+                            
+                            if (IME.PurchaseOrders.Where(x => x.purchaseOrderId == poID).FirstOrDefault().CustomerID != null && IME.PurchaseOrders.Where(x => x.purchaseOrderId == poID).FirstOrDefault().CustomerID != "")
+                            {
+                                string product = rs.ProductNumber;
+                                int Qty = Int32.Parse(rs.Quantity.ToString());
+                                IME.Stocks.Where()
+                            }
+                            else
+                            {
+
+                            }
+                            #endregion
+
                             IME.RS_InvoiceDetailsADD(
                                 rs.RS_InvoiceID
                                 , rs.PurchaseOrderNumber
@@ -3206,6 +3222,7 @@ namespace LoginForm
                                 , rs.DeliveryItemNumber
                                 );
                             IME.SaveChanges();
+                            
                         }
                         a++;
                     }
@@ -3257,8 +3274,11 @@ namespace LoginForm
 
         }
 
+     
+
     }
 
+   
     class QuotationExcelExport
     {
         
