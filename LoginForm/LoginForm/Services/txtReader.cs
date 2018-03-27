@@ -61,7 +61,7 @@ namespace LoginForm
                     }
                     a++;
                 }
-                
+
                 IME.OrderAcknowledgements.Add(oa);
                 IME.SaveChanges();
                 int OrderAcknowledgementID = oa.ID;
@@ -3106,13 +3106,13 @@ namespace LoginForm
             openFileDialog1.Filter = "txt files (*.txt)|*.txt";
             openFileDialog1.Multiselect = true;
             DialogResult result1 = openFileDialog1.ShowDialog();
-            
+
             if (result1 == DialogResult.OK) // Test result.
             {
-                
 
-                
-                
+
+
+
                 for (int i = 0; i < openFileDialog1.FileNames.Count(); i++)
                 {
                     string[] lines = System.IO.File.ReadAllLines(openFileDialog1.FileNames[i]);
@@ -3189,17 +3189,47 @@ namespace LoginForm
                             if (lines[a].Substring(203, 6).ToString().Trim() != "") rs.DeliveryItemNumber = Int32.Parse(lines[a].Substring(203, 6).ToString().Trim());
                             //For Stock Table
                             #region StockApplication
-                            int poID = Int32.Parse(rs.PurchaseOrderNumber.ToString().Substring(1, rs.PurchaseOrderNumber.ToString().IndexOf("RS")));
-                            
-                            if (IME.PurchaseOrders.Where(x => x.purchaseOrderId == poID).FirstOrDefault().CustomerID != null && IME.PurchaseOrders.Where(x => x.purchaseOrderId == poID).FirstOrDefault().CustomerID != "")
-                            {
-                                string product = rs.ProductNumber;
-                                int Qty = Int32.Parse(rs.Quantity.ToString());
-                                //IME.Stocks.Where();
-                            }
-                            else
+                            int poID=Convert.ToInt32(rs.PurchaseOrderNumber.ToString().Substring(1, rs.PurchaseOrderNumber.ToString().IndexOf("RS")-1).ToString());
+                            string product = rs.ProductNumber;
+                            int Qty = Convert.ToInt32(rs.Quantity);
+                            if (IME.PurchaseOrders.Where(x => x.purchaseOrderId == poID).FirstOrDefault() != null && IME.PurchaseOrders.Where(x => x.purchaseOrderId == poID).FirstOrDefault().Customer!=null)
                             {
 
+                                Stock StockInfo= IME.Stocks.Where(x => x.ProductID == product).FirstOrDefault();
+                                if (StockInfo==null)
+                                {
+                                    StockInfo = new Stock();
+                                    StockInfo.ProductID = product;
+                                    StockInfo.Qty = Qty;
+                                    StockInfo.ReserveQty = Qty;
+                                    IME.Stocks.Add(StockInfo);
+                                    IME.SaveChanges();
+                                    StockReserve sr = new StockReserve();
+                                    sr.Qty = Qty;
+                                    sr.StockID = StockInfo.StockID;
+                                    sr.IsFromRSInvoice = true;
+                                    IME.StockReserves.Add(sr);
+                                    IME.SaveChanges();
+                                }
+                                else
+                                {
+                                    StockInfo.Qty = StockInfo.Qty+Qty;
+                                    StockInfo.ReserveQty = StockInfo.ReserveQty + Qty;
+                                    IME.SaveChanges();
+                                    StockReserve sr = new StockReserve();
+                                    sr.Qty = Qty;
+                                    sr.StockID = StockInfo.StockID;
+                                    sr.IsFromRSInvoice = true;
+                                    IME.StockReserves.Add(sr);
+                                    IME.SaveChanges();
+                                }
+                            }
+                            else
+                            {//Bizim stockumuz için demek
+                                Stock stockInfo = new Stock();
+                                stockInfo.ProductID = product;
+                                stockInfo.Qty = Qty;
+                                stockInfo.ReserveQty = 0;
                             }
                             #endregion
 
@@ -3222,7 +3252,7 @@ namespace LoginForm
                                 , rs.DeliveryItemNumber
                                 );
                             IME.SaveChanges();
-                            
+
                         }
                         a++;
                     }
@@ -3274,14 +3304,14 @@ namespace LoginForm
 
         }
 
-     
+
 
     }
 
-   
+
     class QuotationExcelExport
     {
-        
+
         public static void Export(DataGridView dg,string quotationNo, List<bool> ischecked)
         {
             #region Copy All Items
@@ -3349,13 +3379,13 @@ namespace LoginForm
             xlexcel.Visible = true;
             xlWorkBook = xlexcel.Workbooks.Add(misValue);
             xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-            int columnnumber = 0; 
+            int columnnumber = 0;
             for (int j = 0; j <= dg.ColumnCount - 1; j++)
             {
                  xlWorkSheet.Cells[1, j + 1] = dg.Columns[j].HeaderText;
                 columnnumber++;
             }
-            xlWorkSheet.Cells[1, columnnumber + 1] = start.ToString() + "-" + End.ToString(); 
+            xlWorkSheet.Cells[1, columnnumber + 1] = start.ToString() + "-" + End.ToString();
             for (int i = 0; i < dg.RowCount; i++)
             {
                 for (int j = 0; j < dg.ColumnCount; j++)
