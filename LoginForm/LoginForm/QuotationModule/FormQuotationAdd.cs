@@ -1642,7 +1642,7 @@ namespace LoginForm.QuotationModule
         private void QuotationSave()
         {
             DataSet.Quotation q = new DataSet.Quotation();
-            q.stats = QuoStatusActive;
+            q.status = QuoStatusActive;
             string qNo = txtQuotationNo.Text;
 
             if(IME.Quotations.Where(a => a.QuotationNo == qNo).FirstOrDefault() != null)
@@ -1716,7 +1716,7 @@ namespace LoginForm.QuotationModule
                 txtQuotationNo.Text = q1.QuotationNo + "v1";
             }
             Quotation q = new Quotation();
-            q.stats = QuoStatusActive;
+            q.status = QuoStatusActive;
             q.QuotationNo = txtQuotationNo.Text;
             q.RFQNo = txtRFQNo.Text;
             try { q.SubTotal = decimal.Parse(lblsubtotal.Text); } catch { }

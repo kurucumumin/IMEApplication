@@ -43,7 +43,7 @@ namespace LoginForm.nsSaleOrder
             //    }
             //}
 
-            List<Quotation> QuoList = IME.Quotations.Where(x=>x.stats == "Active").ToList();
+            List<Quotation> QuoList = IME.Quotations.Where(x=>x.status == "Active").ToList();
 
             foreach (Quotation q in QuoList)
             {
