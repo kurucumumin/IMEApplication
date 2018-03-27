@@ -61,6 +61,7 @@ namespace LoginForm
         decimal decDeliveryNoteQty = 0;//To check quantity of sale against delivery note
         DataTable dtblDeliveryNoteDetails = new DataTable();
         public static Customer customer;
+        string StockReserveProductID = string.Empty;
 
         #endregion
         #region Functions
@@ -499,7 +500,7 @@ namespace LoginForm
                 {
                     if (cmbSalesMode.Text == "Against SalesOrder")
                     {
-                        dtbl = spSalesOrderMaster.GetSalesOrderNoIncludePendingCorrespondingtoLedgerforSI(Convert.ToDecimal(((System.Data.DataRowView)cmbCashOrParty.SelectedValue).Row.ItemArray[1]), decSalesInvoiceIdToEdit, Convert.ToDecimal(
+                        dtbl = spSalesOrderMaster.GetSalesOrderNoIncludePendingCorrespondingtoLedgerforSI(Convert.ToDecimal(cmbCashOrParty.SelectedValue), decSalesInvoiceIdToEdit, Convert.ToDecimal(
                                cmbVoucherType.SelectedValue.ToString()
                                 ));
                         DataRow dr = dtbl.NewRow();
@@ -2794,6 +2795,7 @@ namespace LoginForm
                                         RemoveIncompleteRowsFromAdditionalCostGrid();
                                         SaveFunction();
                                         MessageBox.Show("Saved successfully");
+                                        DeleteStockReserve();
                                     }
                                 }
                             }
@@ -3061,7 +3063,8 @@ namespace LoginForm
                                 InfoSalesDetails.quotationDetailsId = null;
                             }
                             InfoSalesDetails.slNo = Convert.ToInt32(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceSlno"].Value.ToString());
-                            InfoSalesDetails.productId = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceProductCode"].Value.ToString());
+                            InfoSalesDetails.productId = dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceProductCode"].Value.ToString();
+                            StockReserveProductID = InfoSalesDetails.productId;
                             InfoSalesDetails.qty = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceQty"].Value.ToString());
                             //TODO: Rate olayını düzeltmemiz lazım.
                             InfoSalesDetails.rate = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceRate"].Value);
@@ -4168,7 +4171,7 @@ namespace LoginForm
                                     InfoSalesDetails.quotationDetailsId = null;
                                 }
                                 InfoSalesDetails.slNo = Convert.ToInt32(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceSlno"].Value.ToString());
-                                InfoSalesDetails.productId = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceProductId"].Value.ToString());
+                                InfoSalesDetails.productId = dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceProductId"].Value.ToString();
                                 decimal decQty = spSalesMaster.SalesInvoiceQuantityDetailsAgainstSalesReturn(DecSalesInvoiceVoucherTypeId, strVoucherNo);
                                 if (Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceQty"].Value.ToString()) < decQty)
                                 {
@@ -4232,7 +4235,7 @@ namespace LoginForm
                         InfoSalesDetails.salesDetailsId = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceSalesDetailsId"].Value);
                         InfoSalesDetails.slNo = Convert.ToInt32(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceSlno"].Value.ToString());
                         // TODO 4 : productID Int değil
-                        InfoSalesDetails.productId = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceProductId"].Value.ToString());
+                        InfoSalesDetails.productId = dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceProductId"].Value.ToString();
                         InfoSalesDetails.qty = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceQty"].Value.ToString());
                         InfoSalesDetails.unitId = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoicembUnitName"].Value.ToString());
                         InfoSalesDetails.unitConversionId = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceUnitConversionId"].Value.ToString());
@@ -7247,12 +7250,27 @@ namespace LoginForm
             }
         }
 
-
         private void btnTakeFromRSInvoice_Click(object sender, EventArgs e)
         {
             RSInvToSaleInv frm = new RSInvToSaleInv();
             frm.Show();
             this.Close();
+        }
+
+        private void DeleteStockReserve()
+        {
+            IMEEntities db = new IMEEntities();
+            try
+            {
+                StockReserve sr = db.StockReserves.Where(x => x.ProductID == StockReserveProductID && x.CustomerID ==txtCustomer.Text).FirstOrDefault();
+                db.StockReserves.Remove(sr);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
         }
     }
 }
