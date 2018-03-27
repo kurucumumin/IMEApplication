@@ -3195,7 +3195,7 @@ namespace LoginForm
                             {
                                 string product = rs.ProductNumber;
                                 int Qty = Int32.Parse(rs.Quantity.ToString());
-                                IME.Stocks.Where()
+                                //IME.Stocks.Where();
                             }
                             else
                             {
