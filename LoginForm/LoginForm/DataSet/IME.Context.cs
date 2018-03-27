@@ -155,6 +155,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<StockJournalDetail> StockJournalDetails { get; set; }
         public virtual DbSet<StockJournalMaster> StockJournalMasters { get; set; }
         public virtual DbSet<StockPosting> StockPostings { get; set; }
+        public virtual DbSet<StockReserve> StockReserves { get; set; }
         public virtual DbSet<SuffixPrefix> SuffixPrefixes { get; set; }
         public virtual DbSet<SuperDisk> SuperDisks { get; set; }
         public virtual DbSet<SuperDiskP> SuperDiskPs { get; set; }
@@ -6217,7 +6218,7 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SalesInvoiceGridfillAgainestSalesOrderUsingSalesDetails_Result>("SalesInvoiceGridfillAgainestSalesOrderUsingSalesDetails", salesOrderMasterIdParameter, salesMasterIdParameter, voucherTypeIdParameter);
         }
     
-        public virtual ObjectResult<Nullable<int>> SalesInvoiceQuantityDetailsAgainstSalesReturn(Nullable<decimal> voucherTypeId, string voucherNo)
+        public virtual int SalesInvoiceQuantityDetailsAgainstSalesReturn(Nullable<decimal> voucherTypeId, string voucherNo)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
@@ -6227,7 +6228,7 @@ namespace LoginForm.DataSet
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("SalesInvoiceQuantityDetailsAgainstSalesReturn", voucherTypeIdParameter, voucherNoParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SalesInvoiceQuantityDetailsAgainstSalesReturn", voucherTypeIdParameter, voucherNoParameter);
         }
     
         public virtual ObjectResult<Nullable<decimal>> SalesInvoiceReciptVoucherDetailsAgainstSI(Nullable<decimal> voucherTypeId, string voucherNo)

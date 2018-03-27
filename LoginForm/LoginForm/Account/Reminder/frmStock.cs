@@ -179,14 +179,14 @@ namespace LoginForm.Account
         {
 
             DataTable dtbl = new DataTable();
-            dtbl.Columns.Add("productName");
-            dtbl.Columns.Add("productId");
+            dtbl.Columns.Add("ProductName");
+            dtbl.Columns.Add("ProductID");
             IMEEntities IME = new IMEEntities();
             foreach (var item in IME.Stocks.ToList())
             {
                 DataRow dr1 = dtbl.NewRow();
-                dr1["productName"] = item.ItemCode;
-                dr1["productId"] = item.ItemCode;
+                dr1["ProductName"] = item.ProductName;
+                dr1["ProductID"] = item.ProductID;
                 dtbl.Rows.Add(dr1);
             }
 
@@ -195,8 +195,8 @@ namespace LoginForm.Account
             dr["productId"] = 0;
             dtbl.Rows.InsertAt(dr, 0);
             cmbGroup.DataSource = dtbl;
-            cmbGroup.DisplayMember = "productName";
-            cmbGroup.ValueMember = "productId";
+            cmbGroup.DisplayMember = "ProductName";
+            cmbGroup.ValueMember = "ProductID";
 
         }
         /// <summary>
@@ -306,8 +306,8 @@ namespace LoginForm.Account
                 //TODO dataset den sonra tekrar bak
                 DataRow dr1 = dtbl.NewRow();
                // dr1["productName"] = item.ItemDesc;
-                dr1["productCode"] = item.ItemCode;
-                dr1["CurrentStock"] = item.Quantitiy;
+                dr1["productCode"] = item.ProductID;
+                dr1["CurrentStock"] = item.Qty;
                 //dr1["brandName"]=item
                 //dr1["salesRate"] = item.rate;
                 dtbl.Rows.Add(dr1);

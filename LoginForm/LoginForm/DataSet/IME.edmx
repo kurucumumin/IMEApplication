@@ -1930,16 +1930,15 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Key>
             <PropertyRef Name="StockID" />
           </Key>
-          <Property Name="StockID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ItemCode" Type="nvarchar" MaxLength="20" />
-          <Property Name="Quantitiy" Type="int" />
-          <Property Name="againstVoucherTypeId" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="againstVoucherNo" Type="varchar(max)" />
-          <Property Name="voucherTypeId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="StockID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductID" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Qty" Type="int" Nullable="false" />
+          <Property Name="ReserveQty" Type="int" Nullable="false" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="50" />
           <Property Name="voucherNo" Type="varchar(max)" />
-          <Property Name="ItemDesc" Type="nvarchar" MaxLength="50" />
-          <Property Name="Rate" Type="decimal" Precision="18" Scale="5" />
-          <Property Name="currencyID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="voucherTypeId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="againstVoucherNo" Type="varchar(max)" />
+          <Property Name="againstVoucherTypeId" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="StockJournalDetail">
           <Key>
@@ -1995,6 +1994,17 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="outwardQty" Type="decimal" Precision="18" Scale="5" />
           <Property Name="rate" Type="decimal" Precision="18" Scale="5" />
           <Property Name="financialYearId" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="StockReserve">
+          <Key>
+            <PropertyRef Name="StockID" />
+          </Key>
+          <Property Name="ReserveID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StockID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Qty" Type="int" Nullable="false" />
+          <Property Name="CustomerID" Type="nvarchar" MaxLength="15" />
+          <Property Name="ValidationDate" Type="datetime" />
+          <Property Name="IsFromRSInvoice" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="SuffixPrefix">
           <Key>
@@ -5820,19 +5830,19 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Stock__currencyI__2156DE01">
-          <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+        <Association Name="FK__Stock__againstVo__4826925F">
+          <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
           <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Currency">
-              <PropertyRef Name="currencyID" />
+            <Principal Role="VoucherType">
+              <PropertyRef Name="voucherTypeId" />
             </Principal>
             <Dependent Role="Stock">
-              <PropertyRef Name="currencyID" />
+              <PropertyRef Name="againstVoucherTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Stock__voucherTy__47E69B3D">
+        <Association Name="FK__Stock__voucherTy__491AB698">
           <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
           <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
           <ReferentialConstraint>
@@ -6213,6 +6223,30 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Principal>
             <Dependent Role="StockPosting">
               <PropertyRef Name="voucherTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StockRese__Custo__463E49ED">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="StockReserve" Type="Self.StockReserve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StockReserve">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StockRese__Stock__47326E26">
+          <End Role="Stock" Type="Self.Stock" Multiplicity="1" />
+          <End Role="StockReserve" Type="Self.StockReserve" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Stock">
+              <PropertyRef Name="StockID" />
+            </Principal>
+            <Dependent Role="StockReserve">
+              <PropertyRef Name="StockID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -9158,6 +9192,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <EntitySet Name="StockJournalDetail" EntityType="Self.StockJournalDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StockJournalMaster" EntityType="Self.StockJournalMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StockPosting" EntityType="Self.StockPosting" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StockReserve" EntityType="Self.StockReserve" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SuffixPrefix" EntityType="Self.SuffixPrefix" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SuperDisk" EntityType="Self.SuperDisk" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SuperDiskP" EntityType="Self.SuperDiskP" Schema="dbo" store:Type="Tables" />
@@ -10369,11 +10404,11 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="ServiceMaster" EntitySet="ServiceMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__Stock__currencyI__2156DE01" Association="Self.FK__Stock__currencyI__2156DE01">
-            <End Role="Currency" EntitySet="Currency" />
+          <AssociationSet Name="FK__Stock__againstVo__4826925F" Association="Self.FK__Stock__againstVo__4826925F">
+            <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="Stock" EntitySet="Stock" />
           </AssociationSet>
-          <AssociationSet Name="FK__Stock__voucherTy__47E69B3D" Association="Self.FK__Stock__voucherTy__47E69B3D">
+          <AssociationSet Name="FK__Stock__voucherTy__491AB698" Association="Self.FK__Stock__voucherTy__491AB698">
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="Stock" EntitySet="Stock" />
           </AssociationSet>
@@ -10500,6 +10535,14 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <AssociationSet Name="FK__StockPost__vouch__0F6D37F0" Association="Self.FK__StockPost__vouch__0F6D37F0">
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="StockPosting" EntitySet="StockPosting" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StockRese__Custo__463E49ED" Association="Self.FK__StockRese__Custo__463E49ED">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="StockReserve" EntitySet="StockReserve" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StockRese__Stock__47326E26" Association="Self.FK__StockRese__Stock__47326E26">
+            <End Role="Stock" EntitySet="Stock" />
+            <End Role="StockReserve" EntitySet="StockReserve" />
           </AssociationSet>
           <AssociationSet Name="FK__SuffixPre__vouch__7740A8A4" Association="Self.FK__SuffixPre__vouch__7740A8A4">
             <End Role="VoucherType" EntitySet="VoucherType" />
@@ -11018,7 +11061,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <NavigationProperty Name="Companies" Relationship="Self.FK__Company__currenc__0371755F" FromRole="Currency" ToRole="Company" />
           <NavigationProperty Name="Managements" Relationship="Self.FK__Managemen__Defau__253C7D7E" FromRole="Currency" ToRole="Management" />
           <NavigationProperty Name="Quotations" Relationship="Self.FK__Quotation__Curre__0A096455" FromRole="Currency" ToRole="Quotation" />
-          <NavigationProperty Name="Stocks" Relationship="Self.FK__Stock__currencyI__2156DE01" FromRole="Currency" ToRole="Stock" />
           <NavigationProperty Name="Suppliers" Relationship="Self.FK__Supplier__Defaul__4218B34E" FromRole="Currency" ToRole="Supplier" />
           <NavigationProperty Name="ExchangeRates" Relationship="Self.FK__tbl_Excha__curre__52442E1F" FromRole="Currency" ToRole="ExchangeRate" />
         </EntityType>
@@ -11072,6 +11114,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <NavigationProperty Name="PurchaseOrders" Relationship="Self.FK__PurchaseO__Custo__420DC656" FromRole="Customer" ToRole="PurchaseOrder" />
           <NavigationProperty Name="Quotations" Relationship="Self.FK__Quotation__Custo__00750D23" FromRole="Customer" ToRole="Quotation" />
           <NavigationProperty Name="SaleOrders" Relationship="Self.FK__SaleOrder__Custo__1CDC41A7" FromRole="Customer" ToRole="SaleOrder" />
+          <NavigationProperty Name="StockReserves" Relationship="Self.FK__StockRese__Custo__463E49ED" FromRole="Customer" ToRole="StockReserve" />
         </EntityType>
         <EntityType Name="CustomerAddress">
           <Key>
@@ -13074,18 +13117,18 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Key>
             <PropertyRef Name="StockID" />
           </Key>
-          <Property Name="StockID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ItemCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Quantitiy" Type="Int32" />
-          <Property Name="againstVoucherTypeId" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="againstVoucherNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="voucherTypeId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="StockID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Qty" Type="Int32" Nullable="false" />
+          <Property Name="ReserveQty" Type="Int32" Nullable="false" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="voucherNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ItemDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Rate" Type="Decimal" Precision="18" Scale="5" />
-          <Property Name="currencyID" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="Currency" Relationship="Self.FK__Stock__currencyI__2156DE01" FromRole="Stock" ToRole="Currency" />
-          <NavigationProperty Name="VoucherType" Relationship="Self.FK__Stock__voucherTy__47E69B3D" FromRole="Stock" ToRole="VoucherType" />
+          <Property Name="voucherTypeId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="againstVoucherNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="againstVoucherTypeId" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="VoucherType" Relationship="Self.FK__Stock__againstVo__4826925F" FromRole="Stock" ToRole="VoucherType" />
+          <NavigationProperty Name="VoucherType1" Relationship="Self.FK__Stock__voucherTy__491AB698" FromRole="Stock" ToRole="VoucherType" />
+          <NavigationProperty Name="StockReserve" Relationship="Self.FK__StockRese__Stock__47326E26" FromRole="Stock" ToRole="StockReserve" />
         </EntityType>
         <EntityType Name="StockJournalDetail">
           <Key>
@@ -13174,6 +13217,19 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <NavigationProperty Name="Rack" Relationship="Self.FK__StockPost__rackI__133DC8D4" FromRole="StockPosting" ToRole="Rack" />
           <NavigationProperty Name="Unit" Relationship="Self.FK__StockPost__unitI__11558062" FromRole="StockPosting" ToRole="Unit" />
           <NavigationProperty Name="VoucherType" Relationship="Self.FK__StockPost__vouch__0F6D37F0" FromRole="StockPosting" ToRole="VoucherType" />
+        </EntityType>
+        <EntityType Name="StockReserve">
+          <Key>
+            <PropertyRef Name="StockID" />
+          </Key>
+          <Property Name="ReserveID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StockID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Qty" Type="Int32" Nullable="false" />
+          <Property Name="CustomerID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="ValidationDate" Type="DateTime" Precision="3" />
+          <Property Name="IsFromRSInvoice" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__StockRese__Custo__463E49ED" FromRole="StockReserve" ToRole="Customer" />
+          <NavigationProperty Name="Stock" Relationship="Self.FK__StockRese__Stock__47326E26" FromRole="StockReserve" ToRole="Stock" />
         </EntityType>
         <EntityType Name="SuffixPrefix">
           <Key>
@@ -13554,7 +13610,8 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <NavigationProperty Name="SalesMasters" Relationship="Self.FK__SalesMast__vouch__702996C1" FromRole="VoucherType" ToRole="SalesMaster" />
           <NavigationProperty Name="SalesReturnMasters" Relationship="Self.FK__SalesRetu__vouch__65AC084E" FromRole="VoucherType" ToRole="SalesReturnMaster" />
           <NavigationProperty Name="ServiceMasters" Relationship="Self.FK__ServiceMa__vouch__2121D3D7" FromRole="VoucherType" ToRole="ServiceMaster" />
-          <NavigationProperty Name="Stocks" Relationship="Self.FK__Stock__voucherTy__47E69B3D" FromRole="VoucherType" ToRole="Stock" />
+          <NavigationProperty Name="Stocks" Relationship="Self.FK__Stock__againstVo__4826925F" FromRole="VoucherType" ToRole="Stock" />
+          <NavigationProperty Name="Stocks1" Relationship="Self.FK__Stock__voucherTy__491AB698" FromRole="VoucherType" ToRole="Stock" />
           <NavigationProperty Name="StockJournalMasters" Relationship="Self.FK__StockJour__vouch__267098D9" FromRole="VoucherType" ToRole="StockJournalMaster" />
           <NavigationProperty Name="StockPostings" Relationship="Self.FK__StockPost__vouch__0F6D37F0" FromRole="VoucherType" ToRole="StockPosting" />
           <NavigationProperty Name="SuffixPrefixes" Relationship="Self.FK__SuffixPre__vouch__7740A8A4" FromRole="VoucherType" ToRole="SuffixPrefix" />
@@ -14518,18 +14575,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Stock__currencyI__2156DE01">
-          <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
-          <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Currency">
-              <PropertyRef Name="currencyID" />
-            </Principal>
-            <Dependent Role="Stock">
-              <PropertyRef Name="currencyID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Supplier__Defaul__4218B34E">
           <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
           <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
@@ -14730,6 +14775,18 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="SaleOrder">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StockRese__Custo__463E49ED">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="StockReserve" Type="Self.StockReserve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StockReserve">
               <PropertyRef Name="CustomerID" />
             </Dependent>
           </ReferentialConstraint>
@@ -17578,7 +17635,19 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Stock__voucherTy__47E69B3D">
+        <Association Name="FK__Stock__againstVo__4826925F">
+          <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
+          <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VoucherType">
+              <PropertyRef Name="voucherTypeId" />
+            </Principal>
+            <Dependent Role="Stock">
+              <PropertyRef Name="againstVoucherTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Stock__voucherTy__491AB698">
           <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
           <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
           <ReferentialConstraint>
@@ -17587,6 +17656,18 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Principal>
             <Dependent Role="Stock">
               <PropertyRef Name="voucherTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StockRese__Stock__47326E26">
+          <End Role="Stock" Type="Self.Stock" Multiplicity="1" />
+          <End Role="StockReserve" Type="Self.StockReserve" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Stock">
+              <PropertyRef Name="StockID" />
+            </Principal>
+            <Dependent Role="StockReserve">
+              <PropertyRef Name="StockID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -18111,6 +18192,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <EntitySet Name="StockJournalDetails" EntityType="Self.StockJournalDetail" />
           <EntitySet Name="StockJournalMasters" EntityType="Self.StockJournalMaster" />
           <EntitySet Name="StockPostings" EntityType="Self.StockPosting" />
+          <EntitySet Name="StockReserves" EntityType="Self.StockReserve" />
           <EntitySet Name="SuffixPrefixes" EntityType="Self.SuffixPrefix" />
           <EntitySet Name="SuperDisks" EntityType="Self.SuperDisk" />
           <EntitySet Name="SuperDiskPs" EntityType="Self.SuperDiskP" />
@@ -18408,10 +18490,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="Currency" EntitySet="Currencies" />
             <End Role="Quotation" EntitySet="Quotations" />
           </AssociationSet>
-          <AssociationSet Name="FK__Stock__currencyI__2156DE01" Association="Self.FK__Stock__currencyI__2156DE01">
-            <End Role="Currency" EntitySet="Currencies" />
-            <End Role="Stock" EntitySet="Stocks" />
-          </AssociationSet>
           <AssociationSet Name="FK__Supplier__Defaul__4218B34E" Association="Self.FK__Supplier__Defaul__4218B34E">
             <End Role="Currency" EntitySet="Currencies" />
             <End Role="Supplier" EntitySet="Suppliers" />
@@ -18479,6 +18557,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <AssociationSet Name="FK__SaleOrder__Custo__1CDC41A7" Association="Self.FK__SaleOrder__Custo__1CDC41A7">
             <End Role="Customer" EntitySet="Customers" />
             <End Role="SaleOrder" EntitySet="SaleOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StockRese__Custo__463E49ED" Association="Self.FK__StockRese__Custo__463E49ED">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="StockReserve" EntitySet="StockReserves" />
           </AssociationSet>
           <AssociationSet Name="FK__CustomerA__TownI__2FEF161B" Association="Self.FK__CustomerA__TownI__2FEF161B">
             <End Role="Town" EntitySet="Towns" />
@@ -19428,9 +19510,17 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="VoucherType" EntitySet="VoucherTypes" />
             <End Role="ServiceMaster" EntitySet="ServiceMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__Stock__voucherTy__47E69B3D" Association="Self.FK__Stock__voucherTy__47E69B3D">
+          <AssociationSet Name="FK__Stock__againstVo__4826925F" Association="Self.FK__Stock__againstVo__4826925F">
             <End Role="VoucherType" EntitySet="VoucherTypes" />
             <End Role="Stock" EntitySet="Stocks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Stock__voucherTy__491AB698" Association="Self.FK__Stock__voucherTy__491AB698">
+            <End Role="VoucherType" EntitySet="VoucherTypes" />
+            <End Role="Stock" EntitySet="Stocks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StockRese__Stock__47326E26" Association="Self.FK__StockRese__Stock__47326E26">
+            <End Role="Stock" EntitySet="Stocks" />
+            <End Role="StockReserve" EntitySet="StockReserves" />
           </AssociationSet>
           <AssociationSet Name="FK__StockJour__stock__2A4129BD" Association="Self.FK__StockJour__stock__2A4129BD">
             <End Role="StockJournalMaster" EntitySet="StockJournalMasters" />
@@ -21299,7 +21389,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <Parameter Name="salesMasterId" Mode="In" Type="Decimal" />
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
           </FunctionImport>
-          <FunctionImport Name="SalesInvoiceQuantityDetailsAgainstSalesReturn" ReturnType="Collection(Int32)">
+          <FunctionImport Name="SalesInvoiceQuantityDetailsAgainstSalesReturn">
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
             <Parameter Name="voucherNo" Mode="In" Type="String" />
           </FunctionImport>
@@ -25995,15 +26085,14 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <EntityTypeMapping TypeName="IMEModel.Stock">
               <MappingFragment StoreEntitySet="Stock">
                 <ScalarProperty Name="StockID" ColumnName="StockID" />
-                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
-                <ScalarProperty Name="Quantitiy" ColumnName="Quantitiy" />
-                <ScalarProperty Name="againstVoucherTypeId" ColumnName="againstVoucherTypeId" />
-                <ScalarProperty Name="againstVoucherNo" ColumnName="againstVoucherNo" />
-                <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="ReserveQty" ColumnName="ReserveQty" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
                 <ScalarProperty Name="voucherNo" ColumnName="voucherNo" />
-                <ScalarProperty Name="ItemDesc" ColumnName="ItemDesc" />
-                <ScalarProperty Name="Rate" ColumnName="Rate" />
-                <ScalarProperty Name="currencyID" ColumnName="currencyID" />
+                <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
+                <ScalarProperty Name="againstVoucherNo" ColumnName="againstVoucherNo" />
+                <ScalarProperty Name="againstVoucherTypeId" ColumnName="againstVoucherTypeId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -26062,6 +26151,18 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="outwardQty" ColumnName="outwardQty" />
                 <ScalarProperty Name="rate" ColumnName="rate" />
                 <ScalarProperty Name="financialYearId" ColumnName="financialYearId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StockReserves">
+            <EntityTypeMapping TypeName="IMEModel.StockReserve">
+              <MappingFragment StoreEntitySet="StockReserve">
+                <ScalarProperty Name="ReserveID" ColumnName="ReserveID" />
+                <ScalarProperty Name="StockID" ColumnName="StockID" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="ValidationDate" ColumnName="ValidationDate" />
+                <ScalarProperty Name="IsFromRSInvoice" ColumnName="IsFromRSInvoice" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

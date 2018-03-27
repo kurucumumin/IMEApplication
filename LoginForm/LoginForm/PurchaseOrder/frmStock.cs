@@ -31,8 +31,8 @@ namespace LoginForm.PurchaseOrder
             {
                 Stock stock = new Stock
                 {
-                    ItemCode = txtProductCode.Text,
-                    Quantitiy=Int32.Parse(txtQuantity.Text)
+                    ProductID = txtProductCode.Text,
+                    Qty = Int32.Parse(txtQuantity.Text)
                 };
                 IME.Stocks.Add(stock);
                 IME.SaveChanges();
@@ -40,8 +40,8 @@ namespace LoginForm.PurchaseOrder
             else
             {
                 var stock = IME.Stocks.Where(a => a.StockID == stockcode).FirstOrDefault();
-                stock.ItemCode = txtProductCode.Text;
-                stock.Quantitiy = Int32.Parse(txtQuantity.Text);
+                stock.ProductID = txtProductCode.Text;
+                stock.Qty = Int32.Parse(txtQuantity.Text);
                 IME.SaveChanges();
             }
         }
@@ -60,11 +60,11 @@ namespace LoginForm.PurchaseOrder
         {
             if (ProductCodeSearch.Text == itemcode)
             {
-                dgStock.DataSource = IME.Stocks.Where(a => a.ItemCode == itemcode).ToList();
+                dgStock.DataSource = IME.Stocks.Where(a => a.ProductID == itemcode).ToList();
             }
             else
             {
-                dgStock.DataSource = IME.Stocks.Where(a => a.ItemCode == ProductCodeSearch.Text).ToList();
+                dgStock.DataSource = IME.Stocks.Where(a => a.ProductID == ProductCodeSearch.Text).ToList();
             }
             
         }
