@@ -14,6 +14,12 @@ namespace LoginForm.DataSet
     
     public partial class Stock
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Stock()
+        {
+            this.StockReserves = new HashSet<StockReserve>();
+        }
+    
         public decimal StockID { get; set; }
         public string ProductID { get; set; }
         public int Qty { get; set; }
@@ -26,6 +32,7 @@ namespace LoginForm.DataSet
     
         public virtual VoucherType VoucherType { get; set; }
         public virtual VoucherType VoucherType1 { get; set; }
-        public virtual StockReserve StockReserve { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StockReserve> StockReserves { get; set; }
     }
 }

@@ -3204,9 +3204,13 @@ namespace LoginForm
                                     StockInfo.ReserveQty = Qty;
                                     IME.Stocks.Add(StockInfo);
                                     IME.SaveChanges();
+                                    decimal StockID = StockInfo.StockID;
+                                    IME = new IMEEntities();
                                     StockReserve sr = new StockReserve();
+                                    sr.CustomerID = IME.PurchaseOrders.Where(x => x.purchaseOrderId == poID).FirstOrDefault().CustomerID;
+                                    sr.ProductID = StockInfo.ProductID;
                                     sr.Qty = Qty;
-                                    sr.StockID = StockInfo.StockID;
+                                    sr.StockID = StockID;
                                     sr.IsFromRSInvoice = true;
                                     IME.StockReserves.Add(sr);
                                     IME.SaveChanges();
@@ -3216,9 +3220,12 @@ namespace LoginForm
                                     StockInfo.Qty = StockInfo.Qty+Qty;
                                     StockInfo.ReserveQty = StockInfo.ReserveQty + Qty;
                                     IME.SaveChanges();
+
                                     StockReserve sr = new StockReserve();
                                     sr.Qty = Qty;
                                     sr.StockID = StockInfo.StockID;
+                                    sr.CustomerID = IME.PurchaseOrders.Where(x => x.purchaseOrderId == poID).FirstOrDefault().CustomerID;
+                                    sr.ProductID = StockInfo.ProductID;
                                     sr.IsFromRSInvoice = true;
                                     IME.StockReserves.Add(sr);
                                     IME.SaveChanges();
