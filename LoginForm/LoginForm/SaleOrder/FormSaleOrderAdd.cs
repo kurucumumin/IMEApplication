@@ -1783,7 +1783,58 @@ namespace LoginForm.nmSaleOrder
                         sdi.ItemCost = Convert.ToDecimal(row.Cells[dgCost.Index].Value);
                     }
 
+                    #region StockApplication
+                    decimal sdID = (decimal)sdi.SaleOrderID;
+                    string product = sdi.ItemCode;
+                    int Qty = sdi.Quantity;
+                    if (IME.Stocks.Where(a=>a.ProductID==product).FirstOrDefault()!=null && IME.Stocks.Where(a => a.ProductID == product).FirstOrDefault().Qty!=0)
+                    {
 
+                    }
+                    else
+                    {//stock boşsa
+
+                    }
+                    //if (IME.PurchaseOrders.Where(x => x.purchaseOrderId == sdID).FirstOrDefault() != null && IME.PurchaseOrders.Where(x => x.purchaseOrderId == sdID).FirstOrDefault().Customer != null)
+                    //{
+
+                    //    Stock StockInfo = IME.Stocks.Where(x => x.ProductID == product).FirstOrDefault();
+                    //    if (StockInfo == null)
+                    //    {
+                    //        StockInfo = new Stock();
+                    //        StockInfo.ProductID = product;
+                    //        StockInfo.Qty = Qty;
+                    //        StockInfo.ReserveQty = Qty;
+                    //        IME.Stocks.Add(StockInfo);
+                    //        IME.SaveChanges();
+                    //        StockReserve sr = new StockReserve();
+                    //        sr.Qty = Qty;
+                    //        sr.StockID = StockInfo.StockID;
+                    //        sr.IsFromRSInvoice = true;
+                    //        IME.StockReserves.Add(sr);
+                    //        IME.SaveChanges();
+                    //    }
+                    //    else
+                    //    {
+                    //        StockInfo.Qty = StockInfo.Qty + Qty;
+                    //        StockInfo.ReserveQty = StockInfo.ReserveQty + Qty;
+                    //        IME.SaveChanges();
+                    //        StockReserve sr = new StockReserve();
+                    //        sr.Qty = Qty;
+                    //        sr.StockID = StockInfo.StockID;
+                    //        sr.IsFromRSInvoice = true;
+                    //        IME.StockReserves.Add(sr);
+                    //        IME.SaveChanges();
+                    //    }
+                    //}
+                    //else
+                    //{//Bizim stockumuz için demek
+                    //    Stock stockInfo = new Stock();
+                    //    stockInfo.ProductID = product;
+                    //    stockInfo.Qty = Qty;
+                    //    stockInfo.ReserveQty = 0;
+                    //}
+                    #endregion
                     IME.SaleOrderDetails.Add(sdi);
                     IME.SaveChanges();
                 }
