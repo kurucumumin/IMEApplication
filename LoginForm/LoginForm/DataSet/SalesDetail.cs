@@ -19,7 +19,7 @@ namespace LoginForm.DataSet
         public Nullable<decimal> deliveryNoteDetailsId { get; set; }
         public Nullable<decimal> orderDetailsId { get; set; }
         public Nullable<int> quotationDetailsId { get; set; }
-        public Nullable<decimal> productId { get; set; }
+        public string productId { get; set; }
         public Nullable<decimal> qty { get; set; }
         public Nullable<decimal> rate { get; set; }
         public Nullable<decimal> unitId { get; set; }

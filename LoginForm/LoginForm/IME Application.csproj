@@ -2115,12 +2115,6 @@
     <Compile Include="PurchaseOrder\FormBillTo.Designer.cs">
       <DependentUpon>FormBillTo.cs</DependentUpon>
     </Compile>
-    <Compile Include="PurchaseOrder\StockDevelopment.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PurchaseOrder\StockDevelopment.Designer.cs">
-      <DependentUpon>StockDevelopment.cs</DependentUpon>
-    </Compile>
     <Compile Include="PurchaseOrder\frmStock.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2156,6 +2150,12 @@
     </Compile>
     <Compile Include="PurchaseOrder\RSInvToSaleInv.Designer.cs">
       <DependentUpon>RSInvToSaleInv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseOrder\StockDevelopment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseOrder\StockDevelopment.Designer.cs">
+      <DependentUpon>StockDevelopment.cs</DependentUpon>
     </Compile>
     <Compile Include="QuotationModule\FormQuaotationCustomerSearch.cs">
       <SubType>Form</SubType>
@@ -2665,9 +2665,6 @@
     <EmbeddedResource Include="PurchaseOrder\FormBillTo.resx">
       <DependentUpon>FormBillTo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PurchaseOrder\StockDevelopment.resx">
-      <DependentUpon>StockDevelopment.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="PurchaseOrder\frmStock.resx">
       <DependentUpon>frmStock.cs</DependentUpon>
     </EmbeddedResource>
@@ -2685,6 +2682,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PurchaseOrder\RSInvToSaleInv.resx">
       <DependentUpon>RSInvToSaleInv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseOrder\StockDevelopment.resx">
+      <DependentUpon>StockDevelopment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuotationModule\FormQuaotationCustomerSearch.resx">
       <DependentUpon>FormQuaotationCustomerSearch.cs</DependentUpon>
