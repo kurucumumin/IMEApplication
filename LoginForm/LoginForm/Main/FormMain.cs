@@ -35,7 +35,7 @@ namespace LoginForm
         public FormMain()
         {
             InitializeComponent();
-            defaultNavButtonColor = btnLoader.BackColor;
+            defaultNavButtonColor = btnFileLoader.BackColor;
         }
 
         private void btnLoader_Click(object sender, EventArgs e)
@@ -111,11 +111,11 @@ namespace LoginForm
 
             if (authList.Where(a => a.AuthorizationID == 1022).Count() <= 0)
             {
-                btnLoader.Visible = false;
+                btnFileLoader.Visible = false;
             }
             else
             {
-                btnLoader.Visible = true;
+                btnFileLoader.Visible = true;
             }
 
             if (authList.Where(a => a.AuthorizationID == 1023).Count() <= 0)
