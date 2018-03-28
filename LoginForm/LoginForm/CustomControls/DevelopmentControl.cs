@@ -122,5 +122,11 @@ namespace LoginForm.CustomControls
             subControl.Visible = true;
             parent.CurrentNavTabLvl2 = subControl;
         }
+
+        private void btnStock_Click(object sender, EventArgs e)
+        {
+            StockDevelopment form = new StockDevelopment();
+            form.Show();
+        }
     }
 }
