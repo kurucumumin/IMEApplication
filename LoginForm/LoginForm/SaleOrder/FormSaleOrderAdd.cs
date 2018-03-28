@@ -1791,10 +1791,7 @@ namespace LoginForm.nmSaleOrder
                     {
 
                     }
-                    else
-                    {//stock boşsa
-
-                    }
+                    
                     //if (IME.PurchaseOrders.Where(x => x.purchaseOrderId == sdID).FirstOrDefault() != null && IME.PurchaseOrders.Where(x => x.purchaseOrderId == sdID).FirstOrDefault().Customer != null)
                     //{
 
