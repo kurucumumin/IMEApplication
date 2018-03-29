@@ -15,19 +15,32 @@ namespace LoginForm.CustomControls
         }
         private void OpenSubNavigationMenu(Button button, UserControl subControl)
         {
+
+            
             FormMain parent = this.ParentForm as FormMain;
-            if (parent.CurrentNavTabLvl2 != null && parent.CurrentNavTabLvl2.Visible == true)
+
+            if (pressedButton == button && parent.CurrentNavTabLvl2 != null)
             {
                 parent.CurrentNavTabLvl2.Visible = false;
                 parent.CurrentNavTabLvl2 = null;
+
+                ChangeToDefaultDesign();
             }
+            else
+            {
+                if (parent.CurrentNavTabLvl2 != null && parent.CurrentNavTabLvl2.Visible == true)
+                {
+                    parent.CurrentNavTabLvl2.Visible = false;
+                    parent.CurrentNavTabLvl2 = null;
+                }
 
-            ChangeToDefaultDesign();
-            pressedButton = button;
+                ChangeToDefaultDesign();
+                pressedButton = button;
 
-            button.BackColor = pressedButtonColor;
-            subControl.Visible = true;
-            parent.CurrentNavTabLvl2 = subControl;
+                button.BackColor = pressedButtonColor;
+                subControl.Visible = true;
+                parent.CurrentNavTabLvl2 = subControl;
+            }
         }
 
         private void btnBudgets_Click(object sender, EventArgs e)

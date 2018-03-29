@@ -1139,8 +1139,7 @@ namespace LoginForm.nmSaleOrder
             txtMargin5.Text = "";
             #endregion
         }
-
-
+        
         private void ItemDetailsFiller(string ArticleNoSearch)
         {
             #region Filler
