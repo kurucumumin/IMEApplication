@@ -16,11 +16,9 @@ namespace LoginForm.DataSet
         public Nullable<decimal> purchaseDetailsId { get; set; }
         public Nullable<decimal> purchaseOrderDetailsId { get; set; }
         public Nullable<decimal> materialReceiptDetailsId { get; set; }
-        public string barcode { get; set; }
         public string productCode { get; set; }
         public string productName { get; set; }
         public Nullable<decimal> qty { get; set; }
-        public decimal unitConversionId { get; set; }
         public Nullable<decimal> discountPercent { get; set; }
         public Nullable<decimal> discount { get; set; }
         public Nullable<decimal> netvalue { get; set; }

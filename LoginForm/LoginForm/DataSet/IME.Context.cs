@@ -74,6 +74,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<Godown> Godowns { get; set; }
         public virtual DbSet<Hazardou> Hazardous { get; set; }
         public virtual DbSet<Holiday> Holidays { get; set; }
+        public virtual DbSet<ItemHistory> ItemHistories { get; set; }
         public virtual DbSet<ItemNote> ItemNotes { get; set; }
         public virtual DbSet<JournalDetail> JournalDetails { get; set; }
         public virtual DbSet<JournalMaster> JournalMasters { get; set; }
@@ -4779,8 +4780,12 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("PurchaseInvoiceVoucherNoCheckExistance", invoiceNoParameter, voucherNoParameter, voucherTypeIdParameter, purchaseMasterIdParameter);
         }
     
-        public virtual int PurchaseMasterAdd(string voucherNo, string invoiceNo, Nullable<decimal> suffixPrefixId, Nullable<decimal> voucherTypeId, Nullable<System.DateTime> date, Nullable<decimal> ledgerId, string vendorInvoiceNo, Nullable<System.DateTime> vendorInvoiceDate, string creditPeriod, Nullable<decimal> exchangeRateId, string narration, Nullable<decimal> purchaseAccount, string purchaseOrderMasterId, Nullable<decimal> materialReceiptMasterId, Nullable<decimal> additionalCost, Nullable<decimal> totalTax, Nullable<decimal> billDiscount, Nullable<decimal> grandTotal, Nullable<decimal> totalAmount, Nullable<decimal> userId, string lrNo, string transportationCompany, Nullable<decimal> financialYearId)
+        public virtual ObjectResult<Nullable<decimal>> PurchaseMasterAdd(Nullable<decimal> purchaseMasterId, string voucherNo, string invoiceNo, Nullable<decimal> suffixPrefixId, Nullable<decimal> voucherTypeId, Nullable<System.DateTime> date, Nullable<decimal> ledgerId, string vendorInvoiceNo, Nullable<System.DateTime> vendorInvoiceDate, string creditPeriod, Nullable<int> exchangeRateId, string narration, Nullable<decimal> purchaseAccount, Nullable<decimal> materialReceiptMasterId, Nullable<decimal> additionalCost, Nullable<decimal> totalTax, Nullable<decimal> billDiscount, Nullable<decimal> grandTotal, Nullable<decimal> totalAmount, Nullable<int> userId, string lrNo, string transportationCompany, Nullable<decimal> financialYearId, Nullable<int> purchaseOrderId)
         {
+            var purchaseMasterIdParameter = purchaseMasterId.HasValue ?
+                new ObjectParameter("purchaseMasterId", purchaseMasterId) :
+                new ObjectParameter("purchaseMasterId", typeof(decimal));
+    
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
@@ -4819,7 +4824,7 @@ namespace LoginForm.DataSet
     
             var exchangeRateIdParameter = exchangeRateId.HasValue ?
                 new ObjectParameter("exchangeRateId", exchangeRateId) :
-                new ObjectParameter("exchangeRateId", typeof(decimal));
+                new ObjectParameter("exchangeRateId", typeof(int));
     
             var narrationParameter = narration != null ?
                 new ObjectParameter("narration", narration) :
@@ -4828,10 +4833,6 @@ namespace LoginForm.DataSet
             var purchaseAccountParameter = purchaseAccount.HasValue ?
                 new ObjectParameter("purchaseAccount", purchaseAccount) :
                 new ObjectParameter("purchaseAccount", typeof(decimal));
-    
-            var purchaseOrderMasterIdParameter = purchaseOrderMasterId != null ?
-                new ObjectParameter("purchaseOrderMasterId", purchaseOrderMasterId) :
-                new ObjectParameter("purchaseOrderMasterId", typeof(string));
     
             var materialReceiptMasterIdParameter = materialReceiptMasterId.HasValue ?
                 new ObjectParameter("materialReceiptMasterId", materialReceiptMasterId) :
@@ -4859,7 +4860,7 @@ namespace LoginForm.DataSet
     
             var userIdParameter = userId.HasValue ?
                 new ObjectParameter("userId", userId) :
-                new ObjectParameter("userId", typeof(decimal));
+                new ObjectParameter("userId", typeof(int));
     
             var lrNoParameter = lrNo != null ?
                 new ObjectParameter("lrNo", lrNo) :
@@ -4873,7 +4874,11 @@ namespace LoginForm.DataSet
                 new ObjectParameter("financialYearId", financialYearId) :
                 new ObjectParameter("financialYearId", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PurchaseMasterAdd", voucherNoParameter, invoiceNoParameter, suffixPrefixIdParameter, voucherTypeIdParameter, dateParameter, ledgerIdParameter, vendorInvoiceNoParameter, vendorInvoiceDateParameter, creditPeriodParameter, exchangeRateIdParameter, narrationParameter, purchaseAccountParameter, purchaseOrderMasterIdParameter, materialReceiptMasterIdParameter, additionalCostParameter, totalTaxParameter, billDiscountParameter, grandTotalParameter, totalAmountParameter, userIdParameter, lrNoParameter, transportationCompanyParameter, financialYearIdParameter);
+            var purchaseOrderIdParameter = purchaseOrderId.HasValue ?
+                new ObjectParameter("purchaseOrderId", purchaseOrderId) :
+                new ObjectParameter("purchaseOrderId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("PurchaseMasterAdd", purchaseMasterIdParameter, voucherNoParameter, invoiceNoParameter, suffixPrefixIdParameter, voucherTypeIdParameter, dateParameter, ledgerIdParameter, vendorInvoiceNoParameter, vendorInvoiceDateParameter, creditPeriodParameter, exchangeRateIdParameter, narrationParameter, purchaseAccountParameter, materialReceiptMasterIdParameter, additionalCostParameter, totalTaxParameter, billDiscountParameter, grandTotalParameter, totalAmountParameter, userIdParameter, lrNoParameter, transportationCompanyParameter, financialYearIdParameter, purchaseOrderIdParameter);
         }
     
         public virtual int PurchaseMasterDelete(Nullable<decimal> purchaseMasterId)

@@ -26,6 +26,9 @@ namespace LoginForm.DataSet
             this.RejectionOutDetails = new HashSet<RejectionOutDetail>();
             this.SalesDetails = new HashSet<SalesDetail>();
             this.StockJournalDetails = new HashSet<StockJournalDetail>();
+            this.StockJournalDetails1 = new HashSet<StockJournalDetail>();
+            this.StockJournalDetails2 = new HashSet<StockJournalDetail>();
+            this.StockJournalDetails3 = new HashSet<StockJournalDetail>();
             this.StockPostings = new HashSet<StockPosting>();
         }
     
@@ -53,6 +56,12 @@ namespace LoginForm.DataSet
         public virtual ICollection<SalesDetail> SalesDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StockJournalDetail> StockJournalDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StockJournalDetail> StockJournalDetails1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StockJournalDetail> StockJournalDetails2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StockJournalDetail> StockJournalDetails3 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StockPosting> StockPostings { get; set; }
     }

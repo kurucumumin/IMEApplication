@@ -1335,6 +1335,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>IME.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\ItemHistory.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\ItemNote.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
