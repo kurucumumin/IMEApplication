@@ -262,11 +262,11 @@ namespace LoginForm.Account.Services
                     row["purchaseDetailsId"] = item.purchaseDetailsId;
                     row["purchaseOrderDetailsId"] = item.purchaseOrderDetailsId;
                     row["materialReceiptDetailsId"] = item.materialReceiptDetailsId;
-                    row["barcode"] = item.barcode;
+                   // row["barcode"] = item.barcode;
                     row["productCode"] = item.productCode;
                     row["productName"] = item.productName;
                     row["qty"] = item.qty;
-                    row["unitConversionId"] = item.unitConversionId;
+                   // row["unitConversionId"] = item.unitConversionId;
                     row["discountPercent"] = item.discountPercent;
                     row["discount"] = item.discount;
                     row["netvalue"] = item.netvalue;

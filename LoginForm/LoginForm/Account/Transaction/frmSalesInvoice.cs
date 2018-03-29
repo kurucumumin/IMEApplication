@@ -3103,6 +3103,22 @@ namespace LoginForm
                             InfoSalesDetails.netAmount = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceNetAmount"].Value.ToString());
                             InfoSalesDetails.amount = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceAmount"].Value.ToString());
                             spSalesDetails.SalesDetailsAdd(InfoSalesDetails);
+
+                            //For Item History
+                            ItemHistory ih = new ItemHistory();
+                            ih.VoucherDate = DateTime.Now.Date;
+                            ih.VoucherNumber = InfoSalesMaster.voucherNo;
+                            ih.CurrentAccountTitle = InfoSalesMaster.customerName;
+                            ih.OutputQuantity = Convert.ToInt32( InfoSalesDetails.qty);
+                            ih.OutputAmount = (InfoSalesDetails.amount)/(InfoSalesDetails.qty);
+                            ih.OutputTotalAmount = InfoSalesDetails.amount;
+                            ih.FinalTotal = InfoSalesDetails.netAmount;
+                            ih.InputAmount = 0;
+                            ih.InputQuantity = 0;
+                            ih.InputTotalAmount = 0;
+                            IME.ItemHistories.Add(ih);
+                            IME.SaveChanges();
+                            //
                             infoStockPosting.date = Convert.ToDateTime(txtDate.Text.Trim().ToString());
                             // TODO 3 : Product ID Int olmayacak
                             try{infoStockPosting.productId = dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceProductCode"].Value.ToString();}catch{}
@@ -3263,6 +3279,8 @@ namespace LoginForm
             {
                 MessageBox.Show("SI: 70" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            
+                           
         }
         /// <summary>
         /// Ledger posting save function

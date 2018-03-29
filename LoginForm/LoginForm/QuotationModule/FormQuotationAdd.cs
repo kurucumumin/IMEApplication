@@ -3283,5 +3283,10 @@ namespace LoginForm.QuotationModule
                 MessageBox.Show("SQ:14" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

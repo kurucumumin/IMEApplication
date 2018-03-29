@@ -96,16 +96,65 @@ namespace LoginForm.Account.Services
             return StrTypeOfVoucher;
         }
 
-        public DataTable VoucherSearchFill(DateTime fromDate, DateTime toDate, decimal decVoucherTypeId, string strVoucherNo, decimal decLedgerId, decimal decEmployeeId)
+        public DataTable VoucherSearchFill(DateTime fromDate, DateTime toDate, decimal decVoucherTypeId, string strVoucherNo, decimal decLedgerId, string CustomerID)
         {
             IMEEntities IME = new IMEEntities();
             DataTable dtbl = new DataTable();
+            //if (CustomerID == "") CustomerID = null; 
+            //if (strVoucherNo == "") strVoucherNo = null;
+           
             dtbl.Columns.Add("Sl No");
             dtbl.Columns["Sl No"].AutoIncrement = true;
             dtbl.Columns["Sl No"].AutoIncrementSeed = 1;
             dtbl.Columns["Sl No"].AutoIncrementStep = 1;
-            
-            //TODO 1 : Algoritma / İşlem eksik, tamamlanacak
+            var adaptor = (from ih in IME.ItemHistories
+                          where (ih.VoucherDate>=fromDate && ih.VoucherDate<=toDate)
+                          where ih.VoucherNumber.Contains(strVoucherNo)
+                          where ih.CurrentAccountTitle.Contains(CustomerID)
+                           select new
+                           {
+                               ih.VoucherDate, 
+                               ih.VoucherNumber,
+                               ih.VoucherTypeID,
+                               ih.VoucherType.voucherTypeName,
+                               ih.CurrentAccountTitle,
+                               ih.InputQuantity,
+                               ih.InputAmount,
+                               ih.InputTotalAmount,
+                               ih.OutputQuantity,
+                               ih.OutputAmount,
+                               ih.OutputTotalAmount,
+                               ih.FinalTotal
+                           }).ToList();
+            if(decVoucherTypeId!=-1) adaptor= adaptor.Where(a => a.VoucherTypeID == decVoucherTypeId).ToList();
+            dtbl.Columns.Add("VoucherDate");
+            dtbl.Columns.Add("VoucherNumber");
+            dtbl.Columns.Add("voucherTypeName");
+            dtbl.Columns.Add("CurrentAccountTitle");
+            dtbl.Columns.Add("InputQuantity");
+            dtbl.Columns.Add("InputAmount");
+            dtbl.Columns.Add("InputTotalAmount");
+            dtbl.Columns.Add("OutputQuantity");
+            dtbl.Columns.Add("OutputAmount");
+            dtbl.Columns.Add("OutputTotalAmount");
+            dtbl.Columns.Add("FinalTotal");
+            foreach (var item in adaptor)
+            {
+                var row = dtbl.NewRow();
+                row["VoucherDate"] = item.VoucherDate;
+                row["VoucherNumber"] = item.VoucherNumber;
+                row["voucherTypeName"] = item.voucherTypeName;
+                row["CurrentAccountTitle"] = item.CurrentAccountTitle;
+                row["InputQuantity"] = item.InputQuantity;
+                row["InputAmount"] = item.InputAmount;
+                row["InputTotalAmount"] = item.InputTotalAmount;
+                row["OutputQuantity"] = item.OutputQuantity;
+                row["OutputAmount"] = item.OutputAmount;
+                row["OutputTotalAmount"] = item.OutputTotalAmount;
+                row["FinalTotal"] = item.FinalTotal;
+                dtbl.Rows.Add(row);
+            }
+
             return dtbl;
         }
 

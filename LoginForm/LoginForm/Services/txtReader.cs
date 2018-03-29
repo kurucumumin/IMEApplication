@@ -3205,13 +3205,19 @@ namespace LoginForm
                                     IME.Stocks.Add(StockInfo);
                                     IME.SaveChanges();
                                     decimal StockID = StockInfo.StockID;
+                                    string ProductID = StockInfo.ProductID;
                                     IME = new IMEEntities();
                                     StockReserve sr = new StockReserve();
                                     sr.CustomerID = IME.PurchaseOrders.Where(x => x.purchaseOrderId == poID).FirstOrDefault().CustomerID;
-                                    sr.ProductID = StockInfo.ProductID;
+                                    sr.ProductID = ProductID;
                                     sr.Qty = Qty;
                                     sr.StockID = StockID;
-                                    sr.IsFromRSInvoice = true;
+                                    try
+                                    {
+                                        decimal saleOrderID = (decimal)IME.PurchaseOrderDetails.Where(x => x.purchaseOrderId == poID).FirstOrDefault().SaleOrderID;
+                                        sr.SaleOrderID = saleOrderID;
+                                    }
+                                    catch { }
                                     IME.StockReserves.Add(sr);
                                     IME.SaveChanges();
                                 }
@@ -3220,13 +3226,19 @@ namespace LoginForm
                                     StockInfo.Qty = StockInfo.Qty+Qty;
                                     StockInfo.ReserveQty = StockInfo.ReserveQty + Qty;
                                     IME.SaveChanges();
-
+                                    decimal StockID= StockInfo.StockID;
+                                    string ProductID = StockInfo.ProductID;
+                                    IME = new IMEEntities();
                                     StockReserve sr = new StockReserve();
                                     sr.Qty = Qty;
-                                    sr.StockID = StockInfo.StockID;
+                                    sr.StockID = StockID;
                                     sr.CustomerID = IME.PurchaseOrders.Where(x => x.purchaseOrderId == poID).FirstOrDefault().CustomerID;
-                                    sr.ProductID = StockInfo.ProductID;
-                                    sr.IsFromRSInvoice = true;
+                                    sr.ProductID = ProductID;
+                                    try {
+                                        decimal saleOrderID = (decimal)IME.PurchaseOrderDetails.Where(x => x.purchaseOrderId == poID).FirstOrDefault().SaleOrderID;
+                                        sr.SaleOrderID = saleOrderID;
+                                    }
+                                    catch { }
                                     IME.StockReserves.Add(sr);
                                     IME.SaveChanges();
                                 }
@@ -3238,6 +3250,22 @@ namespace LoginForm
                                 stockInfo.Qty = Qty;
                                 stockInfo.ReserveQty = 0;
                             }
+
+                            //For Item History
+                            ItemHistory ih = new ItemHistory();
+                            ih.VoucherDate = DateTime.Now.Date;
+                            ih.VoucherNumber = rs.RS_Invoice.BillingDocumentReference;
+                            ih.CurrentAccountTitle = "RS COMPONENTS LIMITED";
+                            ih.InputQuantity = (int)rs.Quantity;
+                            ih.InputAmount = rs.UnitPrice;
+                            ih.InputTotalAmount = rs.Amount;
+                            ih.FinalTotal = rs.Amount;
+                            ih.OutputAmount = 0;
+                            ih.OutputQuantity = 0;
+                            ih.OutputTotalAmount = 0;
+                            IME.ItemHistories.Add(ih);
+                            IME.SaveChanges();
+                            //
                             #endregion
 
                             IME.RS_InvoiceDetailsADD(
@@ -3318,6 +3346,54 @@ namespace LoginForm
 
     class QuotationExcelExport
     {
+        public static void ExportToItemHistory(DataGridView dg)
+        {
+            #region Copy All Items
+            dg.SelectAll();
+            DataObject dataObj = dg.GetClipboardContent();
+            if (dataObj != null)
+                Clipboard.SetDataObject(dataObj);
+            #endregion
+
+            #region ExcelExport
+            Microsoft.Office.Interop.Excel.Application xlexcel;
+            Microsoft.Office.Interop.Excel.Workbook xlWorkBook;
+            Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
+            object misValue = System.Reflection.Missing.Value;
+            xlexcel = new Excel.Application();
+            xlexcel.Visible = true;
+            xlWorkBook = xlexcel.Workbooks.Add(misValue);
+            xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+            for (int j = 0; j <= dg.ColumnCount - 1; j++)
+            {
+               xlWorkSheet.Cells[1, j + 1] = dg.Columns[j].HeaderText;
+            }
+            for (int i = 0; i < dg.RowCount; i++)
+            {
+                for (int j = 0; j < dg.ColumnCount; j++)
+                {
+                    if (dg.Rows[i].Cells[j].Value != null ) { xlWorkSheet.Cells[i + 2, j + 1] = dg.Rows[i].Cells[j].Value.ToString(); }
+                }
+            }
+            SaveFileDialog savefile = new SaveFileDialog();
+            savefile.Filter = "Excel Files (*.xls)|*.xls|All files (*.xls)|*.xls";
+           
+            savefile.FileName = "ItemHistory"+ DateTime.Now.ToString("yyyy-MM-dd-mm.ss");
+            if (savefile.ShowDialog() == DialogResult.OK)
+            {
+                string path = savefile.FileName;
+                //@"C:\Users\PC\Desktop\test2.xls"
+                xlWorkBook.SaveAs(@path, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+
+            }
+
+
+            //xlWorkBook.Close(true, misValue, misValue);
+            //xlexcel.Quit();
+
+            #endregion
+
+        }
 
         public static void Export(DataGridView dg,string quotationNo, List<bool> ischecked)
         {

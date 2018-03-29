@@ -30,7 +30,7 @@ namespace LoginForm
         string strVoucherTypeText = string.Empty;
         string strInvoiceNo = string.Empty;
         decimal decLedgerId = 0;
-        decimal decEmployeeId = 0;
+        string decEmployeeId;
         decimal decVoucherTypeId = 0;
         int inCurrenRowIndex = 0;
         VoucherTypeSP spVoucherType = new VoucherTypeSP();
@@ -48,21 +48,7 @@ namespace LoginForm
         /// </summary>
         public void AccountLedgerComboFill()
         {
-            IMEEntities IME = new IMEEntities();
-
-            try
-            {
-                //DataTable dtbl = new DataTable();
-
-                //dtbl = transactionGeneralFillObj.AccountLedgerComboFill();
-                cmbAccountLedger.DataSource = IME.AccountLedgers.ToList();
-                cmbAccountLedger.DisplayMember = "ledgerName";
-                cmbAccountLedger.ValueMember = "ledgerId";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("VS1:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            
         }
         /// <summary>
         /// Function to fill voucherType Combobox
@@ -1047,14 +1033,7 @@ namespace LoginForm
                     {
                         strInvoiceNo = txtVoucherNo.Text;
                     }
-                    if (cmbAccountLedger.SelectedIndex == 0 || cmbAccountLedger.SelectedIndex == -1)
-                    {
-                        decLedgerId = -1;
-                    }
-                    else
-                    {
-                        decLedgerId = Convert.ToDecimal(cmbAccountLedger.SelectedValue.ToString());
-                    }
+                  
                     if (cmbVoucherType.SelectedIndex == 0 || cmbVoucherType.SelectedIndex == -1)
                     {
                         decVoucherTypeId = -1;
@@ -1065,11 +1044,11 @@ namespace LoginForm
                     }
                     if (cmbSalesMan.SelectedIndex == 0 || cmbSalesMan.SelectedIndex == -1)
                     {
-                        decEmployeeId = -1;
+                        decEmployeeId = "";
                     }
                     else
                     {
-                        decEmployeeId = Convert.ToDecimal(cmbSalesMan.SelectedValue.ToString());
+                        decEmployeeId = cmbSalesMan.SelectedValue.ToString();
                     }
                 }
                 else
@@ -1335,112 +1314,7 @@ namespace LoginForm
         /// <param name="e"></param>
         private void btnViewDetails_Click(object sender, EventArgs e)
         {
-            
-            try
-            {
-                if (dgvVoucherSearch.Rows.Count > 0)
-                {
-                    if (dgvVoucherSearch.CurrentRow.Cells["Id"].Value.ToString() != null && dgvVoucherSearch.CurrentRow.Cells["Id"].Value.ToString() != string.Empty)
-                    {
-                        if (dgvVoucherSearch.CurrentRow != null)
-                        {
-                            inCurrenRowIndex = dgvVoucherSearch.CurrentRow.Index;
-                            bool isNotDo = false;
-                            string strTypeofVoucher = spVoucherType.TypeOfVoucherView(dgvVoucherSearch.CurrentRow.Cells["VoucherType"].Value.ToString());
-                            switch (strTypeofVoucher)
-                            {
-                                //case "Physical Stock":
-                                //    GotoPhysicalStock();
-                                //    break;
-                                //case "Credit Note":
-                                //    GotoCrditNote();
-                                //    break;
-                                //case "Debit Note":
-                                //    GotoDebitNote();
-                                //    break;
-                                //case "Advance Payment":
-                                //    GotoAdvancePayment();
-                                //    break;
-                                //case "Daily Salary Voucher":
-                                //    GotoDailySalaryVoucher();
-                                //    break;
-                                //case "Monthly Salary Voucher":
-                                //    GotoMonthlySalaryVoucher();
-                                //    break;
-                                case "Stock Journal":
-                                    GotoStockJournal();
-                                    break;
-                                //case "Contra Voucher":
-                                //    GotoContraVoucher();
-                                //    break;
-                                //case "Payment Voucher":
-                                //    GotoPaymentVoucher();
-                                //    break;
-                                //case "Receipt Voucher":
-                                //    GotoReceiptVoucher();
-                                //    break;
-                                //case "Journal Voucher":
-                                //    GotoJournalVoucher();
-                                //    break;
-                                case "PDC Payable":
-                                    GotoPDCPayable();
-                                    break;
-                                case "PDC Receivable":
-                                    GotoPDCReceivable();
-                                    break;
-                                //case "PDC Clearance":
-                                //    GotoPDCClearance();
-                                //    break;
-                                case "Purchase Order":
-                                    GotoPurchaseOrder();
-                                    break;
-                                //case "Material Receipt":
-                                //    GotoMaterialReceipt();
-                                //    break;
-                                //case "Rejection Out":
-                                //    GotoRejectionOut();
-                                //    break;
-                                //case "Purchase Return":
-                                //    GotoPurchaseReturn();
-                                //    break;
-                                case "Sales Quotation":
-                                    GotoSalesQuotation();
-                                    break;
-                                case "Sales Order":
-                                    GotoSalesOrder();
-                                    break;
-                                //case "Delivery Note":
-                                //    GotoDeliveryNote();
-                                //    break;
-                                //case "Rejection In":
-                                //    GotoRejectionIn();
-                                //    break;
-                                //case "Sales Return":
-                                //    GotoSalesReturn();
-                                //    break;
-                                case "Purchase Invoice":
-                                    GotoPurchaseInvoice();
-                                    break;
-                                //case "Sales Invoice":
-                                //    GotoSalesInvoice();
-                                //    break;
-                                //case "Service Voucher":
-                                //    GotoServiceVoucher();
-                                //    break;
-                                default:
-                                    isNotDo = true;
-                                    break;
-                            }
-                            if (!isNotDo)
-                                this.Enabled = false;
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("VS53:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            QuotationExcelExport.ExportToItemHistory(dgvVoucherSearch);
         }
         #endregion Events
         #region Navigation
@@ -1540,13 +1414,7 @@ namespace LoginForm
         {
             try
             {
-                if (e.KeyCode == Keys.Enter)
-                {
-                    if (cmbAccountLedger.Enabled)
-                    {
-                        cmbAccountLedger.Focus();
-                    }
-                }
+               
                 if (e.KeyCode == Keys.Back)
                 {
                     if (cmbVoucherType.Enabled)
@@ -1609,13 +1477,7 @@ namespace LoginForm
                         btnSearch.Focus();
                     }
                 }
-                if (e.KeyCode == Keys.Back)
-                {
-                    if (cmbAccountLedger.Enabled)
-                    {
-                        cmbAccountLedger.Focus();
-                    }
-                }
+                
             }
             catch (Exception ex)
             {
@@ -1721,9 +1583,10 @@ namespace LoginForm
                 MessageBox.Show("VS63:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+
         #endregion
 
-
-
+      
     }
 }
