@@ -10,6 +10,7 @@ using System.Data;
 using System.Linq;
 using System.Collections.Generic;
 using LoginForm.DataSet;
+using LoginForm.StockManagement;
 
 namespace LoginForm.CustomControls
 {
@@ -109,23 +110,34 @@ namespace LoginForm.CustomControls
         private void OpenSubNavigationMenu(Button button, UserControl subControl)
         {
             FormMain parent = this.ParentForm as FormMain;
-            if (parent.CurrentNavTabLvl2 != null && parent.CurrentNavTabLvl2.Visible == true)
+            if (pressedButton == button && parent.CurrentNavTabLvl2 != null)
             {
                 parent.CurrentNavTabLvl2.Visible = false;
                 parent.CurrentNavTabLvl2 = null;
+
+                ChangeToDefaultDesign();
             }
+            else
+            {
+                if (parent.CurrentNavTabLvl2 != null && parent.CurrentNavTabLvl2.Visible == true)
+                {
+                    parent.CurrentNavTabLvl2.Visible = false;
+                    parent.CurrentNavTabLvl2 = null;
+                }
 
-            ChangeToDefaultDesign();
-            pressedButton = button;
+                ChangeToDefaultDesign();
+                pressedButton = button;
 
-            button.BackColor = pressedButtonColor;
-            subControl.Visible = true;
-            parent.CurrentNavTabLvl2 = subControl;
+                button.BackColor = pressedButtonColor;
+                subControl.Visible = true;
+                parent.CurrentNavTabLvl2 = subControl;
+            }
+                
         }
 
         private void btnStock_Click(object sender, EventArgs e)
         {
-            StockDevelopment form = new StockDevelopment();
+            StockManagement.frmStock form = new StockManagement.frmStock();
             form.Show();
         }
     }

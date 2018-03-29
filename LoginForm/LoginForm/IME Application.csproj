@@ -2154,11 +2154,17 @@
     <Compile Include="PurchaseOrder\RSInvToSaleInv.Designer.cs">
       <DependentUpon>RSInvToSaleInv.cs</DependentUpon>
     </Compile>
-    <Compile Include="PurchaseOrder\StockDevelopment.cs">
+    <Compile Include="StockManagement\frmStockReserve.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PurchaseOrder\StockDevelopment.Designer.cs">
-      <DependentUpon>StockDevelopment.cs</DependentUpon>
+    <Compile Include="StockManagement\frmStockReserve.Designer.cs">
+      <DependentUpon>frmStockReserve.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StockManagement\frmStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockManagement\frmStock.Designer.cs">
+      <DependentUpon>frmStock.cs</DependentUpon>
     </Compile>
     <Compile Include="QuotationModule\FormQuaotationCustomerSearch.cs">
       <SubType>Form</SubType>
@@ -2686,8 +2692,11 @@
     <EmbeddedResource Include="PurchaseOrder\RSInvToSaleInv.resx">
       <DependentUpon>RSInvToSaleInv.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PurchaseOrder\StockDevelopment.resx">
-      <DependentUpon>StockDevelopment.cs</DependentUpon>
+    <EmbeddedResource Include="StockManagement\frmStockReserve.resx">
+      <DependentUpon>frmStockReserve.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StockManagement\frmStock.resx">
+      <DependentUpon>frmStock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuotationModule\FormQuaotationCustomerSearch.resx">
       <DependentUpon>FormQuaotationCustomerSearch.cs</DependentUpon>
@@ -2779,6 +2788,7 @@
     <None Include="Properties\DataSources\LoginForm.DataSet.QuotationDetail.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.RoleValue.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.Stock.datasource" />
+    <None Include="Properties\DataSources\LoginForm.DataSet.StockReserve.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.Supplier.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.Supplier1.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.Worker.datasource" />
