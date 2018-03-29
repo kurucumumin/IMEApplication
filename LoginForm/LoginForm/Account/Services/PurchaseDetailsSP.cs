@@ -212,7 +212,7 @@ namespace LoginForm.Account.Services
 
                 db.SaveChanges();
 
-                
+
             }
             catch (Exception ex)
             {
@@ -238,7 +238,7 @@ namespace LoginForm.Account.Services
             DataTable dtbl = new DataTable();
             try
             {
-                var adaptor = db.PurchaseDetailsViewByProductCodeForPI(decVoucherTypeId, strProductCode);
+                var adaptor = db.PurchaseDetailsViewByProductCodeForPI(decVoucherTypeId, strProductCode).ToList();
 
                 dtbl.Columns.Add("purchaseDetailsId");
                 dtbl.Columns.Add("purchaseOrderDetailsId");
@@ -262,11 +262,9 @@ namespace LoginForm.Account.Services
                     row["purchaseDetailsId"] = item.purchaseDetailsId;
                     row["purchaseOrderDetailsId"] = item.purchaseOrderDetailsId;
                     row["materialReceiptDetailsId"] = item.materialReceiptDetailsId;
-                   // row["barcode"] = item.barcode;
                     row["productCode"] = item.productCode;
                     row["productName"] = item.productName;
                     row["qty"] = item.qty;
-                   // row["unitConversionId"] = item.unitConversionId;
                     row["discountPercent"] = item.discountPercent;
                     row["discount"] = item.discount;
                     row["netvalue"] = item.netvalue;

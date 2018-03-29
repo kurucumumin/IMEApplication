@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LoginForm.Services;
 
 namespace LoginForm.Account.Services
 {
@@ -17,6 +18,10 @@ namespace LoginForm.Account.Services
         {
             IMEEntities db = new IMEEntities();
             SuffixPrefix suffixprefixinfo = new SuffixPrefix();
+            if (date==null)
+            {
+                date = Convert.ToDateTime(Utils.getManagement().FinancialYear.fromDate);
+            }
             try
             {
                 var a = db.GetSuffixPrefixDetails(vouchertypeId, date).FirstOrDefault();

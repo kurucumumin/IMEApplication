@@ -22,7 +22,8 @@ namespace LoginForm.QuotationModule
         private void btnNewQuotation_Click(object sender, EventArgs e)
         {
             var a = dtpFromDate.Value;
-            this.Hide();
+            // this.Hide();
+            this.Close();
             FormQuotationAdd quotationForm = new FormQuotationAdd();
             quotationForm.ShowDialog();
             this.Show();
@@ -104,6 +105,9 @@ namespace LoginForm.QuotationModule
                 btnNewQuotation.Enabled = false;
             }
             BringQuotationList();
+            #region Refresh
+            BringQuotationList(dtpFromDate.Value, dtpToDate.Value);
+            #endregion
         }
 
         private void txtSearchText_KeyPress(object sender, KeyPressEventArgs e)
@@ -172,16 +176,16 @@ namespace LoginForm.QuotationModule
           //  MessageBox.Show(time.ToString());
             var list = from q in IME.Quotations
                        join c in IME.Customers on q.CustomerID equals c.ID
-                       where q.StartDate >= fromDate && q.StartDate < toDate
+                       where q.StartDate >= fromDate && q.StartDate < toDate 
                        select new
                        {
-                           Date = q.StartDate,
+                           Date = (DateTime)q.StartDate,
                            QuotationNo = q.QuotationNo,
                            RFQ = q.RFQNo,
                            CustomerName = c.c_name
                        };
 
-            populateGrid(list.ToList());
+            populateGrid(list.ToList().OrderByDescending(x => int.Parse(x.QuotationNo.Substring(5))).ToList());
         }
 
         private void populateGrid<T>(List<T> queryable)

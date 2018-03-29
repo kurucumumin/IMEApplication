@@ -1833,6 +1833,8 @@ namespace LoginForm.QuotationModule
             }
             MessageBox.Show("Quotation is successfully added", "Success");
             this.Close();
+            FormQuotationMain formQuotationMain = new FormQuotationMain();
+            formQuotationMain.ShowDialog();
         }
 
         private void modifyQuotation(Quotation q)

@@ -131,7 +131,7 @@ namespace LoginForm
             this.dgvtxtProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxtQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxtUnitConversionId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcmbUnit = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dgvcmbUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvcmbGodown = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.dgvcmbRack = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.dgvcmbBatch = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -821,7 +821,7 @@ namespace LoginForm
             this.lblTotalTaxAmount.AutoSize = true;
             this.lblTotalTaxAmount.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lblTotalTaxAmount.Location = new System.Drawing.Point(223, 554);
-            this.lblTotalTaxAmount.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.lblTotalTaxAmount.Margin = new System.Windows.Forms.Padding(5);
             this.lblTotalTaxAmount.Name = "lblTotalTaxAmount";
             this.lblTotalTaxAmount.Size = new System.Drawing.Size(91, 13);
             this.lblTotalTaxAmount.TabIndex = 984;
@@ -832,7 +832,7 @@ namespace LoginForm
             this.lblGrandTotal.AutoSize = true;
             this.lblGrandTotal.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lblGrandTotal.Location = new System.Drawing.Point(468, 543);
-            this.lblGrandTotal.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.lblGrandTotal.Margin = new System.Windows.Forms.Padding(5);
             this.lblGrandTotal.Name = "lblGrandTotal";
             this.lblGrandTotal.Size = new System.Drawing.Size(63, 13);
             this.lblGrandTotal.TabIndex = 986;
@@ -854,7 +854,7 @@ namespace LoginForm
             this.lblTaxAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTaxAmount.ForeColor = System.Drawing.Color.Yellow;
             this.lblTaxAmount.Location = new System.Drawing.Point(333, 552);
-            this.lblTaxAmount.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.lblTaxAmount.Margin = new System.Windows.Forms.Padding(5);
             this.lblTaxAmount.Name = "lblTaxAmount";
             this.lblTaxAmount.Size = new System.Drawing.Size(52, 16);
             this.lblTaxAmount.TabIndex = 988;
@@ -868,7 +868,7 @@ namespace LoginForm
             this.lblAdditionalCostAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAdditionalCostAmount.ForeColor = System.Drawing.Color.Yellow;
             this.lblAdditionalCostAmount.Location = new System.Drawing.Point(333, 438);
-            this.lblAdditionalCostAmount.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.lblAdditionalCostAmount.Margin = new System.Windows.Forms.Padding(5);
             this.lblAdditionalCostAmount.Name = "lblAdditionalCostAmount";
             this.lblAdditionalCostAmount.Size = new System.Drawing.Size(52, 16);
             this.lblAdditionalCostAmount.TabIndex = 990;
@@ -881,7 +881,7 @@ namespace LoginForm
             this.lblTotalAdditionalCost.AutoSize = true;
             this.lblTotalAdditionalCost.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lblTotalAdditionalCost.Location = new System.Drawing.Point(203, 441);
-            this.lblTotalAdditionalCost.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.lblTotalAdditionalCost.Margin = new System.Windows.Forms.Padding(5);
             this.lblTotalAdditionalCost.Name = "lblTotalAdditionalCost";
             this.lblTotalAdditionalCost.Size = new System.Drawing.Size(104, 13);
             this.lblTotalAdditionalCost.TabIndex = 989;
@@ -1020,7 +1020,7 @@ namespace LoginForm
             this.lblVoucherNoValidator.AutoSize = true;
             this.lblVoucherNoValidator.ForeColor = System.Drawing.Color.Red;
             this.lblVoucherNoValidator.Location = new System.Drawing.Point(330, 19);
-            this.lblVoucherNoValidator.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.lblVoucherNoValidator.Margin = new System.Windows.Forms.Padding(5);
             this.lblVoucherNoValidator.Name = "lblVoucherNoValidator";
             this.lblVoucherNoValidator.Size = new System.Drawing.Size(11, 13);
             this.lblVoucherNoValidator.TabIndex = 1147;
@@ -1031,7 +1031,7 @@ namespace LoginForm
             this.lblCashOrPartyValidator.AutoSize = true;
             this.lblCashOrPartyValidator.ForeColor = System.Drawing.Color.Red;
             this.lblCashOrPartyValidator.Location = new System.Drawing.Point(330, 69);
-            this.lblCashOrPartyValidator.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.lblCashOrPartyValidator.Margin = new System.Windows.Forms.Padding(5);
             this.lblCashOrPartyValidator.Name = "lblCashOrPartyValidator";
             this.lblCashOrPartyValidator.Size = new System.Drawing.Size(11, 13);
             this.lblCashOrPartyValidator.TabIndex = 1149;
@@ -1042,7 +1042,7 @@ namespace LoginForm
             this.lblPurchaseAccountValidator.AutoSize = true;
             this.lblPurchaseAccountValidator.ForeColor = System.Drawing.Color.Red;
             this.lblPurchaseAccountValidator.Location = new System.Drawing.Point(743, 121);
-            this.lblPurchaseAccountValidator.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.lblPurchaseAccountValidator.Margin = new System.Windows.Forms.Padding(5);
             this.lblPurchaseAccountValidator.Name = "lblPurchaseAccountValidator";
             this.lblPurchaseAccountValidator.Size = new System.Drawing.Size(11, 13);
             this.lblPurchaseAccountValidator.TabIndex = 1150;
@@ -1053,7 +1053,7 @@ namespace LoginForm
             this.lblVoucherDateValidator.AutoSize = true;
             this.lblVoucherDateValidator.ForeColor = System.Drawing.Color.Red;
             this.lblVoucherDateValidator.Location = new System.Drawing.Point(777, 19);
-            this.lblVoucherDateValidator.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.lblVoucherDateValidator.Margin = new System.Windows.Forms.Padding(5);
             this.lblVoucherDateValidator.Name = "lblVoucherDateValidator";
             this.lblVoucherDateValidator.Size = new System.Drawing.Size(11, 13);
             this.lblVoucherDateValidator.TabIndex = 1151;
@@ -1064,7 +1064,7 @@ namespace LoginForm
             this.lblInvoiceDateValidator.AutoSize = true;
             this.lblInvoiceDateValidator.ForeColor = System.Drawing.Color.Red;
             this.lblInvoiceDateValidator.Location = new System.Drawing.Point(777, 44);
-            this.lblInvoiceDateValidator.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.lblInvoiceDateValidator.Margin = new System.Windows.Forms.Padding(5);
             this.lblInvoiceDateValidator.Name = "lblInvoiceDateValidator";
             this.lblInvoiceDateValidator.Size = new System.Drawing.Size(11, 13);
             this.lblInvoiceDateValidator.TabIndex = 1152;
@@ -1075,7 +1075,7 @@ namespace LoginForm
             this.lblCurrencyValidator.AutoSize = true;
             this.lblCurrencyValidator.ForeColor = System.Drawing.Color.Red;
             this.lblCurrencyValidator.Location = new System.Drawing.Point(333, 147);
-            this.lblCurrencyValidator.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.lblCurrencyValidator.Margin = new System.Windows.Forms.Padding(5);
             this.lblCurrencyValidator.Name = "lblCurrencyValidator";
             this.lblCurrencyValidator.Size = new System.Drawing.Size(11, 13);
             this.lblCurrencyValidator.TabIndex = 1153;
@@ -1171,6 +1171,7 @@ namespace LoginForm
             this.dgvcmbUnit.HeaderText = "Unit";
             this.dgvcmbUnit.Name = "dgvcmbUnit";
             this.dgvcmbUnit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvcmbUnit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // dgvcmbGodown
             // 
@@ -1443,7 +1444,7 @@ namespace LoginForm
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtUnitConversionId;
-        private System.Windows.Forms.DataGridViewComboBoxColumn dgvcmbUnit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcmbUnit;
         private System.Windows.Forms.DataGridViewComboBoxColumn dgvcmbGodown;
         private System.Windows.Forms.DataGridViewComboBoxColumn dgvcmbRack;
         private System.Windows.Forms.DataGridViewComboBoxColumn dgvcmbBatch;
