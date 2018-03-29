@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data.SqlClient;
 using System.Linq;
-
+using LoginForm.QuotationModule;
 
 namespace LoginForm
 {
@@ -234,6 +234,7 @@ namespace LoginForm
         /// <param name="strVoucherTypeName"></param>
         public void CallFromVoucherTypeSelection(decimal decVoucherTypeId, string strVoucherTypeName)
         {
+            
             try
             {
                 decPurchaseInvoiceVoucherTypeId = decVoucherTypeId;
@@ -364,9 +365,9 @@ namespace LoginForm
                 DataTable dtbl = new DataTable();
                 UnitSP spUnit = new UnitSP();
                 dtbl = spUnit.UnitViewAll();
-                dgvcmbUnit.DataSource = dtbl;
-                dgvcmbUnit.DisplayMember = "unitName";
-                dgvcmbUnit.ValueMember = "unitId";
+                //dgvcmbUnit.DataSource = dtbl;
+                //dgvcmbUnit.DisplayMember = "unitName";
+                //dgvcmbUnit.ValueMember = "unitId";
             }
             catch (Exception ex)
             {
@@ -381,15 +382,20 @@ namespace LoginForm
         /// <param name="inColumn"></param>
         public void UnitComboFill(string decProductId, int inRow, int inColumn)
         {
+            IMEEntities IME = new IMEEntities();
             try
             {
-                DataTable dtbl = new DataTable();
-                UnitSP spUnit = new UnitSP();
-                dtbl = spUnit.UnitViewAllByProductId(decProductId);
-                DataGridViewComboBoxCell dgvcmbUnitCell = (DataGridViewComboBoxCell)dgvProductDetails.Rows[inRow].Cells[inColumn];
-                dgvcmbUnitCell.DataSource = dtbl;
-                dgvcmbUnitCell.DisplayMember = "unitName";
-                dgvcmbUnitCell.ValueMember = "unitId";
+                //DataTable dtbl = new DataTable();
+                //UnitSP spUnit = new UnitSP();
+                //dtbl = spUnit.UnitViewAllByProductId(decProductId);
+                //DataGridViewComboBoxCell dgvcmbUnitCell = (DataGridViewComboBoxCell)dgvProductDetails.Rows[inRow].Cells[inColumn];
+                //dgvcmbUnitCell.DataSource = dtbl;
+                //dgvcmbUnitCell.DisplayMember = "unitName";
+                //dgvcmbUnitCell.ValueMember = "unitId";
+
+                DataGridViewTextBoxCell dgvcmbUnitCell = (DataGridViewTextBoxCell)dgvProductDetails.Rows[inRow].Cells[inColumn];
+                string unit = IME.V_Product.Where(x => x.productId == decProductId).FirstOrDefault().Unit_Measure.ToString();
+                dgvcmbUnitCell.Value = (unit == String.Empty || unit == null) ? "Each" : unit;
             }
             catch (Exception ex)
             {
@@ -1063,9 +1069,9 @@ namespace LoginForm
             {
                 foreach (DataGridViewRow dgrow in dgvProductDetails.Rows)
                 {
-                    if (dgrow.Cells["dgvtxtProductId"].Value != null)
+                    if (dgrow.Cells["dgvtxtProductCode"].Value != null)
                     {
-                        if (dgrow.Cells["dgvtxtProductId"].Value.ToString() != string.Empty)
+                        if (dgrow.Cells["dgvtxtProductCode"].Value.ToString() != string.Empty)
                         {
                             if (dgrow.Cells["dgvtxtRate"].Value != null)
                             {
@@ -1148,7 +1154,7 @@ namespace LoginForm
                                 {
                                     decTaxPercent = 0;
                                 }
-                                decProductId = dgrow.Cells["dgvtxtProductId"].Value.ToString();
+                                decProductId = dgrow.Cells["dgvtxtProductCode"].Value.ToString();
                                 infoProduct = spProduct.ProductView(decProductId);
                                 if (infoProduct.TaxapplicableOn == "MRP")
                                 {
@@ -1222,18 +1228,18 @@ namespace LoginForm
                             dgvProductDetails.CurrentRow.HeaderCell.Value = "X";
                             dgvProductDetails.CurrentRow.HeaderCell.Style.ForeColor = Color.Red;
                         }
-                        else if (dgvProductDetails.CurrentRow.Cells["dgvtxtRate"].Value == null)
-                        {
-                            isValueChanged = true;
-                            dgvProductDetails.CurrentRow.HeaderCell.Value = "X";
-                            dgvProductDetails.CurrentRow.HeaderCell.Style.ForeColor = Color.Red;
-                        }
-                        else if (dgvProductDetails.CurrentRow.Cells["dgvtxtRate"].Value.ToString().Trim() == string.Empty)
-                        {
-                            isValueChanged = true;
-                            dgvProductDetails.CurrentRow.HeaderCell.Value = "X";
-                            dgvProductDetails.CurrentRow.HeaderCell.Style.ForeColor = Color.Red;
-                        }
+                        //else if (dgvProductDetails.CurrentRow.Cells["dgvtxtRate"].Value == null)
+                        //{
+                        //    isValueChanged = true;
+                        //    dgvProductDetails.CurrentRow.HeaderCell.Value = "X";
+                        //    dgvProductDetails.CurrentRow.HeaderCell.Style.ForeColor = Color.Red;
+                        //}
+                        //else if (dgvProductDetails.CurrentRow.Cells["dgvtxtRate"].Value.ToString().Trim() == string.Empty)
+                        //{
+                        //    isValueChanged = true;
+                        //    dgvProductDetails.CurrentRow.HeaderCell.Value = "X";
+                        //    dgvProductDetails.CurrentRow.HeaderCell.Style.ForeColor = Color.Red;
+                        //}
                         else if (spSettings.SettingsStatusCheck("AllowZeroValueEntry") == "No" && (Convert.ToDecimal(dgvProductDetails.CurrentRow.Cells["dgvtxtRate"].Value) == 0))
                         {
                             isValueChanged = true;
@@ -1530,7 +1536,7 @@ namespace LoginForm
             {
                 int inRowCount = dgvProductDetails.RowCount;
                 dgvProductDetails.ClearSelection();
-                if (txtVoucherNo.Text.Trim() == string.Empty)
+                if (txtVendorInvoiceNo.Text.Trim() == string.Empty)
                 {
                     Messages.InformationMessage("Enter voucher number");
                     txtVoucherNo.Focus();
@@ -1570,12 +1576,17 @@ namespace LoginForm
                     Messages.InformationMessage("Select Currency");
                     cmbCurrency.Focus();
                 }
-                else if (cmbPurchaseMode.Text == "Against PurchaseOrder" && cmbOrderNo.Text == string.Empty)
-                {
-                    Messages.InformationMessage("Select OrderNo");
-                    cmbOrderNo.Focus();
-                }
-                else if (cmbPurchaseMode.Text == "Against MaterialReceipt" && cmbOrderNo.Text == string.Empty)
+                //else if (cmbPurchaseMode.Text == "Against PurchaseOrder" && cmbOrderNo.Text == string.Empty)
+                //{
+                //    Messages.InformationMessage("Select OrderNo");
+                //    cmbOrderNo.Focus();
+                //}
+                //else if (cmbPurchaseMode.Text == "Against MaterialReceipt" && cmbOrderNo.Text == string.Empty)
+                //{
+                //    Messages.InformationMessage("Select ReceiptNo");
+                //    cmbOrderNo.Focus();
+                //}
+                else if (cmbPurchaseMode.Text == "NA" && cmbOrderNo.Text == string.Empty)
                 {
                     Messages.InformationMessage("Select ReceiptNo");
                     cmbOrderNo.Focus();
@@ -2809,33 +2820,34 @@ namespace LoginForm
                 }
                 if (dtbl.Rows.Count >= 1)
                 {
-                    decProductId = dtbl.Rows[0]["productId"].ToString();
-                    decGodownId = Convert.ToDecimal(dtbl.Rows[0]["godownId"]);
+                    decProductId = dtbl.Rows[0]["productCode"].ToString();
+                    //decGodownId = Convert.ToDecimal(dtbl.Rows[0]["godownId"]);
+                    decGodownId = 0;
                     UnitComboFill(decProductId, inRowIndex, dgvProductDetails.Columns["dgvcmbUnit"].Index);
                     GodownComboFill();
                     RackComboFill(decGodownId, inRowIndex, dgvProductDetails.Columns["dgvcmbRack"].Index);
                     BatchComboFill(decProductId.ToString(), inRowIndex, dgvProductDetails.Columns["dgvcmbBatch"].Index);
-                    dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtPurchaseDetailsId"].Value = dtbl.Rows[0]["purchaseDetailsId"];
-                    dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtPurchaseOrderDetailsId"].Value = dtbl.Rows[0]["purchaseOrderDetailsId"];
-                    dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtMaterialReceiptDetailsId"].Value = dtbl.Rows[0]["materialReceiptDetailsId"];
-                    dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtProductId"].Value = dtbl.Rows[0]["productId"];
-                    dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtBarcode"].Value = dtbl.Rows[0]["barcode"];
-                    dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtProductCode"].Value = dtbl.Rows[0]["productCode"];
-                    dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtProductName"].Value = dtbl.Rows[0]["productName"];
-                    dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtUnitConversionId"].Value = dtbl.Rows[0]["unitConversionId"];
-                    dgvProductDetails.Rows[inRowIndex].Cells["dgvcmbUnit"].Value = dtbl.Rows[0]["unitId"];
-                    dgvProductDetails.Rows[inRowIndex].Cells["dgvcmbGodown"].Value = dtbl.Rows[0]["godownId"];
-                    dgvProductDetails.Rows[inRowIndex].Cells["dgvcmbRack"].Value = dtbl.Rows[0]["rackId"];
-                    dgvProductDetails.Rows[inRowIndex].Cells["dgvcmbBatch"].Value = dtbl.Rows[0]["batchId"];
-                    dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtRate"].Value = dtbl.Rows[0]["rate"];
-                    dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtGrossValue"].Value = dtbl.Rows[0]["grossValue"];
-                    dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtDiscountPercent"].Value = dtbl.Rows[0]["discountPercent"];
-                    dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtDiscount"].Value = dtbl.Rows[0]["discount"];
-                    dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtNetValue"].Value = dtbl.Rows[0]["netvalue"];
-                    dgvProductDetails.Rows[inRowIndex].Cells["dgvcmbTax"].Value = dtbl.Rows[0]["taxId"];
-                    dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtTaxAmount"].Value = dtbl.Rows[0]["taxAmount"];
-                    dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtAmount"].Value = dtbl.Rows[0]["amount"];
-                    dgvProductDetails.Rows[inRowIndex].HeaderCell.Value = "X";
+                    try {dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtPurchaseDetailsId"].Value = dtbl.Rows[0]["purchaseDetailsId"]; } catch { }
+                    try {dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtPurchaseOrderDetailsId"].Value = dtbl.Rows[0]["purchaseOrderDetailsId"]; } catch { }
+                    try { dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtMaterialReceiptDetailsId"].Value = dtbl.Rows[0]["materialReceiptDetailsId"]; } catch { }
+                    try { dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtProductId"].Value = dtbl.Rows[0]["productId"]; } catch { }
+                    try{ dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtBarcode"].Value = dtbl.Rows[0]["barcode"]; } catch { }
+                    try{ dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtProductCode"].Value = dtbl.Rows[0]["productCode"]; } catch { }
+                    try{ dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtProductName"].Value = dtbl.Rows[0]["productName"]; } catch { }
+                    try{ dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtUnitConversionId"].Value = dtbl.Rows[0]["unitConversionId"]; } catch { }
+                    try{ dgvProductDetails.Rows[inRowIndex].Cells["dgvcmbUnit"].Value = dtbl.Rows[0]["unitId"]; } catch {}
+                    try{ dgvProductDetails.Rows[inRowIndex].Cells["dgvcmbGodown"].Value = dtbl.Rows[0]["godownId"]; } catch { }
+                    try{ dgvProductDetails.Rows[inRowIndex].Cells["dgvcmbRack"].Value = dtbl.Rows[0]["rackId"]; } catch { }
+                    try{ dgvProductDetails.Rows[inRowIndex].Cells["dgvcmbBatch"].Value = dtbl.Rows[0]["batchId"]; } catch { }
+                    try{ dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtRate"].Value = dtbl.Rows[0]["rate"]; } catch { }
+                    try{ dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtGrossValue"].Value = dtbl.Rows[0]["grossValue"]; } catch { }
+                    try{ dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtDiscountPercent"].Value = dtbl.Rows[0]["discountPercent"]; } catch { }
+                    try{ dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtDiscount"].Value = dtbl.Rows[0]["discount"]; } catch { }
+                    try{ dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtNetValue"].Value = dtbl.Rows[0]["netvalue"]; } catch { }
+                    try{ dgvProductDetails.Rows[inRowIndex].Cells["dgvcmbTax"].Value = dtbl.Rows[0]["taxId"]; } catch { }
+                    try{ dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtTaxAmount"].Value = dtbl.Rows[0]["taxAmount"]; } catch { }
+                    try{ dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtAmount"].Value = dtbl.Rows[0]["amount"]; } catch { }
+                    try{ dgvProductDetails.Rows[inRowIndex].HeaderCell.Value = "X"; } catch { }
                     dgvProductDetails.Rows[inRowIndex].HeaderCell.Style.ForeColor = Color.Red;
                 }
                 else
@@ -2967,7 +2979,7 @@ namespace LoginForm
                     {
                         if (dgvrow.HeaderCell.Value != null)
                         {
-                            if (dgvrow.HeaderCell.Value.ToString() == "X" )//|| dgvrow.Cells["dgvtxtProductId"].Value == null)
+                            if (dgvrow.HeaderCell.Value.ToString() == "X" || dgvrow.Cells["dgvtxtProductName"].Value == null)
                             {
                                 isOk = false;
                                 if (inC == 0)
@@ -4029,15 +4041,15 @@ namespace LoginForm
                         if (dgvProductDetails.CurrentRow.Cells["dgvcmbUnit"].Value.ToString() != string.Empty &&
                            dgvProductDetails.CurrentRow.Cells["dgvcmbUnit"].Value.ToString() != "0")
                         {
-                            if (dgvProductDetails.CurrentRow.Cells["dgvtxtProductId"].Value != null)
+                            if (dgvProductDetails.CurrentRow.Cells["dgvtxtProductCode"].Value != null)
                             {
-                                if (dgvProductDetails.CurrentRow.Cells["dgvtxtProductId"].Value.ToString() != string.Empty &&
-                                   dgvProductDetails.CurrentRow.Cells["dgvtxtProductId"].Value.ToString() != "0")
+                                if (dgvProductDetails.CurrentRow.Cells["dgvtxtProductCode"].Value.ToString() != string.Empty &&
+                                   dgvProductDetails.CurrentRow.Cells["dgvtxtProductCode"].Value.ToString() != "0")
                                 {
                                     decOldUnitConversionId = Convert.ToDecimal(dgvProductDetails.CurrentRow.Cells["dgvtxtUnitConversionId"].Value.ToString());
                                     decOldConversionRate = spUnitConvertion.UnitConversionRateByUnitConversionId(decOldUnitConversionId);
                                     decUnitId = Convert.ToDecimal(dgvProductDetails.CurrentRow.Cells["dgvcmbUnit"].Value.ToString());
-                                    decProductId = dgvProductDetails.CurrentRow.Cells["dgvtxtProductId"].Value.ToString();
+                                    decProductId = dgvProductDetails.CurrentRow.Cells["dgvtxtProductCode"].Value.ToString();
                                     decNewUnitConversionId = spUnitConvertion.UnitconversionIdViewByUnitIdAndProductId(decUnitId, decProductId);
                                     decNewConversionRate = spUnitConvertion.UnitConversionRateByUnitConversionId(decNewUnitConversionId);
                                     dgvProductDetails.CurrentRow.Cells["dgvtxtUnitConversionId"].Value = decNewUnitConversionId;
@@ -4252,7 +4264,7 @@ namespace LoginForm
                             {
                                 decTaxPercent = 0;
                             }
-                            decProductId = dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtProductId"].Value.ToString();
+                            decProductId = dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtProductCode"].Value.ToString();
                             infoProduct = spProduct.ProductView(decProductId);
                             if (infoProduct.TaxapplicableOn == "MRP")
                             {
@@ -5326,29 +5338,21 @@ namespace LoginForm
                 {
                     if (dgvProductDetails.Columns[dgvProductDetails.CurrentCell.ColumnIndex].Name == "dgvtxtProductName" || dgvProductDetails.Columns[dgvProductDetails.CurrentCell.ColumnIndex].Name == "dgvtxtProductCode")
                     {
-                        //TODO Product SearchPopUp
-                        //frmProductSearchPopup frmProductSearchPopupObj = new frmProductSearchPopup();
+                        FormQuotationItemSearch frmProductSearchPopupObj = new FormQuotationItemSearch(dgvProductDetails.CurrentRow.Cells["dgvtxtProductCode"].Value.ToString());
                         //frmProductSearchPopupObj.MdiParent = formMDI.MDIObj;
-                        //if (dgvProductDetails.CurrentRow.Cells["dgvtxtProductCode"].Value != null || dgvProductDetails.CurrentRow.Cells["dgvtxtProductName"].Value != null)
-                        //{
-                        //    frmProductSearchPopupObj.CallFromPurchaseInvoice(this, dgvProductDetails.CurrentRow.Index, dgvProductDetails.CurrentRow.Cells["dgvtxtProductCode"].Value.ToString());
-                        //}
-                        //else
-                        //{
-                        //    frmProductSearchPopupObj.CallFromPurchaseInvoice(this, dgvProductDetails.CurrentRow.Index, string.Empty);
-                        //}
+                        frmProductSearchPopupObj.ShowDialog();
                     }
                 }
-                if (e.KeyCode == Keys.C && Control.ModifierKeys == Keys.Alt) //Product Creation
-                {
-                    SendKeys.Send("{f10}");
-                    if (dgvProductDetails.Columns[dgvProductDetails.CurrentCell.ColumnIndex].Name == "dgvtxtProductName" || dgvProductDetails.Columns[dgvProductDetails.CurrentCell.ColumnIndex].Name == "dgvtxtProductCode")
-                    {
-                        //frmProductCreation frmProductCreationObj = new frmProductCreation();
-                        //frmProductCreationObj.MdiParent = formMDI.MDIObj;
-                        //frmProductCreationObj.CallFromPurchaseInvoice(this);
-                    }
-                }
+                //if (e.KeyCode == Keys.C && Control.ModifierKeys == Keys.Alt) //Product Creation
+                //{
+                //    SendKeys.Send("{f10}");
+                //    if (dgvProductDetails.Columns[dgvProductDetails.CurrentCell.ColumnIndex].Name == "dgvtxtProductName" || dgvProductDetails.Columns[dgvProductDetails.CurrentCell.ColumnIndex].Name == "dgvtxtProductCode")
+                //    {
+                //        //frmProductCreation frmProductCreationObj = new frmProductCreation();
+                //        //frmProductCreationObj.MdiParent = formMDI.MDIObj;
+                //        //frmProductCreationObj.CallFromPurchaseInvoice(this);
+                //    }
+                //}
                 if (e.KeyCode == Keys.Escape)
                 {
                     btnClose_Click(sender, e);

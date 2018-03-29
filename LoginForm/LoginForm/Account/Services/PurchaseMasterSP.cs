@@ -238,7 +238,7 @@ namespace LoginForm.Account.Services
             int inRef = 0;
             try
             {
-                inRef = Convert.ToInt32(new IMEEntities().PurchaseInvoiceVoucherNoCheckExistance(strInvoiceNo, strVoucherNo, decVoucherTypeId, decPurchaseMasterId));
+                inRef = Convert.ToInt32(new IMEEntities().PurchaseInvoiceVoucherNoCheckExistance(strInvoiceNo, strVoucherNo, decVoucherTypeId, decPurchaseMasterId).FirstOrDefault());
             }
             catch (Exception ex)
             {
@@ -252,7 +252,9 @@ namespace LoginForm.Account.Services
             decimal decPurchaseMasterId = 0;
             try
             {
-                decPurchaseMasterId = Convert.ToDecimal(new IMEEntities().PurchaseMasterAdd(p.voucherNo,
+                decPurchaseMasterId = Convert.ToDecimal(new IMEEntities().PurchaseMasterAdd(
+                    p.purchaseMasterId,
+                    p.voucherNo,
                     p.invoiceNo,
                     p.suffixPrefixId,
                     p.voucherTypeId,
@@ -264,7 +266,6 @@ namespace LoginForm.Account.Services
                     p.exchangeRateId,
                     p.narration,
                     p.purchaseAccount,
-                    p.purchaseOrderId.ToString(),
                     p.materialReceiptMasterId,
                     p.additionalCost,
                     p.totalTax,
@@ -274,7 +275,8 @@ namespace LoginForm.Account.Services
                     p.userId,
                     p.lrNo,
                     p.transportationCompany,
-                    p.financialYearId));
+                    p.financialYearId,
+                    p.purchaseOrderId));
             }
             catch (Exception ex)
             {
