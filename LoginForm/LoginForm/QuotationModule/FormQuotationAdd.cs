@@ -302,7 +302,8 @@ namespace LoginForm.QuotationModule
             if (c != null)
             {
                 txtCustomerName.Text = c.c_name;
-                if(c.CurrNameQuo!=null) cbCurrency.SelectedValue = cbCurrency.FindStringExact(c.CurrNameQuo);
+                
+                if(IME.Currencies.Where(a => a.currencyName == c.CurrNameQuo).FirstOrDefault() != null) cbCurrency.SelectedValue = IME.Currencies.Where(a => a.currencyName == c.CurrNameQuo).FirstOrDefault().currencyID;
                 //cbCurrType.SelectedIndex = cbCurrType.FindStringExact(c.CurrTypeQuo);
                 //if(c.MainContactID!=null) cbWorkers.SelectedIndex = (int)c.MainContactID;
                 if (c.paymentmethodID != null)

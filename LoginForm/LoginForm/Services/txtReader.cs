@@ -3100,7 +3100,7 @@ namespace LoginForm
         public static void RSInvoiceReader()
         {
             IMEEntities IME = new IMEEntities();
-
+            int RSID=0;
             //Show the dialog and get result.
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             openFileDialog1.Filter = "txt files (*.txt)|*.txt";
@@ -3163,7 +3163,7 @@ namespace LoginForm
                         , RSInvoice.Currency
                         , RSInvoice.AirwayBillNumber
                         ).FirstOrDefault().ToString());
-
+                    RSID = RSInvoiceID;
                     int a = 4;
                     while (lines.Count() > a)
                     {
@@ -3252,20 +3252,7 @@ namespace LoginForm
                             }
 
                             //For Item History
-                            ItemHistory ih = new ItemHistory();
-                            ih.VoucherDate = DateTime.Now.Date;
-                            ih.VoucherNumber = rs.RS_Invoice.BillingDocumentReference;
-                            ih.CurrentAccountTitle = "RS COMPONENTS LIMITED";
-                            ih.InputQuantity = (int)rs.Quantity;
-                            ih.InputAmount = rs.UnitPrice;
-                            ih.InputTotalAmount = rs.Amount;
-                            ih.FinalTotal = rs.Amount;
-                            ih.OutputAmount = 0;
-                            ih.OutputQuantity = 0;
-                            ih.OutputTotalAmount = 0;
-                            IME.ItemHistories.Add(ih);
-                            IME.SaveChanges();
-                            //
+                          
                             #endregion
 
                             IME.RS_InvoiceDetailsADD(
@@ -3287,7 +3274,7 @@ namespace LoginForm
                                 , rs.DeliveryItemNumber
                                 );
                             IME.SaveChanges();
-
+                            
                         }
                         a++;
                     }
@@ -3336,6 +3323,27 @@ namespace LoginForm
 
 
             }
+            IMEEntities db = new IMEEntities();
+            foreach (RS_InvoiceDetails item in IME.RS_InvoiceDetails.Where(x=>x.RS_InvoiceID==RSID))
+            {
+                //For Item History
+                ItemHistory ih = new ItemHistory();
+                ih.VoucherDate = DateTime.Now.Date;
+                ih.VoucherNumber = item.RS_Invoice.BillingDocumentReference;
+                ih.CurrentAccountTitle = "RS COMPONENTS LIMITED";
+                ih.InputQuantity = (int)item.Quantity;
+                ih.InputAmount = item.UnitPrice;
+                ih.InputTotalAmount = item.Amount;
+                ih.FinalTotal = item.Amount;
+                ih.OutputAmount = 0;
+                ih.OutputQuantity = 0;
+                ih.OutputTotalAmount = 0;
+                db.ItemHistories.Add(ih);
+                db.SaveChanges();
+                //
+            }
+
+
 
         }
 

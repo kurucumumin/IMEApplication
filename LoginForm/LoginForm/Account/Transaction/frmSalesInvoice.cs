@@ -496,7 +496,7 @@ namespace LoginForm
                 DeliveryNoteMasterSP spDeliveryNoteMasterSp = new DeliveryNoteMasterSP();
                 SalesQuotationMasterSP spSalesQuotationMasterSp = new SalesQuotationMasterSP();
                 DataTable dtbl = new DataTable();
-                if (cmbCashOrParty.DataSource != null)
+                if (cmbCashOrParty.DataSource != null && cmbCashOrParty.ValueMember!="")
                 {
                     if (cmbSalesMode.Text == "Against SalesOrder")
                     {
@@ -3109,8 +3109,8 @@ namespace LoginForm
                             ih.VoucherDate = DateTime.Now.Date;
                             ih.VoucherNumber = InfoSalesMaster.voucherNo;
                             ih.CurrentAccountTitle = InfoSalesMaster.customerName;
-                            ih.OutputQuantity = Convert.ToInt32( InfoSalesDetails.qty);
-                            ih.OutputAmount = (InfoSalesDetails.amount)/(InfoSalesDetails.qty);
+                            ih.OutputQuantity = Convert.ToInt32(InfoSalesDetails.qty);
+                            ih.OutputAmount = (InfoSalesDetails.amount) / (InfoSalesDetails.qty);
                             ih.OutputTotalAmount = InfoSalesDetails.amount;
                             ih.FinalTotal = InfoSalesDetails.netAmount;
                             ih.InputAmount = 0;
@@ -3118,6 +3118,7 @@ namespace LoginForm
                             ih.InputTotalAmount = 0;
                             IME.ItemHistories.Add(ih);
                             IME.SaveChanges();
+                            //
                             //
                             infoStockPosting.date = Convert.ToDateTime(txtDate.Text.Trim().ToString());
                             // TODO 3 : Product ID Int olmayacak
@@ -5043,7 +5044,7 @@ namespace LoginForm
             if (IME.PurchaseOrders.Where(a => a.purchaseOrderId == PurchaseOrderNo).FirstOrDefault() != null)
             {
                 txtCustomer.Text = IME.PurchaseOrders.Where(a => a.purchaseOrderId == PurchaseOrderNo).FirstOrDefault().Customer.c_name;
-                cmbSalesMan.SelectedValue = IME.PurchaseOrders.Where(a => a.purchaseOrderId == PurchaseOrderNo).FirstOrDefault().Worker.WorkerID;
+                if(IME.PurchaseOrders.Where(a => a.purchaseOrderId == PurchaseOrderNo).FirstOrDefault()!=null) cmbSalesMan.SelectedValue = IME.PurchaseOrders.Where(a => a.purchaseOrderId == PurchaseOrderNo).FirstOrDefault().Worker.WorkerID;
             }
             cmbCurrency.SelectedValue = IME.Currencies.Where(a => a.currencyName == CurrencyName).FirstOrDefault().currencyID;
             this.Show();

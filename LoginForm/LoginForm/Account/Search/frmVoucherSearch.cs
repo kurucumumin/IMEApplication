@@ -1059,6 +1059,7 @@ namespace LoginForm
                 DateTime ToDate = this.dtpToDate.Value;
                 dtblVoucher = spVoucherType.VoucherSearchFill(FromDate, ToDate, decVoucherTypeId, strInvoiceNo, decLedgerId, decEmployeeId);
                 dgvVoucherSearch.DataSource = dtblVoucher;
+                dgvVoucherSearch.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             }
             catch (Exception ex)
             {
