@@ -1088,6 +1088,9 @@
     <Compile Include="DataSet\CashOrBankComboFill_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\CashOrPartyComboFill_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\CashOrPartyUnderSundryDrComboFill_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -2154,18 +2157,6 @@
     <Compile Include="PurchaseOrder\RSInvToSaleInv.Designer.cs">
       <DependentUpon>RSInvToSaleInv.cs</DependentUpon>
     </Compile>
-    <Compile Include="StockManagement\frmStockReserve.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="StockManagement\frmStockReserve.Designer.cs">
-      <DependentUpon>frmStockReserve.cs</DependentUpon>
-    </Compile>
-    <Compile Include="StockManagement\frmStock.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="StockManagement\frmStock.Designer.cs">
-      <DependentUpon>frmStock.cs</DependentUpon>
-    </Compile>
     <Compile Include="QuotationModule\FormQuaotationCustomerSearch.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2269,6 +2260,18 @@
     <Compile Include="Services\ToolTipService.cs" />
     <Compile Include="Services\txtCreate.cs" />
     <Compile Include="Services\XmlToObject.cs" />
+    <Compile Include="StockManagement\frmStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockManagement\frmStock.Designer.cs">
+      <DependentUpon>frmStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StockManagement\frmStockReserve.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockManagement\frmStockReserve.Designer.cs">
+      <DependentUpon>frmStockReserve.cs</DependentUpon>
+    </Compile>
     <Compile Include="Supplier\frmSupplierMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2692,12 +2695,6 @@
     <EmbeddedResource Include="PurchaseOrder\RSInvToSaleInv.resx">
       <DependentUpon>RSInvToSaleInv.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="StockManagement\frmStockReserve.resx">
-      <DependentUpon>frmStockReserve.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="StockManagement\frmStock.resx">
-      <DependentUpon>frmStock.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="QuotationModule\FormQuaotationCustomerSearch.resx">
       <DependentUpon>FormQuaotationCustomerSearch.cs</DependentUpon>
     </EmbeddedResource>
@@ -2742,6 +2739,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SaleOrder\FormSaleOrderAdd.resx">
       <DependentUpon>FormSaleOrderAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StockManagement\frmStock.resx">
+      <DependentUpon>frmStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StockManagement\frmStockReserve.resx">
+      <DependentUpon>frmStockReserve.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Supplier\frmSupplierMain.resx">
       <DependentUpon>frmSupplierMain.cs</DependentUpon>
