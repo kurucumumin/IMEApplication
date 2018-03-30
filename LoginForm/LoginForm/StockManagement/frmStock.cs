@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,7 +15,6 @@ namespace LoginForm.StockManagement
     public partial class frmStock : Form
     {
         #region Parameters
-        //cem
         public string _ProductID;
         public string _ProductName;
 
