@@ -37,13 +37,11 @@
             this.btnWorker = new System.Windows.Forms.Button();
             this.btnSalesOrder = new System.Windows.Forms.Button();
             this.btnSupplier = new System.Windows.Forms.Button();
-            this.btnStockReserve = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnStockReserve);
             this.panel1.Controls.Add(this.btnStock);
             this.panel1.Controls.Add(this.btnQuotation);
             this.panel1.Controls.Add(this.btnItemCard);
@@ -209,25 +207,6 @@
             this.btnSupplier.UseVisualStyleBackColor = false;
             this.btnSupplier.Click += new System.EventHandler(this.btnSupplier_Click);
             // 
-            // btnStockReserve
-            // 
-            this.btnStockReserve.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnStockReserve.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
-            this.btnStockReserve.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnStockReserve.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnStockReserve.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
-            this.btnStockReserve.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
-            this.btnStockReserve.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStockReserve.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.btnStockReserve.Location = new System.Drawing.Point(0, 320);
-            this.btnStockReserve.Margin = new System.Windows.Forms.Padding(0);
-            this.btnStockReserve.Name = "btnStockReserve";
-            this.btnStockReserve.Size = new System.Drawing.Size(301, 40);
-            this.btnStockReserve.TabIndex = 47;
-            this.btnStockReserve.Text = "Stock Reserve";
-            this.btnStockReserve.UseVisualStyleBackColor = false;
-            this.btnStockReserve.Click += new System.EventHandler(this.btnStockReserve_Click);
-            // 
             // DevelopmentControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -254,6 +233,5 @@
         private System.Windows.Forms.Button btnSalesOrder;
         private System.Windows.Forms.Button btnSupplier;
         private System.Windows.Forms.Button btnStock;
-        private System.Windows.Forms.Button btnStockReserve;
     }
 }
