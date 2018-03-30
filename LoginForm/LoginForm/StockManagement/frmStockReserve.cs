@@ -209,6 +209,8 @@ namespace LoginForm.StockManagement
                     {
                         existingReserve.Qty += Convert.ToInt32(numQuantity.Value);
                     }
+
+                    _Stock.ReserveQty += Convert.ToInt32(numQuantity.Value);
                     db.SaveChanges();
 
                 }
