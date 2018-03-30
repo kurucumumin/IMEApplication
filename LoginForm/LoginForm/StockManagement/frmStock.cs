@@ -16,7 +16,7 @@ namespace LoginForm.StockManagement
     public partial class frmStock : Form
     {
         #region Parameters
-
+        //cem
         public string _ProductID;
         public string _ProductName;
 
