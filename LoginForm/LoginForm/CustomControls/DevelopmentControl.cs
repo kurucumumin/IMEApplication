@@ -140,5 +140,11 @@ namespace LoginForm.CustomControls
             StockManagement.frmStock form = new StockManagement.frmStock();
             form.Show();
         }
+
+        private void btnStockReserve_Click(object sender, EventArgs e)
+        {
+            frmStockReserve form = new frmStockReserve();
+            form.Show();
+        }
     }
 }
