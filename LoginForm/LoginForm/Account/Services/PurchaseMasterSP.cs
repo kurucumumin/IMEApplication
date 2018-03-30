@@ -249,11 +249,11 @@ namespace LoginForm.Account.Services
 
         public decimal PurchaseMasterAdd(PurchaseMaster p)
         {
+            IMEEntities IME = new IMEEntities();
             decimal decPurchaseMasterId = 0;
             try
             {
-                decPurchaseMasterId = Convert.ToDecimal(new IMEEntities().PurchaseMasterAdd(
-                    p.purchaseMasterId,
+                object obj = IME.PurchaseMasterAdd(
                     p.voucherNo,
                     p.invoiceNo,
                     p.suffixPrefixId,
@@ -276,7 +276,16 @@ namespace LoginForm.Account.Services
                     p.lrNo,
                     p.transportationCompany,
                     p.financialYearId,
-                    p.purchaseOrderId));
+                    p.purchaseOrderId).FirstOrDefault();
+
+                if (obj != null)
+                {
+                    decPurchaseMasterId = decimal.Parse(obj.ToString());
+                }
+                else
+                {
+                    decPurchaseMasterId = 0;
+                }
             }
             catch (Exception ex)
             {

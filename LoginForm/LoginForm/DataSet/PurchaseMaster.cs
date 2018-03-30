@@ -45,6 +45,7 @@ namespace LoginForm.DataSet
         public string transportationCompany { get; set; }
         public Nullable<decimal> financialYearId { get; set; }
         public Nullable<int> purchaseOrderId { get; set; }
+        public string SupplierName { get; set; }
     
         public virtual AccountLedger AccountLedger { get; set; }
         public virtual ExchangeRate ExchangeRate { get; set; }

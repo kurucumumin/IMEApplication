@@ -1,4 +1,5 @@
 ﻿using LoginForm.DataSet;
+using LoginForm.Services;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -61,10 +62,12 @@ namespace LoginForm.Account.Services
 
         public DataSet.PurchaseOrder PurchaseOrderMasterView(int purchaseOrderMasterId)
         {
+            IMEEntities IME = new IMEEntities();
             DataSet.PurchaseOrder p = new DataSet.PurchaseOrder();
+            decimal purchaseId = Convert.ToDecimal(purchaseOrderMasterId);
             try
             {
-                var po = new IMEEntities().PurchaseOrderMasterView(Convert.ToDecimal(purchaseOrderMasterId)).FirstOrDefault();
+                var po = IME.PurchaseOrderMasterView(purchaseId).FirstOrDefault();
 
                 p.voucherNo = po.voucherNo;
                 p.invoiceNo = po.invoiceNo;
@@ -84,6 +87,5 @@ namespace LoginForm.Account.Services
             }
             return p;
         }
-
     }
 }

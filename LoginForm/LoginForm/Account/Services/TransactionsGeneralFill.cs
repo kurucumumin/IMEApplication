@@ -41,7 +41,7 @@ namespace LoginForm.Account.Services
             string strVoucherNo = string.Empty;
             try
             {
-                strVoucherNo = db.VoucherNumberAutomaicGeneration(VoucherTypeId, date, tableName, txtBox).ToString();
+                strVoucherNo = db.VoucherNumberAutomaicGeneration(VoucherTypeId, date, tableName, txtBox).FirstOrDefault().ToString();
                 if (strVoucherNo == "System.Data.Entity.Core.Objects.ObjectResult`1[System.Nullable`1[System.Decimal]]")
                 {
                     strVoucherNo = "0";
@@ -186,49 +186,39 @@ namespace LoginForm.Account.Services
         {
             IMEEntities db = new IMEEntities();
             DataTable dtbl = new DataTable();
-            dtbl.Columns.Add("SlNo", typeof(decimal));
-            dtbl.Columns["SlNo"].AutoIncrement = true;
-            dtbl.Columns["SlNo"].AutoIncrementSeed = 1;
-            dtbl.Columns["SlNo"].AutoIncrementStep = 1;
-                var adaptor = (from ag in db.AccountGroups.Where(x => x.accountGroupName == "Cash-in Hand" || x.accountGroupName == "Sundry Creditors")
-                               select new
-                               {
-                                   AccountGroupId = ag.accountGroupId,
-                                    ag.accountGroupName,
-                                   hierarchyLevel = 1
-                               }).ToList();
-                var adaptor2 = (from ag in db.AccountGroups.Where(x => x.accountGroupName == "Cash-in Hand" || x.accountGroupName == "Sundry Creditors")
-                                select new
-                                {
-                                    AccountGroupId = ag.accountGroupId,
-                                    ag.accountGroupName,
-                                    hierarchyLevel = 2
-                                }).ToList();
+            try
+            {
+                var adapter = db.CashOrPartyComboFill().ToList();
 
-                foreach (var item in adaptor2)
+                dtbl.Columns.Add("ledgerName");
+                dtbl.Columns.Add("ledgerId");
+
+                foreach (var item in adapter)
                 {
-                    if (!adaptor.Exists(x => x.AccountGroupId == item.AccountGroupId))
-                    {
-                        adaptor.Add(item);
-                    }
-                }
+                    DataRow row = dtbl.NewRow();
 
-                dtbl.Columns.Add("AccountGroupId");
-                dtbl.Columns.Add("accountGroupName");
-                foreach (var item in adaptor)
-                {
-                    var row = dtbl.NewRow();
+                    row["ledgerName"] = item.ledgerName;
+                    row["ledgerId"] = item.ledgerId;
 
-                    row["AccountGroupId"] = item.AccountGroupId;
-                    row["accountGroupName"] = item.accountGroupName;
                     dtbl.Rows.Add(row);
                 }
 
+
+                if (isAll)
+                {
+                    DataRow dr = dtbl.NewRow();
+                    dr["ledgerName"] = "All";
+                    dr["ledgerId"] = 0;
+                    dtbl.Rows.InsertAt(dr, 0);
+                }
                 cmbCashOrParty.DataSource = dtbl;
-                cmbCashOrParty.ValueMember = "AccountGroupId";
-                cmbCashOrParty.DisplayMember = "accountGroupName";
-                cmbCashOrParty.SelectedIndex = 0;
-           
+                cmbCashOrParty.DisplayMember = "ledgerName";
+                cmbCashOrParty.ValueMember = "ledgerId";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         public void CashOrPartyUnderSundryDrComboFill(ComboBox cmbCashOrParty, bool isAll)
