@@ -7301,8 +7301,9 @@ namespace LoginForm
                         if (sr != null)
                         {
                             db.StockReserves.Remove(sr);
+                            decimal stockID = sr.StockID;
                             db.SaveChanges();
-                            IME.Stocks.Remove(IME.Stocks.Where(x => x.StockID == sr.StockID).FirstOrDefault());
+                            IME.Stocks.Remove(IME.Stocks.Where(x => x.StockID == stockID).FirstOrDefault());
                             IME.SaveChanges();
                         }
 
