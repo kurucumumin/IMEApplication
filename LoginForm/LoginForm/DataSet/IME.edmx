@@ -7925,7 +7925,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Parameter Name="purchaseMasterId" Type="numeric" Mode="In" />
         </Function>
         <Function Name="PurchaseMasterAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="purchaseMasterId" Type="numeric" Mode="In" />
           <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
           <Parameter Name="invoiceNo" Type="varchar(max)" Mode="In" />
           <Parameter Name="suffixPrefixId" Type="numeric" Mode="In" />
@@ -20570,7 +20569,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <Parameter Name="purchaseMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="PurchaseMasterAdd" ReturnType="Collection(Decimal)">
-            <Parameter Name="purchaseMasterId" Mode="In" Type="Decimal" />
             <Parameter Name="voucherNo" Mode="In" Type="String" />
             <Parameter Name="invoiceNo" Mode="In" Type="String" />
             <Parameter Name="suffixPrefixId" Mode="In" Type="Decimal" />

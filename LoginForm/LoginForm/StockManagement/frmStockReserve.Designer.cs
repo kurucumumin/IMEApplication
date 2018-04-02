@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.FrameTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabStockReserveUpdate = new System.Windows.Forms.TabPage();
@@ -53,18 +52,13 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgStockReserveList = new System.Windows.Forms.DataGridView();
-            this.dgProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgStockID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgSaleOrderID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgCustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgValidationDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgReserveID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.saleOrderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stockReserveBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.FrameTableLayout.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabStockReserveUpdate.SuspendLayout();
@@ -72,7 +66,6 @@
             this.tabSearch.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgStockReserveList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stockReserveBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // FrameTableLayout
@@ -328,7 +321,6 @@
             // 
             this.dgStockReserveList.AllowUserToAddRows = false;
             this.dgStockReserveList.AllowUserToDeleteRows = false;
-            this.dgStockReserveList.AutoGenerateColumns = false;
             this.dgStockReserveList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgStockReserveList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgStockID,
@@ -337,12 +329,7 @@
             this.dgValidationDate,
             this.dgProductID,
             this.dgProductName,
-            this.dgQty,
-            this.dgReserveID,
-            this.dataGridViewTextBoxColumn4,
-            this.saleOrderDataGridViewTextBoxColumn,
-            this.dataGridViewTextBoxColumn8});
-            this.dgStockReserveList.DataSource = this.stockReserveBindingSource;
+            this.dgQty});
             this.dgStockReserveList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgStockReserveList.Location = new System.Drawing.Point(16, 16);
             this.dgStockReserveList.Margin = new System.Windows.Forms.Padding(0);
@@ -355,17 +342,9 @@
             this.dgStockReserveList.TabIndex = 1;
             this.dgStockReserveList.SelectionChanged += new System.EventHandler(this.dgStockList_SelectionChanged);
             // 
-            // dgProductName
-            // 
-            this.dgProductName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dgProductName.HeaderText = "Product Name";
-            this.dgProductName.Name = "dgProductName";
-            this.dgProductName.ReadOnly = true;
-            // 
             // dgStockID
             // 
             this.dgStockID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dgStockID.DataPropertyName = "StockID";
             this.dgStockID.HeaderText = "StockID";
             this.dgStockID.Name = "dgStockID";
             this.dgStockID.ReadOnly = true;
@@ -374,83 +353,49 @@
             // dgSaleOrderID
             // 
             this.dgSaleOrderID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dgSaleOrderID.DataPropertyName = "SaleOrderID";
-            this.dgSaleOrderID.HeaderText = "SaleOrderID";
+            this.dgSaleOrderID.HeaderText = "Sale Order ID";
             this.dgSaleOrderID.Name = "dgSaleOrderID";
             this.dgSaleOrderID.ReadOnly = true;
-            this.dgSaleOrderID.Width = 118;
+            this.dgSaleOrderID.Width = 126;
             // 
             // dgCustomerName
             // 
             this.dgCustomerName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dgCustomerName.DataPropertyName = "Customer";
-            this.dgCustomerName.HeaderText = "Customer";
+            this.dgCustomerName.HeaderText = "Customer Name";
             this.dgCustomerName.Name = "dgCustomerName";
             this.dgCustomerName.ReadOnly = true;
-            this.dgCustomerName.Width = 103;
+            this.dgCustomerName.Width = 135;
             // 
             // dgValidationDate
             // 
-            this.dgValidationDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dgValidationDate.DataPropertyName = "ValidationDate";
-            this.dgValidationDate.HeaderText = "ValidationDate";
+            this.dgValidationDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgValidationDate.HeaderText = "Validation Date";
             this.dgValidationDate.Name = "dgValidationDate";
             this.dgValidationDate.ReadOnly = true;
-            this.dgValidationDate.Width = 131;
+            this.dgValidationDate.Width = 124;
             // 
             // dgProductID
             // 
             this.dgProductID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dgProductID.DataPropertyName = "ProductID";
-            this.dgProductID.HeaderText = "ProductID";
+            this.dgProductID.HeaderText = "Product ID";
             this.dgProductID.Name = "dgProductID";
             this.dgProductID.ReadOnly = true;
-            this.dgProductID.Width = 103;
+            this.dgProductID.Width = 99;
+            // 
+            // dgProductName
+            // 
+            this.dgProductName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dgProductName.HeaderText = "Product Name";
+            this.dgProductName.Name = "dgProductName";
+            this.dgProductName.ReadOnly = true;
             // 
             // dgQty
             // 
             this.dgQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dgQty.DataPropertyName = "Qty";
-            this.dgQty.HeaderText = "Qty";
+            this.dgQty.HeaderText = "Quantity";
             this.dgQty.Name = "dgQty";
             this.dgQty.ReadOnly = true;
-            this.dgQty.Width = 60;
-            // 
-            // dgReserveID
-            // 
-            this.dgReserveID.DataPropertyName = "ReserveID";
-            this.dgReserveID.HeaderText = "ReserveID";
-            this.dgReserveID.Name = "dgReserveID";
-            this.dgReserveID.ReadOnly = true;
-            this.dgReserveID.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "CustomerID";
-            this.dataGridViewTextBoxColumn4.HeaderText = "CustomerID";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Visible = false;
-            // 
-            // saleOrderDataGridViewTextBoxColumn
-            // 
-            this.saleOrderDataGridViewTextBoxColumn.DataPropertyName = "SaleOrder";
-            this.saleOrderDataGridViewTextBoxColumn.HeaderText = "SaleOrder";
-            this.saleOrderDataGridViewTextBoxColumn.Name = "saleOrderDataGridViewTextBoxColumn";
-            this.saleOrderDataGridViewTextBoxColumn.ReadOnly = true;
-            this.saleOrderDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "Stock";
-            this.dataGridViewTextBoxColumn8.HeaderText = "Stock";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.ReadOnly = true;
-            this.dataGridViewTextBoxColumn8.Visible = false;
-            // 
-            // stockReserveBindingSource
-            // 
-            this.stockReserveBindingSource.DataSource = typeof(LoginForm.DataSet.StockReserve);
+            this.dgQty.Width = 91;
             // 
             // frmStockReserve
             // 
@@ -473,7 +418,6 @@
             this.tabSearch.PerformLayout();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgStockReserveList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stockReserveBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -492,18 +436,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn productIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn customerDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn stockDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgStockID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgSaleOrderID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgCustomerName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgValidationDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgProductID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgProductName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgQty;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgReserveID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn saleOrderDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.BindingSource stockReserveBindingSource;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label5;
@@ -525,5 +457,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabSearch;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgStockID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgSaleOrderID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgCustomerName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgValidationDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgProductID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgProductName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgQty;
     }
 }
