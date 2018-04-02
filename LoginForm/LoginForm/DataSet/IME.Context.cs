@@ -8244,7 +8244,7 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("VatViewTaxNames");
         }
     
-        public virtual int VoucherNumberAutomaicGeneration(Nullable<decimal> voucherTypeId, Nullable<System.DateTime> date, string tab_name, Nullable<decimal> txtBox)
+        public virtual ObjectResult<string> VoucherNumberAutomaicGeneration(Nullable<decimal> voucherTypeId, Nullable<System.DateTime> date, string tab_name, Nullable<decimal> txtBox)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
@@ -8262,7 +8262,7 @@ namespace LoginForm.DataSet
                 new ObjectParameter("txtBox", txtBox) :
                 new ObjectParameter("txtBox", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("VoucherNumberAutomaicGeneration", voucherTypeIdParameter, dateParameter, tab_nameParameter, txtBoxParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("VoucherNumberAutomaicGeneration", voucherTypeIdParameter, dateParameter, tab_nameParameter, txtBoxParameter);
         }
     
         public virtual int VoucherreportsumQty(Nullable<decimal> salesMasterId, string voucherTypeName)
