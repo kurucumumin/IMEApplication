@@ -220,6 +220,9 @@ namespace LoginForm.StockManagement
                         db.SaveChanges();
                     }
                     parent.UpdateStockGrid();
+                    dgStockReserveList.Rows.Clear();
+                    dgStockReserveList.Refresh();
+                    ItemToStockReserveGrid(db.StockReserves.Where(x => x.StockID == _Stock.StockID).ToList());
                 }
                 else
                 {
