@@ -491,6 +491,7 @@ namespace LoginForm.Account.Services
         {
             IMEEntities IME = new IMEEntities();
             decimal decSalesMasterId = 0;
+            if (salesmasterinfo.voucherTypeId == -1) salesmasterinfo.voucherTypeId = null;
             try
             {
                 object obj = IME.SalesMasterAdd(
