@@ -21534,7 +21534,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <Parameter Name="tax" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="VatViewTaxNames" ReturnType="Collection(String)" />
-          <FunctionImport Name="VoucherNumberAutomaicGeneration">
+          <FunctionImport Name="VoucherNumberAutomaicGeneration" ReturnType="Collection(String)">
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
             <Parameter Name="date" Mode="In" Type="DateTime" />
             <Parameter Name="tab_name" Mode="In" Type="String" />
