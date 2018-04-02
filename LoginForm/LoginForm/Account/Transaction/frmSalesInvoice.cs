@@ -2793,9 +2793,10 @@ namespace LoginForm
                                     if (Messages.SaveMessage())
                                     {
                                         RemoveIncompleteRowsFromAdditionalCostGrid();
+                                      
                                         SaveFunction();
                                         MessageBox.Show("Saved successfully");
-                                        DeleteStockReserve();
+                                        
                                     }
                                 }
                             }
@@ -3276,6 +3277,7 @@ namespace LoginForm
                         //Print(decSalesMasterId);
                     }
                 }
+                DeleteStockReserve();
                 Clear();
             }
             catch (Exception ex)
@@ -5029,17 +5031,17 @@ namespace LoginForm
                 row.Cells[dgvtxtSalesInvoiceNetAmount.Index].Value = item["NetAmount"].ToString();
                 row.Cells[dgvtxtSalesInvoiceProductName.Index].Value = item["ProductDesc"].ToString();
                 txtDate.Text= item["BillingDocumentDate"].ToString();
-                row.Cells["POno"].Value=item["PurchaseOrderNo"].ToString();
+                row.Cells[dgvPOno.Index].Value=item["PurchaseOrderNo"].ToString();
                 //TODO diğer para değerleri de yazılmalı
                 if (item["Currency"].ToString() == "GBP")
                 {
                     CurrencyName = "Pound";
                 }
-
+                
 
                 int textIndex = item["PurchaseOrderNo"].ToString().IndexOf("RS");
                 PurchaseOrderNo = Int32.Parse(item["PurchaseOrderNo"].ToString().Substring(0, textIndex));
-
+                row.Cells[dgvPOno.Index].Value = textIndex;
 
                 dgvSalesInvoice.Rows.Add(row);
             }
@@ -7285,24 +7287,38 @@ namespace LoginForm
             IMEEntities db = new IMEEntities();
             try
             {
-                foreach (DataRow item in dgvSalesInvoice.Rows)
+                for (int i = 0; i < dgvSalesInvoice.RowCount; i++)
                 {
-                    string productID;
-                    string customerID;
-                    productID= item["ProductID"].ToString();
-                    customerID = txtCustomer.Text;
-                    StockReserve sr = db.StockReserves.Where(x => x.ProductID == StockReserveProductID && x.CustomerID == txtCustomer.Text).FirstOrDefault();
-                    if (sr != null)
+                    if (dgvSalesInvoice.Rows[i].Cells[dgvtxtSalesInvoiceQty.Index].Value!=null)
                     {
-                        db.StockReserves.Remove(sr);
-                        db.SaveChanges();
+                        string productID;
+                        string customerID;
+                        decimal qty;
+                        qty = Decimal.Parse(dgvSalesInvoice.Rows[i].Cells[dgvtxtSalesInvoiceQty.Index].Value.ToString());
+                        productID = dgvSalesInvoice.Rows[i].Cells[dgvtxtSalesInvoiceProductCode.Index].Value.ToString();
+                        customerID = txtCustomer.Text;
+                        StockReserve sr = db.StockReserves.Where(x => x.ProductID == StockReserveProductID && x.CustomerID == txtCustomer.Text && x.Qty == qty).FirstOrDefault();
+                        if (sr != null)
+                        {
+                            db.StockReserves.Remove(sr);
+                            db.SaveChanges();
+                            IME.Stocks.Remove(IME.Stocks.Where(x => x.StockID == sr.StockID).FirstOrDefault());
+                            IME.SaveChanges();
+                        }
+
                     }
+                    
                 } 
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
+
+        }
+
+        private void dgvSalesInvoice_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }
