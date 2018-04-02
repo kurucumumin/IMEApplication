@@ -421,6 +421,7 @@ namespace LoginForm.Account.Services
             {
                 quoID = Convert.ToDecimal(s.quotationDetailsId);
             }
+            
 
             IME.SalesDetailsAdd(s.salesMasterId,
                 s.deliveryNoteDetailsId,
@@ -432,7 +433,7 @@ namespace LoginForm.Account.Services
                 s.unitId,
                 s.unitConversionId,
                 s.discount,
-                Convert.ToDecimal(s.taxId),
+                s.taxId,
                 s.batchId,
                 s.godownId,
                 s.rackId,
