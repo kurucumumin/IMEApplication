@@ -5031,7 +5031,7 @@ namespace LoginForm
                 row.Cells[dgvtxtSalesInvoiceNetAmount.Index].Value = item["NetAmount"].ToString();
                 row.Cells[dgvtxtSalesInvoiceProductName.Index].Value = item["ProductDesc"].ToString();
                 txtDate.Text= item["BillingDocumentDate"].ToString();
-                row.Cells[dgvPOno.Index].Value=item["PurchaseOrderNo"].ToString();
+                //row.Cells[dgvPOno.Index].Value=item["PurchaseOrderNo"].ToString();
                 //TODO diğer para değerleri de yazılmalı
                 if (item["Currency"].ToString() == "GBP")
                 {
@@ -5041,7 +5041,7 @@ namespace LoginForm
 
                 int textIndex = item["PurchaseOrderNo"].ToString().IndexOf("RS");
                 PurchaseOrderNo = Int32.Parse(item["PurchaseOrderNo"].ToString().Substring(0, textIndex));
-                row.Cells[dgvPOno.Index].Value = textIndex;
+                //row.Cells[dgvPOno.Index].Value = textIndex;
 
                 dgvSalesInvoice.Rows.Add(row);
             }

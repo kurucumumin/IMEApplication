@@ -3397,9 +3397,12 @@ namespace LoginForm
                 AccountLedgerSP spAccountLedger = new AccountLedgerSP();
                 AccountLedger infoAccountLedger = new AccountLedger();
                 infoAccountLedger = spAccountLedger.AccountLedgerView(Convert.ToDecimal(cmbCashOrParty.SelectedValue));
-                dRowOther["CustomerAddress"] = (infoAccountLedger.address.ToString().Replace("\n", ", ")).Replace("\r", "");
-                dRowOther["CustomerTIN"] = infoAccountLedger.tin;
-                dRowOther["CustomerCST"] = infoAccountLedger.cst;
+                if (infoAccountLedger!=null)
+                {
+                    try { dRowOther["CustomerAddress"] = (infoAccountLedger.address.ToString().Replace("\n", ", ")).Replace("\r", ""); } catch { }
+                    try { dRowOther["CustomerTIN"] = infoAccountLedger.tin; } catch { }
+                    try { dRowOther["CustomerCST"] = infoAccountLedger.cst; } catch { }
+                }
                 dRowOther["AmountInWords"] = new NumToText().AmountWords(Convert.ToDecimal(txtGrandTotal.Text), Convert.ToDecimal(Utils.getManagement().DefaultCurrency));
                 VoucherTypeSP spVoucherType = new VoucherTypeSP();
                 DataTable dtblDeclaration = spVoucherType.DeclarationAndHeadingGetByVoucherTypeId(decPurchaseInvoiceVoucherTypeId);

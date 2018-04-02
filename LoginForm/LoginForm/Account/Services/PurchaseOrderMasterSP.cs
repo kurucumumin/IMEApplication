@@ -69,16 +69,24 @@ namespace LoginForm.Account.Services
             {
                 var po = IME.PurchaseOrderMasterView(purchaseId).FirstOrDefault();
 
-                p.voucherNo = po.voucherNo;
-                p.invoiceNo = po.invoiceNo;
-                p.suffixPrefixId = po.suffixPrefixId;
-                p.voucherTypeId = po.voucherTypeId;
-                p.date = po.date;
-                p.ledgerId = po.ledgerId;
-                p.dueDate = po.dueDate;
-                p.narration = po.narration;
-                p.totalAmount = po.totalAmount;
-                p.exchangeRateID = po.exchangeRateId;
+                if (po==null)
+                {
+                    return p;
+                }
+                else
+                {
+                    p.voucherNo = po.voucherNo;
+                    p.invoiceNo = po.invoiceNo;
+                    p.suffixPrefixId = po.suffixPrefixId;
+                    p.voucherTypeId = po.voucherTypeId;
+                    p.date = po.date;
+                    p.ledgerId = po.ledgerId;
+                    p.dueDate = po.dueDate;
+                    p.narration = po.narration;
+                    p.totalAmount = po.totalAmount;
+                    p.exchangeRateID = po.exchangeRateId;
+                }
+
 
             }
             catch (Exception ex)

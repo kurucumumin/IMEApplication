@@ -73,21 +73,29 @@ namespace LoginForm.Account.Services
             {
                 var m = db.MaterialReceiptMasterView(materialReceiptMasterId).FirstOrDefault();
 
-                mr.materialReceiptMasterId = m.materialReceiptMasterId;
-                mr.voucherNo = m.voucherNo;
-                mr.invoiceNo = m.invoiceNo;
-                mr.suffixPrefixId = m.suffixPrefixId;
-                mr.voucherTypeId = m.voucherTypeId;
-                mr.date = m.date;
-                mr.ledgerId = m.ledgerId;
-                mr.purchaseOrderId = m.purchaseOrderId;
-                mr.narration = m.narration;
-                mr.exchangeRateId = m.exchangeRateId;
-                mr.totalAmount = m.totalAmount;
-                mr.userId = m.userId;
-                mr.lrNo = m.lrNo;
-                mr.transportationCompany = m.transportationCompany;
-                mr.financialYearId = m.financialYearId;
+                if (m==null)
+                {
+                    return mr;
+                }
+                else
+                {
+                    mr.materialReceiptMasterId = m.materialReceiptMasterId;
+                    mr.voucherNo = m.voucherNo;
+                    mr.invoiceNo = m.invoiceNo;
+                    mr.suffixPrefixId = m.suffixPrefixId;
+                    mr.voucherTypeId = m.voucherTypeId;
+                    mr.date = m.date;
+                    mr.ledgerId = m.ledgerId;
+                    mr.purchaseOrderId = m.purchaseOrderId;
+                    mr.narration = m.narration;
+                    mr.exchangeRateId = m.exchangeRateId;
+                    mr.totalAmount = m.totalAmount;
+                    mr.userId = m.userId;
+                    mr.lrNo = m.lrNo;
+                    mr.transportationCompany = m.transportationCompany;
+                    mr.financialYearId = m.financialYearId;
+                }
+                
                 
             }
             catch (Exception ex)

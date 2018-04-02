@@ -673,31 +673,39 @@ namespace LoginForm.Account.Services
             {
                 var a = db.AccountLedgerView(ledgerId).FirstOrDefault();
 
-                accountledgerinfo.ledgerId = a.ledgerId;
-                accountledgerinfo.accountGroupID = a.accountGroupId;
-                accountledgerinfo.ledgerName = a.ledgerName;
-                accountledgerinfo.openingBalance = a.openingBalance;
-                accountledgerinfo.crOrDr = a.crOrDr;
-                accountledgerinfo.narration = a.narration;
-                accountledgerinfo.mailingName = a.mailingName;
-                accountledgerinfo.address = a.address;
-                accountledgerinfo.phone = a.phone;
-                accountledgerinfo.mobile = a.mobile;
-                accountledgerinfo.email = a.email;
-                accountledgerinfo.creditPeriod = a.creditPeriod;
-                accountledgerinfo.creditLimit = a.creditLimit;
-                accountledgerinfo.pricinglevelId = a.pricinglevelId;
-                accountledgerinfo.billByBill = a.billByBill;
-                accountledgerinfo.tin = a.tin;
-                accountledgerinfo.cst = a.cst;
-                accountledgerinfo.pan = a.pan;
-                accountledgerinfo.routeId = a.routeId;
-                accountledgerinfo.bankAccountNumber = a.bankAccountNumber;
-                accountledgerinfo.branchName = a.branchName;
-                accountledgerinfo.branchCode = a.branchCode;
-                accountledgerinfo.extraDate = a.extraDate;
-                accountledgerinfo.areaId = a.areaId;
-                accountledgerinfo.isDefault = a.isDefault;
+                if (a == null)
+                {
+                    return accountledgerinfo;
+                }
+                else
+                {
+                    accountledgerinfo.ledgerId = a.ledgerId;
+                    accountledgerinfo.accountGroupID = a.accountGroupId;
+                    accountledgerinfo.ledgerName = a.ledgerName;
+                    accountledgerinfo.openingBalance = a.openingBalance;
+                    accountledgerinfo.crOrDr = a.crOrDr;
+                    accountledgerinfo.narration = a.narration;
+                    accountledgerinfo.mailingName = a.mailingName;
+                    accountledgerinfo.address = a.address;
+                    accountledgerinfo.phone = a.phone;
+                    accountledgerinfo.mobile = a.mobile;
+                    accountledgerinfo.email = a.email;
+                    accountledgerinfo.creditPeriod = a.creditPeriod;
+                    accountledgerinfo.creditLimit = a.creditLimit;
+                    accountledgerinfo.pricinglevelId = a.pricinglevelId;
+                    accountledgerinfo.billByBill = a.billByBill;
+                    accountledgerinfo.tin = a.tin;
+                    accountledgerinfo.cst = a.cst;
+                    accountledgerinfo.pan = a.pan;
+                    accountledgerinfo.routeId = a.routeId;
+                    accountledgerinfo.bankAccountNumber = a.bankAccountNumber;
+                    accountledgerinfo.branchName = a.branchName;
+                    accountledgerinfo.branchCode = a.branchCode;
+                    accountledgerinfo.extraDate = a.extraDate;
+                    accountledgerinfo.areaId = a.areaId;
+                    accountledgerinfo.isDefault = a.isDefault;
+                }
+                
             }
             catch (Exception ex)
             {
