@@ -4785,12 +4785,8 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("PurchaseInvoiceVoucherNoCheckExistance", invoiceNoParameter, voucherNoParameter, voucherTypeIdParameter, purchaseMasterIdParameter);
         }
     
-        public virtual ObjectResult<Nullable<decimal>> PurchaseMasterAdd(Nullable<decimal> purchaseMasterId, string voucherNo, string invoiceNo, Nullable<decimal> suffixPrefixId, Nullable<decimal> voucherTypeId, Nullable<System.DateTime> date, Nullable<decimal> ledgerId, string vendorInvoiceNo, Nullable<System.DateTime> vendorInvoiceDate, string creditPeriod, Nullable<int> exchangeRateId, string narration, Nullable<decimal> purchaseAccount, Nullable<decimal> materialReceiptMasterId, Nullable<decimal> additionalCost, Nullable<decimal> totalTax, Nullable<decimal> billDiscount, Nullable<decimal> grandTotal, Nullable<decimal> totalAmount, Nullable<int> userId, string lrNo, string transportationCompany, Nullable<decimal> financialYearId, Nullable<int> purchaseOrderId)
+        public virtual ObjectResult<Nullable<decimal>> PurchaseMasterAdd(string voucherNo, string invoiceNo, Nullable<decimal> suffixPrefixId, Nullable<decimal> voucherTypeId, Nullable<System.DateTime> date, Nullable<decimal> ledgerId, string vendorInvoiceNo, Nullable<System.DateTime> vendorInvoiceDate, string creditPeriod, Nullable<int> exchangeRateId, string narration, Nullable<decimal> purchaseAccount, Nullable<decimal> materialReceiptMasterId, Nullable<decimal> additionalCost, Nullable<decimal> totalTax, Nullable<decimal> billDiscount, Nullable<decimal> grandTotal, Nullable<decimal> totalAmount, Nullable<int> userId, string lrNo, string transportationCompany, Nullable<decimal> financialYearId, Nullable<int> purchaseOrderId)
         {
-            var purchaseMasterIdParameter = purchaseMasterId.HasValue ?
-                new ObjectParameter("purchaseMasterId", purchaseMasterId) :
-                new ObjectParameter("purchaseMasterId", typeof(decimal));
-    
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
@@ -4883,7 +4879,7 @@ namespace LoginForm.DataSet
                 new ObjectParameter("purchaseOrderId", purchaseOrderId) :
                 new ObjectParameter("purchaseOrderId", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("PurchaseMasterAdd", purchaseMasterIdParameter, voucherNoParameter, invoiceNoParameter, suffixPrefixIdParameter, voucherTypeIdParameter, dateParameter, ledgerIdParameter, vendorInvoiceNoParameter, vendorInvoiceDateParameter, creditPeriodParameter, exchangeRateIdParameter, narrationParameter, purchaseAccountParameter, materialReceiptMasterIdParameter, additionalCostParameter, totalTaxParameter, billDiscountParameter, grandTotalParameter, totalAmountParameter, userIdParameter, lrNoParameter, transportationCompanyParameter, financialYearIdParameter, purchaseOrderIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("PurchaseMasterAdd", voucherNoParameter, invoiceNoParameter, suffixPrefixIdParameter, voucherTypeIdParameter, dateParameter, ledgerIdParameter, vendorInvoiceNoParameter, vendorInvoiceDateParameter, creditPeriodParameter, exchangeRateIdParameter, narrationParameter, purchaseAccountParameter, materialReceiptMasterIdParameter, additionalCostParameter, totalTaxParameter, billDiscountParameter, grandTotalParameter, totalAmountParameter, userIdParameter, lrNoParameter, transportationCompanyParameter, financialYearIdParameter, purchaseOrderIdParameter);
         }
     
         public virtual int PurchaseMasterDelete(Nullable<decimal> purchaseMasterId)

@@ -18,6 +18,8 @@ namespace LoginForm.StockManagement
         //Cem GEnar
         #region Parameters
 
+        frmStock parent;
+
         public Stock _Stock;
         public string _ProductName;
 
@@ -37,8 +39,10 @@ namespace LoginForm.StockManagement
             {
                 reserveList = db.StockReserves.ToList();
             }
-            dgStockReserveList.DataSource = reserveList;
-            if(reserveList.Count != 0)
+
+            ItemToStockReserveGrid(reserveList);
+
+            if (reserveList.Count != 0)
             {
                 if(_Stock.StockReserves.Where(x=>x.CustomerID == null).Count() <= 0)
                 {
@@ -188,32 +192,40 @@ namespace LoginForm.StockManagement
         {
             if (CheckForEmptyInput())
             {
-                IMEEntities db = new IMEEntities();
-
-                _Stock = db.Stocks.Where(x => x.StockID == _Stock.StockID).FirstOrDefault();
-
-                if (_Stock.ReserveQty + Convert.ToInt32(numQuantity.Value) <= _Stock.Qty)
+                if (_Stock != null)
                 {
-                    StockReserve existingReserve = _Stock.StockReserves.Where(x => x.CustomerID == null).FirstOrDefault();
+                    IMEEntities db = new IMEEntities();
 
-                    if (existingReserve == null)
-                    {
-                        existingReserve = new StockReserve();
-                        existingReserve.StockID = _Stock.StockID;
-                        existingReserve.ProductID = _Stock.ProductID;
-                        existingReserve.Qty = Convert.ToInt32(numQuantity.Value);
-                        
-                        db.StockReserves.Add(existingReserve);
-                    }
-                    else
-                    {
-                        existingReserve.Qty += Convert.ToInt32(numQuantity.Value);
-                    }
+                    _Stock = db.Stocks.Where(x => x.StockID == _Stock.StockID).FirstOrDefault();
 
-                    _Stock.ReserveQty += Convert.ToInt32(numQuantity.Value);
-                    db.SaveChanges();
+                    if (_Stock.ReserveQty + Convert.ToInt32(numQuantity.Value) <= _Stock.Qty)
+                    {
+                        StockReserve existingReserve = _Stock.StockReserves.Where(x => x.CustomerID == null).FirstOrDefault();
+
+                        if (existingReserve == null)
+                        {
+                            existingReserve = new StockReserve();
+                            existingReserve.StockID = _Stock.StockID;
+                            existingReserve.ProductID = _Stock.ProductID;
+                            existingReserve.Qty = Convert.ToInt32(numQuantity.Value);
+
+                            db.StockReserves.Add(existingReserve);
+                        }
+                        else
+                        {
+                            existingReserve.Qty += Convert.ToInt32(numQuantity.Value);
+                        }
+
+                        _Stock.ReserveQty += Convert.ToInt32(numQuantity.Value);
+                        db.SaveChanges();
+                    }
+                    parent.UpdateStockGrid();
+                }
+                else
+                {
 
                 }
+                
                 
                 //if (dgStockReserveList.SelectedRows.Count > 0)
                 //{
@@ -292,12 +304,32 @@ namespace LoginForm.StockManagement
         public frmStockReserve()
         {
             InitializeComponent();
-        }
+        }       
 
-        public frmStockReserve(decimal StockID)
+        public frmStockReserve(frmStock parent, decimal StockID)
         {
             InitializeComponent();
+            this.parent = parent;
             _Stock = new IMEEntities().Stocks.Where(x => x.StockID == StockID).FirstOrDefault(); ;
+        }
+
+        private void ItemToStockReserveGrid(List<StockReserve> stockList)
+        {
+            IMEEntities db = new IMEEntities();
+            foreach (StockReserve item in stockList)
+            {
+                int rowI = dgStockReserveList.Rows.Add();
+
+                DataGridViewRow row = dgStockReserveList.Rows[rowI];
+
+                row.Cells[dgStockID.Index].Value = item.StockID;
+                row.Cells[dgSaleOrderID.Index].Value = item.SaleOrderID;
+                row.Cells[dgCustomerName.Index].Value = item.Customer?.c_name;
+                row.Cells[dgValidationDate.Index].Value = item.ValidationDate;
+                row.Cells[dgProductID.Index].Value = item.ProductID;
+                row.Cells[dgProductName.Index].Value = db.V_Product.Where(x => x.productId == item.ProductID).FirstOrDefault().productCode;
+                row.Cells[dgQty.Index].Value = item.Qty;
+            }
         }
     }
 }

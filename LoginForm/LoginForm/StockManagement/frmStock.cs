@@ -22,7 +22,7 @@ namespace LoginForm.StockManagement
 
         #region Methods
 
-        private void UpdateStockGrid()
+        public void UpdateStockGrid()
         {
             dgStockList.DataSource = new IMEEntities().Stocks.ToList();
         }
@@ -245,7 +245,7 @@ namespace LoginForm.StockManagement
 
         private void btnViewStockReserves_Click(object sender, EventArgs e)
         {
-            frmStockReserve form = new frmStockReserve(Convert.ToDecimal(dgStockList.CurrentRow.Cells[dgStockID.Index].Value));
+            frmStockReserve form = new frmStockReserve(this ,Convert.ToDecimal(dgStockList.CurrentRow.Cells[dgStockID.Index].Value));
             form.Show();
         }
     }
