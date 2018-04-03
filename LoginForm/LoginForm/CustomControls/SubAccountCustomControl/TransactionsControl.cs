@@ -656,5 +656,50 @@ namespace LoginForm.CustomControls
                 MessageBox.Show("MDI 115: " + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                bool IsActivate = false;
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form.GetType() == typeof(frmReceiptVoucher))
+                    {
+                        form.Activate();
+                        IsActivate = true;
+                        if (form.WindowState == FormWindowState.Minimized)
+                        {
+                            form.WindowState = FormWindowState.Normal;
+                        }
+                    }
+                }
+                if (IsActivate == false)
+                {
+                    RSInvToSaleInv frm = new RSInvToSaleInv();
+                    RSInvToSaleInv open = Application.OpenForms["frmVoucherTypeSelection"] as RSInvToSaleInv;
+                    if (open == null)
+                    {
+                        //frm.MdiParent = this;
+                        frm.Show();
+                    }
+                    else
+                    {
+                        frm = open;
+                        frm.Activate();
+                        if (frm.WindowState == FormWindowState.Minimized)
+                        {
+                            frm.WindowState = FormWindowState.Normal;
+                        }
+                    }
+                    string strVoucherType = "RSInvToSaleInv";
+                    //frm.CallFromVoucherMenu(strVoucherType);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("MDI 100: " + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
     }
 }

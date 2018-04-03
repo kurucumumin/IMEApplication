@@ -26,7 +26,7 @@ namespace LoginForm.PurchaseOrder
         private void RSInvToSaleInv_Load(object sender, EventArgs e)
         {
             IMEEntities IME = new IMEEntities();
-            dataGridView1.DataSource= IME.dgPurchaseOrder();
+            dataGridView1.DataSource = IME.dgPurchaseOrder();
         }
 
         private void dgPurchaseOrder_SelectionChanged(object sender, EventArgs e)
@@ -85,6 +85,9 @@ namespace LoginForm.PurchaseOrder
                 string strPO = dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[0].Value.ToString();
                  row["BillingDocumentDate"] = IME.RS_InvoiceDetails.Where(a => a.PurchaseOrderNumber == strPO).FirstOrDefault().RS_Invoice.BillingDocumentDate; 
                 row["Currency"] = IME.RS_InvoiceDetails.Where(a => a.PurchaseOrderNumber == strPO).FirstOrDefault().RS_Invoice.Currency.ToString();
+                //string PONo;
+                //PONo = dgSaleInvoice.Rows[i].Cells[PODetailNo.Index].Value.ToString();
+                
                 row["PurchaseOrderNo"] = dgSaleInvoice.Rows[i].Cells[dgPurchaseOrderNumber.Index].Value.ToString();
                 dt.Rows.Add(row);
             }
@@ -117,6 +120,7 @@ namespace LoginForm.PurchaseOrder
                 row.Cells[dgQuantity.Index].Value = item.Quantity;
                 row.Cells[dgSalesUnit.Index].Value = item.SalesUnit;
                 row.Cells[dgUnitPrice.Index].Value = item.UnitPrice;
+                
                 dgSaleInvoice.Rows.Add(row);
                 dgSaleInvoice.AllowUserToAddRows = false;
                 dgSaleInvoice.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;

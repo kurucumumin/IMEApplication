@@ -644,6 +644,17 @@ namespace LoginForm.QuotationModule
                         if (txtStandartWeight.Text != null && txtStandartWeight.Text != "")
                         {
                             txtGrossWeight.Text = (Decimal.Parse(txtStandartWeight.Text) * Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString();
+                            if (Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgSSM"].Value.ToString()) > 1)
+                            {
+                                txtGrossWeight.Text = (decimal.Parse(txtGrossWeight.Text) /
+                                    Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgSSM"].Value.ToString())).ToString();
+
+                            }
+                            else if (Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUC"].Value.ToString()) > 1)
+                            {
+                                txtGrossWeight.Text = (decimal.Parse(txtGrossWeight.Text) /
+                                    Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUC"].Value.ToString())).ToString();
+                            }
                         }
                         //Cost hesaplama
                         dgQuotationAddedItems.Rows[rowindex].Cells["dgCost"].Value = classQuotationAdd.GetCost(dgQuotationAddedItems.Rows[rowindex].Cells["dgProductCode"].Value.ToString(), Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString("G29");
@@ -674,7 +685,7 @@ namespace LoginForm.QuotationModule
 
 
                             dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value = price / decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString());
-                            dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value = price;
+                            dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value = Math.Round(price,2);
                             //SuperdiskP değilse
                             if (articleNo.ToUpper().IndexOf('P') == -1 && Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgUC"].Value.ToString()) > 1)
                             {
@@ -688,7 +699,8 @@ namespace LoginForm.QuotationModule
                                 else
                                 {
                                     dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value = decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value.ToString()) / (decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgUC"].Value.ToString()));
-                                    dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value = price / (decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgUC"].Value.ToString()));
+                                   
+                                    dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value = Math.Round(price / (decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgUC"].Value.ToString())),2);
                                 }
 
                             }
@@ -760,7 +772,7 @@ namespace LoginForm.QuotationModule
                                 //TOTAL ve UPIME belirleniyor
                                 discResult = decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value.ToString());
                                 dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value = String.Format("{0:0.0000}", Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value.ToString())).ToString();
-                                dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value = String.Format("{0:0.0000}", dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value).ToString();
+                                dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value =Math.Round(decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value.ToString()),2);
                                 if (dgQuotationAddedItems.Rows[rowindex].Cells["dgDisc"].Value != null)
                                 {
                                     dgQuotationAddedItems.Rows[rowindex].Cells["dgDisc"].Value = String.Format("{0:0.0000}", Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgDisc"].Value.ToString())).ToString();
@@ -794,8 +806,19 @@ namespace LoginForm.QuotationModule
                                 if (dgQuotationAddedItems.CurrentCell == null) dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[rowindex].Cells[0];
                                 GetMargin();
                                 dgQuotationAddedItems.Rows[rowindex].Cells["dgMargin"].Value = String.Format("{0:0.0000}", Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgMargin"].Value.ToString())).ToString();
-                                if (dgQuotationAddedItems.CurrentRow.Cells["dgUnitWeigt"].Value != null && dgQuotationAddedItems.CurrentRow.Cells["dgUnitWeigt"].Value != "") dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgTotalWeight"].Value = (Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUnitWeigt"].Value.ToString()) * Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString();
-
+                                if (dgQuotationAddedItems.CurrentRow.Cells["dgUnitWeigt"].Value != null && dgQuotationAddedItems.CurrentRow.Cells["dgUnitWeigt"].Value != "")
+                                {
+                                    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgTotalWeight"].Value = (Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUnitWeigt"].Value.ToString()) * Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString();
+                                    if(Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgSSM"].Value.ToString()) > 1)
+                                    {
+                                        dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgTotalWeight"].Value = (decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgTotalWeight"].Value.ToString()) / Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgSSM"].Value.ToString())).ToString();
+                                    }
+                                    else if (Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUC"].Value.ToString()) > 1)
+                                    {
+                                            dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgTotalWeight"].Value = (decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgTotalWeight"].Value.ToString()) / Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUC"].Value.ToString())).ToString();
+                                       
+                                    }
+                                }
                                 txtTotalMargin.Text = String.Format("{0:0.0000}", calculateTotalMargin()).ToString();
                             }
                             //else { MessageBox.Show("This product does not have price"); }
@@ -1375,6 +1398,17 @@ namespace LoginForm.QuotationModule
                 if (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgQty"].Value != null)
                 {
                     txtGrossWeight.Text = (Decimal.Parse(txtStandartWeight.Text) * Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgQty"].Value.ToString())).ToString();
+                    if (Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgSSM"].Value.ToString())>1)
+                    {
+                        txtGrossWeight.Text = (decimal.Parse(txtGrossWeight.Text) /
+                            Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgSSM"].Value.ToString())).ToString();
+
+                    }
+                    else if(Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUC"].Value.ToString()) > 1)
+                    {
+                        txtGrossWeight.Text = (decimal.Parse(txtGrossWeight.Text) /
+                            Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUC"].Value.ToString())).ToString();
+                    }
                 }
             }
             catch { }
@@ -1481,7 +1515,7 @@ namespace LoginForm.QuotationModule
                     if (dgQuotationAddedItems.Rows[RowIndex].Cells["dgQty"].Value != null && dgQuotationAddedItems.Rows[RowIndex].Cells["dgQty"].Value != "")
                     {
                         SubTotal.Add(new Tuple<int, decimal>(rowindexSubTotal, (Decimal.Parse(dgQuotationAddedItems.Rows[RowIndex].Cells["dgTotal"].Value.ToString()))));
-                        dgQuotationAddedItems.Rows[RowIndex].Cells["dgTotal"].Value = (Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgQty"].Value.ToString()) * Decimal.Parse(dgQuotationAddedItems.Rows[RowIndex].Cells["dgUCUPCurr"].Value.ToString())).ToString();
+                        dgQuotationAddedItems.Rows[RowIndex].Cells["dgTotal"].Value =   Math.Round( (Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgQty"].Value.ToString()) * Decimal.Parse(dgQuotationAddedItems.Rows[RowIndex].Cells["dgUCUPCurr"].Value.ToString())),2);
                     }
                     decimal total = 0;
                     try { total = decimal.Parse(dgQuotationAddedItems.Rows[RowIndex].Cells["dgTotal"].Value.ToString()); } catch { }
@@ -2258,7 +2292,7 @@ namespace LoginForm.QuotationModule
 
                 dgQuotationAddedItems.Rows[rowindex].Cells["dgUCUPCurr"].Value = ((Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgUCUPCurr"].Value.ToString())) / Currfactor).ToString();
                 dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value = ((Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value.ToString())) / Currfactor).ToString();
-                dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value = ((Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value.ToString())) / Currfactor).ToString();
+                dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value = Math.Round(((Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value.ToString())) / Currfactor),2);
                 var st = SubTotal.Where(a => a.Item1 == (Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells[0].Value.ToString()))).FirstOrDefault();
                 if (st != null)
                 {
@@ -2834,15 +2868,15 @@ namespace LoginForm.QuotationModule
                     decimal margin1 = 0;
                     if (dgQuotationAddedItems.Rows[i].Cells[dgMargin.Index].Value != null) margin1 = decimal.Parse(dgQuotationAddedItems.Rows[i].Cells[dgMargin.Index].Value.ToString());
 
-                    if (dgQuotationAddedItems.Rows[i].Cells[dgTotal.Index].Value != null) Itemtotal1 = decimal.Parse(dgQuotationAddedItems.Rows[i].Cells[dgTotal.Index].Value.ToString());
+                    if (dgQuotationAddedItems.Rows[i].Cells[dgTotal.Index].Value != null && dgQuotationAddedItems.Rows[i].Cells[dgTotal.Index].Value != "") Itemtotal1 = decimal.Parse(dgQuotationAddedItems.Rows[i].Cells[dgTotal.Index].Value.ToString());
                     subtotal1 += Itemtotal1;
                     totalMargin1 += (margin1 * Itemtotal1);
                 }
 
-                txtTotalMargin.Text = String.Format("{0:0.0000}", totalMargin1 / subtotal1).ToString();
+                if(subtotal1!=0)txtTotalMargin.Text = String.Format("{0:0.0000}", totalMargin1 / subtotal1).ToString();
             }
 
-
+            if (subtotal == 0) return 0;
             return totalMargin / subtotal;
         }
 
