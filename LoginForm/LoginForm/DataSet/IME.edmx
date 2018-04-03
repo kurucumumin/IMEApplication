@@ -22358,6 +22358,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
         <ComplexType Name="ArticleSearch_Result">
           <Property Type="String" Name="Article_No" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Article_Desc" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="SSM" Nullable="true" />
           <Property Type="String" Name="Unit_Measure" Nullable="true" MaxLength="50" />
           <Property Type="Decimal" Name="Standard_Weight" Nullable="true" Precision="18" Scale="5" />
           <Property Type="String" Name="CofO" Nullable="true" MaxLength="50" />
@@ -22372,6 +22373,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="String" Name="Article_No" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Article_Desc" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Unit_Measure" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="SSM" Nullable="true" />
           <Property Type="Decimal" Name="Standard_Weight" Nullable="true" Precision="18" Scale="5" />
           <Property Type="String" Name="CofO" Nullable="true" MaxLength="50" />
           <Property Type="Int32" Name="CCCN_No" Nullable="true" />
@@ -27096,6 +27098,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
               <ComplexTypeMapping TypeName="IMEModel.ArticleSearch_Result">
                 <ScalarProperty Name="Article_No" ColumnName="Article_No" />
                 <ScalarProperty Name="Article_Desc" ColumnName="Article_Desc" />
+                <ScalarProperty Name="SSM" ColumnName="SSM" />
                 <ScalarProperty Name="Unit_Measure" ColumnName="Unit_Measure" />
                 <ScalarProperty Name="Standard_Weight" ColumnName="Standard_Weight" />
                 <ScalarProperty Name="CofO" ColumnName="CofO" />
@@ -27116,6 +27119,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="Article_No" ColumnName="Article_No" />
                 <ScalarProperty Name="Article_Desc" ColumnName="Article_Desc" />
                 <ScalarProperty Name="Unit_Measure" ColumnName="Unit_Measure" />
+                <ScalarProperty Name="SSM" ColumnName="SSM" />
                 <ScalarProperty Name="Standard_Weight" ColumnName="Standard_Weight" />
                 <ScalarProperty Name="CofO" ColumnName="CofO" />
                 <ScalarProperty Name="CCCN_No" ColumnName="CCCN_No" />

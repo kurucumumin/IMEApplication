@@ -2467,12 +2467,13 @@ namespace LoginForm.QuotationModule
                         dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[dgUCUPCurr.Index];
                         a = a + 1;
                     }
-                    if (a==3)
+                    if (a==4)
                     {
                         DataGridViewRow dgRow = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
                         dgQuotationAddedItems.Rows.Add(dgRow);
                         dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex + 1].Cells[dgProductCode.Index];
                         ItemClear();
+                        a = 1;
                     }
                 }
 
