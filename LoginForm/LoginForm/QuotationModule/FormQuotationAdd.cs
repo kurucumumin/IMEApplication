@@ -40,6 +40,7 @@ namespace LoginForm.QuotationModule
         decimal round = 0;
         decimal sonuc = 0;
         decimal sayac = 0;
+        int a = 1;
         //ExchangeRate exchangeRate;
         #endregion
 
@@ -2493,22 +2494,30 @@ namespace LoginForm.QuotationModule
 
         private void ChangeCurrnetCell(int currindex)
         {
+            
             try
             {
-                if (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[dgQty.Index].Value == null)
+                if (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[dgProductCode.Index].Value != null)
                 {
-                    dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[dgQty.Index];
-
+                    if (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[dgQty.Index].Value == null)
+                    {
+                        dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[dgQty.Index];
+                        a = a + 1;
+                    }
+                    else
+                    {
+                        dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[dgUCUPCurr.Index];
+                        a = a + 1;
+                    }
+                    if (a==4)
+                    {
+                        DataGridViewRow dgRow = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
+                        dgQuotationAddedItems.Rows.Add(dgRow);
+                        dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex + 1].Cells[dgProductCode.Index];
+                        ItemClear();
+                        a = 1;
+                    }
                 }
-                else
-                {
-
-                    DataGridViewRow dgRow = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
-                    dgQuotationAddedItems.Rows.Add(dgRow);
-                    dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex+1].Cells[dgProductCode.Index];
-                    ItemClear();
-                }
-
 
             }
             catch { }
