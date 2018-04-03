@@ -88,7 +88,7 @@ namespace LoginForm.QuotationModule
                 if (dgQuotationItemSearch.CurrentRow.Cells[2].Value.ToString()!="") {
                     classQuotationAdd.ItemCode = dgQuotationItemSearch.Rows[dgQuotationItemSearch.CurrentCell.RowIndex].Cells["Article_No"].Value.ToString();
 
-                    var MPNItemList = IME.ArticleSearchwithMPN(dgQuotationItemSearch.CurrentRow.Cells[2].Value.ToString()).ToList();
+                    var MPNItemList = IME.ArticleSearchwithMPN(dgQuotationItemSearch.CurrentRow.Cells[7].Value.ToString()).ToList();
                     if (MPNItemList.Count > 1)
                     {
                         FormQuotationMPN form = new FormQuotationMPN(MPNItemList);
