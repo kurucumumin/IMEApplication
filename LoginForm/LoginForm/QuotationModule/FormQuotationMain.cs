@@ -127,7 +127,7 @@ namespace LoginForm.QuotationModule
                                    QuotationNo = q.QuotationNo,
                                    CustomerName = c.c_name
                                };
-
+                    
                     populateGrid(list.ToList());
                 }
             }
@@ -184,7 +184,6 @@ namespace LoginForm.QuotationModule
                            RFQ = q.RFQNo,
                            CustomerName = c.c_name
                        };
-
             populateGrid(list.ToList().OrderByDescending(x => int.Parse(x.QuotationNo.Substring(5))).ToList());
         }
 
@@ -192,6 +191,7 @@ namespace LoginForm.QuotationModule
         {
             dgQuotation.DataSource = null;
             dgQuotation.DataSource = queryable;
+            dgQuotation.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void dgQuotation_KeyDown(object sender, KeyEventArgs e)
