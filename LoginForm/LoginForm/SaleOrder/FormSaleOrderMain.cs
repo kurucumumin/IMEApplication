@@ -84,11 +84,12 @@ namespace LoginForm.nsSaleOrder
         {
             dgSales.DataSource = null;
             dgSales.DataSource = queryable;
-
+            
             foreach (DataGridViewColumn col in dgSales.Columns)
             {
                 col.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
             }
+            dgSales.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void btnNew_Click(object sender, EventArgs e)
