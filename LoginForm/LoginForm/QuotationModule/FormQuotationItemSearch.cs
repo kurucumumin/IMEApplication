@@ -33,8 +33,6 @@ namespace LoginForm.QuotationModule
             {
                 MessageBox.Show("There is no such a data");
             }
-
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -102,14 +100,9 @@ namespace LoginForm.QuotationModule
             this.Close();
         }
 
-        private void FormQuotationItemSearch_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void txtQuotationItemCode_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter || e.KeyCode==Keys.Tab)
+            if (e.KeyCode == Keys.Enter)
             {
                 itemsearch();
             }

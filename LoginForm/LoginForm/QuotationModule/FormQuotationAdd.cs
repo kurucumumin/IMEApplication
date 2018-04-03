@@ -209,7 +209,6 @@ namespace LoginForm.QuotationModule
             if (txtCustomerName.Text == null || txtCustomerName.Text == "")
             {
                 btnContactAdd.Enabled = false;
-                btnContactUpdate.Enabled = false;
             }
 
             TotalCostList.Columns.Add("dgNo",typeof(int));
@@ -290,7 +289,6 @@ namespace LoginForm.QuotationModule
             if (txtCustomerName.Text != null || txtCustomerName.Text != "")
             {
                 btnContactAdd.Enabled = true;
-                btnContactUpdate.Enabled = true;
             }
 
             if (!modifyMod)

@@ -30,7 +30,6 @@ namespace LoginForm.DataSet
         public Nullable<decimal> ExchangeRate { get; set; }
         public string CurrentAccountTitle { get; set; }
     
-        public virtual Customer Customer { get; set; }
         public virtual VoucherType VoucherType { get; set; }
     }
 }
