@@ -2793,10 +2793,10 @@ namespace LoginForm
                                     if (Messages.SaveMessage())
                                     {
                                         RemoveIncompleteRowsFromAdditionalCostGrid();
-                                      
+
                                         SaveFunction();
                                         MessageBox.Show("Saved successfully");
-                                        
+
                                     }
                                 }
                             }
@@ -3284,8 +3284,8 @@ namespace LoginForm
             {
                 MessageBox.Show("SI: 70" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            
-                           
+
+
         }
         /// <summary>
         /// Ledger posting save function
@@ -5018,9 +5018,10 @@ namespace LoginForm
             cmbSalesMode.SelectedIndex = 1;
             cmbSalesMode.Enabled = false;
             IME = new IMEEntities();
-            int PurchaseOrderNo = 0 ;
+
             string CurrencyName = "";
             formLoadDefaultFunctions();
+            int POno = 0;
             foreach (DataRow item in dt.Rows)
             {
                 DataGridViewRow row = (DataGridViewRow)dgvSalesInvoice.Rows[0].Clone();
@@ -5037,17 +5038,14 @@ namespace LoginForm
                 {
                     CurrencyName = "Pound";
                 }
-                
 
-                int textIndex = item["PurchaseOrderNo"].ToString().IndexOf("RS");
-                PurchaseOrderNo = Int32.Parse(item["PurchaseOrderNo"].ToString().Substring(0, textIndex));
-                //row.Cells[dgvPOno.Index].Value = textIndex;
+                try {  POno = Int32.Parse(item["PurchaseOrderNo"].ToString().Substring(0, item["PurchaseOrderNo"].ToString().IndexOf('R'))); } catch { }
 
                 dgvSalesInvoice.Rows.Add(row);
             }
-            if (IME.PurchaseOrders.Where(a => a.purchaseOrderId == PurchaseOrderNo).FirstOrDefault() != null)
+            if (IME.PurchaseOrders.Where(a => a.purchaseOrderId == POno).FirstOrDefault() != null)
             {
-                var po = IME.PurchaseOrders.Where(a => a.purchaseOrderId == PurchaseOrderNo).FirstOrDefault();
+                var po = IME.PurchaseOrders.Where(a => a.purchaseOrderId == POno).FirstOrDefault();
                 txtCustomer.Text = po.Customer.ID;
                 txtCustomerName.Text = po.Customer.c_name;
                 if(po.Worker!=null)cmbSalesMan.SelectedValue = po.Worker.WorkerID;
@@ -7294,21 +7292,29 @@ namespace LoginForm
                         string productID;
                         string customerID;
                         decimal qty;
-                        qty = Decimal.Parse(dgvSalesInvoice.Rows[i].Cells[dgvtxtSalesInvoiceQty.Index].Value.ToString());
+                        string PurchaseOrderID;
+                        PurchaseOrderID =  dgvSalesInvoice.Rows[i].Cells[dgvPOno.Index].Value.ToString();
                         productID = dgvSalesInvoice.Rows[i].Cells[dgvtxtSalesInvoiceProductCode.Index].Value.ToString();
+                        RS_InvoiceDetails purchase =  IME.RS_InvoiceDetails.Where(a => a.PurchaseOrderNumber == PurchaseOrderID  && a.ProductNumber==productID && a.IsSaleInvoiced!=1).FirstOrDefault();
+                        if (purchase != null)
+                        { purchase.IsSaleInvoiced = 1; IME.SaveChanges(); }
+                        qty = Decimal.Parse(dgvSalesInvoice.Rows[i].Cells[dgvtxtSalesInvoiceQty.Index].Value.ToString());
+
                         customerID = txtCustomer.Text;
                         StockReserve sr = db.StockReserves.Where(x => x.ProductID == StockReserveProductID && x.CustomerID == txtCustomer.Text && x.Qty == qty).FirstOrDefault();
                         if (sr != null)
                         {
-                            db.StockReserves.Remove(sr);
+                            decimal stockID = sr.StockID;
+                            Stock stock = IME.Stocks.Where(x => x.StockID == stockID).FirstOrDefault();
+                            stock.Qty -= sr.Qty;
                             db.SaveChanges();
-                            IME.Stocks.Remove(IME.Stocks.Where(x => x.StockID == sr.StockID).FirstOrDefault());
+                            db.StockReserves.Remove(sr);
                             IME.SaveChanges();
                         }
 
                     }
-                    
-                } 
+
+                }
             }
             catch (Exception ex)
             {

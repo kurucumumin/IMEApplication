@@ -142,7 +142,6 @@
             this.button7 = new System.Windows.Forms.Button();
             this.label35 = new System.Windows.Forms.Label();
             this.btnExcelExport = new System.Windows.Forms.Button();
-            this.textBox11 = new System.Windows.Forms.TextBox();
             this.txtTotalMargin = new System.Windows.Forms.TextBox();
             this.txtTotalCost = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -1103,7 +1102,6 @@
             this.panel2.Controls.Add(this.button7);
             this.panel2.Controls.Add(this.label35);
             this.panel2.Controls.Add(this.btnExcelExport);
-            this.panel2.Controls.Add(this.textBox11);
             this.panel2.Controls.Add(this.txtTotalMargin);
             this.panel2.Controls.Add(this.txtTotalCost);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1203,18 +1201,6 @@
             this.btnExcelExport.Text = "Export To Excel";
             this.btnExcelExport.UseVisualStyleBackColor = true;
             this.btnExcelExport.Click += new System.EventHandler(this.btnExcelExport_Click);
-            // 
-            // textBox11
-            // 
-            this.textBox11.Location = new System.Drawing.Point(1029, 12);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.ReadOnly = true;
-            this.textBox11.Size = new System.Drawing.Size(36, 20);
-            this.textBox11.TabIndex = 6;
-            this.textBox11.Text = "0,00";
-            this.textBox11.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBox11.Click += new System.EventHandler(this.textBox11_Click);
-            this.textBox11.Leave += new System.EventHandler(this.textBox11_Leave);
             // 
             // txtTotalMargin
             // 
@@ -3161,7 +3147,6 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Button btnExcelExport;
-        private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.TextBox txtTotalMargin;
         private System.Windows.Forms.TextBox txtTotalCost;
         private System.Windows.Forms.TabControl tabControl1;

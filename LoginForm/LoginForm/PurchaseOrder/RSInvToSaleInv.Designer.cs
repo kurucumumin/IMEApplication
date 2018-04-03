@@ -29,6 +29,13 @@
         private void InitializeComponent()
         {
             this.dgSaleInvoice = new System.Windows.Forms.DataGridView();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.lblPurchaseOrder = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnSelectAll = new System.Windows.Forms.Button();
+            this.btnClearAll = new System.Windows.Forms.Button();
+            this.btnSaleInvoice = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.CheckBox = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dgPurchaseOrderNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgPurchaseOrderItemNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -37,6 +44,7 @@
             this.dgQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgSalesUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgUnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PODetailNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgDiscount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgGoodsValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,13 +53,6 @@
             this.dgArticleDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgDeliveryNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgDeliveryItemNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnExit = new System.Windows.Forms.Button();
-            this.lblPurchaseOrder = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnSelectAll = new System.Windows.Forms.Button();
-            this.btnClearAll = new System.Windows.Forms.Button();
-            this.btnSaleInvoice = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgSaleInvoice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -69,6 +70,7 @@
             this.dgQuantity,
             this.dgSalesUnit,
             this.dgUnitPrice,
+            this.PODetailNo,
             this.dgDiscount,
             this.dgGoodsValue,
             this.dgAmount,
@@ -81,102 +83,6 @@
             this.dgSaleInvoice.Name = "dgSaleInvoice";
             this.dgSaleInvoice.Size = new System.Drawing.Size(482, 251);
             this.dgSaleInvoice.TabIndex = 0;
-            // 
-            // CheckBox
-            // 
-            this.CheckBox.HeaderText = "";
-            this.CheckBox.Name = "CheckBox";
-            this.CheckBox.Width = 20;
-            // 
-            // dgPurchaseOrderNumber
-            // 
-            this.dgPurchaseOrderNumber.HeaderText = "PurchaseOrderNumber";
-            this.dgPurchaseOrderNumber.Name = "dgPurchaseOrderNumber";
-            this.dgPurchaseOrderNumber.ReadOnly = true;
-            // 
-            // dgPurchaseOrderItemNumber
-            // 
-            this.dgPurchaseOrderItemNumber.HeaderText = "PurchaseOrderItemNumber";
-            this.dgPurchaseOrderItemNumber.Name = "dgPurchaseOrderItemNumber";
-            this.dgPurchaseOrderItemNumber.ReadOnly = true;
-            // 
-            // dgProductNumber
-            // 
-            this.dgProductNumber.HeaderText = "ProductNumber";
-            this.dgProductNumber.Name = "dgProductNumber";
-            this.dgProductNumber.ReadOnly = true;
-            // 
-            // dgBillingItemNumber
-            // 
-            this.dgBillingItemNumber.HeaderText = "BillingItemNumber";
-            this.dgBillingItemNumber.Name = "dgBillingItemNumber";
-            this.dgBillingItemNumber.ReadOnly = true;
-            // 
-            // dgQuantity
-            // 
-            this.dgQuantity.HeaderText = "Quantity";
-            this.dgQuantity.Name = "dgQuantity";
-            this.dgQuantity.ReadOnly = true;
-            // 
-            // dgSalesUnit
-            // 
-            this.dgSalesUnit.HeaderText = "SalesUnit";
-            this.dgSalesUnit.Name = "dgSalesUnit";
-            this.dgSalesUnit.ReadOnly = true;
-            // 
-            // dgUnitPrice
-            // 
-            this.dgUnitPrice.HeaderText = "UnitPrice";
-            this.dgUnitPrice.Name = "dgUnitPrice";
-            this.dgUnitPrice.ReadOnly = true;
-            // 
-            // dgDiscount
-            // 
-            this.dgDiscount.HeaderText = "Discount";
-            this.dgDiscount.Name = "dgDiscount";
-            this.dgDiscount.ReadOnly = true;
-            // 
-            // dgGoodsValue
-            // 
-            this.dgGoodsValue.HeaderText = "GoodsValue";
-            this.dgGoodsValue.Name = "dgGoodsValue";
-            this.dgGoodsValue.ReadOnly = true;
-            // 
-            // dgAmount
-            // 
-            this.dgAmount.HeaderText = "Amount";
-            this.dgAmount.Name = "dgAmount";
-            this.dgAmount.ReadOnly = true;
-            // 
-            // dgCCCNNO
-            // 
-            this.dgCCCNNO.HeaderText = "CCCNNO";
-            this.dgCCCNNO.Name = "dgCCCNNO";
-            this.dgCCCNNO.ReadOnly = true;
-            // 
-            // dgCountryofOrigin
-            // 
-            this.dgCountryofOrigin.HeaderText = "CountryofOrigin";
-            this.dgCountryofOrigin.Name = "dgCountryofOrigin";
-            this.dgCountryofOrigin.ReadOnly = true;
-            // 
-            // dgArticleDescription
-            // 
-            this.dgArticleDescription.HeaderText = "ArticleDescription";
-            this.dgArticleDescription.Name = "dgArticleDescription";
-            this.dgArticleDescription.ReadOnly = true;
-            // 
-            // dgDeliveryNumber
-            // 
-            this.dgDeliveryNumber.HeaderText = "DeliveryNumber";
-            this.dgDeliveryNumber.Name = "dgDeliveryNumber";
-            this.dgDeliveryNumber.ReadOnly = true;
-            // 
-            // dgDeliveryItemNumber
-            // 
-            this.dgDeliveryItemNumber.HeaderText = "DeliveryItemNumber";
-            this.dgDeliveryItemNumber.Name = "dgDeliveryItemNumber";
-            this.dgDeliveryItemNumber.ReadOnly = true;
             // 
             // btnExit
             // 
@@ -245,6 +151,108 @@
             this.dataGridView1.TabIndex = 5;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
+            // CheckBox
+            // 
+            this.CheckBox.HeaderText = "";
+            this.CheckBox.Name = "CheckBox";
+            this.CheckBox.Width = 20;
+            // 
+            // dgPurchaseOrderNumber
+            // 
+            this.dgPurchaseOrderNumber.HeaderText = "PurchaseOrderNumber";
+            this.dgPurchaseOrderNumber.Name = "dgPurchaseOrderNumber";
+            this.dgPurchaseOrderNumber.ReadOnly = true;
+            // 
+            // dgPurchaseOrderItemNumber
+            // 
+            this.dgPurchaseOrderItemNumber.HeaderText = "PurchaseOrderItemNumber";
+            this.dgPurchaseOrderItemNumber.Name = "dgPurchaseOrderItemNumber";
+            this.dgPurchaseOrderItemNumber.ReadOnly = true;
+            // 
+            // dgProductNumber
+            // 
+            this.dgProductNumber.HeaderText = "ProductNumber";
+            this.dgProductNumber.Name = "dgProductNumber";
+            this.dgProductNumber.ReadOnly = true;
+            // 
+            // dgBillingItemNumber
+            // 
+            this.dgBillingItemNumber.HeaderText = "BillingItemNumber";
+            this.dgBillingItemNumber.Name = "dgBillingItemNumber";
+            this.dgBillingItemNumber.ReadOnly = true;
+            // 
+            // dgQuantity
+            // 
+            this.dgQuantity.HeaderText = "Quantity";
+            this.dgQuantity.Name = "dgQuantity";
+            this.dgQuantity.ReadOnly = true;
+            // 
+            // dgSalesUnit
+            // 
+            this.dgSalesUnit.HeaderText = "SalesUnit";
+            this.dgSalesUnit.Name = "dgSalesUnit";
+            this.dgSalesUnit.ReadOnly = true;
+            // 
+            // dgUnitPrice
+            // 
+            this.dgUnitPrice.HeaderText = "UnitPrice";
+            this.dgUnitPrice.Name = "dgUnitPrice";
+            this.dgUnitPrice.ReadOnly = true;
+            // 
+            // PODetailNo
+            // 
+            this.PODetailNo.HeaderText = "PODetail";
+            this.PODetailNo.Name = "PODetailNo";
+            this.PODetailNo.Visible = false;
+            // 
+            // dgDiscount
+            // 
+            this.dgDiscount.HeaderText = "Discount";
+            this.dgDiscount.Name = "dgDiscount";
+            this.dgDiscount.ReadOnly = true;
+            // 
+            // dgGoodsValue
+            // 
+            this.dgGoodsValue.HeaderText = "GoodsValue";
+            this.dgGoodsValue.Name = "dgGoodsValue";
+            this.dgGoodsValue.ReadOnly = true;
+            // 
+            // dgAmount
+            // 
+            this.dgAmount.HeaderText = "Amount";
+            this.dgAmount.Name = "dgAmount";
+            this.dgAmount.ReadOnly = true;
+            // 
+            // dgCCCNNO
+            // 
+            this.dgCCCNNO.HeaderText = "CCCNNO";
+            this.dgCCCNNO.Name = "dgCCCNNO";
+            this.dgCCCNNO.ReadOnly = true;
+            // 
+            // dgCountryofOrigin
+            // 
+            this.dgCountryofOrigin.HeaderText = "CountryofOrigin";
+            this.dgCountryofOrigin.Name = "dgCountryofOrigin";
+            this.dgCountryofOrigin.ReadOnly = true;
+            // 
+            // dgArticleDescription
+            // 
+            this.dgArticleDescription.HeaderText = "ArticleDescription";
+            this.dgArticleDescription.Name = "dgArticleDescription";
+            this.dgArticleDescription.ReadOnly = true;
+            // 
+            // dgDeliveryNumber
+            // 
+            this.dgDeliveryNumber.HeaderText = "DeliveryNumber";
+            this.dgDeliveryNumber.Name = "dgDeliveryNumber";
+            this.dgDeliveryNumber.ReadOnly = true;
+            // 
+            // dgDeliveryItemNumber
+            // 
+            this.dgDeliveryItemNumber.HeaderText = "DeliveryItemNumber";
+            this.dgDeliveryItemNumber.Name = "dgDeliveryItemNumber";
+            this.dgDeliveryItemNumber.ReadOnly = true;
+            // 
             // RSInvToSaleInv
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -277,6 +285,7 @@
         private System.Windows.Forms.Button btnSelectAll;
         private System.Windows.Forms.Button btnClearAll;
         private System.Windows.Forms.Button btnSaleInvoice;
+        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewCheckBoxColumn CheckBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgPurchaseOrderNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgPurchaseOrderItemNumber;
@@ -285,6 +294,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgSalesUnit;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgUnitPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PODetailNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgDiscount;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgGoodsValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgAmount;
@@ -293,6 +303,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgArticleDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgDeliveryNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgDeliveryItemNumber;
-        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

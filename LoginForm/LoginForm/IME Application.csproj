@@ -2157,6 +2157,12 @@
     <Compile Include="PurchaseOrder\RSInvToSaleInv.Designer.cs">
       <DependentUpon>RSInvToSaleInv.cs</DependentUpon>
     </Compile>
+    <Compile Include="PurchaseOrder\StockDevelopment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseOrder\StockDevelopment.designer.cs">
+      <DependentUpon>StockDevelopment.cs</DependentUpon>
+    </Compile>
     <Compile Include="QuotationModule\FormQuaotationCustomerSearch.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -15,6 +15,7 @@ namespace LoginForm.DataSet
     {
         public string Article_No { get; set; }
         public string Article_Desc { get; set; }
+        public Nullable<int> SSM { get; set; }
         public string Unit_Measure { get; set; }
         public Nullable<decimal> Standard_Weight { get; set; }
         public string CofO { get; set; }
