@@ -314,6 +314,11 @@ namespace LoginForm.QuotationModule
                 try { txtAccountingNote.Text = IME.Notes.Where(a => a.ID == c.customerAccountantNoteID).FirstOrDefault().Note_name; } catch { }
                 if (c.Worker != null) cbRep.SelectedValue = c.Worker.WorkerID;
                 cbCurrency.SelectedItem = cbCurrency.FindStringExact(c.CurrNameQuo);
+                if (c.CustomerWorker != null)
+                {
+                    cbWorkers.SelectedValue = c.CustomerWorker.ID;
+                    cbWorkers.SelectedItem = cbWorkers.FindStringExact(c.CustomerWorker.cw_name);
+                }
             }
         }
 
