@@ -35,14 +35,26 @@ namespace LoginForm
                 txtSearch.Enabled = false;
                 Search.Enabled = false;
                 btnCreate.Enabled = false;
-                btnUpdate.Enabled = false;
-                btnContactAdd.Enabled = false;
+                btnUpdate.Enabled = true;
+                btnContactAdd.Enabled = true;
                 btnContactCancel.Enabled = false;
-                btnContactDelete.Enabled = false;
+                btnContactDelete.Enabled = true;
                 btnContactDone.Enabled = false;
-                btnContactUpdate.Enabled = false;
+                btnContactUpdate.Enabled = true;
+                AdressAdd.Enabled = true;
+                AddressUpd.Enabled = true;
+                AddressDel.Enabled = true;
                 isModify = true;
+
+                MainCategory.DataSource = IME.CustomerCategories.ToList();
+                MainCategory.DisplayMember = "categoryname";
+                MainCategory.ValueMember = "ID";
+                SubCategory.DataSource = IME.CustomerSubCategories.Where(a => a.categoryID == (int)MainCategory.SelectedValue);
+                SubCategory.DisplayMember = "subcategoryname";
+                SubCategory.ValueMember = "ID";
+
                 QuotationCustomerSearch(CustomerID);
+                
 
             }
         }
