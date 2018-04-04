@@ -68,32 +68,32 @@ namespace LoginForm.CustomControls
         private void btnCustomer_Click(object sender, EventArgs e)
         {
             CustomerMain customerMain = new CustomerMain();
-           customerMain.ShowDialog();
+           customerMain.Show();
         }
 
         private void btnQuotation_Click(object sender, EventArgs e)
         {
             FormQuotationMain formQuotationMain = new FormQuotationMain();
-            formQuotationMain.ShowDialog();
+            formQuotationMain.Show();
         }
 
         private void btnSupplier_Click(object sender, EventArgs e)
         {
             frmSupplierMain supplierMain = new frmSupplierMain();
-            supplierMain.ShowDialog();
+            supplierMain.Show();
         }
 
         private void btnWorker_Click(object sender, EventArgs e)
         {
             FormMain formMain = (FormMain) this.ParentForm;
             FormUserMain roles = new FormUserMain(formMain);
-            roles.ShowDialog();
+            roles.Show();
         }
 
         private void btnItemCard_Click(object sender, EventArgs e)
         {
             ItemCard form = new ItemCard();
-            form.ShowDialog();
+            form.Show();
         }
 
         private void btnSalesOrder_Click(object sender, EventArgs e)
@@ -104,7 +104,7 @@ namespace LoginForm.CustomControls
         private void btnPurchaseOrders_Click(object sender, EventArgs e)
         {
             PurchaseOrderMain form = new PurchaseOrderMain();
-            form.ShowDialog();
+            form.Show();
         }
 
         private void OpenSubNavigationMenu(Button button, UserControl subControl)

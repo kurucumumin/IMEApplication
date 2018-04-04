@@ -383,16 +383,13 @@ namespace LoginForm.QuotationModule
 
         private void customerDetailsNameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             CustomerMain f = new CustomerMain(true, txtCustomerName.Text);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            FormMain f = new FormMain();
             if (MessageBox.Show("Are You Sure To Close This Window?", "Exit", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
-                f.ShowDialog();
                 this.Close();
             }
         }

@@ -22,11 +22,8 @@ namespace LoginForm.QuotationModule
         private void btnNewQuotation_Click(object sender, EventArgs e)
         {
             var a = dtpFromDate.Value;
-            // this.Hide();
-            this.Close();
             FormQuotationAdd quotationForm = new FormQuotationAdd();
-            quotationForm.ShowDialog();
-            this.Show();
+            quotationForm.Show();
         }
 
         private void btnRefreshList_Click(object sender, EventArgs e)
