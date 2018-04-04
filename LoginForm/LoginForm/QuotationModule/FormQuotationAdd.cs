@@ -274,6 +274,15 @@ namespace LoginForm.QuotationModule
                 
             }
 
+            //DataGridViewComboBoxColumn deliveryColumn1 = (DataGridViewComboBoxColumn)dgQuotationDeleted.Columns[dgDelivery1.Index];
+            //if (deliveryColumn1.DataSource != null)
+            //{
+            //    deliveryColumn1.DataSource = IME.QuotationDeliveries.ToList();
+            //    deliveryColumn1.DisplayMember = "DeliveryName";
+            //    deliveryColumn1.ValueMember = "ID";
+
+            //}
+
             if (txtCustomerName.Text == null || txtCustomerName.Text == "")
             {
                 btnContactAdd.Enabled = false;
@@ -2678,6 +2687,12 @@ namespace LoginForm.QuotationModule
             }
             else if (e.KeyCode == Keys.Delete)
             {
+                DataGridViewComboBoxColumn deliveryColumn = (DataGridViewComboBoxColumn)dgQuotationDeleted.Columns[dgDelivery1.Index];
+
+                deliveryColumn.DataSource = IME.QuotationDeliveries.ToList();
+                deliveryColumn.DisplayMember = "DeliveryName";
+                deliveryColumn.ValueMember = "ID";
+
                 foreach (DataGridViewRow item in dgQuotationAddedItems.SelectedRows)
                 {
                     int rownumber = Int32.Parse(dgQuotationAddedItems.Rows[item.Index].Cells["dgNo"].Value.ToString());
@@ -2696,6 +2711,7 @@ namespace LoginForm.QuotationModule
                         SubTotal.Add(new Tuple<int, decimal>(rownumber, 0));
                     }
                 }
+                
                 Disc();
             }
         }
@@ -3378,5 +3394,6 @@ namespace LoginForm.QuotationModule
                 MessageBox.Show("SQ:14" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+        
     }
 }
