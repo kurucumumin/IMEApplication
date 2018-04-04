@@ -80,11 +80,12 @@ namespace LoginForm.QuotationModule
                     //
                    
                     subtotal = Decimal.Parse(lblsubtotal.Text) - hztotal;
+                    
+                    
+                    
                     if (txtTotalDis.Text != "") dis2 = Math.Round(subtotal * Decimal.Parse(txtTotalDis.Text) / 100, 2);
-                    if (txtTotalDis2.Text!="") totaldis =Math.Round( (Decimal.Parse(txtTotalDis2.Text) * 100) / subtotal,2);
                     
-                    // txtTotalDis2.Text = String.Format("{0:0.0000}", dis2).ToString();
-                    
+
                 }
                 if (cbDeliverDiscount.Checked) getTotalDiscMargin();
                 if (txtTotalMarge.Visible == true)
@@ -94,7 +95,7 @@ namespace LoginForm.QuotationModule
                     txtTotalMarge.Text = String.Format("{0:0.0000}", Decimal.Parse(txtTotalMarge.Text)).ToString();
                 }
                     txtTotalDis2.Text =  dis2.ToString();
-                    txtTotalDis.Text =totaldis.ToString();
+                    
                 
                 lbltotal.Text = String.Format("{0:0.0000}", (Decimal.Parse(lblsubtotal.Text) - decimal.Parse(txtTotalDis2.Text))).ToString();
             }
@@ -2795,7 +2796,7 @@ namespace LoginForm.QuotationModule
                     //
                     decimal subtotal = Decimal.Parse(lblsubtotal.Text) - hztotal;
                     decimal dis2 = subtotal * Decimal.Parse(txtTotalDis.Text) / 100;
-                    txtTotalDis2.Text = String.Format("{0:0.0000}", dis2).ToString();
+                    txtTotalDis2.Text = Math.Round(dis2, 2).ToString();
                     lbltotal.Text = String.Format("{0:0.0000}", (Decimal.Parse(lblsubtotal.Text) - decimal.Parse(txtTotalDis2.Text))).ToString();
                 }
                 if (cbDeliverDiscount.Checked) getTotalDiscMargin();
