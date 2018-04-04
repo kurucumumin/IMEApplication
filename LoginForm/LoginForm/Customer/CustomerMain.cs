@@ -15,6 +15,7 @@ namespace LoginForm
         string searchtxt = "";
         int selectedContactID;
         int contactnewID = 0;
+        int QuotationCustomerId = 0;
         int isUpdateAdress;
         bool isModify = false;
         string ComboboxString = "Choose";
@@ -65,6 +66,7 @@ namespace LoginForm
             InitializeComponent();
             if (x == 1)
             {
+                QuotationCustomerId = x;
                 btnContactClick();
                 isModify = true;
                 CustomerDataGrid.Enabled = false;
@@ -78,6 +80,9 @@ namespace LoginForm
                 btnContactDone.Enabled = true;
                 btnContactUpdate.Enabled = true;
                 tabControl1.SelectedTab = tab_contact;
+                tabControl1.TabPages.Remove(tab_account);
+                tabControl1.TabPages.Remove(tab_adresses);
+                tabControl1.TabPages.Remove(tab_company);
                 QuotationCustomerSearch(CustomerID);
                 
             }
@@ -105,7 +110,7 @@ namespace LoginForm
                 QuotationCustomerSearch(CustomerID);
             }
         }
-
+        
         public CustomerMain(Boolean buttonEnabled)
         {
             //Qoutation Customer Add
@@ -651,7 +656,7 @@ namespace LoginForm
             if (c.accountrepresentaryID != null) AccountRepresentary.Text = IME.Workers.Where(a => a.WorkerID == c.accountrepresentaryID).FirstOrDefault().NameLastName;
             if (c.CustomerCategory != null) MainCategory.SelectedValue = c.CustomerCategory.ID;
             if (c.CustomerSubCategory != null) SubCategory.SelectedValue = c.CustomerSubCategory.ID;
-            TermsofPayments.SelectedValue = c.PaymentTerm.ID;
+            if (c.payment_termID != null) TermsofPayments.SelectedValue = c.PaymentTerm.ID;
             if (c.isactive == 1) { rb_active.Checked = true; } else { rb_passive.Checked = true; }
             ContactList.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
             ContactList.DisplayMember = "cw_name";
@@ -742,6 +747,12 @@ namespace LoginForm
             btnContactDelete.Visible = true;
             btnContactDone.Visible = false;
             btnContactUpdate.Visible = true;
+
+            if (QuotationCustomerId == 1)
+            {
+                btnCreate.Enabled = false;
+                btnUpdate.Enabled = false;
+            }
             #endregion
 
         }
@@ -873,7 +884,11 @@ namespace LoginForm
             btnContactCancel.Visible = false;
             btnContactDone.Visible = false;
 
-
+            if (QuotationCustomerId == 1)
+            {
+                btnCreate.Enabled = false;
+                btnUpdate.Enabled = false;
+            }
         }
 
         private void ContactDepartment_SelectedIndexChanged(object sender, EventArgs e)
