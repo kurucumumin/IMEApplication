@@ -2605,7 +2605,7 @@ namespace LoginForm.QuotationModule
                         dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[dgUCUPCurr.Index];
                         a = a + 1;
                     }
-                    if (a==4 &&)
+                    if (a==4)
                     {
                         DataGridViewRow dgRow = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
                         dgQuotationAddedItems.Rows.Add(dgRow);
