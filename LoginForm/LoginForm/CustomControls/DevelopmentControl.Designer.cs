@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevelopmentControl));
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnStock = new System.Windows.Forms.Button();
             this.btnQuotation = new System.Windows.Forms.Button();
@@ -37,11 +38,14 @@
             this.btnWorker = new System.Windows.Forms.Button();
             this.btnSalesOrder = new System.Windows.Forms.Button();
             this.btnSupplier = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.btnStock);
             this.panel1.Controls.Add(this.btnQuotation);
             this.panel1.Controls.Add(this.btnItemCard);
@@ -207,6 +211,20 @@
             this.btnSupplier.UseVisualStyleBackColor = false;
             this.btnSupplier.Click += new System.EventHandler(this.btnSupplier_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(286, 40);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(15, 40);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 44;
+            this.pictureBox1.TabStop = false;
+            // 
             // DevelopmentControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -218,6 +236,8 @@
             this.Size = new System.Drawing.Size(301, 577);
             this.Load += new System.EventHandler(this.DevelopmentControl_Load);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -233,5 +253,6 @@
         private System.Windows.Forms.Button btnSalesOrder;
         private System.Windows.Forms.Button btnSupplier;
         private System.Windows.Forms.Button btnStock;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

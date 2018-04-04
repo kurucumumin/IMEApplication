@@ -2829,6 +2829,8 @@
       <DependentUpon>IME.edmx</DependentUpon>
       <LastGenOutput>IME.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\arrow-right.png" />
+    <None Include="Resources\arrow-right1.png" />
     <Content Include="Resources\btnBackground.png" />
     <None Include="Resources\updated.png" />
     <None Include="Resources\btn_close_msg.png" />
