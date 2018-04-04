@@ -15,6 +15,7 @@ namespace LoginForm.QuotationModule
     public partial class FormQuotationAdd : Form
     {
         private static string QuoStatusActive = "Active";
+        List<int> enabledColumns = new List<int>(new int[] { 0, 7, 14, 21, 28, 35 });
         #region Definitions
         GetWorkerService GetWorkerService = new GetWorkerService();
         DataTable TotalCostList = new DataTable();
@@ -45,6 +46,7 @@ namespace LoginForm.QuotationModule
         public FormQuotationAdd()
         {
             InitializeComponent();
+
             dtpDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
             dtpDate.Enabled = false;
         }
@@ -1231,10 +1233,22 @@ namespace LoginForm.QuotationModule
                 dgQuotationAddedItems.CurrentRow.Cells["dgDependantTable"].Value = "ext";
 
 
-                if (txtLength.Text != "") { txtLength.Text = ((decimal)(er.ExtendedRangeLength * ((Decimal)100))).ToString("G29"); }
-                if (txtWidth.Text != "") { txtWidth.Text = ((decimal)(er.Width * ((Decimal)100))).ToString("G29"); }
-                if (txtHeight.Text != "") { txtHeight.Text = ((decimal)(er.Height * ((Decimal)100))).ToString("G29"); }
-                if (er.ExtendedRangeWeight != null) { txtStandartWeight.Text = ((decimal)(er.ExtendedRangeWeight) / (decimal)1000).ToString("G29"); }
+                if (txtLength.Text != "")
+                {
+                    if (er.ExtendedRangeLength != null) { txtLength.Text = ((decimal)(er.ExtendedRangeLength * ((Decimal)100))).ToString("G29"); }
+                }
+                if (txtWidth.Text != "")
+                {
+                    if (er.Width != null) { txtWidth.Text = ((decimal)(er.Width * ((Decimal)100))).ToString("G29"); }
+                }
+                if (txtHeight.Text != "")
+                {
+                    if (er.Height != null) { txtHeight.Text = ((decimal)(er.Height * ((Decimal)100))).ToString("G29"); }
+                }
+                if (er.ExtendedRangeWeight != null)
+                {
+                    txtStandartWeight.Text = ((decimal)(er.ExtendedRangeWeight) / (decimal)1000).ToString("G29");
+                }
                 txtCCCN.Text = er.CCCN.ToString();
                 txtCofO.Text = er.CountryofOrigin;
 
@@ -2562,31 +2576,29 @@ namespace LoginForm.QuotationModule
 
         private void ChangeCurrnetCell(int currindex)
         {
-
             try
             {
                 if (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[dgProductCode.Index].Value != null)
                 {
-                    if (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[dgQty.Index].Value == null)
+                    if (dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index].Value == null)
                     {
-                        dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[dgQty.Index];
+                        dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index];
                         a = a + 1;
                     }
                     else
                     {
-                        dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[dgUCUPCurr.Index];
+                        dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgUCUPCurr.Index];
                         a = a + 1;
                     }
                     if (a==4)
                     {
                         DataGridViewRow dgRow = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
                         dgQuotationAddedItems.Rows.Add(dgRow);
-                        dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex + 1].Cells[dgProductCode.Index];
+                        dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentRow.Index + 1].Cells[dgProductCode.Index];
                         ItemClear();
                         a = 1;
                     }
                 }
-
             }
             catch { }
         }
@@ -2600,7 +2612,6 @@ namespace LoginForm.QuotationModule
                 {
                     if (currindex == dgQuotationAddedItems.ColumnCount - 2)
                     {
-
                         if (dgQuotationAddedItems.RowCount - 1 == row && dgQuotationAddedItems.CurrentRow.Cells["dgDesc"].Value != null)
                         {
                             DataGridViewRow dgRow = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
@@ -2634,6 +2645,9 @@ namespace LoginForm.QuotationModule
         {
             if (e.KeyCode == Keys.Tab)
             {
+                //TabOrEnterKeyOnGrid(e);
+
+
                 ChangeCurrnetCellTabKey(dgQuotationAddedItems.CurrentCell.ColumnIndex + 1);
                 dgQuotationAddedItems.Focus();
             }
@@ -3409,5 +3423,44 @@ namespace LoginForm.QuotationModule
                 txtTotalDis2.Focus();
             }
         }
+
+        private void TabOrEnterKeyOnGrid(KeyEventArgs e)
+        {
+            DataGridViewRow row = dgQuotationAddedItems.CurrentRow;
+
+            if (row.Cells[dgProductCode.Index].Value == null || row.Cells[dgProductCode.Index].Value.ToString() == String.Empty)
+            {
+                dgQuotationAddedItems.CurrentCell = row.Cells[dgProductCode.Index];
+                MessageBox.Show("Please Enter Item Code First!", "Warning");
+            }
+            else
+            {
+                int index = FindNextEditableColumnIndex();
+                dgQuotationAddedItems.CurrentCell = row.Cells[index];
+            }
+            if(e.KeyCode == Keys.Tab)
+            {
+                SendKeys.Send("{LEFT}");
+            }else if (e.KeyCode == Keys.Enter)
+            {
+                SendKeys.Send("{UP}");
+            }
+        }
+
+        private int FindNextEditableColumnIndex()
+        {
+            int selectedCellIndex = dgQuotationAddedItems.CurrentCell.ColumnIndex;
+            int nextAvailableColumn = 0;
+            for (int i = 0; i < enabledColumns.Count; i++)
+            {
+                if (selectedCellIndex < enabledColumns[i])
+                {
+                    nextAvailableColumn = enabledColumns[i];
+                    break;
+                }
+            }
+            return nextAvailableColumn;
+        }
+
     }
 }
