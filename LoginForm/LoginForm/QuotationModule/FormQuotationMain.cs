@@ -181,7 +181,9 @@ namespace LoginForm.QuotationModule
                            RFQ = q.RFQNo,
                            CustomerName = c.c_name
                        };
-            populateGrid(list.ToList().OrderByDescending(x => int.Parse(x.QuotationNo.Substring(5))).ToList());
+
+            populateGrid(list.ToList());
+            //.OrderByDescending(x => int.Parse(x.QuotationNo.Substring(5)).ToList());
         }
 
         private void populateGrid<T>(List<T> queryable)
