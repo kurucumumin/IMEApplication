@@ -153,15 +153,12 @@ namespace LoginForm.nsSaleOrder
             if (dgSales.CurrentRow.Cells["SoNO"].Value != null)
             {
                 item_code = Convert.ToDecimal(dgSales.CurrentRow.Cells["SaleID"].Value.ToString());
-                //purchasecode = IME.PurchaseOrders.OrderByDescending(q => q.FicheNo).FirstOrDefault().FicheNo;
-                //purchasecode += 1;
             }
             if (item_code == 0)
                 MessageBox.Show("Please Enter a Item Code", "Eror !");
             else
             {
                 this.Close();
-                // NewPurchaseOrder f = new NewPurchaseOrder(item_code,purchasecode);
                 NewPurchaseOrder f = new NewPurchaseOrder(item_code);
                 f.ShowDialog();
             }

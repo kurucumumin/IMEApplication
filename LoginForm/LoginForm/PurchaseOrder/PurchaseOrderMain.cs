@@ -111,6 +111,7 @@ namespace LoginForm.PurchaseOrder
                                p.Reason
                            }).ToList();
 
+            adapter = adapter.ToList().OrderByDescending(x => x.purchaseOrderId).ToList();
             foreach (var item in adapter)
             {
                 int rowIndex = dgPurchase.Rows.Add();

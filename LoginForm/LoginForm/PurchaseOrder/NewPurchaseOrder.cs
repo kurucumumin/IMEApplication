@@ -110,7 +110,7 @@ namespace LoginForm.PurchaseOrder
                            {
                                p.SaleOrder.Customer.c_name,
                                p.QuotationDetail.QuotationNo,
-                               p.SaleOrderID,
+                               p.SaleOrder.SaleOrderNo,
                                p.ItemCode,
                                p.ItemDescription,
                                p.UPIME,
@@ -119,6 +119,7 @@ namespace LoginForm.PurchaseOrder
                                p.Calibration,
                                p.SaleOrder.SaleOrderNature,
                                p.ItemCost,
+                               p.SaleOrderID
                            }).ToList();
             readOnly();
             foreach (var item in adapter)
@@ -128,8 +129,7 @@ namespace LoginForm.PurchaseOrder
 
                 row.Cells[c_name.Index].Value = item.c_name;
                 row.Cells[QuotationNos.Index].Value = item.QuotationNo;
-                //SaleOrderID için kontrol et
-                row.Cells[SaleOrderNo.Index].Value = item.SaleOrderID;
+                row.Cells[SaleOrderNo.Index].Value = item.SaleOrderNo;
                 row.Cells[ItemCode.Index].Value = item.ItemCode;
                 row.Cells[ItemDescription.Index].Value = item.ItemDescription;
                 row.Cells[UnitOfMeasure.Index].Value = item.UPIME;
