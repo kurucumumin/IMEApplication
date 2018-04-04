@@ -21,8 +21,6 @@ namespace LoginForm.QuotationModule
 
         IMEEntities IME = new IMEEntities();
         decimal price;
-        List<Tuple<int, decimal>> SubTotal = new List<Tuple<int, decimal>>();
-        List<Tuple<int, decimal>> SubDeletingTotal = new List<Tuple<int, decimal>>();
         ContextMenu DeletedQuotationMenu = new ContextMenu();
         ExchangeRate curr = new ExchangeRate();
         decimal decsalesQuotationTypeId = 0;
@@ -388,7 +386,7 @@ namespace LoginForm.QuotationModule
         private void btnClose_Click(object sender, EventArgs e)
         {
             FormMain f = new FormMain();
-            if (MessageBox.Show("Are You Sure To Exit Programme ?", "Exit", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            if (MessageBox.Show("Are You Sure To Close This Window?", "Exit", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 f.ShowDialog();
                 this.Close();
@@ -420,13 +418,7 @@ namespace LoginForm.QuotationModule
                                 {
                                     if (i <= Quotation.Count)
                                     {
-
                                         dgQuotationAddedItems.Rows[i].Cells[0].Value = (i);
-                                        var st = SubTotal.Where(a => a.Item1 == Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString())).FirstOrDefault();
-                                        decimal stPrice = 0;
-                                        if (st != null) { stPrice = st.Item2; }
-                                        SubTotal.Remove(st);
-                                        SubTotal.Add(new Tuple<int, decimal>(Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString()), stPrice));
                                     }
                                 }
                                 else { dgQuotationAddedItems.Rows[i].Cells[0].Value = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString()); }
@@ -441,11 +433,6 @@ namespace LoginForm.QuotationModule
                                     if (i <= Quotation.Count)
                                     {
                                         dgQuotationAddedItems.Rows[i].Cells[0].Value = (i + 2);
-                                        var st = SubTotal.Where(a => a.Item1 == Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString())).FirstOrDefault();
-                                        decimal stPrice = 0;
-                                        if (st != null) { stPrice = st.Item2; }
-                                        SubTotal.Remove(st);
-                                        SubTotal.Add(new Tuple<int, decimal>(Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString()), stPrice));
                                     }
 
                                 }
@@ -625,7 +612,7 @@ namespace LoginForm.QuotationModule
                             ) { GetMarginMark(); }
 
                     }
-                    //Disc();
+                    Disc();
                     break;
                 #endregion
                 case 21://Total
@@ -838,26 +825,8 @@ namespace LoginForm.QuotationModule
                                 dgQuotationAddedItems.Rows[rowindex].Cells["dgUCUPCurr"].Value = String.Format("{0:0.0000}", discResult).ToString();
 
                                 //Change lblsubtotal
-                                var st = SubTotal.Where(a => a.Item1 == (Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells[0].Value.ToString()))).FirstOrDefault();
-                                if (st != null)
-                                {
-                                    lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) - st.Item2).ToString();
-                                    SubTotal.Remove(st);
 
-                                    int subtotalcol1 = 0;
-                                    if (dgQuotationAddedItems.Rows[rowindex].Cells[0].Value != null) subtotalcol1 = Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells[0].Value.ToString());
-                                    SubTotal.Add(new Tuple<int, decimal>(subtotalcol1, Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value.ToString())));
-                                    st = SubTotal.Where(a => a.Item1 == (Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells[0].Value.ToString()))).FirstOrDefault();
-                                    lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) + st.Item2).ToString();
-                                }
-                                else
-                                {
-                                    int subtotalcol1 = 0;
-                                    if (dgQuotationAddedItems.Rows[rowindex].Cells[0].Value != null) subtotalcol1 = Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells[0].Value.ToString());
-                                    SubTotal.Add(new Tuple<int, decimal>(subtotalcol1, Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value.ToString())));
-                                    st = SubTotal.Where(a => a.Item1 == (Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells[0].Value.ToString()))).FirstOrDefault();
-                                    lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) + st.Item2).ToString();
-                                }
+                                CalculateSubTotal();
 
                                 //ChangeCurr(rowindex);
                                 if (dgQuotationAddedItems.CurrentCell == null) dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[rowindex].Cells[0];
@@ -1007,16 +976,7 @@ namespace LoginForm.QuotationModule
 
                     }
                     //dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgMargin"].Value = (((1 - (Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value.ToString()))))) * 100).ToString("G29");
-                    if (SubTotal.Where(a => a.Item1 == Int32.Parse(dgQuotationAddedItems.CurrentRow.Cells[0].Value.ToString())).FirstOrDefault() != null)
-                    {
-                        var st = SubTotal.Where(a => a.Item1 == Int32.Parse(dgQuotationAddedItems.CurrentRow.Cells[0].Value.ToString())).FirstOrDefault();
-                        SubTotal.Remove(st);
-                        SubTotal.Add(new Tuple<int, decimal>(Int32.Parse(dgQuotationAddedItems.CurrentRow.Cells[0].Value.ToString()), Decimal.Parse(dgQuotationAddedItems.CurrentRow.Cells["dgTotal"].Value.ToString())));
-                    }
-                    else
-                    {
-                        SubTotal.Add(new Tuple<int, decimal>(Int32.Parse(dgQuotationAddedItems.CurrentRow.Cells[0].Value.ToString()), Decimal.Parse(dgQuotationAddedItems.CurrentRow.Cells["dgTotal"].Value.ToString())));
-                    }
+                   
                 }
                 else
                 {
@@ -1063,16 +1023,6 @@ namespace LoginForm.QuotationModule
                             //   ) / ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString()))))) * 100).ToString("G29");
 
                         }
-                    }
-                    if (SubTotal.Where(a => a.Item1 == Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString())).FirstOrDefault() != null)
-                    {
-                        var st = SubTotal.Where(a => a.Item1 == Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString())).FirstOrDefault();
-                        SubTotal.Remove(st);
-                        SubTotal.Add(new Tuple<int, decimal>(Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString()), Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value.ToString())));
-                    }
-                    else
-                    {
-                        SubTotal.Add(new Tuple<int, decimal>(Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString()), Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value.ToString())));
                     }
                 }
                 catch { }
@@ -1573,59 +1523,24 @@ namespace LoginForm.QuotationModule
 
         private void CalculateSubTotal()
         {
-            if (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgNo"].Value != null)
+            try
             {
-                decimal AllTotal = 0;
-                foreach (DataGridViewRow item in dgQuotationAddedItems.Rows)
+                if (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgNo"].Value != null)
                 {
-                    decimal rowtotal=0;
-                    DataGridViewCell Totaldg = item.Cells[dgTotal.Index];
-                    if (Totaldg.Value != null && Totaldg.Value.ToString() != "") rowtotal = decimal.Parse(Totaldg.Value.ToString());
-                    AllTotal +=rowtotal;
+                    decimal AllTotal = 0;
+                    foreach (DataGridViewRow item in dgQuotationAddedItems.Rows)
+                    {
+                        decimal rowtotal = 0;
+                        DataGridViewCell Totaldg = item.Cells[dgTotal.Index];
+                        if (Totaldg.Value != null && Totaldg.Value.ToString() != "") rowtotal = decimal.Parse(Totaldg.Value.ToString());
+                        AllTotal += rowtotal;
+                    }
+                    lblsubtotal.Text = Math.Round(AllTotal, 2).ToString();
+                    Disc();
                 }
-                lblsubtotal.Text = Math.Round(AllTotal, 2).ToString();
-                Disc();
-                #region SubTotal Calculation
-                //int RowIndex = dgQuotationAddedItems.CurrentCell.RowIndex;
-                //int rowindexSubTotal = 0;
-                //if (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgNo"].Value != null && dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgNo"].Value != "") Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgNo"].Value.ToString());
-                //var tuple = SubTotal.Where(a => a.Item1 == rowindexSubTotal).FirstOrDefault();
-                //if (tuple == null || tuple.Item2 == 0)
-                //{
-                //    if (dgQuotationAddedItems.Rows[RowIndex].Cells["dgTotal"].Value != null && dgQuotationAddedItems.Rows[RowIndex].Cells["dgTotal"].Value != "")
-                //    {
-                //        var tuple0 = new Tuple<int, decimal>(rowindexSubTotal, Decimal.Parse(dgQuotationAddedItems.Rows[RowIndex].Cells["dgTotal"].Value.ToString()));
-                //        SubTotal.Add(tuple0);
-                //        tuple = SubTotal.Where(a => a.Item1 == rowindexSubTotal).FirstOrDefault();
-                //        if (lblsubtotal.Text != "" && lblsubtotal.Text != null)
-                //        {
-                //            lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) + tuple.Item2).ToString();
-                //        }
-                //        else
-                //        {
-                //            lblsubtotal.Text = (SubTotal[rowindexSubTotal]).ToString();
-                //        }
-                //    }
-
-                //}
-                //else
-                //{
-
-
-                //    lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) - (tuple.Item2)).ToString();
-                //    SubTotal.Remove(tuple);
-
-                //    if (dgQuotationAddedItems.Rows[RowIndex].Cells["dgQty"].Value != null && dgQuotationAddedItems.Rows[RowIndex].Cells["dgQty"].Value != "")
-                //    {
-                //        SubTotal.Add(new Tuple<int, decimal>(rowindexSubTotal, (Decimal.Parse(dgQuotationAddedItems.Rows[RowIndex].Cells["dgTotal"].Value.ToString()))));
-                //        dgQuotationAddedItems.Rows[RowIndex].Cells["dgTotal"].Value =   Math.Round( (Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgQty"].Value.ToString()) * Decimal.Parse(dgQuotationAddedItems.Rows[RowIndex].Cells["dgUCUPCurr"].Value.ToString())),2);
-                //    }
-                //    decimal total = 0;
-                //    try { total = decimal.Parse(dgQuotationAddedItems.Rows[RowIndex].Cells["dgTotal"].Value.ToString()); } catch { }
-                //    lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) + total).ToString();
-                //}
-                #endregion
             }
+            catch { }
+            
         }
 
         private void chkVat_CheckedChanged(object sender, EventArgs e)
@@ -2396,26 +2311,7 @@ namespace LoginForm.QuotationModule
                 dgQuotationAddedItems.Rows[rowindex].Cells["dgUCUPCurr"].Value = ((Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgUCUPCurr"].Value.ToString())) / Currfactor).ToString();
                 dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value = ((Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value.ToString())) / Currfactor).ToString();
                 dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value = Math.Round(((Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value.ToString())) / Currfactor),2);
-                var st = SubTotal.Where(a => a.Item1 == (Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells[0].Value.ToString()))).FirstOrDefault();
-                if (st != null)
-                {
-                    lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) - st.Item2).ToString();
-                    SubTotal.Remove(st);
-
-                    int subtotalcol1 = 0;
-                    if (dgQuotationAddedItems.Rows[rowindex].Cells[0].Value != null) subtotalcol1 = Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells[0].Value.ToString());
-                    SubTotal.Add(new Tuple<int, decimal>(subtotalcol1, Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value.ToString())));
-                    st = SubTotal.Where(a => a.Item1 == (Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells[0].Value.ToString()))).FirstOrDefault();
-                    lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) + st.Item2).ToString();
-                }
-                else
-                {
-                    int subtotalcol1 = 0;
-                    if (dgQuotationAddedItems.Rows[rowindex].Cells[0].Value != null) subtotalcol1 = Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells[0].Value.ToString());
-                    SubTotal.Add(new Tuple<int, decimal>(subtotalcol1, Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value.ToString())));
-                    st = SubTotal.Where(a => a.Item1 == (Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells[0].Value.ToString()))).FirstOrDefault();
-                    lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) + st.Item2).ToString();
-                }
+                CalculateSubTotal();
             }
 
         }
@@ -2456,15 +2352,11 @@ namespace LoginForm.QuotationModule
                     dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value = ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString())) / Currfactor).ToString();
                     dgQuotationAddedItems.Rows[i].Cells["dgUPIME"].Value = ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUPIME"].Value.ToString())) / Currfactor).ToString();
                     dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value = ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value.ToString())) / Currfactor).ToString();
-                    var st = SubTotal.Where(a => a.Item1 == (Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString()))).FirstOrDefault();
-                    SubTotal.Remove(st);
-                    SubTotal.Add(new Tuple<int, decimal>(Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString()), Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value.ToString())));
-                    st = SubTotal.Where(a => a.Item1 == (Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString()))).FirstOrDefault();
-                    SubTotalTotal += st.Item2;
+                    
                 }
                 #endregion
             }
-            lblsubtotal.Text = SubTotalTotal.ToString();
+            CalculateSubTotal();
             lblCurrValue.Text = String.Format("{0:0.0000}", CurrValue);
         }
 
@@ -2685,17 +2577,8 @@ namespace LoginForm.QuotationModule
                         dgQuotationDeleted.Rows[dgQuotationDeleted.Rows.Count - 2].Cells[i].Value = item.Cells[i].Value;
                     }
 
-                    var st = SubTotal.Where(a => a.Item1 == rownumber).FirstOrDefault();
-                    if(st!=null)lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) - st.Item2).ToString();
-                    if (SubTotal.Count > 0)
-                    {
-                        try {
-                            SubDeletingTotal.Add(new Tuple<int, decimal>(rownumber, SubTotal.Where(a => a.Item1 == rownumber).FirstOrDefault().Item2));
-                            SubTotal.Remove(st);
-                            SubTotal.Add(new Tuple<int, decimal>(rownumber, 0));
-                        }
-                        catch { }
-                    }
+                   
+                    
                 }
                 Disc();
             }
@@ -3179,18 +3062,7 @@ namespace LoginForm.QuotationModule
                 {
                     int rowindex = item.Index;
                     int no = Int32.Parse(dgQuotationDeleted.Rows[rowindex].Cells["No1"].Value.ToString());
-                    var st = SubTotal.Where(a => a.Item1 == no).FirstOrDefault();
-                    var st1 = SubDeletingTotal.Where(a => a.Item1 == no).FirstOrDefault();
-                    if (st != null)
-                    {
-                        SubTotal.Remove(st);
-                        if (st1 != null)
-                        {
-                            SubTotal.Add(new Tuple<int, decimal>(no, st1.Item2));
-                            lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) + st1.Item2).ToString();
-                            SubDeletingTotal.Remove(st1);
-                        }
-                    }
+                   
                     int rowindex1 = dgQuotationAddedItems.RowCount;
 
                     dgQuotationAddedItems.Rows.Add();
@@ -3221,6 +3093,7 @@ namespace LoginForm.QuotationModule
                 dgQuotationAddedItems.Rows[i].Cells[0].Value = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString());
             }
             dgQuotationAddedItems.Sort(dgQuotationAddedItems.Columns[0], ListSortDirection.Ascending);
+            CalculateSubTotal();
         }
 
         private void cbDeliverDiscount_CheckedChanged(object sender, EventArgs e)
