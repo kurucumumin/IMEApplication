@@ -116,7 +116,9 @@ namespace LoginForm.PurchaseOrder
                 int rowIndex = dgPurchase.Rows.Add();
                 DataGridViewRow row = dgPurchase.Rows[rowIndex];
 
+
                 row.Cells[purchaseOrderId.Index].Value = item.purchaseOrderId;
+                row.Cells[PoNo.Index].Value = item.purchaseOrderId + "/DB/" + Convert.ToDateTime(IME.CurrentDate().First()).ToString("MMM") + "/" + Convert.ToDateTime(IME.CurrentDate().First()).ToString("yy");
                 row.Cells[FicheNo.Index].Value = item.FicheNo;
                 row.Cells[PurchaseOrderDate.Index].Value = item.PurchaseOrderDate;
                 row.Cells[CustomerID.Index].Value = item.CustomerID;
@@ -168,6 +170,7 @@ namespace LoginForm.PurchaseOrder
                     dgPurchase.Columns[4].Visible = false;
                     dgPurchase.Columns[5].Visible = false;
                     dgPurchase.Columns[6].Visible = false;
+                    dgPurchase.Columns[7].Visible = false;
                     #endregion
                     dgPurchase.DataSource = fichenolist.ToList();
                 }
@@ -197,6 +200,7 @@ namespace LoginForm.PurchaseOrder
                         dgPurchase.Columns[4].Visible = false;
                         dgPurchase.Columns[5].Visible = false;
                         dgPurchase.Columns[6].Visible = false;
+                        dgPurchase.Columns[7].Visible = false;
                         #endregion
                         dgPurchase.DataSource = fichenolist.ToList();
                     }
@@ -248,6 +252,7 @@ namespace LoginForm.PurchaseOrder
                 DataGridViewRow row = dgPurchase.Rows[rowIndex];
 
                 row.Cells[purchaseOrderId.Index].Value = item.purchaseOrderId;
+                row.Cells[PoNo.Index].Value = item.purchaseOrderId + "/DB/" + Convert.ToDateTime(IME.CurrentDate().First()).ToString("MMM") + "/" + Convert.ToDateTime(IME.CurrentDate().First()).ToString("yy");
                 row.Cells[FicheNo.Index].Value = item.FicheNo;
                 row.Cells[PurchaseOrderDate.Index].Value = item.PurchaseOrderDate;
                 row.Cells[CustomerID.Index].Value = item.CustomerID;

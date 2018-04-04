@@ -2834,6 +2834,12 @@ namespace LoginForm.nmSaleOrder
             }
             else if (e.KeyCode == Keys.Delete)
             {
+                DataGridViewComboBoxColumn deliveryColumn = (DataGridViewComboBoxColumn)dgSaleDeleted.Columns[dgDelivery1.Index];
+
+                deliveryColumn.DataSource = IME.QuotationDeliveries.ToList();
+                deliveryColumn.DisplayMember = "DeliveryName";
+                deliveryColumn.ValueMember = "ID";
+
                 foreach (DataGridViewRow item in dgSaleAddedItems.SelectedRows)
                 {
                     int rownumber = Int32.Parse(dgSaleAddedItems.Rows[item.Index].Cells["dgNo"].Value.ToString());

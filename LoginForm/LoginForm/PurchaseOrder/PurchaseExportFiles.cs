@@ -185,7 +185,7 @@ namespace LoginForm.PurchaseOrder
             {
                 mail.To.Add(toList[i]);
             }
-            MessageBox.Show(i + " To E-Mails successfully sent.", "Success !");
+            MessageBox.Show("Please wait a moment ", "Wait !");
 
             for (i = 0; i < ccList.Count; i++)
             {
@@ -193,7 +193,24 @@ namespace LoginForm.PurchaseOrder
             }
             Thread.Sleep(TimeSpan.FromSeconds(1));
             sc.Send(mail);
-            MessageBox.Show(i + " CC E-Mails successfully sent.", "Success !");
+
+            string messageText = String.Empty;
+
+            foreach (string item in toList)
+            {
+                messageText += item + "\n";
+            }
+
+            messageText += "CC E-Mails successfully sent." + "\n\n";
+
+            foreach (string item in ccList)
+            {
+                messageText += item + "\n";
+            }
+
+            messageText += "To E-Mails successfully sent.";
+
+            MessageBox.Show(messageText, "Success !");
             #endregion
 
             PurchaseOrderMain f = new PurchaseOrderMain();
