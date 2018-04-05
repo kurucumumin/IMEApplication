@@ -2649,8 +2649,8 @@ namespace LoginForm.QuotationModule
                 //TabOrEnterKeyOnGrid(e);
 
                 manuelSelection = "Tab";
-                //ChangeCurrnetCellTabKey(dgQuotationAddedItems.CurrentCell.ColumnIndex + 1);
-                //dgQuotationAddedItems.Focus();
+                ChangeCurrnetCellTabKey(dgQuotationAddedItems.CurrentCell.ColumnIndex + 1);
+                dgQuotationAddedItems.Focus();
             }
             else if ((e.KeyCode == Keys.Escape))
             {
@@ -3458,31 +3458,7 @@ namespace LoginForm.QuotationModule
 
         private void dgQuotationAddedItems_CurrentCellChanged(object sender, EventArgs e)
         {
-            if (manuelSelection != string.Empty)
-            {
-                switch (manuelSelection)
-                {
-                    case "Tab":
-                        
-                        TabOrEnterKeyOnGrid();
 
-                        break;
-                    case "Enter":
-
-                        TabOrEnterKeyOnGrid();
-                        SendKeys.Send("{UP}");
-
-                        break;
-                }
-
-
-                manuelSelection = string.Empty;
-                //currentcell değişme burada
-            }
-            //    else
-            //    {
-            //        manuelSelection = true;
-            //    }
         }
     }
 }
