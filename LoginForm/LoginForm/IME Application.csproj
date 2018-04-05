@@ -1297,9 +1297,6 @@
     <Compile Include="DataSet\GetPurchaseReturnInvoiceNoCorrespondingtoLedger_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\GetSalesOrderNoIncludePendingCorrespondingtoLedgerforSI_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1814,9 +1811,6 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SalesInvoiceGridfillAgainestDeliveryNoteUsingDeliveryNoteDetails_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\SalesInvoiceGridfillAgainestSalesOrderUsingSalesDetails_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SalesInvoiceSalesBillTaxViewAllBySalesMasterId_Result.cs">
