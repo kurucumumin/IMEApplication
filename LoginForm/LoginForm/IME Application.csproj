@@ -710,6 +710,10 @@
     <Compile Include="Account\Transaction\frmReceiptVoucher.designer.cs">
       <DependentUpon>frmReceiptVoucher.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\Transaction\frmSalesInvoice - Copy.cs" />
+    <Compile Include="Account\Transaction\frmSalesInvoice - Copy.designer.cs">
+      <DependentUpon>frmSalesInvoice - Copy.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\Transaction\frmSalesInvoice.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2573,6 +2577,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Transaction\frmReceiptVoucher.resx">
       <DependentUpon>frmReceiptVoucher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\Transaction\frmSalesInvoice - Copy.resx">
+      <DependentUpon>frmSalesInvoice - Copy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Transaction\frmSalesInvoice.resx">
       <DependentUpon>frmSalesInvoice.cs</DependentUpon>

@@ -402,6 +402,9 @@ namespace LoginForm.PurchaseOrder
                 string itemLine = "";
                 int orderqty = 0;
                 if(po!=null)orderqty=Int32.Parse(po.Quantity.ToString());
+
+                
+                if (po.UnitContent > 1) orderqty = (orderqty / (int)po.UnitContent);
                 string OrderQuantity = orderqty.ToString();
                 totalquantity += orderqty;
                 int orderqtylenght = orderqty.ToString().Length;
