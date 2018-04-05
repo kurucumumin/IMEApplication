@@ -1,6 +1,6 @@
 ﻿namespace LoginForm.PurchaseOrder
 {
-    partial class RSInvToSaleInv
+    partial class SaleOrderToDeliveryNote
     {
         /// <summary>
         /// Required designer variable.
@@ -29,30 +29,19 @@
         private void InitializeComponent()
         {
             this.dgSaleInvoice = new System.Windows.Forms.DataGridView();
+            this.CheckBox = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dgSaleOrderID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgStockQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnExit = new System.Windows.Forms.Button();
             this.lblPurchaseOrder = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnSelectAll = new System.Windows.Forms.Button();
             this.btnClearAll = new System.Windows.Forms.Button();
-            this.btnSaleInvoice = new System.Windows.Forms.Button();
+            this.btnDeliveryNote = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.CheckBox = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dgPurchaseOrderNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgPurchaseOrderItemNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgProductNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgBillingItemNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgSalesUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgUnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PODetailNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgDiscount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgGoodsValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCCCNNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCountryofOrigin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgArticleDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgDeliveryNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgDeliveryItemNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgSaleInvoice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -63,26 +52,51 @@
             this.dgSaleInvoice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgSaleInvoice.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CheckBox,
-            this.dgPurchaseOrderNumber,
-            this.dgPurchaseOrderItemNumber,
-            this.dgProductNumber,
-            this.dgBillingItemNumber,
+            this.dgSaleOrderID,
+            this.dgItemCode,
             this.dgQuantity,
-            this.dgSalesUnit,
-            this.dgUnitPrice,
-            this.PODetailNo,
-            this.dgDiscount,
-            this.dgGoodsValue,
-            this.dgAmount,
-            this.dgCCCNNO,
-            this.dgCountryofOrigin,
-            this.dgArticleDescription,
-            this.dgDeliveryNumber,
-            this.dgDeliveryItemNumber});
+            this.dgStockQuantity,
+            this.dgCName});
             this.dgSaleInvoice.Location = new System.Drawing.Point(396, 29);
             this.dgSaleInvoice.Name = "dgSaleInvoice";
             this.dgSaleInvoice.Size = new System.Drawing.Size(482, 251);
             this.dgSaleInvoice.TabIndex = 0;
+            // 
+            // CheckBox
+            // 
+            this.CheckBox.HeaderText = "";
+            this.CheckBox.Name = "CheckBox";
+            this.CheckBox.Width = 20;
+            // 
+            // dgSaleOrderID
+            // 
+            this.dgSaleOrderID.HeaderText = "Sale OrderID";
+            this.dgSaleOrderID.Name = "dgSaleOrderID";
+            this.dgSaleOrderID.ReadOnly = true;
+            // 
+            // dgItemCode
+            // 
+            this.dgItemCode.HeaderText = "Product Code";
+            this.dgItemCode.Name = "dgItemCode";
+            this.dgItemCode.ReadOnly = true;
+            // 
+            // dgQuantity
+            // 
+            this.dgQuantity.HeaderText = "Quantity";
+            this.dgQuantity.Name = "dgQuantity";
+            this.dgQuantity.ReadOnly = true;
+            // 
+            // dgStockQuantity
+            // 
+            this.dgStockQuantity.HeaderText = "Stock Quantity";
+            this.dgStockQuantity.Name = "dgStockQuantity";
+            this.dgStockQuantity.ReadOnly = true;
+            // 
+            // dgCName
+            // 
+            this.dgCName.HeaderText = "Customer Name";
+            this.dgCName.Name = "dgCName";
+            this.dgCName.ReadOnly = true;
             // 
             // btnExit
             // 
@@ -132,128 +146,28 @@
             this.btnClearAll.UseVisualStyleBackColor = true;
             this.btnClearAll.Click += new System.EventHandler(this.btnClearAll_Click);
             // 
-            // btnSaleInvoice
+            // btnDeliveryNote
             // 
-            this.btnSaleInvoice.Location = new System.Drawing.Point(626, 286);
-            this.btnSaleInvoice.Name = "btnSaleInvoice";
-            this.btnSaleInvoice.Size = new System.Drawing.Size(123, 50);
-            this.btnSaleInvoice.TabIndex = 1;
-            this.btnSaleInvoice.Text = "Create Sale Invoice";
-            this.btnSaleInvoice.UseVisualStyleBackColor = true;
-            this.btnSaleInvoice.Click += new System.EventHandler(this.btnSaleInvoice_Click);
+            this.btnDeliveryNote.Location = new System.Drawing.Point(626, 286);
+            this.btnDeliveryNote.Name = "btnDeliveryNote";
+            this.btnDeliveryNote.Size = new System.Drawing.Size(123, 50);
+            this.btnDeliveryNote.TabIndex = 1;
+            this.btnDeliveryNote.Text = "Create Delivery Note";
+            this.btnDeliveryNote.UseVisualStyleBackColor = true;
+            this.btnDeliveryNote.Click += new System.EventHandler(this.btnSaleInvoice_Click);
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(15, 29);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(375, 251);
             this.dataGridView1.TabIndex = 5;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
-            // CheckBox
-            // 
-            this.CheckBox.HeaderText = "";
-            this.CheckBox.Name = "CheckBox";
-            this.CheckBox.Width = 20;
-            // 
-            // dgPurchaseOrderNumber
-            // 
-            this.dgPurchaseOrderNumber.HeaderText = "PurchaseOrderNumber";
-            this.dgPurchaseOrderNumber.Name = "dgPurchaseOrderNumber";
-            this.dgPurchaseOrderNumber.ReadOnly = true;
-            // 
-            // dgPurchaseOrderItemNumber
-            // 
-            this.dgPurchaseOrderItemNumber.HeaderText = "PurchaseOrderItemNumber";
-            this.dgPurchaseOrderItemNumber.Name = "dgPurchaseOrderItemNumber";
-            this.dgPurchaseOrderItemNumber.ReadOnly = true;
-            // 
-            // dgProductNumber
-            // 
-            this.dgProductNumber.HeaderText = "ProductNumber";
-            this.dgProductNumber.Name = "dgProductNumber";
-            this.dgProductNumber.ReadOnly = true;
-            // 
-            // dgBillingItemNumber
-            // 
-            this.dgBillingItemNumber.HeaderText = "BillingItemNumber";
-            this.dgBillingItemNumber.Name = "dgBillingItemNumber";
-            this.dgBillingItemNumber.ReadOnly = true;
-            // 
-            // dgQuantity
-            // 
-            this.dgQuantity.HeaderText = "Quantity";
-            this.dgQuantity.Name = "dgQuantity";
-            this.dgQuantity.ReadOnly = true;
-            // 
-            // dgSalesUnit
-            // 
-            this.dgSalesUnit.HeaderText = "SalesUnit";
-            this.dgSalesUnit.Name = "dgSalesUnit";
-            this.dgSalesUnit.ReadOnly = true;
-            // 
-            // dgUnitPrice
-            // 
-            this.dgUnitPrice.HeaderText = "UnitPrice";
-            this.dgUnitPrice.Name = "dgUnitPrice";
-            this.dgUnitPrice.ReadOnly = true;
-            // 
-            // PODetailNo
-            // 
-            this.PODetailNo.HeaderText = "PODetail";
-            this.PODetailNo.Name = "PODetailNo";
-            this.PODetailNo.Visible = false;
-            // 
-            // dgDiscount
-            // 
-            this.dgDiscount.HeaderText = "Discount";
-            this.dgDiscount.Name = "dgDiscount";
-            this.dgDiscount.ReadOnly = true;
-            // 
-            // dgGoodsValue
-            // 
-            this.dgGoodsValue.HeaderText = "GoodsValue";
-            this.dgGoodsValue.Name = "dgGoodsValue";
-            this.dgGoodsValue.ReadOnly = true;
-            // 
-            // dgAmount
-            // 
-            this.dgAmount.HeaderText = "Amount";
-            this.dgAmount.Name = "dgAmount";
-            this.dgAmount.ReadOnly = true;
-            // 
-            // dgCCCNNO
-            // 
-            this.dgCCCNNO.HeaderText = "CCCNNO";
-            this.dgCCCNNO.Name = "dgCCCNNO";
-            this.dgCCCNNO.ReadOnly = true;
-            // 
-            // dgCountryofOrigin
-            // 
-            this.dgCountryofOrigin.HeaderText = "CountryofOrigin";
-            this.dgCountryofOrigin.Name = "dgCountryofOrigin";
-            this.dgCountryofOrigin.ReadOnly = true;
-            // 
-            // dgArticleDescription
-            // 
-            this.dgArticleDescription.HeaderText = "ArticleDescription";
-            this.dgArticleDescription.Name = "dgArticleDescription";
-            this.dgArticleDescription.ReadOnly = true;
-            // 
-            // dgDeliveryNumber
-            // 
-            this.dgDeliveryNumber.HeaderText = "DeliveryNumber";
-            this.dgDeliveryNumber.Name = "dgDeliveryNumber";
-            this.dgDeliveryNumber.ReadOnly = true;
-            // 
-            // dgDeliveryItemNumber
-            // 
-            this.dgDeliveryItemNumber.HeaderText = "DeliveryItemNumber";
-            this.dgDeliveryItemNumber.Name = "dgDeliveryItemNumber";
-            this.dgDeliveryItemNumber.ReadOnly = true;
-            // 
-            // RSInvToSaleInv
+            // SaleOrderToDeliveryNote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -263,11 +177,11 @@
             this.Controls.Add(this.btnSelectAll);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblPurchaseOrder);
-            this.Controls.Add(this.btnSaleInvoice);
+            this.Controls.Add(this.btnDeliveryNote);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.dgSaleInvoice);
-            this.Name = "RSInvToSaleInv";
-            this.Text = "RSInvToSaleInv";
+            this.Name = "SaleOrderToDeliveryNote";
+            this.Text = "Sale Order To Delivery Note";
             this.Load += new System.EventHandler(this.RSInvToSaleInv_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgSaleInvoice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -284,24 +198,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnSelectAll;
         private System.Windows.Forms.Button btnClearAll;
-        private System.Windows.Forms.Button btnSaleInvoice;
+        private System.Windows.Forms.Button btnDeliveryNote;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewCheckBoxColumn CheckBox;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgPurchaseOrderNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgPurchaseOrderItemNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgProductNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgBillingItemNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgSaleOrderID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgItemCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgQuantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgSalesUnit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgUnitPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PODetailNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgDiscount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgGoodsValue;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgAmount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgCCCNNO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgCountryofOrigin;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgArticleDescription;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgDeliveryNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgDeliveryItemNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgStockQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgCName;
     }
 }
