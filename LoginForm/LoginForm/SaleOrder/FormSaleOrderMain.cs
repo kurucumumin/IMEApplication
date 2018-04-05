@@ -160,7 +160,7 @@ namespace LoginForm.nsSaleOrder
             {
                 this.Close();
                 NewPurchaseOrder f = new NewPurchaseOrder(item_code);
-                f.ShowDialog();
+                f.Show();
             }
         }
 

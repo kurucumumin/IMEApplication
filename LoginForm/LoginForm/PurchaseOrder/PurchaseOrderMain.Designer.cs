@@ -41,10 +41,6 @@
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.dgPurchase = new System.Windows.Forms.DataGridView();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnExcel = new System.Windows.Forms.Button();
-            this.btnCreate = new System.Windows.Forms.Button();
-            this.btnPrint = new System.Windows.Forms.Button();
             this.purchaseOrderId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PoNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FicheNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,6 +49,10 @@
             this.c_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CameDate = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
             this.Reason = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnExcel = new System.Windows.Forms.Button();
+            this.btnCreate = new System.Windows.Forms.Button();
+            this.btnPrint = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgPurchase)).BeginInit();
@@ -68,9 +68,11 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtSearch);
             this.groupBox1.Controls.Add(this.btnSearch);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(16, 15);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1667, 136);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(2223, 167);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
@@ -79,9 +81,11 @@
             this.groupBox2.Controls.Add(this.radioNotSent);
             this.groupBox2.Controls.Add(this.radioAll);
             this.groupBox2.Controls.Add(this.radioSent);
-            this.groupBox2.Location = new System.Drawing.Point(6, 13);
+            this.groupBox2.Location = new System.Drawing.Point(8, 16);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(210, 117);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Size = new System.Drawing.Size(280, 144);
             this.groupBox2.TabIndex = 15;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Parametrs";
@@ -89,9 +93,10 @@
             // radioNotSent
             // 
             this.radioNotSent.AutoSize = true;
-            this.radioNotSent.Location = new System.Drawing.Point(6, 54);
+            this.radioNotSent.Location = new System.Drawing.Point(8, 66);
+            this.radioNotSent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioNotSent.Name = "radioNotSent";
-            this.radioNotSent.Size = new System.Drawing.Size(95, 17);
+            this.radioNotSent.Size = new System.Drawing.Size(121, 21);
             this.radioNotSent.TabIndex = 2;
             this.radioNotSent.Text = "Not sent to RS";
             this.radioNotSent.UseVisualStyleBackColor = true;
@@ -101,9 +106,10 @@
             // 
             this.radioAll.AutoSize = true;
             this.radioAll.Checked = true;
-            this.radioAll.Location = new System.Drawing.Point(6, 94);
+            this.radioAll.Location = new System.Drawing.Point(8, 116);
+            this.radioAll.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioAll.Name = "radioAll";
-            this.radioAll.Size = new System.Drawing.Size(36, 17);
+            this.radioAll.Size = new System.Drawing.Size(44, 21);
             this.radioAll.TabIndex = 1;
             this.radioAll.TabStop = true;
             this.radioAll.Text = "All";
@@ -113,9 +119,10 @@
             // radioSent
             // 
             this.radioSent.AutoSize = true;
-            this.radioSent.Location = new System.Drawing.Point(6, 19);
+            this.radioSent.Location = new System.Drawing.Point(8, 23);
+            this.radioSent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioSent.Name = "radioSent";
-            this.radioSent.Size = new System.Drawing.Size(77, 17);
+            this.radioSent.Size = new System.Drawing.Size(97, 21);
             this.radioSent.TabIndex = 0;
             this.radioSent.Text = "Sent to RS";
             this.radioSent.UseVisualStyleBackColor = true;
@@ -123,9 +130,10 @@
             // 
             // btnPurchaseOrders
             // 
-            this.btnPurchaseOrders.Location = new System.Drawing.Point(1197, 13);
+            this.btnPurchaseOrders.Location = new System.Drawing.Point(1596, 16);
+            this.btnPurchaseOrders.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnPurchaseOrders.Name = "btnPurchaseOrders";
-            this.btnPurchaseOrders.Size = new System.Drawing.Size(163, 91);
+            this.btnPurchaseOrders.Size = new System.Drawing.Size(217, 112);
             this.btnPurchaseOrders.TabIndex = 14;
             this.btnPurchaseOrders.Text = "Bring The Purchase Orders";
             this.btnPurchaseOrders.UseVisualStyleBackColor = true;
@@ -133,49 +141,55 @@
             // 
             // dateEnding
             // 
-            this.dateEnding.Location = new System.Drawing.Point(890, 84);
+            this.dateEnding.Location = new System.Drawing.Point(1187, 103);
+            this.dateEnding.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dateEnding.Name = "dateEnding";
-            this.dateEnding.Size = new System.Drawing.Size(200, 20);
+            this.dateEnding.Size = new System.Drawing.Size(265, 22);
             this.dateEnding.TabIndex = 13;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(818, 90);
+            this.label2.Location = new System.Drawing.Point(1091, 111);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 13);
+            this.label2.Size = new System.Drawing.Size(86, 17);
             this.label2.TabIndex = 12;
             this.label2.Text = "Ending Date";
             // 
             // dateStarting
             // 
-            this.dateStarting.Location = new System.Drawing.Point(890, 28);
+            this.dateStarting.Location = new System.Drawing.Point(1187, 34);
+            this.dateStarting.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dateStarting.Name = "dateStarting";
-            this.dateStarting.Size = new System.Drawing.Size(200, 20);
+            this.dateStarting.Size = new System.Drawing.Size(265, 22);
             this.dateStarting.TabIndex = 11;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(815, 34);
+            this.label1.Location = new System.Drawing.Point(1087, 42);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 13);
+            this.label1.Size = new System.Drawing.Size(91, 17);
             this.label1.TabIndex = 10;
             this.label1.Text = "Starting Date";
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(252, 19);
+            this.txtSearch.Location = new System.Drawing.Point(336, 23);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(345, 31);
+            this.txtSearch.Size = new System.Drawing.Size(459, 37);
             this.txtSearch.TabIndex = 8;
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(603, 13);
+            this.btnSearch.Location = new System.Drawing.Point(804, 16);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(175, 51);
+            this.btnSearch.Size = new System.Drawing.Size(233, 63);
             this.btnSearch.TabIndex = 9;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -195,75 +209,32 @@
             this.c_name,
             this.CameDate,
             this.Reason});
-            this.dgPurchase.Location = new System.Drawing.Point(7, 148);
+            this.dgPurchase.Location = new System.Drawing.Point(9, 182);
+            this.dgPurchase.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgPurchase.Name = "dgPurchase";
-            this.dgPurchase.Size = new System.Drawing.Size(1365, 434);
+            this.dgPurchase.Size = new System.Drawing.Size(1820, 534);
             this.dgPurchase.TabIndex = 9;
             this.dgPurchase.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgPurchase_DataError);
             this.dgPurchase.DoubleClick += new System.EventHandler(this.dgPurchase_DoubleClick);
-            // 
-            // btnClose
-            // 
-            this.btnClose.Location = new System.Drawing.Point(1280, 598);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(97, 42);
-            this.btnClose.TabIndex = 12;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // btnExcel
-            // 
-            this.btnExcel.Location = new System.Drawing.Point(902, 598);
-            this.btnExcel.Name = "btnExcel";
-            this.btnExcel.Size = new System.Drawing.Size(166, 42);
-            this.btnExcel.TabIndex = 11;
-            this.btnExcel.Text = "Export to Excel";
-            this.btnExcel.UseVisualStyleBackColor = true;
-            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
-            // 
-            // btnCreate
-            // 
-            this.btnCreate.Location = new System.Drawing.Point(1074, 598);
-            this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(97, 42);
-            this.btnCreate.TabIndex = 10;
-            this.btnCreate.Text = "Create Purchase Orders";
-            this.btnCreate.UseVisualStyleBackColor = true;
-            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
-            // 
-            // btnPrint
-            // 
-            this.btnPrint.Location = new System.Drawing.Point(1177, 598);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(97, 42);
-            this.btnPrint.TabIndex = 13;
-            this.btnPrint.Text = "Send To Print";
-            this.btnPrint.UseVisualStyleBackColor = true;
             // 
             // purchaseOrderId
             // 
             this.purchaseOrderId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.purchaseOrderId.HeaderText = "ID";
             this.purchaseOrderId.Name = "purchaseOrderId";
-            this.purchaseOrderId.ReadOnly = true;
             this.purchaseOrderId.Visible = false;
-            this.purchaseOrderId.Width = 43;
             // 
             // PoNo
             // 
             this.PoNo.HeaderText = "Purchase Order Number";
             this.PoNo.Name = "PoNo";
-            this.PoNo.ReadOnly = true;
             // 
             // FicheNo
             // 
             this.FicheNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.FicheNo.HeaderText = "Fiche No";
             this.FicheNo.Name = "FicheNo";
-            this.FicheNo.ReadOnly = true;
             this.FicheNo.Visible = false;
-            this.FicheNo.Width = 69;
             // 
             // PurchaseOrderDate
             // 
@@ -296,23 +267,20 @@
             this.PurchaseOrderDate.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.PurchaseOrderDate.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
             this.PurchaseOrderDate.Name = "PurchaseOrderDate";
-            this.PurchaseOrderDate.ReadOnly = true;
-            this.PurchaseOrderDate.Width = 55;
+            this.PurchaseOrderDate.Width = 67;
             // 
             // CustomerID
             // 
             this.CustomerID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.CustomerID.HeaderText = "Customer ID";
             this.CustomerID.Name = "CustomerID";
-            this.CustomerID.ReadOnly = true;
-            this.CustomerID.Width = 83;
+            this.CustomerID.Width = 105;
             // 
             // c_name
             // 
             this.c_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.c_name.HeaderText = "Customer Name";
             this.c_name.Name = "c_name";
-            this.c_name.ReadOnly = true;
             // 
             // CameDate
             // 
@@ -345,27 +313,70 @@
             this.CameDate.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.CameDate.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
             this.CameDate.Name = "CameDate";
-            this.CameDate.ReadOnly = true;
-            this.CameDate.Width = 89;
+            this.CameDate.Width = 114;
             // 
             // Reason
             // 
             this.Reason.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.Reason.HeaderText = "Reason";
             this.Reason.Name = "Reason";
-            this.Reason.Width = 69;
+            this.Reason.Width = 86;
+            // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(1707, 736);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(129, 52);
+            this.btnClose.TabIndex = 12;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnExcel
+            // 
+            this.btnExcel.Location = new System.Drawing.Point(1203, 736);
+            this.btnExcel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.Size = new System.Drawing.Size(221, 52);
+            this.btnExcel.TabIndex = 11;
+            this.btnExcel.Text = "Export to Excel";
+            this.btnExcel.UseVisualStyleBackColor = true;
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
+            // 
+            // btnCreate
+            // 
+            this.btnCreate.Location = new System.Drawing.Point(1432, 736);
+            this.btnCreate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(129, 52);
+            this.btnCreate.TabIndex = 10;
+            this.btnCreate.Text = "Create Purchase Orders";
+            this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Location = new System.Drawing.Point(1569, 736);
+            this.btnPrint.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(129, 52);
+            this.btnPrint.TabIndex = 13;
+            this.btnPrint.Text = "Send To Print";
+            this.btnPrint.UseVisualStyleBackColor = true;
             // 
             // PurchaseOrderMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1384, 652);
+            this.ClientSize = new System.Drawing.Size(1845, 802);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnExcel);
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.dgPurchase);
             this.Controls.Add(this.groupBox1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "PurchaseOrderMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PurchaseOrderMain";
