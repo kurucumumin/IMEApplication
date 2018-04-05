@@ -2431,20 +2431,6 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DesignationView_Result>("DesignationView", designationIdParameter);
         }
     
-        public virtual ObjectResult<dgPurchaseOrder_Result> dgPurchaseOrder()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<dgPurchaseOrder_Result>("dgPurchaseOrder");
-        }
-    
-        public virtual ObjectResult<dgPurchaseOrderToSaleInvoiceSearchWithPurchaseId_Result> dgPurchaseOrderToSaleInvoiceSearchWithPurchaseId(string purchaseID)
-        {
-            var purchaseIDParameter = purchaseID != null ?
-                new ObjectParameter("PurchaseID", purchaseID) :
-                new ObjectParameter("PurchaseID", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<dgPurchaseOrderToSaleInvoiceSearchWithPurchaseId_Result>("dgPurchaseOrderToSaleInvoiceSearchWithPurchaseId", purchaseIDParameter);
-        }
-    
         public virtual ObjectResult<Nullable<int>> EmployeeCodeCheckExistance(string employeeCode, Nullable<decimal> employeeId)
         {
             var employeeCodeParameter = employeeCode != null ?
@@ -5910,6 +5896,20 @@ namespace LoginForm.DataSet
                 new ObjectParameter("voucherName", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SaleMasterGetPos", salemasterIdParameter, voucherNameParameter);
+        }
+    
+        public virtual ObjectResult<SaleOrderItemsToDeliveryNote_Result> SaleOrderItemsToDeliveryNote(Nullable<decimal> saleOrderID)
+        {
+            var saleOrderIDParameter = saleOrderID.HasValue ?
+                new ObjectParameter("SaleOrderID", saleOrderID) :
+                new ObjectParameter("SaleOrderID", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SaleOrderItemsToDeliveryNote_Result>("SaleOrderItemsToDeliveryNote", saleOrderIDParameter);
+        }
+    
+        public virtual ObjectResult<SaleOrderToDeliveryNote_Result> SaleOrderToDeliveryNote()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SaleOrderToDeliveryNote_Result>("SaleOrderToDeliveryNote");
         }
     
         public virtual ObjectResult<SalesAccountComboFill_Result> SalesAccountComboFill()
