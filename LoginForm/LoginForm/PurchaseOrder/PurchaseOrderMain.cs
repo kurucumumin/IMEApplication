@@ -119,7 +119,7 @@ namespace LoginForm.PurchaseOrder
 
 
                 row.Cells[purchaseOrderId.Index].Value = item.purchaseOrderId;
-                row.Cells[PoNo.Index].Value = item.purchaseOrderId + "/DB/" + item.PurchaseOrderDate.Value.ToString("MMM") + "/" + item.PurchaseOrderDate.Value.ToString("yy");
+                row.Cells[PoNo.Index].Value = item.purchaseOrderId + "/DB/" + item.PurchaseOrderDate.Value.ToString("MMM") + "/" + item.PurchaseOrderDate.Value.    ToString("yy");
                 row.Cells[FicheNo.Index].Value = item.FicheNo;
                 row.Cells[PurchaseOrderDate.Index].Value = item.PurchaseOrderDate;
                 row.Cells[CustomerID.Index].Value = item.CustomerID;
