@@ -22,7 +22,7 @@ namespace LoginForm.DataSet
     
         public decimal deliveryNoteDetailsId { get; set; }
         public Nullable<decimal> deliveryNoteMasterId { get; set; }
-        public Nullable<decimal> orderDetails1Id { get; set; }
+        public Nullable<decimal> SaleOrderDetailId { get; set; }
         public Nullable<decimal> productId { get; set; }
         public Nullable<decimal> qty { get; set; }
         public Nullable<decimal> rate { get; set; }
@@ -34,6 +34,11 @@ namespace LoginForm.DataSet
         public Nullable<decimal> godownId { get; set; }
         public Nullable<decimal> rackId { get; set; }
         public Nullable<int> slNo { get; set; }
+        public Nullable<decimal> discount { get; set; }
+        public Nullable<int> taxId { get; set; }
+        public Nullable<decimal> taxAmount { get; set; }
+        public Nullable<decimal> grossAmount { get; set; }
+        public Nullable<decimal> netAmount { get; set; }
     
         public virtual Batch Batch { get; set; }
         public virtual DeliveryNoteMaster DeliveryNoteMaster { get; set; }
