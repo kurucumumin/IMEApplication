@@ -676,8 +676,8 @@ namespace LoginForm.CustomControls
                 }
                 if (IsActivate == false)
                 {
-                    RSInvToSaleInv frm = new RSInvToSaleInv();
-                    RSInvToSaleInv open = Application.OpenForms["frmVoucherTypeSelection"] as RSInvToSaleInv;
+                    SaleOrderToDeliveryNote frm = new SaleOrderToDeliveryNote();
+                    SaleOrderToDeliveryNote open = Application.OpenForms["frmVoucherTypeSelection"] as SaleOrderToDeliveryNote;
                     if (open == null)
                     {
                         //frm.MdiParent = this;
