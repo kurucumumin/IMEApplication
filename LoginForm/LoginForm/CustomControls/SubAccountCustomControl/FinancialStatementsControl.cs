@@ -94,26 +94,22 @@ namespace LoginForm.CustomControls
             {
                 //if (CheckUserPrivilege.PrivilegeCheck(PublicVariables._decCurrentUserId, "frmFundFlow", "View"))
                 //{
-                    frmFundFlow objFundFlow = new frmFundFlow();
-                    frmFundFlow open = Application.OpenForms["frmFundFlow"] as frmFundFlow;
-                    if (open == null)
+                frmFundFlow objFundFlow = new frmFundFlow();
+                frmFundFlow open = Application.OpenForms["frmFundFlow"] as frmFundFlow;
+                if (open == null)
+                {
+                    //objFundFlow.MdiParent = this;
+                    objFundFlow.Show();
+                }
+                else
+                {
+                    open.Activate();
+                    if (open.WindowState == FormWindowState.Minimized)
                     {
-                        //objFundFlow.MdiParent = this;
-                        objFundFlow.Show();
+                        open.WindowState = FormWindowState.Normal;
                     }
-                    else
-                    {
-                        open.Activate();
-                        if (open.WindowState == FormWindowState.Minimized)
-                        {
-                            open.WindowState = FormWindowState.Normal;
-                        }
-                    }
-                //}
-                //else
-                //{
-                //    Messages.NoPrivillageMessage();
-                //}
+                }
+            //}
             }
             catch (Exception ex)
             {
