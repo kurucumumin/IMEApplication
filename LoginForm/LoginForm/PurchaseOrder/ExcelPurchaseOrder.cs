@@ -32,9 +32,9 @@ namespace LoginForm.PurchaseOrder
 
             for (int j = 0; j <= dg.ColumnCount - 1; j++)
             {
-                xlWorkSheet.Cells[1, j + 1] = dg.Columns[j].Name;
+                xlWorkSheet.Cells[1, j + 1] = dg.Columns[j].HeaderText;
             }
-            for (int i = 0; i <= dg.RowCount - 2; i++)
+            for (int i = 0; i <= dg.RowCount - 1; i++)
             {
                 for (int j = 0; j <= dg.ColumnCount - 1; j++)
                 {
