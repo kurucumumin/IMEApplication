@@ -14,6 +14,7 @@ namespace LoginForm.QuotationModule
 {
     public partial class FormQuotationAdd : Form
     {
+        string manuelSelection = string.Empty;
         private static string QuoStatusActive = "Active";
         List<int> enabledColumns = new List<int>(new int[] { 0, 7, 14, 21, 28, 35 });
         #region Definitions
@@ -2577,23 +2578,26 @@ namespace LoginForm.QuotationModule
             {
                 if (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[dgProductCode.Index].Value != null)
                 {
-                    if (dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index].Value == null)
+                    if (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[dgQty.Index].Value != null)
                     {
-                        dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index];
-                        a = a + 1;
-                    }
-                    else
-                    {
-                        dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgUCUPCurr.Index];
-                        a = a + 1;
-                    }
-                    if (a==4)
-                    {
-                        DataGridViewRow dgRow = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
-                        dgQuotationAddedItems.Rows.Add(dgRow);
-                        dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentRow.Index + 1].Cells[dgProductCode.Index];
-                        ItemClear();
-                        a = 1;
+                        if (dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index].Value == null)
+                        {
+                            dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index];
+                            a = a + 1;
+                        }
+                        else
+                        {
+                            dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgUCUPCurr.Index];
+                            a = a + 1;
+                        }
+                        if (a == 4)
+                        {
+                            DataGridViewRow dgRow = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
+                            dgQuotationAddedItems.Rows.Add(dgRow);
+                            dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentRow.Index + 1].Cells[dgProductCode.Index];
+                            ItemClear();
+                            a = 1;
+                        }
                     }
                 }
             }
@@ -2644,9 +2648,9 @@ namespace LoginForm.QuotationModule
             {
                 //TabOrEnterKeyOnGrid(e);
 
-
-                ChangeCurrnetCellTabKey(dgQuotationAddedItems.CurrentCell.ColumnIndex + 1);
-                dgQuotationAddedItems.Focus();
+                manuelSelection = "Tab";
+                //ChangeCurrnetCellTabKey(dgQuotationAddedItems.CurrentCell.ColumnIndex + 1);
+                //dgQuotationAddedItems.Focus();
             }
             else if ((e.KeyCode == Keys.Escape))
             {
@@ -3421,7 +3425,7 @@ namespace LoginForm.QuotationModule
             }
         }
 
-        private void TabOrEnterKeyOnGrid(KeyEventArgs e)
+        private void TabOrEnterKeyOnGrid()
         {
             DataGridViewRow row = dgQuotationAddedItems.CurrentRow;
 
@@ -3434,13 +3438,6 @@ namespace LoginForm.QuotationModule
             {
                 int index = FindNextEditableColumnIndex();
                 dgQuotationAddedItems.CurrentCell = row.Cells[index];
-            }
-            if(e.KeyCode == Keys.Tab)
-            {
-                SendKeys.Send("{LEFT}");
-            }else if (e.KeyCode == Keys.Enter)
-            {
-                SendKeys.Send("{UP}");
             }
         }
 
@@ -3459,5 +3456,33 @@ namespace LoginForm.QuotationModule
             return nextAvailableColumn;
         }
 
+        private void dgQuotationAddedItems_CurrentCellChanged(object sender, EventArgs e)
+        {
+            if (manuelSelection != string.Empty)
+            {
+                switch (manuelSelection)
+                {
+                    case "Tab":
+                        
+                        TabOrEnterKeyOnGrid();
+
+                        break;
+                    case "Enter":
+
+                        TabOrEnterKeyOnGrid();
+                        SendKeys.Send("{UP}");
+
+                        break;
+                }
+
+
+                manuelSelection = string.Empty;
+                //currentcell değişme burada
+            }
+            //    else
+            //    {
+            //        manuelSelection = true;
+            //    }
+        }
     }
 }
