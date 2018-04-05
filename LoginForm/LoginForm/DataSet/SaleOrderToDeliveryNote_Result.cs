@@ -11,11 +11,12 @@ namespace LoginForm.DataSet
 {
     using System;
     
-    public partial class dgPurchaseOrder_Result
+    public partial class SaleOrderToDeliveryNote_Result
     {
-        public string PurchaseOrderNumber { get; set; }
-        public Nullable<decimal> InvoiceNettValue { get; set; }
-        public Nullable<System.DateTime> BillingDocumentDate { get; set; }
+        public Nullable<decimal> SaleOrderID { get; set; }
+        public string ItemCode { get; set; }
+        public Nullable<int> NumberToSend { get; set; }
+        public Nullable<int> StockQuantityForCustmer { get; set; }
         public string c_name { get; set; }
     }
 }

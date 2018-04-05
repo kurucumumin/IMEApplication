@@ -68,7 +68,16 @@ namespace LoginForm.QuotationModule
                     {
                         if (dgQuotationAddedItems.Rows[i].Cells["HS"].Style.BackColor == Color.Red)
                         {
-                            hztotal += decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value?.ToString());
+                            if (dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value?.ToString() == null)
+                            {
+                                dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[i].Cells["dgQty"];
+                            }
+                            else if (dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value?.ToString() != null)
+                            {
+                                hztotal += decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value?.ToString());
+                            }
+                            
+
                         }
                         else if (dgQuotationAddedItems.Rows[i].Cells["LI"].Style.BackColor == Color.Ivory)
                         {
@@ -2575,25 +2584,55 @@ namespace LoginForm.QuotationModule
         {
             try
             {
-                if (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[dgProductCode.Index].Value != null)
+                if (dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[dgProductCode.Index].Value != null)
                 {
-                    if (dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index].Value == null)
+                    dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells["dgQty"].ReadOnly = false;
+                    dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index];
+                    if (dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[dgQty.Index].Value != null)
                     {
-                        dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index];
+                        dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgUCUPCurr.Index];
+                        dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells["dgUCUPCurr"].ReadOnly = false;
                         a = a + 1;
+                        if (a == 3)
+                        {
+                            if (dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[dgProductCode.Index].Value==null)
+                            {
+                                dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[dgProductCode.Index];
+                            }
+                            else
+                            {
+                                DataGridViewRow dgRow = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
+                                dgQuotationAddedItems.Rows.Add(dgRow);
+                                dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[dgProductCode.Index];
+                                ItemClear();
+                                a = 1;
+                                dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells["dgQty"].ReadOnly = true;
+                                dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells["dgUCUPCurr"].ReadOnly = true;
+                            }
+                        }
+                        else if (a==4)
+                        {
+                            a = 2;
+                            dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount-1].Cells[dgUCUPCurr.Index];
+                        }
                     }
                     else
                     {
-                        dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgUCUPCurr.Index];
-                        a = a + 1;
+                        dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index];
+                        for (int i = 0; i < (dgQuotationAddedItems.RowCount - 1); i++)
+                        {
+                            dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - i].Cells["dgQty"].ReadOnly = true;
+                        }
                     }
-                    if (a==4)
+                        
+                }
+                else
+                {
+                    dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index];
+                    for (int i = 0; i < (dgQuotationAddedItems.RowCount - 1); i++)
                     {
-                        DataGridViewRow dgRow = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
-                        dgQuotationAddedItems.Rows.Add(dgRow);
-                        dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentRow.Index + 1].Cells[dgProductCode.Index];
-                        ItemClear();
-                        a = 1;
+                        dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - i].Cells["dgQty"].ReadOnly = true;
+                        dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - i].Cells["dgUCUPCurr"].ReadOnly = true;
                     }
                 }
             }
@@ -2922,7 +2961,7 @@ namespace LoginForm.QuotationModule
                     decimal margin = 0;
                     if (!cbDeliverDiscount.Checked)
                     {
-                        if (dgQuotationAddedItems.Rows[i].Cells[dgTotal.Index].Value == "")
+                        if (dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value?.ToString() == null)
                         {
                             Itemtotal = 0;
                         }
@@ -3458,6 +3497,5 @@ namespace LoginForm.QuotationModule
             }
             return nextAvailableColumn;
         }
-
     }
 }

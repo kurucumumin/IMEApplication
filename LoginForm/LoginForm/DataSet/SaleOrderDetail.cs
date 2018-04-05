@@ -47,6 +47,7 @@ namespace LoginForm.DataSet
         public Nullable<decimal> deliveryNoteDetailsId { get; set; }
         public Nullable<int> quotationDetailsId { get; set; }
         public Nullable<decimal> SaleOrderID { get; set; }
+        public Nullable<int> SendedItemQuantity { get; set; }
     
         public virtual QuotationDetail QuotationDetail { get; set; }
         public virtual SaleOrder SaleOrder { get; set; }
