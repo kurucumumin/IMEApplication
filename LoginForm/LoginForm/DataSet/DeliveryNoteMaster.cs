@@ -11,7 +11,7 @@ namespace LoginForm.DataSet
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class DeliveryNoteMaster
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,7 +21,7 @@ namespace LoginForm.DataSet
             this.RejectionInMasters = new HashSet<RejectionInMaster>();
             this.SalesMasters = new HashSet<SalesMaster>();
         }
-
+    
         public decimal deliveryNoteMasterId { get; set; }
         public string voucherNo { get; set; }
         public string invoiceNo { get; set; }
@@ -46,7 +46,7 @@ namespace LoginForm.DataSet
         public Nullable<decimal> grandTotal { get; set; }
         public Nullable<bool> POS { get; set; }
         public Nullable<decimal> counterId { get; set; }
-
+    
         public virtual AccountLedger AccountLedger { get; set; }
         public virtual AccountLedger AccountLedger1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
