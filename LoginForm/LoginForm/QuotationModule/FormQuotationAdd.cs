@@ -1390,7 +1390,7 @@ namespace LoginForm.QuotationModule
                     }
                     else
                     {
-                        
+
                         txtMargin2.Text = ((1 - ((Decimal.Parse(txtMargin2.Text)) / (decimal.Parse(txtWeb1.Text)))) * 100).ToString();
                         try
                         {
@@ -1429,7 +1429,7 @@ namespace LoginForm.QuotationModule
                                 txtMargin4.Text = "";
                                 txtMargin5.Text = "";
                             }
-                            
+
                         }
                         catch { }
 
@@ -2328,7 +2328,7 @@ namespace LoginForm.QuotationModule
                 if (ItemTabDetails.Environment != null) { txtEnvironment.Text = "Y"; isEnvironment = true; } else { txtEnvironment.Text = ""; }
                 txtLithium.Text = (ItemTabDetails.Lithium != null && ItemTabDetails.Lithium != String.Empty) ? "Y" : "";
                 txtShipping.Text = (ItemTabDetails.Shipping != null && ItemTabDetails.Shipping != String.Empty) ? "Y" : "";
-                
+
                 if (txtLithium.Text == "Y") isLithum = true;
                 if (txtShipping.Text == "Y") isShipping = true;
                 if (ItemTabDetails.Calibration_Ind != null)

@@ -37,7 +37,7 @@ namespace LoginForm.PurchaseOrder
             try { IME.SaleOrderItemsToDeliveryNote(decimal.Parse(dataGridView1.CurrentRow.Cells["SaleOrderID"].ToString())); } catch { }
         }
 
-       
+
 
         private void btnSelectAll_Click(object sender, EventArgs e)
         {
@@ -56,7 +56,7 @@ namespace LoginForm.PurchaseOrder
                 DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[0];
                 chk.Value = true;
             }
-            
+
         }
 
         private void btnSaleInvoice_Click(object sender, EventArgs e)
@@ -110,7 +110,7 @@ namespace LoginForm.PurchaseOrder
                             dgSaleInvoice.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
                         }
                     }
-                
+
             }
             catch { }
         }

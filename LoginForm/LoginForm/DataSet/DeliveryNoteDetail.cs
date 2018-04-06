@@ -11,7 +11,7 @@ namespace LoginForm.DataSet
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class DeliveryNoteDetail
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,7 +19,7 @@ namespace LoginForm.DataSet
         {
             this.SalesDetails = new HashSet<SalesDetail>();
         }
-    
+
         public decimal deliveryNoteDetailsId { get; set; }
         public Nullable<decimal> deliveryNoteMasterId { get; set; }
         public Nullable<decimal> SaleOrderDetailId { get; set; }
@@ -29,7 +29,6 @@ namespace LoginForm.DataSet
         public Nullable<decimal> unitId { get; set; }
         public Nullable<decimal> unitConversionId { get; set; }
         public Nullable<decimal> amount { get; set; }
-        public string quotationDetails1Id { get; set; }
         public Nullable<decimal> batchId { get; set; }
         public Nullable<decimal> godownId { get; set; }
         public Nullable<decimal> rackId { get; set; }
@@ -39,12 +38,12 @@ namespace LoginForm.DataSet
         public Nullable<decimal> taxAmount { get; set; }
         public Nullable<decimal> grossAmount { get; set; }
         public Nullable<decimal> netAmount { get; set; }
-    
+
         public virtual Batch Batch { get; set; }
         public virtual DeliveryNoteMaster DeliveryNoteMaster { get; set; }
         public virtual Godown Godown { get; set; }
-        public virtual Quotation Quotation { get; set; }
         public virtual Rack Rack { get; set; }
+        public virtual SaleOrderDetail SaleOrderDetail { get; set; }
         public virtual Unit Unit { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SalesDetail> SalesDetails { get; set; }
