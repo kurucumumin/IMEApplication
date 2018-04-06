@@ -232,7 +232,7 @@ namespace LoginForm.QuotationModule
                 //    return result = Decimal.Parse(sp.Col4Price.ToString());
                 //}
                 //else if (sp.DiscountedPrice4 != 0) { return result = Decimal.Parse(sp.Col5Price.ToString()); }
-                #endregion
+                #endregion FOR TURKEY
                 if (sp!=null)
                 {
                     result = Decimal.Parse(sp.Col1Price.ToString());
