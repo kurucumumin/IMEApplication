@@ -22,7 +22,7 @@ namespace LoginForm.DataSet
             this.StockReserves = new HashSet<StockReserve>();
             this.SaleOrderDetails = new HashSet<SaleOrderDetail>();
         }
-
+    
         public decimal SaleOrderNo { get; set; }
         public System.DateTime SaleDate { get; set; }
         public string OnlineConfirmationNo { get; set; }
@@ -60,7 +60,7 @@ namespace LoginForm.DataSet
         public decimal SaleOrderID { get; set; }
         public decimal financialYearId { get; set; }
         public string Status { get; set; }
-
+    
         public virtual AccountLedger AccountLedger { get; set; }
         public virtual Customer Customer { get; set; }
         public virtual CustomerAddress CustomerAddress { get; set; }
