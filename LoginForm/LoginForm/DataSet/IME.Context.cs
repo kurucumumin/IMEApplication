@@ -2340,6 +2340,79 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DefaultCurrencySet", currencyIdParameter);
         }
     
+        public virtual int DeliveryNoteDetailsAdd(Nullable<decimal> deliveryNoteMasterId, Nullable<decimal> saleOrderDetailId, Nullable<decimal> productId, Nullable<decimal> qty, Nullable<decimal> rate, Nullable<decimal> unitId, Nullable<decimal> unitConversionId, Nullable<decimal> discount, Nullable<decimal> taxId, Nullable<decimal> batchId, Nullable<decimal> godownId, Nullable<decimal> rackId, Nullable<decimal> taxAmount, Nullable<decimal> grossAmount, Nullable<decimal> netAmount, Nullable<decimal> amount, Nullable<int> slNo)
+        {
+            var deliveryNoteMasterIdParameter = deliveryNoteMasterId.HasValue ?
+                new ObjectParameter("deliveryNoteMasterId", deliveryNoteMasterId) :
+                new ObjectParameter("deliveryNoteMasterId", typeof(decimal));
+    
+            var saleOrderDetailIdParameter = saleOrderDetailId.HasValue ?
+                new ObjectParameter("SaleOrderDetailId", saleOrderDetailId) :
+                new ObjectParameter("SaleOrderDetailId", typeof(decimal));
+    
+            var productIdParameter = productId.HasValue ?
+                new ObjectParameter("productId", productId) :
+                new ObjectParameter("productId", typeof(decimal));
+    
+            var qtyParameter = qty.HasValue ?
+                new ObjectParameter("qty", qty) :
+                new ObjectParameter("qty", typeof(decimal));
+    
+            var rateParameter = rate.HasValue ?
+                new ObjectParameter("rate", rate) :
+                new ObjectParameter("rate", typeof(decimal));
+    
+            var unitIdParameter = unitId.HasValue ?
+                new ObjectParameter("unitId", unitId) :
+                new ObjectParameter("unitId", typeof(decimal));
+    
+            var unitConversionIdParameter = unitConversionId.HasValue ?
+                new ObjectParameter("unitConversionId", unitConversionId) :
+                new ObjectParameter("unitConversionId", typeof(decimal));
+    
+            var discountParameter = discount.HasValue ?
+                new ObjectParameter("discount", discount) :
+                new ObjectParameter("discount", typeof(decimal));
+    
+            var taxIdParameter = taxId.HasValue ?
+                new ObjectParameter("taxId", taxId) :
+                new ObjectParameter("taxId", typeof(decimal));
+    
+            var batchIdParameter = batchId.HasValue ?
+                new ObjectParameter("batchId", batchId) :
+                new ObjectParameter("batchId", typeof(decimal));
+    
+            var godownIdParameter = godownId.HasValue ?
+                new ObjectParameter("godownId", godownId) :
+                new ObjectParameter("godownId", typeof(decimal));
+    
+            var rackIdParameter = rackId.HasValue ?
+                new ObjectParameter("rackId", rackId) :
+                new ObjectParameter("rackId", typeof(decimal));
+    
+            var taxAmountParameter = taxAmount.HasValue ?
+                new ObjectParameter("taxAmount", taxAmount) :
+                new ObjectParameter("taxAmount", typeof(decimal));
+    
+            var grossAmountParameter = grossAmount.HasValue ?
+                new ObjectParameter("grossAmount", grossAmount) :
+                new ObjectParameter("grossAmount", typeof(decimal));
+    
+            var netAmountParameter = netAmount.HasValue ?
+                new ObjectParameter("netAmount", netAmount) :
+                new ObjectParameter("netAmount", typeof(decimal));
+    
+            var amountParameter = amount.HasValue ?
+                new ObjectParameter("amount", amount) :
+                new ObjectParameter("amount", typeof(decimal));
+    
+            var slNoParameter = slNo.HasValue ?
+                new ObjectParameter("slNo", slNo) :
+                new ObjectParameter("slNo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeliveryNoteDetailsAdd", deliveryNoteMasterIdParameter, saleOrderDetailIdParameter, productIdParameter, qtyParameter, rateParameter, unitIdParameter, unitConversionIdParameter, discountParameter, taxIdParameter, batchIdParameter, godownIdParameter, rackIdParameter, taxAmountParameter, grossAmountParameter, netAmountParameter, amountParameter, slNoParameter);
+        }
+    
         public virtual ObjectResult<Nullable<decimal>> DeliveryNoteMasterAdd(string voucherNo, string invoiceNo, Nullable<decimal> voucherTypeId, Nullable<decimal> suffixPrefixId, Nullable<System.DateTime> date, Nullable<int> creditPeriod, Nullable<decimal> ledgerId, Nullable<decimal> salesAccount, Nullable<decimal> orderMasterId, string narration, Nullable<decimal> exchangeRateId, Nullable<decimal> taxAmount, Nullable<decimal> additionalCost, Nullable<decimal> billDiscount, Nullable<decimal> grandTotal, Nullable<decimal> totalAmount, Nullable<int> userId, string lrNo, string transportationCompany, Nullable<bool> pOS, Nullable<decimal> financialYearId)
         {
             var voucherNoParameter = voucherNo != null ?
@@ -3077,7 +3150,7 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetSalesOrderNoIncludePendingCorrespondingtoLedgerforSI_Result>("GetSalesOrderNoIncludePendingCorrespondingtoLedgerforSI", ledgerIdParameter, salesMasterIdParameter, voucherTypeIdParameter);
         }
     
-        public virtual int GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI(string ledgerId, string salesMasterId, Nullable<decimal> voucherTypeId)
+        public virtual ObjectResult<GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI_Result> GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI(string ledgerId, string salesMasterId, Nullable<decimal> voucherTypeId)
         {
             var ledgerIdParameter = ledgerId != null ?
                 new ObjectParameter("ledgerId", ledgerId) :
@@ -3091,7 +3164,7 @@ namespace LoginForm.DataSet
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI", ledgerIdParameter, salesMasterIdParameter, voucherTypeIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI_Result>("GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI", ledgerIdParameter, salesMasterIdParameter, voucherTypeIdParameter);
         }
     
         public virtual ObjectResult<GetSuffixPrefixDetails_Result> GetSuffixPrefixDetails(Nullable<decimal> voucherId, Nullable<System.DateTime> date)
@@ -3171,15 +3244,6 @@ namespace LoginForm.DataSet
                 new ObjectParameter("date", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("HolliDayChecking", dateParameter);
-        }
-    
-        public virtual ObjectResult<ItemDetailTabFiller_Result> ItemDetailTabFiller(string articleNo)
-        {
-            var articleNoParameter = articleNo != null ?
-                new ObjectParameter("articleNo", articleNo) :
-                new ObjectParameter("articleNo", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ItemDetailTabFiller_Result>("ItemDetailTabFiller", articleNoParameter);
         }
     
         public virtual ObjectResult<Nullable<decimal>> JournalMasterIdView(Nullable<decimal> voucherTypeId, string voucherNo)

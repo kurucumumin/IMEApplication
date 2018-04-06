@@ -7255,6 +7255,25 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
         <Function Name="DefaultCurrencySet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="currencyId" Type="numeric" Mode="In" />
         </Function>
+        <Function Name="DeliveryNoteDetailsAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="deliveryNoteMasterId" Type="numeric" Mode="In" />
+          <Parameter Name="SaleOrderDetailId" Type="numeric" Mode="In" />
+          <Parameter Name="productId" Type="numeric" Mode="In" />
+          <Parameter Name="qty" Type="decimal" Mode="In" />
+          <Parameter Name="rate" Type="decimal" Mode="In" />
+          <Parameter Name="unitId" Type="numeric" Mode="In" />
+          <Parameter Name="unitConversionId" Type="numeric" Mode="In" />
+          <Parameter Name="discount" Type="decimal" Mode="In" />
+          <Parameter Name="taxId" Type="numeric" Mode="In" />
+          <Parameter Name="batchId" Type="numeric" Mode="In" />
+          <Parameter Name="godownId" Type="numeric" Mode="In" />
+          <Parameter Name="rackId" Type="numeric" Mode="In" />
+          <Parameter Name="taxAmount" Type="decimal" Mode="In" />
+          <Parameter Name="grossAmount" Type="decimal" Mode="In" />
+          <Parameter Name="netAmount" Type="decimal" Mode="In" />
+          <Parameter Name="amount" Type="decimal" Mode="In" />
+          <Parameter Name="slNo" Type="int" Mode="In" />
+        </Function>
         <Function Name="DeliveryNoteMasterAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
           <Parameter Name="invoiceNo" Type="varchar(max)" Mode="In" />
@@ -9146,36 +9165,36 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <EntitySet Name="VoucherTypeTax" EntityType="Self.VoucherTypeTax" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Worker" EntityType="Self.Worker" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AdditionalCost" EntityType="Self.AdditionalCost" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT
-    [AdditionalCost].[additionalCostId] AS [additionalCostId],
-    [AdditionalCost].[voucherTypeId] AS [voucherTypeId],
-    [AdditionalCost].[voucherNo] AS [voucherNo],
-    [AdditionalCost].[ledgerId] AS [ledgerId],
-    [AdditionalCost].[debit] AS [debit],
+            <DefiningQuery>SELECT 
+    [AdditionalCost].[additionalCostId] AS [additionalCostId], 
+    [AdditionalCost].[voucherTypeId] AS [voucherTypeId], 
+    [AdditionalCost].[voucherNo] AS [voucherNo], 
+    [AdditionalCost].[ledgerId] AS [ledgerId], 
+    [AdditionalCost].[debit] AS [debit], 
     [AdditionalCost].[credit] AS [credit]
     FROM [dbo].[AdditionalCost] AS [AdditionalCost]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="SalaryVoucherDetail" EntityType="Self.SalaryVoucherDetail" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT
-    [SalaryVoucherDetail].[salaryVoucherDetailsId] AS [salaryVoucherDetailsId],
-    [SalaryVoucherDetail].[salaryVoucherMasterId] AS [salaryVoucherMasterId],
-    [SalaryVoucherDetail].[employeeId] AS [employeeId],
-    [SalaryVoucherDetail].[bonus] AS [bonus],
-    [SalaryVoucherDetail].[deduction] AS [deduction],
-    [SalaryVoucherDetail].[advance] AS [advance],
-    [SalaryVoucherDetail].[lop] AS [lop],
-    [SalaryVoucherDetail].[salary] AS [salary],
+            <DefiningQuery>SELECT 
+    [SalaryVoucherDetail].[salaryVoucherDetailsId] AS [salaryVoucherDetailsId], 
+    [SalaryVoucherDetail].[salaryVoucherMasterId] AS [salaryVoucherMasterId], 
+    [SalaryVoucherDetail].[employeeId] AS [employeeId], 
+    [SalaryVoucherDetail].[bonus] AS [bonus], 
+    [SalaryVoucherDetail].[deduction] AS [deduction], 
+    [SalaryVoucherDetail].[advance] AS [advance], 
+    [SalaryVoucherDetail].[lop] AS [lop], 
+    [SalaryVoucherDetail].[salary] AS [salary], 
     [SalaryVoucherDetail].[status] AS [status]
     FROM [dbo].[SalaryVoucherDetail] AS [SalaryVoucherDetail]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="V_Product" EntityType="Self.V_Product" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT
-    [V_Product].[productId] AS [productId],
-    [V_Product].[productCode] AS [productCode],
-    [V_Product].[Unit_Measure] AS [Unit_Measure],
-    [V_Product].[Brandname] AS [Brandname],
-    [V_Product].[MPN] AS [MPN],
-    [V_Product].[Cost] AS [Cost],
+            <DefiningQuery>SELECT 
+    [V_Product].[productId] AS [productId], 
+    [V_Product].[productCode] AS [productCode], 
+    [V_Product].[Unit_Measure] AS [Unit_Measure], 
+    [V_Product].[Brandname] AS [Brandname], 
+    [V_Product].[MPN] AS [MPN], 
+    [V_Product].[Cost] AS [Cost], 
     [V_Product].[dependantTable] AS [dependantTable]
     FROM [dbo].[V_Product] AS [V_Product]</DefiningQuery>
           </EntitySet>
@@ -20013,6 +20032,25 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <FunctionImport Name="DefaultCurrencySet">
             <Parameter Name="currencyId" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="DeliveryNoteDetailsAdd">
+            <Parameter Name="deliveryNoteMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="SaleOrderDetailId" Mode="In" Type="Decimal" />
+            <Parameter Name="productId" Mode="In" Type="Decimal" />
+            <Parameter Name="qty" Mode="In" Type="Decimal" />
+            <Parameter Name="rate" Mode="In" Type="Decimal" />
+            <Parameter Name="unitId" Mode="In" Type="Decimal" />
+            <Parameter Name="unitConversionId" Mode="In" Type="Decimal" />
+            <Parameter Name="discount" Mode="In" Type="Decimal" />
+            <Parameter Name="taxId" Mode="In" Type="Decimal" />
+            <Parameter Name="batchId" Mode="In" Type="Decimal" />
+            <Parameter Name="godownId" Mode="In" Type="Decimal" />
+            <Parameter Name="rackId" Mode="In" Type="Decimal" />
+            <Parameter Name="taxAmount" Mode="In" Type="Decimal" />
+            <Parameter Name="grossAmount" Mode="In" Type="Decimal" />
+            <Parameter Name="netAmount" Mode="In" Type="Decimal" />
+            <Parameter Name="amount" Mode="In" Type="Decimal" />
+            <Parameter Name="slNo" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="DeliveryNoteMasterAdd" ReturnType="Collection(Decimal)">
             <Parameter Name="voucherNo" Mode="In" Type="String" />
             <Parameter Name="invoiceNo" Mode="In" Type="String" />
@@ -20218,7 +20256,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <Parameter Name="salesMasterId" Mode="In" Type="Decimal" />
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
           </FunctionImport>
-          <FunctionImport Name="GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI">
+          <FunctionImport Name="GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI" ReturnType="Collection(IMEModel.GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI_Result)">
             <Parameter Name="ledgerId" Mode="In" Type="String" />
             <Parameter Name="salesMasterId" Mode="In" Type="String" />
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
@@ -22505,6 +22543,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="String" Name="invoiceNo" Nullable="true" />
         </ComplexType>
         <ComplexType Name="GetSalesOrderNoIncludePendingCorrespondingtoLedgerforSI_Result">
+          <Property Type="Decimal" Name="SaleOrderID" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="invoiceNo" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI_Result">
           <Property Type="Decimal" Name="SaleOrderID" Nullable="false" Precision="18" Scale="0" />
           <Property Type="String" Name="invoiceNo" Nullable="true" />
         </ComplexType>
@@ -27383,6 +27425,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="DefaultCurrencySet" FunctionName="IMEModel.Store.DefaultCurrencySet" />
+          <FunctionImportMapping FunctionImportName="DeliveryNoteDetailsAdd" FunctionName="IMEModel.Store.DeliveryNoteDetailsAdd" />
           <FunctionImportMapping FunctionImportName="DeliveryNoteMasterAdd" FunctionName="IMEModel.Store.DeliveryNoteMasterAdd" />
           <FunctionImportMapping FunctionImportName="DesignationAddWithReturnIdentity" FunctionName="IMEModel.Store.DesignationAddWithReturnIdentity" />
           <FunctionImportMapping FunctionImportName="DesignationCheckExistanceOfName" FunctionName="IMEModel.Store.DesignationCheckExistanceOfName" />
@@ -27588,7 +27631,14 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI" FunctionName="IMEModel.Store.GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI" />
+          <FunctionImportMapping FunctionImportName="GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI" FunctionName="IMEModel.Store.GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI_Result">
+                <ScalarProperty Name="SaleOrderID" ColumnName="SaleOrderID" />
+                <ScalarProperty Name="invoiceNo" ColumnName="invoiceNo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetSuffixPrefixDetails" FunctionName="IMEModel.Store.GetSuffixPrefixDetails">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.GetSuffixPrefixDetails_Result">

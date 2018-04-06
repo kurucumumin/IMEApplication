@@ -11,7 +11,7 @@ namespace LoginForm.DataSet
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class DeliveryNoteDetail
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,11 +19,11 @@ namespace LoginForm.DataSet
         {
             this.SalesDetails = new HashSet<SalesDetail>();
         }
-
+    
         public decimal deliveryNoteDetailsId { get; set; }
         public Nullable<decimal> deliveryNoteMasterId { get; set; }
-        public Nullable<decimal> SaleOrderDetailId { get; set; }
-        public Nullable<decimal> productId { get; set; }
+        public int SaleOrderDetailId { get; set; }
+        public string productId { get; set; }
         public Nullable<decimal> qty { get; set; }
         public Nullable<decimal> rate { get; set; }
         public Nullable<decimal> unitId { get; set; }
@@ -38,7 +38,7 @@ namespace LoginForm.DataSet
         public Nullable<decimal> taxAmount { get; set; }
         public Nullable<decimal> grossAmount { get; set; }
         public Nullable<decimal> netAmount { get; set; }
-
+    
         public virtual Batch Batch { get; set; }
         public virtual DeliveryNoteMaster DeliveryNoteMaster { get; set; }
         public virtual Godown Godown { get; set; }
