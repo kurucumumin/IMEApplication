@@ -7275,7 +7275,7 @@ namespace LoginForm
 
         private void btnTakeFromRSInvoice_Click(object sender, EventArgs e)
         {
-            RSInvToSaleInv frm = new RSInvToSaleInv();
+            SaleOrderToDeliveryNote frm = new SaleOrderToDeliveryNote();
             frm.Show();
             this.Close();
         }

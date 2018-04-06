@@ -3084,6 +3084,15 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("HolliDayChecking", dateParameter);
         }
     
+        public virtual ObjectResult<ItemDetailTabFiller_Result> ItemDetailTabFiller(string articleNo)
+        {
+            var articleNoParameter = articleNo != null ?
+                new ObjectParameter("articleNo", articleNo) :
+                new ObjectParameter("articleNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ItemDetailTabFiller_Result>("ItemDetailTabFiller", articleNoParameter);
+        }
+    
         public virtual ObjectResult<Nullable<decimal>> JournalMasterIdView(Nullable<decimal> voucherTypeId, string voucherNo)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
