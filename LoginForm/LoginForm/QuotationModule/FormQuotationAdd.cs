@@ -521,7 +521,7 @@ namespace LoginForm.QuotationModule
            .Cast<DataGridViewRow>()
            .Where(r => r.Cells["dgProductCode"].Value.ToString().Equals(classQuotationAdd.ItemCode))
            .FirstOrDefault();
-                                        if (row!=null &&row.Cells["dgUCUPCurr"].Value != null)
+                                    if (row!=null &&row.Cells["dgUCUPCurr"].Value != null)
                                         {
                                             if (row != null) MessageBox.Show("There is already an item added this qoutation in the " + row.Cells["dgNo"].Value.ToString() + ". Row and the price " + row.Cells["dgUCUPCurr"].Value.ToString());
 

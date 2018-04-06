@@ -22,7 +22,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>101</ApplicationRevision>
+    <ApplicationRevision>100</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -1240,12 +1240,6 @@
     <Compile Include="DataSet\DesignationView_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\dgPurchaseOrderToSaleInvoiceSearchWithPurchaseId_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\dgPurchaseOrder_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\DiscountValue.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1790,6 +1784,12 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SaleOrderDetail.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SaleOrderItemsToDeliveryNote_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SaleOrderToDeliveryNote_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SalesAccountComboFill_Result.cs">
@@ -2826,6 +2826,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\arrow-right.png" />
+    <None Include="Resources\arrow-right1.png" />
     <Content Include="DataSet\IME.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>IME.edmx</DependentUpon>
@@ -2836,8 +2838,6 @@
       <DependentUpon>IME.edmx</DependentUpon>
       <LastGenOutput>IME.cs</LastGenOutput>
     </Content>
-    <None Include="Resources\arrow-right.png" />
-    <None Include="Resources\arrow-right1.png" />
     <Content Include="Resources\btnBackground.png" />
     <None Include="Resources\updated.png" />
     <None Include="Resources\btn_close_msg.png" />

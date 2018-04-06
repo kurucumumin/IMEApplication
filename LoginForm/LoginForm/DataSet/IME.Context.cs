@@ -2340,6 +2340,95 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DefaultCurrencySet", currencyIdParameter);
         }
     
+        public virtual ObjectResult<Nullable<decimal>> DeliveryNoteMasterAdd(string voucherNo, string invoiceNo, Nullable<decimal> voucherTypeId, Nullable<decimal> suffixPrefixId, Nullable<System.DateTime> date, Nullable<int> creditPeriod, Nullable<decimal> ledgerId, Nullable<decimal> salesAccount, Nullable<decimal> orderMasterId, string narration, Nullable<decimal> exchangeRateId, Nullable<decimal> taxAmount, Nullable<decimal> additionalCost, Nullable<decimal> billDiscount, Nullable<decimal> grandTotal, Nullable<decimal> totalAmount, Nullable<int> userId, string lrNo, string transportationCompany, Nullable<bool> pOS, Nullable<decimal> financialYearId)
+        {
+            var voucherNoParameter = voucherNo != null ?
+                new ObjectParameter("voucherNo", voucherNo) :
+                new ObjectParameter("voucherNo", typeof(string));
+    
+            var invoiceNoParameter = invoiceNo != null ?
+                new ObjectParameter("invoiceNo", invoiceNo) :
+                new ObjectParameter("invoiceNo", typeof(string));
+    
+            var voucherTypeIdParameter = voucherTypeId.HasValue ?
+                new ObjectParameter("voucherTypeId", voucherTypeId) :
+                new ObjectParameter("voucherTypeId", typeof(decimal));
+    
+            var suffixPrefixIdParameter = suffixPrefixId.HasValue ?
+                new ObjectParameter("suffixPrefixId", suffixPrefixId) :
+                new ObjectParameter("suffixPrefixId", typeof(decimal));
+    
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            var creditPeriodParameter = creditPeriod.HasValue ?
+                new ObjectParameter("creditPeriod", creditPeriod) :
+                new ObjectParameter("creditPeriod", typeof(int));
+    
+            var ledgerIdParameter = ledgerId.HasValue ?
+                new ObjectParameter("ledgerId", ledgerId) :
+                new ObjectParameter("ledgerId", typeof(decimal));
+    
+            var salesAccountParameter = salesAccount.HasValue ?
+                new ObjectParameter("salesAccount", salesAccount) :
+                new ObjectParameter("salesAccount", typeof(decimal));
+    
+            var orderMasterIdParameter = orderMasterId.HasValue ?
+                new ObjectParameter("orderMasterId", orderMasterId) :
+                new ObjectParameter("orderMasterId", typeof(decimal));
+    
+            var narrationParameter = narration != null ?
+                new ObjectParameter("narration", narration) :
+                new ObjectParameter("narration", typeof(string));
+    
+            var exchangeRateIdParameter = exchangeRateId.HasValue ?
+                new ObjectParameter("exchangeRateId", exchangeRateId) :
+                new ObjectParameter("exchangeRateId", typeof(decimal));
+    
+            var taxAmountParameter = taxAmount.HasValue ?
+                new ObjectParameter("taxAmount", taxAmount) :
+                new ObjectParameter("taxAmount", typeof(decimal));
+    
+            var additionalCostParameter = additionalCost.HasValue ?
+                new ObjectParameter("additionalCost", additionalCost) :
+                new ObjectParameter("additionalCost", typeof(decimal));
+    
+            var billDiscountParameter = billDiscount.HasValue ?
+                new ObjectParameter("billDiscount", billDiscount) :
+                new ObjectParameter("billDiscount", typeof(decimal));
+    
+            var grandTotalParameter = grandTotal.HasValue ?
+                new ObjectParameter("grandTotal", grandTotal) :
+                new ObjectParameter("grandTotal", typeof(decimal));
+    
+            var totalAmountParameter = totalAmount.HasValue ?
+                new ObjectParameter("totalAmount", totalAmount) :
+                new ObjectParameter("totalAmount", typeof(decimal));
+    
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(int));
+    
+            var lrNoParameter = lrNo != null ?
+                new ObjectParameter("lrNo", lrNo) :
+                new ObjectParameter("lrNo", typeof(string));
+    
+            var transportationCompanyParameter = transportationCompany != null ?
+                new ObjectParameter("transportationCompany", transportationCompany) :
+                new ObjectParameter("transportationCompany", typeof(string));
+    
+            var pOSParameter = pOS.HasValue ?
+                new ObjectParameter("POS", pOS) :
+                new ObjectParameter("POS", typeof(bool));
+    
+            var financialYearIdParameter = financialYearId.HasValue ?
+                new ObjectParameter("financialYearId", financialYearId) :
+                new ObjectParameter("financialYearId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("DeliveryNoteMasterAdd", voucherNoParameter, invoiceNoParameter, voucherTypeIdParameter, suffixPrefixIdParameter, dateParameter, creditPeriodParameter, ledgerIdParameter, salesAccountParameter, orderMasterIdParameter, narrationParameter, exchangeRateIdParameter, taxAmountParameter, additionalCostParameter, billDiscountParameter, grandTotalParameter, totalAmountParameter, userIdParameter, lrNoParameter, transportationCompanyParameter, pOSParameter, financialYearIdParameter);
+        }
+    
         public virtual ObjectResult<Nullable<decimal>> DesignationAddWithReturnIdentity(string designationName, Nullable<decimal> leaveDays, string advanceAmount, string narration)
         {
             var designationNameParameter = designationName != null ?
@@ -2988,7 +3077,7 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetSalesOrderNoIncludePendingCorrespondingtoLedgerforSI_Result>("GetSalesOrderNoIncludePendingCorrespondingtoLedgerforSI", ledgerIdParameter, salesMasterIdParameter, voucherTypeIdParameter);
         }
     
-        public virtual ObjectResult<GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI_Result> GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI(string ledgerId, string salesMasterId, Nullable<decimal> voucherTypeId)
+        public virtual int GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI(string ledgerId, string salesMasterId, Nullable<decimal> voucherTypeId)
         {
             var ledgerIdParameter = ledgerId != null ?
                 new ObjectParameter("ledgerId", ledgerId) :
@@ -3002,7 +3091,7 @@ namespace LoginForm.DataSet
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI_Result>("GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI", ledgerIdParameter, salesMasterIdParameter, voucherTypeIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI", ledgerIdParameter, salesMasterIdParameter, voucherTypeIdParameter);
         }
     
         public virtual ObjectResult<GetSuffixPrefixDetails_Result> GetSuffixPrefixDetails(Nullable<decimal> voucherId, Nullable<System.DateTime> date)

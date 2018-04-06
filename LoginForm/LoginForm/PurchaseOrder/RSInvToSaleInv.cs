@@ -26,7 +26,7 @@ namespace LoginForm.PurchaseOrder
         private void RSInvToSaleInv_Load(object sender, EventArgs e)
         {
             IMEEntities IME = new IMEEntities();
-            dataGridView1.DataSource = IME.dgPurchaseOrder();
+            //dataGridView1.DataSource = IME.dgPurchaseOrder();
         }
 
         private void dgPurchaseOrder_SelectionChanged(object sender, EventArgs e)
@@ -34,7 +34,7 @@ namespace LoginForm.PurchaseOrder
             IMEEntities IME = new IMEEntities();
 
 
-            IME.dgPurchaseOrderToSaleInvoiceSearchWithPurchaseId("");
+            //IME.dgPurchaseOrderToSaleInvoiceSearchWithPurchaseId("");
         }
 
        
@@ -101,30 +101,30 @@ namespace LoginForm.PurchaseOrder
             dgSaleInvoice.Rows.Clear();
             string str = "";
             if (dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[0] != null) str = dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[0].Value.ToString();
-            foreach (var item in IME.dgPurchaseOrderToSaleInvoiceSearchWithPurchaseId(str))
-            {
-                dgSaleInvoice.AllowUserToAddRows = true;
-                DataGridViewRow row = (DataGridViewRow)dgSaleInvoice.Rows[0].Clone();
-                row.Cells[dgAmount.Index].Value = item.Amount;
-                row.Cells[dgArticleDescription.Index].Value = item.ArticleDescription;
-                row.Cells[dgBillingItemNumber.Index].Value = item.BillingItemNumber;
-                row.Cells[dgCCCNNO.Index].Value = item.CCCNNO;
-                row.Cells[dgCountryofOrigin.Index].Value = item.CountryofOrigin;
-                row.Cells[dgDeliveryItemNumber.Index].Value = item.DeliveryItemNumber;
-                row.Cells[dgDeliveryNumber.Index].Value = item.DeliveryNumber;
-                row.Cells[dgDiscount.Index].Value = item.Discount;
-                row.Cells[dgGoodsValue.Index].Value = item.GoodsValue;
-                row.Cells[dgProductNumber.Index].Value = item.ProductNumber;
-                row.Cells[dgPurchaseOrderItemNumber.Index].Value = item.PurchaseOrderItemNumber;
-                row.Cells[dgPurchaseOrderNumber.Index].Value = item.PurchaseOrderNumber;
-                row.Cells[dgQuantity.Index].Value = item.Quantity;
-                row.Cells[dgSalesUnit.Index].Value = item.SalesUnit;
-                row.Cells[dgUnitPrice.Index].Value = item.UnitPrice;
+            //foreach (var item in IME.dgPurchaseOrderToSaleInvoiceSearchWithPurchaseId(str))
+            //{
+            //    dgSaleInvoice.AllowUserToAddRows = true;
+            //    DataGridViewRow row = (DataGridViewRow)dgSaleInvoice.Rows[0].Clone();
+            //    row.Cells[dgAmount.Index].Value = item.Amount;
+            //    row.Cells[dgArticleDescription.Index].Value = item.ArticleDescription;
+            //    row.Cells[dgBillingItemNumber.Index].Value = item.BillingItemNumber;
+            //    row.Cells[dgCCCNNO.Index].Value = item.CCCNNO;
+            //    row.Cells[dgCountryofOrigin.Index].Value = item.CountryofOrigin;
+            //    row.Cells[dgDeliveryItemNumber.Index].Value = item.DeliveryItemNumber;
+            //    row.Cells[dgDeliveryNumber.Index].Value = item.DeliveryNumber;
+            //    row.Cells[dgDiscount.Index].Value = item.Discount;
+            //    row.Cells[dgGoodsValue.Index].Value = item.GoodsValue;
+            //    row.Cells[dgProductNumber.Index].Value = item.ProductNumber;
+            //    row.Cells[dgPurchaseOrderItemNumber.Index].Value = item.PurchaseOrderItemNumber;
+            //    row.Cells[dgPurchaseOrderNumber.Index].Value = item.PurchaseOrderNumber;
+            //    row.Cells[dgQuantity.Index].Value = item.Quantity;
+            //    row.Cells[dgSalesUnit.Index].Value = item.SalesUnit;
+            //    row.Cells[dgUnitPrice.Index].Value = item.UnitPrice;
                 
-                dgSaleInvoice.Rows.Add(row);
-                dgSaleInvoice.AllowUserToAddRows = false;
-                dgSaleInvoice.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            }
+            //    dgSaleInvoice.Rows.Add(row);
+            //    dgSaleInvoice.AllowUserToAddRows = false;
+            //    dgSaleInvoice.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            //}
 
         }
     }

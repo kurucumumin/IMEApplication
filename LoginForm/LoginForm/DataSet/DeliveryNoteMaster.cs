@@ -39,12 +39,21 @@ namespace LoginForm.DataSet
         public string transportationCompany { get; set; }
         public string quotationMasterId { get; set; }
         public Nullable<decimal> financialYearId { get; set; }
+        public Nullable<decimal> salesAccount { get; set; }
+        public Nullable<decimal> taxAmount { get; set; }
+        public Nullable<decimal> additionalCost { get; set; }
+        public Nullable<decimal> billDiscount { get; set; }
+        public Nullable<decimal> grandTotal { get; set; }
+        public Nullable<bool> POS { get; set; }
+        public Nullable<decimal> counterId { get; set; }
+        public int creditPeriod { get; set; }
     
         public virtual AccountLedger AccountLedger { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DeliveryNoteDetail> DeliveryNoteDetails { get; set; }
         public virtual ExchangeRate ExchangeRate { get; set; }
         public virtual FinancialYear FinancialYear { get; set; }
+        public virtual SaleOrder SaleOrder { get; set; }
         public virtual PricingLevel PricingLevel { get; set; }
         public virtual Quotation Quotation { get; set; }
         public virtual SuffixPrefix SuffixPrefix { get; set; }
