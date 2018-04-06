@@ -17,6 +17,7 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SaleOrderDetail()
         {
+            this.DeliveryNoteDetails = new HashSet<DeliveryNoteDetail>();
             this.SalesReturnDetails = new HashSet<SalesReturnDetail>();
         }
     
@@ -49,6 +50,8 @@ namespace LoginForm.DataSet
         public Nullable<decimal> SaleOrderID { get; set; }
         public Nullable<int> SendedItemQuantity { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DeliveryNoteDetail> DeliveryNoteDetails { get; set; }
         public virtual QuotationDetail QuotationDetail { get; set; }
         public virtual SaleOrder SaleOrder { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

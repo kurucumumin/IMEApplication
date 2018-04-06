@@ -109,7 +109,6 @@ namespace LoginForm.Account.Services
                     row["exchangeRateId"] = item.DeliveryNoteMaster.exchangeRateId;
                     row["suffixPrefixId"] = item.DeliveryNoteMaster.suffixPrefixId;
                     row["currencyId"] = item.DeliveryNoteMaster.ExchangeRate.currencyId;
-                    row["quotationMasterId"] = item.Quotation.QuotationNo;
 
                     dt.Rows.Add(row);
                 }
@@ -121,5 +120,40 @@ namespace LoginForm.Account.Services
             return dt;
         }
 
+        /// <summary>
+        /// Function to insert values to DeliveryNoteDetails Table
+        /// </summary>
+        /// <param name="deliverynotedetailsinfo"></param>
+        public void DeliveryNoteDetailsAdd(DeliveryNoteDetail deliverynotedetailsinfo)
+        {
+            try
+            {
+                decimal SaleOrderDetailId = Convert.ToDecimal(deliverynotedetailsinfo.SaleOrderDetailId);
+
+
+               new IMEEntities().DeliveryNoteDetailsAdd(
+                    deliverynotedetailsinfo.deliveryNoteMasterId,
+                    SaleOrderDetailId,
+                    deliverynotedetailsinfo.productId,
+                    deliverynotedetailsinfo.qty,
+                    deliverynotedetailsinfo.rate,
+                    deliverynotedetailsinfo.unitId,
+                    deliverynotedetailsinfo.unitConversionId,
+                    deliverynotedetailsinfo.discount,
+                    deliverynotedetailsinfo.taxId,
+                    deliverynotedetailsinfo.batchId,
+                    deliverynotedetailsinfo.godownId,
+                    deliverynotedetailsinfo.rackId,
+                    deliverynotedetailsinfo.taxAmount,
+                    deliverynotedetailsinfo.grossAmount,
+                    deliverynotedetailsinfo.netAmount,
+                    deliverynotedetailsinfo.amount,
+                    deliverynotedetailsinfo.slNo);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
     }
 }

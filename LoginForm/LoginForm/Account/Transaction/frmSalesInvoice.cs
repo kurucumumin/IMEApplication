@@ -2944,11 +2944,11 @@ namespace LoginForm
         /// </summary>
         public void SaveFunction()
         {
-            SalesMasterSP spSalesMaster = new SalesMasterSP();
-            SalesDetailsSP spSalesDetails = new SalesDetailsSP();
+            DeliveryNoteMasterSP spDeliveryNoteMaster = new DeliveryNoteMasterSP();
+            DeliveryNoteDetailsSP spDeliveryNoteDetails = new DeliveryNoteDetailsSP();
             StockPosting infoStockPosting = new StockPosting();
-            SalesMaster InfoSalesMaster = new SalesMaster();
-            SalesDetail InfoSalesDetails = new SalesDetail();
+            DeliveryNoteMaster InfoDeliveryNoteMaster = new DeliveryNoteMaster();
+            DeliveryNoteDetail InfoSalesDetails = new DeliveryNoteDetail();
             StockPostingSP spStockPosting = new StockPostingSP();
             AdditionalCost infoAdditionalCost = new AdditionalCost();
             AdditionalCostSP spAdditionalCost = new AdditionalCostSP();
@@ -2957,42 +2957,42 @@ namespace LoginForm
             UnitConvertionSP SPUnitConversion = new UnitConvertionSP();
             try
             {
-                InfoSalesMaster.additionalCost = Convert.ToDecimal(lblLedgerTotalAmount.Text);
-                if (txtBillDiscount.Text != "") InfoSalesMaster.billDiscount = Convert.ToDecimal(txtBillDiscount.Text.Trim());
-                InfoSalesMaster.creditPeriod = Convert.ToInt32(txtCreditPeriod.Text.Trim().ToString());
-                InfoSalesMaster.customerName = txtCustomerName.Text.Trim();
-                InfoSalesMaster.date = Convert.ToDateTime(txtDate.Text.ToString());
+                InfoDeliveryNoteMaster.additionalCost = Convert.ToDecimal(lblLedgerTotalAmount.Text);
+                if (txtBillDiscount.Text != "") InfoDeliveryNoteMaster.billDiscount = Convert.ToDecimal(txtBillDiscount.Text.Trim());
+                InfoDeliveryNoteMaster.creditPeriod = Convert.ToInt32(txtCreditPeriod.Text.Trim().ToString());
+                //InfoSalesMaster.customerName = txtCustomerName.Text.Trim();
+                InfoDeliveryNoteMaster.date = Convert.ToDateTime(txtDate.Text.ToString());
                 decimal currencyID = Convert.ToDecimal(cmbCurrency.SelectedValue.ToString());
-                InfoSalesMaster.exchangeRateId = IME.ExchangeRates.Where(x => x.currencyId == currencyID).OrderByDescending(y => y.date).FirstOrDefault().exchangeRateID;
-                InfoSalesMaster.WorkerId = Convert.ToInt32(cmbSalesMan.SelectedValue.ToString());
-                InfoSalesMaster.financialYearId = (decimal)Utils.getManagement().CurrentFinancialYear;
-                InfoSalesMaster.grandTotal = Convert.ToDecimal(txtGrandTotal.Text.Trim());
-                InfoSalesMaster.ledgerId = Convert.ToDecimal(cmbCashOrParty.SelectedValue.ToString());
-                if (DecSalesInvoiceVoucherTypeId != 0) InfoSalesMaster.voucherTypeId = DecSalesInvoiceVoucherTypeId;
-                InfoSalesMaster.narration = txtNarration.Text.Trim();
-                InfoSalesMaster.transportationCompany = txtTransportCompany.Text.Trim();
+                InfoDeliveryNoteMaster.exchangeRateId = IME.ExchangeRates.Where(x => x.currencyId == currencyID).OrderByDescending(y => y.date).FirstOrDefault().exchangeRateID;
+                InfoDeliveryNoteMaster.userId = Convert.ToInt32(cmbSalesMan.SelectedValue.ToString());
+                InfoDeliveryNoteMaster.financialYearId = (decimal)Utils.getManagement().CurrentFinancialYear;
+                InfoDeliveryNoteMaster.grandTotal = Convert.ToDecimal(txtGrandTotal.Text.Trim());
+                InfoDeliveryNoteMaster.ledgerId = Convert.ToDecimal(cmbCashOrParty.SelectedValue.ToString());
+                if (DecSalesInvoiceVoucherTypeId != 0) InfoDeliveryNoteMaster.voucherTypeId = DecSalesInvoiceVoucherTypeId;
+                InfoDeliveryNoteMaster.narration = txtNarration.Text.Trim();
+                InfoDeliveryNoteMaster.transportationCompany = txtTransportCompany.Text.Trim();
                 if (isAutomatic)
                 {
-                    InfoSalesMaster.invoiceNo = txtInvoiceNo.Text.Trim();
-                    if (strVoucherNo != null) InfoSalesMaster.voucherNo = strVoucherNo;
+                    InfoDeliveryNoteMaster.invoiceNo = txtInvoiceNo.Text.Trim();
+                    if (strVoucherNo != null) InfoDeliveryNoteMaster.voucherNo = strVoucherNo;
                     if (decSalseInvoiceSuffixPrefixId != -1)
                     {
-                        InfoSalesMaster.suffixPrefixId = decSalseInvoiceSuffixPrefixId;
+                        InfoDeliveryNoteMaster.suffixPrefixId = decSalseInvoiceSuffixPrefixId;
                     }
                 }
                 else
                 {
-                    InfoSalesMaster.invoiceNo = txtInvoiceNo.Text.Trim();
-                    if (strVoucherNo != "") InfoSalesMaster.voucherNo = strVoucherNo;
+                    InfoDeliveryNoteMaster.invoiceNo = txtInvoiceNo.Text.Trim();
+                    if (strVoucherNo != "") InfoDeliveryNoteMaster.voucherNo = strVoucherNo;
                     //InfoSalesMaster.suffixPrefixId = 0;
                 }
                 if (cmbSalesMode.Text == "Against SalesOrder")
                 {
-                    if (cmbSalesModeOrderNo.SelectedValue != null) InfoSalesMaster.orderMasterId = Convert.ToDecimal(cmbSalesModeOrderNo.SelectedValue.ToString());
+                    if (cmbSalesModeOrderNo.SelectedValue != null) InfoDeliveryNoteMaster.orderMasterId = Convert.ToDecimal(cmbSalesModeOrderNo.SelectedValue.ToString());
                 }
                 else
                 {
-                    InfoSalesMaster.orderMasterId = null;
+                    InfoDeliveryNoteMaster.orderMasterId = null;
                 }
                 //if (cmbSalesMode.Text == "Against Delivery Note")
                 //{
@@ -3010,28 +3010,27 @@ namespace LoginForm
                 //{
                 //    InfoSalesMaster.quotationNoId = null;
                 //}
-                InfoSalesMaster.narration = txtNarration.Text.Trim();
+                InfoDeliveryNoteMaster.narration = txtNarration.Text.Trim();
                 try
-                { InfoSalesMaster.pricinglevelId = Convert.ToDecimal(cmbPricingLevel.SelectedValue.ToString()); }
+                { InfoDeliveryNoteMaster.pricinglevelId = Convert.ToDecimal(cmbPricingLevel.SelectedValue.ToString()); }
                 catch { }
-                InfoSalesMaster.salesAccount = Convert.ToDecimal(cmbSalesAccount.SelectedValue.ToString());
-                InfoSalesMaster.totalAmount = Convert.ToDecimal(txtTotalAmount.Text.Trim());
+                InfoDeliveryNoteMaster.salesAccount = Convert.ToDecimal(cmbSalesAccount.SelectedValue.ToString());
+                InfoDeliveryNoteMaster.totalAmount = Convert.ToDecimal(txtTotalAmount.Text.Trim());
                 if (dgvSalesInvoice.Columns["dgvcmbSalesInvoiceTaxName"].Visible)
                 {
-                    InfoSalesMaster.taxAmount = Convert.ToDecimal(lblTaxTotalAmount.Text.Trim());
+                    InfoDeliveryNoteMaster.taxAmount = Convert.ToDecimal(lblTaxTotalAmount.Text.Trim());
                 }
                 else
                 {
-                    InfoSalesMaster.taxAmount = 0;
+                    InfoDeliveryNoteMaster.taxAmount = 0;
                 }
-                InfoSalesMaster.WorkerId = Convert.ToInt32(cmbSalesMan.SelectedValue.ToString());
-                InfoSalesMaster.lrNo = txtVehicleNo.Text;
-                InfoSalesMaster.transportationCompany = txtTransportCompany.Text.Trim();
-                InfoSalesMaster.POS = false;
-                InfoSalesMaster.counterId = 0;
-                decimal decSalesMasterId = spSalesMaster.SalesMasterAdd(InfoSalesMaster);
+                InfoDeliveryNoteMaster.userId = Convert.ToInt32(cmbSalesMan.SelectedValue.ToString());
+                InfoDeliveryNoteMaster.lrNo = txtVehicleNo.Text;
+                InfoDeliveryNoteMaster.transportationCompany = txtTransportCompany.Text.Trim();
+                InfoDeliveryNoteMaster.POS = false;
+                decimal decDeliveryMasterId = spDeliveryNoteMaster.DeliveryNoteMasterAdd(InfoDeliveryNoteMaster);
                 int inRowCount = dgvSalesInvoice.RowCount;
-                InfoSalesDetails.salesMasterId = decSalesMasterId;
+                InfoSalesDetails.deliveryNoteMasterId = decDeliveryMasterId;
                 string strAgainstInvoiceN0 = txtInvoiceNo.Text.Trim();
                 for (int inI = 0; inI < inRowCount - 1; inI++)
                 {
@@ -3041,12 +3040,12 @@ namespace LoginForm
                         {
                             if (cmbSalesMode.Text == "Against SalesOrder")
                             {
-                                if (dgvSalesInvoice.Rows[inI].Cells["dgvtxtSISalesOrderDetailsId"].Value != null) InfoSalesDetails.orderDetailsId = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSISalesOrderDetailsId"].Value.ToString());
+                                if (dgvSalesInvoice.Rows[inI].Cells["dgvtxtSISalesOrderDetailsId"].Value != null) InfoSalesDetails.SaleOrderDetailId = Convert.ToInt32(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSISalesOrderDetailsId"].Value.ToString());
                             }
-                            else
-                            {
-                                InfoSalesDetails.orderDetailsId = null;
-                            }
+                            //else
+                            //{
+                            //    InfoSalesDetails.SaleOrderDetailId = null;
+                            //}
                             //if (cmbSalesMode.Text == "Against Delivery Note")
                             //{
                             //    InfoSalesDetails.deliveryNoteDetailsId = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceDeliveryNoteDetailsId"].Value.ToString());
@@ -3107,13 +3106,13 @@ namespace LoginForm
                             InfoSalesDetails.grossAmount = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceGrossValue"].Value);
                             InfoSalesDetails.netAmount = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceNetAmount"].Value.ToString());
                             InfoSalesDetails.amount = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceAmount"].Value.ToString());
-                            spSalesDetails.SalesDetailsAdd(InfoSalesDetails);
+                            spDeliveryNoteDetails.DeliveryNoteDetailsAdd(InfoSalesDetails);
 
                             //For Item History
                             ItemHistory ih = new ItemHistory();
                             ih.VoucherDate = DateTime.Now.Date;
-                            ih.VoucherNumber = InfoSalesMaster.voucherNo;
-                            ih.CurrentAccountTitle = InfoSalesMaster.customerName;
+                            ih.VoucherNumber = InfoDeliveryNoteMaster.voucherNo;
+                            ih.CurrentAccountTitle = InfoDeliveryNoteMaster.SaleOrder.Customer.c_name;
                             ih.OutputQuantity = Convert.ToInt32(InfoSalesDetails.qty);
                             ih.OutputAmount = (InfoSalesDetails.amount) / (InfoSalesDetails.qty);
                             ih.OutputTotalAmount = InfoSalesDetails.amount;
@@ -3185,7 +3184,7 @@ namespace LoginForm
                 if (dgvSalesInvoice.Columns["dgvcmbSalesInvoiceTaxName"].Visible)
                 {
                     int inTaxRowCount = dgvSalesInvoiceTax.RowCount;
-                    infoSalesBillTax.salesMasterId = decSalesMasterId;
+                    infoSalesBillTax.salesMasterId = decDeliveryMasterId;
                     for (int inI = 0; inI < inTaxRowCount; inI++)
                     {
                         if (dgvSalesInvoiceTax.Rows[inI].Cells["dgvtxtTtaxId"].Value != null && dgvSalesInvoiceTax.Rows[inI].Cells["dgvtxtTtaxId"].Value.ToString() != string.Empty)
@@ -3261,10 +3260,11 @@ namespace LoginForm
                     }
                 }
                 ledgerPostingAdd();
-                if (spSalesMaster.SalesInvoiceInvoicePartyCheckEnableBillByBillOrNot(Convert.ToDecimal(cmbCashOrParty.SelectedValue.ToString())))
-                {
-                    partyBalanceAdd();
-                }
+                // TODO: Kaldırıldı, sale'dan deliverye geçince ihtiyaç olacak mı? 
+                //if (spDeliveryNoteMaster.SalesInvoiceInvoicePartyCheckEnableBillByBillOrNot(Convert.ToDecimal(cmbCashOrParty.SelectedValue.ToString())))
+                //{
+                //    partyBalanceAdd();
+                //}
                 Messages.SavedMessage();
                 if (cbxPrintAfterSave.Checked == true)
                 {

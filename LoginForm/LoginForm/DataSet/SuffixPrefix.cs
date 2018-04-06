@@ -20,7 +20,6 @@ namespace LoginForm.DataSet
             this.ContraMasters = new HashSet<ContraMaster>();
             this.DailySalaryVoucherMasters = new HashSet<DailySalaryVoucherMaster>();
             this.DeliveryNoteMasters = new HashSet<DeliveryNoteMaster>();
-            this.DeliveryNoteMasters1 = new HashSet<DeliveryNoteMaster>();
             this.JournalMasters = new HashSet<JournalMaster>();
             this.MaterialReceiptMasters = new HashSet<MaterialReceiptMaster>();
             this.PDCClearanceMasters = new HashSet<PDCClearanceMaster>();
@@ -57,8 +56,6 @@ namespace LoginForm.DataSet
         public virtual ICollection<DailySalaryVoucherMaster> DailySalaryVoucherMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DeliveryNoteMaster> DeliveryNoteMasters { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DeliveryNoteMaster> DeliveryNoteMasters1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<JournalMaster> JournalMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

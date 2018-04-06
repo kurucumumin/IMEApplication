@@ -2340,6 +2340,168 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DefaultCurrencySet", currencyIdParameter);
         }
     
+        public virtual int DeliveryNoteDetailsAdd(Nullable<decimal> deliveryNoteMasterId, Nullable<decimal> saleOrderDetailId, string productId, Nullable<decimal> qty, Nullable<decimal> rate, Nullable<decimal> unitId, Nullable<decimal> unitConversionId, Nullable<decimal> discount, Nullable<decimal> taxId, Nullable<decimal> batchId, Nullable<decimal> godownId, Nullable<decimal> rackId, Nullable<decimal> taxAmount, Nullable<decimal> grossAmount, Nullable<decimal> netAmount, Nullable<decimal> amount, Nullable<int> slNo)
+        {
+            var deliveryNoteMasterIdParameter = deliveryNoteMasterId.HasValue ?
+                new ObjectParameter("deliveryNoteMasterId", deliveryNoteMasterId) :
+                new ObjectParameter("deliveryNoteMasterId", typeof(decimal));
+    
+            var saleOrderDetailIdParameter = saleOrderDetailId.HasValue ?
+                new ObjectParameter("SaleOrderDetailId", saleOrderDetailId) :
+                new ObjectParameter("SaleOrderDetailId", typeof(decimal));
+    
+            var productIdParameter = productId != null ?
+                new ObjectParameter("productId", productId) :
+                new ObjectParameter("productId", typeof(string));
+    
+            var qtyParameter = qty.HasValue ?
+                new ObjectParameter("qty", qty) :
+                new ObjectParameter("qty", typeof(decimal));
+    
+            var rateParameter = rate.HasValue ?
+                new ObjectParameter("rate", rate) :
+                new ObjectParameter("rate", typeof(decimal));
+    
+            var unitIdParameter = unitId.HasValue ?
+                new ObjectParameter("unitId", unitId) :
+                new ObjectParameter("unitId", typeof(decimal));
+    
+            var unitConversionIdParameter = unitConversionId.HasValue ?
+                new ObjectParameter("unitConversionId", unitConversionId) :
+                new ObjectParameter("unitConversionId", typeof(decimal));
+    
+            var discountParameter = discount.HasValue ?
+                new ObjectParameter("discount", discount) :
+                new ObjectParameter("discount", typeof(decimal));
+    
+            var taxIdParameter = taxId.HasValue ?
+                new ObjectParameter("taxId", taxId) :
+                new ObjectParameter("taxId", typeof(decimal));
+    
+            var batchIdParameter = batchId.HasValue ?
+                new ObjectParameter("batchId", batchId) :
+                new ObjectParameter("batchId", typeof(decimal));
+    
+            var godownIdParameter = godownId.HasValue ?
+                new ObjectParameter("godownId", godownId) :
+                new ObjectParameter("godownId", typeof(decimal));
+    
+            var rackIdParameter = rackId.HasValue ?
+                new ObjectParameter("rackId", rackId) :
+                new ObjectParameter("rackId", typeof(decimal));
+    
+            var taxAmountParameter = taxAmount.HasValue ?
+                new ObjectParameter("taxAmount", taxAmount) :
+                new ObjectParameter("taxAmount", typeof(decimal));
+    
+            var grossAmountParameter = grossAmount.HasValue ?
+                new ObjectParameter("grossAmount", grossAmount) :
+                new ObjectParameter("grossAmount", typeof(decimal));
+    
+            var netAmountParameter = netAmount.HasValue ?
+                new ObjectParameter("netAmount", netAmount) :
+                new ObjectParameter("netAmount", typeof(decimal));
+    
+            var amountParameter = amount.HasValue ?
+                new ObjectParameter("amount", amount) :
+                new ObjectParameter("amount", typeof(decimal));
+    
+            var slNoParameter = slNo.HasValue ?
+                new ObjectParameter("slNo", slNo) :
+                new ObjectParameter("slNo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeliveryNoteDetailsAdd", deliveryNoteMasterIdParameter, saleOrderDetailIdParameter, productIdParameter, qtyParameter, rateParameter, unitIdParameter, unitConversionIdParameter, discountParameter, taxIdParameter, batchIdParameter, godownIdParameter, rackIdParameter, taxAmountParameter, grossAmountParameter, netAmountParameter, amountParameter, slNoParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> DeliveryNoteMasterAdd(string voucherNo, string invoiceNo, Nullable<decimal> voucherTypeId, Nullable<decimal> suffixPrefixId, Nullable<System.DateTime> date, Nullable<int> creditPeriod, Nullable<decimal> ledgerId, Nullable<decimal> salesAccount, Nullable<decimal> orderMasterId, string narration, Nullable<decimal> exchangeRateId, Nullable<decimal> taxAmount, Nullable<decimal> additionalCost, Nullable<decimal> billDiscount, Nullable<decimal> grandTotal, Nullable<decimal> totalAmount, Nullable<int> userId, string lrNo, string transportationCompany, Nullable<bool> pOS, Nullable<decimal> financialYearId)
+        {
+            var voucherNoParameter = voucherNo != null ?
+                new ObjectParameter("voucherNo", voucherNo) :
+                new ObjectParameter("voucherNo", typeof(string));
+    
+            var invoiceNoParameter = invoiceNo != null ?
+                new ObjectParameter("invoiceNo", invoiceNo) :
+                new ObjectParameter("invoiceNo", typeof(string));
+    
+            var voucherTypeIdParameter = voucherTypeId.HasValue ?
+                new ObjectParameter("voucherTypeId", voucherTypeId) :
+                new ObjectParameter("voucherTypeId", typeof(decimal));
+    
+            var suffixPrefixIdParameter = suffixPrefixId.HasValue ?
+                new ObjectParameter("suffixPrefixId", suffixPrefixId) :
+                new ObjectParameter("suffixPrefixId", typeof(decimal));
+    
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            var creditPeriodParameter = creditPeriod.HasValue ?
+                new ObjectParameter("creditPeriod", creditPeriod) :
+                new ObjectParameter("creditPeriod", typeof(int));
+    
+            var ledgerIdParameter = ledgerId.HasValue ?
+                new ObjectParameter("ledgerId", ledgerId) :
+                new ObjectParameter("ledgerId", typeof(decimal));
+    
+            var salesAccountParameter = salesAccount.HasValue ?
+                new ObjectParameter("salesAccount", salesAccount) :
+                new ObjectParameter("salesAccount", typeof(decimal));
+    
+            var orderMasterIdParameter = orderMasterId.HasValue ?
+                new ObjectParameter("orderMasterId", orderMasterId) :
+                new ObjectParameter("orderMasterId", typeof(decimal));
+    
+            var narrationParameter = narration != null ?
+                new ObjectParameter("narration", narration) :
+                new ObjectParameter("narration", typeof(string));
+    
+            var exchangeRateIdParameter = exchangeRateId.HasValue ?
+                new ObjectParameter("exchangeRateId", exchangeRateId) :
+                new ObjectParameter("exchangeRateId", typeof(decimal));
+    
+            var taxAmountParameter = taxAmount.HasValue ?
+                new ObjectParameter("taxAmount", taxAmount) :
+                new ObjectParameter("taxAmount", typeof(decimal));
+    
+            var additionalCostParameter = additionalCost.HasValue ?
+                new ObjectParameter("additionalCost", additionalCost) :
+                new ObjectParameter("additionalCost", typeof(decimal));
+    
+            var billDiscountParameter = billDiscount.HasValue ?
+                new ObjectParameter("billDiscount", billDiscount) :
+                new ObjectParameter("billDiscount", typeof(decimal));
+    
+            var grandTotalParameter = grandTotal.HasValue ?
+                new ObjectParameter("grandTotal", grandTotal) :
+                new ObjectParameter("grandTotal", typeof(decimal));
+    
+            var totalAmountParameter = totalAmount.HasValue ?
+                new ObjectParameter("totalAmount", totalAmount) :
+                new ObjectParameter("totalAmount", typeof(decimal));
+    
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(int));
+    
+            var lrNoParameter = lrNo != null ?
+                new ObjectParameter("lrNo", lrNo) :
+                new ObjectParameter("lrNo", typeof(string));
+    
+            var transportationCompanyParameter = transportationCompany != null ?
+                new ObjectParameter("transportationCompany", transportationCompany) :
+                new ObjectParameter("transportationCompany", typeof(string));
+    
+            var pOSParameter = pOS.HasValue ?
+                new ObjectParameter("POS", pOS) :
+                new ObjectParameter("POS", typeof(bool));
+    
+            var financialYearIdParameter = financialYearId.HasValue ?
+                new ObjectParameter("financialYearId", financialYearId) :
+                new ObjectParameter("financialYearId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("DeliveryNoteMasterAdd", voucherNoParameter, invoiceNoParameter, voucherTypeIdParameter, suffixPrefixIdParameter, dateParameter, creditPeriodParameter, ledgerIdParameter, salesAccountParameter, orderMasterIdParameter, narrationParameter, exchangeRateIdParameter, taxAmountParameter, additionalCostParameter, billDiscountParameter, grandTotalParameter, totalAmountParameter, userIdParameter, lrNoParameter, transportationCompanyParameter, pOSParameter, financialYearIdParameter);
+        }
+    
         public virtual ObjectResult<Nullable<decimal>> DesignationAddWithReturnIdentity(string designationName, Nullable<decimal> leaveDays, string advanceAmount, string narration)
         {
             var designationNameParameter = designationName != null ?

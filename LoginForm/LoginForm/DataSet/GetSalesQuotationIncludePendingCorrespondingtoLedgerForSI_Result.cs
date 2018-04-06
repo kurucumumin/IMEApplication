@@ -13,7 +13,7 @@ namespace LoginForm.DataSet
     
     public partial class GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI_Result
     {
-        public string QuotationNo { get; set; }
+        public decimal SaleOrderID { get; set; }
         public string invoiceNo { get; set; }
     }
 }
