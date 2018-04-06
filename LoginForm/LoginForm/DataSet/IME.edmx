@@ -7585,6 +7585,9 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Parameter Name="voucherNumber" Type="varchar(max)" Mode="In" />
           <Parameter Name="date" Type="datetime" Mode="In" />
         </Function>
+        <Function Name="ItemDetailTabFiller" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="articleNo" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="JournalMasterIdView" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
           <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
@@ -20507,6 +20510,9 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <FunctionImport Name="HolliDayChecking" ReturnType="Collection(Int32)">
             <Parameter Name="date" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <FunctionImport Name="ItemDetailTabFiller" ReturnType="Collection(IMEModel.ItemDetailTabFiller_Result)">
+            <Parameter Name="articleNo" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="JournalMasterIdView" ReturnType="Collection(Decimal)">
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
             <Parameter Name="voucherNo" Mode="In" Type="String" />
@@ -22791,6 +22797,57 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
         <ComplexType Name="HoildaySettingsViewAllLimited_Result">
           <Property Type="String" Name="date" Nullable="true" MaxLength="8000" />
           <Property Type="String" Name="narration" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ItemDetailTabFiller_Result">
+          <Property Type="String" Name="Article_Desc" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Pack_Quantity" Nullable="true" />
+          <Property Type="Int32" Name="Unit_Content" Nullable="true" />
+          <Property Type="String" Name="Unit_Measure" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MPN" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Calibration_Ind" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Standard_Weight" Nullable="true" Precision="18" Scale="5" />
+          <Property Type="String" Name="Hazardous_Ind" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Obsolete_Flag" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Low_Discount_Ind" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Licensed_Ind" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Shelf_Life" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CofO" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="CCCN_No" Nullable="true" />
+          <Property Type="String" Name="Uk_Intro_Date" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Uk_Disc_Date" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="BHC_Flag" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Disc_Change_Ind" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Expiring_Product_Change_Ind" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Manufacturer" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MH_Code_Level_1" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Heigh" Nullable="true" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="Width" Nullable="true" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="Length" Nullable="true" Precision="20" Scale="5" />
+          <Property Type="Int32" Name="OnhandStockBalance" Nullable="true" />
+          <Property Type="Int32" Name="QuantityonOrder" Nullable="true" />
+          <Property Type="Int32" Name="Col1Break" Nullable="true" />
+          <Property Type="Int32" Name="Col2Break" Nullable="true" />
+          <Property Type="Int32" Name="Col3Break" Nullable="true" />
+          <Property Type="Int32" Name="Col4Break" Nullable="true" />
+          <Property Type="Int32" Name="Col5Break" Nullable="true" />
+          <Property Type="Decimal" Name="Col1Price" Nullable="true" Precision="18" Scale="3" />
+          <Property Type="Decimal" Name="Col2Price" Nullable="true" Precision="18" Scale="3" />
+          <Property Type="Decimal" Name="Col3Price" Nullable="true" Precision="18" Scale="3" />
+          <Property Type="Decimal" Name="Col4Price" Nullable="true" Precision="18" Scale="3" />
+          <Property Type="Decimal" Name="Col5Price" Nullable="true" Precision="18" Scale="3" />
+          <Property Type="Decimal" Name="DiscountedPrice1" Nullable="true" Precision="18" Scale="3" />
+          <Property Type="Decimal" Name="DiscountedPrice2" Nullable="true" Precision="18" Scale="3" />
+          <Property Type="Decimal" Name="DiscountedPrice3" Nullable="true" Precision="18" Scale="3" />
+          <Property Type="Decimal" Name="DiscountedPrice4" Nullable="true" Precision="18" Scale="3" />
+          <Property Type="Decimal" Name="DiscountedPrice5" Nullable="true" Precision="18" Scale="3" />
+          <Property Type="String" Name="SupersectionName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="DiscontinuationDate" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="Runon" Nullable="true" />
+          <Property Type="Int32" Name="Referral" Nullable="true" />
+          <Property Type="Int32" Name="Environment" Nullable="true" />
+          <Property Type="String" Name="Lithium" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Shipping" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LicenceType" Nullable="true" MaxLength="5" />
         </ComplexType>
         <ComplexType Name="JournalRegisterSearch_Result">
           <Property Type="Decimal" Name="journalMasterId" Nullable="false" Precision="18" Scale="0" />
@@ -27895,6 +27952,61 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <FunctionImportMapping FunctionImportName="HolidayAddWithIdentity" FunctionName="IMEModel.Store.HolidayAddWithIdentity" />
           <FunctionImportMapping FunctionImportName="HolidaySettingsDeleteByMonth" FunctionName="IMEModel.Store.HolidaySettingsDeleteByMonth" />
           <FunctionImportMapping FunctionImportName="HolliDayChecking" FunctionName="IMEModel.Store.HolliDayChecking" />
+          <FunctionImportMapping FunctionImportName="ItemDetailTabFiller" FunctionName="IMEModel.Store.ItemDetailTabFiller">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.ItemDetailTabFiller_Result">
+                <ScalarProperty Name="Article_Desc" ColumnName="Article_Desc" />
+                <ScalarProperty Name="Pack_Quantity" ColumnName="Pack_Quantity" />
+                <ScalarProperty Name="Unit_Content" ColumnName="Unit_Content" />
+                <ScalarProperty Name="Unit_Measure" ColumnName="Unit_Measure" />
+                <ScalarProperty Name="MPN" ColumnName="MPN" />
+                <ScalarProperty Name="Calibration_Ind" ColumnName="Calibration_Ind" />
+                <ScalarProperty Name="Standard_Weight" ColumnName="Standard_Weight" />
+                <ScalarProperty Name="Hazardous_Ind" ColumnName="Hazardous_Ind" />
+                <ScalarProperty Name="Obsolete_Flag" ColumnName="Obsolete_Flag" />
+                <ScalarProperty Name="Low_Discount_Ind" ColumnName="Low_Discount_Ind" />
+                <ScalarProperty Name="Licensed_Ind" ColumnName="Licensed_Ind" />
+                <ScalarProperty Name="Shelf_Life" ColumnName="Shelf_Life" />
+                <ScalarProperty Name="CofO" ColumnName="CofO" />
+                <ScalarProperty Name="CCCN_No" ColumnName="CCCN_No" />
+                <ScalarProperty Name="Uk_Intro_Date" ColumnName="Uk_Intro_Date" />
+                <ScalarProperty Name="Uk_Disc_Date" ColumnName="Uk_Disc_Date" />
+                <ScalarProperty Name="BHC_Flag" ColumnName="BHC_Flag" />
+                <ScalarProperty Name="Disc_Change_Ind" ColumnName="Disc_Change_Ind" />
+                <ScalarProperty Name="Expiring_Product_Change_Ind" ColumnName="Expiring_Product_Change_Ind" />
+                <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+                <ScalarProperty Name="MH_Code_Level_1" ColumnName="MH_Code_Level_1" />
+                <ScalarProperty Name="Heigh" ColumnName="Heigh" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Length" ColumnName="Length" />
+                <ScalarProperty Name="OnhandStockBalance" ColumnName="OnhandStockBalance" />
+                <ScalarProperty Name="QuantityonOrder" ColumnName="QuantityonOrder" />
+                <ScalarProperty Name="Col1Break" ColumnName="Col1Break" />
+                <ScalarProperty Name="Col2Break" ColumnName="Col2Break" />
+                <ScalarProperty Name="Col3Break" ColumnName="Col3Break" />
+                <ScalarProperty Name="Col4Break" ColumnName="Col4Break" />
+                <ScalarProperty Name="Col5Break" ColumnName="Col5Break" />
+                <ScalarProperty Name="Col1Price" ColumnName="Col1Price" />
+                <ScalarProperty Name="Col2Price" ColumnName="Col2Price" />
+                <ScalarProperty Name="Col3Price" ColumnName="Col3Price" />
+                <ScalarProperty Name="Col4Price" ColumnName="Col4Price" />
+                <ScalarProperty Name="Col5Price" ColumnName="Col5Price" />
+                <ScalarProperty Name="DiscountedPrice1" ColumnName="DiscountedPrice1" />
+                <ScalarProperty Name="DiscountedPrice2" ColumnName="DiscountedPrice2" />
+                <ScalarProperty Name="DiscountedPrice3" ColumnName="DiscountedPrice3" />
+                <ScalarProperty Name="DiscountedPrice4" ColumnName="DiscountedPrice4" />
+                <ScalarProperty Name="DiscountedPrice5" ColumnName="DiscountedPrice5" />
+                <ScalarProperty Name="SupersectionName" ColumnName="SupersectionName" />
+                <ScalarProperty Name="DiscontinuationDate" ColumnName="DiscontinuationDate" />
+                <ScalarProperty Name="Runon" ColumnName="Runon" />
+                <ScalarProperty Name="Referral" ColumnName="Referral" />
+                <ScalarProperty Name="Environment" ColumnName="Environment" />
+                <ScalarProperty Name="Lithium" ColumnName="Lithium" />
+                <ScalarProperty Name="Shipping" ColumnName="Shipping" />
+                <ScalarProperty Name="LicenceType" ColumnName="LicenceType" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="JournalMasterIdView" FunctionName="IMEModel.Store.JournalMasterIdView" />
           <FunctionImportMapping FunctionImportName="JournalRegisterSearch" FunctionName="IMEModel.Store.JournalRegisterSearch">
             <ResultMapping>

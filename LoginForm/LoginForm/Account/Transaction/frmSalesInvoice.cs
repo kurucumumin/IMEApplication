@@ -3628,7 +3628,7 @@ namespace LoginForm
             //    DeleteStockReserve();
             //    Clear();
 
-                
+
             //}
             //catch (Exception ex)
             //{
