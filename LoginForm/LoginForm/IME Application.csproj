@@ -1300,6 +1300,9 @@
     <Compile Include="DataSet\GetSalesOrderNoIncludePendingCorrespondingtoLedgerforSI_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\GetSuffixPrefixDetails_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
