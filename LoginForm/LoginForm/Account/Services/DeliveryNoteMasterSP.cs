@@ -32,5 +32,54 @@ namespace LoginForm.Account.Services
             return dt;
         }
 
+        /// <summary>
+        /// Function to insert values to DeliveryNoteMaster Table
+        /// </summary>
+        /// <param name="deliverynotemasterinfo"></param>
+        /// <returns></returns>
+        public decimal DeliveryNoteMasterAdd(DeliveryNoteMaster deliverynotemasterinfo)
+        {
+            decimal decDeliveryNoteMasterId = 0;
+            try
+            {
+                object obj = new IMEEntities().DeliveryNoteMasterAdd(
+                deliverynotemasterinfo.voucherNo,
+                deliverynotemasterinfo.invoiceNo,
+                deliverynotemasterinfo.voucherTypeId,
+                deliverynotemasterinfo.suffixPrefixId,
+                deliverynotemasterinfo.date,
+                deliverynotemasterinfo.creditPeriod,
+                deliverynotemasterinfo.ledgerId,
+                deliverynotemasterinfo.salesAccount,
+                deliverynotemasterinfo.orderMasterId,
+                deliverynotemasterinfo.narration,
+                deliverynotemasterinfo.exchangeRateId,
+                deliverynotemasterinfo.taxAmount,
+                deliverynotemasterinfo.additionalCost,
+                deliverynotemasterinfo.billDiscount,
+                deliverynotemasterinfo.grandTotal,
+                deliverynotemasterinfo.totalAmount,
+                deliverynotemasterinfo.userId,
+                deliverynotemasterinfo.lrNo,
+                deliverynotemasterinfo.transportationCompany,
+                deliverynotemasterinfo.POS,
+                deliverynotemasterinfo.financialYearId).FirstOrDefault();
+
+                if (obj != null)
+                {
+                    decDeliveryNoteMasterId = decimal.Parse(obj.ToString());
+                }
+                else
+                {
+                    decDeliveryNoteMasterId = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return decDeliveryNoteMasterId;
+        }
+
     }
 }
