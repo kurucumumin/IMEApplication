@@ -14,7 +14,7 @@ namespace LoginForm.DataSet
     using System.Data.Entity.Infrastructure;
     using System.Data.Entity.Core.Objects;
     using System.Linq;
-    
+
     public partial class IMEEntities : DbContext
     {
         public IMEEntities()
@@ -2340,7 +2340,7 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DefaultCurrencySet", currencyIdParameter);
         }
 
-        public virtual int DeliveryNoteDetailsAdd(Nullable<decimal> deliveryNoteMasterId, Nullable<decimal> saleOrderDetailId, string productId, Nullable<decimal> qty, Nullable<decimal> rate, Nullable<decimal> unitId, Nullable<decimal> unitConversionId, Nullable<decimal> discount, Nullable<decimal> taxId, Nullable<decimal> batchId, Nullable<decimal> godownId, Nullable<decimal> rackId, Nullable<decimal> taxAmount, Nullable<decimal> grossAmount, Nullable<decimal> netAmount, Nullable<decimal> amount, Nullable<int> slNo)
+        public virtual int DeliveryNoteDetailsAdd(Nullable<decimal> deliveryNoteMasterId, Nullable<decimal> saleOrderDetailId, Nullable<decimal> productId, Nullable<decimal> qty, Nullable<decimal> rate, Nullable<decimal> unitId, Nullable<decimal> unitConversionId, Nullable<decimal> discount, Nullable<decimal> taxId, Nullable<decimal> batchId, Nullable<decimal> godownId, Nullable<decimal> rackId, Nullable<decimal> taxAmount, Nullable<decimal> grossAmount, Nullable<decimal> netAmount, Nullable<decimal> amount, Nullable<int> slNo)
         {
             var deliveryNoteMasterIdParameter = deliveryNoteMasterId.HasValue ?
                 new ObjectParameter("deliveryNoteMasterId", deliveryNoteMasterId) :
@@ -2350,9 +2350,9 @@ namespace LoginForm.DataSet
                 new ObjectParameter("SaleOrderDetailId", saleOrderDetailId) :
                 new ObjectParameter("SaleOrderDetailId", typeof(decimal));
 
-            var productIdParameter = productId != null ?
+            var productIdParameter = productId.HasValue ?
                 new ObjectParameter("productId", productId) :
-                new ObjectParameter("productId", typeof(string));
+                new ObjectParameter("productId", typeof(decimal));
 
             var qtyParameter = qty.HasValue ?
                 new ObjectParameter("qty", qty) :
@@ -3150,7 +3150,7 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetSalesOrderNoIncludePendingCorrespondingtoLedgerforSI_Result>("GetSalesOrderNoIncludePendingCorrespondingtoLedgerforSI", ledgerIdParameter, salesMasterIdParameter, voucherTypeIdParameter);
         }
 
-        public virtual int GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI(string ledgerId, string salesMasterId, Nullable<decimal> voucherTypeId)
+        public virtual ObjectResult<GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI_Result> GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI(string ledgerId, string salesMasterId, Nullable<decimal> voucherTypeId)
         {
             var ledgerIdParameter = ledgerId != null ?
                 new ObjectParameter("ledgerId", ledgerId) :
@@ -3164,7 +3164,7 @@ namespace LoginForm.DataSet
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
 
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI", ledgerIdParameter, salesMasterIdParameter, voucherTypeIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI_Result>("GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI", ledgerIdParameter, salesMasterIdParameter, voucherTypeIdParameter);
         }
 
         public virtual ObjectResult<GetSuffixPrefixDetails_Result> GetSuffixPrefixDetails(Nullable<decimal> voucherId, Nullable<System.DateTime> date)
@@ -3244,15 +3244,6 @@ namespace LoginForm.DataSet
                 new ObjectParameter("date", typeof(System.DateTime));
 
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("HolliDayChecking", dateParameter);
-        }
-
-        public virtual ObjectResult<ItemDetailTabFiller_Result> ItemDetailTabFiller(string articleNo)
-        {
-            var articleNoParameter = articleNo != null ?
-                new ObjectParameter("articleNo", articleNo) :
-                new ObjectParameter("articleNo", typeof(string));
-
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ItemDetailTabFiller_Result>("ItemDetailTabFiller", articleNoParameter);
         }
 
         public virtual ObjectResult<Nullable<decimal>> JournalMasterIdView(Nullable<decimal> voucherTypeId, string voucherNo)
