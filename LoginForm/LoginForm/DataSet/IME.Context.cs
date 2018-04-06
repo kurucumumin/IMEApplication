@@ -2340,7 +2340,7 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DefaultCurrencySet", currencyIdParameter);
         }
     
-        public virtual int DeliveryNoteDetailsAdd(Nullable<decimal> deliveryNoteMasterId, Nullable<decimal> saleOrderDetailId, Nullable<decimal> productId, Nullable<decimal> qty, Nullable<decimal> rate, Nullable<decimal> unitId, Nullable<decimal> unitConversionId, Nullable<decimal> discount, Nullable<decimal> taxId, Nullable<decimal> batchId, Nullable<decimal> godownId, Nullable<decimal> rackId, Nullable<decimal> taxAmount, Nullable<decimal> grossAmount, Nullable<decimal> netAmount, Nullable<decimal> amount, Nullable<int> slNo)
+        public virtual int DeliveryNoteDetailsAdd(Nullable<decimal> deliveryNoteMasterId, Nullable<decimal> saleOrderDetailId, string productId, Nullable<decimal> qty, Nullable<decimal> rate, Nullable<decimal> unitId, Nullable<decimal> unitConversionId, Nullable<decimal> discount, Nullable<decimal> taxId, Nullable<decimal> batchId, Nullable<decimal> godownId, Nullable<decimal> rackId, Nullable<decimal> taxAmount, Nullable<decimal> grossAmount, Nullable<decimal> netAmount, Nullable<decimal> amount, Nullable<int> slNo)
         {
             var deliveryNoteMasterIdParameter = deliveryNoteMasterId.HasValue ?
                 new ObjectParameter("deliveryNoteMasterId", deliveryNoteMasterId) :
@@ -2350,9 +2350,9 @@ namespace LoginForm.DataSet
                 new ObjectParameter("SaleOrderDetailId", saleOrderDetailId) :
                 new ObjectParameter("SaleOrderDetailId", typeof(decimal));
     
-            var productIdParameter = productId.HasValue ?
+            var productIdParameter = productId != null ?
                 new ObjectParameter("productId", productId) :
-                new ObjectParameter("productId", typeof(decimal));
+                new ObjectParameter("productId", typeof(string));
     
             var qtyParameter = qty.HasValue ?
                 new ObjectParameter("qty", qty) :

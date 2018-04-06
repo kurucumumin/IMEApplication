@@ -7258,7 +7258,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
         <Function Name="DeliveryNoteDetailsAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="deliveryNoteMasterId" Type="numeric" Mode="In" />
           <Parameter Name="SaleOrderDetailId" Type="numeric" Mode="In" />
-          <Parameter Name="productId" Type="numeric" Mode="In" />
+          <Parameter Name="productId" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="qty" Type="decimal" Mode="In" />
           <Parameter Name="rate" Type="decimal" Mode="In" />
           <Parameter Name="unitId" Type="numeric" Mode="In" />
@@ -9165,36 +9165,36 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <EntitySet Name="VoucherTypeTax" EntityType="Self.VoucherTypeTax" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Worker" EntityType="Self.Worker" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AdditionalCost" EntityType="Self.AdditionalCost" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT
-    [AdditionalCost].[additionalCostId] AS [additionalCostId],
-    [AdditionalCost].[voucherTypeId] AS [voucherTypeId],
-    [AdditionalCost].[voucherNo] AS [voucherNo],
-    [AdditionalCost].[ledgerId] AS [ledgerId],
-    [AdditionalCost].[debit] AS [debit],
+            <DefiningQuery>SELECT 
+    [AdditionalCost].[additionalCostId] AS [additionalCostId], 
+    [AdditionalCost].[voucherTypeId] AS [voucherTypeId], 
+    [AdditionalCost].[voucherNo] AS [voucherNo], 
+    [AdditionalCost].[ledgerId] AS [ledgerId], 
+    [AdditionalCost].[debit] AS [debit], 
     [AdditionalCost].[credit] AS [credit]
     FROM [dbo].[AdditionalCost] AS [AdditionalCost]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="SalaryVoucherDetail" EntityType="Self.SalaryVoucherDetail" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT
-    [SalaryVoucherDetail].[salaryVoucherDetailsId] AS [salaryVoucherDetailsId],
-    [SalaryVoucherDetail].[salaryVoucherMasterId] AS [salaryVoucherMasterId],
-    [SalaryVoucherDetail].[employeeId] AS [employeeId],
-    [SalaryVoucherDetail].[bonus] AS [bonus],
-    [SalaryVoucherDetail].[deduction] AS [deduction],
-    [SalaryVoucherDetail].[advance] AS [advance],
-    [SalaryVoucherDetail].[lop] AS [lop],
-    [SalaryVoucherDetail].[salary] AS [salary],
+            <DefiningQuery>SELECT 
+    [SalaryVoucherDetail].[salaryVoucherDetailsId] AS [salaryVoucherDetailsId], 
+    [SalaryVoucherDetail].[salaryVoucherMasterId] AS [salaryVoucherMasterId], 
+    [SalaryVoucherDetail].[employeeId] AS [employeeId], 
+    [SalaryVoucherDetail].[bonus] AS [bonus], 
+    [SalaryVoucherDetail].[deduction] AS [deduction], 
+    [SalaryVoucherDetail].[advance] AS [advance], 
+    [SalaryVoucherDetail].[lop] AS [lop], 
+    [SalaryVoucherDetail].[salary] AS [salary], 
     [SalaryVoucherDetail].[status] AS [status]
     FROM [dbo].[SalaryVoucherDetail] AS [SalaryVoucherDetail]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="V_Product" EntityType="Self.V_Product" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT
-    [V_Product].[productId] AS [productId],
-    [V_Product].[productCode] AS [productCode],
-    [V_Product].[Unit_Measure] AS [Unit_Measure],
-    [V_Product].[Brandname] AS [Brandname],
-    [V_Product].[MPN] AS [MPN],
-    [V_Product].[Cost] AS [Cost],
+            <DefiningQuery>SELECT 
+    [V_Product].[productId] AS [productId], 
+    [V_Product].[productCode] AS [productCode], 
+    [V_Product].[Unit_Measure] AS [Unit_Measure], 
+    [V_Product].[Brandname] AS [Brandname], 
+    [V_Product].[MPN] AS [MPN], 
+    [V_Product].[Cost] AS [Cost], 
     [V_Product].[dependantTable] AS [dependantTable]
     FROM [dbo].[V_Product] AS [V_Product]</DefiningQuery>
           </EntitySet>
@@ -20035,7 +20035,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <FunctionImport Name="DeliveryNoteDetailsAdd">
             <Parameter Name="deliveryNoteMasterId" Mode="In" Type="Decimal" />
             <Parameter Name="SaleOrderDetailId" Mode="In" Type="Decimal" />
-            <Parameter Name="productId" Mode="In" Type="Decimal" />
+            <Parameter Name="productId" Mode="In" Type="String" />
             <Parameter Name="qty" Mode="In" Type="Decimal" />
             <Parameter Name="rate" Mode="In" Type="Decimal" />
             <Parameter Name="unitId" Mode="In" Type="Decimal" />
