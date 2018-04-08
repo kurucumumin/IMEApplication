@@ -215,7 +215,7 @@ namespace LoginForm.StockManagement
                 btnViewStockReserves.Enabled = true;
                 txtProductID.Text = dgStockList.CurrentRow.Cells[dgProductID.Index].Value.ToString();
                 txtProductID.Enabled = false;
-                txtProductName.Text = dgStockList.CurrentRow.Cells[dgProductName.Index].Value.ToString();
+                if(dgStockList.CurrentRow.Cells[dgProductName.Index].Value!=null) txtProductName.Text = dgStockList.CurrentRow.Cells[dgProductName.Index].Value.ToString();
                 txtProductName.Enabled = false;
 
                 numQuantity.Value = 0;
