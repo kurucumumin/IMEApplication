@@ -22,7 +22,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>103</ApplicationRevision>
+    <ApplicationRevision>104</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -1335,6 +1335,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>IME.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ItemDetailTabFiller_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\ItemHistory.cs">
       <DependentUpon>IME.tt</DependentUpon>
