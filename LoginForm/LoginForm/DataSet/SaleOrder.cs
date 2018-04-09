@@ -18,6 +18,7 @@ namespace LoginForm.DataSet
         public SaleOrder()
         {
             this.DeliveryNoteMasters = new HashSet<DeliveryNoteMaster>();
+            this.DeliveryNoteMasters1 = new HashSet<DeliveryNoteMaster>();
             this.PurchaseOrderDetails = new HashSet<PurchaseOrderDetail>();
             this.StockReserves = new HashSet<StockReserve>();
             this.SaleOrderDetails = new HashSet<SaleOrderDetail>();
@@ -70,6 +71,8 @@ namespace LoginForm.DataSet
         public virtual CustomerWorker CustomerWorker2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DeliveryNoteMaster> DeliveryNoteMasters { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DeliveryNoteMaster> DeliveryNoteMasters1 { get; set; }
         public virtual ExchangeRate ExchangeRate { get; set; }
         public virtual FinancialYear FinancialYear { get; set; }
         public virtual PaymentMethod PaymentMethod { get; set; }
