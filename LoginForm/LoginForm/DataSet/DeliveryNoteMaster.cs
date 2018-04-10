@@ -52,6 +52,7 @@ namespace LoginForm.DataSet
         public virtual ExchangeRate ExchangeRate { get; set; }
         public virtual FinancialYear FinancialYear { get; set; }
         public virtual SaleOrder SaleOrder { get; set; }
+        public virtual SaleOrder SaleOrder1 { get; set; }
         public virtual PricingLevel PricingLevel { get; set; }
         public virtual SuffixPrefix SuffixPrefix { get; set; }
         public virtual Worker Worker { get; set; }
