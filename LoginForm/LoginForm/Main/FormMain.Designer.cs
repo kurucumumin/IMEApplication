@@ -32,10 +32,10 @@
             this.tableLeftPanel = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.gbMainMenu = new System.Windows.Forms.GroupBox();
+            this.btnFileLoader = new System.Windows.Forms.Button();
             this.btnManagement = new System.Windows.Forms.Button();
             this.btnAccounting = new System.Windows.Forms.Button();
             this.btnDevelopment = new System.Windows.Forms.Button();
-            this.btnFileLoader = new System.Windows.Forms.Button();
             this.tableMain = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -119,6 +119,23 @@
             this.gbMainMenu.TabStop = false;
             this.gbMainMenu.Text = "Menu";
             // 
+            // btnFileLoader
+            // 
+            this.btnFileLoader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(199)))), ((int)(((byte)(132)))));
+            this.btnFileLoader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnFileLoader.FlatAppearance.BorderSize = 0;
+            this.btnFileLoader.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(158)))), ((int)(((byte)(75)))));
+            this.btnFileLoader.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFileLoader.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFileLoader.Location = new System.Drawing.Point(0, 180);
+            this.btnFileLoader.Margin = new System.Windows.Forms.Padding(0);
+            this.btnFileLoader.Name = "btnFileLoader";
+            this.btnFileLoader.Size = new System.Drawing.Size(213, 50);
+            this.btnFileLoader.TabIndex = 29;
+            this.btnFileLoader.Text = "File Loader";
+            this.btnFileLoader.UseVisualStyleBackColor = false;
+            this.btnFileLoader.Click += new System.EventHandler(this.btnLoader_Click);
+            // 
             // btnManagement
             // 
             this.btnManagement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(199)))), ((int)(((byte)(132)))));
@@ -170,23 +187,6 @@
             this.btnDevelopment.UseVisualStyleBackColor = false;
             this.btnDevelopment.Click += new System.EventHandler(this.btnDevelopment_Click);
             // 
-            // btnFileLoader
-            // 
-            this.btnFileLoader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(199)))), ((int)(((byte)(132)))));
-            this.btnFileLoader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnFileLoader.FlatAppearance.BorderSize = 0;
-            this.btnFileLoader.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(158)))), ((int)(((byte)(75)))));
-            this.btnFileLoader.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFileLoader.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFileLoader.Location = new System.Drawing.Point(0, 180);
-            this.btnFileLoader.Margin = new System.Windows.Forms.Padding(0);
-            this.btnFileLoader.Name = "btnFileLoader";
-            this.btnFileLoader.Size = new System.Drawing.Size(213, 50);
-            this.btnFileLoader.TabIndex = 29;
-            this.btnFileLoader.Text = "File Loader";
-            this.btnFileLoader.UseVisualStyleBackColor = false;
-            this.btnFileLoader.Click += new System.EventHandler(this.btnLoader_Click);
-            // 
             // tableMain
             // 
             this.tableMain.ColumnCount = 2;
@@ -200,7 +200,7 @@
             this.tableMain.Name = "tableMain";
             this.tableMain.RowCount = 1;
             this.tableMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableMain.Size = new System.Drawing.Size(1562, 737);
+            this.tableMain.Size = new System.Drawing.Size(1254, 737);
             this.tableMain.TabIndex = 0;
             // 
             // panel1
@@ -210,7 +210,7 @@
             this.panel1.Location = new System.Drawing.Point(225, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1337, 737);
+            this.panel1.Size = new System.Drawing.Size(1029, 737);
             this.panel1.TabIndex = 1;
             // 
             // tableLayoutPanel1
@@ -226,15 +226,15 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1337, 737);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1029, 737);
             this.tableLayoutPanel1.TabIndex = 7;
             // 
             // panel4
             // 
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(671, 3);
+            this.panel4.Location = new System.Drawing.Point(517, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(663, 731);
+            this.panel4.Size = new System.Drawing.Size(509, 731);
             this.panel4.TabIndex = 6;
             // 
             // panel2
@@ -245,7 +245,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(668, 737);
+            this.panel2.Size = new System.Drawing.Size(514, 737);
             this.panel2.TabIndex = 2;
             // 
             // controlManagement
@@ -254,7 +254,7 @@
             this.controlManagement.Location = new System.Drawing.Point(0, 0);
             this.controlManagement.Margin = new System.Windows.Forms.Padding(2);
             this.controlManagement.Name = "controlManagement";
-            this.controlManagement.Size = new System.Drawing.Size(668, 737);
+            this.controlManagement.Size = new System.Drawing.Size(514, 737);
             this.controlManagement.TabIndex = 2;
             this.controlManagement.Visible = false;
             // 
@@ -272,7 +272,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(668, 737);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(514, 737);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // panel3
@@ -284,7 +284,7 @@
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(334, 717);
+            this.panel3.Size = new System.Drawing.Size(257, 717);
             this.panel3.TabIndex = 0;
             // 
             // controlDevelopment
@@ -295,7 +295,7 @@
             this.controlDevelopment.Margin = new System.Windows.Forms.Padding(0);
             this.controlDevelopment.MinimumSize = new System.Drawing.Size(0, 544);
             this.controlDevelopment.Name = "controlDevelopment";
-            this.controlDevelopment.Size = new System.Drawing.Size(334, 717);
+            this.controlDevelopment.Size = new System.Drawing.Size(257, 717);
             this.controlDevelopment.TabIndex = 1;
             this.controlDevelopment.Visible = false;
             // 
@@ -306,7 +306,7 @@
             this.controlLoader.Location = new System.Drawing.Point(0, 0);
             this.controlLoader.Margin = new System.Windows.Forms.Padding(2);
             this.controlLoader.Name = "controlLoader";
-            this.controlLoader.Size = new System.Drawing.Size(334, 717);
+            this.controlLoader.Size = new System.Drawing.Size(257, 717);
             this.controlLoader.TabIndex = 0;
             this.controlLoader.Visible = false;
             // 
@@ -318,7 +318,7 @@
             this.controlAccounting.Location = new System.Drawing.Point(0, 0);
             this.controlAccounting.Margin = new System.Windows.Forms.Padding(2);
             this.controlAccounting.Name = "controlAccounting";
-            this.controlAccounting.Size = new System.Drawing.Size(334, 717);
+            this.controlAccounting.Size = new System.Drawing.Size(257, 717);
             this.controlAccounting.TabIndex = 3;
             this.controlAccounting.Visible = false;
             // 
@@ -336,10 +336,10 @@
             this.panel5.Controls.Add(this.subControlSettings);
             this.panel5.Controls.Add(this.subControlTransactions);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(334, 0);
+            this.panel5.Location = new System.Drawing.Point(257, 0);
             this.panel5.Margin = new System.Windows.Forms.Padding(0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(334, 717);
+            this.panel5.Size = new System.Drawing.Size(257, 717);
             this.panel5.TabIndex = 1;
             // 
             // subControlSalesOrder
@@ -351,7 +351,7 @@
             this.subControlSalesOrder.Location = new System.Drawing.Point(2, 37);
             this.subControlSalesOrder.Margin = new System.Windows.Forms.Padding(0);
             this.subControlSalesOrder.Name = "subControlSalesOrder";
-            this.subControlSalesOrder.Size = new System.Drawing.Size(332, 700);
+            this.subControlSalesOrder.Size = new System.Drawing.Size(255, 700);
             this.subControlSalesOrder.TabIndex = 15;
             this.subControlSalesOrder.Visible = false;
             // 
@@ -364,7 +364,7 @@
             this.subControlFinancialStatement.Location = new System.Drawing.Point(2, 148);
             this.subControlFinancialStatement.Margin = new System.Windows.Forms.Padding(0);
             this.subControlFinancialStatement.Name = "subControlFinancialStatement";
-            this.subControlFinancialStatement.Size = new System.Drawing.Size(332, 570);
+            this.subControlFinancialStatement.Size = new System.Drawing.Size(255, 570);
             this.subControlFinancialStatement.TabIndex = 6;
             this.subControlFinancialStatement.Visible = false;
             // 
@@ -377,7 +377,7 @@
             this.subControlReminder.Location = new System.Drawing.Point(2, 296);
             this.subControlReminder.Margin = new System.Windows.Forms.Padding(0);
             this.subControlReminder.Name = "subControlReminder";
-            this.subControlReminder.Size = new System.Drawing.Size(332, 421);
+            this.subControlReminder.Size = new System.Drawing.Size(255, 421);
             this.subControlReminder.TabIndex = 10;
             this.subControlReminder.Visible = false;
             // 
@@ -390,7 +390,7 @@
             this.subControlPayroll.Location = new System.Drawing.Point(2, 74);
             this.subControlPayroll.Margin = new System.Windows.Forms.Padding(0);
             this.subControlPayroll.Name = "subControlPayroll";
-            this.subControlPayroll.Size = new System.Drawing.Size(332, 643);
+            this.subControlPayroll.Size = new System.Drawing.Size(255, 643);
             this.subControlPayroll.TabIndex = 8;
             this.subControlPayroll.Visible = false;
             // 
@@ -403,7 +403,7 @@
             this.subControlRegister.Location = new System.Drawing.Point(2, 259);
             this.subControlRegister.Margin = new System.Windows.Forms.Padding(0);
             this.subControlRegister.Name = "subControlRegister";
-            this.subControlRegister.Size = new System.Drawing.Size(332, 458);
+            this.subControlRegister.Size = new System.Drawing.Size(255, 458);
             this.subControlRegister.TabIndex = 9;
             this.subControlRegister.Visible = false;
             // 
@@ -416,7 +416,7 @@
             this.subControlSearch.Location = new System.Drawing.Point(2, 111);
             this.subControlSearch.Margin = new System.Windows.Forms.Padding(0);
             this.subControlSearch.Name = "subControlSearch";
-            this.subControlSearch.Size = new System.Drawing.Size(332, 606);
+            this.subControlSearch.Size = new System.Drawing.Size(255, 606);
             this.subControlSearch.TabIndex = 12;
             this.subControlSearch.Visible = false;
             // 
@@ -429,7 +429,7 @@
             this.subControlMasters.Location = new System.Drawing.Point(2, 0);
             this.subControlMasters.Margin = new System.Windows.Forms.Padding(0);
             this.subControlMasters.Name = "subControlMasters";
-            this.subControlMasters.Size = new System.Drawing.Size(332, 717);
+            this.subControlMasters.Size = new System.Drawing.Size(255, 717);
             this.subControlMasters.TabIndex = 7;
             this.subControlMasters.Visible = false;
             // 
@@ -442,7 +442,7 @@
             this.subControlReports.Location = new System.Drawing.Point(2, 184);
             this.subControlReports.Margin = new System.Windows.Forms.Padding(0);
             this.subControlReports.Name = "subControlReports";
-            this.subControlReports.Size = new System.Drawing.Size(332, 532);
+            this.subControlReports.Size = new System.Drawing.Size(255, 532);
             this.subControlReports.TabIndex = 11;
             this.subControlReports.Visible = false;
             // 
@@ -455,7 +455,7 @@
             this.subControlBudget.Location = new System.Drawing.Point(2, 222);
             this.subControlBudget.Margin = new System.Windows.Forms.Padding(0);
             this.subControlBudget.Name = "subControlBudget";
-            this.subControlBudget.Size = new System.Drawing.Size(332, 495);
+            this.subControlBudget.Size = new System.Drawing.Size(255, 495);
             this.subControlBudget.TabIndex = 5;
             this.subControlBudget.Visible = false;
             // 
@@ -468,7 +468,7 @@
             this.subControlSettings.Location = new System.Drawing.Point(2, 333);
             this.subControlSettings.Margin = new System.Windows.Forms.Padding(0);
             this.subControlSettings.Name = "subControlSettings";
-            this.subControlSettings.Size = new System.Drawing.Size(332, 384);
+            this.subControlSettings.Size = new System.Drawing.Size(255, 384);
             this.subControlSettings.TabIndex = 13;
             this.subControlSettings.Visible = false;
             // 
@@ -481,7 +481,7 @@
             this.subControlTransactions.Location = new System.Drawing.Point(2, 37);
             this.subControlTransactions.Margin = new System.Windows.Forms.Padding(0);
             this.subControlTransactions.Name = "subControlTransactions";
-            this.subControlTransactions.Size = new System.Drawing.Size(332, 680);
+            this.subControlTransactions.Size = new System.Drawing.Size(255, 680);
             this.subControlTransactions.TabIndex = 14;
             this.subControlTransactions.Visible = false;
             // 
@@ -489,7 +489,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1562, 737);
+            this.ClientSize = new System.Drawing.Size(1254, 737);
             this.Controls.Add(this.tableMain);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

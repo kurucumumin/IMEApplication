@@ -84,7 +84,7 @@ namespace LoginForm.PurchaseOrder
                 //string PONo;
                 //PONo = dgSaleInvoice.Rows[i].Cells[PODetailNo.Index].Value.ToString();
             }
-            frmSalesInvoice form = new frmSalesInvoice(dt);
+            frmDeliveryNote form = new frmDeliveryNote(dt);
            // form.Show();
         }
 

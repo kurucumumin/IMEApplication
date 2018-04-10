@@ -26,7 +26,7 @@ namespace LoginForm.Account.Services
                                {
                                    dn.deliveryNoteMasterId,
                                    dn.voucherNo,
-                                   dn.invoiceNo,
+                                   dn.DeliveryNoteNo,
                                    dn.suffixPrefixId,
                                    dn.date,
                                    dn.userId,
@@ -53,7 +53,7 @@ namespace LoginForm.Account.Services
 
                     row["deliveryNoteMasterId"] = item.deliveryNoteMasterId;
                     row["voucherNo"] = item.voucherNo;
-                    row["invoiceNo"] = item.invoiceNo;
+                    row["invoiceNo"] = item.DeliveryNoteNo;
                     row["suffixPrefixId"] = item.suffixPrefixId;
                     row["date"] = item.date;
                     row["userId"] = item.userId;

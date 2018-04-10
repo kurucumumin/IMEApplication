@@ -1291,213 +1291,213 @@ namespace LoginForm.QuotationModule
             SuperDiskP sdP;
             ExtendedRange er;
 
-            var ItemTabDetails = IME.ItemDetailTabFiller(ArticleNoSearch).FirstOrDefault();
+            //    var ItemTabDetails = IME.ItemDetailTabFiller(ArticleNoSearch).FirstOrDefault();
 
-            if (ItemTabDetails != null)
-            {
+            //    if (ItemTabDetails != null)
+            //    {
 
-                CurrentRow.Cells["dgDesc"].Value = ItemTabDetails.Article_Desc;
-                CurrentRow.Cells["dgSSM"].Value = ItemTabDetails.Pack_Quantity.ToString() ?? ""; ;
-                CurrentRow.Cells["dgUC"].Value = ItemTabDetails.Unit_Content.ToString() ?? ""; ;
-                CurrentRow.Cells["dgUOM"].Value = ItemTabDetails.Unit_Measure;
-                CurrentRow.Cells["dgMPN"].Value = ItemTabDetails.MPN;
-                CurrentRow.Cells["dgCL"].Value = ItemTabDetails.Calibration_Ind;
-                if (ItemTabDetails.Standard_Weight != 0) { txtStandartWeight.Text = ((decimal)(ItemTabDetails.Standard_Weight) / (decimal)1000).ToString("G29") ?? ""; }
-                txtHazardousInd.Text = ItemTabDetails.Hazardous_Ind;
-                txtCalibrationInd.Text = ItemTabDetails.Calibration_Ind;
-                txtCofO.Text = ItemTabDetails.CofO;
-                txtCCCN.Text = ItemTabDetails.CCCN_No.ToString() ?? ""; ;
-                txtUKDiscDate.Text = ItemTabDetails.Uk_Disc_Date;
-                txtDiscCharge.Text = ItemTabDetails.Disc_Change_Ind;
-                txtExpiringPro.Text = ItemTabDetails.Expiring_Product_Change_Ind;
-                txtManufacturer.Text = ItemTabDetails.Manufacturer.ToString() ?? ""; ;
-                txtMHCodeLevel1.Text = ItemTabDetails.MH_Code_Level_1;
-                txtCCCN.Text = ItemTabDetails.CCCN_No.ToString() ?? ""; ;
-                txtHeight.Text = ((decimal)(ItemTabDetails.Heigh * ((Decimal)100))).ToString("G29");
-                txtWidth.Text = ((decimal)(ItemTabDetails.Width * ((Decimal)100))).ToString("G29");
-                txtLength.Text = ((decimal)(ItemTabDetails.Length * ((Decimal)100))).ToString("G29");
-                txtUK1.Text = ItemTabDetails.Col1Price.ToString();
-                txtUK2.Text = ItemTabDetails.Col2Price.ToString();
-                txtUK3.Text = ItemTabDetails.Col3Price.ToString();
-                txtUK4.Text = ItemTabDetails.Col4Price.ToString();
-                txtUK5.Text = ItemTabDetails.Col5Price.ToString();
-                txtUnitCount1.Text = ItemTabDetails.Col1Break.ToString();
-                txtUnitCount2.Text = ItemTabDetails.Col2Break.ToString();
-                txtUnitCount3.Text = ItemTabDetails.Col3Break.ToString();
-                txtUnitCount4.Text = ItemTabDetails.Col4Break.ToString();
-                txtUnitCount5.Text = ItemTabDetails.Col5Break.ToString();
-                txtCost1.Text = ItemTabDetails.DiscountedPrice1.ToString();
-                txtCost2.Text = ItemTabDetails.DiscountedPrice2.ToString();
-                txtCost3.Text = ItemTabDetails.DiscountedPrice3.ToString();
-                txtCost4.Text = ItemTabDetails.DiscountedPrice4.ToString();
-                txtCost5.Text = ItemTabDetails.DiscountedPrice5.ToString();
-                txtWeb1.Text = ((Decimal.Parse(txtUK1.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtWeb2.Text = ((Decimal.Parse(txtUK2.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtWeb3.Text = ((Decimal.Parse(txtUK3.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtWeb4.Text = ((Decimal.Parse(txtUK4.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtWeb5.Text = ((Decimal.Parse(txtUK5.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtUnitCount1.Text = ItemTabDetails.Col1Break.ToString();
-                txtUnitCount2.Text = ItemTabDetails.Col2Break.ToString();
-                txtUnitCount3.Text = ItemTabDetails.Col3Break.ToString();
-                txtUnitCount4.Text = ItemTabDetails.Col4Break.ToString();
-                txtUnitCount5.Text = ItemTabDetails.Col5Break.ToString();
-                txtUK1.Text = ItemTabDetails.Col1Price.ToString();
-                txtUK2.Text = ItemTabDetails.Col2Price.ToString();
-                txtUK3.Text = ItemTabDetails.Col3Price.ToString();
-                txtUK4.Text = ItemTabDetails.Col4Price.ToString();
-                txtUK5.Text = ItemTabDetails.Col5Price.ToString();
-                txtCost1.Text = ItemTabDetails.DiscountedPrice1.ToString();
-                txtCost2.Text = ItemTabDetails.DiscountedPrice2.ToString();
-                txtCost3.Text = ItemTabDetails.DiscountedPrice3.ToString();
-                txtCost4.Text = ItemTabDetails.DiscountedPrice4.ToString();
-                txtCost5.Text = ItemTabDetails.DiscountedPrice5.ToString();
-                txtWeb1.Text = ((Decimal.Parse(txtUK1.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtWeb2.Text = ((Decimal.Parse(txtUK2.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtWeb3.Text = ((Decimal.Parse(txtUK3.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtWeb4.Text = ((Decimal.Parse(txtUK4.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtWeb5.Text = ((Decimal.Parse(txtUK5.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtSupersectionName.Text = ItemTabDetails.SupersectionName;
-                if (ItemTabDetails.Environment != null) { txtEnvironment.Text = "Y"; } else { txtEnvironment.Text = ""; }
-                txtLithium.Text = (ItemTabDetails.Lithium != null && ItemTabDetails.Lithium != String.Empty) ? "Y" : "";
-                txtShipping.Text = (ItemTabDetails.Shipping != null && ItemTabDetails.Shipping != String.Empty) ? "Y" : "";
-                txtRSStock.Text = ItemTabDetails.OnhandStockBalance.ToString();
-                txtRSOnOrder.Text = ItemTabDetails.QuantityonOrder.ToString();
-                txtDiscontinuationDate.Text = ItemTabDetails.DiscontinuationDate;
-                txtRunOn.Text = ItemTabDetails.Runon.ToString();
-                txtReferral.Text = ItemTabDetails.Referral.ToString();
-                txtLicenceType.Text = ItemTabDetails.LicenceType;
+            //        CurrentRow.Cells["dgDesc"].Value = ItemTabDetails.Article_Desc;
+            //        CurrentRow.Cells["dgSSM"].Value = ItemTabDetails.Pack_Quantity.ToString() ?? ""; ;
+            //        CurrentRow.Cells["dgUC"].Value = ItemTabDetails.Unit_Content.ToString() ?? ""; ;
+            //        CurrentRow.Cells["dgUOM"].Value = ItemTabDetails.Unit_Measure;
+            //        CurrentRow.Cells["dgMPN"].Value = ItemTabDetails.MPN;
+            //        CurrentRow.Cells["dgCL"].Value = ItemTabDetails.Calibration_Ind;
+            //        if (ItemTabDetails.Standard_Weight != 0) { txtStandartWeight.Text = ((decimal)(ItemTabDetails.Standard_Weight) / (decimal)1000).ToString("G29") ?? ""; }
+            //        txtHazardousInd.Text = ItemTabDetails.Hazardous_Ind;
+            //        txtCalibrationInd.Text = ItemTabDetails.Calibration_Ind;
+            //        txtCofO.Text = ItemTabDetails.CofO;
+            //        txtCCCN.Text = ItemTabDetails.CCCN_No.ToString() ?? ""; ;
+            //        txtUKDiscDate.Text = ItemTabDetails.Uk_Disc_Date;
+            //        txtDiscCharge.Text = ItemTabDetails.Disc_Change_Ind;
+            //        txtExpiringPro.Text = ItemTabDetails.Expiring_Product_Change_Ind;
+            //        txtManufacturer.Text = ItemTabDetails.Manufacturer.ToString() ?? ""; ;
+            //        txtMHCodeLevel1.Text = ItemTabDetails.MH_Code_Level_1;
+            //        txtCCCN.Text = ItemTabDetails.CCCN_No.ToString() ?? ""; ;
+            //        txtHeight.Text = ((decimal)(ItemTabDetails.Heigh * ((Decimal)100))).ToString("G29");
+            //        txtWidth.Text = ((decimal)(ItemTabDetails.Width * ((Decimal)100))).ToString("G29");
+            //        txtLength.Text = ((decimal)(ItemTabDetails.Length * ((Decimal)100))).ToString("G29");
+            //        txtUK1.Text = ItemTabDetails.Col1Price.ToString();
+            //        txtUK2.Text = ItemTabDetails.Col2Price.ToString();
+            //        txtUK3.Text = ItemTabDetails.Col3Price.ToString();
+            //        txtUK4.Text = ItemTabDetails.Col4Price.ToString();
+            //        txtUK5.Text = ItemTabDetails.Col5Price.ToString();
+            //        txtUnitCount1.Text = ItemTabDetails.Col1Break.ToString();
+            //        txtUnitCount2.Text = ItemTabDetails.Col2Break.ToString();
+            //        txtUnitCount3.Text = ItemTabDetails.Col3Break.ToString();
+            //        txtUnitCount4.Text = ItemTabDetails.Col4Break.ToString();
+            //        txtUnitCount5.Text = ItemTabDetails.Col5Break.ToString();
+            //        txtCost1.Text = ItemTabDetails.DiscountedPrice1.ToString();
+            //        txtCost2.Text = ItemTabDetails.DiscountedPrice2.ToString();
+            //        txtCost3.Text = ItemTabDetails.DiscountedPrice3.ToString();
+            //        txtCost4.Text = ItemTabDetails.DiscountedPrice4.ToString();
+            //        txtCost5.Text = ItemTabDetails.DiscountedPrice5.ToString();
+            //        txtWeb1.Text = ((Decimal.Parse(txtUK1.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+            //        txtWeb2.Text = ((Decimal.Parse(txtUK2.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+            //        txtWeb3.Text = ((Decimal.Parse(txtUK3.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+            //        txtWeb4.Text = ((Decimal.Parse(txtUK4.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+            //        txtWeb5.Text = ((Decimal.Parse(txtUK5.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+            //        txtUnitCount1.Text = ItemTabDetails.Col1Break.ToString();
+            //        txtUnitCount2.Text = ItemTabDetails.Col2Break.ToString();
+            //        txtUnitCount3.Text = ItemTabDetails.Col3Break.ToString();
+            //        txtUnitCount4.Text = ItemTabDetails.Col4Break.ToString();
+            //        txtUnitCount5.Text = ItemTabDetails.Col5Break.ToString();
+            //        txtUK1.Text = ItemTabDetails.Col1Price.ToString();
+            //        txtUK2.Text = ItemTabDetails.Col2Price.ToString();
+            //        txtUK3.Text = ItemTabDetails.Col3Price.ToString();
+            //        txtUK4.Text = ItemTabDetails.Col4Price.ToString();
+            //        txtUK5.Text = ItemTabDetails.Col5Price.ToString();
+            //        txtCost1.Text = ItemTabDetails.DiscountedPrice1.ToString();
+            //        txtCost2.Text = ItemTabDetails.DiscountedPrice2.ToString();
+            //        txtCost3.Text = ItemTabDetails.DiscountedPrice3.ToString();
+            //        txtCost4.Text = ItemTabDetails.DiscountedPrice4.ToString();
+            //        txtCost5.Text = ItemTabDetails.DiscountedPrice5.ToString();
+            //        txtWeb1.Text = ((Decimal.Parse(txtUK1.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+            //        txtWeb2.Text = ((Decimal.Parse(txtUK2.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+            //        txtWeb3.Text = ((Decimal.Parse(txtUK3.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+            //        txtWeb4.Text = ((Decimal.Parse(txtUK4.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+            //        txtWeb5.Text = ((Decimal.Parse(txtUK5.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+            //        txtSupersectionName.Text = ItemTabDetails.SupersectionName;
+            //        if (ItemTabDetails.Environment != null) { txtEnvironment.Text = "Y"; } else { txtEnvironment.Text = ""; }
+            //        txtLithium.Text = (ItemTabDetails.Lithium != null && ItemTabDetails.Lithium != String.Empty) ? "Y" : "";
+            //        txtShipping.Text = (ItemTabDetails.Shipping != null && ItemTabDetails.Shipping != String.Empty) ? "Y" : "";
+            //        txtRSStock.Text = ItemTabDetails.OnhandStockBalance.ToString();
+            //        txtRSOnOrder.Text = ItemTabDetails.QuantityonOrder.ToString();
+            //        txtDiscontinuationDate.Text = ItemTabDetails.DiscontinuationDate;
+            //        txtRunOn.Text = ItemTabDetails.Runon.ToString();
+            //        txtReferral.Text = ItemTabDetails.Referral.ToString();
+            //        txtLicenceType.Text = ItemTabDetails.LicenceType;
 
-                #region ItemMarginFiller
+            //        #region ItemMarginFiller
 
-                int quantity = Int32.Parse(ItemTabDetails.Col1Break.ToString()??"0");
-                if (quantity != 0)
-                {
-                    decimal margin1 = 0;
-                    margin1 = (classQuotationAdd.GetLandingCost(CurrentRow.Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
-        , quantity));
+            //        int quantity = Int32.Parse(ItemTabDetails.Col1Break.ToString()??"0");
+            //        if (quantity != 0)
+            //        {
+            //            decimal margin1 = 0;
+            //            margin1 = (classQuotationAdd.GetLandingCost(CurrentRow.Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
+            //, quantity));
 
-                    txtMargin1.Text = ((1 - ((margin1) / (decimal.Parse(txtWeb1.Text)))) * 100).ToString();
-                    int quantity2 = 0;
-                    if (ItemTabDetails != null) { quantity2 = Int32.Parse(ItemTabDetails.Col2Break.ToString()); } else { quantity2 = Int32.Parse(ItemTabDetails.Col2Break.ToString()); }
-                    txtMargin2.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
-                                     , quantity2)).ToString("G29");
-                    if (txtWeb2.Text == "0")
-                    {
-                        txtMargin2.Text = "";
-                        txtMargin3.Text = "";
-                        txtMargin4.Text = "";
-                        txtMargin5.Text = "";
-                    }
-                    else
-                    {
+            //            txtMargin1.Text = ((1 - ((margin1) / (decimal.Parse(txtWeb1.Text)))) * 100).ToString();
+            //            int quantity2 = 0;
+            //            if (ItemTabDetails != null) { quantity2 = Int32.Parse(ItemTabDetails.Col2Break.ToString()); } else { quantity2 = Int32.Parse(ItemTabDetails.Col2Break.ToString()); }
+            //            txtMargin2.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
+            //                             , quantity2)).ToString("G29");
+            //            if (txtWeb2.Text == "0")
+            //            {
+            //                txtMargin2.Text = "";
+            //                txtMargin3.Text = "";
+            //                txtMargin4.Text = "";
+            //                txtMargin5.Text = "";
+            //            }
+            //            else
+            //            {
 
-                        txtMargin2.Text = ((1 - ((Decimal.Parse(txtMargin2.Text)) / (decimal.Parse(txtWeb1.Text)))) * 100).ToString();
-                        try
-                        {
-                            decimal margin3 = 0;
-                            margin3 = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked, Int32.Parse(ItemTabDetails.Col3Break.ToString())));
-                            if (margin3 != 0)
-                            {
-                                txtMargin3.Text = ((1 - ((margin3) / (decimal.Parse(txtWeb3.Text)))) * 100).ToString();
-                                if (ItemTabDetails.Col4Break != 0)
-                                {
-                                    decimal margin4 = 0;
-                                    margin4 = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
-                                , Int32.Parse(ItemTabDetails.Col4Break.ToString())));
-                                    txtMargin4.Text = ((1 - ((margin4) / (decimal.Parse(txtWeb4.Text)))) * 100).ToString();
-                                    if (ItemTabDetails.Col5Break != 0)
-                                    {
-                                        decimal margin5 = 0;
-                                        margin5 = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
-                                    , Int32.Parse(ItemTabDetails.Col5Break.ToString())));
-                                        txtMargin5.Text = ((1 - ((margin5) / (decimal.Parse(txtWeb5.Text)))) * 100).ToString();
-                                    }
-                                    else
-                                    {
-                                        txtMargin5.Text = "";
-                                    }
-                                }
-                                else
-                                {
-                                    txtMargin4.Text = "";
-                                    txtMargin5.Text = "";
-                                }
-                            }
-                            else
-                            {
-                                txtMargin3.Text = "";
-                                txtMargin4.Text = "";
-                                txtMargin5.Text = "";
-                            }
+            //                txtMargin2.Text = ((1 - ((Decimal.Parse(txtMargin2.Text)) / (decimal.Parse(txtWeb1.Text)))) * 100).ToString();
+            //                try
+            //                {
+            //                    decimal margin3 = 0;
+            //                    margin3 = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked, Int32.Parse(ItemTabDetails.Col3Break.ToString())));
+            //                    if (margin3 != 0)
+            //                    {
+            //                        txtMargin3.Text = ((1 - ((margin3) / (decimal.Parse(txtWeb3.Text)))) * 100).ToString();
+            //                        if (ItemTabDetails.Col4Break != 0)
+            //                        {
+            //                            decimal margin4 = 0;
+            //                            margin4 = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
+            //                        , Int32.Parse(ItemTabDetails.Col4Break.ToString())));
+            //                            txtMargin4.Text = ((1 - ((margin4) / (decimal.Parse(txtWeb4.Text)))) * 100).ToString();
+            //                            if (ItemTabDetails.Col5Break != 0)
+            //                            {
+            //                                decimal margin5 = 0;
+            //                                margin5 = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
+            //                            , Int32.Parse(ItemTabDetails.Col5Break.ToString())));
+            //                                txtMargin5.Text = ((1 - ((margin5) / (decimal.Parse(txtWeb5.Text)))) * 100).ToString();
+            //                            }
+            //                            else
+            //                            {
+            //                                txtMargin5.Text = "";
+            //                            }
+            //                        }
+            //                        else
+            //                        {
+            //                            txtMargin4.Text = "";
+            //                            txtMargin5.Text = "";
+            //                        }
+            //                    }
+            //                    else
+            //                    {
+            //                        txtMargin3.Text = "";
+            //                        txtMargin4.Text = "";
+            //                        txtMargin5.Text = "";
+            //                    }
 
-                        }
-                        catch { }
+            //                }
+            //                catch { }
 
-                    }
+            //            }
 
-                    #endregion
+            //            #endregion
 
 
 
-                }
-                if (CurrentRow.Cells["dgUOM"].Value == null && CurrentRow.Cells["dgUC"].Value != null)
-            { CurrentRow.Cells["dgUOM"].Value = "Each"; }
+            //        }
+            //        if (CurrentRow.Cells["dgUOM"].Value == null && CurrentRow.Cells["dgUC"].Value != null)
+            //        { CurrentRow.Cells["dgUOM"].Value = "Each"; }
+            //        #endregion
+
+            //        #region Low Margin Mark Clear
+            //        if (txtLithium.Text != "")
+            //        {
+            //            label64.BackColor = Color.Red;
+            //            dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LI"].Style.BackColor = Color.Ivory;
+            //        }
+            //        else
+            //        {
+            //            label64.BackColor = Color.White;
+            //            dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LI"].Style.BackColor = Color.White;
+            //        }
+            //        if (txtShipping.Text != "")
+            //        {
+            //            label63.BackColor = Color.Red;
+            //            dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["HS"].Style.BackColor = Color.Red;
+
+            //        }
+            //        else
+            //        {
+            //            label63.BackColor = Color.White;
+            //            dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["HS"].Style.BackColor = Color.White;
+            //        }
+
+            //        if (txtEnvironment.Text != "")
+            //        {
+            //            label53.BackColor = Color.Red;
+            //        }
+            //        else
+            //        {
+            //            label53.BackColor = Color.White;
+            //        }
+
+            //        if (txtCalibrationInd.Text != "" && txtCalibrationInd.Text != null && txtCalibrationInd.Text != "N")
+            //        {
+            //            label22.BackColor = Color.Red;
+            //            dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["CL"].Style.BackColor = Color.Green;
+            //        }
+            //        else
+            //        {
+            //            label22.BackColor = Color.White;
+            //            dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["CL"].Style.BackColor = Color.White;
+            //        }
+
+            //        if (txtLicenceType.Text != "" && txtLicenceType.Text != null)
+            //        {
+            //            dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LC"].Style.BackColor = Color.BurlyWood;
+            //        }
+            //        else
+            //        {
+            //            dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LC"].Style.BackColor = Color.White;
+            //        }
             #endregion
 
-                #region Low Margin Mark Clear
-                if (txtLithium.Text != "")
-                {
-                    label64.BackColor = Color.Red;
-                    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LI"].Style.BackColor = Color.Ivory;
-                }
-                else
-                {
-                    label64.BackColor = Color.White;
-                    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LI"].Style.BackColor = Color.White;
-                }
-                if (txtShipping.Text != "")
-                {
-                    label63.BackColor = Color.Red;
-                    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["HS"].Style.BackColor = Color.Red;
-
-                }
-                else
-                {
-                    label63.BackColor = Color.White;
-                    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["HS"].Style.BackColor = Color.White;
-                }
-
-                if (txtEnvironment.Text != "")
-                {
-                    label53.BackColor = Color.Red;
-                }
-                else
-                {
-                    label53.BackColor = Color.White;
-                }
-
-                if (txtCalibrationInd.Text != "" && txtCalibrationInd.Text != null && txtCalibrationInd.Text != "N")
-                {
-                    label22.BackColor = Color.Red;
-                    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["CL"].Style.BackColor = Color.Green;
-                }
-                else
-                {
-                    label22.BackColor = Color.White;
-                    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["CL"].Style.BackColor = Color.White;
-                }
-
-                if (txtLicenceType.Text != "" && txtLicenceType.Text != null)
-                {
-                    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LC"].Style.BackColor = Color.BurlyWood;
-                }
-                else
-                {
-                    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LC"].Style.BackColor = Color.White;
-                }
-                #endregion
-
-            }
+            //    }
             (dgQuotationAddedItems.CurrentRow.Cells[dgDelivery.Index] as DataGridViewComboBoxCell).Value = 3;
         }
 
@@ -2259,162 +2259,162 @@ namespace LoginForm.QuotationModule
             string ArticleNoSearch1 = ArticleNoSearch;
             try { ArticleNoSearch1 = (Int32.Parse(ArticleNoSearch)).ToString(); } catch { }
 
-            var ItemTabDetails = IME.ItemDetailTabFiller(ArticleNoSearch).FirstOrDefault();
+        //    var ItemTabDetails = IME.ItemDetailTabFiller(ArticleNoSearch).FirstOrDefault();
 
-            if (ItemTabDetails != null)
-            {
+        //    if (ItemTabDetails != null)
+        //    {
 
-                CurrentRow.Cells["dgDesc"].Value = ItemTabDetails.Article_Desc;
-                CurrentRow.Cells["dgSSM"].Value = ItemTabDetails.Pack_Quantity.ToString() ?? ""; ;
-                CurrentRow.Cells["dgUC"].Value = ItemTabDetails.Unit_Content.ToString() ?? ""; ;
-                CurrentRow.Cells["dgUOM"].Value = ItemTabDetails.Unit_Measure;
-                CurrentRow.Cells["dgMPN"].Value = ItemTabDetails.MPN;
-                CurrentRow.Cells["dgCL"].Value = ItemTabDetails.Calibration_Ind;
-                if (ItemTabDetails.Standard_Weight != 0) { txtStandartWeight.Text = ((decimal)(ItemTabDetails.Standard_Weight) / (decimal)1000).ToString("G29") ?? ""; }
-                txtHazardousInd.Text = ItemTabDetails.Hazardous_Ind;
-                txtCalibrationInd.Text = ItemTabDetails.Calibration_Ind;
-                txtCofO.Text = ItemTabDetails.CofO;
-                txtCCCN.Text = ItemTabDetails.CCCN_No.ToString() ?? ""; ;
-                txtUKDiscDate.Text = ItemTabDetails.Uk_Disc_Date;
-                txtDiscCharge.Text = ItemTabDetails.Disc_Change_Ind;
-                txtExpiringPro.Text = ItemTabDetails.Expiring_Product_Change_Ind;
-                txtManufacturer.Text = ItemTabDetails.Manufacturer.ToString() ?? ""; ;
-                txtMHCodeLevel1.Text = ItemTabDetails.MH_Code_Level_1;
-                txtCCCN.Text = ItemTabDetails.CCCN_No.ToString() ?? ""; ;
-                txtHeight.Text = ((decimal)(ItemTabDetails.Heigh * ((Decimal)100))).ToString("G29");
-                txtWidth.Text = ((decimal)(ItemTabDetails.Width * ((Decimal)100))).ToString("G29");
-                txtLength.Text = ((decimal)(ItemTabDetails.Length * ((Decimal)100))).ToString("G29");
-                txtUK1.Text = ItemTabDetails.Col1Price.ToString();
-                txtUK2.Text = ItemTabDetails.Col2Price.ToString();
-                txtUK3.Text = ItemTabDetails.Col3Price.ToString();
-                txtUK4.Text = ItemTabDetails.Col4Price.ToString();
-                txtUK5.Text = ItemTabDetails.Col5Price.ToString();
-                txtUnitCount1.Text = ItemTabDetails.Col1Break.ToString();
-                txtUnitCount2.Text = ItemTabDetails.Col2Break.ToString();
-                txtUnitCount3.Text = ItemTabDetails.Col3Break.ToString();
-                txtUnitCount4.Text = ItemTabDetails.Col4Break.ToString();
-                txtUnitCount5.Text = ItemTabDetails.Col5Break.ToString();
-                txtCost1.Text = ItemTabDetails.DiscountedPrice1.ToString();
-                txtCost2.Text = ItemTabDetails.DiscountedPrice2.ToString();
-                txtCost3.Text = ItemTabDetails.DiscountedPrice3.ToString();
-                txtCost4.Text = ItemTabDetails.DiscountedPrice4.ToString();
-                txtCost5.Text = ItemTabDetails.DiscountedPrice5.ToString();
-                txtWeb1.Text = ((Decimal.Parse(txtUK1.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtWeb2.Text = ((Decimal.Parse(txtUK2.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtWeb3.Text = ((Decimal.Parse(txtUK3.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtWeb4.Text = ((Decimal.Parse(txtUK4.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtWeb5.Text = ((Decimal.Parse(txtUK5.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtUnitCount1.Text = ItemTabDetails.Col1Break.ToString();
-                txtUnitCount2.Text = ItemTabDetails.Col2Break.ToString();
-                txtUnitCount3.Text = ItemTabDetails.Col3Break.ToString();
-                txtUnitCount4.Text = ItemTabDetails.Col4Break.ToString();
-                txtUnitCount5.Text = ItemTabDetails.Col5Break.ToString();
-                txtUK1.Text = ItemTabDetails.Col1Price.ToString();
-                txtUK2.Text = ItemTabDetails.Col2Price.ToString();
-                txtUK3.Text = ItemTabDetails.Col3Price.ToString();
-                txtUK4.Text = ItemTabDetails.Col4Price.ToString();
-                txtUK5.Text = ItemTabDetails.Col5Price.ToString();
-                txtCost1.Text = ItemTabDetails.DiscountedPrice1.ToString();
-                txtCost2.Text = ItemTabDetails.DiscountedPrice2.ToString();
-                txtCost3.Text = ItemTabDetails.DiscountedPrice3.ToString();
-                txtCost4.Text = ItemTabDetails.DiscountedPrice4.ToString();
-                txtCost5.Text = ItemTabDetails.DiscountedPrice5.ToString();
-                txtWeb1.Text = ((Decimal.Parse(txtUK1.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtWeb2.Text = ((Decimal.Parse(txtUK2.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtWeb3.Text = ((Decimal.Parse(txtUK3.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtWeb4.Text = ((Decimal.Parse(txtUK4.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtWeb5.Text = ((Decimal.Parse(txtUK5.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtSupersectionName.Text = ItemTabDetails.SupersectionName;
-                if (ItemTabDetails.Environment != null) { txtEnvironment.Text = "Y"; isEnvironment = true; } else { txtEnvironment.Text = ""; }
-                txtLithium.Text = (ItemTabDetails.Lithium != null && ItemTabDetails.Lithium != String.Empty) ? "Y" : "";
-                txtShipping.Text = (ItemTabDetails.Shipping != null && ItemTabDetails.Shipping != String.Empty) ? "Y" : "";
+        //        CurrentRow.Cells["dgDesc"].Value = ItemTabDetails.Article_Desc;
+        //        CurrentRow.Cells["dgSSM"].Value = ItemTabDetails.Pack_Quantity.ToString() ?? ""; ;
+        //        CurrentRow.Cells["dgUC"].Value = ItemTabDetails.Unit_Content.ToString() ?? ""; ;
+        //        CurrentRow.Cells["dgUOM"].Value = ItemTabDetails.Unit_Measure;
+        //        CurrentRow.Cells["dgMPN"].Value = ItemTabDetails.MPN;
+        //        CurrentRow.Cells["dgCL"].Value = ItemTabDetails.Calibration_Ind;
+        //        if (ItemTabDetails.Standard_Weight != 0) { txtStandartWeight.Text = ((decimal)(ItemTabDetails.Standard_Weight) / (decimal)1000).ToString("G29") ?? ""; }
+        //        txtHazardousInd.Text = ItemTabDetails.Hazardous_Ind;
+        //        txtCalibrationInd.Text = ItemTabDetails.Calibration_Ind;
+        //        txtCofO.Text = ItemTabDetails.CofO;
+        //        txtCCCN.Text = ItemTabDetails.CCCN_No.ToString() ?? ""; ;
+        //        txtUKDiscDate.Text = ItemTabDetails.Uk_Disc_Date;
+        //        txtDiscCharge.Text = ItemTabDetails.Disc_Change_Ind;
+        //        txtExpiringPro.Text = ItemTabDetails.Expiring_Product_Change_Ind;
+        //        txtManufacturer.Text = ItemTabDetails.Manufacturer.ToString() ?? ""; ;
+        //        txtMHCodeLevel1.Text = ItemTabDetails.MH_Code_Level_1;
+        //        txtCCCN.Text = ItemTabDetails.CCCN_No.ToString() ?? ""; ;
+        //        txtHeight.Text = ((decimal)(ItemTabDetails.Heigh * ((Decimal)100))).ToString("G29");
+        //        txtWidth.Text = ((decimal)(ItemTabDetails.Width * ((Decimal)100))).ToString("G29");
+        //        txtLength.Text = ((decimal)(ItemTabDetails.Length * ((Decimal)100))).ToString("G29");
+        //        txtUK1.Text = ItemTabDetails.Col1Price.ToString();
+        //        txtUK2.Text = ItemTabDetails.Col2Price.ToString();
+        //        txtUK3.Text = ItemTabDetails.Col3Price.ToString();
+        //        txtUK4.Text = ItemTabDetails.Col4Price.ToString();
+        //        txtUK5.Text = ItemTabDetails.Col5Price.ToString();
+        //        txtUnitCount1.Text = ItemTabDetails.Col1Break.ToString();
+        //        txtUnitCount2.Text = ItemTabDetails.Col2Break.ToString();
+        //        txtUnitCount3.Text = ItemTabDetails.Col3Break.ToString();
+        //        txtUnitCount4.Text = ItemTabDetails.Col4Break.ToString();
+        //        txtUnitCount5.Text = ItemTabDetails.Col5Break.ToString();
+        //        txtCost1.Text = ItemTabDetails.DiscountedPrice1.ToString();
+        //        txtCost2.Text = ItemTabDetails.DiscountedPrice2.ToString();
+        //        txtCost3.Text = ItemTabDetails.DiscountedPrice3.ToString();
+        //        txtCost4.Text = ItemTabDetails.DiscountedPrice4.ToString();
+        //        txtCost5.Text = ItemTabDetails.DiscountedPrice5.ToString();
+        //        txtWeb1.Text = ((Decimal.Parse(txtUK1.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+        //        txtWeb2.Text = ((Decimal.Parse(txtUK2.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+        //        txtWeb3.Text = ((Decimal.Parse(txtUK3.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+        //        txtWeb4.Text = ((Decimal.Parse(txtUK4.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+        //        txtWeb5.Text = ((Decimal.Parse(txtUK5.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+        //        txtUnitCount1.Text = ItemTabDetails.Col1Break.ToString();
+        //        txtUnitCount2.Text = ItemTabDetails.Col2Break.ToString();
+        //        txtUnitCount3.Text = ItemTabDetails.Col3Break.ToString();
+        //        txtUnitCount4.Text = ItemTabDetails.Col4Break.ToString();
+        //        txtUnitCount5.Text = ItemTabDetails.Col5Break.ToString();
+        //        txtUK1.Text = ItemTabDetails.Col1Price.ToString();
+        //        txtUK2.Text = ItemTabDetails.Col2Price.ToString();
+        //        txtUK3.Text = ItemTabDetails.Col3Price.ToString();
+        //        txtUK4.Text = ItemTabDetails.Col4Price.ToString();
+        //        txtUK5.Text = ItemTabDetails.Col5Price.ToString();
+        //        txtCost1.Text = ItemTabDetails.DiscountedPrice1.ToString();
+        //        txtCost2.Text = ItemTabDetails.DiscountedPrice2.ToString();
+        //        txtCost3.Text = ItemTabDetails.DiscountedPrice3.ToString();
+        //        txtCost4.Text = ItemTabDetails.DiscountedPrice4.ToString();
+        //        txtCost5.Text = ItemTabDetails.DiscountedPrice5.ToString();
+        //        txtWeb1.Text = ((Decimal.Parse(txtUK1.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+        //        txtWeb2.Text = ((Decimal.Parse(txtUK2.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+        //        txtWeb3.Text = ((Decimal.Parse(txtUK3.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+        //        txtWeb4.Text = ((Decimal.Parse(txtUK4.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+        //        txtWeb5.Text = ((Decimal.Parse(txtUK5.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+        //        txtSupersectionName.Text = ItemTabDetails.SupersectionName;
+        //        if (ItemTabDetails.Environment != null) { txtEnvironment.Text = "Y"; isEnvironment = true; } else { txtEnvironment.Text = ""; }
+        //        txtLithium.Text = (ItemTabDetails.Lithium != null && ItemTabDetails.Lithium != String.Empty) ? "Y" : "";
+        //        txtShipping.Text = (ItemTabDetails.Shipping != null && ItemTabDetails.Shipping != String.Empty) ? "Y" : "";
 
-                if (txtLithium.Text == "Y") isLithum = true;
-                if (txtShipping.Text == "Y") isShipping = true;
-                if (ItemTabDetails.Calibration_Ind != null)
-                    txtRSStock.Text = ItemTabDetails.OnhandStockBalance.ToString();
-                txtRSOnOrder.Text = ItemTabDetails.QuantityonOrder.ToString();
-                txtDiscontinuationDate.Text = ItemTabDetails.DiscontinuationDate;
-                txtRunOn.Text = ItemTabDetails.Runon.ToString();
-                txtReferral.Text = ItemTabDetails.Referral.ToString();
-                txtLicenceType.Text = ItemTabDetails.LicenceType;
-                if (ItemTabDetails.LicenceType != "" && ItemTabDetails.LicenceType != null) isLicenceType = true;
-                if (ItemTabDetails.Calibration_Ind != "" && ItemTabDetails.Calibration_Ind != null) isCalibrationInd = true;
-                #region ItemMarginFiller
+        //        if (txtLithium.Text == "Y") isLithum = true;
+        //        if (txtShipping.Text == "Y") isShipping = true;
+        //        if (ItemTabDetails.Calibration_Ind != null)
+        //            txtRSStock.Text = ItemTabDetails.OnhandStockBalance.ToString();
+        //        txtRSOnOrder.Text = ItemTabDetails.QuantityonOrder.ToString();
+        //        txtDiscontinuationDate.Text = ItemTabDetails.DiscontinuationDate;
+        //        txtRunOn.Text = ItemTabDetails.Runon.ToString();
+        //        txtReferral.Text = ItemTabDetails.Referral.ToString();
+        //        txtLicenceType.Text = ItemTabDetails.LicenceType;
+        //        if (ItemTabDetails.LicenceType != "" && ItemTabDetails.LicenceType != null) isLicenceType = true;
+        //        if (ItemTabDetails.Calibration_Ind != "" && ItemTabDetails.Calibration_Ind != null) isCalibrationInd = true;
+        //        #region ItemMarginFiller
 
-                int quantity = Int32.Parse(ItemTabDetails.Col1Break.ToString() ?? "0");
-                if (quantity != 0)
-                {
-                    decimal margin1 = 0;
-                    margin1 = (classQuotationAdd.GetLandingCost(CurrentRow.Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
-        , quantity));
+        //        int quantity = Int32.Parse(ItemTabDetails.Col1Break.ToString() ?? "0");
+        //        if (quantity != 0)
+        //        {
+        //            decimal margin1 = 0;
+        //            margin1 = (classQuotationAdd.GetLandingCost(CurrentRow.Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
+        //, quantity));
 
-                    txtMargin1.Text = ((1 - ((margin1) / (decimal.Parse(txtWeb1.Text)))) * 100).ToString();
-                    int quantity2 = 0;
-                     quantity2 = Int32.Parse(ItemTabDetails.Col2Break.ToString());
-                    decimal margin2 = 0;
-                    margin2 = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
-                                     , quantity2));
-                    if (margin2 == 0)
-                    {
-                        txtMargin2.Text = "";
-                        txtMargin3.Text = "";
-                        txtMargin4.Text = "";
-                        txtMargin5.Text = "";
-                    }
-                    else
-                    {
+        //            txtMargin1.Text = ((1 - ((margin1) / (decimal.Parse(txtWeb1.Text)))) * 100).ToString();
+        //            int quantity2 = 0;
+        //             quantity2 = Int32.Parse(ItemTabDetails.Col2Break.ToString());
+        //            decimal margin2 = 0;
+        //            margin2 = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
+        //                             , quantity2));
+        //            if (margin2 == 0)
+        //            {
+        //                txtMargin2.Text = "";
+        //                txtMargin3.Text = "";
+        //                txtMargin4.Text = "";
+        //                txtMargin5.Text = "";
+        //            }
+        //            else
+        //            {
 
-                        txtMargin2.Text = ((1 - ((margin2) / (decimal.Parse(txtWeb1.Text)))) * 100).ToString();
-                        try
-                        {
-                            decimal margin3 = 0;
-                            margin3 = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked, Int32.Parse(ItemTabDetails.Col3Break.ToString())));
-                            if (margin3 != 0)
-                            {
-                                txtMargin3.Text = ((1 - ((margin3) / (decimal.Parse(txtWeb3.Text)))) * 100).ToString();
-                                if (ItemTabDetails.Col4Break != 0)
-                                {
-                                    decimal margin4 = 0;
-                                    margin4 = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
-                                , Int32.Parse(ItemTabDetails.Col4Break.ToString())));
-                                    txtMargin4.Text = ((1 - ((margin4) / (decimal.Parse(txtWeb4.Text)))) * 100).ToString();
-                                    if (ItemTabDetails.Col5Break != 0)
-                                    {
-                                        decimal margin5 = 0;
-                                        margin5 = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
-                                    , Int32.Parse(ItemTabDetails.Col5Break.ToString())));
-                                        txtMargin5.Text = ((1 - ((margin5) / (decimal.Parse(txtWeb5.Text)))) * 100).ToString();
-                                    }
-                                    else
-                                    {
-                                        txtMargin5.Text = "";
-                                    }
-                                }
-                                else
-                                {
-                                    txtMargin4.Text = "";
-                                    txtMargin5.Text = "";
-                                }
-                            }
-                            else
-                            {
-                                txtMargin3.Text = "";
-                                txtMargin4.Text = "";
-                                txtMargin5.Text = "";
-                            }
+        //                txtMargin2.Text = ((1 - ((margin2) / (decimal.Parse(txtWeb1.Text)))) * 100).ToString();
+        //                try
+        //                {
+        //                    decimal margin3 = 0;
+        //                    margin3 = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked, Int32.Parse(ItemTabDetails.Col3Break.ToString())));
+        //                    if (margin3 != 0)
+        //                    {
+        //                        txtMargin3.Text = ((1 - ((margin3) / (decimal.Parse(txtWeb3.Text)))) * 100).ToString();
+        //                        if (ItemTabDetails.Col4Break != 0)
+        //                        {
+        //                            decimal margin4 = 0;
+        //                            margin4 = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
+        //                        , Int32.Parse(ItemTabDetails.Col4Break.ToString())));
+        //                            txtMargin4.Text = ((1 - ((margin4) / (decimal.Parse(txtWeb4.Text)))) * 100).ToString();
+        //                            if (ItemTabDetails.Col5Break != 0)
+        //                            {
+        //                                decimal margin5 = 0;
+        //                                margin5 = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
+        //                            , Int32.Parse(ItemTabDetails.Col5Break.ToString())));
+        //                                txtMargin5.Text = ((1 - ((margin5) / (decimal.Parse(txtWeb5.Text)))) * 100).ToString();
+        //                            }
+        //                            else
+        //                            {
+        //                                txtMargin5.Text = "";
+        //                            }
+        //                        }
+        //                        else
+        //                        {
+        //                            txtMargin4.Text = "";
+        //                            txtMargin5.Text = "";
+        //                        }
+        //                    }
+        //                    else
+        //                    {
+        //                        txtMargin3.Text = "";
+        //                        txtMargin4.Text = "";
+        //                        txtMargin5.Text = "";
+        //                    }
 
-                        }
-                        catch { }
+        //                }
+        //                catch { }
 
-                    }
+        //            }
 
-                    #endregion
+        //            #endregion
 
 
 
-                }
-            }
+        //        }
+        //    }
                 if (CurrentRow.Cells["dgUOM"].Value == null && CurrentRow.Cells["dgUC"].Value != null)
                 { CurrentRow.Cells["dgUOM"].Value = "Each"; }
                 #endregion

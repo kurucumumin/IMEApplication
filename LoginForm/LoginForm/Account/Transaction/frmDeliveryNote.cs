@@ -15,7 +15,7 @@ using LoginForm.PurchaseOrder;
 
 namespace LoginForm
 {
-    public partial class frmSalesInvoice : Form
+    public partial class frmDeliveryNote : Form
     {
         #region Public Variables
         IMEEntities IME = new IMEEntities();
@@ -68,7 +68,7 @@ namespace LoginForm
         /// <summary>
         /// Create an instance for frmSalesInvoice Class
         /// </summary>
-        public frmSalesInvoice()
+        public frmDeliveryNote()
         {
             InitializeComponent();
         }
@@ -2973,7 +2973,7 @@ namespace LoginForm
                 InfoDeliveryNoteMaster.transportationCompany = txtTransportCompany.Text.Trim();
                 if (isAutomatic)
                 {
-                    InfoDeliveryNoteMaster.invoiceNo = txtInvoiceNo.Text.Trim();
+                    InfoDeliveryNoteMaster.DeliveryNoteNo = txtInvoiceNo.Text.Trim();
                     if (strVoucherNo != null) InfoDeliveryNoteMaster.voucherNo = strVoucherNo;
                     if (decSalseInvoiceSuffixPrefixId != -1)
                     {
@@ -2982,7 +2982,7 @@ namespace LoginForm
                 }
                 else
                 {
-                    InfoDeliveryNoteMaster.invoiceNo = txtInvoiceNo.Text.Trim();
+                    InfoDeliveryNoteMaster.DeliveryNoteNo = txtInvoiceNo.Text.Trim();
                     if (strVoucherNo != "") InfoDeliveryNoteMaster.voucherNo = strVoucherNo;
                     //InfoSalesMaster.suffixPrefixId = 0;
                 }
@@ -4332,7 +4332,6 @@ namespace LoginForm
                 InfoSalesMaster = spSalesMaster.SalesMasterView(decSalesInvoiceIdToEdit);
                 if (InfoSalesMaster.deliveryNoteMasterId != 0 || InfoSalesMaster.deliveryNoteMasterId != null)
                 {
-
                     DeliveryNoteMaster infoDeliveryNote = new DeliveryNoteMaster();
                     infoDeliveryNote = IME.DeliveryNoteMasters.Where(a => a.deliveryNoteMasterId == InfoSalesMaster.deliveryNoteMasterId).FirstOrDefault();
                     //TODO stock changing
@@ -5360,7 +5359,7 @@ namespace LoginForm
 
         }
 
-        public frmSalesInvoice(DataTable dt)
+        public frmDeliveryNote(DataTable dt)
         {
             InitializeComponent();
             cmbSalesMode.SelectedIndex = 1;

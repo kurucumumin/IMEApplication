@@ -428,14 +428,14 @@ namespace LoginForm
                         case "Sales Invoice":
                             decimal decSalesInvoiceVoucherTypeId = decimal.Parse(cmbVoucherType.SelectedValue.ToString());
                             string strSalesInvoiceVoucheTypeName = cmbVoucherType.Text.ToString();
-                            frmSalesInvoice frmSalesInvoiceOBj = new frmSalesInvoice();
-                            frmSalesInvoice frmSalesInvoiceOpen = Application.OpenForms["frmSalesInvoice"] as frmSalesInvoice;
+                            frmDeliveryNote frmDeliveryNoteObj = new frmDeliveryNote();
+                            frmDeliveryNote frmSalesInvoiceOpen = Application.OpenForms["frmSalesInvoice"] as frmDeliveryNote;
 
                             if (frmSalesInvoiceOpen == null)
                             {
 
-                                frmSalesInvoiceOBj.MdiParent = this.MdiParent;
-                                frmSalesInvoiceOBj.CallFromVoucherTypeSelection(decSalesInvoiceVoucherTypeId, strSalesInvoiceVoucheTypeName);
+                                frmDeliveryNoteObj.MdiParent = this.MdiParent;
+                                frmDeliveryNoteObj.CallFromVoucherTypeSelection(decSalesInvoiceVoucherTypeId, strSalesInvoiceVoucheTypeName);
                             }
                             else
                             {

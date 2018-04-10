@@ -569,11 +569,11 @@ namespace LoginForm
                             string strpos = spSale.SaleMasterGetPos(dcSalesId, strVoucherName);
                             if (strpos == "0")
                             {
-                                frmSalesInvoice objfrmsaleInvoice;
-                                objfrmsaleInvoice = Application.OpenForms["frmSalesInvoice"] as frmSalesInvoice;
-                                if (objfrmsaleInvoice == null)
+                                frmDeliveryNote objfrmDeliveryNote;
+                                objfrmDeliveryNote = Application.OpenForms["frmSalesInvoice"] as frmDeliveryNote;
+                                if (objfrmDeliveryNote == null)
                                 {
-                                    objfrmsaleInvoice = new frmSalesInvoice();
+                                    objfrmDeliveryNote = new frmDeliveryNote();
                                     //objfrmsaleInvoice.MdiParent = formMDI.MDIObj;
                                     //objfrmsaleInvoice.callFromVatReturnReport(this, dcSalesId);
                                 }

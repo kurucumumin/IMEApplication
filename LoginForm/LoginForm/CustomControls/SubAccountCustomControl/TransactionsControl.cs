@@ -522,14 +522,14 @@ namespace LoginForm.CustomControls
             }
         }
 
-        private void btnSalesInvoice_Click(object sender, EventArgs e)
+        private void btnDeliveryNote_Click(object sender, EventArgs e)
         {
             try
             {
                 bool IsActivate = false;
                 foreach (Form form in Application.OpenForms)
                 {
-                    if (form.GetType() == typeof(frmSalesInvoice))
+                    if (form.GetType() == typeof(frmDeliveryNote))
                     {
                         form.Activate();
                         IsActivate = true;

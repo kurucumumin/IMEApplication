@@ -14,6 +14,6 @@ namespace LoginForm.DataSet
     public partial class GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI_Result
     {
         public decimal deliveryNoteMasterId { get; set; }
-        public string invoiceNo { get; set; }
+        public string DeliveryNoteNo { get; set; }
     }
 }

@@ -65,7 +65,7 @@ namespace LoginForm.Account.Services
                     row["unitConversionId"] = item.unitConversionId;
                     row["taxId"] = item.taxId;
                     row["voucherNo"] = item.voucherNo;
-                    row["invoiceNo"] = item.invoiceNo;
+                    row["invoiceNo"] = item.DeliveryNoteNo;
                     row["voucherTypeId"] = item.voucherTypeId;
                     row["conversionRate"] = item.conversionRate;
                     row["amount"] = item.amount;
@@ -102,7 +102,7 @@ namespace LoginForm.Account.Services
                     var row = dt.NewRow();
                     row["deliveryNoteMasterId"] = item.deliveryNoteMasterId;
                     row["voucherNo"] = item.DeliveryNoteMaster.voucherNo;
-                    row["invoiceNo"] = item.DeliveryNoteMaster.invoiceNo;
+                    row["invoiceNo"] = item.DeliveryNoteMaster.DeliveryNoteNo;
                     row["ledgerId"] = item.DeliveryNoteMaster.ledgerId;
                     row["orderMasterId"] = item.DeliveryNoteMaster.orderMasterId;
                     row["employeeId"] = item.DeliveryNoteMaster.Worker.WorkerID;

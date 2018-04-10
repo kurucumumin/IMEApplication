@@ -26,7 +26,7 @@ namespace LoginForm.Account.Services
             {
                 var row = dt.NewRow();
                 row["deliveryNoteMasterId"] = item.deliveryNoteMasterId;
-                row["invoiceNo"] = item.invoiceNo;
+                row["invoiceNo"] = item.DeliveryNoteNo;
                 dt.Rows.Add(row);
             }
             return dt;
@@ -44,7 +44,7 @@ namespace LoginForm.Account.Services
             {
                 object obj = new IMEEntities().DeliveryNoteMasterAdd(
                 deliverynotemasterinfo.voucherNo,
-                deliverynotemasterinfo.invoiceNo,
+                deliverynotemasterinfo.DeliveryNoteNo,
                 deliverynotemasterinfo.voucherTypeId,
                 deliverynotemasterinfo.suffixPrefixId,
                 deliverynotemasterinfo.date,

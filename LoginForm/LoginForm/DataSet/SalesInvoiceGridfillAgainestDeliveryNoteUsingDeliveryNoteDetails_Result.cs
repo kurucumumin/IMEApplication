@@ -28,7 +28,7 @@ namespace LoginForm.DataSet
         public Nullable<decimal> unitConversionId { get; set; }
         public int taxId { get; set; }
         public string voucherNo { get; set; }
-        public string invoiceNo { get; set; }
+        public string DeliveryNoteNo { get; set; }
         public Nullable<decimal> voucherTypeId { get; set; }
         public Nullable<decimal> conversionRate { get; set; }
         public Nullable<decimal> amount { get; set; }

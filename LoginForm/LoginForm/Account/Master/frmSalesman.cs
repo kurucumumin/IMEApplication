@@ -27,7 +27,7 @@ namespace LoginForm
         SaleOrder frmSalesOrderObj;
         Quotation frmSalesQuotationObj;
         frmSalesReturn frmSalesReturnObj;
-        frmSalesInvoice frmSalesInvoiceObj;
+        frmDeliveryNote frmDeliveryNoteObj;
         bool isFromPOSSalesManCombo = false;
         #endregion
         #region Functions
@@ -241,7 +241,7 @@ namespace LoginForm
                 {
                     this.Close();
                 }
-                if (frmSalesInvoiceObj != null)
+                if (frmDeliveryNoteObj != null)
                 {
                     this.Close();
                 }
@@ -573,12 +573,12 @@ namespace LoginForm
         /// <summary>
         /// Function to load the form while calling from the SalesInvoice form to add new salesman
         /// </summary>
-        /// <param name="frmSalesInvoice"></param>
-        public void callFromSalesInvoice(frmSalesInvoice frmSalesInvoice)
+        /// <param name="frmDeliveryNote"></param>
+        public void callFromSalesInvoice(frmDeliveryNote frmDeliveryNote)
         {
             try
             {
-                this.frmSalesInvoiceObj = frmSalesInvoice;
+                this.frmDeliveryNoteObj = frmDeliveryNote;
                 base.Show();
                 dgvSalesman.Enabled = false;
                 txtCode.Enabled = false;
@@ -793,9 +793,9 @@ namespace LoginForm
             {
                 frmSalesReturnObj.ReturnFromSalesMan(decSalesManId);
             }
-            if (frmSalesInvoiceObj != null)
+            if (frmDeliveryNoteObj != null)
             {
-                frmSalesInvoiceObj.ReturnFromSalesManCreation(decSalesManId);
+                frmDeliveryNoteObj.ReturnFromSalesManCreation(decSalesManId);
             }
             if (frmSalesQuotationObj != null)
             {

@@ -57,7 +57,7 @@ namespace LoginForm
         frmCreditNote frmCreditNoteObj = null;
         //frmRejectionOut frmRejectionOutObj;
         //frmDeliveryNote frmDeliveryNoteObj;
-        frmSalesInvoice frmSalesInvoiceObj;
+        frmDeliveryNote frmDeliveryNoteObj;
         frmPurchaseInvoice frmPurchaseInvoiceObj = null;
         frmPurchaseReturn frmPurchaseReturnObj;
         //frmSalesQuotation frmSalesQuotationObj;
@@ -963,7 +963,7 @@ namespace LoginForm
         /// <param name="isFromCorParty"></param>
         /// <param name="isFromSA"></param>
         /// //TODO OpenMiracle Function
-        public void callFromSalesInvoice(frmSalesInvoice frmSalesInvoice, bool isFromCorParty, bool isFromSA)
+        public void callFromSalesInvoice(frmDeliveryNote frmSalesInvoice, bool isFromCorParty, bool isFromSA)
         {
             try
             {
@@ -975,7 +975,7 @@ namespace LoginForm
                 dgvAccountLedger.Enabled = false;
                 lblLedgerNameSearch.Enabled = false;
                 lblGroupSearch.Enabled = false;
-                this.frmSalesInvoiceObj = frmSalesInvoice;
+                this.frmDeliveryNoteObj = frmSalesInvoice;
                 base.Show();
             }
             catch (Exception ex)

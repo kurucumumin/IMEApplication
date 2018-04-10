@@ -782,11 +782,11 @@ namespace LoginForm
                             }
                             else
                             {
-                                frmSalesInvoice frmSalesInvoiceObj = new frmSalesInvoice();
-                                frmSalesInvoice open = Application.OpenForms["frmSalesInvoice"] as frmSalesInvoice;
+                                frmDeliveryNote frmDeliveryNoteObj = new frmDeliveryNote();
+                                frmDeliveryNote open = Application.OpenForms["frmSalesInvoice"] as frmDeliveryNote;
                                 if (open == null)
                                 {
-                                    frmSalesInvoiceObj.WindowState = FormWindowState.Normal;
+                                    frmDeliveryNoteObj.WindowState = FormWindowState.Normal;
                                     //frmSalesInvoiceObj.MdiParent = formMDI.MDIObj;
                                     //frmSalesInvoiceObj.callFromDayBook(this, decMasterId);
                                 }

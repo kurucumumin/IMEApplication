@@ -70,6 +70,7 @@ namespace LoginForm
         private void FormMain_Load(object sender, EventArgs e)
         {
             checkAuthorities();
+            //lblUserName.Text = "USER: " + Utils.getCurrentUser().NameLastName;
         }
 
         private void btnManagement_Click(object sender, EventArgs e)

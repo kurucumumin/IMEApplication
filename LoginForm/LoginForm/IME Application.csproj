@@ -22,7 +22,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>101</ApplicationRevision>
+    <ApplicationRevision>102</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -714,11 +714,11 @@
     <Compile Include="Account\Transaction\frmSalesInvoice - Copy.designer.cs">
       <DependentUpon>frmSalesInvoice - Copy.cs</DependentUpon>
     </Compile>
-    <Compile Include="Account\Transaction\frmSalesInvoice.cs">
+    <Compile Include="Account\Transaction\frmDeliveryNote.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Account\Transaction\frmSalesInvoice.designer.cs">
-      <DependentUpon>frmSalesInvoice.cs</DependentUpon>
+    <Compile Include="Account\Transaction\frmDeliveryNote.designer.cs">
+      <DependentUpon>frmDeliveryNote.cs</DependentUpon>
     </Compile>
     <Compile Include="Account\Transaction\frmSalesReturn.cs">
       <SubType>Form</SubType>
@@ -1789,9 +1789,6 @@
     <Compile Include="DataSet\SaleOrderItemsToDeliveryNote_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\SaleOrderToDeliveryNote_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\SalesAccountComboFill_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -2581,8 +2578,8 @@
     <EmbeddedResource Include="Account\Transaction\frmSalesInvoice - Copy.resx">
       <DependentUpon>frmSalesInvoice - Copy.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Account\Transaction\frmSalesInvoice.resx">
-      <DependentUpon>frmSalesInvoice.cs</DependentUpon>
+    <EmbeddedResource Include="Account\Transaction\frmDeliveryNote.resx">
+      <DependentUpon>frmDeliveryNote.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Transaction\frmSalesReturn.resx">
       <DependentUpon>frmSalesReturn.cs</DependentUpon>

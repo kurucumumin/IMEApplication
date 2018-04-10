@@ -50,7 +50,7 @@ namespace LoginForm
         //frmRejectionIn frmRejectionInObj;
         //frmMaterialReceipt frmMaterialReceiptObj = null;
         //frmPartyAddressBook frmPartyAddressBookObj = null;
-        frmSalesInvoice frmSalesInvoiceObj = null;
+        frmDeliveryNote frmDeliveryNoteObj = null;
        // frmPOS frmPOSObj = null;
 
         #endregion
@@ -531,14 +531,14 @@ namespace LoginForm
         /// <param name="frmSalesInvoice"></param>
         /// <param name="decId"></param>
         /// <param name="strComboType"></param>
-        public void CallFromSalesInvoice(frmSalesInvoice frmSalesInvoice, decimal decId, string strComboType) //PopUp
+        public void CallFromSalesInvoice(frmDeliveryNote frmSalesInvoice, decimal decId, string strComboType) //PopUp
         {
             try
             {
                 strComboTypes = strComboType;
                 base.Show();
-                this.frmSalesInvoiceObj = frmSalesInvoice;
-                frmSalesInvoiceObj.Enabled = false;
+                this.frmDeliveryNoteObj = frmSalesInvoice;
+                frmDeliveryNoteObj.Enabled = false;
                 int inRowCount = dgvLedgerPopup.Rows.Count;
                 for (int i = 0; i < inRowCount; i++)
                 {
@@ -1415,11 +1415,11 @@ namespace LoginForm
                     }
 
 
-                    if (frmSalesInvoiceObj != null)
+                    if (frmDeliveryNoteObj != null)
                     {
                         if (dgvLedgerPopup.CurrentRow.Cells["dgvtxtLedgerId"].Selected)
                         {
-                            frmSalesInvoiceObj.CallFromLedgerPopup(this, Convert.ToDecimal(dgvLedgerPopup.CurrentRow.Cells["dgvtxtLedgerId"].Value.ToString()), strComboTypes);
+                            frmDeliveryNoteObj.CallFromLedgerPopup(this, Convert.ToDecimal(dgvLedgerPopup.CurrentRow.Cells["dgvtxtLedgerId"].Value.ToString()), strComboTypes);
                             this.Close();
                         }
                     }

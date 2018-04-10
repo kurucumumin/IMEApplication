@@ -633,7 +633,7 @@ namespace LoginForm
                             decMasterId = spMaster.SalesMasterIdViewByvoucherNoAndVoucherType(decVouchertypeId, strVoucherNo);
                             SalesMasterSP spSalesMaster = new SalesMasterSP();
                             bool blPOS = spSalesMaster.DayBookSalesInvoiceOrPOS(decMasterId, decVouchertypeId);
-                            frmSalesInvoice frmSalesInvoice = new frmSalesInvoice();
+                            frmDeliveryNote frmDeliveryNote = new frmDeliveryNote();
                             //frmPOS frmPOS = new frmPOS();
                             if (blPOS == true)
                             {
@@ -648,10 +648,10 @@ namespace LoginForm
                             }
                             else
                             {
-                                frmSalesInvoice = Application.OpenForms["frmSalesInvoice"] as frmSalesInvoice;
-                                if (frmSalesInvoice == null)
+                                frmDeliveryNote = Application.OpenForms["frmSalesInvoice"] as frmDeliveryNote;
+                                if (frmDeliveryNote == null)
                                 {
-                                    frmSalesInvoice = new frmSalesInvoice();
+                                    frmDeliveryNote = new frmDeliveryNote();
                                     //frmSalesInvoice.MdiParent = formMDI.MDIObj;
                                     //frmSalesInvoice.callFromAgeing(this, decMasterId);
                                     this.Enabled = false;
