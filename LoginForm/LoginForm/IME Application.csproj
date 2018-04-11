@@ -1123,6 +1123,9 @@
     <Compile Include="DataSet\CompanyView_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\CompleteItem.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\ContactType.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1790,6 +1793,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SaleOrderItemsToDeliveryNote_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SaleOrderToDeliveryNote_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SalesAccountComboFill_Result.cs">

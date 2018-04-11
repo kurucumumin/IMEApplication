@@ -28,39 +28,120 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgSaleInvoice = new System.Windows.Forms.DataGridView();
-            this.CheckBox = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dgSaleOrderID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgStockQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgSaleOrderDetails = new System.Windows.Forms.DataGridView();
             this.btnExit = new System.Windows.Forms.Button();
-            this.lblPurchaseOrder = new System.Windows.Forms.Label();
+            this.lblSaleOrder = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnSelectAll = new System.Windows.Forms.Button();
             this.btnClearAll = new System.Windows.Forms.Button();
             this.btnDeliveryNote = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dgSaleInvoice)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dgSaleOrder = new System.Windows.Forms.DataGridView();
+            this.CheckBox = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dgSaleOrderID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgProductDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgStockQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dgSaleOrderDetails)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgSaleOrder)).BeginInit();
             this.SuspendLayout();
             // 
-            // dgSaleInvoice
+            // dgSaleOrderDetails
             // 
-            this.dgSaleInvoice.AllowUserToOrderColumns = true;
-            this.dgSaleInvoice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgSaleInvoice.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgSaleOrderDetails.AllowUserToOrderColumns = true;
+            this.dgSaleOrderDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgSaleOrderDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CheckBox,
             this.dgSaleOrderID,
             this.dgItemCode,
+            this.dgProductDescription,
             this.dgQuantity,
             this.dgStockQuantity,
             this.dgCName});
-            this.dgSaleInvoice.Location = new System.Drawing.Point(396, 29);
-            this.dgSaleInvoice.Name = "dgSaleInvoice";
-            this.dgSaleInvoice.Size = new System.Drawing.Size(482, 251);
-            this.dgSaleInvoice.TabIndex = 0;
+            this.dgSaleOrderDetails.Location = new System.Drawing.Point(528, 36);
+            this.dgSaleOrderDetails.Margin = new System.Windows.Forms.Padding(4);
+            this.dgSaleOrderDetails.Name = "dgSaleOrderDetails";
+            this.dgSaleOrderDetails.Size = new System.Drawing.Size(643, 309);
+            this.dgSaleOrderDetails.TabIndex = 0;
+            // 
+            // btnExit
+            // 
+            this.btnExit.Location = new System.Drawing.Point(1007, 352);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(4);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(164, 62);
+            this.btnExit.TabIndex = 1;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // lblSaleOrder
+            // 
+            this.lblSaleOrder.AutoSize = true;
+            this.lblSaleOrder.Location = new System.Drawing.Point(20, 16);
+            this.lblSaleOrder.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSaleOrder.Name = "lblSaleOrder";
+            this.lblSaleOrder.Size = new System.Drawing.Size(84, 17);
+            this.lblSaleOrder.TabIndex = 2;
+            this.lblSaleOrder.Text = "Sale Orders";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(528, 16);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(124, 17);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Sale Order Details";
+            // 
+            // btnSelectAll
+            // 
+            this.btnSelectAll.Location = new System.Drawing.Point(528, 352);
+            this.btnSelectAll.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSelectAll.Name = "btnSelectAll";
+            this.btnSelectAll.Size = new System.Drawing.Size(80, 28);
+            this.btnSelectAll.TabIndex = 4;
+            this.btnSelectAll.Text = "SelectAll";
+            this.btnSelectAll.UseVisualStyleBackColor = true;
+            this.btnSelectAll.Click += new System.EventHandler(this.btnSelectAll_Click);
+            // 
+            // btnClearAll
+            // 
+            this.btnClearAll.Location = new System.Drawing.Point(620, 352);
+            this.btnClearAll.Margin = new System.Windows.Forms.Padding(4);
+            this.btnClearAll.Name = "btnClearAll";
+            this.btnClearAll.Size = new System.Drawing.Size(80, 28);
+            this.btnClearAll.TabIndex = 4;
+            this.btnClearAll.Text = "ClearAll";
+            this.btnClearAll.UseVisualStyleBackColor = true;
+            this.btnClearAll.Click += new System.EventHandler(this.btnClearAll_Click);
+            // 
+            // btnDeliveryNote
+            // 
+            this.btnDeliveryNote.Location = new System.Drawing.Point(835, 352);
+            this.btnDeliveryNote.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDeliveryNote.Name = "btnDeliveryNote";
+            this.btnDeliveryNote.Size = new System.Drawing.Size(164, 62);
+            this.btnDeliveryNote.TabIndex = 1;
+            this.btnDeliveryNote.Text = "Create Delivery Note";
+            this.btnDeliveryNote.UseVisualStyleBackColor = true;
+            this.btnDeliveryNote.Click += new System.EventHandler(this.btnDeliveryNote_Click);
+            // 
+            // dgSaleOrder
+            // 
+            this.dgSaleOrder.AllowUserToAddRows = false;
+            this.dgSaleOrder.AllowUserToDeleteRows = false;
+            this.dgSaleOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgSaleOrder.Location = new System.Drawing.Point(20, 36);
+            this.dgSaleOrder.Margin = new System.Windows.Forms.Padding(4);
+            this.dgSaleOrder.Name = "dgSaleOrder";
+            this.dgSaleOrder.ReadOnly = true;
+            this.dgSaleOrder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgSaleOrder.Size = new System.Drawing.Size(500, 309);
+            this.dgSaleOrder.TabIndex = 5;
+            this.dgSaleOrder.SelectionChanged += new System.EventHandler(this.dgSaleOrder_SelectionChanged);
             // 
             // CheckBox
             // 
@@ -80,6 +161,11 @@
             this.dgItemCode.Name = "dgItemCode";
             this.dgItemCode.ReadOnly = true;
             // 
+            // dgProductDescription
+            // 
+            this.dgProductDescription.HeaderText = "Product Description";
+            this.dgProductDescription.Name = "dgProductDescription";
+            // 
             // dgQuantity
             // 
             this.dgQuantity.HeaderText = "Quantity";
@@ -98,93 +184,25 @@
             this.dgCName.Name = "dgCName";
             this.dgCName.ReadOnly = true;
             // 
-            // btnExit
-            // 
-            this.btnExit.Location = new System.Drawing.Point(755, 286);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(123, 50);
-            this.btnExit.TabIndex = 1;
-            this.btnExit.Text = "Exit";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
-            // lblPurchaseOrder
-            // 
-            this.lblPurchaseOrder.AutoSize = true;
-            this.lblPurchaseOrder.Location = new System.Drawing.Point(12, 13);
-            this.lblPurchaseOrder.Name = "lblPurchaseOrder";
-            this.lblPurchaseOrder.Size = new System.Drawing.Size(81, 13);
-            this.lblPurchaseOrder.TabIndex = 2;
-            this.lblPurchaseOrder.Text = "Purchase Order";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(393, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(116, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Purchase Order Details";
-            // 
-            // btnSelectAll
-            // 
-            this.btnSelectAll.Location = new System.Drawing.Point(396, 286);
-            this.btnSelectAll.Name = "btnSelectAll";
-            this.btnSelectAll.Size = new System.Drawing.Size(60, 23);
-            this.btnSelectAll.TabIndex = 4;
-            this.btnSelectAll.Text = "SelectAll";
-            this.btnSelectAll.UseVisualStyleBackColor = true;
-            this.btnSelectAll.Click += new System.EventHandler(this.btnSelectAll_Click);
-            // 
-            // btnClearAll
-            // 
-            this.btnClearAll.Location = new System.Drawing.Point(465, 286);
-            this.btnClearAll.Name = "btnClearAll";
-            this.btnClearAll.Size = new System.Drawing.Size(60, 23);
-            this.btnClearAll.TabIndex = 4;
-            this.btnClearAll.Text = "ClearAll";
-            this.btnClearAll.UseVisualStyleBackColor = true;
-            this.btnClearAll.Click += new System.EventHandler(this.btnClearAll_Click);
-            // 
-            // btnDeliveryNote
-            // 
-            this.btnDeliveryNote.Location = new System.Drawing.Point(626, 286);
-            this.btnDeliveryNote.Name = "btnDeliveryNote";
-            this.btnDeliveryNote.Size = new System.Drawing.Size(123, 50);
-            this.btnDeliveryNote.TabIndex = 1;
-            this.btnDeliveryNote.Text = "Create Delivery Note";
-            this.btnDeliveryNote.UseVisualStyleBackColor = true;
-            this.btnDeliveryNote.Click += new System.EventHandler(this.btnSaleInvoice_Click);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(15, 29);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(375, 251);
-            this.dataGridView1.TabIndex = 5;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
-            // 
             // SaleOrderToDeliveryNote
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(890, 340);
-            this.Controls.Add(this.dataGridView1);
+            this.ClientSize = new System.Drawing.Size(1187, 418);
+            this.Controls.Add(this.dgSaleOrder);
             this.Controls.Add(this.btnClearAll);
             this.Controls.Add(this.btnSelectAll);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.lblPurchaseOrder);
+            this.Controls.Add(this.lblSaleOrder);
             this.Controls.Add(this.btnDeliveryNote);
             this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.dgSaleInvoice);
+            this.Controls.Add(this.dgSaleOrderDetails);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SaleOrderToDeliveryNote";
             this.Text = "Sale Order To Delivery Note";
             this.Load += new System.EventHandler(this.RSInvToSaleInv_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgSaleInvoice)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgSaleOrderDetails)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgSaleOrder)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -192,17 +210,18 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgSaleInvoice;
+        private System.Windows.Forms.DataGridView dgSaleOrderDetails;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.Label lblPurchaseOrder;
+        private System.Windows.Forms.Label lblSaleOrder;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnSelectAll;
         private System.Windows.Forms.Button btnClearAll;
         private System.Windows.Forms.Button btnDeliveryNote;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgSaleOrder;
         private System.Windows.Forms.DataGridViewCheckBoxColumn CheckBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgSaleOrderID;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgItemCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgProductDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgStockQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgCName;

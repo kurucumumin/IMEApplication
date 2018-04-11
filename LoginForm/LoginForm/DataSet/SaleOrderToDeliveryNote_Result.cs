@@ -11,13 +11,9 @@ namespace LoginForm.DataSet
 {
     using System;
     
-    public partial class SaleOrderItemsToDeliveryNote_Result
+    public partial class SaleOrderToDeliveryNote_Result
     {
         public Nullable<decimal> SaleOrderID { get; set; }
-        public string ItemDescription { get; set; }
-        public string ItemCode { get; set; }
-        public Nullable<int> NumberToSend { get; set; }
-        public Nullable<int> StockQuantityForCustmer { get; set; }
         public string c_name { get; set; }
     }
 }

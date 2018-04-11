@@ -5359,23 +5359,18 @@ namespace LoginForm
 
         }
 
-        public frmDeliveryNote(DataTable dt)
+        public void setSaleOrderItemsFromPopUp(DataTable dt)
         {
-            InitializeComponent();
-            cmbSalesMode.SelectedIndex = 1;
-            cmbSalesMode.Enabled = false;
-            IME = new IMEEntities();
-
             string CurrencyName = "";
-            formLoadDefaultFunctions();
-            int POno = 0;
+            //formLoadDefaultFunctions();
+            //int POno = 0;
             foreach (DataRow item in dt.Rows)
             {
                 DataGridViewRow row = (DataGridViewRow)dgvSalesInvoice.Rows[0].Clone();
-                row.Cells[dgvtxtSalesInvoiceProductCode.Index].Value = item["ProductID"].ToString();
+                row.Cells[dgvtxtSalesInvoiceProductCode.Index].Value = item["dgItemCode"].ToString();
                 row.Cells[dgvtxtSalesInvoiceQty.Index].Value = item["Quantity"].ToString();
-                row.Cells[dgvtxtSalesInvoiceDiscountAmount.Index].Value = item["Discount"].ToString();
-                row.Cells[dgvtxtSalesInvoiceAmount.Index].Value = item["Amount"].ToString();
+                //row.Cells[dgvtxtSalesInvoiceDiscountAmount.Index].Value = item["Discount"].ToString();
+                //row.Cells[dgvtxtSalesInvoiceAmount.Index].Value = item["Amount"].ToString();
                 row.Cells[dgvtxtSalesInvoiceNetAmount.Index].Value = item["NetAmount"].ToString();
                 row.Cells[dgvtxtSalesInvoiceProductName.Index].Value = item["ProductDesc"].ToString();
                 txtDate.Text= item["BillingDocumentDate"].ToString();
@@ -5386,21 +5381,21 @@ namespace LoginForm
                     CurrencyName = "Pound";
                 }
 
-                try {  POno = Int32.Parse(item["PurchaseOrderNo"].ToString().Substring(0, item["PurchaseOrderNo"].ToString().IndexOf('R'))); } catch { }
+                //try {  POno = Int32.Parse(item["PurchaseOrderNo"].ToString().Substring(0, item["PurchaseOrderNo"].ToString().IndexOf('R'))); } catch { }
 
                 dgvSalesInvoice.Rows.Add(row);
             }
-            if (IME.PurchaseOrders.Where(a => a.purchaseOrderId == POno).FirstOrDefault() != null)
-            {
-                var po = IME.PurchaseOrders.Where(a => a.purchaseOrderId == POno).FirstOrDefault();
-                txtCustomer.Text = po.Customer.ID;
-                txtCustomerName.Text = po.Customer.c_name;
-                if(po.Worker!=null)cmbSalesMan.SelectedValue = po.Worker.WorkerID;
-            }
-            cmbCurrency.SelectedValue = IME.Currencies.Where(a => a.currencyName == CurrencyName).FirstOrDefault().currencyID;
+            //if (IME.PurchaseOrders.Where(a => a.purchaseOrderId == POno).FirstOrDefault() != null)
+            //{
+            //    var po = IME.PurchaseOrders.Where(a => a.purchaseOrderId == POno).FirstOrDefault();
+            //    txtCustomer.Text = po.Customer.ID;
+            //    txtCustomerName.Text = po.Customer.c_name;
+            //    if(po.Worker!=null)cmbSalesMan.SelectedValue = po.Worker.WorkerID;
+            //}
+            //TODO : Currency seçme düzeltilecek
+            //cmbCurrency.SelectedValue = IME.Currencies.Where(a => a.currencyName == CurrencyName).FirstOrDefault().currencyID;
             this.Show();
             SiGridTotalAmountCalculation();
-
         }
 
 
@@ -7660,12 +7655,12 @@ namespace LoginForm
             {
                 MessageBox.Show(ex.ToString());
             }
-
         }
 
-        private void dgvSalesInvoice_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void btnSelectSaleOrders_Click(object sender, EventArgs e)
         {
-
+            SaleOrderToDeliveryNote form = new SaleOrderToDeliveryNote(this);
+            form.Show();
         }
     }
 }

@@ -126,12 +126,13 @@ namespace LoginForm.Account.Services
         /// <param name="deliverynotedetailsinfo"></param>
         public void DeliveryNoteDetailsAdd(DeliveryNoteDetail deliverynotedetailsinfo)
         {
+            IMEEntities db = new IMEEntities();
             try
             {
                 decimal SaleOrderDetailId = Convert.ToDecimal(deliverynotedetailsinfo.SaleOrderDetailId);
 
 
-               new IMEEntities().DeliveryNoteDetailsAdd(
+               db.DeliveryNoteDetailsAdd(
                     deliverynotedetailsinfo.deliveryNoteMasterId,
                     SaleOrderDetailId,
                     deliverynotedetailsinfo.productId,
@@ -149,6 +150,17 @@ namespace LoginForm.Account.Services
                     deliverynotedetailsinfo.netAmount,
                     deliverynotedetailsinfo.amount,
                     deliverynotedetailsinfo.slNo);
+
+                SaleOrderDetail sod = db.SaleOrderDetails.Where(x => x.ID == SaleOrderDetailId).FirstOrDefault();
+                if (sod.SentItemQuantity == null || sod.SentItemQuantity == 0)
+                {
+                    sod.SentItemQuantity = Convert.ToInt32(deliverynotedetailsinfo.qty);
+                }
+                else
+                {
+                    sod.SentItemQuantity += Convert.ToInt32(deliverynotedetailsinfo.qty);
+                }
+                db.SaveChanges();
             }
             catch (Exception ex)
             {

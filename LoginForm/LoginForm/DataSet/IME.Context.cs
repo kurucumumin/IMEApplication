@@ -177,6 +177,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<Worker> Workers { get; set; }
         public virtual DbSet<AdditionalCost> AdditionalCosts { get; set; }
         public virtual DbSet<SalaryVoucherDetail> SalaryVoucherDetails { get; set; }
+        public virtual DbSet<CompleteItem> CompleteItems { get; set; }
         public virtual DbSet<V_Product> V_Product { get; set; }
     
         [DbFunction("IMEEntities", "AccountGroupHierarchy")]
@@ -6078,9 +6079,9 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SaleOrderItemsToDeliveryNote_Result>("SaleOrderItemsToDeliveryNote", saleOrderIDParameter);
         }
     
-        public virtual int SaleOrderToDeliveryNote()
+        public virtual ObjectResult<SaleOrderToDeliveryNote_Result> SaleOrderToDeliveryNote()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SaleOrderToDeliveryNote");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SaleOrderToDeliveryNote_Result>("SaleOrderToDeliveryNote");
         }
     
         public virtual ObjectResult<SalesAccountComboFill_Result> SalesAccountComboFill()

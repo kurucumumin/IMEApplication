@@ -13,11 +13,18 @@ namespace LoginForm.PurchaseOrder
 {
     public partial class SaleOrderToDeliveryNote : Form
     {
+        frmDeliveryNote parent;
+
+        public SaleOrderToDeliveryNote(frmDeliveryNote parentDeliveryNote)
+        {
+            InitializeComponent();
+            this.parent = parentDeliveryNote;
+        }
+
         public SaleOrderToDeliveryNote()
         {
             InitializeComponent();
         }
-
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -26,22 +33,15 @@ namespace LoginForm.PurchaseOrder
         private void RSInvToSaleInv_Load(object sender, EventArgs e)
         {
             IMEEntities IME = new IMEEntities();
-            dataGridView1.DataSource = IME.SaleOrderToDeliveryNote();
+            dgSaleOrder.DataSource = IME.SaleOrderToDeliveryNote();
         }
-
-        private void dgPurchaseOrder_SelectionChanged(object sender, EventArgs e)
-        {
-            IMEEntities IME = new IMEEntities();
-
-
-            try { IME.SaleOrderItemsToDeliveryNote(decimal.Parse(dataGridView1.CurrentRow.Cells["SaleOrderID"].ToString())); } catch { }
-        }
+        
 
 
 
         private void btnSelectAll_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in dgSaleInvoice.Rows)
+            foreach (DataGridViewRow row in dgSaleOrderDetails.Rows)
             {
                 DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[0];
                 chk.Value = true;
@@ -51,15 +51,14 @@ namespace LoginForm.PurchaseOrder
         private void btnClearAll_Click(object sender, EventArgs e)
         {
 
-            foreach (DataGridViewRow row in dgSaleInvoice.Rows)
+            foreach (DataGridViewRow row in dgSaleOrderDetails.Rows)
             {
                 DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[0];
                 chk.Value = true;
             }
-
         }
 
-        private void btnSaleInvoice_Click(object sender, EventArgs e)
+        private void btnDeliveryNote_Click(object sender, EventArgs e)
         {
             IMEEntities IME = new IMEEntities();
             DataTable dt = new DataTable();
@@ -70,54 +69,50 @@ namespace LoginForm.PurchaseOrder
             dt.Columns.Add("NetAmount");
             dt.Columns.Add("ProductDesc");
             dt.Columns.Add("BillingDocumentDate");
-            dt.Columns.Add("PurchaseOrderNo");
+            //dt.Columns.Add("PurchaseOrderNo");
             dt.Columns.Add("Currency");
-            for (int i = 0; i < dgSaleInvoice.RowCount; i++)
+            for (int i = 0; i < dgSaleOrderDetails.RowCount; i++)
             {
                 DataRow row = dt.NewRow();
-                row["dgCName"] = dgSaleInvoice.Rows[i].Cells[dgCName.Index].Value.ToString();
-                row["dgItemCode"] = dgSaleInvoice.Rows[i].Cells[dgItemCode.Index].Value.ToString();
-                row["Quantity"] = dgSaleInvoice.Rows[i].Cells[dgQuantity.Index].Value.ToString();
-                row["dgStockQuantity"] =
-                    (dgSaleInvoice.Rows[i].Cells[dgStockQuantity.Index].Value.ToString()).ToString();
-                row["dgSaleOrderID"] = dgSaleInvoice.Rows[i].Cells[dgSaleOrderID.Index].Value.ToString();
+                row["dgCName"] = dgSaleOrderDetails.Rows[i].Cells[dgCName.Index].Value.ToString();
+                row["dgItemCode"] = dgSaleOrderDetails.Rows[i].Cells[dgItemCode.Index].Value.ToString();
+                row["Quantity"] = dgSaleOrderDetails.Rows[i].Cells[dgQuantity.Index].Value.ToString();
+                row["dgStockQuantity"] = dgSaleOrderDetails.Rows[i].Cells[dgStockQuantity.Index].Value.ToString();
+                row["ProductDesc"] = dgSaleOrderDetails.Rows[i].Cells[dgProductDescription.Index].Value.ToString();
+                //row["dgSaleOrderID"] = dgSaleOrderDetails.Rows[i].Cells[dgSaleOrderID.Index].Value.ToString();
                 //string PONo;
                 //PONo = dgSaleInvoice.Rows[i].Cells[PODetailNo.Index].Value.ToString();
+                dt.Rows.Add(row);
             }
-            frmDeliveryNote form = new frmDeliveryNote(dt);
-           // form.Show();
+            parent.setSaleOrderItemsFromPopUp(dt);
+            //form.Show();
         }
 
-        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        private void dgSaleOrder_SelectionChanged(object sender, EventArgs e)
         {
             try {
-                dgSaleInvoice.Rows.Clear();
+                dgSaleOrderDetails.Rows.Clear();
                 IMEEntities IME = new IMEEntities();
-                    foreach (DataGridViewRow item in dataGridView1.SelectedRows)
+                    foreach (DataGridViewRow item in dgSaleOrder.SelectedRows)
                     {
-
                         foreach (var item1 in IME.SaleOrderItemsToDeliveryNote(decimal.Parse(item.Cells["SaleOrderID"].Value.ToString())))
                         {
-                            dgSaleInvoice.AllowUserToAddRows = true;
-                            DataGridViewRow row = (DataGridViewRow)dgSaleInvoice.Rows[0].Clone();
+                            dgSaleOrderDetails.AllowUserToAddRows = true;
+                            DataGridViewRow row = (DataGridViewRow)dgSaleOrderDetails.Rows[0].Clone();
                             row.Cells[dgCName.Index].Value = item1.c_name;
                             row.Cells[dgItemCode.Index].Value = item1.ItemCode;
                             row.Cells[dgQuantity.Index].Value = item1.StockQuantityForCustmer;
                             row.Cells[dgStockQuantity.Index].Value = item1.StockQuantityForCustmer;
                             row.Cells[dgSaleOrderID.Index].Value = item1.SaleOrderID;
-                            dgSaleInvoice.Rows.Add(row);
-                            dgSaleInvoice.AllowUserToAddRows = false;
-                            dgSaleInvoice.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+                            row.Cells[dgProductDescription.Index].Value = item1.ItemDescription;
+                            dgSaleOrderDetails.Rows.Add(row);
+                            dgSaleOrderDetails.AllowUserToAddRows = false;
+                            dgSaleOrderDetails.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
                         }
                     }
 
             }
             catch { }
-        }
-
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //dgSaleInvoice.Rows.Clear();
         }
     }
 }
