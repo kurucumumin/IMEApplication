@@ -33,7 +33,7 @@ namespace LoginForm.PurchaseOrder
         private void RSInvToSaleInv_Load(object sender, EventArgs e)
         {
             IMEEntities IME = new IMEEntities();
-            dgSaleOrder.DataSource = IME.SaleOrderToDeliveryNote();
+            dgSaleOrder.DataSource = IME.SaleOrderToDeliveryNote(parent.txtCustomerName.Text);
         }
         
 

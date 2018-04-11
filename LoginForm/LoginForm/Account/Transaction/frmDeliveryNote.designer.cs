@@ -28,28 +28,28 @@ namespace LoginForm
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDeliveryNote));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtBillDiscount = new System.Windows.Forms.TextBox();
             this.lblBillDiscount = new System.Windows.Forms.Label();
             this.dgvSalesInvoiceTax = new System.Windows.Forms.DataGridView();
@@ -170,11 +170,11 @@ namespace LoginForm
             // 
             // txtBillDiscount
             // 
-            this.txtBillDiscount.Location = new System.Drawing.Point(780, 665);
-            this.txtBillDiscount.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.txtBillDiscount.Location = new System.Drawing.Point(585, 540);
+            this.txtBillDiscount.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.txtBillDiscount.MaxLength = 15;
             this.txtBillDiscount.Name = "txtBillDiscount";
-            this.txtBillDiscount.Size = new System.Drawing.Size(265, 22);
+            this.txtBillDiscount.Size = new System.Drawing.Size(200, 20);
             this.txtBillDiscount.TabIndex = 23;
             this.txtBillDiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtBillDiscount.TextChanged += new System.EventHandler(this.txtBillDiscount_TextChanged);
@@ -187,10 +187,10 @@ namespace LoginForm
             // 
             this.lblBillDiscount.AutoSize = true;
             this.lblBillDiscount.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblBillDiscount.Location = new System.Drawing.Point(655, 670);
-            this.lblBillDiscount.Margin = new System.Windows.Forms.Padding(0, 6, 0, 0);
+            this.lblBillDiscount.Location = new System.Drawing.Point(491, 544);
+            this.lblBillDiscount.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.lblBillDiscount.Name = "lblBillDiscount";
-            this.lblBillDiscount.Size = new System.Drawing.Size(85, 17);
+            this.lblBillDiscount.Size = new System.Drawing.Size(65, 13);
             this.lblBillDiscount.TabIndex = 734;
             this.lblBillDiscount.Text = "Bill Discount";
             // 
@@ -203,14 +203,14 @@ namespace LoginForm
             this.dgvSalesInvoiceTax.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvSalesInvoiceTax.BackgroundColor = System.Drawing.Color.White;
             this.dgvSalesInvoiceTax.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(133)))), ((int)(((byte)(163)))));
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle22.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(117)))), ((int)(((byte)(150)))));
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSalesInvoiceTax.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(133)))), ((int)(((byte)(163)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(117)))), ((int)(((byte)(150)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSalesInvoiceTax.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvSalesInvoiceTax.ColumnHeadersHeight = 25;
             this.dgvSalesInvoiceTax.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvSalesInvoiceTax.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -222,22 +222,22 @@ namespace LoginForm
             this.dgvtxtTTaxRate,
             this.dgvtxtTaxLedgerId,
             this.dgvtxtTtaxAmount});
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(238)))), ((int)(((byte)(218)))));
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle24.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(202)))), ((int)(((byte)(153)))));
-            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSalesInvoiceTax.DefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(238)))), ((int)(((byte)(218)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(202)))), ((int)(((byte)(153)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvSalesInvoiceTax.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvSalesInvoiceTax.EnableHeadersVisualStyles = false;
             this.dgvSalesInvoiceTax.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvSalesInvoiceTax.Location = new System.Drawing.Point(523, 489);
-            this.dgvSalesInvoiceTax.Margin = new System.Windows.Forms.Padding(4, 4, 4, 12);
+            this.dgvSalesInvoiceTax.Location = new System.Drawing.Point(392, 397);
+            this.dgvSalesInvoiceTax.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
             this.dgvSalesInvoiceTax.Name = "dgvSalesInvoiceTax";
             this.dgvSalesInvoiceTax.ReadOnly = true;
             this.dgvSalesInvoiceTax.RowHeadersVisible = false;
-            this.dgvSalesInvoiceTax.Size = new System.Drawing.Size(523, 118);
+            this.dgvSalesInvoiceTax.Size = new System.Drawing.Size(392, 96);
             this.dgvSalesInvoiceTax.TabIndex = 20;
             this.dgvSalesInvoiceTax.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvSalesInvoiceTax_RowsAdded);
             // 
@@ -304,8 +304,8 @@ namespace LoginForm
             // dgvtxtTtaxAmount
             // 
             this.dgvtxtTtaxAmount.DataPropertyName = "taxAmount";
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtTtaxAmount.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtTtaxAmount.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvtxtTtaxAmount.HeaderText = "Amount";
             this.dgvtxtTtaxAmount.Name = "dgvtxtTtaxAmount";
             this.dgvtxtTtaxAmount.ReadOnly = true;
@@ -315,10 +315,10 @@ namespace LoginForm
             // 
             this.cmbSalesAccount.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSalesAccount.FormattingEnabled = true;
-            this.cmbSalesAccount.Location = new System.Drawing.Point(153, 144);
-            this.cmbSalesAccount.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.cmbSalesAccount.Location = new System.Drawing.Point(115, 117);
+            this.cmbSalesAccount.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.cmbSalesAccount.Name = "cmbSalesAccount";
-            this.cmbSalesAccount.Size = new System.Drawing.Size(265, 24);
+            this.cmbSalesAccount.Size = new System.Drawing.Size(200, 21);
             this.cmbSalesAccount.TabIndex = 10;
             this.cmbSalesAccount.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbSalesAccount_KeyDown);
             // 
@@ -326,10 +326,10 @@ namespace LoginForm
             // 
             this.lblSalesAccount.AutoSize = true;
             this.lblSalesAccount.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblSalesAccount.Location = new System.Drawing.Point(27, 149);
-            this.lblSalesAccount.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.lblSalesAccount.Location = new System.Drawing.Point(20, 121);
+            this.lblSalesAccount.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.lblSalesAccount.Name = "lblSalesAccount";
-            this.lblSalesAccount.Size = new System.Drawing.Size(69, 17);
+            this.lblSalesAccount.Size = new System.Drawing.Size(55, 13);
             this.lblSalesAccount.TabIndex = 731;
             this.lblSalesAccount.Text = "Sales A/C";
             // 
@@ -345,10 +345,10 @@ namespace LoginForm
             this.cmbSalesMode.Items.AddRange(new object[] {
             "NA",
             "Against SalesOrder"});
-            this.cmbSalesMode.Location = new System.Drawing.Point(153, 80);
-            this.cmbSalesMode.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.cmbSalesMode.Location = new System.Drawing.Point(115, 65);
+            this.cmbSalesMode.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.cmbSalesMode.Name = "cmbSalesMode";
-            this.cmbSalesMode.Size = new System.Drawing.Size(265, 24);
+            this.cmbSalesMode.Size = new System.Drawing.Size(200, 21);
             this.cmbSalesMode.TabIndex = 5;
             this.cmbSalesMode.SelectedIndexChanged += new System.EventHandler(this.cmbSalesMode_SelectedIndexChanged);
             this.cmbSalesMode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbSalesMode_KeyDown);
@@ -357,10 +357,10 @@ namespace LoginForm
             // 
             this.lblSalesMode.AutoSize = true;
             this.lblSalesMode.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblSalesMode.Location = new System.Drawing.Point(27, 85);
-            this.lblSalesMode.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.lblSalesMode.Location = new System.Drawing.Point(20, 69);
+            this.lblSalesMode.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.lblSalesMode.Name = "lblSalesMode";
-            this.lblSalesMode.Size = new System.Drawing.Size(82, 17);
+            this.lblSalesMode.Size = new System.Drawing.Size(63, 13);
             this.lblSalesMode.TabIndex = 729;
             this.lblSalesMode.Text = "Sales Mode";
             // 
@@ -368,10 +368,10 @@ namespace LoginForm
             // 
             this.lblPricingLevel.AutoSize = true;
             this.lblPricingLevel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblPricingLevel.Location = new System.Drawing.Point(532, 117);
-            this.lblPricingLevel.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.lblPricingLevel.Location = new System.Drawing.Point(399, 95);
+            this.lblPricingLevel.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.lblPricingLevel.Name = "lblPricingLevel";
-            this.lblPricingLevel.Size = new System.Drawing.Size(89, 17);
+            this.lblPricingLevel.Size = new System.Drawing.Size(68, 13);
             this.lblPricingLevel.TabIndex = 725;
             this.lblPricingLevel.Text = "Pricing Level";
             // 
@@ -379,10 +379,10 @@ namespace LoginForm
             // 
             this.lblCreaditPeriod.AutoSize = true;
             this.lblCreaditPeriod.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblCreaditPeriod.Location = new System.Drawing.Point(532, 54);
-            this.lblCreaditPeriod.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.lblCreaditPeriod.Location = new System.Drawing.Point(399, 44);
+            this.lblCreaditPeriod.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.lblCreaditPeriod.Name = "lblCreaditPeriod";
-            this.lblCreaditPeriod.Size = new System.Drawing.Size(90, 17);
+            this.lblCreaditPeriod.Size = new System.Drawing.Size(67, 13);
             this.lblCreaditPeriod.TabIndex = 723;
             this.lblCreaditPeriod.Text = "Credit Period";
             // 
@@ -390,10 +390,10 @@ namespace LoginForm
             // 
             this.cmbCashOrParty.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCashOrParty.FormattingEnabled = true;
-            this.cmbCashOrParty.Location = new System.Drawing.Point(153, 48);
-            this.cmbCashOrParty.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.cmbCashOrParty.Location = new System.Drawing.Point(115, 39);
+            this.cmbCashOrParty.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.cmbCashOrParty.Name = "cmbCashOrParty";
-            this.cmbCashOrParty.Size = new System.Drawing.Size(265, 24);
+            this.cmbCashOrParty.Size = new System.Drawing.Size(200, 21);
             this.cmbCashOrParty.TabIndex = 2;
             this.cmbCashOrParty.SelectedIndexChanged += new System.EventHandler(this.cmbCashOrParty_SelectedIndexChanged);
             this.cmbCashOrParty.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbCashOrParty_KeyDown);
@@ -402,10 +402,10 @@ namespace LoginForm
             // 
             this.lblCashorParty.AutoSize = true;
             this.lblCashorParty.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblCashorParty.Location = new System.Drawing.Point(27, 53);
-            this.lblCashorParty.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.lblCashorParty.Location = new System.Drawing.Point(20, 43);
+            this.lblCashorParty.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.lblCashorParty.Name = "lblCashorParty";
-            this.lblCashorParty.Size = new System.Drawing.Size(85, 17);
+            this.lblCashorParty.Size = new System.Drawing.Size(66, 13);
             this.lblCashorParty.TabIndex = 721;
             this.lblCashorParty.Text = "Cash / Party";
             // 
@@ -416,10 +416,9 @@ namespace LoginForm
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(931, 729);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
+            this.btnClose.Location = new System.Drawing.Point(698, 592);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(113, 33);
+            this.btnClose.Size = new System.Drawing.Size(85, 27);
             this.btnClose.TabIndex = 29;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -433,10 +432,9 @@ namespace LoginForm
             this.btnDelete.FlatAppearance.BorderSize = 0;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(809, 729);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDelete.Location = new System.Drawing.Point(607, 592);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(113, 33);
+            this.btnDelete.Size = new System.Drawing.Size(85, 27);
             this.btnDelete.TabIndex = 28;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
@@ -449,10 +447,9 @@ namespace LoginForm
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(567, 729);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSave.Location = new System.Drawing.Point(425, 592);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(113, 33);
+            this.btnSave.Size = new System.Drawing.Size(85, 27);
             this.btnSave.TabIndex = 26;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -466,10 +463,9 @@ namespace LoginForm
             this.btnClear.FlatAppearance.BorderSize = 0;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.ForeColor = System.Drawing.Color.White;
-            this.btnClear.Location = new System.Drawing.Point(688, 729);
-            this.btnClear.Margin = new System.Windows.Forms.Padding(4);
+            this.btnClear.Location = new System.Drawing.Point(516, 592);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(113, 33);
+            this.btnClear.Size = new System.Drawing.Size(85, 27);
             this.btnClear.TabIndex = 27;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = false;
@@ -477,11 +473,11 @@ namespace LoginForm
             // 
             // txtGrandTotal
             // 
-            this.txtGrandTotal.Location = new System.Drawing.Point(780, 695);
-            this.txtGrandTotal.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.txtGrandTotal.Location = new System.Drawing.Point(585, 565);
+            this.txtGrandTotal.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.txtGrandTotal.Name = "txtGrandTotal";
             this.txtGrandTotal.ReadOnly = true;
-            this.txtGrandTotal.Size = new System.Drawing.Size(265, 22);
+            this.txtGrandTotal.Size = new System.Drawing.Size(200, 20);
             this.txtGrandTotal.TabIndex = 7897;
             this.txtGrandTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -489,10 +485,10 @@ namespace LoginForm
             // 
             this.lblGrandTotal.AutoSize = true;
             this.lblGrandTotal.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblGrandTotal.Location = new System.Drawing.Point(655, 700);
-            this.lblGrandTotal.Margin = new System.Windows.Forms.Padding(0, 6, 0, 0);
+            this.lblGrandTotal.Location = new System.Drawing.Point(491, 569);
+            this.lblGrandTotal.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.lblGrandTotal.Name = "lblGrandTotal";
-            this.lblGrandTotal.Size = new System.Drawing.Size(84, 17);
+            this.lblGrandTotal.Size = new System.Drawing.Size(63, 13);
             this.lblGrandTotal.TabIndex = 714;
             this.lblGrandTotal.Text = "Grand Total";
             // 
@@ -501,10 +497,10 @@ namespace LoginForm
             this.lnklblRemove.AutoSize = true;
             this.lnklblRemove.ForeColor = System.Drawing.Color.Yellow;
             this.lnklblRemove.LinkColor = System.Drawing.Color.Yellow;
-            this.lnklblRemove.Location = new System.Drawing.Point(991, 458);
-            this.lnklblRemove.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.lnklblRemove.Location = new System.Drawing.Point(743, 372);
+            this.lnklblRemove.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.lnklblRemove.Name = "lnklblRemove";
-            this.lnklblRemove.Size = new System.Drawing.Size(60, 17);
+            this.lnklblRemove.Size = new System.Drawing.Size(47, 13);
             this.lnklblRemove.TabIndex = 789;
             this.lnklblRemove.TabStop = true;
             this.lnklblRemove.Text = "Remove";
@@ -512,11 +508,11 @@ namespace LoginForm
             // 
             // txtNarration
             // 
-            this.txtNarration.Location = new System.Drawing.Point(171, 695);
-            this.txtNarration.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.txtNarration.Location = new System.Drawing.Point(128, 565);
+            this.txtNarration.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.txtNarration.Multiline = true;
             this.txtNarration.Name = "txtNarration";
-            this.txtNarration.Size = new System.Drawing.Size(265, 61);
+            this.txtNarration.Size = new System.Drawing.Size(200, 50);
             this.txtNarration.TabIndex = 24;
             this.txtNarration.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNarration_KeyDown);
             // 
@@ -524,20 +520,20 @@ namespace LoginForm
             // 
             this.lblNarration.AutoSize = true;
             this.lblNarration.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblNarration.Location = new System.Drawing.Point(21, 695);
-            this.lblNarration.Margin = new System.Windows.Forms.Padding(0, 6, 0, 0);
+            this.lblNarration.Location = new System.Drawing.Point(16, 565);
+            this.lblNarration.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.lblNarration.Name = "lblNarration";
-            this.lblNarration.Size = new System.Drawing.Size(67, 17);
+            this.lblNarration.Size = new System.Drawing.Size(50, 13);
             this.lblNarration.TabIndex = 711;
             this.lblNarration.Text = "Narration";
             // 
             // txtInvoiceNo
             // 
-            this.txtInvoiceNo.Location = new System.Drawing.Point(153, 17);
-            this.txtInvoiceNo.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.txtInvoiceNo.Location = new System.Drawing.Point(115, 14);
+            this.txtInvoiceNo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.txtInvoiceNo.MaxLength = 15;
             this.txtInvoiceNo.Name = "txtInvoiceNo";
-            this.txtInvoiceNo.Size = new System.Drawing.Size(265, 22);
+            this.txtInvoiceNo.Size = new System.Drawing.Size(200, 20);
             this.txtInvoiceNo.TabIndex = 0;
             this.txtInvoiceNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtInvoiceNo_KeyDown);
             // 
@@ -545,10 +541,10 @@ namespace LoginForm
             // 
             this.lblInvoiceNo.AutoSize = true;
             this.lblInvoiceNo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblInvoiceNo.Location = new System.Drawing.Point(27, 22);
-            this.lblInvoiceNo.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.lblInvoiceNo.Location = new System.Drawing.Point(20, 18);
+            this.lblInvoiceNo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.lblInvoiceNo.Name = "lblInvoiceNo";
-            this.lblInvoiceNo.Size = new System.Drawing.Size(78, 17);
+            this.lblInvoiceNo.Size = new System.Drawing.Size(62, 13);
             this.lblInvoiceNo.TabIndex = 709;
             this.lblInvoiceNo.Text = "Invoice No.";
             // 
@@ -557,14 +553,14 @@ namespace LoginForm
             this.dgvSalesInvoice.AllowUserToResizeRows = false;
             this.dgvSalesInvoice.BackgroundColor = System.Drawing.Color.White;
             this.dgvSalesInvoice.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(133)))), ((int)(((byte)(163)))));
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle25.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(117)))), ((int)(((byte)(150)))));
-            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSalesInvoice.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(133)))), ((int)(((byte)(163)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(117)))), ((int)(((byte)(150)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSalesInvoice.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvSalesInvoice.ColumnHeadersHeight = 35;
             this.dgvSalesInvoice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvSalesInvoice.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -602,29 +598,29 @@ namespace LoginForm
             this.dgvtxtSalesInvoiceInvoiceNo,
             this.dgvtxtSalesInvoiceVoucherTypeId,
             this.dgvtxtSalesInvoiceAmount});
-            dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle37.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(238)))), ((int)(((byte)(218)))));
-            dataGridViewCellStyle37.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle37.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle37.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(202)))), ((int)(((byte)(153)))));
-            dataGridViewCellStyle37.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle37.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSalesInvoice.DefaultCellStyle = dataGridViewCellStyle37;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(238)))), ((int)(((byte)(218)))));
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(202)))), ((int)(((byte)(153)))));
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvSalesInvoice.DefaultCellStyle = dataGridViewCellStyle16;
             this.dgvSalesInvoice.EnableHeadersVisualStyles = false;
             this.dgvSalesInvoice.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvSalesInvoice.Location = new System.Drawing.Point(24, 205);
-            this.dgvSalesInvoice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 12);
+            this.dgvSalesInvoice.Location = new System.Drawing.Point(18, 167);
+            this.dgvSalesInvoice.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
             this.dgvSalesInvoice.Name = "dgvSalesInvoice";
             this.dgvSalesInvoice.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle38.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(133)))), ((int)(((byte)(163)))));
-            dataGridViewCellStyle38.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle38.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle38.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(117)))), ((int)(((byte)(150)))));
-            dataGridViewCellStyle38.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle38.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSalesInvoice.RowHeadersDefaultCellStyle = dataGridViewCellStyle38;
-            this.dgvSalesInvoice.Size = new System.Drawing.Size(1020, 243);
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(133)))), ((int)(((byte)(163)))));
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(117)))), ((int)(((byte)(150)))));
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSalesInvoice.RowHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            this.dgvSalesInvoice.Size = new System.Drawing.Size(765, 197);
             this.dgvSalesInvoice.TabIndex = 16;
             this.dgvSalesInvoice.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSalesInvoice_CellEndEdit);
             this.dgvSalesInvoice.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSalesInvoice_CellEnter);
@@ -712,8 +708,8 @@ namespace LoginForm
             // dgvtxtSalesInvoiceQty
             // 
             this.dgvtxtSalesInvoiceQty.DataPropertyName = "qty";
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtSalesInvoiceQty.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtSalesInvoiceQty.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvtxtSalesInvoiceQty.HeaderText = "Qty";
             this.dgvtxtSalesInvoiceQty.MaxInputLength = 8;
             this.dgvtxtSalesInvoiceQty.Name = "dgvtxtSalesInvoiceQty";
@@ -756,8 +752,8 @@ namespace LoginForm
             // 
             // dgvtxtSalesInvoicePurchaseRate
             // 
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtSalesInvoicePurchaseRate.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtSalesInvoicePurchaseRate.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvtxtSalesInvoicePurchaseRate.HeaderText = "Purchase rate.";
             this.dgvtxtSalesInvoicePurchaseRate.MaxInputLength = 13;
             this.dgvtxtSalesInvoicePurchaseRate.Name = "dgvtxtSalesInvoicePurchaseRate";
@@ -766,8 +762,8 @@ namespace LoginForm
             // 
             // dgvtxtSalesInvoiceMrp
             // 
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtSalesInvoiceMrp.DefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtSalesInvoiceMrp.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgvtxtSalesInvoiceMrp.HeaderText = "MRP";
             this.dgvtxtSalesInvoiceMrp.MaxInputLength = 13;
             this.dgvtxtSalesInvoiceMrp.Name = "dgvtxtSalesInvoiceMrp";
@@ -776,8 +772,8 @@ namespace LoginForm
             // 
             // dgvtxtSalesInvoiceSalesRate
             // 
-            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtSalesInvoiceSalesRate.DefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtSalesInvoiceSalesRate.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvtxtSalesInvoiceSalesRate.HeaderText = "SalesRate";
             this.dgvtxtSalesInvoiceSalesRate.MaxInputLength = 13;
             this.dgvtxtSalesInvoiceSalesRate.Name = "dgvtxtSalesInvoiceSalesRate";
@@ -786,8 +782,8 @@ namespace LoginForm
             // 
             // dgvtxtSalesInvoiceRate
             // 
-            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtSalesInvoiceRate.DefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtSalesInvoiceRate.DefaultCellStyle = dataGridViewCellStyle9;
             this.dgvtxtSalesInvoiceRate.HeaderText = "Rate";
             this.dgvtxtSalesInvoiceRate.MaxInputLength = 10;
             this.dgvtxtSalesInvoiceRate.Name = "dgvtxtSalesInvoiceRate";
@@ -796,8 +792,8 @@ namespace LoginForm
             // 
             // dgvtxtSalesInvoiceGrossValue
             // 
-            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtSalesInvoiceGrossValue.DefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtSalesInvoiceGrossValue.DefaultCellStyle = dataGridViewCellStyle10;
             this.dgvtxtSalesInvoiceGrossValue.HeaderText = "Gross Value";
             this.dgvtxtSalesInvoiceGrossValue.Name = "dgvtxtSalesInvoiceGrossValue";
             this.dgvtxtSalesInvoiceGrossValue.ReadOnly = true;
@@ -806,8 +802,8 @@ namespace LoginForm
             // 
             // dgvtxtSalesInvoiceDiscountPercentage
             // 
-            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtSalesInvoiceDiscountPercentage.DefaultCellStyle = dataGridViewCellStyle32;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtSalesInvoiceDiscountPercentage.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgvtxtSalesInvoiceDiscountPercentage.HeaderText = "Discount Percentage";
             this.dgvtxtSalesInvoiceDiscountPercentage.MaxInputLength = 10;
             this.dgvtxtSalesInvoiceDiscountPercentage.Name = "dgvtxtSalesInvoiceDiscountPercentage";
@@ -815,8 +811,8 @@ namespace LoginForm
             // 
             // dgvtxtSalesInvoiceDiscountAmount
             // 
-            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtSalesInvoiceDiscountAmount.DefaultCellStyle = dataGridViewCellStyle33;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtSalesInvoiceDiscountAmount.DefaultCellStyle = dataGridViewCellStyle12;
             this.dgvtxtSalesInvoiceDiscountAmount.HeaderText = "Discount";
             this.dgvtxtSalesInvoiceDiscountAmount.MaxInputLength = 15;
             this.dgvtxtSalesInvoiceDiscountAmount.Name = "dgvtxtSalesInvoiceDiscountAmount";
@@ -824,8 +820,8 @@ namespace LoginForm
             // 
             // dgvtxtSalesInvoiceNetAmount
             // 
-            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtSalesInvoiceNetAmount.DefaultCellStyle = dataGridViewCellStyle34;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtSalesInvoiceNetAmount.DefaultCellStyle = dataGridViewCellStyle13;
             this.dgvtxtSalesInvoiceNetAmount.HeaderText = "Net Amount";
             this.dgvtxtSalesInvoiceNetAmount.Name = "dgvtxtSalesInvoiceNetAmount";
             this.dgvtxtSalesInvoiceNetAmount.ReadOnly = true;
@@ -839,8 +835,8 @@ namespace LoginForm
             // 
             // dgvtxtSalesInvoiceTaxAmount
             // 
-            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtSalesInvoiceTaxAmount.DefaultCellStyle = dataGridViewCellStyle35;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtSalesInvoiceTaxAmount.DefaultCellStyle = dataGridViewCellStyle14;
             this.dgvtxtSalesInvoiceTaxAmount.HeaderText = "Tax Amount";
             this.dgvtxtSalesInvoiceTaxAmount.MaxInputLength = 13;
             this.dgvtxtSalesInvoiceTaxAmount.Name = "dgvtxtSalesInvoiceTaxAmount";
@@ -879,8 +875,8 @@ namespace LoginForm
             // 
             // dgvtxtSalesInvoiceAmount
             // 
-            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtSalesInvoiceAmount.DefaultCellStyle = dataGridViewCellStyle36;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtSalesInvoiceAmount.DefaultCellStyle = dataGridViewCellStyle15;
             this.dgvtxtSalesInvoiceAmount.HeaderText = "Amount";
             this.dgvtxtSalesInvoiceAmount.Name = "dgvtxtSalesInvoiceAmount";
             this.dgvtxtSalesInvoiceAmount.ReadOnly = true;
@@ -891,20 +887,20 @@ namespace LoginForm
             // 
             this.lblDate.AutoSize = true;
             this.lblDate.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblDate.Location = new System.Drawing.Point(532, 23);
-            this.lblDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.lblDate.Location = new System.Drawing.Point(399, 19);
+            this.lblDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(38, 17);
+            this.lblDate.Size = new System.Drawing.Size(30, 13);
             this.lblDate.TabIndex = 706;
             this.lblDate.Text = "Date";
             // 
             // txtCreditPeriod
             // 
-            this.txtCreditPeriod.Location = new System.Drawing.Point(688, 49);
-            this.txtCreditPeriod.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.txtCreditPeriod.Location = new System.Drawing.Point(516, 40);
+            this.txtCreditPeriod.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.txtCreditPeriod.MaxLength = 3;
             this.txtCreditPeriod.Name = "txtCreditPeriod";
-            this.txtCreditPeriod.Size = new System.Drawing.Size(321, 22);
+            this.txtCreditPeriod.Size = new System.Drawing.Size(242, 20);
             this.txtCreditPeriod.TabIndex = 4;
             this.txtCreditPeriod.Text = "0";
             this.txtCreditPeriod.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCreditPeriod_KeyDown);
@@ -915,10 +911,10 @@ namespace LoginForm
             // 
             this.lblDays.AutoSize = true;
             this.lblDays.ForeColor = System.Drawing.Color.Yellow;
-            this.lblDays.Location = new System.Drawing.Point(1012, 52);
-            this.lblDays.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.lblDays.Location = new System.Drawing.Point(759, 42);
+            this.lblDays.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.lblDays.Name = "lblDays";
-            this.lblDays.Size = new System.Drawing.Size(40, 17);
+            this.lblDays.Size = new System.Drawing.Size(31, 13);
             this.lblDays.TabIndex = 743;
             this.lblDays.Text = "Days";
             // 
@@ -926,10 +922,10 @@ namespace LoginForm
             // 
             this.cmbSalesMan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSalesMan.FormattingEnabled = true;
-            this.cmbSalesMan.Location = new System.Drawing.Point(153, 176);
-            this.cmbSalesMan.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.cmbSalesMan.Location = new System.Drawing.Point(115, 143);
+            this.cmbSalesMan.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.cmbSalesMan.Name = "cmbSalesMan";
-            this.cmbSalesMan.Size = new System.Drawing.Size(265, 24);
+            this.cmbSalesMan.Size = new System.Drawing.Size(200, 21);
             this.cmbSalesMan.TabIndex = 13;
             this.cmbSalesMan.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbSalesMan_KeyDown);
             // 
@@ -937,19 +933,19 @@ namespace LoginForm
             // 
             this.lblSalesMan.AutoSize = true;
             this.lblSalesMan.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblSalesMan.Location = new System.Drawing.Point(27, 181);
-            this.lblSalesMan.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.lblSalesMan.Location = new System.Drawing.Point(20, 147);
+            this.lblSalesMan.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.lblSalesMan.Name = "lblSalesMan";
-            this.lblSalesMan.Size = new System.Drawing.Size(74, 17);
+            this.lblSalesMan.Size = new System.Drawing.Size(57, 13);
             this.lblSalesMan.TabIndex = 744;
             this.lblSalesMan.Text = "Sales Man";
             // 
             // txtCustomer
             // 
-            this.txtCustomer.Location = new System.Drawing.Point(691, 144);
-            this.txtCustomer.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.txtCustomer.Location = new System.Drawing.Point(518, 117);
+            this.txtCustomer.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.txtCustomer.Name = "txtCustomer";
-            this.txtCustomer.Size = new System.Drawing.Size(108, 22);
+            this.txtCustomer.Size = new System.Drawing.Size(82, 20);
             this.txtCustomer.TabIndex = 12;
             this.txtCustomer.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCustomer_KeyDown);
             this.txtCustomer.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txtCustomer_MouseDoubleClick);
@@ -958,10 +954,10 @@ namespace LoginForm
             // 
             this.lblCustomer.AutoSize = true;
             this.lblCustomer.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblCustomer.Location = new System.Drawing.Point(532, 149);
-            this.lblCustomer.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.lblCustomer.Location = new System.Drawing.Point(399, 121);
+            this.lblCustomer.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.lblCustomer.Name = "lblCustomer";
-            this.lblCustomer.Size = new System.Drawing.Size(146, 17);
+            this.lblCustomer.Size = new System.Drawing.Size(112, 13);
             this.lblCustomer.TabIndex = 746;
             this.lblCustomer.Text = "Customer Code/Name";
             // 
@@ -969,10 +965,10 @@ namespace LoginForm
             // 
             this.lblTotalQuantity.AutoSize = true;
             this.lblTotalQuantity.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblTotalQuantity.Location = new System.Drawing.Point(532, 460);
-            this.lblTotalQuantity.Margin = new System.Windows.Forms.Padding(0, 6, 0, 0);
+            this.lblTotalQuantity.Location = new System.Drawing.Point(399, 374);
+            this.lblTotalQuantity.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.lblTotalQuantity.Name = "lblTotalQuantity";
-            this.lblTotalQuantity.Size = new System.Drawing.Size(67, 17);
+            this.lblTotalQuantity.Size = new System.Drawing.Size(51, 13);
             this.lblTotalQuantity.TabIndex = 748;
             this.lblTotalQuantity.Text = "Total qty.";
             // 
@@ -983,14 +979,14 @@ namespace LoginForm
             this.dgvSalesInvoiceLedger.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvSalesInvoiceLedger.BackgroundColor = System.Drawing.Color.White;
             this.dgvSalesInvoiceLedger.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle39.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(133)))), ((int)(((byte)(163)))));
-            dataGridViewCellStyle39.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle39.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle39.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(117)))), ((int)(((byte)(150)))));
-            dataGridViewCellStyle39.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle39.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSalesInvoiceLedger.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle39;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(133)))), ((int)(((byte)(163)))));
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(117)))), ((int)(((byte)(150)))));
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSalesInvoiceLedger.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle18;
             this.dgvSalesInvoiceLedger.ColumnHeadersHeight = 25;
             this.dgvSalesInvoiceLedger.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvSalesInvoiceLedger.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -998,29 +994,29 @@ namespace LoginForm
             this.dgvtxtAdditionalCostId,
             this.dgvCmbAdditionalCostledgerName,
             this.dgvtxtAdditionalCoastledgerAmount});
-            dataGridViewCellStyle41.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle41.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(238)))), ((int)(((byte)(218)))));
-            dataGridViewCellStyle41.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle41.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle41.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(202)))), ((int)(((byte)(153)))));
-            dataGridViewCellStyle41.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle41.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSalesInvoiceLedger.DefaultCellStyle = dataGridViewCellStyle41;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(238)))), ((int)(((byte)(218)))));
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(202)))), ((int)(((byte)(153)))));
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvSalesInvoiceLedger.DefaultCellStyle = dataGridViewCellStyle20;
             this.dgvSalesInvoiceLedger.EnableHeadersVisualStyles = false;
             this.dgvSalesInvoiceLedger.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvSalesInvoiceLedger.Location = new System.Drawing.Point(17, 487);
-            this.dgvSalesInvoiceLedger.Margin = new System.Windows.Forms.Padding(4, 4, 4, 12);
+            this.dgvSalesInvoiceLedger.Location = new System.Drawing.Point(13, 396);
+            this.dgvSalesInvoiceLedger.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
             this.dgvSalesInvoiceLedger.Name = "dgvSalesInvoiceLedger";
             this.dgvSalesInvoiceLedger.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle42.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(133)))), ((int)(((byte)(163)))));
-            dataGridViewCellStyle42.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle42.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle42.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(117)))), ((int)(((byte)(150)))));
-            dataGridViewCellStyle42.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle42.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSalesInvoiceLedger.RowHeadersDefaultCellStyle = dataGridViewCellStyle42;
-            this.dgvSalesInvoiceLedger.Size = new System.Drawing.Size(497, 119);
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(133)))), ((int)(((byte)(163)))));
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(117)))), ((int)(((byte)(150)))));
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSalesInvoiceLedger.RowHeadersDefaultCellStyle = dataGridViewCellStyle21;
+            this.dgvSalesInvoiceLedger.Size = new System.Drawing.Size(373, 97);
             this.dgvSalesInvoiceLedger.TabIndex = 19;
             this.dgvSalesInvoiceLedger.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvSalesInvoiceLedger_CellBeginEdit);
             this.dgvSalesInvoiceLedger.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSalesInvoiceLedger_CellClick);
@@ -1051,8 +1047,8 @@ namespace LoginForm
             // 
             // dgvtxtAdditionalCoastledgerAmount
             // 
-            dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtAdditionalCoastledgerAmount.DefaultCellStyle = dataGridViewCellStyle40;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtAdditionalCoastledgerAmount.DefaultCellStyle = dataGridViewCellStyle19;
             this.dgvtxtAdditionalCoastledgerAmount.FillWeight = 115.736F;
             this.dgvtxtAdditionalCoastledgerAmount.HeaderText = "Amount";
             this.dgvtxtAdditionalCoastledgerAmount.MaxInputLength = 8;
@@ -1063,10 +1059,10 @@ namespace LoginForm
             // 
             this.lblDrorCr.AutoSize = true;
             this.lblDrorCr.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblDrorCr.Location = new System.Drawing.Point(21, 462);
-            this.lblDrorCr.Margin = new System.Windows.Forms.Padding(0, 6, 0, 0);
+            this.lblDrorCr.Location = new System.Drawing.Point(16, 375);
+            this.lblDrorCr.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.lblDrorCr.Name = "lblDrorCr";
-            this.lblDrorCr.Size = new System.Drawing.Size(39, 17);
+            this.lblDrorCr.Size = new System.Drawing.Size(32, 13);
             this.lblDrorCr.TabIndex = 753;
             this.lblDrorCr.Text = "Dr/cr";
             // 
@@ -1077,10 +1073,10 @@ namespace LoginForm
             this.cmbDrorCr.Items.AddRange(new object[] {
             "Dr",
             "Cr"});
-            this.cmbDrorCr.Location = new System.Drawing.Point(75, 457);
-            this.cmbDrorCr.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.cmbDrorCr.Location = new System.Drawing.Point(56, 371);
+            this.cmbDrorCr.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.cmbDrorCr.Name = "cmbDrorCr";
-            this.cmbDrorCr.Size = new System.Drawing.Size(105, 24);
+            this.cmbDrorCr.Size = new System.Drawing.Size(80, 21);
             this.cmbDrorCr.TabIndex = 17;
             this.cmbDrorCr.SelectedIndexChanged += new System.EventHandler(this.cmbDrorCr_SelectedIndexChanged);
             this.cmbDrorCr.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbDrorCr_KeyDown);
@@ -1091,10 +1087,10 @@ namespace LoginForm
             this.btnNewLedger.FlatAppearance.BorderSize = 0;
             this.btnNewLedger.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNewLedger.ForeColor = System.Drawing.Color.White;
-            this.btnNewLedger.Location = new System.Drawing.Point(451, 48);
-            this.btnNewLedger.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.btnNewLedger.Location = new System.Drawing.Point(338, 39);
+            this.btnNewLedger.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.btnNewLedger.Name = "btnNewLedger";
-            this.btnNewLedger.Size = new System.Drawing.Size(28, 25);
+            this.btnNewLedger.Size = new System.Drawing.Size(21, 20);
             this.btnNewLedger.TabIndex = 3;
             this.btnNewLedger.UseVisualStyleBackColor = true;
             this.btnNewLedger.Click += new System.EventHandler(this.btnNewLedger_Click);
@@ -1105,10 +1101,10 @@ namespace LoginForm
             this.btnNewPricingLevel.FlatAppearance.BorderSize = 0;
             this.btnNewPricingLevel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNewPricingLevel.ForeColor = System.Drawing.Color.White;
-            this.btnNewPricingLevel.Location = new System.Drawing.Point(961, 112);
-            this.btnNewPricingLevel.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.btnNewPricingLevel.Location = new System.Drawing.Point(721, 91);
+            this.btnNewPricingLevel.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.btnNewPricingLevel.Name = "btnNewPricingLevel";
-            this.btnNewPricingLevel.Size = new System.Drawing.Size(28, 25);
+            this.btnNewPricingLevel.Size = new System.Drawing.Size(21, 20);
             this.btnNewPricingLevel.TabIndex = 9;
             this.btnNewPricingLevel.UseVisualStyleBackColor = true;
             this.btnNewPricingLevel.Click += new System.EventHandler(this.btnNewPricingLevel_Click);
@@ -1119,10 +1115,10 @@ namespace LoginForm
             this.btnNewSalesman.FlatAppearance.BorderSize = 0;
             this.btnNewSalesman.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNewSalesman.ForeColor = System.Drawing.Color.White;
-            this.btnNewSalesman.Location = new System.Drawing.Point(451, 176);
-            this.btnNewSalesman.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.btnNewSalesman.Location = new System.Drawing.Point(338, 143);
+            this.btnNewSalesman.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.btnNewSalesman.Name = "btnNewSalesman";
-            this.btnNewSalesman.Size = new System.Drawing.Size(28, 25);
+            this.btnNewSalesman.Size = new System.Drawing.Size(21, 20);
             this.btnNewSalesman.TabIndex = 14;
             this.btnNewSalesman.UseVisualStyleBackColor = true;
             this.btnNewSalesman.Click += new System.EventHandler(this.btnNewSalesman_Click);
@@ -1133,10 +1129,10 @@ namespace LoginForm
             this.btnNewSalesAccount.FlatAppearance.BorderSize = 0;
             this.btnNewSalesAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNewSalesAccount.ForeColor = System.Drawing.Color.White;
-            this.btnNewSalesAccount.Location = new System.Drawing.Point(451, 144);
-            this.btnNewSalesAccount.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.btnNewSalesAccount.Location = new System.Drawing.Point(338, 117);
+            this.btnNewSalesAccount.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.btnNewSalesAccount.Name = "btnNewSalesAccount";
-            this.btnNewSalesAccount.Size = new System.Drawing.Size(28, 25);
+            this.btnNewSalesAccount.Size = new System.Drawing.Size(21, 20);
             this.btnNewSalesAccount.TabIndex = 11;
             this.btnNewSalesAccount.UseVisualStyleBackColor = true;
             this.btnNewSalesAccount.Click += new System.EventHandler(this.btnNewSalesAccount_Click);
@@ -1146,10 +1142,10 @@ namespace LoginForm
             this.lblTaxTotalAmount.BackColor = System.Drawing.Color.Transparent;
             this.lblTaxTotalAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTaxTotalAmount.ForeColor = System.Drawing.Color.Yellow;
-            this.lblTaxTotalAmount.Location = new System.Drawing.Point(889, 609);
-            this.lblTaxTotalAmount.Margin = new System.Windows.Forms.Padding(0, 6, 0, 0);
+            this.lblTaxTotalAmount.Location = new System.Drawing.Point(667, 495);
+            this.lblTaxTotalAmount.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.lblTaxTotalAmount.Name = "lblTaxTotalAmount";
-            this.lblTaxTotalAmount.Size = new System.Drawing.Size(156, 26);
+            this.lblTaxTotalAmount.Size = new System.Drawing.Size(117, 21);
             this.lblTaxTotalAmount.TabIndex = 758;
             this.lblTaxTotalAmount.Text = "00.00";
             this.lblTaxTotalAmount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1158,10 +1154,10 @@ namespace LoginForm
             // 
             this.lblSalesModeOrderNo.AutoSize = true;
             this.lblSalesModeOrderNo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblSalesModeOrderNo.Location = new System.Drawing.Point(27, 117);
-            this.lblSalesModeOrderNo.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.lblSalesModeOrderNo.Location = new System.Drawing.Point(20, 95);
+            this.lblSalesModeOrderNo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.lblSalesModeOrderNo.Name = "lblSalesModeOrderNo";
-            this.lblSalesModeOrderNo.Size = new System.Drawing.Size(71, 17);
+            this.lblSalesModeOrderNo.Size = new System.Drawing.Size(53, 13);
             this.lblSalesModeOrderNo.TabIndex = 760;
             this.lblSalesModeOrderNo.Text = "Order No.";
             // 
@@ -1169,10 +1165,10 @@ namespace LoginForm
             // 
             this.cmbSalesModeOrderNo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSalesModeOrderNo.FormattingEnabled = true;
-            this.cmbSalesModeOrderNo.Location = new System.Drawing.Point(153, 112);
-            this.cmbSalesModeOrderNo.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.cmbSalesModeOrderNo.Location = new System.Drawing.Point(115, 91);
+            this.cmbSalesModeOrderNo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.cmbSalesModeOrderNo.Name = "cmbSalesModeOrderNo";
-            this.cmbSalesModeOrderNo.Size = new System.Drawing.Size(265, 24);
+            this.cmbSalesModeOrderNo.Size = new System.Drawing.Size(200, 21);
             this.cmbSalesModeOrderNo.TabIndex = 7;
             this.cmbSalesModeOrderNo.SelectedIndexChanged += new System.EventHandler(this.cmbSalesModeOrderNo_SelectedIndexChanged);
             this.cmbSalesModeOrderNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbSalesModeOrderNo_KeyDown);
@@ -1180,10 +1176,10 @@ namespace LoginForm
             // lblTaxTotal
             // 
             this.lblTaxTotal.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblTaxTotal.Location = new System.Drawing.Point(768, 614);
-            this.lblTaxTotal.Margin = new System.Windows.Forms.Padding(0, 6, 0, 0);
+            this.lblTaxTotal.Location = new System.Drawing.Point(576, 499);
+            this.lblTaxTotal.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.lblTaxTotal.Name = "lblTaxTotal";
-            this.lblTaxTotal.Size = new System.Drawing.Size(41, 16);
+            this.lblTaxTotal.Size = new System.Drawing.Size(31, 13);
             this.lblTaxTotal.TabIndex = 736;
             this.lblTaxTotal.Text = "Total Tax Amount";
             // 
@@ -1192,10 +1188,10 @@ namespace LoginForm
             this.lblLedgerTotalAmount.BackColor = System.Drawing.Color.Transparent;
             this.lblLedgerTotalAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLedgerTotalAmount.ForeColor = System.Drawing.Color.Yellow;
-            this.lblLedgerTotalAmount.Location = new System.Drawing.Point(288, 609);
-            this.lblLedgerTotalAmount.Margin = new System.Windows.Forms.Padding(0, 6, 0, 0);
+            this.lblLedgerTotalAmount.Location = new System.Drawing.Point(216, 495);
+            this.lblLedgerTotalAmount.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.lblLedgerTotalAmount.Name = "lblLedgerTotalAmount";
-            this.lblLedgerTotalAmount.Size = new System.Drawing.Size(136, 26);
+            this.lblLedgerTotalAmount.Size = new System.Drawing.Size(102, 21);
             this.lblLedgerTotalAmount.TabIndex = 763;
             this.lblLedgerTotalAmount.Text = "00.00";
             this.lblLedgerTotalAmount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1203,20 +1199,20 @@ namespace LoginForm
             // lblLedgerTotal
             // 
             this.lblLedgerTotal.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblLedgerTotal.Location = new System.Drawing.Point(179, 609);
-            this.lblLedgerTotal.Margin = new System.Windows.Forms.Padding(0, 6, 0, 0);
+            this.lblLedgerTotal.Location = new System.Drawing.Point(134, 495);
+            this.lblLedgerTotal.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.lblLedgerTotal.Name = "lblLedgerTotal";
-            this.lblLedgerTotal.Size = new System.Drawing.Size(41, 16);
+            this.lblLedgerTotal.Size = new System.Drawing.Size(31, 13);
             this.lblLedgerTotal.TabIndex = 762;
             this.lblLedgerTotal.Text = "Total Additional Cost";
             // 
             // txtTotalAmount
             // 
-            this.txtTotalAmount.Location = new System.Drawing.Point(780, 634);
-            this.txtTotalAmount.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.txtTotalAmount.Location = new System.Drawing.Point(585, 515);
+            this.txtTotalAmount.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.txtTotalAmount.Name = "txtTotalAmount";
             this.txtTotalAmount.ReadOnly = true;
-            this.txtTotalAmount.Size = new System.Drawing.Size(265, 22);
+            this.txtTotalAmount.Size = new System.Drawing.Size(200, 20);
             this.txtTotalAmount.TabIndex = 8898;
             this.txtTotalAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtTotalAmount.TextChanged += new System.EventHandler(this.txtTotalAmount_TextChanged);
@@ -1225,10 +1221,10 @@ namespace LoginForm
             // 
             this.lblFinalTotalAmount.AutoSize = true;
             this.lblFinalTotalAmount.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblFinalTotalAmount.Location = new System.Drawing.Point(655, 639);
-            this.lblFinalTotalAmount.Margin = new System.Windows.Forms.Padding(0, 6, 0, 0);
+            this.lblFinalTotalAmount.Location = new System.Drawing.Point(491, 519);
+            this.lblFinalTotalAmount.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.lblFinalTotalAmount.Name = "lblFinalTotalAmount";
-            this.lblFinalTotalAmount.Size = new System.Drawing.Size(92, 17);
+            this.lblFinalTotalAmount.Size = new System.Drawing.Size(70, 13);
             this.lblFinalTotalAmount.TabIndex = 764;
             this.lblFinalTotalAmount.Text = "Total Amount";
             // 
@@ -1236,29 +1232,29 @@ namespace LoginForm
             // 
             this.lblTotalQuantitydisplay.AutoSize = true;
             this.lblTotalQuantitydisplay.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblTotalQuantitydisplay.Location = new System.Drawing.Point(627, 462);
-            this.lblTotalQuantitydisplay.Margin = new System.Windows.Forms.Padding(0, 6, 0, 0);
+            this.lblTotalQuantitydisplay.Location = new System.Drawing.Point(470, 375);
+            this.lblTotalQuantitydisplay.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.lblTotalQuantitydisplay.Name = "lblTotalQuantitydisplay";
-            this.lblTotalQuantitydisplay.Size = new System.Drawing.Size(16, 17);
+            this.lblTotalQuantitydisplay.Size = new System.Drawing.Size(13, 13);
             this.lblTotalQuantitydisplay.TabIndex = 766;
             this.lblTotalQuantitydisplay.Text = "0";
             // 
             // txtDate
             // 
-            this.txtDate.Location = new System.Drawing.Point(688, 18);
-            this.txtDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.txtDate.Location = new System.Drawing.Point(516, 15);
+            this.txtDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.txtDate.Name = "txtDate";
-            this.txtDate.Size = new System.Drawing.Size(352, 22);
+            this.txtDate.Size = new System.Drawing.Size(265, 20);
             this.txtDate.TabIndex = 1;
             this.txtDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDate_KeyDown);
             this.txtDate.Leave += new System.EventHandler(this.txtDate_Leave);
             // 
             // dtpDate
             // 
-            this.dtpDate.Location = new System.Drawing.Point(1019, 18);
-            this.dtpDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.dtpDate.Location = new System.Drawing.Point(764, 15);
+            this.dtpDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.dtpDate.Name = "dtpDate";
-            this.dtpDate.Size = new System.Drawing.Size(27, 22);
+            this.dtpDate.Size = new System.Drawing.Size(21, 20);
             this.dtpDate.TabIndex = 768;
             this.dtpDate.ValueChanged += new System.EventHandler(this.dtpDate_ValueChanged);
             // 
@@ -1266,10 +1262,9 @@ namespace LoginForm
             // 
             this.cbxPrintAfterSave.AutoSize = true;
             this.cbxPrintAfterSave.ForeColor = System.Drawing.Color.White;
-            this.cbxPrintAfterSave.Location = new System.Drawing.Point(23, 741);
-            this.cbxPrintAfterSave.Margin = new System.Windows.Forms.Padding(4);
+            this.cbxPrintAfterSave.Location = new System.Drawing.Point(17, 602);
             this.cbxPrintAfterSave.Name = "cbxPrintAfterSave";
-            this.cbxPrintAfterSave.Size = new System.Drawing.Size(126, 21);
+            this.cbxPrintAfterSave.Size = new System.Drawing.Size(97, 17);
             this.cbxPrintAfterSave.TabIndex = 25;
             this.cbxPrintAfterSave.Text = "Print after save";
             this.cbxPrintAfterSave.UseVisualStyleBackColor = true;
@@ -1279,10 +1274,10 @@ namespace LoginForm
             // 
             this.lblCurrency.AutoSize = true;
             this.lblCurrency.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblCurrency.Location = new System.Drawing.Point(532, 180);
-            this.lblCurrency.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.lblCurrency.Location = new System.Drawing.Point(399, 146);
+            this.lblCurrency.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.lblCurrency.Name = "lblCurrency";
-            this.lblCurrency.Size = new System.Drawing.Size(65, 17);
+            this.lblCurrency.Size = new System.Drawing.Size(49, 13);
             this.lblCurrency.TabIndex = 770;
             this.lblCurrency.Text = "Currency";
             // 
@@ -1290,10 +1285,10 @@ namespace LoginForm
             // 
             this.cmbCurrency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCurrency.FormattingEnabled = true;
-            this.cmbCurrency.Location = new System.Drawing.Point(691, 175);
-            this.cmbCurrency.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.cmbCurrency.Location = new System.Drawing.Point(518, 142);
+            this.cmbCurrency.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.cmbCurrency.Name = "cmbCurrency";
-            this.cmbCurrency.Size = new System.Drawing.Size(355, 24);
+            this.cmbCurrency.Size = new System.Drawing.Size(267, 21);
             this.cmbCurrency.TabIndex = 15;
             this.cmbCurrency.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbCurrency_KeyDown);
             // 
@@ -1304,10 +1299,10 @@ namespace LoginForm
             this.cmbCashOrbank.Items.AddRange(new object[] {
             "Dr",
             "Cr"});
-            this.cmbCashOrbank.Location = new System.Drawing.Point(320, 457);
-            this.cmbCashOrbank.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.cmbCashOrbank.Location = new System.Drawing.Point(240, 371);
+            this.cmbCashOrbank.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.cmbCashOrbank.Name = "cmbCashOrbank";
-            this.cmbCashOrbank.Size = new System.Drawing.Size(191, 24);
+            this.cmbCashOrbank.Size = new System.Drawing.Size(144, 21);
             this.cmbCashOrbank.TabIndex = 18;
             this.cmbCashOrbank.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbCashOrbank_KeyDown);
             // 
@@ -1315,10 +1310,10 @@ namespace LoginForm
             // 
             this.lblcashOrBank.AutoSize = true;
             this.lblcashOrBank.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblcashOrBank.Location = new System.Drawing.Point(227, 460);
-            this.lblcashOrBank.Margin = new System.Windows.Forms.Padding(0, 6, 0, 0);
+            this.lblcashOrBank.Location = new System.Drawing.Point(170, 374);
+            this.lblcashOrBank.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.lblcashOrBank.Name = "lblcashOrBank";
-            this.lblcashOrBank.Size = new System.Drawing.Size(53, 17);
+            this.lblcashOrBank.Size = new System.Drawing.Size(40, 13);
             this.lblcashOrBank.TabIndex = 772;
             this.lblcashOrBank.Text = "Ledger";
             // 
@@ -1326,28 +1321,28 @@ namespace LoginForm
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(19, 639);
-            this.label1.Margin = new System.Windows.Forms.Padding(0, 6, 0, 0);
+            this.label1.Location = new System.Drawing.Point(14, 519);
+            this.label1.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(122, 17);
+            this.label1.Size = new System.Drawing.Size(91, 13);
             this.label1.TabIndex = 774;
             this.label1.Text = "Transportation Co";
             // 
             // txtTransportCompany
             // 
-            this.txtTransportCompany.Location = new System.Drawing.Point(171, 634);
-            this.txtTransportCompany.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.txtTransportCompany.Location = new System.Drawing.Point(128, 515);
+            this.txtTransportCompany.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.txtTransportCompany.Name = "txtTransportCompany";
-            this.txtTransportCompany.Size = new System.Drawing.Size(265, 22);
+            this.txtTransportCompany.Size = new System.Drawing.Size(200, 20);
             this.txtTransportCompany.TabIndex = 21;
             this.txtTransportCompany.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTransportCompany_KeyDown);
             // 
             // txtVehicleNo
             // 
-            this.txtVehicleNo.Location = new System.Drawing.Point(171, 665);
-            this.txtVehicleNo.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.txtVehicleNo.Location = new System.Drawing.Point(128, 540);
+            this.txtVehicleNo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.txtVehicleNo.Name = "txtVehicleNo";
-            this.txtVehicleNo.Size = new System.Drawing.Size(265, 22);
+            this.txtVehicleNo.Size = new System.Drawing.Size(200, 20);
             this.txtVehicleNo.TabIndex = 22;
             this.txtVehicleNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVehicleNo_KeyDown);
             // 
@@ -1355,10 +1350,10 @@ namespace LoginForm
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label2.Location = new System.Drawing.Point(20, 670);
-            this.label2.Margin = new System.Windows.Forms.Padding(0, 6, 0, 0);
+            this.label2.Location = new System.Drawing.Point(15, 544);
+            this.label2.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 17);
+            this.label2.Size = new System.Drawing.Size(59, 13);
             this.label2.TabIndex = 776;
             this.label2.Text = "Vehicle No";
             // 
@@ -1366,10 +1361,10 @@ namespace LoginForm
             // 
             this.cmbVoucherType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbVoucherType.FormattingEnabled = true;
-            this.cmbVoucherType.Location = new System.Drawing.Point(691, 80);
-            this.cmbVoucherType.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.cmbVoucherType.Location = new System.Drawing.Point(518, 65);
+            this.cmbVoucherType.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.cmbVoucherType.Name = "cmbVoucherType";
-            this.cmbVoucherType.Size = new System.Drawing.Size(355, 24);
+            this.cmbVoucherType.Size = new System.Drawing.Size(267, 21);
             this.cmbVoucherType.TabIndex = 6;
             this.cmbVoucherType.SelectedIndexChanged += new System.EventHandler(this.cmbVoucherType_SelectedIndexChanged);
             this.cmbVoucherType.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbVoucherType_KeyDown);
@@ -1378,10 +1373,10 @@ namespace LoginForm
             // 
             this.lblVoucherType.AutoSize = true;
             this.lblVoucherType.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblVoucherType.Location = new System.Drawing.Point(532, 85);
-            this.lblVoucherType.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.lblVoucherType.Location = new System.Drawing.Point(399, 69);
+            this.lblVoucherType.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.lblVoucherType.Name = "lblVoucherType";
-            this.lblVoucherType.Size = new System.Drawing.Size(97, 17);
+            this.lblVoucherType.Size = new System.Drawing.Size(74, 13);
             this.lblVoucherType.TabIndex = 791;
             this.lblVoucherType.Text = "Voucher Type";
             // 
@@ -1390,10 +1385,10 @@ namespace LoginForm
             this.lnklblLedgerGridRemove.AutoSize = true;
             this.lnklblLedgerGridRemove.ForeColor = System.Drawing.Color.Yellow;
             this.lnklblLedgerGridRemove.LinkColor = System.Drawing.Color.Yellow;
-            this.lnklblLedgerGridRemove.Location = new System.Drawing.Point(459, 614);
-            this.lnklblLedgerGridRemove.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.lnklblLedgerGridRemove.Location = new System.Drawing.Point(344, 499);
+            this.lnklblLedgerGridRemove.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.lnklblLedgerGridRemove.Name = "lnklblLedgerGridRemove";
-            this.lnklblLedgerGridRemove.Size = new System.Drawing.Size(60, 17);
+            this.lnklblLedgerGridRemove.Size = new System.Drawing.Size(47, 13);
             this.lnklblLedgerGridRemove.TabIndex = 8899;
             this.lnklblLedgerGridRemove.TabStop = true;
             this.lnklblLedgerGridRemove.Text = "Remove";
@@ -1403,10 +1398,10 @@ namespace LoginForm
             // 
             this.lblVoucherNo.AutoSize = true;
             this.lblVoucherNo.ForeColor = System.Drawing.Color.Red;
-            this.lblVoucherNo.Location = new System.Drawing.Point(429, 149);
-            this.lblVoucherNo.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.lblVoucherNo.Location = new System.Drawing.Point(322, 121);
+            this.lblVoucherNo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.lblVoucherNo.Name = "lblVoucherNo";
-            this.lblVoucherNo.Size = new System.Drawing.Size(13, 17);
+            this.lblVoucherNo.Size = new System.Drawing.Size(11, 13);
             this.lblVoucherNo.TabIndex = 8900;
             this.lblVoucherNo.Text = "*";
             // 
@@ -1414,10 +1409,10 @@ namespace LoginForm
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(429, 53);
-            this.label3.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.label3.Location = new System.Drawing.Point(322, 43);
+            this.label3.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(13, 17);
+            this.label3.Size = new System.Drawing.Size(11, 13);
             this.label3.TabIndex = 8901;
             this.label3.Text = "*";
             // 
@@ -1425,30 +1420,30 @@ namespace LoginForm
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(429, 22);
-            this.label4.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.label4.Location = new System.Drawing.Point(322, 18);
+            this.label4.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(13, 17);
+            this.label4.Size = new System.Drawing.Size(11, 13);
             this.label4.TabIndex = 8902;
             this.label4.Text = "*";
             // 
             // txtCustomerName
             // 
-            this.txtCustomerName.Location = new System.Drawing.Point(810, 144);
-            this.txtCustomerName.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.txtCustomerName.Location = new System.Drawing.Point(608, 117);
+            this.txtCustomerName.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.txtCustomerName.Name = "txtCustomerName";
             this.txtCustomerName.ReadOnly = true;
-            this.txtCustomerName.Size = new System.Drawing.Size(236, 22);
+            this.txtCustomerName.Size = new System.Drawing.Size(178, 20);
             this.txtCustomerName.TabIndex = 8903;
             // 
             // cmbPricingLevel
             // 
             this.cmbPricingLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPricingLevel.FormattingEnabled = true;
-            this.cmbPricingLevel.Location = new System.Drawing.Point(691, 112);
-            this.cmbPricingLevel.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.cmbPricingLevel.Location = new System.Drawing.Point(518, 91);
+            this.cmbPricingLevel.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.cmbPricingLevel.Name = "cmbPricingLevel";
-            this.cmbPricingLevel.Size = new System.Drawing.Size(118, 24);
+            this.cmbPricingLevel.Size = new System.Drawing.Size(90, 21);
             this.cmbPricingLevel.TabIndex = 8904;
             // 
             // btnSelectSaleOrders
@@ -1456,9 +1451,10 @@ namespace LoginForm
             this.btnSelectSaleOrders.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.btnSelectSaleOrders.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSelectSaleOrders.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSelectSaleOrders.Location = new System.Drawing.Point(826, 112);
+            this.btnSelectSaleOrders.Location = new System.Drawing.Point(620, 91);
+            this.btnSelectSaleOrders.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSelectSaleOrders.Name = "btnSelectSaleOrders";
-            this.btnSelectSaleOrders.Size = new System.Drawing.Size(220, 24);
+            this.btnSelectSaleOrders.Size = new System.Drawing.Size(165, 20);
             this.btnSelectSaleOrders.TabIndex = 8905;
             this.btnSelectSaleOrders.Text = "Select Sale Orders";
             this.btnSelectSaleOrders.UseVisualStyleBackColor = false;
@@ -1466,10 +1462,10 @@ namespace LoginForm
             // 
             // frmDeliveryNote
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(165)))), ((int)(((byte)(203)))));
-            this.ClientSize = new System.Drawing.Size(1068, 778);
+            this.ClientSize = new System.Drawing.Size(801, 632);
             this.Controls.Add(this.btnSelectSaleOrders);
             this.Controls.Add(this.cmbPricingLevel);
             this.Controls.Add(this.txtCustomerName);
@@ -1539,10 +1535,9 @@ namespace LoginForm
             this.Controls.Add(this.lblDate);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "frmDeliveryNote";
-            this.Padding = new System.Windows.Forms.Padding(20, 12, 20, 12);
+            this.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Delivery Note";
             this.Load += new System.EventHandler(this.frmSalesInvoice_Load);
@@ -1634,7 +1629,6 @@ namespace LoginForm
         private System.Windows.Forms.DataGridView dgvSalesInvoice;
         private System.Windows.Forms.DataGridView dgvSalesInvoiceLedger;
         private System.Windows.Forms.DataGridView dgvSalesInvoiceTax;
-        private System.Windows.Forms.TextBox txtCustomerName;
         private System.Windows.Forms.ComboBox cmbPricingLevel;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtSalesInvoiceSlno;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvPOno;
@@ -1671,5 +1665,6 @@ namespace LoginForm
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtSalesInvoiceVoucherTypeId;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtSalesInvoiceAmount;
         private System.Windows.Forms.Button btnSelectSaleOrders;
+        public System.Windows.Forms.TextBox txtCustomerName;
     }
 }
