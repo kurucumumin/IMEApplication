@@ -7198,7 +7198,7 @@ namespace LoginForm
                 {
                     cmbSalesMan.Focus();
                 }
-                if (e.KeyCode == Keys.Back)
+                else if (e.KeyCode == Keys.Back)
                 {
                     if (txtCustomer.Text == string.Empty || txtCustomer.SelectionStart == 0)
                     {
@@ -7594,9 +7594,7 @@ namespace LoginForm
             if (result == DialogResult.OK)
             {
                 customer = form.customer;
-                //cbWorkers.DataSource = customer.CustomerWorkers.ToList();
-                //cbWorkers.DisplayMember = "cw_name";
-                //cbWorkers.ValueMember = "ID";
+                cmbCurrency.SelectedIndex = cmbCurrency.FindStringExact(customer.CurrNameQuo);
             }
             this.Enabled = true;
             fillCustomer();
@@ -7661,6 +7659,18 @@ namespace LoginForm
         {
             SaleOrderToDeliveryNote form = new SaleOrderToDeliveryNote(this);
             form.Show();
+        }
+
+        private void txtCustomerName_TextChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtCustomerName.Text))
+            {
+                btnSelectSaleOrders.Enabled = false;
+            }
+            else
+            {
+                btnSelectSaleOrders.Enabled = true;
+            }
         }
     }
 }
