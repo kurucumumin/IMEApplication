@@ -79,7 +79,7 @@ namespace LoginForm.Account.Services
                 if (isEditMode == true)
                 {
                     DataRow row = null;
-                    ////TODO MonthlySalaryVoucherDetailViewAll tekrar bakılacak
+                    
                     var adapter = IME.MonthlySalaryVoucherDetailsViewAll(strMonth, Month, monthYear, decEditMode, strVoucherNoforEdit).ToList();
 
                     foreach (var item in adapter)
