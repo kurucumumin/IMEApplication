@@ -48,7 +48,7 @@ namespace LoginForm.DataSet
         public Nullable<decimal> deliveryNoteDetailsId { get; set; }
         public Nullable<int> quotationDetailsId { get; set; }
         public Nullable<decimal> SaleOrderID { get; set; }
-        public Nullable<int> SendedItemQuantity { get; set; }
+        public Nullable<int> SentItemQuantity { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DeliveryNoteDetail> DeliveryNoteDetails { get; set; }

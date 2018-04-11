@@ -38,6 +38,7 @@ namespace LoginForm.DataSet
         public Nullable<decimal> taxAmount { get; set; }
         public Nullable<decimal> grossAmount { get; set; }
         public Nullable<decimal> netAmount { get; set; }
+        public Nullable<bool> Closed { get; set; }
     
         public virtual Batch Batch { get; set; }
         public virtual DeliveryNoteMaster DeliveryNoteMaster { get; set; }

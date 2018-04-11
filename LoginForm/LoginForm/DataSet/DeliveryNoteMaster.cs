@@ -24,7 +24,7 @@ namespace LoginForm.DataSet
     
         public decimal deliveryNoteMasterId { get; set; }
         public string voucherNo { get; set; }
-        public string invoiceNo { get; set; }
+        public string DeliveryNoteNo { get; set; }
         public Nullable<decimal> voucherTypeId { get; set; }
         public Nullable<decimal> suffixPrefixId { get; set; }
         public Nullable<System.DateTime> date { get; set; }

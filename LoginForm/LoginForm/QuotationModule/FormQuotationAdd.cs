@@ -1377,7 +1377,7 @@ namespace LoginForm.QuotationModule
 
                 #region ItemMarginFiller
 
-                int quantity = Int32.Parse(ItemTabDetails.Col1Break.ToString()??"0");
+                int quantity = Int32.Parse(ItemTabDetails.Col1Break.ToString() ?? "0");
                 if (quantity != 0)
                 {
                     decimal margin1 = 0;
@@ -1449,8 +1449,8 @@ namespace LoginForm.QuotationModule
 
                 }
                 if (CurrentRow.Cells["dgUOM"].Value == null && CurrentRow.Cells["dgUC"].Value != null)
-            { CurrentRow.Cells["dgUOM"].Value = "Each"; }
-            #endregion
+                { CurrentRow.Cells["dgUOM"].Value = "Each"; }
+                #endregion
 
                 #region Low Margin Mark Clear
                 if (txtLithium.Text != "")
@@ -2370,7 +2370,7 @@ namespace LoginForm.QuotationModule
 
                     txtMargin1.Text = ((1 - ((margin1) / (decimal.Parse(txtWeb1.Text)))) * 100).ToString();
                     int quantity2 = 0;
-                     quantity2 = Int32.Parse(ItemTabDetails.Col2Break.ToString());
+                    quantity2 = Int32.Parse(ItemTabDetails.Col2Break.ToString());
                     decimal margin2 = 0;
                     margin2 = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
                                      , quantity2));
@@ -2434,7 +2434,7 @@ namespace LoginForm.QuotationModule
 
                 }
             }
-                if (CurrentRow.Cells["dgUOM"].Value == null && CurrentRow.Cells["dgUC"].Value != null)
+            if (CurrentRow.Cells["dgUOM"].Value == null && CurrentRow.Cells["dgUC"].Value != null)
                 { CurrentRow.Cells["dgUOM"].Value = "Each"; }
                 #endregion
 

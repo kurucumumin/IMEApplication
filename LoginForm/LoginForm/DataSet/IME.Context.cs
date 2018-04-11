@@ -3246,6 +3246,15 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("HolliDayChecking", dateParameter);
         }
     
+        public virtual ObjectResult<ItemDetailTabFiller_Result> ItemDetailTabFiller(string articleNo)
+        {
+            var articleNoParameter = articleNo != null ?
+                new ObjectParameter("articleNo", articleNo) :
+                new ObjectParameter("articleNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ItemDetailTabFiller_Result>("ItemDetailTabFiller", articleNoParameter);
+        }
+    
         public virtual ObjectResult<Nullable<decimal>> JournalMasterIdView(Nullable<decimal> voucherTypeId, string voucherNo)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
@@ -6069,9 +6078,13 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SaleOrderItemsToDeliveryNote_Result>("SaleOrderItemsToDeliveryNote", saleOrderIDParameter);
         }
     
-        public virtual ObjectResult<SaleOrderToDeliveryNote_Result> SaleOrderToDeliveryNote()
+        public virtual ObjectResult<SaleOrderToDeliveryNote_Result> SaleOrderToDeliveryNote(string customerNo)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SaleOrderToDeliveryNote_Result>("SaleOrderToDeliveryNote");
+            var customerNoParameter = customerNo != null ?
+                new ObjectParameter("CustomerNo", customerNo) :
+                new ObjectParameter("CustomerNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SaleOrderToDeliveryNote_Result>("SaleOrderToDeliveryNote", customerNoParameter);
         }
     
         public virtual ObjectResult<SalesAccountComboFill_Result> SalesAccountComboFill()
