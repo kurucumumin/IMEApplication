@@ -523,6 +523,7 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="userId" Type="int" />
           <Property Name="lrNo" Type="varchar(max)" />
           <Property Name="transportationCompany" Type="varchar(max)" />
+          <Property Name="quotationMasterId" Type="nvarchar" MaxLength="20" />
           <Property Name="financialYearId" Type="numeric" Precision="18" Scale="0" />
           <Property Name="salesAccount" Type="numeric" Precision="18" Scale="0" />
           <Property Name="taxAmount" Type="decimal" Precision="18" Scale="5" />
@@ -530,6 +531,7 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="billDiscount" Type="decimal" Precision="18" Scale="5" />
           <Property Name="grandTotal" Type="decimal" Precision="18" Scale="5" />
           <Property Name="POS" Type="bit" />
+          <Property Name="counterId" Type="numeric" Precision="18" Scale="0" />
           <Property Name="creditPeriod" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Designation">
@@ -2369,65 +2371,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="defaultPackageId" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'IME.dbo.CompleteItems' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="CompleteItems">
-          <Key>
-            <PropertyRef Name="Article_No" />
-            <PropertyRef Name="dependantTable" />
-          </Key>
-          <Property Name="Article_No" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Article_Desc" Type="nvarchar" MaxLength="50" />
-          <Property Name="Pack_Quantity" Type="int" />
-          <Property Name="Unit_Content" Type="int" />
-          <Property Name="Unit_Measure" Type="nvarchar" MaxLength="50" />
-          <Property Name="MPN" Type="nvarchar" MaxLength="50" />
-          <Property Name="Calibration_Ind" Type="nvarchar" MaxLength="50" />
-          <Property Name="Standard_Weight" Type="decimal" Precision="18" Scale="5" />
-          <Property Name="Hazardous_Ind" Type="nvarchar" MaxLength="50" />
-          <Property Name="Obsolete_Flag" Type="nvarchar" MaxLength="50" />
-          <Property Name="Low_Discount_Ind" Type="nvarchar" MaxLength="50" />
-          <Property Name="Licensed_Ind" Type="nvarchar" MaxLength="50" />
-          <Property Name="Shelf_Life" Type="nvarchar" MaxLength="50" />
-          <Property Name="CofO" Type="nvarchar" MaxLength="50" />
-          <Property Name="CCCN_No" Type="int" />
-          <Property Name="Uk_Intro_Date" Type="nvarchar" MaxLength="50" />
-          <Property Name="Uk_Disc_Date" Type="nvarchar" MaxLength="50" />
-          <Property Name="BHC_Flag" Type="nvarchar" MaxLength="50" />
-          <Property Name="Disc_Change_Ind" Type="nvarchar" MaxLength="50" />
-          <Property Name="Expiring_Product_Change_Ind" Type="nvarchar" MaxLength="50" />
-          <Property Name="Manufacturer" Type="nvarchar" MaxLength="50" />
-          <Property Name="MH_Code_Level_1" Type="nvarchar" MaxLength="50" />
-          <Property Name="Heigh" Type="decimal" Precision="20" Scale="5" />
-          <Property Name="Width" Type="decimal" Precision="20" Scale="5" />
-          <Property Name="Length" Type="decimal" Precision="20" Scale="5" />
-          <Property Name="OnhandStockBalance" Type="int" />
-          <Property Name="QuantityonOrder" Type="int" />
-          <Property Name="Col1Break" Type="int" />
-          <Property Name="Col2Break" Type="int" />
-          <Property Name="Col3Break" Type="int" />
-          <Property Name="Col4Break" Type="int" />
-          <Property Name="Col5Break" Type="int" />
-          <Property Name="Col1Price" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="Col2Price" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="Col3Price" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="Col4Price" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="Col5Price" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="DiscountedPrice1" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="DiscountedPrice2" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="DiscountedPrice3" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="DiscountedPrice4" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="DiscountedPrice5" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="SupersectionName" Type="nvarchar" MaxLength="100" />
-          <Property Name="DiscontinuationDate" Type="nvarchar" MaxLength="20" />
-          <Property Name="Runon" Type="int" />
-          <Property Name="Referral" Type="int" />
-          <Property Name="Environment" Type="int" />
-          <Property Name="Lithium" Type="nvarchar" MaxLength="50" />
-          <Property Name="Shipping" Type="nvarchar" MaxLength="50" />
-          <Property Name="LicenceType" Type="nvarchar" MaxLength="5" />
-          <Property Name="dependantTable" Type="varchar" MaxLength="3" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="V_Product">
           <Key>
@@ -3240,7 +3183,19 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DeliveryN__order__62DA889B">
+        <Association Name="FK__DeliveryN__order__5674B1B6">
+          <End Role="SaleOrder" Type="Self.SaleOrder" Multiplicity="0..1" />
+          <End Role="DeliveryNoteMaster" Type="Self.DeliveryNoteMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SaleOrder">
+              <PropertyRef Name="SaleOrderID" />
+            </Principal>
+            <Dependent Role="DeliveryNoteMaster">
+              <PropertyRef Name="orderMasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DeliveryN__order__5768D5EF">
           <End Role="SaleOrder" Type="Self.SaleOrder" Multiplicity="0..1" />
           <End Role="DeliveryNoteMaster" Type="Self.DeliveryNoteMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3264,6 +3219,18 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__DeliveryN__quota__25077354">
+          <End Role="Quotation" Type="Self.Quotation" Multiplicity="0..1" />
+          <End Role="DeliveryNoteMaster" Type="Self.DeliveryNoteMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quotation">
+              <PropertyRef Name="QuotationNo" />
+            </Principal>
+            <Dependent Role="DeliveryNoteMaster">
+              <PropertyRef Name="quotationMasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__DeliveryN__rackI__36F11965">
           <End Role="Rack" Type="Self.Rack" Multiplicity="0..1" />
           <End Role="DeliveryNoteDetail" Type="Self.DeliveryNoteDetail" Multiplicity="*" />
@@ -3276,7 +3243,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DeliveryN__SaleO__6A7BAA63">
+        <Association Name="FK__DeliveryN__SaleO__5FFE1BF0">
           <End Role="SaleOrderDetail" Type="Self.SaleOrderDetail" Multiplicity="1" />
           <End Role="DeliveryNoteDetail" Type="Self.DeliveryNoteDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -9214,91 +9181,36 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <EntitySet Name="VoucherTypeTax" EntityType="Self.VoucherTypeTax" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Worker" EntityType="Self.Worker" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AdditionalCost" EntityType="Self.AdditionalCost" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [AdditionalCost].[additionalCostId] AS [additionalCostId], 
-    [AdditionalCost].[voucherTypeId] AS [voucherTypeId], 
-    [AdditionalCost].[voucherNo] AS [voucherNo], 
-    [AdditionalCost].[ledgerId] AS [ledgerId], 
-    [AdditionalCost].[debit] AS [debit], 
+            <DefiningQuery>SELECT
+    [AdditionalCost].[additionalCostId] AS [additionalCostId],
+    [AdditionalCost].[voucherTypeId] AS [voucherTypeId],
+    [AdditionalCost].[voucherNo] AS [voucherNo],
+    [AdditionalCost].[ledgerId] AS [ledgerId],
+    [AdditionalCost].[debit] AS [debit],
     [AdditionalCost].[credit] AS [credit]
     FROM [dbo].[AdditionalCost] AS [AdditionalCost]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="SalaryVoucherDetail" EntityType="Self.SalaryVoucherDetail" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [SalaryVoucherDetail].[salaryVoucherDetailsId] AS [salaryVoucherDetailsId], 
-    [SalaryVoucherDetail].[salaryVoucherMasterId] AS [salaryVoucherMasterId], 
-    [SalaryVoucherDetail].[employeeId] AS [employeeId], 
-    [SalaryVoucherDetail].[bonus] AS [bonus], 
-    [SalaryVoucherDetail].[deduction] AS [deduction], 
-    [SalaryVoucherDetail].[advance] AS [advance], 
-    [SalaryVoucherDetail].[lop] AS [lop], 
-    [SalaryVoucherDetail].[salary] AS [salary], 
+            <DefiningQuery>SELECT
+    [SalaryVoucherDetail].[salaryVoucherDetailsId] AS [salaryVoucherDetailsId],
+    [SalaryVoucherDetail].[salaryVoucherMasterId] AS [salaryVoucherMasterId],
+    [SalaryVoucherDetail].[employeeId] AS [employeeId],
+    [SalaryVoucherDetail].[bonus] AS [bonus],
+    [SalaryVoucherDetail].[deduction] AS [deduction],
+    [SalaryVoucherDetail].[advance] AS [advance],
+    [SalaryVoucherDetail].[lop] AS [lop],
+    [SalaryVoucherDetail].[salary] AS [salary],
     [SalaryVoucherDetail].[status] AS [status]
     FROM [dbo].[SalaryVoucherDetail] AS [SalaryVoucherDetail]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="CompleteItems" EntityType="Self.CompleteItems" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [CompleteItems].[Article_No] AS [Article_No], 
-    [CompleteItems].[Article_Desc] AS [Article_Desc], 
-    [CompleteItems].[Pack_Quantity] AS [Pack_Quantity], 
-    [CompleteItems].[Unit_Content] AS [Unit_Content], 
-    [CompleteItems].[Unit_Measure] AS [Unit_Measure], 
-    [CompleteItems].[MPN] AS [MPN], 
-    [CompleteItems].[Calibration_Ind] AS [Calibration_Ind], 
-    [CompleteItems].[Standard_Weight] AS [Standard_Weight], 
-    [CompleteItems].[Hazardous_Ind] AS [Hazardous_Ind], 
-    [CompleteItems].[Obsolete_Flag] AS [Obsolete_Flag], 
-    [CompleteItems].[Low_Discount_Ind] AS [Low_Discount_Ind], 
-    [CompleteItems].[Licensed_Ind] AS [Licensed_Ind], 
-    [CompleteItems].[Shelf_Life] AS [Shelf_Life], 
-    [CompleteItems].[CofO] AS [CofO], 
-    [CompleteItems].[CCCN_No] AS [CCCN_No], 
-    [CompleteItems].[Uk_Intro_Date] AS [Uk_Intro_Date], 
-    [CompleteItems].[Uk_Disc_Date] AS [Uk_Disc_Date], 
-    [CompleteItems].[BHC_Flag] AS [BHC_Flag], 
-    [CompleteItems].[Disc_Change_Ind] AS [Disc_Change_Ind], 
-    [CompleteItems].[Expiring_Product_Change_Ind] AS [Expiring_Product_Change_Ind], 
-    [CompleteItems].[Manufacturer] AS [Manufacturer], 
-    [CompleteItems].[MH_Code_Level_1] AS [MH_Code_Level_1], 
-    [CompleteItems].[Heigh] AS [Heigh], 
-    [CompleteItems].[Width] AS [Width], 
-    [CompleteItems].[Length] AS [Length], 
-    [CompleteItems].[OnhandStockBalance] AS [OnhandStockBalance], 
-    [CompleteItems].[QuantityonOrder] AS [QuantityonOrder], 
-    [CompleteItems].[Col1Break] AS [Col1Break], 
-    [CompleteItems].[Col2Break] AS [Col2Break], 
-    [CompleteItems].[Col3Break] AS [Col3Break], 
-    [CompleteItems].[Col4Break] AS [Col4Break], 
-    [CompleteItems].[Col5Break] AS [Col5Break], 
-    [CompleteItems].[Col1Price] AS [Col1Price], 
-    [CompleteItems].[Col2Price] AS [Col2Price], 
-    [CompleteItems].[Col3Price] AS [Col3Price], 
-    [CompleteItems].[Col4Price] AS [Col4Price], 
-    [CompleteItems].[Col5Price] AS [Col5Price], 
-    [CompleteItems].[DiscountedPrice1] AS [DiscountedPrice1], 
-    [CompleteItems].[DiscountedPrice2] AS [DiscountedPrice2], 
-    [CompleteItems].[DiscountedPrice3] AS [DiscountedPrice3], 
-    [CompleteItems].[DiscountedPrice4] AS [DiscountedPrice4], 
-    [CompleteItems].[DiscountedPrice5] AS [DiscountedPrice5], 
-    [CompleteItems].[SupersectionName] AS [SupersectionName], 
-    [CompleteItems].[DiscontinuationDate] AS [DiscontinuationDate], 
-    [CompleteItems].[Runon] AS [Runon], 
-    [CompleteItems].[Referral] AS [Referral], 
-    [CompleteItems].[Environment] AS [Environment], 
-    [CompleteItems].[Lithium] AS [Lithium], 
-    [CompleteItems].[Shipping] AS [Shipping], 
-    [CompleteItems].[LicenceType] AS [LicenceType], 
-    [CompleteItems].[dependantTable] AS [dependantTable]
-    FROM [dbo].[CompleteItems] AS [CompleteItems]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="V_Product" EntityType="Self.V_Product" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [V_Product].[productId] AS [productId], 
-    [V_Product].[productCode] AS [productCode], 
-    [V_Product].[Unit_Measure] AS [Unit_Measure], 
-    [V_Product].[Brandname] AS [Brandname], 
-    [V_Product].[MPN] AS [MPN], 
-    [V_Product].[Cost] AS [Cost], 
+            <DefiningQuery>SELECT
+    [V_Product].[productId] AS [productId],
+    [V_Product].[productCode] AS [productCode],
+    [V_Product].[Unit_Measure] AS [Unit_Measure],
+    [V_Product].[Brandname] AS [Brandname],
+    [V_Product].[MPN] AS [MPN],
+    [V_Product].[Cost] AS [Cost],
     [V_Product].[dependantTable] AS [dependantTable]
     FROM [dbo].[V_Product] AS [V_Product]</DefiningQuery>
           </EntitySet>
@@ -9566,7 +9478,11 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="AccountLedger" EntitySet="AccountLedger" />
             <End Role="DeliveryNoteMaster" EntitySet="DeliveryNoteMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__DeliveryN__order__62DA889B" Association="Self.FK__DeliveryN__order__62DA889B">
+          <AssociationSet Name="FK__DeliveryN__order__5674B1B6" Association="Self.FK__DeliveryN__order__5674B1B6">
+            <End Role="SaleOrder" EntitySet="SaleOrder" />
+            <End Role="DeliveryNoteMaster" EntitySet="DeliveryNoteMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DeliveryN__order__5768D5EF" Association="Self.FK__DeliveryN__order__5768D5EF">
             <End Role="SaleOrder" EntitySet="SaleOrder" />
             <End Role="DeliveryNoteMaster" EntitySet="DeliveryNoteMaster" />
           </AssociationSet>
@@ -9574,11 +9490,15 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="PricingLevel" EntitySet="PricingLevel" />
             <End Role="DeliveryNoteMaster" EntitySet="DeliveryNoteMaster" />
           </AssociationSet>
+          <AssociationSet Name="FK__DeliveryN__quota__25077354" Association="Self.FK__DeliveryN__quota__25077354">
+            <End Role="Quotation" EntitySet="Quotation" />
+            <End Role="DeliveryNoteMaster" EntitySet="DeliveryNoteMaster" />
+          </AssociationSet>
           <AssociationSet Name="FK__DeliveryN__rackI__36F11965" Association="Self.FK__DeliveryN__rackI__36F11965">
             <End Role="Rack" EntitySet="Rack" />
             <End Role="DeliveryNoteDetail" EntitySet="DeliveryNoteDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__DeliveryN__SaleO__6A7BAA63" Association="Self.FK__DeliveryN__SaleO__6A7BAA63">
+          <AssociationSet Name="FK__DeliveryN__SaleO__5FFE1BF0" Association="Self.FK__DeliveryN__SaleO__5FFE1BF0">
             <End Role="SaleOrderDetail" EntitySet="SaleOrderDetail" />
             <End Role="DeliveryNoteDetail" EntitySet="DeliveryNoteDetail" />
           </AssociationSet>
@@ -11333,7 +11253,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <NavigationProperty Name="DeliveryNoteMaster" Relationship="Self.FK__DeliveryN__deliv__48DABF76" FromRole="DeliveryNoteDetail" ToRole="DeliveryNoteMaster" />
           <NavigationProperty Name="Godown" Relationship="Self.FK__DeliveryN__godow__3AC1AA49" FromRole="DeliveryNoteDetail" ToRole="Godown" />
           <NavigationProperty Name="Rack" Relationship="Self.FK__DeliveryN__rackI__36F11965" FromRole="DeliveryNoteDetail" ToRole="Rack" />
-          <NavigationProperty Name="SaleOrderDetail" Relationship="Self.FK__DeliveryN__SaleO__6A7BAA63" FromRole="DeliveryNoteDetail" ToRole="SaleOrderDetail" />
+          <NavigationProperty Name="SaleOrderDetail" Relationship="Self.FK__DeliveryN__SaleO__5FFE1BF0" FromRole="DeliveryNoteDetail" ToRole="SaleOrderDetail" />
           <NavigationProperty Name="Unit" Relationship="Self.FK__DeliveryN__unitI__38D961D7" FromRole="DeliveryNoteDetail" ToRole="Unit" />
           <NavigationProperty Name="SalesDetails" Relationship="Self.FK__SalesDeta__deliv__1A1FD08D" FromRole="DeliveryNoteDetail" ToRole="SalesDetails" />
         </EntityType>
@@ -11356,6 +11276,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="userId" Type="Int32" />
           <Property Name="lrNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="transportationCompany" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="quotationMasterId" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="financialYearId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="salesAccount" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="taxAmount" Type="Decimal" Precision="18" Scale="5" />
@@ -11363,13 +11284,16 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="billDiscount" Type="Decimal" Precision="18" Scale="5" />
           <Property Name="grandTotal" Type="Decimal" Precision="18" Scale="5" />
           <Property Name="POS" Type="Boolean" />
+          <Property Name="counterId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="creditPeriod" Type="Int32" Nullable="false" />
           <NavigationProperty Name="AccountLedger" Relationship="Self.FK__DeliveryN__ledge__2136E270" FromRole="DeliveryNoteMaster" ToRole="AccountLedger" />
           <NavigationProperty Name="DeliveryNoteDetails" Relationship="Self.FK__DeliveryN__deliv__48DABF76" FromRole="DeliveryNoteMaster" ToRole="DeliveryNoteDetail" />
           <NavigationProperty Name="ExchangeRate" Relationship="Self.FK__DeliveryN__excha__231F2AE2" FromRole="DeliveryNoteMaster" ToRole="ExchangeRate" />
           <NavigationProperty Name="FinancialYear" Relationship="Self.FK__DeliveryN__finan__25FB978D" FromRole="DeliveryNoteMaster" ToRole="FinancialYear" />
-          <NavigationProperty Name="SaleOrder" Relationship="Self.FK__DeliveryN__order__62DA889B" FromRole="DeliveryNoteMaster" ToRole="SaleOrder" />
+          <NavigationProperty Name="SaleOrder" Relationship="Self.FK__DeliveryN__order__5674B1B6" FromRole="DeliveryNoteMaster" ToRole="SaleOrder" />
+          <NavigationProperty Name="SaleOrder1" Relationship="Self.FK__DeliveryN__order__5768D5EF" FromRole="DeliveryNoteMaster" ToRole="SaleOrder" />
           <NavigationProperty Name="PricingLevel" Relationship="Self.FK__DeliveryN__prici__222B06A9" FromRole="DeliveryNoteMaster" ToRole="PricingLevel" />
+          <NavigationProperty Name="Quotation" Relationship="Self.FK__DeliveryN__quota__25077354" FromRole="DeliveryNoteMaster" ToRole="Quotation" />
           <NavigationProperty Name="SuffixPrefix" Relationship="Self.FK__DeliveryN__suffi__2042BE37" FromRole="DeliveryNoteMaster" ToRole="SuffixPrefix" />
           <NavigationProperty Name="Worker" Relationship="Self.FK__DeliveryN__userI__24134F1B" FromRole="DeliveryNoteMaster" ToRole="Worker" />
           <NavigationProperty Name="VoucherType" Relationship="Self.FK__DeliveryN__vouch__1F4E99FE" FromRole="DeliveryNoteMaster" ToRole="VoucherType" />
@@ -12435,6 +12359,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="status" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Currency" Relationship="Self.FK__Quotation__Curre__0A096455" FromRole="Quotation" ToRole="Currency" />
           <NavigationProperty Name="Customer" Relationship="Self.FK__Quotation__Custo__00750D23" FromRole="Quotation" ToRole="Customer" />
+          <NavigationProperty Name="DeliveryNoteMasters" Relationship="Self.FK__DeliveryN__quota__25077354" FromRole="Quotation" ToRole="DeliveryNoteMaster" />
           <NavigationProperty Name="ExchangeRate" Relationship="Self.FK__Quotation__Excha__4321E620" FromRole="Quotation" ToRole="ExchangeRate" />
           <NavigationProperty Name="Note" Relationship="Self.FK__Quotation__NoteF__0169315C" FromRole="Quotation" ToRole="Notes" />
           <NavigationProperty Name="Note1" Relationship="Self.FK__Quotation__NoteF__025D5595" FromRole="Quotation" ToRole="Notes" />
@@ -12834,7 +12759,8 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <NavigationProperty Name="CustomerWorker" Relationship="Self.FK__SaleOrder__Conta__1DD065E0" FromRole="SaleOrder" ToRole="CustomerWorker" />
           <NavigationProperty Name="CustomerWorker1" Relationship="Self.FK__SaleOrder__Conta__1EC48A19" FromRole="SaleOrder" ToRole="CustomerWorker" />
           <NavigationProperty Name="CustomerWorker2" Relationship="Self.FK__SaleOrder__Deliv__1FB8AE52" FromRole="SaleOrder" ToRole="CustomerWorker" />
-          <NavigationProperty Name="DeliveryNoteMasters" Relationship="Self.FK__DeliveryN__order__62DA889B" FromRole="SaleOrder" ToRole="DeliveryNoteMaster" />
+          <NavigationProperty Name="DeliveryNoteMasters" Relationship="Self.FK__DeliveryN__order__5674B1B6" FromRole="SaleOrder" ToRole="DeliveryNoteMaster" />
+          <NavigationProperty Name="DeliveryNoteMasters1" Relationship="Self.FK__DeliveryN__order__5768D5EF" FromRole="SaleOrder" ToRole="DeliveryNoteMaster" />
           <NavigationProperty Name="ExchangeRate" Relationship="Self.FK__SaleOrder__excha__5C229E14" FromRole="SaleOrder" ToRole="ExchangeRate" />
           <NavigationProperty Name="FinancialYear" Relationship="Self.FK_SaleOrder_FinancialYear" FromRole="SaleOrder" ToRole="FinancialYear" />
           <NavigationProperty Name="PaymentMethod" Relationship="Self.FK__SaleOrder__Payme__1BE81D6E" FromRole="SaleOrder" ToRole="PaymentMethod" />
@@ -12877,7 +12803,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="quotationDetailsId" Type="Int32" />
           <Property Name="SaleOrderID" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="SentItemQuantity" Type="Int32" />
-          <NavigationProperty Name="DeliveryNoteDetails" Relationship="Self.FK__DeliveryN__SaleO__6A7BAA63" FromRole="SaleOrderDetail" ToRole="DeliveryNoteDetail" />
+          <NavigationProperty Name="DeliveryNoteDetails" Relationship="Self.FK__DeliveryN__SaleO__5FFE1BF0" FromRole="SaleOrderDetail" ToRole="DeliveryNoteDetail" />
           <NavigationProperty Name="QuotationDetail" Relationship="Self.FK__SaleOrder__quota__310335E5" FromRole="SaleOrderDetail" ToRole="QuotationDetail" />
           <NavigationProperty Name="SaleOrder" Relationship="Self.FK_SaleOrderDetail_SaleOrder" FromRole="SaleOrderDetail" ToRole="SaleOrder" />
           <NavigationProperty Name="SalesReturnDetails" Relationship="Self.FK__SalesRetu__sales__54817C4C" FromRole="SaleOrderDetail" ToRole="SalesReturnDetails" />
@@ -13758,63 +13684,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="SalaryVoucherMaster" Relationship="Self.FK__SalaryVou__salar__77FFC2B3" FromRole="SalaryVoucherDetail" ToRole="SalaryVoucherMaster" />
           <NavigationProperty Name="Worker" Relationship="Self.FK__SalaryVou__emplo__78F3E6EC" FromRole="SalaryVoucherDetail" ToRole="Worker" />
-        </EntityType>
-        <EntityType Name="CompleteItem">
-          <Key>
-            <PropertyRef Name="Article_No" />
-            <PropertyRef Name="dependantTable" />
-          </Key>
-          <Property Name="Article_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Article_Desc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Pack_Quantity" Type="Int32" />
-          <Property Name="Unit_Content" Type="Int32" />
-          <Property Name="Unit_Measure" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MPN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Calibration_Ind" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Standard_Weight" Type="Decimal" Precision="18" Scale="5" />
-          <Property Name="Hazardous_Ind" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Obsolete_Flag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Low_Discount_Ind" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Licensed_Ind" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Shelf_Life" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CofO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CCCN_No" Type="Int32" />
-          <Property Name="Uk_Intro_Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Uk_Disc_Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="BHC_Flag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Disc_Change_Ind" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Expiring_Product_Change_Ind" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MH_Code_Level_1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Heigh" Type="Decimal" Precision="20" Scale="5" />
-          <Property Name="Width" Type="Decimal" Precision="20" Scale="5" />
-          <Property Name="Length" Type="Decimal" Precision="20" Scale="5" />
-          <Property Name="OnhandStockBalance" Type="Int32" />
-          <Property Name="QuantityonOrder" Type="Int32" />
-          <Property Name="Col1Break" Type="Int32" />
-          <Property Name="Col2Break" Type="Int32" />
-          <Property Name="Col3Break" Type="Int32" />
-          <Property Name="Col4Break" Type="Int32" />
-          <Property Name="Col5Break" Type="Int32" />
-          <Property Name="Col1Price" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="Col2Price" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="Col3Price" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="Col4Price" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="Col5Price" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="DiscountedPrice1" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="DiscountedPrice2" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="DiscountedPrice3" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="DiscountedPrice4" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="DiscountedPrice5" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="SupersectionName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="DiscontinuationDate" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Runon" Type="Int32" />
-          <Property Name="Referral" Type="Int32" />
-          <Property Name="Environment" Type="Int32" />
-          <Property Name="Lithium" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Shipping" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="LicenceType" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
-          <Property Name="dependantTable" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="V_Product">
           <Key>
@@ -15137,7 +15006,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DeliveryN__SaleO__6A7BAA63">
+        <Association Name="FK__DeliveryN__SaleO__5FFE1BF0">
           <End Role="SaleOrderDetail" Type="Self.SaleOrderDetail" Multiplicity="1" />
           <End Role="DeliveryNoteDetail" Type="Self.DeliveryNoteDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -15197,7 +15066,19 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DeliveryN__order__62DA889B">
+        <Association Name="FK__DeliveryN__order__5674B1B6">
+          <End Role="SaleOrder" Type="Self.SaleOrder" Multiplicity="0..1" />
+          <End Role="DeliveryNoteMaster" Type="Self.DeliveryNoteMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SaleOrder">
+              <PropertyRef Name="SaleOrderID" />
+            </Principal>
+            <Dependent Role="DeliveryNoteMaster">
+              <PropertyRef Name="orderMasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DeliveryN__order__5768D5EF">
           <End Role="SaleOrder" Type="Self.SaleOrder" Multiplicity="0..1" />
           <End Role="DeliveryNoteMaster" Type="Self.DeliveryNoteMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -15218,6 +15099,18 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Principal>
             <Dependent Role="DeliveryNoteMaster">
               <PropertyRef Name="pricinglevelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DeliveryN__quota__25077354">
+          <End Role="Quotation" Type="Self.Quotation" Multiplicity="0..1" />
+          <End Role="DeliveryNoteMaster" Type="Self.DeliveryNoteMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quotation">
+              <PropertyRef Name="QuotationNo" />
+            </Principal>
+            <Dependent Role="DeliveryNoteMaster">
+              <PropertyRef Name="quotationMasterId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -18152,7 +18045,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <EntitySet Name="Workers" EntityType="Self.Worker" />
           <EntitySet Name="AdditionalCosts" EntityType="Self.AdditionalCost" />
           <EntitySet Name="SalaryVoucherDetails" EntityType="Self.SalaryVoucherDetail" />
-          <EntitySet Name="CompleteItems" EntityType="Self.CompleteItem" />
           <EntitySet Name="V_Product" EntityType="Self.V_Product" />
           <AssociationSet Name="FK__AccountLe__accou__5E74FADA" Association="Self.FK__AccountLe__accou__5E74FADA">
             <End Role="AccountGroup" EntitySet="AccountGroups" />
@@ -18590,7 +18482,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="Rack" EntitySet="Racks" />
             <End Role="DeliveryNoteDetail" EntitySet="DeliveryNoteDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__DeliveryN__SaleO__6A7BAA63" Association="Self.FK__DeliveryN__SaleO__6A7BAA63">
+          <AssociationSet Name="FK__DeliveryN__SaleO__5FFE1BF0" Association="Self.FK__DeliveryN__SaleO__5FFE1BF0">
             <End Role="SaleOrderDetail" EntitySet="SaleOrderDetails" />
             <End Role="DeliveryNoteDetail" EntitySet="DeliveryNoteDetails" />
           </AssociationSet>
@@ -18610,12 +18502,20 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="FinancialYear" EntitySet="FinancialYears" />
             <End Role="DeliveryNoteMaster" EntitySet="DeliveryNoteMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__DeliveryN__order__62DA889B" Association="Self.FK__DeliveryN__order__62DA889B">
+          <AssociationSet Name="FK__DeliveryN__order__5674B1B6" Association="Self.FK__DeliveryN__order__5674B1B6">
+            <End Role="SaleOrder" EntitySet="SaleOrders" />
+            <End Role="DeliveryNoteMaster" EntitySet="DeliveryNoteMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DeliveryN__order__5768D5EF" Association="Self.FK__DeliveryN__order__5768D5EF">
             <End Role="SaleOrder" EntitySet="SaleOrders" />
             <End Role="DeliveryNoteMaster" EntitySet="DeliveryNoteMasters" />
           </AssociationSet>
           <AssociationSet Name="FK__DeliveryN__prici__222B06A9" Association="Self.FK__DeliveryN__prici__222B06A9">
             <End Role="PricingLevel" EntitySet="PricingLevels" />
+            <End Role="DeliveryNoteMaster" EntitySet="DeliveryNoteMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DeliveryN__quota__25077354" Association="Self.FK__DeliveryN__quota__25077354">
+            <End Role="Quotation" EntitySet="Quotations" />
             <End Role="DeliveryNoteMaster" EntitySet="DeliveryNoteMasters" />
           </AssociationSet>
           <AssociationSet Name="FK__DeliveryN__suffi__2042BE37" Association="Self.FK__DeliveryN__suffi__2042BE37">
@@ -21240,7 +21140,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <FunctionImport Name="SaleOrderItemsToDeliveryNote" ReturnType="Collection(IMEModel.SaleOrderItemsToDeliveryNote_Result)">
             <Parameter Name="SaleOrderID" Mode="In" Type="Decimal" />
           </FunctionImport>
-          <FunctionImport Name="SaleOrderToDeliveryNote" ReturnType="Collection(IMEModel.SaleOrderToDeliveryNote_Result)" />
+          <FunctionImport Name="SaleOrderToDeliveryNote" />
           <FunctionImport Name="SalesAccountComboFill" ReturnType="Collection(IMEModel.SalesAccountComboFill_Result)" />
           <FunctionImport Name="SalesBillTaxEditBySalesMasterIdAndTaxId">
             <Parameter Name="salesMasterId" Mode="In" Type="Decimal" />
@@ -23573,14 +23473,9 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
         </ComplexType>
         <ComplexType Name="SaleOrderItemsToDeliveryNote_Result">
           <Property Type="Decimal" Name="SaleOrderID" Nullable="true" Precision="18" Scale="0" />
-          <Property Type="String" Name="ItemDescription" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="ItemCode" Nullable="false" MaxLength="10" />
           <Property Type="Int32" Name="NumberToSend" Nullable="true" />
           <Property Type="Int32" Name="StockQuantityForCustmer" Nullable="true" />
-          <Property Type="String" Name="c_name" Nullable="true" MaxLength="50" />
-        </ComplexType>
-        <ComplexType Name="SaleOrderToDeliveryNote_Result">
-          <Property Type="Decimal" Name="SaleOrderID" Nullable="true" Precision="18" Scale="0" />
           <Property Type="String" Name="c_name" Nullable="true" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="SalesAccountComboFill_Result">
@@ -24585,6 +24480,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="userId" ColumnName="userId" />
                 <ScalarProperty Name="lrNo" ColumnName="lrNo" />
                 <ScalarProperty Name="transportationCompany" ColumnName="transportationCompany" />
+                <ScalarProperty Name="quotationMasterId" ColumnName="quotationMasterId" />
                 <ScalarProperty Name="financialYearId" ColumnName="financialYearId" />
                 <ScalarProperty Name="salesAccount" ColumnName="salesAccount" />
                 <ScalarProperty Name="taxAmount" ColumnName="taxAmount" />
@@ -24592,6 +24488,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="billDiscount" ColumnName="billDiscount" />
                 <ScalarProperty Name="grandTotal" ColumnName="grandTotal" />
                 <ScalarProperty Name="POS" ColumnName="POS" />
+                <ScalarProperty Name="counterId" ColumnName="counterId" />
                 <ScalarProperty Name="creditPeriod" ColumnName="creditPeriod" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -26542,63 +26439,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="lop" ColumnName="lop" />
                 <ScalarProperty Name="salary" ColumnName="salary" />
                 <ScalarProperty Name="status" ColumnName="status" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CompleteItems">
-            <EntityTypeMapping TypeName="IMEModel.CompleteItem">
-              <MappingFragment StoreEntitySet="CompleteItems">
-                <ScalarProperty Name="Article_No" ColumnName="Article_No" />
-                <ScalarProperty Name="Article_Desc" ColumnName="Article_Desc" />
-                <ScalarProperty Name="Pack_Quantity" ColumnName="Pack_Quantity" />
-                <ScalarProperty Name="Unit_Content" ColumnName="Unit_Content" />
-                <ScalarProperty Name="Unit_Measure" ColumnName="Unit_Measure" />
-                <ScalarProperty Name="MPN" ColumnName="MPN" />
-                <ScalarProperty Name="Calibration_Ind" ColumnName="Calibration_Ind" />
-                <ScalarProperty Name="Standard_Weight" ColumnName="Standard_Weight" />
-                <ScalarProperty Name="Hazardous_Ind" ColumnName="Hazardous_Ind" />
-                <ScalarProperty Name="Obsolete_Flag" ColumnName="Obsolete_Flag" />
-                <ScalarProperty Name="Low_Discount_Ind" ColumnName="Low_Discount_Ind" />
-                <ScalarProperty Name="Licensed_Ind" ColumnName="Licensed_Ind" />
-                <ScalarProperty Name="Shelf_Life" ColumnName="Shelf_Life" />
-                <ScalarProperty Name="CofO" ColumnName="CofO" />
-                <ScalarProperty Name="CCCN_No" ColumnName="CCCN_No" />
-                <ScalarProperty Name="Uk_Intro_Date" ColumnName="Uk_Intro_Date" />
-                <ScalarProperty Name="Uk_Disc_Date" ColumnName="Uk_Disc_Date" />
-                <ScalarProperty Name="BHC_Flag" ColumnName="BHC_Flag" />
-                <ScalarProperty Name="Disc_Change_Ind" ColumnName="Disc_Change_Ind" />
-                <ScalarProperty Name="Expiring_Product_Change_Ind" ColumnName="Expiring_Product_Change_Ind" />
-                <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
-                <ScalarProperty Name="MH_Code_Level_1" ColumnName="MH_Code_Level_1" />
-                <ScalarProperty Name="Heigh" ColumnName="Heigh" />
-                <ScalarProperty Name="Width" ColumnName="Width" />
-                <ScalarProperty Name="Length" ColumnName="Length" />
-                <ScalarProperty Name="OnhandStockBalance" ColumnName="OnhandStockBalance" />
-                <ScalarProperty Name="QuantityonOrder" ColumnName="QuantityonOrder" />
-                <ScalarProperty Name="Col1Break" ColumnName="Col1Break" />
-                <ScalarProperty Name="Col2Break" ColumnName="Col2Break" />
-                <ScalarProperty Name="Col3Break" ColumnName="Col3Break" />
-                <ScalarProperty Name="Col4Break" ColumnName="Col4Break" />
-                <ScalarProperty Name="Col5Break" ColumnName="Col5Break" />
-                <ScalarProperty Name="Col1Price" ColumnName="Col1Price" />
-                <ScalarProperty Name="Col2Price" ColumnName="Col2Price" />
-                <ScalarProperty Name="Col3Price" ColumnName="Col3Price" />
-                <ScalarProperty Name="Col4Price" ColumnName="Col4Price" />
-                <ScalarProperty Name="Col5Price" ColumnName="Col5Price" />
-                <ScalarProperty Name="DiscountedPrice1" ColumnName="DiscountedPrice1" />
-                <ScalarProperty Name="DiscountedPrice2" ColumnName="DiscountedPrice2" />
-                <ScalarProperty Name="DiscountedPrice3" ColumnName="DiscountedPrice3" />
-                <ScalarProperty Name="DiscountedPrice4" ColumnName="DiscountedPrice4" />
-                <ScalarProperty Name="DiscountedPrice5" ColumnName="DiscountedPrice5" />
-                <ScalarProperty Name="SupersectionName" ColumnName="SupersectionName" />
-                <ScalarProperty Name="DiscontinuationDate" ColumnName="DiscontinuationDate" />
-                <ScalarProperty Name="Runon" ColumnName="Runon" />
-                <ScalarProperty Name="Referral" ColumnName="Referral" />
-                <ScalarProperty Name="Environment" ColumnName="Environment" />
-                <ScalarProperty Name="Lithium" ColumnName="Lithium" />
-                <ScalarProperty Name="Shipping" ColumnName="Shipping" />
-                <ScalarProperty Name="LicenceType" ColumnName="LicenceType" />
-                <ScalarProperty Name="dependantTable" ColumnName="dependantTable" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -29202,7 +29042,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.SaleOrderItemsToDeliveryNote_Result">
                 <ScalarProperty Name="SaleOrderID" ColumnName="SaleOrderID" />
-                <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
                 <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
                 <ScalarProperty Name="NumberToSend" ColumnName="NumberToSend" />
                 <ScalarProperty Name="StockQuantityForCustmer" ColumnName="StockQuantityForCustmer" />
@@ -29210,14 +29049,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SaleOrderToDeliveryNote" FunctionName="IMEModel.Store.SaleOrderToDeliveryNote">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="IMEModel.SaleOrderToDeliveryNote_Result">
-                <ScalarProperty Name="SaleOrderID" ColumnName="SaleOrderID" />
-                <ScalarProperty Name="c_name" ColumnName="c_name" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SaleOrderToDeliveryNote" FunctionName="IMEModel.Store.SaleOrderToDeliveryNote" />
           <FunctionImportMapping FunctionImportName="SalesAccountComboFill" FunctionName="IMEModel.Store.SalesAccountComboFill">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.SalesAccountComboFill_Result">

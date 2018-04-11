@@ -2209,6 +2209,12 @@
     <Compile Include="QuotationModule\FormQuotationMPN.Designer.cs">
       <DependentUpon>FormQuotationMPN.cs</DependentUpon>
     </Compile>
+    <Compile Include="QuotationModule\frmEx-Quotation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuotationModule\frmEx-Quotation.Designer.cs">
+      <DependentUpon>frmEx-Quotation.cs</DependentUpon>
+    </Compile>
     <Compile Include="QuotationModule\frmQuotationGridCustomize.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2731,6 +2737,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuotationModule\FormQuotationMPN.resx">
       <DependentUpon>FormQuotationMPN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuotationModule\frmEx-Quotation.resx">
+      <DependentUpon>frmEx-Quotation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuotationModule\frmQuotationGridCustomize.resx">
       <DependentUpon>frmQuotationGridCustomize.cs</DependentUpon>
