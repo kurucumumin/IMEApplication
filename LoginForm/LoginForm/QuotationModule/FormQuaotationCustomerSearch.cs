@@ -54,15 +54,13 @@ namespace LoginForm.QuotationModule
         private void CustomerSearchGrid_DoubleClick(object sender, EventArgs e)
         {
             CustomerSearchGrid.ClearSelection();
-            CustomerSearchGrid.CurrentCell = CustomerSearchGrid.Rows[CustomerSearchGrid.CurrentCell.RowIndex].Cells[0];
-            string cname = CustomerSearchGrid.Rows[CustomerSearchGrid.CurrentCell.RowIndex].Cells["ID"].Value.ToString();
-            Customer c = new Customer();
-            c = IME.Customers.Where(a => a.ID == cname).FirstOrDefault();
-            CustomerCode.Text = c.ID;
-            CustomerName.Text = c.c_name;
+            //CustomerSearchGrid.CurrentCell = CustomerSearchGrid.Rows[CustomerSearchGrid.CurrentCell.RowIndex].Cells[0];
+            string cID = CustomerSearchGrid.CurrentRow.Cells["ID"].Value.ToString();
+            customer = IME.Customers.Where(a => a.ID == cID).FirstOrDefault();
+            CustomerCode.Text = customer.ID;
+            CustomerName.Text = customer.c_name;
             classQuotationAdd.customerID = CustomerCode.Text;
             classQuotationAdd.customername = CustomerName.Text;
-            customer = c;
 
             this.DialogResult = DialogResult.OK;
             this.Close();

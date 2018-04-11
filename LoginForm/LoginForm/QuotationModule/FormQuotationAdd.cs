@@ -3826,7 +3826,6 @@ namespace LoginForm.QuotationModule
                 {
                     GetLandingCost(i);
                     GetQuotationQuantity(i);
-
                 }
             }
             #endregion

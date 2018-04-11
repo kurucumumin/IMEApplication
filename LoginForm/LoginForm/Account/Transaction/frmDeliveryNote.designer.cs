@@ -28,28 +28,28 @@ namespace LoginForm
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDeliveryNote));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtBillDiscount = new System.Windows.Forms.TextBox();
             this.lblBillDiscount = new System.Windows.Forms.Label();
             this.dgvSalesInvoiceTax = new System.Windows.Forms.DataGridView();
@@ -203,14 +203,14 @@ namespace LoginForm
             this.dgvSalesInvoiceTax.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvSalesInvoiceTax.BackgroundColor = System.Drawing.Color.White;
             this.dgvSalesInvoiceTax.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(133)))), ((int)(((byte)(163)))));
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle22.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(117)))), ((int)(((byte)(150)))));
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSalesInvoiceTax.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(133)))), ((int)(((byte)(163)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(117)))), ((int)(((byte)(150)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSalesInvoiceTax.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvSalesInvoiceTax.ColumnHeadersHeight = 25;
             this.dgvSalesInvoiceTax.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvSalesInvoiceTax.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -222,14 +222,14 @@ namespace LoginForm
             this.dgvtxtTTaxRate,
             this.dgvtxtTaxLedgerId,
             this.dgvtxtTtaxAmount});
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(238)))), ((int)(((byte)(218)))));
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle24.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(202)))), ((int)(((byte)(153)))));
-            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSalesInvoiceTax.DefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(238)))), ((int)(((byte)(218)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(202)))), ((int)(((byte)(153)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvSalesInvoiceTax.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvSalesInvoiceTax.EnableHeadersVisualStyles = false;
             this.dgvSalesInvoiceTax.GridColor = System.Drawing.Color.SteelBlue;
             this.dgvSalesInvoiceTax.Location = new System.Drawing.Point(523, 489);
@@ -304,8 +304,8 @@ namespace LoginForm
             // dgvtxtTtaxAmount
             // 
             this.dgvtxtTtaxAmount.DataPropertyName = "taxAmount";
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtTtaxAmount.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtTtaxAmount.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvtxtTtaxAmount.HeaderText = "Amount";
             this.dgvtxtTtaxAmount.Name = "dgvtxtTtaxAmount";
             this.dgvtxtTtaxAmount.ReadOnly = true;
@@ -557,14 +557,14 @@ namespace LoginForm
             this.dgvSalesInvoice.AllowUserToResizeRows = false;
             this.dgvSalesInvoice.BackgroundColor = System.Drawing.Color.White;
             this.dgvSalesInvoice.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(133)))), ((int)(((byte)(163)))));
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle25.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(117)))), ((int)(((byte)(150)))));
-            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSalesInvoice.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(133)))), ((int)(((byte)(163)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(117)))), ((int)(((byte)(150)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSalesInvoice.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvSalesInvoice.ColumnHeadersHeight = 35;
             this.dgvSalesInvoice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvSalesInvoice.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -602,28 +602,28 @@ namespace LoginForm
             this.dgvtxtSalesInvoiceInvoiceNo,
             this.dgvtxtSalesInvoiceVoucherTypeId,
             this.dgvtxtSalesInvoiceAmount});
-            dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle37.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(238)))), ((int)(((byte)(218)))));
-            dataGridViewCellStyle37.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle37.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle37.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(202)))), ((int)(((byte)(153)))));
-            dataGridViewCellStyle37.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle37.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSalesInvoice.DefaultCellStyle = dataGridViewCellStyle37;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(238)))), ((int)(((byte)(218)))));
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(202)))), ((int)(((byte)(153)))));
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvSalesInvoice.DefaultCellStyle = dataGridViewCellStyle16;
             this.dgvSalesInvoice.EnableHeadersVisualStyles = false;
             this.dgvSalesInvoice.GridColor = System.Drawing.Color.SteelBlue;
             this.dgvSalesInvoice.Location = new System.Drawing.Point(24, 205);
             this.dgvSalesInvoice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 12);
             this.dgvSalesInvoice.Name = "dgvSalesInvoice";
             this.dgvSalesInvoice.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle38.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(133)))), ((int)(((byte)(163)))));
-            dataGridViewCellStyle38.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle38.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle38.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(117)))), ((int)(((byte)(150)))));
-            dataGridViewCellStyle38.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle38.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSalesInvoice.RowHeadersDefaultCellStyle = dataGridViewCellStyle38;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(133)))), ((int)(((byte)(163)))));
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(117)))), ((int)(((byte)(150)))));
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSalesInvoice.RowHeadersDefaultCellStyle = dataGridViewCellStyle17;
             this.dgvSalesInvoice.Size = new System.Drawing.Size(1020, 243);
             this.dgvSalesInvoice.TabIndex = 16;
             this.dgvSalesInvoice.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSalesInvoice_CellEndEdit);
@@ -712,8 +712,8 @@ namespace LoginForm
             // dgvtxtSalesInvoiceQty
             // 
             this.dgvtxtSalesInvoiceQty.DataPropertyName = "qty";
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtSalesInvoiceQty.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtSalesInvoiceQty.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvtxtSalesInvoiceQty.HeaderText = "Qty";
             this.dgvtxtSalesInvoiceQty.MaxInputLength = 8;
             this.dgvtxtSalesInvoiceQty.Name = "dgvtxtSalesInvoiceQty";
@@ -756,8 +756,8 @@ namespace LoginForm
             // 
             // dgvtxtSalesInvoicePurchaseRate
             // 
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtSalesInvoicePurchaseRate.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtSalesInvoicePurchaseRate.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvtxtSalesInvoicePurchaseRate.HeaderText = "Purchase rate.";
             this.dgvtxtSalesInvoicePurchaseRate.MaxInputLength = 13;
             this.dgvtxtSalesInvoicePurchaseRate.Name = "dgvtxtSalesInvoicePurchaseRate";
@@ -766,8 +766,8 @@ namespace LoginForm
             // 
             // dgvtxtSalesInvoiceMrp
             // 
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtSalesInvoiceMrp.DefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtSalesInvoiceMrp.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgvtxtSalesInvoiceMrp.HeaderText = "MRP";
             this.dgvtxtSalesInvoiceMrp.MaxInputLength = 13;
             this.dgvtxtSalesInvoiceMrp.Name = "dgvtxtSalesInvoiceMrp";
@@ -776,8 +776,8 @@ namespace LoginForm
             // 
             // dgvtxtSalesInvoiceSalesRate
             // 
-            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtSalesInvoiceSalesRate.DefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtSalesInvoiceSalesRate.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvtxtSalesInvoiceSalesRate.HeaderText = "SalesRate";
             this.dgvtxtSalesInvoiceSalesRate.MaxInputLength = 13;
             this.dgvtxtSalesInvoiceSalesRate.Name = "dgvtxtSalesInvoiceSalesRate";
@@ -786,8 +786,8 @@ namespace LoginForm
             // 
             // dgvtxtSalesInvoiceRate
             // 
-            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtSalesInvoiceRate.DefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtSalesInvoiceRate.DefaultCellStyle = dataGridViewCellStyle9;
             this.dgvtxtSalesInvoiceRate.HeaderText = "Rate";
             this.dgvtxtSalesInvoiceRate.MaxInputLength = 10;
             this.dgvtxtSalesInvoiceRate.Name = "dgvtxtSalesInvoiceRate";
@@ -796,8 +796,8 @@ namespace LoginForm
             // 
             // dgvtxtSalesInvoiceGrossValue
             // 
-            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtSalesInvoiceGrossValue.DefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtSalesInvoiceGrossValue.DefaultCellStyle = dataGridViewCellStyle10;
             this.dgvtxtSalesInvoiceGrossValue.HeaderText = "Gross Value";
             this.dgvtxtSalesInvoiceGrossValue.Name = "dgvtxtSalesInvoiceGrossValue";
             this.dgvtxtSalesInvoiceGrossValue.ReadOnly = true;
@@ -806,8 +806,8 @@ namespace LoginForm
             // 
             // dgvtxtSalesInvoiceDiscountPercentage
             // 
-            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtSalesInvoiceDiscountPercentage.DefaultCellStyle = dataGridViewCellStyle32;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtSalesInvoiceDiscountPercentage.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgvtxtSalesInvoiceDiscountPercentage.HeaderText = "Discount Percentage";
             this.dgvtxtSalesInvoiceDiscountPercentage.MaxInputLength = 10;
             this.dgvtxtSalesInvoiceDiscountPercentage.Name = "dgvtxtSalesInvoiceDiscountPercentage";
@@ -815,8 +815,8 @@ namespace LoginForm
             // 
             // dgvtxtSalesInvoiceDiscountAmount
             // 
-            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtSalesInvoiceDiscountAmount.DefaultCellStyle = dataGridViewCellStyle33;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtSalesInvoiceDiscountAmount.DefaultCellStyle = dataGridViewCellStyle12;
             this.dgvtxtSalesInvoiceDiscountAmount.HeaderText = "Discount";
             this.dgvtxtSalesInvoiceDiscountAmount.MaxInputLength = 15;
             this.dgvtxtSalesInvoiceDiscountAmount.Name = "dgvtxtSalesInvoiceDiscountAmount";
@@ -824,8 +824,8 @@ namespace LoginForm
             // 
             // dgvtxtSalesInvoiceNetAmount
             // 
-            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtSalesInvoiceNetAmount.DefaultCellStyle = dataGridViewCellStyle34;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtSalesInvoiceNetAmount.DefaultCellStyle = dataGridViewCellStyle13;
             this.dgvtxtSalesInvoiceNetAmount.HeaderText = "Net Amount";
             this.dgvtxtSalesInvoiceNetAmount.Name = "dgvtxtSalesInvoiceNetAmount";
             this.dgvtxtSalesInvoiceNetAmount.ReadOnly = true;
@@ -839,8 +839,8 @@ namespace LoginForm
             // 
             // dgvtxtSalesInvoiceTaxAmount
             // 
-            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtSalesInvoiceTaxAmount.DefaultCellStyle = dataGridViewCellStyle35;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtSalesInvoiceTaxAmount.DefaultCellStyle = dataGridViewCellStyle14;
             this.dgvtxtSalesInvoiceTaxAmount.HeaderText = "Tax Amount";
             this.dgvtxtSalesInvoiceTaxAmount.MaxInputLength = 13;
             this.dgvtxtSalesInvoiceTaxAmount.Name = "dgvtxtSalesInvoiceTaxAmount";
@@ -879,8 +879,8 @@ namespace LoginForm
             // 
             // dgvtxtSalesInvoiceAmount
             // 
-            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtSalesInvoiceAmount.DefaultCellStyle = dataGridViewCellStyle36;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtSalesInvoiceAmount.DefaultCellStyle = dataGridViewCellStyle15;
             this.dgvtxtSalesInvoiceAmount.HeaderText = "Amount";
             this.dgvtxtSalesInvoiceAmount.Name = "dgvtxtSalesInvoiceAmount";
             this.dgvtxtSalesInvoiceAmount.ReadOnly = true;
@@ -983,14 +983,14 @@ namespace LoginForm
             this.dgvSalesInvoiceLedger.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvSalesInvoiceLedger.BackgroundColor = System.Drawing.Color.White;
             this.dgvSalesInvoiceLedger.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle39.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(133)))), ((int)(((byte)(163)))));
-            dataGridViewCellStyle39.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle39.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle39.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(117)))), ((int)(((byte)(150)))));
-            dataGridViewCellStyle39.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle39.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSalesInvoiceLedger.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle39;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(133)))), ((int)(((byte)(163)))));
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(117)))), ((int)(((byte)(150)))));
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSalesInvoiceLedger.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle18;
             this.dgvSalesInvoiceLedger.ColumnHeadersHeight = 25;
             this.dgvSalesInvoiceLedger.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvSalesInvoiceLedger.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -998,28 +998,28 @@ namespace LoginForm
             this.dgvtxtAdditionalCostId,
             this.dgvCmbAdditionalCostledgerName,
             this.dgvtxtAdditionalCoastledgerAmount});
-            dataGridViewCellStyle41.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle41.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(238)))), ((int)(((byte)(218)))));
-            dataGridViewCellStyle41.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle41.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle41.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(202)))), ((int)(((byte)(153)))));
-            dataGridViewCellStyle41.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle41.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSalesInvoiceLedger.DefaultCellStyle = dataGridViewCellStyle41;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(238)))), ((int)(((byte)(218)))));
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(202)))), ((int)(((byte)(153)))));
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvSalesInvoiceLedger.DefaultCellStyle = dataGridViewCellStyle20;
             this.dgvSalesInvoiceLedger.EnableHeadersVisualStyles = false;
             this.dgvSalesInvoiceLedger.GridColor = System.Drawing.Color.SteelBlue;
             this.dgvSalesInvoiceLedger.Location = new System.Drawing.Point(17, 487);
             this.dgvSalesInvoiceLedger.Margin = new System.Windows.Forms.Padding(4, 4, 4, 12);
             this.dgvSalesInvoiceLedger.Name = "dgvSalesInvoiceLedger";
             this.dgvSalesInvoiceLedger.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle42.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(133)))), ((int)(((byte)(163)))));
-            dataGridViewCellStyle42.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle42.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle42.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(117)))), ((int)(((byte)(150)))));
-            dataGridViewCellStyle42.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle42.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSalesInvoiceLedger.RowHeadersDefaultCellStyle = dataGridViewCellStyle42;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(133)))), ((int)(((byte)(163)))));
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(117)))), ((int)(((byte)(150)))));
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSalesInvoiceLedger.RowHeadersDefaultCellStyle = dataGridViewCellStyle21;
             this.dgvSalesInvoiceLedger.Size = new System.Drawing.Size(497, 119);
             this.dgvSalesInvoiceLedger.TabIndex = 19;
             this.dgvSalesInvoiceLedger.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvSalesInvoiceLedger_CellBeginEdit);
@@ -1051,8 +1051,8 @@ namespace LoginForm
             // 
             // dgvtxtAdditionalCoastledgerAmount
             // 
-            dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtAdditionalCoastledgerAmount.DefaultCellStyle = dataGridViewCellStyle40;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtAdditionalCoastledgerAmount.DefaultCellStyle = dataGridViewCellStyle19;
             this.dgvtxtAdditionalCoastledgerAmount.FillWeight = 115.736F;
             this.dgvtxtAdditionalCoastledgerAmount.HeaderText = "Amount";
             this.dgvtxtAdditionalCoastledgerAmount.MaxInputLength = 8;
@@ -1440,6 +1440,7 @@ namespace LoginForm
             this.txtCustomerName.ReadOnly = true;
             this.txtCustomerName.Size = new System.Drawing.Size(236, 22);
             this.txtCustomerName.TabIndex = 8903;
+            this.txtCustomerName.TextChanged += new System.EventHandler(this.txtCustomerName_TextChanged);
             // 
             // cmbPricingLevel
             // 
@@ -1454,6 +1455,7 @@ namespace LoginForm
             // btnSelectSaleOrders
             // 
             this.btnSelectSaleOrders.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnSelectSaleOrders.Enabled = false;
             this.btnSelectSaleOrders.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSelectSaleOrders.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnSelectSaleOrders.Location = new System.Drawing.Point(826, 112);
@@ -1583,7 +1585,6 @@ namespace LoginForm
         private System.Windows.Forms.Label lblDays;
         private System.Windows.Forms.ComboBox cmbSalesMan;
         private System.Windows.Forms.Label lblSalesMan;
-        private System.Windows.Forms.TextBox txtCustomer;
         private System.Windows.Forms.Label lblCustomer;
         private System.Windows.Forms.Label lblTotalQuantity;
         //private dgv.DataGridViewEnter dgvsa
@@ -1671,5 +1672,6 @@ namespace LoginForm
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtSalesInvoiceVoucherTypeId;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtSalesInvoiceAmount;
         private System.Windows.Forms.Button btnSelectSaleOrders;
+        public System.Windows.Forms.TextBox txtCustomer;
     }
 }

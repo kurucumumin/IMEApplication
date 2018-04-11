@@ -33,7 +33,7 @@ namespace LoginForm.PurchaseOrder
         private void RSInvToSaleInv_Load(object sender, EventArgs e)
         {
             IMEEntities IME = new IMEEntities();
-            dgSaleOrder.DataSource = IME.SaleOrderToDeliveryNote();
+            dgSaleOrder.DataSource = IME.SaleOrderToDeliveryNote(parent.txtCustomer.Text).ToList();
         }
         
 
@@ -85,6 +85,7 @@ namespace LoginForm.PurchaseOrder
                 dt.Rows.Add(row);
             }
             parent.setSaleOrderItemsFromPopUp(dt);
+            this.Close();
             //form.Show();
         }
 
@@ -101,7 +102,7 @@ namespace LoginForm.PurchaseOrder
                             DataGridViewRow row = (DataGridViewRow)dgSaleOrderDetails.Rows[0].Clone();
                             row.Cells[dgCName.Index].Value = item1.c_name;
                             row.Cells[dgItemCode.Index].Value = item1.ItemCode;
-                            row.Cells[dgQuantity.Index].Value = item1.StockQuantityForCustmer;
+                            row.Cells[dgQuantity.Index].Value = item1.NumberToSend;
                             row.Cells[dgStockQuantity.Index].Value = item1.StockQuantityForCustmer;
                             row.Cells[dgSaleOrderID.Index].Value = item1.SaleOrderID;
                             row.Cells[dgProductDescription.Index].Value = item1.ItemDescription;
