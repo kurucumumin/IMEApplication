@@ -9,6 +9,8 @@ namespace LoginForm.QuotationModule
     class classQuotationAdd
     {
         public static string customersearchID;
+        public static string quotationNo;
+        public static bool IsWithItems;
         public static string customersearchname;
         public static string customerID;
         public static string customername;

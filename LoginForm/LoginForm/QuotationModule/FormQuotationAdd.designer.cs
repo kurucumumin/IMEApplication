@@ -136,6 +136,7 @@
             this.label65 = new System.Windows.Forms.Label();
             this.label61 = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
+            this.btnExQuotation = new System.Windows.Forms.Button();
             this.btnImportFromXML = new System.Windows.Forms.Button();
             this.btnCustomizeGrid = new System.Windows.Forms.Button();
             this.btnProductHistory = new System.Windows.Forms.Button();
@@ -1097,6 +1098,7 @@
             this.panel2.Controls.Add(this.label65);
             this.panel2.Controls.Add(this.label61);
             this.panel2.Controls.Add(this.label45);
+            this.panel2.Controls.Add(this.btnExQuotation);
             this.panel2.Controls.Add(this.btnImportFromXML);
             this.panel2.Controls.Add(this.btnCustomizeGrid);
             this.panel2.Controls.Add(this.btnProductHistory);
@@ -1140,12 +1142,22 @@
             this.label45.TabIndex = 12;
             this.label45.Text = "Total Margin";
             // 
+            // btnExQuotation
+            // 
+            this.btnExQuotation.Location = new System.Drawing.Point(313, 12);
+            this.btnExQuotation.Name = "btnExQuotation";
+            this.btnExQuotation.Size = new System.Drawing.Size(136, 23);
+            this.btnExQuotation.TabIndex = 11;
+            this.btnExQuotation.Text = "Take From Ex-Quotation";
+            this.btnExQuotation.UseVisualStyleBackColor = true;
+            this.btnExQuotation.Click += new System.EventHandler(this.btnExQuotation_Click);
+            // 
             // btnImportFromXML
             // 
             this.btnImportFromXML.Enabled = false;
-            this.btnImportFromXML.Location = new System.Drawing.Point(281, 11);
+            this.btnImportFromXML.Location = new System.Drawing.Point(212, 12);
             this.btnImportFromXML.Name = "btnImportFromXML";
-            this.btnImportFromXML.Size = new System.Drawing.Size(116, 23);
+            this.btnImportFromXML.Size = new System.Drawing.Size(95, 23);
             this.btnImportFromXML.TabIndex = 11;
             this.btnImportFromXML.Text = "Import From Xml";
             this.btnImportFromXML.UseVisualStyleBackColor = true;
@@ -1154,9 +1166,9 @@
             // 
             // btnCustomizeGrid
             // 
-            this.btnCustomizeGrid.Location = new System.Drawing.Point(527, 12);
+            this.btnCustomizeGrid.Location = new System.Drawing.Point(577, 10);
             this.btnCustomizeGrid.Name = "btnCustomizeGrid";
-            this.btnCustomizeGrid.Size = new System.Drawing.Size(93, 21);
+            this.btnCustomizeGrid.Size = new System.Drawing.Size(86, 21);
             this.btnCustomizeGrid.TabIndex = 10;
             this.btnCustomizeGrid.Text = "Customize Grid";
             this.btnCustomizeGrid.UseVisualStyleBackColor = true;
@@ -1164,7 +1176,7 @@
             // 
             // btnProductHistory
             // 
-            this.btnProductHistory.Location = new System.Drawing.Point(424, 12);
+            this.btnProductHistory.Location = new System.Drawing.Point(478, 11);
             this.btnProductHistory.Name = "btnProductHistory";
             this.btnProductHistory.Size = new System.Drawing.Size(93, 21);
             this.btnProductHistory.TabIndex = 10;
@@ -1188,7 +1200,7 @@
             // 
             this.button7.Location = new System.Drawing.Point(8, 11);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(116, 23);
+            this.button7.Size = new System.Drawing.Size(102, 23);
             this.button7.TabIndex = 3;
             this.button7.Text = "Import From Excel";
             this.button7.UseVisualStyleBackColor = true;
@@ -1204,9 +1216,9 @@
             // 
             // btnExcelExport
             // 
-            this.btnExcelExport.Location = new System.Drawing.Point(141, 11);
+            this.btnExcelExport.Location = new System.Drawing.Point(116, 12);
             this.btnExcelExport.Name = "btnExcelExport";
-            this.btnExcelExport.Size = new System.Drawing.Size(113, 23);
+            this.btnExcelExport.Size = new System.Drawing.Size(90, 23);
             this.btnExcelExport.TabIndex = 3;
             this.btnExcelExport.Text = "Export To Excel";
             this.btnExcelExport.UseVisualStyleBackColor = true;
@@ -3403,5 +3415,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn35;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn36;
         private System.Windows.Forms.Label label65;
+        private System.Windows.Forms.Button btnExQuotation;
     }
 }

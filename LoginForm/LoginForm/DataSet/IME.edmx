@@ -502,6 +502,7 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="taxAmount" Type="decimal" Precision="18" Scale="5" />
           <Property Name="grossAmount" Type="decimal" Precision="18" Scale="5" />
           <Property Name="netAmount" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="Closed" Type="bit" />
         </EntityType>
         <EntityType Name="DeliveryNoteMaster">
           <Key>
@@ -509,7 +510,7 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           </Key>
           <Property Name="deliveryNoteMasterId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="voucherNo" Type="varchar(max)" />
-          <Property Name="invoiceNo" Type="varchar(max)" />
+          <Property Name="DeliveryNoteNo" Type="varchar(max)" />
           <Property Name="voucherTypeId" Type="numeric" Precision="18" Scale="0" />
           <Property Name="suffixPrefixId" Type="numeric" Precision="18" Scale="0" />
           <Property Name="date" Type="datetime" />
@@ -1736,7 +1737,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="deliveryNoteDetailsId" Type="numeric" Precision="18" Scale="0" />
           <Property Name="quotationDetailsId" Type="int" />
           <Property Name="SaleOrderID" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="SendedItemQuantity" Type="int" />
+          <Property Name="SentItemQuantity" Type="int" />
         </EntityType>
         <EntityType Name="SalesBillTax">
           <Key>
@@ -11247,6 +11248,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="taxAmount" Type="Decimal" Precision="18" Scale="5" />
           <Property Name="grossAmount" Type="Decimal" Precision="18" Scale="5" />
           <Property Name="netAmount" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="Closed" Type="Boolean" />
           <NavigationProperty Name="Batch" Relationship="Self.FK__DeliveryN__batch__37E53D9E" FromRole="DeliveryNoteDetail" ToRole="Batch" />
           <NavigationProperty Name="DeliveryNoteMaster" Relationship="Self.FK__DeliveryN__deliv__48DABF76" FromRole="DeliveryNoteDetail" ToRole="DeliveryNoteMaster" />
           <NavigationProperty Name="Godown" Relationship="Self.FK__DeliveryN__godow__3AC1AA49" FromRole="DeliveryNoteDetail" ToRole="Godown" />
@@ -11261,7 +11263,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           </Key>
           <Property Name="deliveryNoteMasterId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="voucherNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="invoiceNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DeliveryNoteNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="voucherTypeId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="suffixPrefixId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="date" Type="DateTime" Precision="3" />
@@ -12800,7 +12802,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="deliveryNoteDetailsId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="quotationDetailsId" Type="Int32" />
           <Property Name="SaleOrderID" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="SendedItemQuantity" Type="Int32" />
+          <Property Name="SentItemQuantity" Type="Int32" />
           <NavigationProperty Name="DeliveryNoteDetails" Relationship="Self.FK__DeliveryN__SaleO__5FFE1BF0" FromRole="SaleOrderDetail" ToRole="DeliveryNoteDetail" />
           <NavigationProperty Name="QuotationDetail" Relationship="Self.FK__SaleOrder__quota__310335E5" FromRole="SaleOrderDetail" ToRole="QuotationDetail" />
           <NavigationProperty Name="SaleOrder" Relationship="Self.FK_SaleOrderDetail_SaleOrder" FromRole="SaleOrderDetail" ToRole="SaleOrder" />
@@ -21138,7 +21140,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <FunctionImport Name="SaleOrderItemsToDeliveryNote" ReturnType="Collection(IMEModel.SaleOrderItemsToDeliveryNote_Result)">
             <Parameter Name="SaleOrderID" Mode="In" Type="Decimal" />
           </FunctionImport>
-          <FunctionImport Name="SaleOrderToDeliveryNote" ReturnType="Collection(IMEModel.SaleOrderToDeliveryNote_Result)" />
+          <FunctionImport Name="SaleOrderToDeliveryNote" />
           <FunctionImport Name="SalesAccountComboFill" ReturnType="Collection(IMEModel.SalesAccountComboFill_Result)" />
           <FunctionImport Name="SalesBillTaxEditBySalesMasterIdAndTaxId">
             <Parameter Name="salesMasterId" Mode="In" Type="Decimal" />
@@ -22560,7 +22562,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
         </ComplexType>
         <ComplexType Name="GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI_Result">
           <Property Type="Decimal" Name="deliveryNoteMasterId" Nullable="false" Precision="18" Scale="0" />
-          <Property Type="String" Name="invoiceNo" Nullable="true" />
+          <Property Type="String" Name="DeliveryNoteNo" Nullable="true" />
         </ComplexType>
         <ComplexType Name="GetInvoiceNoCorrespondingtoLedger_Result">
           <Property Type="Decimal" Name="purchaseMasterId" Nullable="false" Precision="18" Scale="0" />
@@ -23476,10 +23478,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="Int32" Name="StockQuantityForCustmer" Nullable="true" />
           <Property Type="String" Name="c_name" Nullable="true" MaxLength="50" />
         </ComplexType>
-        <ComplexType Name="SaleOrderToDeliveryNote_Result">
-          <Property Type="Decimal" Name="SaleOrderID" Nullable="true" Precision="18" Scale="0" />
-          <Property Type="String" Name="c_name" Nullable="true" MaxLength="50" />
-        </ComplexType>
         <ComplexType Name="SalesAccountComboFill_Result">
           <Property Type="String" Name="ledgerName" Nullable="true" />
           <Property Type="Decimal" Name="ledgerId" Nullable="false" Precision="18" Scale="0" />
@@ -23557,7 +23555,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="Decimal" Name="unitConversionId" Nullable="true" Precision="18" Scale="0" />
           <Property Type="Int32" Name="taxId" Nullable="false" />
           <Property Type="String" Name="voucherNo" Nullable="true" />
-          <Property Type="String" Name="invoiceNo" Nullable="true" />
+          <Property Type="String" Name="DeliveryNoteNo" Nullable="true" />
           <Property Type="Decimal" Name="voucherTypeId" Nullable="true" Precision="18" Scale="0" />
           <Property Type="Decimal" Name="conversionRate" Nullable="true" Precision="18" Scale="5" />
           <Property Type="Decimal" Name="amount" Nullable="true" Precision="24" Scale="2" />
@@ -24460,6 +24458,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="taxAmount" ColumnName="taxAmount" />
                 <ScalarProperty Name="grossAmount" ColumnName="grossAmount" />
                 <ScalarProperty Name="netAmount" ColumnName="netAmount" />
+                <ScalarProperty Name="Closed" ColumnName="Closed" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -24468,7 +24467,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
               <MappingFragment StoreEntitySet="DeliveryNoteMaster">
                 <ScalarProperty Name="deliveryNoteMasterId" ColumnName="deliveryNoteMasterId" />
                 <ScalarProperty Name="voucherNo" ColumnName="voucherNo" />
-                <ScalarProperty Name="invoiceNo" ColumnName="invoiceNo" />
+                <ScalarProperty Name="DeliveryNoteNo" ColumnName="DeliveryNoteNo" />
                 <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
                 <ScalarProperty Name="suffixPrefixId" ColumnName="suffixPrefixId" />
                 <ScalarProperty Name="date" ColumnName="date" />
@@ -25753,7 +25752,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="deliveryNoteDetailsId" ColumnName="deliveryNoteDetailsId" />
                 <ScalarProperty Name="quotationDetailsId" ColumnName="quotationDetailsId" />
                 <ScalarProperty Name="SaleOrderID" ColumnName="SaleOrderID" />
-                <ScalarProperty Name="SendedItemQuantity" ColumnName="SendedItemQuantity" />
+                <ScalarProperty Name="SentItemQuantity" ColumnName="SentItemQuantity" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -27670,7 +27669,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI_Result">
                 <ScalarProperty Name="deliveryNoteMasterId" ColumnName="deliveryNoteMasterId" />
-                <ScalarProperty Name="invoiceNo" ColumnName="invoiceNo" />
+                <ScalarProperty Name="DeliveryNoteNo" ColumnName="DeliveryNoteNo" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -29050,14 +29049,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SaleOrderToDeliveryNote" FunctionName="IMEModel.Store.SaleOrderToDeliveryNote">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="IMEModel.SaleOrderToDeliveryNote_Result">
-                <ScalarProperty Name="SaleOrderID" ColumnName="SaleOrderID" />
-                <ScalarProperty Name="c_name" ColumnName="c_name" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SaleOrderToDeliveryNote" FunctionName="IMEModel.Store.SaleOrderToDeliveryNote" />
           <FunctionImportMapping FunctionImportName="SalesAccountComboFill" FunctionName="IMEModel.Store.SalesAccountComboFill">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.SalesAccountComboFill_Result">
@@ -29162,7 +29154,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="unitConversionId" ColumnName="unitConversionId" />
                 <ScalarProperty Name="taxId" ColumnName="taxId" />
                 <ScalarProperty Name="voucherNo" ColumnName="voucherNo" />
-                <ScalarProperty Name="invoiceNo" ColumnName="invoiceNo" />
+                <ScalarProperty Name="DeliveryNoteNo" ColumnName="DeliveryNoteNo" />
                 <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
                 <ScalarProperty Name="conversionRate" ColumnName="conversionRate" />
                 <ScalarProperty Name="amount" ColumnName="amount" />
