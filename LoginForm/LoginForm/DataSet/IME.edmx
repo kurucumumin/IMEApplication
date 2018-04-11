@@ -3183,19 +3183,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DeliveryN__order__5674B1B6">
-          <End Role="SaleOrder" Type="Self.SaleOrder" Multiplicity="0..1" />
-          <End Role="DeliveryNoteMaster" Type="Self.DeliveryNoteMaster" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SaleOrder">
-              <PropertyRef Name="SaleOrderID" />
-            </Principal>
-            <Dependent Role="DeliveryNoteMaster">
-              <PropertyRef Name="orderMasterId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__DeliveryN__order__5768D5EF">
+        <Association Name="FK__DeliveryN__order__5B3966D3">
           <End Role="SaleOrder" Type="Self.SaleOrder" Multiplicity="0..1" />
           <End Role="DeliveryNoteMaster" Type="Self.DeliveryNoteMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -8348,7 +8336,9 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
         <Function Name="SaleOrderItemsToDeliveryNote" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="SaleOrderID" Type="numeric" Mode="In" />
         </Function>
-        <Function Name="SaleOrderToDeliveryNote" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SaleOrderToDeliveryNote" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CustomerNo" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="SalesAccountComboFill" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SalesBillTaxEditBySalesMasterIdAndTaxId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="salesMasterId" Type="numeric" Mode="In" />
@@ -9478,11 +9468,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="AccountLedger" EntitySet="AccountLedger" />
             <End Role="DeliveryNoteMaster" EntitySet="DeliveryNoteMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__DeliveryN__order__5674B1B6" Association="Self.FK__DeliveryN__order__5674B1B6">
-            <End Role="SaleOrder" EntitySet="SaleOrder" />
-            <End Role="DeliveryNoteMaster" EntitySet="DeliveryNoteMaster" />
-          </AssociationSet>
-          <AssociationSet Name="FK__DeliveryN__order__5768D5EF" Association="Self.FK__DeliveryN__order__5768D5EF">
+          <AssociationSet Name="FK__DeliveryN__order__5B3966D3" Association="Self.FK__DeliveryN__order__5B3966D3">
             <End Role="SaleOrder" EntitySet="SaleOrder" />
             <End Role="DeliveryNoteMaster" EntitySet="DeliveryNoteMaster" />
           </AssociationSet>
@@ -11290,8 +11276,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <NavigationProperty Name="DeliveryNoteDetails" Relationship="Self.FK__DeliveryN__deliv__48DABF76" FromRole="DeliveryNoteMaster" ToRole="DeliveryNoteDetail" />
           <NavigationProperty Name="ExchangeRate" Relationship="Self.FK__DeliveryN__excha__231F2AE2" FromRole="DeliveryNoteMaster" ToRole="ExchangeRate" />
           <NavigationProperty Name="FinancialYear" Relationship="Self.FK__DeliveryN__finan__25FB978D" FromRole="DeliveryNoteMaster" ToRole="FinancialYear" />
-          <NavigationProperty Name="SaleOrder" Relationship="Self.FK__DeliveryN__order__5674B1B6" FromRole="DeliveryNoteMaster" ToRole="SaleOrder" />
-          <NavigationProperty Name="SaleOrder1" Relationship="Self.FK__DeliveryN__order__5768D5EF" FromRole="DeliveryNoteMaster" ToRole="SaleOrder" />
+          <NavigationProperty Name="SaleOrder" Relationship="Self.FK__DeliveryN__order__5B3966D3" FromRole="DeliveryNoteMaster" ToRole="SaleOrder" />
           <NavigationProperty Name="PricingLevel" Relationship="Self.FK__DeliveryN__prici__222B06A9" FromRole="DeliveryNoteMaster" ToRole="PricingLevel" />
           <NavigationProperty Name="Quotation" Relationship="Self.FK__DeliveryN__quota__25077354" FromRole="DeliveryNoteMaster" ToRole="Quotation" />
           <NavigationProperty Name="SuffixPrefix" Relationship="Self.FK__DeliveryN__suffi__2042BE37" FromRole="DeliveryNoteMaster" ToRole="SuffixPrefix" />
@@ -12759,8 +12744,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <NavigationProperty Name="CustomerWorker" Relationship="Self.FK__SaleOrder__Conta__1DD065E0" FromRole="SaleOrder" ToRole="CustomerWorker" />
           <NavigationProperty Name="CustomerWorker1" Relationship="Self.FK__SaleOrder__Conta__1EC48A19" FromRole="SaleOrder" ToRole="CustomerWorker" />
           <NavigationProperty Name="CustomerWorker2" Relationship="Self.FK__SaleOrder__Deliv__1FB8AE52" FromRole="SaleOrder" ToRole="CustomerWorker" />
-          <NavigationProperty Name="DeliveryNoteMasters" Relationship="Self.FK__DeliveryN__order__5674B1B6" FromRole="SaleOrder" ToRole="DeliveryNoteMaster" />
-          <NavigationProperty Name="DeliveryNoteMasters1" Relationship="Self.FK__DeliveryN__order__5768D5EF" FromRole="SaleOrder" ToRole="DeliveryNoteMaster" />
+          <NavigationProperty Name="DeliveryNoteMasters" Relationship="Self.FK__DeliveryN__order__5B3966D3" FromRole="SaleOrder" ToRole="DeliveryNoteMaster" />
           <NavigationProperty Name="ExchangeRate" Relationship="Self.FK__SaleOrder__excha__5C229E14" FromRole="SaleOrder" ToRole="ExchangeRate" />
           <NavigationProperty Name="FinancialYear" Relationship="Self.FK_SaleOrder_FinancialYear" FromRole="SaleOrder" ToRole="FinancialYear" />
           <NavigationProperty Name="PaymentMethod" Relationship="Self.FK__SaleOrder__Payme__1BE81D6E" FromRole="SaleOrder" ToRole="PaymentMethod" />
@@ -15066,19 +15050,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DeliveryN__order__5674B1B6">
-          <End Role="SaleOrder" Type="Self.SaleOrder" Multiplicity="0..1" />
-          <End Role="DeliveryNoteMaster" Type="Self.DeliveryNoteMaster" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SaleOrder">
-              <PropertyRef Name="SaleOrderID" />
-            </Principal>
-            <Dependent Role="DeliveryNoteMaster">
-              <PropertyRef Name="orderMasterId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__DeliveryN__order__5768D5EF">
+        <Association Name="FK__DeliveryN__order__5B3966D3">
           <End Role="SaleOrder" Type="Self.SaleOrder" Multiplicity="0..1" />
           <End Role="DeliveryNoteMaster" Type="Self.DeliveryNoteMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -18502,11 +18474,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="FinancialYear" EntitySet="FinancialYears" />
             <End Role="DeliveryNoteMaster" EntitySet="DeliveryNoteMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__DeliveryN__order__5674B1B6" Association="Self.FK__DeliveryN__order__5674B1B6">
-            <End Role="SaleOrder" EntitySet="SaleOrders" />
-            <End Role="DeliveryNoteMaster" EntitySet="DeliveryNoteMasters" />
-          </AssociationSet>
-          <AssociationSet Name="FK__DeliveryN__order__5768D5EF" Association="Self.FK__DeliveryN__order__5768D5EF">
+          <AssociationSet Name="FK__DeliveryN__order__5B3966D3" Association="Self.FK__DeliveryN__order__5B3966D3">
             <End Role="SaleOrder" EntitySet="SaleOrders" />
             <End Role="DeliveryNoteMaster" EntitySet="DeliveryNoteMasters" />
           </AssociationSet>
@@ -21140,7 +21108,9 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <FunctionImport Name="SaleOrderItemsToDeliveryNote" ReturnType="Collection(IMEModel.SaleOrderItemsToDeliveryNote_Result)">
             <Parameter Name="SaleOrderID" Mode="In" Type="Decimal" />
           </FunctionImport>
-          <FunctionImport Name="SaleOrderToDeliveryNote" />
+          <FunctionImport Name="SaleOrderToDeliveryNote" ReturnType="Collection(IMEModel.SaleOrderToDeliveryNote_Result)">
+            <Parameter Name="CustomerNo" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="SalesAccountComboFill" ReturnType="Collection(IMEModel.SalesAccountComboFill_Result)" />
           <FunctionImport Name="SalesBillTaxEditBySalesMasterIdAndTaxId">
             <Parameter Name="salesMasterId" Mode="In" Type="Decimal" />
@@ -23473,9 +23443,14 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
         </ComplexType>
         <ComplexType Name="SaleOrderItemsToDeliveryNote_Result">
           <Property Type="Decimal" Name="SaleOrderID" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="ItemDescription" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="ItemCode" Nullable="false" MaxLength="10" />
           <Property Type="Int32" Name="NumberToSend" Nullable="true" />
           <Property Type="Int32" Name="StockQuantityForCustmer" Nullable="true" />
+          <Property Type="String" Name="c_name" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SaleOrderToDeliveryNote_Result">
+          <Property Type="Decimal" Name="SaleOrderID" Nullable="true" Precision="18" Scale="0" />
           <Property Type="String" Name="c_name" Nullable="true" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="SalesAccountComboFill_Result">
@@ -29042,6 +29017,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.SaleOrderItemsToDeliveryNote_Result">
                 <ScalarProperty Name="SaleOrderID" ColumnName="SaleOrderID" />
+                <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
                 <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
                 <ScalarProperty Name="NumberToSend" ColumnName="NumberToSend" />
                 <ScalarProperty Name="StockQuantityForCustmer" ColumnName="StockQuantityForCustmer" />
@@ -29049,7 +29025,14 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SaleOrderToDeliveryNote" FunctionName="IMEModel.Store.SaleOrderToDeliveryNote" />
+          <FunctionImportMapping FunctionImportName="SaleOrderToDeliveryNote" FunctionName="IMEModel.Store.SaleOrderToDeliveryNote">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.SaleOrderToDeliveryNote_Result">
+                <ScalarProperty Name="SaleOrderID" ColumnName="SaleOrderID" />
+                <ScalarProperty Name="c_name" ColumnName="c_name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SalesAccountComboFill" FunctionName="IMEModel.Store.SalesAccountComboFill">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.SalesAccountComboFill_Result">

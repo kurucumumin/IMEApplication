@@ -305,9 +305,8 @@ namespace LoginForm.Account
             {
                 //TODO dataset den sonra tekrar bak
                 DataRow dr1 = dtbl.NewRow();
-               // dr1["productName"] = item.ItemDesc;
                 dr1["productCode"] = item.ProductID;
-                dr1["CurrentStock"] = item.Qty;
+                dr1["productName"] = item.ProductName;
                 //dr1["brandName"]=item
                 //dr1["salesRate"] = item.rate;
                 dtbl.Rows.Add(dr1);

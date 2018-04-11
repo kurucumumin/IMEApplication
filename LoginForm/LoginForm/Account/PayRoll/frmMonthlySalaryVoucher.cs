@@ -210,7 +210,6 @@ namespace LoginForm
                     infoLedgerPosting.voucherNo = txtVoucherNo.Text;
                 }
                 infoLedgerPosting.date = DateTime.Parse(IME.CurrentDate().ToString());
-                //TODO ledgerId of salarys
                 infoLedgerPosting.ledgerId = 4; //ledgerId of salarys
                 infoLedgerPosting.detailsId = 0;
                 if (isAutomatic)

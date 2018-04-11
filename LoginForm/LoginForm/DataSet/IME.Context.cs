@@ -6079,9 +6079,13 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SaleOrderItemsToDeliveryNote_Result>("SaleOrderItemsToDeliveryNote", saleOrderIDParameter);
         }
     
-        public virtual ObjectResult<SaleOrderToDeliveryNote_Result> SaleOrderToDeliveryNote()
+        public virtual ObjectResult<SaleOrderToDeliveryNote_Result> SaleOrderToDeliveryNote(string customerNo)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SaleOrderToDeliveryNote_Result>("SaleOrderToDeliveryNote");
+            var customerNoParameter = customerNo != null ?
+                new ObjectParameter("CustomerNo", customerNo) :
+                new ObjectParameter("CustomerNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SaleOrderToDeliveryNote_Result>("SaleOrderToDeliveryNote", customerNoParameter);
         }
     
         public virtual ObjectResult<SalesAccountComboFill_Result> SalesAccountComboFill()
