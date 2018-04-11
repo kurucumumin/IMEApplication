@@ -931,6 +931,8 @@ namespace LoginForm.QuotationModule
                         //Calculate Gross Weight
                         if (txtStandartWeight.Text != null && txtStandartWeight.Text != "")
                         {
+                            if (CurrentRow.Cells[dgUnitWeigt.Index].Value == null)
+                                CurrentRow.Cells[dgUnitWeigt.Index].Value = txtStandartWeight.Text;
                             txtGrossWeight.Text = (Decimal.Parse(txtStandartWeight.Text) * Decimal.Parse(CurrentRow.Cells["dgQty"].Value.ToString())).ToString();
                             if (Int32.Parse(CurrentRow.Cells["dgSSM"].Value.ToString()) > 1)
                             {
@@ -2057,7 +2059,7 @@ namespace LoginForm.QuotationModule
                     if (dgQuotationAddedItems.Rows[i].Cells["dgCustStkCode"].Value != null) qd.CustomerStockCode = dgQuotationAddedItems.Rows[i].Cells["dgCustStkCode"].Value.ToString();
                     if (dgQuotationAddedItems.Rows[i].Cells["dgUC"].Value != null) qd.UC = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUC"].Value.ToString());
                     if (dgQuotationAddedItems.Rows[i].Cells["dgSSM"].Value != null) qd.SSM = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells["dgSSM"].Value.ToString());
-                    if (dgQuotationAddedItems.Rows[i].Cells["dgUnitWeigt"].Value != "") qd.UnitWeight = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUnitWeigt"].Value.ToString());
+                    if (dgQuotationAddedItems.Rows[i].Cells["dgUnitWeigt"].Value != null ) qd.UnitWeight = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUnitWeigt"].Value.ToString());
                     if (dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value != null) qd.Marge = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value.ToString());
                     if (dgQuotationAddedItems.Rows[i].Cells["dgDependantTable"].Value != null) qd.DependantTable = dgQuotationAddedItems.Rows[i].Cells["dgDependantTable"].Value.ToString();
 
@@ -4019,38 +4021,44 @@ namespace LoginForm.QuotationModule
 
             frmEx_Quotation form = new frmEx_Quotation();
             form.ShowDialog();
-            Quotation q = IME.Quotations.Where(a => a.QuotationNo == classQuotationAdd.quotationNo).FirstOrDefault();
-            dgQuotationAddedItems.Rows.Clear();
-            dgQuotationAddedItems.Refresh();
-            foreach (QuotationDetail item in IME.QuotationDetails.Where(a => a.QuotationNo == classQuotationAdd.quotationNo))
+            if (classQuotationAdd.quotationNo!=null)
             {
-                if (dgQuotationAddedItems.RowCount != 1)
+                Quotation q = IME.Quotations.Where(a => a.QuotationNo == classQuotationAdd.quotationNo).FirstOrDefault();
+                dgQuotationAddedItems.Rows.Clear();
+                dgQuotationAddedItems.Refresh();
+                foreach (QuotationDetail item in IME.QuotationDetails.Where(a => a.QuotationNo == classQuotationAdd.quotationNo))
                 {
-                    DataGridViewRow row = (DataGridViewRow)dgQuotationAddedItems.Rows[0].Clone();
-                    row.Cells[dgProductCode.Index].Value = item.ItemCode;
-                    ItemDetailsFiller(item.ItemCode);
-                    row.Cells[dgQty.Index].Value = item.Qty;
-                    DgQuantityFiller();
-                    if (classQuotationAdd.IsWithItems == true)
+                    if (dgQuotationAddedItems.RowCount != 1)
                     {
-                        row.Cells[dgUCUPCurr.Index].Value = item.UCUPCurr;
-                        row.Cells[dgDisc.Index].Value = item.Disc;
-                    }
-                    dgQuotationAddedItems.Rows.Add(row);
-                }
-                else
-                {
-                    dgQuotationAddedItems.Rows[0].Cells[dgProductCode.Index].Value = item.ItemCode;
-                    ItemDetailsFiller(item.ItemCode);
-                    dgQuotationAddedItems.Rows[0].Cells[dgQty.Index].Value = item.Qty;
-                    DgQuantityFiller();
-                    if (classQuotationAdd.IsWithItems == true)
-                    {
-                        dgQuotationAddedItems.Rows[0].Cells[dgUCUPCurr.Index].Value = item.UCUPCurr;
-                        dgQuotationAddedItems.Rows[0].Cells[dgDisc.Index].Value = item.Disc;
-                    }
-                }
+                        DataGridViewRow row = (DataGridViewRow)dgQuotationAddedItems.Rows[0].Clone();
+                        row.Cells[dgProductCode.Index].Value = item.ItemCode;
+                        ItemDetailsFiller(item.ItemCode);
+                        row.Cells[dgQty.Index].Value = item.Qty;
+                        DgQuantityFiller();
 
+                        if (classQuotationAdd.IsWithItems == true)
+                        {
+                            row.Cells[dgUCUPCurr.Index].Value = item.UCUPCurr;
+                            row.Cells[dgDisc.Index].Value = item.Disc;
+                        }
+                        dgQuotationAddedItems.Rows.Add(row);
+                        //GetQuotationQuantity(dgQuotationAddedItems.RowCount-1);
+                    }
+                    else
+                    {
+                        dgQuotationAddedItems.Rows[0].Cells[dgProductCode.Index].Value = item.ItemCode;
+                        ItemDetailsFiller(item.ItemCode);
+                        dgQuotationAddedItems.Rows[0].Cells[dgQty.Index].Value = item.Qty;
+                        //GetQuotationQuantity(0);
+                        DgQuantityFiller();
+                        if (classQuotationAdd.IsWithItems == true)
+                        {
+                            dgQuotationAddedItems.Rows[0].Cells[dgUCUPCurr.Index].Value = item.UCUPCurr;
+                            dgQuotationAddedItems.Rows[0].Cells[dgDisc.Index].Value = item.Disc;
+                        }
+                    }
+
+                }
             }
         }
     }

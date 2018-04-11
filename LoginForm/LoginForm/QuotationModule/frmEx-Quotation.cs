@@ -61,22 +61,22 @@ namespace LoginForm.QuotationModule
             if (rbCustomerName.Checked)
             {
                 if(customer!=null)
-                    { QuoList = IME.Quotations.Where(a => a.Customer.c_name.Contains(customer)).Where(a => a.StartDate > btnStartDate.Value && a.StartDate < btnEndDate.Value).ToList(); }
+                    { QuoList = IME.Quotations.Where(a => a.Customer.c_name.Contains(customer)).Where(a => a.StartDate >= btnStartDate.Value && a.StartDate <= btnEndDate.Value).ToList(); }
                 else
                 {
-                    QuoList = IME.Quotations.Where(a => a.StartDate > btnStartDate.Value && a.StartDate < btnEndDate.Value).ToList();
+                    QuoList = IME.Quotations.Where(a => a.StartDate >= btnStartDate.Value && a.StartDate <= btnEndDate.Value).ToList();
                 }
             }
             else
             {
                 if (quotationNo!=null)
                 {
-                    QuoList = IME.Quotations.Where(a => a.QuotationNo.Contains(quotationNo)).Where(a => a.StartDate > btnStartDate.Value && a.StartDate < btnEndDate.Value).ToList();
+                    QuoList = IME.Quotations.Where(a => a.QuotationNo.Contains(quotationNo)).Where(a => a.StartDate >= btnStartDate.Value && a.StartDate <= btnEndDate.Value).ToList();
                 }
                 else
                 {
 
-                    QuoList = IME.Quotations.Where(a => a.StartDate > btnStartDate.Value.Date).Where(a=> a.StartDate < btnEndDate.Value.Date).ToList();
+                    QuoList = IME.Quotations.Where(a => a.StartDate >= btnStartDate.Value.Date).Where(a=> a.StartDate <= btnEndDate.Value.Date).ToList();
                 }
                 
             }
@@ -97,6 +97,7 @@ namespace LoginForm.QuotationModule
         private void frmEx_Quotation_Load(object sender, EventArgs e)
         {
             btnStartDate.Value = DateTime.Now.AddDays(-7);
+            classQuotationAdd.quotationNo = null;
         }
     }
 }
