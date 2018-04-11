@@ -510,21 +510,7 @@ namespace LoginForm.Account.Services
         /// </summary>
         /// <param name="frmCompanyCreation"></param>
         /// 
-
-        //TODO: FORMU EKLENİCEK
-        
-        //public void CallFromChangeCurrentDate(frmCompanyCreation frmCompanyCreation)
-        //{
-        //    try
-        //    {
-        //        frmCompanyCreationObj = frmCompanyCreation;
-        //        base.Show();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("ST:08" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+       
         #endregion
         #region Events
         /// <summary>
