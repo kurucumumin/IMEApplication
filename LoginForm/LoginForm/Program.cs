@@ -5,6 +5,7 @@ using LoginForm.QuotationModule;
 using System;
 using System.Windows.Forms;
 using LoginForm.Account;
+using LoginForm.BackOrder;
 
 namespace LoginForm
 {
@@ -15,7 +16,7 @@ namespace LoginForm
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormLogin());
+            Application.Run(new frmBackOrderMain());
         }
     }
 }

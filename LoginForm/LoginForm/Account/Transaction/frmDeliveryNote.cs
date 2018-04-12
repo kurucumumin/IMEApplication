@@ -3260,7 +3260,7 @@ namespace LoginForm
                     }
                 }
                 ledgerPostingAdd();
-                // TODO: Kaldırıldı, sale'dan deliverye geçince ihtiyaç olacak mı? 
+                // TODO: Kaldırıldı, sale'dan deliverye geçince ihtiyaç olacak mı?
                 //if (spDeliveryNoteMaster.SalesInvoiceInvoicePartyCheckEnableBillByBillOrNot(Convert.ToDecimal(cmbCashOrParty.SelectedValue.ToString())))
                 //{
                 //    partyBalanceAdd();

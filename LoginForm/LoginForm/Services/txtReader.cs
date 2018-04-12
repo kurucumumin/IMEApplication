@@ -16,6 +16,85 @@ namespace LoginForm
     {
         public static string LoaderType;
 
+        public static List<DataSet.BackOrder> BackOrderRead()
+        {
+            IMEEntities IME = new IMEEntities();
+            List<DataSet.BackOrder> BoList = new List<DataSet.BackOrder>();
+            Excel.Application excel = new Excel.Application();
+            //Show the dialog and get result.
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+
+            openFileDialog1.Filter = "excel files (*.xlsx)|*.xlsx";
+            DialogResult result1 = openFileDialog1.ShowDialog();
+            if (result1 == DialogResult.OK)
+            {
+                try
+                {
+                    Excel.Workbook theWorkbook = excel.Workbooks.Open(
+                  openFileDialog1.FileName, 0, true, 5,
+                   "", "", true, Excel.XlPlatform.xlWindows, "\t", false, false,
+                   0, true);
+                    Excel.Sheets sheets = theWorkbook.Worksheets;
+                    Excel.Worksheet worksheet = (Excel.Worksheet)sheets.get_Item(1);
+                    //for (int i = 1; i <= 10; i++)
+                    //{
+                    Excel.Range last = worksheet.Cells.SpecialCells(Excel.XlCellType.xlCellTypeLastCell, Type.Missing);
+                    Excel.Range range = worksheet.get_Range("A1", last);
+                    Array myvalues = range.Cells.Value;
+                    for (int i = 2; i <= myvalues.Length / 10; i++)
+                    {
+                        DataSet.BackOrder bo = new DataSet.BackOrder();
+                        bo.RSUKReference = ((object[,])myvalues)[i, 1].ToString();
+                        bo.SoldToNumber = ((object[,])myvalues)[i, 2].ToString();
+                        bo.TradingTitle = ((object[,])myvalues)[i, 3].ToString();
+                        bo.PurchaseOrderNumber = ((object[,])myvalues)[i, 4].ToString();
+                        bo.OrderDate = DateTime.ParseExact(((object[,])myvalues)[i, 5].ToString(), "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture);
+
+                        bo.Article = ((object[,])myvalues)[i, 6].ToString();
+                        bo.OutstandingQuantity = ((object[,])myvalues)[i, 7].ToString();
+                        bo.LineValue = ((object[,])myvalues)[i, 8].ToString();
+                        bo.FirstPromisedDate = DateTime.ParseExact(((object[,])myvalues)[i, 9].ToString(), "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                        bo.LatestPromisedDate = DateTime.ParseExact(((object[,])myvalues)[i, 10].ToString(), "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                        BoList.Add(bo);
+                    }
+                    #region
+                    //Excel.Application excel = new Excel.Application();
+                    //Workbook wb = excel.Workbooks.Open(openFileDialog1.FileName);
+                    //Worksheet ws = wb.Worksheets[1];
+                    //int ColumnNumber = 2;
+                    ////string ArticleNumb = ws.Cells[2, 1].Text;
+                    //#region DiscontinuedList
+
+                    //while(ws.Cells[ColumnNumber, 1].Text!="")
+                    //{
+                    //    DataSet.BackOrder bo = new DataSet.BackOrder();
+                    //    bo.RSUKReference = ws.Cells[ColumnNumber, 1].Text;
+                    //    bo.SoldToNumber = ws.Cells[ColumnNumber, 2].Text;
+                    //    bo.TradingTitle = ws.Cells[ColumnNumber, 3].Text;
+                    //    bo.PurchaseOrderNumber = ws.Cells[ColumnNumber, 4].Text;
+                    //    bo.OrderDate = DateTime.ParseExact(ws.Cells[ColumnNumber, 5].Text, "dd.MM.yyyy",System.Globalization.CultureInfo.InvariantCulture);
+
+                    //    bo.Article = ws.Cells[ColumnNumber, 6].Text;
+                    //    bo.OutstandingQuantity = ws.Cells[ColumnNumber, 7].Text;
+                    //    bo.LineValue = ws.Cells[ColumnNumber, 8].Text;
+                    //    bo.FirstPromisedDate = DateTime.ParseExact(ws.Cells[ColumnNumber, 9].Text, "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture); 
+                    //    bo.LatestPromisedDate = DateTime.ParseExact(ws.Cells[ColumnNumber, 10].Text, "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                    //    BoList.Add(bo);
+                    //    //IME.BackOrders.Add(bo);
+                    //    //IME.SaveChanges();
+                    //    ColumnNumber++;
+                    //}
+                    //MessageBox.Show(ColumnNumber + "items's back order date is changed");
+                    //return BoList;
+                    #endregion
+                }
+                catch { MessageBox.Show("This document does not proper to load here"); return null; }
+            }
+            return BoList;
+
+        }
+
         public static void OrderAcknowledgementtxtReader()
         {
             IMEEntities IME = new IMEEntities();
@@ -1413,13 +1492,13 @@ namespace LoginForm
 
         public static int EntendedRangeRead()
         {
+            //Excel Fast Load
             //try
             //{
 
             IMEEntities IME = new IMEEntities();
             //Excel Read
-            int AddedCounter = 0;
-            int UptCounter = 0;
+            
             //Show the dialog and get result.
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
@@ -3354,6 +3433,8 @@ namespace LoginForm
 
     class QuotationExcelExport
     {
+        
+
         public static void ExportToItemHistory(DataGridView dg)
         {
             #region Copy All Items
@@ -3380,25 +3461,13 @@ namespace LoginForm
             {
                 for (int j = 0; j < dg.ColumnCount; j++)
                 {
-                    if (dg.Rows[i].Cells[j].Value != null ) { xlWorkSheet.Cells[i + 2, j + 1] = dg.Rows[i].Cells[j].Value.ToString(); }
+                    if (dg.Rows[i].Cells[j].Value != null )
+                    {
+                        xlWorkSheet.Cells[i + 2, j + 1] = dg.Rows[i].Cells[j].Value.ToString();
+                       
+                    }
                 }
             }
-            SaveFileDialog savefile = new SaveFileDialog();
-            savefile.Filter = "Excel Files (*.xls)|*.xls|All files (*.xls)|*.xls";
-           
-            savefile.FileName = "ItemHistory"+ DateTime.Now.ToString("yyyy-MM-dd-mm.ss");
-            if (savefile.ShowDialog() == DialogResult.OK)
-            {
-                string path = savefile.FileName;
-                //@"C:\Users\PC\Desktop\test2.xls"
-                xlWorkBook.SaveAs(@path, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-
-            }
-
-
-            //xlWorkBook.Close(true, misValue, misValue);
-            //xlexcel.Quit();
-
             #endregion
 
         }
