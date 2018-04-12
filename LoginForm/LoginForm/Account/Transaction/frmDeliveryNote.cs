@@ -3065,7 +3065,7 @@ namespace LoginForm
                             InfoSalesDetails.slNo = Convert.ToInt32(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceSlno"].Value.ToString());
                             InfoSalesDetails.productId = dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceProductCode"].Value.ToString();
                             StockReserveProductID = InfoSalesDetails.productId;
-                            InfoSalesDetails.qty = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceQty"].Value.ToString());
+                            //InfoSalesDetails.qty = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceQty"].Value.ToString());
                             //TODO: Rate olayını düzeltmemiz lazım.
                             if (dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceRate"].Value != null) InfoSalesDetails.rate = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceRate"].Value);
                             try { InfoSalesDetails.unitId = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoicembUnitName"].Value.ToString()); } catch { }
@@ -3112,7 +3112,7 @@ namespace LoginForm
                             ItemHistory ih = new ItemHistory();
                             ih.VoucherDate = DateTime.Now.Date;
                             ih.VoucherNumber = InfoDeliveryNoteMaster.voucherNo;
-                            ih.CurrentAccountTitle = InfoDeliveryNoteMaster.SaleOrder.Customer.c_name;
+                            //ih.CurrentAccountTitle = InfoDeliveryNoteMaster.SaleOrder.Customer.c_name;
                             ih.OutputQuantity = Convert.ToInt32(InfoSalesDetails.qty);
                             ih.OutputAmount = (InfoSalesDetails.amount) / (InfoSalesDetails.qty);
                             ih.OutputTotalAmount = InfoSalesDetails.amount;

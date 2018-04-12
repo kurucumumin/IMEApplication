@@ -22,7 +22,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>104</ApplicationRevision>
+    <ApplicationRevision>107</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -732,6 +732,24 @@
     <Compile Include="Account\Transaction\frmServiceVoucher.Designer.cs">
       <DependentUpon>frmServiceVoucher.cs</DependentUpon>
     </Compile>
+    <Compile Include="BackOrder\frmbackOrderAnalize.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BackOrder\frmbackOrderAnalize.Designer.cs">
+      <DependentUpon>frmbackOrderAnalize.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BackOrder\frmBackOrderLoader.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BackOrder\frmBackOrderLoader.Designer.cs">
+      <DependentUpon>frmBackOrderLoader.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BackOrder\frmBackOrderMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BackOrder\frmBackOrderMain.Designer.cs">
+      <DependentUpon>frmBackOrderMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomControls\AccountingControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -973,6 +991,15 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\AuthorizationValue.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\BackOrder.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\BackOrderAnalize_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\BackOrderDesc.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\BalanceSheetAssets_Result.cs">
@@ -2601,6 +2628,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Transaction\frmServiceVoucher.resx">
       <DependentUpon>frmServiceVoucher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BackOrder\frmbackOrderAnalize.resx">
+      <DependentUpon>frmbackOrderAnalize.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BackOrder\frmBackOrderLoader.resx">
+      <DependentUpon>frmBackOrderLoader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BackOrder\frmBackOrderMain.resx">
+      <DependentUpon>frmBackOrderMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\AccountingControl.resx">
       <DependentUpon>AccountingControl.cs</DependentUpon>

@@ -53,7 +53,6 @@ namespace LoginForm.DataSet
         public virtual ICollection<DeliveryNoteDetail> DeliveryNoteDetails { get; set; }
         public virtual ExchangeRate ExchangeRate { get; set; }
         public virtual FinancialYear FinancialYear { get; set; }
-        public virtual SaleOrder SaleOrder { get; set; }
         public virtual PricingLevel PricingLevel { get; set; }
         public virtual Quotation Quotation { get; set; }
         public virtual SuffixPrefix SuffixPrefix { get; set; }

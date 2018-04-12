@@ -25,6 +25,7 @@ namespace LoginForm.PurchaseOrder
         {
             InitializeComponent();
         }
+
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -33,11 +34,9 @@ namespace LoginForm.PurchaseOrder
         private void RSInvToSaleInv_Load(object sender, EventArgs e)
         {
             IMEEntities IME = new IMEEntities();
-            dgSaleOrder.DataSource = IME.SaleOrderToDeliveryNote();
+            dgSaleOrder.DataSource = IME.SaleOrderToDeliveryNote(parent.txtCustomer.Text);
         }
         
-
-
 
         private void btnSelectAll_Click(object sender, EventArgs e)
         {

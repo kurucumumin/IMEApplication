@@ -24,7 +24,7 @@ namespace LoginForm.DataSet
         public Nullable<decimal> deliveryNoteMasterId { get; set; }
         public int SaleOrderDetailId { get; set; }
         public string productId { get; set; }
-        public Nullable<decimal> qty { get; set; }
+        public int qty { get; set; }
         public Nullable<decimal> rate { get; set; }
         public Nullable<decimal> unitId { get; set; }
         public Nullable<decimal> unitConversionId { get; set; }

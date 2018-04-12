@@ -10,15 +10,14 @@
 namespace LoginForm.DataSet
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class SaleOrderItemsToDeliveryNote_Result
+    public partial class BackOrderDesc
     {
-        public int SaleOrderDetailID { get; set; }
-        public Nullable<decimal> SaleOrderID { get; set; }
-        public string ItemDescription { get; set; }
-        public string ItemCode { get; set; }
-        public Nullable<int> NumberToSend { get; set; }
-        public Nullable<int> StockQuantityForCustmer { get; set; }
-        public string c_name { get; set; }
+        public int ID { get; set; }
+        public string description { get; set; }
+        public Nullable<int> BackOrderID { get; set; }
+    
+        public virtual BackOrder BackOrder { get; set; }
     }
 }
