@@ -975,6 +975,12 @@
     <Compile Include="DataSet\AuthorizationValue.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\BackOrder.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\BackOrderDesc.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\BalanceSheetAssets_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>

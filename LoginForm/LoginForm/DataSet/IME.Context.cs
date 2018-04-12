@@ -32,6 +32,8 @@ namespace LoginForm.DataSet
         public virtual DbSet<AdvancePayment> AdvancePayments { get; set; }
         public virtual DbSet<Area> Areas { get; set; }
         public virtual DbSet<AuthorizationValue> AuthorizationValues { get; set; }
+        public virtual DbSet<BackOrder> BackOrders { get; set; }
+        public virtual DbSet<BackOrderDesc> BackOrderDescs { get; set; }
         public virtual DbSet<BankReconciliation> BankReconciliations { get; set; }
         public virtual DbSet<Batch> Batches { get; set; }
         public virtual DbSet<BonusDeduction> BonusDeductions { get; set; }

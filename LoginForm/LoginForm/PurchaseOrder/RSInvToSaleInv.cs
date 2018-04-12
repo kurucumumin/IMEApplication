@@ -69,6 +69,7 @@ namespace LoginForm.PurchaseOrder
             dt.Columns.Add("NetAmount");
             dt.Columns.Add("ProductDesc");
             dt.Columns.Add("BillingDocumentDate");
+            dt.Columns.Add("dgSaleOrderDetailID");
             //dt.Columns.Add("PurchaseOrderNo");
             dt.Columns.Add("Currency");
             for (int i = 0; i < dgSaleOrderDetails.RowCount; i++)
@@ -79,6 +80,7 @@ namespace LoginForm.PurchaseOrder
                 row["Quantity"] = dgSaleOrderDetails.Rows[i].Cells[dgQuantity.Index].Value.ToString();
                 row["dgStockQuantity"] = dgSaleOrderDetails.Rows[i].Cells[dgStockQuantity.Index].Value.ToString();
                 row["ProductDesc"] = dgSaleOrderDetails.Rows[i].Cells[dgProductDescription.Index].Value.ToString();
+                row["dgSaleOrderDetailID"] = dgSaleOrderDetails.Rows[i].Cells[dgSaleOrderDetailID.Index].Value.ToString();
                 //row["dgSaleOrderID"] = dgSaleOrderDetails.Rows[i].Cells[dgSaleOrderID.Index].Value.ToString();
                 //string PONo;
                 //PONo = dgSaleInvoice.Rows[i].Cells[PODetailNo.Index].Value.ToString();
@@ -106,6 +108,7 @@ namespace LoginForm.PurchaseOrder
                             row.Cells[dgStockQuantity.Index].Value = item1.StockQuantityForCustmer;
                             row.Cells[dgSaleOrderID.Index].Value = item1.SaleOrderID;
                             row.Cells[dgProductDescription.Index].Value = item1.ItemDescription;
+                            row.Cells[dgSaleOrderDetailID.Index].Value = item1.SaleOrderDetailID;
                             dgSaleOrderDetails.Rows.Add(row);
                             dgSaleOrderDetails.AllowUserToAddRows = false;
                             dgSaleOrderDetails.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;

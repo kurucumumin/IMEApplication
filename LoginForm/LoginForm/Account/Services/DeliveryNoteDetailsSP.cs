@@ -151,6 +151,11 @@ namespace LoginForm.Account.Services
                     deliverynotedetailsinfo.amount,
                     deliverynotedetailsinfo.slNo);
 
+                //TODO CEM: Stock Reserve işlemleri yapılacak
+
+                db.Stocks.Where(x => x.ProductID == deliverynotedetailsinfo.productId).FirstOrDefault().Qty -= (deliverynotedetailsinfo.qty);
+
+
                 SaleOrderDetail sod = db.SaleOrderDetails.Where(x => x.ID == SaleOrderDetailId).FirstOrDefault();
                 if (sod.SentItemQuantity == null || sod.SentItemQuantity == 0)
                 {

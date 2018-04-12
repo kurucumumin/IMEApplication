@@ -43,6 +43,7 @@
             this.dgQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgStockQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgCName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgSaleOrderDetailID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgSaleOrderDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgSaleOrder)).BeginInit();
             this.SuspendLayout();
@@ -58,7 +59,8 @@
             this.dgProductDescription,
             this.dgQuantity,
             this.dgStockQuantity,
-            this.dgCName});
+            this.dgCName,
+            this.dgSaleOrderDetailID});
             this.dgSaleOrderDetails.Location = new System.Drawing.Point(528, 36);
             this.dgSaleOrderDetails.Margin = new System.Windows.Forms.Padding(4);
             this.dgSaleOrderDetails.Name = "dgSaleOrderDetails";
@@ -184,6 +186,12 @@
             this.dgCName.Name = "dgCName";
             this.dgCName.ReadOnly = true;
             // 
+            // dgSaleOrderDetailID
+            // 
+            this.dgSaleOrderDetailID.HeaderText = "SaleOrderDetailID";
+            this.dgSaleOrderDetailID.Name = "dgSaleOrderDetailID";
+            this.dgSaleOrderDetailID.Visible = false;
+            // 
             // SaleOrderToDeliveryNote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -225,5 +233,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgStockQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgCName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgSaleOrderDetailID;
     }
 }
