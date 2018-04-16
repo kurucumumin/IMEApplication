@@ -44,6 +44,9 @@
             this.dgStockQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgCName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgSaleOrderDetailID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUnitContent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUnitOfMeasure = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgSaleOrderDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgSaleOrder)).BeginInit();
             this.SuspendLayout();
@@ -60,7 +63,10 @@
             this.dgQuantity,
             this.dgStockQuantity,
             this.dgCName,
-            this.dgSaleOrderDetailID});
+            this.dgSaleOrderDetailID,
+            this.dgUnitContent,
+            this.dgUnitPrice,
+            this.dgUnitOfMeasure});
             this.dgSaleOrderDetails.Location = new System.Drawing.Point(528, 36);
             this.dgSaleOrderDetails.Margin = new System.Windows.Forms.Padding(4);
             this.dgSaleOrderDetails.Name = "dgSaleOrderDetails";
@@ -192,6 +198,24 @@
             this.dgSaleOrderDetailID.Name = "dgSaleOrderDetailID";
             this.dgSaleOrderDetailID.Visible = false;
             // 
+            // dgUnitContent
+            // 
+            this.dgUnitContent.HeaderText = "UC";
+            this.dgUnitContent.Name = "dgUnitContent";
+            this.dgUnitContent.ReadOnly = true;
+            // 
+            // dgUnitPrice
+            // 
+            this.dgUnitPrice.HeaderText = "UnitPrice";
+            this.dgUnitPrice.Name = "dgUnitPrice";
+            this.dgUnitPrice.ReadOnly = true;
+            // 
+            // dgUnitOfMeasure
+            // 
+            this.dgUnitOfMeasure.HeaderText = "UOM";
+            this.dgUnitOfMeasure.Name = "dgUnitOfMeasure";
+            this.dgUnitOfMeasure.ReadOnly = true;
+            // 
             // SaleOrderToDeliveryNote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -234,5 +258,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgStockQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgCName;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgSaleOrderDetailID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgUnitContent;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgUnitPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgUnitOfMeasure;
     }
 }

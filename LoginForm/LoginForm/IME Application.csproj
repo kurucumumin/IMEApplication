@@ -999,7 +999,7 @@
     <Compile Include="DataSet\BackOrderAnalize_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\BackOrderDesc.cs">
+    <Compile Include="DataSet\BackOrderMain.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\BalanceSheetAssets_Result.cs">

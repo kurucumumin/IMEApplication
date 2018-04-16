@@ -68,11 +68,11 @@ namespace LoginForm.BackOrder
                     IME.BackOrders.Add(bo);
                     IME.SaveChanges();
 
-                    BackOrderDesc bod = new BackOrderDesc();
-                    bod.BackOrderID = bo.ID;
-                    bod.description = txtDesc.Text;
-                    IME.BackOrderDescs.Add(bod);
-                    IME.SaveChanges();
+                    //BackOrderDesc bod = new BackOrderDesc();
+                    //bod.BackOrderID = bo.ID;
+                    //bod.description = txtDesc.Text;
+                    //IME.BackOrderDescs.Add(bod);
+                    //IME.SaveChanges();
                 }
             }
             MessageBox.Show("Back Orders are saved successfully");

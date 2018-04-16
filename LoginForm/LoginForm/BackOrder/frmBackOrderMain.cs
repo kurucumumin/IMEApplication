@@ -112,8 +112,8 @@ namespace LoginForm.BackOrder
         {
             IMEEntities IME = new IMEEntities();
             int BackOrderDescsID = Int32.Parse(dg.CurrentRow.Cells[ID.Index].Value.ToString());
-            BackOrderDesc bod = IME.BackOrderDescs.Where(a => a.BackOrderID == BackOrderDescsID).FirstOrDefault();
-            txtItemDesc.Text = bod.description;
+            //BackOrderDesc bod = IME.BackOrderDescs.Where(a => a.BackOrderID == BackOrderDescsID).FirstOrDefault();
+            //txtItemDesc.Text = bod.description;
         }
 
         private void btnExcel_Click(object sender, EventArgs e)

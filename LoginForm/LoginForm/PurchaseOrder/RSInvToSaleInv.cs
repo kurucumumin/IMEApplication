@@ -65,10 +65,13 @@ namespace LoginForm.PurchaseOrder
             dt.Columns.Add("dgItemCode");
             dt.Columns.Add("Quantity");
             dt.Columns.Add("dgStockQuantity");
-            dt.Columns.Add("NetAmount");
+            //dt.Columns.Add("NetAmount");
             dt.Columns.Add("ProductDesc");
             dt.Columns.Add("BillingDocumentDate");
             dt.Columns.Add("dgSaleOrderDetailID");
+            //dt.Columns.Add("dgUOM");
+            //dt.Columns.Add("dgUnitPrice");
+            dt.Columns.Add("dgUnitContent");
             //dt.Columns.Add("PurchaseOrderNo");
             dt.Columns.Add("Currency");
             for (int i = 0; i < dgSaleOrderDetails.RowCount; i++)
@@ -80,6 +83,9 @@ namespace LoginForm.PurchaseOrder
                 row["dgStockQuantity"] = dgSaleOrderDetails.Rows[i].Cells[dgStockQuantity.Index].Value.ToString();
                 row["ProductDesc"] = dgSaleOrderDetails.Rows[i].Cells[dgProductDescription.Index].Value.ToString();
                 row["dgSaleOrderDetailID"] = dgSaleOrderDetails.Rows[i].Cells[dgSaleOrderDetailID.Index].Value.ToString();
+                //row["dgUOM"] = dgSaleOrderDetails.Rows[i].Cells[dgUnitOfMeasure.Index].Value.ToString();
+                //row["dgUnitPrice"] = dgSaleOrderDetails.Rows[i].Cells[dgUnitPrice.Index].Value.ToString();
+                row["dgUnitContent"] = dgSaleOrderDetails.Rows[i].Cells[dgUnitContent.Index].Value.ToString();
                 //row["dgSaleOrderID"] = dgSaleOrderDetails.Rows[i].Cells[dgSaleOrderID.Index].Value.ToString();
                 //string PONo;
                 //PONo = dgSaleInvoice.Rows[i].Cells[PODetailNo.Index].Value.ToString();
@@ -108,12 +114,14 @@ namespace LoginForm.PurchaseOrder
                             row.Cells[dgSaleOrderID.Index].Value = item1.SaleOrderID;
                             row.Cells[dgProductDescription.Index].Value = item1.ItemDescription;
                             row.Cells[dgSaleOrderDetailID.Index].Value = item1.SaleOrderDetailID;
+                            row.Cells[dgUnitContent.Index].Value = item1.UnitContent;
+                            row.Cells[dgUnitOfMeasure.Index].Value = item1.UnitOfMeasure;
+                            row.Cells[dgUnitPrice.Index].Value = item1.UnitPrice;
                             dgSaleOrderDetails.Rows.Add(row);
                             dgSaleOrderDetails.AllowUserToAddRows = false;
                             dgSaleOrderDetails.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
                         }
                     }
-
             }
             catch { }
         }
