@@ -28,11 +28,14 @@ namespace LoginForm.PurchaseOrder
 
         private void btnExit_Click(object sender, EventArgs e)
         {
+            parent.Enabled = true;
             this.Close();
         }
 
         private void RSInvToSaleInv_Load(object sender, EventArgs e)
         {
+            parent.Enabled = false;
+
             IMEEntities IME = new IMEEntities();
             dgSaleOrder.DataSource = IME.SaleOrderToDeliveryNote(parent.txtCustomer.Text).ToList();
         }
@@ -92,6 +95,7 @@ namespace LoginForm.PurchaseOrder
                 //PONo = dgSaleInvoice.Rows[i].Cells[PODetailNo.Index].Value.ToString();
                 dt.Rows.Add(row);
             }
+            parent.Enabled = true;
             parent.setSaleOrderItemsFromPopUp(dt);
             this.Close();
             //form.Show();

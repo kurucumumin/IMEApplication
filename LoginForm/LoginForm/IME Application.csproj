@@ -1001,6 +1001,9 @@
     <Compile Include="DataSet\BackOrderAnalize_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\BackOrderItemSeach_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\BackOrderMain.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1957,6 +1960,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\StockReserve.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\StockSearchforConfirm_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SuffixPrefix.cs">

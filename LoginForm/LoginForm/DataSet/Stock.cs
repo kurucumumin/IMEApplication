@@ -32,6 +32,7 @@ namespace LoginForm.DataSet
         public string MPN { get; set; }
         public Nullable<decimal> Cost { get; set; }
         public string SupplierID { get; set; }
+        public Nullable<int> NotConfirmedQTY { get; set; }
     
         public virtual VoucherType VoucherType { get; set; }
         public virtual Supplier Supplier { get; set; }

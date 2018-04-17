@@ -2001,6 +2001,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="MPN" Type="nvarchar" MaxLength="20" />
           <Property Name="Cost" Type="decimal" Precision="12" Scale="4" />
           <Property Name="SupplierID" Type="nvarchar" MaxLength="15" />
+          <Property Name="NotConfirmedQTY" Type="int" />
         </EntityType>
         <EntityType Name="StockJournalDetail">
           <Key>
@@ -2068,6 +2069,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="ValidationDate" Type="datetime" />
           <Property Name="ProductID" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="SaleOrderID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="NotConfirmedQ" Type="int" />
         </EntityType>
         <EntityType Name="SuffixPrefix">
           <Key>
@@ -6952,6 +6954,9 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Parameter Name="startDate" Type="date" Mode="In" />
           <Parameter Name="enddate" Type="date" Mode="In" />
         </Function>
+        <Function Name="BackOrderItemSeach" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ProductCode" Type="nvarchar(max)" Mode="In" />
+        </Function>
         <Function Name="BalanceSheet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="toDate" Type="datetime" Mode="In" />
           <Parameter Name="fromDate" Type="datetime" Mode="In" />
@@ -8830,6 +8835,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Parameter Name="voucherNo" Type="varchar" Mode="In" />
           <Parameter Name="voucherTypeId" Type="decimal" Mode="In" />
         </Function>
+        <Function Name="StockSearchforConfirm" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="StockValueOnDateByAVCO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="date" Type="datetime" Mode="In" />
         </Function>
@@ -13237,6 +13243,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="MPN" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Cost" Type="Decimal" Precision="12" Scale="4" />
           <Property Name="SupplierID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="NotConfirmedQTY" Type="Int32" />
           <NavigationProperty Name="VoucherType" Relationship="Self.FK__Stock__againstVo__2C7E77EA" FromRole="Stock" ToRole="VoucherType" />
           <NavigationProperty Name="Supplier" Relationship="Self.FK__Stock__SupplierI__52A420D2" FromRole="Stock" ToRole="Supplier" />
           <NavigationProperty Name="VoucherType1" Relationship="Self.FK__Stock__voucherTy__2D729C23" FromRole="Stock" ToRole="VoucherType" />
@@ -13324,6 +13331,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="ValidationDate" Type="DateTime" Precision="3" />
           <Property Name="ProductID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SaleOrderID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="NotConfirmedQ" Type="Int32" />
           <NavigationProperty Name="Customer" Relationship="Self.FK__StockRese__Custo__2A962F78" FromRole="StockReserve" ToRole="Customer" />
           <NavigationProperty Name="SaleOrder" Relationship="Self.FK__StockRese__SaleO__4FC7B427" FromRole="StockReserve" ToRole="SaleOrder" />
           <NavigationProperty Name="Stock" Relationship="Self.FK__StockRese__Stock__2B8A53B1" FromRole="StockReserve" ToRole="Stock" />
@@ -19873,6 +19881,9 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <Parameter Name="startDate" Mode="In" Type="DateTime" />
             <Parameter Name="enddate" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <FunctionImport Name="BackOrderItemSeach" ReturnType="Collection(IMEModel.BackOrderItemSeach_Result)">
+            <Parameter Name="ProductCode" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="BalanceSheet" ReturnType="Collection(IMEModel.BalanceSheet_Result)">
             <Parameter Name="toDate" Mode="In" Type="DateTime" />
             <Parameter Name="fromDate" Mode="In" Type="DateTime" />
@@ -21740,6 +21751,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <Parameter Name="voucherNo" Mode="In" Type="String" />
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="StockSearchforConfirm" ReturnType="Collection(IMEModel.StockSearchforConfirm_Result)" />
           <FunctionImport Name="StockValueOnDateByAVCO">
             <Parameter Name="date" Mode="In" Type="DateTime" />
           </FunctionImport>
@@ -22325,6 +22337,20 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="DateTime" Name="FirstDate" Nullable="true" />
           <Property Type="String" Name="PendingAmount" Nullable="true" />
           <Property Type="DateTime" Name="PromisedDate2" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="BackOrderItemSeach_Result">
+          <Property Type="String" Name="QuotationNo" Nullable="true" MaxLength="20" />
+          <Property Type="Decimal" Name="SaleOrderID" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="DateTime" Name="SaleDate" Nullable="true" />
+          <Property Type="String" Name="customerName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Adder" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RepresentativeID" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PurchaseOrderNo" Nullable="true" />
+          <Property Type="String" Name="ProductNo" Nullable="true" />
+          <Property Type="Int32" Name="SaleOrderQuantity" Nullable="true" />
+          <Property Type="String" Name="PendingQuantity" Nullable="true" />
+          <Property Type="DateTime" Name="FirstDate" Nullable="true" />
+          <Property Type="DateTime" Name="PromisedDate" Nullable="true" />
         </ComplexType>
         <ComplexType Name="BalanceSheet_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
@@ -23982,6 +24008,47 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="StockSearchforConfirm_Result">
+          <Property Type="Int32" Name="ReserveID" Nullable="false" />
+          <Property Type="Decimal" Name="StockID" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Int32" Name="Qty" Nullable="false" />
+          <Property Type="String" Name="CustomerID" Nullable="true" MaxLength="15" />
+          <Property Type="DateTime" Name="ValidationDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ProductID" Nullable="false" MaxLength="20" />
+          <Property Type="Decimal" Name="SaleOrderID" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Int32" Name="NotConfirmedQ" Nullable="true" />
+          <Property Type="String" Name="ID" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="c_name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="discountrate" Nullable="true" Precision="6" Scale="4" />
+          <Property Type="Int32" Name="paymentmethodID" Nullable="true" />
+          <Property Type="Int32" Name="creditlimit" Nullable="true" />
+          <Property Type="String" Name="webadress" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="payment_termID" Nullable="true" />
+          <Property Type="Int32" Name="representaryID" Nullable="true" />
+          <Property Type="Int32" Name="customerNoteID" Nullable="true" />
+          <Property Type="Int32" Name="representary2ID" Nullable="true" />
+          <Property Type="Int32" Name="accountrepresentaryID" Nullable="true" />
+          <Property Type="Int32" Name="isactive" Nullable="true" />
+          <Property Type="Int32" Name="rateIDinvoice" Nullable="true" />
+          <Property Type="String" Name="taxoffice" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="taxnumber" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="MainContactID" Nullable="true" />
+          <Property Type="String" Name="CurrTypeInv" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="CurrNameInv" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="CurrTypeQuo" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="CurrNameQuo" Nullable="true" MaxLength="15" />
+          <Property Type="Int32" Name="customerAccountantNoteID" Nullable="true" />
+          <Property Type="String" Name="extensionnumber" Nullable="true" MaxLength="10" />
+          <Property Type="Decimal" Name="factor" Nullable="true" Precision="20" Scale="5" />
+          <Property Type="Int32" Name="creditDay" Nullable="true" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="telephone" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="fax" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="categoryID" Nullable="true" />
+          <Property Type="Int32" Name="subcategoryID" Nullable="true" />
+          <Property Type="String" Name="ThirdPartyCode" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Capital" Nullable="true" MaxLength="20" />
         </ComplexType>
         <ComplexType Name="TaxCrystalReportGridFillByBillWise_Result">
           <Property Type="String" Name="companyName" Nullable="true" />
@@ -26244,6 +26311,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="MPN" ColumnName="MPN" />
                 <ScalarProperty Name="Cost" ColumnName="Cost" />
                 <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+                <ScalarProperty Name="NotConfirmedQTY" ColumnName="NotConfirmedQTY" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -26315,6 +26383,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="ValidationDate" ColumnName="ValidationDate" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="SaleOrderID" ColumnName="SaleOrderID" />
+                <ScalarProperty Name="NotConfirmedQ" ColumnName="NotConfirmedQ" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -27238,6 +27307,24 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="FirstDate" ColumnName="FirstDate" />
                 <ScalarProperty Name="PendingAmount" ColumnName="PendingAmount" />
                 <ScalarProperty Name="PromisedDate2" ColumnName="PromisedDate2" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="BackOrderItemSeach" FunctionName="IMEModel.Store.BackOrderItemSeach">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.BackOrderItemSeach_Result">
+                <ScalarProperty Name="QuotationNo" ColumnName="QuotationNo" />
+                <ScalarProperty Name="SaleOrderID" ColumnName="SaleOrderID" />
+                <ScalarProperty Name="SaleDate" ColumnName="SaleDate" />
+                <ScalarProperty Name="customerName" ColumnName="customerName" />
+                <ScalarProperty Name="Adder" ColumnName="Adder" />
+                <ScalarProperty Name="RepresentativeID" ColumnName="RepresentativeID" />
+                <ScalarProperty Name="PurchaseOrderNo" ColumnName="PurchaseOrderNo" />
+                <ScalarProperty Name="ProductNo" ColumnName="ProductNo" />
+                <ScalarProperty Name="SaleOrderQuantity" ColumnName="SaleOrderQuantity" />
+                <ScalarProperty Name="PendingQuantity" ColumnName="PendingQuantity" />
+                <ScalarProperty Name="FirstDate" ColumnName="FirstDate" />
+                <ScalarProperty Name="PromisedDate" ColumnName="PromisedDate" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -29810,6 +29897,51 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <FunctionImportMapping FunctionImportName="StockPostingDeleteByagainstVoucherTypeIdAndagainstVoucherNoAndVoucherNoAndVoucherType" FunctionName="IMEModel.Store.StockPostingDeleteByagainstVoucherTypeIdAndagainstVoucherNoAndVoucherNoAndVoucherType" />
           <FunctionImportMapping FunctionImportName="StockPostingDeleteByVoucherTypeAndVoucherNo" FunctionName="IMEModel.Store.StockPostingDeleteByVoucherTypeAndVoucherNo" />
           <FunctionImportMapping FunctionImportName="StockPostingDeleteForSalesInvoiceAgainstDeliveryNote" FunctionName="IMEModel.Store.StockPostingDeleteForSalesInvoiceAgainstDeliveryNote" />
+          <FunctionImportMapping FunctionImportName="StockSearchforConfirm" FunctionName="IMEModel.Store.StockSearchforConfirm">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.StockSearchforConfirm_Result">
+                <ScalarProperty Name="ReserveID" ColumnName="ReserveID" />
+                <ScalarProperty Name="StockID" ColumnName="StockID" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="ValidationDate" ColumnName="ValidationDate" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="SaleOrderID" ColumnName="SaleOrderID" />
+                <ScalarProperty Name="NotConfirmedQ" ColumnName="NotConfirmedQ" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="c_name" ColumnName="c_name" />
+                <ScalarProperty Name="discountrate" ColumnName="discountrate" />
+                <ScalarProperty Name="paymentmethodID" ColumnName="paymentmethodID" />
+                <ScalarProperty Name="creditlimit" ColumnName="creditlimit" />
+                <ScalarProperty Name="webadress" ColumnName="webadress" />
+                <ScalarProperty Name="payment_termID" ColumnName="payment_termID" />
+                <ScalarProperty Name="representaryID" ColumnName="representaryID" />
+                <ScalarProperty Name="customerNoteID" ColumnName="customerNoteID" />
+                <ScalarProperty Name="representary2ID" ColumnName="representary2ID" />
+                <ScalarProperty Name="accountrepresentaryID" ColumnName="accountrepresentaryID" />
+                <ScalarProperty Name="isactive" ColumnName="isactive" />
+                <ScalarProperty Name="rateIDinvoice" ColumnName="rateIDinvoice" />
+                <ScalarProperty Name="taxoffice" ColumnName="taxoffice" />
+                <ScalarProperty Name="taxnumber" ColumnName="taxnumber" />
+                <ScalarProperty Name="MainContactID" ColumnName="MainContactID" />
+                <ScalarProperty Name="CurrTypeInv" ColumnName="CurrTypeInv" />
+                <ScalarProperty Name="CurrNameInv" ColumnName="CurrNameInv" />
+                <ScalarProperty Name="CurrTypeQuo" ColumnName="CurrTypeQuo" />
+                <ScalarProperty Name="CurrNameQuo" ColumnName="CurrNameQuo" />
+                <ScalarProperty Name="customerAccountantNoteID" ColumnName="customerAccountantNoteID" />
+                <ScalarProperty Name="extensionnumber" ColumnName="extensionnumber" />
+                <ScalarProperty Name="factor" ColumnName="factor" />
+                <ScalarProperty Name="creditDay" ColumnName="creditDay" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="telephone" ColumnName="telephone" />
+                <ScalarProperty Name="fax" ColumnName="fax" />
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+                <ScalarProperty Name="subcategoryID" ColumnName="subcategoryID" />
+                <ScalarProperty Name="ThirdPartyCode" ColumnName="ThirdPartyCode" />
+                <ScalarProperty Name="Capital" ColumnName="Capital" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="StockValueOnDateByAVCO" FunctionName="IMEModel.Store.StockValueOnDateByAVCO" />
           <FunctionImportMapping FunctionImportName="StockValueOnDateByAVCOForOpeningStock" FunctionName="IMEModel.Store.StockValueOnDateByAVCOForOpeningStock" />
           <FunctionImportMapping FunctionImportName="StockValueOnDateByAVCOForOpeningStockForBalanceSheet" FunctionName="IMEModel.Store.StockValueOnDateByAVCOForOpeningStockForBalanceSheet" />
