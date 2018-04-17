@@ -21,6 +21,7 @@ namespace LoginForm.DataSet
         public Nullable<System.DateTime> ValidationDate { get; set; }
         public string ProductID { get; set; }
         public Nullable<decimal> SaleOrderID { get; set; }
+        public Nullable<int> NotConfirmedQ { get; set; }
     
         public virtual Customer Customer { get; set; }
         public virtual SaleOrder SaleOrder { get; set; }
