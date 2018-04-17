@@ -58,6 +58,7 @@ namespace LoginForm
         //frmRejectionOut frmRejectionOutObj;
         //frmDeliveryNote frmDeliveryNoteObj;
         frmDeliveryNote frmDeliveryNoteObj;
+        frmSalesInvoice frmSalesInvoiceObj;
         frmPurchaseInvoice frmPurchaseInvoiceObj = null;
         frmPurchaseReturn frmPurchaseReturnObj;
         //frmSalesQuotation frmSalesQuotationObj;
@@ -956,14 +957,15 @@ namespace LoginForm
                 MessageBox.Show("AL20:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
         /// <summary>
         /// Function to call this form from frmSalesInvoice for creating new account ledger
         /// </summary>
-        /// <param name="frmSalesInvoice"></param>
+        /// <param name="frmDeliveryNote"></param>
         /// <param name="isFromCorParty"></param>
         /// <param name="isFromSA"></param>
         /// //TODO OpenMiracle Function
-        public void callFromSalesInvoice(frmDeliveryNote frmSalesInvoice, bool isFromCorParty, bool isFromSA)
+        public void callFromSalesInvoice(frmDeliveryNote frmDeliveryNote, bool isFromCorParty, bool isFromSA)
         {
             try
             {
@@ -975,7 +977,7 @@ namespace LoginForm
                 dgvAccountLedger.Enabled = false;
                 lblLedgerNameSearch.Enabled = false;
                 lblGroupSearch.Enabled = false;
-                this.frmDeliveryNoteObj = frmSalesInvoice;
+                this.frmDeliveryNoteObj = frmDeliveryNote;
                 base.Show();
             }
             catch (Exception ex)
@@ -983,6 +985,35 @@ namespace LoginForm
                 MessageBox.Show("AL21:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        /// <summary>
+        /// Function to call this form from frmSalesInvoice for creating new account ledger
+        /// </summary>
+        /// <param name="frmSalesInvoice"></param>
+        /// <param name="isFromCorParty"></param>
+        /// <param name="isFromSA"></param>
+        /// //TODO OpenMiracle Function
+        public void callFromSalesInvoice(frmSalesInvoice frmSalesInvoice, bool isFromCorParty, bool isFromSA)
+        {
+            try
+            {
+                isFromSalesReturnCashOrPartyCombo = isFromCorParty;
+                isFromSalesReturnSalesAccountCombo = isFromSA;
+                txtLedgerNameSearch.Enabled = false;
+                btnSearch.Enabled = false;
+                cmbGroupSearch.Enabled = false;
+                dgvAccountLedger.Enabled = false;
+                lblLedgerNameSearch.Enabled = false;
+                lblGroupSearch.Enabled = false;
+                this.frmSalesInvoiceObj = frmSalesInvoice;
+                base.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("AL21:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
         /// <summary>
         /// Function to call this form from frmJournalVoucher for creating new account ledger
         /// </summary>

@@ -51,7 +51,8 @@ namespace LoginForm
         //frmMaterialReceipt frmMaterialReceiptObj = null;
         //frmPartyAddressBook frmPartyAddressBookObj = null;
         frmDeliveryNote frmDeliveryNoteObj = null;
-       // frmPOS frmPOSObj = null;
+        frmSalesInvoice frmSalesInvoiceObj = null;
+        // frmPOS frmPOSObj = null;
 
         #endregion
 
@@ -528,16 +529,46 @@ namespace LoginForm
         /// <summary>
         /// Function to call this form from frmSalesInvoice
         /// </summary>
-        /// <param name="frmSalesInvoice"></param>
+        /// <param name="frmDeliveryNote"></param>
         /// <param name="decId"></param>
         /// <param name="strComboType"></param>
-        public void CallFromSalesInvoice(frmDeliveryNote frmSalesInvoice, decimal decId, string strComboType) //PopUp
+        public void CallFromDeliveryNote(frmDeliveryNote frmDeliveryNote, decimal decId, string strComboType) //PopUp
         {
             try
             {
                 strComboTypes = strComboType;
                 base.Show();
-                this.frmDeliveryNoteObj = frmSalesInvoice;
+                this.frmDeliveryNoteObj = frmDeliveryNote;
+                frmDeliveryNoteObj.Enabled = false;
+                int inRowCount = dgvLedgerPopup.Rows.Count;
+                for (int i = 0; i < inRowCount; i++)
+                {
+                    if (Convert.ToDecimal(dgvLedgerPopup.Rows[i].Cells["dgvtxtLedgerId"].Value.ToString()) == decId)
+                    {
+                        dgvLedgerPopup.Rows[i].DefaultCellStyle.BackColor = Color.MediumSeaGreen;
+                    }
+                }
+                txtLedgerName.Focus();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("LP18:" + ex.Message, "Open Miracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        /// <summary>
+        /// Function to call this form from frmSalesInvoice
+        /// </summary>
+        /// <param name="frmSalesInvoice"></param>
+        /// <param name="decId"></param>
+        /// <param name="strComboType"></param>
+        public void CallFromSalesInvoice(frmSalesInvoice frmSalesInvoice, decimal decId, string strComboType) //PopUp
+        {
+            try
+            {
+                strComboTypes = strComboType;
+                base.Show();
+                this.frmSalesInvoiceObj = frmSalesInvoice;
                 frmDeliveryNoteObj.Enabled = false;
                 int inRowCount = dgvLedgerPopup.Rows.Count;
                 for (int i = 0; i < inRowCount; i++)
