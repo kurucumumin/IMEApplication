@@ -22,7 +22,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>107</ApplicationRevision>
+    <ApplicationRevision>108</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -732,11 +732,23 @@
     <Compile Include="Account\Transaction\frmServiceVoucher.Designer.cs">
       <DependentUpon>frmServiceVoucher.cs</DependentUpon>
     </Compile>
+    <Compile Include="BackOrder\BackOrderProductSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BackOrder\BackOrderProductSearch.Designer.cs">
+      <DependentUpon>BackOrderProductSearch.cs</DependentUpon>
+    </Compile>
     <Compile Include="BackOrder\frmbackOrderAnalize.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="BackOrder\frmbackOrderAnalize.Designer.cs">
       <DependentUpon>frmbackOrderAnalize.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BackOrder\frmBackOrderDetailView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BackOrder\frmBackOrderDetailView.Designer.cs">
+      <DependentUpon>frmBackOrderDetailView.cs</DependentUpon>
     </Compile>
     <Compile Include="BackOrder\frmBackOrderLoader.cs">
       <SubType>Form</SubType>
@@ -999,7 +1011,10 @@
     <Compile Include="DataSet\BackOrderAnalize_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\BackOrderDesc.cs">
+    <Compile Include="DataSet\BackOrderItemSeach_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\BackOrderMain.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\BalanceSheetAssets_Result.cs">
@@ -1957,6 +1972,9 @@
     <Compile Include="DataSet\StockReserve.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\StockSearchforConfirm_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\SuffixPrefix.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -2309,6 +2327,12 @@
     <Compile Include="Services\ToolTipService.cs" />
     <Compile Include="Services\txtCreate.cs" />
     <Compile Include="Services\XmlToObject.cs" />
+    <Compile Include="StockConfirm\frmStockConfirm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockConfirm\frmStockConfirm.Designer.cs">
+      <DependentUpon>frmStockConfirm.cs</DependentUpon>
+    </Compile>
     <Compile Include="StockManagement\frmStock.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2629,8 +2653,14 @@
     <EmbeddedResource Include="Account\Transaction\frmServiceVoucher.resx">
       <DependentUpon>frmServiceVoucher.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BackOrder\BackOrderProductSearch.resx">
+      <DependentUpon>BackOrderProductSearch.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BackOrder\frmbackOrderAnalize.resx">
       <DependentUpon>frmbackOrderAnalize.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BackOrder\frmBackOrderDetailView.resx">
+      <DependentUpon>frmBackOrderDetailView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BackOrder\frmBackOrderLoader.resx">
       <DependentUpon>frmBackOrderLoader.cs</DependentUpon>
@@ -2803,6 +2833,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SaleOrder\FormSaleOrderAdd.resx">
       <DependentUpon>FormSaleOrderAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StockConfirm\frmStockConfirm.resx">
+      <DependentUpon>frmStockConfirm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StockManagement\frmStock.resx">
       <DependentUpon>frmStock.cs</DependentUpon>

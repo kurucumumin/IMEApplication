@@ -25,9 +25,17 @@ namespace LoginForm.BackOrder
             form.Show();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void btnbackOrderViewDetail_Click(object sender, EventArgs e)
         {
-            
+            if (dg.CurrentRow != null)
+            {
+                frmBackOrderDetailView form = new frmBackOrderDetailView(Int32.Parse(dg.CurrentRow.Cells[ID.Index].Value.ToString()));
+                form.Show();
+            }
+            else
+            {
+                MessageBox.Show("Please select a row");
+            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -37,13 +45,18 @@ namespace LoginForm.BackOrder
 
         private void button5_Click(object sender, EventArgs e)
         {
-            frmbackOrderAnalize form = new frmbackOrderAnalize(dtpStartDate.Value, dtpEndDate.Value);
+            frmbackOrderAnalize form = new frmbackOrderAnalize(DateTime.Parse(dg.CurrentRow.Cells[Date.Index].Value.ToString()));
             form.Show();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            this.Close();
+
+            DialogResult dialogResult = MessageBox.Show("Close", "Are you sure to close this page", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
 
         private void frmBackOrderMain_Load(object sender, EventArgs e)
@@ -54,45 +67,31 @@ namespace LoginForm.BackOrder
         }
 
         #region Functions
-        private void UpdateLoaderFunction()
-        {
-            IMEEntities IME = new IMEEntities();
-            foreach (DataSet.BackOrder item in IME.BackOrders.Where(a=>a.OrderDate<=dtpEndDate.Value ).Where(a=> a.OrderDate >= dtpStartDate.Value))
-            {
-                DataGridViewRow row = (DataGridViewRow)dg.Rows[0].Clone();
-                row.Cells[ID.Index].Value = item.ID;
-                row.Cells[LatestPromisedDate.Index].Value = item.LatestPromisedDate;
-                row.Cells[Article.Index].Value = item.Article;
-                row.Cells[FirstPromisedDate.Index].Value = item.FirstPromisedDate;
-                row.Cells[LineValue.Index].Value = item.LineValue;
-                row.Cells[OrderDate.Index].Value = item.OrderDate;
-                row.Cells[OutstandingQuantity.Index].Value = item.OutstandingQuantity;
-                row.Cells[PurchaseOrderNumber.Index].Value = item.PurchaseOrderNumber;
-                row.Cells[RSUKReference.Index].Value = item.RSUKReference;
-                row.Cells[SoldToNumber.Index].Value = item.SoldToNumber;
-                row.Cells[TradingTitle.Index].Value = item.TradingTitle;
-                dg.Rows.Add(row);
-
-            }
-        }
+        
         #endregion
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            VisibleAll();
             
-            foreach (DataGridViewRow item in dg.Rows)
-            {
-                for (int i = 0; i < item.Cells.Count; i++)
+                foreach (DataGridViewRow item in dg.Rows)
                 {
-                    DataGridViewCell cell;
-                    cell = item.Cells[i];
-                    cell.Style.BackColor = Color.White;
-                    if (cell.Value!=null && cell.Value.ToString().Contains(txtSearch.Text) )
+                    for (int i = 0; i < item.Cells.Count; i++)
                     {
-                        cell.Style.BackColor = Color.Yellow;
+                        DataGridViewCell cell;
+                        cell = item.Cells[i];
+                        cell.Style.BackColor = Color.White;
+                        if (cell.Value != null && cell.Value.ToString().Contains(txtSearch.Text))
+                        {
+                            cell.Style.BackColor = Color.Yellow;
+                        }
+                        //else
+                        //{
+                        //    try { item.Visible = false; } catch { }
+                        //}
                     }
                 }
-            }
+            
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -111,8 +110,8 @@ namespace LoginForm.BackOrder
         private void dg_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             IMEEntities IME = new IMEEntities();
-            int BackOrderDescsID = Int32.Parse(dg.CurrentRow.Cells[ID.Index].Value.ToString());
-            BackOrderDesc bod = IME.BackOrderDescs.Where(a => a.BackOrderID == BackOrderDescsID).FirstOrDefault();
+            int BackOrderMainID = Int32.Parse(dg.CurrentRow.Cells[ID.Index].Value.ToString());
+            BackOrderMain bod = IME.BackOrderMains.Where(a => a.ID == BackOrderMainID).FirstOrDefault();
             txtItemDesc.Text = bod.description;
         }
 
@@ -123,7 +122,40 @@ namespace LoginForm.BackOrder
 
         private void btnAnalize_Click(object sender, EventArgs e)
         {
-            frmbackOrderAnalize form = new frmbackOrderAnalize();
+            frmbackOrderAnalize form = new frmbackOrderAnalize(DateTime.Parse(dg.CurrentRow.Cells[Date.Index].Value.ToString()));
+            form.Show();
+        }
+
+        private void VisibleAll()
+        {
+            //foreach (DataGridViewRow item in dg.Rows)
+            //{
+            //    item.Visible = true;
+                
+            //}
+        }
+        private void    UpdateLoaderFunction()
+        {
+            dg.DataSource = null;
+            
+            IMEEntities IME = new IMEEntities();
+            foreach (var item in IME.BackOrderMains.Where(a=>a.Date<=dtpEndDate.Value && a.Date>=dtpStartDate.Value))
+            {
+                DataGridViewRow row = (DataGridViewRow)dg.Rows[0].Clone();
+                row.Cells[ID.Index].Value = item.ID;
+                row.Cells[Date.Index].Value = item.Date;
+                row.Cells[Description.Index].Value = item.description;
+                if(IME.Workers.Where(a => a.WorkerID == item.userID).FirstOrDefault()!=null)
+                {
+                    row.Cells[UserName.Index].Value = IME.Workers.Where(a => a.WorkerID == item.userID).FirstOrDefault().NameLastName;
+                }
+                dg.Rows.Add(row);
+            }
+        }
+
+        private void btnProductSearch_Click(object sender, EventArgs e)
+        {
+            BackOrderProductSearch form = new BackOrderProductSearch();
             form.Show();
         }
     }

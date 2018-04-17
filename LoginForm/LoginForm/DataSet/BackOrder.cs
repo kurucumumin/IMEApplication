@@ -14,12 +14,6 @@ namespace LoginForm.DataSet
     
     public partial class BackOrder
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public BackOrder()
-        {
-            this.BackOrderDescs = new HashSet<BackOrderDesc>();
-        }
-    
         public int ID { get; set; }
         public string RSUKReference { get; set; }
         public string SoldToNumber { get; set; }
@@ -31,8 +25,8 @@ namespace LoginForm.DataSet
         public string LineValue { get; set; }
         public Nullable<System.DateTime> FirstPromisedDate { get; set; }
         public Nullable<System.DateTime> LatestPromisedDate { get; set; }
+        public Nullable<int> BackOrderMainID { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BackOrderDesc> BackOrderDescs { get; set; }
+        public virtual BackOrderMain BackOrderMain { get; set; }
     }
 }

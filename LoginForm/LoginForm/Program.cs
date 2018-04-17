@@ -6,6 +6,7 @@ using System;
 using System.Windows.Forms;
 using LoginForm.Account;
 using LoginForm.BackOrder;
+using LoginForm.StockConfirm;
 
 namespace LoginForm
 {
@@ -16,7 +17,7 @@ namespace LoginForm
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmBackOrderMain());
+            Application.Run(new frmStockConfirm());
         }
     }
 }

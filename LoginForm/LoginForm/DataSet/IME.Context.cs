@@ -33,7 +33,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<Area> Areas { get; set; }
         public virtual DbSet<AuthorizationValue> AuthorizationValues { get; set; }
         public virtual DbSet<BackOrder> BackOrders { get; set; }
-        public virtual DbSet<BackOrderDesc> BackOrderDescs { get; set; }
+        public virtual DbSet<BackOrderMain> BackOrderMains { get; set; }
         public virtual DbSet<BankReconciliation> BankReconciliations { get; set; }
         public virtual DbSet<Batch> Batches { get; set; }
         public virtual DbSet<BonusDeduction> BonusDeductions { get; set; }
@@ -995,17 +995,22 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ArticleSelectAll_Result>("ArticleSelectAll");
         }
     
-        public virtual ObjectResult<BackOrderAnalize_Result> BackOrderAnalize(Nullable<System.DateTime> startDate, Nullable<System.DateTime> enddate)
+        public virtual ObjectResult<BackOrderAnalize_Result> BackOrderAnalize(Nullable<System.DateTime> bOADate)
         {
-            var startDateParameter = startDate.HasValue ?
-                new ObjectParameter("startDate", startDate) :
-                new ObjectParameter("startDate", typeof(System.DateTime));
+            var bOADateParameter = bOADate.HasValue ?
+                new ObjectParameter("BOADate", bOADate) :
+                new ObjectParameter("BOADate", typeof(System.DateTime));
     
-            var enddateParameter = enddate.HasValue ?
-                new ObjectParameter("enddate", enddate) :
-                new ObjectParameter("enddate", typeof(System.DateTime));
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BackOrderAnalize_Result>("BackOrderAnalize", bOADateParameter);
+        }
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BackOrderAnalize_Result>("BackOrderAnalize", startDateParameter, enddateParameter);
+        public virtual ObjectResult<BackOrderItemSeach_Result> BackOrderItemSeach(string productCode)
+        {
+            var productCodeParameter = productCode != null ?
+                new ObjectParameter("ProductCode", productCode) :
+                new ObjectParameter("ProductCode", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BackOrderItemSeach_Result>("BackOrderItemSeach", productCodeParameter);
         }
     
         public virtual ObjectResult<BalanceSheet_Result> BalanceSheet(Nullable<System.DateTime> toDate, Nullable<System.DateTime> fromDate)
@@ -7556,6 +7561,11 @@ namespace LoginForm.DataSet
                 new ObjectParameter("voucherTypeId", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StockPostingDeleteForSalesInvoiceAgainstDeliveryNote", againstvoucherTypeIdParameter, againstVoucherNoParameter, voucherNoParameter, voucherTypeIdParameter);
+        }
+    
+        public virtual ObjectResult<StockSearchforConfirm_Result> StockSearchforConfirm()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<StockSearchforConfirm_Result>("StockSearchforConfirm");
         }
     
         public virtual int StockValueOnDateByAVCO(Nullable<System.DateTime> date)
