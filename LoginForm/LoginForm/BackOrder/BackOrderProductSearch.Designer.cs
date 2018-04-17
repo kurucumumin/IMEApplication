@@ -1,8 +1,6 @@
-﻿using System;
-
-namespace LoginForm.BackOrder
+﻿namespace LoginForm.BackOrder
 {
-    partial class frmbackOrderAnalize
+    partial class BackOrderProductSearch
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +28,8 @@ namespace LoginForm.BackOrder
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.dg = new System.Windows.Forms.DataGridView();
             this.QuotationNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SaleOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,15 +45,30 @@ namespace LoginForm.BackOrder
             this.PendingAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FirstPromisedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CurrentPromisedDate1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Emphty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PendingAmount1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PromisedDate2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CurrentPromisedDate2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Information = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnExit = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dg)).BeginInit();
             this.SuspendLayout();
+            // 
+            // btnExit
+            // 
+            this.btnExit.Location = new System.Drawing.Point(93, 12);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(75, 43);
+            this.btnExit.TabIndex = 9;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(12, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 43);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Excel";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // dg
             // 
@@ -73,16 +87,11 @@ namespace LoginForm.BackOrder
             this.Quantity,
             this.PendingAmount,
             this.FirstPromisedDate,
-            this.CurrentPromisedDate1,
-            this.Emphty,
-            this.PendingAmount1,
-            this.PromisedDate2,
-            this.CurrentPromisedDate2,
-            this.Information});
-            this.dg.Location = new System.Drawing.Point(2, 51);
+            this.CurrentPromisedDate1});
+            this.dg.Location = new System.Drawing.Point(12, 61);
             this.dg.Name = "dg";
             this.dg.Size = new System.Drawing.Size(1165, 690);
-            this.dg.TabIndex = 5;
+            this.dg.TabIndex = 7;
             // 
             // QuotationNo
             // 
@@ -170,82 +179,60 @@ namespace LoginForm.BackOrder
             this.CurrentPromisedDate1.Name = "CurrentPromisedDate1";
             this.CurrentPromisedDate1.ReadOnly = true;
             // 
-            // Emphty
+            // btnSearch
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Maroon;
-            this.Emphty.DefaultCellStyle = dataGridViewCellStyle1;
-            this.Emphty.HeaderText = "";
-            this.Emphty.Name = "Emphty";
-            this.Emphty.ReadOnly = true;
-            this.Emphty.Width = 20;
+            this.btnSearch.Location = new System.Drawing.Point(450, 12);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.TabIndex = 10;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // PendingAmount1
+            // label1
             // 
-            this.PendingAmount1.HeaderText = "Pending Amount";
-            this.PendingAmount1.Name = "PendingAmount1";
-            this.PendingAmount1.ReadOnly = true;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(180, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(72, 13);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Product Code";
             // 
-            // PromisedDate2
+            // txtSearch
             // 
-            this.PromisedDate2.HeaderText = "Promised Date 2";
-            this.PromisedDate2.Name = "PromisedDate2";
-            this.PromisedDate2.ReadOnly = true;
+            this.txtSearch.Location = new System.Drawing.Point(269, 14);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(175, 20);
+            this.txtSearch.TabIndex = 12;
             // 
-            // CurrentPromisedDate2
-            // 
-            this.CurrentPromisedDate2.HeaderText = "Current Promised Date 2";
-            this.CurrentPromisedDate2.Name = "CurrentPromisedDate2";
-            this.CurrentPromisedDate2.ReadOnly = true;
-            // 
-            // Information
-            // 
-            this.Information.HeaderText = "Information";
-            this.Information.Name = "Information";
-            this.Information.ReadOnly = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(2, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 43);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Excel";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btnExit
-            // 
-            this.btnExit.Location = new System.Drawing.Point(83, 2);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(75, 43);
-            this.btnExit.TabIndex = 6;
-            this.btnExit.Text = "Exit";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
-            // frmbackOrderAnalize
+            // BackOrderProductSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1179, 753);
+            this.ClientSize = new System.Drawing.Size(1340, 545);
+            this.Controls.Add(this.txtSearch);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dg);
-            this.Name = "frmbackOrderAnalize";
-            this.Text = "frmbackOrderAnalize";
-            this.Load += new System.EventHandler(this.frmbackOrderAnalize_Load);
+            this.Name = "BackOrderProductSearch";
+            this.Text = "BackOrderProductSearch";
+            this.Load += new System.EventHandler(this.BackOrderProductSearch_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dg)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dg;
-        private DateTime value1;
-        private DateTime value2;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridView dg;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.DataGridViewTextBoxColumn QuotationNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn SaleOrder;
         private System.Windows.Forms.DataGridViewTextBoxColumn QuoDetail;
@@ -260,10 +247,5 @@ namespace LoginForm.BackOrder
         private System.Windows.Forms.DataGridViewTextBoxColumn PendingAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn FirstPromisedDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn CurrentPromisedDate1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Emphty;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PendingAmount1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PromisedDate2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CurrentPromisedDate2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Information;
     }
 }

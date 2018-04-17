@@ -3302,14 +3302,16 @@ namespace LoginForm
                                 }
                                 else
                                 {
-                                    StockInfo.Qty = StockInfo.Qty+Qty;
+                                    StockInfo.NotConfirmedQTY = StockInfo.NotConfirmedQTY + Qty;
                                     StockInfo.ReserveQty = StockInfo.ReserveQty + Qty;
+                                    
                                     IME.SaveChanges();
                                     decimal StockID= StockInfo.StockID;
                                     string ProductID = StockInfo.ProductID;
                                     IME = new IMEEntities();
                                     StockReserve sr = new StockReserve();
                                     sr.Qty = Qty;
+                                    sr.NotConfirmedQ = 1;
                                     sr.StockID = StockID;
                                     sr.CustomerID = IME.PurchaseOrders.Where(x => x.purchaseOrderId == poID).FirstOrDefault().CustomerID;
                                     sr.ProductID = ProductID;
@@ -3326,8 +3328,9 @@ namespace LoginForm
                             {//Bizim stockumuz için demek
                                 Stock stockInfo = new Stock();
                                 stockInfo.ProductID = product;
-                                stockInfo.Qty = Qty;
+                                stockInfo.Qty = 0;
                                 stockInfo.ReserveQty = 0;
+                                stockInfo.NotConfirmedQTY = Qty;
                             }
 
                             //For Item History

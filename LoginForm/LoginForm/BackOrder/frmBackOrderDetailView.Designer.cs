@@ -1,6 +1,6 @@
 ﻿namespace LoginForm.BackOrder
 {
-    partial class frmBackOrderLoader
+    partial class frmBackOrderDetailView
     {
         /// <summary>
         /// Required designer variable.
@@ -28,16 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnChooseFile = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtDesc = new System.Windows.Forms.TextBox();
-            this.btnsave = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
             this.dg = new System.Windows.Forms.DataGridView();
             this.RSUKReference = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoldToNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TradingTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PurchaseOrderNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,77 +39,16 @@
             this.LineValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FirstPromisedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LatestPromisedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dg)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnChooseFile
-            // 
-            this.btnChooseFile.Location = new System.Drawing.Point(12, 12);
-            this.btnChooseFile.Name = "btnChooseFile";
-            this.btnChooseFile.Size = new System.Drawing.Size(75, 69);
-            this.btnChooseFile.TabIndex = 0;
-            this.btnChooseFile.Text = "Choose File";
-            this.btnChooseFile.UseVisualStyleBackColor = true;
-            this.btnChooseFile.Click += new System.EventHandler(this.btnChooseFile_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(110, 58);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(30, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Date";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(233, 52);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(192, 20);
-            this.dateTimePicker1.TabIndex = 2;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(110, 19);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(117, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Back Order Description";
-            // 
-            // txtDesc
-            // 
-            this.txtDesc.Location = new System.Drawing.Point(233, 16);
-            this.txtDesc.Name = "txtDesc";
-            this.txtDesc.Size = new System.Drawing.Size(192, 20);
-            this.txtDesc.TabIndex = 4;
-            // 
-            // btnsave
-            // 
-            this.btnsave.Location = new System.Drawing.Point(583, 12);
-            this.btnsave.Name = "btnsave";
-            this.btnsave.Size = new System.Drawing.Size(75, 69);
-            this.btnsave.TabIndex = 0;
-            this.btnsave.Text = "Save";
-            this.btnsave.UseVisualStyleBackColor = true;
-            this.btnsave.Click += new System.EventHandler(this.btnsave_Click);
-            // 
-            // btnClose
-            // 
-            this.btnClose.Location = new System.Drawing.Point(664, 12);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(75, 69);
-            this.btnClose.TabIndex = 0;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // dg
             // 
             this.dg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dg.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.RSUKReference,
-            this.ID,
             this.SoldToNumber,
             this.TradingTitle,
             this.PurchaseOrderNumber,
@@ -126,24 +57,18 @@
             this.OutstandingQuantity,
             this.LineValue,
             this.FirstPromisedDate,
-            this.LatestPromisedDate});
-            this.dg.Location = new System.Drawing.Point(12, 87);
+            this.LatestPromisedDate,
+            this.ID});
+            this.dg.Location = new System.Drawing.Point(3, 59);
             this.dg.Name = "dg";
-            this.dg.Size = new System.Drawing.Size(727, 292);
-            this.dg.TabIndex = 5;
+            this.dg.Size = new System.Drawing.Size(1008, 470);
+            this.dg.TabIndex = 4;
             // 
             // RSUKReference
             // 
             this.RSUKReference.HeaderText = "RS UK Reference";
             this.RSUKReference.Name = "RSUKReference";
             this.RSUKReference.ReadOnly = true;
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Visible = false;
             // 
             // SoldToNumber
             // 
@@ -199,40 +124,41 @@
             this.LatestPromisedDate.Name = "LatestPromisedDate";
             this.LatestPromisedDate.ReadOnly = true;
             // 
-            // frmBackOrderLoader
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
+            // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(3, 0);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(98, 53);
+            this.btnClose.TabIndex = 5;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // frmBackOrderDetailView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(742, 383);
-            this.Controls.Add(this.dg);
-            this.Controls.Add(this.txtDesc);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(1014, 541);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.btnsave);
-            this.Controls.Add(this.btnChooseFile);
-            this.Name = "frmBackOrderLoader";
-            this.Text = "frmBackOrderLoader";
-            this.Load += new System.EventHandler(this.frmBackOrderLoader_Load);
+            this.Controls.Add(this.dg);
+            this.Name = "frmBackOrderDetailView";
+            this.Text = "frmBackOrderDetailView";
+            this.Load += new System.EventHandler(this.frmBackOrderDetailView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dg)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnChooseFile;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtDesc;
-        private System.Windows.Forms.Button btnsave;
-        private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.DataGridView dg;
         private System.Windows.Forms.DataGridViewTextBoxColumn RSUKReference;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoldToNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn TradingTitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn PurchaseOrderNumber;
@@ -242,5 +168,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn LineValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn FirstPromisedDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn LatestPromisedDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.Button btnClose;
     }
 }

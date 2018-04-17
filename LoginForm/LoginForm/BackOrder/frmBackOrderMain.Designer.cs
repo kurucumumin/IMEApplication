@@ -39,29 +39,23 @@
             this.btnViewDetail = new System.Windows.Forms.Button();
             this.btnAnalize = new System.Windows.Forms.Button();
             this.dg = new System.Windows.Forms.DataGridView();
-            this.RSUKReference = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoldToNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TradingTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PurchaseOrderNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OrderDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Article = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OutstandingQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LineValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FirstPromisedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LatestPromisedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.txtItemDesc = new System.Windows.Forms.TextBox();
+            this.btnProductSearch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dg)).BeginInit();
             this.SuspendLayout();
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(664, 10);
+            this.btnClose.Location = new System.Drawing.Point(734, 11);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 50);
             this.btnClose.TabIndex = 0;
@@ -71,7 +65,7 @@
             // 
             // btnExcel
             // 
-            this.btnExcel.Location = new System.Drawing.Point(583, 10);
+            this.btnExcel.Location = new System.Drawing.Point(653, 11);
             this.btnExcel.Name = "btnExcel";
             this.btnExcel.Size = new System.Drawing.Size(75, 50);
             this.btnExcel.TabIndex = 0;
@@ -82,7 +76,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(276, 16);
+            this.label1.Location = new System.Drawing.Point(346, 17);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 1;
@@ -91,7 +85,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(276, 45);
+            this.label2.Location = new System.Drawing.Point(346, 46);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 13);
             this.label2.TabIndex = 1;
@@ -99,21 +93,21 @@
             // 
             // dtpStartDate
             // 
-            this.dtpStartDate.Location = new System.Drawing.Point(337, 10);
+            this.dtpStartDate.Location = new System.Drawing.Point(407, 11);
             this.dtpStartDate.Name = "dtpStartDate";
             this.dtpStartDate.Size = new System.Drawing.Size(156, 20);
             this.dtpStartDate.TabIndex = 2;
             // 
             // dtpEndDate
             // 
-            this.dtpEndDate.Location = new System.Drawing.Point(337, 41);
+            this.dtpEndDate.Location = new System.Drawing.Point(407, 42);
             this.dtpEndDate.Name = "dtpEndDate";
             this.dtpEndDate.Size = new System.Drawing.Size(156, 20);
             this.dtpEndDate.TabIndex = 2;
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(499, 11);
+            this.btnUpdate.Location = new System.Drawing.Point(569, 12);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 50);
             this.btnUpdate.TabIndex = 0;
@@ -139,7 +133,7 @@
             this.btnViewDetail.TabIndex = 0;
             this.btnViewDetail.Text = "View Back Order Detail";
             this.btnViewDetail.UseVisualStyleBackColor = true;
-            this.btnViewDetail.Click += new System.EventHandler(this.button4_Click);
+            this.btnViewDetail.Click += new System.EventHandler(this.btnbackOrderViewDetail_Click);
             // 
             // btnAnalize
             // 
@@ -155,88 +149,40 @@
             // 
             this.dg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dg.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.RSUKReference,
-            this.SoldToNumber,
-            this.TradingTitle,
-            this.PurchaseOrderNumber,
-            this.OrderDate,
-            this.Article,
-            this.OutstandingQuantity,
-            this.LineValue,
-            this.FirstPromisedDate,
-            this.LatestPromisedDate,
-            this.ID});
+            this.ID,
+            this.Date,
+            this.Description,
+            this.UserName});
             this.dg.Location = new System.Drawing.Point(12, 137);
             this.dg.Name = "dg";
-            this.dg.Size = new System.Drawing.Size(727, 292);
+            this.dg.Size = new System.Drawing.Size(797, 292);
             this.dg.TabIndex = 3;
             this.dg.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_CellClick);
-            // 
-            // RSUKReference
-            // 
-            this.RSUKReference.HeaderText = "RS UK Reference";
-            this.RSUKReference.Name = "RSUKReference";
-            this.RSUKReference.ReadOnly = true;
-            // 
-            // SoldToNumber
-            // 
-            this.SoldToNumber.HeaderText = "Sold To Number";
-            this.SoldToNumber.Name = "SoldToNumber";
-            this.SoldToNumber.ReadOnly = true;
-            // 
-            // TradingTitle
-            // 
-            this.TradingTitle.HeaderText = "Trading Title";
-            this.TradingTitle.Name = "TradingTitle";
-            this.TradingTitle.ReadOnly = true;
-            // 
-            // PurchaseOrderNumber
-            // 
-            this.PurchaseOrderNumber.HeaderText = "Purchase Order Number";
-            this.PurchaseOrderNumber.Name = "PurchaseOrderNumber";
-            this.PurchaseOrderNumber.ReadOnly = true;
-            // 
-            // OrderDate
-            // 
-            this.OrderDate.HeaderText = "Order Date";
-            this.OrderDate.Name = "OrderDate";
-            this.OrderDate.ReadOnly = true;
-            // 
-            // Article
-            // 
-            this.Article.HeaderText = "Article";
-            this.Article.Name = "Article";
-            this.Article.ReadOnly = true;
-            // 
-            // OutstandingQuantity
-            // 
-            this.OutstandingQuantity.HeaderText = "Outstanding Quantity";
-            this.OutstandingQuantity.Name = "OutstandingQuantity";
-            this.OutstandingQuantity.ReadOnly = true;
-            // 
-            // LineValue
-            // 
-            this.LineValue.HeaderText = "Line Value";
-            this.LineValue.Name = "LineValue";
-            this.LineValue.ReadOnly = true;
-            // 
-            // FirstPromisedDate
-            // 
-            this.FirstPromisedDate.HeaderText = "First Promised Date";
-            this.FirstPromisedDate.Name = "FirstPromisedDate";
-            this.FirstPromisedDate.ReadOnly = true;
-            // 
-            // LatestPromisedDate
-            // 
-            this.LatestPromisedDate.HeaderText = "Latest Promised Date";
-            this.LatestPromisedDate.Name = "LatestPromisedDate";
-            this.LatestPromisedDate.ReadOnly = true;
             // 
             // ID
             // 
             this.ID.HeaderText = "ID";
             this.ID.Name = "ID";
             this.ID.Visible = false;
+            // 
+            // Date
+            // 
+            this.Date.HeaderText = "Date";
+            this.Date.Name = "Date";
+            this.Date.ReadOnly = true;
+            // 
+            // Description
+            // 
+            this.Description.HeaderText = "Description";
+            this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
+            this.Description.Width = 400;
+            // 
+            // UserName
+            // 
+            this.UserName.HeaderText = "User Name";
+            this.UserName.Name = "UserName";
+            this.UserName.ReadOnly = true;
             // 
             // txtSearch
             // 
@@ -277,7 +223,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(409, 77);
+            this.label4.Location = new System.Drawing.Point(508, 84);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(55, 13);
             this.label4.TabIndex = 1;
@@ -285,17 +231,27 @@
             // 
             // txtItemDesc
             // 
-            this.txtItemDesc.Location = new System.Drawing.Point(470, 79);
+            this.txtItemDesc.Location = new System.Drawing.Point(569, 84);
             this.txtItemDesc.Multiline = true;
             this.txtItemDesc.Name = "txtItemDesc";
-            this.txtItemDesc.Size = new System.Drawing.Size(269, 47);
+            this.txtItemDesc.Size = new System.Drawing.Size(240, 47);
             this.txtItemDesc.TabIndex = 4;
+            // 
+            // btnProductSearch
+            // 
+            this.btnProductSearch.Location = new System.Drawing.Point(255, 11);
+            this.btnProductSearch.Name = "btnProductSearch";
+            this.btnProductSearch.Size = new System.Drawing.Size(75, 50);
+            this.btnProductSearch.TabIndex = 0;
+            this.btnProductSearch.Text = "Product Search Back Order";
+            this.btnProductSearch.UseVisualStyleBackColor = true;
+            this.btnProductSearch.Click += new System.EventHandler(this.btnProductSearch_Click);
             // 
             // frmBackOrderMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(745, 434);
+            this.ClientSize = new System.Drawing.Size(821, 434);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtItemDesc);
@@ -308,6 +264,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnExcel);
+            this.Controls.Add(this.btnProductSearch);
             this.Controls.Add(this.btnAnalize);
             this.Controls.Add(this.btnViewDetail);
             this.Controls.Add(this.btnAdd);
@@ -339,18 +296,12 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RSUKReference;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SoldToNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TradingTitle;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PurchaseOrderNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OrderDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Article;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OutstandingQuantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LineValue;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FirstPromisedDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LatestPromisedDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtItemDesc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UserName;
+        private System.Windows.Forms.Button btnProductSearch;
     }
 }
