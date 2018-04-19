@@ -734,10 +734,10 @@
     <Compile Include="Account\Transaction\frmServiceVoucher.Designer.cs">
       <DependentUpon>frmServiceVoucher.cs</DependentUpon>
     </Compile>
-    <Compile Include="AçıkSipariş\frmAcikSiparis.cs">
+    <Compile Include="OnOrder\frmAcikSiparis.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AçıkSipariş\frmAcikSiparis.Designer.cs">
+    <Compile Include="OnOrder\frmAcikSiparis.Designer.cs">
       <DependentUpon>frmAcikSiparis.cs</DependentUpon>
     </Compile>
     <Compile Include="BackOrder\BackOrderProductSearch.cs">
@@ -2667,7 +2667,7 @@
     <EmbeddedResource Include="Account\Transaction\frmServiceVoucher.resx">
       <DependentUpon>frmServiceVoucher.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AçıkSipariş\frmAcikSiparis.resx">
+    <EmbeddedResource Include="OnOrder\frmAcikSiparis.resx">
       <DependentUpon>frmAcikSiparis.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BackOrder\BackOrderProductSearch.resx">

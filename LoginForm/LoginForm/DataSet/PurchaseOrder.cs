@@ -17,6 +17,7 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PurchaseOrder()
         {
+            this.BackOrders = new HashSet<BackOrder>();
             this.MaterialReceiptMasters = new HashSet<MaterialReceiptMaster>();
             this.PurchaseMasters = new HashSet<PurchaseMaster>();
             this.PurchaseOrderDetails = new HashSet<PurchaseOrderDetail>();
@@ -43,6 +44,8 @@ namespace LoginForm.DataSet
         public string FicheNo { get; set; }
     
         public virtual AccountLedger AccountLedger { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BackOrder> BackOrders { get; set; }
         public virtual Customer Customer { get; set; }
         public virtual ExchangeRate ExchangeRate { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

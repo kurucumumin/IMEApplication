@@ -64,9 +64,10 @@ namespace LoginForm.AçıkSipariş
                                FaturaTarihi=  sd.SaleOrder.PurchaseOrderDetails.Where(x => x.ItemCode == sd.ItemCode).FirstOrDefault().PurchaseOrder.RS_InvoiceDetails.Where(y => y.ProductNumber == sd.ItemCode).FirstOrDefault().RS_Invoice.BillingDocumentDate,
                                //gumruk durumu
                                sd.UPIME,
-                               sd.SaleOrder.Customer.CustomerWorker.cw_name
-                               //Bi tane daha alan ekleme onada bizim fatura tarihimiz. bunu ekle sonra doldur. goto logo derkenki
-                               //BackOrder tarihi ve backOrder adeti ni ekle
+                               sd.SaleOrder.Customer.CustomerWorker.cw_name,
+                               sd.QuotationDetail.Quotation.SalesMasters.Where(x=>x.salesMasterId==sd.SaleOrderID).FirstOrDefault().date,
+                               BackOrderDate= sd.SaleOrder.PurchaseOrderDetails.Where(x => x.ItemCode == sd.ItemCode).FirstOrDefault().PurchaseOrder.BackOrders.FirstOrDefault().BackOrderMain.Date,
+                               BackOrderAdet = sd.SaleOrder.PurchaseOrderDetails.Where(x => x.ItemCode == sd.ItemCode).FirstOrDefault().PurchaseOrder.BackOrders.FirstOrDefault().OutstandingQuantity,
                            }).ToList();
 
             foreach (var item in adapter)
@@ -101,7 +102,9 @@ namespace LoginForm.AçıkSipariş
                 //gumruk durumu
                 row.Cells[BirimFiyat.Index].Value = item.UPIME;
                 row.Cells[FirmaYetkilisi.Index].Value = item.cw_name;
-                //delivery date
+                row.Cells[RequestDeliveryDate.Index].Value = item.date;
+                row.Cells[BackOrderAdet.Index].Value = item.BackOrderAdet;
+                row.Cells[BackOrderDate.Index].Value = item.BackOrderDate;
             }
             #endregion
         }

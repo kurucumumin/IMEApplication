@@ -11,6 +11,7 @@ using System.Linq;
 using System.Collections.Generic;
 using LoginForm.DataSet;
 using LoginForm.StockManagement;
+using LoginForm.AçıkSipariş;
 
 namespace LoginForm.CustomControls
 {
@@ -144,6 +145,12 @@ namespace LoginForm.CustomControls
         private void btnFatura_Click(object sender, EventArgs e)
         {
             Billing.frmFaturalanacaklar frm = new Billing.frmFaturalanacaklar();
+            frm.Show();
+        }
+
+        private void btnOnOrder_Click(object sender, EventArgs e)
+        {
+            frmAcikSiparis frm = new frmAcikSiparis();
             frm.Show();
         }
     }

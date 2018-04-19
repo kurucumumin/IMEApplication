@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevelopmentControl));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnFatura = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnStock = new System.Windows.Forms.Button();
             this.btnQuotation = new System.Windows.Forms.Button();
@@ -39,13 +40,14 @@
             this.btnWorker = new System.Windows.Forms.Button();
             this.btnSalesOrder = new System.Windows.Forms.Button();
             this.btnSupplier = new System.Windows.Forms.Button();
-            this.btnFatura = new System.Windows.Forms.Button();
+            this.btnOnOrder = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnOnOrder);
             this.panel1.Controls.Add(this.btnFatura);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.btnStock);
@@ -62,6 +64,25 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(226, 469);
             this.panel1.TabIndex = 0;
+            // 
+            // btnFatura
+            // 
+            this.btnFatura.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnFatura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
+            this.btnFatura.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnFatura.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnFatura.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
+            this.btnFatura.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
+            this.btnFatura.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFatura.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.btnFatura.Location = new System.Drawing.Point(0, 256);
+            this.btnFatura.Margin = new System.Windows.Forms.Padding(0);
+            this.btnFatura.Name = "btnFatura";
+            this.btnFatura.Size = new System.Drawing.Size(226, 32);
+            this.btnFatura.TabIndex = 47;
+            this.btnFatura.Text = "Biling";
+            this.btnFatura.UseVisualStyleBackColor = false;
+            this.btnFatura.Click += new System.EventHandler(this.btnFatura_Click);
             // 
             // pictureBox1
             // 
@@ -227,24 +248,24 @@
             this.btnSupplier.UseVisualStyleBackColor = false;
             this.btnSupplier.Click += new System.EventHandler(this.btnSupplier_Click);
             // 
-            // btnFatura
+            // btnOnOrder
             // 
-            this.btnFatura.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnFatura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
-            this.btnFatura.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnFatura.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnFatura.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
-            this.btnFatura.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
-            this.btnFatura.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFatura.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.btnFatura.Location = new System.Drawing.Point(0, 256);
-            this.btnFatura.Margin = new System.Windows.Forms.Padding(0);
-            this.btnFatura.Name = "btnFatura";
-            this.btnFatura.Size = new System.Drawing.Size(226, 32);
-            this.btnFatura.TabIndex = 47;
-            this.btnFatura.Text = "Biling";
-            this.btnFatura.UseVisualStyleBackColor = false;
-            this.btnFatura.Click += new System.EventHandler(this.btnFatura_Click);
+            this.btnOnOrder.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnOnOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
+            this.btnOnOrder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnOnOrder.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnOnOrder.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
+            this.btnOnOrder.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
+            this.btnOnOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOnOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.btnOnOrder.Location = new System.Drawing.Point(0, 288);
+            this.btnOnOrder.Margin = new System.Windows.Forms.Padding(0);
+            this.btnOnOrder.Name = "btnOnOrder";
+            this.btnOnOrder.Size = new System.Drawing.Size(226, 32);
+            this.btnOnOrder.TabIndex = 48;
+            this.btnOnOrder.Text = "On Order";
+            this.btnOnOrder.UseVisualStyleBackColor = false;
+            this.btnOnOrder.Click += new System.EventHandler(this.btnOnOrder_Click);
             // 
             // DevelopmentControl
             // 
@@ -276,5 +297,6 @@
         private System.Windows.Forms.Button btnStock;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnFatura;
+        private System.Windows.Forms.Button btnOnOrder;
     }
 }

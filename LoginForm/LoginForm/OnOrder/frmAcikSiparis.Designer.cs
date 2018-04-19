@@ -62,6 +62,8 @@
             this.BirimFiyat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FirmaYetkilisi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RequestDeliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BackOrderDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BackOrderAdet = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgAcikSiparis)).BeginInit();
             this.SuspendLayout();
             // 
@@ -151,7 +153,9 @@
             this.GumrukDurumu,
             this.BirimFiyat,
             this.FirmaYetkilisi,
-            this.RequestDeliveryDate});
+            this.RequestDeliveryDate,
+            this.BackOrderDate,
+            this.BackOrderAdet});
             this.dgAcikSiparis.Location = new System.Drawing.Point(12, 119);
             this.dgAcikSiparis.Name = "dgAcikSiparis";
             this.dgAcikSiparis.ReadOnly = true;
@@ -358,6 +362,18 @@
             this.RequestDeliveryDate.Name = "RequestDeliveryDate";
             this.RequestDeliveryDate.ReadOnly = true;
             // 
+            // BackOrderDate
+            // 
+            this.BackOrderDate.HeaderText = "BackOrderDate";
+            this.BackOrderDate.Name = "BackOrderDate";
+            this.BackOrderDate.ReadOnly = true;
+            // 
+            // BackOrderAdet
+            // 
+            this.BackOrderAdet.HeaderText = "BackOrderAdet";
+            this.BackOrderAdet.Name = "BackOrderAdet";
+            this.BackOrderAdet.ReadOnly = true;
+            // 
             // frmAcikSiparis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -415,5 +431,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn BirimFiyat;
         private System.Windows.Forms.DataGridViewTextBoxColumn FirmaYetkilisi;
         private System.Windows.Forms.DataGridViewTextBoxColumn RequestDeliveryDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BackOrderDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BackOrderAdet;
     }
 }
