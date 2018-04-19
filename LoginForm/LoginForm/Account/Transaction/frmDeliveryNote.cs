@@ -35,7 +35,7 @@ namespace LoginForm
         string strVoucherNo = string.Empty;
         string strPrefix = string.Empty;//to get the prefix string from frmvouchertypeselection
         string strSuffix = string.Empty;//to get the suffix string from frmvouchertypeselection
-        decimal decSalesInvoiceIdToEdit = 0; // to get the details of sales order for editing purpous
+        decimal decDeliveryNoteIdToEdit = 0; // to get the details of sales order for editing purpous
         string strSalesManId = string.Empty;
         string strInvoiceNo = string.Empty;
         string strProductCode = string.Empty;
@@ -43,8 +43,8 @@ namespace LoginForm
         string strVoucherNoTostockPost = string.Empty; //' stock post
         string strInvoiceNoTostockPost = string.Empty; //' stock post
         decimal decVouchertypeIdTostockPost = 0; //' stock post
-        decimal DecSalesInvoiceVoucherTypeId = -1;//to get the selected voucher type id from frmVoucherTypeSelection
-        decimal decSalseInvoiceSuffixPrefixId = -1;
+        decimal DecDeliveryNoteVoucherTypeId = -1;//to get the selected voucher type id from frmVoucherTypeSelection
+        decimal decDeliveryNoteSuffixPrefixId = -1;
         decimal decGodownId = 0; // for fill rack using godown Id
         decimal decBankOrCashIdForEdit = 0; // to use delete the ledger posting cash or bank row
         decimal decCurrentConversionRate = 0;
@@ -85,30 +85,30 @@ namespace LoginForm
                     {
                         strVoucherNo = "0";
                     }
-                    strVoucherNo = TransactionGeneralFillObj.VoucherNumberAutomaicGeneration(DecSalesInvoiceVoucherTypeId, Convert.ToDecimal(strVoucherNo), dtpDate.Value, "SalesMaster");
+                    strVoucherNo = TransactionGeneralFillObj.VoucherNumberAutomaicGeneration(DecDeliveryNoteVoucherTypeId, Convert.ToDecimal(strVoucherNo), dtpDate.Value, "DeliveryNoteMaster");
 
-                    decimal decSalesMastersTypeIdmax = 0;
-                    if (IME.SalesMasters.Where(a => a.voucherTypeId == DecSalesInvoiceVoucherTypeId).Select(b => b.voucherNo).ToList().Count() != 0) decSalesMastersTypeIdmax = IME.SalesMasters.Where(a => a.voucherTypeId == DecSalesInvoiceVoucherTypeId).Select(b => b.voucherNo).ToList().Select(decimal.Parse).ToList().Max();
+                    decimal decDeliveryNoteMastersTypeIdmax = 0;
+                    if (IME.DeliveryNoteMasters.Where(a => a.voucherTypeId == DecDeliveryNoteVoucherTypeId).Select(b => b.voucherNo).ToList().Count() != 0) decDeliveryNoteMastersTypeIdmax = IME.DeliveryNoteMasters.Where(a => a.voucherTypeId == DecDeliveryNoteVoucherTypeId).Select(b => b.voucherNo).ToList().Select(decimal.Parse).ToList().Max();
 
-                    if (Convert.ToDecimal(strVoucherNo) != decSalesMastersTypeIdmax)
+                    if (Convert.ToDecimal(strVoucherNo) != decDeliveryNoteMastersTypeIdmax)
                     {
-                        strVoucherNo = decSalesMastersTypeIdmax.ToString();
-                        strVoucherNo = TransactionGeneralFillObj.VoucherNumberAutomaicGeneration(DecSalesInvoiceVoucherTypeId, Convert.ToDecimal(strVoucherNo), dtpDate.Value, "SalesMaster");
-                        if (decSalesMastersTypeIdmax == 0)
+                        strVoucherNo = decDeliveryNoteMastersTypeIdmax.ToString();
+                        strVoucherNo = TransactionGeneralFillObj.VoucherNumberAutomaicGeneration(DecDeliveryNoteVoucherTypeId, Convert.ToDecimal(strVoucherNo), dtpDate.Value, "DeliveryNoteMaster");
+                        if (decDeliveryNoteMastersTypeIdmax == 0)
                         {
                             strVoucherNo = "0";
-                            strVoucherNo = TransactionGeneralFillObj.VoucherNumberAutomaicGeneration(DecSalesInvoiceVoucherTypeId, Convert.ToDecimal(strVoucherNo), dtpDate.Value, "SalesMaster");
+                            strVoucherNo = TransactionGeneralFillObj.VoucherNumberAutomaicGeneration(DecDeliveryNoteVoucherTypeId, Convert.ToDecimal(strVoucherNo), dtpDate.Value, "SalesMaster");
                         }
                     }
                     SuffixPrefixSP spSuffisprefix = new SuffixPrefixSP();
                     SuffixPrefix infoSuffixPrefix = new SuffixPrefix();
-                    infoSuffixPrefix = spSuffisprefix.GetSuffixPrefixDetails(DecSalesInvoiceVoucherTypeId, dtpDate.Value);
+                    infoSuffixPrefix = spSuffisprefix.GetSuffixPrefixDetails(DecDeliveryNoteVoucherTypeId, dtpDate.Value);
                     strPrefix = infoSuffixPrefix.prefix;
                     strSuffix = infoSuffixPrefix.suffix;
                     strInvoiceNo = strPrefix + strVoucherNo + strSuffix;
                     txtInvoiceNo.Text = strInvoiceNo;
                     txtInvoiceNo.ReadOnly = true;
-                    decSalseInvoiceSuffixPrefixId = infoSuffixPrefix.suffixprefixId;
+                    decDeliveryNoteSuffixPrefixId = infoSuffixPrefix.suffixprefixId;
                 }
                 else
                 {
@@ -454,7 +454,7 @@ namespace LoginForm
             {
                 TaxSP spTax = new TaxSP();
                 DataTable dtblTax = new DataTable();
-                dtblTax = spTax.TaxViewAllByVoucherTypeId(DecSalesInvoiceVoucherTypeId);
+                dtblTax = spTax.TaxViewAllByVoucherTypeId(DecDeliveryNoteVoucherTypeId);
                 dgvSalesInvoiceTax.DataSource = dtblTax;
             }
             catch (Exception ex)
@@ -500,7 +500,7 @@ namespace LoginForm
                 {
                     if (cmbSalesMode.Text == "Against SalesOrder")
                     {
-                        dtbl = spSalesOrderMaster.GetSalesOrderNoIncludePendingCorrespondingtoLedgerforSI(Convert.ToDecimal(cmbCashOrParty.SelectedValue), decSalesInvoiceIdToEdit, Convert.ToDecimal(
+                        dtbl = spSalesOrderMaster.GetSalesOrderNoIncludePendingCorrespondingtoLedgerforSI(Convert.ToDecimal(cmbCashOrParty.SelectedValue), decDeliveryNoteIdToEdit, Convert.ToDecimal(
                                cmbVoucherType.SelectedValue.ToString()
                                 ));
                         DataRow dr = dtbl.NewRow();
@@ -579,11 +579,11 @@ namespace LoginForm
             VoucherTypeSP spVoucherType = new VoucherTypeSP();
             try
             {
-                DecSalesInvoiceVoucherTypeId = decSalesInvoiceVoucherTypeId;
-                isAutomatic = spVoucherType.CheckMethodOfVoucherNumbering(DecSalesInvoiceVoucherTypeId);
+                DecDeliveryNoteVoucherTypeId = decSalesInvoiceVoucherTypeId;
+                isAutomatic = spVoucherType.CheckMethodOfVoucherNumbering(DecDeliveryNoteVoucherTypeId);
                 SuffixPrefixSP spSuffisprefix = new SuffixPrefixSP();
                 SuffixPrefix infoSuffixPrefix = new SuffixPrefix();
-                infoSuffixPrefix = spSuffisprefix.GetSuffixPrefixDetails(DecSalesInvoiceVoucherTypeId, dtpDate.Value);
+                infoSuffixPrefix = spSuffisprefix.GetSuffixPrefixDetails(DecDeliveryNoteVoucherTypeId, dtpDate.Value);
                 decDailySuffixPrefixId = infoSuffixPrefix.suffixprefixId;
                 strPrefix = infoSuffixPrefix.prefix;
                 strSuffix = infoSuffixPrefix.suffix;
@@ -607,7 +607,7 @@ namespace LoginForm
             {
                 base.Show();
                 this.objVoucherSearch = frm;
-                decSalesInvoiceIdToEdit = decId;
+                decDeliveryNoteIdToEdit = decId;
                 FillRegisterOrReport();
             }
             catch (Exception ex)
@@ -980,7 +980,7 @@ namespace LoginForm
             {
                 TaxSP spTax = new TaxSP();
                 DataTable dtblTax = new DataTable();
-                dtblTax = spTax.TaxViewAllByVoucherTypeIdApplicaleForProduct(DecSalesInvoiceVoucherTypeId);
+                dtblTax = spTax.TaxViewAllByVoucherTypeIdApplicaleForProduct(DecDeliveryNoteVoucherTypeId);
                 DataRow drow = dtblTax.NewRow();
                 drow["taxName"] = string.Empty;
                 drow["taxId"] = 0;
@@ -1817,7 +1817,7 @@ namespace LoginForm
                     cmbPricingLevel.Enabled = false;
                     btnNewPricingLevel.Enabled = false;
                     cmbCurrency.Enabled = false;
-                    DataTable dtblDetails = spSalesOrderDetails.SalesInvoiceGridfillAgainestSalesOrderUsingSalesDetails(Convert.ToDecimal(cmbSalesModeOrderNo.SelectedValue.ToString()), Convert.ToDecimal(decSalesInvoiceIdToEdit), DecSalesInvoiceVoucherTypeId);
+                    DataTable dtblDetails = spSalesOrderDetails.SalesInvoiceGridfillAgainestSalesOrderUsingSalesDetails(Convert.ToDecimal(cmbSalesModeOrderNo.SelectedValue.ToString()), Convert.ToDecimal(decDeliveryNoteIdToEdit), DecDeliveryNoteVoucherTypeId);
                     int inRowIndex = 0;
                     foreach (DataRow drowDetails in dtblDetails.Rows)
                     {
@@ -1927,7 +1927,7 @@ namespace LoginForm
                     cmbPricingLevel.Enabled = false;
                     btnNewPricingLevel.Enabled = false;
                     cmbCurrency.Enabled = false;
-                    DataTable dtblDetails = SPQuotationDetails.SalesInvoiceGridfillAgainestQuotationUsingQuotationDetails(Convert.ToDecimal(cmbSalesModeOrderNo.SelectedValue.ToString()), decSalesInvoiceIdToEdit, DecSalesInvoiceVoucherTypeId);
+                    DataTable dtblDetails = SPQuotationDetails.SalesInvoiceGridfillAgainestQuotationUsingQuotationDetails(Convert.ToDecimal(cmbSalesModeOrderNo.SelectedValue.ToString()), decDeliveryNoteIdToEdit, DecDeliveryNoteVoucherTypeId);
                     int inRowIndex = 0;
                     foreach (DataRow drowDetails in dtblDetails.Rows)
                     {
@@ -2318,15 +2318,15 @@ namespace LoginForm
                 gridCombofill();
                 if (strFillMode == "ProductCode")
                 {
-                    dtbl = spSalesDetails.SalesInvoiceDetailsViewByProductCodeForSI(DecSalesInvoiceVoucherTypeId, strProduct);
+                    dtbl = spSalesDetails.SalesInvoiceDetailsViewByProductCodeForSI(DecDeliveryNoteVoucherTypeId, strProduct);
                 }
                 else if (strFillMode == "ProductName")
                 {
-                    dtbl = spSalesDetails.SalesInvoiceDetailsViewByProductNameForSI(DecSalesInvoiceVoucherTypeId, strProduct);
+                    dtbl = spSalesDetails.SalesInvoiceDetailsViewByProductNameForSI(DecDeliveryNoteVoucherTypeId, strProduct);
                 }
                 else if (strFillMode == "Barcode")
                 {
-                    dtbl = spSalesDetails.SalesInvoiceDetailsViewByBarcodeForSI(DecSalesInvoiceVoucherTypeId, strProduct);
+                    dtbl = spSalesDetails.SalesInvoiceDetailsViewByBarcodeForSI(DecDeliveryNoteVoucherTypeId, strProduct);
                 }
                 if (dtbl.Rows.Count != 0)
                 {
@@ -2720,7 +2720,7 @@ namespace LoginForm
                     Messages.InformationMessage("Enter voucher number");
                     txtInvoiceNo.Focus();
                 }
-                else if (spSalesMaster.SalesInvoiceInvoiceNumberCheckExistence(txtInvoiceNo.Text.Trim(), 0, DecSalesInvoiceVoucherTypeId) == true && btnSave.Text == "Save")
+                else if (spSalesMaster.SalesInvoiceInvoiceNumberCheckExistence(txtInvoiceNo.Text.Trim(), 0, DecDeliveryNoteVoucherTypeId) == true && btnSave.Text == "Save")
                 {
                     Messages.InformationMessage("Invoice number already exist");
                     txtInvoiceNo.Focus();
@@ -2853,7 +2853,7 @@ namespace LoginForm
                         if (dgvrow.Cells["dgvtxtSalesInvoiceSalesDetailsId"].Value.ToString() != "0" || dgvrow.Cells["dgvtxtSalesInvoiceSalesDetailsId"].Value.ToString() != string.Empty)
                         {
                             decSalesDetailsId = Convert.ToDecimal(dgvrow.Cells["dgvtxtSalesInvoiceSalesDetailsId"].Value.ToString());
-                            inRef = spSalesMaster.SaleMasterReferenceCheck(decSalesInvoiceIdToEdit, decSalesDetailsId);
+                            inRef = spSalesMaster.SaleMasterReferenceCheck(decDeliveryNoteIdToEdit, decSalesDetailsId);
                             if (inRef == 1)
                             {
                                 if (inF1 == 1)
@@ -2912,10 +2912,10 @@ namespace LoginForm
                 bool isRef = false;
                 AccountLedgerSP spAccountLedger = new AccountLedgerSP();
                 PartyBalanceSP spPartyBalance = new PartyBalanceSP();
-                isRef = spAccountLedger.PartyBalanceAgainstReferenceCheck(strVoucherNo, DecSalesInvoiceVoucherTypeId);
+                isRef = spAccountLedger.PartyBalanceAgainstReferenceCheck(strVoucherNo, DecDeliveryNoteVoucherTypeId);
                 if (isRef)
                 {
-                    decPartyBalanceAmount = spPartyBalance.PartyBalanceAmountViewForSalesInvoice(strVoucherNo, DecSalesInvoiceVoucherTypeId, "Against");
+                    decPartyBalanceAmount = spPartyBalance.PartyBalanceAmountViewForSalesInvoice(strVoucherNo, DecDeliveryNoteVoucherTypeId, "Against");
                     decGrandTotal = Convert.ToDecimal(txtGrandTotal.Text);
                     if (decGrandTotal >= decPartyBalanceAmount)
                     {
@@ -2968,16 +2968,16 @@ namespace LoginForm
                 InfoDeliveryNoteMaster.financialYearId = (decimal)Utils.getManagement().CurrentFinancialYear;
                 InfoDeliveryNoteMaster.grandTotal = Convert.ToDecimal(txtGrandTotal.Text.Trim());
                 InfoDeliveryNoteMaster.ledgerId = Convert.ToDecimal(cmbCashOrParty.SelectedValue.ToString());
-                if (DecSalesInvoiceVoucherTypeId != 0) InfoDeliveryNoteMaster.voucherTypeId = DecSalesInvoiceVoucherTypeId;
+                if (DecDeliveryNoteVoucherTypeId != 0) InfoDeliveryNoteMaster.voucherTypeId = DecDeliveryNoteVoucherTypeId;
                 InfoDeliveryNoteMaster.narration = txtNarration.Text.Trim();
                 InfoDeliveryNoteMaster.transportationCompany = txtTransportCompany.Text.Trim();
                 if (isAutomatic)
                 {
                     InfoDeliveryNoteMaster.DeliveryNoteNo = txtInvoiceNo.Text.Trim();
                     if (strVoucherNo != null) InfoDeliveryNoteMaster.voucherNo = strVoucherNo;
-                    if (decSalseInvoiceSuffixPrefixId != -1)
+                    if (decDeliveryNoteSuffixPrefixId != -1)
                     {
-                        InfoDeliveryNoteMaster.suffixPrefixId = decSalseInvoiceSuffixPrefixId;
+                        InfoDeliveryNoteMaster.suffixPrefixId = decDeliveryNoteSuffixPrefixId;
                     }
                 }
                 else
@@ -3203,7 +3203,7 @@ namespace LoginForm
                     }
                 }
                 int inAddRowCount = dgvSalesInvoiceLedger.RowCount;
-                infoAdditionalCost.voucherTypeId = DecSalesInvoiceVoucherTypeId;
+                infoAdditionalCost.voucherTypeId = DecDeliveryNoteVoucherTypeId;
                 infoAdditionalCost.voucherNo = strVoucherNo;
                 for (int inI = 0; inI < inAddRowCount; inI++)
                 {
@@ -3236,7 +3236,7 @@ namespace LoginForm
                         infoAdditionalCost.debit = decTotalAddAmount;
                         infoAdditionalCost.credit = 0;
                         infoAdditionalCost.ledgerId = decCAshOrBankId;
-                        infoAdditionalCost.voucherTypeId = DecSalesInvoiceVoucherTypeId;
+                        infoAdditionalCost.voucherTypeId = DecDeliveryNoteVoucherTypeId;
                         infoAdditionalCost.voucherNo = strVoucherNo;
                         spAdditionalCost.AdditionalCostAdd(infoAdditionalCost);
                     }
@@ -3253,7 +3253,7 @@ namespace LoginForm
                             infoAdditionalCost.debit = 0;
                             infoAdditionalCost.credit = decTotalAddAmount;
                             infoAdditionalCost.ledgerId = decCAshOrBankId;
-                            infoAdditionalCost.voucherTypeId = DecSalesInvoiceVoucherTypeId;
+                            infoAdditionalCost.voucherTypeId = DecDeliveryNoteVoucherTypeId;
                             infoAdditionalCost.voucherNo = strVoucherNo;
                             spAdditionalCost.AdditionalCostAdd(infoAdditionalCost);
                         }
@@ -3826,7 +3826,7 @@ namespace LoginForm
                 infoPartyBalance.ledgerId = Convert.ToDecimal(cmbCashOrParty.SelectedValue.ToString());
                 infoPartyBalance.voucherNo = strVoucherNo;
                 infoPartyBalance.invoiceNo = txtInvoiceNo.Text.Trim();
-                infoPartyBalance.voucherTypeId = DecSalesInvoiceVoucherTypeId;
+                infoPartyBalance.voucherTypeId = DecDeliveryNoteVoucherTypeId;
                 infoPartyBalance.againstVoucherTypeId = 0;
                 infoPartyBalance.againstVoucherNo = "0";
                 infoPartyBalance.againstInvoiceNo = "0";
@@ -4105,10 +4105,10 @@ namespace LoginForm
                 btnSave.Text = "Update";
                 btnDelete.Enabled = true;
                 txtInvoiceNo.ReadOnly = true;
-                DataTable dtblMaster = spSalesMaster.SalesInvoiceSalesMasterViewBySalesMasterId(decSalesInvoiceIdToEdit);
-                DecSalesInvoiceVoucherTypeId = Convert.ToDecimal(dtblMaster.Rows[0]["voucherTypeId"].ToString());
+                DataTable dtblMaster = spSalesMaster.SalesInvoiceSalesMasterViewBySalesMasterId(decDeliveryNoteIdToEdit);
+                DecDeliveryNoteVoucherTypeId = Convert.ToDecimal(dtblMaster.Rows[0]["voucherTypeId"].ToString());
                 VoucherType infoVoucherType = new VoucherType();
-                infoVoucherType = spVoucherType.VoucherTypeView(DecSalesInvoiceVoucherTypeId);
+                infoVoucherType = spVoucherType.VoucherTypeView(DecDeliveryNoteVoucherTypeId);
                 this.Text = /*infoVoucherType.voucherTypeName*/"Delivery Note";
                 txtDate.Text = dtblMaster.Rows[0]["date"].ToString();
                 dtpDate.Value = DateTime.Parse(txtDate.Text);
@@ -4116,8 +4116,8 @@ namespace LoginForm
                 txtInvoiceNo.Text = dtblMaster.Rows[0]["invoiceNo"].ToString();
                 txtCreditPeriod.Text = dtblMaster.Rows[0]["creditPeriod"].ToString();
                 strVoucherNo = dtblMaster.Rows[0]["voucherNo"].ToString();
-                decSalseInvoiceSuffixPrefixId = Convert.ToDecimal(dtblMaster.Rows[0]["suffixPrefixId"].ToString());
-                isAutomatic = spVoucherType.CheckMethodOfVoucherNumbering(DecSalesInvoiceVoucherTypeId);
+                decDeliveryNoteSuffixPrefixId = Convert.ToDecimal(dtblMaster.Rows[0]["suffixPrefixId"].ToString());
+                isAutomatic = spVoucherType.CheckMethodOfVoucherNumbering(DecDeliveryNoteVoucherTypeId);
                 cmbCashOrParty.SelectedValue = dtblMaster.Rows[0]["ledgerId"].ToString();
                 cmbSalesAccount.SelectedValue = dtblMaster.Rows[0]["salesAccount"].ToString();
                 cmbSalesMan.SelectedValue = dtblMaster.Rows[0]["employeeId"].ToString();
@@ -4169,7 +4169,7 @@ namespace LoginForm
                     txtInvoiceNo.Focus();
                 }
                 DataTable dtblDetails = new DataTable();
-                dtblDetails = spSalesDetails.SalesInvoiceSalesDetailsViewBySalesMasterId(decSalesInvoiceIdToEdit);
+                dtblDetails = spSalesDetails.SalesInvoiceSalesDetailsViewBySalesMasterId(decDeliveryNoteIdToEdit);
                 dgvSalesInvoiceTaxComboFill();
                 dgvSalesInvoice.Rows.Clear();
                 for (int i = 0; i < dtblDetails.Rows.Count; i++)
@@ -4238,7 +4238,7 @@ namespace LoginForm
                     }
                 }
                 DataTable dtblAdditionalCost = new DataTable();
-                dtblAdditionalCost = spSalesMaster.SalesInvoiceAdditionalCostViewByVoucherNoUnderVoucherType(DecSalesInvoiceVoucherTypeId, strVoucherNo);
+                dtblAdditionalCost = spSalesMaster.SalesInvoiceAdditionalCostViewByVoucherNoUnderVoucherType(DecDeliveryNoteVoucherTypeId, strVoucherNo);
                 for (int i = 0; i < dtblAdditionalCost.Rows.Count; i++)
                 {
                     dgvSalesInvoiceLedger.Rows.Add();
@@ -4253,7 +4253,7 @@ namespace LoginForm
                     dgvccVoucherType.ValueMember = "ledgerId";
                     dgvccVoucherType.DisplayMember = "ledgerName";
                 }
-                DataTable dtblDrOrCr = spSalesMaster.salesinvoiceAdditionalCostCheckdrOrCrforSiEdit(DecSalesInvoiceVoucherTypeId, strVoucherNo);
+                DataTable dtblDrOrCr = spSalesMaster.salesinvoiceAdditionalCostCheckdrOrCrforSiEdit(DecDeliveryNoteVoucherTypeId, strVoucherNo);
                 if (dtblDrOrCr.Rows.Count > 0)
                 {
                     if (Convert.ToDecimal(dtblDrOrCr.Rows[0]["credit"].ToString()) != 0)
@@ -4271,7 +4271,7 @@ namespace LoginForm
                 }
                 taxGridFill();
                 DataTable dtblTax = new DataTable();
-                dtblTax = spSalesBillTax.SalesInvoiceSalesBillTaxViewAllBySalesMasterId(decSalesInvoiceIdToEdit);
+                dtblTax = spSalesBillTax.SalesInvoiceSalesBillTaxViewAllBySalesMasterId(decDeliveryNoteIdToEdit);
                 foreach (DataGridViewRow dgvrowTax in dgvSalesInvoiceTax.Rows)
                 {
                     for (int ini = 0; ini < dtblTax.Rows.Count; ini++)
@@ -4298,7 +4298,7 @@ namespace LoginForm
                 bool isPartyBalanceRef = false;
                 AccountLedgerSP spAccountLedger = new AccountLedgerSP();
                 PartyBalanceSP spPartyBalance = new PartyBalanceSP();
-                isPartyBalanceRef = spAccountLedger.PartyBalanceAgainstReferenceCheck(strVoucherNo, DecSalesInvoiceVoucherTypeId);
+                isPartyBalanceRef = spAccountLedger.PartyBalanceAgainstReferenceCheck(strVoucherNo, DecDeliveryNoteVoucherTypeId);
                 if (isPartyBalanceRef)
                 {
                     cmbCashOrParty.Enabled = false;
@@ -4331,7 +4331,7 @@ namespace LoginForm
                 removeSalesInvoiceDetails();
                 SalesMasterSP spSalesMaster = new SalesMasterSP();
                 SalesMaster InfoSalesMaster = new SalesMaster();
-                InfoSalesMaster = spSalesMaster.SalesMasterView(decSalesInvoiceIdToEdit);
+                InfoSalesMaster = spSalesMaster.SalesMasterView(decDeliveryNoteIdToEdit);
                 if (InfoSalesMaster.deliveryNoteMasterId != 0 || InfoSalesMaster.deliveryNoteMasterId != null)
                 {
                     DeliveryNoteMaster infoDeliveryNote = new DeliveryNoteMaster();
@@ -4344,7 +4344,7 @@ namespace LoginForm
                 //TODO stock changing
                 //new StockPostingSP().StockPostingDeleteByagainstVoucherTypeIdAndagainstVoucherNoAndVoucherNoAndVoucherType
                 //        (0, "NA", InfoSalesMaster.VoucherNo, InfoSalesMaster.VoucherTypeId);
-                InfoSalesMaster.salesMasterId = decSalesInvoiceIdToEdit;
+                InfoSalesMaster.salesMasterId = decDeliveryNoteIdToEdit;
                 InfoSalesMaster.additionalCost = Convert.ToDecimal(lblLedgerTotalAmount.Text);
                 InfoSalesMaster.billDiscount = Convert.ToDecimal(txtBillDiscount.Text.Trim());
                 InfoSalesMaster.creditPeriod = Convert.ToInt32(txtCreditPeriod.Text.Trim().ToString());
@@ -4356,11 +4356,11 @@ namespace LoginForm
                 InfoSalesMaster.grandTotal = Convert.ToDecimal(txtGrandTotal.Text.Trim());
                 InfoSalesMaster.invoiceNo = txtInvoiceNo.Text.Trim();
                 InfoSalesMaster.ledgerId = Convert.ToDecimal(cmbCashOrParty.SelectedValue.ToString());
-                InfoSalesMaster.voucherTypeId = DecSalesInvoiceVoucherTypeId;
+                InfoSalesMaster.voucherTypeId = DecDeliveryNoteVoucherTypeId;
                 InfoSalesMaster.voucherNo = strVoucherNo;
                 if (isAutomatic)
                 {
-                    InfoSalesMaster.suffixPrefixId = decSalseInvoiceSuffixPrefixId;
+                    InfoSalesMaster.suffixPrefixId = decDeliveryNoteSuffixPrefixId;
                 }
                 else
                 {
@@ -4413,7 +4413,7 @@ namespace LoginForm
                 if (cmbCashOrParty.Enabled)
                 {
                     LedgerPostingSP spLedgerPosting = new LedgerPostingSP();
-                    spLedgerPosting.LedgerPostDelete(strVoucherNo, DecSalesInvoiceVoucherTypeId);
+                    spLedgerPosting.LedgerPostDelete(strVoucherNo, DecDeliveryNoteVoucherTypeId);
                     //TODO: @LedgerPostingAdd
                     //ledgerPostingAdd();
                 }
@@ -4503,7 +4503,7 @@ namespace LoginForm
                 string strAgainstInvoiceN0 = txtInvoiceNo.Text.Trim();
                 for (int inI = 0; inI < dgvSalesInvoice.Rows.Count - 1; inI++)
                 {
-                    decimal decRefStatus = spSalesMaster.SalesInvoiceReferenceCheckForEdit(decSalesInvoiceIdToEdit);
+                    decimal decRefStatus = spSalesMaster.SalesInvoiceReferenceCheckForEdit(decDeliveryNoteIdToEdit);
                     if (decRefStatus != 0)
                     {
                         dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceProductCode"].ReadOnly = true;
@@ -4514,7 +4514,7 @@ namespace LoginForm
                     }
                     if (dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceSalesDetailsId"].Value == null || dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceSalesDetailsId"].Value.ToString() == string.Empty || dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceSalesDetailsId"].Value.ToString() == "0")   // here check the  row added or editing current row
                     {
-                        InfoSalesDetails.salesMasterId = decSalesInvoiceIdToEdit;
+                        InfoSalesDetails.salesMasterId = decDeliveryNoteIdToEdit;
                         if (dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceProductName"].Value != null && dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceProductName"].Value.ToString() != string.Empty)
                         {
                             if (dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceQty"].Value != null && dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceQty"].Value.ToString() != string.Empty)
@@ -4545,7 +4545,7 @@ namespace LoginForm
                                 //}
                                 InfoSalesDetails.slNo = Convert.ToInt32(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceSlno"].Value.ToString());
                                 InfoSalesDetails.productId = dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceProductId"].Value.ToString();
-                                decimal decQty = spSalesMaster.SalesInvoiceQuantityDetailsAgainstSalesReturn(DecSalesInvoiceVoucherTypeId, strVoucherNo);
+                                decimal decQty = spSalesMaster.SalesInvoiceQuantityDetailsAgainstSalesReturn(DecDeliveryNoteVoucherTypeId, strVoucherNo);
                                 if (Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceQty"].Value.ToString()) < decQty)
                                 {
                                     dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceQty"].Value = 0;
@@ -4604,7 +4604,7 @@ namespace LoginForm
                     }
                     else
                     {
-                        InfoSalesDetails.salesMasterId = decSalesInvoiceIdToEdit;
+                        InfoSalesDetails.salesMasterId = decDeliveryNoteIdToEdit;
                         InfoSalesDetails.salesDetailsId = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceSalesDetailsId"].Value);
                         InfoSalesDetails.slNo = Convert.ToInt32(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceSlno"].Value.ToString());
                         // TODO 4 : productID Int değil
@@ -4702,11 +4702,11 @@ namespace LoginForm
                     }
                     if (Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceVoucherTypeId"].Value) == 0)
                     {
-                        decimal decResult = spStockPosting.StockPostingDeleteForSalesInvoiceAgainstDeliveryNote(0, "NA", strVoucherNo, DecSalesInvoiceVoucherTypeId);
+                        decimal decResult = spStockPosting.StockPostingDeleteForSalesInvoiceAgainstDeliveryNote(0, "NA", strVoucherNo, DecDeliveryNoteVoucherTypeId);
                     }
                     else
                     {
-                        decimal decResult = spStockPosting.StockPostingDeleteForSalesInvoiceAgainstDeliveryNote(DecSalesInvoiceVoucherTypeId, strVoucherNo, strVoucherNoTostockPost, decVouchertypeIdTostockPost);
+                        decimal decResult = spStockPosting.StockPostingDeleteForSalesInvoiceAgainstDeliveryNote(DecDeliveryNoteVoucherTypeId, strVoucherNo, strVoucherNoTostockPost, decVouchertypeIdTostockPost);
                     }
                     infoStockPosting.rate = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceRate"].Value.ToString());
                     infoStockPosting.financialYearId = (decimal)Utils.getManagement().CurrentFinancialYear;
@@ -4727,7 +4727,7 @@ namespace LoginForm
                     infoStockPosting.inwardQty = 0;
                     infoStockPosting.outwardQty = InfoSalesDetails.qty / SPUnitConversion.UnitConversionRateByUnitConversionId((decimal)InfoSalesDetails.unitConversionId);
                     infoStockPosting.voucherNo = strVoucherNo;
-                    infoStockPosting.voucherTypeId = DecSalesInvoiceVoucherTypeId;
+                    infoStockPosting.voucherTypeId = DecDeliveryNoteVoucherTypeId;
                     infoStockPosting.invoiceNo = strAgainstInvoiceN0;
                     infoStockPosting.againstInvoiceNo = "NA";
                     infoStockPosting.againstVoucherNo = "NA";
@@ -4735,7 +4735,7 @@ namespace LoginForm
                     spStockPosting.StockPostingAdd(infoStockPosting);
                 }
                 int inAddRowCount = dgvSalesInvoiceLedger.RowCount;
-                infoAdditionalCost.voucherTypeId = DecSalesInvoiceVoucherTypeId;
+                infoAdditionalCost.voucherTypeId = DecDeliveryNoteVoucherTypeId;
                 if (isAutomatic)
                 {
                     infoAdditionalCost.voucherNo = strVoucherNo;
@@ -4780,7 +4780,7 @@ namespace LoginForm
                     infoAdditionalCost.debit = decTotalAddAmount;
                     infoAdditionalCost.credit = 0;
                     infoAdditionalCost.ledgerId = decCAshOrPartyId;
-                    infoAdditionalCost.voucherTypeId = DecSalesInvoiceVoucherTypeId;
+                    infoAdditionalCost.voucherTypeId = DecDeliveryNoteVoucherTypeId;
                     infoAdditionalCost.voucherNo = strVoucherNo;
                     spAdditionalCost.AdditionalCostEditByVoucherTypeIdAndVoucherNo(infoAdditionalCost);
                 }
@@ -4792,7 +4792,7 @@ namespace LoginForm
                     infoAdditionalCost.debit = 0;
                     infoAdditionalCost.credit = decTotalAddAmount;
                     infoAdditionalCost.ledgerId = decCAshOrBankId;
-                    infoAdditionalCost.voucherTypeId = DecSalesInvoiceVoucherTypeId;
+                    infoAdditionalCost.voucherTypeId = DecDeliveryNoteVoucherTypeId;
                     infoAdditionalCost.voucherNo = strVoucherNo;
                     spAdditionalCost.AdditionalCostEditByVoucherTypeIdAndVoucherNo(infoAdditionalCost);
                 }
@@ -4800,7 +4800,7 @@ namespace LoginForm
                 if (dgvSalesInvoice.Columns["dgvcmbSalesInvoiceTaxName"].Visible)
                 {
                     int inTaxRowCount = dgvSalesInvoiceTax.RowCount;
-                    SalesBillTax.salesMasterId = decSalesInvoiceIdToEdit;
+                    SalesBillTax.salesMasterId = decDeliveryNoteIdToEdit;
                     for (int inTax = 0; inTax < inTaxRowCount; inTax++)
                     {
                         if (dgvSalesInvoiceTax.Rows[inTax].Cells["dgvtxtTtaxId"].Value != null && dgvSalesInvoiceTax.Rows[inTax].Cells["dgvtxtTtaxId"].Value.ToString() != string.Empty)
@@ -4824,13 +4824,13 @@ namespace LoginForm
                     infoPartyBalance.ledgerId = Convert.ToDecimal(cmbCashOrParty.SelectedValue.ToString());
                     infoPartyBalance.voucherNo = strVoucherNo;
                     infoPartyBalance.invoiceNo = txtInvoiceNo.Text.Trim();
-                    infoPartyBalance.voucherTypeId = DecSalesInvoiceVoucherTypeId;
+                    infoPartyBalance.voucherTypeId = DecDeliveryNoteVoucherTypeId;
                     infoPartyBalance.againstVoucherTypeId = 0;
                     infoPartyBalance.againstVoucherNo = "0";
                     infoPartyBalance.againstInvoiceNo = "0";
                     infoPartyBalance.referenceType = "New";
                     infoPartyBalance.debit = Convert.ToDecimal(txtGrandTotal.Text.Trim().ToString());
-                    decimal decBalAmount = spSalesDetails.SalesInvoiceReciptVoucherDetailsAgainstSI(DecSalesInvoiceVoucherTypeId, strVoucherNo);
+                    decimal decBalAmount = spSalesDetails.SalesInvoiceReciptVoucherDetailsAgainstSI(DecDeliveryNoteVoucherTypeId, strVoucherNo);
                     decimal decCurrentAmount = Convert.ToDecimal(txtGrandTotal.Text.ToString());
                     if (decCurrentAmount < decBalAmount)
                     {
@@ -4872,7 +4872,7 @@ namespace LoginForm
                 infoLedgerPosting.debit = decimalGrantTotal;
                 infoLedgerPosting.credit = 0;
                 infoLedgerPosting.date = Convert.ToDateTime(txtDate.Text.ToString());
-                infoLedgerPosting.voucherTypeId = DecSalesInvoiceVoucherTypeId;
+                infoLedgerPosting.voucherTypeId = DecDeliveryNoteVoucherTypeId;
                 infoLedgerPosting.voucherNo = strVoucherNo;
                 infoLedgerPosting.invoiceNo = txtInvoiceNo.Text.Trim();
                 infoLedgerPosting.ledgerId = Convert.ToDecimal(cmbCashOrParty.SelectedValue.ToString());
@@ -4887,7 +4887,7 @@ namespace LoginForm
                 infoLedgerPosting.debit = 0;
                 infoLedgerPosting.credit = decTotalAmount;
                 infoLedgerPosting.date = Convert.ToDateTime(txtDate.Text.ToString());
-                infoLedgerPosting.voucherTypeId = DecSalesInvoiceVoucherTypeId;
+                infoLedgerPosting.voucherTypeId = DecDeliveryNoteVoucherTypeId;
                 infoLedgerPosting.voucherNo = strVoucherNo;
                 infoLedgerPosting.invoiceNo = txtInvoiceNo.Text.Trim();
                 infoLedgerPosting.ledgerId = Convert.ToDecimal(cmbSalesAccount.SelectedValue.ToString());
@@ -4905,7 +4905,7 @@ namespace LoginForm
                     infoLedgerPosting.debit = decBillDis;
                     infoLedgerPosting.credit = 0;
                     infoLedgerPosting.date = Convert.ToDateTime(txtDate.Text.ToString());
-                    infoLedgerPosting.voucherTypeId = DecSalesInvoiceVoucherTypeId;
+                    infoLedgerPosting.voucherTypeId = DecDeliveryNoteVoucherTypeId;
                     infoLedgerPosting.voucherNo = strVoucherNo;
                     infoLedgerPosting.invoiceNo = txtInvoiceNo.Text.Trim();
                     infoLedgerPosting.ledgerId = 8;
@@ -4930,7 +4930,7 @@ namespace LoginForm
                                 infoLedgerPosting.debit = 0;
                                 infoLedgerPosting.credit = decTaxAmount;
                                 infoLedgerPosting.date = Convert.ToDateTime(txtDate.Text.ToString());
-                                infoLedgerPosting.voucherTypeId = DecSalesInvoiceVoucherTypeId;
+                                infoLedgerPosting.voucherTypeId = DecDeliveryNoteVoucherTypeId;
                                 infoLedgerPosting.voucherNo = strVoucherNo;
                                 infoLedgerPosting.invoiceNo = txtInvoiceNo.Text.Trim();
                                 infoLedgerPosting.ledgerId = Convert.ToDecimal(dgvrow.Cells["dgvtxtTaxLedgerId"].Value.ToString());
@@ -4958,7 +4958,7 @@ namespace LoginForm
                                 infoLedgerPosting.debit = decAmount;
                                 infoLedgerPosting.credit = 0;
                                 infoLedgerPosting.date = Convert.ToDateTime(txtDate.Text.ToString());
-                                infoLedgerPosting.voucherTypeId = DecSalesInvoiceVoucherTypeId;
+                                infoLedgerPosting.voucherTypeId = DecDeliveryNoteVoucherTypeId;
                                 infoLedgerPosting.voucherNo = strVoucherNo;
                                 infoLedgerPosting.invoiceNo = txtInvoiceNo.Text.Trim();
                                 infoLedgerPosting.ledgerId = Convert.ToDecimal(dgvrow.Cells["dgvCmbAdditionalCostledgerName"].Value.ToString());
@@ -4981,7 +4981,7 @@ namespace LoginForm
                         infoLedgerPosting.debit = 0;
                         infoLedgerPosting.credit = decAmountForCr;
                         infoLedgerPosting.date = Convert.ToDateTime(txtDate.Text.ToString());
-                        infoLedgerPosting.voucherTypeId = DecSalesInvoiceVoucherTypeId;
+                        infoLedgerPosting.voucherTypeId = DecDeliveryNoteVoucherTypeId;
                         infoLedgerPosting.voucherNo = strVoucherNo;
                         infoLedgerPosting.invoiceNo = txtInvoiceNo.Text.Trim();
                         infoLedgerPosting.ledgerId = decBankOrCashId;
@@ -5002,7 +5002,7 @@ namespace LoginForm
                         infoLedgerPosting.debit = 0;
                         infoLedgerPosting.credit = decAmountForCr;
                         infoLedgerPosting.date = Convert.ToDateTime(txtDate.Text.ToString());
-                        infoLedgerPosting.voucherTypeId = DecSalesInvoiceVoucherTypeId;
+                        infoLedgerPosting.voucherTypeId = DecDeliveryNoteVoucherTypeId;
                         infoLedgerPosting.voucherNo = strVoucherNo;
                         infoLedgerPosting.invoiceNo = txtInvoiceNo.Text.Trim();
                         infoLedgerPosting.ledgerId = decBankOrCashId;
@@ -5017,7 +5017,7 @@ namespace LoginForm
                 {
                     string strVno = string.Empty;
                     strVno = infoLedgerPosting.voucherNo;
-                    spLedgerPosting.LedgerPostingDeleteByVoucherTypeIdAndLedgerIdAndVoucherNoAndExtra(DecSalesInvoiceVoucherTypeId, decBankOrCashIdForEdit, strVno, "AddCash");
+                    spLedgerPosting.LedgerPostingDeleteByVoucherTypeIdAndLedgerIdAndVoucherNoAndExtra(DecDeliveryNoteVoucherTypeId, decBankOrCashIdForEdit, strVno, "AddCash");
                     foreach (DataGridViewRow dgvrow in dgvSalesInvoiceLedger.Rows)
                     {
                         if (dgvrow.Cells["dgvCmbAdditionalCostledgerName"].Value != null && dgvrow.Cells["dgvCmbAdditionalCostledgerName"].Value.ToString() != string.Empty)
@@ -5031,7 +5031,7 @@ namespace LoginForm
                                 infoLedgerPosting.debit = 0;
                                 infoLedgerPosting.credit = decAmount;
                                 infoLedgerPosting.date = Convert.ToDateTime(txtDate.Text.ToString());
-                                infoLedgerPosting.voucherTypeId = DecSalesInvoiceVoucherTypeId;
+                                infoLedgerPosting.voucherTypeId = DecDeliveryNoteVoucherTypeId;
                                 infoLedgerPosting.voucherNo = strVoucherNo;
                                 infoLedgerPosting.invoiceNo = txtInvoiceNo.Text.Trim();
                                 infoLedgerPosting.ledgerId = Convert.ToDecimal(dgvrow.Cells["dgvCmbAdditionalCostledgerName"].Value.ToString());
@@ -5109,11 +5109,11 @@ namespace LoginForm
             try
             {
                 PartyBalanceSP spPartyBalance = new PartyBalanceSP();
-                if (!spSalesMaster.SalesReturnCheckReferenceForSIDelete(decSalesInvoiceIdToEdit))
+                if (!spSalesMaster.SalesReturnCheckReferenceForSIDelete(decDeliveryNoteIdToEdit))
                 {
-                    if (!spPartyBalance.PartyBalanceCheckReference(DecSalesInvoiceVoucherTypeId, strVoucherNo))
+                    if (!spPartyBalance.PartyBalanceCheckReference(DecDeliveryNoteVoucherTypeId, strVoucherNo))
                     {
-                        spSalesMaster.SalesInvoiceDelete(decSalesInvoiceIdToEdit, DecSalesInvoiceVoucherTypeId, strVoucherNo);
+                        spSalesMaster.SalesInvoiceDelete(decDeliveryNoteIdToEdit, DecDeliveryNoteVoucherTypeId, strVoucherNo);
                         Messages.DeletedMessage();
                         //if (frmSalesinvoiceRegisterObj != null)
                         //{
@@ -6456,13 +6456,13 @@ namespace LoginForm
                 if (MessageBox.Show("Are You Sure To Delete ?", "Delete", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
 
-                    DeleteFunction(decSalesInvoiceIdToEdit);
+                    DeleteFunction(decDeliveryNoteIdToEdit);
                     MessageBox.Show("Deleted Successfully");
                     dgvSalesInvoice.Focus();
                 }
                 else
                 {
-                    DeleteFunction(decSalesInvoiceIdToEdit);
+                    DeleteFunction(decDeliveryNoteIdToEdit);
                 }
 
             }

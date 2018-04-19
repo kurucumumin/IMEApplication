@@ -557,7 +557,7 @@ namespace LoginForm.CustomControls
                             frm.WindowState = FormWindowState.Normal;
                         }
                     }
-                    string strVoucherType = "Sales Invoice";
+                    string strVoucherType = "Delivery Note";
                     frm.CallFromVoucherMenu(strVoucherType);
                 }
             }

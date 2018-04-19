@@ -428,14 +428,14 @@ namespace LoginForm
                         case "Sales Invoice":
                             decimal decSalesInvoiceVoucherTypeId = decimal.Parse(cmbVoucherType.SelectedValue.ToString());
                             string strSalesInvoiceVoucheTypeName = cmbVoucherType.Text.ToString();
-                            frmDeliveryNote frmDeliveryNoteObj = new frmDeliveryNote();
-                            frmDeliveryNote frmSalesInvoiceOpen = Application.OpenForms["frmSalesInvoice"] as frmDeliveryNote;
+                            frmSalesInvoice frmSalesInvoiceObj = new frmSalesInvoice();
+                            frmSalesInvoice frmSalesInvoiceOpen = Application.OpenForms["frmSalesInvoice"] as frmSalesInvoice;
 
                             if (frmSalesInvoiceOpen == null)
                             {
 
-                                frmDeliveryNoteObj.MdiParent = this.MdiParent;
-                                frmDeliveryNoteObj.CallFromVoucherTypeSelection(decSalesInvoiceVoucherTypeId, strSalesInvoiceVoucheTypeName);
+                                frmSalesInvoiceObj.MdiParent = this.MdiParent;
+                                frmSalesInvoiceObj.CallFromVoucherTypeSelection(decSalesInvoiceVoucherTypeId, strSalesInvoiceVoucheTypeName);
                             }
                             else
                             {
@@ -466,26 +466,23 @@ namespace LoginForm
                             this.Close();
                             break;
 
-                        //case "Delivery Note":
-                        //    decimal decDeliveryVoucherTypeNo = decimal.Parse(cmbVoucherType.SelectedValue.ToString());
-                        //    string strDeliveryVoucherTypeNames = cmbVoucherType.Text;
+                        case "Delivery Note":
+                            decimal decDeliveryVoucherTypeNo = decimal.Parse(cmbVoucherType.SelectedValue.ToString());
+                            string strDeliveryVoucherTypeNames = cmbVoucherType.Text;
 
-                        //    frmDeliveryNote DeliveryNote = new frmDeliveryNote();
-                        //    frmDeliveryNote openDeliveryNote = Application.OpenForms["frmDeliveryNote"] as frmDeliveryNote;
-                        //    if (openDeliveryNote == null)
-                        //    {
-                        //        DeliveryNote.MdiParent = this.MdiParent;
-                        //        DeliveryNote.CallFromVoucherTypeSelection(decDeliveryVoucherTypeNo, strDeliveryVoucherTypeNames);
-                        //    }
-                        //    else
-                        //    {
-                        //        openDeliveryNote.CallFromVoucherTypeSelection(decDeliveryVoucherTypeNo, strDeliveryVoucherTypeNames);
-                        //    }
-
-
-
-                        //    this.Close();
-                        //    break;
+                            frmDeliveryNote DeliveryNote = new frmDeliveryNote();
+                            frmDeliveryNote openDeliveryNote = Application.OpenForms["frmDeliveryNote"] as frmDeliveryNote;
+                            if (openDeliveryNote == null)
+                            {
+                                DeliveryNote.MdiParent = this.MdiParent;
+                                DeliveryNote.CallFromVoucherTypeSelection(decDeliveryVoucherTypeNo, strDeliveryVoucherTypeNames);
+                            }
+                            else
+                            {
+                                openDeliveryNote.CallFromVoucherTypeSelection(decDeliveryVoucherTypeNo, strDeliveryVoucherTypeNames);
+                            }
+                            this.Close();
+                            break;
 
                         case "Purchase Return":
                             decimal decPurchaseReturnVoucherTypeId = decimal.Parse(cmbVoucherType.SelectedValue.ToString());
