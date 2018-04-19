@@ -3310,7 +3310,7 @@ namespace LoginForm
                                     string ProductID = StockInfo.ProductID;
                                     IME = new IMEEntities();
                                     StockReserve sr = new StockReserve();
-                                    sr.notConfirmedQuoantity = Qty;
+                                    sr.NotConfirmedQuantity = Qty;
                                     sr.NotConfirmedQ = 1;
                                     sr.StockID = StockID;
                                     sr.CustomerID = IME.PurchaseOrders.Where(x => x.purchaseOrderId == poID).FirstOrDefault().CustomerID;

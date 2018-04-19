@@ -11,7 +11,7 @@ namespace LoginForm.DataSet
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class StockReserve
     {
         public int ReserveID { get; set; }
@@ -23,7 +23,8 @@ namespace LoginForm.DataSet
         public Nullable<decimal> SaleOrderID { get; set; }
         public Nullable<int> NotConfirmedQ { get; set; }
         public Nullable<int> NotConfirmedQuantity { get; set; }
-
+    
+        public virtual Customer Customer { get; set; }
         public virtual SaleOrder SaleOrder { get; set; }
         public virtual Stock Stock { get; set; }
     }
