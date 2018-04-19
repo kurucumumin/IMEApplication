@@ -18,7 +18,6 @@ namespace LoginForm.DataSet
         public QuotationDetail()
         {
             this.SaleOrderDetails = new HashSet<SaleOrderDetail>();
-            this.SalesDetails = new HashSet<SalesDetail>();
         }
     
         public int ID { get; set; }
@@ -48,7 +47,5 @@ namespace LoginForm.DataSet
         public virtual QuotationDelivery QuotationDelivery { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SaleOrderDetail> SaleOrderDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SalesDetail> SalesDetails { get; set; }
     }
 }
