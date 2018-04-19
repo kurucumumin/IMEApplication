@@ -21,6 +21,7 @@ namespace LoginForm.DataSet
         public string ProductID { get; set; }
         public Nullable<decimal> SaleOrderID { get; set; }
         public Nullable<int> NotConfirmedQ { get; set; }
+        public Nullable<int> NotConfirmedQuantity { get; set; }
         public string ID { get; set; }
         public string c_name { get; set; }
         public Nullable<decimal> discountrate { get; set; }

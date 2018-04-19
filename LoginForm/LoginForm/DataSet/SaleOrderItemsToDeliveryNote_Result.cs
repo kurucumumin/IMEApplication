@@ -22,6 +22,5 @@ namespace LoginForm.DataSet
         public string ItemCode { get; set; }
         public Nullable<int> NumberToSend { get; set; }
         public Nullable<int> StockQuantityForCustmer { get; set; }
-        public string c_name { get; set; }
     }
 }

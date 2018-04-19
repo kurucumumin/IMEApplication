@@ -3228,7 +3228,7 @@ namespace LoginForm
                     }
 
 
-
+                    
                     int RSInvoiceID = Convert.ToInt32(IME.RSInvoiceADD(
                         RSInvoice.ShipmentReference
                         , RSInvoice.BillingDocumentReference
@@ -3336,7 +3336,7 @@ namespace LoginForm
                             //For Item History
                           
                             #endregion
-
+                            rs.PurchaseOrderID=Int32.Parse(rs.PurchaseOrderNumber.ToString().Substring(1, rs.PurchaseOrderNumber.ToString().IndexOf('R')).ToString());
                             IME.RS_InvoiceDetailsADD(
                                 rs.RS_InvoiceID
                                 , rs.PurchaseOrderNumber
@@ -3353,7 +3353,7 @@ namespace LoginForm
                                 , rs.CountryofOrigin
                                 , rs.ArticleDescription
                                 , rs.DeliveryNumber
-                                , rs.DeliveryItemNumber
+                                , rs.DeliveryItemNumber,rs.PurchaseOrderID
                                 );
                             IME.SaveChanges();
                             
