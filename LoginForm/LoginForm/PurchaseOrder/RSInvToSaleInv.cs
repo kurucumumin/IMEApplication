@@ -81,7 +81,7 @@ namespace LoginForm.PurchaseOrder
             for (int i = 0; i < dgSaleOrderDetails.RowCount; i++)
             {
                 DataRow row = dt.NewRow();
-                row["dgCName"] = dgSaleOrderDetails.Rows[i].Cells[dgCName.Index].Value.ToString();
+                //row["dgCName"] = dgSaleOrderDetails.Rows[i].Cells[dgCName.Index].Value.ToString();
                 row["dgItemCode"] = dgSaleOrderDetails.Rows[i].Cells[dgItemCode.Index].Value.ToString();
                 row["Quantity"] = dgSaleOrderDetails.Rows[i].Cells[dgQuantity.Index].Value.ToString();
                 row["dgStockQuantity"] = dgSaleOrderDetails.Rows[i].Cells[dgStockQuantity.Index].Value.ToString();
@@ -112,7 +112,7 @@ namespace LoginForm.PurchaseOrder
                         {
                             dgSaleOrderDetails.AllowUserToAddRows = true;
                             DataGridViewRow row = (DataGridViewRow)dgSaleOrderDetails.Rows[0].Clone();
-                            row.Cells[dgCName.Index].Value = item1.c_name;
+                            //row.Cells[dgCName.Index].Value = item1.;
                             row.Cells[dgItemCode.Index].Value = item1.ItemCode;
                             row.Cells[dgQuantity.Index].Value = item1.NumberToSend;
                             row.Cells[dgStockQuantity.Index].Value = item1.StockQuantityForCustmer;

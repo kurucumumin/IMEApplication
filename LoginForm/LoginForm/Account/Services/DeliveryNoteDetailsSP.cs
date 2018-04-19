@@ -132,7 +132,7 @@ namespace LoginForm.Account.Services
                 decimal SaleOrderDetailId = Convert.ToDecimal(deliverynotedetailsinfo.SaleOrderDetailId);
 
 
-               db.DeliveryNoteDetailsAdd(
+               decimal? detailID = db.DeliveryNoteDetailsAdd(
                     deliverynotedetailsinfo.deliveryNoteMasterId,
                     SaleOrderDetailId,
                     deliverynotedetailsinfo.productId,
@@ -149,11 +149,36 @@ namespace LoginForm.Account.Services
                     deliverynotedetailsinfo.grossAmount,
                     deliverynotedetailsinfo.netAmount,
                     deliverynotedetailsinfo.amount,
-                    deliverynotedetailsinfo.slNo);
+                    deliverynotedetailsinfo.slNo).FirstOrDefault();
+
+                db.SaveChanges();
+                DeliveryNoteDetail dnt = db.DeliveryNoteDetails.Where(x => x.deliveryNoteDetailsId == detailID).FirstOrDefault();
+
+                StockReserve sr = db.StockReserves.Where(x => x.SaleOrderID == dnt.SaleOrderDetail.SaleOrderID && x.ProductID == dnt.productId).FirstOrDefault();
+
+                Stock s = db.Stocks.Where(x => x.ProductID == deliverynotedetailsinfo.productId).FirstOrDefault();
+
+                if (sr != null)
+                {
+                    if(deliverynotedetailsinfo.qty == sr.Qty)
+                    {
+                        s.ReserveQty -= sr.Qty;
+                        db.StockReserves.Remove(sr);
+                        db.SaveChanges();
+                    }else if(deliverynotedetailsinfo.qty < sr.Qty && deliverynotedetailsinfo.qty > 0)
+                    {
+                        s.ReserveQty -= deliverynotedetailsinfo.qty;
+                        sr.Qty -= deliverynotedetailsinfo.qty;
+                        db.SaveChanges();
+                    }
+                }
 
                 //TODO CEM: Stock Reserve işlemleri yapılacak
 
-                db.Stocks.Where(x => x.ProductID == deliverynotedetailsinfo.productId).FirstOrDefault().Qty -= (deliverynotedetailsinfo.qty);
+                //StockReserve sr = db.StockReserves.Where(x=>x.SaleOrderID == deliverynotedetailsinfo.SaleOrderDetail.)
+
+                s.Qty -= (deliverynotedetailsinfo.qty);
+                db.SaveChanges();
 
 
                 SaleOrderDetail sod = db.SaleOrderDetails.Where(x => x.ID == SaleOrderDetailId).FirstOrDefault();

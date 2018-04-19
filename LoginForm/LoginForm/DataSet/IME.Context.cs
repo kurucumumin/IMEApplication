@@ -1013,15 +1013,6 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BackOrderItemSeach_Result>("BackOrderItemSeach", productCodeParameter);
         }
     
-        public virtual ObjectResult<BackOrderItemSeach_Result> BackOrderItemSeach(string productCode)
-        {
-            var productCodeParameter = productCode != null ?
-                new ObjectParameter("ProductCode", productCode) :
-                new ObjectParameter("ProductCode", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BackOrderItemSeach_Result>("BackOrderItemSeach", productCodeParameter);
-        }
-    
         public virtual ObjectResult<BalanceSheet_Result> BalanceSheet(Nullable<System.DateTime> toDate, Nullable<System.DateTime> fromDate)
         {
             var toDateParameter = toDate.HasValue ?
@@ -2370,7 +2361,7 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DefaultCurrencySet", currencyIdParameter);
         }
     
-        public virtual int DeliveryNoteDetailsAdd(Nullable<decimal> deliveryNoteMasterId, Nullable<decimal> saleOrderDetailId, string productId, Nullable<decimal> qty, Nullable<decimal> rate, Nullable<decimal> unitId, Nullable<decimal> unitConversionId, Nullable<decimal> discount, Nullable<decimal> taxId, Nullable<decimal> batchId, Nullable<decimal> godownId, Nullable<decimal> rackId, Nullable<decimal> taxAmount, Nullable<decimal> grossAmount, Nullable<decimal> netAmount, Nullable<decimal> amount, Nullable<int> slNo)
+        public virtual ObjectResult<Nullable<decimal>> DeliveryNoteDetailsAdd(Nullable<decimal> deliveryNoteMasterId, Nullable<decimal> saleOrderDetailId, string productId, Nullable<decimal> qty, Nullable<decimal> rate, Nullable<decimal> unitId, Nullable<decimal> unitConversionId, Nullable<decimal> discount, Nullable<decimal> taxId, Nullable<decimal> batchId, Nullable<decimal> godownId, Nullable<decimal> rackId, Nullable<decimal> taxAmount, Nullable<decimal> grossAmount, Nullable<decimal> netAmount, Nullable<decimal> amount, Nullable<int> slNo)
         {
             var deliveryNoteMasterIdParameter = deliveryNoteMasterId.HasValue ?
                 new ObjectParameter("deliveryNoteMasterId", deliveryNoteMasterId) :
@@ -2440,7 +2431,7 @@ namespace LoginForm.DataSet
                 new ObjectParameter("slNo", slNo) :
                 new ObjectParameter("slNo", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeliveryNoteDetailsAdd", deliveryNoteMasterIdParameter, saleOrderDetailIdParameter, productIdParameter, qtyParameter, rateParameter, unitIdParameter, unitConversionIdParameter, discountParameter, taxIdParameter, batchIdParameter, godownIdParameter, rackIdParameter, taxAmountParameter, grossAmountParameter, netAmountParameter, amountParameter, slNoParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("DeliveryNoteDetailsAdd", deliveryNoteMasterIdParameter, saleOrderDetailIdParameter, productIdParameter, qtyParameter, rateParameter, unitIdParameter, unitConversionIdParameter, discountParameter, taxIdParameter, batchIdParameter, godownIdParameter, rackIdParameter, taxAmountParameter, grossAmountParameter, netAmountParameter, amountParameter, slNoParameter);
         }
     
         public virtual ObjectResult<Nullable<decimal>> DeliveryNoteMasterAdd(string voucherNo, string invoiceNo, Nullable<decimal> voucherTypeId, Nullable<decimal> suffixPrefixId, Nullable<System.DateTime> date, Nullable<int> creditPeriod, Nullable<decimal> ledgerId, Nullable<decimal> salesAccount, Nullable<decimal> orderMasterId, string narration, Nullable<decimal> exchangeRateId, Nullable<decimal> taxAmount, Nullable<decimal> additionalCost, Nullable<decimal> billDiscount, Nullable<decimal> grandTotal, Nullable<decimal> totalAmount, Nullable<int> userId, string lrNo, string transportationCompany, Nullable<bool> pOS, Nullable<decimal> financialYearId)
@@ -6126,7 +6117,7 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SalesBillTaxEditBySalesMasterIdAndTaxId", salesMasterIdParameter, taxIdParameter, taxAmountParameter, extraDateParameter, extra1Parameter, extra2Parameter);
         }
     
-        public virtual int SalesDetailsAdd(Nullable<decimal> salesMasterId, Nullable<decimal> deliveryNoteDetailsId, Nullable<decimal> orderDetailsId, Nullable<decimal> quotationDetailsId, Nullable<decimal> productId, Nullable<decimal> qty, Nullable<decimal> rate, Nullable<decimal> unitId, Nullable<decimal> unitConversionId, Nullable<decimal> discount, Nullable<decimal> taxId, Nullable<decimal> batchId, Nullable<decimal> godownId, Nullable<decimal> rackId, Nullable<decimal> taxAmount, Nullable<decimal> grossAmount, Nullable<decimal> netAmount, Nullable<decimal> amount, Nullable<int> slNo)
+        public virtual int SalesDetailsAdd(Nullable<decimal> salesMasterId, Nullable<decimal> deliveryNoteDetailsId, Nullable<decimal> orderDetailsId, Nullable<decimal> productId, Nullable<decimal> qty, Nullable<decimal> rate, Nullable<decimal> unitId, Nullable<decimal> unitConversionId, Nullable<decimal> discount, Nullable<decimal> taxId, Nullable<decimal> batchId, Nullable<decimal> godownId, Nullable<decimal> rackId, Nullable<decimal> taxAmount, Nullable<decimal> grossAmount, Nullable<decimal> netAmount, Nullable<decimal> amount, Nullable<int> slNo)
         {
             var salesMasterIdParameter = salesMasterId.HasValue ?
                 new ObjectParameter("salesMasterId", salesMasterId) :
@@ -6139,10 +6130,6 @@ namespace LoginForm.DataSet
             var orderDetailsIdParameter = orderDetailsId.HasValue ?
                 new ObjectParameter("orderDetailsId", orderDetailsId) :
                 new ObjectParameter("orderDetailsId", typeof(decimal));
-    
-            var quotationDetailsIdParameter = quotationDetailsId.HasValue ?
-                new ObjectParameter("quotationDetailsId", quotationDetailsId) :
-                new ObjectParameter("quotationDetailsId", typeof(decimal));
     
             var productIdParameter = productId.HasValue ?
                 new ObjectParameter("productId", productId) :
@@ -6204,7 +6191,7 @@ namespace LoginForm.DataSet
                 new ObjectParameter("slNo", slNo) :
                 new ObjectParameter("slNo", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SalesDetailsAdd", salesMasterIdParameter, deliveryNoteDetailsIdParameter, orderDetailsIdParameter, quotationDetailsIdParameter, productIdParameter, qtyParameter, rateParameter, unitIdParameter, unitConversionIdParameter, discountParameter, taxIdParameter, batchIdParameter, godownIdParameter, rackIdParameter, taxAmountParameter, grossAmountParameter, netAmountParameter, amountParameter, slNoParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SalesDetailsAdd", salesMasterIdParameter, deliveryNoteDetailsIdParameter, orderDetailsIdParameter, productIdParameter, qtyParameter, rateParameter, unitIdParameter, unitConversionIdParameter, discountParameter, taxIdParameter, batchIdParameter, godownIdParameter, rackIdParameter, taxAmountParameter, grossAmountParameter, netAmountParameter, amountParameter, slNoParameter);
         }
     
         public virtual int SalesDetailsDelete(Nullable<decimal> salesDetailsId)
@@ -6216,7 +6203,7 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SalesDetailsDelete", salesDetailsIdParameter);
         }
     
-        public virtual int SalesDetailsEdit(Nullable<decimal> salesDetailsId, Nullable<decimal> salesMasterId, Nullable<decimal> deliveryNoteDetailsId, Nullable<decimal> orderDetailsId, Nullable<decimal> quotationDetailsId, Nullable<decimal> productId, Nullable<decimal> qty, Nullable<decimal> rate, Nullable<decimal> unitId, Nullable<decimal> unitConversionId, Nullable<decimal> discount, Nullable<decimal> taxId, Nullable<decimal> batchId, Nullable<decimal> godownId, Nullable<decimal> rackId, Nullable<decimal> taxAmount, Nullable<decimal> grossAmount, Nullable<decimal> netAmount, Nullable<decimal> amount, Nullable<int> slNo)
+        public virtual int SalesDetailsEdit(Nullable<decimal> salesDetailsId, Nullable<decimal> salesMasterId, Nullable<decimal> deliveryNoteDetailsId, Nullable<decimal> orderDetailsId, Nullable<decimal> productId, Nullable<decimal> qty, Nullable<decimal> rate, Nullable<decimal> unitId, Nullable<decimal> unitConversionId, Nullable<decimal> discount, Nullable<decimal> taxId, Nullable<decimal> batchId, Nullable<decimal> godownId, Nullable<decimal> rackId, Nullable<decimal> taxAmount, Nullable<decimal> grossAmount, Nullable<decimal> netAmount, Nullable<decimal> amount, Nullable<int> slNo)
         {
             var salesDetailsIdParameter = salesDetailsId.HasValue ?
                 new ObjectParameter("salesDetailsId", salesDetailsId) :
@@ -6233,10 +6220,6 @@ namespace LoginForm.DataSet
             var orderDetailsIdParameter = orderDetailsId.HasValue ?
                 new ObjectParameter("orderDetailsId", orderDetailsId) :
                 new ObjectParameter("orderDetailsId", typeof(decimal));
-    
-            var quotationDetailsIdParameter = quotationDetailsId.HasValue ?
-                new ObjectParameter("quotationDetailsId", quotationDetailsId) :
-                new ObjectParameter("quotationDetailsId", typeof(decimal));
     
             var productIdParameter = productId.HasValue ?
                 new ObjectParameter("productId", productId) :
@@ -6298,7 +6281,7 @@ namespace LoginForm.DataSet
                 new ObjectParameter("slNo", slNo) :
                 new ObjectParameter("slNo", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SalesDetailsEdit", salesDetailsIdParameter, salesMasterIdParameter, deliveryNoteDetailsIdParameter, orderDetailsIdParameter, quotationDetailsIdParameter, productIdParameter, qtyParameter, rateParameter, unitIdParameter, unitConversionIdParameter, discountParameter, taxIdParameter, batchIdParameter, godownIdParameter, rackIdParameter, taxAmountParameter, grossAmountParameter, netAmountParameter, amountParameter, slNoParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SalesDetailsEdit", salesDetailsIdParameter, salesMasterIdParameter, deliveryNoteDetailsIdParameter, orderDetailsIdParameter, productIdParameter, qtyParameter, rateParameter, unitIdParameter, unitConversionIdParameter, discountParameter, taxIdParameter, batchIdParameter, godownIdParameter, rackIdParameter, taxAmountParameter, grossAmountParameter, netAmountParameter, amountParameter, slNoParameter);
         }
     
         public virtual ObjectResult<SalesInvoiceAdditionalCostViewByVoucherNoUnderVoucherType_Result> SalesInvoiceAdditionalCostViewByVoucherNoUnderVoucherType(Nullable<decimal> voucherTypeId, string voucherNo)

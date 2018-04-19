@@ -386,7 +386,7 @@ namespace LoginForm.Account.Services
         public void SalesDetailsEdit(SalesDetail salesdetailsinfo)
         {
             IMEEntities IME = new IMEEntities();
-            IME.SalesDetailsEdit(salesdetailsinfo.salesDetailsId, salesdetailsinfo.salesMasterId, salesdetailsinfo.deliveryNoteDetailsId, salesdetailsinfo.orderDetailsId, Convert.ToDecimal(salesdetailsinfo.quotationDetailsId), Convert.ToDecimal(salesdetailsinfo.productId), salesdetailsinfo.qty, salesdetailsinfo.rate, salesdetailsinfo.unitId, salesdetailsinfo.unitConversionId, salesdetailsinfo.discount, Convert.ToDecimal(salesdetailsinfo.taxId), salesdetailsinfo.batchId, salesdetailsinfo.godownId, salesdetailsinfo.rackId, salesdetailsinfo.taxAmount, salesdetailsinfo.grossAmount, salesdetailsinfo.netAmount, salesdetailsinfo.amount, salesdetailsinfo.slNo);
+            IME.SalesDetailsEdit(salesdetailsinfo.salesDetailsId, salesdetailsinfo.salesMasterId, salesdetailsinfo.deliveryNoteDetailsId, salesdetailsinfo.orderDetailsId, Convert.ToDecimal(salesdetailsinfo.productId), salesdetailsinfo.qty, salesdetailsinfo.rate, salesdetailsinfo.unitId, salesdetailsinfo.unitConversionId, salesdetailsinfo.discount, Convert.ToDecimal(salesdetailsinfo.taxId), salesdetailsinfo.batchId, salesdetailsinfo.godownId, salesdetailsinfo.rackId, salesdetailsinfo.taxAmount, salesdetailsinfo.grossAmount, salesdetailsinfo.netAmount, salesdetailsinfo.amount, salesdetailsinfo.slNo);
             //SqlCommand sccmd = new SqlCommand("SalesDetailsEdit", sqlcon);
 
         }
@@ -417,16 +417,10 @@ namespace LoginForm.Account.Services
         {
             IMEEntities IME = new IMEEntities();
             decimal? quoID = null;
-            if(s.quotationDetailsId != null)
-            {
-                quoID = Convert.ToDecimal(s.quotationDetailsId);
-            }
             
-
             IME.SalesDetailsAdd(s.salesMasterId,
                 s.deliveryNoteDetailsId,
                 s.orderDetailsId,
-                quoID,
                 Convert.ToDecimal(s.productId),
                 s.qty,
                 s.rate,

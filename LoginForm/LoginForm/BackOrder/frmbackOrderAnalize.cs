@@ -34,7 +34,6 @@ namespace LoginForm.BackOrder
         #region Functions
         private void dgLoader()
         {
-           
             IMEEntities IME = new IMEEntities();
             var BackOrderAnalizeList = IME.BackOrderAnalize(backOrderanalizeDate.Date).ToList();
             foreach (var item in BackOrderAnalizeList)

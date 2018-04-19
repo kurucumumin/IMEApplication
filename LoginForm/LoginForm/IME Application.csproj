@@ -710,15 +710,17 @@
     <Compile Include="Account\Transaction\frmReceiptVoucher.designer.cs">
       <DependentUpon>frmReceiptVoucher.cs</DependentUpon>
     </Compile>
-    <Compile Include="Account\Transaction\frmSalesInvoice - Copy.cs" />
-    <Compile Include="Account\Transaction\frmSalesInvoice - Copy.designer.cs">
-      <DependentUpon>frmSalesInvoice - Copy.cs</DependentUpon>
-    </Compile>
     <Compile Include="Account\Transaction\frmDeliveryNote.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Account\Transaction\frmDeliveryNote.designer.cs">
       <DependentUpon>frmDeliveryNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Transaction\frmSalesInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Transaction\frmSalesInvoice.designer.cs">
+      <DependentUpon>frmSalesInvoice.cs</DependentUpon>
     </Compile>
     <Compile Include="Account\Transaction\frmSalesReturn.cs">
       <SubType>Form</SubType>
@@ -2641,11 +2643,11 @@
     <EmbeddedResource Include="Account\Transaction\frmReceiptVoucher.resx">
       <DependentUpon>frmReceiptVoucher.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Account\Transaction\frmSalesInvoice - Copy.resx">
-      <DependentUpon>frmSalesInvoice - Copy.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Account\Transaction\frmDeliveryNote.resx">
       <DependentUpon>frmDeliveryNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\Transaction\frmSalesInvoice.resx">
+      <DependentUpon>frmSalesInvoice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Transaction\frmSalesReturn.resx">
       <DependentUpon>frmSalesReturn.cs</DependentUpon>

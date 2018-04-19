@@ -17,7 +17,7 @@ namespace LoginForm
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmStockConfirm());
+            Application.Run(new FormLogin());
         }
     }
 }

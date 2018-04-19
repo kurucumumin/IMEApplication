@@ -3042,28 +3042,28 @@ namespace LoginForm
                         {
                             if (cmbSalesMode.Text == "Against SalesOrder")
                             {
-                                if (dgvSalesInvoice.Rows[inI].Cells["dgvtxtSISalesOrderDetailsId"].Value != null) InfoSalesDetails.orderDetailsId = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSISalesOrderDetailsId"].Value.ToString());
+                                if (dgvSalesInvoice.Rows[inI].Cells["dgvtxtSISalesOrderDetailsId"].Value != null) InfoSalesDetails.orderDetailsId = Convert.ToInt32(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSISalesOrderDetailsId"].Value.ToString());
                             }
                             else
                             {
                                 InfoSalesDetails.orderDetailsId = null;
                             }
-                            if (cmbSalesMode.Text == "Against Delivery Note")
-                            {
-                                InfoSalesDetails.deliveryNoteDetailsId = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceDeliveryNoteDetailsId"].Value.ToString());
-                            }
-                            else
-                            {
-                                InfoSalesDetails.deliveryNoteDetailsId = null;
-                            }
-                            if (cmbSalesMode.Text == "Against Quotation")
-                            {
-                                InfoSalesDetails.quotationDetailsId = Convert.ToInt32(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceQuotationDetailsId"].Value.ToString());
-                            }
-                            else
-                            {
-                                InfoSalesDetails.quotationDetailsId = null;
-                            }
+                            //if (cmbSalesMode.Text == "Against Delivery Note")
+                            //{
+                            //    InfoSalesDetails.deliveryNoteDetailsId = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceDeliveryNoteDetailsId"].Value.ToString());
+                            //}
+                            //else
+                            //{
+                            //    InfoSalesDetails.deliveryNoteDetailsId = null;
+                            //}
+                            //if (cmbSalesMode.Text == "Against Quotation")
+                            //{
+                            //    InfoSalesDetails.quotationDetailsId = Convert.ToInt32(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceQuotationDetailsId"].Value.ToString());
+                            //}
+                            //else
+                            //{
+                            //    InfoSalesDetails.quotationDetailsId = null;
+                            //}
                             InfoSalesDetails.slNo = Convert.ToInt32(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceSlno"].Value.ToString());
                             InfoSalesDetails.productId = dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceProductCode"].Value.ToString();
                             StockReserveProductID = InfoSalesDetails.productId;
@@ -4174,7 +4174,7 @@ namespace LoginForm
                             {
                                 if (dgvSalesInvoice.Rows[inI].Cells["dgvtxtSISalesOrderDetailsId"].Value != null)
                                 {
-                                    InfoSalesDetails.orderDetailsId = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSISalesOrderDetailsId"].Value.ToString());
+                                    InfoSalesDetails.orderDetailsId = Convert.ToInt32(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSISalesOrderDetailsId"].Value.ToString());
                                 }
                                 else
                                 {
@@ -4188,14 +4188,14 @@ namespace LoginForm
                                 {
                                     InfoSalesDetails.deliveryNoteDetailsId = null;
                                 }
-                                if (dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceQuotationDetailsId"].Value != null)
-                                {
-                                    InfoSalesDetails.quotationDetailsId = Convert.ToInt32(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceQuotationDetailsId"].Value.ToString());
-                                }
-                                else
-                                {
-                                    InfoSalesDetails.quotationDetailsId = null;
-                                }
+                                //if (dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceQuotationDetailsId"].Value != null)
+                                //{
+                                //    InfoSalesDetails.quotationDetailsId = Convert.ToInt32(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceQuotationDetailsId"].Value.ToString());
+                                //}
+                                //else
+                                //{
+                                //    InfoSalesDetails.quotationDetailsId = null;
+                                //}
                                 InfoSalesDetails.slNo = Convert.ToInt32(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceSlno"].Value.ToString());
                                 InfoSalesDetails.productId = dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceProductId"].Value.ToString();
                                 decimal decQty = spSalesMaster.SalesInvoiceQuantityDetailsAgainstSalesReturn(DecSalesInvoiceVoucherTypeId, strVoucherNo);
@@ -4307,7 +4307,7 @@ namespace LoginForm
                         InfoSalesDetails.amount = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceAmount"].Value.ToString());
                         if (dgvSalesInvoice.Rows[inI].Cells["dgvtxtSISalesOrderDetailsId"].Value != null)
                         {
-                            InfoSalesDetails.orderDetailsId = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSISalesOrderDetailsId"].Value.ToString());
+                            InfoSalesDetails.orderDetailsId = Convert.ToInt32(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSISalesOrderDetailsId"].Value.ToString());
                         }
                         else
                         {
@@ -4321,14 +4321,14 @@ namespace LoginForm
                         {
                             InfoSalesDetails.deliveryNoteDetailsId = null;
                         }
-                        if (dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceQuotationDetailsId"].Value != null)
-                        {
-                            InfoSalesDetails.quotationDetailsId = Convert.ToInt32(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceQuotationDetailsId"].Value.ToString());
-                        }
-                        else
-                        {
-                            InfoSalesDetails.quotationDetailsId = null;
-                        }
+                        //if (dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceQuotationDetailsId"].Value != null)
+                        //{
+                        //    InfoSalesDetails.quotationDetailsId = Convert.ToInt32(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceQuotationDetailsId"].Value.ToString());
+                        //}
+                        //else
+                        //{
+                        //    InfoSalesDetails.quotationDetailsId = null;
+                        //}
                         spSalesDetails.SalesDetailsEdit(InfoSalesDetails);
                     }
                     //TODO stock changing
