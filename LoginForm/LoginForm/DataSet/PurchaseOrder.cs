@@ -20,6 +20,7 @@ namespace LoginForm.DataSet
             this.MaterialReceiptMasters = new HashSet<MaterialReceiptMaster>();
             this.PurchaseMasters = new HashSet<PurchaseMaster>();
             this.PurchaseOrderDetails = new HashSet<PurchaseOrderDetail>();
+            this.RS_InvoiceDetails = new HashSet<RS_InvoiceDetails>();
         }
     
         public string CustomerID { get; set; }
@@ -53,5 +54,7 @@ namespace LoginForm.DataSet
         public virtual SuffixPrefix SuffixPrefix { get; set; }
         public virtual Worker Worker { get; set; }
         public virtual VoucherType VoucherType { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RS_InvoiceDetails> RS_InvoiceDetails { get; set; }
     }
 }

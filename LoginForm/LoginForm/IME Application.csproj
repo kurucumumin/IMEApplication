@@ -22,7 +22,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>108</ApplicationRevision>
+    <ApplicationRevision>104</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -710,17 +710,15 @@
     <Compile Include="Account\Transaction\frmReceiptVoucher.designer.cs">
       <DependentUpon>frmReceiptVoucher.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\Transaction\frmSalesInvoice - Copy.cs" />
+    <Compile Include="Account\Transaction\frmSalesInvoice - Copy.designer.cs">
+      <DependentUpon>frmSalesInvoice - Copy.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\Transaction\frmDeliveryNote.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Account\Transaction\frmDeliveryNote.designer.cs">
       <DependentUpon>frmDeliveryNote.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Account\Transaction\frmSalesInvoice.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Account\Transaction\frmSalesInvoice.designer.cs">
-      <DependentUpon>frmSalesInvoice.cs</DependentUpon>
     </Compile>
     <Compile Include="Account\Transaction\frmSalesReturn.cs">
       <SubType>Form</SubType>
@@ -734,35 +732,17 @@
     <Compile Include="Account\Transaction\frmServiceVoucher.Designer.cs">
       <DependentUpon>frmServiceVoucher.cs</DependentUpon>
     </Compile>
-    <Compile Include="BackOrder\BackOrderProductSearch.cs">
+    <Compile Include="AçıkSipariş\frmAcikSiparis.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BackOrder\BackOrderProductSearch.Designer.cs">
-      <DependentUpon>BackOrderProductSearch.cs</DependentUpon>
+    <Compile Include="AçıkSipariş\frmAcikSiparis.Designer.cs">
+      <DependentUpon>frmAcikSiparis.cs</DependentUpon>
     </Compile>
-    <Compile Include="BackOrder\frmbackOrderAnalize.cs">
+    <Compile Include="Billing\frmFaturalanacaklar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BackOrder\frmbackOrderAnalize.Designer.cs">
-      <DependentUpon>frmbackOrderAnalize.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BackOrder\frmBackOrderDetailView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BackOrder\frmBackOrderDetailView.Designer.cs">
-      <DependentUpon>frmBackOrderDetailView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BackOrder\frmBackOrderLoader.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BackOrder\frmBackOrderLoader.Designer.cs">
-      <DependentUpon>frmBackOrderLoader.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BackOrder\frmBackOrderMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BackOrder\frmBackOrderMain.Designer.cs">
-      <DependentUpon>frmBackOrderMain.cs</DependentUpon>
+    <Compile Include="Billing\frmFaturalanacaklar.Designer.cs">
+      <DependentUpon>frmFaturalanacaklar.cs</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\AccountingControl.cs">
       <SubType>UserControl</SubType>
@@ -2329,12 +2309,6 @@
     <Compile Include="Services\ToolTipService.cs" />
     <Compile Include="Services\txtCreate.cs" />
     <Compile Include="Services\XmlToObject.cs" />
-    <Compile Include="StockConfirm\frmStockConfirm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="StockConfirm\frmStockConfirm.Designer.cs">
-      <DependentUpon>frmStockConfirm.cs</DependentUpon>
-    </Compile>
     <Compile Include="StockManagement\frmStock.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2643,11 +2617,11 @@
     <EmbeddedResource Include="Account\Transaction\frmReceiptVoucher.resx">
       <DependentUpon>frmReceiptVoucher.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Account\Transaction\frmSalesInvoice - Copy.resx">
+      <DependentUpon>frmSalesInvoice - Copy.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Account\Transaction\frmDeliveryNote.resx">
       <DependentUpon>frmDeliveryNote.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Account\Transaction\frmSalesInvoice.resx">
-      <DependentUpon>frmSalesInvoice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Transaction\frmSalesReturn.resx">
       <DependentUpon>frmSalesReturn.cs</DependentUpon>
@@ -2655,20 +2629,11 @@
     <EmbeddedResource Include="Account\Transaction\frmServiceVoucher.resx">
       <DependentUpon>frmServiceVoucher.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BackOrder\BackOrderProductSearch.resx">
-      <DependentUpon>BackOrderProductSearch.cs</DependentUpon>
+    <EmbeddedResource Include="AçıkSipariş\frmAcikSiparis.resx">
+      <DependentUpon>frmAcikSiparis.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BackOrder\frmbackOrderAnalize.resx">
-      <DependentUpon>frmbackOrderAnalize.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BackOrder\frmBackOrderDetailView.resx">
-      <DependentUpon>frmBackOrderDetailView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BackOrder\frmBackOrderLoader.resx">
-      <DependentUpon>frmBackOrderLoader.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BackOrder\frmBackOrderMain.resx">
-      <DependentUpon>frmBackOrderMain.cs</DependentUpon>
+    <EmbeddedResource Include="Billing\frmFaturalanacaklar.resx">
+      <DependentUpon>frmFaturalanacaklar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\AccountingControl.resx">
       <DependentUpon>AccountingControl.cs</DependentUpon>
@@ -2835,9 +2800,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SaleOrder\FormSaleOrderAdd.resx">
       <DependentUpon>FormSaleOrderAdd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="StockConfirm\frmStockConfirm.resx">
-      <DependentUpon>frmStockConfirm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StockManagement\frmStock.resx">
       <DependentUpon>frmStock.cs</DependentUpon>

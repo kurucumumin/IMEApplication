@@ -140,5 +140,11 @@ namespace LoginForm.CustomControls
             StockManagement.frmStock form = new StockManagement.frmStock();
             form.Show();
         }
+
+        private void btnFatura_Click(object sender, EventArgs e)
+        {
+            Billing.frmFaturalanacaklar frm = new Billing.frmFaturalanacaklar();
+            frm.Show();
+        }
     }
 }

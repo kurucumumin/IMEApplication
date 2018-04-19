@@ -1751,5 +1751,6 @@ namespace LoginForm
         {
             MakeTextUpperCase((TextBox)sender);
         }
+
     }
 }
