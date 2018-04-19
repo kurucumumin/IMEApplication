@@ -52,7 +52,6 @@ namespace LoginForm.PurchaseOrder
 
         private void btnClearAll_Click(object sender, EventArgs e)
         {
-
             foreach (DataGridViewRow row in dgSaleOrderDetails.Rows)
             {
                 DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[0];

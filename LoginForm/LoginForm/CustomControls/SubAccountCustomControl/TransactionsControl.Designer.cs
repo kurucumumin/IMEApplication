@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSaleInvoice = new System.Windows.Forms.Button();
             this.btnServiceVoucher = new System.Windows.Forms.Button();
             this.btnSalesReturn = new System.Windows.Forms.Button();
             this.btnDeliveryNote = new System.Windows.Forms.Button();
@@ -52,9 +52,9 @@
             // 
             this.panel1.AutoScroll = true;
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
-            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.btnServiceVoucher);
             this.panel1.Controls.Add(this.btnSalesReturn);
+            this.panel1.Controls.Add(this.btnSaleInvoice);
             this.panel1.Controls.Add(this.btnDeliveryNote);
             this.panel1.Controls.Add(this.btnReceiptVoucher);
             this.panel1.Controls.Add(this.btnPaymentVoucher);
@@ -75,24 +75,24 @@
             this.panel1.Size = new System.Drawing.Size(301, 768);
             this.panel1.TabIndex = 0;
             // 
-            // button1
+            // btnSaleInvoice
             // 
-            this.button1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(0, 585);
-            this.button1.Margin = new System.Windows.Forms.Padding(0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(301, 39);
-            this.button1.TabIndex = 60;
-            this.button1.Text = "Sale Order To Delivery Note";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnSaleInvoice.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnSaleInvoice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
+            this.btnSaleInvoice.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSaleInvoice.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSaleInvoice.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
+            this.btnSaleInvoice.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
+            this.btnSaleInvoice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSaleInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaleInvoice.Location = new System.Drawing.Point(0, 507);
+            this.btnSaleInvoice.Margin = new System.Windows.Forms.Padding(0);
+            this.btnSaleInvoice.Name = "btnSaleInvoice";
+            this.btnSaleInvoice.Size = new System.Drawing.Size(301, 39);
+            this.btnSaleInvoice.TabIndex = 60;
+            this.btnSaleInvoice.Text = "Sale Invoice";
+            this.btnSaleInvoice.UseVisualStyleBackColor = false;
+            this.btnSaleInvoice.Click += new System.EventHandler(this.btnSaleInvoice_Click);
             // 
             // btnServiceVoucher
             // 
@@ -104,7 +104,7 @@
             this.btnServiceVoucher.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnServiceVoucher.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnServiceVoucher.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnServiceVoucher.Location = new System.Drawing.Point(0, 546);
+            this.btnServiceVoucher.Location = new System.Drawing.Point(0, 585);
             this.btnServiceVoucher.Margin = new System.Windows.Forms.Padding(0);
             this.btnServiceVoucher.Name = "btnServiceVoucher";
             this.btnServiceVoucher.Size = new System.Drawing.Size(301, 39);
@@ -123,7 +123,7 @@
             this.btnSalesReturn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnSalesReturn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalesReturn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalesReturn.Location = new System.Drawing.Point(0, 507);
+            this.btnSalesReturn.Location = new System.Drawing.Point(0, 546);
             this.btnSalesReturn.Margin = new System.Windows.Forms.Padding(0);
             this.btnSalesReturn.Name = "btnSalesReturn";
             this.btnSalesReturn.Size = new System.Drawing.Size(301, 39);
@@ -411,6 +411,6 @@
         private System.Windows.Forms.Button btnJournalVoucher;
         private System.Windows.Forms.Button btnPurchaseInvoice;
         private System.Windows.Forms.Button btnPurchaseReturn;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSaleInvoice;
     }
 }

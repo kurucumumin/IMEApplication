@@ -125,7 +125,7 @@ namespace LoginForm
             {
                 cbxPrintAfterSave.Checked = false;
             }
-            cmbPricingLevel.SelectedIndex = -1;
+            //cmbPricingLevel.SelectedIndex = -1;
             cmbSalesAccount.SelectedIndex = -1;
             cmbCashOrParty.SelectedIndex = -1;
             cmbSalesMan.SelectedIndex = -1;
@@ -379,8 +379,7 @@ namespace LoginForm
         /// </summary>
         public void PricingLevelComboFill()
         {
-            TransactionGeneralFillObj.PricingLevelViewAll(cmbPricingLevel, false);
-
+            //TransactionGeneralFillObj.PricingLevelViewAll(cmbPricingLevel, false);
         }
         /// <summary>
         /// Cash and bank combofill function
@@ -753,35 +752,35 @@ namespace LoginForm
                 MessageBox.Show("SI: 21" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        /// <summary>
-        /// Function to fill Pricing level combobox while return from Pricing level creation when creating new ledger
-        /// </summary>
-        /// <param name="decPricingLevelId"></param>
-        public void ReturnFromPricingLevel(decimal decPricingLevelId)
-        {
-            try
-            {
-                if (decPricingLevelId != 0)
-                {
-                    PricingLevelComboFill();
-                    cmbPricingLevel.SelectedValue = decPricingLevelId;
-                }
-                else if (strPricingLevel != string.Empty)
-                {
-                    cmbPricingLevel.SelectedValue = strPricingLevel;
-                }
-                else
-                {
-                    cmbPricingLevel.SelectedValue = 0;
-                }
-                this.Enabled = true;
-                cmbPricingLevel.Focus();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("SI: 22" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
+        ///// <summary>
+        ///// Function to fill Pricing level combobox while return from Pricing level creation when creating new ledger
+        ///// </summary>
+        ///// <param name="decPricingLevelId"></param>
+        //public void ReturnFromPricingLevel(decimal decPricingLevelId)
+        //{
+        //    try
+        //    {
+        //        if (decPricingLevelId != 0)
+        //        {
+        //            PricingLevelComboFill();
+        //            cmbPricingLevel.SelectedValue = decPricingLevelId;
+        //        }
+        //        else if (strPricingLevel != string.Empty)
+        //        {
+        //            cmbPricingLevel.SelectedValue = strPricingLevel;
+        //        }
+        //        else
+        //        {
+        //            cmbPricingLevel.SelectedValue = 0;
+        //        }
+        //        this.Enabled = true;
+        //        cmbPricingLevel.Focus();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("SI: 22" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    }
+        //}
         /// <summary>
         /// Function to fill Salesman combobox while return from Salesman creation when creating new Salesman
         /// </summary>
@@ -1067,12 +1066,12 @@ namespace LoginForm
         public void getProductRate(int index, decimal decProductId, decimal decBatchId)
         {
             ProductSP spProduct = new ProductSP();
-            decimal decPricingLevelId = 0;
+            //decimal decPricingLevelId = 0;
             try
             {
                 DateTime dtcurrentDate = Convert.ToDateTime(IME.CurrentDate().First()); ;
 
-                decPricingLevelId = Convert.ToDecimal(cmbPricingLevel.SelectedValue.ToString());
+                //decPricingLevelId = Convert.ToDecimal(cmbPricingLevel.SelectedValue.ToString());
 
                 decimal decRate = spProduct.SalesInvoiceProductRateForSales((int)cmbCurrency.SelectedValue);
                 dgvSalesInvoice.Rows[index].Cells["dgvtxtSalesInvoiceRate"].Value = decRate;
@@ -1764,7 +1763,7 @@ namespace LoginForm
             {
 
                 dgvSalesInvoice.Rows.Clear();
-                cmbPricingLevel.Enabled = true;
+                //cmbPricingLevel.Enabled = true;
                 btnNewPricingLevel.Enabled = true;
                 txtGrandTotal.Text = "0.00";
                 txtTotalAmount.Text = "0.00";
@@ -1802,7 +1801,7 @@ namespace LoginForm
                     dgvSalesInvoice.Rows.Clear();
                     isValueChange = true;
                     DataTable dtblMaster = SPSalesOrderMaster.SalesInvoiceGridfillAgainestSalesOrder((decimal)cmbSalesModeOrderNo.SelectedValue);
-                    cmbPricingLevel.SelectedValue = Convert.ToDecimal(dtblMaster.Rows[0]["pricingLevelId"].ToString());
+                    //cmbPricingLevel.SelectedValue = Convert.ToDecimal(dtblMaster.Rows[0]["pricingLevelId"].ToString());
                     cmbCurrency.SelectedValue = Convert.ToDecimal(dtblMaster.Rows[0]["exchangeRateId"].ToString());
                     if (dtblMaster.Rows[0]["employeeId"].ToString() != string.Empty)
                     {
@@ -1814,7 +1813,7 @@ namespace LoginForm
                             cmbSalesMan.SelectedValue = dtblMaster.Rows[0]["employeeId"].ToString();
                         }
                     }
-                    cmbPricingLevel.Enabled = false;
+                    //cmbPricingLevel.Enabled = false;
                     btnNewPricingLevel.Enabled = false;
                     cmbCurrency.Enabled = false;
                     DataTable dtblDetails = spSalesOrderDetails.SalesInvoiceGridfillAgainestSalesOrderUsingSalesDetails(Convert.ToDecimal(cmbSalesModeOrderNo.SelectedValue.ToString()), Convert.ToDecimal(decSalesInvoiceIdToEdit), DecSalesInvoiceVoucherTypeId);
@@ -1912,7 +1911,7 @@ namespace LoginForm
                     dgvSalesInvoice.Rows.Clear();
                     isValueChange = true;
                     DataTable dtblMaster = SPQuotationMaster.SalesInvoiceGridfillAgainestQuotation(cmbSalesModeOrderNo.SelectedValue.ToString());
-                    cmbPricingLevel.SelectedValue = Convert.ToDecimal(dtblMaster.Rows[0]["pricingLevelId"].ToString());
+                    //cmbPricingLevel.SelectedValue = Convert.ToDecimal(dtblMaster.Rows[0]["pricingLevelId"].ToString());
                     cmbCurrency.SelectedValue = Convert.ToDecimal(dtblMaster.Rows[0]["exchangeRateId"].ToString());
                     if (dtblMaster.Rows[0]["employeeId"].ToString() != string.Empty)
                     {
@@ -1924,7 +1923,7 @@ namespace LoginForm
                             cmbSalesMan.SelectedValue = dtblMaster.Rows[0]["employeeId"].ToString();
                         }
                     }
-                    cmbPricingLevel.Enabled = false;
+                    //cmbPricingLevel.Enabled = false;
                     btnNewPricingLevel.Enabled = false;
                     cmbCurrency.Enabled = false;
                     DataTable dtblDetails = SPQuotationDetails.SalesInvoiceGridfillAgainestQuotationUsingQuotationDetails(Convert.ToDecimal(cmbSalesModeOrderNo.SelectedValue.ToString()), decSalesInvoiceIdToEdit, DecSalesInvoiceVoucherTypeId);
@@ -2022,9 +2021,9 @@ namespace LoginForm
                     dgvSalesInvoice.Rows.Clear();
                     isValueChange = true;
                     DataTable dtblMaster = SPDeliveryNoteDetails.SalesInvoiceGridfillAgainestDeliveryNote(Convert.ToDecimal(cmbSalesModeOrderNo.SelectedValue.ToString()));
-                    cmbPricingLevel.SelectedValue = Convert.ToDecimal(dtblMaster.Rows[0]["pricingLevelId"].ToString());
+                    //cmbPricingLevel.SelectedValue = Convert.ToDecimal(dtblMaster.Rows[0]["pricingLevelId"].ToString());
                     cmbCurrency.SelectedValue = Convert.ToDecimal(dtblMaster.Rows[0]["exchangeRateId"].ToString());
-                    cmbPricingLevel.Enabled = false;
+                    //cmbPricingLevel.Enabled = false;
                     cmbCurrency.Enabled = false;
                     DataTable dtblDetails = SPDeliveryNoteDetails.SalesInvoiceGridfillAgainestDeliveryNoteUsingDeliveryNoteDetails(Convert.ToDecimal(cmbSalesModeOrderNo.SelectedValue.ToString()), decSalesInvoiceIdToEdit, DecSalesInvoiceVoucherTypeId);
                     dtblDeliveryNoteDetails = dtblDetails;
@@ -3012,9 +3011,9 @@ namespace LoginForm
                     InfoSalesMaster.quotationNoId = null;
                 }
                 InfoSalesMaster.narration = txtNarration.Text.Trim();
-                try
-                { InfoSalesMaster.pricinglevelId = Convert.ToDecimal(cmbPricingLevel.SelectedValue.ToString()); }
-                catch { }
+                //try
+                //{ InfoSalesMaster.pricinglevelId = Convert.ToDecimal(cmbPricingLevel.SelectedValue.ToString()); }
+                //catch { }
                 InfoSalesMaster.salesAccount = Convert.ToDecimal(cmbSalesAccount.SelectedValue.ToString());
                 InfoSalesMaster.totalAmount = Convert.ToDecimal(txtTotalAmount.Text.Trim());
                 if (dgvSalesInvoice.Columns["dgvcmbSalesInvoiceTaxName"].Visible)
@@ -3781,7 +3780,7 @@ namespace LoginForm
                 cmbCurrency.SelectedValue = Convert.ToDecimal(dtblMaster.Rows[0]["exchangeRateId"].ToString());
                 txtTotalAmount.Text = dtblMaster.Rows[0]["totalAmount"].ToString();
                 lblTaxTotalAmount.Text = dtblMaster.Rows[0]["taxAmount"].ToString();
-                cmbPricingLevel.SelectedValue = Convert.ToDecimal(dtblMaster.Rows[0]["pricingLevelId"].ToString());
+                //cmbPricingLevel.SelectedValue = Convert.ToDecimal(dtblMaster.Rows[0]["pricingLevelId"].ToString());
                 if (dtblMaster.Rows[0]["quotationMasterId"].ToString() != "0")
                 {
                     cmbSalesMode.Text = "Against Quotation";
@@ -3789,7 +3788,7 @@ namespace LoginForm
                     cmbSalesModeOrderNo.SelectedValue = dtblMaster.Rows[0]["quotationMasterId"].ToString();
                     lblSalesModeOrderNo.Text = "Quotation No";
                     cmbCurrency.Enabled = false;
-                    cmbPricingLevel.Enabled = false;
+                    //cmbPricingLevel.Enabled = false;
                 }
                 else if (dtblMaster.Rows[0]["orderMasterId"].ToString() != "0")
                 {
@@ -3798,7 +3797,7 @@ namespace LoginForm
                     cmbSalesModeOrderNo.SelectedValue = dtblMaster.Rows[0]["orderMasterId"].ToString();
                     lblSalesModeOrderNo.Text = "Order No";
                     cmbCurrency.Enabled = false;
-                    cmbPricingLevel.Enabled = false;
+                    //cmbPricingLevel.Enabled = false;
                 }
                 else if (dtblMaster.Rows[0]["deliveryNoteMasterId"].ToString() != "0")
                 {
@@ -3807,7 +3806,7 @@ namespace LoginForm
                     cmbSalesModeOrderNo.SelectedValue = dtblMaster.Rows[0]["deliveryNoteMasterId"].ToString();
                     lblSalesModeOrderNo.Text = "Delivery Note No";
                     cmbCurrency.Enabled = false;
-                    cmbPricingLevel.Enabled = false;
+                    //cmbPricingLevel.Enabled = false;
                 }
                 else
                 {
@@ -4045,7 +4044,7 @@ namespace LoginForm
                     InfoSalesMaster.quotationNoId = null;
                 }
                 InfoSalesMaster.narration = txtNarration.Text.Trim();
-                InfoSalesMaster.pricinglevelId = Convert.ToDecimal(cmbPricingLevel.SelectedValue.ToString());
+                //InfoSalesMaster.pricinglevelId = Convert.ToDecimal(cmbPricingLevel.SelectedValue.ToString());
                 InfoSalesMaster.salesAccount = Convert.ToDecimal(cmbSalesAccount.SelectedValue.ToString());
                 InfoSalesMaster.totalAmount = Convert.ToDecimal(txtTotalAmount.Text.Trim());
                 if (dgvSalesInvoice.Columns["dgvcmbSalesInvoiceTaxName"].Visible)
@@ -5143,7 +5142,7 @@ namespace LoginForm
                 {
                     lblSalesModeOrderNo.Visible = false;
                     cmbSalesModeOrderNo.Visible = false;
-                    cmbPricingLevel.Enabled = true;
+                    //cmbPricingLevel.Enabled = true;
                     dgvSalesInvoice.Rows.Clear();
                     lblTaxTotalAmount.Text = "0.00";
                     txtTotalAmount.Text = "0.00";
@@ -5269,11 +5268,11 @@ namespace LoginForm
                         if (InfoAccountLedger != null)
                         {
                             //txtCustomerName.Text = InfoAccountLedger.ledgerName;
-                            cmbPricingLevel.SelectedValue = InfoAccountLedger.pricinglevelId == 0 ? 1 : InfoAccountLedger.pricinglevelId;
-                            if (InfoAccountLedger.pricinglevelId == 0)
-                            {
-                                cmbPricingLevel.SelectedIndex = 0;
-                            }
+                            //cmbPricingLevel.SelectedValue = InfoAccountLedger.pricinglevelId == 0 ? 1 : InfoAccountLedger.pricinglevelId;
+                            //if (InfoAccountLedger.pricinglevelId == 0)
+                            //{
+                            //    cmbPricingLevel.SelectedIndex = 0;
+                            //}
                             txtCreditPeriod.Text = InfoAccountLedger.creditPeriod.ToString();
                         }
 
@@ -5291,23 +5290,23 @@ namespace LoginForm
 
         private void btnNewPricingLevel_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (cmbPricingLevel.SelectedValue != null)
-                {
-                    strPricingLevel = cmbPricingLevel.SelectedValue.ToString();
-                }
-                else
-                {
-                    strPricingLevel = string.Empty;
-                }
+            //try
+            //{
+            //    if (cmbPricingLevel.SelectedValue != null)
+            //    {
+            //        strPricingLevel = cmbPricingLevel.SelectedValue.ToString();
+            //    }
+            //    else
+            //    {
+            //        strPricingLevel = string.Empty;
+            //    }
 
-                this.Enabled = false;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("SI: 99" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //    this.Enabled = false;
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("SI: 99" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
 
 
@@ -6458,32 +6457,32 @@ namespace LoginForm
         /// <param name="e"></param>
         private void cmbPricingLevel_SelectedIndexChanged(object sender, EventArgs e)
         {
-            decimal decBatchId = 0;
-            decimal decProductId = 0;
-            int inRowIndex = 0;
-            try
-            {
-                if (dgvSalesInvoice.Rows.Count > 1)
-                {
-                    foreach (DataGridViewRow dgvRow in dgvSalesInvoice.Rows)
-                    {
-                        inRowIndex = dgvRow.Index;
-                        if (dgvRow.Cells["dgvtxtSalesInvoiceProductId"].Value != null && dgvRow.Cells["dgvtxtSalesInvoiceProductId"].Value.ToString() != string.Empty)
-                        {
-                            if (dgvRow.Cells["dgvcmbSalesInvoiceBatch"].Value != null && dgvRow.Cells["dgvcmbSalesInvoiceBatch"].Value.ToString() != string.Empty)
-                            {
-                                decProductId = Convert.ToDecimal(dgvRow.Cells["dgvtxtSalesInvoiceProductId"].Value.ToString());
-                                decBatchId = Convert.ToDecimal(dgvRow.Cells["dgvcmbSalesInvoiceBatch"].Value.ToString());
-                                getProductRate(inRowIndex, decProductId, decBatchId);
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("SI: 130" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //decimal decBatchId = 0;
+            //decimal decProductId = 0;
+            //int inRowIndex = 0;
+            //try
+            //{
+            //    if (dgvSalesInvoice.Rows.Count > 1)
+            //    {
+            //        foreach (DataGridViewRow dgvRow in dgvSalesInvoice.Rows)
+            //        {
+            //            inRowIndex = dgvRow.Index;
+            //            if (dgvRow.Cells["dgvtxtSalesInvoiceProductId"].Value != null && dgvRow.Cells["dgvtxtSalesInvoiceProductId"].Value.ToString() != string.Empty)
+            //            {
+            //                if (dgvRow.Cells["dgvcmbSalesInvoiceBatch"].Value != null && dgvRow.Cells["dgvcmbSalesInvoiceBatch"].Value.ToString() != string.Empty)
+            //                {
+            //                    decProductId = Convert.ToDecimal(dgvRow.Cells["dgvtxtSalesInvoiceProductId"].Value.ToString());
+            //                    decBatchId = Convert.ToDecimal(dgvRow.Cells["dgvcmbSalesInvoiceBatch"].Value.ToString());
+            //                    getProductRate(inRowIndex, decProductId, decBatchId);
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("SI: 130" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
         #endregion
         #region Navigation
@@ -6604,7 +6603,7 @@ namespace LoginForm
                 {
                     if (cmbPricingLevel.Enabled == true)
                     {
-                        cmbPricingLevel.Focus();
+                        //cmbPricingLevel.Focus();
                     }
                     else
                     {
@@ -6731,7 +6730,7 @@ namespace LoginForm
                 {
                     if (cmbSalesMode.SelectedIndex == 0)
                     {
-                        cmbPricingLevel.Focus();
+                        //cmbPricingLevel.Focus();
                     }
                     else
                     {
@@ -6786,7 +6785,7 @@ namespace LoginForm
                 {
                     if (cmbPricingLevel.Enabled == true)
                     {
-                        cmbPricingLevel.Focus();
+                        //cmbPricingLevel.Focus();
                     }
                     else
                     {
@@ -7307,19 +7306,16 @@ namespace LoginForm
                             db.StockReserves.Remove(sr);
                             IME.SaveChanges();
                         }
-
                     }
-
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
-
         }
 
-        private void dgvSalesInvoice_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void btnFromSaleOrder_Click(object sender, EventArgs e)
         {
 
         }

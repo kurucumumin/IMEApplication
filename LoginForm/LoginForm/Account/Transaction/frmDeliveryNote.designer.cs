@@ -1114,6 +1114,7 @@ namespace LoginForm
             // 
             // btnNewLedger
             // 
+            this.btnNewLedger.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnNewLedger.BackgroundImage")));
             this.btnNewLedger.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnNewLedger.FlatAppearance.BorderSize = 0;
             this.btnNewLedger.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1142,6 +1143,7 @@ namespace LoginForm
             // 
             // btnNewSalesman
             // 
+            this.btnNewSalesman.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnNewSalesman.BackgroundImage")));
             this.btnNewSalesman.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnNewSalesman.FlatAppearance.BorderSize = 0;
             this.btnNewSalesman.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1156,6 +1158,7 @@ namespace LoginForm
             // 
             // btnNewSalesAccount
             // 
+            this.btnNewSalesAccount.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnNewSalesAccount.BackgroundImage")));
             this.btnNewSalesAccount.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnNewSalesAccount.FlatAppearance.BorderSize = 0;
             this.btnNewSalesAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
