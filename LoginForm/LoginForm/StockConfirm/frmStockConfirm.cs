@@ -36,12 +36,17 @@ namespace LoginForm.StockConfirm
                     int intStockReserveID = Int32.Parse(item.Cells[StockReserveID.Index].Value.ToString());
                     IMEEntities IME = new IMEEntities();
                     var sr = IME.StockReserves.Where(a => a.ReserveID == intStockReserveID).FirstOrDefault();
+                    
+                    sr.NotConfirmedQ = 0;
+                    sr.Qty = Int32.Parse(item.Cells[Qty.Index].Value.ToString());
                     int srQty = sr.Qty;
-                    IME.StockReserves.Remove(sr);
+                    //IME.StockReserves.Remove(sr);
                     IME.SaveChanges();
                     int stockID= Int32.Parse(item.Cells[StockID.Index].Value.ToString());
                     var Stock = IME.Stocks.Where(a => a.StockID ==stockID).FirstOrDefault();
-                    Stock.NotConfirmedQTY = Stock.NotConfirmedQTY - srQty;
+                    Stock.NotConfirmedQTY = 0;
+                    Stock.Qty = Stock.Qty + srQty;
+                    Stock.ReserveQty=Stock.ReserveQty+ srQty;
                     IME.SaveChanges();
                 }
             }

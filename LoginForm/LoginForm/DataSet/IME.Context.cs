@@ -1013,15 +1013,6 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BackOrderItemSeach_Result>("BackOrderItemSeach", productCodeParameter);
         }
     
-        public virtual ObjectResult<BackOrderItemSeach_Result> BackOrderItemSeach(string productCode)
-        {
-            var productCodeParameter = productCode != null ?
-                new ObjectParameter("ProductCode", productCode) :
-                new ObjectParameter("ProductCode", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BackOrderItemSeach_Result>("BackOrderItemSeach", productCodeParameter);
-        }
-    
         public virtual ObjectResult<BalanceSheet_Result> BalanceSheet(Nullable<System.DateTime> toDate, Nullable<System.DateTime> fromDate)
         {
             var toDateParameter = toDate.HasValue ?

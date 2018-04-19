@@ -327,7 +327,7 @@ namespace LoginForm.StockManagement
 
                 row.Cells[dgStockID.Index].Value = item.StockID;
                 row.Cells[dgSaleOrderID.Index].Value = item.SaleOrderID;
-                row.Cells[dgCustomerName.Index].Value = item.Customer?.c_name;
+                row.Cells[dgCustomerName.Index].Value = item.SaleOrder.Customer.c_name;
                 row.Cells[dgValidationDate.Index].Value = item.ValidationDate;
                 row.Cells[dgProductID.Index].Value = item.ProductID;
                 row.Cells[dgProductName.Index].Value = db.V_Product.Where(x => x.productId == item.ProductID).FirstOrDefault().productCode;
