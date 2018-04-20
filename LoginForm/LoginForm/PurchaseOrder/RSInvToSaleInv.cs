@@ -13,9 +13,9 @@ namespace LoginForm.PurchaseOrder
 {
     public partial class SaleOrderToDeliveryNote : Form
     {
-        frmDeliveryNote parent;
+        Form parent;
 
-        public SaleOrderToDeliveryNote(frmDeliveryNote parentDeliveryNote)
+        public SaleOrderToDeliveryNote(Form parentDeliveryNote)
         {
             InitializeComponent();
             this.parent = parentDeliveryNote;
@@ -37,7 +37,15 @@ namespace LoginForm.PurchaseOrder
             parent.Enabled = false;
 
             IMEEntities IME = new IMEEntities();
-            dgSaleOrder.DataSource = IME.SaleOrderToDeliveryNote(parent.txtCustomer.Text).ToList();
+            if(parent.GetType() == typeof(frmDeliveryNote))
+            {
+                dgSaleOrder.DataSource = IME.SaleOrderToDeliveryNote(((frmDeliveryNote)parent).txtCustomer.Text).ToList();
+            }
+            else
+            {
+                dgSaleOrder.DataSource = IME.SaleOrderToDeliveryNote(((frmSalesInvoice)parent).txtCustomer.Text).ToList();
+            }
+            
         }
 
 
@@ -52,7 +60,6 @@ namespace LoginForm.PurchaseOrder
 
         private void btnClearAll_Click(object sender, EventArgs e)
         {
-
             foreach (DataGridViewRow row in dgSaleOrderDetails.Rows)
             {
                 DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[0];
@@ -96,7 +103,16 @@ namespace LoginForm.PurchaseOrder
                 dt.Rows.Add(row);
             }
             parent.Enabled = true;
-            parent.setSaleOrderItemsFromPopUp(dt);
+
+            if(parent.GetType() == typeof(frmDeliveryNote))
+            {
+                ((frmDeliveryNote)parent).setSaleOrderItemsFromPopUp(dt);
+            }
+            else
+            {
+                ((frmSalesInvoice)parent).setSaleOrderItemsFromPopUp(dt);
+            }
+            
             this.Close();
             //form.Show();
         }

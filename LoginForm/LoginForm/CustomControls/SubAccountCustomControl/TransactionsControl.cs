@@ -28,7 +28,7 @@ namespace LoginForm.CustomControls
                 frmBankReconciliation open = Application.OpenForms["frmBankReconciliation"] as frmBankReconciliation;
                 if (open == null)
                 {
-                    //frm.MdiParent = this;
+                    //frm.MdiParent = this.ParentForm;
                     frm.Show();
                 }
                 else
@@ -50,12 +50,12 @@ namespace LoginForm.CustomControls
         {
             try
             {
-                frmBillallocation objBillallocation = new frmBillallocation();
+                frmBillallocation frm = new frmBillallocation();
                 frmBillallocation open = Application.OpenForms["frmBillallocation"] as frmBillallocation;
                 if (open == null)
                 {
-                    //objBillallocation.MdiParent = this;
-                    objBillallocation.Show();
+                    frm.MdiParent = this.ParentForm;
+                    frm.Show();
                 }
                 else
                 {
@@ -95,7 +95,7 @@ namespace LoginForm.CustomControls
                     frmVoucherTypeSelection open = Application.OpenForms["frmVoucherTypeSelection"] as frmVoucherTypeSelection;
                     if (open == null)
                     {
-                        //frm.MdiParent = this;
+                        //frm.MdiParent = this.ParentForm;
                         frm.Show();
                     }
                     else
@@ -140,7 +140,7 @@ namespace LoginForm.CustomControls
                     frmVoucherTypeSelection open = Application.OpenForms["frmVoucherTypeSelection"] as frmVoucherTypeSelection;
                     if (open == null)
                     {
-                        //frm.MdiParent = this;
+                        //frm.MdiParent = this.ParentForm;
                         frm.Show();
                     }
                     else
@@ -185,7 +185,7 @@ namespace LoginForm.CustomControls
                     frmVoucherTypeSelection open = Application.OpenForms["frmVoucherTypeSelection"] as frmVoucherTypeSelection;
                     if (open == null)
                     {
-                        //frm.MdiParent = this;
+                        //frm.MdiParent = this.ParentForm;
                         frm.Show();
                     }
                     else
@@ -230,7 +230,7 @@ namespace LoginForm.CustomControls
                     frmVoucherTypeSelection open = Application.OpenForms["frmVoucherTypeSelection"] as frmVoucherTypeSelection;
                     if (open == null)
                     {
-                        //frm.MdiParent = this;
+                        //frm.MdiParent = this.ParentForm;
                         frm.Show();
                     }
                     else
@@ -275,7 +275,7 @@ namespace LoginForm.CustomControls
                     frmVoucherTypeSelection open = Application.OpenForms["frmVoucherTypeSelection"] as frmVoucherTypeSelection;
                     if (open == null)
                     {
-                        //frm.MdiParent = this;
+                        //frm.MdiParent = this.ParentForm;
                         frm.Show();
                     }
                     else
@@ -320,7 +320,7 @@ namespace LoginForm.CustomControls
                     frmVoucherTypeSelection open = Application.OpenForms["frmVoucherTypeSelection"] as frmVoucherTypeSelection;
                     if (open == null)
                     {
-                        //frm.MdiParent = this;
+                        //frm.MdiParent = this.ParentForm;
                         frm.Show();
                     }
                     else
@@ -365,7 +365,7 @@ namespace LoginForm.CustomControls
                     frmVoucherTypeSelection open = Application.OpenForms["frmVoucherTypeSelection"] as frmVoucherTypeSelection;
                     if (open == null)
                     {
-                        //frm.MdiParent = this;
+                        //frm.MdiParent = this.ParentForm;
                         frm.Show();
                     }
                     else
@@ -410,7 +410,7 @@ namespace LoginForm.CustomControls
                     frmVoucherTypeSelection open = Application.OpenForms["frmVoucherTypeSelection"] as frmVoucherTypeSelection;
                     if (open == null)
                     {
-                        //frm.MdiParent = this;
+                        //frm.MdiParent = this.ParentForm;
                         frm.Show();
                     }
                     else
@@ -455,7 +455,7 @@ namespace LoginForm.CustomControls
                     frmVoucherTypeSelection open = Application.OpenForms["frmVoucherTypeSelection"] as frmVoucherTypeSelection;
                     if (open == null)
                     {
-                        //frm.MdiParent = this;
+                        //frm.MdiParent = this.ParentForm;
                         frm.Show();
                     }
                     else
@@ -500,7 +500,7 @@ namespace LoginForm.CustomControls
                     frmVoucherTypeSelection open = Application.OpenForms["frmVoucherTypeSelection"] as frmVoucherTypeSelection;
                     if (open == null)
                     {
-                        //frm.MdiParent = this;
+                        //frm.MdiParent = this.ParentForm;
                         frm.Show();
                     }
                     else
@@ -545,7 +545,7 @@ namespace LoginForm.CustomControls
                     frmVoucherTypeSelection open = Application.OpenForms["frmVoucherTypeSelection"] as frmVoucherTypeSelection;
                     if (open == null)
                     {
-                        //frm.MdiParent = this;
+                        //frm.MdiParent = this.ParentForm;
                         frm.Show();
                     }
                     else
@@ -590,7 +590,7 @@ namespace LoginForm.CustomControls
                     frmVoucherTypeSelection open = Application.OpenForms["frmVoucherTypeSelection"] as frmVoucherTypeSelection;
                     if (open == null)
                     {
-                        //frm.MdiParent = this;
+                        //frm.MdiParent = this.ParentForm;
                         frm.Show();
                     }
                     else
@@ -635,7 +635,7 @@ namespace LoginForm.CustomControls
                     frmVoucherTypeSelection open = Application.OpenForms["frmVoucherTypeSelection"] as frmVoucherTypeSelection;
                     if (open == null)
                     {
-                        //frm.MdiParent = this;
+                        //frm.MdiParent = this.ParentForm;
                         frm.Show();
                     }
                     else
@@ -657,14 +657,14 @@ namespace LoginForm.CustomControls
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnSaleInvoice_Click(object sender, EventArgs e)
         {
             try
             {
                 bool IsActivate = false;
                 foreach (Form form in Application.OpenForms)
                 {
-                    if (form.GetType() == typeof(frmReceiptVoucher))
+                    if (form.GetType() == typeof(frmSalesInvoice))
                     {
                         form.Activate();
                         IsActivate = true;
@@ -676,11 +676,11 @@ namespace LoginForm.CustomControls
                 }
                 if (IsActivate == false)
                 {
-                    SaleOrderToDeliveryNote frm = new SaleOrderToDeliveryNote();
-                    SaleOrderToDeliveryNote open = Application.OpenForms["frmVoucherTypeSelection"] as SaleOrderToDeliveryNote;
+                    frmVoucherTypeSelection frm = new frmVoucherTypeSelection();
+                    frmVoucherTypeSelection open = Application.OpenForms["frmVoucherTypeSelection"] as frmVoucherTypeSelection;
                     if (open == null)
                     {
-                        //frm.MdiParent = this;
+                        //frm.MdiParent = this.ParentForm;
                         frm.Show();
                     }
                     else
@@ -692,13 +692,13 @@ namespace LoginForm.CustomControls
                             frm.WindowState = FormWindowState.Normal;
                         }
                     }
-                    string strVoucherType = "RSInvToSaleInv";
-                    //frm.CallFromVoucherMenu(strVoucherType);
+                    string strVoucherType = "Sales Invoice";
+                    frm.CallFromVoucherMenu(strVoucherType);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("MDI 100: " + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("MDI 27:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

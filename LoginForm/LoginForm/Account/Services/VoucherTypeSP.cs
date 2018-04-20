@@ -236,15 +236,16 @@ namespace LoginForm.Account.Services
 
             try
             {
-                var adaptor = (from x in db.VoucherTypes
-                               where x.typeOfVoucher == strVoucherType && x.isActive == true
-                               select new { x.voucherTypeId, x.voucherTypeName }).ToList();
+                //var adaptor = (from x in db.VoucherTypes
+                //               where x.typeOfVoucher == strVoucherType && x.isActive == true
+                //               select new { x.voucherTypeId, x.voucherTypeName }).ToList();
+                var adp = db.VoucherTypes.Where(x => x.typeOfVoucher == strVoucherType && x.isActive == true).ToList();
 
 
                 dtbl.Columns.Add("voucherTypeId");
                 dtbl.Columns.Add("voucherTypeName");
 
-                foreach (var item in adaptor)
+                foreach (var item in adp)
                 {
                     var row = dtbl.NewRow();
 
