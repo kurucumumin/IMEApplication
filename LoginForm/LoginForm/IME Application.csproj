@@ -22,7 +22,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>108</ApplicationRevision>
+    <ApplicationRevision>104</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -734,6 +734,12 @@
     <Compile Include="Account\Transaction\frmServiceVoucher.Designer.cs">
       <DependentUpon>frmServiceVoucher.cs</DependentUpon>
     </Compile>
+    <Compile Include="OnOrder\frmAcikSiparis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OnOrder\frmAcikSiparis.Designer.cs">
+      <DependentUpon>frmAcikSiparis.cs</DependentUpon>
+    </Compile>
     <Compile Include="BackOrder\BackOrderProductSearch.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -763,6 +769,12 @@
     </Compile>
     <Compile Include="BackOrder\frmBackOrderMain.Designer.cs">
       <DependentUpon>frmBackOrderMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Billing\frmFaturalanacaklar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Billing\frmFaturalanacaklar.Designer.cs">
+      <DependentUpon>frmFaturalanacaklar.cs</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\AccountingControl.cs">
       <SubType>UserControl</SubType>
@@ -2655,6 +2667,9 @@
     <EmbeddedResource Include="Account\Transaction\frmServiceVoucher.resx">
       <DependentUpon>frmServiceVoucher.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="OnOrder\frmAcikSiparis.resx">
+      <DependentUpon>frmAcikSiparis.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BackOrder\BackOrderProductSearch.resx">
       <DependentUpon>BackOrderProductSearch.cs</DependentUpon>
     </EmbeddedResource>
@@ -2669,6 +2684,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BackOrder\frmBackOrderMain.resx">
       <DependentUpon>frmBackOrderMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Billing\frmFaturalanacaklar.resx">
+      <DependentUpon>frmFaturalanacaklar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\AccountingControl.resx">
       <DependentUpon>AccountingControl.cs</DependentUpon>

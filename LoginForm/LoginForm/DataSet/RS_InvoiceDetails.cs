@@ -32,7 +32,9 @@ namespace LoginForm.DataSet
         public Nullable<decimal> DeliveryNumber { get; set; }
         public Nullable<int> DeliveryItemNumber { get; set; }
         public Nullable<int> IsSaleInvoiced { get; set; }
+        public Nullable<int> PurchaseOrderID { get; set; }
     
+        public virtual PurchaseOrder PurchaseOrder { get; set; }
         public virtual RS_Invoice RS_Invoice { get; set; }
         public virtual RS_Invoice RS_Invoice1 { get; set; }
     }
