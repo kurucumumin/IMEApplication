@@ -27,6 +27,7 @@ namespace LoginForm.DataSet
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<AccountGroup> AccountGroups { get; set; }
         public virtual DbSet<AccountLedger> AccountLedgers { get; set; }
         public virtual DbSet<AdvancePayment> AdvancePayments { get; set; }
@@ -114,6 +115,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<PurchaseInvoice> PurchaseInvoices { get; set; }
         public virtual DbSet<PurchaseInvoiceDetail> PurchaseInvoiceDetails { get; set; }
         public virtual DbSet<PurchaseMaster> PurchaseMasters { get; set; }
+        public virtual DbSet<PurchaseOperation> PurchaseOperations { get; set; }
         public virtual DbSet<PurchaseOrder> PurchaseOrders { get; set; }
         public virtual DbSet<PurchaseOrderDetail> PurchaseOrderDetails { get; set; }
         public virtual DbSet<PurchaseReturnBilltax> PurchaseReturnBilltaxes { get; set; }
@@ -144,6 +146,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<SalesBillTax> SalesBillTaxes { get; set; }
         public virtual DbSet<SalesDetail> SalesDetails { get; set; }
         public virtual DbSet<SalesMaster> SalesMasters { get; set; }
+        public virtual DbSet<SalesOperation> SalesOperations { get; set; }
         public virtual DbSet<SalesReturnBillTax> SalesReturnBillTaxes { get; set; }
         public virtual DbSet<SalesReturnDetail> SalesReturnDetails { get; set; }
         public virtual DbSet<SalesReturnMaster> SalesReturnMasters { get; set; }
@@ -627,6 +630,11 @@ namespace LoginForm.DataSet
         public virtual ObjectResult<AccountLedgerViewForAdditionalCost_Result> AccountLedgerViewForAdditionalCost()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountLedgerViewForAdditionalCost_Result>("AccountLedgerViewForAdditionalCost");
+        }
+    
+        public virtual ObjectResult<AccountMainDataGridFiller_Result> AccountMainDataGridFiller()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountMainDataGridFiller_Result>("AccountMainDataGridFiller");
         }
     
         public virtual int AdditionalCostAdd(Nullable<decimal> voucherTypeId, string voucherNo, Nullable<decimal> ledgerId, Nullable<decimal> debit, Nullable<decimal> credit)

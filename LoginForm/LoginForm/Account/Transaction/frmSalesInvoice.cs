@@ -4132,6 +4132,52 @@ namespace LoginForm
                 MessageBox.Show("SI: 80" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        public void setSaleOrderItemsFromPopUp(DataTable dt)
+        {
+            string CurrencyName = "";
+            //formLoadDefaultFunctions();
+            //int POno = 0;
+            foreach (DataRow item in dt.Rows)
+            {
+                DataGridViewRow row = (DataGridViewRow)dgvSalesInvoice.Rows[0].Clone();
+                row.Cells[dgvtxtSalesInvoiceProductCode.Index].Value = item["dgItemCode"].ToString();
+                row.Cells[dgvtxtSalesInvoiceQty.Index].Value = item["Quantity"].ToString();
+                row.Cells[dgStockQuantity.Index].Value = item["dgStockQuantity"].ToString();
+                row.Cells[dgvtxtSalesInvoiceRate.Index].Value = item["dgUnitPrice"].ToString();
+                row.Cells[dgvtxtSalesInvoicembUnitName.Index].Value = item["dgUOM"].ToString();
+                //row.Cells[dgvtxtSalesInvoiceDiscountAmount.Index].Value = item["Discount"].ToString();
+                //row.Cells[dgvtxtSalesInvoiceAmount.Index].Value = item["Amount"].ToString();
+                //row.Cells[dgvtxtSalesInvoiceNetAmount.Index].Value = item["NetAmount"].ToString();
+                row.Cells[dgvtxtSalesInvoiceProductName.Index].Value = item["ProductDesc"].ToString();
+                txtDate.Text = item["BillingDocumentDate"].ToString();
+                row.Cells[dgvtxtSISalesOrderDetailsId.Index].Value = item["dgSaleOrderDetailID"].ToString();
+                //row.Cells[dgvPOno.Index].Value=item["PurchaseOrderNo"].ToString();
+                //TODO diğer para değerleri de yazılmalı
+                if (item["Currency"].ToString() == "GBP")
+                {
+                    CurrencyName = "Pound";
+                }
+
+                //try {  POno = Int32.Parse(item["PurchaseOrderNo"].ToString().Substring(0, item["PurchaseOrderNo"].ToString().IndexOf('R'))); } catch { }
+
+                dgvSalesInvoice.Rows.Add(row);
+            }
+            //if (IME.PurchaseOrders.Where(a => a.purchaseOrderId == POno).FirstOrDefault() != null)
+            //{
+            //    var po = IME.PurchaseOrders.Where(a => a.purchaseOrderId == POno).FirstOrDefault();
+            //    txtCustomer.Text = po.Customer.ID;
+            //    txtCustomerName.Text = po.Customer.c_name;
+            //    if(po.Worker!=null)cmbSalesMan.SelectedValue = po.Worker.WorkerID;
+            //}
+            //TODO : Currency seçme düzeltilecek
+            //cmbCurrency.SelectedValue = IME.Currencies.Where(a => a.currencyName == CurrencyName).FirstOrDefault().currencyID;
+            this.Show();
+            SiGridTotalAmountCalculation();
+        }
+
+
+
         /// <summary>
         /// Fill function for edit
         /// </summary>
@@ -7315,9 +7361,24 @@ namespace LoginForm
             }
         }
 
-        private void btnFromSaleOrder_Click(object sender, EventArgs e)
+        private void btnCashInvoice_Click(object sender, EventArgs e)
         {
+            SaleOrderToDeliveryNote form = new SaleOrderToDeliveryNote(this);
+            form.Show();
+        }
 
+        private void txtCustomerName_TextChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtCustomerName.Text))
+            {
+                btnCashInvoice.Enabled = false;
+                btnDeliveryNoteInvoice.Enabled = false;
+            }
+            else
+            {
+                btnCashInvoice.Enabled = true;
+                btnDeliveryNoteInvoice.Enabled = true;
+            }
         }
     }
 }

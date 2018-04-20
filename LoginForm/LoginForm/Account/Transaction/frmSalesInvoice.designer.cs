@@ -93,6 +93,7 @@ namespace LoginForm
             this.dgvtxtSalesInvoiceProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxtSalesInvoiceBrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxtSalesInvoiceQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgStockQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxtSalesInvoiceUnitConversionId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxtSalesInvoiceConversionRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxtSalesInvoicembUnitName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -163,8 +164,8 @@ namespace LoginForm
             this.txtCustomerName = new System.Windows.Forms.TextBox();
             this.cmbPricingLevel = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.btnFromSaleOrder = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnCashInvoice = new System.Windows.Forms.Button();
+            this.btnDeliveryNoteInvoice = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesInvoiceTax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesInvoice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesInvoiceLedger)).BeginInit();
@@ -584,6 +585,7 @@ namespace LoginForm
             this.dgvtxtSalesInvoiceProductName,
             this.dgvtxtSalesInvoiceBrand,
             this.dgvtxtSalesInvoiceQty,
+            this.dgStockQuantity,
             this.dgvtxtSalesInvoiceUnitConversionId,
             this.dgvtxtSalesInvoiceConversionRate,
             this.dgvtxtSalesInvoicembUnitName,
@@ -723,6 +725,11 @@ namespace LoginForm
             this.dgvtxtSalesInvoiceQty.Name = "dgvtxtSalesInvoiceQty";
             this.dgvtxtSalesInvoiceQty.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.dgvtxtSalesInvoiceQty.Width = 105;
+            // 
+            // dgStockQuantity
+            // 
+            this.dgStockQuantity.HeaderText = "Stock Quantity";
+            this.dgStockQuantity.Name = "dgStockQuantity";
             // 
             // dgvtxtSalesInvoiceUnitConversionId
             // 
@@ -1447,6 +1454,7 @@ namespace LoginForm
             this.txtCustomerName.ReadOnly = true;
             this.txtCustomerName.Size = new System.Drawing.Size(236, 22);
             this.txtCustomerName.TabIndex = 8903;
+            this.txtCustomerName.TextChanged += new System.EventHandler(this.txtCustomerName_TextChanged);
             // 
             // cmbPricingLevel
             // 
@@ -1469,34 +1477,34 @@ namespace LoginForm
             this.label5.TabIndex = 8905;
             this.label5.Text = "Items From =>";
             // 
-            // btnFromSaleOrder
+            // btnCashInvoice
             // 
-            this.btnFromSaleOrder.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.btnFromSaleOrder.Enabled = false;
-            this.btnFromSaleOrder.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnFromSaleOrder.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnFromSaleOrder.Location = new System.Drawing.Point(691, 114);
-            this.btnFromSaleOrder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnFromSaleOrder.Name = "btnFromSaleOrder";
-            this.btnFromSaleOrder.Size = new System.Drawing.Size(172, 23);
-            this.btnFromSaleOrder.TabIndex = 8908;
-            this.btnFromSaleOrder.Text = "Sale Order";
-            this.btnFromSaleOrder.UseVisualStyleBackColor = false;
-            this.btnFromSaleOrder.Click += new System.EventHandler(this.btnFromSaleOrder_Click);
+            this.btnCashInvoice.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnCashInvoice.Enabled = false;
+            this.btnCashInvoice.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCashInvoice.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnCashInvoice.Location = new System.Drawing.Point(691, 114);
+            this.btnCashInvoice.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCashInvoice.Name = "btnCashInvoice";
+            this.btnCashInvoice.Size = new System.Drawing.Size(172, 23);
+            this.btnCashInvoice.TabIndex = 8908;
+            this.btnCashInvoice.Text = "Cash Invoice";
+            this.btnCashInvoice.UseVisualStyleBackColor = false;
+            this.btnCashInvoice.Click += new System.EventHandler(this.btnCashInvoice_Click);
             // 
-            // button1
+            // btnDeliveryNoteInvoice
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.button1.Enabled = false;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(873, 114);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(172, 23);
-            this.button1.TabIndex = 8909;
-            this.button1.Text = "Delivery Note";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnDeliveryNoteInvoice.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnDeliveryNoteInvoice.Enabled = false;
+            this.btnDeliveryNoteInvoice.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnDeliveryNoteInvoice.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnDeliveryNoteInvoice.Location = new System.Drawing.Point(873, 114);
+            this.btnDeliveryNoteInvoice.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDeliveryNoteInvoice.Name = "btnDeliveryNoteInvoice";
+            this.btnDeliveryNoteInvoice.Size = new System.Drawing.Size(172, 23);
+            this.btnDeliveryNoteInvoice.TabIndex = 8909;
+            this.btnDeliveryNoteInvoice.Text = "Delivery Note Invoice";
+            this.btnDeliveryNoteInvoice.UseVisualStyleBackColor = false;
             // 
             // frmSalesInvoice
             // 
@@ -1504,8 +1512,8 @@ namespace LoginForm
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(165)))), ((int)(((byte)(203)))));
             this.ClientSize = new System.Drawing.Size(1068, 778);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.btnFromSaleOrder);
+            this.Controls.Add(this.btnDeliveryNoteInvoice);
+            this.Controls.Add(this.btnCashInvoice);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.cmbPricingLevel);
             this.Controls.Add(this.txtCustomerName);
@@ -1619,7 +1627,6 @@ namespace LoginForm
         private System.Windows.Forms.Label lblDays;
         private System.Windows.Forms.ComboBox cmbSalesMan;
         private System.Windows.Forms.Label lblSalesMan;
-        private System.Windows.Forms.TextBox txtCustomer;
         private System.Windows.Forms.Label lblCustomer;
         private System.Windows.Forms.Label lblTotalQuantity;
         //private dgv.DataGridViewEnter dgvsa
@@ -1672,6 +1679,10 @@ namespace LoginForm
         private System.Windows.Forms.DataGridView dgvSalesInvoiceTax;
         private System.Windows.Forms.TextBox txtCustomerName;
         private System.Windows.Forms.ComboBox cmbPricingLevel;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnCashInvoice;
+        private System.Windows.Forms.Button btnDeliveryNoteInvoice;
+        public System.Windows.Forms.TextBox txtCustomer;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtSalesInvoiceSlno;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvPOno;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtSalesInvoiceSalesDetailsId;
@@ -1684,6 +1695,7 @@ namespace LoginForm
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtSalesInvoiceProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtSalesInvoiceBrand;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtSalesInvoiceQty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgStockQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtSalesInvoiceUnitConversionId;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtSalesInvoiceConversionRate;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtSalesInvoicembUnitName;
@@ -1706,8 +1718,5 @@ namespace LoginForm
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtSalesInvoiceInvoiceNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtSalesInvoiceVoucherTypeId;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtSalesInvoiceAmount;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btnFromSaleOrder;
-        private System.Windows.Forms.Button button1;
     }
 }
