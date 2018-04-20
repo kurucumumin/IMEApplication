@@ -248,5 +248,37 @@ namespace LoginForm.StockManagement
             frmStockReserve form = new frmStockReserve(this ,Convert.ToDecimal(dgStockList.CurrentRow.Cells[dgStockID.Index].Value));
             form.Show();
         }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            IQueryable<Stock> query = new IMEEntities().Stocks;
+
+            if (!String.IsNullOrEmpty(txt_productID.Text))
+            {
+                query = query.Where(x => x.ProductID.Contains(txt_productID.Text));
+            }
+            if (!String.IsNullOrEmpty(txt_ProductDesc.Text))
+            {
+                query = query.Where(y => y.ProductName.Contains(txt_ProductDesc.Text));
+            }
+
+            dgStockList.DataSource = query.ToList();
+        }
+
+        private void txt_productID_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnSearch.PerformClick();
+            }
+        }
+
+        private void txt_ProductDesc_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnSearch.PerformClick();
+            }
+        }
     }
 }
