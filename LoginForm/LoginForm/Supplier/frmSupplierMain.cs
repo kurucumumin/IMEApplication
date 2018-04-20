@@ -1752,5 +1752,18 @@ namespace LoginForm
             MakeTextUpperCase((TextBox)sender);
         }
 
+        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnSupplierSearch.PerformClick();
+            }
+        }
+
+        private void btnSupplierSearch_Click(object sender, EventArgs e)
+        {
+            dgSupplier.DataSource = BringSupplierList(txtSearch.Text);
+            dgSupplier.ClearSelection();
+        }
     }
 }
