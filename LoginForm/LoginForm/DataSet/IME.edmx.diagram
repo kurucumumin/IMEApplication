@@ -4,166 +4,167 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e5a29bb77ad345c6a066c2fd5d895a62" Name="Diagram1">
-        <EntityTypeShape EntityType="IMEModel.Account" Width="1.5" PointX="12" PointY="141.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.AccountGroup" Width="1.5" PointX="9.75" PointY="75.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.AccountLedger" Width="1.5" PointX="12" PointY="74" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.AdvancePayment" Width="1.5" PointX="20.25" PointY="103" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.Area" Width="1.5" PointX="9.75" PointY="78.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.AuthorizationValue" Width="1.5" PointX="6.75" PointY="93.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.BackOrder" Width="1.5" PointX="25.5" PointY="101.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.BackOrderMain" Width="1.5" PointX="11.25" PointY="108.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.BankReconciliation" Width="1.5" PointX="23.25" PointY="75.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.Batch" Width="1.5" PointX="36.75" PointY="90.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.BonusDeduction" Width="1.5" PointX="11.25" PointY="111.5" IsExpanded="true" />
+      <Diagram DiagramId="5e8aa0f0f0bd4ebd872cd697e5b538c5" Name="Diagram1">
+        <EntityTypeShape EntityType="IMEModel.Account" Width="1.5" PointX="12" PointY="141.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.AccountGroup" Width="1.5" PointX="9.75" PointY="75.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.AccountLedger" Width="1.5" PointX="12" PointY="74.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.AdvancePayment" Width="1.5" PointX="20.25" PointY="103.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.Area" Width="1.5" PointX="9.75" PointY="78.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.AuthorizationValue" Width="1.5" PointX="6.75" PointY="93.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.BackOrder" Width="1.5" PointX="25.5" PointY="101.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.BackOrderMain" Width="1.5" PointX="11.25" PointY="108.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.BankReconciliation" Width="1.5" PointX="23.25" PointY="70.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.Batch" Width="1.5" PointX="39.75" PointY="90.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.BonusDeduction" Width="1.5" PointX="11.25" PointY="111.625" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.Brand" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.BudgetDetail" Width="1.5" PointX="8" PointY="7.25" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.BudgetMaster" Width="1.5" PointX="5.75" PointY="7" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.Capital" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.City" Width="1.5" PointX="9" PointY="85.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.Company" Width="1.5" PointX="29.25" PointY="82.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.City" Width="1.5" PointX="9" PointY="86" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.Company" Width="1.5" PointX="35.25" PointY="81.5" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.CompanyPath" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.ContactType" Width="1.5" PointX="9" PointY="95" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.ContraDetail" Width="1.5" PointX="28.5" PointY="89.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.ContraMaster" Width="1.5" PointX="20.25" PointY="97.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.Country" Width="1.5" PointX="6.75" PointY="86" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.CreditNoteDetail" Width="1.5" PointX="28.5" PointY="119" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.CreditNoteMaster" Width="1.5" PointX="20.25" PointY="109.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.Currency" Width="1.5" PointX="9.75" PointY="119.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.Customer" Width="1.5" PointX="3" PointY="100.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.CustomerAddress" Width="1.5" PointX="11.25" PointY="103.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.CustomerCategory" Width="1.5" PointX="0.75" PointY="91" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.CustomerDepartment" Width="1.5" PointX="9" PointY="92.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.CustomerSubCategory" Width="1.5" PointX="0.75" PointY="93.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.CustomerTitle" Width="1.5" PointX="9" PointY="89.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.CustomerWorker" Width="1.5" PointX="11.25" PointY="96.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.DailyAttendanceDetail" Width="1.5" PointX="20.25" PointY="114.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.DailyAttendanceMaster" Width="1.5" PointX="18" PointY="116.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.ContactType" Width="1.5" PointX="9" PointY="95.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.ContraDetail" Width="1.5" PointX="31.5" PointY="93.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.ContraMaster" Width="1.5" PointX="20.25" PointY="97.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.Country" Width="1.5" PointX="6.75" PointY="86.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.CreditNoteDetail" Width="1.5" PointX="28.5" PointY="119.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.CreditNoteMaster" Width="1.5" PointX="20.25" PointY="109.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.Currency" Width="1.5" PointX="9.75" PointY="120" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.Customer" Width="1.5" PointX="3" PointY="100.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.CustomerAddress" Width="1.5" PointX="11.25" PointY="103.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.CustomerCategory" Width="1.5" PointX="0.75" PointY="91.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.CustomerDepartment" Width="1.5" PointX="9" PointY="92.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.CustomerSubCategory" Width="1.5" PointX="0.75" PointY="93.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.CustomerTitle" Width="1.5" PointX="9" PointY="90" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.CustomerWorker" Width="1.5" PointX="11.25" PointY="97" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.DailyAttendanceDetail" Width="1.5" PointX="20.25" PointY="114.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.DailyAttendanceMaster" Width="1.5" PointX="18" PointY="116.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.DailyDiscontinued" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.DailySalaryVoucherDetail" Width="1.5" PointX="41.75" PointY="91.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.DailySalaryVoucherMaster" Width="1.5" PointX="39.5" PointY="90.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.DebitNoteDetail" Width="1.5" PointX="28.5" PointY="92.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.DebitNoteMaster" Width="1.5" PointX="20.25" PointY="92.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.DeliveryNoteDetail" Width="1.5" PointX="45" PointY="105.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.DeliveryNoteMaster" Width="1.5" PointX="23.25" PointY="101.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.Designation" Width="1.5" PointX="6.75" PointY="111" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.DiscountValue" Width="1.5" PointX="14.25" PointY="103.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.DailySalaryVoucherDetail" Width="1.5" PointX="39.75" PointY="82.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.DailySalaryVoucherMaster" Width="1.5" PointX="37.5" PointY="92.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.DebitNoteDetail" Width="1.5" PointX="28.5" PointY="95.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.DebitNoteMaster" Width="1.5" PointX="20.25" PointY="92.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.DeliveryNoteDetail" Width="1.5" PointX="45" PointY="105.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.DeliveryNoteMaster" Width="1.5" PointX="23.25" PointY="102" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.Designation" Width="1.5" PointX="6.75" PointY="111.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.DiscountValue" Width="1.5" PointX="14.25" PointY="103.875" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.DualUse" Width="1.5" PointX="2.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.ExchangeRate" Width="1.5" PointX="12" PointY="118.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.ExchangeRate" Width="1.5" PointX="12" PointY="119" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.ExtendedRange" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.FinancialYear" Width="1.5" PointX="23.25" PointY="81.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.Godown" Width="1.5" PointX="36.75" PointY="86.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.FinancialYear" Width="1.5" PointX="23.25" PointY="76.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.Godown" Width="1.5" PointX="39.75" PointY="85.25" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.Hazardou" Width="1.5" PointX="4.75" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.Holiday" Width="1.5" PointX="6.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.ItemHistory" Width="1.5" PointX="5.25" PointY="96.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.ItemNote" Width="1.5" PointX="3" PointY="116" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.JournalDetail" Width="1.5" PointX="13.5" PointY="86" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.JournalMaster" Width="1.5" PointX="11.25" PointY="91.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.Language" Width="1.5" PointX="9" PointY="115.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.LedgerPosting" Width="1.5" PointX="21" PointY="87" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.ItemHistory" Width="1.5" PointX="5.25" PointY="96.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.ItemNote" Width="1.5" PointX="3" PointY="116.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.JournalDetail" Width="1.5" PointX="13.5" PointY="86.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.JournalMaster" Width="1.5" PointX="11.25" PointY="91.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.Language" Width="1.5" PointX="9" PointY="115.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.LedgerPosting" Width="1.5" PointX="21" PointY="87.25" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.LoaderDate" Width="1.5" PointX="8.75" PointY="11.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.Mail" Width="1.5" PointX="10.75" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.Management" Width="1.5" PointX="31.5" PointY="86.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.Management" Width="1.5" PointX="37.5" PointY="87.375" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.Master" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.MaterialReceiptDetail" Width="1.5" PointX="39" PointY="96.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.MaterialReceiptMaster" Width="1.5" PointX="25.5" PointY="95" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.MonthlySalary" Width="1.5" PointX="9" PointY="127.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.MonthlySalaryDetail" Width="1.5" PointX="11.25" PointY="115.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.MonthlySalaryDetail1" Width="1.5" PointX="11.25" PointY="148.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.Note" Width="1.5" PointX="0.75" PointY="103.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.MaterialReceiptDetail" Width="1.5" PointX="42" PointY="94.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.MaterialReceiptMaster" Width="1.5" PointX="25.5" PointY="95.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.MonthlySalary" Width="1.5" PointX="9" PointY="127.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.MonthlySalaryDetail" Width="1.5" PointX="11.25" PointY="115.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.MonthlySalaryDetail1" Width="1.5" PointX="11.25" PointY="148.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.Note" Width="1.5" PointX="0.75" PointY="104.125" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.OnSale" Width="1.5" PointX="12.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.OrderAcknowledgement" Width="1.5" PointX="5.75" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.OrderAcknowledgementDetail" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.OtherBanchesStock" Width="1.5" PointX="31.5" PointY="83.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.PartyBalance" Width="1.5" PointX="25.5" PointY="85.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.PayHead" Width="1.5" PointX="12.75" PointY="145.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.PaymentDetail" Width="1.5" PointX="31.5" PointY="97" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.PaymentMaster" Width="1.5" PointX="23.25" PointY="96.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.PaymentMethod" Width="1.5" PointX="0.75" PointY="96.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.PaymentTerm" Width="1.5" PointX="0.75" PointY="99.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.PDCClearanceMaster" Width="1.5" PointX="23.25" PointY="110.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.PDCPayableMaster" Width="1.5" PointX="14.25" PointY="90.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.PDCReceivableMaster" Width="1.5" PointX="14.25" PointY="116.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.PhysicalStockDetail" Width="1.5" PointX="47" PointY="96" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.PhysicalStockMaster" Width="1.5" PointX="31.5" PointY="117" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.PricingLevel" Width="1.5" PointX="21" PointY="118.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.OtherBanchesStock" Width="1.5" PointX="37.5" PointY="83.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.PartyBalance" Width="1.5" PointX="28.5" PointY="85.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.PayHead" Width="1.5" PointX="12.75" PointY="145.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.PaymentDetail" Width="1.5" PointX="31.5" PointY="97.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.PaymentMaster" Width="1.5" PointX="23.25" PointY="96.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.PaymentMethod" Width="1.5" PointX="0.75" PointY="96.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.PaymentTerm" Width="1.5" PointX="0.75" PointY="99.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.PDCClearanceMaster" Width="1.5" PointX="23.25" PointY="110.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.PDCPayableMaster" Width="1.5" PointX="14.25" PointY="90.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.PDCReceivableMaster" Width="1.5" PointX="17.25" PointY="90.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.PhysicalStockDetail" Width="1.5" PointX="50" PointY="102.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.PhysicalStockMaster" Width="1.5" PointX="34.5" PointY="92.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.PricingLevel" Width="1.5" PointX="37.5" PointY="97.625" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.PrintFormat" Width="1.5" PointX="12.75" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.PurchaseBillTax" Width="1.5" PointX="0.75" PointY="13.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.PurchaseDetail" Width="1.5" PointX="42" PointY="107.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.PurchaseDetail" Width="1.5" PointX="42" PointY="104.625" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.PurchaseInvoice" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.PurchaseInvoiceDetail" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.PurchaseMaster" Width="1.5" PointX="25.5" PointY="106.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.PurchaseOperation" Width="1.5" PointX="14.25" PointY="111.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.PurchaseOrder" Width="1.5" PointX="14.25" PointY="96.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.PurchaseOrderDetail" Width="1.5" PointX="36.75" PointY="100.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.PurchaseMaster" Width="1.5" PointX="25.5" PointY="107.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.PurchaseOperation" Width="1.5" PointX="17.25" PointY="96.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.PurchaseOrder" Width="1.5" PointX="14.25" PointY="96.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.PurchaseOrderDetail" Width="1.5" PointX="36.75" PointY="100.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.PurchaseReturnBilltax" Width="1.5" PointX="2.75" PointY="13.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.PurchaseReturnDetail" Width="1.5" PointX="39" PointY="110.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.PurchaseReturnMaster" Width="1.5" PointX="33.75" PointY="107.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.Quotation" Width="1.5" PointX="17.25" PointY="100.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.QuotationDelivery" Width="1.5" PointX="26.25" PointY="121.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.QuotationDetail" Width="1.5" PointX="28.5" PointY="111.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.Rack" Width="1.5" PointX="36.75" PointY="116.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.PurchaseReturnDetail" Width="1.5" PointX="39" PointY="110.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.PurchaseReturnMaster" Width="1.5" PointX="33.75" PointY="108.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.Quotation" Width="1.5" PointX="17.25" PointY="100.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.QuotationDelivery" Width="1.5" PointX="26.25" PointY="121.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.QuotationDetail" Width="1.5" PointX="28.5" PointY="111.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.Rack" Width="1.5" PointX="39.75" PointY="117.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.Rate" Width="1.5" PointX="4.75" PointY="13.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.ReceiptDetail" Width="1.5" PointX="39.75" PointY="117.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.ReceiptMaster" Width="1.5" PointX="23.25" PointY="120" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.RejectionInDetail" Width="1.5" PointX="33.75" PointY="115.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.RejectionInMaster" Width="1.5" PointX="31.5" PointY="110.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.RejectionOutDetail" Width="1.5" PointX="41.25" PointY="96.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.RejectionOutMaster" Width="1.5" PointX="33.75" PointY="97.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.ReceiptDetail" Width="1.5" PointX="39.75" PointY="123.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.ReceiptMaster" Width="1.5" PointX="23.25" PointY="120.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.RejectionInDetail" Width="1.5" PointX="33.75" PointY="115.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.RejectionInMaster" Width="1.5" PointX="31.5" PointY="111" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.RejectionOutDetail" Width="1.5" PointX="44.25" PointY="93.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.RejectionOutMaster" Width="1.5" PointX="33.75" PointY="97.625" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.Reminder" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.RoleValue" Width="1.5" PointX="9" PointY="72.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.Route" Width="1.5" PointX="9.75" PointY="81.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.RS_Invoice" Width="1.5" PointX="14.25" PointY="80.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.RS_InvoiceDetails" Width="1.5" PointX="16.5" PointY="88.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.RoleValue" Width="1.5" PointX="9" PointY="72.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.Route" Width="1.5" PointX="9.75" PointY="81.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.RS_Invoice" Width="1.5" PointX="23.25" PointY="84.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.RS_InvoiceDetails" Width="1.5" PointX="25.5" PointY="89" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.RSPro" Width="1.5" PointX="14.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.SalaryPackage" Width="1.5" PointX="6.75" PointY="113.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.SalaryPackageDetail" Width="1.5" PointX="15" PointY="122" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.SalaryVoucherMaster" Width="1.5" PointX="21" PointY="121.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.SaleOrder" Width="1.5" PointX="28.5" PointY="99.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.SaleOrderDetail" Width="1.5" PointX="36.75" PointY="107.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.SalesBillTax" Width="1.5" PointX="33.75" PointY="104.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.SalesDetail" Width="1.5" PointX="47.25" PointY="105" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.SalesMaster" Width="1.5" PointX="31.5" PointY="101.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.SalesOperation" Width="1.5" PointX="14.25" PointY="108.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.SalesReturnBillTax" Width="1.5" PointX="42" PointY="104.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.SalesReturnDetail" Width="1.5" PointX="45" PointY="112.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.SalesReturnMaster" Width="1.5" PointX="39.75" PointY="102.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.Service" Width="1.5" PointX="23.25" PointY="78.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.ServiceCategory" Width="1.5" PointX="21" PointY="78.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.ServiceDetail" Width="1.5" PointX="25.5" PointY="91.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.ServiceMaster" Width="1.5" PointX="23.25" PointY="89.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.SalaryPackage" Width="1.5" PointX="6.75" PointY="114.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.SalaryPackageDetail" Width="1.5" PointX="15" PointY="119.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.SalaryVoucherMaster" Width="1.5" PointX="21" PointY="117.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.SaleOrder" Width="1.5" PointX="28.5" PointY="99.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.SaleOrderDetail" Width="1.5" PointX="36.75" PointY="108" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.SalesBillTax" Width="1.5" PointX="33.75" PointY="104.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.SalesDetail" Width="1.5" PointX="47.25" PointY="105.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.SalesMaster" Width="1.5" PointX="31.5" PointY="101.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.SalesOperation" Width="1.5" PointX="14.25" PointY="109.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.SalesReturnBillTax" Width="1.5" PointX="42" PointY="100.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.SalesReturnDetail" Width="1.5" PointX="45" PointY="99.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.SalesReturnMaster" Width="1.5" PointX="39.75" PointY="98.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.Service" Width="1.5" PointX="26.25" PointY="73.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.ServiceCategory" Width="1.5" PointX="24" PointY="73.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.ServiceDetail" Width="1.5" PointX="28.5" PointY="91.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.ServiceMaster" Width="1.5" PointX="23.25" PointY="89.875" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.Setting" Width="1.5" PointX="14.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.SettingsToCopy" Width="1.5" PointX="14.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.SlidingPrice" Width="1.5" PointX="12" PointY="133.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.Stock" Width="1.5" PointX="17.25" PointY="95.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.StockJournalDetail" Width="1.5" PointX="48" PointY="113" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.StockJournalMaster" Width="1.5" PointX="34.5" PointY="120.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.StockPosting" Width="1.5" PointX="44" PointY="96.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.StockReserve" Width="1.5" PointX="36.75" PointY="96.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.SuffixPrefix" Width="1.5" PointX="12" PointY="125" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.SlidingPrice" Width="1.5" PointX="12" PointY="133.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.Stock" Width="1.5" PointX="17.25" PointY="111.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.StockJournalDetail" Width="1.5" PointX="50" PointY="108.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.StockJournalMaster" Width="1.5" PointX="36.5" PointY="116.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.StockPosting" Width="1.5" PointX="48" PointY="95.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.StockReserve" Width="1.5" PointX="39.75" PointY="106.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.SuffixPrefix" Width="1.5" PointX="12" PointY="125.125" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.SuperDisk" Width="1.5" PointX="14.75" PointY="13.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.SuperDiskP" Width="1.5" PointX="6.75" PointY="15.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.Supplier" Width="1.5" PointX="6" PointY="101.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.SupplierAddress" Width="1.5" PointX="17.25" PointY="111.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.SupplierBank" Width="1.5" PointX="3.75" PointY="112" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.SupplierCategory" Width="1.5" PointX="3.75" PointY="119.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.SupplierSubCategory" Width="1.5" PointX="3.75" PointY="121.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.SupplierWorker" Width="1.5" PointX="25.5" PointY="116.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.Supplier" Width="1.5" PointX="6" PointY="101.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.SupplierAddress" Width="1.5" PointX="14.25" PointY="113.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.SupplierBank" Width="1.5" PointX="3.75" PointY="112.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.SupplierCategory" Width="1.5" PointX="3.75" PointY="119.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.SupplierSubCategory" Width="1.5" PointX="3.75" PointY="122.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.SupplierWorker" Width="1.5" PointX="25.5" PointY="116.5" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.sysdiagram" Width="1.5" PointX="8.75" PointY="15.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.Tax" Width="1.5" PointX="39.75" PointY="121.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.TaxDetail" Width="1.5" PointX="42" PointY="122.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.Town" Width="1.5" PointX="9" PointY="124" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.Unit" Width="1.5" PointX="32.25" PointY="91.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.UnitConvertion" Width="1.5" PointX="34.5" PointY="91.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.VoucherType" Width="1.5" PointX="3" PointY="88.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.VoucherTypeTax" Width="1.5" PointX="47" PointY="101.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.Worker" Width="1.5" PointX="9" PointY="97.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.AdditionalCost" Width="1.5" PointX="16.25" PointY="85.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.SalaryVoucherDetail" Width="1.5" PointX="23.25" PointY="115.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.Tax" Width="1.5" PointX="39.75" PointY="127" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.TaxDetail" Width="1.5" PointX="42" PointY="127.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.Town" Width="1.5" PointX="9" PointY="124.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.Unit" Width="1.5" PointX="32.25" PointY="87.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.UnitConvertion" Width="1.5" PointX="34.5" PointY="87.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.VoucherType" Width="1.5" PointX="3" PointY="88.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.VoucherTypeTax" Width="1.5" PointX="42" PointY="112.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.Worker" Width="1.5" PointX="9" PointY="97.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.AdditionalCost" Width="1.5" PointX="16.25" PointY="85.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.SalaryVoucherDetail" Width="1.5" PointX="23.25" PointY="116.125" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.CompleteItem" Width="1.5" PointX="10.75" PointY="15.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.V_Product" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="IMEModel.FK__Account__Currenc__1A2ABD85" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__PurchaseO__Accou__1EEF72A2" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__SalesOper__Accou__2690946A" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__AccountLe__accou__5E74FADA" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__AccountLe__areaI__5C8CB268" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__AccountLe__route__5D80D6A1" ManuallyRouted="false" />

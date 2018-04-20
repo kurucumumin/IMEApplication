@@ -236,16 +236,9 @@ namespace LoginForm.StockManagement
             }
         }
 
-        #endregion
-        
-        public frmStock()
-        {
-            InitializeComponent();
-        }
-
         private void btnViewStockReserves_Click(object sender, EventArgs e)
         {
-            frmStockReserve form = new frmStockReserve(this ,Convert.ToDecimal(dgStockList.CurrentRow.Cells[dgStockID.Index].Value));
+            frmStockReserve form = new frmStockReserve(this, Convert.ToDecimal(dgStockList.CurrentRow.Cells[dgStockID.Index].Value));
             form.Show();
         }
 
@@ -279,6 +272,13 @@ namespace LoginForm.StockManagement
             {
                 btnSearch.PerformClick();
             }
+        }
+
+        #endregion
+
+        public frmStock()
+        {
+            InitializeComponent();
         }
     }
 }

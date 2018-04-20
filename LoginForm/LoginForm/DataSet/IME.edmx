@@ -1864,6 +1864,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="Amount" Type="decimal" Precision="20" Scale="4" />
           <Property Name="RepreresentetiveID" Type="int" />
           <Property Name="CurrencyID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="AccountID" Type="int" />
         </EntityType>
         <EntityType Name="SalesReturnBillTax">
           <Key>
@@ -5882,6 +5883,18 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Principal>
             <Dependent Role="SalesMaster">
               <PropertyRef Name="WorkerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SalesOper__Accou__2690946A">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="SalesOperations" Type="Self.SalesOperations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SalesOperations">
+              <PropertyRef Name="AccountID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -10630,6 +10643,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="Worker" EntitySet="Worker" />
             <End Role="SalesMaster" EntitySet="SalesMaster" />
           </AssociationSet>
+          <AssociationSet Name="FK__SalesOper__Accou__2690946A" Association="Self.FK__SalesOper__Accou__2690946A">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="SalesOperations" EntitySet="SalesOperations" />
+          </AssociationSet>
           <AssociationSet Name="FK__SalesOper__Curre__23B427BF" Association="Self.FK__SalesOper__Curre__23B427BF">
             <End Role="Currency" EntitySet="Currency" />
             <End Role="SalesOperations" EntitySet="SalesOperations" />
@@ -10979,6 +10996,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="CurrencyID" Type="Decimal" Precision="18" Scale="0" />
           <NavigationProperty Name="Currency" Relationship="Self.FK__Account__Currenc__1A2ABD85" FromRole="Account" ToRole="Currency" />
           <NavigationProperty Name="PurchaseOperations" Relationship="Self.FK__PurchaseO__Accou__1EEF72A2" FromRole="Account" ToRole="PurchaseOperation" />
+          <NavigationProperty Name="SalesOperations" Relationship="Self.FK__SalesOper__Accou__2690946A" FromRole="Account" ToRole="SalesOperations" />
         </EntityType>
         <EntityType Name="AccountGroup">
           <Key>
@@ -13294,6 +13312,8 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="Amount" Type="Decimal" Precision="20" Scale="4" />
           <Property Name="RepreresentetiveID" Type="Int32" />
           <Property Name="CurrencyID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="AccountID" Type="Int32" />
+          <NavigationProperty Name="Account" Relationship="Self.FK__SalesOper__Accou__2690946A" FromRole="SalesOperations" ToRole="Account" />
           <NavigationProperty Name="Currency" Relationship="Self.FK__SalesOper__Curre__23B427BF" FromRole="SalesOperations" ToRole="Currency" />
           <NavigationProperty Name="Customer" Relationship="Self.FK__SalesOper__Custo__21CBDF4D" FromRole="SalesOperations" ToRole="Customer" />
           <NavigationProperty Name="Worker" Relationship="Self.FK__SalesOper__Repre__22C00386" FromRole="SalesOperations" ToRole="Worker" />
@@ -14184,6 +14204,18 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="PurchaseOperation">
+              <PropertyRef Name="AccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SalesOper__Accou__2690946A">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="SalesOperations" Type="Self.SalesOperation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SalesOperations">
               <PropertyRef Name="AccountID" />
             </Dependent>
           </ReferentialConstraint>
@@ -18633,6 +18665,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <AssociationSet Name="FK__PurchaseO__Accou__1EEF72A2" Association="Self.FK__PurchaseO__Accou__1EEF72A2">
             <End Role="Account" EntitySet="Accounts" />
             <End Role="PurchaseOperation" EntitySet="PurchaseOperations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SalesOper__Accou__2690946A" Association="Self.FK__SalesOper__Accou__2690946A">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="SalesOperations" EntitySet="SalesOperations" />
           </AssociationSet>
           <AssociationSet Name="FK__AccountLe__accou__5E74FADA" Association="Self.FK__AccountLe__accou__5E74FADA">
             <End Role="AccountGroup" EntitySet="AccountGroups" />
@@ -26595,6 +26631,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="RepreresentetiveID" ColumnName="RepreresentetiveID" />
                 <ScalarProperty Name="CurrencyID" ColumnName="CurrencyID" />
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

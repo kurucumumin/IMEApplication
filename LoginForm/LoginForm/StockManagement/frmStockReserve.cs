@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LoginForm.DataSet;
 using LoginForm.Item;
+using LoginForm.QuotationModule;
 
 namespace LoginForm.StockManagement
 {
@@ -22,6 +23,7 @@ namespace LoginForm.StockManagement
 
         public Stock _Stock;
         public string _ProductName;
+        private Customer _customer;
 
         #endregion
 
@@ -333,6 +335,40 @@ namespace LoginForm.StockManagement
                 row.Cells[dgProductName.Index].Value = db.V_Product.Where(x => x.productId == item.ProductID).FirstOrDefault().productCode;
                 row.Cells[dgQty.Index].Value = item.Qty;
             }
+        }
+        
+        public void CustomerSearchInput()
+        {
+            classQuotationAdd.customersearchID = txtCustomerID.Text;
+            classQuotationAdd.customersearchname = "";
+            FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch();
+            this.Enabled = false;
+            var result = form.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                _customer = form.customer;
+            }
+            this.Enabled = true;
+            fillCustomer();
+        }
+
+        private void txtCustomer_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                CustomerSearchInput();
+            }
+        }
+        private void fillCustomer()
+        {
+            txtCustomerID.Text = _customer.ID;
+            txtCustomerName.Text = _customer.c_name;
+        }
+
+        private void txtCustomerID_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            CustomerSearchInput();
         }
     }
 }

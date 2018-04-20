@@ -18,6 +18,7 @@ namespace LoginForm.DataSet
         public Account()
         {
             this.PurchaseOperations = new HashSet<PurchaseOperation>();
+            this.SalesOperations = new HashSet<SalesOperation>();
         }
     
         public int ID { get; set; }
@@ -31,5 +32,7 @@ namespace LoginForm.DataSet
         public virtual Currency Currency { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PurchaseOperation> PurchaseOperations { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SalesOperation> SalesOperations { get; set; }
     }
 }

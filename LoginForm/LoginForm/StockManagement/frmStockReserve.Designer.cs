@@ -31,8 +31,10 @@
             this.FrameTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabStockReserveUpdate = new System.Windows.Forms.TabPage();
+            this.txtCustomerName = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.txtCustomer = new System.Windows.Forms.TextBox();
+            this.txtCustomerID = new System.Windows.Forms.TextBox();
             this.txtProductID = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.numQuantity = new System.Windows.Forms.NumericUpDown();
@@ -97,8 +99,10 @@
             // 
             // tabStockReserveUpdate
             // 
+            this.tabStockReserveUpdate.Controls.Add(this.txtCustomerName);
+            this.tabStockReserveUpdate.Controls.Add(this.label6);
             this.tabStockReserveUpdate.Controls.Add(this.btnDelete);
-            this.tabStockReserveUpdate.Controls.Add(this.txtCustomer);
+            this.tabStockReserveUpdate.Controls.Add(this.txtCustomerID);
             this.tabStockReserveUpdate.Controls.Add(this.txtProductID);
             this.tabStockReserveUpdate.Controls.Add(this.label4);
             this.tabStockReserveUpdate.Controls.Add(this.numQuantity);
@@ -118,27 +122,46 @@
             this.tabStockReserveUpdate.Text = "Stock Reserve Update";
             this.tabStockReserveUpdate.UseVisualStyleBackColor = true;
             // 
+            // txtCustomerName
+            // 
+            this.txtCustomerName.Location = new System.Drawing.Point(163, 47);
+            this.txtCustomerName.Name = "txtCustomerName";
+            this.txtCustomerName.ReadOnly = true;
+            this.txtCustomerName.Size = new System.Drawing.Size(240, 24);
+            this.txtCustomerName.TabIndex = 32;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(163, 18);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(118, 18);
+            this.label6.TabIndex = 31;
+            this.label6.Text = "Customer Name";
+            // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(489, 47);
+            this.btnDelete.Location = new System.Drawing.Point(666, 77);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(116, 60);
+            this.btnDelete.Size = new System.Drawing.Size(116, 63);
             this.btnDelete.TabIndex = 30;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             // 
-            // txtCustomer
+            // txtCustomerID
             // 
-            this.txtCustomer.Enabled = false;
-            this.txtCustomer.Location = new System.Drawing.Point(20, 116);
-            this.txtCustomer.Name = "txtCustomer";
-            this.txtCustomer.Size = new System.Drawing.Size(183, 24);
-            this.txtCustomer.TabIndex = 29;
+            this.txtCustomerID.Enabled = false;
+            this.txtCustomerID.Location = new System.Drawing.Point(21, 47);
+            this.txtCustomerID.Name = "txtCustomerID";
+            this.txtCustomerID.Size = new System.Drawing.Size(121, 24);
+            this.txtCustomerID.TabIndex = 29;
+            this.txtCustomerID.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCustomer_KeyDown);
+            this.txtCustomerID.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txtCustomerID_MouseDoubleClick);
             // 
             // txtProductID
             // 
             this.txtProductID.Enabled = false;
-            this.txtProductID.Location = new System.Drawing.Point(20, 47);
+            this.txtProductID.Location = new System.Drawing.Point(21, 116);
             this.txtProductID.Name = "txtProductID";
             this.txtProductID.Size = new System.Drawing.Size(121, 24);
             this.txtProductID.TabIndex = 28;
@@ -146,7 +169,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(20, 87);
+            this.label4.Location = new System.Drawing.Point(21, 18);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(74, 18);
             this.label4.TabIndex = 27;
@@ -159,7 +182,7 @@
             0,
             0,
             0});
-            this.numQuantity.Location = new System.Drawing.Point(239, 116);
+            this.numQuantity.Location = new System.Drawing.Point(524, 116);
             this.numQuantity.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -171,16 +194,16 @@
             // 
             // txtProductName
             // 
-            this.txtProductName.Enabled = false;
-            this.txtProductName.Location = new System.Drawing.Point(162, 47);
+            this.txtProductName.Location = new System.Drawing.Point(163, 116);
             this.txtProductName.Name = "txtProductName";
-            this.txtProductName.Size = new System.Drawing.Size(312, 24);
+            this.txtProductName.ReadOnly = true;
+            this.txtProductName.Size = new System.Drawing.Size(240, 24);
             this.txtProductName.TabIndex = 25;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(162, 18);
+            this.label3.Location = new System.Drawing.Point(163, 87);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(139, 18);
             this.label3.TabIndex = 24;
@@ -189,7 +212,7 @@
             // rbDecrease
             // 
             this.rbDecrease.AutoSize = true;
-            this.rbDecrease.Location = new System.Drawing.Point(381, 114);
+            this.rbDecrease.Location = new System.Drawing.Point(421, 116);
             this.rbDecrease.Name = "rbDecrease";
             this.rbDecrease.Size = new System.Drawing.Size(93, 22);
             this.rbDecrease.TabIndex = 23;
@@ -200,7 +223,7 @@
             // rbIncrease
             // 
             this.rbIncrease.AutoSize = true;
-            this.rbIncrease.Location = new System.Drawing.Point(381, 85);
+            this.rbIncrease.Location = new System.Drawing.Point(421, 87);
             this.rbIncrease.Name = "rbIncrease";
             this.rbIncrease.Size = new System.Drawing.Size(85, 22);
             this.rbIncrease.TabIndex = 22;
@@ -211,9 +234,9 @@
             // btnSave
             // 
             this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnSave.Location = new System.Drawing.Point(754, 18);
+            this.btnSave.Location = new System.Drawing.Point(802, 18);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(182, 59);
+            this.btnSave.Size = new System.Drawing.Size(134, 59);
             this.btnSave.TabIndex = 21;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -222,9 +245,9 @@
             // btnClear
             // 
             this.btnClear.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnClear.Location = new System.Drawing.Point(754, 77);
+            this.btnClear.Location = new System.Drawing.Point(802, 77);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(182, 63);
+            this.btnClear.Size = new System.Drawing.Size(134, 63);
             this.btnClear.TabIndex = 20;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
@@ -232,7 +255,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(239, 87);
+            this.label2.Location = new System.Drawing.Point(524, 87);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 18);
             this.label2.TabIndex = 19;
@@ -241,7 +264,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 18);
+            this.label1.Location = new System.Drawing.Point(21, 87);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(78, 18);
             this.label1.TabIndex = 18;
@@ -356,7 +379,7 @@
             this.dgSaleOrderID.HeaderText = "Sale Order ID";
             this.dgSaleOrderID.Name = "dgSaleOrderID";
             this.dgSaleOrderID.ReadOnly = true;
-            this.dgSaleOrderID.Width = 126;
+            this.dgSaleOrderID.Width = 103;
             // 
             // dgCustomerName
             // 
@@ -444,7 +467,7 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabStockReserveUpdate;
         private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.TextBox txtCustomer;
+        private System.Windows.Forms.TextBox txtCustomerID;
         private System.Windows.Forms.TextBox txtProductID;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown numQuantity;
@@ -464,5 +487,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgProductID;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgQty;
+        private System.Windows.Forms.TextBox txtCustomerName;
+        private System.Windows.Forms.Label label6;
     }
 }

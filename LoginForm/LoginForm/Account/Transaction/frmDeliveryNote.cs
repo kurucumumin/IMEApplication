@@ -7203,7 +7203,8 @@ namespace LoginForm
             {
                 if (e.KeyCode == Keys.Enter)
                 {
-                    cmbSalesMan.Focus();
+                    //cmbSalesMan.Focus();
+                    CustomerSearchInput();
                 }
                 else if (e.KeyCode == Keys.Back)
                 {
@@ -7609,9 +7610,8 @@ namespace LoginForm
 
         private void fillCustomer()
         {
-
-            txtCustomer.Text = classQuotationAdd.customerID;
-            txtCustomerName.Text = classQuotationAdd.customername;
+            txtCustomer.Text = customer.ID;
+            txtCustomerName.Text = customer.c_name;
 
             var c = IME.Customers.Where(a => a.ID == txtCustomer.Text).FirstOrDefault();
             if (c != null)
