@@ -24,6 +24,7 @@ namespace LoginForm.DataSet
             this.PurchaseOrders = new HashSet<PurchaseOrder>();
             this.Quotations = new HashSet<Quotation>();
             this.SaleOrders = new HashSet<SaleOrder>();
+            this.SalesOperations = new HashSet<SalesOperation>();
             this.StockReserves = new HashSet<StockReserve>();
         }
     
@@ -58,6 +59,7 @@ namespace LoginForm.DataSet
         public Nullable<int> subcategoryID { get; set; }
         public string ThirdPartyCode { get; set; }
         public string Capital { get; set; }
+        public Nullable<decimal> Debit { get; set; }
     
         public virtual Worker Worker { get; set; }
         public virtual CustomerCategory CustomerCategory { get; set; }
@@ -82,6 +84,8 @@ namespace LoginForm.DataSet
         public virtual ICollection<Quotation> Quotations { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SaleOrder> SaleOrders { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SalesOperation> SalesOperations { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StockReserve> StockReserves { get; set; }
     }

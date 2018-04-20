@@ -17,6 +17,7 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Supplier()
         {
+            this.PurchaseOperations = new HashSet<PurchaseOperation>();
             this.Stocks = new HashSet<Stock>();
             this.SupplierAddresses = new HashSet<SupplierAddress>();
             this.SupplierWorkers = new HashSet<SupplierWorker>();
@@ -48,6 +49,8 @@ namespace LoginForm.DataSet
         public virtual Note Note1 { get; set; }
         public virtual PaymentMethod PaymentMethod { get; set; }
         public virtual PaymentTerm PaymentTerm { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PurchaseOperation> PurchaseOperations { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Stock> Stocks { get; set; }
         public virtual Worker Worker { get; set; }

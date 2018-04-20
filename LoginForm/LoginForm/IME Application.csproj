@@ -734,177 +734,6 @@
     <Compile Include="Account\Transaction\frmServiceVoucher.Designer.cs">
       <DependentUpon>frmServiceVoucher.cs</DependentUpon>
     </Compile>
-    <Compile Include="OnOrder\frmAcikSiparis.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="OnOrder\frmAcikSiparis.Designer.cs">
-      <DependentUpon>frmAcikSiparis.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BackOrder\BackOrderProductSearch.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BackOrder\BackOrderProductSearch.Designer.cs">
-      <DependentUpon>BackOrderProductSearch.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BackOrder\frmbackOrderAnalize.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BackOrder\frmbackOrderAnalize.Designer.cs">
-      <DependentUpon>frmbackOrderAnalize.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BackOrder\frmBackOrderDetailView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BackOrder\frmBackOrderDetailView.Designer.cs">
-      <DependentUpon>frmBackOrderDetailView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BackOrder\frmBackOrderLoader.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BackOrder\frmBackOrderLoader.Designer.cs">
-      <DependentUpon>frmBackOrderLoader.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BackOrder\frmBackOrderMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BackOrder\frmBackOrderMain.Designer.cs">
-      <DependentUpon>frmBackOrderMain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Billing\frmFaturalanacaklar.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Billing\frmFaturalanacaklar.Designer.cs">
-      <DependentUpon>frmFaturalanacaklar.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CustomControls\AccountingControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CustomControls\AccountingControl.Designer.cs">
-      <DependentUpon>AccountingControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CustomControls\DevelopmentControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CustomControls\DevelopmentControl.Designer.cs">
-      <DependentUpon>DevelopmentControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CustomControls\LoaderControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CustomControls\LoaderControl.Designer.cs">
-      <DependentUpon>LoaderControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CustomControls\ManagementControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CustomControls\ManagementControl.Designer.cs">
-      <DependentUpon>ManagementControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CustomControls\NavigationControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CustomControls\SubAccountCustomControl\BudgetControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CustomControls\SubAccountCustomControl\BudgetControl.Designer.cs">
-      <DependentUpon>BudgetControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CustomControls\SubAccountCustomControl\FinancialStatementsControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CustomControls\SubAccountCustomControl\FinancialStatementsControl.Designer.cs">
-      <DependentUpon>FinancialStatementsControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CustomControls\SubAccountCustomControl\MastersControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CustomControls\SubAccountCustomControl\MastersControl.Designer.cs">
-      <DependentUpon>MastersControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CustomControls\SubAccountCustomControl\PayrollControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CustomControls\SubAccountCustomControl\PayrollControl.Designer.cs">
-      <DependentUpon>PayrollControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CustomControls\SubAccountCustomControl\RegistersControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CustomControls\SubAccountCustomControl\RegistersControl.Designer.cs">
-      <DependentUpon>RegistersControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CustomControls\SubAccountCustomControl\ReminderControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CustomControls\SubAccountCustomControl\ReminderControl.Designer.cs">
-      <DependentUpon>ReminderControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CustomControls\SubAccountCustomControl\ReportsControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CustomControls\SubAccountCustomControl\ReportsControl.Designer.cs">
-      <DependentUpon>ReportsControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CustomControls\SubAccountCustomControl\SearchControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CustomControls\SubAccountCustomControl\SearchControl.Designer.cs">
-      <DependentUpon>SearchControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CustomControls\SubAccountCustomControl\SettingsControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CustomControls\SubAccountCustomControl\SettingsControl.Designer.cs">
-      <DependentUpon>SettingsControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CustomControls\SubAccountCustomControl\TransactionsControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CustomControls\SubAccountCustomControl\TransactionsControl.Designer.cs">
-      <DependentUpon>TransactionsControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CustomControls\SubDevelopmentCustomControl\SalesOrderControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CustomControls\SubDevelopmentCustomControl\SalesOrderControl.Designer.cs">
-      <DependentUpon>SalesOrderControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Customer\CustomerDepartmentAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Customer\CustomerDepartmentAdd.designer.cs">
-      <DependentUpon>CustomerDepartmentAdd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Customer\CustomerMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Customer\CustomerMain.designer.cs">
-      <DependentUpon>CustomerMain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Customer\CustomerMainCategory.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Customer\CustomerMainCategory.designer.cs">
-      <DependentUpon>CustomerMainCategory.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Customer\CustomerPositionAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Customer\CustomerPositionAdd.designer.cs">
-      <DependentUpon>CustomerPositionAdd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Customer\CustomerSubCategory.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Customer\CustomerSubCategory.designer.cs">
-      <DependentUpon>CustomerSubCategory.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Customer\FormTownAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Customer\FormTownAdd.Designer.cs">
-      <DependentUpon>FormTownAdd.cs</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\AccountGroup.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1163,7 +992,6 @@
     <Compile Include="DataSet\City.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\classExchangeRate.cs" />
     <Compile Include="DataSet\Company.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -2115,6 +1943,178 @@
     <Compile Include="DataSet\Worker.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="OnOrder\frmAcikSiparis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OnOrder\frmAcikSiparis.Designer.cs">
+      <DependentUpon>frmAcikSiparis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BackOrder\BackOrderProductSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BackOrder\BackOrderProductSearch.Designer.cs">
+      <DependentUpon>BackOrderProductSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BackOrder\frmbackOrderAnalize.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BackOrder\frmbackOrderAnalize.Designer.cs">
+      <DependentUpon>frmbackOrderAnalize.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BackOrder\frmBackOrderDetailView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BackOrder\frmBackOrderDetailView.Designer.cs">
+      <DependentUpon>frmBackOrderDetailView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BackOrder\frmBackOrderLoader.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BackOrder\frmBackOrderLoader.Designer.cs">
+      <DependentUpon>frmBackOrderLoader.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BackOrder\frmBackOrderMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BackOrder\frmBackOrderMain.Designer.cs">
+      <DependentUpon>frmBackOrderMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Billing\frmFaturalanacaklar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Billing\frmFaturalanacaklar.Designer.cs">
+      <DependentUpon>frmFaturalanacaklar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\AccountingControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\AccountingControl.Designer.cs">
+      <DependentUpon>AccountingControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\DevelopmentControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\DevelopmentControl.Designer.cs">
+      <DependentUpon>DevelopmentControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\LoaderControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\LoaderControl.Designer.cs">
+      <DependentUpon>LoaderControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\ManagementControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\ManagementControl.Designer.cs">
+      <DependentUpon>ManagementControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\NavigationControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\SubAccountCustomControl\BudgetControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\SubAccountCustomControl\BudgetControl.Designer.cs">
+      <DependentUpon>BudgetControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\SubAccountCustomControl\FinancialStatementsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\SubAccountCustomControl\FinancialStatementsControl.Designer.cs">
+      <DependentUpon>FinancialStatementsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\SubAccountCustomControl\MastersControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\SubAccountCustomControl\MastersControl.Designer.cs">
+      <DependentUpon>MastersControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\SubAccountCustomControl\PayrollControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\SubAccountCustomControl\PayrollControl.Designer.cs">
+      <DependentUpon>PayrollControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\SubAccountCustomControl\RegistersControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\SubAccountCustomControl\RegistersControl.Designer.cs">
+      <DependentUpon>RegistersControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\SubAccountCustomControl\ReminderControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\SubAccountCustomControl\ReminderControl.Designer.cs">
+      <DependentUpon>ReminderControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\SubAccountCustomControl\ReportsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\SubAccountCustomControl\ReportsControl.Designer.cs">
+      <DependentUpon>ReportsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\SubAccountCustomControl\SearchControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\SubAccountCustomControl\SearchControl.Designer.cs">
+      <DependentUpon>SearchControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\SubAccountCustomControl\SettingsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\SubAccountCustomControl\SettingsControl.Designer.cs">
+      <DependentUpon>SettingsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\SubAccountCustomControl\TransactionsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\SubAccountCustomControl\TransactionsControl.Designer.cs">
+      <DependentUpon>TransactionsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\SubDevelopmentCustomControl\SalesOrderControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\SubDevelopmentCustomControl\SalesOrderControl.Designer.cs">
+      <DependentUpon>SalesOrderControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\CustomerDepartmentAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customer\CustomerDepartmentAdd.designer.cs">
+      <DependentUpon>CustomerDepartmentAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\CustomerMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customer\CustomerMain.designer.cs">
+      <DependentUpon>CustomerMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\CustomerMainCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customer\CustomerMainCategory.designer.cs">
+      <DependentUpon>CustomerMainCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\CustomerPositionAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customer\CustomerPositionAdd.designer.cs">
+      <DependentUpon>CustomerPositionAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\CustomerSubCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customer\CustomerSubCategory.designer.cs">
+      <DependentUpon>CustomerSubCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\FormTownAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customer\FormTownAdd.Designer.cs">
+      <DependentUpon>FormTownAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\classExchangeRate.cs" />
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>

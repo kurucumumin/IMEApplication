@@ -53,5 +53,6 @@ namespace LoginForm.DataSet
         public Nullable<int> subcategoryID { get; set; }
         public string ThirdPartyCode { get; set; }
         public string Capital { get; set; }
+        public Nullable<decimal> Debit { get; set; }
     }
 }
