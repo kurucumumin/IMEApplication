@@ -26,7 +26,7 @@ namespace LoginForm.QuotationModule
 
         public void ReturnFunc()
         {
-            FormQuotationAdd form = new FormQuotationAdd();
+            DevFormSaleOrderMain form = new DevFormSaleOrderMain();
             classQuotationAdd.quotationNo = dg.CurrentRow.Cells[QuoNo.Index].Value.ToString();
             DialogResult dialogResult = MessageBox.Show("Do the Prices include quotation ", "Some Title", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)

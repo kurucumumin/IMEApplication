@@ -146,13 +146,13 @@ namespace LoginForm
                     else
                     {
                         this.Close();
-                        FormQuotationAdd f = new FormQuotationAdd(item_code);
+                        DevFormSaleOrderMain f = new DevFormSaleOrderMain(item_code);
                         f.ShowDialog();
                     }
                 }
                 else
                 {
-                    FormQuotationAdd f = new FormQuotationAdd(item_code);
+                    DevFormSaleOrderMain f = new DevFormSaleOrderMain(item_code);
                 }
             }
             catch (Exception ex)

@@ -389,8 +389,8 @@ namespace LoginForm
                         case "Sales Quotation":
                             decimal decsalesQuotationTypeId = decimal.Parse(cmbVoucherType.SelectedValue.ToString());
                             string strSalesQuotationName = cmbVoucherType.Text.ToString();
-                            FormQuotationAdd frmsalesQuotationObj = new FormQuotationAdd();
-                            FormQuotationAdd frmsalesQuotationOpen = Application.OpenForms["frmSalesQuotation"] as FormQuotationAdd;
+                            DevFormSaleOrderMain frmsalesQuotationObj = new DevFormSaleOrderMain();
+                            DevFormSaleOrderMain frmsalesQuotationOpen = Application.OpenForms["frmSalesQuotation"] as DevFormSaleOrderMain;
                             if (frmsalesQuotationOpen == null)
                             {
                                 frmsalesQuotationObj.MdiParent = this.MdiParent;
