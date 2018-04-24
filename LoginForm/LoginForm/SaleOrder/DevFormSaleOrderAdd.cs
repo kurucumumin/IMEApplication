@@ -1855,6 +1855,10 @@ namespace LoginForm.QuotationModule
                         sdi.ItemCost = Convert.ToDecimal(row.Cells[dgCost.Index].Value);
                     }
 
+                    Customer c = IME.Customers.Where(a => a.ID == sdi.SaleOrder.CustomerID).FirstOrDefault();
+                    if (c.Debit == null) c.Debit = 0;
+                    c.Debit = c.Debit + decimal.Parse(lblGrossTotal.Text);
+
                     #region StockApplication
                     decimal sdID = (decimal)sdi.SaleOrderID;
                     string product = sdi.ItemCode;
