@@ -3002,14 +3002,14 @@ namespace LoginForm
                 {
                     InfoSalesMaster.deliveryNoteMasterId = null;
                 }
-                if (cmbSalesMode.Text == "Against Quotation")
-                {
-                    InfoSalesMaster.quotationNoId = cmbSalesModeOrderNo.SelectedValue.ToString();
-                }
-                else
-                {
-                    InfoSalesMaster.quotationNoId = null;
-                }
+                //if (cmbSalesMode.Text == "Against Quotation")
+                //{
+                //    InfoSalesMaster.quotationNoId = cmbSalesModeOrderNo.SelectedValue.ToString();
+                //}
+                //else
+                //{
+                //    InfoSalesMaster.quotationNoId = null;
+                //}
                 InfoSalesMaster.narration = txtNarration.Text.Trim();
                 //try
                 //{ InfoSalesMaster.pricinglevelId = Convert.ToDecimal(cmbPricingLevel.SelectedValue.ToString()); }
@@ -7363,7 +7363,7 @@ namespace LoginForm
 
         private void btnCashInvoice_Click(object sender, EventArgs e)
         {
-            SaleOrderToDeliveryNote form = new SaleOrderToDeliveryNote(this);
+            SaleOrderToDeliveryNote form = new SaleOrderToDeliveryNote(this, "SaleOrder");
             form.Show();
         }
 
@@ -7379,6 +7379,12 @@ namespace LoginForm
                 btnCashInvoice.Enabled = true;
                 btnDeliveryNoteInvoice.Enabled = true;
             }
+        }
+
+        private void btnDeliveryNoteInvoice_Click(object sender, EventArgs e)
+        {
+            SaleOrderToDeliveryNote form = new SaleOrderToDeliveryNote(this, "DeliveryNote");
+            form.Show();
         }
     }
 }

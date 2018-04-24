@@ -418,6 +418,7 @@ namespace LoginForm
             // 
             this.btnClose.BackColor = System.Drawing.SystemColors.Control;
             this.btnClose.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClose.BackgroundImage")));
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ForeColor = System.Drawing.Color.White;
@@ -468,6 +469,7 @@ namespace LoginForm
             // 
             this.btnClear.BackColor = System.Drawing.SystemColors.Control;
             this.btnClear.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClear.BackgroundImage")));
+            this.btnClear.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClear.FlatAppearance.BorderSize = 0;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.ForeColor = System.Drawing.Color.White;
@@ -1505,12 +1507,15 @@ namespace LoginForm
             this.btnDeliveryNoteInvoice.TabIndex = 8909;
             this.btnDeliveryNoteInvoice.Text = "Delivery Note Invoice";
             this.btnDeliveryNoteInvoice.UseVisualStyleBackColor = false;
+            this.btnDeliveryNoteInvoice.Click += new System.EventHandler(this.btnDeliveryNoteInvoice_Click);
             // 
             // frmSalesInvoice
             // 
+            this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(165)))), ((int)(((byte)(203)))));
+            this.CancelButton = this.btnClear;
             this.ClientSize = new System.Drawing.Size(1068, 778);
             this.Controls.Add(this.btnDeliveryNoteInvoice);
             this.Controls.Add(this.btnCashInvoice);

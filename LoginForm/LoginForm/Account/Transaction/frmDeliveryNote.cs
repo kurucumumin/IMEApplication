@@ -7664,7 +7664,7 @@ namespace LoginForm
 
         private void btnSelectSaleOrders_Click(object sender, EventArgs e)
         {
-            SaleOrderToDeliveryNote form = new SaleOrderToDeliveryNote(this);
+            SaleOrderToDeliveryNote form = new SaleOrderToDeliveryNote(this, "SaleOrder");
             form.Show();
         }
 

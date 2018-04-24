@@ -227,7 +227,6 @@ namespace LoginForm.Account.Services
             DataTable dtblCashOrParty = new DataTable();
             try
             {
-
                 var adapter = new IMEEntities().CashOrPartyUnderSundryDrComboFill().ToList();
 
                 dtblCashOrParty.Columns.Add("ledgerName");

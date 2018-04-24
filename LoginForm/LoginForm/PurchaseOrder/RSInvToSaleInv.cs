@@ -14,11 +14,13 @@ namespace LoginForm.PurchaseOrder
     public partial class SaleOrderToDeliveryNote : Form
     {
         Form parent;
+        string ItemsFrom = String.Empty;
 
-        public SaleOrderToDeliveryNote(Form parentDeliveryNote)
+        public SaleOrderToDeliveryNote(Form parentDeliveryNote, string ItemsFrom)
         {
             InitializeComponent();
             this.parent = parentDeliveryNote;
+            this.ItemsFrom = ItemsFrom;
         }
 
         public SaleOrderToDeliveryNote()
@@ -34,7 +36,7 @@ namespace LoginForm.PurchaseOrder
 
         private void RSInvToSaleInv_Load(object sender, EventArgs e)
         {
-            parent.Enabled = false;
+            //parent.Enabled = false;
 
             IMEEntities IME = new IMEEntities();
             if(parent.GetType() == typeof(frmDeliveryNote))
@@ -43,7 +45,15 @@ namespace LoginForm.PurchaseOrder
             }
             else
             {
-                dgSaleOrder.DataSource = IME.SaleOrderToDeliveryNote(((frmSalesInvoice)parent).txtCustomer.Text).ToList();
+                if (ItemsFrom == "SaleOrder")
+                {
+                    dgSaleOrder.DataSource = IME.SaleOrderToDeliveryNote(((frmSalesInvoice)parent).txtCustomer.Text).ToList();
+                }
+                else if(ItemsFrom == "DeliveryNote")
+                {
+
+                }
+                
             }
             
         }
@@ -102,7 +112,7 @@ namespace LoginForm.PurchaseOrder
                 //PONo = dgSaleInvoice.Rows[i].Cells[PODetailNo.Index].Value.ToString();
                 dt.Rows.Add(row);
             }
-            parent.Enabled = true;
+            //parent.Enabled = true;
 
             if(parent.GetType() == typeof(frmDeliveryNote))
             {
