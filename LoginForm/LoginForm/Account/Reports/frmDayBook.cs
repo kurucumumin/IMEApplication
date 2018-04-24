@@ -1011,8 +1011,8 @@ namespace LoginForm
                         }
                         else if (strVoucherType == "Sales Quotation")
                         {
-                            DevFormSaleOrderMain frmSalesQuotation = new DevFormSaleOrderMain();
-                            DevFormSaleOrderMain open = Application.OpenForms["frmSalesQuotation"] as DevFormSaleOrderMain;
+                            FormQuotationAdd frmSalesQuotation = new FormQuotationAdd();
+                            FormQuotationAdd open = Application.OpenForms["frmSalesQuotation"] as FormQuotationAdd;
                             if (open == null)
                             {
                                 frmSalesQuotation.WindowState = FormWindowState.Normal;
