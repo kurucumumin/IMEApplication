@@ -22,7 +22,7 @@ namespace LoginForm.QuotationModule
         private void btnNewQuotation_Click(object sender, EventArgs e)
         {
             var a = dtpFromDate.Value;
-            DevFormSaleOrderMain quotationForm = new DevFormSaleOrderMain();
+            FormQuotationAdd quotationForm = new FormQuotationAdd();
             quotationForm.Show();
         }
 
@@ -149,7 +149,7 @@ namespace LoginForm.QuotationModule
                 }
                 if (quo != null)
                 {
-                    DevFormSaleOrderMain newForm = new DevFormSaleOrderMain(quo);
+                    FormQuotationAdd newForm = new FormQuotationAdd(quo);
                     newForm.ShowDialog();
                 }
             }

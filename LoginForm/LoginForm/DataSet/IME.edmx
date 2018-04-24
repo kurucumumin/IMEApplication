@@ -7392,6 +7392,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
         </Function>
         <Function Name="CurrencyViewAllForCombo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="CurrentDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="CustomersDebits" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="DailyAttendanceAddToMaster" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="date" Type="datetime" Mode="In" />
           <Parameter Name="narration" Type="varchar(max)" Mode="In" />
@@ -20604,6 +20605,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           </FunctionImport>
           <FunctionImport Name="CurrencyViewAllForCombo" ReturnType="Collection(IMEModel.CurrencyViewAllForCombo_Result)" />
           <FunctionImport Name="CurrentDate" ReturnType="Collection(DateTime)" />
+          <FunctionImport Name="CustomersDebits" ReturnType="Collection(IMEModel.CustomersDebits_Result)" />
           <FunctionImport Name="DailyAttendanceAddToMaster" ReturnType="Collection(Decimal)">
             <Parameter Name="date" Mode="In" Type="DateTime" />
             <Parameter Name="narration" Mode="In" Type="String" />
@@ -23091,6 +23093,11 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="Decimal" Name="currencyId" Nullable="false" Precision="18" Scale="0" />
           <Property Type="String" Name="currencySymbol" Nullable="true" />
           <Property Type="String" Name="currencyName" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="CustomersDebits_Result">
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Debit" Nullable="true" Precision="20" Scale="4" />
+          <Property Type="Int32" Name="Credit" Nullable="true" />
         </ComplexType>
         <ComplexType Name="DailyAttendanceDetailsSearchGridFill_Result">
           <Property Type="Int32" Name="WorkerId" Nullable="false" />
@@ -28315,6 +28322,15 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="CurrentDate" FunctionName="IMEModel.Store.CurrentDate" />
+          <FunctionImportMapping FunctionImportName="CustomersDebits" FunctionName="IMEModel.Store.CustomersDebits">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.CustomersDebits_Result">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Debit" ColumnName="Debit" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="DailyAttendanceAddToMaster" FunctionName="IMEModel.Store.DailyAttendanceAddToMaster" />
           <FunctionImportMapping FunctionImportName="DailyAttendanceDetailsAddUsingMasterId" FunctionName="IMEModel.Store.DailyAttendanceDetailsAddUsingMasterId" />
           <FunctionImportMapping FunctionImportName="DailyAttendanceDetailsDeleteAll" FunctionName="IMEModel.Store.DailyAttendanceDetailsDeleteAll" />

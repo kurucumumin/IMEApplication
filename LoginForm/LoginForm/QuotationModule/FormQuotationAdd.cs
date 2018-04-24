@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace LoginForm.QuotationModule
 {
-    public partial class FromQuotationAdd : Form
+    public partial class FormQuotationAdd : Form
     {
         string manuelSelection = string.Empty;
         private static string QuoStatusActive = "Active";
@@ -40,7 +40,7 @@ namespace LoginForm.QuotationModule
         int a = 1;
         #endregion
 
-        public FromQuotationAdd()
+        public FormQuotationAdd()
         {
             InitializeComponent();
 
@@ -116,7 +116,7 @@ namespace LoginForm.QuotationModule
 
         }
 
-        public FromQuotationAdd(string item_code)
+        public FormQuotationAdd(string item_code)
         {
             InitializeComponent();
 
@@ -152,7 +152,7 @@ namespace LoginForm.QuotationModule
             }
         }
 
-        public FromQuotationAdd(Quotation quotation)
+        public FormQuotationAdd(Quotation quotation)
         {
             InitializeComponent();
             DataGridViewComboBoxColumn deliveryColumn = (DataGridViewComboBoxColumn)dgQuotationAddedItems.Columns[dgDelivery.Index];

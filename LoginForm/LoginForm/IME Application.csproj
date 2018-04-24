@@ -1061,6 +1061,9 @@
     <Compile Include="DataSet\CustomerDepartment.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\CustomersDebits_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\CustomerSubCategory.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -2310,11 +2313,11 @@
     <Compile Include="QuotationModule\ViewProductHistory.Designer.cs">
       <DependentUpon>ViewProductHistory.cs</DependentUpon>
     </Compile>
-    <Compile Include="SaleOrder\DevSaleOrdeMain.cs">
+    <Compile Include="SaleOrder\DevFormSaleOrderAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SaleOrder\DevSaleOrdeMain.designer.cs">
-      <DependentUpon>DevSaleOrdeMain.cs</DependentUpon>
+    <Compile Include="SaleOrder\DevFormSaleOrderAdd.designer.cs">
+      <DependentUpon>DevFormSaleOrderAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="SaleOrder\FormSaleOrderCreate.cs">
       <SubType>Form</SubType>
@@ -2857,8 +2860,8 @@
     <EmbeddedResource Include="QuotationModule\ViewProductHistory.resx">
       <DependentUpon>ViewProductHistory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SaleOrder\DevSaleOrdeMain.resx">
-      <DependentUpon>DevSaleOrdeMain.cs</DependentUpon>
+    <EmbeddedResource Include="SaleOrder\DevFormSaleOrderAdd.resx">
+      <DependentUpon>DevFormSaleOrderAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SaleOrder\FormSaleOrderCreate.resx">
       <DependentUpon>FormSaleOrderCreate.cs</DependentUpon>

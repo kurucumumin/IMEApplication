@@ -13,9 +13,9 @@ using LoginForm.Account;
 using LoginForm.Services;
 using LoginForm;
 using LoginForm.PurchaseOrder;
-using LoginForm.QuotationModule;
 using Open_Miracle;
 using LoginForm.nmSaleOrder;
+using LoginForm.QuotationModule;
 
 namespace LoginForm
 {
@@ -389,8 +389,8 @@ namespace LoginForm
                         case "Sales Quotation":
                             decimal decsalesQuotationTypeId = decimal.Parse(cmbVoucherType.SelectedValue.ToString());
                             string strSalesQuotationName = cmbVoucherType.Text.ToString();
-                            DevFormSaleOrderMain frmsalesQuotationObj = new DevFormSaleOrderMain();
-                            DevFormSaleOrderMain frmsalesQuotationOpen = Application.OpenForms["frmSalesQuotation"] as DevFormSaleOrderMain;
+                            FormQuotationAdd frmsalesQuotationObj = new FormQuotationAdd();
+                            FormQuotationAdd frmsalesQuotationOpen = Application.OpenForms["frmSalesQuotation"] as FormQuotationAdd;
                             if (frmsalesQuotationOpen == null)
                             {
                                 frmsalesQuotationObj.MdiParent = this.MdiParent;

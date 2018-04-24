@@ -1859,14 +1859,14 @@ namespace LoginForm.QuotationModule
                     if (c.Debit == null) c.Debit = 0;
                     c.Debit = c.Debit + decimal.Parse(lblGrossTotal.Text);
 
-                    #region StockApplication
-                    decimal sdID = (decimal)sdi.SaleOrderID;
-                    string product = sdi.ItemCode;
-                    int Qty = sdi.Quantity;
-                    if (IME.Stocks.Where(a => a.ProductID == product).FirstOrDefault() != null && IME.Stocks.Where(a => a.ProductID == product).FirstOrDefault().Qty != 0)
-                    {
+                    //#region StockApplication
+                    //decimal sdID = (decimal)sdi.SaleOrderID;
+                    //string product = sdi.ItemCode;
+                    //int Qty = sdi.Quantity;
+                    //if (IME.Stocks.Where(a => a.ProductID == product).FirstOrDefault() != null && IME.Stocks.Where(a => a.ProductID == product).FirstOrDefault().Qty != 0)
+                    //{
 
-                    }
+                    //}
 
                     //if (IME.PurchaseOrders.Where(x => x.purchaseOrderId == sdID).FirstOrDefault() != null && IME.PurchaseOrders.Where(x => x.purchaseOrderId == sdID).FirstOrDefault().Customer != null)
                     //{
@@ -1907,7 +1907,7 @@ namespace LoginForm.QuotationModule
                     //    stockInfo.Qty = Qty;
                     //    stockInfo.ReserveQty = 0;
                     //}
-                    #endregion
+                    //#endregion
                     IME.SaleOrderDetails.Add(sdi);
                     IME.SaveChanges();
                 }

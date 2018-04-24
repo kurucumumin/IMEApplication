@@ -1,6 +1,6 @@
 ﻿namespace LoginForm.QuotationModule
 {
-    partial class FromQuotationAdd
+    partial class FormQuotationAdd
     {
         /// <summary>
         ///Gerekli tasarımcı değişkeni.
