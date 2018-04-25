@@ -1939,6 +1939,11 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.DateTime>>("CurrentDate");
         }
     
+        public virtual ObjectResult<CustomersDebits_Result> CustomersDebits()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CustomersDebits_Result>("CustomersDebits");
+        }
+    
         public virtual ObjectResult<Nullable<decimal>> DailyAttendanceAddToMaster(Nullable<System.DateTime> date, string narration)
         {
             var dateParameter = date.HasValue ?

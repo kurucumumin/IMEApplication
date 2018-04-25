@@ -349,6 +349,7 @@ namespace LoginForm.QuotationModule
         private void QuotationForm_Load(object sender, EventArgs e)
         {
             ControlAutorization();
+            txtSalesOrderNo.Text = "SO" + IME.CreteNewSaleOrderNo().FirstOrDefault().ToString();
             DataGridViewComboBoxColumn deliveryColumn = (DataGridViewComboBoxColumn)dgSaleAddedItems.Columns[dgDelivery.Index];
             if (deliveryColumn.DataSource == null)
             {
@@ -411,6 +412,8 @@ namespace LoginForm.QuotationModule
             }
             GetCurrency(dtpDate.Value);
             GetAutorities();
+
+            cbPaymentTerm.DataSource = IME.PaymentTerms.ToList();
         }
 
         private void GetAutorities()
@@ -447,20 +450,76 @@ namespace LoginForm.QuotationModule
 
         private void fillCustomer()
         {
-            if (txtCustomerName.Text != null || txtCustomerName.Text != "")
-            {
-                btnContactAdd.Enabled = true;
-            }
-
             if (!modifyMod)
             {
                 CustomerCode.Text = classQuotationAdd.customerID;
                 txtCustomerName.Text = classQuotationAdd.customername;
             }
-            var c = IME.Customers.Where(a => a.ID == CustomerCode.Text).FirstOrDefault();
+            var c = customer;
             if (c != null)
             {
+                CustomerCode.Text = c.ID;
                 txtCustomerName.Text = c.c_name;
+
+                List<CustomerAddress> addressList = customer.CustomerAddresses.ToList();
+                if (addressList.Count != 0)
+                {
+                    cbInvoiceAdress.DataSource = addressList.ToList();
+                    cbDeliveryAddress.DataSource = addressList.ToList();
+
+                    CustomerAddress inv = new CustomerAddress();
+                    CustomerAddress delv = new CustomerAddress();
+
+                    try
+                    {
+                        inv = addressList.Where(x => x.AddressType.ToUpper().Contains("invoice".ToUpper())).FirstOrDefault();
+                    }
+                    catch (Exception) { }
+
+                    try
+                    {
+                        delv = addressList.Where(x => x.isDeliveryAddress == true).FirstOrDefault();
+                    }
+                    catch (Exception) { }
+
+
+                    if (inv != null)
+                    {
+                        cbInvoiceAdress.SelectedValue = inv.ID;
+                    }
+                    if (delv != null)
+                    {
+                        cbDeliveryAddress.SelectedValue = delv.ID;
+                    }
+                    else
+                    {
+                        if (inv != null)
+                        {
+                            cbDeliveryAddress.SelectedValue = inv.ID;
+                        }
+                    }
+                }
+
+                List<CustomerWorker> customerWorkerList = customer.CustomerWorkers.ToList();
+
+                if (customerWorkerList != null)
+                {
+                    cbWorkers.DataSource = customerWorkerList.ToList();
+                    cbWorkers.DisplayMember = "cw_name";
+                    cbWorkers.ValueMember = "ID";
+                    if (customer.MainContactID != null) cbWorkers.SelectedValue = (int)customer.MainContactID;
+                    cbDeliveryContact.DataSource = customerWorkerList.ToList();
+                    CustomerWorker cw = new CustomerWorker();
+                    try
+                    {
+                        cw = customerWorkerList.Where(x => x.ID == (int)cbWorkers.SelectedValue).FirstOrDefault();
+                    }
+                    catch (Exception) { }
+
+                    if (cw != null) { cbDeliveryContact.SelectedValue = cw.ID; }
+
+                }
+
                 var CustomerCurr = IME.Currencies.Where(a => a.currencyName == c.CurrNameQuo).FirstOrDefault();
                 if (CustomerCurr != null) cbCurrency.SelectedValue = CustomerCurr.currencyID;
                 //cbCurrType.SelectedIndex = cbCurrType.FindStringExact(c.CurrTypeQuo);
@@ -1946,10 +2005,6 @@ namespace LoginForm.QuotationModule
                     {
                         sdi.ItemCost = Convert.ToDecimal(row.Cells[dgCost.Index].Value);
                     }
-
-                    Customer c = IME.Customers.Where(a => a.ID == sdi.SaleOrder.CustomerID).FirstOrDefault();
-                    if (c.Debit == null) c.Debit = 0;
-                    c.Debit = c.Debit + decimal.Parse(lblGrossTotal.Text);
 
                     //#region StockApplication
                     //decimal sdID = (decimal)sdi.SaleOrderID;
