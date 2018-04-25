@@ -1064,9 +1064,6 @@
     <Compile Include="DataSet\CustomerDepartment.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\CustomersDebits_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\CustomerSubCategory.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
