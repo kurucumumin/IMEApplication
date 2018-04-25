@@ -11,10 +11,9 @@ namespace LoginForm.DataSet
 {
     using System;
     
-    public partial class CustomersDebits_Result
+    public partial class DeliveryNoteToSaleInvoice_Result
     {
-        public string Name { get; set; }
-        public Nullable<decimal> Debit { get; set; }
-        public Nullable<int> Credit { get; set; }
+        public string Delivery_Note_No { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
     }
 }
