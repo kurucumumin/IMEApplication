@@ -214,7 +214,7 @@ namespace LoginForm
             this.tabInfo.Controls.Add(this.label2);
             this.tabInfo.Location = new System.Drawing.Point(4, 25);
             this.tabInfo.Name = "tabInfo";
-            this.tabInfo.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabInfo.Padding = new System.Windows.Forms.Padding(3);
             this.tabInfo.Size = new System.Drawing.Size(911, 176);
             this.tabInfo.TabIndex = 0;
             this.tabInfo.Text = "Info";
@@ -456,7 +456,7 @@ namespace LoginForm
             this.tabAccount.Controls.Add(this.label7);
             this.tabAccount.Location = new System.Drawing.Point(4, 25);
             this.tabAccount.Name = "tabAccount";
-            this.tabAccount.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabAccount.Padding = new System.Windows.Forms.Padding(3);
             this.tabAccount.Size = new System.Drawing.Size(911, 176);
             this.tabAccount.TabIndex = 1;
             this.tabAccount.Text = "Account";
@@ -604,7 +604,7 @@ namespace LoginForm
             this.tabAddress.Controls.Add(this.label16);
             this.tabAddress.Location = new System.Drawing.Point(4, 25);
             this.tabAddress.Name = "tabAddress";
-            this.tabAddress.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabAddress.Padding = new System.Windows.Forms.Padding(3);
             this.tabAddress.Size = new System.Drawing.Size(911, 176);
             this.tabAddress.TabIndex = 2;
             this.tabAddress.Text = "Company Address";
@@ -882,7 +882,7 @@ namespace LoginForm
             this.tabAccounting.Controls.Add(this.label26);
             this.tabAccounting.Location = new System.Drawing.Point(4, 25);
             this.tabAccounting.Name = "tabAccounting";
-            this.tabAccounting.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabAccounting.Padding = new System.Windows.Forms.Padding(3);
             this.tabAccounting.Size = new System.Drawing.Size(911, 176);
             this.tabAccounting.TabIndex = 3;
             this.tabAccounting.Text = "Contact";
@@ -1297,6 +1297,7 @@ namespace LoginForm
             this.dgSupplier.Size = new System.Drawing.Size(919, 184);
             this.dgSupplier.TabIndex = 1;
             this.dgSupplier.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgSupplier_CellClick);
+            this.dgSupplier.DoubleClick += new System.EventHandler(this.dgSupplier_DoubleClick);
             // 
             // iDDataGridViewTextBoxColumn
             // 
@@ -1511,7 +1512,7 @@ namespace LoginForm
             this.tableLayoutPanel1.Controls.Add(this.tabgenel, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 211F));
@@ -1529,7 +1530,7 @@ namespace LoginForm
             this.panel1.Controls.Add(this.btnAdd);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(2, 213);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(921, 65);
             this.panel1.TabIndex = 2;

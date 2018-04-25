@@ -11,6 +11,7 @@ using System.Linq;
 using System.Collections.Generic;
 using LoginForm.DataSet;
 using LoginForm.StockManagement;
+using LoginForm.IMEAccount;
 
 namespace LoginForm.CustomControls
 {
@@ -145,6 +146,12 @@ namespace LoginForm.CustomControls
         {
             Billing.frmFaturalanacaklar frm = new Billing.frmFaturalanacaklar();
             frm.Show();
+        }
+
+        private void IMEAccount_Click(object sender, EventArgs e)
+        {
+            frmAccountMain form = new frmAccountMain();
+            form.Show();
         }
     }
 }

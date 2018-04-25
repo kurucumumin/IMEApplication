@@ -905,6 +905,9 @@
     <Compile Include="Customer\FormTownAdd.Designer.cs">
       <DependentUpon>FormTownAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\Account.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\AccountGroup.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -960,6 +963,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\AccountLedgerView_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\AccountMainDataGridFiller_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\AdditionalCost.cs">
@@ -1225,6 +1231,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\CustomerDepartment.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\CustomersDebits_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\CustomerSubCategory.cs">
@@ -1716,6 +1725,9 @@
     <Compile Include="DataSet\PurchaseMasterView_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\PurchaseOperation.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\PurchaseOrder.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1897,6 +1909,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SalesMasterView_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SalesOperation.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SalesReturnBillTax.cs">
@@ -2121,6 +2136,42 @@
     <Compile Include="FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="IMEAccount\frmAllAccounts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IMEAccount\frmAllAccounts.Designer.cs">
+      <DependentUpon>frmAllAccounts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IMEAccount\frmBillFromSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IMEAccount\frmBillFromSupplier.Designer.cs">
+      <DependentUpon>frmBillFromSupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IMEAccount\frmBillToCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IMEAccount\frmBillToCustomer.Designer.cs">
+      <DependentUpon>frmBillToCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IMEAccount\frmAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IMEAccount\frmAccount.Designer.cs">
+      <DependentUpon>frmAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IMEAccount\frmAccountMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IMEAccount\frmAccountMain.Designer.cs">
+      <DependentUpon>frmAccountMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IMEAccount\frmCustomersDebits.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IMEAccount\frmCustomersDebits.Designer.cs">
+      <DependentUpon>frmCustomersDebits.cs</DependentUpon>
+    </Compile>
     <Compile Include="Invoice\InvoiceMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2330,6 +2381,7 @@
     </Compile>
     <Compile Include="SaleOrder\SalesOrderHelper.cs" />
     <Compile Include="Services\BackUpAndRestore.cs" />
+    <Compile Include="Services\ChangeCurrency.cs" />
     <Compile Include="Services\Common.cs" />
     <Compile Include="Services\DateValidation.cs" />
     <Compile Include="Services\dgv.cs" />
@@ -2338,6 +2390,7 @@
     <Compile Include="Services\NumToText.cs" />
     <Compile Include="Services\OtherDateValidationFunction.cs" />
     <Compile Include="Services\QuotationDatagridCustomize.cs" />
+    <Compile Include="Services\classSupplier.cs" />
     <Compile Include="Services\ToolTipService.cs" />
     <Compile Include="Services\txtCreate.cs" />
     <Compile Include="Services\XmlToObject.cs" />
@@ -2753,6 +2806,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IMEAccount\frmAllAccounts.resx">
+      <DependentUpon>frmAllAccounts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IMEAccount\frmBillFromSupplier.resx">
+      <DependentUpon>frmBillFromSupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IMEAccount\frmBillToCustomer.resx">
+      <DependentUpon>frmBillToCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IMEAccount\frmAccount.resx">
+      <DependentUpon>frmAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IMEAccount\frmAccountMain.resx">
+      <DependentUpon>frmAccountMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IMEAccount\frmCustomersDebits.resx">
+      <DependentUpon>frmCustomersDebits.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Invoice\InvoiceMain.resx">
       <DependentUpon>InvoiceMain.cs</DependentUpon>

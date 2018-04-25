@@ -26,7 +26,7 @@ namespace LoginForm
 
         private static string SupplierModeAdd = "Add";
         private static string SupplierModeModify = "Modify";
-
+        bool fromBillFromCustomer = false;
 
         BindingList<SupplierAddress> SavedAddresses = new BindingList<SupplierAddress>();
         BindingList<SupplierWorker> SavedContacts = new BindingList<SupplierWorker>();
@@ -36,6 +36,17 @@ namespace LoginForm
         string ContactMode = String.Empty;
 
         private List<Supplier> gridSupplierList;
+
+        public frmSupplierMain(string SupplierID)
+        {
+            InitializeComponent();
+            this.dgSupplier.AutoGenerateColumns = false;
+            tabgenel.Enabled = false;
+            btnAdd.Enabled = false;
+            btnModify.Enabled = false;
+            btnExit.Enabled = false;
+            fromBillFromCustomer = true;
+        }
 
         public frmSupplierMain()
         {
@@ -1752,5 +1763,23 @@ namespace LoginForm
             MakeTextUpperCase((TextBox)sender);
         }
 
+        private void dgSupplier_DoubleClick(object sender, EventArgs e)
+        {
+            if (fromBillFromCustomer)
+            {
+                IMEEntities IME = new IMEEntities();
+                if (dgSupplier.CurrentRow != null)
+                {
+                    string SupplierID = "";
+                    try { SupplierID = dgSupplier.CurrentRow.Cells[iDDataGridViewTextBoxColumn.Index].Value.ToString(); } catch { }
+                    classSupplier.Supplier = IME.Suppliers.Where(a=>a.ID==SupplierID).FirstOrDefault();
+                }
+                else
+                {
+                    classSupplier.Supplier = null;
+                }
+                this.Close();
+            }
+        }
     }
 }

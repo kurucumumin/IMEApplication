@@ -26,7 +26,9 @@ namespace LoginForm.DataSet
         public Nullable<System.DateTime> FirstPromisedDate { get; set; }
         public Nullable<System.DateTime> LatestPromisedDate { get; set; }
         public Nullable<int> BackOrderMainID { get; set; }
+        public Nullable<int> PurchaseOrderID { get; set; }
     
         public virtual BackOrderMain BackOrderMain { get; set; }
+        public virtual PurchaseOrder PurchaseOrder { get; set; }
     }
 }

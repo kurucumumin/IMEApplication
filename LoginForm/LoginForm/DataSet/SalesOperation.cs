@@ -12,19 +12,18 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class StockReserve
+    public partial class SalesOperation
     {
-        public int ReserveID { get; set; }
-        public decimal StockID { get; set; }
-        public int Qty { get; set; }
+        public int ID { get; set; }
         public string CustomerID { get; set; }
-        public Nullable<System.DateTime> ValidationDate { get; set; }
-        public string ProductID { get; set; }
-        public Nullable<decimal> SaleOrderID { get; set; }
-        public Nullable<int> NotConfirmedQ { get; set; }
-        public Nullable<int> NotConfirmedQuantity { get; set; }
+        public Nullable<decimal> Amount { get; set; }
+        public Nullable<int> RepreresentetiveID { get; set; }
+        public Nullable<decimal> CurrencyID { get; set; }
+        public Nullable<int> AccountID { get; set; }
     
-        public virtual SaleOrder SaleOrder { get; set; }
-        public virtual Stock Stock { get; set; }
+        public virtual Account Account { get; set; }
+        public virtual Currency Currency { get; set; }
+        public virtual Customer Customer { get; set; }
+        public virtual Worker Worker { get; set; }
     }
 }
