@@ -1,5 +1,6 @@
 ﻿using LoginForm.DataSet;
 using LoginForm.nmSaleOrder;
+using LoginForm.QuotationModule;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -140,7 +141,7 @@ namespace LoginForm.nsSaleOrder
                     }
                 }
 
-                FormSaleOrderAdd form1 = new FormSaleOrderAdd((Customer)lbCustomerList.SelectedItem, list, quotationIDs);
+                DevFormSaleOrderAdd form1 = new DevFormSaleOrderAdd((Customer)lbCustomerList.SelectedItem, list, quotationIDs);
                 ////TODO form tekrar açılıp kapatımış. Doğru olan yöntemi bul
                 //FormSalesOrderMain f = new FormSalesOrderMain();
                 //f.Close();
@@ -149,11 +150,12 @@ namespace LoginForm.nsSaleOrder
             }
             else
             {
-                FormSaleOrderAdd form1 = new FormSaleOrderAdd((Customer)lbCustomerList.SelectedItem);
-                //TODO form tekrar açılıp kapatımış. Doğru olan yöntemi bul
-                FormSalesOrderMain f = new FormSalesOrderMain();
-                form1.Show();
-                this.Close();
+                MessageBox.Show("Not Implemented Error", "Error", MessageBoxButtons.OK);
+                //FormSaleOrderAdd form1 = new FormSaleOrderAdd((Customer)lbCustomerList.SelectedItem);
+                ////TODO form tekrar açılıp kapatımış. Doğru olan yöntemi bul
+                //FormSalesOrderMain f = new FormSalesOrderMain();
+                //form1.Show();
+                //this.Close();
             }
         }
 

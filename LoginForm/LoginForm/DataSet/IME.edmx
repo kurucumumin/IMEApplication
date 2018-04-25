@@ -2515,7 +2515,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="max" Type="decimal" Precision="18" Scale="5" />
           <Property Name="date" Type="datetime" />
         </EntityType>-->
-        <Association Name="FK__Account__Currenc__165A2CA1">
+        <Association Name="FK__Account__Currenc__1A2ABD85">
           <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
           <End Role="Account" Type="Self.Account" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2671,7 +2671,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__BackOrder__Purch__137DBFF6">
+        <Association Name="FK__BackOrder__Purch__12899BBD">
           <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="0..1" />
           <End Role="BackOrder" Type="Self.BackOrder" Multiplicity="*" />
           <ReferentialConstraint>
@@ -4543,7 +4543,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PurchaseO__Accou__23B427BF">
+        <Association Name="FK__PurchaseO__Accou__1EEF72A2">
           <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
           <End Role="PurchaseOperation" Type="Self.PurchaseOperation" Multiplicity="*" />
           <ReferentialConstraint>
@@ -4555,7 +4555,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PurchaseO__Curre__2878DCDC">
+        <Association Name="FK__PurchaseO__Curre__24A84BF8">
           <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
           <End Role="PurchaseOperation" Type="Self.PurchaseOperation" Multiplicity="*" />
           <ReferentialConstraint>
@@ -4615,7 +4615,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PurchaseO__Repre__21CBDF4D">
+        <Association Name="FK__PurchaseO__Repre__1D072A30">
           <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
           <End Role="PurchaseOperation" Type="Self.PurchaseOperation" Multiplicity="*" />
           <ReferentialConstraint>
@@ -4639,7 +4639,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PurchaseO__Suppl__22C00386">
+        <Association Name="FK__PurchaseO__Suppl__1DFB4E69">
           <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
           <End Role="PurchaseOperation" Type="Self.PurchaseOperation" Multiplicity="*" />
           <ReferentialConstraint>
@@ -5395,7 +5395,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__RS_Invoic__Purch__12899BBD">
+        <Association Name="FK__RS_Invoic__Purch__0EB90AD9">
           <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="0..1" />
           <End Role="RS_InvoiceDetails" Type="Self.RS_InvoiceDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -5719,7 +5719,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SalesDeta__order__259C7031">
+        <Association Name="FK__SalesDeta__order__0DC4E6A0">
           <End Role="SaleOrderDetail" Type="Self.SaleOrderDetail" Multiplicity="0..1" />
           <End Role="SalesDetails" Type="Self.SalesDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -5899,7 +5899,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SalesOper__Accou__2B554987">
+        <Association Name="FK__SalesOper__Accou__2690946A">
           <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
           <End Role="SalesOperations" Type="Self.SalesOperations" Multiplicity="*" />
           <ReferentialConstraint>
@@ -5911,7 +5911,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SalesOper__Curre__2784B8A3">
+        <Association Name="FK__SalesOper__Curre__23B427BF">
           <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
           <End Role="SalesOperations" Type="Self.SalesOperations" Multiplicity="*" />
           <ReferentialConstraint>
@@ -5923,7 +5923,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SalesOper__Custo__1A2ABD85">
+        <Association Name="FK__SalesOper__Custo__21CBDF4D">
           <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
           <End Role="SalesOperations" Type="Self.SalesOperations" Multiplicity="*" />
           <ReferentialConstraint>
@@ -5935,7 +5935,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SalesOper__Repre__1936994C">
+        <Association Name="FK__SalesOper__Repre__22C00386">
           <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
           <End Role="SalesOperations" Type="Self.SalesOperations" Multiplicity="*" />
           <ReferentialConstraint>
@@ -6388,6 +6388,18 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Principal>
             <Dependent Role="StockPosting">
               <PropertyRef Name="voucherTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StockRese__Custo__2A962F78">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="StockReserve" Type="Self.StockReserve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StockReserve">
+              <PropertyRef Name="CustomerID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -9437,95 +9449,95 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <EntitySet Name="VoucherTypeTax" EntityType="Self.VoucherTypeTax" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Worker" EntityType="Self.Worker" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AdditionalCost" EntityType="Self.AdditionalCost" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT
-    [AdditionalCost].[additionalCostId] AS [additionalCostId],
-    [AdditionalCost].[voucherTypeId] AS [voucherTypeId],
-    [AdditionalCost].[voucherNo] AS [voucherNo],
-    [AdditionalCost].[ledgerId] AS [ledgerId],
-    [AdditionalCost].[debit] AS [debit],
+            <DefiningQuery>SELECT 
+    [AdditionalCost].[additionalCostId] AS [additionalCostId], 
+    [AdditionalCost].[voucherTypeId] AS [voucherTypeId], 
+    [AdditionalCost].[voucherNo] AS [voucherNo], 
+    [AdditionalCost].[ledgerId] AS [ledgerId], 
+    [AdditionalCost].[debit] AS [debit], 
     [AdditionalCost].[credit] AS [credit]
     FROM [dbo].[AdditionalCost] AS [AdditionalCost]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="SalaryVoucherDetail" EntityType="Self.SalaryVoucherDetail" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT
-    [SalaryVoucherDetail].[salaryVoucherDetailsId] AS [salaryVoucherDetailsId],
-    [SalaryVoucherDetail].[salaryVoucherMasterId] AS [salaryVoucherMasterId],
-    [SalaryVoucherDetail].[employeeId] AS [employeeId],
-    [SalaryVoucherDetail].[bonus] AS [bonus],
-    [SalaryVoucherDetail].[deduction] AS [deduction],
-    [SalaryVoucherDetail].[advance] AS [advance],
-    [SalaryVoucherDetail].[lop] AS [lop],
-    [SalaryVoucherDetail].[salary] AS [salary],
+            <DefiningQuery>SELECT 
+    [SalaryVoucherDetail].[salaryVoucherDetailsId] AS [salaryVoucherDetailsId], 
+    [SalaryVoucherDetail].[salaryVoucherMasterId] AS [salaryVoucherMasterId], 
+    [SalaryVoucherDetail].[employeeId] AS [employeeId], 
+    [SalaryVoucherDetail].[bonus] AS [bonus], 
+    [SalaryVoucherDetail].[deduction] AS [deduction], 
+    [SalaryVoucherDetail].[advance] AS [advance], 
+    [SalaryVoucherDetail].[lop] AS [lop], 
+    [SalaryVoucherDetail].[salary] AS [salary], 
     [SalaryVoucherDetail].[status] AS [status]
     FROM [dbo].[SalaryVoucherDetail] AS [SalaryVoucherDetail]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="CompleteItems" EntityType="Self.CompleteItems" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT
-    [CompleteItems].[Article_No] AS [Article_No],
-    [CompleteItems].[Article_Desc] AS [Article_Desc],
-    [CompleteItems].[Pack_Quantity] AS [Pack_Quantity],
-    [CompleteItems].[Unit_Content] AS [Unit_Content],
-    [CompleteItems].[Unit_Measure] AS [Unit_Measure],
-    [CompleteItems].[MPN] AS [MPN],
-    [CompleteItems].[Calibration_Ind] AS [Calibration_Ind],
-    [CompleteItems].[Standard_Weight] AS [Standard_Weight],
-    [CompleteItems].[Hazardous_Ind] AS [Hazardous_Ind],
-    [CompleteItems].[Obsolete_Flag] AS [Obsolete_Flag],
-    [CompleteItems].[Low_Discount_Ind] AS [Low_Discount_Ind],
-    [CompleteItems].[Licensed_Ind] AS [Licensed_Ind],
-    [CompleteItems].[Shelf_Life] AS [Shelf_Life],
-    [CompleteItems].[CofO] AS [CofO],
-    [CompleteItems].[CCCN_No] AS [CCCN_No],
-    [CompleteItems].[Uk_Intro_Date] AS [Uk_Intro_Date],
-    [CompleteItems].[Uk_Disc_Date] AS [Uk_Disc_Date],
-    [CompleteItems].[BHC_Flag] AS [BHC_Flag],
-    [CompleteItems].[Disc_Change_Ind] AS [Disc_Change_Ind],
-    [CompleteItems].[Expiring_Product_Change_Ind] AS [Expiring_Product_Change_Ind],
-    [CompleteItems].[Manufacturer] AS [Manufacturer],
-    [CompleteItems].[MH_Code_Level_1] AS [MH_Code_Level_1],
-    [CompleteItems].[Heigh] AS [Heigh],
-    [CompleteItems].[Width] AS [Width],
-    [CompleteItems].[Length] AS [Length],
-    [CompleteItems].[OnhandStockBalance] AS [OnhandStockBalance],
-    [CompleteItems].[QuantityonOrder] AS [QuantityonOrder],
-    [CompleteItems].[Col1Break] AS [Col1Break],
-    [CompleteItems].[Col2Break] AS [Col2Break],
-    [CompleteItems].[Col3Break] AS [Col3Break],
-    [CompleteItems].[Col4Break] AS [Col4Break],
-    [CompleteItems].[Col5Break] AS [Col5Break],
-    [CompleteItems].[Col1Price] AS [Col1Price],
-    [CompleteItems].[Col2Price] AS [Col2Price],
-    [CompleteItems].[Col3Price] AS [Col3Price],
-    [CompleteItems].[Col4Price] AS [Col4Price],
-    [CompleteItems].[Col5Price] AS [Col5Price],
-    [CompleteItems].[DiscountedPrice1] AS [DiscountedPrice1],
-    [CompleteItems].[DiscountedPrice2] AS [DiscountedPrice2],
-    [CompleteItems].[DiscountedPrice3] AS [DiscountedPrice3],
-    [CompleteItems].[DiscountedPrice4] AS [DiscountedPrice4],
-    [CompleteItems].[DiscountedPrice5] AS [DiscountedPrice5],
-    [CompleteItems].[SupersectionName] AS [SupersectionName],
-    [CompleteItems].[DiscontinuationDate] AS [DiscontinuationDate],
-    [CompleteItems].[Runon] AS [Runon],
-    [CompleteItems].[Referral] AS [Referral],
-    [CompleteItems].[Environment] AS [Environment],
-    [CompleteItems].[Lithium] AS [Lithium],
-    [CompleteItems].[Shipping] AS [Shipping],
-    [CompleteItems].[LicenceType] AS [LicenceType],
+            <DefiningQuery>SELECT 
+    [CompleteItems].[Article_No] AS [Article_No], 
+    [CompleteItems].[Article_Desc] AS [Article_Desc], 
+    [CompleteItems].[Pack_Quantity] AS [Pack_Quantity], 
+    [CompleteItems].[Unit_Content] AS [Unit_Content], 
+    [CompleteItems].[Unit_Measure] AS [Unit_Measure], 
+    [CompleteItems].[MPN] AS [MPN], 
+    [CompleteItems].[Calibration_Ind] AS [Calibration_Ind], 
+    [CompleteItems].[Standard_Weight] AS [Standard_Weight], 
+    [CompleteItems].[Hazardous_Ind] AS [Hazardous_Ind], 
+    [CompleteItems].[Obsolete_Flag] AS [Obsolete_Flag], 
+    [CompleteItems].[Low_Discount_Ind] AS [Low_Discount_Ind], 
+    [CompleteItems].[Licensed_Ind] AS [Licensed_Ind], 
+    [CompleteItems].[Shelf_Life] AS [Shelf_Life], 
+    [CompleteItems].[CofO] AS [CofO], 
+    [CompleteItems].[CCCN_No] AS [CCCN_No], 
+    [CompleteItems].[Uk_Intro_Date] AS [Uk_Intro_Date], 
+    [CompleteItems].[Uk_Disc_Date] AS [Uk_Disc_Date], 
+    [CompleteItems].[BHC_Flag] AS [BHC_Flag], 
+    [CompleteItems].[Disc_Change_Ind] AS [Disc_Change_Ind], 
+    [CompleteItems].[Expiring_Product_Change_Ind] AS [Expiring_Product_Change_Ind], 
+    [CompleteItems].[Manufacturer] AS [Manufacturer], 
+    [CompleteItems].[MH_Code_Level_1] AS [MH_Code_Level_1], 
+    [CompleteItems].[Heigh] AS [Heigh], 
+    [CompleteItems].[Width] AS [Width], 
+    [CompleteItems].[Length] AS [Length], 
+    [CompleteItems].[OnhandStockBalance] AS [OnhandStockBalance], 
+    [CompleteItems].[QuantityonOrder] AS [QuantityonOrder], 
+    [CompleteItems].[Col1Break] AS [Col1Break], 
+    [CompleteItems].[Col2Break] AS [Col2Break], 
+    [CompleteItems].[Col3Break] AS [Col3Break], 
+    [CompleteItems].[Col4Break] AS [Col4Break], 
+    [CompleteItems].[Col5Break] AS [Col5Break], 
+    [CompleteItems].[Col1Price] AS [Col1Price], 
+    [CompleteItems].[Col2Price] AS [Col2Price], 
+    [CompleteItems].[Col3Price] AS [Col3Price], 
+    [CompleteItems].[Col4Price] AS [Col4Price], 
+    [CompleteItems].[Col5Price] AS [Col5Price], 
+    [CompleteItems].[DiscountedPrice1] AS [DiscountedPrice1], 
+    [CompleteItems].[DiscountedPrice2] AS [DiscountedPrice2], 
+    [CompleteItems].[DiscountedPrice3] AS [DiscountedPrice3], 
+    [CompleteItems].[DiscountedPrice4] AS [DiscountedPrice4], 
+    [CompleteItems].[DiscountedPrice5] AS [DiscountedPrice5], 
+    [CompleteItems].[SupersectionName] AS [SupersectionName], 
+    [CompleteItems].[DiscontinuationDate] AS [DiscontinuationDate], 
+    [CompleteItems].[Runon] AS [Runon], 
+    [CompleteItems].[Referral] AS [Referral], 
+    [CompleteItems].[Environment] AS [Environment], 
+    [CompleteItems].[Lithium] AS [Lithium], 
+    [CompleteItems].[Shipping] AS [Shipping], 
+    [CompleteItems].[LicenceType] AS [LicenceType], 
     [CompleteItems].[dependantTable] AS [dependantTable]
     FROM [dbo].[CompleteItems] AS [CompleteItems]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="V_Product" EntityType="Self.V_Product" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT
-    [V_Product].[productId] AS [productId],
-    [V_Product].[productCode] AS [productCode],
-    [V_Product].[Unit_Measure] AS [Unit_Measure],
-    [V_Product].[Brandname] AS [Brandname],
-    [V_Product].[MPN] AS [MPN],
-    [V_Product].[Cost] AS [Cost],
+            <DefiningQuery>SELECT 
+    [V_Product].[productId] AS [productId], 
+    [V_Product].[productCode] AS [productCode], 
+    [V_Product].[Unit_Measure] AS [Unit_Measure], 
+    [V_Product].[Brandname] AS [Brandname], 
+    [V_Product].[MPN] AS [MPN], 
+    [V_Product].[Cost] AS [Cost], 
     [V_Product].[dependantTable] AS [dependantTable]
     FROM [dbo].[V_Product] AS [V_Product]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__Account__Currenc__165A2CA1" Association="Self.FK__Account__Currenc__165A2CA1">
+          <AssociationSet Name="FK__Account__Currenc__1A2ABD85" Association="Self.FK__Account__Currenc__1A2ABD85">
             <End Role="Currency" EntitySet="Currency" />
             <End Role="Account" EntitySet="Account" />
           </AssociationSet>
@@ -9577,7 +9589,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="BackOrderMain" EntitySet="BackOrderMain" />
             <End Role="BackOrder" EntitySet="BackOrder" />
           </AssociationSet>
-          <AssociationSet Name="FK__BackOrder__Purch__137DBFF6" Association="Self.FK__BackOrder__Purch__137DBFF6">
+          <AssociationSet Name="FK__BackOrder__Purch__12899BBD" Association="Self.FK__BackOrder__Purch__12899BBD">
             <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
             <End Role="BackOrder" EntitySet="BackOrder" />
           </AssociationSet>
@@ -10201,11 +10213,11 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="PurchaseMaster" EntitySet="PurchaseMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__PurchaseO__Accou__23B427BF" Association="Self.FK__PurchaseO__Accou__23B427BF">
+          <AssociationSet Name="FK__PurchaseO__Accou__1EEF72A2" Association="Self.FK__PurchaseO__Accou__1EEF72A2">
             <End Role="Account" EntitySet="Account" />
             <End Role="PurchaseOperation" EntitySet="PurchaseOperation" />
           </AssociationSet>
-          <AssociationSet Name="FK__PurchaseO__Curre__2878DCDC" Association="Self.FK__PurchaseO__Curre__2878DCDC">
+          <AssociationSet Name="FK__PurchaseO__Curre__24A84BF8" Association="Self.FK__PurchaseO__Curre__24A84BF8">
             <End Role="Currency" EntitySet="Currency" />
             <End Role="PurchaseOperation" EntitySet="PurchaseOperation" />
           </AssociationSet>
@@ -10225,7 +10237,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
             <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__PurchaseO__Repre__21CBDF4D" Association="Self.FK__PurchaseO__Repre__21CBDF4D">
+          <AssociationSet Name="FK__PurchaseO__Repre__1D072A30" Association="Self.FK__PurchaseO__Repre__1D072A30">
             <End Role="Worker" EntitySet="Worker" />
             <End Role="PurchaseOperation" EntitySet="PurchaseOperation" />
           </AssociationSet>
@@ -10233,7 +10245,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="SuffixPrefix" EntitySet="SuffixPrefix" />
             <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
           </AssociationSet>
-          <AssociationSet Name="FK__PurchaseO__Suppl__22C00386" Association="Self.FK__PurchaseO__Suppl__22C00386">
+          <AssociationSet Name="FK__PurchaseO__Suppl__1DFB4E69" Association="Self.FK__PurchaseO__Suppl__1DFB4E69">
             <End Role="Supplier" EntitySet="Supplier" />
             <End Role="PurchaseOperation" EntitySet="PurchaseOperation" />
           </AssociationSet>
@@ -10485,7 +10497,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="Area" EntitySet="Area" />
             <End Role="Route" EntitySet="Route" />
           </AssociationSet>
-          <AssociationSet Name="FK__RS_Invoic__Purch__12899BBD" Association="Self.FK__RS_Invoic__Purch__12899BBD">
+          <AssociationSet Name="FK__RS_Invoic__Purch__0EB90AD9" Association="Self.FK__RS_Invoic__Purch__0EB90AD9">
             <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
             <End Role="RS_InvoiceDetails" EntitySet="RS_InvoiceDetails" />
           </AssociationSet>
@@ -10593,7 +10605,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="Godown" EntitySet="Godown" />
             <End Role="SalesDetails" EntitySet="SalesDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__SalesDeta__order__259C7031" Association="Self.FK__SalesDeta__order__259C7031">
+          <AssociationSet Name="FK__SalesDeta__order__0DC4E6A0" Association="Self.FK__SalesDeta__order__0DC4E6A0">
             <End Role="SaleOrderDetail" EntitySet="SaleOrderDetail" />
             <End Role="SalesDetails" EntitySet="SalesDetails" />
           </AssociationSet>
@@ -10653,19 +10665,19 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="Worker" EntitySet="Worker" />
             <End Role="SalesMaster" EntitySet="SalesMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__SalesOper__Accou__2B554987" Association="Self.FK__SalesOper__Accou__2B554987">
+          <AssociationSet Name="FK__SalesOper__Accou__2690946A" Association="Self.FK__SalesOper__Accou__2690946A">
             <End Role="Account" EntitySet="Account" />
             <End Role="SalesOperations" EntitySet="SalesOperations" />
           </AssociationSet>
-          <AssociationSet Name="FK__SalesOper__Curre__2784B8A3" Association="Self.FK__SalesOper__Curre__2784B8A3">
+          <AssociationSet Name="FK__SalesOper__Curre__23B427BF" Association="Self.FK__SalesOper__Curre__23B427BF">
             <End Role="Currency" EntitySet="Currency" />
             <End Role="SalesOperations" EntitySet="SalesOperations" />
           </AssociationSet>
-          <AssociationSet Name="FK__SalesOper__Custo__1A2ABD85" Association="Self.FK__SalesOper__Custo__1A2ABD85">
+          <AssociationSet Name="FK__SalesOper__Custo__21CBDF4D" Association="Self.FK__SalesOper__Custo__21CBDF4D">
             <End Role="Customer" EntitySet="Customer" />
             <End Role="SalesOperations" EntitySet="SalesOperations" />
           </AssociationSet>
-          <AssociationSet Name="FK__SalesOper__Repre__1936994C" Association="Self.FK__SalesOper__Repre__1936994C">
+          <AssociationSet Name="FK__SalesOper__Repre__22C00386" Association="Self.FK__SalesOper__Repre__22C00386">
             <End Role="Worker" EntitySet="Worker" />
             <End Role="SalesOperations" EntitySet="SalesOperations" />
           </AssociationSet>
@@ -10816,6 +10828,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <AssociationSet Name="FK__StockPost__vouch__0F6D37F0" Association="Self.FK__StockPost__vouch__0F6D37F0">
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="StockPosting" EntitySet="StockPosting" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StockRese__Custo__2A962F78" Association="Self.FK__StockRese__Custo__2A962F78">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="StockReserve" EntitySet="StockReserve" />
           </AssociationSet>
           <AssociationSet Name="FK__StockRese__SaleO__4FC7B427" Association="Self.FK__StockRese__SaleO__4FC7B427">
             <End Role="SaleOrder" EntitySet="SaleOrder" />
@@ -11000,9 +11016,9 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="Value" Type="Decimal" Precision="20" Scale="4" />
           <Property Name="IsActive" Type="Boolean" />
           <Property Name="CurrencyID" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="Currency" Relationship="Self.FK__Account__Currenc__165A2CA1" FromRole="Account" ToRole="Currency" />
-          <NavigationProperty Name="PurchaseOperations" Relationship="Self.FK__PurchaseO__Accou__23B427BF" FromRole="Account" ToRole="PurchaseOperation" />
-          <NavigationProperty Name="SalesOperations" Relationship="Self.FK__SalesOper__Accou__2B554987" FromRole="Account" ToRole="SalesOperations" />
+          <NavigationProperty Name="Currency" Relationship="Self.FK__Account__Currenc__1A2ABD85" FromRole="Account" ToRole="Currency" />
+          <NavigationProperty Name="PurchaseOperations" Relationship="Self.FK__PurchaseO__Accou__1EEF72A2" FromRole="Account" ToRole="PurchaseOperation" />
+          <NavigationProperty Name="SalesOperations" Relationship="Self.FK__SalesOper__Accou__2690946A" FromRole="Account" ToRole="SalesOperations" />
         </EntityType>
         <EntityType Name="AccountGroup">
           <Key>
@@ -11139,7 +11155,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="BackOrderMainID" Type="Int32" />
           <Property Name="PurchaseOrderID" Type="Int32" />
           <NavigationProperty Name="BackOrderMain" Relationship="Self.FK__BackOrder__BackO__080C0D4A" FromRole="BackOrder" ToRole="BackOrderMain" />
-          <NavigationProperty Name="PurchaseOrder" Relationship="Self.FK__BackOrder__Purch__137DBFF6" FromRole="BackOrder" ToRole="PurchaseOrder" />
+          <NavigationProperty Name="PurchaseOrder" Relationship="Self.FK__BackOrder__Purch__12899BBD" FromRole="BackOrder" ToRole="PurchaseOrder" />
         </EntityType>
         <EntityType Name="BackOrderMain">
           <Key>
@@ -11382,12 +11398,12 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="currencySymbol" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="currencyName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="subunitName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Accounts" Relationship="Self.FK__Account__Currenc__165A2CA1" FromRole="Currency" ToRole="Account" />
+          <NavigationProperty Name="Accounts" Relationship="Self.FK__Account__Currenc__1A2ABD85" FromRole="Currency" ToRole="Account" />
           <NavigationProperty Name="Companies" Relationship="Self.FK__Company__currenc__0371755F" FromRole="Currency" ToRole="Company" />
           <NavigationProperty Name="Managements" Relationship="Self.FK__Managemen__Defau__253C7D7E" FromRole="Currency" ToRole="Management" />
-          <NavigationProperty Name="PurchaseOperations" Relationship="Self.FK__PurchaseO__Curre__2878DCDC" FromRole="Currency" ToRole="PurchaseOperation" />
+          <NavigationProperty Name="PurchaseOperations" Relationship="Self.FK__PurchaseO__Curre__24A84BF8" FromRole="Currency" ToRole="PurchaseOperation" />
           <NavigationProperty Name="Quotations" Relationship="Self.FK__Quotation__Curre__0A096455" FromRole="Currency" ToRole="Quotation" />
-          <NavigationProperty Name="SalesOperations" Relationship="Self.FK__SalesOper__Curre__2784B8A3" FromRole="Currency" ToRole="SalesOperations" />
+          <NavigationProperty Name="SalesOperations" Relationship="Self.FK__SalesOper__Curre__23B427BF" FromRole="Currency" ToRole="SalesOperations" />
           <NavigationProperty Name="Suppliers" Relationship="Self.FK__Supplier__Defaul__4218B34E" FromRole="Currency" ToRole="Supplier" />
           <NavigationProperty Name="ExchangeRates" Relationship="Self.FK__tbl_Excha__curre__52442E1F" FromRole="Currency" ToRole="ExchangeRate" />
         </EntityType>
@@ -11444,7 +11460,8 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <NavigationProperty Name="PurchaseOrders" Relationship="Self.FK__PurchaseO__Custo__420DC656" FromRole="Customer" ToRole="PurchaseOrder" />
           <NavigationProperty Name="Quotations" Relationship="Self.FK__Quotation__Custo__00750D23" FromRole="Customer" ToRole="Quotation" />
           <NavigationProperty Name="SaleOrders" Relationship="Self.FK__SaleOrder__Custo__1CDC41A7" FromRole="Customer" ToRole="SaleOrder" />
-          <NavigationProperty Name="SalesOperations" Relationship="Self.FK__SalesOper__Custo__1A2ABD85" FromRole="Customer" ToRole="SalesOperations" />
+          <NavigationProperty Name="SalesOperations" Relationship="Self.FK__SalesOper__Custo__21CBDF4D" FromRole="Customer" ToRole="SalesOperations" />
+          <NavigationProperty Name="StockReserves" Relationship="Self.FK__StockRese__Custo__2A962F78" FromRole="Customer" ToRole="StockReserve" />
         </EntityType>
         <EntityType Name="CustomerAddress">
           <Key>
@@ -12590,10 +12607,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="SupplierID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="RepresentativeID" Type="Int32" />
           <Property Name="CurrencyID" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="Account" Relationship="Self.FK__PurchaseO__Accou__23B427BF" FromRole="PurchaseOperation" ToRole="Account" />
-          <NavigationProperty Name="Currency" Relationship="Self.FK__PurchaseO__Curre__2878DCDC" FromRole="PurchaseOperation" ToRole="Currency" />
-          <NavigationProperty Name="Worker" Relationship="Self.FK__PurchaseO__Repre__21CBDF4D" FromRole="PurchaseOperation" ToRole="Worker" />
-          <NavigationProperty Name="Supplier" Relationship="Self.FK__PurchaseO__Suppl__22C00386" FromRole="PurchaseOperation" ToRole="Supplier" />
+          <NavigationProperty Name="Account" Relationship="Self.FK__PurchaseO__Accou__1EEF72A2" FromRole="PurchaseOperation" ToRole="Account" />
+          <NavigationProperty Name="Currency" Relationship="Self.FK__PurchaseO__Curre__24A84BF8" FromRole="PurchaseOperation" ToRole="Currency" />
+          <NavigationProperty Name="Worker" Relationship="Self.FK__PurchaseO__Repre__1D072A30" FromRole="PurchaseOperation" ToRole="Worker" />
+          <NavigationProperty Name="Supplier" Relationship="Self.FK__PurchaseO__Suppl__1DFB4E69" FromRole="PurchaseOperation" ToRole="Supplier" />
         </EntityType>
         <EntityType Name="PurchaseOrder">
           <Key>
@@ -12618,7 +12635,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="purchaseOrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FicheNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="AccountLedger" Relationship="Self.FK__PurchaseO__ledge__32EB7E57" FromRole="PurchaseOrder" ToRole="AccountLedger" />
-          <NavigationProperty Name="BackOrders" Relationship="Self.FK__BackOrder__Purch__137DBFF6" FromRole="PurchaseOrder" ToRole="BackOrder" />
+          <NavigationProperty Name="BackOrders" Relationship="Self.FK__BackOrder__Purch__12899BBD" FromRole="PurchaseOrder" ToRole="BackOrder" />
           <NavigationProperty Name="Customer" Relationship="Self.FK__PurchaseO__Custo__420DC656" FromRole="PurchaseOrder" ToRole="Customer" />
           <NavigationProperty Name="ExchangeRate" Relationship="Self.FK__PurchaseO__excha__61DB776A" FromRole="PurchaseOrder" ToRole="ExchangeRate" />
           <NavigationProperty Name="MaterialReceiptMasters" Relationship="Self.FK__MaterialR__purch__066DDD9B" FromRole="PurchaseOrder" ToRole="MaterialReceiptMaster" />
@@ -12627,7 +12644,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <NavigationProperty Name="SuffixPrefix" Relationship="Self.FK__PurchaseO__suffi__31F75A1E" FromRole="PurchaseOrder" ToRole="SuffixPrefix" />
           <NavigationProperty Name="Worker" Relationship="Self.FK__PurchaseO__userI__63C3BFDC" FromRole="PurchaseOrder" ToRole="Worker" />
           <NavigationProperty Name="VoucherType" Relationship="Self.FK__PurchaseO__vouch__011F1899" FromRole="PurchaseOrder" ToRole="VoucherType" />
-          <NavigationProperty Name="RS_InvoiceDetails" Relationship="Self.FK__RS_Invoic__Purch__12899BBD" FromRole="PurchaseOrder" ToRole="RS_InvoiceDetails" />
+          <NavigationProperty Name="RS_InvoiceDetails" Relationship="Self.FK__RS_Invoic__Purch__0EB90AD9" FromRole="PurchaseOrder" ToRole="RS_InvoiceDetails" />
         </EntityType>
         <EntityType Name="PurchaseOrderDetail">
           <Key>
@@ -13066,7 +13083,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="DeliveryItemNumber" Type="Int32" />
           <Property Name="IsSaleInvoiced" Type="Int32" />
           <Property Name="PurchaseOrderID" Type="Int32" />
-          <NavigationProperty Name="PurchaseOrder" Relationship="Self.FK__RS_Invoic__Purch__12899BBD" FromRole="RS_InvoiceDetails" ToRole="PurchaseOrder" />
+          <NavigationProperty Name="PurchaseOrder" Relationship="Self.FK__RS_Invoic__Purch__0EB90AD9" FromRole="RS_InvoiceDetails" ToRole="PurchaseOrder" />
           <NavigationProperty Name="RS_Invoice" Relationship="Self.FK__RS_Invoic__RS_In__7AE71C56" FromRole="RS_InvoiceDetails" ToRole="RS_Invoice" />
           <NavigationProperty Name="RS_Invoice1" Relationship="Self.FK__RS_Invoic__RS_In__7DC38901" FromRole="RS_InvoiceDetails" ToRole="RS_Invoice" />
         </EntityType>
@@ -13221,7 +13238,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <NavigationProperty Name="DeliveryNoteDetails" Relationship="Self.FK__DeliveryN__SaleO__6A7BAA63" FromRole="SaleOrderDetail" ToRole="DeliveryNoteDetail" />
           <NavigationProperty Name="QuotationDetail" Relationship="Self.FK__SaleOrder__quota__310335E5" FromRole="SaleOrderDetail" ToRole="QuotationDetail" />
           <NavigationProperty Name="SaleOrder" Relationship="Self.FK_SaleOrderDetail_SaleOrder" FromRole="SaleOrderDetail" ToRole="SaleOrder" />
-          <NavigationProperty Name="SalesDetails" Relationship="Self.FK__SalesDeta__order__259C7031" FromRole="SaleOrderDetail" ToRole="SalesDetails" />
+          <NavigationProperty Name="SalesDetails" Relationship="Self.FK__SalesDeta__order__0DC4E6A0" FromRole="SaleOrderDetail" ToRole="SalesDetails" />
           <NavigationProperty Name="SalesReturnDetails" Relationship="Self.FK__SalesRetu__sales__54817C4C" FromRole="SaleOrderDetail" ToRole="SalesReturnDetails" />
         </EntityType>
         <EntityType Name="SalesBillTax">
@@ -13261,7 +13278,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <NavigationProperty Name="DeliveryNoteDetail" Relationship="Self.FK__SalesDeta__deliv__1A1FD08D" FromRole="SalesDetails" ToRole="DeliveryNoteDetail" />
           <NavigationProperty Name="Godown" Relationship="Self.FK__SalesDeta__godow__20CCCE1C" FromRole="SalesDetails" ToRole="Godown" />
           <NavigationProperty Name="Rack" Relationship="Self.FK__SalesDeta__rackI__21C0F255" FromRole="SalesDetails" ToRole="Rack" />
-          <NavigationProperty Name="SaleOrderDetail" Relationship="Self.FK__SalesDeta__order__259C7031" FromRole="SalesDetails" ToRole="SaleOrderDetail" />
+          <NavigationProperty Name="SaleOrderDetail" Relationship="Self.FK__SalesDeta__order__0DC4E6A0" FromRole="SalesDetails" ToRole="SaleOrderDetail" />
           <NavigationProperty Name="SalesMaster" Relationship="Self.FK__SalesDeta__sales__192BAC54" FromRole="SalesDetails" ToRole="SalesMaster" />
           <NavigationProperty Name="Tax" Relationship="Self.FK__SalesDeta__taxId__1EE485AA" FromRole="SalesDetails" ToRole="Tax" />
           <NavigationProperty Name="UnitConvertion" Relationship="Self.FK__SalesDeta__unitC__1DF06171" FromRole="SalesDetails" ToRole="UnitConvertion" />
@@ -13321,10 +13338,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="RepreresentetiveID" Type="Int32" />
           <Property Name="CurrencyID" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="AccountID" Type="Int32" />
-          <NavigationProperty Name="Account" Relationship="Self.FK__SalesOper__Accou__2B554987" FromRole="SalesOperations" ToRole="Account" />
-          <NavigationProperty Name="Currency" Relationship="Self.FK__SalesOper__Curre__2784B8A3" FromRole="SalesOperations" ToRole="Currency" />
-          <NavigationProperty Name="Customer" Relationship="Self.FK__SalesOper__Custo__1A2ABD85" FromRole="SalesOperations" ToRole="Customer" />
-          <NavigationProperty Name="Worker" Relationship="Self.FK__SalesOper__Repre__1936994C" FromRole="SalesOperations" ToRole="Worker" />
+          <NavigationProperty Name="Account" Relationship="Self.FK__SalesOper__Accou__2690946A" FromRole="SalesOperations" ToRole="Account" />
+          <NavigationProperty Name="Currency" Relationship="Self.FK__SalesOper__Curre__23B427BF" FromRole="SalesOperations" ToRole="Currency" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__SalesOper__Custo__21CBDF4D" FromRole="SalesOperations" ToRole="Customer" />
+          <NavigationProperty Name="Worker" Relationship="Self.FK__SalesOper__Repre__22C00386" FromRole="SalesOperations" ToRole="Worker" />
         </EntityType>
         <EntityType Name="SalesReturnBillTax">
           <Key>
@@ -13613,6 +13630,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="SaleOrderID" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="NotConfirmedQ" Type="Int32" />
           <Property Name="NotConfirmedQuantity" Type="Int32" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__StockRese__Custo__2A962F78" FromRole="StockReserve" ToRole="Customer" />
           <NavigationProperty Name="SaleOrder" Relationship="Self.FK__StockRese__SaleO__4FC7B427" FromRole="StockReserve" ToRole="SaleOrder" />
           <NavigationProperty Name="Stock" Relationship="Self.FK__StockRese__Stock__2B8A53B1" FromRole="StockReserve" ToRole="Stock" />
         </EntityType>
@@ -13773,7 +13791,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <NavigationProperty Name="Note1" Relationship="Self.FK__Supplier__Suppli__09746778" FromRole="Supplier" ToRole="Notes" />
           <NavigationProperty Name="PaymentMethod" Relationship="Self.FK__Supplier__paymen__634EBE90" FromRole="Supplier" ToRole="PaymentMethod" />
           <NavigationProperty Name="PaymentTerm" Relationship="Self.FK__Supplier__paymen__6442E2C9" FromRole="Supplier" ToRole="PaymentTerm" />
-          <NavigationProperty Name="PurchaseOperations" Relationship="Self.FK__PurchaseO__Suppl__22C00386" FromRole="Supplier" ToRole="PurchaseOperation" />
+          <NavigationProperty Name="PurchaseOperations" Relationship="Self.FK__PurchaseO__Suppl__1DFB4E69" FromRole="Supplier" ToRole="PurchaseOperation" />
           <NavigationProperty Name="Stocks" Relationship="Self.FK__Stock__SupplierI__52A420D2" FromRole="Supplier" ToRole="Stock" />
           <NavigationProperty Name="Worker" Relationship="Self.FK__Supplier__accoun__2DB1C7EE" FromRole="Supplier" ToRole="Worker" />
           <NavigationProperty Name="SupplierBank" Relationship="Self.FK__Supplier__BankID__0C50D423" FromRole="Supplier" ToRole="SupplierBank" />
@@ -14074,7 +14092,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <NavigationProperty Name="PDCPayableMasters" Relationship="Self.FK__PDCPayabl__userI__2AC04CAA" FromRole="Worker" ToRole="PDCPayableMaster" />
           <NavigationProperty Name="PDCReceivableMasters" Relationship="Self.FK__PDCReceiv__userI__44801EAD" FromRole="Worker" ToRole="PDCReceivableMaster" />
           <NavigationProperty Name="PurchaseMasters" Relationship="Self.FK__PurchaseM__userI__155B1B70" FromRole="Worker" ToRole="PurchaseMaster" />
-          <NavigationProperty Name="PurchaseOperations" Relationship="Self.FK__PurchaseO__Repre__21CBDF4D" FromRole="Worker" ToRole="PurchaseOperation" />
+          <NavigationProperty Name="PurchaseOperations" Relationship="Self.FK__PurchaseO__Repre__1D072A30" FromRole="Worker" ToRole="PurchaseOperation" />
           <NavigationProperty Name="PurchaseOrders" Relationship="Self.FK__PurchaseO__userI__63C3BFDC" FromRole="Worker" ToRole="PurchaseOrder" />
           <NavigationProperty Name="PurchaseReturnMasters" Relationship="Self.FK__PurchaseR__userI__1CC7330E" FromRole="Worker" ToRole="PurchaseReturnMaster" />
           <NavigationProperty Name="Quotations" Relationship="Self.FK__Quotation__Repre__41399DAE" FromRole="Worker" ToRole="Quotation" />
@@ -14084,7 +14102,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <NavigationProperty Name="SalaryPackage" Relationship="Self.FK__Worker__defaultP__587208C1" FromRole="Worker" ToRole="SalaryPackage" />
           <NavigationProperty Name="SaleOrders" Relationship="Self.FK__SaleOrder__Repre__22951AFD" FromRole="Worker" ToRole="SaleOrder" />
           <NavigationProperty Name="SalesMasters" Relationship="Self.FK__SalesMast__Worke__77CAB889" FromRole="Worker" ToRole="SalesMaster" />
-          <NavigationProperty Name="SalesOperations" Relationship="Self.FK__SalesOper__Repre__1936994C" FromRole="Worker" ToRole="SalesOperations" />
+          <NavigationProperty Name="SalesOperations" Relationship="Self.FK__SalesOper__Repre__22C00386" FromRole="Worker" ToRole="SalesOperations" />
           <NavigationProperty Name="SalesReturnMasters" Relationship="Self.FK__SalesRetu__userI__6A70BD6B" FromRole="Worker" ToRole="SalesReturnMaster" />
           <NavigationProperty Name="ServiceMasters" Relationship="Self.FK__ServiceMa__emplo__202DAF9E" FromRole="Worker" ToRole="ServiceMaster" />
           <NavigationProperty Name="Suppliers" Relationship="Self.FK__Supplier__accoun__2DB1C7EE" FromRole="Worker" ToRole="Supplier" />
@@ -14191,7 +14209,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="Cost" Type="Decimal" Precision="20" Scale="5" />
           <Property Name="dependantTable" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Account__Currenc__165A2CA1">
+        <Association Name="FK__Account__Currenc__1A2ABD85">
           <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
           <End Role="Account" Type="Self.Account" Multiplicity="*" />
           <ReferentialConstraint>
@@ -14203,7 +14221,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PurchaseO__Accou__23B427BF">
+        <Association Name="FK__PurchaseO__Accou__1EEF72A2">
           <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
           <End Role="PurchaseOperation" Type="Self.PurchaseOperation" Multiplicity="*" />
           <ReferentialConstraint>
@@ -14215,7 +14233,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SalesOper__Accou__2B554987">
+        <Association Name="FK__SalesOper__Accou__2690946A">
           <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
           <End Role="SalesOperations" Type="Self.SalesOperation" Multiplicity="*" />
           <ReferentialConstraint>
@@ -14611,7 +14629,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__BackOrder__Purch__137DBFF6">
+        <Association Name="FK__BackOrder__Purch__12899BBD">
           <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="0..1" />
           <End Role="BackOrder" Type="Self.BackOrder" Multiplicity="*" />
           <ReferentialConstraint>
@@ -15043,7 +15061,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PurchaseO__Curre__2878DCDC">
+        <Association Name="FK__PurchaseO__Curre__24A84BF8">
           <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
           <End Role="PurchaseOperation" Type="Self.PurchaseOperation" Multiplicity="*" />
           <ReferentialConstraint>
@@ -15067,7 +15085,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SalesOper__Curre__2784B8A3">
+        <Association Name="FK__SalesOper__Curre__23B427BF">
           <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
           <End Role="SalesOperations" Type="Self.SalesOperation" Multiplicity="*" />
           <ReferentialConstraint>
@@ -15307,7 +15325,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SalesOper__Custo__1A2ABD85">
+        <Association Name="FK__SalesOper__Custo__21CBDF4D">
           <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
           <End Role="SalesOperations" Type="Self.SalesOperation" Multiplicity="*" />
           <ReferentialConstraint>
@@ -15315,6 +15333,18 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="SalesOperations">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StockRese__Custo__2A962F78">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="StockReserve" Type="Self.StockReserve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StockReserve">
               <PropertyRef Name="CustomerID" />
             </Dependent>
           </ReferentialConstraint>
@@ -17179,7 +17209,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PurchaseO__Repre__21CBDF4D">
+        <Association Name="FK__PurchaseO__Repre__1D072A30">
           <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
           <End Role="PurchaseOperation" Type="Self.PurchaseOperation" Multiplicity="*" />
           <ReferentialConstraint>
@@ -17191,7 +17221,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PurchaseO__Suppl__22C00386">
+        <Association Name="FK__PurchaseO__Suppl__1DFB4E69">
           <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
           <End Role="PurchaseOperation" Type="Self.PurchaseOperation" Multiplicity="*" />
           <ReferentialConstraint>
@@ -17251,7 +17281,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__RS_Invoic__Purch__12899BBD">
+        <Association Name="FK__RS_Invoic__Purch__0EB90AD9">
           <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="0..1" />
           <End Role="RS_InvoiceDetails" Type="Self.RS_InvoiceDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -17875,7 +17905,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SalesDeta__order__259C7031">
+        <Association Name="FK__SalesDeta__order__0DC4E6A0">
           <End Role="SaleOrderDetail" Type="Self.SaleOrderDetail" Multiplicity="0..1" />
           <End Role="SalesDetails" Type="Self.SalesDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -18007,7 +18037,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SalesOper__Repre__1936994C">
+        <Association Name="FK__SalesOper__Repre__22C00386">
           <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
           <End Role="SalesOperations" Type="Self.SalesOperation" Multiplicity="*" />
           <ReferentialConstraint>
@@ -18665,15 +18695,15 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <EntitySet Name="SalaryVoucherDetails" EntityType="Self.SalaryVoucherDetail" />
           <EntitySet Name="CompleteItems" EntityType="Self.CompleteItem" />
           <EntitySet Name="V_Product" EntityType="Self.V_Product" />
-          <AssociationSet Name="FK__Account__Currenc__165A2CA1" Association="Self.FK__Account__Currenc__165A2CA1">
+          <AssociationSet Name="FK__Account__Currenc__1A2ABD85" Association="Self.FK__Account__Currenc__1A2ABD85">
             <End Role="Currency" EntitySet="Currencies" />
             <End Role="Account" EntitySet="Accounts" />
           </AssociationSet>
-          <AssociationSet Name="FK__PurchaseO__Accou__23B427BF" Association="Self.FK__PurchaseO__Accou__23B427BF">
+          <AssociationSet Name="FK__PurchaseO__Accou__1EEF72A2" Association="Self.FK__PurchaseO__Accou__1EEF72A2">
             <End Role="Account" EntitySet="Accounts" />
             <End Role="PurchaseOperation" EntitySet="PurchaseOperations" />
           </AssociationSet>
-          <AssociationSet Name="FK__SalesOper__Accou__2B554987" Association="Self.FK__SalesOper__Accou__2B554987">
+          <AssociationSet Name="FK__SalesOper__Accou__2690946A" Association="Self.FK__SalesOper__Accou__2690946A">
             <End Role="Account" EntitySet="Accounts" />
             <End Role="SalesOperations" EntitySet="SalesOperations" />
           </AssociationSet>
@@ -18805,7 +18835,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="BackOrderMain" EntitySet="BackOrderMains" />
             <End Role="BackOrder" EntitySet="BackOrders" />
           </AssociationSet>
-          <AssociationSet Name="FK__BackOrder__Purch__137DBFF6" Association="Self.FK__BackOrder__Purch__137DBFF6">
+          <AssociationSet Name="FK__BackOrder__Purch__12899BBD" Association="Self.FK__BackOrder__Purch__12899BBD">
             <End Role="PurchaseOrder" EntitySet="PurchaseOrders" />
             <End Role="BackOrder" EntitySet="BackOrders" />
           </AssociationSet>
@@ -18949,7 +18979,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="Currency" EntitySet="Currencies" />
             <End Role="Management" EntitySet="Managements" />
           </AssociationSet>
-          <AssociationSet Name="FK__PurchaseO__Curre__2878DCDC" Association="Self.FK__PurchaseO__Curre__2878DCDC">
+          <AssociationSet Name="FK__PurchaseO__Curre__24A84BF8" Association="Self.FK__PurchaseO__Curre__24A84BF8">
             <End Role="Currency" EntitySet="Currencies" />
             <End Role="PurchaseOperation" EntitySet="PurchaseOperations" />
           </AssociationSet>
@@ -18957,7 +18987,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="Currency" EntitySet="Currencies" />
             <End Role="Quotation" EntitySet="Quotations" />
           </AssociationSet>
-          <AssociationSet Name="FK__SalesOper__Curre__2784B8A3" Association="Self.FK__SalesOper__Curre__2784B8A3">
+          <AssociationSet Name="FK__SalesOper__Curre__23B427BF" Association="Self.FK__SalesOper__Curre__23B427BF">
             <End Role="Currency" EntitySet="Currencies" />
             <End Role="SalesOperations" EntitySet="SalesOperations" />
           </AssociationSet>
@@ -19037,9 +19067,13 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="Customer" EntitySet="Customers" />
             <End Role="SaleOrder" EntitySet="SaleOrders" />
           </AssociationSet>
-          <AssociationSet Name="FK__SalesOper__Custo__1A2ABD85" Association="Self.FK__SalesOper__Custo__1A2ABD85">
+          <AssociationSet Name="FK__SalesOper__Custo__21CBDF4D" Association="Self.FK__SalesOper__Custo__21CBDF4D">
             <End Role="Customer" EntitySet="Customers" />
             <End Role="SalesOperations" EntitySet="SalesOperations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StockRese__Custo__2A962F78" Association="Self.FK__StockRese__Custo__2A962F78">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="StockReserve" EntitySet="StockReserves" />
           </AssociationSet>
           <AssociationSet Name="FK__CustomerA__TownI__2FEF161B" Association="Self.FK__CustomerA__TownI__2FEF161B">
             <End Role="Town" EntitySet="Towns" />
@@ -19661,11 +19695,11 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="PurchaseMaster" EntitySet="PurchaseMasters" />
             <End Role="PurchaseReturnMaster" EntitySet="PurchaseReturnMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__PurchaseO__Repre__21CBDF4D" Association="Self.FK__PurchaseO__Repre__21CBDF4D">
+          <AssociationSet Name="FK__PurchaseO__Repre__1D072A30" Association="Self.FK__PurchaseO__Repre__1D072A30">
             <End Role="Worker" EntitySet="Workers" />
             <End Role="PurchaseOperation" EntitySet="PurchaseOperations" />
           </AssociationSet>
-          <AssociationSet Name="FK__PurchaseO__Suppl__22C00386" Association="Self.FK__PurchaseO__Suppl__22C00386">
+          <AssociationSet Name="FK__PurchaseO__Suppl__1DFB4E69" Association="Self.FK__PurchaseO__Suppl__1DFB4E69">
             <End Role="Supplier" EntitySet="Suppliers" />
             <End Role="PurchaseOperation" EntitySet="PurchaseOperations" />
           </AssociationSet>
@@ -19685,7 +19719,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="VoucherType" EntitySet="VoucherTypes" />
             <End Role="PurchaseOrder" EntitySet="PurchaseOrders" />
           </AssociationSet>
-          <AssociationSet Name="FK__RS_Invoic__Purch__12899BBD" Association="Self.FK__RS_Invoic__Purch__12899BBD">
+          <AssociationSet Name="FK__RS_Invoic__Purch__0EB90AD9" Association="Self.FK__RS_Invoic__Purch__0EB90AD9">
             <End Role="PurchaseOrder" EntitySet="PurchaseOrders" />
             <End Role="RS_InvoiceDetails" EntitySet="RS_InvoiceDetails" />
           </AssociationSet>
@@ -19893,7 +19927,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="SaleOrder" EntitySet="SaleOrders" />
             <End Role="SaleOrderDetail" EntitySet="SaleOrderDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__SalesDeta__order__259C7031" Association="Self.FK__SalesDeta__order__259C7031">
+          <AssociationSet Name="FK__SalesDeta__order__0DC4E6A0" Association="Self.FK__SalesDeta__order__0DC4E6A0">
             <End Role="SaleOrderDetail" EntitySet="SaleOrderDetails" />
             <End Role="SalesDetails" EntitySet="SalesDetails" />
           </AssociationSet>
@@ -19937,7 +19971,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="SalesMaster" EntitySet="SalesMasters" />
             <End Role="SalesReturnMaster" EntitySet="SalesReturnMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__SalesOper__Repre__1936994C" Association="Self.FK__SalesOper__Repre__1936994C">
+          <AssociationSet Name="FK__SalesOper__Repre__22C00386" Association="Self.FK__SalesOper__Repre__22C00386">
             <End Role="Worker" EntitySet="Workers" />
             <End Role="SalesOperations" EntitySet="SalesOperations" />
           </AssociationSet>
