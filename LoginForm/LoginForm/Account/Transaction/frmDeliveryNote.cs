@@ -3028,6 +3028,7 @@ namespace LoginForm
                 InfoDeliveryNoteMaster.lrNo = txtVehicleNo.Text;
                 InfoDeliveryNoteMaster.transportationCompany = txtTransportCompany.Text.Trim();
                 InfoDeliveryNoteMaster.POS = false;
+                InfoDeliveryNoteMaster.CustomerID = txtCustomer.Text;
                 decimal decDeliveryMasterId = spDeliveryNoteMaster.DeliveryNoteMasterAdd(InfoDeliveryNoteMaster);
                 int inRowCount = dgvSalesInvoice.RowCount;
                 InfoSalesDetails.deliveryNoteMasterId = decDeliveryMasterId;

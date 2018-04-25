@@ -2447,7 +2447,7 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("DeliveryNoteDetailsAdd", deliveryNoteMasterIdParameter, saleOrderDetailIdParameter, productIdParameter, qtyParameter, rateParameter, unitIdParameter, unitConversionIdParameter, discountParameter, taxIdParameter, batchIdParameter, godownIdParameter, rackIdParameter, taxAmountParameter, grossAmountParameter, netAmountParameter, amountParameter, slNoParameter);
         }
     
-        public virtual ObjectResult<Nullable<decimal>> DeliveryNoteMasterAdd(string voucherNo, string invoiceNo, Nullable<decimal> voucherTypeId, Nullable<decimal> suffixPrefixId, Nullable<System.DateTime> date, Nullable<int> creditPeriod, Nullable<decimal> ledgerId, Nullable<decimal> salesAccount, Nullable<decimal> orderMasterId, string narration, Nullable<decimal> exchangeRateId, Nullable<decimal> taxAmount, Nullable<decimal> additionalCost, Nullable<decimal> billDiscount, Nullable<decimal> grandTotal, Nullable<decimal> totalAmount, Nullable<int> userId, string lrNo, string transportationCompany, Nullable<bool> pOS, Nullable<decimal> financialYearId)
+        public virtual ObjectResult<Nullable<decimal>> DeliveryNoteMasterAdd(string voucherNo, string invoiceNo, Nullable<decimal> voucherTypeId, Nullable<decimal> suffixPrefixId, Nullable<System.DateTime> date, Nullable<int> creditPeriod, Nullable<decimal> ledgerId, Nullable<decimal> salesAccount, Nullable<decimal> orderMasterId, string narration, Nullable<decimal> exchangeRateId, Nullable<decimal> taxAmount, Nullable<decimal> additionalCost, Nullable<decimal> billDiscount, Nullable<decimal> grandTotal, Nullable<decimal> totalAmount, Nullable<int> userId, string lrNo, string transportationCompany, Nullable<bool> pOS, Nullable<decimal> financialYearId, string customerID)
         {
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
@@ -2533,7 +2533,20 @@ namespace LoginForm.DataSet
                 new ObjectParameter("financialYearId", financialYearId) :
                 new ObjectParameter("financialYearId", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("DeliveryNoteMasterAdd", voucherNoParameter, invoiceNoParameter, voucherTypeIdParameter, suffixPrefixIdParameter, dateParameter, creditPeriodParameter, ledgerIdParameter, salesAccountParameter, orderMasterIdParameter, narrationParameter, exchangeRateIdParameter, taxAmountParameter, additionalCostParameter, billDiscountParameter, grandTotalParameter, totalAmountParameter, userIdParameter, lrNoParameter, transportationCompanyParameter, pOSParameter, financialYearIdParameter);
+            var customerIDParameter = customerID != null ?
+                new ObjectParameter("CustomerID", customerID) :
+                new ObjectParameter("CustomerID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("DeliveryNoteMasterAdd", voucherNoParameter, invoiceNoParameter, voucherTypeIdParameter, suffixPrefixIdParameter, dateParameter, creditPeriodParameter, ledgerIdParameter, salesAccountParameter, orderMasterIdParameter, narrationParameter, exchangeRateIdParameter, taxAmountParameter, additionalCostParameter, billDiscountParameter, grandTotalParameter, totalAmountParameter, userIdParameter, lrNoParameter, transportationCompanyParameter, pOSParameter, financialYearIdParameter, customerIDParameter);
+        }
+    
+        public virtual ObjectResult<DeliveryNoteToSaleInvoice_Result> DeliveryNoteToSaleInvoice(string customerNo)
+        {
+            var customerNoParameter = customerNo != null ?
+                new ObjectParameter("CustomerNo", customerNo) :
+                new ObjectParameter("CustomerNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DeliveryNoteToSaleInvoice_Result>("DeliveryNoteToSaleInvoice", customerNoParameter);
         }
     
         public virtual ObjectResult<Nullable<decimal>> DesignationAddWithReturnIdentity(string designationName, Nullable<decimal> leaveDays, string advanceAmount, string narration)
