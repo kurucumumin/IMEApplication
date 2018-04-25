@@ -11,7 +11,7 @@ using System.Linq;
 using System.Collections.Generic;
 using LoginForm.DataSet;
 using LoginForm.StockManagement;
-using LoginForm.AçıkSipariş;
+using LoginForm.IMEAccount;
 
 namespace LoginForm.CustomControls
 {
@@ -133,7 +133,7 @@ namespace LoginForm.CustomControls
                 subControl.Visible = true;
                 parent.CurrentNavTabLvl2 = subControl;
             }
-                
+
         }
 
         private void btnStock_Click(object sender, EventArgs e)
@@ -148,10 +148,10 @@ namespace LoginForm.CustomControls
             frm.Show();
         }
 
-        private void btnOnOrder_Click(object sender, EventArgs e)
+        private void IMEAccount_Click(object sender, EventArgs e)
         {
-            frmAcikSiparis frm = new frmAcikSiparis();
-            frm.Show();
+            frmAccountMain form = new frmAccountMain();
+            form.Show();
         }
     }
 }

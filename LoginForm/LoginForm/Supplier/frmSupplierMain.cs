@@ -26,7 +26,7 @@ namespace LoginForm
 
         private static string SupplierModeAdd = "Add";
         private static string SupplierModeModify = "Modify";
-
+        bool fromBillFromCustomer = false;
 
         BindingList<SupplierAddress> SavedAddresses = new BindingList<SupplierAddress>();
         BindingList<SupplierWorker> SavedContacts = new BindingList<SupplierWorker>();
@@ -36,6 +36,17 @@ namespace LoginForm
         string ContactMode = String.Empty;
 
         private List<Supplier> gridSupplierList;
+
+        public frmSupplierMain(string SupplierID)
+        {
+            InitializeComponent();
+            this.dgSupplier.AutoGenerateColumns = false;
+            tabgenel.Enabled = false;
+            btnAdd.Enabled = false;
+            btnModify.Enabled = false;
+            btnExit.Enabled = false;
+            fromBillFromCustomer = true;
+        }
 
         public frmSupplierMain()
         {
@@ -131,7 +142,7 @@ namespace LoginForm
             //cmbPosition.DisplayMember = "titlename";
             //cmbPosition.ValueMember = "ID";
             //cmbPosition.SelectedIndex = -1;
-            
+
             //cmbMainContact.Items.Insert(0, "Choose");
             //cmbMainContact.DisplayMember = "languagename";
             //cmbMainContact.SelectedIndex = 0;
@@ -477,11 +488,11 @@ namespace LoginForm
             txtBankAccountNumber.Enabled = state;
             txtBankIban.Enabled = state;
             if (!state)
-            {   
+            {
                 cmbCountry.SelectedIndex = 0;
             }
         }
-        
+
         private void btnModify_Click(object sender, EventArgs e)
         {
             switch (btnModify.Text)
@@ -558,7 +569,7 @@ namespace LoginForm
             txtWeb.Text = s.webadress ?? String.Empty;
             txtSupplierNotes.Text = (s.Note1 != null) ? s.Note1.Note_name : String.Empty;
             //txtAccountNotes.Text = (s.Note != null) ? s.Note.Note_name : String.Empty;
-            
+
             cmbContactAddress.DataSource = s.SupplierAddresses.ToList();
             cmbContactAddress.DisplayMember = "Title";
 
@@ -712,7 +723,7 @@ namespace LoginForm
 
         private string NewSupplierID()
         {
-            IMEEntities db = new IMEEntities(); 
+            IMEEntities db = new IMEEntities();
             string suppliercode = "";
             if (db.Suppliers.ToList().Count != 0)
             {
@@ -1045,7 +1056,7 @@ namespace LoginForm
                 MessageBox.Show("Please choose an address from the list!", "Warning");
             }
 
-            
+
         }
 
         private void lbAddressList_SelectedIndexChanged(object sender, EventArgs e)
@@ -1070,7 +1081,7 @@ namespace LoginForm
             string CountryName = list.Cast<Country>().Where(x => x.ID == address.CountryID).FirstOrDefault().Country_name;
             cmbCountry.SelectedIndex = cmbCountry.FindStringExact(CountryName);
 
-            
+
             list = cmbCity.Items.Cast<object>().ToList();
             list.RemoveAt(0);
             string CityName = list.Cast<City>().Where(x => x.ID == address.CityID).FirstOrDefault().City_name;
@@ -1440,7 +1451,7 @@ namespace LoginForm
             list.RemoveAt(0);
             string DepartmentName = (worker.departmentID != null) ? (list.Cast<CustomerDepartment>().Where(x => x.ID == worker.departmentID).FirstOrDefault().departmentname) : "Choose";
             cmbDepartment.SelectedIndex = cmbDepartment.FindStringExact(DepartmentName);
-            
+
             list = cmbPosition.Items.Cast<object>().ToList();
             if(list.Count > 1)
             {
@@ -1672,7 +1683,7 @@ namespace LoginForm
                     {
                         ErrorLog.Add("Discount rate must be a numerical string!");
                     }
-                    
+
                     if (cmbCurrency.SelectedIndex <= 0)
                     {
                         ErrorLog.Add("You should choose a Currency!");
@@ -1752,18 +1763,23 @@ namespace LoginForm
             MakeTextUpperCase((TextBox)sender);
         }
 
-        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
+        private void dgSupplier_DoubleClick(object sender, EventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (fromBillFromCustomer)
             {
-                btnSupplierSearch.PerformClick();
+                IMEEntities IME = new IMEEntities();
+                if (dgSupplier.CurrentRow != null)
+                {
+                    string SupplierID = "";
+                    try { SupplierID = dgSupplier.CurrentRow.Cells[iDDataGridViewTextBoxColumn.Index].Value.ToString(); } catch { }
+                    classSupplier.Supplier = IME.Suppliers.Where(a=>a.ID==SupplierID).FirstOrDefault();
+                }
+                else
+                {
+                    classSupplier.Supplier = null;
+                }
+                this.Close();
             }
-        }
-
-        private void btnSupplierSearch_Click(object sender, EventArgs e)
-        {
-            dgSupplier.DataSource = BringSupplierList(txtSearch.Text);
-            dgSupplier.ClearSelection();
         }
     }
 }

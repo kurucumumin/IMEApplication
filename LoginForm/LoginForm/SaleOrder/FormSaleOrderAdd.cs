@@ -1790,7 +1790,10 @@ namespace LoginForm.nmSaleOrder
                     {
 
                     }
-                    
+                    Customer c = IME.Customers.Where(a => a.ID == sdi.SaleOrder.CustomerID).FirstOrDefault();
+                    if (c.Debit == null) c.Debit = 0;
+                    c.Debit = c.Debit +decimal.Parse(lblGrossTotal.Text);
+                    IME.SaveChanges();
                     //if (IME.PurchaseOrders.Where(x => x.purchaseOrderId == sdID).FirstOrDefault() != null && IME.PurchaseOrders.Where(x => x.purchaseOrderId == sdID).FirstOrDefault().Customer != null)
                     //{
 
