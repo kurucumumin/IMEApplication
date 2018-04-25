@@ -19,9 +19,7 @@ namespace LoginForm.DataSet
         public Nullable<decimal> Amount { get; set; }
         public Nullable<int> RepreresentetiveID { get; set; }
         public Nullable<decimal> CurrencyID { get; set; }
-        public Nullable<int> AccountID { get; set; }
-    
-        public virtual Account Account { get; set; }
+
         public virtual Currency Currency { get; set; }
         public virtual Customer Customer { get; set; }
         public virtual Worker Worker { get; set; }
