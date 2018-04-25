@@ -11,7 +11,7 @@ namespace LoginForm.DataSet
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class Customer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -27,7 +27,7 @@ namespace LoginForm.DataSet
             this.SaleOrders = new HashSet<SaleOrder>();
             this.SalesOperations = new HashSet<SalesOperation>();
         }
-
+    
         public string ID { get; set; }
         public string c_name { get; set; }
         public Nullable<decimal> discountrate { get; set; }
@@ -60,7 +60,7 @@ namespace LoginForm.DataSet
         public string ThirdPartyCode { get; set; }
         public string Capital { get; set; }
         public Nullable<decimal> Debit { get; set; }
-
+    
         public virtual Worker Worker { get; set; }
         public virtual CustomerCategory CustomerCategory { get; set; }
         public virtual Note Note { get; set; }
