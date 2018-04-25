@@ -1417,7 +1417,8 @@ namespace LoginForm
                     CustomerID = CustomerCode.Text,
                     CountryID = ((cbCountry).SelectedItem as Country).ID,
                     CityID = ((cbCity).SelectedItem as City).ID,
-                    TownID = (int)cbTown.SelectedValue,
+                    TownID=((cbTown).SelectedItem as Town).ID,
+                    //TownID = (int)cbTown.SelectedValue,
                     AdressTitle = txtAdressTitle.Text,
                     //AddresType
                     isInvoiceAddress = false,
@@ -1477,6 +1478,11 @@ namespace LoginForm
                 cbCity.DataSource = IME.Cities.Where(a => a.CountryID == ((Country)(cbCountry).SelectedItem).ID).ToList();
                 cbCity.DisplayMember = "City_name";
                 cbCity.ValueMember = "ID";
+
+                if (cbCity.DataSource==null || cbCity.Items.Count == 0)
+                {
+                    cbCity.Text = "N/A";
+                }
             }
             catch { }
         }
@@ -1488,6 +1494,11 @@ namespace LoginForm
                 cbTown.DataSource = IME.Towns.Where(a => a.CityID == ((City)(cbCity).SelectedItem).ID).ToList();
                 cbTown.DisplayMember = "Town_name";
                 cbTown.ValueMember = "ID";
+
+                if (cbTown.DataSource == null || cbTown.Items.Count == 1)
+                {
+                    cbTown.Text = "N/A";
+                }
             }
             catch { }
         }

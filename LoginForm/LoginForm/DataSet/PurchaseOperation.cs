@@ -20,8 +20,10 @@ namespace LoginForm.DataSet
         public string Description { get; set; }
         public string SupplierID { get; set; }
         public Nullable<int> RepresentativeID { get; set; }
+        public Nullable<decimal> CurrencyID { get; set; }
     
         public virtual Account Account { get; set; }
+        public virtual Currency Currency { get; set; }
         public virtual Worker Worker { get; set; }
         public virtual Supplier Supplier { get; set; }
     }

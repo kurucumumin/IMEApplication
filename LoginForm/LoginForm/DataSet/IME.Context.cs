@@ -632,6 +632,11 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountLedgerViewForAdditionalCost_Result>("AccountLedgerViewForAdditionalCost");
         }
     
+        public virtual ObjectResult<AccountMainDataGridFiller_Result> AccountMainDataGridFiller()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountMainDataGridFiller_Result>("AccountMainDataGridFiller");
+        }
+    
         public virtual int AdditionalCostAdd(Nullable<decimal> voucherTypeId, string voucherNo, Nullable<decimal> ledgerId, Nullable<decimal> debit, Nullable<decimal> credit)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?

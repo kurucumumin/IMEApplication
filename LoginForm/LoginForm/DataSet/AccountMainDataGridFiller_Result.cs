@@ -10,18 +10,16 @@
 namespace LoginForm.DataSet
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class SalesOperation
+    public partial class AccountMainDataGridFiller_Result
     {
         public int ID { get; set; }
-        public string CustomerID { get; set; }
+        public string Customer { get; set; }
         public Nullable<decimal> Amount { get; set; }
-        public Nullable<int> RepreresentetiveID { get; set; }
-        public Nullable<decimal> CurrencyID { get; set; }
-    
-        public virtual Currency Currency { get; set; }
-        public virtual Customer Customer { get; set; }
-        public virtual Worker Worker { get; set; }
+        public string Currency { get; set; }
+        public string Representative { get; set; }
+        public string Description { get; set; }
+        public string Supplier { get; set; }
+        public int IsSalesOperations { get; set; }
     }
 }
