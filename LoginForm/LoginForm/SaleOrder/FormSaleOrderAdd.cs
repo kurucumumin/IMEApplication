@@ -137,7 +137,7 @@ namespace LoginForm.nmSaleOrder
             CustomerCode.Enabled = false;
             txtCustomerName.Enabled = false;
             LowMarginLimit = (Decimal)Utils.getManagement().LowMarginLimit;
-            modifyQuotation(items);
+            modifyQuotation();
 
             //fillCustomer();
             //cbSMethod.SelectedIndex = (int)q1.ShippingMethodID;
@@ -2160,7 +2160,7 @@ namespace LoginForm.nmSaleOrder
             this.Close();
         }
 
-        private void modifyQuotation(List<QuotationDetail> itemList)
+        private void modifyQuotation()
         {
             #region QuotationLoader
             //LandingCost.Enabled = true;

@@ -24,6 +24,7 @@ namespace LoginForm.DataSet
         public Nullable<int> NotConfirmedQ { get; set; }
         public Nullable<int> NotConfirmedQuantity { get; set; }
     
+        public virtual Customer Customer { get; set; }
         public virtual SaleOrder SaleOrder { get; set; }
         public virtual Stock Stock { get; set; }
     }
