@@ -737,9 +737,6 @@
     <Compile Include="DataSet\Account.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\Account.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\AccountGroup.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1125,6 +1122,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\DeliveryNoteMaster.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\DeliveryNoteToSaleInvoice_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Designation.cs">

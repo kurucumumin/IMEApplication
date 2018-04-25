@@ -11,7 +11,7 @@ namespace LoginForm.DataSet
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class SalesOperation
     {
         public int ID { get; set; }
@@ -20,7 +20,7 @@ namespace LoginForm.DataSet
         public Nullable<int> RepreresentetiveID { get; set; }
         public Nullable<decimal> CurrencyID { get; set; }
         public Nullable<int> AccountID { get; set; }
-
+    
         public virtual Account Account { get; set; }
         public virtual Currency Currency { get; set; }
         public virtual Customer Customer { get; set; }

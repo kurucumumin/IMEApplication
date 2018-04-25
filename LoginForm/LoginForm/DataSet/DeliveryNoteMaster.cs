@@ -45,8 +45,10 @@ namespace LoginForm.DataSet
         public Nullable<decimal> grandTotal { get; set; }
         public Nullable<bool> POS { get; set; }
         public int creditPeriod { get; set; }
+        public string CustomerID { get; set; }
     
         public virtual AccountLedger AccountLedger { get; set; }
+        public virtual Customer Customer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DeliveryNoteDetail> DeliveryNoteDetails { get; set; }
         public virtual ExchangeRate ExchangeRate { get; set; }
