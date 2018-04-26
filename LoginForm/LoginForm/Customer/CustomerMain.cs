@@ -55,7 +55,7 @@ namespace LoginForm
                 SubCategory.ValueMember = "ID";
 
                 QuotationCustomerSearch(CustomerID);
-                
+
 
             }
         }
@@ -84,7 +84,7 @@ namespace LoginForm
                 tabControl1.TabPages.Remove(tab_adresses);
                 tabControl1.TabPages.Remove(tab_company);
                 QuotationCustomerSearch(CustomerID);
-                
+
             }
             if (x == 2)
             {
@@ -106,11 +106,11 @@ namespace LoginForm
                 AdressDone.Enabled = true;
                 AdressCancel.Enabled = true;
                 tabControl1.SelectedTab = tab_adresses;
-             //   tabControl1.Enabled = false;
+                //   tabControl1.Enabled = false;
                 QuotationCustomerSearch(CustomerID);
             }
         }
-        
+
         public CustomerMain(Boolean buttonEnabled)
         {
             //Qoutation Customer Add
@@ -157,7 +157,7 @@ namespace LoginForm
             MainCategory.DataSource = IME.CustomerCategories.ToList();
             MainCategory.DisplayMember = "categoryname";
             MainCategory.ValueMember = "ID";
-            SubCategory.DataSource = IME.CustomerSubCategories.Where(a=>a.categoryID==(int)MainCategory.SelectedValue);
+            SubCategory.DataSource = IME.CustomerSubCategories.Where(a => a.categoryID == (int)MainCategory.SelectedValue);
             SubCategory.DisplayMember = "subcategoryname";
             SubCategory.ValueMember = "ID";
             QuoCurrencyName.DataSource = IME.Currencies.ToList();
@@ -177,7 +177,7 @@ namespace LoginForm
             AccountRepresentary.DataSource = IME.Workers.ToList();
             AccountRepresentary.DisplayMember = "NameLastName";
             AccountRepresentary.ValueMember = "WorkerID";
-            cbCountry.DataSource = IME.Countries.OrderBy(a=>a.Country_name).ToList();
+            cbCountry.DataSource = IME.Countries.OrderBy(a => a.Country_name).ToList();
             cbCountry.DisplayMember = "Country_name";
             cbCountry.ValueMember = "ID";
 
@@ -210,14 +210,14 @@ namespace LoginForm
             ContactAdress.DisplayMember = "AdressTitle";
             CustomerName.Text = c.c_name;
             Telephone.Text = c.telephone;
-            if(c.payment_termID!=null) TermsofPayments.SelectedValue = c.payment_termID;
+            if (c.payment_termID != null) TermsofPayments.SelectedValue = c.payment_termID;
             ContactFAX.Text = c.fax;
             WebAdress.Text = c.webadress;
             if (c.Worker2 != null) Represantative2.SelectedValue = c.Worker2.WorkerID;
             if (c.Worker1 != null) Represantative1.SelectedValue = c.Worker1.WorkerID;
             if (c.accountrepresentaryID != null) AccountRepresentary.Text = IME.Workers.Where(a => a.WorkerID == c.accountrepresentaryID).FirstOrDefault().NameLastName;
-            
-            if (c.PaymentTerm!=null) TermsofPayments.SelectedValue = c.PaymentTerm.ID;
+
+            if (c.PaymentTerm != null) TermsofPayments.SelectedValue = c.PaymentTerm.ID;
             if (c.isactive == 1) { rb_active.Checked = true; } else { rb_passive.Checked = true; }
             ContactList.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
             ContactList.DisplayMember = "cw_name";
@@ -225,7 +225,7 @@ namespace LoginForm
             cbMainContact.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
             cbMainContact.DisplayMember = "cw_name";
             cbMainContact.ValueMember = "ID";
-            if(c.CurrNameQuo != null)
+            if (c.CurrNameQuo != null)
             {
                 QuoCurrencyName.SelectedIndex = QuoCurrencyName.FindStringExact(c.CurrNameQuo);
             }
@@ -258,7 +258,7 @@ namespace LoginForm
             //InvCurrencyName.SelectedValue = c.CurrNameInv ?? -1;
             if (c.Note != null) CompanyNotes.Text = IME.Notes.Where(a => a.ID == c.Note.ID).FirstOrDefault().Note_name;
             if (c.customerAccountantNoteID != null) AccountingNotes.Text = IME.Notes.Where(a => a.ID == c.customerAccountantNoteID).FirstOrDefault().Note_name;
-            if(c.creditlimit!=null) CreditLimit.Text = c.creditlimit.ToString();
+            if (c.creditlimit != null) CreditLimit.Text = c.creditlimit.ToString();
             if (c.creditlimit != null) CreditLimit.Text = c.creditlimit.ToString();
 
             txt3partyCode.Text = c.ThirdPartyCode ?? txt3partyCode.Text;
@@ -294,7 +294,7 @@ namespace LoginForm
                     ContactMobilePhone.Text = a.mobilephone;
                     ContactPhone.Text = a.phone;
                     if (a.CustomerWorkerAdress != null) ContactAdress.SelectedItem = Int32.Parse(a.CustomerWorkerAdress.ToString());
-                    CommunicationLanguage.SelectedValue  = a.Language.ID;
+                    CommunicationLanguage.SelectedValue = a.Language.ID;
                     if (a.Note != null) { ContactNotes.Text = a.Note.Note_name; } else { ContactNotes.Text = ""; }
 
                     //foreach (var a in contact1)
@@ -367,7 +367,7 @@ namespace LoginForm
             ContactType.Enabled = false;
             ContactDepartment.Enabled = false;
             departmentAdd.Enabled = false;
-           
+
             ContactTitle.Enabled = false;
             titleAdd.Enabled = false;
             ContactName.Enabled = false;
@@ -423,7 +423,7 @@ namespace LoginForm
             departmentAdd.Enabled = true;
             ContactTitle.Enabled = true;
             titleAdd.Enabled = true;
-            
+
             ContactName.Enabled = true;
             ContactEmail.Enabled = true;
             ContactPhone.Enabled = true;
@@ -493,7 +493,7 @@ namespace LoginForm
             #region contactTabEnableTrue
             //if (cbIMEOffice.Checked == false)
             //{
-                AddressType.Enabled = true;
+            AddressType.Enabled = true;
             //}
             cbCountry.Enabled = true;
             cbCity.Enabled = true;
@@ -521,7 +521,7 @@ namespace LoginForm
 
         private void customersearch()
         {
-            if(searchtxt==null || searchtxt == "")
+            if (searchtxt == null || searchtxt == "")
             {
                 // TODO 7 : Veritabanından customer araması sql'den çekilecek
                 var CustomerList = (from c in IME.Customers.Take(100).Where(a => a.c_name.Contains(searchtxt))
@@ -558,7 +558,7 @@ namespace LoginForm
                                         SubCategory = c.subcategoryID,
                                         c.ThirdPartyCode,
                                         c.Capital
-                                   }).ToList();
+                                    }).ToList();
                 CustomerDataGrid.DataSource = CustomerList;
             }
             else
@@ -601,7 +601,7 @@ namespace LoginForm
                                     }).ToList();
                 CustomerDataGrid.DataSource = CustomerList;
             }
-            if (CustomerDataGrid.RowCount!=0) {
+            if (CustomerDataGrid.RowCount != 0) {
                 string customerID = CustomerDataGrid.CurrentRow.Cells["ID"].Value.ToString();
                 Customer c = IME.Customers.Where(a => a.ID == customerID).FirstOrDefault();
                 dateTimePicker1.Value = c.CreateDate.Value;
@@ -667,7 +667,7 @@ namespace LoginForm
             if (c.Note != null) CompanyNotes.Text = IME.Notes.Where(a => a.ID == c.Note.ID).FirstOrDefault().Note_name;
             if (c.customerAccountantNoteID != null) AccountingNotes.Text = IME.Notes.Where(a => a.ID == c.customerAccountantNoteID).FirstOrDefault().Note_name;
             CreditLimit.Text = c.creditlimit.ToString();
-           // CustomerDataGrid.CurrentCell = CustomerDataGrid.Rows[gridselectedindex].Cells[0];
+            // CustomerDataGrid.CurrentCell = CustomerDataGrid.Rows[gridselectedindex].Cells[0];
         }
 
         //CONTACT ADD NEW
@@ -1055,7 +1055,7 @@ namespace LoginForm
                         c.MainContactID = (int)cbMainContact.SelectedValue;
                         c.CurrNameQuo = ((DataSet.Currency)QuoCurrencyName.SelectedItem).currencyName;
                         c.CurrNameInv = ((DataSet.Currency)InvCurrencyName.SelectedItem).currencyName;
-                        if(factor.Text!="") c.factor = Decimal.Parse(factor.Text);
+                        if (factor.Text != "") c.factor = Decimal.Parse(factor.Text);
                         if (Capital.SelectedItem != null) c.Capital = Capital.SelectedItem.ToString();
 
                         //Notes kısmına kayıt ediliyor
@@ -1215,7 +1215,7 @@ namespace LoginForm
             Represantative1.Enabled = false;
             CompanyNotes.Enabled = false;
             WebAdress.Enabled = false;
-            
+
             CustomerFax.Enabled = false;
             CustomerName.Enabled = false;
             txt3partyCode.Enabled = false;
@@ -1410,21 +1410,24 @@ namespace LoginForm
             }
             else
             {
-                ca = new CustomerAddress
+                if (AddressControl())
                 {
-                    AddressType = AddressType.Text,
-                    //CustomerCode.Text;
-                    CustomerID = CustomerCode.Text,
-                    CountryID = ((cbCountry).SelectedItem as Country).ID,
-                    CityID = ((cbCity).SelectedItem as City).ID,
-                    TownID=((cbTown).SelectedItem as Town).ID,
-                    //TownID = (int)cbTown.SelectedValue,
-                    AdressTitle = txtAdressTitle.Text,
-                    //AddresType
-                    isInvoiceAddress = false,
-                    PostCode = PostCode.Text,
-                    AdressDetails = AddressDetails.Text
-            };
+                    ca = new CustomerAddress
+                    {
+                        AddressType = AddressType.Text,
+                        //CustomerCode.Text;
+                        CustomerID = CustomerCode.Text,
+                        CountryID = ((cbCountry).SelectedItem as Country).ID,
+                        CityID = ((cbCity).SelectedItem as City).ID,
+                        TownID = ((cbTown).SelectedItem as Town).ID,
+                        //TownID = (int)cbTown.SelectedValue,
+                        AdressTitle = txtAdressTitle.Text,
+                        //AddresType
+                        isInvoiceAddress = false,
+                        PostCode = PostCode.Text,
+                        AdressDetails = AddressDetails.Text
+                    };
+                }
                 //if (!cbDefaultInvoiceAdress.Checked) { ca.isInvoiceAddress = true;}
                 if (cbDefaultInvoiceAdress.Checked) { ca.isInvoiceAddress = true; } else { ca.isInvoiceAddress = false; }
                 if (cbDefaultDeliveryAdress.Checked) { ca.isDeliveryAddress = true; } else { ca.isDeliveryAddress = false; }
@@ -1479,7 +1482,7 @@ namespace LoginForm
                 cbCity.DisplayMember = "City_name";
                 cbCity.ValueMember = "ID";
 
-                if (cbCity.DataSource==null || cbCity.Items.Count == 0)
+                if (cbCity.DataSource == null || cbCity.Items.Count == 0)
                 {
                     cbCity.Text = "N/A";
                 }
@@ -1539,7 +1542,7 @@ namespace LoginForm
                     if (a.City != null)
                     {
                         cbCity.SelectedValue = a.CityID;
-                    } 
+                    }
                     if (a.Town != null)
                     {
                         cbTown.SelectedValue = a.TownID;
@@ -1774,7 +1777,7 @@ namespace LoginForm
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            MakeTextUpperCase((TextBox)sender);
+            //MakeTextUpperCase((TextBox)sender);
         }
 
         private void AddressType_SelectedIndexChanged(object sender, EventArgs e)
@@ -1792,6 +1795,8 @@ namespace LoginForm
             if (Capital.Text == ComboboxString) { ErrorMessage = ErrorMessage + "Please Choose Capital of the Company\n"; isSave = false; }
             if (Telephone.Text == null || Telephone.Text == string.Empty) { ErrorMessage = ErrorMessage + "Please Enter Company's Phone correctly or Delete\n"; isSave = false; }
             if (ContactList.Items.Count == 0) { ErrorMessage = ErrorMessage + "Please Enter a Contact\n"; isSave = false; }
+            if (cbCity.Text == ComboboxString) { ErrorMessage = ErrorMessage + "Please Choose City of Company\n"; isSave = false; }
+            if (cbTown.Text == ComboboxString) { ErrorMessage = ErrorMessage + "Please Choose Town of Company\n"; isSave = false; }
             if (isSave == true) { return true; } else { MessageBox.Show(ErrorMessage); return false; }
         }
 
@@ -1810,6 +1815,10 @@ namespace LoginForm
             form.ShowDialog();
             this.BringToFront();
             cbTown.Refresh();
+            
+            cbTown.DataSource = IME.Towns.Where(a => a.CityID == (int)cbCity.SelectedValue).ToList();
+            cbTown.DisplayMember = "Town_name";
+            cbTown.ValueMember = "ID";
         }
 
         private void btnAddMainCategory_Click(object sender, EventArgs e)
@@ -1902,5 +1911,23 @@ namespace LoginForm
         //        tabControl1.SelectedTab = tab_contact;
         //    }
         //}
+
+       private bool AddressControl()
+        {
+            bool isSave = true;
+            string ErrorMessage = string.Empty;
+            if (cbCity.Text == string.Empty) { ErrorMessage = ErrorMessage + "Please Enter City"; isSave = false; }
+            if (cbTown.Text == string.Empty) { ErrorMessage = ErrorMessage + "Please Enter Town"; isSave = false; }
+            if (isSave == true) { return true; } else { MessageBox.Show(ErrorMessage); return false; }
+        }
+
+        private void CityAdd_Click(object sender, EventArgs e)
+        {
+            frmCityAdd form = new frmCityAdd();
+            form.ShowDialog();
+            cbCity.DataSource = IME.Cities.Where(a => a.CountryID == (int)cbCountry.SelectedValue).ToList();
+            cbCity.DisplayMember = "City_name";
+            cbCity.ValueMember = "ID";
+        }
     }
 }

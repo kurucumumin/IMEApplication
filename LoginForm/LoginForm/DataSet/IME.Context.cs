@@ -1939,6 +1939,11 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.DateTime>>("CurrentDate");
         }
     
+        public virtual ObjectResult<CustomersDebits_Result> CustomersDebits()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CustomersDebits_Result>("CustomersDebits");
+        }
+    
         public virtual ObjectResult<Nullable<decimal>> DailyAttendanceAddToMaster(Nullable<System.DateTime> date, string narration)
         {
             var dateParameter = date.HasValue ?
@@ -2440,6 +2445,15 @@ namespace LoginForm.DataSet
                 new ObjectParameter("slNo", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("DeliveryNoteDetailsAdd", deliveryNoteMasterIdParameter, saleOrderDetailIdParameter, productIdParameter, qtyParameter, rateParameter, unitIdParameter, unitConversionIdParameter, discountParameter, taxIdParameter, batchIdParameter, godownIdParameter, rackIdParameter, taxAmountParameter, grossAmountParameter, netAmountParameter, amountParameter, slNoParameter);
+        }
+    
+        public virtual ObjectResult<DeliveryNoteItemsToSaleInvoice_Result> DeliveryNoteItemsToSaleInvoice(string deliveryNoteNo)
+        {
+            var deliveryNoteNoParameter = deliveryNoteNo != null ?
+                new ObjectParameter("DeliveryNoteNo", deliveryNoteNo) :
+                new ObjectParameter("DeliveryNoteNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DeliveryNoteItemsToSaleInvoice_Result>("DeliveryNoteItemsToSaleInvoice", deliveryNoteNoParameter);
         }
     
         public virtual ObjectResult<Nullable<decimal>> DeliveryNoteMasterAdd(string voucherNo, string invoiceNo, Nullable<decimal> voucherTypeId, Nullable<decimal> suffixPrefixId, Nullable<System.DateTime> date, Nullable<int> creditPeriod, Nullable<decimal> ledgerId, Nullable<decimal> salesAccount, Nullable<decimal> orderMasterId, string narration, Nullable<decimal> exchangeRateId, Nullable<decimal> taxAmount, Nullable<decimal> additionalCost, Nullable<decimal> billDiscount, Nullable<decimal> grandTotal, Nullable<decimal> totalAmount, Nullable<int> userId, string lrNo, string transportationCompany, Nullable<bool> pOS, Nullable<decimal> financialYearId, string customerID)
