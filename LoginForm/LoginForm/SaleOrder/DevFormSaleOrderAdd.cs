@@ -1303,7 +1303,8 @@ namespace LoginForm.QuotationModule
                     if (Int32.Parse(CurrentRow.Cells["dgUC"].Value.ToString()) > 1 && (!(CurrentRow.Cells["dgProductCode"].Value.ToString().Contains("P"))))
                     {
 
-                        CurrentRow.Cells["dgMargin"].Value = (((1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(CurrentRow.Cells["dgUCUPCurr"].Value.ToString())
+                        CurrentRow.Cells["dgMargin"].Value = (((1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())
+                            / Currfactor) / ((Decimal.Parse(CurrentRow.Cells["dgUCUPCurr"].Value.ToString())
                         * decimal.Parse(CurrentRow.Cells["dgUC"].Value.ToString())
                           )))) * 100).ToString("G29");
 
@@ -1316,13 +1317,15 @@ namespace LoginForm.QuotationModule
 
                             if (Int32.Parse(CurrentRow.Cells["dgSSM"].Value.ToString()) > 1)
                             {
-                                CurrentRow.Cells["dgMargin"].Value = (((1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(CurrentRow.Cells["dgUCUPCurr"].Value.ToString())
+                                CurrentRow.Cells["dgMargin"].Value = (((1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())
+                                    / Currfactor) / ((Decimal.Parse(CurrentRow.Cells["dgUCUPCurr"].Value.ToString())
                            * decimal.Parse(CurrentRow.Cells["dgUC"].Value.ToString())
                              )))) * 100).ToString("G29");
                             }
                             else
                             {
-                                CurrentRow.Cells["dgMargin"].Value = (((1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(CurrentRow.Cells["dgUCUPCurr"].Value.ToString())
+                                CurrentRow.Cells["dgMargin"].Value = (((1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())
+                                    / Currfactor) / ((Decimal.Parse(CurrentRow.Cells["dgUCUPCurr"].Value.ToString())
                             * decimal.Parse(CurrentRow.Cells["dgUC"].Value.ToString())
                               )))) * 100).ToString("G29");
                             }
@@ -1330,7 +1333,8 @@ namespace LoginForm.QuotationModule
                         }
                         else
                         {
-                            CurrentRow.Cells["dgMargin"].Value = (((1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(CurrentRow.Cells["dgUCUPCurr"].Value.ToString()))))) * 100).ToString("G29");
+                            CurrentRow.Cells["dgMargin"].Value = (((1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())
+                                / Currfactor) / ((Decimal.Parse(CurrentRow.Cells["dgUCUPCurr"].Value.ToString()))))) * 100).ToString("G29");
                         }
 
 
@@ -1341,7 +1345,7 @@ namespace LoginForm.QuotationModule
                 else
                 {
                     CurrentRow.Cells["dgMargin"].Value = ((1 - ((Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())
-                        ) / ((Decimal.Parse(CurrentRow.Cells["dgUCUPCurr"].Value.ToString()))))) * 100).ToString("G29");
+                        / Currfactor) / ((Decimal.Parse(CurrentRow.Cells["dgUCUPCurr"].Value.ToString()))))) * 100).ToString("G29");
 
                 }
             }
@@ -1367,7 +1371,8 @@ namespace LoginForm.QuotationModule
                     {
                         if (Int32.Parse(dgSaleAddedItems.Rows[i].Cells["dgUC"].Value.ToString()) > 1 && (!(dgSaleAddedItems.Rows[i].Cells["dgProductCode"].Value.ToString().Contains("P"))))
                         {
-                            dgSaleAddedItems.Rows[i].Cells["dgMargin"].Value = (((1 - (Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString()) * decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgUC"].Value.ToString()))))) * 100).ToString("G29");
+                            dgSaleAddedItems.Rows[i].Cells["dgMargin"].Value = (((1 - (Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgLandingCost"].Value.ToString())
+                                / Currfactor) / ((Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString()) * decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgUC"].Value.ToString()))))) * 100).ToString("G29");
                         }
                         else
                         {
@@ -1785,7 +1790,8 @@ namespace LoginForm.QuotationModule
                             #region Get Margin
                             if (CurrentRow.Cells["dgQty"].Value != null)
                             {
-                                CurrentRow.Cells["dgMargin"].Value = ((1 - ((Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(CurrentRow.Cells["dgUCUPCurr"].Value.ToString()))))) * 100).ToString("G29");
+                                CurrentRow.Cells["dgMargin"].Value = ((1 - ((Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())
+                                    / Currfactor) / ((Decimal.Parse(CurrentRow.Cells["dgUCUPCurr"].Value.ToString()))))) * 100).ToString("G29");
                             }
                             #endregion
                         }
@@ -2116,14 +2122,23 @@ namespace LoginForm.QuotationModule
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (!HasNullData())
+            try
             {
-                if (ControlSave())
+                CalculateTotalMarge();
+                if (!HasNullData())
                 {
-                    decimal saleOrderNo = SaleSave();
-                    SaleOrderDetailsSave(saleOrderNo);
+                    if (ControlSave())
+                    {
+                        decimal saleOrderNo = SaleSave();
+                        SaleOrderDetailsSave(saleOrderNo);
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error Occured\n" + ex.ToString(), "Error");
+            }
+            
             
             //try
             //{
@@ -2175,6 +2190,7 @@ namespace LoginForm.QuotationModule
                 s.DiscOnSubtotal = (txtTotalDis.Text != null && txtTotalDis.Text != String.Empty) ? Convert.ToDecimal(txtTotalDis.Text) : 0;
                 s.ExtraCharges = (txtExtraCharges.Text != null && txtExtraCharges.Text != String.Empty) ? Convert.ToDecimal(txtExtraCharges.Text) : 0;
                 s.financialYearId = (decimal)Utils.getManagement().CurrentFinancialYear;
+                s.exchangeRateID = curr.exchangeRateID;
 
 
 
@@ -3182,7 +3198,7 @@ namespace LoginForm.QuotationModule
 
         private void cbCurrency_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbCurrency.SelectedIndex != null && cbCurrency.DataSource != null)
+            if (cbCurrency.SelectedIndex != -1 && cbCurrency.DataSource != null)
             {
                 GetCurrency(dtpDate.Value);
                 ChangeCurr();
