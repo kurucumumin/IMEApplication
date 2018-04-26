@@ -51,7 +51,7 @@ namespace LoginForm.PurchaseOrder
                 }
                 else if(ItemsFrom == "DeliveryNote")
                 {
-
+                    dgSaleOrder.DataSource = IME.DeliveryNoteToSaleInvoice(((frmSalesInvoice)parent).txtCustomer.Text).ToList();
                 }
                 
             }
@@ -132,9 +132,13 @@ namespace LoginForm.PurchaseOrder
             try {
                 dgSaleOrderDetails.Rows.Clear();
                 IMEEntities IME = new IMEEntities();
-                    foreach (DataGridViewRow item in dgSaleOrder.SelectedRows)
+                foreach (DataGridViewRow item in dgSaleOrder.SelectedRows)
+                {
+                    if (ItemsFrom == "SaleOrder")
                     {
-                        foreach (var item1 in IME.SaleOrderItemsToDeliveryNote(decimal.Parse(item.Cells["SaleOrderID"].Value.ToString())))
+                        var list = IME.SaleOrderItemsToDeliveryNote(decimal.Parse(item.Cells["SaleOrderID"].Value.ToString()));
+
+                        foreach (var item1 in list)
                         {
                             dgSaleOrderDetails.AllowUserToAddRows = true;
                             DataGridViewRow row = (DataGridViewRow)dgSaleOrderDetails.Rows[0].Clone();
@@ -152,7 +156,31 @@ namespace LoginForm.PurchaseOrder
                             dgSaleOrderDetails.AllowUserToAddRows = false;
                             dgSaleOrderDetails.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
                         }
+                    }else if (ItemsFrom == "DeliveryNote")
+                    {
+                        var list = IME.DeliveryNoteItemsToSaleInvoice(item.Cells["Delivery_Note_No"].Value.ToString()).ToList();
+                        foreach (var item1 in list)
+                        {
+                            dgSaleOrderDetails.AllowUserToAddRows = true;
+                            DataGridViewRow row = (DataGridViewRow)dgSaleOrderDetails.Rows[0].Clone();
+                            dgSaleOrderDetails.Columns[dgSaleOrderID.Index].HeaderText = "Delivery Note No";
+                            dgSaleOrderDetails.Columns[dgSaleOrderDetailID.Index].HeaderText = "Delivery Note Detail ID";
+                            ////row.Cells[dgCName.Index].Value = item1.;
+                            row.Cells[dgItemCode.Index].Value = item1.Product_ID;
+                            row.Cells[dgQuantity.Index].Value = item1.Sent_Quantity;
+                            //row.Cells[dgStockQuantity.Index].Value = item1.StockQuantityForCustmer;
+                            row.Cells[dgSaleOrderID.Index].Value = item1.Delivery_Note_NO;
+                            row.Cells[dgProductDescription.Index].Value = item1.Product_Description;
+                            row.Cells[dgSaleOrderDetailID.Index].Value = item1.Delivery_Note_ID;
+                            //row.Cells[dgUnitContent.Index].Value = item1.UnitContent;
+                            //row.Cells[dgUnitOfMeasure.Index].Value = item1.UnitOfMeasure;
+                            //row.Cells[dgUnitPrice.Index].Value = item1.UnitPrice;
+                            dgSaleOrderDetails.Rows.Add(row);
+                            dgSaleOrderDetails.AllowUserToAddRows = false;
+                            dgSaleOrderDetails.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+                        }
                     }
+                }
             }
             catch { }
         }

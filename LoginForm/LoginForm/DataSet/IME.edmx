@@ -7551,6 +7551,9 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Parameter Name="amount" Type="decimal" Mode="In" />
           <Parameter Name="slNo" Type="int" Mode="In" />
         </Function>
+        <Function Name="DeliveryNoteItemsToSaleInvoice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DeliveryNoteNo" Type="varchar(max)" Mode="In" />
+        </Function>
         <Function Name="DeliveryNoteMasterAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
           <Parameter Name="invoiceNo" Type="varchar(max)" Mode="In" />
@@ -20791,6 +20794,9 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <Parameter Name="amount" Mode="In" Type="Decimal" />
             <Parameter Name="slNo" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="DeliveryNoteItemsToSaleInvoice" ReturnType="Collection(IMEModel.DeliveryNoteItemsToSaleInvoice_Result)">
+            <Parameter Name="DeliveryNoteNo" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="DeliveryNoteMasterAdd" ReturnType="Collection(Decimal)">
             <Parameter Name="voucherNo" Mode="In" Type="String" />
             <Parameter Name="invoiceNo" Mode="In" Type="String" />
@@ -23213,6 +23219,13 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="Decimal" Name="totalAmount" Nullable="true" Precision="18" Scale="2" />
           <Property Type="String" Name="narration" Nullable="true" />
           <Property Type="String" Name="userName" Nullable="false" MaxLength="25" />
+        </ComplexType>
+        <ComplexType Name="DeliveryNoteItemsToSaleInvoice_Result">
+          <Property Type="Decimal" Name="Delivery_Note_ID" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="Delivery_Note_NO" Nullable="true" />
+          <Property Type="String" Name="Product_Description" Nullable="false" MaxLength="11" />
+          <Property Type="String" Name="Product_ID" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Sent_Quantity" Nullable="false" />
         </ComplexType>
         <ComplexType Name="DeliveryNoteToSaleInvoice_Result">
           <Property Type="String" Name="Delivery_Note_No" Nullable="true" />
@@ -28502,6 +28515,17 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="DefaultCurrencySet" FunctionName="IMEModel.Store.DefaultCurrencySet" />
           <FunctionImportMapping FunctionImportName="DeliveryNoteDetailsAdd" FunctionName="IMEModel.Store.DeliveryNoteDetailsAdd" />
+          <FunctionImportMapping FunctionImportName="DeliveryNoteItemsToSaleInvoice" FunctionName="IMEModel.Store.DeliveryNoteItemsToSaleInvoice">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.DeliveryNoteItemsToSaleInvoice_Result">
+                <ScalarProperty Name="Delivery_Note_ID" ColumnName="Delivery Note ID" />
+                <ScalarProperty Name="Delivery_Note_NO" ColumnName="Delivery Note NO" />
+                <ScalarProperty Name="Product_Description" ColumnName="Product Description" />
+                <ScalarProperty Name="Product_ID" ColumnName="Product ID" />
+                <ScalarProperty Name="Sent_Quantity" ColumnName="Sent Quantity" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="DeliveryNoteMasterAdd" FunctionName="IMEModel.Store.DeliveryNoteMasterAdd" />
           <FunctionImportMapping FunctionImportName="DeliveryNoteToSaleInvoice" FunctionName="IMEModel.Store.DeliveryNoteToSaleInvoice">
             <ResultMapping>

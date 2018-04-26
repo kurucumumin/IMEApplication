@@ -1857,6 +1857,7 @@ namespace LoginForm.QuotationModule
                 q.CustomerID = CustomerCode.Text;
                 q.ShippingMethodID = cbSMethod.SelectedIndex;
                 q.QuotationMainContact = cbWorkers.SelectedIndex;
+                q.ExchangeRateID = curr.exchangeRateID;
                 int Note2 = 0;
                 int Note1 = 0;
                 if (txtNoteForUs.Text != null || txtNoteForUs.Text != "")
@@ -1942,6 +1943,7 @@ namespace LoginForm.QuotationModule
                 }
                 if (Note1 != 0) q.NoteForUsID = Note1;
                 if (Note2 != 0) q.NoteForCustomerID = Note2;
+                q.ExchangeRateID = curr.exchangeRateID;
                 IME.Quotations.Add(q);
                 IME.SaveChanges();
                 #endregion

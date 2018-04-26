@@ -1121,6 +1121,9 @@
     <Compile Include="DataSet\DeliveryNoteDetail.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\DeliveryNoteItemsToSaleInvoice_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\DeliveryNoteMaster.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
