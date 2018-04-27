@@ -37,13 +37,13 @@
             this.btnDeliveryNote = new System.Windows.Forms.Button();
             this.dgSaleOrder = new System.Windows.Forms.DataGridView();
             this.CheckBox = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dgSaleOrderID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgMasterNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgProductDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgStockQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgCName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgSaleOrderDetailID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgDetailID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgUnitContent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgUnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgUnitOfMeasure = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,23 +53,24 @@
             // 
             // dgSaleOrderDetails
             // 
-            this.dgSaleOrderDetails.AllowUserToOrderColumns = true;
+            this.dgSaleOrderDetails.AllowUserToDeleteRows = false;
             this.dgSaleOrderDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgSaleOrderDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CheckBox,
-            this.dgSaleOrderID,
+            this.dgMasterNo,
             this.dgItemCode,
             this.dgProductDescription,
             this.dgQuantity,
             this.dgStockQuantity,
             this.dgCName,
-            this.dgSaleOrderDetailID,
+            this.dgDetailID,
             this.dgUnitContent,
             this.dgUnitPrice,
             this.dgUnitOfMeasure});
             this.dgSaleOrderDetails.Location = new System.Drawing.Point(528, 36);
             this.dgSaleOrderDetails.Margin = new System.Windows.Forms.Padding(4);
             this.dgSaleOrderDetails.Name = "dgSaleOrderDetails";
+            this.dgSaleOrderDetails.ReadOnly = true;
             this.dgSaleOrderDetails.Size = new System.Drawing.Size(643, 309);
             this.dgSaleOrderDetails.TabIndex = 0;
             // 
@@ -155,13 +156,14 @@
             // 
             this.CheckBox.HeaderText = "";
             this.CheckBox.Name = "CheckBox";
+            this.CheckBox.ReadOnly = true;
             this.CheckBox.Width = 20;
             // 
-            // dgSaleOrderID
+            // dgMasterNo
             // 
-            this.dgSaleOrderID.HeaderText = "Sale OrderID";
-            this.dgSaleOrderID.Name = "dgSaleOrderID";
-            this.dgSaleOrderID.ReadOnly = true;
+            this.dgMasterNo.HeaderText = "Sale OrderID";
+            this.dgMasterNo.Name = "dgMasterNo";
+            this.dgMasterNo.ReadOnly = true;
             // 
             // dgItemCode
             // 
@@ -173,6 +175,7 @@
             // 
             this.dgProductDescription.HeaderText = "Product Description";
             this.dgProductDescription.Name = "dgProductDescription";
+            this.dgProductDescription.ReadOnly = true;
             // 
             // dgQuantity
             // 
@@ -192,11 +195,12 @@
             this.dgCName.Name = "dgCName";
             this.dgCName.ReadOnly = true;
             // 
-            // dgSaleOrderDetailID
+            // dgDetailID
             // 
-            this.dgSaleOrderDetailID.HeaderText = "SaleOrderDetailID";
-            this.dgSaleOrderDetailID.Name = "dgSaleOrderDetailID";
-            this.dgSaleOrderDetailID.Visible = false;
+            this.dgDetailID.HeaderText = "SaleOrderDetailID";
+            this.dgDetailID.Name = "dgDetailID";
+            this.dgDetailID.ReadOnly = true;
+            this.dgDetailID.Visible = false;
             // 
             // dgUnitContent
             // 
@@ -251,13 +255,13 @@
         private System.Windows.Forms.Button btnDeliveryNote;
         private System.Windows.Forms.DataGridView dgSaleOrder;
         private System.Windows.Forms.DataGridViewCheckBoxColumn CheckBox;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgSaleOrderID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgMasterNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgItemCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgProductDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgStockQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgCName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgSaleOrderDetailID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgDetailID;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgUnitContent;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgUnitPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgUnitOfMeasure;

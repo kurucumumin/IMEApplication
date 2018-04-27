@@ -620,7 +620,7 @@ namespace LoginForm
                 if (c.accountrepresentaryID != null) AccountRepresentary.Text = IME.Workers.Where(a => a.WorkerID == c.accountrepresentaryID).FirstOrDefault().NameLastName;
                 if (c.CustomerCategory != null) MainCategory.SelectedValue = c.CustomerCategory.ID;
                 if (c.CustomerSubCategory != null) SubCategory.SelectedValue = c.CustomerSubCategory.ID;
-                TermsofPayments.SelectedValue = c.PaymentTerm.ID;
+                TermsofPayments.SelectedValue = c.PaymentTerm != null ? c.PaymentTerm.ID : 0;
                 if (c.isactive == 1) { rb_active.Checked = true; } else { rb_passive.Checked = true; }
                 ContactList.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
                 ContactList.DisplayMember = "cw_name";

@@ -740,6 +740,9 @@
     <Compile Include="Customer\frmCityAdd.Designer.cs">
       <DependentUpon>frmCityAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\Account.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\AccountGroup.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>

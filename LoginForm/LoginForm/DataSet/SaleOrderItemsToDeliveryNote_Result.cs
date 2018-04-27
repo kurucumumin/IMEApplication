@@ -18,7 +18,7 @@ namespace LoginForm.DataSet
         public string ItemDescription { get; set; }
         public string UnitOfMeasure { get; set; }
         public Nullable<int> UnitContent { get; set; }
-        public Nullable<decimal> UnitPrice { get; set; }
+        public decimal UnitPrice { get; set; }
         public string ItemCode { get; set; }
         public Nullable<int> NumberToSend { get; set; }
         public Nullable<int> StockQuantityForCustmer { get; set; }

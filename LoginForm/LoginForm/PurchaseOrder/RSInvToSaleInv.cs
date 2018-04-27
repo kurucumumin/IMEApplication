@@ -88,26 +88,27 @@ namespace LoginForm.PurchaseOrder
             //dt.Columns.Add("NetAmount");
             dt.Columns.Add("ProductDesc");
             dt.Columns.Add("BillingDocumentDate");
-            dt.Columns.Add("dgSaleOrderDetailID");
+            dt.Columns.Add("dgDetailID");
             dt.Columns.Add("dgUOM");
             dt.Columns.Add("dgUnitPrice");
             dt.Columns.Add("dgUnitContent");
-            dt.Columns.Add("dgSaleOrderID");
+            dt.Columns.Add("dgMasterNo");
             //dt.Columns.Add("PurchaseOrderNo");
             dt.Columns.Add("Currency");
             for (int i = 0; i < dgSaleOrderDetails.RowCount; i++)
             {
                 DataRow row = dt.NewRow();
+                if(ItemsFrom == "")
                 //row["dgCName"] = dgSaleOrderDetails.Rows[i].Cells[dgCName.Index].Value.ToString();
                 row["dgItemCode"] = dgSaleOrderDetails.Rows[i].Cells[dgItemCode.Index].Value.ToString();
                 row["Quantity"] = dgSaleOrderDetails.Rows[i].Cells[dgQuantity.Index].Value.ToString();
-                row["dgStockQuantity"] = dgSaleOrderDetails.Rows[i].Cells[dgStockQuantity.Index].Value.ToString();
+                row["dgStockQuantity"] = dgSaleOrderDetails.Rows[i].Cells[dgStockQuantity.Index].Value?.ToString();
                 row["ProductDesc"] = dgSaleOrderDetails.Rows[i].Cells[dgProductDescription.Index].Value.ToString();
-                row["dgSaleOrderDetailID"] = dgSaleOrderDetails.Rows[i].Cells[dgSaleOrderDetailID.Index].Value.ToString();
-                row["dgUOM"] = dgSaleOrderDetails.Rows[i].Cells[dgUnitOfMeasure.Index].Value.ToString();
+                row["dgDetailID"] = dgSaleOrderDetails.Rows[i].Cells[dgDetailID.Index].Value.ToString();
+                row["dgUOM"] = dgSaleOrderDetails.Rows[i].Cells[dgUnitOfMeasure.Index].Value?.ToString();
                 row["dgUnitPrice"] = dgSaleOrderDetails.Rows[i].Cells[dgUnitPrice.Index].Value.ToString();
                 row["dgUnitContent"] = dgSaleOrderDetails.Rows[i].Cells[dgUnitContent.Index].Value.ToString();
-                row["dgSaleOrderID"] = dgSaleOrderDetails.Rows[i].Cells[dgSaleOrderID.Index].Value.ToString();
+                row["dgMasterNo"] = dgSaleOrderDetails.Rows[i].Cells[dgMasterNo.Index].Value.ToString();
                 //string PONo;
                 //PONo = dgSaleInvoice.Rows[i].Cells[PODetailNo.Index].Value.ToString();
                 dt.Rows.Add(row);
@@ -146,9 +147,9 @@ namespace LoginForm.PurchaseOrder
                             row.Cells[dgItemCode.Index].Value = item1.ItemCode;
                             row.Cells[dgQuantity.Index].Value = item1.NumberToSend;
                             row.Cells[dgStockQuantity.Index].Value = item1.StockQuantityForCustmer;
-                            row.Cells[dgSaleOrderID.Index].Value = item1.SaleOrderID;
+                            row.Cells[dgMasterNo.Index].Value = item1.SaleOrderID;
                             row.Cells[dgProductDescription.Index].Value = item1.ItemDescription;
-                            row.Cells[dgSaleOrderDetailID.Index].Value = item1.SaleOrderDetailID;
+                            row.Cells[dgDetailID.Index].Value = item1.SaleOrderDetailID;
                             row.Cells[dgUnitContent.Index].Value = item1.UnitContent;
                             row.Cells[dgUnitOfMeasure.Index].Value = item1.UnitOfMeasure;
                             row.Cells[dgUnitPrice.Index].Value = item1.UnitPrice;
@@ -163,15 +164,15 @@ namespace LoginForm.PurchaseOrder
                         {
                             dgSaleOrderDetails.AllowUserToAddRows = true;
                             DataGridViewRow row = (DataGridViewRow)dgSaleOrderDetails.Rows[0].Clone();
-                            dgSaleOrderDetails.Columns[dgSaleOrderID.Index].HeaderText = "Delivery Note No";
-                            dgSaleOrderDetails.Columns[dgSaleOrderDetailID.Index].HeaderText = "Delivery Note Detail ID";
+                            dgSaleOrderDetails.Columns[dgMasterNo.Index].HeaderText = "Delivery Note No";
+                            dgSaleOrderDetails.Columns[dgDetailID.Index].HeaderText = "Delivery Note Detail ID";
                             ////row.Cells[dgCName.Index].Value = item1.;
                             row.Cells[dgItemCode.Index].Value = item1.Product_ID;
                             row.Cells[dgQuantity.Index].Value = item1.Sent_Quantity;
                             //row.Cells[dgStockQuantity.Index].Value = item1.StockQuantityForCustmer;
-                            row.Cells[dgSaleOrderID.Index].Value = item1.Delivery_Note_NO;
+                            row.Cells[dgMasterNo.Index].Value = item1.Delivery_Note_NO;
                             row.Cells[dgProductDescription.Index].Value = item1.Product_Description;
-                            row.Cells[dgSaleOrderDetailID.Index].Value = item1.Delivery_Note_ID;
+                            row.Cells[dgDetailID.Index].Value = item1.Delivery_Note_ID;
                             //row.Cells[dgUnitContent.Index].Value = item1.UnitContent;
                             //row.Cells[dgUnitOfMeasure.Index].Value = item1.UnitOfMeasure;
                             //row.Cells[dgUnitPrice.Index].Value = item1.UnitPrice;
