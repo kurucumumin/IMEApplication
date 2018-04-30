@@ -740,6 +740,9 @@
     <Compile Include="Customer\frmCityAdd.Designer.cs">
       <DependentUpon>frmCityAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\Account.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\AccountGroup.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1122,6 +1125,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\DeliveryNoteDetail.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\DeliveryNoteItemsToSaleInvoice_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\DeliveryNoteMaster.cs">
