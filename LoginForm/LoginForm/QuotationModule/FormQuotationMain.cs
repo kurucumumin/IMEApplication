@@ -171,7 +171,7 @@ namespace LoginForm.QuotationModule
             IMEEntities IME = new IMEEntities();
            // DateTime time = Convert.ToDateTime(IME.CurrentDate().FirtsOrDefault());
           //  MessageBox.Show(time.ToString());
-            var list = from q in IME.Quotations
+            var list = (from q in IME.Quotations
                        join c in IME.Customers on q.CustomerID equals c.ID
                        where q.StartDate >= fromDate && q.StartDate < toDate 
                        select new
@@ -180,7 +180,7 @@ namespace LoginForm.QuotationModule
                            QuotationNo = q.QuotationNo,
                            RFQ = q.RFQNo,
                            CustomerName = c.c_name
-                       };
+                       }).OrderByDescending(x=> x.QuotationNo);
 
             populateGrid(list.ToList());
             //.OrderByDescending(x => int.Parse(x.QuotationNo.Substring(5)).ToList());

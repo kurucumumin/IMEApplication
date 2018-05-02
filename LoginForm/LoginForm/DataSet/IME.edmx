@@ -543,6 +543,7 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="grossAmount" Type="decimal" Precision="18" Scale="5" />
           <Property Name="netAmount" Type="decimal" Precision="18" Scale="5" />
           <Property Name="Closed" Type="bit" />
+          <Property Name="UPIME" Type="decimal" Precision="20" Scale="5" />
         </EntityType>
         <EntityType Name="DeliveryNoteMaster">
           <Key>
@@ -11689,6 +11690,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="grossAmount" Type="Decimal" Precision="18" Scale="5" />
           <Property Name="netAmount" Type="Decimal" Precision="18" Scale="5" />
           <Property Name="Closed" Type="Boolean" />
+          <Property Name="UPIME" Type="Decimal" Precision="20" Scale="5" />
           <NavigationProperty Name="Batch" Relationship="Self.FK__DeliveryN__batch__37E53D9E" FromRole="DeliveryNoteDetail" ToRole="Batch" />
           <NavigationProperty Name="DeliveryNoteMaster" Relationship="Self.FK__DeliveryN__deliv__48DABF76" FromRole="DeliveryNoteDetail" ToRole="DeliveryNoteMaster" />
           <NavigationProperty Name="Godown" Relationship="Self.FK__DeliveryN__godow__3AC1AA49" FromRole="DeliveryNoteDetail" ToRole="Godown" />
@@ -23262,6 +23264,9 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="Decimal" Name="Delivery_Note_ID" Nullable="false" Precision="18" Scale="0" />
           <Property Type="String" Name="Delivery_Note_NO" Nullable="true" />
           <Property Type="String" Name="Product_Description" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Product_Description1" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Unit_Of_Measure" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Unit_Content" Nullable="true" />
           <Property Type="String" Name="Product_ID" Nullable="false" MaxLength="50" />
           <Property Type="Int32" Name="Sent_Quantity" Nullable="false" />
         </ComplexType>
@@ -25352,6 +25357,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="grossAmount" ColumnName="grossAmount" />
                 <ScalarProperty Name="netAmount" ColumnName="netAmount" />
                 <ScalarProperty Name="Closed" ColumnName="Closed" />
+                <ScalarProperty Name="UPIME" ColumnName="UPIME" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -28561,6 +28567,9 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="Delivery_Note_ID" ColumnName="Delivery Note ID" />
                 <ScalarProperty Name="Delivery_Note_NO" ColumnName="Delivery Note NO" />
                 <ScalarProperty Name="Product_Description" ColumnName="Product Description" />
+                <ScalarProperty Name="Product_Description1" ColumnName="Product Description1" />
+                <ScalarProperty Name="Unit_Of_Measure" ColumnName="Unit Of Measure" />
+                <ScalarProperty Name="Unit_Content" ColumnName="Unit Content" />
                 <ScalarProperty Name="Product_ID" ColumnName="Product ID" />
                 <ScalarProperty Name="Sent_Quantity" ColumnName="Sent Quantity" />
               </ComplexTypeMapping>

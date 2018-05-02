@@ -60,7 +60,7 @@ namespace LoginForm.nsSaleOrder
         {
             IMEEntities IME = new IMEEntities();
             endDate = endDate.AddDays(1);
-            var list = from so in IME.SaleOrders
+            var list = (from so in IME.SaleOrders
                        from cw in IME.CustomerWorkers.Where(x => x.ID == so.ContactID)
                        from ca in IME.CustomerAddresses.Where(x => x.ID == so.InvoiceAddressID)
                        from cw1 in IME.CustomerWorkers.Where(x => x.ID == so.DeliveryContactID).DefaultIfEmpty()
@@ -76,7 +76,7 @@ namespace LoginForm.nsSaleOrder
                            Address = ca.AdressTitle,
                            DeliveryAddress = ca1.AdressTitle,
                            SaleID = so.SaleOrderID
-                       };
+                       }).OrderByDescending(s=> s.Date);
             populateGrid(list.ToList());
         }
 
