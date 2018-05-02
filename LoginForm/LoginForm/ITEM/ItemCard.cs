@@ -780,7 +780,7 @@ namespace LoginForm.Item
 
         private void GetImageFromWeb(string URL)
         {
-            pictureBox1.Load("https://media.rs-online.com/t_large/Y1373331-01.jpg");
+            try { pictureBox1.Load("https://media.rs-online.com/t_large/Y1373331-01.jpg"); } catch { }
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
         }
 
