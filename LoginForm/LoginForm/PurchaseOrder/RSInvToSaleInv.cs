@@ -53,9 +53,7 @@ namespace LoginForm.PurchaseOrder
                 {
                     dgSaleOrder.DataSource = IME.DeliveryNoteToSaleInvoice(((frmSalesInvoice)parent).txtCustomer.Text).ToList();
                 }
-                
             }
-            
         }
 
 
@@ -98,7 +96,6 @@ namespace LoginForm.PurchaseOrder
             for (int i = 0; i < dgSaleOrderDetails.RowCount; i++)
             {
                 DataRow row = dt.NewRow();
-                if(ItemsFrom == "")
                 //row["dgCName"] = dgSaleOrderDetails.Rows[i].Cells[dgCName.Index].Value.ToString();
                 row["dgItemCode"] = dgSaleOrderDetails.Rows[i].Cells[dgItemCode.Index].Value.ToString();
                 row["Quantity"] = dgSaleOrderDetails.Rows[i].Cells[dgQuantity.Index].Value.ToString();
@@ -117,7 +114,7 @@ namespace LoginForm.PurchaseOrder
 
             if(parent.GetType() == typeof(frmDeliveryNote))
             {
-                ((frmDeliveryNote)parent).setSaleOrderItemsFromPopUp(dt);
+                ((frmDeliveryNote)parent).setDeliveryNoteItemsFromPopUp(dt);
             }
             else
             {
@@ -173,9 +170,9 @@ namespace LoginForm.PurchaseOrder
                             row.Cells[dgMasterNo.Index].Value = item1.Delivery_Note_NO;
                             row.Cells[dgProductDescription.Index].Value = item1.Product_Description;
                             row.Cells[dgDetailID.Index].Value = item1.Delivery_Note_ID;
-                            //row.Cells[dgUnitContent.Index].Value = item1.UnitContent;
-                            //row.Cells[dgUnitOfMeasure.Index].Value = item1.UnitOfMeasure;
-                            //row.Cells[dgUnitPrice.Index].Value = item1.UnitPrice;
+                            row.Cells[dgUnitContent.Index].Value = item1.Unit_Content;
+                            row.Cells[dgUnitOfMeasure.Index].Value = item1.Unit_Of_Measure;
+                            row.Cells[dgUnitPrice.Index].Value = item1.UnitPrice;
                             dgSaleOrderDetails.Rows.Add(row);
                             dgSaleOrderDetails.AllowUserToAddRows = false;
                             dgSaleOrderDetails.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;

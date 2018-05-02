@@ -5363,7 +5363,7 @@ namespace LoginForm
 
         }
 
-        public void setSaleOrderItemsFromPopUp(DataTable dt)
+        public void setDeliveryNoteItemsFromPopUp(DataTable dt)
         {
             string CurrencyName = "";
             //formLoadDefaultFunctions();
