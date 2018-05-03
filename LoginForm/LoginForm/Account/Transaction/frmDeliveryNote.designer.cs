@@ -152,6 +152,7 @@ namespace LoginForm
             this.dgvtxtSalesInvoiceMrp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxtSalesInvoiceSalesRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxtSalesInvoiceRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUPIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxtSalesInvoiceGrossValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxtSalesInvoiceDiscountPercentage = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxtSalesInvoiceDiscountAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -596,6 +597,7 @@ namespace LoginForm
             this.dgvtxtSalesInvoiceMrp,
             this.dgvtxtSalesInvoiceSalesRate,
             this.dgvtxtSalesInvoiceRate,
+            this.dgUPIME,
             this.dgvtxtSalesInvoiceGrossValue,
             this.dgvtxtSalesInvoiceDiscountPercentage,
             this.dgvtxtSalesInvoiceDiscountAmount,
@@ -1403,6 +1405,11 @@ namespace LoginForm
             this.dgvtxtSalesInvoiceRate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.dgvtxtSalesInvoiceRate.Width = 105;
             // 
+            // dgUPIME
+            // 
+            this.dgUPIME.HeaderText = "UPIME";
+            this.dgUPIME.Name = "dgUPIME";
+            // 
             // dgvtxtSalesInvoiceGrossValue
             // 
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
@@ -1699,6 +1706,7 @@ namespace LoginForm
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtSalesInvoiceMrp;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtSalesInvoiceSalesRate;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtSalesInvoiceRate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgUPIME;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtSalesInvoiceGrossValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtSalesInvoiceDiscountPercentage;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtSalesInvoiceDiscountAmount;
