@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using LoginForm.DataSet;
 using LoginForm.Services;
 using System.Globalization;
+using System.Threading;
 
 //using LoginForm.Quotation;
 
@@ -77,9 +78,17 @@ namespace LoginForm
         private void FormLogin_Load(object sender, EventArgs e)
         {
             txtID.Focus();
-            CultureInfo culture = new CultureInfo("en-US");
-            CultureInfo.DefaultThreadCurrentCulture = culture;
-           
+            //CultureInfo culture = new CultureInfo("en-US");
+            //CultureInfo.DefaultThreadCurrentCulture = culture;
+
+            #region Nokta Virgül Olayý
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
+
+            System.Threading.Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator = ".";
+
+            #endregion
+
             //
             ////for admin to see everything
             //RoleValue admin = IME.RoleValues.Where(a => a.RoleID == 1009).FirstOrDefault();

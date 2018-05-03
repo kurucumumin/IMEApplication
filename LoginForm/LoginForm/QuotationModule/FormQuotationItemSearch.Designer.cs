@@ -60,9 +60,12 @@
             // 
             // dgQuotationItemSearch
             // 
+            this.dgQuotationItemSearch.AllowUserToAddRows = false;
+            this.dgQuotationItemSearch.AllowUserToDeleteRows = false;
             this.dgQuotationItemSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgQuotationItemSearch.Location = new System.Drawing.Point(12, 57);
             this.dgQuotationItemSearch.Name = "dgQuotationItemSearch";
+            this.dgQuotationItemSearch.ReadOnly = true;
             this.dgQuotationItemSearch.Size = new System.Drawing.Size(868, 559);
             this.dgQuotationItemSearch.TabIndex = 2;
             this.dgQuotationItemSearch.DoubleClick += new System.EventHandler(this.dgQuotationItemSearch_DoubleClick);

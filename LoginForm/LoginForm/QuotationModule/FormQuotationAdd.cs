@@ -9,6 +9,8 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using System.Globalization;
+using System.Threading;
 
 namespace LoginForm.QuotationModule
 {
@@ -254,6 +256,14 @@ namespace LoginForm.QuotationModule
         }
         private void QuotationForm_Load(object sender, EventArgs e)
         {
+            #region Nokta Virgül Olayı
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
+
+            System.Threading.Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator = ".";
+
+            #endregion
+
             ControlAutorization();
             DataGridViewComboBoxColumn deliveryColumn = (DataGridViewComboBoxColumn)dgQuotationAddedItems.Columns[dgDelivery.Index];
             if (deliveryColumn.DataSource == null)

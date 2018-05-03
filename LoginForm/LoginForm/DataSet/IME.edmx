@@ -7565,6 +7565,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Parameter Name="netAmount" Type="decimal" Mode="In" />
           <Parameter Name="amount" Type="decimal" Mode="In" />
           <Parameter Name="slNo" Type="int" Mode="In" />
+          <Parameter Name="UPIME" Type="decimal" Mode="In" />
         </Function>
         <Function Name="DeliveryNoteItemsToSaleInvoice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="DeliveryNoteNo" Type="varchar(max)" Mode="In" />
@@ -20833,6 +20834,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <Parameter Name="netAmount" Mode="In" Type="Decimal" />
             <Parameter Name="amount" Mode="In" Type="Decimal" />
             <Parameter Name="slNo" Mode="In" Type="Int32" />
+            <Parameter Name="UPIME" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="DeliveryNoteItemsToSaleInvoice" ReturnType="Collection(IMEModel.DeliveryNoteItemsToSaleInvoice_Result)">
             <Parameter Name="DeliveryNoteNo" Mode="In" Type="String" />
@@ -23264,9 +23266,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="Decimal" Name="Delivery_Note_ID" Nullable="false" Precision="18" Scale="0" />
           <Property Type="String" Name="Delivery_Note_NO" Nullable="true" />
           <Property Type="String" Name="Product_Description" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Product_Description1" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Unit_Of_Measure" Nullable="true" MaxLength="50" />
           <Property Type="Int32" Name="Unit_Content" Nullable="true" />
+          <Property Type="Decimal" Name="UnitPrice" Nullable="true" Precision="18" Scale="5" />
+          <Property Type="Decimal" Name="UPIME" Nullable="true" Precision="20" Scale="5" />
           <Property Type="String" Name="Product_ID" Nullable="false" MaxLength="50" />
           <Property Type="Int32" Name="Sent_Quantity" Nullable="false" />
         </ComplexType>
@@ -24281,6 +24284,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="String" Name="ItemDescription" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="UnitOfMeasure" Nullable="true" MaxLength="20" />
           <Property Type="Int32" Name="UnitContent" Nullable="true" />
+          <Property Type="Decimal" Name="UPIME" Nullable="true" Precision="20" Scale="5" />
           <Property Type="Decimal" Name="UnitPrice" Nullable="false" Precision="20" Scale="5" />
           <Property Type="String" Name="ItemCode" Nullable="false" MaxLength="10" />
           <Property Type="Int32" Name="NumberToSend" Nullable="true" />
@@ -28567,9 +28571,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="Delivery_Note_ID" ColumnName="Delivery Note ID" />
                 <ScalarProperty Name="Delivery_Note_NO" ColumnName="Delivery Note NO" />
                 <ScalarProperty Name="Product_Description" ColumnName="Product Description" />
-                <ScalarProperty Name="Product_Description1" ColumnName="Product Description1" />
                 <ScalarProperty Name="Unit_Of_Measure" ColumnName="Unit Of Measure" />
                 <ScalarProperty Name="Unit_Content" ColumnName="Unit Content" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="UPIME" ColumnName="UPIME" />
                 <ScalarProperty Name="Product_ID" ColumnName="Product ID" />
                 <ScalarProperty Name="Sent_Quantity" ColumnName="Sent Quantity" />
               </ComplexTypeMapping>
@@ -30112,6 +30117,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
                 <ScalarProperty Name="UnitOfMeasure" ColumnName="UnitOfMeasure" />
                 <ScalarProperty Name="UnitContent" ColumnName="UnitContent" />
+                <ScalarProperty Name="UPIME" ColumnName="UPIME" />
                 <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
                 <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
                 <ScalarProperty Name="NumberToSend" ColumnName="NumberToSend" />
