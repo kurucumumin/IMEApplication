@@ -149,7 +149,8 @@ namespace LoginForm.Account.Services
                     deliverynotedetailsinfo.grossAmount,
                     deliverynotedetailsinfo.netAmount,
                     deliverynotedetailsinfo.amount,
-                    deliverynotedetailsinfo.slNo).FirstOrDefault();
+                    deliverynotedetailsinfo.slNo,
+                    deliverynotedetailsinfo.UPIME).FirstOrDefault();
 
                 db.SaveChanges();
                 DeliveryNoteDetail dnt = db.DeliveryNoteDetails.Where(x => x.deliveryNoteDetailsId == detailID).FirstOrDefault();

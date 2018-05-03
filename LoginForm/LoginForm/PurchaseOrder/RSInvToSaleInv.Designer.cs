@@ -47,6 +47,7 @@
             this.dgUnitContent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgUnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgUnitOfMeasure = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUPIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgSaleOrderDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgSaleOrder)).BeginInit();
             this.SuspendLayout();
@@ -66,7 +67,8 @@
             this.dgDetailID,
             this.dgUnitContent,
             this.dgUnitPrice,
-            this.dgUnitOfMeasure});
+            this.dgUnitOfMeasure,
+            this.dgUPIME});
             this.dgSaleOrderDetails.Location = new System.Drawing.Point(528, 36);
             this.dgSaleOrderDetails.Margin = new System.Windows.Forms.Padding(4);
             this.dgSaleOrderDetails.Name = "dgSaleOrderDetails";
@@ -220,6 +222,13 @@
             this.dgUnitOfMeasure.Name = "dgUnitOfMeasure";
             this.dgUnitOfMeasure.ReadOnly = true;
             // 
+            // dgUPIME
+            // 
+            this.dgUPIME.HeaderText = "UPIME";
+            this.dgUPIME.Name = "dgUPIME";
+            this.dgUPIME.ReadOnly = true;
+            this.dgUPIME.Visible = false;
+            // 
             // SaleOrderToDeliveryNote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -265,5 +274,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgUnitContent;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgUnitPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgUnitOfMeasure;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgUPIME;
     }
 }

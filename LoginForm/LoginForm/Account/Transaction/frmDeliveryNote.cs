@@ -3100,13 +3100,14 @@ namespace LoginForm
                             }
                             //else
                             //{
-                                //InfoDeliveryDetails.taxId = 1;
-                                //InfoDeliveryDetails.taxAmount = 0;
+                            //InfoDeliveryDetails.taxId = 1;
+                            //InfoDeliveryDetails.taxAmount = 0;
                             //}
                             //TODO: GrossAmount olayını düzeltmemiz lazım.
                             //InfoDeliveryDetails.grossAmount = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceGrossValue"].Value);
                             //InfoDeliveryDetails.netAmount = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceNetAmount"].Value.ToString());
                             //InfoDeliveryDetails.amount = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceAmount"].Value.ToString());
+                            InfoDeliveryDetails.UPIME = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells[dgUPIME.Index].Value.ToString());
                             spDeliveryNoteDetails.DeliveryNoteDetailsAdd(InfoDeliveryDetails);
 
                             //For Item History
@@ -5376,13 +5377,15 @@ namespace LoginForm
                 row.Cells[dgStockQuantity.Index].Value = item["dgStockQuantity"].ToString();
                 row.Cells[dgvtxtSalesInvoiceRate.Index].Value = item["dgUnitPrice"].ToString();
                 row.Cells[dgvtxtSalesInvoicembUnitName.Index].Value = item["dgUOM"].ToString();
+                row.Cells[dgUPIME.Index].Value = item["dgUPIME"].ToString();
                 //row.Cells[dgvtxtSalesInvoiceDiscountAmount.Index].Value = item["Discount"].ToString();
                 //row.Cells[dgvtxtSalesInvoiceAmount.Index].Value = item["Amount"].ToString();
                 //row.Cells[dgvtxtSalesInvoiceNetAmount.Index].Value = item["NetAmount"].ToString();
                 row.Cells[dgvtxtSalesInvoiceProductName.Index].Value = item["ProductDesc"].ToString();
-                txtDate.Text= item["BillingDocumentDate"].ToString();
                 row.Cells[dgvtxtSISalesOrderDetailsId.Index].Value = item["dgDetailID"].ToString();
                 //row.Cells[dgvPOno.Index].Value=item["PurchaseOrderNo"].ToString();
+
+                txtDate.Text = item["BillingDocumentDate"].ToString();
                 //TODO diğer para değerleri de yazılmalı
                 if (item["Currency"].ToString() == "GBP")
                 {
@@ -5393,20 +5396,10 @@ namespace LoginForm
 
                 dgvSalesInvoice.Rows.Add(row);
             }
-            //if (IME.PurchaseOrders.Where(a => a.purchaseOrderId == POno).FirstOrDefault() != null)
-            //{
-            //    var po = IME.PurchaseOrders.Where(a => a.purchaseOrderId == POno).FirstOrDefault();
-            //    txtCustomer.Text = po.Customer.ID;
-            //    txtCustomerName.Text = po.Customer.c_name;
-            //    if(po.Worker!=null)cmbSalesMan.SelectedValue = po.Worker.WorkerID;
-            //}
-            //TODO : Currency seçme düzeltilecek
-            //cmbCurrency.SelectedValue = IME.Currencies.Where(a => a.currencyName == CurrencyName).FirstOrDefault().currencyID;
+            
             this.Show();
             SiGridTotalAmountCalculation();
         }
-
-
 
     private void btnNewLedger_Click(object sender, EventArgs e)
         {
