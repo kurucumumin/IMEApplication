@@ -11,6 +11,7 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Globalization;
 using System.Threading;
+using System.Text.RegularExpressions;
 
 namespace LoginForm.QuotationModule
 {
@@ -4073,6 +4074,24 @@ namespace LoginForm.QuotationModule
                         }
                     }
 
+                }
+            }
+        }
+
+        private void dgQuotationAddedItems_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (e.ColumnIndex == 14) // 1 should be your column index
+            {
+                int i;
+
+                if (!int.TryParse(Convert.ToString(e.FormattedValue), out i))
+                {
+                    e.Cancel = true;
+                    MessageBox.Show("please enter numeric");
+                }
+                else
+                {
+                    // the input is numeric 
                 }
             }
         }
