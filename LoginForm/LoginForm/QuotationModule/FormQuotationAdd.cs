@@ -3351,7 +3351,10 @@ namespace LoginForm.QuotationModule
             Disc();
 
         }
-         private void CalculateTotalMarge()
+        /// <summary>
+        /// Calculates Total Margin after general discount
+        /// </summary>
+        private void CalculateTotalMarge()
         {
             decimal AllMargin = 0;
             if (cbDeliverDiscount.Checked)
@@ -3368,7 +3371,6 @@ namespace LoginForm.QuotationModule
                     }
                     catch { }
                 }
-
             }
             else
             {
@@ -3411,7 +3413,6 @@ namespace LoginForm.QuotationModule
 
         }
         private decimal calculateTotalMargin()
-
         {
             decimal totalMargin = 0;
             decimal subtotal = 0;
@@ -3421,13 +3422,13 @@ namespace LoginForm.QuotationModule
             {
                 foreach (DataGridViewRow item in dgQuotationAddedItems.Rows)
                 {
-
                     decimal total = 0;
                     decimal margin = 0;
                     try { total = decimal.Parse(item.Cells[dgTotal.Index].Value.ToString()); } catch { }
                     try { margin = decimal.Parse(item.Cells[dgMargin.Index].Value.ToString()); } catch { }
                     totalMargin = totalMargin + (total * margin);
                 }
+
                 txtTotalMargin.Text = Math.Round((totalMargin / subtotal), 2).ToString();
                 return totalMargin / subtotal;
             }
