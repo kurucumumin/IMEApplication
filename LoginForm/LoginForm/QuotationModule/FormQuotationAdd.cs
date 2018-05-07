@@ -1392,6 +1392,11 @@ namespace LoginForm.QuotationModule
                 txtCost3.Text = ItemTabDetails.DiscountedPrice3.ToString();
                 txtCost4.Text = ItemTabDetails.DiscountedPrice4.ToString();
                 txtCost5.Text = ItemTabDetails.DiscountedPrice5.ToString();
+                if (txtUK1.Text==""){txtUK1.Text = "0";}
+                if (txtUK2.Text == ""){ txtUK2.Text = "0"; }
+                if (txtUK3.Text == ""){ txtUK3.Text = "0"; }
+                if (txtUK4.Text == "") { txtUK4.Text = "0"; }
+                if (txtUK5.Text == ""){ txtUK5.Text = "0"; }
                 txtWeb1.Text = ((Decimal.Parse(txtUK1.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
                 txtWeb2.Text = ((Decimal.Parse(txtUK2.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
                 txtWeb3.Text = ((Decimal.Parse(txtUK3.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
@@ -1412,6 +1417,11 @@ namespace LoginForm.QuotationModule
                 txtCost3.Text = ItemTabDetails.DiscountedPrice3.ToString();
                 txtCost4.Text = ItemTabDetails.DiscountedPrice4.ToString();
                 txtCost5.Text = ItemTabDetails.DiscountedPrice5.ToString();
+                if (txtUK1.Text == "") { txtUK1.Text = "0"; }
+                if (txtUK2.Text == "") { txtUK2.Text = "0"; }
+                if (txtUK3.Text == "") { txtUK3.Text = "0"; }
+                if (txtUK4.Text == "") { txtUK4.Text = "0"; }
+                if (txtUK5.Text == "") { txtUK5.Text = "0"; }
                 txtWeb1.Text = ((Decimal.Parse(txtUK1.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
                 txtWeb2.Text = ((Decimal.Parse(txtUK2.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
                 txtWeb3.Text = ((Decimal.Parse(txtUK3.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
@@ -1429,7 +1439,10 @@ namespace LoginForm.QuotationModule
                 txtLicenceType.Text = ItemTabDetails.LicenceType;
 
                 #region ItemMarginFiller
-
+                if (ItemTabDetails.Col1Break.ToString() =="")
+                {
+                    ItemTabDetails.Col1Break = 0;
+                }
                 int quantity = Int32.Parse(ItemTabDetails.Col1Break.ToString() ?? "0");
                 if (quantity != 0)
                 {
@@ -4094,7 +4107,7 @@ namespace LoginForm.QuotationModule
                 {
                     // the input is numeric 
                 }
-            }
+            } 
         }
     }
 }

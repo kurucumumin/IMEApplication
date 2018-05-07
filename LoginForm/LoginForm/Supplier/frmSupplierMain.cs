@@ -1781,5 +1781,13 @@ namespace LoginForm
                 this.Close();
             }
         }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are You Sure To Close This Window?", "Exit", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                this.Close();
+            }
+        }
     }
 }
