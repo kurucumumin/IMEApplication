@@ -124,7 +124,7 @@ namespace LoginForm.PurchaseOrder
             IME.PurchaseOrders.Add(po);
             IME.SaveChanges();
               
-            po = IME.PurchaseOrders.Where(x => x.purchaseOrderId == puchaseId).FirstOrDefault();
+            po = IME.PurchaseOrders.Where(x => x.purchaseOrderId == po.purchaseOrderId).FirstOrDefault();
 
             List<PurchaseOrderDetail> podList = new List<PurchaseOrderDetail>();
 
@@ -151,6 +151,7 @@ namespace LoginForm.PurchaseOrder
                 {
                     pod.AccountNumber = 8894479;
                 }
+                
                 pod.purchaseOrderId = po.purchaseOrderId;
                 //pod.purchaseOrderId = puchaseId;
                 pod.Unit = row.Cells[13].Value.ToString();

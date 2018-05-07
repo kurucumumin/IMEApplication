@@ -137,7 +137,7 @@ namespace LoginForm.nsSaleOrder
                     quotationIDs += quotationNos[i].ToString();
                     if (i != quotationNos.Count - 1)
                     {
-                        quotationIDs += " , ";
+                        quotationIDs += ",";
                     }
                 }
 

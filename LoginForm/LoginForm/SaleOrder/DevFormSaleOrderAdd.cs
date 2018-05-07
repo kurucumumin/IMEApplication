@@ -387,7 +387,7 @@ namespace LoginForm.QuotationModule
 
                 DataGridViewRow dgRow = (DataGridViewRow)dgSaleAddedItems.RowTemplate.Clone();
                 dgSaleAddedItems.Rows.Add(dgRow);
-                txtQuotationNo.Text = NewQuotationID();
+                //txtQuotationNo.Text = NewQuotationID();
                 //dgSaleAddedItems.Rows[0].Cells["dgQty"].Value = "0";
                 dgSaleAddedItems.Rows[0].Cells[0].Value = 1.ToString();
                 LowMarginLimit = Decimal.Parse(IME.Managements.FirstOrDefault().LowMarginLimit.ToString());
@@ -2193,6 +2193,12 @@ namespace LoginForm.QuotationModule
                 s.exchangeRateID = curr.exchangeRateID;
 
 
+                string[] quotationNos = txtQuotationNo.Text.Split(',');
+
+                foreach (string no in quotationNos)
+                {
+                    IME.Quotations.Where(x=>x.QuotationNo == no).FirstOrDefault().status = "Passive";
+                }
 
                 IME.SaleOrders.Add(s);
                 IME.SaveChanges();
