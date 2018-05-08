@@ -3305,7 +3305,6 @@ namespace LoginForm.QuotationModule
                 }
             }
             Disc();
-
         }
 
         public void ChangeDataGrid()

@@ -141,7 +141,7 @@ namespace LoginForm.nsSaleOrder
                     }
                 }
 
-                DevFormSaleOrderAdd form1 = new DevFormSaleOrderAdd((Customer)lbCustomerList.SelectedItem, list, quotationIDs);
+                FormSaleOrderAdd form1 = new FormSaleOrderAdd((Customer)lbCustomerList.SelectedItem, list, quotationIDs);
                 ////TODO form tekrar açılıp kapatımış. Doğru olan yöntemi bul
                 //FormSalesOrderMain f = new FormSalesOrderMain();
                 //f.Close();

@@ -2361,11 +2361,11 @@
     <Compile Include="QuotationModule\ViewProductHistory.Designer.cs">
       <DependentUpon>ViewProductHistory.cs</DependentUpon>
     </Compile>
-    <Compile Include="SaleOrder\DevFormSaleOrderAdd.cs">
+    <Compile Include="SaleOrder\FormSaleOrderAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SaleOrder\DevFormSaleOrderAdd.designer.cs">
-      <DependentUpon>DevFormSaleOrderAdd.cs</DependentUpon>
+    <Compile Include="SaleOrder\FormSaleOrderAdd.designer.cs">
+      <DependentUpon>FormSaleOrderAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="SaleOrder\FormSaleOrderCreate.cs">
       <SubType>Form</SubType>
@@ -2390,12 +2390,6 @@
     </Compile>
     <Compile Include="SaleOrder\FormSaleGridCustomize.Designer.cs">
       <DependentUpon>FormSaleGridCustomize.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SaleOrder\FormSaleOrderAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SaleOrder\FormSaleOrderAdd.designer.cs">
-      <DependentUpon>FormSaleOrderAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="SaleOrder\SalesOrderHelper.cs" />
     <Compile Include="Services\BackUpAndRestore.cs" />
@@ -2931,8 +2925,8 @@
     <EmbeddedResource Include="QuotationModule\ViewProductHistory.resx">
       <DependentUpon>ViewProductHistory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SaleOrder\DevFormSaleOrderAdd.resx">
-      <DependentUpon>DevFormSaleOrderAdd.cs</DependentUpon>
+    <EmbeddedResource Include="SaleOrder\FormSaleOrderAdd.resx">
+      <DependentUpon>FormSaleOrderAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SaleOrder\FormSaleOrderCreate.resx">
       <DependentUpon>FormSaleOrderCreate.cs</DependentUpon>
@@ -2945,9 +2939,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SaleOrder\FormSaleGridCustomize.resx">
       <DependentUpon>FormSaleGridCustomize.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SaleOrder\FormSaleOrderAdd.resx">
-      <DependentUpon>FormSaleOrderAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StockConfirm\frmStockConfirm.resx">
       <DependentUpon>frmStockConfirm.cs</DependentUpon>
