@@ -2192,13 +2192,16 @@ namespace LoginForm.QuotationModule
                 s.financialYearId = (decimal)Utils.getManagement().CurrentFinancialYear;
                 s.exchangeRateID = curr.exchangeRateID;
 
-
-                string[] quotationNos = txtQuotationNo.Text.Split(',');
-
-                foreach (string no in quotationNos)
+                if (!String.IsNullOrEmpty(txtQuotationNo.Text))
                 {
-                    IME.Quotations.Where(x=>x.QuotationNo == no).FirstOrDefault().status = "Passive";
+                    string[] quotationNos = txtQuotationNo.Text.Split(',');
+
+                    foreach (string no in quotationNos)
+                    {
+                        IME.Quotations.Where(x => x.QuotationNo == no).FirstOrDefault().status = "Passive";
+                    }
                 }
+                
 
                 IME.SaleOrders.Add(s);
                 IME.SaveChanges();

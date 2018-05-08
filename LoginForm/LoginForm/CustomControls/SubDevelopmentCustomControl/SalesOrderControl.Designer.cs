@@ -53,7 +53,6 @@
             this.btnEmptySalesOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnEmptySalesOrder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnEmptySalesOrder.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnEmptySalesOrder.Enabled = false;
             this.btnEmptySalesOrder.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnEmptySalesOrder.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnEmptySalesOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
