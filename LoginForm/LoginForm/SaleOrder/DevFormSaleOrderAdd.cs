@@ -4590,5 +4590,41 @@ namespace LoginForm.QuotationModule
 
             return (nullAreaList.Count != 0) ? true : false;
         }
+
+        private void dgSaleAddedItems_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (e.ColumnIndex == dgQty.Index) // 1 should be your column index
+            {
+                int i;
+
+                if (!int.TryParse(Convert.ToString(e.FormattedValue), out i))
+                {
+                    e.Cancel = true;
+                    MessageBox.Show("Please enter integer");
+                }
+                else
+                {
+                    // the input is numeric 
+                }
+            }
+        }
+
+        private void dgSaleDeleted_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (e.ColumnIndex == dgQty1.Index) // 1 should be your column index
+            {
+                int i;
+
+                if (!int.TryParse(Convert.ToString(e.FormattedValue), out i))
+                {
+                    e.Cancel = true;
+                    MessageBox.Show("Please enter integer");
+                }
+                else
+                {
+                    // the input is numeric 
+                }
+            }
+        }
     }
 }

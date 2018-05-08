@@ -3711,5 +3711,23 @@ namespace LoginForm.nmSaleOrder
 
             return (nullAreaList.Count != 0) ? true : false;
         }
+
+        private void dgSaleAddedItems_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (e.ColumnIndex == 14) // 1 should be your column index
+            {
+                int i;
+
+                if (!int.TryParse(Convert.ToString(e.FormattedValue), out i))
+                {
+                    e.Cancel = true;
+                    MessageBox.Show("please enter integer");
+                }
+                else
+                {
+                    // the input is numeric 
+                }
+            }
+        }
     }
 }
