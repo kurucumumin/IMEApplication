@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="50169ad753c8499d80ddf5e72f5fbb8e" Name="Diagram1">
+      <Diagram DiagramId="d2229fbd5908461993661f38c680c2f1" Name="Diagram1">
         <EntityTypeShape EntityType="IMEModel.Account" Width="1.5" PointX="12" PointY="80.5" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.AccountGroup" Width="1.5" PointX="12.75" PointY="69.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.AccountLedger" Width="1.5" PointX="15" PointY="68.5" IsExpanded="true" />
@@ -45,7 +45,7 @@
         <EntityTypeShape EntityType="IMEModel.DebitNoteDetail" Width="1.5" PointX="16.5" PointY="89.375" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.DebitNoteMaster" Width="1.5" PointX="14.25" PointY="94.25" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.DeliveryNoteDetail" Width="1.5" PointX="33" PointY="118" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.DeliveryNoteMaster" Width="1.5" PointX="14.25" PointY="103.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.DeliveryNoteMaster" Width="1.5" PointX="14.25" PointY="103" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.Designation" Width="1.5" PointX="6.75" PointY="90.5" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.DiscountValue" Width="1.5" PointX="17.25" PointY="105.125" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.DualUse" Width="1.5" PointX="2.75" PointY="10.75" IsExpanded="true" />

@@ -474,7 +474,7 @@ namespace LoginForm
             dtpDate.CustomFormat = "dd-MMMM-yyyy";
             dtpDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
             lblSalesModeOrderNo.Visible = false;
-            cmbSalesModeOrderNo.Visible = false;
+            txtSalesModeOrderNo.Visible = false;
             CashorPartyComboFill(cmbCashOrParty);
             salesManComboFill();
             PricingLevelComboFill();
@@ -508,9 +508,9 @@ namespace LoginForm
                         dr["SaleOrderID"] = 0;
                         dtbl.Rows.InsertAt(dr, 0);
                         isFromEditMode = true;
-                        cmbSalesModeOrderNo.DataSource = dtbl;
-                        cmbSalesModeOrderNo.ValueMember = "SaleOrderID";
-                        cmbSalesModeOrderNo.DisplayMember = "invoiceNo";
+                        //txtSalesModeOrderNo.DataSource = dtbl;
+                        //txtSalesModeOrderNo.ValueMember = "SaleOrderID";
+                        //txtSalesModeOrderNo.DisplayMember = "invoiceNo";
                         isFromEditMode = false;
                     }
                     //if (cmbSalesMode.Text == "Against Delivery Note")
@@ -1788,7 +1788,7 @@ namespace LoginForm
             TaxSP SPTax = new TaxSP();
             try
             {
-                if (cmbSalesModeOrderNo.SelectedIndex > 0)
+                if (String.IsNullOrEmpty(txtSalesModeOrderNo.Text))
                 {
                     inMaxCount = 0;
                     isValueChange = false;
@@ -1801,23 +1801,24 @@ namespace LoginForm
                     }
                     dgvSalesInvoice.Rows.Clear();
                     isValueChange = true;
-                    DataTable dtblMaster = SPSalesOrderMaster.SalesInvoiceGridfillAgainestSalesOrder((decimal)cmbSalesModeOrderNo.SelectedValue);
-                    cmbPricingLevel.SelectedValue = Convert.ToDecimal(dtblMaster.Rows[0]["pricingLevelId"].ToString());
-                    cmbCurrency.SelectedValue = Convert.ToDecimal(dtblMaster.Rows[0]["exchangeRateId"].ToString());
-                    if (dtblMaster.Rows[0]["employeeId"].ToString() != string.Empty)
-                    {
-                        strSalesManId = dtblMaster.Rows[0]["employeeId"].ToString();
-                        cmbSalesMan.SelectedValue = strSalesManId;
-                        if (cmbSalesMan.SelectedValue == null)
-                        {
-                            salesManComboFill();
-                            cmbSalesMan.SelectedValue = dtblMaster.Rows[0]["employeeId"].ToString();
-                        }
-                    }
+                    //TODO DeliveryNote: Alttaki yorumlu kısım SaleOrder bilgilerini grid e koymak için
+                    //DataTable dtblMaster = SPSalesOrderMaster.SalesInvoiceGridfillAgainestSalesOrder(txtSalesModeOrderNo.Text);
+                    //cmbPricingLevel.SelectedValue = Convert.ToDecimal(dtblMaster.Rows[0]["pricingLevelId"].ToString());
+                    //cmbCurrency.SelectedValue = Convert.ToDecimal(dtblMaster.Rows[0]["exchangeRateId"].ToString());
+                    //if (dtblMaster.Rows[0]["employeeId"].ToString() != string.Empty)
+                    //{
+                    //    strSalesManId = dtblMaster.Rows[0]["employeeId"].ToString();
+                    //    cmbSalesMan.SelectedValue = strSalesManId;
+                    //    if (cmbSalesMan.SelectedValue == null)
+                    //    {
+                    //        salesManComboFill();
+                    //        cmbSalesMan.SelectedValue = dtblMaster.Rows[0]["employeeId"].ToString();
+                    //    }
+                    //}
                     cmbPricingLevel.Enabled = false;
                     btnNewPricingLevel.Enabled = false;
                     cmbCurrency.Enabled = false;
-                    DataTable dtblDetails = spSalesOrderDetails.SalesInvoiceGridfillAgainestSalesOrderUsingSalesDetails(Convert.ToDecimal(cmbSalesModeOrderNo.SelectedValue.ToString()), Convert.ToDecimal(decDeliveryNoteIdToEdit), DecDeliveryNoteVoucherTypeId);
+                    DataTable dtblDetails = spSalesOrderDetails.SalesInvoiceGridfillAgainestSalesOrderUsingSalesDetails(Convert.ToDecimal(txtSalesModeOrderNo.Text.ToString()), Convert.ToDecimal(decDeliveryNoteIdToEdit), DecDeliveryNoteVoucherTypeId);
                     int inRowIndex = 0;
                     foreach (DataRow drowDetails in dtblDetails.Rows)
                     {
@@ -1898,7 +1899,7 @@ namespace LoginForm
             TaxSP SPTax = new TaxSP();
             try
             {
-                if (cmbSalesModeOrderNo.SelectedIndex > 0)
+                if (!String.IsNullOrEmpty(txtSalesModeOrderNo.Text))
                 {
                     inMaxCount = 0;
                     isValueChange = false;
@@ -1911,7 +1912,7 @@ namespace LoginForm
                     }
                     dgvSalesInvoice.Rows.Clear();
                     isValueChange = true;
-                    DataTable dtblMaster = SPQuotationMaster.SalesInvoiceGridfillAgainestQuotation(cmbSalesModeOrderNo.SelectedValue.ToString());
+                    DataTable dtblMaster = SPQuotationMaster.SalesInvoiceGridfillAgainestQuotation(txtSalesModeOrderNo.Text.ToString());
                     cmbPricingLevel.SelectedValue = Convert.ToDecimal(dtblMaster.Rows[0]["pricingLevelId"].ToString());
                     cmbCurrency.SelectedValue = Convert.ToDecimal(dtblMaster.Rows[0]["exchangeRateId"].ToString());
                     if (dtblMaster.Rows[0]["employeeId"].ToString() != string.Empty)
@@ -1927,7 +1928,7 @@ namespace LoginForm
                     cmbPricingLevel.Enabled = false;
                     btnNewPricingLevel.Enabled = false;
                     cmbCurrency.Enabled = false;
-                    DataTable dtblDetails = SPQuotationDetails.SalesInvoiceGridfillAgainestQuotationUsingQuotationDetails(Convert.ToDecimal(cmbSalesModeOrderNo.SelectedValue.ToString()), decDeliveryNoteIdToEdit, DecDeliveryNoteVoucherTypeId);
+                    DataTable dtblDetails = SPQuotationDetails.SalesInvoiceGridfillAgainestQuotationUsingQuotationDetails(Convert.ToDecimal(txtSalesModeOrderNo.Text.ToString()), decDeliveryNoteIdToEdit, DecDeliveryNoteVoucherTypeId);
                     int inRowIndex = 0;
                     foreach (DataRow drowDetails in dtblDetails.Rows)
                     {
@@ -2740,11 +2741,11 @@ namespace LoginForm
                     Messages.InformationMessage("Select Currency");
                     cmbCurrency.Focus();
                 }
-                else if (cmbSalesMode.SelectedText == "NA" && cmbSalesModeOrderNo.SelectedValue == null)
-                {
-                    Messages.InformationMessage("Select a Order No");
-                    cmbSalesModeOrderNo.Focus();
-                }
+                //else if (cmbSalesMode.SelectedText == "NA" && txtSalesModeOrderNo.SelectedValue == null)
+                //{
+                //    Messages.InformationMessage("Select a Order No");
+                //    txtSalesModeOrderNo.Focus();
+                //}
                 else if (cmbSalesAccount.SelectedValue == null)
                 {
                     Messages.InformationMessage("Select SalesAccount");
@@ -2988,7 +2989,10 @@ namespace LoginForm
                 }
                 if (cmbSalesMode.Text == "Against SalesOrder")
                 {
-                    if (cmbSalesModeOrderNo.SelectedValue != null) InfoDeliveryNoteMaster.orderMasterId = Convert.ToDecimal(cmbSalesModeOrderNo.SelectedValue.ToString());
+                    if (String.IsNullOrEmpty(txtSalesModeOrderNo.Text))
+                    {
+                        InfoDeliveryNoteMaster.orderMasterId = txtSalesModeOrderNo.Text;
+                    }
                 }
                 else
                 {
@@ -4135,7 +4139,7 @@ namespace LoginForm
                 {
                     //cmbSalesMode.Text = "Against Quotation";
                     againstOrderComboFill();
-                    cmbSalesModeOrderNo.SelectedValue = dtblMaster.Rows[0]["quotationMasterId"].ToString();
+                    //txtSalesModeOrderNo.SelectedValue = dtblMaster.Rows[0]["quotationMasterId"].ToString();
                     lblSalesModeOrderNo.Text = "Quotation No";
                     cmbCurrency.Enabled = false;
                     cmbPricingLevel.Enabled = false;
@@ -4144,7 +4148,7 @@ namespace LoginForm
                 {
                     cmbSalesMode.Text = "Against SalesOrder";
                     againstOrderComboFill();
-                    cmbSalesModeOrderNo.SelectedValue = dtblMaster.Rows[0]["orderMasterId"].ToString();
+                    //txtSalesModeOrderNo.SelectedValue = dtblMaster.Rows[0]["orderMasterId"].ToString();
                     lblSalesModeOrderNo.Text = "Order No";
                     cmbCurrency.Enabled = false;
                     cmbPricingLevel.Enabled = false;
@@ -4153,7 +4157,7 @@ namespace LoginForm
                 {
                     //cmbSalesMode.Text = "Against Delivery Note";
                     againstOrderComboFill();
-                    cmbSalesModeOrderNo.SelectedValue = dtblMaster.Rows[0]["deliveryNoteMasterId"].ToString();
+                    //txtSalesModeOrderNo.SelectedValue = dtblMaster.Rows[0]["deliveryNoteMasterId"].ToString();
                     lblSalesModeOrderNo.Text = "Delivery Note No";
                     cmbCurrency.Enabled = false;
                     cmbPricingLevel.Enabled = false;
@@ -4234,7 +4238,7 @@ namespace LoginForm
                     decCurrentRate = Convert.ToDecimal(dgvSalesInvoice.Rows[i].Cells["dgvtxtSalesInvoiceRate"].Value.ToString());
                     decCurrentConversionRate = Convert.ToDecimal(dtblDetails.Rows[i]["conversionRate"].ToString());
                     UnitConversionCalc(i);
-                    if (cmbSalesModeOrderNo.Visible == true)
+                    if (txtSalesModeOrderNo.Visible == true)
                     {
                         dgvSalesInvoice.Rows[i].Cells["dgvtxtSalesInvoicembUnitName"].ReadOnly = true;
                     }
@@ -4368,14 +4372,14 @@ namespace LoginForm
                 {
                     InfoSalesMaster.suffixPrefixId = 0;
                 }
-                if (cmbSalesMode.Text == "Against SalesOrder")
-                {
-                    InfoSalesMaster.orderMasterId = Convert.ToDecimal(cmbSalesModeOrderNo.SelectedValue.ToString());
-                }
-                else
-                {
-                    InfoSalesMaster.orderMasterId = null;
-                }
+                //if (cmbSalesMode.Text == "Against SalesOrder")
+                //{
+                //    InfoSalesMaster.orderMasterId = Convert.ToDecimal(txtSalesModeOrderNo.SelectedValue.ToString());
+                //}
+                //else
+                //{
+                //    InfoSalesMaster.orderMasterId = null;
+                //}
                 //if (cmbSalesMode.Text == "Against Delivery Note")
                 //{
                 //    InfoSalesMaster.deliveryNoteMasterId = Convert.ToDecimal(cmbSalesModeOrderNo.SelectedValue.ToString());
@@ -5360,15 +5364,14 @@ namespace LoginForm
                 formLoadDefaultFunctions();
                 Clear();
             }
-
-
         }
 
-        public void setDeliveryNoteItemsFromPopUp(DataTable dt)
+        public void setDeliveryNoteItemsFromPopUp(DataTable dt, String SaleOrderNumbers)
         {
             string CurrencyName = "";
             //formLoadDefaultFunctions();
             //int POno = 0;
+            txtSalesModeOrderNo.Text = SaleOrderNumbers;
             foreach (DataRow item in dt.Rows)
             {
                 DataGridViewRow row = (DataGridViewRow)dgvSalesInvoice.Rows[0].Clone();
@@ -5482,7 +5485,7 @@ namespace LoginForm
                 if (cmbSalesMode.Text == "NA")
                 {
                     lblSalesModeOrderNo.Visible = false;
-                    cmbSalesModeOrderNo.Visible = false;
+                    txtSalesModeOrderNo.Visible = false;
                     cmbPricingLevel.Enabled = true;
                     dgvSalesInvoice.Rows.Clear();
                     lblTaxTotalAmount.Text = "0.00";
@@ -5495,7 +5498,7 @@ namespace LoginForm
                 {
                     lblSalesModeOrderNo.Text = "Order No";
                     lblSalesModeOrderNo.Visible = true;
-                    cmbSalesModeOrderNo.Visible = true;
+                    txtSalesModeOrderNo.Visible = true;
                     cmbVoucherType.Visible = true;
                     lblVoucherType.Visible = true;
                     dgvSalesInvoice.Rows.Clear();
@@ -5709,43 +5712,43 @@ namespace LoginForm
                 MessageBox.Show("SI: 101" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        /// <summary>
-        /// Fill the grid based on the Sales mode item selected
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void cmbSalesModeOrderNo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                GetSalesDetailsIdToDelete();
-                if (isFromEditMode == false)
-                {
-                    if ((cmbSalesModeOrderNo.SelectedValue == null ? "" : cmbSalesModeOrderNo.SelectedValue.ToString()) != "")
-                    {
-                        if (cmbSalesModeOrderNo.SelectedValue.ToString() != "System.Data.DataRowView" && cmbSalesModeOrderNo.Text != "System.Data.DataRowView")
-                        {
-                            if (cmbSalesMode.Text == "Against SalesOrder")
-                            {
-                                gridFillAgainestSalseOrderDetails();
-                            }
-                            //if (cmbSalesMode.Text == "Against Delivery Note")
-                            //{
-                            //    gridFillAgainestDeliveryNote();
-                            //}
-                            //else if (cmbSalesMode.Text == "Against Quotation")
-                            //{
-                            //    gridFillAgainestQuotationDetails();
-                            //}
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("SI: 102" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
+        ///// <summary>
+        ///// Fill the grid based on the Sales mode item selected
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //private void cmbSalesModeOrderNo_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        GetSalesDetailsIdToDelete();
+        //        if (isFromEditMode == false)
+        //        {
+        //            if ((txtSalesModeOrderNo.SelectedValue == null ? "" : txtSalesModeOrderNo.SelectedValue.ToString()) != "")
+        //            {
+        //                if (txtSalesModeOrderNo.SelectedValue.ToString() != "System.Data.DataRowView" && txtSalesModeOrderNo.Text != "System.Data.DataRowView")
+        //                {
+        //                    if (cmbSalesMode.Text == "Against SalesOrder")
+        //                    {
+        //                        gridFillAgainestSalseOrderDetails();
+        //                    }
+        //                    //if (cmbSalesMode.Text == "Against Delivery Note")
+        //                    //{
+        //                    //    gridFillAgainestDeliveryNote();
+        //                    //}
+        //                    //else if (cmbSalesMode.Text == "Against Quotation")
+        //                    //{
+        //                    //    gridFillAgainestQuotationDetails();
+        //                    //}
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("SI: 102" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    }
+        //}
         /// <summary>
         /// Call the SerialNo generation function here for tax grid
         /// </summary>
@@ -6948,7 +6951,7 @@ namespace LoginForm
                     }
                     else
                     {
-                        cmbSalesModeOrderNo.Focus();
+                        txtSalesModeOrderNo.Focus();
                     }
                 }
                 if (e.KeyCode == Keys.C && Control.ModifierKeys == Keys.Alt)
@@ -7101,7 +7104,7 @@ namespace LoginForm
             {
                 if (e.KeyCode == Keys.Enter)
                 {
-                    cmbSalesModeOrderNo.Focus();
+                    txtSalesModeOrderNo.Focus();
                 }
                 if (e.KeyCode == Keys.Back)
                 {
@@ -7171,7 +7174,7 @@ namespace LoginForm
                 }
                 if (e.KeyCode == Keys.Back)
                 {
-                    if (cmbSalesModeOrderNo.Visible == true)
+                    if (txtSalesModeOrderNo.Visible == true)
                     {
                         cmbSalesMode.Focus();
                     }

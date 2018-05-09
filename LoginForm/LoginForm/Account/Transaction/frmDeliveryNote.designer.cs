@@ -35,10 +35,6 @@ namespace LoginForm
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -50,6 +46,10 @@ namespace LoginForm
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtBillDiscount = new System.Windows.Forms.TextBox();
             this.lblBillDiscount = new System.Windows.Forms.Label();
             this.dgvSalesInvoiceTax = new System.Windows.Forms.DataGridView();
@@ -81,54 +81,6 @@ namespace LoginForm
             this.txtInvoiceNo = new System.Windows.Forms.TextBox();
             this.lblInvoiceNo = new System.Windows.Forms.Label();
             this.dgvSalesInvoice = new System.Windows.Forms.DataGridView();
-            this.lblDate = new System.Windows.Forms.Label();
-            this.txtCreditPeriod = new System.Windows.Forms.TextBox();
-            this.lblDays = new System.Windows.Forms.Label();
-            this.cmbSalesMan = new System.Windows.Forms.ComboBox();
-            this.lblSalesMan = new System.Windows.Forms.Label();
-            this.txtCustomer = new System.Windows.Forms.TextBox();
-            this.lblCustomer = new System.Windows.Forms.Label();
-            this.lblTotalQuantity = new System.Windows.Forms.Label();
-            this.dgvSalesInvoiceLedger = new System.Windows.Forms.DataGridView();
-            this.dgvtxtAditionalCostSlno = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvtxtAdditionalCostId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvCmbAdditionalCostledgerName = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dgvtxtAdditionalCoastledgerAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblDrorCr = new System.Windows.Forms.Label();
-            this.cmbDrorCr = new System.Windows.Forms.ComboBox();
-            this.btnNewLedger = new System.Windows.Forms.Button();
-            this.btnNewPricingLevel = new System.Windows.Forms.Button();
-            this.btnNewSalesman = new System.Windows.Forms.Button();
-            this.btnNewSalesAccount = new System.Windows.Forms.Button();
-            this.lblTaxTotalAmount = new System.Windows.Forms.Label();
-            this.lblSalesModeOrderNo = new System.Windows.Forms.Label();
-            this.cmbSalesModeOrderNo = new System.Windows.Forms.ComboBox();
-            this.lblTaxTotal = new System.Windows.Forms.Label();
-            this.lblLedgerTotalAmount = new System.Windows.Forms.Label();
-            this.lblLedgerTotal = new System.Windows.Forms.Label();
-            this.txtTotalAmount = new System.Windows.Forms.TextBox();
-            this.lblFinalTotalAmount = new System.Windows.Forms.Label();
-            this.lblTotalQuantitydisplay = new System.Windows.Forms.Label();
-            this.txtDate = new System.Windows.Forms.TextBox();
-            this.dtpDate = new System.Windows.Forms.DateTimePicker();
-            this.cbxPrintAfterSave = new System.Windows.Forms.CheckBox();
-            this.lblCurrency = new System.Windows.Forms.Label();
-            this.cmbCurrency = new System.Windows.Forms.ComboBox();
-            this.cmbCashOrbank = new System.Windows.Forms.ComboBox();
-            this.lblcashOrBank = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtTransportCompany = new System.Windows.Forms.TextBox();
-            this.txtVehicleNo = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cmbVoucherType = new System.Windows.Forms.ComboBox();
-            this.lblVoucherType = new System.Windows.Forms.Label();
-            this.lnklblLedgerGridRemove = new System.Windows.Forms.LinkLabel();
-            this.lblVoucherNo = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtCustomerName = new System.Windows.Forms.TextBox();
-            this.cmbPricingLevel = new System.Windows.Forms.ComboBox();
-            this.btnSelectSaleOrders = new System.Windows.Forms.Button();
             this.dgvtxtSalesInvoiceSlno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvPOno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxtSalesInvoiceSalesDetailsId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -165,6 +117,54 @@ namespace LoginForm
             this.dgvtxtSalesInvoiceInvoiceNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxtSalesInvoiceVoucherTypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxtSalesInvoiceAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblDate = new System.Windows.Forms.Label();
+            this.txtCreditPeriod = new System.Windows.Forms.TextBox();
+            this.lblDays = new System.Windows.Forms.Label();
+            this.cmbSalesMan = new System.Windows.Forms.ComboBox();
+            this.lblSalesMan = new System.Windows.Forms.Label();
+            this.txtCustomer = new System.Windows.Forms.TextBox();
+            this.lblCustomer = new System.Windows.Forms.Label();
+            this.lblTotalQuantity = new System.Windows.Forms.Label();
+            this.dgvSalesInvoiceLedger = new System.Windows.Forms.DataGridView();
+            this.dgvtxtAditionalCostSlno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvtxtAdditionalCostId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvCmbAdditionalCostledgerName = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dgvtxtAdditionalCoastledgerAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblDrorCr = new System.Windows.Forms.Label();
+            this.cmbDrorCr = new System.Windows.Forms.ComboBox();
+            this.btnNewLedger = new System.Windows.Forms.Button();
+            this.btnNewPricingLevel = new System.Windows.Forms.Button();
+            this.btnNewSalesman = new System.Windows.Forms.Button();
+            this.btnNewSalesAccount = new System.Windows.Forms.Button();
+            this.lblTaxTotalAmount = new System.Windows.Forms.Label();
+            this.lblSalesModeOrderNo = new System.Windows.Forms.Label();
+            this.txtSalesModeOrderNo = new System.Windows.Forms.TextBox();
+            this.lblTaxTotal = new System.Windows.Forms.Label();
+            this.lblLedgerTotalAmount = new System.Windows.Forms.Label();
+            this.lblLedgerTotal = new System.Windows.Forms.Label();
+            this.txtTotalAmount = new System.Windows.Forms.TextBox();
+            this.lblFinalTotalAmount = new System.Windows.Forms.Label();
+            this.lblTotalQuantitydisplay = new System.Windows.Forms.Label();
+            this.txtDate = new System.Windows.Forms.TextBox();
+            this.dtpDate = new System.Windows.Forms.DateTimePicker();
+            this.cbxPrintAfterSave = new System.Windows.Forms.CheckBox();
+            this.lblCurrency = new System.Windows.Forms.Label();
+            this.cmbCurrency = new System.Windows.Forms.ComboBox();
+            this.cmbCashOrbank = new System.Windows.Forms.ComboBox();
+            this.lblcashOrBank = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtTransportCompany = new System.Windows.Forms.TextBox();
+            this.txtVehicleNo = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmbVoucherType = new System.Windows.Forms.ComboBox();
+            this.lblVoucherType = new System.Windows.Forms.Label();
+            this.lnklblLedgerGridRemove = new System.Windows.Forms.LinkLabel();
+            this.lblVoucherNo = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtCustomerName = new System.Windows.Forms.TextBox();
+            this.cmbPricingLevel = new System.Windows.Forms.ComboBox();
+            this.btnSelectSaleOrders = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesInvoiceTax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesInvoice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesInvoiceLedger)).BeginInit();
@@ -642,6 +642,284 @@ namespace LoginForm
             this.dgvSalesInvoice.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvSalesInvoice_EditingControlShowing);
             this.dgvSalesInvoice.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvSalesInvoice_KeyDown);
             // 
+            // dgvtxtSalesInvoiceSlno
+            // 
+            this.dgvtxtSalesInvoiceSlno.Frozen = true;
+            this.dgvtxtSalesInvoiceSlno.HeaderText = "Sl No";
+            this.dgvtxtSalesInvoiceSlno.Name = "dgvtxtSalesInvoiceSlno";
+            this.dgvtxtSalesInvoiceSlno.ReadOnly = true;
+            this.dgvtxtSalesInvoiceSlno.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dgvtxtSalesInvoiceSlno.Width = 50;
+            // 
+            // dgvPOno
+            // 
+            this.dgvPOno.HeaderText = "POno";
+            this.dgvPOno.Name = "dgvPOno";
+            this.dgvPOno.ReadOnly = true;
+            this.dgvPOno.Visible = false;
+            // 
+            // dgvtxtSalesInvoiceSalesDetailsId
+            // 
+            this.dgvtxtSalesInvoiceSalesDetailsId.HeaderText = "dgvSitxtSalesDetailsId";
+            this.dgvtxtSalesInvoiceSalesDetailsId.Name = "dgvtxtSalesInvoiceSalesDetailsId";
+            this.dgvtxtSalesInvoiceSalesDetailsId.Visible = false;
+            // 
+            // dgvtxtSalesInvoiceProductId
+            // 
+            this.dgvtxtSalesInvoiceProductId.HeaderText = "productId";
+            this.dgvtxtSalesInvoiceProductId.Name = "dgvtxtSalesInvoiceProductId";
+            this.dgvtxtSalesInvoiceProductId.Visible = false;
+            // 
+            // dgvtxtSISalesOrderDetailsId
+            // 
+            this.dgvtxtSISalesOrderDetailsId.HeaderText = "salesOrderDetailsId";
+            this.dgvtxtSISalesOrderDetailsId.Name = "dgvtxtSISalesOrderDetailsId";
+            this.dgvtxtSISalesOrderDetailsId.Visible = false;
+            // 
+            // dgvtxtSalesInvoiceDeliveryNoteDetailsId
+            // 
+            this.dgvtxtSalesInvoiceDeliveryNoteDetailsId.HeaderText = "deliveryNoteDetailsId";
+            this.dgvtxtSalesInvoiceDeliveryNoteDetailsId.Name = "dgvtxtSalesInvoiceDeliveryNoteDetailsId";
+            this.dgvtxtSalesInvoiceDeliveryNoteDetailsId.Visible = false;
+            // 
+            // dgvtxtSalesInvoiceQuotationDetailsId
+            // 
+            this.dgvtxtSalesInvoiceQuotationDetailsId.HeaderText = "quotationDetailsId";
+            this.dgvtxtSalesInvoiceQuotationDetailsId.Name = "dgvtxtSalesInvoiceQuotationDetailsId";
+            this.dgvtxtSalesInvoiceQuotationDetailsId.Visible = false;
+            // 
+            // dgvtxtSalesInvoiceBarcode
+            // 
+            this.dgvtxtSalesInvoiceBarcode.DataPropertyName = "barcode";
+            this.dgvtxtSalesInvoiceBarcode.HeaderText = "Barcode";
+            this.dgvtxtSalesInvoiceBarcode.Name = "dgvtxtSalesInvoiceBarcode";
+            this.dgvtxtSalesInvoiceBarcode.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dgvtxtSalesInvoiceBarcode.Width = 75;
+            // 
+            // dgvtxtSalesInvoiceProductCode
+            // 
+            this.dgvtxtSalesInvoiceProductCode.DataPropertyName = "productCode";
+            this.dgvtxtSalesInvoiceProductCode.HeaderText = "Product Code";
+            this.dgvtxtSalesInvoiceProductCode.Name = "dgvtxtSalesInvoiceProductCode";
+            this.dgvtxtSalesInvoiceProductCode.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // dgvtxtSalesInvoiceProductName
+            // 
+            this.dgvtxtSalesInvoiceProductName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgvtxtSalesInvoiceProductName.DataPropertyName = "productName";
+            this.dgvtxtSalesInvoiceProductName.HeaderText = "Product Name";
+            this.dgvtxtSalesInvoiceProductName.Name = "dgvtxtSalesInvoiceProductName";
+            this.dgvtxtSalesInvoiceProductName.ReadOnly = true;
+            this.dgvtxtSalesInvoiceProductName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dgvtxtSalesInvoiceProductName.Width = 115;
+            // 
+            // dgvtxtSalesInvoiceBrand
+            // 
+            this.dgvtxtSalesInvoiceBrand.HeaderText = "Brand";
+            this.dgvtxtSalesInvoiceBrand.Name = "dgvtxtSalesInvoiceBrand";
+            this.dgvtxtSalesInvoiceBrand.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // dgvtxtSalesInvoiceQty
+            // 
+            this.dgvtxtSalesInvoiceQty.DataPropertyName = "qty";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtSalesInvoiceQty.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvtxtSalesInvoiceQty.HeaderText = "Qty";
+            this.dgvtxtSalesInvoiceQty.MaxInputLength = 8;
+            this.dgvtxtSalesInvoiceQty.Name = "dgvtxtSalesInvoiceQty";
+            this.dgvtxtSalesInvoiceQty.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dgvtxtSalesInvoiceQty.Width = 105;
+            // 
+            // dgStockQuantity
+            // 
+            this.dgStockQuantity.HeaderText = "Stock Qty";
+            this.dgStockQuantity.Name = "dgStockQuantity";
+            this.dgStockQuantity.ReadOnly = true;
+            // 
+            // dgvtxtSalesInvoiceUnitConversionId
+            // 
+            this.dgvtxtSalesInvoiceUnitConversionId.HeaderText = "UnitConversionId";
+            this.dgvtxtSalesInvoiceUnitConversionId.Name = "dgvtxtSalesInvoiceUnitConversionId";
+            this.dgvtxtSalesInvoiceUnitConversionId.Visible = false;
+            // 
+            // dgvtxtSalesInvoiceConversionRate
+            // 
+            this.dgvtxtSalesInvoiceConversionRate.HeaderText = "ConversionRate";
+            this.dgvtxtSalesInvoiceConversionRate.Name = "dgvtxtSalesInvoiceConversionRate";
+            this.dgvtxtSalesInvoiceConversionRate.Visible = false;
+            // 
+            // dgvtxtSalesInvoicembUnitName
+            // 
+            this.dgvtxtSalesInvoicembUnitName.HeaderText = "Unit";
+            this.dgvtxtSalesInvoicembUnitName.Name = "dgvtxtSalesInvoicembUnitName";
+            this.dgvtxtSalesInvoicembUnitName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvtxtSalesInvoicembUnitName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // dgvcmbSalesInvoiceGodown
+            // 
+            this.dgvcmbSalesInvoiceGodown.HeaderText = "Godown";
+            this.dgvcmbSalesInvoiceGodown.Name = "dgvcmbSalesInvoiceGodown";
+            this.dgvcmbSalesInvoiceGodown.Visible = false;
+            // 
+            // dgvcmbSalesInvoiceRack
+            // 
+            this.dgvcmbSalesInvoiceRack.HeaderText = "Rack";
+            this.dgvcmbSalesInvoiceRack.Name = "dgvcmbSalesInvoiceRack";
+            this.dgvcmbSalesInvoiceRack.Visible = false;
+            // 
+            // dgvcmbSalesInvoiceBatch
+            // 
+            this.dgvcmbSalesInvoiceBatch.HeaderText = "Batch";
+            this.dgvcmbSalesInvoiceBatch.Name = "dgvcmbSalesInvoiceBatch";
+            this.dgvcmbSalesInvoiceBatch.Visible = false;
+            // 
+            // dgvtxtSalesInvoicePurchaseRate
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtSalesInvoicePurchaseRate.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvtxtSalesInvoicePurchaseRate.HeaderText = "Purchase rate.";
+            this.dgvtxtSalesInvoicePurchaseRate.MaxInputLength = 13;
+            this.dgvtxtSalesInvoicePurchaseRate.Name = "dgvtxtSalesInvoicePurchaseRate";
+            this.dgvtxtSalesInvoicePurchaseRate.ReadOnly = true;
+            this.dgvtxtSalesInvoicePurchaseRate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dgvtxtSalesInvoicePurchaseRate.Visible = false;
+            // 
+            // dgvtxtSalesInvoiceMrp
+            // 
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtSalesInvoiceMrp.DefaultCellStyle = dataGridViewCellStyle7;
+            this.dgvtxtSalesInvoiceMrp.HeaderText = "MRP";
+            this.dgvtxtSalesInvoiceMrp.MaxInputLength = 13;
+            this.dgvtxtSalesInvoiceMrp.Name = "dgvtxtSalesInvoiceMrp";
+            this.dgvtxtSalesInvoiceMrp.ReadOnly = true;
+            this.dgvtxtSalesInvoiceMrp.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // dgvtxtSalesInvoiceSalesRate
+            // 
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtSalesInvoiceSalesRate.DefaultCellStyle = dataGridViewCellStyle8;
+            this.dgvtxtSalesInvoiceSalesRate.HeaderText = "SalesRate";
+            this.dgvtxtSalesInvoiceSalesRate.MaxInputLength = 13;
+            this.dgvtxtSalesInvoiceSalesRate.Name = "dgvtxtSalesInvoiceSalesRate";
+            this.dgvtxtSalesInvoiceSalesRate.ReadOnly = true;
+            this.dgvtxtSalesInvoiceSalesRate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dgvtxtSalesInvoiceSalesRate.Visible = false;
+            // 
+            // dgvtxtSalesInvoiceRate
+            // 
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtSalesInvoiceRate.DefaultCellStyle = dataGridViewCellStyle9;
+            this.dgvtxtSalesInvoiceRate.HeaderText = "Rate";
+            this.dgvtxtSalesInvoiceRate.MaxInputLength = 10;
+            this.dgvtxtSalesInvoiceRate.Name = "dgvtxtSalesInvoiceRate";
+            this.dgvtxtSalesInvoiceRate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dgvtxtSalesInvoiceRate.Width = 105;
+            // 
+            // dgUPIME
+            // 
+            this.dgUPIME.HeaderText = "UPIME";
+            this.dgUPIME.Name = "dgUPIME";
+            // 
+            // dgvtxtSalesInvoiceGrossValue
+            // 
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtSalesInvoiceGrossValue.DefaultCellStyle = dataGridViewCellStyle10;
+            this.dgvtxtSalesInvoiceGrossValue.HeaderText = "Gross Value";
+            this.dgvtxtSalesInvoiceGrossValue.Name = "dgvtxtSalesInvoiceGrossValue";
+            this.dgvtxtSalesInvoiceGrossValue.ReadOnly = true;
+            this.dgvtxtSalesInvoiceGrossValue.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dgvtxtSalesInvoiceGrossValue.Visible = false;
+            this.dgvtxtSalesInvoiceGrossValue.Width = 105;
+            // 
+            // dgvtxtSalesInvoiceDiscountPercentage
+            // 
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtSalesInvoiceDiscountPercentage.DefaultCellStyle = dataGridViewCellStyle11;
+            this.dgvtxtSalesInvoiceDiscountPercentage.HeaderText = "Discount Percentage";
+            this.dgvtxtSalesInvoiceDiscountPercentage.MaxInputLength = 10;
+            this.dgvtxtSalesInvoiceDiscountPercentage.Name = "dgvtxtSalesInvoiceDiscountPercentage";
+            this.dgvtxtSalesInvoiceDiscountPercentage.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dgvtxtSalesInvoiceDiscountPercentage.Visible = false;
+            // 
+            // dgvtxtSalesInvoiceDiscountAmount
+            // 
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtSalesInvoiceDiscountAmount.DefaultCellStyle = dataGridViewCellStyle12;
+            this.dgvtxtSalesInvoiceDiscountAmount.HeaderText = "Discount";
+            this.dgvtxtSalesInvoiceDiscountAmount.MaxInputLength = 15;
+            this.dgvtxtSalesInvoiceDiscountAmount.Name = "dgvtxtSalesInvoiceDiscountAmount";
+            this.dgvtxtSalesInvoiceDiscountAmount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dgvtxtSalesInvoiceDiscountAmount.Visible = false;
+            // 
+            // dgvtxtSalesInvoiceNetAmount
+            // 
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtSalesInvoiceNetAmount.DefaultCellStyle = dataGridViewCellStyle13;
+            this.dgvtxtSalesInvoiceNetAmount.HeaderText = "Net Amount";
+            this.dgvtxtSalesInvoiceNetAmount.Name = "dgvtxtSalesInvoiceNetAmount";
+            this.dgvtxtSalesInvoiceNetAmount.ReadOnly = true;
+            this.dgvtxtSalesInvoiceNetAmount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dgvtxtSalesInvoiceNetAmount.Visible = false;
+            this.dgvtxtSalesInvoiceNetAmount.Width = 105;
+            // 
+            // dgvcmbSalesInvoiceTaxName
+            // 
+            this.dgvcmbSalesInvoiceTaxName.HeaderText = "Tax";
+            this.dgvcmbSalesInvoiceTaxName.Name = "dgvcmbSalesInvoiceTaxName";
+            this.dgvcmbSalesInvoiceTaxName.Visible = false;
+            // 
+            // dgvtxtSalesInvoiceTaxAmount
+            // 
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtSalesInvoiceTaxAmount.DefaultCellStyle = dataGridViewCellStyle14;
+            this.dgvtxtSalesInvoiceTaxAmount.HeaderText = "Tax Amount";
+            this.dgvtxtSalesInvoiceTaxAmount.MaxInputLength = 13;
+            this.dgvtxtSalesInvoiceTaxAmount.Name = "dgvtxtSalesInvoiceTaxAmount";
+            this.dgvtxtSalesInvoiceTaxAmount.ReadOnly = true;
+            this.dgvtxtSalesInvoiceTaxAmount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dgvtxtSalesInvoiceTaxAmount.Visible = false;
+            // 
+            // dgvtxtSalesInvoiceInRowIndex
+            // 
+            this.dgvtxtSalesInvoiceInRowIndex.HeaderText = "inRowIndex";
+            this.dgvtxtSalesInvoiceInRowIndex.Name = "dgvtxtSalesInvoiceInRowIndex";
+            this.dgvtxtSalesInvoiceInRowIndex.Visible = false;
+            // 
+            // totalUser
+            // 
+            this.totalUser.HeaderText = "totalUser";
+            this.totalUser.Name = "totalUser";
+            this.totalUser.Visible = false;
+            // 
+            // dgvtxtSalesInvoiceVoucherNo
+            // 
+            this.dgvtxtSalesInvoiceVoucherNo.HeaderText = "VoucherNo";
+            this.dgvtxtSalesInvoiceVoucherNo.Name = "dgvtxtSalesInvoiceVoucherNo";
+            this.dgvtxtSalesInvoiceVoucherNo.Visible = false;
+            // 
+            // dgvtxtSalesInvoiceInvoiceNo
+            // 
+            this.dgvtxtSalesInvoiceInvoiceNo.HeaderText = "InvoiceNo";
+            this.dgvtxtSalesInvoiceInvoiceNo.Name = "dgvtxtSalesInvoiceInvoiceNo";
+            this.dgvtxtSalesInvoiceInvoiceNo.Visible = false;
+            // 
+            // dgvtxtSalesInvoiceVoucherTypeId
+            // 
+            this.dgvtxtSalesInvoiceVoucherTypeId.HeaderText = "VoucherTypeId";
+            this.dgvtxtSalesInvoiceVoucherTypeId.Name = "dgvtxtSalesInvoiceVoucherTypeId";
+            this.dgvtxtSalesInvoiceVoucherTypeId.Visible = false;
+            // 
+            // dgvtxtSalesInvoiceAmount
+            // 
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtSalesInvoiceAmount.DefaultCellStyle = dataGridViewCellStyle15;
+            this.dgvtxtSalesInvoiceAmount.HeaderText = "Amount";
+            this.dgvtxtSalesInvoiceAmount.Name = "dgvtxtSalesInvoiceAmount";
+            this.dgvtxtSalesInvoiceAmount.ReadOnly = true;
+            this.dgvtxtSalesInvoiceAmount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dgvtxtSalesInvoiceAmount.Visible = false;
+            this.dgvtxtSalesInvoiceAmount.Width = 110;
+            // 
             // lblDate
             // 
             this.lblDate.AutoSize = true;
@@ -925,17 +1203,15 @@ namespace LoginForm
             this.lblSalesModeOrderNo.TabIndex = 760;
             this.lblSalesModeOrderNo.Text = "Order No.";
             // 
-            // cmbSalesModeOrderNo
+            // txtSalesModeOrderNo
             // 
-            this.cmbSalesModeOrderNo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbSalesModeOrderNo.FormattingEnabled = true;
-            this.cmbSalesModeOrderNo.Location = new System.Drawing.Point(153, 112);
-            this.cmbSalesModeOrderNo.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
-            this.cmbSalesModeOrderNo.Name = "cmbSalesModeOrderNo";
-            this.cmbSalesModeOrderNo.Size = new System.Drawing.Size(265, 24);
-            this.cmbSalesModeOrderNo.TabIndex = 7;
-            this.cmbSalesModeOrderNo.SelectedIndexChanged += new System.EventHandler(this.cmbSalesModeOrderNo_SelectedIndexChanged);
-            this.cmbSalesModeOrderNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbSalesModeOrderNo_KeyDown);
+            this.txtSalesModeOrderNo.Location = new System.Drawing.Point(153, 112);
+            this.txtSalesModeOrderNo.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.txtSalesModeOrderNo.Name = "txtSalesModeOrderNo";
+            this.txtSalesModeOrderNo.ReadOnly = true;
+            this.txtSalesModeOrderNo.Size = new System.Drawing.Size(265, 22);
+            this.txtSalesModeOrderNo.TabIndex = 7;
+            this.txtSalesModeOrderNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblTaxTotal
             // 
@@ -1232,284 +1508,6 @@ namespace LoginForm
             this.btnSelectSaleOrders.UseVisualStyleBackColor = false;
             this.btnSelectSaleOrders.Click += new System.EventHandler(this.btnSelectSaleOrders_Click);
             // 
-            // dgvtxtSalesInvoiceSlno
-            // 
-            this.dgvtxtSalesInvoiceSlno.Frozen = true;
-            this.dgvtxtSalesInvoiceSlno.HeaderText = "Sl No";
-            this.dgvtxtSalesInvoiceSlno.Name = "dgvtxtSalesInvoiceSlno";
-            this.dgvtxtSalesInvoiceSlno.ReadOnly = true;
-            this.dgvtxtSalesInvoiceSlno.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dgvtxtSalesInvoiceSlno.Width = 50;
-            // 
-            // dgvPOno
-            // 
-            this.dgvPOno.HeaderText = "POno";
-            this.dgvPOno.Name = "dgvPOno";
-            this.dgvPOno.ReadOnly = true;
-            this.dgvPOno.Visible = false;
-            // 
-            // dgvtxtSalesInvoiceSalesDetailsId
-            // 
-            this.dgvtxtSalesInvoiceSalesDetailsId.HeaderText = "dgvSitxtSalesDetailsId";
-            this.dgvtxtSalesInvoiceSalesDetailsId.Name = "dgvtxtSalesInvoiceSalesDetailsId";
-            this.dgvtxtSalesInvoiceSalesDetailsId.Visible = false;
-            // 
-            // dgvtxtSalesInvoiceProductId
-            // 
-            this.dgvtxtSalesInvoiceProductId.HeaderText = "productId";
-            this.dgvtxtSalesInvoiceProductId.Name = "dgvtxtSalesInvoiceProductId";
-            this.dgvtxtSalesInvoiceProductId.Visible = false;
-            // 
-            // dgvtxtSISalesOrderDetailsId
-            // 
-            this.dgvtxtSISalesOrderDetailsId.HeaderText = "salesOrderDetailsId";
-            this.dgvtxtSISalesOrderDetailsId.Name = "dgvtxtSISalesOrderDetailsId";
-            this.dgvtxtSISalesOrderDetailsId.Visible = false;
-            // 
-            // dgvtxtSalesInvoiceDeliveryNoteDetailsId
-            // 
-            this.dgvtxtSalesInvoiceDeliveryNoteDetailsId.HeaderText = "deliveryNoteDetailsId";
-            this.dgvtxtSalesInvoiceDeliveryNoteDetailsId.Name = "dgvtxtSalesInvoiceDeliveryNoteDetailsId";
-            this.dgvtxtSalesInvoiceDeliveryNoteDetailsId.Visible = false;
-            // 
-            // dgvtxtSalesInvoiceQuotationDetailsId
-            // 
-            this.dgvtxtSalesInvoiceQuotationDetailsId.HeaderText = "quotationDetailsId";
-            this.dgvtxtSalesInvoiceQuotationDetailsId.Name = "dgvtxtSalesInvoiceQuotationDetailsId";
-            this.dgvtxtSalesInvoiceQuotationDetailsId.Visible = false;
-            // 
-            // dgvtxtSalesInvoiceBarcode
-            // 
-            this.dgvtxtSalesInvoiceBarcode.DataPropertyName = "barcode";
-            this.dgvtxtSalesInvoiceBarcode.HeaderText = "Barcode";
-            this.dgvtxtSalesInvoiceBarcode.Name = "dgvtxtSalesInvoiceBarcode";
-            this.dgvtxtSalesInvoiceBarcode.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dgvtxtSalesInvoiceBarcode.Width = 75;
-            // 
-            // dgvtxtSalesInvoiceProductCode
-            // 
-            this.dgvtxtSalesInvoiceProductCode.DataPropertyName = "productCode";
-            this.dgvtxtSalesInvoiceProductCode.HeaderText = "Product Code";
-            this.dgvtxtSalesInvoiceProductCode.Name = "dgvtxtSalesInvoiceProductCode";
-            this.dgvtxtSalesInvoiceProductCode.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dgvtxtSalesInvoiceProductName
-            // 
-            this.dgvtxtSalesInvoiceProductName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgvtxtSalesInvoiceProductName.DataPropertyName = "productName";
-            this.dgvtxtSalesInvoiceProductName.HeaderText = "Product Name";
-            this.dgvtxtSalesInvoiceProductName.Name = "dgvtxtSalesInvoiceProductName";
-            this.dgvtxtSalesInvoiceProductName.ReadOnly = true;
-            this.dgvtxtSalesInvoiceProductName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dgvtxtSalesInvoiceProductName.Width = 115;
-            // 
-            // dgvtxtSalesInvoiceBrand
-            // 
-            this.dgvtxtSalesInvoiceBrand.HeaderText = "Brand";
-            this.dgvtxtSalesInvoiceBrand.Name = "dgvtxtSalesInvoiceBrand";
-            this.dgvtxtSalesInvoiceBrand.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dgvtxtSalesInvoiceQty
-            // 
-            this.dgvtxtSalesInvoiceQty.DataPropertyName = "qty";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtSalesInvoiceQty.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dgvtxtSalesInvoiceQty.HeaderText = "Qty";
-            this.dgvtxtSalesInvoiceQty.MaxInputLength = 8;
-            this.dgvtxtSalesInvoiceQty.Name = "dgvtxtSalesInvoiceQty";
-            this.dgvtxtSalesInvoiceQty.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dgvtxtSalesInvoiceQty.Width = 105;
-            // 
-            // dgStockQuantity
-            // 
-            this.dgStockQuantity.HeaderText = "Stock Qty";
-            this.dgStockQuantity.Name = "dgStockQuantity";
-            this.dgStockQuantity.ReadOnly = true;
-            // 
-            // dgvtxtSalesInvoiceUnitConversionId
-            // 
-            this.dgvtxtSalesInvoiceUnitConversionId.HeaderText = "UnitConversionId";
-            this.dgvtxtSalesInvoiceUnitConversionId.Name = "dgvtxtSalesInvoiceUnitConversionId";
-            this.dgvtxtSalesInvoiceUnitConversionId.Visible = false;
-            // 
-            // dgvtxtSalesInvoiceConversionRate
-            // 
-            this.dgvtxtSalesInvoiceConversionRate.HeaderText = "ConversionRate";
-            this.dgvtxtSalesInvoiceConversionRate.Name = "dgvtxtSalesInvoiceConversionRate";
-            this.dgvtxtSalesInvoiceConversionRate.Visible = false;
-            // 
-            // dgvtxtSalesInvoicembUnitName
-            // 
-            this.dgvtxtSalesInvoicembUnitName.HeaderText = "Unit";
-            this.dgvtxtSalesInvoicembUnitName.Name = "dgvtxtSalesInvoicembUnitName";
-            this.dgvtxtSalesInvoicembUnitName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvtxtSalesInvoicembUnitName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dgvcmbSalesInvoiceGodown
-            // 
-            this.dgvcmbSalesInvoiceGodown.HeaderText = "Godown";
-            this.dgvcmbSalesInvoiceGodown.Name = "dgvcmbSalesInvoiceGodown";
-            this.dgvcmbSalesInvoiceGodown.Visible = false;
-            // 
-            // dgvcmbSalesInvoiceRack
-            // 
-            this.dgvcmbSalesInvoiceRack.HeaderText = "Rack";
-            this.dgvcmbSalesInvoiceRack.Name = "dgvcmbSalesInvoiceRack";
-            this.dgvcmbSalesInvoiceRack.Visible = false;
-            // 
-            // dgvcmbSalesInvoiceBatch
-            // 
-            this.dgvcmbSalesInvoiceBatch.HeaderText = "Batch";
-            this.dgvcmbSalesInvoiceBatch.Name = "dgvcmbSalesInvoiceBatch";
-            this.dgvcmbSalesInvoiceBatch.Visible = false;
-            // 
-            // dgvtxtSalesInvoicePurchaseRate
-            // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtSalesInvoicePurchaseRate.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvtxtSalesInvoicePurchaseRate.HeaderText = "Purchase rate.";
-            this.dgvtxtSalesInvoicePurchaseRate.MaxInputLength = 13;
-            this.dgvtxtSalesInvoicePurchaseRate.Name = "dgvtxtSalesInvoicePurchaseRate";
-            this.dgvtxtSalesInvoicePurchaseRate.ReadOnly = true;
-            this.dgvtxtSalesInvoicePurchaseRate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dgvtxtSalesInvoicePurchaseRate.Visible = false;
-            // 
-            // dgvtxtSalesInvoiceMrp
-            // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtSalesInvoiceMrp.DefaultCellStyle = dataGridViewCellStyle7;
-            this.dgvtxtSalesInvoiceMrp.HeaderText = "MRP";
-            this.dgvtxtSalesInvoiceMrp.MaxInputLength = 13;
-            this.dgvtxtSalesInvoiceMrp.Name = "dgvtxtSalesInvoiceMrp";
-            this.dgvtxtSalesInvoiceMrp.ReadOnly = true;
-            this.dgvtxtSalesInvoiceMrp.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dgvtxtSalesInvoiceSalesRate
-            // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtSalesInvoiceSalesRate.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dgvtxtSalesInvoiceSalesRate.HeaderText = "SalesRate";
-            this.dgvtxtSalesInvoiceSalesRate.MaxInputLength = 13;
-            this.dgvtxtSalesInvoiceSalesRate.Name = "dgvtxtSalesInvoiceSalesRate";
-            this.dgvtxtSalesInvoiceSalesRate.ReadOnly = true;
-            this.dgvtxtSalesInvoiceSalesRate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dgvtxtSalesInvoiceSalesRate.Visible = false;
-            // 
-            // dgvtxtSalesInvoiceRate
-            // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtSalesInvoiceRate.DefaultCellStyle = dataGridViewCellStyle9;
-            this.dgvtxtSalesInvoiceRate.HeaderText = "Rate";
-            this.dgvtxtSalesInvoiceRate.MaxInputLength = 10;
-            this.dgvtxtSalesInvoiceRate.Name = "dgvtxtSalesInvoiceRate";
-            this.dgvtxtSalesInvoiceRate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dgvtxtSalesInvoiceRate.Width = 105;
-            // 
-            // dgUPIME
-            // 
-            this.dgUPIME.HeaderText = "UPIME";
-            this.dgUPIME.Name = "dgUPIME";
-            // 
-            // dgvtxtSalesInvoiceGrossValue
-            // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtSalesInvoiceGrossValue.DefaultCellStyle = dataGridViewCellStyle10;
-            this.dgvtxtSalesInvoiceGrossValue.HeaderText = "Gross Value";
-            this.dgvtxtSalesInvoiceGrossValue.Name = "dgvtxtSalesInvoiceGrossValue";
-            this.dgvtxtSalesInvoiceGrossValue.ReadOnly = true;
-            this.dgvtxtSalesInvoiceGrossValue.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dgvtxtSalesInvoiceGrossValue.Visible = false;
-            this.dgvtxtSalesInvoiceGrossValue.Width = 105;
-            // 
-            // dgvtxtSalesInvoiceDiscountPercentage
-            // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtSalesInvoiceDiscountPercentage.DefaultCellStyle = dataGridViewCellStyle11;
-            this.dgvtxtSalesInvoiceDiscountPercentage.HeaderText = "Discount Percentage";
-            this.dgvtxtSalesInvoiceDiscountPercentage.MaxInputLength = 10;
-            this.dgvtxtSalesInvoiceDiscountPercentage.Name = "dgvtxtSalesInvoiceDiscountPercentage";
-            this.dgvtxtSalesInvoiceDiscountPercentage.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dgvtxtSalesInvoiceDiscountPercentage.Visible = false;
-            // 
-            // dgvtxtSalesInvoiceDiscountAmount
-            // 
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtSalesInvoiceDiscountAmount.DefaultCellStyle = dataGridViewCellStyle12;
-            this.dgvtxtSalesInvoiceDiscountAmount.HeaderText = "Discount";
-            this.dgvtxtSalesInvoiceDiscountAmount.MaxInputLength = 15;
-            this.dgvtxtSalesInvoiceDiscountAmount.Name = "dgvtxtSalesInvoiceDiscountAmount";
-            this.dgvtxtSalesInvoiceDiscountAmount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dgvtxtSalesInvoiceDiscountAmount.Visible = false;
-            // 
-            // dgvtxtSalesInvoiceNetAmount
-            // 
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtSalesInvoiceNetAmount.DefaultCellStyle = dataGridViewCellStyle13;
-            this.dgvtxtSalesInvoiceNetAmount.HeaderText = "Net Amount";
-            this.dgvtxtSalesInvoiceNetAmount.Name = "dgvtxtSalesInvoiceNetAmount";
-            this.dgvtxtSalesInvoiceNetAmount.ReadOnly = true;
-            this.dgvtxtSalesInvoiceNetAmount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dgvtxtSalesInvoiceNetAmount.Visible = false;
-            this.dgvtxtSalesInvoiceNetAmount.Width = 105;
-            // 
-            // dgvcmbSalesInvoiceTaxName
-            // 
-            this.dgvcmbSalesInvoiceTaxName.HeaderText = "Tax";
-            this.dgvcmbSalesInvoiceTaxName.Name = "dgvcmbSalesInvoiceTaxName";
-            this.dgvcmbSalesInvoiceTaxName.Visible = false;
-            // 
-            // dgvtxtSalesInvoiceTaxAmount
-            // 
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtSalesInvoiceTaxAmount.DefaultCellStyle = dataGridViewCellStyle14;
-            this.dgvtxtSalesInvoiceTaxAmount.HeaderText = "Tax Amount";
-            this.dgvtxtSalesInvoiceTaxAmount.MaxInputLength = 13;
-            this.dgvtxtSalesInvoiceTaxAmount.Name = "dgvtxtSalesInvoiceTaxAmount";
-            this.dgvtxtSalesInvoiceTaxAmount.ReadOnly = true;
-            this.dgvtxtSalesInvoiceTaxAmount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dgvtxtSalesInvoiceTaxAmount.Visible = false;
-            // 
-            // dgvtxtSalesInvoiceInRowIndex
-            // 
-            this.dgvtxtSalesInvoiceInRowIndex.HeaderText = "inRowIndex";
-            this.dgvtxtSalesInvoiceInRowIndex.Name = "dgvtxtSalesInvoiceInRowIndex";
-            this.dgvtxtSalesInvoiceInRowIndex.Visible = false;
-            // 
-            // totalUser
-            // 
-            this.totalUser.HeaderText = "totalUser";
-            this.totalUser.Name = "totalUser";
-            this.totalUser.Visible = false;
-            // 
-            // dgvtxtSalesInvoiceVoucherNo
-            // 
-            this.dgvtxtSalesInvoiceVoucherNo.HeaderText = "VoucherNo";
-            this.dgvtxtSalesInvoiceVoucherNo.Name = "dgvtxtSalesInvoiceVoucherNo";
-            this.dgvtxtSalesInvoiceVoucherNo.Visible = false;
-            // 
-            // dgvtxtSalesInvoiceInvoiceNo
-            // 
-            this.dgvtxtSalesInvoiceInvoiceNo.HeaderText = "InvoiceNo";
-            this.dgvtxtSalesInvoiceInvoiceNo.Name = "dgvtxtSalesInvoiceInvoiceNo";
-            this.dgvtxtSalesInvoiceInvoiceNo.Visible = false;
-            // 
-            // dgvtxtSalesInvoiceVoucherTypeId
-            // 
-            this.dgvtxtSalesInvoiceVoucherTypeId.HeaderText = "VoucherTypeId";
-            this.dgvtxtSalesInvoiceVoucherTypeId.Name = "dgvtxtSalesInvoiceVoucherTypeId";
-            this.dgvtxtSalesInvoiceVoucherTypeId.Visible = false;
-            // 
-            // dgvtxtSalesInvoiceAmount
-            // 
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtSalesInvoiceAmount.DefaultCellStyle = dataGridViewCellStyle15;
-            this.dgvtxtSalesInvoiceAmount.HeaderText = "Amount";
-            this.dgvtxtSalesInvoiceAmount.Name = "dgvtxtSalesInvoiceAmount";
-            this.dgvtxtSalesInvoiceAmount.ReadOnly = true;
-            this.dgvtxtSalesInvoiceAmount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dgvtxtSalesInvoiceAmount.Visible = false;
-            this.dgvtxtSalesInvoiceAmount.Width = 110;
-            // 
             // frmDeliveryNote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1541,7 +1539,7 @@ namespace LoginForm
             this.Controls.Add(this.lblFinalTotalAmount);
             this.Controls.Add(this.lblLedgerTotalAmount);
             this.Controls.Add(this.lblLedgerTotal);
-            this.Controls.Add(this.cmbSalesModeOrderNo);
+            this.Controls.Add(this.txtSalesModeOrderNo);
             this.Controls.Add(this.lblSalesModeOrderNo);
             this.Controls.Add(this.lblTaxTotalAmount);
             this.Controls.Add(this.btnNewSalesAccount);
@@ -1640,7 +1638,7 @@ namespace LoginForm
         private System.Windows.Forms.Button btnNewSalesAccount;
         private System.Windows.Forms.Label lblTaxTotalAmount;
         private System.Windows.Forms.Label lblSalesModeOrderNo;
-        private System.Windows.Forms.ComboBox cmbSalesModeOrderNo;
+        private System.Windows.Forms.TextBox txtSalesModeOrderNo;
         private System.Windows.Forms.Label lblTaxTotal;
         private System.Windows.Forms.Label lblLedgerTotalAmount;
         private System.Windows.Forms.Label lblLedgerTotal;

@@ -1800,19 +1800,20 @@ namespace LoginForm
                     }
                     dgvSalesInvoice.Rows.Clear();
                     isValueChange = true;
-                    DataTable dtblMaster = SPSalesOrderMaster.SalesInvoiceGridfillAgainestSalesOrder((decimal)cmbSalesModeOrderNo.SelectedValue);
-                    //cmbPricingLevel.SelectedValue = Convert.ToDecimal(dtblMaster.Rows[0]["pricingLevelId"].ToString());
-                    cmbCurrency.SelectedValue = Convert.ToDecimal(dtblMaster.Rows[0]["exchangeRateId"].ToString());
-                    if (dtblMaster.Rows[0]["employeeId"].ToString() != string.Empty)
-                    {
-                        strSalesManId = dtblMaster.Rows[0]["employeeId"].ToString();
-                        cmbSalesMan.SelectedValue = strSalesManId;
-                        if (cmbSalesMan.SelectedValue == null)
-                        {
-                            salesManComboFill();
-                            cmbSalesMan.SelectedValue = dtblMaster.Rows[0]["employeeId"].ToString();
-                        }
-                    }
+                    //TODO SaleInvoice: Alttaki yorumlu kısım SaleOrder bilgilerini grid e koymak için
+                    //DataTable dtblMaster = SPSalesOrderMaster.SalesInvoiceGridfillAgainestSalesOrder(cmbSalesModeOrderNo.Text);
+                    ////cmbPricingLevel.SelectedValue = Convert.ToDecimal(dtblMaster.Rows[0]["pricingLevelId"].ToString());
+                    //cmbCurrency.SelectedValue = Convert.ToDecimal(dtblMaster.Rows[0]["exchangeRateId"].ToString());
+                    //if (dtblMaster.Rows[0]["employeeId"].ToString() != string.Empty)
+                    //{
+                    //    strSalesManId = dtblMaster.Rows[0]["employeeId"].ToString();
+                    //    cmbSalesMan.SelectedValue = strSalesManId;
+                    //    if (cmbSalesMan.SelectedValue == null)
+                    //    {
+                    //        salesManComboFill();
+                    //        cmbSalesMan.SelectedValue = dtblMaster.Rows[0]["employeeId"].ToString();
+                    //    }
+                    //}
                     //cmbPricingLevel.Enabled = false;
                     btnNewPricingLevel.Enabled = false;
                     cmbCurrency.Enabled = false;

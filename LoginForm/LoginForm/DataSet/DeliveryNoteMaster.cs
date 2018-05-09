@@ -29,7 +29,7 @@ namespace LoginForm.DataSet
         public Nullable<decimal> suffixPrefixId { get; set; }
         public Nullable<System.DateTime> date { get; set; }
         public Nullable<decimal> ledgerId { get; set; }
-        public Nullable<decimal> orderMasterId { get; set; }
+        public string orderMasterId { get; set; }
         public Nullable<decimal> pricinglevelId { get; set; }
         public string narration { get; set; }
         public Nullable<int> exchangeRateId { get; set; }
@@ -46,6 +46,7 @@ namespace LoginForm.DataSet
         public Nullable<bool> POS { get; set; }
         public int creditPeriod { get; set; }
         public string CustomerID { get; set; }
+        public string DeliveryNoteType { get; set; }
     
         public virtual AccountLedger AccountLedger { get; set; }
         public virtual Customer Customer { get; set; }

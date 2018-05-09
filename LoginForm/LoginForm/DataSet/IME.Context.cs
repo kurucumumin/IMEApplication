@@ -2460,7 +2460,7 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DeliveryNoteItemsToSaleInvoice_Result>("DeliveryNoteItemsToSaleInvoice", deliveryNoteNoParameter);
         }
     
-        public virtual ObjectResult<Nullable<decimal>> DeliveryNoteMasterAdd(string voucherNo, string invoiceNo, Nullable<decimal> voucherTypeId, Nullable<decimal> suffixPrefixId, Nullable<System.DateTime> date, Nullable<int> creditPeriod, Nullable<decimal> ledgerId, Nullable<decimal> salesAccount, Nullable<decimal> orderMasterId, string narration, Nullable<decimal> exchangeRateId, Nullable<decimal> taxAmount, Nullable<decimal> additionalCost, Nullable<decimal> billDiscount, Nullable<decimal> grandTotal, Nullable<decimal> totalAmount, Nullable<int> userId, string lrNo, string transportationCompany, Nullable<bool> pOS, Nullable<decimal> financialYearId, string customerID)
+        public virtual ObjectResult<Nullable<decimal>> DeliveryNoteMasterAdd(string voucherNo, string invoiceNo, Nullable<decimal> voucherTypeId, Nullable<decimal> suffixPrefixId, Nullable<System.DateTime> date, Nullable<int> creditPeriod, Nullable<decimal> ledgerId, Nullable<decimal> salesAccount, string orderMasterId, string narration, Nullable<decimal> exchangeRateId, Nullable<decimal> taxAmount, Nullable<decimal> additionalCost, Nullable<decimal> billDiscount, Nullable<decimal> grandTotal, Nullable<decimal> totalAmount, Nullable<int> userId, string lrNo, string transportationCompany, Nullable<bool> pOS, Nullable<decimal> financialYearId, string customerID)
         {
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
@@ -2494,9 +2494,9 @@ namespace LoginForm.DataSet
                 new ObjectParameter("salesAccount", salesAccount) :
                 new ObjectParameter("salesAccount", typeof(decimal));
     
-            var orderMasterIdParameter = orderMasterId.HasValue ?
+            var orderMasterIdParameter = orderMasterId != null ?
                 new ObjectParameter("orderMasterId", orderMasterId) :
-                new ObjectParameter("orderMasterId", typeof(decimal));
+                new ObjectParameter("orderMasterId", typeof(string));
     
             var narrationParameter = narration != null ?
                 new ObjectParameter("narration", narration) :

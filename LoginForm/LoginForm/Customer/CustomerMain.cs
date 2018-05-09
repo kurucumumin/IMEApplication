@@ -113,13 +113,7 @@ namespace LoginForm
 
         public CustomerMain(Boolean buttonEnabled)
         {
-            //Qoutation Customer Add
-
             InitializeComponent();
-            if (buttonEnabled == true)
-            {
-
-            }
         }
 
         private void ControlAutorization()

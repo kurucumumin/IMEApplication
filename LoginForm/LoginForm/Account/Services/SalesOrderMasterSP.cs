@@ -34,34 +34,34 @@ namespace LoginForm.Account.Services
             return dt;
         }
 
-        public DataTable SalesInvoiceGridfillAgainestSalesOrder(decimal strOrderMasterId)
-        {
-            IMEEntities IME = new IMEEntities();
-            DataTable dt = new DataTable();
+        //public DataTable SalesInvoiceGridfillAgainestSalesOrder(string strOrderMasterId)
+        //{
+        //    IMEEntities IME = new IMEEntities();
+        //    DataTable dt = new DataTable();
 
-            var adaptor = IME.SaleOrders.Where(a => a.SaleOrderID == strOrderMasterId).ToList();
-            dt.Columns.Add("invoiceNo");
-            dt.Columns.Add("SaleOrderNo");
-            dt.Columns.Add("ledgerId");
-            dt.Columns.Add("exchangeRateID");
-            dt.Columns.Add("currencyId");
-            dt.Columns.Add("WorkerID");
-            dt.Columns.Add("pricingLevelId");
+        //    var adaptor = IME.SaleOrders.Where(a => a.SaleOrderID == strOrderMasterId).ToList();
+        //    dt.Columns.Add("invoiceNo");
+        //    dt.Columns.Add("SaleOrderNo");
+        //    dt.Columns.Add("ledgerId");
+        //    dt.Columns.Add("exchangeRateID");
+        //    dt.Columns.Add("currencyId");
+        //    dt.Columns.Add("WorkerID");
+        //    dt.Columns.Add("pricingLevelId");
 
-            foreach (var item in adaptor)
-            {
-                var row = dt.NewRow();
-                row["invoiceNo"] = item.invoiceNo;
-                row["SaleOrderNo"] = item.SaleOrderNo;
-                row["ledgerId"] = item.ledgerId;
-                row["exchangeRateID"] = item.exchangeRateID;
-                row["currencyId"] = item.ExchangeRate.currencyId;
-                row["WorkerID"] = item.Worker.WorkerID;
-                row["pricingLevelId"] = item.pricingLevelId;
+        //    foreach (var item in adaptor)
+        //    {
+        //        var row = dt.NewRow();
+        //        row["invoiceNo"] = item.invoiceNo;
+        //        row["SaleOrderNo"] = item.SaleOrderNo;
+        //        row["ledgerId"] = item.ledgerId;
+        //        row["exchangeRateID"] = item.exchangeRateID;
+        //        row["currencyId"] = item.ExchangeRate.currencyId;
+        //        row["WorkerID"] = item.Worker.WorkerID;
+        //        row["pricingLevelId"] = item.pricingLevelId;
 
-                dt.Rows.Add(row);
-            }
-            return dt;
-        }
+        //        dt.Rows.Add(row);
+        //    }
+        //    return dt;
+        //}
     }
 }

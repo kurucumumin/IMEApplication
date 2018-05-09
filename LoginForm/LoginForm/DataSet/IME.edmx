@@ -556,7 +556,7 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="suffixPrefixId" Type="numeric" Precision="18" Scale="0" />
           <Property Name="date" Type="datetime" />
           <Property Name="ledgerId" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="orderMasterId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="orderMasterId" Type="nvarchar(max)" />
           <Property Name="pricinglevelId" Type="numeric" Precision="18" Scale="0" />
           <Property Name="narration" Type="varchar(max)" />
           <Property Name="exchangeRateId" Type="int" />
@@ -573,6 +573,7 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="POS" Type="bit" />
           <Property Name="creditPeriod" Type="int" Nullable="false" />
           <Property Name="CustomerID" Type="nvarchar" MaxLength="15" />
+          <Property Name="DeliveryNoteType" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="Designation">
           <Key>
@@ -7565,7 +7566,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Parameter Name="creditPeriod" Type="int" Mode="In" />
           <Parameter Name="ledgerId" Type="numeric" Mode="In" />
           <Parameter Name="salesAccount" Type="numeric" Mode="In" />
-          <Parameter Name="orderMasterId" Type="numeric" Mode="In" />
+          <Parameter Name="orderMasterId" Type="varchar(max)" Mode="In" />
           <Parameter Name="narration" Type="varchar(max)" Mode="In" />
           <Parameter Name="exchangeRateId" Type="numeric" Mode="In" />
           <Parameter Name="taxAmount" Type="decimal" Mode="In" />
@@ -11693,7 +11694,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="suffixPrefixId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="date" Type="DateTime" Precision="3" />
           <Property Name="ledgerId" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="orderMasterId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="orderMasterId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="pricinglevelId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="exchangeRateId" Type="Int32" />
@@ -11710,6 +11711,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="POS" Type="Boolean" />
           <Property Name="creditPeriod" Type="Int32" Nullable="false" />
           <Property Name="CustomerID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="DeliveryNoteType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="AccountLedger" Relationship="Self.FK__DeliveryN__ledge__2136E270" FromRole="DeliveryNoteMaster" ToRole="AccountLedger" />
           <NavigationProperty Name="Customer" Relationship="Self.FK__DeliveryN__Custo__3C7FD589" FromRole="DeliveryNoteMaster" ToRole="Customer" />
           <NavigationProperty Name="DeliveryNoteDetails" Relationship="Self.FK__DeliveryN__deliv__48DABF76" FromRole="DeliveryNoteMaster" ToRole="DeliveryNoteDetail" />
@@ -20810,7 +20812,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <Parameter Name="creditPeriod" Mode="In" Type="Int32" />
             <Parameter Name="ledgerId" Mode="In" Type="Decimal" />
             <Parameter Name="salesAccount" Mode="In" Type="Decimal" />
-            <Parameter Name="orderMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="orderMasterId" Mode="In" Type="String" />
             <Parameter Name="narration" Mode="In" Type="String" />
             <Parameter Name="exchangeRateId" Mode="In" Type="Decimal" />
             <Parameter Name="taxAmount" Mode="In" Type="Decimal" />
@@ -25354,6 +25356,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="POS" ColumnName="POS" />
                 <ScalarProperty Name="creditPeriod" ColumnName="creditPeriod" />
                 <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="DeliveryNoteType" ColumnName="DeliveryNoteType" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

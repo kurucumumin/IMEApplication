@@ -117,7 +117,23 @@ namespace LoginForm.PurchaseOrder
 
             if(parent.GetType() == typeof(frmDeliveryNote))
             {
-                ((frmDeliveryNote)parent).setDeliveryNoteItemsFromPopUp(dt);
+                List<string> numberList = new List<string>();
+                string orderNumbers = String.Empty;
+
+                foreach (DataGridViewRow row in dgSaleOrder.SelectedRows)
+                {
+                    numberList.Add(row.Cells["SaleOrderID"].Value.ToString());
+                }
+                for (int i = 0; i < numberList.Count; i++)
+                {
+                    orderNumbers += numberList[i];
+                    if(i != (numberList.Count-1))
+                    {
+                        orderNumbers += ",";
+                    }
+                }
+
+                ((frmDeliveryNote)parent).setDeliveryNoteItemsFromPopUp(dt, orderNumbers);
             }
             else
             {
