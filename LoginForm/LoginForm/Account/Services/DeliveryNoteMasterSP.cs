@@ -64,7 +64,8 @@ namespace LoginForm.Account.Services
                 deliverynotemasterinfo.transportationCompany,
                 deliverynotemasterinfo.POS,
                 deliverynotemasterinfo.financialYearId,
-                deliverynotemasterinfo.CustomerID).FirstOrDefault();
+                deliverynotemasterinfo.CustomerID,
+                deliverynotemasterinfo.DeliveryNoteType).FirstOrDefault();
 
                 if (obj != null)
                 {

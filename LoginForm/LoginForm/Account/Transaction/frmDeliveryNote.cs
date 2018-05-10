@@ -88,7 +88,13 @@ namespace LoginForm
                     strVoucherNo = TransactionGeneralFillObj.VoucherNumberAutomaicGeneration(DecDeliveryNoteVoucherTypeId, Convert.ToDecimal(strVoucherNo), dtpDate.Value, "DeliveryNoteMaster");
 
                     decimal decDeliveryNoteMastersTypeIdmax = 0;
-                    if (IME.DeliveryNoteMasters.Where(a => a.voucherTypeId == DecDeliveryNoteVoucherTypeId).Select(b => b.voucherNo).ToList().Count() != 0) decDeliveryNoteMastersTypeIdmax = IME.DeliveryNoteMasters.Where(a => a.voucherTypeId == DecDeliveryNoteVoucherTypeId).Select(b => b.voucherNo).ToList().Select(decimal.Parse).ToList().Max();
+                if (IME.DeliveryNoteMasters.Where(a => a.voucherTypeId == DecDeliveryNoteVoucherTypeId).Select(b => b.voucherNo).ToList().Count() != 0)
+                {
+                    decDeliveryNoteMastersTypeIdmax = IME.DeliveryNoteMasters.Where(a =>
+                    a.voucherTypeId == DecDeliveryNoteVoucherTypeId).
+                    Select(b => b.voucherNo).ToList().
+                    Select(decimal.Parse).ToList().Max();
+                } 
 
                     if (Convert.ToDecimal(strVoucherNo) != decDeliveryNoteMastersTypeIdmax)
                     {
@@ -2989,7 +2995,7 @@ namespace LoginForm
                 }
                 if (cmbSalesMode.Text == "Against SalesOrder")
                 {
-                    if (String.IsNullOrEmpty(txtSalesModeOrderNo.Text))
+                    if (!String.IsNullOrEmpty(txtSalesModeOrderNo.Text))
                     {
                         InfoDeliveryNoteMaster.orderMasterId = txtSalesModeOrderNo.Text;
                     }
@@ -3033,6 +3039,7 @@ namespace LoginForm
                 InfoDeliveryNoteMaster.transportationCompany = txtTransportCompany.Text.Trim();
                 InfoDeliveryNoteMaster.POS = false;
                 InfoDeliveryNoteMaster.CustomerID = txtCustomer.Text;
+                InfoDeliveryNoteMaster.DeliveryNoteType = "SaleInvoice";
                 decimal decDeliveryMasterId = spDeliveryNoteMaster.DeliveryNoteMasterAdd(InfoDeliveryNoteMaster);
                 int inRowCount = dgvSalesInvoice.RowCount;
                 InfoDeliveryDetails.deliveryNoteMasterId = decDeliveryMasterId;

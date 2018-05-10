@@ -1,4 +1,5 @@
-﻿using LoginForm.DataSet;
+﻿using LoginForm.Account.Services;
+using LoginForm.DataSet;
 using Microsoft.Office.Interop.Excel;
 using System;
 using System.Collections.Generic;
@@ -3229,8 +3230,8 @@ namespace LoginForm
                     }
 
 
-                    
-                    int RSInvoiceID = Convert.ToInt32(IME.RSInvoiceADD(
+
+                    RSID = Convert.ToInt32(IME.RSInvoiceADD(
                         RSInvoice.ShipmentReference
                         , RSInvoice.BillingDocumentReference
                         , RSInvoice.ShippingCondition
@@ -3242,15 +3243,39 @@ namespace LoginForm
                         , RSInvoice.InvoiceNettValue
                         , RSInvoice.Currency
                         , RSInvoice.AirwayBillNumber
-                        ).FirstOrDefault().ToString());
-                    RSID = RSInvoiceID;
+                        ).ToString());
+
+                    DeliveryNoteMaster dnm = new DeliveryNoteMaster();
+
+                    string strVoucher = new Account.Services.TransactionsGeneralFill().VoucherNumberAutomaicGeneration(18, 0, new IMEEntities().CurrentDate().FirstOrDefault().Value, "DeliveryNoteMaster");
+                    dnm.voucherNo = strVoucher;
+
+                    SuffixPrefix infoSuffixPrefix = new SuffixPrefix();
+                    infoSuffixPrefix = new SuffixPrefixSP().GetSuffixPrefixDetails(18, IME.CurrentDate().FirstOrDefault().Value);
+
+                    
+                    
+                    dnm.DeliveryNoteNo = infoSuffixPrefix.prefix + strVoucher + infoSuffixPrefix.suffix;
+                    dnm.voucherTypeId = 18;
+                    dnm.suffixPrefixId = infoSuffixPrefix.suffixprefixId;
+                    dnm.date = DateTime.Now;
+                    dnm.ledgerId = adhfgasdf;
+                    dnm.orderMasterId = 1234,1234,1234,1234;
+                    dnm.pricinglevelId = null;
+                    dnm.narration = null;
+                    dnm.exchangeRateId = null /*adsfasdf*/;
+                    dnm.totalAmount = 0;
+                    dnm.userId = Services.Utils.getCurrentUser().WorkerID;
+                    dnm.financialYearId = Services.Utils.getManagement().CurrentFinancialYear;
+                    dnm.salesAccount = "111";
+
                     int a = 4;
                     while (lines.Count() > a)
                     {
                         RS_InvoiceDetails rs = new RS_InvoiceDetails();
                         if (lines[a].Substring(0, 2) == "OI")
                         {
-                            rs.RS_InvoiceID = RSInvoiceID;
+                            rs.RS_InvoiceID = RSID;
                             if (lines[a].Substring(2, 30).ToString().Trim() != "") rs.PurchaseOrderNumber = lines[a].Substring(2, 30).ToString().Trim();
                             if (lines[a].Substring(32, 6).ToString().Trim() != "") rs.PurchaseOrderItemNumber = Convert.ToInt32(lines[a].Substring(32, 6).ToString().Trim());
                             if (lines[a].Substring(38, 18).ToString().Trim() != "") rs.ProductNumber = lines[a].Substring(38, 18).ToString().Trim();

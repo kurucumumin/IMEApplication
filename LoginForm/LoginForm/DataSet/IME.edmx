@@ -7580,6 +7580,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Parameter Name="POS" Type="bit" Mode="In" />
           <Parameter Name="financialYearId" Type="numeric" Mode="In" />
           <Parameter Name="CustomerID" Type="nvarchar" Mode="In" />
+          <Parameter Name="DeliveryNoteType" Type="nvarchar(max)" Mode="In" />
         </Function>
         <Function Name="DeliveryNoteToSaleInvoice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CustomerNo" Type="nvarchar" Mode="In" />
@@ -20826,6 +20827,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <Parameter Name="POS" Mode="In" Type="Boolean" />
             <Parameter Name="financialYearId" Mode="In" Type="Decimal" />
             <Parameter Name="CustomerID" Mode="In" Type="String" />
+            <Parameter Name="DeliveryNoteType" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DeliveryNoteToSaleInvoice" ReturnType="Collection(IMEModel.DeliveryNoteToSaleInvoice_Result)">
             <Parameter Name="CustomerNo" Mode="In" Type="String" />
