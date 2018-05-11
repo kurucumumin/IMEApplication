@@ -634,9 +634,9 @@ namespace LoginForm
         {
             try
             {
-                cmbGroup.DataSource = new AccountGroupSP().AccountGroupViewAllComboFillForAccountLedger();
                 cmbGroup.ValueMember = "accountGroupId";
                 cmbGroup.DisplayMember = "accountGroupName";
+                cmbGroup.DataSource = new AccountGroupSP().AccountGroupViewAllComboFillForAccountLedger();
             }
             catch (Exception ex)
             {
@@ -1721,6 +1721,15 @@ namespace LoginForm
                         string strNature = spAccountLedger.CreditOrDebitChecking(Convert.ToDecimal(cmbGroup.SelectedValue.ToString()));
                         cmbOpeningBalanceCrOrDr.Text = strNature.ToString();
                     }
+
+                    if(cmbGroup.SelectedIndex >= 0)
+                    {
+                        decimal groupID = Convert.ToDecimal(cmbGroup.SelectedValue);
+
+                        cmbUnderLedger.DisplayMember = "ledgerName";
+                        cmbUnderLedger.ValueMember = "ledgerId";
+                        cmbUnderLedger.DataSource = spAccountLedger.AccountLedgerCombOFillUnderAccountLedger(groupID);
+                    }
                 }
             }
             catch (Exception ex)
@@ -1757,6 +1766,7 @@ namespace LoginForm
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+        /// 
         private void btnClear_Click(object sender, EventArgs e)
         {
             try
@@ -3114,6 +3124,7 @@ namespace LoginForm
                 MessageBox.Show("AL96:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
         /// <summary>
         ///Enter key and backspace navigation in Account ledger datagridview key up
         /// </summary>
@@ -3143,6 +3154,7 @@ namespace LoginForm
                 MessageBox.Show("AL97:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
         /// <summary>
         ///backspace navigation in 'Save' button keydown
         /// </summary>
@@ -3195,6 +3207,5 @@ namespace LoginForm
             }
         }
         #endregion
-
     }
 }

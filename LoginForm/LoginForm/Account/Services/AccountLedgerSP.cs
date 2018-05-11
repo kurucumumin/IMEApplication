@@ -9,6 +9,39 @@ namespace LoginForm.Account.Services
 {
     class AccountLedgerSP
     {
+        public DataTable AccountLedgerCombOFillUnderAccountLedger(decimal accountGroupId)
+        {
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = new IMEEntities().AccountLedgerCombOFillUnderAccountLedger(accountGroupId).ToList();
+
+                dtbl.Columns.Add("ledgerId");
+                dtbl.Columns.Add("ledgerName");
+
+                DataRow r = dtbl.NewRow();
+
+                r["ledgerId"] = null;
+                r["ledgerName"] = "Choose";
+
+                dtbl.Rows.Add(r);
+
+                foreach (var item in adaptor)
+                {
+                    DataRow row = dtbl.NewRow();
+
+                    row["ledgerId"] = item.ledgerId;
+                    row["ledgerName"] = item.ledgerName;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
         public bool AccountLedgerCheckExistence(string LedgerName, decimal ledgerID)
         {
             IMEEntities db = new IMEEntities();

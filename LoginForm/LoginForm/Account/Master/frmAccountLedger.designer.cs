@@ -102,6 +102,8 @@
             this.tbctrlLedger = new System.Windows.Forms.TabControl();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cmbUnderLedger = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccountLedger)).BeginInit();
             this.tbSecondaryDetails.SuspendLayout();
             this.tbMainDetails.SuspendLayout();
@@ -705,6 +707,8 @@
             // tbMainDetails
             // 
             this.tbMainDetails.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(111)))), ((int)(((byte)(155)))));
+            this.tbMainDetails.Controls.Add(this.cmbUnderLedger);
+            this.tbMainDetails.Controls.Add(this.label2);
             this.tbMainDetails.Controls.Add(this.label1);
             this.tbMainDetails.Controls.Add(this.lblSalaryTypeValidator);
             this.tbMainDetails.Controls.Add(this.btnAccountGroupAdd);
@@ -765,7 +769,7 @@
             // 
             // txtOpeningBalance
             // 
-            this.txtOpeningBalance.Location = new System.Drawing.Point(160, 82);
+            this.txtOpeningBalance.Location = new System.Drawing.Point(160, 114);
             this.txtOpeningBalance.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
             this.txtOpeningBalance.MaxLength = 13;
             this.txtOpeningBalance.Name = "txtOpeningBalance";
@@ -779,7 +783,7 @@
             // 
             // txtNarration
             // 
-            this.txtNarration.Location = new System.Drawing.Point(160, 113);
+            this.txtNarration.Location = new System.Drawing.Point(160, 145);
             this.txtNarration.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
             this.txtNarration.Multiline = true;
             this.txtNarration.Name = "txtNarration";
@@ -882,7 +886,7 @@
             // 
             this.lblNarration.AutoSize = true;
             this.lblNarration.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblNarration.Location = new System.Drawing.Point(13, 113);
+            this.lblNarration.Location = new System.Drawing.Point(13, 145);
             this.lblNarration.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
             this.lblNarration.Name = "lblNarration";
             this.lblNarration.Size = new System.Drawing.Size(67, 17);
@@ -896,7 +900,7 @@
             this.cmbOpeningBalanceCrOrDr.Items.AddRange(new object[] {
             "Dr",
             "Cr"});
-            this.cmbOpeningBalanceCrOrDr.Location = new System.Drawing.Point(360, 82);
+            this.cmbOpeningBalanceCrOrDr.Location = new System.Drawing.Point(360, 114);
             this.cmbOpeningBalanceCrOrDr.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
             this.cmbOpeningBalanceCrOrDr.Name = "cmbOpeningBalanceCrOrDr";
             this.cmbOpeningBalanceCrOrDr.Size = new System.Drawing.Size(67, 24);
@@ -907,7 +911,7 @@
             // 
             this.lblOpeningBalance.AutoSize = true;
             this.lblOpeningBalance.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblOpeningBalance.Location = new System.Drawing.Point(15, 87);
+            this.lblOpeningBalance.Location = new System.Drawing.Point(15, 119);
             this.lblOpeningBalance.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
             this.lblOpeningBalance.Name = "lblOpeningBalance";
             this.lblOpeningBalance.Size = new System.Drawing.Size(117, 17);
@@ -992,6 +996,27 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Search";
+            // 
+            // cmbUnderLedger
+            // 
+            this.cmbUnderLedger.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbUnderLedger.FormattingEnabled = true;
+            this.cmbUnderLedger.Location = new System.Drawing.Point(160, 82);
+            this.cmbUnderLedger.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
+            this.cmbUnderLedger.Name = "cmbUnderLedger";
+            this.cmbUnderLedger.Size = new System.Drawing.Size(265, 24);
+            this.cmbUnderLedger.TabIndex = 176;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label2.Location = new System.Drawing.Point(15, 87);
+            this.label2.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 17);
+            this.label2.TabIndex = 177;
+            this.label2.Text = "Ledger";
             // 
             // frmAccountLedger
             // 
@@ -1102,5 +1127,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtGroup;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtOpeningBalance;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtCreditOrDebit;
+        private System.Windows.Forms.ComboBox cmbUnderLedger;
+        private System.Windows.Forms.Label label2;
     }
 }

@@ -59,6 +59,7 @@
           <Property Name="branchCode" Type="varchar(max)" />
           <Property Name="extraDate" Type="datetime" />
           <Property Name="areaId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="UnderLedgerID" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -2562,6 +2563,18 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Principal>
             <Dependent Role="AccountLedger">
               <PropertyRef Name="routeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AccountLe__Under__4BC21919">
+          <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
+          <End Role="AccountLedger1" Type="Self.AccountLedger" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountLedger">
+              <PropertyRef Name="ledgerId" />
+            </Principal>
+            <Dependent Role="AccountLedger1">
+              <PropertyRef Name="UnderLedgerID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -6964,6 +6977,9 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Parameter Name="branchCode" Type="varchar(max)" Mode="In" />
           <Parameter Name="areaId" Type="numeric" Mode="In" />
         </Function>
+        <Function Name="AccountLedgerCombOFillUnderAccountLedger" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="accountGroupId" Type="numeric" Mode="In" />
+        </Function>
         <Function Name="AccountLedgerEdit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ledgerId" Type="numeric" Mode="In" />
           <Parameter Name="accountGroupId" Type="numeric" Mode="In" />
@@ -9560,6 +9576,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="Route" EntitySet="Route" />
             <End Role="AccountLedger" EntitySet="AccountLedger" />
           </AssociationSet>
+          <AssociationSet Name="FK__AccountLe__Under__4BC21919" Association="Self.FK__AccountLe__Under__4BC21919">
+            <End Role="AccountLedger" EntitySet="AccountLedger" />
+            <End Role="AccountLedger1" EntitySet="AccountLedger" />
+          </AssociationSet>
           <AssociationSet Name="FK__Additiona__ledge__7F36D027" Association="Self.FK__Additiona__ledge__7F36D027">
             <End Role="AccountLedger" EntitySet="AccountLedger" />
             <End Role="AdditionalCost" EntitySet="AdditionalCost" />
@@ -11070,9 +11090,12 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="branchCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="extraDate" Type="DateTime" Precision="3" />
           <Property Name="areaId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="UnderLedgerID" Type="Decimal" Precision="18" Scale="0" />
           <NavigationProperty Name="AccountGroup" Relationship="Self.FK__AccountLe__accou__5E74FADA" FromRole="AccountLedger" ToRole="AccountGroup" />
           <NavigationProperty Name="Area" Relationship="Self.FK__AccountLe__areaI__5C8CB268" FromRole="AccountLedger" ToRole="Area" />
           <NavigationProperty Name="Route" Relationship="Self.FK__AccountLe__route__5D80D6A1" FromRole="AccountLedger" ToRole="Route" />
+          <NavigationProperty Name="AccountLedger1" Relationship="Self.FK__AccountLe__Under__4BC21919" FromRole="AccountLedger" ToRole="AccountLedger1" />
+          <NavigationProperty Name="AccountLedger2" Relationship="Self.FK__AccountLe__Under__4BC21919" FromRole="AccountLedger1" ToRole="AccountLedger" />
           <NavigationProperty Name="AdditionalCosts" Relationship="Self.FK__Additiona__ledge__7F36D027" FromRole="AccountLedger" ToRole="AdditionalCost" />
           <NavigationProperty Name="AdvancePayments" Relationship="Self.FK__AdvancePa__ledge__4F32B74A" FromRole="AccountLedger" ToRole="AdvancePayment" />
           <NavigationProperty Name="ContraMasters" Relationship="Self.FK__ContraMas__ledge__0BBCA29D" FromRole="AccountLedger" ToRole="ContraMaster" />
@@ -14287,6 +14310,18 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Principal>
             <Dependent Role="AccountLedger">
               <PropertyRef Name="routeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AccountLe__Under__4BC21919">
+          <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
+          <End Role="AccountLedger1" Type="Self.AccountLedger" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountLedger">
+              <PropertyRef Name="ledgerId" />
+            </Principal>
+            <Dependent Role="AccountLedger1">
+              <PropertyRef Name="UnderLedgerID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -18728,6 +18763,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="Route" EntitySet="Routes" />
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
           </AssociationSet>
+          <AssociationSet Name="FK__AccountLe__Under__4BC21919" Association="Self.FK__AccountLe__Under__4BC21919">
+            <End Role="AccountLedger" EntitySet="AccountLedgers" />
+            <End Role="AccountLedger1" EntitySet="AccountLedgers" />
+          </AssociationSet>
           <AssociationSet Name="FK__Additiona__ledge__7F36D027" Association="Self.FK__Additiona__ledge__7F36D027">
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
             <End Role="AdditionalCost" EntitySet="AdditionalCosts" />
@@ -20226,6 +20265,9 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <Parameter Name="branchName" Mode="In" Type="String" />
             <Parameter Name="branchCode" Mode="In" Type="String" />
             <Parameter Name="areaId" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="AccountLedgerCombOFillUnderAccountLedger" ReturnType="Collection(IMEModel.AccountLedgerCombOFillUnderAccountLedger_Result)">
+            <Parameter Name="accountGroupId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="AccountLedgerEdit">
             <Parameter Name="ledgerId" Mode="In" Type="Decimal" />
@@ -22576,6 +22618,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="String" Name="nature" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="affectGrossProfit" Nullable="true" MaxLength="50" />
         </ComplexType>
+        <ComplexType Name="AccountLedgerCombOFillUnderAccountLedger_Result">
+          <Property Type="Decimal" Name="ledgerId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="ledgerName" Nullable="true" />
+        </ComplexType>
         <ComplexType Name="AccountLedgerGetByDebtorAndCreditorWithBalance_Result">
           <Property Type="Decimal" Name="ledgerId" Nullable="false" Precision="18" Scale="0" />
           <Property Type="String" Name="ledgerName" Nullable="true" />
@@ -24827,6 +24873,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="branchCode" ColumnName="branchCode" />
                 <ScalarProperty Name="extraDate" ColumnName="extraDate" />
                 <ScalarProperty Name="areaId" ColumnName="areaId" />
+                <ScalarProperty Name="UnderLedgerID" ColumnName="UnderLedgerID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -27515,6 +27562,14 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="AccountLedgerAddWithIdentity" FunctionName="IMEModel.Store.AccountLedgerAddWithIdentity" />
+          <FunctionImportMapping FunctionImportName="AccountLedgerCombOFillUnderAccountLedger" FunctionName="IMEModel.Store.AccountLedgerCombOFillUnderAccountLedger">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.AccountLedgerCombOFillUnderAccountLedger_Result">
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+                <ScalarProperty Name="ledgerName" ColumnName="ledgerName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="AccountLedgerEdit" FunctionName="IMEModel.Store.AccountLedgerEdit" />
           <FunctionImportMapping FunctionImportName="AccountLedgerGetByDebtorAndCreditorWithBalance" FunctionName="IMEModel.Store.AccountLedgerGetByDebtorAndCreditorWithBalance">
             <ResultMapping>
