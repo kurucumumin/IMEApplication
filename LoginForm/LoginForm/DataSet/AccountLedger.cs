@@ -17,6 +17,7 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public AccountLedger()
         {
+            this.AccountLedger1 = new HashSet<AccountLedger>();
             this.AdditionalCosts = new HashSet<AdditionalCost>();
             this.AdvancePayments = new HashSet<AdvancePayment>();
             this.ContraMasters = new HashSet<ContraMaster>();
@@ -68,10 +69,14 @@ namespace LoginForm.DataSet
         public string branchCode { get; set; }
         public Nullable<System.DateTime> extraDate { get; set; }
         public Nullable<decimal> areaId { get; set; }
+        public Nullable<decimal> UnderLedgerID { get; set; }
     
         public virtual AccountGroup AccountGroup { get; set; }
         public virtual Area Area { get; set; }
         public virtual Route Route { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AccountLedger> AccountLedger1 { get; set; }
+        public virtual AccountLedger AccountLedger2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AdditionalCost> AdditionalCosts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
