@@ -29,7 +29,7 @@ namespace LoginForm.DataSet
         public Nullable<decimal> suffixPrefixId { get; set; }
         public Nullable<System.DateTime> date { get; set; }
         public Nullable<decimal> ledgerId { get; set; }
-        public Nullable<decimal> orderMasterId { get; set; }
+        public string orderMasterId { get; set; }
         public Nullable<decimal> pricinglevelId { get; set; }
         public string narration { get; set; }
         public Nullable<int> exchangeRateId { get; set; }
@@ -37,6 +37,7 @@ namespace LoginForm.DataSet
         public Nullable<int> userId { get; set; }
         public string lrNo { get; set; }
         public string transportationCompany { get; set; }
+        public string quotationMasterId { get; set; }
         public Nullable<decimal> financialYearId { get; set; }
         public Nullable<decimal> salesAccount { get; set; }
         public Nullable<decimal> taxAmount { get; set; }
@@ -44,8 +45,10 @@ namespace LoginForm.DataSet
         public Nullable<decimal> billDiscount { get; set; }
         public Nullable<decimal> grandTotal { get; set; }
         public Nullable<bool> POS { get; set; }
+        public Nullable<decimal> counterId { get; set; }
         public int creditPeriod { get; set; }
         public string CustomerID { get; set; }
+        public string DeliveryNoteType { get; set; }
     
         public virtual AccountLedger AccountLedger { get; set; }
         public virtual Customer Customer { get; set; }
@@ -54,6 +57,7 @@ namespace LoginForm.DataSet
         public virtual ExchangeRate ExchangeRate { get; set; }
         public virtual FinancialYear FinancialYear { get; set; }
         public virtual PricingLevel PricingLevel { get; set; }
+        public virtual Quotation Quotation { get; set; }
         public virtual SuffixPrefix SuffixPrefix { get; set; }
         public virtual Worker Worker { get; set; }
         public virtual VoucherType VoucherType { get; set; }
