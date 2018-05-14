@@ -3259,15 +3259,15 @@ namespace LoginForm
                     dnm.voucherTypeId = 18;
                     dnm.suffixPrefixId = infoSuffixPrefix.suffixprefixId;
                     dnm.date = DateTime.Now;
-                    dnm.ledgerId = adhfgasdf;
-                    dnm.orderMasterId = 1234,1234,1234,1234;
+                    dnm.ledgerId = null;
+                    dnm.orderMasterId = null;
                     dnm.pricinglevelId = null;
                     dnm.narration = null;
                     dnm.exchangeRateId = null /*adsfasdf*/;
                     dnm.totalAmount = 0;
                     dnm.userId = Services.Utils.getCurrentUser().WorkerID;
                     dnm.financialYearId = Services.Utils.getManagement().CurrentFinancialYear;
-                    dnm.salesAccount = "111";
+                    dnm.salesAccount = null;
 
                     int a = 4;
                     while (lines.Count() > a)

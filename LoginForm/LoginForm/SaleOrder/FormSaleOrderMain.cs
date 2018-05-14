@@ -76,7 +76,7 @@ namespace LoginForm.nsSaleOrder
                            Address = ca.AdressTitle,
                            DeliveryAddress = ca1.AdressTitle,
                            SaleID = so.SaleOrderID
-                       }).OrderByDescending(s=> s.Date);
+                       }).OrderByDescending(s=> s.SoNO);
             populateGrid(list.ToList());
         }
 
