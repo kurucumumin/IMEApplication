@@ -3225,8 +3225,8 @@ namespace LoginForm
                         if (lines[1].Substring(100, 3).ToString().Trim() != "") RSInvoice.Currency = lines[1].Substring(100, 3).ToString().Trim();
                         if (lines[1].Substring(113, 20).ToString().Trim() != "") RSInvoice.AirwayBillNumber = lines[1].Substring(120, 20).ToString().Trim();
                     }
-
                     
+
                     RSID = Convert.ToInt32(IME.RSInvoiceADD(
                         RSInvoice.ShipmentReference
                         , RSInvoice.BillingDocumentReference
@@ -3256,12 +3256,7 @@ namespace LoginForm
                     dnm.suffixPrefixId = infoSuffixPrefix.suffixprefixId;
                     dnm.date = DateTime.Now;
                     
-
-
-
-
-
-
+                    
 
                     dnm.ledgerId = null;
                     dnm.orderMasterId ="";
@@ -3310,7 +3305,7 @@ namespace LoginForm
                             //For Item History
                           
                             #endregion
-                            rs.PurchaseOrderID=Int32.Parse(rs.PurchaseOrderNumber.ToString().Substring(1, rs.PurchaseOrderNumber.ToString().IndexOf('R')).ToString());
+                            rs.PurchaseOrderID=Int32.Parse(rs.PurchaseOrderNumber.ToString().Substring(1, rs.PurchaseOrderNumber.IndexOf('R')).ToString());
                             InvoiceDetails.Add(rs);
                             //IME.RS_InvoiceDetailsADD(
                             //    rs.RS_InvoiceID
