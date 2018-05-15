@@ -14,27 +14,27 @@ namespace LoginForm.Account.Services
             DataTable dtbl = new DataTable();
             try
             {
-                var adaptor = new IMEEntities().AccountLedgerCombOFillUnderAccountLedger(accountGroupId).ToList();
+                //var adaptor = new IMEEntities().AccountLedgerCombOFillUnderAccountLedger(accountGroupId).ToList();
 
-                dtbl.Columns.Add("ledgerId");
-                dtbl.Columns.Add("ledgerName");
+                //dtbl.Columns.Add("ledgerId");
+                //dtbl.Columns.Add("ledgerName");
 
-                DataRow r = dtbl.NewRow();
+                //DataRow r = dtbl.NewRow();
 
-                r["ledgerId"] = null;
-                r["ledgerName"] = "Choose";
+                //r["ledgerId"] = null;
+                //r["ledgerName"] = "Choose";
 
-                dtbl.Rows.Add(r);
+                //dtbl.Rows.Add(r);
 
-                foreach (var item in adaptor)
-                {
-                    DataRow row = dtbl.NewRow();
+                //foreach (var item in adaptor)
+                //{
+                //    DataRow row = dtbl.NewRow();
 
-                    row["ledgerId"] = item.ledgerId;
-                    row["ledgerName"] = item.ledgerName;
+                //    row["ledgerId"] = item.ledgerId;
+                //    row["ledgerName"] = item.ledgerName;
 
-                    dtbl.Rows.Add(row);
-                }
+                //    dtbl.Rows.Add(row);
+                //}
             }
             catch (Exception ex)
             {
