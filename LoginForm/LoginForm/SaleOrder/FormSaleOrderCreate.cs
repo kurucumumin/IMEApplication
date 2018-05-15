@@ -77,7 +77,7 @@ namespace LoginForm.nsSaleOrder
             if(lbCustomerList.SelectedValue != null)
             {
                 //var dgList = ((Customer)lbCustomerList.SelectedItem).Quotations;
-                var dgList = IME.Quotations.Where(q => q.CustomerID == lbCustomerList.SelectedValue.ToString()).ToList();
+                var dgList = IME.Quotations.Where(q => q.CustomerID == lbCustomerList.SelectedValue.ToString()).OrderByDescending(s => s.QuotationNo).ToList();
                 dgQuotations.DataSource = dgList;
                 dgQuotations.ClearSelection();
             }
