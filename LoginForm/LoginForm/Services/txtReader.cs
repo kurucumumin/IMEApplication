@@ -80,7 +80,7 @@ namespace LoginForm
                     //    bo.Article = ws.Cells[ColumnNumber, 6].Text;
                     //    bo.OutstandingQuantity = ws.Cells[ColumnNumber, 7].Text;
                     //    bo.LineValue = ws.Cells[ColumnNumber, 8].Text;
-                    //    bo.FirstPromisedDate = DateTime.ParseExact(ws.Cells[ColumnNumber, 9].Text, "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture); 
+                    //    bo.FirstPromisedDate = DateTime.ParseExact(ws.Cells[ColumnNumber, 9].Text, "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture);
                     //    bo.LatestPromisedDate = DateTime.ParseExact(ws.Cells[ColumnNumber, 10].Text, "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture);
                     //    BoList.Add(bo);
                     //    //IME.BackOrders.Add(bo);
@@ -1500,7 +1500,7 @@ namespace LoginForm
 
             IMEEntities IME = new IMEEntities();
             //Excel Read
-            
+
             //Show the dialog and get result.
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
@@ -3190,7 +3190,10 @@ namespace LoginForm
 
             if (result1 == DialogResult.OK) // Test result.
             {
-                
+
+
+
+
                 for (int i = 0; i < openFileDialog1.FileNames.Count(); i++)
                 {
                     string[] lines = System.IO.File.ReadAllLines(openFileDialog1.FileNames[i]);
@@ -3225,7 +3228,8 @@ namespace LoginForm
                         if (lines[1].Substring(100, 3).ToString().Trim() != "") RSInvoice.Currency = lines[1].Substring(100, 3).ToString().Trim();
                         if (lines[1].Substring(113, 20).ToString().Trim() != "") RSInvoice.AirwayBillNumber = lines[1].Substring(120, 20).ToString().Trim();
                     }
-                    
+
+
 
                     RSID = Convert.ToInt32(IME.RSInvoiceADD(
                         RSInvoice.ShipmentReference
@@ -3241,8 +3245,6 @@ namespace LoginForm
                         , RSInvoice.AirwayBillNumber
                         ).ToString());
 
-                    #region Creates deliveryNote for PurchaseInvoices from RS
-
                     DeliveryNoteMaster dnm = new DeliveryNoteMaster();
 
                     string strVoucher = new Account.Services.TransactionsGeneralFill().VoucherNumberAutomaicGeneration(18, 0, new IMEEntities().CurrentDate().FirstOrDefault().Value, "DeliveryNoteMaster");
@@ -3250,16 +3252,15 @@ namespace LoginForm
 
                     SuffixPrefix infoSuffixPrefix = new SuffixPrefix();
                     infoSuffixPrefix = new SuffixPrefixSP().GetSuffixPrefixDetails(18, IME.CurrentDate().FirstOrDefault().Value);
-                    
+
+
+
                     dnm.DeliveryNoteNo = infoSuffixPrefix.prefix + strVoucher + infoSuffixPrefix.suffix;
                     dnm.voucherTypeId = 18;
                     dnm.suffixPrefixId = infoSuffixPrefix.suffixprefixId;
                     dnm.date = DateTime.Now;
-                    
-                    
-
                     dnm.ledgerId = null;
-                    dnm.orderMasterId ="";
+                    dnm.orderMasterId = null;
                     dnm.pricinglevelId = null;
                     dnm.narration = null;
                     dnm.exchangeRateId = null /*adsfasdf*/;
@@ -3268,10 +3269,6 @@ namespace LoginForm
                     dnm.financialYearId = Services.Utils.getManagement().CurrentFinancialYear;
                     dnm.salesAccount = null;
 
-                    #endregion
-
-                    
-                    List<RS_InvoiceDetails> InvoiceDetails = new List<RS_InvoiceDetails>();
                     int a = 4;
                     while (lines.Count() > a)
                     {
@@ -3300,10 +3297,10 @@ namespace LoginForm
                             int poID=Convert.ToInt32(rs.PurchaseOrderNumber.ToString().Substring(1, rs.PurchaseOrderNumber.ToString().IndexOf("RS")-1).ToString());
                             string product = rs.ProductNumber;
                             int Qty = Convert.ToInt32(rs.Quantity);
-                            
+
 
                             //For Item History
-                          
+
                             #endregion
                             rs.PurchaseOrderID=Int32.Parse(rs.PurchaseOrderNumber.ToString().Substring(1, rs.PurchaseOrderNumber.IndexOf('R')).ToString());
                             InvoiceDetails.Add(rs);
@@ -3326,7 +3323,7 @@ namespace LoginForm
                             //    , rs.DeliveryItemNumber,rs.PurchaseOrderID
                             //    );
                             //IME.SaveChanges();
-                            
+
                         }
                         a++;
                     }
@@ -3338,95 +3335,92 @@ namespace LoginForm
                             Stock StockInfo = IME.Stocks.Where(x => x.ProductID == item.ProductNumber).FirstOrDefault();
                             if (StockInfo == null)
                             {
-                                StockInfo = new Stock();
-                                StockInfo.ProductID = item.ProductNumber;
-                                StockInfo.Qty = Convert.ToInt32(item.Quantity);
-                                StockInfo.ReserveQty = Convert.ToInt32(item.Quantity);
-                                IME.Stocks.Add(StockInfo);
-                                IME.SaveChanges();
-                                decimal StockID = StockInfo.StockID;
-                                string ProductID = StockInfo.ProductID;
-                                IME = new IMEEntities();
-                                StockReserve sr = new StockReserve();
-                                sr.CustomerID = IME.PurchaseOrders.Where(x => x.purchaseOrderId == item.PurchaseOrderID).FirstOrDefault().CustomerID;
-                                sr.ProductID = ProductID;
-                                sr.Qty = Convert.ToInt32(item.Quantity);
-                                sr.StockID = StockID;
-                                try
+
+                                Stock StockInfo= IME.Stocks.Where(x => x.ProductID == product).FirstOrDefault();
+                                if (StockInfo==null)
                                 {
-                                    decimal saleOrderID = (decimal)IME.PurchaseOrderDetails.Where(x => x.purchaseOrderId == item.PurchaseOrderID).FirstOrDefault().SaleOrderID;
-                                    sr.SaleOrderID = saleOrderID;
+                                    StockInfo = new Stock();
+                                    StockInfo.ProductID = product;
+                                    StockInfo.Qty = Qty;
+                                    StockInfo.ReserveQty = Qty;
+                                    IME.Stocks.Add(StockInfo);
+                                    IME.SaveChanges();
+                                    decimal StockID = StockInfo.StockID;
+                                    string ProductID = StockInfo.ProductID;
+                                    IME = new IMEEntities();
+                                    StockReserve sr = new StockReserve();
+                                    sr.CustomerID = IME.PurchaseOrders.Where(x => x.purchaseOrderId == poID).FirstOrDefault().CustomerID;
+                                    sr.ProductID = ProductID;
+                                    sr.Qty = Qty;
+                                    sr.StockID = StockID;
+                                    try
+                                    {
+                                        decimal saleOrderID = (decimal)IME.PurchaseOrderDetails.Where(x => x.purchaseOrderId == poID).FirstOrDefault().SaleOrderID;
+                                        sr.SaleOrderID = saleOrderID;
+                                    }
+                                    catch { }
+                                    IME.StockReserves.Add(sr);
+                                    IME.SaveChanges();
                                 }
-                                catch { }
-                                IME.StockReserves.Add(sr);
-                                IME.SaveChanges();
+                                else
+                                {
+                                    StockInfo.NotConfirmedQTY = StockInfo.NotConfirmedQTY + Qty;
+                                    StockInfo.ReserveQty = StockInfo.ReserveQty + Qty;
+
+                                    IME.SaveChanges();
+                                    decimal StockID= StockInfo.StockID;
+                                    string ProductID = StockInfo.ProductID;
+                                    IME = new IMEEntities();
+                                    StockReserve sr = new StockReserve();
+                                    sr.NotConfirmedQuantity = Qty;
+                                    sr.NotConfirmedQ = 1;
+                                    sr.StockID = StockID;
+                                    sr.CustomerID = IME.PurchaseOrders.Where(x => x.purchaseOrderId == poID).FirstOrDefault().CustomerID;
+                                    sr.ProductID = ProductID;
+                                    try {
+                                        decimal saleOrderID = (decimal)IME.PurchaseOrderDetails.Where(x => x.purchaseOrderId == poID).FirstOrDefault().SaleOrderID;
+                                        sr.SaleOrderID = saleOrderID;
+                                    }
+                                    catch { }
+                                    IME.StockReserves.Add(sr);
+                                    IME.SaveChanges();
+                                }
                             }
                             else
-                            {
-                                StockInfo.NotConfirmedQTY = StockInfo.NotConfirmedQTY + Convert.ToInt32(item.Quantity);
-                                StockInfo.ReserveQty = StockInfo.ReserveQty + Convert.ToInt32(item.Quantity);
-
-                                IME.SaveChanges();
-                                decimal StockID = StockInfo.StockID;
-                                string ProductID = StockInfo.ProductID;
-                                IME = new IMEEntities();
-                                StockReserve sr = new StockReserve();
-                                sr.NotConfirmedQuantity = Convert.ToInt32(item.Quantity); ;
-                                sr.NotConfirmedQ = 1;
-                                sr.StockID = StockID;
-                                sr.CustomerID = IME.PurchaseOrders.Where(x => x.purchaseOrderId == item.PurchaseOrderID).FirstOrDefault().CustomerID;
-                                sr.ProductID = ProductID;
-                                try
-                                {
-                                    decimal saleOrderID = (decimal)IME.PurchaseOrderDetails.Where(x => x.purchaseOrderId == item.PurchaseOrderID).FirstOrDefault().SaleOrderID;
-                                    sr.SaleOrderID = saleOrderID;
-                                }
-                                catch { }
-                                IME.StockReserves.Add(sr);
-                                IME.SaveChanges();
+                            {//Bizim stockumuz için demek
+                                Stock stockInfo = new Stock();
+                                stockInfo.ProductID = product;
+                                stockInfo.Qty = 0;
+                                stockInfo.ReserveQty = 0;
+                                stockInfo.NotConfirmedQTY = Qty;
                             }
+
+                            //For Item History
+
+                            #endregion
+                            rs.PurchaseOrderID=Int32.Parse(rs.PurchaseOrderNumber.ToString().Substring(1, rs.PurchaseOrderNumber.ToString().IndexOf('R')).ToString());
+                            IME.RS_InvoiceDetailsADD(
+                                rs.RS_InvoiceID
+                                , rs.PurchaseOrderNumber
+                                , rs.PurchaseOrderItemNumber
+                                , rs.ProductNumber
+                                , rs.BillingItemNumber
+                                , rs.Quantity
+                                , rs.SalesUnit
+                                , rs.UnitPrice
+                                , rs.Discount
+                                , rs.GoodsValue
+                                , rs.Amount
+                                , rs.CCCNNO
+                                , rs.CountryofOrigin
+                                , rs.ArticleDescription
+                                , rs.DeliveryNumber
+                                , rs.DeliveryItemNumber,rs.PurchaseOrderID
+                                );
+                            IME.SaveChanges();
+
                         }
-                        else
-                        {//Bizim stockumuz için demek
-                            Stock stockInfo = new Stock();
-                            stockInfo.ProductID = item.ProductNumber;
-                            stockInfo.Qty = 0;
-                            stockInfo.ReserveQty = 0;
-                            stockInfo.NotConfirmedQTY = Convert.ToInt32(item.Quantity);
-                        }
-
-                        IME.RS_InvoiceDetailsADD(
-                            item.RS_InvoiceID
-                            , item.PurchaseOrderNumber
-                            , item.PurchaseOrderItemNumber
-                            , item.ProductNumber
-                            , item.BillingItemNumber
-                            , item.Quantity
-                            , item.SalesUnit
-                            , item.UnitPrice
-                            , item.Discount
-                            , item.GoodsValue
-                            , item.Amount
-                            , item.CCCNNO
-                            , item.CountryofOrigin
-                            , item.ArticleDescription
-                            , item.DeliveryNumber
-                            , item.DeliveryItemNumber
-                            , item.PurchaseOrderID);
-                        IME.SaveChanges();
-                    }
-
-                    var invoiceNoList = InvoiceDetails.GroupBy(x => x.RS_InvoiceID).ToList();
-                    string OrderNo = String.Empty;
-
-                    for (int j = 0; j < invoiceNoList.Count; i++)
-                    {
-                        OrderNo += invoiceNoList[j].ToString();
-
-                        if (j <= invoiceNoList.Count - 2)
-                        {
-                            OrderNo += ",";
-                        }
+                        a++;
                     }
 
 
@@ -3504,7 +3498,7 @@ namespace LoginForm
 
     class QuotationExcelExport
     {
-        
+
 
         public static void ExportToItemHistory(DataGridView dg)
         {
@@ -3535,7 +3529,7 @@ namespace LoginForm
                     if (dg.Rows[i].Cells[j].Value != null )
                     {
                         xlWorkSheet.Cells[i + 2, j + 1] = dg.Rows[i].Cells[j].Value.ToString();
-                       
+
                     }
                 }
             }

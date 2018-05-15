@@ -53,9 +53,9 @@ namespace LoginForm.QuotationModule
         public FormSaleOrderAdd(Customer cus, List<QuotationDetail> list, string QuotationNOs)
         {
             InitializeComponent();
+
             customer = cus;
             items = list;
-
 
             DataGridViewComboBoxColumn deliveryColumn = (DataGridViewComboBoxColumn)dgSaleAddedItems.Columns[dgDelivery.Index];
 
@@ -92,7 +92,7 @@ namespace LoginForm.QuotationModule
 
             //fillCustomer();
             //cbSMethod.SelectedIndex = (int)q1.ShippingMethodID;
-            for (int i = 0; i < dgSaleAddedItems.RowCount; i++)
+            for (int i = 0; i < dgSaleAddedItems.RowCount-1; i++)
             {
                 dgSaleAddedItems.Rows[i].Cells["dgQty"].ReadOnly = false;
                 dgSaleAddedItems.Rows[i].Cells["dgQty"].Style = dgSaleAddedItems.DefaultCellStyle;
@@ -117,7 +117,7 @@ namespace LoginForm.QuotationModule
 
                 GetMarginMark(i);
             }
-            for (int i = 0; i < dgSaleAddedItems.RowCount; i++)
+            for (int i = 0; i < dgSaleAddedItems.RowCount-1; i++)
             {
                 QuotataionModifyItemDetailsFiller(dgSaleAddedItems.Rows[i].Cells["dgProductCode"].Value.ToString(), i);
 
@@ -138,6 +138,18 @@ namespace LoginForm.QuotationModule
                 groupBox11.Enabled = false;
                 groupBox7.Enabled = false;
             }
+            //Son Satırın Boş gelmemesi 
+            //foreach (DataGridViewRow rows in dgSaleAddedItems.Rows)
+            //{
+            //    foreach (DataGridViewCell cells in rows.Cells)
+            //    {
+            //        if ((object)cells.Value == null)
+            //        {
+            //            dgSaleAddedItems.Rows.Remove(rows);
+            //            break;
+            //        }
+            //    }
+            //}
         }
 
         public void Disc()
@@ -348,6 +360,9 @@ namespace LoginForm.QuotationModule
         }
         private void QuotationForm_Load(object sender, EventArgs e)
         {
+            //Son Satırın Boş gelmemesi !
+            //dgSaleAddedItems.AllowUserToAddRows = false;
+
             ControlAutorization();
             txtSalesOrderNo.Text = "SO" + IME.CreteNewSaleOrderNo().FirstOrDefault().ToString();
             DataGridViewComboBoxColumn deliveryColumn = (DataGridViewComboBoxColumn)dgSaleAddedItems.Columns[dgDelivery.Index];
