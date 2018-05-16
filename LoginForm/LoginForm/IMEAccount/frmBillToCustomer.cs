@@ -30,8 +30,8 @@ namespace LoginForm.IMEAccount
             SalesOperationID = ID;
             IsUpdate = true;
             var salesOperation = IME.SalesOperations.Where(a => a.ID == SalesOperationID).FirstOrDefault();
-            txtCustomer.Text = salesOperation.Customer.c_name;
-            txtCustomerName.Text = salesOperation.CustomerID;
+            txtCustomerName.Text = salesOperation.Customer.c_name;
+            txtCustomerID.Text = salesOperation.CustomerID;
             txtAmount.Text = salesOperation.Amount.ToString();
             cbCurrency.SelectedValue = salesOperation.CurrencyID;
             cbBank.SelectedValue = salesOperation.AccountID;
@@ -52,7 +52,7 @@ namespace LoginForm.IMEAccount
         #region Functions
         public void CustomerSearchInput()
         {
-            classQuotationAdd.customersearchID = txtCustomer.Text;
+            classQuotationAdd.customersearchID = txtCustomerName.Text;
             classQuotationAdd.customersearchname = "";
             FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch(customer);
             this.Enabled = false;
@@ -68,13 +68,13 @@ namespace LoginForm.IMEAccount
         private void fillCustomer()
         {
 
-            txtCustomer.Text = classQuotationAdd.customerID;
-            txtCustomerName.Text = classQuotationAdd.customername;
+            txtCustomerName.Text = classQuotationAdd.customerID;
+            txtCustomerID.Text = classQuotationAdd.customername;
 
-            var c = IME.Customers.Where(a => a.ID == txtCustomer.Text).FirstOrDefault();
+            var c = IME.Customers.Where(a => a.ID == txtCustomerName.Text).FirstOrDefault();
             if (c != null)
             {
-                txtCustomerName.Text = c.c_name;
+                txtCustomerID.Text = c.c_name;
             }
         }
 
@@ -101,7 +101,7 @@ namespace LoginForm.IMEAccount
             int BankID = Int32.Parse(cbBank.SelectedValue.ToString());
             var Bank = IME.Accounts.Where(a => a.ID == BankID).FirstOrDefault();
             if (Bank.Value == null) Bank.Value = 0;
-            Bank.Value = Bank.Value - UpdatedAmount + Int32.Parse(txtAmount.Text);
+            Bank.Value = Bank.Value - UpdatedAmount + Decimal.Parse(txtAmount.Text);
             IME.SaveChanges();
         }
         private void changeCurrencySelection()
@@ -130,12 +130,12 @@ namespace LoginForm.IMEAccount
 
                 so.Amount = decimal.Parse(txtAmount.Text);
                 so.CurrencyID = decimal.Parse(cbCurrency.SelectedValue.ToString());
-                so.CustomerID = txtCustomer.Text;
+                so.CustomerID = txtCustomerName.Text;
                
                 try { so.RepreresentetiveID = Utils.getCurrentUser().WorkerID; } catch { }
                 so.AccountID=Int32.Parse(cbBank.SelectedValue.ToString());
                 changeAccount();
-                string strcustomer = txtCustomer.Text;
+                string strcustomer = txtCustomerName.Text;
                Customer c = IME.Customers.Where(a => a.ID == strcustomer).FirstOrDefault();
                 if (c.Debit == null) c.Debit = 0;
                 decimal dcmAmount = (decimal)so.Amount;
@@ -149,8 +149,8 @@ namespace LoginForm.IMEAccount
             {
                 //Update
                 SalesOperation so = IME.SalesOperations.Where(a => a.ID == SalesOperationID).FirstOrDefault();
-                string strcustomer = txtCustomer.Text;
-                Customer c = IME.Customers.Where(a => a.ID == strcustomer).FirstOrDefault();
+                string strcustomerID = txtCustomerID.Text;
+                Customer c = IME.Customers.Where(a => a.ID == strcustomerID).FirstOrDefault();
                 if (c.Debit == null) c.Debit = 0;
                 decimal dcmAmount= (decimal)so.Amount;
                 dcmAmount = ChangeCurrency.ChangeCurrencyToDefault((decimal)so.CurrencyID, dcmAmount);
@@ -160,7 +160,7 @@ namespace LoginForm.IMEAccount
                 dcmAmount = ChangeCurrency.ChangeCurrencyToDefault((decimal)so.CurrencyID, dcmAmount);
                 c.Debit = c.Debit - dcmAmount;
                 so.CurrencyID = decimal.Parse(cbCurrency.SelectedValue.ToString());
-                so.CustomerID = txtCustomer.Text;
+                so.CustomerID = txtCustomerName.Text;
                 try { so.RepreresentetiveID = Utils.getCurrentUser().WorkerID; } catch { }
                 changeAccount();
                 so.AccountID = Int32.Parse(cbBank.SelectedValue.ToString());
