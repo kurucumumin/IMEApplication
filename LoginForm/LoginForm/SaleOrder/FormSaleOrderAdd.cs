@@ -1946,6 +1946,13 @@ namespace LoginForm.QuotationModule
 
         private bool ControlSave()
         {
+            int satir_sayisi= dgSaleAddedItems.RowCount;
+            if (dgSaleAddedItems.Rows[satir_sayisi-1].Cells[dgProductCode.Index].Value==null)
+            {
+                MessageBox.Show("Product Code empty");
+                return false;
+            }
+
             if (txtCustomerName.Text == null || txtCustomerName.Text == String.Empty) { MessageBox.Show("Please Enter a Customer"); return false; }
             for (int i = 0; i < dgSaleAddedItems.RowCount - 1; i++)
             {

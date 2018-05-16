@@ -1826,6 +1826,11 @@ namespace LoginForm.QuotationModule
                     return false;
                 }
             }
+            if (dgQuotationAddedItems.Rows.Count == 0)
+            {
+                MessageBox.Show("Product Code empty");
+                return false;
+            }
             return true;
         }
 
