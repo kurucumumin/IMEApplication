@@ -96,7 +96,8 @@ namespace LoginForm.IMEAccount
                 po.Amount = decimal.Parse(txtAmount.Text);
 
                 DataSet.Account account = IME.Accounts.Where(a => a.ID == (int)cbBank.SelectedValue).FirstOrDefault();
-                
+
+                po.AccountID = account.ID;
                 account.Value = (decimal)account.Value - (decimal)po.Amount; 
                 po.CurrencyID = decimal.Parse(cbCurrency.SelectedValue.ToString());
                 po.Description = txtDesc.Text;
