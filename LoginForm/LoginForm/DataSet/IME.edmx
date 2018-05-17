@@ -2441,6 +2441,24 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="defaultPackageId" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'IME.dbo.CariHareket' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CariHareket">
+          <Key>
+            <PropertyRef Name="Current Type" />
+            <PropertyRef Name="Current ID" />
+            <PropertyRef Name="IsSalesOperations" />
+          </Key>
+          <Property Name="Current Type" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="Current ID" Type="int" Nullable="false" />
+          <Property Name="Current Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Amount" Type="decimal" Precision="22" Scale="4" />
+          <Property Name="Currency" Type="varchar(max)" />
+          <Property Name="Representative" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="IsSalesOperations" Type="int" Nullable="false" />
+          <Property Name="Account Name" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'IME.dbo.CompleteItems' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="CompleteItems">
           <Key>
@@ -9505,6 +9523,19 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
     [SalaryVoucherDetail].[status] AS [status]
     FROM [dbo].[SalaryVoucherDetail] AS [SalaryVoucherDetail]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="CariHareket" EntityType="Self.CariHareket" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CariHareket].[Current Type] AS [Current Type], 
+    [CariHareket].[Current ID] AS [Current ID], 
+    [CariHareket].[Current Name] AS [Current Name], 
+    [CariHareket].[Amount] AS [Amount], 
+    [CariHareket].[Currency] AS [Currency], 
+    [CariHareket].[Representative] AS [Representative], 
+    [CariHareket].[Description] AS [Description], 
+    [CariHareket].[IsSalesOperations] AS [IsSalesOperations], 
+    [CariHareket].[Account Name] AS [Account Name]
+    FROM [dbo].[CariHareket] AS [CariHareket]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="CompleteItems" EntityType="Self.CompleteItems" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [CompleteItems].[Article_No] AS [Article_No], 
@@ -14190,6 +14221,22 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <NavigationProperty Name="SalaryVoucherMaster" Relationship="Self.FK__SalaryVou__salar__77FFC2B3" FromRole="SalaryVoucherDetail" ToRole="SalaryVoucherMaster" />
           <NavigationProperty Name="Worker" Relationship="Self.FK__SalaryVou__emplo__78F3E6EC" FromRole="SalaryVoucherDetail" ToRole="Worker" />
         </EntityType>
+        <EntityType Name="CariHareket">
+          <Key>
+            <PropertyRef Name="Current_Type" />
+            <PropertyRef Name="Current_ID" />
+            <PropertyRef Name="IsSalesOperations" />
+          </Key>
+          <Property Name="Current_Type" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Current_ID" Type="Int32" Nullable="false" />
+          <Property Name="Current_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Decimal" Precision="22" Scale="4" />
+          <Property Name="Currency" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Representative" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsSalesOperations" Type="Int32" Nullable="false" />
+          <Property Name="Account_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="CompleteItem">
           <Key>
             <PropertyRef Name="Article_No" />
@@ -18768,6 +18815,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <EntitySet Name="Workers" EntityType="Self.Worker" />
           <EntitySet Name="AdditionalCosts" EntityType="Self.AdditionalCost" />
           <EntitySet Name="SalaryVoucherDetails" EntityType="Self.SalaryVoucherDetail" />
+          <EntitySet Name="CariHarekets" EntityType="Self.CariHareket" />
           <EntitySet Name="CompleteItems" EntityType="Self.CompleteItem" />
           <EntitySet Name="V_Product" EntityType="Self.V_Product" />
           <AssociationSet Name="FK__Account__Currenc__11957784" Association="Self.FK__Account__Currenc__11957784">
@@ -27413,6 +27461,21 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="lop" ColumnName="lop" />
                 <ScalarProperty Name="salary" ColumnName="salary" />
                 <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CariHarekets">
+            <EntityTypeMapping TypeName="IMEModel.CariHareket">
+              <MappingFragment StoreEntitySet="CariHareket">
+                <ScalarProperty Name="Current_Type" ColumnName="Current Type" />
+                <ScalarProperty Name="Current_ID" ColumnName="Current ID" />
+                <ScalarProperty Name="Current_Name" ColumnName="Current Name" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="Representative" ColumnName="Representative" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsSalesOperations" ColumnName="IsSalesOperations" />
+                <ScalarProperty Name="Account_Name" ColumnName="Account Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
