@@ -182,6 +182,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<Worker> Workers { get; set; }
         public virtual DbSet<AdditionalCost> AdditionalCosts { get; set; }
         public virtual DbSet<SalaryVoucherDetail> SalaryVoucherDetails { get; set; }
+        public virtual DbSet<CariHareket> CariHarekets { get; set; }
         public virtual DbSet<CompleteItem> CompleteItems { get; set; }
         public virtual DbSet<V_Product> V_Product { get; set; }
     
