@@ -22,7 +22,7 @@ namespace LoginForm.QuotationModule
         private void btnNewQuotation_Click(object sender, EventArgs e)
         {
             var a = dtpFromDate.Value;
-            FormQuotationAdd quotationForm = new FormQuotationAdd();
+            FormQuotationAdd quotationForm = new FormQuotationAdd(this);
             quotationForm.Show();
         }
 
@@ -159,7 +159,7 @@ namespace LoginForm.QuotationModule
             }
         }
 
-        private void BringQuotationList()
+        public void BringQuotationList()
         {
             IMEEntities IME = new IMEEntities();
             BringQuotationList(dateNow.AddMonths(-1), dateNow.AddDays(1));

@@ -19,6 +19,7 @@ namespace LoginForm.QuotationModule
     {
         string manuelSelection = string.Empty;
         private static string QuoStatusActive = "Active";
+        FormQuotationMain parent;
         List<int> enabledColumns = new List<int>(new int[] { 0, 7, 14, 21, 28, 35 });
         #region Definitions
         GetWorkerService GetWorkerService = new GetWorkerService();
@@ -43,6 +44,14 @@ namespace LoginForm.QuotationModule
         int a = 1;
         #endregion
 
+        public FormQuotationAdd(FormQuotationMain parent)
+        {
+            InitializeComponent();
+
+            dtpDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
+            dtpDate.Enabled = false;
+            this.parent = parent;
+        }
         public FormQuotationAdd()
         {
             InitializeComponent();
@@ -1845,6 +1854,8 @@ namespace LoginForm.QuotationModule
             {
                 QuotationSave();
                 QuotationDetailsSave();
+                parent.BringQuotationList();
+                this.Close();
             }
 
             //}
@@ -2137,9 +2148,6 @@ namespace LoginForm.QuotationModule
             {
                 MessageBox.Show("Quotation is successfully edited", "Success");
             }
-            this.Close();
-            FormQuotationMain formQuotationMain = new FormQuotationMain();
-            formQuotationMain.ShowDialog();
         }
         private void QuotationDetailsSaveRevision()
         {
