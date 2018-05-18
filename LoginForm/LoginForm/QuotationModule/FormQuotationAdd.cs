@@ -716,6 +716,7 @@ namespace LoginForm.QuotationModule
 
             }
             Disc();
+            CalculateTotalMarge();
             #endregion
         }
         private void cellEndEdit()
@@ -776,43 +777,50 @@ namespace LoginForm.QuotationModule
                         #region MyRegion
                         ItemDetailsClear();
                         string articleNo = "";
-
-                        articleNo = dgQuotationAddedItems.CurrentCell.Value.ToString();
-                        if (articleNo.Contains("-"))
+                        int satir_sayisi = dgQuotationAddedItems.RowCount;
+                        if (dgQuotationAddedItems.Rows[satir_sayisi - 1].Cells[dgProductCode.Index].Value != null)
                         {
-                            articleNo = articleNo.Replace("-", "");
-                            dgQuotationAddedItems.CurrentCell.Value = articleNo;
-                        }
-                        var articleList = IME.ArticleSearch(articleNo).ToList();
-                        if (articleList.Count == 1)
-                        {
-                            if (!Discontinued(articleNo))
+                            articleNo = dgQuotationAddedItems.CurrentCell.Value.ToString();
+                            if (articleNo.Contains("-"))
                             {
+                                articleNo = articleNo.Replace("-", "");
+                                dgQuotationAddedItems.CurrentCell.Value = articleNo;
+                            }
+                            var articleList = IME.ArticleSearch(articleNo).ToList();
+                            if (articleList.Count == 1)
+                            {
+                                if (!Discontinued(articleNo))
+                                {
+                                    ItemDetailsFiller(articleNo);//tekrar bakılacak
+                                    FillProductCodeItem();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("This Item is Discontinued");
+                                }
+
+                            }
+                            else if (articleList.Count > 1)
+                            {
+                                FormQuotationItemSearch itemsearch = new FormQuotationItemSearch(articleNo);
+                                itemsearch.ShowDialog();
+                                articleNo = classQuotationAdd.ItemCode;
+                                dgQuotationAddedItems.CurrentCell.Value = articleNo;
                                 ItemDetailsFiller(articleNo);//tekrar bakılacak
                                 FillProductCodeItem();
+
                             }
                             else
                             {
-                                MessageBox.Show("This Item is Discontinued");
+                                MessageBox.Show("There is no such an Item");
                             }
-
-                        }
-                        else if (articleList.Count > 1)
-                        {
-                            FormQuotationItemSearch itemsearch = new FormQuotationItemSearch(articleNo);
-                            itemsearch.ShowDialog();
-                            articleNo = classQuotationAdd.ItemCode;
-                            dgQuotationAddedItems.CurrentCell.Value = articleNo;
-                            ItemDetailsFiller(articleNo);//tekrar bakılacak
-                            FillProductCodeItem();
-
+                            if (dgQuotationAddedItems.CurrentRow.Cells["dgDesc"].Value != null) ChangeCurrnetCell(dgQuotationAddedItems.CurrentCell.ColumnIndex + 1);
                         }
                         else
                         {
-                            MessageBox.Show("There is no such an Item");
+                            MessageBox.Show("Product Code empty");
                         }
                     }
-                    if (dgQuotationAddedItems.CurrentRow.Cells["dgDesc"].Value != null) ChangeCurrnetCell(dgQuotationAddedItems.CurrentCell.ColumnIndex + 1);
                     #endregion
                     break;
                 case 14://QAUANTITY
@@ -1174,7 +1182,9 @@ namespace LoginForm.QuotationModule
 
                             if (Int32.Parse(CurrentRow.Cells["dgSSM"].Value.ToString()) > 1)
                             {
-                                CurrentRow.Cells["dgMargin"].Value = (((1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(CurrentRow.Cells["dgUCUPCurr"].Value.ToString())
+                                CurrentRow.Cells["dgMargin"].Value = ((
+                                    (1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString()))
+                                    / ((Decimal.Parse(CurrentRow.Cells["dgUCUPCurr"].Value.ToString())
                            * decimal.Parse(CurrentRow.Cells["dgUC"].Value.ToString())
                              )))) * 100).ToString("G29");
                             }
@@ -1188,7 +1198,13 @@ namespace LoginForm.QuotationModule
                         }
                         else
                         {
-                            CurrentRow.Cells["dgMargin"].Value = (((1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(CurrentRow.Cells["dgUCUPCurr"].Value.ToString()))))) * 100).ToString("G29");
+                            decimal currentGbpValue = Convert.ToDecimal(IME.Currencies.Where(x => x.currencyName == "GBP").FirstOrDefault().ExchangeRates.OrderByDescending(x => x.date).FirstOrDefault().rate);
+
+                            decimal gbpPrice = ((Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())) * CurrValue) / currentGbpValue;
+
+                            CurrentRow.Cells["dgMargin"].Value = (((1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())) / (gbpPrice))) * 100).ToString("G29");
+
+                            //CurrentRow.Cells["dgMargin"].Value = (((1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(CurrentRow.Cells["dgUCUPCurr"].Value.ToString()))))) * 100).ToString("G29");
                         }
 
 
