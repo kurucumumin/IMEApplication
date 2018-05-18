@@ -34,6 +34,7 @@ namespace LoginForm.QuotationModule
 
         private void FormQuaotationCustomerSearch_Load(object sender, EventArgs e)
         {
+            InitializeComponent();
             CustomerCode.Text = classQuotationAdd.customersearchID.ToString();
             CustomerName.Text = classQuotationAdd.customersearchname;
             List<Customer> c = classQuotationAdd.CustomerSearch();

@@ -181,8 +181,8 @@ namespace LoginForm.QuotationModule
             cbCurrency.SelectedIndex = 0;
             dtpDate.Value = (DateTime)q1.StartDate;
             dtpDate.MaxDate = DateTime.Today.Date;
-            cbPayment.DataSource = IME.PaymentMethods.ToList();
-            cbPayment.DisplayMember = "Payment";
+            cbPayment.DataSource = IME.PaymentTerms.ToList();
+            cbPayment.DisplayMember = "term_name";
             cbPayment.ValueMember = "ID";
             cbRep.DataSource = IME.Workers.ToList();
             cbRep.DisplayMember = "NameLastName";
@@ -274,6 +274,8 @@ namespace LoginForm.QuotationModule
 
             #endregion
 
+            
+
             ControlAutorization();
             DataGridViewComboBoxColumn deliveryColumn = (DataGridViewComboBoxColumn)dgQuotationAddedItems.Columns[dgDelivery.Index];
             if (deliveryColumn.DataSource == null)
@@ -321,8 +323,8 @@ namespace LoginForm.QuotationModule
 
 
                 dtpDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
-                cbPayment.DataSource = IME.PaymentMethods.ToList();
-                cbPayment.DisplayMember = "Payment";
+                cbPayment.DataSource = IME.PaymentTerms.ToList();
+                cbPayment.DisplayMember = "term_name";
                 cbPayment.ValueMember = "ID";
                 cbRep.DataSource = IME.Workers.ToList();
                 cbRep.ValueMember = "WorkerID";
@@ -393,7 +395,7 @@ namespace LoginForm.QuotationModule
                 //if(c.MainContactID!=null) cbWorkers.SelectedIndex = (int)c.MainContactID;
                 if (c.paymentmethodID != null)
                 {
-                    cbPayment.SelectedIndex = cbPayment.FindStringExact(c.PaymentMethod.Payment);
+                    cbPayment.SelectedIndex = cbPayment.FindStringExact(c.PaymentTerm.term_name);
                 }
                 try { txtContactNote.Text = c.CustomerWorker.Note.Note_name; } catch { }
                 try { txtCustomerNote.Text = c.Note.Note_name; } catch { }
@@ -827,7 +829,7 @@ namespace LoginForm.QuotationModule
                         }
                         else
                         {
-                            MessageBox.Show("Product Code empty");
+                            //MessageBox.Show("Product Code empty");
                         }
                     }
                     #endregion
@@ -1907,7 +1909,7 @@ namespace LoginForm.QuotationModule
                 try { q.StartDate = dtpDate.Value; } catch { }
                 try { q.Factor = Decimal.Parse(cbFactor.Text); } catch { }
                 try { q.ValidationDay = Int32.Parse(txtValidation.Text); } catch { }
-                q.PaymentID = (cbPayment.SelectedItem as PaymentMethod).ID;
+                q.PaymentID = (cbPayment.SelectedItem as PaymentTerm).ID;
                 q.CurrName = (cbCurrency.SelectedItem as Currency).currencyName;
                 //q.CurrType = cbCurrType.Text;
                 q.Curr = CurrValue;
@@ -1969,7 +1971,7 @@ namespace LoginForm.QuotationModule
                 try { q.StartDate = dtpDate.Value; } catch { }
                 try { q.Factor = Decimal.Parse(cbFactor.Text); } catch { }
                 try { q.ValidationDay = Int32.Parse(txtValidation.Text); } catch { }
-                q.PaymentID = (cbPayment.SelectedItem as PaymentMethod).ID;
+                q.PaymentID = (cbPayment.SelectedItem as PaymentTerm).ID;
                 q.CurrName = (cbCurrency.SelectedItem as Currency).currencyName;
                 //q.CurrType = cbCurrType.Text;
                 q.Curr = CurrValue;
@@ -2041,7 +2043,7 @@ namespace LoginForm.QuotationModule
             try { q.StartDate = dtpDate.Value; } catch { }
             try { q.Factor = Decimal.Parse(cbFactor.Text); } catch { }
             try { q.ValidationDay = Int32.Parse(txtValidation.Text); } catch { }
-            try { q.PaymentID = (cbPayment.SelectedItem as PaymentMethod).ID; } catch { }
+            try { q.PaymentID = (cbPayment.SelectedItem as PaymentTerm).ID; } catch { }
             try { q.CurrName = (cbCurrency.SelectedItem as Rate).CurType; } catch { }
             q.ShippingMethodID = cbSMethod.SelectedIndex;
             //try { q.CurrType = cbCurrType.SelectedText; } catch { }
@@ -3010,10 +3012,10 @@ namespace LoginForm.QuotationModule
             CustomerSearchInput();
         }
 
-        public void CustomerSearchInput()
+         public void CustomerSearchInput()
         {
-            classQuotationAdd.customersearchID = CustomerCode.Text;
-            classQuotationAdd.customersearchname = "";
+            classQuotationAdd.customersearchID = "";
+            classQuotationAdd.customersearchname = CustomerCode.Text;
             FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch(customer);
             this.Enabled = false;
             var result = form.ShowDialog();
