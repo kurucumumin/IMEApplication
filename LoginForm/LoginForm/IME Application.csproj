@@ -770,6 +770,9 @@
     <Compile Include="DataSet\AccountLedger.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\AccountLedgerCombOFillUnderAccountLedger_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\AccountLedgerGetByDebtorAndCreditorWithBalance_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -933,6 +936,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Capital.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\CariHareket.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\CashFlow10_Result.cs">
@@ -2452,7 +2458,7 @@
     <Compile Include="Services\AuthorizationService.cs" />
     <Compile Include="QuotationModule\classQuotationAdd.cs" />
     <Compile Include="Services\ContactListItem.cs" />
-    <Compile Include="Services\CustomerService.cs" />
+    <Compile Include="Services\CustomerSP.cs" />
     <Compile Include="Services\ExchangeService.cs" />
     <Compile Include="Services\GetWorkerService.cs" />
     <Compile Include="Services\txtReader.cs" />
