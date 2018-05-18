@@ -113,7 +113,7 @@ namespace LoginForm.Billing
 
         private void btncikis_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are You Sure To Exit Programme ?", "Exit", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            if (MessageBox.Show("Are You Sure To Exit Program ?", "Exit", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 this.Close();
             }
