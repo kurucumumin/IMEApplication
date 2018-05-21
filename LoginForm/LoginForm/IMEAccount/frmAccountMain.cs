@@ -22,6 +22,7 @@ namespace LoginForm.IMEAccount
         {
             frmBillToCustomer form = new frmBillToCustomer("");
             form.Show();
+            this.Close();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -119,6 +120,13 @@ namespace LoginForm.IMEAccount
             {
                 MessageBox.Show("Please Select a Bill");
             }
+        }
+
+        private void btnAddReceipt_Click(object sender, EventArgs e)
+        {
+            frmReceiptOperation form = new frmReceiptOperation();
+            form.Show();
+            this.Close();
         }
     }
 }

@@ -11,7 +11,7 @@ namespace LoginForm.DataSet
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Receipt
     {
         public int ReceiptID { get; set; }
@@ -24,7 +24,7 @@ namespace LoginForm.DataSet
         public int CurrentType { get; set; }
         public string Description { get; set; }
         public int RepresentativeID { get; set; }
-    
+
         public virtual Currency Currency { get; set; }
         public virtual ReceiptType ReceiptType { get; set; }
         public virtual Worker Worker { get; set; }

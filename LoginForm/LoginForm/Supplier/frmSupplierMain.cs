@@ -181,6 +181,8 @@ namespace LoginForm
 
                     btnAdd.Text = "Save";
                     btnModify.Text = "Cancel";
+                    AddressButtonsMode(AddressButtonsModeOpen);
+                    ContactButtonsMode(ContactButtonsModeOpen);
                     break;
                 case "Save":
                     if (SupplierAddMode == SupplierModeAdd)
@@ -211,7 +213,7 @@ namespace LoginForm
                     s.accountrepresentaryID = ((Worker)cmbAccountRep.SelectedItem).WorkerID;
                     s.payment_termID = ((PaymentTerm)cmbAccountTerms.SelectedItem).ID;
                     s.paymentmethodID = ((PaymentMethod)cmbAccountMethod.SelectedItem).ID;
-                    s.discountrate = Convert.ToDecimal(txtDiscountRate.Text);
+                    //s.discountrate = Convert.ToDecimal(txtDiscountRate.Text);
                     s.DefaultCurrency = ((Currency)cmbCurrency.SelectedItem).currencyID;
                     s.BankID = ((SupplierBank)cmbBankName.SelectedItem).ID;
                     s.branchcode = txtBankBranchCode.Text;
@@ -358,7 +360,7 @@ namespace LoginForm
                     s.accountrepresentaryID = ((Worker)cmbAccountRep.SelectedItem).WorkerID;
                     s.payment_termID = ((PaymentTerm)cmbAccountTerms.SelectedItem).ID;
                     s.paymentmethodID = ((PaymentMethod)cmbAccountMethod.SelectedItem).ID;
-                    s.discountrate = Convert.ToDecimal(txtDiscountRate.Text);
+                    //s.discountrate = Convert.ToDecimal(txtDiscountRate.Text);
                     s.DefaultCurrency = ((Currency)cmbCurrency.SelectedItem).currencyID;
                     s.BankID = ((SupplierBank)cmbBankName.SelectedItem).ID;
                     s.branchcode = txtBankBranchCode.Text;
@@ -466,7 +468,7 @@ namespace LoginForm
             cmbAccountRep.Enabled = state;
             cmbAccountTerms.Enabled = state;
             cmbAccountMethod.Enabled = state;
-            txtDiscountRate.Enabled = state;
+            //txtDiscountRate.Enabled = state;
             cmbCurrency.Enabled = state;
             //cmbInvoiceCurrency.Enabled = state;
             //txtAccountNotes.Enabled = state;
@@ -561,7 +563,7 @@ namespace LoginForm
             txtName.Text = s.s_name;
             txtTaxOffice.Text = s.taxoffice;
             txtTaxNumber.Text = s.taxnumber;
-            txtDiscountRate.Text = s.discountrate.ToString();
+            //txtDiscountRate.Text = s.discountrate.ToString();
             txtBankAccountNumber.Text = s.accountnumber;
             txtBankBranchCode.Text = s.branchcode;
             txtBankIban.Text = s.iban;
@@ -640,7 +642,7 @@ namespace LoginForm
             cmbAccountRep.SelectedIndex = 0;
             cmbAccountTerms.SelectedIndex = 0;
             cmbAccountMethod.SelectedIndex = 0;
-            txtDiscountRate.Clear();
+            //txtDiscountRate.Clear();
             cmbCurrency.SelectedIndex = 0;
 
             cmbBankName.SelectedIndex = 0;
@@ -1674,15 +1676,15 @@ namespace LoginForm
                         ErrorLog.Add("You should choose a Payment Method!");
                     }
 
-                    decimal rate;
-                    if (txtDiscountRate.Text.Trim() == String.Empty)
-                    {
-                        ErrorLog.Add("Discount Rate must not be empty!");
-                    }
-                    else if (!Decimal.TryParse(txtDiscountRate.Text,out rate))
-                    {
-                        ErrorLog.Add("Discount rate must be a numerical string!");
-                    }
+                    //decimal rate;
+                    //if (txtDiscountRate.Text.Trim() == String.Empty)
+                    //{
+                    //    ErrorLog.Add("Discount Rate must not be empty!");
+                    //}
+                    //else if (!Decimal.TryParse(txtDiscountRate.Text,out rate))
+                    //{
+                    //    ErrorLog.Add("Discount rate must be a numerical string!");
+                    //}
 
                     if (cmbCurrency.SelectedIndex <= 0)
                     {

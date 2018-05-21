@@ -15,11 +15,12 @@ namespace LoginForm
     {
         IMEEntities IME = new IMEEntities();
 
-        public frmCityAdd()
+        public frmCityAdd(object countryName)
         {
             this.BringToFront();
             this.TopMost = true;
             InitializeComponent();
+            if (countryName!=null) { cbCountry.SelectedValue = countryName; }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

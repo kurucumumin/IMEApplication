@@ -167,6 +167,8 @@ namespace LoginForm.IMEAccount
                 IME.SaveChanges();
                 MessageBox.Show("Updated Successfully");
             }
+            frmAccountMain form = new frmAccountMain();
+            form.Show();
             this.Close();
         }
 
