@@ -8,10 +8,12 @@ namespace LoginForm
 {
     public partial class CustomerPositionAdd : Form
     {
+        
         IMEEntities IME = new IMEEntities();
-        public CustomerPositionAdd()
+        public CustomerPositionAdd(object departmentName)
         {
             InitializeComponent();
+            comboBox1.SelectedValue = departmentName;
         }
 
         private void button1_Click(object sender, EventArgs e)

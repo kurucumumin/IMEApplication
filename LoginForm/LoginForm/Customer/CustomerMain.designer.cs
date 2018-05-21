@@ -912,7 +912,7 @@
             // AddressDel
             // 
             this.AddressDel.Enabled = false;
-            this.AddressDel.Location = new System.Drawing.Point(631, 214);
+            this.AddressDel.Location = new System.Drawing.Point(630, 213);
             this.AddressDel.Name = "AddressDel";
             this.AddressDel.Size = new System.Drawing.Size(45, 25);
             this.AddressDel.TabIndex = 14;
@@ -1062,7 +1062,7 @@
             // 
             this.AdressCancel.Location = new System.Drawing.Point(610, 215);
             this.AdressCancel.Name = "AdressCancel";
-            this.AdressCancel.Size = new System.Drawing.Size(57, 23);
+            this.AdressCancel.Size = new System.Drawing.Size(65, 23);
             this.AdressCancel.TabIndex = 11;
             this.AdressCancel.Text = "Cancel";
             this.AdressCancel.UseVisualStyleBackColor = true;

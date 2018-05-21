@@ -325,7 +325,8 @@ namespace LoginForm
 
         private void titleAdd_Click(object sender, EventArgs e)
         {
-            CustomerPositionAdd form = new CustomerPositionAdd();
+            var department = ContactDepartment.SelectedValue;
+            CustomerPositionAdd form = new CustomerPositionAdd(department);
             this.Enabled = false;
             this.SendToBack();
             form.ShowDialog();
@@ -1003,7 +1004,8 @@ namespace LoginForm
                 ContactAdress.DataSource = null;
                 AdressAdd.Enabled = true;
                 btnContactAdd.Enabled = true;
-
+                btnContactClick();
+                btnAddressClick();
             }
             else
             {
@@ -1315,8 +1317,35 @@ namespace LoginForm
 
         private void AdressAdd_Click(object sender, EventArgs e)
         {
+            //isUpdateAdress = 0;
+            //#region addAdressButton
+            //AdressTabEnableTrue();
+            //AddressType.Text = "";
+            //cbCountry.Text = "";
+            //cbDefaultInvoiceAdress.Checked = false;
+            //cbDefaultDeliveryAdress.Checked = false;
+            //cbDefaultInvoiceAdress.Checked = false;
+            //cbCity.Text = "";
+            //cbTown.Text = "";
+            //PostCode.Text = "";
+            //AddressDetails.Text = "";
+            //AdressAdd.Visible = false;
+            //AdressCancel.Visible = true;
+            //AddressDel.Visible = false;
+            //AdressDone.Visible = true;
+            //AddressUpd.Visible = false;
+            //AdressList.Enabled = false;
+
+            //AddressType.Text = (ComboboxString);
+            //cbCountry.Text = (ComboboxString);
+            //cbCity.Text = (ComboboxString);
+            //cbTown.Text = (ComboboxString);
+            //#endregion
+        }
+
+        private void btnAddressClick()
+        {
             isUpdateAdress = 0;
-            #region addAdressButton
             AdressTabEnableTrue();
             AddressType.Text = "";
             cbCountry.Text = "";
@@ -1338,8 +1367,8 @@ namespace LoginForm
             cbCountry.Text = (ComboboxString);
             cbCity.Text = (ComboboxString);
             cbTown.Text = (ComboboxString);
-            #endregion
         }
+
 
         private void AddressUpd_Click(object sender, EventArgs e)
         {
@@ -1917,7 +1946,8 @@ namespace LoginForm
 
         private void CityAdd_Click(object sender, EventArgs e)
         {
-            frmCityAdd form = new frmCityAdd();
+            var country = cbCountry.SelectedValue;
+            frmCityAdd form = new frmCityAdd(country);
             form.ShowDialog();
             cbCity.DataSource = IME.Cities.Where(a => a.CountryID == (int)cbCountry.SelectedValue).ToList();
             cbCity.DisplayMember = "City_name";
