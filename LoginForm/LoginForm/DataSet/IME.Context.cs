@@ -52,6 +52,8 @@ namespace LoginForm.DataSet
         public virtual DbSet<CreditNoteDetail> CreditNoteDetails { get; set; }
         public virtual DbSet<CreditNoteMaster> CreditNoteMasters { get; set; }
         public virtual DbSet<Currency> Currencies { get; set; }
+        public virtual DbSet<Current> Currents { get; set; }
+        public virtual DbSet<CurrentType> CurrentTypes { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<CustomerAddress> CustomerAddresses { get; set; }
         public virtual DbSet<CustomerCategory> CustomerCategories { get; set; }
@@ -126,8 +128,10 @@ namespace LoginForm.DataSet
         public virtual DbSet<QuotationDetail> QuotationDetails { get; set; }
         public virtual DbSet<Rack> Racks { get; set; }
         public virtual DbSet<Rate> Rates { get; set; }
+        public virtual DbSet<Receipt> Receipts { get; set; }
         public virtual DbSet<ReceiptDetail> ReceiptDetails { get; set; }
         public virtual DbSet<ReceiptMaster> ReceiptMasters { get; set; }
+        public virtual DbSet<ReceiptType> ReceiptTypes { get; set; }
         public virtual DbSet<RejectionInDetail> RejectionInDetails { get; set; }
         public virtual DbSet<RejectionInMaster> RejectionInMasters { get; set; }
         public virtual DbSet<RejectionOutDetail> RejectionOutDetails { get; set; }
@@ -448,6 +452,15 @@ namespace LoginForm.DataSet
                 new ObjectParameter("areaId", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("AccountLedgerAddWithIdentity", accountGroupIdParameter, ledgerNameParameter, openingBalanceParameter, crOrDrParameter, narrationParameter, mailingNameParameter, addressParameter, isDefaultParameter, phoneParameter, mobileParameter, emailParameter, creditPeriodParameter, creditLimitParameter, pricinglevelIdParameter, billByBillParameter, tinParameter, cstParameter, panParameter, routeIdParameter, bankAccountNumberParameter, branchNameParameter, branchCodeParameter, areaIdParameter);
+        }
+    
+        public virtual ObjectResult<AccountLedgerCombOFillUnderAccountLedger_Result> AccountLedgerCombOFillUnderAccountLedger(Nullable<decimal> accountGroupId)
+        {
+            var accountGroupIdParameter = accountGroupId.HasValue ?
+                new ObjectParameter("accountGroupId", accountGroupId) :
+                new ObjectParameter("accountGroupId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountLedgerCombOFillUnderAccountLedger_Result>("AccountLedgerCombOFillUnderAccountLedger", accountGroupIdParameter);
         }
     
         public virtual int AccountLedgerEdit(Nullable<decimal> ledgerId, Nullable<decimal> accountGroupId, string ledgerName, Nullable<decimal> openingBalance, string crOrDr, string narration, string mailingName, string address, Nullable<bool> isDefault, string phone, string mobile, string email, Nullable<int> creditPeriod, Nullable<decimal> creditLimit, Nullable<decimal> pricinglevelId, Nullable<bool> billByBill, string tin, string cst, string pan, Nullable<decimal> routeId, string bankAccountNumber, string branchName, string branchCode, Nullable<decimal> areaId)

@@ -49,7 +49,7 @@ namespace LoginForm.QuotationModule
             {
                 CustomerSearchGrid.DataSource = c;
             }
-
+            CustomerName.Focus();
         }
 
         private void CustomerSearchGrid_DoubleClick(object sender, EventArgs e)

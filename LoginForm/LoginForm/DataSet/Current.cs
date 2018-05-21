@@ -12,16 +12,15 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class CariHareket
+    public partial class Current
     {
-        public string Current_Type { get; set; }
-        public int Current_ID { get; set; }
-        public string Current_Name { get; set; }
-        public Nullable<decimal> Amount { get; set; }
-        public string Currency { get; set; }
-        public string Representative { get; set; }
+        public int CurrentID { get; set; }
+        public string Name { get; set; }
         public string Description { get; set; }
-        public string Operation_Type { get; set; }
-        public string Account_Name { get; set; }
+        public int CurrentTypeID { get; set; }
+        public Nullable<decimal> Credit { get; set; }
+        public Nullable<decimal> Debit { get; set; }
+    
+        public virtual CurrentType CurrentType { get; set; }
     }
 }
