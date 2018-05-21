@@ -770,6 +770,9 @@
     <Compile Include="DataSet\AccountLedger.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\AccountLedgerCombOFillUnderAccountLedger_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\AccountLedgerGetByDebtorAndCreditorWithBalance_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1056,6 +1059,12 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\CurrencyViewAllForCombo_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\Current.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\CurrentType.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Customer.cs">
@@ -1622,10 +1631,16 @@
     <Compile Include="DataSet\Rate.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\Receipt.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\ReceiptDetail.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\ReceiptMaster.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ReceiptType.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\RejectionInDetail.cs">
@@ -1972,6 +1987,12 @@
     </Compile>
     <Compile Include="DataSet\Worker.cs">
       <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IMEAccount\frmReceiptOperation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IMEAccount\frmReceiptOperation.Designer.cs">
+      <DependentUpon>frmReceiptOperation.cs</DependentUpon>
     </Compile>
     <Compile Include="OnOrder\frmAcikSiparis.cs">
       <SubType>Form</SubType>
@@ -2737,6 +2758,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Customer\frmCityAdd.resx">
       <DependentUpon>frmCityAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IMEAccount\frmReceiptOperation.resx">
+      <DependentUpon>frmReceiptOperation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OnOrder\frmAcikSiparis.resx">
       <DependentUpon>frmAcikSiparis.cs</DependentUpon>

@@ -47,6 +47,7 @@
             this.btnUpdateFromCustomer = new System.Windows.Forms.Button();
             this.btnAllAccounts = new System.Windows.Forms.Button();
             this.btnCustomersDebits = new System.Windows.Forms.Button();
+            this.btnAddReceipt = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dg)).BeginInit();
             this.SuspendLayout();
             // 
@@ -127,22 +128,24 @@
             // 
             // btnAddBill
             // 
-            this.btnAddBill.Location = new System.Drawing.Point(13, 6);
+            this.btnAddBill.Location = new System.Drawing.Point(100, 6);
             this.btnAddBill.Name = "btnAddBill";
             this.btnAddBill.Size = new System.Drawing.Size(75, 43);
             this.btnAddBill.TabIndex = 1;
             this.btnAddBill.Text = "Add Bill To Customer";
             this.btnAddBill.UseVisualStyleBackColor = true;
+            this.btnAddBill.Visible = false;
             this.btnAddBill.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(94, 6);
+            this.btnUpdate.Location = new System.Drawing.Point(181, 6);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 43);
             this.btnUpdate.TabIndex = 1;
             this.btnUpdate.Text = "Update Bill To Customer";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Visible = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnClose
@@ -157,69 +160,86 @@
             // 
             // AddAccount
             // 
-            this.AddAccount.Location = new System.Drawing.Point(443, 6);
+            this.AddAccount.Location = new System.Drawing.Point(530, 6);
             this.AddAccount.Name = "AddAccount";
             this.AddAccount.Size = new System.Drawing.Size(75, 43);
             this.AddAccount.TabIndex = 1;
             this.AddAccount.Text = "Add Account";
             this.AddAccount.UseVisualStyleBackColor = true;
+            this.AddAccount.Visible = false;
             this.AddAccount.Click += new System.EventHandler(this.AddAccount_Click);
             // 
             // btnUpdateAccount
             // 
-            this.btnUpdateAccount.Location = new System.Drawing.Point(524, 6);
+            this.btnUpdateAccount.Location = new System.Drawing.Point(611, 6);
             this.btnUpdateAccount.Name = "btnUpdateAccount";
             this.btnUpdateAccount.Size = new System.Drawing.Size(75, 43);
             this.btnUpdateAccount.TabIndex = 1;
             this.btnUpdateAccount.Text = "Update Account";
             this.btnUpdateAccount.UseVisualStyleBackColor = true;
+            this.btnUpdateAccount.Visible = false;
             this.btnUpdateAccount.Click += new System.EventHandler(this.btnUpdateAccount_Click);
             // 
             // btnAddFromCustomer
             // 
-            this.btnAddFromCustomer.Location = new System.Drawing.Point(175, 6);
+            this.btnAddFromCustomer.Location = new System.Drawing.Point(262, 6);
             this.btnAddFromCustomer.Name = "btnAddFromCustomer";
             this.btnAddFromCustomer.Size = new System.Drawing.Size(82, 43);
             this.btnAddFromCustomer.TabIndex = 1;
             this.btnAddFromCustomer.Text = "Add Bill From Supplier";
             this.btnAddFromCustomer.UseVisualStyleBackColor = true;
+            this.btnAddFromCustomer.Visible = false;
             this.btnAddFromCustomer.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnUpdateFromCustomer
             // 
-            this.btnUpdateFromCustomer.Location = new System.Drawing.Point(263, 6);
+            this.btnUpdateFromCustomer.Location = new System.Drawing.Point(350, 6);
             this.btnUpdateFromCustomer.Name = "btnUpdateFromCustomer";
             this.btnUpdateFromCustomer.Size = new System.Drawing.Size(94, 43);
             this.btnUpdateFromCustomer.TabIndex = 1;
             this.btnUpdateFromCustomer.Text = "Update Bill From Supplier";
             this.btnUpdateFromCustomer.UseVisualStyleBackColor = true;
+            this.btnUpdateFromCustomer.Visible = false;
             this.btnUpdateFromCustomer.Click += new System.EventHandler(this.btnUpdateFromCustomer_Click);
             // 
             // btnAllAccounts
             // 
-            this.btnAllAccounts.Location = new System.Drawing.Point(363, 6);
+            this.btnAllAccounts.Location = new System.Drawing.Point(450, 6);
             this.btnAllAccounts.Name = "btnAllAccounts";
             this.btnAllAccounts.Size = new System.Drawing.Size(75, 43);
             this.btnAllAccounts.TabIndex = 1;
             this.btnAllAccounts.Text = "All Accounts";
             this.btnAllAccounts.UseVisualStyleBackColor = true;
+            this.btnAllAccounts.Visible = false;
             this.btnAllAccounts.Click += new System.EventHandler(this.btnAllAccounts_Click);
             // 
             // btnCustomersDebits
             // 
-            this.btnCustomersDebits.Location = new System.Drawing.Point(605, 6);
+            this.btnCustomersDebits.Location = new System.Drawing.Point(692, 6);
             this.btnCustomersDebits.Name = "btnCustomersDebits";
             this.btnCustomersDebits.Size = new System.Drawing.Size(75, 43);
             this.btnCustomersDebits.TabIndex = 1;
             this.btnCustomersDebits.Text = "Customer Debits";
             this.btnCustomersDebits.UseVisualStyleBackColor = true;
+            this.btnCustomersDebits.Visible = false;
             this.btnCustomersDebits.Click += new System.EventHandler(this.btnCustomersDebits_Click);
+            // 
+            // btnAddReceipt
+            // 
+            this.btnAddReceipt.Location = new System.Drawing.Point(13, 6);
+            this.btnAddReceipt.Name = "btnAddReceipt";
+            this.btnAddReceipt.Size = new System.Drawing.Size(75, 43);
+            this.btnAddReceipt.TabIndex = 2;
+            this.btnAddReceipt.Text = "Add Receipt";
+            this.btnAddReceipt.UseVisualStyleBackColor = true;
+            this.btnAddReceipt.Click += new System.EventHandler(this.btnAddReceipt_Click);
             // 
             // frmAccountMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(964, 503);
+            this.Controls.Add(this.btnAddReceipt);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnUpdateFromCustomer);
             this.Controls.Add(this.btnUpdate);
@@ -259,5 +279,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Supplier;
         private System.Windows.Forms.DataGridViewTextBoxColumn IsSaleoperation;
         private System.Windows.Forms.Button btnCustomersDebits;
+        private System.Windows.Forms.Button btnAddReceipt;
     }
 }
