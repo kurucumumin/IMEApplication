@@ -15,7 +15,9 @@ namespace LoginForm.IMEAccount
     public partial class frmReceiptOperation : Form
     {
         IMEEntities IME = new IMEEntities();
-        public static Customer customer;
+        private Customer customer;
+        private object currentOperation;
+        private object previousOperation;
 
         public frmReceiptOperation()
         {
@@ -28,19 +30,20 @@ namespace LoginForm.IMEAccount
             cbReceipt.DataSource = IME.ReceiptTypes.ToList();
             cbReceipt.DisplayMember = "Name";
             cbReceipt.ValueMember = "ReceiptTypeID";
+
             cbCurrency.DataSource = IME.Currencies.ToList();
             cbCurrency.DisplayMember = "currencyName";
             cbCurrency.ValueMember = "currencyID";
             #endregion
-            groupBox1.Visible = false;
+            //groupBox1.Visible = false;
         }
 
         private void txtCustomerName_DoubleClick(object sender, EventArgs e)
         {
-            CustomerSearchInput();
+            CustomerSearch();
         }
 
-        public void CustomerSearchInput()
+        public void CustomerSearch()
         {
             classQuotationAdd.customersearchID = txtCustomerName.Text;
             classQuotationAdd.customersearchname = "";
@@ -57,7 +60,6 @@ namespace LoginForm.IMEAccount
         }
         private void fillCustomer()
         {
-
             txtCustomerName.Text = classQuotationAdd.customerID;
             txtCustomerID.Text = classQuotationAdd.customername;
 
@@ -67,5 +69,7 @@ namespace LoginForm.IMEAccount
                 txtCustomerID.Text = c.c_name;
             }
         }
+
+
     }
 }

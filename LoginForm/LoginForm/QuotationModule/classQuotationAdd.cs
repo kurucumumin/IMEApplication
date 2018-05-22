@@ -15,6 +15,7 @@ namespace LoginForm.QuotationModule
         public static string customerID;
         public static string customername;
         public static string ItemCode;
+
         public static List<Customer> CustomerSearch()
         {
             IMEEntities IME = new IMEEntities();
