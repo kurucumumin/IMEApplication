@@ -32,7 +32,7 @@ namespace LoginForm.IMEAccount
             cbCurrency.DisplayMember = "currencyName";
             cbCurrency.ValueMember = "currencyID";
             #endregion
-            groupBox1.Visible = false;
+            //groupBox1.Visible = false;
         }
 
         private void txtCustomerName_DoubleClick(object sender, EventArgs e)
@@ -42,8 +42,9 @@ namespace LoginForm.IMEAccount
 
         public void CustomerSearchInput()
         {
-            classQuotationAdd.customersearchID = txtCustomerName.Text;
-            classQuotationAdd.customersearchname = "";
+            
+            classQuotationAdd.customersearchname = txtCustomerName.Text;
+            classQuotationAdd.customersearchID = "";
             FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch(customer);
             this.Enabled = false;
             var result = form.ShowDialog();
@@ -58,13 +59,26 @@ namespace LoginForm.IMEAccount
         private void fillCustomer()
         {
 
-            txtCustomerName.Text = classQuotationAdd.customerID;
-            txtCustomerID.Text = classQuotationAdd.customername;
+            txtCustomerName.Text = classQuotationAdd.customername;
+            txtCustomerID.Text = classQuotationAdd.customerID;
 
-            var c = IME.Customers.Where(a => a.ID == txtCustomerName.Text).FirstOrDefault();
+            var c = IME.Customers.Where(a => a.c_name == txtCustomerName.Text).FirstOrDefault();
             if (c != null)
             {
-                txtCustomerID.Text = c.c_name;
+                txtCustomerName.Text = c.c_name;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CustomerSearchInput();
+        }
+
+        private void txtCustomerName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                CustomerSearchInput();
             }
         }
     }
