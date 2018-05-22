@@ -255,7 +255,7 @@ namespace LoginForm.IMEAccount
 
             so.CustomerID = CustomerID;
             so.Amount = Convert.ToDecimal(txtAmount.Text);
-            so.RepreresentetiveID = Services.Utils.getCurrentUser().WorkerID;
+            so.RepresentativeID = Services.Utils.getCurrentUser().WorkerID;
             so.CurrencyID = Convert.ToDecimal(cbCurrency.SelectedValue);
             so.AccountID = Convert.ToInt32(cmbAccount.SelectedValue);
 

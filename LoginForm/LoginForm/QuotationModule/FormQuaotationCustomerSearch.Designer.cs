@@ -109,7 +109,6 @@
             this.Controls.Add(this.label1);
             this.Name = "FormQuaotationCustomerSearch";
             this.Text = "Customer Search";
-            this.Load += new System.EventHandler(this.FormQuaotationCustomerSearch_Load);
             ((System.ComponentModel.ISupportInitialize)(this.CustomerSearchGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

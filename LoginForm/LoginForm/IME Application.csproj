@@ -803,7 +803,7 @@
     <Compile Include="DataSet\AccountLedgerView_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\AccountMainDataGridFiller_Result.cs">
+    <Compile Include="DataSet\AccountOperation.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\AdditionalCost.cs">
@@ -2419,6 +2419,7 @@
     <Compile Include="Services\BackUpAndRestore.cs" />
     <Compile Include="Services\ChangeCurrency.cs" />
     <Compile Include="Services\classAccount.cs" />
+    <Compile Include="Services\classCurrent.cs" />
     <Compile Include="Services\Common.cs" />
     <Compile Include="Services\CustomerSP.cs" />
     <Compile Include="Services\DateValidation.cs" />

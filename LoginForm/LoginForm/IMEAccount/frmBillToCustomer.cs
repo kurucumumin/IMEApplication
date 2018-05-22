@@ -132,7 +132,7 @@ namespace LoginForm.IMEAccount
                 so.CurrencyID = decimal.Parse(cbCurrency.SelectedValue.ToString());
                 so.CustomerID = txtCustomerName.Text;
                
-                try { so.RepreresentetiveID = Utils.getCurrentUser().WorkerID; } catch { }
+                try { so.RepresentativeID = Utils.getCurrentUser().WorkerID; } catch { }
                 so.AccountID=Int32.Parse(cbBank.SelectedValue.ToString());
                 changeAccount();
                 string strcustomer = txtCustomerName.Text;
@@ -161,7 +161,7 @@ namespace LoginForm.IMEAccount
                 c.Debit = c.Debit - dcmAmount;
                 so.CurrencyID = decimal.Parse(cbCurrency.SelectedValue.ToString());
                 so.CustomerID = txtCustomerName.Text;
-                try { so.RepreresentetiveID = Utils.getCurrentUser().WorkerID; } catch { }
+                try { so.RepresentativeID = Utils.getCurrentUser().WorkerID; } catch { }
                 changeAccount();
                 so.AccountID = Int32.Parse(cbBank.SelectedValue.ToString());
                 IME.SaveChanges();
