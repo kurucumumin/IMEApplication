@@ -803,7 +803,7 @@
     <Compile Include="DataSet\AccountLedgerView_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\AccountMainDataGridFiller_Result.cs">
+    <Compile Include="DataSet\AccountOperation.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\AdditionalCost.cs">

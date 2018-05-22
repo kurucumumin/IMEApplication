@@ -30,6 +30,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<AccountGroup> AccountGroups { get; set; }
         public virtual DbSet<AccountLedger> AccountLedgers { get; set; }
+        public virtual DbSet<AccountOperation> AccountOperations { get; set; }
         public virtual DbSet<AdvancePayment> AdvancePayments { get; set; }
         public virtual DbSet<Area> Areas { get; set; }
         public virtual DbSet<AuthorizationValue> AuthorizationValues { get; set; }
@@ -646,9 +647,9 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountLedgerViewForAdditionalCost_Result>("AccountLedgerViewForAdditionalCost");
         }
     
-        public virtual ObjectResult<AccountMainDataGridFiller_Result> AccountMainDataGridFiller()
+        public virtual int AccountMainDataGridFiller()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountMainDataGridFiller_Result>("AccountMainDataGridFiller");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AccountMainDataGridFiller");
         }
     
         public virtual int AdditionalCostAdd(Nullable<decimal> voucherTypeId, string voucherNo, Nullable<decimal> ledgerId, Nullable<decimal> debit, Nullable<decimal> credit)

@@ -17,6 +17,8 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Account()
         {
+            this.AccountOperations = new HashSet<AccountOperation>();
+            this.AccountOperations1 = new HashSet<AccountOperation>();
             this.PurchaseOperations = new HashSet<PurchaseOperation>();
             this.SalesOperations = new HashSet<SalesOperation>();
         }
@@ -30,6 +32,10 @@ namespace LoginForm.DataSet
         public Nullable<decimal> CurrencyID { get; set; }
     
         public virtual Currency Currency { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AccountOperation> AccountOperations { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AccountOperation> AccountOperations1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PurchaseOperation> PurchaseOperations { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

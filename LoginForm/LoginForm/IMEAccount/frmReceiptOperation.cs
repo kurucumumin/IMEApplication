@@ -143,15 +143,7 @@ namespace LoginForm.IMEAccount
             }
         }
 
-        private void Save_SaleReceipt()
-        {
-            Customer c = currentAccount as Customer;
-            decimal amount = Convert.ToDecimal(txtAmount.Text);
-
-            Save_SaleOperation(c.ID);
-            UpdateCustomerDebitAmount(c.ID, amount);
-            UpdateAccountAmount(Convert.ToInt32(cmbAccount.SelectedValue), amount, true);
-        }
+        
 
         
 
@@ -164,17 +156,19 @@ namespace LoginForm.IMEAccount
             db.SaveChanges();
         }
         
-        private void Save_PurchaseReceipt()
-        {
-            Supplier s = currentAccount as Supplier;
-            decimal amount = Convert.ToDecimal(txtAmount.Text);
-
-            Save_PurchaseOperation(s.ID);
-            UpdateSupplierDebitAmount(s.ID, amount);
-            UpdateAccountAmount(Convert.ToInt32(cmbAccount.SelectedValue), amount, false);
-        }
+        
 
         #region SaleInvoice
+        private void Save_SaleReceipt()
+        {
+            Customer c = currentAccount as Customer;
+            decimal amount = Convert.ToDecimal(txtAmount.Text);
+
+            Save_SaleOperation(c.ID);
+            UpdateCustomerDebitAmount(c.ID, amount);
+            UpdateAccountAmount(Convert.ToInt32(cmbAccount.SelectedValue), amount, true);
+        }
+
         private void Save_SaleOperation(string CustomerID)
         {
             IMEEntities db = new IMEEntities();
@@ -201,6 +195,16 @@ namespace LoginForm.IMEAccount
         }
         #endregion
         #region PurchaseInvoice
+        private void Save_PurchaseReceipt()
+        {
+            Supplier s = currentAccount as Supplier;
+            decimal amount = Convert.ToDecimal(txtAmount.Text);
+
+            Save_PurchaseOperation(s.ID);
+            UpdateSupplierDebitAmount(s.ID, amount);
+            UpdateAccountAmount(Convert.ToInt32(cmbAccount.SelectedValue), amount, false);
+        }
+
         private void Save_PurchaseOperation(string SupplierID)
         {
             IMEEntities db = new IMEEntities();
@@ -229,11 +233,18 @@ namespace LoginForm.IMEAccount
             db.SaveChanges();
         }
         #endregion
-
+        #region AccountTransaction
         private void Save_Virement()
         {
+            DataSet.Account c = currentAccount as DataSet.Account;
+            decimal amount = Convert.ToDecimal(txtAmount.Text);
 
+            Save_AccountOperation(c.ID);
+            UpdateAccountAmount(Convert.ToInt32(cmbAccount.SelectedValue), amount, false);
+            UpdateAccountAmount(Convert.ToInt32(cmbAccount.SelectedValue), amount, true);
         }
+        #endregion
+
         private void Save_ServiceReceipt()
         {
 
