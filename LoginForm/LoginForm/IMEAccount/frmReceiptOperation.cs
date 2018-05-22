@@ -73,14 +73,14 @@ namespace LoginForm.IMEAccount
 
         private void button1_Click(object sender, EventArgs e)
         {
-            CustomerSearchInput();
+            CustomerSearch();
         }
 
         private void txtCustomerName_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                CustomerSearchInput();
+                CustomerSearch();
             }
         }
 
