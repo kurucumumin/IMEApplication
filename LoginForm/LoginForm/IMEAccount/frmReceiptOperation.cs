@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LoginForm.DataSet;
 using LoginForm.QuotationModule;
+using LoginForm.Services;
 
 namespace LoginForm.IMEAccount
 {
@@ -16,8 +17,7 @@ namespace LoginForm.IMEAccount
     {
         IMEEntities IME = new IMEEntities();
         private Customer customer;
-        private object currentOperation;
-        private object previousOperation;
+        private Supplier supplier;
 
         public frmReceiptOperation()
         {
@@ -35,12 +35,20 @@ namespace LoginForm.IMEAccount
             cbCurrency.DisplayMember = "currencyName";
             cbCurrency.ValueMember = "currencyID";
             #endregion
-            //groupBox1.Visible = false;
+            cbReceipt.SelectedIndex = -1;
+            groupBox1.Visible = false;
         }
 
         private void txtCustomerName_DoubleClick(object sender, EventArgs e)
         {
-            CustomerSearch();
+            if (cbReceipt.SelectedIndex == 0)
+            {
+                CustomerSearch();
+            }
+            if (cbReceipt.SelectedIndex == 1)
+            {
+                SupplierSearch();
+            }
         }
 
         public void CustomerSearch()
@@ -71,19 +79,72 @@ namespace LoginForm.IMEAccount
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        public void SupplierSearch()
         {
-            CustomerSearch();
+
+            classSupplier.suppliersearchname = txtCustomerName.Text;
+            classSupplier.suppliersearchID = "";
+            FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch(supplier);
+            this.Enabled = false;
+            var result = form.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                supplier = form.supplier;
+            }
+            this.Enabled = true;
+            fillSupplier();
+        }
+        private void fillSupplier()
+        {
+            txtCustomerName.Text = classSupplier.supplierID;
+            txtCustomerID.Text = classSupplier.suppliername;
+
+            var c = IME.Suppliers.Where(a => a.s_name == txtCustomerName.Text).FirstOrDefault();
+            if (c != null)
+            {
+                txtCustomerName.Text = c.s_name;
+            }
+        }
+
+        private void btnView_Click(object sender, EventArgs e)
+        {
+            if (cbReceipt.SelectedIndex == 0)
+            {
+                CustomerSearch();
+            }
+            if (cbReceipt.SelectedIndex == 1)
+            {
+                SupplierSearch();
+            }
         }
 
         private void txtCustomerName_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                CustomerSearch();
+                if (cbReceipt.SelectedIndex == 0)
+                {
+                    CustomerSearch();
+                }
+                if (cbReceipt.SelectedIndex == 1)
+                {
+                    SupplierSearch();
+                }
             }
         }
-
-
+        private void cbReceipt_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbReceipt.SelectedIndex == 0)
+            {
+                groupBox1.Visible = true;
+                lblCustomer.Text = "Customer Code/Name";
+            }
+            if (cbReceipt.SelectedIndex == 1)
+            {
+                groupBox1.Visible = true;
+                lblCustomer.Text = "Supplier Code/Name";
+            }
+        }
     }
 }

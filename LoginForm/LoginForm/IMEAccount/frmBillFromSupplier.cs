@@ -56,8 +56,8 @@ namespace LoginForm.IMEAccount
             form.ShowDialog();
             if (classSupplier.Supplier!=null)
             {
-                txtCustomer.Text = classSupplier.Supplier.ID;
-                txtCustomerName.Text = classSupplier.Supplier.s_name;
+                txtCustomer.Text = classSupplier.supplierID;
+                txtCustomerName.Text = classSupplier.suppliername;
             }
         }
         private void changeCurrencySelection()

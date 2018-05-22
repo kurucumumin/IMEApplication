@@ -12,6 +12,7 @@ namespace LoginForm.QuotationModule
     {
         IMEEntities IME = new IMEEntities();
         public Customer customer;
+        public Supplier supplier;
         public XmlCustomer xmlCustomer;
         bool fromXmlCustomer = false;
         public FormQuaotationCustomerSearch()
@@ -23,6 +24,14 @@ namespace LoginForm.QuotationModule
         {
             InitializeComponent();
             this.customer = customer;
+            CustomerSearch();
+        }
+
+        public FormQuaotationCustomerSearch(Supplier supplier)
+        {
+            InitializeComponent();
+            this.supplier = supplier;
+            SupplierSearch();
         }
 
         public FormQuaotationCustomerSearch(XmlCustomer customer)
@@ -34,6 +43,14 @@ namespace LoginForm.QuotationModule
 
         private void FormQuaotationCustomerSearch_Load(object sender, EventArgs e)
         {
+        }
+
+        public void CustomerSearch()
+        {
+            this.Text = "Customer Search";
+            label1.Text = "Customer Code";
+            label2.Text = "Customer Name";
+            button1.Text = "Add New Customer";
             CustomerCode.Text = classQuotationAdd.customersearchID.ToString();
             CustomerName.Text = classQuotationAdd.customersearchname;
             List<Customer> c = classQuotationAdd.CustomerSearch();
@@ -48,9 +65,20 @@ namespace LoginForm.QuotationModule
             {
                 CustomerSearchGrid.DataSource = c;
             }
-
         }
 
+        public void SupplierSearch()
+        {
+            this.Text = "Supplier Search";
+            label1.Text = "Supplier Code";
+            label2.Text = "Supplier Name";
+            button1.Text = "Add New Supplier";
+            CustomerCode.Text = classSupplier.suppliersearchID.ToString();
+            CustomerName.Text = classSupplier.suppliersearchname;
+            List<Supplier> c = classSupplier.SupplierSearch();
+            CustomerSearchGrid.DataSource = c;
+        }
+            
         private void CustomerSearchGrid_DoubleClick(object sender, EventArgs e)
         {
             CustomerSearchGrid.ClearSelection();
@@ -106,16 +134,6 @@ namespace LoginForm.QuotationModule
                 List<Customer> c = classQuotationAdd.CustomerSearch();
                 CustomerSearchGrid.DataSource = c;
             }
-        }
-
-        private void CustomerCode_TextChanged(object sender, EventArgs e)
-        {
-            //if (CustomerName.Text != "") {  CustomerName.Text = "";}
-        }
-
-        private void CustomerName_TextChanged(object sender, EventArgs e)
-        {
-            //if (CustomerCode.Text != "") { CustomerCode.Text = ""; }
         }
 
         private void button1_Click(object sender, EventArgs e)

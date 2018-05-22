@@ -61,7 +61,6 @@
             this.CustomerCode.Name = "CustomerCode";
             this.CustomerCode.Size = new System.Drawing.Size(94, 20);
             this.CustomerCode.TabIndex = 2;
-            this.CustomerCode.TextChanged += new System.EventHandler(this.CustomerCode_TextChanged);
             this.CustomerCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CustomerCode_KeyDown);
             // 
             // CustomerName
@@ -70,7 +69,6 @@
             this.CustomerName.Name = "CustomerName";
             this.CustomerName.Size = new System.Drawing.Size(219, 20);
             this.CustomerName.TabIndex = 3;
-            this.CustomerName.TextChanged += new System.EventHandler(this.CustomerName_TextChanged);
             this.CustomerName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CustomerName_KeyDown);
             // 
             // CustomerSearchGrid

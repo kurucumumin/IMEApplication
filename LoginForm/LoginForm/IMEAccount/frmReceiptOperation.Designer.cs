@@ -39,7 +39,7 @@
             this.lblCustomer = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnView = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,6 +50,7 @@
             this.cbReceipt.Name = "cbReceipt";
             this.cbReceipt.Size = new System.Drawing.Size(370, 21);
             this.cbReceipt.TabIndex = 8928;
+            this.cbReceipt.SelectedIndexChanged += new System.EventHandler(this.cbReceipt_SelectedIndexChanged);
             // 
             // cbCurrency
             // 
@@ -113,7 +114,6 @@
             this.txtCustomerName.TabIndex = 8921;
             this.txtCustomerName.DoubleClick += new System.EventHandler(this.txtCustomerName_DoubleClick);
             this.txtCustomerName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCustomerName_KeyDown);
-
             // 
             // lblCustomer
             // 
@@ -137,7 +137,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.btnView);
             this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Controls.Add(this.lblCustomer);
             this.groupBox1.Controls.Add(this.cbCurrency);
@@ -152,15 +152,15 @@
             this.groupBox1.TabIndex = 8929;
             this.groupBox1.TabStop = false;
             // 
-            // button1
+            // btnView
             // 
-            this.button1.Location = new System.Drawing.Point(252, 33);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(21, 23);
-            this.button1.TabIndex = 8928;
-            this.button1.Text = "...";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnView.Location = new System.Drawing.Point(252, 33);
+            this.btnView.Name = "btnView";
+            this.btnView.Size = new System.Drawing.Size(21, 23);
+            this.btnView.TabIndex = 8928;
+            this.btnView.Text = "...";
+            this.btnView.UseVisualStyleBackColor = true;
+            this.btnView.Click += new System.EventHandler(this.btnView_Click);
             // 
             // frmReceiptOperation
             // 
@@ -192,6 +192,6 @@
         private System.Windows.Forms.Label lblCustomer;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnView;
     }
 }
