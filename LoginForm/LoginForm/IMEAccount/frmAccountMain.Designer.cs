@@ -64,9 +64,10 @@
             this.Desc,
             this.Supplier,
             this.IsSaleoperation});
-            this.dg.Location = new System.Drawing.Point(13, 55);
+            this.dg.Location = new System.Drawing.Point(17, 68);
+            this.dg.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dg.Name = "dg";
-            this.dg.Size = new System.Drawing.Size(949, 444);
+            this.dg.Size = new System.Drawing.Size(1265, 546);
             this.dg.TabIndex = 0;
             // 
             // ID
@@ -128,20 +129,21 @@
             // 
             // btnAddBill
             // 
-            this.btnAddBill.Location = new System.Drawing.Point(100, 6);
+            this.btnAddBill.Location = new System.Drawing.Point(133, 7);
+            this.btnAddBill.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAddBill.Name = "btnAddBill";
-            this.btnAddBill.Size = new System.Drawing.Size(75, 43);
+            this.btnAddBill.Size = new System.Drawing.Size(100, 53);
             this.btnAddBill.TabIndex = 1;
             this.btnAddBill.Text = "Add Bill To Customer";
             this.btnAddBill.UseVisualStyleBackColor = true;
-            this.btnAddBill.Visible = false;
             this.btnAddBill.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(181, 6);
+            this.btnUpdate.Location = new System.Drawing.Point(241, 7);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(75, 43);
+            this.btnUpdate.Size = new System.Drawing.Size(100, 53);
             this.btnUpdate.TabIndex = 1;
             this.btnUpdate.Text = "Update Bill To Customer";
             this.btnUpdate.UseVisualStyleBackColor = true;
@@ -150,9 +152,10 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(887, 6);
+            this.btnClose.Location = new System.Drawing.Point(1183, 7);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(75, 43);
+            this.btnClose.Size = new System.Drawing.Size(100, 53);
             this.btnClose.TabIndex = 1;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -160,9 +163,10 @@
             // 
             // AddAccount
             // 
-            this.AddAccount.Location = new System.Drawing.Point(530, 6);
+            this.AddAccount.Location = new System.Drawing.Point(707, 7);
+            this.AddAccount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.AddAccount.Name = "AddAccount";
-            this.AddAccount.Size = new System.Drawing.Size(75, 43);
+            this.AddAccount.Size = new System.Drawing.Size(100, 53);
             this.AddAccount.TabIndex = 1;
             this.AddAccount.Text = "Add Account";
             this.AddAccount.UseVisualStyleBackColor = true;
@@ -171,9 +175,10 @@
             // 
             // btnUpdateAccount
             // 
-            this.btnUpdateAccount.Location = new System.Drawing.Point(611, 6);
+            this.btnUpdateAccount.Location = new System.Drawing.Point(815, 7);
+            this.btnUpdateAccount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnUpdateAccount.Name = "btnUpdateAccount";
-            this.btnUpdateAccount.Size = new System.Drawing.Size(75, 43);
+            this.btnUpdateAccount.Size = new System.Drawing.Size(100, 53);
             this.btnUpdateAccount.TabIndex = 1;
             this.btnUpdateAccount.Text = "Update Account";
             this.btnUpdateAccount.UseVisualStyleBackColor = true;
@@ -182,9 +187,10 @@
             // 
             // btnAddFromCustomer
             // 
-            this.btnAddFromCustomer.Location = new System.Drawing.Point(262, 6);
+            this.btnAddFromCustomer.Location = new System.Drawing.Point(349, 7);
+            this.btnAddFromCustomer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAddFromCustomer.Name = "btnAddFromCustomer";
-            this.btnAddFromCustomer.Size = new System.Drawing.Size(82, 43);
+            this.btnAddFromCustomer.Size = new System.Drawing.Size(109, 53);
             this.btnAddFromCustomer.TabIndex = 1;
             this.btnAddFromCustomer.Text = "Add Bill From Supplier";
             this.btnAddFromCustomer.UseVisualStyleBackColor = true;
@@ -193,9 +199,10 @@
             // 
             // btnUpdateFromCustomer
             // 
-            this.btnUpdateFromCustomer.Location = new System.Drawing.Point(350, 6);
+            this.btnUpdateFromCustomer.Location = new System.Drawing.Point(467, 7);
+            this.btnUpdateFromCustomer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnUpdateFromCustomer.Name = "btnUpdateFromCustomer";
-            this.btnUpdateFromCustomer.Size = new System.Drawing.Size(94, 43);
+            this.btnUpdateFromCustomer.Size = new System.Drawing.Size(125, 53);
             this.btnUpdateFromCustomer.TabIndex = 1;
             this.btnUpdateFromCustomer.Text = "Update Bill From Supplier";
             this.btnUpdateFromCustomer.UseVisualStyleBackColor = true;
@@ -204,9 +211,10 @@
             // 
             // btnAllAccounts
             // 
-            this.btnAllAccounts.Location = new System.Drawing.Point(450, 6);
+            this.btnAllAccounts.Location = new System.Drawing.Point(600, 7);
+            this.btnAllAccounts.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAllAccounts.Name = "btnAllAccounts";
-            this.btnAllAccounts.Size = new System.Drawing.Size(75, 43);
+            this.btnAllAccounts.Size = new System.Drawing.Size(100, 53);
             this.btnAllAccounts.TabIndex = 1;
             this.btnAllAccounts.Text = "All Accounts";
             this.btnAllAccounts.UseVisualStyleBackColor = true;
@@ -215,9 +223,10 @@
             // 
             // btnCustomersDebits
             // 
-            this.btnCustomersDebits.Location = new System.Drawing.Point(692, 6);
+            this.btnCustomersDebits.Location = new System.Drawing.Point(923, 7);
+            this.btnCustomersDebits.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCustomersDebits.Name = "btnCustomersDebits";
-            this.btnCustomersDebits.Size = new System.Drawing.Size(75, 43);
+            this.btnCustomersDebits.Size = new System.Drawing.Size(100, 53);
             this.btnCustomersDebits.TabIndex = 1;
             this.btnCustomersDebits.Text = "Customer Debits";
             this.btnCustomersDebits.UseVisualStyleBackColor = true;
@@ -226,9 +235,10 @@
             // 
             // btnAddReceipt
             // 
-            this.btnAddReceipt.Location = new System.Drawing.Point(13, 6);
+            this.btnAddReceipt.Location = new System.Drawing.Point(17, 7);
+            this.btnAddReceipt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAddReceipt.Name = "btnAddReceipt";
-            this.btnAddReceipt.Size = new System.Drawing.Size(75, 43);
+            this.btnAddReceipt.Size = new System.Drawing.Size(100, 53);
             this.btnAddReceipt.TabIndex = 2;
             this.btnAddReceipt.Text = "Add Receipt";
             this.btnAddReceipt.UseVisualStyleBackColor = true;
@@ -236,9 +246,9 @@
             // 
             // frmAccountMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(964, 503);
+            this.ClientSize = new System.Drawing.Size(1285, 619);
             this.Controls.Add(this.btnAddReceipt);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnUpdateFromCustomer);
@@ -250,6 +260,7 @@
             this.Controls.Add(this.AddAccount);
             this.Controls.Add(this.btnAddBill);
             this.Controls.Add(this.dg);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmAccountMain";
             this.Text = "frmAccountMain";
             this.Load += new System.EventHandler(this.frmAccountMain_Load);
