@@ -56,10 +56,9 @@ namespace LoginForm.IMEAccount
                 SupplierSearch();
             }
         }
-
+        
         public void CustomerSearch()
         {
-
             classQuotationAdd.customersearchname = txtCustomerName.Text;
             classQuotationAdd.customersearchID = "";
             FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch(currentAccount as Customer);
@@ -151,9 +150,31 @@ namespace LoginForm.IMEAccount
 
             Save_SaleOperation(c.ID);
             UpdateCustomerDebitAmount(c.ID, amount);
-            UpdateBankAmount(Convert.ToInt32(cmbAccount.SelectedValue), amount);
+            UpdateAccountAmount(Convert.ToInt32(cmbAccount.SelectedValue), amount, true);
         }
 
+        
+
+        private void UpdateAccountAmount(int AccountID, decimal amount, bool increaseValue)
+        {
+            IMEEntities db = new IMEEntities();
+            DataSet.Account a = db.Accounts.Where(x => x.ID == AccountID).FirstOrDefault();
+            if (!increaseValue) amount *= -1; 
+            a.Value += amount;
+            db.SaveChanges();
+        }
+        
+        private void Save_PurchaseReceipt()
+        {
+            Supplier s = currentAccount as Supplier;
+            decimal amount = Convert.ToDecimal(txtAmount.Text);
+
+            Save_PurchaseOperation(s.ID);
+            UpdateSupplierDebitAmount(s.ID, amount);
+            UpdateAccountAmount(Convert.ToInt32(cmbAccount.SelectedValue), amount, false);
+        }
+
+        #region SaleInvoice
         private void Save_SaleOperation(string CustomerID)
         {
             IMEEntities db = new IMEEntities();
@@ -173,25 +194,42 @@ namespace LoginForm.IMEAccount
         {
             IMEEntities db = new IMEEntities();
             Customer c = db.Customers.Where(x => x.ID == CustomerID).FirstOrDefault();
-
+            if (c.Debit == null) c.Debit = 0;
             c.Debit -= amount;
 
             db.SaveChanges();
         }
-
-        private void UpdateBankAmount(int AccountID, decimal amount)
+        #endregion
+        #region PurchaseInvoice
+        private void Save_PurchaseOperation(string SupplierID)
         {
             IMEEntities db = new IMEEntities();
-            DataSet.Account a = db.Accounts.Where(x => x.ID == AccountID).FirstOrDefault();
+            PurchaseOperation po = new PurchaseOperation();
 
-            a.Value += amount;
+            po.AccountID = Convert.ToInt32(cmbAccount.SelectedValue);
+            po.Amount = Convert.ToDecimal(txtAmount.Text);
+            po.Description = txtDescription.Text;
+            po.SupplierID = SupplierID;
+            po.RepresentativeID = Services.Utils.getCurrentUser().WorkerID;
+            po.CurrencyID = Convert.ToDecimal(cbCurrency.SelectedValue);
+            
+
+            db.PurchaseOperations.Add(po);
             db.SaveChanges();
         }
 
-        private void Save_PurchaseReceipt()
+        private void UpdateSupplierDebitAmount(string SupplierID, decimal amount)
         {
+            IMEEntities db = new IMEEntities();
 
+            Supplier s = db.Suppliers.Where(x => x.ID == SupplierID).FirstOrDefault();
+            if (s.Debit == null) s.Debit = 0;
+            s.Debit -= amount;
+
+            db.SaveChanges();
         }
+        #endregion
+
         private void Save_Virement()
         {
 

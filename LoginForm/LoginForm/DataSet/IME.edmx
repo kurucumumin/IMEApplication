@@ -2284,6 +2284,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="SubCategoryID" Type="int" />
           <Property Name="DefaultCurrency" Type="numeric" Precision="18" Scale="0" />
           <Property Name="AccountNoteID" Type="int" />
+          <Property Name="Debit" Type="numeric" Precision="20" Scale="4" />
         </EntityType>
         <EntityType Name="SupplierAddress">
           <Key>
@@ -14004,6 +14005,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="SubCategoryID" Type="Int32" />
           <Property Name="DefaultCurrency" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="AccountNoteID" Type="Int32" />
+          <Property Name="Debit" Type="Decimal" Precision="20" Scale="4" />
           <NavigationProperty Name="Currency" Relationship="Self.FK__Supplier__Defaul__4218B34E" FromRole="Supplier" ToRole="Currency" />
           <NavigationProperty Name="Note" Relationship="Self.FK__Supplier__Accoun__552B87C2" FromRole="Supplier" ToRole="Notes" />
           <NavigationProperty Name="Note1" Relationship="Self.FK__Supplier__Suppli__09746778" FromRole="Supplier" ToRole="Notes" />
@@ -27473,6 +27475,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="SubCategoryID" ColumnName="SubCategoryID" />
                 <ScalarProperty Name="DefaultCurrency" ColumnName="DefaultCurrency" />
                 <ScalarProperty Name="AccountNoteID" ColumnName="AccountNoteID" />
+                <ScalarProperty Name="Debit" ColumnName="Debit" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
