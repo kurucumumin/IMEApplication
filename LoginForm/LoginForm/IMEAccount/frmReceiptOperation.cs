@@ -45,8 +45,9 @@ namespace LoginForm.IMEAccount
 
         public void CustomerSearch()
         {
-            classQuotationAdd.customersearchID = txtCustomerName.Text;
-            classQuotationAdd.customersearchname = "";
+
+            classQuotationAdd.customersearchname = txtCustomerName.Text;
+            classQuotationAdd.customersearchID = "";
             FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch(customer);
             this.Enabled = false;
             var result = form.ShowDialog();
@@ -63,10 +64,23 @@ namespace LoginForm.IMEAccount
             txtCustomerName.Text = classQuotationAdd.customerID;
             txtCustomerID.Text = classQuotationAdd.customername;
 
-            var c = IME.Customers.Where(a => a.ID == txtCustomerName.Text).FirstOrDefault();
+            var c = IME.Customers.Where(a => a.c_name == txtCustomerName.Text).FirstOrDefault();
             if (c != null)
             {
-                txtCustomerID.Text = c.c_name;
+                txtCustomerName.Text = c.c_name;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CustomerSearchInput();
+        }
+
+        private void txtCustomerName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                CustomerSearchInput();
             }
         }
 

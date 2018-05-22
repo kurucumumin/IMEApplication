@@ -34,12 +34,11 @@ namespace LoginForm.QuotationModule
 
         private void FormQuaotationCustomerSearch_Load(object sender, EventArgs e)
         {
-            InitializeComponent();
             CustomerCode.Text = classQuotationAdd.customersearchID.ToString();
             CustomerName.Text = classQuotationAdd.customersearchname;
             List<Customer> c = classQuotationAdd.CustomerSearch();
             CustomerSearchGrid.DataSource = c;
-            if(fromXmlCustomer && c.Count <= 0)
+            if (fromXmlCustomer && c.Count <= 0)
             {
                 MessageBox.Show("Customer Not Found!");
                 frmXmlCustomerAdd frm = new frmXmlCustomerAdd(xmlCustomer);
@@ -49,7 +48,7 @@ namespace LoginForm.QuotationModule
             {
                 CustomerSearchGrid.DataSource = c;
             }
-            CustomerName.Focus();
+
         }
 
         private void CustomerSearchGrid_DoubleClick(object sender, EventArgs e)
