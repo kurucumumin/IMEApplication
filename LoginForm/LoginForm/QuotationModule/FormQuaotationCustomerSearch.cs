@@ -14,11 +14,20 @@ namespace LoginForm.QuotationModule
         public Customer customer;
         public Supplier supplier;
         public DataSet.Account account;
+        public Current current;
         public XmlCustomer xmlCustomer;
         bool fromXmlCustomer = false;
+
         public FormQuaotationCustomerSearch()
         {
             InitializeComponent();
+        }
+
+        public FormQuaotationCustomerSearch(XmlCustomer customer)
+        {
+            InitializeComponent();
+            fromXmlCustomer = true;
+            this.xmlCustomer = customer;
         }
 
         public FormQuaotationCustomerSearch(Customer customer)
@@ -42,15 +51,11 @@ namespace LoginForm.QuotationModule
             AccountSearch();
         }
 
-        public FormQuaotationCustomerSearch(XmlCustomer customer)
+        public FormQuaotationCustomerSearch(Current current)
         {
             InitializeComponent();
-            fromXmlCustomer = true;
-            this.xmlCustomer = customer;
-        }
-
-        private void FormQuaotationCustomerSearch_Load(object sender, EventArgs e)
-        {
+            this.current = current;
+            CurrentSearch();
         }
 
         public void CustomerSearch()
@@ -96,6 +101,18 @@ namespace LoginForm.QuotationModule
             CustomerCode.Text = classAccount.accountsearchID.ToString();
             CustomerName.Text = classAccount.accountsearchname;
             List<DataSet.Account> c = classAccount.AccountSearch();
+            CustomerSearchGrid.DataSource = c;
+        }
+
+        public void CurrentSearch()
+        {
+            this.Text = "Current Search";
+            label1.Text = "Current Code";
+            label2.Text = "Current Name";
+            button1.Text = "Add New Current";
+            CustomerCode.Text = classCurrent.currentsearchID.ToString();
+            CustomerName.Text = classCurrent.currentsearchname;
+            List<Current> c = classCurrent.CurrentSearch();
             CustomerSearchGrid.DataSource = c;
         }
 

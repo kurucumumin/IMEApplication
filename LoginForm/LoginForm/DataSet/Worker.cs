@@ -17,6 +17,7 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Worker()
         {
+            this.AccountOperations = new HashSet<AccountOperation>();
             this.AdvancePayments = new HashSet<AdvancePayment>();
             this.BackOrderMains = new HashSet<BackOrderMain>();
             this.BonusDeductions = new HashSet<BonusDeduction>();
@@ -95,6 +96,8 @@ namespace LoginForm.DataSet
         public string esiNumber { get; set; }
         public Nullable<decimal> defaultPackageId { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AccountOperation> AccountOperations { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AdvancePayment> AdvancePayments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

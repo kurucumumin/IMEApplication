@@ -11,15 +11,13 @@ namespace LoginForm.Services
     {
         public static string accountsearchID;
         public static string accountsearchname;
-        public static string accountID;
-        public static string accountname;
         public static List<DataSet.Account> AccountSearch()
         {
             IMEEntities IME = new IMEEntities();
-            List<Supplier> c = new List<Supplier>();
+            List<DataSet.Account> c = new List<DataSet.Account>();
             if (accountsearchname == "")
             {
-                c = IME.Accounts.Where(a => a.ID.Contains(suppliersearchID)).ToList().Where(a => a.Name != null).Where(b => b.Name != string.Empty).ToList();
+                c = IME.Accounts.Where(a => a.ID.ToString().Contains(accountsearchID)).ToList().Where(a => a.Name != null).Where(b => b.Name != string.Empty).ToList();
             }
             else
             {

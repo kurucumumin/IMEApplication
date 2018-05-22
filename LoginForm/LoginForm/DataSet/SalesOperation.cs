@@ -17,7 +17,7 @@ namespace LoginForm.DataSet
         public int ID { get; set; }
         public string CustomerID { get; set; }
         public Nullable<decimal> Amount { get; set; }
-        public Nullable<int> RepreresentetiveID { get; set; }
+        public Nullable<int> RepresentativeID { get; set; }
         public Nullable<decimal> CurrencyID { get; set; }
         public Nullable<int> AccountID { get; set; }
     

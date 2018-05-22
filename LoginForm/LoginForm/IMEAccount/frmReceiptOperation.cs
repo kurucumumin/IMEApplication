@@ -18,6 +18,7 @@ namespace LoginForm.IMEAccount
         IMEEntities IME = new IMEEntities();
         private object currentAccount;
 
+
         public frmReceiptOperation()
         {
             InitializeComponent();
@@ -56,7 +57,12 @@ namespace LoginForm.IMEAccount
             {
                 AccountSearch();
             }
+            if (cbReceipt.SelectedIndex == 3)
+            {
+                CurrentSearch();
+            }
         }
+
         #region CustomerSearch
         public void CustomerSearch()
         {
@@ -116,7 +122,7 @@ namespace LoginForm.IMEAccount
         {
 
             classAccount.accountsearchname = txtCustomerName.Text;
-            classSupplier.suppliersearchID = "";
+            classAccount.accountsearchID = "";
             FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch(currentAccount as DataSet.Account);
             this.Enabled = false;
             var result = form.ShowDialog();
@@ -139,6 +145,34 @@ namespace LoginForm.IMEAccount
         }
         #endregion
 
+        #region CurrentSearch
+        public void CurrentSearch()
+        {
+
+            classCurrent.currentsearchname= txtCustomerName.Text;
+            classCurrent.currentsearchID = "";
+            FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch(currentAccount as Current);
+            this.Enabled = false;
+            var result = form.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                currentAccount = form.current;
+            }
+            this.Enabled = true;
+            fillCurrent();
+        }
+
+        private void fillCurrent()
+        {
+            if (currentAccount != null)
+            {
+                txtCustomerName.Text = (currentAccount as Current).Name;
+                txtCustomerID.Text = (currentAccount as Current).CurrentID.ToString();
+            }
+        }
+        #endregion
+
         private void btnView_Click(object sender, EventArgs e)
         {
             if (cbReceipt.SelectedIndex == 0)
@@ -152,6 +186,10 @@ namespace LoginForm.IMEAccount
             if (cbReceipt.SelectedIndex == 2)
             {
                 AccountSearch();
+            }
+            if (cbReceipt.SelectedIndex == 3)
+            {
+                CurrentSearch();
             }
         }
 
@@ -309,6 +347,10 @@ namespace LoginForm.IMEAccount
                 {
                     AccountSearch();
                 }
+                if (cbReceipt.SelectedIndex == 3)
+                {
+                    CurrentSearch();
+                }
             }
         }
 
@@ -328,6 +370,11 @@ namespace LoginForm.IMEAccount
             {
                 groupBox1.Visible = true;
                 lblCustomer.Text = "Account Code/Name";
+            }
+            if (cbReceipt.SelectedIndex == 3)
+            {
+                groupBox1.Visible = true;
+                lblCustomer.Text = "Current Code/Name";
             }
         }
 
