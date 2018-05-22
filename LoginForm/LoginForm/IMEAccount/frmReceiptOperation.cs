@@ -16,9 +16,6 @@ namespace LoginForm.IMEAccount
     public partial class frmReceiptOperation : Form
     {
         IMEEntities IME = new IMEEntities();
-
-        private Customer customer;
-        private Supplier supplier;
         private object currentAccount;
 
         public frmReceiptOperation()
@@ -55,8 +52,12 @@ namespace LoginForm.IMEAccount
             {
                 SupplierSearch();
             }
+            if (cbReceipt.SelectedIndex == 2)
+            {
+                AccountSearch();
+            }
         }
-        
+        #region CustomerSearch
         public void CustomerSearch()
         {
             classQuotationAdd.customersearchname = txtCustomerName.Text;
@@ -80,34 +81,63 @@ namespace LoginForm.IMEAccount
                 txtCustomerID.Text = (currentAccount as Customer).ID;
             }
         }
+        #endregion
 
+        #region SupplierSearch
         public void SupplierSearch()
         {
 
             classSupplier.suppliersearchname = txtCustomerName.Text;
             classSupplier.suppliersearchID = "";
-            FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch(supplier);
+            FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch(currentAccount as Supplier);
             this.Enabled = false;
             var result = form.ShowDialog();
 
             if (result == DialogResult.OK)
             {
-                supplier = form.supplier;
+                currentAccount = form.supplier;
             }
             this.Enabled = true;
             fillSupplier();
         }
+
         private void fillSupplier()
         {
-            txtCustomerName.Text = classSupplier.supplierID;
-            txtCustomerID.Text = classSupplier.suppliername;
-
-            var c = IME.Suppliers.Where(a => a.s_name == txtCustomerName.Text).FirstOrDefault();
-            if (c != null)
+            if (currentAccount != null)
             {
-                txtCustomerName.Text = c.s_name;
+                txtCustomerName.Text = (currentAccount as Supplier).s_name;
+                txtCustomerID.Text = (currentAccount as Supplier).ID;
             }
         }
+        #endregion
+
+        #region AccountSearch
+        public void AccountSearch()
+        {
+
+            classAccount.accountsearchname = txtCustomerName.Text;
+            classSupplier.suppliersearchID = "";
+            FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch(currentAccount as DataSet.Account);
+            this.Enabled = false;
+            var result = form.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                currentAccount = form.account;
+            }
+            this.Enabled = true;
+            fillAccount();
+        }
+
+        private void fillAccount()
+        {
+            if (currentAccount != null)
+            {
+                txtCustomerName.Text = (currentAccount as DataSet.Account).Name;
+                txtCustomerID.Text = (currentAccount as DataSet.Account).ID.ToString();
+            }
+        }
+        #endregion
 
         private void btnView_Click(object sender, EventArgs e)
         {
@@ -118,6 +148,10 @@ namespace LoginForm.IMEAccount
             if (cbReceipt.SelectedIndex == 1)
             {
                 SupplierSearch();
+            }
+            if (cbReceipt.SelectedIndex == 2)
+            {
+                AccountSearch();
             }
         }
 
@@ -143,6 +177,7 @@ namespace LoginForm.IMEAccount
             }
         }
 
+        #region CustomerSave
         private void Save_SaleReceipt()
         {
             Customer c = currentAccount as Customer;
@@ -153,17 +188,17 @@ namespace LoginForm.IMEAccount
             UpdateAccountAmount(Convert.ToInt32(cmbAccount.SelectedValue), amount, true);
         }
 
-        
+
 
         private void UpdateAccountAmount(int AccountID, decimal amount, bool increaseValue)
         {
             IMEEntities db = new IMEEntities();
             DataSet.Account a = db.Accounts.Where(x => x.ID == AccountID).FirstOrDefault();
-            if (!increaseValue) amount *= -1; 
+            if (!increaseValue) amount *= -1;
             a.Value += amount;
             db.SaveChanges();
         }
-        
+
         private void Save_PurchaseReceipt()
         {
             Supplier s = currentAccount as Supplier;
@@ -212,11 +247,12 @@ namespace LoginForm.IMEAccount
             po.SupplierID = SupplierID;
             po.RepresentativeID = Services.Utils.getCurrentUser().WorkerID;
             po.CurrencyID = Convert.ToDecimal(cbCurrency.SelectedValue);
-            
+
 
             db.PurchaseOperations.Add(po);
             db.SaveChanges();
         }
+        #endregion
 
         private void UpdateSupplierDebitAmount(string SupplierID, decimal amount)
         {
@@ -269,8 +305,13 @@ namespace LoginForm.IMEAccount
                 {
                     SupplierSearch();
                 }
+                if (cbReceipt.SelectedIndex == 2)
+                {
+                    AccountSearch();
+                }
             }
         }
+
         private void cbReceipt_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbReceipt.SelectedIndex == 0)
@@ -283,6 +324,16 @@ namespace LoginForm.IMEAccount
                 groupBox1.Visible = true;
                 lblCustomer.Text = "Supplier Code/Name";
             }
+            if (cbReceipt.SelectedIndex == 2)
+            {
+                groupBox1.Visible = true;
+                lblCustomer.Text = "Account Code/Name";
+            }
+        }
+
+        private void cmbAccount_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbCurrency.SelectedValue = ((DataSet.Account)cmbAccount.SelectedItem).CurrencyID;
         }
     }
 

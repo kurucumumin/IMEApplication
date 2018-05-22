@@ -13,6 +13,7 @@ namespace LoginForm.QuotationModule
         IMEEntities IME = new IMEEntities();
         public Customer customer;
         public Supplier supplier;
+        public DataSet.Account account;
         public XmlCustomer xmlCustomer;
         bool fromXmlCustomer = false;
         public FormQuaotationCustomerSearch()
@@ -32,6 +33,13 @@ namespace LoginForm.QuotationModule
             InitializeComponent();
             this.supplier = supplier;
             SupplierSearch();
+        }
+
+        public FormQuaotationCustomerSearch(DataSet.Account account)
+        {
+            InitializeComponent();
+            this.account = account;
+            AccountSearch();
         }
 
         public FormQuaotationCustomerSearch(XmlCustomer customer)
@@ -78,7 +86,19 @@ namespace LoginForm.QuotationModule
             List<Supplier> c = classSupplier.SupplierSearch();
             CustomerSearchGrid.DataSource = c;
         }
-            
+
+        public void AccountSearch()
+        {
+            this.Text = "Account Search";
+            label1.Text = "Account Code";
+            label2.Text = "Account Name";
+            button1.Text = "Add New Account";
+            CustomerCode.Text = classAccount.accountsearchID.ToString();
+            CustomerName.Text = classAccount.accountsearchname;
+            List<DataSet.Account> c = classAccount.AccountSearch();
+            CustomerSearchGrid.DataSource = c;
+        }
+
         private void CustomerSearchGrid_DoubleClick(object sender, EventArgs e)
         {
             CustomerSearchGrid.ClearSelection();
