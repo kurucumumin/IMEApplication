@@ -207,7 +207,7 @@ namespace LoginForm.IMEAccount
                     Save_Virement();
                     break;
                 case (int)eReceiptTypes.ServiceReceipt:
-                    Save_ServiceReceipt();
+                    Save_ExpenseReceipt();
                     break;
             }
         }
@@ -324,11 +324,44 @@ namespace LoginForm.IMEAccount
         }
 
         #endregion
-
-        private void Save_ServiceReceipt()
+        #region ReceiptOperation
+        private void Save_ExpenseReceipt()
         {
+            Current c = currentAccount as Current;
+            decimal amount = Convert.ToDecimal(txtAmount.Text);
 
+            Save_Receipt(c.CurrentID);
+            //UpdateCurrentDebitAmount(c.CurrentID, amount);
+            UpdateAccountAmount(Convert.ToInt32(cmbAccount.SelectedValue), amount, false);
         }
+
+        private void Save_Receipt(int CurrentID)
+        {
+            IMEEntities db = new IMEEntities();
+            Receipt r = new Receipt();
+
+            r.ReceiptTypeID = Convert.ToInt32(cbReceipt.SelectedValue);
+            r.Amount = Convert.ToDecimal(txtAmount.Text);
+            r.CurrencyID = Convert.ToInt32(cbCurrency.SelectedValue);
+            r.Date = Convert.ToDateTime(db.CurrentDate().FirstOrDefault());
+            r.CurrentID = CurrentID;
+            r.Description = txtDescription.Text;
+            r.RepresentativeID = Utils.getCurrentUser().WorkerID;
+
+            db.Receipts.Add(r);
+            db.SaveChanges();
+        }
+
+        //private void UpdateCurrentDebitAmount(int CurrentID, decimal amount)
+        //{
+        //    IMEEntities db = new IMEEntities();
+        //    Current c = db.Currents.Where(x => x.CurrentID == CurrentID).FirstOrDefault();
+        //    if (c.Debit == null) c.Debit = 0;
+        //    c.Total -= amount;
+
+        //    db.SaveChanges();
+        //}
+        #endregion
 
         private enum eReceiptTypes
         {

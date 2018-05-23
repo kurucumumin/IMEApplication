@@ -14,13 +14,19 @@ namespace LoginForm.DataSet
     
     public partial class Current
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Current()
+        {
+            this.Receipts = new HashSet<Receipt>();
+        }
+    
         public int CurrentID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public int CurrentTypeID { get; set; }
-        public Nullable<decimal> Credit { get; set; }
-        public Nullable<decimal> Debit { get; set; }
     
         public virtual CurrentType CurrentType { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Receipt> Receipts { get; set; }
     }
 }

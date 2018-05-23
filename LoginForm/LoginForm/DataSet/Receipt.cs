@@ -21,11 +21,11 @@ namespace LoginForm.DataSet
         public decimal CurrencyID { get; set; }
         public System.DateTime Date { get; set; }
         public int CurrentID { get; set; }
-        public int CurrentType { get; set; }
         public string Description { get; set; }
         public int RepresentativeID { get; set; }
     
         public virtual Currency Currency { get; set; }
+        public virtual Current Current { get; set; }
         public virtual ReceiptType ReceiptType { get; set; }
         public virtual Worker Worker { get; set; }
     }
