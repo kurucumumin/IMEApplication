@@ -359,8 +359,6 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="CurrentTypeID" Type="int" Nullable="false" />
-          <Property Name="Credit" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="Debit" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="CurrentType">
           <Key>
@@ -11678,8 +11676,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="CurrentTypeID" Type="Int32" Nullable="false" />
-          <Property Name="Credit" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="Debit" Type="Decimal" Precision="18" Scale="0" />
           <NavigationProperty Name="CurrentType" Relationship="Self.FK__Current__Current__1BDDFBCD" FromRole="Current" ToRole="CurrentType" />
           <NavigationProperty Name="Receipts" Relationship="Self.FK__Receipt__Current__30D918B3" FromRole="Current" ToRole="Receipt" />
         </EntityType>
@@ -25608,8 +25604,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="CurrentTypeID" ColumnName="CurrentTypeID" />
-                <ScalarProperty Name="Credit" ColumnName="Credit" />
-                <ScalarProperty Name="Debit" ColumnName="Debit" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
