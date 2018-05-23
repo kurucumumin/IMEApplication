@@ -17,6 +17,7 @@ namespace LoginForm.QuotationModule
         public Current current;
         public XmlCustomer xmlCustomer;
         bool fromXmlCustomer = false;
+        object choosenObject;
 
         public FormQuaotationCustomerSearch()
         {
@@ -257,10 +258,34 @@ namespace LoginForm.QuotationModule
         {
             if (e.KeyCode == Keys.Enter)
             {
-                classQuotationAdd.customersearchID = CustomerCode.Text;
-                classQuotationAdd.customersearchname = "";
-                List<Customer> c = classQuotationAdd.CustomerSearch();
-                CustomerSearchGrid.DataSource = c;
+                if (this.Text == "Customer Search")
+                {
+                    classQuotationAdd.customersearchID = CustomerCode.Text;
+                    classQuotationAdd.customersearchname = "";
+                    List<Customer> c = classQuotationAdd.CustomerSearch();
+                    CustomerSearchGrid.DataSource = c;
+                }
+                if (this.Text == "Supplier Search")
+                {
+                    classSupplier.suppliersearchID = CustomerCode.Text;
+                    classSupplier.suppliersearchname = "";
+                    List<Supplier> c = classSupplier.SupplierSearch();
+                    CustomerSearchGrid.DataSource = c;
+                }
+                if (this.Text == "Account Search")
+                {
+                    classAccount.accountsearchID = CustomerCode.Text;
+                    classAccount.accountsearchname = "";
+                    List<DataSet.Account> c = classAccount.AccountSearch();
+                    CustomerSearchGrid.DataSource = c;
+                }
+                if (this.Text == "Current Search")
+                {
+                    classCurrent.currentsearchID = CustomerCode.Text;
+                    classCurrent.currentsearchname= "";
+                    List<Current> c = classCurrent.CurrentSearch();
+                    CustomerSearchGrid.DataSource = c;
+                }
             }
         }
 
@@ -268,10 +293,34 @@ namespace LoginForm.QuotationModule
         {
             if (e.KeyCode == Keys.Enter)
             {
-                classQuotationAdd.customersearchID = "";
-                classQuotationAdd.customersearchname = CustomerName.Text;
-                List<Customer> c = classQuotationAdd.CustomerSearch();
-                CustomerSearchGrid.DataSource = c;
+                if (this.Text == "Customer Search")
+                {
+                    classQuotationAdd.customersearchID = CustomerCode.Text;
+                    classQuotationAdd.customersearchname = "";
+                    List<Customer> c = classQuotationAdd.CustomerSearch();
+                    CustomerSearchGrid.DataSource = c;
+                }
+                if (this.Text == "Supplier Search")
+                {
+                    classSupplier.suppliersearchID = CustomerCode.Text;
+                    classSupplier.suppliersearchname = "";
+                    List<Supplier> c = classSupplier.SupplierSearch();
+                    CustomerSearchGrid.DataSource = c;
+                }
+                if (this.Text == "Account Search")
+                {
+                    classAccount.accountsearchID = CustomerCode.Text;
+                    classAccount.accountsearchname = "";
+                    List<DataSet.Account> c = classAccount.AccountSearch();
+                    CustomerSearchGrid.DataSource = c;
+                }
+                if (this.Text == "Current Search")
+                {
+                    classCurrent.currentsearchID = CustomerCode.Text;
+                    classCurrent.currentsearchname = "";
+                    List<Current> c = classCurrent.CurrentSearch();
+                    CustomerSearchGrid.DataSource = c;
+                }
             }
         }
 
