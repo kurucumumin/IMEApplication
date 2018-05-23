@@ -224,6 +224,15 @@ namespace LoginForm.IMEAccount
             db.SaveChanges();
         }
 
+        private void UpdateSupplierDebitAmount(string SupplierID, decimal amount)
+        {
+
+            Supplier s = db.Suppliers.Where(x => x.ID == SupplierID).FirstOrDefault();
+            if (s.Debit == null) s.Debit = 0;
+            s.Debit -= amount;
+
+            db.SaveChanges();
+        }
         #region SaleInvoice
         private void Save_SaleReceipt()
         {
@@ -285,18 +294,6 @@ namespace LoginForm.IMEAccount
 
 
             db.PurchaseOperations.Add(po);
-            db.SaveChanges();
-        }
-        #endregion
-
-        private void UpdateSupplierDebitAmount(string SupplierID, decimal amount)
-        {
-            IMEEntities db = new IMEEntities();
-
-            Supplier s = db.Suppliers.Where(x => x.ID == SupplierID).FirstOrDefault();
-            if (s.Debit == null) s.Debit = 0;
-            s.Debit -= amount;
-
             db.SaveChanges();
         }
         #endregion
