@@ -288,7 +288,7 @@ namespace LoginForm.IMEAccount
             db.SaveChanges();
         }
         #endregion
-
+        #region SupplierDebitAmount
         private void UpdateSupplierDebitAmount(string SupplierID, decimal amount)
         {
             IMEEntities db = new IMEEntities();
