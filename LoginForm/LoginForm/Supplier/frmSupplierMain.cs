@@ -48,6 +48,11 @@ namespace LoginForm
             fromBillFromCustomer = true;
         }
 
+        public frmSupplierMain(Boolean buttonEnabled)
+        {
+            InitializeComponent();
+        }
+
         public frmSupplierMain()
         {
             InitializeComponent();

@@ -11,6 +11,8 @@ namespace LoginForm.Services
     {
         public static string currentsearchID;
         public static string currentsearchname;
+        public static string currentID;
+        public static string currentname;
         public static List<Current> CurrentSearch()
         {
             IMEEntities IME = new IMEEntities();

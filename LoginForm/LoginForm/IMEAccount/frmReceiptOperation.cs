@@ -76,6 +76,10 @@ namespace LoginForm.IMEAccount
             {
                 currentAccount = form.customer;
             }
+            else
+            {
+                currentAccount = null;
+            }
             this.Enabled = true;
             fillCustomer();
         }
@@ -102,6 +106,10 @@ namespace LoginForm.IMEAccount
             if (result == DialogResult.OK)
             {
                 currentAccount = form.supplier;
+            }
+            else
+            {
+                currentAccount = null;
             }
             this.Enabled = true;
             fillSupplier();
@@ -131,6 +139,10 @@ namespace LoginForm.IMEAccount
             {
                 currentAccount = form.account;
             }
+            else
+            {
+                currentAccount = null;
+            }
             this.Enabled = true;
             fillAccount();
         }
@@ -158,6 +170,10 @@ namespace LoginForm.IMEAccount
             if (result == DialogResult.OK)
             {
                 currentAccount = form.current;
+            }
+            else
+            {
+                currentAccount = null;
             }
             this.Enabled = true;
             fillCurrent();
@@ -220,7 +236,7 @@ namespace LoginForm.IMEAccount
             a.Value += amount;
             db.SaveChanges();
         }
-        
+
         #region SaleInvoice
         private void Save_SaleReceipt()
         {

@@ -11,6 +11,8 @@ namespace LoginForm.Services
     {
         public static string accountsearchID;
         public static string accountsearchname;
+        public static string accountID;
+        public static string accountname;
         public static List<DataSet.Account> AccountSearch()
         {
             IMEEntities IME = new IMEEntities();
