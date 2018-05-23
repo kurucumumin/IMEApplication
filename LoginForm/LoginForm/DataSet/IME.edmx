@@ -1525,7 +1525,6 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="CurrencyID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="Date" Type="datetime" Nullable="false" />
           <Property Name="CurrentID" Type="int" Nullable="false" />
-          <Property Name="CurrentType" Type="int" Nullable="false" />
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="RepresentativeID" Type="int" Nullable="false" />
         </EntityType>
@@ -5201,6 +5200,18 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Principal>
             <Dependent Role="Receipt">
               <PropertyRef Name="CurrencyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Receipt__Current__30D918B3">
+          <End Role="Current" Type="Self.Current" Multiplicity="1" />
+          <End Role="Receipt" Type="Self.Receipt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Current">
+              <PropertyRef Name="CurrentID" />
+            </Principal>
+            <Dependent Role="Receipt">
+              <PropertyRef Name="CurrentID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -10604,6 +10615,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="Currency" EntitySet="Currency" />
             <End Role="Receipt" EntitySet="Receipt" />
           </AssociationSet>
+          <AssociationSet Name="FK__Receipt__Current__30D918B3" Association="Self.FK__Receipt__Current__30D918B3">
+            <End Role="Current" EntitySet="Current" />
+            <End Role="Receipt" EntitySet="Receipt" />
+          </AssociationSet>
           <AssociationSet Name="FK__Receipt__Receipt__20A2B0EA" Association="Self.FK__Receipt__Receipt__20A2B0EA">
             <End Role="ReceiptType" EntitySet="ReceiptType" />
             <End Role="Receipt" EntitySet="Receipt" />
@@ -11666,6 +11681,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="Credit" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="Debit" Type="Decimal" Precision="18" Scale="0" />
           <NavigationProperty Name="CurrentType" Relationship="Self.FK__Current__Current__1BDDFBCD" FromRole="Current" ToRole="CurrentType" />
+          <NavigationProperty Name="Receipts" Relationship="Self.FK__Receipt__Current__30D918B3" FromRole="Current" ToRole="Receipt" />
         </EntityType>
         <EntityType Name="CurrentType">
           <Key>
@@ -13156,10 +13172,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="CurrencyID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="CurrentID" Type="Int32" Nullable="false" />
-          <Property Name="CurrentType" Type="Int32" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="RepresentativeID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Currency" Relationship="Self.FK__Receipt__Currenc__2196D523" FromRole="Receipt" ToRole="Currency" />
+          <NavigationProperty Name="Current" Relationship="Self.FK__Receipt__Current__30D918B3" FromRole="Receipt" ToRole="Current" />
           <NavigationProperty Name="ReceiptType" Relationship="Self.FK__Receipt__Receipt__20A2B0EA" FromRole="Receipt" ToRole="ReceiptType" />
           <NavigationProperty Name="Worker" Relationship="Self.FK__Receipt__Represe__228AF95C" FromRole="Receipt" ToRole="Worker" />
         </EntityType>
@@ -15504,6 +15520,18 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Principal>
             <Dependent Role="Current">
               <PropertyRef Name="CurrentTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Receipt__Current__30D918B3">
+          <End Role="Current" Type="Self.Current" Multiplicity="1" />
+          <End Role="Receipt" Type="Self.Receipt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Current">
+              <PropertyRef Name="CurrentID" />
+            </Principal>
+            <Dependent Role="Receipt">
+              <PropertyRef Name="CurrentID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -19438,6 +19466,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <AssociationSet Name="FK__Current__Current__1BDDFBCD" Association="Self.FK__Current__Current__1BDDFBCD">
             <End Role="CurrentType" EntitySet="CurrentTypes" />
             <End Role="Current" EntitySet="Currents" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Receipt__Current__30D918B3" Association="Self.FK__Receipt__Current__30D918B3">
+            <End Role="Current" EntitySet="Currents" />
+            <End Role="Receipt" EntitySet="Receipts" />
           </AssociationSet>
           <AssociationSet Name="FK__Customer__accoun__6EF57B66" Association="Self.FK__Customer__accoun__6EF57B66">
             <End Role="Worker" EntitySet="Workers" />
@@ -26818,7 +26850,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="CurrencyID" ColumnName="CurrencyID" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="CurrentID" ColumnName="CurrentID" />
-                <ScalarProperty Name="CurrentType" ColumnName="CurrentType" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="RepresentativeID" ColumnName="RepresentativeID" />
               </MappingFragment>

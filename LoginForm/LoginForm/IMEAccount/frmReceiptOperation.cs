@@ -76,6 +76,10 @@ namespace LoginForm.IMEAccount
             {
                 currentAccount = form.customer;
             }
+            else
+            {
+                currentAccount = null;
+            }
             this.Enabled = true;
             fillCustomer();
         }
@@ -102,6 +106,10 @@ namespace LoginForm.IMEAccount
             if (result == DialogResult.OK)
             {
                 currentAccount = form.supplier;
+            }
+            else
+            {
+                currentAccount = null;
             }
             this.Enabled = true;
             fillSupplier();
@@ -131,6 +139,10 @@ namespace LoginForm.IMEAccount
             {
                 currentAccount = form.account;
             }
+            else
+            {
+                currentAccount = null;
+            }
             this.Enabled = true;
             fillAccount();
         }
@@ -158,6 +170,10 @@ namespace LoginForm.IMEAccount
             if (result == DialogResult.OK)
             {
                 currentAccount = form.current;
+            }
+            else
+            {
+                currentAccount = null;
             }
             this.Enabled = true;
             fillCurrent();
@@ -214,7 +230,7 @@ namespace LoginForm.IMEAccount
                     break;
             }
         }
-
+         
         private void UpdateAccountAmount(int AccountID, decimal amount, bool increaseValue)
         {
             IMEEntities db = new IMEEntities();
@@ -407,6 +423,8 @@ namespace LoginForm.IMEAccount
                 groupBox1.Visible = true;
                 lblCustomer.Text = "Current Code/Name";
             }
+            txtCustomerName.Text = "";
+            txtCustomerID.Text = "";
         }
 
         private void cmbAccount_SelectedIndexChanged(object sender, EventArgs e)
