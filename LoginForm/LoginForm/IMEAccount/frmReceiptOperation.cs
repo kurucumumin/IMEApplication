@@ -209,9 +209,6 @@ namespace LoginForm.IMEAccount
                 case (int)eReceiptTypes.ServiceReceipt:
                     Save_ServiceReceipt();
                     break;
-                case (int)eReceiptTypes.Others:
-                    Save_Others();
-                    break;
             }
         }
 
@@ -223,17 +220,7 @@ namespace LoginForm.IMEAccount
             a.Value += amount;
             db.SaveChanges();
         }
-
-        private void UpdateSupplierDebitAmount(string SupplierID, decimal amount)
-        {
-            IMEEntities db = new IMEEntities();
-
-            Supplier s = db.Suppliers.Where(x => x.ID == SupplierID).FirstOrDefault();
-            if (s.Debit == null) s.Debit = 0;
-            s.Debit -= amount;
-
-            db.SaveChanges();
-        }
+        
         #region SaleInvoice
         private void Save_SaleReceipt()
         {
@@ -297,19 +284,18 @@ namespace LoginForm.IMEAccount
             db.PurchaseOperations.Add(po);
             db.SaveChanges();
         }
+        private void UpdateSupplierDebitAmount(string SupplierID, decimal amount)
+        {
+            IMEEntities db = new IMEEntities();
+
+            Supplier s = db.Suppliers.Where(x => x.ID == SupplierID).FirstOrDefault();
+            if (s.Debit == null) s.Debit = 0;
+            s.Debit -= amount;
+
+            db.SaveChanges();
+        }
+
         #endregion
-        //#region SupplierDebitAmount
-        //private void UpdateSupplierDebitAmount(string SupplierID, decimal amount)
-        //{
-        //    IMEEntities db = new IMEEntities();
-
-        //    Supplier s = db.Suppliers.Where(x => x.ID == SupplierID).FirstOrDefault();
-        //    if (s.Debit == null) s.Debit = 0;
-        //    s.Debit -= amount;
-
-        //    db.SaveChanges();
-        //}
-        //#endregion
         #region AccountTransaction
         private void Save_Virement()
         {
@@ -343,18 +329,13 @@ namespace LoginForm.IMEAccount
         {
 
         }
-        private void Save_Others()
-        {
-
-        }
 
         private enum eReceiptTypes
         {
             SaleReceipt = 0,
             PurchaseReceipt = 1,
             Virement = 2,
-            ServiceReceipt = 3,
-            Others = 4
+            ServiceReceipt = 3
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -389,24 +370,28 @@ namespace LoginForm.IMEAccount
         {
             if (cbReceipt.SelectedIndex == 0)
             {
-                groupBox1.Visible = true;
                 lblCustomer.Text = "Customer Code/Name";
             }
             if (cbReceipt.SelectedIndex == 1)
             {
-                groupBox1.Visible = true;
                 lblCustomer.Text = "Supplier Code/Name";
             }
             if (cbReceipt.SelectedIndex == 2)
             {
-                groupBox1.Visible = true;
                 lblCustomer.Text = "Account Code/Name";
             }
             if (cbReceipt.SelectedIndex == 3)
             {
-                groupBox1.Visible = true;
                 lblCustomer.Text = "Current Code/Name";
             }
+            if (cbReceipt.SelectedIndex >= 0)
+            {
+                groupBox1.Visible = true;
+            }
+            txtCustomerID.Clear();
+            txtCustomerName.Clear();
+
+
         }
 
         private void cmbAccount_SelectedIndexChanged(object sender, EventArgs e)
