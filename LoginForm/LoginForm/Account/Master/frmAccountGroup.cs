@@ -1043,10 +1043,5 @@ namespace LoginForm
         }
 
         #endregion
-
-        private void dgvAccountGroup_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
     }
 }
