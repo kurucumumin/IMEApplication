@@ -226,6 +226,7 @@ namespace LoginForm.IMEAccount
 
         private void UpdateSupplierDebitAmount(string SupplierID, decimal amount)
         {
+            IMEEntities db = new IMEEntities();
 
             Supplier s = db.Suppliers.Where(x => x.ID == SupplierID).FirstOrDefault();
             if (s.Debit == null) s.Debit = 0;
