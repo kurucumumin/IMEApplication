@@ -142,11 +142,7 @@ namespace LoginForm.IMEAccount
                     break;
             }
         }
-
         
-
-        
-
         private void UpdateAccountAmount(int AccountID, decimal amount, bool increaseValue)
         {
             IMEEntities db = new IMEEntities();
@@ -156,8 +152,6 @@ namespace LoginForm.IMEAccount
             db.SaveChanges();
         }
         
-        
-
         #region SaleInvoice
         private void Save_SaleReceipt()
         {
@@ -176,7 +170,7 @@ namespace LoginForm.IMEAccount
 
             so.CustomerID = CustomerID;
             so.Amount = Convert.ToDecimal(txtAmount.Text);
-            so.RepreresentetiveID = Services.Utils.getCurrentUser().WorkerID;
+            so.RepresentativeID = Services.Utils.getCurrentUser().WorkerID;
             so.CurrencyID = Convert.ToDecimal(cbCurrency.SelectedValue);
             so.AccountID = Convert.ToInt32(cmbAccount.SelectedValue);
 
@@ -236,13 +230,30 @@ namespace LoginForm.IMEAccount
         #region AccountTransaction
         private void Save_Virement()
         {
-            DataSet.Account c = currentAccount as DataSet.Account;
+            DataSet.Account a = currentAccount as DataSet.Account;
             decimal amount = Convert.ToDecimal(txtAmount.Text);
 
-            Save_AccountOperation(c.ID);
-            UpdateAccountAmount(Convert.ToInt32(cmbAccount.SelectedValue), amount, false);
+            Save_AccountOperation(a.ID);
+            UpdateAccountAmount(a.ID, amount, false);
             UpdateAccountAmount(Convert.ToInt32(cmbAccount.SelectedValue), amount, true);
         }
+
+        private void Save_AccountOperation(int AccountID)
+        {
+            IMEEntities db = new IMEEntities();
+            AccountOperation ao = new AccountOperation();
+
+            ao.FromAccountID = AccountID;
+            ao.Amount = Convert.ToDecimal(txtAmount.Text);
+            ao.Date = Convert.ToDateTime(db.CurrentDate().FirstOrDefault());
+            ao.Description = txtDescription.Text;
+            ao.ToAccountID = Convert.ToInt32(cmbAccount.SelectedValue);
+            ao.RepresentativeID = Utils.getCurrentUser().WorkerID;
+
+            db.AccountOperations.Add(ao);
+            db.SaveChanges();
+        }
+
         #endregion
 
         private void Save_ServiceReceipt()

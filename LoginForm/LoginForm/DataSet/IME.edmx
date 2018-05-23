@@ -20720,7 +20720,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <Parameter Name="accountGroupId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="AccountLedgerViewForAdditionalCost" ReturnType="Collection(IMEModel.AccountLedgerViewForAdditionalCost_Result)" />
-          <FunctionImport Name="AccountMainDataGridFiller" />
+          <FunctionImport Name="AccountMainDataGridFiller" ReturnType="Collection(IMEModel.AccountMainDataGridFiller_Result)" />
           <FunctionImport Name="AdditionalCostAdd">
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
             <Parameter Name="voucherNo" Mode="In" Type="String" />
@@ -23112,6 +23112,16 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
         <ComplexType Name="AccountLedgerViewForAdditionalCost_Result">
           <Property Type="String" Name="ledgerName" Nullable="true" />
           <Property Type="Decimal" Name="ledgerId" Nullable="false" Precision="18" Scale="0" />
+        </ComplexType>
+        <ComplexType Name="AccountMainDataGridFiller_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Customer" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Amount" Nullable="true" Precision="20" Scale="4" />
+          <Property Type="String" Name="Currency" Nullable="true" />
+          <Property Type="String" Name="Representative" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Description" Nullable="true" />
+          <Property Type="String" Name="Supplier" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="IsSalesOperations" Nullable="false" />
         </ComplexType>
         <ComplexType Name="AdditionalCostViewAllByVoucherTypeIdAndVoucherNo_Result">
           <Property Type="Decimal" Name="additionalCostId" Nullable="false" Precision="18" Scale="0" />
@@ -28162,7 +28172,20 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="AccountMainDataGridFiller" FunctionName="IMEModel.Store.AccountMainDataGridFiller" />
+          <FunctionImportMapping FunctionImportName="AccountMainDataGridFiller" FunctionName="IMEModel.Store.AccountMainDataGridFiller">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.AccountMainDataGridFiller_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Customer" ColumnName="Customer" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="Representative" ColumnName="Representative" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Supplier" ColumnName="Supplier" />
+                <ScalarProperty Name="IsSalesOperations" ColumnName="IsSalesOperations" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="AdditionalCostAdd" FunctionName="IMEModel.Store.AdditionalCostAdd" />
           <FunctionImportMapping FunctionImportName="AdditionalCostDelete" FunctionName="IMEModel.Store.AdditionalCostDelete" />
           <FunctionImportMapping FunctionImportName="AdditionalCostEdit" FunctionName="IMEModel.Store.AdditionalCostEdit" />
