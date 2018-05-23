@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="edb5c4a9cc7b41b8a9a8aa407037b1cf" Name="Diagram1">
+      <Diagram DiagramId="7502bc0b62804997a6ccdc12a1b3746c" Name="Diagram1">
         <EntityTypeShape EntityType="IMEModel.Account" Width="1.5" PointX="12" PointY="82.625" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.AccountGroup" Width="1.5" PointX="12.75" PointY="71.125" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.AccountLedger" Width="1.5" PointX="15" PointY="69.625" IsExpanded="true" />
@@ -148,7 +148,7 @@
         <EntityTypeShape EntityType="IMEModel.SuffixPrefix" Width="1.5" PointX="15" PointY="125.125" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.SuperDisk" Width="1.5" PointX="14.75" PointY="13.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.SuperDiskP" Width="1.5" PointX="6.75" PointY="15.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.Supplier" Width="1.5" PointX="6" PointY="107.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.Supplier" Width="1.5" PointX="6" PointY="107.5" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.SupplierAddress" Width="1.5" PointX="8.25" PointY="120.25" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.SupplierBank" Width="1.5" PointX="3.75" PointY="117.875" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.SupplierCategory" Width="1.5" PointX="3.75" PointY="125.25" IsExpanded="true" />

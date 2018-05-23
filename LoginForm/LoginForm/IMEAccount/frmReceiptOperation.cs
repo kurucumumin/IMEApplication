@@ -17,8 +17,7 @@ namespace LoginForm.IMEAccount
     {
         IMEEntities IME = new IMEEntities();
         private object currentAccount;
-
-
+        
         public frmReceiptOperation()
         {
             InitializeComponent();
@@ -160,9 +159,8 @@ namespace LoginForm.IMEAccount
         #region CurrentSearch
         public void CurrentSearch()
         {
-
-            classCurrent.currentsearchname= txtCustomerName.Text;
-            classCurrent.currentsearchID = "";
+            classCurrent.CurrentSearchName = txtCustomerName.Text;
+            classCurrent.CurrentSearchID = "";
             FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch(currentAccount as Current);
             this.Enabled = false;
             var result = form.ShowDialog();
@@ -211,20 +209,23 @@ namespace LoginForm.IMEAccount
 
         private void SaveFunction()
         {
-            switch (cbReceipt.SelectedIndex)
+            if (!HasEmptyArea())
             {
-                case (int)eReceiptTypes.SaleReceipt:
-                    Save_SaleReceipt();
-                    break;
-                case (int)eReceiptTypes.PurchaseReceipt:
-                    Save_PurchaseReceipt();
-                    break;
-                case (int)eReceiptTypes.Virement:
-                    Save_Virement();
-                    break;
-                case (int)eReceiptTypes.ServiceReceipt:
-                    Save_ExpenseReceipt();
-                    break;
+                switch (cbReceipt.SelectedIndex)
+                {
+                    case (int)eReceiptTypes.SaleReceipt:
+                        Save_SaleReceipt();
+                        break;
+                    case (int)eReceiptTypes.PurchaseReceipt:
+                        Save_PurchaseReceipt();
+                        break;
+                    case (int)eReceiptTypes.Virement:
+                        Save_Virement();
+                        break;
+                    case (int)eReceiptTypes.ServiceReceipt:
+                        Save_ExpenseReceipt();
+                        break;
+                }
             }
         }
 
@@ -446,6 +447,48 @@ namespace LoginForm.IMEAccount
         private void cmbAccount_SelectedIndexChanged(object sender, EventArgs e)
         {
             cbCurrency.SelectedValue = ((DataSet.Account)cmbAccount.SelectedItem).CurrencyID;
+        }
+
+        private bool HasEmptyArea()
+        {
+            List<string> ErrorLog = new List<string>();
+
+            if (txtCustomerID.Text.Trim() == String.Empty)
+            {
+                ErrorLog.Add("You should choose a current account");
+            }
+            if (cmbAccount.SelectedIndex <= 0)
+            {
+                ErrorLog.Add("You should choose an account!");
+            }
+            if (String.IsNullOrEmpty(txtAmount.Text))
+            {
+                ErrorLog.Add("Amount must not be empty!");
+            }
+            else if (!Decimal.TryParse(txtAmount.Text,out decimal a))
+            {
+                ErrorLog.Add("Amount text is not valid!");
+            }
+
+            string ErrorStringContact = String.Empty;
+            for (int i = 0; i < ErrorLog.Count; i++)
+            {
+                ErrorStringContact += ErrorLog[i];
+                if (i != ErrorLog.Count - 1)
+                {
+                    ErrorStringContact += "\n";
+                }
+            }
+
+            if (ErrorLog.Count != 0)
+            {
+                MessageBox.Show(ErrorStringContact, "Empty Areas");
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 

@@ -111,18 +111,19 @@ namespace LoginForm.QuotationModule
             label1.Text = "Current Code";
             label2.Text = "Current Name";
             button1.Visible = false;
-            CustomerCode.Text = classCurrent.currentsearchID.ToString();
-            CustomerName.Text = classCurrent.currentsearchname;
+            CustomerCode.Text = classCurrent.CurrentSearchID.ToString();
+            CustomerName.Text = classCurrent.CurrentSearchName;
             List<Current> c = classCurrent.CurrentSearch();
             CustomerSearchGrid.DataSource = c;
         }
 
         private void CustomerSearchGrid_DoubleClick(object sender, EventArgs e)
         {
+
+            CustomerSearchGrid.ClearSelection();
             #region Customer Search
             if (this.Text == "Customer Search")
             {
-                CustomerSearchGrid.ClearSelection();
                 string cID = CustomerSearchGrid.CurrentRow.Cells["ID"].Value.ToString();
                 customer = IME.Customers.Where(a => a.ID == cID).FirstOrDefault();
                 CustomerCode.Text = customer.ID;
@@ -138,7 +139,6 @@ namespace LoginForm.QuotationModule
             #region Supplier Search
             if (this.Text == "Supplier Search")
             {
-                CustomerSearchGrid.ClearSelection();
                 string cID = CustomerSearchGrid.CurrentRow.Cells["ID"].Value.ToString();
                 supplier = IME.Suppliers.Where(a => a.ID == cID).FirstOrDefault();
                 CustomerCode.Text = supplier.ID;
@@ -154,7 +154,6 @@ namespace LoginForm.QuotationModule
             #region Account Search
             if (this.Text == "Account Search")
             {
-                CustomerSearchGrid.ClearSelection();
                 int cID = Convert.ToInt32(CustomerSearchGrid.CurrentRow.Cells["ID"].Value.ToString());
                 account = IME.Accounts.Where(a => a.ID == cID).FirstOrDefault();
                 CustomerCode.Text = account.ID.ToString();
@@ -171,7 +170,7 @@ namespace LoginForm.QuotationModule
             if (this.Text == "Current Search")
             {
                 CustomerSearchGrid.ClearSelection();
-                int cID = Convert.ToInt32(CustomerSearchGrid.CurrentRow.Cells["ID"].Value.ToString());
+                int cID = Convert.ToInt32(CustomerSearchGrid.CurrentRow.Cells["CurrentID"].Value.ToString());
                 current = IME.Currents.Where(a => a.CurrentID == cID).FirstOrDefault();
                 CustomerCode.Text = current.CurrentID.ToString();
                 CustomerName.Text = current.Name;
