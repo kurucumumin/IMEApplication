@@ -447,6 +447,7 @@ namespace LoginForm.IMEAccount
         {
             cbCurrency.SelectedValue = ((DataSet.Account)cmbAccount.SelectedItem).CurrencyID;
         }
+
     }
 
 }
