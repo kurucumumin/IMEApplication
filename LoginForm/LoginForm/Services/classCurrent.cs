@@ -9,21 +9,17 @@ namespace LoginForm.Services
 {
     class classCurrent
     {
-        public static string CurrentSearchID;
-        public static string CurrentSearchName;
-        public static string currentID;
-        public static string currentname;
-        public static List<Current> CurrentSearch()
-        {
+        public static List<Current> CurrentSearch(string CurrentSearchName,string CurrentSearchID)
+        {   
             IMEEntities IME = new IMEEntities();
             List<Current> c = new List<Current>();
             if (CurrentSearchName == "")
             {
-                c = IME.Currents.Where(a => a.CurrentID.ToString().Contains(CurrentSearchID)).ToList().Where(a => String.IsNullOrEmpty(a.Name)).ToList();
+                c = IME.Currents.Where(a => a.CurrentID.ToString().Contains(CurrentSearchID)).ToList().Where(a => !String.IsNullOrEmpty(a.Name)).ToList();
             }
             else
             {
-                c = IME.Currents.Where(a => a.CurrentID.ToString().Contains(CurrentSearchName)).ToList().Where(a => a.Name != null).Where(b => b.Name != string.Empty).ToList();
+                c = IME.Currents.Where(a => a.Name.Contains(CurrentSearchName)).ToList().Where(a => a.Name != null).Where(b => b.Name != string.Empty).ToList();
             }
             return c;
         }

@@ -196,6 +196,7 @@
             this.cmbAccount.Name = "cmbAccount";
             this.cmbAccount.Size = new System.Drawing.Size(514, 26);
             this.cmbAccount.TabIndex = 8930;
+            this.cmbAccount.SelectedIndexChanged += new System.EventHandler(this.cmbAccount_SelectedIndexChanged);
             // 
             // label4
             // 

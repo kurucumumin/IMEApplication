@@ -52,11 +52,12 @@ namespace LoginForm.QuotationModule
             AccountSearch();
         }
 
-        public FormQuaotationCustomerSearch(Current current)
+        public FormQuaotationCustomerSearch(Current current, string searchName)
         {
             InitializeComponent();
             this.current = current;
-            CurrentSearch();
+            CustomerName.Text = searchName;
+            CurrentSearch(searchName);
         }
 
         public void CustomerSearch()
@@ -105,15 +106,15 @@ namespace LoginForm.QuotationModule
             CustomerSearchGrid.DataSource = c;
         }
 
-        public void CurrentSearch()
+        public void CurrentSearch(string name)
         {
             this.Text = "Current Search";
             label1.Text = "Current Code";
             label2.Text = "Current Name";
             button1.Visible = false;
-            CustomerCode.Text = classCurrent.CurrentSearchID.ToString();
-            CustomerName.Text = classCurrent.CurrentSearchName;
-            List<Current> c = classCurrent.CurrentSearch();
+            //CustomerCode.Text = classCurrent.CurrentSearchID;
+            //CustomerName.Text = classCurrent.CurrentSearchName;
+            List<Current> c = classCurrent.CurrentSearch(name, CustomerCode.Text);
             CustomerSearchGrid.DataSource = c;
         }
 
@@ -174,8 +175,8 @@ namespace LoginForm.QuotationModule
                 current = IME.Currents.Where(a => a.CurrentID == cID).FirstOrDefault();
                 CustomerCode.Text = current.CurrentID.ToString();
                 CustomerName.Text = current.Name;
-                classCurrent.currentID = CustomerCode.Text;
-                classCurrent.currentname = CustomerName.Text;
+                //classCurrent.currentID = CustomerCode.Text;
+                //classCurrent.currentname = CustomerName.Text;
 
                 this.DialogResult = DialogResult.OK;
                 this.Close();
@@ -243,8 +244,8 @@ namespace LoginForm.QuotationModule
                     current = IME.Currents.Where(a => a.CurrentID == cID).FirstOrDefault();
                     CustomerCode.Text = current.CurrentID.ToString();
                     CustomerName.Text = current.Name;
-                    classCurrent.currentID = CustomerCode.Text;
-                    classCurrent.currentname = CustomerName.Text;
+                    //classCurrent.currentID = CustomerCode.Text;
+                    //classCurrent.currentname = CustomerName.Text;
 
                     this.DialogResult = DialogResult.OK;
                     this.Close();
@@ -280,9 +281,7 @@ namespace LoginForm.QuotationModule
                 }
                 if (this.Text == "Current Search")
                 {
-                    classCurrent.currentsearchID = CustomerCode.Text;
-                    classCurrent.currentsearchname= "";
-                    List<Current> c = classCurrent.CurrentSearch();
+                    List<Current> c = classCurrent.CurrentSearch("", CustomerCode.Text);
                     CustomerSearchGrid.DataSource = c;
                 }
             }
@@ -315,9 +314,7 @@ namespace LoginForm.QuotationModule
                 }
                 if (this.Text == "Current Search")
                 {
-                    classCurrent.currentsearchID = CustomerCode.Text;
-                    classCurrent.currentsearchname = "";
-                    List<Current> c = classCurrent.CurrentSearch();
+                    List<Current> c = classCurrent.CurrentSearch(CustomerName.Text, CustomerCode.Text);
                     CustomerSearchGrid.DataSource = c;
                 }
             }

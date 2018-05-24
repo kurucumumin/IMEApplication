@@ -159,9 +159,7 @@ namespace LoginForm.IMEAccount
         #region CurrentSearch
         public void CurrentSearch()
         {
-            classCurrent.CurrentSearchName = txtCustomerName.Text;
-            classCurrent.CurrentSearchID = "";
-            FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch(currentAccount as Current);
+            FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch(currentAccount as Current, txtCustomerName.Text);
             this.Enabled = false;
             var result = form.ShowDialog();
 
@@ -457,7 +455,7 @@ namespace LoginForm.IMEAccount
             {
                 ErrorLog.Add("You should choose a current account");
             }
-            if (cmbAccount.SelectedIndex <= 0)
+            if (cmbAccount.SelectedIndex < 0)
             {
                 ErrorLog.Add("You should choose an account!");
             }
