@@ -17,7 +17,7 @@ namespace LoginForm.IMEAccount
     {
         IMEEntities IME = new IMEEntities();
         private object currentAccount;
-        
+
         public frmReceiptOperation()
         {
             InitializeComponent();

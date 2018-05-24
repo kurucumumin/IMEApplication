@@ -293,22 +293,22 @@ namespace LoginForm.QuotationModule
             {
                 if (this.Text == "Customer Search")
                 {
-                    classQuotationAdd.customersearchID = CustomerCode.Text;
-                    classQuotationAdd.customersearchname = "";
+                    classQuotationAdd.customersearchID = "";
+                    classQuotationAdd.customersearchname = CustomerName.Text;
                     List<Customer> c = classQuotationAdd.CustomerSearch();
                     CustomerSearchGrid.DataSource = c;
                 }
                 if (this.Text == "Supplier Search")
                 {
-                    classSupplier.suppliersearchID = CustomerCode.Text;
-                    classSupplier.suppliersearchname = "";
+                    classSupplier.suppliersearchID = "";
+                    classSupplier.suppliersearchname = CustomerName.Text;
                     List<Supplier> c = classSupplier.SupplierSearch();
                     CustomerSearchGrid.DataSource = c;
                 }
                 if (this.Text == "Account Search")
                 {
-                    classAccount.accountsearchID = CustomerCode.Text;
-                    classAccount.accountsearchname = "";
+                    classAccount.accountsearchID = "";
+                    classAccount.accountsearchname = CustomerName.Text;
                     List<DataSet.Account> c = classAccount.AccountSearch();
                     CustomerSearchGrid.DataSource = c;
                 }
