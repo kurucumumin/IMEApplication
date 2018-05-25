@@ -2077,7 +2077,7 @@ namespace LoginForm.QuotationModule
                     IME.SaveChanges();
                 }
             }
-            for (int i = 0; i < dgSaleDeleted.RowCount; i++)
+            for (int i = 0; i < dgSaleDeleted.RowCount-1; i++)
             {
                 DataGridViewRow row = dgSaleDeleted.Rows[i];
                 if (row.Cells["dgProductCode1"].Value != null)

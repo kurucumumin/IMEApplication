@@ -19,7 +19,7 @@ namespace LoginForm.Services
             }
             else
             {
-                c = IME.Currents.Where(a => a.Name.Contains(CurrentSearchName)).ToList().Where(a => a.Name != null).Where(b => b.Name != string.Empty).ToList();
+                c = IME.Currents.Where(a => a.Name.Contains(CurrentSearchName)).ToList();
             }
             return c;
         }
