@@ -9,11 +9,13 @@ namespace LoginForm
     public partial class CustomerSubCategory : Form
     {
         IMEEntities IME = new IMEEntities();
-        public CustomerSubCategory()
+        int category;
+        public CustomerSubCategory(int categoryID)
         {
             this.BringToFront();
             this.TopMost = true;
             InitializeComponent();
+            category= categoryID;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -42,6 +44,7 @@ namespace LoginForm
             comboBox1.DataSource = IME.CustomerCategories.ToList();
             comboBox1.ValueMember = "ID";
             comboBox1.DisplayMember = "categoryname";
+            comboBox1.SelectedValue = category;
         }
 
         private void button2_Click(object sender, EventArgs e)

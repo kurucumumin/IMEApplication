@@ -11,6 +11,8 @@ namespace LoginForm
         IMEEntities IME = new IMEEntities();
         public CustomerMainCategory()
         {
+            this.BringToFront();
+            this.TopMost = true;
             InitializeComponent();
         }
 
