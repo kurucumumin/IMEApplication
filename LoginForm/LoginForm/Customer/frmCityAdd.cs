@@ -14,13 +14,13 @@ namespace LoginForm
     public partial class frmCityAdd : Form
     {
         IMEEntities IME = new IMEEntities();
-
-        public frmCityAdd(object countryName)
+        int countryID;
+        public frmCityAdd(int country)
         {
             this.BringToFront();
             this.TopMost = true;
             InitializeComponent();
-            if (countryName!=null) { cbCountry.SelectedValue = countryName; }
+            countryID = country;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -49,6 +49,7 @@ namespace LoginForm
             cbCountry.DataSource = IME.Countries.ToList();
             cbCountry.ValueMember = "ID";
             cbCountry.DisplayMember = "Country_name";
+            cbCountry.SelectedValue = countryID;
         }
     }
 }

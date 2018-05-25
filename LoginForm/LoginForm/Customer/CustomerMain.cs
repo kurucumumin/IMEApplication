@@ -325,13 +325,16 @@ namespace LoginForm
 
         private void titleAdd_Click(object sender, EventArgs e)
         {
-            var department = ContactDepartment.SelectedValue;
-            CustomerPositionAdd form = new CustomerPositionAdd(department);
-            this.Enabled = false;
-            this.SendToBack();
-            form.ShowDialog();
-            ContactTitle.DataSource = new IMEEntities().CustomerTitles.ToList();
-            this.Enabled = true;
+            if (ContactDepartment.SelectedValue!=null && ContactDepartment.Text!=ComboboxString)
+            {
+                int department = Convert.ToInt32(ContactDepartment.SelectedValue);
+                CustomerPositionAdd form = new CustomerPositionAdd(department);
+                this.Enabled = false;
+                this.SendToBack();
+                form.ShowDialog();
+                ContactTitle.DataSource = new IMEEntities().CustomerTitles.ToList();
+                this.Enabled = true;
+            }else { MessageBox.Show("Please select a Department"); }
         }
 
         private void MainCategory_SelectedIndexChanged(object sender, EventArgs e)
@@ -1833,15 +1836,20 @@ namespace LoginForm
 
         private void TownAdd_Click(object sender, EventArgs e)
         {
-            FormTownAdd form = new FormTownAdd();
-            this.SendToBack();
-            form.ShowDialog();
-            this.BringToFront();
-            cbTown.Refresh();
-            
-            cbTown.DataSource = IME.Towns.Where(a => a.CityID == (int)cbCity.SelectedValue).ToList();
-            cbTown.DisplayMember = "Town_name";
-            cbTown.ValueMember = "ID";
+            if (cbCity.SelectedValue != null && cbCity.Text != ComboboxString)
+            {
+                int city = Convert.ToInt32(cbCity.SelectedValue);
+                int country = Convert.ToInt32(cbCountry.SelectedValue);
+                FormTownAdd form = new FormTownAdd(country, city);
+                this.SendToBack();
+                form.ShowDialog();
+                this.BringToFront();
+                cbTown.Refresh();
+
+                cbTown.DataSource = IME.Towns.Where(a => a.CityID == (int)cbCity.SelectedValue).ToList();
+                cbTown.DisplayMember = "Town_name";
+                cbTown.ValueMember = "ID";
+            }else { MessageBox.Show("Please select a City"); }
         }
 
         private void btnAddMainCategory_Click(object sender, EventArgs e)
@@ -1855,11 +1863,15 @@ namespace LoginForm
 
         private void btnAddSubcategory_Click(object sender, EventArgs e)
         {
-            CustomerSubCategory form = new CustomerSubCategory();
-            form.ShowDialog();
-            SubCategory.DataSource = IME.CustomerSubCategories.Where(a => a.categoryID == (int)MainCategory.SelectedValue).ToList();
-            SubCategory.DisplayMember = "subcategoryname";
-            SubCategory.ValueMember = "ID";
+            if (MainCategory.SelectedValue != null && MainCategory.Text != ComboboxString)
+            {
+                int categoryID = Convert.ToInt32(MainCategory.SelectedValue);
+                CustomerSubCategory form = new CustomerSubCategory(categoryID);
+                form.ShowDialog();
+                SubCategory.DataSource = IME.CustomerSubCategories.Where(a => a.categoryID == (int)MainCategory.SelectedValue).ToList();
+                SubCategory.DisplayMember = "subcategoryname";
+                SubCategory.ValueMember = "ID";
+            }else{ MessageBox.Show("Please select a Maincategory");}
         }
 
         private void factor_Leave(object sender, EventArgs e)
@@ -1946,12 +1958,15 @@ namespace LoginForm
 
         private void CityAdd_Click(object sender, EventArgs e)
         {
-            var country = cbCountry.SelectedValue;
-            frmCityAdd form = new frmCityAdd(country);
-            form.ShowDialog();
-            cbCity.DataSource = IME.Cities.Where(a => a.CountryID == (int)cbCountry.SelectedValue).ToList();
-            cbCity.DisplayMember = "City_name";
-            cbCity.ValueMember = "ID";
+            if (cbCountry.SelectedValue != null && cbCountry.Text != ComboboxString)
+            {
+                int country = Convert.ToInt32(cbCountry.SelectedValue);
+                frmCityAdd form = new frmCityAdd(country);
+                form.ShowDialog();
+                cbCity.DataSource = IME.Cities.Where(a => a.CountryID == (int)cbCountry.SelectedValue).ToList();
+                cbCity.DisplayMember = "City_name";
+                cbCity.ValueMember = "ID";
+            }else { MessageBox.Show("Please select a Country"); }
         }
     }
 }

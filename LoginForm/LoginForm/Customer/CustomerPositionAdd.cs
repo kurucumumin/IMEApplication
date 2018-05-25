@@ -10,10 +10,12 @@ namespace LoginForm
     {
         
         IMEEntities IME = new IMEEntities();
-        public CustomerPositionAdd(object departmentName)
+        int departmanID;
+
+        public CustomerPositionAdd(int departmentName)
         {
             InitializeComponent();
-            comboBox1.SelectedValue = departmentName;
+            departmanID = departmentName;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -47,8 +49,12 @@ namespace LoginForm
 
         private void TitleAdd_Load(object sender, EventArgs e)
         {
-            var departmenList = IME.CustomerDepartments.Select(a=>a.departmentname).ToList();
-            comboBox1.DataSource = departmenList;
+            //var departmenList = IME.CustomerDepartments.Select(a=>a.departmentname).ToList();
+            //comboBox1.DataSource = departmenList;
+            comboBox1.DataSource = IME.CustomerDepartments.ToList();
+            comboBox1.DisplayMember = "departmentname";
+            comboBox1.ValueMember = "ID";
+            comboBox1.SelectedValue = departmanID; ;
         }
 
         private void button2_Click(object sender, EventArgs e)

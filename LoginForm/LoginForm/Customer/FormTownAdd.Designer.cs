@@ -112,6 +112,7 @@
             this.Controls.Add(this.label39);
             this.Name = "FormTownAdd";
             this.Text = "FormTownAdd";
+            this.Load += new System.EventHandler(this.FormTownAdd_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
