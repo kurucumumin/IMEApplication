@@ -652,6 +652,15 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountMainDataGridFiller_Result>("AccountMainDataGridFiller");
         }
     
+        public virtual int ActualStockQuantity(string productID)
+        {
+            var productIDParameter = productID != null ?
+                new ObjectParameter("productID", productID) :
+                new ObjectParameter("productID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ActualStockQuantity", productIDParameter);
+        }
+    
         public virtual int AdditionalCostAdd(Nullable<decimal> voucherTypeId, string voucherNo, Nullable<decimal> ledgerId, Nullable<decimal> debit, Nullable<decimal> credit)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?

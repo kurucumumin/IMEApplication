@@ -7203,6 +7203,9 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
         </Function>
         <Function Name="AccountLedgerViewForAdditionalCost" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="AccountMainDataGridFiller" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ActualStockQuantity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="productID" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="AdditionalCostAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
           <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
@@ -20747,6 +20750,9 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           </FunctionImport>
           <FunctionImport Name="AccountLedgerViewForAdditionalCost" ReturnType="Collection(IMEModel.AccountLedgerViewForAdditionalCost_Result)" />
           <FunctionImport Name="AccountMainDataGridFiller" ReturnType="Collection(IMEModel.AccountMainDataGridFiller_Result)" />
+          <FunctionImport Name="ActualStockQuantity">
+            <Parameter Name="productID" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="AdditionalCostAdd">
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
             <Parameter Name="voucherNo" Mode="In" Type="String" />
@@ -28208,6 +28214,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ActualStockQuantity" FunctionName="IMEModel.Store.ActualStockQuantity" />
           <FunctionImportMapping FunctionImportName="AdditionalCostAdd" FunctionName="IMEModel.Store.AdditionalCostAdd" />
           <FunctionImportMapping FunctionImportName="AdditionalCostDelete" FunctionName="IMEModel.Store.AdditionalCostDelete" />
           <FunctionImportMapping FunctionImportName="AdditionalCostEdit" FunctionName="IMEModel.Store.AdditionalCostEdit" />
