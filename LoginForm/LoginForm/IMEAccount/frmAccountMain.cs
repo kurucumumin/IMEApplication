@@ -57,19 +57,22 @@ namespace LoginForm.IMEAccount
         private void dgLoad()
         {
             IMEEntities IME = new IMEEntities();
-            foreach (var item in IME.AccountMainDataGridFiller())
-            {
-                DataGridViewRow row = (DataGridViewRow)dg.Rows[0].Clone();
-                row.Cells[Amount.Index].Value = item.Amount;
-                row.Cells[Currency.Index].Value = item.Currency;
-                row.Cells[CustomerName.Index].Value = item.Customer;
-                row.Cells[Desc.Index].Value = item.Description;
-                row.Cells[ID.Index].Value = item.ID;
-                row.Cells[Representative.Index].Value = item.Representative;
-                row.Cells[Supplier.Index].Value = item.Supplier;
-                row.Cells[IsSaleoperation.Index].Value = item.IsSalesOperations;
-                dg.Rows.Add(row);
-            }
+            //foreach (var item in IME.AccountMainDataGridFiller())
+            //{
+            //    DataGridViewRow row = (DataGridViewRow)dg.Rows[0].Clone();
+            //    row.Cells[Amount.Index].Value = item.Amount;
+            //    row.Cells[Currency.Index].Value = item.Currency;
+            //    row.Cells[CustomerName.Index].Value = item.Customer;
+            //    row.Cells[Desc.Index].Value = item.Description;
+            //    row.Cells[ID.Index].Value = item.ID;
+            //    row.Cells[Representative.Index].Value = item.Representative;
+            //    row.Cells[Supplier.Index].Value = item.Supplier;
+            //    row.Cells[IsSaleoperation.Index].Value = item.IsSalesOperations;
+            //    dg.Rows.Add(row);
+            //}
+
+            dgCurrenetAccountMovements.DataSource = IME.CariHarekets.ToList();
+
         }
         #endregion
 

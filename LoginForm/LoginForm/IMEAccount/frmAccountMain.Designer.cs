@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dg = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,7 +49,20 @@
             this.btnAllAccounts = new System.Windows.Forms.Button();
             this.btnCustomersDebits = new System.Windows.Forms.Button();
             this.btnAddReceipt = new System.Windows.Forms.Button();
+            this.dgCurrenetAccountMovements = new System.Windows.Forms.DataGridView();
+            this.currentTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currentNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.amountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currencyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.representativeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.operationTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.accountNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cariHareketBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgCurrenetAccountMovements)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cariHareketBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dg
@@ -64,11 +78,12 @@
             this.Desc,
             this.Supplier,
             this.IsSaleoperation});
-            this.dg.Location = new System.Drawing.Point(17, 68);
-            this.dg.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dg.Location = new System.Drawing.Point(1030, 173);
+            this.dg.Margin = new System.Windows.Forms.Padding(4);
             this.dg.Name = "dg";
-            this.dg.Size = new System.Drawing.Size(1265, 546);
+            this.dg.Size = new System.Drawing.Size(252, 441);
             this.dg.TabIndex = 0;
+            this.dg.Visible = false;
             // 
             // ID
             // 
@@ -130,7 +145,7 @@
             // btnAddBill
             // 
             this.btnAddBill.Location = new System.Drawing.Point(133, 7);
-            this.btnAddBill.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddBill.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddBill.Name = "btnAddBill";
             this.btnAddBill.Size = new System.Drawing.Size(100, 53);
             this.btnAddBill.TabIndex = 1;
@@ -141,7 +156,7 @@
             // btnUpdate
             // 
             this.btnUpdate.Location = new System.Drawing.Point(241, 7);
-            this.btnUpdate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(4);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(100, 53);
             this.btnUpdate.TabIndex = 1;
@@ -153,7 +168,7 @@
             // btnClose
             // 
             this.btnClose.Location = new System.Drawing.Point(1183, 7);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(100, 53);
             this.btnClose.TabIndex = 1;
@@ -164,31 +179,29 @@
             // AddAccount
             // 
             this.AddAccount.Location = new System.Drawing.Point(707, 7);
-            this.AddAccount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AddAccount.Margin = new System.Windows.Forms.Padding(4);
             this.AddAccount.Name = "AddAccount";
             this.AddAccount.Size = new System.Drawing.Size(100, 53);
             this.AddAccount.TabIndex = 1;
             this.AddAccount.Text = "Add Account";
             this.AddAccount.UseVisualStyleBackColor = true;
-            this.AddAccount.Visible = false;
             this.AddAccount.Click += new System.EventHandler(this.AddAccount_Click);
             // 
             // btnUpdateAccount
             // 
             this.btnUpdateAccount.Location = new System.Drawing.Point(815, 7);
-            this.btnUpdateAccount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnUpdateAccount.Margin = new System.Windows.Forms.Padding(4);
             this.btnUpdateAccount.Name = "btnUpdateAccount";
             this.btnUpdateAccount.Size = new System.Drawing.Size(100, 53);
             this.btnUpdateAccount.TabIndex = 1;
             this.btnUpdateAccount.Text = "Update Account";
             this.btnUpdateAccount.UseVisualStyleBackColor = true;
-            this.btnUpdateAccount.Visible = false;
             this.btnUpdateAccount.Click += new System.EventHandler(this.btnUpdateAccount_Click);
             // 
             // btnAddFromCustomer
             // 
             this.btnAddFromCustomer.Location = new System.Drawing.Point(349, 7);
-            this.btnAddFromCustomer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddFromCustomer.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddFromCustomer.Name = "btnAddFromCustomer";
             this.btnAddFromCustomer.Size = new System.Drawing.Size(109, 53);
             this.btnAddFromCustomer.TabIndex = 1;
@@ -200,7 +213,7 @@
             // btnUpdateFromCustomer
             // 
             this.btnUpdateFromCustomer.Location = new System.Drawing.Point(467, 7);
-            this.btnUpdateFromCustomer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnUpdateFromCustomer.Margin = new System.Windows.Forms.Padding(4);
             this.btnUpdateFromCustomer.Name = "btnUpdateFromCustomer";
             this.btnUpdateFromCustomer.Size = new System.Drawing.Size(125, 53);
             this.btnUpdateFromCustomer.TabIndex = 1;
@@ -212,19 +225,18 @@
             // btnAllAccounts
             // 
             this.btnAllAccounts.Location = new System.Drawing.Point(600, 7);
-            this.btnAllAccounts.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAllAccounts.Margin = new System.Windows.Forms.Padding(4);
             this.btnAllAccounts.Name = "btnAllAccounts";
             this.btnAllAccounts.Size = new System.Drawing.Size(100, 53);
             this.btnAllAccounts.TabIndex = 1;
             this.btnAllAccounts.Text = "All Accounts";
             this.btnAllAccounts.UseVisualStyleBackColor = true;
-            this.btnAllAccounts.Visible = false;
             this.btnAllAccounts.Click += new System.EventHandler(this.btnAllAccounts_Click);
             // 
             // btnCustomersDebits
             // 
             this.btnCustomersDebits.Location = new System.Drawing.Point(923, 7);
-            this.btnCustomersDebits.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCustomersDebits.Margin = new System.Windows.Forms.Padding(4);
             this.btnCustomersDebits.Name = "btnCustomersDebits";
             this.btnCustomersDebits.Size = new System.Drawing.Size(100, 53);
             this.btnCustomersDebits.TabIndex = 1;
@@ -236,7 +248,7 @@
             // btnAddReceipt
             // 
             this.btnAddReceipt.Location = new System.Drawing.Point(17, 7);
-            this.btnAddReceipt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddReceipt.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddReceipt.Name = "btnAddReceipt";
             this.btnAddReceipt.Size = new System.Drawing.Size(100, 53);
             this.btnAddReceipt.TabIndex = 2;
@@ -244,11 +256,99 @@
             this.btnAddReceipt.UseVisualStyleBackColor = true;
             this.btnAddReceipt.Click += new System.EventHandler(this.btnAddReceipt_Click);
             // 
+            // dgCurrenetAccountMovements
+            // 
+            this.dgCurrenetAccountMovements.AutoGenerateColumns = false;
+            this.dgCurrenetAccountMovements.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgCurrenetAccountMovements.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.currentTypeDataGridViewTextBoxColumn,
+            this.currentIDDataGridViewTextBoxColumn,
+            this.currentNameDataGridViewTextBoxColumn,
+            this.amountDataGridViewTextBoxColumn,
+            this.currencyDataGridViewTextBoxColumn,
+            this.representativeDataGridViewTextBoxColumn,
+            this.descriptionDataGridViewTextBoxColumn,
+            this.operationTypeDataGridViewTextBoxColumn,
+            this.accountNameDataGridViewTextBoxColumn});
+            this.dgCurrenetAccountMovements.DataSource = this.cariHareketBindingSource;
+            this.dgCurrenetAccountMovements.Location = new System.Drawing.Point(17, 85);
+            this.dgCurrenetAccountMovements.Name = "dgCurrenetAccountMovements";
+            this.dgCurrenetAccountMovements.RowTemplate.Height = 24;
+            this.dgCurrenetAccountMovements.Size = new System.Drawing.Size(1256, 509);
+            this.dgCurrenetAccountMovements.TabIndex = 3;
+            // 
+            // currentTypeDataGridViewTextBoxColumn
+            // 
+            this.currentTypeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.currentTypeDataGridViewTextBoxColumn.DataPropertyName = "Current_Type";
+            this.currentTypeDataGridViewTextBoxColumn.HeaderText = "Current_Type";
+            this.currentTypeDataGridViewTextBoxColumn.Name = "currentTypeDataGridViewTextBoxColumn";
+            this.currentTypeDataGridViewTextBoxColumn.Width = 124;
+            // 
+            // currentIDDataGridViewTextBoxColumn
+            // 
+            this.currentIDDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.currentIDDataGridViewTextBoxColumn.DataPropertyName = "Current_ID";
+            this.currentIDDataGridViewTextBoxColumn.HeaderText = "Current_ID";
+            this.currentIDDataGridViewTextBoxColumn.Name = "currentIDDataGridViewTextBoxColumn";
+            this.currentIDDataGridViewTextBoxColumn.Width = 105;
+            // 
+            // currentNameDataGridViewTextBoxColumn
+            // 
+            this.currentNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.currentNameDataGridViewTextBoxColumn.DataPropertyName = "Current_Name";
+            this.currentNameDataGridViewTextBoxColumn.HeaderText = "Current_Name";
+            this.currentNameDataGridViewTextBoxColumn.Name = "currentNameDataGridViewTextBoxColumn";
+            // 
+            // amountDataGridViewTextBoxColumn
+            // 
+            this.amountDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.amountDataGridViewTextBoxColumn.DataPropertyName = "Amount";
+            this.amountDataGridViewTextBoxColumn.HeaderText = "Amount";
+            this.amountDataGridViewTextBoxColumn.Name = "amountDataGridViewTextBoxColumn";
+            this.amountDataGridViewTextBoxColumn.Width = 85;
+            // 
+            // currencyDataGridViewTextBoxColumn
+            // 
+            this.currencyDataGridViewTextBoxColumn.DataPropertyName = "Currency";
+            this.currencyDataGridViewTextBoxColumn.HeaderText = "Currency";
+            this.currencyDataGridViewTextBoxColumn.Name = "currencyDataGridViewTextBoxColumn";
+            // 
+            // representativeDataGridViewTextBoxColumn
+            // 
+            this.representativeDataGridViewTextBoxColumn.DataPropertyName = "Representative";
+            this.representativeDataGridViewTextBoxColumn.HeaderText = "Representative";
+            this.representativeDataGridViewTextBoxColumn.Name = "representativeDataGridViewTextBoxColumn";
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            // 
+            // operationTypeDataGridViewTextBoxColumn
+            // 
+            this.operationTypeDataGridViewTextBoxColumn.DataPropertyName = "Operation_Type";
+            this.operationTypeDataGridViewTextBoxColumn.HeaderText = "Operation_Type";
+            this.operationTypeDataGridViewTextBoxColumn.Name = "operationTypeDataGridViewTextBoxColumn";
+            // 
+            // accountNameDataGridViewTextBoxColumn
+            // 
+            this.accountNameDataGridViewTextBoxColumn.DataPropertyName = "Account_Name";
+            this.accountNameDataGridViewTextBoxColumn.HeaderText = "Account_Name";
+            this.accountNameDataGridViewTextBoxColumn.Name = "accountNameDataGridViewTextBoxColumn";
+            // 
+            // cariHareketBindingSource
+            // 
+            this.cariHareketBindingSource.DataSource = typeof(LoginForm.DataSet.CariHareket);
+            // 
             // frmAccountMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1285, 619);
+            this.Controls.Add(this.dgCurrenetAccountMovements);
             this.Controls.Add(this.btnAddReceipt);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnUpdateFromCustomer);
@@ -260,11 +360,13 @@
             this.Controls.Add(this.AddAccount);
             this.Controls.Add(this.btnAddBill);
             this.Controls.Add(this.dg);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmAccountMain";
             this.Text = "frmAccountMain";
             this.Load += new System.EventHandler(this.frmAccountMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgCurrenetAccountMovements)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cariHareketBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -291,5 +393,16 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn IsSaleoperation;
         private System.Windows.Forms.Button btnCustomersDebits;
         private System.Windows.Forms.Button btnAddReceipt;
+        private System.Windows.Forms.DataGridView dgCurrenetAccountMovements;
+        private System.Windows.Forms.BindingSource cariHareketBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn currentTypeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn currentIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn currentNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn amountDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn currencyDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn representativeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn operationTypeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn accountNameDataGridViewTextBoxColumn;
     }
 }
