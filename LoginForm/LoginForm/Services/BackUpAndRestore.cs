@@ -24,15 +24,12 @@ namespace LoginForm.Services
 
         static public void Restore()
         {
-            
             string ServerName = ".";
             string DBName = "IME";
             Server dbServer = new Server(new ServerConnection(ServerName));
             Restore DBRestore = new Restore() { Database = DBName, Action = RestoreActionType.Database };
             DBRestore.Devices.AddDevice(@"C:\IMEDBBackUp\IME.bak", DeviceType.File);
             DBRestore.SqlRestoreAsync(dbServer);
-           
-
         }
 
     }
