@@ -2322,6 +2322,12 @@
     <Compile Include="PurchaseOrder\StockDevelopment.designer.cs">
       <DependentUpon>StockDevelopment.cs</DependentUpon>
     </Compile>
+    <Compile Include="QuotationModule\ExperimentQuotationAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuotationModule\ExperimentQuotationAdd.Designer.cs">
+      <DependentUpon>ExperimentQuotationAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="QuotationModule\FormQuaotationCustomerSearch.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2431,6 +2437,7 @@
     <Compile Include="Account\Services\PDCReceivableMasterSP.cs" />
     <Compile Include="Services\NumToText.cs" />
     <Compile Include="Services\OtherDateValidationFunction.cs" />
+    <Compile Include="Services\PrintingUtils.cs" />
     <Compile Include="Services\QuotationDatagridCustomize.cs" />
     <Compile Include="Services\classSupplier.cs" />
     <Compile Include="Services\ToolTipService.cs" />
@@ -2923,6 +2930,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PurchaseOrder\RSInvToSaleInv.resx">
       <DependentUpon>RSInvToSaleInv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuotationModule\ExperimentQuotationAdd.resx">
+      <DependentUpon>ExperimentQuotationAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuotationModule\FormQuaotationCustomerSearch.resx">
       <DependentUpon>FormQuaotationCustomerSearch.cs</DependentUpon>
