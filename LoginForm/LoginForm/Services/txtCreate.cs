@@ -16,7 +16,7 @@ namespace LoginForm.Services
             SaveFileDialog savefile = new SaveFileDialog();
             savefile.Filter = "Txt Files (*.txt)|*.txt|All files (*.txt)|*.txt";
             string filename = "ORD_AE01_" + AccountNumber + "_" + Convert.ToDateTime(IME.CurrentDate().First()).ToString("yyyyMMdd") + "_" + Convert.ToDateTime(IME.CurrentDate().First()).ToString("HHmmss");
-            savefile.FileName = "ORD_AE01_" + AccountNumber + "_" + Convert.ToDateTime(IME.CurrentDate().First()).ToString("yyyyMMdd") + "_" + Convert.ToDateTime(IME.CurrentDate().First()).ToString("HHmmss");
+            savefile.FileName = filename;
             //savefile.FileName = quotationNo;
             if (savefile.ShowDialog() == DialogResult.OK)
             {

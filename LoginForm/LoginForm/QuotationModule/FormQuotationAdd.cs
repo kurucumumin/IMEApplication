@@ -274,7 +274,7 @@ namespace LoginForm.QuotationModule
 
             #endregion
 
-            
+
 
             ControlAutorization();
             DataGridViewComboBoxColumn deliveryColumn = (DataGridViewComboBoxColumn)dgQuotationAddedItems.Columns[dgDelivery.Index];
@@ -3942,7 +3942,7 @@ namespace LoginForm.QuotationModule
                 //}
             }
         }
-        
+
         private void XmlToDataGrid(List<XmlProduct> XmlProductList)
         {
             int index = 0;
@@ -4143,9 +4143,9 @@ namespace LoginForm.QuotationModule
                 }
                 else
                 {
-                    // the input is numeric 
+                    // the input is numeric
                 }
-            } 
+            }
         }
 
         private void dgQuotationDeleted_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
@@ -4161,7 +4161,7 @@ namespace LoginForm.QuotationModule
                 }
                 else
                 {
-                    // the input is numeric 
+                    // the input is numeric
                 }
             }
         }
