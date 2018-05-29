@@ -2437,6 +2437,7 @@
     <Compile Include="Account\Services\PDCReceivableMasterSP.cs" />
     <Compile Include="Services\NumToText.cs" />
     <Compile Include="Services\OtherDateValidationFunction.cs" />
+    <Compile Include="Services\PrinterClass.cs" />
     <Compile Include="Services\PrintingUtils.cs" />
     <Compile Include="Services\QuotationDatagridCustomize.cs" />
     <Compile Include="Services\classSupplier.cs" />

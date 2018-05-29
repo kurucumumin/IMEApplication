@@ -1183,8 +1183,6 @@ namespace LoginForm.QuotationModule
                         CurrentRow.Cells["dgMargin"].Value = (((1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(CurrentRow.Cells["dgUCUPCurr"].Value.ToString())
                         * decimal.Parse(CurrentRow.Cells["dgUC"].Value.ToString())
                           )))) * 100).ToString("G29");
-
-
                     }
                     else
                     {

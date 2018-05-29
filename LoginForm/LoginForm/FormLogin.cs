@@ -137,5 +137,10 @@ namespace LoginForm
             this.Close();
             Application.Exit();
         }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            new Printttt().PrintBill();
+        }
     }
 }
