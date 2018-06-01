@@ -18,7 +18,6 @@ namespace LoginForm.DataSet
         public MonthlySalary()
         {
             this.MonthlySalaryDetails = new HashSet<MonthlySalaryDetail>();
-            this.MonthlySalaryDetails1 = new HashSet<MonthlySalaryDetail1>();
         }
     
         public decimal monthlySalaryId { get; set; }
@@ -27,7 +26,5 @@ namespace LoginForm.DataSet
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MonthlySalaryDetail> MonthlySalaryDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MonthlySalaryDetail1> MonthlySalaryDetails1 { get; set; }
     }
 }
