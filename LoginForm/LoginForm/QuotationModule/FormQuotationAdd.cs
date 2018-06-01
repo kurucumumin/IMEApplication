@@ -694,7 +694,7 @@ namespace LoginForm.QuotationModule
         {
             #region Quantity
             {
-
+                
                 if (LandingCost.Enabled == false) LandingCost.Enabled = true;
                 GetQuotationQuantity(dgQuotationAddedItems.CurrentCell.RowIndex);
 
@@ -1091,7 +1091,6 @@ namespace LoginForm.QuotationModule
                 }
                 #endregion
             }
-
             getTotalDiscMargin();
 
             calculateTotalCost();

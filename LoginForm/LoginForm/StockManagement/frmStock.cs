@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LoginForm.DataSet;
 using LoginForm.Item;
+using LoginForm.QuotationModule;
 
 namespace LoginForm.StockManagement
 {
@@ -215,7 +216,7 @@ namespace LoginForm.StockManagement
                 btnViewStockReserves.Enabled = true;
                 txtProductID.Text = dgStockList.CurrentRow.Cells[dgProductID.Index].Value.ToString();
                 txtProductID.Enabled = false;
-                if(dgStockList.CurrentRow.Cells[dgProductName.Index].Value!=null) txtProductName.Text = dgStockList.CurrentRow.Cells[dgProductName.Index].Value.ToString();
+                if (dgStockList.CurrentRow.Cells[dgProductName.Index].Value != null) txtProductName.Text = dgStockList.CurrentRow.Cells[dgProductName.Index].Value.ToString();
                 txtProductName.Enabled = false;
 
                 numQuantity.Value = 0;
@@ -279,6 +280,29 @@ namespace LoginForm.StockManagement
         public frmStock()
         {
             InitializeComponent();
+        }
+
+        private void txtProductID_DoubleClick(object sender, EventArgs e)
+        {
+            SearchItem();
+        }
+
+        private void txtProductID_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SearchItem();
+            }
+        }
+
+        private void SearchItem()
+        {
+            FormQuotationItemSearch form = new FormQuotationItemSearch(txtProductID.Text);
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                txtProductID.Text = form.itemProps[0];
+                txtProductName.Text = form.itemProps[1];
+            }
         }
     }
 }
