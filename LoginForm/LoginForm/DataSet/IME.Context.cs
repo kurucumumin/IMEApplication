@@ -176,7 +176,6 @@ namespace LoginForm.DataSet
         public virtual DbSet<SupplierCategory> SupplierCategories { get; set; }
         public virtual DbSet<SupplierSubCategory> SupplierSubCategories { get; set; }
         public virtual DbSet<SupplierWorker> SupplierWorkers { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Tax> Taxes { get; set; }
         public virtual DbSet<TaxDetail> TaxDetails { get; set; }
         public virtual DbSet<Town> Towns { get; set; }
@@ -5111,7 +5110,7 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PurchaseMasterDelete", purchaseMasterIdParameter);
         }
     
-        public virtual int PurchaseMasterEdit(Nullable<decimal> purchaseMasterId, string voucherNo, string invoiceNo, Nullable<decimal> suffixPrefixId, Nullable<decimal> voucherTypeId, Nullable<System.DateTime> date, Nullable<decimal> ledgerId, string vendorInvoiceNo, Nullable<System.DateTime> vendorInvoiceDate, string creditPeriod, Nullable<decimal> exchangeRateId, string narration, Nullable<decimal> purchaseAccount, string purchaseOrderMasterId, Nullable<decimal> materialReceiptMasterId, Nullable<decimal> additionalCost, Nullable<decimal> totalTax, Nullable<decimal> billDiscount, Nullable<decimal> grandTotal, Nullable<decimal> totalAmount, Nullable<decimal> userId, string lrNo, string transportationCompany, Nullable<decimal> financialYearId)
+        public virtual int PurchaseMasterEdit(Nullable<decimal> purchaseMasterId, string voucherNo, string invoiceNo, Nullable<decimal> suffixPrefixId, Nullable<decimal> voucherTypeId, Nullable<System.DateTime> date, Nullable<decimal> ledgerId, string vendorInvoiceNo, Nullable<System.DateTime> vendorInvoiceDate, string creditPeriod, Nullable<decimal> exchangeRateId, string narration, Nullable<decimal> purchaseAccount, Nullable<decimal> materialReceiptMasterId, Nullable<decimal> additionalCost, Nullable<decimal> totalTax, Nullable<decimal> billDiscount, Nullable<decimal> grandTotal, Nullable<decimal> totalAmount, Nullable<decimal> userId, string lrNo, string transportationCompany, Nullable<decimal> financialYearId)
         {
             var purchaseMasterIdParameter = purchaseMasterId.HasValue ?
                 new ObjectParameter("purchaseMasterId", purchaseMasterId) :
@@ -5165,10 +5164,6 @@ namespace LoginForm.DataSet
                 new ObjectParameter("purchaseAccount", purchaseAccount) :
                 new ObjectParameter("purchaseAccount", typeof(decimal));
     
-            var purchaseOrderMasterIdParameter = purchaseOrderMasterId != null ?
-                new ObjectParameter("purchaseOrderMasterId", purchaseOrderMasterId) :
-                new ObjectParameter("purchaseOrderMasterId", typeof(string));
-    
             var materialReceiptMasterIdParameter = materialReceiptMasterId.HasValue ?
                 new ObjectParameter("materialReceiptMasterId", materialReceiptMasterId) :
                 new ObjectParameter("materialReceiptMasterId", typeof(decimal));
@@ -5209,7 +5204,7 @@ namespace LoginForm.DataSet
                 new ObjectParameter("financialYearId", financialYearId) :
                 new ObjectParameter("financialYearId", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PurchaseMasterEdit", purchaseMasterIdParameter, voucherNoParameter, invoiceNoParameter, suffixPrefixIdParameter, voucherTypeIdParameter, dateParameter, ledgerIdParameter, vendorInvoiceNoParameter, vendorInvoiceDateParameter, creditPeriodParameter, exchangeRateIdParameter, narrationParameter, purchaseAccountParameter, purchaseOrderMasterIdParameter, materialReceiptMasterIdParameter, additionalCostParameter, totalTaxParameter, billDiscountParameter, grandTotalParameter, totalAmountParameter, userIdParameter, lrNoParameter, transportationCompanyParameter, financialYearIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PurchaseMasterEdit", purchaseMasterIdParameter, voucherNoParameter, invoiceNoParameter, suffixPrefixIdParameter, voucherTypeIdParameter, dateParameter, ledgerIdParameter, vendorInvoiceNoParameter, vendorInvoiceDateParameter, creditPeriodParameter, exchangeRateIdParameter, narrationParameter, purchaseAccountParameter, materialReceiptMasterIdParameter, additionalCostParameter, totalTaxParameter, billDiscountParameter, grandTotalParameter, totalAmountParameter, userIdParameter, lrNoParameter, transportationCompanyParameter, financialYearIdParameter);
         }
     
         public virtual ObjectResult<Nullable<decimal>> PurchaseMasterIdViewByvoucherNoAndVoucherType(string voucherNo, Nullable<decimal> voucherTypeId)
@@ -6458,7 +6453,7 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SalesInvoiceGridfillAgainestSalesOrderUsingSalesDetails_Result>("SalesInvoiceGridfillAgainestSalesOrderUsingSalesDetails", salesOrderMasterIdParameter, salesMasterIdParameter, voucherTypeIdParameter);
         }
     
-        public virtual int SalesInvoiceQuantityDetailsAgainstSalesReturn(Nullable<decimal> voucherTypeId, string voucherNo)
+        public virtual ObjectResult<Nullable<int>> SalesInvoiceQuantityDetailsAgainstSalesReturn(Nullable<decimal> voucherTypeId, string voucherNo)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
@@ -6468,7 +6463,7 @@ namespace LoginForm.DataSet
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SalesInvoiceQuantityDetailsAgainstSalesReturn", voucherTypeIdParameter, voucherNoParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("SalesInvoiceQuantityDetailsAgainstSalesReturn", voucherTypeIdParameter, voucherNoParameter);
         }
     
         public virtual ObjectResult<Nullable<decimal>> SalesInvoiceReciptVoucherDetailsAgainstSI(Nullable<decimal> voucherTypeId, string voucherNo)
@@ -7453,109 +7448,6 @@ namespace LoginForm.DataSet
                 new ObjectParameter("SectionName", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SlidingPriceAdd", articleNoParameter, articleDescriptionParameter, itemTypeCodeParameter, itemTypeDescParameter, introductionDateParameter, discontinuedDateParameter, quantity1Parameter, col1PriceParameter, col2PriceParameter, col3PriceParameter, col4PriceParameter, col5PriceParameter, col1BreakParameter, col2BreakParameter, col3BreakParameter, col4BreakParameter, col5BreakParameter, discountedPrice1Parameter, discountedPrice2Parameter, discountedPrice3Parameter, discountedPrice4Parameter, discountedPrice5Parameter, superSectionNoParameter, supersectionNameParameter, brandIDParameter, brandnameParameter, sectionIDParameter, sectionNameParameter);
-        }
-    
-        public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            var versionParameter = version.HasValue ?
-                new ObjectParameter("version", version) :
-                new ObjectParameter("version", typeof(int));
-    
-            var definitionParameter = definition != null ?
-                new ObjectParameter("definition", definition) :
-                new ObjectParameter("definition", typeof(byte[]));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_alterdiagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
-        }
-    
-        public virtual int sp_creatediagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            var versionParameter = version.HasValue ?
-                new ObjectParameter("version", version) :
-                new ObjectParameter("version", typeof(int));
-    
-            var definitionParameter = definition != null ?
-                new ObjectParameter("definition", definition) :
-                new ObjectParameter("definition", typeof(byte[]));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_creatediagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
-        }
-    
-        public virtual int sp_dropdiagram(string diagramname, Nullable<int> owner_id)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
-        }
-    
-        public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition_Result>("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
-        }
-    
-        public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
-        }
-    
-        public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            var new_diagramnameParameter = new_diagramname != null ?
-                new ObjectParameter("new_diagramname", new_diagramname) :
-                new ObjectParameter("new_diagramname", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_renamediagram", diagramnameParameter, owner_idParameter, new_diagramnameParameter);
-        }
-    
-        public virtual int sp_upgraddiagrams()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
     
         public virtual ObjectResult<Nullable<decimal>> StockCheckForProductSale(string productId, Nullable<decimal> batchId)
