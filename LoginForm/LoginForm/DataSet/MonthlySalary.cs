@@ -17,8 +17,8 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public MonthlySalary()
         {
-            this.MonthlySalaryDetails = new HashSet<MonthlySalaryDetail1>();
-            this.MonthlySalaryDetails1 = new HashSet<MonthlySalaryDetail>();
+            this.MonthlySalaryDetails = new HashSet<MonthlySalaryDetail>();
+            this.MonthlySalaryDetails1 = new HashSet<MonthlySalaryDetail1>();
         }
     
         public decimal monthlySalaryId { get; set; }
@@ -26,8 +26,8 @@ namespace LoginForm.DataSet
         public string narration { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MonthlySalaryDetail1> MonthlySalaryDetails { get; set; }
+        public virtual ICollection<MonthlySalaryDetail> MonthlySalaryDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MonthlySalaryDetail> MonthlySalaryDetails1 { get; set; }
+        public virtual ICollection<MonthlySalaryDetail1> MonthlySalaryDetails1 { get; set; }
     }
 }

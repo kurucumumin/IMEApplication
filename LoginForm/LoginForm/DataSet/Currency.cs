@@ -19,13 +19,13 @@ namespace LoginForm.DataSet
         {
             this.Accounts = new HashSet<Account>();
             this.Companies = new HashSet<Company>();
+            this.ExchangeRates = new HashSet<ExchangeRate>();
             this.Managements = new HashSet<Management>();
             this.PurchaseOperations = new HashSet<PurchaseOperation>();
             this.Quotations = new HashSet<Quotation>();
             this.Receipts = new HashSet<Receipt>();
             this.SalesOperations = new HashSet<SalesOperation>();
             this.Suppliers = new HashSet<Supplier>();
-            this.ExchangeRates = new HashSet<ExchangeRate>();
         }
     
         public decimal currencyID { get; set; }
@@ -38,6 +38,8 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Company> Companies { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ExchangeRate> ExchangeRates { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Management> Managements { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PurchaseOperation> PurchaseOperations { get; set; }
@@ -49,7 +51,5 @@ namespace LoginForm.DataSet
         public virtual ICollection<SalesOperation> SalesOperations { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Supplier> Suppliers { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ExchangeRate> ExchangeRates { get; set; }
     }
 }

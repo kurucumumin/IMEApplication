@@ -1841,12 +1841,6 @@
     <Compile Include="DataSet\SlidingPrice.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\sp_helpdiagrams_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\Stock.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1890,9 +1884,6 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SupplierWorker.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\sysdiagram.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Tax.cs">
@@ -2437,6 +2428,7 @@
     <Compile Include="Account\Services\PDCReceivableMasterSP.cs" />
     <Compile Include="Services\NumToText.cs" />
     <Compile Include="Services\OtherDateValidationFunction.cs" />
+    <Compile Include="Services\PrinterClass.cs" />
     <Compile Include="Services\PrintingUtils.cs" />
     <Compile Include="Services\QuotationDatagridCustomize.cs" />
     <Compile Include="Services\classSupplier.cs" />
