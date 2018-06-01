@@ -10,6 +10,7 @@ namespace LoginForm.QuotationModule
     {
         IMEEntities IME = new IMEEntities();
         string ArticleCode;
+        public string[] itemProps = new string[2]; 
 
         public FormQuotationItemSearch()
         {
@@ -68,8 +69,11 @@ namespace LoginForm.QuotationModule
             {
                 if (dgQuotationItemSearch.DataSource != null)
                 {
-                    classQuotationAdd.ItemCode = dgQuotationItemSearch.Rows[dgQuotationItemSearch.CurrentCell.RowIndex].Cells["Article_No"].Value.ToString();
-                    
+                    classQuotationAdd.ItemCode = dgQuotationItemSearch.CurrentRow.Cells["Article_No"].Value.ToString();
+                    itemProps[0] = dgQuotationItemSearch.CurrentRow.Cells["Article_No"].Value.ToString();
+                    itemProps[1] = dgQuotationItemSearch.CurrentRow.Cells["Article_Desc"].Value.ToString();
+                    this.DialogResult = DialogResult.OK;
+
                     var MPNItemList = IME.ArticleSearchwithMPN(dgQuotationItemSearch.CurrentRow.Cells["MPN"].Value.ToString()).ToList();
                     if (MPNItemList.Count > 1)
                     {
@@ -85,8 +89,11 @@ namespace LoginForm.QuotationModule
         {
                 if (dgQuotationItemSearch.DataSource != null)
                 {
-                if (dgQuotationItemSearch.CurrentRow.Cells[2].Value.ToString()!="") {
-                    classQuotationAdd.ItemCode = dgQuotationItemSearch.Rows[dgQuotationItemSearch.CurrentCell.RowIndex].Cells["Article_No"].Value.ToString();
+                if (dgQuotationItemSearch.CurrentRow.Cells[1].Value.ToString()!="") {
+                    classQuotationAdd.ItemCode = dgQuotationItemSearch.CurrentRow.Cells["Article_No"].Value.ToString();
+                    itemProps[0] = dgQuotationItemSearch.CurrentRow.Cells["Article_No"].Value.ToString();
+                    itemProps[1] = dgQuotationItemSearch.CurrentRow.Cells["Article_Desc"].Value.ToString();
+                    this.DialogResult = DialogResult.OK;
 
                     var MPNItemList = IME.ArticleSearchwithMPN(dgQuotationItemSearch.CurrentRow.Cells[7].Value.ToString()).ToList();
                     if (MPNItemList.Count > 1)
@@ -96,7 +103,7 @@ namespace LoginForm.QuotationModule
                     }
                 }
                 }
-            classQuotationAdd.ItemCode = dgQuotationItemSearch.Rows[dgQuotationItemSearch.CurrentCell.RowIndex].Cells["Article_No"].Value.ToString();
+            //classQuotationAdd.ItemCode = dgQuotationItemSearch.Rows[dgQuotationItemSearch.CurrentCell.RowIndex].Cells["Article_No"].Value.ToString();
             this.Close();
         }
 

@@ -1383,6 +1383,7 @@
             this.CustomerCode.Name = "CustomerCode";
             this.CustomerCode.Size = new System.Drawing.Size(115, 22);
             this.CustomerCode.TabIndex = 75;
+            this.CustomerCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CustomerCode_KeyDown);
             // 
             // cbPayment
             // 

@@ -132,7 +132,7 @@ namespace LoginForm.User
                         {
                             wrkr.isActive = 0;
                         }
-
+                        
                         wrkr.AuthorizationValues.Clear();
                         IME.SaveChanges();
 

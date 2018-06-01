@@ -50,6 +50,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgStockList = new System.Windows.Forms.DataGridView();
+            this.dgSupplierID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.dgProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgMPN = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,9 +59,7 @@
             this.dgQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgReserveQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgStockID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgSupplierID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stockBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.FrameTableLayout.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -220,6 +220,8 @@
             this.txtProductID.Name = "txtProductID";
             this.txtProductID.Size = new System.Drawing.Size(148, 24);
             this.txtProductID.TabIndex = 8;
+            this.txtProductID.DoubleClick += new System.EventHandler(this.txtProductID_DoubleClick);
+            this.txtProductID.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtProductID_KeyDown);
             // 
             // rbDecrease
             // 
@@ -324,6 +326,14 @@
             this.dgStockList.TabIndex = 1;
             this.dgStockList.SelectionChanged += new System.EventHandler(this.dgStockList_SelectionChanged);
             // 
+            // dgSupplierID
+            // 
+            this.dgSupplierID.DataPropertyName = "SupplierID";
+            this.dgSupplierID.HeaderText = "Supplier ID";
+            this.dgSupplierID.Name = "dgSupplierID";
+            this.dgSupplierID.ReadOnly = true;
+            this.dgSupplierID.Visible = false;
+            // 
             // dgProductID
             // 
             this.dgProductID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
@@ -384,14 +394,6 @@
             this.dgStockID.Name = "dgStockID";
             this.dgStockID.ReadOnly = true;
             this.dgStockID.Visible = false;
-            // 
-            // dgSupplierID
-            // 
-            this.dgSupplierID.DataPropertyName = "SupplierID";
-            this.dgSupplierID.HeaderText = "Supplier ID";
-            this.dgSupplierID.Name = "dgSupplierID";
-            this.dgSupplierID.ReadOnly = true;
-            this.dgSupplierID.Visible = false;
             // 
             // stockBindingSource
             // 
