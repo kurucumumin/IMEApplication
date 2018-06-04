@@ -72,11 +72,17 @@ namespace LoginForm.DataSet
         public virtual DbSet<DeliveryNoteDetail> DeliveryNoteDetails { get; set; }
         public virtual DbSet<DeliveryNoteMaster> DeliveryNoteMasters { get; set; }
         public virtual DbSet<Designation> Designations { get; set; }
+        public virtual DbSet<Detail> Details { get; set; }
+        public virtual DbSet<DetailCopy> DetailCopies { get; set; }
         public virtual DbSet<DiscountValue> DiscountValues { get; set; }
         public virtual DbSet<DualUse> DualUses { get; set; }
         public virtual DbSet<ExchangeRate> ExchangeRates { get; set; }
         public virtual DbSet<ExtendedRange> ExtendedRanges { get; set; }
+        public virtual DbSet<Field> Fields { get; set; }
+        public virtual DbSet<FieldCopy> FieldCopies { get; set; }
         public virtual DbSet<FinancialYear> FinancialYears { get; set; }
+        public virtual DbSet<Form> Forms { get; set; }
+        public virtual DbSet<FormCopy> FormCopies { get; set; }
         public virtual DbSet<Godown> Godowns { get; set; }
         public virtual DbSet<Hazardou> Hazardous { get; set; }
         public virtual DbSet<Holiday> Holidays { get; set; }
@@ -90,6 +96,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<Mail> Mails { get; set; }
         public virtual DbSet<Management> Managements { get; set; }
         public virtual DbSet<Master> Masters { get; set; }
+        public virtual DbSet<MasterCopy> MasterCopies { get; set; }
         public virtual DbSet<MaterialReceiptDetail> MaterialReceiptDetails { get; set; }
         public virtual DbSet<MaterialReceiptMaster> MaterialReceiptMasters { get; set; }
         public virtual DbSet<MonthlySalary> MonthlySalaries { get; set; }

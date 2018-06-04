@@ -1968,5 +1968,15 @@ namespace LoginForm
                 cbCity.ValueMember = "ID";
             }else { MessageBox.Show("Please select a Country"); }
         }
+
+        private void txtSearch_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                gridselectedindex = 0;
+                searchtxt = txtSearch.Text;
+                customersearch();
+            }
+        }
     }
 }

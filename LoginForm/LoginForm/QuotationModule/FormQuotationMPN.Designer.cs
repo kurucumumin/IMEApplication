@@ -97,7 +97,7 @@
             this.txtSearchText.Location = new System.Drawing.Point(115, 38);
             this.txtSearchText.Name = "txtSearchText";
             this.txtSearchText.Size = new System.Drawing.Size(226, 21);
-            this.txtSearchText.TabIndex = 1;
+            this.txtSearchText.TabIndex = 2;
             // 
             // tableLayoutPanel1
             // 
@@ -135,7 +135,7 @@
             this.dgItemList.ReadOnly = true;
             this.dgItemList.RowTemplate.Height = 24;
             this.dgItemList.Size = new System.Drawing.Size(1000, 324);
-            this.dgItemList.TabIndex = 0;
+            this.dgItemList.TabIndex = 1;
             this.dgItemList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgItemList_KeyDown);
             this.dgItemList.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgItemList_MouseDoubleClick);
             // 
