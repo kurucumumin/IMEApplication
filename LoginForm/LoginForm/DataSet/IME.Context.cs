@@ -3276,6 +3276,64 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("FinancialYearExistenceCheck", fromDateParameter, toDateParameter);
         }
     
+        public virtual ObjectResult<Nullable<decimal>> FormAdd(string formName)
+        {
+            var formNameParameter = formName != null ?
+                new ObjectParameter("formName", formName) :
+                new ObjectParameter("formName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("FormAdd", formNameParameter);
+        }
+    
+        public virtual ObjectResult<string> FormDelete(Nullable<int> formId)
+        {
+            var formIdParameter = formId.HasValue ?
+                new ObjectParameter("formId", formId) :
+                new ObjectParameter("formId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("FormDelete", formIdParameter);
+        }
+    
+        public virtual ObjectResult<string> FormEdit(Nullable<int> formId, string formName)
+        {
+            var formIdParameter = formId.HasValue ?
+                new ObjectParameter("formId", formId) :
+                new ObjectParameter("formId", typeof(int));
+    
+            var formNameParameter = formName != null ?
+                new ObjectParameter("formName", formName) :
+                new ObjectParameter("formName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("FormEdit", formIdParameter, formNameParameter);
+        }
+    
+        public virtual int FormEditFull(Nullable<int> formId, string formName)
+        {
+            var formIdParameter = formId.HasValue ?
+                new ObjectParameter("formId", formId) :
+                new ObjectParameter("formId", typeof(int));
+    
+            var formNameParameter = formName != null ?
+                new ObjectParameter("formName", formName) :
+                new ObjectParameter("formName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FormEditFull", formIdParameter, formNameParameter);
+        }
+    
+        public virtual ObjectResult<FormView_Result> FormView(Nullable<int> formId)
+        {
+            var formIdParameter = formId.HasValue ?
+                new ObjectParameter("formId", formId) :
+                new ObjectParameter("formId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FormView_Result>("FormView", formIdParameter);
+        }
+    
+        public virtual ObjectResult<FormViewAll_Result> FormViewAll()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FormViewAll_Result>("FormViewAll");
+        }
+    
         public virtual ObjectResult<FundFlow1_Result> FundFlow1(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var fromDateParameter = fromDate.HasValue ?
@@ -3704,6 +3762,250 @@ namespace LoginForm.DataSet
                 new ObjectParameter("serviceMasterId", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("LedgerPostingIdByServiceMaasterId", serviceMasterIdParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> MasterAdd(Nullable<int> formName, Nullable<bool> isTwoLineForHedder, Nullable<bool> isTwoLineForDetails, Nullable<int> pageSize1, Nullable<int> pageSizeOther, Nullable<int> blankLneForFooter, string footerLocation, Nullable<int> lineCountBetweenTwo, string pitch, string condensed, Nullable<int> lineCountAfterPrint)
+        {
+            var formNameParameter = formName.HasValue ?
+                new ObjectParameter("formName", formName) :
+                new ObjectParameter("formName", typeof(int));
+    
+            var isTwoLineForHedderParameter = isTwoLineForHedder.HasValue ?
+                new ObjectParameter("isTwoLineForHedder", isTwoLineForHedder) :
+                new ObjectParameter("isTwoLineForHedder", typeof(bool));
+    
+            var isTwoLineForDetailsParameter = isTwoLineForDetails.HasValue ?
+                new ObjectParameter("isTwoLineForDetails", isTwoLineForDetails) :
+                new ObjectParameter("isTwoLineForDetails", typeof(bool));
+    
+            var pageSize1Parameter = pageSize1.HasValue ?
+                new ObjectParameter("pageSize1", pageSize1) :
+                new ObjectParameter("pageSize1", typeof(int));
+    
+            var pageSizeOtherParameter = pageSizeOther.HasValue ?
+                new ObjectParameter("pageSizeOther", pageSizeOther) :
+                new ObjectParameter("pageSizeOther", typeof(int));
+    
+            var blankLneForFooterParameter = blankLneForFooter.HasValue ?
+                new ObjectParameter("blankLneForFooter", blankLneForFooter) :
+                new ObjectParameter("blankLneForFooter", typeof(int));
+    
+            var footerLocationParameter = footerLocation != null ?
+                new ObjectParameter("footerLocation", footerLocation) :
+                new ObjectParameter("footerLocation", typeof(string));
+    
+            var lineCountBetweenTwoParameter = lineCountBetweenTwo.HasValue ?
+                new ObjectParameter("lineCountBetweenTwo", lineCountBetweenTwo) :
+                new ObjectParameter("lineCountBetweenTwo", typeof(int));
+    
+            var pitchParameter = pitch != null ?
+                new ObjectParameter("pitch", pitch) :
+                new ObjectParameter("pitch", typeof(string));
+    
+            var condensedParameter = condensed != null ?
+                new ObjectParameter("condensed", condensed) :
+                new ObjectParameter("condensed", typeof(string));
+    
+            var lineCountAfterPrintParameter = lineCountAfterPrint.HasValue ?
+                new ObjectParameter("lineCountAfterPrint", lineCountAfterPrint) :
+                new ObjectParameter("lineCountAfterPrint", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("MasterAdd", formNameParameter, isTwoLineForHedderParameter, isTwoLineForDetailsParameter, pageSize1Parameter, pageSizeOtherParameter, blankLneForFooterParameter, footerLocationParameter, lineCountBetweenTwoParameter, pitchParameter, condensedParameter, lineCountAfterPrintParameter);
+        }
+    
+        public virtual int MasterCopyAdd(Nullable<int> masterId, Nullable<int> formName, Nullable<bool> isTwoLineForHedder, Nullable<bool> isTwoLineForDetails, Nullable<int> pageSize1, Nullable<int> pageSizeOther, Nullable<int> blankLneForFooter, string footerLocation, Nullable<int> lineCountBetweenTwo, string pitch, string condensed, Nullable<int> lineCountAfterPrint)
+        {
+            var masterIdParameter = masterId.HasValue ?
+                new ObjectParameter("masterId", masterId) :
+                new ObjectParameter("masterId", typeof(int));
+    
+            var formNameParameter = formName.HasValue ?
+                new ObjectParameter("formName", formName) :
+                new ObjectParameter("formName", typeof(int));
+    
+            var isTwoLineForHedderParameter = isTwoLineForHedder.HasValue ?
+                new ObjectParameter("isTwoLineForHedder", isTwoLineForHedder) :
+                new ObjectParameter("isTwoLineForHedder", typeof(bool));
+    
+            var isTwoLineForDetailsParameter = isTwoLineForDetails.HasValue ?
+                new ObjectParameter("isTwoLineForDetails", isTwoLineForDetails) :
+                new ObjectParameter("isTwoLineForDetails", typeof(bool));
+    
+            var pageSize1Parameter = pageSize1.HasValue ?
+                new ObjectParameter("pageSize1", pageSize1) :
+                new ObjectParameter("pageSize1", typeof(int));
+    
+            var pageSizeOtherParameter = pageSizeOther.HasValue ?
+                new ObjectParameter("pageSizeOther", pageSizeOther) :
+                new ObjectParameter("pageSizeOther", typeof(int));
+    
+            var blankLneForFooterParameter = blankLneForFooter.HasValue ?
+                new ObjectParameter("blankLneForFooter", blankLneForFooter) :
+                new ObjectParameter("blankLneForFooter", typeof(int));
+    
+            var footerLocationParameter = footerLocation != null ?
+                new ObjectParameter("footerLocation", footerLocation) :
+                new ObjectParameter("footerLocation", typeof(string));
+    
+            var lineCountBetweenTwoParameter = lineCountBetweenTwo.HasValue ?
+                new ObjectParameter("lineCountBetweenTwo", lineCountBetweenTwo) :
+                new ObjectParameter("lineCountBetweenTwo", typeof(int));
+    
+            var pitchParameter = pitch != null ?
+                new ObjectParameter("pitch", pitch) :
+                new ObjectParameter("pitch", typeof(string));
+    
+            var condensedParameter = condensed != null ?
+                new ObjectParameter("condensed", condensed) :
+                new ObjectParameter("condensed", typeof(string));
+    
+            var lineCountAfterPrintParameter = lineCountAfterPrint.HasValue ?
+                new ObjectParameter("lineCountAfterPrint", lineCountAfterPrint) :
+                new ObjectParameter("lineCountAfterPrint", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MasterCopyAdd", masterIdParameter, formNameParameter, isTwoLineForHedderParameter, isTwoLineForDetailsParameter, pageSize1Parameter, pageSizeOtherParameter, blankLneForFooterParameter, footerLocationParameter, lineCountBetweenTwoParameter, pitchParameter, condensedParameter, lineCountAfterPrintParameter);
+        }
+    
+        public virtual int MasterCopyEdit(Nullable<int> masterId, Nullable<int> formName, Nullable<bool> isTwoLineForHedder, Nullable<bool> isTwoLineForDetails, Nullable<int> pageSize1, Nullable<int> pageSizeOther, Nullable<int> blankLneForFooter, string footerLocation, Nullable<int> lineCountBetweenTwo, string pitch, string condensed, Nullable<int> lineCountAfterPrint)
+        {
+            var masterIdParameter = masterId.HasValue ?
+                new ObjectParameter("masterId", masterId) :
+                new ObjectParameter("masterId", typeof(int));
+    
+            var formNameParameter = formName.HasValue ?
+                new ObjectParameter("formName", formName) :
+                new ObjectParameter("formName", typeof(int));
+    
+            var isTwoLineForHedderParameter = isTwoLineForHedder.HasValue ?
+                new ObjectParameter("isTwoLineForHedder", isTwoLineForHedder) :
+                new ObjectParameter("isTwoLineForHedder", typeof(bool));
+    
+            var isTwoLineForDetailsParameter = isTwoLineForDetails.HasValue ?
+                new ObjectParameter("isTwoLineForDetails", isTwoLineForDetails) :
+                new ObjectParameter("isTwoLineForDetails", typeof(bool));
+    
+            var pageSize1Parameter = pageSize1.HasValue ?
+                new ObjectParameter("pageSize1", pageSize1) :
+                new ObjectParameter("pageSize1", typeof(int));
+    
+            var pageSizeOtherParameter = pageSizeOther.HasValue ?
+                new ObjectParameter("pageSizeOther", pageSizeOther) :
+                new ObjectParameter("pageSizeOther", typeof(int));
+    
+            var blankLneForFooterParameter = blankLneForFooter.HasValue ?
+                new ObjectParameter("blankLneForFooter", blankLneForFooter) :
+                new ObjectParameter("blankLneForFooter", typeof(int));
+    
+            var footerLocationParameter = footerLocation != null ?
+                new ObjectParameter("footerLocation", footerLocation) :
+                new ObjectParameter("footerLocation", typeof(string));
+    
+            var lineCountBetweenTwoParameter = lineCountBetweenTwo.HasValue ?
+                new ObjectParameter("lineCountBetweenTwo", lineCountBetweenTwo) :
+                new ObjectParameter("lineCountBetweenTwo", typeof(int));
+    
+            var pitchParameter = pitch != null ?
+                new ObjectParameter("pitch", pitch) :
+                new ObjectParameter("pitch", typeof(string));
+    
+            var condensedParameter = condensed != null ?
+                new ObjectParameter("condensed", condensed) :
+                new ObjectParameter("condensed", typeof(string));
+    
+            var lineCountAfterPrintParameter = lineCountAfterPrint.HasValue ?
+                new ObjectParameter("lineCountAfterPrint", lineCountAfterPrint) :
+                new ObjectParameter("lineCountAfterPrint", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MasterCopyEdit", masterIdParameter, formNameParameter, isTwoLineForHedderParameter, isTwoLineForDetailsParameter, pageSize1Parameter, pageSizeOtherParameter, blankLneForFooterParameter, footerLocationParameter, lineCountBetweenTwoParameter, pitchParameter, condensedParameter, lineCountAfterPrintParameter);
+        }
+    
+        public virtual ObjectResult<string> MasterCopyExistCheck(Nullable<int> masterId)
+        {
+            var masterIdParameter = masterId.HasValue ?
+                new ObjectParameter("masterId", masterId) :
+                new ObjectParameter("masterId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("MasterCopyExistCheck", masterIdParameter);
+        }
+    
+        public virtual ObjectResult<MasterCopyViewByFormName_Result> MasterCopyViewByFormName(Nullable<int> formName)
+        {
+            var formNameParameter = formName.HasValue ?
+                new ObjectParameter("formName", formName) :
+                new ObjectParameter("formName", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MasterCopyViewByFormName_Result>("MasterCopyViewByFormName", formNameParameter);
+        }
+    
+        public virtual int MasterDelete(Nullable<int> masterId)
+        {
+            var masterIdParameter = masterId.HasValue ?
+                new ObjectParameter("masterId", masterId) :
+                new ObjectParameter("masterId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MasterDelete", masterIdParameter);
+        }
+    
+        public virtual int MasterEdit(Nullable<int> masterId, Nullable<int> formName, Nullable<bool> isTwoLineForHedder, Nullable<bool> isTwoLineForDetails, Nullable<int> pageSize1, Nullable<int> pageSizeOther, Nullable<int> blankLneForFooter, string footerLocation, Nullable<int> lineCountBetweenTwo, string pitch, string condensed, Nullable<int> lineCountAfterPrint)
+        {
+            var masterIdParameter = masterId.HasValue ?
+                new ObjectParameter("masterId", masterId) :
+                new ObjectParameter("masterId", typeof(int));
+    
+            var formNameParameter = formName.HasValue ?
+                new ObjectParameter("formName", formName) :
+                new ObjectParameter("formName", typeof(int));
+    
+            var isTwoLineForHedderParameter = isTwoLineForHedder.HasValue ?
+                new ObjectParameter("isTwoLineForHedder", isTwoLineForHedder) :
+                new ObjectParameter("isTwoLineForHedder", typeof(bool));
+    
+            var isTwoLineForDetailsParameter = isTwoLineForDetails.HasValue ?
+                new ObjectParameter("isTwoLineForDetails", isTwoLineForDetails) :
+                new ObjectParameter("isTwoLineForDetails", typeof(bool));
+    
+            var pageSize1Parameter = pageSize1.HasValue ?
+                new ObjectParameter("pageSize1", pageSize1) :
+                new ObjectParameter("pageSize1", typeof(int));
+    
+            var pageSizeOtherParameter = pageSizeOther.HasValue ?
+                new ObjectParameter("pageSizeOther", pageSizeOther) :
+                new ObjectParameter("pageSizeOther", typeof(int));
+    
+            var blankLneForFooterParameter = blankLneForFooter.HasValue ?
+                new ObjectParameter("blankLneForFooter", blankLneForFooter) :
+                new ObjectParameter("blankLneForFooter", typeof(int));
+    
+            var footerLocationParameter = footerLocation != null ?
+                new ObjectParameter("footerLocation", footerLocation) :
+                new ObjectParameter("footerLocation", typeof(string));
+    
+            var lineCountBetweenTwoParameter = lineCountBetweenTwo.HasValue ?
+                new ObjectParameter("lineCountBetweenTwo", lineCountBetweenTwo) :
+                new ObjectParameter("lineCountBetweenTwo", typeof(int));
+    
+            var pitchParameter = pitch != null ?
+                new ObjectParameter("pitch", pitch) :
+                new ObjectParameter("pitch", typeof(string));
+    
+            var condensedParameter = condensed != null ?
+                new ObjectParameter("condensed", condensed) :
+                new ObjectParameter("condensed", typeof(string));
+    
+            var lineCountAfterPrintParameter = lineCountAfterPrint.HasValue ?
+                new ObjectParameter("lineCountAfterPrint", lineCountAfterPrint) :
+                new ObjectParameter("lineCountAfterPrint", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MasterEdit", masterIdParameter, formNameParameter, isTwoLineForHedderParameter, isTwoLineForDetailsParameter, pageSize1Parameter, pageSizeOtherParameter, blankLneForFooterParameter, footerLocationParameter, lineCountBetweenTwoParameter, pitchParameter, condensedParameter, lineCountAfterPrintParameter);
+        }
+    
+        public virtual ObjectResult<MasterViewByFormName_Result> MasterViewByFormName(Nullable<int> formName)
+        {
+            var formNameParameter = formName.HasValue ?
+                new ObjectParameter("formName", formName) :
+                new ObjectParameter("formName", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MasterViewByFormName_Result>("MasterViewByFormName", formNameParameter);
         }
     
         public virtual ObjectResult<MaterialReceiptDetailsViewByMaterialReceiptMasterIdWithRemainingByNotInCurrPI_Result> MaterialReceiptDetailsViewByMaterialReceiptMasterIdWithRemainingByNotInCurrPI(string materialReceiptMasterId, string purchaseMasterId, Nullable<decimal> voucherTypeId)

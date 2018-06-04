@@ -8026,6 +8026,24 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Parameter Name="toDate" Type="datetime" Mode="In" />
         </Function>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="FormAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="formName" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="FormDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="formId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="FormEdit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="formId" Type="int" Mode="In" />
+          <Parameter Name="formName" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="FormEditFull" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="formId" Type="int" Mode="In" />
+          <Parameter Name="formName" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="FormView" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="formId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="FormViewAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="FundFlow1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="fromDate" Type="datetime" Mode="In" />
           <Parameter Name="toDate" Type="datetime" Mode="In" />
@@ -8163,6 +8181,73 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
         </Function>
         <Function Name="LedgerPostingIdByServiceMaasterId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="serviceMasterId" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="MasterAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="formName" Type="int" Mode="In" />
+          <Parameter Name="isTwoLineForHedder" Type="bit" Mode="In" />
+          <Parameter Name="isTwoLineForDetails" Type="bit" Mode="In" />
+          <Parameter Name="pageSize1" Type="int" Mode="In" />
+          <Parameter Name="pageSizeOther" Type="int" Mode="In" />
+          <Parameter Name="blankLneForFooter" Type="int" Mode="In" />
+          <Parameter Name="footerLocation" Type="varchar(max)" Mode="In" />
+          <Parameter Name="lineCountBetweenTwo" Type="int" Mode="In" />
+          <Parameter Name="pitch" Type="varchar(max)" Mode="In" />
+          <Parameter Name="condensed" Type="varchar(max)" Mode="In" />
+          <Parameter Name="lineCountAfterPrint" Type="int" Mode="In" />
+        </Function>
+        <Function Name="MasterCopyAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="masterId" Type="int" Mode="In" />
+          <Parameter Name="formName" Type="int" Mode="In" />
+          <Parameter Name="isTwoLineForHedder" Type="bit" Mode="In" />
+          <Parameter Name="isTwoLineForDetails" Type="bit" Mode="In" />
+          <Parameter Name="pageSize1" Type="int" Mode="In" />
+          <Parameter Name="pageSizeOther" Type="int" Mode="In" />
+          <Parameter Name="blankLneForFooter" Type="int" Mode="In" />
+          <Parameter Name="footerLocation" Type="varchar(max)" Mode="In" />
+          <Parameter Name="lineCountBetweenTwo" Type="int" Mode="In" />
+          <Parameter Name="pitch" Type="varchar(max)" Mode="In" />
+          <Parameter Name="condensed" Type="varchar(max)" Mode="In" />
+          <Parameter Name="lineCountAfterPrint" Type="int" Mode="In" />
+        </Function>
+        <Function Name="MasterCopyEdit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="masterId" Type="int" Mode="In" />
+          <Parameter Name="formName" Type="int" Mode="In" />
+          <Parameter Name="isTwoLineForHedder" Type="bit" Mode="In" />
+          <Parameter Name="isTwoLineForDetails" Type="bit" Mode="In" />
+          <Parameter Name="pageSize1" Type="int" Mode="In" />
+          <Parameter Name="pageSizeOther" Type="int" Mode="In" />
+          <Parameter Name="blankLneForFooter" Type="int" Mode="In" />
+          <Parameter Name="footerLocation" Type="varchar(max)" Mode="In" />
+          <Parameter Name="lineCountBetweenTwo" Type="int" Mode="In" />
+          <Parameter Name="pitch" Type="varchar(max)" Mode="In" />
+          <Parameter Name="condensed" Type="varchar(max)" Mode="In" />
+          <Parameter Name="lineCountAfterPrint" Type="int" Mode="In" />
+        </Function>
+        <Function Name="MasterCopyExistCheck" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="masterId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="MasterCopyViewByFormName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="formName" Type="int" Mode="In" />
+        </Function>
+        <Function Name="MasterDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="masterId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="MasterEdit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="masterId" Type="int" Mode="In" />
+          <Parameter Name="formName" Type="int" Mode="In" />
+          <Parameter Name="isTwoLineForHedder" Type="bit" Mode="In" />
+          <Parameter Name="isTwoLineForDetails" Type="bit" Mode="In" />
+          <Parameter Name="pageSize1" Type="int" Mode="In" />
+          <Parameter Name="pageSizeOther" Type="int" Mode="In" />
+          <Parameter Name="blankLneForFooter" Type="int" Mode="In" />
+          <Parameter Name="footerLocation" Type="varchar(max)" Mode="In" />
+          <Parameter Name="lineCountBetweenTwo" Type="int" Mode="In" />
+          <Parameter Name="pitch" Type="varchar(max)" Mode="In" />
+          <Parameter Name="condensed" Type="varchar(max)" Mode="In" />
+          <Parameter Name="lineCountAfterPrint" Type="int" Mode="In" />
+        </Function>
+        <Function Name="MasterViewByFormName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="formName" Type="int" Mode="In" />
         </Function>
         <Function Name="MaterialReceiptDetailsViewByMaterialReceiptMasterIdWithRemainingByNotInCurrPI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="materialReceiptMasterId" Type="varchar" Mode="In" />
@@ -21695,6 +21780,24 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <Parameter Name="fromDate" Mode="In" Type="DateTime" />
             <Parameter Name="toDate" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <FunctionImport Name="FormAdd" ReturnType="Collection(Decimal)">
+            <Parameter Name="formName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="FormDelete" ReturnType="Collection(String)">
+            <Parameter Name="formId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="FormEdit" ReturnType="Collection(String)">
+            <Parameter Name="formId" Mode="In" Type="Int32" />
+            <Parameter Name="formName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="FormEditFull">
+            <Parameter Name="formId" Mode="In" Type="Int32" />
+            <Parameter Name="formName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="FormView" ReturnType="Collection(IMEModel.FormView_Result)">
+            <Parameter Name="formId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="FormViewAll" ReturnType="Collection(IMEModel.FormViewAll_Result)" />
           <FunctionImport Name="FundFlow1" ReturnType="Collection(IMEModel.FundFlow1_Result)">
             <Parameter Name="fromDate" Mode="In" Type="DateTime" />
             <Parameter Name="toDate" Mode="In" Type="DateTime" />
@@ -21822,6 +21925,73 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           </FunctionImport>
           <FunctionImport Name="LedgerPostingIdByServiceMaasterId" ReturnType="Collection(Decimal)">
             <Parameter Name="serviceMasterId" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="MasterAdd" ReturnType="Collection(Decimal)">
+            <Parameter Name="formName" Mode="In" Type="Int32" />
+            <Parameter Name="isTwoLineForHedder" Mode="In" Type="Boolean" />
+            <Parameter Name="isTwoLineForDetails" Mode="In" Type="Boolean" />
+            <Parameter Name="pageSize1" Mode="In" Type="Int32" />
+            <Parameter Name="pageSizeOther" Mode="In" Type="Int32" />
+            <Parameter Name="blankLneForFooter" Mode="In" Type="Int32" />
+            <Parameter Name="footerLocation" Mode="In" Type="String" />
+            <Parameter Name="lineCountBetweenTwo" Mode="In" Type="Int32" />
+            <Parameter Name="pitch" Mode="In" Type="String" />
+            <Parameter Name="condensed" Mode="In" Type="String" />
+            <Parameter Name="lineCountAfterPrint" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="MasterCopyAdd">
+            <Parameter Name="masterId" Mode="In" Type="Int32" />
+            <Parameter Name="formName" Mode="In" Type="Int32" />
+            <Parameter Name="isTwoLineForHedder" Mode="In" Type="Boolean" />
+            <Parameter Name="isTwoLineForDetails" Mode="In" Type="Boolean" />
+            <Parameter Name="pageSize1" Mode="In" Type="Int32" />
+            <Parameter Name="pageSizeOther" Mode="In" Type="Int32" />
+            <Parameter Name="blankLneForFooter" Mode="In" Type="Int32" />
+            <Parameter Name="footerLocation" Mode="In" Type="String" />
+            <Parameter Name="lineCountBetweenTwo" Mode="In" Type="Int32" />
+            <Parameter Name="pitch" Mode="In" Type="String" />
+            <Parameter Name="condensed" Mode="In" Type="String" />
+            <Parameter Name="lineCountAfterPrint" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="MasterCopyEdit">
+            <Parameter Name="masterId" Mode="In" Type="Int32" />
+            <Parameter Name="formName" Mode="In" Type="Int32" />
+            <Parameter Name="isTwoLineForHedder" Mode="In" Type="Boolean" />
+            <Parameter Name="isTwoLineForDetails" Mode="In" Type="Boolean" />
+            <Parameter Name="pageSize1" Mode="In" Type="Int32" />
+            <Parameter Name="pageSizeOther" Mode="In" Type="Int32" />
+            <Parameter Name="blankLneForFooter" Mode="In" Type="Int32" />
+            <Parameter Name="footerLocation" Mode="In" Type="String" />
+            <Parameter Name="lineCountBetweenTwo" Mode="In" Type="Int32" />
+            <Parameter Name="pitch" Mode="In" Type="String" />
+            <Parameter Name="condensed" Mode="In" Type="String" />
+            <Parameter Name="lineCountAfterPrint" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="MasterCopyExistCheck" ReturnType="Collection(String)">
+            <Parameter Name="masterId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="MasterCopyViewByFormName" ReturnType="Collection(IMEModel.MasterCopyViewByFormName_Result)">
+            <Parameter Name="formName" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="MasterDelete">
+            <Parameter Name="masterId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="MasterEdit">
+            <Parameter Name="masterId" Mode="In" Type="Int32" />
+            <Parameter Name="formName" Mode="In" Type="Int32" />
+            <Parameter Name="isTwoLineForHedder" Mode="In" Type="Boolean" />
+            <Parameter Name="isTwoLineForDetails" Mode="In" Type="Boolean" />
+            <Parameter Name="pageSize1" Mode="In" Type="Int32" />
+            <Parameter Name="pageSizeOther" Mode="In" Type="Int32" />
+            <Parameter Name="blankLneForFooter" Mode="In" Type="Int32" />
+            <Parameter Name="footerLocation" Mode="In" Type="String" />
+            <Parameter Name="lineCountBetweenTwo" Mode="In" Type="Int32" />
+            <Parameter Name="pitch" Mode="In" Type="String" />
+            <Parameter Name="condensed" Mode="In" Type="String" />
+            <Parameter Name="lineCountAfterPrint" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="MasterViewByFormName" ReturnType="Collection(IMEModel.MasterViewByFormName_Result)">
+            <Parameter Name="formName" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="MaterialReceiptDetailsViewByMaterialReceiptMasterIdWithRemainingByNotInCurrPI" ReturnType="Collection(IMEModel.MaterialReceiptDetailsViewByMaterialReceiptMasterIdWithRemainingByNotInCurrPI_Result)">
             <Parameter Name="materialReceiptMasterId" Mode="In" Type="String" />
@@ -24070,6 +24240,14 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="Int32" Name="formId" Nullable="true" />
           <Property Type="String" Name="fieldName" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="FormView_Result">
+          <Property Type="Int32" Name="formId" Nullable="false" />
+          <Property Type="String" Name="formName" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="FormViewAll_Result">
+          <Property Type="Int32" Name="formId" Nullable="false" />
+          <Property Type="String" Name="formName" Nullable="true" />
+        </ComplexType>
         <ComplexType Name="FundFlow1_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
@@ -24229,6 +24407,34 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="String" Name="ledgerName" Nullable="true" />
           <Property Type="String" Name="Balance" Nullable="true" />
           <Property Type="Int32" Name="accountGroupId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="MasterCopyViewByFormName_Result">
+          <Property Type="Int32" Name="masterId" Nullable="false" />
+          <Property Type="Int32" Name="formName" Nullable="true" />
+          <Property Type="Boolean" Name="isTwoLineForHedder" Nullable="true" />
+          <Property Type="Boolean" Name="isTwoLineForDetails" Nullable="true" />
+          <Property Type="Int32" Name="pageSize1" Nullable="true" />
+          <Property Type="Int32" Name="pageSizeOther" Nullable="true" />
+          <Property Type="Int32" Name="blankLneForFooter" Nullable="true" />
+          <Property Type="String" Name="footerLocation" Nullable="true" />
+          <Property Type="Int32" Name="lineCountBetweenTwo" Nullable="true" />
+          <Property Type="String" Name="pitch" Nullable="true" />
+          <Property Type="String" Name="condensed" Nullable="true" />
+          <Property Type="Int32" Name="lineCountAfterPrint" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="MasterViewByFormName_Result">
+          <Property Type="Int32" Name="masterId" Nullable="false" />
+          <Property Type="Int32" Name="formName" Nullable="true" />
+          <Property Type="Boolean" Name="isTwoLineForHedder" Nullable="true" />
+          <Property Type="Boolean" Name="isTwoLineForDetails" Nullable="true" />
+          <Property Type="Int32" Name="pageSize1" Nullable="true" />
+          <Property Type="Int32" Name="pageSizeOther" Nullable="true" />
+          <Property Type="Int32" Name="blankLneForFooter" Nullable="true" />
+          <Property Type="String" Name="footerLocation" Nullable="true" />
+          <Property Type="Int32" Name="lineCountBetweenTwo" Nullable="true" />
+          <Property Type="String" Name="pitch" Nullable="true" />
+          <Property Type="String" Name="condensed" Nullable="true" />
+          <Property Type="Int32" Name="lineCountAfterPrint" Nullable="true" />
         </ComplexType>
         <ComplexType Name="MaterialReceiptDetailsViewByMaterialReceiptMasterIdWithRemainingByNotInCurrPI_Result">
           <Property Type="Decimal" Name="purchaseDetailsId" Nullable="true" Precision="18" Scale="0" />
@@ -29639,6 +29845,26 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="FinancialYearAddWithReturnIdentity" FunctionName="IMEModel.Store.FinancialYearAddWithReturnIdentity" />
           <FunctionImportMapping FunctionImportName="FinancialYearExistenceCheck" FunctionName="IMEModel.Store.FinancialYearExistenceCheck" />
+          <FunctionImportMapping FunctionImportName="FormAdd" FunctionName="IMEModel.Store.FormAdd" />
+          <FunctionImportMapping FunctionImportName="FormDelete" FunctionName="IMEModel.Store.FormDelete" />
+          <FunctionImportMapping FunctionImportName="FormEdit" FunctionName="IMEModel.Store.FormEdit" />
+          <FunctionImportMapping FunctionImportName="FormEditFull" FunctionName="IMEModel.Store.FormEditFull" />
+          <FunctionImportMapping FunctionImportName="FormView" FunctionName="IMEModel.Store.FormView">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.FormView_Result">
+                <ScalarProperty Name="formId" ColumnName="formId" />
+                <ScalarProperty Name="formName" ColumnName="formName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="FormViewAll" FunctionName="IMEModel.Store.FormViewAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.FormViewAll_Result">
+                <ScalarProperty Name="formId" ColumnName="formId" />
+                <ScalarProperty Name="formName" ColumnName="formName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="FundFlow1" FunctionName="IMEModel.Store.FundFlow1">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.FundFlow1_Result">
@@ -29889,6 +30115,48 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <FunctionImportMapping FunctionImportName="LedgerPostingDeleteByVoucherTypeIdAndLedgerIdAndVoucherNoAndExtra" FunctionName="IMEModel.Store.LedgerPostingDeleteByVoucherTypeIdAndLedgerIdAndVoucherNoAndExtra" />
           <FunctionImportMapping FunctionImportName="LedgerPostingEditByVoucherTypeAndVoucherNoAndLedgerid" FunctionName="IMEModel.Store.LedgerPostingEditByVoucherTypeAndVoucherNoAndLedgerid" />
           <FunctionImportMapping FunctionImportName="LedgerPostingIdByServiceMaasterId" FunctionName="IMEModel.Store.LedgerPostingIdByServiceMaasterId" />
+          <FunctionImportMapping FunctionImportName="MasterAdd" FunctionName="IMEModel.Store.MasterAdd" />
+          <FunctionImportMapping FunctionImportName="MasterCopyAdd" FunctionName="IMEModel.Store.MasterCopyAdd" />
+          <FunctionImportMapping FunctionImportName="MasterCopyEdit" FunctionName="IMEModel.Store.MasterCopyEdit" />
+          <FunctionImportMapping FunctionImportName="MasterCopyExistCheck" FunctionName="IMEModel.Store.MasterCopyExistCheck" />
+          <FunctionImportMapping FunctionImportName="MasterCopyViewByFormName" FunctionName="IMEModel.Store.MasterCopyViewByFormName">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.MasterCopyViewByFormName_Result">
+                <ScalarProperty Name="masterId" ColumnName="masterId" />
+                <ScalarProperty Name="formName" ColumnName="formName" />
+                <ScalarProperty Name="isTwoLineForHedder" ColumnName="isTwoLineForHedder" />
+                <ScalarProperty Name="isTwoLineForDetails" ColumnName="isTwoLineForDetails" />
+                <ScalarProperty Name="pageSize1" ColumnName="pageSize1" />
+                <ScalarProperty Name="pageSizeOther" ColumnName="pageSizeOther" />
+                <ScalarProperty Name="blankLneForFooter" ColumnName="blankLneForFooter" />
+                <ScalarProperty Name="footerLocation" ColumnName="footerLocation" />
+                <ScalarProperty Name="lineCountBetweenTwo" ColumnName="lineCountBetweenTwo" />
+                <ScalarProperty Name="pitch" ColumnName="pitch" />
+                <ScalarProperty Name="condensed" ColumnName="condensed" />
+                <ScalarProperty Name="lineCountAfterPrint" ColumnName="lineCountAfterPrint" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="MasterDelete" FunctionName="IMEModel.Store.MasterDelete" />
+          <FunctionImportMapping FunctionImportName="MasterEdit" FunctionName="IMEModel.Store.MasterEdit" />
+          <FunctionImportMapping FunctionImportName="MasterViewByFormName" FunctionName="IMEModel.Store.MasterViewByFormName">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.MasterViewByFormName_Result">
+                <ScalarProperty Name="masterId" ColumnName="masterId" />
+                <ScalarProperty Name="formName" ColumnName="formName" />
+                <ScalarProperty Name="isTwoLineForHedder" ColumnName="isTwoLineForHedder" />
+                <ScalarProperty Name="isTwoLineForDetails" ColumnName="isTwoLineForDetails" />
+                <ScalarProperty Name="pageSize1" ColumnName="pageSize1" />
+                <ScalarProperty Name="pageSizeOther" ColumnName="pageSizeOther" />
+                <ScalarProperty Name="blankLneForFooter" ColumnName="blankLneForFooter" />
+                <ScalarProperty Name="footerLocation" ColumnName="footerLocation" />
+                <ScalarProperty Name="lineCountBetweenTwo" ColumnName="lineCountBetweenTwo" />
+                <ScalarProperty Name="pitch" ColumnName="pitch" />
+                <ScalarProperty Name="condensed" ColumnName="condensed" />
+                <ScalarProperty Name="lineCountAfterPrint" ColumnName="lineCountAfterPrint" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="MaterialReceiptDetailsViewByMaterialReceiptMasterIdWithRemainingByNotInCurrPI" FunctionName="IMEModel.Store.MaterialReceiptDetailsViewByMaterialReceiptMasterIdWithRemainingByNotInCurrPI">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.MaterialReceiptDetailsViewByMaterialReceiptMasterIdWithRemainingByNotInCurrPI_Result">
