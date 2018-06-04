@@ -1319,9 +1319,6 @@
     <Compile Include="DataSet\MonthlySalaryDetail.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\MonthlySalaryDetail1.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\MonthlySalaryRegisterSearch_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
