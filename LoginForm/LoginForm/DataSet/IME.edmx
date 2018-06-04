@@ -614,6 +614,50 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="advanceAmount" Type="decimal" Precision="18" Scale="5" />
           <Property Name="narration" Type="varchar(max)" />
         </EntityType>
+        <EntityType Name="Detail">
+          <Key>
+            <PropertyRef Name="detailId" />
+          </Key>
+          <Property Name="detailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="masterId" Type="int" />
+          <Property Name="name" Type="varchar(max)" />
+          <Property Name="text" Type="varchar(max)" />
+          <Property Name="row" Type="int" />
+          <Property Name="columns" Type="int" />
+          <Property Name="width" Type="int" />
+          <Property Name="dbf" Type="varchar(max)" />
+          <Property Name="DorH" Type="varchar(max)" />
+          <Property Name="repeat" Type="varchar(max)" />
+          <Property Name="align" Type="varchar(max)" />
+          <Property Name="repeatAll" Type="varchar(max)" />
+          <Property Name="footerRepeatAll" Type="varchar(max)" />
+          <Property Name="textWrap" Type="varchar(max)" />
+          <Property Name="wrapLineCount" Type="int" />
+          <Property Name="extraFieldName" Type="varchar(max)" />
+          <Property Name="fieldsForExtra" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="DetailCopy">
+          <Key>
+            <PropertyRef Name="detailId" />
+          </Key>
+          <Property Name="detailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="masterId" Type="int" />
+          <Property Name="name" Type="varchar(max)" />
+          <Property Name="text" Type="varchar(max)" />
+          <Property Name="row" Type="int" />
+          <Property Name="columns" Type="int" />
+          <Property Name="width" Type="int" />
+          <Property Name="dbf" Type="varchar(max)" />
+          <Property Name="DorH" Type="varchar(max)" />
+          <Property Name="repeat" Type="varchar(max)" />
+          <Property Name="align" Type="varchar(max)" />
+          <Property Name="repeatAll" Type="varchar(max)" />
+          <Property Name="footerRepeatAll" Type="varchar(max)" />
+          <Property Name="textWrap" Type="varchar(max)" />
+          <Property Name="wrapLineCount" Type="int" />
+          <Property Name="extraFieldName" Type="varchar(max)" />
+          <Property Name="fieldsForExtra" Type="varchar(max)" />
+        </EntityType>
         <EntityType Name="DiscountValues">
           <Key>
             <PropertyRef Name="ID" />
@@ -685,6 +729,22 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="ManufacturerCode" Type="nvarchar" MaxLength="15" />
           <Property Name="ExtendedRangeWeight" Type="decimal" Precision="18" Scale="5" />
         </EntityType>
+        <EntityType Name="Field">
+          <Key>
+            <PropertyRef Name="fieldId" />
+          </Key>
+          <Property Name="fieldId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="formId" Type="int" />
+          <Property Name="fieldName" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="FieldCopy">
+          <Key>
+            <PropertyRef Name="fieldId" />
+          </Key>
+          <Property Name="fieldId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="formId" Type="int" />
+          <Property Name="fieldName" Type="varchar(max)" />
+        </EntityType>
         <EntityType Name="FinancialYear">
           <Key>
             <PropertyRef Name="financialYearId" />
@@ -693,6 +753,20 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="fromDate" Type="datetime" />
           <Property Name="toDate" Type="datetime" />
           <Property Name="extraDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Form">
+          <Key>
+            <PropertyRef Name="formId" />
+          </Key>
+          <Property Name="formId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="formName" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="FormCopy">
+          <Key>
+            <PropertyRef Name="formId" />
+          </Key>
+          <Property Name="formId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="formName" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="Godown">
           <Key>
@@ -850,6 +924,23 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
             <PropertyRef Name="masterId" />
           </Key>
           <Property Name="masterId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="formName" Type="int" />
+          <Property Name="isTwoLineForHedder" Type="bit" />
+          <Property Name="isTwoLineForDetails" Type="bit" />
+          <Property Name="pageSize1" Type="int" />
+          <Property Name="pageSizeOther" Type="int" />
+          <Property Name="blankLneForFooter" Type="int" />
+          <Property Name="footerLocation" Type="varchar(max)" />
+          <Property Name="lineCountBetweenTwo" Type="int" />
+          <Property Name="pitch" Type="varchar(max)" />
+          <Property Name="condensed" Type="varchar(max)" />
+          <Property Name="lineCountAfterPrint" Type="int" />
+        </EntityType>
+        <EntityType Name="MasterCopy">
+          <Key>
+            <PropertyRef Name="masterId" />
+          </Key>
+          <Property Name="masterId" Type="int" Nullable="false" />
           <Property Name="formName" Type="int" />
           <Property Name="isTwoLineForHedder" Type="bit" />
           <Property Name="isTwoLineForDetails" Type="bit" />
@@ -9506,11 +9597,17 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <EntitySet Name="DeliveryNoteDetail" EntityType="Self.DeliveryNoteDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DeliveryNoteMaster" EntityType="Self.DeliveryNoteMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Designation" EntityType="Self.Designation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Detail" EntityType="Self.Detail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetailCopy" EntityType="Self.DetailCopy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DiscountValues" EntityType="Self.DiscountValues" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DualUse" EntityType="Self.DualUse" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ExchangeRate" EntityType="Self.ExchangeRate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ExtendedRange" EntityType="Self.ExtendedRange" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Field" EntityType="Self.Field" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FieldCopy" EntityType="Self.FieldCopy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FinancialYear" EntityType="Self.FinancialYear" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Form" EntityType="Self.Form" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FormCopy" EntityType="Self.FormCopy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Godown" EntityType="Self.Godown" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Hazardous" EntityType="Self.Hazardous" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Holiday" EntityType="Self.Holiday" Schema="dbo" store:Type="Tables" />
@@ -9524,6 +9621,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <EntitySet Name="Mail" EntityType="Self.Mail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Management" EntityType="Self.Management" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Master" EntityType="Self.Master" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MasterCopy" EntityType="Self.MasterCopy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MaterialReceiptDetails" EntityType="Self.MaterialReceiptDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MaterialReceiptMaster" EntityType="Self.MaterialReceiptMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MonthlySalary" EntityType="Self.MonthlySalary" Schema="dbo" store:Type="Tables" />
@@ -11985,6 +12083,50 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Workers" Relationship="Self.FK__Worker__designat__6F6A7CB2" FromRole="Designation" ToRole="Worker" />
         </EntityType>
+        <EntityType Name="Detail">
+          <Key>
+            <PropertyRef Name="detailId" />
+          </Key>
+          <Property Name="detailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="masterId" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="row" Type="Int32" />
+          <Property Name="columns" Type="Int32" />
+          <Property Name="width" Type="Int32" />
+          <Property Name="dbf" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DorH" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="repeat" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="align" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="repeatAll" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="footerRepeatAll" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="textWrap" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="wrapLineCount" Type="Int32" />
+          <Property Name="extraFieldName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="fieldsForExtra" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="DetailCopy">
+          <Key>
+            <PropertyRef Name="detailId" />
+          </Key>
+          <Property Name="detailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="masterId" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="row" Type="Int32" />
+          <Property Name="columns" Type="Int32" />
+          <Property Name="width" Type="Int32" />
+          <Property Name="dbf" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DorH" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="repeat" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="align" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="repeatAll" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="footerRepeatAll" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="textWrap" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="wrapLineCount" Type="Int32" />
+          <Property Name="extraFieldName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="fieldsForExtra" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
         <EntityType Name="DiscountValue">
           <Key>
             <PropertyRef Name="ID" />
@@ -12078,6 +12220,22 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="ManufacturerCode" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="ExtendedRangeWeight" Type="Decimal" Precision="18" Scale="5" />
         </EntityType>
+        <EntityType Name="Field">
+          <Key>
+            <PropertyRef Name="fieldId" />
+          </Key>
+          <Property Name="fieldId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="formId" Type="Int32" />
+          <Property Name="fieldName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="FieldCopy">
+          <Key>
+            <PropertyRef Name="fieldId" />
+          </Key>
+          <Property Name="fieldId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="formId" Type="Int32" />
+          <Property Name="fieldName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
         <EntityType Name="FinancialYear">
           <Key>
             <PropertyRef Name="financialYearId" />
@@ -12110,6 +12268,20 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <NavigationProperty Name="ServiceMasters" Relationship="Self.FK__ServiceMa__finan__2215F810" FromRole="FinancialYear" ToRole="ServiceMaster" />
           <NavigationProperty Name="StockJournalMasters" Relationship="Self.FK__StockJour__finan__2764BD12" FromRole="FinancialYear" ToRole="StockJournalMaster" />
           <NavigationProperty Name="SaleOrders" Relationship="Self.FK_SaleOrder_FinancialYear" FromRole="FinancialYear" ToRole="SaleOrder" />
+        </EntityType>
+        <EntityType Name="Form">
+          <Key>
+            <PropertyRef Name="formId" />
+          </Key>
+          <Property Name="formId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="formName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="FormCopy">
+          <Key>
+            <PropertyRef Name="formId" />
+          </Key>
+          <Property Name="formId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="formName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Godown">
           <Key>
@@ -12298,6 +12470,23 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <PropertyRef Name="masterId" />
           </Key>
           <Property Name="masterId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="formName" Type="Int32" />
+          <Property Name="isTwoLineForHedder" Type="Boolean" />
+          <Property Name="isTwoLineForDetails" Type="Boolean" />
+          <Property Name="pageSize1" Type="Int32" />
+          <Property Name="pageSizeOther" Type="Int32" />
+          <Property Name="blankLneForFooter" Type="Int32" />
+          <Property Name="footerLocation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="lineCountBetweenTwo" Type="Int32" />
+          <Property Name="pitch" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="condensed" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="lineCountAfterPrint" Type="Int32" />
+        </EntityType>
+        <EntityType Name="MasterCopy">
+          <Key>
+            <PropertyRef Name="masterId" />
+          </Key>
+          <Property Name="masterId" Type="Int32" Nullable="false" />
           <Property Name="formName" Type="Int32" />
           <Property Name="isTwoLineForHedder" Type="Boolean" />
           <Property Name="isTwoLineForDetails" Type="Boolean" />
@@ -18970,11 +19159,17 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <EntitySet Name="DeliveryNoteDetails" EntityType="Self.DeliveryNoteDetail" />
           <EntitySet Name="DeliveryNoteMasters" EntityType="Self.DeliveryNoteMaster" />
           <EntitySet Name="Designations" EntityType="Self.Designation" />
+          <EntitySet Name="Details" EntityType="Self.Detail" />
+          <EntitySet Name="DetailCopies" EntityType="Self.DetailCopy" />
           <EntitySet Name="DiscountValues" EntityType="Self.DiscountValue" />
           <EntitySet Name="DualUses" EntityType="Self.DualUse" />
           <EntitySet Name="ExchangeRates" EntityType="Self.ExchangeRate" />
           <EntitySet Name="ExtendedRanges" EntityType="Self.ExtendedRange" />
+          <EntitySet Name="Fields" EntityType="Self.Field" />
+          <EntitySet Name="FieldCopies" EntityType="Self.FieldCopy" />
           <EntitySet Name="FinancialYears" EntityType="Self.FinancialYear" />
+          <EntitySet Name="Forms" EntityType="Self.Form" />
+          <EntitySet Name="FormCopies" EntityType="Self.FormCopy" />
           <EntitySet Name="Godowns" EntityType="Self.Godown" />
           <EntitySet Name="Hazardous" EntityType="Self.Hazardou" />
           <EntitySet Name="Holidays" EntityType="Self.Holiday" />
@@ -18988,6 +19183,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <EntitySet Name="Mails" EntityType="Self.Mail" />
           <EntitySet Name="Managements" EntityType="Self.Management" />
           <EntitySet Name="Masters" EntityType="Self.Master" />
+          <EntitySet Name="MasterCopies" EntityType="Self.MasterCopy" />
           <EntitySet Name="MaterialReceiptDetails" EntityType="Self.MaterialReceiptDetail" />
           <EntitySet Name="MaterialReceiptMasters" EntityType="Self.MaterialReceiptMaster" />
           <EntitySet Name="MonthlySalaries" EntityType="Self.MonthlySalary" />
@@ -25829,6 +26025,52 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Details">
+            <EntityTypeMapping TypeName="IMEModel.Detail">
+              <MappingFragment StoreEntitySet="Detail">
+                <ScalarProperty Name="detailId" ColumnName="detailId" />
+                <ScalarProperty Name="masterId" ColumnName="masterId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="row" ColumnName="row" />
+                <ScalarProperty Name="columns" ColumnName="columns" />
+                <ScalarProperty Name="width" ColumnName="width" />
+                <ScalarProperty Name="dbf" ColumnName="dbf" />
+                <ScalarProperty Name="DorH" ColumnName="DorH" />
+                <ScalarProperty Name="repeat" ColumnName="repeat" />
+                <ScalarProperty Name="align" ColumnName="align" />
+                <ScalarProperty Name="repeatAll" ColumnName="repeatAll" />
+                <ScalarProperty Name="footerRepeatAll" ColumnName="footerRepeatAll" />
+                <ScalarProperty Name="textWrap" ColumnName="textWrap" />
+                <ScalarProperty Name="wrapLineCount" ColumnName="wrapLineCount" />
+                <ScalarProperty Name="extraFieldName" ColumnName="extraFieldName" />
+                <ScalarProperty Name="fieldsForExtra" ColumnName="fieldsForExtra" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetailCopies">
+            <EntityTypeMapping TypeName="IMEModel.DetailCopy">
+              <MappingFragment StoreEntitySet="DetailCopy">
+                <ScalarProperty Name="detailId" ColumnName="detailId" />
+                <ScalarProperty Name="masterId" ColumnName="masterId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="row" ColumnName="row" />
+                <ScalarProperty Name="columns" ColumnName="columns" />
+                <ScalarProperty Name="width" ColumnName="width" />
+                <ScalarProperty Name="dbf" ColumnName="dbf" />
+                <ScalarProperty Name="DorH" ColumnName="DorH" />
+                <ScalarProperty Name="repeat" ColumnName="repeat" />
+                <ScalarProperty Name="align" ColumnName="align" />
+                <ScalarProperty Name="repeatAll" ColumnName="repeatAll" />
+                <ScalarProperty Name="footerRepeatAll" ColumnName="footerRepeatAll" />
+                <ScalarProperty Name="textWrap" ColumnName="textWrap" />
+                <ScalarProperty Name="wrapLineCount" ColumnName="wrapLineCount" />
+                <ScalarProperty Name="extraFieldName" ColumnName="extraFieldName" />
+                <ScalarProperty Name="fieldsForExtra" ColumnName="fieldsForExtra" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="DiscountValues">
             <EntityTypeMapping TypeName="IMEModel.DiscountValue">
               <MappingFragment StoreEntitySet="DiscountValues">
@@ -25904,6 +26146,24 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Fields">
+            <EntityTypeMapping TypeName="IMEModel.Field">
+              <MappingFragment StoreEntitySet="Field">
+                <ScalarProperty Name="fieldId" ColumnName="fieldId" />
+                <ScalarProperty Name="formId" ColumnName="formId" />
+                <ScalarProperty Name="fieldName" ColumnName="fieldName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FieldCopies">
+            <EntityTypeMapping TypeName="IMEModel.FieldCopy">
+              <MappingFragment StoreEntitySet="FieldCopy">
+                <ScalarProperty Name="fieldId" ColumnName="fieldId" />
+                <ScalarProperty Name="formId" ColumnName="formId" />
+                <ScalarProperty Name="fieldName" ColumnName="fieldName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="FinancialYears">
             <EntityTypeMapping TypeName="IMEModel.FinancialYear">
               <MappingFragment StoreEntitySet="FinancialYear">
@@ -25911,6 +26171,22 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="fromDate" ColumnName="fromDate" />
                 <ScalarProperty Name="toDate" ColumnName="toDate" />
                 <ScalarProperty Name="extraDate" ColumnName="extraDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Forms">
+            <EntityTypeMapping TypeName="IMEModel.Form">
+              <MappingFragment StoreEntitySet="Form">
+                <ScalarProperty Name="formId" ColumnName="formId" />
+                <ScalarProperty Name="formName" ColumnName="formName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FormCopies">
+            <EntityTypeMapping TypeName="IMEModel.FormCopy">
+              <MappingFragment StoreEntitySet="FormCopy">
+                <ScalarProperty Name="formId" ColumnName="formId" />
+                <ScalarProperty Name="formName" ColumnName="formName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -26080,6 +26356,24 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <EntitySetMapping Name="Masters">
             <EntityTypeMapping TypeName="IMEModel.Master">
               <MappingFragment StoreEntitySet="Master">
+                <ScalarProperty Name="masterId" ColumnName="masterId" />
+                <ScalarProperty Name="formName" ColumnName="formName" />
+                <ScalarProperty Name="isTwoLineForHedder" ColumnName="isTwoLineForHedder" />
+                <ScalarProperty Name="isTwoLineForDetails" ColumnName="isTwoLineForDetails" />
+                <ScalarProperty Name="pageSize1" ColumnName="pageSize1" />
+                <ScalarProperty Name="pageSizeOther" ColumnName="pageSizeOther" />
+                <ScalarProperty Name="blankLneForFooter" ColumnName="blankLneForFooter" />
+                <ScalarProperty Name="footerLocation" ColumnName="footerLocation" />
+                <ScalarProperty Name="lineCountBetweenTwo" ColumnName="lineCountBetweenTwo" />
+                <ScalarProperty Name="pitch" ColumnName="pitch" />
+                <ScalarProperty Name="condensed" ColumnName="condensed" />
+                <ScalarProperty Name="lineCountAfterPrint" ColumnName="lineCountAfterPrint" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MasterCopies">
+            <EntityTypeMapping TypeName="IMEModel.MasterCopy">
+              <MappingFragment StoreEntitySet="MasterCopy">
                 <ScalarProperty Name="masterId" ColumnName="masterId" />
                 <ScalarProperty Name="formName" ColumnName="formName" />
                 <ScalarProperty Name="isTwoLineForHedder" ColumnName="isTwoLineForHedder" />
