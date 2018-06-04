@@ -1319,9 +1319,6 @@
     <Compile Include="DataSet\MonthlySalaryDetail.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\MonthlySalaryDetail1.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\MonthlySalaryRegisterSearch_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1841,6 +1838,12 @@
     <Compile Include="DataSet\SlidingPrice.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\sp_helpdiagrams_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\Stock.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1884,6 +1887,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SupplierWorker.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\sysdiagram.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Tax.cs">

@@ -10,15 +10,13 @@
 namespace LoginForm.DataSet
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class MonthlySalaryDetail1
+    public partial class sp_helpdiagrams_Result
     {
-        public decimal monthlySalaryDetailsId { get; set; }
-        public Nullable<decimal> employeeId { get; set; }
-        public Nullable<decimal> salaryPackageId { get; set; }
-        public Nullable<decimal> monthlySalaryId { get; set; }
-    
-        public virtual MonthlySalary MonthlySalary { get; set; }
+        public string Database { get; set; }
+        public string Name { get; set; }
+        public int ID { get; set; }
+        public string Owner { get; set; }
+        public int OwnerID { get; set; }
     }
 }

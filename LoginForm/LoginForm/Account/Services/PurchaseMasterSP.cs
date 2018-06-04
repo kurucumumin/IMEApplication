@@ -353,7 +353,6 @@ namespace LoginForm.Account.Services
                     p.exchangeRateId,
                     p.narration,
                     p.purchaseAccount,
-                   // p.purchaseOrderId.ToString(),
                     p.materialReceiptMasterId,
                     p.additionalCost,
                     p.totalTax,
