@@ -315,7 +315,6 @@ namespace LoginForm.Account.Services
                 purchasemasterinfo.exchangeRateId = p.exchangeRateId;
                 purchasemasterinfo.narration = p.narration;
                 purchasemasterinfo.purchaseAccount = p.purchaseAccount;
-                purchasemasterinfo.purchaseOrderId = p.purchaseOrderId;
                 purchasemasterinfo.materialReceiptMasterId = p.materialReceiptMasterId;
                 purchasemasterinfo.additionalCost = p.additionalCost;
                 purchasemasterinfo.totalTax = p.totalTax;
