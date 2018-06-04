@@ -214,9 +214,7 @@ namespace LoginForm.Account.Services
             int frmId = 0;
             try
             {
-                frmId = (from m in IME.Masters
-                         where m.masterId == inMasterId
-                         select new { m.formName }).Count();
+                frmId = (int) IME.Masters.Where(x => x.masterId == inMasterId).FirstOrDefault().formName;
             }
             catch (Exception)
             {

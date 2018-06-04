@@ -12,7 +12,7 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class FormCopy
+    public partial class tbl_Form
     {
         public int formId { get; set; }
         public string formName { get; set; }
