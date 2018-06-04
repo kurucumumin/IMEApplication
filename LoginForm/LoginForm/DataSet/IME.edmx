@@ -754,20 +754,6 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="toDate" Type="datetime" />
           <Property Name="extraDate" Type="datetime" />
         </EntityType>
-        <EntityType Name="Form">
-          <Key>
-            <PropertyRef Name="formId" />
-          </Key>
-          <Property Name="formId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="formName" Type="varchar(max)" />
-        </EntityType>
-        <EntityType Name="FormCopy">
-          <Key>
-            <PropertyRef Name="formId" />
-          </Key>
-          <Property Name="formId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="formName" Type="varchar(max)" />
-        </EntityType>
         <EntityType Name="Godown">
           <Key>
             <PropertyRef Name="godownId" />
@@ -2462,6 +2448,20 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="taxID" Type="int" />
           <Property Name="SelectedtaxID" Type="int" />
           <Property Name="taxDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_Form">
+          <Key>
+            <PropertyRef Name="formId" />
+          </Key>
+          <Property Name="formId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="formName" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="tbl_FormCopy">
+          <Key>
+            <PropertyRef Name="formId" />
+          </Key>
+          <Property Name="formId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="formName" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="Town">
           <Key>
@@ -7864,6 +7864,54 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
         <Function Name="DesignationView" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="designationId" Type="numeric" Mode="In" />
         </Function>
+        <Function Name="DetailsAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="masterId" Type="int" Mode="In" />
+          <Parameter Name="name" Type="varchar(max)" Mode="In" />
+          <Parameter Name="text" Type="varchar(max)" Mode="In" />
+          <Parameter Name="row" Type="int" Mode="In" />
+          <Parameter Name="columns" Type="int" Mode="In" />
+          <Parameter Name="width" Type="int" Mode="In" />
+          <Parameter Name="dbf" Type="varchar(max)" Mode="In" />
+          <Parameter Name="DorH" Type="varchar(max)" Mode="In" />
+          <Parameter Name="repeat" Type="varchar(max)" Mode="In" />
+          <Parameter Name="align" Type="varchar(max)" Mode="In" />
+          <Parameter Name="repeatAll" Type="varchar(max)" Mode="In" />
+          <Parameter Name="footerRepeatAll" Type="varchar(max)" Mode="In" />
+          <Parameter Name="textWrap" Type="varchar(max)" Mode="In" />
+          <Parameter Name="wrapLineCount" Type="int" Mode="In" />
+          <Parameter Name="extraFieldName" Type="varchar(max)" Mode="In" />
+          <Parameter Name="fieldsForExtra" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="DetailsCopyAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="masterId" Type="int" Mode="In" />
+          <Parameter Name="name" Type="varchar(max)" Mode="In" />
+          <Parameter Name="text" Type="varchar(max)" Mode="In" />
+          <Parameter Name="row" Type="int" Mode="In" />
+          <Parameter Name="columns" Type="int" Mode="In" />
+          <Parameter Name="width" Type="int" Mode="In" />
+          <Parameter Name="dbf" Type="varchar(max)" Mode="In" />
+          <Parameter Name="DorH" Type="varchar(max)" Mode="In" />
+          <Parameter Name="repeat" Type="varchar(max)" Mode="In" />
+          <Parameter Name="align" Type="varchar(max)" Mode="In" />
+          <Parameter Name="repeatAll" Type="varchar(max)" Mode="In" />
+          <Parameter Name="footerRepeatAll" Type="varchar(max)" Mode="In" />
+          <Parameter Name="textWrap" Type="varchar(max)" Mode="In" />
+          <Parameter Name="wrapLineCount" Type="int" Mode="In" />
+          <Parameter Name="extraFieldName" Type="varchar(max)" Mode="In" />
+          <Parameter Name="fieldsForExtra" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="DetailsCopyDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="masterId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DetailsCopyViewAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="masterId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DetailsDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="masterId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DetailsViewAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="masterId" Type="int" Mode="In" />
+        </Function>
         <Function Name="EmployeeCodeCheckExistance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="employeeCode" Type="varchar(max)" Mode="In" />
           <Parameter Name="employeeId" Type="numeric" Mode="In" />
@@ -7958,6 +8006,16 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Parameter Name="DiscountedPrice5" Type="decimal" Mode="In" />
           <Parameter Name="ManufacturerCode" Type="nvarchar" Mode="In" />
           <Parameter Name="ExtendedRangeWeight" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="FieldsAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="formId" Type="int" Mode="In" />
+          <Parameter Name="fieldName" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="FieldsDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="formId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="FieldsViewAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="formId" Type="int" Mode="In" />
         </Function>
         <Function Name="FinancialYearAddWithReturnIdentity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="fromDate" Type="datetime" Mode="In" />
@@ -9606,8 +9664,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <EntitySet Name="Field" EntityType="Self.Field" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FieldCopy" EntityType="Self.FieldCopy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FinancialYear" EntityType="Self.FinancialYear" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Form" EntityType="Self.Form" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="FormCopy" EntityType="Self.FormCopy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Godown" EntityType="Self.Godown" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Hazardous" EntityType="Self.Hazardous" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Holiday" EntityType="Self.Holiday" Schema="dbo" store:Type="Tables" />
@@ -9710,6 +9766,8 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tax" EntityType="Self.Tax" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TaxDetail" EntityType="Self.TaxDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Form" EntityType="Self.tbl_Form" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_FormCopy" EntityType="Self.tbl_FormCopy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Town" EntityType="Self.Town" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Unit" EntityType="Self.Unit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UnitConvertion" EntityType="Self.UnitConvertion" Schema="dbo" store:Type="Tables" />
@@ -12269,20 +12327,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <NavigationProperty Name="StockJournalMasters" Relationship="Self.FK__StockJour__finan__2764BD12" FromRole="FinancialYear" ToRole="StockJournalMaster" />
           <NavigationProperty Name="SaleOrders" Relationship="Self.FK_SaleOrder_FinancialYear" FromRole="FinancialYear" ToRole="SaleOrder" />
         </EntityType>
-        <EntityType Name="Form">
-          <Key>
-            <PropertyRef Name="formId" />
-          </Key>
-          <Property Name="formId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="formName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="FormCopy">
-          <Key>
-            <PropertyRef Name="formId" />
-          </Key>
-          <Property Name="formId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="formName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="Godown">
           <Key>
             <PropertyRef Name="godownId" />
@@ -14372,6 +14416,20 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="SelectedtaxID" Type="Int32" />
           <Property Name="taxDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Tax" Relationship="Self.FK__TaxDetail__taxID__72B0FDB1" FromRole="TaxDetail" ToRole="Tax" />
+        </EntityType>
+        <EntityType Name="tbl_Form">
+          <Key>
+            <PropertyRef Name="formId" />
+          </Key>
+          <Property Name="formId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="formName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_FormCopy">
+          <Key>
+            <PropertyRef Name="formId" />
+          </Key>
+          <Property Name="formId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="formName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Town">
           <Key>
@@ -19168,8 +19226,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <EntitySet Name="Fields" EntityType="Self.Field" />
           <EntitySet Name="FieldCopies" EntityType="Self.FieldCopy" />
           <EntitySet Name="FinancialYears" EntityType="Self.FinancialYear" />
-          <EntitySet Name="Forms" EntityType="Self.Form" />
-          <EntitySet Name="FormCopies" EntityType="Self.FormCopy" />
           <EntitySet Name="Godowns" EntityType="Self.Godown" />
           <EntitySet Name="Hazardous" EntityType="Self.Hazardou" />
           <EntitySet Name="Holidays" EntityType="Self.Holiday" />
@@ -19272,6 +19328,8 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Taxes" EntityType="Self.Tax" />
           <EntitySet Name="TaxDetails" EntityType="Self.TaxDetail" />
+          <EntitySet Name="tbl_Form" EntityType="Self.tbl_Form" />
+          <EntitySet Name="tbl_FormCopy" EntityType="Self.tbl_FormCopy" />
           <EntitySet Name="Towns" EntityType="Self.Town" />
           <EntitySet Name="Units" EntityType="Self.Unit" />
           <EntitySet Name="UnitConvertions" EntityType="Self.UnitConvertion" />
@@ -21476,6 +21534,54 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <FunctionImport Name="DesignationView" ReturnType="Collection(IMEModel.DesignationView_Result)">
             <Parameter Name="designationId" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="DetailsAdd" ReturnType="Collection(Decimal)">
+            <Parameter Name="masterId" Mode="In" Type="Int32" />
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="text" Mode="In" Type="String" />
+            <Parameter Name="row" Mode="In" Type="Int32" />
+            <Parameter Name="columns" Mode="In" Type="Int32" />
+            <Parameter Name="width" Mode="In" Type="Int32" />
+            <Parameter Name="dbf" Mode="In" Type="String" />
+            <Parameter Name="DorH" Mode="In" Type="String" />
+            <Parameter Name="repeat" Mode="In" Type="String" />
+            <Parameter Name="align" Mode="In" Type="String" />
+            <Parameter Name="repeatAll" Mode="In" Type="String" />
+            <Parameter Name="footerRepeatAll" Mode="In" Type="String" />
+            <Parameter Name="textWrap" Mode="In" Type="String" />
+            <Parameter Name="wrapLineCount" Mode="In" Type="Int32" />
+            <Parameter Name="extraFieldName" Mode="In" Type="String" />
+            <Parameter Name="fieldsForExtra" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DetailsCopyAdd" ReturnType="Collection(Decimal)">
+            <Parameter Name="masterId" Mode="In" Type="Int32" />
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="text" Mode="In" Type="String" />
+            <Parameter Name="row" Mode="In" Type="Int32" />
+            <Parameter Name="columns" Mode="In" Type="Int32" />
+            <Parameter Name="width" Mode="In" Type="Int32" />
+            <Parameter Name="dbf" Mode="In" Type="String" />
+            <Parameter Name="DorH" Mode="In" Type="String" />
+            <Parameter Name="repeat" Mode="In" Type="String" />
+            <Parameter Name="align" Mode="In" Type="String" />
+            <Parameter Name="repeatAll" Mode="In" Type="String" />
+            <Parameter Name="footerRepeatAll" Mode="In" Type="String" />
+            <Parameter Name="textWrap" Mode="In" Type="String" />
+            <Parameter Name="wrapLineCount" Mode="In" Type="Int32" />
+            <Parameter Name="extraFieldName" Mode="In" Type="String" />
+            <Parameter Name="fieldsForExtra" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DetailsCopyDelete">
+            <Parameter Name="masterId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DetailsCopyViewAll" ReturnType="Collection(IMEModel.DetailsCopyViewAll_Result)">
+            <Parameter Name="masterId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DetailsDelete">
+            <Parameter Name="masterId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DetailsViewAll" ReturnType="Collection(IMEModel.DetailsViewAll_Result)">
+            <Parameter Name="masterId" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="EmployeeCodeCheckExistance" ReturnType="Collection(Int32)">
             <Parameter Name="employeeCode" Mode="In" Type="String" />
             <Parameter Name="employeeId" Mode="In" Type="Decimal" />
@@ -21570,6 +21676,16 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <Parameter Name="DiscountedPrice5" Mode="In" Type="Decimal" />
             <Parameter Name="ManufacturerCode" Mode="In" Type="String" />
             <Parameter Name="ExtendedRangeWeight" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="FieldsAdd">
+            <Parameter Name="formId" Mode="In" Type="Int32" />
+            <Parameter Name="fieldName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="FieldsDelete">
+            <Parameter Name="formId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="FieldsViewAll" ReturnType="Collection(IMEModel.FieldsViewAll_Result)">
+            <Parameter Name="formId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="FinancialYearAddWithReturnIdentity" ReturnType="Collection(Decimal)">
             <Parameter Name="fromDate" Mode="In" Type="DateTime" />
@@ -23878,6 +23994,40 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="Decimal" Name="advanceAmount" Nullable="true" Precision="18" Scale="2" />
           <Property Type="String" Name="narration" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="DetailsCopyViewAll_Result">
+          <Property Type="String" Name="name" Nullable="true" />
+          <Property Type="String" Name="text" Nullable="true" />
+          <Property Type="Int32" Name="row" Nullable="true" />
+          <Property Type="Int32" Name="columns" Nullable="true" />
+          <Property Type="Int32" Name="width" Nullable="true" />
+          <Property Type="String" Name="DBF" Nullable="true" />
+          <Property Type="String" Name="dOrH" Nullable="true" />
+          <Property Type="String" Name="Repeat" Nullable="true" />
+          <Property Type="String" Name="Align" Nullable="true" />
+          <Property Type="String" Name="RepeatAllPage" Nullable="true" />
+          <Property Type="String" Name="FooterRepeatAll" Nullable="true" />
+          <Property Type="String" Name="textWrap" Nullable="true" />
+          <Property Type="Int32" Name="wrapLineCount" Nullable="true" />
+          <Property Type="String" Name="extraFieldName" Nullable="true" />
+          <Property Type="String" Name="fieldsForExtra" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="DetailsViewAll_Result">
+          <Property Type="String" Name="name" Nullable="true" />
+          <Property Type="String" Name="text" Nullable="true" />
+          <Property Type="Int32" Name="row" Nullable="true" />
+          <Property Type="Int32" Name="columns" Nullable="true" />
+          <Property Type="Int32" Name="width" Nullable="true" />
+          <Property Type="String" Name="DBF" Nullable="true" />
+          <Property Type="String" Name="dOrH" Nullable="true" />
+          <Property Type="String" Name="Repeat" Nullable="true" />
+          <Property Type="String" Name="Align" Nullable="true" />
+          <Property Type="String" Name="RepeatAllPage" Nullable="true" />
+          <Property Type="String" Name="FooterRepeatAll" Nullable="true" />
+          <Property Type="String" Name="textWrap" Nullable="true" />
+          <Property Type="Int32" Name="wrapLineCount" Nullable="true" />
+          <Property Type="String" Name="extraFieldName" Nullable="true" />
+          <Property Type="String" Name="fieldsForExtra" Nullable="true" />
+        </ComplexType>
         <ComplexType Name="EmployeeViewAll_Result">
           <Property Type="Int32" Name="WorkerID" Nullable="false" />
           <Property Type="Decimal" Name="designationId" Nullable="true" Precision="18" Scale="0" />
@@ -23914,6 +24064,11 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="Int32" Name="WorkerID" Nullable="false" />
           <Property Type="String" Name="NameLastName" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="UserName" Nullable="false" MaxLength="25" />
+        </ComplexType>
+        <ComplexType Name="FieldsViewAll_Result">
+          <Property Type="Int32" Name="fieldId" Nullable="false" />
+          <Property Type="Int32" Name="formId" Nullable="true" />
+          <Property Type="String" Name="fieldName" Nullable="true" />
         </ComplexType>
         <ComplexType Name="FundFlow1_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
@@ -26174,22 +26329,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Forms">
-            <EntityTypeMapping TypeName="IMEModel.Form">
-              <MappingFragment StoreEntitySet="Form">
-                <ScalarProperty Name="formId" ColumnName="formId" />
-                <ScalarProperty Name="formName" ColumnName="formName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="FormCopies">
-            <EntityTypeMapping TypeName="IMEModel.FormCopy">
-              <MappingFragment StoreEntitySet="FormCopy">
-                <ScalarProperty Name="formId" ColumnName="formId" />
-                <ScalarProperty Name="formName" ColumnName="formName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Godowns">
             <EntityTypeMapping TypeName="IMEModel.Godown">
               <MappingFragment StoreEntitySet="Godown">
@@ -27971,6 +28110,22 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Form">
+            <EntityTypeMapping TypeName="IMEModel.tbl_Form">
+              <MappingFragment StoreEntitySet="tbl_Form">
+                <ScalarProperty Name="formId" ColumnName="formId" />
+                <ScalarProperty Name="formName" ColumnName="formName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_FormCopy">
+            <EntityTypeMapping TypeName="IMEModel.tbl_FormCopy">
+              <MappingFragment StoreEntitySet="tbl_FormCopy">
+                <ScalarProperty Name="formId" ColumnName="formId" />
+                <ScalarProperty Name="formName" ColumnName="formName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Towns">
             <EntityTypeMapping TypeName="IMEModel.Town">
               <MappingFragment StoreEntitySet="Town">
@@ -29372,6 +29527,52 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DetailsAdd" FunctionName="IMEModel.Store.DetailsAdd" />
+          <FunctionImportMapping FunctionImportName="DetailsCopyAdd" FunctionName="IMEModel.Store.DetailsCopyAdd" />
+          <FunctionImportMapping FunctionImportName="DetailsCopyDelete" FunctionName="IMEModel.Store.DetailsCopyDelete" />
+          <FunctionImportMapping FunctionImportName="DetailsCopyViewAll" FunctionName="IMEModel.Store.DetailsCopyViewAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.DetailsCopyViewAll_Result">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="row" ColumnName="row" />
+                <ScalarProperty Name="columns" ColumnName="columns" />
+                <ScalarProperty Name="width" ColumnName="width" />
+                <ScalarProperty Name="DBF" ColumnName="DBF" />
+                <ScalarProperty Name="dOrH" ColumnName="dOrH" />
+                <ScalarProperty Name="Repeat" ColumnName="Repeat" />
+                <ScalarProperty Name="Align" ColumnName="Align" />
+                <ScalarProperty Name="RepeatAllPage" ColumnName="RepeatAllPage" />
+                <ScalarProperty Name="FooterRepeatAll" ColumnName="FooterRepeatAll" />
+                <ScalarProperty Name="textWrap" ColumnName="textWrap" />
+                <ScalarProperty Name="wrapLineCount" ColumnName="wrapLineCount" />
+                <ScalarProperty Name="extraFieldName" ColumnName="extraFieldName" />
+                <ScalarProperty Name="fieldsForExtra" ColumnName="fieldsForExtra" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DetailsDelete" FunctionName="IMEModel.Store.DetailsDelete" />
+          <FunctionImportMapping FunctionImportName="DetailsViewAll" FunctionName="IMEModel.Store.DetailsViewAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.DetailsViewAll_Result">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="row" ColumnName="row" />
+                <ScalarProperty Name="columns" ColumnName="columns" />
+                <ScalarProperty Name="width" ColumnName="width" />
+                <ScalarProperty Name="DBF" ColumnName="DBF" />
+                <ScalarProperty Name="dOrH" ColumnName="dOrH" />
+                <ScalarProperty Name="Repeat" ColumnName="Repeat" />
+                <ScalarProperty Name="Align" ColumnName="Align" />
+                <ScalarProperty Name="RepeatAllPage" ColumnName="RepeatAllPage" />
+                <ScalarProperty Name="FooterRepeatAll" ColumnName="FooterRepeatAll" />
+                <ScalarProperty Name="textWrap" ColumnName="textWrap" />
+                <ScalarProperty Name="wrapLineCount" ColumnName="wrapLineCount" />
+                <ScalarProperty Name="extraFieldName" ColumnName="extraFieldName" />
+                <ScalarProperty Name="fieldsForExtra" ColumnName="fieldsForExtra" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="EmployeeCodeCheckExistance" FunctionName="IMEModel.Store.EmployeeCodeCheckExistance" />
           <FunctionImportMapping FunctionImportName="EmployeeDelete" FunctionName="IMEModel.Store.EmployeeDelete" />
           <FunctionImportMapping FunctionImportName="EmployeeForTakingEmployeeId" FunctionName="IMEModel.Store.EmployeeForTakingEmployeeId" />
@@ -29425,6 +29626,17 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <FunctionImportMapping FunctionImportName="ExchangeRateEdit" FunctionName="IMEModel.Store.ExchangeRateEdit" />
           <FunctionImportMapping FunctionImportName="ExchangeRateViewByExchangeRateId" FunctionName="IMEModel.Store.ExchangeRateViewByExchangeRateId" />
           <FunctionImportMapping FunctionImportName="ExtendedRangeADD" FunctionName="IMEModel.Store.ExtendedRangeADD" />
+          <FunctionImportMapping FunctionImportName="FieldsAdd" FunctionName="IMEModel.Store.FieldsAdd" />
+          <FunctionImportMapping FunctionImportName="FieldsDelete" FunctionName="IMEModel.Store.FieldsDelete" />
+          <FunctionImportMapping FunctionImportName="FieldsViewAll" FunctionName="IMEModel.Store.FieldsViewAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.FieldsViewAll_Result">
+                <ScalarProperty Name="fieldId" ColumnName="fieldId" />
+                <ScalarProperty Name="formId" ColumnName="formId" />
+                <ScalarProperty Name="fieldName" ColumnName="fieldName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="FinancialYearAddWithReturnIdentity" FunctionName="IMEModel.Store.FinancialYearAddWithReturnIdentity" />
           <FunctionImportMapping FunctionImportName="FinancialYearExistenceCheck" FunctionName="IMEModel.Store.FinancialYearExistenceCheck" />
           <FunctionImportMapping FunctionImportName="FundFlow1" FunctionName="IMEModel.Store.FundFlow1">

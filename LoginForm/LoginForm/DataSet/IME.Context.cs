@@ -81,8 +81,6 @@ namespace LoginForm.DataSet
         public virtual DbSet<Field> Fields { get; set; }
         public virtual DbSet<FieldCopy> FieldCopies { get; set; }
         public virtual DbSet<FinancialYear> FinancialYears { get; set; }
-        public virtual DbSet<Form> Forms { get; set; }
-        public virtual DbSet<FormCopy> FormCopies { get; set; }
         public virtual DbSet<Godown> Godowns { get; set; }
         public virtual DbSet<Hazardou> Hazardous { get; set; }
         public virtual DbSet<Holiday> Holidays { get; set; }
@@ -185,6 +183,8 @@ namespace LoginForm.DataSet
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Tax> Taxes { get; set; }
         public virtual DbSet<TaxDetail> TaxDetails { get; set; }
+        public virtual DbSet<tbl_Form> tbl_Form { get; set; }
+        public virtual DbSet<tbl_FormCopy> tbl_FormCopy { get; set; }
         public virtual DbSet<Town> Towns { get; set; }
         public virtual DbSet<Unit> Units { get; set; }
         public virtual DbSet<UnitConvertion> UnitConvertions { get; set; }
@@ -2687,6 +2687,180 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DesignationView_Result>("DesignationView", designationIdParameter);
         }
     
+        public virtual ObjectResult<Nullable<decimal>> DetailsAdd(Nullable<int> masterId, string name, string text, Nullable<int> row, Nullable<int> columns, Nullable<int> width, string dbf, string dorH, string repeat, string align, string repeatAll, string footerRepeatAll, string textWrap, Nullable<int> wrapLineCount, string extraFieldName, string fieldsForExtra)
+        {
+            var masterIdParameter = masterId.HasValue ?
+                new ObjectParameter("masterId", masterId) :
+                new ObjectParameter("masterId", typeof(int));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
+            var textParameter = text != null ?
+                new ObjectParameter("text", text) :
+                new ObjectParameter("text", typeof(string));
+    
+            var rowParameter = row.HasValue ?
+                new ObjectParameter("row", row) :
+                new ObjectParameter("row", typeof(int));
+    
+            var columnsParameter = columns.HasValue ?
+                new ObjectParameter("columns", columns) :
+                new ObjectParameter("columns", typeof(int));
+    
+            var widthParameter = width.HasValue ?
+                new ObjectParameter("width", width) :
+                new ObjectParameter("width", typeof(int));
+    
+            var dbfParameter = dbf != null ?
+                new ObjectParameter("dbf", dbf) :
+                new ObjectParameter("dbf", typeof(string));
+    
+            var dorHParameter = dorH != null ?
+                new ObjectParameter("DorH", dorH) :
+                new ObjectParameter("DorH", typeof(string));
+    
+            var repeatParameter = repeat != null ?
+                new ObjectParameter("repeat", repeat) :
+                new ObjectParameter("repeat", typeof(string));
+    
+            var alignParameter = align != null ?
+                new ObjectParameter("align", align) :
+                new ObjectParameter("align", typeof(string));
+    
+            var repeatAllParameter = repeatAll != null ?
+                new ObjectParameter("repeatAll", repeatAll) :
+                new ObjectParameter("repeatAll", typeof(string));
+    
+            var footerRepeatAllParameter = footerRepeatAll != null ?
+                new ObjectParameter("footerRepeatAll", footerRepeatAll) :
+                new ObjectParameter("footerRepeatAll", typeof(string));
+    
+            var textWrapParameter = textWrap != null ?
+                new ObjectParameter("textWrap", textWrap) :
+                new ObjectParameter("textWrap", typeof(string));
+    
+            var wrapLineCountParameter = wrapLineCount.HasValue ?
+                new ObjectParameter("wrapLineCount", wrapLineCount) :
+                new ObjectParameter("wrapLineCount", typeof(int));
+    
+            var extraFieldNameParameter = extraFieldName != null ?
+                new ObjectParameter("extraFieldName", extraFieldName) :
+                new ObjectParameter("extraFieldName", typeof(string));
+    
+            var fieldsForExtraParameter = fieldsForExtra != null ?
+                new ObjectParameter("fieldsForExtra", fieldsForExtra) :
+                new ObjectParameter("fieldsForExtra", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("DetailsAdd", masterIdParameter, nameParameter, textParameter, rowParameter, columnsParameter, widthParameter, dbfParameter, dorHParameter, repeatParameter, alignParameter, repeatAllParameter, footerRepeatAllParameter, textWrapParameter, wrapLineCountParameter, extraFieldNameParameter, fieldsForExtraParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> DetailsCopyAdd(Nullable<int> masterId, string name, string text, Nullable<int> row, Nullable<int> columns, Nullable<int> width, string dbf, string dorH, string repeat, string align, string repeatAll, string footerRepeatAll, string textWrap, Nullable<int> wrapLineCount, string extraFieldName, string fieldsForExtra)
+        {
+            var masterIdParameter = masterId.HasValue ?
+                new ObjectParameter("masterId", masterId) :
+                new ObjectParameter("masterId", typeof(int));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
+            var textParameter = text != null ?
+                new ObjectParameter("text", text) :
+                new ObjectParameter("text", typeof(string));
+    
+            var rowParameter = row.HasValue ?
+                new ObjectParameter("row", row) :
+                new ObjectParameter("row", typeof(int));
+    
+            var columnsParameter = columns.HasValue ?
+                new ObjectParameter("columns", columns) :
+                new ObjectParameter("columns", typeof(int));
+    
+            var widthParameter = width.HasValue ?
+                new ObjectParameter("width", width) :
+                new ObjectParameter("width", typeof(int));
+    
+            var dbfParameter = dbf != null ?
+                new ObjectParameter("dbf", dbf) :
+                new ObjectParameter("dbf", typeof(string));
+    
+            var dorHParameter = dorH != null ?
+                new ObjectParameter("DorH", dorH) :
+                new ObjectParameter("DorH", typeof(string));
+    
+            var repeatParameter = repeat != null ?
+                new ObjectParameter("repeat", repeat) :
+                new ObjectParameter("repeat", typeof(string));
+    
+            var alignParameter = align != null ?
+                new ObjectParameter("align", align) :
+                new ObjectParameter("align", typeof(string));
+    
+            var repeatAllParameter = repeatAll != null ?
+                new ObjectParameter("repeatAll", repeatAll) :
+                new ObjectParameter("repeatAll", typeof(string));
+    
+            var footerRepeatAllParameter = footerRepeatAll != null ?
+                new ObjectParameter("footerRepeatAll", footerRepeatAll) :
+                new ObjectParameter("footerRepeatAll", typeof(string));
+    
+            var textWrapParameter = textWrap != null ?
+                new ObjectParameter("textWrap", textWrap) :
+                new ObjectParameter("textWrap", typeof(string));
+    
+            var wrapLineCountParameter = wrapLineCount.HasValue ?
+                new ObjectParameter("wrapLineCount", wrapLineCount) :
+                new ObjectParameter("wrapLineCount", typeof(int));
+    
+            var extraFieldNameParameter = extraFieldName != null ?
+                new ObjectParameter("extraFieldName", extraFieldName) :
+                new ObjectParameter("extraFieldName", typeof(string));
+    
+            var fieldsForExtraParameter = fieldsForExtra != null ?
+                new ObjectParameter("fieldsForExtra", fieldsForExtra) :
+                new ObjectParameter("fieldsForExtra", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("DetailsCopyAdd", masterIdParameter, nameParameter, textParameter, rowParameter, columnsParameter, widthParameter, dbfParameter, dorHParameter, repeatParameter, alignParameter, repeatAllParameter, footerRepeatAllParameter, textWrapParameter, wrapLineCountParameter, extraFieldNameParameter, fieldsForExtraParameter);
+        }
+    
+        public virtual int DetailsCopyDelete(Nullable<int> masterId)
+        {
+            var masterIdParameter = masterId.HasValue ?
+                new ObjectParameter("masterId", masterId) :
+                new ObjectParameter("masterId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DetailsCopyDelete", masterIdParameter);
+        }
+    
+        public virtual ObjectResult<DetailsCopyViewAll_Result> DetailsCopyViewAll(Nullable<int> masterId)
+        {
+            var masterIdParameter = masterId.HasValue ?
+                new ObjectParameter("masterId", masterId) :
+                new ObjectParameter("masterId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DetailsCopyViewAll_Result>("DetailsCopyViewAll", masterIdParameter);
+        }
+    
+        public virtual int DetailsDelete(Nullable<int> masterId)
+        {
+            var masterIdParameter = masterId.HasValue ?
+                new ObjectParameter("masterId", masterId) :
+                new ObjectParameter("masterId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DetailsDelete", masterIdParameter);
+        }
+    
+        public virtual ObjectResult<DetailsViewAll_Result> DetailsViewAll(Nullable<int> masterId)
+        {
+            var masterIdParameter = masterId.HasValue ?
+                new ObjectParameter("masterId", masterId) :
+                new ObjectParameter("masterId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DetailsViewAll_Result>("DetailsViewAll", masterIdParameter);
+        }
+    
         public virtual ObjectResult<Nullable<int>> EmployeeCodeCheckExistance(string employeeCode, Nullable<decimal> employeeId)
         {
             var employeeCodeParameter = employeeCode != null ?
@@ -3043,6 +3217,37 @@ namespace LoginForm.DataSet
                 new ObjectParameter("ExtendedRangeWeight", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ExtendedRangeADD", articleNoParameter, brandParameter, mPNParameter, articleDescriptionParameter, extendedRangeLengthParameter, widthParameter, heightParameter, dimensionUoMParameter, weightUoMParameter, cCCNParameter, countryofOriginParameter, unitofMeasureParameter, packSizeParameter, salesUoMParameter, costPriceCurrencyParameter, col1PriceParameter, col2PriceParameter, col3PriceParameter, col4PriceParameter, col5PriceParameter, col1BreakParameter, col2BreakParameter, col3BreakParameter, col4BreakParameter, col5BreakParameter, discountedPrice1Parameter, discountedPrice2Parameter, discountedPrice3Parameter, discountedPrice4Parameter, discountedPrice5Parameter, manufacturerCodeParameter, extendedRangeWeightParameter);
+        }
+    
+        public virtual int FieldsAdd(Nullable<int> formId, string fieldName)
+        {
+            var formIdParameter = formId.HasValue ?
+                new ObjectParameter("formId", formId) :
+                new ObjectParameter("formId", typeof(int));
+    
+            var fieldNameParameter = fieldName != null ?
+                new ObjectParameter("fieldName", fieldName) :
+                new ObjectParameter("fieldName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FieldsAdd", formIdParameter, fieldNameParameter);
+        }
+    
+        public virtual int FieldsDelete(Nullable<int> formId)
+        {
+            var formIdParameter = formId.HasValue ?
+                new ObjectParameter("formId", formId) :
+                new ObjectParameter("formId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FieldsDelete", formIdParameter);
+        }
+    
+        public virtual ObjectResult<FieldsViewAll_Result> FieldsViewAll(Nullable<int> formId)
+        {
+            var formIdParameter = formId.HasValue ?
+                new ObjectParameter("formId", formId) :
+                new ObjectParameter("formId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FieldsViewAll_Result>("FieldsViewAll", formIdParameter);
         }
     
         public virtual ObjectResult<Nullable<decimal>> FinancialYearAddWithReturnIdentity(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)

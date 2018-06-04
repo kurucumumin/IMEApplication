@@ -1163,6 +1163,12 @@
     <Compile Include="DataSet\DesignationView_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\Detail.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\DetailCopy.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\DiscountValue.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1179,6 +1185,12 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\ExtendedRange.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\Field.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\FieldCopy.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\FinancialYear.cs">
@@ -1296,6 +1308,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Master.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\MasterCopy.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\MaterialReceiptDetail.cs">
@@ -1931,6 +1946,12 @@
     <Compile Include="DataSet\TaxViewAllForVoucherType_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\tbl_Form.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\tbl_FormCopy.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\Town.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -2390,12 +2411,6 @@
     </Compile>
     <Compile Include="QuotationModule\ViewProductHistory.Designer.cs">
       <DependentUpon>ViewProductHistory.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SaleOrder\DevFormSaleOrderAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SaleOrder\DevFormSaleOrderAdd.designer.cs">
-      <DependentUpon>DevFormSaleOrderAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="SaleOrder\FormSaleOrderAdd.cs">
       <SubType>Form</SubType>
@@ -2970,9 +2985,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuotationModule\ViewProductHistory.resx">
       <DependentUpon>ViewProductHistory.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SaleOrder\DevFormSaleOrderAdd.resx">
-      <DependentUpon>DevFormSaleOrderAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SaleOrder\FormSaleOrderAdd.resx">
       <DependentUpon>FormSaleOrderAdd.cs</DependentUpon>
