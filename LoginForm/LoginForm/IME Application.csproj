@@ -1169,12 +1169,6 @@
     <Compile Include="DataSet\DetailCopy.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\DetailsCopyViewAll_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\DetailsViewAll_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\DiscountValue.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1199,16 +1193,7 @@
     <Compile Include="DataSet\FieldCopy.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\FieldsViewAll_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\FinancialYear.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\FormViewAll_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\FormView_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\FundFlow1_Result.cs">
@@ -1326,12 +1311,6 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\MasterCopy.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\MasterCopyViewByFormName_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\MasterViewByFormName_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\MaterialReceiptDetail.cs">
@@ -2433,12 +2412,6 @@
     <Compile Include="QuotationModule\ViewProductHistory.Designer.cs">
       <DependentUpon>ViewProductHistory.cs</DependentUpon>
     </Compile>
-    <Compile Include="SaleOrder\DevFormSaleOrderAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SaleOrder\DevFormSaleOrderAdd.designer.cs">
-      <DependentUpon>DevFormSaleOrderAdd.cs</DependentUpon>
-    </Compile>
     <Compile Include="SaleOrder\FormSaleOrderAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3013,9 +2986,6 @@
     <EmbeddedResource Include="QuotationModule\ViewProductHistory.resx">
       <DependentUpon>ViewProductHistory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SaleOrder\DevFormSaleOrderAdd.resx">
-      <DependentUpon>DevFormSaleOrderAdd.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="SaleOrder\FormSaleOrderAdd.resx">
       <DependentUpon>FormSaleOrderAdd.cs</DependentUpon>
     </EmbeddedResource>
@@ -3182,11 +3152,6 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Users\cm_gn\Desktop\Printer\Printer_Settings.csproj">
-      <Project>{301b1c07-bc18-4571-a3bd-89d4d7c9b06c}</Project>
-      <Name>Printer_Settings</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
