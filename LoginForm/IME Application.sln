@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IME Application", "LoginFor
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "IMECRM", "IMECRM\IMECRM.vdproj", "{CA38E2CC-24A8-41AA-AFA1-0EF3AEFECD6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Printer_Settings", "..\..\..\Users\cm_gn\Desktop\Printer\Printer_Settings.csproj", "{301B1C07-BC18-4571-A3BD-89D4D7C9B06C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Printer_Settings", "Printer\Printer_Settings.csproj", "{301B1C07-BC18-4571-A3BD-89D4D7C9B06C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
