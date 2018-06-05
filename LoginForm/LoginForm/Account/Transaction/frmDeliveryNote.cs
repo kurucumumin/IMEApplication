@@ -3877,18 +3877,15 @@ namespace LoginForm
         //        MessageBox.Show("SI: 73" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
         //    }
         //}
-        // <summary>
-        // Print function for dotmatrix printer
-        // </summary>
-        // <param name = "decSalesMasterId" ></ param >
-         //TODO PrintForDotMatrix
-        public void PrintForDotMatrix(decimal decSalesMasterId)
+
+        public void PrintForDotMatrix(decimal decDeliveryNoteMasterId)
         {
             try
             {
                 DataTable dtblOtherDetails = new DataTable();
                 CompanySP spComapany = new CompanySP();
                 dtblOtherDetails = spComapany.CompanyViewForDotMatrix();
+                //-------------Grid Details-------------------\\
                 DataTable dtblGridDetails = new DataTable();
                 dtblGridDetails.Columns.Add("SlNo");
                 dtblGridDetails.Columns.Add("BarCode");
@@ -3897,15 +3894,6 @@ namespace LoginForm
                 dtblGridDetails.Columns.Add("Qty");
                 dtblGridDetails.Columns.Add("Unit");
                 dtblGridDetails.Columns.Add("Godown");
-                dtblGridDetails.Columns.Add("Brand");
-                dtblGridDetails.Columns.Add("Tax");
-                dtblGridDetails.Columns.Add("TaxAmount");
-                dtblGridDetails.Columns.Add("NetAmount");
-                dtblGridDetails.Columns.Add("DiscountAmount");
-                dtblGridDetails.Columns.Add("DiscountPercentage");
-                dtblGridDetails.Columns.Add("SalesRate");
-                dtblGridDetails.Columns.Add("PurchaseRate");
-                dtblGridDetails.Columns.Add("MRP");
                 dtblGridDetails.Columns.Add("Rack");
                 dtblGridDetails.Columns.Add("Batch");
                 dtblGridDetails.Columns.Add("Rate");
@@ -3917,103 +3905,63 @@ namespace LoginForm
                     {
                         DataRow dr = dtblGridDetails.NewRow();
                         dr["SlNo"] = ++inRowCount;
-                        if (dRow.Cells["dgvtxtSalesInvoiceBarcode"].Value != null)
+                        if (dRow.Cells["dgvtxtBarcode"].Value != null)
                         {
-                            dr["BarCode"] = dRow.Cells["dgvtxtSalesInvoiceBarcode"].Value.ToString();
+                            dr["BarCode"] = dRow.Cells["dgvtxtBarcode"].Value.ToString();
                         }
-                        if (dRow.Cells["dgvtxtSalesInvoiceProductCode"].Value != null)
+                        if (dRow.Cells["dgvtxtProductCode"].Value != null)
                         {
-                            dr["ProductCode"] = dRow.Cells["dgvtxtSalesInvoiceProductCode"].Value.ToString();
+                            dr["ProductCode"] = dRow.Cells["dgvtxtProductCode"].Value.ToString();
                         }
-                        if (dRow.Cells["dgvtxtSalesInvoiceProductName"].Value != null)
+                        if (dRow.Cells["dgvtxtProductName"].Value != null)
                         {
-                            dr["ProductName"] = dRow.Cells["dgvtxtSalesInvoiceProductName"].Value.ToString();
+                            dr["ProductName"] = dRow.Cells["dgvtxtProductName"].Value.ToString();
                         }
-                        if (dRow.Cells["dgvtxtSalesInvoiceQty"].Value != null)
+                        if (dRow.Cells["dgvtxtQty"].Value != null)
                         {
-                            dr["Qty"] = dRow.Cells["dgvtxtSalesInvoiceQty"].Value.ToString();
+                            dr["Qty"] = dRow.Cells["dgvtxtQty"].Value.ToString();
                         }
-                        if (dRow.Cells["dgvtxtSalesInvoicembUnitName"].Value != null)
+                        if (dRow.Cells["dgvcmbUnit"].Value != null)
                         {
-                            dr["Unit"] = dRow.Cells["dgvtxtSalesInvoicembUnitName"].FormattedValue.ToString();
+                            dr["Unit"] = dRow.Cells["dgvcmbUnit"].FormattedValue.ToString();
                         }
-                        if (dRow.Cells["dgvcmbSalesInvoiceGodown"].Value != null)
+                        if (dRow.Cells["dgvcmbGodown"].Value != null)
                         {
-                            dr["Godown"] = dRow.Cells["dgvcmbSalesInvoiceGodown"].FormattedValue.ToString();
+                            dr["Godown"] = dRow.Cells["dgvcmbGodown"].FormattedValue.ToString();
                         }
-                        if (dRow.Cells["dgvcmbSalesInvoiceRack"].Value != null)
+                        if (dRow.Cells["dgvcmbRack"].Value != null)
                         {
-                            dr["Rack"] = dRow.Cells["dgvcmbSalesInvoiceRack"].FormattedValue.ToString();
+                            dr["Rack"] = dRow.Cells["dgvcmbRack"].FormattedValue.ToString();
                         }
-                        if (dRow.Cells["dgvcmbSalesInvoiceBatch"].Value != null)
+                        if (dRow.Cells["dgvcmbBatch"].Value != null)
                         {
-                            dr["Batch"] = dRow.Cells["dgvcmbSalesInvoiceBatch"].FormattedValue.ToString();
+                            dr["Batch"] = dRow.Cells["dgvcmbBatch"].FormattedValue.ToString();
                         }
-                        if (dRow.Cells["dgvtxtSalesInvoiceRate"].Value != null)
+                        if (dRow.Cells["dgvtxtRate"].Value != null)
                         {
-                            dr["Rate"] = dRow.Cells["dgvtxtSalesInvoiceRate"].Value.ToString();
+                            dr["Rate"] = dRow.Cells["dgvtxtRate"].Value.ToString();
                         }
-                        if (dRow.Cells["dgvtxtSalesInvoiceAmount"].Value != null)
+                        if (dRow.Cells["dgvtxtAmount"].Value != null)
                         {
-                            dr["Amount"] = dRow.Cells["dgvtxtSalesInvoiceAmount"].Value.ToString();
-                        }
-                        if (dRow.Cells["dgvcmbSalesInvoiceTaxName"].Value != null)
-                        {
-                            dr["Tax"] = dRow.Cells["dgvcmbSalesInvoiceTaxName"].FormattedValue.ToString();
-                        }
-                        if (dRow.Cells["dgvtxtSalesInvoiceBrand"].Value != null)
-                        {
-                            dr["Brand"] = dRow.Cells["dgvtxtSalesInvoiceBrand"].Value.ToString();
-                        }
-                        if (dRow.Cells["dgvtxtSalesInvoiceTaxAmount"].Value != null)
-                        {
-                            dr["TaxAmount"] = dRow.Cells["dgvtxtSalesInvoiceTaxAmount"].Value.ToString();
-                        }
-                        if (dRow.Cells["dgvtxtSalesInvoiceNetAmount"].Value != null)
-                        {
-                            dr["NetAmount"] = dRow.Cells["dgvtxtSalesInvoiceNetAmount"].Value.ToString();
-                        }
-                        if (dRow.Cells["dgvtxtSalesInvoiceDiscountAmount"].Value != null)
-                        {
-                            dr["DiscountAmount"] = dRow.Cells["dgvtxtSalesInvoiceDiscountAmount"].Value.ToString();
-                        }
-                        if (dRow.Cells["dgvtxtSalesInvoiceDiscountPercentage"].Value != null)
-                        {
-                            dr["DiscountPercentage"] = dRow.Cells["dgvtxtSalesInvoiceDiscountPercentage"].Value.ToString();
-                        }
-                        if (dRow.Cells["dgvtxtSalesInvoiceSalesRate"].Value != null)
-                        {
-                            dr["SalesRate"] = dRow.Cells["dgvtxtSalesInvoiceSalesRate"].Value.ToString();
-                        }
-                        if (dRow.Cells["dgvtxtSalesInvoicePurchaseRate"].Value != null)
-                        {
-                            dr["PurchaseRate"] = dRow.Cells["dgvtxtSalesInvoicePurchaseRate"].Value.ToString();
-                        }
-                        if (dRow.Cells["dgvtxtSalesInvoiceMrp"].Value != null)
-                        {
-                            dr["MRP"] = dRow.Cells["dgvtxtSalesInvoiceMrp"].Value.ToString();
+                            dr["Amount"] = dRow.Cells["dgvtxtAmount"].Value.ToString();
                         }
                         dtblGridDetails.Rows.Add(dr);
                     }
                 }
+                //-------------Other Details-------------------\\
                 dtblOtherDetails.Columns.Add("voucherNo");
                 dtblOtherDetails.Columns.Add("date");
                 dtblOtherDetails.Columns.Add("ledgerName");
-                dtblOtherDetails.Columns.Add("SalesMode");
-                dtblOtherDetails.Columns.Add("SalesAccount");
-                dtblOtherDetails.Columns.Add("SalesMan");
-                dtblOtherDetails.Columns.Add("CreditPeriod");
-                dtblOtherDetails.Columns.Add("VoucherType");
-                dtblOtherDetails.Columns.Add("PricingLevel");
-                dtblOtherDetails.Columns.Add("Customer");
-                dtblOtherDetails.Columns.Add("CustomerAddress");
-                dtblOtherDetails.Columns.Add("CustomerTIN");
-                dtblOtherDetails.Columns.Add("CustomerCST");
                 dtblOtherDetails.Columns.Add("Narration");
                 dtblOtherDetails.Columns.Add("Currency");
                 dtblOtherDetails.Columns.Add("TotalAmount");
-                dtblOtherDetails.Columns.Add("BillDiscount");
-                dtblOtherDetails.Columns.Add("GrandTotal");
+                dtblOtherDetails.Columns.Add("DeliveryMode");
+                dtblOtherDetails.Columns.Add("PricingLevel");
+                dtblOtherDetails.Columns.Add("Type");
+                dtblOtherDetails.Columns.Add("SalesMan");
+                dtblOtherDetails.Columns.Add("CustomerAddress");
+                dtblOtherDetails.Columns.Add("CustomerTIN");
+                dtblOtherDetails.Columns.Add("CustomerCST");
                 dtblOtherDetails.Columns.Add("AmountInWords");
                 dtblOtherDetails.Columns.Add("Declaration");
                 dtblOtherDetails.Columns.Add("Heading1");
@@ -4026,16 +3974,11 @@ namespace LoginForm
                 dRowOther["ledgerName"] = cmbCashOrParty.Text;
                 dRowOther["Narration"] = txtNarration.Text;
                 dRowOther["Currency"] = cmbCurrency.Text;
-                dRowOther["SalesMode"] = cmbSalesMode.Text;
-                dRowOther["SalesAccount"] = cmbSalesAccount.Text;
-                dRowOther["SalesMan"] = cmbSalesMan.SelectedText;
-                dRowOther["CreditPeriod"] = (txtCreditPeriod.Text) + " Days";
+                dRowOther["TotalAmount"] = txtGrandTotal.Text;
+                dRowOther["DeliveryMode"] = "Against Order"/*cmbDeliveryMode.Text*/;
                 dRowOther["PricingLevel"] = cmbPricingLevel.Text;
-                dRowOther["Customer"] = txtCustomer.Text;
-                dRowOther["BillDiscount"] = txtBillDiscount.Text;
-                dRowOther["GrandTotal"] = txtGrandTotal.Text;
-                dRowOther["TotalAmount"] = txtTotalAmount.Text;
-                dRowOther["VoucherType"] = cmbVoucherType.Text;
+                dRowOther["Type"] = cmbVoucherType.Text;
+                dRowOther["SalesMan"] = cmbSalesMan.Text;
                 dRowOther["address"] = (dtblOtherDetails.Rows[0]["address"].ToString().Replace("\n", ", ")).Replace("\r", "");
                 AccountLedgerSP spAccountLedger = new AccountLedgerSP();
                 AccountLedger infoAccountLedger = new AccountLedger();
@@ -4056,9 +3999,192 @@ namespace LoginForm
             }
             catch (Exception ex)
             {
-                MessageBox.Show("SI: 74" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("DN41:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        // <summary>
+        // Print function for dotmatrix printer
+        // </summary>
+        // <param name = "decSalesMasterId" ></ param >
+        //TODO PrintForDotMatrix
+        //public void PrintForDotMatrix(decimal decSalesMasterId)
+        //{
+        //    try
+        //    {
+        //        DataTable dtblOtherDetails = new DataTable();
+        //        CompanySP spComapany = new CompanySP();
+        //        dtblOtherDetails = spComapany.CompanyViewForDotMatrix();
+        //        DataTable dtblGridDetails = new DataTable();
+        //        dtblGridDetails.Columns.Add("SlNo");
+        //        dtblGridDetails.Columns.Add("BarCode");
+        //        dtblGridDetails.Columns.Add("ProductCode");
+        //        dtblGridDetails.Columns.Add("ProductName");
+        //        dtblGridDetails.Columns.Add("Qty");
+        //        dtblGridDetails.Columns.Add("Unit");
+        //        dtblGridDetails.Columns.Add("Godown");
+        //        dtblGridDetails.Columns.Add("Brand");
+        //        dtblGridDetails.Columns.Add("Tax");
+        //        dtblGridDetails.Columns.Add("TaxAmount");
+        //        dtblGridDetails.Columns.Add("NetAmount");
+        //        dtblGridDetails.Columns.Add("DiscountAmount");
+        //        dtblGridDetails.Columns.Add("DiscountPercentage");
+        //        dtblGridDetails.Columns.Add("SalesRate");
+        //        dtblGridDetails.Columns.Add("PurchaseRate");
+        //        dtblGridDetails.Columns.Add("MRP");
+        //        dtblGridDetails.Columns.Add("Rack");
+        //        dtblGridDetails.Columns.Add("Batch");
+        //        dtblGridDetails.Columns.Add("Rate");
+        //        dtblGridDetails.Columns.Add("Amount");
+        //        int inRowCount = 0;
+        //        foreach (DataGridViewRow dRow in dgvSalesInvoice.Rows)
+        //        {
+        //            if (!dRow.IsNewRow)
+        //            {
+        //                DataRow dr = dtblGridDetails.NewRow();
+        //                dr["SlNo"] = ++inRowCount;
+        //                if (dRow.Cells["dgvtxtSalesInvoiceBarcode"].Value != null)
+        //                {
+        //                    dr["BarCode"] = dRow.Cells["dgvtxtSalesInvoiceBarcode"].Value.ToString();
+        //                }
+        //                if (dRow.Cells["dgvtxtSalesInvoiceProductCode"].Value != null)
+        //                {
+        //                    dr["ProductCode"] = dRow.Cells["dgvtxtSalesInvoiceProductCode"].Value.ToString();
+        //                }
+        //                if (dRow.Cells["dgvtxtSalesInvoiceProductName"].Value != null)
+        //                {
+        //                    dr["ProductName"] = dRow.Cells["dgvtxtSalesInvoiceProductName"].Value.ToString();
+        //                }
+        //                if (dRow.Cells["dgvtxtSalesInvoiceQty"].Value != null)
+        //                {
+        //                    dr["Qty"] = dRow.Cells["dgvtxtSalesInvoiceQty"].Value.ToString();
+        //                }
+        //                if (dRow.Cells["dgvtxtSalesInvoicembUnitName"].Value != null)
+        //                {
+        //                    dr["Unit"] = dRow.Cells["dgvtxtSalesInvoicembUnitName"].FormattedValue.ToString();
+        //                }
+        //                if (dRow.Cells["dgvcmbSalesInvoiceGodown"].Value != null)
+        //                {
+        //                    dr["Godown"] = dRow.Cells["dgvcmbSalesInvoiceGodown"].FormattedValue.ToString();
+        //                }
+        //                if (dRow.Cells["dgvcmbSalesInvoiceRack"].Value != null)
+        //                {
+        //                    dr["Rack"] = dRow.Cells["dgvcmbSalesInvoiceRack"].FormattedValue.ToString();
+        //                }
+        //                if (dRow.Cells["dgvcmbSalesInvoiceBatch"].Value != null)
+        //                {
+        //                    dr["Batch"] = dRow.Cells["dgvcmbSalesInvoiceBatch"].FormattedValue.ToString();
+        //                }
+        //                if (dRow.Cells["dgvtxtSalesInvoiceRate"].Value != null)
+        //                {
+        //                    dr["Rate"] = dRow.Cells["dgvtxtSalesInvoiceRate"].Value.ToString();
+        //                }
+        //                if (dRow.Cells["dgvtxtSalesInvoiceAmount"].Value != null)
+        //                {
+        //                    dr["Amount"] = dRow.Cells["dgvtxtSalesInvoiceAmount"].Value.ToString();
+        //                }
+        //                if (dRow.Cells["dgvcmbSalesInvoiceTaxName"].Value != null)
+        //                {
+        //                    dr["Tax"] = dRow.Cells["dgvcmbSalesInvoiceTaxName"].FormattedValue.ToString();
+        //                }
+        //                if (dRow.Cells["dgvtxtSalesInvoiceBrand"].Value != null)
+        //                {
+        //                    dr["Brand"] = dRow.Cells["dgvtxtSalesInvoiceBrand"].Value.ToString();
+        //                }
+        //                if (dRow.Cells["dgvtxtSalesInvoiceTaxAmount"].Value != null)
+        //                {
+        //                    dr["TaxAmount"] = dRow.Cells["dgvtxtSalesInvoiceTaxAmount"].Value.ToString();
+        //                }
+        //                if (dRow.Cells["dgvtxtSalesInvoiceNetAmount"].Value != null)
+        //                {
+        //                    dr["NetAmount"] = dRow.Cells["dgvtxtSalesInvoiceNetAmount"].Value.ToString();
+        //                }
+        //                if (dRow.Cells["dgvtxtSalesInvoiceDiscountAmount"].Value != null)
+        //                {
+        //                    dr["DiscountAmount"] = dRow.Cells["dgvtxtSalesInvoiceDiscountAmount"].Value.ToString();
+        //                }
+        //                if (dRow.Cells["dgvtxtSalesInvoiceDiscountPercentage"].Value != null)
+        //                {
+        //                    dr["DiscountPercentage"] = dRow.Cells["dgvtxtSalesInvoiceDiscountPercentage"].Value.ToString();
+        //                }
+        //                if (dRow.Cells["dgvtxtSalesInvoiceSalesRate"].Value != null)
+        //                {
+        //                    dr["SalesRate"] = dRow.Cells["dgvtxtSalesInvoiceSalesRate"].Value.ToString();
+        //                }
+        //                if (dRow.Cells["dgvtxtSalesInvoicePurchaseRate"].Value != null)
+        //                {
+        //                    dr["PurchaseRate"] = dRow.Cells["dgvtxtSalesInvoicePurchaseRate"].Value.ToString();
+        //                }
+        //                if (dRow.Cells["dgvtxtSalesInvoiceMrp"].Value != null)
+        //                {
+        //                    dr["MRP"] = dRow.Cells["dgvtxtSalesInvoiceMrp"].Value.ToString();
+        //                }
+        //                dtblGridDetails.Rows.Add(dr);
+        //            }
+        //        }
+        //        dtblOtherDetails.Columns.Add("voucherNo");
+        //        dtblOtherDetails.Columns.Add("date");
+        //        dtblOtherDetails.Columns.Add("ledgerName");
+        //        dtblOtherDetails.Columns.Add("SalesMode");
+        //        dtblOtherDetails.Columns.Add("SalesAccount");
+        //        dtblOtherDetails.Columns.Add("SalesMan");
+        //        dtblOtherDetails.Columns.Add("CreditPeriod");
+        //        dtblOtherDetails.Columns.Add("VoucherType");
+        //        dtblOtherDetails.Columns.Add("PricingLevel");
+        //        dtblOtherDetails.Columns.Add("Customer");
+        //        dtblOtherDetails.Columns.Add("CustomerAddress");
+        //        dtblOtherDetails.Columns.Add("CustomerTIN");
+        //        dtblOtherDetails.Columns.Add("CustomerCST");
+        //        dtblOtherDetails.Columns.Add("Narration");
+        //        dtblOtherDetails.Columns.Add("Currency");
+        //        dtblOtherDetails.Columns.Add("TotalAmount");
+        //        dtblOtherDetails.Columns.Add("BillDiscount");
+        //        dtblOtherDetails.Columns.Add("GrandTotal");
+        //        dtblOtherDetails.Columns.Add("AmountInWords");
+        //        dtblOtherDetails.Columns.Add("Declaration");
+        //        dtblOtherDetails.Columns.Add("Heading1");
+        //        dtblOtherDetails.Columns.Add("Heading2");
+        //        dtblOtherDetails.Columns.Add("Heading3");
+        //        dtblOtherDetails.Columns.Add("Heading4");
+        //        DataRow dRowOther = dtblOtherDetails.Rows[0];
+        //        dRowOther["voucherNo"] = txtInvoiceNo.Text;
+        //        dRowOther["date"] = txtDate.Text;
+        //        dRowOther["ledgerName"] = cmbCashOrParty.Text;
+        //        dRowOther["Narration"] = txtNarration.Text;
+        //        dRowOther["Currency"] = cmbCurrency.Text;
+        //        dRowOther["SalesMode"] = cmbSalesMode.Text;
+        //        dRowOther["SalesAccount"] = cmbSalesAccount.Text;
+        //        dRowOther["SalesMan"] = cmbSalesMan.SelectedText;
+        //        dRowOther["CreditPeriod"] = (txtCreditPeriod.Text) + " Days";
+        //        dRowOther["PricingLevel"] = cmbPricingLevel.Text;
+        //        dRowOther["Customer"] = txtCustomer.Text;
+        //        dRowOther["BillDiscount"] = txtBillDiscount.Text;
+        //        dRowOther["GrandTotal"] = txtGrandTotal.Text;
+        //        dRowOther["TotalAmount"] = txtTotalAmount.Text;
+        //        dRowOther["VoucherType"] = cmbVoucherType.Text;
+        //        dRowOther["address"] = (dtblOtherDetails.Rows[0]["address"].ToString().Replace("\n", ", ")).Replace("\r", "");
+        //        AccountLedgerSP spAccountLedger = new AccountLedgerSP();
+        //        AccountLedger infoAccountLedger = new AccountLedger();
+        //        infoAccountLedger = spAccountLedger.AccountLedgerView(Convert.ToDecimal(cmbCashOrParty.SelectedValue));
+        //        dRowOther["CustomerAddress"] = (customer.CustomerAddresses.FirstOrDefault().AdressDetails.ToString().Replace("\n", ", ")).Replace("\r", "");
+        //        dRowOther["CustomerTIN"] = infoAccountLedger.tin;
+        //        dRowOther["CustomerCST"] = infoAccountLedger.cst;
+        //        dRowOther["AmountInWords"] = new NumToText().AmountWords(Convert.ToDecimal(txtGrandTotal.Text), (decimal)Utils.getManagement().DefaultCurrency);
+        //        VoucherTypeSP spVoucherType = new VoucherTypeSP();
+        //        DataTable dtblDeclaration = spVoucherType.DeclarationAndHeadingGetByVoucherTypeId(18);
+        //        dRowOther["Declaration"] = dtblDeclaration.Rows[0]["Declaration"].ToString();
+        //        dRowOther["Heading1"] = dtblDeclaration.Rows[0]["Heading1"].ToString();
+        //        dRowOther["Heading2"] = dtblDeclaration.Rows[0]["Heading2"].ToString();
+        //        dRowOther["Heading3"] = dtblDeclaration.Rows[0]["Heading3"].ToString();
+        //        dRowOther["Heading4"] = dtblDeclaration.Rows[0]["Heading4"].ToString();
+        //        int inFormId = spVoucherType.FormIdGetForPrinterSettings(Convert.ToInt32(dtblDeclaration.Rows[0]["masterId"].ToString()));
+        //        PrintWorks.DotMatrixPrint.PrintDesign(inFormId, dtblOtherDetails, dtblGridDetails, dtblOtherDetails);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("SI: 74" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    }
+        //}
         /// <summary>
         /// Function to call this form from frmSalesInvoiceRegister to view details and for updation
         /// </summary>

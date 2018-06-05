@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.377</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{301B1C07-BC18-4571-A3BD-89D4D7C9B06C}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <AssemblyName>Printer_Settings</AssemblyName>
+    <OutputType>WinExe</OutputType>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>PrintWorks</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="PrintWorks\DBConnection.cs" />
+    <Compile Include="PrintWorks\DetailsSP.cs" />
+    <Compile Include="PrintWorks\FieldSP.cs" />
+    <Compile Include="PrintWorks\RawPrinterHelper.cs" />
+    <Compile Include="PrintWorks\frmPrintDesigner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrintWorks\DetailsInfo.cs" />
+    <Compile Include="PrintWorks\FieldInfo.cs" />
+    <Compile Include="PrintWorks\MasterInfo.cs" />
+    <Compile Include="PrintWorks\FormInfo.cs" />
+    <Compile Include="PrintWorks\MasterSP.cs" />
+    <Compile Include="PrintWorks\DotMatrixPrint.cs" />
+    <Compile Include="PrintWorks\Properties\Settings.cs" />
+    <Compile Include="PrintWorks\frmForms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrintWorks\Properties\Resources.cs" />
+    <Compile Include="PrintWorks\Program.cs" />
+    <Compile Include="PrintWorks\FormSP.cs" />
+    <Compile Include="PrintWorks\frmDBConnection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <EmbeddedResource Include="PrintWorks.Properties.Resources.resources" />
+    <EmbeddedResource Include="PrintWorks.frmPrintDesigner.resources" />
+    <EmbeddedResource Include="PrintWorks.frmForms.resources" />
+    <EmbeddedResource Include="PrintWorks.frmDBConnection.resources" />
+  </ItemGroup>
+</Project>
