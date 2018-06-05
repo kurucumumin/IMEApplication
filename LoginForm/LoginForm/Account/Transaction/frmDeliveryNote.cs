@@ -3905,45 +3905,45 @@ namespace LoginForm
                     {
                         DataRow dr = dtblGridDetails.NewRow();
                         dr["SlNo"] = ++inRowCount;
-                        if (dRow.Cells["dgvtxtBarcode"].Value != null)
+                        //if (dRow.Cells["dgvtxtBarcode"].Value != null)
+                        //{
+                        //    dr["BarCode"] = dRow.Cells["dgvtxtBarcode"].Value.ToString();
+                        //}
+                        if (dRow.Cells[dgvtxtSalesInvoiceProductCode.Index].Value != null)
                         {
-                            dr["BarCode"] = dRow.Cells["dgvtxtBarcode"].Value.ToString();
+                            dr["ProductCode"] = dRow.Cells[dgvtxtSalesInvoiceProductCode.Index].Value.ToString();
                         }
-                        if (dRow.Cells["dgvtxtProductCode"].Value != null)
+                        if (dRow.Cells[dgvtxtSalesInvoiceProductName.Index].Value != null)
                         {
-                            dr["ProductCode"] = dRow.Cells["dgvtxtProductCode"].Value.ToString();
+                            dr["ProductName"] = dRow.Cells[dgvtxtSalesInvoiceProductName.Index].Value.ToString();
                         }
-                        if (dRow.Cells["dgvtxtProductName"].Value != null)
+                        if (dRow.Cells[dgvtxtSalesInvoiceQty.Index].Value != null)
                         {
-                            dr["ProductName"] = dRow.Cells["dgvtxtProductName"].Value.ToString();
+                            dr["Qty"] = dRow.Cells[dgvtxtSalesInvoiceQty.Index].Value.ToString();
                         }
-                        if (dRow.Cells["dgvtxtQty"].Value != null)
+                        if (dRow.Cells[dgvtxtSalesInvoicembUnitName.Index].Value != null)
                         {
-                            dr["Qty"] = dRow.Cells["dgvtxtQty"].Value.ToString();
+                            dr["Unit"] = dRow.Cells[dgvtxtSalesInvoicembUnitName.Index].FormattedValue.ToString();
                         }
-                        if (dRow.Cells["dgvcmbUnit"].Value != null)
+                        //if (dRow.Cells["dgvcmbGodown"].Value != null)
+                        //{
+                        //    dr["Godown"] = dRow.Cells["dgvcmbGodown"].FormattedValue.ToString();
+                        //}
+                        //if (dRow.Cells["dgvcmbRack"].Value != null)
+                        //{
+                        //    dr["Rack"] = dRow.Cells["dgvcmbRack"].FormattedValue.ToString();
+                        //}
+                        //if (dRow.Cells["dgvcmbBatch"].Value != null)
+                        //{
+                        //    dr["Batch"] = dRow.Cells["dgvcmbBatch"].FormattedValue.ToString();
+                        //}
+                        if (dRow.Cells[dgvtxtSalesInvoiceRate.Index].Value != null)
                         {
-                            dr["Unit"] = dRow.Cells["dgvcmbUnit"].FormattedValue.ToString();
+                            dr["Rate"] = dRow.Cells[dgvtxtSalesInvoiceRate.Index].Value.ToString();
                         }
-                        if (dRow.Cells["dgvcmbGodown"].Value != null)
+                        if (dRow.Cells[dgvtxtSalesInvoiceAmount.Index].Value != null)
                         {
-                            dr["Godown"] = dRow.Cells["dgvcmbGodown"].FormattedValue.ToString();
-                        }
-                        if (dRow.Cells["dgvcmbRack"].Value != null)
-                        {
-                            dr["Rack"] = dRow.Cells["dgvcmbRack"].FormattedValue.ToString();
-                        }
-                        if (dRow.Cells["dgvcmbBatch"].Value != null)
-                        {
-                            dr["Batch"] = dRow.Cells["dgvcmbBatch"].FormattedValue.ToString();
-                        }
-                        if (dRow.Cells["dgvtxtRate"].Value != null)
-                        {
-                            dr["Rate"] = dRow.Cells["dgvtxtRate"].Value.ToString();
-                        }
-                        if (dRow.Cells["dgvtxtAmount"].Value != null)
-                        {
-                            dr["Amount"] = dRow.Cells["dgvtxtAmount"].Value.ToString();
+                            dr["Amount"] = dRow.Cells[dgvtxtSalesInvoiceAmount.Index].Value.ToString();
                         }
                         dtblGridDetails.Rows.Add(dr);
                     }
@@ -3994,7 +3994,9 @@ namespace LoginForm
                 dRowOther["Heading2"] = dtblDeclaration.Rows[0]["Heading2"].ToString();
                 dRowOther["Heading3"] = dtblDeclaration.Rows[0]["Heading3"].ToString();
                 dRowOther["Heading4"] = dtblDeclaration.Rows[0]["Heading4"].ToString();
-                int inFormId = spVoucherType.FormIdGetForPrinterSettings(Convert.ToInt32(dtblDeclaration.Rows[0]["masterId"].ToString()));
+                //MasterID For DeliveryNote
+                int masterID = 14;
+                int inFormId = spVoucherType.FormIdGetForPrinterSettings(masterID);
                 PrintWorks.DotMatrixPrint.PrintDesign(inFormId, dtblOtherDetails, dtblGridDetails, dtblOtherDetails);
             }
             catch (Exception ex)
@@ -7733,9 +7735,9 @@ namespace LoginForm
             {
                 customer = form.customer;
                 cmbCurrency.SelectedIndex = cmbCurrency.FindStringExact(customer.CurrNameQuo);
+                fillCustomer();
             }
             this.Enabled = true;
-            fillCustomer();
         }
 
         private void fillCustomer()
@@ -7762,7 +7764,7 @@ namespace LoginForm
                         string productID;
                         //string customerID;
                         decimal qty;
-                        string PurchaseOrderID;
+                        //string PurchaseOrderID;
                         //PurchaseOrderID =  dgvSalesInvoice.Rows[i].Cells[dgvPOno.Index].Value.ToString();
                         productID = dgvSalesInvoice.Rows[i].Cells[dgvtxtSalesInvoiceProductCode.Index].Value.ToString();
                         //RS_InvoiceDetails purchase =  IME.RS_InvoiceDetails.Where(a => a.PurchaseOrderNumber == PurchaseOrderID  && a.ProductNumber==productID && a.IsSaleInvoiced!=1).FirstOrDefault();
