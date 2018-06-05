@@ -1042,7 +1042,7 @@ namespace LoginForm.QuotationModule
 
 
 
-                            if (CurrentRow.Cells[dgQty.Index].Value != "")
+                            if (CurrentRow.Cells[dgQty.Index].Value.ToString() != "")
                             {
                                 //TOTAL ve UPIME belirleniyor
                                 discResult = decimal.Parse(CurrentRow.Cells["dgUPIME"].Value.ToString());

@@ -22,6 +22,7 @@ namespace LoginForm.CustomControls
 
         private void btnFromQuotation_Click(object sender, EventArgs e)
         {
+            //FormSalesOrderMain form = new FormSalesOrderMain();
             FormSalesOrderMain form = new FormSalesOrderMain();
             form.Show();
         }

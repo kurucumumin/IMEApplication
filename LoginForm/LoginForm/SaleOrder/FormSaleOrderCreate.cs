@@ -150,7 +150,7 @@ namespace LoginForm.nsSaleOrder
             }
             else
             {
-                MessageBox.Show("Not Implemented Error", "Error", MessageBoxButtons.OK);
+                MessageBox.Show("You have to choose at leaset one item", "Warning", MessageBoxButtons.OK);
                 //FormSaleOrderAdd form1 = new FormSaleOrderAdd((Customer)lbCustomerList.SelectedItem);
                 ////TODO form tekrar açılıp kapatımış. Doğru olan yöntemi bul
                 //FormSalesOrderMain f = new FormSalesOrderMain();
