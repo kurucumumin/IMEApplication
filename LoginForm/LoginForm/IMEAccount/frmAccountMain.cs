@@ -125,9 +125,9 @@ namespace LoginForm.IMEAccount
             }
         }
 
-        private void btnAddReceipt_Click(object sender, EventArgs e)
+        private void btnAddVoucher_Click(object sender, EventArgs e)
         {
-            frmReceiptOperation form = new frmReceiptOperation();
+            frmVoucherOperation form = new frmVoucherOperation();
             form.Show();
             this.Close();
         }

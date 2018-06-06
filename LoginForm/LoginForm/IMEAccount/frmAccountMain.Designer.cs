@@ -48,7 +48,7 @@
             this.btnUpdateFromCustomer = new System.Windows.Forms.Button();
             this.btnAllAccounts = new System.Windows.Forms.Button();
             this.btnCustomersDebits = new System.Windows.Forms.Button();
-            this.btnAddReceipt = new System.Windows.Forms.Button();
+            this.btnAddVoucher = new System.Windows.Forms.Button();
             this.dgCurrenetAccountMovements = new System.Windows.Forms.DataGridView();
             this.currentTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.currentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -78,10 +78,9 @@
             this.Desc,
             this.Supplier,
             this.IsSaleoperation});
-            this.dg.Location = new System.Drawing.Point(1030, 173);
-            this.dg.Margin = new System.Windows.Forms.Padding(4);
+            this.dg.Location = new System.Drawing.Point(772, 141);
             this.dg.Name = "dg";
-            this.dg.Size = new System.Drawing.Size(252, 441);
+            this.dg.Size = new System.Drawing.Size(189, 358);
             this.dg.TabIndex = 0;
             this.dg.Visible = false;
             // 
@@ -144,10 +143,9 @@
             // 
             // btnAddBill
             // 
-            this.btnAddBill.Location = new System.Drawing.Point(133, 7);
-            this.btnAddBill.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAddBill.Location = new System.Drawing.Point(100, 6);
             this.btnAddBill.Name = "btnAddBill";
-            this.btnAddBill.Size = new System.Drawing.Size(100, 53);
+            this.btnAddBill.Size = new System.Drawing.Size(75, 43);
             this.btnAddBill.TabIndex = 1;
             this.btnAddBill.Text = "Add Bill To Customer";
             this.btnAddBill.UseVisualStyleBackColor = true;
@@ -155,10 +153,9 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(241, 7);
-            this.btnUpdate.Margin = new System.Windows.Forms.Padding(4);
+            this.btnUpdate.Location = new System.Drawing.Point(181, 6);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(100, 53);
+            this.btnUpdate.Size = new System.Drawing.Size(75, 43);
             this.btnUpdate.TabIndex = 1;
             this.btnUpdate.Text = "Update Bill To Customer";
             this.btnUpdate.UseVisualStyleBackColor = true;
@@ -167,10 +164,9 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(1183, 7);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
+            this.btnClose.Location = new System.Drawing.Point(887, 6);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(100, 53);
+            this.btnClose.Size = new System.Drawing.Size(75, 43);
             this.btnClose.TabIndex = 1;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -178,10 +174,9 @@
             // 
             // AddAccount
             // 
-            this.AddAccount.Location = new System.Drawing.Point(707, 7);
-            this.AddAccount.Margin = new System.Windows.Forms.Padding(4);
+            this.AddAccount.Location = new System.Drawing.Point(530, 6);
             this.AddAccount.Name = "AddAccount";
-            this.AddAccount.Size = new System.Drawing.Size(100, 53);
+            this.AddAccount.Size = new System.Drawing.Size(75, 43);
             this.AddAccount.TabIndex = 1;
             this.AddAccount.Text = "Add Account";
             this.AddAccount.UseVisualStyleBackColor = true;
@@ -189,10 +184,9 @@
             // 
             // btnUpdateAccount
             // 
-            this.btnUpdateAccount.Location = new System.Drawing.Point(815, 7);
-            this.btnUpdateAccount.Margin = new System.Windows.Forms.Padding(4);
+            this.btnUpdateAccount.Location = new System.Drawing.Point(611, 6);
             this.btnUpdateAccount.Name = "btnUpdateAccount";
-            this.btnUpdateAccount.Size = new System.Drawing.Size(100, 53);
+            this.btnUpdateAccount.Size = new System.Drawing.Size(75, 43);
             this.btnUpdateAccount.TabIndex = 1;
             this.btnUpdateAccount.Text = "Update Account";
             this.btnUpdateAccount.UseVisualStyleBackColor = true;
@@ -200,10 +194,9 @@
             // 
             // btnAddFromCustomer
             // 
-            this.btnAddFromCustomer.Location = new System.Drawing.Point(349, 7);
-            this.btnAddFromCustomer.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAddFromCustomer.Location = new System.Drawing.Point(262, 6);
             this.btnAddFromCustomer.Name = "btnAddFromCustomer";
-            this.btnAddFromCustomer.Size = new System.Drawing.Size(109, 53);
+            this.btnAddFromCustomer.Size = new System.Drawing.Size(82, 43);
             this.btnAddFromCustomer.TabIndex = 1;
             this.btnAddFromCustomer.Text = "Add Bill From Supplier";
             this.btnAddFromCustomer.UseVisualStyleBackColor = true;
@@ -212,10 +205,9 @@
             // 
             // btnUpdateFromCustomer
             // 
-            this.btnUpdateFromCustomer.Location = new System.Drawing.Point(467, 7);
-            this.btnUpdateFromCustomer.Margin = new System.Windows.Forms.Padding(4);
+            this.btnUpdateFromCustomer.Location = new System.Drawing.Point(350, 6);
             this.btnUpdateFromCustomer.Name = "btnUpdateFromCustomer";
-            this.btnUpdateFromCustomer.Size = new System.Drawing.Size(125, 53);
+            this.btnUpdateFromCustomer.Size = new System.Drawing.Size(94, 43);
             this.btnUpdateFromCustomer.TabIndex = 1;
             this.btnUpdateFromCustomer.Text = "Update Bill From Supplier";
             this.btnUpdateFromCustomer.UseVisualStyleBackColor = true;
@@ -224,10 +216,9 @@
             // 
             // btnAllAccounts
             // 
-            this.btnAllAccounts.Location = new System.Drawing.Point(600, 7);
-            this.btnAllAccounts.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAllAccounts.Location = new System.Drawing.Point(450, 6);
             this.btnAllAccounts.Name = "btnAllAccounts";
-            this.btnAllAccounts.Size = new System.Drawing.Size(100, 53);
+            this.btnAllAccounts.Size = new System.Drawing.Size(75, 43);
             this.btnAllAccounts.TabIndex = 1;
             this.btnAllAccounts.Text = "All Accounts";
             this.btnAllAccounts.UseVisualStyleBackColor = true;
@@ -235,26 +226,24 @@
             // 
             // btnCustomersDebits
             // 
-            this.btnCustomersDebits.Location = new System.Drawing.Point(923, 7);
-            this.btnCustomersDebits.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCustomersDebits.Location = new System.Drawing.Point(692, 6);
             this.btnCustomersDebits.Name = "btnCustomersDebits";
-            this.btnCustomersDebits.Size = new System.Drawing.Size(100, 53);
+            this.btnCustomersDebits.Size = new System.Drawing.Size(75, 43);
             this.btnCustomersDebits.TabIndex = 1;
             this.btnCustomersDebits.Text = "Customer Debits";
             this.btnCustomersDebits.UseVisualStyleBackColor = true;
             this.btnCustomersDebits.Visible = false;
             this.btnCustomersDebits.Click += new System.EventHandler(this.btnCustomersDebits_Click);
             // 
-            // btnAddReceipt
+            // btnAddVoucher
             // 
-            this.btnAddReceipt.Location = new System.Drawing.Point(17, 7);
-            this.btnAddReceipt.Margin = new System.Windows.Forms.Padding(4);
-            this.btnAddReceipt.Name = "btnAddReceipt";
-            this.btnAddReceipt.Size = new System.Drawing.Size(100, 53);
-            this.btnAddReceipt.TabIndex = 2;
-            this.btnAddReceipt.Text = "Add Receipt";
-            this.btnAddReceipt.UseVisualStyleBackColor = true;
-            this.btnAddReceipt.Click += new System.EventHandler(this.btnAddReceipt_Click);
+            this.btnAddVoucher.Location = new System.Drawing.Point(13, 6);
+            this.btnAddVoucher.Name = "btnAddVoucher";
+            this.btnAddVoucher.Size = new System.Drawing.Size(75, 43);
+            this.btnAddVoucher.TabIndex = 2;
+            this.btnAddVoucher.Text = "Add Voucher";
+            this.btnAddVoucher.UseVisualStyleBackColor = true;
+            this.btnAddVoucher.Click += new System.EventHandler(this.btnAddVoucher_Click);
             // 
             // dgCurrenetAccountMovements
             // 
@@ -271,10 +260,11 @@
             this.operationTypeDataGridViewTextBoxColumn,
             this.accountNameDataGridViewTextBoxColumn});
             this.dgCurrenetAccountMovements.DataSource = this.cariHareketBindingSource;
-            this.dgCurrenetAccountMovements.Location = new System.Drawing.Point(17, 85);
+            this.dgCurrenetAccountMovements.Location = new System.Drawing.Point(13, 69);
+            this.dgCurrenetAccountMovements.Margin = new System.Windows.Forms.Padding(2);
             this.dgCurrenetAccountMovements.Name = "dgCurrenetAccountMovements";
             this.dgCurrenetAccountMovements.RowTemplate.Height = 24;
-            this.dgCurrenetAccountMovements.Size = new System.Drawing.Size(1256, 509);
+            this.dgCurrenetAccountMovements.Size = new System.Drawing.Size(942, 414);
             this.dgCurrenetAccountMovements.TabIndex = 3;
             // 
             // currentTypeDataGridViewTextBoxColumn
@@ -283,7 +273,7 @@
             this.currentTypeDataGridViewTextBoxColumn.DataPropertyName = "Current_Type";
             this.currentTypeDataGridViewTextBoxColumn.HeaderText = "Current_Type";
             this.currentTypeDataGridViewTextBoxColumn.Name = "currentTypeDataGridViewTextBoxColumn";
-            this.currentTypeDataGridViewTextBoxColumn.Width = 124;
+            this.currentTypeDataGridViewTextBoxColumn.Width = 96;
             // 
             // currentIDDataGridViewTextBoxColumn
             // 
@@ -291,7 +281,7 @@
             this.currentIDDataGridViewTextBoxColumn.DataPropertyName = "Current_ID";
             this.currentIDDataGridViewTextBoxColumn.HeaderText = "Current_ID";
             this.currentIDDataGridViewTextBoxColumn.Name = "currentIDDataGridViewTextBoxColumn";
-            this.currentIDDataGridViewTextBoxColumn.Width = 105;
+            this.currentIDDataGridViewTextBoxColumn.Width = 83;
             // 
             // currentNameDataGridViewTextBoxColumn
             // 
@@ -306,7 +296,7 @@
             this.amountDataGridViewTextBoxColumn.DataPropertyName = "Amount";
             this.amountDataGridViewTextBoxColumn.HeaderText = "Amount";
             this.amountDataGridViewTextBoxColumn.Name = "amountDataGridViewTextBoxColumn";
-            this.amountDataGridViewTextBoxColumn.Width = 85;
+            this.amountDataGridViewTextBoxColumn.Width = 68;
             // 
             // currencyDataGridViewTextBoxColumn
             // 
@@ -345,11 +335,11 @@
             // 
             // frmAccountMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1285, 619);
+            this.ClientSize = new System.Drawing.Size(964, 503);
             this.Controls.Add(this.dgCurrenetAccountMovements);
-            this.Controls.Add(this.btnAddReceipt);
+            this.Controls.Add(this.btnAddVoucher);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnUpdateFromCustomer);
             this.Controls.Add(this.btnUpdate);
@@ -360,7 +350,6 @@
             this.Controls.Add(this.AddAccount);
             this.Controls.Add(this.btnAddBill);
             this.Controls.Add(this.dg);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmAccountMain";
             this.Text = "frmAccountMain";
             this.Load += new System.EventHandler(this.frmAccountMain_Load);
@@ -392,7 +381,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Supplier;
         private System.Windows.Forms.DataGridViewTextBoxColumn IsSaleoperation;
         private System.Windows.Forms.Button btnCustomersDebits;
-        private System.Windows.Forms.Button btnAddReceipt;
+        private System.Windows.Forms.Button btnAddVoucher;
         private System.Windows.Forms.DataGridView dgCurrenetAccountMovements;
         private System.Windows.Forms.BindingSource cariHareketBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn currentTypeDataGridViewTextBoxColumn;

@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevelopmentControl));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.IMEAccount = new System.Windows.Forms.Button();
             this.btnFatura = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnStock = new System.Windows.Forms.Button();
@@ -40,13 +41,14 @@
             this.btnWorker = new System.Windows.Forms.Button();
             this.btnSalesOrder = new System.Windows.Forms.Button();
             this.btnSupplier = new System.Windows.Forms.Button();
-            this.IMEAccount = new System.Windows.Forms.Button();
+            this.btnDeliveryNote = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            //
+            // 
             // panel1
-            //
+            // 
+            this.panel1.Controls.Add(this.btnDeliveryNote);
             this.panel1.Controls.Add(this.IMEAccount);
             this.panel1.Controls.Add(this.btnFatura);
             this.panel1.Controls.Add(this.pictureBox1);
@@ -64,9 +66,28 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(226, 469);
             this.panel1.TabIndex = 0;
-            //
+            // 
+            // IMEAccount
+            // 
+            this.IMEAccount.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.IMEAccount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
+            this.IMEAccount.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.IMEAccount.Dock = System.Windows.Forms.DockStyle.Top;
+            this.IMEAccount.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
+            this.IMEAccount.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
+            this.IMEAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.IMEAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.IMEAccount.Location = new System.Drawing.Point(0, 288);
+            this.IMEAccount.Margin = new System.Windows.Forms.Padding(0);
+            this.IMEAccount.Name = "IMEAccount";
+            this.IMEAccount.Size = new System.Drawing.Size(226, 32);
+            this.IMEAccount.TabIndex = 48;
+            this.IMEAccount.Text = "Account Activites";
+            this.IMEAccount.UseVisualStyleBackColor = false;
+            this.IMEAccount.Click += new System.EventHandler(this.IMEAccount_Click);
+            // 
             // btnFatura
-            //
+            // 
             this.btnFatura.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnFatura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnFatura.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -80,12 +101,12 @@
             this.btnFatura.Name = "btnFatura";
             this.btnFatura.Size = new System.Drawing.Size(226, 32);
             this.btnFatura.TabIndex = 47;
-            this.btnFatura.Text = "Biling";
+            this.btnFatura.Text = "To be Invoice";
             this.btnFatura.UseVisualStyleBackColor = false;
             this.btnFatura.Click += new System.EventHandler(this.btnFatura_Click);
-            //
+            // 
             // pictureBox1
-            //
+            // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
@@ -97,9 +118,9 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 44;
             this.pictureBox1.TabStop = false;
-            //
+            // 
             // btnStock
-            //
+            // 
             this.btnStock.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnStock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnStock.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -116,9 +137,9 @@
             this.btnStock.Text = "Stock";
             this.btnStock.UseVisualStyleBackColor = false;
             this.btnStock.Click += new System.EventHandler(this.btnStock_Click);
-            //
+            // 
             // btnQuotation
-            //
+            // 
             this.btnQuotation.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnQuotation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnQuotation.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -135,9 +156,9 @@
             this.btnQuotation.Text = "Quotation";
             this.btnQuotation.UseVisualStyleBackColor = false;
             this.btnQuotation.Click += new System.EventHandler(this.btnQuotation_Click);
-            //
+            // 
             // btnItemCard
-            //
+            // 
             this.btnItemCard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnItemCard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnItemCard.Dock = System.Windows.Forms.DockStyle.Top;
@@ -153,9 +174,9 @@
             this.btnItemCard.Text = "Item Card";
             this.btnItemCard.UseVisualStyleBackColor = false;
             this.btnItemCard.Click += new System.EventHandler(this.btnItemCard_Click);
-            //
+            // 
             // btnPurchaseOrders
-            //
+            // 
             this.btnPurchaseOrders.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnPurchaseOrders.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnPurchaseOrders.Dock = System.Windows.Forms.DockStyle.Top;
@@ -171,9 +192,9 @@
             this.btnPurchaseOrders.Text = "Purchase Orders";
             this.btnPurchaseOrders.UseVisualStyleBackColor = false;
             this.btnPurchaseOrders.Click += new System.EventHandler(this.btnPurchaseOrders_Click);
-            //
+            // 
             // btnCustomer
-            //
+            // 
             this.btnCustomer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnCustomer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnCustomer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -191,9 +212,9 @@
             this.btnCustomer.UseMnemonic = false;
             this.btnCustomer.UseVisualStyleBackColor = false;
             this.btnCustomer.Click += new System.EventHandler(this.btnCustomer_Click);
-            //
+            // 
             // btnWorker
-            //
+            // 
             this.btnWorker.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnWorker.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnWorker.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -210,9 +231,9 @@
             this.btnWorker.Text = "User";
             this.btnWorker.UseVisualStyleBackColor = false;
             this.btnWorker.Click += new System.EventHandler(this.btnWorker_Click);
-            //
+            // 
             // btnSalesOrder
-            //
+            // 
             this.btnSalesOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnSalesOrder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSalesOrder.Dock = System.Windows.Forms.DockStyle.Top;
@@ -228,9 +249,9 @@
             this.btnSalesOrder.Text = "Sales Order";
             this.btnSalesOrder.UseVisualStyleBackColor = false;
             this.btnSalesOrder.Click += new System.EventHandler(this.btnSalesOrder_Click);
-            //
+            // 
             // btnSupplier
-            //
+            // 
             this.btnSupplier.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnSupplier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnSupplier.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -247,28 +268,28 @@
             this.btnSupplier.Text = "Supplier";
             this.btnSupplier.UseVisualStyleBackColor = false;
             this.btnSupplier.Click += new System.EventHandler(this.btnSupplier_Click);
-            //
-            // IMEAccount
-            //
-            this.IMEAccount.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.IMEAccount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
-            this.IMEAccount.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.IMEAccount.Dock = System.Windows.Forms.DockStyle.Top;
-            this.IMEAccount.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
-            this.IMEAccount.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
-            this.IMEAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.IMEAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.IMEAccount.Location = new System.Drawing.Point(0, 288);
-            this.IMEAccount.Margin = new System.Windows.Forms.Padding(0);
-            this.IMEAccount.Name = "IMEAccount";
-            this.IMEAccount.Size = new System.Drawing.Size(226, 32);
-            this.IMEAccount.TabIndex = 48;
-            this.IMEAccount.Text = "IME Account";
-            this.IMEAccount.UseVisualStyleBackColor = false;
-            this.IMEAccount.Click += new System.EventHandler(this.IMEAccount_Click);
-            //
+            // 
+            // btnDeliveryNote
+            // 
+            this.btnDeliveryNote.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnDeliveryNote.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
+            this.btnDeliveryNote.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnDeliveryNote.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnDeliveryNote.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
+            this.btnDeliveryNote.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
+            this.btnDeliveryNote.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeliveryNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.btnDeliveryNote.Location = new System.Drawing.Point(0, 320);
+            this.btnDeliveryNote.Margin = new System.Windows.Forms.Padding(0);
+            this.btnDeliveryNote.Name = "btnDeliveryNote";
+            this.btnDeliveryNote.Size = new System.Drawing.Size(226, 32);
+            this.btnDeliveryNote.TabIndex = 49;
+            this.btnDeliveryNote.Text = "Delivery Note";
+            this.btnDeliveryNote.UseVisualStyleBackColor = false;
+            this.btnDeliveryNote.Click += new System.EventHandler(this.btnDeliveryNote_Click);
+            // 
             // DevelopmentControl
-            //
+            // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
@@ -298,5 +319,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnFatura;
         private System.Windows.Forms.Button IMEAccount;
+        private System.Windows.Forms.Button btnDeliveryNote;
     }
 }
