@@ -1315,7 +1315,7 @@ namespace LoginForm.QuotationModule
         {
             #region Quantity
 
-            if (dgSaleAddedItems.Rows[dgSaleAddedItems.RowCount - 1].Cells[dgQty.Index].Value.ToString() != "0")
+            if (dgSaleAddedItems.Rows[dgSaleAddedItems.RowCount - 2].Cells[dgQty.Index].Value.ToString() != "0")
             {
                 //if (LandingCost.Enabled == false) LandingCost.Enabled = true;
                 GetQuotationQuantity(dgSaleAddedItems.CurrentCell.RowIndex);
