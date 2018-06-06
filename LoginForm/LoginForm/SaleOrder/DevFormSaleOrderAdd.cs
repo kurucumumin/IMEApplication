@@ -1843,7 +1843,9 @@ namespace LoginForm.QuotationModule
                         }
                         else
                         {
-                            CurrentRow.Cells["dgMargin"].Value = (((1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())) / (gbpPrice))) * 100).ToString("G29");
+                            CurrentRow.Cells["dgMargin"].Value = ((1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString()) / gbpPrice)) * 100).ToString("G29");
+
+                            //CurrentRow.Cells["dgMargin"].Value = (((1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())) / (gbpPrice))) * 100).ToString("G29");
 
                             //CurrentRow.Cells["dgMargin"].Value = (((1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(CurrentRow.Cells["dgUCUPCurr"].Value.ToString()))))) * 100).ToString("G29");
                         }
@@ -1876,22 +1878,29 @@ namespace LoginForm.QuotationModule
             decimal totalMargin = 0;
 
 
-            for (int i = 0; i < dgSaleAddedItems.RowCount; i++)
+            for (int i = 0; i < dgSaleAddedItems.RowCount-1; i++)
             {
+                #region Kur Hesaplama
+                CurrentRow = dgSaleAddedItems.Rows[i];
+                decimal currentGbpValue = Convert.ToDecimal(IME.Currencies.Where(x => x.currencyName == "Pound").FirstOrDefault().ExchangeRates.OrderByDescending(x => x.date).FirstOrDefault().rate);
+
+                decimal gbpPrice = ((Decimal.Parse(CurrentRow.Cells[dgUCUPCurr.Index].Value.ToString())) * CurrValue) / currentGbpValue;
+                #endregion
+
                 try
                 {
                     if (dgSaleAddedItems.Rows[i].Cells["dgQty"].Value != null)
                     {
                         if (Int32.Parse(dgSaleAddedItems.Rows[i].Cells["dgUC"].Value.ToString()) > 1 && (!(dgSaleAddedItems.Rows[i].Cells["dgProductCode"].Value.ToString().Contains("P"))))
                         {
-                            dgSaleAddedItems.Rows[i].Cells["dgMargin"].Value = (((1 - (Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString()) * decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgUC"].Value.ToString()))))) * 100).ToString("G29");
+                            dgSaleAddedItems.Rows[i].Cells["dgMargin"].Value = (((1 - ((Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgLandingCost"].Value.ToString())) / (gbpPrice * decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgUC"].Value.ToString()))))) * 100).ToString("G29");
                         }
                         else
                         {
                             decimal margin = 0;
                             decimal UCUPCurr = 0;
                             decimal landingCost = 0;
-                            UCUPCurr = Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString());
+                            UCUPCurr = gbpPrice;/*Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString());*/
                             landingCost = Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgLandingCost"].Value.ToString());
                             margin = (1 - (landingCost / UCUPCurr)) * 100;
                             dgSaleAddedItems.Rows[i].Cells["dgMargin"].Value = margin;
@@ -3163,43 +3172,44 @@ namespace LoginForm.QuotationModule
             {
                 if (item.IsDeleted == 1)
                 {
-                    DataGridViewRow row = (DataGridViewRow)dgSaleDeleted.Rows[0].Clone();
-                    row.Cells[0].Value = item.dgNo;
-                    row.Cells[7].Value = item.ItemCode;
-                    row.Cells[14].Value = item.Qty;
-                    row.Cells[17].Value = item.SSM;
-                    row.Cells[18].Value = item.UC;
-                    row.Cells[19].Value = item.UPIME;
-                    row.Cells[21].Value = item.UCUPCurr;
-                    row.Cells[20].Value = item.Disc;
+                    DataGridViewRow row = (DataGridViewRow)dgSaleDeleted.RowTemplate.Clone();
+                    row.CreateCells(dgSaleDeleted);
+                    row.Cells[0].Value = (int)item.dgNo;
+                    row.Cells[dgProductCode1.Index].Value = item.ItemCode;
+                    row.Cells[dgQty1.Index].Value = item.Qty;
+                    row.Cells[dgSSM1.Index].Value = item.SSM;
+                    row.Cells[dgUC1.Index].Value = item.UC;
+                    row.Cells[dgUPIME1.Index].Value = item.UPIME;
+                    row.Cells[dgUCUPCurr1.Index].Value = item.UCUPCurr;
                     row.Cells[dgDelivery1.Index].Value = item.quotationDeliveryID;
-                    row.Cells[22].Value = item.Total;
-                    row.Cells[23].Value = item.TargetUP;
-                    row.Cells[24].Value = item.Competitor;
-                    row.Cells[29].Value = item.UnitWeight;
-                    row.Cells[30].Value = item.UnitWeight * item.Qty;
-                    row.Cells[31].Value = item.CustomerStockCode;
+                    row.Cells[dgDisc1.Index].Value = item.Disc;
+                    row.Cells[dgTotal1.Index].Value = item.Total;
+                    row.Cells[dgTargetUP1.Index].Value = item.TargetUP;
+                    row.Cells[dgCompetitor1.Index].Value = item.Competitor;
+                    row.Cells[dgUnitWeight1.Index].Value = item.UnitWeight;
+                    row.Cells[dgTotalWeight1.Index].Value = item.UnitWeight * item.Qty;
+                    row.Cells[dgCustomerStokCode1.Index].Value = item.CustomerStockCode;
                     dgSaleDeleted.Rows.Add(row);
                 }
                 else
                 {
                     DataGridViewRow row = (DataGridViewRow)dgSaleAddedItems.RowTemplate.Clone();
                     row.CreateCells(dgSaleAddedItems);
-                    row.Cells[0].Value = Int32.Parse(item.dgNo.ToString());
-                    row.Cells[7].Value = item.ItemCode;
-                    row.Cells[14].Value = item.Qty;
-                    row.Cells[17].Value = item.SSM;
-                    row.Cells[18].Value = item.UC;
-                    row.Cells[19].Value = item.UPIME;
-                    row.Cells[21].Value = item.UCUPCurr;
+                    row.Cells[dgNo.Index].Value = (int)item.dgNo;
+                    row.Cells[dgProductCode.Index].Value = item.ItemCode;
+                    row.Cells[dgQty.Index].Value = item.Qty;
+                    row.Cells[dgSSM.Index].Value = item.SSM;
+                    row.Cells[dgUC.Index].Value = item.UC;
+                    row.Cells[dgUPIME.Index].Value = item.UPIME;
+                    row.Cells[dgUCUPCurr.Index].Value = item.UCUPCurr;
                     row.Cells[dgDelivery.Index].Value = item.quotationDeliveryID;
-                    row.Cells[20].Value = item.Disc;
-                    row.Cells[22].Value = item.Total;
-                    row.Cells[23].Value = item.TargetUP;
-                    row.Cells[24].Value = item.Competitor;
-                    row.Cells[29].Value = item.UnitWeight;
-                    row.Cells[30].Value = item.UnitWeight * item.Qty;
-                    row.Cells[31].Value = item.CustomerStockCode;
+                    row.Cells[dgDisc.Index].Value = item.Disc;
+                    row.Cells[dgTotal.Index].Value = item.Total;
+                    row.Cells[dgTargetUP.Index].Value = item.TargetUP;
+                    row.Cells[dgCompetitor.Index].Value = item.Competitor;
+                    row.Cells[dgUnitWeigt.Index].Value = item.UnitWeight;
+                    row.Cells[dgTotalWeight.Index].Value = item.UnitWeight * item.Qty;
+                    row.Cells[dgCustStkCode.Index].Value = item.CustomerStockCode;
                     dgSaleAddedItems.Rows.Add(row);
 
                 }
