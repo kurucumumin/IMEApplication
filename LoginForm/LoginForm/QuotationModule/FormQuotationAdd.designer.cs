@@ -355,7 +355,7 @@
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 180F));
@@ -371,14 +371,14 @@
             this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(6, 186);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(6);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.dgQuotationAddedItems);
-            this.splitContainer1.Panel1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.splitContainer1.Panel1.Margin = new System.Windows.Forms.Padding(3);
             this.splitContainer1.Panel1MinSize = 80;
             // 
             // splitContainer1.Panel2
@@ -1120,7 +1120,7 @@
             this.panel2.Controls.Add(this.txtTotalCost);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(2, 2);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1223, 45);
             this.panel2.TabIndex = 0;
@@ -1264,7 +1264,7 @@
             this.tabControl1.Controls.Add(this.tabItemDetails);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(2, 2);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1239, 176);
@@ -1280,9 +1280,9 @@
             this.tabCustomerDetails.Controls.Add(this.label16);
             this.tabCustomerDetails.Controls.Add(this.label15);
             this.tabCustomerDetails.Location = new System.Drawing.Point(4, 22);
-            this.tabCustomerDetails.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabCustomerDetails.Margin = new System.Windows.Forms.Padding(2);
             this.tabCustomerDetails.Name = "tabCustomerDetails";
-            this.tabCustomerDetails.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabCustomerDetails.Padding = new System.Windows.Forms.Padding(2);
             this.tabCustomerDetails.Size = new System.Drawing.Size(1231, 150);
             this.tabCustomerDetails.TabIndex = 0;
             this.tabCustomerDetails.Text = "Customer Details";
@@ -1359,7 +1359,7 @@
             // btnViewMore
             // 
             this.btnViewMore.Location = new System.Drawing.Point(480, 9);
-            this.btnViewMore.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnViewMore.Margin = new System.Windows.Forms.Padding(2);
             this.btnViewMore.Name = "btnViewMore";
             this.btnViewMore.Size = new System.Drawing.Size(76, 46);
             this.btnViewMore.TabIndex = 76;
@@ -1370,7 +1370,7 @@
             // txtCustomerName
             // 
             this.txtCustomerName.Location = new System.Drawing.Point(186, 9);
-            this.txtCustomerName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCustomerName.Margin = new System.Windows.Forms.Padding(4);
             this.txtCustomerName.Name = "txtCustomerName";
             this.txtCustomerName.ReadOnly = true;
             this.txtCustomerName.Size = new System.Drawing.Size(290, 20);
@@ -1667,10 +1667,10 @@
             this.tabItemDetails.Controls.Add(this.label48);
             this.tabItemDetails.Controls.Add(this.label49);
             this.tabItemDetails.Location = new System.Drawing.Point(4, 22);
-            this.tabItemDetails.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabItemDetails.Margin = new System.Windows.Forms.Padding(2);
             this.tabItemDetails.Name = "tabItemDetails";
-            this.tabItemDetails.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabItemDetails.Size = new System.Drawing.Size(1230, 151);
+            this.tabItemDetails.Padding = new System.Windows.Forms.Padding(2);
+            this.tabItemDetails.Size = new System.Drawing.Size(1231, 150);
             this.tabItemDetails.TabIndex = 1;
             this.tabItemDetails.Text = "Item Details";
             this.tabItemDetails.UseVisualStyleBackColor = true;
@@ -2725,7 +2725,7 @@
             this.panel1.Controls.Add(this.groupBox3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(2, 597);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1239, 134);
             this.panel1.TabIndex = 58;
