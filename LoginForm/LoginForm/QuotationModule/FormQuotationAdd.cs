@@ -1045,11 +1045,14 @@ namespace LoginForm.QuotationModule
 
 
 
-                            if (CurrentRow.Cells[dgQty.Index].Value != "")
+                            if (CurrentRow.Cells[dgQty.Index].Value.ToString() != "")
                             {
                                 //TOTAL ve UPIME belirleniyor
                                 discResult = decimal.Parse(CurrentRow.Cells["dgUPIME"].Value.ToString());
-                                CurrentRow.Cells["dgUPIME"].Value = Math.Round( Decimal.Parse(CurrentRow.Cells["dgUPIME"].Value.ToString()),4).ToString();
+
+                                FiyatKirilmalari(Convert.ToDecimal(CurrentRow.Cells["dgQty"].Value.ToString()));
+
+                                //CurrentRow.Cells["dgUPIME"].Value = Math.Round( Decimal.Parse(CurrentRow.Cells["dgUPIME"].Value.ToString()),4).ToString();
                                 CurrentRow.Cells["dgTotal"].Value = Math.Round(decimal.Parse(CurrentRow.Cells["dgTotal"].Value.ToString()), 2);
                                 if (CurrentRow.Cells["dgDisc"].Value != null)
                                 {
@@ -1104,6 +1107,33 @@ namespace LoginForm.QuotationModule
             calculateTotalCost();
         }
 
+        private void FiyatKirilmalari(decimal adet)
+        {
+            try
+            {
+                if (adet >= Convert.ToDecimal(txtUnitCount1.Text))
+                {
+                    CurrentRow.Cells["dgUPIME"].Value = txtWeb1.Text;
+                }
+                if (adet >= Convert.ToDecimal(txtUnitCount2.Text))
+                {
+                    CurrentRow.Cells["dgUPIME"].Value = txtWeb2.Text;
+                }
+                if (adet >= Convert.ToDecimal(txtUnitCount3.Text))
+                {
+                    CurrentRow.Cells["dgUPIME"].Value = txtWeb3.Text;
+                }
+                if (adet >= Convert.ToDecimal(txtUnitCount4.Text))
+                {
+                    CurrentRow.Cells["dgUPIME"].Value = txtWeb4.Text;
+                }
+                if (adet >= Convert.ToDecimal(txtUnitCount5.Text))
+                {
+                    CurrentRow.Cells["dgUPIME"].Value = txtWeb5.Text;
+                }
+            } catch { CurrentRow.Cells["dgUPIME"].Value = Math.Round(Decimal.Parse(CurrentRow.Cells["dgUPIME"].Value.ToString()), 4).ToString(); }
+            
+        }
 
         private void calculateTotalCost()
         {
@@ -1710,7 +1740,7 @@ namespace LoginForm.QuotationModule
 
         private decimal CalculateMargin(decimal _LandingCost, decimal _Price)
         {
-            decimal currentGbpValue = Convert.ToDecimal(IME.Currencies.Where(x => x.currencyName == cbCurrency.SelectedText).FirstOrDefault().ExchangeRates.OrderByDescending(x => x.date).FirstOrDefault().rate);
+            decimal currentGbpValue = Convert.ToDecimal(IME.Currencies.Where(x => x.currencyName == "Pound").FirstOrDefault().ExchangeRates.OrderByDescending(x => x.date).FirstOrDefault().rate);
             decimal gbpPrice = ((_Price) * CurrValue) / currentGbpValue;
 
             return (1 - (_LandingCost - _Price))*100;

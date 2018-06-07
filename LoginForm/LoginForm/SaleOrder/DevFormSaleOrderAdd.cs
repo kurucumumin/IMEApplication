@@ -154,6 +154,7 @@ namespace LoginForm.QuotationModule
             //        }
             //    }
             //}
+            CalculateTotalMarge();
         }
 
         private void QuotataionModifyItemDetailsFiller(string ArticleNoSearch, int RowIndex)
@@ -1667,7 +1668,10 @@ namespace LoginForm.QuotationModule
                             {
                                 //TOTAL ve UPIME belirleniyor
                                 discResult = decimal.Parse(CurrentRow.Cells["dgUPIME"].Value.ToString());
-                                CurrentRow.Cells["dgUPIME"].Value = Math.Round(Decimal.Parse(CurrentRow.Cells["dgUPIME"].Value.ToString()), 4).ToString();
+
+                                FiyatKirilmalari(Convert.ToDecimal(CurrentRow.Cells["dgQty"].Value.ToString()));
+
+                                //CurrentRow.Cells["dgUPIME"].Value = Math.Round(Decimal.Parse(CurrentRow.Cells["dgUPIME"].Value.ToString()), 4).ToString();
                                 CurrentRow.Cells["dgTotal"].Value = Math.Round(decimal.Parse(CurrentRow.Cells["dgTotal"].Value.ToString()), 2);
                                 if (CurrentRow.Cells["dgDisc"].Value != null)
                                 {
@@ -1684,7 +1688,7 @@ namespace LoginForm.QuotationModule
                                 if (dgSaleAddedItems.CurrentCell == null) dgSaleAddedItems.CurrentCell = CurrentRow.Cells[0];
                                 GetMargin();
                                 CurrentRow.Cells["dgMargin"].Value = Math.Round(Decimal.Parse(CurrentRow.Cells["dgMargin"].Value.ToString()), 2).ToString();
-                                if (CurrentRow.Cells["dgUnitWeigt"].Value != null && CurrentRow.Cells["dgUnitWeigt"].Value != "")
+                                if (CurrentRow.Cells["dgUnitWeigt"].Value != null && CurrentRow.Cells["dgUnitWeigt"].Value.ToString() != "")
                                 {
                                     CurrentRow.Cells["dgTotalWeight"].Value = (Decimal.Parse(CurrentRow.Cells["dgUnitWeigt"].Value.ToString()) * Int32.Parse(CurrentRow.Cells["dgQty"].Value.ToString())).ToString();
                                     if (Int32.Parse(CurrentRow.Cells["dgSSM"].Value.ToString()) > 1)
@@ -1722,6 +1726,33 @@ namespace LoginForm.QuotationModule
             calculateTotalCost();
         }
 
+        private void FiyatKirilmalari(decimal adet)
+        {
+            try
+            {
+                if (adet >= Convert.ToDecimal(txtUnitCount1.Text))
+                {
+                    CurrentRow.Cells["dgUPIME"].Value = txtWeb1.Text;
+                }
+                if (adet >= Convert.ToDecimal(txtUnitCount2.Text))
+                {
+                    CurrentRow.Cells["dgUPIME"].Value = txtWeb2.Text;
+                }
+                if (adet >= Convert.ToDecimal(txtUnitCount3.Text))
+                {
+                    CurrentRow.Cells["dgUPIME"].Value = txtWeb3.Text;
+                }
+                if (adet >= Convert.ToDecimal(txtUnitCount4.Text))
+                {
+                    CurrentRow.Cells["dgUPIME"].Value = txtWeb4.Text;
+                }
+                if (adet >= Convert.ToDecimal(txtUnitCount5.Text))
+                {
+                    CurrentRow.Cells["dgUPIME"].Value = txtWeb5.Text;
+                }
+            }
+            catch { CurrentRow.Cells["dgUPIME"].Value = Math.Round(Decimal.Parse(CurrentRow.Cells["dgUPIME"].Value.ToString()), 4).ToString(); }
+        }
 
         private void calculateTotalCost()
         {
@@ -3224,7 +3255,7 @@ namespace LoginForm.QuotationModule
                 GetQuotationQuantity(i);
 
             }
-            GetAllMargin();
+            GetMargin();
             #endregion
             //buradaki yazılanların sırası önemli sırayı değiştirmeyin
             //lblsubtotal.Text = q.SubTotal.ToString();
