@@ -60,7 +60,7 @@ namespace LoginForm.QuotationModule
 
             customer = cus;
             items = list;
-
+            
             DataGridViewComboBoxColumn deliveryColumn = (DataGridViewComboBoxColumn)dgSaleAddedItems.Columns[dgDelivery.Index];
 
             deliveryColumn.DataSource = IME.QuotationDeliveries.ToList();
@@ -3201,7 +3201,7 @@ namespace LoginForm.QuotationModule
             cbWorkers.SelectedItem = customer.MainContactID;
             foreach (var item in items)
             {
-                if (item.IsDeleted == 1)
+                 if (item.IsDeleted == 1)
                 {
                     DataGridViewRow row = (DataGridViewRow)dgSaleDeleted.RowTemplate.Clone();
                     row.CreateCells(dgSaleDeleted);
@@ -3251,7 +3251,6 @@ namespace LoginForm.QuotationModule
 
                 GetLandingCost(i);
                 dgSaleAddedItems.CurrentCell = dgSaleAddedItems.Rows[i].Cells[0];
-                //GetMargin();
                 GetQuotationQuantity(i);
 
             }
