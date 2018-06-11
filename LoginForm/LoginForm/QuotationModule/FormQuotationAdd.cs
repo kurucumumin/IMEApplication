@@ -178,12 +178,16 @@ namespace LoginForm.QuotationModule
             cbCurrency.DataSource = IME.Currencies.ToList();
             cbCurrency.DisplayMember = "currencyName";
             cbCurrency.ValueMember = "currencyID";
-            cbCurrency.SelectedIndex = 0;
+
+            var QuoCurr = IME.Currencies.Where(a => a.currencyName == q1.CurrName).FirstOrDefault();
+            if (QuoCurr != null) cbCurrency.SelectedValue = QuoCurr.currencyID;
+
             dtpDate.Value = (DateTime)q1.StartDate;
             dtpDate.MaxDate = DateTime.Today.Date;
             cbPayment.DataSource = IME.PaymentTerms.ToList();
             cbPayment.DisplayMember = "term_name";
             cbPayment.ValueMember = "ID";
+
             cbRep.DataSource = IME.Workers.ToList();
             cbRep.DisplayMember = "NameLastName";
             cbRep.ValueMember = "WorkerID";
@@ -249,6 +253,7 @@ namespace LoginForm.QuotationModule
                 groupBox7.Enabled = false;
                 groupBox3.Enabled = false;
             }
+            CalculateTotalMarge();
         }
 
         private void ControlAutorization()
@@ -389,8 +394,6 @@ namespace LoginForm.QuotationModule
             if (c != null)
             {
                 txtCustomerName.Text = c.c_name;
-                var CustomerCurr = IME.Currencies.Where(a => a.currencyName == c.CurrNameQuo).FirstOrDefault();
-                if (CustomerCurr != null) cbCurrency.SelectedValue = CustomerCurr.currencyID;
                 //cbCurrType.SelectedIndex = cbCurrType.FindStringExact(c.CurrTypeQuo);
                 //if(c.MainContactID!=null) cbWorkers.SelectedIndex = (int)c.MainContactID;
                 if (c.paymentmethodID != null)
@@ -401,7 +404,11 @@ namespace LoginForm.QuotationModule
                 try { txtCustomerNote.Text = c.Note.Note_name; } catch { }
                 try { txtAccountingNote.Text = IME.Notes.Where(a => a.ID == c.customerAccountantNoteID).FirstOrDefault().Note_name; } catch { }
                 if (c.Worker != null) cbRep.SelectedValue = c.Worker.WorkerID;
-                cbCurrency.SelectedItem = cbCurrency.FindStringExact(c.CurrNameQuo);
+                if (this.Text != "Edit Quotation")
+                {
+                    var CustomerCurr = IME.Currencies.Where(a => a.currencyName == c.CurrNameQuo).FirstOrDefault();
+                    if (CustomerCurr != null) cbCurrency.SelectedValue = CustomerCurr.currencyID;
+                }
                 if (c.CustomerWorker != null)
                 {
                     cbWorkers.SelectedValue = c.CustomerWorker.ID;
@@ -720,11 +727,7 @@ namespace LoginForm.QuotationModule
                 if (dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index].Value.ToString() != "")
                 {
                     //LOW MARGIN
-                    if (dgQuotationAddedItems.CurrentRow.Cells["dgQty"].Value != null
-                        //&& Decimal.Parse(dgQuotationAddedItems.CurrentRow.Cells["dgQty"].Value.ToString()) > 0
-                        )
-                    { GetMarginMark(); }
-
+                    if (dgQuotationAddedItems.CurrentRow.Cells["dgQty"].Value != null)  { GetMarginMark(); }
                 }
                 Disc();
                 CalculateTotalMarge();
@@ -1042,11 +1045,14 @@ namespace LoginForm.QuotationModule
 
 
 
-                            if (CurrentRow.Cells[dgQty.Index].Value != "")
+                            if (CurrentRow.Cells[dgQty.Index].Value.ToString() != "")
                             {
                                 //TOTAL ve UPIME belirleniyor
                                 discResult = decimal.Parse(CurrentRow.Cells["dgUPIME"].Value.ToString());
-                                CurrentRow.Cells["dgUPIME"].Value = Math.Round( Decimal.Parse(CurrentRow.Cells["dgUPIME"].Value.ToString()),4).ToString();
+
+                                FiyatKirilmalari(Convert.ToDecimal(CurrentRow.Cells["dgQty"].Value.ToString()));
+
+                                //CurrentRow.Cells["dgUPIME"].Value = Math.Round( Decimal.Parse(CurrentRow.Cells["dgUPIME"].Value.ToString()),4).ToString();
                                 CurrentRow.Cells["dgTotal"].Value = Math.Round(decimal.Parse(CurrentRow.Cells["dgTotal"].Value.ToString()), 2);
                                 if (CurrentRow.Cells["dgDisc"].Value != null)
                                 {
@@ -1101,6 +1107,33 @@ namespace LoginForm.QuotationModule
             calculateTotalCost();
         }
 
+        private void FiyatKirilmalari(decimal adet)
+        {
+            try
+            {
+                if (adet >= Convert.ToDecimal(txtUnitCount1.Text))
+                {
+                    CurrentRow.Cells["dgUPIME"].Value = txtWeb1.Text;
+                }
+                if (adet >= Convert.ToDecimal(txtUnitCount2.Text))
+                {
+                    CurrentRow.Cells["dgUPIME"].Value = txtWeb2.Text;
+                }
+                if (adet >= Convert.ToDecimal(txtUnitCount3.Text))
+                {
+                    CurrentRow.Cells["dgUPIME"].Value = txtWeb3.Text;
+                }
+                if (adet >= Convert.ToDecimal(txtUnitCount4.Text))
+                {
+                    CurrentRow.Cells["dgUPIME"].Value = txtWeb4.Text;
+                }
+                if (adet >= Convert.ToDecimal(txtUnitCount5.Text))
+                {
+                    CurrentRow.Cells["dgUPIME"].Value = txtWeb5.Text;
+                }
+            } catch { CurrentRow.Cells["dgUPIME"].Value = Math.Round(Decimal.Parse(CurrentRow.Cells["dgUPIME"].Value.ToString()), 4).ToString(); }
+            
+        }
 
         private void calculateTotalCost()
         {
@@ -1487,7 +1520,7 @@ namespace LoginForm.QuotationModule
                     margin1 = (classQuotationAdd.GetLandingCost(CurrentRow.Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
         , quantity));
 
-                    txtMargin1.Text = ((1 - ((margin1) / (decimal.Parse(txtWeb1.Text)))) * 100).ToString();
+                    txtMargin1.Text = ((1 - (margin1 / (decimal.Parse(txtWeb1.Text)))) * 100).ToString();
                     int quantity2 = 0;
                     if (ItemTabDetails != null) { quantity2 = Int32.Parse(ItemTabDetails.Col2Break.ToString()); } else { quantity2 = Int32.Parse(ItemTabDetails.Col2Break.ToString()); }
                     txtMargin2.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
@@ -1715,7 +1748,11 @@ namespace LoginForm.QuotationModule
 
         private void ckItemCost_CheckedChanged(object sender, EventArgs e)
         {
-            getQuotationValues();
+            if (ckItemCost.Checked == true)
+            {
+                getQuotationValues();
+            }
+           
         }
 
         private void CalculateSubTotal()
@@ -2278,14 +2315,14 @@ namespace LoginForm.QuotationModule
             txtQuotationNo.Text = q.QuotationNo;
             txtRFQNo.Text = q.RFQNo;
             CustomerCode.Text = q.Customer.ID;
-            cbCurrency.SelectedValue = q.CurrencyID;
             cbFactor.Text = q.Factor.ToString();
             if (q.NoteForCustomerID != null) txtNoteForCustomer.Text = IME.Notes.Where(a => a.ID == q.NoteForCustomerID).FirstOrDefault().Note_name;
             if (q.NoteForCustomerID != null) txtNoteForUs.Text = IME.Notes.Where(a => a.ID == q.NoteForUsID).FirstOrDefault().Note_name;
             if (q.ForFinancelIsTrue == 1) { chkbForFinance.Checked = true; }
             fillCustomer();
             #region QuotationDetails
-            //cbCurrType.SelectedItem = q.CurrType;
+            var QuoCurr = IME.Currencies.Where(a => a.currencyName == q.CurrName).FirstOrDefault();
+            if (QuoCurr != null) cbCurrency.SelectedValue = QuoCurr.currencyID;
             cbWorkers.SelectedItem = q.Customer.MainContactID;
             foreach (var item in q.QuotationDetails)
             {
@@ -2338,11 +2375,10 @@ namespace LoginForm.QuotationModule
 
                 GetLandingCost(i);
                 dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[i].Cells[0];
-                //GetMargin();
                 GetQuotationQuantity(i);
 
             }
-            GetAllMargin();
+            GetMargin();
             #endregion
             //buradaki yazılanların sırası önemli sırayı değiştirmeyin
             lblsubtotal.Text = q.SubTotal.ToString();
@@ -2871,7 +2907,6 @@ namespace LoginForm.QuotationModule
                 ChangeCurr();
                 calculateTotalCost();
             }
-
         }
 
         private void ChangeCurr(int rowindex)
@@ -3577,7 +3612,7 @@ namespace LoginForm.QuotationModule
 
         private void getTotalDiscMargin()
         {
-            for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+            for (   int i = 0; i < dgQuotationAddedItems.RowCount; i++)
             {
                 if (dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value != null && dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString() != string.Empty && dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value != null)
                 {

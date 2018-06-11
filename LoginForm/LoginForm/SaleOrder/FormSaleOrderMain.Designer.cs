@@ -86,7 +86,7 @@
             this.textBox2.Enabled = false;
             this.textBox2.Location = new System.Drawing.Point(1007, 21);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(216, 24);
+            this.textBox2.Size = new System.Drawing.Size(216, 21);
             this.textBox2.TabIndex = 25;
             // 
             // chcAllSales
@@ -105,7 +105,7 @@
             this.txtSearchText.Enabled = false;
             this.txtSearchText.Location = new System.Drawing.Point(786, 55);
             this.txtSearchText.Name = "txtSearchText";
-            this.txtSearchText.Size = new System.Drawing.Size(184, 24);
+            this.txtSearchText.Size = new System.Drawing.Size(184, 21);
             this.txtSearchText.TabIndex = 23;
             // 
             // cbSearch
@@ -117,7 +117,7 @@
             "QUOT NUMBER"});
             this.cbSearch.Location = new System.Drawing.Point(786, 21);
             this.cbSearch.Name = "cbSearch";
-            this.cbSearch.Size = new System.Drawing.Size(184, 26);
+            this.cbSearch.Size = new System.Drawing.Size(184, 23);
             this.cbSearch.TabIndex = 22;
             // 
             // label2
@@ -125,7 +125,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(10, 90);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 18);
+            this.label2.Size = new System.Drawing.Size(58, 15);
             this.label2.TabIndex = 21;
             this.label2.Text = "End Date";
             // 
@@ -134,7 +134,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(10, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 18);
+            this.label1.Size = new System.Drawing.Size(61, 15);
             this.label1.TabIndex = 20;
             this.label1.Text = "Start Date";
             // 
@@ -144,7 +144,7 @@
             this.datetimeEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.datetimeEnd.Location = new System.Drawing.Point(100, 87);
             this.datetimeEnd.Name = "datetimeEnd";
-            this.datetimeEnd.Size = new System.Drawing.Size(133, 24);
+            this.datetimeEnd.Size = new System.Drawing.Size(133, 21);
             this.datetimeEnd.TabIndex = 19;
             // 
             // datetimeStart
@@ -153,7 +153,7 @@
             this.datetimeStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.datetimeStart.Location = new System.Drawing.Point(100, 18);
             this.datetimeStart.Name = "datetimeStart";
-            this.datetimeStart.Size = new System.Drawing.Size(133, 24);
+            this.datetimeStart.Size = new System.Drawing.Size(133, 21);
             this.datetimeStart.TabIndex = 18;
             // 
             // btnDelete
@@ -334,7 +334,7 @@
             // 
             // FormSalesOrderMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1250, 704);
             this.Controls.Add(this.tableLayoutPanel1);
