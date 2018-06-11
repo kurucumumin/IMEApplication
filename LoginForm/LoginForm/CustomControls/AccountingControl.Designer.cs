@@ -256,6 +256,7 @@
             this.btnReminders.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnReminders.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnReminders.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnReminders.Enabled = false;
             this.btnReminders.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnReminders.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnReminders.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -274,6 +275,7 @@
             this.btnRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnRegister.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnRegister.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRegister.Enabled = false;
             this.btnRegister.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnRegister.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -292,6 +294,7 @@
             this.btnBudgets.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnBudgets.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnBudgets.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnBudgets.Enabled = false;
             this.btnBudgets.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnBudgets.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnBudgets.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -310,6 +313,7 @@
             this.btnReports.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnReports.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnReports.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnReports.Enabled = false;
             this.btnReports.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnReports.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -328,6 +332,7 @@
             this.btnFinancialStatements.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnFinancialStatements.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnFinancialStatements.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnFinancialStatements.Enabled = false;
             this.btnFinancialStatements.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnFinancialStatements.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnFinancialStatements.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -346,6 +351,7 @@
             this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSearch.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSearch.Enabled = false;
             this.btnSearch.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnSearch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -364,6 +370,7 @@
             this.btnPayroll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnPayroll.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnPayroll.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnPayroll.Enabled = false;
             this.btnPayroll.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnPayroll.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnPayroll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

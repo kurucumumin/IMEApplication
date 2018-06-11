@@ -42,7 +42,7 @@ namespace LoginForm.ManagementModule
 
                 this.Close();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 MessageBox.Show("An error occured while saving changes! Try again later", "Fail", MessageBoxButtons.OK);
                 this.Close();

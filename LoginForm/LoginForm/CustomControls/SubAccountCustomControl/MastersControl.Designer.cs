@@ -67,6 +67,7 @@
             this.btnAccountLedger.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnAccountLedger.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAccountLedger.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAccountLedger.Enabled = false;
             this.btnAccountLedger.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnAccountLedger.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnAccountLedger.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -86,6 +87,7 @@
             this.btnArea.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnArea.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnArea.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnArea.Enabled = false;
             this.btnArea.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnArea.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnArea.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -143,6 +145,7 @@
             this.btnMultipleAccountLedger.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnMultipleAccountLedger.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnMultipleAccountLedger.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnMultipleAccountLedger.Enabled = false;
             this.btnMultipleAccountLedger.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnMultipleAccountLedger.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnMultipleAccountLedger.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -162,6 +165,7 @@
             this.btnSalesman.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnSalesman.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSalesman.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSalesman.Enabled = false;
             this.btnSalesman.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnSalesman.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnSalesman.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -200,6 +204,7 @@
             this.btnVoucherType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnVoucherType.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnVoucherType.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnVoucherType.Enabled = false;
             this.btnVoucherType.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnVoucherType.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnVoucherType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -219,6 +224,7 @@
             this.btnAccountGroup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(210)))), ((int)(((byte)(250)))));
             this.btnAccountGroup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAccountGroup.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAccountGroup.Enabled = false;
             this.btnAccountGroup.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(139)))), ((int)(((byte)(203)))));
             this.btnAccountGroup.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnAccountGroup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
