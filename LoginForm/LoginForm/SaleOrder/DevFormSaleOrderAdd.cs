@@ -3254,7 +3254,7 @@ namespace LoginForm.QuotationModule
                 GetQuotationQuantity(i);
 
             }
-            GetMargin();
+            //GetMargin();
             #endregion
             //buradaki yazılanların sırası önemli sırayı değiştirmeyin
             //lblsubtotal.Text = q.SubTotal.ToString();

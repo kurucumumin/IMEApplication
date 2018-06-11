@@ -1050,9 +1050,10 @@ namespace LoginForm.QuotationModule
                                 //TOTAL ve UPIME belirleniyor
                                 discResult = decimal.Parse(CurrentRow.Cells["dgUPIME"].Value.ToString());
 
+
                                 FiyatKirilmalari(Convert.ToDecimal(CurrentRow.Cells["dgQty"].Value.ToString()));
 
-                                //CurrentRow.Cells["dgUPIME"].Value = Math.Round( Decimal.Parse(CurrentRow.Cells["dgUPIME"].Value.ToString()),4).ToString();
+                                CurrentRow.Cells["dgUPIME"].Value = Math.Round( Decimal.Parse(CurrentRow.Cells["dgUPIME"].Value.ToString()),4).ToString();
                                 CurrentRow.Cells["dgTotal"].Value = Math.Round(decimal.Parse(CurrentRow.Cells["dgTotal"].Value.ToString()), 2);
                                 if (CurrentRow.Cells["dgDisc"].Value != null)
                                 {
@@ -1111,23 +1112,23 @@ namespace LoginForm.QuotationModule
         {
             try
             {
-                if (adet >= Convert.ToDecimal(txtUnitCount1.Text))
+                if (Convert.ToDecimal(txtUnitCount1.Text) <= adet && (adet < Convert.ToDecimal(txtUnitCount2.Text) || Convert.ToDecimal(txtUnitCount2.Text) == 0))
                 {
                     CurrentRow.Cells["dgUPIME"].Value = txtWeb1.Text;
                 }
-                if (adet >= Convert.ToDecimal(txtUnitCount2.Text))
+                else if (Convert.ToDecimal(txtUnitCount2.Text) <= adet && (adet < Convert.ToDecimal(txtUnitCount3.Text) || Convert.ToDecimal(txtUnitCount2.Text) == 0))
                 {
                     CurrentRow.Cells["dgUPIME"].Value = txtWeb2.Text;
                 }
-                if (adet >= Convert.ToDecimal(txtUnitCount3.Text))
+                else if (Convert.ToDecimal(txtUnitCount3.Text) <= adet && (adet < Convert.ToDecimal(txtUnitCount4.Text) || Convert.ToDecimal(txtUnitCount2.Text) == 0))
                 {
                     CurrentRow.Cells["dgUPIME"].Value = txtWeb3.Text;
                 }
-                if (adet >= Convert.ToDecimal(txtUnitCount4.Text))
+                else if (Convert.ToDecimal(txtUnitCount4.Text) <= adet && (adet < Convert.ToDecimal(txtUnitCount5.Text) || Convert.ToDecimal(txtUnitCount2.Text) == 0))
                 {
                     CurrentRow.Cells["dgUPIME"].Value = txtWeb4.Text;
                 }
-                if (adet >= Convert.ToDecimal(txtUnitCount5.Text))
+                else if(Convert.ToDecimal(txtUnitCount5.Text) <= adet)
                 {
                     CurrentRow.Cells["dgUPIME"].Value = txtWeb5.Text;
                 }
@@ -3288,82 +3289,6 @@ namespace LoginForm.QuotationModule
 
         }
 
-        private void textBox10_Click(object sender, EventArgs e)
-        {
-            //if (textBox10.Text != null && textBox10.Text != "")
-            //{
-            //    decimal sonuc = Decimal.Parse(textBox10.Text);
-            //    textBox10.Text = sonuc.ToString();
-            //}
-        }
-
-        private void textBox10_Leave(object sender, EventArgs e)
-        {
-            //if (textBox10.Text != null && textBox10.Text != "")
-            //{
-            //    decimal sonuc = Decimal.Parse(textBox10.Text);
-            //    sonuc = Math.Round(sonuc, 4);
-            //    textBox10.Text = sonuc.ToString();
-            //}
-        }
-
-        private void txtTotalMargin_Click(object sender, EventArgs e)
-        {
-            //if (txtTotalMargin.Text != null && txtTotalMargin.Text != "")
-            //{
-            //    decimal sonuc = Decimal.Parse(txtTotalMargin.Text);
-            //    txtTotalMargin.Text = sonuc.ToString();
-            //}
-        }
-
-        private void txtTotalMargin_Leave(object sender, EventArgs e)
-        {
-            //if (txtTotalMargin.Text != null && txtTotalMargin.Text != "")
-            //{
-            //    decimal sonuc = Decimal.Parse(txtTotalMargin.Text);
-            //    sonuc = Math.Round(sonuc, 4);
-            //    txtTotalMargin.Text = sonuc.ToString();
-            //}
-        }
-
-        private void textBox11_Click(object sender, EventArgs e)
-        {
-            //if (textBox11.Text != null && textBox11.Text != "")
-            //{
-            //    decimal sonuc = Decimal.Parse(textBox11.Text);
-            //    textBox11.Text = sonuc.ToString();
-            //}
-        }
-
-        private void textBox11_Leave(object sender, EventArgs e)
-        {
-            //if (textBox11.Text != null && textBox11.Text != "")
-            //{
-            //    decimal sonuc = Decimal.Parse(textBox11.Text);
-            //    sonuc = Math.Round(sonuc, 4);
-            //    textBox11.Text = sonuc.ToString();
-            //}
-        }
-
-        private void lblsubtotal_Click(object sender, EventArgs e)
-        {
-            //if (lblsubtotal.Text != null && lblsubtotal.Text != "")
-            //{
-            //    decimal sonuc = Decimal.Parse(lblsubtotal.Text);
-            //    lblsubtotal.Text = sonuc.ToString();
-            //}
-        }
-
-        private void lblsubtotal_Leave(object sender, EventArgs e)
-        {
-            //if (lblsubtotal.Text != null && lblsubtotal.Text != "")
-            //{
-            //    decimal sonuc = Decimal.Parse(lblsubtotal.Text);
-            //    sonuc = Math.Round(sonuc, 4);
-            //    lblsubtotal.Text = sonuc.ToString();
-            //}
-        }
-
         private void txtTotalDis2_Leave(object sender, EventArgs e)
         {
 
@@ -3476,7 +3401,7 @@ namespace LoginForm.QuotationModule
                 else
                 {
 
-                    for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+                    for (int i = 0; i < dgQuotationAddedItems.RowCount-1; i++)
                     {
                         if (dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value != null)
                         {
