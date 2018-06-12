@@ -178,13 +178,13 @@ namespace LoginForm
                     else
                     {
                         this.Close();
-                        FormSaleOrderAdd f = new FormSaleOrderAdd(item_code);
+                        DevFormSaleOrderAdd f = new DevFormSaleOrderAdd(item_code);
                         f.ShowDialog();
                     }
                 }
                 else
                 {
-                    FormSaleOrderAdd f = new FormSaleOrderAdd(item_code);
+                    DevFormSaleOrderAdd f = new DevFormSaleOrderAdd(item_code);
                 }
             }
             catch (Exception ex)

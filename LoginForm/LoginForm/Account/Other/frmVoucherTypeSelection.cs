@@ -333,8 +333,8 @@ namespace LoginForm
                             decimal decSalesOrderTypeId = decimal.Parse(cmbVoucherType.SelectedValue.ToString());
                             string strSalesOrderVoucherTypeName = cmbVoucherType.Text;
 
-                            FormSaleOrderAdd frmSalesOrderObj = new FormSaleOrderAdd();
-                            FormSaleOrderAdd SalesOrderOpen = Application.OpenForms["frmSalesOrder"] as FormSaleOrderAdd;
+                            DevFormSaleOrderAdd frmSalesOrderObj = new DevFormSaleOrderAdd();
+                            DevFormSaleOrderAdd SalesOrderOpen = Application.OpenForms["frmSalesOrder"] as DevFormSaleOrderAdd;
                             if (SalesOrderOpen == null)
                             {
                                 frmSalesOrderObj.MdiParent = this.MdiParent;

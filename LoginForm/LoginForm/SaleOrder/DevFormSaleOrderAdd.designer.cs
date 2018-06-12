@@ -1024,8 +1024,6 @@
             this.lblsubtotal.TabIndex = 8;
             this.lblsubtotal.Text = "0,00";
             this.lblsubtotal.TextChanged += new System.EventHandler(this.lblsubtotal_TextChanged);
-            this.lblsubtotal.Click += new System.EventHandler(this.lblsubtotal_Click);
-            this.lblsubtotal.Leave += new System.EventHandler(this.lblsubtotal_Leave);
             // 
             // button7
             // 
@@ -1068,8 +1066,6 @@
             this.textBox11.TabIndex = 6;
             this.textBox11.Text = "0,00";
             this.textBox11.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBox11.Click += new System.EventHandler(this.textBox11_Click);
-            this.textBox11.Leave += new System.EventHandler(this.textBox11_Leave);
             // 
             // txtTotalMargin
             // 
@@ -1080,8 +1076,6 @@
             this.txtTotalMargin.Size = new System.Drawing.Size(125, 22);
             this.txtTotalMargin.TabIndex = 4;
             this.txtTotalMargin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtTotalMargin.Click += new System.EventHandler(this.txtTotalMargin_Click);
-            this.txtTotalMargin.Leave += new System.EventHandler(this.txtTotalMargin_Leave);
             // 
             // txtTotalCost
             // 
@@ -1093,8 +1087,6 @@
             this.txtTotalCost.TabIndex = 5;
             this.txtTotalCost.Text = "0,00";
             this.txtTotalCost.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtTotalCost.Click += new System.EventHandler(this.textBox10_Click);
-            this.txtTotalCost.Leave += new System.EventHandler(this.textBox10_Leave);
             // 
             // txtFactor
             // 
