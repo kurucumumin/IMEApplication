@@ -1070,7 +1070,7 @@ namespace LoginForm.QuotationModule
                                 if (dgQuotationAddedItems.CurrentCell == null) dgQuotationAddedItems.CurrentCell = CurrentRow.Cells[0];
                                 GetMargin();
                                 CurrentRow.Cells["dgMargin"].Value = Math.Round( Decimal.Parse(CurrentRow.Cells["dgMargin"].Value.ToString()),2).ToString();
-                                if (CurrentRow.Cells["dgUnitWeigt"].Value != null && CurrentRow.Cells["dgUnitWeigt"].Value != "")
+                                if (CurrentRow.Cells["dgUnitWeigt"].Value != null && CurrentRow.Cells["dgUnitWeigt"].Value.ToString() != "")
                                 {
                                     CurrentRow.Cells["dgTotalWeight"].Value = (Decimal.Parse(CurrentRow.Cells["dgUnitWeigt"].Value.ToString()) * Int32.Parse(CurrentRow.Cells["dgQty"].Value.ToString())).ToString();
                                     if (Int32.Parse(CurrentRow.Cells["dgSSM"].Value.ToString()) > 1)
