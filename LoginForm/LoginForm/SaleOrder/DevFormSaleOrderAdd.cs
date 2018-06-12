@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
@@ -16,7 +15,6 @@ namespace LoginForm.QuotationModule
 {
     public partial class DevFormSaleOrderAdd : Form
     {
-
         string manuelSelection = string.Empty;
         private static string QuoStatusActive = "Active";
         FormQuotationMain parent;
@@ -70,27 +68,31 @@ namespace LoginForm.QuotationModule
             //Quotation q1 = IME.Quotations.Where(a => a.QuotationNo.Contains(quotation.QuotationNo)).OrderByDescending(b => b.QuotationNo).FirstOrDefault();
             //this.Text = "Edit Quotation";
             //modifyMod = true;
-
-            Management m = Utils.getManagement();
+            
             cbCurrency.DataSource = IME.Currencies.ToList();
             txtQuotationNo.Text = QuotationNOs;
             cbCurrency.DisplayMember = "currencyName";
             cbCurrency.ValueMember = "currencyID";
             cbCurrency.SelectedIndex = 0;
-            dtpDate.Value = m.FinancialYear.fromDate.Value;
+
+            dtpDate.Value = Utils.getManagement().FinancialYear.fromDate.Value;
             dtpDate.MaxDate = IME.CurrentDate().FirstOrDefault().Value.AddHours(5);
             cbPaymentType.DataSource = IME.PaymentMethods.ToList();
             cbPaymentType.DisplayMember = "Payment";
             cbPaymentType.ValueMember = "ID";
+
             cbRep.DataSource = IME.Workers.ToList();
             cbRep.DisplayMember = "NameLastName";
             cbRep.ValueMember = "WorkerID";
+
             cbWorkers.DataSource = IME.CustomerWorkers.Where(a => a.customerID == customer.ID).ToList();
             cbWorkers.DisplayMember = "cw_name";
             cbWorkers.ValueMember = "ID";
+
             if (customer.MainContactID != null) cbWorkers.SelectedValue = (int)customer.MainContactID;
             CustomerCode.Enabled = false;
             txtCustomerName.Enabled = false;
+
             LowMarginLimit = (Decimal)Utils.getManagement().LowMarginLimit;
             modifyQuotation();
 
@@ -4162,82 +4164,6 @@ namespace LoginForm.QuotationModule
             frmQuotationExport form = new frmQuotationExport(QuotationItemList, txtQuotationNo.Text, dgSaleAddedItems);
             form.ShowDialog();
 
-        }
-
-        private void textBox10_Click(object sender, EventArgs e)
-        {
-            //if (textBox10.Text != null && textBox10.Text != "")
-            //{
-            //    decimal sonuc = Decimal.Parse(textBox10.Text);
-            //    textBox10.Text = sonuc.ToString();
-            //}
-        }
-
-        private void textBox10_Leave(object sender, EventArgs e)
-        {
-            //if (textBox10.Text != null && textBox10.Text != "")
-            //{
-            //    decimal sonuc = Decimal.Parse(textBox10.Text);
-            //    sonuc = Math.Round(sonuc, 4);
-            //    textBox10.Text = sonuc.ToString();
-            //}
-        }
-
-        private void txtTotalMargin_Click(object sender, EventArgs e)
-        {
-            //if (txtTotalMargin.Text != null && txtTotalMargin.Text != "")
-            //{
-            //    decimal sonuc = Decimal.Parse(txtTotalMargin.Text);
-            //    txtTotalMargin.Text = sonuc.ToString();
-            //}
-        }
-
-        private void txtTotalMargin_Leave(object sender, EventArgs e)
-        {
-            //if (txtTotalMargin.Text != null && txtTotalMargin.Text != "")
-            //{
-            //    decimal sonuc = Decimal.Parse(txtTotalMargin.Text);
-            //    sonuc = Math.Round(sonuc, 4);
-            //    txtTotalMargin.Text = sonuc.ToString();
-            //}
-        }
-
-        private void textBox11_Click(object sender, EventArgs e)
-        {
-            //if (textBox11.Text != null && textBox11.Text != "")
-            //{
-            //    decimal sonuc = Decimal.Parse(textBox11.Text);
-            //    textBox11.Text = sonuc.ToString();
-            //}
-        }
-
-        private void textBox11_Leave(object sender, EventArgs e)
-        {
-            //if (textBox11.Text != null && textBox11.Text != "")
-            //{
-            //    decimal sonuc = Decimal.Parse(textBox11.Text);
-            //    sonuc = Math.Round(sonuc, 4);
-            //    textBox11.Text = sonuc.ToString();
-            //}
-        }
-
-        private void lblsubtotal_Click(object sender, EventArgs e)
-        {
-            //if (lblsubtotal.Text != null && lblsubtotal.Text != "")
-            //{
-            //    decimal sonuc = Decimal.Parse(lblsubtotal.Text);
-            //    lblsubtotal.Text = sonuc.ToString();
-            //}
-        }
-
-        private void lblsubtotal_Leave(object sender, EventArgs e)
-        {
-            //if (lblsubtotal.Text != null && lblsubtotal.Text != "")
-            //{
-            //    decimal sonuc = Decimal.Parse(lblsubtotal.Text);
-            //    sonuc = Math.Round(sonuc, 4);
-            //    lblsubtotal.Text = sonuc.ToString();
-            //}
         }
 
         private void txtTotalDis2_Leave(object sender, EventArgs e)

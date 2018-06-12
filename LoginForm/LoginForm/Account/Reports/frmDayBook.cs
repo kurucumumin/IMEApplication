@@ -992,8 +992,8 @@ namespace LoginForm
                         }
                         else if (strVoucherType == "Sales Order")
                         {
-                            FormSaleOrderAdd frmSalesOrder = new FormSaleOrderAdd();
-                            FormSaleOrderAdd open = Application.OpenForms["frmSalesOrder"] as FormSaleOrderAdd;
+                            DevFormSaleOrderAdd frmSalesOrder = new DevFormSaleOrderAdd();
+                            DevFormSaleOrderAdd open = Application.OpenForms["frmSalesOrder"] as DevFormSaleOrderAdd;
                             if (open == null)
                             {
                                 frmSalesOrder.WindowState = FormWindowState.Normal;

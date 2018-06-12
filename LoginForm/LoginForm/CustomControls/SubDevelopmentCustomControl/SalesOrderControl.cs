@@ -29,7 +29,7 @@ namespace LoginForm.CustomControls
 
         private void btnEmptySalesOrder_Click(object sender, EventArgs e)
         {
-            DevFormSaleOrderAdd form = new DevFormSaleOrderAdd();
+            FormSaleOrderAdd form = new FormSaleOrderAdd();
             form.Show();
         }
     }
