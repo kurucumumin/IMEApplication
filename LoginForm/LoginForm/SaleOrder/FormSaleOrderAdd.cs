@@ -2817,9 +2817,6 @@ namespace LoginForm.QuotationModule
                     }
 
                     #endregion
-
-
-
                 }
             }
             if (CurrentRow.Cells["dgUOM"].Value == null && CurrentRow.Cells["dgUC"].Value != null)
