@@ -69,10 +69,6 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.dgItems = new System.Windows.Forms.DataGridView();
-            this.quotationDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.btnClearAll = new System.Windows.Forms.Button();
-            this.btnSelectAll = new System.Windows.Forms.Button();
             this.chk = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -93,6 +89,10 @@
             this.margeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unitOfMeasureDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quotationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quotationDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btnClearAll = new System.Windows.Forms.Button();
+            this.btnSelectAll = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
@@ -546,40 +546,6 @@
             this.dgItems.Size = new System.Drawing.Size(929, 191);
             this.dgItems.TabIndex = 0;
             // 
-            // quotationDetailBindingSource
-            // 
-            this.quotationDetailBindingSource.DataSource = typeof(LoginForm.DataSet.QuotationDetail);
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.btnClearAll);
-            this.panel3.Controls.Add(this.btnSelectAll);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(3, 200);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(929, 34);
-            this.panel3.TabIndex = 1;
-            // 
-            // btnClearAll
-            // 
-            this.btnClearAll.Location = new System.Drawing.Point(87, 6);
-            this.btnClearAll.Name = "btnClearAll";
-            this.btnClearAll.Size = new System.Drawing.Size(75, 23);
-            this.btnClearAll.TabIndex = 0;
-            this.btnClearAll.Text = "Clear All";
-            this.btnClearAll.UseVisualStyleBackColor = true;
-            this.btnClearAll.Click += new System.EventHandler(this.btnClearAll_Click);
-            // 
-            // btnSelectAll
-            // 
-            this.btnSelectAll.Location = new System.Drawing.Point(6, 6);
-            this.btnSelectAll.Name = "btnSelectAll";
-            this.btnSelectAll.Size = new System.Drawing.Size(75, 23);
-            this.btnSelectAll.TabIndex = 0;
-            this.btnSelectAll.Text = "Select All";
-            this.btnSelectAll.UseVisualStyleBackColor = true;
-            this.btnSelectAll.Click += new System.EventHandler(this.btnSelectAll_Click);
-            // 
             // chk
             // 
             this.chk.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
@@ -717,6 +683,40 @@
             this.quotationDataGridViewTextBoxColumn.HeaderText = "Quotation";
             this.quotationDataGridViewTextBoxColumn.Name = "quotationDataGridViewTextBoxColumn";
             this.quotationDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // quotationDetailBindingSource
+            // 
+            this.quotationDetailBindingSource.DataSource = typeof(LoginForm.DataSet.QuotationDetail);
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.btnClearAll);
+            this.panel3.Controls.Add(this.btnSelectAll);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(3, 200);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(929, 34);
+            this.panel3.TabIndex = 1;
+            // 
+            // btnClearAll
+            // 
+            this.btnClearAll.Location = new System.Drawing.Point(87, 6);
+            this.btnClearAll.Name = "btnClearAll";
+            this.btnClearAll.Size = new System.Drawing.Size(75, 23);
+            this.btnClearAll.TabIndex = 0;
+            this.btnClearAll.Text = "Clear All";
+            this.btnClearAll.UseVisualStyleBackColor = true;
+            this.btnClearAll.Click += new System.EventHandler(this.btnClearAll_Click);
+            // 
+            // btnSelectAll
+            // 
+            this.btnSelectAll.Location = new System.Drawing.Point(6, 6);
+            this.btnSelectAll.Name = "btnSelectAll";
+            this.btnSelectAll.Size = new System.Drawing.Size(75, 23);
+            this.btnSelectAll.TabIndex = 0;
+            this.btnSelectAll.Text = "Select All";
+            this.btnSelectAll.UseVisualStyleBackColor = true;
+            this.btnSelectAll.Click += new System.EventHandler(this.btnSelectAll_Click);
             // 
             // FormSaleOrderCreate
             // 

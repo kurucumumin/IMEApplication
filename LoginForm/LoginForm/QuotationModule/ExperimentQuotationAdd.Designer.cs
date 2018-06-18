@@ -3268,6 +3268,7 @@
             this.Name = "ExperimentQuotationAdd";
             this.Text = "Add Quotation";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.ExperimentQuotationAdd_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);

@@ -24,6 +24,24 @@ namespace LoginForm.QuotationModule
             InitializeComponent();
         }
 
+        public FormQuaotationCustomerSearch(string _Name)
+        {
+            InitializeComponent();
+
+            CustomerName.Text = _Name;
+            CustomerSearchGrid.DataSource = CustomerSearch(_Name);
+        }
+
+        private List<Customer> CustomerSearch(string _Name = "")
+        {
+            List<Customer> cList = new IMEEntities().Customers.
+                Where(x => x.c_name.Contains(_Name)).
+                //Where(x => x.ID.IndexOf(_ID, StringComparison.OrdinalIgnoreCase) >= 0).
+                ToList();
+
+            return cList;
+        }
+
         public FormQuaotationCustomerSearch(XmlCustomer customer)
         {
             InitializeComponent();
@@ -333,6 +351,6 @@ namespace LoginForm.QuotationModule
                 form.ShowDialog();
             }
 
-            }
+        }
     }
 }
