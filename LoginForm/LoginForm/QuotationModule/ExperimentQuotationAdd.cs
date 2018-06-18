@@ -1,4 +1,5 @@
 ﻿using LoginForm.DataSet;
+using LoginForm.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,9 +24,12 @@ namespace LoginForm.QuotationModule
             InitializeComponent();
         }
 
-        private void SetCustomer(Customer customer)
+        private void SetCustomer()
         {
-            throw new NotImplementedException();
+            CustomerCode.Text = _customer.ID;
+            txtCustomerName.Text = _customer.c_name;
+
+            dtpDate.Value = DateTime.Now;
         }
 
         private void ChooseCustomer(string CustomerName)
@@ -111,15 +115,33 @@ namespace LoginForm.QuotationModule
         {
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
-                FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch();
+                FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch(CustomerCode.Text);
                 this.Enabled = false;
 
                 if(form.ShowDialog() == DialogResult.OK)
                 {
-                    form.customer = _customer;
+                    _customer = form.customer;
+                    SetCustomer();
                 }
                 this.Enabled = true;
             }
+        }
+
+        private void ExperimentQuotationAdd_Load(object sender, EventArgs e)
+        {
+            FillComboBoxes();
+            lblVat.Text = Utils.getManagement().VAT.ToString();
+        }
+
+        private void FillComboBoxes()
+        {
+            IMEEntities db = new IMEEntities();
+
+            cbCurrency.DisplayMember = "currencyName";
+            cbCurrency.ValueMember = "currencyID";
+            cbCurrency.DataSource = db.Currencies.ToList();
+
+
         }
     }
 }

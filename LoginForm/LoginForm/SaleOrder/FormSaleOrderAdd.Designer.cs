@@ -28,76 +28,75 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle43 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle44 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle45 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle46 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle49 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle50 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle51 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle52 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle53 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle54 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle55 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle56 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dgSaleAddedItems = new System.Windows.Forms.DataGridView();
-            this.dgNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LI = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgSupplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgProductCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgBrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgMPN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgLandingCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgMargin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgUOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgSSM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgUC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgUPIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgDisc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgUCUPCurr = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgTargetUP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCompetitor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgHZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgDelivery = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dgUnitWeigt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgTotalWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCustStkCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCustDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCOO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCCCNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgDependantTable = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QuoDetailNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.dgSaleDeleted = new System.Windows.Forms.DataGridView();
+            this.No1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgProductCode1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgDesc1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCost1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgMargin1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgQty1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUOM1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgSSM1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUC1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUPIME1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgDisc1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUCUPCurr1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgTotal1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgTargetUP1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCompetitor1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgHZ1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCL1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgDelivery1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dgUnitWeight1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgTotalWeight1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCustomerStokCode1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCustDescription1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn35 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgDependantTable1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label70 = new System.Windows.Forms.Label();
             this.label71 = new System.Windows.Forms.Label();
@@ -305,42 +304,43 @@
             this.gbShipment = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
             this.cbSMethod = new System.Windows.Forms.ComboBox();
-            this.No1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgProductCode1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgDesc1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCost1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgMargin1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgQty1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgUOM1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgSSM1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgUC1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgUPIME1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgDisc1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgUCUPCurr1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgTotal1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgTargetUP1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCompetitor1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgHZ1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCL1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgDelivery1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dgUnitWeight1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgTotalWeight1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCustomerStokCode1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCustDescription1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn35 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgDependantTable1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgSupplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgProductCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgBrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgMPN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgLandingCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgMargin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgSSM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUPIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgDisc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUCUPCurr = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgTargetUP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCompetitor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgHZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgDelivery = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dgUnitWeigt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgTotalWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCustStkCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCustDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCOO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCCCNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgDependantTable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuoDetailNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -395,7 +395,7 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.dgSaleAddedItems);
-            this.splitContainer1.Panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.splitContainer1.Panel1.Margin = new System.Windows.Forms.Padding(4);
             this.splitContainer1.Panel1MinSize = 80;
             // 
             // splitContainer1.Panel2
@@ -410,8 +410,8 @@
             // dgSaleAddedItems
             // 
             this.dgSaleAddedItems.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgSaleAddedItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgSaleAddedItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle29;
             this.dgSaleAddedItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgSaleAddedItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgNo,
@@ -453,7 +453,7 @@
             this.QuoDetailNo});
             this.dgSaleAddedItems.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgSaleAddedItems.Location = new System.Drawing.Point(0, 0);
-            this.dgSaleAddedItems.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgSaleAddedItems.Margin = new System.Windows.Forms.Padding(4);
             this.dgSaleAddedItems.Name = "dgSaleAddedItems";
             this.dgSaleAddedItems.Size = new System.Drawing.Size(1637, 220);
             this.dgSaleAddedItems.TabIndex = 9;
@@ -464,378 +464,6 @@
             this.dgSaleAddedItems.Click += new System.EventHandler(this.dgSaleAddedItems_Click);
             this.dgSaleAddedItems.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgSaleAddedItems_KeyDown);
             // 
-            // dgNo
-            // 
-            this.dgNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle2.Format = "N4";
-            dataGridViewCellStyle2.NullValue = null;
-            this.dgNo.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgNo.HeaderText = "No";
-            this.dgNo.Name = "dgNo";
-            this.dgNo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.dgNo.Width = 30;
-            // 
-            // HS
-            // 
-            this.HS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Transparent;
-            this.HS.DefaultCellStyle = dataGridViewCellStyle3;
-            this.HS.HeaderText = "HS";
-            this.HS.Name = "HS";
-            this.HS.ReadOnly = true;
-            this.HS.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.HS.Width = 25;
-            // 
-            // LI
-            // 
-            this.LI.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Transparent;
-            this.LI.DefaultCellStyle = dataGridViewCellStyle4;
-            this.LI.HeaderText = "LI";
-            this.LI.Name = "LI";
-            this.LI.ReadOnly = true;
-            this.LI.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.LI.Width = 25;
-            // 
-            // CL
-            // 
-            this.CL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Transparent;
-            this.CL.DefaultCellStyle = dataGridViewCellStyle5;
-            this.CL.HeaderText = "CL";
-            this.CL.Name = "CL";
-            this.CL.ReadOnly = true;
-            this.CL.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.CL.Width = 25;
-            // 
-            // LC
-            // 
-            this.LC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Transparent;
-            this.LC.DefaultCellStyle = dataGridViewCellStyle6;
-            this.LC.HeaderText = "LC";
-            this.LC.Name = "LC";
-            this.LC.ReadOnly = true;
-            this.LC.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.LC.Width = 25;
-            // 
-            // LM
-            // 
-            this.LM.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Transparent;
-            this.LM.DefaultCellStyle = dataGridViewCellStyle7;
-            this.LM.HeaderText = "LM";
-            this.LM.Name = "LM";
-            this.LM.ReadOnly = true;
-            this.LM.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.LM.Width = 25;
-            // 
-            // dgSupplier
-            // 
-            this.dgSupplier.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgSupplier.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dgSupplier.HeaderText = "Supplier";
-            this.dgSupplier.Name = "dgSupplier";
-            this.dgSupplier.ReadOnly = true;
-            this.dgSupplier.Width = 89;
-            // 
-            // dgProductCode
-            // 
-            this.dgProductCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgProductCode.HeaderText = "Item Code";
-            this.dgProductCode.Name = "dgProductCode";
-            this.dgProductCode.Width = 92;
-            // 
-            // dgBrand
-            // 
-            this.dgBrand.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgBrand.DefaultCellStyle = dataGridViewCellStyle9;
-            this.dgBrand.HeaderText = "Brand";
-            this.dgBrand.Name = "dgBrand";
-            this.dgBrand.ReadOnly = true;
-            this.dgBrand.Width = 75;
-            // 
-            // dgMPN
-            // 
-            this.dgMPN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgMPN.DefaultCellStyle = dataGridViewCellStyle10;
-            this.dgMPN.HeaderText = "MPN";
-            this.dgMPN.Name = "dgMPN";
-            this.dgMPN.ReadOnly = true;
-            this.dgMPN.Width = 67;
-            // 
-            // dgDesc
-            // 
-            this.dgDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgDesc.DefaultCellStyle = dataGridViewCellStyle11;
-            this.dgDesc.HeaderText = "Description";
-            this.dgDesc.Name = "dgDesc";
-            this.dgDesc.ReadOnly = true;
-            this.dgDesc.Width = 108;
-            // 
-            // dgCost
-            // 
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgCost.DefaultCellStyle = dataGridViewCellStyle12;
-            this.dgCost.HeaderText = "Cost (£)";
-            this.dgCost.Name = "dgCost";
-            this.dgCost.ReadOnly = true;
-            // 
-            // dgLandingCost
-            // 
-            this.dgLandingCost.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle13.Format = "C3";
-            dataGridViewCellStyle13.NullValue = null;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgLandingCost.DefaultCellStyle = dataGridViewCellStyle13;
-            this.dgLandingCost.HeaderText = "Landing Cost (£)";
-            this.dgLandingCost.Name = "dgLandingCost";
-            this.dgLandingCost.ReadOnly = true;
-            this.dgLandingCost.Width = 114;
-            // 
-            // dgMargin
-            // 
-            this.dgMargin.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgMargin.DefaultCellStyle = dataGridViewCellStyle14;
-            this.dgMargin.HeaderText = "Margin";
-            this.dgMargin.Name = "dgMargin";
-            this.dgMargin.ReadOnly = true;
-            this.dgMargin.Width = 80;
-            // 
-            // dgQty
-            // 
-            this.dgQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgQty.DataPropertyName = "QtyDeneme";
-            this.dgQty.HeaderText = "Qty";
-            this.dgQty.Name = "dgQty";
-            this.dgQty.ReadOnly = true;
-            this.dgQty.Width = 59;
-            // 
-            // dgStock
-            // 
-            this.dgStock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgStock.DefaultCellStyle = dataGridViewCellStyle15;
-            this.dgStock.HeaderText = "Stock";
-            this.dgStock.Name = "dgStock";
-            this.dgStock.ReadOnly = true;
-            this.dgStock.Width = 72;
-            // 
-            // dgUOM
-            // 
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgUOM.DefaultCellStyle = dataGridViewCellStyle16;
-            this.dgUOM.HeaderText = "UOM";
-            this.dgUOM.Name = "dgUOM";
-            this.dgUOM.ReadOnly = true;
-            this.dgUOM.Width = 57;
-            // 
-            // dgSSM
-            // 
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgSSM.DefaultCellStyle = dataGridViewCellStyle17;
-            this.dgSSM.HeaderText = "SSM";
-            this.dgSSM.Name = "dgSSM";
-            this.dgSSM.ReadOnly = true;
-            // 
-            // dgUC
-            // 
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgUC.DefaultCellStyle = dataGridViewCellStyle18;
-            this.dgUC.HeaderText = "U/C";
-            this.dgUC.Name = "dgUC";
-            this.dgUC.ReadOnly = true;
-            // 
-            // dgUPIME
-            // 
-            this.dgUPIME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgUPIME.DefaultCellStyle = dataGridViewCellStyle19;
-            this.dgUPIME.HeaderText = "U/P IME L/P ";
-            this.dgUPIME.Name = "dgUPIME";
-            this.dgUPIME.ReadOnly = true;
-            this.dgUPIME.Width = 107;
-            // 
-            // dgDisc
-            // 
-            this.dgDisc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgDisc.DefaultCellStyle = dataGridViewCellStyle20;
-            this.dgDisc.HeaderText = "Disc. (%)";
-            this.dgDisc.Name = "dgDisc";
-            this.dgDisc.ReadOnly = true;
-            this.dgDisc.Width = 87;
-            // 
-            // dgUCUPCurr
-            // 
-            this.dgUCUPCurr.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgUCUPCurr.HeaderText = "U/C U/P (Curr.)";
-            this.dgUCUPCurr.Name = "dgUCUPCurr";
-            this.dgUCUPCurr.ReadOnly = true;
-            this.dgUCUPCurr.Width = 121;
-            // 
-            // dgTotal
-            // 
-            this.dgTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgTotal.DefaultCellStyle = dataGridViewCellStyle21;
-            this.dgTotal.HeaderText = "TOTAL";
-            this.dgTotal.Name = "dgTotal";
-            this.dgTotal.ReadOnly = true;
-            this.dgTotal.Width = 83;
-            // 
-            // dgTargetUP
-            // 
-            this.dgTargetUP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgTargetUP.HeaderText = "Target U/P";
-            this.dgTargetUP.Name = "dgTargetUP";
-            this.dgTargetUP.ReadOnly = true;
-            this.dgTargetUP.Width = 98;
-            // 
-            // dgCompetitor
-            // 
-            this.dgCompetitor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgCompetitor.HeaderText = "Competitor";
-            this.dgCompetitor.Name = "dgCompetitor";
-            this.dgCompetitor.ReadOnly = true;
-            this.dgCompetitor.Width = 105;
-            // 
-            // dgHZ
-            // 
-            this.dgHZ.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgHZ.DefaultCellStyle = dataGridViewCellStyle22;
-            this.dgHZ.HeaderText = "HZ";
-            this.dgHZ.Name = "dgHZ";
-            this.dgHZ.ReadOnly = true;
-            this.dgHZ.Visible = false;
-            // 
-            // dgCL
-            // 
-            this.dgCL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgCL.DefaultCellStyle = dataGridViewCellStyle23;
-            this.dgCL.HeaderText = "CL";
-            this.dgCL.Name = "dgCL";
-            this.dgCL.ReadOnly = true;
-            this.dgCL.Visible = false;
-            // 
-            // dgCR
-            // 
-            this.dgCR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgCR.DefaultCellStyle = dataGridViewCellStyle24;
-            this.dgCR.HeaderText = "CR";
-            this.dgCR.Name = "dgCR";
-            this.dgCR.ReadOnly = true;
-            this.dgCR.Visible = false;
-            // 
-            // dgDelivery
-            // 
-            this.dgDelivery.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgDelivery.DataPropertyName = "6 Weeks";
-            this.dgDelivery.HeaderText = "Delivery";
-            this.dgDelivery.Name = "dgDelivery";
-            this.dgDelivery.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgDelivery.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dgDelivery.Width = 88;
-            // 
-            // dgUnitWeigt
-            // 
-            this.dgUnitWeigt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgUnitWeigt.DefaultCellStyle = dataGridViewCellStyle25;
-            this.dgUnitWeigt.HeaderText = "Unit Weigt (Kg)";
-            this.dgUnitWeigt.Name = "dgUnitWeigt";
-            this.dgUnitWeigt.ReadOnly = true;
-            this.dgUnitWeigt.Width = 122;
-            // 
-            // dgTotalWeight
-            // 
-            this.dgTotalWeight.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgTotalWeight.DefaultCellStyle = dataGridViewCellStyle26;
-            this.dgTotalWeight.HeaderText = "Total Weight (Kg)";
-            this.dgTotalWeight.Name = "dgTotalWeight";
-            this.dgTotalWeight.ReadOnly = true;
-            this.dgTotalWeight.Width = 136;
-            // 
-            // dgCustStkCode
-            // 
-            this.dgCustStkCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgCustStkCode.HeaderText = "Cust Stk Code";
-            this.dgCustStkCode.Name = "dgCustStkCode";
-            this.dgCustStkCode.ReadOnly = true;
-            this.dgCustStkCode.Width = 116;
-            // 
-            // dgCustDescription
-            // 
-            this.dgCustDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgCustDescription.HeaderText = "Cust. Description";
-            this.dgCustDescription.Name = "dgCustDescription";
-            this.dgCustDescription.ReadOnly = true;
-            this.dgCustDescription.Width = 132;
-            // 
-            // dgCOO
-            // 
-            this.dgCOO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgCOO.DefaultCellStyle = dataGridViewCellStyle27;
-            this.dgCOO.HeaderText = "COO";
-            this.dgCOO.Name = "dgCOO";
-            this.dgCOO.ReadOnly = true;
-            this.dgCOO.Width = 68;
-            // 
-            // dgCCCNO
-            // 
-            this.dgCCCNO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgCCCNO.DefaultCellStyle = dataGridViewCellStyle28;
-            this.dgCCCNO.HeaderText = "CCCNO";
-            this.dgCCCNO.Name = "dgCCCNO";
-            this.dgCCCNO.ReadOnly = true;
-            this.dgCCCNO.Width = 85;
-            // 
-            // dgDependantTable
-            // 
-            this.dgDependantTable.HeaderText = "dgDependantTable";
-            this.dgDependantTable.Name = "dgDependantTable";
-            this.dgDependantTable.Visible = false;
-            // 
-            // QuoDetailNo
-            // 
-            this.QuoDetailNo.HeaderText = "QuoDetailNo";
-            this.QuoDetailNo.Name = "QuoDetailNo";
-            this.QuoDetailNo.ReadOnly = true;
-            this.QuoDetailNo.Visible = false;
-            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
@@ -844,7 +472,7 @@
             this.tableLayoutPanel2.Controls.Add(this.panel2, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
@@ -895,12 +523,243 @@
             this.dgDependantTable1});
             this.dgSaleDeleted.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgSaleDeleted.Location = new System.Drawing.Point(4, 64);
-            this.dgSaleDeleted.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgSaleDeleted.Margin = new System.Windows.Forms.Padding(4);
             this.dgSaleDeleted.Name = "dgSaleDeleted";
             this.dgSaleDeleted.Size = new System.Drawing.Size(1629, 194);
             this.dgSaleDeleted.TabIndex = 10;
             this.dgSaleDeleted.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgSaleDeleted_CellValidating);
             this.dgSaleDeleted.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView2_MouseClick);
+            // 
+            // No1
+            // 
+            this.No1.HeaderText = "No";
+            this.No1.Name = "No1";
+            this.No1.ReadOnly = true;
+            this.No1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.No1.Width = 45;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "HS";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn2.Width = 32;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "LI";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn3.Width = 32;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "CL";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn4.Width = 32;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "LC";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn5.Width = 32;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.HeaderText = "LM";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn6.Width = 32;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.HeaderText = "Supplier";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // dgProductCode1
+            // 
+            this.dgProductCode1.HeaderText = "Item Code";
+            this.dgProductCode1.Name = "dgProductCode1";
+            this.dgProductCode1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.HeaderText = "Brand";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.HeaderText = "MPN";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            // 
+            // dgDesc1
+            // 
+            this.dgDesc1.HeaderText = "Description";
+            this.dgDesc1.Name = "dgDesc1";
+            this.dgDesc1.ReadOnly = true;
+            // 
+            // dgCost1
+            // 
+            this.dgCost1.HeaderText = "Cost (£)";
+            this.dgCost1.Name = "dgCost1";
+            this.dgCost1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn14
+            // 
+            this.dataGridViewTextBoxColumn14.HeaderText = "Landing Cost (£)";
+            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
+            this.dataGridViewTextBoxColumn14.ReadOnly = true;
+            // 
+            // dgMargin1
+            // 
+            this.dgMargin1.HeaderText = "Margin";
+            this.dgMargin1.Name = "dgMargin1";
+            this.dgMargin1.ReadOnly = true;
+            // 
+            // dgQty1
+            // 
+            this.dgQty1.HeaderText = "Qty";
+            this.dgQty1.Name = "dgQty1";
+            this.dgQty1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn17
+            // 
+            this.dataGridViewTextBoxColumn17.HeaderText = "Stock";
+            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
+            this.dataGridViewTextBoxColumn17.ReadOnly = true;
+            // 
+            // dgUOM1
+            // 
+            this.dgUOM1.HeaderText = "UOM";
+            this.dgUOM1.Name = "dgUOM1";
+            this.dgUOM1.ReadOnly = true;
+            // 
+            // dgSSM1
+            // 
+            this.dgSSM1.HeaderText = "SSM";
+            this.dgSSM1.Name = "dgSSM1";
+            this.dgSSM1.ReadOnly = true;
+            // 
+            // dgUC1
+            // 
+            this.dgUC1.HeaderText = "U/C";
+            this.dgUC1.Name = "dgUC1";
+            this.dgUC1.ReadOnly = true;
+            // 
+            // dgUPIME1
+            // 
+            this.dgUPIME1.HeaderText = "U/P IME L/P ";
+            this.dgUPIME1.Name = "dgUPIME1";
+            this.dgUPIME1.ReadOnly = true;
+            // 
+            // dgDisc1
+            // 
+            this.dgDisc1.HeaderText = "Disc. (%)";
+            this.dgDisc1.Name = "dgDisc1";
+            this.dgDisc1.ReadOnly = true;
+            // 
+            // dgUCUPCurr1
+            // 
+            this.dgUCUPCurr1.HeaderText = "U/C U/P (Curr.)";
+            this.dgUCUPCurr1.Name = "dgUCUPCurr1";
+            this.dgUCUPCurr1.ReadOnly = true;
+            // 
+            // dgTotal1
+            // 
+            this.dgTotal1.HeaderText = "TOTAL";
+            this.dgTotal1.Name = "dgTotal1";
+            this.dgTotal1.ReadOnly = true;
+            // 
+            // dgTargetUP1
+            // 
+            this.dgTargetUP1.HeaderText = "Target U/P";
+            this.dgTargetUP1.Name = "dgTargetUP1";
+            this.dgTargetUP1.ReadOnly = true;
+            // 
+            // dgCompetitor1
+            // 
+            this.dgCompetitor1.HeaderText = "Competitor";
+            this.dgCompetitor1.Name = "dgCompetitor1";
+            this.dgCompetitor1.ReadOnly = true;
+            // 
+            // dgHZ1
+            // 
+            this.dgHZ1.HeaderText = "HZ";
+            this.dgHZ1.Name = "dgHZ1";
+            this.dgHZ1.ReadOnly = true;
+            // 
+            // dgCL1
+            // 
+            this.dgCL1.HeaderText = "CL";
+            this.dgCL1.Name = "dgCL1";
+            this.dgCL1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn29
+            // 
+            this.dataGridViewTextBoxColumn29.HeaderText = "CR";
+            this.dataGridViewTextBoxColumn29.Name = "dataGridViewTextBoxColumn29";
+            this.dataGridViewTextBoxColumn29.ReadOnly = true;
+            // 
+            // dgDelivery1
+            // 
+            this.dgDelivery1.HeaderText = "Delivery";
+            this.dgDelivery1.Name = "dgDelivery1";
+            this.dgDelivery1.ReadOnly = true;
+            this.dgDelivery1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgDelivery1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // dgUnitWeight1
+            // 
+            this.dgUnitWeight1.HeaderText = "Unit Weight (Kg)";
+            this.dgUnitWeight1.Name = "dgUnitWeight1";
+            this.dgUnitWeight1.ReadOnly = true;
+            // 
+            // dgTotalWeight1
+            // 
+            this.dgTotalWeight1.HeaderText = "Total Weight (Kg)";
+            this.dgTotalWeight1.Name = "dgTotalWeight1";
+            this.dgTotalWeight1.ReadOnly = true;
+            // 
+            // dgCustomerStokCode1
+            // 
+            this.dgCustomerStokCode1.HeaderText = "Cust Stk Code";
+            this.dgCustomerStokCode1.Name = "dgCustomerStokCode1";
+            this.dgCustomerStokCode1.ReadOnly = true;
+            // 
+            // dgCustDescription1
+            // 
+            this.dgCustDescription1.HeaderText = "Cust. Description";
+            this.dgCustDescription1.Name = "dgCustDescription1";
+            this.dgCustDescription1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn35
+            // 
+            this.dataGridViewTextBoxColumn35.HeaderText = "COO";
+            this.dataGridViewTextBoxColumn35.Name = "dataGridViewTextBoxColumn35";
+            this.dataGridViewTextBoxColumn35.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn36
+            // 
+            this.dataGridViewTextBoxColumn36.HeaderText = "CCCNO";
+            this.dataGridViewTextBoxColumn36.Name = "dataGridViewTextBoxColumn36";
+            this.dataGridViewTextBoxColumn36.ReadOnly = true;
+            // 
+            // dgDependantTable1
+            // 
+            this.dgDependantTable1.HeaderText = "DependantTable";
+            this.dgDependantTable1.Name = "dgDependantTable1";
+            this.dgDependantTable1.ReadOnly = true;
+            this.dgDependantTable1.Visible = false;
             // 
             // panel2
             // 
@@ -983,7 +842,7 @@
             // 
             this.btnImportFromXML.Enabled = false;
             this.btnImportFromXML.Location = new System.Drawing.Point(585, 12);
-            this.btnImportFromXML.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnImportFromXML.Margin = new System.Windows.Forms.Padding(4);
             this.btnImportFromXML.Name = "btnImportFromXML";
             this.btnImportFromXML.Size = new System.Drawing.Size(128, 28);
             this.btnImportFromXML.TabIndex = 11;
@@ -995,7 +854,7 @@
             // btnCustomizeGrid
             // 
             this.btnCustomizeGrid.Location = new System.Drawing.Point(852, 12);
-            this.btnCustomizeGrid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCustomizeGrid.Margin = new System.Windows.Forms.Padding(4);
             this.btnCustomizeGrid.Name = "btnCustomizeGrid";
             this.btnCustomizeGrid.Size = new System.Drawing.Size(128, 28);
             this.btnCustomizeGrid.TabIndex = 10;
@@ -1006,7 +865,7 @@
             // btnProductHistory
             // 
             this.btnProductHistory.Location = new System.Drawing.Point(716, 12);
-            this.btnProductHistory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnProductHistory.Margin = new System.Windows.Forms.Padding(4);
             this.btnProductHistory.Name = "btnProductHistory";
             this.btnProductHistory.Size = new System.Drawing.Size(128, 28);
             this.btnProductHistory.TabIndex = 10;
@@ -1028,7 +887,7 @@
             // button7
             // 
             this.button7.Location = new System.Drawing.Point(315, 12);
-            this.button7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button7.Margin = new System.Windows.Forms.Padding(4);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(128, 28);
             this.button7.TabIndex = 3;
@@ -1048,7 +907,7 @@
             // btnExcelExport
             // 
             this.btnExcelExport.Location = new System.Drawing.Point(449, 12);
-            this.btnExcelExport.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnExcelExport.Margin = new System.Windows.Forms.Padding(4);
             this.btnExcelExport.Name = "btnExcelExport";
             this.btnExcelExport.Size = new System.Drawing.Size(128, 28);
             this.btnExcelExport.TabIndex = 3;
@@ -1059,7 +918,7 @@
             // textBox11
             // 
             this.textBox11.Location = new System.Drawing.Point(1415, 15);
-            this.textBox11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox11.Margin = new System.Windows.Forms.Padding(4);
             this.textBox11.Name = "textBox11";
             this.textBox11.ReadOnly = true;
             this.textBox11.Size = new System.Drawing.Size(47, 22);
@@ -1070,7 +929,7 @@
             // txtTotalMargin
             // 
             this.txtTotalMargin.Location = new System.Drawing.Point(1071, 15);
-            this.txtTotalMargin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTotalMargin.Margin = new System.Windows.Forms.Padding(4);
             this.txtTotalMargin.Name = "txtTotalMargin";
             this.txtTotalMargin.ReadOnly = true;
             this.txtTotalMargin.Size = new System.Drawing.Size(125, 22);
@@ -1080,7 +939,7 @@
             // txtTotalCost
             // 
             this.txtTotalCost.Location = new System.Drawing.Point(1293, 15);
-            this.txtTotalCost.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTotalCost.Margin = new System.Windows.Forms.Padding(4);
             this.txtTotalCost.Name = "txtTotalCost";
             this.txtTotalCost.ReadOnly = true;
             this.txtTotalCost.Size = new System.Drawing.Size(103, 22);
@@ -1091,7 +950,7 @@
             // txtFactor
             // 
             this.txtFactor.Location = new System.Drawing.Point(71, 15);
-            this.txtFactor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFactor.Margin = new System.Windows.Forms.Padding(4);
             this.txtFactor.Name = "txtFactor";
             this.txtFactor.Size = new System.Drawing.Size(55, 22);
             this.txtFactor.TabIndex = 67;
@@ -1144,7 +1003,7 @@
             // btnInvoiceModify
             // 
             this.btnInvoiceModify.Location = new System.Drawing.Point(1148, 23);
-            this.btnInvoiceModify.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnInvoiceModify.Margin = new System.Windows.Forms.Padding(4);
             this.btnInvoiceModify.Name = "btnInvoiceModify";
             this.btnInvoiceModify.Size = new System.Drawing.Size(52, 28);
             this.btnInvoiceModify.TabIndex = 121;
@@ -1154,7 +1013,7 @@
             // btnInvoiceAdd
             // 
             this.btnInvoiceAdd.Location = new System.Drawing.Point(1088, 23);
-            this.btnInvoiceAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnInvoiceAdd.Margin = new System.Windows.Forms.Padding(4);
             this.btnInvoiceAdd.Name = "btnInvoiceAdd";
             this.btnInvoiceAdd.Size = new System.Drawing.Size(52, 28);
             this.btnInvoiceAdd.TabIndex = 120;
@@ -1168,7 +1027,7 @@
             this.cbInvoiceAdress.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbInvoiceAdress.FormattingEnabled = true;
             this.cbInvoiceAdress.Location = new System.Drawing.Point(844, 22);
-            this.cbInvoiceAdress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbInvoiceAdress.Margin = new System.Windows.Forms.Padding(4);
             this.cbInvoiceAdress.Name = "cbInvoiceAdress";
             this.cbInvoiceAdress.Size = new System.Drawing.Size(232, 24);
             this.cbInvoiceAdress.TabIndex = 119;
@@ -1177,7 +1036,7 @@
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(1148, 146);
-            this.button4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button4.Margin = new System.Windows.Forms.Padding(4);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(52, 28);
             this.button4.TabIndex = 118;
@@ -1187,7 +1046,7 @@
             // btnDeliveryContactAdd
             // 
             this.btnDeliveryContactAdd.Location = new System.Drawing.Point(1088, 146);
-            this.btnDeliveryContactAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDeliveryContactAdd.Margin = new System.Windows.Forms.Padding(4);
             this.btnDeliveryContactAdd.Name = "btnDeliveryContactAdd";
             this.btnDeliveryContactAdd.Size = new System.Drawing.Size(52, 28);
             this.btnDeliveryContactAdd.TabIndex = 117;
@@ -1201,7 +1060,7 @@
             this.cbDeliveryContact.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbDeliveryContact.FormattingEnabled = true;
             this.cbDeliveryContact.Location = new System.Drawing.Point(844, 146);
-            this.cbDeliveryContact.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbDeliveryContact.Margin = new System.Windows.Forms.Padding(4);
             this.cbDeliveryContact.Name = "cbDeliveryContact";
             this.cbDeliveryContact.Size = new System.Drawing.Size(232, 24);
             this.cbDeliveryContact.TabIndex = 116;
@@ -1219,7 +1078,7 @@
             // btnDeliveryModify
             // 
             this.btnDeliveryModify.Location = new System.Drawing.Point(1148, 57);
-            this.btnDeliveryModify.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDeliveryModify.Margin = new System.Windows.Forms.Padding(4);
             this.btnDeliveryModify.Name = "btnDeliveryModify";
             this.btnDeliveryModify.Size = new System.Drawing.Size(52, 28);
             this.btnDeliveryModify.TabIndex = 114;
@@ -1229,7 +1088,7 @@
             // btnDeliveryAdd
             // 
             this.btnDeliveryAdd.Location = new System.Drawing.Point(1088, 57);
-            this.btnDeliveryAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDeliveryAdd.Margin = new System.Windows.Forms.Padding(4);
             this.btnDeliveryAdd.Name = "btnDeliveryAdd";
             this.btnDeliveryAdd.Size = new System.Drawing.Size(52, 28);
             this.btnDeliveryAdd.TabIndex = 113;
@@ -1240,7 +1099,7 @@
             // textBox5
             // 
             this.textBox5.Location = new System.Drawing.Point(844, 89);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(4);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
             this.textBox5.ReadOnly = true;
@@ -1256,7 +1115,7 @@
             this.cbDeliveryAddress.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbDeliveryAddress.FormattingEnabled = true;
             this.cbDeliveryAddress.Location = new System.Drawing.Point(844, 57);
-            this.cbDeliveryAddress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbDeliveryAddress.Margin = new System.Windows.Forms.Padding(4);
             this.cbDeliveryAddress.Name = "cbDeliveryAddress";
             this.cbDeliveryAddress.Size = new System.Drawing.Size(232, 24);
             this.cbDeliveryAddress.TabIndex = 111;
@@ -1283,7 +1142,7 @@
             // txtAccountingNote
             // 
             this.txtAccountingNote.Location = new System.Drawing.Point(1324, 18);
-            this.txtAccountingNote.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAccountingNote.Margin = new System.Windows.Forms.Padding(4);
             this.txtAccountingNote.Multiline = true;
             this.txtAccountingNote.Name = "txtAccountingNote";
             this.txtAccountingNote.ReadOnly = true;
@@ -1328,9 +1187,9 @@
             this.gbCustomer.Controls.Add(this.label17);
             this.gbCustomer.Controls.Add(this.label10);
             this.gbCustomer.Location = new System.Drawing.Point(16, 7);
-            this.gbCustomer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbCustomer.Margin = new System.Windows.Forms.Padding(4);
             this.gbCustomer.Name = "gbCustomer";
-            this.gbCustomer.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbCustomer.Padding = new System.Windows.Forms.Padding(4);
             this.gbCustomer.Size = new System.Drawing.Size(748, 161);
             this.gbCustomer.TabIndex = 1;
             this.gbCustomer.TabStop = false;
@@ -1339,7 +1198,7 @@
             // 
             this.dtpRequestedDelvDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpRequestedDelvDate.Location = new System.Drawing.Point(615, 135);
-            this.dtpRequestedDelvDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpRequestedDelvDate.Margin = new System.Windows.Forms.Padding(4);
             this.dtpRequestedDelvDate.Name = "dtpRequestedDelvDate";
             this.dtpRequestedDelvDate.Size = new System.Drawing.Size(113, 22);
             this.dtpRequestedDelvDate.TabIndex = 93;
@@ -1358,7 +1217,7 @@
             // txtQuotationNo
             // 
             this.txtQuotationNo.Location = new System.Drawing.Point(569, 76);
-            this.txtQuotationNo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtQuotationNo.Margin = new System.Windows.Forms.Padding(4);
             this.txtQuotationNo.Name = "txtQuotationNo";
             this.txtQuotationNo.ReadOnly = true;
             this.txtQuotationNo.Size = new System.Drawing.Size(160, 22);
@@ -1395,7 +1254,7 @@
             // 
             this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDate.Location = new System.Drawing.Point(365, 70);
-            this.dtpDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpDate.Margin = new System.Windows.Forms.Padding(4);
             this.dtpDate.Name = "dtpDate";
             this.dtpDate.Size = new System.Drawing.Size(119, 22);
             this.dtpDate.TabIndex = 77;
@@ -1415,7 +1274,7 @@
             // txtCustomerName
             // 
             this.txtCustomerName.Location = new System.Drawing.Point(248, 14);
-            this.txtCustomerName.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtCustomerName.Margin = new System.Windows.Forms.Padding(5);
             this.txtCustomerName.Name = "txtCustomerName";
             this.txtCustomerName.ReadOnly = true;
             this.txtCustomerName.Size = new System.Drawing.Size(355, 22);
@@ -1424,7 +1283,7 @@
             // CustomerCode
             // 
             this.CustomerCode.Location = new System.Drawing.Point(87, 12);
-            this.CustomerCode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CustomerCode.Margin = new System.Windows.Forms.Padding(4);
             this.CustomerCode.Name = "CustomerCode";
             this.CustomerCode.Size = new System.Drawing.Size(113, 22);
             this.CustomerCode.TabIndex = 75;
@@ -1436,7 +1295,7 @@
             this.cbPaymentType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPaymentType.FormattingEnabled = true;
             this.cbPaymentType.Location = new System.Drawing.Point(365, 100);
-            this.cbPaymentType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbPaymentType.Margin = new System.Windows.Forms.Padding(4);
             this.cbPaymentType.Name = "cbPaymentType";
             this.cbPaymentType.Size = new System.Drawing.Size(119, 24);
             this.cbPaymentType.TabIndex = 74;
@@ -1454,7 +1313,7 @@
             // btnContactUpdate
             // 
             this.btnContactUpdate.Location = new System.Drawing.Point(153, 38);
-            this.btnContactUpdate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnContactUpdate.Margin = new System.Windows.Forms.Padding(4);
             this.btnContactUpdate.Name = "btnContactUpdate";
             this.btnContactUpdate.Size = new System.Drawing.Size(48, 28);
             this.btnContactUpdate.TabIndex = 72;
@@ -1467,7 +1326,7 @@
             this.cbRep.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbRep.FormattingEnabled = true;
             this.cbRep.Location = new System.Drawing.Point(88, 130);
-            this.cbRep.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbRep.Margin = new System.Windows.Forms.Padding(4);
             this.cbRep.Name = "cbRep";
             this.cbRep.Size = new System.Drawing.Size(183, 24);
             this.cbRep.TabIndex = 71;
@@ -1485,7 +1344,7 @@
             // txtLPONO
             // 
             this.txtLPONO.Location = new System.Drawing.Point(88, 102);
-            this.txtLPONO.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtLPONO.Margin = new System.Windows.Forms.Padding(4);
             this.txtLPONO.Name = "txtLPONO";
             this.txtLPONO.Size = new System.Drawing.Size(183, 22);
             this.txtLPONO.TabIndex = 69;
@@ -1503,7 +1362,7 @@
             // txtSalesOrderNo
             // 
             this.txtSalesOrderNo.Location = new System.Drawing.Point(88, 74);
-            this.txtSalesOrderNo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSalesOrderNo.Margin = new System.Windows.Forms.Padding(4);
             this.txtSalesOrderNo.Name = "txtSalesOrderNo";
             this.txtSalesOrderNo.ReadOnly = true;
             this.txtSalesOrderNo.Size = new System.Drawing.Size(113, 22);
@@ -1534,11 +1393,12 @@
             this.cbCurrency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCurrency.FormattingEnabled = true;
             this.cbCurrency.Location = new System.Drawing.Point(365, 132);
-            this.cbCurrency.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbCurrency.Margin = new System.Windows.Forms.Padding(4);
             this.cbCurrency.Name = "cbCurrency";
             this.cbCurrency.Size = new System.Drawing.Size(119, 24);
             this.cbCurrency.TabIndex = 58;
             this.cbCurrency.SelectedIndexChanged += new System.EventHandler(this.cbCurrency_SelectedIndexChanged);
+            this.cbCurrency.Click += new System.EventHandler(this.cbCurrency_Click);
             // 
             // label8
             // 
@@ -1553,7 +1413,7 @@
             // btnContactAdd
             // 
             this.btnContactAdd.Location = new System.Drawing.Point(87, 39);
-            this.btnContactAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnContactAdd.Margin = new System.Windows.Forms.Padding(4);
             this.btnContactAdd.Name = "btnContactAdd";
             this.btnContactAdd.Size = new System.Drawing.Size(48, 28);
             this.btnContactAdd.TabIndex = 15;
@@ -1566,7 +1426,7 @@
             this.cbWorkers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbWorkers.FormattingEnabled = true;
             this.cbWorkers.Location = new System.Drawing.Point(248, 42);
-            this.cbWorkers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbWorkers.Margin = new System.Windows.Forms.Padding(4);
             this.cbWorkers.Name = "cbWorkers";
             this.cbWorkers.Size = new System.Drawing.Size(355, 24);
             this.cbWorkers.TabIndex = 17;
@@ -1594,7 +1454,7 @@
             // txtContactNote
             // 
             this.txtContactNote.Location = new System.Drawing.Point(1324, 134);
-            this.txtContactNote.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtContactNote.Margin = new System.Windows.Forms.Padding(4);
             this.txtContactNote.Multiline = true;
             this.txtContactNote.Name = "txtContactNote";
             this.txtContactNote.ReadOnly = true;
@@ -1604,7 +1464,7 @@
             // txtCustomerNote
             // 
             this.txtCustomerNote.Location = new System.Drawing.Point(1324, 78);
-            this.txtCustomerNote.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCustomerNote.Margin = new System.Windows.Forms.Padding(4);
             this.txtCustomerNote.Multiline = true;
             this.txtCustomerNote.Name = "txtCustomerNote";
             this.txtCustomerNote.ReadOnly = true;
@@ -1711,7 +1571,7 @@
             this.tabItemDetails.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabItemDetails.Name = "tabItemDetails";
             this.tabItemDetails.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabItemDetails.Size = new System.Drawing.Size(1644, 188);
+            this.tabItemDetails.Size = new System.Drawing.Size(1643, 189);
             this.tabItemDetails.TabIndex = 1;
             this.tabItemDetails.Text = "Item Details";
             this.tabItemDetails.UseVisualStyleBackColor = true;
@@ -1749,9 +1609,9 @@
             this.gbCost.Controls.Add(this.lblWeb);
             this.gbCost.Controls.Add(this.label57);
             this.gbCost.Location = new System.Drawing.Point(1253, -2);
-            this.gbCost.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbCost.Margin = new System.Windows.Forms.Padding(4);
             this.gbCost.Name = "gbCost";
-            this.gbCost.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbCost.Padding = new System.Windows.Forms.Padding(4);
             this.gbCost.Size = new System.Drawing.Size(391, 212);
             this.gbCost.TabIndex = 510;
             this.gbCost.TabStop = false;
@@ -1770,7 +1630,7 @@
             // 
             this.txtWeb5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtWeb5.Location = new System.Drawing.Point(71, 156);
-            this.txtWeb5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtWeb5.Margin = new System.Windows.Forms.Padding(4);
             this.txtWeb5.Name = "txtWeb5";
             this.txtWeb5.ReadOnly = true;
             this.txtWeb5.Size = new System.Drawing.Size(79, 23);
@@ -1780,7 +1640,7 @@
             // 
             this.txtWeb2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtWeb2.Location = new System.Drawing.Point(71, 62);
-            this.txtWeb2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtWeb2.Margin = new System.Windows.Forms.Padding(4);
             this.txtWeb2.Name = "txtWeb2";
             this.txtWeb2.ReadOnly = true;
             this.txtWeb2.Size = new System.Drawing.Size(79, 23);
@@ -1790,7 +1650,7 @@
             // 
             this.txtWeb3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtWeb3.Location = new System.Drawing.Point(71, 94);
-            this.txtWeb3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtWeb3.Margin = new System.Windows.Forms.Padding(4);
             this.txtWeb3.Name = "txtWeb3";
             this.txtWeb3.ReadOnly = true;
             this.txtWeb3.Size = new System.Drawing.Size(79, 23);
@@ -1800,7 +1660,7 @@
             // 
             this.txtWeb1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtWeb1.Location = new System.Drawing.Point(71, 31);
-            this.txtWeb1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtWeb1.Margin = new System.Windows.Forms.Padding(4);
             this.txtWeb1.Name = "txtWeb1";
             this.txtWeb1.ReadOnly = true;
             this.txtWeb1.Size = new System.Drawing.Size(79, 23);
@@ -1810,7 +1670,7 @@
             // 
             this.txtWeb4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtWeb4.Location = new System.Drawing.Point(71, 126);
-            this.txtWeb4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtWeb4.Margin = new System.Windows.Forms.Padding(4);
             this.txtWeb4.Name = "txtWeb4";
             this.txtWeb4.ReadOnly = true;
             this.txtWeb4.Size = new System.Drawing.Size(79, 23);
@@ -1820,7 +1680,7 @@
             // 
             this.txtCost1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtCost1.Location = new System.Drawing.Point(244, 31);
-            this.txtCost1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCost1.Margin = new System.Windows.Forms.Padding(4);
             this.txtCost1.Name = "txtCost1";
             this.txtCost1.ReadOnly = true;
             this.txtCost1.Size = new System.Drawing.Size(79, 23);
@@ -1831,7 +1691,7 @@
             // 
             this.txtMargin5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtMargin5.Location = new System.Drawing.Point(328, 156);
-            this.txtMargin5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMargin5.Margin = new System.Windows.Forms.Padding(4);
             this.txtMargin5.Name = "txtMargin5";
             this.txtMargin5.ReadOnly = true;
             this.txtMargin5.Size = new System.Drawing.Size(41, 23);
@@ -1842,7 +1702,7 @@
             // 
             this.txtUK5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtUK5.Location = new System.Drawing.Point(157, 156);
-            this.txtUK5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtUK5.Margin = new System.Windows.Forms.Padding(4);
             this.txtUK5.Name = "txtUK5";
             this.txtUK5.ReadOnly = true;
             this.txtUK5.Size = new System.Drawing.Size(79, 23);
@@ -1853,7 +1713,7 @@
             // 
             this.txtUK2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtUK2.Location = new System.Drawing.Point(157, 62);
-            this.txtUK2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtUK2.Margin = new System.Windows.Forms.Padding(4);
             this.txtUK2.Name = "txtUK2";
             this.txtUK2.ReadOnly = true;
             this.txtUK2.Size = new System.Drawing.Size(79, 23);
@@ -1864,7 +1724,7 @@
             // 
             this.txtCost5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtCost5.Location = new System.Drawing.Point(244, 156);
-            this.txtCost5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCost5.Margin = new System.Windows.Forms.Padding(4);
             this.txtCost5.Name = "txtCost5";
             this.txtCost5.ReadOnly = true;
             this.txtCost5.Size = new System.Drawing.Size(79, 23);
@@ -1875,7 +1735,7 @@
             // 
             this.txtMargin1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtMargin1.Location = new System.Drawing.Point(328, 31);
-            this.txtMargin1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMargin1.Margin = new System.Windows.Forms.Padding(4);
             this.txtMargin1.Name = "txtMargin1";
             this.txtMargin1.ReadOnly = true;
             this.txtMargin1.Size = new System.Drawing.Size(41, 23);
@@ -1886,7 +1746,7 @@
             // 
             this.txtMargin2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtMargin2.Location = new System.Drawing.Point(328, 62);
-            this.txtMargin2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMargin2.Margin = new System.Windows.Forms.Padding(4);
             this.txtMargin2.Name = "txtMargin2";
             this.txtMargin2.ReadOnly = true;
             this.txtMargin2.Size = new System.Drawing.Size(41, 23);
@@ -1897,7 +1757,7 @@
             // 
             this.txtUK3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtUK3.Location = new System.Drawing.Point(157, 94);
-            this.txtUK3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtUK3.Margin = new System.Windows.Forms.Padding(4);
             this.txtUK3.Name = "txtUK3";
             this.txtUK3.ReadOnly = true;
             this.txtUK3.Size = new System.Drawing.Size(79, 23);
@@ -1908,7 +1768,7 @@
             // 
             this.txtUK1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtUK1.Location = new System.Drawing.Point(157, 31);
-            this.txtUK1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtUK1.Margin = new System.Windows.Forms.Padding(4);
             this.txtUK1.Name = "txtUK1";
             this.txtUK1.ReadOnly = true;
             this.txtUK1.Size = new System.Drawing.Size(79, 23);
@@ -1919,7 +1779,7 @@
             // 
             this.txtCost3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtCost3.Location = new System.Drawing.Point(244, 94);
-            this.txtCost3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCost3.Margin = new System.Windows.Forms.Padding(4);
             this.txtCost3.Name = "txtCost3";
             this.txtCost3.ReadOnly = true;
             this.txtCost3.Size = new System.Drawing.Size(79, 23);
@@ -1930,7 +1790,7 @@
             // 
             this.txtMargin4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtMargin4.Location = new System.Drawing.Point(328, 126);
-            this.txtMargin4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMargin4.Margin = new System.Windows.Forms.Padding(4);
             this.txtMargin4.Name = "txtMargin4";
             this.txtMargin4.ReadOnly = true;
             this.txtMargin4.Size = new System.Drawing.Size(41, 23);
@@ -1941,7 +1801,7 @@
             // 
             this.txtCost4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtCost4.Location = new System.Drawing.Point(244, 126);
-            this.txtCost4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCost4.Margin = new System.Windows.Forms.Padding(4);
             this.txtCost4.Name = "txtCost4";
             this.txtCost4.ReadOnly = true;
             this.txtCost4.Size = new System.Drawing.Size(79, 23);
@@ -1952,7 +1812,7 @@
             // 
             this.txtCost2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtCost2.Location = new System.Drawing.Point(244, 62);
-            this.txtCost2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCost2.Margin = new System.Windows.Forms.Padding(4);
             this.txtCost2.Name = "txtCost2";
             this.txtCost2.ReadOnly = true;
             this.txtCost2.Size = new System.Drawing.Size(79, 23);
@@ -1963,7 +1823,7 @@
             // 
             this.txtMargin3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtMargin3.Location = new System.Drawing.Point(328, 94);
-            this.txtMargin3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMargin3.Margin = new System.Windows.Forms.Padding(4);
             this.txtMargin3.Name = "txtMargin3";
             this.txtMargin3.ReadOnly = true;
             this.txtMargin3.Size = new System.Drawing.Size(41, 23);
@@ -1974,7 +1834,7 @@
             // 
             this.txtUK4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtUK4.Location = new System.Drawing.Point(157, 126);
-            this.txtUK4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtUK4.Margin = new System.Windows.Forms.Padding(4);
             this.txtUK4.Name = "txtUK4";
             this.txtUK4.ReadOnly = true;
             this.txtUK4.Size = new System.Drawing.Size(79, 23);
@@ -1985,7 +1845,7 @@
             // 
             this.txtUnitCount5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtUnitCount5.Location = new System.Drawing.Point(4, 156);
-            this.txtUnitCount5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtUnitCount5.Margin = new System.Windows.Forms.Padding(4);
             this.txtUnitCount5.Name = "txtUnitCount5";
             this.txtUnitCount5.ReadOnly = true;
             this.txtUnitCount5.Size = new System.Drawing.Size(57, 23);
@@ -1995,7 +1855,7 @@
             // 
             this.txtUnitCount2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtUnitCount2.Location = new System.Drawing.Point(4, 62);
-            this.txtUnitCount2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtUnitCount2.Margin = new System.Windows.Forms.Padding(4);
             this.txtUnitCount2.Name = "txtUnitCount2";
             this.txtUnitCount2.ReadOnly = true;
             this.txtUnitCount2.Size = new System.Drawing.Size(57, 23);
@@ -2005,7 +1865,7 @@
             // 
             this.txtUnitCount1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtUnitCount1.Location = new System.Drawing.Point(4, 31);
-            this.txtUnitCount1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtUnitCount1.Margin = new System.Windows.Forms.Padding(4);
             this.txtUnitCount1.Name = "txtUnitCount1";
             this.txtUnitCount1.ReadOnly = true;
             this.txtUnitCount1.Size = new System.Drawing.Size(57, 23);
@@ -2015,7 +1875,7 @@
             // 
             this.txtUnitCount4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtUnitCount4.Location = new System.Drawing.Point(4, 126);
-            this.txtUnitCount4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtUnitCount4.Margin = new System.Windows.Forms.Padding(4);
             this.txtUnitCount4.Name = "txtUnitCount4";
             this.txtUnitCount4.ReadOnly = true;
             this.txtUnitCount4.Size = new System.Drawing.Size(57, 23);
@@ -2025,7 +1885,7 @@
             // 
             this.txtUnitCount3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtUnitCount3.Location = new System.Drawing.Point(4, 94);
-            this.txtUnitCount3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtUnitCount3.Margin = new System.Windows.Forms.Padding(4);
             this.txtUnitCount3.Name = "txtUnitCount3";
             this.txtUnitCount3.ReadOnly = true;
             this.txtUnitCount3.Size = new System.Drawing.Size(57, 23);
@@ -2081,7 +1941,7 @@
             // 
             this.textBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.textBox14.Location = new System.Drawing.Point(91, 98);
-            this.textBox14.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox14.Margin = new System.Windows.Forms.Padding(4);
             this.textBox14.Name = "textBox14";
             this.textBox14.ReadOnly = true;
             this.textBox14.Size = new System.Drawing.Size(227, 23);
@@ -2091,7 +1951,7 @@
             // 
             this.txtSupersectionName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtSupersectionName.Location = new System.Drawing.Point(91, 65);
-            this.txtSupersectionName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSupersectionName.Margin = new System.Windows.Forms.Padding(4);
             this.txtSupersectionName.Name = "txtSupersectionName";
             this.txtSupersectionName.ReadOnly = true;
             this.txtSupersectionName.Size = new System.Drawing.Size(227, 23);
@@ -2101,7 +1961,7 @@
             // 
             this.txtCofO.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtCofO.Location = new System.Drawing.Point(91, 160);
-            this.txtCofO.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCofO.Margin = new System.Windows.Forms.Padding(4);
             this.txtCofO.Name = "txtCofO";
             this.txtCofO.ReadOnly = true;
             this.txtCofO.Size = new System.Drawing.Size(47, 23);
@@ -2111,7 +1971,7 @@
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.textBox1.Location = new System.Drawing.Point(433, 5);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(411, 23);
@@ -2121,7 +1981,7 @@
             // 
             this.txtManufacturer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtManufacturer.Location = new System.Drawing.Point(91, 6);
-            this.txtManufacturer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtManufacturer.Margin = new System.Windows.Forms.Padding(4);
             this.txtManufacturer.Name = "txtManufacturer";
             this.txtManufacturer.ReadOnly = true;
             this.txtManufacturer.Size = new System.Drawing.Size(227, 23);
@@ -2131,7 +1991,7 @@
             // 
             this.txtCCCN.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtCCCN.Location = new System.Drawing.Point(201, 160);
-            this.txtCCCN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCCCN.Margin = new System.Windows.Forms.Padding(4);
             this.txtCCCN.Name = "txtCCCN";
             this.txtCCCN.ReadOnly = true;
             this.txtCCCN.Size = new System.Drawing.Size(117, 23);
@@ -2141,7 +2001,7 @@
             // 
             this.textBox17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.textBox17.Location = new System.Drawing.Point(91, 36);
-            this.textBox17.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox17.Margin = new System.Windows.Forms.Padding(4);
             this.textBox17.Name = "textBox17";
             this.textBox17.ReadOnly = true;
             this.textBox17.Size = new System.Drawing.Size(227, 23);
@@ -2151,7 +2011,7 @@
             // 
             this.txtMHCodeLevel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtMHCodeLevel1.Location = new System.Drawing.Point(91, 132);
-            this.txtMHCodeLevel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMHCodeLevel1.Margin = new System.Windows.Forms.Padding(4);
             this.txtMHCodeLevel1.Name = "txtMHCodeLevel1";
             this.txtMHCodeLevel1.ReadOnly = true;
             this.txtMHCodeLevel1.Size = new System.Drawing.Size(227, 23);
@@ -2161,7 +2021,7 @@
             // 
             this.textBox18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.textBox18.Location = new System.Drawing.Point(433, 121);
-            this.textBox18.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox18.Margin = new System.Windows.Forms.Padding(4);
             this.textBox18.Name = "textBox18";
             this.textBox18.ReadOnly = true;
             this.textBox18.Size = new System.Drawing.Size(84, 23);
@@ -2171,7 +2031,7 @@
             // 
             this.textBox19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.textBox19.Location = new System.Drawing.Point(433, 92);
-            this.textBox19.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox19.Margin = new System.Windows.Forms.Padding(4);
             this.textBox19.Name = "textBox19";
             this.textBox19.ReadOnly = true;
             this.textBox19.Size = new System.Drawing.Size(84, 23);
@@ -2181,7 +2041,7 @@
             // 
             this.textBox20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.textBox20.Location = new System.Drawing.Point(433, 62);
-            this.textBox20.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox20.Margin = new System.Windows.Forms.Padding(4);
             this.textBox20.Name = "textBox20";
             this.textBox20.ReadOnly = true;
             this.textBox20.Size = new System.Drawing.Size(84, 23);
@@ -2191,7 +2051,7 @@
             // 
             this.textBox21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.textBox21.Location = new System.Drawing.Point(433, 33);
-            this.textBox21.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox21.Margin = new System.Windows.Forms.Padding(4);
             this.textBox21.Name = "textBox21";
             this.textBox21.ReadOnly = true;
             this.textBox21.Size = new System.Drawing.Size(84, 23);
@@ -2201,7 +2061,7 @@
             // 
             this.textBox22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.textBox22.Location = new System.Drawing.Point(433, 153);
-            this.textBox22.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox22.Margin = new System.Windows.Forms.Padding(4);
             this.textBox22.Name = "textBox22";
             this.textBox22.ReadOnly = true;
             this.textBox22.Size = new System.Drawing.Size(84, 23);
@@ -2211,7 +2071,7 @@
             // 
             this.txtExpiringPro.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtExpiringPro.Location = new System.Drawing.Point(817, 145);
-            this.txtExpiringPro.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtExpiringPro.Margin = new System.Windows.Forms.Padding(4);
             this.txtExpiringPro.Name = "txtExpiringPro";
             this.txtExpiringPro.ReadOnly = true;
             this.txtExpiringPro.Size = new System.Drawing.Size(27, 23);
@@ -2221,7 +2081,7 @@
             // 
             this.txtHazardousInd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtHazardousInd.Location = new System.Drawing.Point(608, 98);
-            this.txtHazardousInd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtHazardousInd.Margin = new System.Windows.Forms.Padding(4);
             this.txtHazardousInd.Name = "txtHazardousInd";
             this.txtHazardousInd.ReadOnly = true;
             this.txtHazardousInd.Size = new System.Drawing.Size(27, 23);
@@ -2231,7 +2091,7 @@
             // 
             this.txtDiscCharge.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtDiscCharge.Location = new System.Drawing.Point(745, 146);
-            this.txtDiscCharge.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDiscCharge.Margin = new System.Windows.Forms.Padding(4);
             this.txtDiscCharge.Name = "txtDiscCharge";
             this.txtDiscCharge.ReadOnly = true;
             this.txtDiscCharge.Size = new System.Drawing.Size(27, 23);
@@ -2242,7 +2102,7 @@
             this.txtEnvironment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtEnvironment.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.txtEnvironment.Location = new System.Drawing.Point(676, 100);
-            this.txtEnvironment.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEnvironment.Margin = new System.Windows.Forms.Padding(4);
             this.txtEnvironment.Name = "txtEnvironment";
             this.txtEnvironment.ReadOnly = true;
             this.txtEnvironment.Size = new System.Drawing.Size(27, 23);
@@ -2252,7 +2112,7 @@
             // 
             this.txtLithium.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtLithium.Location = new System.Drawing.Point(817, 100);
-            this.txtLithium.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtLithium.Margin = new System.Windows.Forms.Padding(4);
             this.txtLithium.Name = "txtLithium";
             this.txtLithium.ReadOnly = true;
             this.txtLithium.Size = new System.Drawing.Size(27, 23);
@@ -2262,7 +2122,7 @@
             // 
             this.txtShipping.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtShipping.Location = new System.Drawing.Point(745, 100);
-            this.txtShipping.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtShipping.Margin = new System.Windows.Forms.Padding(4);
             this.txtShipping.Name = "txtShipping";
             this.txtShipping.ReadOnly = true;
             this.txtShipping.Size = new System.Drawing.Size(27, 23);
@@ -2272,7 +2132,7 @@
             // 
             this.txtLicenceType.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtLicenceType.Location = new System.Drawing.Point(676, 145);
-            this.txtLicenceType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtLicenceType.Margin = new System.Windows.Forms.Padding(4);
             this.txtLicenceType.Name = "txtLicenceType";
             this.txtLicenceType.ReadOnly = true;
             this.txtLicenceType.Size = new System.Drawing.Size(27, 23);
@@ -2282,7 +2142,7 @@
             // 
             this.txtCalibrationInd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtCalibrationInd.Location = new System.Drawing.Point(608, 145);
-            this.txtCalibrationInd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCalibrationInd.Margin = new System.Windows.Forms.Padding(4);
             this.txtCalibrationInd.Name = "txtCalibrationInd";
             this.txtCalibrationInd.ReadOnly = true;
             this.txtCalibrationInd.Size = new System.Drawing.Size(27, 23);
@@ -2292,7 +2152,7 @@
             // 
             this.textBox23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.textBox23.Location = new System.Drawing.Point(700, 34);
-            this.textBox23.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox23.Margin = new System.Windows.Forms.Padding(4);
             this.textBox23.Name = "textBox23";
             this.textBox23.ReadOnly = true;
             this.textBox23.Size = new System.Drawing.Size(87, 23);
@@ -2302,7 +2162,7 @@
             // 
             this.textBox24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.textBox24.Location = new System.Drawing.Point(703, 64);
-            this.textBox24.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox24.Margin = new System.Windows.Forms.Padding(4);
             this.textBox24.Name = "textBox24";
             this.textBox24.ReadOnly = true;
             this.textBox24.Size = new System.Drawing.Size(84, 23);
@@ -2312,7 +2172,7 @@
             // 
             this.txtRSStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtRSStock.Location = new System.Drawing.Point(608, 34);
-            this.txtRSStock.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtRSStock.Margin = new System.Windows.Forms.Padding(4);
             this.txtRSStock.Name = "txtRSStock";
             this.txtRSStock.ReadOnly = true;
             this.txtRSStock.Size = new System.Drawing.Size(84, 23);
@@ -2322,7 +2182,7 @@
             // 
             this.txtRSOnOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtRSOnOrder.Location = new System.Drawing.Point(608, 64);
-            this.txtRSOnOrder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtRSOnOrder.Margin = new System.Windows.Forms.Padding(4);
             this.txtRSOnOrder.Name = "txtRSOnOrder";
             this.txtRSOnOrder.ReadOnly = true;
             this.txtRSOnOrder.Size = new System.Drawing.Size(87, 23);
@@ -2332,7 +2192,7 @@
             // 
             this.txtDiscontinuationDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtDiscontinuationDate.Location = new System.Drawing.Point(944, 38);
-            this.txtDiscontinuationDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDiscontinuationDate.Margin = new System.Windows.Forms.Padding(4);
             this.txtDiscontinuationDate.Name = "txtDiscontinuationDate";
             this.txtDiscontinuationDate.ReadOnly = true;
             this.txtDiscontinuationDate.Size = new System.Drawing.Size(96, 23);
@@ -2342,7 +2202,7 @@
             // 
             this.txtUKDiscDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtUKDiscDate.Location = new System.Drawing.Point(944, 6);
-            this.txtUKDiscDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtUKDiscDate.Margin = new System.Windows.Forms.Padding(4);
             this.txtUKDiscDate.Name = "txtUKDiscDate";
             this.txtUKDiscDate.ReadOnly = true;
             this.txtUKDiscDate.Size = new System.Drawing.Size(93, 23);
@@ -2353,7 +2213,7 @@
             // 
             this.txtSubstitutedBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtSubstitutedBy.Location = new System.Drawing.Point(945, 69);
-            this.txtSubstitutedBy.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSubstitutedBy.Margin = new System.Windows.Forms.Padding(4);
             this.txtSubstitutedBy.Name = "txtSubstitutedBy";
             this.txtSubstitutedBy.ReadOnly = true;
             this.txtSubstitutedBy.Size = new System.Drawing.Size(95, 23);
@@ -2363,7 +2223,7 @@
             // 
             this.txtRunOn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtRunOn.Location = new System.Drawing.Point(945, 100);
-            this.txtRunOn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtRunOn.Margin = new System.Windows.Forms.Padding(4);
             this.txtRunOn.Name = "txtRunOn";
             this.txtRunOn.ReadOnly = true;
             this.txtRunOn.Size = new System.Drawing.Size(95, 23);
@@ -2373,7 +2233,7 @@
             // 
             this.textBox35.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.textBox35.Location = new System.Drawing.Point(944, 160);
-            this.textBox35.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox35.Margin = new System.Windows.Forms.Padding(4);
             this.textBox35.Name = "textBox35";
             this.textBox35.ReadOnly = true;
             this.textBox35.Size = new System.Drawing.Size(96, 23);
@@ -2383,7 +2243,7 @@
             // 
             this.txtReferral.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtReferral.Location = new System.Drawing.Point(944, 130);
-            this.txtReferral.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtReferral.Margin = new System.Windows.Forms.Padding(4);
             this.txtReferral.Name = "txtReferral";
             this.txtReferral.ReadOnly = true;
             this.txtReferral.Size = new System.Drawing.Size(96, 23);
@@ -2393,7 +2253,7 @@
             // 
             this.txtStandartWeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtStandartWeight.Location = new System.Drawing.Point(1127, 122);
-            this.txtStandartWeight.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtStandartWeight.Margin = new System.Windows.Forms.Padding(4);
             this.txtStandartWeight.Name = "txtStandartWeight";
             this.txtStandartWeight.ReadOnly = true;
             this.txtStandartWeight.Size = new System.Drawing.Size(77, 23);
@@ -2403,7 +2263,7 @@
             // 
             this.txtHeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtHeight.Location = new System.Drawing.Point(1127, 26);
-            this.txtHeight.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtHeight.Margin = new System.Windows.Forms.Padding(4);
             this.txtHeight.Name = "txtHeight";
             this.txtHeight.ReadOnly = true;
             this.txtHeight.Size = new System.Drawing.Size(79, 23);
@@ -2413,7 +2273,7 @@
             // 
             this.txtWidth.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtWidth.Location = new System.Drawing.Point(1127, 58);
-            this.txtWidth.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtWidth.Margin = new System.Windows.Forms.Padding(4);
             this.txtWidth.Name = "txtWidth";
             this.txtWidth.ReadOnly = true;
             this.txtWidth.Size = new System.Drawing.Size(79, 23);
@@ -2423,7 +2283,7 @@
             // 
             this.txtGrossWeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtGrossWeight.Location = new System.Drawing.Point(1127, 154);
-            this.txtGrossWeight.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtGrossWeight.Margin = new System.Windows.Forms.Padding(4);
             this.txtGrossWeight.Name = "txtGrossWeight";
             this.txtGrossWeight.ReadOnly = true;
             this.txtGrossWeight.Size = new System.Drawing.Size(77, 23);
@@ -2433,7 +2293,7 @@
             // 
             this.txtLength.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtLength.Location = new System.Drawing.Point(1127, 87);
-            this.txtLength.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtLength.Margin = new System.Windows.Forms.Padding(4);
             this.txtLength.Name = "txtLength";
             this.txtLength.ReadOnly = true;
             this.txtLength.Size = new System.Drawing.Size(77, 23);
@@ -2881,9 +2741,9 @@
             this.groupBox4.Controls.Add(this.label67);
             this.groupBox4.Controls.Add(this.cbPaymentTerm);
             this.groupBox4.Location = new System.Drawing.Point(695, 90);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox4.Size = new System.Drawing.Size(341, 66);
             this.groupBox4.TabIndex = 53;
             this.groupBox4.TabStop = false;
@@ -2903,7 +2763,7 @@
             this.cbPaymentTerm.DisplayMember = "term_name";
             this.cbPaymentTerm.FormattingEnabled = true;
             this.cbPaymentTerm.Location = new System.Drawing.Point(8, 31);
-            this.cbPaymentTerm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbPaymentTerm.Margin = new System.Windows.Forms.Padding(4);
             this.cbPaymentTerm.Name = "cbPaymentTerm";
             this.cbPaymentTerm.Size = new System.Drawing.Size(321, 24);
             this.cbPaymentTerm.TabIndex = 8;
@@ -2915,9 +2775,9 @@
             this.groupBox2.Controls.Add(this.label69);
             this.groupBox2.Controls.Add(this.cbOrderNature);
             this.groupBox2.Location = new System.Drawing.Point(888, 8);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(148, 73);
             this.groupBox2.TabIndex = 52;
             this.groupBox2.TabStop = false;
@@ -2939,7 +2799,7 @@
             "XDOC",
             "NORMAL"});
             this.cbOrderNature.Location = new System.Drawing.Point(8, 31);
-            this.cbOrderNature.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbOrderNature.Margin = new System.Windows.Forms.Padding(4);
             this.cbOrderNature.Name = "cbOrderNature";
             this.cbOrderNature.Size = new System.Drawing.Size(128, 24);
             this.cbOrderNature.TabIndex = 8;
@@ -2949,7 +2809,7 @@
             // 
             this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnSave.Location = new System.Drawing.Point(1516, 19);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(123, 39);
             this.btnSave.TabIndex = 8;
@@ -2961,7 +2821,7 @@
             // 
             this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnClose.Location = new System.Drawing.Point(1516, 111);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(123, 39);
             this.btnClose.TabIndex = 9;
@@ -2993,9 +2853,9 @@
             this.groupBox11.Controls.Add(this.label34);
             this.groupBox11.ForeColor = System.Drawing.Color.Black;
             this.groupBox11.Location = new System.Drawing.Point(1061, 8);
-            this.groupBox11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox11.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox11.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox11.Size = new System.Drawing.Size(431, 151);
             this.groupBox11.TabIndex = 49;
             this.groupBox11.TabStop = false;
@@ -3022,7 +2882,7 @@
             // cbDeliverDiscount
             // 
             this.cbDeliverDiscount.Location = new System.Drawing.Point(324, 73);
-            this.cbDeliverDiscount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbDeliverDiscount.Margin = new System.Windows.Forms.Padding(4);
             this.cbDeliverDiscount.Name = "cbDeliverDiscount";
             this.cbDeliverDiscount.Size = new System.Drawing.Size(93, 39);
             this.cbDeliverDiscount.TabIndex = 58;
@@ -3108,7 +2968,7 @@
             // txtExtraCharges
             // 
             this.txtExtraCharges.Location = new System.Drawing.Point(128, 69);
-            this.txtExtraCharges.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtExtraCharges.Margin = new System.Windows.Forms.Padding(4);
             this.txtExtraCharges.Name = "txtExtraCharges";
             this.txtExtraCharges.Size = new System.Drawing.Size(65, 22);
             this.txtExtraCharges.TabIndex = 20;
@@ -3133,7 +2993,7 @@
             // 
             this.txtTotalMarge.Enabled = false;
             this.txtTotalMarge.Location = new System.Drawing.Point(324, 42);
-            this.txtTotalMarge.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTotalMarge.Margin = new System.Windows.Forms.Padding(4);
             this.txtTotalMarge.Name = "txtTotalMarge";
             this.txtTotalMarge.Size = new System.Drawing.Size(84, 22);
             this.txtTotalMarge.TabIndex = 15;
@@ -3143,7 +3003,7 @@
             // txtTotalDis2
             // 
             this.txtTotalDis2.Location = new System.Drawing.Point(232, 18);
-            this.txtTotalDis2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTotalDis2.Margin = new System.Windows.Forms.Padding(4);
             this.txtTotalDis2.Name = "txtTotalDis2";
             this.txtTotalDis2.Size = new System.Drawing.Size(71, 22);
             this.txtTotalDis2.TabIndex = 15;
@@ -3155,7 +3015,7 @@
             this.chkVat.Checked = true;
             this.chkVat.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkVat.Location = new System.Drawing.Point(8, 95);
-            this.chkVat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkVat.Margin = new System.Windows.Forms.Padding(4);
             this.chkVat.Name = "chkVat";
             this.chkVat.Size = new System.Drawing.Size(57, 21);
             this.chkVat.TabIndex = 17;
@@ -3166,7 +3026,7 @@
             // txtTotalDis
             // 
             this.txtTotalDis.Location = new System.Drawing.Point(128, 18);
-            this.txtTotalDis.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTotalDis.Margin = new System.Windows.Forms.Padding(4);
             this.txtTotalDis.Name = "txtTotalDis";
             this.txtTotalDis.Size = new System.Drawing.Size(65, 22);
             this.txtTotalDis.TabIndex = 13;
@@ -3210,9 +3070,9 @@
             this.groupBox7.Controls.Add(this.chkbForFinance);
             this.groupBox7.Controls.Add(this.txtNoteForUs);
             this.groupBox7.Location = new System.Drawing.Point(20, 8);
-            this.groupBox7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox7.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox7.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox7.Size = new System.Drawing.Size(667, 146);
             this.groupBox7.TabIndex = 4;
             this.groupBox7.TabStop = false;
@@ -3222,7 +3082,7 @@
             // 
             this.chkbForFinance.AutoSize = true;
             this.chkbForFinance.Location = new System.Drawing.Point(555, 22);
-            this.chkbForFinance.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkbForFinance.Margin = new System.Windows.Forms.Padding(4);
             this.chkbForFinance.Name = "chkbForFinance";
             this.chkbForFinance.Size = new System.Drawing.Size(105, 21);
             this.chkbForFinance.TabIndex = 1;
@@ -3232,7 +3092,7 @@
             // txtNoteForUs
             // 
             this.txtNoteForUs.Location = new System.Drawing.Point(8, 22);
-            this.txtNoteForUs.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNoteForUs.Margin = new System.Windows.Forms.Padding(4);
             this.txtNoteForUs.Multiline = true;
             this.txtNoteForUs.Name = "txtNoteForUs";
             this.txtNoteForUs.Size = new System.Drawing.Size(537, 107);
@@ -3244,9 +3104,9 @@
             this.gbShipment.Controls.Add(this.label7);
             this.gbShipment.Controls.Add(this.cbSMethod);
             this.gbShipment.Location = new System.Drawing.Point(695, 8);
-            this.gbShipment.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbShipment.Margin = new System.Windows.Forms.Padding(4);
             this.gbShipment.Name = "gbShipment";
-            this.gbShipment.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbShipment.Padding = new System.Windows.Forms.Padding(4);
             this.gbShipment.Size = new System.Drawing.Size(185, 73);
             this.gbShipment.TabIndex = 46;
             this.gbShipment.TabStop = false;
@@ -3270,242 +3130,385 @@
             "Truck",
             "Sea Freight"});
             this.cbSMethod.Location = new System.Drawing.Point(8, 31);
-            this.cbSMethod.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbSMethod.Margin = new System.Windows.Forms.Padding(4);
             this.cbSMethod.Name = "cbSMethod";
             this.cbSMethod.Size = new System.Drawing.Size(160, 24);
             this.cbSMethod.TabIndex = 8;
             this.cbSMethod.Text = "Air Freight";
             // 
-            // No1
-            // 
-            this.No1.HeaderText = "No";
-            this.No1.Name = "No1";
-            this.No1.ReadOnly = true;
-            this.No1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.No1.Width = 45;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "HS";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn2.Width = 32;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "LI";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn3.Width = 32;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "CL";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn4.Width = 32;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "LC";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn5.Width = 32;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.HeaderText = "LM";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn6.Width = 32;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.HeaderText = "Supplier";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            // 
-            // dgProductCode1
-            // 
-            this.dgProductCode1.HeaderText = "Item Code";
-            this.dgProductCode1.Name = "dgProductCode1";
-            this.dgProductCode1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.HeaderText = "Brand";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.HeaderText = "MPN";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            this.dataGridViewTextBoxColumn10.ReadOnly = true;
-            // 
-            // dgDesc1
-            // 
-            this.dgDesc1.HeaderText = "Description";
-            this.dgDesc1.Name = "dgDesc1";
-            this.dgDesc1.ReadOnly = true;
-            // 
-            // dgCost1
-            // 
-            this.dgCost1.HeaderText = "Cost (£)";
-            this.dgCost1.Name = "dgCost1";
-            this.dgCost1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn14
-            // 
-            this.dataGridViewTextBoxColumn14.HeaderText = "Landing Cost (£)";
-            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
-            this.dataGridViewTextBoxColumn14.ReadOnly = true;
-            // 
-            // dgMargin1
-            // 
-            this.dgMargin1.HeaderText = "Margin";
-            this.dgMargin1.Name = "dgMargin1";
-            this.dgMargin1.ReadOnly = true;
-            // 
-            // dgQty1
-            // 
-            this.dgQty1.HeaderText = "Qty";
-            this.dgQty1.Name = "dgQty1";
-            this.dgQty1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn17
-            // 
-            this.dataGridViewTextBoxColumn17.HeaderText = "Stock";
-            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
-            this.dataGridViewTextBoxColumn17.ReadOnly = true;
-            // 
-            // dgUOM1
-            // 
-            this.dgUOM1.HeaderText = "UOM";
-            this.dgUOM1.Name = "dgUOM1";
-            this.dgUOM1.ReadOnly = true;
-            // 
-            // dgSSM1
-            // 
-            this.dgSSM1.HeaderText = "SSM";
-            this.dgSSM1.Name = "dgSSM1";
-            this.dgSSM1.ReadOnly = true;
-            // 
-            // dgUC1
-            // 
-            this.dgUC1.HeaderText = "U/C";
-            this.dgUC1.Name = "dgUC1";
-            this.dgUC1.ReadOnly = true;
-            // 
-            // dgUPIME1
-            // 
-            this.dgUPIME1.HeaderText = "U/P IME L/P ";
-            this.dgUPIME1.Name = "dgUPIME1";
-            this.dgUPIME1.ReadOnly = true;
-            // 
-            // dgDisc1
-            // 
-            this.dgDisc1.HeaderText = "Disc. (%)";
-            this.dgDisc1.Name = "dgDisc1";
-            this.dgDisc1.ReadOnly = true;
-            // 
-            // dgUCUPCurr1
-            // 
-            this.dgUCUPCurr1.HeaderText = "U/C U/P (Curr.)";
-            this.dgUCUPCurr1.Name = "dgUCUPCurr1";
-            this.dgUCUPCurr1.ReadOnly = true;
-            // 
-            // dgTotal1
-            // 
-            this.dgTotal1.HeaderText = "TOTAL";
-            this.dgTotal1.Name = "dgTotal1";
-            this.dgTotal1.ReadOnly = true;
-            // 
-            // dgTargetUP1
-            // 
-            this.dgTargetUP1.HeaderText = "Target U/P";
-            this.dgTargetUP1.Name = "dgTargetUP1";
-            this.dgTargetUP1.ReadOnly = true;
-            // 
-            // dgCompetitor1
-            // 
-            this.dgCompetitor1.HeaderText = "Competitor";
-            this.dgCompetitor1.Name = "dgCompetitor1";
-            this.dgCompetitor1.ReadOnly = true;
-            // 
-            // dgHZ1
-            // 
-            this.dgHZ1.HeaderText = "HZ";
-            this.dgHZ1.Name = "dgHZ1";
-            this.dgHZ1.ReadOnly = true;
-            // 
-            // dgCL1
-            // 
-            this.dgCL1.HeaderText = "CL";
-            this.dgCL1.Name = "dgCL1";
-            this.dgCL1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn29
-            // 
-            this.dataGridViewTextBoxColumn29.HeaderText = "CR";
-            this.dataGridViewTextBoxColumn29.Name = "dataGridViewTextBoxColumn29";
-            this.dataGridViewTextBoxColumn29.ReadOnly = true;
-            // 
-            // dgDelivery1
-            // 
-            this.dgDelivery1.HeaderText = "Delivery";
-            this.dgDelivery1.Name = "dgDelivery1";
-            this.dgDelivery1.ReadOnly = true;
-            this.dgDelivery1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgDelivery1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // dgUnitWeight1
-            // 
-            this.dgUnitWeight1.HeaderText = "Unit Weight (Kg)";
-            this.dgUnitWeight1.Name = "dgUnitWeight1";
-            this.dgUnitWeight1.ReadOnly = true;
-            // 
-            // dgTotalWeight1
-            // 
-            this.dgTotalWeight1.HeaderText = "Total Weight (Kg)";
-            this.dgTotalWeight1.Name = "dgTotalWeight1";
-            this.dgTotalWeight1.ReadOnly = true;
-            // 
-            // dgCustomerStokCode1
-            // 
-            this.dgCustomerStokCode1.HeaderText = "Cust Stk Code";
-            this.dgCustomerStokCode1.Name = "dgCustomerStokCode1";
-            this.dgCustomerStokCode1.ReadOnly = true;
-            // 
-            // dgCustDescription1
-            // 
-            this.dgCustDescription1.HeaderText = "Cust. Description";
-            this.dgCustDescription1.Name = "dgCustDescription1";
-            this.dgCustDescription1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn35
-            // 
-            this.dataGridViewTextBoxColumn35.HeaderText = "COO";
-            this.dataGridViewTextBoxColumn35.Name = "dataGridViewTextBoxColumn35";
-            this.dataGridViewTextBoxColumn35.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn36
-            // 
-            this.dataGridViewTextBoxColumn36.HeaderText = "CCCNO";
-            this.dataGridViewTextBoxColumn36.Name = "dataGridViewTextBoxColumn36";
-            this.dataGridViewTextBoxColumn36.ReadOnly = true;
-            // 
-            // dgDependantTable1
-            // 
-            this.dgDependantTable1.HeaderText = "DependantTable";
-            this.dgDependantTable1.Name = "dgDependantTable1";
-            this.dgDependantTable1.ReadOnly = true;
-            this.dgDependantTable1.Visible = false;
+            // dgNo
+            // 
+            this.dgNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle30.Format = "N4";
+            dataGridViewCellStyle30.NullValue = null;
+            this.dgNo.DefaultCellStyle = dataGridViewCellStyle30;
+            this.dgNo.HeaderText = "No";
+            this.dgNo.Name = "dgNo";
+            this.dgNo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.dgNo.Width = 30;
+            // 
+            // HS
+            // 
+            this.HS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.Color.Transparent;
+            this.HS.DefaultCellStyle = dataGridViewCellStyle31;
+            this.HS.HeaderText = "HS";
+            this.HS.Name = "HS";
+            this.HS.ReadOnly = true;
+            this.HS.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.HS.Width = 25;
+            // 
+            // LI
+            // 
+            this.LI.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.Color.Transparent;
+            this.LI.DefaultCellStyle = dataGridViewCellStyle32;
+            this.LI.HeaderText = "LI";
+            this.LI.Name = "LI";
+            this.LI.ReadOnly = true;
+            this.LI.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.LI.Width = 25;
+            // 
+            // CL
+            // 
+            this.CL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.Color.Transparent;
+            this.CL.DefaultCellStyle = dataGridViewCellStyle33;
+            this.CL.HeaderText = "CL";
+            this.CL.Name = "CL";
+            this.CL.ReadOnly = true;
+            this.CL.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.CL.Width = 25;
+            // 
+            // LC
+            // 
+            this.LC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle34.SelectionBackColor = System.Drawing.Color.Transparent;
+            this.LC.DefaultCellStyle = dataGridViewCellStyle34;
+            this.LC.HeaderText = "LC";
+            this.LC.Name = "LC";
+            this.LC.ReadOnly = true;
+            this.LC.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.LC.Width = 25;
+            // 
+            // LM
+            // 
+            this.LM.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle35.SelectionBackColor = System.Drawing.Color.Transparent;
+            this.LM.DefaultCellStyle = dataGridViewCellStyle35;
+            this.LM.HeaderText = "LM";
+            this.LM.Name = "LM";
+            this.LM.ReadOnly = true;
+            this.LM.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.LM.Width = 25;
+            // 
+            // dgSupplier
+            // 
+            this.dgSupplier.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle36.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle36.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgSupplier.DefaultCellStyle = dataGridViewCellStyle36;
+            this.dgSupplier.HeaderText = "Supplier";
+            this.dgSupplier.Name = "dgSupplier";
+            this.dgSupplier.ReadOnly = true;
+            this.dgSupplier.Width = 89;
+            // 
+            // dgProductCode
+            // 
+            this.dgProductCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgProductCode.HeaderText = "Item Code";
+            this.dgProductCode.Name = "dgProductCode";
+            // 
+            // dgBrand
+            // 
+            this.dgBrand.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle37.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle37.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgBrand.DefaultCellStyle = dataGridViewCellStyle37;
+            this.dgBrand.HeaderText = "Brand";
+            this.dgBrand.Name = "dgBrand";
+            this.dgBrand.ReadOnly = true;
+            this.dgBrand.Width = 75;
+            // 
+            // dgMPN
+            // 
+            this.dgMPN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle38.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle38.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgMPN.DefaultCellStyle = dataGridViewCellStyle38;
+            this.dgMPN.HeaderText = "MPN";
+            this.dgMPN.Name = "dgMPN";
+            this.dgMPN.ReadOnly = true;
+            this.dgMPN.Width = 67;
+            // 
+            // dgDesc
+            // 
+            this.dgDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle39.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle39.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgDesc.DefaultCellStyle = dataGridViewCellStyle39;
+            this.dgDesc.HeaderText = "Description";
+            this.dgDesc.Name = "dgDesc";
+            this.dgDesc.ReadOnly = true;
+            this.dgDesc.Width = 108;
+            // 
+            // dgCost
+            // 
+            dataGridViewCellStyle40.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle40.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgCost.DefaultCellStyle = dataGridViewCellStyle40;
+            this.dgCost.HeaderText = "Cost (£)";
+            this.dgCost.Name = "dgCost";
+            this.dgCost.ReadOnly = true;
+            // 
+            // dgLandingCost
+            // 
+            this.dgLandingCost.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle41.Format = "N3";
+            dataGridViewCellStyle41.NullValue = null;
+            dataGridViewCellStyle41.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle41.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgLandingCost.DefaultCellStyle = dataGridViewCellStyle41;
+            this.dgLandingCost.HeaderText = "Landing Cost (£)";
+            this.dgLandingCost.Name = "dgLandingCost";
+            this.dgLandingCost.ReadOnly = true;
+            this.dgLandingCost.Width = 114;
+            // 
+            // dgMargin
+            // 
+            this.dgMargin.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle42.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle42.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgMargin.DefaultCellStyle = dataGridViewCellStyle42;
+            this.dgMargin.HeaderText = "Margin";
+            this.dgMargin.Name = "dgMargin";
+            this.dgMargin.ReadOnly = true;
+            this.dgMargin.Width = 80;
+            // 
+            // dgQty
+            // 
+            this.dgQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgQty.DataPropertyName = "QtyDeneme";
+            this.dgQty.HeaderText = "Qty";
+            this.dgQty.Name = "dgQty";
+            this.dgQty.ReadOnly = true;
+            this.dgQty.Width = 59;
+            // 
+            // dgStock
+            // 
+            this.dgStock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle43.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle43.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgStock.DefaultCellStyle = dataGridViewCellStyle43;
+            this.dgStock.HeaderText = "Stock";
+            this.dgStock.Name = "dgStock";
+            this.dgStock.ReadOnly = true;
+            this.dgStock.Width = 72;
+            // 
+            // dgUOM
+            // 
+            dataGridViewCellStyle44.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle44.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgUOM.DefaultCellStyle = dataGridViewCellStyle44;
+            this.dgUOM.HeaderText = "UOM";
+            this.dgUOM.Name = "dgUOM";
+            this.dgUOM.ReadOnly = true;
+            this.dgUOM.Width = 57;
+            // 
+            // dgSSM
+            // 
+            dataGridViewCellStyle45.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle45.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgSSM.DefaultCellStyle = dataGridViewCellStyle45;
+            this.dgSSM.HeaderText = "SSM";
+            this.dgSSM.Name = "dgSSM";
+            this.dgSSM.ReadOnly = true;
+            // 
+            // dgUC
+            // 
+            dataGridViewCellStyle46.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle46.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgUC.DefaultCellStyle = dataGridViewCellStyle46;
+            this.dgUC.HeaderText = "U/C";
+            this.dgUC.Name = "dgUC";
+            this.dgUC.ReadOnly = true;
+            // 
+            // dgUPIME
+            // 
+            this.dgUPIME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle47.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle47.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgUPIME.DefaultCellStyle = dataGridViewCellStyle47;
+            this.dgUPIME.HeaderText = "U/P IME L/P ";
+            this.dgUPIME.Name = "dgUPIME";
+            this.dgUPIME.ReadOnly = true;
+            this.dgUPIME.Width = 107;
+            // 
+            // dgDisc
+            // 
+            this.dgDisc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle48.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle48.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgDisc.DefaultCellStyle = dataGridViewCellStyle48;
+            this.dgDisc.HeaderText = "Disc. (%)";
+            this.dgDisc.Name = "dgDisc";
+            this.dgDisc.ReadOnly = true;
+            this.dgDisc.Width = 87;
+            // 
+            // dgUCUPCurr
+            // 
+            this.dgUCUPCurr.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgUCUPCurr.HeaderText = "U/C U/P (Curr.)";
+            this.dgUCUPCurr.Name = "dgUCUPCurr";
+            this.dgUCUPCurr.ReadOnly = true;
+            this.dgUCUPCurr.Width = 121;
+            // 
+            // dgTotal
+            // 
+            this.dgTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle49.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle49.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgTotal.DefaultCellStyle = dataGridViewCellStyle49;
+            this.dgTotal.HeaderText = "TOTAL";
+            this.dgTotal.Name = "dgTotal";
+            this.dgTotal.ReadOnly = true;
+            this.dgTotal.Width = 83;
+            // 
+            // dgTargetUP
+            // 
+            this.dgTargetUP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgTargetUP.HeaderText = "Target U/P";
+            this.dgTargetUP.Name = "dgTargetUP";
+            this.dgTargetUP.ReadOnly = true;
+            this.dgTargetUP.Width = 98;
+            // 
+            // dgCompetitor
+            // 
+            this.dgCompetitor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgCompetitor.HeaderText = "Competitor";
+            this.dgCompetitor.Name = "dgCompetitor";
+            this.dgCompetitor.ReadOnly = true;
+            this.dgCompetitor.Width = 105;
+            // 
+            // dgHZ
+            // 
+            this.dgHZ.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle50.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle50.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgHZ.DefaultCellStyle = dataGridViewCellStyle50;
+            this.dgHZ.HeaderText = "HZ";
+            this.dgHZ.Name = "dgHZ";
+            this.dgHZ.ReadOnly = true;
+            this.dgHZ.Visible = false;
+            this.dgHZ.Width = 56;
+            // 
+            // dgCL
+            // 
+            this.dgCL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle51.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle51.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgCL.DefaultCellStyle = dataGridViewCellStyle51;
+            this.dgCL.HeaderText = "CL";
+            this.dgCL.Name = "dgCL";
+            this.dgCL.ReadOnly = true;
+            this.dgCL.Visible = false;
+            this.dgCL.Width = 54;
+            // 
+            // dgCR
+            // 
+            this.dgCR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle52.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle52.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgCR.DefaultCellStyle = dataGridViewCellStyle52;
+            this.dgCR.HeaderText = "CR";
+            this.dgCR.Name = "dgCR";
+            this.dgCR.ReadOnly = true;
+            this.dgCR.Visible = false;
+            this.dgCR.Width = 56;
+            // 
+            // dgDelivery
+            // 
+            this.dgDelivery.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgDelivery.DataPropertyName = "6 Weeks";
+            this.dgDelivery.HeaderText = "Delivery";
+            this.dgDelivery.Name = "dgDelivery";
+            this.dgDelivery.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgDelivery.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dgDelivery.Width = 88;
+            // 
+            // dgUnitWeigt
+            // 
+            this.dgUnitWeigt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle53.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle53.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgUnitWeigt.DefaultCellStyle = dataGridViewCellStyle53;
+            this.dgUnitWeigt.HeaderText = "Unit Weigt (Kg)";
+            this.dgUnitWeigt.Name = "dgUnitWeigt";
+            this.dgUnitWeigt.ReadOnly = true;
+            this.dgUnitWeigt.Width = 122;
+            // 
+            // dgTotalWeight
+            // 
+            this.dgTotalWeight.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle54.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle54.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgTotalWeight.DefaultCellStyle = dataGridViewCellStyle54;
+            this.dgTotalWeight.HeaderText = "Total Weight (Kg)";
+            this.dgTotalWeight.Name = "dgTotalWeight";
+            this.dgTotalWeight.ReadOnly = true;
+            this.dgTotalWeight.Width = 136;
+            // 
+            // dgCustStkCode
+            // 
+            this.dgCustStkCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgCustStkCode.HeaderText = "Cust Stk Code";
+            this.dgCustStkCode.Name = "dgCustStkCode";
+            this.dgCustStkCode.ReadOnly = true;
+            this.dgCustStkCode.Width = 116;
+            // 
+            // dgCustDescription
+            // 
+            this.dgCustDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgCustDescription.HeaderText = "Cust. Description";
+            this.dgCustDescription.Name = "dgCustDescription";
+            this.dgCustDescription.ReadOnly = true;
+            this.dgCustDescription.Width = 132;
+            // 
+            // dgCOO
+            // 
+            this.dgCOO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle55.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle55.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgCOO.DefaultCellStyle = dataGridViewCellStyle55;
+            this.dgCOO.HeaderText = "COO";
+            this.dgCOO.Name = "dgCOO";
+            this.dgCOO.ReadOnly = true;
+            this.dgCOO.Width = 68;
+            // 
+            // dgCCCNO
+            // 
+            this.dgCCCNO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle56.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle56.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgCCCNO.DefaultCellStyle = dataGridViewCellStyle56;
+            this.dgCCCNO.HeaderText = "CCCNO";
+            this.dgCCCNO.Name = "dgCCCNO";
+            this.dgCCCNO.ReadOnly = true;
+            this.dgCCCNO.Width = 85;
+            // 
+            // dgDependantTable
+            // 
+            this.dgDependantTable.HeaderText = "dgDependantTable";
+            this.dgDependantTable.Name = "dgDependantTable";
+            this.dgDependantTable.Visible = false;
+            // 
+            // QuoDetailNo
+            // 
+            this.QuoDetailNo.HeaderText = "QuoDetailNo";
+            this.QuoDetailNo.Name = "QuoDetailNo";
+            this.QuoDetailNo.ReadOnly = true;
+            this.QuoDetailNo.Visible = false;
             // 
             // FormSaleOrderAdd
             // 
@@ -3513,7 +3516,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1657, 902);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(1362, 715);
             this.Name = "FormSaleOrderAdd";
@@ -3766,43 +3769,6 @@
         private System.Windows.Forms.ComboBox cbDeliveryAddress;
         private System.Windows.Forms.Label label72;
         private System.Windows.Forms.Label label73;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HS;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LI;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CL;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LM;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgSupplier;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgProductCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgBrand;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgMPN;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgDesc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgCost;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgLandingCost;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgMargin;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgQty;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgStock;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgUOM;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgSSM;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgUC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgUPIME;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgDisc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgUCUPCurr;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgTotal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgTargetUP;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgCompetitor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgHZ;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgCL;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgCR;
-        private System.Windows.Forms.DataGridViewComboBoxColumn dgDelivery;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgUnitWeigt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgTotalWeight;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgCustStkCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgCustDescription;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgCOO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgCCCNO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgDependantTable;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QuoDetailNo;
         private System.Windows.Forms.Label label74;
         private System.Windows.Forms.DataGridViewTextBoxColumn No1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -3840,5 +3806,42 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn35;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn36;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgDependantTable1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LI;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgSupplier;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgProductCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgBrand;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgMPN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgDesc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgCost;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgLandingCost;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgMargin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgQty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgStock;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgUOM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgSSM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgUC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgUPIME;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgDisc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgUCUPCurr;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgTotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgTargetUP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgCompetitor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgHZ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgCL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgCR;
+        private System.Windows.Forms.DataGridViewComboBoxColumn dgDelivery;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgUnitWeigt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgTotalWeight;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgCustStkCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgCustDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgCOO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgCCCNO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgDependantTable;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QuoDetailNo;
     }
 }
