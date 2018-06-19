@@ -149,7 +149,7 @@ namespace LoginForm.QuotationModule
                 }
                 if (quo != null)
                 {
-                    FormQuotationAdd newForm = new FormQuotationAdd(quo);
+                    FormQuotationAdd newForm = new FormQuotationAdd(quo, this);
                     newForm.ShowDialog();
                 }
             }
