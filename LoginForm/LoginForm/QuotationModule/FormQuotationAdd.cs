@@ -164,7 +164,7 @@ namespace LoginForm.QuotationModule
             }
         }
 
-        public FormQuotationAdd(Quotation quotation)
+        public FormQuotationAdd(Quotation quotation, FormQuotationMain parent)
         {
             InitializeComponent();
             this.parent = parent;
