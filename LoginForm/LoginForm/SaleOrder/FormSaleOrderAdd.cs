@@ -171,7 +171,6 @@ namespace LoginForm.QuotationModule
         {
             customer = cus;
             items = list;
-            Newitems = list;
             firstInitialize = true;
             SaleCurrency = list[0].Quotation.Currency.ExchangeRates.OrderByDescending(x => x.date).FirstOrDefault().rate;
             InitializeComponent();
