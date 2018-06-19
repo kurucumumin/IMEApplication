@@ -188,6 +188,8 @@ namespace LoginForm
                     btnModify.Text = "Cancel";
                     AddressButtonsMode(AddressButtonsModeOpen);
                     ContactButtonsMode(ContactButtonsModeOpen);
+                    btnNewAddress();
+                    btnNewContact();
                     break;
                 case "Save":
                     if (SupplierAddMode == SupplierModeAdd)
@@ -896,14 +898,7 @@ namespace LoginForm
 
         private void btnAddressAdd_Click(object sender, EventArgs e)
         {
-            AddressMode = "Add";
-            lbAddressList.ClearSelected();
-            lbAddressList.Enabled = false;
-
-            ClearAddressInputs();
-            EnableAddressInput(true);
-            AddressButtonsMode(AddressButtonsModeOpen);
-            ManageDeleteAndModifyButtons(lbAddressList, btnAddressUpdate, btnAddressDelete);
+            btnNewAddress();
         }
 
         private void AddressButtonsMode(string Mode)
@@ -1259,14 +1254,7 @@ namespace LoginForm
 
         private void btnContactNew_Click(object sender, EventArgs e)
         {
-            ContactMode = "Add";
-            lbContacts.ClearSelected();
-            lbContacts.Enabled = false;
-
-            ClearContactInputs();
-            EnableContactInput(true);
-            ContactButtonsMode(ContactButtonsModeOpen);
-            ManageDeleteAndModifyButtons(lbContacts, btnContactUpdate, btnContactDelete);
+            btnNewContact();
         }
 
         private void ContactButtonsMode(string Mode)
@@ -1396,17 +1384,6 @@ namespace LoginForm
                 ContactMode = String.Empty;
             }
         }
-
-        //private void ManageDeleteAndModifyButtons(ListBox lb, Button btnUpdate, Button btnDelete)
-        //{
-        //    bool state = false;
-        //    if (lb.Items.Count != 0)
-        //    {
-        //        state = true;
-        //    }
-        //    btnUpdate.Enabled = state;
-        //    btnDelete.Enabled = state;
-        //}
 
         private void btnContactUpdate_Click(object sender, EventArgs e)
         {
@@ -1795,6 +1772,30 @@ namespace LoginForm
             {
                 this.Close();
             }
+        }
+
+        private void btnNewAddress()
+        {
+            AddressMode = "Add";
+            lbAddressList.ClearSelected();
+            lbAddressList.Enabled = false;
+
+            ClearAddressInputs();
+            EnableAddressInput(true);
+            AddressButtonsMode(AddressButtonsModeOpen);
+            ManageDeleteAndModifyButtons(lbAddressList, btnAddressUpdate, btnAddressDelete);
+        }
+
+        private void btnNewContact()
+        {
+            ContactMode = "Add";
+            lbContacts.ClearSelected();
+            lbContacts.Enabled = false;
+
+            ClearContactInputs();
+            EnableContactInput(true);
+            ContactButtonsMode(ContactButtonsModeOpen);
+            ManageDeleteAndModifyButtons(lbContacts, btnContactUpdate, btnContactDelete);
         }
     }
 }
