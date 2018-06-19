@@ -32,23 +32,21 @@ namespace LoginForm.QuotationModule
             dtpDate.Value = DateTime.Now;
         }
 
-        private void ChooseCustomer(string CustomerName)
-        {
-            //if (frmCustomerMain == DialogResult.OK)
-            //{
-            //    SetCustomer();
-            //}
-            throw new NotImplementedException();
-        }
-
         private void CalculateLandingCost(string CustomerName)
         {
             throw new NotImplementedException();
         }
 
-        private decimal CalculateItemMargin(int RowIndex)
+        private decimal CalculateItemMargin(decimal _GBPcost, decimal _Currentprice)
         {
-            throw new NotImplementedException();
+            IMEEntities db = new IMEEntities();
+
+            decimal? GBPrate = db.Currencies.Where(x=>x.currencyName == "Pound").FirstOrDefault().
+                ExchangeRates.OrderByDescending(x=>x.date).FirstOrDefault().rate;
+
+            decimal _GBPprice = (_Currentprice * Decimal.Parse(lblCurrValue.Text)) / Convert.ToDecimal(GBPrate);
+
+            return (1 - (_GBPcost/ Convert.ToDecimal(_GBPprice))) * 100;
         }
 
         private decimal CalculateTotalMargin()

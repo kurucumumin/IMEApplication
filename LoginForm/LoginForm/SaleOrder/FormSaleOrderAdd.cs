@@ -42,6 +42,7 @@ namespace LoginForm.QuotationModule
         int a = 1;
         List<QuotationDetail> items;
         bool firstInitialize = false;
+        decimal? SaleCurrency = 1;
         #endregion
 
         public FormSaleOrderAdd(FormQuotationMain parent)
@@ -171,6 +172,7 @@ namespace LoginForm.QuotationModule
             customer = cus;
             items = list;
             firstInitialize = true;
+            SaleCurrency = list[0].Quotation.Currency.ExchangeRates.OrderByDescending(x => x.date).FirstOrDefault().rate;
 
             InitializeComponent();
             dgSaleAddedItems.Columns[dgLandingCost.Index].DefaultCellStyle.Format = "C4";
@@ -1460,42 +1462,29 @@ namespace LoginForm.QuotationModule
                 {
                     if (Int32.Parse(CurrentRow.Cells["dgUC"].Value.ToString()) > 1 && (!(CurrentRow.Cells["dgProductCode"].Value.ToString().Contains("P"))))
                     {
-
-
                         CurrentRow.Cells["dgMargin"].Value = (((1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())) / (gbpPrice * decimal.Parse(CurrentRow.Cells["dgUC"].Value.ToString())))) * 100).ToString("G29");
-
-
                     }
                     else
                     {
                         if (Int32.Parse(CurrentRow.Cells["dgUC"].Value.ToString()) > 1 || Int32.Parse(CurrentRow.Cells["dgSSM"].Value.ToString()) > 1)
                         {
-
                             if (Int32.Parse(CurrentRow.Cells["dgSSM"].Value.ToString()) > 1)
                             {
-
                                 CurrentRow.Cells["dgMargin"].Value = (((1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())) / (gbpPrice * decimal.Parse(CurrentRow.Cells["dgUC"].Value.ToString())))) * 100).ToString("G29");
                             }
                             else
                             {
-
                                 CurrentRow.Cells["dgMargin"].Value = (((1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())) / (gbpPrice * decimal.Parse(CurrentRow.Cells["dgUC"].Value.ToString())))) * 100).ToString("G29");
                             }
-
                         }
                         else
                         {
                             CurrentRow.Cells["dgMargin"].Value = (((1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())) / (gbpPrice))) * 100).ToString("G29");
-
                         }
-
-
                     }
-
                 }
                 else
                 {
-
                     CurrentRow.Cells["dgMargin"].Value = ((1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString()) / gbpPrice)) * 100).ToString("G29");
                 }
             }
@@ -1530,7 +1519,7 @@ namespace LoginForm.QuotationModule
                             decimal landingCost = 0;
                             UCUPCurr = Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString());
                             landingCost = Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgLandingCost"].Value.ToString());
-                            margin = CalculateMargin(landingCost, UCUPCurr);
+                            margin = CalculateMargin(landingCost, UCUPCurr, Convert.ToDecimal(SaleCurrency));
                             //margin = (1 - (landingCost / UCUPCurr)) * 100;
                             dgSaleAddedItems.Rows[i].Cells["dgMargin"].Value = margin;
 
@@ -1954,7 +1943,8 @@ namespace LoginForm.QuotationModule
                             {
                                 CurrentRow.Cells["dgMargin"].Value = CalculateMargin(
                                     Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString()),
-                                    Decimal.Parse(CurrentRow.Cells["dgUCUPCurr"].Value.ToString()));
+                                    Decimal.Parse(CurrentRow.Cells["dgUCUPCurr"].Value.ToString()),
+                                    Convert.ToDecimal(SaleCurrency));
                                 //CurrentRow.Cells["dgMargin"].Value = ((1 - ((Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(CurrentRow.Cells["dgUCUPCurr"].Value.ToString()))))) * 100).ToString("G29");
                             }
                             #endregion
@@ -1965,12 +1955,12 @@ namespace LoginForm.QuotationModule
             }
         }
 
-        private decimal CalculateMargin(decimal _LandingCost, decimal _Price)
+        private decimal CalculateMargin(decimal _LandingCost, decimal _Price, decimal currencyValue)
         {
             decimal currentGbpValue = Convert.ToDecimal(IME.Currencies.Where(x => x.currencyName == "Pound").FirstOrDefault().ExchangeRates.OrderByDescending(x => x.date).FirstOrDefault().rate);
-            decimal gbpPrice = (_Price * CurrValue) / currentGbpValue;
+            decimal gbpPrice = (_Price * currencyValue) / currentGbpValue;
 
-            return (1 - (_LandingCost - _Price)) * 100;
+            return (1 - (_LandingCost / gbpPrice)) * 100;
         }
 
         //private void ckItemCost_CheckedChanged(object sender, EventArgs e)
@@ -3121,7 +3111,7 @@ namespace LoginForm.QuotationModule
             {
                 decimal cb = (cbCurrency.SelectedItem as Currency).currencyID;
                 curr = IME.ExchangeRates.Where(a => a.currencyId == cb).OrderByDescending(b => b.date).FirstOrDefault();
-
+                 
                 if (CurrValue1 != CurrValue) CurrValue1 = CurrValue;
                 CurrValue = (decimal)curr.rate;
             }
@@ -3196,6 +3186,7 @@ namespace LoginForm.QuotationModule
             }
             CalculateSubTotal();
             lblCurrValue.Text = Math.Round(CurrValue, 4).ToString();
+            SaleCurrency = CurrValue;
         }
 
         private void lblVatTotal_TextChanged(object sender, EventArgs e)
