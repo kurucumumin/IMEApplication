@@ -186,7 +186,6 @@ namespace LoginForm.QuotationModule
             cbCurrency.DataSource = IME.Currencies.ToList();
             cbCurrency.DisplayMember = "currencyName";
             cbCurrency.ValueMember = "currencyID";
-            cbCurrency.SelectedIndex = 0;
             dtpDate.Value = Utils.getManagement().FinancialYear.fromDate.Value;
             dtpDate.MaxDate = IME.CurrentDate().FirstOrDefault().Value.AddHours(5);
             cbPaymentType.DataSource = IME.PaymentMethods.ToList();
@@ -209,6 +208,7 @@ namespace LoginForm.QuotationModule
             if (customer.CurrNameQuo != null) cbCurrency.SelectedValue = customer.CurrNameQuo;
             txtFactor.Text = customer.factor.ToString();
             fillCustomer();
+            cbCurrency.SelectedIndex = cbCurrency.FindStringExact(list[0].Quotation.Currency.currencyName);
             cbWorkers.SelectedItem = customer.MainContactID;
             foreach (var item in items)
             {
@@ -357,7 +357,6 @@ namespace LoginForm.QuotationModule
             cbCurrency.DataSource = IME.Currencies.ToList();
             cbCurrency.DisplayMember = "currencyName";
             cbCurrency.ValueMember = "currencyID";
-            cbCurrency.SelectedIndex = 0;
 
             //var QuoCurr = IME.Currencies.Where(a => a.currencyName == q1.CurrName).FirstOrDefault();
             //if (QuoCurr != null) cbCurrency.SelectedValue = QuoCurr.currencyID;
