@@ -52,7 +52,7 @@
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1020, 100);
-            this.panel1.TabIndex = 1;
+            this.panel1.TabIndex = 5;
             // 
             // btnSelect
             // 
@@ -88,7 +88,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(33, 41);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 15);
+            this.label1.Size = new System.Drawing.Size(73, 18);
             this.label1.TabIndex = 2;
             this.label1.Text = "MPN NO:";
             // 
@@ -96,7 +96,7 @@
             // 
             this.txtSearchText.Location = new System.Drawing.Point(115, 38);
             this.txtSearchText.Name = "txtSearchText";
-            this.txtSearchText.Size = new System.Drawing.Size(226, 21);
+            this.txtSearchText.Size = new System.Drawing.Size(226, 24);
             this.txtSearchText.TabIndex = 2;
             // 
             // tableLayoutPanel1
@@ -122,7 +122,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(8);
             this.panel2.Size = new System.Drawing.Size(1016, 340);
-            this.panel2.TabIndex = 2;
+            this.panel2.TabIndex = 0;
             // 
             // dgItemList
             // 
@@ -141,7 +141,7 @@
             // 
             // FormQuotationMPN
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1022, 446);
             this.Controls.Add(this.tableLayoutPanel1);
