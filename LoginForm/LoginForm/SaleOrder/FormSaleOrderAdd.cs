@@ -1497,9 +1497,16 @@ namespace LoginForm.QuotationModule
                             decimal margin = 0;
                             decimal UCUPCurr = 0;
                             decimal landingCost = 0;
+                            int UC = 0;
+                            int SSM = 0;
+                            bool p_item;
                             UCUPCurr = Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString());
                             landingCost = Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgLandingCost"].Value.ToString());
-                            margin = CalculateMargin(landingCost, UCUPCurr, Convert.ToDecimal(SaleCurrency));
+                            UC = Int32.Parse(dgSaleAddedItems.Rows[i].Cells[dgUC.Index].Value.ToString());
+                            SSM = Int32.Parse(dgSaleAddedItems.Rows[i].Cells[dgSSM.Index].Value.ToString());
+                            p_item = dgSaleAddedItems.Rows[i].Cells[dgProductCode.Index].Value.ToString().Contains("P");
+
+                            margin = CalculateMargin(p_item ,UC, SSM, landingCost, UCUPCurr, Convert.ToDecimal(SaleCurrency));
                             //margin = (1 - (landingCost / UCUPCurr)) * 100;
                             dgSaleAddedItems.Rows[i].Cells["dgMargin"].Value = margin;
 
@@ -1922,8 +1929,11 @@ namespace LoginForm.QuotationModule
                             if (CurrentRow.Cells["dgQty"].Value != null)
                             {
                                 CurrentRow.Cells["dgMargin"].Value = CalculateMargin(
-                                    Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString()),
-                                    Decimal.Parse(CurrentRow.Cells["dgUCUPCurr"].Value.ToString()),
+                                    CurrentRow.Cells[dgProductCode.Index].Value.ToString().Contains("P"),
+                                    Int32.Parse(CurrentRow.Cells[dgUC.Index].Value.ToString()),
+                                    Int32.Parse(CurrentRow.Cells[dgSSM.Index].Value.ToString()),
+                                    Decimal.Parse(CurrentRow.Cells[dgLandingCost.Index].Value.ToString()),
+                                    Decimal.Parse(CurrentRow.Cells[dgUCUPCurr.Index].Value.ToString()),
                                     Convert.ToDecimal(SaleCurrency));
                                 //CurrentRow.Cells["dgMargin"].Value = ((1 - ((Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(CurrentRow.Cells["dgUCUPCurr"].Value.ToString()))))) * 100).ToString("G29");
                             }
@@ -1935,12 +1945,40 @@ namespace LoginForm.QuotationModule
             }
         }
 
-        private decimal CalculateMargin(decimal _LandingCost, decimal _Price, decimal currencyValue)
+        private decimal CalculateMargin(bool _Pitem ,int _UC, int _SSM ,decimal _LandingCost, decimal _Price, decimal currencyValue)
         {
             decimal currentGbpValue = Convert.ToDecimal(IME.Currencies.Where(x => x.currencyName == "Pound").FirstOrDefault().ExchangeRates.OrderByDescending(x => x.date).FirstOrDefault().rate);
             decimal gbpPrice = (_Price * currencyValue) / currentGbpValue;
 
+            if(_UC > 1 || _SSM > 1)
+            {
+                if(_UC > 1 && !_Pitem)
+                {
+                    gbpPrice *= _UC;
+                }
+                else
+                {
+                    if(_SSM > 1)
+                    {
+                        gbpPrice *= _SSM;
+                    }
+                }
+            }
+
             return (1 - (_LandingCost / gbpPrice)) * 100;
+
+            //if(_UC > 1 && _SSM > 1)
+            //{
+
+            //}else if (_UC > 1)
+            //{
+
+            //}
+            //// if(_SSM > 1)
+            //else
+            //{
+
+            //}
         }
 
         //private void ckItemCost_CheckedChanged(object sender, EventArgs e)
