@@ -4307,8 +4307,8 @@ namespace LoginForm.QuotationModule
                     }
                     if (row.Cells[dgCost1.Index].Value != null) sdi.ItemCost = Convert.ToDecimal(row.Cells[dgCost1.Index].Value);
 
-                    IME.SaleOrderDetails.Add(sdi);
-                    IME.SaveChanges();
+                    //IME.SaleOrderDetails.Add(sdi);
+                    //IME.SaveChanges();
                 }
             }
             MessageBox.Show("Sale is successfully added", "Success");
