@@ -4159,6 +4159,7 @@ namespace LoginForm.QuotationModule
 
                 IME.SaleOrders.Add(s);
                 IME.SaveChanges();
+                DebitCustomer();
 
                 return s.SaleOrderID;
             }
@@ -4193,6 +4194,20 @@ namespace LoginForm.QuotationModule
             //if (Note2 != 0) q.NoteForCustomerID = Note2;
             //IME.Quotations.Add(q);
             //IME.SaveChanges();
+        }
+        private void DebitCustomer()
+        {
+            IMEEntities db = new IMEEntities();
+
+            Customer c = db.Customers.Where(x => x.ID == customer.ID).FirstOrDefault();
+            decimal debitPrice = ConvertToDefaultCurrency(Convert.ToDecimal(lblCurrValue.Text), Convert.ToDecimal(lblGrossTotal.Text));
+            c.Debit = (c.Debit != null) ? c.Debit + debitPrice : 0;
+            db.SaveChanges();
+        }
+
+        private decimal ConvertToDefaultCurrency(decimal _CurrencyRate, decimal _Amount)
+        {
+            return (_Amount * _CurrencyRate);
         }
 
         private void SaleOrderDetailsSave(decimal SaleID)
