@@ -4199,8 +4199,8 @@ namespace LoginForm.QuotationModule
             IMEEntities db = new IMEEntities();
 
             Customer c = db.Customers.Where(x => x.ID == customer.ID).FirstOrDefault();
-            decimal debitPrice = ConvertToDefaultCurrency(Convert.ToDecimal(lblCurrValue.Text), Convert.ToDecimal(lblGrossTotal.Text));
-            c.Debit = (c.Debit != null) ? c.Debit + debitPrice : 0;
+            decimal debitPrice = ConvertToDefaultCurrency(Convert.ToDecimal(SaleCurrency), Convert.ToDecimal(lblGrossTotal.Text));
+            c.Debit = (c.Debit != null) ? c.Debit + debitPrice : debitPrice;
             db.SaveChanges();
         }
 

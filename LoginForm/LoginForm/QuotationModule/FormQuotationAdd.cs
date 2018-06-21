@@ -391,29 +391,30 @@ namespace LoginForm.QuotationModule
                 CustomerCode.Text = classQuotationAdd.customerID;
                 txtCustomerName.Text = classQuotationAdd.customername;
             }
-            var c = IME.Customers.Where(a => a.ID == CustomerCode.Text).FirstOrDefault();
-            if (c != null)
+            //var c = IME.Customers.Where(a => a.ID == CustomerCode.Text).FirstOrDefault();
+            if (customer != null)
             {
-                txtCustomerName.Text = c.c_name;
-                //cbCurrType.SelectedIndex = cbCurrType.FindStringExact(c.CurrTypeQuo);
-                //if(c.MainContactID!=null) cbWorkers.SelectedIndex = (int)c.MainContactID;
-                if (c.paymentmethodID != null)
+                CustomerCode.Text = customer.ID;
+                txtCustomerName.Text = customer.c_name;
+                //cbCurrType.SelectedIndex = cbCurrType.FindStringExact(customer.CurrTypeQuo);
+                //if(customer.MainContactID!=null) cbWorkers.SelectedIndex = (int)customer.MainContactID;
+                if (customer.paymentmethodID != null)
                 {
-                    cbPayment.SelectedIndex = cbPayment.FindStringExact(c.PaymentTerm.term_name);
+                    cbPayment.SelectedIndex = cbPayment.FindStringExact(customer.PaymentTerm.term_name);
                 }
-                try { txtContactNote.Text = c.CustomerWorker.Note.Note_name; } catch { }
-                try { txtCustomerNote.Text = c.Note.Note_name; } catch { }
-                try { txtAccountingNote.Text = IME.Notes.Where(a => a.ID == c.customerAccountantNoteID).FirstOrDefault().Note_name; } catch { }
-                if (c.Worker != null) cbRep.SelectedValue = c.Worker.WorkerID;
+                try { txtContactNote.Text = customer.CustomerWorker.Note.Note_name; } catch { }
+                try { txtCustomerNote.Text = customer.Note.Note_name; } catch { }
+                try { txtAccountingNote.Text = IME.Notes.Where(a => a.ID == customer.customerAccountantNoteID).FirstOrDefault().Note_name; } catch { }
+                if (customer.Worker != null) cbRep.SelectedValue = customer.Worker.WorkerID;
                 if (this.Text != "Edit Quotation")
                 {
-                    var CustomerCurr = IME.Currencies.Where(a => a.currencyName == c.CurrNameQuo).FirstOrDefault();
+                    var CustomerCurr = IME.Currencies.Where(a => a.currencyName == customer.CurrNameQuo).FirstOrDefault();
                     if (CustomerCurr != null) cbCurrency.SelectedValue = CustomerCurr.currencyID;
                 }
-                if (c.CustomerWorker != null)
+                if (customer.CustomerWorker != null)
                 {
-                    cbWorkers.SelectedValue = c.CustomerWorker.ID;
-                    cbWorkers.SelectedItem = cbWorkers.FindStringExact(c.CustomerWorker.cw_name);
+                    cbWorkers.SelectedValue = customer.CustomerWorker.ID;
+                    cbWorkers.SelectedItem = cbWorkers.FindStringExact(customer.CustomerWorker.cw_name);
                 }
             }
         }
@@ -3070,21 +3071,54 @@ namespace LoginForm.QuotationModule
 
          public void CustomerSearchInput()
         {
-            classQuotationAdd.customersearchID = "";
-            classQuotationAdd.customersearchname = CustomerCode.Text;
-            FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch(customer);
-            this.Enabled = false;
-            var result = form.ShowDialog();
-
-            if (result == DialogResult.OK)
+            var customerList = IME.Customers.Where(a => a.c_name.Contains(CustomerCode.Text)).ToList();
+            if (customerList.Count == 1)
             {
-                customer = form.customer;
+                this.Enabled = true;
+                customer = customerList.FirstOrDefault();
                 cbWorkers.DataSource = customer.CustomerWorkers.ToList();
                 cbWorkers.DisplayMember = "cw_name";
                 cbWorkers.ValueMember = "ID";
+                txtCustomerName.Text = customer.c_name;
+                CustomerCode.Text = customer.ID;
+                if (customer.paymentmethodID != null)
+                {
+                    cbPayment.SelectedIndex = cbPayment.FindStringExact(customer.PaymentTerm.term_name);
+                }
+                try { txtContactNote.Text = customer.CustomerWorker.Note.Note_name; } catch { }
+                try { txtCustomerNote.Text = customer.Note.Note_name; } catch { }
+                try { txtAccountingNote.Text = IME.Notes.Where(a => a.ID == customer.customerAccountantNoteID).FirstOrDefault().Note_name; } catch { }
+                if (customer.Worker != null) cbRep.SelectedValue = customer.Worker.WorkerID;
+                if (this.Text != "Edit Quotation")
+                {
+                    var CustomerCurr = IME.Currencies.Where(a => a.currencyName == customer.CurrNameQuo).FirstOrDefault();
+                    if (CustomerCurr != null) cbCurrency.SelectedValue = CustomerCurr.currencyID;
+                }
+                if (customer.CustomerWorker != null)
+                {
+                    cbWorkers.SelectedValue = customer.CustomerWorker.ID;
+                    cbWorkers.SelectedItem = cbWorkers.FindStringExact(customer.CustomerWorker.cw_name);
+                }
             }
-            this.Enabled = true;
-            fillCustomer();
+            else if(customerList.Count !=1)
+	        {
+                classQuotationAdd.customersearchID = "";
+                classQuotationAdd.customersearchname = CustomerCode.Text;
+                FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch(customer);
+                this.Enabled = false;
+                var result = form.ShowDialog();
+
+                if (result == DialogResult.OK)
+                {
+                    customer = form.customer;
+                    cbWorkers.DataSource = customer.CustomerWorkers.ToList();
+                    cbWorkers.DisplayMember = "cw_name";
+                    cbWorkers.ValueMember = "ID";
+                }
+                this.Enabled = true;
+                fillCustomer();
+            }
+
         }
 
         private void ChangeCurrnetCell(int currindex)

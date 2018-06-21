@@ -12,7 +12,6 @@ using System.Windows.Forms;
 
 namespace LoginForm.QuotationModule
 {
-    
     public partial class ExperimentQuotationAdd : Form
     {
         Customer _customer;
@@ -37,16 +36,40 @@ namespace LoginForm.QuotationModule
             throw new NotImplementedException();
         }
 
-        private decimal CalculateItemMargin(decimal _GBPcost, decimal _Currentprice)
+        private decimal CalculateItemMargin(bool _Pitem, int _UC, int _SSM, decimal _LandingCost, decimal _Price, decimal currencyValue)
         {
-            IMEEntities db = new IMEEntities();
+            decimal currentGbpValue = Convert.ToDecimal(new IMEEntities().Currencies.Where(x => x.currencyName == "Pound").FirstOrDefault().ExchangeRates.OrderByDescending(x => x.date).FirstOrDefault().rate);
+            decimal gbpPrice = (_Price * currencyValue) / currentGbpValue;
 
-            decimal? GBPrate = db.Currencies.Where(x=>x.currencyName == "Pound").FirstOrDefault().
-                ExchangeRates.OrderByDescending(x=>x.date).FirstOrDefault().rate;
+            if (_UC > 1 || _SSM > 1)
+            {
+                if (_UC > 1 && !_Pitem)
+                {
+                    gbpPrice *= _UC;
+                }
+                else
+                {
+                    if (_SSM > 1)
+                    {
+                        gbpPrice *= _SSM;
+                    }
+                }
+            }
 
-            decimal _GBPprice = (_Currentprice * Decimal.Parse(lblCurrValue.Text)) / Convert.ToDecimal(GBPrate);
+            return (1 - (_LandingCost / gbpPrice)) * 100;
 
-            return (1 - (_GBPcost/ Convert.ToDecimal(_GBPprice))) * 100;
+            //if(_UC > 1 && _SSM > 1)
+            //{
+
+            //}else if (_UC > 1)
+            //{
+
+            //}
+            //// if(_SSM > 1)
+            //else
+            //{
+
+            //}
         }
 
         private decimal CalculateTotalMargin()

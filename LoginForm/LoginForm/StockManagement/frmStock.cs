@@ -304,5 +304,17 @@ namespace LoginForm.StockManagement
                 txtProductName.Text = form.itemProps[1];
             }
         }
+
+        private void numQuantity_Click(object sender, EventArgs e)
+        {
+            if (numQuantity.Value == 0)
+            {
+                numQuantity.Text = "";
+            }
+            else
+            {
+                numQuantity.Value = numQuantity.Value;
+            }
+        }
     }
 }
