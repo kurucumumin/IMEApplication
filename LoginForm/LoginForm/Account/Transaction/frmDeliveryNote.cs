@@ -3998,7 +3998,7 @@ namespace LoginForm
                 int masterID = 14;
                 int inFormId = spVoucherType.FormIdGetForPrinterSettings(masterID);
                 //TODO Printe
-                PrintWorks.DotMatrixPrint.PrintDesign(inFormId, dtblOtherDetails, dtblGridDetails, dtblOtherDetails);
+               // PrintWorks.DotMatrixPrint.PrintDesign(inFormId, dtblOtherDetails, dtblGridDetails, dtblOtherDetails);
             }
             catch (Exception ex)
             {

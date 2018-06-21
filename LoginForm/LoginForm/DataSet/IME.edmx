@@ -2158,7 +2158,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="voucherTypeId" Type="numeric" Precision="18" Scale="0" />
           <Property Name="againstVoucherNo" Type="varchar(max)" />
           <Property Name="againstVoucherTypeId" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="MPN" Type="nvarchar" MaxLength="20" />
+          <Property Name="MPN" Type="nvarchar(max)" />
           <Property Name="Cost" Type="decimal" Precision="12" Scale="4" />
           <Property Name="SupplierID" Type="nvarchar" MaxLength="15" />
           <Property Name="NotConfirmedQTY" Type="int" />
@@ -14132,7 +14132,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="voucherTypeId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="againstVoucherNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="againstVoucherTypeId" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="MPN" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MPN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Cost" Type="Decimal" Precision="12" Scale="4" />
           <Property Name="SupplierID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="NotConfirmedQTY" Type="Int32" />
