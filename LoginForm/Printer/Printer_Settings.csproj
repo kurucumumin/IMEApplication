@@ -68,4 +68,7 @@
     <EmbeddedResource Include="PrintWorks.frmForms.resources" />
     <EmbeddedResource Include="PrintWorks.frmDBConnection.resources" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
 </Project>

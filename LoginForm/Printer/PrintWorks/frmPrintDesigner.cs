@@ -1776,7 +1776,6 @@ namespace PrintWorks
             this.btnClearMaster.Text = "Clear Master";
             this.btnClearMaster.UseVisualStyleBackColor = false;
             this.btnClearMaster.Click += new EventHandler(this.btnClearMaster_Click);
-            this.btnAddForms.BackgroundImage = Resources.AddNew1;
             this.btnAddForms.BackgroundImageLayout = ImageLayout.Stretch;
             this.btnAddForms.FlatAppearance.BorderSize = 0;
             this.btnAddForms.FlatStyle = FlatStyle.Flat;
@@ -1789,7 +1788,6 @@ namespace PrintWorks
             this.btnAddForms.UseVisualStyleBackColor = true;
             this.btnAddForms.Click += new EventHandler(this.btnAddForms_Click);
             this.pnlDesignImage.AutoScroll = true;
-            this.pnlDesignImage.BackgroundImage = Resources.PrintDesignImage;
             this.pnlDesignImage.BorderStyle = BorderStyle.Fixed3D;
             this.pnlDesignImage.Location = new Point(0x101, 0x17);
             this.pnlDesignImage.Name = "pnlDesignImage";
@@ -1905,7 +1903,6 @@ namespace PrintWorks
             base.Controls.Add(this.btnClear);
             base.Controls.Add(this.pnlDesignImage);
             base.Controls.Add(this.btnPrint);
-            base.Icon = (Icon) manager.GetObject("$this.Icon");
             base.KeyPreview = true;
             base.Name = "frmPrintDesigner";
             this.Text = "Print Designer";

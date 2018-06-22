@@ -1995,7 +1995,7 @@
                 sw.Close();
             }
             RawPrinterHelper.SendFileToPrinter(dialog.PrinterSettings.PrinterName, Application.StartupPath + @"\Print.txt");
-            Printing();
+            //Printing();
         }
 
         public static void Printing()
