@@ -42,6 +42,7 @@
     <Compile Include="Global.cs" />
     <Compile Include="PrintWorks\DBConnection.cs" />
     <Compile Include="PrintWorks\DetailsSP.cs" />
+    <Compile Include="PrintWorks\DotMatrixPrint.cs" />
     <Compile Include="PrintWorks\FieldSP.cs" />
     <Compile Include="PrintWorks\RawPrinterHelper.cs" />
     <Compile Include="PrintWorks\frmPrintDesigner.cs">
@@ -52,7 +53,6 @@
     <Compile Include="PrintWorks\MasterInfo.cs" />
     <Compile Include="PrintWorks\FormInfo.cs" />
     <Compile Include="PrintWorks\MasterSP.cs" />
-    <Compile Include="PrintWorks\DotMatrixPrint.cs" />
     <Compile Include="PrintWorks\Properties\Settings.cs" />
     <Compile Include="PrintWorks\frmForms.cs">
       <SubType>Form</SubType>

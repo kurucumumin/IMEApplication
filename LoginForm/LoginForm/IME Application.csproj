@@ -3182,5 +3182,11 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Printer\Printer_Settings.csproj">
+      <Project>{301b1c07-bc18-4571-a3bd-89d4d7c9b06c}</Project>
+      <Name>Printer_Settings</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

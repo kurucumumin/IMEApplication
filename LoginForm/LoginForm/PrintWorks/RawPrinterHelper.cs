@@ -2,18 +2,12 @@
 {
     using System;
     using System.Data;
-    using System.Drawing;
-    using System.Drawing.Printing;
     using System.IO;
     using System.Runtime.InteropServices;
     using System.Text;
-    using System.Windows.Forms;
 
     public class RawPrinterHelper
     {
-        private static StreamReader streamToPrint;
-        private static Font printFont;
-
         public static string Bold(string Headder)
         {
             return (BoldOn() + Headder + BoldOff());
@@ -223,84 +217,18 @@
 
         public static bool SendFileToPrinter(string szPrinterName, string szFileName)
         {
-            //FileStream input = new FileStream(szFileName, FileMode.Open);
-            //BinaryReader reader = new BinaryReader(input);
-            //byte[] source = new byte[input.Length];
-            //bool flag = false;
-            //IntPtr destination = new IntPtr(0);
-            //int count = Convert.ToInt32(input.Length);
-            //source = reader.ReadBytes(count);
-            //destination = Marshal.AllocCoTaskMem(count);
-            //Marshal.Copy(source, 0, destination, count);
-            //flag = SendBytesToPrinter(szPrinterName, destination, count);
-            //Marshal.FreeCoTaskMem(destination);
-            //return flag;
-            bool result = false;
-            try
-            {
-                Printing();
-                result = true;
-            }
-            catch (Exception)
-            {
-                result = false;
-            }
-            return result;
-            
-        }
-
-        public static void Printing()
-        {
-            try
-            {
-                streamToPrint = new StreamReader(Application.StartupPath + @"\Print.txt");
-                try
-                {
-                    printFont = new Font("Arial", 15);
-                    PrintDocument pd = new PrintDocument();
-                    pd.PrintPage += new PrintPageEventHandler(pd_PrintPage);
-                    // Print the document.
-                    pd.Print();
-                }
-                finally
-                {
-                    streamToPrint.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private static void pd_PrintPage(object sender, PrintPageEventArgs ev)
-        {
-            float linesPerPage = 0;
-            float yPos = 0;
-            int count = 0;
-            float leftMargin = ev.MarginBounds.Left;
-            float topMargin = ev.MarginBounds.Top;
-            String line = null;
-
-            // Calculate the number of lines per page.
-            linesPerPage = ev.MarginBounds.Height /
-               printFont.GetHeight(ev.Graphics);
-
-            // Iterate over the file, printing each line.
-            while (count < linesPerPage &&
-               ((line = streamToPrint.ReadLine()) != null))
-            {
-                yPos = topMargin + (count * printFont.GetHeight(ev.Graphics));
-                ev.Graphics.DrawString(line, printFont, Brushes.Black,
-                   leftMargin, yPos, new StringFormat());
-                count++;
-            }
-
-            // If more lines exist, print another page.
-            if (line != null)
-                ev.HasMorePages = true;
-            else
-                ev.HasMorePages = false;
+            FileStream input = new FileStream(szFileName, FileMode.Open);
+            BinaryReader reader = new BinaryReader(input);
+            byte[] source = new byte[input.Length];
+            bool flag = false;
+            IntPtr destination = new IntPtr(0);
+            int count = Convert.ToInt32(input.Length);
+            source = reader.ReadBytes(count);
+            destination = Marshal.AllocCoTaskMem(count);
+            Marshal.Copy(source, 0, destination, count);
+            flag = SendBytesToPrinter(szPrinterName, destination, count);
+            Marshal.FreeCoTaskMem(destination);
+            return flag;
         }
 
         public static bool SendStringToPrinter(string szPrinterName, string szString)

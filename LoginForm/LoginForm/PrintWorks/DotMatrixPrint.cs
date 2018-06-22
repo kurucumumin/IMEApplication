@@ -10,6 +10,7 @@
 
     public class DotMatrixPrint
     {
+        //LoginForm Login
         public static DataTable dtbl2 = new DataTable();
 
         private static StreamReader streamToPrint;
@@ -1994,7 +1995,7 @@
             {
                 sw.Close();
             }
-            RawPrinterHelper.SendFileToPrinter(dialog.PrinterSettings.PrinterName, Application.StartupPath + @"\Print.txt");
+            //RawPrinterHelper.SendFileToPrinter(dialog.PrinterSettings.PrinterName, Application.StartupPath + @"\Print.txt");
             Printing();
         }
 
