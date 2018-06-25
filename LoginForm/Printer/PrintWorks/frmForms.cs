@@ -270,7 +270,7 @@
             base.Controls.Add(this.dgvFields);
             base.Controls.Add(this.label1);
             base.Controls.Add(this.txtFormName);
-            base.Icon = (Icon) manager.GetObject("$this.Icon");
+            //base.Icon = (Icon) manager.GetObject("$this.Icon");
             base.KeyPreview = true;
             this.MaximumSize = new Size(0x235, 0x141);
             base.Name = "frmForms";

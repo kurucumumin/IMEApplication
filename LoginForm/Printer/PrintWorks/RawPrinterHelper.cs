@@ -256,7 +256,7 @@
                 streamToPrint = new StreamReader(Application.StartupPath + @"\Print.txt");
                 try
                 {
-                    printFont = new Font("Arial", 15);
+                    printFont = new Font("TimesNewRoman", 10);
                     PrintDocument pd = new PrintDocument();
                     pd.PrintPage += new PrintPageEventHandler(pd_PrintPage);
                     // Print the document.
