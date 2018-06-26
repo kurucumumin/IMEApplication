@@ -979,13 +979,13 @@ namespace LoginForm
             {
                 if (ControlSave())
                 {
-                    if (MainCategory.Text == ComboboxString || SubCategory.Text == ComboboxString || Represantative2.Text == ComboboxString || Capital.Text == ComboboxString || cbMainContact.Text == ComboboxString || AccountRepresentary.Text == ComboboxString || TermsofPayments.Text == ComboboxString || PaymentMethod.Text == ComboboxString || QuoCurrencyName.Text == ComboboxString || /*QuoCurrencyType.Text == ComboboxString ||*/ InvCurrencyName.Text == ComboboxString || /*InvCurrencyType.Text == ComboboxString ||*/ AddressType.Text == ComboboxString || cbCountry.Text == ComboboxString || cbCity.Text == ComboboxString || cbTown.Text == ComboboxString || ContactType.Text == ComboboxString || ContactDepartment.Text == ComboboxString || ContactTitle.Text == ComboboxString || CommunicationLanguage.Text == ComboboxString)
-                    {
-                        MessageBox.Show("Combobox is empty", "WARNING", MessageBoxButtons.OK);
+                    //if (MainCategory.Text == ComboboxString || SubCategory.Text == ComboboxString || Represantative2.Text == ComboboxString || Capital.Text == ComboboxString || cbMainContact.Text == ComboboxString || AccountRepresentary.Text == ComboboxString || TermsofPayments.Text == ComboboxString || PaymentMethod.Text == ComboboxString || QuoCurrencyName.Text == ComboboxString || /*QuoCurrencyType.Text == ComboboxString ||*/ InvCurrencyName.Text == ComboboxString || /*InvCurrencyType.Text == ComboboxString ||*/ AddressType.Text == ComboboxString || cbCountry.Text == ComboboxString || cbCity.Text == ComboboxString || cbTown.Text == ComboboxString || ContactType.Text == ComboboxString || ContactDepartment.Text == ComboboxString || ContactTitle.Text == ComboboxString || CommunicationLanguage.Text == ComboboxString)
+                    //{
+                    //    MessageBox.Show("Combobox is empty", "WARNING", MessageBoxButtons.OK);
 
-                    }
-                    else
-                    {
+                    //}
+                    //else
+                    //{
                         btnCreate.Text = "CREATE";
                         btnUpdate.Text = "UPDATE";
 
@@ -1058,7 +1058,7 @@ namespace LoginForm
                         itemsEnableFalse();
                         contactTabEnableFalse();
                         customersearch();
-                    }
+                    //}
                 }
 
             }
@@ -1758,13 +1758,13 @@ namespace LoginForm
             bool isSave = true;
             string ErrorMessage = string.Empty;
             if (CustomerName.Text == null || CustomerName.Text == string.Empty) { ErrorMessage = ErrorMessage + "Please Enter Company's Name\n"; isSave = false; }
-            if (MainCategory.Text == ComboboxString) { ErrorMessage = ErrorMessage + "Please Choose Main Category Company\n"; isSave = false; }
-            if (SubCategory.Text == ComboboxString) { ErrorMessage = ErrorMessage + "Please Choose SubCategory of Company\n"; isSave = false; }
-            if (Capital.Text == ComboboxString) { ErrorMessage = ErrorMessage + "Please Choose Capital of the Company\n"; isSave = false; }
-            if (Telephone.Text == null || Telephone.Text == string.Empty) { ErrorMessage = ErrorMessage + "Please Enter Company's Phone correctly or Delete\n"; isSave = false; }
-            if (ContactList.Items.Count == 0) { ErrorMessage = ErrorMessage + "Please Enter a Contact\n"; isSave = false; }
-            if (cbCity.Text == ComboboxString) { ErrorMessage = ErrorMessage + "Please Choose City of Company\n"; isSave = false; }
-            if (cbTown.Text == ComboboxString) { ErrorMessage = ErrorMessage + "Please Choose Town of Company\n"; isSave = false; }
+            //if (MainCategory.Text == ComboboxString) { ErrorMessage = ErrorMessage + "Please Choose Main Category Company\n"; isSave = false; }
+            //if (SubCategory.Text == ComboboxString) { ErrorMessage = ErrorMessage + "Please Choose SubCategory of Company\n"; isSave = false; }
+            //if (Capital.Text == ComboboxString) { ErrorMessage = ErrorMessage + "Please Choose Capital of the Company\n"; isSave = false; }
+            //if (Telephone.Text == null || Telephone.Text == string.Empty) { ErrorMessage = ErrorMessage + "Please Enter Company's Phone correctly or Delete\n"; isSave = false; }
+            //if (ContactList.Items.Count == 0) { ErrorMessage = ErrorMessage + "Please Enter a Contact\n"; isSave = false; }
+            //if (cbCity.Text == ComboboxString) { ErrorMessage = ErrorMessage + "Please Choose City of Company\n"; isSave = false; }
+            //if (cbTown.Text == ComboboxString) { ErrorMessage = ErrorMessage + "Please Choose Town of Company\n"; isSave = false; }
             if (isSave == true) { return true; } else { MessageBox.Show(ErrorMessage); return false; }
         }
 
