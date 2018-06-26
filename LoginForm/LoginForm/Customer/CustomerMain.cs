@@ -973,6 +973,7 @@ namespace LoginForm
                 btnContactAdd.Enabled = true;
                 btnContactClick();
                 btnAddressClick();
+                btnUpdate.Enabled = true;
             }
             else
             {
@@ -1061,7 +1062,6 @@ namespace LoginForm
                 }
 
             }
-            btnUpdate.Enabled = true;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
