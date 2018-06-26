@@ -671,32 +671,6 @@ namespace LoginForm
         //CONTACT ADD NEW
         private void btnContactAdd_Click(object sender, EventArgs e)
         {
-            //#region addContactButton
-            //contactnewID = 0;
-            //contactTabEnableTrue();
-            //ContactType.Text = "";
-            //ContactDepartment.Text = "";
-            //ContactTitle.Text = "";
-            //cbMainContact.Text = "";
-            //ContactName.Text = "";
-            //ContactEmail.Text = "";
-            //ContactPhone.Text = "";
-            //ContactMobilePhone.Text = "";
-            //ContactFAX.Text = "";
-            //CommunicationLanguage.Text = "";
-            //ContactNotes.Text = "";
-            //btnContactAdd.Visible = false;
-            //btnContactCancel.Visible = true;
-            //btnContactDelete.Visible = false;
-            //btnContactDone.Visible = true;
-            //btnContactUpdate.Visible = false;
-            //ContactList.Enabled = false;
-
-            //ContactType.Text = (ComboboxString);
-            //ContactDepartment.Text = (ComboboxString);
-            //ContactTitle.Text = (ComboboxString);
-            //CommunicationLanguage.Text = (ComboboxString);
-            //#endregion
             btnContactClick();
         }
 
@@ -757,16 +731,6 @@ namespace LoginForm
         //CONTACT UPDATE
         private void btnContactUpdate_Click(object sender, EventArgs e)
         {
-            //#region  btnContactUpdate
-            //contactnewID = 1;
-            //contactTabEnableTrue();
-            //btnContactAdd.Visible = false;
-            //btnContactCancel.Visible = true;
-            //btnContactDelete.Visible = false;
-            //btnContactDone.Visible = true;
-            //btnContactUpdate.Visible = false;
-            //#endregion
-
             btnContactUpdateClick();
         }
 
@@ -1097,6 +1061,7 @@ namespace LoginForm
                 }
 
             }
+            btnUpdate.Enabled = true;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -1320,30 +1285,7 @@ namespace LoginForm
 
         private void AdressAdd_Click(object sender, EventArgs e)
         {
-            //isUpdateAdress = 0;
-            //#region addAdressButton
-            //AdressTabEnableTrue();
-            //AddressType.Text = "";
-            //cbCountry.Text = "";
-            //cbDefaultInvoiceAdress.Checked = false;
-            //cbDefaultDeliveryAdress.Checked = false;
-            //cbDefaultInvoiceAdress.Checked = false;
-            //cbCity.Text = "";
-            //cbTown.Text = "";
-            //PostCode.Text = "";
-            //AddressDetails.Text = "";
-            //AdressAdd.Visible = false;
-            //AdressCancel.Visible = true;
-            //AddressDel.Visible = false;
-            //AdressDone.Visible = true;
-            //AddressUpd.Visible = false;
-            //AdressList.Enabled = false;
-
-            //AddressType.Text = (ComboboxString);
-            //cbCountry.Text = (ComboboxString);
-            //cbCity.Text = (ComboboxString);
-            //cbTown.Text = (ComboboxString);
-            //#endregion
+            btnAddressClick();
         }
 
         private void btnAddressClick()

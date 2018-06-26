@@ -30,20 +30,20 @@ namespace LoginForm.PurchaseOrder
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            #region ProductHistory
-            int purchaseId =0;
+            //#region ProductHistory
+            //int purchaseId =0;
 
-            if (dgPurchase.CurrentRow.Cells["purchaseOrderId"].Value != null)
-                purchaseId = Convert.ToInt32(dgPurchase.CurrentRow.Cells["purchaseOrderId"].Value);
-            if (dgPurchase.CurrentRow.Cells["FicheNo"].Value == null)
-                MessageBox.Show("Please Enter a Fiche No", "Eror !");
-            else
-            {
-                purchaseId = Convert.ToInt32(dgPurchase.CurrentRow.Cells["purchaseOrderId"].Value);
-                NewPurchaseOrder f = new NewPurchaseOrder(purchaseId, 1);
-                try { this.Hide(); f.ShowDialog(); this.Show(); } catch { }
-            }
-            #endregion
+            //if (dgPurchase.CurrentRow.Cells[PoNo.Index].Value != null && dgPurchase.CurrentRow.Cells[PoNo.Index].Value.ToString() != "")
+            //    purchaseId = Convert.ToInt32(dgPurchase.CurrentRow.Cells[PoNo.Index].Value);
+            //if (dgPurchase.CurrentRow.Cells[PoNo.Index].Value == null)
+            //    MessageBox.Show("Please Enter a Purchase Order No", "Eror !");
+            //else
+            //{
+            //    purchaseId = Convert.ToInt32(dgPurchase.CurrentRow.Cells[PoNo.Index].Value);
+            //    NewPurchaseOrder f = new NewPurchaseOrder(purchaseId, 1);
+            //    try { this.Hide(); f.ShowDialog(); this.Show(); } catch { }
+            //}
+            //#endregion
         }
 
         private void btnClose_Click(object sender, EventArgs e)
