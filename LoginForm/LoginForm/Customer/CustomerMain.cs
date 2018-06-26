@@ -974,6 +974,7 @@ namespace LoginForm
                 btnContactClick();
                 btnAddressClick();
                 btnUpdate.Enabled = true;
+                btnCreate.Enabled = true;
             }
             else
             {

@@ -19,25 +19,44 @@ namespace LoginForm.QuotationModule
             InitializeComponent();
         }
 
-        private void dg_DoubleClick(object sender, EventArgs e)
-        {
-            ReturnFunc();
-        }
-
         public void ReturnFunc()
         {
-            FormQuotationAdd form = new FormQuotationAdd();
-            classQuotationAdd.quotationNo = dg.CurrentRow.Cells[QuoNo.Index].Value.ToString();
-            DialogResult dialogResult = MessageBox.Show("Do the Prices include quotation ", "Some Title", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+            if (dg.CurrentRow != null)
             {
-                classQuotationAdd.IsWithItems = true;
+                DialogResult dialogResult = MessageBox.Show("Do you want to import prices", "", MessageBoxButtons.YesNo);
+
+                if (dialogResult == DialogResult.Yes)
+                {
+                    string QuotationNo = dg.CurrentRow.Cells[QuoNo.Index].Value.ToString();
+                    Quotation quo;
+
+                    IMEEntities IME = new IMEEntities();
+                    try
+                    {
+                        quo = IME.Quotations.Where(q => q.QuotationNo == QuotationNo).FirstOrDefault();
+                    }
+                    catch (Exception)
+                    {
+
+                        throw;
+                    }
+                    if (quo != null)
+                    {
+                        this.Close();
+                        FormQuotationAdd newForm = new FormQuotationAdd(quo, "a");
+                        newForm.Show();
+                    }
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    this.Close();
+                }
+                
             }
-            else if (dialogResult == DialogResult.No)
+            else
             {
-                classQuotationAdd.IsWithItems = false;
+                MessageBox.Show("You did not chose any quotation.", "Warning!");
             }
-            this.Close();
         }
 
         private void dg_KeyDown(object sender, KeyEventArgs e)
@@ -50,18 +69,23 @@ namespace LoginForm.QuotationModule
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            search();
+        }
+
+        private void search()
+        {
             List<Quotation> QuoList = new List<Quotation>();
 
             string quotationNo = null;
             if (txtQuotationno.Text != "" && txtQuotationno.Text != null)
-                quotationNo = txtCustomerName.Text;
+                quotationNo = txtQuotationno.Text;
             string customer = null;
             if (txtCustomerName.Text != "" && txtCustomerName.Text != null)
                 customer = txtCustomerName.Text;
             if (rbCustomerName.Checked)
             {
-                if(customer!=null)
-                    { QuoList = IME.Quotations.Where(a => a.Customer.c_name.Contains(customer)).Where(a => a.StartDate >= btnStartDate.Value && a.StartDate <= btnEndDate.Value).ToList(); }
+                if (customer != null)
+                { QuoList = IME.Quotations.Where(a => a.Customer.c_name.Contains(customer)).Where(a => a.StartDate >= btnStartDate.Value && a.StartDate <= btnEndDate.Value).ToList(); }
                 else
                 {
                     QuoList = IME.Quotations.Where(a => a.StartDate >= btnStartDate.Value && a.StartDate <= btnEndDate.Value).ToList();
@@ -69,16 +93,16 @@ namespace LoginForm.QuotationModule
             }
             else
             {
-                if (quotationNo!=null)
+                if (quotationNo != null)
                 {
                     QuoList = IME.Quotations.Where(a => a.QuotationNo.Contains(quotationNo)).Where(a => a.StartDate >= btnStartDate.Value && a.StartDate <= btnEndDate.Value).ToList();
                 }
                 else
                 {
 
-                    QuoList = IME.Quotations.Where(a => a.StartDate >= btnStartDate.Value.Date).Where(a=> a.StartDate <= btnEndDate.Value.Date).ToList();
+                    QuoList = IME.Quotations.Where(a => a.StartDate >= btnStartDate.Value.Date).Where(a => a.StartDate <= btnEndDate.Value.Date).ToList();
                 }
-                
+
             }
             dg.DataSource = null;
             foreach (Quotation item in QuoList)
@@ -92,12 +116,34 @@ namespace LoginForm.QuotationModule
                 dg.Rows.Add(row);
 
             }
+
         }
 
         private void frmEx_Quotation_Load(object sender, EventArgs e)
         {
             btnStartDate.Value = DateTime.Now.AddDays(-7);
             classQuotationAdd.quotationNo = null;
+        }
+
+        private void txtCustomerName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                search();
+            }
+        }
+
+        private void txtQuotationno_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                search();
+            }
+        }
+
+        private void dg_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            ReturnFunc();
         }
     }
 }
