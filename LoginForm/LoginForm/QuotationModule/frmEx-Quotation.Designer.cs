@@ -93,7 +93,7 @@
             this.dg.Name = "dg";
             this.dg.Size = new System.Drawing.Size(561, 241);
             this.dg.TabIndex = 2;
-            this.dg.DoubleClick += new System.EventHandler(this.dg_DoubleClick);
+            this.dg.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dg_CellMouseDoubleClick);
             this.dg.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dg_KeyDown);
             // 
             // QuoNo
@@ -141,6 +141,7 @@
             this.txtQuotationno.Name = "txtQuotationno";
             this.txtQuotationno.Size = new System.Drawing.Size(100, 20);
             this.txtQuotationno.TabIndex = 3;
+            this.txtQuotationno.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtQuotationno_KeyDown);
             // 
             // label4
             // 
@@ -157,6 +158,7 @@
             this.txtCustomerName.Name = "txtCustomerName";
             this.txtCustomerName.Size = new System.Drawing.Size(100, 20);
             this.txtCustomerName.TabIndex = 3;
+            this.txtCustomerName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCustomerName_KeyDown);
             // 
             // rbQuoNo
             // 
