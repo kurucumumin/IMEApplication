@@ -807,6 +807,11 @@ namespace LoginForm.QuotationModule
                                 articleNo = articleNo.Replace("-", "");
                                 dgQuotationAddedItems.CurrentCell.Value = articleNo;
                             }
+                            if (articleNo.Length == 6)
+                            {
+                                articleNo = "0" + articleNo;
+                                dgQuotationAddedItems.CurrentCell.Value = articleNo;
+                            }
                             var articleList = IME.ArticleSearch(articleNo).ToList();
                             if (articleList.Count == 1)
                             {

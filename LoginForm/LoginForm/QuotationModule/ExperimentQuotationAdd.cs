@@ -29,6 +29,18 @@ namespace LoginForm.QuotationModule
             txtCustomerName.Text = _customer.c_name;
 
             dtpDate.Value = DateTime.Now;
+
+            if(_customer.CustomerWorkers.Count != 0)
+            {
+                cbWorkers.ValueMember = "ID";
+                cbWorkers.DisplayMember = "cw_name";
+                cbWorkers.DataSource = _customer.CustomerWorkers.ToList();
+            }
+
+            if (!String.IsNullOrEmpty(_customer.CurrNameQuo))
+            {
+                cbCurrency.SelectedIndex = cbCurrency.FindStringExact(_customer.CurrNameQuo);
+            }
         }
 
         private void CalculateLandingCost(string CustomerName)
@@ -161,8 +173,11 @@ namespace LoginForm.QuotationModule
             cbCurrency.DisplayMember = "currencyName";
             cbCurrency.ValueMember = "currencyID";
             cbCurrency.DataSource = db.Currencies.ToList();
+            cbCurrency.SelectedValue = Utils.getManagement().DefaultCurrency;
 
-
+            cbPayment.DisplayMember = "term_name";
+            cbPayment.ValueMember = "ID";
+            cbPayment.DataSource = db.PaymentTerms.ToList();
         }
     }
 }
