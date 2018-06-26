@@ -172,7 +172,7 @@ namespace LoginForm.PurchaseOrder
             sc.Credentials = new NetworkCredential("kurucumumin94@gmail.com", "6231962319+**");
 
             mail.From = new MailAddress("kurucumumin94@gmail.com", "Mümin Kurucu");
-            mail.Subject = "TeamERP"; mail.IsBodyHtml = true; mail.Body = "IME programı test mail";
+            mail.Subject = "ORDER"; mail.IsBodyHtml = true; mail.Body = "";
             Attachment attachment;
             //attachment = new Attachment(@"C:\Users\pomak\Desktop\Order.txt");
             //attachment = new Attachment(@"C:\Users\pomak\Desktop\"+ filename+".txt");

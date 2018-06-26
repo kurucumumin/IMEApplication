@@ -3916,7 +3916,7 @@ namespace LoginForm
                         }
                         if (dRow.Cells[dgvtxtSalesInvoiceProductName.Index].Value != null)
                         {
-                            dr["ProductName"] = dRow.Cells[dgvtxtSalesInvoiceProductName.Index].Value.ToString();
+                            dr["ProductName"] = dRow.Cells[dgvtxtSalesInvoiceProductName.Index].Value.ToString().ToUpper();
                         }
                         if (dRow.Cells[dgvtxtSalesInvoiceQty.Index].Value != null)
                         {

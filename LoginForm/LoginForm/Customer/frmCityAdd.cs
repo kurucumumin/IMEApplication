@@ -34,6 +34,8 @@ namespace LoginForm
                 IME.Cities.Add(ct);
                 IME.SaveChanges();
                 MessageBox.Show(this, ct.City_name + " added as a CityName");
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
             else
             {

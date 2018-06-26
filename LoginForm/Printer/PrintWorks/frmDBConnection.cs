@@ -8,7 +8,7 @@
     public class frmDBConnection : Form
     {
         private IContainer components = null;
-        public static string connectionString = "Data Source=.;Initial Catalog=IME;Integrated Security=True;";
+        public static string connectionString = @"Data Source=DESKTOP-51RN2GB\LOCAL;Initial Catalog=IME;Integrated Security=True;";
         private Label label1;
         private TextBox txtPassword;
 
@@ -50,7 +50,6 @@
             base.ClientSize = new Size(0xdb, 0x2b);
             base.Controls.Add(this.txtPassword);
             base.Controls.Add(this.label1);
-            base.Icon = (Icon) manager.GetObject("$this.Icon");
             base.Name = "frmDBConnection";
             base.StartPosition = FormStartPosition.CenterScreen;
             this.Text = "DB Connection";

@@ -29,6 +29,8 @@ namespace LoginForm
                 IME.CustomerSubCategories.Add(ct);
                 IME.SaveChanges();
                 MessageBox.Show(this, ct.subcategoryname + " added as a SubCategory");
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
             else
             {

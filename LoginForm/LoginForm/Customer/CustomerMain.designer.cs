@@ -63,8 +63,8 @@
             this.CustomerCode = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tab_account = new System.Windows.Forms.TabPage();
-            this.factor = new System.Windows.Forms.TextBox();
-            this.DiscountRate = new System.Windows.Forms.TextBox();
+            this.factor = new System.Windows.Forms.NumericUpDown();
+            this.DiscountRate = new System.Windows.Forms.NumericUpDown();
             this.AccountingNotes = new System.Windows.Forms.TextBox();
             this.InvCurrencyName = new System.Windows.Forms.ComboBox();
             this.InvCurrencyType = new System.Windows.Forms.ComboBox();
@@ -155,6 +155,8 @@
             this.tabControl1.SuspendLayout();
             this.tab_company.SuspendLayout();
             this.tab_account.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.factor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DiscountRate)).BeginInit();
             this.tab_adresses.SuspendLayout();
             this.tab_contact.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CustomerDataGrid)).BeginInit();
@@ -561,7 +563,13 @@
             // 
             // factor
             // 
+            this.factor.DecimalPlaces = 4;
             this.factor.Enabled = false;
+            this.factor.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.factor.Location = new System.Drawing.Point(491, 14);
             this.factor.Name = "factor";
             this.factor.Size = new System.Drawing.Size(174, 23);
@@ -570,8 +578,19 @@
             // 
             // DiscountRate
             // 
+            this.DiscountRate.DecimalPlaces = 4;
             this.DiscountRate.Enabled = false;
             this.DiscountRate.Location = new System.Drawing.Point(491, 57);
+            this.DiscountRate.Maximum = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this.DiscountRate.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            -2147483648});
             this.DiscountRate.Name = "DiscountRate";
             this.DiscountRate.Size = new System.Drawing.Size(174, 23);
             this.DiscountRate.TabIndex = 8;
@@ -1524,6 +1543,8 @@
             this.tab_company.PerformLayout();
             this.tab_account.ResumeLayout(false);
             this.tab_account.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.factor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DiscountRate)).EndInit();
             this.tab_adresses.ResumeLayout(false);
             this.tab_adresses.PerformLayout();
             this.tab_contact.ResumeLayout(false);
@@ -1654,8 +1675,8 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.ComboBox cbMainContact;
         private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.TextBox DiscountRate;
-        private System.Windows.Forms.TextBox factor;
+        private System.Windows.Forms.NumericUpDown DiscountRate;
+        private System.Windows.Forms.NumericUpDown factor;
         private System.Windows.Forms.ComboBox ContactAdress;
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.Button TownAdd;

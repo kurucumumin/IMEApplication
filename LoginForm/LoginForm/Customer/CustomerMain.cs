@@ -1879,6 +1879,7 @@ namespace LoginForm
             if (factor.Text == "") factor.Text = 0.ToString();
             decimal factorValue = Decimal.Parse(factor.Text);
             DiscountRate.Text = (100 - ((factorValue * 100) / Utils.getManagement().Factor)).ToString();
+            DiscountRate.Text = String.Format("{0:0.0000}", Decimal.Parse(DiscountRate.Text)).ToString();
 
         }
 
@@ -1886,6 +1887,7 @@ namespace LoginForm
         {
             decimal DiscountRateValue = Decimal.Parse(DiscountRate.Text);
             factor.Text = (Utils.getManagement().Factor - ((DiscountRateValue * Utils.getManagement().Factor) / 100)).ToString();
+            factor.Text = String.Format("{0:0.0000}", Decimal.Parse(factor.Text)).ToString();
         }
 
         private void CustomerDataGrid_SelectionChanged(object sender, EventArgs e)

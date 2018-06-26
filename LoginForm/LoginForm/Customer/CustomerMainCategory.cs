@@ -26,6 +26,8 @@ namespace LoginForm
                 IME.CustomerCategories.Add(cd);
                 IME.SaveChanges();
                 MessageBox.Show(DepartmentName.Text + " is added as a Category");
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
             else
             {

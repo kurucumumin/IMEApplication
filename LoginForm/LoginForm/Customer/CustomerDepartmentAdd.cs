@@ -24,6 +24,8 @@ namespace LoginForm
                 IME.CustomerDepartments.Add(cd);
                 IME.SaveChanges();
                 MessageBox.Show(DepartmentName.Text + " is added as a Department");
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
             else
             {

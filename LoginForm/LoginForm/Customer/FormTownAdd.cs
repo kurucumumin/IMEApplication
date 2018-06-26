@@ -51,6 +51,7 @@ namespace LoginForm
                 newTown.Town_name = txtTown.Text;
                 IME.Towns.Add(newTown);
                 IME.SaveChanges();
+                this.DialogResult = DialogResult.OK;
                 this.Close();
             }
         }
