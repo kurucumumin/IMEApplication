@@ -302,5 +302,21 @@ namespace LoginForm.PurchaseOrder
                 MessageBox.Show("PO29:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void btnSelect_Click_1(object sender, EventArgs e)
+        {
+            for (int i = 0; i < dgPurchase.Rows.Count; i++)
+            {
+                dgPurchase.Rows[i].Cells[SLC.Index].Value = true;
+            }
+        }
+
+        private void btnClear_Click_1(object sender, EventArgs e)
+        {
+            for (int i = 0; i < dgPurchase.Rows.Count; i++)
+            {
+                dgPurchase.Rows[i].Cells[SLC.Index].Value = false;
+            }
+        }
     }
 }

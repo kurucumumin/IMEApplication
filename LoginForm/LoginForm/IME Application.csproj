@@ -22,7 +22,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>113</ApplicationRevision>
+    <ApplicationRevision>114</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -2305,6 +2305,29 @@
     <Compile Include="ModulePurchaseInvoice\frmPurchaseInvoiceLoader.Designer.cs">
       <DependentUpon>frmPurchaseInvoiceLoader.cs</DependentUpon>
     </Compile>
+    <Compile Include="PrintWorks\DBConnection.cs" />
+    <Compile Include="PrintWorks\DetailsInfo.cs" />
+    <Compile Include="PrintWorks\DetailsSP.cs" />
+    <Compile Include="PrintWorks\DotMatrixPrint.cs" />
+    <Compile Include="PrintWorks\FieldInfo.cs" />
+    <Compile Include="PrintWorks\FieldSP.cs" />
+    <Compile Include="PrintWorks\FormInfo.cs" />
+    <Compile Include="PrintWorks\FormSP.cs" />
+    <Compile Include="PrintWorks\frmDBConnection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrintWorks\frmForms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrintWorks\frmPrintDesigner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrintWorks\MasterInfo.cs" />
+    <Compile Include="PrintWorks\MasterSP.cs" />
+    <Compile Include="PrintWorks\Program.cs" />
+    <Compile Include="PrintWorks\Properties\Resources.cs" />
+    <Compile Include="PrintWorks\Properties\Settings.cs" />
+    <Compile Include="PrintWorks\RawPrinterHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources1.Designer.cs">
@@ -2952,6 +2975,10 @@
     <EmbeddedResource Include="ModulePurchaseInvoice\frmPurchaseInvoiceLoader.resx">
       <DependentUpon>frmPurchaseInvoiceLoader.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PrintWorks\PrintWorks.frmDBConnection.resources" />
+    <EmbeddedResource Include="PrintWorks\PrintWorks.frmForms.resources" />
+    <EmbeddedResource Include="PrintWorks\PrintWorks.frmPrintDesigner.resources" />
+    <EmbeddedResource Include="PrintWorks\PrintWorks.Properties.Resources.resources" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources1.Designer.cs</LastGenOutput>

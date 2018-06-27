@@ -13,6 +13,7 @@ namespace LoginForm.QuotationModule
 {
     public partial class frmEx_Quotation : Form
     {
+        public Quotation quo;
         IMEEntities IME = new IMEEntities();
         public frmEx_Quotation()
         {
@@ -28,7 +29,6 @@ namespace LoginForm.QuotationModule
                 if (dialogResult == DialogResult.Yes)
                 {
                     string QuotationNo = dg.CurrentRow.Cells[QuoNo.Index].Value.ToString();
-                    Quotation quo;
 
                     IMEEntities IME = new IMEEntities();
                     try
@@ -43,8 +43,8 @@ namespace LoginForm.QuotationModule
                     if (quo != null)
                     {
                         this.Close();
-                        FormQuotationAdd newForm = new FormQuotationAdd(quo, "a");
-                        newForm.Show();
+                        //FormQuotationAdd newForm =  new FormQuotationAdd(quo, "a");
+                        //newForm.Show();
                     }
                 }
                 else if (dialogResult == DialogResult.No)
