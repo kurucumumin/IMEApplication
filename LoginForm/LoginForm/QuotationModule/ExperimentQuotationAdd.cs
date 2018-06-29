@@ -42,9 +42,29 @@ namespace LoginForm.QuotationModule
                 cbCurrency.SelectedIndex = cbCurrency.FindStringExact(_customer.CurrNameQuo);
             }
 
-            if (!String.IsNullOrEmpty(_customer.representaryID?.ToString()))
+            if (_customer.representaryID != null)
             {
                 cbRepresentative.SelectedValue = _customer.representaryID;
+            }
+
+            if(_customer.paymentmethodID != null)
+            {
+                cbPaymentMethod.SelectedValue = _customer.paymentmethodID;
+            }
+
+            if(_customer.factor != null)
+            {
+                txtFactor.Text = _customer.factor.ToString();
+            }
+
+            if(_customer.customerNoteID != null)
+            {
+                txtCustomerNote.Text = _customer.Note.Note_name;
+            }
+
+            if (_customer.customerNoteID != null)
+            {
+                txtCustomerNote.Text = _customer.Note.Note_name;
             }
         }
 
@@ -180,9 +200,9 @@ namespace LoginForm.QuotationModule
             cbCurrency.DataSource = db.Currencies.ToList();
             cbCurrency.SelectedValue = Utils.getManagement().DefaultCurrency;
 
-            cbPayment.DisplayMember = "term_name";
-            cbPayment.ValueMember = "ID";
-            cbPayment.DataSource = db.PaymentTerms.ToList();
+            cbPaymentMethod.DisplayMember = "term_name";
+            cbPaymentMethod.ValueMember = "ID";
+            cbPaymentMethod.DataSource = db.PaymentTerms.ToList();
 
             cbRepresentative.DisplayMember = "NameLastName";
             cbRepresentative.ValueMember = "WorkerID";

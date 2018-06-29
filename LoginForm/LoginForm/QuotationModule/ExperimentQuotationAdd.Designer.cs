@@ -159,13 +159,13 @@
             this.btnViewMore = new System.Windows.Forms.Button();
             this.txtCustomerName = new System.Windows.Forms.TextBox();
             this.txtCustomerCode = new System.Windows.Forms.TextBox();
-            this.cbPayment = new System.Windows.Forms.ComboBox();
+            this.cbPaymentMethod = new System.Windows.Forms.ComboBox();
             this.label21 = new System.Windows.Forms.Label();
             this.cbRepresentative = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtRFQNo = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.cbFactor = new System.Windows.Forms.TextBox();
+            this.txtFactor = new System.Windows.Forms.TextBox();
             this.txtValidity = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtQuotationNo = new System.Windows.Forms.TextBox();
@@ -184,12 +184,6 @@
             this.label15 = new System.Windows.Forms.Label();
             this.tabItemDetails = new System.Windows.Forms.TabPage();
             this.gbCost = new System.Windows.Forms.GroupBox();
-            this.lblMargin = new System.Windows.Forms.Label();
-            this.txtWeb5 = new System.Windows.Forms.TextBox();
-            this.txtWeb2 = new System.Windows.Forms.TextBox();
-            this.txtWeb3 = new System.Windows.Forms.TextBox();
-            this.txtWeb1 = new System.Windows.Forms.TextBox();
-            this.txtWeb4 = new System.Windows.Forms.TextBox();
             this.txtCost1 = new System.Windows.Forms.TextBox();
             this.txtMargin5 = new System.Windows.Forms.TextBox();
             this.txtUK5 = new System.Windows.Forms.TextBox();
@@ -205,6 +199,12 @@
             this.txtCost2 = new System.Windows.Forms.TextBox();
             this.txtMargin3 = new System.Windows.Forms.TextBox();
             this.txtUK4 = new System.Windows.Forms.TextBox();
+            this.lblMargin = new System.Windows.Forms.Label();
+            this.txtWeb5 = new System.Windows.Forms.TextBox();
+            this.txtWeb2 = new System.Windows.Forms.TextBox();
+            this.txtWeb3 = new System.Windows.Forms.TextBox();
+            this.txtWeb1 = new System.Windows.Forms.TextBox();
+            this.txtWeb4 = new System.Windows.Forms.TextBox();
             this.txtUnitCount5 = new System.Windows.Forms.TextBox();
             this.txtUnitCount2 = new System.Windows.Forms.TextBox();
             this.txtUnitCount1 = new System.Windows.Forms.TextBox();
@@ -1312,13 +1312,13 @@
             this.gbCustomer.Controls.Add(this.btnViewMore);
             this.gbCustomer.Controls.Add(this.txtCustomerName);
             this.gbCustomer.Controls.Add(this.txtCustomerCode);
-            this.gbCustomer.Controls.Add(this.cbPayment);
+            this.gbCustomer.Controls.Add(this.cbPaymentMethod);
             this.gbCustomer.Controls.Add(this.label21);
             this.gbCustomer.Controls.Add(this.cbRepresentative);
             this.gbCustomer.Controls.Add(this.label6);
             this.gbCustomer.Controls.Add(this.txtRFQNo);
             this.gbCustomer.Controls.Add(this.label3);
-            this.gbCustomer.Controls.Add(this.cbFactor);
+            this.gbCustomer.Controls.Add(this.txtFactor);
             this.gbCustomer.Controls.Add(this.txtValidity);
             this.gbCustomer.Controls.Add(this.label5);
             this.gbCustomer.Controls.Add(this.txtQuotationNo);
@@ -1352,6 +1352,7 @@
             // 
             // dtpDate
             // 
+            this.dtpDate.Enabled = false;
             this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDate.Location = new System.Drawing.Point(365, 71);
             this.dtpDate.Margin = new System.Windows.Forms.Padding(4);
@@ -1387,15 +1388,15 @@
             this.txtCustomerCode.TabIndex = 75;
             this.txtCustomerCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CustomerCode_KeyDown);
             // 
-            // cbPayment
+            // cbPaymentMethod
             // 
-            this.cbPayment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbPayment.FormattingEnabled = true;
-            this.cbPayment.Location = new System.Drawing.Point(365, 100);
-            this.cbPayment.Margin = new System.Windows.Forms.Padding(4);
-            this.cbPayment.Name = "cbPayment";
-            this.cbPayment.Size = new System.Drawing.Size(268, 24);
-            this.cbPayment.TabIndex = 74;
+            this.cbPaymentMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbPaymentMethod.FormattingEnabled = true;
+            this.cbPaymentMethod.Location = new System.Drawing.Point(365, 100);
+            this.cbPaymentMethod.Margin = new System.Windows.Forms.Padding(4);
+            this.cbPaymentMethod.Name = "cbPaymentMethod";
+            this.cbPaymentMethod.Size = new System.Drawing.Size(268, 24);
+            this.cbPaymentMethod.TabIndex = 74;
             // 
             // label21
             // 
@@ -1445,14 +1446,14 @@
             this.label3.TabIndex = 68;
             this.label3.Text = "RFQ No";
             // 
-            // cbFactor
+            // txtFactor
             // 
-            this.cbFactor.Location = new System.Drawing.Point(579, 132);
-            this.cbFactor.Margin = new System.Windows.Forms.Padding(4);
-            this.cbFactor.Name = "cbFactor";
-            this.cbFactor.Size = new System.Drawing.Size(55, 22);
-            this.cbFactor.TabIndex = 67;
-            this.cbFactor.Text = "1";
+            this.txtFactor.Location = new System.Drawing.Point(579, 132);
+            this.txtFactor.Margin = new System.Windows.Forms.Padding(4);
+            this.txtFactor.Name = "txtFactor";
+            this.txtFactor.Size = new System.Drawing.Size(55, 22);
+            this.txtFactor.TabIndex = 67;
+            this.txtFactor.Text = "1";
             // 
             // txtValidity
             // 
@@ -1737,66 +1738,6 @@
             this.gbCost.TabIndex = 510;
             this.gbCost.TabStop = false;
             // 
-            // lblMargin
-            // 
-            this.lblMargin.AutoSize = true;
-            this.lblMargin.Location = new System.Drawing.Point(328, 9);
-            this.lblMargin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblMargin.Name = "lblMargin";
-            this.lblMargin.Size = new System.Drawing.Size(51, 17);
-            this.lblMargin.TabIndex = 437;
-            this.lblMargin.Text = "Margin";
-            // 
-            // txtWeb5
-            // 
-            this.txtWeb5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtWeb5.Location = new System.Drawing.Point(71, 156);
-            this.txtWeb5.Margin = new System.Windows.Forms.Padding(4);
-            this.txtWeb5.Name = "txtWeb5";
-            this.txtWeb5.ReadOnly = true;
-            this.txtWeb5.Size = new System.Drawing.Size(79, 23);
-            this.txtWeb5.TabIndex = 431;
-            // 
-            // txtWeb2
-            // 
-            this.txtWeb2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtWeb2.Location = new System.Drawing.Point(71, 62);
-            this.txtWeb2.Margin = new System.Windows.Forms.Padding(4);
-            this.txtWeb2.Name = "txtWeb2";
-            this.txtWeb2.ReadOnly = true;
-            this.txtWeb2.Size = new System.Drawing.Size(79, 23);
-            this.txtWeb2.TabIndex = 435;
-            // 
-            // txtWeb3
-            // 
-            this.txtWeb3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtWeb3.Location = new System.Drawing.Point(71, 94);
-            this.txtWeb3.Margin = new System.Windows.Forms.Padding(4);
-            this.txtWeb3.Name = "txtWeb3";
-            this.txtWeb3.ReadOnly = true;
-            this.txtWeb3.Size = new System.Drawing.Size(79, 23);
-            this.txtWeb3.TabIndex = 434;
-            // 
-            // txtWeb1
-            // 
-            this.txtWeb1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtWeb1.Location = new System.Drawing.Point(71, 31);
-            this.txtWeb1.Margin = new System.Windows.Forms.Padding(4);
-            this.txtWeb1.Name = "txtWeb1";
-            this.txtWeb1.ReadOnly = true;
-            this.txtWeb1.Size = new System.Drawing.Size(79, 23);
-            this.txtWeb1.TabIndex = 436;
-            // 
-            // txtWeb4
-            // 
-            this.txtWeb4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtWeb4.Location = new System.Drawing.Point(71, 126);
-            this.txtWeb4.Margin = new System.Windows.Forms.Padding(4);
-            this.txtWeb4.Name = "txtWeb4";
-            this.txtWeb4.ReadOnly = true;
-            this.txtWeb4.Size = new System.Drawing.Size(79, 23);
-            this.txtWeb4.TabIndex = 433;
-            // 
             // txtCost1
             // 
             this.txtCost1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -1946,6 +1887,66 @@
             this.txtUK4.ReadOnly = true;
             this.txtUK4.Size = new System.Drawing.Size(79, 23);
             this.txtUK4.TabIndex = 424;
+            // 
+            // lblMargin
+            // 
+            this.lblMargin.AutoSize = true;
+            this.lblMargin.Location = new System.Drawing.Point(328, 9);
+            this.lblMargin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblMargin.Name = "lblMargin";
+            this.lblMargin.Size = new System.Drawing.Size(51, 17);
+            this.lblMargin.TabIndex = 437;
+            this.lblMargin.Text = "Margin";
+            // 
+            // txtWeb5
+            // 
+            this.txtWeb5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtWeb5.Location = new System.Drawing.Point(71, 156);
+            this.txtWeb5.Margin = new System.Windows.Forms.Padding(4);
+            this.txtWeb5.Name = "txtWeb5";
+            this.txtWeb5.ReadOnly = true;
+            this.txtWeb5.Size = new System.Drawing.Size(79, 23);
+            this.txtWeb5.TabIndex = 431;
+            // 
+            // txtWeb2
+            // 
+            this.txtWeb2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtWeb2.Location = new System.Drawing.Point(71, 62);
+            this.txtWeb2.Margin = new System.Windows.Forms.Padding(4);
+            this.txtWeb2.Name = "txtWeb2";
+            this.txtWeb2.ReadOnly = true;
+            this.txtWeb2.Size = new System.Drawing.Size(79, 23);
+            this.txtWeb2.TabIndex = 435;
+            // 
+            // txtWeb3
+            // 
+            this.txtWeb3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtWeb3.Location = new System.Drawing.Point(71, 94);
+            this.txtWeb3.Margin = new System.Windows.Forms.Padding(4);
+            this.txtWeb3.Name = "txtWeb3";
+            this.txtWeb3.ReadOnly = true;
+            this.txtWeb3.Size = new System.Drawing.Size(79, 23);
+            this.txtWeb3.TabIndex = 434;
+            // 
+            // txtWeb1
+            // 
+            this.txtWeb1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtWeb1.Location = new System.Drawing.Point(71, 31);
+            this.txtWeb1.Margin = new System.Windows.Forms.Padding(4);
+            this.txtWeb1.Name = "txtWeb1";
+            this.txtWeb1.ReadOnly = true;
+            this.txtWeb1.Size = new System.Drawing.Size(79, 23);
+            this.txtWeb1.TabIndex = 436;
+            // 
+            // txtWeb4
+            // 
+            this.txtWeb4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtWeb4.Location = new System.Drawing.Point(71, 126);
+            this.txtWeb4.Margin = new System.Windows.Forms.Padding(4);
+            this.txtWeb4.Name = "txtWeb4";
+            this.txtWeb4.ReadOnly = true;
+            this.txtWeb4.Size = new System.Drawing.Size(79, 23);
+            this.txtWeb4.TabIndex = 433;
             // 
             // txtUnitCount5
             // 
@@ -3336,13 +3337,13 @@
         private System.Windows.Forms.Button btnViewMore;
         private System.Windows.Forms.TextBox txtCustomerName;
         private System.Windows.Forms.TextBox txtCustomerCode;
-        private System.Windows.Forms.ComboBox cbPayment;
+        private System.Windows.Forms.ComboBox cbPaymentMethod;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.ComboBox cbRepresentative;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtRFQNo;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox cbFactor;
+        private System.Windows.Forms.TextBox txtFactor;
         private System.Windows.Forms.TextBox txtValidity;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtQuotationNo;

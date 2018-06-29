@@ -3149,6 +3149,18 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Customer__custom__654CE0F2">
+          <End Role="Notes" Type="Self.Notes" Multiplicity="0..1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Notes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="customerAccountantNoteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Customer__MainCo__19AACF41">
           <End Role="CustomerWorker" Type="Self.CustomerWorker" Multiplicity="0..1" />
           <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
@@ -10124,6 +10136,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="Notes" EntitySet="Notes" />
             <End Role="Customer" EntitySet="Customer" />
           </AssociationSet>
+          <AssociationSet Name="FK__Customer__custom__654CE0F2" Association="Self.FK__Customer__custom__654CE0F2">
+            <End Role="Notes" EntitySet="Notes" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
           <AssociationSet Name="FK__Customer__MainCo__19AACF41" Association="Self.FK__Customer__MainCo__19AACF41">
             <End Role="CustomerWorker" EntitySet="CustomerWorker" />
             <End Role="Customer" EntitySet="Customer" />
@@ -11945,6 +11961,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <NavigationProperty Name="Worker" Relationship="Self.FK__Customer__accoun__6EF57B66" FromRole="Customer" ToRole="Worker" />
           <NavigationProperty Name="CustomerCategory" Relationship="Self.FK__Customer__catego__636EBA21" FromRole="Customer" ToRole="CustomerCategory" />
           <NavigationProperty Name="Note" Relationship="Self.FK__Customer__custom__3B75D760" FromRole="Customer" ToRole="Notes" />
+          <NavigationProperty Name="Note1" Relationship="Self.FK__Customer__custom__654CE0F2" FromRole="Customer" ToRole="Notes" />
           <NavigationProperty Name="CustomerWorker" Relationship="Self.FK__Customer__MainCo__19AACF41" FromRole="Customer" ToRole="CustomerWorker" />
           <NavigationProperty Name="PaymentMethod" Relationship="Self.FK__Customer__paymen__3D5E1FD2" FromRole="Customer" ToRole="PaymentMethod" />
           <NavigationProperty Name="PaymentTerm" Relationship="Self.FK__Customer__paymen__3E52440B" FromRole="Customer" ToRole="PaymentTerm" />
@@ -12713,6 +12730,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Note_name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Customers" Relationship="Self.FK__Customer__custom__3B75D760" FromRole="Notes" ToRole="Customer" />
+          <NavigationProperty Name="Customers1" Relationship="Self.FK__Customer__custom__654CE0F2" FromRole="Notes" ToRole="Customer" />
           <NavigationProperty Name="CustomerWorkers" Relationship="Self.FK__CustomerW__custo__4222D4EF" FromRole="Notes" ToRole="CustomerWorker" />
           <NavigationProperty Name="ItemNotes" Relationship="Self.FK__ItemNote__NoteID__2B0A656D" FromRole="Notes" ToRole="ItemNote" />
           <NavigationProperty Name="Quotations" Relationship="Self.FK__Quotation__NoteF__0169315C" FromRole="Notes" ToRole="Quotation" />
@@ -15865,6 +15883,18 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Principal>
             <Dependent Role="Customer">
               <PropertyRef Name="customerNoteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Customer__custom__654CE0F2">
+          <End Role="Notes" Type="Self.Note" Multiplicity="0..1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Notes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="customerAccountantNoteID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -19771,6 +19801,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="Customer" EntitySet="Customers" />
           </AssociationSet>
           <AssociationSet Name="FK__Customer__custom__3B75D760" Association="Self.FK__Customer__custom__3B75D760">
+            <End Role="Notes" EntitySet="Notes" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Customer__custom__654CE0F2" Association="Self.FK__Customer__custom__654CE0F2">
             <End Role="Notes" EntitySet="Notes" />
             <End Role="Customer" EntitySet="Customers" />
           </AssociationSet>

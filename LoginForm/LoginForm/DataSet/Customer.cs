@@ -65,6 +65,7 @@ namespace LoginForm.DataSet
         public virtual Worker Worker { get; set; }
         public virtual CustomerCategory CustomerCategory { get; set; }
         public virtual Note Note { get; set; }
+        public virtual Note Note1 { get; set; }
         public virtual CustomerWorker CustomerWorker { get; set; }
         public virtual PaymentMethod PaymentMethod { get; set; }
         public virtual PaymentTerm PaymentTerm { get; set; }
