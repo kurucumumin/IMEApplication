@@ -35,9 +35,38 @@ namespace LoginForm.QuotationModule
         {
             if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1125).FirstOrDefault() != null)//Can Edit any Quotation
             {
-                ModifyQuotation();
+                ViewQuotation();
             }
            
+        }
+
+        private void ViewQuotation()
+        {
+            if (dgQuotation.CurrentRow != null)
+            {
+                string QuotationNo = dgQuotation.CurrentRow.Cells["QuotationNo"].Value.ToString();
+                Quotation quo;
+
+                IMEEntities IME = new IMEEntities();
+                try
+                {
+                    quo = IME.Quotations.Where(q => q.QuotationNo == QuotationNo).FirstOrDefault();
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+                if (quo != null)
+                {
+                    FormQuotationAdd newForm = new FormQuotationAdd(quo, "View");
+                    newForm.ShowDialog();
+                }
+            }
+            else
+            {
+                MessageBox.Show("You did not chose any quotation.", "Warning!");
+            }
         }
 
         private void btnDeleteQuotation_Click(object sender, EventArgs e)
