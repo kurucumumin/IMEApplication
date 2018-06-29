@@ -25,7 +25,7 @@ namespace LoginForm.QuotationModule
 
         private void SetCustomer()
         {
-            CustomerCode.Text = _customer.ID;
+            txtCustomerCode.Text = _customer.ID;
             txtCustomerName.Text = _customer.c_name;
 
             dtpDate.Value = DateTime.Now;
@@ -40,6 +40,11 @@ namespace LoginForm.QuotationModule
             if (!String.IsNullOrEmpty(_customer.CurrNameQuo))
             {
                 cbCurrency.SelectedIndex = cbCurrency.FindStringExact(_customer.CurrNameQuo);
+            }
+
+            if (!String.IsNullOrEmpty(_customer.representaryID?.ToString()))
+            {
+                cbRepresentative.SelectedValue = _customer.representaryID;
             }
         }
 
@@ -148,7 +153,7 @@ namespace LoginForm.QuotationModule
         {
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
-                FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch(CustomerCode.Text);
+                FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch(txtCustomerCode.Text);
                 this.Enabled = false;
 
                 if(form.ShowDialog() == DialogResult.OK)
@@ -178,6 +183,10 @@ namespace LoginForm.QuotationModule
             cbPayment.DisplayMember = "term_name";
             cbPayment.ValueMember = "ID";
             cbPayment.DataSource = db.PaymentTerms.ToList();
+
+            cbRepresentative.DisplayMember = "NameLastName";
+            cbRepresentative.ValueMember = "WorkerID";
+            cbRepresentative.DataSource = db.Workers.ToList();
         }
     }
 }

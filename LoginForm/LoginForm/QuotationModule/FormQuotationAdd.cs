@@ -1111,14 +1111,14 @@ namespace LoginForm.QuotationModule
             txtLithium.Text = "";
             txtCalibrationInd.Text = "";
             txtLicenceType.Text = "";
-            txtDiscCharge.Text = "";
+            txtDiscChange.Text = "";
             txtExpiringPro.Text = "";
             txtUKDiscDate.Text = "";
             txtDiscontinuationDate.Text = "";
             txtSubstitutedBy.Text = "";
             txtRunOn.Text = "";
             txtReferral.Text = "";
-            textBox35.Text = "";
+            txtPP.Text = "";
             txtHeight.Text = "";
             txtWidth.Text = "";
             txtLength.Text = "";
@@ -1181,7 +1181,7 @@ namespace LoginForm.QuotationModule
                 txtCofO.Text = ItemTabDetails.CofO;
                 txtCCCN.Text = ItemTabDetails.CCCN_No.ToString() ?? ""; ;
                 txtUKDiscDate.Text = ItemTabDetails.Uk_Disc_Date;
-                txtDiscCharge.Text = ItemTabDetails.Disc_Change_Ind;
+                txtDiscChange.Text = ItemTabDetails.Disc_Change_Ind;
                 txtExpiringPro.Text = ItemTabDetails.Expiring_Product_Change_Ind;
                 txtManufacturer.Text = ItemTabDetails.Manufacturer.ToString() ?? ""; ;
                 txtMHCodeLevel1.Text = ItemTabDetails.MH_Code_Level_1;
@@ -2206,7 +2206,7 @@ namespace LoginForm.QuotationModule
                 txtCofO.Text = ItemTabDetails.CofO;
                 txtCCCN.Text = ItemTabDetails.CCCN_No.ToString() ?? ""; ;
                 txtUKDiscDate.Text = ItemTabDetails.Uk_Disc_Date;
-                txtDiscCharge.Text = ItemTabDetails.Disc_Change_Ind;
+                txtDiscChange.Text = ItemTabDetails.Disc_Change_Ind;
                 txtExpiringPro.Text = ItemTabDetails.Expiring_Product_Change_Ind;
                 txtManufacturer.Text = ItemTabDetails.Manufacturer.ToString() ?? ""; ;
                 txtMHCodeLevel1.Text = ItemTabDetails.MH_Code_Level_1;
