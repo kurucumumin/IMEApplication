@@ -242,13 +242,13 @@ namespace LoginForm.QuotationModule
 
         private void button5_Click(object sender, EventArgs e)
         {
-
+            ExperimentQuotationAdd form = new ExperimentQuotationAdd();
+            form.Show();
         }
 
         private void btnSearchStockNumber_Click(object sender, EventArgs e)
         {
-            ExperimentQuotationAdd form = new ExperimentQuotationAdd();
-            form.Show();
+            
         }
     }
 }

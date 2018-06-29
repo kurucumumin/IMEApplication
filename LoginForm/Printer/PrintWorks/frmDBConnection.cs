@@ -8,7 +8,7 @@
     public class frmDBConnection : Form
     {
         private IContainer components = null;
-        public static string connectionString = @"Data Source=195.201.76.156;Initial Catalog=IME;Integrated Security=True;";
+        public static string connectionString = @"Data Source=.;Initial Catalog=IME;Integrated Security=True;";
         private Label label1;
         private TextBox txtPassword;
 
@@ -73,4 +73,3 @@
         }
     }
 }
-

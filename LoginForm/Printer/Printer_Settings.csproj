@@ -100,13 +100,13 @@
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1 </ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
+    <None Include="Printer_Settings_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Printer_Settings_TemporaryKey.pfx" />
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
   </ItemGroup>
 </Project>
