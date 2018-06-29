@@ -812,11 +812,14 @@ namespace LoginForm.QuotationModule
                                 articleNo = "0" + articleNo;
                                 dgQuotationAddedItems.CurrentCell.Value = articleNo;
                             }
+
+
                             var articleList = IME.ArticleSearch(articleNo).ToList();
                             if (articleList.Count == 1)
                             {
                                 if (!Discontinued(articleNo))
                                 {
+                                    tabControl1.SelectedTab = tabItemDetails;
                                     ItemDetailsFiller(articleNo);//tekrar bakılacak
                                     FillProductCodeItem();
                                 }
@@ -831,10 +834,10 @@ namespace LoginForm.QuotationModule
                                 FormQuotationItemSearch itemsearch = new FormQuotationItemSearch(articleNo);
                                 itemsearch.ShowDialog();
                                 articleNo = classQuotationAdd.ItemCode;
+                                tabControl1.SelectedTab = tabItemDetails;
                                 dgQuotationAddedItems.CurrentCell.Value = articleNo;
                                 ItemDetailsFiller(articleNo);//tekrar bakılacak
                                 FillProductCodeItem();
-
                             }
                             else
                             {
@@ -1432,7 +1435,6 @@ namespace LoginForm.QuotationModule
 
             if (ItemTabDetails != null)
             {
-
                 CurrentRow.Cells["dgDesc"].Value = ItemTabDetails.Article_Desc;
                 CurrentRow.Cells["dgSSM"].Value = ItemTabDetails.Pack_Quantity.ToString() ?? ""; ;
                 CurrentRow.Cells["dgUC"].Value = ItemTabDetails.Unit_Content.ToString() ?? ""; ;
@@ -2521,8 +2523,8 @@ namespace LoginForm.QuotationModule
                 txtRunOn.Text = ItemTabDetails.Runon.ToString();
                 txtReferral.Text = ItemTabDetails.Referral.ToString();
                 txtLicenceType.Text = ItemTabDetails.LicenceType;
-                if (ItemTabDetails.LicenceType != "" && ItemTabDetails.LicenceType != null) isLicenceType = true;
-                if (ItemTabDetails.Calibration_Ind != "" && ItemTabDetails.Calibration_Ind != null) isCalibrationInd = true;
+                if (!String.IsNullOrEmpty(ItemTabDetails.LicenceType)) isLicenceType = true;
+                if (ItemTabDetails.Calibration_Ind == "Y") isCalibrationInd = true;
                 #region ItemMarginFiller
 
                 int quantity = Int32.Parse(ItemTabDetails.Col1Break.ToString() ?? "0");
