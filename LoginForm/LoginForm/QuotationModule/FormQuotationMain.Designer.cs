@@ -28,30 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgQuotation = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnSearchStockNumber = new System.Windows.Forms.Button();
-            this.chcCustStockNumber = new System.Windows.Forms.CheckBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.chcAllQuots = new System.Windows.Forms.CheckBox();
-            this.txtSearchText = new System.Windows.Forms.TextBox();
+            this.chcCustStockNumber = new System.Windows.Forms.CheckBox();
+            this.btnSearchStockNumber = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.cbSearch = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
-            this.dtpToDate = new System.Windows.Forms.DateTimePicker();
-            this.btnDeleteQuotation = new System.Windows.Forms.Button();
-            this.btnModifyQuotation = new System.Windows.Forms.Button();
-            this.btnRefreshList = new System.Windows.Forms.Button();
+            this.txtSearchText = new System.Windows.Forms.TextBox();
+            this.chcAllQuots = new System.Windows.Forms.CheckBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnNewQuotation = new System.Windows.Forms.Button();
+            this.btnModifyQuotation = new System.Windows.Forms.Button();
+            this.btnDeleteQuotation = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnRefreshList = new System.Windows.Forms.Button();
+            this.dtpToDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgQuotation)).BeginInit();
             this.panel1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,14 +86,14 @@
             this.dgQuotation.AllowUserToDeleteRows = false;
             this.dgQuotation.AllowUserToOrderColumns = true;
             this.dgQuotation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgQuotation.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgQuotation.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgQuotation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgQuotation.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dgQuotation.Location = new System.Drawing.Point(8, 129);
@@ -101,32 +109,50 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnSearchStockNumber);
-            this.panel1.Controls.Add(this.chcCustStockNumber);
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.chcAllQuots);
-            this.panel1.Controls.Add(this.txtSearchText);
-            this.panel1.Controls.Add(this.cbSearch);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.dtpFromDate);
-            this.panel1.Controls.Add(this.dtpToDate);
-            this.panel1.Controls.Add(this.btnDeleteQuotation);
-            this.panel1.Controls.Add(this.btnModifyQuotation);
-            this.panel1.Controls.Add(this.btnRefreshList);
-            this.panel1.Controls.Add(this.btnNewQuotation);
+            this.panel1.Controls.Add(this.groupBox4);
+            this.panel1.Controls.Add(this.groupBox3);
+            this.panel1.Controls.Add(this.groupBox2);
+            this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1230, 115);
             this.panel1.TabIndex = 1;
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.textBox2);
+            this.groupBox4.Controls.Add(this.chcCustStockNumber);
+            this.groupBox4.Controls.Add(this.btnSearchStockNumber);
+            this.groupBox4.Location = new System.Drawing.Point(857, -1);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(200, 112);
+            this.groupBox4.TabIndex = 31;
+            this.groupBox4.TabStop = false;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(3, 13);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(192, 24);
+            this.textBox2.TabIndex = 25;
+            // 
+            // chcCustStockNumber
+            // 
+            this.chcCustStockNumber.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chcCustStockNumber.Location = new System.Drawing.Point(3, 45);
+            this.chcCustStockNumber.Name = "chcCustStockNumber";
+            this.chcCustStockNumber.Size = new System.Drawing.Size(192, 21);
+            this.chcCustStockNumber.TabIndex = 26;
+            this.chcCustStockNumber.Text = "Customer Stock Code";
+            this.chcCustStockNumber.UseVisualStyleBackColor = true;
+            // 
             // btnSearchStockNumber
             // 
             this.btnSearchStockNumber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(190)))), ((int)(((byte)(197)))));
             this.btnSearchStockNumber.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnSearchStockNumber.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearchStockNumber.Location = new System.Drawing.Point(895, 73);
+            this.btnSearchStockNumber.Location = new System.Drawing.Point(3, 72);
             this.btnSearchStockNumber.Margin = new System.Windows.Forms.Padding(0);
             this.btnSearchStockNumber.Name = "btnSearchStockNumber";
             this.btnSearchStockNumber.Size = new System.Drawing.Size(192, 28);
@@ -134,107 +160,83 @@
             this.btnSearchStockNumber.Text = "Search Stock Number";
             this.btnSearchStockNumber.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSearchStockNumber.UseVisualStyleBackColor = false;
-            this.btnSearchStockNumber.Click += new System.EventHandler(this.btnSearchStockNumber_Click);
             // 
-            // chcCustStockNumber
+            // groupBox3
             // 
-            this.chcCustStockNumber.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chcCustStockNumber.Location = new System.Drawing.Point(895, 48);
-            this.chcCustStockNumber.Name = "chcCustStockNumber";
-            this.chcCustStockNumber.Size = new System.Drawing.Size(192, 21);
-            this.chcCustStockNumber.TabIndex = 26;
-            this.chcCustStockNumber.Text = "Customer Stock Code";
-            this.chcCustStockNumber.UseVisualStyleBackColor = true;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(895, 19);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(192, 24);
-            this.textBox2.TabIndex = 25;
-            // 
-            // chcAllQuots
-            // 
-            this.chcAllQuots.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chcAllQuots.Location = new System.Drawing.Point(699, 80);
-            this.chcAllQuots.Name = "chcAllQuots";
-            this.chcAllQuots.Size = new System.Drawing.Size(164, 21);
-            this.chcAllQuots.TabIndex = 24;
-            this.chcAllQuots.Text = "All Quotations";
-            this.chcAllQuots.UseVisualStyleBackColor = true;
-            // 
-            // txtSearchText
-            // 
-            this.txtSearchText.Location = new System.Drawing.Point(699, 49);
-            this.txtSearchText.Name = "txtSearchText";
-            this.txtSearchText.Size = new System.Drawing.Size(164, 24);
-            this.txtSearchText.TabIndex = 23;
-            this.txtSearchText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearchText_KeyPress);
+            this.groupBox3.Controls.Add(this.cbSearch);
+            this.groupBox3.Controls.Add(this.txtSearchText);
+            this.groupBox3.Controls.Add(this.chcAllQuots);
+            this.groupBox3.Location = new System.Drawing.Point(623, -1);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(228, 112);
+            this.groupBox3.TabIndex = 30;
+            this.groupBox3.TabStop = false;
             // 
             // cbSearch
             // 
             this.cbSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSearch.FormattingEnabled = true;
             this.cbSearch.Items.AddRange(new object[] {
-            "QUOT NUMBER"});
-            this.cbSearch.Location = new System.Drawing.Point(699, 19);
+            "QUOT NUMBER",
+            "CUSTOMER CODE",
+            "CUSTOMER NAME",
+            "BY TOTAL AMOUNT",
+            "BY RFQ",
+            "BY MPN"});
+            this.cbSearch.Location = new System.Drawing.Point(6, 14);
             this.cbSearch.Name = "cbSearch";
-            this.cbSearch.Size = new System.Drawing.Size(164, 26);
+            this.cbSearch.Size = new System.Drawing.Size(216, 26);
             this.cbSearch.TabIndex = 22;
             // 
-            // label2
+            // txtSearchText
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 80);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(26, 18);
-            this.label2.TabIndex = 21;
-            this.label2.Text = "To";
+            this.txtSearchText.Location = new System.Drawing.Point(6, 44);
+            this.txtSearchText.Name = "txtSearchText";
+            this.txtSearchText.Size = new System.Drawing.Size(216, 24);
+            this.txtSearchText.TabIndex = 23;
+            this.txtSearchText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearchText_KeyPress);
             // 
-            // label1
+            // chcAllQuots
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 18);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "From";
+            this.chcAllQuots.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chcAllQuots.Checked = true;
+            this.chcAllQuots.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chcAllQuots.Location = new System.Drawing.Point(6, 77);
+            this.chcAllQuots.Name = "chcAllQuots";
+            this.chcAllQuots.Size = new System.Drawing.Size(216, 21);
+            this.chcAllQuots.TabIndex = 24;
+            this.chcAllQuots.Text = "All Quotations";
+            this.chcAllQuots.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chcAllQuots.UseVisualStyleBackColor = true;
             // 
-            // dtpFromDate
+            // groupBox2
             // 
-            this.dtpFromDate.CustomFormat = "dd-MM-yyyy";
-            this.dtpFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFromDate.Location = new System.Drawing.Point(73, 14);
-            this.dtpFromDate.Name = "dtpFromDate";
-            this.dtpFromDate.Size = new System.Drawing.Size(119, 24);
-            this.dtpFromDate.TabIndex = 19;
+            this.groupBox2.Controls.Add(this.btnNewQuotation);
+            this.groupBox2.Controls.Add(this.btnModifyQuotation);
+            this.groupBox2.Controls.Add(this.btnDeleteQuotation);
+            this.groupBox2.Location = new System.Drawing.Point(342, -1);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(275, 112);
+            this.groupBox2.TabIndex = 29;
+            this.groupBox2.TabStop = false;
             // 
-            // dtpToDate
+            // btnNewQuotation
             // 
-            this.dtpToDate.CustomFormat = "dd-MM-yyyy";
-            this.dtpToDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpToDate.Location = new System.Drawing.Point(73, 80);
-            this.dtpToDate.Name = "dtpToDate";
-            this.dtpToDate.Size = new System.Drawing.Size(119, 24);
-            this.dtpToDate.TabIndex = 18;
-            // 
-            // btnDeleteQuotation
-            // 
-            this.btnDeleteQuotation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(190)))), ((int)(((byte)(197)))));
-            this.btnDeleteQuotation.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.btnDeleteQuotation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeleteQuotation.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
-            this.btnDeleteQuotation.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnDeleteQuotation.Location = new System.Drawing.Point(535, 16);
-            this.btnDeleteQuotation.Margin = new System.Windows.Forms.Padding(0);
-            this.btnDeleteQuotation.Name = "btnDeleteQuotation";
-            this.btnDeleteQuotation.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
-            this.btnDeleteQuotation.Size = new System.Drawing.Size(88, 85);
-            this.btnDeleteQuotation.TabIndex = 17;
-            this.btnDeleteQuotation.Text = "Delete";
-            this.btnDeleteQuotation.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnDeleteQuotation.UseVisualStyleBackColor = false;
-            this.btnDeleteQuotation.Click += new System.EventHandler(this.btnDeleteQuotation_Click);
+            this.btnNewQuotation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(190)))), ((int)(((byte)(197)))));
+            this.btnNewQuotation.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.btnNewQuotation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNewQuotation.Image = global::LoginForm.Properties.Resources.icons8_Plus_32;
+            this.btnNewQuotation.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnNewQuotation.Location = new System.Drawing.Point(8, 14);
+            this.btnNewQuotation.Margin = new System.Windows.Forms.Padding(0);
+            this.btnNewQuotation.Name = "btnNewQuotation";
+            this.btnNewQuotation.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.btnNewQuotation.Size = new System.Drawing.Size(85, 85);
+            this.btnNewQuotation.TabIndex = 1;
+            this.btnNewQuotation.Text = "New";
+            this.btnNewQuotation.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnNewQuotation.UseVisualStyleBackColor = false;
+            this.btnNewQuotation.Click += new System.EventHandler(this.btnNewQuotation_Click);
             // 
             // btnModifyQuotation
             // 
@@ -243,7 +245,7 @@
             this.btnModifyQuotation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModifyQuotation.Image = global::LoginForm.Properties.Resources.icons8_Edit_Property_32;
             this.btnModifyQuotation.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnModifyQuotation.Location = new System.Drawing.Point(450, 16);
+            this.btnModifyQuotation.Location = new System.Drawing.Point(93, 14);
             this.btnModifyQuotation.Margin = new System.Windows.Forms.Padding(0);
             this.btnModifyQuotation.Name = "btnModifyQuotation";
             this.btnModifyQuotation.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
@@ -254,6 +256,46 @@
             this.btnModifyQuotation.UseVisualStyleBackColor = false;
             this.btnModifyQuotation.Click += new System.EventHandler(this.btnModifyQuotation_Click);
             // 
+            // btnDeleteQuotation
+            // 
+            this.btnDeleteQuotation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(190)))), ((int)(((byte)(197)))));
+            this.btnDeleteQuotation.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.btnDeleteQuotation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteQuotation.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
+            this.btnDeleteQuotation.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnDeleteQuotation.Location = new System.Drawing.Point(178, 14);
+            this.btnDeleteQuotation.Margin = new System.Windows.Forms.Padding(0);
+            this.btnDeleteQuotation.Name = "btnDeleteQuotation";
+            this.btnDeleteQuotation.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.btnDeleteQuotation.Size = new System.Drawing.Size(88, 85);
+            this.btnDeleteQuotation.TabIndex = 17;
+            this.btnDeleteQuotation.Text = "Delete";
+            this.btnDeleteQuotation.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnDeleteQuotation.UseVisualStyleBackColor = false;
+            this.btnDeleteQuotation.Click += new System.EventHandler(this.btnDeleteQuotation_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.btnRefreshList);
+            this.groupBox1.Controls.Add(this.dtpToDate);
+            this.groupBox1.Controls.Add(this.dtpFromDate);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Location = new System.Drawing.Point(12, -1);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(315, 112);
+            this.groupBox1.TabIndex = 28;
+            this.groupBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(19, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(44, 18);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "From";
+            // 
             // btnRefreshList
             // 
             this.btnRefreshList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(190)))), ((int)(((byte)(197)))));
@@ -261,7 +303,7 @@
             this.btnRefreshList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRefreshList.Image = global::LoginForm.Properties.Resources.icons8_Refresh_32;
             this.btnRefreshList.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnRefreshList.Location = new System.Drawing.Point(211, 16);
+            this.btnRefreshList.Location = new System.Drawing.Point(221, 17);
             this.btnRefreshList.Margin = new System.Windows.Forms.Padding(0);
             this.btnRefreshList.Name = "btnRefreshList";
             this.btnRefreshList.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
@@ -273,23 +315,32 @@
             this.btnRefreshList.UseVisualStyleBackColor = false;
             this.btnRefreshList.Click += new System.EventHandler(this.btnRefreshList_Click);
             // 
-            // btnNewQuotation
+            // dtpToDate
             // 
-            this.btnNewQuotation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(190)))), ((int)(((byte)(197)))));
-            this.btnNewQuotation.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.btnNewQuotation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNewQuotation.Image = global::LoginForm.Properties.Resources.icons8_Plus_32;
-            this.btnNewQuotation.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnNewQuotation.Location = new System.Drawing.Point(365, 16);
-            this.btnNewQuotation.Margin = new System.Windows.Forms.Padding(0);
-            this.btnNewQuotation.Name = "btnNewQuotation";
-            this.btnNewQuotation.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
-            this.btnNewQuotation.Size = new System.Drawing.Size(85, 85);
-            this.btnNewQuotation.TabIndex = 1;
-            this.btnNewQuotation.Text = "New";
-            this.btnNewQuotation.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnNewQuotation.UseVisualStyleBackColor = false;
-            this.btnNewQuotation.Click += new System.EventHandler(this.btnNewQuotation_Click);
+            this.dtpToDate.CustomFormat = "dd-MM-yyyy";
+            this.dtpToDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpToDate.Location = new System.Drawing.Point(83, 48);
+            this.dtpToDate.Name = "dtpToDate";
+            this.dtpToDate.Size = new System.Drawing.Size(119, 24);
+            this.dtpToDate.TabIndex = 18;
+            // 
+            // dtpFromDate
+            // 
+            this.dtpFromDate.CustomFormat = "dd-MM-yyyy";
+            this.dtpFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFromDate.Location = new System.Drawing.Point(83, 15);
+            this.dtpFromDate.Name = "dtpFromDate";
+            this.dtpFromDate.Size = new System.Drawing.Size(119, 24);
+            this.dtpFromDate.TabIndex = 19;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(19, 48);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(26, 18);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "To";
             // 
             // panel2
             // 
@@ -349,7 +400,13 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgQuotation)).EndInit();
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -377,5 +434,9 @@
         private System.Windows.Forms.Button btnSearchStockNumber;
         private System.Windows.Forms.CheckBox chcCustStockNumber;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
