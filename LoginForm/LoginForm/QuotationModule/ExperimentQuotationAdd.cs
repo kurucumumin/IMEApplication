@@ -21,6 +21,12 @@ namespace LoginForm.QuotationModule
         public ExperimentQuotationAdd()
         {
             InitializeComponent();
+            DataGridViewComboBoxColumn deliveryColumn = (DataGridViewComboBoxColumn)dgAddedItems.Columns[dgDelivery.Index];
+            deliveryColumn.DataSource = new IMEEntities().QuotationDeliveries.ToList();
+            deliveryColumn.DisplayMember = "DeliveryName";
+            deliveryColumn.ValueMember = "ID";
+
+
         }
 
         private void SetCustomer()
@@ -54,7 +60,8 @@ namespace LoginForm.QuotationModule
 
             if(_customer.factor != null)
             {
-                txtFactor.Text = _customer.factor.ToString();
+                _factor = Convert.ToDecimal(_customer.factor);
+                txtFactor.Text = _factor.ToString();
             }
 
             if(_customer.customerNoteID != null)
@@ -66,6 +73,11 @@ namespace LoginForm.QuotationModule
             {
                 txtCustomerNote.Text = _customer.Note.Note_name;
             }
+
+            if (_customer.Note1 != null)
+            {
+                txtAccountingNote.Text = _customer.Note1.Note_name;
+            }
         }
 
         private void CalculateLandingCost(string CustomerName)
@@ -76,6 +88,7 @@ namespace LoginForm.QuotationModule
         private decimal CalculateItemMargin(bool _Pitem, int _UC, int _SSM, decimal _LandingCost, decimal _Price, decimal currencyValue)
         {
             decimal currentGbpValue = Convert.ToDecimal(new IMEEntities().Currencies.Where(x => x.currencyName == "Pound").FirstOrDefault().ExchangeRates.OrderByDescending(x => x.date).FirstOrDefault().rate);
+
             decimal gbpPrice = (_Price * currencyValue) / currentGbpValue;
 
             if (_UC > 1 || _SSM > 1)
@@ -94,19 +107,6 @@ namespace LoginForm.QuotationModule
             }
 
             return (1 - (_LandingCost / gbpPrice)) * 100;
-
-            //if(_UC > 1 && _SSM > 1)
-            //{
-
-            //}else if (_UC > 1)
-            //{
-
-            //}
-            //// if(_SSM > 1)
-            //else
-            //{
-
-            //}
         }
 
         private decimal CalculateTotalMargin()
@@ -168,27 +168,19 @@ namespace LoginForm.QuotationModule
         {
             throw new NotImplementedException();
         }
-
-        private void CustomerCode_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
-            {
-                FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch(txtCustomerCode.Text);
-                this.Enabled = false;
-
-                if(form.ShowDialog() == DialogResult.OK)
-                {
-                    _customer = form.customer;
-                    SetCustomer();
-                }
-                this.Enabled = true;
-            }
-        }
-
+        
         private void ExperimentQuotationAdd_Load(object sender, EventArgs e)
         {
+            Management management = Utils.getManagement();
+            
+            lblVat.Text = management.VAT.ToString();
+            _factor = management.Factor;
+            txtFactor.Text = _factor.ToString();
+            dtpDate.Value = DateTime.Today;
+            txtValidity.Text = 3.ToString();
+
             FillComboBoxes();
-            lblVat.Text = Utils.getManagement().VAT.ToString();
+            
         }
 
         private void FillComboBoxes()
@@ -207,6 +199,154 @@ namespace LoginForm.QuotationModule
             cbRepresentative.DisplayMember = "NameLastName";
             cbRepresentative.ValueMember = "WorkerID";
             cbRepresentative.DataSource = db.Workers.ToList();
+        }
+
+        private void txtCustomerCode_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                List<Customer> customerList = new IMEEntities().Customers.
+                    Where(x => x.c_name.Contains(txtCustomerCode.Text)).
+                    ToList();
+
+                if(customerList.Count == 1)
+                {
+                    _customer = customerList.FirstOrDefault();
+                    SetCustomer();
+                }
+                else
+                {
+                    FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch(txtCustomerCode.Text);
+                    this.Enabled = false;
+
+                    if (form.ShowDialog() == DialogResult.OK)
+                    {
+                        _customer = form.customer;
+                        SetCustomer();
+                    }
+                    this.Enabled = true;
+                }                
+            }
+        }
+
+        private void txtCustomerCode_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            List<Customer> custList = new IMEEntities().Customers.
+                    Where(x => x.c_name.Contains(txtCustomerCode.Text)).
+                    ToList();
+
+            if (custList.Count == 1)
+            {
+                _customer = custList.FirstOrDefault();
+                SetCustomer();
+            }
+            else
+            {
+                FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch(txtCustomerCode.Text);
+                this.Enabled = false;
+
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    _customer = form.customer;
+                    SetCustomer();
+                }
+                this.Enabled = true;
+            }
+        }
+
+        private void cbWorkers_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if(cbWorkers.SelectedItem != null)
+            {
+                CustomerWorker cw = cbWorkers.SelectedItem as CustomerWorker;
+
+                txtContactNote.Text = cw.Note.Note_name;
+            }
+        }
+
+        private void cbCurrency_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbCurrency.SelectedIndex != -1)
+            {
+                Currency currency = cbCurrency.SelectedItem as Currency;
+                _rate = currency.ExchangeRates.OrderByDescending(x => x.date).FirstOrDefault();
+                lblExcRate.Text = _rate.rate.ToString();
+            }                
+        }
+
+        private void dgAddedItems_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            DataGridViewCell cell = dgAddedItems.Rows[e.RowIndex-1].Cells[dgDelivery.Index];
+            cell.Value = 3;
+        }
+
+        private void dgAddedItems_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow row = dgAddedItems.Rows[e.RowIndex];
+
+            switch (e.ColumnIndex)
+            {   
+                //ItemCode
+                case ((int)GridColumns.ItemCode):
+                    if (row.Cells[e.ColumnIndex].Value != null)
+                    {
+                        IMEEntities db = new IMEEntities();
+
+                        //Fixes article number that entered
+                        string _itemCode = FixItemCode(row.Cells[e.ColumnIndex].Value.ToString());
+                        row.Cells[e.ColumnIndex].Value = _itemCode;
+
+
+                        List<CompleteItem> itemList = db.CompleteItems.Where(x => x.Article_No.Contains(_itemCode)).ToList();
+                        switch (itemList.Count)
+                        {
+                            case 0:
+                                MessageBox.Show("There is no item that contains article no '" + _itemCode + "'");
+                                row.Cells[e.ColumnIndex].Value = String.Empty;
+
+                                break;
+                            case 1:
+                                CompleteItem item = itemList.FirstOrDefault();
+                                FillItemDetails(item);
+                                
+                                break;
+                            default:
+                                MessageBox.Show(itemList.Count.ToString());
+                                break;
+                        }
+
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void FillItemDetails(CompleteItem item)
+        {
+
+            throw new NotImplementedException();
+        }
+
+        private enum GridColumns
+        {
+            ItemCode = 7,
+            Quantity = 14,
+            Price = 21
+        }
+
+        private string FixItemCode(string _itemCode)
+        {
+            string result = _itemCode.Replace("-", "");
+
+            if (Int32.TryParse(result, out int x) && result.Length == 6)
+            {
+                result = "0" + result;
+            }
+
+
+
+            return result;
         }
     }
 }
