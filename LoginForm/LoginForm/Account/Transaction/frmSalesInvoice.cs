@@ -7299,8 +7299,8 @@ namespace LoginForm
 
         public void CustomerSearchInput()
         {
-            classQuotationAdd.customersearchID = txtCustomer.Text;
-            classQuotationAdd.customersearchname = "";
+            QuotationUtils.customersearchID = txtCustomer.Text;
+            QuotationUtils.customersearchname = "";
             FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch(customer);
             this.Enabled = false;
             var result = form.ShowDialog();
@@ -7319,8 +7319,8 @@ namespace LoginForm
         private void fillCustomer()
         {
 
-            txtCustomer.Text = classQuotationAdd.customerID;
-            txtCustomerName.Text = classQuotationAdd.customername;
+            txtCustomer.Text = QuotationUtils.customerID;
+            txtCustomerName.Text = QuotationUtils.customername;
 
             var c = IME.Customers.Where(a => a.ID == txtCustomer.Text).FirstOrDefault();
             if (c != null)

@@ -84,9 +84,9 @@ namespace LoginForm.QuotationModule
             label1.Text = "Customer Code";
             label2.Text = "Customer Name";
             button1.Text = "Add New Customer";
-            CustomerCode.Text = classQuotationAdd.customersearchID.ToString();
-            CustomerName.Text = classQuotationAdd.customersearchname;
-            List<Customer> c = classQuotationAdd.CustomerSearch();
+            CustomerCode.Text = QuotationUtils.customersearchID.ToString();
+            CustomerName.Text = QuotationUtils.customersearchname;
+            List<Customer> c = QuotationUtils.CustomerSearch();
             CustomerSearchGrid.DataSource = c;
             if (fromXmlCustomer && c.Count <= 0)
             {
@@ -147,8 +147,8 @@ namespace LoginForm.QuotationModule
                 customer = IME.Customers.Where(a => a.ID == cID).FirstOrDefault();
                 CustomerCode.Text = customer.ID;
                 CustomerName.Text = customer.c_name;
-                classQuotationAdd.customerID = CustomerCode.Text;
-                classQuotationAdd.customername = CustomerName.Text;
+                QuotationUtils.customerID = CustomerCode.Text;
+                QuotationUtils.customername = CustomerName.Text;
 
                 this.DialogResult = DialogResult.OK;
                 this.Close();
@@ -178,7 +178,7 @@ namespace LoginForm.QuotationModule
                 CustomerCode.Text = account.ID.ToString();
                 CustomerName.Text = account.Name;
                 classAccount.accountID = CustomerCode.Text;
-                classQuotationAdd.customername = CustomerName.Text;
+                QuotationUtils.customername = CustomerName.Text;
 
                 this.DialogResult = DialogResult.OK;
                 this.Close();
@@ -214,8 +214,8 @@ namespace LoginForm.QuotationModule
                     customer = IME.Customers.Where(a => a.ID == cID).FirstOrDefault();
                     CustomerCode.Text = customer.ID;
                     CustomerName.Text = customer.c_name;
-                    classQuotationAdd.customerID = CustomerCode.Text;
-                    classQuotationAdd.customername = CustomerName.Text;
+                    QuotationUtils.customerID = CustomerCode.Text;
+                    QuotationUtils.customername = CustomerName.Text;
 
                     this.DialogResult = DialogResult.OK;
                     this.Close();
@@ -247,7 +247,7 @@ namespace LoginForm.QuotationModule
                     CustomerCode.Text = account.ID.ToString();
                     CustomerName.Text = account.Name;
                     classAccount.accountID = CustomerCode.Text;
-                    classQuotationAdd.customername = CustomerName.Text;
+                    QuotationUtils.customername = CustomerName.Text;
 
                     this.DialogResult = DialogResult.OK;
                     this.Close();
@@ -278,9 +278,9 @@ namespace LoginForm.QuotationModule
             {
                 if (this.Text == "Customer Search")
                 {
-                    classQuotationAdd.customersearchID = CustomerCode.Text;
-                    classQuotationAdd.customersearchname = "";
-                    List<Customer> c = classQuotationAdd.CustomerSearch();
+                    QuotationUtils.customersearchID = CustomerCode.Text;
+                    QuotationUtils.customersearchname = "";
+                    List<Customer> c = QuotationUtils.CustomerSearch();
                     CustomerSearchGrid.DataSource = c;
                 }
                 if (this.Text == "Supplier Search")
@@ -311,9 +311,9 @@ namespace LoginForm.QuotationModule
             {
                 if (this.Text == "Customer Search")
                 {
-                    classQuotationAdd.customersearchID = "";
-                    classQuotationAdd.customersearchname = CustomerName.Text;
-                    List<Customer> c = classQuotationAdd.CustomerSearch();
+                    QuotationUtils.customersearchID = "";
+                    QuotationUtils.customersearchname = CustomerName.Text;
+                    List<Customer> c = QuotationUtils.CustomerSearch();
                     CustomerSearchGrid.DataSource = c;
                 }
                 if (this.Text == "Supplier Search")

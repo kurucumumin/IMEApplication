@@ -2942,7 +2942,6 @@
             this.LandingCost.Controls.Add(this.ckCustomsDuties);
             this.LandingCost.Controls.Add(this.ckWeightCost);
             this.LandingCost.Controls.Add(this.ckItemCost);
-            this.LandingCost.Enabled = false;
             this.LandingCost.Location = new System.Drawing.Point(888, 19);
             this.LandingCost.Margin = new System.Windows.Forms.Padding(4);
             this.LandingCost.Name = "LandingCost";
@@ -2951,7 +2950,6 @@
             this.LandingCost.TabIndex = 50;
             this.LandingCost.TabStop = false;
             this.LandingCost.Text = "Landing Cost";
-            this.LandingCost.Visible = false;
             // 
             // ckCustomsDuties
             // 

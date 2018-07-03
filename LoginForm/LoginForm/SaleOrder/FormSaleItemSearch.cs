@@ -163,7 +163,7 @@ namespace LoginForm.nmSaleOrder
             {
                 if (dgItemSearch.CurrentRow.Cells[2].Value.ToString() != "")
                 {
-                    classQuotationAdd.ItemCode = dgItemSearch.Rows[dgItemSearch.CurrentCell.RowIndex].Cells["ArticleNo"].Value.ToString();
+                    QuotationUtils.ItemCode = dgItemSearch.Rows[dgItemSearch.CurrentCell.RowIndex].Cells["ArticleNo"].Value.ToString();
 
                     var MPNItemList = new IMEEntities().ArticleSearchwithMPN(dgItemSearch.CurrentRow.Cells[2].Value.ToString()).ToList();
                     if (MPNItemList.Count > 1)
@@ -173,7 +173,7 @@ namespace LoginForm.nmSaleOrder
                     }
                 }
             }
-            classQuotationAdd.ItemCode = dgItemSearch.Rows[dgItemSearch.CurrentCell.RowIndex].Cells["ArticleNo"].Value.ToString();
+            QuotationUtils.ItemCode = dgItemSearch.Rows[dgItemSearch.CurrentCell.RowIndex].Cells["ArticleNo"].Value.ToString();
             this.Close();
 
             //SetItemToSend(ItemCode,dependantTable);

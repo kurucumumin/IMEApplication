@@ -6,7 +6,7 @@ using System.Linq;
 namespace LoginForm.QuotationModule
 {
 
-    class classQuotationAdd
+    class QuotationUtils
     {
         public static string customersearchID;
         public static string quotationNo;
@@ -114,7 +114,7 @@ namespace LoginForm.QuotationModule
             #region Calculating LandingCost
             IMEEntities IME = new IMEEntities();
             SlidingPrice sp = IME.SlidingPrices.Where(a => a.ArticleNo == ArticleNo).FirstOrDefault();
-            var er = IME.ExtendedRanges.Where(a => a.ArticleNo == ArticleNo).FirstOrDefault();
+            ExtendedRange er = IME.ExtendedRanges.Where(a => a.ArticleNo == ArticleNo).FirstOrDefault();
             decimal p = 0;
             if (sp != null)
             {

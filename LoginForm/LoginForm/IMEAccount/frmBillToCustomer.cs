@@ -52,8 +52,8 @@ namespace LoginForm.IMEAccount
         #region Functions
         public void CustomerSearchInput()
         {
-            classQuotationAdd.customersearchID = txtCustomerName.Text;
-            classQuotationAdd.customersearchname = "";
+            QuotationUtils.customersearchID = txtCustomerName.Text;
+            QuotationUtils.customersearchname = "";
             FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch(customer);
             this.Enabled = false;
             var result = form.ShowDialog();
@@ -68,8 +68,8 @@ namespace LoginForm.IMEAccount
         private void fillCustomer()
         {
 
-            txtCustomerName.Text = classQuotationAdd.customerID;
-            txtCustomerID.Text = classQuotationAdd.customername;
+            txtCustomerName.Text = QuotationUtils.customerID;
+            txtCustomerID.Text = QuotationUtils.customername;
 
             var c = IME.Customers.Where(a => a.ID == txtCustomerName.Text).FirstOrDefault();
             if (c != null)

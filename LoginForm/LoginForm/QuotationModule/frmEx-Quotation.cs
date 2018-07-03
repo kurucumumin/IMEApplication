@@ -122,7 +122,7 @@ namespace LoginForm.QuotationModule
         private void frmEx_Quotation_Load(object sender, EventArgs e)
         {
             btnStartDate.Value = DateTime.Now.AddDays(-7);
-            classQuotationAdd.quotationNo = null;
+            QuotationUtils.quotationNo = null;
         }
 
         private void txtCustomerName_KeyDown(object sender, KeyEventArgs e)

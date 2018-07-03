@@ -2556,7 +2556,7 @@
     </Compile>
     <Compile Include="Services\AddressService.cs" />
     <Compile Include="Services\AuthorizationService.cs" />
-    <Compile Include="QuotationModule\classQuotationAdd.cs" />
+    <Compile Include="QuotationModule\QuotationUtils.cs" />
     <Compile Include="Services\ContactListItem.cs" />
     <Compile Include="Services\ExchangeService.cs" />
     <Compile Include="Services\GetWorkerService.cs" />

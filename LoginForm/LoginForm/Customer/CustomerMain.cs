@@ -994,7 +994,8 @@ namespace LoginForm
                     c = IME.Customers.Where(a => a.ID == CustomerCode.Text).FirstOrDefault();
                     if (rb_active.Checked) { c.isactive = 1; } else { c.isactive = 0; }
                     c.c_name = CustomerName.Text;
-                    c.ThirdPartyCode = txt3partyCode.Text;
+                    if (!String.IsNullOrEmpty(txt3partyCode.Text))
+                    { c.ThirdPartyCode = txt3partyCode.Text; }
                     if (Telephone.Text != "") { c.telephone = Telephone.Text; }
                     if (txtExtNumber.Text != "") { c.extensionnumber = txtExtNumber.Text; }
                     if (CustomerFax.Text != "") { c.fax = CustomerFax.Text; }

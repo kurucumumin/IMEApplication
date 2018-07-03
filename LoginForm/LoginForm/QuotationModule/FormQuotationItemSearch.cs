@@ -19,7 +19,7 @@ namespace LoginForm.QuotationModule
 
         public FormQuotationItemSearch(string ItemCode)
         {
-            classQuotationAdd.ItemCode = null;
+            QuotationUtils.ItemCode = null;
             InitializeComponent();
             ArticleCode = ItemCode;
             if (ArticleCode != null)
@@ -69,7 +69,7 @@ namespace LoginForm.QuotationModule
             {
                 if (dgQuotationItemSearch.DataSource != null)
                 {
-                    classQuotationAdd.ItemCode = dgQuotationItemSearch.CurrentRow.Cells["Article_No"].Value.ToString();
+                    QuotationUtils.ItemCode = dgQuotationItemSearch.CurrentRow.Cells["Article_No"].Value.ToString();
                     itemProps[0] = dgQuotationItemSearch.CurrentRow.Cells["Article_No"].Value.ToString();
                     itemProps[1] = dgQuotationItemSearch.CurrentRow.Cells["Article_Desc"].Value.ToString();
                     this.DialogResult = DialogResult.OK;
@@ -90,7 +90,7 @@ namespace LoginForm.QuotationModule
                 if (dgQuotationItemSearch.DataSource != null)
                 {
                 if (dgQuotationItemSearch.CurrentRow.Cells[1].Value.ToString()!="") {
-                    classQuotationAdd.ItemCode = dgQuotationItemSearch.CurrentRow.Cells["Article_No"].Value.ToString();
+                    QuotationUtils.ItemCode = dgQuotationItemSearch.CurrentRow.Cells["Article_No"].Value.ToString();
                     itemProps[0] = dgQuotationItemSearch.CurrentRow.Cells["Article_No"].Value.ToString();
                     itemProps[1] = dgQuotationItemSearch.CurrentRow.Cells["Article_Desc"].Value.ToString();
                     this.DialogResult = DialogResult.OK;

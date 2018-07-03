@@ -259,14 +259,14 @@ namespace LoginForm.QuotationModule
                 if (quantity != 0)
                 {
                     decimal margin1 = 0;
-                    margin1 = (classQuotationAdd.GetLandingCost(CurrentRow.Cells["dgProductCode"].Value.ToString(), true, true, true
+                    margin1 = (QuotationUtils.GetLandingCost(CurrentRow.Cells["dgProductCode"].Value.ToString(), true, true, true
         , quantity));
 
                     txtMargin1.Text = ((1 - ((margin1) / (decimal.Parse(txtWeb1.Text)))) * 100).ToString();
                     int quantity2 = 0;
                     quantity2 = Int32.Parse(ItemTabDetails.Col2Break.ToString());
                     decimal margin2 = 0;
-                    margin2 = (classQuotationAdd.GetLandingCost(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), true, true, true
+                    margin2 = (QuotationUtils.GetLandingCost(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), true, true, true
                                      , quantity2));
                     if (margin2 == 0)
                     {
@@ -282,20 +282,20 @@ namespace LoginForm.QuotationModule
                         try
                         {
                             decimal margin3 = 0;
-                            margin3 = (classQuotationAdd.GetLandingCost(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), true, true, true, Int32.Parse(ItemTabDetails.Col3Break.ToString())));
+                            margin3 = (QuotationUtils.GetLandingCost(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), true, true, true, Int32.Parse(ItemTabDetails.Col3Break.ToString())));
                             if (margin3 != 0)
                             {
                                 txtMargin3.Text = ((1 - ((margin3) / (decimal.Parse(txtWeb3.Text)))) * 100).ToString();
                                 if (ItemTabDetails.Col4Break != 0)
                                 {
                                     decimal margin4 = 0;
-                                    margin4 = (classQuotationAdd.GetLandingCost(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), true, true, true
+                                    margin4 = (QuotationUtils.GetLandingCost(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), true, true, true
                                 , Int32.Parse(ItemTabDetails.Col4Break.ToString())));
                                     txtMargin4.Text = ((1 - ((margin4) / (decimal.Parse(txtWeb4.Text)))) * 100).ToString();
                                     if (ItemTabDetails.Col5Break != 0)
                                     {
                                         decimal margin5 = 0;
-                                        margin5 = (classQuotationAdd.GetLandingCost(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), true, true, true
+                                        margin5 = (QuotationUtils.GetLandingCost(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), true, true, true
                                     , Int32.Parse(ItemTabDetails.Col5Break.ToString())));
                                         txtMargin5.Text = ((1 - ((margin5) / (decimal.Parse(txtWeb5.Text)))) * 100).ToString();
                                     }
@@ -927,13 +927,13 @@ namespace LoginForm.QuotationModule
 
         private void SearchCustomerWithName()
         {
-            classQuotationAdd.customersearchID = "";
-            classQuotationAdd.customersearchname = txtCustomerName.Text;
+            QuotationUtils.customersearchID = "";
+            QuotationUtils.customersearchname = txtCustomerName.Text;
             FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch();
             this.Enabled = false;
             form.ShowDialog();
             fillCustomer();
-            if (classQuotationAdd.customersearchID != "") { cbRep.DataSource = IME.CustomerWorkers.Where(a => a.customerID == IME.Customers.Where(b => b.ID == classQuotationAdd.customersearchID).FirstOrDefault().ID).ToList(); cbRep.DisplayMember = "cw_name"; }
+            if (QuotationUtils.customersearchID != "") { cbRep.DataSource = IME.CustomerWorkers.Where(a => a.customerID == IME.Customers.Where(b => b.ID == QuotationUtils.customersearchID).FirstOrDefault().ID).ToList(); cbRep.DisplayMember = "cw_name"; }
         }
 
         private void fillCustomer()
@@ -945,8 +945,8 @@ namespace LoginForm.QuotationModule
 
             if (!modifyMod)
             {
-                CustomerCode.Text = classQuotationAdd.customerID;
-                txtCustomerName.Text = classQuotationAdd.customername;
+                CustomerCode.Text = QuotationUtils.customerID;
+                txtCustomerName.Text = QuotationUtils.customername;
             }
             var c = customer;
             if (c != null)
@@ -1444,7 +1444,7 @@ namespace LoginForm.QuotationModule
                             {
                                 FormQuotationItemSearch itemsearch = new FormQuotationItemSearch(articleNo);
                                 itemsearch.ShowDialog();
-                                articleNo = classQuotationAdd.ItemCode;
+                                articleNo = QuotationUtils.ItemCode;
                                 dgSaleAddedItems.CurrentCell.Value = articleNo;
                                 ItemDetailsFiller(articleNo);//tekrar bakılacak
                                 FillProductCodeItem();
@@ -1583,7 +1583,7 @@ namespace LoginForm.QuotationModule
                 #region Quantity
                 if (CurrentRow.Cells["dgQty"].Value != null)
                 {
-                    if (classQuotationAdd.GetCost(CurrentRow.Cells["dgProductCode"].Value.ToString(), 1) != 0)
+                    if (QuotationUtils.GetCost(CurrentRow.Cells["dgProductCode"].Value.ToString(), 1) != 0)
                     {
                         #region Quantity
                         #region Calculate Gross Weight
@@ -1607,7 +1607,7 @@ namespace LoginForm.QuotationModule
                         }
                         #endregion
                         //Cost hesaplama
-                        CurrentRow.Cells["dgCost"].Value = classQuotationAdd.GetCost(CurrentRow.Cells["dgProductCode"].Value.ToString(), Int32.Parse(CurrentRow.Cells["dgQty"].Value.ToString())).ToString("G29");
+                        CurrentRow.Cells["dgCost"].Value = QuotationUtils.GetCost(CurrentRow.Cells["dgProductCode"].Value.ToString(), Int32.Parse(CurrentRow.Cells["dgQty"].Value.ToString())).ToString("G29");
                         //LandingCost hesaplatma
                         if (CurrentRow.Cells["dgCost"].Value.ToString() != "-1") { String.Format("{0:0.0000}", Decimal.Parse(CurrentRow.Cells["dgCost"].Value.ToString())).ToString(); }
                         GetLandingCost(rowindex);
@@ -1620,11 +1620,11 @@ namespace LoginForm.QuotationModule
                         if (productCode.Substring(0, 1) == "0") productCode = productCode.Substring(1, productCode.Length - 1);
                         if (IME.Hazardous.Where(a => a.ArticleNo == productCode).FirstOrDefault() != null)
                         {
-                            price = Decimal.Parse((classQuotationAdd.GetPrice(CurrentRow.Cells["dgProductCode"].Value.ToString(), Int32.Parse(CurrentRow.Cells["dgQty"].Value.ToString())) * (Utils.getManagement().Factor) / Currrate * Decimal.Parse(CurrentRow.Cells["dgQty"].Value.ToString())).ToString("G29"));
+                            price = Decimal.Parse((QuotationUtils.GetPrice(CurrentRow.Cells["dgProductCode"].Value.ToString(), Int32.Parse(CurrentRow.Cells["dgQty"].Value.ToString())) * (Utils.getManagement().Factor) / Currrate * Decimal.Parse(CurrentRow.Cells["dgQty"].Value.ToString())).ToString("G29"));
                         }
                         else
                         {
-                            price = Decimal.Parse((classQuotationAdd.GetPrice(CurrentRow.Cells["dgProductCode"].Value.ToString(), Int32.Parse(CurrentRow.Cells["dgQty"].Value.ToString())) * Decimal.Parse(txtFactor.Text) / Currrate * Decimal.Parse(CurrentRow.Cells["dgQty"].Value.ToString())).ToString("G29"));
+                            price = Decimal.Parse((QuotationUtils.GetPrice(CurrentRow.Cells["dgProductCode"].Value.ToString(), Int32.Parse(CurrentRow.Cells["dgQty"].Value.ToString())) * Decimal.Parse(txtFactor.Text) / Currrate * Decimal.Parse(CurrentRow.Cells["dgQty"].Value.ToString())).ToString("G29"));
                         }
                         //price /= factor;
                         #region price calculation
@@ -2148,12 +2148,12 @@ namespace LoginForm.QuotationModule
                 if (quantity != 0)
                 {
                     decimal margin1 = 0;
-                    margin1 = (classQuotationAdd.GetLandingCost(CurrentRow.Cells["dgProductCode"].Value.ToString(), true, true, true, quantity));
+                    margin1 = (QuotationUtils.GetLandingCost(CurrentRow.Cells["dgProductCode"].Value.ToString(), true, true, true, quantity));
 
                     txtMargin1.Text = ((1 - ((margin1) / (decimal.Parse(txtWeb1.Text)))) * 100).ToString();
                     int quantity2 = 0;
                     if (ItemTabDetails != null) { quantity2 = Int32.Parse(ItemTabDetails.Col2Break.ToString()); } else { quantity2 = Int32.Parse(ItemTabDetails.Col2Break.ToString()); }
-                    txtMargin2.Text = (classQuotationAdd.GetLandingCost(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), true, true, true, quantity2)).ToString("G29");
+                    txtMargin2.Text = (QuotationUtils.GetLandingCost(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), true, true, true, quantity2)).ToString("G29");
                     if (txtWeb2.Text == "0")
                     {
                         txtMargin2.Text = "";
@@ -2168,19 +2168,19 @@ namespace LoginForm.QuotationModule
                         try
                         {
                             decimal margin3 = 0;
-                            margin3 = (classQuotationAdd.GetLandingCost(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), true, true, true, Int32.Parse(ItemTabDetails.Col3Break.ToString())));
+                            margin3 = (QuotationUtils.GetLandingCost(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), true, true, true, Int32.Parse(ItemTabDetails.Col3Break.ToString())));
                             if (margin3 != 0)
                             {
                                 txtMargin3.Text = ((1 - ((margin3) / (decimal.Parse(txtWeb3.Text)))) * 100).ToString();
                                 if (ItemTabDetails.Col4Break != 0)
                                 {
                                     decimal margin4 = 0;
-                                    margin4 = (classQuotationAdd.GetLandingCost(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), true, true, true, Int32.Parse(ItemTabDetails.Col4Break.ToString())));
+                                    margin4 = (QuotationUtils.GetLandingCost(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), true, true, true, Int32.Parse(ItemTabDetails.Col4Break.ToString())));
                                     txtMargin4.Text = ((1 - ((margin4) / (decimal.Parse(txtWeb4.Text)))) * 100).ToString();
                                     if (ItemTabDetails.Col5Break != 0)
                                     {
                                         decimal margin5 = 0;
-                                        margin5 = (classQuotationAdd.GetLandingCost(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), true, true, true, Int32.Parse(ItemTabDetails.Col5Break.ToString())));
+                                        margin5 = (QuotationUtils.GetLandingCost(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), true, true, true, Int32.Parse(ItemTabDetails.Col5Break.ToString())));
                                         txtMargin5.Text = ((1 - ((margin5) / (decimal.Parse(txtWeb5.Text)))) * 100).ToString();
                                     }
                                     else
@@ -2324,7 +2324,7 @@ namespace LoginForm.QuotationModule
         {
             try
             {
-                dgSaleAddedItems.Rows[Rowindex].Cells["dgLandingCost"].Value = (classQuotationAdd.GetLandingCost(dgSaleAddedItems.Rows[Rowindex].Cells["dgProductCode"].Value.ToString(), true, true, true)).ToString("G29");
+                dgSaleAddedItems.Rows[Rowindex].Cells["dgLandingCost"].Value = (QuotationUtils.GetLandingCost(dgSaleAddedItems.Rows[Rowindex].Cells["dgProductCode"].Value.ToString(), true, true, true)).ToString("G29");
                 dgSaleAddedItems.Rows[Rowindex].Cells["dgLandingCost"].Value = String.Format("{0:0.0000}", dgSaleAddedItems.Rows[Rowindex].Cells["dgLandingCost"].Value.ToString()).ToString();
             }
             catch { }
@@ -3400,13 +3400,13 @@ namespace LoginForm.QuotationModule
                 if (quantity != 0)
                 {
                     decimal margin1 = 0;
-                    margin1 = (classQuotationAdd.GetLandingCost(CurrentRow.Cells["dgProductCode"].Value.ToString(), true, true, true, quantity));
+                    margin1 = (QuotationUtils.GetLandingCost(CurrentRow.Cells["dgProductCode"].Value.ToString(), true, true, true, quantity));
 
                     txtMargin1.Text = ((1 - ((margin1) / (decimal.Parse(txtWeb1.Text)))) * 100).ToString();
                     int quantity2 = 0;
                     quantity2 = Int32.Parse(ItemTabDetails.Col2Break.ToString());
                     decimal margin2 = 0;
-                    margin2 = (classQuotationAdd.GetLandingCost(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), true, true, true, quantity2));
+                    margin2 = (QuotationUtils.GetLandingCost(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), true, true, true, quantity2));
                     if (margin2 == 0)
                     {
                         txtMargin2.Text = "";
@@ -3421,19 +3421,19 @@ namespace LoginForm.QuotationModule
                         try
                         {
                             decimal margin3 = 0;
-                            margin3 = (classQuotationAdd.GetLandingCost(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), true, true, true, Int32.Parse(ItemTabDetails.Col3Break.ToString())));
+                            margin3 = (QuotationUtils.GetLandingCost(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), true, true, true, Int32.Parse(ItemTabDetails.Col3Break.ToString())));
                             if (margin3 != 0)
                             {
                                 txtMargin3.Text = ((1 - ((margin3) / (decimal.Parse(txtWeb3.Text)))) * 100).ToString();
                                 if (ItemTabDetails.Col4Break != 0)
                                 {
                                     decimal margin4 = 0;
-                                    margin4 = (classQuotationAdd.GetLandingCost(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), true, true, true, Int32.Parse(ItemTabDetails.Col4Break.ToString())));
+                                    margin4 = (QuotationUtils.GetLandingCost(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), true, true, true, Int32.Parse(ItemTabDetails.Col4Break.ToString())));
                                     txtMargin4.Text = ((1 - ((margin4) / (decimal.Parse(txtWeb4.Text)))) * 100).ToString();
                                     if (ItemTabDetails.Col5Break != 0)
                                     {
                                         decimal margin5 = 0;
-                                        margin5 = (classQuotationAdd.GetLandingCost(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), true, true, true, Int32.Parse(ItemTabDetails.Col5Break.ToString())));
+                                        margin5 = (QuotationUtils.GetLandingCost(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), true, true, true, Int32.Parse(ItemTabDetails.Col5Break.ToString())));
                                         txtMargin5.Text = ((1 - ((margin5) / (decimal.Parse(txtWeb5.Text)))) * 100).ToString();
                                     }
                                     else
@@ -3946,8 +3946,8 @@ namespace LoginForm.QuotationModule
 
         public void CustomerSearchInput()
         {
-            classQuotationAdd.customersearchID = "";
-            classQuotationAdd.customersearchname = CustomerCode.Text;
+            QuotationUtils.customersearchID = "";
+            QuotationUtils.customersearchname = CustomerCode.Text;
             FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch(customer);
             this.Enabled = false;
             var result = form.ShowDialog();
@@ -4539,7 +4539,7 @@ namespace LoginForm.QuotationModule
                     //Bu item daha önceden eklimi diye kontrol ediyor
                     DataGridViewRow row = dgSaleAddedItems.Rows
 .Cast<DataGridViewRow>()
-.Where(r => r.Cells["dgProductCode"].Value.ToString().Equals(classQuotationAdd.ItemCode))
+.Where(r => r.Cells["dgProductCode"].Value.ToString().Equals(QuotationUtils.ItemCode))
 .FirstOrDefault();
                     if (row.Cells["dgUCUPCurr"].Value != null)
                     {
@@ -4554,7 +4554,7 @@ namespace LoginForm.QuotationModule
                 }
                 catch { }
                 int sdNumber = 0, sdPNumber = 0, erNumber = 0;
-                dgSaleAddedItems.CurrentCell.Value = classQuotationAdd.ItemCode;
+                dgSaleAddedItems.CurrentCell.Value = QuotationUtils.ItemCode;
                 if (dgSaleAddedItems.CurrentCell.Value != null)
                 {
                     try { sdNumber = IME.SuperDisks.Where(a => a.Article_No.Contains(dgSaleAddedItems.CurrentCell.Value.ToString())).ToList().Count; } catch { sdNumber = 0; }
@@ -4562,7 +4562,7 @@ namespace LoginForm.QuotationModule
                     try { erNumber = IME.ExtendedRanges.Where(a => a.ArticleNo.Contains(dgSaleAddedItems.CurrentCell.Value.ToString())).ToList().Count; } catch { erNumber = 0; }
                     if (sdNumber == 1 || sdPNumber == 1 || erNumber == 1)
                     {
-                        if (classQuotationAdd.HasMultipleItems(dgSaleAddedItems.CurrentCell.Value.ToString()) == 0)
+                        if (QuotationUtils.HasMultipleItems(dgSaleAddedItems.CurrentCell.Value.ToString()) == 0)
                         {
                             if (tabControl1.SelectedTab != tabItemDetails) { tabControl1.SelectedTab = tabItemDetails; }
                             ItemDetailsFiller(dgSaleAddedItems.CurrentCell.Value.ToString());
@@ -4872,8 +4872,8 @@ namespace LoginForm.QuotationModule
 
         private void XmlToCustomer(XmlCustomer xmlCustomer)
         {
-            classQuotationAdd.customersearchID = CustomerCode.Text;
-            classQuotationAdd.customersearchname = xmlCustomer.Name;
+            QuotationUtils.customersearchID = CustomerCode.Text;
+            QuotationUtils.customersearchname = xmlCustomer.Name;
             FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch(xmlCustomer);
             this.Enabled = false;
             var result = form.ShowDialog();
@@ -4992,12 +4992,12 @@ namespace LoginForm.QuotationModule
 
             frmEx_Quotation form = new frmEx_Quotation();
             form.ShowDialog();
-            if (classQuotationAdd.quotationNo != null)
+            if (QuotationUtils.quotationNo != null)
             {
-                Quotation q = IME.Quotations.Where(a => a.QuotationNo == classQuotationAdd.quotationNo).FirstOrDefault();
+                Quotation q = IME.Quotations.Where(a => a.QuotationNo == QuotationUtils.quotationNo).FirstOrDefault();
                 dgSaleAddedItems.Rows.Clear();
                 dgSaleAddedItems.Refresh();
-                foreach (QuotationDetail item in IME.QuotationDetails.Where(a => a.QuotationNo == classQuotationAdd.quotationNo))
+                foreach (QuotationDetail item in IME.QuotationDetails.Where(a => a.QuotationNo == QuotationUtils.quotationNo))
                 {
                     if (dgSaleAddedItems.RowCount != 1)
                     {
@@ -5007,7 +5007,7 @@ namespace LoginForm.QuotationModule
                         row.Cells[dgQty.Index].Value = item.Qty;
                         DgQuantityFiller();
 
-                        if (classQuotationAdd.IsWithItems == true)
+                        if (QuotationUtils.IsWithItems == true)
                         {
                             row.Cells[dgUCUPCurr.Index].Value = item.UCUPCurr;
                             row.Cells[dgDisc.Index].Value = item.Disc;
@@ -5022,7 +5022,7 @@ namespace LoginForm.QuotationModule
                         dgSaleAddedItems.Rows[0].Cells[dgQty.Index].Value = item.Qty;
                         //GetQuotationQuantity(0);
                         DgQuantityFiller();
-                        if (classQuotationAdd.IsWithItems == true)
+                        if (QuotationUtils.IsWithItems == true)
                         {
                             dgSaleAddedItems.Rows[0].Cells[dgUCUPCurr.Index].Value = item.UCUPCurr;
                             dgSaleAddedItems.Rows[0].Cells[dgDisc.Index].Value = item.Disc;

@@ -339,8 +339,8 @@ namespace LoginForm.StockManagement
         
         public void CustomerSearchInput()
         {
-            classQuotationAdd.customersearchID = txtCustomerID.Text;
-            classQuotationAdd.customersearchname = "";
+            QuotationUtils.customersearchID = txtCustomerID.Text;
+            QuotationUtils.customersearchname = "";
             FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch();
             this.Enabled = false;
             var result = form.ShowDialog();

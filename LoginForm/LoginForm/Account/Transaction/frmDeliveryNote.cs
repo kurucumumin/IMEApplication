@@ -7727,8 +7727,8 @@ namespace LoginForm
 
         public void CustomerSearchInput()
         {
-            classQuotationAdd.customersearchID = txtCustomer.Text;
-            classQuotationAdd.customersearchname = "";
+            QuotationUtils.customersearchID = txtCustomer.Text;
+            QuotationUtils.customersearchname = "";
             FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch(customer);
             this.Enabled = false;
             var result = form.ShowDialog();

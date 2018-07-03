@@ -65,8 +65,8 @@ namespace LoginForm.IMEAccount
         #region CustomerSearch
         public void CustomerSearch()
         {
-            classQuotationAdd.customersearchname = txtCustomerName.Text;
-            classQuotationAdd.customersearchID = "";
+            QuotationUtils.customersearchname = txtCustomerName.Text;
+            QuotationUtils.customersearchID = "";
             FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch(currentAccount as Customer);
             this.Enabled = false;
             var result = form.ShowDialog();

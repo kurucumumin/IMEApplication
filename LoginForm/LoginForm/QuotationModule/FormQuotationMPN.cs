@@ -22,7 +22,7 @@ namespace LoginForm.QuotationModule
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
-            classQuotationAdd.ItemCode = dgItemList.CurrentRow.Cells[0].Value.ToString();
+            QuotationUtils.ItemCode = dgItemList.CurrentRow.Cells[0].Value.ToString();
             this.Close();
         }
 
