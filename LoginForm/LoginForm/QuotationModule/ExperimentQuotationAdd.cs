@@ -285,8 +285,8 @@ namespace LoginForm.QuotationModule
             DataGridViewRow row = dgAddedItems.Rows[e.RowIndex];
 
             switch (e.ColumnIndex)
-            {   
-                //ItemCode
+            {
+                #region ItemCode
                 case ((int)GridColumns.ItemCode):
                     if (row.Cells[e.ColumnIndex].Value != null)
                     {
@@ -307,8 +307,17 @@ namespace LoginForm.QuotationModule
                                 break;
                             case 1:
                                 CompleteItem item = itemList.FirstOrDefault();
-                                FillItemDetails(item);
-                                
+                                List<CompleteItem> MPN_Items = db.CompleteItems.Where(x => x.MPN == item.MPN).ToList();
+
+                                if (MPN_Items.Count == 1)
+                                {
+                                    FillItemDetails(item, e.RowIndex);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("There are " + MPN_Items.Count + " items with MPN:" + item.MPN, "MPN List");
+                                    //Send MPN items to a list to choose among
+                                }
                                 break;
                             default:
                                 MessageBox.Show(itemList.Count.ToString());
@@ -317,15 +326,24 @@ namespace LoginForm.QuotationModule
 
                     }
                     break;
+                #endregion
                 default:
                     break;
             }
         }
 
-        private void FillItemDetails(CompleteItem item)
+        private void FillItemDetails(CompleteItem item, int RowIndex)
         {
+            //ItemDetailFill_Row(item,RowIndex);
+            ItemDetailFill_Tab(item);
+        }
 
-            throw new NotImplementedException();
+        private void ItemDetailFill_Tab(CompleteItem item)
+        {
+            txtManufacturer.Text = item.Manufacturer ?? "";
+            txtBrand.Text = item.BrandName ?? "";
+            txtSupersectionName.Text = item.SupersectionName ?? "";
+            //txtSection.Text = item.Section ?? "";
         }
 
         private enum GridColumns

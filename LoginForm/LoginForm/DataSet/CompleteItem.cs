@@ -64,6 +64,7 @@ namespace LoginForm.DataSet
         public string Lithium { get; set; }
         public string Shipping { get; set; }
         public string LicenceType { get; set; }
+        public string BrandName { get; set; }
         public string dependantTable { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using LoginForm.DataSet;
+using LoginForm.Services;
 using System;
 using System.Linq;
 using System.Windows.Forms;
@@ -29,9 +30,12 @@ namespace LoginForm.Item
                 case "SuperDisk":
                     if (txtReader.SuperDiskRead() == 1)
                     {
-                        LoaderDate ld = new LoaderDate();
-                        ld.SD_Date = DTPLoaderDate.Value;
-                        IME.LoaderDates.Add(ld);
+                        RsFileHistory h = new RsFileHistory();
+                        h.FileType = txtReader.LoaderType;
+                        h.FileName = "";
+                        h.Date = IME.CurrentDate().FirstOrDefault().Value;
+                        h.UserID = Utils.getCurrentUser().WorkerID;
+                        IME.RsFileHistories.Add(h);
                         IME.SaveChanges();
                     }
                     dataGridView1.DataSource = null;
@@ -40,9 +44,12 @@ namespace LoginForm.Item
                 case "SuperDiskP":
                     if (txtReader.SuperDiskPRead() == 1)
                     {
-                        LoaderDate ld = new LoaderDate();
-                        ld.SDP_Date = DTPLoaderDate.Value;
-                        IME.LoaderDates.Add(ld);
+                        RsFileHistory h = new RsFileHistory();
+                        h.FileType = txtReader.LoaderType;
+                        h.FileName = "";
+                        h.Date = IME.CurrentDate().FirstOrDefault().Value;
+                        h.UserID = Utils.getCurrentUser().WorkerID;
+                        IME.RsFileHistories.Add(h);
                         IME.SaveChanges();
                     }
                     dataGridView1.DataSource = null;
@@ -52,10 +59,13 @@ namespace LoginForm.Item
                 case "SlidingPrice":
                     if (txtReader.SlidingPriceRead() == 1)
                     {
-                        //LoaderDate ld = new LoaderDate();
-                        //ld = DTPLoaderDate.Value;
-                        //IME.LoaderDates.Add(ld);
-                        //IME.SaveChanges();
+                        RsFileHistory h = new RsFileHistory();
+                        h.FileType = txtReader.LoaderType;
+                        h.FileName = "";
+                        h.Date = IME.CurrentDate().FirstOrDefault().Value;
+                        h.UserID = Utils.getCurrentUser().WorkerID;
+                        IME.RsFileHistories.Add(h);
+                        IME.SaveChanges();
                     }
                     dataGridView1.DataSource = null;
                     dataGridView1.DataSource = IME.SlidingPrices.Take(10).ToList();
@@ -63,9 +73,12 @@ namespace LoginForm.Item
                 case "OnSale":
                     if (txtReader.SuperDiskRead() == 1)
                     {
-                        LoaderDate ld = new LoaderDate();
-                        ld.SDP_Date = DTPLoaderDate.Value;
-                        IME.LoaderDates.Add(ld);
+                        RsFileHistory h = new RsFileHistory();
+                        h.FileType = txtReader.LoaderType;
+                        h.FileName = "";
+                        h.Date = IME.CurrentDate().FirstOrDefault().Value;
+                        h.UserID = Utils.getCurrentUser().WorkerID;
+                        IME.RsFileHistories.Add(h);
                         IME.SaveChanges();
                     }
                     txtReader.SuperDiskRead();
@@ -75,9 +88,12 @@ namespace LoginForm.Item
                 case "DiscontinuedList":
                     if (txtReader.DiscontinuedListRead() == 1)
                     {
-                        LoaderDate ld = new LoaderDate();
-                        ld.DiscontinuedList_Date = DTPLoaderDate.Value;
-                        IME.LoaderDates.Add(ld);
+                        RsFileHistory h = new RsFileHistory();
+                        h.FileType = txtReader.LoaderType;
+                        h.FileName = "";
+                        h.Date = IME.CurrentDate().FirstOrDefault().Value;
+                        h.UserID = Utils.getCurrentUser().WorkerID;
+                        IME.RsFileHistories.Add(h);
                         IME.SaveChanges();
                     }
                     dataGridView1.DataSource = null;
@@ -86,9 +102,12 @@ namespace LoginForm.Item
                 case "DualUse":
                     if (txtReader.DualUsedRead() == 1)
                     {
-                        LoaderDate ld = new LoaderDate();
-                        ld.DualUsed_Date = DTPLoaderDate.Value;
-                        IME.LoaderDates.Add(ld);
+                        RsFileHistory h = new RsFileHistory();
+                        h.FileType = txtReader.LoaderType;
+                        h.FileName = "";
+                        h.Date = IME.CurrentDate().FirstOrDefault().Value;
+                        h.UserID = Utils.getCurrentUser().WorkerID;
+                        IME.RsFileHistories.Add(h);
                         IME.SaveChanges();
                     }
                     dataGridView1.DataSource = null;
@@ -97,9 +116,12 @@ namespace LoginForm.Item
                 case "Hazardous":
                     if (txtReader.HazardousRead() == 1)
                     {
-                        LoaderDate ld = new LoaderDate();
-                        ld.Hazardous_Date = DTPLoaderDate.Value;
-                        IME.LoaderDates.Add(ld);
+                        RsFileHistory h = new RsFileHistory();
+                        h.FileType = txtReader.LoaderType;
+                        h.FileName = "";
+                        h.Date = IME.CurrentDate().FirstOrDefault().Value;
+                        h.UserID = Utils.getCurrentUser().WorkerID;
+                        IME.RsFileHistories.Add(h);
                         IME.SaveChanges();
                     }
                     dataGridView1.DataSource = null;
@@ -108,9 +130,12 @@ namespace LoginForm.Item
                 case "ExtendedRange":
                     if (txtReader.EntendedRangeRead() == 1)
                     {
-                        LoaderDate ld = new LoaderDate();
-                        ld.ER_Date = DTPLoaderDate.Value;
-                        IME.LoaderDates.Add(ld);
+                        RsFileHistory h = new RsFileHistory();
+                        h.FileType = txtReader.LoaderType;
+                        h.FileName = "";
+                        h.Date = IME.CurrentDate().FirstOrDefault().Value;
+                        h.UserID = Utils.getCurrentUser().WorkerID;
+                        IME.RsFileHistories.Add(h);
                         IME.SaveChanges();
                     }
                     dataGridView1.DataSource = null;
@@ -124,9 +149,12 @@ namespace LoginForm.Item
                 case "RSPro":
                     if (txtReader.RSProRead() == 1)
                     {
-                        LoaderDate ld = new LoaderDate();
-                        ld.RSPro_Date = DTPLoaderDate.Value;
-                        IME.LoaderDates.Add(ld);
+                        RsFileHistory h = new RsFileHistory();
+                        h.FileType = txtReader.LoaderType;
+                        h.FileName = "";
+                        h.Date = IME.CurrentDate().FirstOrDefault().Value;
+                        h.UserID = Utils.getCurrentUser().WorkerID;
+                        IME.RsFileHistories.Add(h);
                         IME.SaveChanges();
                     }
                     dataGridView1.DataSource = null;
@@ -135,10 +163,13 @@ namespace LoginForm.Item
                 case "RSInvoice":
                     txtReader.RSInvoiceReader();
                     {
-                        //LoaderDate ld = new LoaderDate();
-                        //ld.RSPro_Date = DTPLoaderDate.Value;
-                        //IME.LoaderDates.Add(ld);
-                        //IME.SaveChanges();
+                        RsFileHistory h = new RsFileHistory();
+                        h.FileType = txtReader.LoaderType;
+                        h.FileName = "";
+                        h.Date = IME.CurrentDate().FirstOrDefault().Value;
+                        h.UserID = Utils.getCurrentUser().WorkerID;
+                        IME.RsFileHistories.Add(h);
+                        IME.SaveChanges();
                     }
                     dataGridView1.DataSource = null;
                     dataGridView1.DataSource = IME.RS_Invoice.Take(10).ToList();
@@ -147,18 +178,21 @@ namespace LoginForm.Item
                 case "OrderAcknowledgementtxtReader":
                     txtReader.OrderAcknowledgementtxtReader();
                     {
-                        //LoaderDate ld = new LoaderDate();
-                        //ld.RSPro_Date = DTPLoaderDate.Value;
-                        //IME.LoaderDates.Add(ld);
-                        //IME.SaveChanges();
+                        RsFileHistory h = new RsFileHistory();
+                        h.FileType = txtReader.LoaderType;
+                        h.FileName = "";
+                        h.Date = IME.CurrentDate().FirstOrDefault().Value;
+                        h.UserID = Utils.getCurrentUser().WorkerID;
+                        IME.RsFileHistories.Add(h);
+                        IME.SaveChanges();
                     }
                     dataGridView1.DataSource = null;
                     dataGridView1.DataSource = IME.OrderAcknowledgements.Take(10).ToList();
                     break;
 
-                case "Stock":
+                //case "Stock":
                     
-                    break;
+                //    break;
 
             }
 #endregion       

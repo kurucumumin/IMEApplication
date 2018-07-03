@@ -904,6 +904,8 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="DataSeperetor" Type="nvarchar" MaxLength="1" Nullable="false" />
           <Property Name="SaleOrderNoStart" Type="int" Nullable="false" />
           <Property Name="PurchaseOrderNoStart" Type="int" Nullable="false" />
+          <Property Name="FreightCharge" Type="numeric" Precision="7" Scale="4" />
+          <Property Name="CustomsRate" Type="numeric" Precision="6" Scale="4" />
         </EntityType>
         <EntityType Name="Master">
           <Key>
@@ -1773,6 +1775,16 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="DeliveryItemNumber" Type="int" />
           <Property Name="IsSaleInvoiced" Type="int" />
           <Property Name="PurchaseOrderID" Type="int" />
+        </EntityType>
+        <EntityType Name="RsFileHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FileType" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="RSPro">
           <Key>
@@ -2646,6 +2658,7 @@ warning 6002: The table/view 'IME.dbo.CompleteItems' does not have a primary key
           <Property Name="Lithium" Type="nvarchar" MaxLength="50" />
           <Property Name="Shipping" Type="nvarchar" MaxLength="50" />
           <Property Name="LicenceType" Type="nvarchar" MaxLength="5" />
+          <Property Name="BrandName" Type="nvarchar" MaxLength="100" />
           <Property Name="dependantTable" Type="varchar" MaxLength="3" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
@@ -5690,6 +5703,18 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Principal>
             <Dependent Role="RS_InvoiceDetails">
               <PropertyRef Name="RS_InvoiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RsFileHis__UserI__7953D99F">
+          <End Role="Worker" Type="Self.Worker" Multiplicity="1" />
+          <End Role="RsFileHistory" Type="Self.RsFileHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="WorkerID" />
+            </Principal>
+            <Dependent Role="RsFileHistory">
+              <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -9828,6 +9853,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <EntitySet Name="Route" EntityType="Self.Route" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RS_Invoice" EntityType="Self.RS_Invoice" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RS_InvoiceDetails" EntityType="Self.RS_InvoiceDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RsFileHistory" EntityType="Self.RsFileHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RSPro" EntityType="Self.RSPro" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SalaryPackage" EntityType="Self.SalaryPackage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SalaryPackageDetail" EntityType="Self.SalaryPackageDetail" Schema="dbo" store:Type="Tables" />
@@ -9962,6 +9988,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
     [CompleteItems].[Lithium] AS [Lithium], 
     [CompleteItems].[Shipping] AS [Shipping], 
     [CompleteItems].[LicenceType] AS [LicenceType], 
+    [CompleteItems].[BrandName] AS [BrandName], 
     [CompleteItems].[dependantTable] AS [dependantTable]
     FROM [dbo].[CompleteItems] AS [CompleteItems]</DefiningQuery>
           </EntitySet>
@@ -10983,6 +11010,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <AssociationSet Name="FK__RS_Invoic__RS_In__7DC38901" Association="Self.FK__RS_Invoic__RS_In__7DC38901">
             <End Role="RS_Invoice" EntitySet="RS_Invoice" />
             <End Role="RS_InvoiceDetails" EntitySet="RS_InvoiceDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RsFileHis__UserI__7953D99F" Association="Self.FK__RsFileHis__UserI__7953D99F">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="RsFileHistory" EntitySet="RsFileHistory" />
           </AssociationSet>
           <AssociationSet Name="FK__SalaryPac__payHe__577DE488" Association="Self.FK__SalaryPac__payHe__577DE488">
             <End Role="PayHead" EntitySet="PayHead" />
@@ -12609,6 +12640,8 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="DataSeperetor" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SaleOrderNoStart" Type="Int32" Nullable="false" />
           <Property Name="PurchaseOrderNoStart" Type="Int32" Nullable="false" />
+          <Property Name="FreightCharge" Type="Decimal" Precision="7" Scale="4" />
+          <Property Name="CustomsRate" Type="Decimal" Precision="6" Scale="4" />
           <NavigationProperty Name="Company" Relationship="Self.FK_ManagementCompany" FromRole="Management" ToRole="Company" />
           <NavigationProperty Name="Currency" Relationship="Self.FK__Managemen__Defau__253C7D7E" FromRole="Management" ToRole="Currency" />
           <NavigationProperty Name="FinancialYear" Relationship="Self.FK__Managemen__Curre__338A9CD5" FromRole="Management" ToRole="FinancialYear" />
@@ -13700,6 +13733,17 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <NavigationProperty Name="RS_Invoice" Relationship="Self.FK__RS_Invoic__RS_In__7AE71C56" FromRole="RS_InvoiceDetails" ToRole="RS_Invoice" />
           <NavigationProperty Name="RS_Invoice1" Relationship="Self.FK__RS_Invoic__RS_In__7DC38901" FromRole="RS_InvoiceDetails" ToRole="RS_Invoice" />
         </EntityType>
+        <EntityType Name="RsFileHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="FileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Worker" Relationship="Self.FK__RsFileHis__UserI__7953D99F" FromRole="RsFileHistory" ToRole="Worker" />
+        </EntityType>
         <EntityType Name="RSPro">
           <Key>
             <PropertyRef Name="ArticleNo" />
@@ -14728,6 +14772,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <NavigationProperty Name="Receipts" Relationship="Self.FK__Receipt__Represe__228AF95C" FromRole="Worker" ToRole="Receipt" />
           <NavigationProperty Name="RejectionInMasters" Relationship="Self.FK__Rejection__emplo__3F865F66" FromRole="Worker" ToRole="RejectionInMaster" />
           <NavigationProperty Name="RejectionOutMasters" Relationship="Self.FK__Rejection__userI__6B2FD77A" FromRole="Worker" ToRole="RejectionOutMaster" />
+          <NavigationProperty Name="RsFileHistories" Relationship="Self.FK__RsFileHis__UserI__7953D99F" FromRole="Worker" ToRole="RsFileHistory" />
           <NavigationProperty Name="SalaryPackage" Relationship="Self.FK__Worker__defaultP__587208C1" FromRole="Worker" ToRole="SalaryPackage" />
           <NavigationProperty Name="SaleOrders" Relationship="Self.FK__SaleOrder__Repre__22951AFD" FromRole="Worker" ToRole="SaleOrder" />
           <NavigationProperty Name="SalesMasters" Relationship="Self.FK__SalesMast__Worke__77CAB889" FromRole="Worker" ToRole="SalesMaster" />
@@ -14839,6 +14884,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="Lithium" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Shipping" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="LicenceType" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="BrandName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="dependantTable" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="V_Product">
@@ -18550,6 +18596,18 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__RsFileHis__UserI__7953D99F">
+          <End Role="Worker" Type="Self.Worker" Multiplicity="1" />
+          <End Role="RsFileHistory" Type="Self.RsFileHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="WorkerID" />
+            </Principal>
+            <Dependent Role="RsFileHistory">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__SalaryPac__salar__5689C04F">
           <End Role="SalaryPackage" Type="Self.SalaryPackage" Multiplicity="0..1" />
           <End Role="SalaryPackageDetail" Type="Self.SalaryPackageDetail" Multiplicity="*" />
@@ -19410,6 +19468,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <EntitySet Name="Routes" EntityType="Self.Route" />
           <EntitySet Name="RS_Invoice" EntityType="Self.RS_Invoice" />
           <EntitySet Name="RS_InvoiceDetails" EntityType="Self.RS_InvoiceDetails" />
+          <EntitySet Name="RsFileHistories" EntityType="Self.RsFileHistory" />
           <EntitySet Name="RSProes" EntityType="Self.RSPro" />
           <EntitySet Name="SalaryPackages" EntityType="Self.SalaryPackage" />
           <EntitySet Name="SalaryPackageDetails" EntityType="Self.SalaryPackageDetail" />
@@ -20691,6 +20750,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <AssociationSet Name="FK__RS_Invoic__RS_In__7DC38901" Association="Self.FK__RS_Invoic__RS_In__7DC38901">
             <End Role="RS_Invoice" EntitySet="RS_Invoice" />
             <End Role="RS_InvoiceDetails" EntitySet="RS_InvoiceDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RsFileHis__UserI__7953D99F" Association="Self.FK__RsFileHis__UserI__7953D99F">
+            <End Role="Worker" EntitySet="Workers" />
+            <End Role="RsFileHistory" EntitySet="RsFileHistories" />
           </AssociationSet>
           <AssociationSet Name="FK__SalaryPac__salar__5689C04F" Association="Self.FK__SalaryPac__salar__5689C04F">
             <End Role="SalaryPackage" EntitySet="SalaryPackages" />
@@ -26733,6 +26796,8 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="DataSeperetor" ColumnName="DataSeperetor" />
                 <ScalarProperty Name="SaleOrderNoStart" ColumnName="SaleOrderNoStart" />
                 <ScalarProperty Name="PurchaseOrderNoStart" ColumnName="PurchaseOrderNoStart" />
+                <ScalarProperty Name="FreightCharge" ColumnName="FreightCharge" />
+                <ScalarProperty Name="CustomsRate" ColumnName="CustomsRate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -27658,6 +27723,17 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="RsFileHistories">
+            <EntityTypeMapping TypeName="IMEModel.RsFileHistory">
+              <MappingFragment StoreEntitySet="RsFileHistory">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FileType" ColumnName="FileType" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="RSProes">
             <EntityTypeMapping TypeName="IMEModel.RSPro">
               <MappingFragment StoreEntitySet="RSPro">
@@ -28571,6 +28647,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="Lithium" ColumnName="Lithium" />
                 <ScalarProperty Name="Shipping" ColumnName="Shipping" />
                 <ScalarProperty Name="LicenceType" ColumnName="LicenceType" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
                 <ScalarProperty Name="dependantTable" ColumnName="dependantTable" />
               </MappingFragment>
             </EntityTypeMapping>

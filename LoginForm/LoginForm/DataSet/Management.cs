@@ -24,6 +24,8 @@ namespace LoginForm.DataSet
         public string DataSeperetor { get; set; }
         public int SaleOrderNoStart { get; set; }
         public int PurchaseOrderNoStart { get; set; }
+        public Nullable<decimal> FreightCharge { get; set; }
+        public Nullable<decimal> CustomsRate { get; set; }
     
         public virtual Company Company { get; set; }
         public virtual Currency Currency { get; set; }

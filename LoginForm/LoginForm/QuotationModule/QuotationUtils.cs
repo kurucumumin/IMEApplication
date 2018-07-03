@@ -1,4 +1,5 @@
 ﻿using LoginForm.DataSet;
+using LoginForm.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -262,6 +263,24 @@ namespace LoginForm.QuotationModule
                 return 0;
             }
         }
+
+        public static decimal CalculateLandingCost(decimal P, decimal W)
+        {
+            Management m = Utils.getManagement();
+            decimal L = 0;
+            decimal F = (decimal)m.FreightCharge;
+            decimal C = (decimal)m.CustomsRate / (decimal)100;
+
+            L = (P + (W * F)) + (C * (P + (W * F)));
+
+            return L;
+        }
         
+        public static decimal CalculateMargin()
+        {
+            decimal M = 0;
+
+            return M;
+        }
     }
 }

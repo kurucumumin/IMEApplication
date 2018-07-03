@@ -146,6 +146,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<Route> Routes { get; set; }
         public virtual DbSet<RS_Invoice> RS_Invoice { get; set; }
         public virtual DbSet<RS_InvoiceDetails> RS_InvoiceDetails { get; set; }
+        public virtual DbSet<RsFileHistory> RsFileHistories { get; set; }
         public virtual DbSet<RSPro> RSProes { get; set; }
         public virtual DbSet<SalaryPackage> SalaryPackages { get; set; }
         public virtual DbSet<SalaryPackageDetail> SalaryPackageDetails { get; set; }
