@@ -3923,8 +3923,11 @@ namespace LoginForm.QuotationModule
                     Quotation q = form.quo;/*IME.Quotations.Where(a => a.QuotationNo == classQuotationAdd.quotationNo).FirstOrDefault();*/
                     dgQuotationAddedItems.Rows.Clear();
                     dgQuotationAddedItems.Refresh();
+
+                    //int itemCount = -1;
                     foreach (QuotationDetail item in q.QuotationDetails)
                     {
+                        //itemCount++;
                         if (dgQuotationAddedItems.RowCount != 1)
                         {
                             DataGridViewRow row = (DataGridViewRow)dgQuotationAddedItems.Rows[0].Clone();
@@ -3943,6 +3946,11 @@ namespace LoginForm.QuotationModule
                         }
                         else
                         {
+                            //int rowIndex = 0;
+                            //if (itemCount > 0)
+                            //{
+                            //    rowIndex = dgQuotationAddedItems.Rows.Add();
+                            //}
                             dgQuotationAddedItems.Rows[0].Cells[dgProductCode.Index].Value = item.ItemCode;
                             ItemDetailsFiller(item.ItemCode);
                             dgQuotationAddedItems.Rows[0].Cells[dgQty.Index].Value = item.Qty;
@@ -3954,7 +3962,6 @@ namespace LoginForm.QuotationModule
                                 dgQuotationAddedItems.Rows[0].Cells[dgDisc.Index].Value = item.Disc;
                             }
                         }
-
                     }
                 }
             }

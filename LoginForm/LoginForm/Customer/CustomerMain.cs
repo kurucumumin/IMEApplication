@@ -1009,7 +1009,9 @@ namespace LoginForm
                         c.subcategoryID = Int32.Parse(SubCategory.SelectedValue.ToString());
 
                         c.accountrepresentaryID = (AccountRepresentary.SelectedItem as Worker).WorkerID;
-                        c.representaryID = Utils.getCurrentUser().WorkerID;
+                        //c.representaryID = Utils.getCurrentUser().WorkerID;
+                        int c_rep1ID = ((Worker)(Represantative1).SelectedItem).WorkerID;
+                        c.representaryID = c_rep1ID;
                         int c_rep2ID = ((Worker)(Represantative2).SelectedItem).WorkerID;
                         c.representary2ID = c_rep2ID;
                         int c_termpayment = ((PaymentTerm)(TermsofPayments).SelectedItem).ID;
