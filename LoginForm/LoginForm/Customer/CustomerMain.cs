@@ -987,80 +987,100 @@ namespace LoginForm
                     //}
                     //else
                     //{
-                        btnCreate.Text = "CREATE";
-                        btnUpdate.Text = "UPDATE";
+                    btnCreate.Text = "CREATE";
+                    btnUpdate.Text = "UPDATE";
 
-                        Customer c = new Customer();
-                        c = IME.Customers.Where(a => a.ID == CustomerCode.Text).FirstOrDefault();
-                        if (rb_active.Checked) { c.isactive = 1; } else { c.isactive = 0; }
-                        c.c_name = CustomerName.Text;
-                        c.ThirdPartyCode = txt3partyCode.Text;
-                        if (Telephone.Text != "") { c.telephone = Telephone.Text; }
-                        if (txtExtNumber.Text != "") { c.extensionnumber = txtExtNumber.Text; }
-                        if (CustomerFax.Text != "") { c.fax = CustomerFax.Text; }
-                        c.webadress = WebAdress.Text;
-                        c.taxoffice = CustomerFax.Text;
-                        if (CreditLimit.Text != "") { c.creditlimit = Int32.Parse(CreditLimit.Text); }
-                        if (DiscountRate.Text != "") { c.discountrate = Decimal.Parse(DiscountRate.Text); }
-                        c.taxoffice = TaxOffice.Text;
-                        if (taxNumber.Text != "") { c.taxnumber = taxNumber.Text; }
+                    Customer c = new Customer();
+                    c = IME.Customers.Where(a => a.ID == CustomerCode.Text).FirstOrDefault();
+                    if (rb_active.Checked) { c.isactive = 1; } else { c.isactive = 0; }
+                    c.c_name = CustomerName.Text;
+                    c.ThirdPartyCode = txt3partyCode.Text;
+                    if (Telephone.Text != "") { c.telephone = Telephone.Text; }
+                    if (txtExtNumber.Text != "") { c.extensionnumber = txtExtNumber.Text; }
+                    if (CustomerFax.Text != "") { c.fax = CustomerFax.Text; }
+                    c.webadress = WebAdress.Text;
+                    c.taxoffice = CustomerFax.Text;
+                    if (CreditLimit.Text != "") { c.creditlimit = Int32.Parse(CreditLimit.Text); }
+                    if (DiscountRate.Text != "") { c.discountrate = Decimal.Parse(DiscountRate.Text); }
+                    c.taxoffice = TaxOffice.Text;
+                    if (taxNumber.Text != "") { c.taxnumber = taxNumber.Text; }
+                    if(MainCategory.SelectedValue != null)
+                    { c.categoryID = Int32.Parse(MainCategory.SelectedValue.ToString());}
 
-                        c.categoryID = Int32.Parse(MainCategory.SelectedValue.ToString());
-                        c.subcategoryID = Int32.Parse(SubCategory.SelectedValue.ToString());
-
-                        c.accountrepresentaryID = (AccountRepresentary.SelectedItem as Worker).WorkerID;
-                        //c.representaryID = Utils.getCurrentUser().WorkerID;
+                    if (SubCategory.SelectedValue != null) { c.subcategoryID = Int32.Parse(SubCategory.SelectedValue.ToString()); }
+                    if (AccountRepresentary.SelectedItem != null)
+                    { c.accountrepresentaryID = (AccountRepresentary.SelectedItem as Worker).WorkerID; }
+                    //c.representaryID = Utils.getCurrentUser().WorkerID;
+                    if (Represantative1.SelectedValue != null)
+                    {
                         int c_rep1ID = ((Worker)(Represantative1).SelectedItem).WorkerID;
                         c.representaryID = c_rep1ID;
+                    }
+                    if (Represantative2.SelectedValue != null)
+                    {
                         int c_rep2ID = ((Worker)(Represantative2).SelectedItem).WorkerID;
                         c.representary2ID = c_rep2ID;
+                    }
+                    if (TermsofPayments.SelectedValue != null)
+                    {
                         int c_termpayment = ((PaymentTerm)(TermsofPayments).SelectedItem).ID;
                         c.payment_termID = c_termpayment;
+                    }
+                    if (PaymentMethod.SelectedValue != null)
+                    {
                         int c_paymentmeth = ((PaymentMethod)(PaymentMethod).SelectedItem).ID;
                         c.paymentmethodID = c_paymentmeth;
-
+                    }
+                    if (cbMainContact.SelectedValue != null)
+                    {
                         c.MainContactID = (int)cbMainContact.SelectedValue;
+                    }
+                    if (QuoCurrencyName.SelectedValue != null)
+                    {
                         c.CurrNameQuo = ((DataSet.Currency)QuoCurrencyName.SelectedItem).currencyName;
+                    }
+                    if (InvCurrencyName.SelectedValue != null)
+                    {
                         c.CurrNameInv = ((DataSet.Currency)InvCurrencyName.SelectedItem).currencyName;
-                        if (factor.Text != "") c.factor = Decimal.Parse(factor.Text);
-                        if (Capital.SelectedItem != null) c.Capital = Capital.SelectedItem.ToString();
+                    }
+                    if (factor.Text != "") c.factor = Decimal.Parse(factor.Text);
+                    if (Capital.SelectedItem != null) c.Capital = Capital.SelectedItem.ToString();
 
-                        //Notes kısmına kayıt ediliyor
-                        Note n1 = new Note();
-                        try { n1 = IME.Notes.Where(a => a.ID == c.Note.ID).FirstOrDefault(); } catch { }
-                        if (c.Note == null)
-                        {
-                            n1.Note_name = CompanyNotes.Text;
-                            c.Note = n1;
-                            IME.Notes.Add(c.Note);
-                            IME.SaveChanges();
-                            //c.customerNoteID = c.Note.ID;
-
-                        }
-                        else
-                        {
-                            n1.Note_name = CompanyNotes.Text;
-                            IME.SaveChanges();
-                        }
-                        if (c.customerAccountantNoteID == null)
-                        {
-                            Note n = new Note();
-                            n.Note_name = AccountingNotes.Text;
-                            IME.Notes.Add(n);
-                            IME.SaveChanges();
-                            c.customerAccountantNoteID = n.ID;
-                        }
-                        else
-                        {
-                            Note n = IME.Notes.Where(a => a.ID == c.customerAccountantNoteID).FirstOrDefault();
-                            n.Note_name = AccountingNotes.Text;
-                            IME.SaveChanges();
-                        }
+                    //Notes kısmına kayıt ediliyor
+                    Note n1 = new Note();
+                    try { n1 = IME.Notes.Where(a => a.ID == c.Note.ID).FirstOrDefault(); } catch { }
+                    if (c.Note == null)
+                    {
+                        n1.Note_name = CompanyNotes.Text;
+                        c.Note = n1;
+                        IME.Notes.Add(c.Note);
                         IME.SaveChanges();
+                        //c.customerNoteID = c.Note.ID;
+                    }
+                    else
+                    {
+                        n1.Note_name = CompanyNotes.Text;
+                        IME.SaveChanges();
+                    }
+                    if (c.customerAccountantNoteID == null)
+                    {
+                        Note n = new Note();
+                        n.Note_name = AccountingNotes.Text;
+                        IME.Notes.Add(n);
+                        IME.SaveChanges();
+                        c.customerAccountantNoteID = n.ID;
+                    }
+                    else
+                    {
+                        Note n = IME.Notes.Where(a => a.ID == c.customerAccountantNoteID).FirstOrDefault();
+                        n.Note_name = AccountingNotes.Text;
+                        IME.SaveChanges();
+                    }
+                    IME.SaveChanges();
 
-                        itemsEnableFalse();
-                        contactTabEnableFalse();
-                        customersearch();
+                    itemsEnableFalse();
+                    contactTabEnableFalse();
+                    customersearch();
                     //}
                 }
 
