@@ -1292,6 +1292,11 @@ namespace LoginForm.QuotationModule
                 txtUK3.Text = ItemTabDetails.Col3Price.ToString();
                 txtUK4.Text = ItemTabDetails.Col4Price.ToString();
                 txtUK5.Text = ItemTabDetails.Col5Price.ToString();
+                if (txtUK1.Text == "") { txtUK1.Text = "0"; }
+                if (txtUK2.Text == "") { txtUK2.Text = "0"; }
+                if (txtUK3.Text == "") { txtUK3.Text = "0"; }
+                if (txtUK4.Text == "") { txtUK4.Text = "0"; }
+                if (txtUK5.Text == "") { txtUK5.Text = "0"; }
                 txtUnitCount1.Text = ItemTabDetails.Col1Break.ToString();
                 txtUnitCount2.Text = ItemTabDetails.Col2Break.ToString();
                 txtUnitCount3.Text = ItemTabDetails.Col3Break.ToString();
@@ -1302,41 +1307,10 @@ namespace LoginForm.QuotationModule
                 txtCost3.Text = ItemTabDetails.DiscountedPrice3.ToString();
                 txtCost4.Text = ItemTabDetails.DiscountedPrice4.ToString();
                 txtCost5.Text = ItemTabDetails.DiscountedPrice5.ToString();
-                if (txtUK1.Text == "") { txtUK1.Text = "0"; }
-                if (txtUK2.Text == "") { txtUK2.Text = "0"; }
-                if (txtUK3.Text == "") { txtUK3.Text = "0"; }
-                if (txtUK4.Text == "") { txtUK4.Text = "0"; }
-                if (txtUK5.Text == "") { txtUK5.Text = "0"; }
                 txtWeb1.Text = ((Decimal.Parse(txtUK1.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
                 txtWeb2.Text = ((Decimal.Parse(txtUK2.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
                 txtWeb3.Text = ((Decimal.Parse(txtUK3.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
                 txtWeb4.Text = ((Decimal.Parse(txtUK4.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtWeb5.Text = ((Decimal.Parse(txtUK5.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtUnitCount1.Text = ItemTabDetails.Col1Break.ToString();
-                txtUnitCount2.Text = ItemTabDetails.Col2Break.ToString();
-                txtUnitCount3.Text = ItemTabDetails.Col3Break.ToString();
-                txtUnitCount4.Text = ItemTabDetails.Col4Break.ToString();
-                txtUnitCount5.Text = ItemTabDetails.Col5Break.ToString();
-                txtUK1.Text = ItemTabDetails.Col1Price.ToString();
-                txtUK2.Text = ItemTabDetails.Col2Price.ToString();
-                txtUK3.Text = ItemTabDetails.Col3Price.ToString();
-                txtUK4.Text = ItemTabDetails.Col4Price.ToString();
-                txtUK5.Text = ItemTabDetails.Col5Price.ToString();
-                txtCost1.Text = ItemTabDetails.DiscountedPrice1.ToString();
-                txtCost2.Text = ItemTabDetails.DiscountedPrice2.ToString();
-                txtCost3.Text = ItemTabDetails.DiscountedPrice3.ToString();
-                txtCost4.Text = ItemTabDetails.DiscountedPrice4.ToString();
-                txtCost5.Text = ItemTabDetails.DiscountedPrice5.ToString();
-                if (txtUK1.Text == "") { txtUK1.Text = "0"; }
-                if (txtUK2.Text == "") { txtUK2.Text = "0"; }
-                if (txtUK3.Text == "") { txtUK3.Text = "0"; }
-                if (txtUK4.Text == "") { txtUK4.Text = "0"; }
-                if (txtUK5.Text == "") { txtUK5.Text = "0"; }
-                txtWeb1.Text = ((Decimal.Parse(txtUK1.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtWeb2.Text = ((Decimal.Parse(txtUK2.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtWeb3.Text = ((Decimal.Parse(txtUK3.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtWeb4.Text = ((Decimal.Parse(txtUK4.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtWeb5.Text = ((Decimal.Parse(txtUK5.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
                 txtSupersectionName.Text = ItemTabDetails.SupersectionName;
                 if (ItemTabDetails.Environment != null) { txtEnvironment.Text = "Y"; } else { txtEnvironment.Text = ""; }
                 txtLithium.Text = (ItemTabDetails.Lithium != null && ItemTabDetails.Lithium != String.Empty) ? "Y" : "";

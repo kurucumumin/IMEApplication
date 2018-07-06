@@ -62,5 +62,10 @@ namespace LoginForm.Services
             IMEEntities IME = new IMEEntities();
             return IME.Managements.ToList().FirstOrDefault();
         }
+
+        public static decimal ConvertPriceToCurrecny(decimal Price, decimal SourceRate, decimal TargetRate)
+        {
+            return ((Price * SourceRate) / TargetRate);
+        }
     }
 }

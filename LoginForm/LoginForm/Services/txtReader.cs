@@ -1258,33 +1258,33 @@ namespace LoginForm
 
                         IME.SlidingPriceAdd(
                             Superdiskitems.ArticleNo
-           , Superdiskitems.ArticleDescription
-           , Superdiskitems.ItemTypeCode
-           , Superdiskitems.ItemTypeDesc
-           , Superdiskitems.IntroductionDate
-           , Superdiskitems.DiscontinuedDate
-           , Superdiskitems.Quantity1
-           , Superdiskitems.Col1Price
-           , Superdiskitems.Col2Price
-           , Superdiskitems.Col3Price
-           , Superdiskitems.Col4Price
-           , Superdiskitems.Col5Price
-           , Superdiskitems.Col1Break
-           , Superdiskitems.Col2Break
-           , Superdiskitems.Col3Break
-           , Superdiskitems.Col4Break
-           , Superdiskitems.Col5Break
-           , Superdiskitems.DiscountedPrice1
-           , Superdiskitems.DiscountedPrice2
-           , Superdiskitems.DiscountedPrice3
-           , Superdiskitems.DiscountedPrice4
-           , Superdiskitems.DiscountedPrice5
-           , Superdiskitems.SuperSectionNo
-           , Superdiskitems.SupersectionName
-           , Superdiskitems.BrandID
-           , Superdiskitems.Brandname
-           , Superdiskitems.SectionID
-           , Superdiskitems.SectionName
+                           , Superdiskitems.ArticleDescription
+                           , Superdiskitems.ItemTypeCode
+                           , Superdiskitems.ItemTypeDesc
+                           , Superdiskitems.IntroductionDate
+                           , Superdiskitems.DiscontinuedDate
+                           , Superdiskitems.Quantity1
+                           , Superdiskitems.Col1Price
+                           , Superdiskitems.Col2Price
+                           , Superdiskitems.Col3Price
+                           , Superdiskitems.Col4Price
+                           , Superdiskitems.Col5Price
+                           , Superdiskitems.Col1Break
+                           , Superdiskitems.Col2Break
+                           , Superdiskitems.Col3Break
+                           , Superdiskitems.Col4Break
+                           , Superdiskitems.Col5Break
+                           , Superdiskitems.DiscountedPrice1
+                           , Superdiskitems.DiscountedPrice2
+                           , Superdiskitems.DiscountedPrice3
+                           , Superdiskitems.DiscountedPrice4
+                           , Superdiskitems.DiscountedPrice5
+                           , Superdiskitems.SuperSectionNo
+                           , Superdiskitems.SupersectionName
+                           , Superdiskitems.BrandID
+                           , Superdiskitems.Brandname
+                           , Superdiskitems.SectionID
+                           , Superdiskitems.SectionName
                           );
 
 

@@ -264,7 +264,7 @@ namespace LoginForm.QuotationModule
             }
         }
 
-        public static decimal CalculateLandingCost(decimal P, decimal W)
+        public decimal CalculateLandingCost(decimal P, decimal W)
         {
             Management m = Utils.getManagement();
             decimal L = 0;
@@ -276,11 +276,9 @@ namespace LoginForm.QuotationModule
             return L;
         }
         
-        public static decimal CalculateMargin()
+        public decimal CalculateMargin(decimal Price, decimal Cost)
         {
-            decimal M = 0;
-
-            return M;
+            return (1 - (Cost / Price)) * 100;
         }
     }
 }

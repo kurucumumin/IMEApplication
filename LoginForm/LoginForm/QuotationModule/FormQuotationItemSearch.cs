@@ -1,5 +1,6 @@
 ﻿using LoginForm.DataSet;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
@@ -10,11 +11,16 @@ namespace LoginForm.QuotationModule
     {
         IMEEntities IME = new IMEEntities();
         string ArticleCode;
-        public string[] itemProps = new string[2]; 
+        public string[] itemProps = new string[2];
+        List<CompleteItem> itemList;
+        public string ItemCode; 
 
-        public FormQuotationItemSearch()
+
+        public FormQuotationItemSearch(string searchItemCode, List<CompleteItem> itemList)
         {
             InitializeComponent();
+            txtQuotationItemCode.Text = searchItemCode;
+            this.itemList = itemList;
         }
 
         public FormQuotationItemSearch(string ItemCode)
@@ -67,42 +73,53 @@ namespace LoginForm.QuotationModule
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if (dgQuotationItemSearch.DataSource != null)
-                {
-                    QuotationUtils.ItemCode = dgQuotationItemSearch.CurrentRow.Cells["Article_No"].Value.ToString();
-                    itemProps[0] = dgQuotationItemSearch.CurrentRow.Cells["Article_No"].Value.ToString();
-                    itemProps[1] = dgQuotationItemSearch.CurrentRow.Cells["Article_Desc"].Value.ToString();
-                    this.DialogResult = DialogResult.OK;
-
-                    var MPNItemList = IME.ArticleSearchwithMPN(dgQuotationItemSearch.CurrentRow.Cells["MPN"].Value.ToString()).ToList();
-                    if (MPNItemList.Count > 1)
-                    {
-                        FormQuotationMPN form = new FormQuotationMPN(MPNItemList);
-                        form.ShowDialog();
-                    }
-                }
-                this.Close();
+                ChooseItem();
+                //if (itemList != null)
+                //{
+                //    ItemCode = dgQuotationItemSearch.CurrentRow.Cells["Article_No"].Value.ToString();
+                //}
+                //else
+                //{
+                    
+                //}
             }
         }
 
         private void dgQuotationItemSearch_DoubleClick(object sender, EventArgs e)
         {
-                if (dgQuotationItemSearch.DataSource != null)
+            ChooseItem();
+            //if (itemList != null)
+            //{
+            //    ItemCode = dgQuotationItemSearch.CurrentRow.Cells["Article_No"].Value.ToString();
+            //}
+            //else
+            //{
+                
+            //}
+        }
+
+        private void ChooseItem()
+        {
+            if (dgQuotationItemSearch.DataSource != null)
+            {
+                if (dgQuotationItemSearch.CurrentRow.Cells[1].Value.ToString() != "")
                 {
-                if (dgQuotationItemSearch.CurrentRow.Cells[1].Value.ToString()!="") {
                     QuotationUtils.ItemCode = dgQuotationItemSearch.CurrentRow.Cells["Article_No"].Value.ToString();
+                    ItemCode = dgQuotationItemSearch.CurrentRow.Cells["Article_No"].Value.ToString();
                     itemProps[0] = dgQuotationItemSearch.CurrentRow.Cells["Article_No"].Value.ToString();
                     itemProps[1] = dgQuotationItemSearch.CurrentRow.Cells["Article_Desc"].Value.ToString();
                     this.DialogResult = DialogResult.OK;
 
-                    var MPNItemList = IME.ArticleSearchwithMPN(dgQuotationItemSearch.CurrentRow.Cells[7].Value.ToString()).ToList();
+                    //var MPNItemList = IME.ArticleSearchwithMPN(dgQuotationItemSearch.CurrentRow.Cells[7].Value.ToString()).ToList();
+                    string mpn = dgQuotationItemSearch.CurrentRow.Cells["MPN"].Value.ToString();
+                    var MPNItemList = IME.CompleteItems.Where(x => x.MPN == mpn).ToList();
                     if (MPNItemList.Count > 1)
                     {
-                        FormQuotationMPN form = new FormQuotationMPN(MPNItemList);
+                        FormQuotationMPN form = new FormQuotationMPN(this, MPNItemList);
                         form.ShowDialog();
                     }
                 }
-                }
+            }
             //classQuotationAdd.ItemCode = dgQuotationItemSearch.Rows[dgQuotationItemSearch.CurrentCell.RowIndex].Cells["Article_No"].Value.ToString();
             this.Close();
         }
@@ -112,6 +129,15 @@ namespace LoginForm.QuotationModule
             if (e.KeyCode == Keys.Enter)
             {
                 itemsearch();
+            }
+        }
+
+        private void FormQuotationItemSearch_Load(object sender, EventArgs e)
+        {
+            if(itemList != null)
+            {
+
+                dgQuotationItemSearch.DataSource = itemList.ToList();
             }
         }
     }

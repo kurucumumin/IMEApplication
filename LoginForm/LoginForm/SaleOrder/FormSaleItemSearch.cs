@@ -168,7 +168,7 @@ namespace LoginForm.nmSaleOrder
                     var MPNItemList = new IMEEntities().ArticleSearchwithMPN(dgItemSearch.CurrentRow.Cells[2].Value.ToString()).ToList();
                     if (MPNItemList.Count > 1)
                     {
-                        FormQuotationMPN form = new FormQuotationMPN(MPNItemList);
+                        FormQuotationMPN form = new FormQuotationMPN(this,MPNItemList);
                         form.ShowDialog();
                     }
                 }
