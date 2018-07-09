@@ -105,7 +105,7 @@ namespace LoginForm.QuotationModule
 
 
 
-                    if (txtTotalDis.Text != "") dis2 = Math.Round(subtotal * Decimal.Parse(txtTotalDis.Text) / 100, 2);
+                    if (txtTotalDis.Text != "") dis2 = Math.Round(subtotal * Decimal.Parse(txtTotalDis.Text) / 100,0);
 
 
                 }
@@ -570,6 +570,7 @@ namespace LoginForm.QuotationModule
             }
             #endregion
         }
+
         private void cellEndEdit()
         {
             #region MyRegion
@@ -650,7 +651,7 @@ namespace LoginForm.QuotationModule
                                 if (!Discontinued(articleNo))
                                 {
                                     List<string> SameItemIndexList = new List<string>();
-                                    string _IndexList=string.Empty;
+                                    string _IndexList = string.Empty;
                                     for (int i = 0; i < dgQuotationAddedItems.RowCount - 1; i++)
                                     {
                                         if (dgQuotationAddedItems.Rows[i].Cells[dgProductCode.Index].Value.ToString() == articleNo &&
@@ -659,7 +660,7 @@ namespace LoginForm.QuotationModule
                                             SameItemIndexList.Add(dgQuotationAddedItems.Rows[i].Cells[dgNo.Index].Value.ToString());
                                         }
                                     }
-                                    if (SameItemIndexList!=null && SameItemIndexList.Count>0)
+                                    if (SameItemIndexList != null && SameItemIndexList.Count > 0)
                                     {
                                         foreach (string item in SameItemIndexList)
                                         {
@@ -669,6 +670,7 @@ namespace LoginForm.QuotationModule
                                         MessageBox.Show("This item is already added in row(s): " + _IndexList);
                                     }
                                     tabControl1.SelectedTab = tabItemDetails;
+                                    dgQuotationAddedItems.Focus();
                                     ItemDetailsFiller(articleNo);//tekrar bakılacak
                                     FillProductCodeItem();
                                 }
@@ -684,8 +686,8 @@ namespace LoginForm.QuotationModule
                                 itemsearch.ShowDialog();
                                 articleNo = QuotationUtils.ItemCode;
                                 List<string> SameItemIndexList2 = new List<string>();
-                                string _IndexList2= string.Empty;
-                                for (int i = 0; i < dgQuotationAddedItems.RowCount -1; i++)
+                                string _IndexList2 = string.Empty;
+                                for (int i = 0; i < dgQuotationAddedItems.RowCount - 1; i++)
                                 {
                                     if (dgQuotationAddedItems.Rows[i].Cells[dgProductCode.Index].Value.ToString() == articleNo &&
                                         dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index].Value == null)
@@ -703,6 +705,7 @@ namespace LoginForm.QuotationModule
                                     MessageBox.Show("This item is already added in row(s): " + _IndexList2);
                                 }
                                 tabControl1.SelectedTab = tabItemDetails;
+                                dgQuotationAddedItems.Focus();
                                 dgQuotationAddedItems.CurrentCell.Value = articleNo;
                                 ItemDetailsFiller(articleNo);//tekrar bakılacak
                                 FillProductCodeItem();
@@ -720,11 +723,11 @@ namespace LoginForm.QuotationModule
                     }
                     #endregion
                     break;
-                case 14://QAUANTITY
+                case 15://QAUANTITY
                     DgQuantityFiller();
                     break;
 
-                case 21://Total
+                case 22://Total
                     {
                         #region Total
                         //TO DO depends on authority
@@ -954,22 +957,27 @@ namespace LoginForm.QuotationModule
                 if (Convert.ToDecimal(txtUnitCount1.Text) <= adet && (adet < Convert.ToDecimal(txtUnitCount2.Text) || Convert.ToDecimal(txtUnitCount2.Text) == 0))
                 {
                     CurrentRow.Cells["dgUPIME"].Value = String.Format("{0:0.0000}", Decimal.Parse(txtWeb1.Text)).ToString();
+                    CurrentRow.Cells[dgUKPrice.Index].Value = String.Format("{0:0.0000}", Decimal.Parse(txtUK1.Text)).ToString();
                 }
                 else if (Convert.ToDecimal(txtUnitCount2.Text) <= adet && (adet < Convert.ToDecimal(txtUnitCount3.Text) || Convert.ToDecimal(txtUnitCount3.Text) == 0))
                 {
                     CurrentRow.Cells["dgUPIME"].Value = String.Format("{0:0.0000}", Decimal.Parse(txtWeb2.Text)).ToString();
+                    CurrentRow.Cells[dgUKPrice.Index].Value = String.Format("{0:0.0000}", Decimal.Parse(txtUK2.Text)).ToString();
                 }
                 else if (Convert.ToDecimal(txtUnitCount3.Text) <= adet && (adet < Convert.ToDecimal(txtUnitCount4.Text) || Convert.ToDecimal(txtUnitCount4.Text) == 0))
                 {
                     CurrentRow.Cells["dgUPIME"].Value = String.Format("{0:0.0000}", Decimal.Parse(txtWeb3.Text)).ToString();
+                    CurrentRow.Cells[dgUKPrice.Index].Value = String.Format("{0:0.0000}", Decimal.Parse(txtUK3.Text)).ToString();
                 }
                 else if (Convert.ToDecimal(txtUnitCount4.Text) <= adet && (adet < Convert.ToDecimal(txtUnitCount5.Text) || Convert.ToDecimal(txtUnitCount5.Text) == 0))
                 {
                     CurrentRow.Cells["dgUPIME"].Value = String.Format("{0:0.0000}", Decimal.Parse(txtWeb4.Text)).ToString();
+                    CurrentRow.Cells[dgUKPrice.Index].Value = String.Format("{0:0.0000}", Decimal.Parse(txtUK4.Text)).ToString();
                 }
                 else if (Convert.ToDecimal(txtUnitCount5.Text) <= adet)
                 {
                     CurrentRow.Cells["dgUPIME"].Value = String.Format("{0:0.0000}", Decimal.Parse(txtWeb5.Text)).ToString();
+                    CurrentRow.Cells[dgUKPrice.Index].Value = String.Format("{0:0.0000}", Decimal.Parse(txtUK5.Text)).ToString();
                 }
             }
             catch { }
@@ -3163,7 +3171,7 @@ namespace LoginForm.QuotationModule
                     }
                 }
                 //
-                decimal totaldis = Math.Round((Decimal.Parse(txtTotalDis2.Text) * 100) / subtotal, 2);
+                decimal totaldis = Math.Round((Decimal.Parse(txtTotalDis2.Text) * 100) / subtotal, 0);
                 txtTotalDis.Text = totaldis.ToString();
                 lbltotal.Text = (Decimal.Parse(lblsubtotal.Text) - decimal.Parse(txtTotalDis2.Text)).ToString();
                 getTotalDiscMargin();
@@ -3215,9 +3223,10 @@ namespace LoginForm.QuotationModule
                         //}
                     }
                     //
-                    decimal subtotal = Decimal.Parse(lblsubtotal.Text) - hztotal;
-                    decimal dis2 = subtotal * Decimal.Parse(txtTotalDis.Text) / 100;
-                    txtTotalDis2.Text = Math.Round(dis2, 2).ToString();
+                    decimal subtotal = Math.Round(Decimal.Parse(lblsubtotal.Text) - hztotal,0);
+                    //decimal dis2 = Math.Round(subtotal * Decimal.Parse(txtTotalDis.Text) / 100,0);
+                    decimal dis2 = Math.Ceiling(subtotal * Decimal.Parse(txtTotalDis.Text) / 100);
+                    txtTotalDis2.Text = dis2.ToString();
                     lbltotal.Text = Math.Round((Decimal.Parse(lblsubtotal.Text) - decimal.Parse(txtTotalDis2.Text)), 2).ToString();
                 }
                 if (cbDeliverDiscount.Checked) getTotalDiscMargin();

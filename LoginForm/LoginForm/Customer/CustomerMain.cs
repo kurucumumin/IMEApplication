@@ -1190,6 +1190,12 @@ namespace LoginForm
             AddressType.SelectedIndex = -1;
             txtAdressTitle.Text = "";
             AddressDetails.Text = "";
+            cbMainContact.SelectedIndex = -1;
+            cbCountry.SelectedIndex = -1;
+            cbCity.SelectedIndex = -1;
+            PostCode.Text = "";
+            cbTown.SelectedIndex = -1;
+            ContactAdress.SelectedIndex = -1;
             #endregion
 
         }

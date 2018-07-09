@@ -77,7 +77,8 @@ namespace LoginForm.CustomControls
             txtLowMarginLimit.Text = Convert.ToString(m.LowMarginLimit);
             txtVAT.Text = Convert.ToString(m.VAT);
             numericFactor.Value = m.Factor;
-
+            CustomsRateUpDown.Value = Convert.ToDecimal(m.CustomsRate);
+            FreightChargeUpDown.Value = Convert.ToDecimal(m.FreightCharge);
             cbCurrency.DataSource = db.Currencies.ToList();
             cbCurrency.SelectedValue = m.DefaultCurrency;
 
@@ -96,12 +97,16 @@ namespace LoginForm.CustomControls
                 management.DefaultCurrency = Convert.ToDecimal(cbCurrency.SelectedValue);
                 management.DataSeperetor = txtDataSeperator.Text;
                 //management.BranchCode = txtBranchCode.Text;
+                management.CustomsRate = CustomsRateUpDown.Value;
+                management.FreightCharge = FreightChargeUpDown.Value;
                 IME.SaveChanges();
 
                 Company c = IME.Companies.Where(x => x.companyId == management.CurrentCompanyId).FirstOrDefault();
                 c.BranchCode = txtBranchCode.Text;
 
                 IME.SaveChanges();
+
+
 
                 MessageBox.Show("Changes Saved", "Success");
             }
