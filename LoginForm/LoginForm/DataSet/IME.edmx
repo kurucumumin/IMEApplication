@@ -1561,6 +1561,7 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="quotationDeliveryID" Type="int" />
           <Property Name="Cost" Type="decimal" Precision="18" Scale="4" />
           <Property Name="LandingCost" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="MPN" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Rack">
           <Key>
@@ -13458,6 +13459,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="quotationDeliveryID" Type="Int32" />
           <Property Name="Cost" Type="Decimal" Precision="18" Scale="4" />
           <Property Name="LandingCost" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="MPN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Quotation" Relationship="Self.FK__Quotation__Quota__147C05D0" FromRole="QuotationDetail" ToRole="Quotation" />
           <NavigationProperty Name="QuotationDelivery" Relationship="Self.FK__Quotation__quota__51900108" FromRole="QuotationDetail" ToRole="QuotationDelivery" />
           <NavigationProperty Name="SaleOrderDetails" Relationship="Self.FK__SaleOrder__quota__310335E5" FromRole="QuotationDetail" ToRole="SaleOrderDetail" />
@@ -27491,6 +27493,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="quotationDeliveryID" ColumnName="quotationDeliveryID" />
                 <ScalarProperty Name="Cost" ColumnName="Cost" />
                 <ScalarProperty Name="LandingCost" ColumnName="LandingCost" />
+                <ScalarProperty Name="MPN" ColumnName="MPN" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
