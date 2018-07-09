@@ -526,54 +526,6 @@ namespace LoginForm.QuotationModule
 
         private void dgQuotationAddedItems_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            cellEndEdit();
-        }
-
-        private void DgQuantityFiller()
-        {
-            #region Quantity
-
-            if (dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[dgQty.Index].Value.ToString() != "0")
-            {
-                if (LandingCost.Enabled == false) LandingCost.Enabled = true;
-                GetQuotationQuantity(dgQuotationAddedItems.CurrentCell.RowIndex);
-
-                dgQuotationAddedItems.CurrentRow.Cells["dgUCUPCurr"].ReadOnly = false;
-                dgQuotationAddedItems.CurrentRow.Cells["dgUCUPCurr"].Style = dgQuotationAddedItems.DefaultCellStyle;
-
-                dgQuotationAddedItems.CurrentRow.Cells["dgTargetUP"].ReadOnly = false;
-                dgQuotationAddedItems.CurrentRow.Cells["dgTargetUP"].Style = dgQuotationAddedItems.DefaultCellStyle;
-
-                dgQuotationAddedItems.CurrentRow.Cells["dgCompetitor"].ReadOnly = false;
-                dgQuotationAddedItems.CurrentRow.Cells["dgCompetitor"].Style = dgQuotationAddedItems.DefaultCellStyle;
-
-                dgQuotationAddedItems.CurrentRow.Cells["dgDelivery"].ReadOnly = false;
-                dgQuotationAddedItems.CurrentRow.Cells["dgDelivery"].Style = dgQuotationAddedItems.DefaultCellStyle;
-
-                dgQuotationAddedItems.CurrentRow.Cells["dgCustStkCode"].ReadOnly = false;
-                dgQuotationAddedItems.CurrentRow.Cells["dgCustStkCode"].Style = dgQuotationAddedItems.DefaultCellStyle;
-
-                dgQuotationAddedItems.CurrentRow.Cells["dgCustDescription"].ReadOnly = false;
-                dgQuotationAddedItems.CurrentRow.Cells["dgCustDescription"].Style = dgQuotationAddedItems.DefaultCellStyle;
-
-                if (dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index].Value.ToString() != "")
-                {
-                    //LOW MARGIN
-                    if (dgQuotationAddedItems.CurrentRow.Cells["dgQty"].Value != null) { GetMarginMark(); }
-                }
-                Disc();
-                CalculateTotalMarge();
-            }
-            else
-            {
-                dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[dgQty.Index].Value = "";
-            }
-            #endregion
-        }
-
-        private void cellEndEdit()
-        {
-            #region MyRegion
             switch (dgQuotationAddedItems.CurrentCell.ColumnIndex)
             {
                 case 0:
@@ -648,9 +600,17 @@ namespace LoginForm.QuotationModule
                             var articleList = IME.ArticleSearch(articleNo).ToList();
                             if (articleList.Count == 1)
                             {
+                                if (CurrentRow.Cells[dgProductCode.Index].Value != null && CurrentRow.Cells[dgProductCode.Index].Value.ToString() != "" && CurrentRow.Cells[dgDesc.Index].Value != null && CurrentRow.Cells[dgDesc.Index].Value.ToString() != "")
+                                {
+                                    DataGridViewRow rowsss = (DataGridViewRow)dgQuotationAddedItems.CurrentRow;
+                                    for (int i = 11; i < rowsss.Cells.Count; i++)
+                                    {
+                                        rowsss.Cells[i].Value = "";
+                                    }
+                                }
                                 if (!Discontinued(articleNo))
                                 {
-                                    List<string> SameItemIndexList = new List<string>();
+                                    List<string> SameItemIndexList = new List<string>();                                    
                                     string _IndexList = string.Empty;
                                     for (int i = 0; i < dgQuotationAddedItems.RowCount - 1; i++)
                                     {
@@ -682,6 +642,15 @@ namespace LoginForm.QuotationModule
                             }
                             else if (articleList.Count > 1)
                             {
+                                if (CurrentRow.Cells[dgProductCode.Index].Value != null && CurrentRow.Cells[dgProductCode.Index].Value.ToString() != "" && CurrentRow.Cells[dgDesc.Index].Value != null && CurrentRow.Cells[dgDesc.Index].Value.ToString() != "")
+                                {
+                                    DataGridViewRow rowsss = (DataGridViewRow)dgQuotationAddedItems.CurrentRow;
+                                    for (int i = 11; i < rowsss.Cells.Count; i++)
+                                    {
+                                        rowsss.Cells[i].Value = "";
+                                    }
+                                }
+                               
                                 FormQuotationItemSearch itemsearch = new FormQuotationItemSearch(articleNo);
                                 itemsearch.ShowDialog();
                                 articleNo = QuotationUtils.ItemCode;
@@ -714,7 +683,7 @@ namespace LoginForm.QuotationModule
                             {
                                 MessageBox.Show("There is no such an Item");
                             }
-                            if (dgQuotationAddedItems.CurrentRow.Cells["dgDesc"].Value != null) ChangeCurrnetCell(dgQuotationAddedItems.CurrentCell.ColumnIndex + 1);
+                            if (dgQuotationAddedItems.CurrentRow.Cells[dgDesc.Index].Value != null) ChangeCurrnetCell(dgQuotationAddedItems.CurrentCell.ColumnIndex + 1);
                         }
                         else
                         {
@@ -772,6 +741,47 @@ namespace LoginForm.QuotationModule
                     }
                     #endregion
                     break;
+            }
+        }
+
+        private void DgQuantityFiller()
+        {
+            #region Quantity
+
+            if (dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[dgQty.Index].Value.ToString() != "0")
+            {
+                if (LandingCost.Enabled == false) LandingCost.Enabled = true;
+                GetQuotationQuantity(dgQuotationAddedItems.CurrentCell.RowIndex);
+
+                dgQuotationAddedItems.CurrentRow.Cells["dgUCUPCurr"].ReadOnly = false;
+                dgQuotationAddedItems.CurrentRow.Cells["dgUCUPCurr"].Style = dgQuotationAddedItems.DefaultCellStyle;
+
+                dgQuotationAddedItems.CurrentRow.Cells["dgTargetUP"].ReadOnly = false;
+                dgQuotationAddedItems.CurrentRow.Cells["dgTargetUP"].Style = dgQuotationAddedItems.DefaultCellStyle;
+
+                dgQuotationAddedItems.CurrentRow.Cells["dgCompetitor"].ReadOnly = false;
+                dgQuotationAddedItems.CurrentRow.Cells["dgCompetitor"].Style = dgQuotationAddedItems.DefaultCellStyle;
+
+                dgQuotationAddedItems.CurrentRow.Cells["dgDelivery"].ReadOnly = false;
+                dgQuotationAddedItems.CurrentRow.Cells["dgDelivery"].Style = dgQuotationAddedItems.DefaultCellStyle;
+
+                dgQuotationAddedItems.CurrentRow.Cells["dgCustStkCode"].ReadOnly = false;
+                dgQuotationAddedItems.CurrentRow.Cells["dgCustStkCode"].Style = dgQuotationAddedItems.DefaultCellStyle;
+
+                dgQuotationAddedItems.CurrentRow.Cells["dgCustDescription"].ReadOnly = false;
+                dgQuotationAddedItems.CurrentRow.Cells["dgCustDescription"].Style = dgQuotationAddedItems.DefaultCellStyle;
+
+                if (dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index].Value.ToString() != "")
+                {
+                    //LOW MARGIN
+                    if (dgQuotationAddedItems.CurrentRow.Cells["dgQty"].Value != null) { GetMarginMark(); }
+                }
+                Disc();
+                CalculateTotalMarge();
+            }
+            else
+            {
+                dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[dgQty.Index].Value = "";
             }
             #endregion
         }
@@ -897,7 +907,7 @@ namespace LoginForm.QuotationModule
                                 discResult = decimal.Parse(CurrentRow.Cells["dgUPIME"].Value.ToString());
 
                                 CurrentRow.Cells["dgTotal"].Value = Math.Round(decimal.Parse(CurrentRow.Cells["dgTotal"].Value.ToString()), 2);
-                                if (CurrentRow.Cells["dgDisc"].Value != null)
+                                if (CurrentRow.Cells[dgDisc.Index].Value != null && CurrentRow.Cells[dgDisc.Index].Value.ToString() != "")
                                 {
                                     CurrentRow.Cells["dgDisc"].Value = Math.Round(Decimal.Parse(CurrentRow.Cells["dgDisc"].Value.ToString()), 2).ToString();
                                     discResult = (discResult - (discResult * decimal.Parse(CurrentRow.Cells["dgDisc"].Value.ToString()) / 100));
@@ -2956,6 +2966,7 @@ namespace LoginForm.QuotationModule
         {
             try
             {
+
                 if (dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[dgProductCode.Index].Value != null)
                 {
                     dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells["dgQty"].ReadOnly = false;
@@ -3527,10 +3538,7 @@ namespace LoginForm.QuotationModule
                 try
                 {
                     //Bu item daha önceden eklimi diye kontrol ediyor
-                    DataGridViewRow row = dgQuotationAddedItems.Rows
-.Cast<DataGridViewRow>()
-.Where(r => r.Cells["dgProductCode"].Value.ToString().Equals(QuotationUtils.ItemCode))
-.FirstOrDefault();
+                    DataGridViewRow row = dgQuotationAddedItems.Rows.Cast<DataGridViewRow>().Where(r => r.Cells["dgProductCode"].Value.ToString().Equals(QuotationUtils.ItemCode)).FirstOrDefault();
                     if (row.Cells["dgUCUPCurr"].Value != null)
                     {
                         if (row != null) MessageBox.Show("There is already an item added this qoutation in the " + row.Cells["dgNo"].Value.ToString() + ". Row and the price " + row.Cells["dgUCUPCurr"].Value.ToString());
@@ -3963,8 +3971,15 @@ namespace LoginForm.QuotationModule
                 if (!int.TryParse(Convert.ToString(e.FormattedValue), out i))
                 {
                     e.Cancel = true;
-                    MessageBox.Show("Please enter integer");
-                    dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[dgQty.Index].Value = "";
+                    if (dgQuotationAddedItems.CurrentRow.Cells[dgDesc.Index].Value == null && dgQuotationAddedItems.CurrentRow.Cells[dgTotal.Index].Value == null && dgQuotationAddedItems.CurrentRow.Cells[dgTotal.Index].Value.ToString() == "")
+                        MessageBox.Show("Please enter integer");
+                    else
+                    {
+                       // dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[dgQty.Index].Value = "";
+                        CurrentRow.Cells[dgQty.Index].Value = "";
+                        dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index];
+                    }
+
                 }
             }
         }
