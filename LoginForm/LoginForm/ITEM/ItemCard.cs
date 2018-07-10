@@ -485,7 +485,7 @@ namespace LoginForm.Item
         {
             if (dgItemList.DataSource != null)
             {
-                textsClear();
+                ClearAll(this);
                 if (dgItemList.RowCount > 0)
                 {
                     gridselectedindex = dgItemList.CurrentCell.RowIndex;
@@ -499,126 +499,121 @@ namespace LoginForm.Item
             }
 
         }
-        private void textsClear()
-        {
-            txtUnitPrice.Text = "";
-            txtNote.Text = "";
-            txtQuantitiy.Text = "";
-            txtStockNo.Text = "";
-            txtDesc.Text = "";
-            txtSSM.Text = "";
-            txtUC.Text = "";
-            txtUM.Text = "";
-            txtStandartWeight.Text = "";
-            txtHazardousInd.Text = "";
-            txtCalibrationInd.Text = "";
-            
-            txtCoO.Text = "";
-            txtCCCN.Text = "";
-            
-            txtUKDiscDate.Text = "";
-
-            
-            txtDiscCharge.Text = "";
-            txtExpiringPro.Text = "";
-            txtManufacturer.Text = "";
-            txtMPN.Text = "";
-            txtMHCodeLevel1.Text = "";
-            txtCCCN.Text = "";
-            txtWidth.Text = "";
-            txtLength.Text = "";
-            txtHeight.Text = "";
-            txtStockNo.Text = "";
-           
-            txtUnitCount1.Text = "";
-            txtUnitCount2.Text = "";
-            txtUnitCount3.Text = "";
-            txtUnitCount4.Text = "";
-            txtUnitCount5.Text = "";
-            txtUK1.Text = "";
-            txtUK2.Text = "";
-            txtUK3.Text = "";
-            txtUK4.Text = "";
-            txtUK5.Text = "";
-            txtCost1.Text = "";
-            txtCost2.Text = "";
-            txtCost3.Text = "";
-            txtCost4.Text = "";
-            txtCost5.Text = "";
-            txtSupersectionName.Text = "";
-            txtDesc.Text = "";
-            txtStockNo.Text = "";
-            txtEnvironment.Text = "";
-            txtLithium.Text = "";
-            txtShipping.Text = "";
-            txtStockNo.Text = "";
-            txtRSStock.Text = "";
-            txtRSOnOrder.Text = "";
-            txtStockNo.Text = "";
-            txtDiscontinuationDate.Text = "";
-            txtRunOn.Text = "";
-            txtReferral.Text = "";
-            txtLicenceType.Text = "";
-        }
+        //private void textsClear()
+        //{
+        //    txtUnitPrice.Text = "";
+        //    txtNote.Text = "";
+        //    txtQuantitiy.Text = "";
+        //    txtStockNo.Text = "";
+        //    txtDesc.Text = "";
+        //    txtSSM.Text = "";
+        //    txtUC.Text = "";
+        //    txtUM.Text = "";
+        //    txtStandartWeight.Text = "";
+        //    txtHazardousInd.Text = "";
+        //    txtCalibrationInd.Text = "";
+        //    txtCoO.Text = "";
+        //    txtCCCN.Text = "";
+        //    txtUKDiscDate.Text = "";
+        //    txtDiscCharge.Text = "";
+        //    txtExpiringPro.Text = "";
+        //    txtManufacturer.Text = "";
+        //    txtMPN.Text = "";
+        //    txtMHCodeLevel1.Text = "";
+        //    txtCCCN.Text = "";
+        //    txtWidth.Text = "";
+        //    txtLength.Text = "";
+        //    txtHeight.Text = "";
+        //    txtStockNo.Text = "";
+        //    txtUnitCount1.Text = "";
+        //    txtUnitCount2.Text = "";
+        //    txtUnitCount3.Text = "";
+        //    txtUnitCount4.Text = "";
+        //    txtUnitCount5.Text = "";
+        //    txtUK1.Text = "";
+        //    txtUK2.Text = "";
+        //    txtUK3.Text = "";
+        //    txtUK4.Text = "";
+        //    txtUK5.Text = "";
+        //    txtCost1.Text = "";
+        //    txtCost2.Text = "";
+        //    txtCost3.Text = "";
+        //    txtCost4.Text = "";
+        //    txtCost5.Text = "";
+        //    txtSupersectionName.Text = "";
+        //    txtDesc.Text = "";
+        //    txtStockNo.Text = "";
+        //    txtEnvironment.Text = "";
+        //    txtLithium.Text = "";
+        //    txtShipping.Text = "";
+        //    txtStockNo.Text = "";
+        //    txtRSStock.Text = "";
+        //    txtRSOnOrder.Text = "";
+        //    txtStockNo.Text = "";
+        //    txtDiscontinuationDate.Text = "";
+        //    txtRunOn.Text = "";
+        //    txtReferral.Text = "";
+        //    txtLicenceType.Text = "";
+        //}
 
         private void rbProductCode_CheckedChanged(object sender, EventArgs e)
         {
             dgItemList.DataSource = null;
-            textsClear();
+            ClearAll(this);
         }
 
         private void rbMPNCode_CheckedChanged(object sender, EventArgs e)
         {
             dgItemList.DataSource = null;
-            textsClear();
+            ClearAll(this);
         }
 
         private void rbFullLicence_CheckedChanged(object sender, EventArgs e)
         {
             dgItemList.DataSource = null;
-            textsClear();
+            ClearAll(this);
         }
 
         private void rbSupplierCode_CheckedChanged(object sender, EventArgs e)
         {
             dgItemList.DataSource = null;
-            textsClear();
+            ClearAll(this);
         }
 
         private void rbImport_CheckedChanged(object sender, EventArgs e)
         {
             dgItemList.DataSource = null;
-            textsClear();
+            ClearAll(this);
         }
 
         private void rbProductName_CheckedChanged(object sender, EventArgs e)
         {
             dgItemList.DataSource = null;
-            textsClear();
+            ClearAll(this);
         }
 
         private void rbEUU_CheckedChanged(object sender, EventArgs e)
         {
             dgItemList.DataSource = null;
-            textsClear();
+            ClearAll(this);
         }
 
         private void rbDiscontinued_CheckedChanged(object sender, EventArgs e)
         {
             dgItemList.DataSource = null;
-            textsClear();
+            ClearAll(this);
         }
 
         private void rbQuickSearch_CheckedChanged(object sender, EventArgs e)
         {
             dgItemList.DataSource = null;
-            textsClear();
+            ClearAll(this);
         }
 
         private void rbItemNotes_CheckedChanged(object sender, EventArgs e)
         {
             dgItemList.DataSource = null;
-            textsClear();
+            ClearAll(this);
         }
 
         private void Number_TextChanged(object sender, EventArgs e)
@@ -755,7 +750,7 @@ namespace LoginForm.Item
             {
                 if (dgItemList.DataSource != null)
                 {
-                    textsClear();
+                    ClearAll(this);
                     if (dgItemList.RowCount > 0)
                     {
                         gridselectedindex = dgItemList.CurrentCell.RowIndex;
@@ -788,19 +783,10 @@ namespace LoginForm.Item
         {
             ControlAutorization();
             GetImageFromWeb(null);
-        }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Are You Sure To Exit Programme ?", "Exit", MessageBoxButtons.OKCancel) == DialogResult.OK)
-            {
-                this.Close();
-            }
-        }
-
-        private void panelSearch_Paint(object sender, PaintEventArgs e)
-        {
-
+            ReadOnlyAll(true);
+            cmbSupplierName.DataSource = IME.Suppliers.ToList();
+            cmbSupplierName.DisplayMember = "s_name";
+            cmbSupplierName.ValueMember = "ID";
         }
 
         private void txtSSM_TextChanged(object sender, EventArgs e)
@@ -833,6 +819,188 @@ namespace LoginForm.Item
                 decimal UnitPrice = decimal.Parse(txtUnitPrice.Text);
                 txtTotal.Text = String.Format("{0:0.0000}", (qty * UnitPrice).ToString("G29"));
             }
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            #region Form
+            ClearAll(this);
+            ReadOnlyAll(false);
+            dgItemList.Enabled = false;
+            groupBox7.Enabled = false;
+            panel1.Enabled = false;
+            btnUpdateNote.Enabled = false;
+            btnAdd.Text = "Save";
+            btnClose.Text = "Cancel";
+            label1.Font = new Font(label1.Font, FontStyle.Bold);
+            label1.ForeColor = Color.Red;
+            label39.Font = new Font(label39.Font,  FontStyle.Bold);
+            label39.ForeColor = Color.Red;
+            label27.Font = new Font(label27.Font,  FontStyle.Bold);
+            label27.ForeColor = Color.Red;
+            label37.Font = new Font(label37.Font, FontStyle.Bold);
+            label37.ForeColor = Color.Red;
+            label2.Font = new Font(label2.Font, FontStyle.Bold);
+            label2.ForeColor = Color.Red;
+            label4.Font = new Font(label4.Font, FontStyle.Bold);
+            label4.ForeColor = Color.Red;
+            label52.Font = new Font(label52.Font, FontStyle.Bold);
+            label52.ForeColor = Color.Red;
+            #endregion
+        }
+
+        private void ClearAll(Control ctl)
+        {
+            foreach (Control c in ctl.Controls)
+            {
+                if (c is TextBox)
+                {
+                    ((TextBox)c).Clear();
+                }
+                if (c.Controls.Count > 0)
+                {
+                    ClearAll(c);
+                }
+            }
+            cmbSupplierName.Text = "";
+        }
+
+        private void ReadOnlyAll(bool loop)
+        {
+            txtStockNo.ReadOnly = loop;
+            txtBrand.ReadOnly = loop;
+            txtCalibrationInd.ReadOnly = loop;
+            txtCCCN.ReadOnly = loop;
+            txtCoO.ReadOnly = loop;
+            txtCost1.ReadOnly = loop;
+            txtCost2.ReadOnly = loop;
+            txtCost3.ReadOnly = loop;
+            txtCost4.ReadOnly = loop;
+            txtCost5.ReadOnly = loop;
+            txtDesc.ReadOnly = loop;
+            txtDiscCharge.ReadOnly = loop;
+            txtDiscontinuationDate.ReadOnly = loop;
+            txtEnvironment.ReadOnly = loop;
+            txtExpiringPro.ReadOnly = loop;
+            txtGrossWeight.ReadOnly = loop;
+            txtHazardousInd.ReadOnly = loop;
+            txtHeight.ReadOnly = loop;
+            txtIMEADH.ReadOnly = loop;
+            txtIMEBHH.ReadOnly = loop;
+            txtIMEDXB.ReadOnly = loop;
+            txtIMEMCT.ReadOnly = loop;
+            txtIMEReserved.ReadOnly = loop;
+            txtIMETUR.ReadOnly = loop;
+            txtLength.ReadOnly = loop;
+            txtLicenceType.ReadOnly = loop;
+            txtLithium.ReadOnly = loop;
+            txtManufacturer.ReadOnly = loop;
+            txtMargin1.ReadOnly = loop;
+            txtMargin2.ReadOnly = loop;
+            txtMargin3.ReadOnly = loop;
+            txtMargin4.ReadOnly = loop;
+            txtMargin5.ReadOnly = loop;
+            txtMHCodeLevel1.ReadOnly = loop;
+            txtMPN.ReadOnly = loop;
+            txtNote.ReadOnly = loop;
+            txtQuantitiy.ReadOnly = loop;
+            txtReferral.ReadOnly = loop;
+            txtRSOnOrder.ReadOnly = loop;
+            txtRSStock.ReadOnly = loop;
+            txtRunOn.ReadOnly = loop;
+            txtSection.ReadOnly = loop;
+            txtShipping.ReadOnly = loop;
+            txtSSM.ReadOnly = loop;
+            txtStandartWeight.ReadOnly = loop;
+            txtStockNo.ReadOnly = loop;
+            txtSubstitutedBy.ReadOnly = loop;
+            txtSupersectionName.ReadOnly = loop;
+            //txtSupplierID.ReadOnly = loop;
+            txtTotal.ReadOnly = loop;
+            txtUC.ReadOnly = loop;
+            txtUK1.ReadOnly = loop;
+            txtUK2.ReadOnly = loop;
+            txtUK3.ReadOnly = loop;
+            txtUK4.ReadOnly = loop;
+            txtUK5.ReadOnly = loop;
+            txtUKDiscDate.ReadOnly = loop;
+            txtUM.ReadOnly = loop;
+            txtUnitCount1.ReadOnly = loop;
+            txtUnitCount2.ReadOnly = loop;
+            txtUnitCount3.ReadOnly = loop;
+            txtUnitCount4.ReadOnly = loop;
+            txtUnitCount5.ReadOnly = loop;
+            txtUnitPrice.ReadOnly = loop;
+            txtWeb1.ReadOnly = loop;
+            txtWeb2.ReadOnly = loop;
+            txtWeb3.ReadOnly = loop;
+            txtWeb4.ReadOnly = loop;
+            txtWeb5.ReadOnly = loop;
+            txtWidth.ReadOnly = loop;
+            textBox13.ReadOnly = loop;
+            textBox14.ReadOnly = loop;
+            SuppliedIn.ReadOnly = loop;
+
+            if (loop==true)
+            {
+                cmbSupplierName.Enabled = false;
+                btnSupplierAdd.Visible = false;
+            }
+            else
+            {
+                cmbSupplierName.Enabled = true;
+                btnSupplierAdd.Visible = true;
+            }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            if (btnClose.Text != "Cancel")
+            {
+                if (MessageBox.Show("Are You Sure To Exit Programme ?", "Exit", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                {
+                    this.Close();
+                }
+            }
+            else
+            {
+                ClearAll(this);
+                ReadOnlyAll(true);
+                dgItemList.Enabled = true;
+                groupBox7.Enabled = true;
+                panel1.Enabled = true;
+                btnUpdateNote.Enabled = true;
+                btnAdd.Text = "Add Item";
+                btnClose.Text = "Close";
+                label1.Font = new Font(label1.Font, FontStyle.Regular);
+                label1.ForeColor = Color.Black;
+                label39.Font = new Font(label39.Font, FontStyle.Regular);
+                label39.ForeColor = Color.Black;
+                label27.Font = new Font(label27.Font,  FontStyle.Regular);
+                label27.ForeColor = Color.Black;
+                label37.Font = new Font(label37.Font, FontStyle.Regular);
+                label37.ForeColor = Color.Black;
+                label2.Font = new Font(label2.Font,  FontStyle.Regular);
+                label2.ForeColor = Color.Black;
+                label4.Font = new Font(label4.Font,  FontStyle.Regular);
+                label4.ForeColor = Color.Black;
+                label52.Font = new Font(label52.Font, FontStyle.Regular);
+                label52.ForeColor = Color.Black;
+            }
+        }
+
+        private void cmbSupplierName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtSupplierID.Text= IME.Suppliers.Where(a => a.ID == ((Supplier)(cmbSupplierName).SelectedItem).ID).FirstOrDefault().ID;
+        }
+
+        private void btnSupplierAdd_Click(object sender, EventArgs e)
+        {
+            frmSupplierMain form = new frmSupplierMain();
+            form.ShowDialog();
+            cmbSupplierName.DataSource = IME.Suppliers.ToList();
+            cmbSupplierName.DisplayMember = "s_name";
+            cmbSupplierName.ValueMember = "ID";
         }
     }
 }
