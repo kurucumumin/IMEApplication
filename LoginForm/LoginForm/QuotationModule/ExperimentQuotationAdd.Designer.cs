@@ -31,14 +31,51 @@ namespace LoginForm.QuotationModule
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dgAddedItems = new System.Windows.Forms.DataGridView();
+            this.dgNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgSupplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgProductCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgBrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgMPN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUKPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgLandingCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgMargin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgSSM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUPIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgDisc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUCUPCurr = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgTargetUP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCompetitor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgHZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgDelivery = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dgUnitWeigt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgTotalWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCustStkCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCustDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCOO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCCCNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgDependantTable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.dgDeletedItems = new System.Windows.Forms.DataGridView();
             this.No1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -244,11 +281,11 @@ namespace LoginForm.QuotationModule
             this.lblTotalExtra = new System.Windows.Forms.Label();
             this.lblVat = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
-            this.lbltotal = new System.Windows.Forms.Label();
+            this.lblTotal = new System.Windows.Forms.Label();
             this.label52 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
-            this.txtExtraChanges = new System.Windows.Forms.TextBox();
+            this.txtExtraCharges = new System.Windows.Forms.TextBox();
             this.lblVatTotal = new System.Windows.Forms.Label();
             this.txtTotalMarginGeneral = new System.Windows.Forms.TextBox();
             this.txtTotalDiscAmount = new System.Windows.Forms.TextBox();
@@ -266,43 +303,6 @@ namespace LoginForm.QuotationModule
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtNoteForCustomer = new System.Windows.Forms.TextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.dgNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LI = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgSupplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgProductCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgBrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgMPN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgUKPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgLandingCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgMargin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgUOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgSSM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgUC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgUPIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgDisc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgUCUPCurr = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgTargetUP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCompetitor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgHZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgDelivery = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dgUnitWeigt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgTotalWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCustStkCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCustDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCOO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCCCNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgDependantTable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -371,8 +371,8 @@ namespace LoginForm.QuotationModule
             // 
             // dgAddedItems
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgAddedItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgAddedItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgAddedItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgAddedItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgNo,
@@ -421,6 +421,317 @@ namespace LoginForm.QuotationModule
             this.dgAddedItems.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgAddedItems_CellEndEdit);
             this.dgAddedItems.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgAddedItems_RowEnter);
             this.dgAddedItems.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgAddedItems_RowsAdded);
+            // 
+            // dgNo
+            // 
+            this.dgNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle7.Format = "N4";
+            dataGridViewCellStyle7.NullValue = null;
+            this.dgNo.DefaultCellStyle = dataGridViewCellStyle7;
+            this.dgNo.Frozen = true;
+            this.dgNo.HeaderText = "No";
+            this.dgNo.Name = "dgNo";
+            this.dgNo.Width = 30;
+            // 
+            // HS
+            // 
+            this.HS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.HS.Frozen = true;
+            this.HS.HeaderText = "HS";
+            this.HS.Name = "HS";
+            this.HS.ReadOnly = true;
+            this.HS.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.HS.Width = 25;
+            // 
+            // LI
+            // 
+            this.LI.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.LI.Frozen = true;
+            this.LI.HeaderText = "LI";
+            this.LI.Name = "LI";
+            this.LI.ReadOnly = true;
+            this.LI.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.LI.Width = 25;
+            // 
+            // CL
+            // 
+            this.CL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CL.Frozen = true;
+            this.CL.HeaderText = "CL";
+            this.CL.Name = "CL";
+            this.CL.ReadOnly = true;
+            this.CL.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.CL.Width = 25;
+            // 
+            // LC
+            // 
+            this.LC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.LC.Frozen = true;
+            this.LC.HeaderText = "LC";
+            this.LC.Name = "LC";
+            this.LC.ReadOnly = true;
+            this.LC.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.LC.Width = 25;
+            // 
+            // LM
+            // 
+            this.LM.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.LM.Frozen = true;
+            this.LM.HeaderText = "LM";
+            this.LM.Name = "LM";
+            this.LM.ReadOnly = true;
+            this.LM.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.LM.Width = 25;
+            // 
+            // dgSupplier
+            // 
+            this.dgSupplier.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgSupplier.Frozen = true;
+            this.dgSupplier.HeaderText = "Supplier";
+            this.dgSupplier.Name = "dgSupplier";
+            this.dgSupplier.ReadOnly = true;
+            this.dgSupplier.Width = 89;
+            // 
+            // dgProductCode
+            // 
+            this.dgProductCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgProductCode.Frozen = true;
+            this.dgProductCode.HeaderText = "Item Code";
+            this.dgProductCode.Name = "dgProductCode";
+            this.dgProductCode.Width = 92;
+            // 
+            // dgBrand
+            // 
+            this.dgBrand.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgBrand.Frozen = true;
+            this.dgBrand.HeaderText = "Brand";
+            this.dgBrand.Name = "dgBrand";
+            this.dgBrand.ReadOnly = true;
+            this.dgBrand.Width = 75;
+            // 
+            // dgMPN
+            // 
+            this.dgMPN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgMPN.Frozen = true;
+            this.dgMPN.HeaderText = "MPN";
+            this.dgMPN.Name = "dgMPN";
+            this.dgMPN.ReadOnly = true;
+            this.dgMPN.Width = 67;
+            // 
+            // dgDesc
+            // 
+            this.dgDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgDesc.Frozen = true;
+            this.dgDesc.HeaderText = "Description";
+            this.dgDesc.Name = "dgDesc";
+            this.dgDesc.ReadOnly = true;
+            this.dgDesc.Width = 108;
+            // 
+            // dgUKPrice
+            // 
+            this.dgUKPrice.HeaderText = "UK (£)";
+            this.dgUKPrice.Name = "dgUKPrice";
+            this.dgUKPrice.ReadOnly = true;
+            // 
+            // dgCost
+            // 
+            this.dgCost.HeaderText = "Cost (£)";
+            this.dgCost.Name = "dgCost";
+            this.dgCost.ReadOnly = true;
+            // 
+            // dgLandingCost
+            // 
+            this.dgLandingCost.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle8.Format = "C3";
+            dataGridViewCellStyle8.NullValue = null;
+            this.dgLandingCost.DefaultCellStyle = dataGridViewCellStyle8;
+            this.dgLandingCost.HeaderText = "Landing Cost (£)";
+            this.dgLandingCost.Name = "dgLandingCost";
+            this.dgLandingCost.ReadOnly = true;
+            this.dgLandingCost.Width = 114;
+            // 
+            // dgMargin
+            // 
+            this.dgMargin.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgMargin.HeaderText = "Margin (%)";
+            this.dgMargin.Name = "dgMargin";
+            this.dgMargin.ReadOnly = true;
+            this.dgMargin.Width = 98;
+            // 
+            // dgQty
+            // 
+            this.dgQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgQty.DataPropertyName = "Qty";
+            dataGridViewCellStyle9.Format = "N0";
+            dataGridViewCellStyle9.NullValue = "0";
+            this.dgQty.DefaultCellStyle = dataGridViewCellStyle9;
+            this.dgQty.HeaderText = "Qty";
+            this.dgQty.Name = "dgQty";
+            this.dgQty.ReadOnly = true;
+            this.dgQty.Width = 59;
+            // 
+            // dgStock
+            // 
+            this.dgStock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgStock.HeaderText = "Stock";
+            this.dgStock.Name = "dgStock";
+            this.dgStock.ReadOnly = true;
+            this.dgStock.Width = 72;
+            // 
+            // dgUOM
+            // 
+            this.dgUOM.HeaderText = "UOM";
+            this.dgUOM.Name = "dgUOM";
+            this.dgUOM.ReadOnly = true;
+            this.dgUOM.Width = 57;
+            // 
+            // dgSSM
+            // 
+            this.dgSSM.HeaderText = "SSM";
+            this.dgSSM.Name = "dgSSM";
+            this.dgSSM.ReadOnly = true;
+            // 
+            // dgUC
+            // 
+            this.dgUC.HeaderText = "U/C";
+            this.dgUC.Name = "dgUC";
+            this.dgUC.ReadOnly = true;
+            // 
+            // dgUPIME
+            // 
+            this.dgUPIME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgUPIME.HeaderText = "U/P IME L/P ";
+            this.dgUPIME.Name = "dgUPIME";
+            this.dgUPIME.ReadOnly = true;
+            this.dgUPIME.Width = 107;
+            // 
+            // dgDisc
+            // 
+            this.dgDisc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgDisc.HeaderText = "Disc. (%)";
+            this.dgDisc.Name = "dgDisc";
+            this.dgDisc.ReadOnly = true;
+            this.dgDisc.Width = 87;
+            // 
+            // dgUCUPCurr
+            // 
+            this.dgUCUPCurr.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgUCUPCurr.HeaderText = "U/C U/P (Curr.)";
+            this.dgUCUPCurr.Name = "dgUCUPCurr";
+            this.dgUCUPCurr.ReadOnly = true;
+            this.dgUCUPCurr.Width = 121;
+            // 
+            // dgTotal
+            // 
+            this.dgTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgTotal.HeaderText = "TOTAL";
+            this.dgTotal.Name = "dgTotal";
+            this.dgTotal.ReadOnly = true;
+            this.dgTotal.Width = 83;
+            // 
+            // dgTargetUP
+            // 
+            this.dgTargetUP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgTargetUP.HeaderText = "Target U/P";
+            this.dgTargetUP.Name = "dgTargetUP";
+            this.dgTargetUP.ReadOnly = true;
+            this.dgTargetUP.Width = 98;
+            // 
+            // dgCompetitor
+            // 
+            this.dgCompetitor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgCompetitor.HeaderText = "Competitor";
+            this.dgCompetitor.Name = "dgCompetitor";
+            this.dgCompetitor.ReadOnly = true;
+            this.dgCompetitor.Width = 105;
+            // 
+            // dgHZ
+            // 
+            this.dgHZ.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgHZ.HeaderText = "HZ";
+            this.dgHZ.Name = "dgHZ";
+            this.dgHZ.ReadOnly = true;
+            this.dgHZ.Visible = false;
+            // 
+            // dgCL
+            // 
+            this.dgCL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgCL.HeaderText = "CL";
+            this.dgCL.Name = "dgCL";
+            this.dgCL.ReadOnly = true;
+            this.dgCL.Visible = false;
+            // 
+            // dgCR
+            // 
+            this.dgCR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgCR.HeaderText = "CR";
+            this.dgCR.Name = "dgCR";
+            this.dgCR.ReadOnly = true;
+            this.dgCR.Visible = false;
+            // 
+            // dgDelivery
+            // 
+            this.dgDelivery.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgDelivery.HeaderText = "Delivery";
+            this.dgDelivery.Name = "dgDelivery";
+            this.dgDelivery.ReadOnly = true;
+            this.dgDelivery.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgDelivery.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dgDelivery.Width = 88;
+            // 
+            // dgUnitWeigt
+            // 
+            this.dgUnitWeigt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgUnitWeigt.HeaderText = "Unit Weigt (Kg)";
+            this.dgUnitWeigt.Name = "dgUnitWeigt";
+            this.dgUnitWeigt.ReadOnly = true;
+            this.dgUnitWeigt.Width = 122;
+            // 
+            // dgTotalWeight
+            // 
+            this.dgTotalWeight.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgTotalWeight.HeaderText = "Total Weight (Kg)";
+            this.dgTotalWeight.Name = "dgTotalWeight";
+            this.dgTotalWeight.ReadOnly = true;
+            this.dgTotalWeight.Width = 136;
+            // 
+            // dgCustStkCode
+            // 
+            this.dgCustStkCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgCustStkCode.HeaderText = "Cust Stk Code";
+            this.dgCustStkCode.Name = "dgCustStkCode";
+            this.dgCustStkCode.ReadOnly = true;
+            this.dgCustStkCode.Width = 116;
+            // 
+            // dgCustDescription
+            // 
+            this.dgCustDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgCustDescription.HeaderText = "Cust. Description";
+            this.dgCustDescription.Name = "dgCustDescription";
+            this.dgCustDescription.ReadOnly = true;
+            this.dgCustDescription.Width = 132;
+            // 
+            // dgCOO
+            // 
+            this.dgCOO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgCOO.HeaderText = "COO";
+            this.dgCOO.Name = "dgCOO";
+            this.dgCOO.ReadOnly = true;
+            this.dgCOO.Width = 68;
+            // 
+            // dgCCCNO
+            // 
+            this.dgCCCNO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgCCCNO.HeaderText = "CCCNO";
+            this.dgCCCNO.Name = "dgCCCNO";
+            this.dgCCCNO.ReadOnly = true;
+            this.dgCCCNO.Width = 85;
+            // 
+            // dgDependantTable
+            // 
+            this.dgDependantTable.HeaderText = "dgDependantTable";
+            this.dgDependantTable.Name = "dgDependantTable";
+            this.dgDependantTable.Visible = false;
             // 
             // tableLayoutPanel2
             // 
@@ -595,9 +906,9 @@ namespace LoginForm.QuotationModule
             // 
             // dgQty1
             // 
-            dataGridViewCellStyle5.Format = "N0";
-            dataGridViewCellStyle5.NullValue = null;
-            this.dgQty1.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle10.Format = "N0";
+            dataGridViewCellStyle10.NullValue = null;
+            this.dgQty1.DefaultCellStyle = dataGridViewCellStyle10;
             this.dgQty1.HeaderText = "Qty";
             this.dgQty1.Name = "dgQty1";
             this.dgQty1.ReadOnly = true;
@@ -827,6 +1138,7 @@ namespace LoginForm.QuotationModule
             this.txtSubtotal.Size = new System.Drawing.Size(36, 17);
             this.txtSubtotal.TabIndex = 8;
             this.txtSubtotal.Text = "0,00";
+            this.txtSubtotal.TextChanged += new System.EventHandler(this.txtSubtotal_TextChanged);
             // 
             // button7
             // 
@@ -2593,11 +2905,11 @@ namespace LoginForm.QuotationModule
             this.groupBox11.Controls.Add(this.lblTotalExtra);
             this.groupBox11.Controls.Add(this.lblVat);
             this.groupBox11.Controls.Add(this.label40);
-            this.groupBox11.Controls.Add(this.lbltotal);
+            this.groupBox11.Controls.Add(this.lblTotal);
             this.groupBox11.Controls.Add(this.label52);
             this.groupBox11.Controls.Add(this.label4);
             this.groupBox11.Controls.Add(this.textBox7);
-            this.groupBox11.Controls.Add(this.txtExtraChanges);
+            this.groupBox11.Controls.Add(this.txtExtraCharges);
             this.groupBox11.Controls.Add(this.lblVatTotal);
             this.groupBox11.Controls.Add(this.txtTotalMarginGeneral);
             this.groupBox11.Controls.Add(this.txtTotalDiscAmount);
@@ -2644,6 +2956,7 @@ namespace LoginForm.QuotationModule
             this.lblTotalExtra.Size = new System.Drawing.Size(36, 17);
             this.lblTotalExtra.TabIndex = 57;
             this.lblTotalExtra.Text = "0,00";
+            this.lblTotalExtra.TextChanged += new System.EventHandler(this.lblTotalExtra_TextChanged);
             // 
             // lblVat
             // 
@@ -2667,15 +2980,16 @@ namespace LoginForm.QuotationModule
             this.label40.TabIndex = 54;
             this.label40.Text = "%";
             // 
-            // lbltotal
+            // lblTotal
             // 
-            this.lbltotal.AutoSize = true;
-            this.lbltotal.Location = new System.Drawing.Point(237, 43);
-            this.lbltotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbltotal.Name = "lbltotal";
-            this.lbltotal.Size = new System.Drawing.Size(36, 17);
-            this.lbltotal.TabIndex = 53;
-            this.lbltotal.Text = "0,00";
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Location = new System.Drawing.Point(237, 43);
+            this.lblTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(36, 17);
+            this.lblTotal.TabIndex = 53;
+            this.lblTotal.Text = "0,00";
+            this.lblTotal.TextChanged += new System.EventHandler(this.lblTotal_TextChanged);
             // 
             // label52
             // 
@@ -2707,15 +3021,15 @@ namespace LoginForm.QuotationModule
             this.textBox7.TabIndex = 21;
             this.textBox7.Text = "Extra Charges";
             // 
-            // txtExtraChanges
+            // txtExtraCharges
             // 
-            this.txtExtraChanges.Location = new System.Drawing.Point(128, 65);
-            this.txtExtraChanges.Margin = new System.Windows.Forms.Padding(4);
-            this.txtExtraChanges.Name = "txtExtraChanges";
-            this.txtExtraChanges.Size = new System.Drawing.Size(65, 22);
-            this.txtExtraChanges.TabIndex = 20;
-            this.txtExtraChanges.Text = "0";
-            this.txtExtraChanges.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtExtraCharges.Location = new System.Drawing.Point(128, 65);
+            this.txtExtraCharges.Margin = new System.Windows.Forms.Padding(4);
+            this.txtExtraCharges.Name = "txtExtraCharges";
+            this.txtExtraCharges.Size = new System.Drawing.Size(65, 22);
+            this.txtExtraCharges.TabIndex = 20;
+            this.txtExtraCharges.Text = "0";
+            this.txtExtraCharges.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblVatTotal
             // 
@@ -2726,6 +3040,7 @@ namespace LoginForm.QuotationModule
             this.lblVatTotal.Size = new System.Drawing.Size(36, 17);
             this.lblVatTotal.TabIndex = 18;
             this.lblVatTotal.Text = "0,00";
+            this.lblVatTotal.TextChanged += new System.EventHandler(this.lblVatTotal_TextChanged);
             // 
             // txtTotalMarginGeneral
             // 
@@ -2892,319 +3207,6 @@ namespace LoginForm.QuotationModule
             this.txtNoteForCustomer.Name = "txtNoteForCustomer";
             this.txtNoteForCustomer.Size = new System.Drawing.Size(537, 43);
             this.txtNoteForCustomer.TabIndex = 0;
-            // 
-            // dgNo
-            // 
-            this.dgNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle2.Format = "N4";
-            dataGridViewCellStyle2.NullValue = null;
-            this.dgNo.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgNo.Frozen = true;
-            this.dgNo.HeaderText = "No";
-            this.dgNo.Name = "dgNo";
-            this.dgNo.Width = 30;
-            // 
-            // HS
-            // 
-            this.HS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.HS.Frozen = true;
-            this.HS.HeaderText = "HS";
-            this.HS.Name = "HS";
-            this.HS.ReadOnly = true;
-            this.HS.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.HS.Width = 25;
-            // 
-            // LI
-            // 
-            this.LI.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.LI.Frozen = true;
-            this.LI.HeaderText = "LI";
-            this.LI.Name = "LI";
-            this.LI.ReadOnly = true;
-            this.LI.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.LI.Width = 25;
-            // 
-            // CL
-            // 
-            this.CL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.CL.Frozen = true;
-            this.CL.HeaderText = "CL";
-            this.CL.Name = "CL";
-            this.CL.ReadOnly = true;
-            this.CL.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.CL.Width = 25;
-            // 
-            // LC
-            // 
-            this.LC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.LC.Frozen = true;
-            this.LC.HeaderText = "LC";
-            this.LC.Name = "LC";
-            this.LC.ReadOnly = true;
-            this.LC.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.LC.Width = 25;
-            // 
-            // LM
-            // 
-            this.LM.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.LM.Frozen = true;
-            this.LM.HeaderText = "LM";
-            this.LM.Name = "LM";
-            this.LM.ReadOnly = true;
-            this.LM.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.LM.Width = 25;
-            // 
-            // dgSupplier
-            // 
-            this.dgSupplier.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgSupplier.Frozen = true;
-            this.dgSupplier.HeaderText = "Supplier";
-            this.dgSupplier.Name = "dgSupplier";
-            this.dgSupplier.ReadOnly = true;
-            this.dgSupplier.Width = 89;
-            // 
-            // dgProductCode
-            // 
-            this.dgProductCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgProductCode.Frozen = true;
-            this.dgProductCode.HeaderText = "Item Code";
-            this.dgProductCode.Name = "dgProductCode";
-            // 
-            // dgBrand
-            // 
-            this.dgBrand.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgBrand.Frozen = true;
-            this.dgBrand.HeaderText = "Brand";
-            this.dgBrand.Name = "dgBrand";
-            this.dgBrand.ReadOnly = true;
-            this.dgBrand.Width = 75;
-            // 
-            // dgMPN
-            // 
-            this.dgMPN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgMPN.Frozen = true;
-            this.dgMPN.HeaderText = "MPN";
-            this.dgMPN.Name = "dgMPN";
-            this.dgMPN.ReadOnly = true;
-            this.dgMPN.Width = 67;
-            // 
-            // dgDesc
-            // 
-            this.dgDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgDesc.Frozen = true;
-            this.dgDesc.HeaderText = "Description";
-            this.dgDesc.Name = "dgDesc";
-            this.dgDesc.ReadOnly = true;
-            this.dgDesc.Width = 108;
-            // 
-            // dgUKPrice
-            // 
-            this.dgUKPrice.HeaderText = "UK (£)";
-            this.dgUKPrice.Name = "dgUKPrice";
-            this.dgUKPrice.ReadOnly = true;
-            // 
-            // dgCost
-            // 
-            this.dgCost.HeaderText = "Cost (£)";
-            this.dgCost.Name = "dgCost";
-            this.dgCost.ReadOnly = true;
-            // 
-            // dgLandingCost
-            // 
-            this.dgLandingCost.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle3.Format = "C3";
-            dataGridViewCellStyle3.NullValue = null;
-            this.dgLandingCost.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgLandingCost.HeaderText = "Landing Cost (£)";
-            this.dgLandingCost.Name = "dgLandingCost";
-            this.dgLandingCost.ReadOnly = true;
-            this.dgLandingCost.Width = 114;
-            // 
-            // dgMargin
-            // 
-            this.dgMargin.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgMargin.HeaderText = "Margin (%)";
-            this.dgMargin.Name = "dgMargin";
-            this.dgMargin.ReadOnly = true;
-            this.dgMargin.Width = 98;
-            // 
-            // dgQty
-            // 
-            this.dgQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgQty.DataPropertyName = "Qty";
-            dataGridViewCellStyle4.Format = "N0";
-            dataGridViewCellStyle4.NullValue = "0";
-            this.dgQty.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dgQty.HeaderText = "Qty";
-            this.dgQty.Name = "dgQty";
-            this.dgQty.ReadOnly = true;
-            this.dgQty.Width = 59;
-            // 
-            // dgStock
-            // 
-            this.dgStock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgStock.HeaderText = "Stock";
-            this.dgStock.Name = "dgStock";
-            this.dgStock.ReadOnly = true;
-            this.dgStock.Width = 72;
-            // 
-            // dgUOM
-            // 
-            this.dgUOM.HeaderText = "UOM";
-            this.dgUOM.Name = "dgUOM";
-            this.dgUOM.ReadOnly = true;
-            this.dgUOM.Width = 57;
-            // 
-            // dgSSM
-            // 
-            this.dgSSM.HeaderText = "SSM";
-            this.dgSSM.Name = "dgSSM";
-            this.dgSSM.ReadOnly = true;
-            // 
-            // dgUC
-            // 
-            this.dgUC.HeaderText = "U/C";
-            this.dgUC.Name = "dgUC";
-            this.dgUC.ReadOnly = true;
-            // 
-            // dgUPIME
-            // 
-            this.dgUPIME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgUPIME.HeaderText = "U/P IME L/P ";
-            this.dgUPIME.Name = "dgUPIME";
-            this.dgUPIME.ReadOnly = true;
-            this.dgUPIME.Width = 107;
-            // 
-            // dgDisc
-            // 
-            this.dgDisc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgDisc.HeaderText = "Disc. (%)";
-            this.dgDisc.Name = "dgDisc";
-            this.dgDisc.ReadOnly = true;
-            this.dgDisc.Width = 87;
-            // 
-            // dgUCUPCurr
-            // 
-            this.dgUCUPCurr.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgUCUPCurr.HeaderText = "U/C U/P (Curr.)";
-            this.dgUCUPCurr.Name = "dgUCUPCurr";
-            this.dgUCUPCurr.ReadOnly = true;
-            this.dgUCUPCurr.Width = 121;
-            // 
-            // dgTotal
-            // 
-            this.dgTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgTotal.HeaderText = "TOTAL";
-            this.dgTotal.Name = "dgTotal";
-            this.dgTotal.ReadOnly = true;
-            this.dgTotal.Width = 83;
-            // 
-            // dgTargetUP
-            // 
-            this.dgTargetUP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgTargetUP.HeaderText = "Target U/P";
-            this.dgTargetUP.Name = "dgTargetUP";
-            this.dgTargetUP.ReadOnly = true;
-            this.dgTargetUP.Width = 98;
-            // 
-            // dgCompetitor
-            // 
-            this.dgCompetitor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgCompetitor.HeaderText = "Competitor";
-            this.dgCompetitor.Name = "dgCompetitor";
-            this.dgCompetitor.ReadOnly = true;
-            this.dgCompetitor.Width = 105;
-            // 
-            // dgHZ
-            // 
-            this.dgHZ.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgHZ.HeaderText = "HZ";
-            this.dgHZ.Name = "dgHZ";
-            this.dgHZ.ReadOnly = true;
-            this.dgHZ.Visible = false;
-            this.dgHZ.Width = 56;
-            // 
-            // dgCL
-            // 
-            this.dgCL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgCL.HeaderText = "CL";
-            this.dgCL.Name = "dgCL";
-            this.dgCL.ReadOnly = true;
-            this.dgCL.Visible = false;
-            this.dgCL.Width = 54;
-            // 
-            // dgCR
-            // 
-            this.dgCR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgCR.HeaderText = "CR";
-            this.dgCR.Name = "dgCR";
-            this.dgCR.ReadOnly = true;
-            this.dgCR.Visible = false;
-            this.dgCR.Width = 56;
-            // 
-            // dgDelivery
-            // 
-            this.dgDelivery.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgDelivery.HeaderText = "Delivery";
-            this.dgDelivery.Name = "dgDelivery";
-            this.dgDelivery.ReadOnly = true;
-            this.dgDelivery.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgDelivery.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dgDelivery.Width = 88;
-            // 
-            // dgUnitWeigt
-            // 
-            this.dgUnitWeigt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgUnitWeigt.HeaderText = "Unit Weigt (Kg)";
-            this.dgUnitWeigt.Name = "dgUnitWeigt";
-            this.dgUnitWeigt.ReadOnly = true;
-            this.dgUnitWeigt.Width = 122;
-            // 
-            // dgTotalWeight
-            // 
-            this.dgTotalWeight.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgTotalWeight.HeaderText = "Total Weight (Kg)";
-            this.dgTotalWeight.Name = "dgTotalWeight";
-            this.dgTotalWeight.ReadOnly = true;
-            this.dgTotalWeight.Width = 136;
-            // 
-            // dgCustStkCode
-            // 
-            this.dgCustStkCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgCustStkCode.HeaderText = "Cust Stk Code";
-            this.dgCustStkCode.Name = "dgCustStkCode";
-            this.dgCustStkCode.ReadOnly = true;
-            this.dgCustStkCode.Width = 116;
-            // 
-            // dgCustDescription
-            // 
-            this.dgCustDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgCustDescription.HeaderText = "Cust. Description";
-            this.dgCustDescription.Name = "dgCustDescription";
-            this.dgCustDescription.ReadOnly = true;
-            this.dgCustDescription.Width = 132;
-            // 
-            // dgCOO
-            // 
-            this.dgCOO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgCOO.HeaderText = "COO";
-            this.dgCOO.Name = "dgCOO";
-            this.dgCOO.ReadOnly = true;
-            this.dgCOO.Width = 68;
-            // 
-            // dgCCCNO
-            // 
-            this.dgCCCNO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgCCCNO.HeaderText = "CCCNO";
-            this.dgCCCNO.Name = "dgCCCNO";
-            this.dgCCCNO.ReadOnly = true;
-            this.dgCCCNO.Width = 85;
-            // 
-            // dgDependantTable
-            // 
-            this.dgDependantTable.HeaderText = "dgDependantTable";
-            this.dgDependantTable.Name = "dgDependantTable";
-            this.dgDependantTable.Visible = false;
             // 
             // ExperimentQuotationAdd
             // 
@@ -3411,11 +3413,11 @@ namespace LoginForm.QuotationModule
         private System.Windows.Forms.Label lblTotalExtra;
         private System.Windows.Forms.Label lblVat;
         private System.Windows.Forms.Label label40;
-        private System.Windows.Forms.Label lbltotal;
+        private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label label52;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox txtExtraChanges;
+        private System.Windows.Forms.TextBox txtExtraCharges;
         private System.Windows.Forms.Label lblVatTotal;
         private System.Windows.Forms.TextBox txtTotalDiscAmount;
         private System.Windows.Forms.CheckBox chkVat;
