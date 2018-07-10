@@ -2663,6 +2663,26 @@ warning 6002: The table/view 'IME.dbo.CompleteItems' does not have a primary key
           <Property Name="dependantTable" Type="varchar" MaxLength="3" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'IME.dbo.CompleteItems_v2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CompleteItems_v2">
+          <Key>
+            <PropertyRef Name="Article_No" />
+            <PropertyRef Name="dependantTable" />
+          </Key>
+          <Property Name="Article_No" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Article_Desc" Type="nvarchar" MaxLength="50" />
+          <Property Name="Pack_Quantity" Type="int" />
+          <Property Name="Unit_Content" Type="int" />
+          <Property Name="Unit_Measure" Type="nvarchar" MaxLength="50" />
+          <Property Name="MPN" Type="nvarchar" MaxLength="50" />
+          <Property Name="Manufacturer" Type="nvarchar" MaxLength="50" />
+          <Property Name="MH_Code_Level_1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Col1Break" Type="int" />
+          <Property Name="Col1Price" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="DiscountedPrice1" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="dependantTable" Type="varchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="V_Product">
           <Key>
@@ -9993,6 +10013,22 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
     [CompleteItems].[dependantTable] AS [dependantTable]
     FROM [dbo].[CompleteItems] AS [CompleteItems]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="CompleteItems_v2" EntityType="Self.CompleteItems_v2" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CompleteItems_v2].[Article_No] AS [Article_No], 
+    [CompleteItems_v2].[Article_Desc] AS [Article_Desc], 
+    [CompleteItems_v2].[Pack_Quantity] AS [Pack_Quantity], 
+    [CompleteItems_v2].[Unit_Content] AS [Unit_Content], 
+    [CompleteItems_v2].[Unit_Measure] AS [Unit_Measure], 
+    [CompleteItems_v2].[MPN] AS [MPN], 
+    [CompleteItems_v2].[Manufacturer] AS [Manufacturer], 
+    [CompleteItems_v2].[MH_Code_Level_1] AS [MH_Code_Level_1], 
+    [CompleteItems_v2].[Col1Break] AS [Col1Break], 
+    [CompleteItems_v2].[Col1Price] AS [Col1Price], 
+    [CompleteItems_v2].[DiscountedPrice1] AS [DiscountedPrice1], 
+    [CompleteItems_v2].[dependantTable] AS [dependantTable]
+    FROM [dbo].[CompleteItems_v2] AS [CompleteItems_v2]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="V_Product" EntityType="Self.V_Product" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [V_Product].[productId] AS [productId], 
@@ -14889,6 +14925,24 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="BrandName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="dependantTable" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
+        <EntityType Name="CompleteItems_v2">
+          <Key>
+            <PropertyRef Name="Article_No" />
+            <PropertyRef Name="dependantTable" />
+          </Key>
+          <Property Name="Article_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Article_Desc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pack_Quantity" Type="Int32" />
+          <Property Name="Unit_Content" Type="Int32" />
+          <Property Name="Unit_Measure" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MPN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MH_Code_Level_1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Col1Break" Type="Int32" />
+          <Property Name="Col1Price" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="DiscountedPrice1" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="dependantTable" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
         <EntityType Name="V_Product">
           <Key>
             <PropertyRef Name="productId" />
@@ -19520,6 +19574,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <EntitySet Name="SalaryVoucherDetails" EntityType="Self.SalaryVoucherDetail" />
           <EntitySet Name="CariHarekets" EntityType="Self.CariHareket" />
           <EntitySet Name="CompleteItems" EntityType="Self.CompleteItem" />
+          <EntitySet Name="CompleteItems_v2" EntityType="Self.CompleteItems_v2" />
           <EntitySet Name="V_Product" EntityType="Self.V_Product" />
           <AssociationSet Name="FK__Account__Currenc__11957784" Association="Self.FK__Account__Currenc__11957784">
             <End Role="Currency" EntitySet="Currencies" />
@@ -28651,6 +28706,24 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="Shipping" ColumnName="Shipping" />
                 <ScalarProperty Name="LicenceType" ColumnName="LicenceType" />
                 <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+                <ScalarProperty Name="dependantTable" ColumnName="dependantTable" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompleteItems_v2">
+            <EntityTypeMapping TypeName="IMEModel.CompleteItems_v2">
+              <MappingFragment StoreEntitySet="CompleteItems_v2">
+                <ScalarProperty Name="Article_No" ColumnName="Article_No" />
+                <ScalarProperty Name="Article_Desc" ColumnName="Article_Desc" />
+                <ScalarProperty Name="Pack_Quantity" ColumnName="Pack_Quantity" />
+                <ScalarProperty Name="Unit_Content" ColumnName="Unit_Content" />
+                <ScalarProperty Name="Unit_Measure" ColumnName="Unit_Measure" />
+                <ScalarProperty Name="MPN" ColumnName="MPN" />
+                <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+                <ScalarProperty Name="MH_Code_Level_1" ColumnName="MH_Code_Level_1" />
+                <ScalarProperty Name="Col1Break" ColumnName="Col1Break" />
+                <ScalarProperty Name="Col1Price" ColumnName="Col1Price" />
+                <ScalarProperty Name="DiscountedPrice1" ColumnName="DiscountedPrice1" />
                 <ScalarProperty Name="dependantTable" ColumnName="dependantTable" />
               </MappingFragment>
             </EntityTypeMapping>
