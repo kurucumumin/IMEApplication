@@ -823,7 +823,61 @@ namespace LoginForm.Item
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            #region Form
+            if (btnAdd.Text == "Save")
+            {
+                if (txtHazardousInd.Text.ToLower() == "Y".ToLower())
+                {
+                    if (txtShipping.Text.ToLower() != "Y".ToLower() && txtRSStock.Text.ToLower() != "Y".ToLower())
+                    {
+                        MessageBox.Show("Hazarduse ürün, Environment(HE) yada Shipping(HS) olmalı");
+                    }
+                }
+
+                ItemCard i = new ItemCard();
+
+                m.FirstName = dgMail.Rows[i].Cells[1].Value.ToString();
+                m.MailAddress = dgMail.Rows[i].Cells[2].Value.ToString();
+                m.cc = (dgMail.Rows[i].Cells[3].Value != null) ? (bool)dgMail.Rows[i].Cells[3].Value : false;
+                m.too = (dgMail.Rows[i].Cells[4].Value != null) ? (bool)dgMail.Rows[i].Cells[4].Value : false;
+
+                IME.Suppliers.Add(i);
+                IME.SaveChanges();
+
+            }
+            else
+            {
+                AddScreen();
+            }
+        }
+
+        private void CancelScreen()
+        {
+            ClearAll(this);
+            ReadOnlyAll(true);
+            dgItemList.Enabled = true;
+            groupBox7.Enabled = true;
+            panel1.Enabled = true;
+            btnUpdateNote.Enabled = true;
+            btnAdd.Text = "Add Item";
+            btnClose.Text = "Close";
+            label1.Font = new Font(label1.Font, FontStyle.Regular);
+            label1.ForeColor = Color.Black;
+            label39.Font = new Font(label39.Font, FontStyle.Regular);
+            label39.ForeColor = Color.Black;
+            label27.Font = new Font(label27.Font, FontStyle.Regular);
+            label27.ForeColor = Color.Black;
+            label37.Font = new Font(label37.Font, FontStyle.Regular);
+            label37.ForeColor = Color.Black;
+            label2.Font = new Font(label2.Font, FontStyle.Regular);
+            label2.ForeColor = Color.Black;
+            label4.Font = new Font(label4.Font, FontStyle.Regular);
+            label4.ForeColor = Color.Black;
+            label52.Font = new Font(label52.Font, FontStyle.Regular);
+            label52.ForeColor = Color.Black;
+        }
+
+        private void AddScreen()
+        {
             ClearAll(this);
             ReadOnlyAll(false);
             dgItemList.Enabled = false;
@@ -834,9 +888,9 @@ namespace LoginForm.Item
             btnClose.Text = "Cancel";
             label1.Font = new Font(label1.Font, FontStyle.Bold);
             label1.ForeColor = Color.Red;
-            label39.Font = new Font(label39.Font,  FontStyle.Bold);
+            label39.Font = new Font(label39.Font, FontStyle.Bold);
             label39.ForeColor = Color.Red;
-            label27.Font = new Font(label27.Font,  FontStyle.Bold);
+            label27.Font = new Font(label27.Font, FontStyle.Bold);
             label27.ForeColor = Color.Red;
             label37.Font = new Font(label37.Font, FontStyle.Bold);
             label37.ForeColor = Color.Red;
@@ -846,7 +900,7 @@ namespace LoginForm.Item
             label4.ForeColor = Color.Red;
             label52.Font = new Font(label52.Font, FontStyle.Bold);
             label52.ForeColor = Color.Red;
-            #endregion
+
         }
 
         private void ClearAll(Control ctl)
@@ -945,6 +999,7 @@ namespace LoginForm.Item
             {
                 cmbSupplierName.Enabled = false;
                 btnSupplierAdd.Visible = false;
+                groupBox9.Enabled = false;
             }
             else
             {
@@ -964,28 +1019,7 @@ namespace LoginForm.Item
             }
             else
             {
-                ClearAll(this);
-                ReadOnlyAll(true);
-                dgItemList.Enabled = true;
-                groupBox7.Enabled = true;
-                panel1.Enabled = true;
-                btnUpdateNote.Enabled = true;
-                btnAdd.Text = "Add Item";
-                btnClose.Text = "Close";
-                label1.Font = new Font(label1.Font, FontStyle.Regular);
-                label1.ForeColor = Color.Black;
-                label39.Font = new Font(label39.Font, FontStyle.Regular);
-                label39.ForeColor = Color.Black;
-                label27.Font = new Font(label27.Font,  FontStyle.Regular);
-                label27.ForeColor = Color.Black;
-                label37.Font = new Font(label37.Font, FontStyle.Regular);
-                label37.ForeColor = Color.Black;
-                label2.Font = new Font(label2.Font,  FontStyle.Regular);
-                label2.ForeColor = Color.Black;
-                label4.Font = new Font(label4.Font,  FontStyle.Regular);
-                label4.ForeColor = Color.Black;
-                label52.Font = new Font(label52.Font, FontStyle.Regular);
-                label52.ForeColor = Color.Black;
+                CancelScreen();
             }
         }
 

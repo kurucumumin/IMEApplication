@@ -175,6 +175,7 @@ namespace LoginForm.Item
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.btnSupplierAdd = new System.Windows.Forms.Button();
             this.txtMHCodeLevel1 = new System.Windows.Forms.TextBox();
             this.label30 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
@@ -193,7 +194,6 @@ namespace LoginForm.Item
             this.tblTop = new System.Windows.Forms.TableLayoutPanel();
             this.panelSearch = new System.Windows.Forms.Panel();
             this.tblMain = new System.Windows.Forms.TableLayoutPanel();
-            this.btnSupplierAdd = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             this.groupBox9.SuspendLayout();
@@ -905,7 +905,7 @@ namespace LoginForm.Item
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.label7.Location = new System.Drawing.Point(13, 14);
+            this.label7.Location = new System.Drawing.Point(13, 19);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(63, 17);
             this.label7.TabIndex = 259;
@@ -987,7 +987,7 @@ namespace LoginForm.Item
             this.SuppliedIn.Multiline = true;
             this.SuppliedIn.Name = "SuppliedIn";
             this.SuppliedIn.ReadOnly = true;
-            this.SuppliedIn.Size = new System.Drawing.Size(62, 36);
+            this.SuppliedIn.Size = new System.Drawing.Size(62, 26);
             this.SuppliedIn.TabIndex = 240;
             // 
             // label5
@@ -995,7 +995,7 @@ namespace LoginForm.Item
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(20, 93);
+            this.label5.Location = new System.Drawing.Point(20, 89);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(78, 17);
             this.label5.TabIndex = 239;
@@ -1077,7 +1077,7 @@ namespace LoginForm.Item
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.label1.Location = new System.Drawing.Point(26, 45);
+            this.label1.Location = new System.Drawing.Point(17, 45);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 17);
             this.label1.TabIndex = 178;
@@ -2049,6 +2049,17 @@ namespace LoginForm.Item
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "General Info";
             // 
+            // btnSupplierAdd
+            // 
+            this.btnSupplierAdd.Location = new System.Drawing.Point(274, 72);
+            this.btnSupplierAdd.Name = "btnSupplierAdd";
+            this.btnSupplierAdd.Size = new System.Drawing.Size(24, 24);
+            this.btnSupplierAdd.TabIndex = 268;
+            this.btnSupplierAdd.Text = "+";
+            this.btnSupplierAdd.UseVisualStyleBackColor = true;
+            this.btnSupplierAdd.Visible = false;
+            this.btnSupplierAdd.Click += new System.EventHandler(this.btnSupplierAdd_Click);
+            // 
             // txtMHCodeLevel1
             // 
             this.txtMHCodeLevel1.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -2297,17 +2308,6 @@ namespace LoginForm.Item
             this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 76.20528F));
             this.tblMain.Size = new System.Drawing.Size(1130, 655);
             this.tblMain.TabIndex = 1;
-            // 
-            // btnSupplierAdd
-            // 
-            this.btnSupplierAdd.Location = new System.Drawing.Point(274, 72);
-            this.btnSupplierAdd.Name = "btnSupplierAdd";
-            this.btnSupplierAdd.Size = new System.Drawing.Size(24, 24);
-            this.btnSupplierAdd.TabIndex = 268;
-            this.btnSupplierAdd.Text = "+";
-            this.btnSupplierAdd.UseVisualStyleBackColor = true;
-            this.btnSupplierAdd.Visible = false;
-            this.btnSupplierAdd.Click += new System.EventHandler(this.btnSupplierAdd_Click);
             // 
             // ItemCard
             // 

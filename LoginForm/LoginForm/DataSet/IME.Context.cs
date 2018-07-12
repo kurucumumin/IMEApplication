@@ -84,6 +84,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<Godown> Godowns { get; set; }
         public virtual DbSet<Hazardou> Hazardous { get; set; }
         public virtual DbSet<Holiday> Holidays { get; set; }
+        public virtual DbSet<Item> Items { get; set; }
         public virtual DbSet<ItemHistory> ItemHistories { get; set; }
         public virtual DbSet<ItemNote> ItemNotes { get; set; }
         public virtual DbSet<JournalDetail> JournalDetails { get; set; }
@@ -196,7 +197,6 @@ namespace LoginForm.DataSet
         public virtual DbSet<SalaryVoucherDetail> SalaryVoucherDetails { get; set; }
         public virtual DbSet<CariHareket> CariHarekets { get; set; }
         public virtual DbSet<CompleteItem> CompleteItems { get; set; }
-        public virtual DbSet<CompleteItems_v2> CompleteItems_v2 { get; set; }
         public virtual DbSet<V_Product> V_Product { get; set; }
     
         [DbFunction("IMEEntities", "AccountGroupHierarchy")]

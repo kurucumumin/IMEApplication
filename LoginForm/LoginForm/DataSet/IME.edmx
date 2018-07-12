@@ -781,6 +781,51 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="holidayName" Type="varchar(max)" />
           <Property Name="narration" Type="varchar(max)" />
         </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="StockNo" />
+          </Key>
+          <Property Name="StockNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SupplierID" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="SupplierName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ArticleDescription" Type="nvarchar" MaxLength="100" />
+          <Property Name="MPN" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MFR" Type="nvarchar" MaxLength="50" />
+          <Property Name="Brandname" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="SupersectionName" Type="nvarchar" MaxLength="100" />
+          <Property Name="SectionName" Type="nvarchar" MaxLength="100" />
+          <Property Name="MH" Type="nvarchar" MaxLength="50" />
+          <Property Name="CoO" Type="nvarchar" MaxLength="50" />
+          <Property Name="CCCN" Type="nvarchar" MaxLength="50" />
+          <Property Name="SSM" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UC" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UM" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DXB" Type="int" />
+          <Property Name="ADH" Type="int" />
+          <Property Name="MCT" Type="int" />
+          <Property Name="BHH" Type="int" />
+          <Property Name="TUR" Type="int" />
+          <Property Name="Reserved" Type="int" />
+          <Property Name="Uk_Disc_Date" Type="nvarchar" MaxLength="50" />
+          <Property Name="DiscontinuationDate" Type="nvarchar" MaxLength="20" />
+          <Property Name="Runon" Type="int" />
+          <Property Name="Referral" Type="int" />
+          <Property Name="Heigh" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="Width" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="Length" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="Standard_Weight" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="Gross_Weight" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="Col1Break" Type="int" />
+          <Property Name="Col2Break" Type="int" />
+          <Property Name="Col3Break" Type="int" />
+          <Property Name="Col4Break" Type="int" />
+          <Property Name="Col5Break" Type="int" />
+          <Property Name="DiscountedPrice1" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="DiscountedPrice2" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="DiscountedPrice3" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="DiscountedPrice4" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="DiscountedPrice5" Type="decimal" Precision="18" Scale="3" />
+        </EntityType>
         <EntityType Name="ItemHistory">
           <Key>
             <PropertyRef Name="ID" />
@@ -2660,26 +2705,6 @@ warning 6002: The table/view 'IME.dbo.CompleteItems' does not have a primary key
           <Property Name="Shipping" Type="nvarchar" MaxLength="50" />
           <Property Name="LicenceType" Type="nvarchar" MaxLength="5" />
           <Property Name="BrandName" Type="nvarchar" MaxLength="100" />
-          <Property Name="dependantTable" Type="varchar" MaxLength="3" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'IME.dbo.CompleteItems_v2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="CompleteItems_v2">
-          <Key>
-            <PropertyRef Name="Article_No" />
-            <PropertyRef Name="dependantTable" />
-          </Key>
-          <Property Name="Article_No" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Article_Desc" Type="nvarchar" MaxLength="50" />
-          <Property Name="Pack_Quantity" Type="int" />
-          <Property Name="Unit_Content" Type="int" />
-          <Property Name="Unit_Measure" Type="nvarchar" MaxLength="50" />
-          <Property Name="MPN" Type="nvarchar" MaxLength="50" />
-          <Property Name="Manufacturer" Type="nvarchar" MaxLength="50" />
-          <Property Name="MH_Code_Level_1" Type="nvarchar" MaxLength="50" />
-          <Property Name="Col1Break" Type="int" />
-          <Property Name="Col1Price" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="DiscountedPrice1" Type="decimal" Precision="18" Scale="3" />
           <Property Name="dependantTable" Type="varchar" MaxLength="3" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
@@ -9812,6 +9837,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <EntitySet Name="Godown" EntityType="Self.Godown" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Hazardous" EntityType="Self.Hazardous" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Holiday" EntityType="Self.Holiday" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemHistory" EntityType="Self.ItemHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemNote" EntityType="Self.ItemNote" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JournalDetail" EntityType="Self.JournalDetail" Schema="dbo" store:Type="Tables" />
@@ -10012,22 +10038,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
     [CompleteItems].[BrandName] AS [BrandName], 
     [CompleteItems].[dependantTable] AS [dependantTable]
     FROM [dbo].[CompleteItems] AS [CompleteItems]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="CompleteItems_v2" EntityType="Self.CompleteItems_v2" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [CompleteItems_v2].[Article_No] AS [Article_No], 
-    [CompleteItems_v2].[Article_Desc] AS [Article_Desc], 
-    [CompleteItems_v2].[Pack_Quantity] AS [Pack_Quantity], 
-    [CompleteItems_v2].[Unit_Content] AS [Unit_Content], 
-    [CompleteItems_v2].[Unit_Measure] AS [Unit_Measure], 
-    [CompleteItems_v2].[MPN] AS [MPN], 
-    [CompleteItems_v2].[Manufacturer] AS [Manufacturer], 
-    [CompleteItems_v2].[MH_Code_Level_1] AS [MH_Code_Level_1], 
-    [CompleteItems_v2].[Col1Break] AS [Col1Break], 
-    [CompleteItems_v2].[Col1Price] AS [Col1Price], 
-    [CompleteItems_v2].[DiscountedPrice1] AS [DiscountedPrice1], 
-    [CompleteItems_v2].[dependantTable] AS [dependantTable]
-    FROM [dbo].[CompleteItems_v2] AS [CompleteItems_v2]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="V_Product" EntityType="Self.V_Product" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -12537,6 +12547,51 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="holidayName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="StockNo" />
+          </Key>
+          <Property Name="StockNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SupplierID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SupplierName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ArticleDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MPN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MFR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Brandname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SupersectionName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SectionName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CoO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CCCN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SSM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DXB" Type="Int32" />
+          <Property Name="ADH" Type="Int32" />
+          <Property Name="MCT" Type="Int32" />
+          <Property Name="BHH" Type="Int32" />
+          <Property Name="TUR" Type="Int32" />
+          <Property Name="Reserved" Type="Int32" />
+          <Property Name="Uk_Disc_Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DiscontinuationDate" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Runon" Type="Int32" />
+          <Property Name="Referral" Type="Int32" />
+          <Property Name="Heigh" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Width" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Length" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Standard_Weight" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="Gross_Weight" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="Col1Break" Type="Int32" />
+          <Property Name="Col2Break" Type="Int32" />
+          <Property Name="Col3Break" Type="Int32" />
+          <Property Name="Col4Break" Type="Int32" />
+          <Property Name="Col5Break" Type="Int32" />
+          <Property Name="DiscountedPrice1" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="DiscountedPrice2" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="DiscountedPrice3" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="DiscountedPrice4" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="DiscountedPrice5" Type="Decimal" Precision="18" Scale="3" />
+        </EntityType>
         <EntityType Name="ItemHistory">
           <Key>
             <PropertyRef Name="ID" />
@@ -14923,24 +14978,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="Shipping" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="LicenceType" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Name="BrandName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="dependantTable" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
-        <EntityType Name="CompleteItems_v2">
-          <Key>
-            <PropertyRef Name="Article_No" />
-            <PropertyRef Name="dependantTable" />
-          </Key>
-          <Property Name="Article_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Article_Desc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Pack_Quantity" Type="Int32" />
-          <Property Name="Unit_Content" Type="Int32" />
-          <Property Name="Unit_Measure" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MPN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MH_Code_Level_1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Col1Break" Type="Int32" />
-          <Property Name="Col1Price" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="DiscountedPrice1" Type="Decimal" Precision="18" Scale="3" />
           <Property Name="dependantTable" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="V_Product">
@@ -19462,6 +19499,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <EntitySet Name="Godowns" EntityType="Self.Godown" />
           <EntitySet Name="Hazardous" EntityType="Self.Hazardou" />
           <EntitySet Name="Holidays" EntityType="Self.Holiday" />
+          <EntitySet Name="Items" EntityType="Self.Item" />
           <EntitySet Name="ItemHistories" EntityType="Self.ItemHistory" />
           <EntitySet Name="ItemNotes" EntityType="Self.ItemNote" />
           <EntitySet Name="JournalDetails" EntityType="Self.JournalDetail" />
@@ -19574,7 +19612,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <EntitySet Name="SalaryVoucherDetails" EntityType="Self.SalaryVoucherDetail" />
           <EntitySet Name="CariHarekets" EntityType="Self.CariHareket" />
           <EntitySet Name="CompleteItems" EntityType="Self.CompleteItem" />
-          <EntitySet Name="CompleteItems_v2" EntityType="Self.CompleteItems_v2" />
           <EntitySet Name="V_Product" EntityType="Self.V_Product" />
           <AssociationSet Name="FK__Account__Currenc__11957784" Association="Self.FK__Account__Currenc__11957784">
             <End Role="Currency" EntitySet="Currencies" />
@@ -26723,6 +26760,52 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Items">
+            <EntityTypeMapping TypeName="IMEModel.Item">
+              <MappingFragment StoreEntitySet="Item">
+                <ScalarProperty Name="StockNo" ColumnName="StockNo" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="ArticleDescription" ColumnName="ArticleDescription" />
+                <ScalarProperty Name="MPN" ColumnName="MPN" />
+                <ScalarProperty Name="MFR" ColumnName="MFR" />
+                <ScalarProperty Name="Brandname" ColumnName="Brandname" />
+                <ScalarProperty Name="SupersectionName" ColumnName="SupersectionName" />
+                <ScalarProperty Name="SectionName" ColumnName="SectionName" />
+                <ScalarProperty Name="MH" ColumnName="MH" />
+                <ScalarProperty Name="CoO" ColumnName="CoO" />
+                <ScalarProperty Name="CCCN" ColumnName="CCCN" />
+                <ScalarProperty Name="SSM" ColumnName="SSM" />
+                <ScalarProperty Name="UC" ColumnName="UC" />
+                <ScalarProperty Name="UM" ColumnName="UM" />
+                <ScalarProperty Name="DXB" ColumnName="DXB" />
+                <ScalarProperty Name="ADH" ColumnName="ADH" />
+                <ScalarProperty Name="MCT" ColumnName="MCT" />
+                <ScalarProperty Name="BHH" ColumnName="BHH" />
+                <ScalarProperty Name="TUR" ColumnName="TUR" />
+                <ScalarProperty Name="Reserved" ColumnName="Reserved" />
+                <ScalarProperty Name="Uk_Disc_Date" ColumnName="Uk_Disc_Date" />
+                <ScalarProperty Name="DiscontinuationDate" ColumnName="DiscontinuationDate" />
+                <ScalarProperty Name="Runon" ColumnName="Runon" />
+                <ScalarProperty Name="Referral" ColumnName="Referral" />
+                <ScalarProperty Name="Heigh" ColumnName="Heigh" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Length" ColumnName="Length" />
+                <ScalarProperty Name="Standard_Weight" ColumnName="Standard_Weight" />
+                <ScalarProperty Name="Gross_Weight" ColumnName="Gross_Weight" />
+                <ScalarProperty Name="Col1Break" ColumnName="Col1Break" />
+                <ScalarProperty Name="Col2Break" ColumnName="Col2Break" />
+                <ScalarProperty Name="Col3Break" ColumnName="Col3Break" />
+                <ScalarProperty Name="Col4Break" ColumnName="Col4Break" />
+                <ScalarProperty Name="Col5Break" ColumnName="Col5Break" />
+                <ScalarProperty Name="DiscountedPrice1" ColumnName="DiscountedPrice1" />
+                <ScalarProperty Name="DiscountedPrice2" ColumnName="DiscountedPrice2" />
+                <ScalarProperty Name="DiscountedPrice3" ColumnName="DiscountedPrice3" />
+                <ScalarProperty Name="DiscountedPrice4" ColumnName="DiscountedPrice4" />
+                <ScalarProperty Name="DiscountedPrice5" ColumnName="DiscountedPrice5" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ItemHistories">
             <EntityTypeMapping TypeName="IMEModel.ItemHistory">
               <MappingFragment StoreEntitySet="ItemHistory">
@@ -28706,24 +28789,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="Shipping" ColumnName="Shipping" />
                 <ScalarProperty Name="LicenceType" ColumnName="LicenceType" />
                 <ScalarProperty Name="BrandName" ColumnName="BrandName" />
-                <ScalarProperty Name="dependantTable" ColumnName="dependantTable" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CompleteItems_v2">
-            <EntityTypeMapping TypeName="IMEModel.CompleteItems_v2">
-              <MappingFragment StoreEntitySet="CompleteItems_v2">
-                <ScalarProperty Name="Article_No" ColumnName="Article_No" />
-                <ScalarProperty Name="Article_Desc" ColumnName="Article_Desc" />
-                <ScalarProperty Name="Pack_Quantity" ColumnName="Pack_Quantity" />
-                <ScalarProperty Name="Unit_Content" ColumnName="Unit_Content" />
-                <ScalarProperty Name="Unit_Measure" ColumnName="Unit_Measure" />
-                <ScalarProperty Name="MPN" ColumnName="MPN" />
-                <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
-                <ScalarProperty Name="MH_Code_Level_1" ColumnName="MH_Code_Level_1" />
-                <ScalarProperty Name="Col1Break" ColumnName="Col1Break" />
-                <ScalarProperty Name="Col1Price" ColumnName="Col1Price" />
-                <ScalarProperty Name="DiscountedPrice1" ColumnName="DiscountedPrice1" />
                 <ScalarProperty Name="dependantTable" ColumnName="dependantTable" />
               </MappingFragment>
             </EntityTypeMapping>
