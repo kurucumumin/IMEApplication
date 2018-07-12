@@ -833,14 +833,11 @@ namespace LoginForm.Item
                     }
                 }
 
-                ItemCard i = new ItemCard();
+                Item i = new Item();
 
-                m.FirstName = dgMail.Rows[i].Cells[1].Value.ToString();
-                m.MailAddress = dgMail.Rows[i].Cells[2].Value.ToString();
-                m.cc = (dgMail.Rows[i].Cells[3].Value != null) ? (bool)dgMail.Rows[i].Cells[3].Value : false;
-                m.too = (dgMail.Rows[i].Cells[4].Value != null) ? (bool)dgMail.Rows[i].Cells[4].Value : false;
+                i.StockNo = txtStockNo.Text;
 
-                IME.Suppliers.Add(i);
+                IME.Item.Add(i);
                 IME.SaveChanges();
 
             }
@@ -1036,5 +1033,6 @@ namespace LoginForm.Item
             cmbSupplierName.DisplayMember = "s_name";
             cmbSupplierName.ValueMember = "ID";
         }
+
     }
 }
