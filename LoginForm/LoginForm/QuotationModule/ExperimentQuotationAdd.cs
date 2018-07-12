@@ -22,6 +22,7 @@ namespace LoginForm.QuotationModule
         List<CompleteItem> ItemList;
         QuotationUtils qUtils = new QuotationUtils();
         string discCalculationType = String.Empty;
+        bool initialLaunch = true;
 
         public ExperimentQuotationAdd()
         {
@@ -142,9 +143,8 @@ namespace LoginForm.QuotationModule
                     TotalCost += Convert.ToDecimal(row.Cells[dgLandingCost.Index].Value);
                     TotalUnitPrice += Convert.ToDecimal(row.Cells[dgUCUPCurr.Index].Value);
                 }
-
-                txtTotalMarginGrid.Text = qUtils.CalculateMargin(TotalUnitPrice, TotalCost).ToString("G29");
             }
+            txtTotalMarginGrid.Text = qUtils.CalculateMargin(ConvertAmountToGBP(TotalUnitPrice), TotalCost).ToString("G29");
         }
 
         private void CalculateSubTotal()
@@ -160,40 +160,24 @@ namespace LoginForm.QuotationModule
             txtSubtotal.Text = subTotal.ToString("G29");
         }
 
-        private void ChangeDate()
+        private void CalculateTotalCost()
         {
-            throw new NotImplementedException();
+            decimal totalCost = 0;
+            foreach (DataGridViewRow row in dgAddedItems.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    totalCost += Convert.ToDecimal(row.Cells[dgLandingCost.Index].Value) * Convert.ToDecimal(row.Cells[dgQty.Index].Value);
+                }
+            }
+            txtTotalCost.Text = totalCost.ToString("N4");
         }
-
-        private void ChangeFactor()
-        {
-            throw new NotImplementedException();
-        }
-
-        private void SetCurrency()
-        {
-            throw new NotImplementedException();
-        }
-
+        
         //private string CreateNewQuotationNumber()
         //{
         //    throw new NotImplementedException();
         //}
-        private void ApplyDiscountOnSubtotal()
-        {
-            throw new NotImplementedException();
-        }
-
-        private void AddExtraCharges()
-        {
-            throw new NotImplementedException();
-        }
-
-        private void ApplyVAT()
-        {
-            throw new NotImplementedException();
-        }
-
+        
         private void SaveFunction()
         {
             throw new NotImplementedException();
@@ -233,6 +217,7 @@ namespace LoginForm.QuotationModule
             cbCurrency.ValueMember = "currencyID";
             cbCurrency.DataSource = db.Currencies.ToList();
             cbCurrency.SelectedValue = Utils.getManagement().DefaultCurrency;
+            initialLaunch = false;
 
             cbPaymentMethod.DisplayMember = "term_name";
             cbPaymentMethod.ValueMember = "ID";
@@ -310,17 +295,49 @@ namespace LoginForm.QuotationModule
         {
             if (cbCurrency.SelectedIndex != -1)
             {
-                Currency currency = cbCurrency.SelectedItem as Currency;
-                _rate = currency.ExchangeRates.OrderByDescending(x => x.date).FirstOrDefault();
-                lblExcRate.Text = _rate.rate.ToString();
+                if (initialLaunch == true)
+                {
+                    Currency currency1 = cbCurrency.SelectedItem as Currency;
+                    _rate = currency1.ExchangeRates.OrderByDescending(x => x.date).FirstOrDefault();
+                    
+                    lblWeb.Text = "Web (" + _rate.Currency.currencySymbol + ")";
+                    lblExcRate.Text = _rate.rate.ToString();
+                }
+                else
+                {
+                    Currency currency2 = cbCurrency.SelectedItem as Currency;
+                    ExchangeRate r = currency2.ExchangeRates.OrderByDescending(x => x.date).FirstOrDefault();
 
-                ConvertGridValues();
+                    tempRate = (decimal)r.rate;
+
+                    ConvertGridValues();
+
+                    _rate = r;
+                    lblWeb.Text = "Web (" + _rate.Currency.currencySymbol + ")";
+                    lblExcRate.Text = _rate.rate.ToString();
+                }
             }
         }
 
         private void ConvertGridValues()
         {
-            //throw new NotImplementedException();
+            foreach (DataGridViewRow row in dgAddedItems.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    row.Cells[dgUPIME.Index].Value =
+                        ConvertAmountToTargetCurrency(Convert.ToDecimal(row.Cells[dgUPIME.Index].Value)).ToString("N4");
+                    row.Cells[dgUCUPCurr.Index].Value =
+                        ConvertAmountToTargetCurrency(Convert.ToDecimal(row.Cells[dgUCUPCurr.Index].Value)).ToString("N4");
+                    row.Cells[dgTotal.Index].Value =
+                        ConvertAmountToTargetCurrency(Convert.ToDecimal(row.Cells[dgTotal.Index].Value)).ToString("N4");
+                }
+            }
+
+            decimal subTotal = ConvertAmountToTargetCurrency(Convert.ToDecimal(txtSubtotal.Text));
+            txtSubtotal.Text = subTotal.ToString("N4");
+            numTotalDiscAmount.Value = (subTotal * numTotalDiscPercent.Value) / 100;
+            
         }
 
         private void dgAddedItems_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
@@ -393,6 +410,7 @@ namespace LoginForm.QuotationModule
                 #region Quantity
                 case ((int)GridColumns.Quantity):
                     DataGridViewCell cell = row.Cells[dgQty.Index];
+                    string col1 = txtCol1Break.Text;
                     if (!row.IsNewRow && !String.IsNullOrEmpty(cell.Value?.ToString()))
                     {
                         string txtQty = cell.Value.ToString();
@@ -401,24 +419,24 @@ namespace LoginForm.QuotationModule
                         if (!Int32.TryParse(txtQty, out int qty))
                         {
                             MessageBox.Show("You Should Enter An Integer Number");
-                            cell.Value = null;
+                            cell.Value = col1;
                         }
                         else if (qty == 0)
                         {
                             MessageBox.Show("You Can Not Enter '0' As Quantity");
-                            cell.Value = null;
+                            cell.Value = col1;
                         }
                         else
                         {
                             if (!(qty % uc == 0))
                             {
                                 MessageBox.Show("You Should Enter An Integer Multiple Of UC");
-                                cell.Value = null;
+                                cell.Value = col1;
                             }
                             else if (!(qty % ssm == 0))
                             {
                                 MessageBox.Show("You Should Enter An Integer Multiple Of SSM");
-                                cell.Value = null;
+                                cell.Value = col1;
                             }
                             else
                             {
@@ -443,6 +461,7 @@ namespace LoginForm.QuotationModule
 
                                 CalculateTotalMargin();
                                 CalculateSubTotal();
+                                CalculateTotalCost();
 
                                 dgAddedItems.CurrentCell = row.Cells[dgUCUPCurr.Index];
                                 SendKeys.Send("{UP}");
@@ -469,7 +488,7 @@ namespace LoginForm.QuotationModule
                             decimal landingCost = Convert.ToDecimal(row.Cells[dgLandingCost.Index].Value);
                             decimal upIme = Convert.ToDecimal(row.Cells[dgUPIME.Index].Value);
                             decimal qty = Convert.ToDecimal(row.Cells[dgQty.Index].Value);
-                            row.Cells[dgMargin.Index].Value = qUtils.CalculateMargin(price, landingCost);
+                            row.Cells[dgMargin.Index].Value = qUtils.CalculateMargin(ConvertAmountToGBP(price), landingCost);
                             row.Cells[dgDisc.Index].Value = (100 - ((price / upIme) * 100)).ToString("G29");
                             row.Cells[dgTotal.Index].Value = (price * qty).ToString("G29");
 
@@ -811,21 +830,25 @@ namespace LoginForm.QuotationModule
             {
                 decimal landingCost = qUtils.CalculateLandingCost((decimal)item.DiscountedPrice1, (decimal)item.Standard_Weight / 1000);
                 row.Cells[dgLandingCost.Index].Value = landingCost.ToString("N3");
-                row.Cells[dgUPIME.Index].Value = ConvertAmountGBPToCurrency((decimal)(item.Col1Price)).ToString("G29");
+                row.Cells[dgUPIME.Index].Value = ConvertAmountGBPToCurrency((decimal)(item.Col1Price*_factor/_gbpValue)).ToString("G29");
+                row.Cells[dgUCUPCurr.Index].Value = row.Cells[dgUPIME.Index].Value?.ToString();
                 row.Cells[dgMargin.Index].Value = qUtils.CalculateMargin(
                                                    Convert.ToDecimal(row.Cells[dgUPIME.Index].Value),
                                                    ConvertAmountGBPToCurrency(landingCost));
+                row.Cells[dgQty.Index].Value = item.Col1Break?.ToString();
+            }
+            else
+            {
+                row.Cells[dgQty.Index].Value = "";
             }
 
             row.Cells[dgUKPrice.Index].Value = item.Col1Price?.ToString();
             row.Cells[dgCost.Index].Value = item.DiscountedPrice1?.ToString() ?? "";
-            row.Cells[dgQty.Index].Value = "0";
 
             //row.Cells[dgStock.Index].Value =
             row.Cells[dgUOM.Index].Value = (!String.IsNullOrEmpty(item.Unit_Measure)) ? item.Unit_Measure : "EACH";
             row.Cells[dgSSM.Index].Value = item.Pack_Quantity?.ToString() ?? "1";
             row.Cells[dgUC.Index].Value = item.Unit_Content?.ToString() ?? "1";
-            row.Cells[dgUCUPCurr.Index].Value = row.Cells[dgUPIME.Index].Value?.ToString();
             row.Cells[dgTotal.Index].Value = "0";
 
             if (!String.IsNullOrEmpty(item.Hazardous_Ind) || item.Hazardous_Ind != "N")
@@ -925,14 +948,14 @@ namespace LoginForm.QuotationModule
             decimal _totalExtra = Decimal.Parse(lblTotalExtra.Text);
             decimal _VatAmount = (_totalExtra * (decimal)Utils.getManagement().VAT) / 100;
 
-            lblVatTotal.Text = _VatAmount.ToString();
+            lblVatTotal.Text = _VatAmount.ToString("N4");
             if (chkVat.Checked == true)
             {
-                lblGrossTotal.Text = (_totalExtra + _VatAmount).ToString();
+                lblGrossTotal.Text = (_totalExtra + _VatAmount).ToString("N4");
             }
             else
             {
-                lblGrossTotal.Text = _totalExtra.ToString();
+                lblGrossTotal.Text = _totalExtra.ToString("N4");
             }
         }
         
@@ -978,7 +1001,7 @@ namespace LoginForm.QuotationModule
             }
             else
             {
-                lblGrossTotal.Text = _totalExtra.ToString();
+                lblGrossTotal.Text = _totalExtra.ToString("N4");
             }
         }
     }
