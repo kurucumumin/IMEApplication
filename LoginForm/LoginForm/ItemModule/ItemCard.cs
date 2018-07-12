@@ -82,8 +82,18 @@ namespace LoginForm.ItemModule
                                  customerworker.Note.Note_name
                              }
                             ).ToList();
+                var list4 = (from a in IME.Items.Where(a=> a.StockNo.Contains(txtSelected))
+                             select new
+                             {
+                                 ArticleNo = a.StockNo,
+                                 ArticleDesc = a.ArticleDescription,
+                                 a.MPN,
+                                 Note_name= a.notes
+                             }
+                            ).ToList();
                 gridAdapterPC.AddRange(list2);
                 gridAdapterPC.AddRange(list3);
+                gridAdapterPC.AddRange(list4);
                 //
                 #endregion
                 dgItemList.DataSource = gridAdapterPC;
@@ -283,7 +293,7 @@ namespace LoginForm.ItemModule
             var dd = IME.DailyDiscontinueds.Where(a => a.ArticleNo == ArticleNoSearch).FirstOrDefault();
             var h = IME.Hazardous.Where(a => a.ArticleNo == ArticleNoSearch).FirstOrDefault();
             var du = IME.DualUses.Where(a => a.ArticleNo == ArticleNoSearch).FirstOrDefault();
-
+            var i = IME.Items.Where(a => a.StockNo == ArticleNoSearch).FirstOrDefault();
             if (sd != null)
             {
                 txtStockNo.Text = sd.Article_No;
@@ -454,6 +464,60 @@ namespace LoginForm.ItemModule
             }
 
             if (du != null) { txtLicenceType.Text = du.LicenceType; txtStockNo.Text = du.ArticleNo; }
+
+            if (i != null)
+            {
+                txtStockNo.Text = i.StockNo;
+                txtSupplierID.Text = i.SupplierID;
+                cmbSupplierName.Text = i.SupplierName;
+                txtDesc.Text = i.ArticleDescription;
+                txtMPN.Text = i.MPN;
+                txtManufacturer.Text = i.MFR;
+                txtBrand.Text = i.Brandname;
+                txtSupersectionName.Text = i.SupersectionName;
+                txtSection.Text = i.SectionName;
+                txtMHCodeLevel1.Text = i.MH;
+                txtCoO.Text = i.CoO;
+                txtCCCN.Text = i.CCCN;
+                txtSSM.Text = i.SSM;
+                txtUC.Text = i.UC;
+                txtUM.Text = i.UM;
+                if (i.DXB != null && i.DXB.ToString() != "") { txtIMEDXB.Text = i.DXB.ToString(); }
+                if (i.ADH != null && i.ADH.ToString() != "") { txtIMEADH.Text = i.ADH.ToString(); }
+                if (i.MCT != null && i.MCT.ToString() != "") { txtIMEMCT.Text = i.MCT.ToString(); }
+                if (i.BHH != null && i.BHH.ToString() != "") { txtIMEBHH.Text = i.BHH.ToString(); }
+                if (i.TUR != null && i.TUR.ToString() != "") { txtIMETUR.Text = i.TUR.ToString(); }
+                if (i.Reserved != null && i.Reserved.ToString() != "") { txtIMEReserved.Text = i.Reserved.ToString(); }
+                if (i.HZ != null && i.HZ.ToString() != "") {  txtHazardousInd.Text = i.HZ.ToString(); }
+                if (i.HE != null && i.HE.ToString() != "") { txtEnvironment.Text = i.HE.ToString(); }
+                if (i.HS != null && i.HS.ToString() != "") { txtShipping.Text = i.HS.ToString(); }
+                if (i.Li != null && i.Li.ToString() != "") { txtLithium.Text = i.Li.ToString(); }
+                if (i.CL != null && i.CL.ToString() != "") { txtCalibrationInd.Text = i.CL.ToString(); }
+                if (i.LC != null && i.LC.ToString() != "") { txtLicenceType.Text = i.LC.ToString(); }
+                if (i.DC != null && i.DC.ToString() != "") { txtDiscCharge.Text = i.DC.ToString(); }
+                if (i.EC != null && i.EC.ToString() != "") { txtExpiringPro.Text = i.EC.ToString(); }
+                txtUKDiscDate.Text = i.Uk_Disc_Date;
+                txtDiscontinuationDate.Text = i.DiscontinuationDate;
+                if (i.Runon != null && i.Runon.ToString() != "") { txtRunOn.Text = i.Runon.ToString(); }
+                if (i.Referral != null && i.Referral.ToString() != "") { txtReferral.Text = i.Referral.ToString(); }
+                if (i.Heigh != null && i.Heigh.ToString() != "") { txtHeight.Text = i.Heigh.ToString(); }
+                if (i.Width != null && i.Width.ToString() != "") { txtWidth.Text = i.Width.ToString(); }
+                if (i.Length != null && i.Length.ToString() != "") { txtLength.Text = i.Length.ToString(); }
+                if (i.Standard_Weight != null && i.Standard_Weight.ToString() != "") { txtStandartWeight.Text = i.Standard_Weight.ToString(); }
+                if (i.Gross_Weight != null && i.Gross_Weight.ToString() != "") { txtGrossWeight.Text = i.Gross_Weight.ToString(); }
+                if (i.Col1Break != null && i.Col1Break.ToString() != "") { txtUnitCount1.Text = i.Col1Break.ToString(); }
+                if (i.Col2Break != null && i.Col2Break.ToString() != "") { txtUnitCount2.Text = i.Col2Break.ToString(); }
+                if (i.Col3Break != null && i.Col3Break.ToString() != "") { txtUnitCount3.Text = i.Col3Break.ToString(); }
+                if (i.Col4Break != null && i.Col4Break.ToString() != "") { txtUnitCount4.Text = i.Col4Break.ToString(); }
+                if (i.Col5Break != null && i.Col5Break.ToString() != "") { txtUnitCount5.Text = i.Col5Break.ToString(); }
+                if (i.DiscountedPrice1 != null && i.DiscountedPrice1.ToString() != "") { txtCost1.Text = i.DiscountedPrice1.ToString(); }
+                if (i.DiscountedPrice2 != null && i.DiscountedPrice2.ToString() != "") { txtCost2.Text = i.DiscountedPrice2.ToString(); }
+                if (i.DiscountedPrice3 != null && i.DiscountedPrice3.ToString() != "") { txtCost3.Text = i.DiscountedPrice3.ToString(); }
+                if (i.DiscountedPrice4 != null && i.DiscountedPrice4.ToString() != "") { txtCost4.Text = i.DiscountedPrice4.ToString(); }
+                if (i.DiscountedPrice5 != null && i.DiscountedPrice5.ToString() != "") { txtCost5.Text = i.DiscountedPrice5.ToString(); }
+                txtNote.Text = i.notes;
+            }
+
             //
             #endregion
             if (txtLithium.Text != "") { label64.BackColor = Color.Red; }
@@ -499,62 +563,6 @@ namespace LoginForm.ItemModule
             }
 
         }
-        //private void textsClear()
-        //{
-        //    txtUnitPrice.Text = "";
-        //    txtNote.Text = "";
-        //    txtQuantitiy.Text = "";
-        //    txtStockNo.Text = "";
-        //    txtDesc.Text = "";
-        //    txtSSM.Text = "";
-        //    txtUC.Text = "";
-        //    txtUM.Text = "";
-        //    txtStandartWeight.Text = "";
-        //    txtHazardousInd.Text = "";
-        //    txtCalibrationInd.Text = "";
-        //    txtCoO.Text = "";
-        //    txtCCCN.Text = "";
-        //    txtUKDiscDate.Text = "";
-        //    txtDiscCharge.Text = "";
-        //    txtExpiringPro.Text = "";
-        //    txtManufacturer.Text = "";
-        //    txtMPN.Text = "";
-        //    txtMHCodeLevel1.Text = "";
-        //    txtCCCN.Text = "";
-        //    txtWidth.Text = "";
-        //    txtLength.Text = "";
-        //    txtHeight.Text = "";
-        //    txtStockNo.Text = "";
-        //    txtUnitCount1.Text = "";
-        //    txtUnitCount2.Text = "";
-        //    txtUnitCount3.Text = "";
-        //    txtUnitCount4.Text = "";
-        //    txtUnitCount5.Text = "";
-        //    txtUK1.Text = "";
-        //    txtUK2.Text = "";
-        //    txtUK3.Text = "";
-        //    txtUK4.Text = "";
-        //    txtUK5.Text = "";
-        //    txtCost1.Text = "";
-        //    txtCost2.Text = "";
-        //    txtCost3.Text = "";
-        //    txtCost4.Text = "";
-        //    txtCost5.Text = "";
-        //    txtSupersectionName.Text = "";
-        //    txtDesc.Text = "";
-        //    txtStockNo.Text = "";
-        //    txtEnvironment.Text = "";
-        //    txtLithium.Text = "";
-        //    txtShipping.Text = "";
-        //    txtStockNo.Text = "";
-        //    txtRSStock.Text = "";
-        //    txtRSOnOrder.Text = "";
-        //    txtStockNo.Text = "";
-        //    txtDiscontinuationDate.Text = "";
-        //    txtRunOn.Text = "";
-        //    txtReferral.Text = "";
-        //    txtLicenceType.Text = "";
-        //}
 
         private void rbProductCode_CheckedChanged(object sender, EventArgs e)
         {
@@ -784,9 +792,6 @@ namespace LoginForm.ItemModule
             ControlAutorization();
             GetImageFromWeb(null);
             ReadOnlyAll(true);
-            cmbSupplierName.DataSource = IME.Suppliers.ToList();
-            cmbSupplierName.DisplayMember = "s_name";
-            cmbSupplierName.ValueMember = "ID";
         }
 
         private void txtSSM_TextChanged(object sender, EventArgs e)
@@ -825,78 +830,99 @@ namespace LoginForm.ItemModule
         {
             if (btnAdd.Text == "Save")
             {
-                if (txtHazardousInd.Text.ToLower() == "Y".ToLower())
+                if (NullControl())
                 {
-                    if (txtShipping.Text.ToLower() != "Y".ToLower() && txtRSStock.Text.ToLower() != "Y".ToLower())
+                    if (txtHazardousInd.Text.ToLower() == "Y".ToLower())
                     {
-                        MessageBox.Show("Hazarduse ürün, Environment(HE) yada Shipping(HS) olmalı");
+                        if (txtShipping.Text.ToLower() != "Y".ToLower() && txtRSStock.Text.ToLower() != "Y".ToLower())
+                        {
+                            MessageBox.Show("Hazarduse ürün, Environment(HE) yada Shipping(HS) olmalı");
+                        }
                     }
-                }
 
-                Item i = new Item();
-
-                i.StockNo = txtStockNo.Text;
-                i.SupplierID = txtSupplierID.Text;
-                if (cmbSupplierName.SelectedItem != null)
-                {
-                    i.SupplierName = ((Supplier)cmbSupplierName.SelectedItem).s_name;
-                }
-                i.ArticleDescription = txtDesc.Text;
-                i.MPN = txtMPN.Text;
-                i.MFR = txtManufacturer.Text;
-                i.Brandname = txtBrand.Text;
-                i.SupersectionName = txtSupersectionName.Text;
-                i.SectionName = txtSection.Text;
-                i.MH = txtMHCodeLevel1.Text;
-                i.CoO = txtCoO.Text;
-                i.CCCN = txtCCCN.Text;
-                i.SSM = txtSSM.Text;
-                i.UC = txtUC.Text;
-                i.UM = txtUM.Text;
-                if (txtIMEDXB.Text != null && txtIMEDXB.Text != "") { i.DXB = Convert.ToInt32(txtIMEDXB.Text); }
-                if (txtIMEADH.Text != null && txtIMEADH.Text != "") { i.ADH = Convert.ToInt32(txtIMEADH.Text); }
-                if (txtIMEMCT.Text != null && txtIMEMCT.Text != "") { i.MCT = Convert.ToInt32(txtIMEMCT.Text); }
-                if (txtIMEBHH.Text != null && txtIMEBHH.Text != "") { i.BHH = Convert.ToInt32(txtIMEBHH.Text); }
-                if (txtIMETUR.Text != null && txtIMETUR.Text != "") { i.TUR = Convert.ToInt32(txtIMETUR.Text); }
-                if (txtIMEReserved.Text != null && txtIMEReserved.Text != "") { i.Reserved = Convert.ToInt32(txtIMEReserved.Text); }
-                if (txtHazardousInd.Text != null && txtHazardousInd.Text != "") { i.HZ = Convert.ToBoolean(txtHazardousInd.Text); }
-                if (txtEnvironment.Text != null && txtEnvironment.Text != "") { i.HE = Convert.ToBoolean(txtEnvironment.Text); }
-                if (txtShipping.Text != null && txtShipping.Text != "") { i.HS = Convert.ToBoolean(txtShipping.Text); }
-                if (txtLithium.Text != null && txtLithium.Text != "") { i.Li = Convert.ToBoolean(txtLithium.Text); }
-                if (txtCalibrationInd.Text != null && txtCalibrationInd.Text != "") { i.CL = Convert.ToBoolean(txtCalibrationInd.Text); }
-                if (txtLicenceType.Text != null && txtLicenceType.Text != "") { i.LC = Convert.ToBoolean(txtLicenceType.Text); }
-                if (txtDiscCharge.Text != null && txtDiscCharge.Text != "") { i.DC = Convert.ToBoolean(txtDiscCharge.Text); }
-                if (txtExpiringPro.Text != null && txtExpiringPro.Text != "") { i.EC = Convert.ToBoolean(txtExpiringPro.Text); }
-                i.Uk_Disc_Date = txtUKDiscDate.Text;
-                i.DiscontinuationDate = txtDiscontinuationDate.Text;
-                if (txtRunOn.Text != null && txtRunOn.Text != "") { i.Runon = Convert.ToInt32(txtRunOn.Text); }
-                if (txtReferral.Text != null && txtReferral.Text != "") { i.Referral = Convert.ToInt32(txtReferral.Text); }
-                if (txtHeight.Text != null && txtHeight.Text != "") { i.Heigh = Convert.ToDecimal(txtHeight.Text); }
-                if (txtWidth.Text != null && txtWidth.Text != "") { i.Width = Convert.ToDecimal(txtWidth.Text); }
-                if (txtLength.Text != null && txtLength.Text != "") { i.Length = Convert.ToDecimal(txtLength.Text); }
-                if (txtStandartWeight.Text != null && txtStandartWeight.Text != "") { i.Standard_Weight = Convert.ToDecimal(txtStandartWeight.Text); }
-                if (txtGrossWeight.Text != null && txtGrossWeight.Text != "") { i.Gross_Weight = Convert.ToDecimal(txtGrossWeight.Text); }
-                if (txtUnitCount1.Text != null && txtUnitCount1.Text != "") { i.Col1Break = Convert.ToInt32(txtUnitCount1.Text); }
-                if (txtUnitCount2.Text != null && txtUnitCount2.Text != "") { i.Col2Break = Convert.ToInt32(txtUnitCount2.Text); }
-                if (txtUnitCount3.Text != null && txtUnitCount3.Text != "") { i.Col3Break = Convert.ToInt32(txtUnitCount3.Text); }
-                if (txtUnitCount4.Text != null && txtUnitCount4.Text != "") { i.Col4Break = Convert.ToInt32(txtUnitCount4.Text); }
-                if (txtUnitCount5.Text != null && txtUnitCount5.Text != "") { i.Col5Break = Convert.ToInt32(txtUnitCount5.Text); }
-                if (txtCost1.Text != null && txtCost1.Text != "") { i.DiscountedPrice1 = Convert.ToInt32(txtCost1.Text); }
-                if (txtCost2.Text != null && txtCost2.Text != "") { i.DiscountedPrice2 = Convert.ToInt32(txtCost2.Text); }
-                if (txtCost3.Text != null && txtCost3.Text != "") { i.DiscountedPrice3 = Convert.ToInt32(txtCost3.Text); }
-                if (txtCost4.Text != null && txtCost4.Text != "") { i.DiscountedPrice4 = Convert.ToInt32(txtCost4.Text); }
-                if (txtCost5.Text != null && txtCost5.Text != "") { i.DiscountedPrice5 = Convert.ToInt32(txtCost5.Text); }
-                i.notes = txtNote.Text;
-
-                IME.Items.Add(i);
-                IME.SaveChanges();
-                MessageBox.Show("Item added!", "Success");
-                ClearAll(this);
+                    Save();
+                }    
             }
             else
             {
                 AddScreen();
             }
+        }
+
+        private void Save()
+        {
+            Item i = new Item();
+
+            i.StockNo = txtStockNo.Text;
+            i.SupplierID = txtSupplierID.Text;
+            if (cmbSupplierName.SelectedItem != null)
+            {
+                i.SupplierName = ((Supplier)cmbSupplierName.SelectedItem).s_name;
+            }
+            i.ArticleDescription = txtDesc.Text;
+            i.MPN = txtMPN.Text;
+            i.MFR = txtManufacturer.Text;
+            i.Brandname = txtBrand.Text;
+            i.SupersectionName = txtSupersectionName.Text;
+            i.SectionName = txtSection.Text;
+            i.MH = txtMHCodeLevel1.Text;
+            i.CoO = txtCoO.Text;
+            i.CCCN = txtCCCN.Text;
+            i.SSM = txtSSM.Text;
+            i.UC = txtUC.Text;
+            i.UM = txtUM.Text;
+            if (txtIMEDXB.Text != null && txtIMEDXB.Text != "") { i.DXB = Convert.ToInt32(txtIMEDXB.Text); }
+            if (txtIMEADH.Text != null && txtIMEADH.Text != "") { i.ADH = Convert.ToInt32(txtIMEADH.Text); }
+            if (txtIMEMCT.Text != null && txtIMEMCT.Text != "") { i.MCT = Convert.ToInt32(txtIMEMCT.Text); }
+            if (txtIMEBHH.Text != null && txtIMEBHH.Text != "") { i.BHH = Convert.ToInt32(txtIMEBHH.Text); }
+            if (txtIMETUR.Text != null && txtIMETUR.Text != "") { i.TUR = Convert.ToInt32(txtIMETUR.Text); }
+            if (txtIMEReserved.Text != null && txtIMEReserved.Text != "") { i.Reserved = Convert.ToInt32(txtIMEReserved.Text); }
+            if (txtHazardousInd.Text != null && txtHazardousInd.Text != "") { i.HZ = Convert.ToBoolean(txtHazardousInd.Text); }
+            if (txtEnvironment.Text != null && txtEnvironment.Text != "") { i.HE = Convert.ToBoolean(txtEnvironment.Text); }
+            if (txtShipping.Text != null && txtShipping.Text != "") { i.HS = Convert.ToBoolean(txtShipping.Text); }
+            if (txtLithium.Text != null && txtLithium.Text != "") { i.Li = Convert.ToBoolean(txtLithium.Text); }
+            if (txtCalibrationInd.Text != null && txtCalibrationInd.Text != "") { i.CL = Convert.ToBoolean(txtCalibrationInd.Text); }
+            if (txtLicenceType.Text != null && txtLicenceType.Text != "") { i.LC = Convert.ToBoolean(txtLicenceType.Text); }
+            if (txtDiscCharge.Text != null && txtDiscCharge.Text != "") { i.DC = Convert.ToBoolean(txtDiscCharge.Text); }
+            if (txtExpiringPro.Text != null && txtExpiringPro.Text != "") { i.EC = Convert.ToBoolean(txtExpiringPro.Text); }
+            i.Uk_Disc_Date = txtUKDiscDate.Text;
+            i.DiscontinuationDate = txtDiscontinuationDate.Text;
+            if (txtRunOn.Text != null && txtRunOn.Text != "") { i.Runon = Convert.ToInt32(txtRunOn.Text); }
+            if (txtReferral.Text != null && txtReferral.Text != "") { i.Referral = Convert.ToInt32(txtReferral.Text); }
+            if (txtHeight.Text != null && txtHeight.Text != "") { i.Heigh = Convert.ToDecimal(txtHeight.Text); }
+            if (txtWidth.Text != null && txtWidth.Text != "") { i.Width = Convert.ToDecimal(txtWidth.Text); }
+            if (txtLength.Text != null && txtLength.Text != "") { i.Length = Convert.ToDecimal(txtLength.Text); }
+            if (txtStandartWeight.Text != null && txtStandartWeight.Text != "") { i.Standard_Weight = Convert.ToDecimal(txtStandartWeight.Text); }
+            if (txtGrossWeight.Text != null && txtGrossWeight.Text != "") { i.Gross_Weight = Convert.ToDecimal(txtGrossWeight.Text); }
+            if (txtUnitCount1.Text != null && txtUnitCount1.Text != "") { i.Col1Break = Convert.ToInt32(txtUnitCount1.Text); }
+            if (txtUnitCount2.Text != null && txtUnitCount2.Text != "") { i.Col2Break = Convert.ToInt32(txtUnitCount2.Text); }
+            if (txtUnitCount3.Text != null && txtUnitCount3.Text != "") { i.Col3Break = Convert.ToInt32(txtUnitCount3.Text); }
+            if (txtUnitCount4.Text != null && txtUnitCount4.Text != "") { i.Col4Break = Convert.ToInt32(txtUnitCount4.Text); }
+            if (txtUnitCount5.Text != null && txtUnitCount5.Text != "") { i.Col5Break = Convert.ToInt32(txtUnitCount5.Text); }
+            if (txtCost1.Text != null && txtCost1.Text != "") { i.DiscountedPrice1 = Convert.ToInt32(txtCost1.Text); }
+            if (txtCost2.Text != null && txtCost2.Text != "") { i.DiscountedPrice2 = Convert.ToInt32(txtCost2.Text); }
+            if (txtCost3.Text != null && txtCost3.Text != "") { i.DiscountedPrice3 = Convert.ToInt32(txtCost3.Text); }
+            if (txtCost4.Text != null && txtCost4.Text != "") { i.DiscountedPrice4 = Convert.ToInt32(txtCost4.Text); }
+            if (txtCost5.Text != null && txtCost5.Text != "") { i.DiscountedPrice5 = Convert.ToInt32(txtCost5.Text); }
+            i.notes = txtNote.Text;
+
+            IME.Items.Add(i);
+            IME.SaveChanges();
+            MessageBox.Show("Item added!", "Success");
+            ClearAll(this);
+        }
+
+        private bool NullControl()
+        {
+            bool isSave = true;
+            string ErrorMessage = string.Empty;
+            if (txtStockNo.Text == null || txtStockNo.Text == string.Empty) { ErrorMessage = ErrorMessage + "Please Enter Stock No\n"; isSave = false; }
+            if (txtMPN.Text == null || txtMPN.Text == string.Empty) { ErrorMessage = ErrorMessage + "Please Enter MPN\n"; isSave = false; }
+            if (txtBrand.Text == null || txtBrand.Text == string.Empty) { ErrorMessage = ErrorMessage + "Please Enter Brand\n"; isSave = false; }
+            if (txtSSM.Text == null || txtSSM.Text == string.Empty) { ErrorMessage = ErrorMessage + "Please Enter SSM\n"; isSave = false; }
+            if (txtUC.Text == null || txtUC.Text == string.Empty) { ErrorMessage = ErrorMessage + "Please Enter UC\n"; isSave = false; }
+            if (txtUM.Text == null || txtUM.Text == string.Empty) { ErrorMessage = ErrorMessage + "Please Enter UM\n"; isSave = false; }
+            if (isSave == true) { return true; } else { MessageBox.Show(ErrorMessage); return false; }
         }
 
         private void CancelScreen()
@@ -929,6 +955,9 @@ namespace LoginForm.ItemModule
         {
             ClearAll(this);
             ReadOnlyAll(false);
+            cmbSupplierName.DataSource = IME.Suppliers.ToList();
+            cmbSupplierName.DisplayMember = "s_name";
+            cmbSupplierName.ValueMember = "ID";
             dgItemList.Enabled = false;
             groupBox7.Enabled = false;
             panel1.Enabled = false;

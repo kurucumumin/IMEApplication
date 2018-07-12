@@ -2051,7 +2051,7 @@ namespace LoginForm.ItemModule
             // 
             // btnSupplierAdd
             // 
-            this.btnSupplierAdd.Location = new System.Drawing.Point(274, 72);
+            this.btnSupplierAdd.Location = new System.Drawing.Point(274, 86);
             this.btnSupplierAdd.Name = "btnSupplierAdd";
             this.btnSupplierAdd.Size = new System.Drawing.Size(24, 24);
             this.btnSupplierAdd.TabIndex = 268;
