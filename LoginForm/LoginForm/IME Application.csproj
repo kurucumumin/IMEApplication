@@ -1031,7 +1031,9 @@
     <Compile Include="DataSet\CompleteItem.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\CompleteItems_v2.cs" />
+    <Compile Include="DataSet\CompleteItems_v2.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\ContactType.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -2260,16 +2262,16 @@
     <Compile Include="Invoice\InvoiceMain.Designer.cs">
       <DependentUpon>InvoiceMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Item\ItemCard.cs">
+    <Compile Include="ItemModule\ItemCard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Item\ItemCard.designer.cs">
+    <Compile Include="ItemModule\ItemCard.designer.cs">
       <DependentUpon>ItemCard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Item\LoaderPage.cs">
+    <Compile Include="ItemModule\LoaderPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Item\LoaderPage.designer.cs">
+    <Compile Include="ItemModule\LoaderPage.designer.cs">
       <DependentUpon>LoaderPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Main\FormMain.cs">
@@ -2955,10 +2957,10 @@
     <EmbeddedResource Include="Invoice\InvoiceMain.resx">
       <DependentUpon>InvoiceMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Item\ItemCard.resx">
+    <EmbeddedResource Include="ItemModule\ItemCard.resx">
       <DependentUpon>ItemCard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Item\LoaderPage.resx">
+    <EmbeddedResource Include="ItemModule\LoaderPage.resx">
       <DependentUpon>LoaderPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main\FormMain.resx">

@@ -16,9 +16,12 @@ namespace LoginForm.QuotationModule
     {
         Customer _customer;
         ExchangeRate _rate;
+        decimal _gbpValue;
+        decimal tempRate;
         decimal _factor;
         List<CompleteItem> ItemList;
         QuotationUtils qUtils = new QuotationUtils();
+        string discCalculationType = String.Empty;
 
         public ExperimentQuotationAdd()
         {
@@ -32,6 +35,26 @@ namespace LoginForm.QuotationModule
             ItemList = new List<CompleteItem>();
         }
 
+        private decimal ConvertAmountToGBP(decimal amount)
+        {            
+            return (decimal)((amount * _rate.rate) / _gbpValue);
+        }
+
+        private decimal ConvertAmountToTargetCurrency(decimal amount)
+        {
+            return (decimal)((amount * _rate.rate) / tempRate);
+        }
+
+        private decimal ConvertAmountGBPToCurrency(decimal amount)
+        {
+            return (decimal)((amount * _gbpValue) / _rate.rate);
+        }
+
+        private decimal CalculateWebPrice(decimal amount)
+        {
+            return amount * _factor;
+        }
+        
         private void SetCustomer()
         {
             txtCustomerCode.Text = _customer.ID;
@@ -116,7 +139,7 @@ namespace LoginForm.QuotationModule
             {
                 if (!row.IsNewRow)
                 {
-                    TotalCost += Convert.ToDecimal(row.Cells[dgCost.Index].Value);
+                    TotalCost += Convert.ToDecimal(row.Cells[dgLandingCost.Index].Value);
                     TotalUnitPrice += Convert.ToDecimal(row.Cells[dgUCUPCurr.Index].Value);
                 }
 
@@ -197,6 +220,8 @@ namespace LoginForm.QuotationModule
             txtValidity.Text = 3.ToString();
 
             FillComboBoxes();
+
+            _gbpValue = (decimal)(new IMEEntities().Currencies.Where(x => x.currencyName == "Pound").FirstOrDefault().ExchangeRates.OrderByDescending(x => x.date).FirstOrDefault().rate);
 
         }
 
@@ -288,7 +313,14 @@ namespace LoginForm.QuotationModule
                 Currency currency = cbCurrency.SelectedItem as Currency;
                 _rate = currency.ExchangeRates.OrderByDescending(x => x.date).FirstOrDefault();
                 lblExcRate.Text = _rate.rate.ToString();
+
+                ConvertGridValues();
             }
+        }
+
+        private void ConvertGridValues()
+        {
+            //throw new NotImplementedException();
         }
 
         private void dgAddedItems_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
@@ -639,10 +671,10 @@ namespace LoginForm.QuotationModule
                 {
                     txtCol1Break.Text = item.Col1Break.ToString();
                     txtUK1.Text = ((decimal)item.Col1Price).ToString("G29");
-                    decimal web1 = (decimal)item.Col1Price * _factor /*CalculatePriceWithCurrency(item.Col1Price * _factor)*/;
-                    txtWeb1.Text = web1.ToString();
+                    decimal web1_DefaultCurrency = CalculateWebPrice((decimal)item.Col1Price) /*CalculatePriceWithCurrency(item.Col1Price * _factor)*/;
+                    txtWeb1.Text = (web1_DefaultCurrency / _rate.rate).ToString();
                     txtCost1.Text = item.DiscountedPrice1.ToString();
-                    txtMargin1.Text = qUtils.CalculateMargin(web1, (decimal)item.DiscountedPrice1).ToString();
+                    txtMargin1.Text = qUtils.CalculateMargin(web1_DefaultCurrency / _gbpValue, (decimal)item.DiscountedPrice1).ToString();
                 }
                 else
                 {
@@ -657,10 +689,10 @@ namespace LoginForm.QuotationModule
                 {
                     txtCol2Break.Text = item.Col2Break.ToString();
                     txtUK2.Text = item.Col2Price.ToString();
-                    decimal web2 = (decimal)item.Col2Price * _factor /*CalculatePriceWithCurrency(item.Col1Price * _factor)*/;
-                    txtWeb2.Text = web2.ToString();
+                    decimal web2_DefaultCurrency = CalculateWebPrice((decimal)item.Col2Price) /*CalculatePriceWithCurrency(item.Col1Price * _factor)*/;
+                    txtWeb2.Text = (web2_DefaultCurrency / _rate.rate).ToString();
                     txtCost2.Text = item.DiscountedPrice2.ToString();
-                    txtMargin2.Text = qUtils.CalculateMargin(web2, (decimal)item.DiscountedPrice2).ToString();
+                    txtMargin2.Text = qUtils.CalculateMargin(web2_DefaultCurrency / _gbpValue, (decimal)item.DiscountedPrice2).ToString();
                 }
                 else
                 {
@@ -675,10 +707,10 @@ namespace LoginForm.QuotationModule
                 {
                     txtCol3Break.Text = item.Col3Break.ToString();
                     txtUK3.Text = item.Col3Price.ToString();
-                    decimal web3 = (decimal)item.Col3Price * _factor /*CalculatePriceWithCurrency(item.Col3Price * _factor)*/;
-                    txtWeb3.Text = web3.ToString();
+                    decimal web3_DefaultCurrency = CalculateWebPrice((decimal)item.Col3Price) /*CalculatePriceWithCurrency(item.Col3Price * _factor)*/;
+                    txtWeb3.Text = (web3_DefaultCurrency / _rate.rate).ToString();
                     txtCost3.Text = item.DiscountedPrice3.ToString();
-                    txtMargin3.Text = qUtils.CalculateMargin(web3, (decimal)item.DiscountedPrice3).ToString();
+                    txtMargin3.Text = qUtils.CalculateMargin(web3_DefaultCurrency / _gbpValue, (decimal)item.DiscountedPrice3).ToString();
                 }
                 else
                 {
@@ -693,10 +725,10 @@ namespace LoginForm.QuotationModule
                 {
                     txtCol4Break.Text = item.Col4Break.ToString();
                     txtUK4.Text = item.Col4Price.ToString();
-                    decimal web4 = (decimal)item.Col4Price * _factor /*CalculatePriceWithCurrency(item.Col4Price * _factor)*/;
-                    txtWeb4.Text = web4.ToString();
+                    decimal web4_DefaultCurrency = CalculateWebPrice((decimal)item.Col4Price * _factor) /*CalculatePriceWithCurrency(item.Col4Price * _factor)*/;
+                    txtWeb4.Text = (web4_DefaultCurrency / _rate.rate).ToString();
                     txtCost4.Text = item.DiscountedPrice4.ToString();
-                    txtMargin4.Text = qUtils.CalculateMargin(web4, (decimal)item.DiscountedPrice4).ToString();
+                    txtMargin4.Text = qUtils.CalculateMargin(web4_DefaultCurrency / _gbpValue, (decimal)item.DiscountedPrice4).ToString();
                 }
                 else
                 {
@@ -711,10 +743,10 @@ namespace LoginForm.QuotationModule
                 {
                     txtCol5Break.Text = item.Col5Break.ToString();
                     txtUK5.Text = item.Col5Price.ToString();
-                    decimal web5 = (decimal)item.Col5Price * _factor /*CalculatePriceWithCurrency(item.Col5Price * _factor)*/;
-                    txtWeb5.Text = web5.ToString();
+                    decimal web5_DefaultCurrency = CalculateWebPrice((decimal)item.Col5Price * _factor) /*CalculatePriceWithCurrency(item.Col5Price * _factor)*/;
+                    txtWeb5.Text = (web5_DefaultCurrency / _rate.rate).ToString();
                     txtCost5.Text = item.DiscountedPrice5.ToString();
-                    txtMargin5.Text = qUtils.CalculateMargin(web5, (decimal)item.DiscountedPrice5).ToString();
+                    txtMargin5.Text = qUtils.CalculateMargin(web5_DefaultCurrency /_gbpValue, (decimal)item.DiscountedPrice5).ToString();
                 }
                 else
                 {
@@ -778,11 +810,11 @@ namespace LoginForm.QuotationModule
             if (item.Col1Break != null)
             {
                 decimal landingCost = qUtils.CalculateLandingCost((decimal)item.DiscountedPrice1, (decimal)item.Standard_Weight / 1000);
-                row.Cells[dgLandingCost.Index].Value = landingCost.ToString("N2");
-                row.Cells[dgUPIME.Index].Value = ((decimal)(item.Col1Price * _factor)).ToString("G29");
+                row.Cells[dgLandingCost.Index].Value = landingCost.ToString("N3");
+                row.Cells[dgUPIME.Index].Value = ConvertAmountGBPToCurrency((decimal)(item.Col1Price)).ToString("G29");
                 row.Cells[dgMargin.Index].Value = qUtils.CalculateMargin(
                                                    Convert.ToDecimal(row.Cells[dgUPIME.Index].Value),
-                                                   landingCost);
+                                                   ConvertAmountGBPToCurrency(landingCost));
             }
 
             row.Cells[dgUKPrice.Index].Value = item.Col1Price?.ToString();
@@ -858,27 +890,29 @@ namespace LoginForm.QuotationModule
         private void txtSubtotal_TextChanged(object sender, EventArgs e)
         {
             decimal _subtotal = Decimal.Parse(txtSubtotal.Text);
-            decimal _discountAmount = Decimal.Parse(txtTotalDiscAmount.Text);
+            decimal _discountAmount = Decimal.Parse(numTotalDiscAmount.Text);
 
-            if (txtTotalDiscAmount.Text != "0")
+            if (numTotalDiscAmount.Text != "0")
             {
                 lblTotal.Text = _subtotal.ToString();
             }
             else
             {
-                _discountAmount = Decimal.Parse(txtTotalDiscAmount.Text);
+                _discountAmount = Decimal.Parse(numTotalDiscAmount.Text);
                 lblTotal.Text = (_subtotal - _discountAmount).ToString();
             }
+
+
+            numTotalDiscAmount.Maximum = _subtotal;
         }
 
         private void lblTotal_TextChanged(object sender, EventArgs e)
         {
             decimal _total = Decimal.Parse(lblTotal.Text);
 
-            if(!String.IsNullOrEmpty(txtExtraCharges.Text))
+            if(!String.IsNullOrEmpty(numExtraCharges.Text))
             {
-                decimal _extraCharges = Decimal.Parse(txtExtraCharges.Text);
-                lblTotalExtra.Text = (_total + _extraCharges).ToString();
+                lblTotalExtra.Text = (_total + Decimal.Parse(numExtraCharges.Text)).ToString();
             }
             else
             {
@@ -892,7 +926,6 @@ namespace LoginForm.QuotationModule
             decimal _VatAmount = (_totalExtra * (decimal)Utils.getManagement().VAT) / 100;
 
             lblVatTotal.Text = _VatAmount.ToString();
-
             if (chkVat.Checked == true)
             {
                 lblGrossTotal.Text = (_totalExtra + _VatAmount).ToString();
@@ -902,10 +935,51 @@ namespace LoginForm.QuotationModule
                 lblGrossTotal.Text = _totalExtra.ToString();
             }
         }
-
-        private void lblVatTotal_TextChanged(object sender, EventArgs e)
+        
+        private void numTotalDiscAmount_ValueChanged(object sender, EventArgs e)
         {
+            decimal subTotal = Decimal.Parse(txtSubtotal.Text);
+            
+            if (subTotal != 0)
+            {
+                decimal discAmount = numTotalDiscAmount.Value;
+                numTotalDiscPercent.Value = ((discAmount / subTotal) * 100);
 
+                lblTotal.Text = (subTotal - discAmount).ToString();
+            }
+        }
+
+        private void numTotalDiscPercent_Leave(object sender, EventArgs e)
+        {
+            numTotalDiscAmount.Value = ((Decimal.Parse(txtSubtotal.Text) * numTotalDiscPercent.Value) / 100);
+        }
+
+        private void numTotalDiscPercent_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                numTotalDiscAmount.Value = ((Decimal.Parse(txtSubtotal.Text) * numTotalDiscPercent.Value) / 100);
+            }
+        }
+
+        private void numExtraCharges_ValueChanged(object sender, EventArgs e)
+        {
+            lblTotalExtra.Text = (Decimal.Parse(lblTotal.Text) + numExtraCharges.Value).ToString();
+        }
+
+        private void chkVat_CheckedChanged(object sender, EventArgs e)
+        {
+            decimal _totalExtra = Decimal.Parse(lblTotalExtra.Text);
+            
+            if (((CheckBox)sender).Checked)
+            {
+                decimal _VatAmount = (_totalExtra * (decimal)Utils.getManagement().VAT) / 100;
+                lblGrossTotal.Text = (_totalExtra + _VatAmount).ToString();
+            }
+            else
+            {
+                lblGrossTotal.Text = _totalExtra.ToString();
+            }
         }
     }
 }

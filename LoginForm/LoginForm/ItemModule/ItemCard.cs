@@ -6,7 +6,7 @@ using System.Linq;
 using System.Windows.Forms;
 using LoginForm.Services;
 
-namespace LoginForm.Item
+namespace LoginForm.ItemModule
 {
     public partial class ItemCard : Form
     {
