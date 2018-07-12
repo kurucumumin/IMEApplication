@@ -411,6 +411,7 @@ namespace LoginForm.QuotationModule
                 case ((int)GridColumns.Quantity):
                     DataGridViewCell cell = row.Cells[dgQty.Index];
                     string col1 = txtCol1Break.Text;
+                    int q;
                     if (!row.IsNewRow && !String.IsNullOrEmpty(cell.Value?.ToString()))
                     {
                         string txtQty = cell.Value.ToString();
@@ -419,52 +420,47 @@ namespace LoginForm.QuotationModule
                         if (!Int32.TryParse(txtQty, out int qty))
                         {
                             MessageBox.Show("You Should Enter An Integer Number");
-                            cell.Value = col1;
+                            if (Int32.TryParse(col1, out q))
+                            {
+                                cell.Value = q;
+                                QuantityEntered(row, q);
+                            }
+                            
                         }
                         else if (qty == 0)
                         {
                             MessageBox.Show("You Can Not Enter '0' As Quantity");
-                            cell.Value = col1;
+                            if (Int32.TryParse(col1, out q))
+                            {
+                                cell.Value = q;
+                                QuantityEntered(row, q);
+                            }
                         }
                         else
                         {
                             if (!(qty % uc == 0))
                             {
                                 MessageBox.Show("You Should Enter An Integer Multiple Of UC");
-                                cell.Value = col1;
+                                if (Int32.TryParse(col1, out q))
+                                {
+                                    cell.Value = q;
+                                    QuantityEntered(row, q);
+                                }
                             }
                             else if (!(qty % ssm == 0))
                             {
                                 MessageBox.Show("You Should Enter An Integer Multiple Of SSM");
-                                cell.Value = col1;
+                                if (Int32.TryParse(col1, out q))
+                                {
+                                    cell.Value = q;
+                                    QuantityEntered(row, q);
+                                }
                             }
                             else
                             {
                                 //Fiyat hesapla ve satırdaki fiyat alanlarını değiştir.
 
-                                decimal price = Decimal.Parse(BringBreakPointPrices(qty));
-                                decimal oldPrice = Convert.ToDecimal(row.Cells[dgUPIME.Index].Value);
-                                if (oldPrice.ToString("G29") != price.ToString("G29"))
-                                {
-                                    row.Cells[dgUPIME.Index].Value = price.ToString("G29");
-                                    row.Cells[dgUCUPCurr.Index].Value = price.ToString("G29");
-                                }
-                                decimal ucUpCurr = Convert.ToDecimal(row.Cells[dgUCUPCurr.Index].Value);
-                                row.Cells[dgTotal.Index].Value = ((decimal)(ucUpCurr * qty)).ToString("G29");
-                                decimal unitWeight = Convert.ToDecimal(row.Cells[dgUnitWeigt.Index].Value);
-                                row.Cells[dgTotalWeight.Index].Value = ((decimal)(unitWeight * qty)).ToString("G29");
-
-                                row.Cells[dgDelivery.Index].ReadOnly = false;
-                                row.Cells[dgUCUPCurr.Index].ReadOnly = false;
-                                row.Cells[dgTargetUP.Index].ReadOnly = false;
-                                row.Cells[dgCompetitor.Index].ReadOnly = false;
-
-                                CalculateTotalMargin();
-                                CalculateSubTotal();
-                                CalculateTotalCost();
-
-                                dgAddedItems.CurrentCell = row.Cells[dgUCUPCurr.Index];
-                                SendKeys.Send("{UP}");
+                                QuantityEntered(row, qty);
                             }
                         }
                     }
@@ -505,6 +501,33 @@ namespace LoginForm.QuotationModule
             }
         }
 
+        private void QuantityEntered(DataGridViewRow row, int qty)
+        {
+            decimal price = Decimal.Parse(BringBreakPointPrices(qty));
+            decimal oldPrice = Convert.ToDecimal(row.Cells[dgUPIME.Index].Value);
+            if (oldPrice.ToString("G29") != price.ToString("G29"))
+            {
+                row.Cells[dgUPIME.Index].Value = price.ToString("G29");
+                row.Cells[dgUCUPCurr.Index].Value = price.ToString("G29");
+            }
+            decimal ucUpCurr = Convert.ToDecimal(row.Cells[dgUCUPCurr.Index].Value);
+            row.Cells[dgTotal.Index].Value = ((decimal)(ucUpCurr * qty)).ToString("G29");
+            decimal unitWeight = Convert.ToDecimal(row.Cells[dgUnitWeigt.Index].Value);
+            row.Cells[dgTotalWeight.Index].Value = ((decimal)(unitWeight * qty)).ToString("G29");
+
+            row.Cells[dgDelivery.Index].ReadOnly = false;
+            row.Cells[dgUCUPCurr.Index].ReadOnly = false;
+            row.Cells[dgTargetUP.Index].ReadOnly = false;
+            row.Cells[dgCompetitor.Index].ReadOnly = false;
+
+            CalculateTotalMargin();
+            CalculateSubTotal();
+            CalculateTotalCost();
+
+            dgAddedItems.CurrentCell = row.Cells[dgUCUPCurr.Index];
+            SendKeys.Send("{UP}");
+        }
+
         private void InsertItemToQuotation(DataGridViewRow row, IMEEntities db, CompleteItem item)
         {
             ItemList.Add(item);
@@ -541,6 +564,10 @@ namespace LoginForm.QuotationModule
             if (item.Col1Break != null)
             {
                 row.Cells[dgQty.Index].ReadOnly = false;
+                row.Cells[dgUCUPCurr.Index].ReadOnly = false;
+                row.Cells[dgCustStkCode.Index].ReadOnly = false;
+                row.Cells[dgCustDescription.Index].ReadOnly = false;
+                row.Cells[dgTargetUP.Index].ReadOnly = false;
                 dgAddedItems.CurrentCell = row.Cells[dgQty.Index];
                 SendKeys.Send("{UP}");
             }
@@ -830,8 +857,10 @@ namespace LoginForm.QuotationModule
             {
                 decimal landingCost = qUtils.CalculateLandingCost((decimal)item.DiscountedPrice1, (decimal)item.Standard_Weight / 1000);
                 row.Cells[dgLandingCost.Index].Value = landingCost.ToString("N3");
-                row.Cells[dgUPIME.Index].Value = ConvertAmountGBPToCurrency((decimal)(item.Col1Price*_factor/_gbpValue)).ToString("G29");
-                row.Cells[dgUCUPCurr.Index].Value = row.Cells[dgUPIME.Index].Value?.ToString();
+                decimal UPIME = ConvertAmountGBPToCurrency((decimal)(item.Col1Price * _factor / _gbpValue));
+                row.Cells[dgUPIME.Index].Value = UPIME.ToString("N4");
+                row.Cells[dgUCUPCurr.Index].Value = (Convert.ToDecimal(row.Cells[dgUPIME.Index].Value)).ToString("N4");
+                row.Cells[dgTotal.Index].Value = Convert.ToDecimal(UPIME * item.Col1Break).ToString("N4");
                 row.Cells[dgMargin.Index].Value = qUtils.CalculateMargin(
                                                    Convert.ToDecimal(row.Cells[dgUPIME.Index].Value),
                                                    ConvertAmountGBPToCurrency(landingCost));
@@ -849,7 +878,6 @@ namespace LoginForm.QuotationModule
             row.Cells[dgUOM.Index].Value = (!String.IsNullOrEmpty(item.Unit_Measure)) ? item.Unit_Measure : "EACH";
             row.Cells[dgSSM.Index].Value = item.Pack_Quantity?.ToString() ?? "1";
             row.Cells[dgUC.Index].Value = item.Unit_Content?.ToString() ?? "1";
-            row.Cells[dgTotal.Index].Value = "0";
 
             if (!String.IsNullOrEmpty(item.Hazardous_Ind) || item.Hazardous_Ind != "N")
             {
