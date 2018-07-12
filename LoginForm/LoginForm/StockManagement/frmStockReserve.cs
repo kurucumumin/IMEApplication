@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LoginForm.DataSet;
-using LoginForm.Item;
+using LoginForm.ItemModule;
 using LoginForm.QuotationModule;
 
 namespace LoginForm.StockManagement

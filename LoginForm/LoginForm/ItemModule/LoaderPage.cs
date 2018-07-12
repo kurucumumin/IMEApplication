@@ -4,7 +4,7 @@ using System;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace LoginForm.Item
+namespace LoginForm.ItemModule
 {
     public partial class LoaderPage : Form
     {

@@ -31,11 +31,11 @@ namespace LoginForm.QuotationModule
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dgAddedItems = new System.Windows.Forms.DataGridView();
@@ -285,12 +285,12 @@ namespace LoginForm.QuotationModule
             this.label52 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
-            this.txtExtraCharges = new System.Windows.Forms.TextBox();
+            this.numExtraCharges = new System.Windows.Forms.NumericUpDown();
             this.lblVatTotal = new System.Windows.Forms.Label();
             this.txtTotalMarginGeneral = new System.Windows.Forms.TextBox();
-            this.txtTotalDiscAmount = new System.Windows.Forms.TextBox();
+            this.numTotalDiscAmount = new System.Windows.Forms.NumericUpDown();
             this.chkVat = new System.Windows.Forms.CheckBox();
-            this.txtTotalDiscPercent = new System.Windows.Forms.TextBox();
+            this.numTotalDiscPercent = new System.Windows.Forms.NumericUpDown();
             this.lblGrossTotal = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
@@ -320,6 +320,9 @@ namespace LoginForm.QuotationModule
             this.panel1.SuspendLayout();
             this.LandingCost.SuspendLayout();
             this.groupBox11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numExtraCharges)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numTotalDiscAmount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numTotalDiscPercent)).BeginInit();
             this.groupBox7.SuspendLayout();
             this.gbShipment.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -371,8 +374,8 @@ namespace LoginForm.QuotationModule
             // 
             // dgAddedItems
             // 
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgAddedItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgAddedItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle21;
             this.dgAddedItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgAddedItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgNo,
@@ -425,9 +428,9 @@ namespace LoginForm.QuotationModule
             // dgNo
             // 
             this.dgNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle7.Format = "N4";
-            dataGridViewCellStyle7.NullValue = null;
-            this.dgNo.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle22.Format = "N4";
+            dataGridViewCellStyle22.NullValue = null;
+            this.dgNo.DefaultCellStyle = dataGridViewCellStyle22;
             this.dgNo.Frozen = true;
             this.dgNo.HeaderText = "No";
             this.dgNo.Name = "dgNo";
@@ -542,9 +545,9 @@ namespace LoginForm.QuotationModule
             // dgLandingCost
             // 
             this.dgLandingCost.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle8.Format = "C3";
-            dataGridViewCellStyle8.NullValue = null;
-            this.dgLandingCost.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle23.Format = "C3";
+            dataGridViewCellStyle23.NullValue = null;
+            this.dgLandingCost.DefaultCellStyle = dataGridViewCellStyle23;
             this.dgLandingCost.HeaderText = "Landing Cost (£)";
             this.dgLandingCost.Name = "dgLandingCost";
             this.dgLandingCost.ReadOnly = true;
@@ -562,9 +565,9 @@ namespace LoginForm.QuotationModule
             // 
             this.dgQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.dgQty.DataPropertyName = "Qty";
-            dataGridViewCellStyle9.Format = "N0";
-            dataGridViewCellStyle9.NullValue = "0";
-            this.dgQty.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle24.Format = "N0";
+            dataGridViewCellStyle24.NullValue = "0";
+            this.dgQty.DefaultCellStyle = dataGridViewCellStyle24;
             this.dgQty.HeaderText = "Qty";
             this.dgQty.Name = "dgQty";
             this.dgQty.ReadOnly = true;
@@ -906,9 +909,9 @@ namespace LoginForm.QuotationModule
             // 
             // dgQty1
             // 
-            dataGridViewCellStyle10.Format = "N0";
-            dataGridViewCellStyle10.NullValue = null;
-            this.dgQty1.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle25.Format = "N0";
+            dataGridViewCellStyle25.NullValue = null;
+            this.dgQty1.DefaultCellStyle = dataGridViewCellStyle25;
             this.dgQty1.HeaderText = "Qty";
             this.dgQty1.Name = "dgQty1";
             this.dgQty1.ReadOnly = true;
@@ -2909,12 +2912,12 @@ namespace LoginForm.QuotationModule
             this.groupBox11.Controls.Add(this.label52);
             this.groupBox11.Controls.Add(this.label4);
             this.groupBox11.Controls.Add(this.textBox7);
-            this.groupBox11.Controls.Add(this.txtExtraCharges);
+            this.groupBox11.Controls.Add(this.numExtraCharges);
             this.groupBox11.Controls.Add(this.lblVatTotal);
             this.groupBox11.Controls.Add(this.txtTotalMarginGeneral);
-            this.groupBox11.Controls.Add(this.txtTotalDiscAmount);
+            this.groupBox11.Controls.Add(this.numTotalDiscAmount);
             this.groupBox11.Controls.Add(this.chkVat);
-            this.groupBox11.Controls.Add(this.txtTotalDiscPercent);
+            this.groupBox11.Controls.Add(this.numTotalDiscPercent);
             this.groupBox11.Controls.Add(this.lblGrossTotal);
             this.groupBox11.Controls.Add(this.label39);
             this.groupBox11.Controls.Add(this.label34);
@@ -3021,15 +3024,20 @@ namespace LoginForm.QuotationModule
             this.textBox7.TabIndex = 21;
             this.textBox7.Text = "Extra Charges";
             // 
-            // txtExtraCharges
+            // numExtraCharges
             // 
-            this.txtExtraCharges.Location = new System.Drawing.Point(128, 65);
-            this.txtExtraCharges.Margin = new System.Windows.Forms.Padding(4);
-            this.txtExtraCharges.Name = "txtExtraCharges";
-            this.txtExtraCharges.Size = new System.Drawing.Size(65, 22);
-            this.txtExtraCharges.TabIndex = 20;
-            this.txtExtraCharges.Text = "0";
-            this.txtExtraCharges.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numExtraCharges.Location = new System.Drawing.Point(128, 65);
+            this.numExtraCharges.Margin = new System.Windows.Forms.Padding(4);
+            this.numExtraCharges.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.numExtraCharges.Name = "numExtraCharges";
+            this.numExtraCharges.Size = new System.Drawing.Size(65, 22);
+            this.numExtraCharges.TabIndex = 20;
+            this.numExtraCharges.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numExtraCharges.ValueChanged += new System.EventHandler(this.numExtraCharges_ValueChanged);
             // 
             // lblVatTotal
             // 
@@ -3040,7 +3048,6 @@ namespace LoginForm.QuotationModule
             this.lblVatTotal.Size = new System.Drawing.Size(36, 17);
             this.lblVatTotal.TabIndex = 18;
             this.lblVatTotal.Text = "0,00";
-            this.lblVatTotal.TextChanged += new System.EventHandler(this.lblVatTotal_TextChanged);
             // 
             // txtTotalMarginGeneral
             // 
@@ -3053,14 +3060,25 @@ namespace LoginForm.QuotationModule
             this.txtTotalMarginGeneral.Text = "0";
             this.txtTotalMarginGeneral.Visible = false;
             // 
-            // txtTotalDiscAmount
+            // numTotalDiscAmount
             // 
-            this.txtTotalDiscAmount.Location = new System.Drawing.Point(237, 19);
-            this.txtTotalDiscAmount.Margin = new System.Windows.Forms.Padding(4);
-            this.txtTotalDiscAmount.Name = "txtTotalDiscAmount";
-            this.txtTotalDiscAmount.Size = new System.Drawing.Size(71, 22);
-            this.txtTotalDiscAmount.TabIndex = 15;
-            this.txtTotalDiscAmount.Text = "0";
+            this.numTotalDiscAmount.DecimalPlaces = 4;
+            this.numTotalDiscAmount.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.numTotalDiscAmount.Location = new System.Drawing.Point(237, 19);
+            this.numTotalDiscAmount.Margin = new System.Windows.Forms.Padding(4);
+            this.numTotalDiscAmount.Maximum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.numTotalDiscAmount.Name = "numTotalDiscAmount";
+            this.numTotalDiscAmount.Size = new System.Drawing.Size(71, 22);
+            this.numTotalDiscAmount.TabIndex = 15;
+            this.numTotalDiscAmount.ValueChanged += new System.EventHandler(this.numTotalDiscAmount_ValueChanged);
             // 
             // chkVat
             // 
@@ -3074,15 +3092,18 @@ namespace LoginForm.QuotationModule
             this.chkVat.TabIndex = 17;
             this.chkVat.Text = "VAT";
             this.chkVat.UseVisualStyleBackColor = true;
+            this.chkVat.CheckedChanged += new System.EventHandler(this.chkVat_CheckedChanged);
             // 
-            // txtTotalDiscPercent
+            // numTotalDiscPercent
             // 
-            this.txtTotalDiscPercent.Location = new System.Drawing.Point(128, 19);
-            this.txtTotalDiscPercent.Margin = new System.Windows.Forms.Padding(4);
-            this.txtTotalDiscPercent.Name = "txtTotalDiscPercent";
-            this.txtTotalDiscPercent.Size = new System.Drawing.Size(65, 22);
-            this.txtTotalDiscPercent.TabIndex = 13;
-            this.txtTotalDiscPercent.Text = "0";
+            this.numTotalDiscPercent.DecimalPlaces = 2;
+            this.numTotalDiscPercent.Location = new System.Drawing.Point(128, 19);
+            this.numTotalDiscPercent.Margin = new System.Windows.Forms.Padding(4);
+            this.numTotalDiscPercent.Name = "numTotalDiscPercent";
+            this.numTotalDiscPercent.Size = new System.Drawing.Size(65, 22);
+            this.numTotalDiscPercent.TabIndex = 13;
+            this.numTotalDiscPercent.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numTotalDiscPercent_KeyDown);
+            this.numTotalDiscPercent.Leave += new System.EventHandler(this.numTotalDiscPercent_Leave);
             // 
             // lblGrossTotal
             // 
@@ -3245,6 +3266,9 @@ namespace LoginForm.QuotationModule
             this.LandingCost.PerformLayout();
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numExtraCharges)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numTotalDiscAmount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numTotalDiscPercent)).EndInit();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             this.gbShipment.ResumeLayout(false);
@@ -3417,11 +3441,11 @@ namespace LoginForm.QuotationModule
         private System.Windows.Forms.Label label52;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox txtExtraCharges;
+        private System.Windows.Forms.NumericUpDown numExtraCharges;
         private System.Windows.Forms.Label lblVatTotal;
-        private System.Windows.Forms.TextBox txtTotalDiscAmount;
+        private System.Windows.Forms.NumericUpDown numTotalDiscAmount;
         private System.Windows.Forms.CheckBox chkVat;
-        private System.Windows.Forms.TextBox txtTotalDiscPercent;
+        private System.Windows.Forms.NumericUpDown numTotalDiscPercent;
         private System.Windows.Forms.Label lblGrossTotal;
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.Label label34;
