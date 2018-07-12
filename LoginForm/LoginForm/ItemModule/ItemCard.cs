@@ -836,10 +836,54 @@ namespace LoginForm.ItemModule
                 Item i = new Item();
 
                 i.StockNo = txtStockNo.Text;
+                i.SupplierID = txtSupplierID.Text;
+                if (cmbSupplierName.SelectedItem != null)
+                {
+                    i.SupplierName = ((Supplier)cmbSupplierName.SelectedItem).s_name;
+                }
+                i.ArticleDescription = txtDesc.Text;
+                i.MPN = txtMPN.Text;
+                i.MFR = txtManufacturer.Text;
+                i.Brandname = txtBrand.Text;
+                i.SupersectionName = txtSupersectionName.Text;
+                i.SectionName = txtSection.Text;
+                i.MH = txtMHCodeLevel1.Text;
+                i.CoO = txtCoO.Text;
+                i.CCCN = txtCCCN.Text;
+                i.SSM = txtSSM.Text;
+                i.UC = txtUC.Text;
+                i.UM = txtUM.Text;
+                if (txtIMEDXB.Text != null && txtIMEDXB.Text != "") { i.DXB = Convert.ToInt32(txtIMEDXB.Text); }
+                if (txtIMEADH.Text != null && txtIMEADH.Text != "") { i.ADH = Convert.ToInt32(txtIMEADH.Text); }
+                if (txtIMEMCT.Text != null && txtIMEMCT.Text != "") { i.MCT = Convert.ToInt32(txtIMEMCT.Text); }
+                if (txtIMEBHH.Text != null && txtIMEBHH.Text != "") { i.BHH = Convert.ToInt32(txtIMEBHH.Text); }
+                if (txtIMETUR.Text != null && txtIMETUR.Text != "") { i.TUR = Convert.ToInt32(txtIMETUR.Text); }
+                if (txtIMEReserved.Text != null && txtIMEReserved.Text != "") { i.Reserved = Convert.ToInt32(txtIMEReserved.Text); }
+                i.Uk_Disc_Date = txtUKDiscDate.Text;
+                i.DiscontinuationDate = txtDiscontinuationDate.Text;
+                if (txtRunOn.Text != null && txtRunOn.Text != "") { i.Runon = Convert.ToInt32(txtRunOn.Text); }
+                if (txtReferral.Text != null && txtReferral.Text != "") { i.Referral = Convert.ToInt32(txtReferral.Text); }
+                if (txtHeight.Text != null && txtHeight.Text != "") { i.Heigh = Convert.ToDecimal(txtHeight.Text); }
+                if (txtWidth.Text != null && txtWidth.Text != "") { i.Width = Convert.ToDecimal(txtWidth.Text); }
+                if (txtLength.Text != null && txtLength.Text != "") { i.Length = Convert.ToDecimal(txtLength.Text); }
+                if (txtStandartWeight.Text != null && txtStandartWeight.Text != "") { i.Standard_Weight = Convert.ToDecimal(txtStandartWeight.Text); }
+                if (txtGrossWeight.Text != null && txtGrossWeight.Text != "") { i.Gross_Weight = Convert.ToDecimal(txtGrossWeight.Text); }
+                if (txtUnitCount1.Text != null && txtUnitCount1.Text != "") { i.Col1Break = Convert.ToInt32(txtUnitCount1.Text); }
+                if (txtUnitCount2.Text != null && txtUnitCount2.Text != "") { i.Col2Break = Convert.ToInt32(txtUnitCount2.Text); }
+                if (txtUnitCount3.Text != null && txtUnitCount3.Text != "") { i.Col3Break = Convert.ToInt32(txtUnitCount3.Text); }
+                if (txtUnitCount4.Text != null && txtUnitCount4.Text != "") { i.Col4Break = Convert.ToInt32(txtUnitCount4.Text); }
+                if (txtUnitCount5.Text != null && txtUnitCount5.Text != "") { i.Col5Break = Convert.ToInt32(txtUnitCount5.Text); }
+                if (txtCost1.Text != null && txtCost1.Text != "") { i.DiscountedPrice1 = Convert.ToInt32(txtCost1.Text); }
+                if (txtCost2.Text != null && txtCost2.Text != "") { i.DiscountedPrice2 = Convert.ToInt32(txtCost2.Text); }
+                if (txtCost3.Text != null && txtCost3.Text != "") { i.DiscountedPrice3 = Convert.ToInt32(txtCost3.Text); }
+                if (txtCost4.Text != null && txtCost4.Text != "") { i.DiscountedPrice4 = Convert.ToInt32(txtCost4.Text); }
+                if (txtCost5.Text != null && txtCost5.Text != "") { i.DiscountedPrice5 = Convert.ToInt32(txtCost5.Text); }
 
-                IME.Item.Add(i);
+
+                IME.Items.Add(i);
                 IME.SaveChanges();
-
+                MessageBox.Show("Item added!", "Success");
+                ClearAll(this);
             }
             else
             {

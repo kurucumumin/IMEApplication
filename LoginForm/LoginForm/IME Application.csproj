@@ -1031,9 +1031,6 @@
     <Compile Include="DataSet\CompleteItem.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\CompleteItems_v2.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\ContactType.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1288,6 +1285,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>IME.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\Item.cs">
+      <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\ItemDetailTabFiller_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
@@ -2042,6 +2042,18 @@
     <Compile Include="IMEAccount\frmReceiptOperation.Designer.cs">
       <DependentUpon>frmReceiptOperation.cs</DependentUpon>
     </Compile>
+    <Compile Include="ItemModule\ItemCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItemModule\ItemCard.designer.cs">
+      <DependentUpon>ItemCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ItemModule\LoaderPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItemModule\LoaderPage.designer.cs">
+      <DependentUpon>LoaderPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="OnOrder\frmAcikSiparis.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2261,18 +2273,6 @@
     </Compile>
     <Compile Include="Invoice\InvoiceMain.Designer.cs">
       <DependentUpon>InvoiceMain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ItemModule\ItemCard.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ItemModule\ItemCard.designer.cs">
-      <DependentUpon>ItemCard.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ItemModule\LoaderPage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ItemModule\LoaderPage.designer.cs">
-      <DependentUpon>LoaderPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Main\FormMain.cs">
       <SubType>Form</SubType>
@@ -2849,6 +2849,12 @@
     <EmbeddedResource Include="IMEAccount\frmReceiptOperation.resx">
       <DependentUpon>frmReceiptOperation.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ItemModule\ItemCard.resx">
+      <DependentUpon>ItemCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemModule\LoaderPage.resx">
+      <DependentUpon>LoaderPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="OnOrder\frmAcikSiparis.resx">
       <DependentUpon>frmAcikSiparis.cs</DependentUpon>
     </EmbeddedResource>
@@ -2956,12 +2962,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Invoice\InvoiceMain.resx">
       <DependentUpon>InvoiceMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ItemModule\ItemCard.resx">
-      <DependentUpon>ItemCard.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ItemModule\LoaderPage.resx">
-      <DependentUpon>LoaderPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>

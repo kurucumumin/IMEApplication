@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e434929ce48441f2b454ffb7e495e40d" Name="Diagram1">
+      <Diagram DiagramId="bf14e21d0961412bb31a0791aa616ea8" Name="Diagram1">
         <EntityTypeShape EntityType="IMEModel.Account" Width="1.5" PointX="12" PointY="85.25" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.AccountGroup" Width="1.5" PointX="12.75" PointY="73.625" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.AccountLedger" Width="1.5" PointX="15" PointY="72.125" IsExpanded="true" />
