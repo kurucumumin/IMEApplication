@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="bf14e21d0961412bb31a0791aa616ea8" Name="Diagram1">
+      <Diagram DiagramId="a730efc8a72a410d98020304d1511a5c" Name="Diagram1">
         <EntityTypeShape EntityType="IMEModel.Account" Width="1.5" PointX="12" PointY="85.25" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.AccountGroup" Width="1.5" PointX="12.75" PointY="73.625" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.AccountLedger" Width="1.5" PointX="15" PointY="72.125" IsExpanded="true" />
@@ -126,7 +126,7 @@
         <EntityTypeShape EntityType="IMEModel.RS_Invoice" Width="1.5" PointX="23.25" PointY="94.125" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.RS_InvoiceDetails" Width="1.5" PointX="25.5" PointY="97.375" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.RsFileHistory" Width="1.5" PointX="11.25" PointY="174.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.RSPro" Width="1.5" PointX="10.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.RSPro" Width="1.5" PointX="16.75" PointY="12.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.SalaryPackage" Width="1.5" PointX="6.75" PointY="127.375" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.SalaryPackageDetail" Width="1.5" PointX="16" PointY="127.5" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.SalaryVoucherMaster" Width="1.5" PointX="9" PointY="137.875" IsExpanded="true" />
@@ -143,8 +143,8 @@
         <EntityTypeShape EntityType="IMEModel.ServiceCategory" Width="1.5" PointX="24" PointY="136" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.ServiceDetail" Width="1.5" PointX="28.5" PointY="129.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.ServiceMaster" Width="1.5" PointX="23.25" PointY="122.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.Setting" Width="1.5" PointX="16.75" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.SettingsToCopy" Width="1.5" PointX="16.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.Setting" Width="1.5" PointX="16.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.SettingsToCopy" Width="1.5" PointX="8.75" PointY="17.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.SlidingPrice" Width="1.5" PointX="15" PointY="139.625" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.Stock" Width="1.5" PointX="8.25" PointY="98.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.StockJournalDetail" Width="1.5" PointX="47.75" PointY="102.5" IsExpanded="true" />
@@ -160,10 +160,10 @@
         <EntityTypeShape EntityType="IMEModel.SupplierCategory" Width="1.5" PointX="3.75" PointY="126.875" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.SupplierSubCategory" Width="1.5" PointX="3.75" PointY="129.375" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.SupplierWorker" Width="1.5" PointX="13.5" PointY="126.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.sysdiagram" Width="1.5" PointX="6.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.sysdiagram" Width="1.5" PointX="18.75" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.Tax" Width="1.5" PointX="39.75" PointY="129.875" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.TaxDetail" Width="1.5" PointX="42" PointY="130.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.tbl_Form" Width="1.5" PointX="18.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.tbl_Form" Width="1.5" PointX="10.75" PointY="18.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.tbl_FormCopy" Width="1.5" PointX="12.75" PointY="18.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.Town" Width="1.5" PointX="9" PointY="134.375" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.Unit" Width="1.5" PointX="32.25" PointY="97.875" IsExpanded="true" />
@@ -174,8 +174,8 @@
         <EntityTypeShape EntityType="IMEModel.AdditionalCost" Width="1.5" PointX="17.25" PointY="87.875" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.SalaryVoucherDetail" Width="1.5" PointX="11.25" PointY="125.375" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.CariHareket" Width="1.5" PointX="18.75" PointY="13.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.CompleteItem" Width="1.5" PointX="14.75" PointY="18.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.V_Product" Width="1.5" PointX="16.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.CompleteItem" Width="1.5" PointX="18.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.V_Product" Width="1.5" PointX="0.75" PointY="19.75" IsExpanded="true" />
         <AssociationConnector Association="IMEModel.FK__Account__Currenc__11957784" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__AccountOp__FromA__2DFCAC08" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__AccountOp__ToAcc__2EF0D041" ManuallyRouted="false" />

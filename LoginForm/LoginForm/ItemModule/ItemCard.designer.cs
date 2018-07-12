@@ -264,7 +264,7 @@ namespace LoginForm.ItemModule
             this.txtGrossWeight.Name = "txtGrossWeight";
             this.txtGrossWeight.ReadOnly = true;
             this.txtGrossWeight.Size = new System.Drawing.Size(71, 23);
-            this.txtGrossWeight.TabIndex = 292;
+            this.txtGrossWeight.TabIndex = 39;
             // 
             // label8
             // 
@@ -310,7 +310,7 @@ namespace LoginForm.ItemModule
             this.txtLength.Name = "txtLength";
             this.txtLength.ReadOnly = true;
             this.txtLength.Size = new System.Drawing.Size(71, 23);
-            this.txtLength.TabIndex = 290;
+            this.txtLength.TabIndex = 37;
             this.txtLength.TextChanged += new System.EventHandler(this.Length_TextChanged);
             // 
             // groupBox1
@@ -343,7 +343,7 @@ namespace LoginForm.ItemModule
             this.txtDiscontinuationDate.Name = "txtDiscontinuationDate";
             this.txtDiscontinuationDate.ReadOnly = true;
             this.txtDiscontinuationDate.Size = new System.Drawing.Size(71, 23);
-            this.txtDiscontinuationDate.TabIndex = 275;
+            this.txtDiscontinuationDate.TabIndex = 31;
             // 
             // txtUKDiscDate
             // 
@@ -353,7 +353,7 @@ namespace LoginForm.ItemModule
             this.txtUKDiscDate.Name = "txtUKDiscDate";
             this.txtUKDiscDate.ReadOnly = true;
             this.txtUKDiscDate.Size = new System.Drawing.Size(71, 23);
-            this.txtUKDiscDate.TabIndex = 267;
+            this.txtUKDiscDate.TabIndex = 30;
             // 
             // label21
             // 
@@ -375,7 +375,7 @@ namespace LoginForm.ItemModule
             this.txtSubstitutedBy.Name = "txtSubstitutedBy";
             this.txtSubstitutedBy.ReadOnly = true;
             this.txtSubstitutedBy.Size = new System.Drawing.Size(71, 23);
-            this.txtSubstitutedBy.TabIndex = 238;
+            this.txtSubstitutedBy.TabIndex = 32;
             // 
             // label60
             // 
@@ -397,7 +397,7 @@ namespace LoginForm.ItemModule
             this.txtRunOn.Name = "txtRunOn";
             this.txtRunOn.ReadOnly = true;
             this.txtRunOn.Size = new System.Drawing.Size(71, 23);
-            this.txtRunOn.TabIndex = 236;
+            this.txtRunOn.TabIndex = 33;
             // 
             // label54
             // 
@@ -419,7 +419,7 @@ namespace LoginForm.ItemModule
             this.txtReferral.Name = "txtReferral";
             this.txtReferral.ReadOnly = true;
             this.txtReferral.Size = new System.Drawing.Size(71, 23);
-            this.txtReferral.TabIndex = 242;
+            this.txtReferral.TabIndex = 34;
             // 
             // label58
             // 
@@ -608,7 +608,7 @@ namespace LoginForm.ItemModule
             this.txtExpiringPro.Name = "txtExpiringPro";
             this.txtExpiringPro.ReadOnly = true;
             this.txtExpiringPro.Size = new System.Drawing.Size(21, 23);
-            this.txtExpiringPro.TabIndex = 278;
+            this.txtExpiringPro.TabIndex = 29;
             // 
             // txtHazardousInd
             // 
@@ -618,7 +618,7 @@ namespace LoginForm.ItemModule
             this.txtHazardousInd.Name = "txtHazardousInd";
             this.txtHazardousInd.ReadOnly = true;
             this.txtHazardousInd.Size = new System.Drawing.Size(21, 23);
-            this.txtHazardousInd.TabIndex = 231;
+            this.txtHazardousInd.TabIndex = 22;
             // 
             // txtDiscCharge
             // 
@@ -628,7 +628,7 @@ namespace LoginForm.ItemModule
             this.txtDiscCharge.Name = "txtDiscCharge";
             this.txtDiscCharge.ReadOnly = true;
             this.txtDiscCharge.Size = new System.Drawing.Size(21, 23);
-            this.txtDiscCharge.TabIndex = 279;
+            this.txtDiscCharge.TabIndex = 28;
             // 
             // label53
             // 
@@ -651,7 +651,7 @@ namespace LoginForm.ItemModule
             this.txtEnvironment.Name = "txtEnvironment";
             this.txtEnvironment.ReadOnly = true;
             this.txtEnvironment.Size = new System.Drawing.Size(21, 23);
-            this.txtEnvironment.TabIndex = 257;
+            this.txtEnvironment.TabIndex = 23;
             this.txtEnvironment.TextChanged += new System.EventHandler(this.Environment_TextChanged);
             // 
             // txtLithium
@@ -662,7 +662,7 @@ namespace LoginForm.ItemModule
             this.txtLithium.Name = "txtLithium";
             this.txtLithium.ReadOnly = true;
             this.txtLithium.Size = new System.Drawing.Size(21, 23);
-            this.txtLithium.TabIndex = 251;
+            this.txtLithium.TabIndex = 25;
             this.txtLithium.TextChanged += new System.EventHandler(this.Lithium_TextChanged);
             // 
             // label64
@@ -685,7 +685,7 @@ namespace LoginForm.ItemModule
             this.txtShipping.Name = "txtShipping";
             this.txtShipping.ReadOnly = true;
             this.txtShipping.Size = new System.Drawing.Size(21, 23);
-            this.txtShipping.TabIndex = 247;
+            this.txtShipping.TabIndex = 24;
             this.txtShipping.TextChanged += new System.EventHandler(this.Shipping_TextChanged);
             // 
             // label63
@@ -708,7 +708,7 @@ namespace LoginForm.ItemModule
             this.txtLicenceType.Name = "txtLicenceType";
             this.txtLicenceType.ReadOnly = true;
             this.txtLicenceType.Size = new System.Drawing.Size(21, 23);
-            this.txtLicenceType.TabIndex = 255;
+            this.txtLicenceType.TabIndex = 27;
             // 
             // txtCalibrationInd
             // 
@@ -718,7 +718,7 @@ namespace LoginForm.ItemModule
             this.txtCalibrationInd.Name = "txtCalibrationInd";
             this.txtCalibrationInd.ReadOnly = true;
             this.txtCalibrationInd.Size = new System.Drawing.Size(21, 23);
-            this.txtCalibrationInd.TabIndex = 214;
+            this.txtCalibrationInd.TabIndex = 26;
             // 
             // label11
             // 
@@ -828,7 +828,7 @@ namespace LoginForm.ItemModule
             this.txtIMEBHH.Name = "txtIMEBHH";
             this.txtIMEBHH.ReadOnly = true;
             this.txtIMEBHH.Size = new System.Drawing.Size(62, 23);
-            this.txtIMEBHH.TabIndex = 263;
+            this.txtIMEBHH.TabIndex = 19;
             // 
             // label33
             // 
@@ -851,7 +851,7 @@ namespace LoginForm.ItemModule
             this.txtIMEMCT.Name = "txtIMEMCT";
             this.txtIMEMCT.ReadOnly = true;
             this.txtIMEMCT.Size = new System.Drawing.Size(62, 23);
-            this.txtIMEMCT.TabIndex = 264;
+            this.txtIMEMCT.TabIndex = 18;
             // 
             // label35
             // 
@@ -874,7 +874,7 @@ namespace LoginForm.ItemModule
             this.txtIMEADH.Name = "txtIMEADH";
             this.txtIMEADH.ReadOnly = true;
             this.txtIMEADH.Size = new System.Drawing.Size(62, 23);
-            this.txtIMEADH.TabIndex = 260;
+            this.txtIMEADH.TabIndex = 17;
             // 
             // label23
             // 
@@ -897,7 +897,7 @@ namespace LoginForm.ItemModule
             this.txtIMEDXB.Name = "txtIMEDXB";
             this.txtIMEDXB.ReadOnly = true;
             this.txtIMEDXB.Size = new System.Drawing.Size(62, 23);
-            this.txtIMEDXB.TabIndex = 260;
+            this.txtIMEDXB.TabIndex = 16;
             // 
             // label7
             // 
@@ -920,7 +920,7 @@ namespace LoginForm.ItemModule
             this.txtIMETUR.Name = "txtIMETUR";
             this.txtIMETUR.ReadOnly = true;
             this.txtIMETUR.Size = new System.Drawing.Size(62, 23);
-            this.txtIMETUR.TabIndex = 260;
+            this.txtIMETUR.TabIndex = 20;
             // 
             // label40
             // 
@@ -943,7 +943,7 @@ namespace LoginForm.ItemModule
             this.txtIMEReserved.Name = "txtIMEReserved";
             this.txtIMEReserved.ReadOnly = true;
             this.txtIMEReserved.Size = new System.Drawing.Size(62, 23);
-            this.txtIMEReserved.TabIndex = 260;
+            this.txtIMEReserved.TabIndex = 21;
             // 
             // label36
             // 
@@ -1104,7 +1104,7 @@ namespace LoginForm.ItemModule
             this.txtHeight.Name = "txtHeight";
             this.txtHeight.ReadOnly = true;
             this.txtHeight.Size = new System.Drawing.Size(71, 23);
-            this.txtHeight.TabIndex = 289;
+            this.txtHeight.TabIndex = 35;
             // 
             // label34
             // 
@@ -1174,7 +1174,7 @@ namespace LoginForm.ItemModule
             this.txtWidth.Name = "txtWidth";
             this.txtWidth.ReadOnly = true;
             this.txtWidth.Size = new System.Drawing.Size(71, 23);
-            this.txtWidth.TabIndex = 288;
+            this.txtWidth.TabIndex = 36;
             // 
             // label3
             // 
@@ -1315,7 +1315,7 @@ namespace LoginForm.ItemModule
             this.txtStandartWeight.Name = "txtStandartWeight";
             this.txtStandartWeight.ReadOnly = true;
             this.txtStandartWeight.Size = new System.Drawing.Size(71, 23);
-            this.txtStandartWeight.TabIndex = 287;
+            this.txtStandartWeight.TabIndex = 38;
             // 
             // label16
             // 
@@ -1380,7 +1380,7 @@ namespace LoginForm.ItemModule
             this.txtWeb5.Name = "txtWeb5";
             this.txtWeb5.ReadOnly = true;
             this.txtWeb5.Size = new System.Drawing.Size(60, 23);
-            this.txtWeb5.TabIndex = 231;
+            this.txtWeb5.TabIndex = 61;
             // 
             // txtWeb2
             // 
@@ -1391,7 +1391,7 @@ namespace LoginForm.ItemModule
             this.txtWeb2.Name = "txtWeb2";
             this.txtWeb2.ReadOnly = true;
             this.txtWeb2.Size = new System.Drawing.Size(60, 23);
-            this.txtWeb2.TabIndex = 235;
+            this.txtWeb2.TabIndex = 46;
             // 
             // label65
             // 
@@ -1414,7 +1414,7 @@ namespace LoginForm.ItemModule
             this.txtWeb3.Name = "txtWeb3";
             this.txtWeb3.ReadOnly = true;
             this.txtWeb3.Size = new System.Drawing.Size(60, 23);
-            this.txtWeb3.TabIndex = 234;
+            this.txtWeb3.TabIndex = 51;
             // 
             // txtWeb1
             // 
@@ -1425,7 +1425,7 @@ namespace LoginForm.ItemModule
             this.txtWeb1.Name = "txtWeb1";
             this.txtWeb1.ReadOnly = true;
             this.txtWeb1.Size = new System.Drawing.Size(60, 23);
-            this.txtWeb1.TabIndex = 236;
+            this.txtWeb1.TabIndex = 41;
             // 
             // txtWeb4
             // 
@@ -1436,7 +1436,7 @@ namespace LoginForm.ItemModule
             this.txtWeb4.Name = "txtWeb4";
             this.txtWeb4.ReadOnly = true;
             this.txtWeb4.Size = new System.Drawing.Size(60, 23);
-            this.txtWeb4.TabIndex = 233;
+            this.txtWeb4.TabIndex = 56;
             // 
             // txtCost1
             // 
@@ -1447,7 +1447,7 @@ namespace LoginForm.ItemModule
             this.txtCost1.Name = "txtCost1";
             this.txtCost1.ReadOnly = true;
             this.txtCost1.Size = new System.Drawing.Size(60, 23);
-            this.txtCost1.TabIndex = 171;
+            this.txtCost1.TabIndex = 43;
             // 
             // txtMargin5
             // 
@@ -1458,7 +1458,7 @@ namespace LoginForm.ItemModule
             this.txtMargin5.Name = "txtMargin5";
             this.txtMargin5.ReadOnly = true;
             this.txtMargin5.Size = new System.Drawing.Size(32, 23);
-            this.txtMargin5.TabIndex = 33;
+            this.txtMargin5.TabIndex = 64;
             // 
             // txtUnitCount5
             // 
@@ -1469,7 +1469,7 @@ namespace LoginForm.ItemModule
             this.txtUnitCount5.Name = "txtUnitCount5";
             this.txtUnitCount5.ReadOnly = true;
             this.txtUnitCount5.Size = new System.Drawing.Size(44, 23);
-            this.txtUnitCount5.TabIndex = 33;
+            this.txtUnitCount5.TabIndex = 60;
             // 
             // label44
             // 
@@ -1492,7 +1492,7 @@ namespace LoginForm.ItemModule
             this.txtUK5.Name = "txtUK5";
             this.txtUK5.ReadOnly = true;
             this.txtUK5.Size = new System.Drawing.Size(60, 23);
-            this.txtUK5.TabIndex = 34;
+            this.txtUK5.TabIndex = 62;
             // 
             // txtUK2
             // 
@@ -1503,7 +1503,7 @@ namespace LoginForm.ItemModule
             this.txtUK2.Name = "txtUK2";
             this.txtUK2.ReadOnly = true;
             this.txtUK2.Size = new System.Drawing.Size(60, 23);
-            this.txtUK2.TabIndex = 170;
+            this.txtUK2.TabIndex = 47;
             // 
             // label38
             // 
@@ -1526,7 +1526,7 @@ namespace LoginForm.ItemModule
             this.txtCost5.Name = "txtCost5";
             this.txtCost5.ReadOnly = true;
             this.txtCost5.Size = new System.Drawing.Size(60, 23);
-            this.txtCost5.TabIndex = 40;
+            this.txtCost5.TabIndex = 63;
             // 
             // txtMargin2
             // 
@@ -1537,7 +1537,7 @@ namespace LoginForm.ItemModule
             this.txtMargin2.Name = "txtMargin2";
             this.txtMargin2.ReadOnly = true;
             this.txtMargin2.Size = new System.Drawing.Size(32, 23);
-            this.txtMargin2.TabIndex = 164;
+            this.txtMargin2.TabIndex = 49;
             // 
             // txtUnitCount2
             // 
@@ -1548,7 +1548,7 @@ namespace LoginForm.ItemModule
             this.txtUnitCount2.Name = "txtUnitCount2";
             this.txtUnitCount2.ReadOnly = true;
             this.txtUnitCount2.Size = new System.Drawing.Size(44, 23);
-            this.txtUnitCount2.TabIndex = 164;
+            this.txtUnitCount2.TabIndex = 45;
             // 
             // txtMargin1
             // 
@@ -1559,7 +1559,7 @@ namespace LoginForm.ItemModule
             this.txtMargin1.Name = "txtMargin1";
             this.txtMargin1.ReadOnly = true;
             this.txtMargin1.Size = new System.Drawing.Size(32, 23);
-            this.txtMargin1.TabIndex = 174;
+            this.txtMargin1.TabIndex = 44;
             // 
             // txtUK3
             // 
@@ -1570,7 +1570,7 @@ namespace LoginForm.ItemModule
             this.txtUK3.Name = "txtUK3";
             this.txtUK3.ReadOnly = true;
             this.txtUK3.Size = new System.Drawing.Size(60, 23);
-            this.txtUK3.TabIndex = 169;
+            this.txtUK3.TabIndex = 52;
             // 
             // label14
             // 
@@ -1593,7 +1593,7 @@ namespace LoginForm.ItemModule
             this.txtUnitCount1.Name = "txtUnitCount1";
             this.txtUnitCount1.ReadOnly = true;
             this.txtUnitCount1.Size = new System.Drawing.Size(44, 23);
-            this.txtUnitCount1.TabIndex = 174;
+            this.txtUnitCount1.TabIndex = 40;
             // 
             // txtUK1
             // 
@@ -1604,7 +1604,7 @@ namespace LoginForm.ItemModule
             this.txtUK1.Name = "txtUK1";
             this.txtUK1.ReadOnly = true;
             this.txtUK1.Size = new System.Drawing.Size(60, 23);
-            this.txtUK1.TabIndex = 175;
+            this.txtUK1.TabIndex = 42;
             // 
             // txtCost3
             // 
@@ -1615,7 +1615,7 @@ namespace LoginForm.ItemModule
             this.txtCost3.Name = "txtCost3";
             this.txtCost3.ReadOnly = true;
             this.txtCost3.Size = new System.Drawing.Size(60, 23);
-            this.txtCost3.TabIndex = 167;
+            this.txtCost3.TabIndex = 53;
             // 
             // txtMargin4
             // 
@@ -1626,7 +1626,7 @@ namespace LoginForm.ItemModule
             this.txtMargin4.Name = "txtMargin4";
             this.txtMargin4.ReadOnly = true;
             this.txtMargin4.Size = new System.Drawing.Size(32, 23);
-            this.txtMargin4.TabIndex = 166;
+            this.txtMargin4.TabIndex = 59;
             // 
             // txtCost4
             // 
@@ -1637,7 +1637,7 @@ namespace LoginForm.ItemModule
             this.txtCost4.Name = "txtCost4";
             this.txtCost4.ReadOnly = true;
             this.txtCost4.Size = new System.Drawing.Size(60, 23);
-            this.txtCost4.TabIndex = 173;
+            this.txtCost4.TabIndex = 58;
             // 
             // txtUnitCount4
             // 
@@ -1648,7 +1648,7 @@ namespace LoginForm.ItemModule
             this.txtUnitCount4.Name = "txtUnitCount4";
             this.txtUnitCount4.ReadOnly = true;
             this.txtUnitCount4.Size = new System.Drawing.Size(44, 23);
-            this.txtUnitCount4.TabIndex = 166;
+            this.txtUnitCount4.TabIndex = 55;
             // 
             // txtCost2
             // 
@@ -1659,7 +1659,7 @@ namespace LoginForm.ItemModule
             this.txtCost2.Name = "txtCost2";
             this.txtCost2.ReadOnly = true;
             this.txtCost2.Size = new System.Drawing.Size(60, 23);
-            this.txtCost2.TabIndex = 176;
+            this.txtCost2.TabIndex = 48;
             // 
             // txtMargin3
             // 
@@ -1670,7 +1670,7 @@ namespace LoginForm.ItemModule
             this.txtMargin3.Name = "txtMargin3";
             this.txtMargin3.ReadOnly = true;
             this.txtMargin3.Size = new System.Drawing.Size(32, 23);
-            this.txtMargin3.TabIndex = 163;
+            this.txtMargin3.TabIndex = 54;
             // 
             // txtUK4
             // 
@@ -1681,7 +1681,7 @@ namespace LoginForm.ItemModule
             this.txtUK4.Name = "txtUK4";
             this.txtUK4.ReadOnly = true;
             this.txtUK4.Size = new System.Drawing.Size(60, 23);
-            this.txtUK4.TabIndex = 168;
+            this.txtUK4.TabIndex = 57;
             // 
             // txtUnitCount3
             // 
@@ -1692,7 +1692,7 @@ namespace LoginForm.ItemModule
             this.txtUnitCount3.Name = "txtUnitCount3";
             this.txtUnitCount3.ReadOnly = true;
             this.txtUnitCount3.Size = new System.Drawing.Size(44, 23);
-            this.txtUnitCount3.TabIndex = 163;
+            this.txtUnitCount3.TabIndex = 50;
             // 
             // label13
             // 
@@ -1916,7 +1916,7 @@ namespace LoginForm.ItemModule
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 130F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(767, 130);
             this.tableLayoutPanel3.TabIndex = 2;
             // 
@@ -1928,7 +1928,7 @@ namespace LoginForm.ItemModule
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
             this.txtNote.Size = new System.Drawing.Size(585, 118);
-            this.txtNote.TabIndex = 273;
+            this.txtNote.TabIndex = 66;
             // 
             // btnClose
             // 

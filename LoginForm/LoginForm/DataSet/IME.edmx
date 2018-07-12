@@ -825,6 +825,15 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="DiscountedPrice3" Type="decimal" Precision="18" Scale="3" />
           <Property Name="DiscountedPrice4" Type="decimal" Precision="18" Scale="3" />
           <Property Name="DiscountedPrice5" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="notes" Type="nvarchar" MaxLength="100" />
+          <Property Name="HZ" Type="bit" />
+          <Property Name="HE" Type="bit" />
+          <Property Name="HS" Type="bit" />
+          <Property Name="Li" Type="bit" />
+          <Property Name="CL" Type="bit" />
+          <Property Name="LC" Type="bit" />
+          <Property Name="DC" Type="bit" />
+          <Property Name="EC" Type="bit" />
         </EntityType>
         <EntityType Name="ItemHistory">
           <Key>
@@ -12591,6 +12600,15 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="DiscountedPrice3" Type="Decimal" Precision="18" Scale="3" />
           <Property Name="DiscountedPrice4" Type="Decimal" Precision="18" Scale="3" />
           <Property Name="DiscountedPrice5" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="notes" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="HZ" Type="Boolean" />
+          <Property Name="HE" Type="Boolean" />
+          <Property Name="HS" Type="Boolean" />
+          <Property Name="Li" Type="Boolean" />
+          <Property Name="CL" Type="Boolean" />
+          <Property Name="LC" Type="Boolean" />
+          <Property Name="DC" Type="Boolean" />
+          <Property Name="EC" Type="Boolean" />
         </EntityType>
         <EntityType Name="ItemHistory">
           <Key>
@@ -26803,6 +26821,15 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="DiscountedPrice3" ColumnName="DiscountedPrice3" />
                 <ScalarProperty Name="DiscountedPrice4" ColumnName="DiscountedPrice4" />
                 <ScalarProperty Name="DiscountedPrice5" ColumnName="DiscountedPrice5" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="HZ" ColumnName="HZ" />
+                <ScalarProperty Name="HE" ColumnName="HE" />
+                <ScalarProperty Name="HS" ColumnName="HS" />
+                <ScalarProperty Name="Li" ColumnName="Li" />
+                <ScalarProperty Name="CL" ColumnName="CL" />
+                <ScalarProperty Name="LC" ColumnName="LC" />
+                <ScalarProperty Name="DC" ColumnName="DC" />
+                <ScalarProperty Name="EC" ColumnName="EC" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

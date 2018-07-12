@@ -54,5 +54,14 @@ namespace LoginForm.DataSet
         public Nullable<decimal> DiscountedPrice3 { get; set; }
         public Nullable<decimal> DiscountedPrice4 { get; set; }
         public Nullable<decimal> DiscountedPrice5 { get; set; }
+        public string notes { get; set; }
+        public Nullable<bool> HZ { get; set; }
+        public Nullable<bool> HE { get; set; }
+        public Nullable<bool> HS { get; set; }
+        public Nullable<bool> Li { get; set; }
+        public Nullable<bool> CL { get; set; }
+        public Nullable<bool> LC { get; set; }
+        public Nullable<bool> DC { get; set; }
+        public Nullable<bool> EC { get; set; }
     }
 }

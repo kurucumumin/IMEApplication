@@ -859,6 +859,14 @@ namespace LoginForm.ItemModule
                 if (txtIMEBHH.Text != null && txtIMEBHH.Text != "") { i.BHH = Convert.ToInt32(txtIMEBHH.Text); }
                 if (txtIMETUR.Text != null && txtIMETUR.Text != "") { i.TUR = Convert.ToInt32(txtIMETUR.Text); }
                 if (txtIMEReserved.Text != null && txtIMEReserved.Text != "") { i.Reserved = Convert.ToInt32(txtIMEReserved.Text); }
+                if (txtHazardousInd.Text != null && txtHazardousInd.Text != "") { i.HZ = Convert.ToBoolean(txtHazardousInd.Text); }
+                if (txtEnvironment.Text != null && txtEnvironment.Text != "") { i.HE = Convert.ToBoolean(txtEnvironment.Text); }
+                if (txtShipping.Text != null && txtShipping.Text != "") { i.HS = Convert.ToBoolean(txtShipping.Text); }
+                if (txtLithium.Text != null && txtLithium.Text != "") { i.Li = Convert.ToBoolean(txtLithium.Text); }
+                if (txtCalibrationInd.Text != null && txtCalibrationInd.Text != "") { i.CL = Convert.ToBoolean(txtCalibrationInd.Text); }
+                if (txtLicenceType.Text != null && txtLicenceType.Text != "") { i.LC = Convert.ToBoolean(txtLicenceType.Text); }
+                if (txtDiscCharge.Text != null && txtDiscCharge.Text != "") { i.DC = Convert.ToBoolean(txtDiscCharge.Text); }
+                if (txtExpiringPro.Text != null && txtExpiringPro.Text != "") { i.EC = Convert.ToBoolean(txtExpiringPro.Text); }
                 i.Uk_Disc_Date = txtUKDiscDate.Text;
                 i.DiscontinuationDate = txtDiscontinuationDate.Text;
                 if (txtRunOn.Text != null && txtRunOn.Text != "") { i.Runon = Convert.ToInt32(txtRunOn.Text); }
@@ -878,7 +886,7 @@ namespace LoginForm.ItemModule
                 if (txtCost3.Text != null && txtCost3.Text != "") { i.DiscountedPrice3 = Convert.ToInt32(txtCost3.Text); }
                 if (txtCost4.Text != null && txtCost4.Text != "") { i.DiscountedPrice4 = Convert.ToInt32(txtCost4.Text); }
                 if (txtCost5.Text != null && txtCost5.Text != "") { i.DiscountedPrice5 = Convert.ToInt32(txtCost5.Text); }
-
+                i.notes = txtNote.Text;
 
                 IME.Items.Add(i);
                 IME.SaveChanges();
