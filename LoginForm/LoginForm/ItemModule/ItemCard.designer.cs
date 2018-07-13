@@ -1974,6 +1974,7 @@ namespace LoginForm.ItemModule
             // btnUpdateNote
             // 
             this.btnUpdateNote.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnUpdateNote.Enabled = false;
             this.btnUpdateNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdateNote.Location = new System.Drawing.Point(3, 5);
             this.btnUpdateNote.MaximumSize = new System.Drawing.Size(135, 81);
