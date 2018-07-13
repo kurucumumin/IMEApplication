@@ -104,6 +104,7 @@ namespace LoginForm.ItemModule
 
                 if (gridAdapterPC.Count != 0)
                 {
+                    btnUpdateNote.Enabled = true;
                     ArticleNoSearch = gridAdapterPC[gridselectedindex].ArticleNo;
                 }
                 else
@@ -298,7 +299,7 @@ namespace LoginForm.ItemModule
             {
                 txtStockNo.Text = sd.Article_No;
                 txtDesc.Text = sd.Article_Desc;
-               
+
                 txtUC.Text = sd.Unit_Content.ToString();
                 if (sd.Unit_Measure != null && sd.Unit_Measure != "")
                 { txtUM.Text = sd.Unit_Measure; }
@@ -308,8 +309,12 @@ namespace LoginForm.ItemModule
                     SuppliedIn.Text = "";
                 }
                 txtSSM.Text = sd.Pack_Quantity.ToString();
-                if (sd.Standard_Weight != 0) { txtStandartWeight.Text = Decimal.Parse(String.Format("{0:0.0000}",((decimal)(sd.Standard_Weight) / (decimal)1000).ToString("G29"))).ToString();
-                    txtStandartWeight.Text = String.Format("{0:0.0000}", Decimal.Parse(txtStandartWeight.Text)).ToString();} else { }
+                if (sd.Standard_Weight != 0)
+                {
+                    txtStandartWeight.Text = Decimal.Parse(String.Format("{0:0.0000}", ((decimal)(sd.Standard_Weight) / (decimal)1000).ToString("G29"))).ToString();
+                    txtStandartWeight.Text = String.Format("{0:0.0000}", Decimal.Parse(txtStandartWeight.Text)).ToString();
+                }
+                else { }
                 txtHazardousInd.Text = sd.Hazardous_Ind;
                 txtCalibrationInd.Text = sd.Calibration_Ind;
                 //ObsoluteFlag.Text = sd.Obsolete_Flag.ToString();
@@ -327,11 +332,11 @@ namespace LoginForm.ItemModule
                 txtMPN.Text = sd.MPN;
                 txtMHCodeLevel1.Text = sd.MH_Code_Level_1;
                 txtCCCN.Text = sd.CCCN_No.ToString();
-                txtHeight.Text = String.Format("{0:0.0000}",((decimal)(sd.Heigh * ((Decimal)100))).ToString("G29"));
+                txtHeight.Text = String.Format("{0:0.0000}", ((decimal)(sd.Heigh * ((Decimal)100))).ToString("G29"));
                 txtHeight.Text = String.Format("{0:0.0000}", Decimal.Parse(txtHeight.Text)).ToString();
-                txtWidth.Text = String.Format("{0:0.0000}",((decimal)(sd.Width * ((Decimal)100))).ToString("G29"));
+                txtWidth.Text = String.Format("{0:0.0000}", ((decimal)(sd.Width * ((Decimal)100))).ToString("G29"));
                 txtWidth.Text = String.Format("{0:0.0000}", Decimal.Parse(txtWidth.Text)).ToString();
-                txtLength.Text = String.Format("{0:0.0000}",((decimal)(sd.Length * ((Decimal)100))).ToString("G29"));
+                txtLength.Text = String.Format("{0:0.0000}", ((decimal)(sd.Length * ((Decimal)100))).ToString("G29"));
                 txtLength.Text = String.Format("{0:0.0000}", Decimal.Parse(txtLength.Text)).ToString();
             }
 
@@ -348,7 +353,7 @@ namespace LoginForm.ItemModule
                     SuppliedIn.Text = "";
                 }
                 txtSSM.Text = sd.Pack_Quantity.ToString();
-                if (sdP.Standard_Weight != 0) { txtStandartWeight.Text = String.Format("{0:0.0000}",((decimal)(sdP.Standard_Weight) / (decimal)1000).ToString("G29")); }
+                if (sdP.Standard_Weight != 0) { txtStandartWeight.Text = String.Format("{0:0.0000}", ((decimal)(sdP.Standard_Weight) / (decimal)1000).ToString("G29")); }
                 txtHazardousInd.Text = sdP.Hazardous_Ind;
                 txtCalibrationInd.Text = sdP.Calibration_Ind;
                 //ObsoluteFlag.Text = sdP.Obsolete_Flag.ToString();
@@ -366,11 +371,11 @@ namespace LoginForm.ItemModule
                 txtMPN.Text = sdP.MPN;
                 txtMHCodeLevel1.Text = sdP.MH_Code_Level_1;
                 txtCCCN.Text = sdP.CCCN_No.ToString();
-                txtHeight.Text = String.Format("{0:0.0000}",((decimal)(sdP.Heigh * ((Decimal)100))).ToString("G29"));
+                txtHeight.Text = String.Format("{0:0.0000}", ((decimal)(sdP.Heigh * ((Decimal)100))).ToString("G29"));
                 txtHeight.Text = String.Format("{0:0.0000}", Decimal.Parse(txtHeight.Text)).ToString();
-                txtWidth.Text = String.Format("{0:0.0000}",((decimal)(sdP.Width * ((Decimal)100))).ToString("G29"));
+                txtWidth.Text = String.Format("{0:0.0000}", ((decimal)(sdP.Width * ((Decimal)100))).ToString("G29"));
                 txtWidth.Text = String.Format("{0:0.0000}", Decimal.Parse(txtWidth.Text)).ToString();
-                txtLength.Text = String.Format("{0:0.0000}",((decimal)(sdP.Length * ((Decimal)100))).ToString("G29"));
+                txtLength.Text = String.Format("{0:0.0000}", ((decimal)(sdP.Length * ((Decimal)100))).ToString("G29"));
                 txtLength.Text = String.Format("{0:0.0000}", Decimal.Parse(txtLength.Text)).ToString();
 
 
@@ -381,22 +386,30 @@ namespace LoginForm.ItemModule
                 txtStockNo.Text = er.ArticleNo;
                 txtDesc.Text = er.ArticleDescription;
                 txtMPN.Text = er.MPN;
-                if (txtLength.Text != "") { txtLength.Text = String.Format("{0:0.0000}", ((decimal)(er.ExtendedRangeLength * ((Decimal)100))).ToString("G29"));
+                if (txtLength.Text != "")
+                {
+                    txtLength.Text = String.Format("{0:0.0000}", ((decimal)(er.ExtendedRangeLength * ((Decimal)100))).ToString("G29"));
                     txtLength.Text = String.Format("{0:0.0000}", Decimal.Parse(txtLength.Text)).ToString();
                 }
-                if (txtWidth.Text != "") { txtWidth.Text = String.Format("{0:0.0000}", ((decimal)(er.Width * ((Decimal)100))).ToString("G29"));
+                if (txtWidth.Text != "")
+                {
+                    txtWidth.Text = String.Format("{0:0.0000}", ((decimal)(er.Width * ((Decimal)100))).ToString("G29"));
                     txtWidth.Text = String.Format("{0:0.0000}", Decimal.Parse(txtWidth.Text)).ToString();
                 }
-                if (txtHeight.Text != "") { txtHeight.Text = String.Format("{0:0.0000}", ((decimal)(er.Height * ((Decimal)100))).ToString("G29"));
+                if (txtHeight.Text != "")
+                {
+                    txtHeight.Text = String.Format("{0:0.0000}", ((decimal)(er.Height * ((Decimal)100))).ToString("G29"));
                     txtHeight.Text = String.Format("{0:0.0000}", Decimal.Parse(txtHeight.Text)).ToString();
                 }
-                if (er.ExtendedRangeWeight != null) { txtStandartWeight.Text = String.Format("{0:0.0000}",((decimal)(er.ExtendedRangeWeight) / (decimal)1000).ToString("G29"));
+                if (er.ExtendedRangeWeight != null)
+                {
+                    txtStandartWeight.Text = String.Format("{0:0.0000}", ((decimal)(er.ExtendedRangeWeight) / (decimal)1000).ToString("G29"));
                     txtStandartWeight.Text = String.Format("{0:0.0000}", Decimal.Parse(txtStandartWeight.Text)).ToString();
                 }
                 txtCCCN.Text = er.CCCN.ToString();
                 txtCoO.Text = er.CountryofOrigin;
                 txtUM.Text = er.UnitofMeasure;
-                
+
                 txtUK1.Text = er.Col1Price.ToString();
                 txtUK2.Text = er.Col2Price.ToString();
                 txtUK3.Text = er.Col3Price.ToString();
@@ -488,7 +501,7 @@ namespace LoginForm.ItemModule
                 if (i.BHH != null && i.BHH.ToString() != "") { txtIMEBHH.Text = i.BHH.ToString(); }
                 if (i.TUR != null && i.TUR.ToString() != "") { txtIMETUR.Text = i.TUR.ToString(); }
                 if (i.Reserved != null && i.Reserved.ToString() != "") { txtIMEReserved.Text = i.Reserved.ToString(); }
-                if (i.HZ != null && i.HZ.ToString() != "") {  txtHazardousInd.Text = i.HZ.ToString(); }
+                if (i.HZ != null && i.HZ.ToString() != "") { txtHazardousInd.Text = i.HZ.ToString(); }
                 if (i.HE != null && i.HE.ToString() != "") { txtEnvironment.Text = i.HE.ToString(); }
                 if (i.HS != null && i.HS.ToString() != "") { txtShipping.Text = i.HS.ToString(); }
                 if (i.Li != null && i.Li.ToString() != "") { txtLithium.Text = i.Li.ToString(); }
@@ -510,21 +523,23 @@ namespace LoginForm.ItemModule
                 if (i.Col3Break != null && i.Col3Break.ToString() != "") { txtUnitCount3.Text = i.Col3Break.ToString(); }
                 if (i.Col4Break != null && i.Col4Break.ToString() != "") { txtUnitCount4.Text = i.Col4Break.ToString(); }
                 if (i.Col5Break != null && i.Col5Break.ToString() != "") { txtUnitCount5.Text = i.Col5Break.ToString(); }
-                if (i.DiscountedPrice1 != null && i.DiscountedPrice1.ToString() != "") { txtCost1.Text = i.DiscountedPrice1.ToString(); }
-                if (i.DiscountedPrice2 != null && i.DiscountedPrice2.ToString() != "") { txtCost2.Text = i.DiscountedPrice2.ToString(); }
-                if (i.DiscountedPrice3 != null && i.DiscountedPrice3.ToString() != "") { txtCost3.Text = i.DiscountedPrice3.ToString(); }
-                if (i.DiscountedPrice4 != null && i.DiscountedPrice4.ToString() != "") { txtCost4.Text = i.DiscountedPrice4.ToString(); }
-                if (i.DiscountedPrice5 != null && i.DiscountedPrice5.ToString() != "") { txtCost5.Text = i.DiscountedPrice5.ToString(); }
-                txtNote.Text = i.notes;
+                if (i.DiscountedPrice1 != null && i.DiscountedPrice1.ToString() != "")
+                {
+                    txtCost1.Text = String.Format("{0:0}", Decimal.Parse(i.DiscountedPrice1.ToString())).ToString();
+                    if (i.DiscountedPrice2 != null && i.DiscountedPrice2.ToString() != "") { txtCost2.Text = i.DiscountedPrice2.ToString(); }
+                    if (i.DiscountedPrice3 != null && i.DiscountedPrice3.ToString() != "") { txtCost3.Text = i.DiscountedPrice3.ToString(); }
+                    if (i.DiscountedPrice4 != null && i.DiscountedPrice4.ToString() != "") { txtCost4.Text = i.DiscountedPrice4.ToString(); }
+                    if (i.DiscountedPrice5 != null && i.DiscountedPrice5.ToString() != "") { txtCost5.Text = i.DiscountedPrice5.ToString(); }
+                    txtNote.Text = i.notes;
+                }
+
+                //
+                #endregion
+                if (txtLithium.Text != "") { label64.BackColor = Color.Red; }
+                if (txtShipping.Text != "") { label63.BackColor = Color.Red; }
+                if (txtEnvironment.Text != "") { label53.BackColor = Color.Red; }
             }
-
-            //
-            #endregion
-            if (txtLithium.Text != "") { label64.BackColor = Color.Red; }
-            if (txtShipping.Text != "") { label63.BackColor = Color.Red; }
-            if (txtEnvironment.Text != "") { label53.BackColor = Color.Red; }
         }
-
 
          private void WebandMarginPrices()
         {
@@ -717,27 +732,92 @@ namespace LoginForm.ItemModule
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            var Updnote = IME.ItemNotes.Where(a => a.ArticleNo == txtStockNo.Text).FirstOrDefault();
-            if (Updnote != null)
+            if (btnUpdateNote.Text == "Save")
             {
-                var note = IME.Notes.Where(a => a.ID == Updnote.NoteID).FirstOrDefault();
-                note.Note_name = txtNote.Text;
-                IME.SaveChanges();
-                MessageBox.Show("Note updated successfully");
+                var UpdItem = IME.Items.Where(b => b.StockNo == txtStockNo.Text).FirstOrDefault();
+                if (UpdItem != null)
+                {
+                    var i = IME.Items.Where(a => a.StockNo == UpdItem.StockNo).FirstOrDefault();
+
+                    i.StockNo = txtStockNo.Text;
+                    i.SupplierID = txtSupplierID.Text;
+                    if (cmbSupplierName.SelectedItem != null)
+                    {
+                        i.SupplierName = ((Supplier)cmbSupplierName.SelectedItem).s_name;
+                    }
+                    i.ArticleDescription = txtDesc.Text;
+                    i.MPN = txtMPN.Text;
+                    i.MFR = txtManufacturer.Text;
+                    i.Brandname = txtBrand.Text;
+                    i.SupersectionName = txtSupersectionName.Text;
+                    i.SectionName = txtSection.Text;
+                    i.MH = txtMHCodeLevel1.Text;
+                    i.CoO = txtCoO.Text;
+                    i.CCCN = txtCCCN.Text;
+                    i.SSM = txtSSM.Text;
+                    i.UC = txtUC.Text;
+                    i.UM = txtUM.Text;
+                    if (txtIMEDXB.Text != null && txtIMEDXB.Text != "") { i.DXB = Convert.ToInt32(txtIMEDXB.Text); }
+                    if (txtIMEADH.Text != null && txtIMEADH.Text != "") { i.ADH = Convert.ToInt32(txtIMEADH.Text); }
+                    if (txtIMEMCT.Text != null && txtIMEMCT.Text != "") { i.MCT = Convert.ToInt32(txtIMEMCT.Text); }
+                    if (txtIMEBHH.Text != null && txtIMEBHH.Text != "") { i.BHH = Convert.ToInt32(txtIMEBHH.Text); }
+                    if (txtIMETUR.Text != null && txtIMETUR.Text != "") { i.TUR = Convert.ToInt32(txtIMETUR.Text); }
+                    if (txtIMEReserved.Text != null && txtIMEReserved.Text != "") { i.Reserved = Convert.ToInt32(txtIMEReserved.Text); }
+                    if (txtHazardousInd.Text != null && txtHazardousInd.Text != "") { i.HZ = Convert.ToBoolean(txtHazardousInd.Text); }
+                    if (txtEnvironment.Text != null && txtEnvironment.Text != "") { i.HE = Convert.ToBoolean(txtEnvironment.Text); }
+                    if (txtShipping.Text != null && txtShipping.Text != "") { i.HS = Convert.ToBoolean(txtShipping.Text); }
+                    if (txtLithium.Text != null && txtLithium.Text != "") { i.Li = Convert.ToBoolean(txtLithium.Text); }
+                    if (txtCalibrationInd.Text != null && txtCalibrationInd.Text != "") { i.CL = Convert.ToBoolean(txtCalibrationInd.Text); }
+                    if (txtLicenceType.Text != null && txtLicenceType.Text != "") { i.LC = Convert.ToBoolean(txtLicenceType.Text); }
+                    if (txtDiscCharge.Text != null && txtDiscCharge.Text != "") { i.DC = Convert.ToBoolean(txtDiscCharge.Text); }
+                    if (txtExpiringPro.Text != null && txtExpiringPro.Text != "") { i.EC = Convert.ToBoolean(txtExpiringPro.Text); }
+                    i.Uk_Disc_Date = txtUKDiscDate.Text;
+                    i.DiscontinuationDate = txtDiscontinuationDate.Text;
+                    if (txtRunOn.Text != null && txtRunOn.Text != "") { i.Runon = Convert.ToInt32(txtRunOn.Text); }
+                    if (txtReferral.Text != null && txtReferral.Text != "") { i.Referral = Convert.ToInt32(txtReferral.Text); }
+                    if (txtHeight.Text != null && txtHeight.Text != "") { i.Heigh = Convert.ToDecimal(txtHeight.Text); }
+                    if (txtWidth.Text != null && txtWidth.Text != "") { i.Width = Convert.ToDecimal(txtWidth.Text); }
+                    if (txtLength.Text != null && txtLength.Text != "") { i.Length = Convert.ToDecimal(txtLength.Text); }
+                    if (txtStandartWeight.Text != null && txtStandartWeight.Text != "") { i.Standard_Weight = Convert.ToDecimal(txtStandartWeight.Text); }
+                    if (txtGrossWeight.Text != null && txtGrossWeight.Text != "") { i.Gross_Weight = Convert.ToDecimal(txtGrossWeight.Text); }
+                    if (txtUnitCount1.Text != null && txtUnitCount1.Text != "") { i.Col1Break = Convert.ToInt32(txtUnitCount1.Text); }
+                    if (txtUnitCount2.Text != null && txtUnitCount2.Text != "") { i.Col2Break = Convert.ToInt32(txtUnitCount2.Text); }
+                    if (txtUnitCount3.Text != null && txtUnitCount3.Text != "") { i.Col3Break = Convert.ToInt32(txtUnitCount3.Text); }
+                    if (txtUnitCount4.Text != null && txtUnitCount4.Text != "") { i.Col4Break = Convert.ToInt32(txtUnitCount4.Text); }
+                    if (txtUnitCount5.Text != null && txtUnitCount5.Text != "") { i.Col5Break = Convert.ToInt32(txtUnitCount5.Text); }
+                    if (txtCost1.Text != null && txtCost1.Text != "") { i.DiscountedPrice1 = Convert.ToInt32(txtCost1.Text); }
+                    if (txtCost2.Text != null && txtCost2.Text != "") { i.DiscountedPrice2 = Convert.ToInt32(txtCost2.Text); }
+                    if (txtCost3.Text != null && txtCost3.Text != "") { i.DiscountedPrice3 = Convert.ToInt32(txtCost3.Text); }
+                    if (txtCost4.Text != null && txtCost4.Text != "") { i.DiscountedPrice4 = Convert.ToInt32(txtCost4.Text); }
+                    if (txtCost5.Text != null && txtCost5.Text != "") { i.DiscountedPrice5 = Convert.ToInt32(txtCost5.Text); }
+                    i.notes = txtNote.Text;
+
+
+                    IME.SaveChanges();
+                    MessageBox.Show("Item updated successfully");
+                    btnUpdateNote.Text = "Update Item";
+                }
             }
             else
             {
-                var note = new Note();
-                note.Note_name = txtNote.Text;
-                IME.Notes.Add(note);
-                IME.SaveChanges();
-                var newNoteID = new ItemNote();
-                newNoteID.NoteID = note.ID;
-                newNoteID.ArticleNo = txtStockNo.Text;
-                IME.ItemNotes.Add(newNoteID);
-                IME.SaveChanges();
-                MessageBox.Show("Note added to item successfully");
+                ReadOnlyAll(false);
+                btnAdd.Enabled = false;
+                btnUpdateNote.Text = "Save";
+                btnClose.Text = "Cancel";
             }
+            //else
+            //{
+            //    var note = new Note();
+            //    note.Note_name = txtNote.Text;
+            //    IME.Notes.Add(note);
+            //    IME.SaveChanges();
+            //    var newNoteID = new ItemNote();
+            //    newNoteID.NoteID = note.ID;
+            //    newNoteID.ArticleNo = txtStockNo.Text;
+            //    IME.ItemNotes.Add(newNoteID);
+            //    IME.SaveChanges();
+            //    MessageBox.Show("Note added to item successfully");
+            //}
         }
 
         private void SearchText_KeyDown(object sender, KeyEventArgs e)
@@ -934,6 +1014,7 @@ namespace LoginForm.ItemModule
             panel1.Enabled = true;
             btnUpdateNote.Enabled = true;
             btnAdd.Text = "Add Item";
+            btnUpdateNote.Text = "Update Item";
             btnClose.Text = "Close";
             label1.Font = new Font(label1.Font, FontStyle.Regular);
             label1.ForeColor = Color.Black;
@@ -1077,12 +1158,15 @@ namespace LoginForm.ItemModule
             {
                 cmbSupplierName.Enabled = false;
                 btnSupplierAdd.Visible = false;
+                btnUpdateNote.Enabled = false;
                 groupBox9.Enabled = false;
+                groupBox5.Enabled = false;
             }
             else
             {
                 cmbSupplierName.Enabled = true;
                 btnSupplierAdd.Visible = true;
+                btnUpdateNote.Enabled = true;
             }
         }
 
