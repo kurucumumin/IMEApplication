@@ -2664,7 +2664,7 @@ warning 6002: The table/view 'IME.dbo.CompleteItems' does not have a primary key
             <PropertyRef Name="dependantTable" />
           </Key>
           <Property Name="Article_No" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Article_Desc" Type="nvarchar" MaxLength="50" />
+          <Property Name="Article_Desc" Type="nvarchar" MaxLength="100" />
           <Property Name="Pack_Quantity" Type="int" />
           <Property Name="Unit_Content" Type="int" />
           <Property Name="Unit_Measure" Type="nvarchar" MaxLength="50" />
@@ -2695,16 +2695,16 @@ warning 6002: The table/view 'IME.dbo.CompleteItems' does not have a primary key
           <Property Name="Col3Break" Type="int" />
           <Property Name="Col4Break" Type="int" />
           <Property Name="Col5Break" Type="int" />
-          <Property Name="Col1Price" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="Col2Price" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="Col3Price" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="Col4Price" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="Col5Price" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="DiscountedPrice1" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="DiscountedPrice2" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="DiscountedPrice3" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="DiscountedPrice4" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="DiscountedPrice5" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="Col1Price" Type="decimal" Precision="20" Scale="5" />
+          <Property Name="Col2Price" Type="decimal" Precision="20" Scale="5" />
+          <Property Name="Col3Price" Type="decimal" Precision="20" Scale="5" />
+          <Property Name="Col4Price" Type="decimal" Precision="20" Scale="5" />
+          <Property Name="Col5Price" Type="decimal" Precision="20" Scale="5" />
+          <Property Name="DiscountedPrice1" Type="decimal" Precision="20" Scale="5" />
+          <Property Name="DiscountedPrice2" Type="decimal" Precision="20" Scale="5" />
+          <Property Name="DiscountedPrice3" Type="decimal" Precision="20" Scale="5" />
+          <Property Name="DiscountedPrice4" Type="decimal" Precision="20" Scale="5" />
+          <Property Name="DiscountedPrice5" Type="decimal" Precision="20" Scale="5" />
           <Property Name="SupersectionName" Type="nvarchar" MaxLength="100" />
           <Property Name="DiscontinuationDate" Type="nvarchar" MaxLength="20" />
           <Property Name="Runon" Type="int" />
@@ -2714,7 +2714,7 @@ warning 6002: The table/view 'IME.dbo.CompleteItems' does not have a primary key
           <Property Name="Shipping" Type="nvarchar" MaxLength="50" />
           <Property Name="LicenceType" Type="nvarchar" MaxLength="5" />
           <Property Name="BrandName" Type="nvarchar" MaxLength="100" />
-          <Property Name="dependantTable" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="dependantTable" Type="varchar" MaxLength="4" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -14946,7 +14946,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <PropertyRef Name="dependantTable" />
           </Key>
           <Property Name="Article_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Article_Desc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Article_Desc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Pack_Quantity" Type="Int32" />
           <Property Name="Unit_Content" Type="Int32" />
           <Property Name="Unit_Measure" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -14977,16 +14977,16 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="Col3Break" Type="Int32" />
           <Property Name="Col4Break" Type="Int32" />
           <Property Name="Col5Break" Type="Int32" />
-          <Property Name="Col1Price" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="Col2Price" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="Col3Price" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="Col4Price" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="Col5Price" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="DiscountedPrice1" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="DiscountedPrice2" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="DiscountedPrice3" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="DiscountedPrice4" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="DiscountedPrice5" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Col1Price" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="Col2Price" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="Col3Price" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="Col4Price" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="Col5Price" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="DiscountedPrice1" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="DiscountedPrice2" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="DiscountedPrice3" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="DiscountedPrice4" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="DiscountedPrice5" Type="Decimal" Precision="20" Scale="5" />
           <Property Name="SupersectionName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="DiscontinuationDate" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Runon" Type="Int32" />
@@ -14996,7 +14996,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="Shipping" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="LicenceType" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Name="BrandName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="dependantTable" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dependantTable" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="V_Product">
           <Key>
@@ -24350,7 +24350,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
         <ComplexType Name="DeliveryNoteItemsToSaleInvoice_Result">
           <Property Type="Decimal" Name="Delivery_Note_ID" Nullable="false" Precision="18" Scale="0" />
           <Property Type="String" Name="Delivery_Note_NO" Nullable="true" />
-          <Property Type="String" Name="Product_Description" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Product_Description" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="Unit_Of_Measure" Nullable="true" MaxLength="50" />
           <Property Type="Int32" Name="Unit_Content" Nullable="true" />
           <Property Type="Decimal" Name="UnitPrice" Nullable="true" Precision="18" Scale="5" />
