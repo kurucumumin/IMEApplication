@@ -23,10 +23,17 @@ namespace LoginForm.QuotationModule
         QuotationUtils qUtils = new QuotationUtils();
         string discCalculationType = String.Empty;
         bool initialLaunch = true;
+        List<Label> CurrTypes = new List<Label>();
 
         public ExperimentQuotationAdd()
         {
             InitializeComponent();
+
+            CurrTypes.Add(lblCurType1);
+            CurrTypes.Add(lblCurType2);
+            CurrTypes.Add(lblCurType3);
+            CurrTypes.Add(lblCurType4);
+            CurrTypes.Add(lblCurType5);
 
             DataGridViewComboBoxColumn deliveryColumn = (DataGridViewComboBoxColumn)dgAddedItems.Columns[dgDelivery.Index];
             deliveryColumn.DataSource = new IMEEntities().QuotationDeliveries.ToList();
@@ -144,7 +151,7 @@ namespace LoginForm.QuotationModule
                     TotalUnitPrice += Convert.ToDecimal(row.Cells[dgUCUPCurr.Index].Value);
                 }
             }
-            txtTotalMarginGrid.Text = qUtils.CalculateMargin(ConvertAmountToGBP(TotalUnitPrice), TotalCost).ToString("G29");
+            txtTotalMarginGrid.Text = qUtils.CalculateMargin(ConvertAmountToGBP(TotalUnitPrice), TotalCost).ToString("N4");
         }
 
         private void CalculateSubTotal()
@@ -157,7 +164,7 @@ namespace LoginForm.QuotationModule
                     subTotal += Convert.ToDecimal(row.Cells[dgTotal.Index].Value);
                 }
             }
-            txtSubtotal.Text = subTotal.ToString("G29");
+            txtSubtotal.Text = subTotal.ToString("N4");
         }
 
         private void CalculateTotalCost()
@@ -301,6 +308,7 @@ namespace LoginForm.QuotationModule
                     _rate = currency1.ExchangeRates.OrderByDescending(x => x.date).FirstOrDefault();
                     
                     lblWeb.Text = "Web (" + _rate.Currency.currencySymbol + ")";
+                    ChangeCurrencyLabels(_rate.Currency.currencySymbol);
                     lblExcRate.Text = _rate.rate.ToString();
                 }
                 else
@@ -314,8 +322,17 @@ namespace LoginForm.QuotationModule
 
                     _rate = r;
                     lblWeb.Text = "Web (" + _rate.Currency.currencySymbol + ")";
+                    ChangeCurrencyLabels(_rate.Currency.currencySymbol);
                     lblExcRate.Text = _rate.rate.ToString();
                 }
+            }
+        }
+
+        private void ChangeCurrencyLabels(string CurrencySymbol)
+        {
+            foreach (Label label in CurrTypes)
+            {
+                label.Text = CurrencySymbol;
             }
         }
 
@@ -333,10 +350,12 @@ namespace LoginForm.QuotationModule
                         ConvertAmountToTargetCurrency(Convert.ToDecimal(row.Cells[dgTotal.Index].Value)).ToString("N4");
                 }
             }
+            CalculateSubTotal();
 
-            decimal subTotal = ConvertAmountToTargetCurrency(Convert.ToDecimal(txtSubtotal.Text));
-            txtSubtotal.Text = subTotal.ToString("N4");
-            numTotalDiscAmount.Value = (subTotal * numTotalDiscPercent.Value) / 100;
+            //decimal subTotal = ConvertAmountToTargetCurrency(Convert.ToDecimal(txtSubtotal.Text));
+            //txtSubtotal.Text = subTotal.ToString("N4");
+            CalculateTotalCost();
+            numTotalDiscAmount.Value = (Convert.ToDecimal(txtSubtotal.Text) * numTotalDiscPercent.Value) / 100;
             
         }
 
@@ -554,6 +573,7 @@ namespace LoginForm.QuotationModule
             }
             ItemDetailFill_Row(item, row);
 
+
             if (tabControl1.SelectedTab != tabItemDetails)
             {
                 tabControl1.SelectedTab = tabItemDetails;
@@ -569,6 +589,11 @@ namespace LoginForm.QuotationModule
                 row.Cells[dgCustDescription.Index].ReadOnly = false;
                 row.Cells[dgTargetUP.Index].ReadOnly = false;
                 dgAddedItems.CurrentCell = row.Cells[dgQty.Index];
+
+                CalculateSubTotal();
+                CalculateTotalMargin();
+                CalculateTotalCost();
+
                 SendKeys.Send("{UP}");
             }
             else
@@ -945,12 +970,12 @@ namespace LoginForm.QuotationModule
 
             if (numTotalDiscAmount.Text != "0")
             {
-                lblTotal.Text = _subtotal.ToString();
+                txtTotal.Text = _subtotal.ToString();
             }
             else
             {
                 _discountAmount = Decimal.Parse(numTotalDiscAmount.Text);
-                lblTotal.Text = (_subtotal - _discountAmount).ToString();
+                txtTotal.Text = (_subtotal - _discountAmount).ToString();
             }
 
 
@@ -959,31 +984,31 @@ namespace LoginForm.QuotationModule
 
         private void lblTotal_TextChanged(object sender, EventArgs e)
         {
-            decimal _total = Decimal.Parse(lblTotal.Text);
+            decimal _total = Decimal.Parse(txtTotal.Text);
 
             if(!String.IsNullOrEmpty(numExtraCharges.Text))
             {
-                lblTotalExtra.Text = (_total + Decimal.Parse(numExtraCharges.Text)).ToString();
+                txtTotalExtra.Text = (_total + Decimal.Parse(numExtraCharges.Text)).ToString();
             }
             else
             {
-                lblTotalExtra.Text = _total.ToString();
+                txtTotalExtra.Text = _total.ToString();
             }
         }
 
         private void lblTotalExtra_TextChanged(object sender, EventArgs e)
         {
-            decimal _totalExtra = Decimal.Parse(lblTotalExtra.Text);
+            decimal _totalExtra = Decimal.Parse(txtTotalExtra.Text);
             decimal _VatAmount = (_totalExtra * (decimal)Utils.getManagement().VAT) / 100;
 
-            lblVatTotal.Text = _VatAmount.ToString("N4");
+            txtVatTotal.Text = _VatAmount.ToString("N4");
             if (chkVat.Checked == true)
             {
-                lblGrossTotal.Text = (_totalExtra + _VatAmount).ToString("N4");
+                txtGrossTotal.Text = (_totalExtra + _VatAmount).ToString("N4");
             }
             else
             {
-                lblGrossTotal.Text = _totalExtra.ToString("N4");
+                txtGrossTotal.Text = _totalExtra.ToString("N4");
             }
         }
         
@@ -996,7 +1021,7 @@ namespace LoginForm.QuotationModule
                 decimal discAmount = numTotalDiscAmount.Value;
                 numTotalDiscPercent.Value = ((discAmount / subTotal) * 100);
 
-                lblTotal.Text = (subTotal - discAmount).ToString();
+                txtTotal.Text = (subTotal - discAmount).ToString();
             }
         }
 
@@ -1015,22 +1040,23 @@ namespace LoginForm.QuotationModule
 
         private void numExtraCharges_ValueChanged(object sender, EventArgs e)
         {
-            lblTotalExtra.Text = (Decimal.Parse(lblTotal.Text) + numExtraCharges.Value).ToString();
+            txtTotalExtra.Text = (Decimal.Parse(txtTotal.Text) + numExtraCharges.Value).ToString();
         }
 
         private void chkVat_CheckedChanged(object sender, EventArgs e)
         {
-            decimal _totalExtra = Decimal.Parse(lblTotalExtra.Text);
+            decimal _totalExtra = Decimal.Parse(txtTotalExtra.Text);
             
             if (((CheckBox)sender).Checked)
             {
                 decimal _VatAmount = (_totalExtra * (decimal)Utils.getManagement().VAT) / 100;
-                lblGrossTotal.Text = (_totalExtra + _VatAmount).ToString();
+                txtGrossTotal.Text = (_totalExtra + _VatAmount).ToString();
             }
             else
             {
-                lblGrossTotal.Text = _totalExtra.ToString("N4");
+                txtGrossTotal.Text = _totalExtra.ToString("N4");
             }
         }
+        
     }
 }
