@@ -1967,7 +1967,7 @@ namespace LoginForm.ItemModule
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(76, 47);
             this.btnAdd.TabIndex = 275;
-            this.btnAdd.Text = "Add Item";
+            this.btnAdd.Text = "Added Item";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -1980,7 +1980,7 @@ namespace LoginForm.ItemModule
             this.btnUpdateNote.Name = "btnUpdateNote";
             this.btnUpdateNote.Size = new System.Drawing.Size(76, 51);
             this.btnUpdateNote.TabIndex = 274;
-            this.btnUpdateNote.Text = "Update Note";
+            this.btnUpdateNote.Text = "Update Item";
             this.btnUpdateNote.UseVisualStyleBackColor = true;
             this.btnUpdateNote.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
@@ -2321,7 +2321,7 @@ namespace LoginForm.ItemModule
             this.MinimumSize = new System.Drawing.Size(1027, 597);
             this.Name = "ItemCard";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.Text = " ";
+            this.Text = " Item Card";
             this.Load += new System.EventHandler(this.ItemCard_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
