@@ -273,12 +273,13 @@ namespace LoginForm.QuotationModule
 
             L = (P + (W * F)) + (C * (P + (W * F)));
 
-            return L;
+            return Decimal.Parse(L.ToString("0.000"));
         }
         
         public decimal CalculateMargin(decimal Price, decimal Cost)
         {
-            return (1 - (Cost / Price)) * 100;
+            decimal M = (1 - (Cost / Price)) * 100;
+            return Decimal.Parse(M.ToString("0.0000"));
         }
     }
 }

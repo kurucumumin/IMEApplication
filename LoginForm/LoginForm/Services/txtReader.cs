@@ -1302,6 +1302,121 @@ namespace LoginForm
             return 0;
         }
 
+        public static int OnSaleRead()
+        {
+            #region OnSale
+            IMEEntities IME = new IMEEntities();
+            OnSale item = new OnSale();
+            int AddedCounter = 0;
+            int UptCounter = 0;
+            //Show the dialog and get result.
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "txt files (*.txt)|*.txt";
+            DialogResult result1 = openFileDialog1.ShowDialog();
+            if (result1 == DialogResult.OK) // Test result.
+            {
+
+
+                try
+                {
+                    string[] lines = System.IO.File.ReadAllLines(openFileDialog1.FileName);
+                    string[] columnnames = lines[0].Split(',');
+                    int a = 1;
+                    while (lines.Count() > a)
+                    {
+                        string[] word;
+                        //word = lines[a].Split(new string[] { "\"," }, StringSplitOptions.None);
+                        word = lines[a].Replace("\"", "").Split(',');
+                        for (int i = 0; i < columnnames.Count(); i++)
+                        {
+
+                            switch (columnnames[i])
+                            {
+                                case "\"Article Number\"":
+                                    item.ArticleNumber = word[0].Replace("\"","");
+                                    break;
+                                case "\"Available to Promise Check\"":
+                                    item.AvailabletoPromiseCheck = word[1].Replace("\"", "");
+                                    break;
+                                case "\"Bulk Pack\"":
+                                    if (word[i] != "")
+                                    {
+                                        item.BulkPack = word[2].Replace("\"", "");
+                                    }
+                                    break;
+                                case "\"Catalogue Status\"":
+                                    item.CatalogueStatus = Convert.ToInt32(word[3].Replace("\"", ""));
+                                    break;
+                                case "\"Discontinued Date\"":
+                                    item.DiscontinuedDate = word[4].Replace("\"", "");
+                                    break;
+                                case "\"Introduction Date\"":
+                                    item.IntroductionDate = word[5].Replace("\"", "");
+                                    break;
+                                case "\"Next Scheduled Delivery\"":
+                                    item.NextScheduledDelivery = word[6].Replace("\"", "");
+                                    break;
+                                case "\"Onhand Stock Balance\"":
+                                    if (word[i] != "")
+                                    {
+                                        item.OnhandStockBalance = Convert.ToInt32(word[7].Replace("\"", ""));
+                                    }
+                                    break;
+                                case "\"Pack Size\"":
+                                    if (word[i] != "")
+                                    {
+                                        item.PackSize = Convert.ToInt32(word[8].Replace("\"", ""));
+                                    }
+                                    break;
+                                case "\"Quantity on Order\"":
+                                    if (word[i] != "")
+                                    {
+                                        item.QuantityonOrder = Convert.ToInt32(word[9].Replace("\"", ""));
+                                    }
+                                    break;
+                                case "\"Small Order Protection Level\"":
+                                    item.SmallOrderProtectionLevel = word[10].Replace("\"", "");
+                                    break;
+                                case "\"Substituted By\"":
+                                    item.SubstitutedBy = word[11].Replace("\"", "");
+                                    break;
+                                case "\"Substituted For\"":
+                                    item.SubstitutedFor = word[12].Replace("\"", "");
+                                    break;
+                            }
+                        }
+
+                        IME.OnSaleAdd(
+                            item.ArticleNumber
+                           , item.AvailabletoPromiseCheck
+                           , item.BulkPack
+                           , item.CatalogueStatus
+                           , item.DiscontinuedDate
+                           , item.IntroductionDate
+                           , item.NextScheduledDelivery
+                           , item.OnhandStockBalance
+                           , item.PackSize
+                           , item.QuantityonOrder
+                           , item.SmallOrderProtectionLevel
+                           , item.SubstitutedBy
+                           , item.SubstitutedFor
+                          );
+
+
+                        a++;
+                        item = new OnSale();
+                    }
+
+                    MessageBox.Show("Upload Completed");
+                    return 1;
+                }
+                catch { MessageBox.Show("Please Choose Correct File"); return 0; }
+
+                #endregion
+            }
+            return 0;
+        }
+
         public static int DiscontinuedListRead()
         {
             IMEEntities IME = new IMEEntities();
@@ -3509,8 +3624,6 @@ namespace LoginForm
 
     class QuotationExcelExport
     {
-
-
         public static void ExportToItemHistory(DataGridView dg)
         {
             #region Copy All Items

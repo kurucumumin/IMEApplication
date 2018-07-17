@@ -835,6 +835,32 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="DC" Type="bit" />
           <Property Name="EC" Type="bit" />
         </EntityType>
+        <EntityType Name="ItemConvertionDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemConvertionMainID" Type="int" Nullable="false" />
+          <Property Name="Article_No" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Article_Desc" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Qty" Type="int" Nullable="false" />
+          <Property Name="Cost" Type="numeric" Precision="18" Scale="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ItemConvertionMain">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Article_No" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Article_Desc" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Narration" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Confirmed" Type="bit" Nullable="false" />
+          <Property Name="Cost" Type="numeric" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="Qty" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="ItemHistory">
           <Key>
             <PropertyRef Name="ID" />
@@ -1072,8 +1098,8 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="PackSize" Type="int" />
           <Property Name="QuantityonOrder" Type="int" />
           <Property Name="SmallOrderProtectionLevel" Type="nvarchar" MaxLength="50" />
-          <Property Name="SubstitutedBy" Type="int" />
-          <Property Name="SubstitutedFor" Type="nvarchar" MaxLength="50" />
+          <Property Name="SubstitutedBy" Type="nvarchar" MaxLength="20" />
+          <Property Name="SubstitutedFor" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="OrderAcknowledgement">
           <Key>
@@ -3778,6 +3804,30 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Principal>
             <Dependent Role="DiscountValues">
               <PropertyRef Name="RepresentativeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ItemConve__ItemC__3568C3A6">
+          <End Role="ItemConvertionMain" Type="Self.ItemConvertionMain" Multiplicity="1" />
+          <End Role="ItemConvertionDetail" Type="Self.ItemConvertionDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemConvertionMain">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemConvertionDetail">
+              <PropertyRef Name="ItemConvertionMainID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ItemConve__UserI__328C56FB">
+          <End Role="Worker" Type="Self.Worker" Multiplicity="1" />
+          <End Role="ItemConvertionMain" Type="Self.ItemConvertionMain" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="WorkerID" />
+            </Principal>
+            <Dependent Role="ItemConvertionMain">
+              <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -8418,6 +8468,21 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
         <Function Name="MultipleAccountLedgerCrOrDr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="accountGroupName" Type="varchar(max)" Mode="In" />
         </Function>
+        <Function Name="OnSaleAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ArticleNumber" Type="varchar(max)" Mode="In" />
+          <Parameter Name="AvailabletoPromiseCheck" Type="varchar(max)" Mode="In" />
+          <Parameter Name="BulkPack" Type="varchar(max)" Mode="In" />
+          <Parameter Name="CatalogueStatus" Type="int" Mode="In" />
+          <Parameter Name="DiscontinuedDate" Type="varchar(max)" Mode="In" />
+          <Parameter Name="IntroductionDate" Type="varchar(max)" Mode="In" />
+          <Parameter Name="NextScheduledDelivery" Type="varchar(max)" Mode="In" />
+          <Parameter Name="OnhandStockBalance" Type="int" Mode="In" />
+          <Parameter Name="PackSize" Type="int" Mode="In" />
+          <Parameter Name="QuantityonOrder" Type="int" Mode="In" />
+          <Parameter Name="SmallOrderProtectionLevel" Type="varchar(max)" Mode="In" />
+          <Parameter Name="SubstitutedBy" Type="varchar(max)" Mode="In" />
+          <Parameter Name="SubstitutedFor" Type="varchar(max)" Mode="In" />
+        </Function>
         <Function Name="OtherBranchStockSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="articleNo" Type="nvarchar" Mode="In" />
         </Function>
@@ -9847,6 +9912,8 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <EntitySet Name="Hazardous" EntityType="Self.Hazardous" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Holiday" EntityType="Self.Holiday" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemConvertionDetail" EntityType="Self.ItemConvertionDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemConvertionMain" EntityType="Self.ItemConvertionMain" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemHistory" EntityType="Self.ItemHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemNote" EntityType="Self.ItemNote" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JournalDetail" EntityType="Self.JournalDetail" Schema="dbo" store:Type="Tables" />
@@ -10406,6 +10473,14 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <AssociationSet Name="FK__DiscountV__Repre__6F4A8121" Association="Self.FK__DiscountV__Repre__6F4A8121">
             <End Role="Worker" EntitySet="Worker" />
             <End Role="DiscountValues" EntitySet="DiscountValues" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ItemConve__ItemC__3568C3A6" Association="Self.FK__ItemConve__ItemC__3568C3A6">
+            <End Role="ItemConvertionMain" EntitySet="ItemConvertionMain" />
+            <End Role="ItemConvertionDetail" EntitySet="ItemConvertionDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ItemConve__UserI__328C56FB" Association="Self.FK__ItemConve__UserI__328C56FB">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="ItemConvertionMain" EntitySet="ItemConvertionMain" />
           </AssociationSet>
           <AssociationSet Name="FK__Itemhisto__Curre__4ED38FEE" Association="Self.FK__Itemhisto__Curre__4ED38FEE">
             <End Role="Customer" EntitySet="Customer" />
@@ -12610,6 +12685,35 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="DC" Type="Boolean" />
           <Property Name="EC" Type="Boolean" />
         </EntityType>
+        <EntityType Name="ItemConvertionDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemConvertionMainID" Type="Int32" Nullable="false" />
+          <Property Name="Article_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Article_Desc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Qty" Type="Int32" Nullable="false" />
+          <Property Name="Cost" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
+          <NavigationProperty Name="ItemConvertionMain" Relationship="Self.FK__ItemConve__ItemC__3568C3A6" FromRole="ItemConvertionDetail" ToRole="ItemConvertionMain" />
+        </EntityType>
+        <EntityType Name="ItemConvertionMain">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Article_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Article_Desc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Narration" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Confirmed" Type="Boolean" Nullable="false" />
+          <Property Name="Cost" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="Qty" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ItemConvertionDetails" Relationship="Self.FK__ItemConve__ItemC__3568C3A6" FromRole="ItemConvertionMain" ToRole="ItemConvertionDetail" />
+          <NavigationProperty Name="Worker" Relationship="Self.FK__ItemConve__UserI__328C56FB" FromRole="ItemConvertionMain" ToRole="Worker" />
+        </EntityType>
         <EntityType Name="ItemHistory">
           <Key>
             <PropertyRef Name="ID" />
@@ -12898,8 +13002,8 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="PackSize" Type="Int32" />
           <Property Name="QuantityonOrder" Type="Int32" />
           <Property Name="SmallOrderProtectionLevel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SubstitutedBy" Type="Int32" />
-          <Property Name="SubstitutedFor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SubstitutedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SubstitutedFor" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="OrderAcknowledgement">
           <Key>
@@ -14866,6 +14970,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <NavigationProperty Name="DeliveryNoteMasters" Relationship="Self.FK__DeliveryN__userI__24134F1B" FromRole="Worker" ToRole="DeliveryNoteMaster" />
           <NavigationProperty Name="Designation" Relationship="Self.FK__Worker__designat__6F6A7CB2" FromRole="Worker" ToRole="Designation" />
           <NavigationProperty Name="DiscountValues" Relationship="Self.FK__DiscountV__Repre__6F4A8121" FromRole="Worker" ToRole="DiscountValues" />
+          <NavigationProperty Name="ItemConvertionMains" Relationship="Self.FK__ItemConve__UserI__328C56FB" FromRole="Worker" ToRole="ItemConvertionMain" />
           <NavigationProperty Name="JournalMasters" Relationship="Self.FK__JournalMa__userI__7CF981FA" FromRole="Worker" ToRole="JournalMaster" />
           <NavigationProperty Name="MaterialReceiptMasters" Relationship="Self.FK__MaterialR__userI__5634BA94" FromRole="Worker" ToRole="MaterialReceiptMaster" />
           <NavigationProperty Name="MonthlySalaryDetails" Relationship="Self.FK__MonthlySa__emplo__5402595F" FromRole="Worker" ToRole="MonthlySalaryDetail" />
@@ -17231,6 +17336,30 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__ItemConve__ItemC__3568C3A6">
+          <End Role="ItemConvertionMain" Type="Self.ItemConvertionMain" Multiplicity="1" />
+          <End Role="ItemConvertionDetail" Type="Self.ItemConvertionDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemConvertionMain">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemConvertionDetail">
+              <PropertyRef Name="ItemConvertionMainID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ItemConve__UserI__328C56FB">
+          <End Role="Worker" Type="Self.Worker" Multiplicity="1" />
+          <End Role="ItemConvertionMain" Type="Self.ItemConvertionMain" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="WorkerID" />
+            </Principal>
+            <Dependent Role="ItemConvertionMain">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Itemhisto__Vouch__4DDF6BB5">
           <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
           <End Role="ItemHistory" Type="Self.ItemHistory" Multiplicity="*" />
@@ -19518,6 +19647,8 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <EntitySet Name="Hazardous" EntityType="Self.Hazardou" />
           <EntitySet Name="Holidays" EntityType="Self.Holiday" />
           <EntitySet Name="Items" EntityType="Self.Item" />
+          <EntitySet Name="ItemConvertionDetails" EntityType="Self.ItemConvertionDetail" />
+          <EntitySet Name="ItemConvertionMains" EntityType="Self.ItemConvertionMain" />
           <EntitySet Name="ItemHistories" EntityType="Self.ItemHistory" />
           <EntitySet Name="ItemNotes" EntityType="Self.ItemNote" />
           <EntitySet Name="JournalDetails" EntityType="Self.JournalDetail" />
@@ -20370,6 +20501,14 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <AssociationSet Name="FK__StockPost__godow__1249A49B" Association="Self.FK__StockPost__godow__1249A49B">
             <End Role="Godown" EntitySet="Godowns" />
             <End Role="StockPosting" EntitySet="StockPostings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ItemConve__ItemC__3568C3A6" Association="Self.FK__ItemConve__ItemC__3568C3A6">
+            <End Role="ItemConvertionMain" EntitySet="ItemConvertionMains" />
+            <End Role="ItemConvertionDetail" EntitySet="ItemConvertionDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ItemConve__UserI__328C56FB" Association="Self.FK__ItemConve__UserI__328C56FB">
+            <End Role="Worker" EntitySet="Workers" />
+            <End Role="ItemConvertionMain" EntitySet="ItemConvertionMains" />
           </AssociationSet>
           <AssociationSet Name="FK__Itemhisto__Vouch__4DDF6BB5" Association="Self.FK__Itemhisto__Vouch__4DDF6BB5">
             <End Role="VoucherType" EntitySet="VoucherTypes" />
@@ -22280,6 +22419,21 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <FunctionImport Name="MultipleAccountLedgerComboFill" ReturnType="Collection(IMEModel.MultipleAccountLedgerComboFill_Result)" />
           <FunctionImport Name="MultipleAccountLedgerCrOrDr" ReturnType="Collection(String)">
             <Parameter Name="accountGroupName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="OnSaleAdd">
+            <Parameter Name="ArticleNumber" Mode="In" Type="String" />
+            <Parameter Name="AvailabletoPromiseCheck" Mode="In" Type="String" />
+            <Parameter Name="BulkPack" Mode="In" Type="String" />
+            <Parameter Name="CatalogueStatus" Mode="In" Type="Int32" />
+            <Parameter Name="DiscontinuedDate" Mode="In" Type="String" />
+            <Parameter Name="IntroductionDate" Mode="In" Type="String" />
+            <Parameter Name="NextScheduledDelivery" Mode="In" Type="String" />
+            <Parameter Name="OnhandStockBalance" Mode="In" Type="Int32" />
+            <Parameter Name="PackSize" Mode="In" Type="Int32" />
+            <Parameter Name="QuantityonOrder" Mode="In" Type="Int32" />
+            <Parameter Name="SmallOrderProtectionLevel" Mode="In" Type="String" />
+            <Parameter Name="SubstitutedBy" Mode="In" Type="String" />
+            <Parameter Name="SubstitutedFor" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="OtherBranchStockSearch" ReturnType="Collection(IMEModel.OtherBranchStockSearch_Result)">
             <Parameter Name="articleNo" Mode="In" Type="String" />
@@ -26833,6 +26987,34 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ItemConvertionDetails">
+            <EntityTypeMapping TypeName="IMEModel.ItemConvertionDetail">
+              <MappingFragment StoreEntitySet="ItemConvertionDetail">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ItemConvertionMainID" ColumnName="ItemConvertionMainID" />
+                <ScalarProperty Name="Article_No" ColumnName="Article_No" />
+                <ScalarProperty Name="Article_Desc" ColumnName="Article_Desc" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemConvertionMains">
+            <EntityTypeMapping TypeName="IMEModel.ItemConvertionMain">
+              <MappingFragment StoreEntitySet="ItemConvertionMain">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Article_No" ColumnName="Article_No" />
+                <ScalarProperty Name="Article_Desc" ColumnName="Article_Desc" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Confirmed" ColumnName="Confirmed" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ItemHistories">
             <EntityTypeMapping TypeName="IMEModel.ItemHistory">
               <MappingFragment StoreEntitySet="ItemHistory">
@@ -30584,6 +30766,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="MultipleAccountLedgerCrOrDr" FunctionName="IMEModel.Store.MultipleAccountLedgerCrOrDr" />
+          <FunctionImportMapping FunctionImportName="OnSaleAdd" FunctionName="IMEModel.Store.OnSaleAdd" />
           <FunctionImportMapping FunctionImportName="OtherBranchStockSearch" FunctionName="IMEModel.Store.OtherBranchStockSearch">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.OtherBranchStockSearch_Result">

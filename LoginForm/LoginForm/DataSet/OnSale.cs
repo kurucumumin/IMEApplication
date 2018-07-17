@@ -25,7 +25,7 @@ namespace LoginForm.DataSet
         public Nullable<int> PackSize { get; set; }
         public Nullable<int> QuantityonOrder { get; set; }
         public string SmallOrderProtectionLevel { get; set; }
-        public Nullable<int> SubstitutedBy { get; set; }
+        public string SubstitutedBy { get; set; }
         public string SubstitutedFor { get; set; }
     }
 }
