@@ -30,6 +30,7 @@ namespace LoginForm.DataSet
             this.DebitNoteMasters = new HashSet<DebitNoteMaster>();
             this.DeliveryNoteMasters = new HashSet<DeliveryNoteMaster>();
             this.DiscountValues = new HashSet<DiscountValue>();
+            this.ItemConvertionMains = new HashSet<ItemConvertionMain>();
             this.JournalMasters = new HashSet<JournalMaster>();
             this.MaterialReceiptMasters = new HashSet<MaterialReceiptMaster>();
             this.MonthlySalaryDetails = new HashSet<MonthlySalaryDetail>();
@@ -124,6 +125,8 @@ namespace LoginForm.DataSet
         public virtual Designation Designation { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DiscountValue> DiscountValues { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ItemConvertionMain> ItemConvertionMains { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<JournalMaster> JournalMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

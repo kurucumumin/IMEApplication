@@ -71,7 +71,7 @@ namespace LoginForm.ItemModule
                     dataGridView1.DataSource = IME.SlidingPrices.Take(10).ToList();
                     break;
                 case "OnSale":
-                    if (txtReader.SuperDiskRead() == 1)
+                    if (txtReader.OnSaleRead() == 1)
                     {
                         RsFileHistory h = new RsFileHistory();
                         h.FileType = txtReader.LoaderType;
@@ -81,7 +81,7 @@ namespace LoginForm.ItemModule
                         IME.RsFileHistories.Add(h);
                         IME.SaveChanges();
                     }
-                    txtReader.SuperDiskRead();
+                    txtReader.OnSaleRead();
                     dataGridView1.DataSource = null;
                     dataGridView1.DataSource = IME.SuperDisks.Take(10).ToList();
                     break;

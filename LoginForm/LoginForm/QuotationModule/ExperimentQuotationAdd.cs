@@ -140,18 +140,23 @@ namespace LoginForm.QuotationModule
 
         private void CalculateTotalMargin()
         {
-            decimal TotalCost = 0;
-            decimal TotalUnitPrice = 0;
+            //decimal TotalCost = 0;
+            //decimal TotalUnitPrice = 0;
 
-            foreach (DataGridViewRow row in dgAddedItems.Rows)
-            {
-                if (!row.IsNewRow)
-                {
-                    TotalCost += Convert.ToDecimal(row.Cells[dgLandingCost.Index].Value);
-                    TotalUnitPrice += Convert.ToDecimal(row.Cells[dgUCUPCurr.Index].Value);
-                }
-            }
-            txtTotalMarginGrid.Text = qUtils.CalculateMargin(ConvertAmountToGBP(TotalUnitPrice), TotalCost).ToString("N4");
+            //foreach (DataGridViewRow row in dgAddedItems.Rows)
+            //{
+            //    if (!row.IsNewRow)
+            //    {
+            //        TotalCost += Convert.ToDecimal(row.Cells[dgLandingCost.Index].Value);
+            //        TotalUnitPrice += Convert.ToDecimal(row.Cells[dgUCUPCurr.Index].Value);
+            //    }
+            //}
+            //txtTotalMarginGrid.Text = qUtils.CalculateMargin(ConvertAmountToGBP(TotalUnitPrice), TotalCost).ToString();
+
+            decimal TotalCost = Convert.ToDecimal(txtTotalCost.Text);
+            decimal TotalUnitPrice = Convert.ToDecimal(txtSubtotal.Text);
+
+            txtTotalMarginGrid.Text = qUtils.CalculateMargin(ConvertAmountToGBP(TotalUnitPrice),TotalCost).ToString();
         }
 
         private void CalculateSubTotal()
@@ -395,7 +400,11 @@ namespace LoginForm.QuotationModule
 
                                 if (MPN_Items.Count == 1)
                                 {
-                                    InsertItemToQuotation(row, db, item1);
+                                    SendKeys.Send("{UP}");
+                                    //BeginInvoke((MethodInvoker)delegate {
+                                        InsertItemToQuotation(row, db, item1);
+                                    //});
+                                    
                                 }
                                 else
                                 {
@@ -404,7 +413,10 @@ namespace LoginForm.QuotationModule
                                     if (!String.IsNullOrEmpty(formMPN.ItemCode))
                                     {
                                         item1 = db.CompleteItems.Where(x => x.Article_No == formMPN.ItemCode).FirstOrDefault();
-                                        InsertItemToQuotation(row, db, item1);
+                                        SendKeys.Send("{UP}");
+                                        //BeginInvoke((MethodInvoker)delegate {
+                                            InsertItemToQuotation(row, db, item1);
+                                        //});
                                     }
                                 }
                                 break;
@@ -414,7 +426,10 @@ namespace LoginForm.QuotationModule
                                 if (form.ShowDialog() == DialogResult.OK)
                                 {
                                     CompleteItem item2 = db.CompleteItems.Where(x => x.Article_No == form.ItemCode).FirstOrDefault();
-                                    InsertItemToQuotation(row, db, item2);
+                                    SendKeys.Send("{UP}");
+                                    //BeginInvoke((MethodInvoker)delegate {
+                                        InsertItemToQuotation(row, db, item2);
+                                    //});
                                 }
                                 else
                                 {
@@ -442,7 +457,9 @@ namespace LoginForm.QuotationModule
                             if (Int32.TryParse(col1, out q))
                             {
                                 cell.Value = q;
-                                QuantityEntered(row, q);
+                                //BeginInvoke((MethodInvoker)delegate {
+                                    QuantityEntered(row, q, true);
+                                //});
                             }
                             
                         }
@@ -452,7 +469,9 @@ namespace LoginForm.QuotationModule
                             if (Int32.TryParse(col1, out q))
                             {
                                 cell.Value = q;
-                                QuantityEntered(row, q);
+                                //BeginInvoke((MethodInvoker)delegate {
+                                    QuantityEntered(row, q, true);
+                                //});
                             }
                         }
                         else
@@ -463,7 +482,9 @@ namespace LoginForm.QuotationModule
                                 if (Int32.TryParse(col1, out q))
                                 {
                                     cell.Value = q;
-                                    QuantityEntered(row, q);
+                                    //BeginInvoke((MethodInvoker)delegate {
+                                        QuantityEntered(row, q, true);
+                                    //});
                                 }
                             }
                             else if (!(qty % ssm == 0))
@@ -472,14 +493,17 @@ namespace LoginForm.QuotationModule
                                 if (Int32.TryParse(col1, out q))
                                 {
                                     cell.Value = q;
-                                    QuantityEntered(row, q);
+                                    //BeginInvoke((MethodInvoker)delegate {
+                                        QuantityEntered(row, q, true);
+                                    //});
                                 }
                             }
                             else
                             {
                                 //Fiyat hesapla ve satırdaki fiyat alanlarını değiştir.
-
-                                QuantityEntered(row, qty);
+                                //BeginInvoke((MethodInvoker)delegate {
+                                    QuantityEntered(row, qty, false);
+                                //});
                             }
                         }
                     }
@@ -507,10 +531,17 @@ namespace LoginForm.QuotationModule
                             row.Cells[dgDisc.Index].Value = (100 - ((price / upIme) * 100)).ToString("G29");
                             row.Cells[dgTotal.Index].Value = (price * qty).ToString("G29");
 
-                            dgAddedItems.CurrentCell = dgAddedItems.Rows[e.RowIndex + 1].Cells[dgProductCode.Index];
-
-                            CalculateTotalMargin();
                             CalculateSubTotal();
+                            CalculateTotalMargin();
+
+                            //BeginInvoke((MethodInvoker)delegate {
+                            try
+                            {
+                                dgAddedItems.CurrentCell = dgAddedItems.Rows[e.RowIndex + 1].Cells[dgProductCode.Index];
+                            }
+                            catch { }
+                                
+                            //});
                         }
                     }
                     break;
@@ -520,14 +551,19 @@ namespace LoginForm.QuotationModule
             }
         }
 
-        private void QuantityEntered(DataGridViewRow row, int qty)
+        private void QuantityEntered(DataGridViewRow row, int qty, bool ErrorCaused)
         {
-            decimal price = Decimal.Parse(BringBreakPointPrices(qty));
+            decimal price = Convert.ToDecimal(BringBreakPointPrices(qty));
             decimal oldPrice = Convert.ToDecimal(row.Cells[dgUPIME.Index].Value);
             if (oldPrice.ToString("G29") != price.ToString("G29"))
             {
+                decimal cost = Convert.ToDecimal(BringBreakCosts(qty));
+                row.Cells[dgCost.Index].Value = cost;
                 row.Cells[dgUPIME.Index].Value = price.ToString("G29");
                 row.Cells[dgUCUPCurr.Index].Value = price.ToString("G29");
+                decimal landingCost = qUtils.CalculateLandingCost(cost, Convert.ToDecimal(txtStandardWeight.Text));
+                row.Cells[dgLandingCost.Index].Value = landingCost;
+                row.Cells[dgMargin.Index].Value = qUtils.CalculateMargin(price, landingCost);
             }
             decimal ucUpCurr = Convert.ToDecimal(row.Cells[dgUCUPCurr.Index].Value);
             row.Cells[dgTotal.Index].Value = ((decimal)(ucUpCurr * qty)).ToString("G29");
@@ -538,13 +574,22 @@ namespace LoginForm.QuotationModule
             row.Cells[dgUCUPCurr.Index].ReadOnly = false;
             row.Cells[dgTargetUP.Index].ReadOnly = false;
             row.Cells[dgCompetitor.Index].ReadOnly = false;
-
-            CalculateTotalMargin();
+            
             CalculateSubTotal();
             CalculateTotalCost();
-
-            dgAddedItems.CurrentCell = row.Cells[dgUCUPCurr.Index];
-            SendKeys.Send("{UP}");
+            CalculateTotalMargin();
+            if (!ErrorCaused)
+            {
+                //BeginInvoke((MethodInvoker)delegate {
+                try
+                {
+                    dgAddedItems.CurrentCell = row.Cells[dgUCUPCurr.Index];
+                }
+                catch { }
+                
+                //});
+            }
+            
         }
 
         private void InsertItemToQuotation(DataGridViewRow row, IMEEntities db, CompleteItem item)
@@ -569,11 +614,10 @@ namespace LoginForm.QuotationModule
                         cell.ReadOnly = true;
                         break;
                 }
-
             }
+
             ItemDetailFill_Row(item, row);
-
-
+            
             if (tabControl1.SelectedTab != tabItemDetails)
             {
                 tabControl1.SelectedTab = tabItemDetails;
@@ -591,10 +635,10 @@ namespace LoginForm.QuotationModule
                 dgAddedItems.CurrentCell = row.Cells[dgQty.Index];
 
                 CalculateSubTotal();
-                CalculateTotalMargin();
                 CalculateTotalCost();
+                CalculateTotalMargin();
 
-                SendKeys.Send("{UP}");
+                //SendKeys.Send("{UP}");
             }
             else
             {
@@ -878,17 +922,20 @@ namespace LoginForm.QuotationModule
             row.Cells[dgMPN.Index].Value = item.MPN ?? "";
             row.Cells[dgDesc.Index].Value = item.Article_Desc ?? "";
 
+            
+            row.Cells[dgUOM.Index].Value = (!String.IsNullOrEmpty(item.Unit_Measure)) ? item.Unit_Measure : "EACH";
+            row.Cells[dgSSM.Index].Value = item.Pack_Quantity?.ToString() ?? "1";
+            row.Cells[dgUC.Index].Value = item.Unit_Content?.ToString() ?? "1";
+
             if (item.Col1Break != null)
             {
                 decimal landingCost = qUtils.CalculateLandingCost((decimal)item.DiscountedPrice1, (decimal)item.Standard_Weight / 1000);
                 row.Cells[dgLandingCost.Index].Value = landingCost.ToString("N3");
                 decimal UPIME = ConvertAmountGBPToCurrency((decimal)(item.Col1Price * _factor / _gbpValue));
                 row.Cells[dgUPIME.Index].Value = UPIME.ToString("N4");
-                row.Cells[dgUCUPCurr.Index].Value = (Convert.ToDecimal(row.Cells[dgUPIME.Index].Value)).ToString("N4");
+                row.Cells[dgUCUPCurr.Index].Value = UPIME.ToString("N4");
                 row.Cells[dgTotal.Index].Value = Convert.ToDecimal(UPIME * item.Col1Break).ToString("N4");
-                row.Cells[dgMargin.Index].Value = qUtils.CalculateMargin(
-                                                   Convert.ToDecimal(row.Cells[dgUPIME.Index].Value),
-                                                   ConvertAmountGBPToCurrency(landingCost));
+                row.Cells[dgMargin.Index].Value = qUtils.CalculateMargin(ConvertAmountToGBP(UPIME), landingCost);
                 row.Cells[dgQty.Index].Value = item.Col1Break?.ToString();
             }
             else
@@ -899,10 +946,6 @@ namespace LoginForm.QuotationModule
             row.Cells[dgUKPrice.Index].Value = item.Col1Price?.ToString();
             row.Cells[dgCost.Index].Value = item.DiscountedPrice1?.ToString() ?? "";
 
-            //row.Cells[dgStock.Index].Value =
-            row.Cells[dgUOM.Index].Value = (!String.IsNullOrEmpty(item.Unit_Measure)) ? item.Unit_Measure : "EACH";
-            row.Cells[dgSSM.Index].Value = item.Pack_Quantity?.ToString() ?? "1";
-            row.Cells[dgUC.Index].Value = item.Unit_Content?.ToString() ?? "1";
 
             if (!String.IsNullOrEmpty(item.Hazardous_Ind) || item.Hazardous_Ind != "N")
             {
@@ -956,6 +999,34 @@ namespace LoginForm.QuotationModule
             else if (Convert.ToDecimal(txtCol5Break.Text) <= adet)
             {
                 return String.Format("{0:0.0000}", Decimal.Parse(txtWeb5.Text)).ToString();
+            }
+            else
+            {
+                return "NoPrice";
+            }
+        }
+
+        private string BringBreakCosts(decimal adet)
+        {
+            if (Convert.ToDecimal(txtCol1Break.Text) <= adet && (adet < Convert.ToDecimal(txtCol2Break.Text) || Convert.ToDecimal(txtCol2Break.Text) == 0))
+            {
+                return String.Format("{0:0.0000}", Decimal.Parse(txtCost1.Text)).ToString();
+            }
+            else if (Convert.ToDecimal(txtCol2Break.Text) <= adet && (adet < Convert.ToDecimal(txtCol3Break.Text) || Convert.ToDecimal(txtCol3Break.Text) == 0))
+            {
+                return String.Format("{0:0.0000}", Decimal.Parse(txtCost2.Text)).ToString();
+            }
+            else if (Convert.ToDecimal(txtCol3Break.Text) <= adet && (adet < Convert.ToDecimal(txtCol4Break.Text) || Convert.ToDecimal(txtCol4Break.Text) == 0))
+            {
+                return String.Format("{0:0.0000}", Decimal.Parse(txtCost3.Text)).ToString();
+            }
+            else if (Convert.ToDecimal(txtCol4Break.Text) <= adet && (adet < Convert.ToDecimal(txtCol5Break.Text) || Convert.ToDecimal(txtCol5Break.Text) == 0))
+            {
+                return String.Format("{0:0.0000}", Decimal.Parse(txtCost4.Text)).ToString();
+            }
+            else if (Convert.ToDecimal(txtCol5Break.Text) <= adet)
+            {
+                return String.Format("{0:0.0000}", Decimal.Parse(txtCost5.Text)).ToString();
             }
             else
             {
@@ -1049,14 +1120,43 @@ namespace LoginForm.QuotationModule
             
             if (((CheckBox)sender).Checked)
             {
+                txtVatTotal.Font = new Font(txtVatTotal.Font, FontStyle.Underline);
                 decimal _VatAmount = (_totalExtra * (decimal)Utils.getManagement().VAT) / 100;
                 txtGrossTotal.Text = (_totalExtra + _VatAmount).ToString();
             }
             else
             {
+                txtVatTotal.Font = new Font(txtVatTotal.Font, FontStyle.Strikeout);
                 txtGrossTotal.Text = _totalExtra.ToString("N4");
             }
         }
-        
+
+        private void dgAddedItems_KeyDown(object sender, KeyEventArgs e)
+        {
+            DataGridViewCell c = dgAddedItems.CurrentCell;
+
+            if (c.ColumnIndex != (int)GridColumns.Price)
+            {
+                SendKeys.Send("{UP}");
+            }
+        }
+
+        private void dgAddedItems_CurrentCellChanged(object sender, EventArgs e)
+        {
+            if (dgAddedItems.CurrentRow != null && dgAddedItems.CurrentRow.IsNewRow)
+            {
+                if(dgAddedItems.CurrentCell.ColumnIndex != (int)GridColumns.ItemCode)
+                {
+                    dgAddedItems.CurrentCell.ReadOnly = true;
+                }
+            }
+        }
+
+        private void dgAddedItems_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            CalculateSubTotal();
+            CalculateTotalCost();
+            CalculateTotalMargin();
+        }
     }
 }

@@ -85,6 +85,8 @@ namespace LoginForm.DataSet
         public virtual DbSet<Hazardou> Hazardous { get; set; }
         public virtual DbSet<Holiday> Holidays { get; set; }
         public virtual DbSet<Item> Items { get; set; }
+        public virtual DbSet<ItemConvertionDetail> ItemConvertionDetails { get; set; }
+        public virtual DbSet<ItemConvertionMain> ItemConvertionMains { get; set; }
         public virtual DbSet<ItemHistory> ItemHistories { get; set; }
         public virtual DbSet<ItemNote> ItemNotes { get; set; }
         public virtual DbSet<JournalDetail> JournalDetails { get; set; }
@@ -4264,6 +4266,63 @@ namespace LoginForm.DataSet
                 new ObjectParameter("accountGroupName", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("MultipleAccountLedgerCrOrDr", accountGroupNameParameter);
+        }
+    
+        public virtual int OnSaleAdd(string articleNumber, string availabletoPromiseCheck, string bulkPack, Nullable<int> catalogueStatus, string discontinuedDate, string introductionDate, string nextScheduledDelivery, Nullable<int> onhandStockBalance, Nullable<int> packSize, Nullable<int> quantityonOrder, string smallOrderProtectionLevel, string substitutedBy, string substitutedFor)
+        {
+            var articleNumberParameter = articleNumber != null ?
+                new ObjectParameter("ArticleNumber", articleNumber) :
+                new ObjectParameter("ArticleNumber", typeof(string));
+    
+            var availabletoPromiseCheckParameter = availabletoPromiseCheck != null ?
+                new ObjectParameter("AvailabletoPromiseCheck", availabletoPromiseCheck) :
+                new ObjectParameter("AvailabletoPromiseCheck", typeof(string));
+    
+            var bulkPackParameter = bulkPack != null ?
+                new ObjectParameter("BulkPack", bulkPack) :
+                new ObjectParameter("BulkPack", typeof(string));
+    
+            var catalogueStatusParameter = catalogueStatus.HasValue ?
+                new ObjectParameter("CatalogueStatus", catalogueStatus) :
+                new ObjectParameter("CatalogueStatus", typeof(int));
+    
+            var discontinuedDateParameter = discontinuedDate != null ?
+                new ObjectParameter("DiscontinuedDate", discontinuedDate) :
+                new ObjectParameter("DiscontinuedDate", typeof(string));
+    
+            var introductionDateParameter = introductionDate != null ?
+                new ObjectParameter("IntroductionDate", introductionDate) :
+                new ObjectParameter("IntroductionDate", typeof(string));
+    
+            var nextScheduledDeliveryParameter = nextScheduledDelivery != null ?
+                new ObjectParameter("NextScheduledDelivery", nextScheduledDelivery) :
+                new ObjectParameter("NextScheduledDelivery", typeof(string));
+    
+            var onhandStockBalanceParameter = onhandStockBalance.HasValue ?
+                new ObjectParameter("OnhandStockBalance", onhandStockBalance) :
+                new ObjectParameter("OnhandStockBalance", typeof(int));
+    
+            var packSizeParameter = packSize.HasValue ?
+                new ObjectParameter("PackSize", packSize) :
+                new ObjectParameter("PackSize", typeof(int));
+    
+            var quantityonOrderParameter = quantityonOrder.HasValue ?
+                new ObjectParameter("QuantityonOrder", quantityonOrder) :
+                new ObjectParameter("QuantityonOrder", typeof(int));
+    
+            var smallOrderProtectionLevelParameter = smallOrderProtectionLevel != null ?
+                new ObjectParameter("SmallOrderProtectionLevel", smallOrderProtectionLevel) :
+                new ObjectParameter("SmallOrderProtectionLevel", typeof(string));
+    
+            var substitutedByParameter = substitutedBy != null ?
+                new ObjectParameter("SubstitutedBy", substitutedBy) :
+                new ObjectParameter("SubstitutedBy", typeof(string));
+    
+            var substitutedForParameter = substitutedFor != null ?
+                new ObjectParameter("SubstitutedFor", substitutedFor) :
+                new ObjectParameter("SubstitutedFor", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("OnSaleAdd", articleNumberParameter, availabletoPromiseCheckParameter, bulkPackParameter, catalogueStatusParameter, discontinuedDateParameter, introductionDateParameter, nextScheduledDeliveryParameter, onhandStockBalanceParameter, packSizeParameter, quantityonOrderParameter, smallOrderProtectionLevelParameter, substitutedByParameter, substitutedForParameter);
         }
     
         public virtual ObjectResult<OtherBranchStockSearch_Result> OtherBranchStockSearch(string articleNo)
