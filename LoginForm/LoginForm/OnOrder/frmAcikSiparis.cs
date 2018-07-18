@@ -54,7 +54,7 @@ namespace LoginForm.AçıkSipariş
                                KalanMiktar = (sd.SentItemQuantity != null) ? sd.Quantity - sd.SentItemQuantity : sd.Quantity,
                               UKfaturalananAdet= sd.SaleOrder.PurchaseOrderDetails.Where(x=>x.ItemCode==sd.ItemCode).FirstOrDefault().PurchaseOrder.RS_InvoiceDetails.Where(y=> y.ProductNumber==sd.ItemCode).FirstOrDefault().Quantity,
                                StockMiktari=sd.SaleOrder.StockReserves.Where(x=> x.ProductID==sd.ItemCode).FirstOrDefault().Qty,//faturalanmayı bekleyen adet. O müşteri için stock miktarı
-                               MusteriyeFaturalanmisBekleyenAdet=sd.SalesDetails.Sum(x=> x.qty).Value, //müşteriye faturalanmış bekleyen adet
+                               //MusteriyeFaturalanmisBekleyenAdet=sd.SalesDetails.Sum(x=> x.qty).Value, //müşteriye faturalanmış bekleyen adet
                                sd.SaleOrder.SaleDate,
                                sd.SaleOrder.RequestedDeliveryDate,//temsil edilecek tarih
                                //ıme varış tarihi. (Imenin Stoğuna giriş tarihi)
@@ -65,7 +65,7 @@ namespace LoginForm.AçıkSipariş
                                //gumruk durumu
                                sd.UPIME,
                                sd.SaleOrder.Customer.CustomerWorker.cw_name,
-                               sd.QuotationDetail.Quotation.SalesMasters.Where(x=>x.salesMasterId==sd.SaleOrderID).FirstOrDefault().date,
+                               //sd.QuotationDetail.Quotation.SalesMasters.Where(x=>x.salesMasterId==sd.SaleOrderID).FirstOrDefault().date,
                                BackOrderDate= sd.SaleOrder.PurchaseOrderDetails.Where(x => x.ItemCode == sd.ItemCode).FirstOrDefault().PurchaseOrder.BackOrders.FirstOrDefault().BackOrderMain.Date,
                                BackOrderAdet = sd.SaleOrder.PurchaseOrderDetails.Where(x => x.ItemCode == sd.ItemCode).FirstOrDefault().PurchaseOrder.BackOrders.FirstOrDefault().OutstandingQuantity,
                            }).ToList();
@@ -91,7 +91,7 @@ namespace LoginForm.AçıkSipariş
                 row.Cells[MusteriyeGonderilmisAdet.Index].Value = item.KalanMiktar;
                 row.Cells[UKfaturalananAdet.Index].Value = item.UKfaturalananAdet;
                 row.Cells[FaturalanmayiBekleyenAdet.Index].Value = item.StockMiktari;
-                row.Cells[MusteriyeFaturalanmisAdet.Index].Value = item.MusteriyeFaturalanmisBekleyenAdet;
+                //row.Cells[MusteriyeFaturalanmisAdet.Index].Value = item.MusteriyeFaturalanmisBekleyenAdet;
                 row.Cells[SiparisTarihi.Index].Value = item.SaleDate;
                 row.Cells[TeslimEdilecekTarih.Index].Value = item.RequestedDeliveryDate;
                 //ıme varış tarihi
@@ -102,7 +102,7 @@ namespace LoginForm.AçıkSipariş
                 //gumruk durumu
                 row.Cells[BirimFiyat.Index].Value = item.UPIME;
                 row.Cells[FirmaYetkilisi.Index].Value = item.cw_name;
-                row.Cells[RequestDeliveryDate.Index].Value = item.date;
+                //row.Cells[RequestDeliveryDate.Index].Value = item.date;
                 row.Cells[BackOrderAdet.Index].Value = item.BackOrderAdet;
                 row.Cells[BackOrderDate.Index].Value = item.BackOrderDate;
             }

@@ -1,5 +1,4 @@
-﻿using LoginForm.Account.Services;
-using LoginForm.DataSet;
+﻿using LoginForm.DataSet;
 using LoginForm.Services;
 using System;
 using System.Collections.Generic;
@@ -4921,30 +4920,6 @@ namespace LoginForm.QuotationModule
             foreach (var item in quotationVisibleFalseNames)
             {
                 dgSaleAddedItems.Columns[item].Visible = false;
-            }
-        }
-
-        public void CallFromVoucherTypeSelection(decimal decVoucherTypeId, string strVoucherTypeName)
-        {
-            try
-            {
-                decsalesQuotationTypeId = decVoucherTypeId;
-                VoucherTypeSP SPVoucherType = new VoucherTypeSP();
-                isAutomatic = SPVoucherType.CheckMethodOfVoucherNumbering(decsalesQuotationTypeId);
-                SuffixPrefixSP SPSuffixPrefix = new SuffixPrefixSP();
-                SuffixPrefix InfoSuffixPrefix = new SuffixPrefix();
-                InfoSuffixPrefix = SPSuffixPrefix.GetSuffixPrefixDetails(decsalesQuotationTypeId, dtpDate.Value);
-                decSalesQuotationPreffixSuffixId = InfoSuffixPrefix.suffixprefixId;
-                this.Text = strVoucherTypeName;
-                base.Show();
-                if (isAutomatic)
-                {
-                    dtpDate.Focus();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("SQ:14" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

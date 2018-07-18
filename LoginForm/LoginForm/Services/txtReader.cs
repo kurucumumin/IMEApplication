@@ -1,5 +1,4 @@
-﻿using LoginForm.Account.Services;
-using LoginForm.DataSet;
+﻿using LoginForm.DataSet;
 using Microsoft.Office.Interop.Excel;
 using System;
 using System.Collections.Generic;
@@ -189,110 +188,110 @@ namespace LoginForm
             }
         }
 
-        public static void PurchaseInvoicetxtReader()
-        {
-            IMEEntities IME = new IMEEntities();
+        //public static void PurchaseInvoicetxtReader()
+        //{
+        //    IMEEntities IME = new IMEEntities();
 
-            //Show the dialog and get result.
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.Filter = "txt files (*.txt)|*.txt";
-            DialogResult result1 = openFileDialog1.ShowDialog();
-            if (result1 == DialogResult.OK) // Test result.
-            {
+        //    //Show the dialog and get result.
+        //    OpenFileDialog openFileDialog1 = new OpenFileDialog();
+        //    openFileDialog1.Filter = "txt files (*.txt)|*.txt";
+        //    DialogResult result1 = openFileDialog1.ShowDialog();
+        //    if (result1 == DialogResult.OK) // Test result.
+        //    {
 
-                string[] lines = System.IO.File.ReadAllLines(openFileDialog1.FileName);
-                int a = 0;
-                bool isItem = false;
-                PurchaseInvoice pi = new PurchaseInvoice();
-                while (lines.Count() > a)
-                {
-                    if (lines[a] != "")
-                    {
-                        if (lines[a].Substring(0, 2) == "FH")
-                        {
-                            pi.CountryCode = lines[a].Substring(2, 3);
-                            if (lines[a].Substring(5, 10) != "") pi.OrderDate = Convert.ToDateTime(lines[a].Substring(5, 10));
-                            pi.OrderTime = lines[a].Substring(14, 5);
-                        }
-                        else if (lines[a].Substring(0, 2) == "IV")
-                        {
-                            pi.ShipmentReference = lines[a].Substring(2, 10);
-                            pi.BillingDocumentReference = lines[a].Substring(12, 10);
-                            pi.ShippingCondition = lines[a].Substring(22, 2);
-                            pi.BillingDocumentDate = lines[a].Substring(24, 8);
-                            pi.SupplyingECCompany = lines[a].Substring(32, 4);
-                            pi.CustomerReference = lines[a].Substring(34, 10);
-                            pi.InvoiceTaxValue = lines[a].Substring(54, 18);
-                            pi.InvoiceGoodsValue = lines[a].Substring(72, 18);
-                            pi.InvoiceNettValue = lines[a].Substring(90, 18);
-                            pi.Currency = lines[a].Substring(108, 3);
-                            pi.AirwayBillNumber = lines[a].Substring(111, 20);
+        //        string[] lines = System.IO.File.ReadAllLines(openFileDialog1.FileName);
+        //        int a = 0;
+        //        bool isItem = false;
+        //        PurchaseInvoice pi = new PurchaseInvoice();
+        //        while (lines.Count() > a)
+        //        {
+        //            if (lines[a] != "")
+        //            {
+        //                if (lines[a].Substring(0, 2) == "FH")
+        //                {
+        //                    pi.CountryCode = lines[a].Substring(2, 3);
+        //                    if (lines[a].Substring(5, 10) != "") pi.OrderDate = Convert.ToDateTime(lines[a].Substring(5, 10));
+        //                    pi.OrderTime = lines[a].Substring(14, 5);
+        //                }
+        //                else if (lines[a].Substring(0, 2) == "IV")
+        //                {
+        //                    pi.ShipmentReference = lines[a].Substring(2, 10);
+        //                    pi.BillingDocumentReference = lines[a].Substring(12, 10);
+        //                    pi.ShippingCondition = lines[a].Substring(22, 2);
+        //                    pi.BillingDocumentDate = lines[a].Substring(24, 8);
+        //                    pi.SupplyingECCompany = lines[a].Substring(32, 4);
+        //                    pi.CustomerReference = lines[a].Substring(34, 10);
+        //                    pi.InvoiceTaxValue = lines[a].Substring(54, 18);
+        //                    pi.InvoiceGoodsValue = lines[a].Substring(72, 18);
+        //                    pi.InvoiceNettValue = lines[a].Substring(90, 18);
+        //                    pi.Currency = lines[a].Substring(108, 3);
+        //                    pi.AirwayBillNumber = lines[a].Substring(111, 20);
 
-                        }
-                        else if (lines[a].Substring(0, 2) == "FT")
-                        {
-                            pi.LineControl = lines[a].Substring(2, 4);
-                        }
-                        else if (lines[a].Substring(0, 2) == "IC")
-                        {
-                            pi.Surchargeordiscountindicator = lines[a].Substring(2, 3);
-                            pi.ConditionType = lines[a].Substring(5, 4);
-                            pi.ConditionText = lines[a].Substring(9, 80);
-                            pi.ConditionValueN = lines[a].Substring(89, 18);
-                        }
-                        else if (lines[a].Substring(0, 2) == "CT")
-                        {
-                            pi.LineControl2 = lines[a].Substring(2, 4);
-                        }
-                    }
-                    a++;
-                }
-                if (IME.PurchaseInvoices.Where(b => b.BillingDocumentReference == pi.BillingDocumentReference).FirstOrDefault() == null)
-                {
-                    IME.PurchaseInvoices.Add(pi);
-                    IME.SaveChanges();
-                    a = 0;
+        //                }
+        //                else if (lines[a].Substring(0, 2) == "FT")
+        //                {
+        //                    pi.LineControl = lines[a].Substring(2, 4);
+        //                }
+        //                else if (lines[a].Substring(0, 2) == "IC")
+        //                {
+        //                    pi.Surchargeordiscountindicator = lines[a].Substring(2, 3);
+        //                    pi.ConditionType = lines[a].Substring(5, 4);
+        //                    pi.ConditionText = lines[a].Substring(9, 80);
+        //                    pi.ConditionValueN = lines[a].Substring(89, 18);
+        //                }
+        //                else if (lines[a].Substring(0, 2) == "CT")
+        //                {
+        //                    pi.LineControl2 = lines[a].Substring(2, 4);
+        //                }
+        //            }
+        //            a++;
+        //        }
+        //        if (IME.PurchaseInvoices.Where(b => b.BillingDocumentReference == pi.BillingDocumentReference).FirstOrDefault() == null)
+        //        {
+        //            IME.PurchaseInvoices.Add(pi);
+        //            IME.SaveChanges();
+        //            a = 0;
 
-                    while (lines.Count() > a)
-                    {
-                        if (lines[a].Substring(0, 2) == "OI")
-                        {
-                            PurchaseInvoiceDetail purchaseInvoiceDetail = new PurchaseInvoiceDetail();
-                            purchaseInvoiceDetail.PurchaseInvoiceID = pi.ID;
-                            purchaseInvoiceDetail.PurchaseOrderNumber = lines[a].Substring(2, 30);
-                            purchaseInvoiceDetail.PurchaseOrderItemNumber = lines[a].Substring(32, 6);
-                            purchaseInvoiceDetail.ProductNumber = lines[a].Substring(38, 18);
-                            purchaseInvoiceDetail.BillingItemNumber = lines[a].Substring(56, 6);
-                            purchaseInvoiceDetail.Quantity = lines[a].Substring(62, 15);
-                            purchaseInvoiceDetail.SalesUnit = lines[a].Substring(77, 3);
-                            purchaseInvoiceDetail.UnitPrice = lines[a].Substring(80, 11);
-                            purchaseInvoiceDetail.Discount = lines[a].Substring(91, 11);
-                            purchaseInvoiceDetail.Tax = lines[a].Substring(102, 11);
-                            purchaseInvoiceDetail.GoodsValue = lines[a].Substring(113, 11);
-                            purchaseInvoiceDetail.Amount = lines[a].Substring(124, 11);
-                            purchaseInvoiceDetail.CCCNno = lines[a].Substring(135, 15);
-                            purchaseInvoiceDetail.CountryofOrigin = lines[a].Substring(150, 3);
-                            purchaseInvoiceDetail.ArticleDescription = lines[a].Substring(153, 40);
-                            purchaseInvoiceDetail.DeliveryNumber = lines[a].Substring(193, 10);
-                            purchaseInvoiceDetail.DeliveryItemNumber = lines[a].Substring(203, 6);
-                            IME.PurchaseInvoiceDetails.Add(purchaseInvoiceDetail);
-                            IME.SaveChanges();
-                            isItem = true;
-                        }
-                        a++;
-                    }
-                    a = 0;
-                    MessageBox.Show("Purchase Invoice loaded succesfully");
-                }
-                else
-                {
-                    MessageBox.Show("Purchase Invoice already exist");
-                }
+        //            while (lines.Count() > a)
+        //            {
+        //                if (lines[a].Substring(0, 2) == "OI")
+        //                {
+        //                    PurchaseInvoiceDetail purchaseInvoiceDetail = new PurchaseInvoiceDetail();
+        //                    purchaseInvoiceDetail.PurchaseInvoiceID = pi.ID;
+        //                    purchaseInvoiceDetail.PurchaseOrderNumber = lines[a].Substring(2, 30);
+        //                    purchaseInvoiceDetail.PurchaseOrderItemNumber = lines[a].Substring(32, 6);
+        //                    purchaseInvoiceDetail.ProductNumber = lines[a].Substring(38, 18);
+        //                    purchaseInvoiceDetail.BillingItemNumber = lines[a].Substring(56, 6);
+        //                    purchaseInvoiceDetail.Quantity = lines[a].Substring(62, 15);
+        //                    purchaseInvoiceDetail.SalesUnit = lines[a].Substring(77, 3);
+        //                    purchaseInvoiceDetail.UnitPrice = lines[a].Substring(80, 11);
+        //                    purchaseInvoiceDetail.Discount = lines[a].Substring(91, 11);
+        //                    purchaseInvoiceDetail.Tax = lines[a].Substring(102, 11);
+        //                    purchaseInvoiceDetail.GoodsValue = lines[a].Substring(113, 11);
+        //                    purchaseInvoiceDetail.Amount = lines[a].Substring(124, 11);
+        //                    purchaseInvoiceDetail.CCCNno = lines[a].Substring(135, 15);
+        //                    purchaseInvoiceDetail.CountryofOrigin = lines[a].Substring(150, 3);
+        //                    purchaseInvoiceDetail.ArticleDescription = lines[a].Substring(153, 40);
+        //                    purchaseInvoiceDetail.DeliveryNumber = lines[a].Substring(193, 10);
+        //                    purchaseInvoiceDetail.DeliveryItemNumber = lines[a].Substring(203, 6);
+        //                    IME.PurchaseInvoiceDetails.Add(purchaseInvoiceDetail);
+        //                    IME.SaveChanges();
+        //                    isItem = true;
+        //                }
+        //                a++;
+        //            }
+        //            a = 0;
+        //            MessageBox.Show("Purchase Invoice loaded succesfully");
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("Purchase Invoice already exist");
+        //        }
 
 
 
-            }
-        }
+        //    }
+        //}
 
         public static int SuperDiskRead()
         {
@@ -3189,15 +3188,12 @@ namespace LoginForm
     q.RFQNo,
     q.CurrType,
     q.QuotationMainContact,
-    q.ledgerId,
-    q.voucherTypeId,
     q.approved,
     q.invoiceNo,
     q.voucherNo,
     q.RepresentativeID,
     q.RepresentativeID2,
     q.ExchangeRateID,
-    q.suffixPrefixId,
     q.DeliveryDate,
     q.GrossTotal
                         );
@@ -3358,35 +3354,35 @@ namespace LoginForm
 
                     #region Creates deliveryNote for PurchaseInvoices from RS
 
-                    DeliveryNoteMaster dnm = new DeliveryNoteMaster();
+                    //DeliveryNoteMaster dnm = new DeliveryNoteMaster();
 
-                    string strVoucher = new Account.Services.TransactionsGeneralFill().VoucherNumberAutomaicGeneration(18, 0, new IMEEntities().CurrentDate().FirstOrDefault().Value, "DeliveryNoteMaster");
-                    dnm.voucherNo = strVoucher;
+                    //string strVoucher = new Account.Services.TransactionsGeneralFill().VoucherNumberAutomaicGeneration(18, 0, new IMEEntities().CurrentDate().FirstOrDefault().Value, "DeliveryNoteMaster");
+                    //dnm.voucherNo = strVoucher;
 
-                    SuffixPrefix infoSuffixPrefix = new SuffixPrefix();
-                    infoSuffixPrefix = new SuffixPrefixSP().GetSuffixPrefixDetails(18, IME.CurrentDate().FirstOrDefault().Value);
+                    //SuffixPrefix infoSuffixPrefix = new SuffixPrefix();
+                    //infoSuffixPrefix = new SuffixPrefixSP().GetSuffixPrefixDetails(18, IME.CurrentDate().FirstOrDefault().Value);
 
-                    dnm.DeliveryNoteNo = infoSuffixPrefix.prefix + strVoucher + infoSuffixPrefix.suffix;
-                    dnm.voucherTypeId = 18;
-                    dnm.suffixPrefixId = infoSuffixPrefix.suffixprefixId;
-                    dnm.date = DateTime.Now;
-
-
+                    //dnm.DeliveryNoteNo = infoSuffixPrefix.prefix + strVoucher + infoSuffixPrefix.suffix;
+                    //dnm.voucherTypeId = 18;
+                    //dnm.suffixPrefixId = infoSuffixPrefix.suffixprefixId;
+                    //dnm.date = DateTime.Now;
 
 
 
 
 
 
-                    dnm.ledgerId = null;
-                    dnm.orderMasterId = "";
-                    dnm.pricinglevelId = null;
-                    dnm.narration = null;
-                    dnm.exchangeRateId = null /*adsfasdf*/;
-                    dnm.totalAmount = 0;
-                    dnm.userId = Services.Utils.getCurrentUser().WorkerID;
-                    dnm.financialYearId = Services.Utils.getManagement().CurrentFinancialYear;
-                    dnm.salesAccount = null;
+
+
+                    //dnm.ledgerId = null;
+                    //dnm.orderMasterId = "";
+                    //dnm.pricinglevelId = null;
+                    //dnm.narration = null;
+                    //dnm.exchangeRateId = null /*adsfasdf*/;
+                    //dnm.totalAmount = 0;
+                    //dnm.userId = Services.Utils.getCurrentUser().WorkerID;
+                    //dnm.financialYearId = Services.Utils.getManagement().CurrentFinancialYear;
+                    //dnm.salesAccount = null;
 
                     #endregion
 

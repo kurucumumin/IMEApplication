@@ -11,6 +11,7 @@ using LoginForm.DataSet;
 using LoginForm.Services;
 using System.Globalization;
 using System.Threading;
+using LoginForm.User;
 
 //using LoginForm.Quotation;
 
@@ -140,7 +141,7 @@ namespace LoginForm
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            new Printttt().PrintBill();
+            new TabbedMDI1().Show();
         }
     }
 }

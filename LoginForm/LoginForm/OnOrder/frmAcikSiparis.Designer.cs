@@ -69,18 +69,20 @@
             // 
             // btnExcel
             // 
-            this.btnExcel.Location = new System.Drawing.Point(100, 12);
+            this.btnExcel.Location = new System.Drawing.Point(133, 15);
+            this.btnExcel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnExcel.Name = "btnExcel";
-            this.btnExcel.Size = new System.Drawing.Size(82, 75);
+            this.btnExcel.Size = new System.Drawing.Size(109, 92);
             this.btnExcel.TabIndex = 8;
             this.btnExcel.Text = "Excel";
             this.btnExcel.UseVisualStyleBackColor = true;
             // 
             // btnAnaliz
             // 
-            this.btnAnaliz.Location = new System.Drawing.Point(12, 12);
+            this.btnAnaliz.Location = new System.Drawing.Point(16, 15);
+            this.btnAnaliz.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAnaliz.Name = "btnAnaliz";
-            this.btnAnaliz.Size = new System.Drawing.Size(82, 75);
+            this.btnAnaliz.Size = new System.Drawing.Size(109, 92);
             this.btnAnaliz.TabIndex = 6;
             this.btnAnaliz.Text = "Analysis";
             this.btnAnaliz.UseVisualStyleBackColor = true;
@@ -88,9 +90,10 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(188, 12);
+            this.btnExit.Location = new System.Drawing.Point(251, 15);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(82, 75);
+            this.btnExit.Size = new System.Drawing.Size(109, 92);
             this.btnExit.TabIndex = 5;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -98,25 +101,28 @@
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(12, 93);
+            this.txtSearch.Location = new System.Drawing.Point(16, 114);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(482, 20);
+            this.txtSearch.Size = new System.Drawing.Size(641, 22);
             this.txtSearch.TabIndex = 9;
             // 
             // btnAra
             // 
-            this.btnAra.Location = new System.Drawing.Point(504, 93);
+            this.btnAra.Location = new System.Drawing.Point(672, 114);
+            this.btnAra.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAra.Name = "btnAra";
-            this.btnAra.Size = new System.Drawing.Size(121, 20);
+            this.btnAra.Size = new System.Drawing.Size(161, 25);
             this.btnAra.TabIndex = 11;
             this.btnAra.Text = "Search";
             this.btnAra.UseVisualStyleBackColor = true;
             // 
             // btnTemizli
             // 
-            this.btnTemizli.Location = new System.Drawing.Point(631, 93);
+            this.btnTemizli.Location = new System.Drawing.Point(841, 114);
+            this.btnTemizli.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnTemizli.Name = "btnTemizli";
-            this.btnTemizli.Size = new System.Drawing.Size(121, 20);
+            this.btnTemizli.Size = new System.Drawing.Size(161, 25);
             this.btnTemizli.TabIndex = 10;
             this.btnTemizli.Text = "Clean";
             this.btnTemizli.UseVisualStyleBackColor = true;
@@ -156,10 +162,11 @@
             this.RequestDeliveryDate,
             this.BackOrderDate,
             this.BackOrderAdet});
-            this.dgAcikSiparis.Location = new System.Drawing.Point(12, 119);
+            this.dgAcikSiparis.Location = new System.Drawing.Point(16, 146);
+            this.dgAcikSiparis.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgAcikSiparis.Name = "dgAcikSiparis";
             this.dgAcikSiparis.ReadOnly = true;
-            this.dgAcikSiparis.Size = new System.Drawing.Size(1137, 432);
+            this.dgAcikSiparis.Size = new System.Drawing.Size(1516, 532);
             this.dgAcikSiparis.TabIndex = 12;
             // 
             // SiparisNo
@@ -168,7 +175,7 @@
             this.SiparisNo.HeaderText = "SiparisNo";
             this.SiparisNo.Name = "SiparisNo";
             this.SiparisNo.ReadOnly = true;
-            this.SiparisNo.Width = 77;
+            this.SiparisNo.Width = 98;
             // 
             // MusteriSiparisNo
             // 
@@ -176,7 +183,7 @@
             this.MusteriSiparisNo.HeaderText = "MusteriSiparisNo";
             this.MusteriSiparisNo.Name = "MusteriSiparisNo";
             this.MusteriSiparisNo.ReadOnly = true;
-            this.MusteriSiparisNo.Width = 111;
+            this.MusteriSiparisNo.Width = 144;
             // 
             // Tedarikci
             // 
@@ -184,7 +191,7 @@
             this.Tedarikci.HeaderText = "Tedarikci";
             this.Tedarikci.Name = "Tedarikci";
             this.Tedarikci.ReadOnly = true;
-            this.Tedarikci.Width = 76;
+            this.Tedarikci.Width = 95;
             // 
             // TeklifNo
             // 
@@ -192,7 +199,7 @@
             this.TeklifNo.HeaderText = "TeklifNo";
             this.TeklifNo.Name = "TeklifNo";
             this.TeklifNo.ReadOnly = true;
-            this.TeklifNo.Width = 72;
+            this.TeklifNo.Width = 89;
             // 
             // CariUnvani
             // 
@@ -200,7 +207,7 @@
             this.CariUnvani.HeaderText = "CariUnvani";
             this.CariUnvani.Name = "CariUnvani";
             this.CariUnvani.ReadOnly = true;
-            this.CariUnvani.Width = 84;
+            this.CariUnvani.Width = 106;
             // 
             // Hazırlayan
             // 
@@ -208,7 +215,7 @@
             this.Hazırlayan.HeaderText = "Hazırlayan";
             this.Hazırlayan.Name = "Hazırlayan";
             this.Hazırlayan.ReadOnly = true;
-            this.Hazırlayan.Width = 81;
+            this.Hazırlayan.Width = 104;
             // 
             // FaturaTemsilcisi
             // 
@@ -216,7 +223,7 @@
             this.FaturaTemsilcisi.HeaderText = "FaturaTemsilcisi";
             this.FaturaTemsilcisi.Name = "FaturaTemsilcisi";
             this.FaturaTemsilcisi.ReadOnly = true;
-            this.FaturaTemsilcisi.Width = 107;
+            this.FaturaTemsilcisi.Width = 139;
             // 
             // RSkodu
             // 
@@ -230,7 +237,7 @@
             this.HZ.HeaderText = "HZ";
             this.HZ.Name = "HZ";
             this.HZ.ReadOnly = true;
-            this.HZ.Width = 47;
+            this.HZ.Width = 56;
             // 
             // CAL
             // 
@@ -244,7 +251,7 @@
             this.Adet.HeaderText = "Adet";
             this.Adet.Name = "Adet";
             this.Adet.ReadOnly = true;
-            this.Adet.Width = 54;
+            this.Adet.Width = 66;
             // 
             // Birim
             // 
@@ -252,7 +259,7 @@
             this.Birim.HeaderText = "Birim";
             this.Birim.Name = "Birim";
             this.Birim.ReadOnly = true;
-            this.Birim.Width = 54;
+            this.Birim.Width = 68;
             // 
             // MusteriyeGonderilmisAdet
             // 
@@ -260,7 +267,7 @@
             this.MusteriyeGonderilmisAdet.HeaderText = "MusteriyeGonderilmisAdet";
             this.MusteriyeGonderilmisAdet.Name = "MusteriyeGonderilmisAdet";
             this.MusteriyeGonderilmisAdet.ReadOnly = true;
-            this.MusteriyeGonderilmisAdet.Width = 153;
+            this.MusteriyeGonderilmisAdet.Width = 202;
             // 
             // UKfaturalananAdet
             // 
@@ -268,7 +275,7 @@
             this.UKfaturalananAdet.HeaderText = "UKfaturalananAdet";
             this.UKfaturalananAdet.Name = "UKfaturalananAdet";
             this.UKfaturalananAdet.ReadOnly = true;
-            this.UKfaturalananAdet.Width = 122;
+            this.UKfaturalananAdet.Width = 157;
             // 
             // FaturalanmayiBekleyenAdet
             // 
@@ -276,7 +283,7 @@
             this.FaturalanmayiBekleyenAdet.HeaderText = "FaturalanmayiBekleyenAdet";
             this.FaturalanmayiBekleyenAdet.Name = "FaturalanmayiBekleyenAdet";
             this.FaturalanmayiBekleyenAdet.ReadOnly = true;
-            this.FaturalanmayiBekleyenAdet.Width = 163;
+            this.FaturalanmayiBekleyenAdet.Width = 213;
             // 
             // MusteriyeFaturalanmisAdet
             // 
@@ -284,7 +291,7 @@
             this.MusteriyeFaturalanmisAdet.HeaderText = "MusteriyeFaturalanmisAdet";
             this.MusteriyeFaturalanmisAdet.Name = "MusteriyeFaturalanmisAdet";
             this.MusteriyeFaturalanmisAdet.ReadOnly = true;
-            this.MusteriyeFaturalanmisAdet.Width = 158;
+            this.MusteriyeFaturalanmisAdet.Width = 208;
             // 
             // SiparisTarihi
             // 
@@ -292,7 +299,7 @@
             this.SiparisTarihi.HeaderText = "SiparisTarihi";
             this.SiparisTarihi.Name = "SiparisTarihi";
             this.SiparisTarihi.ReadOnly = true;
-            this.SiparisTarihi.Width = 89;
+            this.SiparisTarihi.Width = 116;
             // 
             // TeslimEdilecekTarih
             // 
@@ -300,7 +307,7 @@
             this.TeslimEdilecekTarih.HeaderText = "TeslimEdilecekTarih";
             this.TeslimEdilecekTarih.Name = "TeslimEdilecekTarih";
             this.TeslimEdilecekTarih.ReadOnly = true;
-            this.TeslimEdilecekTarih.Width = 127;
+            this.TeslimEdilecekTarih.Width = 164;
             // 
             // IMEvarisTarihi
             // 
@@ -308,7 +315,7 @@
             this.IMEvarisTarihi.HeaderText = "IMEvarisTarihi";
             this.IMEvarisTarihi.Name = "IMEvarisTarihi";
             this.IMEvarisTarihi.ReadOnly = true;
-            this.IMEvarisTarihi.Width = 99;
+            this.IMEvarisTarihi.Width = 126;
             // 
             // SiparisTuru
             // 
@@ -316,7 +323,7 @@
             this.SiparisTuru.HeaderText = "SiparisTuru";
             this.SiparisTuru.Name = "SiparisTuru";
             this.SiparisTuru.ReadOnly = true;
-            this.SiparisTuru.Width = 85;
+            this.SiparisTuru.Width = 110;
             // 
             // MPN
             // 
@@ -324,7 +331,7 @@
             this.MPN.HeaderText = "MPN";
             this.MPN.Name = "MPN";
             this.MPN.ReadOnly = true;
-            this.MPN.Width = 56;
+            this.MPN.Width = 67;
             // 
             // StockKodu
             // 
@@ -376,9 +383,9 @@
             // 
             // frmAcikSiparis
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1162, 562);
+            this.ClientSize = new System.Drawing.Size(1549, 692);
             this.Controls.Add(this.dgAcikSiparis);
             this.Controls.Add(this.btnAra);
             this.Controls.Add(this.btnTemizli);
@@ -386,6 +393,7 @@
             this.Controls.Add(this.btnExcel);
             this.Controls.Add(this.btnAnaliz);
             this.Controls.Add(this.btnExit);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmAcikSiparis";
             this.Text = "Açık Sipariş";
             this.Load += new System.EventHandler(this.frmAcikSiparis_Load);

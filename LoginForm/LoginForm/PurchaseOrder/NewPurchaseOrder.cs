@@ -1,16 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using LoginForm.DataSet;
-using LoginForm.Services;
-using System.Data.SqlClient;
-using LoginForm.Account.Services;
 
 namespace LoginForm.PurchaseOrder
 {
@@ -277,30 +270,6 @@ namespace LoginForm.PurchaseOrder
             dgPurchase.Columns[14].ReadOnly = true;
             txtOrderNumber.Enabled = false;
             btnCreate.Enabled = false;
-        }
-
-        public void CallFromVoucherTypeSelection(decimal decPurchaseTypeId, string strPurchaseOrderTypeName)
-        {
-            try
-            {
-                DateTime date = IME.CurrentDate().FirstOrDefault().Value;
-                VoucherTypeSP spVoucherType = new VoucherTypeSP();
-                SuffixPrefix infoSuffixPrefix = new SuffixPrefix();
-                SuffixPrefixSP spSuffisprefix = new SuffixPrefixSP();
-                decPurchaseOrderTypeId = decPurchaseTypeId;
-                isAutomatic = spVoucherType.CheckMethodOfVoucherNumbering(decPurchaseOrderTypeId);
-                infoSuffixPrefix = spSuffisprefix.GetSuffixPrefixDetails(decPurchaseOrderTypeId, date);
-                decPurchaseSuffixPrefixId = infoSuffixPrefix.suffixprefixId;
-                strPrefix = infoSuffixPrefix.prefix;
-                strSuffix = infoSuffixPrefix.suffix;
-                this.Text = strPurchaseOrderTypeName;
-                base.Show();
-                //Clear();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("PO29:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
         }
 
         private void btnSelect_Click_1(object sender, EventArgs e)

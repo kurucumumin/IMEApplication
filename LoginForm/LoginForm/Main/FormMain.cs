@@ -124,11 +124,5 @@ namespace LoginForm
                 btnDevelopment.Visible = false;
             }
         }
-
-        private void btnAccounting_Click(object sender, EventArgs e)
-        {
-            OpenNavTabLvl1(controlAccounting, (Button)sender);
-            controlAccounting.parent = this;
-        }
     }
 }

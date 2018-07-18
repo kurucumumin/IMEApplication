@@ -10,7 +10,6 @@
 //GNU General Public License for more details.
 //You should have received a copy of the GNU General Public License
 //along with this program.  If not, see <http://www.gnu.org/licenses/>.
-using LoginForm.Account.Services;
 using LoginForm.DataSet;
 using System;
 using System.Collections.Generic;
@@ -26,48 +25,48 @@ namespace Open_Miracle
         /// <param name="decAmount"></param>
         /// <param name="decCurrId"></param>
         /// <returns></returns>
-        public string AmountWords(decimal decAmount, decimal decCurrId)
-        {
-            string AountInWords = string.Empty; // To return the amount in words
-            Currency currencyInfo = new CurrencySP().CurrencyView(decCurrId);
-            //decAmount = Math.Round(decAmount, currencyInfo.NoOfDecimalPlaces); //Rounding according to decimal places of currency
-            string strAmount = decAmount.ToString(); // Just keeping the whole amount as string for performing split operation on it
-            string strAmountinwordsOfIntiger = string.Empty;  // To hold amount in words of intiger
-            string strAmountInWordsOfDecimal = string.Empty; // To hold amoutn in words of decimal part
-            string[] strPartsArray = strAmount.Split('.'); // Splitting with "." to get intiger part and decimal part seperately
-            string strDecimaPart = string.Empty;                     // To hold decimal part
-            if (strPartsArray.Length > 1)
-                if (strPartsArray[1] != null)
-                    strDecimaPart = strPartsArray[1]; // Holding decimal portion if any
-            if (strPartsArray[0] != null)
-                strAmount = strPartsArray[0];    // Holding intiger part of amount
-            else
-                strAmount = string.Empty; ;
-            if (strAmount.Trim() != string.Empty && decimal.Parse(strAmount) != 0)
-                strAmountinwordsOfIntiger = NumberToText(long.Parse(strAmount));
-            if (strDecimaPart.Trim() != string.Empty && decimal.Parse(strDecimaPart) != 0)
-                strAmountInWordsOfDecimal = NumberToText(long.Parse(strDecimaPart));
-            SettingsSP spSettings = new SettingsSP();
-            if (spSettings.SettingsStatusCheck("ShowCurrencySymbol") != "Yes")
-            {
-                // Showing currency as suffix
-                if (strAmountinwordsOfIntiger != string.Empty)
-                    AountInWords = strAmountinwordsOfIntiger + " " + currencyInfo.currencyName;
-                if (strAmountInWordsOfDecimal != string.Empty)
-                    AountInWords = AountInWords + " and " + strAmountInWordsOfDecimal + " " + currencyInfo.subunitName;
-                AountInWords = AountInWords + " only";
-            }
-            else
-            {
-                // Showing currency as prefix
-                if (strAmountinwordsOfIntiger != string.Empty)
-                    AountInWords = currencyInfo.currencyName + " " + strAmountinwordsOfIntiger;
-                if (strAmountInWordsOfDecimal != string.Empty)
-                    AountInWords = AountInWords + " and " + currencyInfo.subunitName + " " + strAmountInWordsOfDecimal;
-                AountInWords = AountInWords + " only";
-            }
-            return AountInWords;
-        }
+        //public string AmountWords(decimal decAmount, decimal decCurrId)
+        //{
+        //    string AountInWords = string.Empty; // To return the amount in words
+        //    Currency currencyInfo = new CurrencySP().CurrencyView(decCurrId);
+        //    //decAmount = Math.Round(decAmount, currencyInfo.NoOfDecimalPlaces); //Rounding according to decimal places of currency
+        //    string strAmount = decAmount.ToString(); // Just keeping the whole amount as string for performing split operation on it
+        //    string strAmountinwordsOfIntiger = string.Empty;  // To hold amount in words of intiger
+        //    string strAmountInWordsOfDecimal = string.Empty; // To hold amoutn in words of decimal part
+        //    string[] strPartsArray = strAmount.Split('.'); // Splitting with "." to get intiger part and decimal part seperately
+        //    string strDecimaPart = string.Empty;                     // To hold decimal part
+        //    if (strPartsArray.Length > 1)
+        //        if (strPartsArray[1] != null)
+        //            strDecimaPart = strPartsArray[1]; // Holding decimal portion if any
+        //    if (strPartsArray[0] != null)
+        //        strAmount = strPartsArray[0];    // Holding intiger part of amount
+        //    else
+        //        strAmount = string.Empty; ;
+        //    if (strAmount.Trim() != string.Empty && decimal.Parse(strAmount) != 0)
+        //        strAmountinwordsOfIntiger = NumberToText(long.Parse(strAmount));
+        //    if (strDecimaPart.Trim() != string.Empty && decimal.Parse(strDecimaPart) != 0)
+        //        strAmountInWordsOfDecimal = NumberToText(long.Parse(strDecimaPart));
+        //    SettingsSP spSettings = new SettingsSP();
+        //    if (spSettings.SettingsStatusCheck("ShowCurrencySymbol") != "Yes")
+        //    {
+        //        // Showing currency as suffix
+        //        if (strAmountinwordsOfIntiger != string.Empty)
+        //            AountInWords = strAmountinwordsOfIntiger + " " + currencyInfo.currencyName;
+        //        if (strAmountInWordsOfDecimal != string.Empty)
+        //            AountInWords = AountInWords + " and " + strAmountInWordsOfDecimal + " " + currencyInfo.subunitName;
+        //        AountInWords = AountInWords + " only";
+        //    }
+        //    else
+        //    {
+        //        // Showing currency as prefix
+        //        if (strAmountinwordsOfIntiger != string.Empty)
+        //            AountInWords = currencyInfo.currencyName + " " + strAmountinwordsOfIntiger;
+        //        if (strAmountInWordsOfDecimal != string.Empty)
+        //            AountInWords = AountInWords + " and " + currencyInfo.subunitName + " " + strAmountInWordsOfDecimal;
+        //        AountInWords = AountInWords + " only";
+        //    }
+        //    return AountInWords;
+        //}
         /// <summary>
         /// Function to return number in text
         /// </summary>
