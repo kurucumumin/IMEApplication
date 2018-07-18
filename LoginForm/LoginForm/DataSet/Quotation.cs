@@ -18,7 +18,6 @@ namespace LoginForm.DataSet
         public Quotation()
         {
             this.QuotationDetails = new HashSet<QuotationDetail>();
-            this.SalesMasters = new HashSet<SalesMaster>();
         }
     
         public string CustomerID { get; set; }
@@ -44,15 +43,12 @@ namespace LoginForm.DataSet
         public string RFQNo { get; set; }
         public string CurrType { get; set; }
         public Nullable<int> QuotationMainContact { get; set; }
-        public Nullable<decimal> ledgerId { get; set; }
-        public Nullable<decimal> voucherTypeId { get; set; }
         public Nullable<bool> approved { get; set; }
         public string invoiceNo { get; set; }
         public string voucherNo { get; set; }
         public Nullable<int> RepresentativeID { get; set; }
         public Nullable<int> RepresentativeID2 { get; set; }
         public Nullable<int> ExchangeRateID { get; set; }
-        public Nullable<decimal> suffixPrefixId { get; set; }
         public Nullable<System.DateTime> DeliveryDate { get; set; }
         public Nullable<decimal> GrossTotal { get; set; }
         public Nullable<decimal> CurrencyID { get; set; }
@@ -68,9 +64,5 @@ namespace LoginForm.DataSet
         public virtual ICollection<QuotationDetail> QuotationDetails { get; set; }
         public virtual Worker Worker { get; set; }
         public virtual Worker Worker1 { get; set; }
-        public virtual SuffixPrefix SuffixPrefix { get; set; }
-        public virtual VoucherType VoucherType { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SalesMaster> SalesMasters { get; set; }
     }
 }

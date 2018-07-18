@@ -17,7 +17,6 @@ namespace LoginForm.DataSet
         public int ID { get; set; }
         public string VoucherNumber { get; set; }
         public Nullable<System.DateTime> VoucherDate { get; set; }
-        public Nullable<decimal> VoucherTypeID { get; set; }
         public string CurrentCustomerID { get; set; }
         public Nullable<int> InputQuantity { get; set; }
         public Nullable<decimal> InputAmount { get; set; }
@@ -26,11 +25,9 @@ namespace LoginForm.DataSet
         public Nullable<decimal> OutputAmount { get; set; }
         public Nullable<decimal> OutputTotalAmount { get; set; }
         public Nullable<decimal> FinalTotal { get; set; }
-        public Nullable<decimal> CurrencyID { get; set; }
         public Nullable<decimal> ExchangeRate { get; set; }
         public string CurrentAccountTitle { get; set; }
     
         public virtual Customer Customer { get; set; }
-        public virtual VoucherType VoucherType { get; set; }
     }
 }

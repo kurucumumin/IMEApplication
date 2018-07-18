@@ -57,6 +57,7 @@ namespace LoginForm.DataSet
         public Nullable<decimal> DiscountedPrice4 { get; set; }
         public Nullable<decimal> DiscountedPrice5 { get; set; }
         public string SupersectionName { get; set; }
+        public string SectionName { get; set; }
         public string DiscontinuationDate { get; set; }
         public Nullable<int> Runon { get; set; }
         public Nullable<int> Referral { get; set; }

@@ -10,12 +10,21 @@
 namespace LoginForm.DataSet
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class ProductViewAll_Result
+    public partial class CompleteItems_v2
     {
         public string Article_No { get; set; }
         public string Article_Desc { get; set; }
+        public Nullable<int> Pack_Quantity { get; set; }
+        public Nullable<int> Unit_Content { get; set; }
         public string Unit_Measure { get; set; }
-        public string Brandname { get; set; }
+        public string MPN { get; set; }
+        public string Manufacturer { get; set; }
+        public string MH_Code_Level_1 { get; set; }
+        public Nullable<int> Col1Break { get; set; }
+        public Nullable<decimal> Col1Price { get; set; }
+        public Nullable<decimal> DiscountedPrice1 { get; set; }
+        public string dependantTable { get; set; }
     }
 }
