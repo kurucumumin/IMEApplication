@@ -672,7 +672,12 @@ namespace LoginForm.QuotationModule
         {
             DataGridViewRow row = dgAddedItems.Rows[e.RowIndex];
 
-            if (!row.IsNewRow && !String.IsNullOrEmpty(row.Cells[dgProductCode.Index].Value?.ToString()))
+            if (row.IsNewRow)
+            {
+                ItemDetailFill_Tab(new CompleteItem());
+
+            }
+            else if(!String.IsNullOrEmpty(row.Cells[dgProductCode.Index].Value?.ToString()))
             {
                 CompleteItem item = ItemList.Where(x => x.Article_No == row.Cells[dgProductCode.Index].Value.ToString()).FirstOrDefault();
                 ItemDetailFill_Tab(item);
@@ -686,21 +691,11 @@ namespace LoginForm.QuotationModule
                 txtManufacturer.Text = item.Manufacturer ?? "";
                 txtBrand.Text = item.BrandName ?? "";
                 txtSupersectionName.Text = item.SupersectionName ?? "";
-                //txtSection.Text = item.Section ?? "";
+                txtSection.Text = item.SectionName ?? "";
                 txtMHCodeLevel1.Text = item.MH_Code_Level_1 ?? "";
                 txtCofO.Text = item.CofO ?? "";
                 txtCCCN.Text = (item.CCCN_No != null) ? item.CCCN_No.ToString() : "";
-
-                //txtItemNote.Text = item.Note ?? "";
-                //txtIME01.Text = item.IME01;
-                //txtIME02.Text = item.IME02;
-                //txtIME03.Text = item.IME03;
-                //txtIME04.Text = item.IME04;
-                //txtOnOrder.Text = item.OnOrder;
-                //txtGB01_a.Text = item.GB01_a;
-                //txtGB01_b.Text = item.GB01_b;
-                //txtOnOrder_a = item.OnOrder_a;
-                //txtOnOrder_b = item.OnOrder_b;
+                
 
                 txtHazardousInd.BackColor = (!String.IsNullOrEmpty(item.Hazardous_Ind) && item.Hazardous_Ind == "Y") ? Color.Red : Color.Empty;
                 if (item.Environment != null)
@@ -776,9 +771,9 @@ namespace LoginForm.QuotationModule
                 txtRunOn.Text = (item.Runon != null) ? item.Runon.ToString() : "";
                 txtReferral.Text = (item.Referral != null) ? item.Referral.ToString() : "";
                 //txtPP.Text = item.PP;
-                txtHeight.Text = ((decimal)(item.Heigh * (decimal)100)).ToString("G29");
-                txtWidth.Text = ((decimal)(item.Width * (decimal)100)).ToString("G29");
-                txtLength.Text = ((decimal)(item.Length * (decimal)100)).ToString("G29");
+                txtHeight.Text = (item.Heigh != null) ? ((decimal)(item.Heigh * (decimal)100)).ToString("G29") : String.Empty;
+                txtWidth.Text = (item.Width != null) ? ((decimal)(item.Width * (decimal)100)).ToString("G29") : String.Empty;
+                txtLength.Text = (item.Length != null) ? ((decimal)(item.Length * (decimal)100)).ToString("G29") : String.Empty;
                 txtStandardWeight.Text = (item.Standard_Weight != null) ? ((decimal)(item.Standard_Weight / 1000)).ToString("G29") : "";
                 //txtGrossWeight.Text = item.GrossWeight;
 
@@ -786,7 +781,7 @@ namespace LoginForm.QuotationModule
                 {
                     txtCol1Break.Text = item.Col1Break.ToString();
                     txtUK1.Text = ((decimal)item.Col1Price).ToString("G29");
-                    decimal web1_DefaultCurrency = CalculateWebPrice((decimal)item.Col1Price) /*CalculatePriceWithCurrency(item.Col1Price * _factor)*/;
+                    decimal web1_DefaultCurrency = CalculateWebPrice((decimal)item.Col1Price) ;
                     txtWeb1.Text = (web1_DefaultCurrency / _rate.rate).ToString();
                     txtCost1.Text = item.DiscountedPrice1.ToString();
                     txtMargin1.Text = qUtils.CalculateMargin(web1_DefaultCurrency / _gbpValue, (decimal)item.DiscountedPrice1).ToString();
@@ -804,7 +799,7 @@ namespace LoginForm.QuotationModule
                 {
                     txtCol2Break.Text = item.Col2Break.ToString();
                     txtUK2.Text = item.Col2Price.ToString();
-                    decimal web2_DefaultCurrency = CalculateWebPrice((decimal)item.Col2Price) /*CalculatePriceWithCurrency(item.Col1Price * _factor)*/;
+                    decimal web2_DefaultCurrency = CalculateWebPrice((decimal)item.Col2Price) ;
                     txtWeb2.Text = (web2_DefaultCurrency / _rate.rate).ToString();
                     txtCost2.Text = item.DiscountedPrice2.ToString();
                     txtMargin2.Text = qUtils.CalculateMargin(web2_DefaultCurrency / _gbpValue, (decimal)item.DiscountedPrice2).ToString();
@@ -822,7 +817,7 @@ namespace LoginForm.QuotationModule
                 {
                     txtCol3Break.Text = item.Col3Break.ToString();
                     txtUK3.Text = item.Col3Price.ToString();
-                    decimal web3_DefaultCurrency = CalculateWebPrice((decimal)item.Col3Price) /*CalculatePriceWithCurrency(item.Col3Price * _factor)*/;
+                    decimal web3_DefaultCurrency = CalculateWebPrice((decimal)item.Col3Price) ;
                     txtWeb3.Text = (web3_DefaultCurrency / _rate.rate).ToString();
                     txtCost3.Text = item.DiscountedPrice3.ToString();
                     txtMargin3.Text = qUtils.CalculateMargin(web3_DefaultCurrency / _gbpValue, (decimal)item.DiscountedPrice3).ToString();
@@ -840,7 +835,7 @@ namespace LoginForm.QuotationModule
                 {
                     txtCol4Break.Text = item.Col4Break.ToString();
                     txtUK4.Text = item.Col4Price.ToString();
-                    decimal web4_DefaultCurrency = CalculateWebPrice((decimal)item.Col4Price * _factor) /*CalculatePriceWithCurrency(item.Col4Price * _factor)*/;
+                    decimal web4_DefaultCurrency = CalculateWebPrice((decimal)item.Col4Price * _factor) ;
                     txtWeb4.Text = (web4_DefaultCurrency / _rate.rate).ToString();
                     txtCost4.Text = item.DiscountedPrice4.ToString();
                     txtMargin4.Text = qUtils.CalculateMargin(web4_DefaultCurrency / _gbpValue, (decimal)item.DiscountedPrice4).ToString();
@@ -858,7 +853,7 @@ namespace LoginForm.QuotationModule
                 {
                     txtCol5Break.Text = item.Col5Break.ToString();
                     txtUK5.Text = item.Col5Price.ToString();
-                    decimal web5_DefaultCurrency = CalculateWebPrice((decimal)item.Col5Price * _factor) /*CalculatePriceWithCurrency(item.Col5Price * _factor)*/;
+                    decimal web5_DefaultCurrency = CalculateWebPrice((decimal)item.Col5Price * _factor);
                     txtWeb5.Text = (web5_DefaultCurrency / _rate.rate).ToString();
                     txtCost5.Text = item.DiscountedPrice5.ToString();
                     txtMargin5.Text = qUtils.CalculateMargin(web5_DefaultCurrency /_gbpValue, (decimal)item.DiscountedPrice5).ToString();

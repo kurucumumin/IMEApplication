@@ -1,5 +1,4 @@
-﻿using LoginForm.Account.Services;
-using LoginForm.DataSet;
+﻿using LoginForm.DataSet;
 using Microsoft.Office.Interop.Excel;
 using System;
 using System.Collections.Generic;
@@ -3360,15 +3359,15 @@ namespace LoginForm
 
                     DeliveryNoteMaster dnm = new DeliveryNoteMaster();
 
-                    string strVoucher = new Account.Services.TransactionsGeneralFill().VoucherNumberAutomaicGeneration(18, 0, new IMEEntities().CurrentDate().FirstOrDefault().Value, "DeliveryNoteMaster");
-                    dnm.voucherNo = strVoucher;
+                    //string strVoucher = new Account.Services.TransactionsGeneralFill().VoucherNumberAutomaicGeneration(18, 0, new IMEEntities().CurrentDate().FirstOrDefault().Value, "DeliveryNoteMaster");
+                    //dnm.voucherNo = strVoucher;
 
-                    SuffixPrefix infoSuffixPrefix = new SuffixPrefix();
-                    infoSuffixPrefix = new SuffixPrefixSP().GetSuffixPrefixDetails(18, IME.CurrentDate().FirstOrDefault().Value);
+                    //SuffixPrefix infoSuffixPrefix = new SuffixPrefix();
+                    //infoSuffixPrefix = new SuffixPrefixSP().GetSuffixPrefixDetails(18, IME.CurrentDate().FirstOrDefault().Value);
 
-                    dnm.DeliveryNoteNo = infoSuffixPrefix.prefix + strVoucher + infoSuffixPrefix.suffix;
-                    dnm.voucherTypeId = 18;
-                    dnm.suffixPrefixId = infoSuffixPrefix.suffixprefixId;
+                    //dnm.DeliveryNoteNo = infoSuffixPrefix.prefix + strVoucher + infoSuffixPrefix.suffix;
+                    //dnm.voucherTypeId = 18;
+                    //dnm.suffixPrefixId = infoSuffixPrefix.suffixprefixId;
                     dnm.date = DateTime.Now;
 
 

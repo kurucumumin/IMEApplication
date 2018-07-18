@@ -153,50 +153,5 @@ namespace LoginForm.CustomControls
             frmAccountMain form = new frmAccountMain();
             form.Show();
         }
-
-        private void btnDeliveryNote_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                bool IsActivate = false;
-                foreach (Form form in Application.OpenForms)
-                {
-                    if (form.GetType() == typeof(frmDeliveryNote))
-                    {
-                        form.Activate();
-                        IsActivate = true;
-                        if (form.WindowState == FormWindowState.Minimized)
-                        {
-                            form.WindowState = FormWindowState.Normal;
-                        }
-                    }
-                }
-                if (IsActivate == false)
-                {
-                    frmVoucherTypeSelection frm = new frmVoucherTypeSelection();
-                    frmVoucherTypeSelection open = Application.OpenForms["frmVoucherTypeSelection"] as frmVoucherTypeSelection;
-                    if (open == null)
-                    {
-                        //frm.MdiParent = this.ParentForm;
-                        frm.Show();
-                    }
-                    else
-                    {
-                        frm = open;
-                        frm.Activate();
-                        if (frm.WindowState == FormWindowState.Minimized)
-                        {
-                            frm.WindowState = FormWindowState.Normal;
-                        }
-                    }
-                    string strVoucherType = "Delivery Note";
-                    frm.CallFromVoucherMenu(strVoucherType);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("MDI 112: " + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
     }
 }
