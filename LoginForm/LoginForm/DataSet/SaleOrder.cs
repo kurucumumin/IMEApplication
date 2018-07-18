@@ -48,19 +48,14 @@ namespace LoginForm.DataSet
         public Nullable<decimal> DiscOnSubtotal { get; set; }
         public Nullable<decimal> ExtraCharges { get; set; }
         public Nullable<decimal> TotalMargin { get; set; }
-        public Nullable<decimal> VoucherId { get; set; }
-        public Nullable<decimal> VoucherTypeId { get; set; }
         public Nullable<decimal> VoucherNo { get; set; }
-        public Nullable<decimal> ledgerId { get; set; }
         public Nullable<bool> cancelled { get; set; }
         public string invoiceNo { get; set; }
         public Nullable<int> exchangeRateID { get; set; }
-        public Nullable<decimal> pricingLevelId { get; set; }
         public decimal SaleOrderID { get; set; }
         public decimal financialYearId { get; set; }
         public string Status { get; set; }
     
-        public virtual AccountLedger AccountLedger { get; set; }
         public virtual Customer Customer { get; set; }
         public virtual CustomerAddress CustomerAddress { get; set; }
         public virtual CustomerAddress CustomerAddress1 { get; set; }
@@ -74,7 +69,6 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PurchaseOrderDetail> PurchaseOrderDetails { get; set; }
         public virtual Worker Worker { get; set; }
-        public virtual VoucherType VoucherType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StockReserve> StockReserves { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

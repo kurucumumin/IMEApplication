@@ -10,10 +10,11 @@
 namespace LoginForm.DataSet
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class AccountLedgerViewAllForComboBox_Result
+    public partial class MPN_List
     {
-        public decimal ledgerId { get; set; }
-        public string ledgerName { get; set; }
+        public string MPN { get; set; }
+        public string table { get; set; }
     }
 }

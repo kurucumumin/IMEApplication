@@ -25,18 +25,12 @@ namespace LoginForm.DataSet
         public int Qty { get; set; }
         public int ReserveQty { get; set; }
         public string ProductName { get; set; }
-        public string voucherNo { get; set; }
-        public Nullable<decimal> voucherTypeId { get; set; }
-        public string againstVoucherNo { get; set; }
-        public Nullable<decimal> againstVoucherTypeId { get; set; }
         public string MPN { get; set; }
         public Nullable<decimal> Cost { get; set; }
         public string SupplierID { get; set; }
         public Nullable<int> NotConfirmedQTY { get; set; }
     
-        public virtual VoucherType VoucherType { get; set; }
         public virtual Supplier Supplier { get; set; }
-        public virtual VoucherType VoucherType1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StockReserve> StockReserves { get; set; }
     }
