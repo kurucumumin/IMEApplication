@@ -80,6 +80,9 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="GeneralPro">
       <HintPath>..\..\..\..\..\Desktop\DotNetBar\GeneralPro.dll</HintPath>
     </Reference>
@@ -99,12 +102,38 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="Syncfusion.BulletGraph.Windows, Version=16.2451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Chart.Base, Version=16.2451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Chart.Windows, Version=16.2451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Core.WinForms, Version=16.2451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Data.WinForms, Version=16.2451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Gauge.Windows, Version=16.2451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Grid.Base, Version=16.2451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Grid.Grouping.Base, Version=16.2451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Grid.Grouping.Windows, Version=16.2451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Grid.Windows, Version=16.2451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.GridCommon.WinForms, Version=16.2451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Grouping.Base, Version=16.2451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Maps.Windows, Version=16.2451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.SfDataGrid.WinForms, Version=16.2451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.SfInput.WinForms, Version=16.2451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.SfListView.WinForms, Version=16.2451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Shared.Base, Version=16.2451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Shared.Windows, Version=16.2451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.SpellChecker.Base, Version=16.2451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Tools.Base, Version=16.2451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Tools.Windows, Version=16.2451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.TreeMap.Windows, Version=16.2451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
@@ -117,6 +146,7 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
     <Reference Include="WindowsBase" />
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
@@ -130,112 +160,10 @@
     <Compile Include="DataSet\Account.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\AccountGroup.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\AccountGroupHierarchy_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\AccountGroupReportViewAll_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\AccountGroupSearch_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\AccountGroupViewAllByGroupUnder_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\AccountGroupViewAllComboFillForAccountLedger_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\AccountGroupViewForUpdate_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\AccountGroupView_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\AccountLedger.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\AccountLedgerCombOFillUnderAccountLedger_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\AccountLedgerGetByDebtorAndCreditorWithBalance_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\AccountLedgerGetGroupUnderFunction_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\AccountLedgerReportFill_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\AccountLedgerSearchForServiceAccountUnderIncome_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\AccountLedgerViewAllByLedgerName_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\AccountLedgerViewAllForComboBox_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\AccountLedgerViewAll_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\AccountLedgerViewByAccountGroup_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\AccountLedgerViewForAdditionalCost_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\AccountLedgerView_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\AccountMainDataGridFiller_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\AccountOperation.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\AdditionalCost.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\AdditionalCostViewAllByVoucherTypeIdAndVoucherNo_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\AdvancePayment.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\AdvancePaymentAddWithIdentity_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\AdvanceRegisterSearch_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\AgeingReportFillByPayable_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\AgeingReportFillByReceivable_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\AgeingReportLedgerPayable_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\AgeingReportLedgerReceivable_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\AgeingReportVoucherPayable_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\AgeingReportVoucherReceivable_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\Area.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\AreaOnlyViewAll_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\AreaWithNarrationView_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\ArticleSearchWithAll_Result.cs">
@@ -265,136 +193,7 @@
     <Compile Include="DataSet\BackOrderMain.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\BalanceSheetAssets_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\BalanceSheetDifference_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\BalanceSheetLiabilities_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\BalanceSheetProfitAndLossAccount_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\BalanceSheetProfitAndLoss_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\BalanceSheet_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\BankAccountComboFill_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\BankReconciliation.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\BankReconciliationFillUnrecon_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\Batch.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\BillAllocationAccountGroupFill_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\BillAllocationLedgerFill_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\BillAllocationSearch_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\BonusDeduction.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\BonusDeductionSearch_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\Brand.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\BrandView_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\BudgetDetail.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\BudgetMaster.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\BudgetVariance_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\Capital.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\CariHareket.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\CashFlow10_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\CashFlow11_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\CashFlow12_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\CashFlow13_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\CashFlow14_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\CashFlow15_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\CashFlow1_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\CashFlow2_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\CashFlow3_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\CashFlow4_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\CashFlow5_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\CashFlow6_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\CashFlow7_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\CashFlow8_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\CashFlow9_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\CashFlowReportPrintCompany_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\CashOrBankBookGridFill_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\CashOrBankComboFill_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\CashOrPartyComboFill_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\CashOrPartyUnderSundryDrComboFill_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ChequeReportGridFill_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ChequeReportPartyComboFill_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\City.cs">
@@ -424,22 +223,7 @@
     <Compile Include="DataSet\ContactType.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\ContraDetail.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ContraMaster.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\Country.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\CreditNoteDetail.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\CreditNoteMaster.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\CreditNoteRegisterSearch_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Currency.cs">
@@ -484,73 +268,7 @@
     <Compile Include="DataSet\CustomerWorker.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\DailyAttendanceDetail.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\DailyAttendanceDetailsSearchGridFill_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\DailyAttendanceMaster.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\DailyDiscontinued.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\DailySalaryRegisterSearch_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\DailySalaryVoucherDetail.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\DailySalaryVoucherDetailsGridViewall_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\DailySalaryVoucherMaster.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\DailySalaryVoucherMasterAddWithIdentity_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\DailySalaryVoucherViewFromRegister_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\DayBookReportPrintCompany_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\DayBook_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\DebitNoteDetail.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\DebitNoteMaster.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\DebitNoteReportSearch_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\DeliveryNoteDetail.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\DeliveryNoteItemsToSaleInvoice_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\DeliveryNoteMaster.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\DeliveryNoteToSaleInvoice_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\Designation.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\DesignationGridFill_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\DesignationSearch_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\DesignationView_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Detail.cs">
@@ -571,12 +289,6 @@
     <Compile Include="DataSet\DualUse.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\EmployeeViewAll_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\EmployeeViewForPaySlip_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\ExchangeRate.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -589,9 +301,6 @@
     <Compile Include="DataSet\FieldCopy.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\FieldsViewAll_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\FinancialYear.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -601,64 +310,7 @@
     <Compile Include="DataSet\FormView_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\FundFlow1_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\FundFlow2_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\FundFlow3_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\FundFlow4_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\FundFlow5_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\FundFlow6_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\GetInvoiceNoCorrespondingtoLedgerInRegister_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\GetInvoiceNoCorrespondingtoLedger_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\GetMaterialReceiptNoCorrespondingtoLedgerByNotInCurrPI_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\GetOrderNoCorrespondingtoLedgerByNotInCurrPI_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\GetPurchaseReturnInvoiceNoCorrespondingtoLedger_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\GetSalesOrderNoIncludePendingCorrespondingtoLedgerforSI_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\GetSuffixPrefixDetails_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\Godown.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\GroupNameViewForComboFill_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\Hazardou.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\HoildaySettingsViewAllLimited_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\Holiday.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\IME.Context.cs">
@@ -679,12 +331,6 @@
     <Compile Include="DataSet\Item.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\ItemConvertionDetail.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ItemConvertionMain.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\ItemDetailTabFiller_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -694,25 +340,7 @@
     <Compile Include="DataSet\ItemNote.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\JournalDetail.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\JournalMaster.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\JournalRegisterSearch_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\Language.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\LedgerPopupSearch_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\LedgerPosting.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\LoaderDate.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Mail.cs">
@@ -733,43 +361,7 @@
     <Compile Include="DataSet\MasterViewByFormName_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\MaterialReceiptDetail.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\MaterialReceiptDetailsViewByMaterialReceiptMasterIdWithRemainingByNotInCurrPI_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\MaterialReceiptMaster.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\MaterialReceiptMasterViewByReceiptMasterId_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\MaterialReceiptMasterView_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\MonthlySalary.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\MonthlySalaryDetail.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\MonthlySalaryRegisterSearch_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\MonthlySalarySettingsEmployeeViewAll_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\MonthlySalaryVoucherDetailsViewAll_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\MonthlySalaryVoucherMasterAddWithIdentity_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\MPN_List.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\MultipleAccountLedgerComboFill_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Note.cs">
@@ -790,229 +382,16 @@
     <Compile Include="DataSet\OtherBranchStockSearch_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\OutstandingPartyFillView_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\OverduePurchaseOrdersCorrespondingAccountLedger_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\OverdueSalesOrderCorrespondingAccountLedger_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PartyAddressBookPrint_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PartyAddressBookSearch_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PartyBalance.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PartyBalanceViewByVoucherNoAndVoucherType_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PayHead.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PayHeadGetAll_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PayHeadGet_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PayHeadViewAll_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PayHeadView_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PaymentDetail.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PaymentMaster.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PaymentMasterSearch_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\PaymentMethod.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\PaymentTerm.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\PaySlipPrinting_2_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PaySlipPrinting_3_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PaySlipPrinting_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PDCClearanceFillDetails_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PDCClearanceMaster.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PDCClearanceRegisterSearch_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PDCPayableMaster.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PdcPayableReportSearch_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PDCReceivableMaster.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PdcReceivableReportSearch_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PhysicalStockDetail.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PhysicalStockMaster.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PricingLevel.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PricingLevelViewAll_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\PrintFormat.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\ProductCodeAndBarcodeByBatchId_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ProductViewAllForComboBox_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ProductViewAll_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\productviewbybarcodeforSR_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ProductViewByCode_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ProductViewByName_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\productviewbyproductcodeforSR_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\productviewbyproductNameforSR_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\ProductViewWithID_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ProductView_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ProfitAndLossAnalysisDirectExpenses_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ProfitAndLossAnalysisDirectIncome_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ProfitAndLossAnalysisInDirectExpenses_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ProfitAndLossAnalysisInDirectIncome_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ProfitAndLossAnalysisPurchaseAccount_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ProfitAndLossAnalysisSalesAccount_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ProfitAndLossAnalysisUpToaDateForBalansheetDirectExpenses_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ProfitAndLossAnalysisUpToaDateForBalansheetDirectincome_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ProfitAndLossAnalysisUpToaDateForBalansheetIndirectExpenses_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ProfitAndLossAnalysisUpToaDateForBalansheetIndirectincome_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ProfitAndLossAnalysisUpToaDateForBalansheetPurchaseAcount_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ProfitAndLossAnalysisUpToaDateForBalansheetSalesAcount_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ProfitAndLossAnalysisUpToaDateForBalansheet_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ProfitAndLossAnalysisUpToaDateForPreviousYearsDirectExpenses_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ProfitAndLossAnalysisUpToaDateForPreviousYearsDirectIncome_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ProfitAndLossAnalysisUpToaDateForPreviousYearsIndirectExpenses_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ProfitAndLossAnalysisUpToaDateForPreviousYearsIndirectIncome_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ProfitAndLossAnalysisUpToaDateForPreviousYearsPurchaseAccount_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ProfitAndLossAnalysisUpToaDateForPreviousYearsSalesAccount_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ProfitAndLossReportPrintCompany_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PurchaseBillTax.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PurchaseBillTaxViewAllByPurchaseMasterId_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PurchaseDetail.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PurchaseDetailsViewByBarcodeForPI_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PurchaseDetailsViewByProductCodeForPI_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PurchaseDetailsViewByProductNameForPI_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PurchaseDetailsViewByPurchaseMasterIdWithRemaining_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PurchaseDetailsViewByPurchaseMasterId_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PurchaseInvoice.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PurchaseInvoiceDetail.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PurchaseInvoicePurchaseAccountComboFill_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PurchaseMaster.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PurchaseMasterView_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\PurchaseOperation.cs">
@@ -1024,33 +403,6 @@
     <Compile Include="DataSet\PurchaseOrderDetail.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\PurchaseOrderDetailsViewByOrderMasterIdWithRemainingByNotInCurrPI_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PurchaseOrderMasterViewByOrderMasterId_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PurchaseOrderMasterView_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PurchaseReturnBilltax.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PurchaseReturnDetail.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PurchaseReturnDetailsViewByMasterId_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PurchaseReturnMaster.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PurchaseReturnMasterViewAllByPurchaseMasterId_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PurchaseReturnViewByPurchaseReturnMasterId_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\Quotation.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1060,55 +412,16 @@
     <Compile Include="DataSet\QuotationDetail.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\Rack.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\RackFillForStock_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\Rate.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Receipt.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\ReceiptDetail.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ReceiptMaster.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\ReceiptType.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\RejectionInDetail.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\RejectionInMaster.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\RejectionOutDetail.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\RejectionOutMaster.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\Reminder.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ReminderSearch_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ReminderViewAll_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ReminderView_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\RoleValue.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\Route.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\RsFileHistory.cs">
@@ -1123,157 +436,13 @@
     <Compile Include="DataSet\RS_InvoiceDetails.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\SalaryPackage.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\SalaryPackageDetail.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\SalaryPackageDetailsViewWithSalaryPackageId_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\SalaryPackageregisterSearch_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\SalaryPackageViewAllForMonthlySalarySettings_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\SalaryPackageView_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\SalaryVoucherDetail.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\SalaryVoucherMaster.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\SalaryVoucherMasterViewAll_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\SalaryVoucherMasterView_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\SaleOrder.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SaleOrderDetail.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\SaleOrderItemsToDeliveryNote_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\SaleOrderToDeliveryNote_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\SalesAccountComboFill_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\SalesBillTax.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\SalesDetail.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\SalesInvoiceAdditionalCostViewByVoucherNoUnderVoucherType_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\SalesInvoiceDetailsViewByBarcodeForSI_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\SalesInvoiceDetailsViewByProductCodeForSI_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\SalesInvoiceDetailsViewByProductNameForSI_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\SalesInvoiceGridfillAgainestDeliveryNoteUsingDeliveryNoteDetails_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\SalesInvoiceGridfillAgainestSalesOrderUsingSalesDetails_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\SalesInvoiceSalesBillTaxViewAllBySalesMasterId_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\SalesmanSearch_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\SalesmanViewSpecificFeilds_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\SalesMaster.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\SalesMasterViewForComboFillSelection_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\SalesMasterView_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\SalesOperation.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\SalesReturnBillTax.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\SalesReturnDetail.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\SalesReturnGrideFillNew_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\SalesReturnInvoiceNoComboFill_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\SalesReturnMaster.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\SalesReturnReportGrideFill_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\Service.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ServiceCategory.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ServiceDetail.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ServiceDetailsViewWithMasterId_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ServiceMaster.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ServiceMasterView_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ServiceRegisterSearch_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ServiceViewAll_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\Setting.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\SettingsToCopy.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\SettingsToCopyViewAll_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\SettingsToCopyView_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\SettingsViewAll_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\SettingsView_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\SettinsCheckReference_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SlidingPrice.cs">
@@ -1288,22 +457,10 @@
     <Compile Include="DataSet\Stock.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\StockJournalDetail.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\StockJournalMaster.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\StockPosting.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\StockReserve.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\StockSearchforConfirm_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\SuffixPrefix.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SuperDisk.cs">
@@ -1333,45 +490,6 @@
     <Compile Include="DataSet\sysdiagram.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\Tax.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\TaxCrystalReportGridFillByBillWise_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\TaxCrystalReportGridFillByProductwise_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\TaxDetail.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\TaxReportGridFillByBillWise_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\TaxReportGridFillByProductwise_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\TaxSearch_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\TaxViewAllByVoucherTypeIdApplicaleForProduct_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\TaxViewAllByVoucherTypeIdForPurchaseInvoice_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\TaxViewAllByVoucherTypeId_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\TaxViewAllForProduct_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\TaxViewAllForTaxSelection_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\TaxViewAllForVoucherType_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\tbl_Form.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1379,54 +497,6 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Town.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\Trialbalance1_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\Trialbalance2_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\Trialbalance3_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\Trialbalance_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\TypeOfVoucherCombofillForVatAndTaxReport_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\Unit.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\UnitConversionIdAndConRateViewallByProductId_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\UnitConvertion.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\VoucherType.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\VoucherTypeNameComboFillAdvanceRegister_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\VoucherTypeNameComboFill_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\VoucherTypeNameCorrespondingToTypeOfVoucher_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\VoucherTypeSearch_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\VoucherTypeTax.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\VoucherTypeViewAllByLedgerId_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\VoucherTypeView_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\V_Product.cs">
@@ -1440,6 +510,11 @@
     </Compile>
     <Compile Include="IMEAccount\frmReceiptOperation.Designer.cs">
       <DependentUpon>frmReceiptOperation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IMEDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IMEDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="ItemModule\ItemCard.cs">
       <SubType>Form</SubType>
@@ -1626,12 +701,6 @@
       <DependentUpon>FormTermsOfPayment.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\SaleItem.cs" />
-    <Compile Include="ModulePurchaseInvoice\frmPurchaseInvoiceLoader.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ModulePurchaseInvoice\frmPurchaseInvoiceLoader.Designer.cs">
-      <DependentUpon>frmPurchaseInvoiceLoader.cs</DependentUpon>
-    </Compile>
     <Compile Include="PrintWorks\DBConnection.cs" />
     <Compile Include="PrintWorks\DetailsInfo.cs" />
     <Compile Include="PrintWorks\DetailsSP.cs" />
@@ -1895,6 +964,12 @@
     <Compile Include="User\FormUserManagement.Designer.cs">
       <DependentUpon>FormUserManagement.cs</DependentUpon>
     </Compile>
+    <Compile Include="User\TabbedMDI1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\TabbedMDI1.Designer.cs">
+      <DependentUpon>TabbedMDI1.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Customer\frmCityAdd.resx">
       <DependentUpon>frmCityAdd.cs</DependentUpon>
     </EmbeddedResource>
@@ -1990,9 +1065,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Management\FormTermsOfPayment.resx">
       <DependentUpon>FormTermsOfPayment.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ModulePurchaseInvoice\frmPurchaseInvoiceLoader.resx">
-      <DependentUpon>frmPurchaseInvoiceLoader.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PrintWorks\PrintWorks.frmDBConnection.resources" />
     <EmbeddedResource Include="PrintWorks\PrintWorks.frmForms.resources" />
@@ -2101,6 +1173,9 @@
     <EmbeddedResource Include="User\FormUserManagement.resx">
       <DependentUpon>FormUserManagement.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="User\TabbedMDI1.resx">
+      <DependentUpon>TabbedMDI1.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <EntityDeploy Include="DataSet\IME.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -2108,6 +1183,17 @@
     </EntityDeploy>
     <None Include="DataSet\IME.edmx.diagram">
       <DependentUpon>IME.edmx</DependentUpon>
+    </None>
+    <None Include="IMEDataSet.xsc">
+      <DependentUpon>IMEDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="IMEDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IMEDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="IMEDataSet.xss">
+      <DependentUpon>IMEDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\LoginForm.DataSet.AuthorizationValue.datasource" />
@@ -2163,6 +1249,7 @@
       <DependentUpon>IME.edmx</DependentUpon>
       <LastGenOutput>IME.cs</LastGenOutput>
     </Content>
+    <Content Include="MetroFramework.txt" />
     <Content Include="Resources\btnBackground.png" />
     <None Include="Resources\updated.png" />
     <None Include="Resources\btn_close_msg.png" />
