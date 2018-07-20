@@ -290,8 +290,13 @@
             0,
             65536});
             resources.ApplyResources(this.numericDiscountRate, "numericDiscountRate");
+            this.numericDiscountRate.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
             this.numericDiscountRate.Minimum = new decimal(new int[] {
-            100,
+            9999,
             0,
             0,
             -2147483648});

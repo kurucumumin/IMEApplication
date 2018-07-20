@@ -1,7 +1,8 @@
-﻿    using LoginForm.DataSet;
+﻿using LoginForm.DataSet;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+
 namespace LoginForm.Services
 {
     class classSupplier

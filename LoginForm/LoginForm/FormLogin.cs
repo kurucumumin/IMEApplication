@@ -83,7 +83,7 @@ namespace LoginForm
             //CultureInfo culture = new CultureInfo("en-US");
             //CultureInfo.DefaultThreadCurrentCulture = culture;
 
-            #region Nokta Virgül Olayý
+            #region Nokta Virgï¿½l Olayï¿½
             Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
 
