@@ -1330,55 +1330,58 @@ namespace LoginForm
                             switch (columnnames[i])
                             {
                                 case "\"Article Number\"":
-                                    item.ArticleNumber = word[0].Replace("\"","");
+                                    item.ArticleNumber = word[i].Replace("\"","");
                                     break;
                                 case "\"Available to Promise Check\"":
-                                    item.AvailabletoPromiseCheck = word[1].Replace("\"", "");
+                                    item.AvailabletoPromiseCheck = word[i].Replace("\"", "");
                                     break;
                                 case "\"Bulk Pack\"":
                                     if (word[i] != "")
                                     {
-                                        item.BulkPack = word[2].Replace("\"", "");
+                                        item.BulkPack = word[i].Replace("\"", "");
                                     }
                                     break;
                                 case "\"Catalogue Status\"":
-                                    item.CatalogueStatus = Convert.ToInt32(word[3].Replace("\"", ""));
+                                    if (word[i] != "")
+                                    {
+                                        item.CatalogueStatus = Convert.ToInt32(word[i].Replace("\"", ""));
+                                    }
                                     break;
                                 case "\"Discontinued Date\"":
-                                    item.DiscontinuedDate = word[4].Replace("\"", "");
+                                    item.DiscontinuedDate = word[i].Replace("\"", "");
                                     break;
                                 case "\"Introduction Date\"":
-                                    item.IntroductionDate = word[5].Replace("\"", "");
+                                    item.IntroductionDate = word[i].Replace("\"", "");
                                     break;
                                 case "\"Next Scheduled Delivery\"":
-                                    item.NextScheduledDelivery = word[6].Replace("\"", "");
+                                    item.NextScheduledDelivery = word[i].Replace("\"", "");
                                     break;
                                 case "\"Onhand Stock Balance\"":
                                     if (word[i] != "")
                                     {
-                                        item.OnhandStockBalance = Convert.ToInt32(word[7].Replace("\"", ""));
+                                        item.OnhandStockBalance = Convert.ToInt32(word[i].Replace("\"", ""));
                                     }
                                     break;
                                 case "\"Pack Size\"":
                                     if (word[i] != "")
                                     {
-                                        item.PackSize = Convert.ToInt32(word[8].Replace("\"", ""));
+                                        item.PackSize = Convert.ToInt32(word[i].Replace("\"", ""));
                                     }
                                     break;
                                 case "\"Quantity on Order\"":
                                     if (word[i] != "")
                                     {
-                                        item.QuantityonOrder = Convert.ToInt32(word[9].Replace("\"", ""));
+                                        item.QuantityonOrder = Convert.ToInt32(word[i].Replace("\"", ""));
                                     }
                                     break;
                                 case "\"Small Order Protection Level\"":
-                                    item.SmallOrderProtectionLevel = word[10].Replace("\"", "");
+                                    item.SmallOrderProtectionLevel = word[i].Replace("\"", "");
                                     break;
                                 case "\"Substituted By\"":
-                                    item.SubstitutedBy = word[11].Replace("\"", "");
+                                    item.SubstitutedBy = word[i].Replace("\"", "");
                                     break;
                                 case "\"Substituted For\"":
-                                    item.SubstitutedFor = word[12].Replace("\"", "");
+                                    item.SubstitutedFor = word[i].Replace("\"", "");
                                     break;
                             }
                         }

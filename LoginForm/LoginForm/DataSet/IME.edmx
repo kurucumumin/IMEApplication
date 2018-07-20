@@ -1392,6 +1392,7 @@ warning 6002: The table/view 'IME.dbo.CompleteItems_v2' does not have a primary 
           <Property Name="Col1Price" Type="decimal" Precision="18" Scale="3" />
           <Property Name="DiscountedPrice1" Type="decimal" Precision="18" Scale="3" />
           <Property Name="DiscontinuationDate" Type="nvarchar" MaxLength="20" />
+          <Property Name="OnhandStockBalance" Type="int" />
           <Property Name="dependantTable" Type="varchar" MaxLength="3" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
@@ -3554,6 +3555,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
     [CompleteItems_v2].[Col1Price] AS [Col1Price], 
     [CompleteItems_v2].[DiscountedPrice1] AS [DiscountedPrice1], 
     [CompleteItems_v2].[DiscontinuationDate] AS [DiscontinuationDate], 
+    [CompleteItems_v2].[OnhandStockBalance] AS [OnhandStockBalance], 
     [CompleteItems_v2].[dependantTable] AS [dependantTable]
     FROM [dbo].[CompleteItems_v2] AS [CompleteItems_v2]</DefiningQuery>
           </EntitySet>
@@ -5637,6 +5639,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="Col1Price" Type="Decimal" Precision="18" Scale="3" />
           <Property Name="DiscountedPrice1" Type="Decimal" Precision="18" Scale="3" />
           <Property Name="DiscontinuationDate" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="OnhandStockBalance" Type="Int32" />
           <Property Name="dependantTable" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="MPN_List">
@@ -9920,6 +9923,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="Col1Price" ColumnName="Col1Price" />
                 <ScalarProperty Name="DiscountedPrice1" ColumnName="DiscountedPrice1" />
                 <ScalarProperty Name="DiscontinuationDate" ColumnName="DiscontinuationDate" />
+                <ScalarProperty Name="OnhandStockBalance" ColumnName="OnhandStockBalance" />
                 <ScalarProperty Name="dependantTable" ColumnName="dependantTable" />
               </MappingFragment>
             </EntityTypeMapping>
