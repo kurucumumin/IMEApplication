@@ -257,8 +257,8 @@
           <Property Name="ArticleNo" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ReasonDescription" Type="nvarchar" MaxLength="100" />
           <Property Name="DiscontinuationDate" Type="nvarchar" MaxLength="20" />
-          <Property Name="Runon" Type="int" />
-          <Property Name="Referral" Type="int" />
+          <Property Name="Runon" Type="nvarchar" MaxLength="15" />
+          <Property Name="Referral" Type="nvarchar" MaxLength="15" />
         </EntityType>
         <EntityType Name="Detail">
           <Key>
@@ -437,8 +437,8 @@
           <Property Name="Reserved" Type="int" />
           <Property Name="Uk_Disc_Date" Type="nvarchar" MaxLength="50" />
           <Property Name="DiscontinuationDate" Type="nvarchar" MaxLength="20" />
-          <Property Name="Runon" Type="int" />
-          <Property Name="Referral" Type="int" />
+          <Property Name="Runon" Type="nvarchar" MaxLength="15" />
+          <Property Name="Referral" Type="nvarchar" MaxLength="15" />
           <Property Name="Heigh" Type="decimal" Precision="18" Scale="3" />
           <Property Name="Width" Type="decimal" Precision="18" Scale="3" />
           <Property Name="Length" Type="decimal" Precision="18" Scale="3" />
@@ -4364,8 +4364,8 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="ArticleNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ReasonDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="DiscontinuationDate" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Runon" Type="Int32" />
-          <Property Name="Referral" Type="Int32" />
+          <Property Name="Runon" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Referral" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Detail">
           <Key>
@@ -4553,8 +4553,8 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="Reserved" Type="Int32" />
           <Property Name="Uk_Disc_Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DiscontinuationDate" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Runon" Type="Int32" />
-          <Property Name="Referral" Type="Int32" />
+          <Property Name="Runon" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Referral" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="Heigh" Type="Decimal" Precision="18" Scale="3" />
           <Property Name="Width" Type="Decimal" Precision="18" Scale="3" />
           <Property Name="Length" Type="Decimal" Precision="18" Scale="3" />
@@ -8368,8 +8368,8 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Type="Decimal" Name="DiscountedPrice5" Nullable="true" Precision="18" Scale="3" />
           <Property Type="String" Name="SupersectionName" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="DiscontinuationDate" Nullable="true" MaxLength="20" />
-          <Property Type="Int32" Name="Runon" Nullable="true" />
-          <Property Type="Int32" Name="Referral" Nullable="true" />
+          <Property Type="String" Name="Runon" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Referral" Nullable="true" MaxLength="15" />
           <Property Type="Int32" Name="Environment" Nullable="true" />
           <Property Type="String" Name="Lithium" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Shipping" Nullable="true" MaxLength="50" />

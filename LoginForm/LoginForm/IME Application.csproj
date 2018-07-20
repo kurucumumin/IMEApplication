@@ -511,11 +511,6 @@
     <Compile Include="IMEAccount\frmReceiptOperation.Designer.cs">
       <DependentUpon>frmReceiptOperation.cs</DependentUpon>
     </Compile>
-    <Compile Include="IMEDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>IMEDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="ItemModule\ItemCard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -964,12 +959,6 @@
     <Compile Include="User\FormUserManagement.Designer.cs">
       <DependentUpon>FormUserManagement.cs</DependentUpon>
     </Compile>
-    <Compile Include="User\TabbedMDI1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="User\TabbedMDI1.Designer.cs">
-      <DependentUpon>TabbedMDI1.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Customer\frmCityAdd.resx">
       <DependentUpon>frmCityAdd.cs</DependentUpon>
     </EmbeddedResource>
@@ -1173,9 +1162,6 @@
     <EmbeddedResource Include="User\FormUserManagement.resx">
       <DependentUpon>FormUserManagement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User\TabbedMDI1.resx">
-      <DependentUpon>TabbedMDI1.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <EntityDeploy Include="DataSet\IME.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -1183,17 +1169,6 @@
     </EntityDeploy>
     <None Include="DataSet\IME.edmx.diagram">
       <DependentUpon>IME.edmx</DependentUpon>
-    </None>
-    <None Include="IMEDataSet.xsc">
-      <DependentUpon>IMEDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="IMEDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>IMEDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="IMEDataSet.xss">
-      <DependentUpon>IMEDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\LoginForm.DataSet.AuthorizationValue.datasource" />

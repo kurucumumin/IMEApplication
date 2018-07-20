@@ -17,7 +17,7 @@ namespace LoginForm.DataSet
         public string ArticleNo { get; set; }
         public string ReasonDescription { get; set; }
         public string DiscontinuationDate { get; set; }
-        public Nullable<int> Runon { get; set; }
-        public Nullable<int> Referral { get; set; }
+        public string Runon { get; set; }
+        public string Referral { get; set; }
     }
 }

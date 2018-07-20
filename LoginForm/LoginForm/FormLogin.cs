@@ -12,7 +12,6 @@ using LoginForm.Services;
 using System.Globalization;
 using System.Threading;
 using LoginForm.User;
-
 //using LoginForm.Quotation;
 
 namespace LoginForm
@@ -141,7 +140,7 @@ namespace LoginForm
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            new TabbedMDI1().Show();
+            //new Office2010Form1().Show();
         }
     }
 }
