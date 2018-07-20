@@ -773,8 +773,8 @@ namespace LoginForm.ItemModule
                         if (txtExpiringPro.Text != null && txtExpiringPro.Text != "") { i.EC = Convert.ToBoolean(txtExpiringPro.Text); }
                         i.Uk_Disc_Date = txtUKDiscDate.Text;
                         i.DiscontinuationDate = txtDiscontinuationDate.Text;
-                        if (txtRunOn.Text != null && txtRunOn.Text != "") { i.Runon = Convert.ToInt32(txtRunOn.Text); }
-                        if (txtReferral.Text != null && txtReferral.Text != "") { i.Referral = Convert.ToInt32(txtReferral.Text); }
+                        if (txtRunOn.Text != null && txtRunOn.Text != "") { i.Runon = txtRunOn.Text; }
+                        if (txtReferral.Text != null && txtReferral.Text != "") { i.Referral = txtReferral.Text; }
                         if (txtHeight.Text != null && txtHeight.Text != "") { i.Heigh = Convert.ToDecimal(txtHeight.Text); }
                         if (txtWidth.Text != null && txtWidth.Text != "") { i.Width = Convert.ToDecimal(txtWidth.Text); }
                         if (txtLength.Text != null && txtLength.Text != "") { i.Length = Convert.ToDecimal(txtLength.Text); }
@@ -1018,8 +1018,8 @@ namespace LoginForm.ItemModule
             if (txtExpiringPro.Text != null && txtExpiringPro.Text != "" && txtExpiringPro.Text.ToLower() != "y") { i.EC = false; } else { i.EC = true; }
             i.Uk_Disc_Date = txtUKDiscDate.Text;
             i.DiscontinuationDate = txtDiscontinuationDate.Text;
-            if (txtRunOn.Text != null && txtRunOn.Text != "") { i.Runon = Convert.ToInt32(txtRunOn.Text); }
-            if (txtReferral.Text != null && txtReferral.Text != "") { i.Referral = Convert.ToInt32(txtReferral.Text); }
+            if (txtRunOn.Text != null && txtRunOn.Text != "") { i.Runon = txtRunOn.Text; }
+            if (txtReferral.Text != null && txtReferral.Text != "") { i.Referral = txtReferral.Text; }
             if (txtHeight.Text != null && txtHeight.Text != "") { i.Heigh = Convert.ToDecimal(txtHeight.Text); }
             if (txtWidth.Text != null && txtWidth.Text != "") { i.Width = Convert.ToDecimal(txtWidth.Text); }
             if (txtLength.Text != null && txtLength.Text != "") { i.Length = Convert.ToDecimal(txtLength.Text); }
