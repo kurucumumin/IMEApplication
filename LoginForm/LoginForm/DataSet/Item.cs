@@ -37,8 +37,8 @@ namespace LoginForm.DataSet
         public Nullable<int> Reserved { get; set; }
         public string Uk_Disc_Date { get; set; }
         public string DiscontinuationDate { get; set; }
-        public Nullable<int> Runon { get; set; }
-        public Nullable<int> Referral { get; set; }
+        public string Runon { get; set; }
+        public string Referral { get; set; }
         public Nullable<decimal> Heigh { get; set; }
         public Nullable<decimal> Width { get; set; }
         public Nullable<decimal> Length { get; set; }

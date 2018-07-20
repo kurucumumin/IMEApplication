@@ -22,7 +22,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>123</ApplicationRevision>
+    <ApplicationRevision>125</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -511,11 +511,6 @@
     <Compile Include="IMEAccount\frmReceiptOperation.Designer.cs">
       <DependentUpon>frmReceiptOperation.cs</DependentUpon>
     </Compile>
-    <Compile Include="IMEDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>IMEDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="ItemModule\ItemCard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -527,6 +522,12 @@
     </Compile>
     <Compile Include="ItemModule\LoaderPage.designer.cs">
       <DependentUpon>LoaderPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\Office2010Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\Office2010Form1.Designer.cs">
+      <DependentUpon>Office2010Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="OnOrder\frmAcikSiparis.cs">
       <SubType>Form</SubType>
@@ -840,6 +841,12 @@
     <Compile Include="QuotationModule\frmXmlCustomerAdd.Designer.cs">
       <DependentUpon>frmXmlCustomerAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="QuotationModule\QQQ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuotationModule\QQQ.Designer.cs">
+      <DependentUpon>QQQ.cs</DependentUpon>
+    </Compile>
     <Compile Include="QuotationModule\ViewProductHistory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -964,12 +971,6 @@
     <Compile Include="User\FormUserManagement.Designer.cs">
       <DependentUpon>FormUserManagement.cs</DependentUpon>
     </Compile>
-    <Compile Include="User\TabbedMDI1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="User\TabbedMDI1.Designer.cs">
-      <DependentUpon>TabbedMDI1.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Customer\frmCityAdd.resx">
       <DependentUpon>frmCityAdd.cs</DependentUpon>
     </EmbeddedResource>
@@ -981,6 +982,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ItemModule\LoaderPage.resx">
       <DependentUpon>LoaderPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\Office2010Form1.resx">
+      <DependentUpon>Office2010Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OnOrder\frmAcikSiparis.resx">
       <DependentUpon>frmAcikSiparis.cs</DependentUpon>
@@ -1125,6 +1129,9 @@
     <EmbeddedResource Include="QuotationModule\frmXmlCustomerAdd.resx">
       <DependentUpon>frmXmlCustomerAdd.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="QuotationModule\QQQ.resx">
+      <DependentUpon>QQQ.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="QuotationModule\ViewProductHistory.resx">
       <DependentUpon>ViewProductHistory.cs</DependentUpon>
     </EmbeddedResource>
@@ -1173,9 +1180,6 @@
     <EmbeddedResource Include="User\FormUserManagement.resx">
       <DependentUpon>FormUserManagement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User\TabbedMDI1.resx">
-      <DependentUpon>TabbedMDI1.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <EntityDeploy Include="DataSet\IME.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -1183,17 +1187,6 @@
     </EntityDeploy>
     <None Include="DataSet\IME.edmx.diagram">
       <DependentUpon>IME.edmx</DependentUpon>
-    </None>
-    <None Include="IMEDataSet.xsc">
-      <DependentUpon>IMEDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="IMEDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>IMEDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="IMEDataSet.xss">
-      <DependentUpon>IMEDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\LoginForm.DataSet.AuthorizationValue.datasource" />
@@ -1249,7 +1242,6 @@
       <DependentUpon>IME.edmx</DependentUpon>
       <LastGenOutput>IME.cs</LastGenOutput>
     </Content>
-    <Content Include="MetroFramework.txt" />
     <Content Include="Resources\btnBackground.png" />
     <None Include="Resources\updated.png" />
     <None Include="Resources\btn_close_msg.png" />

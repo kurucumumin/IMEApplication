@@ -1314,8 +1314,6 @@ namespace LoginForm
             DialogResult result1 = openFileDialog1.ShowDialog();
             if (result1 == DialogResult.OK) // Test result.
             {
-
-
                 try
                 {
                     string[] lines = System.IO.File.ReadAllLines(openFileDialog1.FileName);
@@ -1324,7 +1322,7 @@ namespace LoginForm
                     while (lines.Count() > a)
                     {
                         string[] word;
-                        //word = lines[a].Split(new string[] { "\"," }, StringSplitOptions.None);
+                        word = lines[a].Split(new string[] { "\"," }, StringSplitOptions.None);
                         word = lines[a].Replace("\"", "").Split(',');
                         for (int i = 0; i < columnnames.Count(); i++)
                         {
@@ -1409,7 +1407,9 @@ namespace LoginForm
                     MessageBox.Show("Upload Completed");
                     return 1;
                 }
-                catch { MessageBox.Show("Please Choose Correct File"); return 0; }
+                catch(Exception e) {
+                    MessageBox.Show(e.InnerException.Message);
+                    MessageBox.Show(e.InnerException.StackTrace);  return 0; }
 
                 #endregion
             }
@@ -1473,8 +1473,8 @@ namespace LoginForm
                         DailyDiscontinued.ArticleNo = ws.Cells[ColumnNumber, 1].Text;
                         DailyDiscontinued.ReasonDescription = ws.Cells[ColumnNumber, 2].Text;
                         DailyDiscontinued.DiscontinuationDate = ws.Cells[ColumnNumber, 3].Text;
-                        if (ws.Cells[ColumnNumber, 4].Text != "") { DailyDiscontinued.Runon = Int32.Parse(ws.Cells[ColumnNumber, 4].Text); }
-                        if (ws.Cells[ColumnNumber, 5].Text != "") { DailyDiscontinued.Referral = Int32.Parse(ws.Cells[ColumnNumber, 5].Text); }
+                        DailyDiscontinued.Runon = ws.Cells[ColumnNumber, 4].Text;
+                        DailyDiscontinued.Referral = ws.Cells[ColumnNumber, 5].Text;
 
                         if (IME.DailyDiscontinueds.Where(a => a.ArticleNo == ArticleNumb).FirstOrDefault() == null)
                         {
@@ -1490,7 +1490,7 @@ namespace LoginForm
                     return 1;
                     #endregion
                 }
-                catch { MessageBox.Show("This document does not proper to load here"); return 0; }
+                catch (Exception e){ MessageBox.Show("This document does not proper to load here"); return 0; }
             }
             return 0;
 

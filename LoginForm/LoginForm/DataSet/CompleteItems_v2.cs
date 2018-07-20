@@ -25,6 +25,7 @@ namespace LoginForm.DataSet
         public Nullable<int> Col1Break { get; set; }
         public Nullable<decimal> Col1Price { get; set; }
         public Nullable<decimal> DiscountedPrice1 { get; set; }
+        public string DiscontinuationDate { get; set; }
         public string dependantTable { get; set; }
     }
 }

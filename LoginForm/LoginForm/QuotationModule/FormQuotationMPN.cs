@@ -31,7 +31,7 @@ namespace LoginForm.QuotationModule
                 case "FormQuotationItemSearch":
                     ((FormQuotationItemSearch)_parent).ItemCode = dgItemList.CurrentRow.Cells[0].Value.ToString();
                     break;
-                case "ExperimentQuotationAdd":
+                case "QQQ":
                     ItemCode = dgItemList.CurrentRow.Cells[0].Value.ToString();
                     break;
                 default:

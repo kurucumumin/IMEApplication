@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace LoginForm.QuotationModule
 {
-    public partial class ExperimentQuotationAdd : Form
+    public partial class QQQ : Form
     {
         Customer _customer;
         ExchangeRate _rate;
@@ -24,14 +24,10 @@ namespace LoginForm.QuotationModule
         string discCalculationType = String.Empty;
         bool initialLaunch = true;
         List<Label> CurrTypes = new List<Label>();
-        BackgroundWorker backgroundWorker1 = new BackgroundWorker();
 
-        public ExperimentQuotationAdd()
+        public QQQ()
         {
             InitializeComponent();
-
-            backgroundWorker1.DoWork += backgroundWorker1_DoWork;
-            backgroundWorker1.WorkerReportsProgress = true;
 
             CurrTypes.Add(lblCurType1);
             CurrTypes.Add(lblCurType2);
@@ -46,9 +42,8 @@ namespace LoginForm.QuotationModule
 
             ItemList = new List<CompleteItem>();
         }
-
         private decimal ConvertAmountToGBP(decimal amount)
-        {            
+        {
             return (decimal)((amount * _rate.rate) / _gbpValue);
         }
 
@@ -66,7 +61,7 @@ namespace LoginForm.QuotationModule
         {
             return amount * _factor;
         }
-        
+
         private void SetCustomer()
         {
             txtCustomerCode.Text = _customer.ID;
@@ -141,17 +136,6 @@ namespace LoginForm.QuotationModule
 
             return (1 - (_LandingCost / gbpPrice)) * 100;
         }
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
-        {
-            object[] args = e.Argument as object[];
-            DataGridViewRow row = args[0] as DataGridViewRow;
-            IMEEntities db = args[1] as IMEEntities;
-            CompleteItem item = args[2] as CompleteItem;
-
-            InsertItemToQuotation(row, db, item);
-
-            this.Refresh();
-        }
 
         private void CalculateTotalMargin()
         {
@@ -171,7 +155,7 @@ namespace LoginForm.QuotationModule
             decimal TotalCost = Convert.ToDecimal(txtTotalCost.Text);
             decimal TotalUnitPrice = Convert.ToDecimal(txtSubtotal.Text);
 
-            txtTotalMarginGrid.Text = qUtils.CalculateMargin(ConvertAmountToGBP(TotalUnitPrice),TotalCost).ToString();
+            txtTotalMarginGrid.Text = qUtils.CalculateMargin(ConvertAmountToGBP(TotalUnitPrice), TotalCost).ToString();
         }
 
         private void CalculateSubTotal()
@@ -199,12 +183,12 @@ namespace LoginForm.QuotationModule
             }
             txtTotalCost.Text = totalCost.ToString("N4");
         }
-        
+
         //private string CreateNewQuotationNumber()
         //{
         //    throw new NotImplementedException();
         //}
-        
+
         private void SaveFunction()
         {
             throw new NotImplementedException();
@@ -326,7 +310,7 @@ namespace LoginForm.QuotationModule
                 {
                     Currency currency1 = cbCurrency.SelectedItem as Currency;
                     _rate = currency1.ExchangeRates.OrderByDescending(x => x.date).FirstOrDefault();
-                    
+
                     lblWeb.Text = "Web (" + _rate.Currency.currencySymbol + ")";
                     ChangeCurrencyLabels(_rate.Currency.currencySymbol);
                     lblExcRate.Text = _rate.rate.ToString();
@@ -376,7 +360,7 @@ namespace LoginForm.QuotationModule
             //txtSubtotal.Text = subTotal.ToString("N4");
             CalculateTotalCost();
             numTotalDiscAmount.Value = (Convert.ToDecimal(txtSubtotal.Text) * numTotalDiscPercent.Value) / 100;
-            
+
         }
 
         private void dgAddedItems_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
@@ -417,9 +401,9 @@ namespace LoginForm.QuotationModule
                                 {
                                     SendKeys.Send("{UP}");
                                     //BeginInvoke((MethodInvoker)delegate {
-                                    backgroundWorker1.RunWorkerAsync(new object[] { row, db, item1 });
+                                    InsertItemToQuotation(row, db, item1);
                                     //});
-                                    
+
                                 }
                                 else
                                 {
@@ -430,7 +414,7 @@ namespace LoginForm.QuotationModule
                                         item1 = db.CompleteItems.Where(x => x.Article_No == formMPN.ItemCode).FirstOrDefault();
                                         SendKeys.Send("{UP}");
                                         //BeginInvoke((MethodInvoker)delegate {
-                                        backgroundWorker1.RunWorkerAsync(new object[] { row, db, item1 });
+                                        InsertItemToQuotation(row, db, item1);
                                         //});
                                     }
                                 }
@@ -443,7 +427,7 @@ namespace LoginForm.QuotationModule
                                     CompleteItem item2 = db.CompleteItems.Where(x => x.Article_No == form.ItemCode).FirstOrDefault();
                                     SendKeys.Send("{UP}");
                                     //BeginInvoke((MethodInvoker)delegate {
-                                    backgroundWorker1.RunWorkerAsync(new object[] { row, db, item2 });
+                                    InsertItemToQuotation(row, db, item2);
                                     //});
                                 }
                                 else
@@ -473,10 +457,10 @@ namespace LoginForm.QuotationModule
                             {
                                 cell.Value = q;
                                 //BeginInvoke((MethodInvoker)delegate {
-                                    QuantityEntered(row, q, true);
+                                QuantityEntered(row, q, true);
                                 //});
                             }
-                            
+
                         }
                         else if (qty == 0)
                         {
@@ -485,7 +469,7 @@ namespace LoginForm.QuotationModule
                             {
                                 cell.Value = q;
                                 //BeginInvoke((MethodInvoker)delegate {
-                                    QuantityEntered(row, q, true);
+                                QuantityEntered(row, q, true);
                                 //});
                             }
                         }
@@ -498,7 +482,7 @@ namespace LoginForm.QuotationModule
                                 {
                                     cell.Value = q;
                                     //BeginInvoke((MethodInvoker)delegate {
-                                        QuantityEntered(row, q, true);
+                                    QuantityEntered(row, q, true);
                                     //});
                                 }
                             }
@@ -509,7 +493,7 @@ namespace LoginForm.QuotationModule
                                 {
                                     cell.Value = q;
                                     //BeginInvoke((MethodInvoker)delegate {
-                                        QuantityEntered(row, q, true);
+                                    QuantityEntered(row, q, true);
                                     //});
                                 }
                             }
@@ -517,7 +501,7 @@ namespace LoginForm.QuotationModule
                             {
                                 //Fiyat hesapla ve satırdaki fiyat alanlarını değiştir.
                                 //BeginInvoke((MethodInvoker)delegate {
-                                    QuantityEntered(row, qty, false);
+                                QuantityEntered(row, qty, false);
                                 //});
                             }
                         }
@@ -555,7 +539,7 @@ namespace LoginForm.QuotationModule
                                 dgAddedItems.CurrentCell = dgAddedItems.Rows[e.RowIndex + 1].Cells[dgProductCode.Index];
                             }
                             catch { }
-                                
+
                             //});
                         }
                     }
@@ -589,7 +573,7 @@ namespace LoginForm.QuotationModule
             row.Cells[dgUCUPCurr.Index].ReadOnly = false;
             row.Cells[dgTargetUP.Index].ReadOnly = false;
             row.Cells[dgCompetitor.Index].ReadOnly = false;
-            
+
             CalculateSubTotal();
             CalculateTotalCost();
             CalculateTotalMargin();
@@ -601,10 +585,10 @@ namespace LoginForm.QuotationModule
                     dgAddedItems.CurrentCell = row.Cells[dgUCUPCurr.Index];
                 }
                 catch { }
-                
+
                 //});
             }
-            
+
         }
 
         private void InsertItemToQuotation(DataGridViewRow row, IMEEntities db, CompleteItem item)
@@ -631,6 +615,8 @@ namespace LoginForm.QuotationModule
                 }
             }
 
+            ItemDetailFill_Row(item, row);
+
             if (tabControl1.SelectedTab != tabItemDetails)
             {
                 tabControl1.SelectedTab = tabItemDetails;
@@ -638,8 +624,6 @@ namespace LoginForm.QuotationModule
                 dgAddedItems.Focus();
             }
 
-            ItemDetailFill_Row(item, row);
-            
             if (item.Col1Break != null)
             {
                 row.Cells[dgQty.Index].ReadOnly = false;
@@ -692,7 +676,7 @@ namespace LoginForm.QuotationModule
                 ItemDetailFill_Tab(new CompleteItem());
 
             }
-            else if(!String.IsNullOrEmpty(row.Cells[dgProductCode.Index].Value?.ToString()))
+            else if (!String.IsNullOrEmpty(row.Cells[dgProductCode.Index].Value?.ToString()))
             {
                 CompleteItem item = ItemList.Where(x => x.Article_No == row.Cells[dgProductCode.Index].Value.ToString()).FirstOrDefault();
                 ItemDetailFill_Tab(item);
@@ -710,7 +694,7 @@ namespace LoginForm.QuotationModule
                 txtMHCodeLevel1.Text = item.MH_Code_Level_1 ?? "";
                 txtCofO.Text = item.CofO ?? "";
                 txtCCCN.Text = (item.CCCN_No != null) ? item.CCCN_No.ToString() : "";
-                
+
 
                 txtHazardousInd.BackColor = (!String.IsNullOrEmpty(item.Hazardous_Ind) && item.Hazardous_Ind == "Y") ? Color.Red : Color.Empty;
                 if (item.Environment != null)
@@ -796,7 +780,7 @@ namespace LoginForm.QuotationModule
                 {
                     txtCol1Break.Text = item.Col1Break.ToString();
                     txtUK1.Text = ((decimal)item.Col1Price).ToString("G29");
-                    decimal web1_DefaultCurrency = CalculateWebPrice((decimal)item.Col1Price) ;
+                    decimal web1_DefaultCurrency = CalculateWebPrice((decimal)item.Col1Price);
                     txtWeb1.Text = (web1_DefaultCurrency / _rate.rate).ToString();
                     txtCost1.Text = item.DiscountedPrice1.ToString();
                     txtMargin1.Text = qUtils.CalculateMargin(web1_DefaultCurrency / _gbpValue, (decimal)item.DiscountedPrice1).ToString();
@@ -814,7 +798,7 @@ namespace LoginForm.QuotationModule
                 {
                     txtCol2Break.Text = item.Col2Break.ToString();
                     txtUK2.Text = item.Col2Price.ToString();
-                    decimal web2_DefaultCurrency = CalculateWebPrice((decimal)item.Col2Price) ;
+                    decimal web2_DefaultCurrency = CalculateWebPrice((decimal)item.Col2Price);
                     txtWeb2.Text = (web2_DefaultCurrency / _rate.rate).ToString();
                     txtCost2.Text = item.DiscountedPrice2.ToString();
                     txtMargin2.Text = qUtils.CalculateMargin(web2_DefaultCurrency / _gbpValue, (decimal)item.DiscountedPrice2).ToString();
@@ -832,7 +816,7 @@ namespace LoginForm.QuotationModule
                 {
                     txtCol3Break.Text = item.Col3Break.ToString();
                     txtUK3.Text = item.Col3Price.ToString();
-                    decimal web3_DefaultCurrency = CalculateWebPrice((decimal)item.Col3Price) ;
+                    decimal web3_DefaultCurrency = CalculateWebPrice((decimal)item.Col3Price);
                     txtWeb3.Text = (web3_DefaultCurrency / _rate.rate).ToString();
                     txtCost3.Text = item.DiscountedPrice3.ToString();
                     txtMargin3.Text = qUtils.CalculateMargin(web3_DefaultCurrency / _gbpValue, (decimal)item.DiscountedPrice3).ToString();
@@ -850,7 +834,7 @@ namespace LoginForm.QuotationModule
                 {
                     txtCol4Break.Text = item.Col4Break.ToString();
                     txtUK4.Text = item.Col4Price.ToString();
-                    decimal web4_DefaultCurrency = CalculateWebPrice((decimal)item.Col4Price * _factor) ;
+                    decimal web4_DefaultCurrency = CalculateWebPrice((decimal)item.Col4Price * _factor);
                     txtWeb4.Text = (web4_DefaultCurrency / _rate.rate).ToString();
                     txtCost4.Text = item.DiscountedPrice4.ToString();
                     txtMargin4.Text = qUtils.CalculateMargin(web4_DefaultCurrency / _gbpValue, (decimal)item.DiscountedPrice4).ToString();
@@ -871,7 +855,7 @@ namespace LoginForm.QuotationModule
                     decimal web5_DefaultCurrency = CalculateWebPrice((decimal)item.Col5Price * _factor);
                     txtWeb5.Text = (web5_DefaultCurrency / _rate.rate).ToString();
                     txtCost5.Text = item.DiscountedPrice5.ToString();
-                    txtMargin5.Text = qUtils.CalculateMargin(web5_DefaultCurrency /_gbpValue, (decimal)item.DiscountedPrice5).ToString();
+                    txtMargin5.Text = qUtils.CalculateMargin(web5_DefaultCurrency / _gbpValue, (decimal)item.DiscountedPrice5).ToString();
                 }
                 else
                 {
@@ -932,7 +916,7 @@ namespace LoginForm.QuotationModule
             row.Cells[dgMPN.Index].Value = item.MPN ?? "";
             row.Cells[dgDesc.Index].Value = item.Article_Desc ?? "";
 
-            
+
             row.Cells[dgUOM.Index].Value = (!String.IsNullOrEmpty(item.Unit_Measure)) ? item.Unit_Measure : "EACH";
             row.Cells[dgSSM.Index].Value = item.Pack_Quantity?.ToString() ?? "1";
             row.Cells[dgUC.Index].Value = item.Unit_Content?.ToString() ?? "1";
@@ -1067,7 +1051,7 @@ namespace LoginForm.QuotationModule
         {
             decimal _total = Decimal.Parse(txtTotal.Text);
 
-            if(!String.IsNullOrEmpty(numExtraCharges.Text))
+            if (!String.IsNullOrEmpty(numExtraCharges.Text))
             {
                 txtTotalExtra.Text = (_total + Decimal.Parse(numExtraCharges.Text)).ToString();
             }
@@ -1092,11 +1076,11 @@ namespace LoginForm.QuotationModule
                 txtGrossTotal.Text = _totalExtra.ToString("N4");
             }
         }
-        
+
         private void numTotalDiscAmount_ValueChanged(object sender, EventArgs e)
         {
             decimal subTotal = Decimal.Parse(txtSubtotal.Text);
-            
+
             if (subTotal != 0)
             {
                 decimal discAmount = numTotalDiscAmount.Value;
@@ -1113,7 +1097,7 @@ namespace LoginForm.QuotationModule
 
         private void numTotalDiscPercent_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 numTotalDiscAmount.Value = ((Decimal.Parse(txtSubtotal.Text) * numTotalDiscPercent.Value) / 100);
             }
@@ -1127,7 +1111,7 @@ namespace LoginForm.QuotationModule
         private void chkVat_CheckedChanged(object sender, EventArgs e)
         {
             decimal _totalExtra = Decimal.Parse(txtTotalExtra.Text);
-            
+
             if (((CheckBox)sender).Checked)
             {
                 txtVatTotal.Font = new Font(txtVatTotal.Font, FontStyle.Underline);
@@ -1155,7 +1139,7 @@ namespace LoginForm.QuotationModule
         {
             if (dgAddedItems.CurrentRow != null && dgAddedItems.CurrentRow.IsNewRow)
             {
-                if(dgAddedItems.CurrentCell.ColumnIndex != (int)GridColumns.ItemCode)
+                if (dgAddedItems.CurrentCell.ColumnIndex != (int)GridColumns.ItemCode)
                 {
                     dgAddedItems.CurrentCell.ReadOnly = true;
                 }
@@ -1170,3 +1154,4 @@ namespace LoginForm.QuotationModule
         }
     }
 }
+
