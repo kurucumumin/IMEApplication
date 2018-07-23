@@ -61,16 +61,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevComponents.DotNetBar.Design">
-      <HintPath>..\..\..\..\OneDrive\Masaüstü\DotNetBar\DevComponents.DotNetBar.Design.dll</HintPath>
+      <HintPath>..\packages\DevComponents\DevComponents.DotNetBar.Design.dll</HintPath>
     </Reference>
     <Reference Include="DevComponents.DotNetBar2">
-      <HintPath>..\..\..\..\OneDrive\Masaüstü\DotNetBar\DevComponents.DotNetBar2.dll</HintPath>
+      <HintPath>..\packages\DevComponents\DevComponents.DotNetBar2.dll</HintPath>
     </Reference>
     <Reference Include="DevComponents.Instrumentation">
-      <HintPath>..\..\..\..\OneDrive\Masaüstü\DotNetBar\DevComponents.Instrumentation.dll</HintPath>
+      <HintPath>..\packages\DevComponents\DevComponents.Instrumentation.dll</HintPath>
     </Reference>
     <Reference Include="DevComponents.Instrumentation.Design">
-      <HintPath>..\..\..\..\OneDrive\Masaüstü\DotNetBar\DevComponents.Instrumentation.Design.dll</HintPath>
+      <HintPath>..\packages\DevComponents\DevComponents.Instrumentation.Design.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
