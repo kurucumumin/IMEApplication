@@ -142,7 +142,8 @@ namespace LoginForm
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            new Office2010Form1().Show();
+            frmMainMetro form = new frmMainMetro();
+            form.Show();
         }
     }
 }
