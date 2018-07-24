@@ -26,6 +26,8 @@ namespace LoginForm.DataSet
         public Nullable<decimal> Col1Price { get; set; }
         public Nullable<decimal> DiscountedPrice1 { get; set; }
         public string DiscontinuationDate { get; set; }
+        public Nullable<int> OnhandStockBalance { get; set; }
+        public Nullable<int> CatalogueStatus { get; set; }
         public string dependantTable { get; set; }
     }
 }

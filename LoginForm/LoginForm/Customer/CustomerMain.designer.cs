@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tab_company = new System.Windows.Forms.TabPage();
             this.txt3partyCode = new System.Windows.Forms.TextBox();
@@ -1426,15 +1427,26 @@
             // 
             this.CustomerDataGrid.AllowUserToAddRows = false;
             this.CustomerDataGrid.AllowUserToDeleteRows = false;
-            this.CustomerDataGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.CustomerDataGrid.AllowUserToOrderColumns = true;
+            this.CustomerDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.CustomerDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.CustomerDataGrid.DefaultCellStyle = dataGridViewCellStyle2;
             this.CustomerDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CustomerDataGrid.Location = new System.Drawing.Point(7, 377);
-            this.CustomerDataGrid.MultiSelect = false;
+            this.CustomerDataGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.CustomerDataGrid.Location = new System.Drawing.Point(12, 382);
+            this.CustomerDataGrid.Margin = new System.Windows.Forms.Padding(8);
             this.CustomerDataGrid.Name = "CustomerDataGrid";
             this.CustomerDataGrid.ReadOnly = true;
+            this.CustomerDataGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.CustomerDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.CustomerDataGrid.Size = new System.Drawing.Size(932, 284);
+            this.CustomerDataGrid.Size = new System.Drawing.Size(922, 284);
             this.CustomerDataGrid.TabIndex = 56;
             this.CustomerDataGrid.TabStop = false;
             this.CustomerDataGrid.SelectionChanged += new System.EventHandler(this.CustomerDataGrid_SelectionChanged);

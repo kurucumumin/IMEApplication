@@ -134,7 +134,7 @@
             // 
             this.txtStockCode.Location = new System.Drawing.Point(3, 13);
             this.txtStockCode.Name = "txtStockCode";
-            this.txtStockCode.Size = new System.Drawing.Size(192, 24);
+            this.txtStockCode.Size = new System.Drawing.Size(192, 21);
             this.txtStockCode.TabIndex = 25;
             this.txtStockCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtStockCode_KeyDown);
             // 
@@ -187,14 +187,14 @@
             "BY MPN"});
             this.cbSearch.Location = new System.Drawing.Point(6, 14);
             this.cbSearch.Name = "cbSearch";
-            this.cbSearch.Size = new System.Drawing.Size(216, 26);
+            this.cbSearch.Size = new System.Drawing.Size(216, 23);
             this.cbSearch.TabIndex = 22;
             // 
             // txtSearchText
             // 
             this.txtSearchText.Location = new System.Drawing.Point(6, 44);
             this.txtSearchText.Name = "txtSearchText";
-            this.txtSearchText.Size = new System.Drawing.Size(216, 24);
+            this.txtSearchText.Size = new System.Drawing.Size(216, 21);
             this.txtSearchText.TabIndex = 23;
             this.txtSearchText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearchText_KeyPress);
             // 
@@ -295,7 +295,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(19, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 18);
+            this.label1.Size = new System.Drawing.Size(36, 15);
             this.label1.TabIndex = 20;
             this.label1.Text = "From";
             // 
@@ -324,7 +324,7 @@
             this.dtpToDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpToDate.Location = new System.Drawing.Point(83, 48);
             this.dtpToDate.Name = "dtpToDate";
-            this.dtpToDate.Size = new System.Drawing.Size(119, 24);
+            this.dtpToDate.Size = new System.Drawing.Size(119, 21);
             this.dtpToDate.TabIndex = 18;
             // 
             // dtpFromDate
@@ -333,7 +333,7 @@
             this.dtpFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpFromDate.Location = new System.Drawing.Point(83, 15);
             this.dtpFromDate.Name = "dtpFromDate";
-            this.dtpFromDate.Size = new System.Drawing.Size(119, 24);
+            this.dtpFromDate.Size = new System.Drawing.Size(119, 21);
             this.dtpFromDate.TabIndex = 19;
             // 
             // label2
@@ -341,7 +341,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(19, 48);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(26, 18);
+            this.label2.Size = new System.Drawing.Size(21, 15);
             this.label2.TabIndex = 21;
             this.label2.Text = "To";
             // 
@@ -390,7 +390,7 @@
             // 
             // FormQuotationMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1236, 696);
             this.Controls.Add(this.tableLayoutPanel1);
