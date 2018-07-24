@@ -114,7 +114,7 @@
             this.btnFileLoader.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(158)))), ((int)(((byte)(75)))));
             this.btnFileLoader.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFileLoader.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFileLoader.Location = new System.Drawing.Point(0, 130);
+            this.btnFileLoader.Location = new System.Drawing.Point(0, 126);
             this.btnFileLoader.Margin = new System.Windows.Forms.Padding(0);
             this.btnFileLoader.Name = "btnFileLoader";
             this.btnFileLoader.Size = new System.Drawing.Size(213, 50);
@@ -131,7 +131,7 @@
             this.btnManagement.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(158)))), ((int)(((byte)(75)))));
             this.btnManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnManagement.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnManagement.Location = new System.Drawing.Point(0, 80);
+            this.btnManagement.Location = new System.Drawing.Point(0, 76);
             this.btnManagement.Margin = new System.Windows.Forms.Padding(0);
             this.btnManagement.Name = "btnManagement";
             this.btnManagement.Size = new System.Drawing.Size(213, 50);
@@ -148,7 +148,7 @@
             this.btnDevelopment.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(158)))), ((int)(((byte)(75)))));
             this.btnDevelopment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDevelopment.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDevelopment.Location = new System.Drawing.Point(0, 30);
+            this.btnDevelopment.Location = new System.Drawing.Point(0, 26);
             this.btnDevelopment.Margin = new System.Windows.Forms.Padding(0);
             this.btnDevelopment.Name = "btnDevelopment";
             this.btnDevelopment.Size = new System.Drawing.Size(213, 50);
@@ -273,7 +273,7 @@
             this.controlLoader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
             this.controlLoader.Dock = System.Windows.Forms.DockStyle.Fill;
             this.controlLoader.Location = new System.Drawing.Point(0, 0);
-            this.controlLoader.Margin = new System.Windows.Forms.Padding(2);
+            this.controlLoader.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.controlLoader.Name = "controlLoader";
             this.controlLoader.Size = new System.Drawing.Size(257, 717);
             this.controlLoader.TabIndex = 0;
@@ -304,7 +304,7 @@
             // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1254, 737);
             this.Controls.Add(this.tableMain);

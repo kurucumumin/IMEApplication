@@ -1391,8 +1391,9 @@ warning 6002: The table/view 'IME.dbo.CompleteItems_v2' does not have a primary 
           <Property Name="Col1Break" Type="int" />
           <Property Name="Col1Price" Type="decimal" Precision="18" Scale="3" />
           <Property Name="DiscountedPrice1" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="CatalogueStatus" Type="int" />
+          <Property Name="DiscontinuationDate" Type="nvarchar" MaxLength="20" />
           <Property Name="OnhandStockBalance" Type="int" />
+          <Property Name="CatalogueStatus" Type="int" />
           <Property Name="dependantTable" Type="varchar" MaxLength="3" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
@@ -3472,107 +3473,108 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <EntitySet Name="UserAuthorization" EntityType="Self.UserAuthorization" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Worker" EntityType="Self.Worker" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CariHareket" EntityType="Self.CariHareket" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [CariHareket].[Current Type] AS [Current Type], 
-    [CariHareket].[Current ID] AS [Current ID], 
-    [CariHareket].[Current Name] AS [Current Name], 
-    [CariHareket].[Amount] AS [Amount], 
-    [CariHareket].[Currency] AS [Currency], 
-    [CariHareket].[Representative] AS [Representative], 
-    [CariHareket].[Description] AS [Description], 
-    [CariHareket].[Operation Type] AS [Operation Type], 
+            <DefiningQuery>SELECT
+    [CariHareket].[Current Type] AS [Current Type],
+    [CariHareket].[Current ID] AS [Current ID],
+    [CariHareket].[Current Name] AS [Current Name],
+    [CariHareket].[Amount] AS [Amount],
+    [CariHareket].[Currency] AS [Currency],
+    [CariHareket].[Representative] AS [Representative],
+    [CariHareket].[Description] AS [Description],
+    [CariHareket].[Operation Type] AS [Operation Type],
     [CariHareket].[Account Name] AS [Account Name]
     FROM [dbo].[CariHareket] AS [CariHareket]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="CompleteItems" EntityType="Self.CompleteItems" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [CompleteItems].[Article_No] AS [Article_No], 
-    [CompleteItems].[Article_Desc] AS [Article_Desc], 
-    [CompleteItems].[Pack_Quantity] AS [Pack_Quantity], 
-    [CompleteItems].[Unit_Content] AS [Unit_Content], 
-    [CompleteItems].[Unit_Measure] AS [Unit_Measure], 
-    [CompleteItems].[MPN] AS [MPN], 
-    [CompleteItems].[Calibration_Ind] AS [Calibration_Ind], 
-    [CompleteItems].[Standard_Weight] AS [Standard_Weight], 
-    [CompleteItems].[Hazardous_Ind] AS [Hazardous_Ind], 
-    [CompleteItems].[Obsolete_Flag] AS [Obsolete_Flag], 
-    [CompleteItems].[Low_Discount_Ind] AS [Low_Discount_Ind], 
-    [CompleteItems].[Licensed_Ind] AS [Licensed_Ind], 
-    [CompleteItems].[Shelf_Life] AS [Shelf_Life], 
-    [CompleteItems].[CofO] AS [CofO], 
-    [CompleteItems].[CCCN_No] AS [CCCN_No], 
-    [CompleteItems].[Uk_Intro_Date] AS [Uk_Intro_Date], 
-    [CompleteItems].[Uk_Disc_Date] AS [Uk_Disc_Date], 
-    [CompleteItems].[BHC_Flag] AS [BHC_Flag], 
-    [CompleteItems].[Disc_Change_Ind] AS [Disc_Change_Ind], 
-    [CompleteItems].[Expiring_Product_Change_Ind] AS [Expiring_Product_Change_Ind], 
-    [CompleteItems].[Manufacturer] AS [Manufacturer], 
-    [CompleteItems].[MH_Code_Level_1] AS [MH_Code_Level_1], 
-    [CompleteItems].[Heigh] AS [Heigh], 
-    [CompleteItems].[Width] AS [Width], 
-    [CompleteItems].[Length] AS [Length], 
-    [CompleteItems].[OnhandStockBalance] AS [OnhandStockBalance], 
-    [CompleteItems].[QuantityonOrder] AS [QuantityonOrder], 
-    [CompleteItems].[Col1Break] AS [Col1Break], 
-    [CompleteItems].[Col2Break] AS [Col2Break], 
-    [CompleteItems].[Col3Break] AS [Col3Break], 
-    [CompleteItems].[Col4Break] AS [Col4Break], 
-    [CompleteItems].[Col5Break] AS [Col5Break], 
-    [CompleteItems].[Col1Price] AS [Col1Price], 
-    [CompleteItems].[Col2Price] AS [Col2Price], 
-    [CompleteItems].[Col3Price] AS [Col3Price], 
-    [CompleteItems].[Col4Price] AS [Col4Price], 
-    [CompleteItems].[Col5Price] AS [Col5Price], 
-    [CompleteItems].[DiscountedPrice1] AS [DiscountedPrice1], 
-    [CompleteItems].[DiscountedPrice2] AS [DiscountedPrice2], 
-    [CompleteItems].[DiscountedPrice3] AS [DiscountedPrice3], 
-    [CompleteItems].[DiscountedPrice4] AS [DiscountedPrice4], 
-    [CompleteItems].[DiscountedPrice5] AS [DiscountedPrice5], 
-    [CompleteItems].[SupersectionName] AS [SupersectionName], 
-    [CompleteItems].[SectionName] AS [SectionName], 
-    [CompleteItems].[DiscontinuationDate] AS [DiscontinuationDate], 
-    [CompleteItems].[Runon] AS [Runon], 
-    [CompleteItems].[Referral] AS [Referral], 
-    [CompleteItems].[Environment] AS [Environment], 
-    [CompleteItems].[Lithium] AS [Lithium], 
-    [CompleteItems].[Shipping] AS [Shipping], 
-    [CompleteItems].[LicenceType] AS [LicenceType], 
-    [CompleteItems].[BrandName] AS [BrandName], 
+            <DefiningQuery>SELECT
+    [CompleteItems].[Article_No] AS [Article_No],
+    [CompleteItems].[Article_Desc] AS [Article_Desc],
+    [CompleteItems].[Pack_Quantity] AS [Pack_Quantity],
+    [CompleteItems].[Unit_Content] AS [Unit_Content],
+    [CompleteItems].[Unit_Measure] AS [Unit_Measure],
+    [CompleteItems].[MPN] AS [MPN],
+    [CompleteItems].[Calibration_Ind] AS [Calibration_Ind],
+    [CompleteItems].[Standard_Weight] AS [Standard_Weight],
+    [CompleteItems].[Hazardous_Ind] AS [Hazardous_Ind],
+    [CompleteItems].[Obsolete_Flag] AS [Obsolete_Flag],
+    [CompleteItems].[Low_Discount_Ind] AS [Low_Discount_Ind],
+    [CompleteItems].[Licensed_Ind] AS [Licensed_Ind],
+    [CompleteItems].[Shelf_Life] AS [Shelf_Life],
+    [CompleteItems].[CofO] AS [CofO],
+    [CompleteItems].[CCCN_No] AS [CCCN_No],
+    [CompleteItems].[Uk_Intro_Date] AS [Uk_Intro_Date],
+    [CompleteItems].[Uk_Disc_Date] AS [Uk_Disc_Date],
+    [CompleteItems].[BHC_Flag] AS [BHC_Flag],
+    [CompleteItems].[Disc_Change_Ind] AS [Disc_Change_Ind],
+    [CompleteItems].[Expiring_Product_Change_Ind] AS [Expiring_Product_Change_Ind],
+    [CompleteItems].[Manufacturer] AS [Manufacturer],
+    [CompleteItems].[MH_Code_Level_1] AS [MH_Code_Level_1],
+    [CompleteItems].[Heigh] AS [Heigh],
+    [CompleteItems].[Width] AS [Width],
+    [CompleteItems].[Length] AS [Length],
+    [CompleteItems].[OnhandStockBalance] AS [OnhandStockBalance],
+    [CompleteItems].[QuantityonOrder] AS [QuantityonOrder],
+    [CompleteItems].[Col1Break] AS [Col1Break],
+    [CompleteItems].[Col2Break] AS [Col2Break],
+    [CompleteItems].[Col3Break] AS [Col3Break],
+    [CompleteItems].[Col4Break] AS [Col4Break],
+    [CompleteItems].[Col5Break] AS [Col5Break],
+    [CompleteItems].[Col1Price] AS [Col1Price],
+    [CompleteItems].[Col2Price] AS [Col2Price],
+    [CompleteItems].[Col3Price] AS [Col3Price],
+    [CompleteItems].[Col4Price] AS [Col4Price],
+    [CompleteItems].[Col5Price] AS [Col5Price],
+    [CompleteItems].[DiscountedPrice1] AS [DiscountedPrice1],
+    [CompleteItems].[DiscountedPrice2] AS [DiscountedPrice2],
+    [CompleteItems].[DiscountedPrice3] AS [DiscountedPrice3],
+    [CompleteItems].[DiscountedPrice4] AS [DiscountedPrice4],
+    [CompleteItems].[DiscountedPrice5] AS [DiscountedPrice5],
+    [CompleteItems].[SupersectionName] AS [SupersectionName],
+    [CompleteItems].[SectionName] AS [SectionName],
+    [CompleteItems].[DiscontinuationDate] AS [DiscontinuationDate],
+    [CompleteItems].[Runon] AS [Runon],
+    [CompleteItems].[Referral] AS [Referral],
+    [CompleteItems].[Environment] AS [Environment],
+    [CompleteItems].[Lithium] AS [Lithium],
+    [CompleteItems].[Shipping] AS [Shipping],
+    [CompleteItems].[LicenceType] AS [LicenceType],
+    [CompleteItems].[BrandName] AS [BrandName],
     [CompleteItems].[dependantTable] AS [dependantTable]
     FROM [dbo].[CompleteItems] AS [CompleteItems]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="CompleteItems_v2" EntityType="Self.CompleteItems_v2" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [CompleteItems_v2].[Article_No] AS [Article_No], 
-    [CompleteItems_v2].[Article_Desc] AS [Article_Desc], 
-    [CompleteItems_v2].[Pack_Quantity] AS [Pack_Quantity], 
-    [CompleteItems_v2].[Unit_Content] AS [Unit_Content], 
-    [CompleteItems_v2].[Unit_Measure] AS [Unit_Measure], 
-    [CompleteItems_v2].[MPN] AS [MPN], 
-    [CompleteItems_v2].[Manufacturer] AS [Manufacturer], 
-    [CompleteItems_v2].[MH_Code_Level_1] AS [MH_Code_Level_1], 
-    [CompleteItems_v2].[Col1Break] AS [Col1Break], 
-    [CompleteItems_v2].[Col1Price] AS [Col1Price], 
-    [CompleteItems_v2].[DiscountedPrice1] AS [DiscountedPrice1], 
-    [CompleteItems_v2].[CatalogueStatus] AS [CatalogueStatus], 
-    [CompleteItems_v2].[OnhandStockBalance] AS [OnhandStockBalance], 
+            <DefiningQuery>SELECT
+    [CompleteItems_v2].[Article_No] AS [Article_No],
+    [CompleteItems_v2].[Article_Desc] AS [Article_Desc],
+    [CompleteItems_v2].[Pack_Quantity] AS [Pack_Quantity],
+    [CompleteItems_v2].[Unit_Content] AS [Unit_Content],
+    [CompleteItems_v2].[Unit_Measure] AS [Unit_Measure],
+    [CompleteItems_v2].[MPN] AS [MPN],
+    [CompleteItems_v2].[Manufacturer] AS [Manufacturer],
+    [CompleteItems_v2].[MH_Code_Level_1] AS [MH_Code_Level_1],
+    [CompleteItems_v2].[Col1Break] AS [Col1Break],
+    [CompleteItems_v2].[Col1Price] AS [Col1Price],
+    [CompleteItems_v2].[DiscountedPrice1] AS [DiscountedPrice1],
+    [CompleteItems_v2].[DiscontinuationDate] AS [DiscontinuationDate],
+    [CompleteItems_v2].[OnhandStockBalance] AS [OnhandStockBalance],
+    [CompleteItems_v2].[CatalogueStatus] AS [CatalogueStatus],
     [CompleteItems_v2].[dependantTable] AS [dependantTable]
     FROM [dbo].[CompleteItems_v2] AS [CompleteItems_v2]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="MPN_List" EntityType="Self.MPN_List" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [MPN_List].[MPN] AS [MPN], 
+            <DefiningQuery>SELECT
+    [MPN_List].[MPN] AS [MPN],
     [MPN_List].[table] AS [table]
     FROM [dbo].[MPN_List] AS [MPN_List]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="V_Product" EntityType="Self.V_Product" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [V_Product].[productId] AS [productId], 
-    [V_Product].[productCode] AS [productCode], 
-    [V_Product].[Unit_Measure] AS [Unit_Measure], 
-    [V_Product].[Brandname] AS [Brandname], 
-    [V_Product].[MPN] AS [MPN], 
-    [V_Product].[Cost] AS [Cost], 
+            <DefiningQuery>SELECT
+    [V_Product].[productId] AS [productId],
+    [V_Product].[productCode] AS [productCode],
+    [V_Product].[Unit_Measure] AS [Unit_Measure],
+    [V_Product].[Brandname] AS [Brandname],
+    [V_Product].[MPN] AS [MPN],
+    [V_Product].[Cost] AS [Cost],
     [V_Product].[dependantTable] AS [dependantTable]
     FROM [dbo].[V_Product] AS [V_Product]</DefiningQuery>
           </EntitySet>
@@ -5638,8 +5640,9 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="Col1Break" Type="Int32" />
           <Property Name="Col1Price" Type="Decimal" Precision="18" Scale="3" />
           <Property Name="DiscountedPrice1" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="CatalogueStatus" Type="Int32" />
+          <Property Name="DiscontinuationDate" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="OnhandStockBalance" Type="Int32" />
+          <Property Name="CatalogueStatus" Type="Int32" />
           <Property Name="dependantTable" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="MPN_List">
@@ -9922,8 +9925,9 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="Col1Break" ColumnName="Col1Break" />
                 <ScalarProperty Name="Col1Price" ColumnName="Col1Price" />
                 <ScalarProperty Name="DiscountedPrice1" ColumnName="DiscountedPrice1" />
-                <ScalarProperty Name="CatalogueStatus" ColumnName="CatalogueStatus" />
+                <ScalarProperty Name="DiscontinuationDate" ColumnName="DiscontinuationDate" />
                 <ScalarProperty Name="OnhandStockBalance" ColumnName="OnhandStockBalance" />
+                <ScalarProperty Name="CatalogueStatus" ColumnName="CatalogueStatus" />
                 <ScalarProperty Name="dependantTable" ColumnName="dependantTable" />
               </MappingFragment>
             </EntityTypeMapping>

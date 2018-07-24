@@ -29,6 +29,7 @@ namespace LoginForm
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabgenel = new System.Windows.Forms.TabControl();
             this.tabInfo = new System.Windows.Forms.TabPage();
             this.cmbMainContact = new System.Windows.Forms.ComboBox();
@@ -1264,13 +1265,24 @@ namespace LoginForm
             this.worker1DataGridViewTextBoxColumn,
             this.supplierSubCategoryDataGridViewTextBoxColumn});
             this.dgSupplier.DataSource = this.supplierBindingSource;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgSupplier.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgSupplier.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgSupplier.Location = new System.Drawing.Point(3, 283);
+            this.dgSupplier.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.dgSupplier.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.dgSupplier.Location = new System.Drawing.Point(8, 288);
+            this.dgSupplier.Margin = new System.Windows.Forms.Padding(8);
             this.dgSupplier.MultiSelect = false;
             this.dgSupplier.Name = "dgSupplier";
             this.dgSupplier.ReadOnly = true;
             this.dgSupplier.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgSupplier.Size = new System.Drawing.Size(919, 184);
+            this.dgSupplier.Size = new System.Drawing.Size(909, 174);
             this.dgSupplier.TabIndex = 1;
             this.dgSupplier.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgSupplier_CellClick);
             this.dgSupplier.DoubleClick += new System.EventHandler(this.dgSupplier_DoubleClick);

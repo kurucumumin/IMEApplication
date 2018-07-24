@@ -19,10 +19,14 @@ namespace LoginForm
         int isUpdateAdress;
         bool isModify = false;
         string ComboboxString = "Choose";
+
         public CustomerMain()
         {
             InitializeComponent();
 
+            CustomerDataGrid.DataSource = null;
+            CustomerDataGrid.DataSource = IME.Customers.ToList(); ;
+            CustomerDataGrid.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         public CustomerMain(Boolean buttonEnabled, string CustomerID)
@@ -264,6 +268,13 @@ namespace LoginForm
             factor.Text = c.factor.ToString() ?? factor.Text;
             DiscountRate.Text = c.discountrate.ToString() ?? DiscountRate.Text;
         }
+
+        //private void populateGrid<T>(List<T> queryable)
+        //{
+        //    CustomerDataGrid.DataSource = null;
+        //    CustomerDataGrid.DataSource = queryable;
+        //    CustomerDataGrid.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        //}
 
         private void ContactList_SelectedIndexChanged(object sender, EventArgs e)
         {
