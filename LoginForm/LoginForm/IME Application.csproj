@@ -898,7 +898,11 @@
     <Compile Include="Services\CustomerSP.cs" />
     <Compile Include="Services\DateValidation.cs" />
     <Compile Include="Services\dgv.cs" />
+    <Compile Include="Services\MyClasses\FizikselDosya_.cs" />
+    <Compile Include="Services\MyClasses\KomutArgumanlari_.cs" />
     <Compile Include="Services\Messages.cs" />
+    <Compile Include="Services\MyClasses\MyConnect.cs" />
+    <Compile Include="Services\MyClasses\MyExtension.cs" />
     <Compile Include="Services\NumToText.cs" />
     <Compile Include="Services\OtherDateValidationFunction.cs" />
     <Compile Include="Services\PrinterClass.cs" />
@@ -906,6 +910,7 @@
     <Compile Include="Services\QuotationDatagridCustomize.cs" />
     <Compile Include="Services\classSupplier.cs" />
     <Compile Include="Services\ToolTipService.cs" />
+    <Compile Include="Services\MyClasses\TransacsionArgumanlari_.cs" />
     <Compile Include="Services\txtCreate.cs" />
     <Compile Include="Services\XmlToObject.cs" />
     <Compile Include="StockConfirm\frmStockConfirm.cs">

@@ -9,6 +9,9 @@ namespace LoginForm.Services
     {
         private static Worker worker;
         public static decimal _decCurrentCompanyId;
+        public static string ConnectionStringLogo = new System.Data.SqlClient.SqlConnectionStringBuilder { DataSource = "195.201.76.156\\MSSQL4", Password = "IME1453", UserID = "Sa", InitialCatalog = "LOGO"/*, IntegratedSecurity = true */}.ConnectionString;
+        public static string FrmNo = "001";
+        public static string DnmNo = "01";
 
         public static string MD5Hash(string input)
         {

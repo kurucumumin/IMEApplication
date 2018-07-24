@@ -1,7 +1,9 @@
 ﻿using LoginForm.DataSet;
 using LoginForm.Services;
+using MyLibrary;
 using System;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -267,7 +269,8 @@ namespace LoginForm
 
         private void ContactList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try {
+            try
+            {
                 #region ContactList
                 //contact daki list box a tıklandığında contact ın bilgileri tıklanan göre doldurulmasıse
                 int cw_ID = (int)ContactList.SelectedValue;
@@ -325,7 +328,7 @@ namespace LoginForm
 
         private void titleAdd_Click(object sender, EventArgs e)
         {
-            if (ContactDepartment.SelectedValue!=null && ContactDepartment.Text!=ComboboxString)
+            if (ContactDepartment.SelectedValue != null && ContactDepartment.Text != ComboboxString)
             {
                 int department = Convert.ToInt32(ContactDepartment.SelectedValue);
                 CustomerPositionAdd form = new CustomerPositionAdd(department);
@@ -334,16 +337,19 @@ namespace LoginForm
                 form.ShowDialog();
                 ContactTitle.DataSource = new IMEEntities().CustomerTitles.ToList();
                 this.Enabled = true;
-            }else { MessageBox.Show("Please select a Department"); }
+            }
+            else { MessageBox.Show("Please select a Department"); }
         }
 
         private void MainCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
             SubCategory.Text = "";
             int c_categoryID;
-            try {
+            try
+            {
                 c_categoryID = (int)((ComboBox)sender).SelectedValue;
-            } catch { c_categoryID = 0; }
+            }
+            catch { c_categoryID = 0; }
             SubCategory.DataSource = IME.CustomerSubCategories.Where(b => b.categoryID == c_categoryID).ToList();
             SubCategory.DisplayMember = "subcategoryname";
             SubCategory.ValueMember = "ID";
@@ -599,7 +605,8 @@ namespace LoginForm
                                     }).ToList();
                 CustomerDataGrid.DataSource = CustomerList;
             }
-            if (CustomerDataGrid.RowCount != 0) {
+            if (CustomerDataGrid.RowCount != 0)
+            {
                 string customerID = CustomerDataGrid.CurrentRow.Cells["ID"].Value.ToString();
                 Customer c = IME.Customers.Where(a => a.ID == customerID).FirstOrDefault();
                 dateTimePicker1.Value = c.CreateDate.Value;
@@ -1000,13 +1007,12 @@ namespace LoginForm
                     if (txtExtNumber.Text != "") { c.extensionnumber = txtExtNumber.Text; }
                     if (CustomerFax.Text != "") { c.fax = CustomerFax.Text; }
                     c.webadress = WebAdress.Text;
-                    c.taxoffice = CustomerFax.Text;
                     if (CreditLimit.Text != "") { c.creditlimit = Int32.Parse(CreditLimit.Text); }
                     if (DiscountRate.Text != "") { c.discountrate = Decimal.Parse(DiscountRate.Text); }
                     c.taxoffice = TaxOffice.Text;
                     if (taxNumber.Text != "") { c.taxnumber = taxNumber.Text; }
-                    if(MainCategory.SelectedValue != null)
-                    { c.categoryID = Int32.Parse(MainCategory.SelectedValue.ToString());}
+                    if (MainCategory.SelectedValue != null)
+                    { c.categoryID = Int32.Parse(MainCategory.SelectedValue.ToString()); }
 
                     if (SubCategory.SelectedValue != null) { c.subcategoryID = Int32.Parse(SubCategory.SelectedValue.ToString()); }
                     if (AccountRepresentary.SelectedItem != null)
@@ -1083,8 +1089,306 @@ namespace LoginForm
                     contactTabEnableFalse();
                     customersearch();
                     //}
+
                 }
 
+            }
+        }
+
+        private void logoCustAdd()
+        {
+            #region CustomerForLogo
+
+            //string str = MyConnect.Ornekle.ExecuteScalar(Utils.ConnectionStringLogo, "SELECT CODE FROM L_COUNTRY WHERE LOGICALREF = " + this.cbCountry.SelectedValue._ToIntegerR(), CommandType.Text, 60, new KomutArgumanlari_[0]).ToString();
+            if (/*this.GelenID*/0 == 0)
+            {
+                KomutArgumanlari_[] arguman = new KomutArgumanlari_[1];
+                KomutArgumanlari_ i_1 = new KomutArgumanlari_
+                {
+                    Parametre = this.CustomerCode.Text,
+                    ParametreAdi = "@param"
+                };
+                arguman[0] = i_1;
+                if (MyConnect.Ornekle.ExecuteScalar_Int(Utils.ConnectionStringLogo, string.Format("SELECT COUNT(*) FROM LG_{0}_CLCARD WHERE CODE = @param", Utils.FrmNo), CommandType.Text, 60, arguman) > 0)
+                {
+                    string str3 = MyConnect.Ornekle.ExecuteScalar(Utils.ConnectionStringLogo, string.Format("SELECT MAX(CODE) FROM LG_{0}_CLCARD WHERE CODE LIKE 'SD%'", Utils.FrmNo), CommandType.Text, 60, new KomutArgumanlari_[0])._ToString();
+                    str3 = str3.Substring(0, 2) + (str3.Replace("SD", "")._ToIntegerR() + 1);
+                    this.CustomerCode.Text = str3;
+                }
+                //clsLogClass cls = new clsLogClass
+                //{
+                //    TABLE_ID = 0x3f6,
+                //    DONE_OPERATION = string.Format("{0} kodlu cari eklendi.", this.txtKodu.Text),
+                //    RECORD_ID = 0,
+                //    TIME = DateTime.Now
+                //};
+                //clsLog.LogKayit(cls);
+                int num = MyConnect.Ornekle.ExecuteScalar_Int(Utils.ConnectionStringLogo, string.Format("select ISNULL(MAX(CL.LOWLEVELCODES1)+1,1) from LG_{0}_CLCARD AS CL", Utils.FrmNo), CommandType.Text, 60, new KomutArgumanlari_[0]);
+                string str2 = (/*this.Nerden*/1 == 0) ? "'RS'" : "''";
+                object[] objArray1 = new object[] { "INSERT INTO LG_{0}_CLCARD (ACTIVE, CARDTYPE, CODE, DEFINITION_, SPECODE, CYPHCODE, ADDR1, ADDR2, CITY, COUNTRY, POSTCODE, TELNRS1, TELNRS2, FAXNR, TAXNR, TAXOFFICE, INCHARGE, DISCRATE, EXTENREF, PAYMENTREF, EMAILADDR, WEBADDR, WARNMETHOD, WARNEMAILADDR, WARNFAXNR, CLANGUAGE, VATNR, BLOCKED, BANKBRANCHS1, BANKBRANCHS2, BANKBRANCHS3, BANKBRANCHS4, BANKBRANCHS5, BANKBRANCHS6, BANKBRANCHS7, BANKACCOUNTS1, BANKACCOUNTS2, BANKACCOUNTS3, BANKACCOUNTS4, BANKACCOUNTS5, BANKACCOUNTS6, BANKACCOUNTS7, DELIVERYMETHOD, DELIVERYFIRM, CCURRENCY, TEXTINC, SITEID, RECSTATUS, ORGLOGICREF, EDINO, TRADINGGRP, CAPIBLOCK_CREATEDBY, CAPIBLOCK_CREADEDDATE, CAPIBLOCK_CREATEDHOUR, CAPIBLOCK_CREATEDMIN, CAPIBLOCK_CREATEDSEC, CAPIBLOCK_MODIFIEDBY, CAPIBLOCK_MODIFIEDDATE, CAPIBLOCK_MODIFIEDHOUR, CAPIBLOCK_MODIFIEDMIN, CAPIBLOCK_MODIFIEDSEC, PAYMENTPROC, CRATEDIFFPROC, WFSTATUS, PPGROUPCODE, PPGROUPREF, TAXOFFCODE, TOWNCODE, TOWN, DISTRICTCODE, DISTRICT, CITYCODE, COUNTRYCODE, ORDSENDMETHOD, ORDSENDEMAILADDR, ORDSENDFAXNR, DSPSENDMETHOD, DSPSENDEMAILADDR, DSPSENDFAXNR, INVSENDMETHOD, INVSENDEMAILADDR, INVSENDFAXNR, SUBSCRIBERSTAT, SUBSCRIBEREXT, AUTOPAIDBANK, PAYMENTTYPE, LASTSENDREMLEV, EXTACCESSFLAGS, ORDSENDFORMAT, DSPSENDFORMAT, INVSENDFORMAT, REMSENDFORMAT, STORECREDITCARDNO, CLORDFREQ, ORDDAY, LOGOID, LIDCONFIRMED, EXPREGNO, EXPDOCNO, EXPBUSTYPREF, INVPRINTCNT, PIECEORDINFLICT, COLLECTINVOICING, EBUSDATASENDTYPE, INISTATUSFLAGS, SLSORDERSTATUS, SLSORDERPRICE, LTRSENDMETHOD, LTRSENDEMAILADDR, LTRSENDFAXNR, LTRSENDFORMAT, IMAGEINC, CELLPHONE, SAMEITEMCODEUSE, STATECODE, STATENAME, WFLOWCRDREF, PARENTCLREF, LOWLEVELCODES1, LOWLEVELCODES2, LOWLEVELCODES3, LOWLEVELCODES4, LOWLEVELCODES5, LOWLEVELCODES6, LOWLEVELCODES7, LOWLEVELCODES8, LOWLEVELCODES9, LOWLEVELCODES10, TELCODES1, TELCODES2, FAXCODE, PURCHBRWS, SALESBRWS, IMPBRWS, EXPBRWS, FINBRWS, ORGLOGOID, ADDTOREFLIST, TEXTREFTR, TEXTREFEN, ARPQUOTEINC, CLCRM, GRPFIRMNR, CONSCODEREF, SPECODE2, SPECODE3, SPECODE4, SPECODE5, OFFSENDMETHOD, OFFSENDEMAILADDR, OFFSENDFAXNR, OFFSENDFORMAT, EBANKNO, LOANGRPCTRL, BANKNAMES1, BANKNAMES2, BANKNAMES3, BANKNAMES4, BANKNAMES5, BANKNAMES6, BANKNAMES7, LDXFIRMNR, MAPID, LONGITUDE, LATITUTE, CITYID, TOWNID, BANKIBANS1, BANKIBANS2, BANKIBANS3, BANKIBANS4, BANKIBANS5, BANKIBANS6, BANKIBANS7, TCKNO, ISPERSCOMP, EXTSENDMETHOD, EXTSENDEMAILADDR, EXTSENDFAXNR, EXTSENDFORMAT, BANKBICS1, BANKBICS2, BANKBICS3, BANKBICS4, BANKBICS5, BANKBICS6, BANKBICS7, CASHREF, USEDINPERIODS, INCHARGE2, INCHARGE3, EMAILADDR2, EMAILADDR3, RSKLIMCR, RSKDUEDATECR, RSKAGINGCR, RSKAGINGDAY, ACCEPTEINV, EINVOICEID, PROFILEID, BANKBCURRENCY1, BANKBCURRENCY2, BANKBCURRENCY3, BANKBCURRENCY4, BANKBCURRENCY5, BANKBCURRENCY6, BANKBCURRENCY7, PURCORDERSTATUS, PURCORDERPRICE, ISFOREIGN, SHIPBEGTIME1, SHIPBEGTIME2, SHIPBEGTIME3, SHIPENDTIME1, SHIPENDTIME2, SHIPENDTIME3, DBSLIMIT1, DBSLIMIT2, DBSLIMIT3, DBSLIMIT4, DBSLIMIT5, DBSLIMIT6, DBSLIMIT7, DBSTOTAL1, DBSTOTAL2, DBSTOTAL3, DBSTOTAL4, DBSTOTAL5, DBSTOTAL6, DBSTOTAL7, DBSBANKNO1, DBSBANKNO2, DBSBANKNO3, DBSBANKNO4, DBSBANKNO5, DBSBANKNO6, DBSBANKNO7, DBSRISKCNTRL1, DBSRISKCNTRL2, DBSRISKCNTRL3, DBSRISKCNTRL4, DBSRISKCNTRL5, DBSRISKCNTRL6, DBSRISKCNTRL7, DBSBANKCURRENCY1, DBSBANKCURRENCY2, DBSBANKCURRENCY3, DBSBANKCURRENCY4, DBSBANKCURRENCY5, DBSBANKCURRENCY6, DBSBANKCURRENCY7, BANKCORRPACC1, BANKCORRPACC2, BANKCORRPACC3, BANKCORRPACC4, BANKCORRPACC5, BANKCORRPACC6, BANKCORRPACC7, BANKVOEN1, BANKVOEN2, BANKVOEN3, BANKVOEN4, BANKVOEN5, BANKVOEN6, BANKVOEN7, EINVOICETYPE, DEFINITION2, TELEXTNUMS1, TELEXTNUMS2, FAXEXTNUM, FACEBOOKURL, TWITTERURL, APPLEID, SKYPEID, GLOBALID, GUID, DUEDATECOUNT, DUEDATELIMIT, DUEDATETRACK, DUEDATECONTROL1, DUEDATECONTROL2, DUEDATECONTROL3, DUEDATECONTROL4, DUEDATECONTROL5, DUEDATECONTROL6, DUEDATECONTROL7, DUEDATECONTROL8, DUEDATECONTROL9, DUEDATECONTROL10, DUEDATECONTROL11, DUEDATECONTROL12, DUEDATECONTROL13, DUEDATECONTROL14, DUEDATECONTROL15, ADRESSNO, POSTLABELCODE, SENDERLABELCODE, CLOSEDATECOUNT, CLOSEDATETRACK, DEGACTIVE, DEGCURR, NAME, SURNAME, LABELINFO, DEFBNACCREF, PROJECTREF, DISCTYPE) VALUES (0, ", (/*this.Nerden*/1 == 0) ? 2 : 3, ", @Kodu, @Unvan, ", str2, ", @CYPHCODE, @Adres1, @Adres2, @CtName, @COUNTRY, @Pc, @Tel, '', @Fx, @Vn, @Vd, @Yetkili, 0, 0, @PAYMENTREF, @MailAdres, @WEBADDR, 0, '', '', 1, '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, 0, 1, 0, '', '', 1, GETDATE(), DATEPART(hour, GETDATE()), DATEPART(minute, GETDATE()), DATEPART(second, GETDATE()), 0, NULL, 0, 0, 0, 0, 0, 0, '', 0, '', @TwC, @TwN, '', '', @CityCode, @COUNTRYCODE, 0, '', '', 0, '', '', 0, '', '', 0, '', '', 0, 0, 0, 0, 0, 0, 0, '', 1, 0, '', 0, '', '', 0, 1, 0, 0, 0, 0, 0, 0, 0, '', '', 0, 0, '', 0, '', '', 0, 0, {1}, 0, 0, 0, 0, 0, 0, 0, 0, 0, @AlanKodu, '', '', 1, 1, 1, 1, 1, '', 0, 0, 0, 0, 0, 0, 0, '', @Credit, @Indirim, @Temsilci, 0, '', '', 0, 0, 0, '', '', '', '', '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '', '', 0, '', '', '', '', '', '', '', 0, 0, '', '', '', '', 0, 0, 0, 0, 0, '', 2, '', '', '', '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', @Dahili, '', '', '', '', '', '', '', NEWID(), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', 0, 0, 0, 0, '', '', 0, 0, 0, 0); SELECT SCOPE_IDENTITY()" };
+                KomutArgumanlari_[] i_Array2 = new KomutArgumanlari_[0x19];
+                KomutArgumanlari_ i_2 = new KomutArgumanlari_
+                {
+                    Parametre = this.CustomerCode.Text.ToUpper(),
+                    ParametreAdi = "@Kodu"
+                };
+                i_Array2[0] = i_2;
+                KomutArgumanlari_ i_3 = new KomutArgumanlari_
+                {
+                    Parametre = this.CustomerName.Text.ToUpper(),
+                    ParametreAdi = "@Unvan"
+                };
+                i_Array2[1] = i_3;
+                KomutArgumanlari_ i_ = new KomutArgumanlari_
+                {
+                    Parametre = (/*this.Nerden*/1 == 0) ? this.CustomerCode.Text.Split(new char[] { '-' })[0].ToString() : "0",
+                    ParametreAdi = "@CYPHCODE"
+                };
+                i_Array2[2] = i_;
+                KomutArgumanlari_ i_4 = new KomutArgumanlari_
+                {
+                    Parametre = this.cbCountry.Text,
+                    ParametreAdi = "@COUNTRY"
+                };
+                i_Array2[3] = i_4;
+                KomutArgumanlari_ i_5 = new KomutArgumanlari_
+                {
+                    Parametre = this.cbCountry.SelectedValue._ToIntegerR(),
+                    ParametreAdi = "@COUNTRYCODE"
+                };
+                i_Array2[4] = i_5;
+                KomutArgumanlari_ i_6 = new KomutArgumanlari_
+                {
+                    Parametre = this.txtAddress1.Text.ToUpper(),
+                    ParametreAdi = "@Adres1"
+                };
+                i_Array2[5] = i_6;
+                KomutArgumanlari_ i_7 = new KomutArgumanlari_
+                {
+                    Parametre = this.txtAddress2.Text.ToUpper(),
+                    ParametreAdi = "@Adres2"
+                };
+                i_Array2[6] = i_7;
+                KomutArgumanlari_ i_8 = new KomutArgumanlari_
+                {
+                    Parametre = this.Telephone.Text,
+                    ParametreAdi = "@Tel"
+                };
+                i_Array2[7] = i_8;
+                KomutArgumanlari_ i_9 = new KomutArgumanlari_
+                {
+                    Parametre = this.CustomerFax.Text,
+                    ParametreAdi = "@Fx"
+                };
+                i_Array2[8] = i_9;
+                KomutArgumanlari_ i_10 = new KomutArgumanlari_
+                {
+                    Parametre = this.PaymentMethod.SelectedValue,
+                    ParametreAdi = "@PAYMENTREF"
+                };
+                i_Array2[9] = i_10;
+                KomutArgumanlari_ i_11 = new KomutArgumanlari_
+                {
+                    Parametre = "",
+                    ParametreAdi = "@Yetkili"
+                };
+                i_Array2[10] = i_11;
+                KomutArgumanlari_ i_12 = new KomutArgumanlari_
+                {
+                    Parametre = (cbMainContact.SelectedItem as CustomerWorker).cw_email,
+                    ParametreAdi = "@MailAdres"
+                };
+                i_Array2[11] = i_12;
+                KomutArgumanlari_ i_13 = new KomutArgumanlari_
+                {
+                    Parametre = this.cbCity.Text,
+                    ParametreAdi = "@CtName"
+                };
+                i_Array2[12] = i_13;
+                KomutArgumanlari_ i_14 = new KomutArgumanlari_
+                {
+                    Parametre = this.Represantative1.SelectedValue,
+                    ParametreAdi = "@Temsilci"
+                };
+                i_Array2[13] = i_14;
+                KomutArgumanlari_ i_15 = new KomutArgumanlari_
+                {
+                    Parametre = this.CreditLimit.Text,
+                    ParametreAdi = "@Credit"
+                };
+                i_Array2[14] = i_15;
+                KomutArgumanlari_ i_16 = new KomutArgumanlari_
+                {
+                    Parametre = this.DiscountRate.Text,
+                    ParametreAdi = "@Indirim"
+                };
+                i_Array2[15] = i_16;
+                KomutArgumanlari_ i_17 = new KomutArgumanlari_
+                {
+                    Parametre = "",
+                    ParametreAdi = "@AlanKodu"
+                };
+                i_Array2[0x10] = i_17;
+                KomutArgumanlari_ i_18 = new KomutArgumanlari_
+                {
+                    Parametre = this.txtExtNumber.Text,
+                    ParametreAdi = "@Dahili"
+                };
+                i_Array2[0x11] = i_18;
+                KomutArgumanlari_ i_19 = new KomutArgumanlari_
+                {
+                    Parametre = this.PostCode.Text,
+                    ParametreAdi = "@Pc"
+                };
+                i_Array2[0x12] = i_19;
+                KomutArgumanlari_ i_20 = new KomutArgumanlari_
+                {
+                    Parametre = this.taxNumber.Text,
+                    ParametreAdi = "@Vn"
+                };
+                i_Array2[0x13] = i_20;
+                KomutArgumanlari_ i_21 = new KomutArgumanlari_
+                {
+                    Parametre = this.cbTown.SelectedValue._ToIntegerR(),
+                    ParametreAdi = "@TwC"
+                };
+                i_Array2[20] = i_21;
+                KomutArgumanlari_ i_22 = new KomutArgumanlari_
+                {
+                    Parametre = this.cbCity.SelectedValue._ToIntegerR(),
+                    ParametreAdi = "@CityCode"
+                };
+                i_Array2[0x15] = i_22;
+                KomutArgumanlari_ i_23 = new KomutArgumanlari_
+                {
+                    Parametre = this.cbTown.Text,
+                    ParametreAdi = "@TwN"
+                };
+                i_Array2[0x16] = i_23;
+                KomutArgumanlari_ i_24 = new KomutArgumanlari_
+                {
+                    Parametre = this.TaxOffice.Text.ToUpper(),
+                    ParametreAdi = "@Vd"
+                };
+                i_Array2[0x17] = i_24;
+                KomutArgumanlari_ i_25 = new KomutArgumanlari_
+                {
+                    Parametre = this.WebAdress.Text,
+                    ParametreAdi = "@WEBADDR"
+                };
+                i_Array2[0x18] = i_25;
+                int num2 = MyConnect.Ornekle.ExecuteScalar_Int(Utils.ConnectionStringLogo, string.Format(string.Concat(objArray1), Utils.FrmNo, num), CommandType.Text, 60, i_Array2);
+                if (num2 > 0)
+                {
+                    //Bolgeler.GroupGuncelle(this.CustomerCode.Text.ToUpper(), this.MainCategory.SelectedValue._ToIntegerR(), this.SubCategory.SelectedValue._ToIntegerR(), this.Capital.SelectedValue._ToIntegerR());
+                    //clsLogClass class2 = new clsLogClass
+                    //{
+                    //    TABLE_ID = 0x3f6,
+                    //    DONE_OPERATION = string.Format("{0} kodlu cari g\x00fcncellendi.", this.CustomerCode.Text),
+                    //    RECORD_ID = 0,
+                    //    TIME = DateTime.Now
+                    //};
+                    //clsLog.LogKayit(class2);
+                    MyConnect.Ornekle.ExecuteNonQuery(Utils.ConnectionStringLogo, string.Format("INSERT INTO LG_{0}_{1}_CLRNUMS (CLCARDREF, RISKTYPE, RISKOVER, PS, KC, RISKTOTAL, DESPRISKTOTAL, RISKLIMIT, RISKBALANCED, CEKRISKFACTOR, SENETRISKFACTOR, CEK0_DEBIT, CEK0_CREDIT, CEK1_DEBIT, CEK1_CREDIT, SENET0_DEBIT, SENET0_CREDIT, SENET1_DEBIT, SENET1_CREDIT, CEKCURR0_DEBIT, CEKCURR0_CREDIT, CEKCURR1_DEBIT, CEKCURR1_CREDIT, SENETCURR0_DEBIT, SENETCURR0_CREDIT, SENETCURR1_DEBIT, SENETCURR1_CREDIT, ORDRISKOVER, DESPRISKOVER, USEREPRISK, REPRISKTOTAL, REPDESPRISKTOTAL, REPRISKLIMIT, REPRISKBALANCED, REPPS, REPKC, ORDRISKTOTAL, ORDRISKTOTALSUGG, REPORDRISKTOTAL, REPORDRISKTOTALSUGG, RISKTYPES1, RISKTYPES2, RISKTYPES3, RISKTYPES4, RISKTYPES5, RISKTYPES6, RISKTYPES7, RISKTYPES8, RISKTYPES9, RISKTYPES10, RISKTYPES11, RISKTYPES12, RISKTYPES13, RISKTYPES14, RISKTYPES15, CSTCEKRISKFACTOR, CSTSENETRISKFACTOR, RISKGRPCONTROL, ACCRISKOVER, CSTCSRISKOVER, MYCSRISKOVER, RISKCTRLTYPE, ACCRISKTOTAL, REPACCRISKTOTAL, CSTCSRISKTOTAL, REPCSTCSRISKTOTAL, MYCSRISKTOTAL, REPMYCSRISKTOTAL, ACCRISKLIMIT, REPACCRISKLIMIT, CSTCSRISKLIMIT, REPCSTCSRISKLIMIT, MYCSRISKLIMIT, REPMYCSRISKLIMIT, DESPRISKLIMIT, REPDESPRISKLIMIT, ORDRISKLIMIT, REPORDRISKLIMIT, ORDRISKLIMITSUGG, REPORDRISKLIMITSUGG, ACCRSKBLNCED, REPACCRSKBLNCED, CSTCSRSKBLNCED, REPCSTCSRSKBLNCED, MYCSRSKBLNCED, REPMYCSRSKBLNCED, DESPRSKBLNCED, REPDESPRSKBLNCED, ORDRSKBLNCED, REPORDRSKBLNCED, ORDRSKBLNCEDSUG, REPORDRSKBLNCEDSUG, ORDRISKOVERSUGG, CSDOWNSRISK, CSTCSCIRORISKOVER, CSTCIROCEKRISKFAC, CSTCIROSENETRISKFAC, CSCIRODOWNSRISK, CSTCSCIRORISKLIMIT, REPCSTCSCIRORISKLIM, CSTCSCIRORSKBLNCED, REPCSTCSCIRORSKBLN, CSTCSOWNRISKTOTAL, REPCSTCSOWNRISKTOT, CSTCSCIRORISKTOTAL, REPCSTCSCIRORISKTOT, DESPRISKOVERSUG, DESPRISKLIMITSUG, REPDESPRISKLIMITSUG, DESPRISKTOTALSUG, REPDESPRISKTOTALSUG, DESPRSKBLNCEDSUG, REPDESPRSKBLNCEDSUG) VALUES ({2}, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)", Utils.FrmNo, Utils.DnmNo, num2), CommandType.Text, 60, new KomutArgumanlari_[0]);
+                    MyConnect.Ornekle.ExecuteNonQuery(Utils.ConnectionStringLogo, string.Format("INSERT INTO LG_{0}_{1}_CLCOLLATRLRISK(CLCARDREF, RISKTYPE, RISKOVER, ORDRISKOVER, DESPRISKOVER, USEREPRISK, PCOLLATRLTOTAL, REPPCOLLATRLTOTAL, SCOLLATRLTOTAL, REPSCOLLATRLTOTAL, RISKTOTAL, REPRISKTOTAL, DESPRISKTOTAL, REPDESPRISKTOTAL, RISKLIMIT, REPRISKLIMIT, RISKBALANCED, REPRISKBALANCED, ORDRISKTOTAL, REPORDRISKTOTAL, ORDRISKTOTALSUGG, REPORDRISKTOTALSUGG) VALUES ({2}, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)", Utils.FrmNo, Utils.DnmNo, num2), CommandType.Text, 60, new KomutArgumanlari_[0]);
+                    //this.CariyeNotEkle(this.txtKodu.Text, this.txtNot.Text);
+                    if (DateTime.Now.Year > 0x7e0)
+                    {
+                        KomutArgumanlari_[] i_Array3 = new KomutArgumanlari_[14];
+                        KomutArgumanlari_ i_26 = new KomutArgumanlari_
+                        {
+                            Parametre = num2,
+                            ParametreAdi = "@CLIENTREF"
+                        };
+                        i_Array3[0] = i_26;
+                        KomutArgumanlari_ i_27 = new KomutArgumanlari_
+                        {
+                            Parametre = this.txtAddress1.Text.ToUpper(),
+                            ParametreAdi = "@ADDR1"
+                        };
+                        i_Array3[1] = i_27;
+                        KomutArgumanlari_ i_28 = new KomutArgumanlari_
+                        {
+                            Parametre = this.txtAddress2.Text.ToUpper(),
+                            ParametreAdi = "@ADDR2"
+                        };
+                        i_Array3[2] = i_28;
+                        KomutArgumanlari_ i_29 = new KomutArgumanlari_
+                        {
+                            Parametre = this.cbCity.Text,
+                            ParametreAdi = "@CITY"
+                        };
+                        i_Array3[3] = i_29;
+                        KomutArgumanlari_ i_30 = new KomutArgumanlari_
+                        {
+                            Parametre = this.cbCountry.Text,
+                            ParametreAdi = "@COUNTRY"
+                        };
+                        i_Array3[4] = i_30;
+                        KomutArgumanlari_ i_31 = new KomutArgumanlari_
+                        {
+                            Parametre = this.PostCode.Text,
+                            ParametreAdi = "@POSTCODE"
+                        };
+                        i_Array3[5] = i_31;
+                        KomutArgumanlari_ i_32 = new KomutArgumanlari_
+                        {
+                            Parametre = this.Telephone.Text,
+                            ParametreAdi = "@TELNRS1"
+                        };
+                        i_Array3[6] = i_32;
+                        KomutArgumanlari_ i_33 = new KomutArgumanlari_
+                        {
+                            Parametre = this.CustomerFax.Text,
+                            ParametreAdi = "@FAXNR"
+                        };
+                        i_Array3[7] = i_33;
+                        KomutArgumanlari_ i_34 = new KomutArgumanlari_
+                        {
+                            Parametre = this.cbTown.SelectedValue._ToIntegerR(),
+                            ParametreAdi = "@TOWNCODE"
+                        };
+                        i_Array3[8] = i_34;
+                        KomutArgumanlari_ i_35 = new KomutArgumanlari_
+                        {
+                            Parametre = this.cbTown.Text,
+                            ParametreAdi = "@TOWN"
+                        };
+                        i_Array3[9] = i_35;
+                        KomutArgumanlari_ i_36 = new KomutArgumanlari_
+                        {
+                            Parametre = this.cbCity.SelectedValue._ToIntegerR(),
+                            ParametreAdi = "@CITYCODE"
+                        };
+                        i_Array3[10] = i_36;
+                        KomutArgumanlari_ i_37 = new KomutArgumanlari_
+                        {
+                            Parametre = this.cbCountry.SelectedValue._ToIntegerR(),
+                            ParametreAdi = "@COUNTRYCODE"
+                        };
+                        i_Array3[11] = i_37;
+                        KomutArgumanlari_ i_38 = new KomutArgumanlari_
+                        {
+                            Parametre = (this.cbMainContact.SelectedItem as CustomerWorker).cw_email,
+                            ParametreAdi = "@EMAILADDR"
+                        };
+                        i_Array3[12] = i_38;
+                        KomutArgumanlari_ i_39 = new KomutArgumanlari_
+                        {
+                            Parametre = "",
+                            ParametreAdi = "@INCHANGE"
+                        };
+                        i_Array3[13] = i_39;
+                        MyConnect.Ornekle.ExecuteScalar_Int(Utils.ConnectionStringLogo, string.Format("INSERT INTO LG_{0}_SHIPINFO (CLIENTREF, CODE, NAME, SPECODE, CYPHCODE, ADDR1, ADDR2, CITY, COUNTRY, POSTCODE, TELNRS1, TELNRS2, FAXNR, CAPIBLOCK_CREATEDBY, CAPIBLOCK_CREADEDDATE, CAPIBLOCK_CREATEDHOUR, CAPIBLOCK_CREATEDMIN, CAPIBLOCK_CREATEDSEC, CAPIBLOCK_MODIFIEDBY, CAPIBLOCK_MODIFIEDDATE, CAPIBLOCK_MODIFIEDHOUR, CAPIBLOCK_MODIFIEDMIN, CAPIBLOCK_MODIFIEDSEC, SITEID, RECSTATUS, ORGLOGICREF, TRADINGGRP, VATNR, TAXNR, TAXOFFICE, TOWNCODE, TOWN, DISTRICTCODE, DISTRICT, CITYCODE, COUNTRYCODE, ACTIVE, TEXTINC, EMAILADDR, INCHANGE, TELCODES1, TELCODES2, FAXCODE, LONGITUDE, LATITUTE, CITYID, TOWNID, SHIPBEGTIME1, SHIPBEGTIME2, SHIPBEGTIME3, SHIPENDTIME1, SHIPENDTIME2, SHIPENDTIME3, POSTLABELCODE, SENDERLABELCODE) VALUES (@CLIENTREF, '888888', 'FATURA ADRESİ', '', '', @ADDR1, @ADDR2, @CITY, @COUNTRY, @POSTCODE, @TELNRS1, '', @FAXNR, 1, '01-01-2017', 0, 0, 0, 0, NULL, 0, 0, 0, 0, 0, 0, '', '', '', '', @TOWNCODE, @TOWN, '', '', @CITYCODE, @COUNTRYCODE, 1, 0, @EMAILADDR, @INCHANGE, '', '', '', '', '', '', '', 134217752, 0, 0, 288817176, 0, 0, '', ''); SELECT SCOPE_IDENTITY()", Utils.FrmNo), CommandType.Text, 60, i_Array3);
+                    }
+                    base.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Exception Error");
+                }
+
+                #endregion
             }
         }
 
@@ -1821,7 +2125,8 @@ namespace LoginForm
                 cbTown.DataSource = IME.Towns.Where(a => a.CityID == (int)cbCity.SelectedValue).ToList();
                 cbTown.DisplayMember = "Town_name";
                 cbTown.ValueMember = "ID";
-            }else { MessageBox.Show("Please select a City"); }
+            }
+            else { MessageBox.Show("Please select a City"); }
         }
 
         private void btnAddMainCategory_Click(object sender, EventArgs e)
@@ -1843,7 +2148,8 @@ namespace LoginForm
                 SubCategory.DataSource = IME.CustomerSubCategories.Where(a => a.categoryID == (int)MainCategory.SelectedValue).ToList();
                 SubCategory.DisplayMember = "subcategoryname";
                 SubCategory.ValueMember = "ID";
-            }else{ MessageBox.Show("Please select a Maincategory");}
+            }
+            else { MessageBox.Show("Please select a Maincategory"); }
         }
 
         private void factor_Leave(object sender, EventArgs e)
@@ -1921,7 +2227,7 @@ namespace LoginForm
         //    }
         //}
 
-       private bool AddressControl()
+        private bool AddressControl()
         {
             bool isSave = true;
             string ErrorMessage = string.Empty;
@@ -1940,7 +2246,8 @@ namespace LoginForm
                 cbCity.DataSource = IME.Cities.Where(a => a.CountryID == (int)cbCountry.SelectedValue).ToList();
                 cbCity.DisplayMember = "City_name";
                 cbCity.ValueMember = "ID";
-            }else { MessageBox.Show("Please select a Country"); }
+            }
+            else { MessageBox.Show("Please select a Country"); }
         }
 
         private void txtSearch_KeyDown_1(object sender, KeyEventArgs e)
@@ -1951,6 +2258,11 @@ namespace LoginForm
                 searchtxt = txtSearch.Text;
                 customersearch();
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            logoCustAdd();
         }
     }
 }
