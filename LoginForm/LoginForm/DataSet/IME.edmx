@@ -7880,7 +7880,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <FunctionImport Name="MasterViewByFormName" ReturnType="Collection(IMEModel.MasterViewByFormName_Result)">
             <Parameter Name="formName" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="OnSaleAdd">
+          <FunctionImport Name="OnSaleAdd" ReturnType="Collection(Int32)">
             <Parameter Name="ArticleNumber" Mode="In" Type="String" />
             <Parameter Name="AvailabletoPromiseCheck" Mode="In" Type="String" />
             <Parameter Name="BulkPack" Mode="In" Type="String" />

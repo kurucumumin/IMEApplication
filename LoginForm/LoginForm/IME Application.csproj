@@ -12,7 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\IMEApp\</PublishUrl>
+    <PublishUrl>C:\CloudIMEApp\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -22,7 +22,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>126</ApplicationRevision>
+    <ApplicationRevision>129</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -58,12 +58,6 @@
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>false</SignManifests>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationIcon>logo.ico</ApplicationIcon>
-  </PropertyGroup>
-  <PropertyGroup>
-    <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevComponents.DotNetBar.Design">
@@ -113,7 +107,6 @@
     <Reference Include="Syncfusion.Chart.Windows, Version=16.2451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Core.WinForms, Version=16.2451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Data.WinForms, Version=16.2451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.Edit.Windows, Version=16.2460.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Gauge.Windows, Version=16.2451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Grid.Base, Version=16.2451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Grid.Grouping.Base, Version=16.2451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
@@ -530,17 +523,11 @@
     <Compile Include="ItemModule\LoaderPage.designer.cs">
       <DependentUpon>LoaderPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmLoginMetro.cs">
+    <Compile Include="Main\frmMainMetro.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLoginMetro.Designer.cs">
-      <DependentUpon>frmLoginMetro.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Main\Office2010Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Main\Office2010Form1.Designer.cs">
-      <DependentUpon>Office2010Form1.cs</DependentUpon>
+    <Compile Include="Main\frmMainMetro.Designer.cs">
+      <DependentUpon>frmMainMetro.cs</DependentUpon>
     </Compile>
     <Compile Include="OnOrder\frmAcikSiparis.cs">
       <SubType>Form</SubType>
@@ -740,7 +727,7 @@
     <Compile Include="PrintWorks\RawPrinterHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
+    <Compile Include="Properties\Resources1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -911,7 +898,11 @@
     <Compile Include="Services\CustomerSP.cs" />
     <Compile Include="Services\DateValidation.cs" />
     <Compile Include="Services\dgv.cs" />
+    <Compile Include="Services\MyClasses\FizikselDosya_.cs" />
+    <Compile Include="Services\MyClasses\KomutArgumanlari_.cs" />
     <Compile Include="Services\Messages.cs" />
+    <Compile Include="Services\MyClasses\MyConnect.cs" />
+    <Compile Include="Services\MyClasses\MyExtension.cs" />
     <Compile Include="Services\NumToText.cs" />
     <Compile Include="Services\OtherDateValidationFunction.cs" />
     <Compile Include="Services\PrinterClass.cs" />
@@ -919,6 +910,7 @@
     <Compile Include="Services\QuotationDatagridCustomize.cs" />
     <Compile Include="Services\classSupplier.cs" />
     <Compile Include="Services\ToolTipService.cs" />
+    <Compile Include="Services\MyClasses\TransacsionArgumanlari_.cs" />
     <Compile Include="Services\txtCreate.cs" />
     <Compile Include="Services\XmlToObject.cs" />
     <Compile Include="StockConfirm\frmStockConfirm.cs">
@@ -996,11 +988,8 @@
     <EmbeddedResource Include="ItemModule\LoaderPage.resx">
       <DependentUpon>LoaderPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLoginMetro.resx">
-      <DependentUpon>frmLoginMetro.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main\Office2010Form1.resx">
-      <DependentUpon>Office2010Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Main\frmMainMetro.resx">
+      <DependentUpon>frmMainMetro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OnOrder\frmAcikSiparis.resx">
       <DependentUpon>frmAcikSiparis.cs</DependentUpon>
@@ -1092,8 +1081,7 @@
     <EmbeddedResource Include="PrintWorks\PrintWorks.Properties.Resources.resources" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <SubType>Designer</SubType>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="PurchaseOrder\FormBillTo.resx">
       <DependentUpon>FormBillTo.cs</DependentUpon>
@@ -1259,7 +1247,6 @@
       <DependentUpon>IME.edmx</DependentUpon>
       <LastGenOutput>IME.cs</LastGenOutput>
     </Content>
-    <Content Include="logo.ico" />
     <Content Include="Resources\btnBackground.png" />
     <None Include="Resources\updated.png" />
     <None Include="Resources\btn_close_msg.png" />
@@ -1282,24 +1269,24 @@
     <Content Include="Resources\icons8-Edit Property-32.png" />
     <Content Include="Resources\icons8-Plus-32.png" />
     <Content Include="Resources\icons8-Refresh-32.png" />
-    <None Include="Resources\if_user_173122.ico" />
-    <None Include="Resources\if_icon-24-key_314756.ico" />
-    <None Include="Resources\images.jpg" />
     <Content Include="Resources\IME.jpg" />
     <None Include="Resources\mdi copy.jpg" />
     <None Include="Resources\mdi.jpg" />
     <None Include="Resources\mdi2.jpg" />
     <None Include="Resources\mdi3.jpg" />
-    <None Include="Resources\logo.png" />
-    <None Include="Resources\Login-button.png" />
-    <Content Include="Resources\LOGIN.jpg" />
+    <None Include="Resources\open_miracle_corner_bg.png" />
+    <None Include="Resources\open_miracle_mdi.jpg" />
+    <None Include="Resources\open_miracle_title.jpg" />
+    <None Include="Resources\open_miracle_tm.png" />
+    <None Include="Resources\open_miracle_water_mark.png" />
+    <None Include="Resources\openmiracale_aboutus.png" />
+    <None Include="Resources\openmiracle.com.png" />
     <Content Include="Resources\resize.png" />
     <None Include="Resources\sap hide.bmp" />
     <Content Include="Resources\save_icon.png" />
     <None Include="Resources\side_bar_miracle.jpg" />
     <None Include="Resources\test_bg.jpg" />
     <None Include="Resources\top_bg_cor.jpg" />
-    <None Include="Resources\ssl.png" />
     <Content Include="Resources\update-icon-Kopya.png" />
     <Content Include="Resources\update-icon.png" />
     <Content Include="Resources\update-icon2.png" />

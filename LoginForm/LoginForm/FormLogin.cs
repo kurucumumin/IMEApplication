@@ -142,7 +142,8 @@ namespace LoginForm
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            new frmLoginMetro().Show();
+            frmMainMetro form = new frmMainMetro();
+            form.Show();
         }
     }
 }
