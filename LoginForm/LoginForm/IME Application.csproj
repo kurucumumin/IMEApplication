@@ -22,7 +22,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>126</ApplicationRevision>
+    <ApplicationRevision>125</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -67,16 +67,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevComponents.DotNetBar.Design">
-      <HintPath>..\packages\DevComponents\DevComponents.DotNetBar.Design.dll</HintPath>
+      <HintPath>..\..\..\..\OneDrive\Masaüstü\DotNetBar\DevComponents.DotNetBar.Design.dll</HintPath>
     </Reference>
     <Reference Include="DevComponents.DotNetBar2">
-      <HintPath>..\packages\DevComponents\DevComponents.DotNetBar2.dll</HintPath>
+      <HintPath>..\..\..\..\OneDrive\Masaüstü\DotNetBar\DevComponents.DotNetBar2.dll</HintPath>
     </Reference>
     <Reference Include="DevComponents.Instrumentation">
-      <HintPath>..\packages\DevComponents\DevComponents.Instrumentation.dll</HintPath>
+      <HintPath>..\..\..\..\OneDrive\Masaüstü\DotNetBar\DevComponents.Instrumentation.dll</HintPath>
     </Reference>
     <Reference Include="DevComponents.Instrumentation.Design">
-      <HintPath>..\packages\DevComponents\DevComponents.Instrumentation.Design.dll</HintPath>
+      <HintPath>..\..\..\..\OneDrive\Masaüstü\DotNetBar\DevComponents.Instrumentation.Design.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>

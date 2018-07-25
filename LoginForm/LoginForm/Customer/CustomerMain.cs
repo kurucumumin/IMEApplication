@@ -1963,5 +1963,10 @@ namespace LoginForm
                 customersearch();
             }
         }
+
+        private void btnLogoSave_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
