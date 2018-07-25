@@ -218,7 +218,7 @@
             this.tab_company.Controls.Add(this.label1);
             this.tab_company.Location = new System.Drawing.Point(4, 25);
             this.tab_company.Name = "tab_company";
-            this.tab_company.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tab_company.Padding = new System.Windows.Forms.Padding(3);
             this.tab_company.Size = new System.Drawing.Size(924, 274);
             this.tab_company.TabIndex = 0;
             this.tab_company.Text = "Company Info";
@@ -272,7 +272,7 @@
             // btnAddSubcategory
             // 
             this.btnAddSubcategory.Location = new System.Drawing.Point(310, 162);
-            this.btnAddSubcategory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAddSubcategory.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddSubcategory.Name = "btnAddSubcategory";
             this.btnAddSubcategory.Size = new System.Drawing.Size(23, 21);
             this.btnAddSubcategory.TabIndex = 56;
@@ -283,7 +283,7 @@
             // btnAddMainCategory
             // 
             this.btnAddMainCategory.Location = new System.Drawing.Point(310, 121);
-            this.btnAddMainCategory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAddMainCategory.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddMainCategory.Name = "btnAddMainCategory";
             this.btnAddMainCategory.Size = new System.Drawing.Size(23, 21);
             this.btnAddMainCategory.TabIndex = 55;
@@ -559,8 +559,8 @@
             this.tab_account.Controls.Add(this.QuoCurrencyType);
             this.tab_account.Location = new System.Drawing.Point(4, 25);
             this.tab_account.Name = "tab_account";
-            this.tab_account.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tab_account.Size = new System.Drawing.Size(924, 273);
+            this.tab_account.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_account.Size = new System.Drawing.Size(924, 274);
             this.tab_account.TabIndex = 2;
             this.tab_account.Text = "Account";
             this.tab_account.UseVisualStyleBackColor = true;
@@ -844,7 +844,7 @@
             this.tab_adresses.Controls.Add(this.AdressCancel);
             this.tab_adresses.Location = new System.Drawing.Point(4, 25);
             this.tab_adresses.Name = "tab_adresses";
-            this.tab_adresses.Size = new System.Drawing.Size(924, 273);
+            this.tab_adresses.Size = new System.Drawing.Size(924, 274);
             this.tab_adresses.TabIndex = 3;
             this.tab_adresses.Text = "Adresses";
             this.tab_adresses.UseVisualStyleBackColor = true;
@@ -868,7 +868,7 @@
             // CityAdd
             // 
             this.CityAdd.Location = new System.Drawing.Point(244, 132);
-            this.CityAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CityAdd.Margin = new System.Windows.Forms.Padding(2);
             this.CityAdd.Name = "CityAdd";
             this.CityAdd.Size = new System.Drawing.Size(23, 21);
             this.CityAdd.TabIndex = 58;
@@ -880,7 +880,7 @@
             // 
             this.TownAdd.Enabled = false;
             this.TownAdd.Location = new System.Drawing.Point(244, 169);
-            this.TownAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TownAdd.Margin = new System.Windows.Forms.Padding(2);
             this.TownAdd.Name = "TownAdd";
             this.TownAdd.Size = new System.Drawing.Size(23, 21);
             this.TownAdd.TabIndex = 57;
@@ -1145,7 +1145,7 @@
             this.tab_contact.Controls.Add(this.btnContactCancel);
             this.tab_contact.Location = new System.Drawing.Point(4, 25);
             this.tab_contact.Name = "tab_contact";
-            this.tab_contact.Size = new System.Drawing.Size(924, 273);
+            this.tab_contact.Size = new System.Drawing.Size(924, 274);
             this.tab_contact.TabIndex = 4;
             this.tab_contact.Text = "Contact";
             this.tab_contact.UseVisualStyleBackColor = true;
@@ -1533,9 +1533,9 @@
             this.tableMain.Controls.Add(this.panel1, 0, 1);
             this.tableMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableMain.Location = new System.Drawing.Point(0, 0);
-            this.tableMain.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableMain.Margin = new System.Windows.Forms.Padding(2);
             this.tableMain.Name = "tableMain";
-            this.tableMain.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableMain.Padding = new System.Windows.Forms.Padding(4);
             this.tableMain.RowCount = 3;
             this.tableMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 309F));
             this.tableMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 61F));
@@ -1553,7 +1553,7 @@
             this.panel1.Controls.Add(this.Search);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(6, 315);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(934, 57);
             this.panel1.TabIndex = 2;

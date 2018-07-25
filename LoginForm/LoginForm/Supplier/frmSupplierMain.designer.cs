@@ -29,7 +29,7 @@ namespace LoginForm
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabgenel = new System.Windows.Forms.TabControl();
             this.tabInfo = new System.Windows.Forms.TabPage();
             this.cmbMainContact = new System.Windows.Forms.ComboBox();
@@ -159,6 +159,9 @@ namespace LoginForm
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnLogoSave = new System.Windows.Forms.Button();
+            this.txtAddress2 = new System.Windows.Forms.TextBox();
+            this.txtAddress1 = new System.Windows.Forms.TextBox();
             this.tabgenel.SuspendLayout();
             this.tabInfo.SuspendLayout();
             this.tabAccount.SuspendLayout();
@@ -829,6 +832,8 @@ namespace LoginForm
             // 
             // tabAccounting
             // 
+            this.tabAccounting.Controls.Add(this.txtAddress2);
+            this.tabAccounting.Controls.Add(this.txtAddress1);
             this.tabAccounting.Controls.Add(this.label10);
             this.tabAccounting.Controls.Add(this.label43);
             this.tabAccounting.Controls.Add(this.cmbContactAddress);
@@ -1265,14 +1270,14 @@ namespace LoginForm
             this.worker1DataGridViewTextBoxColumn,
             this.supplierSubCategoryDataGridViewTextBoxColumn});
             this.dgSupplier.DataSource = this.supplierBindingSource;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgSupplier.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgSupplier.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgSupplier.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgSupplier.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dgSupplier.ImeMode = System.Windows.Forms.ImeMode.NoControl;
@@ -1457,7 +1462,7 @@ namespace LoginForm
             this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.Color.LimeGreen;
-            this.btnAdd.Location = new System.Drawing.Point(466, 0);
+            this.btnAdd.Location = new System.Drawing.Point(328, 0);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(132, 56);
             this.btnAdd.TabIndex = 55;
@@ -1505,6 +1510,7 @@ namespace LoginForm
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnLogoSave);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txtSearch);
             this.panel1.Controls.Add(this.btnModify);
@@ -1516,6 +1522,35 @@ namespace LoginForm
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(921, 65);
             this.panel1.TabIndex = 2;
+            // 
+            // btnLogoSave
+            // 
+            this.btnLogoSave.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnLogoSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogoSave.ForeColor = System.Drawing.Color.LimeGreen;
+            this.btnLogoSave.Location = new System.Drawing.Point(466, 0);
+            this.btnLogoSave.Name = "btnLogoSave";
+            this.btnLogoSave.Size = new System.Drawing.Size(132, 56);
+            this.btnLogoSave.TabIndex = 58;
+            this.btnLogoSave.Text = "Logo Save";
+            this.btnLogoSave.UseVisualStyleBackColor = true;
+            this.btnLogoSave.Click += new System.EventHandler(this.btnLogoSave_Click);
+            // 
+            // txtAddress2
+            // 
+            this.txtAddress2.Enabled = false;
+            this.txtAddress2.Location = new System.Drawing.Point(392, 144);
+            this.txtAddress2.Name = "txtAddress2";
+            this.txtAddress2.Size = new System.Drawing.Size(122, 23);
+            this.txtAddress2.TabIndex = 62;
+            // 
+            // txtAddress1
+            // 
+            this.txtAddress1.Enabled = false;
+            this.txtAddress1.Location = new System.Drawing.Point(258, 144);
+            this.txtAddress1.Name = "txtAddress1";
+            this.txtAddress1.Size = new System.Drawing.Size(122, 23);
+            this.txtAddress1.TabIndex = 61;
             // 
             // frmSupplierMain
             // 
@@ -1694,5 +1729,8 @@ namespace LoginForm
         private System.Windows.Forms.DataGridViewTextBoxColumn worker1DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn supplierSubCategoryDataGridViewTextBoxColumn;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnLogoSave;
+        private System.Windows.Forms.TextBox txtAddress2;
+        private System.Windows.Forms.TextBox txtAddress1;
     }
 }
