@@ -505,6 +505,12 @@
     <Compile Include="DataSet\Worker.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="frmLoginMetro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLoginMetro.Designer.cs">
+      <DependentUpon>frmLoginMetro.cs</DependentUpon>
+    </Compile>
     <Compile Include="IMEAccount\frmReceiptOperation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -979,6 +985,9 @@
     <EmbeddedResource Include="Customer\frmCityAdd.resx">
       <DependentUpon>frmCityAdd.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmLoginMetro.resx">
+      <DependentUpon>frmLoginMetro.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="IMEAccount\frmReceiptOperation.resx">
       <DependentUpon>frmReceiptOperation.cs</DependentUpon>
     </EmbeddedResource>
@@ -1247,6 +1256,7 @@
       <DependentUpon>IME.edmx</DependentUpon>
       <LastGenOutput>IME.cs</LastGenOutput>
     </Content>
+    <Content Include="LoginForm.csproj.user" />
     <Content Include="Resources\btnBackground.png" />
     <None Include="Resources\updated.png" />
     <None Include="Resources\btn_close_msg.png" />
@@ -1269,24 +1279,21 @@
     <Content Include="Resources\icons8-Edit Property-32.png" />
     <Content Include="Resources\icons8-Plus-32.png" />
     <Content Include="Resources\icons8-Refresh-32.png" />
+    <Content Include="Resources\if_icon-24-key_314756.ico" />
+    <Content Include="Resources\if_user_173122.ico" />
     <Content Include="Resources\IME.jpg" />
     <None Include="Resources\mdi copy.jpg" />
     <None Include="Resources\mdi.jpg" />
     <None Include="Resources\mdi2.jpg" />
     <None Include="Resources\mdi3.jpg" />
-    <None Include="Resources\open_miracle_corner_bg.png" />
-    <None Include="Resources\open_miracle_mdi.jpg" />
-    <None Include="Resources\open_miracle_title.jpg" />
-    <None Include="Resources\open_miracle_tm.png" />
-    <None Include="Resources\open_miracle_water_mark.png" />
-    <None Include="Resources\openmiracale_aboutus.png" />
-    <None Include="Resources\openmiracle.com.png" />
+    <Content Include="Resources\logo.png" />
     <Content Include="Resources\resize.png" />
     <None Include="Resources\sap hide.bmp" />
     <Content Include="Resources\save_icon.png" />
     <None Include="Resources\side_bar_miracle.jpg" />
     <None Include="Resources\test_bg.jpg" />
     <None Include="Resources\top_bg_cor.jpg" />
+    <Content Include="Resources\ssl.png" />
     <Content Include="Resources\update-icon-Kopya.png" />
     <Content Include="Resources\update-icon.png" />
     <Content Include="Resources\update-icon2.png" />
