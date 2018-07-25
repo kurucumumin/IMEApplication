@@ -1339,8 +1339,8 @@ namespace LoginForm.QuotationModule
                 txtRSStock.Text = ItemTabDetails.OnhandStockBalance.ToString();
                 txtRSOnOrder.Text = ItemTabDetails.QuantityonOrder.ToString();
                 txtDiscontinuationDate.Text = ItemTabDetails.DiscontinuationDate;
-                txtRunOn.Text = ItemTabDetails.Runon.ToString();
-                txtReferral.Text = ItemTabDetails.Referral.ToString();
+                txtRunOn.Text = ItemTabDetails.Runon?.ToString();
+                txtReferral.Text = ItemTabDetails.Referral?.ToString();
                 txtLicenceType.Text = ItemTabDetails.LicenceType;
 
                 #region ItemMarginFiller
