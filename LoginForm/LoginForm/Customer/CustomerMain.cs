@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using static LoginForm.Services.MyClasses.MyAuthority;
 
 namespace LoginForm
 {
@@ -124,13 +125,13 @@ namespace LoginForm
 
         private void ControlAutorization()
         {
-            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1090).FirstOrDefault() == null)
+            if (!Utils.AuthorityCheck(IMEAuthority.CanAddCustomer))
             {
-                btnCreate.Visible = false;
+                btnCreate.Enabled = false;
             }
-            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1091).FirstOrDefault() == null)
+            if (!Utils.AuthorityCheck(IMEAuthority.CanEditCustomer))
             {
-                btnUpdate.Visible = false;
+                btnUpdate.Enabled = false;
             }
         }
 
@@ -1102,7 +1103,6 @@ namespace LoginForm
                     //}
 
                 }
-
             }
         }
 

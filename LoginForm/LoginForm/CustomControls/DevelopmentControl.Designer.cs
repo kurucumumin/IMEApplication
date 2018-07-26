@@ -291,12 +291,12 @@
         private System.Windows.Forms.Button btnItemCard;
         private System.Windows.Forms.Button btnPurchaseOrders;
         private System.Windows.Forms.Button btnCustomer;
-        private System.Windows.Forms.Button btnWorker;
         private System.Windows.Forms.Button btnSalesOrder;
         private System.Windows.Forms.Button btnSupplier;
         private System.Windows.Forms.Button btnStock;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnFatura;
         private System.Windows.Forms.Button IMEAccount;
+        public System.Windows.Forms.Button btnWorker;
     }
 }

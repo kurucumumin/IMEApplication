@@ -70,5 +70,17 @@ namespace LoginForm.Services
         {
             return ((Price * SourceRate) / TargetRate);
         }
+
+        public static bool AuthorityCheck(MyClasses.MyAuthority.IMEAuthority auth)
+        {
+            if (worker.AuthorizationValues.Where(x=>x.AuthorizationID == (int)auth).Count() > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

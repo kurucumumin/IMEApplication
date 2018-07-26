@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.Globalization;
 using System.Threading;
 using System.Text.RegularExpressions;
+using static LoginForm.Services.MyClasses.MyAuthority;
 
 namespace LoginForm.QuotationModule
 {
@@ -237,7 +238,7 @@ namespace LoginForm.QuotationModule
                 QuotataionModifyItemDetailsFiller(dgQuotationAddedItems.Rows[i].Cells["dgProductCode"].Value.ToString(), i);
 
             }
-            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1125).FirstOrDefault() == null)
+            if (!Utils.AuthorityCheck(IMEAuthority.CanEditAnyQuotation))
             {
                 dgQuotationAddedItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 foreach (DataGridViewRow item in dgQuotationAddedItems.Rows)
@@ -327,7 +328,7 @@ namespace LoginForm.QuotationModule
                 QuotataionModifyItemDetailsFiller(dgQuotationAddedItems.Rows[i].Cells["dgProductCode"].Value.ToString(), i);
 
             }
-            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1125).FirstOrDefault() == null)
+            if (!Utils.AuthorityCheck(IMEAuthority.CanEditAnyQuotation))
             {
                 dgQuotationAddedItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 foreach (DataGridViewRow item in dgQuotationAddedItems.Rows)
@@ -371,12 +372,12 @@ namespace LoginForm.QuotationModule
 
         private void ControlAutorization()
         {
-            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1020).FirstOrDefault() == null)
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeCostandMarginInQuotationModule))
             {
                 gbCost.Visible = false;
 
             }
-            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1021).FirstOrDefault() == null)
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeTotalMarge))
             {
                 txtTotalMarge.Visible = false;
                 label42.Visible = false;
@@ -2358,8 +2359,8 @@ namespace LoginForm.QuotationModule
                     txtRSStock.Text = ItemTabDetails.OnhandStockBalance.ToString();
                 txtRSOnOrder.Text = ItemTabDetails.QuantityonOrder.ToString();
                 txtDiscontinuationDate.Text = ItemTabDetails.DiscontinuationDate;
-                txtRunOn.Text = ItemTabDetails.Runon.ToString();
-                txtReferral.Text = ItemTabDetails.Referral.ToString();
+                txtRunOn.Text = ItemTabDetails.Runon?.ToString();
+                txtReferral.Text = ItemTabDetails.Referral?.ToString();
                 txtLicenceType.Text = ItemTabDetails.LicenceType;
                 if (!String.IsNullOrEmpty(ItemTabDetails.LicenceType)) isLicenceType = true;
                 if (ItemTabDetails.Calibration_Ind == "Y") isCalibrationInd = true;

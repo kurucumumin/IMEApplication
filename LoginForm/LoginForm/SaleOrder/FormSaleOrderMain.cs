@@ -8,7 +8,7 @@ using LoginForm.PurchaseOrder;
 using LoginForm.QuotationModule;
 using LoginForm.Services;
 using System.Data;
-
+using static LoginForm.Services.MyClasses.MyAuthority;
 
 namespace LoginForm.nsSaleOrder
 {
@@ -21,23 +21,23 @@ namespace LoginForm.nsSaleOrder
         {
             InitializeComponent();
 
-            if (Utils.getCurrentUser().AuthorizationValues.Where(x=>x.AuthorizationID == 1022).FirstOrDefault() == null)
-            {
-                btnDelete.Visible = false;
-            }
+            //if (Utils.getCurrentUser().AuthorizationValues.Where(x=>x.AuthorizationID == 1022).FirstOrDefault() == null)
+            //{
+            //    btnDelete.Visible = false;
+            //}
         }
 
 
         private void ControlAutorization()
         {
-            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1105).FirstOrDefault() == null)
+            if (!Utils.AuthorityCheck(IMEAuthority.CanAddSaleOrderModule))
             {
                 btnNew.Visible = false;
             }
-            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1106).FirstOrDefault() == null)
-            {
-                btnModify.Visible = false;
-            }
+            //if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1106).FirstOrDefault() == null)
+            //{
+            //    btnModify.Visible = false;
+            //}
         }
 
 

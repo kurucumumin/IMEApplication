@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows.Forms;
 using LoginForm.CustomControls;
 using LoginForm.Services;
+using static LoginForm.Services.MyClasses.MyAuthority;
 
 namespace LoginForm
 {
@@ -100,7 +101,7 @@ namespace LoginForm
         public void checkAuthorities()
         {
             List<DataSet.AuthorizationValue> authList = Utils.getCurrentUser().AuthorizationValues.ToList();
-            if (authList.Where(a => a.AuthorizationID == 1024).Count() <= 0)
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeManagementModule))
             {
                 btnManagement.Visible = false;
             }
@@ -110,7 +111,7 @@ namespace LoginForm
                 setManagementControl();
             }
 
-            if (authList.Where(a => a.AuthorizationID == 1022).Count() <= 0)
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeLoaderModule))
             {
                 btnFileLoader.Visible = false;
             }
@@ -119,10 +120,16 @@ namespace LoginForm
                 btnFileLoader.Visible = true;
             }
 
-            if (authList.Where(a => a.AuthorizationID == 1023).Count() <= 0)
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeDevelopmentModule))
             {
                 btnDevelopment.Visible = false;
             }
+
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeUserModule))
+            {
+                controlDevelopment.btnWorker.Visible = false;
+            }
+
         }
     }
 }

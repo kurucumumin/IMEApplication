@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LoginForm.DataSet;
 using LoginForm.Services;
+using static LoginForm.Services.MyClasses.MyAuthority;
 
 namespace LoginForm.PurchaseOrder
 {
@@ -82,7 +83,7 @@ namespace LoginForm.PurchaseOrder
         }
         private void ControlAutorization()
         {
-            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1093).FirstOrDefault() == null)
+            if (!Utils.AuthorityCheck(IMEAuthority.CanAddPurchaseOrder))
             {
                 btnCreate.Visible = false;
             }

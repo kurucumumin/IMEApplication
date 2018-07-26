@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using LoginForm.Services;
+using static LoginForm.Services.MyClasses.MyAuthority;
 
 namespace LoginForm.ItemModule
 {
@@ -898,7 +899,7 @@ namespace LoginForm.ItemModule
 
         private void ControlAutorization()
         {
-            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1102).FirstOrDefault() == null && Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1103).FirstOrDefault() == null)
+            if (!Utils.AuthorityCheck(IMEAuthority.CanAddNoteinItemCard) && !Utils.AuthorityCheck(IMEAuthority.CanEditNoteinItemCard))
             {
                 btnUpdateNote.Visible = false;
             }

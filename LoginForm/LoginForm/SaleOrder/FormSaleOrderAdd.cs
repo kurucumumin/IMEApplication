@@ -9,6 +9,7 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Globalization;
 using System.Threading;
+using static LoginForm.Services.MyClasses.MyAuthority;
 
 namespace LoginForm.QuotationModule
 {
@@ -317,7 +318,7 @@ namespace LoginForm.QuotationModule
             //    QuotataionModifyItemDetailsFiller(dgSaleAddedItems.Rows[i].Cells["dgProductCode"].Value.ToString(), i);
 
             //}
-            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1125).FirstOrDefault() == null)
+            if (!Utils.AuthorityCheck(IMEAuthority.CanEditAnyQuotation))
             {
                 dgSaleAddedItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 foreach (DataGridViewRow item in dgSaleAddedItems.Rows)
@@ -402,7 +403,7 @@ namespace LoginForm.QuotationModule
                 QuotataionModifyItemDetailsFiller(dgSaleAddedItems.Rows[i].Cells["dgProductCode"].Value.ToString(), i);
 
             }
-            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1125).FirstOrDefault() == null)
+            if (!Utils.AuthorityCheck(IMEAuthority.CanEditAnyQuotation))
             {
                 dgSaleAddedItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 foreach (DataGridViewRow item in dgSaleAddedItems.Rows)
@@ -424,12 +425,12 @@ namespace LoginForm.QuotationModule
 
         private void ControlAutorization()
         {
-            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1020).FirstOrDefault() == null)
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeCostandMarginInQuotationModule))
             {
                 gbCost.Visible = false;
 
             }
-            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1021).FirstOrDefault() == null)
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeTotalMarge))
             {
                 txtTotalMarge.Visible = false;
                 label42.Visible = false;

@@ -907,6 +907,7 @@
     <Compile Include="Services\MyClasses\FizikselDosya_.cs" />
     <Compile Include="Services\MyClasses\KomutArgumanlari_.cs" />
     <Compile Include="Services\Messages.cs" />
+    <Compile Include="Services\MyClasses\MyAuthority.cs" />
     <Compile Include="Services\MyClasses\MyConnect.cs" />
     <Compile Include="Services\MyClasses\MyExtension.cs" />
     <Compile Include="Services\NumToText.cs" />
@@ -1256,7 +1257,6 @@
       <DependentUpon>IME.edmx</DependentUpon>
       <LastGenOutput>IME.cs</LastGenOutput>
     </Content>
-    <Content Include="LoginForm.csproj.user" />
     <Content Include="Resources\btnBackground.png" />
     <None Include="Resources\updated.png" />
     <None Include="Resources\btn_close_msg.png" />

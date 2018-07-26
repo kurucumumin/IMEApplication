@@ -7,6 +7,7 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using MyLibrary;
+using static LoginForm.Services.MyClasses.MyAuthority;
 
 namespace LoginForm
 {
@@ -59,11 +60,11 @@ namespace LoginForm
         }
         private void ControlAutorization()
         {
-            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1095).FirstOrDefault() == null)
+            if (!Utils.AuthorityCheck(IMEAuthority.CanAddSupplier))
             {
                 btnAdd.Visible = false;
             }
-            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1096).FirstOrDefault() == null)
+            if (!Utils.AuthorityCheck(IMEAuthority.CanEditSupplier))
             {
                 btnModify.Visible = false;
             }

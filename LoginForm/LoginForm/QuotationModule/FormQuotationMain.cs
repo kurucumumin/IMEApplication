@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using LoginForm.Services;
+using static LoginForm.Services.MyClasses.MyAuthority;
 
 namespace LoginForm.QuotationModule
 {
@@ -34,7 +35,7 @@ namespace LoginForm.QuotationModule
 
         private void dgQuotation_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1125).FirstOrDefault() != null)//Can Edit any Quotation
+            if (!Utils.AuthorityCheck(IMEAuthority.CanEditAnyQuotation))//Can Edit any Quotation
             {
                 ViewQuotation();
             }
@@ -119,15 +120,15 @@ namespace LoginForm.QuotationModule
 
         private void FormQuotationMain_Load(object sender, EventArgs e)
         {
-            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1126).FirstOrDefault() == null)//Can Delete Quotation
+            if (!Utils.AuthorityCheck(IMEAuthority.CanDeleteQuotation))//Can Delete Quotation
             {
                btnDeleteQuotation.Enabled = false;
             }
-            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1125).FirstOrDefault() == null)//Can Delete edit
+            if (!Utils.AuthorityCheck(IMEAuthority.CanEditAnyQuotation))//Can Modify edit
             {
                 btnModifyQuotation.Enabled = false;
             }
-            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1127).FirstOrDefault() == null)//Can Delete Quotation
+            if (!Utils.AuthorityCheck(IMEAuthority.CanAddQuotation))//Can Add Quotation
             {
                 btnNewQuotation.Enabled = false;
             }
@@ -326,7 +327,7 @@ namespace LoginForm.QuotationModule
         {
             if (e.KeyCode == Keys.Delete)
             {
-                if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1126).FirstOrDefault() == null)//Can Delete Quotation
+                if (!Utils.AuthorityCheck(IMEAuthority.CanDeleteQuotation))//Can Delete Quotation
                 {
                     btnDeleteQuotation.PerformClick();
                 }
