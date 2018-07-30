@@ -50,7 +50,7 @@ namespace AltoControls
             active1 = Color.FromArgb(64, 168, 183);
             active2 = Color.FromArgb(36, 164, 183);
 
-            radius = 10;
+            radius = 5;
             roundedRect = new RoundedRectangleF(Width, Height, radius);
 
             SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer |

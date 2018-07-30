@@ -60,6 +60,9 @@
     <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Bunifu_UI_v1.52">
+      <HintPath>..\..\..\..\Users\cemge\Desktop\Bunifu_UI_v1.52.dll</HintPath>
+    </Reference>
     <Reference Include="DevComponents.DotNetBar.Design">
       <HintPath>..\..\..\..\OneDrive\Masaüstü\DotNetBar\DevComponents.DotNetBar.Design.dll</HintPath>
     </Reference>
@@ -130,6 +133,7 @@
     <Reference Include="System.Design" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
     <Reference Include="System.Security" />
@@ -1319,6 +1323,8 @@
     <None Include="Resources\mdi.jpg" />
     <None Include="Resources\mdi2.jpg" />
     <None Include="Resources\mdi3.jpg" />
+    <None Include="Resources\IME_LOGO.png" />
+    <None Include="Resources\IME_LOGO2.png" />
     <Content Include="Resources\logo.png" />
     <Content Include="Resources\resize.png" />
     <None Include="Resources\sap hide.bmp" />

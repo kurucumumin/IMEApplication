@@ -48,7 +48,8 @@ namespace LoginForm
                 if (Logged.isActive == 1)
                 {
                     Utils.setCurrentUser(Logged);
-                    FormMain formMain = new FormMain();
+                    //FormMain formMain = new FormMain();
+                    frmMainMetro formMain = new frmMainMetro();
                     this.Hide();
                     formMain.ShowDialog();
                     this.Close();
