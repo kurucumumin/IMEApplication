@@ -59,24 +59,24 @@ namespace LoginForm
             // 
             // txtID
             // 
-            this.txtID.BeforeTouchSize = new System.Drawing.Size(217, 32);
+            this.txtID.BeforeTouchSize = new System.Drawing.Size(217, 38);
             this.txtID.Font = new System.Drawing.Font("Century", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtID.Location = new System.Drawing.Point(69, 215);
             this.txtID.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(217, 32);
+            this.txtID.Size = new System.Drawing.Size(217, 38);
             this.txtID.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtID.TabIndex = 1;
             // 
             // txtPassWord
             // 
-            this.txtPassWord.BeforeTouchSize = new System.Drawing.Size(217, 32);
+            this.txtPassWord.BeforeTouchSize = new System.Drawing.Size(217, 38);
             this.txtPassWord.Font = new System.Drawing.Font("Century", 15F, System.Drawing.FontStyle.Bold);
             this.txtPassWord.Location = new System.Drawing.Point(69, 280);
             this.txtPassWord.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtPassWord.Name = "txtPassWord";
             this.txtPassWord.PasswordChar = '*';
-            this.txtPassWord.Size = new System.Drawing.Size(217, 32);
+            this.txtPassWord.Size = new System.Drawing.Size(217, 38);
             this.txtPassWord.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtPassWord.TabIndex = 2;
             this.txtPassWord.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassWord_KeyDown);
@@ -85,7 +85,7 @@ namespace LoginForm
             // 
             this.btnLogin.AccessibleName = "Button";
             this.btnLogin.BackColor = System.Drawing.Color.DarkTurquoise;
-            this.btnLogin.Font = new System.Drawing.Font("Castellar", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.AliceBlue;
             this.btnLogin.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnLogin.Location = new System.Drawing.Point(3, 3);
@@ -158,16 +158,16 @@ namespace LoginForm
             // pictureBox3
             // 
             this.pictureBox3.Image = global::LoginForm.Properties.Resources.logo;
-            this.pictureBox3.Location = new System.Drawing.Point(-10, -4);
+            this.pictureBox3.Location = new System.Drawing.Point(0, -4);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(271, 171);
+            this.pictureBox3.Size = new System.Drawing.Size(249, 171);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 0;
             this.pictureBox3.TabStop = false;
             // 
             // frmLoginMetro
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.AliceBlue;

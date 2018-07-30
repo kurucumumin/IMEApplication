@@ -6,12 +6,6 @@
 // applicable laws. 
 #endregion
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-
-using System.Text;
 using System.Windows.Forms;
 
 namespace LoginForm.Main
@@ -21,6 +15,15 @@ namespace LoginForm.Main
         public frmMainMetro()
         {
             InitializeComponent();
+        }    
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int h = 0;
+            foreach (Control item in pnlButton1.Controls)
+            {
+                h += item.Height + 6;
+            }
+            pnlButton1.Height = h;
         }
     }
 }

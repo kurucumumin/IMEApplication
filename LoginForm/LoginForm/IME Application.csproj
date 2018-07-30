@@ -511,6 +511,9 @@
     <Compile Include="frmLoginMetro.Designer.cs">
       <DependentUpon>frmLoginMetro.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ExtensionMethods.cs" />
+    <Compile Include="Helpers\RoundedRectangleF.cs" />
+    <Compile Include="Helpers\Transparenter.cs" />
     <Compile Include="IMEAccount\frmReceiptOperation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -534,6 +537,36 @@
     </Compile>
     <Compile Include="Main\frmMainMetro.Designer.cs">
       <DependentUpon>frmMainMetro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyClasses\Controls\AltoButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MyClasses\Controls\AltoNumericUpDown.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MyClasses\Controls\AltoProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MyClasses\Controls\AltoSlidingLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MyClasses\Controls\AltoTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MyClasses\Controls\Circular Progress Bar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MyClasses\Controls\ProcessingControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MyClasses\Controls\SpinningCircles.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MyClasses\Controls\SwitchButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MyClasses\Controls\RoundedButton.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="OnOrder\frmAcikSiparis.cs">
       <SubType>Form</SubType>
@@ -904,12 +937,12 @@
     <Compile Include="Services\CustomerSP.cs" />
     <Compile Include="Services\DateValidation.cs" />
     <Compile Include="Services\dgv.cs" />
-    <Compile Include="Services\MyClasses\FizikselDosya_.cs" />
-    <Compile Include="Services\MyClasses\KomutArgumanlari_.cs" />
+    <Compile Include="MyClasses\FizikselDosya_.cs" />
+    <Compile Include="MyClasses\KomutArgumanlari_.cs" />
     <Compile Include="Services\Messages.cs" />
-    <Compile Include="Services\MyClasses\MyAuthority.cs" />
-    <Compile Include="Services\MyClasses\MyConnect.cs" />
-    <Compile Include="Services\MyClasses\MyExtension.cs" />
+    <Compile Include="MyClasses\MyAuthority.cs" />
+    <Compile Include="MyClasses\MyConnect.cs" />
+    <Compile Include="MyClasses\MyExtension.cs" />
     <Compile Include="Services\NumToText.cs" />
     <Compile Include="Services\OtherDateValidationFunction.cs" />
     <Compile Include="Services\PrinterClass.cs" />
@@ -917,7 +950,7 @@
     <Compile Include="Services\QuotationDatagridCustomize.cs" />
     <Compile Include="Services\classSupplier.cs" />
     <Compile Include="Services\ToolTipService.cs" />
-    <Compile Include="Services\MyClasses\TransacsionArgumanlari_.cs" />
+    <Compile Include="MyClasses\TransacsionArgumanlari_.cs" />
     <Compile Include="Services\txtCreate.cs" />
     <Compile Include="Services\XmlToObject.cs" />
     <Compile Include="StockConfirm\frmStockConfirm.cs">
