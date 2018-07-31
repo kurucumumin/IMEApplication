@@ -6,7 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
-using MyLibrary;
+using LoginForm.clsClasses;
 
 namespace LoginForm
 {

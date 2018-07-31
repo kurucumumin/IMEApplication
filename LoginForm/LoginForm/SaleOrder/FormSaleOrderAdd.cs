@@ -9,11 +9,15 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Globalization;
 using System.Threading;
+using LoginForm.clsClasses;
+using System.Runtime.CompilerServices;
 
 namespace LoginForm.QuotationModule
 {
     public partial class FormSaleOrderAdd : Form
     {
+        private string sptr = CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator;
+        private List<clsBidL> liste = new List<clsBidL>();
         string manuelSelection = string.Empty;
         private static string QuoStatusActive = "Active";
         FormQuotationMain parent;
@@ -4339,6 +4343,7 @@ namespace LoginForm.QuotationModule
             //    }
             //}
             MessageBox.Show("Sale is successfully added", "Success");
+            btnLogoSave.PerformClick();
             this.Close();
         }
 

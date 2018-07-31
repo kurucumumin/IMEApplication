@@ -1,6 +1,8 @@
-﻿namespace MyLibrary
+﻿using System.Data;
+
+
+namespace LoginForm.clsClasses
 {
-    using System.Data;
 
     public sealed class TransacsionArgumanlari_
     {

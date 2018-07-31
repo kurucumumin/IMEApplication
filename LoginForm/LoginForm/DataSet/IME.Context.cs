@@ -1267,7 +1267,7 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MasterViewByFormName_Result>("MasterViewByFormName", formNameParameter);
         }
     
-        public virtual ObjectResult<Nullable<int>> OnSaleAdd(string articleNumber, string availabletoPromiseCheck, string bulkPack, Nullable<int> catalogueStatus, string discontinuedDate, string introductionDate, string nextScheduledDelivery, Nullable<int> onhandStockBalance, Nullable<int> packSize, Nullable<int> quantityonOrder, string smallOrderProtectionLevel, string substitutedBy, string substitutedFor)
+        public virtual int OnSaleAdd(string articleNumber, string availabletoPromiseCheck, string bulkPack, Nullable<int> catalogueStatus, string discontinuedDate, string introductionDate, string nextScheduledDelivery, Nullable<int> onhandStockBalance, Nullable<int> packSize, Nullable<int> quantityonOrder, string smallOrderProtectionLevel, string substitutedBy, string substitutedFor)
         {
             var articleNumberParameter = articleNumber != null ?
                 new ObjectParameter("ArticleNumber", articleNumber) :
@@ -1321,7 +1321,7 @@ namespace LoginForm.DataSet
                 new ObjectParameter("SubstitutedFor", substitutedFor) :
                 new ObjectParameter("SubstitutedFor", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("OnSaleAdd", articleNumberParameter, availabletoPromiseCheckParameter, bulkPackParameter, catalogueStatusParameter, discontinuedDateParameter, introductionDateParameter, nextScheduledDeliveryParameter, onhandStockBalanceParameter, packSizeParameter, quantityonOrderParameter, smallOrderProtectionLevelParameter, substitutedByParameter, substitutedForParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("OnSaleAdd", articleNumberParameter, availabletoPromiseCheckParameter, bulkPackParameter, catalogueStatusParameter, discontinuedDateParameter, introductionDateParameter, nextScheduledDeliveryParameter, onhandStockBalanceParameter, packSizeParameter, quantityonOrderParameter, smallOrderProtectionLevelParameter, substitutedByParameter, substitutedForParameter);
         }
     
         public virtual ObjectResult<OtherBranchStockSearch_Result> OtherBranchStockSearch(string articleNo)

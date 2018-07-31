@@ -8,7 +8,7 @@ using LoginForm.PurchaseOrder;
 using LoginForm.QuotationModule;
 using LoginForm.Services;
 using System.Data;
-
+using LoginForm.clsClasses;
 
 namespace LoginForm.nsSaleOrder
 {
@@ -147,7 +147,7 @@ namespace LoginForm.nsSaleOrder
         private void PurchaseOrderMenu_Click(object sender, EventArgs e)
         {
             decimal item_code = 0;
-           // string purchasecode = "";
+            // string purchasecode = "";
             IMEEntities IME = new IMEEntities();
 
             if (dgSales.CurrentRow.Cells["SoNO"].Value != null)
@@ -194,6 +194,11 @@ namespace LoginForm.nsSaleOrder
         private void FormSalesOrderMain_Activated(object sender, EventArgs e)
         {
             BringSalesList();
+        }
+
+        private void dgSales_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
