@@ -329,6 +329,7 @@
             this.dgSales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgSales.Size = new System.Drawing.Size(1234, 426);
             this.dgSales.TabIndex = 0;
+            this.dgSales.Click += new System.EventHandler(this.dgSales_Click);
             this.dgSales.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgSales_MouseClick);
             this.dgSales.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgSales_MouseDoubleClick);
             // 

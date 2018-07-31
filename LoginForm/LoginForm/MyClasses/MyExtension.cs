@@ -1,22 +1,22 @@
-﻿namespace MyLibrary
-{
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Data;
-    using System.Diagnostics;
-    using System.Globalization;
-    using System.IO;
-    using System.Net;
-    using System.Net.Mail;
-    using System.Net.Security;
-    using System.Runtime.CompilerServices;
-    using System.Security.Cryptography;
-    using System.Security.Cryptography.X509Certificates;
-    using System.Text;
-    using System.Text.RegularExpressions;
-    using System.Threading;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Diagnostics;
+using System.Globalization;
+using System.IO;
+using System.Net;
+using System.Net.Mail;
+using System.Net.Security;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading;
 
+namespace LoginForm.clsClasses
+{
     public static class MyExtension
     {
         public static string _HTMLKodTemizleyici(this string gelenMetin)

@@ -11,7 +11,7 @@ namespace LoginForm.DataSet
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class CompleteItems_v2
     {
         public string Article_No { get; set; }

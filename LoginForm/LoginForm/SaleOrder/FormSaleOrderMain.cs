@@ -8,7 +8,7 @@ using LoginForm.PurchaseOrder;
 using LoginForm.QuotationModule;
 using LoginForm.Services;
 using System.Data;
-using static LoginForm.Services.MyClasses.MyAuthority;
+using LoginForm.clsClasses;
 
 namespace LoginForm.nsSaleOrder
 {
@@ -84,7 +84,7 @@ namespace LoginForm.nsSaleOrder
         {
             dgSales.DataSource = null;
             dgSales.DataSource = queryable;
-            
+
             foreach (DataGridViewColumn col in dgSales.Columns)
             {
                 col.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
@@ -101,7 +101,7 @@ namespace LoginForm.nsSaleOrder
         private void dgSales_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode==Keys.Enter)
-            { 
+            {
 
                 if (dgSales.CurrentRow != null)
                 {
@@ -116,7 +116,7 @@ namespace LoginForm.nsSaleOrder
                    // NewPurchaseOrder form = new NewPurchaseOrder(so);
                    // form.ShowDialog();
                 }
-            }   
+            }
         }
 
         private void dgSales_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -147,7 +147,7 @@ namespace LoginForm.nsSaleOrder
         private void PurchaseOrderMenu_Click(object sender, EventArgs e)
         {
             decimal item_code = 0;
-           // string purchasecode = "";
+            // string purchasecode = "";
             IMEEntities IME = new IMEEntities();
 
             if (dgSales.CurrentRow.Cells["SoNO"].Value != null)
@@ -194,6 +194,11 @@ namespace LoginForm.nsSaleOrder
         private void FormSalesOrderMain_Activated(object sender, EventArgs e)
         {
             BringSalesList();
+        }
+
+        private void dgSales_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

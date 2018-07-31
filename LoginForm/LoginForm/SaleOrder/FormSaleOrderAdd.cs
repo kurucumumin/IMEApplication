@@ -9,12 +9,15 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Globalization;
 using System.Threading;
-using static LoginForm.Services.MyClasses.MyAuthority;
+using LoginForm.clsClasses;
+using System.Runtime.CompilerServices;
 
 namespace LoginForm.QuotationModule
 {
     public partial class FormSaleOrderAdd : Form
     {
+        private string sptr = CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator;
+        private List<clsBidL> liste = new List<clsBidL>();
         string manuelSelection = string.Empty;
         private static string QuoStatusActive = "Active";
         FormQuotationMain parent;
@@ -628,7 +631,7 @@ namespace LoginForm.QuotationModule
                 try { txtCustomerNote.Text = c.Note.Note_name; } catch { }
                 try { txtAccountingNote.Text = IME.Notes.Where(a => a.ID == c.customerAccountantNoteID).FirstOrDefault().Note_name; } catch { }
                 if (c.Worker != null) cbRep.SelectedValue = c.Worker.WorkerID;
-           
+
                 if (c.CustomerWorker != null)
                 {
                     cbWorkers.SelectedValue = c.CustomerWorker.ID;
@@ -2178,7 +2181,7 @@ namespace LoginForm.QuotationModule
             //txtQuotationNo.Text = q.QuotationNo;
             //txtRFQNo.Text = q.RFQNo;
             CustomerCode.Text = customer.ID;
-            
+
             txtFactor.Text = customer.factor.ToString();
             //if (q.NoteForCustomerID != null) txtNoteForCustomer.Text = IME.Notes.Where(a => a.ID == q.NoteForCustomerID).FirstOrDefault().Note_name;
             //if (q.NoteForCustomerID != null) txtNoteForUs.Text = IME.Notes.Where(a => a.ID == q.NoteForUsID).FirstOrDefault().Note_name;
@@ -2754,7 +2757,7 @@ namespace LoginForm.QuotationModule
             {
                 decimal cb = (cbCurrency.SelectedItem as Currency).currencyID;
                 curr = IME.ExchangeRates.Where(a => a.currencyId == cb).OrderByDescending(b => b.date).FirstOrDefault();
-                 
+
                 if (CurrValue1 != CurrValue) CurrValue1 = CurrValue;
                 CurrValue = (decimal)curr.rate;
             }
@@ -3854,7 +3857,7 @@ namespace LoginForm.QuotationModule
                 dgSaleAddedItems.Columns[item].Visible = false;
             }
         }
-        
+
         private void txtTotalDis_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -4340,6 +4343,7 @@ namespace LoginForm.QuotationModule
             //    }
             //}
             MessageBox.Show("Sale is successfully added", "Success");
+            btnLogoSave.PerformClick();
             this.Close();
         }
 
@@ -4350,7 +4354,7 @@ namespace LoginForm.QuotationModule
 
         private void cbCurrencySelected(string name)
         {
-           
+
             if (name=="New")
             {
                 cbCurrency.DataSource = IME.Currencies.ToList();

@@ -1,6 +1,8 @@
-﻿using LoginForm.DataSet;
+﻿using LoginForm.clsClasses;
+using LoginForm.DataSet;
 using LoginForm.Services;
 using System;
+using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -201,11 +203,6 @@ namespace LoginForm.ItemModule
         private void LoaderPage_Load(object sender, EventArgs e)
         {
             this.Text = txtReader.LoaderType;
-        }
-
-        private void DTPLoaderDate_ValueChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -419,6 +419,12 @@
     <Compile Include="DataSet\Rate.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\RBS_FATURA_B.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\RBS_FATURA_S.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\Receipt.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -941,8 +947,15 @@
     <Compile Include="Services\CustomerSP.cs" />
     <Compile Include="Services\DateValidation.cs" />
     <Compile Include="Services\dgv.cs" />
-    <Compile Include="MyClasses\FizikselDosya_.cs" />
-    <Compile Include="MyClasses\KomutArgumanlari_.cs" />
+    <Compile Include="Services\MyClasses\Bolgeler.cs" />
+    <Compile Include="Services\MyClasses\clsBid.cs" />
+    <Compile Include="Services\MyClasses\clsBidL.cs" />
+    <Compile Include="Services\MyClasses\clsInvoice.cs" />
+    <Compile Include="Services\MyClasses\clsLog.cs" />
+    <Compile Include="Services\MyClasses\clsLogClass.cs" />
+    <Compile Include="Services\MyClasses\clsLogoYardimci.cs" />
+    <Compile Include="Services\MyClasses\FizikselDosya_.cs" />
+    <Compile Include="Services\MyClasses\KomutArgumanlari_.cs" />
     <Compile Include="Services\Messages.cs" />
     <Compile Include="MyClasses\MyAuthority.cs" />
     <Compile Include="MyClasses\MyConnect.cs" />

@@ -1,12 +1,13 @@
-﻿namespace MyLibrary
-{
-    using Microsoft.SqlServer.Management.Common;
-    using Microsoft.SqlServer.Management.Smo;
-    using System;
-    using System.Data;
-    using System.Data.SqlClient;
-    using System.Linq;
+﻿using Microsoft.SqlServer.Management.Common;
+using Microsoft.SqlServer.Management.Smo;
+using System;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
 
+
+namespace LoginForm.clsClasses
+{
     public sealed class MyConnect
     {
         private static object __kilit = new object();

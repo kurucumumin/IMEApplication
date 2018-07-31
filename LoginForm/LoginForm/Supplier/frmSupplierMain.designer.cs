@@ -1427,10 +1427,6 @@ namespace LoginForm
             this.supplierSubCategoryDataGridViewTextBoxColumn.Name = "supplierSubCategoryDataGridViewTextBoxColumn";
             this.supplierSubCategoryDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // supplierBindingSource
-            // 
-            this.supplierBindingSource.DataSource = typeof(LoginForm.DataSet.Supplier);
-            // 
             // btnModify
             // 
             this.btnModify.Anchor = System.Windows.Forms.AnchorStyles.Left;
