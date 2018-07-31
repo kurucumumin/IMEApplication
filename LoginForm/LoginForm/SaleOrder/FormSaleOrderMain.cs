@@ -9,6 +9,7 @@ using LoginForm.QuotationModule;
 using LoginForm.Services;
 using System.Data;
 using LoginForm.clsClasses;
+using static LoginForm.Services.MyClasses.MyAuthority;
 
 namespace LoginForm.nsSaleOrder
 {

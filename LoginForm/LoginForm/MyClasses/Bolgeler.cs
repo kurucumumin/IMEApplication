@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Data;
 using LoginForm.Services;
+using LoginForm.MyClasses;
 
 namespace LoginForm.clsClasses
 {

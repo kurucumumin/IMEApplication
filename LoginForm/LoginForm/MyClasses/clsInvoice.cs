@@ -1,4 +1,5 @@
 ﻿using LoginForm.clsClasses;
+using LoginForm.MyClasses;
 using System;
 using System.Collections.Generic;
 using System.Data;

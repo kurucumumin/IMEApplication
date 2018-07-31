@@ -8,6 +8,8 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using LoginForm.clsClasses;
 using System.Collections.Generic;
+using LoginForm.MyClasses;
+using static LoginForm.Services.MyClasses.MyAuthority;
 
 namespace LoginForm
 {

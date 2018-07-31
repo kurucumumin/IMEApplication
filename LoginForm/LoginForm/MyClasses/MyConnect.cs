@@ -1,4 +1,5 @@
-﻿using Microsoft.SqlServer.Management.Common;
+﻿using LoginForm.MyClasses;
+using Microsoft.SqlServer.Management.Common;
 using Microsoft.SqlServer.Management.Smo;
 using System;
 using System.Data;

@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using LoginForm.MyClasses;
 using LoginForm.Services;
 
 namespace LoginForm.clsClasses

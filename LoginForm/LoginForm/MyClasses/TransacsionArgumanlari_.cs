@@ -1,7 +1,8 @@
-﻿using System.Data;
+﻿using LoginForm.MyClasses;
+using System.Data;
 
 
-namespace LoginForm.clsClasses
+namespace LoginForm.MyClasses
 {
 
     public sealed class TransacsionArgumanlari_

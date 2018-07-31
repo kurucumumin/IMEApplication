@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LoginForm.clsClasses
+namespace LoginForm.MyClasses
 {
     public sealed class KomutArgumanlari_
     {

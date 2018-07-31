@@ -7,6 +7,8 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using LoginForm.clsClasses;
+using LoginForm.MyClasses;
+using static LoginForm.Services.MyClasses.MyAuthority;
 
 namespace LoginForm
 {

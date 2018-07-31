@@ -11,6 +11,7 @@ using System.Globalization;
 using System.Threading;
 using LoginForm.clsClasses;
 using System.Runtime.CompilerServices;
+using static LoginForm.Services.MyClasses.MyAuthority;
 
 namespace LoginForm.QuotationModule
 {
