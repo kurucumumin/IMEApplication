@@ -154,12 +154,12 @@ namespace LoginForm
             this.btnLogin.ForeColor = System.Drawing.Color.Black;
             this.btnLogin.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.btnLogin.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(255)))), ((int)(((byte)(173)))));
-            this.btnLogin.Location = new System.Drawing.Point(87, 394);
+            this.btnLogin.Location = new System.Drawing.Point(83, 394);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Radius = 5;
-            this.btnLogin.Size = new System.Drawing.Size(162, 50);
+            this.btnLogin.Size = new System.Drawing.Size(162, 40);
             this.btnLogin.Stroke = true;
-            this.btnLogin.StrokeColor = System.Drawing.Color.DarkGray;
+            this.btnLogin.StrokeColor = System.Drawing.SystemColors.ButtonShadow;
             this.btnLogin.TabIndex = 10;
             this.btnLogin.Text = "Login";
             this.btnLogin.Transparency = false;

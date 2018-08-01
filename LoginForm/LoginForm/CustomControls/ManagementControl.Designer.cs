@@ -80,7 +80,7 @@
             // 
             // panel31
             // 
-            this.panel31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
+            this.panel31.BackColor = System.Drawing.Color.Transparent;
             this.panel31.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel31.Controls.Add(this.CustomsRateUpDown);
             this.panel31.Controls.Add(this.label4);

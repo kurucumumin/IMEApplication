@@ -936,7 +936,7 @@ namespace LoginForm.Main
             // 
             this.altoSlidingLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.altoSlidingLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.altoSlidingLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.altoSlidingLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.altoSlidingLabel1.Location = new System.Drawing.Point(578, 10);
             this.altoSlidingLabel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.altoSlidingLabel1.Name = "altoSlidingLabel1";
