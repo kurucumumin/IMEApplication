@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace LoginForm
 {
-    public partial class frmLoginMetro : Syncfusion.Windows.Forms.MetroForm
+    public partial class frmLoginMetro : Form
     {
         IMEEntities IME = new IMEEntities();
         public string LoginPerson { get; set; }
@@ -79,6 +79,11 @@ namespace LoginForm
         private void btnLogin_Click(object sender, EventArgs e)
         {
             LoginButtonClick();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

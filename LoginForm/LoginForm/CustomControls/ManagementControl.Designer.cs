@@ -31,6 +31,10 @@
             this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel31 = new System.Windows.Forms.Panel();
+            this.CustomsRateUpDown = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
+            this.FreightChargeUpDown = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
             this.txtBranchCode = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtDataSeperator = new System.Windows.Forms.TextBox();
@@ -49,16 +53,12 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.txtLowMarginLimit = new System.Windows.Forms.TextBox();
             this.lblLowMarginLimit = new System.Windows.Forms.Label();
-            this.FreightChargeUpDown = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
-            this.CustomsRateUpDown = new System.Windows.Forms.NumericUpDown();
-            this.label4 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel31.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CustomsRateUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FreightChargeUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericFactor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.currencyBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FreightChargeUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CustomsRateUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -70,16 +70,17 @@
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(388, 522);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(517, 642);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // panel31
             // 
+            this.panel31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.panel31.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel31.Controls.Add(this.CustomsRateUpDown);
             this.panel31.Controls.Add(this.label4);
@@ -106,28 +107,80 @@
             this.panel31.Location = new System.Drawing.Point(0, 0);
             this.panel31.Margin = new System.Windows.Forms.Padding(0);
             this.panel31.Name = "panel31";
-            this.panel31.Size = new System.Drawing.Size(388, 522);
+            this.panel31.Size = new System.Drawing.Size(517, 642);
             this.panel31.TabIndex = 1;
+            // 
+            // CustomsRateUpDown
+            // 
+            this.CustomsRateUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.CustomsRateUpDown.DecimalPlaces = 2;
+            this.CustomsRateUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.CustomsRateUpDown.Location = new System.Drawing.Point(191, 346);
+            this.CustomsRateUpDown.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.CustomsRateUpDown.Name = "CustomsRateUpDown";
+            this.CustomsRateUpDown.Size = new System.Drawing.Size(308, 24);
+            this.CustomsRateUpDown.TabIndex = 23;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(16, 347);
+            this.label4.Margin = new System.Windows.Forms.Padding(16, 0, 3, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(104, 18);
+            this.label4.TabIndex = 22;
+            this.label4.Text = "Customs Rate";
+            // 
+            // FreightChargeUpDown
+            // 
+            this.FreightChargeUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.FreightChargeUpDown.DecimalPlaces = 2;
+            this.FreightChargeUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.FreightChargeUpDown.Location = new System.Drawing.Point(191, 302);
+            this.FreightChargeUpDown.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.FreightChargeUpDown.Name = "FreightChargeUpDown";
+            this.FreightChargeUpDown.Size = new System.Drawing.Size(308, 24);
+            this.FreightChargeUpDown.TabIndex = 21;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(16, 302);
+            this.label3.Margin = new System.Windows.Forms.Padding(16, 0, 3, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(105, 18);
+            this.label3.TabIndex = 20;
+            this.label3.Text = "Freight Charge";
             // 
             // txtBranchCode
             // 
             this.txtBranchCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBranchCode.Enabled = false;
-            this.txtBranchCode.Location = new System.Drawing.Point(143, 207);
-            this.txtBranchCode.Margin = new System.Windows.Forms.Padding(2, 2, 12, 2);
+            this.txtBranchCode.Location = new System.Drawing.Point(191, 255);
+            this.txtBranchCode.Margin = new System.Windows.Forms.Padding(3, 2, 16, 2);
             this.txtBranchCode.Name = "txtBranchCode";
-            this.txtBranchCode.Size = new System.Drawing.Size(232, 21);
+            this.txtBranchCode.Size = new System.Drawing.Size(308, 24);
             this.txtBranchCode.TabIndex = 19;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Enabled = false;
-            this.label2.Location = new System.Drawing.Point(12, 210);
-            this.label2.Margin = new System.Windows.Forms.Padding(12, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(16, 258);
+            this.label2.Margin = new System.Windows.Forms.Padding(16, 0, 3, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(78, 15);
+            this.label2.Size = new System.Drawing.Size(95, 18);
             this.label2.TabIndex = 18;
             this.label2.Text = "Branch Code";
             // 
@@ -135,18 +188,18 @@
             // 
             this.txtDataSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDataSeperator.Location = new System.Drawing.Point(143, 168);
-            this.txtDataSeperator.Margin = new System.Windows.Forms.Padding(2, 2, 12, 2);
+            this.txtDataSeperator.Location = new System.Drawing.Point(191, 207);
+            this.txtDataSeperator.Margin = new System.Windows.Forms.Padding(3, 2, 16, 2);
             this.txtDataSeperator.Name = "txtDataSeperator";
-            this.txtDataSeperator.Size = new System.Drawing.Size(232, 21);
+            this.txtDataSeperator.Size = new System.Drawing.Size(308, 24);
             this.txtDataSeperator.TabIndex = 17;
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(12, 162);
-            this.label1.Margin = new System.Windows.Forms.Padding(12, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(16, 199);
+            this.label1.Margin = new System.Windows.Forms.Padding(16, 0, 3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 34);
+            this.label1.Size = new System.Drawing.Size(143, 42);
             this.label1.TabIndex = 16;
             this.label1.Text = "Data Seperator For Purchase Order";
             // 
@@ -157,10 +210,10 @@
             this.btnCategorySubCategory.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
             this.btnCategorySubCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCategorySubCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCategorySubCategory.Location = new System.Drawing.Point(0, 355);
+            this.btnCategorySubCategory.Location = new System.Drawing.Point(0, 437);
             this.btnCategorySubCategory.Margin = new System.Windows.Forms.Padding(0);
             this.btnCategorySubCategory.Name = "btnCategorySubCategory";
-            this.btnCategorySubCategory.Size = new System.Drawing.Size(386, 30);
+            this.btnCategorySubCategory.Size = new System.Drawing.Size(515, 37);
             this.btnCategorySubCategory.TabIndex = 15;
             this.btnCategorySubCategory.Text = "Category & Sub Category";
             this.btnCategorySubCategory.UseVisualStyleBackColor = false;
@@ -173,10 +226,10 @@
             this.btnExchangeRate.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
             this.btnExchangeRate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExchangeRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExchangeRate.Location = new System.Drawing.Point(0, 385);
+            this.btnExchangeRate.Location = new System.Drawing.Point(0, 474);
             this.btnExchangeRate.Margin = new System.Windows.Forms.Padding(0);
             this.btnExchangeRate.Name = "btnExchangeRate";
-            this.btnExchangeRate.Size = new System.Drawing.Size(386, 30);
+            this.btnExchangeRate.Size = new System.Drawing.Size(515, 37);
             this.btnExchangeRate.TabIndex = 14;
             this.btnExchangeRate.Text = "Exchange Rate";
             this.btnExchangeRate.UseVisualStyleBackColor = false;
@@ -192,19 +245,19 @@
             0,
             0,
             65536});
-            this.numericFactor.Location = new System.Drawing.Point(143, 132);
-            this.numericFactor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numericFactor.Location = new System.Drawing.Point(191, 162);
+            this.numericFactor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.numericFactor.Name = "numericFactor";
-            this.numericFactor.Size = new System.Drawing.Size(231, 21);
+            this.numericFactor.Size = new System.Drawing.Size(308, 24);
             this.numericFactor.TabIndex = 13;
             // 
             // lblFactor
             // 
             this.lblFactor.AutoSize = true;
-            this.lblFactor.Location = new System.Drawing.Point(12, 133);
-            this.lblFactor.Margin = new System.Windows.Forms.Padding(12, 0, 2, 0);
+            this.lblFactor.Location = new System.Drawing.Point(16, 164);
+            this.lblFactor.Margin = new System.Windows.Forms.Padding(16, 0, 3, 0);
             this.lblFactor.Name = "lblFactor";
-            this.lblFactor.Size = new System.Drawing.Size(41, 15);
+            this.lblFactor.Size = new System.Drawing.Size(51, 18);
             this.lblFactor.TabIndex = 12;
             this.lblFactor.Text = "Factor";
             // 
@@ -215,10 +268,10 @@
             this.cbCurrency.DataSource = this.currencyBindingSource;
             this.cbCurrency.DisplayMember = "currencySymbol";
             this.cbCurrency.FormattingEnabled = true;
-            this.cbCurrency.Location = new System.Drawing.Point(143, 93);
-            this.cbCurrency.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbCurrency.Location = new System.Drawing.Point(191, 114);
+            this.cbCurrency.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbCurrency.Name = "cbCurrency";
-            this.cbCurrency.Size = new System.Drawing.Size(232, 23);
+            this.cbCurrency.Size = new System.Drawing.Size(308, 26);
             this.cbCurrency.TabIndex = 10;
             this.cbCurrency.ValueMember = "currencyID";
             // 
@@ -229,10 +282,9 @@
             // lblDefaultCurrency
             // 
             this.lblDefaultCurrency.AutoSize = true;
-            this.lblDefaultCurrency.Location = new System.Drawing.Point(12, 96);
-            this.lblDefaultCurrency.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDefaultCurrency.Location = new System.Drawing.Point(16, 118);
             this.lblDefaultCurrency.Name = "lblDefaultCurrency";
-            this.lblDefaultCurrency.Size = new System.Drawing.Size(97, 15);
+            this.lblDefaultCurrency.Size = new System.Drawing.Size(118, 18);
             this.lblDefaultCurrency.TabIndex = 9;
             this.lblDefaultCurrency.Text = "Default Currency";
             // 
@@ -243,10 +295,10 @@
             this.btnTermsOfPayment.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
             this.btnTermsOfPayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTermsOfPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTermsOfPayment.Location = new System.Drawing.Point(0, 415);
+            this.btnTermsOfPayment.Location = new System.Drawing.Point(0, 511);
             this.btnTermsOfPayment.Margin = new System.Windows.Forms.Padding(0);
             this.btnTermsOfPayment.Name = "btnTermsOfPayment";
-            this.btnTermsOfPayment.Size = new System.Drawing.Size(386, 30);
+            this.btnTermsOfPayment.Size = new System.Drawing.Size(515, 37);
             this.btnTermsOfPayment.TabIndex = 8;
             this.btnTermsOfPayment.Text = "Terms of Payment";
             this.btnTermsOfPayment.UseVisualStyleBackColor = false;
@@ -256,19 +308,19 @@
             // 
             this.txtVAT.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtVAT.Location = new System.Drawing.Point(143, 58);
-            this.txtVAT.Margin = new System.Windows.Forms.Padding(2, 2, 12, 2);
+            this.txtVAT.Location = new System.Drawing.Point(191, 71);
+            this.txtVAT.Margin = new System.Windows.Forms.Padding(3, 2, 16, 2);
             this.txtVAT.Name = "txtVAT";
-            this.txtVAT.Size = new System.Drawing.Size(232, 21);
+            this.txtVAT.Size = new System.Drawing.Size(308, 24);
             this.txtVAT.TabIndex = 7;
             // 
             // lblVAT
             // 
             this.lblVAT.AutoSize = true;
-            this.lblVAT.Location = new System.Drawing.Point(12, 60);
-            this.lblVAT.Margin = new System.Windows.Forms.Padding(12, 0, 2, 0);
+            this.lblVAT.Location = new System.Drawing.Point(16, 74);
+            this.lblVAT.Margin = new System.Windows.Forms.Padding(16, 0, 3, 0);
             this.lblVAT.Name = "lblVAT";
-            this.lblVAT.Size = new System.Drawing.Size(28, 15);
+            this.lblVAT.Size = new System.Drawing.Size(35, 18);
             this.lblVAT.TabIndex = 6;
             this.lblVAT.Text = "VAT";
             // 
@@ -279,10 +331,10 @@
             this.btnRolesAuthorities.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
             this.btnRolesAuthorities.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRolesAuthorities.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRolesAuthorities.Location = new System.Drawing.Point(0, 445);
+            this.btnRolesAuthorities.Location = new System.Drawing.Point(0, 548);
             this.btnRolesAuthorities.Margin = new System.Windows.Forms.Padding(0);
             this.btnRolesAuthorities.Name = "btnRolesAuthorities";
-            this.btnRolesAuthorities.Size = new System.Drawing.Size(386, 30);
+            this.btnRolesAuthorities.Size = new System.Drawing.Size(515, 37);
             this.btnRolesAuthorities.TabIndex = 5;
             this.btnRolesAuthorities.Text = "Roles and Authorities";
             this.btnRolesAuthorities.UseVisualStyleBackColor = false;
@@ -295,10 +347,10 @@
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(0, 475);
+            this.btnSave.Location = new System.Drawing.Point(0, 585);
             this.btnSave.Margin = new System.Windows.Forms.Padding(0);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(386, 45);
+            this.btnSave.Size = new System.Drawing.Size(515, 55);
             this.btnSave.TabIndex = 2;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -308,90 +360,38 @@
             // 
             this.txtLowMarginLimit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLowMarginLimit.Location = new System.Drawing.Point(143, 22);
-            this.txtLowMarginLimit.Margin = new System.Windows.Forms.Padding(2, 2, 12, 2);
+            this.txtLowMarginLimit.Location = new System.Drawing.Point(191, 27);
+            this.txtLowMarginLimit.Margin = new System.Windows.Forms.Padding(3, 2, 16, 2);
             this.txtLowMarginLimit.Name = "txtLowMarginLimit";
-            this.txtLowMarginLimit.Size = new System.Drawing.Size(232, 21);
+            this.txtLowMarginLimit.Size = new System.Drawing.Size(308, 24);
             this.txtLowMarginLimit.TabIndex = 1;
             // 
             // lblLowMarginLimit
             // 
             this.lblLowMarginLimit.AutoSize = true;
-            this.lblLowMarginLimit.Location = new System.Drawing.Point(12, 24);
-            this.lblLowMarginLimit.Margin = new System.Windows.Forms.Padding(12, 0, 2, 0);
+            this.lblLowMarginLimit.Location = new System.Drawing.Point(16, 30);
+            this.lblLowMarginLimit.Margin = new System.Windows.Forms.Padding(16, 0, 3, 0);
             this.lblLowMarginLimit.Name = "lblLowMarginLimit";
-            this.lblLowMarginLimit.Size = new System.Drawing.Size(102, 15);
+            this.lblLowMarginLimit.Size = new System.Drawing.Size(120, 18);
             this.lblLowMarginLimit.TabIndex = 0;
             this.lblLowMarginLimit.Text = "Low Margin Limit";
             // 
-            // FreightChargeUpDown
-            // 
-            this.FreightChargeUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.FreightChargeUpDown.DecimalPlaces = 2;
-            this.FreightChargeUpDown.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.FreightChargeUpDown.Location = new System.Drawing.Point(143, 245);
-            this.FreightChargeUpDown.Margin = new System.Windows.Forms.Padding(2);
-            this.FreightChargeUpDown.Name = "FreightChargeUpDown";
-            this.FreightChargeUpDown.Size = new System.Drawing.Size(231, 21);
-            this.FreightChargeUpDown.TabIndex = 21;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 245);
-            this.label3.Margin = new System.Windows.Forms.Padding(12, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(88, 15);
-            this.label3.TabIndex = 20;
-            this.label3.Text = "Freight Charge";
-            // 
-            // CustomsRateUpDown
-            // 
-            this.CustomsRateUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CustomsRateUpDown.DecimalPlaces = 2;
-            this.CustomsRateUpDown.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.CustomsRateUpDown.Location = new System.Drawing.Point(143, 281);
-            this.CustomsRateUpDown.Margin = new System.Windows.Forms.Padding(2);
-            this.CustomsRateUpDown.Name = "CustomsRateUpDown";
-            this.CustomsRateUpDown.Size = new System.Drawing.Size(231, 21);
-            this.CustomsRateUpDown.TabIndex = 23;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 282);
-            this.label4.Margin = new System.Windows.Forms.Padding(12, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(84, 15);
-            this.label4.TabIndex = 22;
-            this.label4.Text = "Customs Rate";
-            // 
             // ManagementControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ManagementControl";
-            this.Size = new System.Drawing.Size(388, 522);
+            this.Size = new System.Drawing.Size(517, 642);
             this.Load += new System.EventHandler(this.ManagementControl_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel31.ResumeLayout(false);
             this.panel31.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CustomsRateUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FreightChargeUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericFactor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.currencyBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FreightChargeUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CustomsRateUpDown)).EndInit();
             this.ResumeLayout(false);
 
         }

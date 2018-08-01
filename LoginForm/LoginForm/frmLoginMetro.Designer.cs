@@ -45,10 +45,10 @@ namespace LoginForm
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.bunifuElipse2 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.btnLogin = new AltoControls.AltoButton();
+            this.btnExit = new AltoControls.AltoButton();
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassWord)).BeginInit();
             this.panel1.SuspendLayout();
@@ -66,7 +66,7 @@ namespace LoginForm
             this.txtID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtID.Font = new System.Drawing.Font("Century", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.txtID.Location = new System.Drawing.Point(69, 215);
+            this.txtID.Location = new System.Drawing.Point(69, 250);
             this.txtID.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(217, 38);
@@ -81,7 +81,7 @@ namespace LoginForm
             this.txtPassWord.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPassWord.Font = new System.Drawing.Font("Century", 15F, System.Drawing.FontStyle.Bold);
             this.txtPassWord.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.txtPassWord.Location = new System.Drawing.Point(69, 280);
+            this.txtPassWord.Location = new System.Drawing.Point(69, 315);
             this.txtPassWord.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtPassWord.Name = "txtPassWord";
             this.txtPassWord.PasswordChar = '*';
@@ -93,7 +93,7 @@ namespace LoginForm
             // panel1
             // 
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(39, 215);
+            this.panel1.Location = new System.Drawing.Point(39, 250);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(29, 32);
             this.panel1.TabIndex = 4;
@@ -112,7 +112,7 @@ namespace LoginForm
             // panel2
             // 
             this.panel2.Controls.Add(this.pictureBox2);
-            this.panel2.Location = new System.Drawing.Point(37, 280);
+            this.panel2.Location = new System.Drawing.Point(37, 315);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(29, 32);
             this.panel2.TabIndex = 5;
@@ -127,16 +127,11 @@ namespace LoginForm
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             // 
-            // bunifuElipse1
-            // 
-            this.bunifuElipse1.ElipseRadius = 20;
-            this.bunifuElipse1.TargetControl = this;
-            // 
             // pictureBox3
             // 
             this.pictureBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox3.Image = global::LoginForm.Properties.Resources.logo;
-            this.pictureBox3.Location = new System.Drawing.Point(80, 12);
+            this.pictureBox3.Location = new System.Drawing.Point(80, 47);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(169, 171);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -157,9 +152,9 @@ namespace LoginForm
             this.btnLogin.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnLogin.Font = new System.Drawing.Font("Sitka Text", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnLogin.ForeColor = System.Drawing.Color.Black;
-            this.btnLogin.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(236)))), ((int)(((byte)(197)))));
-            this.btnLogin.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(167)))), ((int)(((byte)(79)))));
-            this.btnLogin.Location = new System.Drawing.Point(87, 359);
+            this.btnLogin.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.btnLogin.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(255)))), ((int)(((byte)(173)))));
+            this.btnLogin.Location = new System.Drawing.Point(87, 394);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Radius = 5;
             this.btnLogin.Size = new System.Drawing.Size(162, 50);
@@ -170,15 +165,35 @@ namespace LoginForm
             this.btnLogin.Transparency = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
+            // btnExit
+            // 
+            this.btnExit.Active1 = System.Drawing.Color.AliceBlue;
+            this.btnExit.Active2 = System.Drawing.Color.AliceBlue;
+            this.btnExit.BackColor = System.Drawing.Color.Transparent;
+            this.btnExit.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnExit.Font = new System.Drawing.Font("Comic Sans MS", 10F, System.Drawing.FontStyle.Bold);
+            this.btnExit.ForeColor = System.Drawing.Color.DimGray;
+            this.btnExit.Inactive1 = System.Drawing.Color.AliceBlue;
+            this.btnExit.Inactive2 = System.Drawing.Color.AliceBlue;
+            this.btnExit.Location = new System.Drawing.Point(301, 2);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Radius = 5;
+            this.btnExit.Size = new System.Drawing.Size(36, 33);
+            this.btnExit.Stroke = false;
+            this.btnExit.StrokeColor = System.Drawing.Color.Gray;
+            this.btnExit.TabIndex = 11;
+            this.btnExit.Text = "X";
+            this.btnExit.Transparency = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
             // frmLoginMetro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.AliceBlue;
-            this.BorderColor = System.Drawing.Color.Black;
-            this.CaptionBarColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(339, 477);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtID);
@@ -186,10 +201,9 @@ namespace LoginForm
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.txtPassWord);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MetroColor = System.Drawing.Color.AliceBlue;
             this.MinimizeBox = false;
             this.Name = "frmLoginMetro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -215,8 +229,8 @@ namespace LoginForm
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox2;
         private AltoControls.AltoButton btnLogin;
-        private BunifuElipse bunifuElipse1;
         private System.Windows.Forms.PictureBox pictureBox3;
         private BunifuElipse bunifuElipse2;
+        private AltoControls.AltoButton btnExit;
     }
 }
