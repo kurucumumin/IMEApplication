@@ -24,16 +24,16 @@ namespace LoginForm.User
         {
             dgdg.DataSource = AuthorizationService.getWorkers();
         }
+        
+        private void btnEditWorker_Click(object sender, EventArgs e)
+        {
+            FormWorkerManagement formWorkerAdd = new FormWorkerManagement(mainForm, (Worker)dgdg.CurrentRow.DataBoundItem, this);
+            formWorkerAdd.ShowDialog();
+        }
 
         private void btnAddWorker_Click(object sender, EventArgs e)
         {
             FormWorkerManagement formWorkerAdd = new FormWorkerManagement(this);
-            formWorkerAdd.ShowDialog();
-        }
-
-        private void btnEditWorker_Click(object sender, EventArgs e)
-        {
-            FormWorkerManagement formWorkerAdd = new FormWorkerManagement(mainForm, (Worker)dgdg.CurrentRow.DataBoundItem, this);
             formWorkerAdd.ShowDialog();
         }
     }

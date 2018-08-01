@@ -1908,8 +1908,8 @@ namespace LoginForm.ItemModule
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 88F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 82F));
             this.tableLayoutPanel3.Controls.Add(this.txtNote, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.btnClose, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel9, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.btnClose, 2, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 403);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2);
@@ -1934,12 +1934,12 @@ namespace LoginForm.ItemModule
             // 
             this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(690, 24);
+            this.btnClose.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
+            this.btnClose.Location = new System.Drawing.Point(688, 3);
             this.btnClose.MaximumSize = new System.Drawing.Size(135, 81);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(72, 81);
+            this.btnClose.Size = new System.Drawing.Size(76, 81);
             this.btnClose.TabIndex = 275;
-            this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
@@ -1962,12 +1962,12 @@ namespace LoginForm.ItemModule
             // 
             this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(3, 69);
+            this.btnAdd.Image = global::LoginForm.Properties.Resources.icons8_Plus_32;
+            this.btnAdd.Location = new System.Drawing.Point(5, 67);
             this.btnAdd.MaximumSize = new System.Drawing.Size(135, 81);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(76, 47);
+            this.btnAdd.Size = new System.Drawing.Size(71, 52);
             this.btnAdd.TabIndex = 275;
-            this.btnAdd.Text = "Added Item";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -1976,12 +1976,12 @@ namespace LoginForm.ItemModule
             this.btnUpdateNote.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnUpdateNote.Enabled = false;
             this.btnUpdateNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdateNote.Image = global::LoginForm.Properties.Resources.icons8_Edit_Property_32;
             this.btnUpdateNote.Location = new System.Drawing.Point(3, 5);
             this.btnUpdateNote.MaximumSize = new System.Drawing.Size(135, 81);
             this.btnUpdateNote.Name = "btnUpdateNote";
             this.btnUpdateNote.Size = new System.Drawing.Size(76, 51);
             this.btnUpdateNote.TabIndex = 274;
-            this.btnUpdateNote.Text = "Update Item";
             this.btnUpdateNote.UseVisualStyleBackColor = true;
             this.btnUpdateNote.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
@@ -2221,18 +2221,18 @@ namespace LoginForm.ItemModule
             // 
             this.btnSearch.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(337, 28);
+            this.btnSearch.Image = global::LoginForm.Properties.Resources.if_search_magnifying_glass_find_103857;
+            this.btnSearch.Location = new System.Drawing.Point(319, 13);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(82, 24);
+            this.btnSearch.Size = new System.Drawing.Size(48, 41);
             this.btnSearch.TabIndex = 72;
-            this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // txtSearchBox
             // 
             this.txtSearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearchBox.Location = new System.Drawing.Point(16, 28);
+            this.txtSearchBox.Location = new System.Drawing.Point(17, 22);
             this.txtSearchBox.Name = "txtSearchBox";
             this.txtSearchBox.Size = new System.Drawing.Size(302, 26);
             this.txtSearchBox.TabIndex = 71;

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnSearchStockNumber = new System.Windows.Forms.Button();
             this.chcCustStockNumber = new System.Windows.Forms.CheckBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -43,11 +43,11 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnModify = new System.Windows.Forms.Button();
             this.btnRefreshList = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnExportExcel = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnPrint = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgSales = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.gridRightClick = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -91,7 +91,7 @@
             this.textBox2.Enabled = false;
             this.textBox2.Location = new System.Drawing.Point(1007, 21);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(216, 24);
+            this.textBox2.Size = new System.Drawing.Size(216, 21);
             this.textBox2.TabIndex = 25;
             // 
             // chcAllSales
@@ -110,7 +110,7 @@
             this.txtSearchText.Enabled = false;
             this.txtSearchText.Location = new System.Drawing.Point(786, 55);
             this.txtSearchText.Name = "txtSearchText";
-            this.txtSearchText.Size = new System.Drawing.Size(184, 24);
+            this.txtSearchText.Size = new System.Drawing.Size(184, 21);
             this.txtSearchText.TabIndex = 23;
             // 
             // cbSearch
@@ -122,7 +122,7 @@
             "QUOT NUMBER"});
             this.cbSearch.Location = new System.Drawing.Point(786, 21);
             this.cbSearch.Name = "cbSearch";
-            this.cbSearch.Size = new System.Drawing.Size(184, 26);
+            this.cbSearch.Size = new System.Drawing.Size(184, 23);
             this.cbSearch.TabIndex = 22;
             // 
             // label2
@@ -130,7 +130,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(10, 90);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 18);
+            this.label2.Size = new System.Drawing.Size(58, 15);
             this.label2.TabIndex = 21;
             this.label2.Text = "End Date";
             // 
@@ -139,7 +139,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(10, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 18);
+            this.label1.Size = new System.Drawing.Size(61, 15);
             this.label1.TabIndex = 20;
             this.label1.Text = "Start Date";
             // 
@@ -149,7 +149,7 @@
             this.datetimeEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.datetimeEnd.Location = new System.Drawing.Point(100, 87);
             this.datetimeEnd.Name = "datetimeEnd";
-            this.datetimeEnd.Size = new System.Drawing.Size(133, 24);
+            this.datetimeEnd.Size = new System.Drawing.Size(133, 21);
             this.datetimeEnd.TabIndex = 19;
             // 
             // datetimeStart
@@ -158,89 +158,89 @@
             this.datetimeStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.datetimeStart.Location = new System.Drawing.Point(100, 18);
             this.datetimeStart.Name = "datetimeStart";
-            this.datetimeStart.Size = new System.Drawing.Size(133, 24);
+            this.datetimeStart.Size = new System.Drawing.Size(133, 21);
             this.datetimeStart.TabIndex = 18;
             // 
             // btnDelete
             // 
-            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(190)))), ((int)(((byte)(197)))));
+            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
             this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnDelete.Location = new System.Drawing.Point(602, 18);
+            this.btnDelete.Location = new System.Drawing.Point(582, 41);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(0);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
-            this.btnDelete.Size = new System.Drawing.Size(99, 96);
+            this.btnDelete.Size = new System.Drawing.Size(49, 48);
             this.btnDelete.TabIndex = 17;
-            this.btnDelete.Text = "Delete";
             this.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnModify
             // 
-            this.btnModify.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(190)))), ((int)(((byte)(197)))));
+            this.btnModify.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.btnModify.Enabled = false;
             this.btnModify.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnModify.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModify.Image = global::LoginForm.Properties.Resources.icons8_Edit_Property_32;
             this.btnModify.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnModify.Location = new System.Drawing.Point(506, 18);
+            this.btnModify.Location = new System.Drawing.Point(520, 41);
             this.btnModify.Margin = new System.Windows.Forms.Padding(0);
             this.btnModify.Name = "btnModify";
             this.btnModify.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
-            this.btnModify.Size = new System.Drawing.Size(96, 96);
+            this.btnModify.Size = new System.Drawing.Size(49, 48);
             this.btnModify.TabIndex = 16;
-            this.btnModify.Text = "Modify";
             this.btnModify.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnModify.UseVisualStyleBackColor = false;
             // 
             // btnRefreshList
             // 
-            this.btnRefreshList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(190)))), ((int)(((byte)(197)))));
+            this.btnRefreshList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.btnRefreshList.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnRefreshList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefreshList.Image = global::LoginForm.Properties.Resources.icons8_Refresh_32;
             this.btnRefreshList.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnRefreshList.Location = new System.Drawing.Point(237, 18);
+            this.btnRefreshList.Location = new System.Drawing.Point(387, 41);
             this.btnRefreshList.Margin = new System.Windows.Forms.Padding(0);
             this.btnRefreshList.Name = "btnRefreshList";
             this.btnRefreshList.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
-            this.btnRefreshList.Size = new System.Drawing.Size(87, 96);
+            this.btnRefreshList.Size = new System.Drawing.Size(52, 48);
             this.btnRefreshList.TabIndex = 14;
-            this.btnRefreshList.Text = "Refresh List";
             this.btnRefreshList.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnRefreshList.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnRefreshList.UseVisualStyleBackColor = false;
             this.btnRefreshList.Click += new System.EventHandler(this.btnRefreshList_Click);
             // 
-            // button4
+            // btnExportExcel
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(190)))), ((int)(((byte)(197)))));
-            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button4.Location = new System.Drawing.Point(17, 17);
-            this.button4.Margin = new System.Windows.Forms.Padding(0);
-            this.button4.Name = "button4";
-            this.button4.Padding = new System.Windows.Forms.Padding(9, 18, 9, 0);
-            this.button4.Size = new System.Drawing.Size(98, 96);
-            this.button4.TabIndex = 7;
-            this.button4.Text = "Export to Excel";
-            this.button4.UseVisualStyleBackColor = false;
+            this.btnExportExcel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
+            this.btnExportExcel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.btnExportExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExportExcel.Image = global::LoginForm.Properties.Resources.if_Document_file_export_sending_exit_send_1886950;
+            this.btnExportExcel.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnExportExcel.Location = new System.Drawing.Point(21, 30);
+            this.btnExportExcel.Margin = new System.Windows.Forms.Padding(0);
+            this.btnExportExcel.Name = "btnExportExcel";
+            this.btnExportExcel.Padding = new System.Windows.Forms.Padding(9, 18, 9, 0);
+            this.btnExportExcel.Size = new System.Drawing.Size(53, 47);
+            this.btnExportExcel.TabIndex = 7;
+            this.btnExportExcel.UseVisualStyleBackColor = false;
             // 
             // btnNew
             // 
-            this.btnNew.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(190)))), ((int)(((byte)(197)))));
+            this.btnNew.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.btnNew.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNew.Image = global::LoginForm.Properties.Resources.icons8_Plus_32;
             this.btnNew.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnNew.Location = new System.Drawing.Point(411, 18);
+            this.btnNew.Location = new System.Drawing.Point(458, 40);
             this.btnNew.Margin = new System.Windows.Forms.Padding(0);
             this.btnNew.Name = "btnNew";
             this.btnNew.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
-            this.btnNew.Size = new System.Drawing.Size(96, 96);
+            this.btnNew.Size = new System.Drawing.Size(49, 48);
             this.btnNew.TabIndex = 1;
-            this.btnNew.Text = "New";
             this.btnNew.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnNew.UseVisualStyleBackColor = false;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
@@ -269,8 +269,8 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.button5);
-            this.panel2.Controls.Add(this.button4);
+            this.panel2.Controls.Add(this.btnPrint);
+            this.panel2.Controls.Add(this.btnExportExcel);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 578);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
@@ -278,20 +278,20 @@
             this.panel2.Size = new System.Drawing.Size(1250, 126);
             this.panel2.TabIndex = 2;
             // 
-            // button5
+            // btnPrint
             // 
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(190)))), ((int)(((byte)(197)))));
-            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button5.Location = new System.Drawing.Point(122, 17);
-            this.button5.Margin = new System.Windows.Forms.Padding(0);
-            this.button5.Name = "button5";
-            this.button5.Padding = new System.Windows.Forms.Padding(9, 18, 9, 0);
-            this.button5.Size = new System.Drawing.Size(98, 96);
-            this.button5.TabIndex = 8;
-            this.button5.Text = "Print";
-            this.button5.UseVisualStyleBackColor = false;
+            this.btnPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
+            this.btnPrint.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrint.Image = global::LoginForm.Properties.Resources.if_print_173079;
+            this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnPrint.Location = new System.Drawing.Point(126, 30);
+            this.btnPrint.Margin = new System.Windows.Forms.Padding(0);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Padding = new System.Windows.Forms.Padding(9, 18, 9, 0);
+            this.btnPrint.Size = new System.Drawing.Size(53, 47);
+            this.btnPrint.TabIndex = 8;
+            this.btnPrint.UseVisualStyleBackColor = false;
             // 
             // tableLayoutPanel1
             // 
@@ -318,14 +318,14 @@
             this.dgSales.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgSales.ContextMenuStrip = this.gridRightClick;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgSales.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgSales.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgSales.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgSales.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dgSales.Location = new System.Drawing.Point(8, 144);
@@ -345,25 +345,25 @@
             this.sentToPurchaseOrderToolStripMenuItem,
             this.sentToLogoToolStripMenuItem});
             this.gridRightClick.Name = "gridRightClick";
-            this.gridRightClick.Size = new System.Drawing.Size(232, 80);
+            this.gridRightClick.Size = new System.Drawing.Size(198, 48);
             // 
             // sentToPurchaseOrderToolStripMenuItem
             // 
             this.sentToPurchaseOrderToolStripMenuItem.Name = "sentToPurchaseOrderToolStripMenuItem";
-            this.sentToPurchaseOrderToolStripMenuItem.Size = new System.Drawing.Size(231, 24);
+            this.sentToPurchaseOrderToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.sentToPurchaseOrderToolStripMenuItem.Text = "Sent To Purchase Order";
             this.sentToPurchaseOrderToolStripMenuItem.Click += new System.EventHandler(this.sentToPurchaseOrderToolStripMenuItem_Click);
             // 
             // sentToLogoToolStripMenuItem
             // 
             this.sentToLogoToolStripMenuItem.Name = "sentToLogoToolStripMenuItem";
-            this.sentToLogoToolStripMenuItem.Size = new System.Drawing.Size(231, 24);
+            this.sentToLogoToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.sentToLogoToolStripMenuItem.Text = "Sent To Logo";
             this.sentToLogoToolStripMenuItem.Click += new System.EventHandler(this.sentToLogoToolStripMenuItem_Click);
             // 
             // FormSalesOrderMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.ClientSize = new System.Drawing.Size(1250, 704);
@@ -400,11 +400,11 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnModify;
         private System.Windows.Forms.Button btnRefreshList;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnExportExcel;
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private DevComponents.DotNetBar.Controls.DataGridViewX dgSales;
         private System.Windows.Forms.ContextMenuStrip gridRightClick;

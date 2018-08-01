@@ -29,7 +29,7 @@ namespace LoginForm
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabgenel = new System.Windows.Forms.TabControl();
             this.tabInfo = new System.Windows.Forms.TabPage();
             this.cmbMainContact = new System.Windows.Forms.ComboBox();
@@ -172,6 +172,7 @@ namespace LoginForm
             // 
             // tabInfo
             // 
+            this.tabInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.tabInfo.Controls.Add(this.cmbMainContact);
             this.tabInfo.Controls.Add(this.label28);
             this.tabInfo.Controls.Add(this.txtWeb);
@@ -200,7 +201,6 @@ namespace LoginForm
             this.tabInfo.Size = new System.Drawing.Size(911, 176);
             this.tabInfo.TabIndex = 0;
             this.tabInfo.Text = "Info";
-            this.tabInfo.UseVisualStyleBackColor = true;
             // 
             // cmbMainContact
             // 
@@ -424,6 +424,7 @@ namespace LoginForm
             // 
             // tabAccount
             // 
+            this.tabAccount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.tabAccount.Controls.Add(this.txtAccountNotes);
             this.tabAccount.Controls.Add(this.cmbCurrency);
             this.tabAccount.Controls.Add(this.cmbAccountMethod);
@@ -440,7 +441,6 @@ namespace LoginForm
             this.tabAccount.Size = new System.Drawing.Size(911, 176);
             this.tabAccount.TabIndex = 1;
             this.tabAccount.Text = "Account";
-            this.tabAccount.UseVisualStyleBackColor = true;
             // 
             // txtAccountNotes
             // 
@@ -540,6 +540,7 @@ namespace LoginForm
             // 
             // tabAddress
             // 
+            this.tabAddress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.tabAddress.Controls.Add(this.label41);
             this.tabAddress.Controls.Add(this.txtAddressTitle);
             this.tabAddress.Controls.Add(this.label23);
@@ -571,7 +572,6 @@ namespace LoginForm
             this.tabAddress.Size = new System.Drawing.Size(911, 176);
             this.tabAddress.TabIndex = 2;
             this.tabAddress.Text = "Company Address";
-            this.tabAddress.UseVisualStyleBackColor = true;
             // 
             // label41
             // 
@@ -813,6 +813,7 @@ namespace LoginForm
             // 
             // tabAccounting
             // 
+            this.tabAccounting.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.tabAccounting.Controls.Add(this.txtAddress2);
             this.tabAccounting.Controls.Add(this.txtAddress1);
             this.tabAccounting.Controls.Add(this.label10);
@@ -851,7 +852,6 @@ namespace LoginForm
             this.tabAccounting.Size = new System.Drawing.Size(911, 176);
             this.tabAccounting.TabIndex = 3;
             this.tabAccounting.Text = "Contact";
-            this.tabAccounting.UseVisualStyleBackColor = true;
             // 
             // txtAddress2
             // 
@@ -1154,6 +1154,7 @@ namespace LoginForm
             // 
             // tabBank
             // 
+            this.tabBank.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.tabBank.Controls.Add(this.cmbBankName);
             this.tabBank.Controls.Add(this.txtBankIban);
             this.tabBank.Controls.Add(this.txtBankAccountNumber);
@@ -1167,7 +1168,6 @@ namespace LoginForm
             this.tabBank.Size = new System.Drawing.Size(911, 176);
             this.tabBank.TabIndex = 4;
             this.tabBank.Text = "Bank Info";
-            this.tabBank.UseVisualStyleBackColor = true;
             // 
             // cmbBankName
             // 
@@ -1248,14 +1248,14 @@ namespace LoginForm
             this.dgSupplier.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgSupplier.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgSupplier.DataSource = this.supplierBindingSource;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgSupplier.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgSupplier.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgSupplier.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgSupplier.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dgSupplier.ImeMode = System.Windows.Forms.ImeMode.NoControl;
@@ -1274,10 +1274,10 @@ namespace LoginForm
             // 
             this.btnModify.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnModify.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModify.ForeColor = System.Drawing.Color.SteelBlue;
-            this.btnModify.Location = new System.Drawing.Point(604, 0);
+            this.btnModify.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnModify.Location = new System.Drawing.Point(604, 11);
             this.btnModify.Name = "btnModify";
-            this.btnModify.Size = new System.Drawing.Size(141, 56);
+            this.btnModify.Size = new System.Drawing.Size(141, 34);
             this.btnModify.TabIndex = 56;
             this.btnModify.Text = "Modify";
             this.btnModify.UseVisualStyleBackColor = true;
@@ -1287,10 +1287,10 @@ namespace LoginForm
             // 
             this.btnExit.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.ForeColor = System.Drawing.Color.Red;
-            this.btnExit.Location = new System.Drawing.Point(755, 0);
+            this.btnExit.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnExit.Location = new System.Drawing.Point(755, 11);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(133, 56);
+            this.btnExit.Size = new System.Drawing.Size(133, 34);
             this.btnExit.TabIndex = 57;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -1300,10 +1300,10 @@ namespace LoginForm
             // 
             this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.ForeColor = System.Drawing.Color.LimeGreen;
-            this.btnAdd.Location = new System.Drawing.Point(328, 0);
+            this.btnAdd.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnAdd.Location = new System.Drawing.Point(328, 11);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(132, 56);
+            this.btnAdd.Size = new System.Drawing.Size(132, 34);
             this.btnAdd.TabIndex = 55;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -1366,10 +1366,10 @@ namespace LoginForm
             // 
             this.btnLogoSave.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnLogoSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogoSave.ForeColor = System.Drawing.Color.LimeGreen;
-            this.btnLogoSave.Location = new System.Drawing.Point(466, 0);
+            this.btnLogoSave.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnLogoSave.Location = new System.Drawing.Point(466, 11);
             this.btnLogoSave.Name = "btnLogoSave";
-            this.btnLogoSave.Size = new System.Drawing.Size(132, 56);
+            this.btnLogoSave.Size = new System.Drawing.Size(132, 34);
             this.btnLogoSave.TabIndex = 58;
             this.btnLogoSave.Text = "Logo Save";
             this.btnLogoSave.UseVisualStyleBackColor = true;

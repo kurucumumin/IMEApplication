@@ -122,11 +122,11 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(504, 220);
+            this.btnSearch.Image = global::LoginForm.Properties.Resources.if_search_magnifying_glass_find_103857;
+            this.btnSearch.Location = new System.Drawing.Point(565, 213);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(122, 30);
+            this.btnSearch.Size = new System.Drawing.Size(61, 44);
             this.btnSearch.TabIndex = 4;
-            this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 

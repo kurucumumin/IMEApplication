@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tab_company = new System.Windows.Forms.TabPage();
             this.txt3partyCode = new System.Windows.Forms.TextBox();
@@ -587,6 +587,7 @@
             // 
             // tab_account
             // 
+            this.tab_account.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.tab_account.Controls.Add(this.factor);
             this.tab_account.Controls.Add(this.DiscountRate);
             this.tab_account.Controls.Add(this.AccountingNotes);
@@ -617,7 +618,6 @@
             this.tab_account.Size = new System.Drawing.Size(924, 274);
             this.tab_account.TabIndex = 2;
             this.tab_account.Text = "Account";
-            this.tab_account.UseVisualStyleBackColor = true;
             // 
             // factor
             // 
@@ -870,6 +870,7 @@
             // 
             // tab_adresses
             // 
+            this.tab_adresses.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.tab_adresses.Controls.Add(this.txtAddress2);
             this.tab_adresses.Controls.Add(this.txtAddress1);
             this.tab_adresses.Controls.Add(this.CityAdd);
@@ -901,7 +902,6 @@
             this.tab_adresses.Size = new System.Drawing.Size(924, 274);
             this.tab_adresses.TabIndex = 3;
             this.tab_adresses.Text = "Adresses";
-            this.tab_adresses.UseVisualStyleBackColor = true;
             // 
             // txtAddress2
             // 
@@ -1166,6 +1166,7 @@
             // 
             // tab_contact
             // 
+            this.tab_contact.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.tab_contact.Controls.Add(this.ContactAdress);
             this.tab_contact.Controls.Add(this.label42);
             this.tab_contact.Controls.Add(this.txtExtNumber);
@@ -1202,7 +1203,6 @@
             this.tab_contact.Size = new System.Drawing.Size(924, 274);
             this.tab_contact.TabIndex = 4;
             this.tab_contact.Text = "Contact";
-            this.tab_contact.UseVisualStyleBackColor = true;
             // 
             // ContactAdress
             // 
@@ -1560,14 +1560,14 @@
             this.salesOperationsDataGridViewTextBoxColumn,
             this.stockReservesDataGridViewTextBoxColumn});
             this.CustomerDataGrid.DataSource = this.customerBindingSource;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.CustomerDataGrid.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.CustomerDataGrid.DefaultCellStyle = dataGridViewCellStyle2;
             this.CustomerDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CustomerDataGrid.Location = new System.Drawing.Point(7, 377);
             this.CustomerDataGrid.MultiSelect = false;

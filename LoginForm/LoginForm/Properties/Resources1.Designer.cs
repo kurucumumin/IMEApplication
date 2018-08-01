@@ -253,9 +253,49 @@ namespace LoginForm.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap if_Document_file_export_sending_exit_send_1886950 {
+            get {
+                object obj = ResourceManager.GetObject("if_Document_file_export_sending_exit_send_1886950", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap if_icon_123_printer_314820 {
+            get {
+                object obj = ResourceManager.GetObject("if_icon-123-printer_314820", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap if_icon_24_key_314756 {
             get {
                 object obj = ResourceManager.GetObject("if_icon-24-key_314756", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap if_print_173079 {
+            get {
+                object obj = ResourceManager.GetObject("if_print_173079", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap if_search_magnifying_glass_find_103857 {
+            get {
+                object obj = ResourceManager.GetObject("if_search_magnifying_glass_find_103857", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

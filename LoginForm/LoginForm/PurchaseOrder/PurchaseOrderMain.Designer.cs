@@ -123,7 +123,7 @@
             // 
             // btnPurchaseOrders
             // 
-            this.btnPurchaseOrders.Location = new System.Drawing.Point(1197, 13);
+            this.btnPurchaseOrders.Location = new System.Drawing.Point(1183, 6);
             this.btnPurchaseOrders.Name = "btnPurchaseOrders";
             this.btnPurchaseOrders.Size = new System.Drawing.Size(163, 91);
             this.btnPurchaseOrders.TabIndex = 14;
@@ -133,7 +133,7 @@
             // 
             // dateEnding
             // 
-            this.dateEnding.Location = new System.Drawing.Point(890, 84);
+            this.dateEnding.Location = new System.Drawing.Point(890, 78);
             this.dateEnding.Name = "dateEnding";
             this.dateEnding.Size = new System.Drawing.Size(200, 20);
             this.dateEnding.TabIndex = 13;
@@ -141,7 +141,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(818, 90);
+            this.label2.Location = new System.Drawing.Point(815, 84);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 13);
             this.label2.TabIndex = 12;
@@ -149,7 +149,7 @@
             // 
             // dateStarting
             // 
-            this.dateStarting.Location = new System.Drawing.Point(890, 28);
+            this.dateStarting.Location = new System.Drawing.Point(890, 13);
             this.dateStarting.Name = "dateStarting";
             this.dateStarting.Size = new System.Drawing.Size(200, 20);
             this.dateStarting.TabIndex = 11;
@@ -157,7 +157,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(815, 34);
+            this.label1.Location = new System.Drawing.Point(812, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(69, 13);
             this.label1.TabIndex = 10;
@@ -173,11 +173,11 @@
             // 
             // btnSearch
             // 
+            this.btnSearch.Image = global::LoginForm.Properties.Resources.if_search_magnifying_glass_find_103857;
             this.btnSearch.Location = new System.Drawing.Point(603, 13);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(175, 51);
+            this.btnSearch.Size = new System.Drawing.Size(44, 47);
             this.btnSearch.TabIndex = 9;
-            this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
@@ -310,41 +310,41 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(1280, 598);
+            this.btnClose.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
+            this.btnClose.Location = new System.Drawing.Point(1310, 598);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(97, 42);
+            this.btnClose.Size = new System.Drawing.Size(48, 42);
             this.btnClose.TabIndex = 12;
-            this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnExcel
             // 
-            this.btnExcel.Location = new System.Drawing.Point(902, 598);
+            this.btnExcel.Image = global::LoginForm.Properties.Resources.if_Document_file_export_sending_exit_send_1886950;
+            this.btnExcel.Location = new System.Drawing.Point(1126, 598);
             this.btnExcel.Name = "btnExcel";
-            this.btnExcel.Size = new System.Drawing.Size(166, 42);
+            this.btnExcel.Size = new System.Drawing.Size(59, 42);
             this.btnExcel.TabIndex = 11;
-            this.btnExcel.Text = "Export to Excel";
             this.btnExcel.UseVisualStyleBackColor = true;
             this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(1074, 598);
+            this.btnCreate.Image = global::LoginForm.Properties.Resources.icons8_Plus_32;
+            this.btnCreate.Location = new System.Drawing.Point(1040, 598);
             this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(97, 42);
+            this.btnCreate.Size = new System.Drawing.Size(48, 42);
             this.btnCreate.TabIndex = 10;
-            this.btnCreate.Text = "Create Purchase Orders";
             this.btnCreate.UseVisualStyleBackColor = true;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnPrint
             // 
-            this.btnPrint.Location = new System.Drawing.Point(1177, 598);
+            this.btnPrint.Image = global::LoginForm.Properties.Resources.if_print_173079;
+            this.btnPrint.Location = new System.Drawing.Point(1225, 598);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(97, 42);
+            this.btnPrint.Size = new System.Drawing.Size(45, 42);
             this.btnPrint.TabIndex = 13;
-            this.btnPrint.Text = "Send To Print";
             this.btnPrint.UseVisualStyleBackColor = true;
             // 
             // PurchaseOrderMain

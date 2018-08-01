@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.btnEditWorker = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.btnAddWorker = new MaterialSkin.Controls.MaterialRaisedButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnAddWorker = new System.Windows.Forms.Button();
+            this.btnEditWorker = new System.Windows.Forms.Button();
             this.dgdg = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.userNameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.isActiveDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,36 +49,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.workerBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.workerBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnEditWorker
-            // 
-            this.btnEditWorker.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnEditWorker.Depth = 0;
-            this.btnEditWorker.Location = new System.Drawing.Point(112, 6);
-            this.btnEditWorker.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
-            this.btnEditWorker.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnEditWorker.Name = "btnEditWorker";
-            this.btnEditWorker.Primary = true;
-            this.btnEditWorker.Size = new System.Drawing.Size(100, 48);
-            this.btnEditWorker.TabIndex = 11;
-            this.btnEditWorker.Text = "Edıt user";
-            this.btnEditWorker.UseVisualStyleBackColor = true;
-            this.btnEditWorker.Click += new System.EventHandler(this.btnEditWorker_Click);
-            // 
-            // btnAddWorker
-            // 
-            this.btnAddWorker.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnAddWorker.Depth = 0;
-            this.btnAddWorker.Location = new System.Drawing.Point(6, 6);
-            this.btnAddWorker.Margin = new System.Windows.Forms.Padding(6, 6, 3, 3);
-            this.btnAddWorker.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnAddWorker.Name = "btnAddWorker";
-            this.btnAddWorker.Primary = true;
-            this.btnAddWorker.Size = new System.Drawing.Size(100, 48);
-            this.btnAddWorker.TabIndex = 12;
-            this.btnAddWorker.Text = "Add User";
-            this.btnAddWorker.UseVisualStyleBackColor = true;
-            this.btnAddWorker.Click += new System.EventHandler(this.btnAddWorker_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -105,6 +75,30 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(789, 69);
             this.flowLayoutPanel1.TabIndex = 1;
+            // 
+            // btnAddWorker
+            // 
+            this.btnAddWorker.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnAddWorker.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddWorker.Location = new System.Drawing.Point(3, 3);
+            this.btnAddWorker.Name = "btnAddWorker";
+            this.btnAddWorker.Size = new System.Drawing.Size(151, 35);
+            this.btnAddWorker.TabIndex = 51;
+            this.btnAddWorker.Text = "Add Worker";
+            this.btnAddWorker.UseVisualStyleBackColor = true;
+            this.btnAddWorker.Click += new System.EventHandler(this.btnAddWorker_Click);
+            // 
+            // btnEditWorker
+            // 
+            this.btnEditWorker.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnEditWorker.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditWorker.Location = new System.Drawing.Point(160, 3);
+            this.btnEditWorker.Name = "btnEditWorker";
+            this.btnEditWorker.Size = new System.Drawing.Size(151, 35);
+            this.btnEditWorker.TabIndex = 52;
+            this.btnEditWorker.Text = "Edit Worker";
+            this.btnEditWorker.UseVisualStyleBackColor = true;
+            this.btnEditWorker.Click += new System.EventHandler(this.btnEditWorker_Click);
             // 
             // dgdg
             // 
@@ -219,8 +213,6 @@
         }
 
         #endregion
-        private MaterialSkin.Controls.MaterialRaisedButton btnEditWorker;
-        private MaterialSkin.Controls.MaterialRaisedButton btnAddWorker;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.BindingSource workerBindingSource;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
@@ -232,5 +224,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn phoneDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn minMargeDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.Button btnAddWorker;
+        private System.Windows.Forms.Button btnEditWorker;
     }
 }
