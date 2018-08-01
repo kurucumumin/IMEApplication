@@ -1359,7 +1359,7 @@ namespace LoginForm
                                 case "\"Onhand Stock Balance\"":
                                     if (word[i] != "")
                                     {
-                                        item.OnhandStockBalance = Convert.ToInt32(word[i].Replace("\"", ""));
+                                        item.OnhandStockBalance = Convert.ToInt64(word[i].Replace("\"", ""));
                                     }
                                     break;
                                 case "\"Pack Size\"":

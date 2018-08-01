@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnSearchStockNumber = new System.Windows.Forms.Button();
             this.chcCustStockNumber = new System.Windows.Forms.CheckBox();
@@ -49,10 +50,14 @@
             this.button5 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgSales = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.gridRightClick = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.sentToPurchaseOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sentToLogoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgSales)).BeginInit();
+            this.gridRightClick.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSearchStockNumber
@@ -86,7 +91,7 @@
             this.textBox2.Enabled = false;
             this.textBox2.Location = new System.Drawing.Point(1007, 21);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(216, 21);
+            this.textBox2.Size = new System.Drawing.Size(216, 24);
             this.textBox2.TabIndex = 25;
             // 
             // chcAllSales
@@ -105,7 +110,7 @@
             this.txtSearchText.Enabled = false;
             this.txtSearchText.Location = new System.Drawing.Point(786, 55);
             this.txtSearchText.Name = "txtSearchText";
-            this.txtSearchText.Size = new System.Drawing.Size(184, 21);
+            this.txtSearchText.Size = new System.Drawing.Size(184, 24);
             this.txtSearchText.TabIndex = 23;
             // 
             // cbSearch
@@ -117,7 +122,7 @@
             "QUOT NUMBER"});
             this.cbSearch.Location = new System.Drawing.Point(786, 21);
             this.cbSearch.Name = "cbSearch";
-            this.cbSearch.Size = new System.Drawing.Size(184, 23);
+            this.cbSearch.Size = new System.Drawing.Size(184, 26);
             this.cbSearch.TabIndex = 22;
             // 
             // label2
@@ -125,7 +130,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(10, 90);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 15);
+            this.label2.Size = new System.Drawing.Size(69, 18);
             this.label2.TabIndex = 21;
             this.label2.Text = "End Date";
             // 
@@ -134,7 +139,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(10, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 15);
+            this.label1.Size = new System.Drawing.Size(74, 18);
             this.label1.TabIndex = 20;
             this.label1.Text = "Start Date";
             // 
@@ -144,7 +149,7 @@
             this.datetimeEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.datetimeEnd.Location = new System.Drawing.Point(100, 87);
             this.datetimeEnd.Name = "datetimeEnd";
-            this.datetimeEnd.Size = new System.Drawing.Size(133, 21);
+            this.datetimeEnd.Size = new System.Drawing.Size(133, 24);
             this.datetimeEnd.TabIndex = 19;
             // 
             // datetimeStart
@@ -153,7 +158,7 @@
             this.datetimeStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.datetimeStart.Location = new System.Drawing.Point(100, 18);
             this.datetimeStart.Name = "datetimeStart";
-            this.datetimeStart.Size = new System.Drawing.Size(133, 21);
+            this.datetimeStart.Size = new System.Drawing.Size(133, 24);
             this.datetimeStart.TabIndex = 18;
             // 
             // btnDelete
@@ -312,6 +317,7 @@
             this.dgSales.AllowUserToOrderColumns = true;
             this.dgSales.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgSales.ContextMenuStrip = this.gridRightClick;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -330,13 +336,34 @@
             this.dgSales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgSales.Size = new System.Drawing.Size(1234, 426);
             this.dgSales.TabIndex = 0;
-            this.dgSales.Click += new System.EventHandler(this.dgSales_Click);
-            this.dgSales.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgSales_MouseClick);
             this.dgSales.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgSales_MouseDoubleClick);
+            // 
+            // gridRightClick
+            // 
+            this.gridRightClick.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.gridRightClick.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sentToPurchaseOrderToolStripMenuItem,
+            this.sentToLogoToolStripMenuItem});
+            this.gridRightClick.Name = "gridRightClick";
+            this.gridRightClick.Size = new System.Drawing.Size(232, 80);
+            // 
+            // sentToPurchaseOrderToolStripMenuItem
+            // 
+            this.sentToPurchaseOrderToolStripMenuItem.Name = "sentToPurchaseOrderToolStripMenuItem";
+            this.sentToPurchaseOrderToolStripMenuItem.Size = new System.Drawing.Size(231, 24);
+            this.sentToPurchaseOrderToolStripMenuItem.Text = "Sent To Purchase Order";
+            this.sentToPurchaseOrderToolStripMenuItem.Click += new System.EventHandler(this.sentToPurchaseOrderToolStripMenuItem_Click);
+            // 
+            // sentToLogoToolStripMenuItem
+            // 
+            this.sentToLogoToolStripMenuItem.Name = "sentToLogoToolStripMenuItem";
+            this.sentToLogoToolStripMenuItem.Size = new System.Drawing.Size(231, 24);
+            this.sentToLogoToolStripMenuItem.Text = "Sent To Logo";
+            this.sentToLogoToolStripMenuItem.Click += new System.EventHandler(this.sentToLogoToolStripMenuItem_Click);
             // 
             // FormSalesOrderMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.ClientSize = new System.Drawing.Size(1250, 704);
@@ -353,6 +380,7 @@
             this.panel2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgSales)).EndInit();
+            this.gridRightClick.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -379,5 +407,9 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private DevComponents.DotNetBar.Controls.DataGridViewX dgSales;
+        private System.Windows.Forms.ContextMenuStrip gridRightClick;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem sentToPurchaseOrderToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sentToLogoToolStripMenuItem;
     }
 }

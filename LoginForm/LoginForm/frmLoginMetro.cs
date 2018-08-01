@@ -1,4 +1,5 @@
 ﻿using LoginForm.DataSet;
+using LoginForm.Main;
 using LoginForm.Services;
 using System;
 using System.Data;
@@ -19,11 +20,6 @@ namespace LoginForm
             InitializeComponent();
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-            LoginButtonClick();
-        }
-
         private void LoginButtonClick()
         {
             DateTime time = (DateTime)IME.CurrentDate().First();
@@ -41,8 +37,8 @@ namespace LoginForm
                 if (Logged.isActive == 1)
                 {
                     Utils.setCurrentUser(Logged);
-                    FormMain formMain = new FormMain();
-                    //frmMainMetro formMain = new frmMainMetro();
+                    //FormMain formMain = new FormMain();
+                    frmMainMetro formMain = new frmMainMetro();
                     this.Hide();
                     formMain.ShowDialog();
                     this.Close();
@@ -78,6 +74,11 @@ namespace LoginForm
             {
                 LoginButtonClick();
             }
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            LoginButtonClick();
         }
     }
 }

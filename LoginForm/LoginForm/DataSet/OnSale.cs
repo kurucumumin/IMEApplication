@@ -21,7 +21,7 @@ namespace LoginForm.DataSet
         public string DiscontinuedDate { get; set; }
         public string IntroductionDate { get; set; }
         public string NextScheduledDelivery { get; set; }
-        public Nullable<int> OnhandStockBalance { get; set; }
+        public Nullable<long> OnhandStockBalance { get; set; }
         public Nullable<int> PackSize { get; set; }
         public Nullable<int> QuantityonOrder { get; set; }
         public string SmallOrderProtectionLevel { get; set; }

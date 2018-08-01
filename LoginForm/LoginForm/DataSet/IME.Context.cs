@@ -1267,7 +1267,7 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MasterViewByFormName_Result>("MasterViewByFormName", formNameParameter);
         }
     
-        public virtual int OnSaleAdd(string articleNumber, string availabletoPromiseCheck, string bulkPack, Nullable<int> catalogueStatus, string discontinuedDate, string introductionDate, string nextScheduledDelivery, Nullable<int> onhandStockBalance, Nullable<int> packSize, Nullable<int> quantityonOrder, string smallOrderProtectionLevel, string substitutedBy, string substitutedFor)
+        public virtual int OnSaleAdd(string articleNumber, string availabletoPromiseCheck, string bulkPack, Nullable<int> catalogueStatus, string discontinuedDate, string introductionDate, string nextScheduledDelivery, Nullable<long> onhandStockBalance, Nullable<int> packSize, Nullable<int> quantityonOrder, string smallOrderProtectionLevel, string substitutedBy, string substitutedFor)
         {
             var articleNumberParameter = articleNumber != null ?
                 new ObjectParameter("ArticleNumber", articleNumber) :
@@ -1299,7 +1299,7 @@ namespace LoginForm.DataSet
     
             var onhandStockBalanceParameter = onhandStockBalance.HasValue ?
                 new ObjectParameter("OnhandStockBalance", onhandStockBalance) :
-                new ObjectParameter("OnhandStockBalance", typeof(int));
+                new ObjectParameter("OnhandStockBalance", typeof(long));
     
             var packSizeParameter = packSize.HasValue ?
                 new ObjectParameter("PackSize", packSize) :
