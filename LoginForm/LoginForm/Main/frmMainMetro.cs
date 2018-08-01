@@ -20,12 +20,13 @@ using System.Windows.Forms;
 
 namespace LoginForm.Main
 {
-    public partial class frmMainMetro : Syncfusion.Windows.Forms.MetroForm
+    public partial class frmMainMetro : Form
     {
         List<Panel> panels = new List<Panel>();
         Panel ActivePanel;
         int PH;
         string animMode = "Extend";
+        int maxSubPanelHeight;
         public frmMainMetro()
         {
             InitializeComponent();
@@ -38,11 +39,20 @@ namespace LoginForm.Main
                 ActivePanel.Height = 0;
 
                 int h = 0;
+                //maxSubPanelHeight = panel5.Height - 382;
+                maxSubPanelHeight = panel5.Height - 332;
                 foreach (Control item in pnlDevelopment.Controls)
                 {
                     h += item.Height + 6;
                 }
-                PH = h;
+                if(h > maxSubPanelHeight)
+                {
+                    PH = maxSubPanelHeight;
+                }
+                else
+                {
+                    PH = h;
+                }
                 ActivePanel = pnlDevelopment;
                 animMode = "Extend";
                 timer2.Start();
@@ -61,11 +71,20 @@ namespace LoginForm.Main
                 ActivePanel.Height = 0;
 
                 int h = 0;
+                //maxSubPanelHeight = panel5.Height - 382;
+                maxSubPanelHeight = panel5.Height - 332;
                 foreach (Control item in pnlFileLoader.Controls)
                 {
                     h += item.Height + 6;
                 }
-                PH = h;
+                if (h > maxSubPanelHeight)
+                {
+                    PH = maxSubPanelHeight;
+                }
+                else
+                {
+                    PH = h;
+                }
                 ActivePanel = pnlFileLoader;
                 animMode = "Extend";
                 timer2.Start();
@@ -79,26 +98,35 @@ namespace LoginForm.Main
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            if (pnlManagement.Height == 0)
-            {
-                ActivePanel.Height = 0;
+            managementControl1.Visible = !managementControl1.Visible;
+            //if (pnlManagement.Height == 0)
+            //{
+            //    ActivePanel.Height = 0;
 
-                int h = 0;
-                foreach (Control item in pnlManagement.Controls)
-                {
-                    h += item.Height + 6;
-                }
-                PH = h;
-                ActivePanel = pnlManagement;
-                animMode = "Extend";
-                timer2.Start();
-            }
-            else
-            {
-                PH = 0;
-                animMode = "Shrink";
-                timer2.Start();
-            }
+            //    int h = 0;
+            //    maxSubPanelHeight = panel5.Height - 382;
+            //    foreach (Control item in pnlManagement.Controls)
+            //    {
+            //        h += item.Height + 6;
+            //    }
+            //    if (h > maxSubPanelHeight)
+            //    {
+            //        PH = maxSubPanelHeight;
+            //    }
+            //    else
+            //    {
+            //        PH = h;
+            //    }
+            //    ActivePanel = pnlManagement;
+            //    animMode = "Extend";
+            //    timer2.Start();
+            //}
+            //else
+            //{
+            //    PH = 0;
+            //    animMode = "Shrink";
+            //    timer2.Start();
+            //}
         }
 
         private void frmMainMetro_Load(object sender, EventArgs e)
@@ -126,7 +154,7 @@ namespace LoginForm.Main
         {
             if (animMode == "Extend")
             {
-                ActivePanel.Height = ActivePanel.Height + 10;
+                ActivePanel.Height = ActivePanel.Height + 15;
                 if (ActivePanel.Height >= PH)
                 {
                     timer2.Stop();
@@ -134,7 +162,7 @@ namespace LoginForm.Main
             }
             else
             {
-                ActivePanel.Height = ActivePanel.Height - 10;
+                ActivePanel.Height = ActivePanel.Height - 15;
                 if (ActivePanel.Height <= PH)
                 {
                     timer2.Stop();
