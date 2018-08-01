@@ -29,7 +29,7 @@ namespace LoginForm.IMEAccount
             {
                 DataGridViewRow row = (DataGridViewRow)dg.Rows[0].Clone();
                 row.Cells[ID.Index].Value = item.ID;
-                row.Cells[Name.Index].Value = item.Name;
+                //row.Cells[Name.Index].Value = item.Name;
                 row.Cells[Currency.Index].Value = item.Currency.currencyName;
                 row.Cells[Description.Index].Value = item.Description;
                 row.Cells[IsActive.Index].Value = item.IsActive;

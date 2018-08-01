@@ -4377,5 +4377,10 @@ namespace LoginForm.QuotationModule
                 cbCurrency.SelectedIndex = cbCurrency.FindStringExact(items[0].Quotation.Currency.currencyName);
             }
         }
+
+        private void btnLogoSave_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

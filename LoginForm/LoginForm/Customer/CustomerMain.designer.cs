@@ -238,6 +238,7 @@
             // 
             // tab_company
             // 
+            this.tab_company.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.tab_company.Controls.Add(this.txt3partyCode);
             this.tab_company.Controls.Add(this.label43);
             this.tab_company.Controls.Add(this.dateTimePicker1);
@@ -276,7 +277,6 @@
             this.tab_company.Size = new System.Drawing.Size(924, 274);
             this.tab_company.TabIndex = 0;
             this.tab_company.Text = "Company Info";
-            this.tab_company.UseVisualStyleBackColor = true;
             // 
             // txt3partyCode
             // 
@@ -1504,6 +1504,7 @@
             this.CustomerDataGrid.AllowUserToDeleteRows = false;
             this.CustomerDataGrid.AllowUserToOrderColumns = true;
             this.CustomerDataGrid.AutoGenerateColumns = false;
+            this.CustomerDataGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.CustomerDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.CustomerDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.CustomerDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -2042,6 +2043,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.ClientSize = new System.Drawing.Size(946, 668);
             this.Controls.Add(this.tableMain);
             this.KeyPreview = true;

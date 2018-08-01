@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PurchaseExportFiles));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblPicture = new System.Windows.Forms.Label();
+            this.picturePurchase = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtMail = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -43,16 +45,14 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.txtDate = new System.Windows.Forms.MaskedTextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.picturePurchase = new System.Windows.Forms.PictureBox();
-            this.lblPicture = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picturePurchase)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgMail)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCc)).BeginInit();
             this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picturePurchase)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -65,6 +65,23 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "File List";
+            // 
+            // lblPicture
+            // 
+            this.lblPicture.Location = new System.Drawing.Point(6, 131);
+            this.lblPicture.Name = "lblPicture";
+            this.lblPicture.Size = new System.Drawing.Size(187, 87);
+            this.lblPicture.TabIndex = 1;
+            // 
+            // picturePurchase
+            // 
+            this.picturePurchase.Image = ((System.Drawing.Image)(resources.GetObject("picturePurchase.Image")));
+            this.picturePurchase.Location = new System.Drawing.Point(40, 16);
+            this.picturePurchase.Name = "picturePurchase";
+            this.picturePurchase.Size = new System.Drawing.Size(110, 101);
+            this.picturePurchase.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picturePurchase.TabIndex = 0;
+            this.picturePurchase.TabStop = false;
             // 
             // groupBox2
             // 
@@ -99,6 +116,7 @@
             // 
             this.dgMail.AllowUserToAddRows = false;
             this.dgMail.AllowUserToDeleteRows = false;
+            this.dgMail.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgMail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgMail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgMail.Location = new System.Drawing.Point(3, 16);
@@ -121,6 +139,7 @@
             // 
             this.dgCc.AllowUserToAddRows = false;
             this.dgCc.AllowUserToDeleteRows = false;
+            this.dgCc.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgCc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgCc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgCc.Location = new System.Drawing.Point(3, 16);
@@ -200,27 +219,11 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Date";
             // 
-            // picturePurchase
-            // 
-            this.picturePurchase.Image = ((System.Drawing.Image)(resources.GetObject("picturePurchase.Image")));
-            this.picturePurchase.Location = new System.Drawing.Point(40, 16);
-            this.picturePurchase.Name = "picturePurchase";
-            this.picturePurchase.Size = new System.Drawing.Size(110, 101);
-            this.picturePurchase.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picturePurchase.TabIndex = 0;
-            this.picturePurchase.TabStop = false;
-            // 
-            // lblPicture
-            // 
-            this.lblPicture.Location = new System.Drawing.Point(6, 131);
-            this.lblPicture.Name = "lblPicture";
-            this.lblPicture.Size = new System.Drawing.Size(187, 87);
-            this.lblPicture.TabIndex = 1;
-            // 
             // PurchaseExportFiles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.ClientSize = new System.Drawing.Size(1165, 577);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
@@ -236,6 +239,7 @@
             this.Text = "PurchaseExportFiles";
             this.Load += new System.EventHandler(this.PurchaseExportFiles_Load);
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picturePurchase)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -244,7 +248,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgCc)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picturePurchase)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -5,8 +5,14 @@
 // licensing@syncfusion.com. Any infringement will be prosecuted under
 // applicable laws. 
 #endregion
+using LoginForm.Billing;
 using LoginForm.DataSet;
+using LoginForm.ItemModule;
+using LoginForm.nsSaleOrder;
+using LoginForm.PurchaseOrder;
+using LoginForm.QuotationModule;
 using LoginForm.Services;
+using LoginForm.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,21 +29,21 @@ namespace LoginForm.Main
         public frmMainMetro()
         {
             InitializeComponent();
-            ActivePanel = pnlButton1;
+            ActivePanel = pnlDevelopment;
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            if(pnlButton1.Height == 0)
+            if(pnlDevelopment.Height == 0)
             {
                 ActivePanel.Height = 0;
 
                 int h = 0;
-                foreach (Control item in pnlButton1.Controls)
+                foreach (Control item in pnlDevelopment.Controls)
                 {
                     h += item.Height + 6;
                 }
                 PH = h;
-                ActivePanel = pnlButton1;
+                ActivePanel = pnlDevelopment;
                 animMode = "Extend";
                 timer2.Start();
             }
@@ -50,17 +56,17 @@ namespace LoginForm.Main
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            if (pnlButton2.Height == 0)
+            if (pnlFileLoader.Height == 0)
             {
                 ActivePanel.Height = 0;
 
                 int h = 0;
-                foreach (Control item in pnlButton2.Controls)
+                foreach (Control item in pnlFileLoader.Controls)
                 {
                     h += item.Height + 6;
                 }
                 PH = h;
-                ActivePanel = pnlButton2;
+                ActivePanel = pnlFileLoader;
                 animMode = "Extend";
                 timer2.Start();
             }
@@ -73,17 +79,17 @@ namespace LoginForm.Main
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            if (pnlButton3.Height == 0)
+            if (pnlManagement.Height == 0)
             {
                 ActivePanel.Height = 0;
 
                 int h = 0;
-                foreach (Control item in pnlButton3.Controls)
+                foreach (Control item in pnlManagement.Controls)
                 {
                     h += item.Height + 6;
                 }
                 PH = h;
-                ActivePanel = pnlButton3;
+                ActivePanel = pnlManagement;
                 animMode = "Extend";
                 timer2.Start();
             }
@@ -134,6 +140,151 @@ namespace LoginForm.Main
                     timer2.Stop();
                 }
             }
+        }
+
+        private void btnSupplier_Click(object sender, EventArgs e)
+        {
+            frmSupplierMain supplierMain = new frmSupplierMain();
+            supplierMain.Show();
+        }
+
+        private void btnSalesOrder_Click(object sender, EventArgs e)
+        {
+            FormSalesOrderMain saleOrderMain = new FormSalesOrderMain();
+            saleOrderMain.Show();
+        }
+
+        private void btnUser_Click(object sender, EventArgs e)
+        {
+            FormMain formMain = (FormMain)this.ParentForm;
+            FormUserMain roles = new FormUserMain(formMain);
+            roles.Show();
+        }
+
+        private void btnCustomer_Click(object sender, EventArgs e)
+        {
+            CustomerMain customerMain = new CustomerMain();
+            customerMain.Show();
+        }
+
+        private void btnPurchaseOrder_Click(object sender, EventArgs e)
+        {
+            PurchaseOrderMain form = new PurchaseOrderMain();
+            form.Show();
+        }
+
+        private void btnItemCard_Click(object sender, EventArgs e)
+        {
+            ItemCard frmItem = new ItemCard();
+            frmItem.Show();
+        }
+
+        private void btnQuotation_Click(object sender, EventArgs e)
+        {
+            FormQuotationMain formQuotationMain = new FormQuotationMain();
+            formQuotationMain.Show();
+        }
+
+        private void btnStock_Click(object sender, EventArgs e)
+        {
+            frmStock frmStock = new frmStock();
+            frmStock.Show();
+        }
+
+        private void btnToBeInvoiced_Click(object sender, EventArgs e)
+        {
+            frmFaturalanacaklar frmFatura = new frmFaturalanacaklar();
+            frmFatura.Show();
+        }
+
+        private void GoToLoaderPage()
+        {
+            LoaderPage form = new LoaderPage();
+            form.ShowDialog();
+        }
+
+        private void btnRsInvoice_Click(object sender, EventArgs e)
+        {
+            txtReader.LoaderType = "";
+            txtReader.LoaderType = "RSInvoice";
+            GoToLoaderPage();
+        }
+
+        private void btnRSProList_Click(object sender, EventArgs e)
+        {
+            txtReader.LoaderType = "";
+            txtReader.LoaderType = "RSPro";
+            GoToLoaderPage();
+        }
+
+        private void btnTSEList_Click(object sender, EventArgs e)
+        {
+            txtReader.LoaderType = "";
+            txtReader.LoaderType = "TSE";
+            GoToLoaderPage();
+        }
+
+        private void btnSuperDiskwithP_Click(object sender, EventArgs e)
+        {
+            txtReader.LoaderType = "";
+            txtReader.LoaderType = "SuperDiskP";
+            GoToLoaderPage();
+        }
+
+        private void btnDualUsedArticles_Click(object sender, EventArgs e)
+        {
+            txtReader.LoaderType = "";
+            txtReader.LoaderType = "DualUse";
+            GoToLoaderPage();
+        }
+
+        private void btnHazardousFile_Click(object sender, EventArgs e)
+        {
+            txtReader.LoaderType = "";
+            txtReader.LoaderType = "Hazardous";
+            GoToLoaderPage();
+        }
+
+        private void btnExtendedRangePrice_Click(object sender, EventArgs e)
+        {
+            txtReader.LoaderType = "";
+            txtReader.LoaderType = "ExtendedRange";
+            GoToLoaderPage();
+        }
+
+        private void btnDiscontinuedList_Click(object sender, EventArgs e)
+        {
+            txtReader.LoaderType = "";
+            txtReader.LoaderType = "DiscontinuedList";
+            GoToLoaderPage();
+        }
+
+        private void btnSlidingPriceList_Click(object sender, EventArgs e)
+        {
+            txtReader.LoaderType = "";
+            txtReader.LoaderType = "SlidingPrice";
+            GoToLoaderPage();
+        }
+
+        private void btnSuperDisk_Click(object sender, EventArgs e)
+        {
+            txtReader.LoaderType = "";
+            txtReader.LoaderType = "SuperDisk";
+            GoToLoaderPage();
+        }
+
+        private void btnOnSale_Click(object sender, EventArgs e)
+        {
+            txtReader.LoaderType = "";
+            txtReader.LoaderType = "OnSale";
+            GoToLoaderPage();
+        }
+
+        private void btnOrderAcknowledgement_Click(object sender, EventArgs e)
+        {
+            txtReader.LoaderType = "";
+            txtReader.LoaderType = "OrderAcknowledgementtxtReader";
+            GoToLoaderPage();
         }
     }
 }

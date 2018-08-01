@@ -35,6 +35,7 @@
             // 
             // dgProductHistory
             // 
+            this.dgProductHistory.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgProductHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgProductHistory.Location = new System.Drawing.Point(12, 12);
             this.dgProductHistory.Name = "dgProductHistory";
@@ -55,6 +56,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.ClientSize = new System.Drawing.Size(1010, 459);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.dgProductHistory);

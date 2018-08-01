@@ -29,7 +29,7 @@ namespace LoginForm
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabgenel = new System.Windows.Forms.TabControl();
             this.tabInfo = new System.Windows.Forms.TabPage();
             this.cmbMainContact = new System.Windows.Forms.ComboBox();
@@ -92,6 +92,8 @@ namespace LoginForm
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.tabAccounting = new System.Windows.Forms.TabPage();
+            this.txtAddress2 = new System.Windows.Forms.TextBox();
+            this.txtAddress1 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
             this.cmbContactAddress = new System.Windows.Forms.ComboBox();
@@ -132,25 +134,6 @@ namespace LoginForm
             this.label38 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
             this.dgSupplier = new System.Windows.Forms.DataGridView();
-            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gWebAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gTaxOffice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gTaxNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gIban = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gBranchcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gAccountNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.currencyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.noteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.note1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.paymentMethodDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.paymentTermDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.workerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.supplierBankDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.supplierCategoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.supplierWorkerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.worker1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.supplierSubCategoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.supplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnModify = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
@@ -160,8 +143,6 @@ namespace LoginForm
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnLogoSave = new System.Windows.Forms.Button();
-            this.txtAddress2 = new System.Windows.Forms.TextBox();
-            this.txtAddress1 = new System.Windows.Forms.TextBox();
             this.tabgenel.SuspendLayout();
             this.tabInfo.SuspendLayout();
             this.tabAccount.SuspendLayout();
@@ -872,6 +853,22 @@ namespace LoginForm
             this.tabAccounting.Text = "Contact";
             this.tabAccounting.UseVisualStyleBackColor = true;
             // 
+            // txtAddress2
+            // 
+            this.txtAddress2.Enabled = false;
+            this.txtAddress2.Location = new System.Drawing.Point(392, 144);
+            this.txtAddress2.Name = "txtAddress2";
+            this.txtAddress2.Size = new System.Drawing.Size(122, 23);
+            this.txtAddress2.TabIndex = 62;
+            // 
+            // txtAddress1
+            // 
+            this.txtAddress1.Enabled = false;
+            this.txtAddress1.Location = new System.Drawing.Point(258, 144);
+            this.txtAddress1.Name = "txtAddress1";
+            this.txtAddress1.Size = new System.Drawing.Size(122, 23);
+            this.txtAddress1.TabIndex = 61;
+            // 
             // label10
             // 
             this.label10.Location = new System.Drawing.Point(5, 97);
@@ -1248,36 +1245,17 @@ namespace LoginForm
             this.dgSupplier.AllowUserToAddRows = false;
             this.dgSupplier.AllowUserToDeleteRows = false;
             this.dgSupplier.AutoGenerateColumns = false;
+            this.dgSupplier.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgSupplier.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgSupplier.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.iDDataGridViewTextBoxColumn,
-            this.gName,
-            this.gWebAddress,
-            this.gTaxOffice,
-            this.gTaxNumber,
-            this.gIban,
-            this.gBranchcode,
-            this.gAccountNumber,
-            this.currencyDataGridViewTextBoxColumn,
-            this.noteDataGridViewTextBoxColumn,
-            this.note1DataGridViewTextBoxColumn,
-            this.paymentMethodDataGridViewTextBoxColumn,
-            this.paymentTermDataGridViewTextBoxColumn,
-            this.workerDataGridViewTextBoxColumn,
-            this.supplierBankDataGridViewTextBoxColumn,
-            this.supplierCategoryDataGridViewTextBoxColumn,
-            this.supplierWorkerDataGridViewTextBoxColumn,
-            this.worker1DataGridViewTextBoxColumn,
-            this.supplierSubCategoryDataGridViewTextBoxColumn});
             this.dgSupplier.DataSource = this.supplierBindingSource;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgSupplier.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgSupplier.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgSupplier.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgSupplier.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dgSupplier.ImeMode = System.Windows.Forms.ImeMode.NoControl;
@@ -1291,141 +1269,6 @@ namespace LoginForm
             this.dgSupplier.TabIndex = 1;
             this.dgSupplier.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgSupplier_CellClick);
             this.dgSupplier.DoubleClick += new System.EventHandler(this.dgSupplier_DoubleClick);
-            // 
-            // iDDataGridViewTextBoxColumn
-            // 
-            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // gName
-            // 
-            this.gName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.gName.DataPropertyName = "s_name";
-            this.gName.HeaderText = "Name";
-            this.gName.Name = "gName";
-            this.gName.ReadOnly = true;
-            this.gName.Width = 60;
-            // 
-            // gWebAddress
-            // 
-            this.gWebAddress.DataPropertyName = "webadress";
-            this.gWebAddress.HeaderText = "Web";
-            this.gWebAddress.Name = "gWebAddress";
-            this.gWebAddress.ReadOnly = true;
-            // 
-            // gTaxOffice
-            // 
-            this.gTaxOffice.DataPropertyName = "taxoffice";
-            this.gTaxOffice.HeaderText = "Tax Office";
-            this.gTaxOffice.Name = "gTaxOffice";
-            this.gTaxOffice.ReadOnly = true;
-            // 
-            // gTaxNumber
-            // 
-            this.gTaxNumber.DataPropertyName = "taxnumber";
-            this.gTaxNumber.HeaderText = "Tax Number";
-            this.gTaxNumber.Name = "gTaxNumber";
-            this.gTaxNumber.ReadOnly = true;
-            // 
-            // gIban
-            // 
-            this.gIban.DataPropertyName = "iban";
-            this.gIban.HeaderText = "IBAN";
-            this.gIban.Name = "gIban";
-            this.gIban.ReadOnly = true;
-            // 
-            // gBranchcode
-            // 
-            this.gBranchcode.DataPropertyName = "branchcode";
-            this.gBranchcode.HeaderText = "Branch Code";
-            this.gBranchcode.Name = "gBranchcode";
-            this.gBranchcode.ReadOnly = true;
-            // 
-            // gAccountNumber
-            // 
-            this.gAccountNumber.DataPropertyName = "accountnumber";
-            this.gAccountNumber.HeaderText = "Account Number";
-            this.gAccountNumber.Name = "gAccountNumber";
-            this.gAccountNumber.ReadOnly = true;
-            // 
-            // currencyDataGridViewTextBoxColumn
-            // 
-            this.currencyDataGridViewTextBoxColumn.DataPropertyName = "Currency";
-            this.currencyDataGridViewTextBoxColumn.HeaderText = "Currency";
-            this.currencyDataGridViewTextBoxColumn.Name = "currencyDataGridViewTextBoxColumn";
-            this.currencyDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // noteDataGridViewTextBoxColumn
-            // 
-            this.noteDataGridViewTextBoxColumn.DataPropertyName = "Note";
-            this.noteDataGridViewTextBoxColumn.HeaderText = "Note";
-            this.noteDataGridViewTextBoxColumn.Name = "noteDataGridViewTextBoxColumn";
-            this.noteDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // note1DataGridViewTextBoxColumn
-            // 
-            this.note1DataGridViewTextBoxColumn.DataPropertyName = "Note1";
-            this.note1DataGridViewTextBoxColumn.HeaderText = "Note1";
-            this.note1DataGridViewTextBoxColumn.Name = "note1DataGridViewTextBoxColumn";
-            this.note1DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // paymentMethodDataGridViewTextBoxColumn
-            // 
-            this.paymentMethodDataGridViewTextBoxColumn.DataPropertyName = "PaymentMethod";
-            this.paymentMethodDataGridViewTextBoxColumn.HeaderText = "PaymentMethod";
-            this.paymentMethodDataGridViewTextBoxColumn.Name = "paymentMethodDataGridViewTextBoxColumn";
-            this.paymentMethodDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // paymentTermDataGridViewTextBoxColumn
-            // 
-            this.paymentTermDataGridViewTextBoxColumn.DataPropertyName = "PaymentTerm";
-            this.paymentTermDataGridViewTextBoxColumn.HeaderText = "PaymentTerm";
-            this.paymentTermDataGridViewTextBoxColumn.Name = "paymentTermDataGridViewTextBoxColumn";
-            this.paymentTermDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // workerDataGridViewTextBoxColumn
-            // 
-            this.workerDataGridViewTextBoxColumn.DataPropertyName = "Worker";
-            this.workerDataGridViewTextBoxColumn.HeaderText = "Worker";
-            this.workerDataGridViewTextBoxColumn.Name = "workerDataGridViewTextBoxColumn";
-            this.workerDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // supplierBankDataGridViewTextBoxColumn
-            // 
-            this.supplierBankDataGridViewTextBoxColumn.DataPropertyName = "SupplierBank";
-            this.supplierBankDataGridViewTextBoxColumn.HeaderText = "SupplierBank";
-            this.supplierBankDataGridViewTextBoxColumn.Name = "supplierBankDataGridViewTextBoxColumn";
-            this.supplierBankDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // supplierCategoryDataGridViewTextBoxColumn
-            // 
-            this.supplierCategoryDataGridViewTextBoxColumn.DataPropertyName = "SupplierCategory";
-            this.supplierCategoryDataGridViewTextBoxColumn.HeaderText = "SupplierCategory";
-            this.supplierCategoryDataGridViewTextBoxColumn.Name = "supplierCategoryDataGridViewTextBoxColumn";
-            this.supplierCategoryDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // supplierWorkerDataGridViewTextBoxColumn
-            // 
-            this.supplierWorkerDataGridViewTextBoxColumn.DataPropertyName = "SupplierWorker";
-            this.supplierWorkerDataGridViewTextBoxColumn.HeaderText = "SupplierWorker";
-            this.supplierWorkerDataGridViewTextBoxColumn.Name = "supplierWorkerDataGridViewTextBoxColumn";
-            this.supplierWorkerDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // worker1DataGridViewTextBoxColumn
-            // 
-            this.worker1DataGridViewTextBoxColumn.DataPropertyName = "Worker1";
-            this.worker1DataGridViewTextBoxColumn.HeaderText = "Worker1";
-            this.worker1DataGridViewTextBoxColumn.Name = "worker1DataGridViewTextBoxColumn";
-            this.worker1DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // supplierSubCategoryDataGridViewTextBoxColumn
-            // 
-            this.supplierSubCategoryDataGridViewTextBoxColumn.DataPropertyName = "SupplierSubCategory";
-            this.supplierSubCategoryDataGridViewTextBoxColumn.HeaderText = "SupplierSubCategory";
-            this.supplierSubCategoryDataGridViewTextBoxColumn.Name = "supplierSubCategoryDataGridViewTextBoxColumn";
-            this.supplierSubCategoryDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // btnModify
             // 
@@ -1532,27 +1375,11 @@ namespace LoginForm
             this.btnLogoSave.UseVisualStyleBackColor = true;
             this.btnLogoSave.Click += new System.EventHandler(this.btnLogoSave_Click);
             // 
-            // txtAddress2
-            // 
-            this.txtAddress2.Enabled = false;
-            this.txtAddress2.Location = new System.Drawing.Point(392, 144);
-            this.txtAddress2.Name = "txtAddress2";
-            this.txtAddress2.Size = new System.Drawing.Size(122, 23);
-            this.txtAddress2.TabIndex = 62;
-            // 
-            // txtAddress1
-            // 
-            this.txtAddress1.Enabled = false;
-            this.txtAddress1.Location = new System.Drawing.Point(258, 144);
-            this.txtAddress1.Name = "txtAddress1";
-            this.txtAddress1.Size = new System.Drawing.Size(122, 23);
-            this.txtAddress1.TabIndex = 61;
-            // 
             // frmSupplierMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.ClientSize = new System.Drawing.Size(925, 470);
             this.Controls.Add(this.tableLayoutPanel1);
             this.MinimumSize = new System.Drawing.Size(941, 505);

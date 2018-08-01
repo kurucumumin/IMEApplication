@@ -103,6 +103,7 @@
             // 
             // clbUserAuthorityList
             // 
+            this.clbUserAuthorityList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.clbUserAuthorityList.CheckOnClick = true;
             resources.ApplyResources(this.clbUserAuthorityList, "clbUserAuthorityList");
             this.clbUserAuthorityList.FormattingEnabled = true;
@@ -118,6 +119,7 @@
             // 
             // lbRoles
             // 
+            this.lbRoles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.lbRoles.DataSource = this.roleValueBindingSource;
             this.lbRoles.DisplayMember = "roleName";
             resources.ApplyResources(this.lbRoles, "lbRoles");
@@ -147,6 +149,7 @@
             // 
             // clbAuthorities
             // 
+            this.clbAuthorities.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.clbAuthorities.CheckOnClick = true;
             resources.ApplyResources(this.clbAuthorities, "clbAuthorities");
             this.clbAuthorities.FormattingEnabled = true;
@@ -173,7 +176,7 @@
             // gbUserInfo
             // 
             resources.ApplyResources(this.gbUserInfo, "gbUserInfo");
-            this.gbUserInfo.BackColor = System.Drawing.SystemColors.Control;
+            this.gbUserInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.gbUserInfo.Controls.Add(this.materialLabel7);
             this.gbUserInfo.Controls.Add(this.txtNote);
             this.gbUserInfo.Controls.Add(this.txtNameLastName);
@@ -267,7 +270,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.SystemColors.Window;
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.numericDiscountRate);
             this.panel2.Controls.Add(this.label3);
@@ -395,6 +398,7 @@
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FormWorkerManagement";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

@@ -50,7 +50,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(33, 46);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(121, 18);
+            this.label1.Size = new System.Drawing.Size(102, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "New USD Rate";
             // 
@@ -61,7 +61,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(33, 92);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(121, 18);
+            this.label2.Size = new System.Drawing.Size(101, 15);
             this.label2.TabIndex = 1;
             this.label2.Text = "New GBP Rate";
             // 
@@ -72,7 +72,7 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(33, 137);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(104, 18);
+            this.label3.Size = new System.Drawing.Size(88, 15);
             this.label3.TabIndex = 2;
             this.label3.Text = "New --- Rate";
             // 
@@ -83,7 +83,7 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(33, 187);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(104, 18);
+            this.label4.Size = new System.Drawing.Size(88, 15);
             this.label4.TabIndex = 3;
             this.label4.Text = "New --- Rate";
             // 
@@ -98,7 +98,7 @@
             65536});
             this.nudUSD.Location = new System.Drawing.Point(202, 44);
             this.nudUSD.Name = "nudUSD";
-            this.nudUSD.Size = new System.Drawing.Size(162, 24);
+            this.nudUSD.Size = new System.Drawing.Size(162, 21);
             this.nudUSD.TabIndex = 4;
             // 
             // nudGBP
@@ -112,7 +112,7 @@
             65536});
             this.nudGBP.Location = new System.Drawing.Point(202, 90);
             this.nudGBP.Name = "nudGBP";
-            this.nudGBP.Size = new System.Drawing.Size(162, 24);
+            this.nudGBP.Size = new System.Drawing.Size(162, 21);
             this.nudGBP.TabIndex = 5;
             // 
             // numericUpDown3
@@ -127,7 +127,7 @@
             65536});
             this.numericUpDown3.Location = new System.Drawing.Point(202, 135);
             this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(162, 24);
+            this.numericUpDown3.Size = new System.Drawing.Size(162, 21);
             this.numericUpDown3.TabIndex = 6;
             // 
             // numericUpDown4
@@ -142,7 +142,7 @@
             65536});
             this.numericUpDown4.Location = new System.Drawing.Point(202, 185);
             this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(162, 24);
+            this.numericUpDown4.Size = new System.Drawing.Size(162, 21);
             this.numericUpDown4.TabIndex = 7;
             // 
             // btnSave
@@ -163,9 +163,10 @@
             // 
             // FormExchangeRate
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(414, 339);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
+            this.ClientSize = new System.Drawing.Size(416, 347);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.numericUpDown4);
             this.Controls.Add(this.numericUpDown3);

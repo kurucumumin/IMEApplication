@@ -186,7 +186,7 @@
             // 
             this.btnCreate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCreate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(199)))), ((int)(((byte)(132)))));
+            this.btnCreate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.btnCreate.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(199)))), ((int)(((byte)(132)))));
             this.btnCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -272,6 +272,7 @@
             this.dgQuotations.AllowUserToAddRows = false;
             this.dgQuotations.AllowUserToDeleteRows = false;
             this.dgQuotations.AutoGenerateColumns = false;
+            this.dgQuotations.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgQuotations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgQuotations.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.QuotationNo,
@@ -515,6 +516,7 @@
             this.dgItems.AllowUserToDeleteRows = false;
             this.dgItems.AllowUserToOrderColumns = true;
             this.dgItems.AutoGenerateColumns = false;
+            this.dgItems.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.chk,
@@ -722,6 +724,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.ClientSize = new System.Drawing.Size(1281, 606);
             this.Controls.Add(this.tableLayoutPanel3);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

@@ -75,6 +75,7 @@
             // 
             this.CustomerSearchGrid.AllowUserToAddRows = false;
             this.CustomerSearchGrid.AllowUserToDeleteRows = false;
+            this.CustomerSearchGrid.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.CustomerSearchGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.CustomerSearchGrid.Location = new System.Drawing.Point(15, 97);
             this.CustomerSearchGrid.MultiSelect = false;
@@ -100,6 +101,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.ClientSize = new System.Drawing.Size(553, 325);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.CustomerSearchGrid);

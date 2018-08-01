@@ -1982,7 +1982,7 @@ namespace LoginForm
         {
             if (btnUpdate.Text == "UPDATE")
             {
-                //logoCustUpd();
+                logoCustAdd();
             }
             else
             {

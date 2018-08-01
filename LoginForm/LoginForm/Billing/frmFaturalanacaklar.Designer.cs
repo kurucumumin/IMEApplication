@@ -62,6 +62,7 @@
             // 
             this.dgFaturalanacak.AllowUserToAddRows = false;
             this.dgFaturalanacak.AllowUserToDeleteRows = false;
+            this.dgFaturalanacak.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgFaturalanacak.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgFaturalanacak.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SiparisTarihi,
@@ -311,6 +312,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.ClientSize = new System.Drawing.Size(1161, 537);
             this.Controls.Add(this.btncikis);
             this.Controls.Add(this.btnExcel);

@@ -114,10 +114,10 @@
             this.tabStockReserveUpdate.Controls.Add(this.btnClear);
             this.tabStockReserveUpdate.Controls.Add(this.label2);
             this.tabStockReserveUpdate.Controls.Add(this.label1);
-            this.tabStockReserveUpdate.Location = new System.Drawing.Point(4, 27);
+            this.tabStockReserveUpdate.Location = new System.Drawing.Point(4, 24);
             this.tabStockReserveUpdate.Name = "tabStockReserveUpdate";
             this.tabStockReserveUpdate.Padding = new System.Windows.Forms.Padding(3);
-            this.tabStockReserveUpdate.Size = new System.Drawing.Size(957, 163);
+            this.tabStockReserveUpdate.Size = new System.Drawing.Size(957, 166);
             this.tabStockReserveUpdate.TabIndex = 0;
             this.tabStockReserveUpdate.Text = "Stock Reserve Update";
             this.tabStockReserveUpdate.UseVisualStyleBackColor = true;
@@ -127,7 +127,7 @@
             this.txtCustomerName.Location = new System.Drawing.Point(163, 47);
             this.txtCustomerName.Name = "txtCustomerName";
             this.txtCustomerName.ReadOnly = true;
-            this.txtCustomerName.Size = new System.Drawing.Size(240, 24);
+            this.txtCustomerName.Size = new System.Drawing.Size(240, 21);
             this.txtCustomerName.TabIndex = 32;
             // 
             // label6
@@ -135,7 +135,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(163, 18);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(118, 18);
+            this.label6.Size = new System.Drawing.Size(97, 15);
             this.label6.TabIndex = 31;
             this.label6.Text = "Customer Name";
             // 
@@ -153,7 +153,7 @@
             this.txtCustomerID.Enabled = false;
             this.txtCustomerID.Location = new System.Drawing.Point(21, 47);
             this.txtCustomerID.Name = "txtCustomerID";
-            this.txtCustomerID.Size = new System.Drawing.Size(121, 24);
+            this.txtCustomerID.Size = new System.Drawing.Size(121, 21);
             this.txtCustomerID.TabIndex = 29;
             this.txtCustomerID.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCustomer_KeyDown);
             this.txtCustomerID.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txtCustomerID_MouseDoubleClick);
@@ -163,7 +163,7 @@
             this.txtProductID.Enabled = false;
             this.txtProductID.Location = new System.Drawing.Point(21, 116);
             this.txtProductID.Name = "txtProductID";
-            this.txtProductID.Size = new System.Drawing.Size(121, 24);
+            this.txtProductID.Size = new System.Drawing.Size(121, 21);
             this.txtProductID.TabIndex = 28;
             // 
             // label4
@@ -171,7 +171,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(21, 18);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(74, 18);
+            this.label4.Size = new System.Drawing.Size(60, 15);
             this.label4.TabIndex = 27;
             this.label4.Text = "Customer";
             // 
@@ -189,7 +189,7 @@
             0,
             0});
             this.numQuantity.Name = "numQuantity";
-            this.numQuantity.Size = new System.Drawing.Size(120, 24);
+            this.numQuantity.Size = new System.Drawing.Size(120, 21);
             this.numQuantity.TabIndex = 26;
             // 
             // txtProductName
@@ -197,7 +197,7 @@
             this.txtProductName.Location = new System.Drawing.Point(163, 116);
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.ReadOnly = true;
-            this.txtProductName.Size = new System.Drawing.Size(240, 24);
+            this.txtProductName.Size = new System.Drawing.Size(240, 21);
             this.txtProductName.TabIndex = 25;
             // 
             // label3
@@ -205,7 +205,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(163, 87);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(139, 18);
+            this.label3.Size = new System.Drawing.Size(114, 15);
             this.label3.TabIndex = 24;
             this.label3.Text = "Product Description";
             // 
@@ -214,7 +214,7 @@
             this.rbDecrease.AutoSize = true;
             this.rbDecrease.Location = new System.Drawing.Point(421, 116);
             this.rbDecrease.Name = "rbDecrease";
-            this.rbDecrease.Size = new System.Drawing.Size(93, 22);
+            this.rbDecrease.Size = new System.Drawing.Size(78, 19);
             this.rbDecrease.TabIndex = 23;
             this.rbDecrease.TabStop = true;
             this.rbDecrease.Text = "Decrease";
@@ -225,7 +225,7 @@
             this.rbIncrease.AutoSize = true;
             this.rbIncrease.Location = new System.Drawing.Point(421, 87);
             this.rbIncrease.Name = "rbIncrease";
-            this.rbIncrease.Size = new System.Drawing.Size(85, 22);
+            this.rbIncrease.Size = new System.Drawing.Size(72, 19);
             this.rbIncrease.TabIndex = 22;
             this.rbIncrease.TabStop = true;
             this.rbIncrease.Text = "Increase";
@@ -257,7 +257,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(524, 87);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 18);
+            this.label2.Size = new System.Drawing.Size(51, 15);
             this.label2.TabIndex = 19;
             this.label2.Text = "Quantity";
             // 
@@ -266,7 +266,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(21, 87);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 18);
+            this.label1.Size = new System.Drawing.Size(64, 15);
             this.label1.TabIndex = 18;
             this.label1.Text = "Product ID";
             // 
@@ -277,10 +277,10 @@
             this.tabSearch.Controls.Add(this.textBox2);
             this.tabSearch.Controls.Add(this.label5);
             this.tabSearch.Controls.Add(this.btnSearch);
-            this.tabSearch.Location = new System.Drawing.Point(4, 27);
+            this.tabSearch.Location = new System.Drawing.Point(4, 24);
             this.tabSearch.Name = "tabSearch";
             this.tabSearch.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSearch.Size = new System.Drawing.Size(957, 163);
+            this.tabSearch.Size = new System.Drawing.Size(957, 166);
             this.tabSearch.TabIndex = 1;
             this.tabSearch.Text = "Search";
             this.tabSearch.UseVisualStyleBackColor = true;
@@ -290,7 +290,7 @@
             this.textBox1.Enabled = false;
             this.textBox1.Location = new System.Drawing.Point(254, 45);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(183, 24);
+            this.textBox1.Size = new System.Drawing.Size(183, 21);
             this.textBox1.TabIndex = 16;
             // 
             // label8
@@ -298,7 +298,7 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(19, 16);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(78, 18);
+            this.label8.Size = new System.Drawing.Size(64, 15);
             this.label8.TabIndex = 1;
             this.label8.Text = "Product ID";
             // 
@@ -307,7 +307,7 @@
             this.textBox2.Enabled = false;
             this.textBox2.Location = new System.Drawing.Point(19, 45);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(121, 24);
+            this.textBox2.Size = new System.Drawing.Size(121, 21);
             this.textBox2.TabIndex = 15;
             // 
             // label5
@@ -315,7 +315,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(254, 16);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(74, 18);
+            this.label5.Size = new System.Drawing.Size(60, 15);
             this.label5.TabIndex = 13;
             this.label5.Text = "Customer";
             // 
@@ -344,6 +344,7 @@
             // 
             this.dgStockReserveList.AllowUserToAddRows = false;
             this.dgStockReserveList.AllowUserToDeleteRows = false;
+            this.dgStockReserveList.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgStockReserveList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgStockReserveList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgStockID,
@@ -371,7 +372,7 @@
             this.dgStockID.HeaderText = "StockID";
             this.dgStockID.Name = "dgStockID";
             this.dgStockID.ReadOnly = true;
-            this.dgStockID.Width = 90;
+            this.dgStockID.Width = 74;
             // 
             // dgSaleOrderID
             // 
@@ -379,7 +380,7 @@
             this.dgSaleOrderID.HeaderText = "Sale Order ID";
             this.dgSaleOrderID.Name = "dgSaleOrderID";
             this.dgSaleOrderID.ReadOnly = true;
-            this.dgSaleOrderID.Width = 103;
+            this.dgSaleOrderID.Width = 87;
             // 
             // dgCustomerName
             // 
@@ -387,7 +388,7 @@
             this.dgCustomerName.HeaderText = "Customer Name";
             this.dgCustomerName.Name = "dgCustomerName";
             this.dgCustomerName.ReadOnly = true;
-            this.dgCustomerName.Width = 135;
+            this.dgCustomerName.Width = 112;
             // 
             // dgValidationDate
             // 
@@ -395,7 +396,7 @@
             this.dgValidationDate.HeaderText = "Validation Date";
             this.dgValidationDate.Name = "dgValidationDate";
             this.dgValidationDate.ReadOnly = true;
-            this.dgValidationDate.Width = 124;
+            this.dgValidationDate.Width = 105;
             // 
             // dgProductID
             // 
@@ -403,7 +404,7 @@
             this.dgProductID.HeaderText = "Product ID";
             this.dgProductID.Name = "dgProductID";
             this.dgProductID.ReadOnly = true;
-            this.dgProductID.Width = 99;
+            this.dgProductID.Width = 82;
             // 
             // dgProductName
             // 
@@ -418,12 +419,13 @@
             this.dgQty.HeaderText = "Quantity";
             this.dgQty.Name = "dgQty";
             this.dgQty.ReadOnly = true;
-            this.dgQty.Width = 91;
+            this.dgQty.Width = 76;
             // 
             // frmStockReserve
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.ClientSize = new System.Drawing.Size(971, 719);
             this.Controls.Add(this.FrameTableLayout);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

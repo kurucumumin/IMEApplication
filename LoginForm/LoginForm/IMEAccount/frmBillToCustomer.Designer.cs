@@ -43,10 +43,9 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(265, 144);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSave.Location = new System.Drawing.Point(199, 117);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(167, 52);
+            this.btnSave.Size = new System.Drawing.Size(125, 42);
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -54,19 +53,19 @@
             // 
             // txtCustomerID
             // 
-            this.txtCustomerID.Location = new System.Drawing.Point(337, 18);
-            this.txtCustomerID.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.txtCustomerID.Location = new System.Drawing.Point(253, 15);
+            this.txtCustomerID.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.txtCustomerID.Name = "txtCustomerID";
             this.txtCustomerID.ReadOnly = true;
-            this.txtCustomerID.Size = new System.Drawing.Size(236, 22);
+            this.txtCustomerID.Size = new System.Drawing.Size(178, 20);
             this.txtCustomerID.TabIndex = 8906;
             // 
             // txtCustomerName
             // 
-            this.txtCustomerName.Location = new System.Drawing.Point(168, 17);
-            this.txtCustomerName.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.txtCustomerName.Location = new System.Drawing.Point(126, 14);
+            this.txtCustomerName.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.txtCustomerName.Name = "txtCustomerName";
-            this.txtCustomerName.Size = new System.Drawing.Size(160, 22);
+            this.txtCustomerName.Size = new System.Drawing.Size(121, 20);
             this.txtCustomerName.TabIndex = 8904;
             this.txtCustomerName.DoubleClick += new System.EventHandler(this.txtCustomer_DoubleClick);
             this.txtCustomerName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCustomer_KeyDown);
@@ -75,20 +74,19 @@
             // 
             this.lblCustomer.AutoSize = true;
             this.lblCustomer.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblCustomer.Location = new System.Drawing.Point(9, 22);
-            this.lblCustomer.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.lblCustomer.Location = new System.Drawing.Point(7, 18);
+            this.lblCustomer.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.lblCustomer.Name = "lblCustomer";
-            this.lblCustomer.Size = new System.Drawing.Size(146, 17);
+            this.lblCustomer.Size = new System.Drawing.Size(112, 13);
             this.lblCustomer.TabIndex = 8905;
             this.lblCustomer.Text = "Customer Code/Name";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(340, 90);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(255, 73);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 17);
+            this.label1.Size = new System.Drawing.Size(49, 13);
             this.label1.TabIndex = 8907;
             this.label1.Text = "Currency";
             // 
@@ -96,57 +94,52 @@
             // 
             this.cbCurrency.Enabled = false;
             this.cbCurrency.FormattingEnabled = true;
-            this.cbCurrency.Location = new System.Drawing.Point(413, 86);
-            this.cbCurrency.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbCurrency.Location = new System.Drawing.Point(310, 70);
             this.cbCurrency.Name = "cbCurrency";
-            this.cbCurrency.Size = new System.Drawing.Size(160, 24);
+            this.cbCurrency.Size = new System.Drawing.Size(121, 21);
             this.cbCurrency.TabIndex = 8908;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(100, 91);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(75, 74);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 17);
+            this.label2.Size = new System.Drawing.Size(43, 13);
             this.label2.TabIndex = 8907;
             this.label2.Text = "Amount";
             // 
             // txtAmount
             // 
-            this.txtAmount.Location = new System.Drawing.Point(168, 87);
-            this.txtAmount.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.txtAmount.Location = new System.Drawing.Point(126, 71);
+            this.txtAmount.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.txtAmount.Name = "txtAmount";
-            this.txtAmount.Size = new System.Drawing.Size(159, 22);
+            this.txtAmount.Size = new System.Drawing.Size(120, 20);
             this.txtAmount.TabIndex = 8904;
             this.txtAmount.DoubleClick += new System.EventHandler(this.txtCustomer_DoubleClick);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(100, 57);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(75, 46);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(59, 17);
+            this.label3.Size = new System.Drawing.Size(47, 13);
             this.label3.TabIndex = 8907;
             this.label3.Text = "Account";
             // 
             // cbBank
             // 
             this.cbBank.FormattingEnabled = true;
-            this.cbBank.Location = new System.Drawing.Point(171, 52);
-            this.cbBank.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbBank.Location = new System.Drawing.Point(128, 42);
             this.cbBank.Name = "cbBank";
-            this.cbBank.Size = new System.Drawing.Size(329, 24);
+            this.cbBank.Size = new System.Drawing.Size(248, 21);
             this.cbBank.TabIndex = 8909;
             this.cbBank.SelectedIndexChanged += new System.EventHandler(this.cbBank_SelectedIndexChanged);
             // 
             // btnAccountAdd
             // 
-            this.btnAccountAdd.Location = new System.Drawing.Point(509, 49);
-            this.btnAccountAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAccountAdd.Location = new System.Drawing.Point(382, 40);
             this.btnAccountAdd.Name = "btnAccountAdd";
-            this.btnAccountAdd.Size = new System.Drawing.Size(65, 28);
+            this.btnAccountAdd.Size = new System.Drawing.Size(49, 23);
             this.btnAccountAdd.TabIndex = 8918;
             this.btnAccountAdd.Text = "+";
             this.btnAccountAdd.UseVisualStyleBackColor = true;
@@ -154,9 +147,10 @@
             // 
             // frmBillToCustomer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(715, 210);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
+            this.ClientSize = new System.Drawing.Size(536, 171);
             this.Controls.Add(this.btnAccountAdd);
             this.Controls.Add(this.cbBank);
             this.Controls.Add(this.cbCurrency);
@@ -168,7 +162,6 @@
             this.Controls.Add(this.txtCustomerName);
             this.Controls.Add(this.lblCustomer);
             this.Controls.Add(this.btnSave);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmBillToCustomer";
             this.Text = "Bill To Customer";
             this.Load += new System.EventHandler(this.BillToCustomer_Load);

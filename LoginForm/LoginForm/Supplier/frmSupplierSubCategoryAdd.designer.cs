@@ -40,28 +40,25 @@
             // 
             this.cmbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCategory.FormattingEnabled = true;
-            this.cmbCategory.Location = new System.Drawing.Point(167, 10);
-            this.cmbCategory.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbCategory.Location = new System.Drawing.Point(125, 8);
             this.cmbCategory.Name = "cmbCategory";
-            this.cmbCategory.Size = new System.Drawing.Size(197, 24);
+            this.cmbCategory.Size = new System.Drawing.Size(149, 21);
             this.cmbCategory.TabIndex = 15;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 54);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(9, 44);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(131, 17);
+            this.label2.Size = new System.Drawing.Size(99, 13);
             this.label2.TabIndex = 14;
             this.label2.Text = "SubCategory Name";
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(265, 118);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCancel.Location = new System.Drawing.Point(199, 96);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(100, 28);
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 13;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -69,10 +66,9 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(16, 118);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAdd.Location = new System.Drawing.Point(12, 96);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(100, 28);
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 12;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -80,34 +76,32 @@
             // 
             // txtSubCategoryName
             // 
-            this.txtSubCategoryName.Location = new System.Drawing.Point(167, 54);
-            this.txtSubCategoryName.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSubCategoryName.Location = new System.Drawing.Point(125, 44);
             this.txtSubCategoryName.Name = "txtSubCategoryName";
-            this.txtSubCategoryName.Size = new System.Drawing.Size(197, 22);
+            this.txtSubCategoryName.Size = new System.Drawing.Size(149, 20);
             this.txtSubCategoryName.TabIndex = 11;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 14);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(9, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 17);
+            this.label1.Size = new System.Drawing.Size(80, 13);
             this.label1.TabIndex = 10;
             this.label1.Text = "Category Name";
             // 
             // frmSupplierSubCategoryAdd
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(379, 176);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
+            this.ClientSize = new System.Drawing.Size(284, 143);
             this.Controls.Add(this.cmbCategory);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.txtSubCategoryName);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmSupplierSubCategoryAdd";
             this.Text = "Sub Category Add";
             this.Load += new System.EventHandler(this.frmSupplierPositionAdd_Load);

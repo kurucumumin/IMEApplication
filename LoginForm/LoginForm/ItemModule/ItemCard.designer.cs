@@ -573,7 +573,7 @@ namespace LoginForm.ItemModule
             // 
             // groupBox4
             // 
-            this.groupBox4.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.groupBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.groupBox4.Controls.Add(this.txtExpiringPro);
             this.groupBox4.Controls.Add(this.txtHazardousInd);
             this.groupBox4.Controls.Add(this.txtDiscCharge);
@@ -1769,7 +1769,7 @@ namespace LoginForm.ItemModule
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.txtTotal);
             this.panel1.Controls.Add(this.txtUnitPrice);
@@ -2257,6 +2257,7 @@ namespace LoginForm.ItemModule
             // 
             // dgItemList
             // 
+            this.dgItemList.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgItemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgItemList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgItemList.Location = new System.Drawing.Point(447, 0);
@@ -2286,6 +2287,7 @@ namespace LoginForm.ItemModule
             // 
             // panelSearch
             // 
+            this.panelSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.panelSearch.Controls.Add(this.groupBox7);
             this.panelSearch.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelSearch.Location = new System.Drawing.Point(0, 0);
@@ -2314,6 +2316,7 @@ namespace LoginForm.ItemModule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.ClientSize = new System.Drawing.Size(1130, 706);
             this.Controls.Add(this.tblMain);
             this.MaximizeBox = false;

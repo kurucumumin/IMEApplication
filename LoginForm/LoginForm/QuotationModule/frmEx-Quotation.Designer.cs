@@ -82,6 +82,7 @@
             // 
             // dg
             // 
+            this.dg.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dg.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.QuoNo,
@@ -197,6 +198,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.ClientSize = new System.Drawing.Size(577, 343);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.rbCustomerName);

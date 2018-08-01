@@ -88,7 +88,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(33, 41);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 18);
+            this.label1.Size = new System.Drawing.Size(59, 15);
             this.label1.TabIndex = 2;
             this.label1.Text = "MPN NO:";
             // 
@@ -96,7 +96,7 @@
             // 
             this.txtSearchText.Location = new System.Drawing.Point(115, 38);
             this.txtSearchText.Name = "txtSearchText";
-            this.txtSearchText.Size = new System.Drawing.Size(226, 24);
+            this.txtSearchText.Size = new System.Drawing.Size(226, 21);
             this.txtSearchText.TabIndex = 2;
             // 
             // tableLayoutPanel1
@@ -128,6 +128,7 @@
             // 
             this.dgItemList.AllowUserToAddRows = false;
             this.dgItemList.AllowUserToDeleteRows = false;
+            this.dgItemList.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgItemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgItemList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgItemList.Location = new System.Drawing.Point(8, 8);
@@ -141,8 +142,9 @@
             // 
             // FormQuotationMPN
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.ClientSize = new System.Drawing.Size(1022, 446);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

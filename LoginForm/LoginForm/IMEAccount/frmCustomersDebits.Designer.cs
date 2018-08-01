@@ -35,6 +35,7 @@
             // 
             // dg
             // 
+            this.dg.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dg.Location = new System.Drawing.Point(12, 57);
             this.dg.Name = "dg";
@@ -55,6 +56,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.ClientSize = new System.Drawing.Size(754, 367);
             this.Controls.Add(this.dg);
             this.Controls.Add(this.btnClose);

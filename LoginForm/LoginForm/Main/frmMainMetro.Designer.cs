@@ -41,14 +41,36 @@ namespace LoginForm.Main
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pnlButton3 = new System.Windows.Forms.Panel();
+            this.pnlManagement = new System.Windows.Forms.Panel();
             this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
-            this.pnlButton2 = new System.Windows.Forms.Panel();
-            this.button33 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.pnlButton1 = new System.Windows.Forms.Panel();
+            this.btnManagement = new AltoControls.AltoButton();
+            this.pnlFileLoader = new System.Windows.Forms.Panel();
+            this.btnOrderAcknowledgement = new AltoControls.AltoButton();
+            this.btnOnSale = new AltoControls.AltoButton();
+            this.btnSuperDisk = new AltoControls.AltoButton();
+            this.btnSlidingPriceList = new AltoControls.AltoButton();
+            this.btnDiscontinuedList = new AltoControls.AltoButton();
+            this.btnExtendedRangePrice = new AltoControls.AltoButton();
+            this.btnHazardousFile = new AltoControls.AltoButton();
+            this.btnDualUsedArticles = new AltoControls.AltoButton();
+            this.btnSuperDiskwithP = new AltoControls.AltoButton();
+            this.btnTSEList = new AltoControls.AltoButton();
+            this.btnRSProList = new AltoControls.AltoButton();
+            this.btnRsInvoice = new AltoControls.AltoButton();
+            this.btnFileLoader = new AltoControls.AltoButton();
+            this.pnlDevelopment = new System.Windows.Forms.Panel();
+            this.btnToBeInvoiced = new AltoControls.AltoButton();
+            this.btnStock = new AltoControls.AltoButton();
+            this.btnQuotation = new AltoControls.AltoButton();
+            this.btnItemCard = new AltoControls.AltoButton();
+            this.btnPurchaseOrder = new AltoControls.AltoButton();
+            this.btnCustomer = new AltoControls.AltoButton();
+            this.btnUser = new AltoControls.AltoButton();
+            this.btnSalesOrder = new AltoControls.AltoButton();
+            this.btnSupplier = new AltoControls.AltoButton();
+            this.btnDevelopment = new AltoControls.AltoButton();
             this.pnlBorder = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lblUSD = new System.Windows.Forms.Label();
@@ -62,29 +84,17 @@ namespace LoginForm.Main
             this.lblName = new System.Windows.Forms.Label();
             this.lblTitleName = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.altoSlidingLabel1 = new AltoControls.AltoSlidingLabel();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuElipse2 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuElipse3 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.altoSlidingLabel1 = new AltoControls.AltoSlidingLabel();
-            this.button3 = new AltoControls.AltoButton();
-            this.button2 = new AltoControls.AltoButton();
-            this.btnToBeInvoiced = new AltoControls.AltoButton();
-            this.btnStock = new AltoControls.AltoButton();
-            this.btnQuotation = new AltoControls.AltoButton();
-            this.btnItemCard = new AltoControls.AltoButton();
-            this.btnPurchaseOrder = new AltoControls.AltoButton();
-            this.btnCustomer = new AltoControls.AltoButton();
-            this.btnUser = new AltoControls.AltoButton();
-            this.btnSalesOrder = new AltoControls.AltoButton();
-            this.btnSupplier = new AltoControls.AltoButton();
-            this.button1 = new AltoControls.AltoButton();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.pnlButton3.SuspendLayout();
-            this.pnlButton2.SuspendLayout();
-            this.pnlButton1.SuspendLayout();
+            this.pnlManagement.SuspendLayout();
+            this.pnlFileLoader.SuspendLayout();
+            this.pnlDevelopment.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -94,8 +104,9 @@ namespace LoginForm.Main
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(310, 934);
+            this.panel1.Size = new System.Drawing.Size(232, 447);
             this.panel1.TabIndex = 0;
             // 
             // panel5
@@ -104,120 +115,673 @@ namespace LoginForm.Main
             this.panel5.Controls.Add(this.panel2);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
-            this.panel5.Padding = new System.Windows.Forms.Padding(8);
-            this.panel5.Size = new System.Drawing.Size(310, 934);
+            this.panel5.Padding = new System.Windows.Forms.Padding(6);
+            this.panel5.Size = new System.Drawing.Size(232, 447);
             this.panel5.TabIndex = 0;
             // 
             // panel2
             // 
             this.panel2.AutoScroll = true;
-            this.panel2.Controls.Add(this.pnlButton3);
-            this.panel2.Controls.Add(this.button3);
-            this.panel2.Controls.Add(this.pnlButton2);
-            this.panel2.Controls.Add(this.button2);
-            this.panel2.Controls.Add(this.pnlButton1);
-            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.pnlManagement);
+            this.panel2.Controls.Add(this.btnManagement);
+            this.panel2.Controls.Add(this.pnlFileLoader);
+            this.panel2.Controls.Add(this.btnFileLoader);
+            this.panel2.Controls.Add(this.pnlDevelopment);
+            this.panel2.Controls.Add(this.btnDevelopment);
             this.panel2.Controls.Add(this.pnlBorder);
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(8, 8);
+            this.panel2.Location = new System.Drawing.Point(6, 6);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(292, 916);
+            this.panel2.Size = new System.Drawing.Size(218, 433);
             this.panel2.TabIndex = 1;
             // 
-            // pnlButton3
+            // pnlManagement
             // 
-            this.pnlButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(202)))), ((int)(((byte)(133)))));
-            this.pnlButton3.Controls.Add(this.button11);
-            this.pnlButton3.Controls.Add(this.button12);
-            this.pnlButton3.Controls.Add(this.button14);
-            this.pnlButton3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlButton3.Location = new System.Drawing.Point(0, 395);
-            this.pnlButton3.Name = "pnlButton3";
-            this.pnlButton3.Size = new System.Drawing.Size(292, 0);
-            this.pnlButton3.TabIndex = 8;
+            this.pnlManagement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(202)))), ((int)(((byte)(133)))));
+            this.pnlManagement.Controls.Add(this.button11);
+            this.pnlManagement.Controls.Add(this.button12);
+            this.pnlManagement.Controls.Add(this.button14);
+            this.pnlManagement.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlManagement.Location = new System.Drawing.Point(0, 321);
+            this.pnlManagement.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlManagement.Name = "pnlManagement";
+            this.pnlManagement.Size = new System.Drawing.Size(218, 0);
+            this.pnlManagement.TabIndex = 8;
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(63, 122);
+            this.button11.Location = new System.Drawing.Point(47, 99);
+            this.button11.Margin = new System.Windows.Forms.Padding(2);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(191, 52);
+            this.button11.Size = new System.Drawing.Size(143, 42);
             this.button11.TabIndex = 3;
             this.button11.Text = "button3";
             this.button11.UseVisualStyleBackColor = true;
             // 
             // button12
             // 
-            this.button12.Location = new System.Drawing.Point(63, 64);
+            this.button12.Location = new System.Drawing.Point(47, 52);
+            this.button12.Margin = new System.Windows.Forms.Padding(2);
             this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(191, 52);
+            this.button12.Size = new System.Drawing.Size(143, 42);
             this.button12.TabIndex = 2;
             this.button12.Text = "button12";
             this.button12.UseVisualStyleBackColor = true;
             // 
             // button14
             // 
-            this.button14.Location = new System.Drawing.Point(63, 6);
+            this.button14.Location = new System.Drawing.Point(47, 5);
+            this.button14.Margin = new System.Windows.Forms.Padding(2);
             this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(191, 52);
+            this.button14.Size = new System.Drawing.Size(143, 42);
             this.button14.TabIndex = 0;
             this.button14.Text = "button14";
             this.button14.UseVisualStyleBackColor = true;
             // 
-            // pnlButton2
+            // btnManagement
             // 
-            this.pnlButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(202)))), ((int)(((byte)(133)))));
-            this.pnlButton2.Controls.Add(this.button33);
-            this.pnlButton2.Controls.Add(this.button8);
-            this.pnlButton2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlButton2.Location = new System.Drawing.Point(0, 335);
-            this.pnlButton2.Name = "pnlButton2";
-            this.pnlButton2.Size = new System.Drawing.Size(292, 0);
-            this.pnlButton2.TabIndex = 6;
+            this.btnManagement.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
+            this.btnManagement.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(196)))), ((int)(((byte)(204)))));
+            this.btnManagement.BackColor = System.Drawing.Color.Transparent;
+            this.btnManagement.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnManagement.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnManagement.Font = new System.Drawing.Font("Sitka Text", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnManagement.ForeColor = System.Drawing.Color.Black;
+            this.btnManagement.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.btnManagement.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(255)))), ((int)(((byte)(173)))));
+            this.btnManagement.Location = new System.Drawing.Point(0, 272);
+            this.btnManagement.Margin = new System.Windows.Forms.Padding(2);
+            this.btnManagement.Name = "btnManagement";
+            this.btnManagement.Radius = 5;
+            this.btnManagement.Size = new System.Drawing.Size(218, 49);
+            this.btnManagement.Stroke = true;
+            this.btnManagement.StrokeColor = System.Drawing.Color.DarkGray;
+            this.btnManagement.TabIndex = 7;
+            this.btnManagement.Text = "Management";
+            this.btnManagement.Transparency = false;
+            this.btnManagement.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button33
+            // pnlFileLoader
             // 
-            this.button33.Location = new System.Drawing.Point(63, 6);
-            this.button33.Name = "button33";
-            this.button33.Size = new System.Drawing.Size(191, 40);
-            this.button33.TabIndex = 3;
-            this.button33.Text = "button3";
-            this.button33.UseVisualStyleBackColor = true;
+            this.pnlFileLoader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(202)))), ((int)(((byte)(133)))));
+            this.pnlFileLoader.Controls.Add(this.btnOrderAcknowledgement);
+            this.pnlFileLoader.Controls.Add(this.btnOnSale);
+            this.pnlFileLoader.Controls.Add(this.btnSuperDisk);
+            this.pnlFileLoader.Controls.Add(this.btnSlidingPriceList);
+            this.pnlFileLoader.Controls.Add(this.btnDiscontinuedList);
+            this.pnlFileLoader.Controls.Add(this.btnExtendedRangePrice);
+            this.pnlFileLoader.Controls.Add(this.btnHazardousFile);
+            this.pnlFileLoader.Controls.Add(this.btnDualUsedArticles);
+            this.pnlFileLoader.Controls.Add(this.btnSuperDiskwithP);
+            this.pnlFileLoader.Controls.Add(this.btnTSEList);
+            this.pnlFileLoader.Controls.Add(this.btnRSProList);
+            this.pnlFileLoader.Controls.Add(this.btnRsInvoice);
+            this.pnlFileLoader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlFileLoader.Location = new System.Drawing.Point(0, 272);
+            this.pnlFileLoader.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlFileLoader.Name = "pnlFileLoader";
+            this.pnlFileLoader.Size = new System.Drawing.Size(218, 0);
+            this.pnlFileLoader.TabIndex = 6;
             // 
-            // button8
+            // btnOrderAcknowledgement
             // 
-            this.button8.Location = new System.Drawing.Point(63, 52);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(191, 40);
-            this.button8.TabIndex = 2;
-            this.button8.Text = "button8";
-            this.button8.UseVisualStyleBackColor = true;
+            this.btnOrderAcknowledgement.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
+            this.btnOrderAcknowledgement.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
+            this.btnOrderAcknowledgement.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOrderAcknowledgement.BackColor = System.Drawing.Color.Transparent;
+            this.btnOrderAcknowledgement.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnOrderAcknowledgement.Font = new System.Drawing.Font("Sitka Text", 13.8F, System.Drawing.FontStyle.Bold);
+            this.btnOrderAcknowledgement.ForeColor = System.Drawing.Color.Black;
+            this.btnOrderAcknowledgement.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
+            this.btnOrderAcknowledgement.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
+            this.btnOrderAcknowledgement.Location = new System.Drawing.Point(41, 400);
+            this.btnOrderAcknowledgement.Margin = new System.Windows.Forms.Padding(2);
+            this.btnOrderAcknowledgement.Name = "btnOrderAcknowledgement";
+            this.btnOrderAcknowledgement.Radius = 5;
+            this.btnOrderAcknowledgement.Size = new System.Drawing.Size(169, 32);
+            this.btnOrderAcknowledgement.Stroke = false;
+            this.btnOrderAcknowledgement.StrokeColor = System.Drawing.Color.Gray;
+            this.btnOrderAcknowledgement.TabIndex = 17;
+            this.btnOrderAcknowledgement.Text = "Order Acknowledgement";
+            this.btnOrderAcknowledgement.Transparency = false;
+            this.btnOrderAcknowledgement.Click += new System.EventHandler(this.btnOrderAcknowledgement_Click);
             // 
-            // pnlButton1
+            // btnOnSale
             // 
-            this.pnlButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(254)))), ((int)(((byte)(233)))));
-            this.pnlButton1.Controls.Add(this.btnToBeInvoiced);
-            this.pnlButton1.Controls.Add(this.btnStock);
-            this.pnlButton1.Controls.Add(this.btnQuotation);
-            this.pnlButton1.Controls.Add(this.btnItemCard);
-            this.pnlButton1.Controls.Add(this.btnPurchaseOrder);
-            this.pnlButton1.Controls.Add(this.btnCustomer);
-            this.pnlButton1.Controls.Add(this.btnUser);
-            this.pnlButton1.Controls.Add(this.btnSalesOrder);
-            this.pnlButton1.Controls.Add(this.btnSupplier);
-            this.pnlButton1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlButton1.Location = new System.Drawing.Point(0, 275);
-            this.pnlButton1.Name = "pnlButton1";
-            this.pnlButton1.Size = new System.Drawing.Size(292, 0);
-            this.pnlButton1.TabIndex = 3;
+            this.btnOnSale.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
+            this.btnOnSale.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
+            this.btnOnSale.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOnSale.BackColor = System.Drawing.Color.Transparent;
+            this.btnOnSale.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnOnSale.Font = new System.Drawing.Font("Sitka Text", 13.8F, System.Drawing.FontStyle.Bold);
+            this.btnOnSale.ForeColor = System.Drawing.Color.Black;
+            this.btnOnSale.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
+            this.btnOnSale.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
+            this.btnOnSale.Location = new System.Drawing.Point(41, 364);
+            this.btnOnSale.Margin = new System.Windows.Forms.Padding(2);
+            this.btnOnSale.Name = "btnOnSale";
+            this.btnOnSale.Radius = 5;
+            this.btnOnSale.Size = new System.Drawing.Size(169, 32);
+            this.btnOnSale.Stroke = false;
+            this.btnOnSale.StrokeColor = System.Drawing.Color.Gray;
+            this.btnOnSale.TabIndex = 16;
+            this.btnOnSale.Text = "On Sale";
+            this.btnOnSale.Transparency = false;
+            this.btnOnSale.Click += new System.EventHandler(this.btnOnSale_Click);
+            // 
+            // btnSuperDisk
+            // 
+            this.btnSuperDisk.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
+            this.btnSuperDisk.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
+            this.btnSuperDisk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSuperDisk.BackColor = System.Drawing.Color.Transparent;
+            this.btnSuperDisk.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnSuperDisk.Font = new System.Drawing.Font("Sitka Text", 13.8F, System.Drawing.FontStyle.Bold);
+            this.btnSuperDisk.ForeColor = System.Drawing.Color.Black;
+            this.btnSuperDisk.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
+            this.btnSuperDisk.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
+            this.btnSuperDisk.Location = new System.Drawing.Point(41, 328);
+            this.btnSuperDisk.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSuperDisk.Name = "btnSuperDisk";
+            this.btnSuperDisk.Radius = 5;
+            this.btnSuperDisk.Size = new System.Drawing.Size(169, 32);
+            this.btnSuperDisk.Stroke = false;
+            this.btnSuperDisk.StrokeColor = System.Drawing.Color.Gray;
+            this.btnSuperDisk.TabIndex = 15;
+            this.btnSuperDisk.Text = "Super Disk";
+            this.btnSuperDisk.Transparency = false;
+            this.btnSuperDisk.Click += new System.EventHandler(this.btnSuperDisk_Click);
+            // 
+            // btnSlidingPriceList
+            // 
+            this.btnSlidingPriceList.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
+            this.btnSlidingPriceList.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
+            this.btnSlidingPriceList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSlidingPriceList.BackColor = System.Drawing.Color.Transparent;
+            this.btnSlidingPriceList.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnSlidingPriceList.Font = new System.Drawing.Font("Sitka Text", 13.8F, System.Drawing.FontStyle.Bold);
+            this.btnSlidingPriceList.ForeColor = System.Drawing.Color.Black;
+            this.btnSlidingPriceList.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
+            this.btnSlidingPriceList.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
+            this.btnSlidingPriceList.Location = new System.Drawing.Point(41, 292);
+            this.btnSlidingPriceList.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSlidingPriceList.Name = "btnSlidingPriceList";
+            this.btnSlidingPriceList.Radius = 5;
+            this.btnSlidingPriceList.Size = new System.Drawing.Size(169, 32);
+            this.btnSlidingPriceList.Stroke = false;
+            this.btnSlidingPriceList.StrokeColor = System.Drawing.Color.Gray;
+            this.btnSlidingPriceList.TabIndex = 14;
+            this.btnSlidingPriceList.Text = "Sliding Price List";
+            this.btnSlidingPriceList.Transparency = false;
+            this.btnSlidingPriceList.Click += new System.EventHandler(this.btnSlidingPriceList_Click);
+            // 
+            // btnDiscontinuedList
+            // 
+            this.btnDiscontinuedList.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
+            this.btnDiscontinuedList.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
+            this.btnDiscontinuedList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDiscontinuedList.BackColor = System.Drawing.Color.Transparent;
+            this.btnDiscontinuedList.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnDiscontinuedList.Font = new System.Drawing.Font("Sitka Text", 13.8F, System.Drawing.FontStyle.Bold);
+            this.btnDiscontinuedList.ForeColor = System.Drawing.Color.Black;
+            this.btnDiscontinuedList.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
+            this.btnDiscontinuedList.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
+            this.btnDiscontinuedList.Location = new System.Drawing.Point(41, 256);
+            this.btnDiscontinuedList.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDiscontinuedList.Name = "btnDiscontinuedList";
+            this.btnDiscontinuedList.Radius = 5;
+            this.btnDiscontinuedList.Size = new System.Drawing.Size(169, 32);
+            this.btnDiscontinuedList.Stroke = false;
+            this.btnDiscontinuedList.StrokeColor = System.Drawing.Color.Gray;
+            this.btnDiscontinuedList.TabIndex = 13;
+            this.btnDiscontinuedList.Text = "Discontinued List";
+            this.btnDiscontinuedList.Transparency = false;
+            this.btnDiscontinuedList.Click += new System.EventHandler(this.btnDiscontinuedList_Click);
+            // 
+            // btnExtendedRangePrice
+            // 
+            this.btnExtendedRangePrice.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
+            this.btnExtendedRangePrice.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
+            this.btnExtendedRangePrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExtendedRangePrice.BackColor = System.Drawing.Color.Transparent;
+            this.btnExtendedRangePrice.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnExtendedRangePrice.Font = new System.Drawing.Font("Sitka Text", 13.8F, System.Drawing.FontStyle.Bold);
+            this.btnExtendedRangePrice.ForeColor = System.Drawing.Color.Black;
+            this.btnExtendedRangePrice.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
+            this.btnExtendedRangePrice.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
+            this.btnExtendedRangePrice.Location = new System.Drawing.Point(41, 220);
+            this.btnExtendedRangePrice.Margin = new System.Windows.Forms.Padding(2);
+            this.btnExtendedRangePrice.Name = "btnExtendedRangePrice";
+            this.btnExtendedRangePrice.Radius = 5;
+            this.btnExtendedRangePrice.Size = new System.Drawing.Size(169, 32);
+            this.btnExtendedRangePrice.Stroke = false;
+            this.btnExtendedRangePrice.StrokeColor = System.Drawing.Color.Gray;
+            this.btnExtendedRangePrice.TabIndex = 12;
+            this.btnExtendedRangePrice.Text = "Extended Range Price";
+            this.btnExtendedRangePrice.Transparency = false;
+            this.btnExtendedRangePrice.Click += new System.EventHandler(this.btnExtendedRangePrice_Click);
+            // 
+            // btnHazardousFile
+            // 
+            this.btnHazardousFile.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
+            this.btnHazardousFile.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
+            this.btnHazardousFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnHazardousFile.BackColor = System.Drawing.Color.Transparent;
+            this.btnHazardousFile.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnHazardousFile.Font = new System.Drawing.Font("Sitka Text", 13.8F, System.Drawing.FontStyle.Bold);
+            this.btnHazardousFile.ForeColor = System.Drawing.Color.Black;
+            this.btnHazardousFile.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
+            this.btnHazardousFile.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
+            this.btnHazardousFile.Location = new System.Drawing.Point(41, 184);
+            this.btnHazardousFile.Margin = new System.Windows.Forms.Padding(2);
+            this.btnHazardousFile.Name = "btnHazardousFile";
+            this.btnHazardousFile.Radius = 5;
+            this.btnHazardousFile.Size = new System.Drawing.Size(169, 32);
+            this.btnHazardousFile.Stroke = false;
+            this.btnHazardousFile.StrokeColor = System.Drawing.Color.Gray;
+            this.btnHazardousFile.TabIndex = 11;
+            this.btnHazardousFile.Text = "Hazardous File";
+            this.btnHazardousFile.Transparency = false;
+            this.btnHazardousFile.Click += new System.EventHandler(this.btnHazardousFile_Click);
+            // 
+            // btnDualUsedArticles
+            // 
+            this.btnDualUsedArticles.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
+            this.btnDualUsedArticles.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
+            this.btnDualUsedArticles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDualUsedArticles.BackColor = System.Drawing.Color.Transparent;
+            this.btnDualUsedArticles.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnDualUsedArticles.Font = new System.Drawing.Font("Sitka Text", 13.8F, System.Drawing.FontStyle.Bold);
+            this.btnDualUsedArticles.ForeColor = System.Drawing.Color.Black;
+            this.btnDualUsedArticles.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
+            this.btnDualUsedArticles.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
+            this.btnDualUsedArticles.Location = new System.Drawing.Point(41, 148);
+            this.btnDualUsedArticles.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDualUsedArticles.Name = "btnDualUsedArticles";
+            this.btnDualUsedArticles.Radius = 5;
+            this.btnDualUsedArticles.Size = new System.Drawing.Size(169, 32);
+            this.btnDualUsedArticles.Stroke = false;
+            this.btnDualUsedArticles.StrokeColor = System.Drawing.Color.Gray;
+            this.btnDualUsedArticles.TabIndex = 10;
+            this.btnDualUsedArticles.Text = "Dual Used Articles";
+            this.btnDualUsedArticles.Transparency = false;
+            this.btnDualUsedArticles.Click += new System.EventHandler(this.btnDualUsedArticles_Click);
+            // 
+            // btnSuperDiskwithP
+            // 
+            this.btnSuperDiskwithP.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
+            this.btnSuperDiskwithP.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
+            this.btnSuperDiskwithP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSuperDiskwithP.BackColor = System.Drawing.Color.Transparent;
+            this.btnSuperDiskwithP.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnSuperDiskwithP.Font = new System.Drawing.Font("Sitka Text", 13.8F, System.Drawing.FontStyle.Bold);
+            this.btnSuperDiskwithP.ForeColor = System.Drawing.Color.Black;
+            this.btnSuperDiskwithP.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
+            this.btnSuperDiskwithP.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
+            this.btnSuperDiskwithP.Location = new System.Drawing.Point(41, 112);
+            this.btnSuperDiskwithP.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSuperDiskwithP.Name = "btnSuperDiskwithP";
+            this.btnSuperDiskwithP.Radius = 5;
+            this.btnSuperDiskwithP.Size = new System.Drawing.Size(169, 32);
+            this.btnSuperDiskwithP.Stroke = false;
+            this.btnSuperDiskwithP.StrokeColor = System.Drawing.Color.Gray;
+            this.btnSuperDiskwithP.TabIndex = 9;
+            this.btnSuperDiskwithP.Text = "Super Disk with P";
+            this.btnSuperDiskwithP.Transparency = false;
+            this.btnSuperDiskwithP.Click += new System.EventHandler(this.btnSuperDiskwithP_Click);
+            // 
+            // btnTSEList
+            // 
+            this.btnTSEList.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
+            this.btnTSEList.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
+            this.btnTSEList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTSEList.BackColor = System.Drawing.Color.Transparent;
+            this.btnTSEList.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnTSEList.Font = new System.Drawing.Font("Sitka Text", 13.8F, System.Drawing.FontStyle.Bold);
+            this.btnTSEList.ForeColor = System.Drawing.Color.Black;
+            this.btnTSEList.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
+            this.btnTSEList.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
+            this.btnTSEList.Location = new System.Drawing.Point(41, 76);
+            this.btnTSEList.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTSEList.Name = "btnTSEList";
+            this.btnTSEList.Radius = 5;
+            this.btnTSEList.Size = new System.Drawing.Size(169, 32);
+            this.btnTSEList.Stroke = false;
+            this.btnTSEList.StrokeColor = System.Drawing.Color.Gray;
+            this.btnTSEList.TabIndex = 8;
+            this.btnTSEList.Text = "TSE List";
+            this.btnTSEList.Transparency = false;
+            this.btnTSEList.Click += new System.EventHandler(this.btnTSEList_Click);
+            // 
+            // btnRSProList
+            // 
+            this.btnRSProList.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
+            this.btnRSProList.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
+            this.btnRSProList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRSProList.BackColor = System.Drawing.Color.Transparent;
+            this.btnRSProList.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnRSProList.Font = new System.Drawing.Font("Sitka Text", 13.8F, System.Drawing.FontStyle.Bold);
+            this.btnRSProList.ForeColor = System.Drawing.Color.Black;
+            this.btnRSProList.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
+            this.btnRSProList.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
+            this.btnRSProList.Location = new System.Drawing.Point(41, 40);
+            this.btnRSProList.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRSProList.Name = "btnRSProList";
+            this.btnRSProList.Radius = 5;
+            this.btnRSProList.Size = new System.Drawing.Size(169, 32);
+            this.btnRSProList.Stroke = false;
+            this.btnRSProList.StrokeColor = System.Drawing.Color.Gray;
+            this.btnRSProList.TabIndex = 7;
+            this.btnRSProList.Text = "RS ProList";
+            this.btnRSProList.Transparency = false;
+            this.btnRSProList.Click += new System.EventHandler(this.btnRSProList_Click);
+            // 
+            // btnRsInvoice
+            // 
+            this.btnRsInvoice.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
+            this.btnRsInvoice.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
+            this.btnRsInvoice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRsInvoice.BackColor = System.Drawing.Color.Transparent;
+            this.btnRsInvoice.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnRsInvoice.Font = new System.Drawing.Font("Sitka Text", 13.8F, System.Drawing.FontStyle.Bold);
+            this.btnRsInvoice.ForeColor = System.Drawing.Color.Black;
+            this.btnRsInvoice.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
+            this.btnRsInvoice.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
+            this.btnRsInvoice.Location = new System.Drawing.Point(41, 4);
+            this.btnRsInvoice.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRsInvoice.Name = "btnRsInvoice";
+            this.btnRsInvoice.Radius = 5;
+            this.btnRsInvoice.Size = new System.Drawing.Size(169, 32);
+            this.btnRsInvoice.Stroke = false;
+            this.btnRsInvoice.StrokeColor = System.Drawing.Color.Gray;
+            this.btnRsInvoice.TabIndex = 6;
+            this.btnRsInvoice.Text = "Rs Invoice";
+            this.btnRsInvoice.Transparency = false;
+            this.btnRsInvoice.Click += new System.EventHandler(this.btnRsInvoice_Click);
+            // 
+            // btnFileLoader
+            // 
+            this.btnFileLoader.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
+            this.btnFileLoader.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(196)))), ((int)(((byte)(204)))));
+            this.btnFileLoader.BackColor = System.Drawing.Color.Transparent;
+            this.btnFileLoader.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnFileLoader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnFileLoader.Font = new System.Drawing.Font("Sitka Text", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnFileLoader.ForeColor = System.Drawing.Color.Black;
+            this.btnFileLoader.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.btnFileLoader.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(255)))), ((int)(((byte)(173)))));
+            this.btnFileLoader.Location = new System.Drawing.Point(0, 223);
+            this.btnFileLoader.Margin = new System.Windows.Forms.Padding(2);
+            this.btnFileLoader.Name = "btnFileLoader";
+            this.btnFileLoader.Radius = 5;
+            this.btnFileLoader.Size = new System.Drawing.Size(218, 49);
+            this.btnFileLoader.Stroke = true;
+            this.btnFileLoader.StrokeColor = System.Drawing.Color.DarkGray;
+            this.btnFileLoader.TabIndex = 5;
+            this.btnFileLoader.Text = "File Loader";
+            this.btnFileLoader.Transparency = false;
+            this.btnFileLoader.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // pnlDevelopment
+            // 
+            this.pnlDevelopment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(254)))), ((int)(((byte)(233)))));
+            this.pnlDevelopment.Controls.Add(this.btnToBeInvoiced);
+            this.pnlDevelopment.Controls.Add(this.btnStock);
+            this.pnlDevelopment.Controls.Add(this.btnQuotation);
+            this.pnlDevelopment.Controls.Add(this.btnItemCard);
+            this.pnlDevelopment.Controls.Add(this.btnPurchaseOrder);
+            this.pnlDevelopment.Controls.Add(this.btnCustomer);
+            this.pnlDevelopment.Controls.Add(this.btnUser);
+            this.pnlDevelopment.Controls.Add(this.btnSalesOrder);
+            this.pnlDevelopment.Controls.Add(this.btnSupplier);
+            this.pnlDevelopment.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlDevelopment.Location = new System.Drawing.Point(0, 223);
+            this.pnlDevelopment.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlDevelopment.Name = "pnlDevelopment";
+            this.pnlDevelopment.Size = new System.Drawing.Size(218, 0);
+            this.pnlDevelopment.TabIndex = 3;
+            // 
+            // btnToBeInvoiced
+            // 
+            this.btnToBeInvoiced.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
+            this.btnToBeInvoiced.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
+            this.btnToBeInvoiced.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnToBeInvoiced.BackColor = System.Drawing.Color.Transparent;
+            this.btnToBeInvoiced.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnToBeInvoiced.Font = new System.Drawing.Font("Sitka Text", 13.8F, System.Drawing.FontStyle.Bold);
+            this.btnToBeInvoiced.ForeColor = System.Drawing.Color.Black;
+            this.btnToBeInvoiced.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
+            this.btnToBeInvoiced.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
+            this.btnToBeInvoiced.Location = new System.Drawing.Point(41, 304);
+            this.btnToBeInvoiced.Margin = new System.Windows.Forms.Padding(2);
+            this.btnToBeInvoiced.Name = "btnToBeInvoiced";
+            this.btnToBeInvoiced.Radius = 5;
+            this.btnToBeInvoiced.Size = new System.Drawing.Size(169, 32);
+            this.btnToBeInvoiced.Stroke = false;
+            this.btnToBeInvoiced.StrokeColor = System.Drawing.Color.Gray;
+            this.btnToBeInvoiced.TabIndex = 13;
+            this.btnToBeInvoiced.Text = "To Be Invoiced";
+            this.btnToBeInvoiced.Transparency = false;
+            this.btnToBeInvoiced.Click += new System.EventHandler(this.btnToBeInvoiced_Click);
+            // 
+            // btnStock
+            // 
+            this.btnStock.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
+            this.btnStock.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
+            this.btnStock.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnStock.BackColor = System.Drawing.Color.Transparent;
+            this.btnStock.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnStock.Font = new System.Drawing.Font("Sitka Text", 13.8F, System.Drawing.FontStyle.Bold);
+            this.btnStock.ForeColor = System.Drawing.Color.Black;
+            this.btnStock.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
+            this.btnStock.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
+            this.btnStock.Location = new System.Drawing.Point(41, 266);
+            this.btnStock.Margin = new System.Windows.Forms.Padding(2);
+            this.btnStock.Name = "btnStock";
+            this.btnStock.Radius = 5;
+            this.btnStock.Size = new System.Drawing.Size(169, 32);
+            this.btnStock.Stroke = false;
+            this.btnStock.StrokeColor = System.Drawing.Color.Gray;
+            this.btnStock.TabIndex = 12;
+            this.btnStock.Text = "Stock";
+            this.btnStock.Transparency = false;
+            this.btnStock.Click += new System.EventHandler(this.btnStock_Click);
+            // 
+            // btnQuotation
+            // 
+            this.btnQuotation.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
+            this.btnQuotation.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
+            this.btnQuotation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnQuotation.BackColor = System.Drawing.Color.Transparent;
+            this.btnQuotation.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnQuotation.Font = new System.Drawing.Font("Sitka Text", 13.8F, System.Drawing.FontStyle.Bold);
+            this.btnQuotation.ForeColor = System.Drawing.Color.Black;
+            this.btnQuotation.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
+            this.btnQuotation.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
+            this.btnQuotation.Location = new System.Drawing.Point(41, 229);
+            this.btnQuotation.Margin = new System.Windows.Forms.Padding(2);
+            this.btnQuotation.Name = "btnQuotation";
+            this.btnQuotation.Radius = 5;
+            this.btnQuotation.Size = new System.Drawing.Size(169, 32);
+            this.btnQuotation.Stroke = false;
+            this.btnQuotation.StrokeColor = System.Drawing.Color.Gray;
+            this.btnQuotation.TabIndex = 11;
+            this.btnQuotation.Text = "Quotation";
+            this.btnQuotation.Transparency = false;
+            this.btnQuotation.Click += new System.EventHandler(this.btnQuotation_Click);
+            // 
+            // btnItemCard
+            // 
+            this.btnItemCard.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
+            this.btnItemCard.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
+            this.btnItemCard.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnItemCard.BackColor = System.Drawing.Color.Transparent;
+            this.btnItemCard.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnItemCard.Font = new System.Drawing.Font("Sitka Text", 13.8F, System.Drawing.FontStyle.Bold);
+            this.btnItemCard.ForeColor = System.Drawing.Color.Black;
+            this.btnItemCard.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
+            this.btnItemCard.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
+            this.btnItemCard.Location = new System.Drawing.Point(41, 192);
+            this.btnItemCard.Margin = new System.Windows.Forms.Padding(2);
+            this.btnItemCard.Name = "btnItemCard";
+            this.btnItemCard.Radius = 5;
+            this.btnItemCard.Size = new System.Drawing.Size(169, 32);
+            this.btnItemCard.Stroke = false;
+            this.btnItemCard.StrokeColor = System.Drawing.Color.Gray;
+            this.btnItemCard.TabIndex = 10;
+            this.btnItemCard.Text = "Item Card";
+            this.btnItemCard.Transparency = false;
+            this.btnItemCard.Click += new System.EventHandler(this.btnItemCard_Click);
+            // 
+            // btnPurchaseOrder
+            // 
+            this.btnPurchaseOrder.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
+            this.btnPurchaseOrder.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
+            this.btnPurchaseOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPurchaseOrder.BackColor = System.Drawing.Color.Transparent;
+            this.btnPurchaseOrder.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnPurchaseOrder.Font = new System.Drawing.Font("Sitka Text", 13.8F, System.Drawing.FontStyle.Bold);
+            this.btnPurchaseOrder.ForeColor = System.Drawing.Color.Black;
+            this.btnPurchaseOrder.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
+            this.btnPurchaseOrder.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
+            this.btnPurchaseOrder.Location = new System.Drawing.Point(41, 154);
+            this.btnPurchaseOrder.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPurchaseOrder.Name = "btnPurchaseOrder";
+            this.btnPurchaseOrder.Radius = 5;
+            this.btnPurchaseOrder.Size = new System.Drawing.Size(169, 32);
+            this.btnPurchaseOrder.Stroke = false;
+            this.btnPurchaseOrder.StrokeColor = System.Drawing.Color.Gray;
+            this.btnPurchaseOrder.TabIndex = 9;
+            this.btnPurchaseOrder.Text = "Purchase Order";
+            this.btnPurchaseOrder.Transparency = false;
+            this.btnPurchaseOrder.Click += new System.EventHandler(this.btnPurchaseOrder_Click);
+            // 
+            // btnCustomer
+            // 
+            this.btnCustomer.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
+            this.btnCustomer.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
+            this.btnCustomer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCustomer.BackColor = System.Drawing.Color.Transparent;
+            this.btnCustomer.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnCustomer.Font = new System.Drawing.Font("Sitka Text", 13.8F, System.Drawing.FontStyle.Bold);
+            this.btnCustomer.ForeColor = System.Drawing.Color.Black;
+            this.btnCustomer.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
+            this.btnCustomer.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
+            this.btnCustomer.Location = new System.Drawing.Point(41, 117);
+            this.btnCustomer.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCustomer.Name = "btnCustomer";
+            this.btnCustomer.Radius = 5;
+            this.btnCustomer.Size = new System.Drawing.Size(169, 32);
+            this.btnCustomer.Stroke = false;
+            this.btnCustomer.StrokeColor = System.Drawing.Color.Gray;
+            this.btnCustomer.TabIndex = 8;
+            this.btnCustomer.Text = "Customer";
+            this.btnCustomer.Transparency = false;
+            this.btnCustomer.Click += new System.EventHandler(this.btnCustomer_Click);
+            // 
+            // btnUser
+            // 
+            this.btnUser.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
+            this.btnUser.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
+            this.btnUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnUser.BackColor = System.Drawing.Color.Transparent;
+            this.btnUser.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnUser.Font = new System.Drawing.Font("Sitka Text", 13.8F, System.Drawing.FontStyle.Bold);
+            this.btnUser.ForeColor = System.Drawing.Color.Black;
+            this.btnUser.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
+            this.btnUser.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
+            this.btnUser.Location = new System.Drawing.Point(41, 80);
+            this.btnUser.Margin = new System.Windows.Forms.Padding(2);
+            this.btnUser.Name = "btnUser";
+            this.btnUser.Radius = 5;
+            this.btnUser.Size = new System.Drawing.Size(169, 32);
+            this.btnUser.Stroke = false;
+            this.btnUser.StrokeColor = System.Drawing.Color.Gray;
+            this.btnUser.TabIndex = 7;
+            this.btnUser.Text = "User";
+            this.btnUser.Transparency = false;
+            this.btnUser.Click += new System.EventHandler(this.btnUser_Click);
+            // 
+            // btnSalesOrder
+            // 
+            this.btnSalesOrder.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
+            this.btnSalesOrder.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
+            this.btnSalesOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSalesOrder.BackColor = System.Drawing.Color.Transparent;
+            this.btnSalesOrder.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnSalesOrder.Font = new System.Drawing.Font("Sitka Text", 13.8F, System.Drawing.FontStyle.Bold);
+            this.btnSalesOrder.ForeColor = System.Drawing.Color.Black;
+            this.btnSalesOrder.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
+            this.btnSalesOrder.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
+            this.btnSalesOrder.Location = new System.Drawing.Point(41, 42);
+            this.btnSalesOrder.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSalesOrder.Name = "btnSalesOrder";
+            this.btnSalesOrder.Radius = 5;
+            this.btnSalesOrder.Size = new System.Drawing.Size(169, 32);
+            this.btnSalesOrder.Stroke = false;
+            this.btnSalesOrder.StrokeColor = System.Drawing.Color.Gray;
+            this.btnSalesOrder.TabIndex = 6;
+            this.btnSalesOrder.Text = "Sales Order";
+            this.btnSalesOrder.Transparency = false;
+            this.btnSalesOrder.Click += new System.EventHandler(this.btnSalesOrder_Click);
+            // 
+            // btnSupplier
+            // 
+            this.btnSupplier.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
+            this.btnSupplier.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
+            this.btnSupplier.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSupplier.BackColor = System.Drawing.Color.Transparent;
+            this.btnSupplier.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnSupplier.Font = new System.Drawing.Font("Sitka Text", 13.8F, System.Drawing.FontStyle.Bold);
+            this.btnSupplier.ForeColor = System.Drawing.Color.Black;
+            this.btnSupplier.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
+            this.btnSupplier.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
+            this.btnSupplier.Location = new System.Drawing.Point(41, 5);
+            this.btnSupplier.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSupplier.Name = "btnSupplier";
+            this.btnSupplier.Radius = 5;
+            this.btnSupplier.Size = new System.Drawing.Size(169, 32);
+            this.btnSupplier.Stroke = false;
+            this.btnSupplier.StrokeColor = System.Drawing.Color.Gray;
+            this.btnSupplier.TabIndex = 5;
+            this.btnSupplier.Text = "Supplier";
+            this.btnSupplier.Transparency = false;
+            this.btnSupplier.Click += new System.EventHandler(this.btnSupplier_Click);
+            // 
+            // btnDevelopment
+            // 
+            this.btnDevelopment.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
+            this.btnDevelopment.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(196)))), ((int)(((byte)(204)))));
+            this.btnDevelopment.BackColor = System.Drawing.Color.Transparent;
+            this.btnDevelopment.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnDevelopment.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnDevelopment.Font = new System.Drawing.Font("Sitka Text", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnDevelopment.ForeColor = System.Drawing.Color.Black;
+            this.btnDevelopment.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.btnDevelopment.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(255)))), ((int)(((byte)(173)))));
+            this.btnDevelopment.Location = new System.Drawing.Point(0, 174);
+            this.btnDevelopment.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDevelopment.Name = "btnDevelopment";
+            this.btnDevelopment.Radius = 5;
+            this.btnDevelopment.Size = new System.Drawing.Size(218, 49);
+            this.btnDevelopment.Stroke = true;
+            this.btnDevelopment.StrokeColor = System.Drawing.Color.DarkGray;
+            this.btnDevelopment.TabIndex = 4;
+            this.btnDevelopment.Text = "Development";
+            this.btnDevelopment.Transparency = false;
+            this.btnDevelopment.Click += new System.EventHandler(this.button1_Click);
             // 
             // pnlBorder
             // 
             this.pnlBorder.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlBorder.Location = new System.Drawing.Point(0, 207);
+            this.pnlBorder.Location = new System.Drawing.Point(0, 168);
+            this.pnlBorder.Margin = new System.Windows.Forms.Padding(2);
             this.pnlBorder.Name = "pnlBorder";
-            this.pnlBorder.Size = new System.Drawing.Size(292, 8);
+            this.pnlBorder.Size = new System.Drawing.Size(218, 6);
             this.pnlBorder.TabIndex = 9;
             // 
             // panel4
@@ -234,17 +798,19 @@ namespace LoginForm.Main
             this.panel4.Controls.Add(this.lblTitleName);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(292, 207);
+            this.panel4.Size = new System.Drawing.Size(218, 168);
             this.panel4.TabIndex = 10;
             // 
             // lblUSD
             // 
             this.lblUSD.AutoSize = true;
             this.lblUSD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblUSD.Location = new System.Drawing.Point(74, 148);
+            this.lblUSD.Location = new System.Drawing.Point(56, 120);
+            this.lblUSD.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblUSD.Name = "lblUSD";
-            this.lblUSD.Size = new System.Drawing.Size(46, 18);
+            this.lblUSD.Size = new System.Drawing.Size(41, 15);
             this.lblUSD.TabIndex = 9;
             this.lblUSD.Text = "label2";
             // 
@@ -252,9 +818,10 @@ namespace LoginForm.Main
             // 
             this.lblGBP.AutoSize = true;
             this.lblGBP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblGBP.Location = new System.Drawing.Point(74, 130);
+            this.lblGBP.Location = new System.Drawing.Point(56, 106);
+            this.lblGBP.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblGBP.Name = "lblGBP";
-            this.lblGBP.Size = new System.Drawing.Size(46, 18);
+            this.lblGBP.Size = new System.Drawing.Size(41, 15);
             this.lblGBP.TabIndex = 8;
             this.lblGBP.Text = "label1";
             // 
@@ -262,9 +829,10 @@ namespace LoginForm.Main
             // 
             this.lblTitleUSD.AutoSize = true;
             this.lblTitleUSD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblTitleUSD.Location = new System.Drawing.Point(18, 148);
+            this.lblTitleUSD.Location = new System.Drawing.Point(14, 120);
+            this.lblTitleUSD.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitleUSD.Name = "lblTitleUSD";
-            this.lblTitleUSD.Size = new System.Drawing.Size(44, 18);
+            this.lblTitleUSD.Size = new System.Drawing.Size(36, 15);
             this.lblTitleUSD.TabIndex = 7;
             this.lblTitleUSD.Text = "USD:";
             // 
@@ -272,9 +840,10 @@ namespace LoginForm.Main
             // 
             this.lblTitleGBP.AutoSize = true;
             this.lblTitleGBP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblTitleGBP.Location = new System.Drawing.Point(18, 130);
+            this.lblTitleGBP.Location = new System.Drawing.Point(14, 106);
+            this.lblTitleGBP.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitleGBP.Name = "lblTitleGBP";
-            this.lblTitleGBP.Size = new System.Drawing.Size(44, 18);
+            this.lblTitleGBP.Size = new System.Drawing.Size(35, 15);
             this.lblTitleGBP.TabIndex = 6;
             this.lblTitleGBP.Text = "GPB:";
             // 
@@ -282,9 +851,10 @@ namespace LoginForm.Main
             // 
             this.lblPhone.AutoSize = true;
             this.lblPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblPhone.Location = new System.Drawing.Point(74, 55);
+            this.lblPhone.Location = new System.Drawing.Point(56, 45);
+            this.lblPhone.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPhone.Name = "lblPhone";
-            this.lblPhone.Size = new System.Drawing.Size(46, 18);
+            this.lblPhone.Size = new System.Drawing.Size(41, 15);
             this.lblPhone.TabIndex = 5;
             this.lblPhone.Text = "label4";
             // 
@@ -292,9 +862,10 @@ namespace LoginForm.Main
             // 
             this.lblTitlePhone.AutoSize = true;
             this.lblTitlePhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblTitlePhone.Location = new System.Drawing.Point(18, 55);
+            this.lblTitlePhone.Location = new System.Drawing.Point(14, 45);
+            this.lblTitlePhone.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitlePhone.Name = "lblTitlePhone";
-            this.lblTitlePhone.Size = new System.Drawing.Size(55, 18);
+            this.lblTitlePhone.Size = new System.Drawing.Size(46, 15);
             this.lblTitlePhone.TabIndex = 4;
             this.lblTitlePhone.Text = "Phone:";
             // 
@@ -302,9 +873,10 @@ namespace LoginForm.Main
             // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblEmail.Location = new System.Drawing.Point(74, 37);
+            this.lblEmail.Location = new System.Drawing.Point(56, 30);
+            this.lblEmail.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(46, 18);
+            this.lblEmail.Size = new System.Drawing.Size(41, 15);
             this.lblEmail.TabIndex = 3;
             this.lblEmail.Text = "label2";
             // 
@@ -312,9 +884,10 @@ namespace LoginForm.Main
             // 
             this.lblTitleEmail.AutoSize = true;
             this.lblTitleEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblTitleEmail.Location = new System.Drawing.Point(18, 37);
+            this.lblTitleEmail.Location = new System.Drawing.Point(14, 30);
+            this.lblTitleEmail.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitleEmail.Name = "lblTitleEmail";
-            this.lblTitleEmail.Size = new System.Drawing.Size(49, 18);
+            this.lblTitleEmail.Size = new System.Drawing.Size(42, 15);
             this.lblTitleEmail.TabIndex = 2;
             this.lblTitleEmail.Text = "Email:";
             // 
@@ -322,9 +895,10 @@ namespace LoginForm.Main
             // 
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblName.Location = new System.Drawing.Point(74, 19);
+            this.lblName.Location = new System.Drawing.Point(56, 15);
+            this.lblName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(46, 18);
+            this.lblName.Size = new System.Drawing.Size(41, 15);
             this.lblName.TabIndex = 1;
             this.lblName.Text = "label1";
             // 
@@ -332,9 +906,10 @@ namespace LoginForm.Main
             // 
             this.lblTitleName.AutoSize = true;
             this.lblTitleName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblTitleName.Location = new System.Drawing.Point(18, 19);
+            this.lblTitleName.Location = new System.Drawing.Point(14, 15);
+            this.lblTitleName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitleName.Name = "lblTitleName";
-            this.lblTitleName.Size = new System.Drawing.Size(52, 18);
+            this.lblTitleName.Size = new System.Drawing.Size(44, 15);
             this.lblTitleName.TabIndex = 0;
             this.lblTitleName.Text = "Name:";
             // 
@@ -346,317 +921,68 @@ namespace LoginForm.Main
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.altoSlidingLabel1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(310, 0);
+            this.panel3.Location = new System.Drawing.Point(232, 0);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(706, 934);
+            this.panel3.Size = new System.Drawing.Size(531, 447);
             this.panel3.TabIndex = 1;
+            // 
+            // altoSlidingLabel1
+            // 
+            this.altoSlidingLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.altoSlidingLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.altoSlidingLabel1.Location = new System.Drawing.Point(4, 390);
+            this.altoSlidingLabel1.Margin = new System.Windows.Forms.Padding(2);
+            this.altoSlidingLabel1.Name = "altoSlidingLabel1";
+            this.altoSlidingLabel1.Size = new System.Drawing.Size(244, 46);
+            this.altoSlidingLabel1.Slide = true;
+            this.altoSlidingLabel1.TabIndex = 1;
+            this.altoSlidingLabel1.Text = "We will have a meeting at 17:00 about new product catalogues came from RS UK";
             // 
             // bunifuElipse1
             // 
             this.bunifuElipse1.ElipseRadius = 10;
-            this.bunifuElipse1.TargetControl = this.pnlButton1;
+            this.bunifuElipse1.TargetControl = this.pnlDevelopment;
             // 
             // bunifuElipse2
             // 
             this.bunifuElipse2.ElipseRadius = 20;
-            this.bunifuElipse2.TargetControl = this.pnlButton2;
+            this.bunifuElipse2.TargetControl = this.pnlFileLoader;
             // 
             // bunifuElipse3
             // 
             this.bunifuElipse3.ElipseRadius = 20;
-            this.bunifuElipse3.TargetControl = this.pnlButton3;
+            this.bunifuElipse3.TargetControl = this.pnlManagement;
             // 
             // timer2
             // 
             this.timer2.Interval = 5;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
-            // altoSlidingLabel1
-            // 
-            this.altoSlidingLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.altoSlidingLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.altoSlidingLabel1.Location = new System.Drawing.Point(5, 864);
-            this.altoSlidingLabel1.Name = "altoSlidingLabel1";
-            this.altoSlidingLabel1.Size = new System.Drawing.Size(326, 57);
-            this.altoSlidingLabel1.Slide = true;
-            this.altoSlidingLabel1.TabIndex = 1;
-            this.altoSlidingLabel1.Text = "We will have a meeting at 17:00 about new product catalogues came from RS UK";
-            // 
-            // button3
-            // 
-            this.button3.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
-            this.button3.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(196)))), ((int)(((byte)(204)))));
-            this.button3.BackColor = System.Drawing.Color.Transparent;
-            this.button3.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button3.Font = new System.Drawing.Font("Sitka Text", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button3.ForeColor = System.Drawing.Color.Black;
-            this.button3.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
-            this.button3.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(255)))), ((int)(((byte)(173)))));
-            this.button3.Location = new System.Drawing.Point(0, 335);
-            this.button3.Name = "button3";
-            this.button3.Radius = 5;
-            this.button3.Size = new System.Drawing.Size(292, 60);
-            this.button3.Stroke = true;
-            this.button3.StrokeColor = System.Drawing.Color.DarkGray;
-            this.button3.TabIndex = 7;
-            this.button3.Text = "Management";
-            this.button3.Transparency = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button2
-            // 
-            this.button2.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
-            this.button2.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(196)))), ((int)(((byte)(204)))));
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button2.Font = new System.Drawing.Font("Sitka Text", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
-            this.button2.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(255)))), ((int)(((byte)(173)))));
-            this.button2.Location = new System.Drawing.Point(0, 275);
-            this.button2.Name = "button2";
-            this.button2.Radius = 5;
-            this.button2.Size = new System.Drawing.Size(292, 60);
-            this.button2.Stroke = true;
-            this.button2.StrokeColor = System.Drawing.Color.DarkGray;
-            this.button2.TabIndex = 5;
-            this.button2.Text = "File Loader";
-            this.button2.Transparency = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // btnToBeInvoiced
-            // 
-            this.btnToBeInvoiced.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
-            this.btnToBeInvoiced.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
-            this.btnToBeInvoiced.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnToBeInvoiced.BackColor = System.Drawing.Color.Transparent;
-            this.btnToBeInvoiced.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnToBeInvoiced.Font = new System.Drawing.Font("Sitka Text", 13.8F, System.Drawing.FontStyle.Bold);
-            this.btnToBeInvoiced.ForeColor = System.Drawing.Color.Black;
-            this.btnToBeInvoiced.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
-            this.btnToBeInvoiced.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
-            this.btnToBeInvoiced.Location = new System.Drawing.Point(56, 374);
-            this.btnToBeInvoiced.Name = "btnToBeInvoiced";
-            this.btnToBeInvoiced.Radius = 5;
-            this.btnToBeInvoiced.Size = new System.Drawing.Size(225, 40);
-            this.btnToBeInvoiced.Stroke = false;
-            this.btnToBeInvoiced.StrokeColor = System.Drawing.Color.Gray;
-            this.btnToBeInvoiced.TabIndex = 13;
-            this.btnToBeInvoiced.Text = "To Be Invoiced";
-            this.btnToBeInvoiced.Transparency = false;
-            // 
-            // btnStock
-            // 
-            this.btnStock.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
-            this.btnStock.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
-            this.btnStock.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnStock.BackColor = System.Drawing.Color.Transparent;
-            this.btnStock.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnStock.Font = new System.Drawing.Font("Sitka Text", 13.8F, System.Drawing.FontStyle.Bold);
-            this.btnStock.ForeColor = System.Drawing.Color.Black;
-            this.btnStock.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
-            this.btnStock.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
-            this.btnStock.Location = new System.Drawing.Point(56, 328);
-            this.btnStock.Name = "btnStock";
-            this.btnStock.Radius = 5;
-            this.btnStock.Size = new System.Drawing.Size(225, 40);
-            this.btnStock.Stroke = false;
-            this.btnStock.StrokeColor = System.Drawing.Color.Gray;
-            this.btnStock.TabIndex = 12;
-            this.btnStock.Text = "Stock";
-            this.btnStock.Transparency = false;
-            // 
-            // btnQuotation
-            // 
-            this.btnQuotation.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
-            this.btnQuotation.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
-            this.btnQuotation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnQuotation.BackColor = System.Drawing.Color.Transparent;
-            this.btnQuotation.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnQuotation.Font = new System.Drawing.Font("Sitka Text", 13.8F, System.Drawing.FontStyle.Bold);
-            this.btnQuotation.ForeColor = System.Drawing.Color.Black;
-            this.btnQuotation.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
-            this.btnQuotation.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
-            this.btnQuotation.Location = new System.Drawing.Point(56, 282);
-            this.btnQuotation.Name = "btnQuotation";
-            this.btnQuotation.Radius = 5;
-            this.btnQuotation.Size = new System.Drawing.Size(225, 40);
-            this.btnQuotation.Stroke = false;
-            this.btnQuotation.StrokeColor = System.Drawing.Color.Gray;
-            this.btnQuotation.TabIndex = 11;
-            this.btnQuotation.Text = "Quotation";
-            this.btnQuotation.Transparency = false;
-            // 
-            // btnItemCard
-            // 
-            this.btnItemCard.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
-            this.btnItemCard.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
-            this.btnItemCard.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnItemCard.BackColor = System.Drawing.Color.Transparent;
-            this.btnItemCard.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnItemCard.Font = new System.Drawing.Font("Sitka Text", 13.8F, System.Drawing.FontStyle.Bold);
-            this.btnItemCard.ForeColor = System.Drawing.Color.Black;
-            this.btnItemCard.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
-            this.btnItemCard.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
-            this.btnItemCard.Location = new System.Drawing.Point(56, 236);
-            this.btnItemCard.Name = "btnItemCard";
-            this.btnItemCard.Radius = 5;
-            this.btnItemCard.Size = new System.Drawing.Size(225, 40);
-            this.btnItemCard.Stroke = false;
-            this.btnItemCard.StrokeColor = System.Drawing.Color.Gray;
-            this.btnItemCard.TabIndex = 10;
-            this.btnItemCard.Text = "Item Card";
-            this.btnItemCard.Transparency = false;
-            // 
-            // btnPurchaseOrder
-            // 
-            this.btnPurchaseOrder.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
-            this.btnPurchaseOrder.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
-            this.btnPurchaseOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPurchaseOrder.BackColor = System.Drawing.Color.Transparent;
-            this.btnPurchaseOrder.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnPurchaseOrder.Font = new System.Drawing.Font("Sitka Text", 13.8F, System.Drawing.FontStyle.Bold);
-            this.btnPurchaseOrder.ForeColor = System.Drawing.Color.Black;
-            this.btnPurchaseOrder.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
-            this.btnPurchaseOrder.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
-            this.btnPurchaseOrder.Location = new System.Drawing.Point(56, 190);
-            this.btnPurchaseOrder.Name = "btnPurchaseOrder";
-            this.btnPurchaseOrder.Radius = 5;
-            this.btnPurchaseOrder.Size = new System.Drawing.Size(225, 40);
-            this.btnPurchaseOrder.Stroke = false;
-            this.btnPurchaseOrder.StrokeColor = System.Drawing.Color.Gray;
-            this.btnPurchaseOrder.TabIndex = 9;
-            this.btnPurchaseOrder.Text = "Purchase Order";
-            this.btnPurchaseOrder.Transparency = false;
-            // 
-            // btnCustomer
-            // 
-            this.btnCustomer.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
-            this.btnCustomer.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
-            this.btnCustomer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCustomer.BackColor = System.Drawing.Color.Transparent;
-            this.btnCustomer.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnCustomer.Font = new System.Drawing.Font("Sitka Text", 13.8F, System.Drawing.FontStyle.Bold);
-            this.btnCustomer.ForeColor = System.Drawing.Color.Black;
-            this.btnCustomer.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
-            this.btnCustomer.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
-            this.btnCustomer.Location = new System.Drawing.Point(56, 144);
-            this.btnCustomer.Name = "btnCustomer";
-            this.btnCustomer.Radius = 5;
-            this.btnCustomer.Size = new System.Drawing.Size(225, 40);
-            this.btnCustomer.Stroke = false;
-            this.btnCustomer.StrokeColor = System.Drawing.Color.Gray;
-            this.btnCustomer.TabIndex = 8;
-            this.btnCustomer.Text = "Customer";
-            this.btnCustomer.Transparency = false;
-            // 
-            // btnUser
-            // 
-            this.btnUser.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
-            this.btnUser.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
-            this.btnUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUser.BackColor = System.Drawing.Color.Transparent;
-            this.btnUser.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnUser.Font = new System.Drawing.Font("Sitka Text", 13.8F, System.Drawing.FontStyle.Bold);
-            this.btnUser.ForeColor = System.Drawing.Color.Black;
-            this.btnUser.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
-            this.btnUser.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
-            this.btnUser.Location = new System.Drawing.Point(56, 98);
-            this.btnUser.Name = "btnUser";
-            this.btnUser.Radius = 5;
-            this.btnUser.Size = new System.Drawing.Size(225, 40);
-            this.btnUser.Stroke = false;
-            this.btnUser.StrokeColor = System.Drawing.Color.Gray;
-            this.btnUser.TabIndex = 7;
-            this.btnUser.Text = "User";
-            this.btnUser.Transparency = false;
-            // 
-            // btnSalesOrder
-            // 
-            this.btnSalesOrder.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
-            this.btnSalesOrder.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
-            this.btnSalesOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSalesOrder.BackColor = System.Drawing.Color.Transparent;
-            this.btnSalesOrder.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnSalesOrder.Font = new System.Drawing.Font("Sitka Text", 13.8F, System.Drawing.FontStyle.Bold);
-            this.btnSalesOrder.ForeColor = System.Drawing.Color.Black;
-            this.btnSalesOrder.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
-            this.btnSalesOrder.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
-            this.btnSalesOrder.Location = new System.Drawing.Point(56, 52);
-            this.btnSalesOrder.Name = "btnSalesOrder";
-            this.btnSalesOrder.Radius = 5;
-            this.btnSalesOrder.Size = new System.Drawing.Size(225, 40);
-            this.btnSalesOrder.Stroke = false;
-            this.btnSalesOrder.StrokeColor = System.Drawing.Color.Gray;
-            this.btnSalesOrder.TabIndex = 6;
-            this.btnSalesOrder.Text = "Sales Order";
-            this.btnSalesOrder.Transparency = false;
-            // 
-            // btnSupplier
-            // 
-            this.btnSupplier.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
-            this.btnSupplier.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
-            this.btnSupplier.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSupplier.BackColor = System.Drawing.Color.Transparent;
-            this.btnSupplier.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnSupplier.Font = new System.Drawing.Font("Sitka Text", 13.8F, System.Drawing.FontStyle.Bold);
-            this.btnSupplier.ForeColor = System.Drawing.Color.Black;
-            this.btnSupplier.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
-            this.btnSupplier.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
-            this.btnSupplier.Location = new System.Drawing.Point(56, 6);
-            this.btnSupplier.Name = "btnSupplier";
-            this.btnSupplier.Radius = 5;
-            this.btnSupplier.Size = new System.Drawing.Size(225, 40);
-            this.btnSupplier.Stroke = false;
-            this.btnSupplier.StrokeColor = System.Drawing.Color.Gray;
-            this.btnSupplier.TabIndex = 5;
-            this.btnSupplier.Text = "Supplier";
-            this.btnSupplier.Transparency = false;
-            // 
-            // button1
-            // 
-            this.button1.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
-            this.button1.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(196)))), ((int)(((byte)(204)))));
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.Font = new System.Drawing.Font("Sitka Text", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
-            this.button1.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(255)))), ((int)(((byte)(173)))));
-            this.button1.Location = new System.Drawing.Point(0, 215);
-            this.button1.Name = "button1";
-            this.button1.Radius = 5;
-            this.button1.Size = new System.Drawing.Size(292, 60);
-            this.button1.Stroke = true;
-            this.button1.StrokeColor = System.Drawing.Color.DarkGray;
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Development";
-            this.button1.Transparency = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // frmMainMetro
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.CaptionBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(233)))), ((int)(((byte)(202)))));
-            this.ClientSize = new System.Drawing.Size(1016, 934);
+            this.ClientSize = new System.Drawing.Size(763, 447);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
+            this.IsMdiContainer = true;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(233)))), ((int)(((byte)(202)))));
-            this.MinimumSize = new System.Drawing.Size(1028, 586);
+            this.MinimumSize = new System.Drawing.Size(775, 483);
             this.Name = "frmMainMetro";
-            this.Text = "MetroForm1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "IME CRM";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmMainMetro_Load);
             this.panel1.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.pnlButton3.ResumeLayout(false);
-            this.pnlButton2.ResumeLayout(false);
-            this.pnlButton1.ResumeLayout(false);
+            this.pnlManagement.ResumeLayout(false);
+            this.pnlFileLoader.ResumeLayout(false);
+            this.pnlDevelopment.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -668,17 +994,15 @@ namespace LoginForm.Main
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel pnlButton1;
+        private System.Windows.Forms.Panel pnlDevelopment;
         private System.Windows.Forms.Panel panel3;
         private RoundedButton roundedButton1;
-        private AltoControls.AltoButton button1;
+        private AltoControls.AltoButton btnDevelopment;
         private AltoControls.AltoSlidingLabel altoSlidingLabel1;
-        private AltoControls.AltoButton button2;
-        private System.Windows.Forms.Panel pnlButton2;
-        private System.Windows.Forms.Button button33;
-        private System.Windows.Forms.Button button8;
-        private AltoControls.AltoButton button3;
-        private System.Windows.Forms.Panel pnlButton3;
+        private AltoControls.AltoButton btnFileLoader;
+        private System.Windows.Forms.Panel pnlFileLoader;
+        private AltoControls.AltoButton btnManagement;
+        private System.Windows.Forms.Panel pnlManagement;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button14;
@@ -708,5 +1032,17 @@ namespace LoginForm.Main
         private AltoControls.AltoButton btnItemCard;
         private AltoControls.AltoButton btnPurchaseOrder;
         private AltoControls.AltoButton btnToBeInvoiced;
+        private AltoControls.AltoButton btnRsInvoice;
+        private AltoControls.AltoButton btnOrderAcknowledgement;
+        private AltoControls.AltoButton btnOnSale;
+        private AltoControls.AltoButton btnSuperDisk;
+        private AltoControls.AltoButton btnSlidingPriceList;
+        private AltoControls.AltoButton btnDiscontinuedList;
+        private AltoControls.AltoButton btnExtendedRangePrice;
+        private AltoControls.AltoButton btnHazardousFile;
+        private AltoControls.AltoButton btnDualUsedArticles;
+        private AltoControls.AltoButton btnSuperDiskwithP;
+        private AltoControls.AltoButton btnTSEList;
+        private AltoControls.AltoButton btnRSProList;
     }
 }

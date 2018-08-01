@@ -1158,6 +1158,9 @@
     <EmbeddedResource Include="PurchaseOrder\PurchaseOrderMain.resx">
       <DependentUpon>PurchaseOrderMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseOrder\StockDevelopment.resx">
+      <DependentUpon>StockDevelopment.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="QuotationModule\ExperimentQuotationAdd.resx">
       <DependentUpon>ExperimentQuotationAdd.cs</DependentUpon>
     </EmbeddedResource>

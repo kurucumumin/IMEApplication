@@ -103,6 +103,7 @@
             // 
             // dgStock
             // 
+            this.dgStock.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgStock.Location = new System.Drawing.Point(18, 265);
             this.dgStock.Name = "dgStock";
@@ -238,6 +239,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.ClientSize = new System.Drawing.Size(646, 469);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label5);

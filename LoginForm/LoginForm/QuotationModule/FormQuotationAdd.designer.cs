@@ -29,36 +29,36 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle43 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle44 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle45 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle46 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle49 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle50 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle51 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle52 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle53 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle54 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle55 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle56 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle57 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle58 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle59 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle60 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dgQuotationAddedItems = new System.Windows.Forms.DataGridView();
@@ -396,8 +396,9 @@
             // dgQuotationAddedItems
             // 
             this.dgQuotationAddedItems.AllowUserToAddRows = false;
-            dataGridViewCellStyle31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgQuotationAddedItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgQuotationAddedItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgQuotationAddedItems.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgQuotationAddedItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgQuotationAddedItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgNo,
@@ -453,9 +454,9 @@
             // dgNo
             // 
             this.dgNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle32.Format = "N4";
-            dataGridViewCellStyle32.NullValue = null;
-            this.dgNo.DefaultCellStyle = dataGridViewCellStyle32;
+            dataGridViewCellStyle2.Format = "N4";
+            dataGridViewCellStyle2.NullValue = null;
+            this.dgNo.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgNo.Frozen = true;
             this.dgNo.HeaderText = "No";
             this.dgNo.Name = "dgNo";
@@ -465,9 +466,9 @@
             // HS
             // 
             this.HS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.Color.Transparent;
-            this.HS.DefaultCellStyle = dataGridViewCellStyle33;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Transparent;
+            this.HS.DefaultCellStyle = dataGridViewCellStyle3;
             this.HS.Frozen = true;
             this.HS.HeaderText = "HS";
             this.HS.Name = "HS";
@@ -478,8 +479,8 @@
             // LI
             // 
             this.LI.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle34.SelectionBackColor = System.Drawing.Color.Transparent;
-            this.LI.DefaultCellStyle = dataGridViewCellStyle34;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Transparent;
+            this.LI.DefaultCellStyle = dataGridViewCellStyle4;
             this.LI.Frozen = true;
             this.LI.HeaderText = "LI";
             this.LI.Name = "LI";
@@ -490,8 +491,8 @@
             // CL
             // 
             this.CL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle35.SelectionBackColor = System.Drawing.Color.Transparent;
-            this.CL.DefaultCellStyle = dataGridViewCellStyle35;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Transparent;
+            this.CL.DefaultCellStyle = dataGridViewCellStyle5;
             this.CL.Frozen = true;
             this.CL.HeaderText = "CL";
             this.CL.Name = "CL";
@@ -502,8 +503,8 @@
             // LC
             // 
             this.LC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle36.SelectionBackColor = System.Drawing.Color.Transparent;
-            this.LC.DefaultCellStyle = dataGridViewCellStyle36;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Transparent;
+            this.LC.DefaultCellStyle = dataGridViewCellStyle6;
             this.LC.Frozen = true;
             this.LC.HeaderText = "LC";
             this.LC.Name = "LC";
@@ -514,8 +515,8 @@
             // LM
             // 
             this.LM.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle37.SelectionBackColor = System.Drawing.Color.Transparent;
-            this.LM.DefaultCellStyle = dataGridViewCellStyle37;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Transparent;
+            this.LM.DefaultCellStyle = dataGridViewCellStyle7;
             this.LM.Frozen = true;
             this.LM.HeaderText = "LM";
             this.LM.Name = "LM";
@@ -526,9 +527,9 @@
             // dgSupplier
             // 
             this.dgSupplier.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle38.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle38.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgSupplier.DefaultCellStyle = dataGridViewCellStyle38;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgSupplier.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgSupplier.Frozen = true;
             this.dgSupplier.HeaderText = "Supplier";
             this.dgSupplier.Name = "dgSupplier";
@@ -546,9 +547,9 @@
             // dgBrand
             // 
             this.dgBrand.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle39.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle39.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgBrand.DefaultCellStyle = dataGridViewCellStyle39;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgBrand.DefaultCellStyle = dataGridViewCellStyle9;
             this.dgBrand.Frozen = true;
             this.dgBrand.HeaderText = "Brand";
             this.dgBrand.Name = "dgBrand";
@@ -558,9 +559,9 @@
             // dgMPN
             // 
             this.dgMPN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle40.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle40.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgMPN.DefaultCellStyle = dataGridViewCellStyle40;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgMPN.DefaultCellStyle = dataGridViewCellStyle10;
             this.dgMPN.Frozen = true;
             this.dgMPN.HeaderText = "MPN";
             this.dgMPN.Name = "dgMPN";
@@ -570,9 +571,9 @@
             // dgDesc
             // 
             this.dgDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle41.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle41.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgDesc.DefaultCellStyle = dataGridViewCellStyle41;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgDesc.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgDesc.Frozen = true;
             this.dgDesc.HeaderText = "Description";
             this.dgDesc.Name = "dgDesc";
@@ -586,9 +587,9 @@
             // 
             // dgCost
             // 
-            dataGridViewCellStyle42.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle42.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgCost.DefaultCellStyle = dataGridViewCellStyle42;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgCost.DefaultCellStyle = dataGridViewCellStyle12;
             this.dgCost.HeaderText = "Cost (£)";
             this.dgCost.Name = "dgCost";
             this.dgCost.ReadOnly = true;
@@ -596,11 +597,11 @@
             // dgLandingCost
             // 
             this.dgLandingCost.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle43.Format = "C3";
-            dataGridViewCellStyle43.NullValue = null;
-            dataGridViewCellStyle43.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle43.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgLandingCost.DefaultCellStyle = dataGridViewCellStyle43;
+            dataGridViewCellStyle13.Format = "C3";
+            dataGridViewCellStyle13.NullValue = null;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgLandingCost.DefaultCellStyle = dataGridViewCellStyle13;
             this.dgLandingCost.HeaderText = "Landing Cost (£)";
             this.dgLandingCost.Name = "dgLandingCost";
             this.dgLandingCost.ReadOnly = true;
@@ -609,9 +610,9 @@
             // dgMargin
             // 
             this.dgMargin.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle44.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle44.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgMargin.DefaultCellStyle = dataGridViewCellStyle44;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgMargin.DefaultCellStyle = dataGridViewCellStyle14;
             this.dgMargin.HeaderText = "Margin (%)";
             this.dgMargin.Name = "dgMargin";
             this.dgMargin.ReadOnly = true;
@@ -621,9 +622,9 @@
             // 
             this.dgQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.dgQty.DataPropertyName = "QtyDeneme";
-            dataGridViewCellStyle45.Format = "N0";
-            dataGridViewCellStyle45.NullValue = null;
-            this.dgQty.DefaultCellStyle = dataGridViewCellStyle45;
+            dataGridViewCellStyle15.Format = "N0";
+            dataGridViewCellStyle15.NullValue = null;
+            this.dgQty.DefaultCellStyle = dataGridViewCellStyle15;
             this.dgQty.HeaderText = "Qty";
             this.dgQty.Name = "dgQty";
             this.dgQty.ReadOnly = true;
@@ -632,9 +633,9 @@
             // dgStock
             // 
             this.dgStock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle46.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle46.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgStock.DefaultCellStyle = dataGridViewCellStyle46;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgStock.DefaultCellStyle = dataGridViewCellStyle16;
             this.dgStock.HeaderText = "Stock";
             this.dgStock.Name = "dgStock";
             this.dgStock.ReadOnly = true;
@@ -642,9 +643,9 @@
             // 
             // dgUOM
             // 
-            dataGridViewCellStyle47.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle47.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgUOM.DefaultCellStyle = dataGridViewCellStyle47;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgUOM.DefaultCellStyle = dataGridViewCellStyle17;
             this.dgUOM.HeaderText = "UOM";
             this.dgUOM.Name = "dgUOM";
             this.dgUOM.ReadOnly = true;
@@ -652,18 +653,18 @@
             // 
             // dgSSM
             // 
-            dataGridViewCellStyle48.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle48.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgSSM.DefaultCellStyle = dataGridViewCellStyle48;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgSSM.DefaultCellStyle = dataGridViewCellStyle18;
             this.dgSSM.HeaderText = "SSM";
             this.dgSSM.Name = "dgSSM";
             this.dgSSM.ReadOnly = true;
             // 
             // dgUC
             // 
-            dataGridViewCellStyle49.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle49.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgUC.DefaultCellStyle = dataGridViewCellStyle49;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgUC.DefaultCellStyle = dataGridViewCellStyle19;
             this.dgUC.HeaderText = "U/C";
             this.dgUC.Name = "dgUC";
             this.dgUC.ReadOnly = true;
@@ -671,9 +672,9 @@
             // dgUPIME
             // 
             this.dgUPIME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle50.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle50.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgUPIME.DefaultCellStyle = dataGridViewCellStyle50;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgUPIME.DefaultCellStyle = dataGridViewCellStyle20;
             this.dgUPIME.HeaderText = "U/P IME L/P ";
             this.dgUPIME.Name = "dgUPIME";
             this.dgUPIME.ReadOnly = true;
@@ -682,9 +683,9 @@
             // dgDisc
             // 
             this.dgDisc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle51.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle51.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgDisc.DefaultCellStyle = dataGridViewCellStyle51;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgDisc.DefaultCellStyle = dataGridViewCellStyle21;
             this.dgDisc.HeaderText = "Disc. (%)";
             this.dgDisc.Name = "dgDisc";
             this.dgDisc.ReadOnly = true;
@@ -701,9 +702,9 @@
             // dgTotal
             // 
             this.dgTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle52.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle52.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgTotal.DefaultCellStyle = dataGridViewCellStyle52;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgTotal.DefaultCellStyle = dataGridViewCellStyle22;
             this.dgTotal.HeaderText = "TOTAL";
             this.dgTotal.Name = "dgTotal";
             this.dgTotal.ReadOnly = true;
@@ -728,9 +729,9 @@
             // dgHZ
             // 
             this.dgHZ.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle53.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle53.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgHZ.DefaultCellStyle = dataGridViewCellStyle53;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgHZ.DefaultCellStyle = dataGridViewCellStyle23;
             this.dgHZ.HeaderText = "HZ";
             this.dgHZ.Name = "dgHZ";
             this.dgHZ.ReadOnly = true;
@@ -739,9 +740,9 @@
             // dgCL
             // 
             this.dgCL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle54.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle54.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgCL.DefaultCellStyle = dataGridViewCellStyle54;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgCL.DefaultCellStyle = dataGridViewCellStyle24;
             this.dgCL.HeaderText = "CL";
             this.dgCL.Name = "dgCL";
             this.dgCL.ReadOnly = true;
@@ -750,9 +751,9 @@
             // dgCR
             // 
             this.dgCR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle55.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle55.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgCR.DefaultCellStyle = dataGridViewCellStyle55;
+            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgCR.DefaultCellStyle = dataGridViewCellStyle25;
             this.dgCR.HeaderText = "CR";
             this.dgCR.Name = "dgCR";
             this.dgCR.ReadOnly = true;
@@ -770,9 +771,9 @@
             // dgUnitWeigt
             // 
             this.dgUnitWeigt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle56.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle56.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgUnitWeigt.DefaultCellStyle = dataGridViewCellStyle56;
+            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgUnitWeigt.DefaultCellStyle = dataGridViewCellStyle26;
             this.dgUnitWeigt.HeaderText = "Unit Weigt (Kg)";
             this.dgUnitWeigt.Name = "dgUnitWeigt";
             this.dgUnitWeigt.ReadOnly = true;
@@ -781,9 +782,9 @@
             // dgTotalWeight
             // 
             this.dgTotalWeight.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle57.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle57.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgTotalWeight.DefaultCellStyle = dataGridViewCellStyle57;
+            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgTotalWeight.DefaultCellStyle = dataGridViewCellStyle27;
             this.dgTotalWeight.HeaderText = "Total Weight (Kg)";
             this.dgTotalWeight.Name = "dgTotalWeight";
             this.dgTotalWeight.ReadOnly = true;
@@ -808,9 +809,9 @@
             // dgCOO
             // 
             this.dgCOO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle58.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle58.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgCOO.DefaultCellStyle = dataGridViewCellStyle58;
+            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgCOO.DefaultCellStyle = dataGridViewCellStyle28;
             this.dgCOO.HeaderText = "COO";
             this.dgCOO.Name = "dgCOO";
             this.dgCOO.ReadOnly = true;
@@ -819,9 +820,9 @@
             // dgCCCNO
             // 
             this.dgCCCNO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle59.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle59.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgCCCNO.DefaultCellStyle = dataGridViewCellStyle59;
+            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgCCCNO.DefaultCellStyle = dataGridViewCellStyle29;
             this.dgCCCNO.HeaderText = "CCCNO";
             this.dgCCCNO.Name = "dgCCCNO";
             this.dgCCCNO.ReadOnly = true;
@@ -851,6 +852,7 @@
             // dgQuotationDeleted
             // 
             this.dgQuotationDeleted.AllowUserToOrderColumns = true;
+            this.dgQuotationDeleted.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgQuotationDeleted.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgQuotationDeleted.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.No1,
@@ -1005,9 +1007,9 @@
             // 
             // dgQty1
             // 
-            dataGridViewCellStyle60.Format = "N0";
-            dataGridViewCellStyle60.NullValue = null;
-            this.dgQty1.DefaultCellStyle = dataGridViewCellStyle60;
+            dataGridViewCellStyle30.Format = "N0";
+            dataGridViewCellStyle30.NullValue = null;
+            this.dgQty1.DefaultCellStyle = dataGridViewCellStyle30;
             this.dgQty1.HeaderText = "Qty";
             this.dgQty1.Name = "dgQty1";
             this.dgQty1.ReadOnly = true;
@@ -1297,6 +1299,7 @@
             // 
             // tabCustomerDetails
             // 
+            this.tabCustomerDetails.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.tabCustomerDetails.Controls.Add(this.txtAccountingNote);
             this.tabCustomerDetails.Controls.Add(this.label9);
             this.tabCustomerDetails.Controls.Add(this.gbCustomer);
@@ -1311,7 +1314,6 @@
             this.tabCustomerDetails.Size = new System.Drawing.Size(1208, 150);
             this.tabCustomerDetails.TabIndex = 0;
             this.tabCustomerDetails.Text = "Customer Details";
-            this.tabCustomerDetails.UseVisualStyleBackColor = true;
             // 
             // txtAccountingNote
             // 
@@ -3154,6 +3156,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.ClientSize = new System.Drawing.Size(1220, 609);
             this.Controls.Add(this.tableLayoutPanel1);
             this.MinimizeBox = false;

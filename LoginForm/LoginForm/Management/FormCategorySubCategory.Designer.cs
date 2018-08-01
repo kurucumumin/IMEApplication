@@ -83,7 +83,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(29, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(166, 18);
+            this.label1.Size = new System.Drawing.Size(141, 15);
             this.label1.TabIndex = 2;
             this.label1.Text = "Main Category Name";
             // 
@@ -113,7 +113,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(32, 23);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(159, 18);
+            this.label2.Size = new System.Drawing.Size(134, 15);
             this.label2.TabIndex = 5;
             this.label2.Text = "Sub Category Name";
             // 
@@ -158,7 +158,7 @@
             // 
             // panel14
             // 
-            this.panel14.BackColor = System.Drawing.Color.Silver;
+            this.panel14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.panel14.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel14.Location = new System.Drawing.Point(0, 0);
             this.panel14.Name = "panel14";
@@ -167,7 +167,7 @@
             // 
             // panel9
             // 
-            this.panel9.BackColor = System.Drawing.Color.Silver;
+            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.panel9.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel9.Location = new System.Drawing.Point(440, 0);
             this.panel9.Name = "panel9";
@@ -178,7 +178,7 @@
             // 
             this.txtMainCategory.Location = new System.Drawing.Point(32, 64);
             this.txtMainCategory.Name = "txtMainCategory";
-            this.txtMainCategory.Size = new System.Drawing.Size(281, 24);
+            this.txtMainCategory.Size = new System.Drawing.Size(281, 21);
             this.txtMainCategory.TabIndex = 8;
             // 
             // panel2
@@ -196,7 +196,7 @@
             // 
             // panel15
             // 
-            this.panel15.BackColor = System.Drawing.Color.Silver;
+            this.panel15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.panel15.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel15.Location = new System.Drawing.Point(0, 0);
             this.panel15.Name = "panel15";
@@ -205,7 +205,7 @@
             // 
             // panel10
             // 
-            this.panel10.BackColor = System.Drawing.Color.Silver;
+            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.panel10.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel10.Location = new System.Drawing.Point(441, 0);
             this.panel10.Name = "panel10";
@@ -216,7 +216,7 @@
             // 
             this.txtSubCategory.Location = new System.Drawing.Point(35, 64);
             this.txtSubCategory.Name = "txtSubCategory";
-            this.txtSubCategory.Size = new System.Drawing.Size(276, 24);
+            this.txtSubCategory.Size = new System.Drawing.Size(276, 21);
             this.txtSubCategory.TabIndex = 9;
             // 
             // panel3
@@ -260,7 +260,7 @@
             this.lbCategory.DisplayMember = "categoryname";
             this.lbCategory.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbCategory.FormattingEnabled = true;
-            this.lbCategory.ItemHeight = 18;
+            this.lbCategory.ItemHeight = 15;
             this.lbCategory.Location = new System.Drawing.Point(0, 0);
             this.lbCategory.Margin = new System.Windows.Forms.Padding(0);
             this.lbCategory.Name = "lbCategory";
@@ -283,7 +283,7 @@
             // 
             // panel13
             // 
-            this.panel13.BackColor = System.Drawing.Color.Silver;
+            this.panel13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.panel13.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel13.Location = new System.Drawing.Point(0, 0);
             this.panel13.Name = "panel13";
@@ -292,7 +292,7 @@
             // 
             // panel11
             // 
-            this.panel11.BackColor = System.Drawing.Color.Silver;
+            this.panel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.panel11.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel11.Location = new System.Drawing.Point(434, 0);
             this.panel11.Name = "panel11";
@@ -360,7 +360,7 @@
             this.lbSubCategory.DisplayMember = "subcategoryname";
             this.lbSubCategory.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbSubCategory.FormattingEnabled = true;
-            this.lbSubCategory.ItemHeight = 18;
+            this.lbSubCategory.ItemHeight = 15;
             this.lbSubCategory.Location = new System.Drawing.Point(32, 16);
             this.lbSubCategory.Margin = new System.Windows.Forms.Padding(0);
             this.lbSubCategory.Name = "lbSubCategory";
@@ -382,7 +382,7 @@
             // 
             // panel16
             // 
-            this.panel16.BackColor = System.Drawing.Color.Silver;
+            this.panel16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.panel16.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel16.Location = new System.Drawing.Point(0, 0);
             this.panel16.Name = "panel16";
@@ -391,7 +391,7 @@
             // 
             // panel12
             // 
-            this.panel12.BackColor = System.Drawing.Color.Silver;
+            this.panel12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.panel12.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel12.Location = new System.Drawing.Point(435, 0);
             this.panel12.Name = "panel12";
@@ -420,8 +420,9 @@
             // 
             // FormCategorySubCategory
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.ClientSize = new System.Drawing.Size(913, 674);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

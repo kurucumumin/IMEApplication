@@ -30,7 +30,7 @@
         {
             this.dg = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+           // this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,10 +44,11 @@
             // 
             // dg
             // 
+            this.dg.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dg.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
-            this.Name,
+           // this.Name,
             this.Description,
             this.Number,
             this.Value,
@@ -66,10 +67,10 @@
             this.ID.Visible = false;
             // 
             // Name
-            // 
-            this.Name.HeaderText = "Name";
-            this.Name.Name = "Name";
-            this.Name.ReadOnly = true;
+            //// 
+            //this.Name.HeaderText = "Name";
+            //this.Name.Name = "Name";
+            //this.Name.ReadOnly = true;
             // 
             // Description
             // 
@@ -135,6 +136,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.ClientSize = new System.Drawing.Size(750, 349);
             this.Controls.Add(this.btnUpdateAccount);
             this.Controls.Add(this.AddAccount);
@@ -155,7 +157,7 @@
         private System.Windows.Forms.Button btnUpdateAccount;
         private System.Windows.Forms.Button AddAccount;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
+        //private System.Windows.Forms.DataGridViewTextBoxColumn Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn Description;
         private System.Windows.Forms.DataGridViewTextBoxColumn Number;
         private System.Windows.Forms.DataGridViewTextBoxColumn Value;

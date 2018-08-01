@@ -47,7 +47,7 @@
             this.label4.Location = new System.Drawing.Point(1076, 19);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 18);
+            this.label4.Size = new System.Drawing.Size(33, 15);
             this.label4.TabIndex = 17;
             this.label4.Text = "Note";
             // 
@@ -57,7 +57,7 @@
             this.label3.Location = new System.Drawing.Point(742, 19);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 18);
+            this.label3.Size = new System.Drawing.Size(35, 15);
             this.label3.TabIndex = 16;
             this.label3.Text = "MPN";
             // 
@@ -67,7 +67,7 @@
             this.label2.Location = new System.Drawing.Point(353, 19);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 18);
+            this.label2.Size = new System.Drawing.Size(71, 15);
             this.label2.TabIndex = 15;
             this.label2.Text = "Article Desc";
             // 
@@ -76,7 +76,7 @@
             this.txtNote.Location = new System.Drawing.Point(1130, 15);
             this.txtNote.Margin = new System.Windows.Forms.Padding(4);
             this.txtNote.Name = "txtNote";
-            this.txtNote.Size = new System.Drawing.Size(185, 24);
+            this.txtNote.Size = new System.Drawing.Size(185, 21);
             this.txtNote.TabIndex = 14;
             // 
             // txtMPN
@@ -84,7 +84,7 @@
             this.txtMPN.Location = new System.Drawing.Point(798, 15);
             this.txtMPN.Margin = new System.Windows.Forms.Padding(4);
             this.txtMPN.Name = "txtMPN";
-            this.txtMPN.Size = new System.Drawing.Size(185, 24);
+            this.txtMPN.Size = new System.Drawing.Size(185, 21);
             this.txtMPN.TabIndex = 13;
             // 
             // txtArticleDesc
@@ -92,13 +92,14 @@
             this.txtArticleDesc.Location = new System.Drawing.Point(459, 15);
             this.txtArticleDesc.Margin = new System.Windows.Forms.Padding(4);
             this.txtArticleDesc.Name = "txtArticleDesc";
-            this.txtArticleDesc.Size = new System.Drawing.Size(185, 24);
+            this.txtArticleDesc.Size = new System.Drawing.Size(185, 21);
             this.txtArticleDesc.TabIndex = 12;
             // 
             // dgItemSearch
             // 
             this.dgItemSearch.AllowUserToAddRows = false;
             this.dgItemSearch.AllowUserToDeleteRows = false;
+            this.dgItemSearch.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgItemSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgItemSearch.Location = new System.Drawing.Point(15, 104);
             this.dgItemSearch.Margin = new System.Windows.Forms.Padding(4);
@@ -114,7 +115,7 @@
             this.txtItemCode.Location = new System.Drawing.Point(106, 15);
             this.txtItemCode.Margin = new System.Windows.Forms.Padding(4);
             this.txtItemCode.Name = "txtItemCode";
-            this.txtItemCode.Size = new System.Drawing.Size(185, 24);
+            this.txtItemCode.Size = new System.Drawing.Size(185, 21);
             this.txtItemCode.TabIndex = 10;
             // 
             // label1
@@ -123,7 +124,7 @@
             this.label1.Location = new System.Drawing.Point(15, 19);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 18);
+            this.label1.Size = new System.Drawing.Size(63, 15);
             this.label1.TabIndex = 9;
             this.label1.Text = "Item Code";
             // 
@@ -138,8 +139,9 @@
             // 
             // FormSaleItemSearch
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.ClientSize = new System.Drawing.Size(1338, 718);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
