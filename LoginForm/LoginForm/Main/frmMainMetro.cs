@@ -5,6 +5,7 @@
 // licensing@syncfusion.com. Any infringement will be prosecuted under
 // applicable laws. 
 #endregion
+using LoginForm.BackOrder;
 using LoginForm.Billing;
 using LoginForm.DataSet;
 using LoginForm.ItemModule;
@@ -313,6 +314,12 @@ namespace LoginForm.Main
             txtReader.LoaderType = "";
             txtReader.LoaderType = "OrderAcknowledgementtxtReader";
             GoToLoaderPage();
+        }
+
+        private void btnBackOrder_Click(object sender, EventArgs e)
+        {
+            frmBackOrderMain form = new frmBackOrderMain();
+            form.Show();
         }
     }
 }

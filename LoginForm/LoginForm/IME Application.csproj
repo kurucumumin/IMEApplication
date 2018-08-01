@@ -1326,7 +1326,12 @@
     <Content Include="Resources\icons8-Edit Property-32.png" />
     <Content Include="Resources\icons8-Plus-32.png" />
     <Content Include="Resources\icons8-Refresh-32.png" />
+    <None Include="Resources\if_Document_file_export_sending_exit_send_1886950.ico" />
+    <None Include="Resources\if_icon-123-printer_314820.ico" />
+    <None Include="Resources\if_edit-clear_23227.ico" />
     <Content Include="Resources\if_icon-24-key_314756.ico" />
+    <None Include="Resources\if_print_173079.ico" />
+    <None Include="Resources\if_search_magnifying_glass_find_103857.ico" />
     <Content Include="Resources\if_user_173122.ico" />
     <Content Include="Resources\IME.jpg" />
     <None Include="Resources\mdi copy.jpg" />

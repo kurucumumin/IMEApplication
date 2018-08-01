@@ -110,9 +110,12 @@ namespace LoginForm.BackOrder
         private void dg_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             IMEEntities IME = new IMEEntities();
-            int BackOrderMainID = Int32.Parse(dg.CurrentRow.Cells[ID.Index].Value.ToString());
-            BackOrderMain bod = IME.BackOrderMains.Where(a => a.ID == BackOrderMainID).FirstOrDefault();
-            txtItemDesc.Text = bod.description;
+            if (!String.IsNullOrEmpty(dg.CurrentRow.Cells[ID.Index].Value?.ToString()))
+            {
+                int BackOrderMainID = Int32.Parse(dg.CurrentRow.Cells[ID.Index].Value.ToString());
+                BackOrderMain bod = IME.BackOrderMains.Where(a => a.ID == BackOrderMainID).FirstOrDefault();
+                txtItemDesc.Text = bod.description;
+            }
         }
 
         private void btnExcel_Click(object sender, EventArgs e)
@@ -122,8 +125,11 @@ namespace LoginForm.BackOrder
 
         private void btnAnalize_Click(object sender, EventArgs e)
         {
-            frmbackOrderAnalize form = new frmbackOrderAnalize(DateTime.Parse(dg.CurrentRow.Cells[Date.Index].Value.ToString()));
-            form.Show();
+            if (!String.IsNullOrEmpty(dg.CurrentRow.Cells[Date.Index].Value?.ToString()))
+            {
+                frmbackOrderAnalize form = new frmbackOrderAnalize(DateTime.Parse(dg.CurrentRow.Cells[Date.Index].Value.ToString()));
+                form.Show();
+            }
         }
 
         private void VisibleAll()

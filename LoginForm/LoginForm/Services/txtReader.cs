@@ -56,7 +56,7 @@ namespace LoginForm
                         bo.LineValue = ((object[,])myvalues)[i, 8].ToString();
                         bo.FirstPromisedDate = DateTime.ParseExact(((object[,])myvalues)[i, 9].ToString(), "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture);
                         bo.LatestPromisedDate = DateTime.ParseExact(((object[,])myvalues)[i, 10].ToString(), "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture);
-                        if (bo.PurchaseOrderNumber != null && bo.PurchaseOrderNumber != "") bo.PurchaseOrderID = Int32.Parse(bo.PurchaseOrderNumber.ToString().Substring(1, bo.PurchaseOrderNumber.ToString().IndexOf('R')));
+                        if (bo.PurchaseOrderNumber != null && bo.PurchaseOrderNumber != "") bo.PurchaseOrderID = Int32.Parse(bo.PurchaseOrderNumber.ToString().Substring(0, bo.PurchaseOrderNumber.ToString().IndexOf('R')));
                         BoList.Add(bo);
                     }
                     #region
@@ -90,7 +90,7 @@ namespace LoginForm
                     //return BoList;
                     #endregion
                 }
-                catch { MessageBox.Show("This document does not proper to load here"); return null; }
+                catch (Exception ex) { MessageBox.Show("This document does not proper to load here"); return null; }
             }
             return BoList;
 

@@ -61,7 +61,7 @@ namespace LoginForm
             // txtID
             // 
             this.txtID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.txtID.BeforeTouchSize = new System.Drawing.Size(217, 38);
+            this.txtID.BeforeTouchSize = new System.Drawing.Size(217, 32);
             this.txtID.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtID.Font = new System.Drawing.Font("Century", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -69,14 +69,15 @@ namespace LoginForm
             this.txtID.Location = new System.Drawing.Point(69, 250);
             this.txtID.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(217, 38);
+            this.txtID.Size = new System.Drawing.Size(217, 32);
             this.txtID.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Metro;
             this.txtID.TabIndex = 1;
+            this.txtID.Text = "admin";
             // 
             // txtPassWord
             // 
             this.txtPassWord.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.txtPassWord.BeforeTouchSize = new System.Drawing.Size(217, 38);
+            this.txtPassWord.BeforeTouchSize = new System.Drawing.Size(217, 32);
             this.txtPassWord.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtPassWord.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPassWord.Font = new System.Drawing.Font("Century", 15F, System.Drawing.FontStyle.Bold);
@@ -85,9 +86,10 @@ namespace LoginForm
             this.txtPassWord.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtPassWord.Name = "txtPassWord";
             this.txtPassWord.PasswordChar = '*';
-            this.txtPassWord.Size = new System.Drawing.Size(217, 38);
+            this.txtPassWord.Size = new System.Drawing.Size(217, 32);
             this.txtPassWord.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Metro;
             this.txtPassWord.TabIndex = 2;
+            this.txtPassWord.Text = "admin";
             this.txtPassWord.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassWord_KeyDown);
             // 
             // panel1
@@ -188,7 +190,7 @@ namespace LoginForm
             // 
             // frmLoginMetro
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.AliceBlue;
