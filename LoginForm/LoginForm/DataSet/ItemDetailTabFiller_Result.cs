@@ -37,7 +37,7 @@ namespace LoginForm.DataSet
         public Nullable<decimal> Heigh { get; set; }
         public Nullable<decimal> Width { get; set; }
         public Nullable<decimal> Length { get; set; }
-        public Nullable<int> OnhandStockBalance { get; set; }
+        public Nullable<long> OnhandStockBalance { get; set; }
         public Nullable<int> QuantityonOrder { get; set; }
         public Nullable<int> Col1Break { get; set; }
         public Nullable<int> Col2Break { get; set; }

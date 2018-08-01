@@ -45,10 +45,22 @@ namespace LoginForm.Main
             this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
+            this.button3 = new AltoControls.AltoButton();
             this.pnlButton2 = new System.Windows.Forms.Panel();
             this.button33 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
+            this.button2 = new AltoControls.AltoButton();
             this.pnlButton1 = new System.Windows.Forms.Panel();
+            this.btnToBeInvoiced = new AltoControls.AltoButton();
+            this.btnStock = new AltoControls.AltoButton();
+            this.btnQuotation = new AltoControls.AltoButton();
+            this.btnItemCard = new AltoControls.AltoButton();
+            this.btnPurchaseOrder = new AltoControls.AltoButton();
+            this.btnCustomer = new AltoControls.AltoButton();
+            this.btnUser = new AltoControls.AltoButton();
+            this.btnSalesOrder = new AltoControls.AltoButton();
+            this.btnSupplier = new AltoControls.AltoButton();
+            this.button1 = new AltoControls.AltoButton();
             this.pnlBorder = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lblUSD = new System.Windows.Forms.Label();
@@ -62,23 +74,11 @@ namespace LoginForm.Main
             this.lblName = new System.Windows.Forms.Label();
             this.lblTitleName = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.altoSlidingLabel1 = new AltoControls.AltoSlidingLabel();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuElipse2 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuElipse3 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.altoSlidingLabel1 = new AltoControls.AltoSlidingLabel();
-            this.button3 = new AltoControls.AltoButton();
-            this.button2 = new AltoControls.AltoButton();
-            this.btnToBeInvoiced = new AltoControls.AltoButton();
-            this.btnStock = new AltoControls.AltoButton();
-            this.btnQuotation = new AltoControls.AltoButton();
-            this.btnItemCard = new AltoControls.AltoButton();
-            this.btnPurchaseOrder = new AltoControls.AltoButton();
-            this.btnCustomer = new AltoControls.AltoButton();
-            this.btnUser = new AltoControls.AltoButton();
-            this.btnSalesOrder = new AltoControls.AltoButton();
-            this.btnSupplier = new AltoControls.AltoButton();
-            this.button1 = new AltoControls.AltoButton();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -133,7 +133,7 @@ namespace LoginForm.Main
             this.pnlButton3.Controls.Add(this.button12);
             this.pnlButton3.Controls.Add(this.button14);
             this.pnlButton3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlButton3.Location = new System.Drawing.Point(0, 395);
+            this.pnlButton3.Location = new System.Drawing.Point(0, 365);
             this.pnlButton3.Name = "pnlButton3";
             this.pnlButton3.Size = new System.Drawing.Size(292, 0);
             this.pnlButton3.TabIndex = 8;
@@ -165,13 +165,35 @@ namespace LoginForm.Main
             this.button14.Text = "button14";
             this.button14.UseVisualStyleBackColor = true;
             // 
+            // button3
+            // 
+            this.button3.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
+            this.button3.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(196)))), ((int)(((byte)(204)))));
+            this.button3.BackColor = System.Drawing.Color.Transparent;
+            this.button3.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.button3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button3.Font = new System.Drawing.Font("Sitka Text", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button3.ForeColor = System.Drawing.Color.Black;
+            this.button3.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.button3.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(255)))), ((int)(((byte)(173)))));
+            this.button3.Location = new System.Drawing.Point(0, 315);
+            this.button3.Name = "button3";
+            this.button3.Radius = 5;
+            this.button3.Size = new System.Drawing.Size(292, 50);
+            this.button3.Stroke = true;
+            this.button3.StrokeColor = System.Drawing.Color.DarkGray;
+            this.button3.TabIndex = 7;
+            this.button3.Text = "Management";
+            this.button3.Transparency = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // pnlButton2
             // 
             this.pnlButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(202)))), ((int)(((byte)(133)))));
             this.pnlButton2.Controls.Add(this.button33);
             this.pnlButton2.Controls.Add(this.button8);
             this.pnlButton2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlButton2.Location = new System.Drawing.Point(0, 335);
+            this.pnlButton2.Location = new System.Drawing.Point(0, 315);
             this.pnlButton2.Name = "pnlButton2";
             this.pnlButton2.Size = new System.Drawing.Size(292, 0);
             this.pnlButton2.TabIndex = 6;
@@ -194,6 +216,28 @@ namespace LoginForm.Main
             this.button8.Text = "button8";
             this.button8.UseVisualStyleBackColor = true;
             // 
+            // button2
+            // 
+            this.button2.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
+            this.button2.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(196)))), ((int)(((byte)(204)))));
+            this.button2.BackColor = System.Drawing.Color.Transparent;
+            this.button2.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button2.Font = new System.Drawing.Font("Sitka Text", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button2.ForeColor = System.Drawing.Color.Black;
+            this.button2.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.button2.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(255)))), ((int)(((byte)(173)))));
+            this.button2.Location = new System.Drawing.Point(0, 265);
+            this.button2.Name = "button2";
+            this.button2.Radius = 5;
+            this.button2.Size = new System.Drawing.Size(292, 50);
+            this.button2.Stroke = true;
+            this.button2.StrokeColor = System.Drawing.Color.DarkGray;
+            this.button2.TabIndex = 5;
+            this.button2.Text = "File Loader";
+            this.button2.Transparency = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // pnlButton1
             // 
             this.pnlButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(254)))), ((int)(((byte)(233)))));
@@ -207,224 +251,10 @@ namespace LoginForm.Main
             this.pnlButton1.Controls.Add(this.btnSalesOrder);
             this.pnlButton1.Controls.Add(this.btnSupplier);
             this.pnlButton1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlButton1.Location = new System.Drawing.Point(0, 275);
+            this.pnlButton1.Location = new System.Drawing.Point(0, 265);
             this.pnlButton1.Name = "pnlButton1";
             this.pnlButton1.Size = new System.Drawing.Size(292, 0);
             this.pnlButton1.TabIndex = 3;
-            // 
-            // pnlBorder
-            // 
-            this.pnlBorder.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlBorder.Location = new System.Drawing.Point(0, 207);
-            this.pnlBorder.Name = "pnlBorder";
-            this.pnlBorder.Size = new System.Drawing.Size(292, 8);
-            this.pnlBorder.TabIndex = 9;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.lblUSD);
-            this.panel4.Controls.Add(this.lblGBP);
-            this.panel4.Controls.Add(this.lblTitleUSD);
-            this.panel4.Controls.Add(this.lblTitleGBP);
-            this.panel4.Controls.Add(this.lblPhone);
-            this.panel4.Controls.Add(this.lblTitlePhone);
-            this.panel4.Controls.Add(this.lblEmail);
-            this.panel4.Controls.Add(this.lblTitleEmail);
-            this.panel4.Controls.Add(this.lblName);
-            this.panel4.Controls.Add(this.lblTitleName);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(292, 207);
-            this.panel4.TabIndex = 10;
-            // 
-            // lblUSD
-            // 
-            this.lblUSD.AutoSize = true;
-            this.lblUSD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblUSD.Location = new System.Drawing.Point(74, 148);
-            this.lblUSD.Name = "lblUSD";
-            this.lblUSD.Size = new System.Drawing.Size(46, 18);
-            this.lblUSD.TabIndex = 9;
-            this.lblUSD.Text = "label2";
-            // 
-            // lblGBP
-            // 
-            this.lblGBP.AutoSize = true;
-            this.lblGBP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblGBP.Location = new System.Drawing.Point(74, 130);
-            this.lblGBP.Name = "lblGBP";
-            this.lblGBP.Size = new System.Drawing.Size(46, 18);
-            this.lblGBP.TabIndex = 8;
-            this.lblGBP.Text = "label1";
-            // 
-            // lblTitleUSD
-            // 
-            this.lblTitleUSD.AutoSize = true;
-            this.lblTitleUSD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblTitleUSD.Location = new System.Drawing.Point(18, 148);
-            this.lblTitleUSD.Name = "lblTitleUSD";
-            this.lblTitleUSD.Size = new System.Drawing.Size(44, 18);
-            this.lblTitleUSD.TabIndex = 7;
-            this.lblTitleUSD.Text = "USD:";
-            // 
-            // lblTitleGBP
-            // 
-            this.lblTitleGBP.AutoSize = true;
-            this.lblTitleGBP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblTitleGBP.Location = new System.Drawing.Point(18, 130);
-            this.lblTitleGBP.Name = "lblTitleGBP";
-            this.lblTitleGBP.Size = new System.Drawing.Size(44, 18);
-            this.lblTitleGBP.TabIndex = 6;
-            this.lblTitleGBP.Text = "GPB:";
-            // 
-            // lblPhone
-            // 
-            this.lblPhone.AutoSize = true;
-            this.lblPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblPhone.Location = new System.Drawing.Point(74, 55);
-            this.lblPhone.Name = "lblPhone";
-            this.lblPhone.Size = new System.Drawing.Size(46, 18);
-            this.lblPhone.TabIndex = 5;
-            this.lblPhone.Text = "label4";
-            // 
-            // lblTitlePhone
-            // 
-            this.lblTitlePhone.AutoSize = true;
-            this.lblTitlePhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblTitlePhone.Location = new System.Drawing.Point(18, 55);
-            this.lblTitlePhone.Name = "lblTitlePhone";
-            this.lblTitlePhone.Size = new System.Drawing.Size(55, 18);
-            this.lblTitlePhone.TabIndex = 4;
-            this.lblTitlePhone.Text = "Phone:";
-            // 
-            // lblEmail
-            // 
-            this.lblEmail.AutoSize = true;
-            this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblEmail.Location = new System.Drawing.Point(74, 37);
-            this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(46, 18);
-            this.lblEmail.TabIndex = 3;
-            this.lblEmail.Text = "label2";
-            // 
-            // lblTitleEmail
-            // 
-            this.lblTitleEmail.AutoSize = true;
-            this.lblTitleEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblTitleEmail.Location = new System.Drawing.Point(18, 37);
-            this.lblTitleEmail.Name = "lblTitleEmail";
-            this.lblTitleEmail.Size = new System.Drawing.Size(49, 18);
-            this.lblTitleEmail.TabIndex = 2;
-            this.lblTitleEmail.Text = "Email:";
-            // 
-            // lblName
-            // 
-            this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblName.Location = new System.Drawing.Point(74, 19);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(46, 18);
-            this.lblName.TabIndex = 1;
-            this.lblName.Text = "label1";
-            // 
-            // lblTitleName
-            // 
-            this.lblTitleName.AutoSize = true;
-            this.lblTitleName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblTitleName.Location = new System.Drawing.Point(18, 19);
-            this.lblTitleName.Name = "lblTitleName";
-            this.lblTitleName.Size = new System.Drawing.Size(52, 18);
-            this.lblTitleName.TabIndex = 0;
-            this.lblTitleName.Text = "Name:";
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
-            this.panel3.BackgroundImage = global::LoginForm.Properties.Resources.IME_LOGO2;
-            this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.altoSlidingLabel1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(310, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(706, 934);
-            this.panel3.TabIndex = 1;
-            // 
-            // bunifuElipse1
-            // 
-            this.bunifuElipse1.ElipseRadius = 10;
-            this.bunifuElipse1.TargetControl = this.pnlButton1;
-            // 
-            // bunifuElipse2
-            // 
-            this.bunifuElipse2.ElipseRadius = 20;
-            this.bunifuElipse2.TargetControl = this.pnlButton2;
-            // 
-            // bunifuElipse3
-            // 
-            this.bunifuElipse3.ElipseRadius = 20;
-            this.bunifuElipse3.TargetControl = this.pnlButton3;
-            // 
-            // timer2
-            // 
-            this.timer2.Interval = 5;
-            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
-            // 
-            // altoSlidingLabel1
-            // 
-            this.altoSlidingLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.altoSlidingLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.altoSlidingLabel1.Location = new System.Drawing.Point(5, 864);
-            this.altoSlidingLabel1.Name = "altoSlidingLabel1";
-            this.altoSlidingLabel1.Size = new System.Drawing.Size(326, 57);
-            this.altoSlidingLabel1.Slide = true;
-            this.altoSlidingLabel1.TabIndex = 1;
-            this.altoSlidingLabel1.Text = "We will have a meeting at 17:00 about new product catalogues came from RS UK";
-            // 
-            // button3
-            // 
-            this.button3.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
-            this.button3.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(196)))), ((int)(((byte)(204)))));
-            this.button3.BackColor = System.Drawing.Color.Transparent;
-            this.button3.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button3.Font = new System.Drawing.Font("Sitka Text", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button3.ForeColor = System.Drawing.Color.Black;
-            this.button3.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
-            this.button3.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(255)))), ((int)(((byte)(173)))));
-            this.button3.Location = new System.Drawing.Point(0, 335);
-            this.button3.Name = "button3";
-            this.button3.Radius = 5;
-            this.button3.Size = new System.Drawing.Size(292, 60);
-            this.button3.Stroke = true;
-            this.button3.StrokeColor = System.Drawing.Color.DarkGray;
-            this.button3.TabIndex = 7;
-            this.button3.Text = "Management";
-            this.button3.Transparency = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button2
-            // 
-            this.button2.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
-            this.button2.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(196)))), ((int)(((byte)(204)))));
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button2.Font = new System.Drawing.Font("Sitka Text", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
-            this.button2.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(255)))), ((int)(((byte)(173)))));
-            this.button2.Location = new System.Drawing.Point(0, 275);
-            this.button2.Name = "button2";
-            this.button2.Radius = 5;
-            this.button2.Size = new System.Drawing.Size(292, 60);
-            this.button2.Stroke = true;
-            this.button2.StrokeColor = System.Drawing.Color.DarkGray;
-            this.button2.TabIndex = 5;
-            this.button2.Text = "File Loader";
-            this.button2.Transparency = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnToBeInvoiced
             // 
@@ -629,13 +459,183 @@ namespace LoginForm.Main
             this.button1.Location = new System.Drawing.Point(0, 215);
             this.button1.Name = "button1";
             this.button1.Radius = 5;
-            this.button1.Size = new System.Drawing.Size(292, 60);
+            this.button1.Size = new System.Drawing.Size(292, 50);
             this.button1.Stroke = true;
             this.button1.StrokeColor = System.Drawing.Color.DarkGray;
             this.button1.TabIndex = 4;
             this.button1.Text = "Development";
             this.button1.Transparency = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // pnlBorder
+            // 
+            this.pnlBorder.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlBorder.Location = new System.Drawing.Point(0, 207);
+            this.pnlBorder.Name = "pnlBorder";
+            this.pnlBorder.Size = new System.Drawing.Size(292, 8);
+            this.pnlBorder.TabIndex = 9;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.lblUSD);
+            this.panel4.Controls.Add(this.lblGBP);
+            this.panel4.Controls.Add(this.lblTitleUSD);
+            this.panel4.Controls.Add(this.lblTitleGBP);
+            this.panel4.Controls.Add(this.lblPhone);
+            this.panel4.Controls.Add(this.lblTitlePhone);
+            this.panel4.Controls.Add(this.lblEmail);
+            this.panel4.Controls.Add(this.lblTitleEmail);
+            this.panel4.Controls.Add(this.lblName);
+            this.panel4.Controls.Add(this.lblTitleName);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(292, 207);
+            this.panel4.TabIndex = 10;
+            // 
+            // lblUSD
+            // 
+            this.lblUSD.AutoSize = true;
+            this.lblUSD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblUSD.Location = new System.Drawing.Point(74, 148);
+            this.lblUSD.Name = "lblUSD";
+            this.lblUSD.Size = new System.Drawing.Size(46, 18);
+            this.lblUSD.TabIndex = 9;
+            this.lblUSD.Text = "label2";
+            // 
+            // lblGBP
+            // 
+            this.lblGBP.AutoSize = true;
+            this.lblGBP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblGBP.Location = new System.Drawing.Point(74, 130);
+            this.lblGBP.Name = "lblGBP";
+            this.lblGBP.Size = new System.Drawing.Size(46, 18);
+            this.lblGBP.TabIndex = 8;
+            this.lblGBP.Text = "label1";
+            // 
+            // lblTitleUSD
+            // 
+            this.lblTitleUSD.AutoSize = true;
+            this.lblTitleUSD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblTitleUSD.Location = new System.Drawing.Point(18, 148);
+            this.lblTitleUSD.Name = "lblTitleUSD";
+            this.lblTitleUSD.Size = new System.Drawing.Size(44, 18);
+            this.lblTitleUSD.TabIndex = 7;
+            this.lblTitleUSD.Text = "USD:";
+            // 
+            // lblTitleGBP
+            // 
+            this.lblTitleGBP.AutoSize = true;
+            this.lblTitleGBP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblTitleGBP.Location = new System.Drawing.Point(18, 130);
+            this.lblTitleGBP.Name = "lblTitleGBP";
+            this.lblTitleGBP.Size = new System.Drawing.Size(44, 18);
+            this.lblTitleGBP.TabIndex = 6;
+            this.lblTitleGBP.Text = "GPB:";
+            // 
+            // lblPhone
+            // 
+            this.lblPhone.AutoSize = true;
+            this.lblPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblPhone.Location = new System.Drawing.Point(74, 55);
+            this.lblPhone.Name = "lblPhone";
+            this.lblPhone.Size = new System.Drawing.Size(46, 18);
+            this.lblPhone.TabIndex = 5;
+            this.lblPhone.Text = "label4";
+            // 
+            // lblTitlePhone
+            // 
+            this.lblTitlePhone.AutoSize = true;
+            this.lblTitlePhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblTitlePhone.Location = new System.Drawing.Point(18, 55);
+            this.lblTitlePhone.Name = "lblTitlePhone";
+            this.lblTitlePhone.Size = new System.Drawing.Size(55, 18);
+            this.lblTitlePhone.TabIndex = 4;
+            this.lblTitlePhone.Text = "Phone:";
+            // 
+            // lblEmail
+            // 
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblEmail.Location = new System.Drawing.Point(74, 37);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(46, 18);
+            this.lblEmail.TabIndex = 3;
+            this.lblEmail.Text = "label2";
+            // 
+            // lblTitleEmail
+            // 
+            this.lblTitleEmail.AutoSize = true;
+            this.lblTitleEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblTitleEmail.Location = new System.Drawing.Point(18, 37);
+            this.lblTitleEmail.Name = "lblTitleEmail";
+            this.lblTitleEmail.Size = new System.Drawing.Size(49, 18);
+            this.lblTitleEmail.TabIndex = 2;
+            this.lblTitleEmail.Text = "Email:";
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblName.Location = new System.Drawing.Point(74, 19);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(46, 18);
+            this.lblName.TabIndex = 1;
+            this.lblName.Text = "label1";
+            // 
+            // lblTitleName
+            // 
+            this.lblTitleName.AutoSize = true;
+            this.lblTitleName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblTitleName.Location = new System.Drawing.Point(18, 19);
+            this.lblTitleName.Name = "lblTitleName";
+            this.lblTitleName.Size = new System.Drawing.Size(52, 18);
+            this.lblTitleName.TabIndex = 0;
+            this.lblTitleName.Text = "Name:";
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
+            this.panel3.BackgroundImage = global::LoginForm.Properties.Resources.IME_LOGO2;
+            this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.altoSlidingLabel1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(310, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(706, 934);
+            this.panel3.TabIndex = 1;
+            // 
+            // altoSlidingLabel1
+            // 
+            this.altoSlidingLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.altoSlidingLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.altoSlidingLabel1.Location = new System.Drawing.Point(5, 864);
+            this.altoSlidingLabel1.Name = "altoSlidingLabel1";
+            this.altoSlidingLabel1.Size = new System.Drawing.Size(326, 57);
+            this.altoSlidingLabel1.Slide = true;
+            this.altoSlidingLabel1.TabIndex = 1;
+            this.altoSlidingLabel1.Text = "We will have a meeting at 17:00 about new product catalogues came from RS UK";
+            // 
+            // bunifuElipse1
+            // 
+            this.bunifuElipse1.ElipseRadius = 10;
+            this.bunifuElipse1.TargetControl = this.pnlButton1;
+            // 
+            // bunifuElipse2
+            // 
+            this.bunifuElipse2.ElipseRadius = 20;
+            this.bunifuElipse2.TargetControl = this.pnlButton2;
+            // 
+            // bunifuElipse3
+            // 
+            this.bunifuElipse3.ElipseRadius = 20;
+            this.bunifuElipse3.TargetControl = this.pnlButton3;
+            // 
+            // timer2
+            // 
+            this.timer2.Interval = 5;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // frmMainMetro
             // 

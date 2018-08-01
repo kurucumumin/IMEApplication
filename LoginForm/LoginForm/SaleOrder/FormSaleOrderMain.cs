@@ -49,7 +49,6 @@ namespace LoginForm.nsSaleOrder
             datetimeEnd.Value = DateTime.Today.Date;
             datetimeStart.Value = DateTime.Today.AddDays(-7);
             BringSalesList(datetimeEnd.Value, datetimeStart.Value);
-            PurchaseOrderMenu.MenuItems.Add(new MenuItem("Add to Purchase Order", PurchaseOrderMenu_Click));
         }
 
         private void BringSalesList()
@@ -137,34 +136,6 @@ namespace LoginForm.nsSaleOrder
             }
         }
 
-        private void dgSales_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right)
-            {
-                PurchaseOrderMenu.Show(dgSales, new Point(e.X, e.Y));
-            }
-        }
-
-        private void PurchaseOrderMenu_Click(object sender, EventArgs e)
-        {
-            decimal item_code = 0;
-            // string purchasecode = "";
-            IMEEntities IME = new IMEEntities();
-
-            if (dgSales.CurrentRow.Cells["SoNO"].Value != null)
-            {
-                item_code = Convert.ToDecimal(dgSales.CurrentRow.Cells["SaleID"].Value.ToString());
-            }
-            if (item_code == 0)
-                MessageBox.Show("Please Enter a Item Code", "Eror !");
-            else
-            {
-                this.Close();
-                NewPurchaseOrder f = new NewPurchaseOrder(item_code);
-                f.Show();
-            }
-        }
-
         private void btnDelete_Click(object sender, EventArgs e)
         {
             IMEEntities db = new IMEEntities();
@@ -197,9 +168,29 @@ namespace LoginForm.nsSaleOrder
             BringSalesList();
         }
 
-        private void dgSales_Click(object sender, EventArgs e)
+        private void sentToPurchaseOrderToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            decimal item_code = 0;
+            // string purchasecode = "";
+            IMEEntities IME = new IMEEntities();
 
+            if (dgSales.CurrentRow.Cells["SoNO"].Value != null)
+            {
+                item_code = Convert.ToDecimal(dgSales.CurrentRow.Cells["SaleID"].Value.ToString());
+            }
+            if (item_code == 0)
+                MessageBox.Show("Please Enter a Item Code", "Eror !");
+            else
+            {
+                this.Close();
+                NewPurchaseOrder f = new NewPurchaseOrder(item_code);
+                f.Show();
+            }
+        }
+
+        private void sentToLogoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //MyConnect.Ornekle.ExecuteScalar_Int(Utils.ConnectionStringLogo, sql_command, CommandType.Text, 30, args);
         }
     }
 }
