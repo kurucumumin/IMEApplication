@@ -263,6 +263,16 @@ namespace LoginForm.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap if_edit_clear_23227 {
+            get {
+                object obj = ResourceManager.GetObject("if_edit-clear_23227", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap if_icon_123_printer_314820 {
             get {
                 object obj = ResourceManager.GetObject("if_icon-123-printer_314820", resourceCulture);
