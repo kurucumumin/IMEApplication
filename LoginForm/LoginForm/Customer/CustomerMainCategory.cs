@@ -16,10 +16,10 @@ namespace LoginForm
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
             var result = IME.CustomerCategories.Where(department => department.categoryname == DepartmentName.Text).ToList();
-            if (result.Count==0)
+            if (result.Count == 0)
             {
                 DataSet.CustomerCategory cd = new DataSet.CustomerCategory();
                 cd.categoryname = DepartmentName.Text;
@@ -35,14 +35,9 @@ namespace LoginForm
             }
         }
 
-        private void CancelButton_Click(object sender, EventArgs e)
+        private void btnExit_Click(object sender, EventArgs e)
         {
             this.Hide();
-        }
-
-        private void DepartmentAdd_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

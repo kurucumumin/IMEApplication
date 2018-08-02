@@ -40,7 +40,7 @@
             this.chcAllAuth = new System.Windows.Forms.CheckBox();
             this.clbAuthorities = new System.Windows.Forms.CheckedListBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.btnSave = new System.Windows.Forms.Button();
             this.gbUserInfo = new System.Windows.Forms.GroupBox();
             this.materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
             this.txtNote = new System.Windows.Forms.TextBox();
@@ -69,6 +69,7 @@
             this.chcChangePassword = new System.Windows.Forms.CheckBox();
             this.authRoleBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.authorizationValueBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label4 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.gbRoles.SuspendLayout();
@@ -92,7 +93,6 @@
             this.tableLayoutPanel1.Controls.Add(this.gbAuthorities, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // groupBox1
             // 
@@ -158,20 +158,19 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.materialRaisedButton1);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.btnSave);
             this.panel1.Controls.Add(this.gbUserInfo);
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
-            // materialRaisedButton1
+            // btnSave
             // 
-            resources.ApplyResources(this.materialRaisedButton1, "materialRaisedButton1");
-            this.materialRaisedButton1.Depth = 0;
-            this.materialRaisedButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialRaisedButton1.Name = "materialRaisedButton1";
-            this.materialRaisedButton1.Primary = true;
-            this.materialRaisedButton1.UseVisualStyleBackColor = true;
-            this.materialRaisedButton1.Click += new System.EventHandler(this.btnSave_Click);
+            resources.ApplyResources(this.btnSave, "btnSave");
+            this.btnSave.Image = global::LoginForm.Properties.Resources.if_floppy_285657;
+            this.btnSave.Name = "btnSave";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // gbUserInfo
             // 
@@ -394,6 +393,11 @@
             this.chcChangePassword.UseVisualStyleBackColor = true;
             this.chcChangePassword.CheckedChanged += new System.EventHandler(this.chcChangePassword_CheckedChanged);
             // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
             // FormWorkerManagement
             // 
             resources.ApplyResources(this, "$this");
@@ -402,7 +406,6 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FormWorkerManagement";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.FormWorkerManagement_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.gbRoles.ResumeLayout(false);
@@ -410,6 +413,7 @@
             this.gbAuthorities.ResumeLayout(false);
             this.gbAuthorities.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.gbUserInfo.ResumeLayout(false);
             this.gbUserInfo.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -444,7 +448,6 @@
         private System.Windows.Forms.BindingSource authorizationValueBindingSource;
         private System.Windows.Forms.CheckedListBox clbAuthorities;
         private System.Windows.Forms.CheckBox chcActive;
-        private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton1;
         private MaterialSkin.Controls.MaterialLabel materialLabel6;
         private MaterialSkin.Controls.MaterialLabel materialLabel5;
         private MaterialSkin.Controls.MaterialLabel materialLabel4;
@@ -464,5 +467,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown numericDiscountRate;
         private System.Windows.Forms.CheckBox chcAllAuth;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Label label4;
     }
 }

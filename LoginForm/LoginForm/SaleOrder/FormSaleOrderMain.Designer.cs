@@ -29,8 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.btnSearchStockNumber = new System.Windows.Forms.Button();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.chcCustStockNumber = new System.Windows.Forms.CheckBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.chcAllSales = new System.Windows.Forms.CheckBox();
@@ -46,7 +45,15 @@
             this.btnExportExcel = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSearchStockNumber = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.btnPrint = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgSales = new DevComponents.DotNetBar.Controls.DataGridViewX();
@@ -60,28 +67,13 @@
             this.gridRightClick.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnSearchStockNumber
-            // 
-            this.btnSearchStockNumber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(190)))), ((int)(((byte)(197)))));
-            this.btnSearchStockNumber.Enabled = false;
-            this.btnSearchStockNumber.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.btnSearchStockNumber.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearchStockNumber.Location = new System.Drawing.Point(1007, 82);
-            this.btnSearchStockNumber.Margin = new System.Windows.Forms.Padding(0);
-            this.btnSearchStockNumber.Name = "btnSearchStockNumber";
-            this.btnSearchStockNumber.Size = new System.Drawing.Size(216, 32);
-            this.btnSearchStockNumber.TabIndex = 27;
-            this.btnSearchStockNumber.Text = "Search Stock Number";
-            this.btnSearchStockNumber.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSearchStockNumber.UseVisualStyleBackColor = false;
-            // 
             // chcCustStockNumber
             // 
             this.chcCustStockNumber.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chcCustStockNumber.Enabled = false;
-            this.chcCustStockNumber.Location = new System.Drawing.Point(1007, 54);
+            this.chcCustStockNumber.Location = new System.Drawing.Point(932, 53);
             this.chcCustStockNumber.Name = "chcCustStockNumber";
-            this.chcCustStockNumber.Size = new System.Drawing.Size(216, 24);
+            this.chcCustStockNumber.Size = new System.Drawing.Size(147, 24);
             this.chcCustStockNumber.TabIndex = 26;
             this.chcCustStockNumber.Text = "Customer Stock Code";
             this.chcCustStockNumber.UseVisualStyleBackColor = true;
@@ -89,7 +81,7 @@
             // textBox2
             // 
             this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(1007, 21);
+            this.textBox2.Location = new System.Drawing.Point(932, 20);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(216, 21);
             this.textBox2.TabIndex = 25;
@@ -98,9 +90,9 @@
             // 
             this.chcAllSales.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chcAllSales.Enabled = false;
-            this.chcAllSales.Location = new System.Drawing.Point(786, 90);
+            this.chcAllSales.Location = new System.Drawing.Point(711, 89);
             this.chcAllSales.Name = "chcAllSales";
-            this.chcAllSales.Size = new System.Drawing.Size(184, 24);
+            this.chcAllSales.Size = new System.Drawing.Size(105, 24);
             this.chcAllSales.TabIndex = 24;
             this.chcAllSales.Text = "All Quotations";
             this.chcAllSales.UseVisualStyleBackColor = true;
@@ -108,7 +100,7 @@
             // txtSearchText
             // 
             this.txtSearchText.Enabled = false;
-            this.txtSearchText.Location = new System.Drawing.Point(786, 55);
+            this.txtSearchText.Location = new System.Drawing.Point(711, 54);
             this.txtSearchText.Name = "txtSearchText";
             this.txtSearchText.Size = new System.Drawing.Size(184, 21);
             this.txtSearchText.TabIndex = 23;
@@ -120,7 +112,7 @@
             this.cbSearch.FormattingEnabled = true;
             this.cbSearch.Items.AddRange(new object[] {
             "QUOT NUMBER"});
-            this.cbSearch.Location = new System.Drawing.Point(786, 21);
+            this.cbSearch.Location = new System.Drawing.Point(711, 20);
             this.cbSearch.Name = "cbSearch";
             this.cbSearch.Size = new System.Drawing.Size(184, 23);
             this.cbSearch.TabIndex = 22;
@@ -168,7 +160,7 @@
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
             this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnDelete.Location = new System.Drawing.Point(582, 41);
+            this.btnDelete.Location = new System.Drawing.Point(517, 29);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(0);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
@@ -186,7 +178,7 @@
             this.btnModify.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModify.Image = global::LoginForm.Properties.Resources.icons8_Edit_Property_32;
             this.btnModify.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnModify.Location = new System.Drawing.Point(520, 41);
+            this.btnModify.Location = new System.Drawing.Point(442, 29);
             this.btnModify.Margin = new System.Windows.Forms.Padding(0);
             this.btnModify.Name = "btnModify";
             this.btnModify.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
@@ -194,6 +186,7 @@
             this.btnModify.TabIndex = 16;
             this.btnModify.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnModify.UseVisualStyleBackColor = false;
+            this.btnModify.Click += new System.EventHandler(this.btnModify_Click);
             // 
             // btnRefreshList
             // 
@@ -202,7 +195,7 @@
             this.btnRefreshList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRefreshList.Image = global::LoginForm.Properties.Resources.icons8_Refresh_32;
             this.btnRefreshList.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnRefreshList.Location = new System.Drawing.Point(387, 41);
+            this.btnRefreshList.Location = new System.Drawing.Point(289, 29);
             this.btnRefreshList.Margin = new System.Windows.Forms.Padding(0);
             this.btnRefreshList.Name = "btnRefreshList";
             this.btnRefreshList.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
@@ -235,7 +228,7 @@
             this.btnNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNew.Image = global::LoginForm.Properties.Resources.icons8_Plus_32;
             this.btnNew.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnNew.Location = new System.Drawing.Point(458, 40);
+            this.btnNew.Location = new System.Drawing.Point(360, 28);
             this.btnNew.Margin = new System.Windows.Forms.Padding(0);
             this.btnNew.Name = "btnNew";
             this.btnNew.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
@@ -248,6 +241,11 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.btnSearchStockNumber);
+            this.panel1.Controls.Add(this.label9);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.chcCustStockNumber);
             this.panel1.Controls.Add(this.textBox2);
             this.panel1.Controls.Add(this.chcAllSales);
@@ -267,8 +265,71 @@
             this.panel1.Size = new System.Drawing.Size(1244, 130);
             this.panel1.TabIndex = 1;
             // 
+            // btnSearchStockNumber
+            // 
+            this.btnSearchStockNumber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
+            this.btnSearchStockNumber.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.btnSearchStockNumber.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearchStockNumber.Image = global::LoginForm.Properties.Resources.if_search_magnifying_glass_find_103857;
+            this.btnSearchStockNumber.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnSearchStockNumber.Location = new System.Drawing.Point(1151, 18);
+            this.btnSearchStockNumber.Margin = new System.Windows.Forms.Padding(0);
+            this.btnSearchStockNumber.Name = "btnSearchStockNumber";
+            this.btnSearchStockNumber.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.btnSearchStockNumber.Size = new System.Drawing.Size(49, 46);
+            this.btnSearchStockNumber.TabIndex = 32;
+            this.btnSearchStockNumber.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnSearchStockNumber.UseVisualStyleBackColor = false;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(1151, 69);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(46, 15);
+            this.label9.TabIndex = 33;
+            this.label9.Text = "Search";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(291, 80);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(50, 15);
+            this.label3.TabIndex = 31;
+            this.label3.Text = "Refresh";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(368, 81);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 15);
+            this.label4.TabIndex = 28;
+            this.label4.Text = "New ";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(446, 81);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(43, 15);
+            this.label5.TabIndex = 29;
+            this.label5.Text = "Modify";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(520, 81);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(43, 15);
+            this.label6.TabIndex = 30;
+            this.label6.Text = "Delete";
+            // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.label8);
+            this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.btnPrint);
             this.panel2.Controls.Add(this.btnExportExcel);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -277,6 +338,24 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1250, 126);
             this.panel2.TabIndex = 2;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(135, 77);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(32, 15);
+            this.label8.TabIndex = 22;
+            this.label8.Text = "Print";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(34, 77);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(37, 15);
+            this.label7.TabIndex = 21;
+            this.label7.Text = "Excel";
             // 
             // btnPrint
             // 
@@ -318,14 +397,14 @@
             this.dgSales.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgSales.ContextMenuStrip = this.gridRightClick;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgSales.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgSales.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgSales.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgSales.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dgSales.Location = new System.Drawing.Point(8, 144);
@@ -378,6 +457,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgSales)).EndInit();
             this.gridRightClick.ResumeLayout(false);
@@ -386,8 +466,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnSearchStockNumber;
         private System.Windows.Forms.CheckBox chcCustStockNumber;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.CheckBox chcAllSales;
@@ -411,5 +489,13 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem sentToPurchaseOrderToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sentToLogoToolStripMenuItem;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnSearchStockNumber;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
     }
 }

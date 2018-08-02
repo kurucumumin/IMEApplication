@@ -34,6 +34,7 @@
             this.CustomerName = new System.Windows.Forms.TextBox();
             this.CustomerSearchGrid = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.CustomerSearchGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -89,13 +90,22 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(446, 39);
+            this.button1.Image = global::LoginForm.Properties.Resources.icons8_Plus_32;
+            this.button1.Location = new System.Drawing.Point(474, 28);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(95, 43);
+            this.button1.Size = new System.Drawing.Size(43, 43);
             this.button1.TabIndex = 4;
-            this.button1.Text = "Add New Customer";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(443, 74);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(98, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Add New Customer";
             // 
             // FormQuaotationCustomerSearch
             // 
@@ -103,6 +113,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.ClientSize = new System.Drawing.Size(553, 325);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.CustomerSearchGrid);
             this.Controls.Add(this.CustomerName);
@@ -125,5 +136,6 @@
         private System.Windows.Forms.TextBox CustomerName;
         private System.Windows.Forms.DataGridView CustomerSearchGrid;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label3;
     }
 }

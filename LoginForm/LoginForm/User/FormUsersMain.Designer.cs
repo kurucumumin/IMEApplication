@@ -80,11 +80,11 @@
             // 
             this.btnAddWorker.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnAddWorker.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddWorker.Image = global::LoginForm.Properties.Resources.icons8_Plus_32;
             this.btnAddWorker.Location = new System.Drawing.Point(3, 3);
             this.btnAddWorker.Name = "btnAddWorker";
-            this.btnAddWorker.Size = new System.Drawing.Size(151, 35);
+            this.btnAddWorker.Size = new System.Drawing.Size(47, 44);
             this.btnAddWorker.TabIndex = 51;
-            this.btnAddWorker.Text = "Add Worker";
             this.btnAddWorker.UseVisualStyleBackColor = true;
             this.btnAddWorker.Click += new System.EventHandler(this.btnAddWorker_Click);
             // 
@@ -92,11 +92,11 @@
             // 
             this.btnEditWorker.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnEditWorker.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditWorker.Location = new System.Drawing.Point(160, 3);
+            this.btnEditWorker.Image = global::LoginForm.Properties.Resources.icons8_Edit_Property_32;
+            this.btnEditWorker.Location = new System.Drawing.Point(56, 3);
             this.btnEditWorker.Name = "btnEditWorker";
-            this.btnEditWorker.Size = new System.Drawing.Size(151, 35);
+            this.btnEditWorker.Size = new System.Drawing.Size(53, 43);
             this.btnEditWorker.TabIndex = 52;
-            this.btnEditWorker.Text = "Edit Worker";
             this.btnEditWorker.UseVisualStyleBackColor = true;
             this.btnEditWorker.Click += new System.EventHandler(this.btnEditWorker_Click);
             // 

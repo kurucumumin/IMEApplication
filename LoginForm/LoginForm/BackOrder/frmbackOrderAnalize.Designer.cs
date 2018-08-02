@@ -53,6 +53,8 @@ namespace LoginForm.BackOrder
             this.Information = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dg)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,9 +82,9 @@ namespace LoginForm.BackOrder
             this.PromisedDate2,
             this.CurrentPromisedDate2,
             this.Information});
-            this.dg.Location = new System.Drawing.Point(2, 51);
+            this.dg.Location = new System.Drawing.Point(2, 71);
             this.dg.Name = "dg";
-            this.dg.Size = new System.Drawing.Size(1165, 690);
+            this.dg.Size = new System.Drawing.Size(1165, 670);
             this.dg.TabIndex = 5;
             // 
             // QuotationNo
@@ -206,23 +208,41 @@ namespace LoginForm.BackOrder
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(2, 2);
+            this.button1.Image = global::LoginForm.Properties.Resources.if_Document_file_export_sending_exit_send_1886950;
+            this.button1.Location = new System.Drawing.Point(12, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 43);
+            this.button1.Size = new System.Drawing.Size(49, 43);
             this.button1.TabIndex = 6;
-            this.button1.Text = "Excel";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(83, 2);
+            this.btnExit.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
+            this.btnExit.Location = new System.Drawing.Point(82, 2);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(75, 43);
+            this.btnExit.Size = new System.Drawing.Size(49, 43);
             this.btnExit.TabIndex = 6;
-            this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(96, 48);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(24, 13);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Exit";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(19, 48);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(33, 13);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Excel";
             // 
             // frmbackOrderAnalize
             // 
@@ -230,6 +250,8 @@ namespace LoginForm.BackOrder
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.ClientSize = new System.Drawing.Size(1179, 749);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dg);
@@ -238,6 +260,7 @@ namespace LoginForm.BackOrder
             this.Load += new System.EventHandler(this.frmbackOrderAnalize_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dg)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -267,5 +290,7 @@ namespace LoginForm.BackOrder
         private System.Windows.Forms.DataGridViewTextBoxColumn PromisedDate2;
         private System.Windows.Forms.DataGridViewTextBoxColumn CurrentPromisedDate2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Information;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label1;
     }
 }

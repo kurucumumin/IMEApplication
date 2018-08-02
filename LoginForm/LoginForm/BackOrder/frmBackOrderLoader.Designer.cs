@@ -47,6 +47,8 @@
             this.LineValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FirstPromisedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LatestPromisedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dg)).BeginInit();
             this.SuspendLayout();
             // 
@@ -200,12 +202,32 @@
             this.LatestPromisedDate.Name = "LatestPromisedDate";
             this.LatestPromisedDate.ReadOnly = true;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(634, 68);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(30, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "ADD";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(702, 68);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(31, 13);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "EXIT";
+            // 
             // frmBackOrderLoader
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.ClientSize = new System.Drawing.Size(742, 383);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.dg);
             this.Controls.Add(this.txtDesc);
             this.Controls.Add(this.label2);
@@ -244,5 +266,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn LineValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn FirstPromisedDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn LatestPromisedDate;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }

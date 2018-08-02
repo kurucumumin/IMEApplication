@@ -41,11 +41,7 @@ namespace LoginForm.QuotationModule
                 MessageBox.Show("There is no such a data");
             }
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            itemsearch();
-        }
+        
 
         private void itemsearch()
         {
@@ -74,28 +70,14 @@ namespace LoginForm.QuotationModule
             if (e.KeyCode == Keys.Enter)
             {
                 ChooseItem();
-                //if (itemList != null)
-                //{
-                //    ItemCode = dgQuotationItemSearch.CurrentRow.Cells["Article_No"].Value.ToString();
-                //}
-                //else
-                //{
-                    
-                //}
+              
             }
         }
 
         private void dgQuotationItemSearch_DoubleClick(object sender, EventArgs e)
         {
             ChooseItem();
-            //if (itemList != null)
-            //{
-            //    ItemCode = dgQuotationItemSearch.CurrentRow.Cells["Article_No"].Value.ToString();
-            //}
-            //else
-            //{
-                
-            //}
+           
         }
 
         private void ChooseItem()
@@ -139,6 +121,11 @@ namespace LoginForm.QuotationModule
 
                 dgQuotationItemSearch.DataSource = itemList.ToList();
             }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            itemsearch();
         }
     }
 }

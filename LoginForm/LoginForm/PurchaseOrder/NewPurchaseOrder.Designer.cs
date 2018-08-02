@@ -54,6 +54,11 @@
             this.customerAddressBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnSelect = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgPurchase)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerAddressBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -200,31 +205,31 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(1257, 628);
+            this.btnClose.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
+            this.btnClose.Location = new System.Drawing.Point(1271, 628);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(75, 42);
+            this.btnClose.Size = new System.Drawing.Size(52, 45);
             this.btnClose.TabIndex = 13;
-            this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnExcel
             // 
-            this.btnExcel.Location = new System.Drawing.Point(913, 628);
+            this.btnExcel.Image = global::LoginForm.Properties.Resources.if_Document_file_export_sending_exit_send_1886950;
+            this.btnExcel.Location = new System.Drawing.Point(985, 628);
             this.btnExcel.Name = "btnExcel";
-            this.btnExcel.Size = new System.Drawing.Size(166, 42);
+            this.btnExcel.Size = new System.Drawing.Size(52, 45);
             this.btnExcel.TabIndex = 12;
-            this.btnExcel.Text = "Export to Excel";
             this.btnExcel.UseVisualStyleBackColor = true;
             this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(1085, 628);
+            this.btnCreate.Image = global::LoginForm.Properties.Resources.icons8_Edit_Property_32;
+            this.btnCreate.Location = new System.Drawing.Point(1135, 628);
             this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(166, 42);
+            this.btnCreate.Size = new System.Drawing.Size(52, 45);
             this.btnCreate.TabIndex = 11;
-            this.btnCreate.Text = "Create an Order That is Chosen";
             this.btnCreate.UseVisualStyleBackColor = true;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
@@ -234,30 +239,80 @@
             // 
             // btnSelect
             // 
+            this.btnSelect.Image = global::LoginForm.Properties.Resources.if_Select_46755;
             this.btnSelect.Location = new System.Drawing.Point(12, 630);
             this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(74, 20);
+            this.btnSelect.Size = new System.Drawing.Size(52, 45);
             this.btnSelect.TabIndex = 16;
-            this.btnSelect.Text = "Select All";
             this.btnSelect.UseVisualStyleBackColor = true;
             this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click_1);
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(12, 659);
+            this.btnClear.Image = global::LoginForm.Properties.Resources.if_Line_ui_icons_Svg_03_1465842;
+            this.btnClear.Location = new System.Drawing.Point(92, 630);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(74, 20);
+            this.btnClear.Size = new System.Drawing.Size(52, 45);
             this.btnClear.TabIndex = 17;
-            this.btnClear.Text = "Clear All";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click_1);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(13, 679);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(51, 13);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "Select All";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(98, 679);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(45, 13);
+            this.label3.TabIndex = 19;
+            this.label3.Text = "Clear All";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(973, 679);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(78, 13);
+            this.label4.TabIndex = 20;
+            this.label4.Text = "Export to Excel";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(1081, 679);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(156, 13);
+            this.label5.TabIndex = 21;
+            this.label5.Text = "Create an Order That is Chosen";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(1282, 679);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(33, 13);
+            this.label6.TabIndex = 22;
+            this.label6.Text = "Close";
             // 
             // NewPurchaseOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
-            this.ClientSize = new System.Drawing.Size(1344, 682);
+            this.ClientSize = new System.Drawing.Size(1344, 701);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnSelect);
             this.Controls.Add(this.btnClose);
@@ -311,5 +366,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SaleID;
         private System.Windows.Forms.Button btnSelect;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }

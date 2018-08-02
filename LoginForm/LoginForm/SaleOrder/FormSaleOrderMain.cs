@@ -192,5 +192,10 @@ namespace LoginForm.nsSaleOrder
         {
             //MyConnect.Ornekle.ExecuteScalar_Int(Utils.ConnectionStringLogo, sql_command, CommandType.Text, 30, args);
         }
+
+        private void btnModify_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

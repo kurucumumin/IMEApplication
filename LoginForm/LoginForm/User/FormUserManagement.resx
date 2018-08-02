@@ -342,35 +342,59 @@
   <data name="&gt;&gt;gbAuthorities.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="materialRaisedButton1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>None</value>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="materialRaisedButton1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>256, 514</value>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>325, 545</value>
   </data>
-  <data name="materialRaisedButton1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 17</value>
   </data>
-  <data name="materialRaisedButton1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>110, 40</value>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>54</value>
   </data>
-  <data name="materialRaisedButton1.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="materialRaisedButton1.Text" xml:space="preserve">
+  <data name="label4.Text" xml:space="preserve">
     <value>Save</value>
   </data>
-  <data name="&gt;&gt;materialRaisedButton1.Name" xml:space="preserve">
-    <value>materialRaisedButton1</value>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
   </data>
-  <data name="&gt;&gt;materialRaisedButton1.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialRaisedButton, MaterialSkin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;materialRaisedButton1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
     <value>panel1</value>
   </data>
-  <data name="&gt;&gt;materialRaisedButton1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="btnSave.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="btnSave.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10pt</value>
+  </data>
+  <data name="btnSave.Location" type="System.Drawing.Point, System.Drawing">
+    <value>318, 499</value>
+  </data>
+  <data name="btnSave.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 43</value>
+  </data>
+  <data name="btnSave.TabIndex" type="System.Int32, mscorlib">
+    <value>53</value>
+  </data>
+  <data name="&gt;&gt;btnSave.Name" xml:space="preserve">
+    <value>btnSave</value>
+  </data>
+  <data name="&gt;&gt;btnSave.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnSave.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;btnSave.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="gbUserInfo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
@@ -508,7 +532,7 @@
     <value>NoControl</value>
   </data>
   <data name="materialLabel5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 186</value>
+    <value>2, 198</value>
   </data>
   <data name="materialLabel5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -544,7 +568,7 @@
     <value>NoControl</value>
   </data>
   <data name="materialLabel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 145</value>
+    <value>4, 160</value>
   </data>
   <data name="materialLabel4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -679,7 +703,7 @@
     <value>True</value>
   </data>
   <data name="chcActive.Location" type="System.Drawing.Point, System.Drawing">
-    <value>283, 428</value>
+    <value>96, 421</value>
   </data>
   <data name="chcActive.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -883,7 +907,7 @@
     <value>True</value>
   </data>
   <data name="rbGeneralManager.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 74</value>
+    <value>10, 86</value>
   </data>
   <data name="rbGeneralManager.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -913,7 +937,7 @@
     <value>True</value>
   </data>
   <data name="rbSalesManager.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 50</value>
+    <value>10, 59</value>
   </data>
   <data name="rbSalesManager.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -994,7 +1018,7 @@
     <value>10</value>
   </data>
   <data name="txtPhone.Location" type="System.Drawing.Point, System.Drawing">
-    <value>154, 185</value>
+    <value>154, 194</value>
   </data>
   <data name="txtPhone.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -1018,7 +1042,7 @@
     <value>11</value>
   </data>
   <data name="txtMail.Location" type="System.Drawing.Point, System.Drawing">
-    <value>154, 145</value>
+    <value>153, 160</value>
   </data>
   <data name="txtMail.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -1096,7 +1120,7 @@
     <value>Microsoft Sans Serif, 8pt</value>
   </data>
   <data name="chcChangePassword.Location" type="System.Drawing.Point, System.Drawing">
-    <value>228, 127</value>
+    <value>154, 134</value>
   </data>
   <data name="chcChangePassword.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -1123,7 +1147,7 @@
     <value>15</value>
   </data>
   <data name="gbUserInfo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 45</value>
+    <value>8, 13</value>
   </data>
   <data name="gbUserInfo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>6, 13, 6, 6</value>
@@ -1150,7 +1174,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;gbUserInfo.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>

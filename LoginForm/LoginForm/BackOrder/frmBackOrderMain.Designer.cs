@@ -50,6 +50,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtItemDesc = new System.Windows.Forms.TextBox();
             this.btnProductSearch = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dg)).BeginInit();
             this.SuspendLayout();
             // 
@@ -204,7 +209,7 @@
             // btnSearch
             // 
             this.btnSearch.Image = global::LoginForm.Properties.Resources.if_search_magnifying_glass_find_103857;
-            this.btnSearch.Location = new System.Drawing.Point(232, 84);
+            this.btnSearch.Location = new System.Drawing.Point(232, 71);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(41, 47);
             this.btnSearch.TabIndex = 5;
@@ -214,7 +219,7 @@
             // btnClear
             // 
             this.btnClear.Image = global::LoginForm.Properties.Resources.if_edit_clear_23227;
-            this.btnClear.Location = new System.Drawing.Point(279, 84);
+            this.btnClear.Location = new System.Drawing.Point(279, 71);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(41, 47);
             this.btnClear.TabIndex = 5;
@@ -248,12 +253,62 @@
             this.btnProductSearch.UseVisualStyleBackColor = true;
             this.btnProductSearch.Click += new System.EventHandler(this.btnProductSearch_Click);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(599, 65);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(42, 13);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Update";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(774, 64);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(24, 13);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "Exit";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(686, 64);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(33, 13);
+            this.label7.TabIndex = 8;
+            this.label7.Text = "Excel";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(282, 118);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(31, 13);
+            this.label8.TabIndex = 9;
+            this.label8.Text = "Clear";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(231, 118);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(41, 13);
+            this.label9.TabIndex = 10;
+            this.label9.Text = "Search";
+            // 
             // frmBackOrderMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.ClientSize = new System.Drawing.Size(821, 434);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtItemDesc);
@@ -305,5 +360,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Description;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserName;
         private System.Windows.Forms.Button btnProductSearch;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
     }
 }

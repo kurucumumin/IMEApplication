@@ -28,31 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.CancelButton = new System.Windows.Forms.Button();
-            this.AddButton = new System.Windows.Forms.Button();
             this.DepartmentName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // CancelButton
-            // 
-            this.CancelButton.Location = new System.Drawing.Point(162, 83);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(75, 23);
-            this.CancelButton.TabIndex = 5;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = true;
-            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
-            // 
-            // AddButton
-            // 
-            this.AddButton.Location = new System.Drawing.Point(62, 83);
-            this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(75, 23);
-            this.AddButton.TabIndex = 6;
-            this.AddButton.Text = "Add";
-            this.AddButton.UseVisualStyleBackColor = true;
-            this.AddButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // DepartmentName
             // 
@@ -70,19 +52,58 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Department";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(187, 131);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(40, 13);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "Cancel";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(111, 131);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(26, 13);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Add";
+            // 
+            // btnExit
+            // 
+            this.btnExit.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
+            this.btnExit.Location = new System.Drawing.Point(181, 83);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(50, 45);
+            this.btnExit.TabIndex = 14;
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Image = global::LoginForm.Properties.Resources.icons8_Plus_32;
+            this.btnAdd.Location = new System.Drawing.Point(105, 83);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(50, 45);
+            this.btnAdd.TabIndex = 15;
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
             // CustomerDepartmentAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
-            this.ClientSize = new System.Drawing.Size(284, 152);
-            this.Controls.Add(this.CancelButton);
-            this.Controls.Add(this.AddButton);
+            this.ClientSize = new System.Drawing.Size(284, 178);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.btnExit);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.DepartmentName);
             this.Controls.Add(this.label1);
             this.Name = "CustomerDepartmentAdd";
             this.Text = "DepartmentAdd";
-            this.Load += new System.EventHandler(this.DepartmentAdd_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -90,9 +111,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Button CancelButton;
-        private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.TextBox DepartmentName;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Button btnAdd;
     }
 }

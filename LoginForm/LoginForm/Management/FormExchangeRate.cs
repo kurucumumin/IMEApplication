@@ -17,6 +17,23 @@ namespace LoginForm.ManagementModule
         {
             InitializeComponent();
         }
+        
+
+        private void FormExchangeRate_Load(object sender, EventArgs e)
+        {
+            BringExchangeRates();
+        }
+
+        private void BringExchangeRates()
+        {
+            IMEEntities IME = new IMEEntities();
+
+            Rate rateUSD = IME.Rates.Where(r => r.rate_date == DateTime.Today.Date && r.CurType == "USD").FirstOrDefault();
+            if(rateUSD != null) { nudUSD.Value = (decimal)rateUSD.RateBuy; }
+
+            Rate rateGBP = IME.Rates.Where(r => r.rate_date == DateTime.Today.Date && r.CurType == "GBP").FirstOrDefault();
+            if (rateGBP != null) { nudGBP.Value = (decimal)rateGBP.RateBuy; }
+        }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -49,23 +66,6 @@ namespace LoginForm.ManagementModule
                 throw;
             }
 
-            
-        }
-
-        private void FormExchangeRate_Load(object sender, EventArgs e)
-        {
-            BringExchangeRates();
-        }
-
-        private void BringExchangeRates()
-        {
-            IMEEntities IME = new IMEEntities();
-
-            Rate rateUSD = IME.Rates.Where(r => r.rate_date == DateTime.Today.Date && r.CurType == "USD").FirstOrDefault();
-            if(rateUSD != null) { nudUSD.Value = (decimal)rateUSD.RateBuy; }
-
-            Rate rateGBP = IME.Rates.Where(r => r.rate_date == DateTime.Today.Date && r.CurType == "GBP").FirstOrDefault();
-            if (rateGBP != null) { nudGBP.Value = (decimal)rateGBP.RateBuy; }
         }
     }
 }

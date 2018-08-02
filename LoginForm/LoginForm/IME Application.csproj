@@ -108,6 +108,7 @@
     <Reference Include="Syncfusion.BulletGraph.Windows, Version=16.2451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Chart.Base, Version=16.2451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Chart.Windows, Version=16.2451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Compression.Base, Version=16.2460.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Core.WinForms, Version=16.2451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Data.WinForms, Version=16.2451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Gauge.Windows, Version=16.2451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
@@ -124,9 +125,11 @@
     <Reference Include="Syncfusion.Shared.Base, Version=16.2451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Shared.Windows, Version=16.2451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.SpellChecker.Base, Version=16.2451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Spreadsheet.Windows, Version=16.2460.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Tools.Base, Version=16.2451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Tools.Windows, Version=16.2451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.TreeMap.Windows, Version=16.2451.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.XlsIO.Base, Version=16.2460.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -1329,9 +1332,14 @@
     <None Include="Resources\if_Document_file_export_sending_exit_send_1886950.ico" />
     <None Include="Resources\if_icon-123-printer_314820.ico" />
     <None Include="Resources\if_edit-clear_23227.ico" />
+    <None Include="Resources\if_filter_173013.ico" />
+    <None Include="Resources\if_floppy_285657.ico" />
     <Content Include="Resources\if_icon-24-key_314756.ico" />
     <None Include="Resources\if_print_173079.ico" />
     <None Include="Resources\if_search_magnifying_glass_find_103857.ico" />
+    <None Include="Resources\if_Line_ui_icons_Svg-03_1465842.ico" />
+    <None Include="Resources\if_Select_22735.ico" />
+    <None Include="Resources\if_Select_46755.ico" />
     <Content Include="Resources\if_user_173122.ico" />
     <Content Include="Resources\IME.jpg" />
     <None Include="Resources\mdi copy.jpg" />

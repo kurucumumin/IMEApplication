@@ -55,19 +55,19 @@ namespace LoginForm.CustomControls
                 }
                 if (authList.Where(a => a.AuthorizationID == 1113).Count() <= 0)//Can Edit Data Exchange Rate
                 {
-                    btnExchangeRate.Visible = false;
+                    exchangeRateToolStripMenuItem.Visible = false;
                 }
                 if (authList.Where(a => a.AuthorizationID == 1122).Count() <= 0)//Can Edit Terms of Payment
                 {
-                    btnTermsOfPayment.Visible = false;
+                    termsOfPaymentToolStripMenuItem.Visible = false;
                 }
                 if (authList.Where(a => a.AuthorizationID == 1123).Count() <= 0)//Can Edit Roles and Authorities
                 {
-                    btnRolesAuthorities.Visible = false;
+                    rolesAndAuthoritiesToolStripMenuItem.Visible = false;
                 }
                 if (authList.Where(a => a.AuthorizationID == 1124).Count() <= 0)//Can Edit Category and SubCategory
                 {
-                    btnCategorySubCategory.Visible = false;
+                    mainCategorySubCategoryToolStripMenuItem1.Visible = false;
                 }
             }
         }
@@ -86,9 +86,35 @@ namespace LoginForm.CustomControls
             txtBranchCode.Text = m.Company.BranchCode;
         }
 
+
+        private void exchangeRateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormExchangeRate form = new FormExchangeRate();
+            form.ShowDialog();
+        }
+
+        private void termsOfPaymentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormTermsOfPayment form = new FormTermsOfPayment();
+            form.ShowDialog();
+        }
+
+        private void mainCategorySubCategoryToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FormCategorySubCategory form = new FormCategorySubCategory();
+            form.ShowDialog();
+        }
+
+        private void rolesAndAuthoritiesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormRoleAuths form = new FormRoleAuths();
+            form.ShowDialog();
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
-            try          {
+            try
+            {
                 IMEEntities IME = new IMEEntities();
                 Management management = IME.Managements.First();
                 management.LowMarginLimit = Convert.ToDecimal(txtLowMarginLimit.Text);
@@ -116,29 +142,6 @@ namespace LoginForm.CustomControls
                 throw;
             }
         }
-
-        private void btnRolesAuthorities_Click(object sender, EventArgs e)
-        {
-            FormRoleAuths form = new FormRoleAuths();
-            form.ShowDialog();
-        }
-
-        private void btnTermsOfPayment_Click(object sender, EventArgs e)
-        {
-            FormTermsOfPayment form = new FormTermsOfPayment();
-            form.ShowDialog();
-        }
-
-        private void btnExchangeRate_Click(object sender, EventArgs e)
-        {
-            FormExchangeRate form = new FormExchangeRate();
-            form.ShowDialog();
-        }
-
-        private void btnCategorySubCategory_Click(object sender, EventArgs e)
-        {
-            FormCategorySubCategory form = new FormCategorySubCategory();
-            form.ShowDialog();
-        }
+        
     }
 }

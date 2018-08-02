@@ -47,6 +47,7 @@ namespace LoginForm.Main
             this.button14 = new System.Windows.Forms.Button();
             this.btnManagement = new AltoControls.AltoButton();
             this.pnlFileLoader = new System.Windows.Forms.Panel();
+            this.btnBackOrder = new AltoControls.AltoButton();
             this.btnOrderAcknowledgement = new AltoControls.AltoButton();
             this.btnOnSale = new AltoControls.AltoButton();
             this.btnSuperDisk = new AltoControls.AltoButton();
@@ -90,7 +91,6 @@ namespace LoginForm.Main
             this.bunifuElipse2 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuElipse3 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.btnBackOrder = new AltoControls.AltoButton();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -230,6 +230,29 @@ namespace LoginForm.Main
             this.pnlFileLoader.Name = "pnlFileLoader";
             this.pnlFileLoader.Size = new System.Drawing.Size(218, 0);
             this.pnlFileLoader.TabIndex = 6;
+            // 
+            // btnBackOrder
+            // 
+            this.btnBackOrder.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
+            this.btnBackOrder.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
+            this.btnBackOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBackOrder.BackColor = System.Drawing.Color.Transparent;
+            this.btnBackOrder.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnBackOrder.Font = new System.Drawing.Font("Sitka Text", 11F, System.Drawing.FontStyle.Bold);
+            this.btnBackOrder.ForeColor = System.Drawing.Color.Black;
+            this.btnBackOrder.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
+            this.btnBackOrder.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
+            this.btnBackOrder.Location = new System.Drawing.Point(16, 436);
+            this.btnBackOrder.Margin = new System.Windows.Forms.Padding(2);
+            this.btnBackOrder.Name = "btnBackOrder";
+            this.btnBackOrder.Radius = 5;
+            this.btnBackOrder.Size = new System.Drawing.Size(194, 32);
+            this.btnBackOrder.Stroke = false;
+            this.btnBackOrder.StrokeColor = System.Drawing.Color.Gray;
+            this.btnBackOrder.TabIndex = 18;
+            this.btnBackOrder.Text = "Back Order";
+            this.btnBackOrder.Transparency = false;
+            this.btnBackOrder.Click += new System.EventHandler(this.btnBackOrder_Click);
             // 
             // btnOrderAcknowledgement
             // 
@@ -976,29 +999,6 @@ namespace LoginForm.Main
             // 
             this.timer2.Interval = 5;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
-            // 
-            // btnBackOrder
-            // 
-            this.btnBackOrder.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
-            this.btnBackOrder.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
-            this.btnBackOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBackOrder.BackColor = System.Drawing.Color.Transparent;
-            this.btnBackOrder.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnBackOrder.Font = new System.Drawing.Font("Sitka Text", 11F, System.Drawing.FontStyle.Bold);
-            this.btnBackOrder.ForeColor = System.Drawing.Color.Black;
-            this.btnBackOrder.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
-            this.btnBackOrder.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
-            this.btnBackOrder.Location = new System.Drawing.Point(16, 436);
-            this.btnBackOrder.Margin = new System.Windows.Forms.Padding(2);
-            this.btnBackOrder.Name = "btnBackOrder";
-            this.btnBackOrder.Radius = 5;
-            this.btnBackOrder.Size = new System.Drawing.Size(194, 32);
-            this.btnBackOrder.Stroke = false;
-            this.btnBackOrder.StrokeColor = System.Drawing.Color.Gray;
-            this.btnBackOrder.TabIndex = 18;
-            this.btnBackOrder.Text = "Back Order";
-            this.btnBackOrder.Transparency = false;
-            this.btnBackOrder.Click += new System.EventHandler(this.btnBackOrder_Click);
             // 
             // frmMainMetro
             // 

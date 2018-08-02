@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnExit = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.dg = new System.Windows.Forms.DataGridView();
             this.QuotationNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SaleOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,27 +46,13 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.btnExcel = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dg)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnExit
-            // 
-            this.btnExit.Location = new System.Drawing.Point(93, 12);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(75, 43);
-            this.btnExit.TabIndex = 9;
-            this.btnExit.Text = "Exit";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(12, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 43);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Excel";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // dg
             // 
@@ -89,9 +73,9 @@
             this.PendingAmount,
             this.FirstPromisedDate,
             this.CurrentPromisedDate1});
-            this.dg.Location = new System.Drawing.Point(12, 61);
+            this.dg.Location = new System.Drawing.Point(12, 64);
             this.dg.Name = "dg";
-            this.dg.Size = new System.Drawing.Size(1165, 690);
+            this.dg.Size = new System.Drawing.Size(1165, 687);
             this.dg.TabIndex = 7;
             // 
             // QuotationNo
@@ -182,11 +166,11 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(450, 12);
+            this.btnSearch.Image = global::LoginForm.Properties.Resources.if_search_magnifying_glass_find_103857;
+            this.btnSearch.Location = new System.Drawing.Point(453, 2);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.Size = new System.Drawing.Size(49, 43);
             this.btnSearch.TabIndex = 10;
-            this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
@@ -206,21 +190,69 @@
             this.txtSearch.Size = new System.Drawing.Size(175, 20);
             this.txtSearch.TabIndex = 12;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(19, 48);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(33, 13);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Excel";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(96, 48);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(24, 13);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Exit";
+            // 
+            // btnExit
+            // 
+            this.btnExit.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
+            this.btnExit.Location = new System.Drawing.Point(82, 2);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(49, 43);
+            this.btnExit.TabIndex = 13;
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // btnExcel
+            // 
+            this.btnExcel.Image = global::LoginForm.Properties.Resources.if_Document_file_export_sending_exit_send_1886950;
+            this.btnExcel.Location = new System.Drawing.Point(12, 2);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.Size = new System.Drawing.Size(49, 43);
+            this.btnExcel.TabIndex = 14;
+            this.btnExcel.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(458, 48);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(41, 13);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "Search";
+            // 
             // BackOrderProductSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.ClientSize = new System.Drawing.Size(1340, 545);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.btnExit);
+            this.Controls.Add(this.btnExcel);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.dg);
             this.Name = "BackOrderProductSearch";
             this.Text = "BackOrderProductSearch";
-            this.Load += new System.EventHandler(this.BackOrderProductSearch_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dg)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -228,9 +260,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dg;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label label1;
@@ -249,5 +278,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PendingAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn FirstPromisedDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn CurrentPromisedDate1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Button btnExcel;
+        private System.Windows.Forms.Label label3;
     }
 }

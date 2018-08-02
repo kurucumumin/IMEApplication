@@ -47,6 +47,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.clbNewAuthorizations = new System.Windows.Forms.CheckedListBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.lblNewRoleName = new System.Windows.Forms.Label();
@@ -285,6 +287,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.btnDelete);
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Controls.Add(this.lblNewRoleName);
@@ -299,38 +303,44 @@
             this.panel1.Size = new System.Drawing.Size(1172, 150);
             this.panel1.TabIndex = 0;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(1108, 72);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(34, 15);
+            this.label8.TabIndex = 23;
+            this.label8.Text = "Save";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(1019, 72);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(43, 15);
+            this.label7.TabIndex = 22;
+            this.label7.Text = "Delete";
+            // 
             // btnDelete
             // 
-            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(115)))), ((int)(((byte)(115)))));
-            this.btnDelete.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(112)))), ((int)(((byte)(67)))));
-            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.ForeColor = System.Drawing.Color.Black;
-            this.btnDelete.Location = new System.Drawing.Point(972, 0);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(0);
+            this.btnDelete.Image = global::LoginForm.Properties.Resources.if_Line_ui_icons_Svg_03_1465842;
+            this.btnDelete.Location = new System.Drawing.Point(1011, 18);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(100, 150);
-            this.btnDelete.TabIndex = 10;
-            this.btnDelete.Text = "DELETE";
-            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Size = new System.Drawing.Size(63, 51);
+            this.btnDelete.TabIndex = 21;
+            this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnSave
             // 
-            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(199)))), ((int)(((byte)(132)))));
-            this.btnSave.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(199)))), ((int)(((byte)(132)))));
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.ForeColor = System.Drawing.Color.Black;
-            this.btnSave.Location = new System.Drawing.Point(1072, 0);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(0);
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSave.Enabled = false;
+            this.btnSave.Image = global::LoginForm.Properties.Resources.if_floppy_285657;
+            this.btnSave.Location = new System.Drawing.Point(1097, 18);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(100, 150);
-            this.btnSave.TabIndex = 9;
-            this.btnSave.Text = "SAVE";
-            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Size = new System.Drawing.Size(63, 51);
+            this.btnSave.TabIndex = 20;
+            this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // lblNewRoleName
@@ -388,13 +398,15 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.CheckedListBox clbAuthorizationList;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtSearchRole;
         private System.Windows.Forms.TextBox txtSearchAuthority;
         private System.Windows.Forms.TextBox txtSearchUserAuthority;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnSave;
     }
 }

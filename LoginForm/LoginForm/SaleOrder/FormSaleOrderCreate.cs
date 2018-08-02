@@ -159,23 +159,6 @@ namespace LoginForm.nsSaleOrder
             }
         }
 
-        private void btnSelectAll_Click(object sender, EventArgs e)
-        {
-
-            for (int i = 0; i < dgItems.Rows.Count; i++)
-            {
-                dgItems.Rows[i].Cells[chk.Index].Value = true;
-            }
-        }
-
-        private void btnClearAll_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < dgItems.Rows.Count; i++)
-            {
-                dgItems.Rows[i].Cells[chk.Index].Value = false;
-            }
-        }
-
         private void txtSearchCustomer_KeyDown(object sender, KeyEventArgs e)
         {
             //int i = 0;
@@ -186,6 +169,22 @@ namespace LoginForm.nsSaleOrder
                 lbCustomerList.DataSource = null;
                 lbCustomerList.DataSource = tempCustomerList;
                 lbCustomerList.DisplayMember = "c_name";
+            }
+        }
+
+        private void btnSelect_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < dgItems.Rows.Count; i++)
+            {
+                dgItems.Rows[i].Cells[chk.Index].Value = true;
+            }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < dgItems.Rows.Count; i++)
+            {
+                dgItems.Rows[i].Cells[chk.Index].Value = false;
             }
         }
     }

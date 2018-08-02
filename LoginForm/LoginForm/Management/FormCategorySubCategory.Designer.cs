@@ -62,6 +62,12 @@
             this.panel12 = new System.Windows.Forms.Panel();
             this.btnEditSubcategory = new System.Windows.Forms.Button();
             this.btnDeleteSubcategory = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.customerCategoryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerSubCategoryBindingSource)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -89,21 +95,21 @@
             // 
             // btnMainCategoryAdd
             // 
-            this.btnMainCategoryAdd.Location = new System.Drawing.Point(319, 51);
+            this.btnMainCategoryAdd.Image = global::LoginForm.Properties.Resources.icons8_Plus_32;
+            this.btnMainCategoryAdd.Location = new System.Drawing.Point(340, 37);
             this.btnMainCategoryAdd.Name = "btnMainCategoryAdd";
-            this.btnMainCategoryAdd.Size = new System.Drawing.Size(99, 50);
+            this.btnMainCategoryAdd.Size = new System.Drawing.Size(58, 36);
             this.btnMainCategoryAdd.TabIndex = 3;
-            this.btnMainCategoryAdd.Text = "Add Category";
             this.btnMainCategoryAdd.UseVisualStyleBackColor = true;
             this.btnMainCategoryAdd.Click += new System.EventHandler(this.btnMainCategoryAdd_Click);
             // 
             // btnSubCategoryAdd
             // 
-            this.btnSubCategoryAdd.Location = new System.Drawing.Point(317, 51);
+            this.btnSubCategoryAdd.Image = global::LoginForm.Properties.Resources.icons8_Plus_32;
+            this.btnSubCategoryAdd.Location = new System.Drawing.Point(337, 37);
             this.btnSubCategoryAdd.Name = "btnSubCategoryAdd";
-            this.btnSubCategoryAdd.Size = new System.Drawing.Size(99, 50);
+            this.btnSubCategoryAdd.Size = new System.Drawing.Size(58, 36);
             this.btnSubCategoryAdd.TabIndex = 4;
-            this.btnSubCategoryAdd.Text = "Add Subcategory";
             this.btnSubCategoryAdd.UseVisualStyleBackColor = true;
             this.btnSubCategoryAdd.Click += new System.EventHandler(this.btnSubCategoryAdd_Click);
             // 
@@ -145,6 +151,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.panel14);
             this.panel1.Controls.Add(this.panel9);
             this.panel1.Controls.Add(this.txtMainCategory);
@@ -183,6 +190,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.panel15);
             this.panel2.Controls.Add(this.panel10);
             this.panel2.Controls.Add(this.txtSubCategory);
@@ -271,6 +279,8 @@
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.label8);
+            this.panel5.Controls.Add(this.label7);
             this.panel5.Controls.Add(this.panel13);
             this.panel5.Controls.Add(this.panel11);
             this.panel5.Controls.Add(this.btnEditCategory);
@@ -302,20 +312,20 @@
             // btnEditCategory
             // 
             this.btnEditCategory.Enabled = false;
-            this.btnEditCategory.Location = new System.Drawing.Point(29, 3);
+            this.btnEditCategory.Image = global::LoginForm.Properties.Resources.icons8_Plus_32;
+            this.btnEditCategory.Location = new System.Drawing.Point(36, 10);
             this.btnEditCategory.Name = "btnEditCategory";
-            this.btnEditCategory.Size = new System.Drawing.Size(99, 50);
+            this.btnEditCategory.Size = new System.Drawing.Size(58, 36);
             this.btnEditCategory.TabIndex = 1;
-            this.btnEditCategory.Text = "Edit Category";
             this.btnEditCategory.UseVisualStyleBackColor = true;
             // 
             // btnDeleteCategory
             // 
-            this.btnDeleteCategory.Location = new System.Drawing.Point(316, 3);
+            this.btnDeleteCategory.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
+            this.btnDeleteCategory.Location = new System.Drawing.Point(337, 10);
             this.btnDeleteCategory.Name = "btnDeleteCategory";
-            this.btnDeleteCategory.Size = new System.Drawing.Size(99, 50);
+            this.btnDeleteCategory.Size = new System.Drawing.Size(58, 36);
             this.btnDeleteCategory.TabIndex = 0;
-            this.btnDeleteCategory.Text = "Delete Category";
             this.btnDeleteCategory.UseVisualStyleBackColor = true;
             this.btnDeleteCategory.Click += new System.EventHandler(this.btnDeleteCategory_Click);
             // 
@@ -370,6 +380,8 @@
             // 
             // panel8
             // 
+            this.panel8.Controls.Add(this.label6);
+            this.panel8.Controls.Add(this.label5);
             this.panel8.Controls.Add(this.panel16);
             this.panel8.Controls.Add(this.panel12);
             this.panel8.Controls.Add(this.btnEditSubcategory);
@@ -401,22 +413,76 @@
             // btnEditSubcategory
             // 
             this.btnEditSubcategory.Enabled = false;
-            this.btnEditSubcategory.Location = new System.Drawing.Point(32, 3);
+            this.btnEditSubcategory.Image = global::LoginForm.Properties.Resources.icons8_Plus_32;
+            this.btnEditSubcategory.Location = new System.Drawing.Point(74, 10);
             this.btnEditSubcategory.Name = "btnEditSubcategory";
-            this.btnEditSubcategory.Size = new System.Drawing.Size(99, 50);
+            this.btnEditSubcategory.Size = new System.Drawing.Size(58, 36);
             this.btnEditSubcategory.TabIndex = 3;
-            this.btnEditSubcategory.Text = "Edit Subcategory";
             this.btnEditSubcategory.UseVisualStyleBackColor = true;
             // 
             // btnDeleteSubcategory
             // 
-            this.btnDeleteSubcategory.Location = new System.Drawing.Point(314, 3);
+            this.btnDeleteSubcategory.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
+            this.btnDeleteSubcategory.Location = new System.Drawing.Point(334, 10);
             this.btnDeleteSubcategory.Name = "btnDeleteSubcategory";
-            this.btnDeleteSubcategory.Size = new System.Drawing.Size(99, 50);
+            this.btnDeleteSubcategory.Size = new System.Drawing.Size(58, 36);
             this.btnDeleteSubcategory.TabIndex = 2;
-            this.btnDeleteSubcategory.Text = "Delete Subcategory";
             this.btnDeleteSubcategory.UseVisualStyleBackColor = true;
             this.btnDeleteSubcategory.Click += new System.EventHandler(this.btnDeleteSubcategory_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(328, 76);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(79, 15);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "Add Category";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(320, 76);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(99, 15);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Add Subcategory";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(317, 49);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(114, 15);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Delete Subcategory";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(53, 49);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(99, 15);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "Edit Subcategory";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(321, 49);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(94, 15);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "Delete Category";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(26, 49);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(79, 15);
+            this.label8.TabIndex = 13;
+            this.label8.Text = "Edit Category";
             // 
             // FormCategorySubCategory
             // 
@@ -441,10 +507,12 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -483,5 +551,11 @@
         private System.Windows.Forms.Panel panel15;
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.Panel panel16;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
     }
 }

@@ -353,5 +353,6 @@ namespace LoginForm.nmSaleOrder
         {
             return (((1 - landingCost / UCUPCurr)) * 100)/*.ToString("G29")*/;
         }
+        
     }
 }

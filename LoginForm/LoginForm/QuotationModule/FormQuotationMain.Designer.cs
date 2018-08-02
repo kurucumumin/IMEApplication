@@ -28,31 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgQuotation = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.txtStockCode = new System.Windows.Forms.TextBox();
             this.chcCustStockNumber = new System.Windows.Forms.CheckBox();
-            this.btnSearchStockNumber = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.cbSearch = new System.Windows.Forms.ComboBox();
             this.txtSearchText = new System.Windows.Forms.TextBox();
             this.chcAllQuots = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.btnNewQuotation = new System.Windows.Forms.Button();
             this.btnModifyQuotation = new System.Windows.Forms.Button();
             this.btnDeleteQuotation = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnRefreshList = new System.Windows.Forms.Button();
             this.dtpToDate = new System.Windows.Forms.DateTimePicker();
             this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.btnSearchStockNumber = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgQuotation)).BeginInit();
             this.panel1.SuspendLayout();
@@ -87,14 +94,14 @@
             this.dgQuotation.AllowUserToOrderColumns = true;
             this.dgQuotation.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgQuotation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgQuotation.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgQuotation.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgQuotation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgQuotation.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dgQuotation.Location = new System.Drawing.Point(8, 129);
@@ -110,6 +117,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnSearchStockNumber);
+            this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.groupBox4);
             this.panel1.Controls.Add(this.groupBox3);
             this.panel1.Controls.Add(this.groupBox2);
@@ -120,11 +129,19 @@
             this.panel1.Size = new System.Drawing.Size(1230, 115);
             this.panel1.TabIndex = 1;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(1076, 66);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(46, 15);
+            this.label9.TabIndex = 27;
+            this.label9.Text = "Search";
+            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.txtStockCode);
             this.groupBox4.Controls.Add(this.chcCustStockNumber);
-            this.groupBox4.Controls.Add(this.btnSearchStockNumber);
             this.groupBox4.Location = new System.Drawing.Point(857, -1);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(200, 112);
@@ -148,21 +165,6 @@
             this.chcCustStockNumber.TabIndex = 26;
             this.chcCustStockNumber.Text = "Customer Stock Code";
             this.chcCustStockNumber.UseVisualStyleBackColor = true;
-            // 
-            // btnSearchStockNumber
-            // 
-            this.btnSearchStockNumber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(190)))), ((int)(((byte)(197)))));
-            this.btnSearchStockNumber.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.btnSearchStockNumber.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearchStockNumber.Location = new System.Drawing.Point(3, 72);
-            this.btnSearchStockNumber.Margin = new System.Windows.Forms.Padding(0);
-            this.btnSearchStockNumber.Name = "btnSearchStockNumber";
-            this.btnSearchStockNumber.Size = new System.Drawing.Size(192, 28);
-            this.btnSearchStockNumber.TabIndex = 27;
-            this.btnSearchStockNumber.Text = "Search Stock Number";
-            this.btnSearchStockNumber.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSearchStockNumber.UseVisualStyleBackColor = false;
-            this.btnSearchStockNumber.Click += new System.EventHandler(this.btnSearchStockNumber_Click);
             // 
             // groupBox3
             // 
@@ -215,6 +217,9 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.btnNewQuotation);
             this.groupBox2.Controls.Add(this.btnModifyQuotation);
             this.groupBox2.Controls.Add(this.btnDeleteQuotation);
@@ -223,6 +228,33 @@
             this.groupBox2.Size = new System.Drawing.Size(275, 112);
             this.groupBox2.TabIndex = 29;
             this.groupBox2.TabStop = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(31, 79);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 15);
+            this.label4.TabIndex = 24;
+            this.label4.Text = "New ";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(122, 79);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(43, 15);
+            this.label5.TabIndex = 25;
+            this.label5.Text = "Modify";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(197, 79);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(43, 15);
+            this.label6.TabIndex = 26;
+            this.label6.Text = "Delete";
             // 
             // btnNewQuotation
             // 
@@ -277,6 +309,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.btnRefreshList);
@@ -287,6 +320,33 @@
             this.groupBox1.Size = new System.Drawing.Size(315, 112);
             this.groupBox1.TabIndex = 28;
             this.groupBox1.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(254, 79);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(50, 15);
+            this.label3.TabIndex = 18;
+            this.label3.Text = "Refresh";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(0, 54);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(58, 15);
+            this.label2.TabIndex = 23;
+            this.label2.Text = "End Date";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(-3, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(61, 15);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "Start Date";
             // 
             // btnRefreshList
             // 
@@ -326,6 +386,8 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.label8);
+            this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.button5);
             this.panel2.Controls.Add(this.button4);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -334,6 +396,24 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1236, 112);
             this.panel2.TabIndex = 2;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(142, 67);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(32, 15);
+            this.label8.TabIndex = 20;
+            this.label8.Text = "Print";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(41, 67);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(37, 15);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "Excel";
             // 
             // button5
             // 
@@ -367,23 +447,22 @@
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // label1
+            // btnSearchStockNumber
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(-3, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 15);
-            this.label1.TabIndex = 22;
-            this.label1.Text = "Start Date";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(0, 54);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 15);
-            this.label2.TabIndex = 23;
-            this.label2.Text = "End Date";
+            this.btnSearchStockNumber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
+            this.btnSearchStockNumber.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.btnSearchStockNumber.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearchStockNumber.Image = global::LoginForm.Properties.Resources.if_search_magnifying_glass_find_103857;
+            this.btnSearchStockNumber.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnSearchStockNumber.Location = new System.Drawing.Point(1076, 10);
+            this.btnSearchStockNumber.Margin = new System.Windows.Forms.Padding(0);
+            this.btnSearchStockNumber.Name = "btnSearchStockNumber";
+            this.btnSearchStockNumber.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.btnSearchStockNumber.Size = new System.Drawing.Size(49, 54);
+            this.btnSearchStockNumber.TabIndex = 27;
+            this.btnSearchStockNumber.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnSearchStockNumber.UseVisualStyleBackColor = false;
+            this.btnSearchStockNumber.Click += new System.EventHandler(this.btnSearchStockNumber_Click);
             // 
             // FormQuotationMain
             // 
@@ -401,14 +480,17 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgQuotation)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -430,7 +512,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button btnSearchStockNumber;
         private System.Windows.Forms.CheckBox chcCustStockNumber;
         private System.Windows.Forms.TextBox txtStockCode;
         private System.Windows.Forms.GroupBox groupBox4;
@@ -439,5 +520,13 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button btnSearchStockNumber;
     }
 }

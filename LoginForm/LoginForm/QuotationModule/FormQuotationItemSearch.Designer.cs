@@ -37,7 +37,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgQuotationItemSearch)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,10 +65,10 @@
             this.dgQuotationItemSearch.AllowUserToDeleteRows = false;
             this.dgQuotationItemSearch.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgQuotationItemSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgQuotationItemSearch.Location = new System.Drawing.Point(12, 57);
+            this.dgQuotationItemSearch.Location = new System.Drawing.Point(12, 73);
             this.dgQuotationItemSearch.Name = "dgQuotationItemSearch";
             this.dgQuotationItemSearch.ReadOnly = true;
-            this.dgQuotationItemSearch.Size = new System.Drawing.Size(868, 559);
+            this.dgQuotationItemSearch.Size = new System.Drawing.Size(868, 543);
             this.dgQuotationItemSearch.TabIndex = 2;
             this.dgQuotationItemSearch.DoubleClick += new System.EventHandler(this.dgQuotationItemSearch_DoubleClick);
             this.dgQuotationItemSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgQuotationItemSearch_KeyDown);
@@ -123,15 +124,24 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "Note";
             // 
-            // button1
+            // btnSearch
             // 
-            this.button1.Location = new System.Drawing.Point(740, 7);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(114, 33);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Search";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnSearch.Image = global::LoginForm.Properties.Resources.if_search_magnifying_glass_find_103857;
+            this.btnSearch.Location = new System.Drawing.Point(770, 1);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(49, 45);
+            this.btnSearch.TabIndex = 10;
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(777, 49);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(41, 13);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Search";
             // 
             // FormQuotationItemSearch
             // 
@@ -140,7 +150,8 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.ClientSize = new System.Drawing.Size(895, 609);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -172,6 +183,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Label label5;
     }
 }
