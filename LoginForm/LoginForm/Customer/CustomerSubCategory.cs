@@ -18,7 +18,19 @@ namespace LoginForm
             category= categoryID;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void TitleAdd_Load(object sender, EventArgs e)
+        {
+            this.BringToFront();
+            this.TopMost = true;
+            //var departmenList = IME.CustomerCategories.Select(a=>a.categoryname).ToList();
+            comboBox1.DataSource = IME.CustomerCategories.ToList();
+            comboBox1.ValueMember = "ID";
+            comboBox1.DisplayMember = "categoryname";
+            comboBox1.SelectedValue = category;
+        }
+        
+
+        private void btnAdd_Click(object sender, EventArgs e)
         {
             if (IME.CustomerSubCategories.Where(title => title.subcategoryname == TitleName.Text).FirstOrDefault() == null)
             {
@@ -38,18 +50,7 @@ namespace LoginForm
             }
         }
 
-        private void TitleAdd_Load(object sender, EventArgs e)
-        {
-            this.BringToFront();
-            this.TopMost = true;
-            //var departmenList = IME.CustomerCategories.Select(a=>a.categoryname).ToList();
-            comboBox1.DataSource = IME.CustomerCategories.ToList();
-            comboBox1.ValueMember = "ID";
-            comboBox1.DisplayMember = "categoryname";
-            comboBox1.SelectedValue = category;
-        }
-
-        private void button2_Click(object sender, EventArgs e)
+        private void btnExit_Click(object sender, EventArgs e)
         {
             this.Hide();
         }

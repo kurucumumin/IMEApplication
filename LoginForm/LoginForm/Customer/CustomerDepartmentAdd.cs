@@ -14,10 +14,10 @@ namespace LoginForm
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
             var result = IME.CustomerDepartments.Where(department => department.departmentname == DepartmentName.Text).ToList();
-            if (result.Count==0)
+            if (result.Count == 0)
             {
                 CustomerDepartment cd = new CustomerDepartment();
                 cd.departmentname = DepartmentName.Text;
@@ -33,14 +33,9 @@ namespace LoginForm
             }
         }
 
-        private void CancelButton_Click(object sender, EventArgs e)
+        private void btnExit_Click(object sender, EventArgs e)
         {
             this.Hide();
-        }
-
-        private void DepartmentAdd_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

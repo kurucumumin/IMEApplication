@@ -344,6 +344,26 @@ namespace LoginForm.QuotationModule
             QQQ form = new QQQ();
             form.Show();
         }
+        
+
+        private string FixItemCode(string _itemCode)
+        {
+            string result = _itemCode.Replace("-", "");
+
+            if (Int32.TryParse(result, out int x) && result.Length == 6)
+            {
+                result = "0" + result;
+            }
+            return result;
+        }
+
+        private void txtStockCode_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnSearchStockNumber.PerformClick();
+            }
+        }
 
         private void btnSearchStockNumber_Click(object sender, EventArgs e)
         {
@@ -357,17 +377,17 @@ namespace LoginForm.QuotationModule
                 {
                     stockCode = FixItemCode(stockCode);
                     var list = from q in db.Quotations
-                                join qd in db.QuotationDetails on q.QuotationNo equals qd.QuotationNo
-                                join c in db.Customers on q.CustomerID equals c.ID
-                                where qd.ItemCode.Contains(stockCode)
-                                select new
-                                {
-                                    Date = (DateTime)q.StartDate,
-                                    QuotationNo = q.QuotationNo,
-                                    RFQ = q.RFQNo,
-                                    CustomerCode = c.ID,
-                                    CustomerName = c.c_name
-                                };
+                               join qd in db.QuotationDetails on q.QuotationNo equals qd.QuotationNo
+                               join c in db.Customers on q.CustomerID equals c.ID
+                               where qd.ItemCode.Contains(stockCode)
+                               select new
+                               {
+                                   Date = (DateTime)q.StartDate,
+                                   QuotationNo = q.QuotationNo,
+                                   RFQ = q.RFQNo,
+                                   CustomerCode = c.ID,
+                                   CustomerName = c.c_name
+                               };
 
                     populateGrid(list.ToList());
                 }
@@ -391,27 +411,8 @@ namespace LoginForm.QuotationModule
             }
             else
             {
-                MessageBox.Show("You should enter a stock code","Attention!");
+                MessageBox.Show("You should enter a stock code", "Attention!");
                 btnRefreshList.PerformClick();
-            }
-        }
-
-        private string FixItemCode(string _itemCode)
-        {
-            string result = _itemCode.Replace("-", "");
-
-            if (Int32.TryParse(result, out int x) && result.Length == 6)
-            {
-                result = "0" + result;
-            }
-            return result;
-        }
-
-        private void txtStockCode_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                btnSearchStockNumber.PerformClick();
             }
         }
     }

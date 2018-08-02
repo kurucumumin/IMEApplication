@@ -45,6 +45,7 @@
             this.rbQuoNo = new System.Windows.Forms.RadioButton();
             this.rbCustomerName = new System.Windows.Forms.RadioButton();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dg)).BeginInit();
             this.SuspendLayout();
             // 
@@ -186,13 +187,22 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(203, 12);
+            this.btnSearch.Image = global::LoginForm.Properties.Resources.if_search_magnifying_glass_find_103857;
+            this.btnSearch.Location = new System.Drawing.Point(229, 12);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 45);
+            this.btnSearch.Size = new System.Drawing.Size(49, 45);
             this.btnSearch.TabIndex = 5;
-            this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(233, 60);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(41, 13);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Search";
             // 
             // frmEx_Quotation
             // 
@@ -200,6 +210,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.ClientSize = new System.Drawing.Size(577, 343);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.rbCustomerName);
             this.Controls.Add(this.rbQuoNo);
@@ -240,5 +251,6 @@
         private System.Windows.Forms.RadioButton rbQuoNo;
         private System.Windows.Forms.RadioButton rbCustomerName;
         private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Label label5;
     }
 }

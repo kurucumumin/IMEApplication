@@ -40,21 +40,7 @@ namespace LoginForm
             }
             else { MessageBox.Show("There is no such a country"); }
         }
-
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            if(txtTown.Text!=null&& txtTown.Text != string.Empty)
-            {
-                Town newTown = new Town();
-               // int CityID = (cbCity.SelectedValue as City).ID;
-                newTown.CityID = cityID;
-                newTown.Town_name = txtTown.Text;
-                IME.Towns.Add(newTown);
-                IME.SaveChanges();
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-            }
-        }
+        
 
         private void FormTownAdd_Load(object sender, EventArgs e)
         {
@@ -62,6 +48,21 @@ namespace LoginForm
             cbCountry.DisplayMember = "Country_name";
             cbCountry.ValueMember = "ID";
             cbCountry.SelectedValue = countryID;
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            if (txtTown.Text != null && txtTown.Text != string.Empty)
+            {
+                Town newTown = new Town();
+                // int CityID = (cbCity.SelectedValue as City).ID;
+                newTown.CityID = cityID;
+                newTown.Town_name = txtTown.Text;
+                IME.Towns.Add(newTown);
+                IME.SaveChanges();
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
         }
     }
 }

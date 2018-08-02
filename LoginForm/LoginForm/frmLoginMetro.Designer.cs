@@ -114,9 +114,9 @@ namespace LoginForm
             // panel2
             // 
             this.panel2.Controls.Add(this.pictureBox2);
-            this.panel2.Location = new System.Drawing.Point(37, 315);
+            this.panel2.Location = new System.Drawing.Point(33, 315);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(29, 32);
+            this.panel2.Size = new System.Drawing.Size(33, 32);
             this.panel2.TabIndex = 5;
             // 
             // pictureBox2
@@ -124,7 +124,7 @@ namespace LoginForm
             this.pictureBox2.BackgroundImage = global::LoginForm.Properties.Resources.if_icon_24_key_314756;
             this.pictureBox2.Location = new System.Drawing.Point(0, 0);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(29, 32);
+            this.pictureBox2.Size = new System.Drawing.Size(33, 32);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;

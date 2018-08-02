@@ -61,6 +61,10 @@
             this.dgProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.FrameTableLayout.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabStockReserveUpdate.SuspendLayout();
@@ -99,6 +103,10 @@
             // 
             // tabStockReserveUpdate
             // 
+            this.tabStockReserveUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
+            this.tabStockReserveUpdate.Controls.Add(this.label10);
+            this.tabStockReserveUpdate.Controls.Add(this.label9);
+            this.tabStockReserveUpdate.Controls.Add(this.label7);
             this.tabStockReserveUpdate.Controls.Add(this.txtCustomerName);
             this.tabStockReserveUpdate.Controls.Add(this.label6);
             this.tabStockReserveUpdate.Controls.Add(this.btnDelete);
@@ -120,7 +128,6 @@
             this.tabStockReserveUpdate.Size = new System.Drawing.Size(957, 166);
             this.tabStockReserveUpdate.TabIndex = 0;
             this.tabStockReserveUpdate.Text = "Stock Reserve Update";
-            this.tabStockReserveUpdate.UseVisualStyleBackColor = true;
             // 
             // txtCustomerName
             // 
@@ -141,11 +148,11 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(666, 77);
+            this.btnDelete.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
+            this.btnDelete.Location = new System.Drawing.Point(820, 12);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(116, 63);
+            this.btnDelete.Size = new System.Drawing.Size(56, 56);
             this.btnDelete.TabIndex = 30;
-            this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             // 
             // txtCustomerID
@@ -234,22 +241,22 @@
             // btnSave
             // 
             this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnSave.Location = new System.Drawing.Point(802, 18);
+            this.btnSave.Image = global::LoginForm.Properties.Resources.if_floppy_285657;
+            this.btnSave.Location = new System.Drawing.Point(744, 12);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(134, 59);
+            this.btnSave.Size = new System.Drawing.Size(56, 56);
             this.btnSave.TabIndex = 21;
-            this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnClear
             // 
             this.btnClear.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnClear.Location = new System.Drawing.Point(802, 77);
+            this.btnClear.Image = global::LoginForm.Properties.Resources.if_edit_clear_23227;
+            this.btnClear.Location = new System.Drawing.Point(892, 12);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(134, 63);
+            this.btnClear.Size = new System.Drawing.Size(56, 56);
             this.btnClear.TabIndex = 20;
-            this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
             // 
             // label2
@@ -272,6 +279,8 @@
             // 
             // tabSearch
             // 
+            this.tabSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
+            this.tabSearch.Controls.Add(this.label11);
             this.tabSearch.Controls.Add(this.textBox1);
             this.tabSearch.Controls.Add(this.label8);
             this.tabSearch.Controls.Add(this.textBox2);
@@ -283,7 +292,6 @@
             this.tabSearch.Size = new System.Drawing.Size(957, 166);
             this.tabSearch.TabIndex = 1;
             this.tabSearch.Text = "Search";
-            this.tabSearch.UseVisualStyleBackColor = true;
             // 
             // textBox1
             // 
@@ -322,11 +330,11 @@
             // btnSearch
             // 
             this.btnSearch.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnSearch.Location = new System.Drawing.Point(753, 16);
+            this.btnSearch.Image = global::LoginForm.Properties.Resources.if_search_magnifying_glass_find_103857;
+            this.btnSearch.Location = new System.Drawing.Point(465, 16);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(182, 59);
+            this.btnSearch.Size = new System.Drawing.Size(54, 50);
             this.btnSearch.TabIndex = 5;
-            this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             // 
             // panel1
@@ -421,6 +429,42 @@
             this.dgQty.ReadOnly = true;
             this.dgQty.Width = 76;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(756, 71);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(34, 15);
+            this.label7.TabIndex = 33;
+            this.label7.Text = "Save";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(827, 71);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(43, 15);
+            this.label9.TabIndex = 34;
+            this.label9.Text = "Delete";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(900, 71);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(36, 15);
+            this.label10.TabIndex = 35;
+            this.label10.Text = "Clear";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(469, 69);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(46, 15);
+            this.label11.TabIndex = 17;
+            this.label11.Text = "Search";
+            // 
             // frmStockReserve
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -491,5 +535,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgQty;
         private System.Windows.Forms.TextBox txtCustomerName;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label11;
     }
 }

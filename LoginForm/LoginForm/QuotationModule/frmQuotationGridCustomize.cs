@@ -54,22 +54,7 @@ namespace LoginForm.QuotationModule
             btnSelectAll.Location = new Point(0, y + 30);
             btnClearAll.Location = new Point(btnSelectAll.Width + 5, y + 30);
         }
-
-        private void btnSelectAll_Click(object sender, EventArgs e)
-        {
-            foreach (var item in cboxList)
-            {
-                item.Checked = true;
-            }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            foreach (var item in cboxList)
-            {
-                item.Checked = false;
-            }
-        }
+        
 
         private void ExportButton_Click(object sender, EventArgs e)
         {
@@ -85,5 +70,20 @@ namespace LoginForm.QuotationModule
             
         }
 
+        private void btnSelect_Click(object sender, EventArgs e)
+        {
+            foreach (var item in cboxList)
+            {
+                item.Checked = true;
+            }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            foreach (var item in cboxList)
+            {
+                item.Checked = false;
+            }
+        }
     }
 }

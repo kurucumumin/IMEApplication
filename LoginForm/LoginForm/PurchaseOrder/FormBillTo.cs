@@ -30,5 +30,7 @@ namespace LoginForm.PurchaseOrder
                 addedBillIndex.Add(e.RowIndex - 1);
             }
         }
+
+       
     }
 }

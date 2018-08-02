@@ -33,15 +33,16 @@
             this.cbCountry = new System.Windows.Forms.ComboBox();
             this.label38 = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(92, 93);
+            this.btnAdd.Image = global::LoginForm.Properties.Resources.icons8_Plus_32;
+            this.btnAdd.Location = new System.Drawing.Point(129, 87);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(151, 37);
+            this.btnAdd.Size = new System.Drawing.Size(50, 37);
             this.btnAdd.TabIndex = 33;
-            this.btnAdd.Text = "ADD";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -78,11 +79,22 @@
             this.label39.TabIndex = 31;
             this.label39.Text = "Country";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(138, 129);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(26, 13);
+            this.label1.TabIndex = 34;
+            this.label1.Text = "Add";
+            // 
             // frmCityAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.ClientSize = new System.Drawing.Size(284, 151);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.txtCity);
             this.Controls.Add(this.cbCountry);
@@ -103,5 +115,6 @@
         private System.Windows.Forms.ComboBox cbCountry;
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -33,10 +33,12 @@
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MailAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
             this.radioDefault = new System.Windows.Forms.RadioButton();
             this.radioSpecial = new System.Windows.Forms.RadioButton();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgBillTo)).BeginInit();
             this.SuspendLayout();
@@ -88,24 +90,6 @@
             this.MailAddress.HeaderText = "Description";
             this.MailAddress.Name = "MailAddress";
             // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(598, 285);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 9;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            // 
-            // btnClose
-            // 
-            this.btnClose.Location = new System.Drawing.Point(679, 285);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(75, 23);
-            this.btnClose.TabIndex = 8;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
-            // 
             // radioDefault
             // 
             this.radioDefault.AutoSize = true;
@@ -128,15 +112,53 @@
             this.radioSpecial.Text = "Special Settings";
             this.radioSpecial.UseVisualStyleBackColor = true;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(699, 354);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(33, 13);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Close";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(617, 354);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(32, 13);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Save";
+            // 
+            // btnSave
+            // 
+            this.btnSave.Image = global::LoginForm.Properties.Resources.if_floppy_285657;
+            this.btnSave.Location = new System.Drawing.Point(598, 291);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 48);
+            this.btnSave.TabIndex = 11;
+            this.btnSave.UseVisualStyleBackColor = true;
+            // 
+            // btnExit
+            // 
+            this.btnExit.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
+            this.btnExit.Location = new System.Drawing.Point(679, 291);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(75, 48);
+            this.btnExit.TabIndex = 10;
+            this.btnExit.UseVisualStyleBackColor = true;
+            // 
             // FormBillTo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
-            this.ClientSize = new System.Drawing.Size(768, 329);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(768, 385);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.btnExit);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.radioDefault);
             this.Controls.Add(this.radioSpecial);
             this.Name = "FormBillTo";
@@ -155,9 +177,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn FirstName;
         private System.Windows.Forms.DataGridViewTextBoxColumn MailAddress;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.RadioButton radioDefault;
         private System.Windows.Forms.RadioButton radioSpecial;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnExit;
     }
 }

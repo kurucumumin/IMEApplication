@@ -168,10 +168,10 @@ namespace LoginForm.ItemModule
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.txtNote = new System.Windows.Forms.TextBox();
-            this.btnClose = new System.Windows.Forms.Button();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnUpdateNote = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -190,6 +190,7 @@ namespace LoginForm.ItemModule
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearchBox = new System.Windows.Forms.TextBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.label41 = new System.Windows.Forms.Label();
             this.dgItemList = new System.Windows.Forms.DataGridView();
             this.tblTop = new System.Windows.Forms.TableLayoutPanel();
             this.panelSearch = new System.Windows.Forms.Panel();
@@ -1457,7 +1458,7 @@ namespace LoginForm.ItemModule
             this.txtMargin5.Margin = new System.Windows.Forms.Padding(0);
             this.txtMargin5.Name = "txtMargin5";
             this.txtMargin5.ReadOnly = true;
-            this.txtMargin5.Size = new System.Drawing.Size(32, 23);
+            this.txtMargin5.Size = new System.Drawing.Size(55, 23);
             this.txtMargin5.TabIndex = 64;
             // 
             // txtUnitCount5
@@ -1536,7 +1537,7 @@ namespace LoginForm.ItemModule
             this.txtMargin2.Margin = new System.Windows.Forms.Padding(0);
             this.txtMargin2.Name = "txtMargin2";
             this.txtMargin2.ReadOnly = true;
-            this.txtMargin2.Size = new System.Drawing.Size(32, 23);
+            this.txtMargin2.Size = new System.Drawing.Size(55, 23);
             this.txtMargin2.TabIndex = 49;
             // 
             // txtUnitCount2
@@ -1558,7 +1559,7 @@ namespace LoginForm.ItemModule
             this.txtMargin1.Margin = new System.Windows.Forms.Padding(0);
             this.txtMargin1.Name = "txtMargin1";
             this.txtMargin1.ReadOnly = true;
-            this.txtMargin1.Size = new System.Drawing.Size(32, 23);
+            this.txtMargin1.Size = new System.Drawing.Size(55, 23);
             this.txtMargin1.TabIndex = 44;
             // 
             // txtUK3
@@ -1625,7 +1626,7 @@ namespace LoginForm.ItemModule
             this.txtMargin4.Margin = new System.Windows.Forms.Padding(0);
             this.txtMargin4.Name = "txtMargin4";
             this.txtMargin4.ReadOnly = true;
-            this.txtMargin4.Size = new System.Drawing.Size(32, 23);
+            this.txtMargin4.Size = new System.Drawing.Size(55, 23);
             this.txtMargin4.TabIndex = 59;
             // 
             // txtCost4
@@ -1669,7 +1670,7 @@ namespace LoginForm.ItemModule
             this.txtMargin3.Margin = new System.Windows.Forms.Padding(0);
             this.txtMargin3.Name = "txtMargin3";
             this.txtMargin3.ReadOnly = true;
-            this.txtMargin3.Size = new System.Drawing.Size(32, 23);
+            this.txtMargin3.Size = new System.Drawing.Size(55, 23);
             this.txtMargin3.TabIndex = 54;
             // 
             // txtUK4
@@ -1699,7 +1700,7 @@ namespace LoginForm.ItemModule
             this.label13.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(268, 42);
+            this.label13.Location = new System.Drawing.Point(274, 42);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(67, 17);
             this.label13.TabIndex = 177;
@@ -1905,8 +1906,8 @@ namespace LoginForm.ItemModule
             // 
             this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 88F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 82F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanel3.Controls.Add(this.txtNote, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel9, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.btnClose, 2, 0);
@@ -1930,19 +1931,6 @@ namespace LoginForm.ItemModule
             this.txtNote.Size = new System.Drawing.Size(585, 118);
             this.txtNote.TabIndex = 66;
             // 
-            // btnClose
-            // 
-            this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
-            this.btnClose.Location = new System.Drawing.Point(688, 3);
-            this.btnClose.MaximumSize = new System.Drawing.Size(135, 81);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(76, 81);
-            this.btnClose.TabIndex = 275;
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
             // tableLayoutPanel9
             // 
             this.tableLayoutPanel9.ColumnCount = 1;
@@ -1953,9 +1941,9 @@ namespace LoginForm.ItemModule
             this.tableLayoutPanel9.Location = new System.Drawing.Point(600, 3);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 2;
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(82, 124);
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 49.19355F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.80645F));
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(84, 124);
             this.tableLayoutPanel9.TabIndex = 276;
             // 
             // btnAdd
@@ -1963,27 +1951,50 @@ namespace LoginForm.ItemModule
             this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.Image = global::LoginForm.Properties.Resources.icons8_Plus_32;
-            this.btnAdd.Location = new System.Drawing.Point(5, 67);
+            this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnAdd.Location = new System.Drawing.Point(4, 65);
             this.btnAdd.MaximumSize = new System.Drawing.Size(135, 81);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(71, 52);
+            this.btnAdd.Size = new System.Drawing.Size(76, 55);
             this.btnAdd.TabIndex = 275;
-            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnUpdateNote
             // 
             this.btnUpdateNote.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnUpdateNote.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.btnUpdateNote.Enabled = false;
             this.btnUpdateNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdateNote.Image = global::LoginForm.Properties.Resources.icons8_Edit_Property_32;
-            this.btnUpdateNote.Location = new System.Drawing.Point(3, 5);
+            this.btnUpdateNote.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnUpdateNote.Location = new System.Drawing.Point(4, 3);
             this.btnUpdateNote.MaximumSize = new System.Drawing.Size(135, 81);
             this.btnUpdateNote.Name = "btnUpdateNote";
-            this.btnUpdateNote.Size = new System.Drawing.Size(76, 51);
+            this.btnUpdateNote.Size = new System.Drawing.Size(76, 55);
             this.btnUpdateNote.TabIndex = 274;
-            this.btnUpdateNote.UseVisualStyleBackColor = true;
+            this.btnUpdateNote.Text = "Update";
+            this.btnUpdateNote.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnUpdateNote.UseVisualStyleBackColor = false;
             this.btnUpdateNote.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
+            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnClose.Location = new System.Drawing.Point(690, 37);
+            this.btnClose.MaximumSize = new System.Drawing.Size(135, 81);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(74, 55);
+            this.btnClose.TabIndex = 275;
+            this.btnClose.Text = "Exit";
+            this.btnClose.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // tableLayoutPanel4
             // 
@@ -2168,7 +2179,7 @@ namespace LoginForm.ItemModule
             this.rbItemNotes.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rbItemNotes.AutoSize = true;
             this.rbItemNotes.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbItemNotes.Location = new System.Drawing.Point(241, 61);
+            this.rbItemNotes.Location = new System.Drawing.Point(240, 80);
             this.rbItemNotes.Name = "rbItemNotes";
             this.rbItemNotes.Size = new System.Drawing.Size(93, 21);
             this.rbItemNotes.TabIndex = 73;
@@ -2181,7 +2192,7 @@ namespace LoginForm.ItemModule
             this.rbProductName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rbProductName.AutoSize = true;
             this.rbProductName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbProductName.Location = new System.Drawing.Point(124, 61);
+            this.rbProductName.Location = new System.Drawing.Point(123, 80);
             this.rbProductName.Name = "rbProductName";
             this.rbProductName.Size = new System.Drawing.Size(116, 21);
             this.rbProductName.TabIndex = 73;
@@ -2194,7 +2205,7 @@ namespace LoginForm.ItemModule
             this.rbMPNCode.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rbMPNCode.AutoSize = true;
             this.rbMPNCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbMPNCode.Location = new System.Drawing.Point(337, 61);
+            this.rbMPNCode.Location = new System.Drawing.Point(336, 80);
             this.rbMPNCode.Name = "rbMPNCode";
             this.rbMPNCode.Size = new System.Drawing.Size(93, 21);
             this.rbMPNCode.TabIndex = 73;
@@ -2208,7 +2219,7 @@ namespace LoginForm.ItemModule
             this.rbProductCode.AutoSize = true;
             this.rbProductCode.Checked = true;
             this.rbProductCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbProductCode.Location = new System.Drawing.Point(17, 61);
+            this.rbProductCode.Location = new System.Drawing.Point(16, 80);
             this.rbProductCode.Name = "rbProductCode";
             this.rbProductCode.Size = new System.Drawing.Size(112, 21);
             this.rbProductCode.TabIndex = 73;
@@ -2222,17 +2233,17 @@ namespace LoginForm.ItemModule
             this.btnSearch.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.Image = global::LoginForm.Properties.Resources.if_search_magnifying_glass_find_103857;
-            this.btnSearch.Location = new System.Drawing.Point(319, 13);
+            this.btnSearch.Location = new System.Drawing.Point(319, 8);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(48, 41);
             this.btnSearch.TabIndex = 72;
-            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // txtSearchBox
             // 
             this.txtSearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearchBox.Location = new System.Drawing.Point(17, 22);
+            this.txtSearchBox.Location = new System.Drawing.Point(10, 22);
             this.txtSearchBox.Name = "txtSearchBox";
             this.txtSearchBox.Size = new System.Drawing.Size(302, 26);
             this.txtSearchBox.TabIndex = 71;
@@ -2241,6 +2252,7 @@ namespace LoginForm.ItemModule
             // groupBox7
             // 
             this.groupBox7.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBox7.Controls.Add(this.label41);
             this.groupBox7.Controls.Add(this.rbItemNotes);
             this.groupBox7.Controls.Add(this.rbProductName);
             this.groupBox7.Controls.Add(this.rbMPNCode);
@@ -2248,12 +2260,25 @@ namespace LoginForm.ItemModule
             this.groupBox7.Controls.Add(this.btnSearch);
             this.groupBox7.Controls.Add(this.txtSearchBox);
             this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox7.Location = new System.Drawing.Point(8, 31);
+            this.groupBox7.Location = new System.Drawing.Point(8, 10);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(435, 102);
+            this.groupBox7.Size = new System.Drawing.Size(435, 119);
             this.groupBox7.TabIndex = 73;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "SEARCH";
+            // 
+            // label41
+            // 
+            this.label41.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label41.AutoSize = true;
+            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label41.ImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.label41.Location = new System.Drawing.Point(316, 51);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(53, 17);
+            this.label41.TabIndex = 269;
+            this.label41.Text = "Search";
+            this.label41.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // dgItemList
             // 
@@ -2319,13 +2344,11 @@ namespace LoginForm.ItemModule
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.ClientSize = new System.Drawing.Size(1130, 706);
             this.Controls.Add(this.tblMain);
-            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1146, 856);
-            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(1027, 597);
             this.Name = "ItemCard";
-            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = " Item Card";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.ItemCard_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -2539,5 +2562,6 @@ namespace LoginForm.ItemModule
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnSupplierAdd;
+        private System.Windows.Forms.Label label41;
     }
 }

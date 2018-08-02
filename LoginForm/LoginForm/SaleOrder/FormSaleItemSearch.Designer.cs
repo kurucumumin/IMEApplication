@@ -38,13 +38,15 @@
             this.txtItemCode = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnSearch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgItemSearch)).BeginInit();
             this.SuspendLayout();
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1076, 19);
+            this.label4.Location = new System.Drawing.Point(784, 15);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(33, 15);
@@ -54,7 +56,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(742, 19);
+            this.label3.Location = new System.Drawing.Point(543, 15);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(35, 15);
@@ -64,7 +66,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(353, 19);
+            this.label2.Location = new System.Drawing.Point(264, 17);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(71, 15);
@@ -73,26 +75,26 @@
             // 
             // txtNote
             // 
-            this.txtNote.Location = new System.Drawing.Point(1130, 15);
+            this.txtNote.Location = new System.Drawing.Point(838, 11);
             this.txtNote.Margin = new System.Windows.Forms.Padding(4);
             this.txtNote.Name = "txtNote";
-            this.txtNote.Size = new System.Drawing.Size(185, 21);
+            this.txtNote.Size = new System.Drawing.Size(123, 21);
             this.txtNote.TabIndex = 14;
             // 
             // txtMPN
             // 
-            this.txtMPN.Location = new System.Drawing.Point(798, 15);
+            this.txtMPN.Location = new System.Drawing.Point(599, 11);
             this.txtMPN.Margin = new System.Windows.Forms.Padding(4);
             this.txtMPN.Name = "txtMPN";
-            this.txtMPN.Size = new System.Drawing.Size(185, 21);
+            this.txtMPN.Size = new System.Drawing.Size(136, 21);
             this.txtMPN.TabIndex = 13;
             // 
             // txtArticleDesc
             // 
-            this.txtArticleDesc.Location = new System.Drawing.Point(459, 15);
+            this.txtArticleDesc.Location = new System.Drawing.Point(370, 13);
             this.txtArticleDesc.Margin = new System.Windows.Forms.Padding(4);
             this.txtArticleDesc.Name = "txtArticleDesc";
-            this.txtArticleDesc.Size = new System.Drawing.Size(185, 21);
+            this.txtArticleDesc.Size = new System.Drawing.Size(135, 21);
             this.txtArticleDesc.TabIndex = 12;
             // 
             // dgItemSearch
@@ -101,21 +103,21 @@
             this.dgItemSearch.AllowUserToDeleteRows = false;
             this.dgItemSearch.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgItemSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgItemSearch.Location = new System.Drawing.Point(15, 104);
+            this.dgItemSearch.Location = new System.Drawing.Point(15, 71);
             this.dgItemSearch.Margin = new System.Windows.Forms.Padding(4);
             this.dgItemSearch.Name = "dgItemSearch";
             this.dgItemSearch.ReadOnly = true;
             this.dgItemSearch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgItemSearch.Size = new System.Drawing.Size(1302, 601);
+            this.dgItemSearch.Size = new System.Drawing.Size(1302, 634);
             this.dgItemSearch.TabIndex = 11;
             this.dgItemSearch.DoubleClick += new System.EventHandler(this.dgItemSearch_DoubleClick);
             // 
             // txtItemCode
             // 
-            this.txtItemCode.Location = new System.Drawing.Point(106, 15);
+            this.txtItemCode.Location = new System.Drawing.Point(86, 15);
             this.txtItemCode.Margin = new System.Windows.Forms.Padding(4);
             this.txtItemCode.Name = "txtItemCode";
-            this.txtItemCode.Size = new System.Drawing.Size(185, 21);
+            this.txtItemCode.Size = new System.Drawing.Size(146, 21);
             this.txtItemCode.TabIndex = 10;
             // 
             // label1
@@ -130,12 +132,28 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(620, 61);
+            this.button1.Location = new System.Drawing.Point(0, 0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(145, 26);
-            this.button1.TabIndex = 18;
-            this.button1.Text = "Search";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 21;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(999, 52);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(46, 15);
+            this.label5.TabIndex = 20;
+            this.label5.Text = "Search";
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Image = global::LoginForm.Properties.Resources.if_search_magnifying_glass_find_103857;
+            this.btnSearch.Location = new System.Drawing.Point(996, 4);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(49, 45);
+            this.btnSearch.TabIndex = 19;
+            this.btnSearch.UseVisualStyleBackColor = true;
             // 
             // FormSaleItemSearch
             // 
@@ -143,6 +161,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.ClientSize = new System.Drawing.Size(1338, 718);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -175,5 +195,7 @@
         private System.Windows.Forms.TextBox txtItemCode;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnSearch;
     }
 }

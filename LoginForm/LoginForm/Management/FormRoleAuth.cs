@@ -189,7 +189,7 @@ namespace LoginForm.ManagementModule
                 {
                     RoleValue role = new RoleValue();
                     role.roleName = txtNewRoleName.Text;
-                    if(AuthorizationService.AddRoleWithAuths(role, newAuthList))
+                    if (AuthorizationService.AddRoleWithAuths(role, newAuthList))
                     {
                         MessageBox.Show("New role '" + txtNewRoleName.Text + "' is successfully added!", "Success");
                         this.Close();
@@ -226,31 +226,6 @@ namespace LoginForm.ManagementModule
             }
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Selected role will be deleted! Do you confirm?", "Delete Role", MessageBoxButtons.OKCancel);
-
-            if (result == DialogResult.OK)
-            {
-                try
-                {
-                    IMEEntities IME = new IMEEntities();
-                    RoleValue role = IME.RoleValues.Where(r => r.RoleID == ((RoleValue)cbRole.SelectedItem).RoleID).FirstOrDefault();
-                    role.AuthorizationValues.Clear();
-                    IME.SaveChanges();
-                    IME.RoleValues.Remove(role);
-                    IME.SaveChanges();
-
-                    MessageBox.Show("Selected role is deleted.", "Success");
-                    this.Close();
-                }
-                catch (Exception)
-                {
-                    
-                    throw;
-                }
-            }
-        }
 
         private void txtSearchRole_KeyDown(object sender, KeyEventArgs e)
         {
@@ -289,5 +264,32 @@ namespace LoginForm.ManagementModule
                 matchAuthorities();
             }
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Selected role will be deleted! Do you confirm?", "Delete Role", MessageBoxButtons.OKCancel);
+
+            if (result == DialogResult.OK)
+            {
+                try
+                {
+                    IMEEntities IME = new IMEEntities();
+                    RoleValue role = IME.RoleValues.Where(r => r.RoleID == ((RoleValue)cbRole.SelectedItem).RoleID).FirstOrDefault();
+                    role.AuthorizationValues.Clear();
+                    IME.SaveChanges();
+                    IME.RoleValues.Remove(role);
+                    IME.SaveChanges();
+
+                    MessageBox.Show("Selected role is deleted.", "Success");
+                    this.Close();
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
+        }
+        
     }
 }

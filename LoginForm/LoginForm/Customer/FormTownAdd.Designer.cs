@@ -34,6 +34,7 @@
             this.label38 = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
             this.txtTown = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -88,13 +89,22 @@
             this.txtTown.Size = new System.Drawing.Size(151, 20);
             this.txtTown.TabIndex = 25;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(153, 174);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(26, 13);
+            this.label2.TabIndex = 28;
+            this.label2.Text = "Add";
+            // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(104, 133);
+            this.btnAdd.Image = global::LoginForm.Properties.Resources.icons8_Plus_32;
+            this.btnAdd.Location = new System.Drawing.Point(142, 126);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(151, 37);
-            this.btnAdd.TabIndex = 26;
-            this.btnAdd.Text = "ADD";
+            this.btnAdd.Size = new System.Drawing.Size(50, 45);
+            this.btnAdd.TabIndex = 27;
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -102,7 +112,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.ClientSize = new System.Drawing.Size(302, 202);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.txtTown);
             this.Controls.Add(this.cbCity);
@@ -126,6 +138,7 @@
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.TextBox txtTown;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnAdd;
     }
 }

@@ -46,7 +46,7 @@ namespace LoginForm.BackOrder
                 MessageBox.Show("There is no such an Item");
             }
         }
-
+        
         private void btnExit_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Close", "Are you sure to close this page", MessageBoxButtons.YesNo);
@@ -54,11 +54,6 @@ namespace LoginForm.BackOrder
             {
                 this.Close();
             }
-        }
-
-        private void BackOrderProductSearch_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

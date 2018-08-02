@@ -273,6 +273,26 @@ namespace LoginForm.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap if_filter_173013 {
+            get {
+                object obj = ResourceManager.GetObject("if_filter_173013", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap if_floppy_285657 {
+            get {
+                object obj = ResourceManager.GetObject("if_floppy_285657", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap if_icon_123_printer_314820 {
             get {
                 object obj = ResourceManager.GetObject("if_icon-123-printer_314820", resourceCulture);
@@ -293,6 +313,16 @@ namespace LoginForm.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap if_Line_ui_icons_Svg_03_1465842 {
+            get {
+                object obj = ResourceManager.GetObject("if_Line_ui_icons_Svg-03_1465842", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap if_print_173079 {
             get {
                 object obj = ResourceManager.GetObject("if_print_173079", resourceCulture);
@@ -306,6 +336,26 @@ namespace LoginForm.Properties {
         internal static System.Drawing.Bitmap if_search_magnifying_glass_find_103857 {
             get {
                 object obj = ResourceManager.GetObject("if_search_magnifying_glass_find_103857", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap if_Select_22735 {
+            get {
+                object obj = ResourceManager.GetObject("if_Select_22735", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap if_Select_46755 {
+            get {
+                object obj = ResourceManager.GetObject("if_Select_46755", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -52,35 +52,6 @@ namespace LoginForm.nmSaleOrder
             //btnClearAll.Location = new Point(btnSelectAll.Width + 5, y + 30);
         }
 
-        private void btnSelectAll_Click(object sender, EventArgs e)
-        {
-            foreach (var item in cboxList)
-            {
-                item.Checked = true;
-            }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            foreach (var item in cboxList)
-            {
-                item.Checked = false;
-            }
-        }
-
-        private void ExportButton_Click(object sender, EventArgs e)
-        {
-            QuotationDatagridCustomize.VisibleFalseNames.Clear();
-            for (int i = 0; i < cboxList.Count; i++)
-            {
-                if (!cboxList[i].Checked)
-                {
-                    QuotationDatagridCustomize.VisibleFalseNames.Add(cboxList[i].Text);
-                }
-            }
-            this.Close();
-        }
-
         private void DrawCheckBoxes()
         {
             CheckBox box;
@@ -112,6 +83,35 @@ namespace LoginForm.nmSaleOrder
         private void FormSaleGridCustomize_Load(object sender, EventArgs e)
         {
             DrawCheckBoxes();
+        }
+
+        private void btnSelect_Click(object sender, EventArgs e)
+        {
+            foreach (var item in cboxList)
+            {
+                item.Checked = true;
+            }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            foreach (var item in cboxList)
+            {
+                item.Checked = false;
+            }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            QuotationDatagridCustomize.VisibleFalseNames.Clear();
+            for (int i = 0; i < cboxList.Count; i++)
+            {
+                if (!cboxList[i].Checked)
+                {
+                    QuotationDatagridCustomize.VisibleFalseNames.Add(cboxList[i].Text);
+                }
+            }
+            this.Close();
         }
     }
 }

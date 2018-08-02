@@ -21,6 +21,23 @@ namespace LoginForm.QuotationModule
         {
             dgItemList.DataSource = ItemList;
         }
+        
+
+        private void dgItemList_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && dgItemList.SelectedRows != null)
+            {
+                btnSelect.PerformClick();
+            }
+        }
+
+        private void dgItemList_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (dgItemList.SelectedRows != null)
+            {
+                btnSelect.PerformClick();
+            }
+        }
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
@@ -38,22 +55,6 @@ namespace LoginForm.QuotationModule
                     break;
             }
             this.Close();
-        }
-
-        private void dgItemList_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter && dgItemList.SelectedRows != null)
-            {
-                btnSelect.PerformClick();
-            }
-        }
-
-        private void dgItemList_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            if (dgItemList.SelectedRows != null)
-            {
-                btnSelect.PerformClick();
-            }
         }
     }
 }
