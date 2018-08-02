@@ -41,8 +41,8 @@ namespace AltoControls
         #region AltoButton
         public AltoButton()
         {
-            Width = 65;
-            Height = 30;
+            Width = 40;
+            Height = 25;
             stroke = false;
             strokeColor = Color.Gray;
             inactive1 = Color.FromArgb(44, 188, 210);
