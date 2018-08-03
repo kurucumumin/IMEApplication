@@ -315,7 +315,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(1019, 72);
+            this.label7.Location = new System.Drawing.Point(1016, 72);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(43, 15);
             this.label7.TabIndex = 22;
@@ -326,7 +326,7 @@
             this.btnDelete.Image = global::LoginForm.Properties.Resources.if_Line_ui_icons_Svg_03_1465842;
             this.btnDelete.Location = new System.Drawing.Point(1011, 18);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(63, 51);
+            this.btnDelete.Size = new System.Drawing.Size(52, 52);
             this.btnDelete.TabIndex = 21;
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -338,7 +338,7 @@
             this.btnSave.Image = global::LoginForm.Properties.Resources.if_floppy_285657;
             this.btnSave.Location = new System.Drawing.Point(1097, 18);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(63, 51);
+            this.btnSave.Size = new System.Drawing.Size(52, 52);
             this.btnSave.TabIndex = 20;
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);

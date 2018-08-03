@@ -116,7 +116,7 @@
             this.btnSave.Image = global::LoginForm.Properties.Resources.if_floppy_285657;
             this.btnSave.Location = new System.Drawing.Point(812, 248);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(63, 51);
+            this.btnSave.Size = new System.Drawing.Size(52, 52);
             this.btnSave.TabIndex = 7;
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -126,7 +126,7 @@
             this.btnDelete.Image = global::LoginForm.Properties.Resources.if_Line_ui_icons_Svg_03_1465842;
             this.btnDelete.Location = new System.Drawing.Point(300, 218);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(63, 51);
+            this.btnDelete.Size = new System.Drawing.Size(52, 52);
             this.btnDelete.TabIndex = 8;
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -180,7 +180,7 @@
             this.btnEdit.Image = global::LoginForm.Properties.Resources.icons8_Edit_Property_32;
             this.btnEdit.Location = new System.Drawing.Point(300, 123);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(63, 51);
+            this.btnEdit.Size = new System.Drawing.Size(52, 52);
             this.btnEdit.TabIndex = 13;
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
@@ -190,7 +190,7 @@
             this.btnNew.Image = global::LoginForm.Properties.Resources.icons8_Plus_32;
             this.btnNew.Location = new System.Drawing.Point(300, 33);
             this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(63, 51);
+            this.btnNew.Size = new System.Drawing.Size(52, 52);
             this.btnNew.TabIndex = 14;
             this.btnNew.UseVisualStyleBackColor = true;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
@@ -202,7 +202,7 @@
             this.btnCancel.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
             this.btnCancel.Location = new System.Drawing.Point(916, 248);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(63, 51);
+            this.btnCancel.Size = new System.Drawing.Size(52, 52);
             this.btnCancel.TabIndex = 15;
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -210,7 +210,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(314, 89);
+            this.label5.Location = new System.Drawing.Point(310, 88);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(32, 15);
             this.label5.TabIndex = 16;
@@ -248,7 +248,7 @@
             // 
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(925, 302);
+            this.label9.Location = new System.Drawing.Point(921, 302);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(45, 15);
             this.label9.TabIndex = 20;

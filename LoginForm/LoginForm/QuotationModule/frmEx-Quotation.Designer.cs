@@ -190,7 +190,7 @@
             this.btnSearch.Image = global::LoginForm.Properties.Resources.if_search_magnifying_glass_find_103857;
             this.btnSearch.Location = new System.Drawing.Point(229, 12);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(49, 45);
+            this.btnSearch.Size = new System.Drawing.Size(52, 52);
             this.btnSearch.TabIndex = 5;
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -198,7 +198,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(233, 60);
+            this.label5.Location = new System.Drawing.Point(233, 67);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(41, 13);
             this.label5.TabIndex = 6;

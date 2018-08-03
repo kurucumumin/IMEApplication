@@ -63,9 +63,9 @@
             this.CustomerID,
             this.CustomerName,
             this.SaleOrderID});
-            this.dg.Location = new System.Drawing.Point(12, 76);
+            this.dg.Location = new System.Drawing.Point(12, 88);
             this.dg.Name = "dg";
-            this.dg.Size = new System.Drawing.Size(850, 317);
+            this.dg.Size = new System.Drawing.Size(850, 305);
             this.dg.TabIndex = 0;
             // 
             // ReserveID
@@ -158,7 +158,7 @@
             this.btnExit.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
             this.btnExit.Location = new System.Drawing.Point(799, 3);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(49, 45);
+            this.btnExit.Size = new System.Drawing.Size(52, 52);
             this.btnExit.TabIndex = 16;
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
@@ -168,7 +168,7 @@
             this.btnConfirm.Image = global::LoginForm.Properties.Resources.icons8_Edit_Property_32;
             this.btnConfirm.Location = new System.Drawing.Point(723, 3);
             this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.Size = new System.Drawing.Size(49, 45);
+            this.btnConfirm.Size = new System.Drawing.Size(52, 52);
             this.btnConfirm.TabIndex = 16;
             this.btnConfirm.UseVisualStyleBackColor = true;
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
@@ -178,7 +178,7 @@
             this.btnSearch.Image = global::LoginForm.Properties.Resources.if_search_magnifying_glass_find_103857;
             this.btnSearch.Location = new System.Drawing.Point(299, 1);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(49, 45);
+            this.btnSearch.Size = new System.Drawing.Size(52, 52);
             this.btnSearch.TabIndex = 35;
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -186,7 +186,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(302, 52);
+            this.label5.Location = new System.Drawing.Point(305, 56);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(41, 13);
             this.label5.TabIndex = 34;
@@ -195,7 +195,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(729, 52);
+            this.label2.Location = new System.Drawing.Point(729, 59);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(42, 13);
             this.label2.TabIndex = 36;
@@ -204,7 +204,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(810, 52);
+            this.label3.Location = new System.Drawing.Point(810, 59);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(24, 13);
             this.label3.TabIndex = 37;

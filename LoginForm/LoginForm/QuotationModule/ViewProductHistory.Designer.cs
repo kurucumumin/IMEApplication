@@ -48,7 +48,7 @@
             this.btnClose.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
             this.btnClose.Location = new System.Drawing.Point(946, 414);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(52, 40);
+            this.btnClose.Size = new System.Drawing.Size(52, 52);
             this.btnClose.TabIndex = 1;
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -56,7 +56,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(958, 457);
+            this.label1.Location = new System.Drawing.Point(957, 469);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(33, 13);
             this.label1.TabIndex = 2;

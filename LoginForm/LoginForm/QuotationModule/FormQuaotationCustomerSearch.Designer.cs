@@ -78,12 +78,12 @@
             this.CustomerSearchGrid.AllowUserToDeleteRows = false;
             this.CustomerSearchGrid.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.CustomerSearchGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.CustomerSearchGrid.Location = new System.Drawing.Point(15, 97);
+            this.CustomerSearchGrid.Location = new System.Drawing.Point(15, 107);
             this.CustomerSearchGrid.MultiSelect = false;
             this.CustomerSearchGrid.Name = "CustomerSearchGrid";
             this.CustomerSearchGrid.ReadOnly = true;
             this.CustomerSearchGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.CustomerSearchGrid.Size = new System.Drawing.Size(526, 216);
+            this.CustomerSearchGrid.Size = new System.Drawing.Size(526, 206);
             this.CustomerSearchGrid.TabIndex = 1;
             this.CustomerSearchGrid.DoubleClick += new System.EventHandler(this.CustomerSearchGrid_DoubleClick);
             this.CustomerSearchGrid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CustomerSearchGrid_KeyDown);
@@ -91,9 +91,9 @@
             // button1
             // 
             this.button1.Image = global::LoginForm.Properties.Resources.icons8_Plus_32;
-            this.button1.Location = new System.Drawing.Point(474, 28);
+            this.button1.Location = new System.Drawing.Point(467, 26);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(43, 43);
+            this.button1.Size = new System.Drawing.Size(52, 52);
             this.button1.TabIndex = 4;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -101,7 +101,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(443, 74);
+            this.label3.Location = new System.Drawing.Point(443, 83);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(98, 13);
             this.label3.TabIndex = 5;

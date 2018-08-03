@@ -97,21 +97,21 @@
             // btnsave
             // 
             this.btnsave.Image = global::LoginForm.Properties.Resources.icons8_Plus_32;
-            this.btnsave.Location = new System.Drawing.Point(627, 27);
+            this.btnsave.Location = new System.Drawing.Point(618, 16);
             this.btnsave.Name = "btnsave";
-            this.btnsave.Size = new System.Drawing.Size(43, 39);
+            this.btnsave.Size = new System.Drawing.Size(52, 52);
             this.btnsave.TabIndex = 0;
-            this.btnsave.UseVisualStyleBackColor = true;
+            this.btnsave.UseVisualStyleBackColor = false;
             this.btnsave.Click += new System.EventHandler(this.btnsave_Click);
             // 
             // btnClose
             // 
             this.btnClose.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
-            this.btnClose.Location = new System.Drawing.Point(696, 27);
+            this.btnClose.Location = new System.Drawing.Point(687, 16);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(43, 39);
+            this.btnClose.Size = new System.Drawing.Size(52, 52);
             this.btnClose.TabIndex = 0;
-            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // dg
@@ -205,7 +205,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(634, 68);
+            this.label3.Location = new System.Drawing.Point(630, 68);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(30, 13);
             this.label3.TabIndex = 6;
@@ -214,7 +214,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(702, 68);
+            this.label4.Location = new System.Drawing.Point(698, 68);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(31, 13);
             this.label4.TabIndex = 7;

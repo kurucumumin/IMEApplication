@@ -211,9 +211,9 @@ namespace LoginForm.BackOrder
             this.button1.Image = global::LoginForm.Properties.Resources.if_Document_file_export_sending_exit_send_1886950;
             this.button1.Location = new System.Drawing.Point(12, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(49, 43);
+            this.button1.Size = new System.Drawing.Size(52, 52);
             this.button1.TabIndex = 6;
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnExit
@@ -221,15 +221,15 @@ namespace LoginForm.BackOrder
             this.btnExit.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
             this.btnExit.Location = new System.Drawing.Point(82, 2);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(49, 43);
+            this.btnExit.Size = new System.Drawing.Size(52, 52);
             this.btnExit.TabIndex = 6;
-            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(96, 48);
+            this.label5.Location = new System.Drawing.Point(96, 54);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(24, 13);
             this.label5.TabIndex = 7;
@@ -238,7 +238,7 @@ namespace LoginForm.BackOrder
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 48);
+            this.label1.Location = new System.Drawing.Point(22, 54);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(33, 13);
             this.label1.TabIndex = 8;

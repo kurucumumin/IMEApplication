@@ -63,7 +63,7 @@
             this.btnSearch.Image = global::LoginForm.Properties.Resources.if_search_magnifying_glass_find_103857;
             this.btnSearch.Location = new System.Drawing.Point(351, 12);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(55, 42);
+            this.btnSearch.Size = new System.Drawing.Size(52, 52);
             this.btnSearch.TabIndex = 33;
             this.btnSearch.UseVisualStyleBackColor = true;
             // 
@@ -72,7 +72,7 @@
             this.btnSelect.Image = global::LoginForm.Properties.Resources.if_Select_46755;
             this.btnSelect.Location = new System.Drawing.Point(950, 12);
             this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(55, 42);
+            this.btnSelect.Size = new System.Drawing.Size(52, 52);
             this.btnSelect.TabIndex = 32;
             this.btnSelect.UseVisualStyleBackColor = true;
             this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
@@ -80,7 +80,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(947, 57);
+            this.label2.Location = new System.Drawing.Point(947, 65);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 15);
             this.label2.TabIndex = 31;
@@ -89,7 +89,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(356, 57);
+            this.label5.Location = new System.Drawing.Point(356, 66);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(46, 15);
             this.label5.TabIndex = 8;

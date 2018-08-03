@@ -108,9 +108,9 @@
             // 
             this.dgStock.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgStock.Location = new System.Drawing.Point(18, 265);
+            this.dgStock.Location = new System.Drawing.Point(18, 272);
             this.dgStock.Name = "dgStock";
-            this.dgStock.Size = new System.Drawing.Size(608, 192);
+            this.dgStock.Size = new System.Drawing.Size(608, 185);
             this.dgStock.TabIndex = 2;
             // 
             // btnSave
@@ -118,7 +118,7 @@
             this.btnSave.Image = global::LoginForm.Properties.Resources.if_floppy_285657;
             this.btnSave.Location = new System.Drawing.Point(565, 36);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(61, 44);
+            this.btnSave.Size = new System.Drawing.Size(52, 52);
             this.btnSave.TabIndex = 4;
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -128,7 +128,7 @@
             this.btnSearch.Image = global::LoginForm.Properties.Resources.if_search_magnifying_glass_find_103857;
             this.btnSearch.Location = new System.Drawing.Point(565, 195);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(61, 44);
+            this.btnSearch.Size = new System.Drawing.Size(52, 52);
             this.btnSearch.TabIndex = 4;
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -170,7 +170,7 @@
             this.btnClear.Image = global::LoginForm.Properties.Resources.if_Line_ui_icons_Svg_03_1465842;
             this.btnClear.Location = new System.Drawing.Point(463, 36);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(61, 44);
+            this.btnClear.Size = new System.Drawing.Size(52, 52);
             this.btnClear.TabIndex = 4;
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
@@ -241,7 +241,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(574, 242);
+            this.label4.Location = new System.Drawing.Point(569, 250);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(41, 13);
             this.label4.TabIndex = 8;
@@ -250,7 +250,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(476, 83);
+            this.label10.Location = new System.Drawing.Point(475, 92);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(31, 13);
             this.label10.TabIndex = 9;
@@ -259,7 +259,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(579, 83);
+            this.label11.Location = new System.Drawing.Point(578, 92);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(32, 13);
             this.label11.TabIndex = 10;

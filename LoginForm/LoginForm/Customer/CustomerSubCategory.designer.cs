@@ -75,7 +75,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(180, 140);
+            this.label3.Location = new System.Drawing.Point(183, 147);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(40, 13);
             this.label3.TabIndex = 9;
@@ -84,7 +84,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(104, 140);
+            this.label2.Location = new System.Drawing.Point(110, 147);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(26, 13);
             this.label2.TabIndex = 8;
@@ -95,7 +95,7 @@
             this.btnExit.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
             this.btnExit.Location = new System.Drawing.Point(174, 92);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(50, 45);
+            this.btnExit.Size = new System.Drawing.Size(52, 52);
             this.btnExit.TabIndex = 6;
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
@@ -105,7 +105,7 @@
             this.btnAdd.Image = global::LoginForm.Properties.Resources.icons8_Plus_32;
             this.btnAdd.Location = new System.Drawing.Point(98, 92);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(50, 45);
+            this.btnAdd.Size = new System.Drawing.Size(52, 52);
             this.btnAdd.TabIndex = 7;
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);

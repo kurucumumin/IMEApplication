@@ -268,9 +268,9 @@
             this.btnNot.Image = global::LoginForm.Properties.Resources.icons8_Edit_Property_32;
             this.btnNot.Location = new System.Drawing.Point(183, 12);
             this.btnNot.Name = "btnNot";
-            this.btnNot.Size = new System.Drawing.Size(48, 43);
+            this.btnNot.Size = new System.Drawing.Size(52, 52);
             this.btnNot.TabIndex = 1;
-            this.btnNot.UseVisualStyleBackColor = true;
+            this.btnNot.UseVisualStyleBackColor = false;
             this.btnNot.Click += new System.EventHandler(this.btnNot_Click);
             // 
             // btnYenile
@@ -278,9 +278,9 @@
             this.btnYenile.Image = global::LoginForm.Properties.Resources.icons8_Refresh_32;
             this.btnYenile.Location = new System.Drawing.Point(21, 12);
             this.btnYenile.Name = "btnYenile";
-            this.btnYenile.Size = new System.Drawing.Size(53, 43);
+            this.btnYenile.Size = new System.Drawing.Size(52, 52);
             this.btnYenile.TabIndex = 2;
-            this.btnYenile.UseVisualStyleBackColor = true;
+            this.btnYenile.UseVisualStyleBackColor = false;
             this.btnYenile.Click += new System.EventHandler(this.btnYenile_Click);
             // 
             // btnFiltre
@@ -288,9 +288,9 @@
             this.btnFiltre.Image = global::LoginForm.Properties.Resources.if_filter_173013;
             this.btnFiltre.Location = new System.Drawing.Point(99, 12);
             this.btnFiltre.Name = "btnFiltre";
-            this.btnFiltre.Size = new System.Drawing.Size(48, 43);
+            this.btnFiltre.Size = new System.Drawing.Size(52, 52);
             this.btnFiltre.TabIndex = 3;
-            this.btnFiltre.UseVisualStyleBackColor = true;
+            this.btnFiltre.UseVisualStyleBackColor = false;
             this.btnFiltre.Click += new System.EventHandler(this.btnFiltre_Click);
             // 
             // btnExcel
@@ -298,9 +298,9 @@
             this.btnExcel.Image = global::LoginForm.Properties.Resources.if_Document_file_export_sending_exit_send_1886950;
             this.btnExcel.Location = new System.Drawing.Point(275, 12);
             this.btnExcel.Name = "btnExcel";
-            this.btnExcel.Size = new System.Drawing.Size(48, 43);
+            this.btnExcel.Size = new System.Drawing.Size(52, 52);
             this.btnExcel.TabIndex = 4;
-            this.btnExcel.UseVisualStyleBackColor = true;
+            this.btnExcel.UseVisualStyleBackColor = false;
             this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
             // btncikis
@@ -308,9 +308,9 @@
             this.btncikis.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
             this.btncikis.Location = new System.Drawing.Point(361, 12);
             this.btncikis.Name = "btncikis";
-            this.btncikis.Size = new System.Drawing.Size(48, 43);
+            this.btncikis.Size = new System.Drawing.Size(52, 52);
             this.btncikis.TabIndex = 5;
-            this.btncikis.UseVisualStyleBackColor = true;
+            this.btncikis.UseVisualStyleBackColor = false;
             this.btncikis.Click += new System.EventHandler(this.btncikis_Click);
             // 
             // label1

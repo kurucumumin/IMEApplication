@@ -40,6 +40,7 @@
             this.chcAllAuth = new System.Windows.Forms.CheckBox();
             this.clbAuthorities = new System.Windows.Forms.CheckedListBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.gbUserInfo = new System.Windows.Forms.GroupBox();
             this.materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
@@ -69,7 +70,6 @@
             this.chcChangePassword = new System.Windows.Forms.CheckBox();
             this.authRoleBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.authorizationValueBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.label4 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.gbRoles.SuspendLayout();
@@ -128,10 +128,6 @@
             this.lbRoles.ValueMember = "RoleID";
             this.lbRoles.SelectedIndexChanged += new System.EventHandler(this.lbRoles_SelectedIndexChanged);
             // 
-            // roleValueBindingSource
-            // 
-            this.roleValueBindingSource.DataSource = typeof(LoginForm.DataSet.RoleValue);
-            // 
             // gbAuthorities
             // 
             this.gbAuthorities.Controls.Add(this.chcAllAuth);
@@ -163,6 +159,11 @@
             this.panel1.Controls.Add(this.gbUserInfo);
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
             // 
             // btnSave
             // 
@@ -392,11 +393,6 @@
             this.chcChangePassword.Name = "chcChangePassword";
             this.chcChangePassword.UseVisualStyleBackColor = true;
             this.chcChangePassword.CheckedChanged += new System.EventHandler(this.chcChangePassword_CheckedChanged);
-            // 
-            // label4
-            // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
             // 
             // FormWorkerManagement
             // 

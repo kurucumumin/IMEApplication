@@ -50,16 +50,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgStockList = new System.Windows.Forms.DataGridView();
-            this.dgProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgMPN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgReserveQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgStockID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgSupplierID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stockBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.FrameTableLayout.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -88,6 +85,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.btnSearch);
             this.groupBox2.Controls.Add(this.txt_productID);
@@ -114,11 +112,11 @@
             // btnSearch
             // 
             this.btnSearch.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnSearch.Location = new System.Drawing.Point(770, 24);
+            this.btnSearch.Image = global::LoginForm.Properties.Resources.if_search_magnifying_glass_find_103857;
+            this.btnSearch.Location = new System.Drawing.Point(654, 14);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(182, 45);
+            this.btnSearch.Size = new System.Drawing.Size(52, 52);
             this.btnSearch.TabIndex = 14;
-            this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
@@ -149,6 +147,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.btnViewStockReserves);
             this.groupBox1.Controls.Add(this.numQuantity);
             this.groupBox1.Controls.Add(this.txtProductName);
@@ -172,11 +173,11 @@
             // 
             // btnViewStockReserves
             // 
-            this.btnViewStockReserves.Location = new System.Drawing.Point(485, 55);
+            this.btnViewStockReserves.Image = global::LoginForm.Properties.Resources.icons8_Edit_Property_32;
+            this.btnViewStockReserves.Location = new System.Drawing.Point(476, 77);
             this.btnViewStockReserves.Name = "btnViewStockReserves";
-            this.btnViewStockReserves.Size = new System.Drawing.Size(116, 60);
+            this.btnViewStockReserves.Size = new System.Drawing.Size(52, 52);
             this.btnViewStockReserves.TabIndex = 13;
-            this.btnViewStockReserves.Text = "View Stock Reserves";
             this.btnViewStockReserves.UseVisualStyleBackColor = true;
             this.btnViewStockReserves.Click += new System.EventHandler(this.btnViewStockReserves_Click);
             // 
@@ -251,22 +252,22 @@
             // btnSave
             // 
             this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnSave.Location = new System.Drawing.Point(770, 36);
+            this.btnSave.Image = global::LoginForm.Properties.Resources.if_floppy_285657;
+            this.btnSave.Location = new System.Drawing.Point(800, 87);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(182, 59);
+            this.btnSave.Size = new System.Drawing.Size(52, 52);
             this.btnSave.TabIndex = 5;
-            this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnClear
             // 
             this.btnClear.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnClear.Location = new System.Drawing.Point(770, 95);
+            this.btnClear.Image = global::LoginForm.Properties.Resources.if_edit_clear_23227;
+            this.btnClear.Location = new System.Drawing.Point(871, 87);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(182, 63);
+            this.btnClear.Size = new System.Drawing.Size(52, 52);
             this.btnClear.TabIndex = 4;
-            this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
@@ -307,13 +308,6 @@
             this.dgStockList.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgStockList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgStockList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dgProductID,
-            this.dgProductName,
-            this.dgMPN,
-            this.dgCost,
-            this.dgQty,
-            this.dgReserveQty,
-            this.dgStockID,
             this.dgSupplierID});
             this.dgStockList.DataSource = this.stockBindingSource;
             this.dgStockList.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -328,67 +322,6 @@
             this.dgStockList.TabIndex = 1;
             this.dgStockList.SelectionChanged += new System.EventHandler(this.dgStockList_SelectionChanged);
             // 
-            // dgProductID
-            // 
-            this.dgProductID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dgProductID.DataPropertyName = "ProductID";
-            this.dgProductID.HeaderText = "Product ID";
-            this.dgProductID.Name = "dgProductID";
-            this.dgProductID.ReadOnly = true;
-            this.dgProductID.Width = 82;
-            // 
-            // dgProductName
-            // 
-            this.dgProductName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dgProductName.DataPropertyName = "ProductName";
-            this.dgProductName.HeaderText = "Product Name";
-            this.dgProductName.Name = "dgProductName";
-            this.dgProductName.ReadOnly = true;
-            // 
-            // dgMPN
-            // 
-            this.dgMPN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dgMPN.DataPropertyName = "MPN";
-            this.dgMPN.HeaderText = "MPN";
-            this.dgMPN.Name = "dgMPN";
-            this.dgMPN.ReadOnly = true;
-            this.dgMPN.Width = 60;
-            // 
-            // dgCost
-            // 
-            this.dgCost.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dgCost.DataPropertyName = "Cost";
-            this.dgCost.HeaderText = "Cost";
-            this.dgCost.Name = "dgCost";
-            this.dgCost.ReadOnly = true;
-            this.dgCost.Width = 56;
-            // 
-            // dgQty
-            // 
-            this.dgQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dgQty.DataPropertyName = "Qty";
-            this.dgQty.HeaderText = "Quantity";
-            this.dgQty.Name = "dgQty";
-            this.dgQty.ReadOnly = true;
-            this.dgQty.Width = 76;
-            // 
-            // dgReserveQty
-            // 
-            this.dgReserveQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dgReserveQty.DataPropertyName = "ReserveQty";
-            this.dgReserveQty.HeaderText = "Reserved Quantity";
-            this.dgReserveQty.Name = "dgReserveQty";
-            this.dgReserveQty.ReadOnly = true;
-            this.dgReserveQty.Width = 120;
-            // 
-            // dgStockID
-            // 
-            this.dgStockID.DataPropertyName = "StockID";
-            this.dgStockID.HeaderText = "StockID";
-            this.dgStockID.Name = "dgStockID";
-            this.dgStockID.ReadOnly = true;
-            this.dgStockID.Visible = false;
-            // 
             // dgSupplierID
             // 
             this.dgSupplierID.DataPropertyName = "SupplierID";
@@ -397,9 +330,41 @@
             this.dgSupplierID.ReadOnly = true;
             this.dgSupplierID.Visible = false;
             // 
-            // stockBindingSource
+            // label6
             // 
-            this.stockBindingSource.DataSource = typeof(LoginForm.DataSet.Stock);
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(463, 133);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(87, 15);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "View Reserves";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(807, 142);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(34, 15);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Save";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(881, 142);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(36, 15);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Clear";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(655, 68);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(46, 15);
+            this.label9.TabIndex = 17;
+            this.label9.Text = "Search";
             // 
             // frmStock
             // 
@@ -460,5 +425,9 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
     }
 }
