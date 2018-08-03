@@ -110,6 +110,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<CariHareket> CariHarekets { get; set; }
         public virtual DbSet<CompleteItem> CompleteItems { get; set; }
         public virtual DbSet<CompleteItems_v2> CompleteItems_v2 { get; set; }
+        public virtual DbSet<CustomerAll> CustomerAlls { get; set; }
         public virtual DbSet<MPN_List> MPN_List { get; set; }
         public virtual DbSet<V_Product> V_Product { get; set; }
     
