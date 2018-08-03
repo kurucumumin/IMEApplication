@@ -1,8 +1,6 @@
-﻿using LoginForm.clsClasses;
-using LoginForm.DataSet;
+﻿using LoginForm.DataSet;
 using LoginForm.Services;
 using System;
-using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -19,9 +17,6 @@ namespace LoginForm.ItemModule
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
-            //FormMain form = new FormMain();
-            //form.Show();
-            //this.Hide();
         }
 
         private void btnChooseFile_Click(object sender, EventArgs e)
