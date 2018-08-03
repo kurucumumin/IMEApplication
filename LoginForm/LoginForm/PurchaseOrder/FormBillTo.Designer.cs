@@ -115,7 +115,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(699, 354);
+            this.label2.Location = new System.Drawing.Point(689, 347);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(33, 13);
             this.label2.TabIndex = 13;
@@ -124,7 +124,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(617, 354);
+            this.label1.Location = new System.Drawing.Point(607, 347);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(32, 13);
             this.label1.TabIndex = 12;
@@ -135,7 +135,7 @@
             this.btnSave.Image = global::LoginForm.Properties.Resources.if_floppy_285657;
             this.btnSave.Location = new System.Drawing.Point(598, 291);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 48);
+            this.btnSave.Size = new System.Drawing.Size(52, 52);
             this.btnSave.TabIndex = 11;
             this.btnSave.UseVisualStyleBackColor = true;
             // 
@@ -144,7 +144,7 @@
             this.btnExit.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
             this.btnExit.Location = new System.Drawing.Point(679, 291);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(75, 48);
+            this.btnExit.Size = new System.Drawing.Size(52, 52);
             this.btnExit.TabIndex = 10;
             this.btnExit.UseVisualStyleBackColor = true;
             // 

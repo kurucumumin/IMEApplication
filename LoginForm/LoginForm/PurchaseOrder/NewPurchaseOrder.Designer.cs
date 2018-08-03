@@ -208,7 +208,7 @@
             this.btnClose.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
             this.btnClose.Location = new System.Drawing.Point(1271, 628);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(52, 45);
+            this.btnClose.Size = new System.Drawing.Size(52, 52);
             this.btnClose.TabIndex = 13;
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -218,7 +218,7 @@
             this.btnExcel.Image = global::LoginForm.Properties.Resources.if_Document_file_export_sending_exit_send_1886950;
             this.btnExcel.Location = new System.Drawing.Point(985, 628);
             this.btnExcel.Name = "btnExcel";
-            this.btnExcel.Size = new System.Drawing.Size(52, 45);
+            this.btnExcel.Size = new System.Drawing.Size(52, 52);
             this.btnExcel.TabIndex = 12;
             this.btnExcel.UseVisualStyleBackColor = true;
             this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
@@ -228,21 +228,17 @@
             this.btnCreate.Image = global::LoginForm.Properties.Resources.icons8_Edit_Property_32;
             this.btnCreate.Location = new System.Drawing.Point(1135, 628);
             this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(52, 45);
+            this.btnCreate.Size = new System.Drawing.Size(52, 52);
             this.btnCreate.TabIndex = 11;
             this.btnCreate.UseVisualStyleBackColor = true;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
-            // 
-            // customerAddressBindingSource
-            // 
-            this.customerAddressBindingSource.DataSource = typeof(LoginForm.DataSet.CustomerAddress);
             // 
             // btnSelect
             // 
             this.btnSelect.Image = global::LoginForm.Properties.Resources.if_Select_46755;
             this.btnSelect.Location = new System.Drawing.Point(12, 630);
             this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(52, 45);
+            this.btnSelect.Size = new System.Drawing.Size(52, 52);
             this.btnSelect.TabIndex = 16;
             this.btnSelect.UseVisualStyleBackColor = true;
             this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click_1);
@@ -252,7 +248,7 @@
             this.btnClear.Image = global::LoginForm.Properties.Resources.if_Line_ui_icons_Svg_03_1465842;
             this.btnClear.Location = new System.Drawing.Point(92, 630);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(52, 45);
+            this.btnClear.Size = new System.Drawing.Size(52, 52);
             this.btnClear.TabIndex = 17;
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click_1);
@@ -260,7 +256,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 679);
+            this.label2.Location = new System.Drawing.Point(13, 686);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(51, 13);
             this.label2.TabIndex = 18;
@@ -269,7 +265,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(98, 679);
+            this.label3.Location = new System.Drawing.Point(98, 686);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(45, 13);
             this.label3.TabIndex = 19;

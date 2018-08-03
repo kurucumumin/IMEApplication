@@ -59,9 +59,9 @@
             // btnCancel
             // 
             this.btnCancel.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
-            this.btnCancel.Location = new System.Drawing.Point(222, 81);
+            this.btnCancel.Location = new System.Drawing.Point(222, 70);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(52, 38);
+            this.btnCancel.Size = new System.Drawing.Size(52, 52);
             this.btnCancel.TabIndex = 13;
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -69,9 +69,9 @@
             // btnAdd
             // 
             this.btnAdd.Image = global::LoginForm.Properties.Resources.icons8_Plus_32;
-            this.btnAdd.Location = new System.Drawing.Point(32, 81);
+            this.btnAdd.Location = new System.Drawing.Point(32, 70);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(50, 38);
+            this.btnAdd.Size = new System.Drawing.Size(52, 52);
             this.btnAdd.TabIndex = 12;
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);

@@ -63,9 +63,9 @@
             this.btnClose.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
             this.btnClose.Location = new System.Drawing.Point(763, 11);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(46, 50);
+            this.btnClose.Size = new System.Drawing.Size(52, 52);
             this.btnClose.TabIndex = 0;
-            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnExcel
@@ -73,9 +73,9 @@
             this.btnExcel.Image = global::LoginForm.Properties.Resources.if_Document_file_export_sending_exit_send_1886950;
             this.btnExcel.Location = new System.Drawing.Point(679, 11);
             this.btnExcel.Name = "btnExcel";
-            this.btnExcel.Size = new System.Drawing.Size(49, 50);
+            this.btnExcel.Size = new System.Drawing.Size(52, 52);
             this.btnExcel.TabIndex = 0;
-            this.btnExcel.UseVisualStyleBackColor = true;
+            this.btnExcel.UseVisualStyleBackColor = false;
             this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
             // label1
@@ -115,9 +115,9 @@
             this.btnUpdate.Image = global::LoginForm.Properties.Resources.icons8_Edit_Property_32;
             this.btnUpdate.Location = new System.Drawing.Point(599, 12);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(45, 50);
+            this.btnUpdate.Size = new System.Drawing.Size(52, 52);
             this.btnUpdate.TabIndex = 0;
-            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnAdd
@@ -209,21 +209,21 @@
             // btnSearch
             // 
             this.btnSearch.Image = global::LoginForm.Properties.Resources.if_search_magnifying_glass_find_103857;
-            this.btnSearch.Location = new System.Drawing.Point(232, 71);
+            this.btnSearch.Location = new System.Drawing.Point(232, 66);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(41, 47);
+            this.btnSearch.Size = new System.Drawing.Size(52, 52);
             this.btnSearch.TabIndex = 5;
-            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnClear
             // 
             this.btnClear.Image = global::LoginForm.Properties.Resources.if_edit_clear_23227;
-            this.btnClear.Location = new System.Drawing.Point(279, 71);
+            this.btnClear.Location = new System.Drawing.Point(287, 66);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(41, 47);
+            this.btnClear.Size = new System.Drawing.Size(52, 52);
             this.btnClear.TabIndex = 5;
-            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.UseVisualStyleBackColor = false;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // label4
@@ -283,7 +283,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(282, 118);
+            this.label8.Location = new System.Drawing.Point(299, 118);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(31, 13);
             this.label8.TabIndex = 9;
@@ -292,7 +292,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(231, 118);
+            this.label9.Location = new System.Drawing.Point(235, 118);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(41, 13);
             this.label9.TabIndex = 10;

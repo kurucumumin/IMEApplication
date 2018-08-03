@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgQuotation = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSearchStockNumber = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.txtStockCode = new System.Windows.Forms.TextBox();
@@ -59,7 +60,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.btnSearchStockNumber = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgQuotation)).BeginInit();
             this.panel1.SuspendLayout();
@@ -94,14 +94,14 @@
             this.dgQuotation.AllowUserToOrderColumns = true;
             this.dgQuotation.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgQuotation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgQuotation.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgQuotation.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgQuotation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgQuotation.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dgQuotation.Location = new System.Drawing.Point(8, 129);
@@ -128,6 +128,23 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1230, 115);
             this.panel1.TabIndex = 1;
+            // 
+            // btnSearchStockNumber
+            // 
+            this.btnSearchStockNumber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
+            this.btnSearchStockNumber.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.btnSearchStockNumber.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearchStockNumber.Image = global::LoginForm.Properties.Resources.if_search_magnifying_glass_find_103857;
+            this.btnSearchStockNumber.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnSearchStockNumber.Location = new System.Drawing.Point(1076, 10);
+            this.btnSearchStockNumber.Margin = new System.Windows.Forms.Padding(0);
+            this.btnSearchStockNumber.Name = "btnSearchStockNumber";
+            this.btnSearchStockNumber.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.btnSearchStockNumber.Size = new System.Drawing.Size(52, 52);
+            this.btnSearchStockNumber.TabIndex = 27;
+            this.btnSearchStockNumber.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnSearchStockNumber.UseVisualStyleBackColor = true;
+            this.btnSearchStockNumber.Click += new System.EventHandler(this.btnSearchStockNumber_Click);
             // 
             // label9
             // 
@@ -217,22 +234,24 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.btnRefreshList);
             this.groupBox2.Controls.Add(this.btnNewQuotation);
             this.groupBox2.Controls.Add(this.btnModifyQuotation);
             this.groupBox2.Controls.Add(this.btnDeleteQuotation);
-            this.groupBox2.Location = new System.Drawing.Point(342, -1);
+            this.groupBox2.Location = new System.Drawing.Point(280, -1);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(275, 112);
+            this.groupBox2.Size = new System.Drawing.Size(337, 112);
             this.groupBox2.TabIndex = 29;
             this.groupBox2.TabStop = false;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(31, 79);
+            this.label4.Location = new System.Drawing.Point(90, 75);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(35, 15);
             this.label4.TabIndex = 24;
@@ -241,7 +260,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(122, 79);
+            this.label5.Location = new System.Drawing.Point(181, 75);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(43, 15);
             this.label5.TabIndex = 25;
@@ -250,7 +269,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(197, 79);
+            this.label6.Location = new System.Drawing.Point(256, 75);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(43, 15);
             this.label6.TabIndex = 26;
@@ -263,14 +282,14 @@
             this.btnNewQuotation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNewQuotation.Image = global::LoginForm.Properties.Resources.icons8_Plus_32;
             this.btnNewQuotation.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnNewQuotation.Location = new System.Drawing.Point(28, 22);
+            this.btnNewQuotation.Location = new System.Drawing.Point(84, 19);
             this.btnNewQuotation.Margin = new System.Windows.Forms.Padding(0);
             this.btnNewQuotation.Name = "btnNewQuotation";
             this.btnNewQuotation.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
-            this.btnNewQuotation.Size = new System.Drawing.Size(49, 52);
+            this.btnNewQuotation.Size = new System.Drawing.Size(52, 52);
             this.btnNewQuotation.TabIndex = 1;
             this.btnNewQuotation.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnNewQuotation.UseVisualStyleBackColor = false;
+            this.btnNewQuotation.UseVisualStyleBackColor = true;
             this.btnNewQuotation.Click += new System.EventHandler(this.btnNewQuotation_Click);
             // 
             // btnModifyQuotation
@@ -280,14 +299,14 @@
             this.btnModifyQuotation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModifyQuotation.Image = global::LoginForm.Properties.Resources.icons8_Edit_Property_32;
             this.btnModifyQuotation.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnModifyQuotation.Location = new System.Drawing.Point(120, 20);
+            this.btnModifyQuotation.Location = new System.Drawing.Point(176, 17);
             this.btnModifyQuotation.Margin = new System.Windows.Forms.Padding(0);
             this.btnModifyQuotation.Name = "btnModifyQuotation";
             this.btnModifyQuotation.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
-            this.btnModifyQuotation.Size = new System.Drawing.Size(49, 52);
+            this.btnModifyQuotation.Size = new System.Drawing.Size(52, 52);
             this.btnModifyQuotation.TabIndex = 16;
             this.btnModifyQuotation.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnModifyQuotation.UseVisualStyleBackColor = false;
+            this.btnModifyQuotation.UseVisualStyleBackColor = true;
             this.btnModifyQuotation.Click += new System.EventHandler(this.btnModifyQuotation_Click);
             // 
             // btnDeleteQuotation
@@ -297,34 +316,32 @@
             this.btnDeleteQuotation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteQuotation.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
             this.btnDeleteQuotation.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnDeleteQuotation.Location = new System.Drawing.Point(193, 20);
+            this.btnDeleteQuotation.Location = new System.Drawing.Point(249, 17);
             this.btnDeleteQuotation.Margin = new System.Windows.Forms.Padding(0);
             this.btnDeleteQuotation.Name = "btnDeleteQuotation";
             this.btnDeleteQuotation.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
-            this.btnDeleteQuotation.Size = new System.Drawing.Size(49, 54);
+            this.btnDeleteQuotation.Size = new System.Drawing.Size(52, 52);
             this.btnDeleteQuotation.TabIndex = 17;
             this.btnDeleteQuotation.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnDeleteQuotation.UseVisualStyleBackColor = false;
+            this.btnDeleteQuotation.UseVisualStyleBackColor = true;
             this.btnDeleteQuotation.Click += new System.EventHandler(this.btnDeleteQuotation_Click);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.btnRefreshList);
             this.groupBox1.Controls.Add(this.dtpToDate);
             this.groupBox1.Controls.Add(this.dtpFromDate);
             this.groupBox1.Location = new System.Drawing.Point(12, -1);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(315, 112);
+            this.groupBox1.Size = new System.Drawing.Size(262, 112);
             this.groupBox1.TabIndex = 28;
             this.groupBox1.TabStop = false;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(254, 79);
+            this.label3.Location = new System.Drawing.Point(10, 74);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 15);
             this.label3.TabIndex = 18;
@@ -355,15 +372,15 @@
             this.btnRefreshList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRefreshList.Image = global::LoginForm.Properties.Resources.icons8_Refresh_32;
             this.btnRefreshList.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnRefreshList.Location = new System.Drawing.Point(250, 22);
+            this.btnRefreshList.Location = new System.Drawing.Point(10, 17);
             this.btnRefreshList.Margin = new System.Windows.Forms.Padding(0);
             this.btnRefreshList.Name = "btnRefreshList";
             this.btnRefreshList.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
-            this.btnRefreshList.Size = new System.Drawing.Size(49, 52);
+            this.btnRefreshList.Size = new System.Drawing.Size(52, 52);
             this.btnRefreshList.TabIndex = 14;
             this.btnRefreshList.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnRefreshList.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnRefreshList.UseVisualStyleBackColor = false;
+            this.btnRefreshList.UseVisualStyleBackColor = true;
             this.btnRefreshList.Click += new System.EventHandler(this.btnRefreshList_Click);
             // 
             // dtpToDate
@@ -400,7 +417,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(142, 67);
+            this.label8.Location = new System.Drawing.Point(150, 78);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(32, 15);
             this.label8.TabIndex = 20;
@@ -409,7 +426,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(41, 67);
+            this.label7.Location = new System.Drawing.Point(49, 78);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(37, 15);
             this.label7.TabIndex = 19;
@@ -426,9 +443,9 @@
             this.button5.Margin = new System.Windows.Forms.Padding(0);
             this.button5.Name = "button5";
             this.button5.Padding = new System.Windows.Forms.Padding(8, 16, 8, 0);
-            this.button5.Size = new System.Drawing.Size(49, 52);
+            this.button5.Size = new System.Drawing.Size(52, 52);
             this.button5.TabIndex = 8;
-            this.button5.UseVisualStyleBackColor = false;
+            this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button4
@@ -442,27 +459,10 @@
             this.button4.Margin = new System.Windows.Forms.Padding(0);
             this.button4.Name = "button4";
             this.button4.Padding = new System.Windows.Forms.Padding(8, 16, 8, 0);
-            this.button4.Size = new System.Drawing.Size(49, 52);
+            this.button4.Size = new System.Drawing.Size(52, 52);
             this.button4.TabIndex = 7;
-            this.button4.UseVisualStyleBackColor = false;
+            this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // btnSearchStockNumber
-            // 
-            this.btnSearchStockNumber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
-            this.btnSearchStockNumber.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.btnSearchStockNumber.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearchStockNumber.Image = global::LoginForm.Properties.Resources.if_search_magnifying_glass_find_103857;
-            this.btnSearchStockNumber.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnSearchStockNumber.Location = new System.Drawing.Point(1076, 10);
-            this.btnSearchStockNumber.Margin = new System.Windows.Forms.Padding(0);
-            this.btnSearchStockNumber.Name = "btnSearchStockNumber";
-            this.btnSearchStockNumber.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
-            this.btnSearchStockNumber.Size = new System.Drawing.Size(49, 54);
-            this.btnSearchStockNumber.TabIndex = 27;
-            this.btnSearchStockNumber.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnSearchStockNumber.UseVisualStyleBackColor = false;
-            this.btnSearchStockNumber.Click += new System.EventHandler(this.btnSearchStockNumber_Click);
             // 
             // FormQuotationMain
             // 

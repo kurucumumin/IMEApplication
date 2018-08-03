@@ -42,54 +42,14 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgQuotations = new System.Windows.Forms.DataGridView();
-            this.QuotationNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.noteForUsIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.noteForCustomerIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.forFinancelIsTrueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.shippingMethodIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.isItemCostDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.isWeightCostDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.isCustomsDutiesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.discOnSubTotal2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.extraChargesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.startDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.validationDayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.paymentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.currDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.factorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.isVatValueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vatValueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.currNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rFQNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.currTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quotationMainContactDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.noteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.note1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quotationBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.dgItems = new System.Windows.Forms.DataGridView();
             this.chk = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.itemCodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.discDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgLandingCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uCUPCurrDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.targetUPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.competitorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customerDescriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customerStockCodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.isDeletedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quotationNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uPIMEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.margeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unitOfMeasureDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quotationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quotationDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel3 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
@@ -136,7 +96,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearchCustomer.Location = new System.Drawing.Point(16, 48);
             this.txtSearchCustomer.Name = "txtSearchCustomer";
-            this.txtSearchCustomer.Size = new System.Drawing.Size(286, 24);
+            this.txtSearchCustomer.Size = new System.Drawing.Size(286, 21);
             this.txtSearchCustomer.TabIndex = 10;
             this.txtSearchCustomer.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearchCustomer_KeyDown);
             // 
@@ -147,7 +107,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(16, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(114, 18);
+            this.label1.Size = new System.Drawing.Size(95, 15);
             this.label1.TabIndex = 9;
             this.label1.Text = "Customer List";
             // 
@@ -161,7 +121,7 @@
             this.lbCustomerList.DisplayMember = "c_name";
             this.lbCustomerList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCustomerList.FormattingEnabled = true;
-            this.lbCustomerList.ItemHeight = 20;
+            this.lbCustomerList.ItemHeight = 16;
             this.lbCustomerList.Location = new System.Drawing.Point(16, 91);
             this.lbCustomerList.Margin = new System.Windows.Forms.Padding(4);
             this.lbCustomerList.Name = "lbCustomerList";
@@ -169,10 +129,6 @@
             this.lbCustomerList.TabIndex = 8;
             this.lbCustomerList.ValueMember = "ID";
             this.lbCustomerList.SelectedValueChanged += new System.EventHandler(this.lbCustomerList_SelectedValueChanged);
-            // 
-            // customerBindingSource
-            // 
-            this.customerBindingSource.DataSource = typeof(LoginForm.DataSet.Customer);
             // 
             // panel1
             // 
@@ -192,9 +148,9 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1232, 57);
+            this.label2.Location = new System.Drawing.Point(1232, 63);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(52, 18);
+            this.label2.Size = new System.Drawing.Size(43, 15);
             this.label2.TabIndex = 10;
             this.label2.Text = "Create";
             // 
@@ -210,9 +166,9 @@
             this.btnCreate.Location = new System.Drawing.Point(1226, 9);
             this.btnCreate.Margin = new System.Windows.Forms.Padding(0);
             this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(52, 45);
+            this.btnCreate.Size = new System.Drawing.Size(52, 52);
             this.btnCreate.TabIndex = 9;
-            this.btnCreate.UseVisualStyleBackColor = false;
+            this.btnCreate.UseVisualStyleBackColor = true;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // tableLayoutPanel3
@@ -291,213 +247,16 @@
             this.dgQuotations.AutoGenerateColumns = false;
             this.dgQuotations.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgQuotations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgQuotations.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.QuotationNo,
-            this.noteForUsIDDataGridViewTextBoxColumn,
-            this.noteForCustomerIDDataGridViewTextBoxColumn,
-            this.forFinancelIsTrueDataGridViewTextBoxColumn,
-            this.shippingMethodIDDataGridViewTextBoxColumn,
-            this.isItemCostDataGridViewTextBoxColumn,
-            this.isWeightCostDataGridViewTextBoxColumn,
-            this.isCustomsDutiesDataGridViewTextBoxColumn,
-            this.discOnSubTotal2DataGridViewTextBoxColumn,
-            this.extraChargesDataGridViewTextBoxColumn,
-            this.subTotalDataGridViewTextBoxColumn,
-            this.startDateDataGridViewTextBoxColumn,
-            this.validationDayDataGridViewTextBoxColumn,
-            this.paymentIDDataGridViewTextBoxColumn,
-            this.currDataGridViewTextBoxColumn,
-            this.factorDataGridViewTextBoxColumn,
-            this.isVatValueDataGridViewTextBoxColumn,
-            this.vatValueDataGridViewTextBoxColumn,
-            this.currNameDataGridViewTextBoxColumn,
-            this.rFQNoDataGridViewTextBoxColumn,
-            this.currTypeDataGridViewTextBoxColumn,
-            this.quotationMainContactDataGridViewTextBoxColumn,
-            this.noteDataGridViewTextBoxColumn,
-            this.note1DataGridViewTextBoxColumn});
             this.dgQuotations.DataSource = this.quotationBindingSource;
             this.dgQuotations.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgQuotations.Location = new System.Drawing.Point(3, 22);
+            this.dgQuotations.Location = new System.Drawing.Point(3, 19);
             this.dgQuotations.Name = "dgQuotations";
             this.dgQuotations.ReadOnly = true;
             this.dgQuotations.RowTemplate.Height = 24;
             this.dgQuotations.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgQuotations.Size = new System.Drawing.Size(929, 177);
+            this.dgQuotations.Size = new System.Drawing.Size(929, 180);
             this.dgQuotations.TabIndex = 0;
             this.dgQuotations.SelectionChanged += new System.EventHandler(this.dgQuotations_SelectionChanged);
-            // 
-            // QuotationNo
-            // 
-            this.QuotationNo.DataPropertyName = "QuotationNo";
-            this.QuotationNo.HeaderText = "QuotationNo";
-            this.QuotationNo.Name = "QuotationNo";
-            this.QuotationNo.ReadOnly = true;
-            // 
-            // noteForUsIDDataGridViewTextBoxColumn
-            // 
-            this.noteForUsIDDataGridViewTextBoxColumn.DataPropertyName = "NoteForUsID";
-            this.noteForUsIDDataGridViewTextBoxColumn.HeaderText = "NoteForUsID";
-            this.noteForUsIDDataGridViewTextBoxColumn.Name = "noteForUsIDDataGridViewTextBoxColumn";
-            this.noteForUsIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // noteForCustomerIDDataGridViewTextBoxColumn
-            // 
-            this.noteForCustomerIDDataGridViewTextBoxColumn.DataPropertyName = "NoteForCustomerID";
-            this.noteForCustomerIDDataGridViewTextBoxColumn.HeaderText = "NoteForCustomerID";
-            this.noteForCustomerIDDataGridViewTextBoxColumn.Name = "noteForCustomerIDDataGridViewTextBoxColumn";
-            this.noteForCustomerIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // forFinancelIsTrueDataGridViewTextBoxColumn
-            // 
-            this.forFinancelIsTrueDataGridViewTextBoxColumn.DataPropertyName = "ForFinancelIsTrue";
-            this.forFinancelIsTrueDataGridViewTextBoxColumn.HeaderText = "ForFinancelIsTrue";
-            this.forFinancelIsTrueDataGridViewTextBoxColumn.Name = "forFinancelIsTrueDataGridViewTextBoxColumn";
-            this.forFinancelIsTrueDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // shippingMethodIDDataGridViewTextBoxColumn
-            // 
-            this.shippingMethodIDDataGridViewTextBoxColumn.DataPropertyName = "ShippingMethodID";
-            this.shippingMethodIDDataGridViewTextBoxColumn.HeaderText = "ShippingMethodID";
-            this.shippingMethodIDDataGridViewTextBoxColumn.Name = "shippingMethodIDDataGridViewTextBoxColumn";
-            this.shippingMethodIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // isItemCostDataGridViewTextBoxColumn
-            // 
-            this.isItemCostDataGridViewTextBoxColumn.DataPropertyName = "IsItemCost";
-            this.isItemCostDataGridViewTextBoxColumn.HeaderText = "IsItemCost";
-            this.isItemCostDataGridViewTextBoxColumn.Name = "isItemCostDataGridViewTextBoxColumn";
-            this.isItemCostDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // isWeightCostDataGridViewTextBoxColumn
-            // 
-            this.isWeightCostDataGridViewTextBoxColumn.DataPropertyName = "IsWeightCost";
-            this.isWeightCostDataGridViewTextBoxColumn.HeaderText = "IsWeightCost";
-            this.isWeightCostDataGridViewTextBoxColumn.Name = "isWeightCostDataGridViewTextBoxColumn";
-            this.isWeightCostDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // isCustomsDutiesDataGridViewTextBoxColumn
-            // 
-            this.isCustomsDutiesDataGridViewTextBoxColumn.DataPropertyName = "IsCustomsDuties";
-            this.isCustomsDutiesDataGridViewTextBoxColumn.HeaderText = "IsCustomsDuties";
-            this.isCustomsDutiesDataGridViewTextBoxColumn.Name = "isCustomsDutiesDataGridViewTextBoxColumn";
-            this.isCustomsDutiesDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // discOnSubTotal2DataGridViewTextBoxColumn
-            // 
-            this.discOnSubTotal2DataGridViewTextBoxColumn.DataPropertyName = "DiscOnSubTotal2";
-            this.discOnSubTotal2DataGridViewTextBoxColumn.HeaderText = "DiscOnSubTotal2";
-            this.discOnSubTotal2DataGridViewTextBoxColumn.Name = "discOnSubTotal2DataGridViewTextBoxColumn";
-            this.discOnSubTotal2DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // extraChargesDataGridViewTextBoxColumn
-            // 
-            this.extraChargesDataGridViewTextBoxColumn.DataPropertyName = "ExtraCharges";
-            this.extraChargesDataGridViewTextBoxColumn.HeaderText = "ExtraCharges";
-            this.extraChargesDataGridViewTextBoxColumn.Name = "extraChargesDataGridViewTextBoxColumn";
-            this.extraChargesDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // subTotalDataGridViewTextBoxColumn
-            // 
-            this.subTotalDataGridViewTextBoxColumn.DataPropertyName = "SubTotal";
-            this.subTotalDataGridViewTextBoxColumn.HeaderText = "SubTotal";
-            this.subTotalDataGridViewTextBoxColumn.Name = "subTotalDataGridViewTextBoxColumn";
-            this.subTotalDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // startDateDataGridViewTextBoxColumn
-            // 
-            this.startDateDataGridViewTextBoxColumn.DataPropertyName = "StartDate";
-            this.startDateDataGridViewTextBoxColumn.HeaderText = "StartDate";
-            this.startDateDataGridViewTextBoxColumn.Name = "startDateDataGridViewTextBoxColumn";
-            this.startDateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // validationDayDataGridViewTextBoxColumn
-            // 
-            this.validationDayDataGridViewTextBoxColumn.DataPropertyName = "ValidationDay";
-            this.validationDayDataGridViewTextBoxColumn.HeaderText = "ValidationDay";
-            this.validationDayDataGridViewTextBoxColumn.Name = "validationDayDataGridViewTextBoxColumn";
-            this.validationDayDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // paymentIDDataGridViewTextBoxColumn
-            // 
-            this.paymentIDDataGridViewTextBoxColumn.DataPropertyName = "PaymentID";
-            this.paymentIDDataGridViewTextBoxColumn.HeaderText = "PaymentID";
-            this.paymentIDDataGridViewTextBoxColumn.Name = "paymentIDDataGridViewTextBoxColumn";
-            this.paymentIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // currDataGridViewTextBoxColumn
-            // 
-            this.currDataGridViewTextBoxColumn.DataPropertyName = "Curr";
-            this.currDataGridViewTextBoxColumn.HeaderText = "Curr";
-            this.currDataGridViewTextBoxColumn.Name = "currDataGridViewTextBoxColumn";
-            this.currDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // factorDataGridViewTextBoxColumn
-            // 
-            this.factorDataGridViewTextBoxColumn.DataPropertyName = "Factor";
-            this.factorDataGridViewTextBoxColumn.HeaderText = "Factor";
-            this.factorDataGridViewTextBoxColumn.Name = "factorDataGridViewTextBoxColumn";
-            this.factorDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // isVatValueDataGridViewTextBoxColumn
-            // 
-            this.isVatValueDataGridViewTextBoxColumn.DataPropertyName = "IsVatValue";
-            this.isVatValueDataGridViewTextBoxColumn.HeaderText = "IsVatValue";
-            this.isVatValueDataGridViewTextBoxColumn.Name = "isVatValueDataGridViewTextBoxColumn";
-            this.isVatValueDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // vatValueDataGridViewTextBoxColumn
-            // 
-            this.vatValueDataGridViewTextBoxColumn.DataPropertyName = "VatValue";
-            this.vatValueDataGridViewTextBoxColumn.HeaderText = "VatValue";
-            this.vatValueDataGridViewTextBoxColumn.Name = "vatValueDataGridViewTextBoxColumn";
-            this.vatValueDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // currNameDataGridViewTextBoxColumn
-            // 
-            this.currNameDataGridViewTextBoxColumn.DataPropertyName = "CurrName";
-            this.currNameDataGridViewTextBoxColumn.HeaderText = "CurrName";
-            this.currNameDataGridViewTextBoxColumn.Name = "currNameDataGridViewTextBoxColumn";
-            this.currNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // rFQNoDataGridViewTextBoxColumn
-            // 
-            this.rFQNoDataGridViewTextBoxColumn.DataPropertyName = "RFQNo";
-            this.rFQNoDataGridViewTextBoxColumn.HeaderText = "RFQNo";
-            this.rFQNoDataGridViewTextBoxColumn.Name = "rFQNoDataGridViewTextBoxColumn";
-            this.rFQNoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // currTypeDataGridViewTextBoxColumn
-            // 
-            this.currTypeDataGridViewTextBoxColumn.DataPropertyName = "CurrType";
-            this.currTypeDataGridViewTextBoxColumn.HeaderText = "CurrType";
-            this.currTypeDataGridViewTextBoxColumn.Name = "currTypeDataGridViewTextBoxColumn";
-            this.currTypeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // quotationMainContactDataGridViewTextBoxColumn
-            // 
-            this.quotationMainContactDataGridViewTextBoxColumn.DataPropertyName = "QuotationMainContact";
-            this.quotationMainContactDataGridViewTextBoxColumn.HeaderText = "QuotationMainContact";
-            this.quotationMainContactDataGridViewTextBoxColumn.Name = "quotationMainContactDataGridViewTextBoxColumn";
-            this.quotationMainContactDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // noteDataGridViewTextBoxColumn
-            // 
-            this.noteDataGridViewTextBoxColumn.DataPropertyName = "Note";
-            this.noteDataGridViewTextBoxColumn.HeaderText = "Note";
-            this.noteDataGridViewTextBoxColumn.Name = "noteDataGridViewTextBoxColumn";
-            this.noteDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // note1DataGridViewTextBoxColumn
-            // 
-            this.note1DataGridViewTextBoxColumn.DataPropertyName = "Note1";
-            this.note1DataGridViewTextBoxColumn.HeaderText = "Note1";
-            this.note1DataGridViewTextBoxColumn.Name = "note1DataGridViewTextBoxColumn";
-            this.note1DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // quotationBindingSource
-            // 
-            this.quotationBindingSource.DataSource = typeof(LoginForm.DataSet.Quotation);
             // 
             // groupBox2
             // 
@@ -518,13 +277,13 @@
             this.tableLayoutPanel5.Controls.Add(this.dgItems, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.panel3, 0, 1);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 17);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 14);
             this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 93F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(935, 237);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(935, 240);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
             // dgItems
@@ -538,31 +297,15 @@
             this.dgItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.chk,
             this.ID,
-            this.dgNoDataGridViewTextBoxColumn,
-            this.itemCodeDataGridViewTextBoxColumn,
-            this.qtyDataGridViewTextBoxColumn,
-            this.discDataGridViewTextBoxColumn,
-            this.totalDataGridViewTextBoxColumn,
             this.dgCost,
-            this.dgLandingCost,
-            this.uCUPCurrDataGridViewTextBoxColumn,
-            this.targetUPDataGridViewTextBoxColumn,
-            this.competitorDataGridViewTextBoxColumn,
-            this.customerDescriptionDataGridViewTextBoxColumn,
-            this.customerStockCodeDataGridViewTextBoxColumn,
-            this.isDeletedDataGridViewTextBoxColumn,
-            this.quotationNoDataGridViewTextBoxColumn,
-            this.uPIMEDataGridViewTextBoxColumn,
-            this.margeDataGridViewTextBoxColumn,
-            this.unitOfMeasureDataGridViewTextBoxColumn,
-            this.quotationDataGridViewTextBoxColumn});
+            this.dgLandingCost});
             this.dgItems.DataSource = this.quotationDetailBindingSource;
             this.dgItems.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgItems.Location = new System.Drawing.Point(3, 3);
             this.dgItems.Name = "dgItems";
             this.dgItems.RowTemplate.Height = 24;
             this.dgItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgItems.Size = new System.Drawing.Size(929, 138);
+            this.dgItems.Size = new System.Drawing.Size(929, 141);
             this.dgItems.TabIndex = 0;
             // 
             // chk
@@ -570,7 +313,7 @@
             this.chk.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.chk.HeaderText = "Choose";
             this.chk.Name = "chk";
-            this.chk.Width = 67;
+            this.chk.Width = 55;
             // 
             // ID
             // 
@@ -578,41 +321,6 @@
             this.ID.HeaderText = "ID";
             this.ID.Name = "ID";
             this.ID.Visible = false;
-            // 
-            // dgNoDataGridViewTextBoxColumn
-            // 
-            this.dgNoDataGridViewTextBoxColumn.DataPropertyName = "dgNo";
-            this.dgNoDataGridViewTextBoxColumn.HeaderText = "dgNo";
-            this.dgNoDataGridViewTextBoxColumn.Name = "dgNoDataGridViewTextBoxColumn";
-            this.dgNoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // itemCodeDataGridViewTextBoxColumn
-            // 
-            this.itemCodeDataGridViewTextBoxColumn.DataPropertyName = "ItemCode";
-            this.itemCodeDataGridViewTextBoxColumn.HeaderText = "ItemCode";
-            this.itemCodeDataGridViewTextBoxColumn.Name = "itemCodeDataGridViewTextBoxColumn";
-            this.itemCodeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // qtyDataGridViewTextBoxColumn
-            // 
-            this.qtyDataGridViewTextBoxColumn.DataPropertyName = "Qty";
-            this.qtyDataGridViewTextBoxColumn.HeaderText = "Qty";
-            this.qtyDataGridViewTextBoxColumn.Name = "qtyDataGridViewTextBoxColumn";
-            this.qtyDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // discDataGridViewTextBoxColumn
-            // 
-            this.discDataGridViewTextBoxColumn.DataPropertyName = "Disc";
-            this.discDataGridViewTextBoxColumn.HeaderText = "Disc";
-            this.discDataGridViewTextBoxColumn.Name = "discDataGridViewTextBoxColumn";
-            this.discDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // totalDataGridViewTextBoxColumn
-            // 
-            this.totalDataGridViewTextBoxColumn.DataPropertyName = "Total";
-            this.totalDataGridViewTextBoxColumn.HeaderText = "Total";
-            this.totalDataGridViewTextBoxColumn.Name = "totalDataGridViewTextBoxColumn";
-            this.totalDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // dgCost
             // 
@@ -626,87 +334,6 @@
             this.dgLandingCost.HeaderText = "LandingCost";
             this.dgLandingCost.Name = "dgLandingCost";
             // 
-            // uCUPCurrDataGridViewTextBoxColumn
-            // 
-            this.uCUPCurrDataGridViewTextBoxColumn.DataPropertyName = "UCUPCurr";
-            this.uCUPCurrDataGridViewTextBoxColumn.HeaderText = "UCUPCurr";
-            this.uCUPCurrDataGridViewTextBoxColumn.Name = "uCUPCurrDataGridViewTextBoxColumn";
-            this.uCUPCurrDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // targetUPDataGridViewTextBoxColumn
-            // 
-            this.targetUPDataGridViewTextBoxColumn.DataPropertyName = "TargetUP";
-            this.targetUPDataGridViewTextBoxColumn.HeaderText = "TargetUP";
-            this.targetUPDataGridViewTextBoxColumn.Name = "targetUPDataGridViewTextBoxColumn";
-            this.targetUPDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // competitorDataGridViewTextBoxColumn
-            // 
-            this.competitorDataGridViewTextBoxColumn.DataPropertyName = "Competitor";
-            this.competitorDataGridViewTextBoxColumn.HeaderText = "Competitor";
-            this.competitorDataGridViewTextBoxColumn.Name = "competitorDataGridViewTextBoxColumn";
-            this.competitorDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // customerDescriptionDataGridViewTextBoxColumn
-            // 
-            this.customerDescriptionDataGridViewTextBoxColumn.DataPropertyName = "CustomerDescription";
-            this.customerDescriptionDataGridViewTextBoxColumn.HeaderText = "CustomerDescription";
-            this.customerDescriptionDataGridViewTextBoxColumn.Name = "customerDescriptionDataGridViewTextBoxColumn";
-            this.customerDescriptionDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // customerStockCodeDataGridViewTextBoxColumn
-            // 
-            this.customerStockCodeDataGridViewTextBoxColumn.DataPropertyName = "CustomerStockCode";
-            this.customerStockCodeDataGridViewTextBoxColumn.HeaderText = "CustomerStockCode";
-            this.customerStockCodeDataGridViewTextBoxColumn.Name = "customerStockCodeDataGridViewTextBoxColumn";
-            this.customerStockCodeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // isDeletedDataGridViewTextBoxColumn
-            // 
-            this.isDeletedDataGridViewTextBoxColumn.DataPropertyName = "IsDeleted";
-            this.isDeletedDataGridViewTextBoxColumn.HeaderText = "IsDeleted";
-            this.isDeletedDataGridViewTextBoxColumn.Name = "isDeletedDataGridViewTextBoxColumn";
-            this.isDeletedDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // quotationNoDataGridViewTextBoxColumn
-            // 
-            this.quotationNoDataGridViewTextBoxColumn.DataPropertyName = "QuotationNo";
-            this.quotationNoDataGridViewTextBoxColumn.HeaderText = "QuotationNo";
-            this.quotationNoDataGridViewTextBoxColumn.Name = "quotationNoDataGridViewTextBoxColumn";
-            this.quotationNoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // uPIMEDataGridViewTextBoxColumn
-            // 
-            this.uPIMEDataGridViewTextBoxColumn.DataPropertyName = "UPIME";
-            this.uPIMEDataGridViewTextBoxColumn.HeaderText = "UPIME";
-            this.uPIMEDataGridViewTextBoxColumn.Name = "uPIMEDataGridViewTextBoxColumn";
-            this.uPIMEDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // margeDataGridViewTextBoxColumn
-            // 
-            this.margeDataGridViewTextBoxColumn.DataPropertyName = "Marge";
-            this.margeDataGridViewTextBoxColumn.HeaderText = "Marge";
-            this.margeDataGridViewTextBoxColumn.Name = "margeDataGridViewTextBoxColumn";
-            this.margeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // unitOfMeasureDataGridViewTextBoxColumn
-            // 
-            this.unitOfMeasureDataGridViewTextBoxColumn.DataPropertyName = "UnitOfMeasure";
-            this.unitOfMeasureDataGridViewTextBoxColumn.HeaderText = "UnitOfMeasure";
-            this.unitOfMeasureDataGridViewTextBoxColumn.Name = "unitOfMeasureDataGridViewTextBoxColumn";
-            this.unitOfMeasureDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // quotationDataGridViewTextBoxColumn
-            // 
-            this.quotationDataGridViewTextBoxColumn.DataPropertyName = "Quotation";
-            this.quotationDataGridViewTextBoxColumn.HeaderText = "Quotation";
-            this.quotationDataGridViewTextBoxColumn.Name = "quotationDataGridViewTextBoxColumn";
-            this.quotationDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // quotationDetailBindingSource
-            // 
-            this.quotationDetailBindingSource.DataSource = typeof(LoginForm.DataSet.QuotationDetail);
-            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.label3);
@@ -714,7 +341,7 @@
             this.panel3.Controls.Add(this.btnClear);
             this.panel3.Controls.Add(this.btnSelect);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(3, 147);
+            this.panel3.Location = new System.Drawing.Point(3, 150);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(929, 87);
             this.panel3.TabIndex = 1;
@@ -722,18 +349,18 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(81, 51);
+            this.label3.Location = new System.Drawing.Point(81, 60);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(62, 18);
+            this.label3.Size = new System.Drawing.Size(52, 15);
             this.label3.TabIndex = 23;
             this.label3.Text = "Clear All";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 51);
+            this.label4.Location = new System.Drawing.Point(3, 60);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 18);
+            this.label4.Size = new System.Drawing.Size(57, 15);
             this.label4.TabIndex = 22;
             this.label4.Text = "Select All";
             // 
@@ -742,9 +369,9 @@
             this.btnClear.Image = global::LoginForm.Properties.Resources.if_Line_ui_icons_Svg_03_1465842;
             this.btnClear.Location = new System.Drawing.Point(80, 3);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(52, 45);
+            this.btnClear.Size = new System.Drawing.Size(52, 52);
             this.btnClear.TabIndex = 21;
-            this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnSelect
@@ -752,14 +379,14 @@
             this.btnSelect.Image = global::LoginForm.Properties.Resources.if_Select_46755;
             this.btnSelect.Location = new System.Drawing.Point(0, 3);
             this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(52, 45);
+            this.btnSelect.Size = new System.Drawing.Size(52, 52);
             this.btnSelect.TabIndex = 20;
-            this.btnSelect.UseVisualStyleBackColor = false;
+            this.btnSelect.UseVisualStyleBackColor = true;
             this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
             // FormSaleOrderCreate
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.ClientSize = new System.Drawing.Size(1281, 606);

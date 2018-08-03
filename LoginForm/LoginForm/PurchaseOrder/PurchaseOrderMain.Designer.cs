@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.radioNotSent = new System.Windows.Forms.RadioButton();
@@ -58,7 +59,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgPurchase)).BeginInit();
@@ -82,10 +82,19 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(1291, 53);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(41, 13);
+            this.label8.TabIndex = 17;
+            this.label8.Text = "Search";
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(605, 69);
+            this.label3.Location = new System.Drawing.Point(610, 69);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 13);
             this.label3.TabIndex = 16;
@@ -143,7 +152,7 @@
             this.btnPurchaseOrders.Image = global::LoginForm.Properties.Resources.icons8_Refresh_32;
             this.btnPurchaseOrders.Location = new System.Drawing.Point(1284, 2);
             this.btnPurchaseOrders.Name = "btnPurchaseOrders";
-            this.btnPurchaseOrders.Size = new System.Drawing.Size(54, 48);
+            this.btnPurchaseOrders.Size = new System.Drawing.Size(52, 52);
             this.btnPurchaseOrders.TabIndex = 14;
             this.btnPurchaseOrders.UseVisualStyleBackColor = true;
             this.btnPurchaseOrders.Click += new System.EventHandler(this.btnPurchaseOrders_Click);
@@ -191,9 +200,9 @@
             // btnSearch
             // 
             this.btnSearch.Image = global::LoginForm.Properties.Resources.if_search_magnifying_glass_find_103857;
-            this.btnSearch.Location = new System.Drawing.Point(603, 13);
+            this.btnSearch.Location = new System.Drawing.Point(608, 13);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(44, 47);
+            this.btnSearch.Size = new System.Drawing.Size(52, 52);
             this.btnSearch.TabIndex = 9;
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -330,7 +339,7 @@
             this.btnClose.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
             this.btnClose.Location = new System.Drawing.Point(1310, 587);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(48, 42);
+            this.btnClose.Size = new System.Drawing.Size(52, 52);
             this.btnClose.TabIndex = 12;
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -340,7 +349,7 @@
             this.btnExcel.Image = global::LoginForm.Properties.Resources.if_Document_file_export_sending_exit_send_1886950;
             this.btnExcel.Location = new System.Drawing.Point(1126, 587);
             this.btnExcel.Name = "btnExcel";
-            this.btnExcel.Size = new System.Drawing.Size(59, 42);
+            this.btnExcel.Size = new System.Drawing.Size(52, 52);
             this.btnExcel.TabIndex = 11;
             this.btnExcel.UseVisualStyleBackColor = true;
             this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
@@ -350,7 +359,7 @@
             this.btnCreate.Image = global::LoginForm.Properties.Resources.icons8_Plus_32;
             this.btnCreate.Location = new System.Drawing.Point(1040, 587);
             this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(48, 42);
+            this.btnCreate.Size = new System.Drawing.Size(52, 52);
             this.btnCreate.TabIndex = 10;
             this.btnCreate.UseVisualStyleBackColor = true;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
@@ -360,14 +369,14 @@
             this.btnPrint.Image = global::LoginForm.Properties.Resources.if_print_173079;
             this.btnPrint.Location = new System.Drawing.Point(1225, 587);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(45, 42);
+            this.btnPrint.Size = new System.Drawing.Size(52, 52);
             this.btnPrint.TabIndex = 13;
             this.btnPrint.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1052, 632);
+            this.label4.Location = new System.Drawing.Point(1053, 642);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(26, 13);
             this.label4.TabIndex = 17;
@@ -376,7 +385,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(1137, 632);
+            this.label5.Location = new System.Drawing.Point(1137, 640);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(33, 13);
             this.label5.TabIndex = 18;
@@ -385,7 +394,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(1236, 632);
+            this.label6.Location = new System.Drawing.Point(1236, 640);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(28, 13);
             this.label6.TabIndex = 19;
@@ -394,27 +403,18 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(1317, 632);
+            this.label7.Location = new System.Drawing.Point(1317, 640);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(33, 13);
             this.label7.TabIndex = 20;
             this.label7.Text = "Close";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(1291, 53);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(41, 13);
-            this.label8.TabIndex = 17;
-            this.label8.Text = "Search";
             // 
             // PurchaseOrderMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
-            this.ClientSize = new System.Drawing.Size(1370, 651);
+            this.ClientSize = new System.Drawing.Size(1370, 662);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);

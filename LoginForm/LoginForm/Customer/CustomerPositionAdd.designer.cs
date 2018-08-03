@@ -59,7 +59,7 @@
             this.button1.Image = global::LoginForm.Properties.Resources.icons8_Plus_32;
             this.button1.Location = new System.Drawing.Point(88, 81);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(50, 45);
+            this.button1.Size = new System.Drawing.Size(52, 52);
             this.button1.TabIndex = 2;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -69,7 +69,7 @@
             this.button2.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
             this.button2.Location = new System.Drawing.Point(164, 81);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(50, 45);
+            this.button2.Size = new System.Drawing.Size(52, 52);
             this.button2.TabIndex = 2;
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -95,7 +95,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(94, 129);
+            this.label2.Location = new System.Drawing.Point(94, 134);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(26, 13);
             this.label2.TabIndex = 4;
@@ -104,7 +104,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(170, 129);
+            this.label3.Location = new System.Drawing.Point(170, 134);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(40, 13);
             this.label3.TabIndex = 5;

@@ -292,18 +292,16 @@
             this.label48 = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.label69 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.label68 = new System.Windows.Forms.Label();
-            this.btnCreateRev = new System.Windows.Forms.Button();
-            this.label67 = new System.Windows.Forms.Label();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.LandingCost = new System.Windows.Forms.GroupBox();
-            this.ckCustomsDuties = new System.Windows.Forms.CheckBox();
-            this.ckWeightCost = new System.Windows.Forms.CheckBox();
-            this.ckItemCost = new System.Windows.Forms.CheckBox();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.label42 = new System.Windows.Forms.Label();
             this.cbDeliverDiscount = new System.Windows.Forms.CheckBox();
             this.lblTotalExtra = new System.Windows.Forms.Label();
@@ -323,12 +321,19 @@
             this.lblGrossTotal = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
+            this.btnCreateRev = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.chkbForFinance = new System.Windows.Forms.CheckBox();
             this.txtNoteForUs = new System.Windows.Forms.TextBox();
+            this.label67 = new System.Windows.Forms.Label();
             this.gbShipment = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.LandingCost = new System.Windows.Forms.GroupBox();
+            this.ckCustomsDuties = new System.Windows.Forms.CheckBox();
+            this.ckWeightCost = new System.Windows.Forms.CheckBox();
+            this.ckItemCost = new System.Windows.Forms.CheckBox();
             this.cbSMethod = new System.Windows.Forms.ComboBox();
+            this.btnClose = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtNoteForCustomer = new System.Windows.Forms.TextBox();
             this.tooltip = new System.Windows.Forms.ToolTip(this.components);
@@ -347,11 +352,10 @@
             this.tabItemDetails.SuspendLayout();
             this.gbCost.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.LandingCost.SuspendLayout();
             this.groupBox11.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.gbShipment.SuspendLayout();
+            this.LandingCost.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -369,7 +373,7 @@
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 180F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 138F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 172F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1220, 675);
@@ -394,8 +398,8 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel2);
             this.splitContainer1.Panel2MinSize = 130;
-            this.splitContainer1.Size = new System.Drawing.Size(1208, 345);
-            this.splitContainer1.SplitterDistance = 176;
+            this.splitContainer1.Size = new System.Drawing.Size(1208, 311);
+            this.splitContainer1.SplitterDistance = 158;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 57;
             // 
@@ -448,7 +452,7 @@
             this.dgQuotationAddedItems.Location = new System.Drawing.Point(0, 0);
             this.dgQuotationAddedItems.MultiSelect = false;
             this.dgQuotationAddedItems.Name = "dgQuotationAddedItems";
-            this.dgQuotationAddedItems.Size = new System.Drawing.Size(1204, 172);
+            this.dgQuotationAddedItems.Size = new System.Drawing.Size(1204, 154);
             this.dgQuotationAddedItems.TabIndex = 9;
             this.dgQuotationAddedItems.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgQuotationAddedItems_CellEndEdit);
             this.dgQuotationAddedItems.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgQuotationAddedItems_CellValidating);
@@ -852,7 +856,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1204, 160);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1204, 144);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // dgQuotationDeleted
@@ -899,7 +903,7 @@
             this.dgQuotationDeleted.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgQuotationDeleted.Location = new System.Drawing.Point(3, 52);
             this.dgQuotationDeleted.Name = "dgQuotationDeleted";
-            this.dgQuotationDeleted.Size = new System.Drawing.Size(1198, 105);
+            this.dgQuotationDeleted.Size = new System.Drawing.Size(1198, 89);
             this.dgQuotationDeleted.TabIndex = 10;
             this.dgQuotationDeleted.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgQuotationDeleted_CellValidating);
             this.dgQuotationDeleted.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView2_MouseClick);
@@ -1374,7 +1378,7 @@
             // label70
             // 
             this.label70.AutoSize = true;
-            this.label70.Location = new System.Drawing.Point(488, 57);
+            this.label70.Location = new System.Drawing.Point(486, 64);
             this.label70.Name = "label70";
             this.label70.Size = new System.Drawing.Size(34, 13);
             this.label70.TabIndex = 79;
@@ -1405,7 +1409,7 @@
             this.btnViewMore.Location = new System.Drawing.Point(480, 9);
             this.btnViewMore.Margin = new System.Windows.Forms.Padding(2);
             this.btnViewMore.Name = "btnViewMore";
-            this.btnViewMore.Size = new System.Drawing.Size(52, 45);
+            this.btnViewMore.Size = new System.Drawing.Size(52, 52);
             this.btnViewMore.TabIndex = 76;
             this.btnViewMore.UseVisualStyleBackColor = false;
             this.btnViewMore.Click += new System.EventHandler(this.btnViewMore_Click);
@@ -2771,38 +2775,28 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.LandingCost);
+            this.panel1.Controls.Add(this.label69);
+            this.panel1.Controls.Add(this.btnSave);
+            this.panel1.Controls.Add(this.label68);
             this.panel1.Controls.Add(this.groupBox11);
+            this.panel1.Controls.Add(this.btnCreateRev);
             this.panel1.Controls.Add(this.groupBox7);
+            this.panel1.Controls.Add(this.label67);
             this.panel1.Controls.Add(this.gbShipment);
+            this.panel1.Controls.Add(this.btnClose);
             this.panel1.Controls.Add(this.groupBox3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(2, 539);
+            this.panel1.Location = new System.Drawing.Point(2, 505);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1216, 134);
+            this.panel1.Size = new System.Drawing.Size(1216, 168);
             this.panel1.TabIndex = 58;
-            // 
-            // panel3
-            // 
-            this.panel3.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel3.Controls.Add(this.label69);
-            this.panel3.Controls.Add(this.btnSave);
-            this.panel3.Controls.Add(this.label68);
-            this.panel3.Controls.Add(this.btnCreateRev);
-            this.panel3.Controls.Add(this.label67);
-            this.panel3.Controls.Add(this.btnClose);
-            this.panel3.Location = new System.Drawing.Point(1078, 3);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(134, 126);
-            this.panel3.TabIndex = 0;
             // 
             // label69
             // 
+            this.label69.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label69.AutoSize = true;
-            this.label69.Location = new System.Drawing.Point(48, 109);
+            this.label69.Location = new System.Drawing.Point(1160, 145);
             this.label69.Name = "label69";
             this.label69.Size = new System.Drawing.Size(33, 13);
             this.label69.TabIndex = 59;
@@ -2812,106 +2806,31 @@
             // 
             this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnSave.Image = global::LoginForm.Properties.Resources.if_floppy_285657;
-            this.btnSave.Location = new System.Drawing.Point(4, 1);
+            this.btnSave.Location = new System.Drawing.Point(1038, 91);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(52, 45);
+            this.btnSave.Size = new System.Drawing.Size(52, 52);
             this.btnSave.TabIndex = 54;
             this.btnSave.UseVisualStyleBackColor = false;
             // 
             // label68
             // 
+            this.label68.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label68.AutoSize = true;
-            this.label68.Location = new System.Drawing.Point(71, 46);
+            this.label68.Location = new System.Drawing.Point(1088, 145);
             this.label68.Name = "label68";
             this.label68.Size = new System.Drawing.Size(64, 13);
             this.label68.TabIndex = 58;
             this.label68.Text = "Create Rev.";
             // 
-            // btnCreateRev
-            // 
-            this.btnCreateRev.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnCreateRev.Image = global::LoginForm.Properties.Resources.icons8_Plus_32;
-            this.btnCreateRev.Location = new System.Drawing.Point(75, 1);
-            this.btnCreateRev.Name = "btnCreateRev";
-            this.btnCreateRev.Size = new System.Drawing.Size(52, 45);
-            this.btnCreateRev.TabIndex = 56;
-            this.btnCreateRev.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnCreateRev.UseVisualStyleBackColor = false;
-            // 
-            // label67
-            // 
-            this.label67.AutoSize = true;
-            this.label67.Location = new System.Drawing.Point(12, 45);
-            this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(32, 13);
-            this.label67.TabIndex = 57;
-            this.label67.Text = "Save";
-            // 
-            // btnClose
-            // 
-            this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnClose.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
-            this.btnClose.Location = new System.Drawing.Point(39, 64);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(52, 45);
-            this.btnClose.TabIndex = 55;
-            this.btnClose.UseVisualStyleBackColor = false;
-            // 
-            // LandingCost
-            // 
-            this.LandingCost.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.LandingCost.Controls.Add(this.ckCustomsDuties);
-            this.LandingCost.Controls.Add(this.ckWeightCost);
-            this.LandingCost.Controls.Add(this.ckItemCost);
-            this.LandingCost.Location = new System.Drawing.Point(666, 15);
-            this.LandingCost.Name = "LandingCost";
-            this.LandingCost.Size = new System.Drawing.Size(111, 120);
-            this.LandingCost.TabIndex = 50;
-            this.LandingCost.TabStop = false;
-            this.LandingCost.Text = "Landing Cost";
-            // 
-            // ckCustomsDuties
-            // 
-            this.ckCustomsDuties.AutoSize = true;
-            this.ckCustomsDuties.Checked = true;
-            this.ckCustomsDuties.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckCustomsDuties.Location = new System.Drawing.Point(6, 92);
-            this.ckCustomsDuties.Name = "ckCustomsDuties";
-            this.ckCustomsDuties.Size = new System.Drawing.Size(99, 17);
-            this.ckCustomsDuties.TabIndex = 12;
-            this.ckCustomsDuties.Text = "Customs Duties";
-            this.ckCustomsDuties.UseVisualStyleBackColor = true;
-            this.ckCustomsDuties.CheckedChanged += new System.EventHandler(this.ckItemCost_CheckedChanged);
-            // 
-            // ckWeightCost
-            // 
-            this.ckWeightCost.AutoSize = true;
-            this.ckWeightCost.Checked = true;
-            this.ckWeightCost.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckWeightCost.Location = new System.Drawing.Point(6, 56);
-            this.ckWeightCost.Name = "ckWeightCost";
-            this.ckWeightCost.Size = new System.Drawing.Size(84, 17);
-            this.ckWeightCost.TabIndex = 11;
-            this.ckWeightCost.Text = "Weight Cost";
-            this.ckWeightCost.UseVisualStyleBackColor = true;
-            this.ckWeightCost.CheckedChanged += new System.EventHandler(this.ckItemCost_CheckedChanged);
-            // 
-            // ckItemCost
-            // 
-            this.ckItemCost.AutoSize = true;
-            this.ckItemCost.Checked = true;
-            this.ckItemCost.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckItemCost.Location = new System.Drawing.Point(6, 20);
-            this.ckItemCost.Name = "ckItemCost";
-            this.ckItemCost.Size = new System.Drawing.Size(70, 17);
-            this.ckItemCost.TabIndex = 10;
-            this.ckItemCost.Text = "Item Cost";
-            this.ckItemCost.UseVisualStyleBackColor = true;
-            this.ckItemCost.CheckedChanged += new System.EventHandler(this.ckItemCost_CheckedChanged);
-            // 
             // groupBox11
             // 
             this.groupBox11.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.groupBox11.Controls.Add(this.panel9);
+            this.groupBox11.Controls.Add(this.panel8);
+            this.groupBox11.Controls.Add(this.panel7);
+            this.groupBox11.Controls.Add(this.panel6);
+            this.groupBox11.Controls.Add(this.panel5);
+            this.groupBox11.Controls.Add(this.panel4);
             this.groupBox11.Controls.Add(this.label42);
             this.groupBox11.Controls.Add(this.cbDeliverDiscount);
             this.groupBox11.Controls.Add(this.lblTotalExtra);
@@ -2932,16 +2851,64 @@
             this.groupBox11.Controls.Add(this.label39);
             this.groupBox11.Controls.Add(this.label34);
             this.groupBox11.ForeColor = System.Drawing.Color.Black;
-            this.groupBox11.Location = new System.Drawing.Point(777, 6);
+            this.groupBox11.Location = new System.Drawing.Point(669, 7);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(301, 123);
+            this.groupBox11.Size = new System.Drawing.Size(330, 154);
             this.groupBox11.TabIndex = 49;
             this.groupBox11.TabStop = false;
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.Color.DarkGray;
+            this.panel9.Location = new System.Drawing.Point(8, 135);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(240, 2);
+            this.panel9.TabIndex = 72;
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.DarkGray;
+            this.panel8.Location = new System.Drawing.Point(8, 111);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(240, 2);
+            this.panel8.TabIndex = 71;
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.DarkGray;
+            this.panel7.Location = new System.Drawing.Point(11, 92);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(240, 2);
+            this.panel7.TabIndex = 70;
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.DarkGray;
+            this.panel6.Location = new System.Drawing.Point(11, 71);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(240, 2);
+            this.panel6.TabIndex = 69;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.DarkGray;
+            this.panel5.Location = new System.Drawing.Point(11, 46);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(240, 2);
+            this.panel5.TabIndex = 68;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.DarkGray;
+            this.panel4.Location = new System.Drawing.Point(9, 27);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(240, 2);
+            this.panel4.TabIndex = 67;
             // 
             // label42
             // 
             this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(231, 13);
+            this.label42.Location = new System.Drawing.Point(12, 116);
             this.label42.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(66, 13);
@@ -2950,9 +2917,9 @@
             // 
             // cbDeliverDiscount
             // 
-            this.cbDeliverDiscount.Location = new System.Drawing.Point(225, 55);
+            this.cbDeliverDiscount.Location = new System.Drawing.Point(9, 135);
             this.cbDeliverDiscount.Name = "cbDeliverDiscount";
-            this.cbDeliverDiscount.Size = new System.Drawing.Size(70, 32);
+            this.cbDeliverDiscount.Size = new System.Drawing.Size(131, 25);
             this.cbDeliverDiscount.TabIndex = 58;
             this.cbDeliverDiscount.Text = "Distribute Discount";
             this.cbDeliverDiscount.UseVisualStyleBackColor = true;
@@ -2962,7 +2929,7 @@
             // lblTotalExtra
             // 
             this.lblTotalExtra.AutoSize = true;
-            this.lblTotalExtra.Location = new System.Drawing.Point(178, 57);
+            this.lblTotalExtra.Location = new System.Drawing.Point(198, 52);
             this.lblTotalExtra.Name = "lblTotalExtra";
             this.lblTotalExtra.Size = new System.Drawing.Size(28, 13);
             this.lblTotalExtra.TabIndex = 57;
@@ -2980,10 +2947,10 @@
             // lblVat
             // 
             this.lblVat.AutoSize = true;
-            this.lblVat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblVat.Location = new System.Drawing.Point(85, 75);
+            this.lblVat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblVat.Location = new System.Drawing.Point(104, 75);
             this.lblVat.Name = "lblVat";
-            this.lblVat.Size = new System.Drawing.Size(22, 16);
+            this.lblVat.Size = new System.Drawing.Size(24, 16);
             this.lblVat.TabIndex = 55;
             this.lblVat.Text = "40";
             // 
@@ -2991,7 +2958,7 @@
             // 
             this.label40.AutoSize = true;
             this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label40.Location = new System.Drawing.Point(114, 76);
+            this.label40.Location = new System.Drawing.Point(136, 75);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(20, 16);
             this.label40.TabIndex = 54;
@@ -3000,7 +2967,7 @@
             // lbltotal
             // 
             this.lbltotal.AutoSize = true;
-            this.lbltotal.Location = new System.Drawing.Point(178, 38);
+            this.lbltotal.Location = new System.Drawing.Point(200, 30);
             this.lbltotal.Name = "lbltotal";
             this.lbltotal.Size = new System.Drawing.Size(28, 13);
             this.lbltotal.TabIndex = 53;
@@ -3010,7 +2977,7 @@
             // label52
             // 
             this.label52.AutoSize = true;
-            this.label52.Location = new System.Drawing.Point(8, 35);
+            this.label52.Location = new System.Drawing.Point(8, 30);
             this.label52.Name = "label52";
             this.label52.Size = new System.Drawing.Size(31, 13);
             this.label52.TabIndex = 52;
@@ -3020,7 +2987,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label4.Location = new System.Drawing.Point(148, 17);
+            this.label4.Location = new System.Drawing.Point(148, 3);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(20, 16);
             this.label4.TabIndex = 23;
@@ -3028,7 +2995,7 @@
             // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(9, 53);
+            this.textBox7.Location = new System.Drawing.Point(8, 49);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(77, 20);
             this.textBox7.TabIndex = 21;
@@ -3036,7 +3003,7 @@
             // 
             // txtExtraChanges
             // 
-            this.txtExtraChanges.Location = new System.Drawing.Point(96, 52);
+            this.txtExtraChanges.Location = new System.Drawing.Point(96, 49);
             this.txtExtraChanges.Name = "txtExtraChanges";
             this.txtExtraChanges.Size = new System.Drawing.Size(50, 20);
             this.txtExtraChanges.TabIndex = 20;
@@ -3048,7 +3015,7 @@
             // lblVatTotal
             // 
             this.lblVatTotal.AutoSize = true;
-            this.lblVatTotal.Location = new System.Drawing.Point(178, 78);
+            this.lblVatTotal.Location = new System.Drawing.Point(198, 76);
             this.lblVatTotal.Name = "lblVatTotal";
             this.lblVatTotal.Size = new System.Drawing.Size(28, 13);
             this.lblVatTotal.TabIndex = 18;
@@ -3058,16 +3025,16 @@
             // txtTotalMarge
             // 
             this.txtTotalMarge.Enabled = false;
-            this.txtTotalMarge.Location = new System.Drawing.Point(233, 30);
+            this.txtTotalMarge.Location = new System.Drawing.Point(180, 114);
             this.txtTotalMarge.Name = "txtTotalMarge";
-            this.txtTotalMarge.Size = new System.Drawing.Size(64, 20);
+            this.txtTotalMarge.Size = new System.Drawing.Size(54, 20);
             this.txtTotalMarge.TabIndex = 15;
             this.txtTotalMarge.Visible = false;
             this.txtTotalMarge.Leave += new System.EventHandler(this.txtTotalDis2_Leave);
             // 
             // txtTotalDis2
             // 
-            this.txtTotalDis2.Location = new System.Drawing.Point(174, 16);
+            this.txtTotalDis2.Location = new System.Drawing.Point(179, 5);
             this.txtTotalDis2.Name = "txtTotalDis2";
             this.txtTotalDis2.Size = new System.Drawing.Size(54, 20);
             this.txtTotalDis2.TabIndex = 15;
@@ -3078,7 +3045,7 @@
             this.chkVat.AutoSize = true;
             this.chkVat.Checked = true;
             this.chkVat.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkVat.Location = new System.Drawing.Point(9, 77);
+            this.chkVat.Location = new System.Drawing.Point(11, 75);
             this.chkVat.Name = "chkVat";
             this.chkVat.Size = new System.Drawing.Size(47, 17);
             this.chkVat.TabIndex = 17;
@@ -3088,7 +3055,7 @@
             // 
             // txtTotalDis
             // 
-            this.txtTotalDis.Location = new System.Drawing.Point(96, 15);
+            this.txtTotalDis.Location = new System.Drawing.Point(97, 5);
             this.txtTotalDis.Name = "txtTotalDis";
             this.txtTotalDis.Size = new System.Drawing.Size(50, 20);
             this.txtTotalDis.TabIndex = 13;
@@ -3098,7 +3065,7 @@
             // lblGrossTotal
             // 
             this.lblGrossTotal.AutoSize = true;
-            this.lblGrossTotal.Location = new System.Drawing.Point(178, 97);
+            this.lblGrossTotal.Location = new System.Drawing.Point(198, 95);
             this.lblGrossTotal.Name = "lblGrossTotal";
             this.lblGrossTotal.Size = new System.Drawing.Size(28, 13);
             this.lblGrossTotal.TabIndex = 12;
@@ -3108,7 +3075,7 @@
             // label39
             // 
             this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(7, 96);
+            this.label39.Location = new System.Drawing.Point(8, 95);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(61, 13);
             this.label39.TabIndex = 5;
@@ -3117,18 +3084,29 @@
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(6, 18);
+            this.label34.Location = new System.Drawing.Point(6, 5);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(85, 13);
             this.label34.TabIndex = 0;
             this.label34.Text = "Disc on Subtotal";
+            // 
+            // btnCreateRev
+            // 
+            this.btnCreateRev.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnCreateRev.Image = global::LoginForm.Properties.Resources.icons8_Plus_32;
+            this.btnCreateRev.Location = new System.Drawing.Point(1096, 91);
+            this.btnCreateRev.Name = "btnCreateRev";
+            this.btnCreateRev.Size = new System.Drawing.Size(52, 52);
+            this.btnCreateRev.TabIndex = 56;
+            this.btnCreateRev.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCreateRev.UseVisualStyleBackColor = false;
             // 
             // groupBox7
             // 
             this.groupBox7.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.groupBox7.Controls.Add(this.chkbForFinance);
             this.groupBox7.Controls.Add(this.txtNoteForUs);
-            this.groupBox7.Location = new System.Drawing.Point(15, 6);
+            this.groupBox7.Location = new System.Drawing.Point(10, 11);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(500, 68);
             this.groupBox7.TabIndex = 4;
@@ -3153,14 +3131,25 @@
             this.txtNoteForUs.Size = new System.Drawing.Size(404, 36);
             this.txtNoteForUs.TabIndex = 0;
             // 
+            // label67
+            // 
+            this.label67.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label67.AutoSize = true;
+            this.label67.Location = new System.Drawing.Point(1043, 145);
+            this.label67.Name = "label67";
+            this.label67.Size = new System.Drawing.Size(32, 13);
+            this.label67.TabIndex = 57;
+            this.label67.Text = "Save";
+            // 
             // gbShipment
             // 
             this.gbShipment.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.gbShipment.Controls.Add(this.label7);
+            this.gbShipment.Controls.Add(this.LandingCost);
             this.gbShipment.Controls.Add(this.cbSMethod);
-            this.gbShipment.Location = new System.Drawing.Point(521, 6);
+            this.gbShipment.Location = new System.Drawing.Point(524, 11);
             this.gbShipment.Name = "gbShipment";
-            this.gbShipment.Size = new System.Drawing.Size(139, 123);
+            this.gbShipment.Size = new System.Drawing.Size(139, 149);
             this.gbShipment.TabIndex = 46;
             this.gbShipment.TabStop = false;
             this.gbShipment.Text = "Shipping Method";
@@ -3173,6 +3162,58 @@
             this.label7.Size = new System.Drawing.Size(0, 13);
             this.label7.TabIndex = 9;
             // 
+            // LandingCost
+            // 
+            this.LandingCost.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.LandingCost.Controls.Add(this.ckCustomsDuties);
+            this.LandingCost.Controls.Add(this.ckWeightCost);
+            this.LandingCost.Controls.Add(this.ckItemCost);
+            this.LandingCost.Location = new System.Drawing.Point(6, 49);
+            this.LandingCost.Name = "LandingCost";
+            this.LandingCost.Size = new System.Drawing.Size(127, 101);
+            this.LandingCost.TabIndex = 50;
+            this.LandingCost.TabStop = false;
+            this.LandingCost.Text = "Landing Cost";
+            // 
+            // ckCustomsDuties
+            // 
+            this.ckCustomsDuties.AutoSize = true;
+            this.ckCustomsDuties.Checked = true;
+            this.ckCustomsDuties.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckCustomsDuties.Location = new System.Drawing.Point(6, 77);
+            this.ckCustomsDuties.Name = "ckCustomsDuties";
+            this.ckCustomsDuties.Size = new System.Drawing.Size(99, 17);
+            this.ckCustomsDuties.TabIndex = 12;
+            this.ckCustomsDuties.Text = "Customs Duties";
+            this.ckCustomsDuties.UseVisualStyleBackColor = true;
+            this.ckCustomsDuties.CheckedChanged += new System.EventHandler(this.ckItemCost_CheckedChanged);
+            // 
+            // ckWeightCost
+            // 
+            this.ckWeightCost.AutoSize = true;
+            this.ckWeightCost.Checked = true;
+            this.ckWeightCost.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckWeightCost.Location = new System.Drawing.Point(6, 52);
+            this.ckWeightCost.Name = "ckWeightCost";
+            this.ckWeightCost.Size = new System.Drawing.Size(84, 17);
+            this.ckWeightCost.TabIndex = 11;
+            this.ckWeightCost.Text = "Weight Cost";
+            this.ckWeightCost.UseVisualStyleBackColor = true;
+            this.ckWeightCost.CheckedChanged += new System.EventHandler(this.ckItemCost_CheckedChanged);
+            // 
+            // ckItemCost
+            // 
+            this.ckItemCost.AutoSize = true;
+            this.ckItemCost.Checked = true;
+            this.ckItemCost.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckItemCost.Location = new System.Drawing.Point(6, 28);
+            this.ckItemCost.Name = "ckItemCost";
+            this.ckItemCost.Size = new System.Drawing.Size(70, 17);
+            this.ckItemCost.TabIndex = 10;
+            this.ckItemCost.Text = "Item Cost";
+            this.ckItemCost.UseVisualStyleBackColor = true;
+            this.ckItemCost.CheckedChanged += new System.EventHandler(this.ckItemCost_CheckedChanged);
+            // 
             // cbSMethod
             // 
             this.cbSMethod.FormattingEnabled = true;
@@ -3181,17 +3222,27 @@
             "Express",
             "Truck",
             "Sea Freight"});
-            this.cbSMethod.Location = new System.Drawing.Point(6, 25);
+            this.cbSMethod.Location = new System.Drawing.Point(6, 16);
             this.cbSMethod.Name = "cbSMethod";
             this.cbSMethod.Size = new System.Drawing.Size(121, 21);
             this.cbSMethod.TabIndex = 8;
             this.cbSMethod.Text = "Air Freight";
             // 
+            // btnClose
+            // 
+            this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnClose.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
+            this.btnClose.Location = new System.Drawing.Point(1154, 91);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(52, 52);
+            this.btnClose.TabIndex = 55;
+            this.btnClose.UseVisualStyleBackColor = false;
+            // 
             // groupBox3
             // 
             this.groupBox3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.groupBox3.Controls.Add(this.txtNoteForCustomer);
-            this.groupBox3.Location = new System.Drawing.Point(15, 80);
+            this.groupBox3.Location = new System.Drawing.Point(11, 91);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(500, 60);
             this.groupBox3.TabIndex = 13;
@@ -3239,16 +3290,15 @@
             this.gbCost.ResumeLayout(false);
             this.gbCost.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.LandingCost.ResumeLayout(false);
-            this.LandingCost.PerformLayout();
+            this.panel1.PerformLayout();
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             this.gbShipment.ResumeLayout(false);
             this.gbShipment.PerformLayout();
+            this.LandingCost.ResumeLayout(false);
+            this.LandingCost.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
@@ -3521,7 +3571,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgCOO;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgCCCNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgDependantTable;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label69;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label68;
@@ -3529,5 +3578,11 @@
         private System.Windows.Forms.Label label67;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label label70;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panel4;
     }
 }

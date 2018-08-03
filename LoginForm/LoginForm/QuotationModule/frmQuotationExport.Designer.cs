@@ -92,7 +92,7 @@
             this.btnClear.Image = global::LoginForm.Properties.Resources.if_Line_ui_icons_Svg_03_1465842;
             this.btnClear.Location = new System.Drawing.Point(92, 309);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(52, 55);
+            this.btnClear.Size = new System.Drawing.Size(52, 52);
             this.btnClear.TabIndex = 29;
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
@@ -102,7 +102,7 @@
             this.btnSelect.Image = global::LoginForm.Properties.Resources.if_Select_46755;
             this.btnSelect.Location = new System.Drawing.Point(12, 309);
             this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(52, 55);
+            this.btnSelect.Size = new System.Drawing.Size(52, 52);
             this.btnSelect.TabIndex = 28;
             this.btnSelect.UseVisualStyleBackColor = true;
             this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
@@ -112,7 +112,7 @@
             this.btnDone.Image = global::LoginForm.Properties.Resources.if_floppy_285657;
             this.btnDone.Location = new System.Drawing.Point(483, 309);
             this.btnDone.Name = "btnDone";
-            this.btnDone.Size = new System.Drawing.Size(52, 55);
+            this.btnDone.Size = new System.Drawing.Size(52, 52);
             this.btnDone.TabIndex = 27;
             this.btnDone.UseVisualStyleBackColor = true;
             this.btnDone.Click += new System.EventHandler(this.btnDone_Click);

@@ -346,7 +346,7 @@
     <value>True</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>325, 545</value>
+    <value>325, 548</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 17</value>
@@ -376,10 +376,10 @@
     <value>Microsoft Sans Serif, 10pt</value>
   </data>
   <data name="btnSave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>318, 499</value>
+    <value>318, 494</value>
   </data>
   <data name="btnSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 43</value>
+    <value>52, 52</value>
   </data>
   <data name="btnSave.TabIndex" type="System.Int32, mscorlib">
     <value>53</value>

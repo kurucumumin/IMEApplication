@@ -77,7 +77,7 @@
             this.btnExcel.Image = global::LoginForm.Properties.Resources.if_Document_file_export_sending_exit_send_1886950;
             this.btnExcel.Location = new System.Drawing.Point(99, 12);
             this.btnExcel.Name = "btnExcel";
-            this.btnExcel.Size = new System.Drawing.Size(53, 51);
+            this.btnExcel.Size = new System.Drawing.Size(52, 52);
             this.btnExcel.TabIndex = 8;
             this.btnExcel.UseVisualStyleBackColor = true;
             // 
@@ -86,7 +86,7 @@
             this.btnAnaliz.Image = global::LoginForm.Properties.Resources.icons8_Edit_Property_32;
             this.btnAnaliz.Location = new System.Drawing.Point(12, 12);
             this.btnAnaliz.Name = "btnAnaliz";
-            this.btnAnaliz.Size = new System.Drawing.Size(52, 51);
+            this.btnAnaliz.Size = new System.Drawing.Size(52, 52);
             this.btnAnaliz.TabIndex = 6;
             this.btnAnaliz.UseVisualStyleBackColor = true;
             this.btnAnaliz.Click += new System.EventHandler(this.btnAnaliz_Click);
@@ -96,7 +96,7 @@
             this.btnExit.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
             this.btnExit.Location = new System.Drawing.Point(188, 12);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(51, 51);
+            this.btnExit.Size = new System.Drawing.Size(52, 52);
             this.btnExit.TabIndex = 5;
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
@@ -113,7 +113,7 @@
             this.btnAra.Image = global::LoginForm.Properties.Resources.if_search_magnifying_glass_find_103857;
             this.btnAra.Location = new System.Drawing.Point(509, 77);
             this.btnAra.Name = "btnAra";
-            this.btnAra.Size = new System.Drawing.Size(55, 51);
+            this.btnAra.Size = new System.Drawing.Size(52, 52);
             this.btnAra.TabIndex = 11;
             this.btnAra.UseVisualStyleBackColor = true;
             // 
@@ -122,7 +122,7 @@
             this.btnTemizli.Image = global::LoginForm.Properties.Resources.if_Line_ui_icons_Svg_03_1465842;
             this.btnTemizli.Location = new System.Drawing.Point(593, 77);
             this.btnTemizli.Name = "btnTemizli";
-            this.btnTemizli.Size = new System.Drawing.Size(56, 51);
+            this.btnTemizli.Size = new System.Drawing.Size(52, 52);
             this.btnTemizli.TabIndex = 10;
             this.btnTemizli.UseVisualStyleBackColor = true;
             // 

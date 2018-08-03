@@ -103,12 +103,12 @@
             this.dgItemSearch.AllowUserToDeleteRows = false;
             this.dgItemSearch.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgItemSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgItemSearch.Location = new System.Drawing.Point(15, 71);
+            this.dgItemSearch.Location = new System.Drawing.Point(15, 82);
             this.dgItemSearch.Margin = new System.Windows.Forms.Padding(4);
             this.dgItemSearch.Name = "dgItemSearch";
             this.dgItemSearch.ReadOnly = true;
             this.dgItemSearch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgItemSearch.Size = new System.Drawing.Size(1302, 634);
+            this.dgItemSearch.Size = new System.Drawing.Size(1302, 623);
             this.dgItemSearch.TabIndex = 11;
             this.dgItemSearch.DoubleClick += new System.EventHandler(this.dgItemSearch_DoubleClick);
             // 
@@ -140,7 +140,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(999, 52);
+            this.label5.Location = new System.Drawing.Point(999, 58);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(46, 15);
             this.label5.TabIndex = 20;
@@ -151,7 +151,7 @@
             this.btnSearch.Image = global::LoginForm.Properties.Resources.if_search_magnifying_glass_find_103857;
             this.btnSearch.Location = new System.Drawing.Point(996, 4);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(49, 45);
+            this.btnSearch.Size = new System.Drawing.Size(52, 52);
             this.btnSearch.TabIndex = 19;
             this.btnSearch.UseVisualStyleBackColor = true;
             // 

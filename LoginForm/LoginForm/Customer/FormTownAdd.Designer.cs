@@ -92,7 +92,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(153, 174);
+            this.label2.Location = new System.Drawing.Point(153, 181);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(26, 13);
             this.label2.TabIndex = 28;
@@ -103,9 +103,9 @@
             this.btnAdd.Image = global::LoginForm.Properties.Resources.icons8_Plus_32;
             this.btnAdd.Location = new System.Drawing.Point(142, 126);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(50, 45);
+            this.btnAdd.Size = new System.Drawing.Size(52, 52);
             this.btnAdd.TabIndex = 27;
-            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // FormTownAdd

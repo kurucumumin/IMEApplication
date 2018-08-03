@@ -31,6 +31,9 @@
             this.FrameTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabStockReserveUpdate = new System.Windows.Forms.TabPage();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.txtCustomerName = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -47,6 +50,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabSearch = new System.Windows.Forms.TabPage();
+            this.label11 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -61,10 +65,6 @@
             this.dgProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.FrameTableLayout.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabStockReserveUpdate.SuspendLayout();
@@ -129,6 +129,33 @@
             this.tabStockReserveUpdate.TabIndex = 0;
             this.tabStockReserveUpdate.Text = "Stock Reserve Update";
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(899, 68);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(36, 15);
+            this.label10.TabIndex = 35;
+            this.label10.Text = "Clear";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(826, 68);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(43, 15);
+            this.label9.TabIndex = 34;
+            this.label9.Text = "Delete";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(755, 68);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(34, 15);
+            this.label7.TabIndex = 33;
+            this.label7.Text = "Save";
+            // 
             // txtCustomerName
             // 
             this.txtCustomerName.Location = new System.Drawing.Point(163, 47);
@@ -151,7 +178,7 @@
             this.btnDelete.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
             this.btnDelete.Location = new System.Drawing.Point(820, 12);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(56, 56);
+            this.btnDelete.Size = new System.Drawing.Size(52, 52);
             this.btnDelete.TabIndex = 30;
             this.btnDelete.UseVisualStyleBackColor = true;
             // 
@@ -244,7 +271,7 @@
             this.btnSave.Image = global::LoginForm.Properties.Resources.if_floppy_285657;
             this.btnSave.Location = new System.Drawing.Point(744, 12);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(56, 56);
+            this.btnSave.Size = new System.Drawing.Size(52, 52);
             this.btnSave.TabIndex = 21;
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -255,7 +282,7 @@
             this.btnClear.Image = global::LoginForm.Properties.Resources.if_edit_clear_23227;
             this.btnClear.Location = new System.Drawing.Point(892, 12);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(56, 56);
+            this.btnClear.Size = new System.Drawing.Size(52, 52);
             this.btnClear.TabIndex = 20;
             this.btnClear.UseVisualStyleBackColor = true;
             // 
@@ -292,6 +319,15 @@
             this.tabSearch.Size = new System.Drawing.Size(957, 166);
             this.tabSearch.TabIndex = 1;
             this.tabSearch.Text = "Search";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(469, 69);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(46, 15);
+            this.label11.TabIndex = 17;
+            this.label11.Text = "Search";
             // 
             // textBox1
             // 
@@ -428,42 +464,6 @@
             this.dgQty.Name = "dgQty";
             this.dgQty.ReadOnly = true;
             this.dgQty.Width = 76;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(756, 71);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(34, 15);
-            this.label7.TabIndex = 33;
-            this.label7.Text = "Save";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(827, 71);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(43, 15);
-            this.label9.TabIndex = 34;
-            this.label9.Text = "Delete";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(900, 71);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(36, 15);
-            this.label10.TabIndex = 35;
-            this.label10.Text = "Clear";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(469, 69);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(46, 15);
-            this.label11.TabIndex = 17;
-            this.label11.Text = "Search";
             // 
             // frmStockReserve
             // 
