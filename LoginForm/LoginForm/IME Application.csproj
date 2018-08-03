@@ -254,6 +254,9 @@
     <Compile Include="DataSet\CustomerAddress.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\CustomerAll.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\CustomerCategory.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
