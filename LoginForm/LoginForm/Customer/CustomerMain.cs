@@ -1891,9 +1891,14 @@ namespace LoginForm
 
         private void DiscountRate_Leave(object sender, EventArgs e)
         {
-            decimal DiscountRateValue = Decimal.Parse(DiscountRate.Text);
-            factor.Text = (Utils.getManagement().Factor - ((DiscountRateValue * Utils.getManagement().Factor) / 100)).ToString();
-            factor.Text = String.Format("{0:0.0000}", Decimal.Parse(factor.Text)).ToString();
+            decimal DiscountRateValue = 0._ToDecimalR();
+            if (DiscountRate.Text != null && DiscountRate.Text !="")
+            {
+                DiscountRateValue = Decimal.Parse(DiscountRate.Text);
+                factor.Text = (Utils.getManagement().Factor - ((DiscountRateValue * Utils.getManagement().Factor) / 100)).ToString();
+                factor.Text = String.Format("{0:0.0000}", Decimal.Parse(factor.Text)).ToString();
+            }
+            
         }
 
         private void CustomerDataGrid_SelectionChanged(object sender, EventArgs e)
@@ -2286,7 +2291,8 @@ namespace LoginForm
                         i_Array3[13] = i_39;
                         MyConnect.Ornekle.ExecuteScalar_Int(Utils.ConnectionStringLogo, string.Format("INSERT INTO LG_{0}_SHIPINFO (CLIENTREF, CODE, NAME, SPECODE, CYPHCODE, ADDR1, ADDR2, CITY, COUNTRY, POSTCODE, TELNRS1, TELNRS2, FAXNR, CAPIBLOCK_CREATEDBY, CAPIBLOCK_CREADEDDATE, CAPIBLOCK_CREATEDHOUR, CAPIBLOCK_CREATEDMIN, CAPIBLOCK_CREATEDSEC, CAPIBLOCK_MODIFIEDBY, CAPIBLOCK_MODIFIEDDATE, CAPIBLOCK_MODIFIEDHOUR, CAPIBLOCK_MODIFIEDMIN, CAPIBLOCK_MODIFIEDSEC, SITEID, RECSTATUS, ORGLOGICREF, TRADINGGRP, VATNR, TAXNR, TAXOFFICE, TOWNCODE, TOWN, DISTRICTCODE, DISTRICT, CITYCODE, COUNTRYCODE, ACTIVE, TEXTINC, EMAILADDR, INCHANGE, TELCODES1, TELCODES2, FAXCODE, LONGITUDE, LATITUTE, CITYID, TOWNID, SHIPBEGTIME1, SHIPBEGTIME2, SHIPBEGTIME3, SHIPENDTIME1, SHIPENDTIME2, SHIPENDTIME3, POSTLABELCODE, SENDERLABELCODE) VALUES (@CLIENTREF, '888888', 'FATURA ADRESİ', '', '', @ADDR1, @ADDR2, @CITY, @COUNTRY, @POSTCODE, @TELNRS1, '', @FAXNR, 1, '01-01-2017', 0, 0, 0, 0, NULL, 0, 0, 0, 0, 0, 0, '', '', '', '', @TOWNCODE, @TOWN, '', '', @CITYCODE, @COUNTRYCODE, 1, 0, @EMAILADDR, @INCHANGE, '', '', '', '', '', '', '', 134217752, 0, 0, 288817176, 0, 0, '', ''); SELECT SCOPE_IDENTITY()", Utils.FrmNo), CommandType.Text, 60, i_Array3);
                     }
-                    base.Close();
+                    //base.Close();
+                    MessageBox.Show("Customer, send to Logo");
                 }
                 else
                 {
