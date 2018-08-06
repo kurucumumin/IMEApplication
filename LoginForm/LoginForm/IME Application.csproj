@@ -275,6 +275,12 @@
     <Compile Include="DataSet\CustomerWorker.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\Customer_CustomerID_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\Customer_CustomerName_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\DailyDiscontinued.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>

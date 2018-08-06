@@ -31,7 +31,7 @@ namespace LoginForm
 
             CustomerDataGrid.DataSource = null;
             //CustomerDataGrid.DataSource = IME.Customers.ToList(); ;
-            CustomerDataGrid.DataSource = IME.CustomerAlls.ToList();
+            CustomerDataGrid.DataSource = IME.CustomerAll().ToList();
             CustomerDataGrid.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
