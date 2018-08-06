@@ -285,6 +285,7 @@
             this.btnClear.Size = new System.Drawing.Size(52, 52);
             this.btnClear.TabIndex = 20;
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // label2
             // 

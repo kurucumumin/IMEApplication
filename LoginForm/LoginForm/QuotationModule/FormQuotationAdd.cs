@@ -3980,6 +3980,5 @@ namespace LoginForm.QuotationModule
                 }
             }
         }
-
     }
 }

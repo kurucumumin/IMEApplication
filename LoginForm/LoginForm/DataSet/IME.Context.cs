@@ -110,7 +110,6 @@ namespace LoginForm.DataSet
         public virtual DbSet<CariHareket> CariHarekets { get; set; }
         public virtual DbSet<CompleteItem> CompleteItems { get; set; }
         public virtual DbSet<CompleteItems_v2> CompleteItems_v2 { get; set; }
-        public virtual DbSet<CustomerAll> CustomerAlls { get; set; }
         public virtual DbSet<MPN_List> MPN_List { get; set; }
         public virtual DbSet<V_Product> V_Product { get; set; }
     
@@ -561,6 +560,29 @@ namespace LoginForm.DataSet
         public virtual ObjectResult<Nullable<System.DateTime>> CurrentDate()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.DateTime>>("CurrentDate");
+        }
+    
+        public virtual ObjectResult<Customer_CustomerID_Result> Customer_CustomerID(string iD)
+        {
+            var iDParameter = iD != null ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Customer_CustomerID_Result>("Customer_CustomerID", iDParameter);
+        }
+    
+        public virtual ObjectResult<Customer_CustomerName_Result> Customer_CustomerName(string c_name)
+        {
+            var c_nameParameter = c_name != null ?
+                new ObjectParameter("c_name", c_name) :
+                new ObjectParameter("c_name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Customer_CustomerName_Result>("Customer_CustomerName", c_nameParameter);
+        }
+    
+        public virtual ObjectResult<CustomerAll_Result> CustomerAll()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CustomerAll_Result>("CustomerAll");
         }
     
         public virtual ObjectResult<CustomersDebits_Result> CustomersDebits()

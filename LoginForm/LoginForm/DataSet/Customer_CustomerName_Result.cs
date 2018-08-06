@@ -10,9 +10,8 @@
 namespace LoginForm.DataSet
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class CustomerAll
+    public partial class Customer_CustomerName_Result
     {
         public string ID { get; set; }
         public string c_name { get; set; }
