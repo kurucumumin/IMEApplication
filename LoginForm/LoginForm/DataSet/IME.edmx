@@ -1398,6 +1398,45 @@ warning 6002: The table/view 'IME.dbo.CompleteItems_v2' does not have a primary 
           <Property Name="dependantTable" Type="varchar" MaxLength="3" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'IME.dbo.CustomerAll' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CustomerAll">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="c_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="discountrate" Type="decimal" Precision="6" Scale="4" />
+          <Property Name="paymentmethodID" Type="int" />
+          <Property Name="creditlimit" Type="int" />
+          <Property Name="webadress" Type="nvarchar" MaxLength="50" />
+          <Property Name="payment_termID" Type="int" />
+          <Property Name="representaryID" Type="int" />
+          <Property Name="customerNoteID" Type="int" />
+          <Property Name="representary2ID" Type="int" />
+          <Property Name="accountrepresentaryID" Type="int" />
+          <Property Name="isactive" Type="int" />
+          <Property Name="rateIDinvoice" Type="int" />
+          <Property Name="taxoffice" Type="nvarchar" MaxLength="150" />
+          <Property Name="taxnumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="MainContactID" Type="int" />
+          <Property Name="CurrTypeInv" Type="nvarchar" MaxLength="15" />
+          <Property Name="CurrNameInv" Type="nvarchar" MaxLength="15" />
+          <Property Name="CurrTypeQuo" Type="nvarchar" MaxLength="15" />
+          <Property Name="CurrNameQuo" Type="nvarchar" MaxLength="15" />
+          <Property Name="customerAccountantNoteID" Type="int" />
+          <Property Name="extensionnumber" Type="nvarchar" MaxLength="10" />
+          <Property Name="factor" Type="decimal" Precision="20" Scale="5" />
+          <Property Name="creditDay" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="telephone" Type="nvarchar" MaxLength="30" />
+          <Property Name="fax" Type="nvarchar" MaxLength="30" />
+          <Property Name="categoryID" Type="int" />
+          <Property Name="subcategoryID" Type="int" />
+          <Property Name="ThirdPartyCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="Capital" Type="nvarchar" MaxLength="20" />
+          <Property Name="Debit" Type="decimal" Precision="20" Scale="4" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'IME.dbo.MPN_List' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="MPN_List">
           <Key>
@@ -3574,6 +3613,42 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
     [CompleteItems_v2].[dependantTable] AS [dependantTable]
     FROM [dbo].[CompleteItems_v2] AS [CompleteItems_v2]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="CustomerAll" EntityType="Self.CustomerAll" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CustomerAll].[ID] AS [ID], 
+    [CustomerAll].[c_name] AS [c_name], 
+    [CustomerAll].[discountrate] AS [discountrate], 
+    [CustomerAll].[paymentmethodID] AS [paymentmethodID], 
+    [CustomerAll].[creditlimit] AS [creditlimit], 
+    [CustomerAll].[webadress] AS [webadress], 
+    [CustomerAll].[payment_termID] AS [payment_termID], 
+    [CustomerAll].[representaryID] AS [representaryID], 
+    [CustomerAll].[customerNoteID] AS [customerNoteID], 
+    [CustomerAll].[representary2ID] AS [representary2ID], 
+    [CustomerAll].[accountrepresentaryID] AS [accountrepresentaryID], 
+    [CustomerAll].[isactive] AS [isactive], 
+    [CustomerAll].[rateIDinvoice] AS [rateIDinvoice], 
+    [CustomerAll].[taxoffice] AS [taxoffice], 
+    [CustomerAll].[taxnumber] AS [taxnumber], 
+    [CustomerAll].[MainContactID] AS [MainContactID], 
+    [CustomerAll].[CurrTypeInv] AS [CurrTypeInv], 
+    [CustomerAll].[CurrNameInv] AS [CurrNameInv], 
+    [CustomerAll].[CurrTypeQuo] AS [CurrTypeQuo], 
+    [CustomerAll].[CurrNameQuo] AS [CurrNameQuo], 
+    [CustomerAll].[customerAccountantNoteID] AS [customerAccountantNoteID], 
+    [CustomerAll].[extensionnumber] AS [extensionnumber], 
+    [CustomerAll].[factor] AS [factor], 
+    [CustomerAll].[creditDay] AS [creditDay], 
+    [CustomerAll].[CreateDate] AS [CreateDate], 
+    [CustomerAll].[telephone] AS [telephone], 
+    [CustomerAll].[fax] AS [fax], 
+    [CustomerAll].[categoryID] AS [categoryID], 
+    [CustomerAll].[subcategoryID] AS [subcategoryID], 
+    [CustomerAll].[ThirdPartyCode] AS [ThirdPartyCode], 
+    [CustomerAll].[Capital] AS [Capital], 
+    [CustomerAll].[Debit] AS [Debit]
+    FROM [dbo].[CustomerAll] AS [CustomerAll]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="MPN_List" EntityType="Self.MPN_List" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [MPN_List].[MPN] AS [MPN], 
@@ -5665,6 +5740,43 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="OnhandStockBalance" Type="Int64" />
           <Property Name="dependantTable" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
+        <EntityType Name="CustomerAll">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="discountrate" Type="Decimal" Precision="6" Scale="4" />
+          <Property Name="paymentmethodID" Type="Int32" />
+          <Property Name="creditlimit" Type="Int32" />
+          <Property Name="webadress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="payment_termID" Type="Int32" />
+          <Property Name="representaryID" Type="Int32" />
+          <Property Name="customerNoteID" Type="Int32" />
+          <Property Name="representary2ID" Type="Int32" />
+          <Property Name="accountrepresentaryID" Type="Int32" />
+          <Property Name="isactive" Type="Int32" />
+          <Property Name="rateIDinvoice" Type="Int32" />
+          <Property Name="taxoffice" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="taxnumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MainContactID" Type="Int32" />
+          <Property Name="CurrTypeInv" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="CurrNameInv" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="CurrTypeQuo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="CurrNameQuo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="customerAccountantNoteID" Type="Int32" />
+          <Property Name="extensionnumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="factor" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="creditDay" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="telephone" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="fax" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="categoryID" Type="Int32" />
+          <Property Name="subcategoryID" Type="Int32" />
+          <Property Name="ThirdPartyCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Capital" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Debit" Type="Decimal" Precision="20" Scale="4" />
+        </EntityType>
         <EntityType Name="MPN_List">
           <Key>
             <PropertyRef Name="table" />
@@ -7133,6 +7245,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <EntitySet Name="CariHarekets" EntityType="Self.CariHareket" />
           <EntitySet Name="CompleteItems" EntityType="Self.CompleteItem" />
           <EntitySet Name="CompleteItems_v2" EntityType="Self.CompleteItems_v2" />
+          <EntitySet Name="CustomerAlls" EntityType="Self.CustomerAll" />
           <EntitySet Name="MPN_List" EntityType="Self.MPN_List" />
           <EntitySet Name="V_Product" EntityType="Self.V_Product" />
           <AssociationSet Name="FK__Account__Currenc__11957784" Association="Self.FK__Account__Currenc__11957784">
@@ -10001,6 +10114,44 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="CatalogueStatus" ColumnName="CatalogueStatus" />
                 <ScalarProperty Name="OnhandStockBalance" ColumnName="OnhandStockBalance" />
                 <ScalarProperty Name="dependantTable" ColumnName="dependantTable" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerAlls">
+            <EntityTypeMapping TypeName="IMEModel.CustomerAll">
+              <MappingFragment StoreEntitySet="CustomerAll">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="c_name" ColumnName="c_name" />
+                <ScalarProperty Name="discountrate" ColumnName="discountrate" />
+                <ScalarProperty Name="paymentmethodID" ColumnName="paymentmethodID" />
+                <ScalarProperty Name="creditlimit" ColumnName="creditlimit" />
+                <ScalarProperty Name="webadress" ColumnName="webadress" />
+                <ScalarProperty Name="payment_termID" ColumnName="payment_termID" />
+                <ScalarProperty Name="representaryID" ColumnName="representaryID" />
+                <ScalarProperty Name="customerNoteID" ColumnName="customerNoteID" />
+                <ScalarProperty Name="representary2ID" ColumnName="representary2ID" />
+                <ScalarProperty Name="accountrepresentaryID" ColumnName="accountrepresentaryID" />
+                <ScalarProperty Name="isactive" ColumnName="isactive" />
+                <ScalarProperty Name="rateIDinvoice" ColumnName="rateIDinvoice" />
+                <ScalarProperty Name="taxoffice" ColumnName="taxoffice" />
+                <ScalarProperty Name="taxnumber" ColumnName="taxnumber" />
+                <ScalarProperty Name="MainContactID" ColumnName="MainContactID" />
+                <ScalarProperty Name="CurrTypeInv" ColumnName="CurrTypeInv" />
+                <ScalarProperty Name="CurrNameInv" ColumnName="CurrNameInv" />
+                <ScalarProperty Name="CurrTypeQuo" ColumnName="CurrTypeQuo" />
+                <ScalarProperty Name="CurrNameQuo" ColumnName="CurrNameQuo" />
+                <ScalarProperty Name="customerAccountantNoteID" ColumnName="customerAccountantNoteID" />
+                <ScalarProperty Name="extensionnumber" ColumnName="extensionnumber" />
+                <ScalarProperty Name="factor" ColumnName="factor" />
+                <ScalarProperty Name="creditDay" ColumnName="creditDay" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="telephone" ColumnName="telephone" />
+                <ScalarProperty Name="fax" ColumnName="fax" />
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+                <ScalarProperty Name="subcategoryID" ColumnName="subcategoryID" />
+                <ScalarProperty Name="ThirdPartyCode" ColumnName="ThirdPartyCode" />
+                <ScalarProperty Name="Capital" ColumnName="Capital" />
+                <ScalarProperty Name="Debit" ColumnName="Debit" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

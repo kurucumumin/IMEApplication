@@ -88,8 +88,9 @@
         <EntityTypeShape EntityType="IMEModel.CariHareket" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.CompleteItem" Width="1.5" PointX="16.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.CompleteItems_v2" Width="1.5" PointX="14.75" PointY="16.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.MPN_List" Width="1.5" PointX="16.75" PointY="16.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.V_Product" Width="1.5" PointX="0.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.CustomerAll" Width="1.5" PointX="16.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.MPN_List" Width="1.5" PointX="0.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.V_Product" Width="1.5" PointX="2.75" PointY="17.75" IsExpanded="true" />
         <AssociationConnector Association="IMEModel.FK__Account__Currenc__11957784" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__AccountOp__FromA__2DFCAC08" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__AccountOp__ToAcc__2EF0D041" ManuallyRouted="false" />
