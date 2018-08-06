@@ -967,6 +967,8 @@
           <Property Name="quotationDetailsId" Type="int" />
           <Property Name="SaleOrderID" Type="numeric" Precision="18" Scale="0" />
           <Property Name="SentItemQuantity" Type="int" />
+          <Property Name="DeliveryID" Type="int" Nullable="false" />
+          <Property Name="LandingCost" Type="decimal" Precision="18" Scale="4" />
         </EntityType>
         <EntityType Name="SalesOperation">
           <Key>
@@ -1344,7 +1346,7 @@ warning 6002: The table/view 'IME.dbo.CompleteItems' does not have a primary key
           <Property Name="Heigh" Type="decimal" Precision="20" Scale="5" />
           <Property Name="Width" Type="decimal" Precision="20" Scale="5" />
           <Property Name="Length" Type="decimal" Precision="20" Scale="5" />
-          <Property Name="OnhandStockBalance" Type="int" />
+          <Property Name="OnhandStockBalance" Type="bigint" />
           <Property Name="QuantityonOrder" Type="int" />
           <Property Name="Col1Break" Type="int" />
           <Property Name="Col2Break" Type="int" />
@@ -1364,8 +1366,8 @@ warning 6002: The table/view 'IME.dbo.CompleteItems' does not have a primary key
           <Property Name="SupersectionName" Type="nvarchar" MaxLength="100" />
           <Property Name="SectionName" Type="nvarchar" MaxLength="100" />
           <Property Name="DiscontinuationDate" Type="nvarchar" MaxLength="20" />
-          <Property Name="Runon" Type="int" />
-          <Property Name="Referral" Type="int" />
+          <Property Name="Runon" Type="nvarchar" MaxLength="15" />
+          <Property Name="Referral" Type="nvarchar" MaxLength="15" />
           <Property Name="Environment" Type="int" />
           <Property Name="Lithium" Type="nvarchar" MaxLength="50" />
           <Property Name="Shipping" Type="nvarchar" MaxLength="50" />
@@ -1391,9 +1393,8 @@ warning 6002: The table/view 'IME.dbo.CompleteItems_v2' does not have a primary 
           <Property Name="Col1Break" Type="int" />
           <Property Name="Col1Price" Type="decimal" Precision="18" Scale="3" />
           <Property Name="DiscountedPrice1" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="DiscontinuationDate" Type="nvarchar" MaxLength="20" />
-          <Property Name="OnhandStockBalance" Type="int" />
           <Property Name="CatalogueStatus" Type="int" />
+          <Property Name="OnhandStockBalance" Type="bigint" />
           <Property Name="dependantTable" Type="varchar" MaxLength="3" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
@@ -2296,6 +2297,18 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__SaleOrder__Deliv__57BDDBAA">
+          <End Role="QuotationDelivery" Type="Self.QuotationDelivery" Multiplicity="1" />
+          <End Role="SaleOrderDetail" Type="Self.SaleOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuotationDelivery">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SaleOrderDetail">
+              <PropertyRef Name="DeliveryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__SaleOrder__excha__5C229E14">
           <End Role="ExchangeRate" Type="Self.ExchangeRate" Multiplicity="0..1" />
           <End Role="SaleOrder" Type="Self.SaleOrder" Multiplicity="*" />
@@ -2937,6 +2950,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
         </Function>
         <Function Name="CurrencyViewAllForCombo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="CurrentDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="CustomerAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="CustomersDebits" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="DefaultCurrencySet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="currencyId" Type="numeric" Mode="In" />
@@ -3555,9 +3569,8 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
     [CompleteItems_v2].[Col1Break] AS [Col1Break], 
     [CompleteItems_v2].[Col1Price] AS [Col1Price], 
     [CompleteItems_v2].[DiscountedPrice1] AS [DiscountedPrice1], 
-    [CompleteItems_v2].[DiscontinuationDate] AS [DiscontinuationDate], 
-    [CompleteItems_v2].[OnhandStockBalance] AS [OnhandStockBalance], 
     [CompleteItems_v2].[CatalogueStatus] AS [CatalogueStatus], 
+    [CompleteItems_v2].[OnhandStockBalance] AS [OnhandStockBalance], 
     [CompleteItems_v2].[dependantTable] AS [dependantTable]
     FROM [dbo].[CompleteItems_v2] AS [CompleteItems_v2]</DefiningQuery>
           </EntitySet>
@@ -3869,6 +3882,10 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <AssociationSet Name="FK__SaleOrder__Deliv__21A0F6C4" Association="Self.FK__SaleOrder__Deliv__21A0F6C4">
             <End Role="CustomerAddress" EntitySet="CustomerAddress" />
             <End Role="SaleOrder" EntitySet="SaleOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SaleOrder__Deliv__57BDDBAA" Association="Self.FK__SaleOrder__Deliv__57BDDBAA">
+            <End Role="QuotationDelivery" EntitySet="QuotationDelivery" />
+            <End Role="SaleOrderDetail" EntitySet="SaleOrderDetail" />
           </AssociationSet>
           <AssociationSet Name="FK__SaleOrder__excha__5C229E14" Association="Self.FK__SaleOrder__excha__5C229E14">
             <End Role="ExchangeRate" EntitySet="ExchangeRate" />
@@ -4933,6 +4950,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DeliveryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="QuotationDetails" Relationship="Self.FK__Quotation__quota__51900108" FromRole="QuotationDelivery" ToRole="QuotationDetail" />
+          <NavigationProperty Name="SaleOrderDetails" Relationship="Self.FK__SaleOrder__Deliv__57BDDBAA" FromRole="QuotationDelivery" ToRole="SaleOrderDetail" />
         </EntityType>
         <EntityType Name="QuotationDetail">
           <Key>
@@ -5167,6 +5185,9 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="quotationDetailsId" Type="Int32" />
           <Property Name="SaleOrderID" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="SentItemQuantity" Type="Int32" />
+          <Property Name="DeliveryID" Type="Int32" Nullable="false" />
+          <Property Name="LandingCost" Type="Decimal" Precision="18" Scale="4" />
+          <NavigationProperty Name="QuotationDelivery" Relationship="Self.FK__SaleOrder__Deliv__57BDDBAA" FromRole="SaleOrderDetail" ToRole="QuotationDelivery" />
           <NavigationProperty Name="QuotationDetail" Relationship="Self.FK__SaleOrder__quota__310335E5" FromRole="SaleOrderDetail" ToRole="QuotationDetail" />
           <NavigationProperty Name="SaleOrder" Relationship="Self.FK_SaleOrderDetail_SaleOrder" FromRole="SaleOrderDetail" ToRole="SaleOrder" />
         </EntityType>
@@ -5595,7 +5616,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="Heigh" Type="Decimal" Precision="20" Scale="5" />
           <Property Name="Width" Type="Decimal" Precision="20" Scale="5" />
           <Property Name="Length" Type="Decimal" Precision="20" Scale="5" />
-          <Property Name="OnhandStockBalance" Type="Int32" />
+          <Property Name="OnhandStockBalance" Type="Int64" />
           <Property Name="QuantityonOrder" Type="Int32" />
           <Property Name="Col1Break" Type="Int32" />
           <Property Name="Col2Break" Type="Int32" />
@@ -5615,8 +5636,8 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="SupersectionName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="SectionName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="DiscontinuationDate" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Runon" Type="Int32" />
-          <Property Name="Referral" Type="Int32" />
+          <Property Name="Runon" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Referral" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="Environment" Type="Int32" />
           <Property Name="Lithium" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Shipping" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -5640,9 +5661,8 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="Col1Break" Type="Int32" />
           <Property Name="Col1Price" Type="Decimal" Precision="18" Scale="3" />
           <Property Name="DiscountedPrice1" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="DiscontinuationDate" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="OnhandStockBalance" Type="Int32" />
           <Property Name="CatalogueStatus" Type="Int32" />
+          <Property Name="OnhandStockBalance" Type="Int64" />
           <Property Name="dependantTable" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="MPN_List">
@@ -6733,6 +6753,18 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__SaleOrder__Deliv__57BDDBAA">
+          <End Role="QuotationDelivery" Type="Self.QuotationDelivery" Multiplicity="1" />
+          <End Role="SaleOrderDetail" Type="Self.SaleOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuotationDelivery">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SaleOrderDetail">
+              <PropertyRef Name="DeliveryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__SaleOrder__quota__310335E5">
           <End Role="QuotationDetail" Type="Self.QuotationDetail" Multiplicity="0..1" />
           <End Role="SaleOrderDetail" Type="Self.SaleOrderDetail" Multiplicity="*" />
@@ -7459,6 +7491,10 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <End Role="QuotationDelivery" EntitySet="QuotationDeliveries" />
             <End Role="QuotationDetail" EntitySet="QuotationDetails" />
           </AssociationSet>
+          <AssociationSet Name="FK__SaleOrder__Deliv__57BDDBAA" Association="Self.FK__SaleOrder__Deliv__57BDDBAA">
+            <End Role="QuotationDelivery" EntitySet="QuotationDeliveries" />
+            <End Role="SaleOrderDetail" EntitySet="SaleOrderDetails" />
+          </AssociationSet>
           <AssociationSet Name="FK__SaleOrder__quota__310335E5" Association="Self.FK__SaleOrder__quota__310335E5">
             <End Role="QuotationDetail" EntitySet="QuotationDetails" />
             <End Role="SaleOrderDetail" EntitySet="SaleOrderDetails" />
@@ -7684,6 +7720,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           </FunctionImport>
           <FunctionImport Name="CurrencyViewAllForCombo" ReturnType="Collection(IMEModel.CurrencyViewAllForCombo_Result)" />
           <FunctionImport Name="CurrentDate" ReturnType="Collection(DateTime)" />
+          <FunctionImport Name="CustomerAll" ReturnType="Collection(IMEModel.CustomerAll_Result)" />
           <FunctionImport Name="CustomersDebits" ReturnType="Collection(IMEModel.CustomersDebits_Result)" />
           <FunctionImport Name="DefaultCurrencySet">
             <Parameter Name="currencyId" Mode="In" Type="Decimal" />
@@ -8285,6 +8322,40 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Type="Decimal" Name="currencyId" Nullable="false" Precision="18" Scale="0" />
           <Property Type="String" Name="currencySymbol" Nullable="true" />
           <Property Type="String" Name="currencyName" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="CustomerAll_Result">
+          <Property Type="String" Name="ID" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="c_name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="discountrate" Nullable="true" Precision="6" Scale="4" />
+          <Property Type="Int32" Name="paymentmethodID" Nullable="true" />
+          <Property Type="Int32" Name="creditlimit" Nullable="true" />
+          <Property Type="String" Name="webadress" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="payment_termID" Nullable="true" />
+          <Property Type="Int32" Name="representaryID" Nullable="true" />
+          <Property Type="Int32" Name="customerNoteID" Nullable="true" />
+          <Property Type="Int32" Name="representary2ID" Nullable="true" />
+          <Property Type="Int32" Name="accountrepresentaryID" Nullable="true" />
+          <Property Type="Int32" Name="isactive" Nullable="true" />
+          <Property Type="Int32" Name="rateIDinvoice" Nullable="true" />
+          <Property Type="String" Name="taxoffice" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="taxnumber" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="MainContactID" Nullable="true" />
+          <Property Type="String" Name="CurrTypeInv" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="CurrNameInv" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="CurrTypeQuo" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="CurrNameQuo" Nullable="true" MaxLength="15" />
+          <Property Type="Int32" Name="customerAccountantNoteID" Nullable="true" />
+          <Property Type="String" Name="extensionnumber" Nullable="true" MaxLength="10" />
+          <Property Type="Decimal" Name="factor" Nullable="true" Precision="20" Scale="5" />
+          <Property Type="Int32" Name="creditDay" Nullable="true" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="telephone" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="fax" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="categoryID" Nullable="true" />
+          <Property Type="Int32" Name="subcategoryID" Nullable="true" />
+          <Property Type="String" Name="ThirdPartyCode" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Capital" Nullable="true" MaxLength="20" />
+          <Property Type="Decimal" Name="Debit" Nullable="true" Precision="20" Scale="4" />
         </ComplexType>
         <ComplexType Name="CustomersDebits_Result">
           <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
@@ -9499,6 +9570,8 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="quotationDetailsId" ColumnName="quotationDetailsId" />
                 <ScalarProperty Name="SaleOrderID" ColumnName="SaleOrderID" />
                 <ScalarProperty Name="SentItemQuantity" ColumnName="SentItemQuantity" />
+                <ScalarProperty Name="DeliveryID" ColumnName="DeliveryID" />
+                <ScalarProperty Name="LandingCost" ColumnName="LandingCost" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -9925,9 +9998,8 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="Col1Break" ColumnName="Col1Break" />
                 <ScalarProperty Name="Col1Price" ColumnName="Col1Price" />
                 <ScalarProperty Name="DiscountedPrice1" ColumnName="DiscountedPrice1" />
-                <ScalarProperty Name="DiscontinuationDate" ColumnName="DiscontinuationDate" />
-                <ScalarProperty Name="OnhandStockBalance" ColumnName="OnhandStockBalance" />
                 <ScalarProperty Name="CatalogueStatus" ColumnName="CatalogueStatus" />
+                <ScalarProperty Name="OnhandStockBalance" ColumnName="OnhandStockBalance" />
                 <ScalarProperty Name="dependantTable" ColumnName="dependantTable" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -10183,6 +10255,44 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="CurrentDate" FunctionName="IMEModel.Store.CurrentDate" />
+          <FunctionImportMapping FunctionImportName="CustomerAll" FunctionName="IMEModel.Store.CustomerAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.CustomerAll_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="c_name" ColumnName="c_name" />
+                <ScalarProperty Name="discountrate" ColumnName="discountrate" />
+                <ScalarProperty Name="paymentmethodID" ColumnName="paymentmethodID" />
+                <ScalarProperty Name="creditlimit" ColumnName="creditlimit" />
+                <ScalarProperty Name="webadress" ColumnName="webadress" />
+                <ScalarProperty Name="payment_termID" ColumnName="payment_termID" />
+                <ScalarProperty Name="representaryID" ColumnName="representaryID" />
+                <ScalarProperty Name="customerNoteID" ColumnName="customerNoteID" />
+                <ScalarProperty Name="representary2ID" ColumnName="representary2ID" />
+                <ScalarProperty Name="accountrepresentaryID" ColumnName="accountrepresentaryID" />
+                <ScalarProperty Name="isactive" ColumnName="isactive" />
+                <ScalarProperty Name="rateIDinvoice" ColumnName="rateIDinvoice" />
+                <ScalarProperty Name="taxoffice" ColumnName="taxoffice" />
+                <ScalarProperty Name="taxnumber" ColumnName="taxnumber" />
+                <ScalarProperty Name="MainContactID" ColumnName="MainContactID" />
+                <ScalarProperty Name="CurrTypeInv" ColumnName="CurrTypeInv" />
+                <ScalarProperty Name="CurrNameInv" ColumnName="CurrNameInv" />
+                <ScalarProperty Name="CurrTypeQuo" ColumnName="CurrTypeQuo" />
+                <ScalarProperty Name="CurrNameQuo" ColumnName="CurrNameQuo" />
+                <ScalarProperty Name="customerAccountantNoteID" ColumnName="customerAccountantNoteID" />
+                <ScalarProperty Name="extensionnumber" ColumnName="extensionnumber" />
+                <ScalarProperty Name="factor" ColumnName="factor" />
+                <ScalarProperty Name="creditDay" ColumnName="creditDay" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="telephone" ColumnName="telephone" />
+                <ScalarProperty Name="fax" ColumnName="fax" />
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+                <ScalarProperty Name="subcategoryID" ColumnName="subcategoryID" />
+                <ScalarProperty Name="ThirdPartyCode" ColumnName="ThirdPartyCode" />
+                <ScalarProperty Name="Capital" ColumnName="Capital" />
+                <ScalarProperty Name="Debit" ColumnName="Debit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="CustomersDebits" FunctionName="IMEModel.Store.CustomersDebits">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.CustomersDebits_Result">

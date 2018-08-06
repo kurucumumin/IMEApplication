@@ -562,6 +562,11 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.DateTime>>("CurrentDate");
         }
     
+        public virtual ObjectResult<CustomerAll_Result> CustomerAll()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CustomerAll_Result>("CustomerAll");
+        }
+    
         public virtual ObjectResult<CustomersDebits_Result> CustomersDebits()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CustomersDebits_Result>("CustomersDebits");

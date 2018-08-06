@@ -96,7 +96,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearchCustomer.Location = new System.Drawing.Point(16, 48);
             this.txtSearchCustomer.Name = "txtSearchCustomer";
-            this.txtSearchCustomer.Size = new System.Drawing.Size(286, 21);
+            this.txtSearchCustomer.Size = new System.Drawing.Size(286, 24);
             this.txtSearchCustomer.TabIndex = 10;
             this.txtSearchCustomer.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearchCustomer_KeyDown);
             // 
@@ -107,7 +107,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(16, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(95, 15);
+            this.label1.Size = new System.Drawing.Size(114, 18);
             this.label1.TabIndex = 9;
             this.label1.Text = "Customer List";
             // 
@@ -121,7 +121,7 @@
             this.lbCustomerList.DisplayMember = "c_name";
             this.lbCustomerList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCustomerList.FormattingEnabled = true;
-            this.lbCustomerList.ItemHeight = 16;
+            this.lbCustomerList.ItemHeight = 20;
             this.lbCustomerList.Location = new System.Drawing.Point(16, 91);
             this.lbCustomerList.Margin = new System.Windows.Forms.Padding(4);
             this.lbCustomerList.Name = "lbCustomerList";
@@ -150,7 +150,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(1232, 63);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 15);
+            this.label2.Size = new System.Drawing.Size(52, 18);
             this.label2.TabIndex = 10;
             this.label2.Text = "Create";
             // 
@@ -249,12 +249,12 @@
             this.dgQuotations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgQuotations.DataSource = this.quotationBindingSource;
             this.dgQuotations.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgQuotations.Location = new System.Drawing.Point(3, 19);
+            this.dgQuotations.Location = new System.Drawing.Point(3, 22);
             this.dgQuotations.Name = "dgQuotations";
             this.dgQuotations.ReadOnly = true;
             this.dgQuotations.RowTemplate.Height = 24;
             this.dgQuotations.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgQuotations.Size = new System.Drawing.Size(929, 180);
+            this.dgQuotations.Size = new System.Drawing.Size(929, 177);
             this.dgQuotations.TabIndex = 0;
             this.dgQuotations.SelectionChanged += new System.EventHandler(this.dgQuotations_SelectionChanged);
             // 
@@ -277,13 +277,13 @@
             this.tableLayoutPanel5.Controls.Add(this.dgItems, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.panel3, 0, 1);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 14);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 17);
             this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 93F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(935, 240);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(935, 237);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
             // dgItems
@@ -305,7 +305,7 @@
             this.dgItems.Name = "dgItems";
             this.dgItems.RowTemplate.Height = 24;
             this.dgItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgItems.Size = new System.Drawing.Size(929, 141);
+            this.dgItems.Size = new System.Drawing.Size(929, 138);
             this.dgItems.TabIndex = 0;
             // 
             // chk
@@ -313,7 +313,7 @@
             this.chk.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.chk.HeaderText = "Choose";
             this.chk.Name = "chk";
-            this.chk.Width = 55;
+            this.chk.Width = 67;
             // 
             // ID
             // 
@@ -341,7 +341,7 @@
             this.panel3.Controls.Add(this.btnClear);
             this.panel3.Controls.Add(this.btnSelect);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(3, 150);
+            this.panel3.Location = new System.Drawing.Point(3, 147);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(929, 87);
             this.panel3.TabIndex = 1;
@@ -351,7 +351,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(81, 60);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(52, 15);
+            this.label3.Size = new System.Drawing.Size(62, 18);
             this.label3.TabIndex = 23;
             this.label3.Text = "Clear All";
             // 
@@ -360,7 +360,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(3, 60);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(57, 15);
+            this.label4.Size = new System.Drawing.Size(68, 18);
             this.label4.TabIndex = 22;
             this.label4.Text = "Select All";
             // 
@@ -386,7 +386,7 @@
             // 
             // FormSaleOrderCreate
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.ClientSize = new System.Drawing.Size(1281, 606);

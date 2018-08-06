@@ -3353,41 +3353,7 @@ namespace LoginForm
                        , RSInvoice.Currency
                        , RSInvoice.AirwayBillNumber
                        ).FirstOrDefault());
-
-                    #region Creates deliveryNote for PurchaseInvoices from RS
-
-                    //DeliveryNoteMaster dnm = new DeliveryNoteMaster();
-
-                    //string strVoucher = new Account.Services.TransactionsGeneralFill().VoucherNumberAutomaicGeneration(18, 0, new IMEEntities().CurrentDate().FirstOrDefault().Value, "DeliveryNoteMaster");
-                    //dnm.voucherNo = strVoucher;
-
-                    //SuffixPrefix infoSuffixPrefix = new SuffixPrefix();
-                    //infoSuffixPrefix = new SuffixPrefixSP().GetSuffixPrefixDetails(18, IME.CurrentDate().FirstOrDefault().Value);
-
-                    //dnm.DeliveryNoteNo = infoSuffixPrefix.prefix + strVoucher + infoSuffixPrefix.suffix;
-                    //dnm.voucherTypeId = 18;
-                    //dnm.suffixPrefixId = infoSuffixPrefix.suffixprefixId;
-                    //dnm.date = DateTime.Now;
-
-
-
-
-
-
-
-
-                    //dnm.ledgerId = null;
-                    //dnm.orderMasterId = "";
-                    //dnm.pricinglevelId = null;
-                    //dnm.narration = null;
-                    //dnm.exchangeRateId = null /*adsfasdf*/;
-                    //dnm.totalAmount = 0;
-                    //dnm.userId = Services.Utils.getCurrentUser().WorkerID;
-                    //dnm.financialYearId = Services.Utils.getManagement().CurrentFinancialYear;
-                    //dnm.salesAccount = null;
-
-                    #endregion
-
+                    
 
                     List<RS_InvoiceDetails> InvoiceDetails = new List<RS_InvoiceDetails>();
                     int a = 4;
