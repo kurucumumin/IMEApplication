@@ -510,6 +510,28 @@ namespace LoginForm.QuotationModule
                 groupBox11.Enabled = false;
                 groupBox7.Enabled = false;
             }
+
+            ControlEnableFalse(this);
+            
+        }
+
+
+        private void ControlEnableFalse(Control control)
+        {
+            foreach (Control item in control.Controls)
+            {
+                if (item.Controls != null)
+                {
+                    ControlEnableFalse(item);
+                }
+                else
+                {
+                    if(item.GetType() == typeof(DataGridView) || item.GetType() == typeof(Button) || item.GetType() == typeof(TextBox) || item.GetType() == typeof(NumericUpDown) || item.GetType() == typeof(ComboBox) || item.GetType() == typeof(DateTimePicker))
+                    {
+                        item.Enabled = false;
+                    }
+                }
+            }
         }
 
         //public FormSaleOrderAdd(Customer cus, List<SaleOrderDetail> list, string QuotationNOs, int sayac)

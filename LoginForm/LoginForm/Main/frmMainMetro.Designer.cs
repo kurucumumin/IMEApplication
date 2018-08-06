@@ -148,7 +148,7 @@ namespace LoginForm.Main
             this.pnlManagement.Controls.Add(this.button12);
             this.pnlManagement.Controls.Add(this.button14);
             this.pnlManagement.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlManagement.Location = new System.Drawing.Point(0, 364);
+            this.pnlManagement.Location = new System.Drawing.Point(0, 464);
             this.pnlManagement.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlManagement.Name = "pnlManagement";
             this.pnlManagement.Size = new System.Drawing.Size(291, 0);
@@ -195,7 +195,7 @@ namespace LoginForm.Main
             this.btnManagement.ForeColor = System.Drawing.Color.Black;
             this.btnManagement.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.btnManagement.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(255)))), ((int)(((byte)(173)))));
-            this.btnManagement.Location = new System.Drawing.Point(0, 314);
+            this.btnManagement.Location = new System.Drawing.Point(0, 414);
             this.btnManagement.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnManagement.Name = "btnManagement";
             this.btnManagement.Radius = 5;
@@ -225,7 +225,7 @@ namespace LoginForm.Main
             this.pnlFileLoader.Controls.Add(this.btnRSProList);
             this.pnlFileLoader.Controls.Add(this.btnRsInvoice);
             this.pnlFileLoader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlFileLoader.Location = new System.Drawing.Point(0, 314);
+            this.pnlFileLoader.Location = new System.Drawing.Point(0, 414);
             this.pnlFileLoader.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlFileLoader.Name = "pnlFileLoader";
             this.pnlFileLoader.Size = new System.Drawing.Size(291, 0);
@@ -528,7 +528,7 @@ namespace LoginForm.Main
             this.btnFileLoader.ForeColor = System.Drawing.Color.Black;
             this.btnFileLoader.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.btnFileLoader.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(255)))), ((int)(((byte)(173)))));
-            this.btnFileLoader.Location = new System.Drawing.Point(0, 264);
+            this.btnFileLoader.Location = new System.Drawing.Point(0, 364);
             this.btnFileLoader.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnFileLoader.Name = "btnFileLoader";
             this.btnFileLoader.Radius = 5;
@@ -557,7 +557,7 @@ namespace LoginForm.Main
             this.pnlDevelopment.Location = new System.Drawing.Point(0, 264);
             this.pnlDevelopment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlDevelopment.Name = "pnlDevelopment";
-            this.pnlDevelopment.Size = new System.Drawing.Size(291, 0);
+            this.pnlDevelopment.Size = new System.Drawing.Size(291, 100);
             this.pnlDevelopment.TabIndex = 3;
             // 
             // btnToBeInvoiced
