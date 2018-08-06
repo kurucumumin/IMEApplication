@@ -205,7 +205,8 @@ namespace LoginForm
         private void customerClicksearch()
         {
             string customerID = CustomerDataGrid.CurrentRow.Cells[ıDDataGridViewTextBoxColumn.Index].Value.ToString();
-            Customer c = (Customer)(IME.Customer_CustomerID(customerID).FirstOrDefault());
+            //Customer c = (Customer)(IME.Customer_CustomerID(customerID).FirstOrDefault());
+            Customer c = IME.Customers.Where(a => a.ID == customerID).FirstOrDefault();
             dateTimePicker1.Value = c.CreateDate.Value;
             CustomerCode.Text = c.ID;
             AdressList.DataSource = IME.CustomerAddresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
@@ -627,7 +628,8 @@ namespace LoginForm
             if (CustomerDataGrid.RowCount != 0)
             {
                 string customerID = CustomerDataGrid.CurrentRow.Cells[ıDDataGridViewTextBoxColumn.Index].Value.ToString();
-                Customer c = (Customer)IME.Customer_CustomerID(customerID).FirstOrDefault();
+               // Customer c = (Customer)IME.Customer_CustomerID(customerID).FirstOrDefault();
+               Customer c = IME.Customers.Where(a => a.ID == customerID).FirstOrDefault();
                 dateTimePicker1.Value = c.CreateDate.Value;
                 CustomerCode.Text = c.ID;
                 txt3partyCode.Text = c.ThirdPartyCode;
@@ -664,7 +666,8 @@ namespace LoginForm
             var CustomerList = IME.Customer_CustomerID(search).ToList();
             CustomerDataGrid.DataSource = CustomerList;
             string customerID = CustomerDataGrid.Rows[0].Cells["ID"].Value.ToString();
-            Customer c = (Customer)IME.Customer_CustomerID(customerID).FirstOrDefault();
+            //Customer c = (Customer)IME.Customer_CustomerID(customerID).FirstOrDefault();
+            Customer c = IME.Customers.Where(a => a.ID == customerID).FirstOrDefault();
             dateTimePicker1.Value = c.CreateDate.Value;
             CustomerCode.Text = c.ID;
             AdressList.DataSource = IME.CustomerAddresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
@@ -1019,7 +1022,8 @@ namespace LoginForm
                     btnUpdate.Text = "UPDATE";
 
                     Customer c = new Customer();
-                    c = (Customer)IME.Customer_CustomerID(CustomerCode.Text).FirstOrDefault();
+                    //c = (Customer)IME.Customer_CustomerID(CustomerCode.Text).FirstOrDefault();
+                    c = IME.Customers.Where(a => a.ID == CustomerCode.Text).FirstOrDefault();
                     if (rb_active.Checked) { c.isactive = 1; } else { c.isactive = 0; }
                     c.c_name = CustomerName.Text;
                     if (!String.IsNullOrEmpty(txt3partyCode.Text))
@@ -1162,7 +1166,8 @@ namespace LoginForm
 
                     //
                     Customer c = new Customer();
-                    c = (Customer)IME.Customer_CustomerID(CustomerCode.Text).FirstOrDefault();
+                    //c = (Customer)IME.Customer_CustomerID(CustomerCode.Text).FirstOrDefault();
+                    c= c = IME.Customers.Where(a => a.ID == CustomerCode.Text).FirstOrDefault();
                     IME.Customers.Remove(c);
                     IME.SaveChanges();
                 }
