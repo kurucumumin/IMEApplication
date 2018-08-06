@@ -1,26 +1,34 @@
-﻿using System;
-using System.Linq;
-using System.Windows.Forms;
-using LoginForm.DataSet;
-using LoginForm.ManagementModule;
+﻿using LoginForm.DataSet;
 using LoginForm.Services;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
-namespace LoginForm.CustomControls
+namespace LoginForm.ManagementModule
 {
-    public partial class ManagementControl : NavigationControl
+    public partial class FormManagmentControl : Form
     {
-        public ManagementControl()
+        IMEEntities IME = new IMEEntities();
+
+        public FormManagmentControl()
         {
             InitializeComponent();
         }
-        private void ManagementControl_Load(object sender, EventArgs e)
+
+        private void FormManagmentControl_Load(object sender, EventArgs e)
         {
             checkAuthorities();
         }
+
         public void checkAuthorities()
         {
-            if(Utils.getCurrentUser() != null)
+            if (Utils.getCurrentUser() != null)
             {
                 System.Collections.Generic.List<AuthorizationValue> authList = Utils.getCurrentUser().AuthorizationValues.ToList();
                 if (authList.Where(a => a.AuthorizationID == 1107).Count() <= 0)//Can Edit Low Margin Limit
@@ -53,22 +61,6 @@ namespace LoginForm.CustomControls
                     label2.Visible = false;
                     txtBranchCode.Visible = false;
                 }
-                //if (authList.Where(a => a.AuthorizationID == 1113).Count() <= 0)//Can Edit Data Exchange Rate
-                //{
-                //    exchangeRateToolStripMenuItem.Visible = false;
-                //}
-                //if (authList.Where(a => a.AuthorizationID == 1122).Count() <= 0)//Can Edit Terms of Payment
-                //{
-                //    termsOfPaymentToolStripMenuItem.Visible = false;
-                //}
-                //if (authList.Where(a => a.AuthorizationID == 1123).Count() <= 0)//Can Edit Roles and Authorities
-                //{
-                //    rolesAndAuthoritiesToolStripMenuItem.Visible = false;
-                //}
-                //if (authList.Where(a => a.AuthorizationID == 1124).Count() <= 0)//Can Edit Category and SubCategory
-                //{
-                //    mainCategorySubCategoryToolStripMenuItem1.Visible = false;
-                //}
             }
         }
         public void setManagementModule(Management m)
@@ -85,31 +77,6 @@ namespace LoginForm.CustomControls
             txtDataSeperator.Text = m.DataSeperetor;
             txtBranchCode.Text = m.Company.BranchCode;
         }
-
-
-        //private void exchangeRateToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    FormExchangeRate form = new FormExchangeRate();
-        //    form.ShowDialog();
-        //}
-
-        //private void termsOfPaymentToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    FormTermsOfPayment form = new FormTermsOfPayment();
-        //    form.ShowDialog();
-        //}
-
-        //private void mainCategorySubCategoryToolStripMenuItem1_Click(object sender, EventArgs e)
-        //{
-        //    FormCategorySubCategory form = new FormCategorySubCategory();
-        //    form.ShowDialog();
-        //}
-
-        //private void rolesAndAuthoritiesToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    FormRoleAuths form = new FormRoleAuths();
-        //    form.ShowDialog();
-        //}
 
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -142,6 +109,5 @@ namespace LoginForm.CustomControls
                 throw;
             }
         }
-        
     }
 }

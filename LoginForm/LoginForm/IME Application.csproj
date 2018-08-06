@@ -551,6 +551,12 @@
     <Compile Include="Main\frmMainMetro.Designer.cs">
       <DependentUpon>frmMainMetro.cs</DependentUpon>
     </Compile>
+    <Compile Include="Management\FormManagmentControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Management\FormManagmentControl.Designer.cs">
+      <DependentUpon>FormManagmentControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="MyClasses\Controls\AltoButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -1048,6 +1054,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Main\frmMainMetro.resx">
       <DependentUpon>frmMainMetro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Management\FormManagmentControl.resx">
+      <DependentUpon>FormManagmentControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OnOrder\frmAcikSiparis.resx">
       <DependentUpon>frmAcikSiparis.cs</DependentUpon>

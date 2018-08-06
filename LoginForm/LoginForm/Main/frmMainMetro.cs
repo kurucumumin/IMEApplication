@@ -9,6 +9,7 @@ using LoginForm.BackOrder;
 using LoginForm.Billing;
 using LoginForm.DataSet;
 using LoginForm.ItemModule;
+using LoginForm.ManagementModule;
 using LoginForm.nsSaleOrder;
 using LoginForm.PurchaseOrder;
 using LoginForm.QuotationModule;
@@ -99,35 +100,35 @@ namespace LoginForm.Main
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            managementControl1.Visible = !managementControl1.Visible;
-            //if (pnlManagement.Height == 0)
-            //{
-            //    ActivePanel.Height = 0;
+            //managementControl1.Visible = !managementControl1.Visible;
+            if (pnlManagement.Height == 0)
+            {
+                ActivePanel.Height = 0;
 
-            //    int h = 0;
-            //    maxSubPanelHeight = panel5.Height - 382;
-            //    foreach (Control item in pnlManagement.Controls)
-            //    {
-            //        h += item.Height + 6;
-            //    }
-            //    if (h > maxSubPanelHeight)
-            //    {
-            //        PH = maxSubPanelHeight;
-            //    }
-            //    else
-            //    {
-            //        PH = h;
-            //    }
-            //    ActivePanel = pnlManagement;
-            //    animMode = "Extend";
-            //    timer2.Start();
-            //}
-            //else
-            //{
-            //    PH = 0;
-            //    animMode = "Shrink";
-            //    timer2.Start();
-            //}
+                int h = 0;
+                maxSubPanelHeight = panel5.Height - 382;
+                foreach (Control item in pnlManagement.Controls)
+                {
+                    h += item.Height + 6;
+                }
+                if (h > maxSubPanelHeight)
+                {
+                    PH = maxSubPanelHeight;
+                }
+                else
+                {
+                    PH = h;
+                }
+                ActivePanel = pnlManagement;
+                animMode = "Extend";
+                timer2.Start();
+            }
+            else
+            {
+                PH = 0;
+                animMode = "Shrink";
+                timer2.Start();
+            }
         }
 
         private void frmMainMetro_Load(object sender, EventArgs e)
@@ -320,6 +321,36 @@ namespace LoginForm.Main
         {
             frmBackOrderMain form = new frmBackOrderMain();
             form.Show();
+        }
+
+        private void btnExchangeRate_Click(object sender, EventArgs e)
+        {
+            FormExchangeRate form = new FormExchangeRate();
+            form.ShowDialog();
+        }
+
+        private void btnTermsOfPayment_Click(object sender, EventArgs e)
+        {
+            FormTermsOfPayment form = new FormTermsOfPayment();
+            form.ShowDialog();
+        }
+
+        private void btnCategorySubCategory_Click(object sender, EventArgs e)
+        {
+            FormCategorySubCategory form = new FormCategorySubCategory();
+            form.ShowDialog();
+        }
+
+        private void btnRoleAuths_Click(object sender, EventArgs e)
+        {
+            FormRoleAuths form = new FormRoleAuths();
+            form.ShowDialog();
+        }
+
+        private void btnManagmentControl_Click(object sender, EventArgs e)
+        {
+            FormManagmentControl form = new FormManagmentControl();
+            form.ShowDialog();
         }
     }
 }
