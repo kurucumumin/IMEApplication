@@ -29,7 +29,7 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -518,11 +518,11 @@
     <Compile Include="DataSet\Worker.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="frmLoginMetro.cs">
+    <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLoginMetro.Designer.cs">
-      <DependentUpon>frmLoginMetro.cs</DependentUpon>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ExtensionMethods.cs" />
     <Compile Include="Helpers\RoundedRectangleF.cs" />
@@ -689,12 +689,6 @@
       <DependentUpon>FormTownAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="DataSet\classExchangeRate.cs" />
-    <Compile Include="FormLogin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormLogin.Designer.cs">
-      <DependentUpon>FormLogin.cs</DependentUpon>
-    </Compile>
     <Compile Include="IMEAccount\frmAllAccounts.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -973,6 +967,7 @@
     <Compile Include="MyClasses\TransacsionArgumanlari_.cs" />
     <Compile Include="Services\txtCreate.cs" />
     <Compile Include="Services\XmlToObject.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="StockConfirm\frmStockConfirm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1039,8 +1034,8 @@
     <EmbeddedResource Include="Customer\frmCityAdd.resx">
       <DependentUpon>frmCityAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLoginMetro.resx">
-      <DependentUpon>frmLoginMetro.cs</DependentUpon>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IMEAccount\frmReceiptOperation.resx">
       <DependentUpon>frmReceiptOperation.cs</DependentUpon>
@@ -1104,9 +1099,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Customer\FormTownAdd.resx">
       <DependentUpon>FormTownAdd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormLogin.resx">
-      <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IMEAccount\frmAllAccounts.resx">
       <DependentUpon>frmAllAccounts.cs</DependentUpon>

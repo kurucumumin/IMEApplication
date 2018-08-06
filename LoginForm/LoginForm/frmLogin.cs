@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace LoginForm
 {
-    public partial class frmLoginMetro : Form
+    public partial class frmLogin : Form
     {
         IMEEntities IME = new IMEEntities();
         public string LoginPerson { get; set; }
 
-        public frmLoginMetro()
+        public frmLogin()
         {
             InitializeComponent();
         }
@@ -65,7 +65,7 @@ namespace LoginForm
             System.Threading.Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator = ".";
             #endregion
 
-            
+
         }
 
         private void txtPassWord_KeyDown(object sender, KeyEventArgs e)

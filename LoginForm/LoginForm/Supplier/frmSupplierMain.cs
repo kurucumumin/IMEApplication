@@ -562,7 +562,7 @@ namespace LoginForm
         {
             SavedAddresses.Clear();
             SavedContacts.Clear();
-            FillSupplierInfo(dgSupplier.Rows[e.RowIndex].Cells[iDDataGridViewTextBoxColumn.Index].Value.ToString());
+            FillSupplierInfo(dgSupplier.Rows[e.RowIndex].Cells[dgID.Index].Value.ToString());
         }
 
         private void FillSupplierInfo(string SupplierID)
