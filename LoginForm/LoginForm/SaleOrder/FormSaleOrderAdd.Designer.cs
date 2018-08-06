@@ -1583,6 +1583,7 @@
             this.btnViewMore.Size = new System.Drawing.Size(52, 52);
             this.btnViewMore.TabIndex = 94;
             this.btnViewMore.UseVisualStyleBackColor = true;
+            this.btnViewMore.Click += new System.EventHandler(this.btnViewMore_Click);
             // 
             // dtpRequestedDelvDate
             // 

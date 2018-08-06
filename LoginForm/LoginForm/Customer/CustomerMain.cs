@@ -31,7 +31,7 @@ namespace LoginForm
 
             CustomerDataGrid.DataSource = null;
             //CustomerDataGrid.DataSource = IME.Customers.ToList(); ;
-            CustomerDataGrid.DataSource = IME.CustomerAlls.ToList();
+            CustomerDataGrid.DataSource = IME.CustomerAll().ToList();
             CustomerDataGrid.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
@@ -205,7 +205,7 @@ namespace LoginForm
         private void customerClicksearch()
         {
             string customerID = CustomerDataGrid.CurrentRow.Cells[ıDDataGridViewTextBoxColumn.Index].Value.ToString();
-            Customer c = IME.Customers.Where(a => a.ID == customerID).FirstOrDefault();
+            Customer c = (Customer)(IME.Customer_CustomerID(customerID).FirstOrDefault());
             dateTimePicker1.Value = c.CreateDate.Value;
             CustomerCode.Text = c.ID;
             AdressList.DataSource = IME.CustomerAddresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
@@ -578,7 +578,8 @@ namespace LoginForm
                 //                        c.ThirdPartyCode,
                 //                        c.Capital
                 //                    }).ToList();
-               List<Customer> CustomerList = IME.Customers.Where(a=>a.c_name.Contains(searchtxt)).OrderByDescending(de => de.CreateDate).ToList();
+                //List<Customer> CustomerList = IME.Customers.Where(a=>a.c_name.Contains(searchtxt)).OrderByDescending(de => de.CreateDate).ToList();
+                var CustomerList = IME.Customer_CustomerName(searchtxt).ToList();
                 CustomerDataGrid.DataSource = CustomerList;
             }
             else
@@ -619,13 +620,14 @@ namespace LoginForm
                 //                        ThirdPartyCode = c.ThirdPartyCode,
                 //                        c.Capital
                 //                    }).ToList();
-                List<Customer> CustomerList = IME.Customers.Where(a => a.c_name.Contains(searchtxt)).OrderByDescending(de => de.CreateDate).ToList();
+                //List<Customer> CustomerList = IME.Customers.Where(a => a.c_name.Contains(searchtxt)).OrderByDescending(de => de.CreateDate).ToList();
+                var CustomerList = IME.Customer_CustomerName(searchtxt).ToList();
                 CustomerDataGrid.DataSource = CustomerList;
             }
             if (CustomerDataGrid.RowCount != 0)
             {
                 string customerID = CustomerDataGrid.CurrentRow.Cells[ıDDataGridViewTextBoxColumn.Index].Value.ToString();
-                Customer c = IME.Customers.Where(a => a.ID == customerID).FirstOrDefault();
+                Customer c = (Customer)IME.Customer_CustomerID(customerID).FirstOrDefault();
                 dateTimePicker1.Value = c.CreateDate.Value;
                 CustomerCode.Text = c.ID;
                 txt3partyCode.Text = c.ThirdPartyCode;
@@ -658,10 +660,11 @@ namespace LoginForm
 
         private void QuotationCustomerSearch(string search)
         {
-            var CustomerList = IME.Customers.Where(a => a.ID.ToUpper().Contains(search.ToUpper())).ToList();
+            //var CustomerList = IME.Customers.Where(a => a.ID.ToUpper().Contains(search.ToUpper())).ToList();
+            var CustomerList = IME.Customer_CustomerID(search).ToList();
             CustomerDataGrid.DataSource = CustomerList;
             string customerID = CustomerDataGrid.Rows[0].Cells["ID"].Value.ToString();
-            Customer c = IME.Customers.Where(a => a.ID == customerID).FirstOrDefault();
+            Customer c = (Customer)IME.Customer_CustomerID(customerID).FirstOrDefault();
             dateTimePicker1.Value = c.CreateDate.Value;
             CustomerCode.Text = c.ID;
             AdressList.DataSource = IME.CustomerAddresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
@@ -958,7 +961,8 @@ namespace LoginForm
 
                 //for new customerCode
                 string custmrcode = "";
-                if (IME.Customers.ToList().Count != 0) custmrcode = IME.Customers.OrderByDescending(a => a.ID).FirstOrDefault().ID;
+                if (IME.Customers.ToList().Count != 0)
+                    custmrcode = IME.Customers.OrderByDescending(a => a.ID).FirstOrDefault().ID;
                 string custmrnumbers = string.Empty;
                 string newcustomercodenumbers = "";
                 string newcustomercodezeros = "";
@@ -1015,7 +1019,7 @@ namespace LoginForm
                     btnUpdate.Text = "UPDATE";
 
                     Customer c = new Customer();
-                    c = IME.Customers.Where(a => a.ID == CustomerCode.Text).FirstOrDefault();
+                    c = (Customer)IME.Customer_CustomerID(CustomerCode.Text).FirstOrDefault();
                     if (rb_active.Checked) { c.isactive = 1; } else { c.isactive = 0; }
                     c.c_name = CustomerName.Text;
                     if (!String.IsNullOrEmpty(txt3partyCode.Text))
@@ -1139,7 +1143,7 @@ namespace LoginForm
                 btnContactAdd.Enabled = false;
                 btnContactDelete.Enabled = false;
                 btnContactUpdate.Enabled = false;
-                var customer = IME.Customers.Where(a => a.ID == CustomerCode.Text).FirstOrDefault();
+                var customer = IME.Customer_CustomerID(CustomerCode.Text).FirstOrDefault();
                 if (customer.c_name == null)
                 {
                     //CREATE in cancel ı
@@ -1158,7 +1162,7 @@ namespace LoginForm
 
                     //
                     Customer c = new Customer();
-                    c = IME.Customers.Where(a => a.ID == CustomerCode.Text).FirstOrDefault();
+                    c = (Customer)IME.Customer_CustomerID(CustomerCode.Text).FirstOrDefault();
                     IME.Customers.Remove(c);
                     IME.SaveChanges();
                 }

@@ -89,5 +89,10 @@ namespace LoginForm.DataSet
         public virtual ICollection<SalesOperation> SalesOperations { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StockReserve> StockReserves { get; set; }
+
+        public static explicit operator Customer(Customer_CustomerID_Result v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
