@@ -3337,7 +3337,14 @@ namespace LoginForm
                         if (lines[1].Substring(64, 18).ToString().Trim() != "") RSInvoice.InvoiceGoodsValue = Convert.ToDecimal(lines[1].Substring(64, 18).ToString().Trim());
                         if (lines[1].Substring(82, 18).ToString().Trim().ToString().Trim() != "") RSInvoice.InvoiceNettValue = Convert.ToDecimal(lines[1].Substring(82, 18).ToString().Trim());
                         if (lines[1].Substring(100, 3).ToString().Trim() != "") RSInvoice.Currency = lines[1].Substring(100, 3).ToString().Trim();
-                        if (lines[1].Substring(113, 20).ToString().Trim() != "") RSInvoice.AirwayBillNumber = lines[1].Substring(120, 20).ToString().Trim();
+                        if (!String.IsNullOrEmpty(lines[1].Substring(113, 20).ToString().Trim()))
+                        {
+                            RSInvoice.AirwayBillNumber = "";
+                        }
+                        else
+                        {
+                            RSInvoice.AirwayBillNumber = lines[1].Substring(120, 20).ToString().Trim();
+                        }
                     }
                     
                     RSID = Convert.ToInt32(IME.RSInvoiceADD(
@@ -3378,7 +3385,15 @@ namespace LoginForm
                             if (lines[a].Substring(150, 3).ToString().Trim() != "") rs.CountryofOrigin = lines[a].Substring(150, 3).ToString().Trim();
                             if (lines[a].Substring(153, 40).ToString().Trim() != "") rs.ArticleDescription = lines[a].Substring(153, 40).ToString().Trim();
                             if (lines[a].Substring(193, 10).ToString().Trim() != "") rs.DeliveryNumber = decimal.Parse(lines[a].Substring(193, 10).ToString().Trim());
-                            if (lines[a].Substring(203, 6).ToString().Trim() != "") rs.DeliveryItemNumber = Int32.Parse(lines[a].Substring(203, 6).ToString().Trim());
+                            if (!String.IsNullOrEmpty(lines[a].Substring(203, 6).ToString().Trim()))
+                            {
+                                rs.DeliveryItemNumber = 0;
+                            }
+                            else
+                            {
+                                rs.DeliveryItemNumber = Int32.Parse(lines[a].Substring(203, 6).ToString().Trim());
+                            }
+                            //if (lines[a].Substring(203, 6).ToString().Trim() != "") rs.DeliveryItemNumber = Int32.Parse(lines[a].Substring(203, 6).ToString().Trim());
                             //For Stock Table
                             #region StockApplication
                             int poID = Convert.ToInt32(rs.PurchaseOrderNumber.ToString().Substring(1, rs.PurchaseOrderNumber.ToString().IndexOf("RS") - 1).ToString());

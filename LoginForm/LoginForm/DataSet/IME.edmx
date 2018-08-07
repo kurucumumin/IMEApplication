@@ -927,8 +927,6 @@
           <Property Name="DiscOnSubtotal" Type="decimal" Precision="20" Scale="4" />
           <Property Name="ExtraCharges" Type="decimal" Precision="20" Scale="4" />
           <Property Name="TotalMargin" Type="decimal" Precision="20" Scale="4" />
-          <Property Name="VoucherNo" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="cancelled" Type="bit" />
           <Property Name="invoiceNo" Type="nvarchar(max)" />
           <Property Name="exchangeRateID" Type="int" />
           <Property Name="SaleOrderID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
@@ -962,8 +960,6 @@
           <Property Name="Calibration" Type="bit" />
           <Property Name="ItemCost" Type="decimal" Precision="20" Scale="5" />
           <Property Name="No" Type="int" />
-          <Property Name="unitConversionId" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="deliveryNoteDetailsId" Type="numeric" Precision="18" Scale="0" />
           <Property Name="quotationDetailsId" Type="int" />
           <Property Name="SaleOrderID" Type="numeric" Precision="18" Scale="0" />
           <Property Name="SentItemQuantity" Type="int" />
@@ -1392,7 +1388,14 @@ warning 6002: The table/view 'IME.dbo.CompleteItems_v2' does not have a primary 
           <Property Name="MH_Code_Level_1" Type="nvarchar" MaxLength="50" />
           <Property Name="Col1Break" Type="int" />
           <Property Name="Col1Price" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="DiscountedPrice1" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="Col2Break" Type="int" />
+          <Property Name="Col2Price" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="Col3Break" Type="int" />
+          <Property Name="Col3Price" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="Col4Break" Type="int" />
+          <Property Name="Col4Price" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="Col5Break" Type="int" />
+          <Property Name="Col5Price" Type="decimal" Precision="18" Scale="3" />
           <Property Name="CatalogueStatus" Type="int" />
           <Property Name="OnhandStockBalance" Type="bigint" />
           <Property Name="dependantTable" Type="varchar" MaxLength="3" Nullable="false" />
@@ -3574,7 +3577,14 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
     [CompleteItems_v2].[MH_Code_Level_1] AS [MH_Code_Level_1], 
     [CompleteItems_v2].[Col1Break] AS [Col1Break], 
     [CompleteItems_v2].[Col1Price] AS [Col1Price], 
-    [CompleteItems_v2].[DiscountedPrice1] AS [DiscountedPrice1], 
+    [CompleteItems_v2].[Col2Break] AS [Col2Break], 
+    [CompleteItems_v2].[Col2Price] AS [Col2Price], 
+    [CompleteItems_v2].[Col3Break] AS [Col3Break], 
+    [CompleteItems_v2].[Col3Price] AS [Col3Price], 
+    [CompleteItems_v2].[Col4Break] AS [Col4Break], 
+    [CompleteItems_v2].[Col4Price] AS [Col4Price], 
+    [CompleteItems_v2].[Col5Break] AS [Col5Break], 
+    [CompleteItems_v2].[Col5Price] AS [Col5Price], 
     [CompleteItems_v2].[CatalogueStatus] AS [CatalogueStatus], 
     [CompleteItems_v2].[OnhandStockBalance] AS [OnhandStockBalance], 
     [CompleteItems_v2].[dependantTable] AS [dependantTable]
@@ -5137,8 +5147,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="DiscOnSubtotal" Type="Decimal" Precision="20" Scale="4" />
           <Property Name="ExtraCharges" Type="Decimal" Precision="20" Scale="4" />
           <Property Name="TotalMargin" Type="Decimal" Precision="20" Scale="4" />
-          <Property Name="VoucherNo" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="cancelled" Type="Boolean" />
           <Property Name="invoiceNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="exchangeRateID" Type="Int32" />
           <Property Name="SaleOrderID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
@@ -5186,8 +5194,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="Calibration" Type="Boolean" />
           <Property Name="ItemCost" Type="Decimal" Precision="20" Scale="5" />
           <Property Name="No" Type="Int32" />
-          <Property Name="unitConversionId" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="deliveryNoteDetailsId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="quotationDetailsId" Type="Int32" />
           <Property Name="SaleOrderID" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="SentItemQuantity" Type="Int32" />
@@ -5666,7 +5672,14 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="MH_Code_Level_1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Col1Break" Type="Int32" />
           <Property Name="Col1Price" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="DiscountedPrice1" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Col2Break" Type="Int32" />
+          <Property Name="Col2Price" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Col3Break" Type="Int32" />
+          <Property Name="Col3Price" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Col4Break" Type="Int32" />
+          <Property Name="Col4Price" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Col5Break" Type="Int32" />
+          <Property Name="Col5Price" Type="Decimal" Precision="18" Scale="3" />
           <Property Name="CatalogueStatus" Type="Int32" />
           <Property Name="OnhandStockBalance" Type="Int64" />
           <Property Name="dependantTable" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
@@ -9609,8 +9622,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="DiscOnSubtotal" ColumnName="DiscOnSubtotal" />
                 <ScalarProperty Name="ExtraCharges" ColumnName="ExtraCharges" />
                 <ScalarProperty Name="TotalMargin" ColumnName="TotalMargin" />
-                <ScalarProperty Name="VoucherNo" ColumnName="VoucherNo" />
-                <ScalarProperty Name="cancelled" ColumnName="cancelled" />
                 <ScalarProperty Name="invoiceNo" ColumnName="invoiceNo" />
                 <ScalarProperty Name="exchangeRateID" ColumnName="exchangeRateID" />
                 <ScalarProperty Name="SaleOrderID" ColumnName="SaleOrderID" />
@@ -9645,8 +9656,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="Calibration" ColumnName="Calibration" />
                 <ScalarProperty Name="ItemCost" ColumnName="ItemCost" />
                 <ScalarProperty Name="No" ColumnName="No" />
-                <ScalarProperty Name="unitConversionId" ColumnName="unitConversionId" />
-                <ScalarProperty Name="deliveryNoteDetailsId" ColumnName="deliveryNoteDetailsId" />
                 <ScalarProperty Name="quotationDetailsId" ColumnName="quotationDetailsId" />
                 <ScalarProperty Name="SaleOrderID" ColumnName="SaleOrderID" />
                 <ScalarProperty Name="SentItemQuantity" ColumnName="SentItemQuantity" />
@@ -10077,7 +10086,14 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="MH_Code_Level_1" ColumnName="MH_Code_Level_1" />
                 <ScalarProperty Name="Col1Break" ColumnName="Col1Break" />
                 <ScalarProperty Name="Col1Price" ColumnName="Col1Price" />
-                <ScalarProperty Name="DiscountedPrice1" ColumnName="DiscountedPrice1" />
+                <ScalarProperty Name="Col2Break" ColumnName="Col2Break" />
+                <ScalarProperty Name="Col2Price" ColumnName="Col2Price" />
+                <ScalarProperty Name="Col3Break" ColumnName="Col3Break" />
+                <ScalarProperty Name="Col3Price" ColumnName="Col3Price" />
+                <ScalarProperty Name="Col4Break" ColumnName="Col4Break" />
+                <ScalarProperty Name="Col4Price" ColumnName="Col4Price" />
+                <ScalarProperty Name="Col5Break" ColumnName="Col5Break" />
+                <ScalarProperty Name="Col5Price" ColumnName="Col5Price" />
                 <ScalarProperty Name="CatalogueStatus" ColumnName="CatalogueStatus" />
                 <ScalarProperty Name="OnhandStockBalance" ColumnName="OnhandStockBalance" />
                 <ScalarProperty Name="dependantTable" ColumnName="dependantTable" />

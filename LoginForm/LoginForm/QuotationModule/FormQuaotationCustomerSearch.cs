@@ -83,7 +83,7 @@ namespace LoginForm.QuotationModule
             this.Text = "Customer Search";
             label1.Text = "Customer Code";
             label2.Text = "Customer Name";
-            button1.Text = "Add New Customer";
+            label3.Text = "Add New Customer";
             CustomerCode.Text = QuotationUtils.customersearchID.ToString();
             CustomerName.Text = QuotationUtils.customersearchname;
             List<Customer> c = QuotationUtils.CustomerSearch();
@@ -105,7 +105,7 @@ namespace LoginForm.QuotationModule
             this.Text = "Supplier Search";
             label1.Text = "Supplier Code";
             label2.Text = "Supplier Name";
-            button1.Text = "Add New Supplier";
+            label3.Text = "Add New Supplier";
             CustomerCode.Text = classSupplier.suppliersearchID.ToString();
             CustomerName.Text = classSupplier.suppliersearchname;
             List<Supplier> c = classSupplier.SupplierSearch();
