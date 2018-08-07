@@ -3361,11 +3361,10 @@
             // 
             // lblTotalExtra
             // 
-            this.lblTotalExtra.AutoSize = true;
-            this.lblTotalExtra.Location = new System.Drawing.Point(259, 60);
+            this.lblTotalExtra.Location = new System.Drawing.Point(196, 60);
             this.lblTotalExtra.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTotalExtra.Name = "lblTotalExtra";
-            this.lblTotalExtra.Size = new System.Drawing.Size(36, 17);
+            this.lblTotalExtra.Size = new System.Drawing.Size(104, 17);
             this.lblTotalExtra.TabIndex = 57;
             this.lblTotalExtra.Text = "0,00";
             this.lblTotalExtra.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -3404,13 +3403,12 @@
             // 
             // lbltotal
             // 
-            this.lbltotal.AutoSize = true;
-            this.lbltotal.Location = new System.Drawing.Point(259, 32);
+            this.lbltotal.Location = new System.Drawing.Point(196, 32);
             this.lbltotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbltotal.Name = "lbltotal";
-            this.lbltotal.Size = new System.Drawing.Size(28, 17);
+            this.lbltotal.Size = new System.Drawing.Size(104, 17);
             this.lbltotal.TabIndex = 53;
-            this.lbltotal.Text = "0,0";
+            this.lbltotal.Text = "0,00";
             this.lbltotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.lbltotal.TextChanged += new System.EventHandler(this.lbltotal_TextChanged);
             // 
@@ -3449,13 +3447,12 @@
             // 
             // lblVatTotal
             // 
-            this.lblVatTotal.AutoSize = true;
-            this.lblVatTotal.Location = new System.Drawing.Point(259, 87);
+            this.lblVatTotal.Location = new System.Drawing.Point(196, 87);
             this.lblVatTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblVatTotal.Name = "lblVatTotal";
-            this.lblVatTotal.Size = new System.Drawing.Size(44, 17);
+            this.lblVatTotal.Size = new System.Drawing.Size(104, 17);
             this.lblVatTotal.TabIndex = 18;
-            this.lblVatTotal.Text = "0,000";
+            this.lblVatTotal.Text = "0,00";
             this.lblVatTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.lblVatTotal.TextChanged += new System.EventHandler(this.lblVatTotal_TextChanged);
             // 
@@ -3505,13 +3502,12 @@
             // 
             // lblGrossTotal
             // 
-            this.lblGrossTotal.AutoSize = true;
-            this.lblGrossTotal.Location = new System.Drawing.Point(259, 117);
+            this.lblGrossTotal.Location = new System.Drawing.Point(196, 117);
             this.lblGrossTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblGrossTotal.Name = "lblGrossTotal";
-            this.lblGrossTotal.Size = new System.Drawing.Size(52, 17);
+            this.lblGrossTotal.Size = new System.Drawing.Size(104, 17);
             this.lblGrossTotal.TabIndex = 12;
-            this.lblGrossTotal.Text = "0,0000";
+            this.lblGrossTotal.Text = "0,00";
             this.lblGrossTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.lblGrossTotal.TextChanged += new System.EventHandler(this.lblGrossTotal_TextChanged);
             // 
