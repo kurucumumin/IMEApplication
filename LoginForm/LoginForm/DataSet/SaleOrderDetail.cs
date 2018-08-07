@@ -37,8 +37,6 @@ namespace LoginForm.DataSet
         public Nullable<bool> Calibration { get; set; }
         public Nullable<decimal> ItemCost { get; set; }
         public Nullable<int> No { get; set; }
-        public Nullable<decimal> unitConversionId { get; set; }
-        public Nullable<decimal> deliveryNoteDetailsId { get; set; }
         public Nullable<int> quotationDetailsId { get; set; }
         public Nullable<decimal> SaleOrderID { get; set; }
         public Nullable<int> SentItemQuantity { get; set; }
