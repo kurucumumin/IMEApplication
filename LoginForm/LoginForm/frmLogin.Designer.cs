@@ -37,7 +37,6 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.bunifuElipse2 = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.btnExit = new AltoControls.AltoButton();
             this.btnLogin = new AltoControls.AltoButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -61,18 +60,19 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(70, 242);
+            this.panel1.Location = new System.Drawing.Point(65, 242);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(29, 32);
+            this.panel1.Size = new System.Drawing.Size(29, 38);
             this.panel1.TabIndex = 15;
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = global::LoginForm.Properties.Resources.if_user_173122;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(29, 32);
+            this.pictureBox1.Size = new System.Drawing.Size(29, 38);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -93,17 +93,19 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.pictureBox2);
-            this.panel2.Location = new System.Drawing.Point(64, 307);
+            this.panel2.Location = new System.Drawing.Point(63, 307);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(33, 32);
+            this.panel2.Size = new System.Drawing.Size(33, 38);
             this.panel2.TabIndex = 16;
             // 
             // pictureBox2
             // 
             this.pictureBox2.BackgroundImage = global::LoginForm.Properties.Resources.if_icon_24_key_314756;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox2.Location = new System.Drawing.Point(0, 0);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(33, 32);
+            this.pictureBox2.Size = new System.Drawing.Size(33, 38);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
@@ -111,7 +113,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::LoginForm.Properties.Resources.logo;
-            this.pictureBox3.Location = new System.Drawing.Point(115, 39);
+            this.pictureBox3.Location = new System.Drawing.Point(115, 12);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(169, 171);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -122,28 +124,6 @@
             // 
             this.bunifuElipse2.ElipseRadius = 30;
             this.bunifuElipse2.TargetControl = this.pictureBox3;
-            // 
-            // btnExit
-            // 
-            this.btnExit.Active1 = System.Drawing.Color.AliceBlue;
-            this.btnExit.Active2 = System.Drawing.Color.AliceBlue;
-            this.btnExit.BackColor = System.Drawing.Color.Transparent;
-            this.btnExit.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnExit.Font = new System.Drawing.Font("Comic Sans MS", 10F, System.Drawing.FontStyle.Bold);
-            this.btnExit.ForeColor = System.Drawing.Color.DimGray;
-            this.btnExit.Inactive1 = System.Drawing.Color.AliceBlue;
-            this.btnExit.Inactive2 = System.Drawing.Color.AliceBlue;
-            this.btnExit.Location = new System.Drawing.Point(351, 12);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Radius = 5;
-            this.btnExit.Size = new System.Drawing.Size(36, 33);
-            this.btnExit.Stroke = false;
-            this.btnExit.StrokeColor = System.Drawing.Color.Gray;
-            this.btnExit.TabIndex = 18;
-            this.btnExit.Text = "X";
-            this.btnExit.Transparency = false;
-            this.btnExit.Visible = false;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnLogin
             // 
@@ -172,18 +152,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
-            this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(399, 479);
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.txtPassWord);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnLogin);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(322, 450);
             this.Name = "frmLogin";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -210,7 +187,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse2;
-        private AltoControls.AltoButton btnExit;
         private AltoControls.AltoButton btnLogin;
     }
 }
