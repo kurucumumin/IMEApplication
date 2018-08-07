@@ -1425,56 +1425,60 @@ namespace LoginForm.QuotationModule
                 #endregion
 
                 #region Low Margin Mark Clear
-                if (txtLithium.Text != "")
+                if (!String.IsNullOrEmpty(txtLithium.Text) && txtLithium.Text == "Y")
                 {
                     label64.BackColor = Color.Red;
-                    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LI"].Style.BackColor = Color.Ivory;
+                    //dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LI"].Style.BackColor = Color.Ivory;
+                    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LI"].Style.BackColor = Color.Red;
                 }
-                else
-                {
-                    label64.BackColor = Color.White;
-                    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LI"].Style.BackColor = Color.White;
-                }
-                if (txtShipping.Text != "")
+                //else
+                //{
+                //    label64.BackColor = Color.White;
+                //    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LI"].Style.BackColor = Color.White;
+                //}
+                if (!String.IsNullOrEmpty(txtShipping.Text) && txtShipping.Text =="Y")
                 {
                     label63.BackColor = Color.Red;
                     dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["HS"].Style.BackColor = Color.Red;
 
                 }
-                else
-                {
-                    label63.BackColor = Color.White;
-                    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["HS"].Style.BackColor = Color.White;
-                }
+                //else
+                //{
+                //    label63.BackColor = Color.White;
+                //    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["HS"].Style.BackColor = Color.White;
+                //}
 
-                if (txtEnvironment.Text != "")
+                if (!String.IsNullOrEmpty(txtEnvironment.Text) && txtEnvironment.Text == "Y")
                 {
                     label53.BackColor = Color.Red;
                 }
-                else
-                {
-                    label53.BackColor = Color.White;
-                }
+                //else
+                //{
+                //    label53.BackColor = Color.White;
+                //}
 
-                if (txtCalibrationInd.Text != "" && txtCalibrationInd.Text != null && txtCalibrationInd.Text != "N")
+                //if (txtCalibrationInd.Text != "" && txtCalibrationInd.Text != null && txtCalibrationInd.Text != "N")
+                if (!String.IsNullOrEmpty(txtCalibrationInd.Text) && txtCalibrationInd.Text == "Y")
                 {
                     label22.BackColor = Color.Red;
-                    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["CL"].Style.BackColor = Color.Green;
+                    //dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["CL"].Style.BackColor = Color.Green;
+                    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["CL"].Style.BackColor = Color.Red;
                 }
-                else
-                {
-                    label22.BackColor = Color.White;
-                    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["CL"].Style.BackColor = Color.White;
-                }
+                //else
+                //{
+                //    label22.BackColor = Color.White;
+                //    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["CL"].Style.BackColor = Color.White;
+                //}
 
-                if (txtLicenceType.Text != "" && txtLicenceType.Text != null)
+                if (!String.IsNullOrEmpty(txtLicenceType.Text))
                 {
-                    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LC"].Style.BackColor = Color.BurlyWood;
+                    //dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LC"].Style.BackColor = Color.BurlyWood;
+                    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LC"].Style.BackColor = Color.Red;
                 }
-                else
-                {
-                    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LC"].Style.BackColor = Color.White;
-                }
+                //else
+                //{
+                //    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LC"].Style.BackColor = Color.White;
+                //}
                 #endregion
 
             }
