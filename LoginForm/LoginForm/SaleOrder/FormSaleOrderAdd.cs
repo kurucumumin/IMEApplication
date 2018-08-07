@@ -2073,8 +2073,8 @@ namespace LoginForm.QuotationModule
                 txtRSStock.Text = ItemTabDetails.OnhandStockBalance.ToString();
                 txtRSOnOrder.Text = ItemTabDetails.QuantityonOrder.ToString();
                 txtDiscontinuationDate.Text = ItemTabDetails.DiscontinuationDate;
-                txtRunOn.Text = ItemTabDetails.Runon.ToString();
-                txtReferral.Text = ItemTabDetails.Referral.ToString();
+                txtRunOn.Text = ItemTabDetails.Runon?.ToString();
+                txtReferral.Text = ItemTabDetails.Referral?.ToString();
                 txtLicenceType.Text = ItemTabDetails.LicenceType;
 
                 #region ItemMarginFiller
@@ -2165,7 +2165,7 @@ namespace LoginForm.QuotationModule
                 }
                 else
                 {
-                    label64.BackColor = Color.White;
+                    label64.BackColor = Color.AliceBlue;
                     dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["LI"].Style.BackColor = Color.White;
                 }
                 if (txtShipping.Text != "")
@@ -2176,7 +2176,7 @@ namespace LoginForm.QuotationModule
                 }
                 else
                 {
-                    label63.BackColor = Color.White;
+                    label63.BackColor = Color.AliceBlue;
                     dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["HS"].Style.BackColor = Color.White;
                 }
 
@@ -2186,7 +2186,7 @@ namespace LoginForm.QuotationModule
                 }
                 else
                 {
-                    label53.BackColor = Color.White;
+                    label53.BackColor = Color.AliceBlue;
                 }
 
                 if (txtCalibrationInd.Text != "" && txtCalibrationInd.Text != null && txtCalibrationInd.Text != "N")
@@ -2196,7 +2196,7 @@ namespace LoginForm.QuotationModule
                 }
                 else
                 {
-                    label22.BackColor = Color.White;
+                    label22.BackColor = Color.AliceBlue;
                     dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["CL"].Style.BackColor = Color.White;
                 }
 
@@ -3077,7 +3077,7 @@ namespace LoginForm.QuotationModule
             }
             else
             {
-                label53.BackColor = Color.White;
+                label53.BackColor = Color.AliceBlue;
             }
             if (isCalibrationInd)
             {

@@ -77,7 +77,7 @@ namespace LoginForm.nsSaleOrder
 
             foreach (DataGridViewRow item in quotList)
             {
-                var quotNo = item.Cells["QuotationNo"].Value.ToString();
+                var quotNo = item.Cells[dgQuotationNo.Index].Value.ToString();
                 Quotation quot = IME.Quotations.Where(q => q.QuotationNo == quotNo).FirstOrDefault();
                 tempItemList.AddRange(quot.QuotationDetails);
             }
@@ -96,7 +96,7 @@ namespace LoginForm.nsSaleOrder
             {
                 if(item.Cells[0].Value != null && (bool)item.Cells[0].Value == true)
                 {
-                    QuotationDetail qd = itemList.Where(x => x.ID == Convert.ToInt32(item.Cells["ID"].Value)).First();
+                    QuotationDetail qd = itemList.Where(x => x.ID == Convert.ToInt32(item.Cells[dgID.Index].Value)).First();
                     list.Add(qd);
                 }
             }

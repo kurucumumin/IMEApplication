@@ -87,29 +87,29 @@ namespace LoginForm.CustomControls
         }
 
 
-        //private void exchangeRateToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    FormExchangeRate form = new FormExchangeRate();
-        //    form.ShowDialog();
-        //}
+        private void exchangeRateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormExchangeRate form = new FormExchangeRate();
+            form.ShowDialog();
+        }
 
-        //private void termsOfPaymentToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    FormTermsOfPayment form = new FormTermsOfPayment();
-        //    form.ShowDialog();
-        //}
+        private void termsOfPaymentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormTermsOfPayment form = new FormTermsOfPayment();
+            form.ShowDialog();
+        }
 
-        //private void mainCategorySubCategoryToolStripMenuItem1_Click(object sender, EventArgs e)
-        //{
-        //    FormCategorySubCategory form = new FormCategorySubCategory();
-        //    form.ShowDialog();
-        //}
+        private void mainCategorySubCategoryToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FormCategorySubCategory form = new FormCategorySubCategory();
+            form.ShowDialog();
+        }
 
-        //private void rolesAndAuthoritiesToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    FormRoleAuths form = new FormRoleAuths();
-        //    form.ShowDialog();
-        //}
+        private void rolesAndAuthoritiesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormRoleAuths form = new FormRoleAuths();
+            form.ShowDialog();
+        }
 
         private void btnSave_Click(object sender, EventArgs e)
         {

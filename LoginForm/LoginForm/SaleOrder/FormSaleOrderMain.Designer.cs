@@ -56,7 +56,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btnPrint = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.dgSales = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.dgSales = new System.Windows.Forms.DataGridView();
             this.gridRightClick = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.sentToPurchaseOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sentToLogoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -492,7 +492,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private DevComponents.DotNetBar.Controls.DataGridViewX dgSales;
+        private System.Windows.Forms.DataGridView dgSales;
         private System.Windows.Forms.ContextMenuStrip gridRightClick;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem sentToPurchaseOrderToolStripMenuItem;

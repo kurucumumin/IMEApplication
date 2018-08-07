@@ -66,23 +66,28 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 13);
+            this.label1.Location = new System.Drawing.Point(12, 16);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(123, 13);
+            this.label1.Size = new System.Drawing.Size(166, 17);
             this.label1.TabIndex = 1;
             this.label1.Text = "Order Number Beginning";
             // 
             // txtOrderNumber
             // 
-            this.txtOrderNumber.Location = new System.Drawing.Point(12, 40);
+            this.txtOrderNumber.Location = new System.Drawing.Point(16, 49);
+            this.txtOrderNumber.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtOrderNumber.Name = "txtOrderNumber";
-            this.txtOrderNumber.Size = new System.Drawing.Size(120, 20);
+            this.txtOrderNumber.Size = new System.Drawing.Size(159, 22);
             this.txtOrderNumber.TabIndex = 2;
             // 
             // dgPurchase
             // 
             this.dgPurchase.AllowUserToAddRows = false;
             this.dgPurchase.AllowUserToDeleteRows = false;
+            this.dgPurchase.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgPurchase.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgPurchase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgPurchase.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -102,9 +107,10 @@
             this.UPIME,
             this.Total,
             this.SaleID});
-            this.dgPurchase.Location = new System.Drawing.Point(12, 66);
+            this.dgPurchase.Location = new System.Drawing.Point(16, 81);
+            this.dgPurchase.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgPurchase.Name = "dgPurchase";
-            this.dgPurchase.Size = new System.Drawing.Size(1320, 556);
+            this.dgPurchase.Size = new System.Drawing.Size(1309, 627);
             this.dgPurchase.TabIndex = 10;
             this.dgPurchase.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgPurchase_DataError);
             // 
@@ -113,7 +119,7 @@
             this.SLC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.SLC.HeaderText = "SLC";
             this.SLC.Name = "SLC";
-            this.SLC.Width = 33;
+            this.SLC.Width = 40;
             // 
             // c_name
             // 
@@ -205,105 +211,125 @@
             // 
             // btnClose
             // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
-            this.btnClose.Location = new System.Drawing.Point(1271, 628);
+            this.btnClose.Location = new System.Drawing.Point(1256, 718);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(52, 52);
+            this.btnClose.Size = new System.Drawing.Size(69, 64);
             this.btnClose.TabIndex = 13;
-            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnExcel
             // 
+            this.btnExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExcel.Image = global::LoginForm.Properties.Resources.if_Document_file_export_sending_exit_send_1886950;
-            this.btnExcel.Location = new System.Drawing.Point(985, 628);
+            this.btnExcel.Location = new System.Drawing.Point(874, 718);
+            this.btnExcel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnExcel.Name = "btnExcel";
-            this.btnExcel.Size = new System.Drawing.Size(52, 52);
+            this.btnExcel.Size = new System.Drawing.Size(69, 64);
             this.btnExcel.TabIndex = 12;
-            this.btnExcel.UseVisualStyleBackColor = true;
+            this.btnExcel.UseVisualStyleBackColor = false;
             this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
             // btnCreate
             // 
+            this.btnCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCreate.Image = global::LoginForm.Properties.Resources.icons8_Edit_Property_32;
-            this.btnCreate.Location = new System.Drawing.Point(1135, 628);
+            this.btnCreate.Location = new System.Drawing.Point(1074, 718);
+            this.btnCreate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(52, 52);
+            this.btnCreate.Size = new System.Drawing.Size(69, 64);
             this.btnCreate.TabIndex = 11;
-            this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnCreate.UseVisualStyleBackColor = false;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnSelect
             // 
+            this.btnSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSelect.Image = global::LoginForm.Properties.Resources.if_Select_46755;
-            this.btnSelect.Location = new System.Drawing.Point(12, 630);
+            this.btnSelect.Location = new System.Drawing.Point(16, 718);
+            this.btnSelect.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(52, 52);
+            this.btnSelect.Size = new System.Drawing.Size(69, 64);
             this.btnSelect.TabIndex = 16;
-            this.btnSelect.UseVisualStyleBackColor = true;
+            this.btnSelect.UseVisualStyleBackColor = false;
             this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click_1);
             // 
             // btnClear
             // 
+            this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnClear.Image = global::LoginForm.Properties.Resources.if_Line_ui_icons_Svg_03_1465842;
-            this.btnClear.Location = new System.Drawing.Point(92, 630);
+            this.btnClear.Location = new System.Drawing.Point(123, 718);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(52, 52);
+            this.btnClear.Size = new System.Drawing.Size(69, 64);
             this.btnClear.TabIndex = 17;
-            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.UseVisualStyleBackColor = false;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click_1);
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 686);
+            this.label2.Location = new System.Drawing.Point(17, 787);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(51, 13);
+            this.label2.Size = new System.Drawing.Size(66, 17);
             this.label2.TabIndex = 18;
             this.label2.Text = "Select All";
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(98, 686);
+            this.label3.Location = new System.Drawing.Point(127, 787);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 13);
+            this.label3.Size = new System.Drawing.Size(60, 17);
             this.label3.TabIndex = 19;
             this.label3.Text = "Clear All";
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(973, 679);
+            this.label4.Location = new System.Drawing.Point(858, 787);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(78, 13);
+            this.label4.Size = new System.Drawing.Size(101, 17);
             this.label4.TabIndex = 20;
             this.label4.Text = "Export to Excel";
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(1081, 679);
+            this.label5.Location = new System.Drawing.Point(1003, 787);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(156, 13);
+            this.label5.Size = new System.Drawing.Size(210, 17);
             this.label5.TabIndex = 21;
             this.label5.Text = "Create an Order That is Chosen";
             // 
             // label6
             // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(1282, 679);
+            this.label6.Location = new System.Drawing.Point(1269, 787);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(33, 13);
+            this.label6.Size = new System.Drawing.Size(43, 17);
             this.label6.TabIndex = 22;
             this.label6.Text = "Close";
             // 
             // NewPurchaseOrder
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
-            this.ClientSize = new System.Drawing.Size(1344, 701);
+            this.ClientSize = new System.Drawing.Size(1338, 810);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -317,6 +343,8 @@
             this.Controls.Add(this.dgPurchase);
             this.Controls.Add(this.txtOrderNumber);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MinimumSize = new System.Drawing.Size(757, 374);
             this.Name = "NewPurchaseOrder";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NewPurchaseOrder";
