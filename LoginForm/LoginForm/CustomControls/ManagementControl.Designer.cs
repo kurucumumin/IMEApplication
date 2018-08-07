@@ -117,7 +117,7 @@
             this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnSave.Image = global::LoginForm.Properties.Resources.if_floppy_285657;
             this.btnSave.Location = new System.Drawing.Point(191, 430);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(68, 50);
             this.btnSave.TabIndex = 60;
@@ -126,7 +126,7 @@
             // 
             // label67
             // 
-            this.label67.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label67.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label67.AutoSize = true;
             this.label67.Location = new System.Drawing.Point(201, 484);
             this.label67.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
