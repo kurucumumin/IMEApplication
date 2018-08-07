@@ -52,18 +52,20 @@
             this.txtID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtID.Font = new System.Drawing.Font("Century", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.txtID.Location = new System.Drawing.Point(100, 242);
+            this.txtID.Location = new System.Drawing.Point(75, 197);
+            this.txtID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(217, 38);
+            this.txtID.Size = new System.Drawing.Size(163, 32);
             this.txtID.TabIndex = 13;
             this.txtID.Text = "admin";
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(70, 242);
+            this.panel1.Location = new System.Drawing.Point(40, 197);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(29, 32);
+            this.panel1.Size = new System.Drawing.Size(32, 35);
             this.panel1.TabIndex = 15;
             // 
             // pictureBox1
@@ -71,8 +73,9 @@
             this.pictureBox1.BackgroundImage = global::LoginForm.Properties.Resources.if_user_173122;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(29, 32);
+            this.pictureBox1.Size = new System.Drawing.Size(32, 35);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -83,27 +86,30 @@
             this.txtPassWord.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPassWord.Font = new System.Drawing.Font("Century", 15F, System.Drawing.FontStyle.Bold);
             this.txtPassWord.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.txtPassWord.Location = new System.Drawing.Point(100, 307);
+            this.txtPassWord.Location = new System.Drawing.Point(75, 249);
+            this.txtPassWord.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtPassWord.Name = "txtPassWord";
             this.txtPassWord.PasswordChar = '*';
-            this.txtPassWord.Size = new System.Drawing.Size(217, 38);
+            this.txtPassWord.Size = new System.Drawing.Size(163, 32);
             this.txtPassWord.TabIndex = 14;
             this.txtPassWord.Text = "admin";
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.pictureBox2);
-            this.panel2.Location = new System.Drawing.Point(64, 307);
+            this.panel2.Location = new System.Drawing.Point(40, 249);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(33, 32);
+            this.panel2.Size = new System.Drawing.Size(32, 35);
             this.panel2.TabIndex = 16;
             // 
             // pictureBox2
             // 
             this.pictureBox2.BackgroundImage = global::LoginForm.Properties.Resources.if_icon_24_key_314756;
             this.pictureBox2.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(33, 32);
+            this.pictureBox2.Size = new System.Drawing.Size(32, 35);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
@@ -111,9 +117,10 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::LoginForm.Properties.Resources.logo;
-            this.pictureBox3.Location = new System.Drawing.Point(115, 39);
+            this.pictureBox3.Location = new System.Drawing.Point(86, 11);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(169, 171);
+            this.pictureBox3.Size = new System.Drawing.Size(127, 151);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 12;
             this.pictureBox3.TabStop = false;
@@ -133,10 +140,11 @@
             this.btnExit.ForeColor = System.Drawing.Color.DimGray;
             this.btnExit.Inactive1 = System.Drawing.Color.AliceBlue;
             this.btnExit.Inactive2 = System.Drawing.Color.AliceBlue;
-            this.btnExit.Location = new System.Drawing.Point(351, 12);
+            this.btnExit.Location = new System.Drawing.Point(263, 10);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnExit.Name = "btnExit";
             this.btnExit.Radius = 5;
-            this.btnExit.Size = new System.Drawing.Size(36, 33);
+            this.btnExit.Size = new System.Drawing.Size(27, 27);
             this.btnExit.Stroke = false;
             this.btnExit.StrokeColor = System.Drawing.Color.Gray;
             this.btnExit.TabIndex = 18;
@@ -155,10 +163,11 @@
             this.btnLogin.ForeColor = System.Drawing.Color.Black;
             this.btnLogin.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.btnLogin.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(255)))), ((int)(((byte)(173)))));
-            this.btnLogin.Location = new System.Drawing.Point(115, 403);
+            this.btnLogin.Location = new System.Drawing.Point(86, 327);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Radius = 5;
-            this.btnLogin.Size = new System.Drawing.Size(169, 40);
+            this.btnLogin.Size = new System.Drawing.Size(127, 32);
             this.btnLogin.Stroke = true;
             this.btnLogin.StrokeColor = System.Drawing.SystemColors.ButtonShadow;
             this.btnLogin.TabIndex = 17;
@@ -169,11 +178,11 @@
             // frmLogin
             // 
             this.AcceptButton = this.btnLogin;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.CancelButton = this.btnExit;
-            this.ClientSize = new System.Drawing.Size(399, 479);
+            this.ClientSize = new System.Drawing.Size(299, 389);
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.txtPassWord);
@@ -181,9 +190,10 @@
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnLogin);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(322, 450);
+            this.MinimumSize = new System.Drawing.Size(246, 373);
             this.Name = "frmLogin";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
