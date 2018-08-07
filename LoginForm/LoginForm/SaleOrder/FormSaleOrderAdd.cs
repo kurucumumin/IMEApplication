@@ -10,7 +10,6 @@ using System.Windows.Forms;
 using System.Globalization;
 using System.Threading;
 using LoginForm.clsClasses;
-using System.Runtime.CompilerServices;
 using static LoginForm.Services.MyClasses.MyAuthority;
 
 namespace LoginForm.QuotationModule
@@ -44,7 +43,9 @@ namespace LoginForm.QuotationModule
         ToolTip aciklama = new ToolTip();
         System.Data.DataSet ds = new System.Data.DataSet();
         int a = 1;
-        List<QuotationDetail> items;
+        List<QuotationDetail> QItems;
+        List<SaleOrderDetail> SItems;
+
         bool firstInitialize = false;
         decimal? SaleCurrency = 1;
         #endregion
@@ -174,7 +175,7 @@ namespace LoginForm.QuotationModule
         public FormSaleOrderAdd(Customer cus, List<QuotationDetail> list, string QuotationNOs, int sayac)
         {
             customer = cus;
-            items = list;
+            QItems = list;
             firstInitialize = true;
             SaleCurrency = list[0].Quotation.Currency.ExchangeRates.OrderByDescending(x => x.date).FirstOrDefault().rate;
             InitializeComponent();
@@ -211,7 +212,7 @@ namespace LoginForm.QuotationModule
             fillCustomer();
             cbCurrencySelected("Quotation");
             cbWorkers.SelectedItem = customer.MainContactID;
-            foreach (var item in items)
+            foreach (var item in QItems)
             {
                 if (item.IsDeleted == 1)
                 {
@@ -341,13 +342,12 @@ namespace LoginForm.QuotationModule
             }
         }
 
-
-
         public FormSaleOrderAdd(Customer cus, List<SaleOrderDetail> list, int sayac)
         {
             customer = cus;
             firstInitialize = true;
             SaleCurrency = list[0].SaleOrder.ExchangeRate.rate;
+            SItems = list;
             InitializeComponent();
             lblVat.Text = Utils.getManagement().VAT.ToString();
             dgSaleAddedItems.Columns[dgLandingCost.Index].DefaultCellStyle.Format = "C4";
@@ -518,6 +518,11 @@ namespace LoginForm.QuotationModule
 
         private void ControlEnableFalse(Control control)
         {
+            if(control.GetType() == typeof(Button))
+            {
+                int a = 5;
+            }
+
             foreach (Control item in control.Controls)
             {
                 if (item.Controls != null)
@@ -706,7 +711,7 @@ namespace LoginForm.QuotationModule
         public FormSaleOrderAdd(Customer cus, List<QuotationDetail> list, string QuotationNOs)
         {
             customer = cus;
-            items = list;
+            QItems = list;
 
             InitializeComponent();
             DataGridViewComboBoxColumn deliveryColumn = (DataGridViewComboBoxColumn)dgSaleAddedItems.Columns[dgDelivery.Index];
@@ -2553,7 +2558,7 @@ namespace LoginForm.QuotationModule
             fillCustomer();
             #region QuotationDetails
             cbWorkers.SelectedItem = customer.MainContactID;
-            foreach (var item in items)
+            foreach (var item in QItems)
             {
                 if (item.IsDeleted == 1)
                 {
@@ -4732,7 +4737,7 @@ namespace LoginForm.QuotationModule
                 cbCurrency.DisplayMember = "currencyName";
                 cbCurrency.ValueMember = "currencyID";
 
-                cbCurrency.SelectedIndex = cbCurrency.FindStringExact(items[0].Quotation.Currency.currencyName);
+                cbCurrency.SelectedIndex = cbCurrency.FindStringExact(SItems[0].SaleOrder.ExchangeRate.Currency.currencyName);
             }
             ChangeCurr();
         }

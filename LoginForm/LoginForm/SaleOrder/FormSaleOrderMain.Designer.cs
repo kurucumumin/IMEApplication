@@ -84,7 +84,7 @@
             this.textBox2.Enabled = false;
             this.textBox2.Location = new System.Drawing.Point(932, 20);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(216, 21);
+            this.textBox2.Size = new System.Drawing.Size(216, 24);
             this.textBox2.TabIndex = 25;
             // 
             // chcAllSales
@@ -103,7 +103,7 @@
             this.txtSearchText.Enabled = false;
             this.txtSearchText.Location = new System.Drawing.Point(711, 54);
             this.txtSearchText.Name = "txtSearchText";
-            this.txtSearchText.Size = new System.Drawing.Size(184, 21);
+            this.txtSearchText.Size = new System.Drawing.Size(184, 24);
             this.txtSearchText.TabIndex = 23;
             // 
             // cbSearch
@@ -115,7 +115,7 @@
             "QUOT NUMBER"});
             this.cbSearch.Location = new System.Drawing.Point(711, 20);
             this.cbSearch.Name = "cbSearch";
-            this.cbSearch.Size = new System.Drawing.Size(184, 23);
+            this.cbSearch.Size = new System.Drawing.Size(184, 26);
             this.cbSearch.TabIndex = 22;
             // 
             // label2
@@ -123,7 +123,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(10, 90);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 15);
+            this.label2.Size = new System.Drawing.Size(69, 18);
             this.label2.TabIndex = 21;
             this.label2.Text = "End Date";
             // 
@@ -132,7 +132,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(10, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 15);
+            this.label1.Size = new System.Drawing.Size(74, 18);
             this.label1.TabIndex = 20;
             this.label1.Text = "Start Date";
             // 
@@ -142,7 +142,7 @@
             this.datetimeEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.datetimeEnd.Location = new System.Drawing.Point(100, 87);
             this.datetimeEnd.Name = "datetimeEnd";
-            this.datetimeEnd.Size = new System.Drawing.Size(133, 21);
+            this.datetimeEnd.Size = new System.Drawing.Size(133, 24);
             this.datetimeEnd.TabIndex = 19;
             // 
             // datetimeStart
@@ -151,7 +151,7 @@
             this.datetimeStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.datetimeStart.Location = new System.Drawing.Point(100, 18);
             this.datetimeStart.Name = "datetimeStart";
-            this.datetimeStart.Size = new System.Drawing.Size(133, 21);
+            this.datetimeStart.Size = new System.Drawing.Size(133, 24);
             this.datetimeStart.TabIndex = 18;
             // 
             // btnDelete
@@ -287,7 +287,7 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(1151, 69);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(46, 15);
+            this.label9.Size = new System.Drawing.Size(55, 18);
             this.label9.TabIndex = 33;
             this.label9.Text = "Search";
             // 
@@ -296,7 +296,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(291, 80);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(50, 15);
+            this.label3.Size = new System.Drawing.Size(60, 18);
             this.label3.TabIndex = 31;
             this.label3.Text = "Refresh";
             // 
@@ -305,7 +305,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(368, 81);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 15);
+            this.label4.Size = new System.Drawing.Size(42, 18);
             this.label4.TabIndex = 28;
             this.label4.Text = "New ";
             // 
@@ -314,7 +314,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(446, 81);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(43, 15);
+            this.label5.Size = new System.Drawing.Size(52, 18);
             this.label5.TabIndex = 29;
             this.label5.Text = "Modify";
             // 
@@ -323,7 +323,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(520, 81);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(43, 15);
+            this.label6.Size = new System.Drawing.Size(50, 18);
             this.label6.TabIndex = 30;
             this.label6.Text = "Delete";
             // 
@@ -345,7 +345,7 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(135, 77);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(32, 15);
+            this.label8.Size = new System.Drawing.Size(38, 18);
             this.label8.TabIndex = 22;
             this.label8.Text = "Print";
             // 
@@ -354,7 +354,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(34, 77);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(37, 15);
+            this.label7.Size = new System.Drawing.Size(44, 18);
             this.label7.TabIndex = 21;
             this.label7.Text = "Excel";
             // 
@@ -416,6 +416,7 @@
             this.dgSales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgSales.Size = new System.Drawing.Size(1234, 426);
             this.dgSales.TabIndex = 0;
+            this.dgSales.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgSales_CellMouseDoubleClick);
             this.dgSales.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgSales_MouseDoubleClick);
             // 
             // gridRightClick
@@ -426,31 +427,31 @@
             this.sentToLogoToolStripMenuItem,
             this.backToLogoToolStripMenuItem});
             this.gridRightClick.Name = "gridRightClick";
-            this.gridRightClick.Size = new System.Drawing.Size(198, 70);
+            this.gridRightClick.Size = new System.Drawing.Size(232, 76);
             // 
             // sentToPurchaseOrderToolStripMenuItem
             // 
             this.sentToPurchaseOrderToolStripMenuItem.Name = "sentToPurchaseOrderToolStripMenuItem";
-            this.sentToPurchaseOrderToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.sentToPurchaseOrderToolStripMenuItem.Size = new System.Drawing.Size(231, 24);
             this.sentToPurchaseOrderToolStripMenuItem.Text = "Sent To Purchase Order";
             this.sentToPurchaseOrderToolStripMenuItem.Click += new System.EventHandler(this.sentToPurchaseOrderToolStripMenuItem_Click);
             // 
             // sentToLogoToolStripMenuItem
             // 
             this.sentToLogoToolStripMenuItem.Name = "sentToLogoToolStripMenuItem";
-            this.sentToLogoToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.sentToLogoToolStripMenuItem.Size = new System.Drawing.Size(231, 24);
             this.sentToLogoToolStripMenuItem.Text = "Sent To Logo";
             this.sentToLogoToolStripMenuItem.Click += new System.EventHandler(this.sentToLogoToolStripMenuItem_Click);
             // 
             // backToLogoToolStripMenuItem
             // 
             this.backToLogoToolStripMenuItem.Name = "backToLogoToolStripMenuItem";
-            this.backToLogoToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.backToLogoToolStripMenuItem.Size = new System.Drawing.Size(231, 24);
             this.backToLogoToolStripMenuItem.Text = "Back To Logo";
             // 
             // FormSalesOrderMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.ClientSize = new System.Drawing.Size(1250, 704);

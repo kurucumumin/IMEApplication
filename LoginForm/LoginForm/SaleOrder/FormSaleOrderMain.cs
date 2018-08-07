@@ -197,5 +197,39 @@ namespace LoginForm.nsSaleOrder
         {
 
         }
+
+        private void dgSales_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            ViewSaleOrder();
+        }
+
+        private void ViewSaleOrder()
+        {
+            if (dgSales.CurrentRow != null)
+            {
+                decimal QuotationNo = Convert.ToDecimal(dgSales.CurrentRow.Cells["SoNO"].Value);
+                SaleOrder saleOrder;
+
+                IMEEntities IME = new IMEEntities();
+                try
+                {
+                    saleOrder = IME.SaleOrders.Where(s => s.SaleOrderNo == QuotationNo).FirstOrDefault();
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+                if (saleOrder != null)
+                {
+                    FormSaleOrderAdd newForm = new FormSaleOrderAdd(saleOrder.Customer, saleOrder.SaleOrderDetails.ToList(), 0);
+                    newForm.ShowDialog();
+                }
+            }
+            else
+            {
+                MessageBox.Show("You did not chose any quotation.", "Warning!");
+            }
+        }
     }
 }
