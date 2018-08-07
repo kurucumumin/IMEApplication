@@ -35,7 +35,7 @@ namespace LoginForm.QuotationModule
 
         private void dgQuotation_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (!Utils.AuthorityCheck(IMEAuthority.CanEditAnyQuotation))//Can Edit any Quotation
+            if (Utils.AuthorityCheck(IMEAuthority.CanEditAnyQuotation))//Can Edit any Quotation
             {
                 ViewQuotation();
             }

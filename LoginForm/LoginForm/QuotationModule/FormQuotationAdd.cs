@@ -2148,8 +2148,6 @@ namespace LoginForm.QuotationModule
                 MessageBox.Show("Quotation is successfully edited", "Success");
             }
             this.Close();
-            FormQuotationMain formQuotationMain = new FormQuotationMain();
-            formQuotationMain.ShowDialog();
         }
 
         private void modifyQuotation(Quotation q)
