@@ -2678,49 +2678,53 @@ namespace LoginForm.QuotationModule
             if (isLithum)
             {
                 label64.BackColor = Color.Red;
-                CurrentRow.Cells["LI"].Style.BackColor = Color.Ivory;
-            } else
-            {
-                label64.BackColor = Color.Transparent;
-                CurrentRow.Cells["LI"].Style.BackColor = Color.White;
+                //CurrentRow.Cells["LI"].Style.BackColor = Color.Ivory;
+                CurrentRow.Cells["LI"].Style.BackColor = Color.Red;
             }
+            //else
+            //{
+            //    label64.BackColor = Color.Transparent;
+            //    CurrentRow.Cells["LI"].Style.BackColor = Color.White;
+            //}
             if (isShipping)
             {
                 label63.BackColor = Color.Red;
                 CurrentRow.Cells["HS"].Style.BackColor = Color.Red;
             }
-            else
-            {
-                label63.BackColor = Color.Transparent;
-                CurrentRow.Cells["HS"].Style.BackColor = Color.White;
-            }
+            //else
+            //{
+            //    label63.BackColor = Color.Transparent;
+            //    CurrentRow.Cells["HS"].Style.BackColor = Color.White;
+            //}
             if (isEnvironment)
             {
                 label53.BackColor = Color.Red;
             }
-            else
-            {
-                label53.BackColor = Color.White;
-            }
+            //else
+            //{
+            //    label53.BackColor = Color.White;
+            //}
             if (isCalibrationInd)
             {
                 label22.BackColor = Color.Red;
-                dgQuotationAddedItems.Rows[RowIndex].Cells["CL"].Style.BackColor = Color.Green;
+                // dgQuotationAddedItems.Rows[RowIndex].Cells["CL"].Style.BackColor = Color.Green;
+                dgQuotationAddedItems.Rows[RowIndex].Cells["CL"].Style.BackColor = Color.Red;
             }
-            else
-            {
-                label22.BackColor = Color.Transparent;
-                dgQuotationAddedItems.Rows[RowIndex].Cells["CL"].Style.BackColor = Color.White;
-            }
+            //else
+            //{
+            //    label22.BackColor = Color.Transparent;
+            //    dgQuotationAddedItems.Rows[RowIndex].Cells["CL"].Style.BackColor = Color.White;
+            //}
 
             if (isLicenceType)
             {
-                dgQuotationAddedItems.Rows[RowIndex].Cells["LC"].Style.BackColor = Color.BurlyWood;
+                // dgQuotationAddedItems.Rows[RowIndex].Cells["LC"].Style.BackColor = Color.BurlyWood;
+                dgQuotationAddedItems.Rows[RowIndex].Cells["LC"].Style.BackColor = Color.Red;
             }
-            else
-            {
-                dgQuotationAddedItems.Rows[RowIndex].Cells["LC"].Style.BackColor = Color.White;
-            }
+            //else
+            //{
+            //    dgQuotationAddedItems.Rows[RowIndex].Cells["LC"].Style.BackColor = Color.White;
+            //}
             #endregion
         }
 
