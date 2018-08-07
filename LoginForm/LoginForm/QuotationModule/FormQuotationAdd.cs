@@ -1493,31 +1493,31 @@ namespace LoginForm.QuotationModule
             }
         }
 
-        private void txtLength_TextChanged(object sender, EventArgs e)
-        {
-            CurrentRow = dgQuotationAddedItems.CurrentRow;
-            txtGrossWeight.Text = "";
-            try
-            {
-                if (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgQty"].Value != null)
-                {
-                    txtGrossWeight.Text = (Decimal.Parse(txtStandartWeight.Text) * Decimal.Parse(CurrentRow.Cells["dgQty"].Value.ToString())).ToString();
-                    if (Int32.Parse(CurrentRow.Cells["dgSSM"].Value.ToString()) > 1)
-                    {
-                        txtGrossWeight.Text = (decimal.Parse(txtGrossWeight.Text) /
-                            Int32.Parse(CurrentRow.Cells["dgSSM"].Value.ToString())).ToString();
+        //private void txtLength_TextChanged(object sender, EventArgs e)
+        //{
+        //    CurrentRow = dgQuotationAddedItems.CurrentRow;
+        //    txtGrossWeight.Text = "";
+        //    try
+        //    {
+        //        if (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgQty"].Value != null)
+        //        {
+        //            txtGrossWeight.Text = (Decimal.Parse(txtStandartWeight.Text) * Decimal.Parse(CurrentRow.Cells["dgQty"].Value.ToString())).ToString();
+        //            if (Int32.Parse(CurrentRow.Cells["dgSSM"].Value.ToString()) > 1)
+        //            {
+        //                txtGrossWeight.Text = (decimal.Parse(txtGrossWeight.Text) /
+        //                    Int32.Parse(CurrentRow.Cells["dgSSM"].Value.ToString())).ToString();
 
-                    }
-                    else if (Int32.Parse(CurrentRow.Cells["dgUC"].Value.ToString()) > 1)
-                    {
-                        txtGrossWeight.Text = (decimal.Parse(txtGrossWeight.Text) /
-                            Int32.Parse(CurrentRow.Cells["dgUC"].Value.ToString())).ToString();
-                    }
-                }
-            }
-            catch { }
+        //            }
+        //            else if (Int32.Parse(CurrentRow.Cells["dgUC"].Value.ToString()) > 1)
+        //            {
+        //                txtGrossWeight.Text = (decimal.Parse(txtGrossWeight.Text) /
+        //                    Int32.Parse(CurrentRow.Cells["dgUC"].Value.ToString())).ToString();
+        //            }
+        //        }
+        //    }
+        //    catch { }
 
-        }
+        //}
 
         private void dgQuotationAddedItems_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
@@ -2101,7 +2101,7 @@ namespace LoginForm.QuotationModule
                     if (dgQuotationAddedItems.Rows[i].Cells["dgCustStkCode"].Value != null) qd.CustomerStockCode = dgQuotationAddedItems.Rows[i].Cells["dgCustStkCode"].Value.ToString();
                     if (dgQuotationAddedItems.Rows[i].Cells["dgUC"].Value != null) qd.UC = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUC"].Value.ToString());
                     if (dgQuotationAddedItems.Rows[i].Cells["dgSSM"].Value != null) qd.SSM = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells["dgSSM"].Value.ToString());
-                    if (dgQuotationAddedItems.Rows[i].Cells["dgUnitWeigt"].Value != "") qd.UnitWeight = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUnitWeigt"].Value.ToString());
+                    if (dgQuotationAddedItems.Rows[i].Cells["dgUnitWeigt"].Value?.ToString() != "") qd.UnitWeight = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUnitWeigt"].Value.ToString());
                     if (dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value != null) qd.Marge = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value.ToString());
                     if (dgQuotationAddedItems.Rows[i].Cells["dgDependantTable"].Value != null) qd.DependantTable = dgQuotationAddedItems.Rows[i].Cells["dgDependantTable"].Value.ToString();
 
@@ -2310,6 +2310,29 @@ namespace LoginForm.QuotationModule
                 txtHeight.Text = ((decimal)(ItemTabDetails.Heigh * ((Decimal)100))).ToString("G29");
                 txtWidth.Text = ((decimal)(ItemTabDetails.Width * ((Decimal)100))).ToString("G29");
                 txtLength.Text = ((decimal)(ItemTabDetails.Length * ((Decimal)100))).ToString("G29");
+
+                #region Length 
+                try
+                {
+                    if (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgQty"].Value != null)
+                    {
+                        txtGrossWeight.Text = (Decimal.Parse(txtStandartWeight.Text) * Decimal.Parse(CurrentRow.Cells["dgQty"].Value.ToString())).ToString();
+                        if (Int32.Parse(CurrentRow.Cells["dgSSM"].Value.ToString()) > 1)
+                        {
+                            txtGrossWeight.Text = (decimal.Parse(txtGrossWeight.Text) /
+                                Int32.Parse(CurrentRow.Cells["dgSSM"].Value.ToString())).ToString();
+
+                        }
+                        else if (Int32.Parse(CurrentRow.Cells["dgUC"].Value.ToString()) > 1)
+                        {
+                            txtGrossWeight.Text = (decimal.Parse(txtGrossWeight.Text) /
+                                Int32.Parse(CurrentRow.Cells["dgUC"].Value.ToString())).ToString();
+                        }
+                    }
+                }
+                catch { }
+                #endregion
+
                 txtUK1.Text = ItemTabDetails.Col1Price.ToString();
                 txtUK2.Text = ItemTabDetails.Col2Price.ToString();
                 txtUK3.Text = ItemTabDetails.Col3Price.ToString();
@@ -2448,7 +2471,7 @@ namespace LoginForm.QuotationModule
             #region OldFunction
 
 
-            //            #region Filler
+                        #region Filler
             //            decimal CurrValueWeb = Decimal.Parse(curr.rate.ToString());
             //            string ArticleNoSearch1 = ArticleNoSearch;
             //            try { ArticleNoSearch1 = (Int32.Parse(ArticleNoSearch)).ToString(); } catch { }
@@ -2673,30 +2696,87 @@ namespace LoginForm.QuotationModule
             //#endregion
             #endregion
 
-            #region Low Margin Mark
+            //#region Low Margin Mark
 
-            if (isLithum)
+            //if (isLithum)
+            //{
+            //    label64.BackColor = Color.Red;
+            //    //CurrentRow.Cells["LI"].Style.BackColor = Color.Ivory;
+            //    CurrentRow.Cells["LI"].Style.BackColor = Color.Red;
+            //}
+            ////else
+            ////{
+            ////    label64.BackColor = Color.Transparent;
+            ////    CurrentRow.Cells["LI"].Style.BackColor = Color.White;
+            ////}
+            //if (isShipping)
+            //{
+            //    label63.BackColor = Color.Red;
+            //    CurrentRow.Cells["HS"].Style.BackColor = Color.Red;
+            //}
+            ////else
+            ////{
+            ////    label63.BackColor = Color.Transparent;
+            ////    CurrentRow.Cells["HS"].Style.BackColor = Color.White;
+            ////}
+            //if (isEnvironment)
+            //{
+            //    label53.BackColor = Color.Red;
+            //}
+            ////else
+            ////{
+            ////    label53.BackColor = Color.White;
+            ////}
+            //if (isCalibrationInd)
+            //{
+            //    label22.BackColor = Color.Red;
+            //    // dgQuotationAddedItems.Rows[RowIndex].Cells["CL"].Style.BackColor = Color.Green;
+            //    dgQuotationAddedItems.Rows[RowIndex].Cells["CL"].Style.BackColor = Color.Red;
+            //}
+            ////else
+            ////{
+            ////    label22.BackColor = Color.Transparent;
+            ////    dgQuotationAddedItems.Rows[RowIndex].Cells["CL"].Style.BackColor = Color.White;
+            ////}
+
+            //if (isLicenceType)
+            //{
+            //    // dgQuotationAddedItems.Rows[RowIndex].Cells["LC"].Style.BackColor = Color.BurlyWood;
+            //    dgQuotationAddedItems.Rows[RowIndex].Cells["LC"].Style.BackColor = Color.Red;
+            //}
+            ////else
+            ////{
+            ////    dgQuotationAddedItems.Rows[RowIndex].Cells["LC"].Style.BackColor = Color.White;
+            ////}
+            #endregion
+
+            #region Low Margin Mark Clear
+            if (!String.IsNullOrEmpty(txtLithium.Text) && txtLithium.Text == "Y")
             {
                 label64.BackColor = Color.Red;
-                //CurrentRow.Cells["LI"].Style.BackColor = Color.Ivory;
+                //dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LI"].Style.BackColor = Color.Ivory;
+                //dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LI"].Style.BackColor = Color.Red;
                 CurrentRow.Cells["LI"].Style.BackColor = Color.Red;
             }
             //else
             //{
-            //    label64.BackColor = Color.Transparent;
-            //    CurrentRow.Cells["LI"].Style.BackColor = Color.White;
+            //    label64.BackColor = Color.White;
+            //    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LI"].Style.BackColor = Color.White;
             //}
-            if (isShipping)
+            if (!String.IsNullOrEmpty(txtShipping.Text) && txtShipping.Text == "Y")
             {
                 label63.BackColor = Color.Red;
+                //dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["HS"].Style.BackColor = Color.Red;
                 CurrentRow.Cells["HS"].Style.BackColor = Color.Red;
+
             }
             //else
             //{
-            //    label63.BackColor = Color.Transparent;
-            //    CurrentRow.Cells["HS"].Style.BackColor = Color.White;
+            //    label63.BackColor = Color.White;
+            //    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["HS"].Style.BackColor = Color.White;
             //}
-            if (isEnvironment)
+
+            if (!String.IsNullOrEmpty(txtEnvironment.Text) && txtEnvironment.Text == "Y")
             {
                 label53.BackColor = Color.Red;
             }
@@ -2704,26 +2784,29 @@ namespace LoginForm.QuotationModule
             //{
             //    label53.BackColor = Color.White;
             //}
-            if (isCalibrationInd)
+
+            //if (txtCalibrationInd.Text != "" && txtCalibrationInd.Text != null && txtCalibrationInd.Text != "N")
+            if (!String.IsNullOrEmpty(txtCalibrationInd.Text) && txtCalibrationInd.Text == "Y")
             {
                 label22.BackColor = Color.Red;
-                // dgQuotationAddedItems.Rows[RowIndex].Cells["CL"].Style.BackColor = Color.Green;
-                dgQuotationAddedItems.Rows[RowIndex].Cells["CL"].Style.BackColor = Color.Red;
+                //dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["CL"].Style.BackColor = Color.Green;
+                //dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["CL"].Style.BackColor = Color.Red;
+                CurrentRow.Cells["CL"].Style.BackColor = Color.Red;
             }
             //else
             //{
-            //    label22.BackColor = Color.Transparent;
-            //    dgQuotationAddedItems.Rows[RowIndex].Cells["CL"].Style.BackColor = Color.White;
+            //    label22.BackColor = Color.White;
+            //    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["CL"].Style.BackColor = Color.White;
             //}
 
-            if (isLicenceType)
+            if (!String.IsNullOrEmpty(txtLicenceType.Text))
             {
-                // dgQuotationAddedItems.Rows[RowIndex].Cells["LC"].Style.BackColor = Color.BurlyWood;
-                dgQuotationAddedItems.Rows[RowIndex].Cells["LC"].Style.BackColor = Color.Red;
+                //dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LC"].Style.BackColor = Color.BurlyWood;
+                dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LC"].Style.BackColor = Color.Red;
             }
             //else
             //{
-            //    dgQuotationAddedItems.Rows[RowIndex].Cells["LC"].Style.BackColor = Color.White;
+            //    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LC"].Style.BackColor = Color.White;
             //}
             #endregion
         }
