@@ -267,6 +267,8 @@ namespace LoginForm
                     }
                     db.SaveChanges();
 
+                    List<SupplierAddress> deleteAddress = new List<SupplierAddress>();
+
                     foreach (SupplierAddress add in s.SupplierAddresses)
                     {
                         SupplierAddress _add = db.SupplierAddresses.Where(x => x.ID == add.ID).FirstOrDefault();
@@ -283,13 +285,17 @@ namespace LoginForm
                             _add.PoBox = _sa.PoBox;
                             _add.PostCode = _sa.PostCode;
                             _add.Title = _sa.Title;
+
+                            db.SaveChanges();
                         }
                         else
                         {
-                            db.SupplierAddresses.Remove(_add);
+                            deleteAddress.Add(_add);
                         }
-                        db.SaveChanges();
-                    } 
+                    }
+                    
+                    db.SupplierAddresses.RemoveRange(deleteAddress);
+                    db.SaveChanges();
 
 
                     foreach (SupplierAddress a in SavedAddresses)
