@@ -37,6 +37,7 @@ namespace LoginForm.DataSet
         public Nullable<decimal> totalAmount { get; set; }
         public int purchaseOrderId { get; set; }
         public string FicheNo { get; set; }
+        public Nullable<int> PurchaseNo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BackOrder> BackOrders { get; set; }
