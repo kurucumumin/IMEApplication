@@ -1046,15 +1046,22 @@ namespace LoginForm
             if (lbAddressList.SelectedIndex != -1)
             {
                 SupplierAddress sa = (SupplierAddress)lbAddressList.SelectedItem;
-                SavedAddresses.Remove(sa);
+                if(sa.SupplierWorkers.Count != 0)
+                {
+                    MessageBox.Show("This address is matched with a contact, please modify it first!", "Warning");
+                }
+                else
+                {
+                    SavedAddresses.Remove(sa);
 
-                ClearAddressInputs();
+                    ClearAddressInputs();
 
-                EnableAddressInput(false);
-                AddressButtonsMode(AddressButtonsModeClose);
-                ManageDeleteAndModifyButtons(lbAddressList, btnAddressUpdate, btnAddressDelete);
+                    EnableAddressInput(false);
+                    AddressButtonsMode(AddressButtonsModeClose);
+                    ManageDeleteAndModifyButtons(lbAddressList, btnAddressUpdate, btnAddressDelete);
 
-                lbAddressList.ClearSelected();
+                    lbAddressList.ClearSelected();
+                }
             }
             else
             {
