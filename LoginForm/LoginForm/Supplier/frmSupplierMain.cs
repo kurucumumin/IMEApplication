@@ -267,6 +267,30 @@ namespace LoginForm
                     }
                     db.SaveChanges();
 
+                    foreach (SupplierAddress add in s.SupplierAddresses)
+                    {
+                        SupplierAddress _add = db.SupplierAddresses.Where(x => x.ID == add.ID).FirstOrDefault();
+                        SupplierAddress _sa = SavedAddresses.Where(x => x.Title == add.Title).FirstOrDefault();
+
+                        if(_sa != null)
+                        {
+                            _add.AdressDetails = _sa.AdressDetails;
+                            _add.TownID = _sa.TownID;
+                            _add.CityID = _sa.CityID;
+                            _add.CountryID = _sa.CountryID;
+                            _add.Fax = _sa.Fax;
+                            _add.Phone = _sa.Phone;
+                            _add.PoBox = _sa.PoBox;
+                            _add.PostCode = _sa.PostCode;
+                            _add.Title = _sa.Title;
+                        }
+                        else
+                        {
+                            db.SupplierAddresses.Remove(_add);
+                        }
+                        db.SaveChanges();
+                    } 
+
 
                     foreach (SupplierAddress a in SavedAddresses)
                     {
@@ -274,20 +298,6 @@ namespace LoginForm
                         {
                             db.SupplierAddresses.Add(a);
                         }
-                        else
-                        {
-                            SupplierAddress sa = db.SupplierAddresses.Where(x => x.ID == a.ID).FirstOrDefault();
-                            sa.AdressDetails = a.AdressDetails;
-                            sa.TownID = a.TownID;
-                            sa.CityID = a.CityID;
-                            sa.CountryID = a.CountryID;
-                            sa.Fax = a.Fax;
-                            sa.Phone = a.Phone;
-                            sa.PoBox = a.PoBox;
-                            sa.PostCode = a.PostCode;
-                            sa.Title = a.Title;
-                        }
-                        db.SaveChanges();
                     }
 
 
@@ -534,7 +544,7 @@ namespace LoginForm
                     }
                     else
                     {
-                        FillSupplierInfo(dgSupplier.CurrentRow.Cells[iDDataGridViewTextBoxColumn.Index].Value.ToString());
+                        FillSupplierInfo(dgSupplier.CurrentRow.Cells[dgID.Index].Value.ToString());
                         lbAddressList.Enabled = true;
                         lbContacts.Enabled = true;
 

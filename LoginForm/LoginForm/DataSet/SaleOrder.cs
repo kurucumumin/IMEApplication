@@ -48,8 +48,6 @@ namespace LoginForm.DataSet
         public Nullable<decimal> DiscOnSubtotal { get; set; }
         public Nullable<decimal> ExtraCharges { get; set; }
         public Nullable<decimal> TotalMargin { get; set; }
-        public Nullable<decimal> VoucherNo { get; set; }
-        public Nullable<bool> cancelled { get; set; }
         public string invoiceNo { get; set; }
         public Nullable<int> exchangeRateID { get; set; }
         public decimal SaleOrderID { get; set; }

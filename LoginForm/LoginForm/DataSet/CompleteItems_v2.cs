@@ -24,7 +24,14 @@ namespace LoginForm.DataSet
         public string MH_Code_Level_1 { get; set; }
         public Nullable<int> Col1Break { get; set; }
         public Nullable<decimal> Col1Price { get; set; }
-        public Nullable<decimal> DiscountedPrice1 { get; set; }
+        public Nullable<int> Col2Break { get; set; }
+        public Nullable<decimal> Col2Price { get; set; }
+        public Nullable<int> Col3Break { get; set; }
+        public Nullable<decimal> Col3Price { get; set; }
+        public Nullable<int> Col4Break { get; set; }
+        public Nullable<decimal> Col4Price { get; set; }
+        public Nullable<int> Col5Break { get; set; }
+        public Nullable<decimal> Col5Price { get; set; }
         public Nullable<int> CatalogueStatus { get; set; }
         public Nullable<long> OnhandStockBalance { get; set; }
         public string dependantTable { get; set; }

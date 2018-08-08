@@ -31,7 +31,7 @@ namespace LoginForm.DataSet
         public Nullable<decimal> DiscOnSubTotal2 { get; set; }
         public Nullable<decimal> ExtraCharges { get; set; }
         public Nullable<decimal> SubTotal { get; set; }
-        public Nullable<System.DateTime> StartDate { get; set; }
+        public System.DateTime StartDate { get; set; }
         public Nullable<int> ValidationDay { get; set; }
         public Nullable<int> PaymentID { get; set; }
         public Nullable<decimal> Curr { get; set; }
