@@ -12,6 +12,7 @@ namespace LoginForm.PurchaseOrder
         IMEEntities IME = new IMEEntities();
         List<SaleOrderDetail> saleItemList = new List<SaleOrderDetail>();
         int purchasecode;
+        int purchaseno;
         string strPrefix = string.Empty;
         string strSuffix = string.Empty;
         decimal decPurchaseSuffixPrefixId = 0;
@@ -53,7 +54,7 @@ namespace LoginForm.PurchaseOrder
             if (rowList.Count != 0)
             {
                 //PurchaseExportFiles form = new PurchaseExportFiles(rowList, purchasecode);
-                PurchaseExportFiles form = new PurchaseExportFiles(rowList, Convert.ToInt32(txtOrderNumber.Text));
+                PurchaseExportFiles form = new PurchaseExportFiles(rowList, purchasecode, Convert.ToInt32(txtOrderNumber.Text));
                 form.ShowDialog();
                 this.Close();
             }
@@ -73,17 +74,23 @@ namespace LoginForm.PurchaseOrder
         private void NewPurchaseOrder_Load(object sender, EventArgs e)
         {
             IMEEntities IME = new IMEEntities();
-            txtOrderNumber.Enabled = false;
+           // txtOrderNumber.Enabled = false;
             if (IME.PurchaseOrders.Count() == 0)
             {
                 txtOrderNumber.Text = "1";
+                txtID.Text = "1";
                 purchasecode = 1;
+                purchaseno = 1;
             }
             else
             {
                 purchasecode = IME.PurchaseOrders.OrderByDescending(q => q.purchaseOrderId).FirstOrDefault().purchaseOrderId;
-                txtOrderNumber.Text = (purchasecode + 1).ToString();
+                //txtOrderNumber.Text = (purchasecode + 1).ToString();
                 purchasecode = purchasecode + 1;
+
+                purchaseno = Convert.ToInt32(IME.PurchaseOrders.OrderByDescending(q => q.PurchaseNo).FirstOrDefault().PurchaseNo);
+                txtOrderNumber.Text = (purchaseno + 1).ToString();
+                purchaseno = purchaseno + 1;
             }
         }
 

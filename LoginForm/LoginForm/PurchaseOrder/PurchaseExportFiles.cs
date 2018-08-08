@@ -22,6 +22,7 @@ namespace LoginForm.PurchaseOrder
         List<DataGridViewRow> rowList = new List<DataGridViewRow>();
         List<Mail> MailList = new List<Mail>();
         int puchaseId;
+        int purchaseNo;
         SmtpClient sc = new SmtpClient();
         MailMessage mail = new MailMessage();
         List<string> ccList = new List<string>();
@@ -33,11 +34,12 @@ namespace LoginForm.PurchaseOrder
             InitializeComponent();
         }
 
-        public PurchaseExportFiles(List<DataGridViewRow> List, int purchase_Id)
+        public PurchaseExportFiles(List<DataGridViewRow> List, int purchase_Id, int purchase_No)
         {
             InitializeComponent();
             rowList = List;
             puchaseId = purchase_Id;
+            purchaseNo = purchase_No;
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -120,6 +122,7 @@ namespace LoginForm.PurchaseOrder
             po.PurchaseOrderDate = DateTime.Today.Date;
             po.CameDate = IME.SaleOrders.Where(a => a.SaleOrderID == s).FirstOrDefault().SaleDate;
             po.FicheNo = filename;
+            po.PurchaseNo = purchaseNo;
 
             IME.PurchaseOrders.Add(po);
             IME.SaveChanges();
@@ -259,7 +262,7 @@ namespace LoginForm.PurchaseOrder
             else { OrderNature = "D"; }
             string PackType = " ";
             string OrderNumber = "     ";
-            string CustomerDistOrderReference = Convert.ToString(puchaseId);
+            string CustomerDistOrderReference = Convert.ToString(purchaseNo);
             CustomerDistOrderReference = CustomerDistOrderReference+"/DB/"+Convert.ToDateTime(IME.CurrentDate().First()).ToString("MMM") +"/"+Convert.ToDateTime(IME.CurrentDate().First()).ToString("yy");
             int CustomerDistOrderReferencelength = CustomerDistOrderReference.Length;
             for (int i = 0; i < 30- CustomerDistOrderReferencelength; i++)

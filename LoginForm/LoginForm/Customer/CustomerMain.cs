@@ -580,7 +580,7 @@ namespace LoginForm
                 //                        c.Capital
                 //                    }).ToList();
                 //List<Customer> CustomerList = IME.Customers.Where(a=>a.c_name.Contains(searchtxt)).OrderByDescending(de => de.CreateDate).ToList();
-                var CustomerList = IME.Customer_CustomerName(searchtxt).ToList();
+                var CustomerList = IME.Customer_CustomerName(searchtxt).Take(10).ToList();
                 CustomerDataGrid.DataSource = CustomerList;
             }
             else

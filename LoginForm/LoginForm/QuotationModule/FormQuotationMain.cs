@@ -300,20 +300,26 @@ namespace LoginForm.QuotationModule
             IMEEntities IME = new IMEEntities();
            // DateTime time = Convert.ToDateTime(IME.CurrentDate().FirtsOrDefault());
           //  MessageBox.Show(time.ToString());
-            var list = (from q in IME.Quotations
+            var list = (from q in IME.Quotations.AsEnumerable()
                        join c in IME.Customers on q.CustomerID equals c.ID
                        where q.StartDate >= fromDate && q.StartDate < toDate 
                        select new
                        {
-                           Date = (DateTime)q.StartDate,
+                           Date = q.StartDate,
                            QuotationNo = q.QuotationNo,
                            RFQ = q.RFQNo,
                            CustomerCode = c.ID,
                            CustomerName = c.c_name
-                       }).OrderByDescending(x=> x.QuotationNo);
+                       }).OrderByDescending(x => x.Date);
 
             populateGrid(list.ToList());
             //.OrderByDescending(x => int.Parse(x.QuotationNo.Substring(5)).ToList());
+        }
+
+        public Int32 ConvertInt(String id)
+        {
+            Int32 locID = Convert.ToInt32(id);
+            return locID;
         }
 
         private void populateGrid<T>(List<T> queryable)

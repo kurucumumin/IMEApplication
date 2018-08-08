@@ -43,14 +43,6 @@
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.dgPurchase = new System.Windows.Forms.DataGridView();
-            this.purchaseOrderId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PoNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FicheNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PurchaseOrderDate = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
-            this.CustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.c_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CameDate = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
-            this.Reason = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnExcel = new System.Windows.Forms.Button();
             this.btnCreate = new System.Windows.Forms.Button();
@@ -59,6 +51,15 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.purchaseOrderId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PurchaseNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PoNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FicheNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PurchaseOrderDate = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
+            this.CustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.c_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CameDate = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
+            this.Reason = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgPurchase)).BeginInit();
@@ -215,6 +216,7 @@
             this.dgPurchase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgPurchase.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.purchaseOrderId,
+            this.PurchaseNo,
             this.PoNo,
             this.FicheNo,
             this.PurchaseOrderDate,
@@ -229,12 +231,94 @@
             this.dgPurchase.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgPurchase_DataError);
             this.dgPurchase.DoubleClick += new System.EventHandler(this.dgPurchase_DoubleClick);
             // 
+            // btnClose
+            // 
+            this.btnClose.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
+            this.btnClose.Location = new System.Drawing.Point(1310, 587);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(52, 52);
+            this.btnClose.TabIndex = 12;
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnExcel
+            // 
+            this.btnExcel.Image = global::LoginForm.Properties.Resources.if_Document_file_export_sending_exit_send_1886950;
+            this.btnExcel.Location = new System.Drawing.Point(1126, 587);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.Size = new System.Drawing.Size(52, 52);
+            this.btnExcel.TabIndex = 11;
+            this.btnExcel.UseVisualStyleBackColor = true;
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
+            // 
+            // btnCreate
+            // 
+            this.btnCreate.Image = global::LoginForm.Properties.Resources.icons8_Plus_32;
+            this.btnCreate.Location = new System.Drawing.Point(1040, 587);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(52, 52);
+            this.btnCreate.TabIndex = 10;
+            this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Image = global::LoginForm.Properties.Resources.if_print_173079;
+            this.btnPrint.Location = new System.Drawing.Point(1225, 587);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(52, 52);
+            this.btnPrint.TabIndex = 13;
+            this.btnPrint.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(1053, 642);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(26, 13);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "Add";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(1137, 640);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(33, 13);
+            this.label5.TabIndex = 18;
+            this.label5.Text = "Excel";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(1236, 640);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(28, 13);
+            this.label6.TabIndex = 19;
+            this.label6.Text = "Print";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(1317, 640);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(33, 13);
+            this.label7.TabIndex = 20;
+            this.label7.Text = "Close";
+            // 
             // purchaseOrderId
             // 
             this.purchaseOrderId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.purchaseOrderId.HeaderText = "ID";
             this.purchaseOrderId.Name = "purchaseOrderId";
             this.purchaseOrderId.Visible = false;
+            this.purchaseOrderId.Width = 43;
+            // 
+            // PurchaseNo
+            // 
+            this.PurchaseNo.HeaderText = "PurchaseNo";
+            this.PurchaseNo.Name = "PurchaseNo";
+            this.PurchaseNo.Visible = false;
             // 
             // PoNo
             // 
@@ -247,6 +331,7 @@
             this.FicheNo.HeaderText = "Fiche No";
             this.FicheNo.Name = "FicheNo";
             this.FicheNo.Visible = false;
+            this.FicheNo.Width = 69;
             // 
             // PurchaseOrderDate
             // 
@@ -334,81 +419,6 @@
             this.Reason.Name = "Reason";
             this.Reason.Width = 69;
             // 
-            // btnClose
-            // 
-            this.btnClose.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
-            this.btnClose.Location = new System.Drawing.Point(1310, 587);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(52, 52);
-            this.btnClose.TabIndex = 12;
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // btnExcel
-            // 
-            this.btnExcel.Image = global::LoginForm.Properties.Resources.if_Document_file_export_sending_exit_send_1886950;
-            this.btnExcel.Location = new System.Drawing.Point(1126, 587);
-            this.btnExcel.Name = "btnExcel";
-            this.btnExcel.Size = new System.Drawing.Size(52, 52);
-            this.btnExcel.TabIndex = 11;
-            this.btnExcel.UseVisualStyleBackColor = true;
-            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
-            // 
-            // btnCreate
-            // 
-            this.btnCreate.Image = global::LoginForm.Properties.Resources.icons8_Plus_32;
-            this.btnCreate.Location = new System.Drawing.Point(1040, 587);
-            this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(52, 52);
-            this.btnCreate.TabIndex = 10;
-            this.btnCreate.UseVisualStyleBackColor = true;
-            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
-            // 
-            // btnPrint
-            // 
-            this.btnPrint.Image = global::LoginForm.Properties.Resources.if_print_173079;
-            this.btnPrint.Location = new System.Drawing.Point(1225, 587);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(52, 52);
-            this.btnPrint.TabIndex = 13;
-            this.btnPrint.UseVisualStyleBackColor = true;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1053, 642);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(26, 13);
-            this.label4.TabIndex = 17;
-            this.label4.Text = "Add";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(1137, 640);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(33, 13);
-            this.label5.TabIndex = 18;
-            this.label5.Text = "Excel";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(1236, 640);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(28, 13);
-            this.label6.TabIndex = 19;
-            this.label6.Text = "Print";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(1317, 640);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(33, 13);
-            this.label7.TabIndex = 20;
-            this.label7.Text = "Close";
-            // 
             // PurchaseOrderMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -460,7 +470,14 @@
         private System.Windows.Forms.RadioButton radioNotSent;
         private System.Windows.Forms.RadioButton radioAll;
         private System.Windows.Forms.RadioButton radioSent;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridViewTextBoxColumn purchaseOrderId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PurchaseNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn PoNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn FicheNo;
         private DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn PurchaseOrderDate;
@@ -468,11 +485,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn c_name;
         private DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn CameDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn Reason;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
     }
 }

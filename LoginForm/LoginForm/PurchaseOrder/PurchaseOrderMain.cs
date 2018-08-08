@@ -60,6 +60,7 @@ namespace LoginForm.PurchaseOrder
                 {
                     var adapter = IME.PurchaseOrders.Where(a => a.purchaseOrderId == ID).FirstOrDefault();
                     adapter.purchaseOrderId = Convert.ToInt32(row.Cells[purchaseOrderId.Index].Value);
+                    adapter.PurchaseNo= Convert.ToInt32(row.Cells[purchaseOrderId.Index].Value);
                     adapter.FicheNo = row.Cells[FicheNo.Index].Value.ToString();
                     adapter.PurchaseOrderDate = (DateTime)row.Cells[PurchaseOrderDate.Index].Value;
                     adapter.CustomerID = row.Cells[CustomerID.Index].Value.ToString();
@@ -104,6 +105,7 @@ namespace LoginForm.PurchaseOrder
                            select new
                            {
                                p.purchaseOrderId,
+                               p.PurchaseNo,
                                p.FicheNo,
                                p.PurchaseOrderDate,
                                p.CustomerID,
@@ -120,7 +122,8 @@ namespace LoginForm.PurchaseOrder
 
 
                 row.Cells[purchaseOrderId.Index].Value = item.purchaseOrderId;
-                row.Cells[PoNo.Index].Value = item.purchaseOrderId + "/DB/" + item.PurchaseOrderDate.Value.ToString("MMM") + "/" + item.PurchaseOrderDate.Value.    ToString("yy");
+                row.Cells[PurchaseNo.Index].Value = item.PurchaseNo;
+                row.Cells[PoNo.Index].Value = item.PurchaseNo + "/DB/" + item.PurchaseOrderDate.Value.ToString("MMM") + "/" + item.PurchaseOrderDate.Value.    ToString("yy");
                 row.Cells[FicheNo.Index].Value = item.FicheNo;
                 row.Cells[PurchaseOrderDate.Index].Value = item.PurchaseOrderDate;
                 row.Cells[CustomerID.Index].Value = item.CustomerID;
@@ -156,6 +159,7 @@ namespace LoginForm.PurchaseOrder
                                        select new
                                        {
                                            p.purchaseOrderId,
+                                           p.PurchaseNo,
                                            p.FicheNo,
                                            p.PurchaseOrderDate,
                                            p.CustomerID,
@@ -173,6 +177,7 @@ namespace LoginForm.PurchaseOrder
                     dgPurchase.Columns[5].Visible = false;
                     dgPurchase.Columns[6].Visible = false;
                     dgPurchase.Columns[7].Visible = false;
+                    dgPurchase.Columns[8].Visible = false;
                     #endregion
                     dgPurchase.DataSource = fichenolist.ToList();
                 }
@@ -186,6 +191,7 @@ namespace LoginForm.PurchaseOrder
                                            select new
                                            {
                                                p.purchaseOrderId,
+                                               p.PurchaseNo,
                                                p.FicheNo,
                                                p.PurchaseOrderDate,
                                                p.CustomerID,
@@ -203,6 +209,7 @@ namespace LoginForm.PurchaseOrder
                         dgPurchase.Columns[5].Visible = false;
                         dgPurchase.Columns[6].Visible = false;
                         dgPurchase.Columns[7].Visible = false;
+                        dgPurchase.Columns[8].Visible = false;
                         #endregion
                         dgPurchase.DataSource = fichenolist.ToList();
                     }
@@ -240,6 +247,7 @@ namespace LoginForm.PurchaseOrder
                            select new
                            {
                                po.purchaseOrderId,
+                               po.PurchaseNo,
                                po.FicheNo,
                                po.PurchaseOrderDate,
                                po.CustomerID,
@@ -254,7 +262,8 @@ namespace LoginForm.PurchaseOrder
                 DataGridViewRow row = dgPurchase.Rows[rowIndex];
 
                 row.Cells[purchaseOrderId.Index].Value = item.purchaseOrderId;
-                row.Cells[PoNo.Index].Value = item.purchaseOrderId + "/DB/" + item.PurchaseOrderDate.Value.ToString("MMM") + "/" + item.PurchaseOrderDate.Value.ToString("yy");
+                row.Cells[PurchaseNo.Index].Value = item.PurchaseNo;
+                row.Cells[PoNo.Index].Value = item.PurchaseNo + "/DB/" + item.PurchaseOrderDate.Value.ToString("MMM") + "/" + item.PurchaseOrderDate.Value.ToString("yy");
                 row.Cells[FicheNo.Index].Value = item.FicheNo;
                 row.Cells[PurchaseOrderDate.Index].Value = item.PurchaseOrderDate;
                 row.Cells[CustomerID.Index].Value = item.CustomerID;
