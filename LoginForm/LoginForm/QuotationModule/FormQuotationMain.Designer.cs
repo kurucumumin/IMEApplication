@@ -42,17 +42,17 @@
             this.txtSearchText = new System.Windows.Forms.TextBox();
             this.chcAllQuots = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.btnRefreshList = new System.Windows.Forms.Button();
             this.btnNewQuotation = new System.Windows.Forms.Button();
             this.btnModifyQuotation = new System.Windows.Forms.Button();
             this.btnDeleteQuotation = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnRefreshList = new System.Windows.Forms.Button();
             this.dtpToDate = new System.Windows.Forms.DateTimePicker();
             this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -248,6 +248,15 @@
             this.groupBox2.TabIndex = 29;
             this.groupBox2.TabStop = false;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(10, 74);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(50, 15);
+            this.label3.TabIndex = 18;
+            this.label3.Text = "Refresh";
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -274,6 +283,24 @@
             this.label6.Size = new System.Drawing.Size(43, 15);
             this.label6.TabIndex = 26;
             this.label6.Text = "Delete";
+            // 
+            // btnRefreshList
+            // 
+            this.btnRefreshList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
+            this.btnRefreshList.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.btnRefreshList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefreshList.Image = global::LoginForm.Properties.Resources.icons8_Refresh_32;
+            this.btnRefreshList.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnRefreshList.Location = new System.Drawing.Point(10, 17);
+            this.btnRefreshList.Margin = new System.Windows.Forms.Padding(0);
+            this.btnRefreshList.Name = "btnRefreshList";
+            this.btnRefreshList.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.btnRefreshList.Size = new System.Drawing.Size(52, 52);
+            this.btnRefreshList.TabIndex = 14;
+            this.btnRefreshList.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnRefreshList.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnRefreshList.UseVisualStyleBackColor = true;
+            this.btnRefreshList.Click += new System.EventHandler(this.btnRefreshList_Click);
             // 
             // btnNewQuotation
             // 
@@ -338,15 +365,6 @@
             this.groupBox1.TabIndex = 28;
             this.groupBox1.TabStop = false;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 74);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(50, 15);
-            this.label3.TabIndex = 18;
-            this.label3.Text = "Refresh";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -365,24 +383,6 @@
             this.label1.TabIndex = 22;
             this.label1.Text = "Start Date";
             // 
-            // btnRefreshList
-            // 
-            this.btnRefreshList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
-            this.btnRefreshList.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.btnRefreshList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRefreshList.Image = global::LoginForm.Properties.Resources.icons8_Refresh_32;
-            this.btnRefreshList.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnRefreshList.Location = new System.Drawing.Point(10, 17);
-            this.btnRefreshList.Margin = new System.Windows.Forms.Padding(0);
-            this.btnRefreshList.Name = "btnRefreshList";
-            this.btnRefreshList.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
-            this.btnRefreshList.Size = new System.Drawing.Size(52, 52);
-            this.btnRefreshList.TabIndex = 14;
-            this.btnRefreshList.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnRefreshList.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnRefreshList.UseVisualStyleBackColor = true;
-            this.btnRefreshList.Click += new System.EventHandler(this.btnRefreshList_Click);
-            // 
             // dtpToDate
             // 
             this.dtpToDate.CustomFormat = "dd-MM-yyyy";
@@ -391,6 +391,7 @@
             this.dtpToDate.Name = "dtpToDate";
             this.dtpToDate.Size = new System.Drawing.Size(119, 21);
             this.dtpToDate.TabIndex = 18;
+            this.dtpToDate.Value = new System.DateTime(2030, 8, 9, 14, 42, 0, 0);
             // 
             // dtpFromDate
             // 

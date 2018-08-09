@@ -182,7 +182,7 @@ namespace LoginForm.QuotationModule
             lblVat.Text = Utils.getManagement().VAT.ToString();
             dgSaleAddedItems.Columns[dgLandingCost.Index].DefaultCellStyle.Format = "C4";
             dgSaleAddedItems.Columns[dgLandingCost.Index].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("en-GB");
-
+            txtQuotationNo.Text = QuotationNOs;
             #region Combobox
             DataGridViewComboBoxColumn deliveryColumn = (DataGridViewComboBoxColumn)dgSaleAddedItems.Columns[dgDelivery.Index];
             deliveryColumn.DataSource = IME.QuotationDeliveries.ToList();
@@ -819,7 +819,6 @@ namespace LoginForm.QuotationModule
             #endregion
 
 
-
             ControlAutorization();
             txtSalesOrderNo.Text = "SO" + IME.CreteNewSaleOrderNo().FirstOrDefault().ToString();
             DataGridViewComboBoxColumn deliveryColumn = (DataGridViewComboBoxColumn)dgSaleAddedItems.Columns[dgDelivery.Index];
@@ -870,6 +869,12 @@ namespace LoginForm.QuotationModule
                 cbPaymentTerm.DataSource = IME.PaymentTerms.ToList();
                 cbPaymentTerm.DisplayMember = "term_name";
                 cbPaymentTerm.ValueMember = "ID";
+                if (!txtQuotationNo.Text.Contains(','))
+                {
+                    cbPaymentTerm.SelectedValue = IME.Quotations.Where(x => x.QuotationNo == txtQuotationNo.Text).FirstOrDefault().PaymentID;
+                }
+                else cbPaymentTerm.SelectedValue = IME.Customers.Where(x => x.ID == CustomerCode.Text).FirstOrDefault().payment_termID;
+
                 cbRep.DataSource = IME.Workers.ToList();
                 cbRep.ValueMember = "WorkerID";
                 cbRep.DisplayMember = "NameLastName";
@@ -3135,6 +3140,7 @@ namespace LoginForm.QuotationModule
         private void cbCurrency_SelectedIndexChanged(object sender, EventArgs e)
         {
             ChangeCurrSelected();
+            GetCurrencySymbol();
         }
 
         private void ChangeCurrSelected()
@@ -3149,6 +3155,15 @@ namespace LoginForm.QuotationModule
                 calculateTotalCost();
             }
         }
+
+        private void GetCurrencySymbol()
+        {
+            if (cbCurrency.SelectedItem != null)
+            {
+                lblPara.Text = (cbCurrency.SelectedItem as Currency).currencySymbol;
+            }
+        }
+
 
         private void ChangeCurr(int rowindex)
         {

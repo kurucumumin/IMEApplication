@@ -184,7 +184,6 @@ namespace LoginForm
             cbCountry.DataSource = IME.Countries.OrderBy(a => a.Country_name).ToList();
             cbCountry.DisplayMember = "Country_name";
             cbCountry.ValueMember = "ID";
-
             ContactType.DataSource = IME.ContactTypes.ToList();
             ContactType.ValueMember = "ID";
             ContactType.DisplayMember = "ContactTypeName";
@@ -665,7 +664,7 @@ namespace LoginForm
             //var CustomerList = IME.Customers.Where(a => a.ID.ToUpper().Contains(search.ToUpper())).ToList();
             var CustomerList = IME.Customer_CustomerID(search).ToList();
             CustomerDataGrid.DataSource = CustomerList;
-            string customerID = CustomerDataGrid.Rows[0].Cells["ID"].Value.ToString();
+            string customerID = CustomerDataGrid.Rows[0].Cells[ıDDataGridViewTextBoxColumn.Index].Value.ToString();
             //Customer c = (Customer)IME.Customer_CustomerID(customerID).FirstOrDefault();
             Customer c = IME.Customers.Where(a => a.ID == customerID).FirstOrDefault();
             dateTimePicker1.Value = c.CreateDate.Value;
@@ -933,6 +932,11 @@ namespace LoginForm
                 dateTimePicker1.Value = DateTime.Today;
                 itemsEnableTrue();
                 itemsClear();
+                #region Factor
+                factor.Value = IME.Managements.FirstOrDefault().Factor;
+                DiscountRate.Text = (100 - ((factor.Value * 100) / Utils.getManagement().Factor)).ToString();
+                DiscountRate.Text = String.Format("{0:0.0000}", Decimal.Parse(DiscountRate.Text)).ToString();
+                #endregion
                 rb_active.Checked = true;
                 int represantative_id = Utils.getCurrentUser().WorkerID;
                 Represantative1.DataSource = IME.Workers.Where(a => a.WorkerID == represantative_id).ToList();
@@ -1993,17 +1997,17 @@ namespace LoginForm
             }
         }
 
-        private void btnLogoSave_Click(object sender, EventArgs e)
-        {
-            if (btnUpdate.Text == "UPDATE")
-            {
-                logoCustAdd();
-            }
-            else
-            {
-                logoCustAdd();
-            }
-        }
+        //private void btnLogoSave_Click(object sender, EventArgs e)
+        //{
+        //    if (btnUpdate.Text == "UPDATE")
+        //    {
+        //        logoCustAdd();
+        //    }
+        //    else
+        //    {
+        //        logoCustAdd();
+        //    }
+        //}
 
         private void logoCustAdd()
         {
@@ -2301,6 +2305,27 @@ namespace LoginForm
             }
             #endregion
         }
+
+        private void btnNextCompany_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedTab = tab_account;
+        }
+
+        private void btnNextAccount_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedTab = tab_adresses;
+        }
+
+        private void btnNextAddress_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedTab = tab_contact;
+        }
+
+        private void btnNextContact_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedTab = tab_company;
+        }
+
 
         //private void logoCustUpd()
         //{

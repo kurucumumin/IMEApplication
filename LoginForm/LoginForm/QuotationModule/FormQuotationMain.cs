@@ -31,6 +31,7 @@ namespace LoginForm.QuotationModule
         private void btnRefreshList_Click(object sender, EventArgs e)
         {
             BringQuotationList(dtpFromDate.Value, dtpToDate.Value);
+            //BringQuotationList();
         }
 
         private void dgQuotation_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -300,7 +301,7 @@ namespace LoginForm.QuotationModule
             IMEEntities IME = new IMEEntities();
            // DateTime time = Convert.ToDateTime(IME.CurrentDate().FirtsOrDefault());
           //  MessageBox.Show(time.ToString());
-            var list = (from q in IME.Quotations.AsEnumerable()
+            var list = (from q in IME.Quotations/*.AsEnumerable()*/
                        join c in IME.Customers on q.CustomerID equals c.ID
                        where q.StartDate >= fromDate && q.StartDate < toDate 
                        select new
