@@ -46,6 +46,8 @@
             this.lblVAT = new System.Windows.Forms.Label();
             this.txtLowMarginLimit = new System.Windows.Forms.TextBox();
             this.lblLowMarginLimit = new System.Windows.Forms.Label();
+            this.btnCustomerFactorSave = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.CustomsRateUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FreightChargeUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericFactor)).BeginInit();
@@ -169,7 +171,7 @@
             // 
             this.numericFactor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericFactor.DecimalPlaces = 2;
+            this.numericFactor.DecimalPlaces = 1;
             this.numericFactor.Increment = new decimal(new int[] {
             1,
             0,
@@ -180,6 +182,7 @@
             this.numericFactor.Name = "numericFactor";
             this.numericFactor.Size = new System.Drawing.Size(231, 20);
             this.numericFactor.TabIndex = 68;
+            this.numericFactor.ThousandsSeparator = true;
             // 
             // lblFactor
             // 
@@ -254,12 +257,35 @@
             this.lblLowMarginLimit.TabIndex = 61;
             this.lblLowMarginLimit.Text = "Low Margin Limit";
             // 
+            // btnCustomerFactorSave
+            // 
+            this.btnCustomerFactorSave.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnCustomerFactorSave.Image = global::LoginForm.Properties.Resources.if_floppy_285657;
+            this.btnCustomerFactorSave.Location = new System.Drawing.Point(239, 322);
+            this.btnCustomerFactorSave.Name = "btnCustomerFactorSave";
+            this.btnCustomerFactorSave.Size = new System.Drawing.Size(51, 41);
+            this.btnCustomerFactorSave.TabIndex = 80;
+            this.btnCustomerFactorSave.UseVisualStyleBackColor = true;
+            this.btnCustomerFactorSave.Click += new System.EventHandler(this.btnCustomerFactorSave_Click);
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(215, 366);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(112, 13);
+            this.label5.TabIndex = 79;
+            this.label5.Text = "Customer Factor Save";
+            // 
             // FormManagmentControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.ClientSize = new System.Drawing.Size(372, 483);
+            this.Controls.Add(this.btnCustomerFactorSave);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.label67);
             this.Controls.Add(this.CustomsRateUpDown);
@@ -309,5 +335,7 @@
         private System.Windows.Forms.Label lblVAT;
         private System.Windows.Forms.TextBox txtLowMarginLimit;
         private System.Windows.Forms.Label lblLowMarginLimit;
+        private System.Windows.Forms.Button btnCustomerFactorSave;
+        private System.Windows.Forms.Label label5;
     }
 }

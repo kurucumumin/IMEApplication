@@ -664,7 +664,7 @@ namespace LoginForm
             //var CustomerList = IME.Customers.Where(a => a.ID.ToUpper().Contains(search.ToUpper())).ToList();
             var CustomerList = IME.Customer_CustomerID(search).ToList();
             CustomerDataGrid.DataSource = CustomerList;
-            string customerID = CustomerDataGrid.Rows[0].Cells["ID"].Value.ToString();
+            string customerID = CustomerDataGrid.Rows[0].Cells[ıDDataGridViewTextBoxColumn.Index].Value.ToString();
             //Customer c = (Customer)IME.Customer_CustomerID(customerID).FirstOrDefault();
             Customer c = IME.Customers.Where(a => a.ID == customerID).FirstOrDefault();
             dateTimePicker1.Value = c.CreateDate.Value;

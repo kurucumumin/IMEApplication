@@ -2861,7 +2861,14 @@ namespace LoginForm.QuotationModule
                 if (CurrValue1 != CurrValue) CurrValue1 = CurrValue;
                 CurrValue = (decimal)curr.rate;
             }
+        }
 
+        private void GetCurrencySymbol()
+        {
+            if (cbCurrency.SelectedItem != null)
+            {
+                lblPara.Text = (cbCurrency.SelectedItem as Currency).currencySymbol;
+            }
         }
 
         private void cbCurrency_SelectedIndexChanged(object sender, EventArgs e)
@@ -2871,6 +2878,7 @@ namespace LoginForm.QuotationModule
                 GetCurrency(dtpDate.Value);
                 ChangeCurr();
                 calculateTotalCost();
+                GetCurrencySymbol();
             }
         }
 

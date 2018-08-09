@@ -109,5 +109,27 @@ namespace LoginForm.ManagementModule
                 throw;
             }
         }
+
+        private void FactorUpdate()
+        {
+            IME.CustomerFactorUpdate(numericFactor.Value);
+            IME.SaveChanges();
+        }
+
+        private void btnCustomerFactorSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FactorUpdate();
+                MessageBox.Show("Factor added to customers", "Successfully");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("MC1: An error occured while saving changes. Try again.");
+                throw;
+            }
+            
+            
+        }
     }
 }

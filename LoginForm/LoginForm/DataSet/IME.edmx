@@ -2961,6 +2961,9 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Parameter Name="c_name" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="CustomerAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="CustomerFactorUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="factor" Type="decimal" Mode="In" />
+        </Function>
         <Function Name="CustomersDebits" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="DefaultCurrencySet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="currencyId" Type="numeric" Mode="In" />
@@ -7748,6 +7751,9 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="c_name" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="CustomerAll" ReturnType="Collection(IMEModel.CustomerAll_Result)" />
+          <FunctionImport Name="CustomerFactorUpdate">
+            <Parameter Name="factor" Mode="In" Type="Decimal" />
+          </FunctionImport>
           <FunctionImport Name="CustomersDebits" ReturnType="Collection(IMEModel.CustomersDebits_Result)" />
           <FunctionImport Name="DefaultCurrencySet">
             <Parameter Name="currencyId" Mode="In" Type="Decimal" />
@@ -10468,6 +10474,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CustomerFactorUpdate" FunctionName="IMEModel.Store.CustomerFactorUpdate" />
           <FunctionImportMapping FunctionImportName="CustomersDebits" FunctionName="IMEModel.Store.CustomersDebits">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.CustomersDebits_Result">

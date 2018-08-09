@@ -585,6 +585,15 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CustomerAll_Result>("CustomerAll");
         }
     
+        public virtual int CustomerFactorUpdate(Nullable<decimal> factor)
+        {
+            var factorParameter = factor.HasValue ?
+                new ObjectParameter("factor", factor) :
+                new ObjectParameter("factor", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CustomerFactorUpdate", factorParameter);
+        }
+    
         public virtual ObjectResult<CustomersDebits_Result> CustomersDebits()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CustomersDebits_Result>("CustomersDebits");
