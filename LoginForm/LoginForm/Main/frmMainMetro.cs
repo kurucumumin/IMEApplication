@@ -29,6 +29,7 @@ namespace LoginForm.Main
         int PH;
         string animMode = "Extend";
         int maxSubPanelHeight;
+        int ExtendingPanelHeight = 324;
         public frmMainMetro()
         {
             InitializeComponent();
@@ -42,7 +43,7 @@ namespace LoginForm.Main
 
                 int h = 0;
                 //maxSubPanelHeight = panel5.Height - 382;
-                maxSubPanelHeight = panel5.Height - 332;
+                maxSubPanelHeight = panel5.Height - ExtendingPanelHeight;
                 foreach (Control item in pnlDevelopment.Controls)
                 {
                     h += item.Height + 6;
@@ -74,7 +75,7 @@ namespace LoginForm.Main
 
                 int h = 0;
                 //maxSubPanelHeight = panel5.Height - 382;
-                maxSubPanelHeight = panel5.Height - 332;
+                maxSubPanelHeight = panel5.Height - ExtendingPanelHeight;
                 foreach (Control item in pnlFileLoader.Controls)
                 {
                     h += item.Height + 6;
@@ -106,7 +107,7 @@ namespace LoginForm.Main
                 ActivePanel.Height = 0;
 
                 int h = 0;
-                maxSubPanelHeight = panel5.Height - 382;
+                maxSubPanelHeight = panel5.Height - ExtendingPanelHeight;
                 foreach (Control item in pnlManagement.Controls)
                 {
                     h += item.Height + 6;

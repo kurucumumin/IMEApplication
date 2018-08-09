@@ -347,7 +347,7 @@ namespace LoginForm.QuotationModule
 
         private void button5_Click(object sender, EventArgs e)
         {
-            QQQ form = new QQQ();
+            ExperimentQuotationAdd form = new ExperimentQuotationAdd();
             form.Show();
         }
         

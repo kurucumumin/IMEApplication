@@ -42,32 +42,13 @@ namespace LoginForm.Main
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pnlManagement = new System.Windows.Forms.Panel();
-            this.pnlFileLoader = new System.Windows.Forms.Panel();
-            this.pnlDevelopment = new System.Windows.Forms.Panel();
-            this.pnlBorder = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.lblUSD = new System.Windows.Forms.Label();
-            this.lblGBP = new System.Windows.Forms.Label();
-            this.lblTitleUSD = new System.Windows.Forms.Label();
-            this.lblTitleGBP = new System.Windows.Forms.Label();
-            this.lblPhone = new System.Windows.Forms.Label();
-            this.lblTitlePhone = new System.Windows.Forms.Label();
-            this.lblEmail = new System.Windows.Forms.Label();
-            this.lblTitleEmail = new System.Windows.Forms.Label();
-            this.lblName = new System.Windows.Forms.Label();
-            this.lblTitleName = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.bunifuElipse2 = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.bunifuElipse3 = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.altoSlidingLabel1 = new AltoControls.AltoSlidingLabel();
             this.btnManagmentControl = new AltoControls.AltoButton();
             this.btnRoleAuths = new AltoControls.AltoButton();
             this.btnCategorySubCategory = new AltoControls.AltoButton();
             this.btnTermsOfPayment = new AltoControls.AltoButton();
             this.btnExchangeRate = new AltoControls.AltoButton();
             this.btnManagement = new AltoControls.AltoButton();
+            this.pnlFileLoader = new System.Windows.Forms.Panel();
             this.btnBackOrder = new AltoControls.AltoButton();
             this.btnOrderAcknowledgement = new AltoControls.AltoButton();
             this.btnOnSale = new AltoControls.AltoButton();
@@ -82,6 +63,7 @@ namespace LoginForm.Main
             this.btnRSProList = new AltoControls.AltoButton();
             this.btnRsInvoice = new AltoControls.AltoButton();
             this.btnFileLoader = new AltoControls.AltoButton();
+            this.pnlDevelopment = new System.Windows.Forms.Panel();
             this.btnToBeInvoiced = new AltoControls.AltoButton();
             this.btnStock = new AltoControls.AltoButton();
             this.btnQuotation = new AltoControls.AltoButton();
@@ -92,6 +74,24 @@ namespace LoginForm.Main
             this.btnSalesOrder = new AltoControls.AltoButton();
             this.btnSupplier = new AltoControls.AltoButton();
             this.btnDevelopment = new AltoControls.AltoButton();
+            this.pnlBorder = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.lblUSD = new System.Windows.Forms.Label();
+            this.lblGBP = new System.Windows.Forms.Label();
+            this.lblTitleUSD = new System.Windows.Forms.Label();
+            this.lblTitleGBP = new System.Windows.Forms.Label();
+            this.lblPhone = new System.Windows.Forms.Label();
+            this.lblTitlePhone = new System.Windows.Forms.Label();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.lblTitleEmail = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
+            this.lblTitleName = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.altoSlidingLabel1 = new AltoControls.AltoSlidingLabel();
+            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.bunifuElipse2 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.bunifuElipse3 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -144,6 +144,7 @@ namespace LoginForm.Main
             // 
             // pnlManagement
             // 
+            this.pnlManagement.AutoScroll = true;
             this.pnlManagement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(254)))), ((int)(((byte)(233)))));
             this.pnlManagement.Controls.Add(this.btnManagmentControl);
             this.pnlManagement.Controls.Add(this.btnRoleAuths);
@@ -156,225 +157,6 @@ namespace LoginForm.Main
             this.pnlManagement.Name = "pnlManagement";
             this.pnlManagement.Size = new System.Drawing.Size(291, 0);
             this.pnlManagement.TabIndex = 8;
-            // 
-            // pnlFileLoader
-            // 
-            this.pnlFileLoader.AutoScroll = true;
-            this.pnlFileLoader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(254)))), ((int)(((byte)(233)))));
-            this.pnlFileLoader.Controls.Add(this.btnBackOrder);
-            this.pnlFileLoader.Controls.Add(this.btnOrderAcknowledgement);
-            this.pnlFileLoader.Controls.Add(this.btnOnSale);
-            this.pnlFileLoader.Controls.Add(this.btnSuperDisk);
-            this.pnlFileLoader.Controls.Add(this.btnSlidingPriceList);
-            this.pnlFileLoader.Controls.Add(this.btnDiscontinuedList);
-            this.pnlFileLoader.Controls.Add(this.btnExtendedRangePrice);
-            this.pnlFileLoader.Controls.Add(this.btnHazardousFile);
-            this.pnlFileLoader.Controls.Add(this.btnDualUsedArticles);
-            this.pnlFileLoader.Controls.Add(this.btnSuperDiskwithP);
-            this.pnlFileLoader.Controls.Add(this.btnTSEList);
-            this.pnlFileLoader.Controls.Add(this.btnRSProList);
-            this.pnlFileLoader.Controls.Add(this.btnRsInvoice);
-            this.pnlFileLoader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlFileLoader.Location = new System.Drawing.Point(0, 314);
-            this.pnlFileLoader.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pnlFileLoader.Name = "pnlFileLoader";
-            this.pnlFileLoader.Size = new System.Drawing.Size(291, 0);
-            this.pnlFileLoader.TabIndex = 6;
-            // 
-            // pnlDevelopment
-            // 
-            this.pnlDevelopment.AutoScroll = true;
-            this.pnlDevelopment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(254)))), ((int)(((byte)(233)))));
-            this.pnlDevelopment.Controls.Add(this.btnToBeInvoiced);
-            this.pnlDevelopment.Controls.Add(this.btnStock);
-            this.pnlDevelopment.Controls.Add(this.btnQuotation);
-            this.pnlDevelopment.Controls.Add(this.btnItemCard);
-            this.pnlDevelopment.Controls.Add(this.btnPurchaseOrder);
-            this.pnlDevelopment.Controls.Add(this.btnCustomer);
-            this.pnlDevelopment.Controls.Add(this.btnUser);
-            this.pnlDevelopment.Controls.Add(this.btnSalesOrder);
-            this.pnlDevelopment.Controls.Add(this.btnSupplier);
-            this.pnlDevelopment.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlDevelopment.Location = new System.Drawing.Point(0, 264);
-            this.pnlDevelopment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pnlDevelopment.Name = "pnlDevelopment";
-            this.pnlDevelopment.Size = new System.Drawing.Size(291, 0);
-            this.pnlDevelopment.TabIndex = 3;
-            // 
-            // pnlBorder
-            // 
-            this.pnlBorder.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlBorder.Location = new System.Drawing.Point(0, 207);
-            this.pnlBorder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pnlBorder.Name = "pnlBorder";
-            this.pnlBorder.Size = new System.Drawing.Size(291, 7);
-            this.pnlBorder.TabIndex = 9;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.lblUSD);
-            this.panel4.Controls.Add(this.lblGBP);
-            this.panel4.Controls.Add(this.lblTitleUSD);
-            this.panel4.Controls.Add(this.lblTitleGBP);
-            this.panel4.Controls.Add(this.lblPhone);
-            this.panel4.Controls.Add(this.lblTitlePhone);
-            this.panel4.Controls.Add(this.lblEmail);
-            this.panel4.Controls.Add(this.lblTitleEmail);
-            this.panel4.Controls.Add(this.lblName);
-            this.panel4.Controls.Add(this.lblTitleName);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(291, 207);
-            this.panel4.TabIndex = 10;
-            // 
-            // lblUSD
-            // 
-            this.lblUSD.AutoSize = true;
-            this.lblUSD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblUSD.Location = new System.Drawing.Point(75, 148);
-            this.lblUSD.Name = "lblUSD";
-            this.lblUSD.Size = new System.Drawing.Size(46, 18);
-            this.lblUSD.TabIndex = 9;
-            this.lblUSD.Text = "label2";
-            // 
-            // lblGBP
-            // 
-            this.lblGBP.AutoSize = true;
-            this.lblGBP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblGBP.Location = new System.Drawing.Point(75, 130);
-            this.lblGBP.Name = "lblGBP";
-            this.lblGBP.Size = new System.Drawing.Size(46, 18);
-            this.lblGBP.TabIndex = 8;
-            this.lblGBP.Text = "label1";
-            // 
-            // lblTitleUSD
-            // 
-            this.lblTitleUSD.AutoSize = true;
-            this.lblTitleUSD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblTitleUSD.Location = new System.Drawing.Point(19, 148);
-            this.lblTitleUSD.Name = "lblTitleUSD";
-            this.lblTitleUSD.Size = new System.Drawing.Size(44, 18);
-            this.lblTitleUSD.TabIndex = 7;
-            this.lblTitleUSD.Text = "USD:";
-            // 
-            // lblTitleGBP
-            // 
-            this.lblTitleGBP.AutoSize = true;
-            this.lblTitleGBP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblTitleGBP.Location = new System.Drawing.Point(19, 130);
-            this.lblTitleGBP.Name = "lblTitleGBP";
-            this.lblTitleGBP.Size = new System.Drawing.Size(44, 18);
-            this.lblTitleGBP.TabIndex = 6;
-            this.lblTitleGBP.Text = "GPB:";
-            // 
-            // lblPhone
-            // 
-            this.lblPhone.AutoSize = true;
-            this.lblPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblPhone.Location = new System.Drawing.Point(75, 55);
-            this.lblPhone.Name = "lblPhone";
-            this.lblPhone.Size = new System.Drawing.Size(46, 18);
-            this.lblPhone.TabIndex = 5;
-            this.lblPhone.Text = "label4";
-            // 
-            // lblTitlePhone
-            // 
-            this.lblTitlePhone.AutoSize = true;
-            this.lblTitlePhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblTitlePhone.Location = new System.Drawing.Point(19, 55);
-            this.lblTitlePhone.Name = "lblTitlePhone";
-            this.lblTitlePhone.Size = new System.Drawing.Size(55, 18);
-            this.lblTitlePhone.TabIndex = 4;
-            this.lblTitlePhone.Text = "Phone:";
-            // 
-            // lblEmail
-            // 
-            this.lblEmail.AutoSize = true;
-            this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblEmail.Location = new System.Drawing.Point(75, 37);
-            this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(46, 18);
-            this.lblEmail.TabIndex = 3;
-            this.lblEmail.Text = "label2";
-            // 
-            // lblTitleEmail
-            // 
-            this.lblTitleEmail.AutoSize = true;
-            this.lblTitleEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblTitleEmail.Location = new System.Drawing.Point(19, 37);
-            this.lblTitleEmail.Name = "lblTitleEmail";
-            this.lblTitleEmail.Size = new System.Drawing.Size(49, 18);
-            this.lblTitleEmail.TabIndex = 2;
-            this.lblTitleEmail.Text = "Email:";
-            // 
-            // lblName
-            // 
-            this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblName.Location = new System.Drawing.Point(75, 18);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(46, 18);
-            this.lblName.TabIndex = 1;
-            this.lblName.Text = "label1";
-            // 
-            // lblTitleName
-            // 
-            this.lblTitleName.AutoSize = true;
-            this.lblTitleName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblTitleName.Location = new System.Drawing.Point(19, 18);
-            this.lblTitleName.Name = "lblTitleName";
-            this.lblTitleName.Size = new System.Drawing.Size(52, 18);
-            this.lblTitleName.TabIndex = 0;
-            this.lblTitleName.Text = "Name:";
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
-            this.panel3.BackgroundImage = global::LoginForm.Properties.Resources.IME_LOGO2;
-            this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.altoSlidingLabel1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(309, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(916, 1006);
-            this.panel3.TabIndex = 1;
-            // 
-            // bunifuElipse1
-            // 
-            this.bunifuElipse1.ElipseRadius = 10;
-            this.bunifuElipse1.TargetControl = this.pnlDevelopment;
-            // 
-            // bunifuElipse2
-            // 
-            this.bunifuElipse2.ElipseRadius = 20;
-            this.bunifuElipse2.TargetControl = this.pnlFileLoader;
-            // 
-            // bunifuElipse3
-            // 
-            this.bunifuElipse3.ElipseRadius = 20;
-            this.bunifuElipse3.TargetControl = this.pnlManagement;
-            // 
-            // timer2
-            // 
-            this.timer2.Interval = 5;
-            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
-            // 
-            // altoSlidingLabel1
-            // 
-            this.altoSlidingLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.altoSlidingLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.altoSlidingLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.altoSlidingLabel1.Location = new System.Drawing.Point(578, 10);
-            this.altoSlidingLabel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.altoSlidingLabel1.Name = "altoSlidingLabel1";
-            this.altoSlidingLabel1.Size = new System.Drawing.Size(325, 57);
-            this.altoSlidingLabel1.Slide = true;
-            this.altoSlidingLabel1.TabIndex = 1;
-            this.altoSlidingLabel1.Text = "We will have a meeting at 17:00 about new product catalogues came from RS UK";
             // 
             // btnManagmentControl
             // 
@@ -508,6 +290,30 @@ namespace LoginForm.Main
             this.btnManagement.Text = "Management";
             this.btnManagement.Transparency = false;
             this.btnManagement.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // pnlFileLoader
+            // 
+            this.pnlFileLoader.AutoScroll = true;
+            this.pnlFileLoader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(254)))), ((int)(((byte)(233)))));
+            this.pnlFileLoader.Controls.Add(this.btnBackOrder);
+            this.pnlFileLoader.Controls.Add(this.btnOrderAcknowledgement);
+            this.pnlFileLoader.Controls.Add(this.btnOnSale);
+            this.pnlFileLoader.Controls.Add(this.btnSuperDisk);
+            this.pnlFileLoader.Controls.Add(this.btnSlidingPriceList);
+            this.pnlFileLoader.Controls.Add(this.btnDiscontinuedList);
+            this.pnlFileLoader.Controls.Add(this.btnExtendedRangePrice);
+            this.pnlFileLoader.Controls.Add(this.btnHazardousFile);
+            this.pnlFileLoader.Controls.Add(this.btnDualUsedArticles);
+            this.pnlFileLoader.Controls.Add(this.btnSuperDiskwithP);
+            this.pnlFileLoader.Controls.Add(this.btnTSEList);
+            this.pnlFileLoader.Controls.Add(this.btnRSProList);
+            this.pnlFileLoader.Controls.Add(this.btnRsInvoice);
+            this.pnlFileLoader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlFileLoader.Location = new System.Drawing.Point(0, 314);
+            this.pnlFileLoader.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pnlFileLoader.Name = "pnlFileLoader";
+            this.pnlFileLoader.Size = new System.Drawing.Size(291, 0);
+            this.pnlFileLoader.TabIndex = 6;
             // 
             // btnBackOrder
             // 
@@ -818,6 +624,26 @@ namespace LoginForm.Main
             this.btnFileLoader.Transparency = false;
             this.btnFileLoader.Click += new System.EventHandler(this.button2_Click);
             // 
+            // pnlDevelopment
+            // 
+            this.pnlDevelopment.AutoScroll = true;
+            this.pnlDevelopment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(254)))), ((int)(((byte)(233)))));
+            this.pnlDevelopment.Controls.Add(this.btnToBeInvoiced);
+            this.pnlDevelopment.Controls.Add(this.btnStock);
+            this.pnlDevelopment.Controls.Add(this.btnQuotation);
+            this.pnlDevelopment.Controls.Add(this.btnItemCard);
+            this.pnlDevelopment.Controls.Add(this.btnPurchaseOrder);
+            this.pnlDevelopment.Controls.Add(this.btnCustomer);
+            this.pnlDevelopment.Controls.Add(this.btnUser);
+            this.pnlDevelopment.Controls.Add(this.btnSalesOrder);
+            this.pnlDevelopment.Controls.Add(this.btnSupplier);
+            this.pnlDevelopment.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlDevelopment.Location = new System.Drawing.Point(0, 264);
+            this.pnlDevelopment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pnlDevelopment.Name = "pnlDevelopment";
+            this.pnlDevelopment.Size = new System.Drawing.Size(291, 0);
+            this.pnlDevelopment.TabIndex = 3;
+            // 
             // btnToBeInvoiced
             // 
             this.btnToBeInvoiced.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
@@ -1038,6 +864,181 @@ namespace LoginForm.Main
             this.btnDevelopment.Text = "Development";
             this.btnDevelopment.Transparency = false;
             this.btnDevelopment.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // pnlBorder
+            // 
+            this.pnlBorder.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlBorder.Location = new System.Drawing.Point(0, 207);
+            this.pnlBorder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pnlBorder.Name = "pnlBorder";
+            this.pnlBorder.Size = new System.Drawing.Size(291, 7);
+            this.pnlBorder.TabIndex = 9;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.lblUSD);
+            this.panel4.Controls.Add(this.lblGBP);
+            this.panel4.Controls.Add(this.lblTitleUSD);
+            this.panel4.Controls.Add(this.lblTitleGBP);
+            this.panel4.Controls.Add(this.lblPhone);
+            this.panel4.Controls.Add(this.lblTitlePhone);
+            this.panel4.Controls.Add(this.lblEmail);
+            this.panel4.Controls.Add(this.lblTitleEmail);
+            this.panel4.Controls.Add(this.lblName);
+            this.panel4.Controls.Add(this.lblTitleName);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(291, 207);
+            this.panel4.TabIndex = 10;
+            // 
+            // lblUSD
+            // 
+            this.lblUSD.AutoSize = true;
+            this.lblUSD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblUSD.Location = new System.Drawing.Point(75, 148);
+            this.lblUSD.Name = "lblUSD";
+            this.lblUSD.Size = new System.Drawing.Size(46, 18);
+            this.lblUSD.TabIndex = 9;
+            this.lblUSD.Text = "label2";
+            // 
+            // lblGBP
+            // 
+            this.lblGBP.AutoSize = true;
+            this.lblGBP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblGBP.Location = new System.Drawing.Point(75, 130);
+            this.lblGBP.Name = "lblGBP";
+            this.lblGBP.Size = new System.Drawing.Size(46, 18);
+            this.lblGBP.TabIndex = 8;
+            this.lblGBP.Text = "label1";
+            // 
+            // lblTitleUSD
+            // 
+            this.lblTitleUSD.AutoSize = true;
+            this.lblTitleUSD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblTitleUSD.Location = new System.Drawing.Point(19, 148);
+            this.lblTitleUSD.Name = "lblTitleUSD";
+            this.lblTitleUSD.Size = new System.Drawing.Size(44, 18);
+            this.lblTitleUSD.TabIndex = 7;
+            this.lblTitleUSD.Text = "USD:";
+            // 
+            // lblTitleGBP
+            // 
+            this.lblTitleGBP.AutoSize = true;
+            this.lblTitleGBP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblTitleGBP.Location = new System.Drawing.Point(19, 130);
+            this.lblTitleGBP.Name = "lblTitleGBP";
+            this.lblTitleGBP.Size = new System.Drawing.Size(44, 18);
+            this.lblTitleGBP.TabIndex = 6;
+            this.lblTitleGBP.Text = "GPB:";
+            // 
+            // lblPhone
+            // 
+            this.lblPhone.AutoSize = true;
+            this.lblPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblPhone.Location = new System.Drawing.Point(75, 55);
+            this.lblPhone.Name = "lblPhone";
+            this.lblPhone.Size = new System.Drawing.Size(46, 18);
+            this.lblPhone.TabIndex = 5;
+            this.lblPhone.Text = "label4";
+            // 
+            // lblTitlePhone
+            // 
+            this.lblTitlePhone.AutoSize = true;
+            this.lblTitlePhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblTitlePhone.Location = new System.Drawing.Point(19, 55);
+            this.lblTitlePhone.Name = "lblTitlePhone";
+            this.lblTitlePhone.Size = new System.Drawing.Size(55, 18);
+            this.lblTitlePhone.TabIndex = 4;
+            this.lblTitlePhone.Text = "Phone:";
+            // 
+            // lblEmail
+            // 
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblEmail.Location = new System.Drawing.Point(75, 37);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(46, 18);
+            this.lblEmail.TabIndex = 3;
+            this.lblEmail.Text = "label2";
+            // 
+            // lblTitleEmail
+            // 
+            this.lblTitleEmail.AutoSize = true;
+            this.lblTitleEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblTitleEmail.Location = new System.Drawing.Point(19, 37);
+            this.lblTitleEmail.Name = "lblTitleEmail";
+            this.lblTitleEmail.Size = new System.Drawing.Size(49, 18);
+            this.lblTitleEmail.TabIndex = 2;
+            this.lblTitleEmail.Text = "Email:";
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblName.Location = new System.Drawing.Point(75, 18);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(46, 18);
+            this.lblName.TabIndex = 1;
+            this.lblName.Text = "label1";
+            // 
+            // lblTitleName
+            // 
+            this.lblTitleName.AutoSize = true;
+            this.lblTitleName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblTitleName.Location = new System.Drawing.Point(19, 18);
+            this.lblTitleName.Name = "lblTitleName";
+            this.lblTitleName.Size = new System.Drawing.Size(52, 18);
+            this.lblTitleName.TabIndex = 0;
+            this.lblTitleName.Text = "Name:";
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
+            this.panel3.BackgroundImage = global::LoginForm.Properties.Resources.IME_LOGO2;
+            this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.altoSlidingLabel1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(309, 0);
+            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(916, 1006);
+            this.panel3.TabIndex = 1;
+            // 
+            // altoSlidingLabel1
+            // 
+            this.altoSlidingLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.altoSlidingLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.altoSlidingLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.altoSlidingLabel1.Location = new System.Drawing.Point(578, 10);
+            this.altoSlidingLabel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.altoSlidingLabel1.Name = "altoSlidingLabel1";
+            this.altoSlidingLabel1.Size = new System.Drawing.Size(325, 57);
+            this.altoSlidingLabel1.Slide = true;
+            this.altoSlidingLabel1.TabIndex = 1;
+            this.altoSlidingLabel1.Text = "We will have a meeting at 17:00 about new product catalogues came from RS UK";
+            // 
+            // bunifuElipse1
+            // 
+            this.bunifuElipse1.ElipseRadius = 10;
+            this.bunifuElipse1.TargetControl = this.pnlDevelopment;
+            // 
+            // bunifuElipse2
+            // 
+            this.bunifuElipse2.ElipseRadius = 20;
+            this.bunifuElipse2.TargetControl = this.pnlFileLoader;
+            // 
+            // bunifuElipse3
+            // 
+            this.bunifuElipse3.ElipseRadius = 20;
+            this.bunifuElipse3.TargetControl = this.pnlManagement;
+            // 
+            // timer2
+            // 
+            this.timer2.Interval = 5;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // frmMainMetro
             // 

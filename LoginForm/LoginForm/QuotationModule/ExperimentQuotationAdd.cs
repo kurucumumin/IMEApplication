@@ -416,8 +416,9 @@ namespace LoginForm.QuotationModule
                                 if (MPN_Items.Count == 1)
                                 {
                                     SendKeys.Send("{UP}");
+                                    InsertItemToQuotation(row, db, item1);
                                     //BeginInvoke((MethodInvoker)delegate {
-                                    backgroundWorker1.RunWorkerAsync(new object[] { row, db, item1 });
+                                    //backgroundWorker1.RunWorkerAsync(new object[] { row, db, item1 });
                                     //});
                                     
                                 }
@@ -430,7 +431,8 @@ namespace LoginForm.QuotationModule
                                         item1 = db.CompleteItems.Where(x => x.Article_No == formMPN.ItemCode).FirstOrDefault();
                                         SendKeys.Send("{UP}");
                                         //BeginInvoke((MethodInvoker)delegate {
-                                        backgroundWorker1.RunWorkerAsync(new object[] { row, db, item1 });
+                                        InsertItemToQuotation(row, db, item1);
+                                        //backgroundWorker1.RunWorkerAsync(new object[] { row, db, item1 });
                                         //});
                                     }
                                 }
@@ -443,7 +445,8 @@ namespace LoginForm.QuotationModule
                                     CompleteItem item2 = db.CompleteItems.Where(x => x.Article_No == form.ItemCode).FirstOrDefault();
                                     SendKeys.Send("{UP}");
                                     //BeginInvoke((MethodInvoker)delegate {
-                                    backgroundWorker1.RunWorkerAsync(new object[] { row, db, item2 });
+                                    InsertItemToQuotation(row, db, item2);
+                                    //backgroundWorker1.RunWorkerAsync(new object[] { row, db, item2 });
                                     //});
                                 }
                                 else
@@ -578,7 +581,7 @@ namespace LoginForm.QuotationModule
                 row.Cells[dgUCUPCurr.Index].Value = price.ToString("G29");
                 decimal landingCost = qUtils.CalculateLandingCost(cost, Convert.ToDecimal(txtStandardWeight.Text));
                 row.Cells[dgLandingCost.Index].Value = landingCost;
-                row.Cells[dgMargin.Index].Value = qUtils.CalculateMargin(price, landingCost);
+                row.Cells[dgMargin.Index].Value = qUtils.CalculateMargin(ConvertAmountToGBP(price), landingCost);
             }
             decimal ucUpCurr = Convert.ToDecimal(row.Cells[dgUCUPCurr.Index].Value);
             row.Cells[dgTotal.Index].Value = ((decimal)(ucUpCurr * qty)).ToString("G29");

@@ -4754,6 +4754,14 @@ namespace LoginForm.QuotationModule
                 f.ShowDialog();
             }
         }
-        
+
+        private void cbDeliveryAddress_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbDeliveryAddress.SelectedIndex != -1)
+            {
+                CustomerAddress ca = (CustomerAddress)cbDeliveryAddress.SelectedItem;
+                textBox5.Text = ca.AdressDetails + " " + ca.Town.Town_name + "/" + ca.City.City_name + "/" + ca.Country.Country_name;
+            }
+        }
     }
 }
