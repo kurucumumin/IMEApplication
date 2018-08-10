@@ -353,5 +353,11 @@ namespace LoginForm.Main
             FormManagmentControl form = new FormManagmentControl();
             form.ShowDialog();
         }
+
+        private void btnCustomerTransfer_Click(object sender, EventArgs e)
+        {
+            FormUserCustomerUpdate form = new FormUserCustomerUpdate();
+            form.ShowDialog();
+        }
     }
 }
