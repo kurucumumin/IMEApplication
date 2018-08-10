@@ -155,7 +155,7 @@ namespace LoginForm.Main
             this.pnlManagement.Location = new System.Drawing.Point(0, 364);
             this.pnlManagement.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlManagement.Name = "pnlManagement";
-            this.pnlManagement.Size = new System.Drawing.Size(291, 243);
+            this.pnlManagement.Size = new System.Drawing.Size(291, 0);
             this.pnlManagement.TabIndex = 8;
             // 
             // btnManagmentControl
