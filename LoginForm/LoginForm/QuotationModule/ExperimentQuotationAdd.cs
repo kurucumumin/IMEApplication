@@ -634,6 +634,8 @@ namespace LoginForm.QuotationModule
                 }
             }
 
+            ItemDetailFill_Row(item, row);
+
             if (tabControl1.SelectedTab != tabItemDetails)
             {
                 tabControl1.SelectedTab = tabItemDetails;
@@ -641,7 +643,6 @@ namespace LoginForm.QuotationModule
                 dgAddedItems.Focus();
             }
 
-            ItemDetailFill_Row(item, row);
             
             if (item.Col1Break != null)
             {

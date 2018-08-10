@@ -326,7 +326,7 @@ namespace LoginForm.Main
 
         private void btnExchangeRate_Click(object sender, EventArgs e)
         {
-            FormExchangeRate form = new FormExchangeRate();
+            frmExchangeRate form = new frmExchangeRate();
             form.ShowDialog();
         }
 

@@ -535,6 +535,19 @@
     <Compile Include="Management\FormManagmentControl.Designer.cs">
       <DependentUpon>FormManagmentControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\CurrencySP.cs" />
+    <Compile Include="Model\frmCurrency.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Model\frmCurrency.designer.cs">
+      <DependentUpon>frmCurrency.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\frmExchangeRate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Model\frmExchangeRate.designer.cs">
+      <DependentUpon>frmExchangeRate.cs</DependentUpon>
+    </Compile>
     <Compile Include="MyClasses\Controls\AltoButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -1029,6 +1042,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Management\FormManagmentControl.resx">
       <DependentUpon>FormManagmentControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Model\frmCurrency.resx">
+      <DependentUpon>frmCurrency.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Model\frmExchangeRate.resx">
+      <DependentUpon>frmExchangeRate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OnOrder\frmAcikSiparis.resx">
       <DependentUpon>frmAcikSiparis.cs</DependentUpon>
