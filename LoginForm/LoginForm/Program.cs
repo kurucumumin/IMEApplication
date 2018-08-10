@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LoginForm.ManagementModule;
+using LoginForm.User;
+using System;
 using System.Windows.Forms;
 
 namespace LoginForm
@@ -10,7 +12,7 @@ namespace LoginForm
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmLogin());
+            Application.Run(new FormUserCustomerUpdate());
         }
     }
 }

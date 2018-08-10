@@ -36,5 +36,11 @@ namespace LoginForm.User
             FormWorkerManagement formWorkerAdd = new FormWorkerManagement(this);
             formWorkerAdd.ShowDialog();
         }
+
+        private void btnCustomerChange_Click(object sender, EventArgs e)
+        {
+            FormUserCustomerUpdate form = new FormUserCustomerUpdate();
+            form.ShowDialog();
+        }
     }
 }

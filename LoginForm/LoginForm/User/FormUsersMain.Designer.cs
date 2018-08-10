@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAddWorker = new System.Windows.Forms.Button();
@@ -37,6 +37,7 @@
             this.dgdg = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.workerBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.workerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnCustomerChange = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgdg)).BeginInit();
@@ -64,6 +65,7 @@
             // 
             this.flowLayoutPanel1.Controls.Add(this.btnAddWorker);
             this.flowLayoutPanel1.Controls.Add(this.btnEditWorker);
+            this.flowLayoutPanel1.Controls.Add(this.btnCustomerChange);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -108,14 +110,14 @@
             this.dgdg.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgdg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgdg.DataSource = this.workerBindingSource1;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgdg.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgdg.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgdg.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgdg.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dgdg.Location = new System.Drawing.Point(3, 78);
@@ -125,6 +127,21 @@
             this.dgdg.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgdg.Size = new System.Drawing.Size(789, 592);
             this.dgdg.TabIndex = 3;
+            // 
+            // btnCustomerChange
+            // 
+            this.btnCustomerChange.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCustomerChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnCustomerChange.Image = global::LoginForm.Properties.Resources.icons8_Refresh_32;
+            this.btnCustomerChange.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCustomerChange.Location = new System.Drawing.Point(119, 3);
+            this.btnCustomerChange.Name = "btnCustomerChange";
+            this.btnCustomerChange.Size = new System.Drawing.Size(52, 52);
+            this.btnCustomerChange.TabIndex = 53;
+            this.btnCustomerChange.Text = "Change";
+            this.btnCustomerChange.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCustomerChange.UseVisualStyleBackColor = true;
+            this.btnCustomerChange.Click += new System.EventHandler(this.btnCustomerChange_Click);
             // 
             // FormUserMain
             // 
@@ -163,5 +180,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn minMargeDataGridViewTextBoxColumn1;
         private System.Windows.Forms.Button btnAddWorker;
         private System.Windows.Forms.Button btnEditWorker;
+        private System.Windows.Forms.Button btnCustomerChange;
     }
 }
