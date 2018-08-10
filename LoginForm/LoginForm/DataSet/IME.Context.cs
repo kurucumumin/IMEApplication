@@ -594,6 +594,28 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CustomerFactorUpdate", factorParameter);
         }
     
+        public virtual ObjectResult<string> CustomerRepresentativeSelect(Nullable<int> representaryID)
+        {
+            var representaryIDParameter = representaryID.HasValue ?
+                new ObjectParameter("representaryID", representaryID) :
+                new ObjectParameter("representaryID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("CustomerRepresentativeSelect", representaryIDParameter);
+        }
+    
+        public virtual int CustomerRepresentativeUpdate(Nullable<int> representaryID, string c_name)
+        {
+            var representaryIDParameter = representaryID.HasValue ?
+                new ObjectParameter("representaryID", representaryID) :
+                new ObjectParameter("representaryID", typeof(int));
+    
+            var c_nameParameter = c_name != null ?
+                new ObjectParameter("c_name", c_name) :
+                new ObjectParameter("c_name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CustomerRepresentativeUpdate", representaryIDParameter, c_nameParameter);
+        }
+    
         public virtual ObjectResult<CustomersDebits_Result> CustomersDebits()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CustomersDebits_Result>("CustomersDebits");

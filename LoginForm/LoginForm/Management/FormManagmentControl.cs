@@ -24,6 +24,7 @@ namespace LoginForm.ManagementModule
         private void FormManagmentControl_Load(object sender, EventArgs e)
         {
             checkAuthorities();
+            setManagementModule(Utils.getManagement());
         }
 
         public void checkAuthorities()
@@ -113,7 +114,7 @@ namespace LoginForm.ManagementModule
         private void FactorUpdate()
         {
             IME.CustomerFactorUpdate(numericFactor.Value);
-            IME.SaveChanges();
+            //IME.SaveChanges();
         }
 
         private void btnCustomerFactorSave_Click(object sender, EventArgs e)

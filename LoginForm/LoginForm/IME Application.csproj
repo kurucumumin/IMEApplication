@@ -995,6 +995,12 @@
     <Compile Include="Supplier\frmSupplierSubCategoryAdd.designer.cs">
       <DependentUpon>frmSupplierSubCategoryAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="User\FormUserCustomerUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\FormUserCustomerUpdate.Designer.cs">
+      <DependentUpon>FormUserCustomerUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="User\FormUsersMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1230,6 +1236,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Supplier\frmSupplierSubCategoryAdd.resx">
       <DependentUpon>frmSupplierSubCategoryAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\FormUserCustomerUpdate.resx">
+      <DependentUpon>FormUserCustomerUpdate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\FormUsersMain.resx">
       <DependentUpon>FormUsersMain.cs</DependentUpon>

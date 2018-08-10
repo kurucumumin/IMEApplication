@@ -2964,6 +2964,13 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
         <Function Name="CustomerFactorUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="factor" Type="decimal" Mode="In" />
         </Function>
+        <Function Name="CustomerRepresentativeSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="representaryID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="CustomerRepresentativeUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="representaryID" Type="int" Mode="In" />
+          <Parameter Name="c_name" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="CustomersDebits" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="DefaultCurrencySet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="currencyId" Type="numeric" Mode="In" />
@@ -7754,6 +7761,13 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <FunctionImport Name="CustomerFactorUpdate">
             <Parameter Name="factor" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="CustomerRepresentativeSelect" ReturnType="Collection(String)">
+            <Parameter Name="representaryID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="CustomerRepresentativeUpdate">
+            <Parameter Name="representaryID" Mode="In" Type="Int32" />
+            <Parameter Name="c_name" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="CustomersDebits" ReturnType="Collection(IMEModel.CustomersDebits_Result)" />
           <FunctionImport Name="DefaultCurrencySet">
             <Parameter Name="currencyId" Mode="In" Type="Decimal" />
@@ -10475,6 +10489,8 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="CustomerFactorUpdate" FunctionName="IMEModel.Store.CustomerFactorUpdate" />
+          <FunctionImportMapping FunctionImportName="CustomerRepresentativeSelect" FunctionName="IMEModel.Store.CustomerRepresentativeSelect" />
+          <FunctionImportMapping FunctionImportName="CustomerRepresentativeUpdate" FunctionName="IMEModel.Store.CustomerRepresentativeUpdate" />
           <FunctionImportMapping FunctionImportName="CustomersDebits" FunctionName="IMEModel.Store.CustomersDebits">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.CustomersDebits_Result">
