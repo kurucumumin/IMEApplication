@@ -486,43 +486,42 @@ namespace LoginForm
 
         private void btnCurrencyAdd_Click(object sender, EventArgs e)
         {
-            //TO DO CUrrency ekleme sayfası
-            //try
-            //{
-            //    if (cmbCurrency.SelectedValue != null)
-            //    {
-            //        strCurrencyName = cmbCurrency.SelectedValue.ToString();
-            //    }
-            //    else
-            //    {
-            //        strCurrencyName = string.Empty;
-            //    }
+            try
+            {
+                if (cmbCurrency.SelectedValue != null)
+                {
+                    strCurrencyName = cmbCurrency.SelectedValue.ToString();
+                }
+                else
+                {
+                    strCurrencyName = string.Empty;
+                }
 
-            //    frmCurrency frmCurrency = new frmCurrency();
-            //    frmCurrency.MdiParent = formMDI.MDIObj;
-            //    frmCurrency open = Application.OpenForms["frmCurrency"] as frmCurrency;
-            //    if (open == null)
-            //    {
-            //        frmCurrency.WindowState = FormWindowState.Normal;
-            //        frmCurrency.MdiParent = formMDI.MDIObj;
-            //        frmCurrency.CallFromExchangerate(this);
-            //    }
-            //    else
-            //    {
-            //        open.MdiParent = formMDI.MDIObj;
-            //        open.CallFromExchangerate(this);
-            //        open.BringToFront();
-            //        if (open.WindowState == FormWindowState.Minimized)
-            //        {
-            //            open.WindowState = FormWindowState.Normal;
-            //        }
-            //    }
-            //    this.Enabled = false;
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("ER26:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
+                frmCurrency frmCurrency = new frmCurrency();
+                //frmCurrency.MdiParent = formMDI.MDIObj;
+                frmCurrency open = Application.OpenForms["frmCurrency"] as frmCurrency;
+                if (open == null)
+                {
+                    frmCurrency.WindowState = FormWindowState.Normal;
+                    //frmCurrency.MdiParent = formMDI.MDIObj;
+                    frmCurrency.CallFromExchangerate(this);
+                }
+                else
+                {
+                    //open.MdiParent = formMDI.MDIObj;
+                    open.CallFromExchangerate(this);
+                    open.BringToFront();
+                    if (open.WindowState == FormWindowState.Minimized)
+                    {
+                        open.WindowState = FormWindowState.Normal;
+                    }
+                }
+                this.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ER26:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
 
