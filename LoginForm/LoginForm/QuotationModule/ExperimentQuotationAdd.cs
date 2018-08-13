@@ -420,7 +420,6 @@ namespace LoginForm.QuotationModule
                                     //BeginInvoke((MethodInvoker)delegate {
                                     //backgroundWorker1.RunWorkerAsync(new object[] { row, db, item1 });
                                     //});
-                                    
                                 }
                                 else
                                 {

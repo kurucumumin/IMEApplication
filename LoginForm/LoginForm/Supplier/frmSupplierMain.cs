@@ -503,12 +503,14 @@ namespace LoginForm
             if(lbAddressList.Items.Count > 0)
             {
                 btnAddressUpdate.Enabled = state;
+                btnAddressDelete.Enabled = state;
             }
 
             btnContactNew.Enabled = state;
             if (lbContacts.Items.Count > 0)
             {
                 btnContactUpdate.Enabled = state;
+                btnContactDelete.Enabled = state;
             }
 
             cmbBankName.Enabled = state;
