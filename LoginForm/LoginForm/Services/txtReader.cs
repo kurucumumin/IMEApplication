@@ -1305,6 +1305,9 @@ namespace LoginForm
         {
             #region OnSale
             IMEEntities IME = new IMEEntities();
+
+            IME.OnSaleDeleteAllItems();
+
             OnSale item = new OnSale();
             int AddedCounter = 0;
             int UptCounter = 0;

@@ -3183,6 +3183,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Parameter Name="SubstitutedBy" Type="varchar(max)" Mode="In" />
           <Parameter Name="SubstitutedFor" Type="varchar(max)" Mode="In" />
         </Function>
+        <Function Name="OnSaleDeleteAllItems" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="OtherBranchStockSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="articleNo" Type="nvarchar" Mode="In" />
         </Function>
@@ -7979,6 +7980,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="SubstitutedBy" Mode="In" Type="String" />
             <Parameter Name="SubstitutedFor" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="OnSaleDeleteAllItems" />
           <FunctionImport Name="OtherBranchStockSearch" ReturnType="Collection(IMEModel.OtherBranchStockSearch_Result)">
             <Parameter Name="articleNo" Mode="In" Type="String" />
           </FunctionImport>
@@ -10671,6 +10673,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="OnSaleAdd" FunctionName="IMEModel.Store.OnSaleAdd" />
+          <FunctionImportMapping FunctionImportName="OnSaleDeleteAllItems" FunctionName="IMEModel.Store.OnSaleDeleteAllItems" />
           <FunctionImportMapping FunctionImportName="OtherBranchStockSearch" FunctionName="IMEModel.Store.OtherBranchStockSearch">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.OtherBranchStockSearch_Result">

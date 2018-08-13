@@ -1378,6 +1378,11 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("OnSaleAdd", articleNumberParameter, availabletoPromiseCheckParameter, bulkPackParameter, catalogueStatusParameter, discontinuedDateParameter, introductionDateParameter, nextScheduledDeliveryParameter, onhandStockBalanceParameter, packSizeParameter, quantityonOrderParameter, smallOrderProtectionLevelParameter, substitutedByParameter, substitutedForParameter);
         }
     
+        public virtual int OnSaleDeleteAllItems()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("OnSaleDeleteAllItems");
+        }
+    
         public virtual ObjectResult<OtherBranchStockSearch_Result> OtherBranchStockSearch(string articleNo)
         {
             var articleNoParameter = articleNo != null ?

@@ -34,14 +34,23 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAddWorker = new System.Windows.Forms.Button();
             this.btnEditWorker = new System.Windows.Forms.Button();
-            this.dgdg = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.workerBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.workerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnCustomerChange = new System.Windows.Forms.Button();
+            this.dgdg = new System.Windows.Forms.DataGridView();
+            this.workerIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameLastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.userNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.userPassDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.workerNoteIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.minMargeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.minRateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isActiveDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.workerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgdg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.workerBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.workerBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,7 +67,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(795, 673);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1150, 824);
             this.tableLayoutPanel1.TabIndex = 13;
             // 
             // flowLayoutPanel1
@@ -69,7 +78,7 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(789, 69);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1144, 69);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // btnAddWorker
@@ -102,32 +111,6 @@
             this.btnEditWorker.UseVisualStyleBackColor = true;
             this.btnEditWorker.Click += new System.EventHandler(this.btnEditWorker_Click);
             // 
-            // dgdg
-            // 
-            this.dgdg.AllowUserToAddRows = false;
-            this.dgdg.AllowUserToDeleteRows = false;
-            this.dgdg.AutoGenerateColumns = false;
-            this.dgdg.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
-            this.dgdg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgdg.DataSource = this.workerBindingSource1;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgdg.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dgdg.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgdg.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dgdg.Location = new System.Drawing.Point(3, 78);
-            this.dgdg.Name = "dgdg";
-            this.dgdg.ReadOnly = true;
-            this.dgdg.RowTemplate.Height = 24;
-            this.dgdg.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgdg.Size = new System.Drawing.Size(789, 592);
-            this.dgdg.TabIndex = 3;
-            // 
             // btnCustomerChange
             // 
             this.btnCustomerChange.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -143,16 +126,135 @@
             this.btnCustomerChange.UseVisualStyleBackColor = true;
             this.btnCustomerChange.Click += new System.EventHandler(this.btnCustomerChange_Click);
             // 
+            // dgdg
+            // 
+            this.dgdg.AllowUserToAddRows = false;
+            this.dgdg.AllowUserToDeleteRows = false;
+            this.dgdg.AutoGenerateColumns = false;
+            this.dgdg.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
+            this.dgdg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgdg.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.workerIDDataGridViewTextBoxColumn,
+            this.nameLastNameDataGridViewTextBoxColumn,
+            this.userNameDataGridViewTextBoxColumn,
+            this.userPassDataGridViewTextBoxColumn,
+            this.emailDataGridViewTextBoxColumn,
+            this.workerNoteIDDataGridViewTextBoxColumn,
+            this.phoneDataGridViewTextBoxColumn,
+            this.minMargeDataGridViewTextBoxColumn,
+            this.minRateDataGridViewTextBoxColumn,
+            this.titleDataGridViewTextBoxColumn,
+            this.isActiveDataGridViewTextBoxColumn});
+            this.dgdg.DataSource = this.workerBindingSource;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgdg.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dgdg.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgdg.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.dgdg.Location = new System.Drawing.Point(3, 78);
+            this.dgdg.Name = "dgdg";
+            this.dgdg.ReadOnly = true;
+            this.dgdg.RowTemplate.Height = 24;
+            this.dgdg.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgdg.Size = new System.Drawing.Size(1144, 743);
+            this.dgdg.TabIndex = 3;
+            // 
+            // workerIDDataGridViewTextBoxColumn
+            // 
+            this.workerIDDataGridViewTextBoxColumn.DataPropertyName = "WorkerID";
+            this.workerIDDataGridViewTextBoxColumn.HeaderText = "WorkerID";
+            this.workerIDDataGridViewTextBoxColumn.Name = "workerIDDataGridViewTextBoxColumn";
+            this.workerIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nameLastNameDataGridViewTextBoxColumn
+            // 
+            this.nameLastNameDataGridViewTextBoxColumn.DataPropertyName = "NameLastName";
+            this.nameLastNameDataGridViewTextBoxColumn.HeaderText = "NameLastName";
+            this.nameLastNameDataGridViewTextBoxColumn.Name = "nameLastNameDataGridViewTextBoxColumn";
+            this.nameLastNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // userNameDataGridViewTextBoxColumn
+            // 
+            this.userNameDataGridViewTextBoxColumn.DataPropertyName = "UserName";
+            this.userNameDataGridViewTextBoxColumn.HeaderText = "UserName";
+            this.userNameDataGridViewTextBoxColumn.Name = "userNameDataGridViewTextBoxColumn";
+            this.userNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // userPassDataGridViewTextBoxColumn
+            // 
+            this.userPassDataGridViewTextBoxColumn.DataPropertyName = "UserPass";
+            this.userPassDataGridViewTextBoxColumn.HeaderText = "UserPass";
+            this.userPassDataGridViewTextBoxColumn.Name = "userPassDataGridViewTextBoxColumn";
+            this.userPassDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // emailDataGridViewTextBoxColumn
+            // 
+            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
+            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
+            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            this.emailDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // workerNoteIDDataGridViewTextBoxColumn
+            // 
+            this.workerNoteIDDataGridViewTextBoxColumn.DataPropertyName = "WorkerNoteID";
+            this.workerNoteIDDataGridViewTextBoxColumn.HeaderText = "WorkerNoteID";
+            this.workerNoteIDDataGridViewTextBoxColumn.Name = "workerNoteIDDataGridViewTextBoxColumn";
+            this.workerNoteIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // phoneDataGridViewTextBoxColumn
+            // 
+            this.phoneDataGridViewTextBoxColumn.DataPropertyName = "Phone";
+            this.phoneDataGridViewTextBoxColumn.HeaderText = "Phone";
+            this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
+            this.phoneDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // minMargeDataGridViewTextBoxColumn
+            // 
+            this.minMargeDataGridViewTextBoxColumn.DataPropertyName = "MinMarge";
+            this.minMargeDataGridViewTextBoxColumn.HeaderText = "MinMarge";
+            this.minMargeDataGridViewTextBoxColumn.Name = "minMargeDataGridViewTextBoxColumn";
+            this.minMargeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // minRateDataGridViewTextBoxColumn
+            // 
+            this.minRateDataGridViewTextBoxColumn.DataPropertyName = "MinRate";
+            this.minRateDataGridViewTextBoxColumn.HeaderText = "MinRate";
+            this.minRateDataGridViewTextBoxColumn.Name = "minRateDataGridViewTextBoxColumn";
+            this.minRateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // titleDataGridViewTextBoxColumn
+            // 
+            this.titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
+            this.titleDataGridViewTextBoxColumn.HeaderText = "Title";
+            this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
+            this.titleDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // isActiveDataGridViewTextBoxColumn
+            // 
+            this.isActiveDataGridViewTextBoxColumn.DataPropertyName = "isActive";
+            this.isActiveDataGridViewTextBoxColumn.HeaderText = "isActive";
+            this.isActiveDataGridViewTextBoxColumn.Name = "isActiveDataGridViewTextBoxColumn";
+            this.isActiveDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // workerBindingSource
+            // 
+            this.workerBindingSource.DataSource = typeof(LoginForm.DataSet.Worker);
+            // 
             // FormUserMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
-            this.ClientSize = new System.Drawing.Size(795, 673);
+            this.ClientSize = new System.Drawing.Size(1150, 824);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MinimumSize = new System.Drawing.Size(811, 712);
+            this.MinimumSize = new System.Drawing.Size(1168, 871);
             this.Name = "FormUserMain";
             this.Text = "Users";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -160,7 +262,6 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgdg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.workerBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.workerBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -168,10 +269,8 @@
 
         #endregion
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.BindingSource workerBindingSource;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private DevComponents.DotNetBar.Controls.DataGridViewX dgdg;
-        private System.Windows.Forms.BindingSource workerBindingSource1;
+        private System.Windows.Forms.DataGridView dgdg;
         private System.Windows.Forms.DataGridViewTextBoxColumn userNameDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn isActiveDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn1;
@@ -181,5 +280,17 @@
         private System.Windows.Forms.Button btnAddWorker;
         private System.Windows.Forms.Button btnEditWorker;
         private System.Windows.Forms.Button btnCustomerChange;
+        private System.Windows.Forms.BindingSource workerBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn workerIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameLastNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn userNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn userPassDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn workerNoteIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn phoneDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn minMargeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn minRateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn isActiveDataGridViewTextBoxColumn;
     }
 }
