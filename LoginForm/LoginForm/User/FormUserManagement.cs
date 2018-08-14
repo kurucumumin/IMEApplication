@@ -1,4 +1,5 @@
 ﻿using LoginForm.DataSet;
+using LoginForm.Main;
 using LoginForm.Services;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace LoginForm.User
         bool isEditMode = false;
         Worker worker;
         FormUserMain upperForm;
-        FormMain formMain;
+        frmMainMetro formMain;
         List<AuthorizationValue> authList;
 
         public FormWorkerManagement(FormUserMain form)
@@ -23,7 +24,7 @@ namespace LoginForm.User
             LoadRoles();
             this.upperForm = form;
         }
-        public FormWorkerManagement(FormMain formMain ,Worker worker, FormUserMain form)
+        public FormWorkerManagement(frmMainMetro formMain ,Worker worker, FormUserMain form)
         {
 
             InitializeComponent();
@@ -416,10 +417,9 @@ namespace LoginForm.User
                             formMain.checkAuthorities();
                         }
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("Bir hata oluştu");
-                        throw;
+                        MessageBox.Show("Bir hata oluştu, Tekrar Deneyin");
                     }
                     upperForm.LoadWorkerList();
                     this.Close();

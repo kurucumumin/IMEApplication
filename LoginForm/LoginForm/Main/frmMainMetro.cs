@@ -19,6 +19,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using static LoginForm.Services.MyClasses.MyAuthority;
 
 namespace LoginForm.Main
 {
@@ -174,6 +175,43 @@ namespace LoginForm.Main
             }
         }
 
+        public void checkAuthorities()
+        {
+            List<DataSet.AuthorizationValue> authList = Utils.getCurrentUser().AuthorizationValues.ToList();
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeManagementModule))
+            {
+                btnManagement.Visible = false;
+                pnlManagement.Visible = false;
+            }
+            else
+            {
+                btnManagement.Visible = true;
+                pnlManagement.Visible = true;
+            }
+
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeLoaderModule))
+            {
+                btnFileLoader.Visible = false;
+                pnlFileLoader.Visible = false;
+            }
+            else
+            {
+                btnFileLoader.Visible = true;
+                pnlFileLoader.Visible = true;
+            }
+
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeDevelopmentModule))
+            {
+                btnDevelopment.Visible = false;
+            }
+
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeUserModule))
+            {
+                btnUser.Visible = false;
+            }
+
+        }
+
         private void btnSupplier_Click(object sender, EventArgs e)
         {
             frmSupplierMain supplierMain = new frmSupplierMain();
@@ -188,8 +226,7 @@ namespace LoginForm.Main
 
         private void btnUser_Click(object sender, EventArgs e)
         {
-            FormMain formMain = (FormMain)this.ParentForm;
-            FormUserMain roles = new FormUserMain(formMain);
+            FormUserMain roles = new FormUserMain(this);
             roles.Show();
         }
 

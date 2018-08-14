@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using LoginForm.DataSet;
 using LoginForm.StockManagement;
 using LoginForm.IMEAccount;
+using LoginForm.Main;
 
 namespace LoginForm.CustomControls
 {
@@ -86,7 +87,7 @@ namespace LoginForm.CustomControls
 
         private void btnWorker_Click(object sender, EventArgs e)
         {
-            FormMain formMain = (FormMain) this.ParentForm;
+            frmMainMetro formMain = (frmMainMetro) this.ParentForm;
             FormUserMain roles = new FormUserMain(formMain);
             roles.Show();
         }

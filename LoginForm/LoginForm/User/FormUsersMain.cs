@@ -8,8 +8,8 @@ namespace LoginForm.User
 {
     public partial class FormUserMain : Form
     {
-        FormMain mainForm;
-        public FormUserMain(FormMain mainForm)
+        Main.frmMainMetro mainForm;
+        public FormUserMain(Main.frmMainMetro mainForm)
         {
             InitializeComponent();
             this.mainForm = mainForm;
