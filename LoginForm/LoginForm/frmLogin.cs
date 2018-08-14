@@ -1,4 +1,5 @@
-﻿using LoginForm.DataSet;
+﻿using Helpers;
+using LoginForm.DataSet;
 using LoginForm.Main;
 using LoginForm.Services;
 using System;
@@ -78,6 +79,7 @@ namespace LoginForm
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            //var a = DBHelper.ExecuteQuery("Select * from Management", new object[0]);
             LoginButtonClick();
         }
 

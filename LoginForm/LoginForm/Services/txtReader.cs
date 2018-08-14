@@ -1305,9 +1305,7 @@ namespace LoginForm
         {
             #region OnSale
             IMEEntities IME = new IMEEntities();
-
-            IME.OnSaleDeleteAllItems();
-
+            
             OnSale item = new OnSale();
             int AddedCounter = 0;
             int UptCounter = 0;
@@ -1319,6 +1317,7 @@ namespace LoginForm
             {
                 try
                 {
+                    IME.OnSaleDeleteAllItems();
                     string[] lines = System.IO.File.ReadAllLines(openFileDialog1.FileName);
                     string[] columnnames = lines[0].Split(',');
                     int a = 1;

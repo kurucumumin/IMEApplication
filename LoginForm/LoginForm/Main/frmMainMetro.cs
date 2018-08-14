@@ -142,13 +142,14 @@ namespace LoginForm.Main
             lblEmail.Text = currentUser.Email?.ToString();
             lblPhone.Text = currentUser.Phone?.ToString();
 
-            ExchangeRate gbp = db.Currencies.Where(x => x.currencyName == "Pound").
-                FirstOrDefault().ExchangeRates.OrderByDescending(x => x.date).FirstOrDefault();
+            //ExchangeRate gbp = db.Currencies.Where(x => x.currencyName == "Pound").
+            //    FirstOrDefault().ExchangeRates.OrderByDescending(x => x.date).FirstOrDefault();
+
+            var gbp = db.prc_GetLastExchangeRateWithCurrencyName("Pound").FirstOrDefault();
 
             lblGBP.Text = ((decimal)gbp.rate).ToString("N4");
 
-            ExchangeRate usd = db.Currencies.Where(x => x.currencyName == "Dollar").
-                FirstOrDefault().ExchangeRates.OrderByDescending(x => x.date).FirstOrDefault();
+            var usd = db.prc_GetLastExchangeRateWithCurrencyName("Dollar").FirstOrDefault();
 
             lblUSD.Text = ((decimal)usd.rate).ToString("N4");
         }

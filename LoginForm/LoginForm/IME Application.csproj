@@ -379,6 +379,9 @@
     <Compile Include="DataSet\PaymentTerm.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\prc_GetLastExchangeRateWithCurrencyName_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\PrintFormat.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -502,6 +505,7 @@
     <Compile Include="frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\DBHelper.cs" />
     <Compile Include="Helpers\ExtensionMethods.cs" />
     <Compile Include="Helpers\RoundedRectangleF.cs" />
     <Compile Include="Helpers\Transparenter.cs" />

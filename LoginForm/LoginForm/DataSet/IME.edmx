@@ -3187,6 +3187,9 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
         <Function Name="OtherBranchStockSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="articleNo" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="prc_GetLastExchangeRateWithCurrencyName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CurrencyName" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="ProductViewWithID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="productID" Type="nvarchar" Mode="In" />
         </Function>
@@ -7984,6 +7987,9 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <FunctionImport Name="OtherBranchStockSearch" ReturnType="Collection(IMEModel.OtherBranchStockSearch_Result)">
             <Parameter Name="articleNo" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="prc_GetLastExchangeRateWithCurrencyName" ReturnType="Collection(IMEModel.prc_GetLastExchangeRateWithCurrencyName_Result)">
+            <Parameter Name="CurrencyName" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="ProductViewWithID" ReturnType="Collection(IMEModel.ProductViewWithID_Result)">
             <Parameter Name="productID" Mode="In" Type="String" />
           </FunctionImport>
@@ -8605,6 +8611,12 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Type="Decimal" Name="CompanyID" Nullable="true" Precision="18" Scale="0" />
           <Property Type="String" Name="ArticleCode" Nullable="true" MaxLength="50" />
           <Property Type="Int32" Name="Quantity" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="prc_GetLastExchangeRateWithCurrencyName_Result">
+          <Property Type="Int32" Name="exchangeRateID" Nullable="false" />
+          <Property Type="Decimal" Name="currencyId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="DateTime" Name="date" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="rate" Nullable="true" Precision="18" Scale="5" />
         </ComplexType>
         <ComplexType Name="ProductViewWithID_Result">
           <Property Type="String" Name="Article_No" Nullable="false" MaxLength="50" />
@@ -10681,6 +10693,16 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
                 <ScalarProperty Name="ArticleCode" ColumnName="ArticleCode" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="prc_GetLastExchangeRateWithCurrencyName" FunctionName="IMEModel.Store.prc_GetLastExchangeRateWithCurrencyName">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.prc_GetLastExchangeRateWithCurrencyName_Result">
+                <ScalarProperty Name="exchangeRateID" ColumnName="exchangeRateID" />
+                <ScalarProperty Name="currencyId" ColumnName="currencyId" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="rate" ColumnName="rate" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

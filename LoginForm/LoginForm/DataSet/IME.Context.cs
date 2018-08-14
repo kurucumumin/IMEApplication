@@ -1392,6 +1392,15 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<OtherBranchStockSearch_Result>("OtherBranchStockSearch", articleNoParameter);
         }
     
+        public virtual ObjectResult<prc_GetLastExchangeRateWithCurrencyName_Result> prc_GetLastExchangeRateWithCurrencyName(string currencyName)
+        {
+            var currencyNameParameter = currencyName != null ?
+                new ObjectParameter("CurrencyName", currencyName) :
+                new ObjectParameter("CurrencyName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<prc_GetLastExchangeRateWithCurrencyName_Result>("prc_GetLastExchangeRateWithCurrencyName", currencyNameParameter);
+        }
+    
         public virtual ObjectResult<ProductViewWithID_Result> ProductViewWithID(string productID)
         {
             var productIDParameter = productID != null ?
