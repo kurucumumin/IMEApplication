@@ -114,36 +114,36 @@ namespace LoginForm.QuotationModule
         {
             #region Calculating LandingCost
             IMEEntities IME = new IMEEntities();
-            SlidingPrice sp = IME.SlidingPrices.Where(a => a.ArticleNo == ArticleNo).FirstOrDefault();
-            ExtendedRange er = IME.ExtendedRanges.Where(a => a.ArticleNo == ArticleNo).FirstOrDefault();
+            var _slidingPrice = IME.prc_GetSlidingPriceWithArticleNumber(ArticleNo).FirstOrDefault();
+            var _extendedRange = IME.prc_GetExtendedRangeWithArticleNumber(ArticleNo).FirstOrDefault();
             decimal p = 0;
-            if (sp != null)
+            if (_slidingPrice != null)
             {
                 p = GetCost(ArticleNo, quantity);
             }
-            else if(er!=null)
+            else if(_extendedRange!=null)
             {
                 p= GetCost(ArticleNo, quantity);
             }
             decimal w = 0;
-            var sd = IME.SuperDisks.Where(a => a.Article_No == ArticleNo).FirstOrDefault();
-            var sdP = IME.SuperDiskPs.Where(a => a.Article_No == ArticleNo).FirstOrDefault();
+            var _superDisk = IME.prc_GetSuperDiskItemWithArticleNumber(ArticleNo).FirstOrDefault();
+            var _superDiskP = IME.prc_GetSuperDiskPItemWithArticleNumber(ArticleNo).FirstOrDefault();
             
-            if (sd != null)
+            if (_superDisk != null)
             {
-                w = Decimal.Parse(sd.Standard_Weight.ToString());
+                w = Decimal.Parse(_superDisk.Standard_Weight.ToString());
                 w = (w / (decimal)1000);
             }
-            else if (sdP != null)
+            else if (_superDiskP != null)
             {
-                w = Decimal.Parse(sdP.Standard_Weight.ToString());
+                w = Decimal.Parse(_superDiskP.Standard_Weight.ToString());
                 w = (w / (decimal)1000);
             }
-            else if (er != null)
+            else if (_extendedRange != null)
             {
                 try
                 {
-                    w = Decimal.Parse(er.ExtendedRangeWeight.ToString());
+                    w = Decimal.Parse(_extendedRange.ExtendedRangeWeight.ToString());
                     w = (w / (decimal)1000);
                 }
                 catch { }

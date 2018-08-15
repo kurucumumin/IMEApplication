@@ -105,11 +105,23 @@ namespace LoginForm.QuotationModule
 
         private void btnDone_Click(object sender, EventArgs e)
         {
+            //List<int> exporttest için eklendi
+            List<int> columnIndex = new List<int>();
+
             for (int i = 0; i < cboxList.Count; i++)
             {
+                //if bloğu exporttest için eklendi
+                if (cboxList[i].Checked == true)
+                {
+                    columnIndex.Add(i);
+                }
+
                 ischecked[i] = cboxList[i].Checked;
             }
-            QuotationExcelExport.Export(datagrid, QuotationNo, ischecked);
+            Services.Utils.ExportDataGridToExcel(columnIndex, datagrid,"Hello World");
+
+            
+            //QuotationExcelExport.Export(datagrid, QuotationNo, ischecked);
         }
     }
 }
