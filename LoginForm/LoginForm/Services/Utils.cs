@@ -94,8 +94,7 @@ namespace LoginForm.Services
 
             Workbook wb = Excel.Workbooks.Add(XlSheetType.xlWorksheet);
             Worksheet ws = Excel.ActiveSheet;
-
-            ws.Name = "Cem";
+            
             for (int i = 1;  i < ColumnIndexes.Count+1; i++)
             {
                 ws.Cells[1, i].NumberFormat = "@";

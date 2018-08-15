@@ -118,7 +118,7 @@ namespace LoginForm.QuotationModule
 
                 ischecked[i] = cboxList[i].Checked;
             }
-            Services.Utils.ExportDataGridToExcel(columnIndex, datagrid,"Hello World");
+            Services.Utils.ExportDataGridToExcel(columnIndex, datagrid, QuotationNo);
 
             
             //QuotationExcelExport.Export(datagrid, QuotationNo, ischecked);
