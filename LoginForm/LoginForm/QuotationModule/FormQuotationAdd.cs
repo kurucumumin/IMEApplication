@@ -1358,10 +1358,13 @@ namespace LoginForm.QuotationModule
 
                     txtMargin1.Text = ((1 - (margin1 / (decimal.Parse(txtWeb1.Text)))) * 100).ToString();
                     int quantity2 = 0;
-                    if (ItemTabDetails != null) { quantity2 = Int32.Parse(ItemTabDetails.Col2Break.ToString()); } else { quantity2 = Int32.Parse(ItemTabDetails.Col2Break.ToString()); }
+                    if (ItemTabDetails != null)
+                    {
+                        quantity2 = Int32.Parse(ItemTabDetails.Col2Break.ToString()); } else { quantity2 = Int32.Parse(ItemTabDetails.Col2Break.ToString());
+                    }
                     txtMargin2.Text = (QuotationUtils.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
                                      , quantity2)).ToString("G29");
-                    if (txtWeb2.Text == "0")
+                    if (decimal.Parse(txtWeb2.Text) == 0)
                     {
                         txtMargin2.Text = "";
                         txtMargin3.Text = "";
@@ -1371,7 +1374,7 @@ namespace LoginForm.QuotationModule
                     else
                     {
 
-                        txtMargin2.Text = ((1 - ((Decimal.Parse(txtMargin2.Text)) / (decimal.Parse(txtWeb1.Text)))) * 100).ToString();
+                        txtMargin2.Text = ((1 - ((Decimal.Parse(txtMargin2.Text)) / (decimal.Parse(txtWeb2.Text)))) * 100).ToString();
                         try
                         {
                             decimal margin3 = 0;
@@ -2430,7 +2433,7 @@ namespace LoginForm.QuotationModule
                     decimal margin2 = 0;
                     margin2 = (QuotationUtils.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
                                      , quantity2));
-                    if (margin2 == 0)
+                    if (decimal.Parse(txtWeb2.Text) == 0)
                     {
                         txtMargin2.Text = "";
                         txtMargin3.Text = "";
@@ -3280,7 +3283,6 @@ namespace LoginForm.QuotationModule
                 cbWorkers.DisplayMember = "cw_name";
                 cbWorkers.ValueMember = "ID";
             }
-
         }
 
         private void btnExcelExport_Click(object sender, EventArgs e)

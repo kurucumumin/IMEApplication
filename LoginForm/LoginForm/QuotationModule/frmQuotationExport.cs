@@ -77,9 +77,9 @@ namespace LoginForm.QuotationModule
                 this.Controls.Add(box);
                 ischecked.Add(false);
             }
-            ExportButton.Location = new Point(this.Width / 2, y + 30);
-            btnSelectAll.Location = new Point(0, y + 30);
-            btnClearAll.Location = new Point(btnSelectAll.Width + 5, y + 30);
+            //ExportButton.Location = new Point(this.Width / 2, y + 30);
+            //btnSelectAll.Location = new Point(0, y + 30);
+            //btnClearAll.Location = new Point(btnSelectAll.Width + 5, y + 30);
         }
 
         private void frmQuotationExport_Load(object sender, EventArgs e)

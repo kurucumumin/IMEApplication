@@ -1392,6 +1392,15 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<OtherBranchStockSearch_Result>("OtherBranchStockSearch", articleNoParameter);
         }
     
+        public virtual ObjectResult<prc_GetExtendedRangeWithArticleNumber_Result> prc_GetExtendedRangeWithArticleNumber(string articleNumber)
+        {
+            var articleNumberParameter = articleNumber != null ?
+                new ObjectParameter("ArticleNumber", articleNumber) :
+                new ObjectParameter("ArticleNumber", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<prc_GetExtendedRangeWithArticleNumber_Result>("prc_GetExtendedRangeWithArticleNumber", articleNumberParameter);
+        }
+    
         public virtual ObjectResult<prc_GetLastExchangeRateWithCurrencyName_Result> prc_GetLastExchangeRateWithCurrencyName(string currencyName)
         {
             var currencyNameParameter = currencyName != null ?
@@ -1399,6 +1408,33 @@ namespace LoginForm.DataSet
                 new ObjectParameter("CurrencyName", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<prc_GetLastExchangeRateWithCurrencyName_Result>("prc_GetLastExchangeRateWithCurrencyName", currencyNameParameter);
+        }
+    
+        public virtual ObjectResult<prc_GetSlidingPriceWithArticleNumber_Result> prc_GetSlidingPriceWithArticleNumber(string articleNumber)
+        {
+            var articleNumberParameter = articleNumber != null ?
+                new ObjectParameter("ArticleNumber", articleNumber) :
+                new ObjectParameter("ArticleNumber", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<prc_GetSlidingPriceWithArticleNumber_Result>("prc_GetSlidingPriceWithArticleNumber", articleNumberParameter);
+        }
+    
+        public virtual ObjectResult<prc_GetSuperDiskItemWithArticleNumber_Result> prc_GetSuperDiskItemWithArticleNumber(string articleNumber)
+        {
+            var articleNumberParameter = articleNumber != null ?
+                new ObjectParameter("ArticleNumber", articleNumber) :
+                new ObjectParameter("ArticleNumber", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<prc_GetSuperDiskItemWithArticleNumber_Result>("prc_GetSuperDiskItemWithArticleNumber", articleNumberParameter);
+        }
+    
+        public virtual ObjectResult<prc_GetSuperDiskPItemWithArticleNumber_Result> prc_GetSuperDiskPItemWithArticleNumber(string articleNumber)
+        {
+            var articleNumberParameter = articleNumber != null ?
+                new ObjectParameter("ArticleNumber", articleNumber) :
+                new ObjectParameter("ArticleNumber", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<prc_GetSuperDiskPItemWithArticleNumber_Result>("prc_GetSuperDiskPItemWithArticleNumber", articleNumberParameter);
         }
     
         public virtual ObjectResult<ProductViewWithID_Result> ProductViewWithID(string productID)

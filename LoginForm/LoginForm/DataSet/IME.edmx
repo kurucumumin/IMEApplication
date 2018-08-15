@@ -3187,8 +3187,20 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
         <Function Name="OtherBranchStockSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="articleNo" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="prc_GetExtendedRangeWithArticleNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ArticleNumber" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="prc_GetLastExchangeRateWithCurrencyName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CurrencyName" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="prc_GetSlidingPriceWithArticleNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ArticleNumber" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="prc_GetSuperDiskItemWithArticleNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ArticleNumber" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="prc_GetSuperDiskPItemWithArticleNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ArticleNumber" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="ProductViewWithID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="productID" Type="nvarchar" Mode="In" />
@@ -7987,8 +7999,20 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <FunctionImport Name="OtherBranchStockSearch" ReturnType="Collection(IMEModel.OtherBranchStockSearch_Result)">
             <Parameter Name="articleNo" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="prc_GetExtendedRangeWithArticleNumber" ReturnType="Collection(IMEModel.prc_GetExtendedRangeWithArticleNumber_Result)">
+            <Parameter Name="ArticleNumber" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="prc_GetLastExchangeRateWithCurrencyName" ReturnType="Collection(IMEModel.prc_GetLastExchangeRateWithCurrencyName_Result)">
             <Parameter Name="CurrencyName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="prc_GetSlidingPriceWithArticleNumber" ReturnType="Collection(IMEModel.prc_GetSlidingPriceWithArticleNumber_Result)">
+            <Parameter Name="ArticleNumber" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="prc_GetSuperDiskItemWithArticleNumber" ReturnType="Collection(IMEModel.prc_GetSuperDiskItemWithArticleNumber_Result)">
+            <Parameter Name="ArticleNumber" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="prc_GetSuperDiskPItemWithArticleNumber" ReturnType="Collection(IMEModel.prc_GetSuperDiskPItemWithArticleNumber_Result)">
+            <Parameter Name="ArticleNumber" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ProductViewWithID" ReturnType="Collection(IMEModel.ProductViewWithID_Result)">
             <Parameter Name="productID" Mode="In" Type="String" />
@@ -8612,11 +8636,161 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Type="String" Name="ArticleCode" Nullable="true" MaxLength="50" />
           <Property Type="Int32" Name="Quantity" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="prc_GetExtendedRangeWithArticleNumber_Result">
+          <Property Type="String" Name="ArticleNo" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Brand" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MPN" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ArticleDescription" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="ExtendedRangeLength" Nullable="true" Precision="18" Scale="5" />
+          <Property Type="Decimal" Name="Width" Nullable="true" Precision="18" Scale="5" />
+          <Property Type="Decimal" Name="Height" Nullable="true" Precision="18" Scale="5" />
+          <Property Type="String" Name="DimensionUoM" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="WeightUoM" Nullable="true" MaxLength="5" />
+          <Property Type="Int32" Name="CCCN" Nullable="true" />
+          <Property Type="String" Name="CountryofOrigin" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="UnitofMeasure" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="PackSize" Nullable="true" />
+          <Property Type="Int32" Name="SalesUoM" Nullable="true" />
+          <Property Type="String" Name="CostPriceCurrency" Nullable="true" MaxLength="20" />
+          <Property Type="Decimal" Name="Col1Price" Nullable="true" Precision="18" Scale="5" />
+          <Property Type="Decimal" Name="Col2Price" Nullable="true" Precision="18" Scale="5" />
+          <Property Type="Decimal" Name="Col3Price" Nullable="true" Precision="18" Scale="5" />
+          <Property Type="Decimal" Name="Col4Price" Nullable="true" Precision="18" Scale="5" />
+          <Property Type="Decimal" Name="Col5Price" Nullable="true" Precision="18" Scale="5" />
+          <Property Type="Int32" Name="Col1Break" Nullable="true" />
+          <Property Type="Int32" Name="Col2Break" Nullable="true" />
+          <Property Type="Int32" Name="Col3Break" Nullable="true" />
+          <Property Type="Int32" Name="Col4Break" Nullable="true" />
+          <Property Type="Int32" Name="Col5Break" Nullable="true" />
+          <Property Type="Decimal" Name="DiscountedPrice1" Nullable="true" Precision="18" Scale="5" />
+          <Property Type="Decimal" Name="DiscountedPrice2" Nullable="true" Precision="18" Scale="5" />
+          <Property Type="Decimal" Name="DiscountedPrice3" Nullable="true" Precision="18" Scale="5" />
+          <Property Type="Decimal" Name="DiscountedPrice4" Nullable="true" Precision="18" Scale="5" />
+          <Property Type="Decimal" Name="DiscountedPrice5" Nullable="true" Precision="18" Scale="5" />
+          <Property Type="String" Name="ManufacturerCode" Nullable="true" MaxLength="15" />
+          <Property Type="Decimal" Name="ExtendedRangeWeight" Nullable="true" Precision="18" Scale="5" />
+        </ComplexType>
         <ComplexType Name="prc_GetLastExchangeRateWithCurrencyName_Result">
           <Property Type="Int32" Name="exchangeRateID" Nullable="false" />
           <Property Type="Decimal" Name="currencyId" Nullable="true" Precision="18" Scale="0" />
           <Property Type="DateTime" Name="date" Nullable="true" Precision="23" />
           <Property Type="Decimal" Name="rate" Nullable="true" Precision="18" Scale="5" />
+        </ComplexType>
+        <ComplexType Name="prc_GetSlidingPriceWithArticleNumber_Result">
+          <Property Type="String" Name="ArticleNo" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ArticleDescription" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="ItemTypeCode" Nullable="true" />
+          <Property Type="String" Name="ItemTypeDesc" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="IntroductionDate" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="DiscontinuedDate" Nullable="true" MaxLength="15" />
+          <Property Type="Int32" Name="Quantity1" Nullable="true" />
+          <Property Type="Decimal" Name="Col1Price" Nullable="true" Precision="18" Scale="3" />
+          <Property Type="Decimal" Name="Col2Price" Nullable="true" Precision="18" Scale="3" />
+          <Property Type="Decimal" Name="Col3Price" Nullable="true" Precision="18" Scale="3" />
+          <Property Type="Decimal" Name="Col4Price" Nullable="true" Precision="18" Scale="3" />
+          <Property Type="Decimal" Name="Col5Price" Nullable="true" Precision="18" Scale="3" />
+          <Property Type="Int32" Name="Col1Break" Nullable="true" />
+          <Property Type="Int32" Name="Col2Break" Nullable="true" />
+          <Property Type="Int32" Name="Col3Break" Nullable="true" />
+          <Property Type="Int32" Name="Col4Break" Nullable="true" />
+          <Property Type="Int32" Name="Col5Break" Nullable="true" />
+          <Property Type="Decimal" Name="DiscountedPrice1" Nullable="true" Precision="18" Scale="3" />
+          <Property Type="Decimal" Name="DiscountedPrice2" Nullable="true" Precision="18" Scale="3" />
+          <Property Type="Decimal" Name="DiscountedPrice3" Nullable="true" Precision="18" Scale="3" />
+          <Property Type="Decimal" Name="DiscountedPrice4" Nullable="true" Precision="18" Scale="3" />
+          <Property Type="Decimal" Name="DiscountedPrice5" Nullable="true" Precision="18" Scale="3" />
+          <Property Type="String" Name="SuperSectionNo" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="SupersectionName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BrandID" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Brandname" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="SectionID" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="SectionName" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="prc_GetSuperDiskItemWithArticleNumber_Result">
+          <Property Type="String" Name="Article_No" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Article_Desc" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Pack_Code" Nullable="true" />
+          <Property Type="Int32" Name="Pack_Quantity" Nullable="true" />
+          <Property Type="Int32" Name="Unit_Content" Nullable="true" />
+          <Property Type="String" Name="Unit_Measure" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Uk_Col_1" Nullable="true" Precision="18" Scale="3" />
+          <Property Type="Decimal" Name="Standard_Weight" Nullable="true" Precision="18" Scale="5" />
+          <Property Type="String" Name="Hazardous_Ind" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Calibration_Ind" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Obsolete_Flag" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MH1" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Low_Discount_Ind" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Licensed_Ind" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Shelf_Life" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CofO" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EUR1_Indicator" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CCCN_No" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Supercede_Date" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Current_Cat_page" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Uk_Intro_Date" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Filler" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Uk_Disc_Date" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Substitute_By" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="BHC_Flag" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Filler1" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Future_Sell_Price" Nullable="true" Precision="18" Scale="3" />
+          <Property Type="String" Name="Int_Cat" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="New_Prod_Change_Ind" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Out_of_Stock_Prohibit_change_ind" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Disc_Change_Ind" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Superceded_Change_Ind" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Pack_Size_Change_Ind" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Rolled_Product_Change_Ind" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Expiring_Product_Change_Ind" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Manufacturer" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MPN" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MH_Code_Level_1" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Heigh" Nullable="true" Precision="18" Scale="3" />
+          <Property Type="Decimal" Name="Width" Nullable="true" Precision="18" Scale="3" />
+          <Property Type="Decimal" Name="Length" Nullable="true" Precision="18" Scale="3" />
+        </ComplexType>
+        <ComplexType Name="prc_GetSuperDiskPItemWithArticleNumber_Result">
+          <Property Type="String" Name="Article_No" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Article_Desc" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Pack_Code" Nullable="true" />
+          <Property Type="Int32" Name="Pack_Quantity" Nullable="true" />
+          <Property Type="Int32" Name="Unit_Content" Nullable="true" />
+          <Property Type="String" Name="Unit_Measure" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Uk_Col_1" Nullable="true" Precision="18" Scale="3" />
+          <Property Type="Decimal" Name="Standard_Weight" Nullable="true" Precision="18" Scale="5" />
+          <Property Type="String" Name="Hazardous_Ind" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Calibration_Ind" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Obsolete_Flag" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MH1" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Low_Discount_Ind" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Licensed_Ind" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Shelf_Life" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CofO" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EUR1_Indicator" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CCCN_No" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Supercede_Date" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Current_Cat_page" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Uk_Intro_Date" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Filler" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Uk_Disc_Date" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Substitute_By" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="BHC_Flag" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Filler1" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Future_Sell_Price" Nullable="true" Precision="18" Scale="3" />
+          <Property Type="String" Name="Int_Cat" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="New_Prod_Change_Ind" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Out_of_Stock_Prohibit_change_ind" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Disc_Change_Ind" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Superceded_Change_Ind" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Pack_Size_Change_Ind" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Rolled_Product_Change_Ind" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Expiring_Product_Change_Ind" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Manufacturer" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MPN" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MH_Code_Level_1" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Heigh" Nullable="true" Precision="18" Scale="3" />
+          <Property Type="Decimal" Name="Width" Nullable="true" Precision="18" Scale="3" />
+          <Property Type="Decimal" Name="Length" Nullable="true" Precision="18" Scale="3" />
         </ComplexType>
         <ComplexType Name="ProductViewWithID_Result">
           <Property Type="String" Name="Article_No" Nullable="false" MaxLength="50" />
@@ -10696,6 +10870,44 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="prc_GetExtendedRangeWithArticleNumber" FunctionName="IMEModel.Store.prc_GetExtendedRangeWithArticleNumber">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.prc_GetExtendedRangeWithArticleNumber_Result">
+                <ScalarProperty Name="ArticleNo" ColumnName="ArticleNo" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="MPN" ColumnName="MPN" />
+                <ScalarProperty Name="ArticleDescription" ColumnName="ArticleDescription" />
+                <ScalarProperty Name="ExtendedRangeLength" ColumnName="ExtendedRangeLength" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="DimensionUoM" ColumnName="DimensionUoM" />
+                <ScalarProperty Name="WeightUoM" ColumnName="WeightUoM" />
+                <ScalarProperty Name="CCCN" ColumnName="CCCN" />
+                <ScalarProperty Name="CountryofOrigin" ColumnName="CountryofOrigin" />
+                <ScalarProperty Name="UnitofMeasure" ColumnName="UnitofMeasure" />
+                <ScalarProperty Name="PackSize" ColumnName="PackSize" />
+                <ScalarProperty Name="SalesUoM" ColumnName="SalesUoM" />
+                <ScalarProperty Name="CostPriceCurrency" ColumnName="CostPriceCurrency" />
+                <ScalarProperty Name="Col1Price" ColumnName="Col1Price" />
+                <ScalarProperty Name="Col2Price" ColumnName="Col2Price" />
+                <ScalarProperty Name="Col3Price" ColumnName="Col3Price" />
+                <ScalarProperty Name="Col4Price" ColumnName="Col4Price" />
+                <ScalarProperty Name="Col5Price" ColumnName="Col5Price" />
+                <ScalarProperty Name="Col1Break" ColumnName="Col1Break" />
+                <ScalarProperty Name="Col2Break" ColumnName="Col2Break" />
+                <ScalarProperty Name="Col3Break" ColumnName="Col3Break" />
+                <ScalarProperty Name="Col4Break" ColumnName="Col4Break" />
+                <ScalarProperty Name="Col5Break" ColumnName="Col5Break" />
+                <ScalarProperty Name="DiscountedPrice1" ColumnName="DiscountedPrice1" />
+                <ScalarProperty Name="DiscountedPrice2" ColumnName="DiscountedPrice2" />
+                <ScalarProperty Name="DiscountedPrice3" ColumnName="DiscountedPrice3" />
+                <ScalarProperty Name="DiscountedPrice4" ColumnName="DiscountedPrice4" />
+                <ScalarProperty Name="DiscountedPrice5" ColumnName="DiscountedPrice5" />
+                <ScalarProperty Name="ManufacturerCode" ColumnName="ManufacturerCode" />
+                <ScalarProperty Name="ExtendedRangeWeight" ColumnName="ExtendedRangeWeight" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="prc_GetLastExchangeRateWithCurrencyName" FunctionName="IMEModel.Store.prc_GetLastExchangeRateWithCurrencyName">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.prc_GetLastExchangeRateWithCurrencyName_Result">
@@ -10703,6 +10915,134 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="currencyId" ColumnName="currencyId" />
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="rate" ColumnName="rate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="prc_GetSlidingPriceWithArticleNumber" FunctionName="IMEModel.Store.prc_GetSlidingPriceWithArticleNumber">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.prc_GetSlidingPriceWithArticleNumber_Result">
+                <ScalarProperty Name="ArticleNo" ColumnName="ArticleNo" />
+                <ScalarProperty Name="ArticleDescription" ColumnName="ArticleDescription" />
+                <ScalarProperty Name="ItemTypeCode" ColumnName="ItemTypeCode" />
+                <ScalarProperty Name="ItemTypeDesc" ColumnName="ItemTypeDesc" />
+                <ScalarProperty Name="IntroductionDate" ColumnName="IntroductionDate" />
+                <ScalarProperty Name="DiscontinuedDate" ColumnName="DiscontinuedDate" />
+                <ScalarProperty Name="Quantity1" ColumnName="Quantity1" />
+                <ScalarProperty Name="Col1Price" ColumnName="Col1Price" />
+                <ScalarProperty Name="Col2Price" ColumnName="Col2Price" />
+                <ScalarProperty Name="Col3Price" ColumnName="Col3Price" />
+                <ScalarProperty Name="Col4Price" ColumnName="Col4Price" />
+                <ScalarProperty Name="Col5Price" ColumnName="Col5Price" />
+                <ScalarProperty Name="Col1Break" ColumnName="Col1Break" />
+                <ScalarProperty Name="Col2Break" ColumnName="Col2Break" />
+                <ScalarProperty Name="Col3Break" ColumnName="Col3Break" />
+                <ScalarProperty Name="Col4Break" ColumnName="Col4Break" />
+                <ScalarProperty Name="Col5Break" ColumnName="Col5Break" />
+                <ScalarProperty Name="DiscountedPrice1" ColumnName="DiscountedPrice1" />
+                <ScalarProperty Name="DiscountedPrice2" ColumnName="DiscountedPrice2" />
+                <ScalarProperty Name="DiscountedPrice3" ColumnName="DiscountedPrice3" />
+                <ScalarProperty Name="DiscountedPrice4" ColumnName="DiscountedPrice4" />
+                <ScalarProperty Name="DiscountedPrice5" ColumnName="DiscountedPrice5" />
+                <ScalarProperty Name="SuperSectionNo" ColumnName="SuperSectionNo" />
+                <ScalarProperty Name="SupersectionName" ColumnName="SupersectionName" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="Brandname" ColumnName="Brandname" />
+                <ScalarProperty Name="SectionID" ColumnName="SectionID" />
+                <ScalarProperty Name="SectionName" ColumnName="SectionName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="prc_GetSuperDiskItemWithArticleNumber" FunctionName="IMEModel.Store.prc_GetSuperDiskItemWithArticleNumber">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.prc_GetSuperDiskItemWithArticleNumber_Result">
+                <ScalarProperty Name="Article_No" ColumnName="Article_No" />
+                <ScalarProperty Name="Article_Desc" ColumnName="Article_Desc" />
+                <ScalarProperty Name="Pack_Code" ColumnName="Pack_Code" />
+                <ScalarProperty Name="Pack_Quantity" ColumnName="Pack_Quantity" />
+                <ScalarProperty Name="Unit_Content" ColumnName="Unit_Content" />
+                <ScalarProperty Name="Unit_Measure" ColumnName="Unit_Measure" />
+                <ScalarProperty Name="Uk_Col_1" ColumnName="Uk_Col_1" />
+                <ScalarProperty Name="Standard_Weight" ColumnName="Standard_Weight" />
+                <ScalarProperty Name="Hazardous_Ind" ColumnName="Hazardous_Ind" />
+                <ScalarProperty Name="Calibration_Ind" ColumnName="Calibration_Ind" />
+                <ScalarProperty Name="Obsolete_Flag" ColumnName="Obsolete_Flag" />
+                <ScalarProperty Name="MH1" ColumnName="MH1" />
+                <ScalarProperty Name="Low_Discount_Ind" ColumnName="Low_Discount_Ind" />
+                <ScalarProperty Name="Licensed_Ind" ColumnName="Licensed_Ind" />
+                <ScalarProperty Name="Shelf_Life" ColumnName="Shelf_Life" />
+                <ScalarProperty Name="CofO" ColumnName="CofO" />
+                <ScalarProperty Name="EUR1_Indicator" ColumnName="EUR1_Indicator" />
+                <ScalarProperty Name="CCCN_No" ColumnName="CCCN_No" />
+                <ScalarProperty Name="Supercede_Date" ColumnName="Supercede_Date" />
+                <ScalarProperty Name="Current_Cat_page" ColumnName="Current_Cat_page" />
+                <ScalarProperty Name="Uk_Intro_Date" ColumnName="Uk_Intro_Date" />
+                <ScalarProperty Name="Filler" ColumnName="Filler" />
+                <ScalarProperty Name="Uk_Disc_Date" ColumnName="Uk_Disc_Date" />
+                <ScalarProperty Name="Substitute_By" ColumnName="Substitute_By" />
+                <ScalarProperty Name="BHC_Flag" ColumnName="BHC_Flag" />
+                <ScalarProperty Name="Filler1" ColumnName="Filler1" />
+                <ScalarProperty Name="Future_Sell_Price" ColumnName="Future_Sell_Price" />
+                <ScalarProperty Name="Int_Cat" ColumnName="Int_Cat" />
+                <ScalarProperty Name="New_Prod_Change_Ind" ColumnName="New_Prod_Change_Ind" />
+                <ScalarProperty Name="Out_of_Stock_Prohibit_change_ind" ColumnName="Out_of_Stock_Prohibit_change_ind" />
+                <ScalarProperty Name="Disc_Change_Ind" ColumnName="Disc_Change_Ind" />
+                <ScalarProperty Name="Superceded_Change_Ind" ColumnName="Superceded_Change_Ind" />
+                <ScalarProperty Name="Pack_Size_Change_Ind" ColumnName="Pack_Size_Change_Ind" />
+                <ScalarProperty Name="Rolled_Product_Change_Ind" ColumnName="Rolled_Product_Change_Ind" />
+                <ScalarProperty Name="Expiring_Product_Change_Ind" ColumnName="Expiring_Product_Change_Ind" />
+                <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+                <ScalarProperty Name="MPN" ColumnName="MPN" />
+                <ScalarProperty Name="MH_Code_Level_1" ColumnName="MH_Code_Level_1" />
+                <ScalarProperty Name="Heigh" ColumnName="Heigh" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Length" ColumnName="Length" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="prc_GetSuperDiskPItemWithArticleNumber" FunctionName="IMEModel.Store.prc_GetSuperDiskPItemWithArticleNumber">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.prc_GetSuperDiskPItemWithArticleNumber_Result">
+                <ScalarProperty Name="Article_No" ColumnName="Article_No" />
+                <ScalarProperty Name="Article_Desc" ColumnName="Article_Desc" />
+                <ScalarProperty Name="Pack_Code" ColumnName="Pack_Code" />
+                <ScalarProperty Name="Pack_Quantity" ColumnName="Pack_Quantity" />
+                <ScalarProperty Name="Unit_Content" ColumnName="Unit_Content" />
+                <ScalarProperty Name="Unit_Measure" ColumnName="Unit_Measure" />
+                <ScalarProperty Name="Uk_Col_1" ColumnName="Uk_Col_1" />
+                <ScalarProperty Name="Standard_Weight" ColumnName="Standard_Weight" />
+                <ScalarProperty Name="Hazardous_Ind" ColumnName="Hazardous_Ind" />
+                <ScalarProperty Name="Calibration_Ind" ColumnName="Calibration_Ind" />
+                <ScalarProperty Name="Obsolete_Flag" ColumnName="Obsolete_Flag" />
+                <ScalarProperty Name="MH1" ColumnName="MH1" />
+                <ScalarProperty Name="Low_Discount_Ind" ColumnName="Low_Discount_Ind" />
+                <ScalarProperty Name="Licensed_Ind" ColumnName="Licensed_Ind" />
+                <ScalarProperty Name="Shelf_Life" ColumnName="Shelf_Life" />
+                <ScalarProperty Name="CofO" ColumnName="CofO" />
+                <ScalarProperty Name="EUR1_Indicator" ColumnName="EUR1_Indicator" />
+                <ScalarProperty Name="CCCN_No" ColumnName="CCCN_No" />
+                <ScalarProperty Name="Supercede_Date" ColumnName="Supercede_Date" />
+                <ScalarProperty Name="Current_Cat_page" ColumnName="Current_Cat_page" />
+                <ScalarProperty Name="Uk_Intro_Date" ColumnName="Uk_Intro_Date" />
+                <ScalarProperty Name="Filler" ColumnName="Filler" />
+                <ScalarProperty Name="Uk_Disc_Date" ColumnName="Uk_Disc_Date" />
+                <ScalarProperty Name="Substitute_By" ColumnName="Substitute_By" />
+                <ScalarProperty Name="BHC_Flag" ColumnName="BHC_Flag" />
+                <ScalarProperty Name="Filler1" ColumnName="Filler1" />
+                <ScalarProperty Name="Future_Sell_Price" ColumnName="Future_Sell_Price" />
+                <ScalarProperty Name="Int_Cat" ColumnName="Int_Cat" />
+                <ScalarProperty Name="New_Prod_Change_Ind" ColumnName="New_Prod_Change_Ind" />
+                <ScalarProperty Name="Out_of_Stock_Prohibit_change_ind" ColumnName="Out_of_Stock_Prohibit_change_ind" />
+                <ScalarProperty Name="Disc_Change_Ind" ColumnName="Disc_Change_Ind" />
+                <ScalarProperty Name="Superceded_Change_Ind" ColumnName="Superceded_Change_Ind" />
+                <ScalarProperty Name="Pack_Size_Change_Ind" ColumnName="Pack_Size_Change_Ind" />
+                <ScalarProperty Name="Rolled_Product_Change_Ind" ColumnName="Rolled_Product_Change_Ind" />
+                <ScalarProperty Name="Expiring_Product_Change_Ind" ColumnName="Expiring_Product_Change_Ind" />
+                <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+                <ScalarProperty Name="MPN" ColumnName="MPN" />
+                <ScalarProperty Name="MH_Code_Level_1" ColumnName="MH_Code_Level_1" />
+                <ScalarProperty Name="Heigh" ColumnName="Heigh" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Length" ColumnName="Length" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

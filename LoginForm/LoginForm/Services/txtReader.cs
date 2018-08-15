@@ -3660,15 +3660,26 @@ namespace LoginForm
             xlexcel.Visible = true;
             xlWorkBook = xlexcel.Workbooks.Add(misValue);
             xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+            int columnNo = 1;
             for (int j = 0; j <= dg.ColumnCount - 1; j++)
             {
-                if (ischecked[j]) xlWorkSheet.Cells[1, j + 1] = dg.Columns[j].HeaderText;
+                if (ischecked[j])
+                {
+                    xlWorkSheet.Cells[1,columnNo] = dg.Columns[j].HeaderText;
+                    columnNo++;
+                }
             }
+
             for (int i = 0; i < dg.RowCount; i++)
             {
+                columnNo = 1;
                 for (int j = 0; j < dg.ColumnCount; j++)
                 {
-                    if (dg.Rows[i].Cells[j].Value != null && ischecked[j] == true) { xlWorkSheet.Cells[i + 2, j + 1] = dg.Rows[i].Cells[j].Value.ToString(); }
+                    if (dg.Rows[i].Cells[j].Value != null && ischecked[j] == true)
+                    {
+                        xlWorkSheet.Cells[i + 2,columnNo] = dg.Rows[i].Cells[j].Value.ToString();
+                        columnNo++;
+                    }
                 }
             }
             SaveFileDialog savefile = new SaveFileDialog();
