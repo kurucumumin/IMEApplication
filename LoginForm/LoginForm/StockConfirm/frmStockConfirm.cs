@@ -11,7 +11,7 @@ using LoginForm.DataSet;
 
 namespace LoginForm.StockConfirm
 {
-    public partial class frmStockConfirm : Form
+    public partial class frmStockConfirm : MyForm
     {
         public frmStockConfirm()
         {

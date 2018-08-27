@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace LoginForm.User
 {
-    public partial class FormWorkerManagement : Form
+    public partial class FormWorkerManagement : MyForm
     {
         bool isEditMode = false;
         Worker worker;

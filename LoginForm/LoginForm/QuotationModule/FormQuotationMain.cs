@@ -8,7 +8,7 @@ using static LoginForm.Services.MyClasses.MyAuthority;
 
 namespace LoginForm.QuotationModule
 {
-    public partial class FormQuotationMain : Form
+    public partial class FormQuotationMain : MyForm
     {
         DateTime dateNow;
 

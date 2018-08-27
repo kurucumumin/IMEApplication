@@ -14,7 +14,7 @@ using static LoginForm.Services.MyClasses.MyAuthority;
 
 namespace LoginForm.QuotationModule
 {
-    public partial class FormSaleOrderAdd : Form
+    public partial class FormSaleOrderAdd : MyForm
     {
         private string sptr = CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator;
         private List<clsBidL> liste = new List<clsBidL>();

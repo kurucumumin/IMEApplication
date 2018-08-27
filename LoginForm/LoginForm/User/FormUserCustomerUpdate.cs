@@ -11,7 +11,7 @@ using LoginForm.DataSet;
 
 namespace LoginForm.User
 {
-    public partial class FormUserCustomerUpdate : Form
+    public partial class FormUserCustomerUpdate : MyForm
     {
         IMEEntities IME = new IMEEntities();
 
@@ -149,7 +149,7 @@ namespace LoginForm.User
             int index = clbCustomerUpdate.SelectedIndex;
             bool state = clbCustomerUpdate.GetItemChecked(index);
 
-            if (index != 0)
+            if (index != -1)
             {
                 if (!state)
                 {

@@ -5,7 +5,7 @@ using System.Windows.Forms;
 using LoginForm.DataSet;
 namespace LoginForm
 {
-    public partial class frmExchangeRate : Form
+    public partial class frmExchangeRate : MyForm
     {
         #region Public Variables
         /// <summary>

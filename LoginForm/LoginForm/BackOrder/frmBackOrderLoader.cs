@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 namespace LoginForm.BackOrder
 {
-    public partial class frmBackOrderLoader : Form
+    public partial class frmBackOrderLoader : MyForm
     {
         public frmBackOrderLoader()
         {

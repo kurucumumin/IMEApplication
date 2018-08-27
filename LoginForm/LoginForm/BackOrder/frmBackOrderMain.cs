@@ -12,7 +12,7 @@ using LoginForm.DataSet;
 
 namespace LoginForm.BackOrder
 {
-    public partial class frmBackOrderMain : Form
+    public partial class frmBackOrderMain : MyForm
     {
         public frmBackOrderMain()
         {

@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace LoginForm
 {
-    public partial class frmSupplierCategoryAdd : Form
+    public partial class frmSupplierCategoryAdd : MyForm
     {
 
         public frmSupplierCategoryAdd()

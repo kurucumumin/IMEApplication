@@ -9,7 +9,7 @@ using static LoginForm.Services.MyClasses.MyAuthority;
 
 namespace LoginForm.ItemModule
 {
-    public partial class ItemCard : Form
+    public partial class ItemCard : MyForm
     {
         IMEEntities IME = new IMEEntities();
         string txtSelected = "";

@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace LoginForm.AçıkSipariş
 {
-    public partial class frmAcikSiparis : Form
+    public partial class frmAcikSiparis : MyForm
     {
         IMEEntities IME = new IMEEntities();
 

@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace LoginForm.QuotationModule
 {
-    public partial class ViewProductHistory : Form
+    public partial class ViewProductHistory : MyForm
     {
         SqlDataAdapter da;
         System.Data.DataSet ds=new System.Data.DataSet();

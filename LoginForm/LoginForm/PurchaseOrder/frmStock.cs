@@ -11,7 +11,7 @@ using LoginForm.DataSet;
 
 namespace LoginForm.PurchaseOrder
 {
-    public partial class frmStock : Form
+    public partial class frmStock : MyForm
     {
         #region Definitions
         IMEEntities IME = new IMEEntities();

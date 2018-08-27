@@ -11,7 +11,7 @@ using LoginForm.DataSet;
 
 namespace LoginForm.BackOrder
 {
-    public partial class frmBackOrderDetailView : Form
+    public partial class frmBackOrderDetailView : MyForm
     {
         int BackOrderMainID;
         public frmBackOrderDetailView()

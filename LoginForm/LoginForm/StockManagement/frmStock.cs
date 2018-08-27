@@ -13,7 +13,7 @@ using LoginForm.QuotationModule;
 
 namespace LoginForm.StockManagement
 {
-    public partial class frmStock : Form
+    public partial class frmStock : MyForm
     {
         #region Parameters
         public string _ProductID;

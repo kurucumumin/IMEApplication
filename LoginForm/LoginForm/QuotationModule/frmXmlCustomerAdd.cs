@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace LoginForm.QuotationModule
 {
-    public partial class frmXmlCustomerAdd : Form
+    public partial class frmXmlCustomerAdd : MyForm
     {
         public XmlCustomer customer;
         public frmXmlCustomerAdd(XmlCustomer customer)

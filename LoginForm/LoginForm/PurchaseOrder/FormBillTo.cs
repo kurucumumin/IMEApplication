@@ -12,7 +12,7 @@ using LoginForm.Services;
 
 namespace LoginForm.PurchaseOrder
 {
-    public partial class FormBillTo : Form
+    public partial class FormBillTo : MyForm
     {
         IMEEntities IME = new IMEEntities();
         List<Mail> MailList = new List<Mail>();

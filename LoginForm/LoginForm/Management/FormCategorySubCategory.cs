@@ -11,7 +11,7 @@ using LoginForm.DataSet;
 
 namespace LoginForm.ManagementModule
 {
-    public partial class FormCategorySubCategory : Form
+    public partial class FormCategorySubCategory : MyForm
     {
         IMEEntities db = new IMEEntities();
 
