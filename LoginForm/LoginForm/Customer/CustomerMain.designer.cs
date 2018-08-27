@@ -160,6 +160,7 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.tableMain = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ıDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.discountrateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -211,7 +212,6 @@
             this.saleOrdersDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.salesOperationsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stockReservesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1.SuspendLayout();
             this.tab_company.SuspendLayout();
             this.tab_account.SuspendLayout();
@@ -1625,7 +1625,6 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.CustomerDataGrid.DefaultCellStyle = dataGridViewCellStyle1;
-            this.CustomerDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CustomerDataGrid.Location = new System.Drawing.Point(7, 377);
             this.CustomerDataGrid.MultiSelect = false;
             this.CustomerDataGrid.Name = "CustomerDataGrid";
@@ -1723,6 +1722,10 @@
             this.panel1.Size = new System.Drawing.Size(934, 57);
             this.panel1.TabIndex = 2;
             // 
+            // customerBindingSource
+            // 
+            this.customerBindingSource.DataSource = typeof(LoginForm.DataSet.Customer);
+            // 
             // ıDDataGridViewTextBoxColumn
             // 
             this.ıDDataGridViewTextBoxColumn.DataPropertyName = "ID";
@@ -1733,147 +1736,147 @@
             // cnameDataGridViewTextBoxColumn
             // 
             this.cnameDataGridViewTextBoxColumn.DataPropertyName = "c_name";
-            this.cnameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.cnameDataGridViewTextBoxColumn.HeaderText = "c_name";
             this.cnameDataGridViewTextBoxColumn.Name = "cnameDataGridViewTextBoxColumn";
             this.cnameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // discountrateDataGridViewTextBoxColumn
             // 
             this.discountrateDataGridViewTextBoxColumn.DataPropertyName = "discountrate";
-            this.discountrateDataGridViewTextBoxColumn.HeaderText = "discount";
+            this.discountrateDataGridViewTextBoxColumn.HeaderText = "discountrate";
             this.discountrateDataGridViewTextBoxColumn.Name = "discountrateDataGridViewTextBoxColumn";
             this.discountrateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // paymentmethodIDDataGridViewTextBoxColumn
             // 
             this.paymentmethodIDDataGridViewTextBoxColumn.DataPropertyName = "paymentmethodID";
-            this.paymentmethodIDDataGridViewTextBoxColumn.HeaderText = "payment method";
+            this.paymentmethodIDDataGridViewTextBoxColumn.HeaderText = "paymentmethodID";
             this.paymentmethodIDDataGridViewTextBoxColumn.Name = "paymentmethodIDDataGridViewTextBoxColumn";
             this.paymentmethodIDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // creditlimitDataGridViewTextBoxColumn
             // 
             this.creditlimitDataGridViewTextBoxColumn.DataPropertyName = "creditlimit";
-            this.creditlimitDataGridViewTextBoxColumn.HeaderText = "credit Limit";
+            this.creditlimitDataGridViewTextBoxColumn.HeaderText = "creditlimit";
             this.creditlimitDataGridViewTextBoxColumn.Name = "creditlimitDataGridViewTextBoxColumn";
             this.creditlimitDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // webadressDataGridViewTextBoxColumn
             // 
             this.webadressDataGridViewTextBoxColumn.DataPropertyName = "webadress";
-            this.webadressDataGridViewTextBoxColumn.HeaderText = "web adress";
+            this.webadressDataGridViewTextBoxColumn.HeaderText = "webadress";
             this.webadressDataGridViewTextBoxColumn.Name = "webadressDataGridViewTextBoxColumn";
             this.webadressDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // paymenttermIDDataGridViewTextBoxColumn
             // 
             this.paymenttermIDDataGridViewTextBoxColumn.DataPropertyName = "payment_termID";
-            this.paymenttermIDDataGridViewTextBoxColumn.HeaderText = "payment Term";
+            this.paymenttermIDDataGridViewTextBoxColumn.HeaderText = "payment_termID";
             this.paymenttermIDDataGridViewTextBoxColumn.Name = "paymenttermIDDataGridViewTextBoxColumn";
             this.paymenttermIDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // representaryIDDataGridViewTextBoxColumn
             // 
             this.representaryIDDataGridViewTextBoxColumn.DataPropertyName = "representaryID";
-            this.representaryIDDataGridViewTextBoxColumn.HeaderText = "representary";
+            this.representaryIDDataGridViewTextBoxColumn.HeaderText = "representaryID";
             this.representaryIDDataGridViewTextBoxColumn.Name = "representaryIDDataGridViewTextBoxColumn";
             this.representaryIDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // customerNoteIDDataGridViewTextBoxColumn
             // 
             this.customerNoteIDDataGridViewTextBoxColumn.DataPropertyName = "customerNoteID";
-            this.customerNoteIDDataGridViewTextBoxColumn.HeaderText = "customer Note";
+            this.customerNoteIDDataGridViewTextBoxColumn.HeaderText = "customerNoteID";
             this.customerNoteIDDataGridViewTextBoxColumn.Name = "customerNoteIDDataGridViewTextBoxColumn";
             this.customerNoteIDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // representary2IDDataGridViewTextBoxColumn
             // 
             this.representary2IDDataGridViewTextBoxColumn.DataPropertyName = "representary2ID";
-            this.representary2IDDataGridViewTextBoxColumn.HeaderText = "representary2";
+            this.representary2IDDataGridViewTextBoxColumn.HeaderText = "representary2ID";
             this.representary2IDDataGridViewTextBoxColumn.Name = "representary2IDDataGridViewTextBoxColumn";
             this.representary2IDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // accountrepresentaryIDDataGridViewTextBoxColumn
             // 
             this.accountrepresentaryIDDataGridViewTextBoxColumn.DataPropertyName = "accountrepresentaryID";
-            this.accountrepresentaryIDDataGridViewTextBoxColumn.HeaderText = "account Representary";
+            this.accountrepresentaryIDDataGridViewTextBoxColumn.HeaderText = "accountrepresentaryID";
             this.accountrepresentaryIDDataGridViewTextBoxColumn.Name = "accountrepresentaryIDDataGridViewTextBoxColumn";
             this.accountrepresentaryIDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // isactiveDataGridViewTextBoxColumn
             // 
             this.isactiveDataGridViewTextBoxColumn.DataPropertyName = "isactive";
-            this.isactiveDataGridViewTextBoxColumn.HeaderText = "Active";
+            this.isactiveDataGridViewTextBoxColumn.HeaderText = "isactive";
             this.isactiveDataGridViewTextBoxColumn.Name = "isactiveDataGridViewTextBoxColumn";
             this.isactiveDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // rateIDinvoiceDataGridViewTextBoxColumn
             // 
             this.rateIDinvoiceDataGridViewTextBoxColumn.DataPropertyName = "rateIDinvoice";
-            this.rateIDinvoiceDataGridViewTextBoxColumn.HeaderText = "rate Invoice";
+            this.rateIDinvoiceDataGridViewTextBoxColumn.HeaderText = "rateIDinvoice";
             this.rateIDinvoiceDataGridViewTextBoxColumn.Name = "rateIDinvoiceDataGridViewTextBoxColumn";
             this.rateIDinvoiceDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // taxofficeDataGridViewTextBoxColumn
             // 
             this.taxofficeDataGridViewTextBoxColumn.DataPropertyName = "taxoffice";
-            this.taxofficeDataGridViewTextBoxColumn.HeaderText = "ta Office";
+            this.taxofficeDataGridViewTextBoxColumn.HeaderText = "taxoffice";
             this.taxofficeDataGridViewTextBoxColumn.Name = "taxofficeDataGridViewTextBoxColumn";
             this.taxofficeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // taxnumberDataGridViewTextBoxColumn
             // 
             this.taxnumberDataGridViewTextBoxColumn.DataPropertyName = "taxnumber";
-            this.taxnumberDataGridViewTextBoxColumn.HeaderText = "tax Number";
+            this.taxnumberDataGridViewTextBoxColumn.HeaderText = "taxnumber";
             this.taxnumberDataGridViewTextBoxColumn.Name = "taxnumberDataGridViewTextBoxColumn";
             this.taxnumberDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // mainContactIDDataGridViewTextBoxColumn
             // 
             this.mainContactIDDataGridViewTextBoxColumn.DataPropertyName = "MainContactID";
-            this.mainContactIDDataGridViewTextBoxColumn.HeaderText = "Main Contact";
+            this.mainContactIDDataGridViewTextBoxColumn.HeaderText = "MainContactID";
             this.mainContactIDDataGridViewTextBoxColumn.Name = "mainContactIDDataGridViewTextBoxColumn";
             this.mainContactIDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // currTypeInvDataGridViewTextBoxColumn
             // 
             this.currTypeInvDataGridViewTextBoxColumn.DataPropertyName = "CurrTypeInv";
-            this.currTypeInvDataGridViewTextBoxColumn.HeaderText = "Curr Type Inv";
+            this.currTypeInvDataGridViewTextBoxColumn.HeaderText = "CurrTypeInv";
             this.currTypeInvDataGridViewTextBoxColumn.Name = "currTypeInvDataGridViewTextBoxColumn";
             this.currTypeInvDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // currNameInvDataGridViewTextBoxColumn
             // 
             this.currNameInvDataGridViewTextBoxColumn.DataPropertyName = "CurrNameInv";
-            this.currNameInvDataGridViewTextBoxColumn.HeaderText = "Curr Name Inv";
+            this.currNameInvDataGridViewTextBoxColumn.HeaderText = "CurrNameInv";
             this.currNameInvDataGridViewTextBoxColumn.Name = "currNameInvDataGridViewTextBoxColumn";
             this.currNameInvDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // currTypeQuoDataGridViewTextBoxColumn
             // 
             this.currTypeQuoDataGridViewTextBoxColumn.DataPropertyName = "CurrTypeQuo";
-            this.currTypeQuoDataGridViewTextBoxColumn.HeaderText = "Curr Type Quo";
+            this.currTypeQuoDataGridViewTextBoxColumn.HeaderText = "CurrTypeQuo";
             this.currTypeQuoDataGridViewTextBoxColumn.Name = "currTypeQuoDataGridViewTextBoxColumn";
             this.currTypeQuoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // currNameQuoDataGridViewTextBoxColumn
             // 
             this.currNameQuoDataGridViewTextBoxColumn.DataPropertyName = "CurrNameQuo";
-            this.currNameQuoDataGridViewTextBoxColumn.HeaderText = "Curr Name Quo";
+            this.currNameQuoDataGridViewTextBoxColumn.HeaderText = "CurrNameQuo";
             this.currNameQuoDataGridViewTextBoxColumn.Name = "currNameQuoDataGridViewTextBoxColumn";
             this.currNameQuoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // customerAccountantNoteIDDataGridViewTextBoxColumn
             // 
             this.customerAccountantNoteIDDataGridViewTextBoxColumn.DataPropertyName = "customerAccountantNoteID";
-            this.customerAccountantNoteIDDataGridViewTextBoxColumn.HeaderText = "Accountant Note";
+            this.customerAccountantNoteIDDataGridViewTextBoxColumn.HeaderText = "customerAccountantNoteID";
             this.customerAccountantNoteIDDataGridViewTextBoxColumn.Name = "customerAccountantNoteIDDataGridViewTextBoxColumn";
             this.customerAccountantNoteIDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // extensionnumberDataGridViewTextBoxColumn
             // 
             this.extensionnumberDataGridViewTextBoxColumn.DataPropertyName = "extensionnumber";
-            this.extensionnumberDataGridViewTextBoxColumn.HeaderText = "extension Number";
+            this.extensionnumberDataGridViewTextBoxColumn.HeaderText = "extensionnumber";
             this.extensionnumberDataGridViewTextBoxColumn.Name = "extensionnumberDataGridViewTextBoxColumn";
             this.extensionnumberDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -1887,14 +1890,14 @@
             // creditDayDataGridViewTextBoxColumn
             // 
             this.creditDayDataGridViewTextBoxColumn.DataPropertyName = "creditDay";
-            this.creditDayDataGridViewTextBoxColumn.HeaderText = "credit Day";
+            this.creditDayDataGridViewTextBoxColumn.HeaderText = "creditDay";
             this.creditDayDataGridViewTextBoxColumn.Name = "creditDayDataGridViewTextBoxColumn";
             this.creditDayDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // createDateDataGridViewTextBoxColumn
             // 
             this.createDateDataGridViewTextBoxColumn.DataPropertyName = "CreateDate";
-            this.createDateDataGridViewTextBoxColumn.HeaderText = "Create Date";
+            this.createDateDataGridViewTextBoxColumn.HeaderText = "CreateDate";
             this.createDateDataGridViewTextBoxColumn.Name = "createDateDataGridViewTextBoxColumn";
             this.createDateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -1915,21 +1918,21 @@
             // categoryIDDataGridViewTextBoxColumn
             // 
             this.categoryIDDataGridViewTextBoxColumn.DataPropertyName = "categoryID";
-            this.categoryIDDataGridViewTextBoxColumn.HeaderText = "category";
+            this.categoryIDDataGridViewTextBoxColumn.HeaderText = "categoryID";
             this.categoryIDDataGridViewTextBoxColumn.Name = "categoryIDDataGridViewTextBoxColumn";
             this.categoryIDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // subcategoryIDDataGridViewTextBoxColumn
             // 
             this.subcategoryIDDataGridViewTextBoxColumn.DataPropertyName = "subcategoryID";
-            this.subcategoryIDDataGridViewTextBoxColumn.HeaderText = "sub Category";
+            this.subcategoryIDDataGridViewTextBoxColumn.HeaderText = "subcategoryID";
             this.subcategoryIDDataGridViewTextBoxColumn.Name = "subcategoryIDDataGridViewTextBoxColumn";
             this.subcategoryIDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // thirdPartyCodeDataGridViewTextBoxColumn
             // 
             this.thirdPartyCodeDataGridViewTextBoxColumn.DataPropertyName = "ThirdPartyCode";
-            this.thirdPartyCodeDataGridViewTextBoxColumn.HeaderText = "Third Party Code";
+            this.thirdPartyCodeDataGridViewTextBoxColumn.HeaderText = "ThirdPartyCode";
             this.thirdPartyCodeDataGridViewTextBoxColumn.Name = "thirdPartyCodeDataGridViewTextBoxColumn";
             this.thirdPartyCodeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -1957,7 +1960,7 @@
             // customerCategoryDataGridViewTextBoxColumn
             // 
             this.customerCategoryDataGridViewTextBoxColumn.DataPropertyName = "CustomerCategory";
-            this.customerCategoryDataGridViewTextBoxColumn.HeaderText = "Customer Category";
+            this.customerCategoryDataGridViewTextBoxColumn.HeaderText = "CustomerCategory";
             this.customerCategoryDataGridViewTextBoxColumn.Name = "customerCategoryDataGridViewTextBoxColumn";
             this.customerCategoryDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -1978,21 +1981,21 @@
             // customerWorkerDataGridViewTextBoxColumn
             // 
             this.customerWorkerDataGridViewTextBoxColumn.DataPropertyName = "CustomerWorker";
-            this.customerWorkerDataGridViewTextBoxColumn.HeaderText = "Customer Worker";
+            this.customerWorkerDataGridViewTextBoxColumn.HeaderText = "CustomerWorker";
             this.customerWorkerDataGridViewTextBoxColumn.Name = "customerWorkerDataGridViewTextBoxColumn";
             this.customerWorkerDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // paymentMethodDataGridViewTextBoxColumn
             // 
             this.paymentMethodDataGridViewTextBoxColumn.DataPropertyName = "PaymentMethod";
-            this.paymentMethodDataGridViewTextBoxColumn.HeaderText = "Payment Method";
+            this.paymentMethodDataGridViewTextBoxColumn.HeaderText = "PaymentMethod";
             this.paymentMethodDataGridViewTextBoxColumn.Name = "paymentMethodDataGridViewTextBoxColumn";
             this.paymentMethodDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // paymentTermDataGridViewTextBoxColumn
             // 
             this.paymentTermDataGridViewTextBoxColumn.DataPropertyName = "PaymentTerm";
-            this.paymentTermDataGridViewTextBoxColumn.HeaderText = "Payment Term";
+            this.paymentTermDataGridViewTextBoxColumn.HeaderText = "PaymentTerm";
             this.paymentTermDataGridViewTextBoxColumn.Name = "paymentTermDataGridViewTextBoxColumn";
             this.paymentTermDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -2013,42 +2016,42 @@
             // customerSubCategoryDataGridViewTextBoxColumn
             // 
             this.customerSubCategoryDataGridViewTextBoxColumn.DataPropertyName = "CustomerSubCategory";
-            this.customerSubCategoryDataGridViewTextBoxColumn.HeaderText = "Customer Sub Category";
+            this.customerSubCategoryDataGridViewTextBoxColumn.HeaderText = "CustomerSubCategory";
             this.customerSubCategoryDataGridViewTextBoxColumn.Name = "customerSubCategoryDataGridViewTextBoxColumn";
             this.customerSubCategoryDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // customerAddressesDataGridViewTextBoxColumn
             // 
             this.customerAddressesDataGridViewTextBoxColumn.DataPropertyName = "CustomerAddresses";
-            this.customerAddressesDataGridViewTextBoxColumn.HeaderText = "Customer Addresses";
+            this.customerAddressesDataGridViewTextBoxColumn.HeaderText = "CustomerAddresses";
             this.customerAddressesDataGridViewTextBoxColumn.Name = "customerAddressesDataGridViewTextBoxColumn";
             this.customerAddressesDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // customerWorkersDataGridViewTextBoxColumn
             // 
             this.customerWorkersDataGridViewTextBoxColumn.DataPropertyName = "CustomerWorkers";
-            this.customerWorkersDataGridViewTextBoxColumn.HeaderText = "Customer Workers";
+            this.customerWorkersDataGridViewTextBoxColumn.HeaderText = "CustomerWorkers";
             this.customerWorkersDataGridViewTextBoxColumn.Name = "customerWorkersDataGridViewTextBoxColumn";
             this.customerWorkersDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // discountValuesDataGridViewTextBoxColumn
             // 
             this.discountValuesDataGridViewTextBoxColumn.DataPropertyName = "DiscountValues";
-            this.discountValuesDataGridViewTextBoxColumn.HeaderText = "Discount Values";
+            this.discountValuesDataGridViewTextBoxColumn.HeaderText = "DiscountValues";
             this.discountValuesDataGridViewTextBoxColumn.Name = "discountValuesDataGridViewTextBoxColumn";
             this.discountValuesDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // ıtemHistoriesDataGridViewTextBoxColumn
             // 
             this.ıtemHistoriesDataGridViewTextBoxColumn.DataPropertyName = "ItemHistories";
-            this.ıtemHistoriesDataGridViewTextBoxColumn.HeaderText = "Item Histories";
+            this.ıtemHistoriesDataGridViewTextBoxColumn.HeaderText = "ItemHistories";
             this.ıtemHistoriesDataGridViewTextBoxColumn.Name = "ıtemHistoriesDataGridViewTextBoxColumn";
             this.ıtemHistoriesDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // purchaseOrdersDataGridViewTextBoxColumn
             // 
             this.purchaseOrdersDataGridViewTextBoxColumn.DataPropertyName = "PurchaseOrders";
-            this.purchaseOrdersDataGridViewTextBoxColumn.HeaderText = "Purchase Orders";
+            this.purchaseOrdersDataGridViewTextBoxColumn.HeaderText = "PurchaseOrders";
             this.purchaseOrdersDataGridViewTextBoxColumn.Name = "purchaseOrdersDataGridViewTextBoxColumn";
             this.purchaseOrdersDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -2062,27 +2065,23 @@
             // saleOrdersDataGridViewTextBoxColumn
             // 
             this.saleOrdersDataGridViewTextBoxColumn.DataPropertyName = "SaleOrders";
-            this.saleOrdersDataGridViewTextBoxColumn.HeaderText = "Sale Orders";
+            this.saleOrdersDataGridViewTextBoxColumn.HeaderText = "SaleOrders";
             this.saleOrdersDataGridViewTextBoxColumn.Name = "saleOrdersDataGridViewTextBoxColumn";
             this.saleOrdersDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // salesOperationsDataGridViewTextBoxColumn
             // 
             this.salesOperationsDataGridViewTextBoxColumn.DataPropertyName = "SalesOperations";
-            this.salesOperationsDataGridViewTextBoxColumn.HeaderText = "Sales Operations";
+            this.salesOperationsDataGridViewTextBoxColumn.HeaderText = "SalesOperations";
             this.salesOperationsDataGridViewTextBoxColumn.Name = "salesOperationsDataGridViewTextBoxColumn";
             this.salesOperationsDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // stockReservesDataGridViewTextBoxColumn
             // 
             this.stockReservesDataGridViewTextBoxColumn.DataPropertyName = "StockReserves";
-            this.stockReservesDataGridViewTextBoxColumn.HeaderText = "Stock Reserves";
+            this.stockReservesDataGridViewTextBoxColumn.HeaderText = "StockReserves";
             this.stockReservesDataGridViewTextBoxColumn.Name = "stockReservesDataGridViewTextBoxColumn";
             this.stockReservesDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // customerBindingSource
-            // 
-            this.customerBindingSource.DataSource = typeof(LoginForm.DataSet.Customer);
             // 
             // CustomerMain
             // 
@@ -2246,6 +2245,10 @@
         private System.Windows.Forms.Button CityAdd;
         private System.Windows.Forms.TextBox txtAddress2;
         private System.Windows.Forms.TextBox txtAddress1;
+        private System.Windows.Forms.Button btnNextCompany;
+        private System.Windows.Forms.Button btnNextAccount;
+        private System.Windows.Forms.Button btnNextAddress;
+        private System.Windows.Forms.Button btnNextContact;
         private System.Windows.Forms.DataGridViewTextBoxColumn ıDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cnameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn discountrateDataGridViewTextBoxColumn;
@@ -2298,9 +2301,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn salesOperationsDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn stockReservesDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource customerBindingSource;
-        private System.Windows.Forms.Button btnNextCompany;
-        private System.Windows.Forms.Button btnNextAccount;
-        private System.Windows.Forms.Button btnNextAddress;
-        private System.Windows.Forms.Button btnNextContact;
     }
 }

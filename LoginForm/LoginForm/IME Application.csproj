@@ -1077,6 +1077,9 @@
     <EmbeddedResource Include="Model\frmExchangeRate.resx">
       <DependentUpon>frmExchangeRate.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MyClasses\MyForm.resx">
+      <DependentUpon>MyForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="OnOrder\frmAcikSiparis.resx">
       <DependentUpon>frmAcikSiparis.cs</DependentUpon>
     </EmbeddedResource>
