@@ -6,7 +6,7 @@ using System.Data;
 using System.Linq;
 namespace LoginForm.User
 {
-    public partial class FormUserMain : Form
+    public partial class FormUserMain : MyForm
     {
         Main.frmMainMetro mainForm;
         public FormUserMain(Main.frmMainMetro mainForm)

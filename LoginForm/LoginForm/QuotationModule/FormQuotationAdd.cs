@@ -15,7 +15,7 @@ using static LoginForm.Services.MyClasses.MyAuthority;
 
 namespace LoginForm.QuotationModule
 {
-    public partial class FormQuotationAdd : Form
+    public partial class FormQuotationAdd : MyForm
     {
         string manuelSelection = string.Empty;
         private static string QuoStatusActive = "Active";

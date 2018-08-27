@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace LoginForm.nmSaleOrder
 {
-    public partial class FormSaleItemSearch : Form
+    public partial class FormSaleItemSearch : MyForm
     {
         string searchItemCode = null;
 

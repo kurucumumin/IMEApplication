@@ -8,7 +8,7 @@ using LoginForm.Services;
 
 namespace LoginForm
 {
-    public partial class frmCurrency : Form
+    public partial class frmCurrency : MyForm
     {
         #region Public Variables
         /// <summary>

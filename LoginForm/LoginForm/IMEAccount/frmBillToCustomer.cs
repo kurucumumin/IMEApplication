@@ -13,7 +13,7 @@ using LoginForm.QuotationModule;
 
 namespace LoginForm.IMEAccount
 {
-    public partial class frmBillToCustomer : Form
+    public partial class frmBillToCustomer : MyForm
     {
         IMEEntities IME = new IMEEntities();
         bool IsUpdate = false;

@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace LoginForm.QuotationModule
 {
-    public partial class FormQuotationMPN : Form
+    public partial class FormQuotationMPN : MyForm
     {
         object ItemList;
         public string ItemCode;

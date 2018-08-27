@@ -16,7 +16,7 @@ using LoginForm.Services;
 
 namespace LoginForm.PurchaseOrder
 {
-    public partial class PurchaseExportFiles : Form
+    public partial class PurchaseExportFiles : MyForm
     {
         IMEEntities IME = new IMEEntities();
         List<DataGridViewRow> rowList = new List<DataGridViewRow>();

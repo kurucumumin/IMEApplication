@@ -13,7 +13,7 @@ using static LoginForm.Services.MyClasses.MyAuthority;
 
 namespace LoginForm
 {
-    public partial class CustomerMain : Form
+    public partial class CustomerMain : MyForm
     {
         IMEEntities IME = new IMEEntities();
         int gridselectedindex = 0;
@@ -24,16 +24,28 @@ namespace LoginForm
         int isUpdateAdress;
         bool isModify = false;
         string ComboboxString = "Choose";
+        //private List<Customer> gridCustomerList;
 
         public CustomerMain()
         {
             InitializeComponent();
 
+            this.CustomerDataGrid.AutoGenerateColumns = false;
             CustomerDataGrid.DataSource = null;
-            //CustomerDataGrid.DataSource = IME.Customers.ToList(); ;
             CustomerDataGrid.DataSource = IME.CustomerAll().ToList();
             CustomerDataGrid.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
+
+        //private List<Customer> BringSupplierList(string CustomerName)
+        //{
+        //    if (CustomerName == null)
+        //    {
+        //        throw new ArgumentNullException(nameof(CustomerName));
+        //    }
+
+        //    gridCustomerList = new IMEEntities().Customers.Where(x => x.c_name.Contains(CustomerName)).ToList();
+        //    return gridCustomerList.ToList();
+        //}
 
         public CustomerMain(Boolean buttonEnabled, string CustomerID)
         {
@@ -141,6 +153,8 @@ namespace LoginForm
         private void CustomerMain_Load(object sender, EventArgs e)
         {
             ControlAutorization();
+            //CustomerDataGrid.DataSource = BringSupplierList(txtSearch.Text);
+            //CustomerDataGrid.ClearSelection();
             this.CompanyNotes.KeyDown += new KeyEventHandler(CompanyNotes_KeyDown);
             #region ComboboxFiller
             ContactDepartment.DataSource = IME.CustomerDepartments.ToList();

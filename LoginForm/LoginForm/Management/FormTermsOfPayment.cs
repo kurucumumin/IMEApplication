@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace LoginForm.ManagementModule
 {
-    public partial class FormTermsOfPayment : Form
+    public partial class FormTermsOfPayment : MyForm
     {
 
         PaymentTerm selectedTerm;

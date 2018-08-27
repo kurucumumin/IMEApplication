@@ -12,7 +12,7 @@ using LoginForm.Services;
 
 namespace LoginForm.BackOrder
 {
-    public partial class frmbackOrderAnalize : Form
+    public partial class frmbackOrderAnalize : MyForm
     {
         DateTime backOrderanalizeDate;
         public frmbackOrderAnalize()

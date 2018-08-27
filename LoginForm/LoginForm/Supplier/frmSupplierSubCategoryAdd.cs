@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace LoginForm
 {
-    public partial class frmSupplierSubCategoryAdd : Form
+    public partial class frmSupplierSubCategoryAdd : MyForm
     {
         private IMEEntities db = new IMEEntities();
         private string categoryName;

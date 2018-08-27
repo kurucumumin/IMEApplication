@@ -7,7 +7,7 @@ using LoginForm.DataSet;
 
 namespace LoginForm.PurchaseOrder
 {
-    public partial class NewPurchaseOrder : Form
+    public partial class NewPurchaseOrder : MyForm
     {
         IMEEntities IME = new IMEEntities();
         List<SaleOrderDetail> saleItemList = new List<SaleOrderDetail>();
@@ -15,9 +15,9 @@ namespace LoginForm.PurchaseOrder
         int purchaseno;
         string strPrefix = string.Empty;
         string strSuffix = string.Empty;
-        decimal decPurchaseSuffixPrefixId = 0;
-        decimal decPurchaseOrderTypeId = 0;
-        bool isAutomatic = false;
+        //decimal decPurchaseSuffixPrefixId = 0;
+        //decimal decPurchaseOrderTypeId = 0;
+        //bool isAutomatic = false;
 
         public NewPurchaseOrder()
         {

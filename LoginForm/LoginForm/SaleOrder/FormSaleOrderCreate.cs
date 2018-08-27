@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace LoginForm.nsSaleOrder
 {
-    public partial class FormSaleOrderCreate : Form
+    public partial class FormSaleOrderCreate : MyForm
     {
         private static string QuoStatusActive = "Active";
         private static string QuoStatusPassive = "Passive";

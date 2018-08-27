@@ -13,7 +13,7 @@ using static LoginForm.Services.MyClasses.MyAuthority;
 
 namespace LoginForm.nsSaleOrder
 {
-    public partial class FormSalesOrderMain : Form
+    public partial class FormSalesOrderMain : MyForm
     {
         //List<SalesOrder> list = new List<SalesOrder>
         ContextMenu PurchaseOrderMenu = new ContextMenu();
