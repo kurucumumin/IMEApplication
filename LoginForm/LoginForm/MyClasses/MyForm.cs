@@ -19,5 +19,16 @@ namespace LoginForm
             }
         }
 
+        //private void InitializeComponent()
+        //{
+        //    this.SuspendLayout();
+        //    // 
+        //    // MyForm
+        //    // 
+        //    this.ClientSize = new System.Drawing.Size(284, 261);
+        //    this.Name = "MyForm";
+        //    this.ResumeLayout(false);
+
+        //}
     }
 }
