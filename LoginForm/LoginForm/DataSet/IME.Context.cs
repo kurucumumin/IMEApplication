@@ -59,7 +59,6 @@ namespace LoginForm.DataSet
         public virtual DbSet<FinancialYear> FinancialYears { get; set; }
         public virtual DbSet<Hazardou> Hazardous { get; set; }
         public virtual DbSet<Item> Items { get; set; }
-        public virtual DbSet<ItemDetail> ItemDetails { get; set; }
         public virtual DbSet<ItemHistory> ItemHistories { get; set; }
         public virtual DbSet<ItemNote> ItemNotes { get; set; }
         public virtual DbSet<Language> Languages { get; set; }

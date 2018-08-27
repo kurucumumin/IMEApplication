@@ -54,8 +54,56 @@ namespace LoginForm.DataSet
         public string dd_DiscontinuationDate { get; set; }
         public Nullable<long> os_OnhandStockBalance { get; set; }
         public string prop_LastUpdateFile { get; set; }
+        public string PackCode { get; set; }
+        public Nullable<decimal> UkCol1 { get; set; }
+        public string WeightUnit { get; set; }
+        public Nullable<decimal> StandardWeight { get; set; }
+        public string ObsoleteFlag { get; set; }
+        public string LowDiscountInd { get; set; }
+        public string ShelfLife { get; set; }
+        public string EUR1Indicator { get; set; }
+        public string CCCNNo { get; set; }
+        public string SupercedeDate { get; set; }
+        public string CurrentCatpage { get; set; }
+        public string UkIntroDate { get; set; }
+        public string Filler { get; set; }
+        public string UkDiscDate { get; set; }
+        public string SubstituteBy { get; set; }
+        public string BHCFlag { get; set; }
+        public string Filler1 { get; set; }
+        public Nullable<decimal> FutureSellPrice { get; set; }
+        public string IntCat { get; set; }
+        public string NewProdChangeInd { get; set; }
+        public string OutofStockProhibitchangeind { get; set; }
+        public string SupercededChangeInd { get; set; }
+        public string PackSizeChangeInd { get; set; }
+        public string RolledProductChangeInd { get; set; }
+        public string ExpiringProductChangeInd { get; set; }
+        public string DualUseArticleNo { get; set; }
+        public Nullable<int> pf_ItemTypeCode { get; set; }
+        public string pf_ItemTypeDesc { get; set; }
+        public string pf_SuperSectionNo { get; set; }
+        public string pf_SupersectionName { get; set; }
+        public string pf_BrandID { get; set; }
+        public string pf_SectionID { get; set; }
+        public string pf_SectionName { get; set; }
+        public string dd_RunOn { get; set; }
+        public string dd_Referral { get; set; }
+        public Nullable<int> hz_Environment { get; set; }
+        public Nullable<int> hz_Shipping { get; set; }
+        public Nullable<int> hz_Lithium { get; set; }
+        public string os_AvailableToPromiseCheck { get; set; }
+        public string os_BulkPack { get; set; }
+        public string os_CatalogueStatus { get; set; }
+        public string os_NextScheduledDelivery { get; set; }
+        public Nullable<int> os_PackSize { get; set; }
+        public Nullable<long> os_QuantityOnOrder { get; set; }
+        public Nullable<int> os_SmallOrderProtectionLevel { get; set; }
+        public string os_SubstitutedBy { get; set; }
+        public string os_SubstitutedFor { get; set; }
+        public string du_EUECCN { get; set; }
+        public string du_USECCN { get; set; }
     
         public virtual Supplier Supplier { get; set; }
-        public virtual ItemDetail ItemDetail { get; set; }
     }
 }

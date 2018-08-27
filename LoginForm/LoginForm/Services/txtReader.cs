@@ -185,11 +185,98 @@ namespace LoginForm
 
         public static int SuperDiskTxtSave()
         {
+            //#region Superdisk
+            //int a = 1;
+            //IMEEntities IME = new IMEEntities();
+            //string supplierID = null;
+            ////supplierID = IME.Suppliers.Where(x => x.s_name == "RSPro").FirstOrDefault().ID;
+            ////Show the dialog and get result.
+            //OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            //openFileDialog1.Filter = "txt files (*.txt)|*.txt";
+            //DialogResult result1 = openFileDialog1.ShowDialog();
+
+            //int UptCounter = 0;
+            //int AddedCounter = 0;
+            //if (result1 == DialogResult.OK) // Test result.
+            //{
+            //    //try
+            //    //{
+            //    string[] lines = System.IO.File.ReadAllLines(openFileDialog1.FileName);
+            //    string[] columnnames = lines[0].Split('|');
+            //    string[] wordcontrol;
+
+            //    wordcontrol = lines[1].Split('|');
+            //    if (!wordcontrol[0].Contains("P"))
+            //    {
+
+            //        while (lines.Count() > a)
+            //        {
+            //            string[] word;
+            //            word = lines[a].Split('|');
+            //            //superdisk ADD
+            //            Item s = new Item();
+            //            s.ArticleNo = word[0];
+            //            s.ArticleDesc = word[1];
+            //            if (word[3] != "") s.PackQuantity = Int32.Parse(word[3]);
+            //            if (word[4] != "") s.UnitContent = Int32.Parse(word[4]);
+            //            s.UnitMeasure = (String.IsNullOrEmpty(word[5])) ? "EACH" : word[5];
+            //            s.HazardousInd = word[8];
+            //            s.CalibrationInd = word[9];
+            //            s.MH1 = word[11];
+            //            s.LicensedInd = word[13];
+            //            s.CofO = word[15];
+            //            s.DiscChangeInd = word[30];
+            //            s.Manufacturer = word[35];
+            //            s.MPN = word[36];
+            //            s.MHCodeLevel1 = word[37];
+            //            if (word[38] != "") s.Height = decimal.Parse(word[38]);
+            //            if (word[39] != "") s.Width = decimal.Parse(word[39]);
+            //            if (word[40] != "") s.Length = decimal.Parse(word[40]);
+            //            s.DimensionUnit = "M";
+            //            s.Currency = "GBP";
+            //            s.SupplierID = supplierID;
+
+            //            IME.ItemAdd(
+            //                 s.ArticleNo,
+            //        s.ArticleDesc,
+            //        s.PackQuantity,
+            //        s.UnitContent,
+            //        s.UnitMeasure,
+            //        s.HazardousInd,
+            //        s.CalibrationInd,
+            //        s.MH1,
+            //        s.LicensedInd,
+            //        s.CofO,
+            //        s.DiscChangeInd,
+            //        s.Manufacturer,
+            //        s.MPN,
+            //        s.MHCodeLevel1,
+            //        s.Height,
+            //        s.Width,
+            //        s.Length,
+            //        s.DimensionUnit,
+            //        s.Currency,
+            //        s.SupplierID);
+            //            a++;
+            //        }
+            //        MessageBox.Show("Upload Completed");
+            //        return 1;
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Please Choose Correct File");
+            //        return 0;
+            //    }
+            //    //}
+            //    //catch (Exception ex) { MessageBox.Show(ex.Message); MessageBox.Show(a.ToString()); return 0; }
+            //    #endregion
+            //}
+            //return 0;
+
             #region Superdisk
             int a = 1;
             IMEEntities IME = new IMEEntities();
-            string supplierID = null;
-            //supplierID = IME.Suppliers.Where(x => x.s_name == "RSPro").FirstOrDefault().ID;
+            Item Superdiskitems = new Item();
             //Show the dialog and get result.
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             openFileDialog1.Filter = "txt files (*.txt)|*.txt";
@@ -204,60 +291,361 @@ namespace LoginForm
                 string[] lines = System.IO.File.ReadAllLines(openFileDialog1.FileName);
                 string[] columnnames = lines[0].Split('|');
                 string[] wordcontrol;
-                
+                bool isArrayTrue = true;
+                if (columnnames[0] != "Article No") isArrayTrue = false;
+                if (columnnames[1] != "Article Desc") isArrayTrue = false;
+                if (columnnames[2] != "Pack Code") isArrayTrue = false;
+                if (columnnames[3] != "Pack Quantity") isArrayTrue = false;
+                if (columnnames[4] != "Unit Content") isArrayTrue = false;
+                if (columnnames[5] != "Unit Measure") isArrayTrue = false;
+                if (columnnames[6] != "Uk Col 1") isArrayTrue = false;
+                if (columnnames[7] != "Standard Weight") isArrayTrue = false;
+                if (columnnames[8] != "Hazardous Ind") isArrayTrue = false;
+                if (columnnames[9] != "Calibration Ind") isArrayTrue = false;
+                if (columnnames[10] != "Obsolete Flag") isArrayTrue = false;
+                if (columnnames[11] != "MH1") isArrayTrue = false;
+                if (columnnames[12] != "Low Discount Ind") isArrayTrue = false;
+                if (columnnames[13] != "Licensed Ind") isArrayTrue = false;
+                if (columnnames[14] != "Shelf Life") isArrayTrue = false;
+                if (columnnames[15] != "CofO") isArrayTrue = false;
+                if (columnnames[16] != "EUR1 Indicator") isArrayTrue = false;
+                if (columnnames[17] != "CCCN No") isArrayTrue = false;
+                if (columnnames[18] != "Supercede Date") isArrayTrue = false;
+                if (columnnames[19] != "Current Cat page") isArrayTrue = false;
+                if (columnnames[20] != "Uk Intro Date") isArrayTrue = false;
+                if (columnnames[21] != "Filler") isArrayTrue = false;
+                if (columnnames[22] != "Uk Disc Date") isArrayTrue = false;
+                if (columnnames[23] != "Substitute By") isArrayTrue = false;
+                if (columnnames[24] != "BHC Flag") isArrayTrue = false;
+                if (columnnames[25] != "Filler1") isArrayTrue = false;
+                if (columnnames[26] != "Future Sell Price") isArrayTrue = false;
+                if (columnnames[27] != "Int Cat") isArrayTrue = false;
+                if (columnnames[28] != "New Prod Change Ind") isArrayTrue = false;
+                if (columnnames[29] != "Out of Stock Prohibit change ind") isArrayTrue = false;
+                if (columnnames[30] != "Disc Change Ind") isArrayTrue = false;
+                if (columnnames[31] != "Superceded Change Ind") isArrayTrue = false;
+                if (columnnames[32] != "Pack Size Change Ind") isArrayTrue = false;
+                if (columnnames[33] != "Rolled Product Change Ind") isArrayTrue = false;
+                if (columnnames[34] != "Expiring Product Change Ind") isArrayTrue = false;
+                if (columnnames[35] != "Manufacturer") isArrayTrue = false;
+                if (columnnames[36] != "MPN") isArrayTrue = false;
+                if (columnnames[37] != "MH Code Level 1") isArrayTrue = false;
+                if (columnnames[38] != "Height") isArrayTrue = false;
+                if (columnnames[39] != "Width") isArrayTrue = false;
+                if (columnnames[40] != "Length") isArrayTrue = false;
+
                 wordcontrol = lines[1].Split('|');
                 if (!wordcontrol[0].Contains("P"))
                 {
 
-                    while (lines.Count() > a)
+                    if (!isArrayTrue)
                     {
-                        string[] word;
-                        word = lines[a].Split('|');
-                        //superdisk ADD
-                        Item s = new Item();
-                        s.ArticleNo = word[0];
-                        s.ArticleDesc = word[1];
-                        if (word[3] != "") s.PackQuantity = Int32.Parse(word[3]);
-                        if (word[4] != "") s.UnitContent = Int32.Parse(word[4]);
-                        s.UnitMeasure = (String.IsNullOrEmpty(word[5])) ? "EACH" : word[5];
-                        s.HazardousInd = word[8];
-                        s.CalibrationInd = word[9];
-                        s.MH1 = word[11];
-                        s.LicensedInd = word[13];
-                        s.CofO = word[15];
-                        s.DiscChangeInd = word[30];
-                        s.Manufacturer = word[35];
-                        s.MPN = word[36];
-                        s.MHCodeLevel1 = word[37];
-                        if (word[38] != "") s.Height = decimal.Parse(word[38]);
-                        if (word[39] != "") s.Width = decimal.Parse(word[39]);
-                        if (word[40] != "") s.Length = decimal.Parse(word[40]);
-                        s.DimensionUnit = "M";
-                        s.Currency = "GBP";
-                        s.SupplierID = supplierID;
+                        while (lines.Count() > a)
+                        {
+                            #region isArrayFalse
+                            string[] word;
+                            word = lines[a].Split('|');
+                            for (int i = 0; i < columnnames.Count(); i++)
+                            {
 
-                        IME.ItemAdd(
-                             s.ArticleNo,
-                    s.ArticleDesc,
-                    s.PackQuantity,
-                    s.UnitContent,
-                    s.UnitMeasure,
-                    s.HazardousInd,
-                    s.CalibrationInd,
-                    s.MH1,
-                    s.LicensedInd,
-                    s.CofO,
-                    s.DiscChangeInd,
-                    s.Manufacturer,
-                    s.MPN,
-                    s.MHCodeLevel1,
-                    s.Height,
-                    s.Width,
-                    s.Length,
-                    s.DimensionUnit,
-                    s.Currency,
-                    s.SupplierID);
-                        a++;
+                                columnnames[i] = columnnames[i].Replace(" ", "_");
+                                //burada Superdiskitems diye bir ITEM nesnesini dolduruyoruz
+                                switch (columnnames[i])
+                                {
+                                    case "Article_Desc":
+                                        Superdiskitems.ArticleDesc = word[i];
+                                        break;
+                                    case "Article_No":
+                                        Superdiskitems.ArticleNo = word[i];
+                                        break;
+                                    case "BHC_Flag":
+                                        Superdiskitems.BHCFlag = word[i];
+                                        break;
+                                    case "Calibration_Ind":
+                                        Superdiskitems.CalibrationInd = word[i];
+                                        break;
+                                    case "CCCN_No":
+                                        Superdiskitems.CCCNNo = word[i];
+                                        break;
+                                    case "CofO":
+                                        Superdiskitems.CofO = word[i];
+                                        break;
+                                    case "Current_Cat_page":
+                                        Superdiskitems.CurrentCatpage = word[i];
+                                        break;
+                                    case "Disc_Change_Ind":
+                                        Superdiskitems.DiscChangeInd = word[i];
+                                        break;
+                                    case "EUR1_Indicator":
+                                        Superdiskitems.EUR1Indicator = word[i];
+                                        break;
+                                    case "Expiring_Product_Change_Ind":
+                                        Superdiskitems.ExpiringProductChangeInd = word[i];
+                                        break;
+                                    case "Filler":
+                                        Superdiskitems.Filler = word[i];
+                                        break;
+                                    case "Filler1":
+                                        Superdiskitems.Filler1 = word[i];
+                                        break;
+                                    case "Future_Sell_Price":
+                                        if (word[i] != "")
+                                        {
+                                            Superdiskitems.FutureSellPrice = decimal.Parse(word[i]);
+                                        }
+                                        break;
+                                    case "Hazardous_Ind":
+                                        Superdiskitems.HazardousInd = word[i];
+                                        break;
+                                    case "Height":
+                                        if (word[i] != "")
+                                        {
+                                            Superdiskitems.Height = decimal.Parse(word[i]);
+                                        }
+                                        break;
+                                    case "Int_Cat":
+                                        Superdiskitems.IntCat = word[i];
+                                        break;
+                                    case "Length":
+                                        if (word[i] != "")
+                                        {
+                                            Superdiskitems.Length = decimal.Parse(word[i]);
+                                        }
+                                        break;
+                                    case "Licensed_Ind":
+                                        Superdiskitems.LicensedInd = word[i];
+                                        break;
+                                    case "Low_Discount_Ind":
+                                        Superdiskitems.LowDiscountInd = word[i];
+                                        break;
+                                    case "Manufacturer":
+                                        Superdiskitems.Manufacturer = word[i];
+                                        break;
+                                    case "MH1":
+                                        Superdiskitems.MH1 = word[i];
+                                        break;
+                                    case "MH_Code_Level_1":
+                                        Superdiskitems.MHCodeLevel1 = word[i];
+                                        break;
+                                    case "MPN":
+                                        Superdiskitems.MPN = word[i];
+                                        break;
+                                    case "New_Prod_Change_Ind":
+                                        Superdiskitems.NewProdChangeInd = word[i];
+                                        break;
+                                    case "Obsolete_Flag":
+                                        Superdiskitems.ObsoleteFlag = word[i];
+                                        break;
+                                    case "Out_of_Stock_Prohibit_change_ind":
+                                        Superdiskitems.OutofStockProhibitchangeind = word[i];
+                                        break;
+                                    case "Pack_Code":
+                                        if (word[i] != "")
+                                        {
+                                            Superdiskitems.PackCode = word[i];
+                                        }
+                                        break;
+                                    case "Pack_Quantity":
+                                        if (word[i] != "")
+                                        {
+                                            Superdiskitems.PackQuantity = Int32.Parse(word[i]);
+                                        }
+                                        break;
+                                    case "Pack_Size_Change_Ind":
+                                        Superdiskitems.PackSizeChangeInd = word[i];
+                                        break;
+                                    case "Rolled_Product_Change_Ind":
+                                        Superdiskitems.RolledProductChangeInd = word[i];
+                                        break;
+                                    case "Shelf_Life":
+                                        Superdiskitems.ShelfLife = word[i];
+                                        break;
+                                    case "Standard_Weight":
+                                        if (word[i] != "")
+                                        {
+                                            Superdiskitems.StandardWeight = Int32.Parse(word[i]);
+                                        }
+                                        break;
+                                    case "Substitute_By":
+                                        Superdiskitems.SubstituteBy = word[i];
+                                        break;
+                                    case "Superceded_Change_Ind":
+                                        Superdiskitems.SupercededChangeInd = word[i];
+                                        break;
+                                    case "Supercede_Date":
+                                        Superdiskitems.SupercedeDate = word[i];
+                                        break;
+                                    case "Uk_Col_1":
+                                        if (word[i] != "")
+                                        {
+                                            Superdiskitems.UkCol1 = decimal.Parse(word[i]);
+                                        }
+                                        break;
+                                    case "Uk_Disc_Date":
+                                        Superdiskitems.UkDiscDate = word[i];
+                                        break;
+                                    case "Uk_Intro_Date":
+                                        Superdiskitems.UkIntroDate = word[i];
+                                        break;
+                                    case "Unit_Content":
+                                        if (word[i] != "")
+                                        {
+                                            Superdiskitems.UnitContent = Int32.Parse(word[i]);
+                                        }
+                                        break;
+                                    case "Unit_Measure":
+                                        Superdiskitems.UnitMeasure = word[i];
+                                        break;
+                                    case "Width":
+                                        if (word[i] != "")
+                                        {
+                                            Superdiskitems.Width = decimal.Parse(word[i]);
+                                        }
+                                        break;
+                                }
+                            }
+
+                            IME.ItemAdd(
+                                  Superdiskitems.ArticleNo,
+                         Superdiskitems.ArticleDesc,
+                         Superdiskitems.PackCode,
+                         Superdiskitems.PackQuantity,
+                         Superdiskitems.UnitContent,
+                         Superdiskitems.UnitMeasure,
+                         Superdiskitems.UkCol1,
+                         Superdiskitems.StandardWeight,
+                         Superdiskitems.HazardousInd,
+                         Superdiskitems.CalibrationInd,
+                         Superdiskitems.ObsoleteFlag,
+                         Superdiskitems.MH1,
+                         Superdiskitems.LowDiscountInd,
+                         Superdiskitems.LicensedInd,
+                         Superdiskitems.ShelfLife,
+                         Superdiskitems.CofO,
+                         Superdiskitems.EUR1Indicator,
+                         Superdiskitems.CCCNNo,
+                         Superdiskitems.SupercedeDate,
+                         Superdiskitems.CurrentCatpage,
+                         Superdiskitems.UkIntroDate,
+                         Superdiskitems.Filler,
+                         Superdiskitems.UkDiscDate,
+                         Superdiskitems.SubstituteBy,
+                         Superdiskitems.BHCFlag,
+                         Superdiskitems.Filler1,
+                         Superdiskitems.FutureSellPrice,
+                         Superdiskitems.IntCat,
+                         Superdiskitems.NewProdChangeInd,
+                         Superdiskitems.OutofStockProhibitchangeind,
+                         Superdiskitems.DiscChangeInd,
+                         Superdiskitems.SupercededChangeInd,
+                         Superdiskitems.PackSizeChangeInd,
+                         Superdiskitems.RolledProductChangeInd,
+                         Superdiskitems.ExpiringProductChangeInd,
+                         Superdiskitems.Manufacturer,
+                         Superdiskitems.MPN,
+                         Superdiskitems.MHCodeLevel1,
+                         Superdiskitems.Height,
+                         Superdiskitems.Width,
+                         Superdiskitems.Length);
+                            a++;
+                        }
+
+                        #endregion
+                    }
+                    else
+                    {
+                        while (lines.Count() > a)
+                        {
+                            string[] word;
+                            word = lines[a].Split('|');
+                            //superdisk ADD
+                            SuperDisk s = new SuperDisk();
+                            s.Article_No = word[0];
+                            s.Article_Desc = word[1];
+                            if (word[2] != "") s.Pack_Code = Int32.Parse(word[2]);
+                            if (word[3] != "") s.Pack_Quantity = Int32.Parse(word[3]);
+                            if (word[4] != "") s.Unit_Content = Int32.Parse(word[4]);
+                            s.Unit_Measure = word[5];
+                            if (word[6] != "") s.Uk_Col_1 = decimal.Parse(word[6]);
+                            if (word[7] != "") s.Standard_Weight = Int32.Parse(word[7]);
+                            s.Hazardous_Ind = word[8];
+                            s.Calibration_Ind = word[9];
+                            s.Obsolete_Flag = word[10];
+                            s.MH1 = word[11];
+                            s.Low_Discount_Ind = word[12];
+                            s.Licensed_Ind = word[13];
+                            s.Shelf_Life = word[14];
+                            s.CofO = word[15];
+                            s.EUR1_Indicator = word[16];
+                            s.CCCN_No = word[17];
+                            s.Supercede_Date = word[18];
+                            s.Current_Cat_page = word[19];
+                            s.Uk_Intro_Date = word[20];
+                            s.Filler = word[21];
+                            s.Uk_Disc_Date = word[22];
+                            s.Substitute_By = word[23];
+                            s.BHC_Flag = word[24];
+                            s.Filler1 = word[25];
+                            if (word[26] != "") s.Future_Sell_Price = decimal.Parse(word[26]);
+                            s.Int_Cat = word[27];
+                            s.New_Prod_Change_Ind = word[28];
+                            s.Out_of_Stock_Prohibit_change_ind = word[29];
+                            s.Disc_Change_Ind = word[30];
+                            s.Superceded_Change_Ind = word[31];
+                            s.Pack_Size_Change_Ind = word[32];
+                            s.Rolled_Product_Change_Ind = word[33];
+                            s.Expiring_Product_Change_Ind = word[34];
+                            s.Manufacturer = word[35];
+                            s.MPN = word[36];
+                            s.MH_Code_Level_1 = word[37];
+                            if (word[38] != "") s.Heigh = decimal.Parse(word[38]);
+                            if (word[39] != "") s.Width = decimal.Parse(word[39]);
+                            if (word[40] != "") s.Length = decimal.Parse(word[40]);
+
+                            IME.SuperDiskAdd(
+                                 s.Article_No,
+                        s.Article_Desc,
+                        s.Pack_Code,
+                        s.Pack_Quantity,
+                        s.Unit_Content,
+                        s.Unit_Measure,
+                        s.Uk_Col_1,
+                        s.Standard_Weight,
+                        s.Hazardous_Ind,
+                        s.Calibration_Ind,
+                        s.Obsolete_Flag,
+                        s.MH1,
+                        s.Low_Discount_Ind,
+                        s.Licensed_Ind,
+                        s.Shelf_Life,
+                        s.CofO,
+                        s.EUR1_Indicator,
+                        s.CCCN_No,
+                        s.Supercede_Date,
+                        s.Current_Cat_page,
+                        s.Uk_Intro_Date,
+                        s.Filler,
+                        s.Uk_Disc_Date,
+                        s.Substitute_By,
+                        s.BHC_Flag,
+                        s.Filler1,
+                        s.Future_Sell_Price,
+                        s.Int_Cat,
+                        s.New_Prod_Change_Ind,
+                        s.Out_of_Stock_Prohibit_change_ind,
+                        s.Disc_Change_Ind,
+                        s.Superceded_Change_Ind,
+                        s.Pack_Size_Change_Ind,
+                        s.Rolled_Product_Change_Ind,
+                        s.Expiring_Product_Change_Ind,
+                        s.Manufacturer,
+                        s.MPN,
+                        s.MH_Code_Level_1,
+                        s.Heigh,
+                        s.Width,
+                        s.Length);
+                            a++;
+                        }
                     }
                     MessageBox.Show("Upload Completed");
                     return 1;

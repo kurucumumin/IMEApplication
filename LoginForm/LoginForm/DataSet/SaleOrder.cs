@@ -53,6 +53,7 @@ namespace LoginForm.DataSet
         public decimal SaleOrderID { get; set; }
         public decimal financialYearId { get; set; }
         public string Status { get; set; }
+        public Nullable<decimal> TotalDiscount { get; set; }
     
         public virtual Customer Customer { get; set; }
         public virtual CustomerAddress CustomerAddress { get; set; }

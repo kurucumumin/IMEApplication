@@ -454,12 +454,6 @@
           <Property Name="dd_DiscontinuationDate" Type="nvarchar" MaxLength="15" />
           <Property Name="os_OnhandStockBalance" Type="bigint" />
           <Property Name="prop_LastUpdateFile" Type="nvarchar" MaxLength="25" />
-        </EntityType>
-        <EntityType Name="ItemDetail">
-          <Key>
-            <PropertyRef Name="ArticleNo" />
-          </Key>
-          <Property Name="ArticleNo" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="PackCode" Type="nvarchar" MaxLength="8" />
           <Property Name="UkCol1" Type="decimal" Precision="18" Scale="3" />
           <Property Name="WeightUnit" Type="nvarchar" MaxLength="5" />
@@ -979,6 +973,7 @@
           <Property Name="SaleOrderID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="financialYearId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="Status" Type="nvarchar" MaxLength="7" />
+          <Property Name="TotalDiscount" Type="decimal" Precision="18" Scale="4" />
         </EntityType>
         <EntityType Name="SaleOrderDetail">
           <Key>
@@ -1957,7 +1952,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Item__SupplierID__7271D1E6">
+        <Association Name="FK__Item__SupplierID__77368703">
           <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
           <End Role="Item" Type="Self.Item" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1966,18 +1961,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Principal>
             <Dependent Role="Item">
               <PropertyRef Name="SupplierID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ItemDetai__Artic__6F95653B">
-          <End Role="Item" Type="Self.Item" Multiplicity="1" />
-          <End Role="ItemDetail" Type="Self.ItemDetail" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Item">
-              <PropertyRef Name="ArticleNo" />
-            </Principal>
-            <Dependent Role="ItemDetail">
-              <PropertyRef Name="ArticleNo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3619,7 +3602,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <EntitySet Name="FinancialYear" EntityType="Self.FinancialYear" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Hazardous" EntityType="Self.Hazardous" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ItemDetail" EntityType="Self.ItemDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemHistory" EntityType="Self.ItemHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemNote" EntityType="Self.ItemNote" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Languages" EntityType="Self.Languages" Schema="dbo" store:Type="Tables" />
@@ -3926,13 +3908,9 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <End Role="Worker" EntitySet="Worker" />
             <End Role="DiscountValues" EntitySet="DiscountValues" />
           </AssociationSet>
-          <AssociationSet Name="FK__Item__SupplierID__7271D1E6" Association="Self.FK__Item__SupplierID__7271D1E6">
+          <AssociationSet Name="FK__Item__SupplierID__77368703" Association="Self.FK__Item__SupplierID__77368703">
             <End Role="Supplier" EntitySet="Supplier" />
             <End Role="Item" EntitySet="Item" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ItemDetai__Artic__6F95653B" Association="Self.FK__ItemDetai__Artic__6F95653B">
-            <End Role="Item" EntitySet="Item" />
-            <End Role="ItemDetail" EntitySet="ItemDetail" />
           </AssociationSet>
           <AssociationSet Name="FK__Itemhisto__Curre__4ED38FEE" Association="Self.FK__Itemhisto__Curre__4ED38FEE">
             <End Role="Customer" EntitySet="Customer" />
@@ -4792,14 +4770,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="dd_DiscontinuationDate" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="os_OnhandStockBalance" Type="Int64" />
           <Property Name="prop_LastUpdateFile" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Supplier" Relationship="Self.FK__Item__SupplierID__7271D1E6" FromRole="Item" ToRole="Supplier" />
-          <NavigationProperty Name="ItemDetail" Relationship="Self.FK__ItemDetai__Artic__6F95653B" FromRole="Item" ToRole="ItemDetail" />
-        </EntityType>
-        <EntityType Name="ItemDetail">
-          <Key>
-            <PropertyRef Name="ArticleNo" />
-          </Key>
-          <Property Name="ArticleNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PackCode" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
           <Property Name="UkCol1" Type="Decimal" Precision="18" Scale="3" />
           <Property Name="WeightUnit" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
@@ -4849,7 +4819,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="os_SubstitutedFor" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="du_EUECCN" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="du_USECCN" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Item" Relationship="Self.FK__ItemDetai__Artic__6F95653B" FromRole="ItemDetail" ToRole="Item" />
+          <NavigationProperty Name="Supplier" Relationship="Self.FK__Item__SupplierID__77368703" FromRole="Item" ToRole="Supplier" />
         </EntityType>
         <EntityType Name="ItemHistory">
           <Key>
@@ -5385,6 +5355,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="SaleOrderID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="financialYearId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="Status" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="TotalDiscount" Type="Decimal" Precision="18" Scale="4" />
           <NavigationProperty Name="Customer" Relationship="Self.FK__SaleOrder__Custo__1CDC41A7" FromRole="SaleOrder" ToRole="Customer" />
           <NavigationProperty Name="CustomerAddress" Relationship="Self.FK__SaleOrder__Deliv__21A0F6C4" FromRole="SaleOrder" ToRole="CustomerAddress" />
           <NavigationProperty Name="CustomerAddress1" Relationship="Self.FK__SaleOrder__Invoi__20ACD28B" FromRole="SaleOrder" ToRole="CustomerAddress" />
@@ -5635,7 +5606,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="AccountNoteID" Type="Int32" />
           <Property Name="Debit" Type="Decimal" Precision="20" Scale="4" />
           <NavigationProperty Name="Currency" Relationship="Self.FK__Supplier__Defaul__4218B34E" FromRole="Supplier" ToRole="Currency" />
-          <NavigationProperty Name="Items" Relationship="Self.FK__Item__SupplierID__7271D1E6" FromRole="Supplier" ToRole="Item" />
+          <NavigationProperty Name="Items" Relationship="Self.FK__Item__SupplierID__77368703" FromRole="Supplier" ToRole="Item" />
           <NavigationProperty Name="Note" Relationship="Self.FK__Supplier__Accoun__552B87C2" FromRole="Supplier" ToRole="Notes" />
           <NavigationProperty Name="Note1" Relationship="Self.FK__Supplier__Suppli__09746778" FromRole="Supplier" ToRole="Notes" />
           <NavigationProperty Name="PaymentMethod" Relationship="Self.FK__Supplier__paymen__634EBE90" FromRole="Supplier" ToRole="PaymentMethod" />
@@ -6772,7 +6743,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Item__SupplierID__7271D1E6">
+        <Association Name="FK__Item__SupplierID__77368703">
           <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
           <End Role="Item" Type="Self.Item" Multiplicity="*" />
           <ReferentialConstraint>
@@ -6781,18 +6752,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Principal>
             <Dependent Role="Item">
               <PropertyRef Name="SupplierID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ItemDetai__Artic__6F95653B">
-          <End Role="Item" Type="Self.Item" Multiplicity="1" />
-          <End Role="ItemDetail" Type="Self.ItemDetail" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Item">
-              <PropertyRef Name="ArticleNo" />
-            </Principal>
-            <Dependent Role="ItemDetail">
-              <PropertyRef Name="ArticleNo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -7413,7 +7372,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <EntitySet Name="FinancialYears" EntityType="Self.FinancialYear" />
           <EntitySet Name="Hazardous" EntityType="Self.Hazardou" />
           <EntitySet Name="Items" EntityType="Self.Item" />
-          <EntitySet Name="ItemDetails" EntityType="Self.ItemDetail" />
           <EntitySet Name="ItemHistories" EntityType="Self.ItemHistory" />
           <EntitySet Name="ItemNotes" EntityType="Self.ItemNote" />
           <EntitySet Name="Languages" EntityType="Self.Language" />
@@ -7728,13 +7686,9 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <End Role="FinancialYear" EntitySet="FinancialYears" />
             <End Role="SaleOrder" EntitySet="SaleOrders" />
           </AssociationSet>
-          <AssociationSet Name="FK__Item__SupplierID__7271D1E6" Association="Self.FK__Item__SupplierID__7271D1E6">
+          <AssociationSet Name="FK__Item__SupplierID__77368703" Association="Self.FK__Item__SupplierID__77368703">
             <End Role="Supplier" EntitySet="Suppliers" />
             <End Role="Item" EntitySet="Items" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ItemDetai__Artic__6F95653B" Association="Self.FK__ItemDetai__Artic__6F95653B">
-            <End Role="Item" EntitySet="Items" />
-            <End Role="ItemDetail" EntitySet="ItemDetails" />
           </AssociationSet>
           <AssociationSet Name="FK__ItemNote__NoteID__2B0A656D" Association="Self.FK__ItemNote__NoteID__2B0A656D">
             <End Role="Notes" EntitySet="Notes" />
@@ -9645,13 +9599,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="dd_DiscontinuationDate" ColumnName="dd_DiscontinuationDate" />
                 <ScalarProperty Name="os_OnhandStockBalance" ColumnName="os_OnhandStockBalance" />
                 <ScalarProperty Name="prop_LastUpdateFile" ColumnName="prop_LastUpdateFile" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ItemDetails">
-            <EntityTypeMapping TypeName="IMEModel.ItemDetail">
-              <MappingFragment StoreEntitySet="ItemDetail">
-                <ScalarProperty Name="ArticleNo" ColumnName="ArticleNo" />
                 <ScalarProperty Name="PackCode" ColumnName="PackCode" />
                 <ScalarProperty Name="UkCol1" ColumnName="UkCol1" />
                 <ScalarProperty Name="WeightUnit" ColumnName="WeightUnit" />
@@ -10201,6 +10148,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="SaleOrderID" ColumnName="SaleOrderID" />
                 <ScalarProperty Name="financialYearId" ColumnName="financialYearId" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="TotalDiscount" ColumnName="TotalDiscount" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

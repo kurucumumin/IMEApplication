@@ -1036,13 +1036,13 @@ namespace LoginForm.Main
             this.altoSlidingLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.altoSlidingLabel1.BackColor = System.Drawing.Color.Transparent;
             this.altoSlidingLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.altoSlidingLabel1.Location = new System.Drawing.Point(578, 10);
+            this.altoSlidingLabel1.Location = new System.Drawing.Point(581, 10);
             this.altoSlidingLabel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.altoSlidingLabel1.Name = "altoSlidingLabel1";
-            this.altoSlidingLabel1.Size = new System.Drawing.Size(325, 57);
+            this.altoSlidingLabel1.Size = new System.Drawing.Size(322, 36);
             this.altoSlidingLabel1.Slide = true;
             this.altoSlidingLabel1.TabIndex = 1;
-            this.altoSlidingLabel1.Text = "We will have a meeting at 17:00 about new product catalogues came from RS UK";
+            this.altoSlidingLabel1.Text = "Lorem Ipsum Dolor Sit Amet";
             // 
             // bunifuElipse1
             // 
