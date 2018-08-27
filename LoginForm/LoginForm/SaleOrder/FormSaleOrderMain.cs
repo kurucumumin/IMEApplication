@@ -47,7 +47,7 @@ namespace LoginForm.nsSaleOrder
             ControlAutorization();
             datetimeEnd.MaxDate = DateTime.Today.Date;
             datetimeEnd.Value = DateTime.Today.Date;
-            datetimeStart.Value = DateTime.Today.AddDays(-7);
+            datetimeStart.Value = DateTime.Today.AddMonths(-3);
             BringSalesList(datetimeEnd.Value, datetimeStart.Value);
         }
 

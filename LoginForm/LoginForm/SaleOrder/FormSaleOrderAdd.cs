@@ -380,7 +380,7 @@ namespace LoginForm.QuotationModule
             CustomerCode.Text = customer.ID;
             txtFactor.Text = customer.factor.ToString();
             fillCustomer();
-            cbCurrencySelected("Quotation");
+            cbCurrencySelected("Sale");
             cbWorkers.SelectedItem = customer.MainContactID;
             foreach (var item in list)
             {
@@ -871,7 +871,7 @@ namespace LoginForm.QuotationModule
                 cbPaymentTerm.ValueMember = "ID";
                 if (!txtQuotationNo.Text.Contains(','))
                 {
-                    cbPaymentTerm.SelectedValue = IME.Quotations.Where(x => x.QuotationNo == txtQuotationNo.Text).FirstOrDefault().PaymentID;
+                    cbPaymentTerm.SelectedValue = IME.SaleOrders.Where(x => x.QuotationNos == txtQuotationNo.Text).FirstOrDefault().PaymentTermID;
                 }
                 else cbPaymentTerm.SelectedValue = IME.Customers.Where(x => x.ID == CustomerCode.Text).FirstOrDefault().payment_termID;
 
@@ -4753,6 +4753,14 @@ namespace LoginForm.QuotationModule
                 cbCurrency.ValueMember = "currencyID";
 
                 cbCurrency.SelectedIndex = cbCurrency.FindStringExact(QItems[0].Quotation.ExchangeRate.Currency.currencyName);
+            }
+            else if (name == "Sale")
+            {
+                cbCurrency.DataSource = IME.Currencies.ToList();
+                cbCurrency.DisplayMember = "currencyName";
+                cbCurrency.ValueMember = "currencyID";
+
+                cbCurrency.SelectedIndex = cbCurrency.FindStringExact(SItems[0].SaleOrder.ExchangeRate.Currency.currencyName);
             }
             ChangeCurr();
         }
