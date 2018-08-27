@@ -410,6 +410,106 @@
           <Property Name="Shipping" Type="nvarchar" MaxLength="50" />
           <Property Name="Lithium" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="ArticleNo" />
+          </Key>
+          <Property Name="ArticleNo" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="ArticleDesc" Type="nvarchar" MaxLength="40" />
+          <Property Name="PackQuantity" Type="int" />
+          <Property Name="UnitContent" Type="int" />
+          <Property Name="UnitMeasure" Type="nvarchar" MaxLength="15" />
+          <Property Name="HazardousInd" Type="nvarchar" MaxLength="1" />
+          <Property Name="CalibrationInd" Type="nvarchar" MaxLength="1" />
+          <Property Name="MH1" Type="nvarchar" MaxLength="3" />
+          <Property Name="LicensedInd" Type="nvarchar" MaxLength="1" />
+          <Property Name="CofO" Type="nvarchar" MaxLength="2" />
+          <Property Name="DiscChangeInd" Type="nvarchar" MaxLength="1" />
+          <Property Name="Manufacturer" Type="nvarchar" MaxLength="40" />
+          <Property Name="MPN" Type="nvarchar" MaxLength="50" />
+          <Property Name="MHCodeLevel1" Type="nvarchar" MaxLength="50" />
+          <Property Name="DimensionUnit" Type="nvarchar" MaxLength="5" />
+          <Property Name="Height" Type="decimal" Precision="7" Scale="3" />
+          <Property Name="Width" Type="decimal" Precision="7" Scale="3" />
+          <Property Name="Length" Type="decimal" Precision="7" Scale="3" />
+          <Property Name="Brand" Type="nvarchar" MaxLength="40" />
+          <Property Name="Currency" Type="nvarchar" MaxLength="10" />
+          <Property Name="SupplierID" Type="nvarchar" MaxLength="15" />
+          <Property Name="DependantItemFile" Type="nvarchar" MaxLength="25" />
+          <Property Name="pf_Col1Price" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="pf_Col2Price" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="pf_Col3Price" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="pf_Col4Price" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="pf_Col5Price" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="pf_Col1Break" Type="int" />
+          <Property Name="pf_Col2Break" Type="int" />
+          <Property Name="pf_Col3Break" Type="int" />
+          <Property Name="pf_Col4Break" Type="int" />
+          <Property Name="pf_Col5Break" Type="int" />
+          <Property Name="pf_DiscountedPrice1" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="pf_DiscountedPrice2" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="pf_DiscountedPrice3" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="pf_DiscountedPrice4" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="pf_DiscountedPrice5" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="dd_DiscontinuationDate" Type="nvarchar" MaxLength="15" />
+          <Property Name="os_OnhandStockBalance" Type="bigint" />
+          <Property Name="prop_LastUpdateFile" Type="nvarchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="ItemDetail">
+          <Key>
+            <PropertyRef Name="ArticleNo" />
+          </Key>
+          <Property Name="ArticleNo" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="PackCode" Type="nvarchar" MaxLength="8" />
+          <Property Name="UkCol1" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="WeightUnit" Type="nvarchar" MaxLength="5" />
+          <Property Name="StandardWeight" Type="decimal" Precision="15" Scale="5" />
+          <Property Name="ObsoleteFlag" Type="nvarchar" MaxLength="1" />
+          <Property Name="LowDiscountInd" Type="char" MaxLength="1" />
+          <Property Name="ShelfLife" Type="nvarchar" MaxLength="5" />
+          <Property Name="EUR1Indicator" Type="nvarchar" MaxLength="1" />
+          <Property Name="CCCNNo" Type="nvarchar" MaxLength="15" />
+          <Property Name="SupercedeDate" Type="nvarchar" MaxLength="10" />
+          <Property Name="CurrentCatpage" Type="nvarchar" MaxLength="4" />
+          <Property Name="UkIntroDate" Type="nvarchar" MaxLength="10" />
+          <Property Name="Filler" Type="nvarchar" MaxLength="9" />
+          <Property Name="UkDiscDate" Type="nvarchar" MaxLength="10" />
+          <Property Name="SubstituteBy" Type="nvarchar" MaxLength="7" />
+          <Property Name="BHCFlag" Type="nvarchar" MaxLength="2" />
+          <Property Name="Filler1" Type="nvarchar" MaxLength="1" />
+          <Property Name="FutureSellPrice" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="IntCat" Type="nvarchar" MaxLength="1" />
+          <Property Name="NewProdChangeInd" Type="nvarchar" MaxLength="1" />
+          <Property Name="OutofStockProhibitchangeind" Type="nvarchar" MaxLength="1" />
+          <Property Name="SupercededChangeInd" Type="nvarchar" MaxLength="1" />
+          <Property Name="PackSizeChangeInd" Type="nvarchar" MaxLength="1" />
+          <Property Name="RolledProductChangeInd" Type="nvarchar" MaxLength="1" />
+          <Property Name="ExpiringProductChangeInd" Type="nvarchar" MaxLength="1" />
+          <Property Name="DualUseArticleNo" Type="nvarchar" MaxLength="15" />
+          <Property Name="pf_ItemTypeCode" Type="int" />
+          <Property Name="pf_ItemTypeDesc" Type="nvarchar" MaxLength="30" />
+          <Property Name="pf_SuperSectionNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="pf_SupersectionName" Type="nvarchar" MaxLength="100" />
+          <Property Name="pf_BrandID" Type="nvarchar" MaxLength="20" />
+          <Property Name="pf_SectionID" Type="nvarchar" MaxLength="20" />
+          <Property Name="pf_SectionName" Type="nvarchar" MaxLength="100" />
+          <Property Name="dd_RunOn" Type="nvarchar" MaxLength="15" />
+          <Property Name="dd_Referral" Type="nvarchar" MaxLength="15" />
+          <Property Name="hz_Environment" Type="int" />
+          <Property Name="hz_Shipping" Type="int" />
+          <Property Name="hz_Lithium" Type="int" />
+          <Property Name="os_AvailableToPromiseCheck" Type="nvarchar" MaxLength="3" />
+          <Property Name="os_BulkPack" Type="nvarchar" MaxLength="1" />
+          <Property Name="os_CatalogueStatus" Type="nvarchar" MaxLength="1" />
+          <Property Name="os_NextScheduledDelivery" Type="nvarchar" MaxLength="15" />
+          <Property Name="os_PackSize" Type="int" />
+          <Property Name="os_QuantityOnOrder" Type="bigint" />
+          <Property Name="os_SmallOrderProtectionLevel" Type="int" />
+          <Property Name="os_SubstitutedBy" Type="nvarchar" MaxLength="20" />
+          <Property Name="os_SubstitutedFor" Type="nvarchar" MaxLength="20" />
+          <Property Name="du_EUECCN" Type="nvarchar" MaxLength="20" />
+          <Property Name="du_USECCN" Type="nvarchar" MaxLength="20" />
+        </EntityType>
         <EntityType Name="ItemHistory">
           <Key>
             <PropertyRef Name="ID" />
@@ -1857,6 +1957,30 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Item__SupplierID__7271D1E6">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="SupplierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ItemDetai__Artic__6F95653B">
+          <End Role="Item" Type="Self.Item" Multiplicity="1" />
+          <End Role="ItemDetail" Type="Self.ItemDetail" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="ArticleNo" />
+            </Principal>
+            <Dependent Role="ItemDetail">
+              <PropertyRef Name="ArticleNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Itemhisto__Curre__4ED38FEE">
           <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
           <End Role="ItemHistory" Type="Self.ItemHistory" Multiplicity="*" />
@@ -3098,6 +3222,28 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Parameter Name="formId" Type="int" Mode="In" />
         </Function>
         <Function Name="FormViewAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ItemAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Article_No" Type="nvarchar" Mode="In" />
+          <Parameter Name="Article_Desc" Type="nvarchar" Mode="In" />
+          <Parameter Name="Pack_Quantity" Type="int" Mode="In" />
+          <Parameter Name="Unit_Content" Type="int" Mode="In" />
+          <Parameter Name="Unit_Measure" Type="nvarchar" Mode="In" />
+          <Parameter Name="Hazardous_Ind" Type="nvarchar" Mode="In" />
+          <Parameter Name="Calibration_Ind" Type="nvarchar" Mode="In" />
+          <Parameter Name="MH1" Type="nvarchar" Mode="In" />
+          <Parameter Name="Licensed_Ind" Type="nvarchar" Mode="In" />
+          <Parameter Name="CofO" Type="nvarchar" Mode="In" />
+          <Parameter Name="Disc_Change_Ind" Type="nvarchar" Mode="In" />
+          <Parameter Name="Manufacturer" Type="nvarchar" Mode="In" />
+          <Parameter Name="MPN" Type="nvarchar" Mode="In" />
+          <Parameter Name="MH_Code_Level_1" Type="nvarchar" Mode="In" />
+          <Parameter Name="Heigh" Type="decimal" Mode="In" />
+          <Parameter Name="Width" Type="decimal" Mode="In" />
+          <Parameter Name="Length" Type="decimal" Mode="In" />
+          <Parameter Name="DimensionUnit" Type="nvarchar" Mode="In" />
+          <Parameter Name="Currency" Type="nvarchar" Mode="In" />
+          <Parameter Name="SupplierID" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="ItemDetailTabFiller" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="articleNo" Type="nvarchar" Mode="In" />
         </Function>
@@ -3472,6 +3618,8 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <EntitySet Name="FieldCopy" EntityType="Self.FieldCopy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FinancialYear" EntityType="Self.FinancialYear" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Hazardous" EntityType="Self.Hazardous" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemDetail" EntityType="Self.ItemDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemHistory" EntityType="Self.ItemHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemNote" EntityType="Self.ItemNote" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Languages" EntityType="Self.Languages" Schema="dbo" store:Type="Tables" />
@@ -3777,6 +3925,14 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <AssociationSet Name="FK__DiscountV__Repre__6F4A8121" Association="Self.FK__DiscountV__Repre__6F4A8121">
             <End Role="Worker" EntitySet="Worker" />
             <End Role="DiscountValues" EntitySet="DiscountValues" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Item__SupplierID__7271D1E6" Association="Self.FK__Item__SupplierID__7271D1E6">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="Item" EntitySet="Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ItemDetai__Artic__6F95653B" Association="Self.FK__ItemDetai__Artic__6F95653B">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="ItemDetail" EntitySet="ItemDetail" />
           </AssociationSet>
           <AssociationSet Name="FK__Itemhisto__Curre__4ED38FEE" Association="Self.FK__Itemhisto__Curre__4ED38FEE">
             <End Role="Customer" EntitySet="Customer" />
@@ -4592,6 +4748,109 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="Shipping" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Lithium" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="ArticleNo" />
+          </Key>
+          <Property Name="ArticleNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ArticleDesc" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="PackQuantity" Type="Int32" />
+          <Property Name="UnitContent" Type="Int32" />
+          <Property Name="UnitMeasure" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="HazardousInd" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="CalibrationInd" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="MH1" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="LicensedInd" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="CofO" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="DiscChangeInd" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="Manufacturer" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="MPN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MHCodeLevel1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DimensionUnit" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Height" Type="Decimal" Precision="7" Scale="3" />
+          <Property Name="Width" Type="Decimal" Precision="7" Scale="3" />
+          <Property Name="Length" Type="Decimal" Precision="7" Scale="3" />
+          <Property Name="Brand" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Currency" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="SupplierID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="DependantItemFile" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="pf_Col1Price" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="pf_Col2Price" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="pf_Col3Price" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="pf_Col4Price" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="pf_Col5Price" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="pf_Col1Break" Type="Int32" />
+          <Property Name="pf_Col2Break" Type="Int32" />
+          <Property Name="pf_Col3Break" Type="Int32" />
+          <Property Name="pf_Col4Break" Type="Int32" />
+          <Property Name="pf_Col5Break" Type="Int32" />
+          <Property Name="pf_DiscountedPrice1" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="pf_DiscountedPrice2" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="pf_DiscountedPrice3" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="pf_DiscountedPrice4" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="pf_DiscountedPrice5" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="dd_DiscontinuationDate" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="os_OnhandStockBalance" Type="Int64" />
+          <Property Name="prop_LastUpdateFile" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Supplier" Relationship="Self.FK__Item__SupplierID__7271D1E6" FromRole="Item" ToRole="Supplier" />
+          <NavigationProperty Name="ItemDetail" Relationship="Self.FK__ItemDetai__Artic__6F95653B" FromRole="Item" ToRole="ItemDetail" />
+        </EntityType>
+        <EntityType Name="ItemDetail">
+          <Key>
+            <PropertyRef Name="ArticleNo" />
+          </Key>
+          <Property Name="ArticleNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PackCode" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="UkCol1" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="WeightUnit" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="StandardWeight" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="ObsoleteFlag" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="LowDiscountInd" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="ShelfLife" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="EUR1Indicator" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="CCCNNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="SupercedeDate" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CurrentCatpage" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="UkIntroDate" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Filler" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="UkDiscDate" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="SubstituteBy" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="BHCFlag" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="Filler1" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="FutureSellPrice" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="IntCat" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="NewProdChangeInd" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="OutofStockProhibitchangeind" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="SupercededChangeInd" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="PackSizeChangeInd" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="RolledProductChangeInd" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="ExpiringProductChangeInd" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="DualUseArticleNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="pf_ItemTypeCode" Type="Int32" />
+          <Property Name="pf_ItemTypeDesc" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="pf_SuperSectionNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="pf_SupersectionName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="pf_BrandID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="pf_SectionID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="pf_SectionName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="dd_RunOn" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="dd_Referral" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="hz_Environment" Type="Int32" />
+          <Property Name="hz_Shipping" Type="Int32" />
+          <Property Name="hz_Lithium" Type="Int32" />
+          <Property Name="os_AvailableToPromiseCheck" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="os_BulkPack" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="os_CatalogueStatus" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="os_NextScheduledDelivery" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="os_PackSize" Type="Int32" />
+          <Property Name="os_QuantityOnOrder" Type="Int64" />
+          <Property Name="os_SmallOrderProtectionLevel" Type="Int32" />
+          <Property Name="os_SubstitutedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="os_SubstitutedFor" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="du_EUECCN" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="du_USECCN" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Item" Relationship="Self.FK__ItemDetai__Artic__6F95653B" FromRole="ItemDetail" ToRole="Item" />
+        </EntityType>
         <EntityType Name="ItemHistory">
           <Key>
             <PropertyRef Name="ID" />
@@ -5376,6 +5635,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="AccountNoteID" Type="Int32" />
           <Property Name="Debit" Type="Decimal" Precision="20" Scale="4" />
           <NavigationProperty Name="Currency" Relationship="Self.FK__Supplier__Defaul__4218B34E" FromRole="Supplier" ToRole="Currency" />
+          <NavigationProperty Name="Items" Relationship="Self.FK__Item__SupplierID__7271D1E6" FromRole="Supplier" ToRole="Item" />
           <NavigationProperty Name="Note" Relationship="Self.FK__Supplier__Accoun__552B87C2" FromRole="Supplier" ToRole="Notes" />
           <NavigationProperty Name="Note1" Relationship="Self.FK__Supplier__Suppli__09746778" FromRole="Supplier" ToRole="Notes" />
           <NavigationProperty Name="PaymentMethod" Relationship="Self.FK__Supplier__paymen__634EBE90" FromRole="Supplier" ToRole="PaymentMethod" />
@@ -6512,6 +6772,30 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Item__SupplierID__7271D1E6">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="SupplierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ItemDetai__Artic__6F95653B">
+          <End Role="Item" Type="Self.Item" Multiplicity="1" />
+          <End Role="ItemDetail" Type="Self.ItemDetail" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="ArticleNo" />
+            </Principal>
+            <Dependent Role="ItemDetail">
+              <PropertyRef Name="ArticleNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__ItemNote__NoteID__2B0A656D">
           <End Role="Notes" Type="Self.Note" Multiplicity="0..1" />
           <End Role="ItemNote" Type="Self.ItemNote" Multiplicity="*" />
@@ -7128,6 +7412,8 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <EntitySet Name="FieldCopies" EntityType="Self.FieldCopy" />
           <EntitySet Name="FinancialYears" EntityType="Self.FinancialYear" />
           <EntitySet Name="Hazardous" EntityType="Self.Hazardou" />
+          <EntitySet Name="Items" EntityType="Self.Item" />
+          <EntitySet Name="ItemDetails" EntityType="Self.ItemDetail" />
           <EntitySet Name="ItemHistories" EntityType="Self.ItemHistory" />
           <EntitySet Name="ItemNotes" EntityType="Self.ItemNote" />
           <EntitySet Name="Languages" EntityType="Self.Language" />
@@ -7441,6 +7727,14 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <AssociationSet Name="FK_SaleOrder_FinancialYear" Association="Self.FK_SaleOrder_FinancialYear">
             <End Role="FinancialYear" EntitySet="FinancialYears" />
             <End Role="SaleOrder" EntitySet="SaleOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Item__SupplierID__7271D1E6" Association="Self.FK__Item__SupplierID__7271D1E6">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ItemDetai__Artic__6F95653B" Association="Self.FK__ItemDetai__Artic__6F95653B">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="ItemDetail" EntitySet="ItemDetails" />
           </AssociationSet>
           <AssociationSet Name="FK__ItemNote__NoteID__2B0A656D" Association="Self.FK__ItemNote__NoteID__2B0A656D">
             <End Role="Notes" EntitySet="Notes" />
@@ -7910,6 +8204,28 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="formId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="FormViewAll" ReturnType="Collection(IMEModel.FormViewAll_Result)" />
+          <FunctionImport Name="ItemAdd">
+            <Parameter Name="Article_No" Mode="In" Type="String" />
+            <Parameter Name="Article_Desc" Mode="In" Type="String" />
+            <Parameter Name="Pack_Quantity" Mode="In" Type="Int32" />
+            <Parameter Name="Unit_Content" Mode="In" Type="Int32" />
+            <Parameter Name="Unit_Measure" Mode="In" Type="String" />
+            <Parameter Name="Hazardous_Ind" Mode="In" Type="String" />
+            <Parameter Name="Calibration_Ind" Mode="In" Type="String" />
+            <Parameter Name="MH1" Mode="In" Type="String" />
+            <Parameter Name="Licensed_Ind" Mode="In" Type="String" />
+            <Parameter Name="CofO" Mode="In" Type="String" />
+            <Parameter Name="Disc_Change_Ind" Mode="In" Type="String" />
+            <Parameter Name="Manufacturer" Mode="In" Type="String" />
+            <Parameter Name="MPN" Mode="In" Type="String" />
+            <Parameter Name="MH_Code_Level_1" Mode="In" Type="String" />
+            <Parameter Name="Heigh" Mode="In" Type="Decimal" />
+            <Parameter Name="Width" Mode="In" Type="Decimal" />
+            <Parameter Name="Length" Mode="In" Type="Decimal" />
+            <Parameter Name="DimensionUnit" Mode="In" Type="String" />
+            <Parameter Name="Currency" Mode="In" Type="String" />
+            <Parameter Name="SupplierID" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="ItemDetailTabFiller" ReturnType="Collection(IMEModel.ItemDetailTabFiller_Result)">
             <Parameter Name="articleNo" Mode="In" Type="String" />
           </FunctionImport>
@@ -9283,6 +9599,108 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="Environment" ColumnName="Environment" />
                 <ScalarProperty Name="Shipping" ColumnName="Shipping" />
                 <ScalarProperty Name="Lithium" ColumnName="Lithium" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Items">
+            <EntityTypeMapping TypeName="IMEModel.Item">
+              <MappingFragment StoreEntitySet="Item">
+                <ScalarProperty Name="ArticleNo" ColumnName="ArticleNo" />
+                <ScalarProperty Name="ArticleDesc" ColumnName="ArticleDesc" />
+                <ScalarProperty Name="PackQuantity" ColumnName="PackQuantity" />
+                <ScalarProperty Name="UnitContent" ColumnName="UnitContent" />
+                <ScalarProperty Name="UnitMeasure" ColumnName="UnitMeasure" />
+                <ScalarProperty Name="HazardousInd" ColumnName="HazardousInd" />
+                <ScalarProperty Name="CalibrationInd" ColumnName="CalibrationInd" />
+                <ScalarProperty Name="MH1" ColumnName="MH1" />
+                <ScalarProperty Name="LicensedInd" ColumnName="LicensedInd" />
+                <ScalarProperty Name="CofO" ColumnName="CofO" />
+                <ScalarProperty Name="DiscChangeInd" ColumnName="DiscChangeInd" />
+                <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+                <ScalarProperty Name="MPN" ColumnName="MPN" />
+                <ScalarProperty Name="MHCodeLevel1" ColumnName="MHCodeLevel1" />
+                <ScalarProperty Name="DimensionUnit" ColumnName="DimensionUnit" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Length" ColumnName="Length" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+                <ScalarProperty Name="DependantItemFile" ColumnName="DependantItemFile" />
+                <ScalarProperty Name="pf_Col1Price" ColumnName="pf_Col1Price" />
+                <ScalarProperty Name="pf_Col2Price" ColumnName="pf_Col2Price" />
+                <ScalarProperty Name="pf_Col3Price" ColumnName="pf_Col3Price" />
+                <ScalarProperty Name="pf_Col4Price" ColumnName="pf_Col4Price" />
+                <ScalarProperty Name="pf_Col5Price" ColumnName="pf_Col5Price" />
+                <ScalarProperty Name="pf_Col1Break" ColumnName="pf_Col1Break" />
+                <ScalarProperty Name="pf_Col2Break" ColumnName="pf_Col2Break" />
+                <ScalarProperty Name="pf_Col3Break" ColumnName="pf_Col3Break" />
+                <ScalarProperty Name="pf_Col4Break" ColumnName="pf_Col4Break" />
+                <ScalarProperty Name="pf_Col5Break" ColumnName="pf_Col5Break" />
+                <ScalarProperty Name="pf_DiscountedPrice1" ColumnName="pf_DiscountedPrice1" />
+                <ScalarProperty Name="pf_DiscountedPrice2" ColumnName="pf_DiscountedPrice2" />
+                <ScalarProperty Name="pf_DiscountedPrice3" ColumnName="pf_DiscountedPrice3" />
+                <ScalarProperty Name="pf_DiscountedPrice4" ColumnName="pf_DiscountedPrice4" />
+                <ScalarProperty Name="pf_DiscountedPrice5" ColumnName="pf_DiscountedPrice5" />
+                <ScalarProperty Name="dd_DiscontinuationDate" ColumnName="dd_DiscontinuationDate" />
+                <ScalarProperty Name="os_OnhandStockBalance" ColumnName="os_OnhandStockBalance" />
+                <ScalarProperty Name="prop_LastUpdateFile" ColumnName="prop_LastUpdateFile" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemDetails">
+            <EntityTypeMapping TypeName="IMEModel.ItemDetail">
+              <MappingFragment StoreEntitySet="ItemDetail">
+                <ScalarProperty Name="ArticleNo" ColumnName="ArticleNo" />
+                <ScalarProperty Name="PackCode" ColumnName="PackCode" />
+                <ScalarProperty Name="UkCol1" ColumnName="UkCol1" />
+                <ScalarProperty Name="WeightUnit" ColumnName="WeightUnit" />
+                <ScalarProperty Name="StandardWeight" ColumnName="StandardWeight" />
+                <ScalarProperty Name="ObsoleteFlag" ColumnName="ObsoleteFlag" />
+                <ScalarProperty Name="LowDiscountInd" ColumnName="LowDiscountInd" />
+                <ScalarProperty Name="ShelfLife" ColumnName="ShelfLife" />
+                <ScalarProperty Name="EUR1Indicator" ColumnName="EUR1Indicator" />
+                <ScalarProperty Name="CCCNNo" ColumnName="CCCNNo" />
+                <ScalarProperty Name="SupercedeDate" ColumnName="SupercedeDate" />
+                <ScalarProperty Name="CurrentCatpage" ColumnName="CurrentCatpage" />
+                <ScalarProperty Name="UkIntroDate" ColumnName="UkIntroDate" />
+                <ScalarProperty Name="Filler" ColumnName="Filler" />
+                <ScalarProperty Name="UkDiscDate" ColumnName="UkDiscDate" />
+                <ScalarProperty Name="SubstituteBy" ColumnName="SubstituteBy" />
+                <ScalarProperty Name="BHCFlag" ColumnName="BHCFlag" />
+                <ScalarProperty Name="Filler1" ColumnName="Filler1" />
+                <ScalarProperty Name="FutureSellPrice" ColumnName="FutureSellPrice" />
+                <ScalarProperty Name="IntCat" ColumnName="IntCat" />
+                <ScalarProperty Name="NewProdChangeInd" ColumnName="NewProdChangeInd" />
+                <ScalarProperty Name="OutofStockProhibitchangeind" ColumnName="OutofStockProhibitchangeind" />
+                <ScalarProperty Name="SupercededChangeInd" ColumnName="SupercededChangeInd" />
+                <ScalarProperty Name="PackSizeChangeInd" ColumnName="PackSizeChangeInd" />
+                <ScalarProperty Name="RolledProductChangeInd" ColumnName="RolledProductChangeInd" />
+                <ScalarProperty Name="ExpiringProductChangeInd" ColumnName="ExpiringProductChangeInd" />
+                <ScalarProperty Name="DualUseArticleNo" ColumnName="DualUseArticleNo" />
+                <ScalarProperty Name="pf_ItemTypeCode" ColumnName="pf_ItemTypeCode" />
+                <ScalarProperty Name="pf_ItemTypeDesc" ColumnName="pf_ItemTypeDesc" />
+                <ScalarProperty Name="pf_SuperSectionNo" ColumnName="pf_SuperSectionNo" />
+                <ScalarProperty Name="pf_SupersectionName" ColumnName="pf_SupersectionName" />
+                <ScalarProperty Name="pf_BrandID" ColumnName="pf_BrandID" />
+                <ScalarProperty Name="pf_SectionID" ColumnName="pf_SectionID" />
+                <ScalarProperty Name="pf_SectionName" ColumnName="pf_SectionName" />
+                <ScalarProperty Name="dd_RunOn" ColumnName="dd_RunOn" />
+                <ScalarProperty Name="dd_Referral" ColumnName="dd_Referral" />
+                <ScalarProperty Name="hz_Environment" ColumnName="hz_Environment" />
+                <ScalarProperty Name="hz_Shipping" ColumnName="hz_Shipping" />
+                <ScalarProperty Name="hz_Lithium" ColumnName="hz_Lithium" />
+                <ScalarProperty Name="os_AvailableToPromiseCheck" ColumnName="os_AvailableToPromiseCheck" />
+                <ScalarProperty Name="os_BulkPack" ColumnName="os_BulkPack" />
+                <ScalarProperty Name="os_CatalogueStatus" ColumnName="os_CatalogueStatus" />
+                <ScalarProperty Name="os_NextScheduledDelivery" ColumnName="os_NextScheduledDelivery" />
+                <ScalarProperty Name="os_PackSize" ColumnName="os_PackSize" />
+                <ScalarProperty Name="os_QuantityOnOrder" ColumnName="os_QuantityOnOrder" />
+                <ScalarProperty Name="os_SmallOrderProtectionLevel" ColumnName="os_SmallOrderProtectionLevel" />
+                <ScalarProperty Name="os_SubstitutedBy" ColumnName="os_SubstitutedBy" />
+                <ScalarProperty Name="os_SubstitutedFor" ColumnName="os_SubstitutedFor" />
+                <ScalarProperty Name="du_EUECCN" ColumnName="du_EUECCN" />
+                <ScalarProperty Name="du_USECCN" ColumnName="du_USECCN" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -10761,6 +11179,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ItemAdd" FunctionName="IMEModel.Store.ItemAdd" />
           <FunctionImportMapping FunctionImportName="ItemDetailTabFiller" FunctionName="IMEModel.Store.ItemDetailTabFiller">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.ItemDetailTabFiller_Result">

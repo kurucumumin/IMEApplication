@@ -3622,7 +3622,6 @@ namespace LoginForm.QuotationModule
         /// </summary>
         private void CalculateTotalMarge()
         {
-
             if (!String.IsNullOrEmpty(dgSaleAddedItems.CurrentRow.Cells[dgQty.Index].Value.ToString()))
             {
                 decimal AllMargin = 0;
