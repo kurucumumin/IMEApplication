@@ -25,7 +25,6 @@ namespace LoginForm
         bool isModify = false;
         string ComboboxString = "Choose";
         //private List<Customer> gridCustomerList;
-
         public CustomerMain()
         {
             InitializeComponent();

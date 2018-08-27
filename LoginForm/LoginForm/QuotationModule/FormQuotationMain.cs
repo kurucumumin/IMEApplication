@@ -18,7 +18,7 @@ namespace LoginForm.QuotationModule
             InitializeComponent();
             cbSearch.SelectedIndex = 0;
             dateNow = Convert.ToDateTime(new IMEEntities().CurrentDate().First());
-            dtpFromDate.Value = Convert.ToDateTime(IME.CurrentDate().First()).AddMonths(-1);
+            dtpFromDate.Value = Convert.ToDateTime(IME.CurrentDate().First()).AddMonths(-3);
         }
 
         private void btnNewQuotation_Click(object sender, EventArgs e)
