@@ -25,7 +25,8 @@ namespace LoginForm.ItemModule
             {
                 #region LoaderPage
                 case "SuperDisk":
-                    if (txtReader.SuperDiskRead() == 1)
+                    //if (txtReader.SuperDiskRead() == 1)
+                    if (txtReader.SuperDiskTxtSave() == 1)
                     {
                         RsFileHistory h = new RsFileHistory();
                         h.FileType = txtReader.LoaderType;

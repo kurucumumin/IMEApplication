@@ -180,12 +180,98 @@ namespace LoginForm
                     }
                     a++;
                 }
-
-
-
-
-
             }
+        }
+
+        public static int SuperDiskTxtSave()
+        {
+            #region Superdisk
+            int a = 1;
+            IMEEntities IME = new IMEEntities();
+            string supplierID = null;
+            //supplierID = IME.Suppliers.Where(x => x.s_name == "RSPro").FirstOrDefault().ID;
+            //Show the dialog and get result.
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "txt files (*.txt)|*.txt";
+            DialogResult result1 = openFileDialog1.ShowDialog();
+
+            int UptCounter = 0;
+            int AddedCounter = 0;
+            if (result1 == DialogResult.OK) // Test result.
+            {
+                //try
+                //{
+                string[] lines = System.IO.File.ReadAllLines(openFileDialog1.FileName);
+                string[] columnnames = lines[0].Split('|');
+                string[] wordcontrol;
+                
+                wordcontrol = lines[1].Split('|');
+                if (!wordcontrol[0].Contains("P"))
+                {
+
+                    while (lines.Count() > a)
+                    {
+                        string[] word;
+                        word = lines[a].Split('|');
+                        //superdisk ADD
+                        Item s = new Item();
+                        s.ArticleNo = word[0];
+                        s.ArticleDesc = word[1];
+                        if (word[3] != "") s.PackQuantity = Int32.Parse(word[3]);
+                        if (word[4] != "") s.UnitContent = Int32.Parse(word[4]);
+                        s.UnitMeasure = (String.IsNullOrEmpty(word[5])) ? "EACH" : word[5];
+                        s.HazardousInd = word[8];
+                        s.CalibrationInd = word[9];
+                        s.MH1 = word[11];
+                        s.LicensedInd = word[13];
+                        s.CofO = word[15];
+                        s.DiscChangeInd = word[30];
+                        s.Manufacturer = word[35];
+                        s.MPN = word[36];
+                        s.MHCodeLevel1 = word[37];
+                        if (word[38] != "") s.Height = decimal.Parse(word[38]);
+                        if (word[39] != "") s.Width = decimal.Parse(word[39]);
+                        if (word[40] != "") s.Length = decimal.Parse(word[40]);
+                        s.DimensionUnit = "M";
+                        s.Currency = "GBP";
+                        s.SupplierID = supplierID;
+
+                        IME.ItemAdd(
+                             s.ArticleNo,
+                    s.ArticleDesc,
+                    s.PackQuantity,
+                    s.UnitContent,
+                    s.UnitMeasure,
+                    s.HazardousInd,
+                    s.CalibrationInd,
+                    s.MH1,
+                    s.LicensedInd,
+                    s.CofO,
+                    s.DiscChangeInd,
+                    s.Manufacturer,
+                    s.MPN,
+                    s.MHCodeLevel1,
+                    s.Height,
+                    s.Width,
+                    s.Length,
+                    s.DimensionUnit,
+                    s.Currency,
+                    s.SupplierID);
+                        a++;
+                    }
+                    MessageBox.Show("Upload Completed");
+                    return 1;
+                }
+                else
+                {
+                    MessageBox.Show("Please Choose Correct File");
+                    return 0;
+                }
+                //}
+                //catch (Exception ex) { MessageBox.Show(ex.Message); MessageBox.Show(a.ToString()); return 0; }
+                #endregion
+            }
+            return 0;
         }
 
         //public static void PurchaseInvoicetxtReader()

@@ -17,6 +17,7 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Supplier()
         {
+            this.Items = new HashSet<Item>();
             this.PurchaseOperations = new HashSet<PurchaseOperation>();
             this.Stocks = new HashSet<Stock>();
             this.SupplierAddresses = new HashSet<SupplierAddress>();
@@ -45,6 +46,8 @@ namespace LoginForm.DataSet
         public Nullable<decimal> Debit { get; set; }
     
         public virtual Currency Currency { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Item> Items { get; set; }
         public virtual Note Note { get; set; }
         public virtual Note Note1 { get; set; }
         public virtual PaymentMethod PaymentMethod { get; set; }
