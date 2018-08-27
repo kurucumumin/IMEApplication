@@ -410,60 +410,6 @@
           <Property Name="Shipping" Type="nvarchar" MaxLength="50" />
           <Property Name="Lithium" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="Item">
-          <Key>
-            <PropertyRef Name="StockNo" />
-          </Key>
-          <Property Name="StockNo" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="SupplierID" Type="nvarchar" MaxLength="15" Nullable="false" />
-          <Property Name="SupplierName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="ArticleDescription" Type="nvarchar" MaxLength="100" />
-          <Property Name="MPN" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="MFR" Type="nvarchar" MaxLength="50" />
-          <Property Name="Brandname" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="SupersectionName" Type="nvarchar" MaxLength="100" />
-          <Property Name="SectionName" Type="nvarchar" MaxLength="100" />
-          <Property Name="MH" Type="nvarchar" MaxLength="50" />
-          <Property Name="CoO" Type="nvarchar" MaxLength="50" />
-          <Property Name="CCCN" Type="nvarchar" MaxLength="50" />
-          <Property Name="SSM" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="UC" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="UM" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="DXB" Type="int" />
-          <Property Name="ADH" Type="int" />
-          <Property Name="MCT" Type="int" />
-          <Property Name="BHH" Type="int" />
-          <Property Name="TUR" Type="int" />
-          <Property Name="Reserved" Type="int" />
-          <Property Name="Uk_Disc_Date" Type="nvarchar" MaxLength="50" />
-          <Property Name="DiscontinuationDate" Type="nvarchar" MaxLength="20" />
-          <Property Name="Runon" Type="nvarchar" MaxLength="15" />
-          <Property Name="Referral" Type="nvarchar" MaxLength="15" />
-          <Property Name="Heigh" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="Width" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="Length" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="Standard_Weight" Type="decimal" Precision="18" Scale="5" />
-          <Property Name="Gross_Weight" Type="decimal" Precision="18" Scale="5" />
-          <Property Name="Col1Break" Type="int" />
-          <Property Name="Col2Break" Type="int" />
-          <Property Name="Col3Break" Type="int" />
-          <Property Name="Col4Break" Type="int" />
-          <Property Name="Col5Break" Type="int" />
-          <Property Name="DiscountedPrice1" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="DiscountedPrice2" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="DiscountedPrice3" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="DiscountedPrice4" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="DiscountedPrice5" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="notes" Type="nvarchar" MaxLength="100" />
-          <Property Name="HZ" Type="bit" />
-          <Property Name="HE" Type="bit" />
-          <Property Name="HS" Type="bit" />
-          <Property Name="Li" Type="bit" />
-          <Property Name="CL" Type="bit" />
-          <Property Name="LC" Type="bit" />
-          <Property Name="DC" Type="bit" />
-          <Property Name="EC" Type="bit" />
-        </EntityType>
         <EntityType Name="ItemHistory">
           <Key>
             <PropertyRef Name="ID" />
@@ -1235,6 +1181,60 @@
           </Key>
           <Property Name="formId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="formName" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="tbl_Item">
+          <Key>
+            <PropertyRef Name="StockNo" />
+          </Key>
+          <Property Name="StockNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SupplierID" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="SupplierName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ArticleDescription" Type="nvarchar" MaxLength="100" />
+          <Property Name="MPN" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MFR" Type="nvarchar" MaxLength="50" />
+          <Property Name="Brandname" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="SupersectionName" Type="nvarchar" MaxLength="100" />
+          <Property Name="SectionName" Type="nvarchar" MaxLength="100" />
+          <Property Name="MH" Type="nvarchar" MaxLength="50" />
+          <Property Name="CoO" Type="nvarchar" MaxLength="50" />
+          <Property Name="CCCN" Type="nvarchar" MaxLength="50" />
+          <Property Name="SSM" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UC" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UM" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DXB" Type="int" />
+          <Property Name="ADH" Type="int" />
+          <Property Name="MCT" Type="int" />
+          <Property Name="BHH" Type="int" />
+          <Property Name="TUR" Type="int" />
+          <Property Name="Reserved" Type="int" />
+          <Property Name="Uk_Disc_Date" Type="nvarchar" MaxLength="50" />
+          <Property Name="DiscontinuationDate" Type="nvarchar" MaxLength="20" />
+          <Property Name="Runon" Type="nvarchar" MaxLength="15" />
+          <Property Name="Referral" Type="nvarchar" MaxLength="15" />
+          <Property Name="Heigh" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="Width" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="Length" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="Standard_Weight" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="Gross_Weight" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="Col1Break" Type="int" />
+          <Property Name="Col2Break" Type="int" />
+          <Property Name="Col3Break" Type="int" />
+          <Property Name="Col4Break" Type="int" />
+          <Property Name="Col5Break" Type="int" />
+          <Property Name="DiscountedPrice1" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="DiscountedPrice2" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="DiscountedPrice3" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="DiscountedPrice4" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="DiscountedPrice5" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="notes" Type="nvarchar" MaxLength="100" />
+          <Property Name="HZ" Type="bit" />
+          <Property Name="HE" Type="bit" />
+          <Property Name="HS" Type="bit" />
+          <Property Name="Li" Type="bit" />
+          <Property Name="CL" Type="bit" />
+          <Property Name="LC" Type="bit" />
+          <Property Name="DC" Type="bit" />
+          <Property Name="EC" Type="bit" />
         </EntityType>
         <EntityType Name="Town">
           <Key>
@@ -3472,7 +3472,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <EntitySet Name="FieldCopy" EntityType="Self.FieldCopy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FinancialYear" EntityType="Self.FinancialYear" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Hazardous" EntityType="Self.Hazardous" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemHistory" EntityType="Self.ItemHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemNote" EntityType="Self.ItemNote" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Languages" EntityType="Self.Languages" Schema="dbo" store:Type="Tables" />
@@ -3519,6 +3518,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Form" EntityType="Self.tbl_Form" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_FormCopy" EntityType="Self.tbl_FormCopy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Item" EntityType="Self.tbl_Item" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Town" EntityType="Self.Town" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserAuthorization" EntityType="Self.UserAuthorization" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Worker" EntityType="Self.Worker" Schema="dbo" store:Type="Tables" />
@@ -4592,60 +4592,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="Shipping" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Lithium" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="Item">
-          <Key>
-            <PropertyRef Name="StockNo" />
-          </Key>
-          <Property Name="StockNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="SupplierID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="SupplierName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ArticleDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="MPN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MFR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Brandname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="SupersectionName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="SectionName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="MH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CoO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CCCN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SSM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="UC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="UM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DXB" Type="Int32" />
-          <Property Name="ADH" Type="Int32" />
-          <Property Name="MCT" Type="Int32" />
-          <Property Name="BHH" Type="Int32" />
-          <Property Name="TUR" Type="Int32" />
-          <Property Name="Reserved" Type="Int32" />
-          <Property Name="Uk_Disc_Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DiscontinuationDate" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Runon" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="Referral" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="Heigh" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="Width" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="Length" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="Standard_Weight" Type="Decimal" Precision="18" Scale="5" />
-          <Property Name="Gross_Weight" Type="Decimal" Precision="18" Scale="5" />
-          <Property Name="Col1Break" Type="Int32" />
-          <Property Name="Col2Break" Type="Int32" />
-          <Property Name="Col3Break" Type="Int32" />
-          <Property Name="Col4Break" Type="Int32" />
-          <Property Name="Col5Break" Type="Int32" />
-          <Property Name="DiscountedPrice1" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="DiscountedPrice2" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="DiscountedPrice3" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="DiscountedPrice4" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="DiscountedPrice5" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="notes" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="HZ" Type="Boolean" />
-          <Property Name="HE" Type="Boolean" />
-          <Property Name="HS" Type="Boolean" />
-          <Property Name="Li" Type="Boolean" />
-          <Property Name="CL" Type="Boolean" />
-          <Property Name="LC" Type="Boolean" />
-          <Property Name="DC" Type="Boolean" />
-          <Property Name="EC" Type="Boolean" />
-        </EntityType>
         <EntityType Name="ItemHistory">
           <Key>
             <PropertyRef Name="ID" />
@@ -5539,6 +5485,60 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           </Key>
           <Property Name="formId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="formName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_Item">
+          <Key>
+            <PropertyRef Name="StockNo" />
+          </Key>
+          <Property Name="StockNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SupplierID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SupplierName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ArticleDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MPN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MFR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Brandname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SupersectionName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SectionName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CoO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CCCN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SSM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DXB" Type="Int32" />
+          <Property Name="ADH" Type="Int32" />
+          <Property Name="MCT" Type="Int32" />
+          <Property Name="BHH" Type="Int32" />
+          <Property Name="TUR" Type="Int32" />
+          <Property Name="Reserved" Type="Int32" />
+          <Property Name="Uk_Disc_Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DiscontinuationDate" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Runon" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Referral" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Heigh" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Width" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Length" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Standard_Weight" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="Gross_Weight" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="Col1Break" Type="Int32" />
+          <Property Name="Col2Break" Type="Int32" />
+          <Property Name="Col3Break" Type="Int32" />
+          <Property Name="Col4Break" Type="Int32" />
+          <Property Name="Col5Break" Type="Int32" />
+          <Property Name="DiscountedPrice1" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="DiscountedPrice2" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="DiscountedPrice3" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="DiscountedPrice4" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="DiscountedPrice5" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="notes" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="HZ" Type="Boolean" />
+          <Property Name="HE" Type="Boolean" />
+          <Property Name="HS" Type="Boolean" />
+          <Property Name="Li" Type="Boolean" />
+          <Property Name="CL" Type="Boolean" />
+          <Property Name="LC" Type="Boolean" />
+          <Property Name="DC" Type="Boolean" />
+          <Property Name="EC" Type="Boolean" />
         </EntityType>
         <EntityType Name="Town">
           <Key>
@@ -7128,7 +7128,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <EntitySet Name="FieldCopies" EntityType="Self.FieldCopy" />
           <EntitySet Name="FinancialYears" EntityType="Self.FinancialYear" />
           <EntitySet Name="Hazardous" EntityType="Self.Hazardou" />
-          <EntitySet Name="Items" EntityType="Self.Item" />
           <EntitySet Name="ItemHistories" EntityType="Self.ItemHistory" />
           <EntitySet Name="ItemNotes" EntityType="Self.ItemNote" />
           <EntitySet Name="Languages" EntityType="Self.Language" />
@@ -7175,6 +7174,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="tbl_Form" EntityType="Self.tbl_Form" />
           <EntitySet Name="tbl_FormCopy" EntityType="Self.tbl_FormCopy" />
+          <EntitySet Name="tbl_Item" EntityType="Self.tbl_Item" />
           <EntitySet Name="Towns" EntityType="Self.Town" />
           <EntitySet Name="Workers" EntityType="Self.Worker" />
           <EntitySet Name="CariHarekets" EntityType="Self.CariHareket" />
@@ -9286,61 +9286,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Items">
-            <EntityTypeMapping TypeName="IMEModel.Item">
-              <MappingFragment StoreEntitySet="Item">
-                <ScalarProperty Name="StockNo" ColumnName="StockNo" />
-                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
-                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
-                <ScalarProperty Name="ArticleDescription" ColumnName="ArticleDescription" />
-                <ScalarProperty Name="MPN" ColumnName="MPN" />
-                <ScalarProperty Name="MFR" ColumnName="MFR" />
-                <ScalarProperty Name="Brandname" ColumnName="Brandname" />
-                <ScalarProperty Name="SupersectionName" ColumnName="SupersectionName" />
-                <ScalarProperty Name="SectionName" ColumnName="SectionName" />
-                <ScalarProperty Name="MH" ColumnName="MH" />
-                <ScalarProperty Name="CoO" ColumnName="CoO" />
-                <ScalarProperty Name="CCCN" ColumnName="CCCN" />
-                <ScalarProperty Name="SSM" ColumnName="SSM" />
-                <ScalarProperty Name="UC" ColumnName="UC" />
-                <ScalarProperty Name="UM" ColumnName="UM" />
-                <ScalarProperty Name="DXB" ColumnName="DXB" />
-                <ScalarProperty Name="ADH" ColumnName="ADH" />
-                <ScalarProperty Name="MCT" ColumnName="MCT" />
-                <ScalarProperty Name="BHH" ColumnName="BHH" />
-                <ScalarProperty Name="TUR" ColumnName="TUR" />
-                <ScalarProperty Name="Reserved" ColumnName="Reserved" />
-                <ScalarProperty Name="Uk_Disc_Date" ColumnName="Uk_Disc_Date" />
-                <ScalarProperty Name="DiscontinuationDate" ColumnName="DiscontinuationDate" />
-                <ScalarProperty Name="Runon" ColumnName="Runon" />
-                <ScalarProperty Name="Referral" ColumnName="Referral" />
-                <ScalarProperty Name="Heigh" ColumnName="Heigh" />
-                <ScalarProperty Name="Width" ColumnName="Width" />
-                <ScalarProperty Name="Length" ColumnName="Length" />
-                <ScalarProperty Name="Standard_Weight" ColumnName="Standard_Weight" />
-                <ScalarProperty Name="Gross_Weight" ColumnName="Gross_Weight" />
-                <ScalarProperty Name="Col1Break" ColumnName="Col1Break" />
-                <ScalarProperty Name="Col2Break" ColumnName="Col2Break" />
-                <ScalarProperty Name="Col3Break" ColumnName="Col3Break" />
-                <ScalarProperty Name="Col4Break" ColumnName="Col4Break" />
-                <ScalarProperty Name="Col5Break" ColumnName="Col5Break" />
-                <ScalarProperty Name="DiscountedPrice1" ColumnName="DiscountedPrice1" />
-                <ScalarProperty Name="DiscountedPrice2" ColumnName="DiscountedPrice2" />
-                <ScalarProperty Name="DiscountedPrice3" ColumnName="DiscountedPrice3" />
-                <ScalarProperty Name="DiscountedPrice4" ColumnName="DiscountedPrice4" />
-                <ScalarProperty Name="DiscountedPrice5" ColumnName="DiscountedPrice5" />
-                <ScalarProperty Name="notes" ColumnName="notes" />
-                <ScalarProperty Name="HZ" ColumnName="HZ" />
-                <ScalarProperty Name="HE" ColumnName="HE" />
-                <ScalarProperty Name="HS" ColumnName="HS" />
-                <ScalarProperty Name="Li" ColumnName="Li" />
-                <ScalarProperty Name="CL" ColumnName="CL" />
-                <ScalarProperty Name="LC" ColumnName="LC" />
-                <ScalarProperty Name="DC" ColumnName="DC" />
-                <ScalarProperty Name="EC" ColumnName="EC" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ItemHistories">
             <EntityTypeMapping TypeName="IMEModel.ItemHistory">
               <MappingFragment StoreEntitySet="ItemHistory">
@@ -10156,6 +10101,61 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
               <MappingFragment StoreEntitySet="tbl_FormCopy">
                 <ScalarProperty Name="formId" ColumnName="formId" />
                 <ScalarProperty Name="formName" ColumnName="formName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Item">
+            <EntityTypeMapping TypeName="IMEModel.tbl_Item">
+              <MappingFragment StoreEntitySet="tbl_Item">
+                <ScalarProperty Name="StockNo" ColumnName="StockNo" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="ArticleDescription" ColumnName="ArticleDescription" />
+                <ScalarProperty Name="MPN" ColumnName="MPN" />
+                <ScalarProperty Name="MFR" ColumnName="MFR" />
+                <ScalarProperty Name="Brandname" ColumnName="Brandname" />
+                <ScalarProperty Name="SupersectionName" ColumnName="SupersectionName" />
+                <ScalarProperty Name="SectionName" ColumnName="SectionName" />
+                <ScalarProperty Name="MH" ColumnName="MH" />
+                <ScalarProperty Name="CoO" ColumnName="CoO" />
+                <ScalarProperty Name="CCCN" ColumnName="CCCN" />
+                <ScalarProperty Name="SSM" ColumnName="SSM" />
+                <ScalarProperty Name="UC" ColumnName="UC" />
+                <ScalarProperty Name="UM" ColumnName="UM" />
+                <ScalarProperty Name="DXB" ColumnName="DXB" />
+                <ScalarProperty Name="ADH" ColumnName="ADH" />
+                <ScalarProperty Name="MCT" ColumnName="MCT" />
+                <ScalarProperty Name="BHH" ColumnName="BHH" />
+                <ScalarProperty Name="TUR" ColumnName="TUR" />
+                <ScalarProperty Name="Reserved" ColumnName="Reserved" />
+                <ScalarProperty Name="Uk_Disc_Date" ColumnName="Uk_Disc_Date" />
+                <ScalarProperty Name="DiscontinuationDate" ColumnName="DiscontinuationDate" />
+                <ScalarProperty Name="Runon" ColumnName="Runon" />
+                <ScalarProperty Name="Referral" ColumnName="Referral" />
+                <ScalarProperty Name="Heigh" ColumnName="Heigh" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Length" ColumnName="Length" />
+                <ScalarProperty Name="Standard_Weight" ColumnName="Standard_Weight" />
+                <ScalarProperty Name="Gross_Weight" ColumnName="Gross_Weight" />
+                <ScalarProperty Name="Col1Break" ColumnName="Col1Break" />
+                <ScalarProperty Name="Col2Break" ColumnName="Col2Break" />
+                <ScalarProperty Name="Col3Break" ColumnName="Col3Break" />
+                <ScalarProperty Name="Col4Break" ColumnName="Col4Break" />
+                <ScalarProperty Name="Col5Break" ColumnName="Col5Break" />
+                <ScalarProperty Name="DiscountedPrice1" ColumnName="DiscountedPrice1" />
+                <ScalarProperty Name="DiscountedPrice2" ColumnName="DiscountedPrice2" />
+                <ScalarProperty Name="DiscountedPrice3" ColumnName="DiscountedPrice3" />
+                <ScalarProperty Name="DiscountedPrice4" ColumnName="DiscountedPrice4" />
+                <ScalarProperty Name="DiscountedPrice5" ColumnName="DiscountedPrice5" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="HZ" ColumnName="HZ" />
+                <ScalarProperty Name="HE" ColumnName="HE" />
+                <ScalarProperty Name="HS" ColumnName="HS" />
+                <ScalarProperty Name="Li" ColumnName="Li" />
+                <ScalarProperty Name="CL" ColumnName="CL" />
+                <ScalarProperty Name="LC" ColumnName="LC" />
+                <ScalarProperty Name="DC" ColumnName="DC" />
+                <ScalarProperty Name="EC" ColumnName="EC" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

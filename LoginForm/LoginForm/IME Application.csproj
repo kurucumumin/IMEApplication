@@ -319,9 +319,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>IME.edmx</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\Item.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\ItemDetailTabFiller_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -500,6 +497,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\tbl_FormCopy.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\tbl_Item.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Town.cs">

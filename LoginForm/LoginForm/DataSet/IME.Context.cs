@@ -58,7 +58,6 @@ namespace LoginForm.DataSet
         public virtual DbSet<FieldCopy> FieldCopies { get; set; }
         public virtual DbSet<FinancialYear> FinancialYears { get; set; }
         public virtual DbSet<Hazardou> Hazardous { get; set; }
-        public virtual DbSet<Item> Items { get; set; }
         public virtual DbSet<ItemHistory> ItemHistories { get; set; }
         public virtual DbSet<ItemNote> ItemNotes { get; set; }
         public virtual DbSet<Language> Languages { get; set; }
@@ -105,6 +104,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<tbl_Form> tbl_Form { get; set; }
         public virtual DbSet<tbl_FormCopy> tbl_FormCopy { get; set; }
+        public virtual DbSet<tbl_Item> tbl_Item { get; set; }
         public virtual DbSet<Town> Towns { get; set; }
         public virtual DbSet<Worker> Workers { get; set; }
         public virtual DbSet<CariHareket> CariHarekets { get; set; }

@@ -12,7 +12,7 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class Item
+    public partial class tbl_Item
     {
         public string StockNo { get; set; }
         public string SupplierID { get; set; }

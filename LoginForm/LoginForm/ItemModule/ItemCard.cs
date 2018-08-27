@@ -83,7 +83,7 @@ namespace LoginForm.ItemModule
                                  customerworker.Note.Note_name
                              }
                             ).ToList();
-                var list4 = (from a in IME.Items.Where(a=> a.StockNo.Contains(txtSelected))
+                var list4 = (from a in IME.tbl_Item.Where(a=> a.StockNo.Contains(txtSelected))
                              select new
                              {
                                  ArticleNo = a.StockNo,
@@ -296,7 +296,7 @@ namespace LoginForm.ItemModule
             var dd = IME.DailyDiscontinueds.Where(a => a.ArticleNo == ArticleNoSearch).FirstOrDefault();
             var h = IME.Hazardous.Where(a => a.ArticleNo == ArticleNoSearch).FirstOrDefault();
             var du = IME.DualUses.Where(a => a.ArticleNo == ArticleNoSearch).FirstOrDefault();
-            var i = IME.Items.Where(a => a.StockNo == ArticleNoSearch).FirstOrDefault();
+            var i = IME.tbl_Item.Where(a => a.StockNo == ArticleNoSearch).FirstOrDefault();
             if (sd != null)
             {
                 txtStockNo.Text = sd.Article_No;
@@ -736,7 +736,7 @@ namespace LoginForm.ItemModule
             if (btnUpdateNote.Text == "Save")
             {
                     #region Item tablosu
-                    var i = IME.Items.Where(a => a.StockNo == txtStockNo.Text).FirstOrDefault();
+                    var i = IME.tbl_Item.Where(a => a.StockNo == txtStockNo.Text).FirstOrDefault();
 
                     if (i != null)
                     {
@@ -983,7 +983,7 @@ namespace LoginForm.ItemModule
 
         private void Save()
         {
-            Item i = new Item();
+            tbl_Item i = new tbl_Item();
 
             i.StockNo = txtStockNo.Text;
             i.SupplierID = txtSupplierID.Text;
@@ -1038,7 +1038,7 @@ namespace LoginForm.ItemModule
             if (txtCost5.Text != null && txtCost5.Text != "") { i.DiscountedPrice5 = Convert.ToInt32(txtCost5.Text); }
             i.notes = txtNote.Text;
 
-            IME.Items.Add(i);
+            IME.tbl_Item.Add(i);
             IME.SaveChanges();
             MessageBox.Show("Item added!", "Success");
             ClearAll(this);
@@ -1256,7 +1256,7 @@ namespace LoginForm.ItemModule
             IMEEntities IME = new IMEEntities();
             string no = "";
             int ID = 0;
-            try { no = IME.Items.FirstOrDefault().StockNo;}   catch { }
+            try { no = IME.tbl_Item.FirstOrDefault().StockNo;}   catch { }
             if (no != null && no != "")
             {
                 ID = Int32.Parse(no) + 1;

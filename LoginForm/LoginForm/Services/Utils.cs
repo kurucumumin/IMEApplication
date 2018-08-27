@@ -30,6 +30,7 @@ namespace LoginForm.Services
             }
             return hash.ToString();
         }
+
         public static bool HasOnlyNumbers(string numberInputText)
         {
             bool result = true;
@@ -42,6 +43,7 @@ namespace LoginForm.Services
             }
             return result;
         }
+
         public static bool HasNumbersIn(string numberInputText)
         {
             bool result = false;
