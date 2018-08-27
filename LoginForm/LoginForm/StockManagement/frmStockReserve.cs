@@ -14,7 +14,7 @@ using LoginForm.QuotationModule;
 
 namespace LoginForm.StockManagement
 {
-    public partial class frmStockReserve : Form
+    public partial class frmStockReserve : MyForm
     {
         //Cem GEnar
         #region Parameters

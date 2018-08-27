@@ -133,9 +133,7 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Customer\frmCityAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Customer\frmCityAdd.cs" />
     <Compile Include="Customer\frmCityAdd.Designer.cs">
       <DependentUpon>frmCityAdd.cs</DependentUpon>
     </Compile>
@@ -527,46 +525,32 @@
     <Compile Include="Helpers\ExtensionMethods.cs" />
     <Compile Include="Helpers\RoundedRectangleF.cs" />
     <Compile Include="Helpers\Transparenter.cs" />
-    <Compile Include="IMEAccount\frmReceiptOperation.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="IMEAccount\frmReceiptOperation.cs" />
     <Compile Include="IMEAccount\frmReceiptOperation.Designer.cs">
       <DependentUpon>frmReceiptOperation.cs</DependentUpon>
     </Compile>
-    <Compile Include="ItemModule\ItemCard.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="ItemModule\ItemCard.cs" />
     <Compile Include="ItemModule\ItemCard.designer.cs">
       <DependentUpon>ItemCard.cs</DependentUpon>
     </Compile>
-    <Compile Include="ItemModule\LoaderPage.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="ItemModule\LoaderPage.cs" />
     <Compile Include="ItemModule\LoaderPage.designer.cs">
       <DependentUpon>LoaderPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main\frmMainMetro.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Main\frmMainMetro.cs" />
     <Compile Include="Main\frmMainMetro.Designer.cs">
       <DependentUpon>frmMainMetro.cs</DependentUpon>
     </Compile>
-    <Compile Include="Management\FormManagmentControl.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Management\FormManagmentControl.cs" />
     <Compile Include="Management\FormManagmentControl.Designer.cs">
       <DependentUpon>FormManagmentControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\CurrencySP.cs" />
-    <Compile Include="Model\frmCurrency.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Model\frmCurrency.cs" />
     <Compile Include="Model\frmCurrency.designer.cs">
       <DependentUpon>frmCurrency.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\frmExchangeRate.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Model\frmExchangeRate.cs" />
     <Compile Include="Model\frmExchangeRate.designer.cs">
       <DependentUpon>frmExchangeRate.cs</DependentUpon>
     </Compile>
@@ -602,45 +586,34 @@
     </Compile>
     <Compile Include="MyClasses\FizikselDosya_.cs" />
     <Compile Include="MyClasses\KomutArgumanlari_.cs" />
-    <Compile Include="OnOrder\frmAcikSiparis.cs">
+    <Compile Include="MyClasses\MyForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="OnOrder\frmAcikSiparis.cs" />
     <Compile Include="OnOrder\frmAcikSiparis.Designer.cs">
       <DependentUpon>frmAcikSiparis.cs</DependentUpon>
     </Compile>
-    <Compile Include="BackOrder\BackOrderProductSearch.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="BackOrder\BackOrderProductSearch.cs" />
     <Compile Include="BackOrder\BackOrderProductSearch.Designer.cs">
       <DependentUpon>BackOrderProductSearch.cs</DependentUpon>
     </Compile>
-    <Compile Include="BackOrder\frmbackOrderAnalize.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="BackOrder\frmbackOrderAnalize.cs" />
     <Compile Include="BackOrder\frmbackOrderAnalize.Designer.cs">
       <DependentUpon>frmbackOrderAnalize.cs</DependentUpon>
     </Compile>
-    <Compile Include="BackOrder\frmBackOrderDetailView.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="BackOrder\frmBackOrderDetailView.cs" />
     <Compile Include="BackOrder\frmBackOrderDetailView.Designer.cs">
       <DependentUpon>frmBackOrderDetailView.cs</DependentUpon>
     </Compile>
-    <Compile Include="BackOrder\frmBackOrderLoader.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="BackOrder\frmBackOrderLoader.cs" />
     <Compile Include="BackOrder\frmBackOrderLoader.Designer.cs">
       <DependentUpon>frmBackOrderLoader.cs</DependentUpon>
     </Compile>
-    <Compile Include="BackOrder\frmBackOrderMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="BackOrder\frmBackOrderMain.cs" />
     <Compile Include="BackOrder\frmBackOrderMain.Designer.cs">
       <DependentUpon>frmBackOrderMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Billing\frmFaturalanacaklar.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Billing\frmFaturalanacaklar.cs" />
     <Compile Include="Billing\frmFaturalanacaklar.Designer.cs">
       <DependentUpon>frmFaturalanacaklar.cs</DependentUpon>
     </Compile>
@@ -671,100 +644,68 @@
     <Compile Include="CustomControls\SubDevelopmentCustomControl\SalesOrderControl.Designer.cs">
       <DependentUpon>SalesOrderControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Customer\CustomerDepartmentAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Customer\CustomerDepartmentAdd.cs" />
     <Compile Include="Customer\CustomerDepartmentAdd.designer.cs">
       <DependentUpon>CustomerDepartmentAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="Customer\CustomerMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Customer\CustomerMain.cs" />
     <Compile Include="Customer\CustomerMain.designer.cs">
       <DependentUpon>CustomerMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Customer\CustomerMainCategory.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Customer\CustomerMainCategory.cs" />
     <Compile Include="Customer\CustomerMainCategory.designer.cs">
       <DependentUpon>CustomerMainCategory.cs</DependentUpon>
     </Compile>
-    <Compile Include="Customer\CustomerPositionAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Customer\CustomerPositionAdd.cs" />
     <Compile Include="Customer\CustomerPositionAdd.designer.cs">
       <DependentUpon>CustomerPositionAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="Customer\CustomerSubCategory.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Customer\CustomerSubCategory.cs" />
     <Compile Include="Customer\CustomerSubCategory.designer.cs">
       <DependentUpon>CustomerSubCategory.cs</DependentUpon>
     </Compile>
-    <Compile Include="Customer\FormTownAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Customer\FormTownAdd.cs" />
     <Compile Include="Customer\FormTownAdd.Designer.cs">
       <DependentUpon>FormTownAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="DataSet\classExchangeRate.cs" />
-    <Compile Include="IMEAccount\frmAllAccounts.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="IMEAccount\frmAllAccounts.cs" />
     <Compile Include="IMEAccount\frmAllAccounts.Designer.cs">
       <DependentUpon>frmAllAccounts.cs</DependentUpon>
     </Compile>
-    <Compile Include="IMEAccount\frmBillFromSupplier.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="IMEAccount\frmBillFromSupplier.cs" />
     <Compile Include="IMEAccount\frmBillFromSupplier.Designer.cs">
       <DependentUpon>frmBillFromSupplier.cs</DependentUpon>
     </Compile>
-    <Compile Include="IMEAccount\frmBillToCustomer.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="IMEAccount\frmBillToCustomer.cs" />
     <Compile Include="IMEAccount\frmBillToCustomer.Designer.cs">
       <DependentUpon>frmBillToCustomer.cs</DependentUpon>
     </Compile>
-    <Compile Include="IMEAccount\frmAccount.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="IMEAccount\frmAccount.cs" />
     <Compile Include="IMEAccount\frmAccount.Designer.cs">
       <DependentUpon>frmAccount.cs</DependentUpon>
     </Compile>
-    <Compile Include="IMEAccount\frmAccountMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="IMEAccount\frmAccountMain.cs" />
     <Compile Include="IMEAccount\frmAccountMain.Designer.cs">
       <DependentUpon>frmAccountMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="IMEAccount\frmCustomersDebits.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="IMEAccount\frmCustomersDebits.cs" />
     <Compile Include="IMEAccount\frmCustomersDebits.Designer.cs">
       <DependentUpon>frmCustomersDebits.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main\FormMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Main\FormMain.cs" />
     <Compile Include="Main\FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Management\FormCategorySubCategory.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Management\FormCategorySubCategory.cs" />
     <Compile Include="Management\FormCategorySubCategory.Designer.cs">
       <DependentUpon>FormCategorySubCategory.cs</DependentUpon>
     </Compile>
-    <Compile Include="Management\FormExchangeRate.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Management\FormExchangeRate.cs" />
     <Compile Include="Management\FormExchangeRate.Designer.cs">
       <DependentUpon>FormExchangeRate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Management\FormTermsOfPayment.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Management\FormTermsOfPayment.cs" />
     <Compile Include="Management\FormTermsOfPayment.Designer.cs">
       <DependentUpon>FormTermsOfPayment.cs</DependentUpon>
     </Compile>
@@ -800,153 +741,103 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="PurchaseOrder\ExcelPurchaseOrder.cs" />
-    <Compile Include="PurchaseOrder\FormBillTo.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="PurchaseOrder\FormBillTo.cs" />
     <Compile Include="PurchaseOrder\FormBillTo.Designer.cs">
       <DependentUpon>FormBillTo.cs</DependentUpon>
     </Compile>
-    <Compile Include="PurchaseOrder\frmStock.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="PurchaseOrder\frmStock.cs" />
     <Compile Include="PurchaseOrder\frmStock.Designer.cs">
       <DependentUpon>frmStock.cs</DependentUpon>
     </Compile>
-    <Compile Include="PurchaseOrder\MailForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="PurchaseOrder\MailForm.cs" />
     <Compile Include="PurchaseOrder\MailForm.Designer.cs">
       <DependentUpon>MailForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PurchaseOrder\NewPurchaseOrder.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="PurchaseOrder\NewPurchaseOrder.cs" />
     <Compile Include="PurchaseOrder\NewPurchaseOrder.Designer.cs">
       <DependentUpon>NewPurchaseOrder.cs</DependentUpon>
     </Compile>
-    <Compile Include="PurchaseOrder\PurchaseExportFiles.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="PurchaseOrder\PurchaseExportFiles.cs" />
     <Compile Include="PurchaseOrder\PurchaseExportFiles.Designer.cs">
       <DependentUpon>PurchaseExportFiles.cs</DependentUpon>
     </Compile>
-    <Compile Include="PurchaseOrder\PurchaseOrderMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="PurchaseOrder\PurchaseOrderMain.cs" />
     <Compile Include="PurchaseOrder\PurchaseOrderMain.Designer.cs">
       <DependentUpon>PurchaseOrderMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="PurchaseOrder\StockDevelopment.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="PurchaseOrder\StockDevelopment.cs" />
     <Compile Include="PurchaseOrder\StockDevelopment.designer.cs">
       <DependentUpon>StockDevelopment.cs</DependentUpon>
     </Compile>
-    <Compile Include="QuotationModule\ExperimentQuotationAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="QuotationModule\ExperimentQuotationAdd.cs" />
     <Compile Include="QuotationModule\ExperimentQuotationAdd.Designer.cs">
       <DependentUpon>ExperimentQuotationAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="QuotationModule\FormQuaotationCustomerSearch.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="QuotationModule\FormQuaotationCustomerSearch.cs" />
     <Compile Include="QuotationModule\FormQuaotationCustomerSearch.Designer.cs">
       <DependentUpon>FormQuaotationCustomerSearch.cs</DependentUpon>
     </Compile>
-    <Compile Include="QuotationModule\FormQuotationAdd -Turkey.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="QuotationModule\FormQuotationAdd -Turkey.cs" />
     <Compile Include="QuotationModule\FormQuotationAdd -Turkey.designer.cs">
       <DependentUpon>FormQuotationAdd -Turkey.cs</DependentUpon>
     </Compile>
-    <Compile Include="QuotationModule\FormQuotationAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="QuotationModule\FormQuotationAdd.cs" />
     <Compile Include="QuotationModule\FormQuotationAdd.designer.cs">
       <DependentUpon>FormQuotationAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="QuotationModule\FormQuotationItemSearch.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="QuotationModule\FormQuotationItemSearch.cs" />
     <Compile Include="QuotationModule\FormQuotationItemSearch.Designer.cs">
       <DependentUpon>FormQuotationItemSearch.cs</DependentUpon>
     </Compile>
-    <Compile Include="QuotationModule\FormQuotationMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="QuotationModule\FormQuotationMain.cs" />
     <Compile Include="QuotationModule\FormQuotationMain.Designer.cs">
       <DependentUpon>FormQuotationMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="QuotationModule\FormQuotationMPN.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="QuotationModule\FormQuotationMPN.cs" />
     <Compile Include="QuotationModule\FormQuotationMPN.Designer.cs">
       <DependentUpon>FormQuotationMPN.cs</DependentUpon>
     </Compile>
-    <Compile Include="QuotationModule\frmEx-Quotation.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="QuotationModule\frmEx-Quotation.cs" />
     <Compile Include="QuotationModule\frmEx-Quotation.Designer.cs">
       <DependentUpon>frmEx-Quotation.cs</DependentUpon>
     </Compile>
-    <Compile Include="QuotationModule\frmQuotationGridCustomize.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="QuotationModule\frmQuotationGridCustomize.cs" />
     <Compile Include="QuotationModule\frmQuotationGridCustomize.Designer.cs">
       <DependentUpon>frmQuotationGridCustomize.cs</DependentUpon>
     </Compile>
-    <Compile Include="QuotationModule\frmQuotationExport.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="QuotationModule\frmQuotationExport.cs" />
     <Compile Include="QuotationModule\frmQuotationExport.Designer.cs">
       <DependentUpon>frmQuotationExport.cs</DependentUpon>
     </Compile>
-    <Compile Include="QuotationModule\frmXmlCustomerAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="QuotationModule\frmXmlCustomerAdd.cs" />
     <Compile Include="QuotationModule\frmXmlCustomerAdd.Designer.cs">
       <DependentUpon>frmXmlCustomerAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="QuotationModule\ViewProductHistory.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="QuotationModule\ViewProductHistory.cs" />
     <Compile Include="QuotationModule\ViewProductHistory.Designer.cs">
       <DependentUpon>ViewProductHistory.cs</DependentUpon>
     </Compile>
-    <Compile Include="SaleOrder\DevFormSaleOrderAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="SaleOrder\DevFormSaleOrderAdd.cs" />
     <Compile Include="SaleOrder\DevFormSaleOrderAdd.designer.cs">
       <DependentUpon>DevFormSaleOrderAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="SaleOrder\FormSaleOrderAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="SaleOrder\FormSaleOrderAdd.cs" />
     <Compile Include="SaleOrder\FormSaleOrderAdd.designer.cs">
       <DependentUpon>FormSaleOrderAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="SaleOrder\FormSaleOrderCreate.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="SaleOrder\FormSaleOrderCreate.cs" />
     <Compile Include="SaleOrder\FormSaleOrderCreate.Designer.cs">
       <DependentUpon>FormSaleOrderCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="SaleOrder\FormSaleOrderMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="SaleOrder\FormSaleOrderMain.cs" />
     <Compile Include="SaleOrder\FormSaleOrderMain.Designer.cs">
       <DependentUpon>FormSaleOrderMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="SaleOrder\FormSaleItemSearch.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="SaleOrder\FormSaleItemSearch.cs" />
     <Compile Include="SaleOrder\FormSaleItemSearch.Designer.cs">
       <DependentUpon>FormSaleItemSearch.cs</DependentUpon>
     </Compile>
-    <Compile Include="SaleOrder\FormSaleGridCustomize.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="SaleOrder\FormSaleGridCustomize.cs" />
     <Compile Include="SaleOrder\FormSaleGridCustomize.Designer.cs">
       <DependentUpon>FormSaleGridCustomize.cs</DependentUpon>
     </Compile>
@@ -981,51 +872,35 @@
     <Compile Include="Services\txtCreate.cs" />
     <Compile Include="Services\XmlToObject.cs" />
     <Compile Include="Settings.cs" />
-    <Compile Include="StockConfirm\frmStockConfirm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="StockConfirm\frmStockConfirm.cs" />
     <Compile Include="StockConfirm\frmStockConfirm.Designer.cs">
       <DependentUpon>frmStockConfirm.cs</DependentUpon>
     </Compile>
-    <Compile Include="StockManagement\frmStock.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="StockManagement\frmStock.cs" />
     <Compile Include="StockManagement\frmStock.Designer.cs">
       <DependentUpon>frmStock.cs</DependentUpon>
     </Compile>
-    <Compile Include="StockManagement\frmStockReserve.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="StockManagement\frmStockReserve.cs" />
     <Compile Include="StockManagement\frmStockReserve.Designer.cs">
       <DependentUpon>frmStockReserve.cs</DependentUpon>
     </Compile>
-    <Compile Include="Supplier\frmSupplierMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Supplier\frmSupplierMain.cs" />
     <Compile Include="Supplier\frmSupplierMain.designer.cs">
       <DependentUpon>frmSupplierMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Supplier\frmSupplierCategoryAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Supplier\frmSupplierCategoryAdd.cs" />
     <Compile Include="Supplier\frmSupplierCategoryAdd.designer.cs">
       <DependentUpon>frmSupplierCategoryAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="Supplier\frmSupplierSubCategoryAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Supplier\frmSupplierSubCategoryAdd.cs" />
     <Compile Include="Supplier\frmSupplierSubCategoryAdd.designer.cs">
       <DependentUpon>frmSupplierSubCategoryAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="User\FormUserCustomerUpdate.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="User\FormUserCustomerUpdate.cs" />
     <Compile Include="User\FormUserCustomerUpdate.Designer.cs">
       <DependentUpon>FormUserCustomerUpdate.cs</DependentUpon>
     </Compile>
-    <Compile Include="User\FormUsersMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="User\FormUsersMain.cs" />
     <Compile Include="User\FormUsersMain.Designer.cs">
       <DependentUpon>FormUsersMain.cs</DependentUpon>
     </Compile>
@@ -1038,15 +913,11 @@
     <Compile Include="Services\txtReader.cs" />
     <Compile Include="Services\Utils.cs" />
     <Compile Include="Services\WorkerService.cs" />
-    <Compile Include="Management\FormRoleAuth.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Management\FormRoleAuth.cs" />
     <Compile Include="Management\FormRoleAuth.Designer.cs">
       <DependentUpon>FormRoleAuth.cs</DependentUpon>
     </Compile>
-    <Compile Include="User\FormUserManagement.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="User\FormUserManagement.cs" />
     <Compile Include="User\FormUserManagement.Designer.cs">
       <DependentUpon>FormUserManagement.cs</DependentUpon>
     </Compile>

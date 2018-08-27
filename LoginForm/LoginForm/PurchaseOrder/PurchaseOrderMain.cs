@@ -13,7 +13,7 @@ using static LoginForm.Services.MyClasses.MyAuthority;
 
 namespace LoginForm.PurchaseOrder
 {
-    public partial class PurchaseOrderMain : Form
+    public partial class PurchaseOrderMain : MyForm
     {
         IMEEntities IME = new IMEEntities();
         int purchaseId;

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace LoginForm.QuotationModule
 {
-    public partial class frmQuotationExport : Form
+    public partial class frmQuotationExport : MyForm
     {
         List<bool> ischecked = new List<bool>();
         List<CheckBox> cboxList = new List<CheckBox>();

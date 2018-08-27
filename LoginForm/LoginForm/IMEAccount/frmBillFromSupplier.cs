@@ -12,7 +12,7 @@ using LoginForm.Services;
 
 namespace LoginForm.IMEAccount
 {
-    public partial class frmBillFromSupplier : Form
+    public partial class frmBillFromSupplier : MyForm
     {
         bool IsUpdate = false;
         int PurchaseOperationID;

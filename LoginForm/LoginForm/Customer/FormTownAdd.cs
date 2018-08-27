@@ -11,7 +11,7 @@ using LoginForm.DataSet;
 
 namespace LoginForm
 {
-    public partial class FormTownAdd : Form
+    public partial class FormTownAdd : MyForm
     {
         IMEEntities IME = new IMEEntities();
         int cityID;

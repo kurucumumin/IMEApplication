@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace LoginForm.ManagementModule
 {
-    public partial class FormManagmentControl : Form
+    public partial class FormManagmentControl : MyForm
     {
         IMEEntities IME = new IMEEntities();
 

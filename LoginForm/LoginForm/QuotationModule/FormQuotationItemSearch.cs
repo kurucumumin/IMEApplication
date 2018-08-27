@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace LoginForm.QuotationModule
 {
-    public partial class FormQuotationItemSearch : Form
+    public partial class FormQuotationItemSearch : MyForm
     {
         IMEEntities IME = new IMEEntities();
         string ArticleCode;

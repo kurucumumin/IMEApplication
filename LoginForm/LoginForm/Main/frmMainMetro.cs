@@ -23,7 +23,7 @@ using static LoginForm.Services.MyClasses.MyAuthority;
 
 namespace LoginForm.Main
 {
-    public partial class frmMainMetro : Form
+    public partial class frmMainMetro : MyForm
     {
         List<Panel> panels = new List<Panel>();
         Panel ActivePanel;

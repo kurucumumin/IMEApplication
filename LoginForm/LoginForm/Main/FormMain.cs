@@ -9,7 +9,7 @@ using static LoginForm.Services.MyClasses.MyAuthority;
 
 namespace LoginForm
 {
-    public partial class FormMain : Form
+    public partial class FormMain : MyForm
     {
         public static FormMain MDIObj;
         public static string strEstimateCompanyPath = string.Empty;

@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace LoginForm.ManagementModule
 {
-    public partial class FormRoleAuths : Form
+    public partial class FormRoleAuths : MyForm
     {
         List<RoleValue> roleList = new List<RoleValue>();
         List<AuthorizationValue> authList = new List<AuthorizationValue>();

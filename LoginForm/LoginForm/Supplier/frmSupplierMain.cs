@@ -13,7 +13,7 @@ using static LoginForm.Services.MyClasses.MyAuthority;
 namespace LoginForm
 {
     //deneme
-    public partial class frmSupplierMain : Form
+    public partial class frmSupplierMain : MyForm
     {
         private static string AddressButtonsModeOpen = "Open";
         private static string AddressButtonsModeClose = "Close";

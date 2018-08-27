@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace LoginForm.ManagementModule
 {
-    public partial class FormExchangeRate : Form
+    public partial class FormExchangeRate : MyForm
     {
         public FormExchangeRate()
         {

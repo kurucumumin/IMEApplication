@@ -11,7 +11,7 @@ using LoginForm.DataSet;
 
 namespace LoginForm.IMEAccount
 {
-    public partial class frmAccountMain : Form
+    public partial class frmAccountMain : MyForm
     {
         public frmAccountMain()
         {

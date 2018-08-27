@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace LoginForm
 {
-    public partial class CustomerSubCategory : Form
+    public partial class CustomerSubCategory : MyForm
     {
         IMEEntities IME = new IMEEntities();
         int category;

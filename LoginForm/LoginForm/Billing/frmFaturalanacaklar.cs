@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace LoginForm.Billing
 {
-    public partial class frmFaturalanacaklar : Form
+    public partial class frmFaturalanacaklar : MyForm
     {
         IMEEntities IME = new IMEEntities();
 

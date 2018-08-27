@@ -11,7 +11,7 @@ using LoginForm.DataSet;
 using LoginForm.Services;
 namespace LoginForm.BackOrder
 {
-    public partial class BackOrderProductSearch : Form
+    public partial class BackOrderProductSearch : MyForm
     {
         public BackOrderProductSearch()
         {

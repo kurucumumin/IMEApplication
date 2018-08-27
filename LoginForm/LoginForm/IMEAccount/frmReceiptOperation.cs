@@ -13,7 +13,7 @@ using LoginForm.Services;
 
 namespace LoginForm.IMEAccount
 {
-    public partial class frmVoucherOperation : Form
+    public partial class frmVoucherOperation : MyForm
     {
         IMEEntities IME = new IMEEntities();
         private object currentAccount;
