@@ -151,7 +151,7 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(1076, 66);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(46, 15);
+            this.label9.Size = new System.Drawing.Size(55, 18);
             this.label9.TabIndex = 27;
             this.label9.Text = "Search";
             // 
@@ -169,7 +169,7 @@
             // 
             this.txtStockCode.Location = new System.Drawing.Point(3, 13);
             this.txtStockCode.Name = "txtStockCode";
-            this.txtStockCode.Size = new System.Drawing.Size(192, 21);
+            this.txtStockCode.Size = new System.Drawing.Size(192, 24);
             this.txtStockCode.TabIndex = 25;
             this.txtStockCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtStockCode_KeyDown);
             // 
@@ -207,14 +207,14 @@
             "BY MPN"});
             this.cbSearch.Location = new System.Drawing.Point(6, 14);
             this.cbSearch.Name = "cbSearch";
-            this.cbSearch.Size = new System.Drawing.Size(216, 23);
+            this.cbSearch.Size = new System.Drawing.Size(216, 26);
             this.cbSearch.TabIndex = 22;
             // 
             // txtSearchText
             // 
             this.txtSearchText.Location = new System.Drawing.Point(6, 44);
             this.txtSearchText.Name = "txtSearchText";
-            this.txtSearchText.Size = new System.Drawing.Size(216, 21);
+            this.txtSearchText.Size = new System.Drawing.Size(216, 24);
             this.txtSearchText.TabIndex = 23;
             this.txtSearchText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearchText_KeyPress);
             // 
@@ -253,7 +253,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(10, 74);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(50, 15);
+            this.label3.Size = new System.Drawing.Size(60, 18);
             this.label3.TabIndex = 18;
             this.label3.Text = "Refresh";
             // 
@@ -262,7 +262,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(90, 75);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 15);
+            this.label4.Size = new System.Drawing.Size(42, 18);
             this.label4.TabIndex = 24;
             this.label4.Text = "New ";
             // 
@@ -271,7 +271,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(181, 75);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(43, 15);
+            this.label5.Size = new System.Drawing.Size(52, 18);
             this.label5.TabIndex = 25;
             this.label5.Text = "Modify";
             // 
@@ -280,7 +280,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(256, 75);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(43, 15);
+            this.label6.Size = new System.Drawing.Size(50, 18);
             this.label6.TabIndex = 26;
             this.label6.Text = "Delete";
             // 
@@ -370,7 +370,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(0, 54);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 15);
+            this.label2.Size = new System.Drawing.Size(69, 18);
             this.label2.TabIndex = 23;
             this.label2.Text = "End Date";
             // 
@@ -379,7 +379,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(-3, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 15);
+            this.label1.Size = new System.Drawing.Size(74, 18);
             this.label1.TabIndex = 22;
             this.label1.Text = "Start Date";
             // 
@@ -389,7 +389,7 @@
             this.dtpToDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpToDate.Location = new System.Drawing.Point(83, 48);
             this.dtpToDate.Name = "dtpToDate";
-            this.dtpToDate.Size = new System.Drawing.Size(119, 21);
+            this.dtpToDate.Size = new System.Drawing.Size(119, 24);
             this.dtpToDate.TabIndex = 18;
             this.dtpToDate.Value = new System.DateTime(2030, 8, 9, 14, 42, 0, 0);
             // 
@@ -399,7 +399,7 @@
             this.dtpFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpFromDate.Location = new System.Drawing.Point(83, 15);
             this.dtpFromDate.Name = "dtpFromDate";
-            this.dtpFromDate.Size = new System.Drawing.Size(119, 21);
+            this.dtpFromDate.Size = new System.Drawing.Size(119, 24);
             this.dtpFromDate.TabIndex = 19;
             // 
             // panel2
@@ -420,7 +420,7 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(150, 78);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(32, 15);
+            this.label8.Size = new System.Drawing.Size(38, 18);
             this.label8.TabIndex = 20;
             this.label8.Text = "Print";
             // 
@@ -429,7 +429,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(49, 78);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(37, 15);
+            this.label7.Size = new System.Drawing.Size(44, 18);
             this.label7.TabIndex = 19;
             this.label7.Text = "Excel";
             // 
@@ -467,7 +467,7 @@
             // 
             // FormQuotationMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.ClientSize = new System.Drawing.Size(1236, 696);

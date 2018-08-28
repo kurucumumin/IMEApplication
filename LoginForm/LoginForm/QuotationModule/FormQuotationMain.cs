@@ -90,9 +90,9 @@ namespace LoginForm.QuotationModule
 
                             Quotation quo = IME.Quotations.Where(q => q.QuotationNo == QuotationNo).FirstOrDefault();
 
-                            IME.QuotationDetails.RemoveRange(quo.QuotationDetails);
+                            quo.status = "Deleted";
 
-                            IME.Quotations.Remove(quo);
+                            IME.SaveChanges();
                         }
 
                         IME.SaveChanges();
@@ -303,14 +303,15 @@ namespace LoginForm.QuotationModule
           //  MessageBox.Show(time.ToString());
             var list = (from q in IME.Quotations/*.AsEnumerable()*/
                        join c in IME.Customers on q.CustomerID equals c.ID
-                       where q.StartDate >= fromDate && q.StartDate < toDate 
+                       where q.StartDate >= fromDate && q.StartDate < toDate
                        select new
                        {
                            Date = q.StartDate,
                            QuotationNo = q.QuotationNo,
                            RFQ = q.RFQNo,
                            CustomerCode = c.ID,
-                           CustomerName = c.c_name
+                           CustomerName = c.c_name,
+                           Representative = q.Worker.NameLastName
                        }).OrderByDescending(x => x.Date);
 
             populateGrid(list.ToList());
