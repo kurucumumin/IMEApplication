@@ -152,11 +152,15 @@ namespace LoginForm.QuotationModule
                                    where q.QuotationNo.Contains(txtSearchText.Text)
                                    select new
                                    {
-                                       Date = (DateTime)q.StartDate,
+                                       Date = q.StartDate,
                                        QuotationNo = q.QuotationNo,
                                        RFQ = q.RFQNo,
                                        CustomerCode = c.ID,
-                                       CustomerName = c.c_name
+                                       CustomerName = c.c_name,
+                                       Total = q.GrossTotal,
+                                       Currency = q.CurrName,
+                                       Notes = q.Note.Note_name,
+                                       Representative = q.Worker.NameLastName
                                    };
 
                         populateGrid(list1.ToList());
@@ -169,11 +173,15 @@ namespace LoginForm.QuotationModule
                                     where c.ID.Contains(customerCode)
                                     select new
                                     {
-                                        Date = (DateTime)q.StartDate,
+                                        Date = q.StartDate,
                                         QuotationNo = q.QuotationNo,
                                         RFQ = q.RFQNo,
                                         CustomerCode = c.ID,
-                                        CustomerName = c.c_name
+                                        CustomerName = c.c_name,
+                                        Total = q.GrossTotal,
+                                        Currency = q.CurrName,
+                                        Notes = q.Note.Note_name,
+                                        Representative = q.Worker.NameLastName
                                     };
 
                         populateGrid(list2.ToList());
@@ -186,12 +194,16 @@ namespace LoginForm.QuotationModule
                                    where c.c_name.Contains(customerName)
                                     select new
                                    {
-                                       Date = (DateTime)q.StartDate,
-                                       QuotationNo = q.QuotationNo,
-                                       RFQ = q.RFQNo,
-                                       CustomerCode = c.ID,
-                                       CustomerName = c.c_name
-                                   };
+                                        Date = q.StartDate,
+                                        QuotationNo = q.QuotationNo,
+                                        RFQ = q.RFQNo,
+                                        CustomerCode = c.ID,
+                                        CustomerName = c.c_name,
+                                        Total = q.GrossTotal,
+                                        Currency = q.CurrName,
+                                        Notes = q.Note.Note_name,
+                                        Representative = q.Worker.NameLastName
+                                    };
 
                         populateGrid(list3.ToList());
                         break;
@@ -207,11 +219,15 @@ namespace LoginForm.QuotationModule
                                         where amount <= q.GrossTotal && q.GrossTotal < (amount+1) 
                                     select new
                                     {
-                                        Date = (DateTime)q.StartDate,
+                                        Date = q.StartDate,
                                         QuotationNo = q.QuotationNo,
                                         RFQ = q.RFQNo,
                                         CustomerCode = c.ID,
-                                        CustomerName = c.c_name
+                                        CustomerName = c.c_name,
+                                        Total = q.GrossTotal,
+                                        Currency = q.CurrName,
+                                        Notes = q.Note.Note_name,
+                                        Representative = q.Worker.NameLastName
                                     };
 
                             populateGrid(list4.ToList());
@@ -226,11 +242,15 @@ namespace LoginForm.QuotationModule
                                     where q.RFQNo.Contains(rfq)
                                     select new
                                     {
-                                        Date = (DateTime)q.StartDate,
+                                        Date = q.StartDate,
                                         QuotationNo = q.QuotationNo,
                                         RFQ = q.RFQNo,
                                         CustomerCode = c.ID,
-                                        CustomerName = c.c_name
+                                        CustomerName = c.c_name,
+                                        Total = q.GrossTotal,
+                                        Currency = q.CurrName,
+                                        Notes = q.Note.Note_name,
+                                        Representative = q.Worker.NameLastName
                                     };
 
                         populateGrid(list5.ToList());
@@ -311,6 +331,9 @@ namespace LoginForm.QuotationModule
                            RFQ = q.RFQNo,
                            CustomerCode = c.ID,
                            CustomerName = c.c_name,
+                           Total=q.GrossTotal,
+                           Currency= q.CurrName,
+                           Notes=q.Note.Note_name,
                            Representative = q.Worker.NameLastName
                        }).OrderByDescending(x => x.Date);
 
@@ -328,7 +351,7 @@ namespace LoginForm.QuotationModule
         {
             dgQuotation.DataSource = null;
             dgQuotation.DataSource = queryable;
-            dgQuotation.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgQuotation.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void dgQuotation_KeyDown(object sender, KeyEventArgs e)
@@ -390,11 +413,15 @@ namespace LoginForm.QuotationModule
                                where qd.ItemCode.Contains(stockCode)
                                select new
                                {
-                                   Date = (DateTime)q.StartDate,
+                                   Date = q.StartDate,
                                    QuotationNo = q.QuotationNo,
                                    RFQ = q.RFQNo,
                                    CustomerCode = c.ID,
-                                   CustomerName = c.c_name
+                                   CustomerName = c.c_name,
+                                   Total = q.GrossTotal,
+                                   Currency = q.CurrName,
+                                   Notes = q.Note.Note_name,
+                                   Representative = q.Worker.NameLastName
                                };
 
                     populateGrid(list.ToList());
@@ -407,11 +434,15 @@ namespace LoginForm.QuotationModule
                                 where qd.CustomerStockCode.Contains(stockCode)
                                 select new
                                 {
-                                    Date = (DateTime)q.StartDate,
+                                    Date = q.StartDate,
                                     QuotationNo = q.QuotationNo,
                                     RFQ = q.RFQNo,
                                     CustomerCode = c.ID,
-                                    CustomerName = c.c_name
+                                    CustomerName = c.c_name,
+                                    Total = q.GrossTotal,
+                                    Currency = q.CurrName,
+                                    Notes = q.Note.Note_name,
+                                    Representative = q.Worker.NameLastName
                                 };
 
                     populateGrid(list2.ToList());
@@ -421,6 +452,82 @@ namespace LoginForm.QuotationModule
             {
                 MessageBox.Show("You should enter a stock code", "Attention!");
                 btnRefreshList.PerformClick();
+            }
+        }
+
+        private void mODIFYQUOTATIONToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ModifyQuotation();
+        }
+
+        private void dELETEQUOTATIONToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgQuotation.CurrentRow != null)
+            {
+                DialogResult result = MessageBox.Show("Selected quotation(s) will be deleted! Do you confirm?", "Delete Quotation", MessageBoxButtons.OKCancel);
+
+                if (result == DialogResult.OK)
+                {
+                    try
+                    {
+                        IMEEntities IME = new IMEEntities();
+
+                        foreach (DataGridViewRow row in dgQuotation.SelectedRows)
+                        {
+                            string QuotationNo = row.Cells["QuotationNo"].Value.ToString();
+
+                            Quotation quo = IME.Quotations.Where(q => q.QuotationNo == QuotationNo).FirstOrDefault();
+
+                            quo.status = "Deleted";
+
+                            IME.SaveChanges();
+                        }
+
+                        IME.SaveChanges();
+
+                        BringQuotationList();
+
+                        MessageBox.Show("Quotation is successfully deleted.", "Success!");
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("An error was encountered", "Error!");
+                        throw;
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("You did not chose any quotation.", "Warning!");
+            }
+        }
+
+        private void qUOTATIONINFOToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgQuotation.CurrentRow != null)
+            {
+                string QuotationNo = dgQuotation.CurrentRow.Cells["QuotationNo"].Value.ToString();
+                Quotation quo;
+
+                IMEEntities IME = new IMEEntities();
+                try
+                {
+                    quo = IME.Quotations.Where(q => q.QuotationNo == QuotationNo).FirstOrDefault();
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+                if (quo != null)
+                {
+                    FormQuotationAdd newForm = new FormQuotationAdd(quo, this,1);
+                    newForm.ShowDialog();
+                }
+            }
+            else
+            {
+                MessageBox.Show("You did not chose any quotation.", "Warning!");
             }
         }
     }

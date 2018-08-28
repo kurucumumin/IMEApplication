@@ -169,6 +169,8 @@ namespace LoginForm.QuotationModule
         public FormQuotationAdd(Quotation quotation, FormQuotationMain parent)
         {
             InitializeComponent();
+            btnSave.Visible = false;
+            label67.Visible = false;
             this.parent = parent;
             DataGridViewComboBoxColumn deliveryColumn = (DataGridViewComboBoxColumn)dgQuotationAddedItems.Columns[dgDelivery.Index];
             deliveryColumn.DataSource = IME.QuotationDeliveries.ToList();
@@ -185,7 +187,107 @@ namespace LoginForm.QuotationModule
             var QuoCurr = IME.Currencies.Where(a => a.currencyName == q1.CurrName).FirstOrDefault();
             if (QuoCurr != null) cbCurrency.SelectedValue = QuoCurr.currencyID;
 
-            dtpDate.Value = (DateTime)q1.StartDate;
+            //dtpDate.Value = (DateTime)q1.StartDate;
+            dtpDate.Value = DateTime.Today.Date;
+            dtpDate.MaxDate = DateTime.Today.Date;
+            cbPayment.DataSource = IME.PaymentTerms.ToList();
+            cbPayment.DisplayMember = "term_name";
+            cbPayment.ValueMember = "ID";
+
+            cbRep.DataSource = IME.Workers.ToList();
+            cbRep.DisplayMember = "NameLastName";
+            cbRep.ValueMember = "WorkerID";
+            cbWorkers.DataSource = IME.CustomerWorkers.Where(a => a.customerID == q1.CustomerID).ToList();
+            cbWorkers.DisplayMember = "cw_name";
+            cbWorkers.ValueMember = "ID";
+            if (q1.QuotationMainContact != null) cbWorkers.SelectedIndex = (int)q1.QuotationMainContact;
+            CustomerCode.Enabled = false;
+            txtCustomerName.Enabled = false;
+
+            LowMarginLimit = (Decimal)Utils.getManagement().LowMarginLimit;
+            importFromQuotation = 0;
+            modifyQuotation(q1);
+            //cbCurrency.SelectedValue=
+
+            //fillCustomer();
+            cbSMethod.SelectedIndex = (int)q1.ShippingMethodID;
+            for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+            {
+                dgQuotationAddedItems.Rows[i].Cells["dgQty"].ReadOnly = false;
+                dgQuotationAddedItems.Rows[i].Cells["dgQty"].Style = dgQuotationAddedItems.DefaultCellStyle;
+
+                dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].ReadOnly = false;
+                dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Style = dgQuotationAddedItems.DefaultCellStyle;
+
+                dgQuotationAddedItems.Rows[i].Cells["dgTargetUP"].ReadOnly = false;
+                dgQuotationAddedItems.Rows[i].Cells["dgTargetUP"].Style = dgQuotationAddedItems.DefaultCellStyle;
+
+                dgQuotationAddedItems.Rows[i].Cells["dgCompetitor"].ReadOnly = false;
+                dgQuotationAddedItems.Rows[i].Cells["dgCompetitor"].Style = dgQuotationAddedItems.DefaultCellStyle;
+
+                dgQuotationAddedItems.Rows[i].Cells["dgDelivery"].ReadOnly = false;
+                dgQuotationAddedItems.Rows[i].Cells["dgDelivery"].Style = dgQuotationAddedItems.DefaultCellStyle;
+
+                dgQuotationAddedItems.Rows[i].Cells["dgCustStkCode"].ReadOnly = false;
+                dgQuotationAddedItems.Rows[i].Cells["dgCustStkCode"].Style = dgQuotationAddedItems.DefaultCellStyle;
+
+                dgQuotationAddedItems.Rows[i].Cells["dgCustDescription"].ReadOnly = false;
+                dgQuotationAddedItems.Rows[i].Cells["dgCustDescription"].Style = dgQuotationAddedItems.DefaultCellStyle;
+
+                GetMarginMark(i);
+            }
+            for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+            {
+                QuotataionModifyItemDetailsFiller(dgQuotationAddedItems.Rows[i].Cells["dgProductCode"].Value.ToString(), i);
+
+            }
+            if (!Utils.AuthorityCheck(IMEAuthority.CanEditAnyQuotation))
+            {
+                dgQuotationAddedItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                foreach (DataGridViewRow item in dgQuotationAddedItems.Rows)
+                {
+                    item.ReadOnly = true;
+                }
+                foreach (DataGridViewRow item in dgQuotationDeleted.Rows)
+                {
+                    item.ReadOnly = true;
+                }
+                gbCustomer.Enabled = false;
+                btnCreateRev.Enabled = false;
+                LandingCost.Enabled = false;
+                gbShipment.Enabled = false;
+                groupBox11.Enabled = false;
+                groupBox7.Enabled = false;
+                groupBox3.Enabled = false;
+            }
+            CalculateTotalMarge();
+        }
+
+        public FormQuotationAdd(Quotation quotation, FormQuotationMain parent, int s)
+        {
+            InitializeComponent();
+            btnCreateRev.Visible = false;
+            label68.Visible = false;
+            btnSave.Visible = false;
+            label67.Visible = false;
+            this.parent = parent;
+            DataGridViewComboBoxColumn deliveryColumn = (DataGridViewComboBoxColumn)dgQuotationAddedItems.Columns[dgDelivery.Index];
+            deliveryColumn.DataSource = IME.QuotationDeliveries.ToList();
+            deliveryColumn.DisplayMember = "DeliveryName";
+            deliveryColumn.ValueMember = "ID";
+            //Son versiyonu açmayı sağlıyor
+            Quotation q1 = IME.Quotations.Where(a => a.QuotationNo.Contains(quotation.QuotationNo)).OrderByDescending(b => b.QuotationNo).FirstOrDefault();
+            this.Text = "Edit Quotation";
+            modifyMod = true;
+            cbCurrency.DataSource = IME.Currencies.ToList();
+            cbCurrency.DisplayMember = "currencyName";
+            cbCurrency.ValueMember = "currencyID";
+
+            var QuoCurr = IME.Currencies.Where(a => a.currencyName == q1.CurrName).FirstOrDefault();
+            if (QuoCurr != null) cbCurrency.SelectedValue = QuoCurr.currencyID;
+
+            //dtpDate.Value = (DateTime)q1.StartDate;
+            dtpDate.Value = DateTime.Today.Date;
             dtpDate.MaxDate = DateTime.Today.Date;
             cbPayment.DataSource = IME.PaymentTerms.ToList();
             cbPayment.DisplayMember = "term_name";
@@ -1805,13 +1907,15 @@ namespace LoginForm.QuotationModule
                 try { q.ExtraCharges = decimal.Parse(txtExtraChanges.Text); } catch { }
                 if (chkVat.Checked) { q.IsVatValue = 1; } else { q.IsVatValue = 0; }
                 try { q.VatValue = Decimal.Parse(lblVat.Text); } catch { }
-                try { q.StartDate = dtpDate.Value; } catch { }
+                try { q.StartDate = (DateTime)dtpDate.Value; } catch { }
                 try { q.Factor = Decimal.Parse(cbFactor.Text); } catch { }
                 try { q.ValidationDay = Int32.Parse(txtValidation.Text); } catch { }
                 q.PaymentID = (cbPayment.SelectedItem as PaymentTerm).ID;
                 q.CurrName = (cbCurrency.SelectedItem as Currency).currencyName;
                 //q.CurrType = cbCurrType.Text;
                 q.Curr = CurrValue;
+                try { q.RepresentativeID = (cbRep.SelectedItem as Worker).WorkerID; ; } catch { }
+                try { q.RepresentativeID2 = (cbWorkers.SelectedItem as Worker).WorkerID; ; } catch { }
                 q.CustomerID = CustomerCode.Text;
                 q.ShippingMethodID = cbSMethod.SelectedIndex;
                 q.QuotationMainContact = cbWorkers.SelectedIndex;
@@ -1867,9 +1971,11 @@ namespace LoginForm.QuotationModule
                 try { q.ExtraCharges = decimal.Parse(txtExtraChanges.Text); } catch { }
                 if (chkVat.Checked) { q.IsVatValue = 1; } else { q.IsVatValue = 0; }
                 try { q.VatValue = Decimal.Parse(lblVat.Text); } catch { }
-                try { q.StartDate = dtpDate.Value; } catch { }
+                try { q.StartDate = (DateTime)dtpDate.Value; } catch { }
                 try { q.Factor = Decimal.Parse(cbFactor.Text); } catch { }
                 try { q.ValidationDay = Int32.Parse(txtValidation.Text); } catch { }
+                try { q.RepresentativeID = (cbRep.SelectedItem as Worker).WorkerID; ; } catch { }
+                try { q.RepresentativeID2 = (cbWorkers.SelectedItem as Worker).WorkerID; ; } catch { }
                 q.PaymentID = (cbPayment.SelectedItem as PaymentTerm).ID;
                 q.CurrName = (cbCurrency.SelectedItem as Currency).currencyName;
                 //q.CurrType = cbCurrType.Text;
@@ -1939,7 +2045,7 @@ namespace LoginForm.QuotationModule
             try { q.ExtraCharges = decimal.Parse(txtExtraChanges.Text); } catch { }
             if (chkVat.Checked) { q.IsVatValue = 1; } else { q.IsVatValue = 0; }
             try { q.VatValue = Decimal.Parse(lblVat.Text); } catch { }
-            try { q.StartDate = dtpDate.Value; } catch { }
+            try { q.StartDate = (DateTime)dtpDate.Value; } catch { }
             try { q.Factor = Decimal.Parse(cbFactor.Text); } catch { }
             try { q.ValidationDay = Int32.Parse(txtValidation.Text); } catch { }
             try { q.PaymentID = (cbPayment.SelectedItem as PaymentTerm).ID; } catch { }
