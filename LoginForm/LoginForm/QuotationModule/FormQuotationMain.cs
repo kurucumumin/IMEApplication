@@ -150,9 +150,8 @@ namespace LoginForm.QuotationModule
                 switch (cbSearch.SelectedItem.ToString())
                 {
                     case "QUOT NUMBER":
-                        var list1 = from q in IME.Quotations
+                        var list1 = (from q in IME.Quotations
                                    join c in IME.Customers on q.CustomerID equals c.ID
-                                   where q.QuotationNo.Contains(txtSearchText.Text)
                                    select new
                                    {
                                        Date = q.StartDate,
@@ -165,7 +164,7 @@ namespace LoginForm.QuotationModule
                                        Notes = q.Note.Note_name,
                                        Representative = q.Worker.NameLastName,
                                        Status = q.status
-                                   };
+                                   }).ToList().Where(x=> x.QuotationNo.Substring(x.QuotationNo.LastIndexOf('/')).Contains(txtSearchText.Text));
 
                         populateGrid(list1.ToList());
                         break;
@@ -292,10 +291,9 @@ namespace LoginForm.QuotationModule
                 switch (cbSearch.SelectedItem.ToString())
                 {
                     case "QUOT NUMBER":
-                        var list1 = from q in IME.Quotations
+                        var list1 = (from q in IME.Quotations
                                     join c in IME.Customers on q.CustomerID equals c.ID
-                                    where (q.QuotationNo.Contains(txtSearchText.Text)
-                                    && q.StartDate >= dtpFromDate.Value && q.StartDate < dtpToDate.Value)
+                                    where q.StartDate >= dtpFromDate.Value && q.StartDate < dtpToDate.Value
                                     select new
                                     {
                                         Date = q.StartDate,
@@ -308,7 +306,7 @@ namespace LoginForm.QuotationModule
                                         Notes = q.Note.Note_name,
                                         Representative = q.Worker.NameLastName,
                                         Status = q.status
-                                    };
+                                    }).ToList().Where(x => x.QuotationNo.Substring(x.QuotationNo.LastIndexOf('/')).Contains(txtSearchText.Text));
 
                         populateGrid(list1.ToList());
                         break;
