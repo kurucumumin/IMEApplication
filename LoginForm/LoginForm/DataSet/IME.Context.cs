@@ -98,7 +98,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<SuperDiskP> SuperDiskPs { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }
         public virtual DbSet<SupplierAddress> SupplierAddresses { get; set; }
-        public virtual DbSet<SupplierBank> SupplierBanks { get; set; }
+        public virtual DbSet<SupplierBankAccount> SupplierBankAccounts { get; set; }
         public virtual DbSet<SupplierCategory> SupplierCategories { get; set; }
         public virtual DbSet<SupplierSubCategory> SupplierSubCategories { get; set; }
         public virtual DbSet<SupplierWorker> SupplierWorkers { get; set; }
@@ -1069,51 +1069,147 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FormViewAll_Result>("FormViewAll");
         }
     
-        public virtual int ItemAdd(string article_No, string article_Desc, Nullable<int> pack_Quantity, Nullable<int> unit_Content, string unit_Measure, string hazardous_Ind, string calibration_Ind, string mH1, string licensed_Ind, string cofO, string disc_Change_Ind, string manufacturer, string mPN, string mH_Code_Level_1, Nullable<decimal> heigh, Nullable<decimal> width, Nullable<decimal> length, string dimensionUnit, string currency, string supplierID)
+        public virtual int ItemAdd(string articleNo, string articleDesc, Nullable<int> packCode, Nullable<int> packQuantity, Nullable<int> unitContent, string unitMeasure, Nullable<decimal> ukCol1, Nullable<decimal> standardWeight, string hazardousInd, string calibrationInd, string obsoleteFlag, string mH1, string lowDiscountInd, string licensedInd, string shelfLife, string cofO, string eUR1Indicator, string cCCNNo, string supercedeDate, string currentCatpage, string ukIntroDate, string filler, string ukDiscDate, string substituteBy, string bHCFlag, string filler1, Nullable<decimal> futureSellPrice, string intCat, string newProdChangeInd, string outofStockProhibitchangeind, string discChangeInd, string supercededChangeInd, string packSizeChangeInd, string rolledProductChangeInd, string expiringProductChangeInd, string manufacturer, string mPN, string mHCodeLevel1, Nullable<decimal> heigh, Nullable<decimal> width, Nullable<decimal> length)
         {
-            var article_NoParameter = article_No != null ?
-                new ObjectParameter("Article_No", article_No) :
-                new ObjectParameter("Article_No", typeof(string));
+            var articleNoParameter = articleNo != null ?
+                new ObjectParameter("ArticleNo", articleNo) :
+                new ObjectParameter("ArticleNo", typeof(string));
     
-            var article_DescParameter = article_Desc != null ?
-                new ObjectParameter("Article_Desc", article_Desc) :
-                new ObjectParameter("Article_Desc", typeof(string));
+            var articleDescParameter = articleDesc != null ?
+                new ObjectParameter("ArticleDesc", articleDesc) :
+                new ObjectParameter("ArticleDesc", typeof(string));
     
-            var pack_QuantityParameter = pack_Quantity.HasValue ?
-                new ObjectParameter("Pack_Quantity", pack_Quantity) :
-                new ObjectParameter("Pack_Quantity", typeof(int));
+            var packCodeParameter = packCode.HasValue ?
+                new ObjectParameter("PackCode", packCode) :
+                new ObjectParameter("PackCode", typeof(int));
     
-            var unit_ContentParameter = unit_Content.HasValue ?
-                new ObjectParameter("Unit_Content", unit_Content) :
-                new ObjectParameter("Unit_Content", typeof(int));
+            var packQuantityParameter = packQuantity.HasValue ?
+                new ObjectParameter("PackQuantity", packQuantity) :
+                new ObjectParameter("PackQuantity", typeof(int));
     
-            var unit_MeasureParameter = unit_Measure != null ?
-                new ObjectParameter("Unit_Measure", unit_Measure) :
-                new ObjectParameter("Unit_Measure", typeof(string));
+            var unitContentParameter = unitContent.HasValue ?
+                new ObjectParameter("UnitContent", unitContent) :
+                new ObjectParameter("UnitContent", typeof(int));
     
-            var hazardous_IndParameter = hazardous_Ind != null ?
-                new ObjectParameter("Hazardous_Ind", hazardous_Ind) :
-                new ObjectParameter("Hazardous_Ind", typeof(string));
+            var unitMeasureParameter = unitMeasure != null ?
+                new ObjectParameter("UnitMeasure", unitMeasure) :
+                new ObjectParameter("UnitMeasure", typeof(string));
     
-            var calibration_IndParameter = calibration_Ind != null ?
-                new ObjectParameter("Calibration_Ind", calibration_Ind) :
-                new ObjectParameter("Calibration_Ind", typeof(string));
+            var ukCol1Parameter = ukCol1.HasValue ?
+                new ObjectParameter("UkCol1", ukCol1) :
+                new ObjectParameter("UkCol1", typeof(decimal));
+    
+            var standardWeightParameter = standardWeight.HasValue ?
+                new ObjectParameter("StandardWeight", standardWeight) :
+                new ObjectParameter("StandardWeight", typeof(decimal));
+    
+            var hazardousIndParameter = hazardousInd != null ?
+                new ObjectParameter("HazardousInd", hazardousInd) :
+                new ObjectParameter("HazardousInd", typeof(string));
+    
+            var calibrationIndParameter = calibrationInd != null ?
+                new ObjectParameter("CalibrationInd", calibrationInd) :
+                new ObjectParameter("CalibrationInd", typeof(string));
+    
+            var obsoleteFlagParameter = obsoleteFlag != null ?
+                new ObjectParameter("ObsoleteFlag", obsoleteFlag) :
+                new ObjectParameter("ObsoleteFlag", typeof(string));
     
             var mH1Parameter = mH1 != null ?
                 new ObjectParameter("MH1", mH1) :
                 new ObjectParameter("MH1", typeof(string));
     
-            var licensed_IndParameter = licensed_Ind != null ?
-                new ObjectParameter("Licensed_Ind", licensed_Ind) :
-                new ObjectParameter("Licensed_Ind", typeof(string));
+            var lowDiscountIndParameter = lowDiscountInd != null ?
+                new ObjectParameter("LowDiscountInd", lowDiscountInd) :
+                new ObjectParameter("LowDiscountInd", typeof(string));
+    
+            var licensedIndParameter = licensedInd != null ?
+                new ObjectParameter("LicensedInd", licensedInd) :
+                new ObjectParameter("LicensedInd", typeof(string));
+    
+            var shelfLifeParameter = shelfLife != null ?
+                new ObjectParameter("ShelfLife", shelfLife) :
+                new ObjectParameter("ShelfLife", typeof(string));
     
             var cofOParameter = cofO != null ?
                 new ObjectParameter("CofO", cofO) :
                 new ObjectParameter("CofO", typeof(string));
     
-            var disc_Change_IndParameter = disc_Change_Ind != null ?
-                new ObjectParameter("Disc_Change_Ind", disc_Change_Ind) :
-                new ObjectParameter("Disc_Change_Ind", typeof(string));
+            var eUR1IndicatorParameter = eUR1Indicator != null ?
+                new ObjectParameter("EUR1Indicator", eUR1Indicator) :
+                new ObjectParameter("EUR1Indicator", typeof(string));
+    
+            var cCCNNoParameter = cCCNNo != null ?
+                new ObjectParameter("CCCNNo", cCCNNo) :
+                new ObjectParameter("CCCNNo", typeof(string));
+    
+            var supercedeDateParameter = supercedeDate != null ?
+                new ObjectParameter("SupercedeDate", supercedeDate) :
+                new ObjectParameter("SupercedeDate", typeof(string));
+    
+            var currentCatpageParameter = currentCatpage != null ?
+                new ObjectParameter("CurrentCatpage", currentCatpage) :
+                new ObjectParameter("CurrentCatpage", typeof(string));
+    
+            var ukIntroDateParameter = ukIntroDate != null ?
+                new ObjectParameter("UkIntroDate", ukIntroDate) :
+                new ObjectParameter("UkIntroDate", typeof(string));
+    
+            var fillerParameter = filler != null ?
+                new ObjectParameter("Filler", filler) :
+                new ObjectParameter("Filler", typeof(string));
+    
+            var ukDiscDateParameter = ukDiscDate != null ?
+                new ObjectParameter("UkDiscDate", ukDiscDate) :
+                new ObjectParameter("UkDiscDate", typeof(string));
+    
+            var substituteByParameter = substituteBy != null ?
+                new ObjectParameter("SubstituteBy", substituteBy) :
+                new ObjectParameter("SubstituteBy", typeof(string));
+    
+            var bHCFlagParameter = bHCFlag != null ?
+                new ObjectParameter("BHCFlag", bHCFlag) :
+                new ObjectParameter("BHCFlag", typeof(string));
+    
+            var filler1Parameter = filler1 != null ?
+                new ObjectParameter("Filler1", filler1) :
+                new ObjectParameter("Filler1", typeof(string));
+    
+            var futureSellPriceParameter = futureSellPrice.HasValue ?
+                new ObjectParameter("FutureSellPrice", futureSellPrice) :
+                new ObjectParameter("FutureSellPrice", typeof(decimal));
+    
+            var intCatParameter = intCat != null ?
+                new ObjectParameter("IntCat", intCat) :
+                new ObjectParameter("IntCat", typeof(string));
+    
+            var newProdChangeIndParameter = newProdChangeInd != null ?
+                new ObjectParameter("NewProdChangeInd", newProdChangeInd) :
+                new ObjectParameter("NewProdChangeInd", typeof(string));
+    
+            var outofStockProhibitchangeindParameter = outofStockProhibitchangeind != null ?
+                new ObjectParameter("OutofStockProhibitchangeind", outofStockProhibitchangeind) :
+                new ObjectParameter("OutofStockProhibitchangeind", typeof(string));
+    
+            var discChangeIndParameter = discChangeInd != null ?
+                new ObjectParameter("DiscChangeInd", discChangeInd) :
+                new ObjectParameter("DiscChangeInd", typeof(string));
+    
+            var supercededChangeIndParameter = supercededChangeInd != null ?
+                new ObjectParameter("SupercededChangeInd", supercededChangeInd) :
+                new ObjectParameter("SupercededChangeInd", typeof(string));
+    
+            var packSizeChangeIndParameter = packSizeChangeInd != null ?
+                new ObjectParameter("PackSizeChangeInd", packSizeChangeInd) :
+                new ObjectParameter("PackSizeChangeInd", typeof(string));
+    
+            var rolledProductChangeIndParameter = rolledProductChangeInd != null ?
+                new ObjectParameter("RolledProductChangeInd", rolledProductChangeInd) :
+                new ObjectParameter("RolledProductChangeInd", typeof(string));
+    
+            var expiringProductChangeIndParameter = expiringProductChangeInd != null ?
+                new ObjectParameter("ExpiringProductChangeInd", expiringProductChangeInd) :
+                new ObjectParameter("ExpiringProductChangeInd", typeof(string));
     
             var manufacturerParameter = manufacturer != null ?
                 new ObjectParameter("Manufacturer", manufacturer) :
@@ -1123,9 +1219,9 @@ namespace LoginForm.DataSet
                 new ObjectParameter("MPN", mPN) :
                 new ObjectParameter("MPN", typeof(string));
     
-            var mH_Code_Level_1Parameter = mH_Code_Level_1 != null ?
-                new ObjectParameter("MH_Code_Level_1", mH_Code_Level_1) :
-                new ObjectParameter("MH_Code_Level_1", typeof(string));
+            var mHCodeLevel1Parameter = mHCodeLevel1 != null ?
+                new ObjectParameter("MHCodeLevel1", mHCodeLevel1) :
+                new ObjectParameter("MHCodeLevel1", typeof(string));
     
             var heighParameter = heigh.HasValue ?
                 new ObjectParameter("Heigh", heigh) :
@@ -1139,19 +1235,7 @@ namespace LoginForm.DataSet
                 new ObjectParameter("Length", length) :
                 new ObjectParameter("Length", typeof(decimal));
     
-            var dimensionUnitParameter = dimensionUnit != null ?
-                new ObjectParameter("DimensionUnit", dimensionUnit) :
-                new ObjectParameter("DimensionUnit", typeof(string));
-    
-            var currencyParameter = currency != null ?
-                new ObjectParameter("Currency", currency) :
-                new ObjectParameter("Currency", typeof(string));
-    
-            var supplierIDParameter = supplierID != null ?
-                new ObjectParameter("SupplierID", supplierID) :
-                new ObjectParameter("SupplierID", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ItemAdd", article_NoParameter, article_DescParameter, pack_QuantityParameter, unit_ContentParameter, unit_MeasureParameter, hazardous_IndParameter, calibration_IndParameter, mH1Parameter, licensed_IndParameter, cofOParameter, disc_Change_IndParameter, manufacturerParameter, mPNParameter, mH_Code_Level_1Parameter, heighParameter, widthParameter, lengthParameter, dimensionUnitParameter, currencyParameter, supplierIDParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ItemAdd", articleNoParameter, articleDescParameter, packCodeParameter, packQuantityParameter, unitContentParameter, unitMeasureParameter, ukCol1Parameter, standardWeightParameter, hazardousIndParameter, calibrationIndParameter, obsoleteFlagParameter, mH1Parameter, lowDiscountIndParameter, licensedIndParameter, shelfLifeParameter, cofOParameter, eUR1IndicatorParameter, cCCNNoParameter, supercedeDateParameter, currentCatpageParameter, ukIntroDateParameter, fillerParameter, ukDiscDateParameter, substituteByParameter, bHCFlagParameter, filler1Parameter, futureSellPriceParameter, intCatParameter, newProdChangeIndParameter, outofStockProhibitchangeindParameter, discChangeIndParameter, supercededChangeIndParameter, packSizeChangeIndParameter, rolledProductChangeIndParameter, expiringProductChangeIndParameter, manufacturerParameter, mPNParameter, mHCodeLevel1Parameter, heighParameter, widthParameter, lengthParameter);
         }
     
         public virtual ObjectResult<ItemDetailTabFiller_Result> ItemDetailTabFiller(string articleNo)

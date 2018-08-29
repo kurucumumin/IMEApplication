@@ -520,9 +520,9 @@ namespace LoginForm
                         item.DependantItemFile = "SuperDisk";
                             SqlCommand cmd = new SqlCommand();
                             cmd.CommandType = CommandType.StoredProcedure;
-                            cmd.Connection = ImeSqlConnect("195.201.76.156\\MSSQL4", "IME", "Sa", "IME1453");
-                            //cmd.CommandText = @"exec [ItemAdd] @ArticleNo @ArticleDesc @PackCode @PackQuantity @UnitContent @UnitMeasure @UkCol1 @StandardWeight @HazardousInd @CalibrationInd @ObsoleteFlag @MH1 @LowDiscountInd @LicensedInd @ShelfLife @CofO @EUR1Indicator @CCCNNo @SupercedeDate @CurrentCatpage @UkIntroDate @Filler @UkDiscDate @SubstituteBy @BHCFlag @Filler1 @FutureSellPrice @IntCat @NewProdChangeInd @OutofStockProhibitchangeind @DiscChangeInd @SupercededChangeInd @PackSizeChangeInd @RolledProductChangeInd @ExpiringProductChangeInd @Manufacturer @MPN @MHCodeLevel1 @Heigh @Width @Length";
-                            cmd.CommandText = @"[ItemAdd]";
+                        cmd.Connection = ImeSqlConnect("195.201.76.136", "IME", "sa", "ime1453..");
+                        
+                        cmd.CommandText = @"[ItemAdd]";
 
                             cmd.Parameters.AddWithValue("@ArticleNo",item.ArticleNo);
                             cmd.Parameters.AddWithValue("@ArticleDesc",item.ArticleDesc);
@@ -727,7 +727,7 @@ namespace LoginForm
         public static SqlConnection ImeSqlConnect(string SqlServerName, string SqlDatabaseName, string SqlUser, string SqlPassword)
         {
             SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = "Server=" + SqlServerName + "; Database=" + SqlDatabaseName + "; User Id=" + SqlUser + "; Password =" + SqlPassword + "; "; ;
+            conn.ConnectionString = "Server=" + SqlServerName + "; Database=" + SqlDatabaseName + "; User Id=" + SqlUser + "; Password =" + SqlPassword + "; ";
             if (conn.State != System.Data.ConnectionState.Open)
                 conn.Open();
             return conn;

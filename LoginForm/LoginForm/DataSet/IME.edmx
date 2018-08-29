@@ -1213,12 +1213,16 @@
           <Property Name="PoBox" Type="varchar" MaxLength="20" />
           <Property Name="PostCode" Type="varchar" MaxLength="20" />
         </EntityType>
-        <EntityType Name="SupplierBank">
+        <EntityType Name="SupplierBankAccount">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="bankname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="BranchCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="AccountNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="IBAN" Type="nvarchar" MaxLength="50" />
+          <Property Name="SupplierID" Type="nvarchar" MaxLength="15" />
         </EntityType>
         <EntityType Name="SupplierCategory">
           <Key>
@@ -2613,10 +2617,10 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Supplier__BankID__0C50D423">
-          <End Role="SupplierBank" Type="Self.SupplierBank" Multiplicity="0..1" />
+          <End Role="SupplierBankAccount" Type="Self.SupplierBankAccount" Multiplicity="0..1" />
           <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="SupplierBank">
+            <Principal Role="SupplierBankAccount">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Supplier">
@@ -2648,7 +2652,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Supplier__MainCo__54376389">
+        <Association Name="FK__Supplier__MainCo__791ECF75">
           <End Role="SupplierWorker" Type="Self.SupplierWorker" Multiplicity="0..1" />
           <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2765,6 +2769,18 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Principal>
             <Dependent Role="SupplierAddress">
               <PropertyRef Name="TownID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SupplierB__Suppl__782AAB3C">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
+          <End Role="SupplierBankAccount" Type="Self.SupplierBankAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SupplierBankAccount">
+              <PropertyRef Name="SupplierID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3206,26 +3222,47 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
         </Function>
         <Function Name="FormViewAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="ItemAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Article_No" Type="nvarchar" Mode="In" />
-          <Parameter Name="Article_Desc" Type="nvarchar" Mode="In" />
-          <Parameter Name="Pack_Quantity" Type="int" Mode="In" />
-          <Parameter Name="Unit_Content" Type="int" Mode="In" />
-          <Parameter Name="Unit_Measure" Type="nvarchar" Mode="In" />
-          <Parameter Name="Hazardous_Ind" Type="nvarchar" Mode="In" />
-          <Parameter Name="Calibration_Ind" Type="nvarchar" Mode="In" />
+          <Parameter Name="ArticleNo" Type="nvarchar" Mode="In" />
+          <Parameter Name="ArticleDesc" Type="nvarchar" Mode="In" />
+          <Parameter Name="PackCode" Type="int" Mode="In" />
+          <Parameter Name="PackQuantity" Type="int" Mode="In" />
+          <Parameter Name="UnitContent" Type="int" Mode="In" />
+          <Parameter Name="UnitMeasure" Type="nvarchar" Mode="In" />
+          <Parameter Name="UkCol1" Type="decimal" Mode="In" />
+          <Parameter Name="StandardWeight" Type="decimal" Mode="In" />
+          <Parameter Name="HazardousInd" Type="nvarchar" Mode="In" />
+          <Parameter Name="CalibrationInd" Type="nvarchar" Mode="In" />
+          <Parameter Name="ObsoleteFlag" Type="nvarchar" Mode="In" />
           <Parameter Name="MH1" Type="nvarchar" Mode="In" />
-          <Parameter Name="Licensed_Ind" Type="nvarchar" Mode="In" />
+          <Parameter Name="LowDiscountInd" Type="nvarchar" Mode="In" />
+          <Parameter Name="LicensedInd" Type="nvarchar" Mode="In" />
+          <Parameter Name="ShelfLife" Type="nvarchar" Mode="In" />
           <Parameter Name="CofO" Type="nvarchar" Mode="In" />
-          <Parameter Name="Disc_Change_Ind" Type="nvarchar" Mode="In" />
+          <Parameter Name="EUR1Indicator" Type="nvarchar" Mode="In" />
+          <Parameter Name="CCCNNo" Type="nvarchar" Mode="In" />
+          <Parameter Name="SupercedeDate" Type="nvarchar" Mode="In" />
+          <Parameter Name="CurrentCatpage" Type="nvarchar" Mode="In" />
+          <Parameter Name="UkIntroDate" Type="nvarchar" Mode="In" />
+          <Parameter Name="Filler" Type="nvarchar" Mode="In" />
+          <Parameter Name="UkDiscDate" Type="nvarchar" Mode="In" />
+          <Parameter Name="SubstituteBy" Type="nvarchar" Mode="In" />
+          <Parameter Name="BHCFlag" Type="nvarchar" Mode="In" />
+          <Parameter Name="Filler1" Type="nvarchar" Mode="In" />
+          <Parameter Name="FutureSellPrice" Type="decimal" Mode="In" />
+          <Parameter Name="IntCat" Type="nvarchar" Mode="In" />
+          <Parameter Name="NewProdChangeInd" Type="nvarchar" Mode="In" />
+          <Parameter Name="OutofStockProhibitchangeind" Type="nvarchar" Mode="In" />
+          <Parameter Name="DiscChangeInd" Type="nvarchar" Mode="In" />
+          <Parameter Name="SupercededChangeInd" Type="nvarchar" Mode="In" />
+          <Parameter Name="PackSizeChangeInd" Type="nvarchar" Mode="In" />
+          <Parameter Name="RolledProductChangeInd" Type="nvarchar" Mode="In" />
+          <Parameter Name="ExpiringProductChangeInd" Type="nvarchar" Mode="In" />
           <Parameter Name="Manufacturer" Type="nvarchar" Mode="In" />
           <Parameter Name="MPN" Type="nvarchar" Mode="In" />
-          <Parameter Name="MH_Code_Level_1" Type="nvarchar" Mode="In" />
+          <Parameter Name="MHCodeLevel1" Type="nvarchar" Mode="In" />
           <Parameter Name="Heigh" Type="decimal" Mode="In" />
           <Parameter Name="Width" Type="decimal" Mode="In" />
           <Parameter Name="Length" Type="decimal" Mode="In" />
-          <Parameter Name="DimensionUnit" Type="nvarchar" Mode="In" />
-          <Parameter Name="Currency" Type="nvarchar" Mode="In" />
-          <Parameter Name="SupplierID" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="ItemDetailTabFiller" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="articleNo" Type="nvarchar" Mode="In" />
@@ -3641,7 +3678,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <EntitySet Name="SuperDiskP" EntityType="Self.SuperDiskP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SupplierAddress" EntityType="Self.SupplierAddress" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SupplierBank" EntityType="Self.SupplierBank" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SupplierBankAccount" EntityType="Self.SupplierBankAccount" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SupplierCategory" EntityType="Self.SupplierCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SupplierSubCategory" EntityType="Self.SupplierSubCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SupplierWorker" EntityType="Self.SupplierWorker" Schema="dbo" store:Type="Tables" />
@@ -4129,7 +4166,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <End Role="Supplier" EntitySet="Supplier" />
           </AssociationSet>
           <AssociationSet Name="FK__Supplier__BankID__0C50D423" Association="Self.FK__Supplier__BankID__0C50D423">
-            <End Role="SupplierBank" EntitySet="SupplierBank" />
+            <End Role="SupplierBankAccount" EntitySet="SupplierBankAccount" />
             <End Role="Supplier" EntitySet="Supplier" />
           </AssociationSet>
           <AssociationSet Name="FK__Supplier__Catego__1FF8A574" Association="Self.FK__Supplier__Catego__1FF8A574">
@@ -4140,7 +4177,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <End Role="Currency" EntitySet="Currency" />
             <End Role="Supplier" EntitySet="Supplier" />
           </AssociationSet>
-          <AssociationSet Name="FK__Supplier__MainCo__54376389" Association="Self.FK__Supplier__MainCo__54376389">
+          <AssociationSet Name="FK__Supplier__MainCo__791ECF75" Association="Self.FK__Supplier__MainCo__791ECF75">
             <End Role="SupplierWorker" EntitySet="SupplierWorker" />
             <End Role="Supplier" EntitySet="Supplier" />
           </AssociationSet>
@@ -4179,6 +4216,10 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <AssociationSet Name="FK__SupplierA__TownI__30E33A54" Association="Self.FK__SupplierA__TownI__30E33A54">
             <End Role="Town" EntitySet="Town" />
             <End Role="SupplierAddress" EntitySet="SupplierAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SupplierB__Suppl__782AAB3C" Association="Self.FK__SupplierB__Suppl__782AAB3C">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="SupplierBankAccount" EntitySet="SupplierBankAccount" />
           </AssociationSet>
           <AssociationSet Name="FK__SupplierS__categ__03BB8E22" Association="Self.FK__SupplierS__categ__03BB8E22">
             <End Role="SupplierCategory" EntitySet="SupplierCategory" />
@@ -5614,12 +5655,13 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <NavigationProperty Name="PurchaseOperations" Relationship="Self.FK__PurchaseO__Suppl__15660868" FromRole="Supplier" ToRole="PurchaseOperation" />
           <NavigationProperty Name="Stocks" Relationship="Self.FK__Stock__SupplierI__52A420D2" FromRole="Supplier" ToRole="Stock" />
           <NavigationProperty Name="Worker" Relationship="Self.FK__Supplier__accoun__2DB1C7EE" FromRole="Supplier" ToRole="Worker" />
-          <NavigationProperty Name="SupplierBank" Relationship="Self.FK__Supplier__BankID__0C50D423" FromRole="Supplier" ToRole="SupplierBank" />
+          <NavigationProperty Name="SupplierBankAccount" Relationship="Self.FK__Supplier__BankID__0C50D423" FromRole="Supplier" ToRole="SupplierBankAccount" />
           <NavigationProperty Name="SupplierCategory" Relationship="Self.FK__Supplier__Catego__1FF8A574" FromRole="Supplier" ToRole="SupplierCategory" />
-          <NavigationProperty Name="SupplierWorker" Relationship="Self.FK__Supplier__MainCo__54376389" FromRole="Supplier" ToRole="SupplierWorker" />
+          <NavigationProperty Name="SupplierWorker" Relationship="Self.FK__Supplier__MainCo__791ECF75" FromRole="Supplier" ToRole="SupplierWorker" />
           <NavigationProperty Name="Worker1" Relationship="Self.FK__Supplier__repres__65370702" FromRole="Supplier" ToRole="Worker" />
           <NavigationProperty Name="SupplierSubCategory" Relationship="Self.FK__Supplier__SubCat__20ECC9AD" FromRole="Supplier" ToRole="SupplierSubCategory" />
           <NavigationProperty Name="SupplierAddresses" Relationship="Self.FK__SupplierA__Suppl__42ACE4D4" FromRole="Supplier" ToRole="SupplierAddress" />
+          <NavigationProperty Name="SupplierBankAccounts" Relationship="Self.FK__SupplierB__Suppl__782AAB3C" FromRole="Supplier" ToRole="SupplierBankAccount" />
           <NavigationProperty Name="SupplierWorkers" Relationship="Self.FK__SupplierW__suppl__74794A92" FromRole="Supplier" ToRole="SupplierWorker" />
         </EntityType>
         <EntityType Name="SupplierAddress">
@@ -5643,13 +5685,18 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <NavigationProperty Name="Town" Relationship="Self.FK__SupplierA__TownI__30E33A54" FromRole="SupplierAddress" ToRole="Town" />
           <NavigationProperty Name="SupplierWorkers" Relationship="Self.FK__SupplierW__suppl__756D6ECB" FromRole="SupplierAddress" ToRole="SupplierWorker" />
         </EntityType>
-        <EntityType Name="SupplierBank">
+        <EntityType Name="SupplierBankAccount">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="bankname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Suppliers" Relationship="Self.FK__Supplier__BankID__0C50D423" FromRole="SupplierBank" ToRole="Supplier" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BranchCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AccountNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IBAN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SupplierID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Suppliers" Relationship="Self.FK__Supplier__BankID__0C50D423" FromRole="SupplierBankAccount" ToRole="Supplier" />
+          <NavigationProperty Name="Supplier" Relationship="Self.FK__SupplierB__Suppl__782AAB3C" FromRole="SupplierBankAccount" ToRole="Supplier" />
         </EntityType>
         <EntityType Name="SupplierCategory">
           <Key>
@@ -5689,7 +5736,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="PhoneExternalNum" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Language" Relationship="Self.FK__SupplierW__langu__72910220" FromRole="SupplierWorker" ToRole="Languages" />
           <NavigationProperty Name="Note" Relationship="Self.FK__SupplierW__suppl__73852659" FromRole="SupplierWorker" ToRole="Notes" />
-          <NavigationProperty Name="Suppliers" Relationship="Self.FK__Supplier__MainCo__54376389" FromRole="SupplierWorker" ToRole="Supplier" />
+          <NavigationProperty Name="Suppliers" Relationship="Self.FK__Supplier__MainCo__791ECF75" FromRole="SupplierWorker" ToRole="Supplier" />
           <NavigationProperty Name="Supplier" Relationship="Self.FK__SupplierW__suppl__74794A92" FromRole="SupplierWorker" ToRole="Supplier" />
           <NavigationProperty Name="SupplierAddress" Relationship="Self.FK__SupplierW__suppl__756D6ECB" FromRole="SupplierWorker" ToRole="SupplierAddress" />
         </EntityType>
@@ -7212,10 +7259,10 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Supplier__BankID__0C50D423">
-          <End Role="SupplierBank" Type="Self.SupplierBank" Multiplicity="0..1" />
+          <End Role="SupplierBankAccount" Type="Self.SupplierBankAccount" Multiplicity="0..1" />
           <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="SupplierBank">
+            <Principal Role="SupplierBankAccount">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Supplier">
@@ -7235,7 +7282,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Supplier__MainCo__54376389">
+        <Association Name="FK__Supplier__MainCo__791ECF75">
           <End Role="SupplierWorker" Type="Self.SupplierWorker" Multiplicity="0..1" />
           <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
           <ReferentialConstraint>
@@ -7279,6 +7326,18 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="SupplierAddress">
+              <PropertyRef Name="SupplierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SupplierB__Suppl__782AAB3C">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
+          <End Role="SupplierBankAccount" Type="Self.SupplierBankAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SupplierBankAccount">
               <PropertyRef Name="SupplierID" />
             </Dependent>
           </ReferentialConstraint>
@@ -7411,7 +7470,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <EntitySet Name="SuperDiskPs" EntityType="Self.SuperDiskP" />
           <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
           <EntitySet Name="SupplierAddresses" EntityType="Self.SupplierAddress" />
-          <EntitySet Name="SupplierBanks" EntityType="Self.SupplierBank" />
+          <EntitySet Name="SupplierBankAccounts" EntityType="Self.SupplierBankAccount" />
           <EntitySet Name="SupplierCategories" EntityType="Self.SupplierCategory" />
           <EntitySet Name="SupplierSubCategories" EntityType="Self.SupplierSubCategory" />
           <EntitySet Name="SupplierWorkers" EntityType="Self.SupplierWorker" />
@@ -7843,14 +7902,14 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <End Role="Supplier" EntitySet="Suppliers" />
           </AssociationSet>
           <AssociationSet Name="FK__Supplier__BankID__0C50D423" Association="Self.FK__Supplier__BankID__0C50D423">
-            <End Role="SupplierBank" EntitySet="SupplierBanks" />
+            <End Role="SupplierBankAccount" EntitySet="SupplierBankAccounts" />
             <End Role="Supplier" EntitySet="Suppliers" />
           </AssociationSet>
           <AssociationSet Name="FK__Supplier__Catego__1FF8A574" Association="Self.FK__Supplier__Catego__1FF8A574">
             <End Role="SupplierCategory" EntitySet="SupplierCategories" />
             <End Role="Supplier" EntitySet="Suppliers" />
           </AssociationSet>
-          <AssociationSet Name="FK__Supplier__MainCo__54376389" Association="Self.FK__Supplier__MainCo__54376389">
+          <AssociationSet Name="FK__Supplier__MainCo__791ECF75" Association="Self.FK__Supplier__MainCo__791ECF75">
             <End Role="SupplierWorker" EntitySet="SupplierWorkers" />
             <End Role="Supplier" EntitySet="Suppliers" />
           </AssociationSet>
@@ -7865,6 +7924,10 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <AssociationSet Name="FK__SupplierA__Suppl__42ACE4D4" Association="Self.FK__SupplierA__Suppl__42ACE4D4">
             <End Role="Supplier" EntitySet="Suppliers" />
             <End Role="SupplierAddress" EntitySet="SupplierAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SupplierB__Suppl__782AAB3C" Association="Self.FK__SupplierB__Suppl__782AAB3C">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="SupplierBankAccount" EntitySet="SupplierBankAccounts" />
           </AssociationSet>
           <AssociationSet Name="FK__SupplierW__suppl__74794A92" Association="Self.FK__SupplierW__suppl__74794A92">
             <End Role="Supplier" EntitySet="Suppliers" />
@@ -8159,26 +8222,47 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           </FunctionImport>
           <FunctionImport Name="FormViewAll" ReturnType="Collection(IMEModel.FormViewAll_Result)" />
           <FunctionImport Name="ItemAdd">
-            <Parameter Name="Article_No" Mode="In" Type="String" />
-            <Parameter Name="Article_Desc" Mode="In" Type="String" />
-            <Parameter Name="Pack_Quantity" Mode="In" Type="Int32" />
-            <Parameter Name="Unit_Content" Mode="In" Type="Int32" />
-            <Parameter Name="Unit_Measure" Mode="In" Type="String" />
-            <Parameter Name="Hazardous_Ind" Mode="In" Type="String" />
-            <Parameter Name="Calibration_Ind" Mode="In" Type="String" />
+            <Parameter Name="ArticleNo" Mode="In" Type="String" />
+            <Parameter Name="ArticleDesc" Mode="In" Type="String" />
+            <Parameter Name="PackCode" Mode="In" Type="Int32" />
+            <Parameter Name="PackQuantity" Mode="In" Type="Int32" />
+            <Parameter Name="UnitContent" Mode="In" Type="Int32" />
+            <Parameter Name="UnitMeasure" Mode="In" Type="String" />
+            <Parameter Name="UkCol1" Mode="In" Type="Decimal" />
+            <Parameter Name="StandardWeight" Mode="In" Type="Decimal" />
+            <Parameter Name="HazardousInd" Mode="In" Type="String" />
+            <Parameter Name="CalibrationInd" Mode="In" Type="String" />
+            <Parameter Name="ObsoleteFlag" Mode="In" Type="String" />
             <Parameter Name="MH1" Mode="In" Type="String" />
-            <Parameter Name="Licensed_Ind" Mode="In" Type="String" />
+            <Parameter Name="LowDiscountInd" Mode="In" Type="String" />
+            <Parameter Name="LicensedInd" Mode="In" Type="String" />
+            <Parameter Name="ShelfLife" Mode="In" Type="String" />
             <Parameter Name="CofO" Mode="In" Type="String" />
-            <Parameter Name="Disc_Change_Ind" Mode="In" Type="String" />
+            <Parameter Name="EUR1Indicator" Mode="In" Type="String" />
+            <Parameter Name="CCCNNo" Mode="In" Type="String" />
+            <Parameter Name="SupercedeDate" Mode="In" Type="String" />
+            <Parameter Name="CurrentCatpage" Mode="In" Type="String" />
+            <Parameter Name="UkIntroDate" Mode="In" Type="String" />
+            <Parameter Name="Filler" Mode="In" Type="String" />
+            <Parameter Name="UkDiscDate" Mode="In" Type="String" />
+            <Parameter Name="SubstituteBy" Mode="In" Type="String" />
+            <Parameter Name="BHCFlag" Mode="In" Type="String" />
+            <Parameter Name="Filler1" Mode="In" Type="String" />
+            <Parameter Name="FutureSellPrice" Mode="In" Type="Decimal" />
+            <Parameter Name="IntCat" Mode="In" Type="String" />
+            <Parameter Name="NewProdChangeInd" Mode="In" Type="String" />
+            <Parameter Name="OutofStockProhibitchangeind" Mode="In" Type="String" />
+            <Parameter Name="DiscChangeInd" Mode="In" Type="String" />
+            <Parameter Name="SupercededChangeInd" Mode="In" Type="String" />
+            <Parameter Name="PackSizeChangeInd" Mode="In" Type="String" />
+            <Parameter Name="RolledProductChangeInd" Mode="In" Type="String" />
+            <Parameter Name="ExpiringProductChangeInd" Mode="In" Type="String" />
             <Parameter Name="Manufacturer" Mode="In" Type="String" />
             <Parameter Name="MPN" Mode="In" Type="String" />
-            <Parameter Name="MH_Code_Level_1" Mode="In" Type="String" />
+            <Parameter Name="MHCodeLevel1" Mode="In" Type="String" />
             <Parameter Name="Heigh" Mode="In" Type="Decimal" />
             <Parameter Name="Width" Mode="In" Type="Decimal" />
             <Parameter Name="Length" Mode="In" Type="Decimal" />
-            <Parameter Name="DimensionUnit" Mode="In" Type="String" />
-            <Parameter Name="Currency" Mode="In" Type="String" />
-            <Parameter Name="SupplierID" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ItemDetailTabFiller" ReturnType="Collection(IMEModel.ItemDetailTabFiller_Result)">
             <Parameter Name="articleNo" Mode="In" Type="String" />
@@ -10399,11 +10483,15 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="SupplierBanks">
-            <EntityTypeMapping TypeName="IMEModel.SupplierBank">
-              <MappingFragment StoreEntitySet="SupplierBank">
+          <EntitySetMapping Name="SupplierBankAccounts">
+            <EntityTypeMapping TypeName="IMEModel.SupplierBankAccount">
+              <MappingFragment StoreEntitySet="SupplierBankAccount">
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="bankname" ColumnName="bankname" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="BranchCode" ColumnName="BranchCode" />
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+                <ScalarProperty Name="IBAN" ColumnName="IBAN" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

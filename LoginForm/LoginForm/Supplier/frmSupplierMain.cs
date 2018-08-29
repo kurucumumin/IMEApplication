@@ -158,10 +158,10 @@ namespace LoginForm
             cmbLanguage.Items.Insert(0, "Choose");
             cmbLanguage.SelectedIndex = 0;
 
-            cmbBankName.Items.AddRange(db.SupplierBanks.ToArray());
-            cmbBankName.DisplayMember = "bankname";
-            cmbBankName.Items.Insert(0, "Choose");
-            cmbBankName.SelectedIndex = 0;
+            //txtAccountTitle.Items.AddRange(db.SupplierBanks.ToArray());
+            //txtAccountTitle.DisplayMember = "bankname";
+            //txtAccountTitle.Items.Insert(0, "Choose");
+            //txtAccountTitle.SelectedIndex = 0;
 
             cmbContactAddress.Items.Insert(0, "Choose");
             cmbContactAddress.DisplayMember = "Title";
@@ -225,7 +225,7 @@ namespace LoginForm
                     s.paymentmethodID = ((PaymentMethod)cmbAccountMethod.SelectedItem).ID;
                     //s.discountrate = Convert.ToDecimal(txtDiscountRate.Text);
                     s.DefaultCurrency = ((Currency)cmbCurrency.SelectedItem).currencyID;
-                    s.BankID = ((SupplierBank)cmbBankName.SelectedItem).ID;
+                    //s.BankID = ((SupplierBank)cmbBankName.SelectedItem).ID;
                     s.branchcode = txtBankBranchCode.Text;
                     s.accountnumber = txtBankAccountNumber.Text;
                     s.iban = txtBankIban.Text;
@@ -388,10 +388,10 @@ namespace LoginForm
                     s.paymentmethodID = ((PaymentMethod)cmbAccountMethod.SelectedItem).ID;
                     //s.discountrate = Convert.ToDecimal(txtDiscountRate.Text);
                     s.DefaultCurrency = ((Currency)cmbCurrency.SelectedItem).currencyID;
-                    s.BankID = ((SupplierBank)cmbBankName.SelectedItem).ID;
-                    s.branchcode = txtBankBranchCode.Text;
-                    s.accountnumber = txtBankAccountNumber.Text;
-                    s.iban = txtBankIban.Text;
+                    //s.BankID = ((SupplierBank)txtAccountTitle.SelectedItem).ID;
+                    //s.branchcode = txtBankBranchCode.Text;
+                    //s.accountnumber = txtBankAccountNumber.Text;
+                    //s.iban = txtBankIban.Text;
 
                     s.webadress = (txtWeb.Text != String.Empty) ? txtWeb.Text : null;
 
@@ -513,7 +513,7 @@ namespace LoginForm
                 btnContactDelete.Enabled = state;
             }
 
-            cmbBankName.Enabled = state;
+            txtAccountTitle.Enabled = state;
             txtBankBranchCode.Enabled = state;
             txtBankAccountNumber.Enabled = state;
             txtBankIban.Enabled = state;
@@ -627,8 +627,8 @@ namespace LoginForm
             name = s.Currency.currencyName;
             cmbCurrency.SelectedIndex = cmbCurrency.FindStringExact(name);
 
-            name = s.SupplierBank.bankname;
-            cmbBankName.SelectedIndex = cmbBankName.FindStringExact(name);
+            //name = s.SupplierBank.bankname;
+            //txtAccountTitle.SelectedIndex = txtAccountTitle.FindStringExact(name);
 
             name = s.SupplierWorker.sw_name;
             cmbMainContact.SelectedIndex = cmbMainContact.FindStringExact(name);
@@ -673,7 +673,7 @@ namespace LoginForm
             //txtDiscountRate.Clear();
             cmbCurrency.SelectedIndex = 0;
 
-            cmbBankName.SelectedIndex = 0;
+            txtAccountTitle.Clear();
             txtBankBranchCode.Clear();
             txtBankAccountNumber.Clear();
             txtBankIban.Clear();
@@ -1708,9 +1708,9 @@ namespace LoginForm
                     {
                         ErrorLog.Add("You should add at least Contact!");
                     }
-                    if (cmbBankName.SelectedIndex <= 0)
+                    if (txtAccountTitle.Text.Trim() == String.Empty)
                     {
-                        ErrorLog.Add("You should choose a Bank!");
+                        ErrorLog.Add("Account Title must not be empty!");
                     }
                     if (txtBankBranchCode.Text.Trim() == String.Empty)
                     {
@@ -2135,6 +2135,26 @@ namespace LoginForm
         private void button4_Click(object sender, EventArgs e)
         {
             tabgenel.SelectedTab = tabInfo;
+        }
+
+        private void btnBankAdd_Click(object sender, EventArgs e)
+        {
+            if(btnBankAdd.Text == "Add")
+            {
+                txtAccountTitle.Text = String.Empty;
+                txtBankBranchCode.Text = String.Empty;
+                txtBankAccountNumber.Text = String.Empty;
+                txtBankIban.Text = String.Empty;
+
+                btnBankAdd.Text = "Save";
+                btnBankModify.Text = "Cancel";
+                btnBankDelete.Enabled = false;
+            }
+            else /*if (btnBankAdd.Text = "Save")*/
+            {
+
+            }
+
         }
     }
 }
