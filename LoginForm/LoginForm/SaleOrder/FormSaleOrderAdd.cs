@@ -4684,7 +4684,7 @@ namespace LoginForm.QuotationModule
                     //}
                     //#endregion
 
-                    discountAmount += ((decimal)sdi.Discount) * sdi.Quantity;
+                    discountAmount += ((decimal)sdi.UPIME - (decimal)sdi.UCUPCurr) * sdi.Quantity;
 
                     IME.SaleOrderDetails.Add(sdi);
                     IME.SaveChanges();
