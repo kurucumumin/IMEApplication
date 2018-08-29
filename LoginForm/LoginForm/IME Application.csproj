@@ -481,7 +481,7 @@
     <Compile Include="DataSet\SupplierAddress.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\SupplierBank.cs">
+    <Compile Include="DataSet\SupplierBankAccount.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SupplierCategory.cs">

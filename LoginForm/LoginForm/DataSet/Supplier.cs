@@ -21,6 +21,7 @@ namespace LoginForm.DataSet
             this.PurchaseOperations = new HashSet<PurchaseOperation>();
             this.Stocks = new HashSet<Stock>();
             this.SupplierAddresses = new HashSet<SupplierAddress>();
+            this.SupplierBankAccounts = new HashSet<SupplierBankAccount>();
             this.SupplierWorkers = new HashSet<SupplierWorker>();
         }
     
@@ -57,13 +58,15 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Stock> Stocks { get; set; }
         public virtual Worker Worker { get; set; }
-        public virtual SupplierBank SupplierBank { get; set; }
+        public virtual SupplierBankAccount SupplierBankAccount { get; set; }
         public virtual SupplierCategory SupplierCategory { get; set; }
         public virtual SupplierWorker SupplierWorker { get; set; }
         public virtual Worker Worker1 { get; set; }
         public virtual SupplierSubCategory SupplierSubCategory { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SupplierAddress> SupplierAddresses { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SupplierBankAccount> SupplierBankAccounts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SupplierWorker> SupplierWorkers { get; set; }
     }

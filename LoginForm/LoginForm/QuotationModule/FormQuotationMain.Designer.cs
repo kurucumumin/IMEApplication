@@ -119,6 +119,7 @@
             this.dgQuotation.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgQuotation.Size = new System.Drawing.Size(1379, 550);
             this.dgQuotation.TabIndex = 0;
+            this.dgQuotation.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgQuotation_CellEndEdit);
             this.dgQuotation.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgQuotation_CellMouseDoubleClick);
             this.dgQuotation.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgQuotation_KeyDown);
             // 
@@ -132,7 +133,7 @@
             this.cOPYQUOTATIONToolStripMenuItem,
             this.mODIFYQUOTATIONToolStripMenuItem});
             this.gridRightClick.Name = "gridRightClick";
-            this.gridRightClick.Size = new System.Drawing.Size(189, 158);
+            this.gridRightClick.Size = new System.Drawing.Size(189, 136);
             // 
             // dELETEQUOTATIONToolStripMenuItem
             // 

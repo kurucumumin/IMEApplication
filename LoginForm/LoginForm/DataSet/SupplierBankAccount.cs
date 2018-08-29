@@ -12,18 +12,23 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class SupplierBank
+    public partial class SupplierBankAccount
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public SupplierBank()
+        public SupplierBankAccount()
         {
             this.Suppliers = new HashSet<Supplier>();
         }
     
         public int ID { get; set; }
-        public string bankname { get; set; }
+        public string Title { get; set; }
+        public string BranchCode { get; set; }
+        public string AccountNumber { get; set; }
+        public string IBAN { get; set; }
+        public string SupplierID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Supplier> Suppliers { get; set; }
+        public virtual Supplier Supplier { get; set; }
     }
 }
