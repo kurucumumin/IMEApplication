@@ -90,7 +90,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 121F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 9F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1395, 696);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1370, 696);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // dgQuotation
@@ -117,7 +117,7 @@
             this.dgQuotation.ReadOnly = true;
             this.dgQuotation.RowTemplate.Height = 24;
             this.dgQuotation.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgQuotation.Size = new System.Drawing.Size(1379, 550);
+            this.dgQuotation.Size = new System.Drawing.Size(1354, 550);
             this.dgQuotation.TabIndex = 0;
             this.dgQuotation.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgQuotation_CellEndEdit);
             this.dgQuotation.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgQuotation_CellMouseDoubleClick);
@@ -185,7 +185,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1389, 115);
+            this.panel1.Size = new System.Drawing.Size(1364, 115);
             this.panel1.TabIndex = 1;
             // 
             // btnSearchStockNumber
@@ -280,9 +280,6 @@
             // chcAllQuots
             // 
             this.chcAllQuots.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chcAllQuots.Checked = true;
-            this.chcAllQuots.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chcAllQuots.Enabled = false;
             this.chcAllQuots.Location = new System.Drawing.Point(6, 85);
             this.chcAllQuots.Name = "chcAllQuots";
             this.chcAllQuots.Size = new System.Drawing.Size(216, 21);
@@ -518,7 +515,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
-            this.ClientSize = new System.Drawing.Size(1395, 696);
+            this.ClientSize = new System.Drawing.Size(1370, 696);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MinimumSize = new System.Drawing.Size(1200, 720);

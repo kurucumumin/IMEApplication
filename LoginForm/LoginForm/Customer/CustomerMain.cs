@@ -565,7 +565,7 @@ namespace LoginForm
             else
             {
                 SqlConnection conn = new SqlConnection();
-                conn.ConnectionString = @"Data Source=195.201.76.156\MSSQL4;Initial Catalog=IME;Persist Security Info=True;User ID=Sa;Password=IME1453";
+                conn.ConnectionString = @"Data Source=195.201.76.136;Initial Catalog=IME;Persist Security Info=True;User ID=sa;Password=ime1453..";
 
                 SqlCommand command = new SqlCommand();
                 command.Connection = conn;
