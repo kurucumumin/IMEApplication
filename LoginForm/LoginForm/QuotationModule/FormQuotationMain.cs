@@ -93,6 +93,9 @@ namespace LoginForm.QuotationModule
                             quo.status = "Deleted";
 
                             IME.SaveChanges();
+
+                           
+                            dgQuotation.Rows[row.Index].DefaultCellStyle.BackColor = System.Drawing.Color.Red;
                         }
 
                         IME.SaveChanges();
@@ -141,15 +144,14 @@ namespace LoginForm.QuotationModule
 
         private void txtSearchText_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == Convert.ToChar(Keys.Enter) && cbSearch.SelectedItem != null)
+            if (e.KeyChar == Convert.ToChar(Keys.Enter) && cbSearch.SelectedItem != null && chcAllQuots.Checked==true)
             {
                 IMEEntities IME = new IMEEntities();
                 switch (cbSearch.SelectedItem.ToString())
                 {
                     case "QUOT NUMBER":
-                        var list1 = from q in IME.Quotations
+                        var list1 = (from q in IME.Quotations
                                    join c in IME.Customers on q.CustomerID equals c.ID
-                                   where q.QuotationNo.Contains(txtSearchText.Text)
                                    select new
                                    {
                                        Date = q.StartDate,
@@ -160,8 +162,9 @@ namespace LoginForm.QuotationModule
                                        Total = q.GrossTotal,
                                        Currency = q.CurrName,
                                        Notes = q.Note.Note_name,
-                                       Representative = q.Worker.NameLastName
-                                   };
+                                       Representative = q.Worker.NameLastName,
+                                       Status = q.status
+                                   }).ToList().Where(x=> x.QuotationNo.Substring(x.QuotationNo.LastIndexOf('/')).Contains(txtSearchText.Text));
 
                         populateGrid(list1.ToList());
                         break;
@@ -181,7 +184,8 @@ namespace LoginForm.QuotationModule
                                         Total = q.GrossTotal,
                                         Currency = q.CurrName,
                                         Notes = q.Note.Note_name,
-                                        Representative = q.Worker.NameLastName
+                                        Representative = q.Worker.NameLastName,
+                                        Status = q.status
                                     };
 
                         populateGrid(list2.ToList());
@@ -202,7 +206,8 @@ namespace LoginForm.QuotationModule
                                         Total = q.GrossTotal,
                                         Currency = q.CurrName,
                                         Notes = q.Note.Note_name,
-                                        Representative = q.Worker.NameLastName
+                                        Representative = q.Worker.NameLastName,
+                                        Status = q.status
                                     };
 
                         populateGrid(list3.ToList());
@@ -227,7 +232,8 @@ namespace LoginForm.QuotationModule
                                         Total = q.GrossTotal,
                                         Currency = q.CurrName,
                                         Notes = q.Note.Note_name,
-                                        Representative = q.Worker.NameLastName
+                                        Representative = q.Worker.NameLastName,
+                                        Status = q.status
                                     };
 
                             populateGrid(list4.ToList());
@@ -250,7 +256,8 @@ namespace LoginForm.QuotationModule
                                         Total = q.GrossTotal,
                                         Currency = q.CurrName,
                                         Notes = q.Note.Note_name,
-                                        Representative = q.Worker.NameLastName
+                                        Representative = q.Worker.NameLastName,
+                                        Status = q.status
                                     };
 
                         populateGrid(list5.ToList());
@@ -273,6 +280,152 @@ namespace LoginForm.QuotationModule
 
                         //populateGrid(list6.ToList());
                         MessageBox.Show("MPN filter is not implemented into the software","Error");
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                IMEEntities IME = new IMEEntities();
+                switch (cbSearch.SelectedItem.ToString())
+                {
+                    case "QUOT NUMBER":
+                        var list1 = (from q in IME.Quotations
+                                    join c in IME.Customers on q.CustomerID equals c.ID
+                                    where q.StartDate >= dtpFromDate.Value && q.StartDate < dtpToDate.Value
+                                    select new
+                                    {
+                                        Date = q.StartDate,
+                                        QuotationNo = q.QuotationNo,
+                                        RFQ = q.RFQNo,
+                                        CustomerCode = c.ID,
+                                        CustomerName = c.c_name,
+                                        Total = q.GrossTotal,
+                                        Currency = q.CurrName,
+                                        Notes = q.Note.Note_name,
+                                        Representative = q.Worker.NameLastName,
+                                        Status = q.status
+                                    }).ToList().Where(x => x.QuotationNo.Substring(x.QuotationNo.LastIndexOf('/')).Contains(txtSearchText.Text));
+
+                        populateGrid(list1.ToList());
+                        break;
+
+                    case "CUSTOMER CODE":
+                        string customerCode = txtSearchText.Text.ToUpperInvariant();
+                        var list2 = from q in IME.Quotations
+                                    join c in IME.Customers on q.CustomerID equals c.ID
+                                    where (c.ID.Contains(customerCode)
+                                    && q.StartDate >= dtpFromDate.Value && q.StartDate < dtpToDate.Value)
+                                    select new
+                                    {
+                                        Date = q.StartDate,
+                                        QuotationNo = q.QuotationNo,
+                                        RFQ = q.RFQNo,
+                                        CustomerCode = c.ID,
+                                        CustomerName = c.c_name,
+                                        Total = q.GrossTotal,
+                                        Currency = q.CurrName,
+                                        Notes = q.Note.Note_name,
+                                        Representative = q.Worker.NameLastName,
+                                        Status = q.status
+                                    };
+
+                        populateGrid(list2.ToList());
+                        break;
+
+                    case "CUSTOMER NAME":
+                        string customerName = txtSearchText.Text.ToUpperInvariant();
+                        var list3 = from q in IME.Quotations
+                                    join c in IME.Customers on q.CustomerID equals c.ID
+                                    where (c.c_name.Contains(customerName)
+                                    && q.StartDate >= dtpFromDate.Value && q.StartDate < dtpToDate.Value)
+                                    select new
+                                    {
+                                        Date = q.StartDate,
+                                        QuotationNo = q.QuotationNo,
+                                        RFQ = q.RFQNo,
+                                        CustomerCode = c.ID,
+                                        CustomerName = c.c_name,
+                                        Total = q.GrossTotal,
+                                        Currency = q.CurrName,
+                                        Notes = q.Note.Note_name,
+                                        Representative = q.Worker.NameLastName,
+                                        Status = q.status
+                                    };
+
+                        populateGrid(list3.ToList());
+                        break;
+
+                    case "BY TOTAL AMOUNT":
+                        decimal amountDecimal;
+                        string searchTxt = txtSearchText.Text.Replace(",", ".");
+                        if (Decimal.TryParse(searchTxt, out amountDecimal))
+                        {
+                            int amount = Decimal.ToInt32(amountDecimal);
+                            var list4 = from q in IME.Quotations
+                                        join c in IME.Customers on q.CustomerID equals c.ID
+                                        where (amount <= q.GrossTotal && q.GrossTotal < (amount + 1)
+                                        && q.StartDate >= dtpFromDate.Value && q.StartDate < dtpToDate.Value)
+                                        select new
+                                        {
+                                            Date = q.StartDate,
+                                            QuotationNo = q.QuotationNo,
+                                            RFQ = q.RFQNo,
+                                            CustomerCode = c.ID,
+                                            CustomerName = c.c_name,
+                                            Total = q.GrossTotal,
+                                            Currency = q.CurrName,
+                                            Notes = q.Note.Note_name,
+                                            Representative = q.Worker.NameLastName,
+                                            Status = q.status
+                                        };
+
+                            populateGrid(list4.ToList());
+                        }
+
+                        break;
+
+                    case "BY RFQ":
+                        string rfq = txtSearchText.Text.ToUpperInvariant();
+                        var list5 = from q in IME.Quotations
+                                    join c in IME.Customers on q.CustomerID equals c.ID
+                                    where (q.RFQNo.Contains(rfq)
+                                    && q.StartDate >= dtpFromDate.Value && q.StartDate < dtpToDate.Value)
+                                    select new
+                                    {
+                                        Date = q.StartDate,
+                                        QuotationNo = q.QuotationNo,
+                                        RFQ = q.RFQNo,
+                                        CustomerCode = c.ID,
+                                        CustomerName = c.c_name,
+                                        Total = q.GrossTotal,
+                                        Currency = q.CurrName,
+                                        Notes = q.Note.Note_name,
+                                        Representative = q.Worker.NameLastName,
+                                        Status = q.status
+                                    };
+
+                        populateGrid(list5.ToList());
+                        break;
+
+                    case "BY MPN":
+                        //string mpn = txtSearchText.Text.ToUpperInvariant();
+                        //var list6 = from q in IME.Quotations
+                        //            join qd in IME.QuotationDetails on q.QuotationNo equals qd.QuotationNo
+                        //            join c in IME.Customers on q.CustomerID equals c.ID
+                        //            where qd.MPN.Contains(mpn)
+                        //            select new
+                        //            {
+                        //                Date = (DateTime)q.StartDate,
+                        //                QuotationNo = q.QuotationNo,
+                        //                RFQ = q.RFQNo,
+                        //                CustomerCode = c.ID,
+                        //                CustomerName = c.c_name
+                        //            };
+
+                        //populateGrid(list6.ToList());
+                        MessageBox.Show("MPN filter is not implemented into the software", "Error");
                         break;
                     default:
                         break;
@@ -319,22 +472,23 @@ namespace LoginForm.QuotationModule
         {
             
             IMEEntities IME = new IMEEntities();
-           // DateTime time = Convert.ToDateTime(IME.CurrentDate().FirtsOrDefault());
-          //  MessageBox.Show(time.ToString());
+            // DateTime time = Convert.ToDateTime(IME.CurrentDate().FirtsOrDefault());
+            //  MessageBox.Show(time.ToString());
             var list = (from q in IME.Quotations/*.AsEnumerable()*/
-                       join c in IME.Customers on q.CustomerID equals c.ID
-                       where q.StartDate >= fromDate && q.StartDate < toDate
-                       select new
-                       {
-                           Date = q.StartDate,
-                           QuotationNo = q.QuotationNo,
-                           RFQ = q.RFQNo,
-                           CustomerCode = c.ID,
-                           CustomerName = c.c_name,
-                           Total=q.GrossTotal,
-                           Currency= q.CurrName,
-                           Notes=q.Note.Note_name,
-                           Representative = q.Worker.NameLastName
+                        join c in IME.Customers on q.CustomerID equals c.ID
+                        where q.StartDate >= fromDate && q.StartDate < toDate
+                        select new
+                        {
+                            Date = q.StartDate,
+                            QuotationNo = q.QuotationNo,
+                            RFQ = q.RFQNo,
+                            CustomerCode = c.ID,
+                            CustomerName = c.c_name,
+                            Total = q.GrossTotal,
+                            Currency = q.CurrName,
+                            Notes = q.Note.Note_name,
+                            Representative = q.Worker.NameLastName,
+                            Status = q.status
                        }).OrderByDescending(x => x.Date);
 
             populateGrid(list.ToList());
@@ -352,6 +506,15 @@ namespace LoginForm.QuotationModule
             dgQuotation.DataSource = null;
             dgQuotation.DataSource = queryable;
             dgQuotation.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            foreach (DataGridViewRow row in dgQuotation.Rows)
+            {
+                if (row.Cells["Status"].Value.ToString() == "Deleted")
+                {
+                    row.DefaultCellStyle.BackColor = System.Drawing.Color.Red;
+                }
+                
+            }
         }
 
         private void dgQuotation_KeyDown(object sender, KeyEventArgs e)
@@ -421,7 +584,8 @@ namespace LoginForm.QuotationModule
                                    Total = q.GrossTotal,
                                    Currency = q.CurrName,
                                    Notes = q.Note.Note_name,
-                                   Representative = q.Worker.NameLastName
+                                   Representative = q.Worker.NameLastName,
+                                   Status = q.status
                                };
 
                     populateGrid(list.ToList());
@@ -442,7 +606,8 @@ namespace LoginForm.QuotationModule
                                     Total = q.GrossTotal,
                                     Currency = q.CurrName,
                                     Notes = q.Note.Note_name,
-                                    Representative = q.Worker.NameLastName
+                                    Representative = q.Worker.NameLastName,
+                                    Status = q.status
                                 };
 
                     populateGrid(list2.ToList());
@@ -530,5 +695,15 @@ namespace LoginForm.QuotationModule
                 MessageBox.Show("You did not chose any quotation.", "Warning!");
             }
         }
+
+        private void dgQuotation_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgQuotation.CurrentRow.Cells["Status"].Value.ToString() == "Deleted")
+            {
+                dgQuotation.CurrentRow.Cells["Status"].Style.BackColor = System.Drawing.Color.Red;
+            }
+        }
+
+       
     }
 }

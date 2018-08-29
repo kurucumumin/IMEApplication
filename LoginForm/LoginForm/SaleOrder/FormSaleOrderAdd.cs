@@ -871,7 +871,15 @@ namespace LoginForm.QuotationModule
                 cbPaymentTerm.ValueMember = "ID";
                 if (!txtQuotationNo.Text.Contains(','))
                 {
-                    cbPaymentTerm.SelectedValue = IME.SaleOrders.Where(x => x.QuotationNos == txtQuotationNo.Text).FirstOrDefault().PaymentTermID;
+                    try
+                    {
+                        cbPaymentTerm.SelectedValue = IME.SaleOrders.Where(x => x.QuotationNos == txtQuotationNo.Text).FirstOrDefault().PaymentTermID;
+                    }
+                    catch (Exception)
+                    {
+
+                        
+                    }
                 }
                 else cbPaymentTerm.SelectedValue = IME.Customers.Where(x => x.ID == CustomerCode.Text).FirstOrDefault().payment_termID;
 
