@@ -93,6 +93,9 @@ namespace LoginForm.QuotationModule
                             quo.status = "Deleted";
 
                             IME.SaveChanges();
+
+                           
+                            dgQuotation.Rows[row.Index].DefaultCellStyle.BackColor = System.Drawing.Color.Red;
                         }
 
                         IME.SaveChanges();
@@ -160,7 +163,8 @@ namespace LoginForm.QuotationModule
                                        Total = q.GrossTotal,
                                        Currency = q.CurrName,
                                        Notes = q.Note.Note_name,
-                                       Representative = q.Worker.NameLastName
+                                       Representative = q.Worker.NameLastName,
+                                       Status = q.status
                                    };
 
                         populateGrid(list1.ToList());
@@ -181,7 +185,8 @@ namespace LoginForm.QuotationModule
                                         Total = q.GrossTotal,
                                         Currency = q.CurrName,
                                         Notes = q.Note.Note_name,
-                                        Representative = q.Worker.NameLastName
+                                        Representative = q.Worker.NameLastName,
+                                        Status = q.status
                                     };
 
                         populateGrid(list2.ToList());
@@ -202,7 +207,8 @@ namespace LoginForm.QuotationModule
                                         Total = q.GrossTotal,
                                         Currency = q.CurrName,
                                         Notes = q.Note.Note_name,
-                                        Representative = q.Worker.NameLastName
+                                        Representative = q.Worker.NameLastName,
+                                        Status = q.status
                                     };
 
                         populateGrid(list3.ToList());
@@ -227,7 +233,8 @@ namespace LoginForm.QuotationModule
                                         Total = q.GrossTotal,
                                         Currency = q.CurrName,
                                         Notes = q.Note.Note_name,
-                                        Representative = q.Worker.NameLastName
+                                        Representative = q.Worker.NameLastName,
+                                        Status = q.status
                                     };
 
                             populateGrid(list4.ToList());
@@ -250,7 +257,8 @@ namespace LoginForm.QuotationModule
                                         Total = q.GrossTotal,
                                         Currency = q.CurrName,
                                         Notes = q.Note.Note_name,
-                                        Representative = q.Worker.NameLastName
+                                        Representative = q.Worker.NameLastName,
+                                        Status = q.status
                                     };
 
                         populateGrid(list5.ToList());
@@ -319,22 +327,23 @@ namespace LoginForm.QuotationModule
         {
             
             IMEEntities IME = new IMEEntities();
-           // DateTime time = Convert.ToDateTime(IME.CurrentDate().FirtsOrDefault());
-          //  MessageBox.Show(time.ToString());
+            // DateTime time = Convert.ToDateTime(IME.CurrentDate().FirtsOrDefault());
+            //  MessageBox.Show(time.ToString());
             var list = (from q in IME.Quotations/*.AsEnumerable()*/
-                       join c in IME.Customers on q.CustomerID equals c.ID
-                       where q.StartDate >= fromDate && q.StartDate < toDate
-                       select new
-                       {
-                           Date = q.StartDate,
-                           QuotationNo = q.QuotationNo,
-                           RFQ = q.RFQNo,
-                           CustomerCode = c.ID,
-                           CustomerName = c.c_name,
-                           Total=q.GrossTotal,
-                           Currency= q.CurrName,
-                           Notes=q.Note.Note_name,
-                           Representative = q.Worker.NameLastName
+                        join c in IME.Customers on q.CustomerID equals c.ID
+                        where q.StartDate >= fromDate && q.StartDate < toDate
+                        select new
+                        {
+                            Date = q.StartDate,
+                            QuotationNo = q.QuotationNo,
+                            RFQ = q.RFQNo,
+                            CustomerCode = c.ID,
+                            CustomerName = c.c_name,
+                            Total = q.GrossTotal,
+                            Currency = q.CurrName,
+                            Notes = q.Note.Note_name,
+                            Representative = q.Worker.NameLastName,
+                            Status = q.status
                        }).OrderByDescending(x => x.Date);
 
             populateGrid(list.ToList());
@@ -352,6 +361,15 @@ namespace LoginForm.QuotationModule
             dgQuotation.DataSource = null;
             dgQuotation.DataSource = queryable;
             dgQuotation.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            foreach (DataGridViewRow row in dgQuotation.Rows)
+            {
+                if (row.Cells["Status"].Value.ToString() == "Deleted")
+                {
+                    row.DefaultCellStyle.BackColor = System.Drawing.Color.Red;
+                }
+                
+            }
         }
 
         private void dgQuotation_KeyDown(object sender, KeyEventArgs e)
@@ -421,7 +439,8 @@ namespace LoginForm.QuotationModule
                                    Total = q.GrossTotal,
                                    Currency = q.CurrName,
                                    Notes = q.Note.Note_name,
-                                   Representative = q.Worker.NameLastName
+                                   Representative = q.Worker.NameLastName,
+                                   Status = q.status
                                };
 
                     populateGrid(list.ToList());
@@ -442,7 +461,8 @@ namespace LoginForm.QuotationModule
                                     Total = q.GrossTotal,
                                     Currency = q.CurrName,
                                     Notes = q.Note.Note_name,
-                                    Representative = q.Worker.NameLastName
+                                    Representative = q.Worker.NameLastName,
+                                    Status = q.status
                                 };
 
                     populateGrid(list2.ToList());
@@ -528,6 +548,14 @@ namespace LoginForm.QuotationModule
             else
             {
                 MessageBox.Show("You did not chose any quotation.", "Warning!");
+            }
+        }
+
+        private void dgQuotation_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgQuotation.CurrentRow.Cells["Status"].Value.ToString() == "Deleted")
+            {
+                dgQuotation.CurrentRow.Cells["Status"].Style.BackColor = System.Drawing.Color.Red;
             }
         }
     }
