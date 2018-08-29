@@ -200,7 +200,7 @@ namespace LoginForm.nsSaleOrder
             ImeLogoSalesOrder order = new ImeLogoSalesOrder();
             ImeSQL imesql = new ImeSQL();
             LogoSQL logosql = new LogoSQL();
-            MessageBox.Show(order.addSalesOrder(imesql.ImeSqlConnect(server, imedatabase, sqluser, sqlpassword), dgSales.CurrentRow.Cells["SaleID"].Value.ToString(), logosql.LogoSqlConnect(server, logodatabase, sqluser, sqlpassword), Utils.FrmNo, Utils.DnmNo));
+            MessageBox.Show(order.addSalesOrder(imesql.ImeSqlConnect(server, imedatabase, sqluser, sqlpassword), dgSales.CurrentRow.Cells["SoNO"].Value.ToString(), logosql.LogoSqlConnect(server, logodatabase, sqluser, sqlpassword), Utils.FrmNo, Utils.DnmNo));
         }
 
         private void btnModify_Click(object sender, EventArgs e)
