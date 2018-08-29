@@ -10,6 +10,7 @@ using LoginForm.Services;
 using System.Data;
 using LoginForm.clsClasses;
 using static LoginForm.Services.MyClasses.MyAuthority;
+using ImeLogoLibrary;
 
 namespace LoginForm.nsSaleOrder
 {
@@ -190,7 +191,16 @@ namespace LoginForm.nsSaleOrder
 
         private void sentToLogoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //MyConnect.Ornekle.ExecuteScalar_Int(Utils.ConnectionStringLogo, sql_command, CommandType.Text, 30, args);
+            string server = @"195.201.76.136";
+            string imedatabase = "IME";
+            string logodatabase = "TEST";
+            string sqluser = "sa";
+            string sqlpassword = "ime1453..";
+
+            ImeLogoSalesOrder order = new ImeLogoSalesOrder();
+            ImeSQL imesql = new ImeSQL();
+            LogoSQL logosql = new LogoSQL();
+            MessageBox.Show(order.addSalesOrder(imesql.ImeSqlConnect(server, imedatabase, sqluser, sqlpassword), dgSales.CurrentRow.Cells["SaleID"].Value.ToString(), logosql.LogoSqlConnect(server, logodatabase, sqluser, sqlpassword), Utils.FrmNo, Utils.DnmNo));
         }
 
         private void btnModify_Click(object sender, EventArgs e)
