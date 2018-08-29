@@ -4565,6 +4565,8 @@ namespace LoginForm.QuotationModule
 
         private void SaleOrderDetailsSave(decimal SaleID)
         {
+            decimal discountAmount = 0;
+
             IMEEntities IME = new IMEEntities();
             for (int i = 0; i < dgSaleAddedItems.RowCount; i++)
             {
@@ -4673,9 +4675,17 @@ namespace LoginForm.QuotationModule
                     //    stockInfo.ReserveQty = 0;
                     //}
                     //#endregion
+
+                    discountAmount += ((decimal)sdi.Discount) * sdi.Quantity;
+
                     IME.SaleOrderDetails.Add(sdi);
                     IME.SaveChanges();
                 }
+
+                SaleOrder so = IME.SaleOrders.Where(x => x.SaleOrderID == SaleID).FirstOrDefault();
+                so.TotalDiscount = so.DiscOnSubtotal + discountAmount;
+
+                IME.SaveChanges();
             }
             //for (int i = 0; i < dgSaleDeleted.RowCount - 1; i++)
             //{
