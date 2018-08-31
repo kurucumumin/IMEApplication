@@ -96,6 +96,17 @@ namespace LoginForm.nsSaleOrder
                 }
             }
 
+            foreach (DataGridViewRow row in dgSales.Rows)
+            {
+                if (row.Cells["Status"].Value != null && row.Cells["Status"].Value.ToString() == "LOGO")
+                {
+                    row.DefaultCellStyle.BackColor = System.Drawing.Color.Green;
+                }else if (row.Cells["Status"].Value != null && row.Cells["Status"].Value.ToString() == "")
+                {
+                    row.DefaultCellStyle.BackColor = DataGridView.DefaultBackColor;
+                }
+            }
+
             foreach (DataGridViewColumn col in dgSales.Columns)
             {
                 col.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
@@ -252,7 +263,21 @@ namespace LoginForm.nsSaleOrder
             ImeLogoSalesOrder order = new ImeLogoSalesOrder();
             ImeSQL imesql = new ImeSQL();
             LogoSQL logosql = new LogoSQL();
-            MessageBox.Show(order.addSalesOrder(imesql.ImeSqlConnect(server, imedatabase, sqluser, sqlpassword), dgSales.CurrentRow.Cells["SoNO"].Value.ToString(), logosql.LogoSqlConnect(server, logodatabase, sqluser, sqlpassword), Utils.FrmNo, Utils.DnmNo));
+            int SoNO = Convert.ToInt32(dgSales.CurrentRow.Cells["SoNO"].Value);
+            string resultMessage = order.addSalesOrder(imesql.ImeSqlConnect(server, imedatabase, sqluser, sqlpassword), SoNO.ToString(), logosql.LogoSqlConnect(server, logodatabase, sqluser, sqlpassword), Utils.FrmNo, Utils.DnmNo);
+
+            if (resultMessage == "Added succesfully")
+            {
+                IMEEntities db = new IMEEntities();
+
+                SaleOrder so = db.SaleOrders.Where(x => x.SaleOrderNo == SoNO).FirstOrDefault();
+                so.Status = "LOGO";
+                db.SaveChanges();
+
+                BringSalesList(datetimeEnd.Value.Date, datetimeStart.Value.Date);
+            }
+
+            MessageBox.Show(resultMessage);
         }
 
         private void btnModify_Click(object sender, EventArgs e)
@@ -605,5 +630,33 @@ namespace LoginForm.nsSaleOrder
             }
            
          }
+
+        private void backFromLogoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string server = @"195.201.76.136";
+            string imedatabase = "IME";
+            string logodatabase = "TEST";
+            string sqluser = "sa";
+            string sqlpassword = "ime1453..";
+
+            ImeLogoSalesOrder order = new ImeLogoSalesOrder();
+            ImeSQL imesql = new ImeSQL();
+            LogoSQL logosql = new LogoSQL();
+
+            int SoNO = Convert.ToInt32(dgSales.CurrentRow.Cells["SoNO"].Value);
+            string resultMessage = order.deleteSalesOrder(imesql.ImeSqlConnect(server, imedatabase, sqluser, sqlpassword), SoNO.ToString(), logosql.LogoSqlConnect(server, logodatabase, sqluser, sqlpassword), Utils.FrmNo, Utils.DnmNo);
+
+            if (resultMessage == "Deleted succesfully")
+            {
+                IMEEntities db = new IMEEntities();
+
+                SaleOrder so = db.SaleOrders.Where(x=>x.SaleOrderNo == SoNO).FirstOrDefault();
+                so.Status = "";
+                db.SaveChanges();
+
+                BringSalesList(datetimeEnd.Value.Date, datetimeStart.Value.Date);
+            }
+            MessageBox.Show(resultMessage);
+        }
     }
 }
