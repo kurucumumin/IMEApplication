@@ -31,7 +31,6 @@ namespace LoginForm.QuotationModule
         private void btnRefreshList_Click(object sender, EventArgs e)
         {
             BringQuotationList(dtpFromDate.Value, dtpToDate.Value);
-            //BringQuotationList();
         }
 
         private void dgQuotation_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -93,14 +92,10 @@ namespace LoginForm.QuotationModule
                             quo.status = "Deleted";
 
                             IME.SaveChanges();
-
-                           
-                            dgQuotation.Rows[row.Index].DefaultCellStyle.BackColor = System.Drawing.Color.Red;
                         }
 
                         IME.SaveChanges();
-
-                        BringQuotationList();
+                        BringQuotationList(dtpFromDate.Value, dtpToDate.Value);
 
                         MessageBox.Show("Quotation is successfully deleted.", "Success!");
                     }
