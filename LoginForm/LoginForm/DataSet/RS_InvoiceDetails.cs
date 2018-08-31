@@ -36,6 +36,5 @@ namespace LoginForm.DataSet
     
         public virtual PurchaseOrder PurchaseOrder { get; set; }
         public virtual RS_Invoice RS_Invoice { get; set; }
-        public virtual RS_Invoice RS_Invoice1 { get; set; }
     }
 }

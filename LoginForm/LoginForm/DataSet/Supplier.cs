@@ -19,6 +19,7 @@ namespace LoginForm.DataSet
         {
             this.Items = new HashSet<Item>();
             this.PurchaseOperations = new HashSet<PurchaseOperation>();
+            this.RS_Invoice = new HashSet<RS_Invoice>();
             this.Stocks = new HashSet<Stock>();
             this.SupplierAddresses = new HashSet<SupplierAddress>();
             this.SupplierBankAccounts = new HashSet<SupplierBankAccount>();
@@ -52,6 +53,8 @@ namespace LoginForm.DataSet
         public virtual PaymentTerm PaymentTerm { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PurchaseOperation> PurchaseOperations { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RS_Invoice> RS_Invoice { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Stock> Stocks { get; set; }
         public virtual Worker Worker { get; set; }
