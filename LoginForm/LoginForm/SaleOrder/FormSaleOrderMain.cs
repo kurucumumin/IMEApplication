@@ -241,5 +241,311 @@ namespace LoginForm.nsSaleOrder
                 MessageBox.Show("You did not chose any quotation.", "Warning!");
             }
         }
+
+        private void txtSearchText_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter) && cbSearch.SelectedItem != null)
+            {
+                if (chcAllSales.Checked == true)
+                {
+                    IMEEntities IME = new IMEEntities();
+                    switch (cbSearch.SelectedItem.ToString())
+                    {
+                        case "QUOT NUMBER":
+                            var list1 = (from so in IME.SaleOrders
+                                         from cw in IME.CustomerWorkers.Where(x => x.ID == so.ContactID)
+                                         from ca in IME.CustomerAddresses.Where(x => x.ID == so.InvoiceAddressID)
+                                         from cw1 in IME.CustomerWorkers.Where(x => x.ID == so.DeliveryContactID).DefaultIfEmpty()
+                                         from ca1 in IME.CustomerAddresses.Where(x => x.ID == so.DeliveryAddressID).DefaultIfEmpty()
+                                         select new
+                                         {
+                                             Date = so.SaleDate,
+                                             SoNO = so.SaleOrderNo,
+                                             CustomerName = cw.Customer.c_name,
+                                             Contact = cw.cw_name,
+                                             DeliveryContact = cw1.cw_name,
+                                             Address = ca.AdressTitle,
+                                             DeliveryAddress = ca1.AdressTitle,
+                                             SaleID = so.SaleOrderID
+                                         }).ToList().Where(x => x.SoNO.ToString().Contains(txtSearchText.Text));
+
+                            populateGrid(list1.ToList());
+                            break;
+
+                        case "CUSTOMER CODE":
+                            string customerCode = txtSearchText.Text.ToUpperInvariant();
+                            var list2 = from so in IME.SaleOrders
+                                        from cw in IME.CustomerWorkers.Where(x => x.ID == so.ContactID)
+                                        from ca in IME.CustomerAddresses.Where(x => x.ID == so.InvoiceAddressID)
+                                        from cw1 in IME.CustomerWorkers.Where(x => x.ID == so.DeliveryContactID).DefaultIfEmpty()
+                                        from ca1 in IME.CustomerAddresses.Where(x => x.ID == so.DeliveryAddressID).DefaultIfEmpty()
+                                        join c in IME.Customers on so.CustomerID equals c.ID
+                                        where c.ID.Contains(customerCode)
+                                        select new
+                                        {
+                                            Date = so.SaleDate,
+                                            SoNO = so.SaleOrderNo,
+                                            CustomerName = cw.Customer.c_name,
+                                            Contact = cw.cw_name,
+                                            DeliveryContact = cw1.cw_name,
+                                            Address = ca.AdressTitle,
+                                            DeliveryAddress = ca1.AdressTitle,
+                                            SaleID = so.SaleOrderID
+                                        };
+
+                            populateGrid(list2.ToList());
+                            break;
+
+                        case "CUSTOMER NAME":
+                            string customerName = txtSearchText.Text.ToUpperInvariant();
+                            var list3 = from so in IME.SaleOrders
+                                        from cw in IME.CustomerWorkers.Where(x => x.ID == so.ContactID)
+                                        from ca in IME.CustomerAddresses.Where(x => x.ID == so.InvoiceAddressID)
+                                        from cw1 in IME.CustomerWorkers.Where(x => x.ID == so.DeliveryContactID).DefaultIfEmpty()
+                                        from ca1 in IME.CustomerAddresses.Where(x => x.ID == so.DeliveryAddressID).DefaultIfEmpty()
+                                        join c in IME.Customers on so.CustomerID equals c.ID
+                                        where c.c_name.Contains(customerName)
+                                        select new
+                                        {
+                                            Date = so.SaleDate,
+                                            SoNO = so.SaleOrderNo,
+                                            CustomerName = cw.Customer.c_name,
+                                            Contact = cw.cw_name,
+                                            DeliveryContact = cw1.cw_name,
+                                            Address = ca.AdressTitle,
+                                            DeliveryAddress = ca1.AdressTitle,
+                                            SaleID = so.SaleOrderID
+                                        };
+
+                            populateGrid(list3.ToList());
+                            break;
+
+                        case "BY TOTAL AMOUNT":
+                            decimal amountDecimal;
+                            string searchTxt = txtSearchText.Text.Replace(",", ".");
+                            if (Decimal.TryParse(searchTxt, out amountDecimal))
+                            {
+                                int amount = Decimal.ToInt32(amountDecimal);
+                                var list4 = from so in IME.SaleOrders
+                                            from cw in IME.CustomerWorkers.Where(x => x.ID == so.ContactID)
+                                            from ca in IME.CustomerAddresses.Where(x => x.ID == so.InvoiceAddressID)
+                                            from cw1 in IME.CustomerWorkers.Where(x => x.ID == so.DeliveryContactID).DefaultIfEmpty()
+                                            from ca1 in IME.CustomerAddresses.Where(x => x.ID == so.DeliveryAddressID).DefaultIfEmpty()
+                                            join c in IME.Customers on so.CustomerID equals c.ID
+                                            where amount <= (so.TotalPrice + so.ExtraCharges + so.Vat) && (so.TotalPrice + so.ExtraCharges + so.Vat) < (amount + 1)
+                                            select new
+                                            {
+                                                Date = so.SaleDate,
+                                                SoNO = so.SaleOrderNo,
+                                                CustomerName = cw.Customer.c_name,
+                                                Contact = cw.cw_name,
+                                                DeliveryContact = cw1.cw_name,
+                                                Address = ca.AdressTitle,
+                                                DeliveryAddress = ca1.AdressTitle,
+                                                SaleID = so.SaleOrderID
+                                            };
+
+                                populateGrid(list4.ToList());
+                            }
+
+                            break;
+
+                        case "BY LPONO":
+                            string lpono = txtSearchText.Text.ToUpperInvariant();
+                            var list5 = from so in IME.SaleOrders
+                                        from cw in IME.CustomerWorkers.Where(x => x.ID == so.ContactID)
+                                        from ca in IME.CustomerAddresses.Where(x => x.ID == so.InvoiceAddressID)
+                                        from cw1 in IME.CustomerWorkers.Where(x => x.ID == so.DeliveryContactID).DefaultIfEmpty()
+                                        from ca1 in IME.CustomerAddresses.Where(x => x.ID == so.DeliveryAddressID).DefaultIfEmpty()
+                                        join c in IME.Customers on so.CustomerID equals c.ID
+                                        where so.LPONO.Contains(lpono)
+                                        select new
+                                        {
+                                            Date = so.SaleDate,
+                                            SoNO = so.SaleOrderNo,
+                                            CustomerName = cw.Customer.c_name,
+                                            Contact = cw.cw_name,
+                                            DeliveryContact = cw1.cw_name,
+                                            Address = ca.AdressTitle,
+                                            DeliveryAddress = ca1.AdressTitle,
+                                            SaleID = so.SaleOrderID
+                                        };
+
+                            populateGrid(list5.ToList());
+                            break;
+
+                        case "BY MPN":
+                            //string mpn = txtSearchText.Text.ToUpperInvariant();
+                            //var list6 = from q in IME.Quotations
+                            //            join qd in IME.QuotationDetails on q.QuotationNo equals qd.QuotationNo
+                            //            join c in IME.Customers on q.CustomerID equals c.ID
+                            //            where qd.MPN.Contains(mpn)
+                            //            select new
+                            //            {
+                            //                Date = (DateTime)q.StartDate,
+                            //                QuotationNo = q.QuotationNo,
+                            //                RFQ = q.RFQNo,
+                            //                CustomerCode = c.ID,
+                            //                CustomerName = c.c_name
+                            //            };
+
+                            //populateGrid(list6.ToList());
+                            MessageBox.Show("MPN filter is not implemented into the software", "Error");
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                else
+                {
+                    IMEEntities IME = new IMEEntities();
+                    switch (cbSearch.SelectedItem.ToString())
+                    {
+                        case "QUOT NUMBER":
+                            var list1 = (from so in IME.SaleOrders
+                                         from cw in IME.CustomerWorkers.Where(x => x.ID == so.ContactID)
+                                         from ca in IME.CustomerAddresses.Where(x => x.ID == so.InvoiceAddressID)
+                                         from cw1 in IME.CustomerWorkers.Where(x => x.ID == so.DeliveryContactID).DefaultIfEmpty()
+                                         from ca1 in IME.CustomerAddresses.Where(x => x.ID == so.DeliveryAddressID).DefaultIfEmpty()
+                                         where so.SaleDate >= datetimeStart.Value && so.SaleDate < datetimeEnd.Value
+                                         select new
+                                         {
+                                             Date = so.SaleDate,
+                                             SoNO = so.SaleOrderNo,
+                                             CustomerName = cw.Customer.c_name,
+                                             Contact = cw.cw_name,
+                                             DeliveryContact = cw1.cw_name,
+                                             Address = ca.AdressTitle,
+                                             DeliveryAddress = ca1.AdressTitle,
+                                             SaleID = so.SaleOrderID
+                                         }).ToList().Where(x => x.SoNO.ToString().Contains(txtSearchText.Text));
+
+                            populateGrid(list1.ToList());
+                            break;
+
+                        //        case "CUSTOMER CODE":
+                        //            string customerCode = txtSearchText.Text.ToUpperInvariant();
+                        //            var list2 = from q in IME.Quotations
+                        //                        join c in IME.Customers on q.CustomerID equals c.ID
+                        //                        where (c.ID.Contains(customerCode)
+                        //                        && q.StartDate >= dtpFromDate.Value && q.StartDate < dtpToDate.Value)
+                        //                        select new
+                        //                        {
+                        //                            Date = q.StartDate,
+                        //                            QuotationNo = q.QuotationNo,
+                        //                            RFQ = q.RFQNo,
+                        //                            CustomerCode = c.ID,
+                        //                            CustomerName = c.c_name,
+                        //                            Total = q.GrossTotal,
+                        //                            Currency = q.CurrName,
+                        //                            Notes = q.Note.Note_name,
+                        //                            Representative = q.Worker.NameLastName,
+                        //                            Status = q.status
+                        //                        };
+
+                        //            populateGrid(list2.ToList());
+                        //            break;
+
+                        //        case "CUSTOMER NAME":
+                        //            string customerName = txtSearchText.Text.ToUpperInvariant();
+                        //            var list3 = from q in IME.Quotations
+                        //                        join c in IME.Customers on q.CustomerID equals c.ID
+                        //                        where (c.c_name.Contains(customerName)
+                        //                        && q.StartDate >= dtpFromDate.Value && q.StartDate < dtpToDate.Value)
+                        //                        select new
+                        //                        {
+                        //                            Date = q.StartDate,
+                        //                            QuotationNo = q.QuotationNo,
+                        //                            RFQ = q.RFQNo,
+                        //                            CustomerCode = c.ID,
+                        //                            CustomerName = c.c_name,
+                        //                            Total = q.GrossTotal,
+                        //                            Currency = q.CurrName,
+                        //                            Notes = q.Note.Note_name,
+                        //                            Representative = q.Worker.NameLastName,
+                        //                            Status = q.status
+                        //                        };
+
+                        //            populateGrid(list3.ToList());
+                        //            break;
+
+                        //        case "BY TOTAL AMOUNT":
+                        //            decimal amountDecimal;
+                        //            string searchTxt = txtSearchText.Text.Replace(",", ".");
+                        //            if (Decimal.TryParse(searchTxt, out amountDecimal))
+                        //            {
+                        //                int amount = Decimal.ToInt32(amountDecimal);
+                        //                var list4 = from q in IME.Quotations
+                        //                            join c in IME.Customers on q.CustomerID equals c.ID
+                        //                            where (amount <= q.GrossTotal && q.GrossTotal < (amount + 1)
+                        //                            && q.StartDate >= dtpFromDate.Value && q.StartDate < dtpToDate.Value)
+                        //                            select new
+                        //                            {
+                        //                                Date = q.StartDate,
+                        //                                QuotationNo = q.QuotationNo,
+                        //                                RFQ = q.RFQNo,
+                        //                                CustomerCode = c.ID,
+                        //                                CustomerName = c.c_name,
+                        //                                Total = q.GrossTotal,
+                        //                                Currency = q.CurrName,
+                        //                                Notes = q.Note.Note_name,
+                        //                                Representative = q.Worker.NameLastName,
+                        //                                Status = q.status
+                        //                            };
+
+                        //                populateGrid(list4.ToList());
+                        //            }
+
+                        //            break;
+
+                        //        case "BY RFQ":
+                        //            string rfq = txtSearchText.Text.ToUpperInvariant();
+                        //            var list5 = from q in IME.Quotations
+                        //                        join c in IME.Customers on q.CustomerID equals c.ID
+                        //                        where (q.RFQNo.Contains(rfq)
+                        //                        && q.StartDate >= dtpFromDate.Value && q.StartDate < dtpToDate.Value)
+                        //                        select new
+                        //                        {
+                        //                            Date = q.StartDate,
+                        //                            QuotationNo = q.QuotationNo,
+                        //                            RFQ = q.RFQNo,
+                        //                            CustomerCode = c.ID,
+                        //                            CustomerName = c.c_name,
+                        //                            Total = q.GrossTotal,
+                        //                            Currency = q.CurrName,
+                        //                            Notes = q.Note.Note_name,
+                        //                            Representative = q.Worker.NameLastName,
+                        //                            Status = q.status
+                        //                        };
+
+                        //            populateGrid(list5.ToList());
+                        //            break;
+
+                        //        case "BY MPN":
+                        //            //string mpn = txtSearchText.Text.ToUpperInvariant();
+                        //            //var list6 = from q in IME.Quotations
+                        //            //            join qd in IME.QuotationDetails on q.QuotationNo equals qd.QuotationNo
+                        //            //            join c in IME.Customers on q.CustomerID equals c.ID
+                        //            //            where qd.MPN.Contains(mpn)
+                        //            //            select new
+                        //            //            {
+                        //            //                Date = (DateTime)q.StartDate,
+                        //            //                QuotationNo = q.QuotationNo,
+                        //            //                RFQ = q.RFQNo,
+                        //            //                CustomerCode = c.ID,
+                        //            //                CustomerName = c.c_name
+                        //            //            };
+
+                        //            //populateGrid(list6.ToList());
+                        //MessageBox.Show("MPN filter is not implemented into the software", "Error");
+                        //break;
+                        default:
+                            break;
+                    }
+                }
+                
+            }
+           
+         }
     }
 }
