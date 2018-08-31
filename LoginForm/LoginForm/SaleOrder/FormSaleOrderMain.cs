@@ -22,7 +22,6 @@ namespace LoginForm.nsSaleOrder
         public FormSalesOrderMain()
         {
             InitializeComponent();
-
             //if (Utils.getCurrentUser().AuthorizationValues.Where(x=>x.AuthorizationID == 1022).FirstOrDefault() == null)
             //{
             //    btnDelete.Visible = false;
@@ -90,20 +89,12 @@ namespace LoginForm.nsSaleOrder
 
             foreach (DataGridViewRow row in dgSales.Rows)
             {
-                if (row.Cells["Status"].Value !=null && row.Cells["Status"].Value.ToString() == "Deleted")
-                {
-                    row.DefaultCellStyle.BackColor = System.Drawing.Color.Red;
-                }
-            }
-
-            foreach (DataGridViewRow row in dgSales.Rows)
-            {
                 if (row.Cells["Status"].Value != null && row.Cells["Status"].Value.ToString() == "LOGO")
                 {
                     row.DefaultCellStyle.BackColor = System.Drawing.Color.Green;
                 }else if (row.Cells["Status"].Value != null && row.Cells["Status"].Value.ToString() == "")
                 {
-                    row.DefaultCellStyle.BackColor = DataGridView.DefaultBackColor;
+                    row.DefaultCellStyle.BackColor = System.Drawing.Color.Empty;
                 }
             }
 
@@ -266,7 +257,7 @@ namespace LoginForm.nsSaleOrder
             int SoNO = Convert.ToInt32(dgSales.CurrentRow.Cells["SoNO"].Value);
             string resultMessage = order.addSalesOrder(imesql.ImeSqlConnect(server, imedatabase, sqluser, sqlpassword), SoNO.ToString(), logosql.LogoSqlConnect(server, logodatabase, sqluser, sqlpassword), Utils.FrmNo, Utils.DnmNo);
 
-            if (resultMessage == "Added succesfully")
+            if (resultMessage == "Added successfully")
             {
                 IMEEntities db = new IMEEntities();
 
@@ -626,9 +617,7 @@ namespace LoginForm.nsSaleOrder
                             break;
                     }
                 }
-                
             }
-           
          }
 
         private void backFromLogoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -646,7 +635,7 @@ namespace LoginForm.nsSaleOrder
             int SoNO = Convert.ToInt32(dgSales.CurrentRow.Cells["SoNO"].Value);
             string resultMessage = order.deleteSalesOrder(imesql.ImeSqlConnect(server, imedatabase, sqluser, sqlpassword), SoNO.ToString(), logosql.LogoSqlConnect(server, logodatabase, sqluser, sqlpassword), Utils.FrmNo, Utils.DnmNo);
 
-            if (resultMessage == "Deleted succesfully")
+            if (resultMessage == "Deleted successfully")
             {
                 IMEEntities db = new IMEEntities();
 
