@@ -76,7 +76,8 @@ namespace LoginForm.nsSaleOrder
                            DeliveryContact = cw1.cw_name,
                            Address = ca.AdressTitle,
                            DeliveryAddress = ca1.AdressTitle,
-                           SaleID = so.SaleOrderID
+                           SaleID = so.SaleOrderID,
+                           Status = so.Status
                        }).OrderByDescending(s=> s.SoNO);
             populateGrid(list.ToList());
         }
@@ -85,12 +86,20 @@ namespace LoginForm.nsSaleOrder
         {
             dgSales.DataSource = null;
             dgSales.DataSource = queryable;
+            dgSales.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            foreach (DataGridViewRow row in dgSales.Rows)
+            {
+                if (row.Cells["Status"].Value !=null && row.Cells["Status"].Value.ToString() == "Deleted")
+                {
+                    row.DefaultCellStyle.BackColor = System.Drawing.Color.Red;
+                }
+            }
 
             foreach (DataGridViewColumn col in dgSales.Columns)
             {
                 col.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
             }
-            dgSales.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void btnNew_Click(object sender, EventArgs e)
@@ -139,24 +148,67 @@ namespace LoginForm.nsSaleOrder
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            IMEEntities db = new IMEEntities();
-            foreach (DataGridViewRow row in dgSales.SelectedRows)
+            if (dgSales.CurrentRow != null)
             {
-                //string SaleID = row.Cells[1].Value.ToString();
-                //TODO gridde saleID'de olmalı.
-                decimal SaleID = (decimal)dgSales.CurrentRow.Cells[1].Value;
-                SaleOrder s = db.SaleOrders.Where(x => x.SaleOrderID == SaleID).FirstOrDefault();
-                if(s != null)
+                List<int> SoNOsToDelete = new List<int>();
+                foreach (DataGridViewRow item in dgSales.SelectedRows)
                 {
-                    if (s.SaleOrderDetails != null)
+                    SoNOsToDelete.Add(Convert.ToInt32(item.Cells["SoNO"].Value.ToString()));
+                }
+                DialogResult result = MessageBox.Show("Selected SaleOrder(s) will be deleted! Do you confirm?", "Delete SaleOrder", MessageBoxButtons.OKCancel);
+                
+                if (result == DialogResult.OK)
+                {
+                    try
                     {
-                        db.SaleOrderDetails.RemoveRange(s.SaleOrderDetails);
+                        IMEEntities IME = new IMEEntities();
+
+                        foreach (int row in SoNOsToDelete)
+                        {
+                            string SaleOrderNo = row.ToString();
+
+                            SaleOrder s = IME.SaleOrders.Where(x => x.SaleOrderNo.ToString() == SaleOrderNo).FirstOrDefault();
+
+                            s.Status = "Deleted";
+
+                            IME.SaveChanges();
+                        }
+                        BringSalesList(datetimeEnd.Value.Date, datetimeStart.Value.Date);
+
+                        MessageBox.Show("Quotation is successfully deleted.", "Success!");
                     }
-                    db.SaleOrders.Remove(s);
-                    db.SaveChanges();
+                    catch (Exception)
+                    {
+                        MessageBox.Show("An error was encountered", "Error!");
+                        throw;
+                    }
                 }
             }
-            BringSalesList();
+            else
+            {
+                MessageBox.Show("You did not chose any quotation.", "Warning!");
+            }
+
+
+
+            //IMEEntities db = new IMEEntities();
+            //foreach (DataGridViewRow row in dgSales.SelectedRows)
+            //{
+            //    //string SaleID = row.Cells[1].Value.ToString();
+            //    //TODO gridde saleID'de olmalı.
+            //    decimal SaleID = (decimal)dgSales.CurrentRow.Cells[1].Value;
+            //    SaleOrder s = db.SaleOrders.Where(x => x.SaleOrderID == SaleID).FirstOrDefault();
+            //    if(s != null)
+            //    {
+            //        if (s.SaleOrderDetails != null)
+            //        {
+            //            db.SaleOrderDetails.RemoveRange(s.SaleOrderDetails);
+            //        }
+            //        db.SaleOrders.Remove(s);
+            //        db.SaveChanges();
+            //    }
+            //}
+            //BringSalesList();
         }
 
         private void btnRefreshList_Click(object sender, EventArgs e)
@@ -266,7 +318,8 @@ namespace LoginForm.nsSaleOrder
                                              DeliveryContact = cw1.cw_name,
                                              Address = ca.AdressTitle,
                                              DeliveryAddress = ca1.AdressTitle,
-                                             SaleID = so.SaleOrderID
+                                             SaleID = so.SaleOrderID,
+                                             Status = so.Status
                                          }).ToList().Where(x => x.SoNO.ToString().Contains(txtSearchText.Text));
 
                             populateGrid(list1.ToList());
@@ -290,7 +343,8 @@ namespace LoginForm.nsSaleOrder
                                             DeliveryContact = cw1.cw_name,
                                             Address = ca.AdressTitle,
                                             DeliveryAddress = ca1.AdressTitle,
-                                            SaleID = so.SaleOrderID
+                                            SaleID = so.SaleOrderID,
+                                            Status = so.Status
                                         };
 
                             populateGrid(list2.ToList());
@@ -314,7 +368,8 @@ namespace LoginForm.nsSaleOrder
                                             DeliveryContact = cw1.cw_name,
                                             Address = ca.AdressTitle,
                                             DeliveryAddress = ca1.AdressTitle,
-                                            SaleID = so.SaleOrderID
+                                            SaleID = so.SaleOrderID,
+                                            Status = so.Status
                                         };
 
                             populateGrid(list3.ToList());
@@ -342,7 +397,8 @@ namespace LoginForm.nsSaleOrder
                                                 DeliveryContact = cw1.cw_name,
                                                 Address = ca.AdressTitle,
                                                 DeliveryAddress = ca1.AdressTitle,
-                                                SaleID = so.SaleOrderID
+                                                SaleID = so.SaleOrderID,
+                                                Status = so.Status
                                             };
 
                                 populateGrid(list4.ToList());
@@ -368,7 +424,8 @@ namespace LoginForm.nsSaleOrder
                                             DeliveryContact = cw1.cw_name,
                                             Address = ca.AdressTitle,
                                             DeliveryAddress = ca1.AdressTitle,
-                                            SaleID = so.SaleOrderID
+                                            SaleID = so.SaleOrderID,
+                                            Status = so.Status
                                         };
 
                             populateGrid(list5.ToList());
@@ -417,7 +474,8 @@ namespace LoginForm.nsSaleOrder
                                              DeliveryContact = cw1.cw_name,
                                              Address = ca.AdressTitle,
                                              DeliveryAddress = ca1.AdressTitle,
-                                             SaleID = so.SaleOrderID
+                                             SaleID = so.SaleOrderID,
+                                             Status = so.Status
                                          }).ToList().Where(x => x.SoNO.ToString().Contains(txtSearchText.Text));
 
                             populateGrid(list1.ToList());
