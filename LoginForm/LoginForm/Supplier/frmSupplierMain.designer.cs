@@ -152,10 +152,6 @@ namespace LoginForm
             this.accountrepresentaryIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.supplierNoteIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mainContactIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bankIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ibanDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.branchcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.accountnumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.categoryIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subCategoryIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.defaultCurrencyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -169,7 +165,6 @@ namespace LoginForm
             this.purchaseOperationsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stocksDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -1352,6 +1347,7 @@ namespace LoginForm
             this.btnBankDelete.TabIndex = 61;
             this.btnBankDelete.Text = "Delete";
             this.btnBankDelete.UseVisualStyleBackColor = true;
+            this.btnBankDelete.Click += new System.EventHandler(this.btnBankDelete_Click);
             // 
             // btnBankModify
             // 
@@ -1363,6 +1359,7 @@ namespace LoginForm
             this.btnBankModify.TabIndex = 60;
             this.btnBankModify.Text = "Update";
             this.btnBankModify.UseVisualStyleBackColor = true;
+            this.btnBankModify.Click += new System.EventHandler(this.btnBankModify_Click);
             // 
             // btnBankAdd
             // 
@@ -1471,9 +1468,9 @@ namespace LoginForm
             this.label37.Location = new System.Drawing.Point(8, 12);
             this.label37.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(53, 20);
+            this.label37.Size = new System.Drawing.Size(107, 20);
             this.label37.TabIndex = 0;
-            this.label37.Text = "Name";
+            this.label37.Text = "Account Title";
             // 
             // dgSupplier
             // 
@@ -1494,10 +1491,6 @@ namespace LoginForm
             this.accountrepresentaryIDDataGridViewTextBoxColumn,
             this.supplierNoteIDDataGridViewTextBoxColumn,
             this.mainContactIDDataGridViewTextBoxColumn,
-            this.bankIDDataGridViewTextBoxColumn,
-            this.ibanDataGridViewTextBoxColumn,
-            this.branchcodeDataGridViewTextBoxColumn,
-            this.accountnumberDataGridViewTextBoxColumn,
             this.categoryIDDataGridViewTextBoxColumn,
             this.subCategoryIDDataGridViewTextBoxColumn,
             this.defaultCurrencyDataGridViewTextBoxColumn,
@@ -1511,7 +1504,6 @@ namespace LoginForm
             this.purchaseOperationsDataGridViewTextBoxColumn,
             this.stocksDataGridViewTextBoxColumn,
             this.dataGridViewTextBoxColumn7,
-            this.dataGridViewTextBoxColumn8,
             this.dataGridViewTextBoxColumn9,
             this.dataGridViewTextBoxColumn10,
             this.dataGridViewTextBoxColumn11,
@@ -1618,34 +1610,6 @@ namespace LoginForm
             this.mainContactIDDataGridViewTextBoxColumn.Name = "mainContactIDDataGridViewTextBoxColumn";
             this.mainContactIDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // bankIDDataGridViewTextBoxColumn
-            // 
-            this.bankIDDataGridViewTextBoxColumn.DataPropertyName = "BankID";
-            this.bankIDDataGridViewTextBoxColumn.HeaderText = "BankID";
-            this.bankIDDataGridViewTextBoxColumn.Name = "bankIDDataGridViewTextBoxColumn";
-            this.bankIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // ibanDataGridViewTextBoxColumn
-            // 
-            this.ibanDataGridViewTextBoxColumn.DataPropertyName = "iban";
-            this.ibanDataGridViewTextBoxColumn.HeaderText = "iban";
-            this.ibanDataGridViewTextBoxColumn.Name = "ibanDataGridViewTextBoxColumn";
-            this.ibanDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // branchcodeDataGridViewTextBoxColumn
-            // 
-            this.branchcodeDataGridViewTextBoxColumn.DataPropertyName = "branchcode";
-            this.branchcodeDataGridViewTextBoxColumn.HeaderText = "branchcode";
-            this.branchcodeDataGridViewTextBoxColumn.Name = "branchcodeDataGridViewTextBoxColumn";
-            this.branchcodeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // accountnumberDataGridViewTextBoxColumn
-            // 
-            this.accountnumberDataGridViewTextBoxColumn.DataPropertyName = "accountnumber";
-            this.accountnumberDataGridViewTextBoxColumn.HeaderText = "accountnumber";
-            this.accountnumberDataGridViewTextBoxColumn.Name = "accountnumberDataGridViewTextBoxColumn";
-            this.accountnumberDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // categoryIDDataGridViewTextBoxColumn
             // 
             this.categoryIDDataGridViewTextBoxColumn.DataPropertyName = "CategoryID";
@@ -1736,13 +1700,6 @@ namespace LoginForm
             this.dataGridViewTextBoxColumn7.HeaderText = "Worker";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "SupplierBank";
-            this.dataGridViewTextBoxColumn8.HeaderText = "SupplierBank";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn9
             // 
