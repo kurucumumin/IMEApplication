@@ -36,10 +36,7 @@ namespace LoginForm.DataSet
         public Nullable<int> accountrepresentaryID { get; set; }
         public Nullable<int> SupplierNoteID { get; set; }
         public Nullable<int> MainContactID { get; set; }
-        public Nullable<int> BankID { get; set; }
-        public string iban { get; set; }
-        public string branchcode { get; set; }
-        public string accountnumber { get; set; }
+        public Nullable<int> MainBankAccountID { get; set; }
         public Nullable<int> CategoryID { get; set; }
         public Nullable<int> SubCategoryID { get; set; }
         public Nullable<decimal> DefaultCurrency { get; set; }
