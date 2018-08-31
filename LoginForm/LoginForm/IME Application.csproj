@@ -87,7 +87,7 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="ImeLogoLibrary">
-      <HintPath>..\..\..\..\..\Desktop\ImeLogoLibrary\ImeLogoLibrary.dll</HintPath>
+      <HintPath>..\packages\ImeLogoLibrary.dll</HintPath>
     </Reference>
     <Reference Include="MaterialSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialSkin.0.2.1\lib\MaterialSkin.dll</HintPath>

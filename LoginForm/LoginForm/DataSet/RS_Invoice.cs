@@ -33,6 +33,8 @@ namespace LoginForm.DataSet
         public Nullable<decimal> InvoiceNettValue { get; set; }
         public string Currency { get; set; }
         public string AirwayBillNumber { get; set; }
+        public decimal Discount { get; set; }
+        public decimal Surcharge { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RS_InvoiceDetails> RS_InvoiceDetails { get; set; }

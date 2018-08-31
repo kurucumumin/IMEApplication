@@ -891,6 +891,8 @@
           <Property Name="InvoiceNettValue" Type="decimal" Precision="17" Scale="2" />
           <Property Name="Currency" Type="nvarchar" MaxLength="3" />
           <Property Name="AirwayBillNumber" Type="nvarchar" MaxLength="20" />
+          <Property Name="Discount" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="Surcharge" Type="decimal" Precision="18" Scale="4" Nullable="false" />
         </EntityType>
         <EntityType Name="RS_InvoiceDetails">
           <Key>
@@ -1187,10 +1189,7 @@
           <Property Name="accountrepresentaryID" Type="int" />
           <Property Name="SupplierNoteID" Type="int" />
           <Property Name="MainContactID" Type="int" />
-          <Property Name="BankID" Type="int" />
-          <Property Name="iban" Type="nvarchar" MaxLength="40" />
-          <Property Name="branchcode" Type="nvarchar" MaxLength="40" />
-          <Property Name="accountnumber" Type="nvarchar" MaxLength="40" />
+          <Property Name="MainBankAccountID" Type="int" />
           <Property Name="CategoryID" Type="int" />
           <Property Name="SubCategoryID" Type="int" />
           <Property Name="DefaultCurrency" Type="numeric" Precision="18" Scale="0" />
@@ -2624,7 +2623,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Supplier">
-              <PropertyRef Name="BankID" />
+              <PropertyRef Name="MainBankAccountID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -5308,6 +5307,8 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="InvoiceNettValue" Type="Decimal" Precision="17" Scale="2" />
           <Property Name="Currency" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
           <Property Name="AirwayBillNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Discount" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="Surcharge" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
           <NavigationProperty Name="RS_InvoiceDetails" Relationship="Self.FK__RS_Invoic__RS_In__7AE71C56" FromRole="RS_Invoice" ToRole="RS_InvoiceDetails" />
           <NavigationProperty Name="RS_InvoiceDetails1" Relationship="Self.FK__RS_Invoic__RS_In__7DC38901" FromRole="RS_Invoice" ToRole="RS_InvoiceDetails" />
         </EntityType>
@@ -5637,10 +5638,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="accountrepresentaryID" Type="Int32" />
           <Property Name="SupplierNoteID" Type="Int32" />
           <Property Name="MainContactID" Type="Int32" />
-          <Property Name="BankID" Type="Int32" />
-          <Property Name="iban" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-          <Property Name="branchcode" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-          <Property Name="accountnumber" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="MainBankAccountID" Type="Int32" />
           <Property Name="CategoryID" Type="Int32" />
           <Property Name="SubCategoryID" Type="Int32" />
           <Property Name="DefaultCurrency" Type="Decimal" Precision="18" Scale="0" />
@@ -7266,7 +7264,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Supplier">
-              <PropertyRef Name="BankID" />
+              <PropertyRef Name="MainBankAccountID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -10146,6 +10144,8 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="InvoiceNettValue" ColumnName="InvoiceNettValue" />
                 <ScalarProperty Name="Currency" ColumnName="Currency" />
                 <ScalarProperty Name="AirwayBillNumber" ColumnName="AirwayBillNumber" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Surcharge" ColumnName="Surcharge" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -10454,10 +10454,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="accountrepresentaryID" ColumnName="accountrepresentaryID" />
                 <ScalarProperty Name="SupplierNoteID" ColumnName="SupplierNoteID" />
                 <ScalarProperty Name="MainContactID" ColumnName="MainContactID" />
-                <ScalarProperty Name="BankID" ColumnName="BankID" />
-                <ScalarProperty Name="iban" ColumnName="iban" />
-                <ScalarProperty Name="branchcode" ColumnName="branchcode" />
-                <ScalarProperty Name="accountnumber" ColumnName="accountnumber" />
+                <ScalarProperty Name="MainBankAccountID" ColumnName="MainBankAccountID" />
                 <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
                 <ScalarProperty Name="SubCategoryID" ColumnName="SubCategoryID" />
                 <ScalarProperty Name="DefaultCurrency" ColumnName="DefaultCurrency" />

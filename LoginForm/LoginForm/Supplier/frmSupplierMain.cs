@@ -226,9 +226,6 @@ namespace LoginForm
                     //s.discountrate = Convert.ToDecimal(txtDiscountRate.Text);
                     s.DefaultCurrency = ((Currency)cmbCurrency.SelectedItem).currencyID;
                     //s.BankID = ((SupplierBank)cmbBankName.SelectedItem).ID;
-                    s.branchcode = txtBankBranchCode.Text;
-                    s.accountnumber = txtBankAccountNumber.Text;
-                    s.iban = txtBankIban.Text;
 
                     s.webadress = (txtWeb.Text != String.Empty) ? txtWeb.Text : null;
 
@@ -592,9 +589,7 @@ namespace LoginForm
             txtTaxOffice.Text = s.taxoffice;
             txtTaxNumber.Text = s.taxnumber;
             //txtDiscountRate.Text = s.discountrate.ToString();
-            txtBankAccountNumber.Text = s.accountnumber;
-            txtBankBranchCode.Text = s.branchcode;
-            txtBankIban.Text = s.iban;
+            
 
             txtWeb.Text = s.webadress ?? String.Empty;
             txtSupplierNotes.Text = (s.Note1 != null) ? s.Note1.Note_name : String.Empty;
