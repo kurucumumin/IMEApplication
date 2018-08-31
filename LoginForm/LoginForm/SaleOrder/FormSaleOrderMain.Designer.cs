@@ -88,6 +88,8 @@
             // chcAllSales
             // 
             this.chcAllSales.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chcAllSales.Checked = true;
+            this.chcAllSales.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chcAllSales.Location = new System.Drawing.Point(746, 89);
             this.chcAllSales.Name = "chcAllSales";
             this.chcAllSales.Size = new System.Drawing.Size(105, 24);

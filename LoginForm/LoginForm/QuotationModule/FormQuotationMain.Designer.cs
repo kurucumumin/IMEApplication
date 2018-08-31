@@ -280,6 +280,8 @@
             // chcAllQuots
             // 
             this.chcAllQuots.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chcAllQuots.Checked = true;
+            this.chcAllQuots.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chcAllQuots.Location = new System.Drawing.Point(6, 85);
             this.chcAllQuots.Name = "chcAllQuots";
             this.chcAllQuots.Size = new System.Drawing.Size(216, 21);
