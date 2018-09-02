@@ -4691,7 +4691,7 @@ namespace LoginForm.QuotationModule
                 }
 
                 SaleOrder so = IME.SaleOrders.Where(x => x.SaleOrderID == SaleID).FirstOrDefault();
-                so.TotalDiscount = so.DiscOnSubtotal + discountAmount;
+                so.TotalDiscount = ((so.DiscOnSubtotal * so.SubTotal)/100) + discountAmount;
 
                 IME.SaveChanges();
             }

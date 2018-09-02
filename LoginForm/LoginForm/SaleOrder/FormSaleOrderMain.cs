@@ -177,7 +177,7 @@ namespace LoginForm.nsSaleOrder
                         }
                         BringSalesList(datetimeEnd.Value.Date, datetimeStart.Value.Date);
 
-                        MessageBox.Show("Quotation is successfully deleted.", "Success!");
+                        MessageBox.Show("Sale Order is successfully deleted.", "Success!");
                     }
                     catch (Exception)
                     {
@@ -188,7 +188,7 @@ namespace LoginForm.nsSaleOrder
             }
             else
             {
-                MessageBox.Show("You did not chose any quotation.", "Warning!");
+                MessageBox.Show("You did not chose any Sale Order.", "Warning!");
             }
 
 

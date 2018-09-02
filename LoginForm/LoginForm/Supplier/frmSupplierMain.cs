@@ -1813,10 +1813,6 @@ namespace LoginForm
                     {
                         ErrorLog.Add("You should add at least Contact!");
                     }
-                    if (lbBankList.Items.Count <= 0)
-                    {
-                        ErrorLog.Add("You should add at least one Bank Account!");
-                    }
 
 
                     string ErrorStringGeneral = String.Empty;
@@ -2232,6 +2228,47 @@ namespace LoginForm
 
         private void btnBankAdd_Click(object sender, EventArgs e)
         {
+            if (!InputErrorExist(EmptyCheckTypeBankAccount))
+            {
+                if (BankMode == "Add")
+                {
+                    SupplierBankAccount ba = new SupplierBankAccount
+                    {
+                        Title = txtAccountTitle.Text,
+                        BranchCode = txtBankBranchCode.Text,
+                        AccountNumber = txtBankAccountNumber.Text,
+                        IBAN = txtBankIban.Text
+                    };
+                    SavedBankAccounts.Add(ba);
+                }
+                else if (BankMode == "Update")
+                {
+                    SupplierBankAccount ba = (SupplierBankAccount)lbBankList.SelectedItem;
+
+                    ba.Title = txtAccountTitle.Text;
+                    ba.BranchCode = txtBankBranchCode.Text;
+                    ba.AccountNumber = txtBankAccountNumber.Text;
+                    ba.IBAN = txtBankIban.Text;
+                }
+
+                lbBankList.DataSource = null;
+                lbBankList.DataSource = SavedBankAccounts;
+                lbBankList.DisplayMember = "Title";
+                lbBankList.SelectedIndex = -1;
+                
+
+
+
+
+                lbBankList.Enabled = true;
+
+                ManageDeleteAndModifyButtons(lbBankList, btnBankModify, btnBankDelete);
+                BankMode = String.Empty;
+            }
+
+
+
+
             if(btnBankAdd.Text == "Add")
             {
                 txtAccountTitle.Text = String.Empty;
