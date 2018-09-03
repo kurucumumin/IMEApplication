@@ -11,7 +11,7 @@ namespace LoginForm.QuotationModule
     public partial class FormQuotationMain : MyForm
     {
         DateTime dateNow;
-
+        Worker currentUser = Utils.getCurrentUser();
         public FormQuotationMain()
         {
             IMEEntities IME = new IMEEntities();
@@ -119,6 +119,7 @@ namespace LoginForm.QuotationModule
 
         private void FormQuotationMain_Load(object sender, EventArgs e)
         {
+            IMEEntities IME = new IMEEntities();
             if (!Utils.AuthorityCheck(IMEAuthority.CanDeleteQuotation))//Can Delete Quotation
             {
                btnDeleteQuotation.Enabled = false;
@@ -132,9 +133,7 @@ namespace LoginForm.QuotationModule
                 btnNewQuotation.Enabled = false;
             }
             BringQuotationList(DateTime.Now.AddDays(-1), DateTime.Now); //Bu gün oluşturulan quotation ları göstermek için.
-            //#region Refresh
-            //BringQuotationList(dtpFromDate.Value, dtpToDate.Value);
-            //#endregion
+
         }
 
         private void txtSearchText_KeyPress(object sender, KeyPressEventArgs e)
@@ -153,14 +152,25 @@ namespace LoginForm.QuotationModule
                                          {
                                              Date = q.StartDate,
                                              QuotationNo = q.QuotationNo,
+                                             Rep_Name = q.Worker.NameLastName,
+                                             PreparedBy = currentUser.NameLastName.ToString(),
                                              RFQ = q.RFQNo,
                                              CustomerCode = c.ID,
                                              CustomerName = c.c_name,
                                              Total = q.GrossTotal,
                                              Currency = q.CurrName,
-                                             Notes = q.Note.Note_name,
-                                             Representative = q.Worker.NameLastName,
-                                             Status = q.status
+                                             OrderDate = "",
+                                             Logo = "",
+                                             CustomerNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
+                                            UserNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
+                                             City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
+                                             OrderStatus = q.status,
+                                             FirstFallowUpNotes = "",
+                                             NT1AddedBy = currentUser.NameLastName.ToString(),
+                                             NT1AddedDate = "",
+                                             SecondFallowUpNotes = "",
+                                            NT2AddedBy = currentUser.NameLastName.ToString(),
+                                             NT2AddedDate = ""
                                          }).ToList().Where(x => x.QuotationNo.Substring(x.QuotationNo.LastIndexOf('/')).Contains(txtSearchText.Text));
 
                             populateGrid(list1.ToList());
@@ -175,14 +185,25 @@ namespace LoginForm.QuotationModule
                                         {
                                             Date = q.StartDate,
                                             QuotationNo = q.QuotationNo,
+                                            Rep_Name = q.Worker.NameLastName,
+                                            PreparedBy = currentUser.NameLastName.ToString(),
                                             RFQ = q.RFQNo,
                                             CustomerCode = c.ID,
                                             CustomerName = c.c_name,
                                             Total = q.GrossTotal,
                                             Currency = q.CurrName,
-                                            Notes = q.Note.Note_name,
-                                            Representative = q.Worker.NameLastName,
-                                            Status = q.status
+                                            OrderDate = "",
+                                            Logo = "",
+                                            CustomerNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
+                                           UserNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
+                                            City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
+                                            OrderStatus = q.status,
+                                            FirstFallowUpNotes = "",
+                                            NT1AddedBy = currentUser.NameLastName.ToString(),
+                                            NT1AddedDate = "",
+                                            SecondFallowUpNotes = "",
+                                           NT2AddedBy = currentUser.NameLastName.ToString(),
+                                            NT2AddedDate = ""
                                         };
 
                             populateGrid(list2.ToList());
@@ -197,14 +218,25 @@ namespace LoginForm.QuotationModule
                                         {
                                             Date = q.StartDate,
                                             QuotationNo = q.QuotationNo,
+                                            Rep_Name = q.Worker.NameLastName,
+                                            PreparedBy = currentUser.NameLastName.ToString(),
                                             RFQ = q.RFQNo,
                                             CustomerCode = c.ID,
                                             CustomerName = c.c_name,
                                             Total = q.GrossTotal,
                                             Currency = q.CurrName,
-                                            Notes = q.Note.Note_name,
-                                            Representative = q.Worker.NameLastName,
-                                            Status = q.status
+                                            OrderDate = "",
+                                            Logo = "",
+                                            CustomerNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
+                                           UserNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
+                                            City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
+                                            OrderStatus = q.status,
+                                            FirstFallowUpNotes = "",
+                                            NT1AddedBy = currentUser.NameLastName.ToString(),
+                                            NT1AddedDate = "",
+                                            SecondFallowUpNotes = "",
+                                           NT2AddedBy = currentUser.NameLastName.ToString(),
+                                            NT2AddedDate = ""
                                         };
 
                             populateGrid(list3.ToList());
@@ -223,14 +255,25 @@ namespace LoginForm.QuotationModule
                                             {
                                                 Date = q.StartDate,
                                                 QuotationNo = q.QuotationNo,
+                                                Rep_Name = q.Worker.NameLastName,
+                                                PreparedBy = currentUser.NameLastName.ToString(),
                                                 RFQ = q.RFQNo,
                                                 CustomerCode = c.ID,
                                                 CustomerName = c.c_name,
                                                 Total = q.GrossTotal,
                                                 Currency = q.CurrName,
-                                                Notes = q.Note.Note_name,
-                                                Representative = q.Worker.NameLastName,
-                                                Status = q.status
+                                                OrderDate = "",
+                                                Logo = "",
+                                                CustomerNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
+                                               UserNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
+                                                City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
+                                                OrderStatus = q.status,
+                                                FirstFallowUpNotes = "",
+                                                NT1AddedBy = currentUser.NameLastName.ToString(),
+                                                NT1AddedDate = "",
+                                                SecondFallowUpNotes = "",
+                                               NT2AddedBy = currentUser.NameLastName.ToString(),
+                                                NT2AddedDate = ""
                                             };
 
                                 populateGrid(list4.ToList());
@@ -247,14 +290,25 @@ namespace LoginForm.QuotationModule
                                         {
                                             Date = q.StartDate,
                                             QuotationNo = q.QuotationNo,
+                                            Rep_Name = q.Worker.NameLastName,
+                                            PreparedBy = currentUser.NameLastName.ToString(),
                                             RFQ = q.RFQNo,
                                             CustomerCode = c.ID,
                                             CustomerName = c.c_name,
                                             Total = q.GrossTotal,
                                             Currency = q.CurrName,
-                                            Notes = q.Note.Note_name,
-                                            Representative = q.Worker.NameLastName,
-                                            Status = q.status
+                                            OrderDate = "",
+                                            Logo = "",
+                                            CustomerNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
+                                           UserNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
+                                            City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
+                                            OrderStatus = q.status,
+                                            FirstFallowUpNotes = "",
+                                            NT1AddedBy = currentUser.NameLastName.ToString(),
+                                            NT1AddedDate = "",
+                                            SecondFallowUpNotes = "",
+                                           NT2AddedBy = currentUser.NameLastName.ToString(),
+                                            NT2AddedDate = ""
                                         };
 
                             populateGrid(list5.ToList());
@@ -295,14 +349,25 @@ namespace LoginForm.QuotationModule
                                          {
                                              Date = q.StartDate,
                                              QuotationNo = q.QuotationNo,
+                                             Rep_Name = q.Worker.NameLastName,
+                                             PreparedBy = currentUser.NameLastName.ToString(),
                                              RFQ = q.RFQNo,
                                              CustomerCode = c.ID,
                                              CustomerName = c.c_name,
                                              Total = q.GrossTotal,
                                              Currency = q.CurrName,
-                                             Notes = q.Note.Note_name,
-                                             Representative = q.Worker.NameLastName,
-                                             Status = q.status
+                                             OrderDate = "",
+                                             Logo = "",
+                                             CustomerNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
+                                            UserNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
+                                             City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
+                                             OrderStatus = q.status,
+                                             FirstFallowUpNotes = "",
+                                             NT1AddedBy = currentUser.NameLastName.ToString(),
+                                             NT1AddedDate = "",
+                                             SecondFallowUpNotes = "",
+                                            NT2AddedBy = currentUser.NameLastName.ToString(),
+                                             NT2AddedDate = ""
                                          }).ToList().Where(x => x.QuotationNo.Substring(x.QuotationNo.LastIndexOf('/')).Contains(txtSearchText.Text));
 
                             populateGrid(list1.ToList());
@@ -318,14 +383,25 @@ namespace LoginForm.QuotationModule
                                         {
                                             Date = q.StartDate,
                                             QuotationNo = q.QuotationNo,
+                                            Rep_Name = q.Worker.NameLastName,
+                                            PreparedBy = currentUser.NameLastName.ToString(),
                                             RFQ = q.RFQNo,
                                             CustomerCode = c.ID,
                                             CustomerName = c.c_name,
                                             Total = q.GrossTotal,
                                             Currency = q.CurrName,
-                                            Notes = q.Note.Note_name,
-                                            Representative = q.Worker.NameLastName,
-                                            Status = q.status
+                                            OrderDate = "",
+                                            Logo = "",
+                                            CustomerNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
+                                           UserNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
+                                            City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
+                                            OrderStatus = q.status,
+                                            FirstFallowUpNotes = "",
+                                            NT1AddedBy = currentUser.NameLastName.ToString(),
+                                            NT1AddedDate = "",
+                                            SecondFallowUpNotes = "",
+                                           NT2AddedBy = currentUser.NameLastName.ToString(),
+                                            NT2AddedDate = ""
                                         };
 
                             populateGrid(list2.ToList());
@@ -341,14 +417,25 @@ namespace LoginForm.QuotationModule
                                         {
                                             Date = q.StartDate,
                                             QuotationNo = q.QuotationNo,
+                                            Rep_Name = q.Worker.NameLastName,
+                                            PreparedBy = currentUser.NameLastName.ToString(),
                                             RFQ = q.RFQNo,
                                             CustomerCode = c.ID,
                                             CustomerName = c.c_name,
                                             Total = q.GrossTotal,
                                             Currency = q.CurrName,
-                                            Notes = q.Note.Note_name,
-                                            Representative = q.Worker.NameLastName,
-                                            Status = q.status
+                                            OrderDate = "",
+                                            Logo = "",
+                                            CustomerNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
+                                           UserNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
+                                            City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
+                                            OrderStatus = q.status,
+                                            FirstFallowUpNotes = "",
+                                            NT1AddedBy = currentUser.NameLastName.ToString(),
+                                            NT1AddedDate = "",
+                                            SecondFallowUpNotes = "",
+                                           NT2AddedBy = currentUser.NameLastName.ToString(),
+                                            NT2AddedDate = ""
                                         };
 
                             populateGrid(list3.ToList());
@@ -368,14 +455,25 @@ namespace LoginForm.QuotationModule
                                             {
                                                 Date = q.StartDate,
                                                 QuotationNo = q.QuotationNo,
+                                                Rep_Name = q.Worker.NameLastName,
+                                                PreparedBy = currentUser.NameLastName.ToString(),
                                                 RFQ = q.RFQNo,
                                                 CustomerCode = c.ID,
                                                 CustomerName = c.c_name,
                                                 Total = q.GrossTotal,
                                                 Currency = q.CurrName,
-                                                Notes = q.Note.Note_name,
-                                                Representative = q.Worker.NameLastName,
-                                                Status = q.status
+                                                OrderDate = "",
+                                                Logo = "",
+                                                CustomerNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
+                                               UserNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
+                                                City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
+                                                OrderStatus = q.status,
+                                                FirstFallowUpNotes = "",
+                                                NT1AddedBy = currentUser.NameLastName.ToString(),
+                                                NT1AddedDate = "",
+                                                SecondFallowUpNotes = "",
+                                               NT2AddedBy = currentUser.NameLastName.ToString(),
+                                                NT2AddedDate = ""
                                             };
 
                                 populateGrid(list4.ToList());
@@ -393,14 +491,25 @@ namespace LoginForm.QuotationModule
                                         {
                                             Date = q.StartDate,
                                             QuotationNo = q.QuotationNo,
+                                            Rep_Name = q.Worker.NameLastName,
+                                            PreparedBy = currentUser.NameLastName.ToString(),
                                             RFQ = q.RFQNo,
                                             CustomerCode = c.ID,
                                             CustomerName = c.c_name,
                                             Total = q.GrossTotal,
                                             Currency = q.CurrName,
-                                            Notes = q.Note.Note_name,
-                                            Representative = q.Worker.NameLastName,
-                                            Status = q.status
+                                            OrderDate = "",
+                                            Logo = "",
+                                            CustomerNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
+                                           UserNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
+                                            City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
+                                            OrderStatus = q.status,
+                                            FirstFallowUpNotes = "",
+                                            NT1AddedBy = currentUser.NameLastName.ToString(),
+                                            NT1AddedDate = "",
+                                            SecondFallowUpNotes = "",
+                                           NT2AddedBy = currentUser.NameLastName.ToString(),
+                                            NT2AddedDate = ""
                                         };
 
                             populateGrid(list5.ToList());
@@ -429,7 +538,6 @@ namespace LoginForm.QuotationModule
                     }
                 }
             }
-            
         }
 
         private void ModifyQuotation()
@@ -480,15 +588,26 @@ namespace LoginForm.QuotationModule
                         {
                             Date = q.StartDate,
                             QuotationNo = q.QuotationNo,
+                            Rep_Name = q.Worker.NameLastName,
+                            PreparedBy = currentUser.NameLastName.ToString(),
                             RFQ = q.RFQNo,
                             CustomerCode = c.ID,
                             CustomerName = c.c_name,
                             Total = q.GrossTotal,
                             Currency = q.CurrName,
-                            Notes = q.Note.Note_name,
-                            Representative = q.Worker.NameLastName,
-                            Status = q.status
-                       }).OrderByDescending(x => x.Date);
+                            OrderDate = "",
+                            Logo = "",
+                            CustomerNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
+                            UserNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
+                            City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
+                            OrderStatus = q.status,
+                            FirstFallowUpNotes = "",
+                            NT1AddedBy = currentUser.NameLastName.ToString(),
+                            NT1AddedDate = "",
+                            SecondFallowUpNotes = "",
+                            NT2AddedBy = currentUser.NameLastName.ToString(),
+                            NT2AddedDate = ""
+                        }).OrderByDescending(x => x.Date);
 
             populateGrid(list.ToList());
             //.OrderByDescending(x => int.Parse(x.QuotationNo.Substring(5)).ToList());
@@ -504,15 +623,48 @@ namespace LoginForm.QuotationModule
         {
             dgQuotation.DataSource = null;
             dgQuotation.DataSource = queryable;
-            dgQuotation.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            //if (dgQuotation.Columns[15].DisplayIndex != 16)
+            //{
+            //    #region Grid Combobox
+            //    DataGridViewComboBoxColumn combo = new DataGridViewComboBoxColumn();
+            //    combo.HeaderText = "FirstFallowUpNotes";
+            //    combo.Name = "FirstFallowUpNotes";
+            //    dgQuotation.Columns.Add(combo);
+            //    dgQuotation.Columns[19].DisplayIndex = 15;
+
+            //    DataGridViewComboBoxColumn combo2 = new DataGridViewComboBoxColumn();
+            //    combo2.HeaderText = "SecondFallowUpNotes";
+            //    combo2.Name = "SecondFallowUpNotes";
+            //    dgQuotation.Columns.Add(combo2);
+            //    dgQuotation.Columns[20].DisplayIndex = 18;
+            //    #endregion
+            //}
 
             foreach (DataGridViewRow row in dgQuotation.Rows)
             {
-                if (row.Cells["Status"].Value.ToString() == "Deleted")
+                if (row.Cells["OrderStatus"].Value.ToString() == "Deleted")
                 {
                     row.DefaultCellStyle.BackColor = System.Drawing.Color.Red;
                 }
-                
+
+                //if (row.Cells["CustomerNotes"].Value.ToString() != "" && row.Cells["CustomerNotes"].Value != null)
+                //{
+                //    row.Cells["CustomerNotes"].Value = "Y";
+                //}
+                //else
+                //{
+                //    row.Cells["CustomerNotes"].Value = "N";
+                //}
+
+                //if (row.Cells["UserNotes"].Value.ToString() != "" && row.Cells["UserNotes"].Value != null)
+                //{
+                //    row.Cells["UserNotes"].Value = "Y";
+                //}
+                //else
+                //{
+                //    row.Cells["UserNotes"].Value = "N";
+                //}
             }
         }
 
@@ -577,17 +729,27 @@ namespace LoginForm.QuotationModule
                                {
                                    Date = q.StartDate,
                                    QuotationNo = q.QuotationNo,
+                                   Rep_Name = q.Worker.NameLastName,
+                                   PreparedBy = currentUser.NameLastName.ToString(),
                                    RFQ = q.RFQNo,
                                    CustomerCode = c.ID,
                                    CustomerName = c.c_name,
                                    Total = q.GrossTotal,
                                    Currency = q.CurrName,
-                                   Notes = q.Note.Note_name,
-                                   Representative = q.Worker.NameLastName,
-                                   Status = q.status
+                                   OrderDate = "",
+                                   Logo = "",
+                                   CustomerNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
+                                  UserNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
+                                   City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
+                                   OrderStatus = q.status,
+                                   FirstFallowUpNotes = "",
+                                   NT1AddedBy = currentUser.NameLastName.ToString(),
+                                   NT1AddedDate = "",
+                                   SecondFallowUpNotes = "",
+                                  NT2AddedBy = currentUser.NameLastName.ToString(),
+                                   NT2AddedDate = ""
                                };
-
-                    populateGrid(list.ToList());
+                                   populateGrid(list.ToList());
                 }
                 else
                 {
@@ -599,14 +761,25 @@ namespace LoginForm.QuotationModule
                                 {
                                     Date = q.StartDate,
                                     QuotationNo = q.QuotationNo,
+                                    Rep_Name = q.Worker.NameLastName,
+                                    PreparedBy = currentUser.NameLastName.ToString(),
                                     RFQ = q.RFQNo,
                                     CustomerCode = c.ID,
                                     CustomerName = c.c_name,
                                     Total = q.GrossTotal,
                                     Currency = q.CurrName,
-                                    Notes = q.Note.Note_name,
-                                    Representative = q.Worker.NameLastName,
-                                    Status = q.status
+                                    OrderDate = "",
+                                    Logo = "",
+                                    CustomerNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
+                                   UserNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
+                                    City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
+                                    OrderStatus = q.status,
+                                    FirstFallowUpNotes = "",
+                                    NT1AddedBy = currentUser.NameLastName.ToString(),
+                                    NT1AddedDate = "",
+                                    SecondFallowUpNotes = "",
+                                    NT2AddedBy = currentUser.NameLastName.ToString(),
+                                    NT2AddedDate = ""
                                 };
 
                     populateGrid(list2.ToList());
@@ -697,15 +870,10 @@ namespace LoginForm.QuotationModule
 
         private void dgQuotation_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgQuotation.CurrentRow.Cells["Status"].Value.ToString() == "Deleted")
+            if (dgQuotation.CurrentRow.Cells["OrderStatus"].Value.ToString() == "Deleted")
             {
-                dgQuotation.CurrentRow.Cells["Status"].Style.BackColor = System.Drawing.Color.Red;
+                dgQuotation.CurrentRow.Cells["OrderStatus"].Style.BackColor = System.Drawing.Color.Red;
             }
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
         }
     }
 }
