@@ -919,6 +919,7 @@
           <Property Name="DeliveryItemNumber" Type="int" />
           <Property Name="IsSaleInvoiced" Type="int" />
           <Property Name="PurchaseOrderID" Type="int" />
+          <Property Name="Tax" Type="decimal" Precision="18" Scale="4" Nullable="false" />
         </EntityType>
         <EntityType Name="RsFileHistory">
           <Key>
@@ -3459,6 +3460,9 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Parameter Name="InvoiceNettValue" Type="decimal" Mode="In" />
           <Parameter Name="Currency" Type="nvarchar" Mode="In" />
           <Parameter Name="AirwayBillNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="Discount" Type="numeric" Mode="In" />
+          <Parameter Name="Surcharge" Type="numeric" Mode="In" />
+          <Parameter Name="SupplierID" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="SlidingPriceAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ArticleNo" Type="nvarchar" Mode="In" />
@@ -5340,6 +5344,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="DeliveryItemNumber" Type="Int32" />
           <Property Name="IsSaleInvoiced" Type="Int32" />
           <Property Name="PurchaseOrderID" Type="Int32" />
+          <Property Name="Tax" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
           <NavigationProperty Name="PurchaseOrder" Relationship="Self.FK__RS_Invoic__Purch__043B7C66" FromRole="RS_InvoiceDetails" ToRole="PurchaseOrder" />
           <NavigationProperty Name="RS_Invoice" Relationship="Self.FK__RS_Invoic__RS_In__7AE71C56" FromRole="RS_InvoiceDetails" ToRole="RS_Invoice" />
         </EntityType>
@@ -8461,6 +8466,9 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="InvoiceNettValue" Mode="In" Type="Decimal" />
             <Parameter Name="Currency" Mode="In" Type="String" />
             <Parameter Name="AirwayBillNumber" Mode="In" Type="String" />
+            <Parameter Name="Discount" Mode="In" Type="Decimal" />
+            <Parameter Name="Surcharge" Mode="In" Type="Decimal" />
+            <Parameter Name="SupplierID" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SlidingPriceAdd">
             <Parameter Name="ArticleNo" Mode="In" Type="String" />
@@ -10179,6 +10187,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="DeliveryItemNumber" ColumnName="DeliveryItemNumber" />
                 <ScalarProperty Name="IsSaleInvoiced" ColumnName="IsSaleInvoiced" />
                 <ScalarProperty Name="PurchaseOrderID" ColumnName="PurchaseOrderID" />
+                <ScalarProperty Name="Tax" ColumnName="Tax" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

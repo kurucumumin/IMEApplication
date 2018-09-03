@@ -3896,6 +3896,10 @@ namespace LoginForm
                         }
                     }
 
+                    RSInvoice.Discount = 0;
+                    RSInvoice.Surcharge = 0;
+                    RSInvoice.SupplierID = IME.Suppliers.Where(x => x.s_name == "RS").FirstOrDefault().ID;
+
                     RSID = Convert.ToInt32(IME.RSInvoiceADD(
                        RSInvoice.ShipmentReference
                        , RSInvoice.BillingDocumentReference
@@ -3908,9 +3912,11 @@ namespace LoginForm
                        , RSInvoice.InvoiceNettValue
                        , RSInvoice.Currency
                        , RSInvoice.AirwayBillNumber
+                       , RSInvoice.Discount
+                       , RSInvoice.Surcharge
+                       , RSInvoice.SupplierID
                        ).FirstOrDefault());
-
-
+                    
                     List<RS_InvoiceDetails> InvoiceDetails = new List<RS_InvoiceDetails>();
                     int a = 4;
                     while (lines.Count() > a)

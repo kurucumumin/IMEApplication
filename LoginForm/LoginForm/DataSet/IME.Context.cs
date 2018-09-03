@@ -1903,7 +1903,7 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("RS_InvoiceDetailsADD", rS_InvoiceIDParameter, purchaseOrderNumberParameter, purchaseOrderItemNumberParameter, productNumberParameter, billingItemNumberParameter, quantityParameter, salesUnitParameter, unitPriceParameter, discountParameter, goodsValueParameter, amountParameter, cCCNNOParameter, countryofOriginParameter, articleDescriptionParameter, deliveryNumberParameter, deliveryItemNumberParameter, purchaseOrderIDParameter);
         }
     
-        public virtual ObjectResult<Nullable<decimal>> RSInvoiceADD(string shipmentReference, string billingDocumentReference, string shippingCondition, Nullable<System.DateTime> billingDocumentDate, string supplyingECCompany, string customerReference, Nullable<decimal> invoiceTaxValue, Nullable<decimal> invoiceGoodsValue, Nullable<decimal> invoiceNettValue, string currency, string airwayBillNumber)
+        public virtual ObjectResult<Nullable<decimal>> RSInvoiceADD(string shipmentReference, string billingDocumentReference, string shippingCondition, Nullable<System.DateTime> billingDocumentDate, string supplyingECCompany, string customerReference, Nullable<decimal> invoiceTaxValue, Nullable<decimal> invoiceGoodsValue, Nullable<decimal> invoiceNettValue, string currency, string airwayBillNumber, Nullable<decimal> discount, Nullable<decimal> surcharge, string supplierID)
         {
             var shipmentReferenceParameter = shipmentReference != null ?
                 new ObjectParameter("ShipmentReference", shipmentReference) :
@@ -1949,7 +1949,19 @@ namespace LoginForm.DataSet
                 new ObjectParameter("AirwayBillNumber", airwayBillNumber) :
                 new ObjectParameter("AirwayBillNumber", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("RSInvoiceADD", shipmentReferenceParameter, billingDocumentReferenceParameter, shippingConditionParameter, billingDocumentDateParameter, supplyingECCompanyParameter, customerReferenceParameter, invoiceTaxValueParameter, invoiceGoodsValueParameter, invoiceNettValueParameter, currencyParameter, airwayBillNumberParameter);
+            var discountParameter = discount.HasValue ?
+                new ObjectParameter("Discount", discount) :
+                new ObjectParameter("Discount", typeof(decimal));
+    
+            var surchargeParameter = surcharge.HasValue ?
+                new ObjectParameter("Surcharge", surcharge) :
+                new ObjectParameter("Surcharge", typeof(decimal));
+    
+            var supplierIDParameter = supplierID != null ?
+                new ObjectParameter("SupplierID", supplierID) :
+                new ObjectParameter("SupplierID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("RSInvoiceADD", shipmentReferenceParameter, billingDocumentReferenceParameter, shippingConditionParameter, billingDocumentDateParameter, supplyingECCompanyParameter, customerReferenceParameter, invoiceTaxValueParameter, invoiceGoodsValueParameter, invoiceNettValueParameter, currencyParameter, airwayBillNumberParameter, discountParameter, surchargeParameter, supplierIDParameter);
         }
     
         public virtual int SlidingPriceAdd(string articleNo, string articleDescription, Nullable<int> itemTypeCode, string itemTypeDesc, string introductionDate, string discontinuedDate, Nullable<int> quantity1, Nullable<decimal> col1Price, Nullable<decimal> col2Price, Nullable<decimal> col3Price, Nullable<decimal> col4Price, Nullable<decimal> col5Price, Nullable<int> col1Break, Nullable<int> col2Break, Nullable<int> col3Break, Nullable<int> col4Break, Nullable<int> col5Break, Nullable<decimal> discountedPrice1, Nullable<decimal> discountedPrice2, Nullable<decimal> discountedPrice3, Nullable<decimal> discountedPrice4, Nullable<decimal> discountedPrice5, string superSectionNo, string supersectionName, string brandID, string brandname, string sectionID, string sectionName)

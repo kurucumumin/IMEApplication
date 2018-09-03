@@ -128,7 +128,7 @@ namespace LoginForm
             this.label26 = new System.Windows.Forms.Label();
             this.tabBank = new System.Windows.Forms.TabPage();
             this.btnBankDelete = new System.Windows.Forms.Button();
-            this.btnBankModify = new System.Windows.Forms.Button();
+            this.btnBankUpdate = new System.Windows.Forms.Button();
             this.btnBankAdd = new System.Windows.Forms.Button();
             this.lbBankList = new System.Windows.Forms.ListBox();
             this.button4 = new System.Windows.Forms.Button();
@@ -1318,7 +1318,7 @@ namespace LoginForm
             // 
             this.tabBank.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.tabBank.Controls.Add(this.btnBankDelete);
-            this.tabBank.Controls.Add(this.btnBankModify);
+            this.tabBank.Controls.Add(this.btnBankUpdate);
             this.tabBank.Controls.Add(this.btnBankAdd);
             this.tabBank.Controls.Add(this.lbBankList);
             this.tabBank.Controls.Add(this.button4);
@@ -1339,6 +1339,7 @@ namespace LoginForm
             // 
             // btnBankDelete
             // 
+            this.btnBankDelete.Enabled = false;
             this.btnBankDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBankDelete.Location = new System.Drawing.Point(609, 171);
             this.btnBankDelete.Margin = new System.Windows.Forms.Padding(4);
@@ -1349,27 +1350,29 @@ namespace LoginForm
             this.btnBankDelete.UseVisualStyleBackColor = true;
             this.btnBankDelete.Click += new System.EventHandler(this.btnBankDelete_Click);
             // 
-            // btnBankModify
+            // btnBankUpdate
             // 
-            this.btnBankModify.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBankModify.Location = new System.Drawing.Point(528, 171);
-            this.btnBankModify.Margin = new System.Windows.Forms.Padding(4);
-            this.btnBankModify.Name = "btnBankModify";
-            this.btnBankModify.Size = new System.Drawing.Size(75, 32);
-            this.btnBankModify.TabIndex = 60;
-            this.btnBankModify.Text = "Update";
-            this.btnBankModify.UseVisualStyleBackColor = true;
-            this.btnBankModify.Click += new System.EventHandler(this.btnBankModify_Click);
+            this.btnBankUpdate.Enabled = false;
+            this.btnBankUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBankUpdate.Location = new System.Drawing.Point(528, 171);
+            this.btnBankUpdate.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBankUpdate.Name = "btnBankUpdate";
+            this.btnBankUpdate.Size = new System.Drawing.Size(75, 32);
+            this.btnBankUpdate.TabIndex = 60;
+            this.btnBankUpdate.Text = "Cancel";
+            this.btnBankUpdate.UseVisualStyleBackColor = true;
+            this.btnBankUpdate.Click += new System.EventHandler(this.btnBankModify_Click);
             // 
             // btnBankAdd
             // 
+            this.btnBankAdd.Enabled = false;
             this.btnBankAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBankAdd.Location = new System.Drawing.Point(447, 171);
             this.btnBankAdd.Margin = new System.Windows.Forms.Padding(4);
             this.btnBankAdd.Name = "btnBankAdd";
             this.btnBankAdd.Size = new System.Drawing.Size(75, 32);
             this.btnBankAdd.TabIndex = 59;
-            this.btnBankAdd.Text = "Add";
+            this.btnBankAdd.Text = "Save";
             this.btnBankAdd.UseVisualStyleBackColor = true;
             this.btnBankAdd.Click += new System.EventHandler(this.btnBankAdd_Click);
             // 
@@ -2062,7 +2065,7 @@ namespace LoginForm
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button btnBankDelete;
-        private System.Windows.Forms.Button btnBankModify;
+        private System.Windows.Forms.Button btnBankUpdate;
         private System.Windows.Forms.Button btnBankAdd;
         private System.Windows.Forms.ListBox lbBankList;
     }

@@ -451,7 +451,6 @@
             this.Name = "FormSalesOrderMain";
             this.Text = "Sales Order";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Activated += new System.EventHandler(this.FormSalesOrderMain_Activated);
             this.Load += new System.EventHandler(this.FormSalesOrderMain_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

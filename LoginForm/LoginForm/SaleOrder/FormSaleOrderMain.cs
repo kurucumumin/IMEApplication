@@ -218,11 +218,6 @@ namespace LoginForm.nsSaleOrder
             BringSalesList(datetimeEnd.Value.Date, datetimeStart.Value.Date);
         }
 
-        private void FormSalesOrderMain_Activated(object sender, EventArgs e)
-        {
-            BringSalesList();
-        }
-
         private void sentToPurchaseOrderToolStripMenuItem_Click(object sender, EventArgs e)
         {
             decimal item_code = 0;
@@ -267,7 +262,6 @@ namespace LoginForm.nsSaleOrder
 
                 BringSalesList(datetimeEnd.Value.Date, datetimeStart.Value.Date);
             }
-
             MessageBox.Show(resultMessage);
         }
 
