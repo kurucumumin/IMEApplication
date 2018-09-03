@@ -451,7 +451,7 @@
             this.btnDeleteQuotation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.btnDeleteQuotation.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnDeleteQuotation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeleteQuotation.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
+            this.btnDeleteQuotation.Image = global::LoginForm.Properties.Resources.if_minus_1645995;
             this.btnDeleteQuotation.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnDeleteQuotation.Location = new System.Drawing.Point(249, 17);
             this.btnDeleteQuotation.Margin = new System.Windows.Forms.Padding(0);
