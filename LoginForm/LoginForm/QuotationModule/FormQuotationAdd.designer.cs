@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dgQuotationAddedItems = new System.Windows.Forms.DataGridView();
@@ -383,8 +383,8 @@
             // dgQuotationAddedItems
             // 
             this.dgQuotationAddedItems.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgQuotationAddedItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgQuotationAddedItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dgQuotationAddedItems.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgQuotationAddedItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgQuotationAddedItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -614,9 +614,9 @@
             // 
             // dgQty1
             // 
-            dataGridViewCellStyle6.Format = "N0";
-            dataGridViewCellStyle6.NullValue = null;
-            this.dgQty1.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.Format = "N0";
+            dataGridViewCellStyle12.NullValue = null;
+            this.dgQty1.DefaultCellStyle = dataGridViewCellStyle12;
             this.dgQty1.HeaderText = "Qty";
             this.dgQty1.Name = "dgQty1";
             this.dgQty1.ReadOnly = true;
@@ -3066,9 +3066,9 @@
             // dgNo
             // 
             this.dgNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle2.Format = "N4";
-            dataGridViewCellStyle2.NullValue = null;
-            this.dgNo.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Format = "N4";
+            dataGridViewCellStyle8.NullValue = null;
+            this.dgNo.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgNo.Frozen = true;
             this.dgNo.HeaderText = "No";
             this.dgNo.Name = "dgNo";
@@ -3078,8 +3078,8 @@
             // HS
             // 
             this.HS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.HS.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.HS.DefaultCellStyle = dataGridViewCellStyle9;
             this.HS.Frozen = true;
             this.HS.HeaderText = "HS";
             this.HS.Name = "HS";
@@ -3184,9 +3184,9 @@
             // dgLandingCost
             // 
             this.dgLandingCost.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle4.Format = "C3";
-            dataGridViewCellStyle4.NullValue = null;
-            this.dgLandingCost.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.Format = "C3";
+            dataGridViewCellStyle10.NullValue = null;
+            this.dgLandingCost.DefaultCellStyle = dataGridViewCellStyle10;
             this.dgLandingCost.HeaderText = "Landing Cost (£)";
             this.dgLandingCost.Name = "dgLandingCost";
             this.dgLandingCost.ReadOnly = true;
@@ -3204,9 +3204,9 @@
             // 
             this.dgQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.dgQty.DataPropertyName = "QtyDeneme";
-            dataGridViewCellStyle5.Format = "N0";
-            dataGridViewCellStyle5.NullValue = null;
-            this.dgQty.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle11.Format = "N0";
+            dataGridViewCellStyle11.NullValue = null;
+            this.dgQty.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgQty.HeaderText = "Qty";
             this.dgQty.Name = "dgQty";
             this.dgQty.ReadOnly = true;
