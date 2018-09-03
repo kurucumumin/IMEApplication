@@ -4380,5 +4380,10 @@ namespace LoginForm.QuotationModule
                 }
             }
         }
+
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(dgQuotationAddedItems.CurrentCell.Value.ToString());
+        }
     }
 }

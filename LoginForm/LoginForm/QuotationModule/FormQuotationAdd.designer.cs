@@ -338,6 +338,9 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtNoteForCustomer = new System.Windows.Forms.TextBox();
             this.tooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -358,6 +361,7 @@
             this.gbShipment.SuspendLayout();
             this.LandingCost.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -369,7 +373,7 @@
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 180F));
@@ -385,14 +389,14 @@
             this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(6, 186);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(6);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.dgQuotationAddedItems);
-            this.splitContainer1.Panel1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.splitContainer1.Panel1.Margin = new System.Windows.Forms.Padding(3);
             this.splitContainer1.Panel1MinSize = 80;
             // 
             // splitContainer1.Panel2
@@ -410,6 +414,7 @@
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgQuotationAddedItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgQuotationAddedItems.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
+            this.dgQuotationAddedItems.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.dgQuotationAddedItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgQuotationAddedItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgNo,
@@ -449,6 +454,7 @@
             this.dgCOO,
             this.dgCCCNO,
             this.dgDependantTable});
+            this.dgQuotationAddedItems.ContextMenuStrip = this.contextMenuStrip1;
             this.dgQuotationAddedItems.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgQuotationAddedItems.Location = new System.Drawing.Point(0, 0);
             this.dgQuotationAddedItems.MultiSelect = false;
@@ -1165,7 +1171,7 @@
             this.panel2.Controls.Add(this.txtTotalCost);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(2, 2);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1008, 45);
             this.panel2.TabIndex = 0;
@@ -1312,7 +1318,7 @@
             this.tabControl1.Controls.Add(this.tabItemDetails);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(2, 2);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1024, 176);
@@ -1329,9 +1335,9 @@
             this.tabCustomerDetails.Controls.Add(this.label16);
             this.tabCustomerDetails.Controls.Add(this.label15);
             this.tabCustomerDetails.Location = new System.Drawing.Point(4, 22);
-            this.tabCustomerDetails.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabCustomerDetails.Margin = new System.Windows.Forms.Padding(2);
             this.tabCustomerDetails.Name = "tabCustomerDetails";
-            this.tabCustomerDetails.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabCustomerDetails.Padding = new System.Windows.Forms.Padding(2);
             this.tabCustomerDetails.Size = new System.Drawing.Size(1016, 150);
             this.tabCustomerDetails.TabIndex = 0;
             this.tabCustomerDetails.Text = "Customer Details";
@@ -1418,7 +1424,7 @@
             // 
             this.btnViewMore.Image = global::LoginForm.Properties.Resources.icons8_Edit_Property_32;
             this.btnViewMore.Location = new System.Drawing.Point(480, 9);
-            this.btnViewMore.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnViewMore.Margin = new System.Windows.Forms.Padding(2);
             this.btnViewMore.Name = "btnViewMore";
             this.btnViewMore.Size = new System.Drawing.Size(52, 52);
             this.btnViewMore.TabIndex = 76;
@@ -1428,7 +1434,7 @@
             // txtCustomerName
             // 
             this.txtCustomerName.Location = new System.Drawing.Point(186, 9);
-            this.txtCustomerName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCustomerName.Margin = new System.Windows.Forms.Padding(4);
             this.txtCustomerName.Name = "txtCustomerName";
             this.txtCustomerName.ReadOnly = true;
             this.txtCustomerName.Size = new System.Drawing.Size(290, 20);
@@ -1726,10 +1732,10 @@
             this.tabItemDetails.Controls.Add(this.label48);
             this.tabItemDetails.Controls.Add(this.label49);
             this.tabItemDetails.Location = new System.Drawing.Point(4, 22);
-            this.tabItemDetails.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabItemDetails.Margin = new System.Windows.Forms.Padding(2);
             this.tabItemDetails.Name = "tabItemDetails";
-            this.tabItemDetails.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabItemDetails.Size = new System.Drawing.Size(1274, 151);
+            this.tabItemDetails.Padding = new System.Windows.Forms.Padding(2);
+            this.tabItemDetails.Size = new System.Drawing.Size(1016, 150);
             this.tabItemDetails.TabIndex = 1;
             this.tabItemDetails.Text = "Item Details";
             // 
@@ -2797,7 +2803,7 @@
             this.panel1.Controls.Add(this.groupBox3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(2, 439);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1024, 168);
             this.panel1.TabIndex = 58;
@@ -3270,6 +3276,27 @@
             this.txtNoteForCustomer.Size = new System.Drawing.Size(404, 36);
             this.txtNoteForCustomer.TabIndex = 0;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyToolStripMenuItem,
+            this.pasteToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
+            // 
+            // copyToolStripMenuItem
+            // 
+            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.copyToolStripMenuItem.Text = "Copy";
+            this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
+            // 
+            // pasteToolStripMenuItem
+            // 
+            this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pasteToolStripMenuItem.Text = "Paste";
+            // 
             // FormQuotationAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3314,6 +3341,7 @@
             this.LandingCost.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -3598,5 +3626,8 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label lblPara;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
     }
 }
