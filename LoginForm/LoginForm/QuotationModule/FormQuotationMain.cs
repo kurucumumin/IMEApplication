@@ -131,10 +131,10 @@ namespace LoginForm.QuotationModule
             {
                 btnNewQuotation.Enabled = false;
             }
-            BringQuotationList();
-            #region Refresh
-            BringQuotationList(dtpFromDate.Value, dtpToDate.Value);
-            #endregion
+            BringQuotationList(DateTime.Now.AddDays(-1), DateTime.Now); //Bu gün oluşturulan quotation ları göstermek için.
+            //#region Refresh
+            //BringQuotationList(dtpFromDate.Value, dtpToDate.Value);
+            //#endregion
         }
 
         private void txtSearchText_KeyPress(object sender, KeyPressEventArgs e)
@@ -703,6 +703,9 @@ namespace LoginForm.QuotationModule
             }
         }
 
-       
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
