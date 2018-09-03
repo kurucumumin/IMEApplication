@@ -1151,6 +1151,7 @@ namespace LoginForm.QuotationModule
                     {
                         MessageBox.Show("This product does not have cost");
                         dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index].Value = "0";
+                        dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index];
                     }
                 }
                 #endregion
