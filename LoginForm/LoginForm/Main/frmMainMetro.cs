@@ -8,6 +8,7 @@
 using LoginForm.BackOrder;
 using LoginForm.Billing;
 using LoginForm.DataSet;
+using LoginForm.f_RSInvoice;
 using LoginForm.ItemModule;
 using LoginForm.ManagementModule;
 using LoginForm.nsSaleOrder;
@@ -396,6 +397,12 @@ namespace LoginForm.Main
         {
             FormUserCustomerUpdate form = new FormUserCustomerUpdate();
             form.ShowDialog();
+        }
+
+        private void altoSlidingLabel1_DoubleClick(object sender, EventArgs e)
+        {
+            frm_RSInvoice form = new frm_RSInvoice();
+            form.Show();
         }
     }
 }

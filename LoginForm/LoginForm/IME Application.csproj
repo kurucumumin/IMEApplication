@@ -524,6 +524,12 @@
     <Compile Include="frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="f_RSInvoice\frm_RSInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="f_RSInvoice\frm_RSInvoice.Designer.cs">
+      <DependentUpon>frm_RSInvoice.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\DBHelper.cs" />
     <Compile Include="Helpers\ExtensionMethods.cs" />
     <Compile Include="Helpers\RoundedRectangleF.cs" />
@@ -603,6 +609,7 @@
     </Compile>
     <Compile Include="MyClasses\FizikselDosya_.cs" />
     <Compile Include="MyClasses\KomutArgumanlari_.cs" />
+    <Compile Include="MyClasses\LogoLibrary.cs" />
     <Compile Include="MyClasses\MyForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -980,6 +987,7 @@
     <Compile Include="Services\PrintingUtils.cs" />
     <Compile Include="Services\QuotationDatagridCustomize.cs" />
     <Compile Include="Services\classSupplier.cs" />
+    <Compile Include="Services\SP\Sp_RSInvoice.cs" />
     <Compile Include="Services\ToolTipService.cs" />
     <Compile Include="MyClasses\TransacsionArgumanlari_.cs" />
     <Compile Include="Services\txtCreate.cs" />
@@ -1059,6 +1067,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="f_RSInvoice\frm_RSInvoice.resx">
+      <DependentUpon>frm_RSInvoice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IMEAccount\frmReceiptOperation.resx">
       <DependentUpon>frmReceiptOperation.cs</DependentUpon>
@@ -1412,8 +1423,6 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\MyClasses\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

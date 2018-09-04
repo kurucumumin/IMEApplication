@@ -3929,7 +3929,7 @@ namespace LoginForm
                             if (lines[a].Substring(32, 6).ToString().Trim() != "") rs.PurchaseOrderItemNumber = Convert.ToInt32(lines[a].Substring(32, 6).ToString().Trim());
                             if (lines[a].Substring(38, 18).ToString().Trim() != "") rs.ProductNumber = lines[a].Substring(38, 18).ToString().Trim();
                             if (lines[a].Substring(56, 6).ToString().Trim() != "") rs.BillingItemNumber = Convert.ToInt32(lines[a].Substring(56, 6).ToString().Trim());
-                            if (lines[a].Substring(62, 15).ToString().Trim() != "") rs.Quantity = decimal.Parse(lines[a].Substring(62, 15).ToString().Trim());
+                            if (lines[a].Substring(62, 15).ToString().Trim() != "") rs.Quantity = Int32.Parse(lines[a].Substring(62, 15).ToString().Trim());
 
                             if (lines[a].Substring(77, 3).ToString().Trim() != "") rs.SalesUnit = lines[a].Substring(77, 3).ToString().Trim();
                             if (lines[a].Substring(80, 11).ToString().Trim() != "") rs.UnitPrice = decimal.Parse(lines[a].Substring(80, 11).ToString().Trim());
