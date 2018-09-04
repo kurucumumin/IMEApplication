@@ -1,24 +1,42 @@
 ﻿using LoginForm.DataSet;
 using System;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Linq;
+using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 using LoginForm.Services;
 using static LoginForm.Services.MyClasses.MyAuthority;
+using System.Data.SqlClient;
+using System.ComponentModel;
 
 namespace LoginForm.QuotationModule
 {
     public partial class FormQuotationMain : MyForm
     {
+        //SqlConnection sqlCon;
+        //SqlDataAdapter da;
+        //System.Data.DataSet ds;
+        ////Form1 Veritabanı bağlantısı için sqlStr Sql sorgumuz için sqlCmd yi tanımlıyoruz
+        //string sqlStr = @"Data Source=195.201.76.136;Initial Catalog=IME;Persist Security Info=True;User ID=sa;Password=ime1453..";
+        //string sqlCmd = "select * from Quotation"; // AdventureWorks2012 Database indeki Person tablosunu getirir
+ 
         DateTime dateNow;
         Worker currentUser = Utils.getCurrentUser();
+
+        //BackgroundWorker worker;
+        //private delegate void DELEGATE();
         public FormQuotationMain()
         {
             IMEEntities IME = new IMEEntities();
             InitializeComponent();
+            //worker = new BackgroundWorker();
             cbSearch.SelectedIndex = 0;
             dateNow = Convert.ToDateTime(new IMEEntities().CurrentDate().First());
             dtpFromDate.Value = Convert.ToDateTime(IME.CurrentDate().First()).AddMonths(-3);
+
         }
 
         private void btnNewQuotation_Click(object sender, EventArgs e)
@@ -30,6 +48,9 @@ namespace LoginForm.QuotationModule
 
         private void btnRefreshList_Click(object sender, EventArgs e)
         {
+            //worker.DoWork += worker_DoWork;
+            //worker.RunWorkerAsync();
+
             BringQuotationList(dtpFromDate.Value, dtpToDate.Value);
         }
 
@@ -875,5 +896,58 @@ namespace LoginForm.QuotationModule
                 dgQuotation.CurrentRow.Cells["OrderStatus"].Style.BackColor = System.Drawing.Color.Red;
             }
         }
-    }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            //System.Windows.Forms.Form.CheckForIllegalCrossThreadCalls = false;
+            //Thread thread = new Thread(new ThreadStart(ejecuta_sql));
+            //thread.Start();
+        }
+
+        //private void ejecuta_sql()
+        //{
+        //    try
+        //    {
+        //        dgQuotation.DataSource = null; //Her click de datasource u null a eşitleyip içeriğini temizliyoruz
+
+        //        sqlCon = new SqlConnection(sqlStr);//Yukarıda tanımladığımız Sql nesnesini oluşturup sqlStr ile veritabanımıza bağlanıyoruz
+
+        //        sqlCon.Open(); //bağlantıyı açıyoruz
+
+        //        da = new SqlDataAdapter(sqlCmd, sqlCon);//dataapter nesnesini oluşturup sqlCmd sorgu cümlesini ve sqlCon veritabanı bağlantımızı yazıyoruz
+
+        //        ds = new System.Data.DataSet();//dataset nesnesini oluşturuyoruz
+
+        //        da.Fill(ds, "Quotation");//sqlCmd sorgusundan gelen veriyi dataset nesnesine ekliyoruz. ben burada table ismi için Person dedim siz başka bir isimde verebilirsiniz
+
+        //        if (ds.Tables[0].Rows.Count == 0)//Person tablosunda herhangi bir veri yoksa (boşsa) aşağıdaki blok çalışacak
+
+        //        {
+
+        //            // label1.Text = "Kayıt bulunamadı";
+
+        //            return;//kayıt olmadığı için return ile bloğun dışına çıkıyoruz
+
+        //        }
+
+        //        else//kayıt varsa
+        //        {
+        //            //label1.Text = ds.Tables[0].Rows.Count + " adet kayıt getirildi";//satırları sayıp adet sayısını label ın textine atıyoruz
+        //            //dgQuotation.DefaultCellStyle.BackColor = Color.Olive;//Default hücre stilini rengini belirliyouz
+        //            //dgQuotation.AlternatingRowsDefaultCellStyle.BackColor = Color.OliveDrab;//Alternatif satır default hücre stil rengini belirliyoruz
+        //            dgQuotation.DataSource = ds.Tables["Quotation"];//sqlCmd sorgusu ile çektiğimiz kayıtlar datagridview1 üzerinde gösteriliyor
+        //        }
+        //    }
+        //    catch (SqlException ex)
+        //    {
+        //        MessageBox.Show("Hata : " + ex); //Veritabanına bağlantı sırasında alınan bir hata varsa burada gösteriliyor
+        //    }
+        //    finally //button1_Click olduğu sürece bu bloğa uğramadan uygulama sonlanmıyor
+        //    {
+        //        sqlCon.Close(); //Açık olan Sql bağlantısı sonlandırılıyor
+        //        da.Dispose(); //SqlDataApter nesnesi dispose ediliyor
+        //    }
+        //    Thread.Sleep(10);
+        //}
+     }
 }
