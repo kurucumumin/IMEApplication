@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.dgQuotation = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.dgQuotation = new System.Windows.Forms.DataGridView();
             this.gridRightClick = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.dELETEQUOTATIONToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.qUOTATIONINFOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -545,7 +545,7 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private DevComponents.DotNetBar.Controls.DataGridViewX dgQuotation;
+        private System.Windows.Forms.DataGridView dgQuotation;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnDeleteQuotation;
         private System.Windows.Forms.Button btnModifyQuotation;
