@@ -22,6 +22,10 @@ namespace LoginForm.nsSaleOrder
         public FormSalesOrderMain()
         {
             InitializeComponent();
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
+            System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
+            dgSales, new object[] { true });
             //if (Utils.getCurrentUser().AuthorizationValues.Where(x=>x.AuthorizationID == 1022).FirstOrDefault() == null)
             //{
             //    btnDelete.Visible = false;
@@ -48,7 +52,7 @@ namespace LoginForm.nsSaleOrder
             datetimeEnd.MaxDate = DateTime.Today.Date;
             datetimeEnd.Value = DateTime.Today.Date;
             datetimeStart.Value = DateTime.Today.AddMonths(-3);
-            BringSalesList(datetimeEnd.Value, datetimeStart.Value);
+            BringSalesList(DateTime.Now, DateTime.Now.AddDays(-1));
         }
 
         private void BringSalesList()
@@ -98,9 +102,15 @@ namespace LoginForm.nsSaleOrder
                 }
             }
 
-            foreach (DataGridViewColumn col in dgSales.Columns)
+            //foreach (DataGridViewColumn col in dgSales.Columns)
+            //{
+            //    col.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            //}
+
+
+            for (int i = 0; i < dgSales.ColumnCount; i++)
             {
-                col.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+                dgSales.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             }
         }
 

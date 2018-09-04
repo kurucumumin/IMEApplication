@@ -403,6 +403,7 @@ namespace LoginForm
         private void Search_Click(object sender, EventArgs e)
         {
             gridselectedindex = 0;
+            MakeTextUpperCase((TextBox)sender);
             searchtxt = txtSearch.Text;
             customersearch();
 
@@ -1319,6 +1320,7 @@ namespace LoginForm
             if (e.KeyCode == Keys.Enter)
             {
                 gridselectedindex = 0;
+                MakeTextUpperCase((TextBox)sender);
                 searchtxt = txtSearch.Text;
                 customersearch();
             }
@@ -2300,7 +2302,6 @@ namespace LoginForm
         {
             tabControl1.SelectedTab = tab_company;
         }
-
 
         //private void logoCustUpd()
         //{

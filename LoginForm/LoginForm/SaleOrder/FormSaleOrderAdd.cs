@@ -54,6 +54,10 @@ namespace LoginForm.QuotationModule
         {
             InitializeComponent();
 
+            typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
+           System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
+           dgSaleAddedItems, new object[] { true });
+
             dtpDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
             dtpDate.Enabled = false;
             this.parent = parent;
@@ -61,6 +65,10 @@ namespace LoginForm.QuotationModule
         public FormSaleOrderAdd()
         {
             InitializeComponent();
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
+         System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
+         dgSaleAddedItems, new object[] { true });
 
             dtpDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
             dtpDate.Enabled = false;
@@ -140,6 +148,10 @@ namespace LoginForm.QuotationModule
         {
             InitializeComponent();
 
+            typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
+         System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
+         dgSaleAddedItems, new object[] { true });
+
             for (int i = 0; i < dgSaleAddedItems.RowCount; i++)
             {
                 dgSaleAddedItems.Rows[i].Cells["dgQty"].ReadOnly = false;
@@ -179,6 +191,11 @@ namespace LoginForm.QuotationModule
             firstInitialize = true;
             SaleCurrency = list[0].Quotation.Currency.ExchangeRates.OrderByDescending(x => x.date).FirstOrDefault().rate;
             InitializeComponent();
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
+         System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
+         dgSaleAddedItems, new object[] { true });
+
             lblVat.Text = Utils.getManagement().VAT.ToString();
             dgSaleAddedItems.Columns[dgLandingCost.Index].DefaultCellStyle.Format = "C4";
             dgSaleAddedItems.Columns[dgLandingCost.Index].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("en-GB");
@@ -349,6 +366,11 @@ namespace LoginForm.QuotationModule
             SaleCurrency = list[0].SaleOrder.ExchangeRate.rate;
             SItems = list;
             InitializeComponent();
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
+         System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
+         dgSaleAddedItems, new object[] { true });
+
             lblVat.Text = Utils.getManagement().VAT.ToString();
             dgSaleAddedItems.Columns[dgLandingCost.Index].DefaultCellStyle.Format = "C4";
             dgSaleAddedItems.Columns[dgLandingCost.Index].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("en-GB");
@@ -714,6 +736,11 @@ namespace LoginForm.QuotationModule
             QItems = list;
 
             InitializeComponent();
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
+         System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
+         dgSaleAddedItems, new object[] { true });
+
             DataGridViewComboBoxColumn deliveryColumn = (DataGridViewComboBoxColumn)dgSaleAddedItems.Columns[dgDelivery.Index];
             deliveryColumn.DataSource = IME.QuotationDeliveries.ToList();
             deliveryColumn.DisplayMember = "DeliveryName";

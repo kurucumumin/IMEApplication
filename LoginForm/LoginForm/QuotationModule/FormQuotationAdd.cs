@@ -49,14 +49,24 @@ namespace LoginForm.QuotationModule
         {
             InitializeComponent();
 
+            typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
+         System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
+         dgQuotationAddedItems, new object[] { true });
+
             dtpDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
             dtpDate.Enabled = false;
             this.parent = parent;
             txtQuotationNo.PasswordChar = ' ';
+            btnCreateRev.Enabled = false;
+            label68.Enabled = false;
         }
         public FormQuotationAdd()
         {
             InitializeComponent();
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
+         System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
+         dgQuotationAddedItems, new object[] { true });
 
             dtpDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
             dtpDate.Enabled = false;
@@ -134,6 +144,10 @@ namespace LoginForm.QuotationModule
         {
             InitializeComponent();
 
+            typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
+         System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
+         dgQuotationAddedItems, new object[] { true });
+
             for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
             {
                 dgQuotationAddedItems.Rows[i].Cells["dgQty"].ReadOnly = false;
@@ -169,6 +183,11 @@ namespace LoginForm.QuotationModule
         public FormQuotationAdd(Quotation quotation, FormQuotationMain parent)
         {
             InitializeComponent();
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
+         System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
+         dgQuotationAddedItems, new object[] { true });
+
             btnSave.Visible = false;
             label67.Visible = false;
             this.parent = parent;
@@ -364,6 +383,11 @@ namespace LoginForm.QuotationModule
         public FormQuotationAdd(Quotation quotation, FormQuotationMain parent, int s)
         {
             InitializeComponent();
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
+         System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
+         dgQuotationAddedItems, new object[] { true });
+
             btnCreateRev.Visible = false;
             label68.Visible = false;
             btnSave.Visible = false;
@@ -463,6 +487,11 @@ namespace LoginForm.QuotationModule
         public FormQuotationAdd(Quotation quotation, string mumin)
         {
             InitializeComponent();
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
+         System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
+         dgQuotationAddedItems, new object[] { true });
+
             DataGridViewComboBoxColumn deliveryColumn = (DataGridViewComboBoxColumn)dgQuotationAddedItems.Columns[dgDelivery.Index];
             deliveryColumn.DataSource = IME.QuotationDeliveries.ToList();
             deliveryColumn.DisplayMember = "DeliveryName";
@@ -1693,6 +1722,7 @@ namespace LoginForm.QuotationModule
         {
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
+                MakeTextUpperCase((TextBox)sender);
                 CustomerSearchInput();
             }
         }
@@ -4388,6 +4418,11 @@ namespace LoginForm.QuotationModule
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(dgQuotationAddedItems.CurrentCell.Value.ToString());
+        }
+
+        private void MakeTextUpperCase(TextBox txtBox)
+        {
+            txtBox.Text = txtBox.Text.ToUpper();
         }
     }
 }
