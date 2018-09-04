@@ -1152,6 +1152,7 @@ namespace LoginForm.QuotationModule
                     {
                         MessageBox.Show("This product does not have cost");
                         dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index].Value = "0";
+                        dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index];
                     }
                 }
                 #endregion
@@ -4382,6 +4383,11 @@ namespace LoginForm.QuotationModule
                     dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[dgQty.Index].Value = "";
                 }
             }
+        }
+
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(dgQuotationAddedItems.CurrentCell.Value.ToString());
         }
     }
 }
