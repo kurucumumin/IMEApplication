@@ -356,8 +356,9 @@ namespace LoginForm.QuotationModule
                 }
                 CalculateTotalMarge();
             }
-           
-           
+
+            dgQuotationAddedItems.Focus();
+            dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index];
         }
 
         public FormQuotationAdd(Quotation quotation, FormQuotationMain parent, int s)
@@ -3367,6 +3368,8 @@ namespace LoginForm.QuotationModule
                 this.Enabled = true;
                 fillCustomer();
             }
+            dgQuotationAddedItems.Focus();
+            dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index];
 
         }
 

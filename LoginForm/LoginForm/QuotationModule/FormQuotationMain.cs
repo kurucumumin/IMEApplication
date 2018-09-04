@@ -22,7 +22,7 @@ namespace LoginForm.QuotationModule
         ////Form1 Veritabanı bağlantısı için sqlStr Sql sorgumuz için sqlCmd yi tanımlıyoruz
         //string sqlStr = @"Data Source=195.201.76.136;Initial Catalog=IME;Persist Security Info=True;User ID=sa;Password=ime1453..";
         //string sqlCmd = "select * from Quotation"; // AdventureWorks2012 Database indeki Person tablosunu getirir
- 
+
         DateTime dateNow;
         Worker currentUser = Utils.getCurrentUser();
 
@@ -32,7 +32,11 @@ namespace LoginForm.QuotationModule
         {
             IMEEntities IME = new IMEEntities();
             InitializeComponent();
-            //worker = new BackgroundWorker();
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
+            System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
+            dgQuotation, new object[] { true });
+
             cbSearch.SelectedIndex = 0;
             dateNow = Convert.ToDateTime(new IMEEntities().CurrentDate().First());
             dtpFromDate.Value = Convert.ToDateTime(IME.CurrentDate().First()).AddMonths(-3);
@@ -60,7 +64,7 @@ namespace LoginForm.QuotationModule
             {
                 ViewQuotation();
             }
-           
+
         }
 
         private void ViewQuotation()
@@ -598,7 +602,7 @@ namespace LoginForm.QuotationModule
 
         private void BringQuotationList(DateTime fromDate, DateTime toDate)
         {
-            
+
             IMEEntities IME = new IMEEntities();
             // DateTime time = Convert.ToDateTime(IME.CurrentDate().FirtsOrDefault());
             //  MessageBox.Show(time.ToString());
@@ -710,7 +714,7 @@ namespace LoginForm.QuotationModule
             ExperimentQuotationAdd form = new ExperimentQuotationAdd();
             form.Show();
         }
-        
+
 
         private string FixItemCode(string _itemCode)
         {
