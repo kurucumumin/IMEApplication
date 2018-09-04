@@ -99,6 +99,7 @@
             this.dgQuotation.AllowUserToDeleteRows = false;
             this.dgQuotation.AllowUserToOrderColumns = true;
             this.dgQuotation.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
+            this.dgQuotation.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgQuotation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgQuotation.ContextMenuStrip = this.gridRightClick;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -115,10 +116,12 @@
             this.dgQuotation.Margin = new System.Windows.Forms.Padding(8);
             this.dgQuotation.Name = "dgQuotation";
             this.dgQuotation.ReadOnly = true;
+            this.dgQuotation.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.dgQuotation.RowTemplate.Height = 24;
             this.dgQuotation.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgQuotation.Size = new System.Drawing.Size(1354, 550);
             this.dgQuotation.TabIndex = 0;
+            this.dgQuotation.TabStop = false;
             this.dgQuotation.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgQuotation_CellEndEdit);
             this.dgQuotation.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgQuotation_CellMouseDoubleClick);
             this.dgQuotation.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgQuotation_KeyDown);

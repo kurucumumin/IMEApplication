@@ -29,6 +29,10 @@ namespace LoginForm
         {
             InitializeComponent();
 
+            typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
+            System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
+            CustomerDataGrid, new object[] { true });
+
             this.CustomerDataGrid.AutoGenerateColumns = false;
             //CustomerDataGrid.DataSource = null;
             //CustomerDataGrid.DataSource = IME.CustomerAll().ToList();
@@ -51,6 +55,9 @@ namespace LoginForm
             //Qoutation Customer Details
 
             InitializeComponent();
+            typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
+           System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
+           CustomerDataGrid, new object[] { true });
             if (buttonEnabled)
             {
                 CustomerDataGrid.Enabled = false;
@@ -85,6 +92,9 @@ namespace LoginForm
         {
             //Qoutation Customer Details
             InitializeComponent();
+            typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
+           System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
+           CustomerDataGrid, new object[] { true });
             if (x == 1)
             {
                 QuotationCustomerId = x;
@@ -135,6 +145,9 @@ namespace LoginForm
         public CustomerMain(Boolean buttonEnabled)
         {
             InitializeComponent();
+            typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
+           System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
+           CustomerDataGrid, new object[] { true });
         }
 
         private void ControlAutorization()
