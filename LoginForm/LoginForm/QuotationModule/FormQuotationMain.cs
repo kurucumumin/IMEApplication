@@ -619,7 +619,7 @@ namespace LoginForm.QuotationModule
                             CustomerCode = c.ID,
                             CustomerName = c.c_name,
                             Total = q.GrossTotal,
-                            Currency = q.CurrName,
+                            Currency = q.Currency.currencySymbol,
                             OrderDate = "",
                             Logo = "",
                             CustomerNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
@@ -649,47 +649,17 @@ namespace LoginForm.QuotationModule
             dgQuotation.DataSource = null;
             dgQuotation.DataSource = queryable;
 
-            //if (dgQuotation.Columns[15].DisplayIndex != 16)
-            //{
-            //    #region Grid Combobox
-            //    DataGridViewComboBoxColumn combo = new DataGridViewComboBoxColumn();
-            //    combo.HeaderText = "FirstFallowUpNotes";
-            //    combo.Name = "FirstFallowUpNotes";
-            //    dgQuotation.Columns.Add(combo);
-            //    dgQuotation.Columns[19].DisplayIndex = 15;
-
-            //    DataGridViewComboBoxColumn combo2 = new DataGridViewComboBoxColumn();
-            //    combo2.HeaderText = "SecondFallowUpNotes";
-            //    combo2.Name = "SecondFallowUpNotes";
-            //    dgQuotation.Columns.Add(combo2);
-            //    dgQuotation.Columns[20].DisplayIndex = 18;
-            //    #endregion
-            //}
-
             foreach (DataGridViewRow row in dgQuotation.Rows)
             {
                 if (row.Cells["OrderStatus"].Value.ToString() == "Deleted")
                 {
                     row.DefaultCellStyle.BackColor = System.Drawing.Color.Red;
                 }
+            }
 
-                //if (row.Cells["CustomerNotes"].Value.ToString() != "" && row.Cells["CustomerNotes"].Value != null)
-                //{
-                //    row.Cells["CustomerNotes"].Value = "Y";
-                //}
-                //else
-                //{
-                //    row.Cells["CustomerNotes"].Value = "N";
-                //}
-
-                //if (row.Cells["UserNotes"].Value.ToString() != "" && row.Cells["UserNotes"].Value != null)
-                //{
-                //    row.Cells["UserNotes"].Value = "Y";
-                //}
-                //else
-                //{
-                //    row.Cells["UserNotes"].Value = "N";
-                //}
+            for (int i = 0; i < dgQuotation.ColumnCount; i++)
+            {
+                dgQuotation.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             }
         }
 
