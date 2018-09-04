@@ -1580,6 +1580,24 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<prc_GetLastExchangeRateWithCurrencyName_Result>("prc_GetLastExchangeRateWithCurrencyName", currencyNameParameter);
         }
     
+        public virtual ObjectResult<prc_GetRSInvoiceAll_Result> prc_GetRSInvoiceAll()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<prc_GetRSInvoiceAll_Result>("prc_GetRSInvoiceAll");
+        }
+    
+        public virtual ObjectResult<prc_GetRSInvoiceBetweenDates_Result> prc_GetRSInvoiceBetweenDates(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("FromDate", fromDate) :
+                new ObjectParameter("FromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("ToDate", toDate) :
+                new ObjectParameter("ToDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<prc_GetRSInvoiceBetweenDates_Result>("prc_GetRSInvoiceBetweenDates", fromDateParameter, toDateParameter);
+        }
+    
         public virtual ObjectResult<prc_GetSlidingPriceWithArticleNumber_Result> prc_GetSlidingPriceWithArticleNumber(string articleNumber)
         {
             var articleNumberParameter = articleNumber != null ?

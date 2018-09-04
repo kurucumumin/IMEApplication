@@ -54,6 +54,12 @@ namespace LoginForm.nsSaleOrder
             datetimeEnd.Value = DateTime.Today.Date;
             datetimeStart.Value = DateTime.Today.AddMonths(-3);
             BringSalesList(DateTime.Now, DateTime.Now.AddDays(-1));
+
+            dgSales.ClearSelection();
+            int nRowIndex = dgSales.Rows.Count - 1;
+
+            dgSales.Rows[nRowIndex].Selected = true;
+            dgSales.Rows[nRowIndex].Cells[0].Selected = true;
         }
 
         private void BringSalesList()

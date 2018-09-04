@@ -3362,6 +3362,11 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
         <Function Name="prc_GetLastExchangeRateWithCurrencyName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CurrencyName" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="prc_GetRSInvoiceAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="prc_GetRSInvoiceBetweenDates" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FromDate" Type="datetime" Mode="In" />
+          <Parameter Name="ToDate" Type="datetime" Mode="In" />
+        </Function>
         <Function Name="prc_GetSlidingPriceWithArticleNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ArticleNumber" Type="nvarchar" Mode="In" />
         </Function>
@@ -8368,6 +8373,11 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <FunctionImport Name="prc_GetLastExchangeRateWithCurrencyName" ReturnType="Collection(IMEModel.prc_GetLastExchangeRateWithCurrencyName_Result)">
             <Parameter Name="CurrencyName" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="prc_GetRSInvoiceAll" ReturnType="Collection(IMEModel.prc_GetRSInvoiceAll_Result)" />
+          <FunctionImport Name="prc_GetRSInvoiceBetweenDates" ReturnType="Collection(IMEModel.prc_GetRSInvoiceBetweenDates_Result)">
+            <Parameter Name="FromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
           <FunctionImport Name="prc_GetSlidingPriceWithArticleNumber" ReturnType="Collection(IMEModel.prc_GetSlidingPriceWithArticleNumber_Result)">
             <Parameter Name="ArticleNumber" Mode="In" Type="String" />
           </FunctionImport>
@@ -9041,6 +9051,38 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Type="Decimal" Name="currencyId" Nullable="true" Precision="18" Scale="0" />
           <Property Type="DateTime" Name="date" Nullable="true" Precision="23" />
           <Property Type="Decimal" Name="rate" Nullable="true" Precision="18" Scale="5" />
+        </ComplexType>
+        <ComplexType Name="prc_GetRSInvoiceAll_Result">
+          <Property Type="String" Name="ShipmentReference" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="BillingDocumentReference" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="ShippingCondition" Nullable="true" MaxLength="2" />
+          <Property Type="DateTime" Name="BillingDocumentDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="SupplyingECCompany" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="CustomerReference" Nullable="true" MaxLength="10" />
+          <Property Type="Decimal" Name="InvoiceTaxValue" Nullable="true" Precision="17" Scale="2" />
+          <Property Type="Decimal" Name="InvoiceGoodsValue" Nullable="true" Precision="17" Scale="2" />
+          <Property Type="Decimal" Name="InvoiceNettValue" Nullable="true" Precision="17" Scale="2" />
+          <Property Type="String" Name="Currency" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="AirwayBillNumber" Nullable="true" MaxLength="20" />
+          <Property Type="Decimal" Name="Discount" Nullable="false" Precision="18" Scale="4" />
+          <Property Type="Decimal" Name="Surcharge" Nullable="false" Precision="18" Scale="4" />
+          <Property Type="String" Name="s_name" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="prc_GetRSInvoiceBetweenDates_Result">
+          <Property Type="String" Name="ShipmentReference" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="BillingDocumentReference" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="ShippingCondition" Nullable="true" MaxLength="2" />
+          <Property Type="DateTime" Name="BillingDocumentDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="SupplyingECCompany" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="CustomerReference" Nullable="true" MaxLength="10" />
+          <Property Type="Decimal" Name="InvoiceTaxValue" Nullable="true" Precision="17" Scale="2" />
+          <Property Type="Decimal" Name="InvoiceGoodsValue" Nullable="true" Precision="17" Scale="2" />
+          <Property Type="Decimal" Name="InvoiceNettValue" Nullable="true" Precision="17" Scale="2" />
+          <Property Type="String" Name="Currency" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="AirwayBillNumber" Nullable="true" MaxLength="20" />
+          <Property Type="Decimal" Name="Discount" Nullable="false" Precision="18" Scale="4" />
+          <Property Type="Decimal" Name="Surcharge" Nullable="false" Precision="18" Scale="4" />
+          <Property Type="String" Name="s_name" Nullable="true" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="prc_GetSlidingPriceWithArticleNumber_Result">
           <Property Type="String" Name="ArticleNo" Nullable="false" MaxLength="50" />
@@ -11385,6 +11427,46 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="currencyId" ColumnName="currencyId" />
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="rate" ColumnName="rate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="prc_GetRSInvoiceAll" FunctionName="IMEModel.Store.prc_GetRSInvoiceAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.prc_GetRSInvoiceAll_Result">
+                <ScalarProperty Name="ShipmentReference" ColumnName="ShipmentReference" />
+                <ScalarProperty Name="BillingDocumentReference" ColumnName="BillingDocumentReference" />
+                <ScalarProperty Name="ShippingCondition" ColumnName="ShippingCondition" />
+                <ScalarProperty Name="BillingDocumentDate" ColumnName="BillingDocumentDate" />
+                <ScalarProperty Name="SupplyingECCompany" ColumnName="SupplyingECCompany" />
+                <ScalarProperty Name="CustomerReference" ColumnName="CustomerReference" />
+                <ScalarProperty Name="InvoiceTaxValue" ColumnName="InvoiceTaxValue" />
+                <ScalarProperty Name="InvoiceGoodsValue" ColumnName="InvoiceGoodsValue" />
+                <ScalarProperty Name="InvoiceNettValue" ColumnName="InvoiceNettValue" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="AirwayBillNumber" ColumnName="AirwayBillNumber" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Surcharge" ColumnName="Surcharge" />
+                <ScalarProperty Name="s_name" ColumnName="s_name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="prc_GetRSInvoiceBetweenDates" FunctionName="IMEModel.Store.prc_GetRSInvoiceBetweenDates">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.prc_GetRSInvoiceBetweenDates_Result">
+                <ScalarProperty Name="ShipmentReference" ColumnName="ShipmentReference" />
+                <ScalarProperty Name="BillingDocumentReference" ColumnName="BillingDocumentReference" />
+                <ScalarProperty Name="ShippingCondition" ColumnName="ShippingCondition" />
+                <ScalarProperty Name="BillingDocumentDate" ColumnName="BillingDocumentDate" />
+                <ScalarProperty Name="SupplyingECCompany" ColumnName="SupplyingECCompany" />
+                <ScalarProperty Name="CustomerReference" ColumnName="CustomerReference" />
+                <ScalarProperty Name="InvoiceTaxValue" ColumnName="InvoiceTaxValue" />
+                <ScalarProperty Name="InvoiceGoodsValue" ColumnName="InvoiceGoodsValue" />
+                <ScalarProperty Name="InvoiceNettValue" ColumnName="InvoiceNettValue" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="AirwayBillNumber" ColumnName="AirwayBillNumber" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Surcharge" ColumnName="Surcharge" />
+                <ScalarProperty Name="s_name" ColumnName="s_name" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
