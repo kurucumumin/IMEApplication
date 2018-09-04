@@ -11,6 +11,7 @@ using System.Data;
 using LoginForm.clsClasses;
 using static LoginForm.Services.MyClasses.MyAuthority;
 using ImeLogoLibrary;
+using LoginForm.MyClasses;
 
 namespace LoginForm.nsSaleOrder
 {
@@ -18,10 +19,15 @@ namespace LoginForm.nsSaleOrder
     {
         //List<SalesOrder> list = new List<SalesOrder>
         ContextMenu PurchaseOrderMenu = new ContextMenu();
-
+        LogoLibrary logoLibrary = new LogoLibrary();
         public FormSalesOrderMain()
         {
             InitializeComponent();
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
+            System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
+            dgSales, new object[] { true });
+
             //if (Utils.getCurrentUser().AuthorizationValues.Where(x=>x.AuthorizationID == 1022).FirstOrDefault() == null)
             //{
             //    btnDelete.Visible = false;
@@ -240,19 +246,10 @@ namespace LoginForm.nsSaleOrder
 
         private void sentToLogoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string server = @"195.201.76.136";
-            string imedatabase = "IME";
-            string logodatabase = "TEST";
-            string sqluser = "sa";
-            string sqlpassword = "ime1453..";
-
-            ImeLogoSalesOrder order = new ImeLogoSalesOrder();
-            ImeSQL imesql = new ImeSQL();
-            LogoSQL logosql = new LogoSQL();
             int SoNO = Convert.ToInt32(dgSales.CurrentRow.Cells["SoNO"].Value);
-            string resultMessage = order.addSalesOrder(imesql.ImeSqlConnect(server, imedatabase, sqluser, sqlpassword), SoNO.ToString(), logosql.LogoSqlConnect(server, logodatabase, sqluser, sqlpassword), Utils.FrmNo, Utils.DnmNo);
+            string resultMessage = logoLibrary.SendToLogo_SaleOrder(SoNO);
 
-            if (resultMessage == "Added successfully")
+            if (resultMessage == LogoLibrary.AddSuccessful)
             {
                 IMEEntities db = new IMEEntities();
 
@@ -262,7 +259,7 @@ namespace LoginForm.nsSaleOrder
 
                 BringSalesList(datetimeEnd.Value.Date, datetimeStart.Value.Date);
             }
-            MessageBox.Show(resultMessage);
+            MessageBox.Show("Operation Failed" + "\n\nError Message: "+resultMessage);
         }
 
         private void btnModify_Click(object sender, EventArgs e)
@@ -616,20 +613,10 @@ namespace LoginForm.nsSaleOrder
 
         private void backFromLogoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string server = @"195.201.76.136";
-            string imedatabase = "IME";
-            string logodatabase = "TEST";
-            string sqluser = "sa";
-            string sqlpassword = "ime1453..";
-
-            ImeLogoSalesOrder order = new ImeLogoSalesOrder();
-            ImeSQL imesql = new ImeSQL();
-            LogoSQL logosql = new LogoSQL();
-
             int SoNO = Convert.ToInt32(dgSales.CurrentRow.Cells["SoNO"].Value);
-            string resultMessage = order.deleteSalesOrder(imesql.ImeSqlConnect(server, imedatabase, sqluser, sqlpassword), SoNO.ToString(), logosql.LogoSqlConnect(server, logodatabase, sqluser, sqlpassword), Utils.FrmNo, Utils.DnmNo);
+            string resultMessage = logoLibrary.BackFromLogo_SaleOrder(SoNO);
 
-            if (resultMessage == "Deleted successfully")
+            if (resultMessage == LogoLibrary.DeleteSuccessful)
             {
                 IMEEntities db = new IMEEntities();
 
@@ -639,7 +626,7 @@ namespace LoginForm.nsSaleOrder
 
                 BringSalesList(datetimeEnd.Value.Date, datetimeStart.Value.Date);
             }
-            MessageBox.Show(resultMessage);
+            MessageBox.Show("Operation Failed" + "\n\nError Message: " + resultMessage);
         }
     }
 }

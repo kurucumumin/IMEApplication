@@ -1603,20 +1603,20 @@ namespace LoginForm
                         ErrorLog.Add("The Phone number must be a numerical string!");
                     }
 
-                    if (txtContactMobile.Text.Trim() != String.Empty && !Utils.HasOnlyNumbers(txtContactMobile.Text))
-                    {
-                        ErrorLog.Add("The Mobile number must be a numerical string!");
-                    }
+                    //if (txtContactMobile.Text.Trim() != String.Empty && !Utils.HasOnlyNumbers(txtContactMobile.Text))
+                    //{
+                    //    ErrorLog.Add("The Mobile number must be a numerical string!");
+                    //}
 
-                    if (txtContactFax.Text.Trim() != String.Empty && !Utils.HasOnlyNumbers(txtContactFax.Text))
-                    {
-                        ErrorLog.Add("The Fax number must be a numerical string!");
-                    }
+                    //if (txtContactFax.Text.Trim() != String.Empty && !Utils.HasOnlyNumbers(txtContactFax.Text))
+                    //{
+                    //    ErrorLog.Add("The Fax number must be a numerical string!");
+                    //}
 
-                    if (txtExternalNumber.Text.Trim() != String.Empty && !Utils.HasOnlyNumbers(txtExternalNumber.Text))
-                    {
-                        ErrorLog.Add("The Extension number must be a numerical string!");
-                    }
+                    //if (txtExternalNumber.Text.Trim() != String.Empty && !Utils.HasOnlyNumbers(txtExternalNumber.Text))
+                    //{
+                    //    ErrorLog.Add("The Extension number must be a numerical string!");
+                    //}
 
                     if (cmbLanguage.SelectedIndex <= 0)
                     {
@@ -1666,15 +1666,15 @@ namespace LoginForm
                         ErrorLog.Add("The Phone number must be a numerical string!");
                     }
 
-                    if (txtFax.Text.Trim() != String.Empty && !Utils.HasOnlyNumbers(txtFax.Text))
-                    {
-                        ErrorLog.Add("The Fax number must be a numerical string!");
-                    }
+                    //if (txtFax.Text.Trim() != String.Empty && !Utils.HasOnlyNumbers(txtFax.Text))
+                    //{
+                    //    ErrorLog.Add("The Fax number must be a numerical string!");
+                    //}
 
-                    if (txtPoBox.Text.Trim() == String.Empty)
-                    {
-                        ErrorLog.Add("P.O.Box must not be empty!");
-                    }
+                    //if (txtPoBox.Text.Trim() == String.Empty)
+                    //{
+                    //    ErrorLog.Add("P.O.Box must not be empty!");
+                    //}
 
                     if (txtPostCode.Text.Trim() == String.Empty)
                     {
@@ -1798,10 +1798,10 @@ namespace LoginForm
                         ErrorLog.Add("You should choose a Terms of Payment!");
                     }
 
-                    if (cmbAccountMethod.SelectedIndex <= 0)
-                    {
-                        ErrorLog.Add("You should choose a Payment Method!");
-                    }
+                    //if (cmbAccountMethod.SelectedIndex <= 0)
+                    //{
+                    //    ErrorLog.Add("You should choose a Payment Method!");
+                    //}
 
                     //decimal rate;
                     //if (txtDiscountRate.Text.Trim() == String.Empty)

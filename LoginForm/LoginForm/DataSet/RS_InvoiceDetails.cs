@@ -20,7 +20,7 @@ namespace LoginForm.DataSet
         public Nullable<int> PurchaseOrderItemNumber { get; set; }
         public string ProductNumber { get; set; }
         public Nullable<int> BillingItemNumber { get; set; }
-        public Nullable<decimal> Quantity { get; set; }
+        public int Quantity { get; set; }
         public string SalesUnit { get; set; }
         public Nullable<decimal> UnitPrice { get; set; }
         public Nullable<decimal> Discount { get; set; }
