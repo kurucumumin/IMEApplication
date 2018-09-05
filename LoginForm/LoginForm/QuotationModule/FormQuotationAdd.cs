@@ -1196,6 +1196,7 @@ namespace LoginForm.QuotationModule
                     {
                         MessageBox.Show("This product does not have cost");
                         dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index].Value = "0";
+                        dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index].Value = null;
                         dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index];
                     }
                 }
@@ -3760,7 +3761,7 @@ namespace LoginForm.QuotationModule
                         }
                     }
                 }
-                if (lblsubtotal.Text != null && lblsubtotal.Text != "") AllMargin = AllMargin / decimal.Parse(lblsubtotal.Text);
+                if (lblsubtotal.Text != null && lblsubtotal.Text != "" && AllMargin != 0) AllMargin = AllMargin / decimal.Parse(lblsubtotal.Text);
                 if (AllMargin != 0)
                 {
                     txtTotalMarge.Text = Math.Round(AllMargin, 2).ToString();
