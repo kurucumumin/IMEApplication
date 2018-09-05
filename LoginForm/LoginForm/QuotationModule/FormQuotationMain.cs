@@ -157,7 +157,7 @@ namespace LoginForm.QuotationModule
             {
                 btnNewQuotation.Enabled = false;
             }
-            BringQuotationList(DateTime.Now.AddDays(-1), DateTime.Now); //Bu gün oluşturulan quotation ları göstermek için.
+            BringQuotationList(DateTime.Now.AddDays(-1), DateTime.Now); //Bu gün oluşturulan quotation ları göstermek için.5+++12#
         }
 
         private void txtSearchText_KeyPress(object sender, KeyPressEventArgs e)

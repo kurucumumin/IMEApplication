@@ -937,7 +937,22 @@ namespace LoginForm.QuotationModule
                             #region Total
                             decimal total = decimal.Parse(CurrentRow.Cells["dgUCUPCurr"].Value.ToString());
                             decimal UcupIME = decimal.Parse(CurrentRow.Cells["dgUPIME"].Value.ToString());
-                            CurrentRow.Cells["dgDisc"].Value = Math.Round(((UcupIME - total) * (decimal)100 / UcupIME), 2);
+                            decimal disc = Math.Round(((UcupIME - total) * (decimal)100 / UcupIME), 2);
+                            int workerID = Utils.getCurrentUser().WorkerID;
+                            decimal Minmarge = (decimal)IME.Workers.Where(x => x.WorkerID == workerID).FirstOrDefault().MinMarge;
+                            if (disc > Minmarge)
+                            {
+                                MessageBox.Show("You are not authorized to enter " + total + "!");
+                                dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgUCUPCurr.Index];
+                                CurrentRow.Cells["dgUCUPCurr"].Value = UcupIME;
+                                CurrentRow.Cells["dgDisc"].Value = 0;
+                            }
+                            else
+                            {
+                                CurrentRow.Cells["dgDisc"].Value = disc;
+                            }
+                            
+
                             GetMargin();
                             GetMarginMark();
                             #region Calculate Total Margin
