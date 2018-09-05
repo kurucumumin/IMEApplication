@@ -84,5 +84,41 @@ namespace LoginForm.Services.SP
             }
             return tableRsInvoice;
         }
+
+        public DataTable GetRSInvoiceDetailWithID(int InvoiceID)
+        {
+            SqlConnection conn = new Utils().ImeSqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            SqlTransaction imeTransaction = null;
+            DataTable dataTableResult = new DataTable();
+
+            try
+            {
+                imeTransaction = conn.BeginTransaction();
+                cmd = new SqlCommand
+                {
+                    Connection = conn,
+                    CommandType = CommandType.StoredProcedure,
+                    Transaction = imeTransaction,
+                    CommandText = @"[prc_GetRSInvoiceDetailWithID]"
+                };
+                cmd.Parameters.AddWithValue("@InvoiceID", InvoiceID);
+
+                SqlDataAdapter daRsInvoice = new SqlDataAdapter(cmd);
+                daRsInvoice.Fill(dataTableResult);
+                imeTransaction.Commit();
+            }
+            catch (Exception ex)
+            {
+                imeTransaction.Rollback();
+                MessageBox.Show("Database Connection Error. \n\nError Message: " + ex.ToString(), "Error");
+                return null;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return dataTableResult;
+        }
     }
 }
