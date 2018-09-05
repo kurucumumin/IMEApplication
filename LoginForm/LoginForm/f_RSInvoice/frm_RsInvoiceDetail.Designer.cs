@@ -404,6 +404,11 @@
             this.label13.TabIndex = 11;
             this.label13.Text = "Surcharge :";
             // 
+            // bgw_RsInvoiceMaster
+            // 
+            this.bgw_RsInvoiceMaster.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgw_RsInvoiceMaster_DoWork);
+            this.bgw_RsInvoiceMaster.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgw_RsInvoiceMaster_RunWorkerCompleted);
+            // 
             // bgw_RsInvoiceDetail
             // 
             this.bgw_RsInvoiceDetail.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgw_RsInvoiceDetail_DoWork);

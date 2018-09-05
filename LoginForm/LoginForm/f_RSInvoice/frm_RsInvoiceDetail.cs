@@ -15,6 +15,7 @@ namespace LoginForm.f_RSInvoice
     {
         int InvoiceID;
         DataTable RsInvoiceDetails = new DataTable();
+        DataTable RsInvoiceMaster = new DataTable();
 
         public frm_RsInvoiceDetail(int InvoiceID)
         {
@@ -29,6 +30,7 @@ namespace LoginForm.f_RSInvoice
         private void frm_RsInvoiceDetail_Load(object sender, EventArgs e)
         {
             bgw_RsInvoiceDetail.RunWorkerAsync();
+            bgw_RsInvoiceMaster.RunWorkerAsync();
         }
 
         private void SetGridColumnWidths()
@@ -69,7 +71,7 @@ namespace LoginForm.f_RSInvoice
 
         private void bgw_RsInvoiceDetail_DoWork(object sender, DoWorkEventArgs e)
         {
-            RsInvoiceDetails = new Sp_RSInvoice().GetRSInvoiceDetailWithID(InvoiceID);
+            RsInvoiceDetails = new Sp_RSInvoice().GetRSInvoiceDetailWithInvoiceID(InvoiceID);
         }
 
         private void bgw_RsInvoiceDetail_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -78,6 +80,31 @@ namespace LoginForm.f_RSInvoice
             SetGridColumnWidths();
             dgRsInvoiceItems.ClearSelection();
             dgRsInvoiceItems.Focus();
+        }
+
+        private void bgw_RsInvoiceMaster_DoWork(object sender, DoWorkEventArgs e)
+        {
+            RsInvoiceMaster = new Sp_RSInvoice().GetRSInvoiceWithInvoiceID(InvoiceID);
+        }
+
+        private void bgw_RsInvoiceMaster_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            txtBillingDocumentDate.Text = RsInvoiceMaster.Columns["BillingDocumentDate"].ToString();
+            txtBillingDocumentReference.Text = RsInvoiceMaster.Columns["BillingDocumentReference"].ToString();
+            txtCustomerReference.Text = RsInvoiceMaster.Columns["CustomerReference"].ToString();
+            txtAirwayBillNumber.Text = RsInvoiceMaster.Columns["AirwayBillNumber"].ToString();
+            txtSupplyingECCompany.Text = RsInvoiceMaster.Columns["SupplyingECCompany"].ToString();
+            txtSupplyingECCompany.Text = RsInvoiceMaster.Columns["SupplyingECCompany"].ToString();
+            txtShipmentReference.Text = RsInvoiceMaster.Columns["ShipmentReference"].ToString();
+            txtShippingCondition.Text = RsInvoiceMaster.Columns["ShippingCondition"].ToString();
+            txtStatus.Text = RsInvoiceMaster.Columns["Status"].ToString();
+            txtDeleted.Text = RsInvoiceMaster.Columns["Deleted"].ToString();
+            txtCurrency.Text = RsInvoiceMaster.Columns["Currency"].ToString();
+            txtInvoiceTaxValue.Text = RsInvoiceMaster.Columns["InvoiceTaxValue"].ToString();
+            txtInvoiceGoodsValue.Text = RsInvoiceMaster.Columns["InvoiceGoodsValue"].ToString();
+            txtInvoiceNettValue.Text = RsInvoiceMaster.Columns["InvoiceNettValue"].ToString();
+            txtDiscount.Text = RsInvoiceMaster.Columns["Discount"].ToString();
+            txtSurcharge.Text = RsInvoiceMaster.Columns["Surcharge"].ToString();
         }
     }
 }
