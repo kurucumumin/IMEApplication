@@ -1598,6 +1598,15 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<prc_GetRSInvoiceBetweenDates_Result>("prc_GetRSInvoiceBetweenDates", fromDateParameter, toDateParameter);
         }
     
+        public virtual ObjectResult<prc_GetRSInvoiceDetailWithID_Result> prc_GetRSInvoiceDetailWithID(Nullable<int> invoiceID)
+        {
+            var invoiceIDParameter = invoiceID.HasValue ?
+                new ObjectParameter("InvoiceID", invoiceID) :
+                new ObjectParameter("InvoiceID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<prc_GetRSInvoiceDetailWithID_Result>("prc_GetRSInvoiceDetailWithID", invoiceIDParameter);
+        }
+    
         public virtual ObjectResult<prc_GetSlidingPriceWithArticleNumber_Result> prc_GetSlidingPriceWithArticleNumber(string articleNumber)
         {
             var articleNumberParameter = articleNumber != null ?

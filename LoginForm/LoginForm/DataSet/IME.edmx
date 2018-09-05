@@ -895,6 +895,8 @@
           <Property Name="Discount" Type="decimal" Precision="18" Scale="4" Nullable="false" />
           <Property Name="Surcharge" Type="decimal" Precision="18" Scale="4" Nullable="false" />
           <Property Name="SupplierID" Type="nvarchar" MaxLength="15" />
+          <Property Name="Status" Type="nvarchar" MaxLength="15" />
+          <Property Name="Deleted" Type="bit" />
         </EntityType>
         <EntityType Name="RS_InvoiceDetails">
           <Key>
@@ -3367,6 +3369,9 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Parameter Name="FromDate" Type="datetime" Mode="In" />
           <Parameter Name="ToDate" Type="datetime" Mode="In" />
         </Function>
+        <Function Name="prc_GetRSInvoiceDetailWithID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InvoiceID" Type="int" Mode="In" />
+        </Function>
         <Function Name="prc_GetSlidingPriceWithArticleNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ArticleNumber" Type="nvarchar" Mode="In" />
         </Function>
@@ -5323,6 +5328,8 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="Discount" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
           <Property Name="Surcharge" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
           <Property Name="SupplierID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Deleted" Type="Boolean" />
           <NavigationProperty Name="RS_InvoiceDetails" Relationship="Self.FK__RS_Invoic__RS_In__7AE71C56" FromRole="RS_Invoice" ToRole="RS_InvoiceDetails" />
           <NavigationProperty Name="Supplier" Relationship="Self.FK__RS_Invoic__Suppl__7ED7A8CB" FromRole="RS_Invoice" ToRole="Supplier" />
         </EntityType>
@@ -8378,6 +8385,9 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="FromDate" Mode="In" Type="DateTime" />
             <Parameter Name="ToDate" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <FunctionImport Name="prc_GetRSInvoiceDetailWithID" ReturnType="Collection(IMEModel.prc_GetRSInvoiceDetailWithID_Result)">
+            <Parameter Name="InvoiceID" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="prc_GetSlidingPriceWithArticleNumber" ReturnType="Collection(IMEModel.prc_GetSlidingPriceWithArticleNumber_Result)">
             <Parameter Name="ArticleNumber" Mode="In" Type="String" />
           </FunctionImport>
@@ -9053,6 +9063,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Type="Decimal" Name="rate" Nullable="true" Precision="18" Scale="5" />
         </ComplexType>
         <ComplexType Name="prc_GetRSInvoiceAll_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="String" Name="ShipmentReference" Nullable="true" MaxLength="10" />
           <Property Type="String" Name="BillingDocumentReference" Nullable="true" MaxLength="10" />
           <Property Type="String" Name="ShippingCondition" Nullable="true" MaxLength="2" />
@@ -9066,9 +9077,12 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Type="String" Name="AirwayBillNumber" Nullable="true" MaxLength="20" />
           <Property Type="Decimal" Name="Discount" Nullable="false" Precision="18" Scale="4" />
           <Property Type="Decimal" Name="Surcharge" Nullable="false" Precision="18" Scale="4" />
-          <Property Type="String" Name="s_name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="15" />
+          <Property Type="Boolean" Name="Deleted" Nullable="true" />
+          <Property Type="String" Name="Supplier" Nullable="true" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="prc_GetRSInvoiceBetweenDates_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="String" Name="ShipmentReference" Nullable="true" MaxLength="10" />
           <Property Type="String" Name="BillingDocumentReference" Nullable="true" MaxLength="10" />
           <Property Type="String" Name="ShippingCondition" Nullable="true" MaxLength="2" />
@@ -9082,7 +9096,26 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Type="String" Name="AirwayBillNumber" Nullable="true" MaxLength="20" />
           <Property Type="Decimal" Name="Discount" Nullable="false" Precision="18" Scale="4" />
           <Property Type="Decimal" Name="Surcharge" Nullable="false" Precision="18" Scale="4" />
-          <Property Type="String" Name="s_name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="15" />
+          <Property Type="Boolean" Name="Deleted" Nullable="true" />
+          <Property Type="String" Name="Supplier" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="prc_GetRSInvoiceDetailWithID_Result">
+          <Property Type="String" Name="PurchaseOrderNumber" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="PurchaseOrderItemNumber" Nullable="true" />
+          <Property Type="String" Name="ProductNumber" Nullable="true" MaxLength="18" />
+          <Property Type="Int32" Name="BillingItemNumber" Nullable="true" />
+          <Property Type="Int32" Name="Quantity" Nullable="false" />
+          <Property Type="String" Name="SalesUnit" Nullable="true" MaxLength="3" />
+          <Property Type="Decimal" Name="Discount" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="GoodsValue" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="Amount" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="String" Name="CCCNNO" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="CountryofOrigin" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="ArticleDescription" Nullable="true" MaxLength="40" />
+          <Property Type="Decimal" Name="DeliveryNumber" Nullable="true" Precision="10" Scale="0" />
+          <Property Type="Int32" Name="DeliveryItemNumber" Nullable="true" />
+          <Property Type="Decimal" Name="Tax" Nullable="false" Precision="18" Scale="4" />
         </ComplexType>
         <ComplexType Name="prc_GetSlidingPriceWithArticleNumber_Result">
           <Property Type="String" Name="ArticleNo" Nullable="false" MaxLength="50" />
@@ -10204,6 +10237,8 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="Discount" ColumnName="Discount" />
                 <ScalarProperty Name="Surcharge" ColumnName="Surcharge" />
                 <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -11433,6 +11468,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <FunctionImportMapping FunctionImportName="prc_GetRSInvoiceAll" FunctionName="IMEModel.Store.prc_GetRSInvoiceAll">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.prc_GetRSInvoiceAll_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="ShipmentReference" ColumnName="ShipmentReference" />
                 <ScalarProperty Name="BillingDocumentReference" ColumnName="BillingDocumentReference" />
                 <ScalarProperty Name="ShippingCondition" ColumnName="ShippingCondition" />
@@ -11446,13 +11482,16 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="AirwayBillNumber" ColumnName="AirwayBillNumber" />
                 <ScalarProperty Name="Discount" ColumnName="Discount" />
                 <ScalarProperty Name="Surcharge" ColumnName="Surcharge" />
-                <ScalarProperty Name="s_name" ColumnName="s_name" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Supplier" ColumnName="Supplier" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="prc_GetRSInvoiceBetweenDates" FunctionName="IMEModel.Store.prc_GetRSInvoiceBetweenDates">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.prc_GetRSInvoiceBetweenDates_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="ShipmentReference" ColumnName="ShipmentReference" />
                 <ScalarProperty Name="BillingDocumentReference" ColumnName="BillingDocumentReference" />
                 <ScalarProperty Name="ShippingCondition" ColumnName="ShippingCondition" />
@@ -11466,7 +11505,30 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="AirwayBillNumber" ColumnName="AirwayBillNumber" />
                 <ScalarProperty Name="Discount" ColumnName="Discount" />
                 <ScalarProperty Name="Surcharge" ColumnName="Surcharge" />
-                <ScalarProperty Name="s_name" ColumnName="s_name" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Supplier" ColumnName="Supplier" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="prc_GetRSInvoiceDetailWithID" FunctionName="IMEModel.Store.prc_GetRSInvoiceDetailWithID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.prc_GetRSInvoiceDetailWithID_Result">
+                <ScalarProperty Name="PurchaseOrderNumber" ColumnName="PurchaseOrderNumber" />
+                <ScalarProperty Name="PurchaseOrderItemNumber" ColumnName="PurchaseOrderItemNumber" />
+                <ScalarProperty Name="ProductNumber" ColumnName="ProductNumber" />
+                <ScalarProperty Name="BillingItemNumber" ColumnName="BillingItemNumber" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="SalesUnit" ColumnName="SalesUnit" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="GoodsValue" ColumnName="GoodsValue" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="CCCNNO" ColumnName="CCCNNO" />
+                <ScalarProperty Name="CountryofOrigin" ColumnName="CountryofOrigin" />
+                <ScalarProperty Name="ArticleDescription" ColumnName="ArticleDescription" />
+                <ScalarProperty Name="DeliveryNumber" ColumnName="DeliveryNumber" />
+                <ScalarProperty Name="DeliveryItemNumber" ColumnName="DeliveryItemNumber" />
+                <ScalarProperty Name="Tax" ColumnName="Tax" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

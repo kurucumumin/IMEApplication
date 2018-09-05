@@ -35,6 +35,8 @@ namespace LoginForm.DataSet
         public decimal Discount { get; set; }
         public decimal Surcharge { get; set; }
         public string SupplierID { get; set; }
+        public string Status { get; set; }
+        public Nullable<bool> Deleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RS_InvoiceDetails> RS_InvoiceDetails { get; set; }

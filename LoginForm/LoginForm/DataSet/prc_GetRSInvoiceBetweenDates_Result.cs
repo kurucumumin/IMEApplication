@@ -13,6 +13,7 @@ namespace LoginForm.DataSet
     
     public partial class prc_GetRSInvoiceBetweenDates_Result
     {
+        public int ID { get; set; }
         public string ShipmentReference { get; set; }
         public string BillingDocumentReference { get; set; }
         public string ShippingCondition { get; set; }
@@ -26,6 +27,8 @@ namespace LoginForm.DataSet
         public string AirwayBillNumber { get; set; }
         public decimal Discount { get; set; }
         public decimal Surcharge { get; set; }
-        public string s_name { get; set; }
+        public string Status { get; set; }
+        public Nullable<bool> Deleted { get; set; }
+        public string Supplier { get; set; }
     }
 }
