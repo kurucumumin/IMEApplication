@@ -398,7 +398,7 @@
     <Compile Include="DataSet\prc_GetRSInvoiceBetweenDates_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\prc_GetRSInvoiceDetailWithID_Result.cs">
+    <Compile Include="DataSet\prc_GetRSInvoiceDetailWithInvoiceID_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\prc_GetSlidingPriceWithArticleNumber_Result.cs">
