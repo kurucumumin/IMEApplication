@@ -14,6 +14,7 @@ namespace LoginForm.f_RSInvoice
     public partial class frm_RsInvoiceDetail : Form
     {
         int InvoiceID;
+        DataTable RsInvoiceDetails = new DataTable();
 
         public frm_RsInvoiceDetail(int InvoiceID)
         {
@@ -27,41 +28,56 @@ namespace LoginForm.f_RSInvoice
 
         private void frm_RsInvoiceDetail_Load(object sender, EventArgs e)
         {
-            dgRsInvoiceItems.DataSource = new Sp_RSInvoice().GetRSInvoiceDetailWithID(InvoiceID);
-            dgRsInvoiceItems.ClearSelection();
-            dgRsInvoiceItems.Focus();
+            bgw_RsInvoiceDetail.RunWorkerAsync();
         }
 
-        private void FixGridColumns()
+        private void SetGridColumnWidths()
         {
-            dgRsInvoiceItems.Columns["ID"].Visible = false;
+            dgRsInvoiceItems.Columns["PurchaseOrderID"].Visible = false;
 
-            dgRsInvoiceItems.Columns["ShipmentReference"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dgRsInvoiceItems.Columns["ShipmentReference"].HeaderText = "Shipment Reference";
-            dgRsInvoiceItems.Columns["BillingDocumentReference"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dgRsInvoiceItems.Columns["BillingDocumentReference"].HeaderText = "Billing Document Reference";
-            dgRsInvoiceItems.Columns["ShippingCondition"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dgRsInvoiceItems.Columns["ShippingCondition"].HeaderText = "Shipping Condition";
-            dgRsInvoiceItems.Columns["BillingDocumentDate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dgRsInvoiceItems.Columns["BillingDocumentDate"].HeaderText = "Billing DocumentDate";
-            dgRsInvoiceItems.Columns["SupplyingECCompany"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dgRsInvoiceItems.Columns["SupplyingECCompany"].HeaderText = "Supplying EC Company";
-            dgRsInvoiceItems.Columns["CustomerReference"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dgRsInvoiceItems.Columns["CustomerReference"].HeaderText = "Customer Reference";
-            dgRsInvoiceItems.Columns["InvoiceTaxValue"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dgRsInvoiceItems.Columns["InvoiceTaxValue"].HeaderText = "Invoice Tax Value";
-            dgRsInvoiceItems.Columns["InvoiceGoodsValue"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dgRsInvoiceItems.Columns["InvoiceGoodsValue"].HeaderText = "Invoice Goods Value";
-            dgRsInvoiceItems.Columns["InvoiceNettValue"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dgRsInvoiceItems.Columns["InvoiceNettValue"].HeaderText = "Invoice Nett Value";
-            dgRsInvoiceItems.Columns["Currency"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dgRsInvoiceItems.Columns["AirwayBillNumber"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dgRsInvoiceItems.Columns["AirwayBillNumber"].HeaderText = "Airway Bill Number";
+            dgRsInvoiceItems.Columns["PurchaseOrderNumber"].HeaderText = "Purchase Order Number";
+            dgRsInvoiceItems.Columns["PurchaseOrderNumber"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgRsInvoiceItems.Columns["PurchaseOrderItemNumber"].HeaderText = "Purchase Order Item Number";
+            dgRsInvoiceItems.Columns["PurchaseOrderItemNumber"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgRsInvoiceItems.Columns["ProductNumber"].HeaderText = "Product Number";
+            dgRsInvoiceItems.Columns["ProductNumber"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgRsInvoiceItems.Columns["BillingItemNumber"].HeaderText = "Billing Item Number";
+            dgRsInvoiceItems.Columns["BillingItemNumber"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgRsInvoiceItems.Columns["Quantity"].HeaderText = "Quantity";
+            dgRsInvoiceItems.Columns["Quantity"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgRsInvoiceItems.Columns["SalesUnit"].HeaderText = "Sales Unit";
+            dgRsInvoiceItems.Columns["SalesUnit"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgRsInvoiceItems.Columns["Discount"].HeaderText = "Discount";
             dgRsInvoiceItems.Columns["Discount"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgRsInvoiceItems.Columns["Surcharge"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgRsInvoiceItems.Columns["Status"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgRsInvoiceItems.Columns["Deleted"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgRsInvoiceItems.Columns["Supplier"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dgRsInvoiceItems.Columns["GoodsValue"].HeaderText = "Goods Value";
+            dgRsInvoiceItems.Columns["GoodsValue"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgRsInvoiceItems.Columns["Amount"].HeaderText = "Amount";
+            dgRsInvoiceItems.Columns["Amount"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgRsInvoiceItems.Columns["CCCNNO"].HeaderText = "CCCNNO";
+            dgRsInvoiceItems.Columns["CCCNNO"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgRsInvoiceItems.Columns["CountryofOrigin"].HeaderText = "CofO";
+            dgRsInvoiceItems.Columns["CountryofOrigin"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgRsInvoiceItems.Columns["ArticleDescription"].HeaderText = "Article Description";
+            dgRsInvoiceItems.Columns["ArticleDescription"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgRsInvoiceItems.Columns["DeliveryNumber"].HeaderText = "Delivery Number";
+            dgRsInvoiceItems.Columns["DeliveryNumber"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgRsInvoiceItems.Columns["DeliveryItemNumber"].HeaderText = "Delivery Item Number";
+            dgRsInvoiceItems.Columns["DeliveryItemNumber"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgRsInvoiceItems.Columns["Tax"].HeaderText = "Tax";
+            dgRsInvoiceItems.Columns["Tax"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+        }
+
+        private void bgw_RsInvoiceDetail_DoWork(object sender, DoWorkEventArgs e)
+        {
+            RsInvoiceDetails = new Sp_RSInvoice().GetRSInvoiceDetailWithID(InvoiceID);
+        }
+
+        private void bgw_RsInvoiceDetail_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            dgRsInvoiceItems.DataSource = RsInvoiceDetails;
+            SetGridColumnWidths();
+            dgRsInvoiceItems.ClearSelection();
+            dgRsInvoiceItems.Focus();
         }
     }
 }

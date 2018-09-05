@@ -33,7 +33,7 @@ namespace LoginForm.f_RSInvoice
             dtpFromDate.Value = DateTime.Now.AddMonths(-1).Date;
 
             dgRSInvoice.DataSource = new Sp_RSInvoice().GetRSInvoiceBetweenDates(dtpFromDate.Value.Date,dtpToDate.Value.AddDays(1).Date);
-            FixGridColumns();
+            SetGridColumnWidths();
             SetDesignForGrid();
             dgRSInvoice.ClearSelection();
             dgRSInvoice.Focus();
@@ -43,13 +43,8 @@ namespace LoginForm.f_RSInvoice
         {
             dgRSInvoice.DataSource = null;
             dgRSInvoice.DataSource = new Sp_RSInvoice().GetRSInvoiceBetweenDates(dtpFromDate.Value.Date, dtpToDate.Value.AddDays(1).Date);
-            FixGridColumns();
+            SetGridColumnWidths();
             SetDesignForGrid();
-        }
-
-        private void btnModifyQuotation_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void ShowHiddenRows()
@@ -61,11 +56,6 @@ namespace LoginForm.f_RSInvoice
                     row.Visible = true;
                 }
             }
-        }
-
-        private void btnDeleteQuotation_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void HideChoosenRows()
@@ -97,10 +87,11 @@ namespace LoginForm.f_RSInvoice
 
         }
 
-        private void FixGridColumns()
+        private void SetGridColumnWidths()
         {
             dgRSInvoice.Columns["ID"].Visible = false;
             dgRSInvoice.Columns["SupplierID"].Visible = false;
+            dgRSInvoice.Columns["Supplier"].Visible = false;
 
             dgRSInvoice.Columns["ShipmentReference"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             dgRSInvoice.Columns["ShipmentReference"].HeaderText = "Shipment Reference";
@@ -127,7 +118,6 @@ namespace LoginForm.f_RSInvoice
             dgRSInvoice.Columns["Surcharge"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dgRSInvoice.Columns["Status"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dgRSInvoice.Columns["Deleted"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgRSInvoice.Columns["Supplier"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
         }
 
         private void viewInvoicToolStripMenuItem_Click(object sender, EventArgs e)

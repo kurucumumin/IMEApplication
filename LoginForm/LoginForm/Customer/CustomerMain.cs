@@ -10,6 +10,7 @@ using LoginForm.clsClasses;
 using System.Collections.Generic;
 //using LoginForm.MyClasses;
 using static LoginForm.Services.MyClasses.MyAuthority;
+using LoginForm.Services.SP;
 
 namespace LoginForm
 {
@@ -25,6 +26,7 @@ namespace LoginForm
         bool isModify = false;
         string ComboboxString = "Choose";
         //private List<Customer> gridCustomerList;
+        DataTable customerList = new DataTable();
         public CustomerMain()
         {
             InitializeComponent();
@@ -34,9 +36,7 @@ namespace LoginForm
             CustomerDataGrid, new object[] { true });
 
             this.CustomerDataGrid.AutoGenerateColumns = false;
-            //CustomerDataGrid.DataSource = null;
-            //CustomerDataGrid.DataSource = IME.CustomerAll().ToList();
-            //CustomerDataGrid.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            
         }
 
         //private List<Customer> BringSupplierList(string CustomerName)
@@ -403,7 +403,7 @@ namespace LoginForm
         private void Search_Click(object sender, EventArgs e)
         {
             gridselectedindex = 0;
-            MakeTextUpperCase((TextBox)sender);
+            MakeTextUpperCase(txtSearch);
             searchtxt = txtSearch.Text;
             customersearch();
 
@@ -578,61 +578,61 @@ namespace LoginForm
             }
             else
             {
-                SqlConnection conn = new SqlConnection();
-                conn.ConnectionString = @"Data Source=195.201.76.136;Initial Catalog=IME;Persist Security Info=True;User ID=sa;Password=ime1453..";
+                bgw_CustomerSearch.RunWorkerAsync();
 
-                SqlCommand command = new SqlCommand();
-                command.Connection = conn;
-                command.CommandText = " SELECT * FROM Customer WHERE(c_name LIKE '"+searchtxt+"'+'%') ";
+                //SqlConnection conn = new SqlConnection();
+                //conn.ConnectionString = @"Data Source=195.201.76.136;Initial Catalog=IME;Persist Security Info=True;User ID=sa;Password=ime1453..";
 
-                DataTable data = new DataTable();
+                //SqlCommand command = new SqlCommand();
+                //command.Connection = conn;
+                //command.CommandText = " SELECT * FROM Customer WHERE(c_name LIKE '"+searchtxt+"'+'%') ";
 
-                SqlDataAdapter adapter = new SqlDataAdapter(command);
-                adapter.Fill(data);
+                //DataTable data = new DataTable();
+
+                //SqlDataAdapter adapter = new SqlDataAdapter(command);
+                //adapter.Fill(data);
 
 
-                CustomerDataGrid.DataSource = data;
-                //var CustomerList = IME.Customer_CustomerName(searchtxt).ToList();
-                //CustomerDataGrid.DataSource = CustomerList;
+                //CustomerDataGrid.DataSource = data;
             }
-            if (CustomerDataGrid.RowCount != 0)
-            {
-                string customerID = CustomerDataGrid.CurrentRow.Cells[ıDDataGridViewTextBoxColumn.Index].Value.ToString();
-               // Customer c = (Customer)IME.Customer_CustomerID(customerID).FirstOrDefault();
-               Customer c = IME.Customers.Where(a => a.ID == customerID).FirstOrDefault();
-                dateTimePicker1.Value = c.CreateDate.Value;
-                CustomerCode.Text = c.ID;
-                txt3partyCode.Text = c.ThirdPartyCode;
-                AdressList.DataSource = IME.CustomerAddresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
-                AdressList.DisplayMember = "AdressTitle";
-                ContactAdress.DataSource = IME.CustomerAddresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
-                ContactAdress.DisplayMember = "AdressTitle";
-                CustomerName.Text = c.c_name;
-                Telephone.Text = c.telephone;
-                ContactFAX.Text = c.fax;
-                WebAdress.Text = c.webadress;
-                if (c.Worker2 != null) Represantative2.SelectedValue = c.Worker2.WorkerID;
-                if (c.Worker1 != null) Represantative1.SelectedValue = c.Worker1.WorkerID;
-                if (c.accountrepresentaryID != null) AccountRepresentary.Text = IME.Workers.Where(a => a.WorkerID == c.accountrepresentaryID).FirstOrDefault().NameLastName;
-                if (c.CustomerCategory != null) MainCategory.SelectedValue = c.CustomerCategory.ID;
-                if (c.CustomerSubCategory != null) SubCategory.SelectedValue = c.CustomerSubCategory.ID;
-                TermsofPayments.SelectedValue = c.PaymentTerm != null ? c.PaymentTerm.ID : 0;
-                if (c.isactive == 1) { rb_active.Checked = true; } else { rb_passive.Checked = true; }
-                ContactList.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
-                ContactList.DisplayMember = "cw_name";
-                ContactList.ValueMember = "ID";
-                cbMainContact.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
-                cbMainContact.DisplayMember = "cw_name";
-                cbMainContact.ValueMember = "ID";
-                if (c.Note != null) CompanyNotes.Text = IME.Notes.Where(a => a.ID == c.Note.ID).FirstOrDefault().Note_name;
-                if (c.customerAccountantNoteID != null) AccountingNotes.Text = IME.Notes.Where(a => a.ID == c.customerAccountantNoteID).FirstOrDefault().Note_name;
-                CreditLimit.Text = c.creditlimit.ToString();
-            }
-            else
-            {
-                MessageBox.Show("No Records Found");
-                itemsClear();
-            }
+            //if (CustomerDataGrid.RowCount != 0)
+            //{
+            //    string customerID = CustomerDataGrid.CurrentRow.Cells[ıDDataGridViewTextBoxColumn.Index].Value.ToString();
+            //   // Customer c = (Customer)IME.Customer_CustomerID(customerID).FirstOrDefault();
+            //   Customer c = IME.Customers.Where(a => a.ID == customerID).FirstOrDefault();
+            //    dateTimePicker1.Value = c.CreateDate.Value;
+            //    CustomerCode.Text = c.ID;
+            //    txt3partyCode.Text = c.ThirdPartyCode;
+            //    AdressList.DataSource = IME.CustomerAddresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
+            //    AdressList.DisplayMember = "AdressTitle";
+            //    ContactAdress.DataSource = IME.CustomerAddresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
+            //    ContactAdress.DisplayMember = "AdressTitle";
+            //    CustomerName.Text = c.c_name;
+            //    Telephone.Text = c.telephone;
+            //    ContactFAX.Text = c.fax;
+            //    WebAdress.Text = c.webadress;
+            //    if (c.Worker2 != null) Represantative2.SelectedValue = c.Worker2.WorkerID;
+            //    if (c.Worker1 != null) Represantative1.SelectedValue = c.Worker1.WorkerID;
+            //    if (c.accountrepresentaryID != null) AccountRepresentary.Text = IME.Workers.Where(a => a.WorkerID == c.accountrepresentaryID).FirstOrDefault().NameLastName;
+            //    if (c.CustomerCategory != null) MainCategory.SelectedValue = c.CustomerCategory.ID;
+            //    if (c.CustomerSubCategory != null) SubCategory.SelectedValue = c.CustomerSubCategory.ID;
+            //    TermsofPayments.SelectedValue = c.PaymentTerm != null ? c.PaymentTerm.ID : 0;
+            //    if (c.isactive == 1) { rb_active.Checked = true; } else { rb_passive.Checked = true; }
+            //    ContactList.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
+            //    ContactList.DisplayMember = "cw_name";
+            //    ContactList.ValueMember = "ID";
+            //    cbMainContact.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
+            //    cbMainContact.DisplayMember = "cw_name";
+            //    cbMainContact.ValueMember = "ID";
+            //    if (c.Note != null) CompanyNotes.Text = IME.Notes.Where(a => a.ID == c.Note.ID).FirstOrDefault().Note_name;
+            //    if (c.customerAccountantNoteID != null) AccountingNotes.Text = IME.Notes.Where(a => a.ID == c.customerAccountantNoteID).FirstOrDefault().Note_name;
+            //    CreditLimit.Text = c.creditlimit.ToString();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("No Records Found");
+            //    itemsClear();
+            //}
         }
 
         private void QuotationCustomerSearch(string search)
@@ -2301,6 +2301,55 @@ namespace LoginForm
         private void btnNextContact_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedTab = tab_company;
+        }
+
+        private void bgw_CustomerSearch_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            customerList = new Sp_Customer().SearchCustomersWithName(searchtxt);
+        }
+
+        private void bgw_CustomerSearch_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            CustomerDataGrid.DataSource = customerList;
+
+            if (CustomerDataGrid.RowCount != 0)
+            {
+                string customerID = CustomerDataGrid.CurrentRow.Cells[ıDDataGridViewTextBoxColumn.Index].Value.ToString();
+                // Customer c = (Customer)IME.Customer_CustomerID(customerID).FirstOrDefault();
+                Customer c = IME.Customers.Where(a => a.ID == customerID).FirstOrDefault();
+                dateTimePicker1.Value = c.CreateDate.Value;
+                CustomerCode.Text = c.ID;
+                txt3partyCode.Text = c.ThirdPartyCode;
+                AdressList.DataSource = IME.CustomerAddresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
+                AdressList.DisplayMember = "AdressTitle";
+                ContactAdress.DataSource = IME.CustomerAddresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
+                ContactAdress.DisplayMember = "AdressTitle";
+                CustomerName.Text = c.c_name;
+                Telephone.Text = c.telephone;
+                ContactFAX.Text = c.fax;
+                WebAdress.Text = c.webadress;
+                if (c.Worker2 != null) Represantative2.SelectedValue = c.Worker2.WorkerID;
+                if (c.Worker1 != null) Represantative1.SelectedValue = c.Worker1.WorkerID;
+                if (c.accountrepresentaryID != null) AccountRepresentary.Text = IME.Workers.Where(a => a.WorkerID == c.accountrepresentaryID).FirstOrDefault().NameLastName;
+                if (c.CustomerCategory != null) MainCategory.SelectedValue = c.CustomerCategory.ID;
+                if (c.CustomerSubCategory != null) SubCategory.SelectedValue = c.CustomerSubCategory.ID;
+                TermsofPayments.SelectedValue = c.PaymentTerm != null ? c.PaymentTerm.ID : 0;
+                if (c.isactive == 1) { rb_active.Checked = true; } else { rb_passive.Checked = true; }
+                ContactList.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
+                ContactList.DisplayMember = "cw_name";
+                ContactList.ValueMember = "ID";
+                cbMainContact.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
+                cbMainContact.DisplayMember = "cw_name";
+                cbMainContact.ValueMember = "ID";
+                if (c.Note != null) CompanyNotes.Text = IME.Notes.Where(a => a.ID == c.Note.ID).FirstOrDefault().Note_name;
+                if (c.customerAccountantNoteID != null) AccountingNotes.Text = IME.Notes.Where(a => a.ID == c.customerAccountantNoteID).FirstOrDefault().Note_name;
+                CreditLimit.Text = c.creditlimit.ToString();
+            }
+            else
+            {
+                MessageBox.Show("No Records Found");
+                itemsClear();
+            }
         }
 
         //private void logoCustUpd()

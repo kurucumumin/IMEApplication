@@ -1005,6 +1005,7 @@
     <Compile Include="Services\PrintingUtils.cs" />
     <Compile Include="Services\QuotationDatagridCustomize.cs" />
     <Compile Include="Services\classSupplier.cs" />
+    <Compile Include="Services\SP\Sp_Customer.cs" />
     <Compile Include="Services\SP\Sp_RSInvoice.cs" />
     <Compile Include="Services\ToolTipService.cs" />
     <Compile Include="MyClasses\TransacsionArgumanlari_.cs" />

@@ -198,7 +198,6 @@
             this.btnViewInvoice.TabIndex = 16;
             this.btnViewInvoice.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnViewInvoice.UseVisualStyleBackColor = true;
-            this.btnViewInvoice.Click += new System.EventHandler(this.btnModifyQuotation_Click);
             // 
             // btnDeleteInvoice
             // 
@@ -215,7 +214,6 @@
             this.btnDeleteInvoice.TabIndex = 17;
             this.btnDeleteInvoice.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnDeleteInvoice.UseVisualStyleBackColor = true;
-            this.btnDeleteInvoice.Click += new System.EventHandler(this.btnDeleteQuotation_Click);
             // 
             // cbSearch
             // 
