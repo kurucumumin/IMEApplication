@@ -1,4 +1,6 @@
-﻿using LoginForm.Services.SP;
+﻿using LoginForm.DataSet;
+using LoginForm.MyClasses;
+using LoginForm.Services.SP;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +15,7 @@ namespace LoginForm.f_RSInvoice
 {
     public partial class frm_RSInvoice : Form
     {
+        LogoLibrary logoLibrary = new LogoLibrary();
         public frm_RSInvoice()
         {
             InitializeComponent();
@@ -31,6 +34,7 @@ namespace LoginForm.f_RSInvoice
 
             dgRSInvoice.DataSource = new Sp_RSInvoice().GetRSInvoiceBetweenDates(dtpFromDate.Value.Date,dtpToDate.Value.AddDays(1).Date);
             FixGridColumns();
+            SetDesignForGrid();
             dgRSInvoice.ClearSelection();
             dgRSInvoice.Focus();
         }
@@ -40,6 +44,7 @@ namespace LoginForm.f_RSInvoice
             dgRSInvoice.DataSource = null;
             dgRSInvoice.DataSource = new Sp_RSInvoice().GetRSInvoiceBetweenDates(dtpFromDate.Value.Date, dtpToDate.Value.AddDays(1).Date);
             FixGridColumns();
+            SetDesignForGrid();
         }
 
         private void btnModifyQuotation_Click(object sender, EventArgs e)
@@ -95,6 +100,7 @@ namespace LoginForm.f_RSInvoice
         private void FixGridColumns()
         {
             dgRSInvoice.Columns["ID"].Visible = false;
+            dgRSInvoice.Columns["SupplierID"].Visible = false;
 
             dgRSInvoice.Columns["ShipmentReference"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             dgRSInvoice.Columns["ShipmentReference"].HeaderText = "Shipment Reference";
@@ -131,7 +137,66 @@ namespace LoginForm.f_RSInvoice
                 frm_RsInvoiceDetail form = new frm_RsInvoiceDetail(InvoiceID);
                 form.Show();
             }
-            
+
+        }
+
+        private void sendToLogoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string Ref = dgRSInvoice.SelectedRows[0].Cells["BillingDocumentReference"].Value.ToString();
+            int InvoiceID = Int32.Parse(dgRSInvoice.SelectedRows[0].Cells["ID"].Value.ToString());
+            string resultMessage = logoLibrary.SendToLogo_RSInvoice(Ref);
+
+            if (resultMessage == LogoLibrary.AddSuccessful)
+            {
+                IMEEntities db = new IMEEntities();
+
+                RS_Invoice so = db.RS_Invoice.Where(x => x.ID == InvoiceID).FirstOrDefault();
+                so.Status = "LOGO";
+                db.SaveChanges();
+
+                btnRefreshList.PerformClick();
+                MessageBox.Show("Sent To Logo Successfully");
+            }
+            else
+            {
+                MessageBox.Show("Operation Failed" + "\n\nError Message: " + resultMessage);
+            }
+        }
+
+        private void backFromLogoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string Ref = dgRSInvoice.SelectedRows[0].Cells["BillingDocumentReference"].Value.ToString();
+            int InvoiceID = Int32.Parse(dgRSInvoice.SelectedRows[0].Cells["ID"].Value.ToString());
+            string resultMessage = logoLibrary.BackFromLogo_RSInvoice(Ref.ToString());
+
+            if (resultMessage == LogoLibrary.DeleteSuccessful)
+            {
+                IMEEntities db = new IMEEntities();
+
+                RS_Invoice so = db.RS_Invoice.Where(x => x.ID == InvoiceID).FirstOrDefault();
+                so.Status = "";
+                db.SaveChanges();
+
+                btnRefreshList.PerformClick();
+                MessageBox.Show("Deleted From Logo Successfully");
+            }
+            else
+            {
+                MessageBox.Show("Operation Failed" + "\n\nError Message: " + resultMessage);
+            }
+        }
+
+        private void SetDesignForGrid()
+        {
+            Color LogoColor = Color.FromArgb(183, 240, 154);
+            foreach (DataGridViewRow row in dgRSInvoice.Rows)
+            {
+                DataGridViewCell cell = row.Cells["Status"];
+                if (cell.Value.ToString() == "LOGO")
+                {
+                    row.DefaultCellStyle.BackColor = LogoColor;
+                }
+            }
         }
     }
 }

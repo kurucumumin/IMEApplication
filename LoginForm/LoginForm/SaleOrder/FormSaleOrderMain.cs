@@ -54,12 +54,6 @@ namespace LoginForm.nsSaleOrder
             datetimeEnd.Value = DateTime.Today.Date;
             datetimeStart.Value = DateTime.Today.AddMonths(-3);
             BringSalesList(DateTime.Now, DateTime.Now.AddDays(-1));
-
-            dgSales.ClearSelection();
-            int nRowIndex = dgSales.Rows.Count - 1;
-
-            dgSales.Rows[nRowIndex].Selected = true;
-            dgSales.Rows[nRowIndex].Cells[0].Selected = true;
         }
 
         private void BringSalesList()
@@ -269,8 +263,13 @@ namespace LoginForm.nsSaleOrder
                 db.SaveChanges();
 
                 BringSalesList(datetimeEnd.Value.Date, datetimeStart.Value.Date);
+                MessageBox.Show("Sent To Logo Successfully");
             }
-            MessageBox.Show("Operation Failed" + "\n\nError Message: "+resultMessage);
+            else
+            {
+                MessageBox.Show("Operation Failed" + "\n\nError Message: " + resultMessage);
+            }
+            
         }
 
         private void btnModify_Click(object sender, EventArgs e)
@@ -636,8 +635,12 @@ namespace LoginForm.nsSaleOrder
                 db.SaveChanges();
 
                 BringSalesList(datetimeEnd.Value.Date, datetimeStart.Value.Date);
+                MessageBox.Show("Deleted From Logo Successfully");
             }
-            MessageBox.Show("Operation Failed" + "\n\nError Message: " + resultMessage);
+            else
+            {
+                MessageBox.Show("Operation Failed" + "\n\nError Message: " + resultMessage);
+            }
         }
     }
 }

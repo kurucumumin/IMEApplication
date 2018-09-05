@@ -383,12 +383,14 @@
             this.sendToLogoToolStripMenuItem.Name = "sendToLogoToolStripMenuItem";
             this.sendToLogoToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
             this.sendToLogoToolStripMenuItem.Text = "Send To Logo";
+            this.sendToLogoToolStripMenuItem.Click += new System.EventHandler(this.sendToLogoToolStripMenuItem_Click);
             // 
             // backFromLogoToolStripMenuItem
             // 
             this.backFromLogoToolStripMenuItem.Name = "backFromLogoToolStripMenuItem";
             this.backFromLogoToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
             this.backFromLogoToolStripMenuItem.Text = "Back From Logo";
+            this.backFromLogoToolStripMenuItem.Click += new System.EventHandler(this.backFromLogoToolStripMenuItem_Click);
             // 
             // panel1
             // 

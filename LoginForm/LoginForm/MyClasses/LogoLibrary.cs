@@ -16,8 +16,8 @@ namespace LoginForm.MyClasses
         private readonly string sqluser = "sa";
         private readonly string sqlpassword = "ime1453..";
 
-        static public string AddSuccessful = "Added Successfully";
-        static public string DeleteSuccessful = "Deleted Successfully";
+        static public string AddSuccessful = "Added successfully";
+        static public string DeleteSuccessful = "Deleted successfully";
 
 
         public LogoLibrary() {

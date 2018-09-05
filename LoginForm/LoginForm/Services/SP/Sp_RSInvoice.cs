@@ -100,7 +100,7 @@ namespace LoginForm.Services.SP
                     Connection = conn,
                     CommandType = CommandType.StoredProcedure,
                     Transaction = imeTransaction,
-                    CommandText = @"[prc_GetRSInvoiceDetailWithID]"
+                    CommandText = @"[prc_GetRSInvoiceDetailWithInvoiceID]"
                 };
                 cmd.Parameters.AddWithValue("@InvoiceID", InvoiceID);
 
