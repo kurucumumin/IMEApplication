@@ -676,6 +676,13 @@ namespace LoginForm.QuotationModule
         private void button4_Click(object sender, EventArgs e)
         {
             QuotationExcelExport.QuotationMainExport(dgQuotation, dtpFromDate.Value, dtpToDate.Value);
+            //List<string> QuotationItemList = new List<string>();
+            //for (int i = 0; i < dgQuotation.ColumnCount; i++)
+            //{
+            //    QuotationItemList.Add(dgQuotation.Columns[i].HeaderText);
+            //}
+            //frmQuotationExport form = new frmQuotationExport(QuotationItemList, dgQuotation.CurrentRow.Cells["QuotationNo"].Value.ToString(), dgQuotation);
+            //form.ShowDialog();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -869,58 +876,5 @@ namespace LoginForm.QuotationModule
                 dgQuotation.CurrentRow.Cells["OrderStatus"].Style.BackColor = System.Drawing.Color.Red;
             }
         }
-
-        private void button4_Click_1(object sender, EventArgs e)
-        {
-            //System.Windows.Forms.Form.CheckForIllegalCrossThreadCalls = false;
-            //Thread thread = new Thread(new ThreadStart(ejecuta_sql));
-            //thread.Start();
-        }
-
-        //private void ejecuta_sql()
-        //{
-        //    try
-        //    {
-        //        dgQuotation.DataSource = null; //Her click de datasource u null a eşitleyip içeriğini temizliyoruz
-
-        //        sqlCon = new SqlConnection(sqlStr);//Yukarıda tanımladığımız Sql nesnesini oluşturup sqlStr ile veritabanımıza bağlanıyoruz
-
-        //        sqlCon.Open(); //bağlantıyı açıyoruz
-
-        //        da = new SqlDataAdapter(sqlCmd, sqlCon);//dataapter nesnesini oluşturup sqlCmd sorgu cümlesini ve sqlCon veritabanı bağlantımızı yazıyoruz
-
-        //        ds = new System.Data.DataSet();//dataset nesnesini oluşturuyoruz
-
-        //        da.Fill(ds, "Quotation");//sqlCmd sorgusundan gelen veriyi dataset nesnesine ekliyoruz. ben burada table ismi için Person dedim siz başka bir isimde verebilirsiniz
-
-        //        if (ds.Tables[0].Rows.Count == 0)//Person tablosunda herhangi bir veri yoksa (boşsa) aşağıdaki blok çalışacak
-
-        //        {
-
-        //            // label1.Text = "Kayıt bulunamadı";
-
-        //            return;//kayıt olmadığı için return ile bloğun dışına çıkıyoruz
-
-        //        }
-
-        //        else//kayıt varsa
-        //        {
-        //            //label1.Text = ds.Tables[0].Rows.Count + " adet kayıt getirildi";//satırları sayıp adet sayısını label ın textine atıyoruz
-        //            //dgQuotation.DefaultCellStyle.BackColor = Color.Olive;//Default hücre stilini rengini belirliyouz
-        //            //dgQuotation.AlternatingRowsDefaultCellStyle.BackColor = Color.OliveDrab;//Alternatif satır default hücre stil rengini belirliyoruz
-        //            dgQuotation.DataSource = ds.Tables["Quotation"];//sqlCmd sorgusu ile çektiğimiz kayıtlar datagridview1 üzerinde gösteriliyor
-        //        }
-        //    }
-        //    catch (SqlException ex)
-        //    {
-        //        MessageBox.Show("Hata : " + ex); //Veritabanına bağlantı sırasında alınan bir hata varsa burada gösteriliyor
-        //    }
-        //    finally //button1_Click olduğu sürece bu bloğa uğramadan uygulama sonlanmıyor
-        //    {
-        //        sqlCon.Close(); //Açık olan Sql bağlantısı sonlandırılıyor
-        //        da.Dispose(); //SqlDataApter nesnesi dispose ediliyor
-        //    }
-        //    Thread.Sleep(10);
-        //}
-     }
+    }
 }

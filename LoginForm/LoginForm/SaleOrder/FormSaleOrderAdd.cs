@@ -1525,7 +1525,22 @@ namespace LoginForm.QuotationModule
                             #region Total
                             decimal total = decimal.Parse(CurrentRow.Cells["dgUCUPCurr"].Value.ToString());
                             decimal UcupIME = decimal.Parse(CurrentRow.Cells["dgUPIME"].Value.ToString());
-                            CurrentRow.Cells["dgDisc"].Value = Math.Round(((UcupIME - total) * (decimal)100 / UcupIME), 2);
+                            decimal disc = Math.Round(((UcupIME - total) * (decimal)100 / UcupIME), 2);
+                            int workerID = Utils.getCurrentUser().WorkerID;
+                            decimal Minmarge = (decimal)IME.Workers.Where(x => x.WorkerID == workerID).FirstOrDefault().MinMarge;
+                            if (disc > Minmarge)
+                            {
+                                MessageBox.Show("You are not authorized to enter " + total + "!");
+                                dgSaleAddedItems.CurrentCell = dgSaleAddedItems.CurrentRow.Cells[dgUCUPCurr.Index];
+                                CurrentRow.Cells["dgUCUPCurr"].Value = UcupIME;
+                                CurrentRow.Cells["dgDisc"].Value = 0;
+                            }
+                            else
+                            {
+                                CurrentRow.Cells["dgDisc"].Value = disc;
+                            }
+
+
                             GetMargin();
                             GetMarginMark();
                             #region Calculate Total Margin
@@ -1729,6 +1744,8 @@ namespace LoginForm.QuotationModule
                     {
                         MessageBox.Show("This product does not have cost");
                         dgSaleAddedItems.CurrentRow.Cells[dgQty.Index].Value = "0";
+                        dgSaleAddedItems.CurrentRow.Cells[dgProductCode.Index].Value = null;
+                        dgSaleAddedItems.CurrentCell = dgSaleAddedItems.CurrentRow.Cells[dgProductCode.Index];
                     }
                 }
                 #endregion
@@ -3704,7 +3721,7 @@ namespace LoginForm.QuotationModule
                         }
                     }
                 }
-                if (lblsubtotal.Text != null && lblsubtotal.Text != "") AllMargin = AllMargin / decimal.Parse(lblsubtotal.Text);
+                if (lblsubtotal.Text != null && lblsubtotal.Text != "" && AllMargin != 0) AllMargin = AllMargin / decimal.Parse(lblsubtotal.Text);
                 if (AllMargin != 0)
                 {
                     txtTotalMarge.Text = Math.Round(AllMargin, 2).ToString();
