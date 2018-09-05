@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using Microsoft.Office.Interop.Excel;
 using System;
 using System.Drawing;
+using System.Data.SqlClient;
 
 namespace LoginForm.Services
 {
@@ -17,6 +18,21 @@ namespace LoginForm.Services
         public static string ConnectionStringLogo = new System.Data.SqlClient.SqlConnectionStringBuilder { DataSource = "195.201.76.156\\MSSQL4", Password = "IME1453", UserID = "Sa", InitialCatalog = "LOGO"/*, IntegratedSecurity = true */}.ConnectionString;
         public static string FrmNo = "001";
         public static string DnmNo = "01";
+
+
+        private readonly string server = @"195.201.76.136";
+        private readonly string imedatabase = "IME";
+        private readonly string sqluser = "sa";
+        private readonly string sqlpassword = "ime1453..";
+        
+        public SqlConnection ImeSqlConnection()
+        {
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = "Server=" + server + "; Database=" + imedatabase + "; User Id=" + sqluser + "; Password =" + sqlpassword + "; "; ;
+            if (conn.State != System.Data.ConnectionState.Open)
+                conn.Open();
+            return conn;
+        }
 
         public static string MD5Hash(string input)
         {

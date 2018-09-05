@@ -202,8 +202,11 @@ namespace LoginForm
                     btnBankDelete.Enabled = true;
                     btnBankUpdate.Enabled = true;
 
+
+
                     btnNewAddress();
                     btnNewContact();
+                    btnNewBankAccount();
                     break;
                 case "Save":
                     if (SupplierAddMode == SupplierModeAdd)
@@ -217,6 +220,18 @@ namespace LoginForm
                     }
                     break;
             }
+        }
+
+        private void btnNewBankAccount()
+        {
+            BankMode = "Add";
+            lbBankList.ClearSelected();
+            lbContacts.Enabled = false;
+
+            ClearBankInputs();
+            EnableBankAccountInput(true);
+            //BankButtonsMode(ContactButtonsModeOpen);
+            //ManageDeleteAndModifyButtons(lbContacts, btnContactUpdate, btnContactDelete);
         }
 
         private void ClearBankInputs()
@@ -446,8 +461,16 @@ namespace LoginForm
                     s.taxoffice = txtTaxOffice.Text;
                     s.taxnumber = txtTaxNumber.Text;
                     s.accountrepresentaryID = ((Worker)cmbAccountRep.SelectedItem).WorkerID;
-                    s.payment_termID = ((PaymentTerm)cmbAccountTerms.SelectedItem).ID;
-                    s.paymentmethodID = ((PaymentMethod)cmbAccountMethod.SelectedItem).ID;
+                    if(cmbAccountTerms.SelectedIndex != 0)
+                    {
+                        s.payment_termID = ((PaymentTerm)cmbAccountTerms.SelectedItem).ID;
+                    }
+                    if(cmbAccountMethod.SelectedIndex != 0)
+                    {
+                        s.paymentmethodID = ((PaymentMethod)cmbAccountMethod.SelectedItem).ID;
+                    }
+                        
+                     
                     //s.discountrate = Convert.ToDecimal(txtDiscountRate.Text);
                     s.DefaultCurrency = ((Currency)cmbCurrency.SelectedItem).currencyID;
                     //s.BankID = ((SupplierBank)txtAccountTitle.SelectedItem).ID;
@@ -2307,6 +2330,10 @@ namespace LoginForm
                 
                 ManageDeleteAndModifyButtons(lbContacts, btnContactUpdate, btnContactDelete);
                 BankMode = String.Empty;
+            }
+            else if (btnBankDelete.Text == "Delete")
+            {
+                ClearBankInputs();
             }
         }
 
