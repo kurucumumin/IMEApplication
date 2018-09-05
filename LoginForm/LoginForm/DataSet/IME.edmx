@@ -3369,7 +3369,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Parameter Name="FromDate" Type="datetime" Mode="In" />
           <Parameter Name="ToDate" Type="datetime" Mode="In" />
         </Function>
-        <Function Name="prc_GetRSInvoiceDetailWithID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+        <Function Name="prc_GetRSInvoiceDetailWithInvoiceID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="InvoiceID" Type="int" Mode="In" />
         </Function>
         <Function Name="prc_GetSlidingPriceWithArticleNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -8385,7 +8385,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="FromDate" Mode="In" Type="DateTime" />
             <Parameter Name="ToDate" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <FunctionImport Name="prc_GetRSInvoiceDetailWithID" ReturnType="Collection(IMEModel.prc_GetRSInvoiceDetailWithID_Result)">
+          <FunctionImport Name="prc_GetRSInvoiceDetailWithInvoiceID" ReturnType="Collection(IMEModel.prc_GetRSInvoiceDetailWithInvoiceID_Result)">
             <Parameter Name="InvoiceID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="prc_GetSlidingPriceWithArticleNumber" ReturnType="Collection(IMEModel.prc_GetSlidingPriceWithArticleNumber_Result)">
@@ -9079,6 +9079,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Type="Decimal" Name="Surcharge" Nullable="false" Precision="18" Scale="4" />
           <Property Type="String" Name="Status" Nullable="true" MaxLength="15" />
           <Property Type="Boolean" Name="Deleted" Nullable="true" />
+          <Property Type="String" Name="SupplierID" Nullable="true" MaxLength="15" />
           <Property Type="String" Name="Supplier" Nullable="true" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="prc_GetRSInvoiceBetweenDates_Result">
@@ -9098,9 +9099,10 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Type="Decimal" Name="Surcharge" Nullable="false" Precision="18" Scale="4" />
           <Property Type="String" Name="Status" Nullable="true" MaxLength="15" />
           <Property Type="Boolean" Name="Deleted" Nullable="true" />
+          <Property Type="String" Name="SupplierID" Nullable="true" MaxLength="15" />
           <Property Type="String" Name="Supplier" Nullable="true" MaxLength="50" />
         </ComplexType>
-        <ComplexType Name="prc_GetRSInvoiceDetailWithID_Result">
+        <ComplexType Name="prc_GetRSInvoiceDetailWithInvoiceID_Result">
           <Property Type="String" Name="PurchaseOrderNumber" Nullable="true" MaxLength="30" />
           <Property Type="Int32" Name="PurchaseOrderItemNumber" Nullable="true" />
           <Property Type="String" Name="ProductNumber" Nullable="true" MaxLength="18" />
@@ -11484,6 +11486,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="Surcharge" ColumnName="Surcharge" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
                 <ScalarProperty Name="Supplier" ColumnName="Supplier" />
               </ComplexTypeMapping>
             </ResultMapping>
@@ -11507,13 +11510,14 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="Surcharge" ColumnName="Surcharge" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
                 <ScalarProperty Name="Supplier" ColumnName="Supplier" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="prc_GetRSInvoiceDetailWithID" FunctionName="IMEModel.Store.prc_GetRSInvoiceDetailWithID">
+          <FunctionImportMapping FunctionImportName="prc_GetRSInvoiceDetailWithInvoiceID" FunctionName="IMEModel.Store.prc_GetRSInvoiceDetailWithInvoiceID">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="IMEModel.prc_GetRSInvoiceDetailWithID_Result">
+              <ComplexTypeMapping TypeName="IMEModel.prc_GetRSInvoiceDetailWithInvoiceID_Result">
                 <ScalarProperty Name="PurchaseOrderNumber" ColumnName="PurchaseOrderNumber" />
                 <ScalarProperty Name="PurchaseOrderItemNumber" ColumnName="PurchaseOrderItemNumber" />
                 <ScalarProperty Name="ProductNumber" ColumnName="ProductNumber" />

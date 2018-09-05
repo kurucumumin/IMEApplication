@@ -269,7 +269,7 @@ namespace LoginForm.nsSaleOrder
             {
                 MessageBox.Show("Operation Failed" + "\n\nError Message: " + resultMessage);
             }
-            
+
         }
 
         private void btnModify_Click(object sender, EventArgs e)
