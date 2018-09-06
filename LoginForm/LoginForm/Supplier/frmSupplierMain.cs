@@ -256,15 +256,36 @@ namespace LoginForm
                     Supplier s = db.Suppliers.Where(x => x.ID == txtSupplierCode.Text).FirstOrDefault();
                     s.representaryID = ((Worker)cmbRepresentative.SelectedItem).WorkerID;
                     s.s_name = txtName.Text;
-                    s.CategoryID = ((SupplierCategory)cmbMainCategory.SelectedItem).ID;
-                    s.SubCategoryID = ((SupplierSubCategory)cmbSubCategory.SelectedItem).ID;
+                    if (cmbMainCategory.SelectedItem.GetType() == typeof(SupplierCategory))
+                    {
+                        s.CategoryID = ((SupplierCategory)cmbMainCategory.SelectedItem).ID;
+                    }
+                    if (cmbSubCategory.SelectedItem != null && cmbSubCategory.SelectedItem.GetType() == typeof(SupplierSubCategory))
+                    {
+                        s.SubCategoryID = ((SupplierSubCategory)cmbSubCategory.SelectedItem).ID;
+                    }
                     s.taxoffice = txtTaxOffice.Text;
                     s.taxnumber = txtTaxNumber.Text;
-                    s.accountrepresentaryID = ((Worker)cmbAccountRep.SelectedItem).WorkerID;
-                    s.payment_termID = ((PaymentTerm)cmbAccountTerms.SelectedItem).ID;
-                    s.paymentmethodID = ((PaymentMethod)cmbAccountMethod.SelectedItem).ID;
+                    if (cmbAccountRep.SelectedItem.GetType() == typeof(Worker))
+                    {
+                        s.accountrepresentaryID = ((Worker)cmbAccountRep.SelectedItem).WorkerID;
+                    }
+
+                    if (cmbAccountTerms.SelectedItem.GetType() == typeof(PaymentTerm))
+                    {
+                        s.payment_termID = ((PaymentTerm)cmbAccountTerms.SelectedItem).ID;
+                    }
+                    if (cmbAccountMethod.SelectedItem.GetType() == typeof(PaymentMethod))
+                    {
+                        s.paymentmethodID = ((PaymentMethod)cmbAccountMethod.SelectedItem).ID;
+                    }
+
+
                     //s.discountrate = Convert.ToDecimal(txtDiscountRate.Text);
-                    s.DefaultCurrency = ((Currency)cmbCurrency.SelectedItem).currencyID;
+                    if (cmbCurrency.SelectedItem.GetType() == typeof(Currency))
+                    {
+                        s.DefaultCurrency = ((Currency)cmbCurrency.SelectedItem).currencyID;
+                    }
                     //s.BankID = ((SupplierBank)cmbBankName.SelectedItem).ID;
 
                     s.webadress = (txtWeb.Text != String.Empty) ? txtWeb.Text : null;
@@ -380,7 +401,10 @@ namespace LoginForm
                         w.titleID = worker.titleID;
                         db.SaveChanges();
                     }
-                    s.MainContactID = db.SupplierWorkers.Where(x => x.supplierID == s.ID).FirstOrDefault().ID;
+                    if(s.SupplierWorkers.Count != 0)
+                    {
+                        s.MainContactID = db.SupplierWorkers.Where(x => x.supplierID == s.ID).FirstOrDefault().ID;
+                    }
                     db.SaveChanges();
                 }
                 catch (Exception ex)
@@ -454,25 +478,47 @@ namespace LoginForm
                 {
                     Supplier s = new Supplier();
                     s.ID = txtSupplierCode.Text;
-                    s.representaryID = ((Worker)cmbRepresentative.SelectedItem).WorkerID;
+                    if(cmbRepresentative.SelectedIndex > 0)
+                    {
+                        s.representaryID = ((Worker)cmbRepresentative.SelectedItem).WorkerID;
+                    }else
+                    {
+                        s.representaryID = Utils.getCurrentUser().WorkerID;
+                    }
                     s.s_name = txtName.Text;
-                    s.CategoryID = ((SupplierCategory)cmbMainCategory.SelectedItem).ID;
-                    s.SubCategoryID = ((SupplierSubCategory)cmbSubCategory.SelectedItem).ID;
+                    if (cmbMainCategory.SelectedItem.GetType() == typeof(SupplierCategory))
+                    {
+                        s.CategoryID = ((SupplierCategory)cmbMainCategory.SelectedItem).ID;
+                    }
+                    if(cmbSubCategory.SelectedItem != null && cmbSubCategory.SelectedItem.GetType() == typeof(SupplierSubCategory))
+                    {
+                        s.SubCategoryID = ((SupplierSubCategory)cmbSubCategory.SelectedItem).ID;
+                    }
+                    
                     s.taxoffice = txtTaxOffice.Text;
                     s.taxnumber = txtTaxNumber.Text;
-                    s.accountrepresentaryID = ((Worker)cmbAccountRep.SelectedItem).WorkerID;
-                    if(cmbAccountTerms.SelectedIndex != 0)
+
+                    if (cmbAccountRep.SelectedItem.GetType() == typeof(Worker))
+                    {
+                        s.accountrepresentaryID = ((Worker)cmbAccountRep.SelectedItem).WorkerID;
+                    }
+                    
+                    if(cmbAccountTerms.SelectedItem.GetType() == typeof(PaymentTerm))
                     {
                         s.payment_termID = ((PaymentTerm)cmbAccountTerms.SelectedItem).ID;
                     }
-                    if(cmbAccountMethod.SelectedIndex != 0)
+                    if(cmbAccountMethod.SelectedItem.GetType() == typeof(PaymentMethod))
                     {
                         s.paymentmethodID = ((PaymentMethod)cmbAccountMethod.SelectedItem).ID;
                     }
-                        
-                     
+
+
                     //s.discountrate = Convert.ToDecimal(txtDiscountRate.Text);
-                    s.DefaultCurrency = ((Currency)cmbCurrency.SelectedItem).currencyID;
+                    if (cmbCurrency.SelectedItem.GetType() == typeof(Currency))
+                    {
+                        s.DefaultCurrency = ((Currency)cmbCurrency.SelectedItem).currencyID;
+                    }
+                    
                     //s.BankID = ((SupplierBank)txtAccountTitle.SelectedItem).ID;
                     //s.branchcode = txtBankBranchCode.Text;
                     //s.accountnumber = txtBankAccountNumber.Text;
@@ -529,7 +575,10 @@ namespace LoginForm
                         db.SupplierWorkers.Add(worker);
                         db.SaveChanges();
                     }
-                    s.MainContactID = db.SupplierWorkers.Where(x => x.supplierID == s.ID).FirstOrDefault().ID;
+                    if(s.SupplierWorkers.Count != 0)
+                    {
+                        s.MainContactID = db.SupplierWorkers.Where(x => x.supplierID == s.ID).FirstOrDefault().ID;
+                    }
                     db.SaveChanges();
                 }
                 catch (Exception ex)
@@ -603,6 +652,9 @@ namespace LoginForm
             txtBankBranchCode.Enabled = state;
             txtBankAccountNumber.Enabled = state;
             txtBankIban.Enabled = state;
+            btnBankAdd.Enabled = true;
+            btnBankDelete.Enabled = true;
+            btnBankUpdate.Enabled = true;
             if (!state)
             {
                 cmbCountry.SelectedIndex = 0;
@@ -667,6 +719,7 @@ namespace LoginForm
         {
             SavedAddresses.Clear();
             SavedContacts.Clear();
+            ClearAddressInputs();
             FillSupplierInfo(dgSupplier.Rows[e.RowIndex].Cells[dgID.Index].Value.ToString());
         }
 
@@ -694,29 +747,88 @@ namespace LoginForm
             string name = s.Worker1.NameLastName;
             cmbRepresentative.SelectedIndex = cmbRepresentative.FindStringExact(name);
 
-            name = s.SupplierCategory.categoryname;
-            cmbMainCategory.SelectedIndex = cmbMainCategory.FindStringExact(name);
+            if (s.SupplierCategory != null)
+            {
+                name = s.SupplierCategory.categoryname;
+                cmbMainCategory.SelectedIndex = cmbMainCategory.FindStringExact(name);
+            }
+            else
+            {
+                cmbMainCategory.SelectedIndex = 0;
+            }
 
-            name = s.SupplierSubCategory.subcategoryname;
-            cmbSubCategory.SelectedIndex = cmbSubCategory.FindStringExact(name);
+            if (s.SupplierSubCategory != null)
+            {
+                name = s.SupplierSubCategory.subcategoryname;
+                cmbSubCategory.SelectedIndex = cmbSubCategory.FindStringExact(name);
+            }
+            else
+            {
+                if (cmbSubCategory.Items.Count != 0)
+                {
+                    cmbSubCategory.SelectedIndex = 0;
+                }
+            }
 
-            name = s.Worker.NameLastName;
-            cmbAccountRep.SelectedIndex = cmbAccountRep.FindString(name);
 
-            name = s.PaymentTerm.term_name;
-            cmbAccountTerms.SelectedIndex = cmbAccountTerms.FindString(name);
+            if (s.Worker != null)
+            {
+                name = s.Worker.NameLastName;
+                cmbAccountRep.SelectedIndex = cmbAccountRep.FindString(name);
+            }
+            else
+            {
+                cmbAccountRep.SelectedIndex = 0;
+            }
 
-            name = s.PaymentMethod.Payment;
-            cmbAccountMethod.SelectedIndex = cmbAccountMethod.FindString(name);
+            if (s.PaymentTerm != null)
+            {
+                name = s.PaymentTerm.term_name;
+                cmbAccountTerms.SelectedIndex = cmbAccountTerms.FindString(name);
+            }
+            else
+            {
+                cmbAccountTerms.SelectedIndex = 0;
+            }
 
-            name = s.Currency.currencyName;
-            cmbCurrency.SelectedIndex = cmbCurrency.FindStringExact(name);
+
+            if (s.PaymentMethod != null)
+            {
+                name = s.PaymentMethod.Payment;
+                cmbAccountMethod.SelectedIndex = cmbAccountMethod.FindString(name);
+            }
+            else
+            {
+                cmbAccountMethod.SelectedIndex = 0;
+            }
+
+
+            if (s.Currency != null)
+            {
+                name = s.Currency.currencyName;
+                cmbCurrency.SelectedIndex = cmbCurrency.FindStringExact(name);
+            }
+            else
+            {
+                cmbCurrency.SelectedIndex = 0;
+            }
+
 
             //name = s.SupplierBank.bankname;
             //txtAccountTitle.SelectedIndex = txtAccountTitle.FindStringExact(name);
+            if (s.SupplierWorker != null)
+            {
+                name = s.SupplierWorker.sw_name;
+                cmbMainContact.SelectedIndex = cmbMainContact.FindStringExact(name);
+            }
+            else
+            {
+                if (cmbMainContact.Items.Count != 0)
+                {
+                    cmbMainContact.SelectedIndex = 0;
+                }
+            }
 
-            name = s.SupplierWorker.sw_name;
-            cmbMainContact.SelectedIndex = cmbMainContact.FindStringExact(name);
 
             SavedAddresses.Clear();
             foreach (SupplierAddress sa in s.SupplierAddresses)
@@ -1453,12 +1565,16 @@ namespace LoginForm
                         supplierID = txtSupplierCode.Text,
                         sw_name = txtContactName.Text,
                         phone = txtContactPhone.Text,
-                        languageID = ((Language)cmbLanguage.SelectedItem).ID,
                         PhoneExternalNum = (txtExternalNumber.Text != String.Empty) ? txtExternalNumber.Text : null,
                         sw_email = (txtContactMail.Text != String.Empty) ? txtContactMail.Text : null,
                         fax = (txtContactFax.Text != String.Empty) ? txtContactFax.Text : null,
                         mobilephone = (txtContactMobile.Text != String.Empty) ? txtContactMobile.Text : null
                     };
+                    if (cmbLanguage.SelectedItem != null && cmbLanguage.SelectedItem.GetType() == typeof(Language))
+                    {
+                        worker.languageID = ((Language)cmbLanguage.SelectedItem).ID;
+                    }
+                    
 
                     if (cmbDepartment.SelectedIndex > 0) { worker.departmentID = ((CustomerDepartment)cmbDepartment.SelectedItem).ID; }
                     if (cmbPosition.SelectedIndex > 0) { worker.titleID = ((CustomerTitle)cmbPosition.SelectedItem).ID; }
@@ -1587,9 +1703,11 @@ namespace LoginForm
 
             list = cmbLanguage.Items.Cast<object>().ToList();
             list.RemoveAt(0);
-            string Language = list.Cast<Language>().Where(x => x.ID == worker.languageID).FirstOrDefault().languagename;
-            cmbLanguage.SelectedIndex = cmbLanguage.FindStringExact(Language);
-
+            if (worker.languageID != null)
+            {
+                string Language = list.Cast<Language>().Where(x => x.ID == worker.languageID).FirstOrDefault().languagename;
+                cmbLanguage.SelectedIndex = cmbLanguage.FindStringExact(Language);
+            }
             list = null;
 
             txtContactName.Text = worker.sw_name;
@@ -1617,14 +1735,14 @@ namespace LoginForm
                         ErrorLog.Add("Name should not contain numbers!");
                     }
 
-                    if (txtContactPhone.Text.Trim() == String.Empty)
-                    {
-                        ErrorLog.Add("Phone must not be empty!");
-                    }
-                    else if (!Utils.HasOnlyNumbers(txtContactPhone.Text))
-                    {
-                        ErrorLog.Add("The Phone number must be a numerical string!");
-                    }
+                    //if (txtContactPhone.Text.Trim() == String.Empty)
+                    //{
+                    //    ErrorLog.Add("Phone must not be empty!");
+                    //}
+                    //else if (!Utils.HasOnlyNumbers(txtContactPhone.Text))
+                    //{
+                    //    ErrorLog.Add("The Phone number must be a numerical string!");
+                    //}
 
                     //if (txtContactMobile.Text.Trim() != String.Empty && !Utils.HasOnlyNumbers(txtContactMobile.Text))
                     //{
@@ -1641,10 +1759,10 @@ namespace LoginForm
                     //    ErrorLog.Add("The Extension number must be a numerical string!");
                     //}
 
-                    if (cmbLanguage.SelectedIndex <= 0)
-                    {
-                        ErrorLog.Add("You should choose a Communication Language!");
-                    }
+                    //if (cmbLanguage.SelectedIndex <= 0)
+                    //{
+                    //    ErrorLog.Add("You should choose a Communication Language!");
+                    //}
 
 
                     string ErrorStringContact = String.Empty;
@@ -1680,14 +1798,14 @@ namespace LoginForm
                         ErrorLog.Add("Title must not be empty!");
                     }
 
-                    if (txtPhone.Text.Trim() == String.Empty)
-                    {
-                        ErrorLog.Add("Phone must not be empty!");
-                    }
-                    else if (!Utils.HasOnlyNumbers(txtPhone.Text))
-                    {
-                        ErrorLog.Add("The Phone number must be a numerical string!");
-                    }
+                    //if (txtPhone.Text.Trim() == String.Empty)
+                    //{
+                    //    ErrorLog.Add("Phone must not be empty!");
+                    //}
+                    //else if (!Utils.HasOnlyNumbers(txtPhone.Text))
+                    //{
+                    //    ErrorLog.Add("The Phone number must be a numerical string!");
+                    //}
 
                     //if (txtFax.Text.Trim() != String.Empty && !Utils.HasOnlyNumbers(txtFax.Text))
                     //{
@@ -1699,28 +1817,28 @@ namespace LoginForm
                     //    ErrorLog.Add("P.O.Box must not be empty!");
                     //}
 
-                    if (txtPostCode.Text.Trim() == String.Empty)
-                    {
-                        ErrorLog.Add("Post Code must not be empty!");
-                    }
+                    //if (txtPostCode.Text.Trim() == String.Empty)
+                    //{
+                    //    ErrorLog.Add("Post Code must not be empty!");
+                    //}
 
                     if (txtAddressDetail.Text.Trim() == String.Empty)
                     {
                         ErrorLog.Add("Address details must not be empty!");
                     }
 
-                    if (cmbCountry.SelectedIndex <= 0)
-                    {
-                        ErrorLog.Add("You should choose a Country!");
-                    }
-                    if (cmbCity.SelectedIndex <= 0)
-                    {
-                        ErrorLog.Add("You should choose a City!");
-                    }
-                    if (cmbTown.SelectedIndex <= 0)
-                    {
-                        ErrorLog.Add("You should choose a Town!");
-                    }
+                    //if (cmbCountry.SelectedIndex <= 0)
+                    //{
+                    //    ErrorLog.Add("You should choose a Country!");
+                    //}
+                    //if (cmbCity.SelectedIndex <= 0)
+                    //{
+                    //    ErrorLog.Add("You should choose a City!");
+                    //}
+                    //if (cmbTown.SelectedIndex <= 0)
+                    //{
+                    //    ErrorLog.Add("You should choose a Town!");
+                    //}
 
                     string ErrorStringAddress = String.Empty;
                     for (int i = 0; i < ErrorLog.Count; i++)
@@ -1777,49 +1895,49 @@ namespace LoginForm
                 #endregion
                 #region General
                 case "General":
-                    if (cmbRepresentative.SelectedIndex <= 0)
-                    {
-                        ErrorLog.Add("You should choose a Representative!");
-                    }
+                    //if (cmbRepresentative.SelectedIndex <= 0)
+                    //{
+                    //    ErrorLog.Add("You should choose a Representative!");
+                    //}
                     if (txtName.Text.Trim() == String.Empty)
                     {
                         ErrorLog.Add("Name must not be empty!");
                     }
-                    if (cmbMainCategory.SelectedIndex <= 0)
-                    {
-                        ErrorLog.Add("You should choose a Main Category!");
-                    }
-                    if (cmbSubCategory.SelectedIndex <= 0)
-                    {
-                        ErrorLog.Add("You should choose a Sub Category!");
-                    }
-                    if (txtTaxOffice.Text.Trim() == String.Empty)
-                    {
-                        ErrorLog.Add("Tax Office must not be empty!");
-                    }
-                    if (txtTaxNumber.Text.Trim() == String.Empty)
-                    {
-                        ErrorLog.Add("Tax Number must not be empty!");
-                    }
-                    else if (!Utils.HasOnlyNumbers(txtTaxNumber.Text))
-                    {
-                        ErrorLog.Add("Tax Number must be a numerical string!");
-                    }
+                    //if (cmbMainCategory.SelectedIndex <= 0)
+                    //{
+                    //    ErrorLog.Add("You should choose a Main Category!");
+                    //}
+                    //if (cmbSubCategory.SelectedIndex <= 0)
+                    //{
+                    //    ErrorLog.Add("You should choose a Sub Category!");
+                    //}
+                    //if (txtTaxOffice.Text.Trim() == String.Empty)
+                    //{
+                    //    ErrorLog.Add("Tax Office must not be empty!");
+                    //}
+                    //if (txtTaxNumber.Text.Trim() == String.Empty)
+                    //{
+                    //    ErrorLog.Add("Tax Number must not be empty!");
+                    //}
+                    //else if (!Utils.HasOnlyNumbers(txtTaxNumber.Text))
+                    //{
+                    //    ErrorLog.Add("Tax Number must be a numerical string!");
+                    //}
 
-                    if (cmbMainContact.SelectedIndex < 0)
-                    {
-                        ErrorLog.Add("You should choose a Main Contact!");
-                    }
+                    //if (cmbMainContact.SelectedIndex < 0)
+                    //{
+                    //    ErrorLog.Add("You should choose a Main Contact!");
+                    //}
 
-                    if (cmbAccountRep.SelectedIndex <= 0)
-                    {
-                        ErrorLog.Add("You should choose an Account Representative!");
-                    }
+                    //if (cmbAccountRep.SelectedIndex <= 0)
+                    //{
+                    //    ErrorLog.Add("You should choose an Account Representative!");
+                    //}
 
-                    if (cmbAccountTerms.SelectedIndex <= 0)
-                    {
-                        ErrorLog.Add("You should choose a Terms of Payment!");
-                    }
+                    //if (cmbAccountTerms.SelectedIndex <= 0)
+                    //{
+                    //    ErrorLog.Add("You should choose a Terms of Payment!");
+                    //}
 
                     //if (cmbAccountMethod.SelectedIndex <= 0)
                     //{
@@ -1836,18 +1954,18 @@ namespace LoginForm
                     //    ErrorLog.Add("Discount rate must be a numerical string!");
                     //}
 
-                    if (cmbCurrency.SelectedIndex <= 0)
-                    {
-                        ErrorLog.Add("You should choose a Currency!");
-                    }
-                    if (lbAddressList.Items.Count <= 0)
-                    {
-                        ErrorLog.Add("You should add at least one Address!");
-                    }
-                    if (lbContacts.Items.Count <= 0)
-                    {
-                        ErrorLog.Add("You should add at least Contact!");
-                    }
+                    //if (cmbCurrency.SelectedIndex <= 0)
+                    //{
+                    //    ErrorLog.Add("You should choose a Currency!");
+                    //}
+                    //if (lbAddressList.Items.Count <= 0)
+                    //{
+                    //    ErrorLog.Add("You should add at least one Address!");
+                    //}
+                    //if (lbContacts.Items.Count <= 0)
+                    //{
+                    //    ErrorLog.Add("You should add at least Contact!");
+                    //}
 
 
                     string ErrorStringGeneral = String.Empty;
