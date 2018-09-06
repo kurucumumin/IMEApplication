@@ -40,10 +40,7 @@ namespace LoginForm.f_RSInvoice
 
         private void btnRefreshList_Click(object sender, EventArgs e)
         {
-            dgRSInvoice.DataSource = null;
-            dgRSInvoice.DataSource = new Sp_RSInvoice().GetRSInvoiceBetweenDates(dtpFromDate.Value.Date, dtpToDate.Value.AddDays(1).Date);
-            SetGridColumnWidths();
-            SetDesignForGrid();
+            bgw_RSInvoiceGetter.RunWorkerAsync();
         }
 
         private void ShowHiddenRows()
@@ -86,39 +83,6 @@ namespace LoginForm.f_RSInvoice
 
         }
 
-        private void SetGridColumnWidths()
-        {
-            dgRSInvoice.Columns["ID"].Visible = false;
-            dgRSInvoice.Columns["SupplierID"].Visible = false;
-            dgRSInvoice.Columns["Supplier"].Visible = false;
-
-            dgRSInvoice.Columns["ShipmentReference"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dgRSInvoice.Columns["ShipmentReference"].HeaderText = "Shipment Reference";
-            dgRSInvoice.Columns["BillingDocumentReference"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dgRSInvoice.Columns["BillingDocumentReference"].HeaderText = "Billing Document Reference";
-            dgRSInvoice.Columns["ShippingCondition"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dgRSInvoice.Columns["ShippingCondition"].HeaderText = "Shipping Condition";
-            dgRSInvoice.Columns["BillingDocumentDate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dgRSInvoice.Columns["BillingDocumentDate"].HeaderText = "Billing DocumentDate";
-            dgRSInvoice.Columns["SupplyingECCompany"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dgRSInvoice.Columns["SupplyingECCompany"].HeaderText = "Supplying EC Company";
-            dgRSInvoice.Columns["CustomerReference"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dgRSInvoice.Columns["CustomerReference"].HeaderText = "Customer Reference";
-            dgRSInvoice.Columns["InvoiceTaxValue"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dgRSInvoice.Columns["InvoiceTaxValue"].HeaderText = "Invoice Tax Value";
-            dgRSInvoice.Columns["InvoiceGoodsValue"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dgRSInvoice.Columns["InvoiceGoodsValue"].HeaderText = "Invoice Goods Value";
-            dgRSInvoice.Columns["InvoiceNettValue"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dgRSInvoice.Columns["InvoiceNettValue"].HeaderText = "Invoice Nett Value";
-            dgRSInvoice.Columns["Currency"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dgRSInvoice.Columns["AirwayBillNumber"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dgRSInvoice.Columns["AirwayBillNumber"].HeaderText = "Airway Bill Number";
-            dgRSInvoice.Columns["Discount"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgRSInvoice.Columns["Surcharge"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgRSInvoice.Columns["Status"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgRSInvoice.Columns["Deleted"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-        }
-
         private void viewInvoicToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if(Int32.TryParse(dgRSInvoice.SelectedRows[0].Cells["ID"].Value.ToString(), out int InvoiceID))
@@ -131,8 +95,8 @@ namespace LoginForm.f_RSInvoice
 
         private void sendToLogoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string Ref = dgRSInvoice.SelectedRows[0].Cells["BillingDocumentReference"].Value.ToString();
-            int InvoiceID = Int32.Parse(dgRSInvoice.SelectedRows[0].Cells["ID"].Value.ToString());
+            string Ref = dgRSInvoice.SelectedRows[0].Cells[dgBillingDocumentReference.Index].Value.ToString();
+            int InvoiceID = Int32.Parse(dgRSInvoice.SelectedRows[0].Cells[dgID.Index].Value.ToString());
             string resultMessage = logoLibrary.SendToLogo_RSInvoice(Ref);
 
             if (resultMessage == LogoLibrary.AddSuccessful)
@@ -154,8 +118,8 @@ namespace LoginForm.f_RSInvoice
 
         private void backFromLogoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string Ref = dgRSInvoice.SelectedRows[0].Cells["BillingDocumentReference"].Value.ToString();
-            int InvoiceID = Int32.Parse(dgRSInvoice.SelectedRows[0].Cells["ID"].Value.ToString());
+            string Ref = dgRSInvoice.SelectedRows[0].Cells[dgBillingDocumentReference.Index].Value.ToString();
+            int InvoiceID = Int32.Parse(dgRSInvoice.SelectedRows[0].Cells[dgID.Index].Value.ToString());
             string resultMessage = logoLibrary.BackFromLogo_RSInvoice(Ref.ToString());
 
             if (resultMessage == LogoLibrary.DeleteSuccessful)
@@ -175,19 +139,6 @@ namespace LoginForm.f_RSInvoice
             }
         }
 
-        private void SetDesignForGrid()
-        {
-            Color LogoColor = Color.FromArgb(183, 240, 154);
-            foreach (DataGridViewRow row in dgRSInvoice.Rows)
-            {
-                DataGridViewCell cell = row.Cells["Status"];
-                if (cell.Value.ToString() == "LOGO")
-                {
-                    row.DefaultCellStyle.BackColor = LogoColor;
-                }
-            }
-        }
-
         private void bgw_RSInvoiceGetter_DoWork(object sender, DoWorkEventArgs e)
         {
             dt_RsInvoiceList = new Sp_RSInvoice().GetRSInvoiceBetweenDates(dtpFromDate.Value.Date, dtpToDate.Value.AddDays(1).Date);
@@ -195,16 +146,54 @@ namespace LoginForm.f_RSInvoice
 
         private void bgw_RSInvoiceGetter_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            dgRSInvoice.DataSource = dt_RsInvoiceList;
-            SetGridColumnWidths();
-            SetDesignForGrid();
-            dgRSInvoice.ClearSelection();
-            dgRSInvoice.Focus();
+            dgRSInvoice.Rows.Clear();
+            SetDataGridItemsRsInvoice(dt_RsInvoiceList);
+            dgRSInvoice.Refresh();
         }
 
         private void SetDataGridItemsRsInvoice(DataTable dataTable)
         {
-            DataGridViewRow row = dgRSInvoice.Rows[dgRSInvoice.Rows.Add()];
+            Color LogoColor = Color.FromArgb(183, 240, 154);
+            foreach (DataRow dRow in dataTable.Rows)
+            {
+                DataGridViewRow gRow = dgRSInvoice.Rows[dgRSInvoice.Rows.Add()];
+
+                gRow.Cells[dgID.Index].Value = dRow["ID"].ToString();
+                gRow.Cells[dgShipmentReference.Index].Value = dRow["ShipmentReference"].ToString();
+                gRow.Cells[dgBillingDocumentReference.Index].Value = dRow["BillingDocumentReference"].ToString();
+                gRow.Cells[dgShippingCondition.Index].Value = dRow["ShippingCondition"].ToString();
+                gRow.Cells[dgBillingDocumentDate.Index].Value = dRow["BillingDocumentDate"].ToString();
+                gRow.Cells[dgSupplyingECCompany.Index].Value = dRow["SupplyingECCompany"].ToString();
+                gRow.Cells[dgCustomerReference.Index].Value = dRow["CustomerReference"].ToString();
+                gRow.Cells[dgInvoiceTaxValue.Index].Value = dRow["InvoiceTaxValue"].ToString();
+                gRow.Cells[dgInvoiceGoodsValue.Index].Value = dRow["InvoiceGoodsValue"].ToString();
+                gRow.Cells[dgInvoiceNettValue.Index].Value = dRow["InvoiceNettValue"].ToString();
+                gRow.Cells[dgCurrency.Index].Value = dRow["Currency"].ToString();
+                gRow.Cells[dgAirwayBillNumber.Index].Value = dRow["AirwayBillNumber"].ToString();
+                gRow.Cells[dgDiscount.Index].Value = dRow["Discount"].ToString();
+                gRow.Cells[dgSurcharge.Index].Value = dRow["Surcharge"].ToString();
+                gRow.Cells[dgStatus.Index].Value = dRow["Status"].ToString();
+                gRow.Cells[dgDeleted.Index].Value = dRow["Deleted"].ToString();
+                gRow.Cells[dgSupplier.Index].Value = dRow["Supplier"].ToString();
+                gRow.Cells[dgUser.Index].Value = dRow["User"].ToString();
+                gRow.Cells[dgCreateDate.Index].Value = dRow["CreateDate"].ToString();
+                gRow.Cells[dgSupplierID.Index].Value = dRow["SupplierID"].ToString();
+                gRow.Cells[dgUserID.Index].Value = dRow["UserID"].ToString();
+
+                if (dRow["Status"].ToString() == "LOGO")
+                {
+                    gRow.DefaultCellStyle.BackColor = LogoColor;
+                }
+            }
+        }
+
+        private void dtpFromDate_ValueChanged(object sender, EventArgs e)
+        {
+            if(dtpFromDate.Value > dtpToDate.Value)
+            {
+                dtpToDate.Value = dtpFromDate.Value;
+            }
+            dtpToDate.MinDate = dtpFromDate.Value;
         }
     }
 }

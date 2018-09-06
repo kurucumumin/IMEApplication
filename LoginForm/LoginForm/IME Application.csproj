@@ -78,6 +78,11 @@
     <Reference Include="DevComponents.Instrumentation.Design">
       <HintPath>..\DevComponents\DevComponents.Instrumentation.Design.dll</HintPath>
     </Reference>
+    <Reference Include="DevExpress.Data.v17.2, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v17.2.Core, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v17.2, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v17.2, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v17.2, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -998,6 +1003,7 @@
     <Compile Include="MyClasses\clsLog.cs" />
     <Compile Include="MyClasses\clsLogClass.cs" />
     <Compile Include="MyClasses\clsLogoYardimci.cs" />
+    <Compile Include="Services\dstQuotation.cs" />
     <Compile Include="Services\Messages.cs" />
     <Compile Include="MyClasses\MyAuthority.cs" />
     <Compile Include="MyClasses\MyConnect.cs" />
@@ -1006,6 +1012,9 @@
     <Compile Include="Services\OtherDateValidationFunction.cs" />
     <Compile Include="Services\PrinterClass.cs" />
     <Compile Include="Services\PrintingUtils.cs" />
+    <Compile Include="Services\prtQuotation.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Services\QuotationDatagridCustomize.cs" />
     <Compile Include="Services\classSupplier.cs" />
     <Compile Include="Services\SP\Sp_Customer.cs" />
@@ -1205,6 +1214,7 @@
     <EmbeddedResource Include="PrintWorks\PrintWorks.frmForms.resources" />
     <EmbeddedResource Include="PrintWorks\PrintWorks.frmPrintDesigner.resources" />
     <EmbeddedResource Include="PrintWorks\PrintWorks.Properties.Resources.resources" />
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
@@ -1283,6 +1293,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SaleOrder\FormSaleGridCustomize.resx">
       <DependentUpon>FormSaleGridCustomize.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Services\prtQuotation.resx">
+      <DependentUpon>prtQuotation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StockConfirm\frmStockConfirm.resx">
       <DependentUpon>frmStockConfirm.cs</DependentUpon>

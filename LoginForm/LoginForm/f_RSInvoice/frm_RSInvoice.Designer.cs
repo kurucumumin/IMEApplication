@@ -52,6 +52,27 @@
             this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgRSInvoice = new System.Windows.Forms.DataGridView();
+            this.dgID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgShipmentReference = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgBillingDocumentReference = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgShippingCondition = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgBillingDocumentDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgSupplyingECCompany = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCustomerReference = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgInvoiceTaxValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgInvoiceGoodsValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgInvoiceNettValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCurrency = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgAirwayBillNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgDiscount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgSurcharge = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgDeleted = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgSupplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgSupplierID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ctx_dgRSInvoice = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.viewInvoicToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sendToLogoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -312,6 +333,7 @@
             this.dtpFromDate.Size = new System.Drawing.Size(119, 22);
             this.dtpFromDate.TabIndex = 19;
             this.dtpFromDate.Value = new System.DateTime(2018, 9, 4, 0, 0, 0, 0);
+            this.dtpFromDate.ValueChanged += new System.EventHandler(this.dtpFromDate_ValueChanged);
             // 
             // tableLayoutPanel1
             // 
@@ -337,6 +359,28 @@
             this.dgRSInvoice.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgRSInvoice.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgRSInvoice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgRSInvoice.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgID,
+            this.dgShipmentReference,
+            this.dgBillingDocumentReference,
+            this.dgShippingCondition,
+            this.dgBillingDocumentDate,
+            this.dgSupplyingECCompany,
+            this.dgCustomerReference,
+            this.dgInvoiceTaxValue,
+            this.dgInvoiceGoodsValue,
+            this.dgInvoiceNettValue,
+            this.dgCurrency,
+            this.dgAirwayBillNumber,
+            this.dgDiscount,
+            this.dgSurcharge,
+            this.dgStatus,
+            this.dgDeleted,
+            this.dgSupplier,
+            this.dgUser,
+            this.dgCreateDate,
+            this.dgSupplierID,
+            this.dgUserID});
             this.dgRSInvoice.ContextMenuStrip = this.ctx_dgRSInvoice;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
@@ -359,6 +403,135 @@
             this.dgRSInvoice.TabIndex = 0;
             this.dgRSInvoice.TabStop = false;
             this.dgRSInvoice.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgRSInvoice_MouseDown);
+            // 
+            // dgID
+            // 
+            this.dgID.HeaderText = "ID";
+            this.dgID.Name = "dgID";
+            this.dgID.ReadOnly = true;
+            this.dgID.Visible = false;
+            // 
+            // dgShipmentReference
+            // 
+            this.dgShipmentReference.HeaderText = "Shipment Reference";
+            this.dgShipmentReference.Name = "dgShipmentReference";
+            this.dgShipmentReference.ReadOnly = true;
+            // 
+            // dgBillingDocumentReference
+            // 
+            this.dgBillingDocumentReference.HeaderText = "Billing Document Reference";
+            this.dgBillingDocumentReference.Name = "dgBillingDocumentReference";
+            this.dgBillingDocumentReference.ReadOnly = true;
+            // 
+            // dgShippingCondition
+            // 
+            this.dgShippingCondition.HeaderText = "Shipping Condition";
+            this.dgShippingCondition.Name = "dgShippingCondition";
+            this.dgShippingCondition.ReadOnly = true;
+            // 
+            // dgBillingDocumentDate
+            // 
+            this.dgBillingDocumentDate.HeaderText = "Billing Document Date";
+            this.dgBillingDocumentDate.Name = "dgBillingDocumentDate";
+            this.dgBillingDocumentDate.ReadOnly = true;
+            // 
+            // dgSupplyingECCompany
+            // 
+            this.dgSupplyingECCompany.HeaderText = "Supplying EC Company";
+            this.dgSupplyingECCompany.Name = "dgSupplyingECCompany";
+            this.dgSupplyingECCompany.ReadOnly = true;
+            // 
+            // dgCustomerReference
+            // 
+            this.dgCustomerReference.HeaderText = "Customer Reference";
+            this.dgCustomerReference.Name = "dgCustomerReference";
+            this.dgCustomerReference.ReadOnly = true;
+            // 
+            // dgInvoiceTaxValue
+            // 
+            this.dgInvoiceTaxValue.HeaderText = "Invoice Tax Value";
+            this.dgInvoiceTaxValue.Name = "dgInvoiceTaxValue";
+            this.dgInvoiceTaxValue.ReadOnly = true;
+            // 
+            // dgInvoiceGoodsValue
+            // 
+            this.dgInvoiceGoodsValue.HeaderText = "Invoice Goods Value";
+            this.dgInvoiceGoodsValue.Name = "dgInvoiceGoodsValue";
+            this.dgInvoiceGoodsValue.ReadOnly = true;
+            // 
+            // dgInvoiceNettValue
+            // 
+            this.dgInvoiceNettValue.HeaderText = "Invoice Nett Value";
+            this.dgInvoiceNettValue.Name = "dgInvoiceNettValue";
+            this.dgInvoiceNettValue.ReadOnly = true;
+            // 
+            // dgCurrency
+            // 
+            this.dgCurrency.HeaderText = "Currency";
+            this.dgCurrency.Name = "dgCurrency";
+            this.dgCurrency.ReadOnly = true;
+            // 
+            // dgAirwayBillNumber
+            // 
+            this.dgAirwayBillNumber.HeaderText = "Airway Bill Number";
+            this.dgAirwayBillNumber.Name = "dgAirwayBillNumber";
+            this.dgAirwayBillNumber.ReadOnly = true;
+            // 
+            // dgDiscount
+            // 
+            this.dgDiscount.HeaderText = "Discount";
+            this.dgDiscount.Name = "dgDiscount";
+            this.dgDiscount.ReadOnly = true;
+            // 
+            // dgSurcharge
+            // 
+            this.dgSurcharge.HeaderText = "Surcharge";
+            this.dgSurcharge.Name = "dgSurcharge";
+            this.dgSurcharge.ReadOnly = true;
+            // 
+            // dgStatus
+            // 
+            this.dgStatus.HeaderText = "Status";
+            this.dgStatus.Name = "dgStatus";
+            this.dgStatus.ReadOnly = true;
+            // 
+            // dgDeleted
+            // 
+            this.dgDeleted.HeaderText = "Deleted";
+            this.dgDeleted.Name = "dgDeleted";
+            this.dgDeleted.ReadOnly = true;
+            // 
+            // dgSupplier
+            // 
+            this.dgSupplier.HeaderText = "Supplier";
+            this.dgSupplier.Name = "dgSupplier";
+            this.dgSupplier.ReadOnly = true;
+            // 
+            // dgUser
+            // 
+            this.dgUser.HeaderText = "User";
+            this.dgUser.Name = "dgUser";
+            this.dgUser.ReadOnly = true;
+            // 
+            // dgCreateDate
+            // 
+            this.dgCreateDate.HeaderText = "CreateDate";
+            this.dgCreateDate.Name = "dgCreateDate";
+            this.dgCreateDate.ReadOnly = true;
+            // 
+            // dgSupplierID
+            // 
+            this.dgSupplierID.HeaderText = "SupplierID";
+            this.dgSupplierID.Name = "dgSupplierID";
+            this.dgSupplierID.ReadOnly = true;
+            this.dgSupplierID.Visible = false;
+            // 
+            // dgUserID
+            // 
+            this.dgUserID.HeaderText = "UserID";
+            this.dgUserID.Name = "dgUserID";
+            this.dgUserID.ReadOnly = true;
+            this.dgUserID.Visible = false;
             // 
             // ctx_dgRSInvoice
             // 
@@ -534,5 +707,26 @@
         private System.Windows.Forms.ToolStripMenuItem sendToLogoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem backFromLogoToolStripMenuItem;
         private System.ComponentModel.BackgroundWorker bgw_RSInvoiceGetter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgShipmentReference;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgBillingDocumentReference;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgShippingCondition;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgBillingDocumentDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgSupplyingECCompany;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgCustomerReference;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgInvoiceTaxValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgInvoiceGoodsValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgInvoiceNettValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgCurrency;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgAirwayBillNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgDiscount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgSurcharge;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgDeleted;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgSupplier;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgUser;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgCreateDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgSupplierID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgUserID;
     }
 }
