@@ -157,6 +157,7 @@
             this.qUOTATIONPRINTToolStripMenuItem.Name = "qUOTATIONPRINTToolStripMenuItem";
             this.qUOTATIONPRINTToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
             this.qUOTATIONPRINTToolStripMenuItem.Text = " QUOTATION PRINT";
+            this.qUOTATIONPRINTToolStripMenuItem.Click += new System.EventHandler(this.qUOTATIONPRINTToolStripMenuItem_Click);
             // 
             // dISCONTINUEDUSERToolStripMenuItem
             // 
@@ -345,6 +346,7 @@
             this.button5.Size = new System.Drawing.Size(52, 52);
             this.button5.TabIndex = 28;
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click_1);
             // 
             // button4
             // 
