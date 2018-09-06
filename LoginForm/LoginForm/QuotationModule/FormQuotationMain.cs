@@ -1,16 +1,13 @@
 ﻿using LoginForm.DataSet;
 using System;
 using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Linq;
 using System.Data;
-using System.Drawing;
 using System.Windows.Forms;
 using LoginForm.Services;
 using static LoginForm.Services.MyClasses.MyAuthority;
-using System.Data.SqlClient;
-using System.ComponentModel;
+using Microsoft.Office.Interop;
+using Excel=Microsoft.Office.Interop.Excel;
 
 namespace LoginForm.QuotationModule
 {
@@ -876,5 +873,41 @@ namespace LoginForm.QuotationModule
                 dgQuotation.CurrentRow.Cells["OrderStatus"].Style.BackColor = System.Drawing.Color.Red;
             }
         }
+
+        private void qUOTATIONPRINTToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgQuotation.CurrentRow != null)
+            {
+                string QuotationNo = dgQuotation.CurrentRow.Cells["QuotationNo"].Value.ToString();
+
+                frmPrintOptions newForm = new frmPrintOptions(QuotationNo);
+                newForm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("You did not chose any quotation.", "Warning!");
+            }
+        }
+
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            openFile();
+        }
+
+        static void openFile()
+        {
+            string mySheet = @"C:\Users\pomak\Desktop\6944.xlsx";
+            var excelapp = new Excel.Application();
+            excelapp.Visible = false;
+
+            Excel.Workbooks books = excelapp.Workbooks;
+
+            Excel.Workbook sheet = books.Open(mySheet);
+        }
+
+        //static void Main(string[] args)
+        //{
+        //    openFile();
+        //}
     }
 }

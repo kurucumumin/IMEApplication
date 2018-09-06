@@ -4172,10 +4172,16 @@ namespace LoginForm
             Microsoft.Office.Interop.Excel.Workbook xlWorkBook;
             Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
             object misValue = System.Reflection.Missing.Value;
+            string mySheet = @"C:\Users\pomak\Desktop\6944.xlsx";
             xlexcel = new Excel.Application();
+
+            Excel.Workbooks books = xlexcel.Workbooks;
+
+            Excel.Workbook sheet = books.Open(mySheet);
+
             xlexcel.Visible = true;
-            xlWorkBook = xlexcel.Workbooks.Add(misValue);
-            xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+            //sheet = xlexcel.Workbooks.Add(misValue);
+            xlWorkSheet = (Excel.Worksheet)sheet.Worksheets.get_Item(1);
             for (int j = 0; j <= dg.ColumnCount - 1; j++)
             {
                 xlWorkSheet.Cells[1, j + 1] = dg.Columns[j].HeaderText;
@@ -4269,24 +4275,41 @@ namespace LoginForm
             Microsoft.Office.Interop.Excel.Workbook xlWorkBook;
             Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
             object misValue = System.Reflection.Missing.Value;
+            string mySheet = @"C:\Users\pomak\Desktop\6944.xlsx";
             xlexcel = new Excel.Application();
+
+            Excel.Workbooks books = xlexcel.Workbooks;
+
+            Excel.Workbook sheet = books.Open(mySheet);
+
             xlexcel.Visible = true;
-            xlWorkBook = xlexcel.Workbooks.Add(misValue);
-            xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-            int columnnumber = 0;
-            for (int j = 0; j <= dg.ColumnCount - 1; j++)
-            {
-                xlWorkSheet.Cells[1, j + 1] = dg.Columns[j].HeaderText;
-                columnnumber++;
-            }
-            xlWorkSheet.Cells[1, columnnumber + 1] = start.ToString() + "-" + End.ToString();
-            for (int i = 0; i < dg.RowCount; i++)
-            {
-                for (int j = 0; j < dg.ColumnCount; j++)
-                {
-                    if (dg.Rows[i].Cells[j].Value != null) { xlWorkSheet.Cells[i + 2, j + 1] = dg.Rows[i].Cells[j].Value.ToString(); }
-                }
-            }
+            //sheet = xlexcel.Workbooks.Add(misValue);
+            xlWorkSheet = (Excel.Worksheet)sheet.Worksheets.get_Item(1);
+
+            //xlexcel = new Excel.Application();
+            //xlexcel.Visible = true;
+            //xlWorkBook = xlexcel.Workbooks.Add(misValue);
+            //xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+            //int columnnumber = 0;
+            //for (int j = 0; j <= dg.ColumnCount - 1; j++)
+            //{
+            //    xlWorkSheet.Cells[1, j + 1] = dg.Columns[j].HeaderText;
+            //    columnnumber++;
+            //}
+            //xlWorkSheet.Cells[1, columnnumber + 1] = start.ToString() + "-" + End.ToString();
+            //for (int i = 0; i < dg.RowCount; i++)
+            //{
+            //    for (int j = 0; j < dg.ColumnCount; j++)
+            //    {
+            //        if (dg.Rows[i].Cells[j].Value != null) { xlWorkSheet.Cells[i + 2, j + 1] = dg.Rows[i].Cells[j].Value.ToString(); }
+            //    }
+            //}
+
+            xlWorkSheet.Cells[6, 4] = dg.Rows[0].Cells["QuotationNo"].Value;
+            xlWorkSheet.Cells[6, 35] = dg.Rows[0].Cells["Date"].Value;
+            xlWorkSheet.Cells[7, 4] = dg.Rows[0].Cells["CustomerName"].Value;
+            xlWorkSheet.Cells[7, 35] = dg.Rows[0].Cells["Rep_Name"].Value;
+
             SaveFileDialog savefile = new SaveFileDialog();
             savefile.Filter = "Excel Files (*.xls)|*.xls|All files (*.xls)|*.xls";
             savefile.FileName = "Quotations";
@@ -4294,7 +4317,7 @@ namespace LoginForm
             {
                 string path = savefile.FileName;
                 //@"C:\Users\PC\Desktop\test2.xls"
-                xlWorkBook.SaveAs(@path, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                //xlWorkBook.SaveAs(@path, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
 
             }
 

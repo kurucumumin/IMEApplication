@@ -927,6 +927,12 @@
     <Compile Include="QuotationModule\frmEx-Quotation.Designer.cs">
       <DependentUpon>frmEx-Quotation.cs</DependentUpon>
     </Compile>
+    <Compile Include="QuotationModule\frmPrintOptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuotationModule\frmPrintOptions.Designer.cs">
+      <DependentUpon>frmPrintOptions.cs</DependentUpon>
+    </Compile>
     <Compile Include="QuotationModule\frmQuotationGridCustomize.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1264,6 +1270,9 @@
     <EmbeddedResource Include="QuotationModule\frmEx-Quotation.resx">
       <DependentUpon>frmEx-Quotation.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="QuotationModule\frmPrintOptions.resx">
+      <DependentUpon>frmPrintOptions.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="QuotationModule\frmQuotationGridCustomize.resx">
       <DependentUpon>frmQuotationGridCustomize.cs</DependentUpon>
     </EmbeddedResource>
@@ -1463,6 +1472,37 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Services\MyClasses\" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel1">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
