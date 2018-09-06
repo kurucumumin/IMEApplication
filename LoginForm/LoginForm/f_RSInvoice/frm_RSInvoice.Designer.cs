@@ -63,6 +63,7 @@
             this.txtStockCode = new System.Windows.Forms.TextBox();
             this.chcCustStockNumber = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.bgw_RSInvoiceGetter = new System.ComponentModel.BackgroundWorker();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -367,26 +368,26 @@
             this.sendToLogoToolStripMenuItem,
             this.backFromLogoToolStripMenuItem});
             this.ctx_dgRSInvoice.Name = "ctx_dgRSInvoice";
-            this.ctx_dgRSInvoice.Size = new System.Drawing.Size(211, 104);
+            this.ctx_dgRSInvoice.Size = new System.Drawing.Size(186, 76);
             // 
             // viewInvoicToolStripMenuItem
             // 
             this.viewInvoicToolStripMenuItem.Name = "viewInvoicToolStripMenuItem";
-            this.viewInvoicToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.viewInvoicToolStripMenuItem.Size = new System.Drawing.Size(185, 24);
             this.viewInvoicToolStripMenuItem.Text = "View Invoice";
             this.viewInvoicToolStripMenuItem.Click += new System.EventHandler(this.viewInvoicToolStripMenuItem_Click);
             // 
             // sendToLogoToolStripMenuItem
             // 
             this.sendToLogoToolStripMenuItem.Name = "sendToLogoToolStripMenuItem";
-            this.sendToLogoToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.sendToLogoToolStripMenuItem.Size = new System.Drawing.Size(185, 24);
             this.sendToLogoToolStripMenuItem.Text = "Send To Logo";
             this.sendToLogoToolStripMenuItem.Click += new System.EventHandler(this.sendToLogoToolStripMenuItem_Click);
             // 
             // backFromLogoToolStripMenuItem
             // 
             this.backFromLogoToolStripMenuItem.Name = "backFromLogoToolStripMenuItem";
-            this.backFromLogoToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.backFromLogoToolStripMenuItem.Size = new System.Drawing.Size(185, 24);
             this.backFromLogoToolStripMenuItem.Text = "Back From Logo";
             this.backFromLogoToolStripMenuItem.Click += new System.EventHandler(this.backFromLogoToolStripMenuItem_Click);
             // 
@@ -465,6 +466,11 @@
             this.groupBox3.TabIndex = 30;
             this.groupBox3.TabStop = false;
             // 
+            // bgw_RSInvoiceGetter
+            // 
+            this.bgw_RSInvoiceGetter.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgw_RSInvoiceGetter_DoWork);
+            this.bgw_RSInvoiceGetter.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgw_RSInvoiceGetter_RunWorkerCompleted);
+            // 
             // frm_RSInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -527,5 +533,6 @@
         private System.Windows.Forms.ToolStripMenuItem viewInvoicToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sendToLogoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem backFromLogoToolStripMenuItem;
+        private System.ComponentModel.BackgroundWorker bgw_RSInvoiceGetter;
     }
 }

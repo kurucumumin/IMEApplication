@@ -27,6 +27,7 @@ namespace LoginForm.DataSet
         public string ArticleDescription { get; set; }
         public Nullable<decimal> DeliveryNumber { get; set; }
         public Nullable<int> DeliveryItemNumber { get; set; }
+        public Nullable<int> PurchaseOrderID { get; set; }
         public decimal Tax { get; set; }
     }
 }

@@ -15,7 +15,9 @@ namespace LoginForm.f_RSInvoice
 {
     public partial class frm_RSInvoice : Form
     {
+        DataTable dt_RsInvoiceList = new DataTable();
         LogoLibrary logoLibrary = new LogoLibrary();
+
         public frm_RSInvoice()
         {
             InitializeComponent();
@@ -32,11 +34,8 @@ namespace LoginForm.f_RSInvoice
             dtpToDate.Value = DateTime.Now.Date;
             dtpFromDate.Value = DateTime.Now.AddMonths(-1).Date;
 
-            dgRSInvoice.DataSource = new Sp_RSInvoice().GetRSInvoiceBetweenDates(dtpFromDate.Value.Date,dtpToDate.Value.AddDays(1).Date);
-            SetGridColumnWidths();
-            SetDesignForGrid();
-            dgRSInvoice.ClearSelection();
-            dgRSInvoice.Focus();
+            bgw_RSInvoiceGetter.RunWorkerAsync();
+            
         }
 
         private void btnRefreshList_Click(object sender, EventArgs e)
@@ -187,6 +186,25 @@ namespace LoginForm.f_RSInvoice
                     row.DefaultCellStyle.BackColor = LogoColor;
                 }
             }
+        }
+
+        private void bgw_RSInvoiceGetter_DoWork(object sender, DoWorkEventArgs e)
+        {
+            dt_RsInvoiceList = new Sp_RSInvoice().GetRSInvoiceBetweenDates(dtpFromDate.Value.Date, dtpToDate.Value.AddDays(1).Date);
+        }
+
+        private void bgw_RSInvoiceGetter_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            dgRSInvoice.DataSource = dt_RsInvoiceList;
+            SetGridColumnWidths();
+            SetDesignForGrid();
+            dgRSInvoice.ClearSelection();
+            dgRSInvoice.Focus();
+        }
+
+        private void SetDataGridItemsRsInvoice(DataTable dataTable)
+        {
+            DataGridViewRow row = dgRSInvoice.Rows[dgRSInvoice.Rows.Add()];
         }
     }
 }
