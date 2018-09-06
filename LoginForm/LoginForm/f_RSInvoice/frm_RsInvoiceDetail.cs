@@ -33,42 +33,6 @@ namespace LoginForm.f_RSInvoice
             bgw_RsInvoiceMaster.RunWorkerAsync();
         }
 
-        private void SetGridColumnWidths()
-        {
-            dgRsInvoiceItems.Columns["PurchaseOrderID"].Visible = false;
-
-            dgRsInvoiceItems.Columns["PurchaseOrderNumber"].HeaderText = "Purchase Order Number";
-            dgRsInvoiceItems.Columns["PurchaseOrderNumber"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgRsInvoiceItems.Columns["PurchaseOrderItemNumber"].HeaderText = "Purchase Order Item Number";
-            dgRsInvoiceItems.Columns["PurchaseOrderItemNumber"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgRsInvoiceItems.Columns["ProductNumber"].HeaderText = "Product Number";
-            dgRsInvoiceItems.Columns["ProductNumber"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgRsInvoiceItems.Columns["BillingItemNumber"].HeaderText = "Billing Item Number";
-            dgRsInvoiceItems.Columns["BillingItemNumber"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgRsInvoiceItems.Columns["Quantity"].HeaderText = "Quantity";
-            dgRsInvoiceItems.Columns["Quantity"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgRsInvoiceItems.Columns["SalesUnit"].HeaderText = "Sales Unit";
-            dgRsInvoiceItems.Columns["SalesUnit"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgRsInvoiceItems.Columns["Discount"].HeaderText = "Discount";
-            dgRsInvoiceItems.Columns["Discount"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgRsInvoiceItems.Columns["GoodsValue"].HeaderText = "Goods Value";
-            dgRsInvoiceItems.Columns["GoodsValue"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgRsInvoiceItems.Columns["Amount"].HeaderText = "Amount";
-            dgRsInvoiceItems.Columns["Amount"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgRsInvoiceItems.Columns["CCCNNO"].HeaderText = "CCCNNO";
-            dgRsInvoiceItems.Columns["CCCNNO"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgRsInvoiceItems.Columns["CountryofOrigin"].HeaderText = "CofO";
-            dgRsInvoiceItems.Columns["CountryofOrigin"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgRsInvoiceItems.Columns["ArticleDescription"].HeaderText = "Article Description";
-            dgRsInvoiceItems.Columns["ArticleDescription"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgRsInvoiceItems.Columns["DeliveryNumber"].HeaderText = "Delivery Number";
-            dgRsInvoiceItems.Columns["DeliveryNumber"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgRsInvoiceItems.Columns["DeliveryItemNumber"].HeaderText = "Delivery Item Number";
-            dgRsInvoiceItems.Columns["DeliveryItemNumber"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgRsInvoiceItems.Columns["Tax"].HeaderText = "Tax";
-            dgRsInvoiceItems.Columns["Tax"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-        }
-
         private void bgw_RsInvoiceDetail_DoWork(object sender, DoWorkEventArgs e)
         {
             RsInvoiceDetails = new Sp_RSInvoice().GetRSInvoiceDetailWithInvoiceID(InvoiceID);
@@ -76,10 +40,35 @@ namespace LoginForm.f_RSInvoice
 
         private void bgw_RsInvoiceDetail_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            dgRsInvoiceItems.DataSource = RsInvoiceDetails;
-            SetGridColumnWidths();
-            dgRsInvoiceItems.ClearSelection();
-            dgRsInvoiceItems.Focus();
+            dgRsInvoiceItems.Rows.Clear();
+            SetDataGridItemsRsInvoiceDetail(RsInvoiceDetails);
+            dgRsInvoiceItems.Refresh();
+        }
+
+        private void SetDataGridItemsRsInvoiceDetail(DataTable dataTable)
+        {
+            foreach (DataRow dRow in dataTable.Rows)
+            {
+                DataGridViewRow gRow = dgRsInvoiceItems.Rows[dgRsInvoiceItems.Rows.Add()];
+
+                gRow.Cells[dgPurchaseOrderNumber.Index].Value = dRow["PurchaseOrderNumber"].ToString();
+                gRow.Cells[dgPurchaseOrderItemNumber.Index].Value = dRow["PurchaseOrderItemNumber"].ToString();
+                gRow.Cells[dgProductNumber.Index].Value = dRow["ProductNumber"].ToString();
+                gRow.Cells[dgBillingItemNumber.Index].Value = dRow["BillingItemNumber"].ToString();
+                gRow.Cells[dgQuantity.Index].Value = dRow["Quantity"].ToString();
+                gRow.Cells[dgSalesUnit.Index].Value = dRow["SalesUnit"].ToString();
+                gRow.Cells[dgDiscount.Index].Value = dRow["Discount"].ToString();
+                gRow.Cells[dgGoodsValue.Index].Value = dRow["GoodsValue"].ToString();
+                gRow.Cells[dgAmount.Index].Value = dRow["Amount"].ToString();
+                gRow.Cells[dgCCCNNO.Index].Value = dRow["CCCNNO"].ToString();
+                gRow.Cells[dgCountryofOrigin.Index].Value = dRow["CountryofOrigin"].ToString();
+                gRow.Cells[dgArticleDescription.Index].Value = dRow["ArticleDescription"].ToString();
+                gRow.Cells[dgDeliveryNumber.Index].Value = dRow["DeliveryNumber"].ToString();
+                gRow.Cells[dgDeliveryItemNumber.Index].Value = dRow["DeliveryItemNumber"].ToString();
+                gRow.Cells[dgPurchaseOrderID.Index].Value = dRow["PurchaseOrderID"].ToString();
+                gRow.Cells[dgTax.Index].Value = dRow["Tax"].ToString();
+
+            }
         }
 
         private void bgw_RsInvoiceMaster_DoWork(object sender, DoWorkEventArgs e)

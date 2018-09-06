@@ -220,6 +220,7 @@
             this.btnViewInvoice.TabIndex = 16;
             this.btnViewInvoice.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnViewInvoice.UseVisualStyleBackColor = true;
+            this.btnViewInvoice.Click += new System.EventHandler(this.btnViewInvoice_Click);
             // 
             // btnDeleteInvoice
             // 

@@ -85,7 +85,7 @@ namespace LoginForm.f_RSInvoice
 
         private void viewInvoicToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(Int32.TryParse(dgRSInvoice.SelectedRows[0].Cells["ID"].Value.ToString(), out int InvoiceID))
+            if(Int32.TryParse(dgRSInvoice.SelectedRows[0].Cells[dgID.Index].Value.ToString(), out int InvoiceID))
             {
                 frm_RsInvoiceDetail form = new frm_RsInvoiceDetail(InvoiceID);
                 form.Show();
@@ -194,6 +194,19 @@ namespace LoginForm.f_RSInvoice
                 dtpToDate.Value = dtpFromDate.Value;
             }
             dtpToDate.MinDate = dtpFromDate.Value;
+        }
+
+        private void btnViewInvoice_Click(object sender, EventArgs e)
+        {
+            if (dgRSInvoice.SelectedRows.Count != 0)
+            {
+                frm_RsInvoiceDetail form = new frm_RsInvoiceDetail(Int32.Parse(dgRSInvoice.SelectedRows[0].Cells[dgID.Index].Value.ToString()));
+                form.Show();
+            }
+            else
+            {
+                MessageBox.Show("You Should Choose A Quotation!");
+            }
         }
     }
 }

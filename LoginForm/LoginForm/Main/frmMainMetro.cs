@@ -404,5 +404,11 @@ namespace LoginForm.Main
             frm_RSInvoice form = new frm_RSInvoice();
             form.Show();
         }
+
+        private void altoSlidingLabel1_Click(object sender, EventArgs e)
+        {
+            frmDevSupplierMain form = new frmDevSupplierMain();
+            form.Show();
+        }
     }
 }

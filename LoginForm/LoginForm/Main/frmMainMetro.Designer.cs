@@ -1043,6 +1043,7 @@ namespace LoginForm.Main
             this.altoSlidingLabel1.Slide = true;
             this.altoSlidingLabel1.TabIndex = 1;
             this.altoSlidingLabel1.Text = "Lorem Ipsum Dolor Sit Amet";
+            this.altoSlidingLabel1.Click += new System.EventHandler(this.altoSlidingLabel1_Click);
             this.altoSlidingLabel1.DoubleClick += new System.EventHandler(this.altoSlidingLabel1_DoubleClick);
             // 
             // bunifuElipse1
