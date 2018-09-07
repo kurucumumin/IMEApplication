@@ -381,7 +381,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 172F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1028, 609);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1249, 609);
             this.tableLayoutPanel1.TabIndex = 52;
             // 
             // splitContainer1
@@ -403,7 +403,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel2);
             this.splitContainer1.Panel2MinSize = 130;
-            this.splitContainer1.Size = new System.Drawing.Size(1016, 245);
+            this.splitContainer1.Size = new System.Drawing.Size(1237, 245);
             this.splitContainer1.SplitterDistance = 110;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 57;
@@ -459,7 +459,7 @@
             this.dgQuotationAddedItems.Location = new System.Drawing.Point(0, 0);
             this.dgQuotationAddedItems.MultiSelect = false;
             this.dgQuotationAddedItems.Name = "dgQuotationAddedItems";
-            this.dgQuotationAddedItems.Size = new System.Drawing.Size(1012, 106);
+            this.dgQuotationAddedItems.Size = new System.Drawing.Size(1233, 106);
             this.dgQuotationAddedItems.TabIndex = 9;
             this.dgQuotationAddedItems.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgQuotationAddedItems_CellEndEdit);
             this.dgQuotationAddedItems.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgQuotationAddedItems_CellValidating);
@@ -884,7 +884,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1012, 126);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1233, 126);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // dgQuotationDeleted
@@ -931,7 +931,7 @@
             this.dgQuotationDeleted.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgQuotationDeleted.Location = new System.Drawing.Point(3, 52);
             this.dgQuotationDeleted.Name = "dgQuotationDeleted";
-            this.dgQuotationDeleted.Size = new System.Drawing.Size(1006, 71);
+            this.dgQuotationDeleted.Size = new System.Drawing.Size(1227, 71);
             this.dgQuotationDeleted.TabIndex = 10;
             this.dgQuotationDeleted.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgQuotationDeleted_CellValidating);
             this.dgQuotationDeleted.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView2_MouseClick);
@@ -1194,7 +1194,7 @@
             this.panel2.Location = new System.Drawing.Point(2, 2);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1008, 45);
+            this.panel2.Size = new System.Drawing.Size(1229, 45);
             this.panel2.TabIndex = 0;
             // 
             // lblPara
@@ -1342,7 +1342,7 @@
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1024, 176);
+            this.tabControl1.Size = new System.Drawing.Size(1245, 176);
             this.tabControl1.TabIndex = 51;
             // 
             // tabCustomerDetails
@@ -1756,7 +1756,7 @@
             this.tabItemDetails.Margin = new System.Windows.Forms.Padding(2);
             this.tabItemDetails.Name = "tabItemDetails";
             this.tabItemDetails.Padding = new System.Windows.Forms.Padding(2);
-            this.tabItemDetails.Size = new System.Drawing.Size(1016, 150);
+            this.tabItemDetails.Size = new System.Drawing.Size(1237, 150);
             this.tabItemDetails.TabIndex = 1;
             this.tabItemDetails.Text = "Item Details";
             // 
@@ -2826,14 +2826,14 @@
             this.panel1.Location = new System.Drawing.Point(2, 439);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1024, 168);
+            this.panel1.Size = new System.Drawing.Size(1245, 168);
             this.panel1.TabIndex = 58;
             // 
             // label69
             // 
             this.label69.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label69.AutoSize = true;
-            this.label69.Location = new System.Drawing.Point(968, 145);
+            this.label69.Location = new System.Drawing.Point(1189, 145);
             this.label69.Name = "label69";
             this.label69.Size = new System.Drawing.Size(33, 13);
             this.label69.TabIndex = 59;
@@ -2843,7 +2843,7 @@
             // 
             this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnSave.Image = global::LoginForm.Properties.Resources.if_floppy_285657;
-            this.btnSave.Location = new System.Drawing.Point(846, 93);
+            this.btnSave.Location = new System.Drawing.Point(1067, 93);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(52, 52);
             this.btnSave.TabIndex = 54;
@@ -2854,7 +2854,7 @@
             // 
             this.label68.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label68.AutoSize = true;
-            this.label68.Location = new System.Drawing.Point(896, 145);
+            this.label68.Location = new System.Drawing.Point(1117, 145);
             this.label68.Name = "label68";
             this.label68.Size = new System.Drawing.Size(64, 13);
             this.label68.TabIndex = 58;
@@ -2891,7 +2891,7 @@
             this.groupBox11.ForeColor = System.Drawing.Color.Black;
             this.groupBox11.Location = new System.Drawing.Point(669, 9);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(330, 154);
+            this.groupBox11.Size = new System.Drawing.Size(269, 154);
             this.groupBox11.TabIndex = 49;
             this.groupBox11.TabStop = false;
             // 
@@ -3132,7 +3132,7 @@
             // 
             this.btnCreateRev.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnCreateRev.Image = global::LoginForm.Properties.Resources.icons8_Plus_32;
-            this.btnCreateRev.Location = new System.Drawing.Point(904, 93);
+            this.btnCreateRev.Location = new System.Drawing.Point(1125, 93);
             this.btnCreateRev.Name = "btnCreateRev";
             this.btnCreateRev.Size = new System.Drawing.Size(52, 52);
             this.btnCreateRev.TabIndex = 56;
@@ -3174,7 +3174,7 @@
             // 
             this.label67.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label67.AutoSize = true;
-            this.label67.Location = new System.Drawing.Point(851, 145);
+            this.label67.Location = new System.Drawing.Point(1072, 145);
             this.label67.Name = "label67";
             this.label67.Size = new System.Drawing.Size(32, 13);
             this.label67.TabIndex = 57;
@@ -3271,7 +3271,7 @@
             // 
             this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnClose.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
-            this.btnClose.Location = new System.Drawing.Point(962, 93);
+            this.btnClose.Location = new System.Drawing.Point(1183, 93);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(52, 52);
             this.btnClose.TabIndex = 55;
@@ -3302,7 +3302,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
-            this.ClientSize = new System.Drawing.Size(1028, 609);
+            this.ClientSize = new System.Drawing.Size(1249, 609);
             this.Controls.Add(this.tableLayoutPanel1);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(1026, 582);
