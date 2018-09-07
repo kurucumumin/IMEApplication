@@ -4147,11 +4147,7 @@ namespace LoginForm
                 //
             }
 
-
-
         }
-
-
 
     }
 
@@ -4172,16 +4168,10 @@ namespace LoginForm
             Microsoft.Office.Interop.Excel.Workbook xlWorkBook;
             Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
             object misValue = System.Reflection.Missing.Value;
-            string mySheet = @"C:\Users\pomak\Desktop\6944.xlsx";
             xlexcel = new Excel.Application();
-
-            Excel.Workbooks books = xlexcel.Workbooks;
-
-            Excel.Workbook sheet = books.Open(mySheet);
-
             xlexcel.Visible = true;
-            //sheet = xlexcel.Workbooks.Add(misValue);
-            xlWorkSheet = (Excel.Worksheet)sheet.Worksheets.get_Item(1);
+            xlWorkBook = xlexcel.Workbooks.Add(misValue);
+            xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
             for (int j = 0; j <= dg.ColumnCount - 1; j++)
             {
                 xlWorkSheet.Cells[1, j + 1] = dg.Columns[j].HeaderText;
@@ -4275,6 +4265,49 @@ namespace LoginForm
             Microsoft.Office.Interop.Excel.Workbook xlWorkBook;
             Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
             object misValue = System.Reflection.Missing.Value;
+
+            xlexcel = new Excel.Application();
+            xlexcel.Visible = true;
+            xlWorkBook = xlexcel.Workbooks.Add(misValue);
+            xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+            int columnnumber = 0;
+            for (int j = 0; j <= dg.ColumnCount - 1; j++)
+            {
+                xlWorkSheet.Cells[1, j + 1] = dg.Columns[j].HeaderText;
+                columnnumber++;
+            }
+            xlWorkSheet.Cells[1, columnnumber + 1] = start.ToString() + "-" + End.ToString();
+            for (int i = 0; i < dg.RowCount; i++)
+            {
+                for (int j = 0; j < dg.ColumnCount; j++)
+                {
+                    if (dg.Rows[i].Cells[j].Value != null) { xlWorkSheet.Cells[i + 2, j + 1] = dg.Rows[i].Cells[j].Value.ToString(); }
+                }
+            }
+
+            SaveFileDialog savefile = new SaveFileDialog();
+            savefile.Filter = "Excel Files (*.xls)|*.xls|All files (*.xls)|*.xls";
+            savefile.FileName = "Quotations";
+            if (savefile.ShowDialog() == DialogResult.OK)
+            {
+                string path = savefile.FileName;
+                //@"C:\Users\PC\Desktop\test2.xls"
+                xlWorkBook.SaveAs(@path, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+
+            }
+
+            xlWorkBook.Close(true, misValue, misValue);
+            xlexcel.Quit();
+            #endregion
+
+        }
+
+        public static void QuotationMainPrintExport(Quotation dg)
+        {
+            #region ExcelExport
+            Microsoft.Office.Interop.Excel.Application xlexcel;
+            Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
+            object misValue = System.Reflection.Missing.Value;
             string mySheet = @"C:\Users\pomak\Desktop\6944.xlsx";
             xlexcel = new Excel.Application();
 
@@ -4286,29 +4319,24 @@ namespace LoginForm
             //sheet = xlexcel.Workbooks.Add(misValue);
             xlWorkSheet = (Excel.Worksheet)sheet.Worksheets.get_Item(1);
 
-            //xlexcel = new Excel.Application();
-            //xlexcel.Visible = true;
-            //xlWorkBook = xlexcel.Workbooks.Add(misValue);
-            //xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-            //int columnnumber = 0;
-            //for (int j = 0; j <= dg.ColumnCount - 1; j++)
-            //{
-            //    xlWorkSheet.Cells[1, j + 1] = dg.Columns[j].HeaderText;
-            //    columnnumber++;
-            //}
-            //xlWorkSheet.Cells[1, columnnumber + 1] = start.ToString() + "-" + End.ToString();
-            //for (int i = 0; i < dg.RowCount; i++)
-            //{
-            //    for (int j = 0; j < dg.ColumnCount; j++)
-            //    {
-            //        if (dg.Rows[i].Cells[j].Value != null) { xlWorkSheet.Cells[i + 2, j + 1] = dg.Rows[i].Cells[j].Value.ToString(); }
-            //    }
-            //}
 
-            xlWorkSheet.Cells[6, 4] = dg.Rows[0].Cells["QuotationNo"].Value;
-            xlWorkSheet.Cells[6, 35] = dg.Rows[0].Cells["Date"].Value;
-            xlWorkSheet.Cells[7, 4] = dg.Rows[0].Cells["CustomerName"].Value;
-            xlWorkSheet.Cells[7, 35] = dg.Rows[0].Cells["Rep_Name"].Value;
+
+            xlWorkSheet.Cells[6, 4] = dg.QuotationNo;
+            xlWorkSheet.Cells[6, 23] = dg.Customer.CustomerWorker.cw_email;
+            xlWorkSheet.Cells[6, 35] = dg.StartDate;
+
+            xlWorkSheet.Cells[7, 4] = dg.Customer.c_name;
+            xlWorkSheet.Cells[7, 23] = dg.Customer.fax;
+            xlWorkSheet.Cells[7, 35] = dg.Worker.NameLastName;
+
+            xlWorkSheet.Cells[10, 4] = dg.Customer.CustomerWorker.cw_name;
+            xlWorkSheet.Cells[10, 23] = dg.RFQNo;
+            xlWorkSheet.Cells[10, 35] = dg.Worker.Email;
+
+            xlWorkSheet.Cells[12, 4] = dg.Customer.CustomerWorker.mobilephone;
+            xlWorkSheet.Cells[12, 23] = dg.ValidationDay;
+            xlWorkSheet.Cells[12, 35] = dg.Worker.mobileNumber;
+
 
             SaveFileDialog savefile = new SaveFileDialog();
             savefile.Filter = "Excel Files (*.xls)|*.xls|All files (*.xls)|*.xls";
@@ -4317,13 +4345,12 @@ namespace LoginForm
             {
                 string path = savefile.FileName;
                 //@"C:\Users\PC\Desktop\test2.xls"
-                //xlWorkBook.SaveAs(@path, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                sheet.SaveAs(@path, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
 
             }
 
-
-            //xlWorkBook.Close(true, misValue, misValue);
-            //xlexcel.Quit();
+            sheet.Close(true, misValue, misValue);
+            xlexcel.Quit();
 
             #endregion
 

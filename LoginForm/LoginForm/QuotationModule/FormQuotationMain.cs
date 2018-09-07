@@ -876,38 +876,33 @@ namespace LoginForm.QuotationModule
 
         private void qUOTATIONPRINTToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
             if (dgQuotation.CurrentRow != null)
             {
                 string QuotationNo = dgQuotation.CurrentRow.Cells["QuotationNo"].Value.ToString();
+                Quotation quo;
 
-                frmPrintOptions newForm = new frmPrintOptions(QuotationNo);
-                newForm.ShowDialog();
+                IMEEntities IME = new IMEEntities();
+                try
+                {
+                    quo = IME.Quotations.Where(q => q.QuotationNo == QuotationNo).FirstOrDefault();
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+                if (quo != null)
+                {
+                    QuotationExcelExport.QuotationMainPrintExport(quo);
+                }
             }
             else
             {
                 MessageBox.Show("You did not chose any quotation.", "Warning!");
             }
+
+
         }
-
-        private void button5_Click_1(object sender, EventArgs e)
-        {
-            openFile();
-        }
-
-        static void openFile()
-        {
-            string mySheet = @"C:\Users\pomak\Desktop\6944.xlsx";
-            var excelapp = new Excel.Application();
-            excelapp.Visible = false;
-
-            Excel.Workbooks books = excelapp.Workbooks;
-
-            Excel.Workbook sheet = books.Open(mySheet);
-        }
-
-        //static void Main(string[] args)
-        //{
-        //    openFile();
-        //}
     }
 }
