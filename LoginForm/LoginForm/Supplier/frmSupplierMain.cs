@@ -201,6 +201,30 @@ namespace LoginForm
 
                     btnNewAddress();
                     btnNewContact();
+
+
+                    #region BankAccount
+
+                    txtBankAccountTitle.Text = String.Empty;
+                    txtBankAccountTitle.Enabled = true;
+                    txtBankBranchCode.Text = String.Empty;
+                    txtBankBranchCode.Enabled = true;
+                    txtBankAccountNumber.Text = String.Empty;
+                    txtBankAccountNumber.Enabled = true;
+                    txtBankIban.Text = String.Empty;
+                    txtBankIban.Enabled = true;
+                    lbBankList.Items.Clear();
+
+                    btnBankAdd.Text = "Save";
+                    btnBankAdd.Enabled = true;
+                    btnBankUpdate.Text = "Cancel";
+                    btnBankUpdate.Enabled = true;
+
+                    btnBankDelete.Visible = false;
+
+                    #endregion
+
+
                     break;
                 case "Save":
                     if (SupplierAddMode == SupplierModeAdd)
@@ -626,6 +650,28 @@ namespace LoginForm
                     btnModify.Text = "Modify";
                     SupplierAddMode = String.Empty;
 
+                    #region BankAccount
+
+                    txtBankAccountTitle.Text = String.Empty;
+                    txtBankAccountTitle.Enabled = false;
+                    txtBankBranchCode.Text = String.Empty;
+                    txtBankBranchCode.Enabled = false;
+                    txtBankAccountNumber.Text = String.Empty;
+                    txtBankAccountNumber.Enabled = false;
+                    txtBankIban.Text = String.Empty;
+                    txtBankIban.Enabled = false;
+                    lbBankList.Items.Clear();
+
+                    btnBankAdd.Text = "Add";
+                    btnBankAdd.Enabled = false;
+                    btnBankUpdate.Text = "Update";
+                    btnBankUpdate.Enabled = false;
+
+                    btnBankDelete.Visible = true;
+                    btnBankDelete.Enabled = false;
+
+                    #endregion
+
 
                     break;
                 default:
@@ -689,7 +735,6 @@ namespace LoginForm
                     cmbSubCategory.SelectedIndex = 0;
                 }
             }
-
 
             if (s.Worker != null)
             {
