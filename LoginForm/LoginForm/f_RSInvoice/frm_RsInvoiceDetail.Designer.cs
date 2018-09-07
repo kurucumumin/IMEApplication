@@ -64,6 +64,22 @@
             this.label13 = new System.Windows.Forms.Label();
             this.bgw_RsInvoiceMaster = new System.ComponentModel.BackgroundWorker();
             this.bgw_RsInvoiceDetail = new System.ComponentModel.BackgroundWorker();
+            this.dgPurchaseOrderNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgPurchaseOrderItemNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgProductNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgBillingItemNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgSalesUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgDiscount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgGoodsValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCCCNNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCountryofOrigin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgArticleDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgDeliveryNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgDeliveryItemNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgPurchaseOrderID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgTax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgRsInvoiceItems)).BeginInit();
             this.panel1.SuspendLayout();
@@ -94,6 +110,23 @@
             this.dgRsInvoiceItems.AllowUserToOrderColumns = true;
             this.dgRsInvoiceItems.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgRsInvoiceItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgRsInvoiceItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgPurchaseOrderNumber,
+            this.dgPurchaseOrderItemNumber,
+            this.dgProductNumber,
+            this.dgBillingItemNumber,
+            this.dgQuantity,
+            this.dgSalesUnit,
+            this.dgDiscount,
+            this.dgGoodsValue,
+            this.dgAmount,
+            this.dgCCCNNO,
+            this.dgCountryofOrigin,
+            this.dgArticleDescription,
+            this.dgDeliveryNumber,
+            this.dgDeliveryItemNumber,
+            this.dgPurchaseOrderID,
+            this.dgTax});
             this.dgRsInvoiceItems.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgRsInvoiceItems.Location = new System.Drawing.Point(8, 208);
             this.dgRsInvoiceItems.Margin = new System.Windows.Forms.Padding(8);
@@ -304,6 +337,7 @@
             // 
             // txtInvoiceNettValue
             // 
+            this.txtInvoiceNettValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtInvoiceNettValue.Location = new System.Drawing.Point(707, 141);
             this.txtInvoiceNettValue.Name = "txtInvoiceNettValue";
             this.txtInvoiceNettValue.ReadOnly = true;
@@ -312,6 +346,7 @@
             // 
             // txtInvoiceGoodsValue
             // 
+            this.txtInvoiceGoodsValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtInvoiceGoodsValue.Location = new System.Drawing.Point(707, 100);
             this.txtInvoiceGoodsValue.Name = "txtInvoiceGoodsValue";
             this.txtInvoiceGoodsValue.ReadOnly = true;
@@ -320,6 +355,7 @@
             // 
             // txtSurcharge
             // 
+            this.txtSurcharge.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSurcharge.Location = new System.Drawing.Point(1063, 58);
             this.txtSurcharge.Name = "txtSurcharge";
             this.txtSurcharge.ReadOnly = true;
@@ -328,6 +364,7 @@
             // 
             // txtDiscount
             // 
+            this.txtDiscount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDiscount.Location = new System.Drawing.Point(1063, 17);
             this.txtDiscount.Name = "txtDiscount";
             this.txtDiscount.ReadOnly = true;
@@ -336,6 +373,7 @@
             // 
             // txtInvoiceTaxValue
             // 
+            this.txtInvoiceTaxValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtInvoiceTaxValue.Location = new System.Drawing.Point(707, 58);
             this.txtInvoiceTaxValue.Name = "txtInvoiceTaxValue";
             this.txtInvoiceTaxValue.ReadOnly = true;
@@ -344,6 +382,7 @@
             // 
             // txtCurrency
             // 
+            this.txtCurrency.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCurrency.Location = new System.Drawing.Point(707, 17);
             this.txtCurrency.Name = "txtCurrency";
             this.txtCurrency.ReadOnly = true;
@@ -352,6 +391,7 @@
             // 
             // label7
             // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(564, 61);
             this.label7.Name = "label7";
@@ -361,6 +401,7 @@
             // 
             // label8
             // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(564, 103);
             this.label8.Name = "label8";
@@ -370,6 +411,7 @@
             // 
             // label10
             // 
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(564, 144);
             this.label10.Name = "label10";
@@ -379,6 +421,7 @@
             // 
             // label11
             // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(564, 20);
             this.label11.Name = "label11";
@@ -388,6 +431,7 @@
             // 
             // label12
             // 
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(968, 20);
             this.label12.Name = "label12";
@@ -397,6 +441,7 @@
             // 
             // label13
             // 
+            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(968, 61);
             this.label13.Name = "label13";
@@ -413,6 +458,118 @@
             // 
             this.bgw_RsInvoiceDetail.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgw_RsInvoiceDetail_DoWork);
             this.bgw_RsInvoiceDetail.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgw_RsInvoiceDetail_RunWorkerCompleted);
+            // 
+            // dgPurchaseOrderNumber
+            // 
+            this.dgPurchaseOrderNumber.HeaderText = "Purchase Order Number";
+            this.dgPurchaseOrderNumber.Name = "dgPurchaseOrderNumber";
+            this.dgPurchaseOrderNumber.ReadOnly = true;
+            this.dgPurchaseOrderNumber.Width = 138;
+            // 
+            // dgPurchaseOrderItemNumber
+            // 
+            this.dgPurchaseOrderItemNumber.HeaderText = "Purchase Order Item Number";
+            this.dgPurchaseOrderItemNumber.Name = "dgPurchaseOrderItemNumber";
+            this.dgPurchaseOrderItemNumber.ReadOnly = true;
+            this.dgPurchaseOrderItemNumber.Width = 81;
+            // 
+            // dgProductNumber
+            // 
+            this.dgProductNumber.HeaderText = "Product Number";
+            this.dgProductNumber.Name = "dgProductNumber";
+            this.dgProductNumber.ReadOnly = true;
+            this.dgProductNumber.Width = 77;
+            // 
+            // dgBillingItemNumber
+            // 
+            this.dgBillingItemNumber.HeaderText = "Billing Item Number";
+            this.dgBillingItemNumber.Name = "dgBillingItemNumber";
+            this.dgBillingItemNumber.ReadOnly = true;
+            this.dgBillingItemNumber.Width = 76;
+            // 
+            // dgQuantity
+            // 
+            this.dgQuantity.HeaderText = "Quantity";
+            this.dgQuantity.Name = "dgQuantity";
+            this.dgQuantity.ReadOnly = true;
+            this.dgQuantity.Width = 61;
+            // 
+            // dgSalesUnit
+            // 
+            this.dgSalesUnit.HeaderText = "Sales Unit";
+            this.dgSalesUnit.Name = "dgSalesUnit";
+            this.dgSalesUnit.ReadOnly = true;
+            this.dgSalesUnit.Width = 68;
+            // 
+            // dgDiscount
+            // 
+            this.dgDiscount.HeaderText = "Discount";
+            this.dgDiscount.Name = "dgDiscount";
+            this.dgDiscount.ReadOnly = true;
+            this.dgDiscount.Width = 68;
+            // 
+            // dgGoodsValue
+            // 
+            this.dgGoodsValue.HeaderText = "Goods Value";
+            this.dgGoodsValue.Name = "dgGoodsValue";
+            this.dgGoodsValue.ReadOnly = true;
+            this.dgGoodsValue.Width = 86;
+            // 
+            // dgAmount
+            // 
+            this.dgAmount.HeaderText = "Amount";
+            this.dgAmount.Name = "dgAmount";
+            this.dgAmount.ReadOnly = true;
+            this.dgAmount.Width = 57;
+            // 
+            // dgCCCNNO
+            // 
+            this.dgCCCNNO.HeaderText = "CCCNNO";
+            this.dgCCCNNO.Name = "dgCCCNNO";
+            this.dgCCCNNO.ReadOnly = true;
+            this.dgCCCNNO.Width = 68;
+            // 
+            // dgCountryofOrigin
+            // 
+            this.dgCountryofOrigin.HeaderText = "Country of Origin";
+            this.dgCountryofOrigin.Name = "dgCountryofOrigin";
+            this.dgCountryofOrigin.ReadOnly = true;
+            this.dgCountryofOrigin.Width = 68;
+            // 
+            // dgArticleDescription
+            // 
+            this.dgArticleDescription.HeaderText = "Article Description";
+            this.dgArticleDescription.Name = "dgArticleDescription";
+            this.dgArticleDescription.ReadOnly = true;
+            this.dgArticleDescription.Width = 124;
+            // 
+            // dgDeliveryNumber
+            // 
+            this.dgDeliveryNumber.HeaderText = "Delivery Number";
+            this.dgDeliveryNumber.Name = "dgDeliveryNumber";
+            this.dgDeliveryNumber.ReadOnly = true;
+            this.dgDeliveryNumber.Width = 85;
+            // 
+            // dgDeliveryItemNumber
+            // 
+            this.dgDeliveryItemNumber.HeaderText = "Delivery Item Number";
+            this.dgDeliveryItemNumber.Name = "dgDeliveryItemNumber";
+            this.dgDeliveryItemNumber.ReadOnly = true;
+            this.dgDeliveryItemNumber.Width = 86;
+            // 
+            // dgPurchaseOrderID
+            // 
+            this.dgPurchaseOrderID.HeaderText = "Purchase Order ID";
+            this.dgPurchaseOrderID.Name = "dgPurchaseOrderID";
+            this.dgPurchaseOrderID.ReadOnly = true;
+            this.dgPurchaseOrderID.Visible = false;
+            // 
+            // dgTax
+            // 
+            this.dgTax.HeaderText = "Tax";
+            this.dgTax.Name = "dgTax";
+            this.dgTax.ReadOnly = true;
+            this.dgTax.Width = 59;
             // 
             // frm_RsInvoiceDetail
             // 
@@ -472,5 +629,21 @@
         private System.Windows.Forms.Label label13;
         private System.ComponentModel.BackgroundWorker bgw_RsInvoiceMaster;
         private System.ComponentModel.BackgroundWorker bgw_RsInvoiceDetail;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgPurchaseOrderNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgPurchaseOrderItemNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgProductNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgBillingItemNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgSalesUnit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgDiscount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgGoodsValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgAmount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgCCCNNO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgCountryofOrigin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgArticleDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgDeliveryNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgDeliveryItemNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgPurchaseOrderID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgTax;
     }
 }

@@ -1016,6 +1016,7 @@
     <Compile Include="Services\classSupplier.cs" />
     <Compile Include="Services\SP\Sp_Customer.cs" />
     <Compile Include="Services\SP\Sp_RSInvoice.cs" />
+    <Compile Include="Services\SP\Sp_Worker.cs" />
     <Compile Include="Services\ToolTipService.cs" />
     <Compile Include="MyClasses\TransacsionArgumanlari_.cs" />
     <Compile Include="Services\txtCreate.cs" />
@@ -1038,6 +1039,12 @@
     </Compile>
     <Compile Include="StockManagement\frmStockReserve.Designer.cs">
       <DependentUpon>frmStockReserve.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supplier\frmDevSupplierMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supplier\frmDevSupplierMain.Designer.cs">
+      <DependentUpon>frmDevSupplierMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Supplier\frmSupplierMain.cs">
       <SubType>Form</SubType>
@@ -1301,6 +1308,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StockManagement\frmStockReserve.resx">
       <DependentUpon>frmStockReserve.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supplier\frmDevSupplierMain.resx">
+      <DependentUpon>frmDevSupplierMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Supplier\frmSupplierMain.resx">
       <DependentUpon>frmSupplierMain.cs</DependentUpon>
