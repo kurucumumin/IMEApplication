@@ -132,7 +132,7 @@ namespace LoginForm
             this.btnBankAdd = new System.Windows.Forms.Button();
             this.lbBankList = new System.Windows.Forms.ListBox();
             this.button4 = new System.Windows.Forms.Button();
-            this.txtAccountTitle = new System.Windows.Forms.TextBox();
+            this.txtBankAccountTitle = new System.Windows.Forms.TextBox();
             this.txtBankIban = new System.Windows.Forms.TextBox();
             this.txtBankAccountNumber = new System.Windows.Forms.TextBox();
             this.txtBankBranchCode = new System.Windows.Forms.TextBox();
@@ -1322,7 +1322,7 @@ namespace LoginForm
             this.tabBank.Controls.Add(this.btnBankAdd);
             this.tabBank.Controls.Add(this.lbBankList);
             this.tabBank.Controls.Add(this.button4);
-            this.tabBank.Controls.Add(this.txtAccountTitle);
+            this.tabBank.Controls.Add(this.txtBankAccountTitle);
             this.tabBank.Controls.Add(this.txtBankIban);
             this.tabBank.Controls.Add(this.txtBankAccountNumber);
             this.tabBank.Controls.Add(this.txtBankBranchCode);
@@ -1396,14 +1396,14 @@ namespace LoginForm
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // txtAccountTitle
+            // txtBankAccountTitle
             // 
-            this.txtAccountTitle.Enabled = false;
-            this.txtAccountTitle.Location = new System.Drawing.Point(156, 12);
-            this.txtAccountTitle.Margin = new System.Windows.Forms.Padding(4);
-            this.txtAccountTitle.Name = "txtAccountTitle";
-            this.txtAccountTitle.Size = new System.Drawing.Size(247, 26);
-            this.txtAccountTitle.TabIndex = 50;
+            this.txtBankAccountTitle.Enabled = false;
+            this.txtBankAccountTitle.Location = new System.Drawing.Point(156, 12);
+            this.txtBankAccountTitle.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBankAccountTitle.Name = "txtBankAccountTitle";
+            this.txtBankAccountTitle.Size = new System.Drawing.Size(247, 26);
+            this.txtBankAccountTitle.TabIndex = 50;
             // 
             // txtBankIban
             // 
@@ -1963,7 +1963,7 @@ namespace LoginForm
         private System.Windows.Forms.Button btnContactDone;
         private System.Windows.Forms.ComboBox cmbSubCategory;
         private System.Windows.Forms.Label label42;
-        private System.Windows.Forms.TextBox txtAccountTitle;
+        private System.Windows.Forms.TextBox txtBankAccountTitle;
         private System.Windows.Forms.TextBox txtPoBox;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button btnAddressDelete;
