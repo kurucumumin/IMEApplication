@@ -113,6 +113,7 @@ namespace LoginForm.QuotationModule
         public static decimal GetLandingCost(string ArticleNo, bool Product, bool Weight, bool CustomsDuties, int quantity)
         {
             #region Calculating LandingCost
+
             IMEEntities IME = new IMEEntities();
             var _slidingPrice = IME.prc_GetSlidingPriceWithArticleNumber(ArticleNo).FirstOrDefault();
             var _extendedRange = IME.prc_GetExtendedRangeWithArticleNumber(ArticleNo).FirstOrDefault();

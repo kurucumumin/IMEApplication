@@ -29,7 +29,7 @@ namespace LoginForm
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabgenel = new System.Windows.Forms.TabControl();
             this.tabInfo = new System.Windows.Forms.TabPage();
             this.btnNextCompany = new System.Windows.Forms.Button();
@@ -1358,8 +1358,9 @@ namespace LoginForm
             this.btnBankUpdate.Name = "btnBankUpdate";
             this.btnBankUpdate.Size = new System.Drawing.Size(75, 32);
             this.btnBankUpdate.TabIndex = 60;
-            this.btnBankUpdate.Text = "Cancel";
+            this.btnBankUpdate.Text = "Update";
             this.btnBankUpdate.UseVisualStyleBackColor = true;
+            this.btnBankUpdate.Click += new System.EventHandler(this.btnBankUpdate_Click);
             // 
             // btnBankAdd
             // 
@@ -1370,8 +1371,9 @@ namespace LoginForm
             this.btnBankAdd.Name = "btnBankAdd";
             this.btnBankAdd.Size = new System.Drawing.Size(75, 32);
             this.btnBankAdd.TabIndex = 59;
-            this.btnBankAdd.Text = "Save";
+            this.btnBankAdd.Text = "Add";
             this.btnBankAdd.UseVisualStyleBackColor = true;
+            this.btnBankAdd.Click += new System.EventHandler(this.btnBankAdd_Click);
             // 
             // lbBankList
             // 
@@ -1511,14 +1513,14 @@ namespace LoginForm
             this.supplierAddressesDataGridViewTextBoxColumn,
             this.supplierWorkersDataGridViewTextBoxColumn});
             this.dgSupplier.DataSource = this.supplierBindingSource;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgSupplier.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgSupplier.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgSupplier.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgSupplier.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dgSupplier.ImeMode = System.Windows.Forms.ImeMode.NoControl;

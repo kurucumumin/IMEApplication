@@ -30,10 +30,12 @@ namespace LoginForm
 
         BindingList<SupplierAddress> SavedAddresses = new BindingList<SupplierAddress>();
         BindingList<SupplierWorker> SavedContacts = new BindingList<SupplierWorker>();
+        BindingList<SupplierBankAccount> SavedBanks = new BindingList<SupplierBankAccount>();
 
         string SupplierAddMode = String.Empty;
         string AddressMode = String.Empty;
         string ContactMode = String.Empty;
+        string BankMode = String.Empty;
 
         private List<Supplier> gridSupplierList;
 
@@ -213,6 +215,7 @@ namespace LoginForm
                     txtBankAccountNumber.Enabled = true;
                     txtBankIban.Text = String.Empty;
                     txtBankIban.Enabled = true;
+                    lbBankList.Enabled = false;
                     lbBankList.Items.Clear();
 
                     btnBankAdd.Text = "Save";
@@ -221,6 +224,8 @@ namespace LoginForm
                     btnBankUpdate.Enabled = true;
 
                     btnBankDelete.Visible = false;
+
+                    BankMode = "Add";
 
                     #endregion
 
@@ -615,6 +620,34 @@ namespace LoginForm
 
                         btnAdd.Text = "Save";
                         btnModify.Text = "Cancel";
+
+                        #region BankAccount
+                        
+                        txtBankAccountTitle.Enabled = false;
+                        txtBankBranchCode.Enabled = false;
+                        txtBankAccountNumber.Enabled = false;
+                        txtBankIban.Enabled = false;
+                        lbBankList.Enabled = true;
+
+                        btnBankAdd.Text = "Add";
+                        btnBankAdd.Enabled = true;
+                        btnBankUpdate.Text = "Update";
+                        if (lbBankList.Items.Count > 0)
+                        {
+                            btnBankUpdate.Enabled = true;
+                            btnBankDelete.Enabled = true;
+                        }
+                        else
+                        {
+                            btnBankUpdate.Enabled = false;
+                            btnBankDelete.Enabled = false;
+                        }
+                        
+
+                        #endregion
+
+
+
                     }
                     else
                     {
@@ -660,7 +693,10 @@ namespace LoginForm
                     txtBankAccountNumber.Enabled = false;
                     txtBankIban.Text = String.Empty;
                     txtBankIban.Enabled = false;
-                    lbBankList.Items.Clear();
+                    if (lbBankList.DataSource != null)
+                    {
+                        lbBankList.Items.Clear();
+                    }
 
                     btnBankAdd.Text = "Add";
                     btnBankAdd.Enabled = false;
@@ -1528,28 +1564,28 @@ namespace LoginForm
                 else if (ContactMode == "Update")
                 {
                     SupplierWorker worker = (SupplierWorker)lbContacts.SelectedItem;
-                    SupplierWorker address = SavedContacts.Where(x => x.sw_name == worker.sw_name).FirstOrDefault();
+                    SupplierWorker worker1 = SavedContacts.Where(x => x.sw_name == worker.sw_name).FirstOrDefault();
 
-                    worker.sw_name = txtContactName.Text;
-                    if (cmbDepartment.SelectedIndex > 0) { worker.departmentID = ((CustomerDepartment)cmbDepartment.SelectedItem).ID; }
-                    worker.phone = txtContactPhone.Text;
-                    if (cmbPosition.SelectedIndex > 0) { worker.titleID = ((CustomerTitle)cmbPosition.SelectedItem).ID; }
-                    worker.PhoneExternalNum = (txtExternalNumber.Text != String.Empty) ? txtExternalNumber.Text : null;
-                    worker.sw_email = (txtContactMail.Text != String.Empty) ? txtContactMail.Text : null;
-                    worker.fax = (txtContactFax.Text != String.Empty) ? txtContactFax.Text : null;
-                    worker.mobilephone = (txtContactMobile.Text != String.Empty) ? txtContactMobile.Text : null;
-                    worker.languageID = ((Language)cmbLanguage.SelectedItem).ID;
-                    if (cmbContactAddress.SelectedIndex >= 0) { worker.SupplierAddress = (SupplierAddress)cmbContactAddress.SelectedItem; }
+                    worker1.sw_name = txtContactName.Text;
+                    if (cmbDepartment.SelectedIndex > 0) { worker1.departmentID = ((CustomerDepartment)cmbDepartment.SelectedItem).ID; }
+                    worker1.phone = txtContactPhone.Text;
+                    if (cmbPosition.SelectedIndex > 0) { worker1.titleID = ((CustomerTitle)cmbPosition.SelectedItem).ID; }
+                    worker1.PhoneExternalNum = (txtExternalNumber.Text != String.Empty) ? txtExternalNumber.Text : null;
+                    worker1.sw_email = (txtContactMail.Text != String.Empty) ? txtContactMail.Text : null;
+                    worker1.fax = (txtContactFax.Text != String.Empty) ? txtContactFax.Text : null;
+                    worker1.mobilephone = (txtContactMobile.Text != String.Empty) ? txtContactMobile.Text : null;
+                    worker1.languageID = ((Language)cmbLanguage.SelectedItem).ID;
+                    if (cmbContactAddress.SelectedIndex >= 0) { worker1.SupplierAddress = (SupplierAddress)cmbContactAddress.SelectedItem; }
 
-                    if (worker.Note != null)
+                    if (worker1.Note != null)
                     {
-                        worker.Note.Note_name = txtContactNotes.Text;
+                        worker1.Note.Note_name = txtContactNotes.Text;
                     }
                     else
                     {
                         Note n = new Note();
                         n.Note_name = txtContactNotes.Text;
-                        worker.Note = n;
+                        worker1.Note = n;
                     }
                 }
 
@@ -1790,6 +1826,68 @@ namespace LoginForm
                     if (ErrorLog.Count != 0)
                     {
                         MessageBox.Show(ErrorStringAddress, "Empty Areas");
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                #endregion
+                #region BankAccount
+                case "BankAccount":
+                    if (txtBankAccountTitle.Text.Trim() == String.Empty)
+                    {
+                        ErrorLog.Add("Account Title must not be empty!");
+                    }
+
+                    if (txtBankIban.Text.Trim() == String.Empty)
+                    {
+                        ErrorLog.Add("IBAN must not be empty!");
+                    }
+
+                    //if (txtContactPhone.Text.Trim() == String.Empty)
+                    //{
+                    //    ErrorLog.Add("Phone must not be empty!");
+                    //}
+                    //else if (!Utils.HasOnlyNumbers(txtContactPhone.Text))
+                    //{
+                    //    ErrorLog.Add("The Phone number must be a numerical string!");
+                    //}
+
+                    //if (txtContactMobile.Text.Trim() != String.Empty && !Utils.HasOnlyNumbers(txtContactMobile.Text))
+                    //{
+                    //    ErrorLog.Add("The Mobile number must be a numerical string!");
+                    //}
+
+                    //if (txtContactFax.Text.Trim() != String.Empty && !Utils.HasOnlyNumbers(txtContactFax.Text))
+                    //{
+                    //    ErrorLog.Add("The Fax number must be a numerical string!");
+                    //}
+
+                    //if (txtExternalNumber.Text.Trim() != String.Empty && !Utils.HasOnlyNumbers(txtExternalNumber.Text))
+                    //{
+                    //    ErrorLog.Add("The Extension number must be a numerical string!");
+                    //}
+
+                    //if (cmbLanguage.SelectedIndex <= 0)
+                    //{
+                    //    ErrorLog.Add("You should choose a Communication Language!");
+                    //}
+
+
+                    string ErrorStringBank = String.Empty;
+                    for (int i = 0; i < ErrorLog.Count; i++)
+                    {
+                        ErrorStringBank += ErrorLog[i];
+                        if (i != ErrorLog.Count - 1)
+                        {
+                            ErrorStringBank += "\n";
+                        }
+                    }
+
+                    if (ErrorLog.Count != 0)
+                    {
+                        MessageBox.Show(ErrorStringBank, "Empty Areas");
                         return true;
                     }
                     else
@@ -2281,6 +2379,93 @@ namespace LoginForm
         private void button4_Click(object sender, EventArgs e)
         {
             tabgenel.SelectedTab = tabInfo;
+        }
+
+        private void btnBankAdd_Click(object sender, EventArgs e)
+        {
+            if (btnBankAdd.Text == "Save")
+            {
+                if (!InputErrorExist("BankAccount"))
+                {
+                    if(BankMode == "Add")
+                    {
+                        SupplierBankAccount bank = new SupplierBankAccount
+                        {
+                            Title = txtBankAccountTitle.Text,
+                            BranchCode = txtBankBranchCode.Text,
+                            AccountNumber = txtBankAccountNumber.Text,
+                            IBAN = txtBankIban.Text
+                        };
+                        SavedBanks.Add(bank);
+                    }
+                    else if (BankMode == "Update")
+                    {
+                        SupplierBankAccount bank = (SupplierBankAccount)lbBankList.SelectedItem;
+                        SupplierBankAccount bank1 = SavedBanks.Where(x => x.Title == bank.Title).FirstOrDefault();
+
+                        bank1.Title = txtBankAccountTitle.Text;
+                        bank1.BranchCode = txtBankBranchCode.Text;
+                        bank1.AccountNumber = txtBankAccountNumber.Text;
+                        bank1.IBAN = txtBankIban.Text;
+                    }
+
+
+                    lbBankList.DataSource = null;
+                    lbBankList.DataSource = SavedBanks;
+                    lbBankList.DisplayMember = "Title";
+                    lbBankList.SelectedIndex = -1;
+
+                    txtBankAccountTitle.Text = String.Empty;
+                    txtBankAccountTitle.Enabled = false;
+                    txtBankBranchCode.Text = String.Empty;
+                    txtBankBranchCode.Enabled = false;
+                    txtBankAccountNumber.Text = String.Empty;
+                    txtBankAccountNumber.Enabled = false;
+                    txtBankIban.Text = String.Empty;
+                    txtBankIban.Enabled = false;
+                    lbBankList.Enabled = true;
+
+                    btnBankAdd.Text = "Add";
+                    btnBankAdd.Enabled = true;
+                    btnBankUpdate.Text = "Update";
+                    btnBankUpdate.Enabled = true;
+
+                    btnBankDelete.Visible = true;
+                    btnBankDelete.Enabled = true;
+
+
+
+                    BankMode = "";
+
+
+                }
+            }else if (btnBankAdd.Text == "Add")
+            {
+                BankMode = "Add";
+
+                txtBankAccountTitle.Text = String.Empty;
+                txtBankAccountTitle.Enabled = true;
+                txtBankBranchCode.Text = String.Empty;
+                txtBankBranchCode.Enabled = true;
+                txtBankAccountNumber.Text = String.Empty;
+                txtBankAccountNumber.Enabled = true;
+                txtBankIban.Text = String.Empty;
+                txtBankIban.Enabled = true;
+                lbBankList.Enabled = false;
+
+                btnBankAdd.Text = "Save";
+                btnBankAdd.Enabled = true;
+                btnBankUpdate.Text = "Cancel";
+                btnBankUpdate.Enabled = true;
+
+                btnBankDelete.Visible = false;
+            }
+            
+        }
+
+        private void btnBankUpdate_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
