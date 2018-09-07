@@ -3741,7 +3741,7 @@ namespace LoginForm
                         q.CurrType,
                         q.QuotationMainContact,
                         q.approved,
-                        q.invoiceNo,
+                        q.SaleOrderID,
                         q.voucherNo,
                         q.RepresentativeID,
                         q.RepresentativeID2,

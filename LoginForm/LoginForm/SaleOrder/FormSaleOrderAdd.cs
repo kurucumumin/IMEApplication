@@ -4558,12 +4558,16 @@ namespace LoginForm.QuotationModule
                     foreach (string no in quotationNos)
                     {
                         IME.Quotations.Where(x => x.QuotationNo == no).FirstOrDefault().status = "Passive";
+                        IME.Quotations.Where(x => x.QuotationNo == no).FirstOrDefault().SaleOrderID = s.SaleOrderID;
                     }
                 }
 
 
                 IME.SaleOrders.Add(s);
                 IME.SaveChanges();
+
+                
+
                 DebitCustomer();
 
                 return s.SaleOrderID;

@@ -1643,6 +1643,11 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<prc_GetSuperDiskPItemWithArticleNumber_Result>("prc_GetSuperDiskPItemWithArticleNumber", articleNumberParameter);
         }
     
+        public virtual ObjectResult<prc_GetWorkersAllForComboBox_Result> prc_GetWorkersAllForComboBox()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<prc_GetWorkersAllForComboBox_Result>("prc_GetWorkersAllForComboBox");
+        }
+    
         public virtual ObjectResult<ProductViewWithID_Result> ProductViewWithID(string productID)
         {
             var productIDParameter = productID != null ?
@@ -1652,7 +1657,7 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProductViewWithID_Result>("ProductViewWithID", productIDParameter);
         }
     
-        public virtual int QuotationADD(string customerID, Nullable<int> noteForUsID, Nullable<int> noteForCustomerID, Nullable<int> forFinancelIsTrue, Nullable<int> shippingMethodID, Nullable<int> isItemCost, Nullable<int> isWeightCost, Nullable<int> isCustomsDuties, Nullable<decimal> discOnSubTotal2, Nullable<decimal> extraCharges, Nullable<decimal> subTotal, Nullable<System.DateTime> startDate, Nullable<int> validationDay, Nullable<int> paymentID, Nullable<decimal> curr, Nullable<decimal> factor, Nullable<int> isVatValue, Nullable<decimal> vatValue, string currName, string quotationNo, string rFQNo, string currType, Nullable<int> quotationMainContact, Nullable<bool> approved, string invoiceNo, string voucherNo, Nullable<int> representativeID, Nullable<int> representativeID2, Nullable<int> exchangeRateID, Nullable<System.DateTime> deliveryDate, Nullable<decimal> grossTotal)
+        public virtual int QuotationADD(string customerID, Nullable<int> noteForUsID, Nullable<int> noteForCustomerID, Nullable<int> forFinancelIsTrue, Nullable<int> shippingMethodID, Nullable<int> isItemCost, Nullable<int> isWeightCost, Nullable<int> isCustomsDuties, Nullable<decimal> discOnSubTotal2, Nullable<decimal> extraCharges, Nullable<decimal> subTotal, Nullable<System.DateTime> startDate, Nullable<int> validationDay, Nullable<int> paymentID, Nullable<decimal> curr, Nullable<decimal> factor, Nullable<int> isVatValue, Nullable<decimal> vatValue, string currName, string quotationNo, string rFQNo, string currType, Nullable<int> quotationMainContact, Nullable<bool> approved, Nullable<decimal> saleOrderID, string voucherNo, Nullable<int> representativeID, Nullable<int> representativeID2, Nullable<int> exchangeRateID, Nullable<System.DateTime> deliveryDate, Nullable<decimal> grossTotal)
         {
             var customerIDParameter = customerID != null ?
                 new ObjectParameter("CustomerID", customerID) :
@@ -1750,9 +1755,9 @@ namespace LoginForm.DataSet
                 new ObjectParameter("approved", approved) :
                 new ObjectParameter("approved", typeof(bool));
     
-            var invoiceNoParameter = invoiceNo != null ?
-                new ObjectParameter("invoiceNo", invoiceNo) :
-                new ObjectParameter("invoiceNo", typeof(string));
+            var saleOrderIDParameter = saleOrderID.HasValue ?
+                new ObjectParameter("SaleOrderID", saleOrderID) :
+                new ObjectParameter("SaleOrderID", typeof(decimal));
     
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
@@ -1778,7 +1783,7 @@ namespace LoginForm.DataSet
                 new ObjectParameter("GrossTotal", grossTotal) :
                 new ObjectParameter("GrossTotal", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("QuotationADD", customerIDParameter, noteForUsIDParameter, noteForCustomerIDParameter, forFinancelIsTrueParameter, shippingMethodIDParameter, isItemCostParameter, isWeightCostParameter, isCustomsDutiesParameter, discOnSubTotal2Parameter, extraChargesParameter, subTotalParameter, startDateParameter, validationDayParameter, paymentIDParameter, currParameter, factorParameter, isVatValueParameter, vatValueParameter, currNameParameter, quotationNoParameter, rFQNoParameter, currTypeParameter, quotationMainContactParameter, approvedParameter, invoiceNoParameter, voucherNoParameter, representativeIDParameter, representativeID2Parameter, exchangeRateIDParameter, deliveryDateParameter, grossTotalParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("QuotationADD", customerIDParameter, noteForUsIDParameter, noteForCustomerIDParameter, forFinancelIsTrueParameter, shippingMethodIDParameter, isItemCostParameter, isWeightCostParameter, isCustomsDutiesParameter, discOnSubTotal2Parameter, extraChargesParameter, subTotalParameter, startDateParameter, validationDayParameter, paymentIDParameter, currParameter, factorParameter, isVatValueParameter, vatValueParameter, currNameParameter, quotationNoParameter, rFQNoParameter, currTypeParameter, quotationMainContactParameter, approvedParameter, saleOrderIDParameter, voucherNoParameter, representativeIDParameter, representativeID2Parameter, exchangeRateIDParameter, deliveryDateParameter, grossTotalParameter);
         }
     
         public virtual int QuotationDetailsADD(Nullable<int> dgNo, string itemCode, Nullable<int> qty, Nullable<decimal> uCUPCurr, Nullable<decimal> disc, Nullable<decimal> total, Nullable<decimal> targetUP, string competitor, string customerDescription, string customerStockCode, Nullable<int> isDeleted, string quotationNo, Nullable<decimal> uPIME, Nullable<decimal> marge, string unitOfMeasure, Nullable<int> uC, Nullable<int> sSM, Nullable<decimal> unitWeight, string dependantTable, Nullable<decimal> unitConversionId)
