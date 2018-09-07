@@ -52,7 +52,7 @@ namespace LoginForm.IMEAccount
         #region Functions
         private void SupplierSearch()
         {
-            frmSupplierMain form = new frmSupplierMain(txtCustomer.Text);
+            ____frmSupplierMain form = new ____frmSupplierMain(txtCustomer.Text);
             form.ShowDialog();
             if (classSupplier.Supplier!=null)
             {

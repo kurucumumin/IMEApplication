@@ -1244,7 +1244,7 @@ namespace LoginForm.ItemModule
 
         private void btnSupplierAdd_Click(object sender, EventArgs e)
         {
-            frmSupplierMain form = new frmSupplierMain();
+            ____frmSupplierMain form = new ____frmSupplierMain();
             form.ShowDialog();
             cmbSupplierName.DataSource = IME.Suppliers.ToList();
             cmbSupplierName.DisplayMember = "s_name";

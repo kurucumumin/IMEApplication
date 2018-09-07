@@ -347,7 +347,7 @@ namespace LoginForm.QuotationModule
             }
             if (this.Text == "Supplier Search")
             {
-                frmSupplierMain form = new frmSupplierMain(true);
+                ____frmSupplierMain form = new ____frmSupplierMain(true);
                 form.ShowDialog();
             }
 

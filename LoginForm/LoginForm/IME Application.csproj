@@ -1052,6 +1052,12 @@
     <Compile Include="Supplier\frmSupplierMain.designer.cs">
       <DependentUpon>frmSupplierMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Supplier\____frmSupplierMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supplier\____frmSupplierMain.designer.cs">
+      <DependentUpon>____frmSupplierMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Supplier\frmSupplierCategoryAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1314,6 +1320,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Supplier\frmSupplierMain.resx">
       <DependentUpon>frmSupplierMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supplier\____frmSupplierMain.resx">
+      <DependentUpon>____frmSupplierMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Supplier\frmSupplierCategoryAdd.resx">
       <DependentUpon>frmSupplierCategoryAdd.cs</DependentUpon>

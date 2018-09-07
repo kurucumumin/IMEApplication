@@ -81,7 +81,7 @@ namespace LoginForm.CustomControls
 
         private void btnSupplier_Click(object sender, EventArgs e)
         {
-            frmSupplierMain supplierMain = new frmSupplierMain();
+            ____frmSupplierMain supplierMain = new ____frmSupplierMain();
             supplierMain.Show();
         }
 

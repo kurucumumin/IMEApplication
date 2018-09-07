@@ -1,6 +1,6 @@
 namespace LoginForm
 {
-    partial class frmSupplierMain
+    partial class ____frmSupplierMain
     {
         /// <summary>
         ///Gerekli tasarımcı değişkeni.
@@ -1348,6 +1348,7 @@ namespace LoginForm
             this.btnBankDelete.TabIndex = 61;
             this.btnBankDelete.Text = "Delete";
             this.btnBankDelete.UseVisualStyleBackColor = true;
+            this.btnBankDelete.Click += new System.EventHandler(this.btnBankDelete_Click);
             // 
             // btnBankUpdate
             // 
@@ -1360,6 +1361,7 @@ namespace LoginForm
             this.btnBankUpdate.TabIndex = 60;
             this.btnBankUpdate.Text = "Cancel";
             this.btnBankUpdate.UseVisualStyleBackColor = true;
+            this.btnBankUpdate.Click += new System.EventHandler(this.btnBankModify_Click);
             // 
             // btnBankAdd
             // 
@@ -1372,6 +1374,7 @@ namespace LoginForm
             this.btnBankAdd.TabIndex = 59;
             this.btnBankAdd.Text = "Save";
             this.btnBankAdd.UseVisualStyleBackColor = true;
+            this.btnBankAdd.Click += new System.EventHandler(this.btnBankAdd_Click);
             // 
             // lbBankList
             // 
@@ -1843,7 +1846,7 @@ namespace LoginForm
             this.panel1.Size = new System.Drawing.Size(1227, 81);
             this.panel1.TabIndex = 2;
             // 
-            // frmSupplierMain
+            // ____frmSupplierMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1852,7 +1855,7 @@ namespace LoginForm
             this.Controls.Add(this.tableLayoutPanel1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1249, 609);
-            this.Name = "frmSupplierMain";
+            this.Name = "____frmSupplierMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Supplier";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

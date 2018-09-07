@@ -215,7 +215,7 @@ namespace LoginForm.Main
 
         private void btnSupplier_Click(object sender, EventArgs e)
         {
-            frmSupplierMain supplierMain = new frmSupplierMain();
+            ____frmSupplierMain supplierMain = new ____frmSupplierMain();
             supplierMain.Show();
         }
 
@@ -407,7 +407,7 @@ namespace LoginForm.Main
 
         private void altoSlidingLabel1_Click(object sender, EventArgs e)
         {
-            frmDevSupplierMain form = new frmDevSupplierMain();
+            frmSupplierMain form = new frmSupplierMain();
             form.Show();
         }
     }
