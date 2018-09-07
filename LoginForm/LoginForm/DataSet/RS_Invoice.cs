@@ -37,9 +37,12 @@ namespace LoginForm.DataSet
         public string SupplierID { get; set; }
         public string Status { get; set; }
         public Nullable<bool> Deleted { get; set; }
+        public System.DateTime CreateDate { get; set; }
+        public int UserID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RS_InvoiceDetails> RS_InvoiceDetails { get; set; }
         public virtual Supplier Supplier { get; set; }
+        public virtual Worker Worker { get; set; }
     }
 }

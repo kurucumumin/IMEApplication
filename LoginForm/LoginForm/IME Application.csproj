@@ -413,6 +413,9 @@
     <Compile Include="DataSet\prc_GetSuperDiskPItemWithArticleNumber_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\prc_GetWorkersAllForComboBox_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\PrintFormat.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>

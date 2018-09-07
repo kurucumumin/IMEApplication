@@ -44,7 +44,7 @@ namespace LoginForm.DataSet
         public string CurrType { get; set; }
         public Nullable<int> QuotationMainContact { get; set; }
         public Nullable<bool> approved { get; set; }
-        public string invoiceNo { get; set; }
+        public Nullable<decimal> SaleOrderID { get; set; }
         public string voucherNo { get; set; }
         public Nullable<int> RepresentativeID { get; set; }
         public Nullable<int> RepresentativeID2 { get; set; }
@@ -64,5 +64,6 @@ namespace LoginForm.DataSet
         public virtual ICollection<QuotationDetail> QuotationDetails { get; set; }
         public virtual Worker Worker { get; set; }
         public virtual Worker Worker1 { get; set; }
+        public virtual SaleOrder SaleOrder { get; set; }
     }
 }
