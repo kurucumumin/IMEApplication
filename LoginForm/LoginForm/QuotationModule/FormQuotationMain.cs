@@ -37,7 +37,6 @@ namespace LoginForm.QuotationModule
             cbSearch.SelectedIndex = 0;
             dateNow = Convert.ToDateTime(new IMEEntities().CurrentDate().First());
             dtpFromDate.Value = Convert.ToDateTime(IME.CurrentDate().First()).AddMonths(-3);
-
         }
 
         private void btnNewQuotation_Click(object sender, EventArgs e)
@@ -59,7 +58,7 @@ namespace LoginForm.QuotationModule
         {
             if (Utils.AuthorityCheck(IMEAuthority.CanEditAnyQuotation))
             {
-                ViewQuotation();
+                ModifyQuotation();
             }
 
         }
@@ -657,6 +656,8 @@ namespace LoginForm.QuotationModule
             {
                 dgQuotation.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             }
+
+            dgQuotation.Columns["CustomerName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void dgQuotation_KeyDown(object sender, KeyEventArgs e)
@@ -904,5 +905,6 @@ namespace LoginForm.QuotationModule
 
 
         }
+
     }
 }
