@@ -919,5 +919,129 @@ namespace LoginForm.QuotationModule
 
         }
 
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (dgQuotation.CurrentRow != null)
+            {
+                string QuotationNo = dgQuotation.CurrentRow.Cells["QuotationNo"].Value.ToString();
+                Quotation quo;
+
+                IMEEntities IME = new IMEEntities();
+                try
+                {
+                    quo = IME.Quotations.Where(q => q.QuotationNo == QuotationNo).FirstOrDefault();
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+                if (quo != null && quo.SaleOrder == null)
+                {
+                    FormQuotationAdd newForm = new FormQuotationAdd(quo, this, "Update");
+                    newForm.ShowDialog();
+                }
+                else
+                {
+                    
+                    DialogResult result =  MessageBox.Show("Quotation is locked to Sales Order Number:" + quo.SaleOrder.SaleOrderNo,"Warning",MessageBoxButtons.OKCancel);
+                    if (result == DialogResult.OK)
+                    {
+                        DialogResult result2 = MessageBox.Show("Create Revision ?", "Informaion", MessageBoxButtons.OKCancel);
+                        if (result2 == DialogResult.OK)
+                        {
+                            ModifyQuotation();
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("You did not chose any quotation.", "Warning!");
+            }
+        }
+
+        private void uPDATEQUOTATIONToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgQuotation.CurrentRow != null)
+            {
+                string QuotationNo = dgQuotation.CurrentRow.Cells["QuotationNo"].Value.ToString();
+                Quotation quo;
+
+                IMEEntities IME = new IMEEntities();
+                try
+                {
+                    quo = IME.Quotations.Where(q => q.QuotationNo == QuotationNo).FirstOrDefault();
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+                if (quo != null && quo.SaleOrder == null)
+                {
+                    FormQuotationAdd newForm = new FormQuotationAdd(quo, this, "Update");
+                    newForm.ShowDialog();
+                }
+                else
+                {
+                    DialogResult result = MessageBox.Show("Quotation is locked to Sales Order Number:" + quo.SaleOrder.SaleOrderNo, "Warning", MessageBoxButtons.OKCancel);
+                    if (result == DialogResult.OK)
+                    {
+                        DialogResult result2 = MessageBox.Show("Create Revision ?", "Informaion", MessageBoxButtons.OKCancel);
+                        if (result2 == DialogResult.OK)
+                        {
+                            ModifyQuotation();
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("You did not chose any quotation.", "Warning!");
+            }
+        }
+
+        private void uNDODELETEQUOTATIONToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgQuotation.CurrentRow != null)
+            {
+                DialogResult result = MessageBox.Show("Selected quotation(s) undo deleted! Do you confirm?", "Undo Delete Quotation", MessageBoxButtons.OKCancel);
+
+                if (result == DialogResult.OK)
+                {
+                    try
+                    {
+                        IMEEntities IME = new IMEEntities();
+
+                        foreach (DataGridViewRow row in dgQuotation.SelectedRows)
+                        {
+                            string QuotationNo = row.Cells["QuotationNo"].Value.ToString();
+
+                            Quotation quo = IME.Quotations.Where(q => q.QuotationNo == QuotationNo).FirstOrDefault();
+
+                            quo.status = "Active";
+
+                            IME.SaveChanges();
+                        }
+
+                        IME.SaveChanges();
+
+                        BringQuotationList();
+
+                        MessageBox.Show("Quotation is successfully undo deleted.", "Success!");
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("An error was encountered", "Error!");
+                        throw;
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("You did not chose any quotation.", "Warning!");
+            }
+        }
     }
 }

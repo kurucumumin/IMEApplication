@@ -81,7 +81,8 @@ namespace LoginForm.nsSaleOrder
                            Address = ca.AdressTitle,
                            DeliveryAddress = ca1.AdressTitle,
                            SaleID = so.SaleOrderID,
-                           Status = so.Status
+                           Status = so.Status,
+                           QuotationNo = so.QuotationNos
                        }).OrderByDescending(s=> s.SoNO);
             populateGrid(list.ToList());
         }
@@ -336,7 +337,8 @@ namespace LoginForm.nsSaleOrder
                                              Address = ca.AdressTitle,
                                              DeliveryAddress = ca1.AdressTitle,
                                              SaleID = so.SaleOrderID,
-                                             Status = so.Status
+                                             Status = so.Status,
+                                             QuotationNo = so.QuotationNos
                                          }).ToList().Where(x => x.SoNO.ToString().Contains(txtSearchText.Text));
 
                             populateGrid(list1.ToList());
@@ -361,7 +363,8 @@ namespace LoginForm.nsSaleOrder
                                             Address = ca.AdressTitle,
                                             DeliveryAddress = ca1.AdressTitle,
                                             SaleID = so.SaleOrderID,
-                                            Status = so.Status
+                                            Status = so.Status,
+                                            QuotationNo = so.QuotationNos
                                         };
 
                             populateGrid(list2.ToList());
@@ -386,7 +389,8 @@ namespace LoginForm.nsSaleOrder
                                             Address = ca.AdressTitle,
                                             DeliveryAddress = ca1.AdressTitle,
                                             SaleID = so.SaleOrderID,
-                                            Status = so.Status
+                                            Status = so.Status,
+                                            QuotationNo = so.QuotationNos
                                         };
 
                             populateGrid(list3.ToList());
@@ -415,7 +419,8 @@ namespace LoginForm.nsSaleOrder
                                                 Address = ca.AdressTitle,
                                                 DeliveryAddress = ca1.AdressTitle,
                                                 SaleID = so.SaleOrderID,
-                                                Status = so.Status
+                                                Status = so.Status,
+                                                QuotationNo = so.QuotationNos
                                             };
 
                                 populateGrid(list4.ToList());
@@ -442,7 +447,8 @@ namespace LoginForm.nsSaleOrder
                                             Address = ca.AdressTitle,
                                             DeliveryAddress = ca1.AdressTitle,
                                             SaleID = so.SaleOrderID,
-                                            Status = so.Status
+                                            Status = so.Status,
+                                            QuotationNo = so.QuotationNos
                                         };
 
                             populateGrid(list5.ToList());
@@ -492,7 +498,8 @@ namespace LoginForm.nsSaleOrder
                                              Address = ca.AdressTitle,
                                              DeliveryAddress = ca1.AdressTitle,
                                              SaleID = so.SaleOrderID,
-                                             Status = so.Status
+                                             Status = so.Status,
+                                             QuotationNo = so.QuotationNos
                                          }).ToList().Where(x => x.SoNO.ToString().Contains(txtSearchText.Text));
 
                             populateGrid(list1.ToList());

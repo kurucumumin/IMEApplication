@@ -39,6 +39,7 @@
             this.dISCONTINUEDUSERToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cOPYQUOTATIONToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mODIFYQUOTATIONToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.uPDATEQUOTATIONToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSearchStockNumber = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
@@ -50,6 +51,8 @@
             this.txtSearchText = new System.Windows.Forms.TextBox();
             this.chcAllQuots = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
@@ -67,6 +70,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dtpToDate = new System.Windows.Forms.DateTimePicker();
             this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
+            this.uNDODELETEQUOTATIONToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgQuotation)).BeginInit();
             this.gridRightClick.SuspendLayout();
@@ -130,53 +134,62 @@
             // 
             this.gridRightClick.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dELETEQUOTATIONToolStripMenuItem,
+            this.uNDODELETEQUOTATIONToolStripMenuItem,
             this.qUOTATIONINFOToolStripMenuItem,
             this.qUOTATIONPRINTToolStripMenuItem,
             this.dISCONTINUEDUSERToolStripMenuItem,
             this.cOPYQUOTATIONToolStripMenuItem,
-            this.mODIFYQUOTATIONToolStripMenuItem});
+            this.mODIFYQUOTATIONToolStripMenuItem,
+            this.uPDATEQUOTATIONToolStripMenuItem});
             this.gridRightClick.Name = "gridRightClick";
-            this.gridRightClick.Size = new System.Drawing.Size(189, 136);
+            this.gridRightClick.Size = new System.Drawing.Size(220, 202);
             // 
             // dELETEQUOTATIONToolStripMenuItem
             // 
             this.dELETEQUOTATIONToolStripMenuItem.Name = "dELETEQUOTATIONToolStripMenuItem";
-            this.dELETEQUOTATIONToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.dELETEQUOTATIONToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
             this.dELETEQUOTATIONToolStripMenuItem.Text = "DELETE QUOTATION";
             this.dELETEQUOTATIONToolStripMenuItem.Click += new System.EventHandler(this.dELETEQUOTATIONToolStripMenuItem_Click);
             // 
             // qUOTATIONINFOToolStripMenuItem
             // 
             this.qUOTATIONINFOToolStripMenuItem.Name = "qUOTATIONINFOToolStripMenuItem";
-            this.qUOTATIONINFOToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.qUOTATIONINFOToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
             this.qUOTATIONINFOToolStripMenuItem.Text = " QUOTATION INFO";
             this.qUOTATIONINFOToolStripMenuItem.Click += new System.EventHandler(this.qUOTATIONINFOToolStripMenuItem_Click);
             // 
             // qUOTATIONPRINTToolStripMenuItem
             // 
             this.qUOTATIONPRINTToolStripMenuItem.Name = "qUOTATIONPRINTToolStripMenuItem";
-            this.qUOTATIONPRINTToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.qUOTATIONPRINTToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
             this.qUOTATIONPRINTToolStripMenuItem.Text = " QUOTATION PRINT";
             this.qUOTATIONPRINTToolStripMenuItem.Click += new System.EventHandler(this.qUOTATIONPRINTToolStripMenuItem_Click);
             // 
             // dISCONTINUEDUSERToolStripMenuItem
             // 
             this.dISCONTINUEDUSERToolStripMenuItem.Name = "dISCONTINUEDUSERToolStripMenuItem";
-            this.dISCONTINUEDUSERToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.dISCONTINUEDUSERToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
             this.dISCONTINUEDUSERToolStripMenuItem.Text = "DISCONTINUED USER";
             // 
             // cOPYQUOTATIONToolStripMenuItem
             // 
             this.cOPYQUOTATIONToolStripMenuItem.Name = "cOPYQUOTATIONToolStripMenuItem";
-            this.cOPYQUOTATIONToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.cOPYQUOTATIONToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
             this.cOPYQUOTATIONToolStripMenuItem.Text = "COPY QUOTATION";
             // 
             // mODIFYQUOTATIONToolStripMenuItem
             // 
             this.mODIFYQUOTATIONToolStripMenuItem.Name = "mODIFYQUOTATIONToolStripMenuItem";
-            this.mODIFYQUOTATIONToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
-            this.mODIFYQUOTATIONToolStripMenuItem.Text = "MODIFY QUOTATION";
+            this.mODIFYQUOTATIONToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
+            this.mODIFYQUOTATIONToolStripMenuItem.Text = "CREATE NEW VERSION";
             this.mODIFYQUOTATIONToolStripMenuItem.Click += new System.EventHandler(this.mODIFYQUOTATIONToolStripMenuItem_Click);
+            // 
+            // uPDATEQUOTATIONToolStripMenuItem
+            // 
+            this.uPDATEQUOTATIONToolStripMenuItem.Name = "uPDATEQUOTATIONToolStripMenuItem";
+            this.uPDATEQUOTATIONToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
+            this.uPDATEQUOTATIONToolStripMenuItem.Text = "MODIFY QUOTATION";
+            this.uPDATEQUOTATIONToolStripMenuItem.Click += new System.EventHandler(this.uPDATEQUOTATIONToolStripMenuItem_Click);
             // 
             // panel1
             // 
@@ -296,6 +309,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.btnUpdate);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.button5);
@@ -308,16 +323,41 @@
             this.groupBox2.Controls.Add(this.btnNewQuotation);
             this.groupBox2.Controls.Add(this.btnModifyQuotation);
             this.groupBox2.Controls.Add(this.btnDeleteQuotation);
-            this.groupBox2.Location = new System.Drawing.Point(280, -1);
+            this.groupBox2.Location = new System.Drawing.Point(234, -1);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(481, 112);
+            this.groupBox2.Size = new System.Drawing.Size(527, 112);
             this.groupBox2.TabIndex = 29;
             this.groupBox2.TabStop = false;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(148, 81);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(43, 15);
+            this.label10.TabIndex = 32;
+            this.label10.Text = "Modify";
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
+            this.btnUpdate.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdate.Image = global::LoginForm.Properties.Resources.if_Gnome_System_Software_Update_48_55454;
+            this.btnUpdate.Location = new System.Drawing.Point(143, 23);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(0);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.btnUpdate.Size = new System.Drawing.Size(52, 52);
+            this.btnUpdate.TabIndex = 31;
+            this.btnUpdate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(429, 75);
+            this.label8.Location = new System.Drawing.Point(474, 80);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(32, 15);
             this.label8.TabIndex = 30;
@@ -326,7 +366,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(344, 77);
+            this.label7.Location = new System.Drawing.Point(407, 82);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(37, 15);
             this.label7.TabIndex = 29;
@@ -339,7 +379,7 @@
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Image = global::LoginForm.Properties.Resources.if_print_173079;
             this.button5.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button5.Location = new System.Drawing.Point(420, 18);
+            this.button5.Location = new System.Drawing.Point(465, 23);
             this.button5.Margin = new System.Windows.Forms.Padding(0);
             this.button5.Name = "button5";
             this.button5.Padding = new System.Windows.Forms.Padding(8, 16, 8, 0);
@@ -354,7 +394,7 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Image = global::LoginForm.Properties.Resources.if_Document_file_export_sending_exit_send_1886950;
             this.button4.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button4.Location = new System.Drawing.Point(335, 17);
+            this.button4.Location = new System.Drawing.Point(398, 22);
             this.button4.Margin = new System.Windows.Forms.Padding(0);
             this.button4.Name = "button4";
             this.button4.Padding = new System.Windows.Forms.Padding(8, 16, 8, 0);
@@ -366,7 +406,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 74);
+            this.label3.Location = new System.Drawing.Point(14, 80);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 15);
             this.label3.TabIndex = 18;
@@ -375,7 +415,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(90, 75);
+            this.label4.Location = new System.Drawing.Point(82, 80);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(35, 15);
             this.label4.TabIndex = 24;
@@ -384,16 +424,16 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(181, 75);
+            this.label5.Location = new System.Drawing.Point(212, 80);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(43, 15);
+            this.label5.Size = new System.Drawing.Size(101, 15);
             this.label5.TabIndex = 25;
-            this.label5.Text = "Modify";
+            this.label5.Text = "Create New Vers.";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(256, 75);
+            this.label6.Location = new System.Drawing.Point(332, 80);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(43, 15);
             this.label6.TabIndex = 26;
@@ -406,7 +446,7 @@
             this.btnRefreshList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRefreshList.Image = global::LoginForm.Properties.Resources.icons8_Refresh_32;
             this.btnRefreshList.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnRefreshList.Location = new System.Drawing.Point(10, 17);
+            this.btnRefreshList.Location = new System.Drawing.Point(14, 23);
             this.btnRefreshList.Margin = new System.Windows.Forms.Padding(0);
             this.btnRefreshList.Name = "btnRefreshList";
             this.btnRefreshList.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
@@ -424,7 +464,7 @@
             this.btnNewQuotation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNewQuotation.Image = global::LoginForm.Properties.Resources.icons8_Plus_32;
             this.btnNewQuotation.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnNewQuotation.Location = new System.Drawing.Point(84, 19);
+            this.btnNewQuotation.Location = new System.Drawing.Point(75, 23);
             this.btnNewQuotation.Margin = new System.Windows.Forms.Padding(0);
             this.btnNewQuotation.Name = "btnNewQuotation";
             this.btnNewQuotation.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
@@ -441,7 +481,7 @@
             this.btnModifyQuotation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModifyQuotation.Image = global::LoginForm.Properties.Resources.icons8_Edit_Property_32;
             this.btnModifyQuotation.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnModifyQuotation.Location = new System.Drawing.Point(176, 17);
+            this.btnModifyQuotation.Location = new System.Drawing.Point(232, 23);
             this.btnModifyQuotation.Margin = new System.Windows.Forms.Padding(0);
             this.btnModifyQuotation.Name = "btnModifyQuotation";
             this.btnModifyQuotation.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
@@ -458,7 +498,7 @@
             this.btnDeleteQuotation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteQuotation.Image = global::LoginForm.Properties.Resources.if_minus_1645995;
             this.btnDeleteQuotation.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnDeleteQuotation.Location = new System.Drawing.Point(249, 17);
+            this.btnDeleteQuotation.Location = new System.Drawing.Point(327, 22);
             this.btnDeleteQuotation.Margin = new System.Windows.Forms.Padding(0);
             this.btnDeleteQuotation.Name = "btnDeleteQuotation";
             this.btnDeleteQuotation.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
@@ -476,7 +516,7 @@
             this.groupBox1.Controls.Add(this.dtpFromDate);
             this.groupBox1.Location = new System.Drawing.Point(12, -1);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(262, 112);
+            this.groupBox1.Size = new System.Drawing.Size(216, 112);
             this.groupBox1.TabIndex = 28;
             this.groupBox1.TabStop = false;
             // 
@@ -516,6 +556,13 @@
             this.dtpFromDate.Name = "dtpFromDate";
             this.dtpFromDate.Size = new System.Drawing.Size(119, 21);
             this.dtpFromDate.TabIndex = 19;
+            // 
+            // uNDODELETEQUOTATIONToolStripMenuItem
+            // 
+            this.uNDODELETEQUOTATIONToolStripMenuItem.Name = "uNDODELETEQUOTATIONToolStripMenuItem";
+            this.uNDODELETEQUOTATIONToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
+            this.uNDODELETEQUOTATIONToolStripMenuItem.Text = "UNDO DELETE QUOTATION";
+            this.uNDODELETEQUOTATIONToolStripMenuItem.Click += new System.EventHandler(this.uNDODELETEQUOTATIONToolStripMenuItem_Click);
             // 
             // FormQuotationMain
             // 
@@ -586,5 +633,9 @@
         private System.Windows.Forms.ToolStripMenuItem dISCONTINUEDUSERToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cOPYQUOTATIONToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mODIFYQUOTATIONToolStripMenuItem;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.ToolStripMenuItem uPDATEQUOTATIONToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem uNDODELETEQUOTATIONToolStripMenuItem;
     }
 }

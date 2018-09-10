@@ -293,6 +293,26 @@ namespace LoginForm.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap if_Gnome_System_Software_Update_48_55454 {
+            get {
+                object obj = ResourceManager.GetObject("if_Gnome-System-Software-Update-48_55454", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap if_Gnome_System_Software_Update_64_55762 {
+            get {
+                object obj = ResourceManager.GetObject("if_Gnome-System-Software-Update-64_55762", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap if_icon_123_printer_314820 {
             get {
                 object obj = ResourceManager.GetObject("if_icon-123-printer_314820", resourceCulture);

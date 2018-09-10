@@ -1435,6 +1435,8 @@
     <None Include="Resources\if_edit-clear_23227.ico" />
     <None Include="Resources\if_filter_173013.ico" />
     <None Include="Resources\if_floppy_285657.ico" />
+    <None Include="Resources\if_Gnome-System-Software-Update-64_55762.ico" />
+    <None Include="Resources\if_Gnome-System-Software-Update-48_55454.ico" />
     <Content Include="Resources\if_icon-24-key_314756.ico" />
     <None Include="Resources\if_print_173079.ico" />
     <None Include="Resources\if_search_magnifying_glass_find_103857.ico" />

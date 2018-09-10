@@ -1128,7 +1128,7 @@ namespace LoginForm
                 btnContactDelete.Enabled = false;
                 btnContactUpdate.Enabled = false;
                 var customer = IME.Customer_CustomerID(CustomerCode.Text).FirstOrDefault();
-                if (customer.c_name == null)
+                if (customer == null)
                 {
                     //CREATE in cancel ı
                     var cw = IME.CustomerWorkers.Where(a => a.customerID == CustomerCode.Text);
