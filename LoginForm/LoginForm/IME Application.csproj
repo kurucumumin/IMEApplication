@@ -1355,13 +1355,11 @@
     </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\LoginForm.DataSet.AuthorizationValue.datasource" />
-    <None Include="Properties\DataSources\LoginForm.DataSet.AuthRole.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.CariHareket.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.Currency.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.Customer.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.CustomerAddress.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.CustomerCategory.datasource" />
-    <None Include="Properties\DataSources\LoginForm.DataSet.CustomerCategorySubCategory.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.CustomerSubCategory.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.CustomerWorker.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.Mail.datasource" />
@@ -1378,7 +1376,6 @@
     <None Include="Properties\DataSources\LoginForm.DataSet.Supplier1.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.Worker.datasource" />
     <None Include="Properties\DataSources\LoginForm.PurchaseOrder.MailForm.datasource" />
-    <None Include="Properties\DataSources\LoginForm.SaleOrder.FormSaleOrderAdd.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
