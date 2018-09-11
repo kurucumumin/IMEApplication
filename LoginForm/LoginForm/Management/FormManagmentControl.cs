@@ -81,33 +81,49 @@ namespace LoginForm.ManagementModule
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            try
+            if (chkCustomer.Checked==true)
             {
-                IMEEntities IME = new IMEEntities();
-                Management management = IME.Managements.First();
-                management.LowMarginLimit = Convert.ToDecimal(txtLowMarginLimit.Text);
-                management.VAT = Convert.ToDecimal(txtVAT.Text);
-                management.Factor = numericFactor.Value;
-                management.DefaultCurrency = Convert.ToDecimal(cbCurrency.SelectedValue);
-                management.DataSeperetor = txtDataSeperator.Text;
-                //management.BranchCode = txtBranchCode.Text;
-                management.CustomsRate = CustomsRateUpDown.Value;
-                management.FreightCharge = FreightChargeUpDown.Value;
-                IME.SaveChanges();
-
-                Company c = IME.Companies.Where(x => x.companyId == management.CurrentCompanyId).FirstOrDefault();
-                c.BranchCode = txtBranchCode.Text;
-
-                IME.SaveChanges();
-
-
-
-                MessageBox.Show("Changes Saved", "Success");
+                try
+                {
+                    FactorUpdate();
+                    MessageBox.Show("Factor added to customers", "Successfully");
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("MC1: An error occured while saving changes. Try again.");
+                    throw;
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("MC1: An error occured while saving changes. Try again.");
-                throw;
+                try
+                {
+                    IMEEntities IME = new IMEEntities();
+                    Management management = IME.Managements.First();
+                    management.LowMarginLimit = Convert.ToDecimal(txtLowMarginLimit.Text);
+                    management.VAT = Convert.ToDecimal(txtVAT.Text);
+                    management.Factor = numericFactor.Value;
+                    management.DefaultCurrency = Convert.ToDecimal(cbCurrency.SelectedValue);
+                    management.DataSeperetor = txtDataSeperator.Text;
+                    //management.BranchCode = txtBranchCode.Text;
+                    management.CustomsRate = CustomsRateUpDown.Value;
+                    management.FreightCharge = FreightChargeUpDown.Value;
+                    IME.SaveChanges();
+
+                    Company c = IME.Companies.Where(x => x.companyId == management.CurrentCompanyId).FirstOrDefault();
+                    c.BranchCode = txtBranchCode.Text;
+
+                    IME.SaveChanges();
+
+
+
+                    MessageBox.Show("Changes Saved", "Success");
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("MC1: An error occured while saving changes. Try again.");
+                    throw;
+                }
             }
         }
 
@@ -117,20 +133,5 @@ namespace LoginForm.ManagementModule
             //IME.SaveChanges();
         }
 
-        private void btnCustomerFactorSave_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                FactorUpdate();
-                MessageBox.Show("Factor added to customers", "Successfully");
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("MC1: An error occured while saving changes. Try again.");
-                throw;
-            }
-            
-            
-        }
     }
 }

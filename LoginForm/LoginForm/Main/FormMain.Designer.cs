@@ -119,7 +119,7 @@
             this.btnFileLoader.Name = "btnFileLoader";
             this.btnFileLoader.Size = new System.Drawing.Size(213, 50);
             this.btnFileLoader.TabIndex = 29;
-            this.btnFileLoader.Text = "File Loader";
+            this.btnFileLoader.Text = "Import Files";
             this.btnFileLoader.UseVisualStyleBackColor = false;
             this.btnFileLoader.Click += new System.EventHandler(this.btnLoader_Click);
             // 
@@ -153,7 +153,7 @@
             this.btnDevelopment.Name = "btnDevelopment";
             this.btnDevelopment.Size = new System.Drawing.Size(213, 50);
             this.btnDevelopment.TabIndex = 34;
-            this.btnDevelopment.Text = "Developments";
+            this.btnDevelopment.Text = "Main";
             this.btnDevelopment.UseVisualStyleBackColor = false;
             this.btnDevelopment.Click += new System.EventHandler(this.btnDevelopment_Click);
             // 
@@ -222,7 +222,7 @@
             // 
             this.controlManagement.Dock = System.Windows.Forms.DockStyle.Fill;
             this.controlManagement.Location = new System.Drawing.Point(0, 0);
-            this.controlManagement.Margin = new System.Windows.Forms.Padding(2);
+            this.controlManagement.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.controlManagement.Name = "controlManagement";
             this.controlManagement.Size = new System.Drawing.Size(514, 737);
             this.controlManagement.TabIndex = 2;
@@ -273,7 +273,7 @@
             this.controlLoader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
             this.controlLoader.Dock = System.Windows.Forms.DockStyle.Fill;
             this.controlLoader.Location = new System.Drawing.Point(0, 0);
-            this.controlLoader.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.controlLoader.Margin = new System.Windows.Forms.Padding(2);
             this.controlLoader.Name = "controlLoader";
             this.controlLoader.Size = new System.Drawing.Size(257, 717);
             this.controlLoader.TabIndex = 0;
