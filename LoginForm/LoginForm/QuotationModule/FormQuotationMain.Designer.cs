@@ -34,6 +34,7 @@
             this.dgQuotation = new System.Windows.Forms.DataGridView();
             this.gridRightClick = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.dELETEQUOTATIONToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.uNDODELETEQUOTATIONToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.qUOTATIONINFOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.qUOTATIONPRINTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dISCONTINUEDUSERToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,7 +71,25 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dtpToDate = new System.Windows.Forms.DateTimePicker();
             this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
-            this.uNDODELETEQUOTATIONToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuotationNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rep_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PreparedBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RFQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Currency = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrderDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.City = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SaleOrderNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrderStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FirstNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Date1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rep1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SecondNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Date2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rep2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgQuotation)).BeginInit();
             this.gridRightClick.SuspendLayout();
@@ -105,6 +124,26 @@
             this.dgQuotation.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgQuotation.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgQuotation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgQuotation.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Date,
+            this.QuotationNo,
+            this.Rep_Name,
+            this.PreparedBy,
+            this.RFQ,
+            this.CustomerCode,
+            this.CustomerName,
+            this.Total,
+            this.Currency,
+            this.OrderDate,
+            this.City,
+            this.SaleOrderNo,
+            this.OrderStatus,
+            this.FirstNote,
+            this.Date1,
+            this.Rep1,
+            this.SecondNote,
+            this.Date2,
+            this.Rep2});
             this.dgQuotation.ContextMenuStrip = this.gridRightClick;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
@@ -119,7 +158,6 @@
             this.dgQuotation.Location = new System.Drawing.Point(8, 129);
             this.dgQuotation.Margin = new System.Windows.Forms.Padding(8);
             this.dgQuotation.Name = "dgQuotation";
-            this.dgQuotation.ReadOnly = true;
             this.dgQuotation.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.dgQuotation.RowTemplate.Height = 24;
             this.dgQuotation.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -129,6 +167,7 @@
             this.dgQuotation.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgQuotation_CellEndEdit);
             this.dgQuotation.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgQuotation_CellMouseDoubleClick);
             this.dgQuotation.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgQuotation_KeyDown);
+            this.dgQuotation.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgQuotation_MouseDown);
             // 
             // gridRightClick
             // 
@@ -142,53 +181,60 @@
             this.mODIFYQUOTATIONToolStripMenuItem,
             this.uPDATEQUOTATIONToolStripMenuItem});
             this.gridRightClick.Name = "gridRightClick";
-            this.gridRightClick.Size = new System.Drawing.Size(220, 202);
+            this.gridRightClick.Size = new System.Drawing.Size(195, 180);
             // 
             // dELETEQUOTATIONToolStripMenuItem
             // 
             this.dELETEQUOTATIONToolStripMenuItem.Name = "dELETEQUOTATIONToolStripMenuItem";
-            this.dELETEQUOTATIONToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
-            this.dELETEQUOTATIONToolStripMenuItem.Text = "DELETE QUOTATION";
+            this.dELETEQUOTATIONToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.dELETEQUOTATIONToolStripMenuItem.Text = "DELETE";
             this.dELETEQUOTATIONToolStripMenuItem.Click += new System.EventHandler(this.dELETEQUOTATIONToolStripMenuItem_Click);
+            // 
+            // uNDODELETEQUOTATIONToolStripMenuItem
+            // 
+            this.uNDODELETEQUOTATIONToolStripMenuItem.Name = "uNDODELETEQUOTATIONToolStripMenuItem";
+            this.uNDODELETEQUOTATIONToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.uNDODELETEQUOTATIONToolStripMenuItem.Text = "UNDO DELETE";
+            this.uNDODELETEQUOTATIONToolStripMenuItem.Click += new System.EventHandler(this.uNDODELETEQUOTATIONToolStripMenuItem_Click);
             // 
             // qUOTATIONINFOToolStripMenuItem
             // 
             this.qUOTATIONINFOToolStripMenuItem.Name = "qUOTATIONINFOToolStripMenuItem";
-            this.qUOTATIONINFOToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
-            this.qUOTATIONINFOToolStripMenuItem.Text = " QUOTATION INFO";
+            this.qUOTATIONINFOToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.qUOTATIONINFOToolStripMenuItem.Text = " INFO";
             this.qUOTATIONINFOToolStripMenuItem.Click += new System.EventHandler(this.qUOTATIONINFOToolStripMenuItem_Click);
             // 
             // qUOTATIONPRINTToolStripMenuItem
             // 
             this.qUOTATIONPRINTToolStripMenuItem.Name = "qUOTATIONPRINTToolStripMenuItem";
-            this.qUOTATIONPRINTToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
-            this.qUOTATIONPRINTToolStripMenuItem.Text = " QUOTATION PRINT";
+            this.qUOTATIONPRINTToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.qUOTATIONPRINTToolStripMenuItem.Text = "PRINT";
             this.qUOTATIONPRINTToolStripMenuItem.Click += new System.EventHandler(this.qUOTATIONPRINTToolStripMenuItem_Click);
             // 
             // dISCONTINUEDUSERToolStripMenuItem
             // 
             this.dISCONTINUEDUSERToolStripMenuItem.Name = "dISCONTINUEDUSERToolStripMenuItem";
-            this.dISCONTINUEDUSERToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
+            this.dISCONTINUEDUSERToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.dISCONTINUEDUSERToolStripMenuItem.Text = "DISCONTINUED USER";
             // 
             // cOPYQUOTATIONToolStripMenuItem
             // 
             this.cOPYQUOTATIONToolStripMenuItem.Name = "cOPYQUOTATIONToolStripMenuItem";
-            this.cOPYQUOTATIONToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
+            this.cOPYQUOTATIONToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.cOPYQUOTATIONToolStripMenuItem.Text = "COPY QUOTATION";
             // 
             // mODIFYQUOTATIONToolStripMenuItem
             // 
             this.mODIFYQUOTATIONToolStripMenuItem.Name = "mODIFYQUOTATIONToolStripMenuItem";
-            this.mODIFYQUOTATIONToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
+            this.mODIFYQUOTATIONToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.mODIFYQUOTATIONToolStripMenuItem.Text = "CREATE NEW VERSION";
             this.mODIFYQUOTATIONToolStripMenuItem.Click += new System.EventHandler(this.mODIFYQUOTATIONToolStripMenuItem_Click);
             // 
             // uPDATEQUOTATIONToolStripMenuItem
             // 
             this.uPDATEQUOTATIONToolStripMenuItem.Name = "uPDATEQUOTATIONToolStripMenuItem";
-            this.uPDATEQUOTATIONToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
-            this.uPDATEQUOTATIONToolStripMenuItem.Text = "MODIFY QUOTATION";
+            this.uPDATEQUOTATIONToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.uPDATEQUOTATIONToolStripMenuItem.Text = "MODIFY";
             this.uPDATEQUOTATIONToolStripMenuItem.Click += new System.EventHandler(this.uPDATEQUOTATIONToolStripMenuItem_Click);
             // 
             // panel1
@@ -212,7 +258,7 @@
             this.btnSearchStockNumber.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearchStockNumber.Image = global::LoginForm.Properties.Resources.if_search_magnifying_glass_find_103857;
             this.btnSearchStockNumber.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnSearchStockNumber.Location = new System.Drawing.Point(1220, 14);
+            this.btnSearchStockNumber.Location = new System.Drawing.Point(1286, 22);
             this.btnSearchStockNumber.Margin = new System.Windows.Forms.Padding(0);
             this.btnSearchStockNumber.Name = "btnSearchStockNumber";
             this.btnSearchStockNumber.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
@@ -225,7 +271,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(1220, 70);
+            this.label9.Location = new System.Drawing.Point(1286, 78);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(46, 15);
             this.label9.TabIndex = 27;
@@ -235,7 +281,7 @@
             // 
             this.groupBox4.Controls.Add(this.txtStockCode);
             this.groupBox4.Controls.Add(this.chcCustStockNumber);
-            this.groupBox4.Location = new System.Drawing.Point(1001, 3);
+            this.groupBox4.Location = new System.Drawing.Point(1063, 3);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(200, 106);
             this.groupBox4.TabIndex = 31;
@@ -264,7 +310,7 @@
             this.groupBox3.Controls.Add(this.cbSearch);
             this.groupBox3.Controls.Add(this.txtSearchText);
             this.groupBox3.Controls.Add(this.chcAllQuots);
-            this.groupBox3.Location = new System.Drawing.Point(767, 3);
+            this.groupBox3.Location = new System.Drawing.Point(822, 3);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(228, 109);
             this.groupBox3.TabIndex = 30;
@@ -325,7 +371,7 @@
             this.groupBox2.Controls.Add(this.btnDeleteQuotation);
             this.groupBox2.Location = new System.Drawing.Point(234, -1);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(527, 112);
+            this.groupBox2.Size = new System.Drawing.Size(582, 112);
             this.groupBox2.TabIndex = 29;
             this.groupBox2.TabStop = false;
             // 
@@ -357,7 +403,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(474, 80);
+            this.label8.Location = new System.Drawing.Point(512, 80);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(32, 15);
             this.label8.TabIndex = 30;
@@ -368,9 +414,9 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(407, 82);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(37, 15);
+            this.label7.Size = new System.Drawing.Size(75, 15);
             this.label7.TabIndex = 29;
-            this.label7.Text = "Excel";
+            this.label7.Text = "Export Excel";
             // 
             // button5
             // 
@@ -379,7 +425,7 @@
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Image = global::LoginForm.Properties.Resources.if_print_173079;
             this.button5.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button5.Location = new System.Drawing.Point(465, 23);
+            this.button5.Location = new System.Drawing.Point(503, 23);
             this.button5.Margin = new System.Windows.Forms.Padding(0);
             this.button5.Name = "button5";
             this.button5.Padding = new System.Windows.Forms.Padding(8, 16, 8, 0);
@@ -394,7 +440,7 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Image = global::LoginForm.Properties.Resources.if_Document_file_export_sending_exit_send_1886950;
             this.button4.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button4.Location = new System.Drawing.Point(398, 22);
+            this.button4.Location = new System.Drawing.Point(418, 22);
             this.button4.Margin = new System.Windows.Forms.Padding(0);
             this.button4.Name = "button4";
             this.button4.Padding = new System.Windows.Forms.Padding(8, 16, 8, 0);
@@ -557,12 +603,119 @@
             this.dtpFromDate.Size = new System.Drawing.Size(119, 21);
             this.dtpFromDate.TabIndex = 19;
             // 
-            // uNDODELETEQUOTATIONToolStripMenuItem
+            // Date
             // 
-            this.uNDODELETEQUOTATIONToolStripMenuItem.Name = "uNDODELETEQUOTATIONToolStripMenuItem";
-            this.uNDODELETEQUOTATIONToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
-            this.uNDODELETEQUOTATIONToolStripMenuItem.Text = "UNDO DELETE QUOTATION";
-            this.uNDODELETEQUOTATIONToolStripMenuItem.Click += new System.EventHandler(this.uNDODELETEQUOTATIONToolStripMenuItem_Click);
+            this.Date.HeaderText = "Date";
+            this.Date.Name = "Date";
+            this.Date.ReadOnly = true;
+            // 
+            // QuotationNo
+            // 
+            this.QuotationNo.HeaderText = "QuotationNo";
+            this.QuotationNo.Name = "QuotationNo";
+            this.QuotationNo.ReadOnly = true;
+            // 
+            // Rep_Name
+            // 
+            this.Rep_Name.HeaderText = "Rep_Name";
+            this.Rep_Name.Name = "Rep_Name";
+            this.Rep_Name.ReadOnly = true;
+            // 
+            // PreparedBy
+            // 
+            this.PreparedBy.HeaderText = "PreparedBy";
+            this.PreparedBy.Name = "PreparedBy";
+            this.PreparedBy.ReadOnly = true;
+            // 
+            // RFQ
+            // 
+            this.RFQ.HeaderText = "RFQ";
+            this.RFQ.Name = "RFQ";
+            this.RFQ.ReadOnly = true;
+            // 
+            // CustomerCode
+            // 
+            this.CustomerCode.HeaderText = "CustomerCode";
+            this.CustomerCode.Name = "CustomerCode";
+            this.CustomerCode.ReadOnly = true;
+            // 
+            // CustomerName
+            // 
+            this.CustomerName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.CustomerName.HeaderText = "CustomerName";
+            this.CustomerName.Name = "CustomerName";
+            this.CustomerName.ReadOnly = true;
+            this.CustomerName.Width = 119;
+            // 
+            // Total
+            // 
+            this.Total.HeaderText = "Total";
+            this.Total.Name = "Total";
+            this.Total.ReadOnly = true;
+            // 
+            // Currency
+            // 
+            this.Currency.HeaderText = "Currency";
+            this.Currency.Name = "Currency";
+            this.Currency.ReadOnly = true;
+            // 
+            // OrderDate
+            // 
+            this.OrderDate.HeaderText = "OrderDate";
+            this.OrderDate.Name = "OrderDate";
+            this.OrderDate.ReadOnly = true;
+            // 
+            // City
+            // 
+            this.City.HeaderText = "City";
+            this.City.Name = "City";
+            this.City.ReadOnly = true;
+            // 
+            // SaleOrderNo
+            // 
+            this.SaleOrderNo.HeaderText = "SaleOrderNo";
+            this.SaleOrderNo.Name = "SaleOrderNo";
+            this.SaleOrderNo.ReadOnly = true;
+            // 
+            // OrderStatus
+            // 
+            this.OrderStatus.HeaderText = "OrderStatus";
+            this.OrderStatus.Name = "OrderStatus";
+            this.OrderStatus.ReadOnly = true;
+            // 
+            // FirstNote
+            // 
+            this.FirstNote.HeaderText = "FirstNote";
+            this.FirstNote.Name = "FirstNote";
+            // 
+            // Date1
+            // 
+            this.Date1.HeaderText = "Date1";
+            this.Date1.Name = "Date1";
+            this.Date1.ReadOnly = true;
+            // 
+            // Rep1
+            // 
+            this.Rep1.HeaderText = "Rep1";
+            this.Rep1.Name = "Rep1";
+            this.Rep1.ReadOnly = true;
+            // 
+            // SecondNote
+            // 
+            this.SecondNote.HeaderText = "SecondNote";
+            this.SecondNote.Name = "SecondNote";
+            // 
+            // Date2
+            // 
+            this.Date2.HeaderText = "Date2";
+            this.Date2.Name = "Date2";
+            this.Date2.ReadOnly = true;
+            // 
+            // Rep2
+            // 
+            this.Rep2.HeaderText = "Rep2";
+            this.Rep2.Name = "Rep2";
+            this.Rep2.ReadOnly = true;
             // 
             // FormQuotationMain
             // 
@@ -637,5 +790,24 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.ToolStripMenuItem uPDATEQUOTATIONToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem uNDODELETEQUOTATIONToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QuotationNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Rep_Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PreparedBy;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RFQ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CustomerCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CustomerName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Total;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Currency;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OrderDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn City;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SaleOrderNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OrderStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FirstNote;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Date1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Rep1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SecondNote;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Date2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Rep2;
     }
 }

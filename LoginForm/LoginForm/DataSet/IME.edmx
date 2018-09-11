@@ -796,6 +796,12 @@
           <Property Name="GrossTotal" Type="decimal" Precision="18" Scale="4" />
           <Property Name="CurrencyID" Type="numeric" Precision="18" Scale="0" />
           <Property Name="status" Type="nvarchar" MaxLength="7" />
+          <Property Name="FirstNote" Type="nvarchar(max)" />
+          <Property Name="NoteRep1" Type="nvarchar" MaxLength="30" />
+          <Property Name="NoteDate1" Type="datetime" />
+          <Property Name="SecondNote" Type="nvarchar(max)" />
+          <Property Name="NoteRep2" Type="nvarchar" MaxLength="30" />
+          <Property Name="NoteDate2" Type="datetime" />
         </EntityType>
         <EntityType Name="QuotationDelivery">
           <Key>
@@ -5247,6 +5253,12 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="GrossTotal" Type="Decimal" Precision="18" Scale="4" />
           <Property Name="CurrencyID" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="status" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="FirstNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NoteRep1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="NoteDate1" Type="DateTime" Precision="3" />
+          <Property Name="SecondNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NoteRep2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="NoteDate2" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Currency" Relationship="Self.FK__Quotation__Curre__0A096455" FromRole="Quotation" ToRole="Currency" />
           <NavigationProperty Name="Customer" Relationship="Self.FK__Quotation__Custo__00750D23" FromRole="Quotation" ToRole="Customer" />
           <NavigationProperty Name="ExchangeRate" Relationship="Self.FK__Quotation__Excha__4321E620" FromRole="Quotation" ToRole="ExchangeRate" />
@@ -10247,6 +10259,12 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="GrossTotal" ColumnName="GrossTotal" />
                 <ScalarProperty Name="CurrencyID" ColumnName="CurrencyID" />
                 <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="FirstNote" ColumnName="FirstNote" />
+                <ScalarProperty Name="NoteRep1" ColumnName="NoteRep1" />
+                <ScalarProperty Name="NoteDate1" ColumnName="NoteDate1" />
+                <ScalarProperty Name="SecondNote" ColumnName="SecondNote" />
+                <ScalarProperty Name="NoteRep2" ColumnName="NoteRep2" />
+                <ScalarProperty Name="NoteDate2" ColumnName="NoteDate2" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

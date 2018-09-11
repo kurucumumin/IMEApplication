@@ -53,6 +53,12 @@ namespace LoginForm.DataSet
         public Nullable<decimal> GrossTotal { get; set; }
         public Nullable<decimal> CurrencyID { get; set; }
         public string status { get; set; }
+        public string FirstNote { get; set; }
+        public string NoteRep1 { get; set; }
+        public Nullable<System.DateTime> NoteDate1 { get; set; }
+        public string SecondNote { get; set; }
+        public string NoteRep2 { get; set; }
+        public Nullable<System.DateTime> NoteDate2 { get; set; }
     
         public virtual Currency Currency { get; set; }
         public virtual Customer Customer { get; set; }

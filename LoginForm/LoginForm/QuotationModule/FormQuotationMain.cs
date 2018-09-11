@@ -13,18 +13,10 @@ namespace LoginForm.QuotationModule
 {
     public partial class FormQuotationMain : MyForm
     {
-        //SqlConnection sqlCon;
-        //SqlDataAdapter da;
-        //System.Data.DataSet ds;
-        ////Form1 Veritabanı bağlantısı için sqlStr Sql sorgumuz için sqlCmd yi tanımlıyoruz
-        //string sqlStr = @"Data Source=195.201.76.136;Initial Catalog=IME;Persist Security Info=True;User ID=sa;Password=ime1453..";
-        //string sqlCmd = "select * from Quotation"; // AdventureWorks2012 Database indeki Person tablosunu getirir
-
+        
         DateTime dateNow;
         Worker currentUser = Utils.getCurrentUser();
-
-        //BackgroundWorker worker;
-        //private delegate void DELEGATE();
+        
         public FormQuotationMain()
         {
             IMEEntities IME = new IMEEntities();
@@ -48,9 +40,6 @@ namespace LoginForm.QuotationModule
 
         private void btnRefreshList_Click(object sender, EventArgs e)
         {
-            //worker.DoWork += worker_DoWork;
-            //worker.RunWorkerAsync();
-
             BringQuotationList(dtpFromDate.Value, dtpToDate.Value);
         }
 
@@ -60,7 +49,6 @@ namespace LoginForm.QuotationModule
             {
                 ViewQuotation();
             }
-
         }
 
         private void ViewQuotation()
@@ -143,7 +131,7 @@ namespace LoginForm.QuotationModule
             IMEEntities IME = new IMEEntities();
             if (!Utils.AuthorityCheck(IMEAuthority.CanDeleteQuotation))//Can Delete Quotation
             {
-               btnDeleteQuotation.Enabled = false;
+                btnDeleteQuotation.Enabled = false;
             }
             if (!Utils.AuthorityCheck(IMEAuthority.CanEditAnyQuotation))//Can Modify edit
             {
@@ -180,18 +168,15 @@ namespace LoginForm.QuotationModule
                                              Total = q.GrossTotal,
                                              Currency = q.CurrName,
                                              OrderDate = "",
-                                             Logo = "",
-                                            // CustomerNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
-                                            //UserNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
                                              City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
                                              SaleOrderNo = q.SaleOrderID, 
                                              OrderStatus = q.status,
-                                             FirstFallowUpNotes = "",
-                                             NT1AddedBy = currentUser.NameLastName.ToString(),
-                                             NT1AddedDate = "",
-                                             SecondFallowUpNotes = "",
-                                            NT2AddedBy = currentUser.NameLastName.ToString(),
-                                             NT2AddedDate = ""
+                                             FirstNote = q.FirstNote,
+                                             Date1 = q.NoteDate1,
+                                             Rep1 = q.NoteRep1,
+                                             SecondNote = q.SecondNote,
+                                             Date2 = q.NoteDate2,
+                                             Rep2 = q.NoteRep2
                                          }).ToList().Where(x => x.QuotationNo.Substring(x.QuotationNo.LastIndexOf('/')).Contains(txtSearchText.Text));
 
                             populateGrid(list1.ToList());
@@ -214,18 +199,15 @@ namespace LoginForm.QuotationModule
                                             Total = q.GrossTotal,
                                             Currency = q.CurrName,
                                             OrderDate = "",
-                                            Logo = "",
-                                           // CustomerNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
-                                           //UserNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
                                             City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
                                             SaleOrderNo = q.SaleOrderID,
                                             OrderStatus = q.status,
-                                            FirstFallowUpNotes = "",
-                                            NT1AddedBy = currentUser.NameLastName.ToString(),
-                                            NT1AddedDate = "",
-                                            SecondFallowUpNotes = "",
-                                           NT2AddedBy = currentUser.NameLastName.ToString(),
-                                            NT2AddedDate = ""
+                                            FirstNote = q.FirstNote,
+                                            Date1 = q.NoteDate1,
+                                            Rep1 = q.NoteRep1,
+                                            SecondNote = q.SecondNote,
+                                            Date2 = q.NoteDate2,
+                                            Rep2 = q.NoteRep2
                                         };
 
                             populateGrid(list2.ToList());
@@ -248,18 +230,15 @@ namespace LoginForm.QuotationModule
                                             Total = q.GrossTotal,
                                             Currency = q.CurrName,
                                             OrderDate = "",
-                                            Logo = "",
-                                           // CustomerNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
-                                           //UserNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
                                             City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
                                             SaleOrderNo = q.SaleOrderID,
                                             OrderStatus = q.status,
-                                            FirstFallowUpNotes = "",
-                                            NT1AddedBy = currentUser.NameLastName.ToString(),
-                                            NT1AddedDate = "",
-                                            SecondFallowUpNotes = "",
-                                           NT2AddedBy = currentUser.NameLastName.ToString(),
-                                            NT2AddedDate = ""
+                                            FirstNote = q.FirstNote,
+                                            Date1 = q.NoteDate1,
+                                            Rep1 = q.NoteRep1,
+                                            SecondNote = q.SecondNote,
+                                            Date2 = q.NoteDate2,
+                                            Rep2 = q.NoteRep2
                                         };
 
                             populateGrid(list3.ToList());
@@ -286,18 +265,15 @@ namespace LoginForm.QuotationModule
                                                 Total = q.GrossTotal,
                                                 Currency = q.CurrName,
                                                 OrderDate = "",
-                                                Logo = "",
-                                               // CustomerNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
-                                               //UserNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
                                                 City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
                                                 SaleOrderNo = q.SaleOrderID,
                                                 OrderStatus = q.status,
-                                                FirstFallowUpNotes = "",
-                                                NT1AddedBy = currentUser.NameLastName.ToString(),
-                                                NT1AddedDate = "",
-                                                SecondFallowUpNotes = "",
-                                               NT2AddedBy = currentUser.NameLastName.ToString(),
-                                                NT2AddedDate = ""
+                                                FirstNote = q.FirstNote,
+                                                Date1 = q.NoteDate1,
+                                                Rep1 = q.NoteRep1,
+                                                SecondNote = q.SecondNote,
+                                                Date2 = q.NoteDate2,
+                                                Rep2 = q.NoteRep2
                                             };
 
                                 populateGrid(list4.ToList());
@@ -322,18 +298,15 @@ namespace LoginForm.QuotationModule
                                             Total = q.GrossTotal,
                                             Currency = q.CurrName,
                                             OrderDate = "",
-                                            Logo = "",
-                                           // CustomerNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
-                                           //UserNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
                                             City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
                                             SaleOrderNo = q.SaleOrderID,
                                             OrderStatus = q.status,
-                                            FirstFallowUpNotes = "",
-                                            NT1AddedBy = currentUser.NameLastName.ToString(),
-                                            NT1AddedDate = "",
-                                            SecondFallowUpNotes = "",
-                                           NT2AddedBy = currentUser.NameLastName.ToString(),
-                                            NT2AddedDate = ""
+                                            FirstNote = q.FirstNote,
+                                            Date1 = q.NoteDate1,
+                                            Rep1 = q.NoteRep1,
+                                            SecondNote = q.SecondNote,
+                                            Date2 = q.NoteDate2,
+                                            Rep2 = q.NoteRep2
                                         };
 
                             populateGrid(list5.ToList());
@@ -382,18 +355,15 @@ namespace LoginForm.QuotationModule
                                              Total = q.GrossTotal,
                                              Currency = q.CurrName,
                                              OrderDate = "",
-                                             Logo = "",
-                                            // CustomerNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
-                                            //UserNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
                                              City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
                                              SaleOrderNo = q.SaleOrderID,
                                              OrderStatus = q.status,
-                                             FirstFallowUpNotes = "",
-                                             NT1AddedBy = currentUser.NameLastName.ToString(),
-                                             NT1AddedDate = "",
-                                             SecondFallowUpNotes = "",
-                                            NT2AddedBy = currentUser.NameLastName.ToString(),
-                                             NT2AddedDate = ""
+                                             FirFirstNote = q.FirstNote,
+                                             Date1 = q.NoteDate1,
+                                             Rep1 = q.NoteRep1,
+                                             SecondNote = q.SecondNote,
+                                             Date2 = q.NoteDate2,
+                                             Rep2 = q.NoteRep2
                                          }).ToList().Where(x => x.QuotationNo.Substring(x.QuotationNo.LastIndexOf('/')).Contains(txtSearchText.Text));
 
                             populateGrid(list1.ToList());
@@ -417,18 +387,15 @@ namespace LoginForm.QuotationModule
                                             Total = q.GrossTotal,
                                             Currency = q.CurrName,
                                             OrderDate = "",
-                                            Logo = "",
-                                           // CustomerNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
-                                           //UserNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
                                             City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
                                             SaleOrderNo = q.SaleOrderID,
                                             OrderStatus = q.status,
-                                            FirstFallowUpNotes = "",
-                                            NT1AddedBy = currentUser.NameLastName.ToString(),
-                                            NT1AddedDate = "",
-                                            SecondFallowUpNotes = "",
-                                           NT2AddedBy = currentUser.NameLastName.ToString(),
-                                            NT2AddedDate = ""
+                                            FirstNote = q.FirstNote,
+                                            Date1 = q.NoteDate1,
+                                            Rep1 = q.NoteRep1,
+                                            SecondNote = q.SecondNote,
+                                            Date2 = q.NoteDate2,
+                                            Rep2 = q.NoteRep2
                                         };
 
                             populateGrid(list2.ToList());
@@ -452,18 +419,15 @@ namespace LoginForm.QuotationModule
                                             Total = q.GrossTotal,
                                             Currency = q.CurrName,
                                             OrderDate = "",
-                                            Logo = "",
-                                           // CustomerNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
-                                           //UserNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
                                             City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
                                             SaleOrderNo = q.SaleOrderID,
                                             OrderStatus = q.status,
-                                            FirstFallowUpNotes = "",
-                                            NT1AddedBy = currentUser.NameLastName.ToString(),
-                                            NT1AddedDate = "",
-                                            SecondFallowUpNotes = "",
-                                           NT2AddedBy = currentUser.NameLastName.ToString(),
-                                            NT2AddedDate = ""
+                                            FirstNote = q.FirstNote,
+                                            Date1 = q.NoteDate1,
+                                            Rep1 = q.NoteRep1,
+                                            SecondNote = q.SecondNote,
+                                            Date2 = q.NoteDate2,
+                                            Rep2 = q.NoteRep2
                                         };
 
                             populateGrid(list3.ToList());
@@ -491,18 +455,15 @@ namespace LoginForm.QuotationModule
                                                 Total = q.GrossTotal,
                                                 Currency = q.CurrName,
                                                 OrderDate = "",
-                                                Logo = "",
-                                               // CustomerNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
-                                               //UserNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
                                                 City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
                                                 SaleOrderNo = q.SaleOrderID,
                                                 OrderStatus = q.status,
-                                                FirstFallowUpNotes = "",
-                                                NT1AddedBy = currentUser.NameLastName.ToString(),
-                                                NT1AddedDate = "",
-                                                SecondFallowUpNotes = "",
-                                               NT2AddedBy = currentUser.NameLastName.ToString(),
-                                                NT2AddedDate = ""
+                                                FirstNote = q.FirstNote,
+                                                Date1 = q.NoteDate1,
+                                                Rep1 = q.NoteRep1,
+                                                SecondNote = q.SecondNote,
+                                                Date2 = q.NoteDate2,
+                                                Rep2 = q.NoteRep2
                                             };
 
                                 populateGrid(list4.ToList());
@@ -528,18 +489,15 @@ namespace LoginForm.QuotationModule
                                             Total = q.GrossTotal,
                                             Currency = q.CurrName,
                                             OrderDate = "",
-                                            Logo = "",
-                                           // CustomerNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
-                                           //UserNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
                                             City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
                                             SaleOrderNo = q.SaleOrderID,
                                             OrderStatus = q.status,
-                                            FirstFallowUpNotes = "",
-                                            NT1AddedBy = currentUser.NameLastName.ToString(),
-                                            NT1AddedDate = "",
-                                            SecondFallowUpNotes = "",
-                                           NT2AddedBy = currentUser.NameLastName.ToString(),
-                                            NT2AddedDate = ""
+                                            FirstNote = q.FirstNote,
+                                            Date1 = q.NoteDate1,
+                                            Rep1 = q.NoteRep1,
+                                            SecondNote = q.SecondNote,
+                                            Date2 = q.NoteDate2,
+                                            Rep2 = q.NoteRep2
                                         };
 
                             populateGrid(list5.ToList());
@@ -607,11 +565,11 @@ namespace LoginForm.QuotationModule
 
         private void BringQuotationList(DateTime fromDate, DateTime toDate)
         {
+            dgQuotation.Rows.Clear();
+            dgQuotation.Refresh();
 
             IMEEntities IME = new IMEEntities();
-            // DateTime time = Convert.ToDateTime(IME.CurrentDate().FirtsOrDefault());
-            //  MessageBox.Show(time.ToString());
-            var list = (from q in IME.Quotations/*.AsEnumerable()*/
+            var list = (from q in IME.Quotations
                         join c in IME.Customers on q.CustomerID equals c.ID
                         where q.StartDate >= fromDate && q.StartDate < toDate
                         select new
@@ -626,22 +584,54 @@ namespace LoginForm.QuotationModule
                             Total = q.GrossTotal,
                             Currency = q.Currency.currencySymbol,
                             OrderDate = "",
-                            Logo = "",
-                            //CustomerNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
-                            //UserNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
                             City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
                             SaleOrderNo = q.SaleOrderID,
                             OrderStatus = q.status,
-                            FirstFallowUpNotes = "",
-                            NT1AddedBy = currentUser.NameLastName.ToString(),
-                            NT1AddedDate = "",
-                            SecondFallowUpNotes = "",
-                            NT2AddedBy = currentUser.NameLastName.ToString(),
-                            NT2AddedDate = ""
+                            FirstNote = q.FirstNote,
+                            Date1 = q.NoteDate1,
+                            Rep1 = q.NoteRep1,
+                            SecondNote = q.SecondNote,
+                            Date2 = q.NoteDate2,
+                            Rep2 = q.NoteRep2
                         }).OrderByDescending(x => x.Date);
 
             populateGrid(list.ToList());
-            //.OrderByDescending(x => int.Parse(x.QuotationNo.Substring(5)).ToList());
+
+            //foreach (var item in list)
+            //{
+            //    int rowIndex = dgQuotation.Rows.Add();
+            //    DataGridViewRow row = dgQuotation.Rows[rowIndex];
+
+
+            //    row.Cells[Date.Index].Value = item.Date;
+            //    row.Cells["QuotationNo"].Value = item.QuotationNo;
+            //    row.Cells["Rep_Name"].Value = item.Rep_Name;
+            //    row.Cells["PreparedBy"].Value = item.PreparedBy;
+            //    row.Cells["RFQ"].Value = item.RFQ;
+            //    row.Cells["CustomerCode"].Value = item.CustomerCode;
+            //    row.Cells["CustomerName"].Value = item.CustomerName;
+            //    row.Cells["Total"].Value = item.Total;
+            //    row.Cells["Currency"].Value = item.Currency;
+            //    row.Cells["OrderDate"].Value = item.OrderDate;
+            //    row.Cells["City"].Value = item.City;
+            //    row.Cells["SaleOrderNo"].Value = item.SaleOrderNo;
+            //    row.Cells["OrderStatus"].Value = item.OrderStatus;
+            //    row.Cells["FirstNote"].Value = item.FirstNote;
+            //    row.Cells["Date1"].Value = item.Date1;
+            //    row.Cells["Rep1"].Value = item.Rep1;
+            //    row.Cells["SecondNote"].Value = item.SecondNote;
+            //    row.Cells["Date2"].Value = item.Date2;
+            //    row.Cells["Rep2"].Value = item.Rep2;
+
+            //}
+
+            //foreach (DataGridViewRow row in dgQuotation.Rows)
+            //{
+            //    if (row.Cells[OrderStatus.Index].Value != null && row.Cells[OrderStatus.Index].Value.ToString() == "Deleted")
+            //    {
+            //        row.DefaultCellStyle.BackColor = System.Drawing.Color.Red;
+            //    }
+            //}
         }
 
         public Int32 ConvertInt(String id)
@@ -652,23 +642,45 @@ namespace LoginForm.QuotationModule
 
         private void populateGrid<T>(List<T> queryable)
         {
-            dgQuotation.DataSource = null;
-            dgQuotation.DataSource = queryable;
+
+            dgQuotation.Rows.Clear();
+            dgQuotation.Refresh();
+
+            foreach (dynamic item in queryable)
+            {
+                int rowIndex = dgQuotation.Rows.Add();
+                DataGridViewRow row = dgQuotation.Rows[rowIndex];
+
+
+                row.Cells[Date.Index].Value = item.Date;
+                row.Cells["QuotationNo"].Value = item.QuotationNo;
+                row.Cells["Rep_Name"].Value = item.Rep_Name;
+                row.Cells["PreparedBy"].Value = item.PreparedBy;
+                row.Cells["RFQ"].Value = item.RFQ;
+                row.Cells["CustomerCode"].Value = item.CustomerCode;
+                row.Cells[CustomerName.Index].Value = item.CustomerName;
+                row.Cells["Total"].Value = item.Total;
+                row.Cells["Currency"].Value = item.Currency;
+                row.Cells["OrderDate"].Value = item.OrderDate;
+                row.Cells["City"].Value = item.City;
+                row.Cells["SaleOrderNo"].Value = item.SaleOrderNo;
+                row.Cells["OrderStatus"].Value = item.OrderStatus;
+                row.Cells["FirstNote"].Value = item.FirstNote;
+                row.Cells["Date1"].Value = item.Date1;
+                row.Cells["Rep1"].Value = item.Rep1;
+                row.Cells["SecondNote"].Value = item.SecondNote;
+                row.Cells["Date2"].Value = item.Date2;
+                row.Cells["Rep2"].Value = item.Rep2;
+
+            }
 
             foreach (DataGridViewRow row in dgQuotation.Rows)
             {
-                if (row.Cells["OrderStatus"].Value.ToString() == "Deleted")
+                if (row.Cells[OrderStatus.Index].Value != null && row.Cells[OrderStatus.Index].Value.ToString() == "Deleted")
                 {
                     row.DefaultCellStyle.BackColor = System.Drawing.Color.Red;
                 }
             }
-
-            for (int i = 0; i < dgQuotation.ColumnCount; i++)
-            {
-                dgQuotation.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            }
-
-            dgQuotation.Columns["CustomerName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void dgQuotation_KeyDown(object sender, KeyEventArgs e)
@@ -747,18 +759,15 @@ namespace LoginForm.QuotationModule
                                    Total = q.GrossTotal,
                                    Currency = q.CurrName,
                                    OrderDate = "",
-                                   Logo = "",
-                                  // CustomerNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
-                                  //UserNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
                                    City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
                                    SaleOrderNo = q.SaleOrderID,
                                    OrderStatus = q.status,
-                                   FirstFallowUpNotes = "",
-                                   NT1AddedBy = currentUser.NameLastName.ToString(),
-                                   NT1AddedDate = "",
-                                   SecondFallowUpNotes = "",
-                                  NT2AddedBy = currentUser.NameLastName.ToString(),
-                                   NT2AddedDate = ""
+                                   FirstNote = q.FirstNote,
+                                   Date1 = q.NoteDate1,
+                                   Rep1 = q.NoteRep1,
+                                   SecondNote = q.SecondNote,
+                                   Date2 = q.NoteDate2,
+                                   Rep2 = q.NoteRep2
                                };
                                    populateGrid(list.ToList());
                 }
@@ -780,18 +789,15 @@ namespace LoginForm.QuotationModule
                                     Total = q.GrossTotal,
                                     Currency = q.CurrName,
                                     OrderDate = "",
-                                    Logo = "",
-                                   // CustomerNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
-                                   //UserNotes = (q.Note.Note_name != null && q.Note.Note_name != "") ? "Y" : "N",
                                     City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
                                     SaleOrderNo = q.SaleOrderID,
                                     OrderStatus = q.status,
-                                    FirstFallowUpNotes = "",
-                                    NT1AddedBy = currentUser.NameLastName.ToString(),
-                                    NT1AddedDate = "",
-                                    SecondFallowUpNotes = "",
-                                    NT2AddedBy = currentUser.NameLastName.ToString(),
-                                    NT2AddedDate = ""
+                                    FirstNote = q.FirstNote,
+                                    Date1 = q.NoteDate1,
+                                    Rep1 = q.NoteRep1,
+                                    SecondNote = q.SecondNote,
+                                    Date2 = q.NoteDate2,
+                                    Rep2 = q.NoteRep2
                                 };
 
                     populateGrid(list2.ToList());
@@ -811,6 +817,7 @@ namespace LoginForm.QuotationModule
 
         private void dELETEQUOTATIONToolStripMenuItem_Click(object sender, EventArgs e)
         {
+         
             if (dgQuotation.CurrentRow != null)
             {
                 DialogResult result = MessageBox.Show("Selected quotation(s) will be deleted! Do you confirm?", "Delete Quotation", MessageBoxButtons.OKCancel);
@@ -882,9 +889,99 @@ namespace LoginForm.QuotationModule
 
         private void dgQuotation_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgQuotation.CurrentRow.Cells["OrderStatus"].Value.ToString() == "Deleted")
+            string note1 =  "";
+            string note2 = "";
+            if (dgQuotation.CurrentRow.Cells["FirstNote"].Value != null && dgQuotation.CurrentRow.Cells["FirstNote"].Value.ToString() != "")
             {
-                dgQuotation.CurrentRow.Cells["OrderStatus"].Style.BackColor = System.Drawing.Color.Red;
+                note1 = dgQuotation.CurrentRow.Cells["FirstNote"].Value.ToString();
+            }
+            if (dgQuotation.CurrentRow.Cells["SecondNote"].Value != null && dgQuotation.CurrentRow.Cells["SecondNote"].Value.ToString() != "")
+            {
+                note2= dgQuotation.CurrentRow.Cells["SecondNote"].Value.ToString();
+            }
+            
+            switch (dgQuotation.CurrentCell.ColumnIndex)
+            {
+                case 12:
+                    if (dgQuotation.CurrentRow.Cells["OrderStatus"].Value.ToString() == "Deleted")
+                    {
+                        dgQuotation.CurrentRow.Cells["OrderStatus"].Style.BackColor = System.Drawing.Color.Red;
+                    }
+                    break;
+                case 13:
+                    if (dgQuotation.CurrentRow != null)
+                    {
+                        DialogResult result = MessageBox.Show("Selected quotation will be note add! Do you confirm?", "Note Quotation", MessageBoxButtons.OKCancel);
+
+                        if (result == DialogResult.OK)
+                        {
+                            try
+                            {
+                                IMEEntities IME = new IMEEntities();
+
+                                foreach (DataGridViewRow row in dgQuotation.SelectedRows)
+                                {
+                                    string QuotationNo = row.Cells["QuotationNo"].Value.ToString();
+
+                                    Quotation quo = IME.Quotations.Where(q => q.QuotationNo == QuotationNo).FirstOrDefault();
+
+                                    quo.FirstNote = note1;
+                                    quo.NoteDate1 = Convert.ToDateTime(IME.CurrentDate().First());
+                                    quo.NoteRep1 = currentUser.NameLastName.ToString();
+
+                                    IME.SaveChanges();
+                                }
+
+                                IME.SaveChanges();
+
+                                BringQuotationList();
+                            }
+                            catch (Exception)
+                            {
+                                dgQuotation.CurrentRow.Cells[FirstNote.Index].Value = "";
+                                MessageBox.Show("Please press the enter key!", "Error!");
+                            }
+                        }
+                    }
+
+                    break;
+                case 16:
+                    if (dgQuotation.CurrentRow != null)
+                    {
+                        DialogResult result = MessageBox.Show("Selected quotation will be note add! Do you confirm?", "Note Quotation", MessageBoxButtons.OKCancel);
+
+                        if (result == DialogResult.OK)
+                        {
+                            try
+                            {
+                                IMEEntities IME = new IMEEntities();
+
+                                foreach (DataGridViewRow row in dgQuotation.SelectedRows)
+                                {
+                                    string QuotationNo = row.Cells["QuotationNo"].Value.ToString();
+
+                                    Quotation quo = IME.Quotations.Where(q => q.QuotationNo == QuotationNo).FirstOrDefault();
+
+                                    quo.SecondNote = note2;
+                                    quo.NoteDate2 = Convert.ToDateTime(IME.CurrentDate().First());
+                                    quo.NoteRep2 = currentUser.NameLastName.ToString();
+
+                                    IME.SaveChanges();
+                                }
+
+                                IME.SaveChanges();
+
+                                BringQuotationList();
+                            }
+                            catch (Exception)
+                            {
+                                dgQuotation.CurrentRow.Cells[SecondNote.Index].Value = "";
+                                MessageBox.Show("Please press the enter key! ", "Error!");
+                            }
+                        }
+                    }
+
+                    break;
             }
         }
 
@@ -1041,6 +1138,23 @@ namespace LoginForm.QuotationModule
             else
             {
                 MessageBox.Show("You did not chose any quotation.", "Warning!");
+            }
+        }
+
+        private void dgQuotation_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (dgQuotation.CurrentRow.Cells["OrderStatus"].Value.ToString() != "Deleted")
+                {
+                    dELETEQUOTATIONToolStripMenuItem.Visible = true;
+                    uNDODELETEQUOTATIONToolStripMenuItem.Visible = false;
+                }
+                else
+                {
+                    dELETEQUOTATIONToolStripMenuItem.Visible = false;
+                    uNDODELETEQUOTATIONToolStripMenuItem.Visible = true;
+                }
             }
         }
     }

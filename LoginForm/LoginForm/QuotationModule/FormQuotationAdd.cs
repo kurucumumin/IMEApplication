@@ -389,7 +389,7 @@ namespace LoginForm.QuotationModule
          System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
          dgQuotationAddedItems, new object[] { true });
             mod = mod2;
-            label67.Text = "Modify";
+            label67.Text = "Save Modification";
             btnCreateRev.Visible = false;
             label68.Visible = false;
             this.parent = parent;
@@ -857,7 +857,7 @@ namespace LoginForm.QuotationModule
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are You Sure To Close This Window?", "Exit", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            if (MessageBox.Show("Do you want to close without saving?", "Quotation Close", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 this.Close();
             }
@@ -2125,7 +2125,7 @@ namespace LoginForm.QuotationModule
             SaveOK = ControlSave();
             IMEEntities IME = new IMEEntities();
 
-            if (label67.Text=="Modify" && SaveOK)
+            if (label67.Text== "Save Modification" && SaveOK)
             {
 
                 #region QuotationUpdate
@@ -2261,7 +2261,7 @@ namespace LoginForm.QuotationModule
                     }
                 }
 
-                MessageBox.Show("Quotation is successfully deleted.", "Success!");
+                MessageBox.Show("Quotation is successfully modified.", "Success!");
                 #endregion
 
                 parent.BringQuotationList();
