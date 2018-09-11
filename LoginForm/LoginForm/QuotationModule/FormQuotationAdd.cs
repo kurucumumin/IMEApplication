@@ -1184,8 +1184,8 @@ namespace LoginForm.QuotationModule
                             //txtGrossWeight.Text = String.Format("{0:0.0000}", ((Decimal.Parse(txtLength.Text) * Decimal.Parse(txtWidth.Text) * Decimal.Parse(txtHeight.Text) / 6000) / ssm).ToString());
                             if (Int32.Parse(CurrentRow.Cells["dgSSM"].Value.ToString()) > 1)
                             {
-                                txtStandartWeight.Text = (decimal.Parse(txtStandartWeight.Text) /
-                                    Int32.Parse(CurrentRow.Cells["dgSSM"].Value.ToString())).ToString();
+                                //txtStandartWeight.Text = (decimal.Parse(txtStandartWeight.Text) /
+                                //    Int32.Parse(CurrentRow.Cells["dgSSM"].Value.ToString())).ToString();
 
                                 txtGrossWeight.Text = (decimal.Parse(txtGrossWeight.Text) /
                                     Int32.Parse(CurrentRow.Cells["dgSSM"].Value.ToString())).ToString();
@@ -1193,8 +1193,8 @@ namespace LoginForm.QuotationModule
                             }
                             else if (Int32.Parse(CurrentRow.Cells["dgUC"].Value.ToString()) > 1)
                             {
-                                txtStandartWeight.Text = (decimal.Parse(txtStandartWeight.Text) /
-                                    Int32.Parse(CurrentRow.Cells["dgUC"].Value.ToString())).ToString();
+                                //txtStandartWeight.Text = (decimal.Parse(txtStandartWeight.Text) /
+                                //    Int32.Parse(CurrentRow.Cells["dgUC"].Value.ToString())).ToString();
 
                                 txtGrossWeight.Text = (decimal.Parse(txtGrossWeight.Text) /
                                     Int32.Parse(CurrentRow.Cells["dgUC"].Value.ToString())).ToString();
@@ -1560,7 +1560,12 @@ namespace LoginForm.QuotationModule
             CurrentRow = dgQuotationAddedItems.CurrentRow;
             CurrentRow.Cells[dgCCCNO.Index].Value = txtCCCN.Text;
             CurrentRow.Cells[dgCOO.Index].Value = txtCofO.Text;
-            CurrentRow.Cells[dgUnitWeigt.Index].Value = txtStandartWeight.Text;
+
+            decimal SSM = Convert.ToDecimal(CurrentRow.Cells[dgSSM.Index].Value);
+            decimal UC = Convert.ToDecimal(CurrentRow.Cells[dgUC.Index].Value);
+            decimal StandardWeight = Convert.ToDecimal(txtStandartWeight.Text);
+
+            CurrentRow.Cells[dgUnitWeigt.Index].Value = (SSM > UC) ? StandardWeight / SSM : StandardWeight / UC;
             #endregion
         }
 
@@ -1659,7 +1664,12 @@ namespace LoginForm.QuotationModule
                 CurrentRow.Cells["dgUOM"].Value = ItemTabDetails.Unit_Measure;
                 CurrentRow.Cells["dgMPN"].Value = ItemTabDetails.MPN;
                 CurrentRow.Cells["dgCL"].Value = ItemTabDetails.Calibration_Ind;
-                if (ItemTabDetails.Standard_Weight != 0) { txtStandartWeight.Text = ((decimal)(ItemTabDetails.Standard_Weight) / (decimal)1000).ToString("G29") ?? ""; }
+                if (ItemTabDetails.Standard_Weight != 0)
+                {
+                    decimal sW = (decimal)(ItemTabDetails.Standard_Weight / (decimal)1000);
+                    sW = (ItemTabDetails.Pack_Quantity > ItemTabDetails.Unit_Content) ? (decimal)(sW / ItemTabDetails.Pack_Quantity) : (decimal)(sW / ItemTabDetails.Unit_Content);
+                    txtStandartWeight.Text = sW.ToString("G29");
+                }
                 txtHazardousInd.Text = ItemTabDetails.Hazardous_Ind;
                 txtCalibrationInd.Text = ItemTabDetails.Calibration_Ind;
                 txtCofO.Text = ItemTabDetails.CofO;
@@ -2992,7 +3002,12 @@ namespace LoginForm.QuotationModule
                 CurrentRow.Cells["dgUOM"].Value = ItemTabDetails.Unit_Measure;
                 CurrentRow.Cells["dgMPN"].Value = ItemTabDetails.MPN;
                 CurrentRow.Cells["dgCL"].Value = ItemTabDetails.Calibration_Ind;
-                if (ItemTabDetails.Standard_Weight != 0) { txtStandartWeight.Text = ((decimal)(ItemTabDetails.Standard_Weight) / (decimal)1000).ToString("G29") ?? ""; }
+                if (ItemTabDetails.Standard_Weight != 0 && ItemTabDetails.Standard_Weight != null)
+                {
+                    decimal sW = (decimal)(ItemTabDetails.Standard_Weight / (decimal)1000);
+                    sW = (ItemTabDetails.Pack_Quantity > ItemTabDetails.Unit_Content) ? (decimal)(sW / ItemTabDetails.Pack_Quantity) : (decimal)(sW / ItemTabDetails.Unit_Content);
+                    txtStandartWeight.Text = sW.ToString("G29");
+                }
                 txtHazardousInd.Text = ItemTabDetails.Hazardous_Ind;
                 txtCalibrationInd.Text = ItemTabDetails.Calibration_Ind;
                 txtCofO.Text = ItemTabDetails.CofO;
@@ -3561,11 +3576,11 @@ namespace LoginForm.QuotationModule
             {
                 Currfactor = CurrValue / CurrValue1;
 
-                txtWeb1.Text = (Decimal.Parse(txtWeb1.Text) / Currfactor).ToString();
-                txtWeb2.Text = (Decimal.Parse(txtWeb2.Text) / Currfactor).ToString();
-                txtWeb3.Text = (Decimal.Parse(txtWeb3.Text) / Currfactor).ToString();
-                txtWeb4.Text = (Decimal.Parse(txtWeb4.Text) / Currfactor).ToString();
-                txtWeb5.Text = (Decimal.Parse(txtWeb5.Text) / Currfactor).ToString();
+                //txtWeb1.Text = (Decimal.Parse(txtWeb1.Text) / Currfactor).ToString();
+                //txtWeb2.Text = (Decimal.Parse(txtWeb2.Text) / Currfactor).ToString();
+                //txtWeb3.Text = (Decimal.Parse(txtWeb3.Text) / Currfactor).ToString();
+                //txtWeb4.Text = (Decimal.Parse(txtWeb4.Text) / Currfactor).ToString();
+                //txtWeb5.Text = (Decimal.Parse(txtWeb5.Text) / Currfactor).ToString();
             }
             else
             {
