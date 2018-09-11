@@ -597,41 +597,7 @@ namespace LoginForm.QuotationModule
 
             populateGrid(list.ToList());
 
-            //foreach (var item in list)
-            //{
-            //    int rowIndex = dgQuotation.Rows.Add();
-            //    DataGridViewRow row = dgQuotation.Rows[rowIndex];
-
-
-            //    row.Cells[Date.Index].Value = item.Date;
-            //    row.Cells["QuotationNo"].Value = item.QuotationNo;
-            //    row.Cells["Rep_Name"].Value = item.Rep_Name;
-            //    row.Cells["PreparedBy"].Value = item.PreparedBy;
-            //    row.Cells["RFQ"].Value = item.RFQ;
-            //    row.Cells["CustomerCode"].Value = item.CustomerCode;
-            //    row.Cells["CustomerName"].Value = item.CustomerName;
-            //    row.Cells["Total"].Value = item.Total;
-            //    row.Cells["Currency"].Value = item.Currency;
-            //    row.Cells["OrderDate"].Value = item.OrderDate;
-            //    row.Cells["City"].Value = item.City;
-            //    row.Cells["SaleOrderNo"].Value = item.SaleOrderNo;
-            //    row.Cells["OrderStatus"].Value = item.OrderStatus;
-            //    row.Cells["FirstNote"].Value = item.FirstNote;
-            //    row.Cells["Date1"].Value = item.Date1;
-            //    row.Cells["Rep1"].Value = item.Rep1;
-            //    row.Cells["SecondNote"].Value = item.SecondNote;
-            //    row.Cells["Date2"].Value = item.Date2;
-            //    row.Cells["Rep2"].Value = item.Rep2;
-
-            //}
-
-            //foreach (DataGridViewRow row in dgQuotation.Rows)
-            //{
-            //    if (row.Cells[OrderStatus.Index].Value != null && row.Cells[OrderStatus.Index].Value.ToString() == "Deleted")
-            //    {
-            //        row.DefaultCellStyle.BackColor = System.Drawing.Color.Red;
-            //    }
-            //}
+           
         }
 
         public Int32 ConvertInt(String id)
@@ -653,24 +619,24 @@ namespace LoginForm.QuotationModule
 
 
                 row.Cells[Date.Index].Value = item.Date;
-                row.Cells["QuotationNo"].Value = item.QuotationNo;
-                row.Cells["Rep_Name"].Value = item.Rep_Name;
-                row.Cells["PreparedBy"].Value = item.PreparedBy;
-                row.Cells["RFQ"].Value = item.RFQ;
-                row.Cells["CustomerCode"].Value = item.CustomerCode;
+                row.Cells[QuotationNo.Index].Value = item.QuotationNo;
+                row.Cells[Rep_Name.Index].Value = item.Rep_Name;
+                row.Cells[PreparedBy.Index].Value = item.PreparedBy;
+                row.Cells[RFQ.Index].Value = item.RFQ;
+                row.Cells[CustomerCode.Index].Value = item.CustomerCode;
                 row.Cells[CustomerName.Index].Value = item.CustomerName;
-                row.Cells["Total"].Value = item.Total;
-                row.Cells["Currency"].Value = item.Currency;
-                row.Cells["OrderDate"].Value = item.OrderDate;
-                row.Cells["City"].Value = item.City;
-                row.Cells["SaleOrderNo"].Value = item.SaleOrderNo;
-                row.Cells["OrderStatus"].Value = item.OrderStatus;
-                row.Cells["FirstNote"].Value = item.FirstNote;
-                row.Cells["Date1"].Value = item.Date1;
-                row.Cells["Rep1"].Value = item.Rep1;
-                row.Cells["SecondNote"].Value = item.SecondNote;
-                row.Cells["Date2"].Value = item.Date2;
-                row.Cells["Rep2"].Value = item.Rep2;
+                row.Cells[Total.Index].Value = item.Total;
+                row.Cells[Currency.Index].Value = item.Currency;
+                row.Cells[OrderDate.Index].Value = item.OrderDate;
+                row.Cells[City.Index].Value = item.City;
+                row.Cells[SaleOrderNo.Index].Value = item.SaleOrderNo;
+                row.Cells[OrderStatus.Index].Value = item.OrderStatus;
+                row.Cells[FirstNote.Index].Value = item.FirstNote;
+                row.Cells[Date1.Index].Value = item.Date1;
+                row.Cells[Rep1.Index].Value = item.Rep1;
+                row.Cells[SecondNote.Index].Value = item.SecondNote;
+                row.Cells[Date2.Index].Value = item.Date2;
+                row.Cells[Rep2.Index].Value = item.Rep2;
 
             }
 
@@ -891,27 +857,27 @@ namespace LoginForm.QuotationModule
         {
             string note1 =  "";
             string note2 = "";
-            if (dgQuotation.CurrentRow.Cells["FirstNote"].Value != null && dgQuotation.CurrentRow.Cells["FirstNote"].Value.ToString() != "")
+            if (dgQuotation.CurrentRow.Cells[FirstNote.Index].Value != null && dgQuotation.CurrentRow.Cells["FirstNote"].Value.ToString() != "")
             {
-                note1 = dgQuotation.CurrentRow.Cells["FirstNote"].Value.ToString();
+                note1 = dgQuotation.CurrentRow.Cells[FirstNote.Index].Value.ToString();
             }
-            if (dgQuotation.CurrentRow.Cells["SecondNote"].Value != null && dgQuotation.CurrentRow.Cells["SecondNote"].Value.ToString() != "")
+            if (dgQuotation.CurrentRow.Cells[SecondNote.Index].Value != null && dgQuotation.CurrentRow.Cells["SecondNote"].Value.ToString() != "")
             {
-                note2= dgQuotation.CurrentRow.Cells["SecondNote"].Value.ToString();
+                note2= dgQuotation.CurrentRow.Cells[SecondNote.Index].Value.ToString();
             }
             
             switch (dgQuotation.CurrentCell.ColumnIndex)
             {
                 case 12:
-                    if (dgQuotation.CurrentRow.Cells["OrderStatus"].Value.ToString() == "Deleted")
+                    if (dgQuotation.CurrentRow.Cells[OrderStatus.Index].Value.ToString() == "Deleted")
                     {
-                        dgQuotation.CurrentRow.Cells["OrderStatus"].Style.BackColor = System.Drawing.Color.Red;
+                        dgQuotation.CurrentRow.Cells[OrderStatus.Index].Style.BackColor = System.Drawing.Color.Red;
                     }
                     break;
                 case 13:
                     if (dgQuotation.CurrentRow != null)
                     {
-                        DialogResult result = MessageBox.Show("Selected quotation will be note add! Do you confirm?", "Note Quotation", MessageBoxButtons.OKCancel);
+                        DialogResult result = MessageBox.Show("Note is added, please confirm", "Quotation Note", MessageBoxButtons.OKCancel);
 
                         if (result == DialogResult.OK)
                         {
@@ -948,7 +914,7 @@ namespace LoginForm.QuotationModule
                 case 16:
                     if (dgQuotation.CurrentRow != null)
                     {
-                        DialogResult result = MessageBox.Show("Selected quotation will be note add! Do you confirm?", "Note Quotation", MessageBoxButtons.OKCancel);
+                        DialogResult result = MessageBox.Show("Note is added, please confirm", "Quotation Note", MessageBoxButtons.OKCancel);
 
                         if (result == DialogResult.OK)
                         {
@@ -1044,7 +1010,7 @@ namespace LoginForm.QuotationModule
                     DialogResult result =  MessageBox.Show("Quotation is locked to Sales Order Number:" + quo.SaleOrder.SaleOrderNo,"Warning",MessageBoxButtons.OKCancel);
                     if (result == DialogResult.OK)
                     {
-                        DialogResult result2 = MessageBox.Show("Create Revision ?", "Informaion", MessageBoxButtons.OKCancel);
+                        DialogResult result2 = MessageBox.Show("Do you want to create revision", "Informaion", MessageBoxButtons.OKCancel);
                         if (result2 == DialogResult.OK)
                         {
                             ModifyQuotation();
@@ -1145,7 +1111,7 @@ namespace LoginForm.QuotationModule
         {
             if (e.Button == MouseButtons.Right)
             {
-                if (dgQuotation.CurrentRow.Cells["OrderStatus"].Value.ToString() != "Deleted")
+                if (dgQuotation.CurrentRow.Cells[OrderStatus.Index].Value.ToString() != "Deleted")
                 {
                     dELETEQUOTATIONToolStripMenuItem.Visible = true;
                     uNDODELETEQUOTATIONToolStripMenuItem.Visible = false;
