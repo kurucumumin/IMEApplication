@@ -1280,6 +1280,7 @@ namespace LoginForm.QuotationModule
                                 CalculateSubTotal();
 
                                 //ChangeCurr(rowindex);
+                                GetLandingCost(CurrentRow.Index);
                                 if (dgQuotationAddedItems.CurrentCell == null) dgQuotationAddedItems.CurrentCell = CurrentRow.Cells[0];
                                 GetMargin();
                                 CurrentRow.Cells["dgMargin"].Value = Math.Round(Decimal.Parse(CurrentRow.Cells["dgMargin"].Value.ToString()), 2).ToString();
@@ -1452,7 +1453,10 @@ namespace LoginForm.QuotationModule
                     {
                         if (Int32.Parse(CurrentRow.Cells["dgSSM"].Value.ToString()) > 1)
                         {
-                            CurrentRow.Cells["dgMargin"].Value = (((1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())) / (gbpPrice * decimal.Parse(CurrentRow.Cells["dgUC"].Value.ToString())))) * 100).ToString("G29");
+                            if (CurrentRow.Cells["dgLandingCost"].Value != null)
+                            {
+                                CurrentRow.Cells["dgMargin"].Value = (((1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())) / (gbpPrice * decimal.Parse(CurrentRow.Cells["dgUC"].Value.ToString())))) * 100).ToString("G29");
+                            }
                         }
                         else
                         {
@@ -1919,10 +1923,10 @@ namespace LoginForm.QuotationModule
             try
             {
                 dgQuotationAddedItems.Rows[Rowindex].Cells["dgLandingCost"].Value = (QuotationUtils.GetLandingCost(dgQuotationAddedItems.Rows[Rowindex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
-                    )).ToString("G29");
+                    ,Int32.Parse(dgQuotationAddedItems.Rows[Rowindex].Cells[dgQty.Index].Value.ToString()))).ToString("G29");
                 dgQuotationAddedItems.Rows[Rowindex].Cells["dgLandingCost"].Value = String.Format("{0:0.0000}", dgQuotationAddedItems.Rows[Rowindex].Cells["dgLandingCost"].Value.ToString()).ToString();
             }
-            catch { }
+            catch(Exception e) { }
 
         }
 

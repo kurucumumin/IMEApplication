@@ -56,31 +56,37 @@ namespace LoginForm.QuotationModule
             #region GetCost
             if (quantity == 0) { return -1; }
             IMEEntities IME = new IMEEntities();
-            SlidingPrice sp = IME.SlidingPrices.Where(a => a.ArticleNo == ArticleNo).FirstOrDefault();
+            //SlidingPrice sp = IME.SlidingPrices.Where(a => a.ArticleNo == ArticleNo).FirstOrDefault();
             ExtendedRange er = IME.ExtendedRanges.Where(a => a.ArticleNo == ArticleNo).FirstOrDefault();
             decimal result;
+
+            CompleteItem item = IME.CompleteItems.Where(x => x.Article_No == ArticleNo).FirstOrDefault();
+
+            /*Cofactor break değerleri ile çarpılacak*/
+            int cofactor = (item.Pack_Quantity > item.Unit_Content) ? (int)item.Pack_Quantity : (int)item.Unit_Content;
+            
             try
             {
-                if ((quantity < sp.Col2Break && sp.DiscountedPrice1 != 0)||(sp.Col2Break== 0 && sp.DiscountedPrice1 != 0))
+                if ((quantity < item.Col2Break && item.DiscountedPrice1 != 0)||(item.Col2Break== 0 && item.DiscountedPrice1 != 0))
                 {
-                    return result = Decimal.Parse(sp.DiscountedPrice1.ToString());
+                    return result = Decimal.Parse(item.DiscountedPrice1.ToString());
                 }
-                else if (quantity < sp.Col3Break)
+                else if (quantity < item.Col3Break)
                 {
-                    if(sp.DiscountedPrice2 == 0) { return result = Decimal.Parse(sp.DiscountedPrice1.ToString()); }
-                    return result = Decimal.Parse(sp.DiscountedPrice2.ToString());
+                    if(item.DiscountedPrice2 == 0) { return result = Decimal.Parse(item.DiscountedPrice1.ToString()); }
+                    return result = Decimal.Parse(item.DiscountedPrice2.ToString());
                 }
-                else if (quantity < sp.Col4Break && sp.DiscountedPrice3 != 0)
+                else if (quantity < item.Col4Break && item.DiscountedPrice3 != 0)
                 {
-                    if (sp.DiscountedPrice3 == 0) { return result = Decimal.Parse(sp.DiscountedPrice2.ToString()); }
-                    return result = Decimal.Parse(sp.DiscountedPrice3.ToString());
+                    if (item.DiscountedPrice3 == 0) { return result = Decimal.Parse(item.DiscountedPrice2.ToString()); }
+                    return result = Decimal.Parse(item.DiscountedPrice3.ToString());
                 }
-                else if (quantity < sp.Col5Break && sp.DiscountedPrice4 != 0)
+                else if (quantity < item.Col5Break && item.DiscountedPrice4 != 0)
                 {
-                    if (sp.DiscountedPrice4 == 0) { return result = Decimal.Parse(sp.DiscountedPrice3.ToString()); }
-                    return result = Decimal.Parse(sp.DiscountedPrice4.ToString());
+                    if (item.DiscountedPrice4 == 0) { return result = Decimal.Parse(item.DiscountedPrice3.ToString()); }
+                    return result = Decimal.Parse(item.DiscountedPrice4.ToString());
                 }
-                else if (sp.DiscountedPrice4 != 0) { return result = Decimal.Parse(sp.DiscountedPrice5.ToString()); }else { return result = Decimal.Parse(sp.DiscountedPrice1.ToString()); }
+                else if (item.DiscountedPrice4 != 0) { return result = Decimal.Parse(item.DiscountedPrice5.ToString()); }else { return result = Decimal.Parse(item.DiscountedPrice1.ToString()); }
             }
             catch { }
             return 0;// fiyatının olmadığı gösteriyor
