@@ -1072,14 +1072,21 @@ namespace LoginForm.QuotationModule
                             if (CurrentRow.Cells[dgUnitWeigt.Index].Value == null)
                                 CurrentRow.Cells[dgUnitWeigt.Index].Value = txtStandartWeight.Text;
                             txtGrossWeight.Text = String.Format("{0:0.0000}", (Decimal.Parse(txtLength.Text) * Decimal.Parse(txtWidth.Text) * Decimal.Parse(txtHeight.Text) / 6000).ToString());
+                            //txtGrossWeight.Text = String.Format("{0:0.0000}", ((Decimal.Parse(txtLength.Text) * Decimal.Parse(txtWidth.Text) * Decimal.Parse(txtHeight.Text) / 6000) / ssm).ToString());
                             if (Int32.Parse(CurrentRow.Cells["dgSSM"].Value.ToString()) > 1)
                             {
+                                txtStandartWeight.Text = (decimal.Parse(txtStandartWeight.Text) /
+                                    Int32.Parse(CurrentRow.Cells["dgSSM"].Value.ToString())).ToString();
+
                                 txtGrossWeight.Text = (decimal.Parse(txtGrossWeight.Text) /
                                     Int32.Parse(CurrentRow.Cells["dgSSM"].Value.ToString())).ToString();
 
                             }
                             else if (Int32.Parse(CurrentRow.Cells["dgUC"].Value.ToString()) > 1)
                             {
+                                txtStandartWeight.Text = (decimal.Parse(txtStandartWeight.Text) /
+                                    Int32.Parse(CurrentRow.Cells["dgUC"].Value.ToString())).ToString();
+
                                 txtGrossWeight.Text = (decimal.Parse(txtGrossWeight.Text) /
                                     Int32.Parse(CurrentRow.Cells["dgUC"].Value.ToString())).ToString();
                             }
@@ -1548,13 +1555,14 @@ namespace LoginForm.QuotationModule
                 txtUKDiscDate.Text = ItemTabDetails.Uk_Disc_Date;
                 txtDiscChange.Text = ItemTabDetails.Disc_Change_Ind;
                 txtExpiringPro.Text = ItemTabDetails.Expiring_Product_Change_Ind;
-                txtManufacturer.Text = ItemTabDetails.Manufacturer.ToString() ?? ""; ;
+                txtManufacturer.Text = ItemTabDetails.Manufacturer.ToString() ?? "";
                 txtMHCodeLevel1.Text = ItemTabDetails.MH_Code_Level_1;
                 txtCCCN.Text = ItemTabDetails.CCCN_No.ToString() ?? ""; ;
                 txtHeight.Text = ((decimal)(ItemTabDetails.Heigh * ((Decimal)100))).ToString("G29");
                 txtWidth.Text = ((decimal)(ItemTabDetails.Width * ((Decimal)100))).ToString("G29");
                 txtLength.Text = ((decimal)(ItemTabDetails.Length * ((Decimal)100))).ToString("G29");
                 txtGrossWeight.Text = String.Format("{0:0.0000}", (Decimal.Parse(txtLength.Text) * Decimal.Parse(txtWidth.Text) * Decimal.Parse(txtHeight.Text) / 6000).ToString());
+                txtGrossWeight.Text = (ItemTabDetails.Pack_Quantity > ItemTabDetails.Unit_Content) ? (Decimal.Parse(txtGrossWeight.Text) / ItemTabDetails.Pack_Quantity).ToString() : (Decimal.Parse(txtGrossWeight.Text) / ItemTabDetails.Unit_Content).ToString();
                 txtUK1.Text = (ItemTabDetails.Col1Price / ItemTabDetails.Unit_Content).ToString();
                 txtUK2.Text = (ItemTabDetails.Col2Price / ItemTabDetails.Unit_Content).ToString();
                 txtUK3.Text = (ItemTabDetails.Col3Price / ItemTabDetails.Unit_Content).ToString();
@@ -3217,9 +3225,16 @@ namespace LoginForm.QuotationModule
             if (CurrValue1 != CurrValue)
             {
                 Currfactor = CurrValue / CurrValue1;
+
+                txtWeb1.Text = (Decimal.Parse(txtWeb1.Text) / Currfactor).ToString();
+                txtWeb2.Text = (Decimal.Parse(txtWeb2.Text) / Currfactor).ToString();
+                txtWeb3.Text = (Decimal.Parse(txtWeb3.Text) / Currfactor).ToString();
+                txtWeb4.Text = (Decimal.Parse(txtWeb4.Text) / Currfactor).ToString();
+                txtWeb5.Text = (Decimal.Parse(txtWeb5.Text) / Currfactor).ToString();
             }
             else
             {
+                //Else'in çine girme şartını kontrol et
                 Currfactor = 1;
                 if (txtWeb1.Text != "" && txtWeb1.Text != null)
                 {
