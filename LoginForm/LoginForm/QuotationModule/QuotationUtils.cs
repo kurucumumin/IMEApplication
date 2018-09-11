@@ -61,7 +61,7 @@ namespace LoginForm.QuotationModule
             decimal result;
             try
             {
-                if ((quantity < sp.Col2Break && sp.DiscountedPrice1 != 0)||(sp.Col2Break==0&& sp.DiscountedPrice1 != 0))
+                if ((quantity < sp.Col2Break && sp.DiscountedPrice1 != 0)||(sp.Col2Break== 0 && sp.DiscountedPrice1 != 0))
                 {
                     return result = Decimal.Parse(sp.DiscountedPrice1.ToString());
                 }
@@ -81,30 +81,6 @@ namespace LoginForm.QuotationModule
                     return result = Decimal.Parse(sp.DiscountedPrice4.ToString());
                 }
                 else if (sp.DiscountedPrice4 != 0) { return result = Decimal.Parse(sp.DiscountedPrice5.ToString()); }else { return result = Decimal.Parse(sp.DiscountedPrice1.ToString()); }
-            }
-            catch { }
-            try
-            {
-                if ((quantity < er.Col2Break && er.DiscountedPrice1 != 0)|| er.Col2Break==0 && er.DiscountedPrice1 != 0)
-                {
-                    return result = Decimal.Parse(er.DiscountedPrice1.ToString());
-                }
-                else if (quantity < er.Col3Break)
-                {
-                    if (er.DiscountedPrice2 == 0) { return result = Decimal.Parse(er.DiscountedPrice1.ToString()); }
-                    return result = Decimal.Parse(er.DiscountedPrice2.ToString());
-                }
-                else if (quantity < er.Col4Break && er.DiscountedPrice3 != 0)
-                {
-                    if (er.DiscountedPrice3 == 0) { return result = Decimal.Parse(er.DiscountedPrice2.ToString()); }
-                    return result = Decimal.Parse(er.DiscountedPrice3.ToString());
-                }
-                else if (quantity < sp.Col5Break && er.DiscountedPrice4 != 0)
-                {
-                    if (er.DiscountedPrice4 == 0) { return result = Decimal.Parse(er.DiscountedPrice3.ToString()); }
-                    return result = Decimal.Parse(er.DiscountedPrice4.ToString());
-                }
-                else if (er.DiscountedPrice4 != 0) { return result = Decimal.Parse(er.DiscountedPrice5.ToString()); } else { return result = Decimal.Parse(er.DiscountedPrice1.ToString()); }
             }
             catch { }
             return 0;// fiyatının olmadığı gösteriyor
@@ -149,8 +125,41 @@ namespace LoginForm.QuotationModule
                 }
                 catch { }
             }
+            var item = IME.CompleteItems.Where(x => x.Article_No == ArticleNo).FirstOrDefault();
 
-            decimal l = 0;
+
+            decimal? sWeight = 0;
+            decimal? gWeight = 0;
+
+            if (item.Pack_Quantity > 1 && item.Unit_Content > 1)
+            {
+                sWeight = item.Standard_Weight / 1000 / (item.Pack_Quantity * item.Unit_Content);
+                gWeight = ((((item.Length * item.Heigh * item.Width * 1000000) / 6000)) / (item.Pack_Quantity * item.Unit_Content));
+
+                w = (decimal)((sWeight > gWeight) ? sWeight : gWeight);
+            }else if (item.Pack_Quantity > 1)
+            {
+                sWeight = item.Standard_Weight / 1000 / item.Pack_Quantity;
+                gWeight = (((item.Length * item.Heigh * item.Width * 1000000) / 6000) / item.Pack_Quantity);
+
+                w = (decimal)((sWeight > gWeight) ? sWeight : gWeight);
+            }
+            else if(item.Unit_Content > 1)
+            {
+                sWeight = item.Standard_Weight / 1000 / item.Unit_Content;
+                gWeight = (((item.Length * item.Heigh * item.Width * 1000000) / 6000) / item.Unit_Content);
+
+                w = (decimal)((sWeight > gWeight) ? sWeight : gWeight);
+            }
+            else/*item.Pack_Quantity > 1 && item.Unit_Content > 1*/
+            {
+                sWeight = item.Standard_Weight / 1000;
+                gWeight = ((item.Length * item.Heigh * item.Width * 1000000) / 6000);
+
+                w = (decimal)((sWeight > gWeight) ? sWeight : gWeight);
+            }
+
+                decimal l = 0;
             if (Product == false) { p = 0; }
             if (Weight == false) { w = 0; }
             l = (p + (w * ((decimal)1.7)) + (((decimal)0.0675) * (p + (w * ((decimal)1.7)))));
@@ -197,6 +206,41 @@ namespace LoginForm.QuotationModule
                     w = (w / (decimal)1000);
                 }
                 catch { }
+            }
+
+            var item = IME.CompleteItems.Where(x => x.Article_No == ArticleNo).FirstOrDefault();
+
+
+            decimal? sWeight = 0;
+            decimal? gWeight = 0;
+
+            if (item.Pack_Quantity > 1 && item.Unit_Content > 1)
+            {
+                sWeight = item.Standard_Weight / 1000 / (item.Pack_Quantity * item.Unit_Content);
+                gWeight = ((((item.Length * item.Heigh * item.Width * 1000000) / 6000)) / (item.Pack_Quantity * item.Unit_Content));
+
+                w = (decimal)((sWeight > gWeight) ? sWeight : gWeight);
+            }
+            else if (item.Pack_Quantity > 1)
+            {
+                sWeight = item.Standard_Weight / 1000 / item.Pack_Quantity;
+                gWeight = (((item.Length * item.Heigh * item.Width * 1000000) / 6000) / item.Pack_Quantity);
+
+                w = (decimal)((sWeight > gWeight) ? sWeight : gWeight);
+            }
+            else if (item.Unit_Content > 1)
+            {
+                sWeight = item.Standard_Weight / 1000 / item.Unit_Content;
+                gWeight = (((item.Length * item.Heigh * item.Width * 1000000) / 6000) / item.Unit_Content);
+
+                w = (decimal)((sWeight > gWeight) ? sWeight : gWeight);
+            }
+            else/*item.Pack_Quantity > 1 && item.Unit_Content > 1*/
+            {
+                sWeight = item.Standard_Weight / 1000;
+                gWeight = ((item.Length * item.Heigh * item.Width * 1000000) / 6000);
+
+                w = (decimal)((sWeight > gWeight) ? sWeight : gWeight);
             }
 
             decimal l = 0;

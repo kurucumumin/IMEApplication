@@ -346,15 +346,15 @@ namespace LoginForm.ItemModule
             {
                 txtStockNo.Text = sdP.Article_No;
                 txtDesc.Text = sdP.Article_Desc;
-                txtUC.Text = sd.Unit_Content.ToString();
-                if (sd.Unit_Measure != null && sd.Unit_Measure != "")
-                { txtUM.Text = sd.Unit_Measure; }
+                txtUC.Text = sdP.Unit_Content.ToString();
+                if (sdP.Unit_Measure != null && sdP.Unit_Measure != "")
+                { txtUM.Text = sdP.Unit_Measure; }
                 else
                 {
                     txtUM.Text = "Each";
                     SuppliedIn.Text = "";
                 }
-                txtSSM.Text = sd.Pack_Quantity.ToString();
+                txtSSM.Text = sdP.Pack_Quantity.ToString();
                 if (sdP.Standard_Weight != 0) { txtStandartWeight.Text = String.Format("{0:0.0000}", ((decimal)(sdP.Standard_Weight) / (decimal)1000).ToString("G29")); }
                 txtHazardousInd.Text = sdP.Hazardous_Ind;
                 txtCalibrationInd.Text = sdP.Calibration_Ind;

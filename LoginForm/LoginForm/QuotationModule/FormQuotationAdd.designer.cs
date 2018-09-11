@@ -1359,7 +1359,7 @@
             this.tabCustomerDetails.Margin = new System.Windows.Forms.Padding(2);
             this.tabCustomerDetails.Name = "tabCustomerDetails";
             this.tabCustomerDetails.Padding = new System.Windows.Forms.Padding(2);
-            this.tabCustomerDetails.Size = new System.Drawing.Size(1016, 150);
+            this.tabCustomerDetails.Size = new System.Drawing.Size(1237, 150);
             this.tabCustomerDetails.TabIndex = 0;
             this.tabCustomerDetails.Text = "Customer Details";
             // 
@@ -2371,6 +2371,7 @@
             this.txtReferral.ReadOnly = true;
             this.txtReferral.Size = new System.Drawing.Size(73, 20);
             this.txtReferral.TabIndex = 459;
+            this.txtReferral.Text = "0";
             // 
             // txtStandartWeight
             // 

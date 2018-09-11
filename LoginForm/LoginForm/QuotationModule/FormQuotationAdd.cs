@@ -1181,14 +1181,21 @@ namespace LoginForm.QuotationModule
                             if (CurrentRow.Cells[dgUnitWeigt.Index].Value == null)
                                 CurrentRow.Cells[dgUnitWeigt.Index].Value = txtStandartWeight.Text;
                             txtGrossWeight.Text = String.Format("{0:0.0000}", (Decimal.Parse(txtLength.Text) * Decimal.Parse(txtWidth.Text) * Decimal.Parse(txtHeight.Text) / 6000).ToString());
+                            //txtGrossWeight.Text = String.Format("{0:0.0000}", ((Decimal.Parse(txtLength.Text) * Decimal.Parse(txtWidth.Text) * Decimal.Parse(txtHeight.Text) / 6000) / ssm).ToString());
                             if (Int32.Parse(CurrentRow.Cells["dgSSM"].Value.ToString()) > 1)
                             {
+                                txtStandartWeight.Text = (decimal.Parse(txtStandartWeight.Text) /
+                                    Int32.Parse(CurrentRow.Cells["dgSSM"].Value.ToString())).ToString();
+
                                 txtGrossWeight.Text = (decimal.Parse(txtGrossWeight.Text) /
                                     Int32.Parse(CurrentRow.Cells["dgSSM"].Value.ToString())).ToString();
 
                             }
                             else if (Int32.Parse(CurrentRow.Cells["dgUC"].Value.ToString()) > 1)
                             {
+                                txtStandartWeight.Text = (decimal.Parse(txtStandartWeight.Text) /
+                                    Int32.Parse(CurrentRow.Cells["dgUC"].Value.ToString())).ToString();
+
                                 txtGrossWeight.Text = (decimal.Parse(txtGrossWeight.Text) /
                                     Int32.Parse(CurrentRow.Cells["dgUC"].Value.ToString())).ToString();
                             }
@@ -1554,7 +1561,6 @@ namespace LoginForm.QuotationModule
             CurrentRow.Cells[dgCCCNO.Index].Value = txtCCCN.Text;
             CurrentRow.Cells[dgCOO.Index].Value = txtCofO.Text;
             CurrentRow.Cells[dgUnitWeigt.Index].Value = txtStandartWeight.Text;
-            CurrentRow.Cells[dgTotalWeight.Index].Value = txtGrossWeight.Text;
             #endregion
         }
 
@@ -1661,36 +1667,39 @@ namespace LoginForm.QuotationModule
                 txtUKDiscDate.Text = ItemTabDetails.Uk_Disc_Date;
                 txtDiscChange.Text = ItemTabDetails.Disc_Change_Ind;
                 txtExpiringPro.Text = ItemTabDetails.Expiring_Product_Change_Ind;
-                txtManufacturer.Text = ItemTabDetails.Manufacturer.ToString() ?? ""; ;
+                txtManufacturer.Text = ItemTabDetails.Manufacturer.ToString() ?? "";
                 txtMHCodeLevel1.Text = ItemTabDetails.MH_Code_Level_1;
                 txtCCCN.Text = ItemTabDetails.CCCN_No.ToString() ?? ""; ;
                 txtHeight.Text = ((decimal)(ItemTabDetails.Heigh * ((Decimal)100))).ToString("G29");
                 txtWidth.Text = ((decimal)(ItemTabDetails.Width * ((Decimal)100))).ToString("G29");
                 txtLength.Text = ((decimal)(ItemTabDetails.Length * ((Decimal)100))).ToString("G29");
-                txtUK1.Text = ItemTabDetails.Col1Price.ToString();
-                txtUK2.Text = ItemTabDetails.Col2Price.ToString();
-                txtUK3.Text = ItemTabDetails.Col3Price.ToString();
-                txtUK4.Text = ItemTabDetails.Col4Price.ToString();
-                txtUK5.Text = ItemTabDetails.Col5Price.ToString();
+                txtGrossWeight.Text = String.Format("{0:0.0000}", (Decimal.Parse(txtLength.Text) * Decimal.Parse(txtWidth.Text) * Decimal.Parse(txtHeight.Text) / 6000).ToString());
+                txtGrossWeight.Text = (ItemTabDetails.Pack_Quantity > ItemTabDetails.Unit_Content) ? (Decimal.Parse(txtGrossWeight.Text) / ItemTabDetails.Pack_Quantity).ToString() : (Decimal.Parse(txtGrossWeight.Text) / ItemTabDetails.Unit_Content).ToString();
+                txtUK1.Text = (ItemTabDetails.Col1Price / ItemTabDetails.Unit_Content).ToString();
+                txtUK2.Text = (ItemTabDetails.Col2Price / ItemTabDetails.Unit_Content).ToString();
+                txtUK3.Text = (ItemTabDetails.Col3Price / ItemTabDetails.Unit_Content).ToString();
+                txtUK4.Text = (ItemTabDetails.Col4Price / ItemTabDetails.Unit_Content).ToString();
+                txtUK5.Text = (ItemTabDetails.Col5Price / ItemTabDetails.Unit_Content).ToString();
                 if (txtUK1.Text == "") { txtUK1.Text = "0"; }
                 if (txtUK2.Text == "") { txtUK2.Text = "0"; }
                 if (txtUK3.Text == "") { txtUK3.Text = "0"; }
                 if (txtUK4.Text == "") { txtUK4.Text = "0"; }
                 if (txtUK5.Text == "") { txtUK5.Text = "0"; }
-                txtUnitCount1.Text = ItemTabDetails.Col1Break.ToString();
-                txtUnitCount2.Text = ItemTabDetails.Col2Break.ToString();
-                txtUnitCount3.Text = ItemTabDetails.Col3Break.ToString();
-                txtUnitCount4.Text = ItemTabDetails.Col4Break.ToString();
-                txtUnitCount5.Text = ItemTabDetails.Col5Break.ToString();
-                txtCost1.Text = ItemTabDetails.DiscountedPrice1.ToString();
-                txtCost2.Text = ItemTabDetails.DiscountedPrice2.ToString();
-                txtCost3.Text = ItemTabDetails.DiscountedPrice3.ToString();
-                txtCost4.Text = ItemTabDetails.DiscountedPrice4.ToString();
-                txtCost5.Text = ItemTabDetails.DiscountedPrice5.ToString();
+                txtUnitCount1.Text = (ItemTabDetails.Col1Break * ItemTabDetails.Unit_Content).ToString();
+                txtUnitCount2.Text = (ItemTabDetails.Col2Break * ItemTabDetails.Unit_Content).ToString();
+                txtUnitCount3.Text = (ItemTabDetails.Col3Break * ItemTabDetails.Unit_Content).ToString();
+                txtUnitCount4.Text = (ItemTabDetails.Col4Break * ItemTabDetails.Unit_Content).ToString();
+                txtUnitCount5.Text = (ItemTabDetails.Col5Break * ItemTabDetails.Unit_Content).ToString();
+                txtCost1.Text = (ItemTabDetails.DiscountedPrice1 / ItemTabDetails.Unit_Content).ToString();
+                txtCost2.Text = (ItemTabDetails.DiscountedPrice2 / ItemTabDetails.Unit_Content).ToString();
+                txtCost3.Text = (ItemTabDetails.DiscountedPrice3 / ItemTabDetails.Unit_Content).ToString();
+                txtCost4.Text = (ItemTabDetails.DiscountedPrice4 / ItemTabDetails.Unit_Content).ToString();
+                txtCost5.Text = (ItemTabDetails.DiscountedPrice5 / ItemTabDetails.Unit_Content).ToString();
                 txtWeb1.Text = ((Decimal.Parse(txtUK1.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
                 txtWeb2.Text = ((Decimal.Parse(txtUK2.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
                 txtWeb3.Text = ((Decimal.Parse(txtUK3.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
                 txtWeb4.Text = ((Decimal.Parse(txtUK4.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+                txtWeb5.Text = ((Decimal.Parse(txtUK5.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
                 txtSupersectionName.Text = ItemTabDetails.SupersectionName;
                 if (ItemTabDetails.Environment != null) { txtEnvironment.Text = "Y"; } else { txtEnvironment.Text = ""; }
                 txtLithium.Text = (ItemTabDetails.Lithium != null && ItemTabDetails.Lithium != String.Empty) ? "Y" : "";
@@ -1703,11 +1712,11 @@ namespace LoginForm.QuotationModule
                 txtLicenceType.Text = ItemTabDetails.LicenceType;
 
                 #region ItemMarginFiller
-                if (ItemTabDetails.Col1Break.ToString() == "")
+                if ((ItemTabDetails.Col1Break * ItemTabDetails.Unit_Content).ToString() == "")
                 {
                     ItemTabDetails.Col1Break = 0;
                 }
-                int quantity = Int32.Parse(ItemTabDetails.Col1Break.ToString() ?? "0");
+                int quantity = Int32.Parse((ItemTabDetails.Col1Break * ItemTabDetails.Unit_Content).ToString() ?? "0");
                 if (quantity != 0)
                 {
                     decimal margin1 = 0;
@@ -2998,6 +3007,8 @@ namespace LoginForm.QuotationModule
                 txtWidth.Text = ((decimal)(ItemTabDetails.Width * ((Decimal)100))).ToString("G29");
                 txtLength.Text = ((decimal)(ItemTabDetails.Length * ((Decimal)100))).ToString("G29");
 
+                txtGrossWeight.Text = String.Format("{0:0.0000}", (Decimal.Parse(txtLength.Text) * Decimal.Parse(txtWidth.Text) * Decimal.Parse(txtHeight.Text) / 6000).ToString());
+
                 #region Length 
                 try
                 {
@@ -3020,41 +3031,21 @@ namespace LoginForm.QuotationModule
                 catch { }
                 #endregion
 
-                txtUK1.Text = ItemTabDetails.Col1Price.ToString();
-                txtUK2.Text = ItemTabDetails.Col2Price.ToString();
-                txtUK3.Text = ItemTabDetails.Col3Price.ToString();
-                txtUK4.Text = ItemTabDetails.Col4Price.ToString();
-                txtUK5.Text = ItemTabDetails.Col5Price.ToString();
-                txtUnitCount1.Text = ItemTabDetails.Col1Break.ToString();
-                txtUnitCount2.Text = ItemTabDetails.Col2Break.ToString();
-                txtUnitCount3.Text = ItemTabDetails.Col3Break.ToString();
-                txtUnitCount4.Text = ItemTabDetails.Col4Break.ToString();
-                txtUnitCount5.Text = ItemTabDetails.Col5Break.ToString();
-                txtCost1.Text = ItemTabDetails.DiscountedPrice1.ToString();
-                txtCost2.Text = ItemTabDetails.DiscountedPrice2.ToString();
-                txtCost3.Text = ItemTabDetails.DiscountedPrice3.ToString();
-                txtCost4.Text = ItemTabDetails.DiscountedPrice4.ToString();
-                txtCost5.Text = ItemTabDetails.DiscountedPrice5.ToString();
-                txtWeb1.Text = ((Decimal.Parse(txtUK1.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtWeb2.Text = ((Decimal.Parse(txtUK2.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtWeb3.Text = ((Decimal.Parse(txtUK3.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtWeb4.Text = ((Decimal.Parse(txtUK4.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtWeb5.Text = ((Decimal.Parse(txtUK5.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtUnitCount1.Text = ItemTabDetails.Col1Break.ToString();
-                txtUnitCount2.Text = ItemTabDetails.Col2Break.ToString();
-                txtUnitCount3.Text = ItemTabDetails.Col3Break.ToString();
-                txtUnitCount4.Text = ItemTabDetails.Col4Break.ToString();
-                txtUnitCount5.Text = ItemTabDetails.Col5Break.ToString();
-                txtUK1.Text = ItemTabDetails.Col1Price.ToString();
-                txtUK2.Text = ItemTabDetails.Col2Price.ToString();
-                txtUK3.Text = ItemTabDetails.Col3Price.ToString();
-                txtUK4.Text = ItemTabDetails.Col4Price.ToString();
-                txtUK5.Text = ItemTabDetails.Col5Price.ToString();
-                txtCost1.Text = ItemTabDetails.DiscountedPrice1.ToString();
-                txtCost2.Text = ItemTabDetails.DiscountedPrice2.ToString();
-                txtCost3.Text = ItemTabDetails.DiscountedPrice3.ToString();
-                txtCost4.Text = ItemTabDetails.DiscountedPrice4.ToString();
-                txtCost5.Text = ItemTabDetails.DiscountedPrice5.ToString();
+                txtUK1.Text = (ItemTabDetails.Col1Price / ItemTabDetails.Unit_Content).ToString();
+                txtUK2.Text = (ItemTabDetails.Col2Price / ItemTabDetails.Unit_Content).ToString();
+                txtUK3.Text = (ItemTabDetails.Col3Price / ItemTabDetails.Unit_Content).ToString();
+                txtUK4.Text = (ItemTabDetails.Col4Price / ItemTabDetails.Unit_Content).ToString();
+                txtUK5.Text = (ItemTabDetails.Col5Price / ItemTabDetails.Unit_Content).ToString();
+                txtUnitCount1.Text = (ItemTabDetails.Col1Break * ItemTabDetails.Unit_Content).ToString();
+                txtUnitCount2.Text = (ItemTabDetails.Col2Break * ItemTabDetails.Unit_Content).ToString();
+                txtUnitCount3.Text = (ItemTabDetails.Col3Break * ItemTabDetails.Unit_Content).ToString();
+                txtUnitCount4.Text = (ItemTabDetails.Col4Break * ItemTabDetails.Unit_Content).ToString();
+                txtUnitCount5.Text = (ItemTabDetails.Col5Break * ItemTabDetails.Unit_Content).ToString();
+                txtCost1.Text = (ItemTabDetails.DiscountedPrice1 / ItemTabDetails.Unit_Content).ToString();
+                txtCost2.Text = (ItemTabDetails.DiscountedPrice2 / ItemTabDetails.Unit_Content).ToString();
+                txtCost3.Text = (ItemTabDetails.DiscountedPrice3 / ItemTabDetails.Unit_Content).ToString();
+                txtCost4.Text = (ItemTabDetails.DiscountedPrice4 / ItemTabDetails.Unit_Content).ToString();
+                txtCost5.Text = (ItemTabDetails.DiscountedPrice5 / ItemTabDetails.Unit_Content).ToString();
                 txtWeb1.Text = ((Decimal.Parse(txtUK1.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
                 txtWeb2.Text = ((Decimal.Parse(txtUK2.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
                 txtWeb3.Text = ((Decimal.Parse(txtUK3.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
@@ -3078,7 +3069,7 @@ namespace LoginForm.QuotationModule
                 if (ItemTabDetails.Calibration_Ind == "Y") isCalibrationInd = true;
                 #region ItemMarginFiller
 
-                int quantity = Int32.Parse(ItemTabDetails.Col1Break.ToString() ?? "0");
+                int quantity = Int32.Parse((ItemTabDetails.Col1Break * ItemTabDetails.Unit_Content).ToString() ?? "0");
                 if (quantity != 0)
                 {
                     decimal margin1 = 0;
@@ -3569,9 +3560,16 @@ namespace LoginForm.QuotationModule
             if (CurrValue1 != CurrValue)
             {
                 Currfactor = CurrValue / CurrValue1;
+
+                txtWeb1.Text = (Decimal.Parse(txtWeb1.Text) / Currfactor).ToString();
+                txtWeb2.Text = (Decimal.Parse(txtWeb2.Text) / Currfactor).ToString();
+                txtWeb3.Text = (Decimal.Parse(txtWeb3.Text) / Currfactor).ToString();
+                txtWeb4.Text = (Decimal.Parse(txtWeb4.Text) / Currfactor).ToString();
+                txtWeb5.Text = (Decimal.Parse(txtWeb5.Text) / Currfactor).ToString();
             }
             else
             {
+                //Else'in çine girme şartını kontrol et
                 Currfactor = 1;
                 if (txtWeb1.Text != "" && txtWeb1.Text != null)
                 {
