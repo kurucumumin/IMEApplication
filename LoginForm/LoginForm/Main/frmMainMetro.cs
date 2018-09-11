@@ -35,18 +35,18 @@ namespace LoginForm.Main
         public frmMainMetro()
         {
             InitializeComponent();
-            ActivePanel = pnlDevelopment;
+            ActivePanel = pnlMain;
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            if(pnlDevelopment.Height == 0)
+            if(pnlMain.Height == 0)
             {
                 ActivePanel.Height = 0;
 
                 int h = 0;
                 //maxSubPanelHeight = panel5.Height - 382;
                 maxSubPanelHeight = panel5.Height - ExtendingPanelHeight;
-                foreach (Control item in pnlDevelopment.Controls)
+                foreach (Control item in pnlMain.Controls)
                 {
                     h += item.Height + 6;
                 }
@@ -58,7 +58,7 @@ namespace LoginForm.Main
                 {
                     PH = h;
                 }
-                ActivePanel = pnlDevelopment;
+                ActivePanel = pnlMain;
                 animMode = "Extend";
                 timer2.Start();
             }
@@ -71,14 +71,14 @@ namespace LoginForm.Main
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            if (pnlFileLoader.Height == 0)
+            if (pnlImportFiles.Height == 0)
             {
                 ActivePanel.Height = 0;
 
                 int h = 0;
                 //maxSubPanelHeight = panel5.Height - 382;
                 maxSubPanelHeight = panel5.Height - ExtendingPanelHeight;
-                foreach (Control item in pnlFileLoader.Controls)
+                foreach (Control item in pnlImportFiles.Controls)
                 {
                     h += item.Height + 6;
                 }
@@ -90,7 +90,7 @@ namespace LoginForm.Main
                 {
                     PH = h;
                 }
-                ActivePanel = pnlFileLoader;
+                ActivePanel = pnlImportFiles;
                 animMode = "Extend";
                 timer2.Start();
             }
@@ -193,12 +193,12 @@ namespace LoginForm.Main
             if (!Utils.AuthorityCheck(IMEAuthority.CanSeeLoaderModule))
             {
                 btnFileLoader.Visible = false;
-                pnlFileLoader.Visible = false;
+                pnlImportFiles.Visible = false;
             }
             else
             {
                 btnFileLoader.Visible = true;
-                pnlFileLoader.Visible = true;
+                pnlImportFiles.Visible = true;
             }
 
             if (!Utils.AuthorityCheck(IMEAuthority.CanSeeDevelopmentModule))
@@ -223,12 +223,6 @@ namespace LoginForm.Main
         {
             FormSalesOrderMain saleOrderMain = new FormSalesOrderMain();
             saleOrderMain.Show();
-        }
-
-        private void btnUser_Click(object sender, EventArgs e)
-        {
-            FormUserMain roles = new FormUserMain(this);
-            roles.Show();
         }
 
         private void btnCustomer_Click(object sender, EventArgs e)
@@ -409,6 +403,12 @@ namespace LoginForm.Main
         {
             //frmSupplierMain form = new frmSupplierMain();
             //form.Show();
+        }
+
+        private void btnUser_Click_1(object sender, EventArgs e)
+        {
+            FormUserMain roles = new FormUserMain(this);
+            roles.Show();
         }
     }
 }

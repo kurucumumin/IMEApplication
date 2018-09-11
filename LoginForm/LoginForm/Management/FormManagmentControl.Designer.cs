@@ -46,8 +46,7 @@
             this.lblVAT = new System.Windows.Forms.Label();
             this.txtLowMarginLimit = new System.Windows.Forms.TextBox();
             this.lblLowMarginLimit = new System.Windows.Forms.Label();
-            this.btnCustomerFactorSave = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
+            this.chkCustomer = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.CustomsRateUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FreightChargeUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericFactor)).BeginInit();
@@ -57,7 +56,7 @@
             // 
             this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnSave.Image = global::LoginForm.Properties.Resources.if_floppy_285657;
-            this.btnSave.Location = new System.Drawing.Point(134, 322);
+            this.btnSave.Location = new System.Drawing.Point(182, 340);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(51, 41);
             this.btnSave.TabIndex = 78;
@@ -68,7 +67,7 @@
             // 
             this.label67.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label67.AutoSize = true;
-            this.label67.Location = new System.Drawing.Point(142, 366);
+            this.label67.Location = new System.Drawing.Point(190, 384);
             this.label67.Name = "label67";
             this.label67.Size = new System.Drawing.Size(32, 13);
             this.label67.TabIndex = 77;
@@ -84,7 +83,7 @@
             0,
             0,
             65536});
-            this.CustomsRateUpDown.Location = new System.Drawing.Point(134, 277);
+            this.CustomsRateUpDown.Location = new System.Drawing.Point(134, 299);
             this.CustomsRateUpDown.Margin = new System.Windows.Forms.Padding(2);
             this.CustomsRateUpDown.Name = "CustomsRateUpDown";
             this.CustomsRateUpDown.Size = new System.Drawing.Size(231, 20);
@@ -93,7 +92,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 278);
+            this.label4.Location = new System.Drawing.Point(3, 300);
             this.label4.Margin = new System.Windows.Forms.Padding(12, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(73, 13);
@@ -110,7 +109,7 @@
             0,
             0,
             65536});
-            this.FreightChargeUpDown.Location = new System.Drawing.Point(134, 241);
+            this.FreightChargeUpDown.Location = new System.Drawing.Point(134, 263);
             this.FreightChargeUpDown.Margin = new System.Windows.Forms.Padding(2);
             this.FreightChargeUpDown.Name = "FreightChargeUpDown";
             this.FreightChargeUpDown.Size = new System.Drawing.Size(231, 20);
@@ -119,7 +118,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 241);
+            this.label3.Location = new System.Drawing.Point(3, 263);
             this.label3.Margin = new System.Windows.Forms.Padding(12, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(76, 13);
@@ -131,7 +130,7 @@
             this.txtBranchCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBranchCode.Enabled = false;
-            this.txtBranchCode.Location = new System.Drawing.Point(134, 203);
+            this.txtBranchCode.Location = new System.Drawing.Point(134, 225);
             this.txtBranchCode.Margin = new System.Windows.Forms.Padding(2, 2, 12, 2);
             this.txtBranchCode.Name = "txtBranchCode";
             this.txtBranchCode.Size = new System.Drawing.Size(232, 20);
@@ -141,7 +140,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Enabled = false;
-            this.label2.Location = new System.Drawing.Point(3, 206);
+            this.label2.Location = new System.Drawing.Point(3, 228);
             this.label2.Margin = new System.Windows.Forms.Padding(12, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 13);
@@ -152,7 +151,7 @@
             // 
             this.txtDataSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDataSeperator.Location = new System.Drawing.Point(134, 164);
+            this.txtDataSeperator.Location = new System.Drawing.Point(134, 186);
             this.txtDataSeperator.Margin = new System.Windows.Forms.Padding(2, 2, 12, 2);
             this.txtDataSeperator.Name = "txtDataSeperator";
             this.txtDataSeperator.Size = new System.Drawing.Size(232, 20);
@@ -160,7 +159,7 @@
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(3, 158);
+            this.label1.Location = new System.Drawing.Point(3, 180);
             this.label1.Margin = new System.Windows.Forms.Padding(12, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(107, 34);
@@ -257,35 +256,23 @@
             this.lblLowMarginLimit.TabIndex = 61;
             this.lblLowMarginLimit.Text = "Low Margin Limit";
             // 
-            // btnCustomerFactorSave
+            // chkCustomer
             // 
-            this.btnCustomerFactorSave.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnCustomerFactorSave.Image = global::LoginForm.Properties.Resources.if_floppy_285657;
-            this.btnCustomerFactorSave.Location = new System.Drawing.Point(239, 322);
-            this.btnCustomerFactorSave.Name = "btnCustomerFactorSave";
-            this.btnCustomerFactorSave.Size = new System.Drawing.Size(51, 41);
-            this.btnCustomerFactorSave.TabIndex = 80;
-            this.btnCustomerFactorSave.UseVisualStyleBackColor = true;
-            this.btnCustomerFactorSave.Click += new System.EventHandler(this.btnCustomerFactorSave_Click);
-            // 
-            // label5
-            // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(215, 366);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(112, 13);
-            this.label5.TabIndex = 79;
-            this.label5.Text = "Customer Factor Save";
+            this.chkCustomer.AutoSize = true;
+            this.chkCustomer.Location = new System.Drawing.Point(136, 156);
+            this.chkCustomer.Name = "chkCustomer";
+            this.chkCustomer.Size = new System.Drawing.Size(129, 17);
+            this.chkCustomer.TabIndex = 81;
+            this.chkCustomer.Text = "Apply to all Customers";
+            this.chkCustomer.UseVisualStyleBackColor = true;
             // 
             // FormManagmentControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
-            this.ClientSize = new System.Drawing.Size(372, 483);
-            this.Controls.Add(this.btnCustomerFactorSave);
-            this.Controls.Add(this.label5);
+            this.ClientSize = new System.Drawing.Size(372, 444);
+            this.Controls.Add(this.chkCustomer);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.label67);
             this.Controls.Add(this.CustomsRateUpDown);
@@ -335,7 +322,6 @@
         private System.Windows.Forms.Label lblVAT;
         private System.Windows.Forms.TextBox txtLowMarginLimit;
         private System.Windows.Forms.Label lblLowMarginLimit;
-        private System.Windows.Forms.Button btnCustomerFactorSave;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckBox chkCustomer;
     }
 }

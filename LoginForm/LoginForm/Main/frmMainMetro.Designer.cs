@@ -38,10 +38,17 @@ namespace LoginForm.Main
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.bunifuElipse2 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.bunifuElipse3 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.altoSlidingLabel1 = new AltoControls.AltoSlidingLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pnlManagement = new System.Windows.Forms.Panel();
+            this.btnUser = new AltoControls.AltoButton();
             this.btnCustomerTransfer = new AltoControls.AltoButton();
             this.btnManagmentControl = new AltoControls.AltoButton();
             this.btnRoleAuths = new AltoControls.AltoButton();
@@ -49,7 +56,7 @@ namespace LoginForm.Main
             this.btnTermsOfPayment = new AltoControls.AltoButton();
             this.btnExchangeRate = new AltoControls.AltoButton();
             this.btnManagement = new AltoControls.AltoButton();
-            this.pnlFileLoader = new System.Windows.Forms.Panel();
+            this.pnlImportFiles = new System.Windows.Forms.Panel();
             this.btnBackOrder = new AltoControls.AltoButton();
             this.btnOrderAcknowledgement = new AltoControls.AltoButton();
             this.btnOnSale = new AltoControls.AltoButton();
@@ -64,14 +71,13 @@ namespace LoginForm.Main
             this.btnRSProList = new AltoControls.AltoButton();
             this.btnRsInvoice = new AltoControls.AltoButton();
             this.btnFileLoader = new AltoControls.AltoButton();
-            this.pnlDevelopment = new System.Windows.Forms.Panel();
+            this.pnlMain = new System.Windows.Forms.Panel();
             this.btnToBeInvoiced = new AltoControls.AltoButton();
             this.btnStock = new AltoControls.AltoButton();
             this.btnQuotation = new AltoControls.AltoButton();
             this.btnItemCard = new AltoControls.AltoButton();
             this.btnPurchaseOrder = new AltoControls.AltoButton();
             this.btnCustomer = new AltoControls.AltoButton();
-            this.btnUser = new AltoControls.AltoButton();
             this.btnSalesOrder = new AltoControls.AltoButton();
             this.btnSupplier = new AltoControls.AltoButton();
             this.btnDevelopment = new AltoControls.AltoButton();
@@ -87,30 +93,73 @@ namespace LoginForm.Main
             this.lblTitleEmail = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.lblTitleName = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.altoSlidingLabel1 = new AltoControls.AltoSlidingLabel();
-            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.bunifuElipse2 = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.bunifuElipse3 = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pnlManagement.SuspendLayout();
-            this.pnlFileLoader.SuspendLayout();
-            this.pnlDevelopment.SuspendLayout();
+            this.pnlImportFiles.SuspendLayout();
+            this.pnlMain.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // bunifuElipse1
+            // 
+            this.bunifuElipse1.ElipseRadius = 10;
+            this.bunifuElipse1.TargetControl = this.pnlMain;
+            // 
+            // bunifuElipse2
+            // 
+            this.bunifuElipse2.ElipseRadius = 20;
+            this.bunifuElipse2.TargetControl = this.pnlImportFiles;
+            // 
+            // bunifuElipse3
+            // 
+            this.bunifuElipse3.ElipseRadius = 20;
+            this.bunifuElipse3.TargetControl = this.pnlManagement;
+            // 
+            // timer2
+            // 
+            this.timer2.Interval = 5;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
+            this.panel3.BackgroundImage = global::LoginForm.Properties.Resources.IME_LOGO2;
+            this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.altoSlidingLabel1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(232, 0);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(687, 817);
+            this.panel3.TabIndex = 1;
+            // 
+            // altoSlidingLabel1
+            // 
+            this.altoSlidingLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.altoSlidingLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.altoSlidingLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.altoSlidingLabel1.Location = new System.Drawing.Point(435, 8);
+            this.altoSlidingLabel1.Margin = new System.Windows.Forms.Padding(2);
+            this.altoSlidingLabel1.Name = "altoSlidingLabel1";
+            this.altoSlidingLabel1.Size = new System.Drawing.Size(242, 29);
+            this.altoSlidingLabel1.Slide = true;
+            this.altoSlidingLabel1.TabIndex = 1;
+            this.altoSlidingLabel1.Text = "Lorem Ipsum Dolor Sit Amet";
+            this.altoSlidingLabel1.Click += new System.EventHandler(this.altoSlidingLabel1_Click);
+            this.altoSlidingLabel1.DoubleClick += new System.EventHandler(this.altoSlidingLabel1_DoubleClick);
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(309, 1006);
+            this.panel1.Size = new System.Drawing.Size(232, 817);
             this.panel1.TabIndex = 0;
             // 
             // panel5
@@ -119,10 +168,10 @@ namespace LoginForm.Main
             this.panel5.Controls.Add(this.panel2);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(0, 0);
-            this.panel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
-            this.panel5.Padding = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.panel5.Size = new System.Drawing.Size(309, 1006);
+            this.panel5.Padding = new System.Windows.Forms.Padding(6);
+            this.panel5.Size = new System.Drawing.Size(232, 817);
             this.panel5.TabIndex = 0;
             // 
             // panel2
@@ -130,23 +179,24 @@ namespace LoginForm.Main
             this.panel2.AutoScrollMargin = new System.Drawing.Size(5, 0);
             this.panel2.Controls.Add(this.pnlManagement);
             this.panel2.Controls.Add(this.btnManagement);
-            this.panel2.Controls.Add(this.pnlFileLoader);
+            this.panel2.Controls.Add(this.pnlImportFiles);
             this.panel2.Controls.Add(this.btnFileLoader);
-            this.panel2.Controls.Add(this.pnlDevelopment);
+            this.panel2.Controls.Add(this.pnlMain);
             this.panel2.Controls.Add(this.btnDevelopment);
             this.panel2.Controls.Add(this.pnlBorder);
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(8, 7);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel2.Location = new System.Drawing.Point(6, 6);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(291, 990);
+            this.panel2.Size = new System.Drawing.Size(218, 803);
             this.panel2.TabIndex = 1;
             // 
             // pnlManagement
             // 
             this.pnlManagement.AutoScroll = true;
             this.pnlManagement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(254)))), ((int)(((byte)(233)))));
+            this.pnlManagement.Controls.Add(this.btnUser);
             this.pnlManagement.Controls.Add(this.btnCustomerTransfer);
             this.pnlManagement.Controls.Add(this.btnManagmentControl);
             this.pnlManagement.Controls.Add(this.btnRoleAuths);
@@ -154,11 +204,33 @@ namespace LoginForm.Main
             this.pnlManagement.Controls.Add(this.btnTermsOfPayment);
             this.pnlManagement.Controls.Add(this.btnExchangeRate);
             this.pnlManagement.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlManagement.Location = new System.Drawing.Point(0, 364);
-            this.pnlManagement.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pnlManagement.Location = new System.Drawing.Point(0, 297);
+            this.pnlManagement.Margin = new System.Windows.Forms.Padding(2);
             this.pnlManagement.Name = "pnlManagement";
-            this.pnlManagement.Size = new System.Drawing.Size(291, 0);
+            this.pnlManagement.Size = new System.Drawing.Size(218, 0);
             this.pnlManagement.TabIndex = 8;
+            // 
+            // btnUser
+            // 
+            this.btnUser.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
+            this.btnUser.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
+            this.btnUser.BackColor = System.Drawing.Color.Transparent;
+            this.btnUser.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnUser.Font = new System.Drawing.Font("Sitka Text", 11F, System.Drawing.FontStyle.Bold);
+            this.btnUser.ForeColor = System.Drawing.Color.Black;
+            this.btnUser.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
+            this.btnUser.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
+            this.btnUser.Location = new System.Drawing.Point(2, 224);
+            this.btnUser.Margin = new System.Windows.Forms.Padding(2);
+            this.btnUser.Name = "btnUser";
+            this.btnUser.Radius = 5;
+            this.btnUser.Size = new System.Drawing.Size(194, 32);
+            this.btnUser.Stroke = false;
+            this.btnUser.StrokeColor = System.Drawing.Color.Gray;
+            this.btnUser.TabIndex = 16;
+            this.btnUser.Text = "User";
+            this.btnUser.Transparency = false;
+            this.btnUser.Click += new System.EventHandler(this.btnUser_Click_1);
             // 
             // btnCustomerTransfer
             // 
@@ -170,11 +242,11 @@ namespace LoginForm.Main
             this.btnCustomerTransfer.ForeColor = System.Drawing.Color.Black;
             this.btnCustomerTransfer.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
             this.btnCustomerTransfer.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
-            this.btnCustomerTransfer.Location = new System.Drawing.Point(3, 231);
-            this.btnCustomerTransfer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCustomerTransfer.Location = new System.Drawing.Point(2, 188);
+            this.btnCustomerTransfer.Margin = new System.Windows.Forms.Padding(2);
             this.btnCustomerTransfer.Name = "btnCustomerTransfer";
             this.btnCustomerTransfer.Radius = 5;
-            this.btnCustomerTransfer.Size = new System.Drawing.Size(259, 39);
+            this.btnCustomerTransfer.Size = new System.Drawing.Size(194, 32);
             this.btnCustomerTransfer.Stroke = false;
             this.btnCustomerTransfer.StrokeColor = System.Drawing.Color.Gray;
             this.btnCustomerTransfer.TabIndex = 15;
@@ -192,11 +264,11 @@ namespace LoginForm.Main
             this.btnManagmentControl.ForeColor = System.Drawing.Color.Black;
             this.btnManagmentControl.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
             this.btnManagmentControl.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
-            this.btnManagmentControl.Location = new System.Drawing.Point(3, 187);
-            this.btnManagmentControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnManagmentControl.Location = new System.Drawing.Point(2, 152);
+            this.btnManagmentControl.Margin = new System.Windows.Forms.Padding(2);
             this.btnManagmentControl.Name = "btnManagmentControl";
             this.btnManagmentControl.Radius = 5;
-            this.btnManagmentControl.Size = new System.Drawing.Size(259, 39);
+            this.btnManagmentControl.Size = new System.Drawing.Size(194, 32);
             this.btnManagmentControl.Stroke = false;
             this.btnManagmentControl.StrokeColor = System.Drawing.Color.Gray;
             this.btnManagmentControl.TabIndex = 14;
@@ -214,11 +286,11 @@ namespace LoginForm.Main
             this.btnRoleAuths.ForeColor = System.Drawing.Color.Black;
             this.btnRoleAuths.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
             this.btnRoleAuths.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
-            this.btnRoleAuths.Location = new System.Drawing.Point(5, 143);
-            this.btnRoleAuths.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnRoleAuths.Location = new System.Drawing.Point(4, 116);
+            this.btnRoleAuths.Margin = new System.Windows.Forms.Padding(2);
             this.btnRoleAuths.Name = "btnRoleAuths";
             this.btnRoleAuths.Radius = 5;
-            this.btnRoleAuths.Size = new System.Drawing.Size(259, 39);
+            this.btnRoleAuths.Size = new System.Drawing.Size(194, 32);
             this.btnRoleAuths.Stroke = false;
             this.btnRoleAuths.StrokeColor = System.Drawing.Color.Gray;
             this.btnRoleAuths.TabIndex = 13;
@@ -236,11 +308,11 @@ namespace LoginForm.Main
             this.btnCategorySubCategory.ForeColor = System.Drawing.Color.Black;
             this.btnCategorySubCategory.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
             this.btnCategorySubCategory.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
-            this.btnCategorySubCategory.Location = new System.Drawing.Point(5, 97);
-            this.btnCategorySubCategory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCategorySubCategory.Location = new System.Drawing.Point(4, 79);
+            this.btnCategorySubCategory.Margin = new System.Windows.Forms.Padding(2);
             this.btnCategorySubCategory.Name = "btnCategorySubCategory";
             this.btnCategorySubCategory.Radius = 5;
-            this.btnCategorySubCategory.Size = new System.Drawing.Size(259, 39);
+            this.btnCategorySubCategory.Size = new System.Drawing.Size(194, 32);
             this.btnCategorySubCategory.Stroke = false;
             this.btnCategorySubCategory.StrokeColor = System.Drawing.Color.Gray;
             this.btnCategorySubCategory.TabIndex = 12;
@@ -254,15 +326,16 @@ namespace LoginForm.Main
             this.btnTermsOfPayment.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
             this.btnTermsOfPayment.BackColor = System.Drawing.Color.Transparent;
             this.btnTermsOfPayment.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnTermsOfPayment.Enabled = false;
             this.btnTermsOfPayment.Font = new System.Drawing.Font("Sitka Text", 11F, System.Drawing.FontStyle.Bold);
             this.btnTermsOfPayment.ForeColor = System.Drawing.Color.Black;
             this.btnTermsOfPayment.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
             this.btnTermsOfPayment.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
-            this.btnTermsOfPayment.Location = new System.Drawing.Point(5, 52);
-            this.btnTermsOfPayment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnTermsOfPayment.Location = new System.Drawing.Point(4, 42);
+            this.btnTermsOfPayment.Margin = new System.Windows.Forms.Padding(2);
             this.btnTermsOfPayment.Name = "btnTermsOfPayment";
             this.btnTermsOfPayment.Radius = 5;
-            this.btnTermsOfPayment.Size = new System.Drawing.Size(259, 39);
+            this.btnTermsOfPayment.Size = new System.Drawing.Size(194, 32);
             this.btnTermsOfPayment.Stroke = false;
             this.btnTermsOfPayment.StrokeColor = System.Drawing.Color.Gray;
             this.btnTermsOfPayment.TabIndex = 11;
@@ -276,15 +349,16 @@ namespace LoginForm.Main
             this.btnExchangeRate.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
             this.btnExchangeRate.BackColor = System.Drawing.Color.Transparent;
             this.btnExchangeRate.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnExchangeRate.Enabled = false;
             this.btnExchangeRate.Font = new System.Drawing.Font("Sitka Text", 11F, System.Drawing.FontStyle.Bold);
             this.btnExchangeRate.ForeColor = System.Drawing.Color.Black;
             this.btnExchangeRate.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
             this.btnExchangeRate.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
-            this.btnExchangeRate.Location = new System.Drawing.Point(5, 5);
-            this.btnExchangeRate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnExchangeRate.Location = new System.Drawing.Point(4, 4);
+            this.btnExchangeRate.Margin = new System.Windows.Forms.Padding(2);
             this.btnExchangeRate.Name = "btnExchangeRate";
             this.btnExchangeRate.Radius = 5;
-            this.btnExchangeRate.Size = new System.Drawing.Size(259, 39);
+            this.btnExchangeRate.Size = new System.Drawing.Size(194, 32);
             this.btnExchangeRate.Stroke = false;
             this.btnExchangeRate.StrokeColor = System.Drawing.Color.Gray;
             this.btnExchangeRate.TabIndex = 10;
@@ -303,11 +377,11 @@ namespace LoginForm.Main
             this.btnManagement.ForeColor = System.Drawing.Color.Black;
             this.btnManagement.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.btnManagement.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(255)))), ((int)(((byte)(173)))));
-            this.btnManagement.Location = new System.Drawing.Point(0, 314);
-            this.btnManagement.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnManagement.Location = new System.Drawing.Point(0, 256);
+            this.btnManagement.Margin = new System.Windows.Forms.Padding(2);
             this.btnManagement.Name = "btnManagement";
             this.btnManagement.Radius = 5;
-            this.btnManagement.Size = new System.Drawing.Size(291, 50);
+            this.btnManagement.Size = new System.Drawing.Size(218, 41);
             this.btnManagement.Stroke = true;
             this.btnManagement.StrokeColor = System.Drawing.Color.DarkGray;
             this.btnManagement.TabIndex = 7;
@@ -315,29 +389,29 @@ namespace LoginForm.Main
             this.btnManagement.Transparency = false;
             this.btnManagement.Click += new System.EventHandler(this.button3_Click);
             // 
-            // pnlFileLoader
+            // pnlImportFiles
             // 
-            this.pnlFileLoader.AutoScroll = true;
-            this.pnlFileLoader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(254)))), ((int)(((byte)(233)))));
-            this.pnlFileLoader.Controls.Add(this.btnBackOrder);
-            this.pnlFileLoader.Controls.Add(this.btnOrderAcknowledgement);
-            this.pnlFileLoader.Controls.Add(this.btnOnSale);
-            this.pnlFileLoader.Controls.Add(this.btnSuperDisk);
-            this.pnlFileLoader.Controls.Add(this.btnSlidingPriceList);
-            this.pnlFileLoader.Controls.Add(this.btnDiscontinuedList);
-            this.pnlFileLoader.Controls.Add(this.btnExtendedRangePrice);
-            this.pnlFileLoader.Controls.Add(this.btnHazardousFile);
-            this.pnlFileLoader.Controls.Add(this.btnDualUsedArticles);
-            this.pnlFileLoader.Controls.Add(this.btnSuperDiskwithP);
-            this.pnlFileLoader.Controls.Add(this.btnTSEList);
-            this.pnlFileLoader.Controls.Add(this.btnRSProList);
-            this.pnlFileLoader.Controls.Add(this.btnRsInvoice);
-            this.pnlFileLoader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlFileLoader.Location = new System.Drawing.Point(0, 314);
-            this.pnlFileLoader.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pnlFileLoader.Name = "pnlFileLoader";
-            this.pnlFileLoader.Size = new System.Drawing.Size(291, 0);
-            this.pnlFileLoader.TabIndex = 6;
+            this.pnlImportFiles.AutoScroll = true;
+            this.pnlImportFiles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(254)))), ((int)(((byte)(233)))));
+            this.pnlImportFiles.Controls.Add(this.btnBackOrder);
+            this.pnlImportFiles.Controls.Add(this.btnOrderAcknowledgement);
+            this.pnlImportFiles.Controls.Add(this.btnOnSale);
+            this.pnlImportFiles.Controls.Add(this.btnSuperDisk);
+            this.pnlImportFiles.Controls.Add(this.btnSlidingPriceList);
+            this.pnlImportFiles.Controls.Add(this.btnDiscontinuedList);
+            this.pnlImportFiles.Controls.Add(this.btnExtendedRangePrice);
+            this.pnlImportFiles.Controls.Add(this.btnHazardousFile);
+            this.pnlImportFiles.Controls.Add(this.btnDualUsedArticles);
+            this.pnlImportFiles.Controls.Add(this.btnSuperDiskwithP);
+            this.pnlImportFiles.Controls.Add(this.btnTSEList);
+            this.pnlImportFiles.Controls.Add(this.btnRSProList);
+            this.pnlImportFiles.Controls.Add(this.btnRsInvoice);
+            this.pnlImportFiles.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlImportFiles.Location = new System.Drawing.Point(0, 256);
+            this.pnlImportFiles.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlImportFiles.Name = "pnlImportFiles";
+            this.pnlImportFiles.Size = new System.Drawing.Size(218, 0);
+            this.pnlImportFiles.TabIndex = 6;
             // 
             // btnBackOrder
             // 
@@ -345,15 +419,16 @@ namespace LoginForm.Main
             this.btnBackOrder.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
             this.btnBackOrder.BackColor = System.Drawing.Color.Transparent;
             this.btnBackOrder.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnBackOrder.Enabled = false;
             this.btnBackOrder.Font = new System.Drawing.Font("Sitka Text", 11F, System.Drawing.FontStyle.Bold);
             this.btnBackOrder.ForeColor = System.Drawing.Color.Black;
             this.btnBackOrder.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
             this.btnBackOrder.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
-            this.btnBackOrder.Location = new System.Drawing.Point(3, 535);
-            this.btnBackOrder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnBackOrder.Location = new System.Drawing.Point(8, 444);
+            this.btnBackOrder.Margin = new System.Windows.Forms.Padding(2);
             this.btnBackOrder.Name = "btnBackOrder";
             this.btnBackOrder.Radius = 5;
-            this.btnBackOrder.Size = new System.Drawing.Size(259, 39);
+            this.btnBackOrder.Size = new System.Drawing.Size(194, 32);
             this.btnBackOrder.Stroke = false;
             this.btnBackOrder.StrokeColor = System.Drawing.Color.Gray;
             this.btnBackOrder.TabIndex = 18;
@@ -367,15 +442,16 @@ namespace LoginForm.Main
             this.btnOrderAcknowledgement.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
             this.btnOrderAcknowledgement.BackColor = System.Drawing.Color.Transparent;
             this.btnOrderAcknowledgement.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnOrderAcknowledgement.Enabled = false;
             this.btnOrderAcknowledgement.Font = new System.Drawing.Font("Sitka Text", 11F, System.Drawing.FontStyle.Bold);
             this.btnOrderAcknowledgement.ForeColor = System.Drawing.Color.Black;
             this.btnOrderAcknowledgement.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
             this.btnOrderAcknowledgement.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
-            this.btnOrderAcknowledgement.Location = new System.Drawing.Point(3, 490);
-            this.btnOrderAcknowledgement.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnOrderAcknowledgement.Location = new System.Drawing.Point(8, 407);
+            this.btnOrderAcknowledgement.Margin = new System.Windows.Forms.Padding(2);
             this.btnOrderAcknowledgement.Name = "btnOrderAcknowledgement";
             this.btnOrderAcknowledgement.Radius = 5;
-            this.btnOrderAcknowledgement.Size = new System.Drawing.Size(259, 39);
+            this.btnOrderAcknowledgement.Size = new System.Drawing.Size(194, 32);
             this.btnOrderAcknowledgement.Stroke = false;
             this.btnOrderAcknowledgement.StrokeColor = System.Drawing.Color.Gray;
             this.btnOrderAcknowledgement.TabIndex = 17;
@@ -389,15 +465,16 @@ namespace LoginForm.Main
             this.btnOnSale.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
             this.btnOnSale.BackColor = System.Drawing.Color.Transparent;
             this.btnOnSale.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnOnSale.Enabled = false;
             this.btnOnSale.Font = new System.Drawing.Font("Sitka Text", 11F, System.Drawing.FontStyle.Bold);
             this.btnOnSale.ForeColor = System.Drawing.Color.Black;
             this.btnOnSale.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
             this.btnOnSale.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
-            this.btnOnSale.Location = new System.Drawing.Point(3, 446);
-            this.btnOnSale.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnOnSale.Location = new System.Drawing.Point(8, 371);
+            this.btnOnSale.Margin = new System.Windows.Forms.Padding(2);
             this.btnOnSale.Name = "btnOnSale";
             this.btnOnSale.Radius = 5;
-            this.btnOnSale.Size = new System.Drawing.Size(259, 39);
+            this.btnOnSale.Size = new System.Drawing.Size(194, 32);
             this.btnOnSale.Stroke = false;
             this.btnOnSale.StrokeColor = System.Drawing.Color.Gray;
             this.btnOnSale.TabIndex = 16;
@@ -415,11 +492,11 @@ namespace LoginForm.Main
             this.btnSuperDisk.ForeColor = System.Drawing.Color.Black;
             this.btnSuperDisk.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
             this.btnSuperDisk.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
-            this.btnSuperDisk.Location = new System.Drawing.Point(3, 402);
-            this.btnSuperDisk.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSuperDisk.Location = new System.Drawing.Point(4, 38);
+            this.btnSuperDisk.Margin = new System.Windows.Forms.Padding(2);
             this.btnSuperDisk.Name = "btnSuperDisk";
             this.btnSuperDisk.Radius = 5;
-            this.btnSuperDisk.Size = new System.Drawing.Size(259, 39);
+            this.btnSuperDisk.Size = new System.Drawing.Size(194, 32);
             this.btnSuperDisk.Stroke = false;
             this.btnSuperDisk.StrokeColor = System.Drawing.Color.Gray;
             this.btnSuperDisk.TabIndex = 15;
@@ -437,15 +514,15 @@ namespace LoginForm.Main
             this.btnSlidingPriceList.ForeColor = System.Drawing.Color.Black;
             this.btnSlidingPriceList.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
             this.btnSlidingPriceList.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
-            this.btnSlidingPriceList.Location = new System.Drawing.Point(3, 357);
-            this.btnSlidingPriceList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSlidingPriceList.Location = new System.Drawing.Point(5, 115);
+            this.btnSlidingPriceList.Margin = new System.Windows.Forms.Padding(2);
             this.btnSlidingPriceList.Name = "btnSlidingPriceList";
             this.btnSlidingPriceList.Radius = 5;
-            this.btnSlidingPriceList.Size = new System.Drawing.Size(259, 39);
+            this.btnSlidingPriceList.Size = new System.Drawing.Size(194, 32);
             this.btnSlidingPriceList.Stroke = false;
             this.btnSlidingPriceList.StrokeColor = System.Drawing.Color.Gray;
             this.btnSlidingPriceList.TabIndex = 14;
-            this.btnSlidingPriceList.Text = "Sliding Price List";
+            this.btnSlidingPriceList.Text = "Sliding Price File";
             this.btnSlidingPriceList.Transparency = false;
             this.btnSlidingPriceList.Click += new System.EventHandler(this.btnSlidingPriceList_Click);
             // 
@@ -455,15 +532,16 @@ namespace LoginForm.Main
             this.btnDiscontinuedList.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
             this.btnDiscontinuedList.BackColor = System.Drawing.Color.Transparent;
             this.btnDiscontinuedList.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnDiscontinuedList.Enabled = false;
             this.btnDiscontinuedList.Font = new System.Drawing.Font("Sitka Text", 11F, System.Drawing.FontStyle.Bold);
             this.btnDiscontinuedList.ForeColor = System.Drawing.Color.Black;
             this.btnDiscontinuedList.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
             this.btnDiscontinuedList.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
-            this.btnDiscontinuedList.Location = new System.Drawing.Point(3, 313);
-            this.btnDiscontinuedList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDiscontinuedList.Location = new System.Drawing.Point(8, 335);
+            this.btnDiscontinuedList.Margin = new System.Windows.Forms.Padding(2);
             this.btnDiscontinuedList.Name = "btnDiscontinuedList";
             this.btnDiscontinuedList.Radius = 5;
-            this.btnDiscontinuedList.Size = new System.Drawing.Size(259, 39);
+            this.btnDiscontinuedList.Size = new System.Drawing.Size(194, 32);
             this.btnDiscontinuedList.Stroke = false;
             this.btnDiscontinuedList.StrokeColor = System.Drawing.Color.Gray;
             this.btnDiscontinuedList.TabIndex = 13;
@@ -477,15 +555,16 @@ namespace LoginForm.Main
             this.btnExtendedRangePrice.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
             this.btnExtendedRangePrice.BackColor = System.Drawing.Color.Transparent;
             this.btnExtendedRangePrice.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnExtendedRangePrice.Enabled = false;
             this.btnExtendedRangePrice.Font = new System.Drawing.Font("Sitka Text", 11F, System.Drawing.FontStyle.Bold);
             this.btnExtendedRangePrice.ForeColor = System.Drawing.Color.Black;
             this.btnExtendedRangePrice.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
             this.btnExtendedRangePrice.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
-            this.btnExtendedRangePrice.Location = new System.Drawing.Point(3, 270);
-            this.btnExtendedRangePrice.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnExtendedRangePrice.Location = new System.Drawing.Point(8, 300);
+            this.btnExtendedRangePrice.Margin = new System.Windows.Forms.Padding(2);
             this.btnExtendedRangePrice.Name = "btnExtendedRangePrice";
             this.btnExtendedRangePrice.Radius = 5;
-            this.btnExtendedRangePrice.Size = new System.Drawing.Size(259, 39);
+            this.btnExtendedRangePrice.Size = new System.Drawing.Size(194, 32);
             this.btnExtendedRangePrice.Stroke = false;
             this.btnExtendedRangePrice.StrokeColor = System.Drawing.Color.Gray;
             this.btnExtendedRangePrice.TabIndex = 12;
@@ -503,11 +582,11 @@ namespace LoginForm.Main
             this.btnHazardousFile.ForeColor = System.Drawing.Color.Black;
             this.btnHazardousFile.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
             this.btnHazardousFile.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
-            this.btnHazardousFile.Location = new System.Drawing.Point(3, 224);
-            this.btnHazardousFile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnHazardousFile.Location = new System.Drawing.Point(5, 154);
+            this.btnHazardousFile.Margin = new System.Windows.Forms.Padding(2);
             this.btnHazardousFile.Name = "btnHazardousFile";
             this.btnHazardousFile.Radius = 5;
-            this.btnHazardousFile.Size = new System.Drawing.Size(259, 39);
+            this.btnHazardousFile.Size = new System.Drawing.Size(194, 32);
             this.btnHazardousFile.Stroke = false;
             this.btnHazardousFile.StrokeColor = System.Drawing.Color.Gray;
             this.btnHazardousFile.TabIndex = 11;
@@ -521,15 +600,16 @@ namespace LoginForm.Main
             this.btnDualUsedArticles.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
             this.btnDualUsedArticles.BackColor = System.Drawing.Color.Transparent;
             this.btnDualUsedArticles.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnDualUsedArticles.Enabled = false;
             this.btnDualUsedArticles.Font = new System.Drawing.Font("Sitka Text", 11F, System.Drawing.FontStyle.Bold);
             this.btnDualUsedArticles.ForeColor = System.Drawing.Color.Black;
             this.btnDualUsedArticles.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
             this.btnDualUsedArticles.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
-            this.btnDualUsedArticles.Location = new System.Drawing.Point(3, 180);
-            this.btnDualUsedArticles.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDualUsedArticles.Location = new System.Drawing.Point(8, 264);
+            this.btnDualUsedArticles.Margin = new System.Windows.Forms.Padding(2);
             this.btnDualUsedArticles.Name = "btnDualUsedArticles";
             this.btnDualUsedArticles.Radius = 5;
-            this.btnDualUsedArticles.Size = new System.Drawing.Size(259, 39);
+            this.btnDualUsedArticles.Size = new System.Drawing.Size(194, 32);
             this.btnDualUsedArticles.Stroke = false;
             this.btnDualUsedArticles.StrokeColor = System.Drawing.Color.Gray;
             this.btnDualUsedArticles.TabIndex = 10;
@@ -547,15 +627,15 @@ namespace LoginForm.Main
             this.btnSuperDiskwithP.ForeColor = System.Drawing.Color.Black;
             this.btnSuperDiskwithP.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
             this.btnSuperDiskwithP.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
-            this.btnSuperDiskwithP.Location = new System.Drawing.Point(3, 135);
-            this.btnSuperDiskwithP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSuperDiskwithP.Location = new System.Drawing.Point(5, 76);
+            this.btnSuperDiskwithP.Margin = new System.Windows.Forms.Padding(2);
             this.btnSuperDiskwithP.Name = "btnSuperDiskwithP";
             this.btnSuperDiskwithP.Radius = 5;
-            this.btnSuperDiskwithP.Size = new System.Drawing.Size(259, 39);
+            this.btnSuperDiskwithP.Size = new System.Drawing.Size(194, 32);
             this.btnSuperDiskwithP.Stroke = false;
             this.btnSuperDiskwithP.StrokeColor = System.Drawing.Color.Gray;
             this.btnSuperDiskwithP.TabIndex = 9;
-            this.btnSuperDiskwithP.Text = "Super Disk with P";
+            this.btnSuperDiskwithP.Text = "Super Disk P";
             this.btnSuperDiskwithP.Transparency = false;
             this.btnSuperDiskwithP.Click += new System.EventHandler(this.btnSuperDiskwithP_Click);
             // 
@@ -565,15 +645,16 @@ namespace LoginForm.Main
             this.btnTSEList.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
             this.btnTSEList.BackColor = System.Drawing.Color.Transparent;
             this.btnTSEList.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnTSEList.Enabled = false;
             this.btnTSEList.Font = new System.Drawing.Font("Sitka Text", 11F, System.Drawing.FontStyle.Bold);
             this.btnTSEList.ForeColor = System.Drawing.Color.Black;
             this.btnTSEList.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
             this.btnTSEList.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
-            this.btnTSEList.Location = new System.Drawing.Point(3, 92);
-            this.btnTSEList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnTSEList.Location = new System.Drawing.Point(5, 228);
+            this.btnTSEList.Margin = new System.Windows.Forms.Padding(2);
             this.btnTSEList.Name = "btnTSEList";
             this.btnTSEList.Radius = 5;
-            this.btnTSEList.Size = new System.Drawing.Size(259, 39);
+            this.btnTSEList.Size = new System.Drawing.Size(194, 32);
             this.btnTSEList.Stroke = false;
             this.btnTSEList.StrokeColor = System.Drawing.Color.Gray;
             this.btnTSEList.TabIndex = 8;
@@ -587,19 +668,20 @@ namespace LoginForm.Main
             this.btnRSProList.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
             this.btnRSProList.BackColor = System.Drawing.Color.Transparent;
             this.btnRSProList.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnRSProList.Enabled = false;
             this.btnRSProList.Font = new System.Drawing.Font("Sitka Text", 11F, System.Drawing.FontStyle.Bold);
             this.btnRSProList.ForeColor = System.Drawing.Color.Black;
             this.btnRSProList.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
             this.btnRSProList.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
-            this.btnRSProList.Location = new System.Drawing.Point(3, 47);
-            this.btnRSProList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnRSProList.Location = new System.Drawing.Point(5, 191);
+            this.btnRSProList.Margin = new System.Windows.Forms.Padding(2);
             this.btnRSProList.Name = "btnRSProList";
             this.btnRSProList.Radius = 5;
-            this.btnRSProList.Size = new System.Drawing.Size(259, 39);
+            this.btnRSProList.Size = new System.Drawing.Size(194, 32);
             this.btnRSProList.Stroke = false;
             this.btnRSProList.StrokeColor = System.Drawing.Color.Gray;
             this.btnRSProList.TabIndex = 7;
-            this.btnRSProList.Text = "RS ProList";
+            this.btnRSProList.Text = "RS Pro List";
             this.btnRSProList.Transparency = false;
             this.btnRSProList.Click += new System.EventHandler(this.btnRSProList_Click);
             // 
@@ -613,11 +695,11 @@ namespace LoginForm.Main
             this.btnRsInvoice.ForeColor = System.Drawing.Color.Black;
             this.btnRsInvoice.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
             this.btnRsInvoice.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
-            this.btnRsInvoice.Location = new System.Drawing.Point(3, 2);
-            this.btnRsInvoice.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnRsInvoice.Location = new System.Drawing.Point(2, 2);
+            this.btnRsInvoice.Margin = new System.Windows.Forms.Padding(2);
             this.btnRsInvoice.Name = "btnRsInvoice";
             this.btnRsInvoice.Radius = 5;
-            this.btnRsInvoice.Size = new System.Drawing.Size(259, 39);
+            this.btnRsInvoice.Size = new System.Drawing.Size(194, 32);
             this.btnRsInvoice.Stroke = false;
             this.btnRsInvoice.StrokeColor = System.Drawing.Color.Gray;
             this.btnRsInvoice.TabIndex = 6;
@@ -636,37 +718,36 @@ namespace LoginForm.Main
             this.btnFileLoader.ForeColor = System.Drawing.Color.Black;
             this.btnFileLoader.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.btnFileLoader.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(255)))), ((int)(((byte)(173)))));
-            this.btnFileLoader.Location = new System.Drawing.Point(0, 264);
-            this.btnFileLoader.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnFileLoader.Location = new System.Drawing.Point(0, 215);
+            this.btnFileLoader.Margin = new System.Windows.Forms.Padding(2);
             this.btnFileLoader.Name = "btnFileLoader";
             this.btnFileLoader.Radius = 5;
-            this.btnFileLoader.Size = new System.Drawing.Size(291, 50);
+            this.btnFileLoader.Size = new System.Drawing.Size(218, 41);
             this.btnFileLoader.Stroke = true;
             this.btnFileLoader.StrokeColor = System.Drawing.Color.DarkGray;
             this.btnFileLoader.TabIndex = 5;
-            this.btnFileLoader.Text = "File Loader";
+            this.btnFileLoader.Text = "Import Files";
             this.btnFileLoader.Transparency = false;
             this.btnFileLoader.Click += new System.EventHandler(this.button2_Click);
             // 
-            // pnlDevelopment
+            // pnlMain
             // 
-            this.pnlDevelopment.AutoScroll = true;
-            this.pnlDevelopment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(254)))), ((int)(((byte)(233)))));
-            this.pnlDevelopment.Controls.Add(this.btnToBeInvoiced);
-            this.pnlDevelopment.Controls.Add(this.btnStock);
-            this.pnlDevelopment.Controls.Add(this.btnQuotation);
-            this.pnlDevelopment.Controls.Add(this.btnItemCard);
-            this.pnlDevelopment.Controls.Add(this.btnPurchaseOrder);
-            this.pnlDevelopment.Controls.Add(this.btnCustomer);
-            this.pnlDevelopment.Controls.Add(this.btnUser);
-            this.pnlDevelopment.Controls.Add(this.btnSalesOrder);
-            this.pnlDevelopment.Controls.Add(this.btnSupplier);
-            this.pnlDevelopment.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlDevelopment.Location = new System.Drawing.Point(0, 264);
-            this.pnlDevelopment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pnlDevelopment.Name = "pnlDevelopment";
-            this.pnlDevelopment.Size = new System.Drawing.Size(291, 0);
-            this.pnlDevelopment.TabIndex = 3;
+            this.pnlMain.AutoScroll = true;
+            this.pnlMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(254)))), ((int)(((byte)(233)))));
+            this.pnlMain.Controls.Add(this.btnToBeInvoiced);
+            this.pnlMain.Controls.Add(this.btnStock);
+            this.pnlMain.Controls.Add(this.btnQuotation);
+            this.pnlMain.Controls.Add(this.btnItemCard);
+            this.pnlMain.Controls.Add(this.btnPurchaseOrder);
+            this.pnlMain.Controls.Add(this.btnCustomer);
+            this.pnlMain.Controls.Add(this.btnSalesOrder);
+            this.pnlMain.Controls.Add(this.btnSupplier);
+            this.pnlMain.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlMain.Location = new System.Drawing.Point(0, 215);
+            this.pnlMain.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlMain.Name = "pnlMain";
+            this.pnlMain.Size = new System.Drawing.Size(218, 0);
+            this.pnlMain.TabIndex = 3;
             // 
             // btnToBeInvoiced
             // 
@@ -674,15 +755,16 @@ namespace LoginForm.Main
             this.btnToBeInvoiced.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
             this.btnToBeInvoiced.BackColor = System.Drawing.Color.Transparent;
             this.btnToBeInvoiced.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnToBeInvoiced.Enabled = false;
             this.btnToBeInvoiced.Font = new System.Drawing.Font("Sitka Text", 11F, System.Drawing.FontStyle.Bold);
             this.btnToBeInvoiced.ForeColor = System.Drawing.Color.Black;
             this.btnToBeInvoiced.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
             this.btnToBeInvoiced.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
-            this.btnToBeInvoiced.Location = new System.Drawing.Point(3, 372);
-            this.btnToBeInvoiced.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnToBeInvoiced.Location = new System.Drawing.Point(5, 279);
+            this.btnToBeInvoiced.Margin = new System.Windows.Forms.Padding(2);
             this.btnToBeInvoiced.Name = "btnToBeInvoiced";
             this.btnToBeInvoiced.Radius = 5;
-            this.btnToBeInvoiced.Size = new System.Drawing.Size(259, 39);
+            this.btnToBeInvoiced.Size = new System.Drawing.Size(194, 32);
             this.btnToBeInvoiced.Stroke = false;
             this.btnToBeInvoiced.StrokeColor = System.Drawing.Color.Gray;
             this.btnToBeInvoiced.TabIndex = 13;
@@ -696,15 +778,16 @@ namespace LoginForm.Main
             this.btnStock.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
             this.btnStock.BackColor = System.Drawing.Color.Transparent;
             this.btnStock.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnStock.Enabled = false;
             this.btnStock.Font = new System.Drawing.Font("Sitka Text", 11F, System.Drawing.FontStyle.Bold);
             this.btnStock.ForeColor = System.Drawing.Color.Black;
             this.btnStock.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
             this.btnStock.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
-            this.btnStock.Location = new System.Drawing.Point(3, 325);
-            this.btnStock.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnStock.Location = new System.Drawing.Point(5, 242);
+            this.btnStock.Margin = new System.Windows.Forms.Padding(2);
             this.btnStock.Name = "btnStock";
             this.btnStock.Radius = 5;
-            this.btnStock.Size = new System.Drawing.Size(259, 39);
+            this.btnStock.Size = new System.Drawing.Size(194, 32);
             this.btnStock.Stroke = false;
             this.btnStock.StrokeColor = System.Drawing.Color.Gray;
             this.btnStock.TabIndex = 12;
@@ -722,11 +805,11 @@ namespace LoginForm.Main
             this.btnQuotation.ForeColor = System.Drawing.Color.Black;
             this.btnQuotation.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
             this.btnQuotation.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
-            this.btnQuotation.Location = new System.Drawing.Point(3, 281);
-            this.btnQuotation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnQuotation.Location = new System.Drawing.Point(5, 125);
+            this.btnQuotation.Margin = new System.Windows.Forms.Padding(2);
             this.btnQuotation.Name = "btnQuotation";
             this.btnQuotation.Radius = 5;
-            this.btnQuotation.Size = new System.Drawing.Size(259, 39);
+            this.btnQuotation.Size = new System.Drawing.Size(194, 32);
             this.btnQuotation.Stroke = false;
             this.btnQuotation.StrokeColor = System.Drawing.Color.Gray;
             this.btnQuotation.TabIndex = 11;
@@ -744,11 +827,11 @@ namespace LoginForm.Main
             this.btnItemCard.ForeColor = System.Drawing.Color.Black;
             this.btnItemCard.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
             this.btnItemCard.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
-            this.btnItemCard.Location = new System.Drawing.Point(3, 234);
-            this.btnItemCard.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnItemCard.Location = new System.Drawing.Point(5, 12);
+            this.btnItemCard.Margin = new System.Windows.Forms.Padding(2);
             this.btnItemCard.Name = "btnItemCard";
             this.btnItemCard.Radius = 5;
-            this.btnItemCard.Size = new System.Drawing.Size(259, 39);
+            this.btnItemCard.Size = new System.Drawing.Size(194, 32);
             this.btnItemCard.Stroke = false;
             this.btnItemCard.StrokeColor = System.Drawing.Color.Gray;
             this.btnItemCard.TabIndex = 10;
@@ -766,11 +849,11 @@ namespace LoginForm.Main
             this.btnPurchaseOrder.ForeColor = System.Drawing.Color.Black;
             this.btnPurchaseOrder.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
             this.btnPurchaseOrder.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
-            this.btnPurchaseOrder.Location = new System.Drawing.Point(3, 188);
-            this.btnPurchaseOrder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnPurchaseOrder.Location = new System.Drawing.Point(5, 203);
+            this.btnPurchaseOrder.Margin = new System.Windows.Forms.Padding(2);
             this.btnPurchaseOrder.Name = "btnPurchaseOrder";
             this.btnPurchaseOrder.Radius = 5;
-            this.btnPurchaseOrder.Size = new System.Drawing.Size(259, 39);
+            this.btnPurchaseOrder.Size = new System.Drawing.Size(194, 32);
             this.btnPurchaseOrder.Stroke = false;
             this.btnPurchaseOrder.StrokeColor = System.Drawing.Color.Gray;
             this.btnPurchaseOrder.TabIndex = 9;
@@ -788,39 +871,17 @@ namespace LoginForm.Main
             this.btnCustomer.ForeColor = System.Drawing.Color.Black;
             this.btnCustomer.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
             this.btnCustomer.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
-            this.btnCustomer.Location = new System.Drawing.Point(3, 142);
-            this.btnCustomer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCustomer.Location = new System.Drawing.Point(4, 49);
+            this.btnCustomer.Margin = new System.Windows.Forms.Padding(2);
             this.btnCustomer.Name = "btnCustomer";
             this.btnCustomer.Radius = 5;
-            this.btnCustomer.Size = new System.Drawing.Size(259, 39);
+            this.btnCustomer.Size = new System.Drawing.Size(194, 32);
             this.btnCustomer.Stroke = false;
             this.btnCustomer.StrokeColor = System.Drawing.Color.Gray;
             this.btnCustomer.TabIndex = 8;
             this.btnCustomer.Text = "Customer";
             this.btnCustomer.Transparency = false;
             this.btnCustomer.Click += new System.EventHandler(this.btnCustomer_Click);
-            // 
-            // btnUser
-            // 
-            this.btnUser.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
-            this.btnUser.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
-            this.btnUser.BackColor = System.Drawing.Color.Transparent;
-            this.btnUser.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnUser.Font = new System.Drawing.Font("Sitka Text", 11F, System.Drawing.FontStyle.Bold);
-            this.btnUser.ForeColor = System.Drawing.Color.Black;
-            this.btnUser.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
-            this.btnUser.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
-            this.btnUser.Location = new System.Drawing.Point(3, 96);
-            this.btnUser.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnUser.Name = "btnUser";
-            this.btnUser.Radius = 5;
-            this.btnUser.Size = new System.Drawing.Size(259, 39);
-            this.btnUser.Stroke = false;
-            this.btnUser.StrokeColor = System.Drawing.Color.Gray;
-            this.btnUser.TabIndex = 7;
-            this.btnUser.Text = "User";
-            this.btnUser.Transparency = false;
-            this.btnUser.Click += new System.EventHandler(this.btnUser_Click);
             // 
             // btnSalesOrder
             // 
@@ -832,11 +893,11 @@ namespace LoginForm.Main
             this.btnSalesOrder.ForeColor = System.Drawing.Color.Black;
             this.btnSalesOrder.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
             this.btnSalesOrder.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
-            this.btnSalesOrder.Location = new System.Drawing.Point(3, 50);
-            this.btnSalesOrder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSalesOrder.Location = new System.Drawing.Point(5, 164);
+            this.btnSalesOrder.Margin = new System.Windows.Forms.Padding(2);
             this.btnSalesOrder.Name = "btnSalesOrder";
             this.btnSalesOrder.Radius = 5;
-            this.btnSalesOrder.Size = new System.Drawing.Size(259, 39);
+            this.btnSalesOrder.Size = new System.Drawing.Size(194, 32);
             this.btnSalesOrder.Stroke = false;
             this.btnSalesOrder.StrokeColor = System.Drawing.Color.Gray;
             this.btnSalesOrder.TabIndex = 6;
@@ -854,11 +915,11 @@ namespace LoginForm.Main
             this.btnSupplier.ForeColor = System.Drawing.Color.Black;
             this.btnSupplier.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
             this.btnSupplier.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
-            this.btnSupplier.Location = new System.Drawing.Point(3, 4);
-            this.btnSupplier.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSupplier.Location = new System.Drawing.Point(5, 87);
+            this.btnSupplier.Margin = new System.Windows.Forms.Padding(2);
             this.btnSupplier.Name = "btnSupplier";
             this.btnSupplier.Radius = 5;
-            this.btnSupplier.Size = new System.Drawing.Size(259, 39);
+            this.btnSupplier.Size = new System.Drawing.Size(194, 32);
             this.btnSupplier.Stroke = false;
             this.btnSupplier.StrokeColor = System.Drawing.Color.Gray;
             this.btnSupplier.TabIndex = 5;
@@ -877,25 +938,25 @@ namespace LoginForm.Main
             this.btnDevelopment.ForeColor = System.Drawing.Color.Black;
             this.btnDevelopment.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.btnDevelopment.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(255)))), ((int)(((byte)(173)))));
-            this.btnDevelopment.Location = new System.Drawing.Point(0, 214);
-            this.btnDevelopment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDevelopment.Location = new System.Drawing.Point(0, 174);
+            this.btnDevelopment.Margin = new System.Windows.Forms.Padding(2);
             this.btnDevelopment.Name = "btnDevelopment";
             this.btnDevelopment.Radius = 5;
-            this.btnDevelopment.Size = new System.Drawing.Size(291, 50);
+            this.btnDevelopment.Size = new System.Drawing.Size(218, 41);
             this.btnDevelopment.Stroke = true;
             this.btnDevelopment.StrokeColor = System.Drawing.Color.DarkGray;
             this.btnDevelopment.TabIndex = 4;
-            this.btnDevelopment.Text = "Development";
+            this.btnDevelopment.Text = "Main";
             this.btnDevelopment.Transparency = false;
             this.btnDevelopment.Click += new System.EventHandler(this.button1_Click);
             // 
             // pnlBorder
             // 
             this.pnlBorder.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlBorder.Location = new System.Drawing.Point(0, 207);
-            this.pnlBorder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pnlBorder.Location = new System.Drawing.Point(0, 168);
+            this.pnlBorder.Margin = new System.Windows.Forms.Padding(2);
             this.pnlBorder.Name = "pnlBorder";
-            this.pnlBorder.Size = new System.Drawing.Size(291, 7);
+            this.pnlBorder.Size = new System.Drawing.Size(218, 6);
             this.pnlBorder.TabIndex = 9;
             // 
             // panel4
@@ -912,18 +973,19 @@ namespace LoginForm.Main
             this.panel4.Controls.Add(this.lblTitleName);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(291, 207);
+            this.panel4.Size = new System.Drawing.Size(218, 168);
             this.panel4.TabIndex = 10;
             // 
             // lblUSD
             // 
             this.lblUSD.AutoSize = true;
             this.lblUSD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblUSD.Location = new System.Drawing.Point(75, 148);
+            this.lblUSD.Location = new System.Drawing.Point(56, 120);
+            this.lblUSD.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblUSD.Name = "lblUSD";
-            this.lblUSD.Size = new System.Drawing.Size(46, 18);
+            this.lblUSD.Size = new System.Drawing.Size(41, 15);
             this.lblUSD.TabIndex = 9;
             this.lblUSD.Text = "label2";
             // 
@@ -931,9 +993,10 @@ namespace LoginForm.Main
             // 
             this.lblGBP.AutoSize = true;
             this.lblGBP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblGBP.Location = new System.Drawing.Point(75, 130);
+            this.lblGBP.Location = new System.Drawing.Point(56, 106);
+            this.lblGBP.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblGBP.Name = "lblGBP";
-            this.lblGBP.Size = new System.Drawing.Size(46, 18);
+            this.lblGBP.Size = new System.Drawing.Size(41, 15);
             this.lblGBP.TabIndex = 8;
             this.lblGBP.Text = "label1";
             // 
@@ -941,9 +1004,10 @@ namespace LoginForm.Main
             // 
             this.lblTitleUSD.AutoSize = true;
             this.lblTitleUSD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblTitleUSD.Location = new System.Drawing.Point(19, 148);
+            this.lblTitleUSD.Location = new System.Drawing.Point(14, 120);
+            this.lblTitleUSD.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitleUSD.Name = "lblTitleUSD";
-            this.lblTitleUSD.Size = new System.Drawing.Size(44, 18);
+            this.lblTitleUSD.Size = new System.Drawing.Size(36, 15);
             this.lblTitleUSD.TabIndex = 7;
             this.lblTitleUSD.Text = "USD:";
             // 
@@ -951,9 +1015,10 @@ namespace LoginForm.Main
             // 
             this.lblTitleGBP.AutoSize = true;
             this.lblTitleGBP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblTitleGBP.Location = new System.Drawing.Point(19, 130);
+            this.lblTitleGBP.Location = new System.Drawing.Point(14, 106);
+            this.lblTitleGBP.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitleGBP.Name = "lblTitleGBP";
-            this.lblTitleGBP.Size = new System.Drawing.Size(44, 18);
+            this.lblTitleGBP.Size = new System.Drawing.Size(35, 15);
             this.lblTitleGBP.TabIndex = 6;
             this.lblTitleGBP.Text = "GPB:";
             // 
@@ -961,9 +1026,10 @@ namespace LoginForm.Main
             // 
             this.lblPhone.AutoSize = true;
             this.lblPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblPhone.Location = new System.Drawing.Point(75, 55);
+            this.lblPhone.Location = new System.Drawing.Point(56, 45);
+            this.lblPhone.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPhone.Name = "lblPhone";
-            this.lblPhone.Size = new System.Drawing.Size(46, 18);
+            this.lblPhone.Size = new System.Drawing.Size(41, 15);
             this.lblPhone.TabIndex = 5;
             this.lblPhone.Text = "label4";
             // 
@@ -971,9 +1037,10 @@ namespace LoginForm.Main
             // 
             this.lblTitlePhone.AutoSize = true;
             this.lblTitlePhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblTitlePhone.Location = new System.Drawing.Point(19, 55);
+            this.lblTitlePhone.Location = new System.Drawing.Point(14, 45);
+            this.lblTitlePhone.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitlePhone.Name = "lblTitlePhone";
-            this.lblTitlePhone.Size = new System.Drawing.Size(55, 18);
+            this.lblTitlePhone.Size = new System.Drawing.Size(46, 15);
             this.lblTitlePhone.TabIndex = 4;
             this.lblTitlePhone.Text = "Phone:";
             // 
@@ -981,9 +1048,10 @@ namespace LoginForm.Main
             // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblEmail.Location = new System.Drawing.Point(75, 37);
+            this.lblEmail.Location = new System.Drawing.Point(56, 30);
+            this.lblEmail.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(46, 18);
+            this.lblEmail.Size = new System.Drawing.Size(41, 15);
             this.lblEmail.TabIndex = 3;
             this.lblEmail.Text = "label2";
             // 
@@ -991,9 +1059,10 @@ namespace LoginForm.Main
             // 
             this.lblTitleEmail.AutoSize = true;
             this.lblTitleEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblTitleEmail.Location = new System.Drawing.Point(19, 37);
+            this.lblTitleEmail.Location = new System.Drawing.Point(14, 30);
+            this.lblTitleEmail.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitleEmail.Name = "lblTitleEmail";
-            this.lblTitleEmail.Size = new System.Drawing.Size(49, 18);
+            this.lblTitleEmail.Size = new System.Drawing.Size(42, 15);
             this.lblTitleEmail.TabIndex = 2;
             this.lblTitleEmail.Text = "Email:";
             // 
@@ -1001,9 +1070,10 @@ namespace LoginForm.Main
             // 
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblName.Location = new System.Drawing.Point(75, 18);
+            this.lblName.Location = new System.Drawing.Point(56, 15);
+            this.lblName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(46, 18);
+            this.lblName.Size = new System.Drawing.Size(41, 15);
             this.lblName.TabIndex = 1;
             this.lblName.Text = "label1";
             // 
@@ -1011,86 +1081,38 @@ namespace LoginForm.Main
             // 
             this.lblTitleName.AutoSize = true;
             this.lblTitleName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblTitleName.Location = new System.Drawing.Point(19, 18);
+            this.lblTitleName.Location = new System.Drawing.Point(14, 15);
+            this.lblTitleName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitleName.Name = "lblTitleName";
-            this.lblTitleName.Size = new System.Drawing.Size(52, 18);
+            this.lblTitleName.Size = new System.Drawing.Size(44, 15);
             this.lblTitleName.TabIndex = 0;
             this.lblTitleName.Text = "Name:";
             // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
-            this.panel3.BackgroundImage = global::LoginForm.Properties.Resources.IME_LOGO2;
-            this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.altoSlidingLabel1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(309, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(916, 1006);
-            this.panel3.TabIndex = 1;
-            // 
-            // altoSlidingLabel1
-            // 
-            this.altoSlidingLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.altoSlidingLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.altoSlidingLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.altoSlidingLabel1.Location = new System.Drawing.Point(581, 10);
-            this.altoSlidingLabel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.altoSlidingLabel1.Name = "altoSlidingLabel1";
-            this.altoSlidingLabel1.Size = new System.Drawing.Size(322, 36);
-            this.altoSlidingLabel1.Slide = true;
-            this.altoSlidingLabel1.TabIndex = 1;
-            this.altoSlidingLabel1.Text = "Lorem Ipsum Dolor Sit Amet";
-            this.altoSlidingLabel1.Click += new System.EventHandler(this.altoSlidingLabel1_Click);
-            this.altoSlidingLabel1.DoubleClick += new System.EventHandler(this.altoSlidingLabel1_DoubleClick);
-            // 
-            // bunifuElipse1
-            // 
-            this.bunifuElipse1.ElipseRadius = 10;
-            this.bunifuElipse1.TargetControl = this.pnlDevelopment;
-            // 
-            // bunifuElipse2
-            // 
-            this.bunifuElipse2.ElipseRadius = 20;
-            this.bunifuElipse2.TargetControl = this.pnlFileLoader;
-            // 
-            // bunifuElipse3
-            // 
-            this.bunifuElipse3.ElipseRadius = 20;
-            this.bunifuElipse3.TargetControl = this.pnlManagement;
-            // 
-            // timer2
-            // 
-            this.timer2.Interval = 5;
-            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
-            // 
             // frmMainMetro
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
-            this.ClientSize = new System.Drawing.Size(1225, 1006);
+            this.ClientSize = new System.Drawing.Size(919, 817);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.IsMdiContainer = true;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.MinimumSize = new System.Drawing.Size(1026, 579);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MinimumSize = new System.Drawing.Size(774, 478);
             this.Name = "frmMainMetro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "IME CRM";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmMainMetro_Load);
+            this.panel3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.pnlManagement.ResumeLayout(false);
-            this.pnlFileLoader.ResumeLayout(false);
-            this.pnlDevelopment.ResumeLayout(false);
+            this.pnlImportFiles.ResumeLayout(false);
+            this.pnlMain.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1099,13 +1121,13 @@ namespace LoginForm.Main
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel pnlDevelopment;
+        private System.Windows.Forms.Panel pnlMain;
         private System.Windows.Forms.Panel panel3;
         private RoundedButton roundedButton1;
         private AltoControls.AltoButton btnDevelopment;
         private AltoControls.AltoSlidingLabel altoSlidingLabel1;
         private AltoControls.AltoButton btnFileLoader;
-        private System.Windows.Forms.Panel pnlFileLoader;
+        private System.Windows.Forms.Panel pnlImportFiles;
         private AltoControls.AltoButton btnManagement;
         private System.Windows.Forms.Panel pnlManagement;
         private System.Windows.Forms.Panel panel5;
@@ -1126,7 +1148,6 @@ namespace LoginForm.Main
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse3;
         private System.Windows.Forms.Timer timer2;
         private AltoControls.AltoButton btnCustomer;
-        private AltoControls.AltoButton btnUser;
         private AltoControls.AltoButton btnSalesOrder;
         private AltoControls.AltoButton btnSupplier;
         private AltoControls.AltoButton btnStock;
@@ -1153,5 +1174,6 @@ namespace LoginForm.Main
         private AltoControls.AltoButton btnTermsOfPayment;
         private AltoControls.AltoButton btnExchangeRate;
         private AltoControls.AltoButton btnCustomerTransfer;
+        private AltoControls.AltoButton btnUser;
     }
 }
