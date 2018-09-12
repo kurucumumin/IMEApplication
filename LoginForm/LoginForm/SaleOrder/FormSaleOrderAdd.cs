@@ -186,20 +186,22 @@ namespace LoginForm.QuotationModule
 
         public FormSaleOrderAdd(Customer cus, List<QuotationDetail> list, string QuotationNOs, int sayac)
         {
+            InitializeComponent();
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
+        System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
+        dgSaleAddedItems, new object[] { true });
+
             customer = cus;
             QItems = list;
             firstInitialize = true;
             SaleCurrency = list[0].Quotation.Currency.ExchangeRates.OrderByDescending(x => x.date).FirstOrDefault().rate;
-            InitializeComponent();
-
-            typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
-         System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
-         dgSaleAddedItems, new object[] { true });
 
             lblVat.Text = Utils.getManagement().VAT.ToString();
             dgSaleAddedItems.Columns[dgLandingCost.Index].DefaultCellStyle.Format = "C4";
             dgSaleAddedItems.Columns[dgLandingCost.Index].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("en-GB");
             txtQuotationNo.Text = QuotationNOs;
+
             #region Combobox
             DataGridViewComboBoxColumn deliveryColumn = (DataGridViewComboBoxColumn)dgSaleAddedItems.Columns[dgDelivery.Index];
             deliveryColumn.DataSource = IME.QuotationDeliveries.ToList();
@@ -233,8 +235,8 @@ namespace LoginForm.QuotationModule
             {
                 if (item.IsDeleted == 1)
                 {
-                    DataGridViewRow row = (DataGridViewRow)dgSaleDeleted.RowTemplate.Clone();
-                    row.CreateCells(dgSaleDeleted);
+                    DataGridViewRow row = (DataGridViewRow)dgSaleDeleted.Rows[0].Clone();
+                    //row.CreateCells(dgSaleDeleted);
                     row.Cells[0].Value = (int)item.dgNo;
                     row.Cells[dgProductCode1.Index].Value = item.ItemCode;
                     row.Cells[dgQty1.Index].Value = item.Qty;
@@ -286,7 +288,7 @@ namespace LoginForm.QuotationModule
                 //GetQuotationQuantity(i);
 
             }
-            //GetMargin();
+           // GetMargin();
 
             decimal _subtotal = 0;
             foreach (var item in list)
@@ -357,6 +359,11 @@ namespace LoginForm.QuotationModule
                 groupBox11.Enabled = false;
                 groupBox7.Enabled = false;
             }
+            //CalculateTotalMarge();
+            txtTotalMargin.Text = calculateTotalMargin().ToString();
+            dgSaleAddedItems.Focus();
+            dgSaleAddedItems.CurrentCell = dgSaleAddedItems.CurrentRow.Cells[dgProductCode.Index];
+
         }
 
         public FormSaleOrderAdd(Customer cus, List<SaleOrderDetail> list, int sayac)
@@ -2564,7 +2571,7 @@ namespace LoginForm.QuotationModule
                     return false;
                 }
             }
-            for (int i = 0; i < dgSaleAddedItems.RowCount; i++)
+            for (int i = 0; i < dgSaleAddedItems.RowCount-1; i++)
             {
                 if (((DataGridViewComboBoxCell)dgSaleAddedItems.Rows[i].Cells[dgDelivery.Index]).Value == null)
                 {
