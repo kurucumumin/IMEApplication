@@ -262,8 +262,8 @@ namespace LoginForm.PurchaseOrder
             else { OrderNature = "D"; }
             string PackType = " ";
             string OrderNumber = "     ";
-            string CustomerDistOrderReference = Convert.ToString(purchaseNo);
-            CustomerDistOrderReference = CustomerDistOrderReference+"/DB/"+Convert.ToDateTime(IME.CurrentDate().First()).ToString("MMM") +"/"+Convert.ToDateTime(IME.CurrentDate().First()).ToString("yy");
+            string CustomerDistOrderReference = Convert.ToString(purchaseNo)+"RS";
+            CustomerDistOrderReference = CustomerDistOrderReference.ToUpper()+"/BAH/"+Convert.ToDateTime(IME.CurrentDate().First()).ToString("MMM").ToUpper() +"/"+Convert.ToDateTime(IME.CurrentDate().First()).ToString("yy");
             int CustomerDistOrderReferencelength = CustomerDistOrderReference.Length;
             for (int i = 0; i < 30- CustomerDistOrderReferencelength; i++)
 

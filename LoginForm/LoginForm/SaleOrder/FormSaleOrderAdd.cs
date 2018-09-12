@@ -207,7 +207,8 @@ namespace LoginForm.QuotationModule
             deliveryColumn.DataSource = IME.QuotationDeliveries.ToList();
             deliveryColumn.DisplayMember = "DeliveryName";
             deliveryColumn.ValueMember = "ID";
-            dtpDate.Value = Utils.getManagement().FinancialYear.fromDate.Value;
+            //dtpDate.Value = Utils.getManagement().FinancialYear.fromDate.Value;
+            dtpDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
             dtpDate.MaxDate = IME.CurrentDate().FirstOrDefault().Value.AddHours(5);
             cbPaymentType.DataSource = IME.PaymentMethods.ToList();
             cbPaymentType.DisplayMember = "Payment";
@@ -390,7 +391,7 @@ namespace LoginForm.QuotationModule
             deliveryColumn.DataSource = IME.QuotationDeliveries.ToList();
             deliveryColumn.DisplayMember = "DeliveryName";
             deliveryColumn.ValueMember = "ID";
-            dtpDate.Value = Utils.getManagement().FinancialYear.fromDate.Value;
+            dtpDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
             dtpDate.MaxDate = IME.CurrentDate().FirstOrDefault().Value.AddHours(5);
             cbPaymentType.DataSource = IME.PaymentMethods.ToList();
             cbPaymentType.DisplayMember = "Payment";
@@ -759,7 +760,7 @@ namespace LoginForm.QuotationModule
             //Quotation q1 = IME.Quotations.Where(a => a.QuotationNo.Contains(quotation.QuotationNo)).OrderByDescending(b => b.QuotationNo).FirstOrDefault();
             //this.Text = "Edit Quotation";
             //modifyMod = true;
-            dtpDate.Value = Utils.getManagement().FinancialYear.fromDate.Value;
+            dtpDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
             dtpDate.MaxDate = IME.CurrentDate().FirstOrDefault().Value.AddHours(5);
             cbPaymentType.DataSource = IME.PaymentMethods.ToList();
             cbPaymentType.DisplayMember = "Payment";
