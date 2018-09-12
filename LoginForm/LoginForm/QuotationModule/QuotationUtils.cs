@@ -69,24 +69,24 @@ namespace LoginForm.QuotationModule
             {
                 if ((quantity < (item.Col2Break * cofactor) && item.DiscountedPrice1 != 0) || item.DiscountedPrice2 == 0)
                 {
-                    return result = Decimal.Parse(item.DiscountedPrice1.ToString());
+                    return result = Decimal.Parse((item.DiscountedPrice1 / cofactor).ToString());
                 }
                 else if ((quantity < (item.Col3Break * cofactor) && item.DiscountedPrice2 != 0) || item.DiscountedPrice3 == 0)
                 {
-                    if(item.DiscountedPrice2 == 0) { return result = Decimal.Parse(item.DiscountedPrice1.ToString()); }
-                    return result = Decimal.Parse(item.DiscountedPrice2.ToString());
+                    if(item.DiscountedPrice2 == 0) { return result = Decimal.Parse((item.DiscountedPrice1 / cofactor).ToString()); }
+                    return result = Decimal.Parse((item.DiscountedPrice2 / cofactor).ToString());
                 }
                 else if ((quantity < (item.Col4Break * cofactor) && item.DiscountedPrice3 != 0) || item.DiscountedPrice4 == 0)
                 {
-                    if (item.DiscountedPrice3 == 0) { return result = Decimal.Parse(item.DiscountedPrice2.ToString()); }
-                    return result = Decimal.Parse(item.DiscountedPrice3.ToString());
+                    if (item.DiscountedPrice3 == 0) { return result = Decimal.Parse((item.DiscountedPrice2 / cofactor).ToString()); }
+                    return result = Decimal.Parse((item.DiscountedPrice3 / cofactor).ToString());
                 }
                 else if ((quantity < (item.Col5Break * cofactor) && item.DiscountedPrice4 != 0) || item.DiscountedPrice5 == 0)
                 {
-                    if (item.DiscountedPrice4 == 0) { return result = Decimal.Parse(item.DiscountedPrice3.ToString()); }
-                    return result = Decimal.Parse(item.DiscountedPrice4.ToString());
+                    if (item.DiscountedPrice4 == 0) { return result = Decimal.Parse((item.DiscountedPrice3 / cofactor).ToString()); }
+                    return result = Decimal.Parse((item.DiscountedPrice4 / cofactor).ToString());
                 }
-                else if (item.DiscountedPrice4 != 0) { return result = Decimal.Parse(item.DiscountedPrice5.ToString()); }else { return result = Decimal.Parse(item.DiscountedPrice1.ToString()); }
+                else if (item.DiscountedPrice4 != 0) { return result = Decimal.Parse((item.DiscountedPrice5 / cofactor).ToString()); }else { return result = Decimal.Parse((item.DiscountedPrice1 / cofactor).ToString()); }
             }
             catch { }
             return 0;// fiyatının olmadığı gösteriyor
