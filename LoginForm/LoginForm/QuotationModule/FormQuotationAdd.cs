@@ -106,12 +106,7 @@ namespace LoginForm.QuotationModule
                         {
                             hztotal += decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value?.ToString());
                         }
-                        //else if ()//HE için
-                        //{
-
-                        //}
                     }
-                    //
 
                     subtotal = Decimal.Parse(lblsubtotal.Text) - hztotal;
 
@@ -212,10 +207,7 @@ namespace LoginForm.QuotationModule
 
                 var QuoCurr = IME.Currencies.Where(a => a.currencyName == q1.CurrName).FirstOrDefault();
                 if (QuoCurr != null) cbCurrency.SelectedValue = QuoCurr.currencyID;
-
-                //dtpDate.Value = (DateTime)q1.StartDate;
-                //dtpDate.Value = DateTime.Today.Date;
-                //dtpDate.MaxDate = DateTime.Today.Date;
+                
                 cbPayment.DataSource = IME.PaymentTerms.ToList();
                 cbPayment.DisplayMember = "term_name";
                 cbPayment.ValueMember = "ID";
@@ -233,9 +225,7 @@ namespace LoginForm.QuotationModule
                 LowMarginLimit = (Decimal)Utils.getManagement().LowMarginLimit;
                 importFromQuotation = 0;
                 modifyQuotation(q1);
-                //cbCurrency.SelectedValue=
 
-                //fillCustomer();
                 cbSMethod.SelectedIndex = (int)q1.ShippingMethodID;
                 for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
                 {
@@ -300,10 +290,7 @@ namespace LoginForm.QuotationModule
 
                 var QuoCurr = IME.Currencies.Where(a => a.currencyName == q1.CurrName).FirstOrDefault();
                 if (QuoCurr != null) cbCurrency.SelectedValue = QuoCurr.currencyID;
-
-                //dtpDate.Value = (DateTime)q1.StartDate;
-                //dtpDate.Value = DateTime.Today.Date;
-                //dtpDate.MaxDate = DateTime.Today.Date;
+                
                 cbPayment.DataSource = IME.PaymentTerms.ToList();
                 cbPayment.DisplayMember = "term_name";
                 cbPayment.ValueMember = "ID";
@@ -321,9 +308,7 @@ namespace LoginForm.QuotationModule
                 LowMarginLimit = (Decimal)Utils.getManagement().LowMarginLimit;
                 importFromQuotation = 0;
                 modifyQuotation(q1);
-                //cbCurrency.SelectedValue=
 
-                //fillCustomer();
                 cbSMethod.SelectedIndex = (int)q1.ShippingMethodID;
                 for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
                 {
@@ -429,9 +414,7 @@ namespace LoginForm.QuotationModule
             LowMarginLimit = (Decimal)Utils.getManagement().LowMarginLimit;
             importFromQuotation = 0;
             modifyQuotation(q1,mod);
-            //cbCurrency.SelectedValue=
 
-            //fillCustomer();
             cbSMethod.SelectedIndex = (int)q1.ShippingMethodID;
             for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
             {
@@ -506,7 +489,7 @@ namespace LoginForm.QuotationModule
             deliveryColumn.DataSource = IME.QuotationDeliveries.ToList();
             deliveryColumn.DisplayMember = "DeliveryName";
             deliveryColumn.ValueMember = "ID";
-            //Son versiyonu açmayı sağlıyor
+
             Quotation q1 = IME.Quotations.Where(a => a.QuotationNo.Contains(quotation.QuotationNo)).OrderByDescending(b => b.QuotationNo).FirstOrDefault();
             this.Text = "Edit Quotation";
             modifyMod = true;
@@ -516,8 +499,8 @@ namespace LoginForm.QuotationModule
 
             var QuoCurr = IME.Currencies.Where(a => a.currencyName == q1.CurrName).FirstOrDefault();
             if (QuoCurr != null) cbCurrency.SelectedValue = QuoCurr.currencyID;
+            
 
-            //dtpDate.Value = (DateTime)q1.StartDate;
             dtpDate.Value = DateTime.Today.Date;
             dtpDate.MaxDate = DateTime.Today.Date;
             cbPayment.DataSource = IME.PaymentTerms.ToList();
@@ -537,9 +520,7 @@ namespace LoginForm.QuotationModule
             LowMarginLimit = (Decimal)Utils.getManagement().LowMarginLimit;
             importFromQuotation = 0;
             modifyQuotation(q1);
-            //cbCurrency.SelectedValue=
 
-            //fillCustomer();
             cbSMethod.SelectedIndex = (int)q1.ShippingMethodID;
             for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
             {
@@ -692,10 +673,6 @@ namespace LoginForm.QuotationModule
 
         private void EnableForm()
         {
-            //foreach (DataGridViewColumn column in dgQuotationAddedItems.Columns)
-            //{
-            //    column.ReadOnly = true;
-            //}
             dgQuotationAddedItems.ReadOnly = true;
             dgQuotationDeleted.ReadOnly = true;
             CustomerCode.ReadOnly = false;
@@ -763,7 +740,7 @@ namespace LoginForm.QuotationModule
                 DataGridViewRow dgRow = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
                 dgQuotationAddedItems.Rows.Add(dgRow);
                 txtQuotationNo.Text = NewQuotationID();
-                //dgQuotationAddedItems.Rows[0].Cells["dgQty"].Value = "0";
+
                 dgQuotationAddedItems.Rows[0].Cells[0].Value = 1.ToString();
                 LowMarginLimit = Decimal.Parse(IME.Managements.FirstOrDefault().LowMarginLimit.ToString());
                 lblVat.Text = Utils.getManagement().VAT.ToString();
@@ -816,13 +793,11 @@ namespace LoginForm.QuotationModule
                 CustomerCode.Text = QuotationUtils.customerID;
                 txtCustomerName.Text = QuotationUtils.customername;
             }
-            //var c = IME.Customers.Where(a => a.ID == CustomerCode.Text).FirstOrDefault();
             if (customer != null)
             {
                 CustomerCode.Text = customer.ID;
                 txtCustomerName.Text = customer.c_name;
-                //cbCurrType.SelectedIndex = cbCurrType.FindStringExact(customer.CurrTypeQuo);
-                //if(customer.MainContactID!=null) cbWorkers.SelectedIndex = (int)customer.MainContactID;
+
                 if (customer.paymentmethodID != null)
                 {
                     cbPayment.SelectedIndex = cbPayment.FindStringExact(customer.PaymentTerm.term_name);
@@ -1035,18 +1010,18 @@ namespace LoginForm.QuotationModule
                     DgQuantityFiller();
                     break;
 
-                case 22://Total
+                case 22://UCUP Curr
                     {
-                        #region Total
+                        #region UCUP Curr
                         //TO DO depends on authority
                         //if (dgQuotationAddedItems.CurrentRow.Cells[dgHZ.Index].Style.BackColor == Color.White)
                         CurrentRow = dgQuotationAddedItems.CurrentRow;
                         if (txtHazardousInd.Text == "N")
                         {
                             #region Total
-                            decimal total = decimal.Parse(CurrentRow.Cells["dgUCUPCurr"].Value.ToString());
+                            decimal ucupcurr = decimal.Parse(CurrentRow.Cells["dgUCUPCurr"].Value.ToString());
                             decimal UcupIME = decimal.Parse(CurrentRow.Cells["dgUPIME"].Value.ToString());
-                            decimal disc = Math.Round(((UcupIME - total) * (decimal)100 / UcupIME), 2);
+                            decimal disc = Math.Round(((UcupIME - ucupcurr) * (decimal)100 / UcupIME), 2);
                             int workerID = Utils.getCurrentUser().WorkerID;
                             decimal Minmarge = (decimal)IME.Workers.Where(x => x.WorkerID == workerID).FirstOrDefault().MinMarge;
                             if (disc > Minmarge)
@@ -1067,19 +1042,11 @@ namespace LoginForm.QuotationModule
                             #region Calculate Total Margin
                             try
                             {
-                                decimal subtotal = 0;
-                                decimal total_1 = 0;
-                                subtotal = Decimal.Parse(lblsubtotal.Text);
-                                total_1 = Decimal.Parse(dgQuotationAddedItems.CurrentRow.Cells["dgTotal"].Value.ToString());
-                                CurrentRow = dgQuotationAddedItems.CurrentRow;
-                                decimal totalmargin = 0; totalmargin = Decimal.Parse(txtTotalMargin.Text);
-                                Decimal TotalMarginValue = totalmargin * (subtotal - total_1);
-                                TotalMarginValue = (TotalMarginValue + (Decimal.Parse(CurrentRow.Cells["dgTotal"].Value.ToString()) * Decimal.Parse(CurrentRow.Cells["dgMargin"].Value.ToString()))) / Decimal.Parse(lblsubtotal.Text);
-                                txtTotalMargin.Text = Math.Round(TotalMarginValue, 2).ToString();
+                                txtTotalMargin.Text = Math.Round(calculateTotalMargin(), 2).ToString();
                             }
                             catch (Exception ex)
                             {
-                                txtTotalMargin.Text = Math.Round(Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgMargin"].Value.ToString()), 2).ToString();
+                                txtTotalMargin.Text = Math.Round(calculateTotalMargin(), 2).ToString();
                             }
 
                             #endregion
@@ -1447,7 +1414,7 @@ namespace LoginForm.QuotationModule
                 {
                     if (Int32.Parse(CurrentRow.Cells["dgUC"].Value.ToString()) > 1 && (!(CurrentRow.Cells["dgProductCode"].Value.ToString().Contains("P"))))
                     {
-                        CurrentRow.Cells["dgMargin"].Value = (((1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())) / (gbpPrice * decimal.Parse(CurrentRow.Cells["dgUC"].Value.ToString())))) * 100).ToString("G29");
+                        CurrentRow.Cells["dgMargin"].Value = (((1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())) / (gbpPrice/* * decimal.Parse(CurrentRow.Cells["dgUC"].Value.ToString())*/))) * 100).ToString("G29");
                     }
                     else
                     {
@@ -1455,12 +1422,12 @@ namespace LoginForm.QuotationModule
                         {
                             if (CurrentRow.Cells["dgLandingCost"].Value != null)
                             {
-                                CurrentRow.Cells["dgMargin"].Value = (((1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())) / (gbpPrice * decimal.Parse(CurrentRow.Cells["dgUC"].Value.ToString())))) * 100).ToString("G29");
+                                CurrentRow.Cells["dgMargin"].Value = (((1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())) / (gbpPrice/* * decimal.Parse(CurrentRow.Cells["dgUC"].Value.ToString())*/))) * 100).ToString("G29");
                             }
                         }
                         else
                         {
-                            CurrentRow.Cells["dgMargin"].Value = (((1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())) / (gbpPrice * decimal.Parse(CurrentRow.Cells["dgUC"].Value.ToString())))) * 100).ToString("G29");
+                            CurrentRow.Cells["dgMargin"].Value = (((1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())) / (gbpPrice/* * decimal.Parse(CurrentRow.Cells["dgUC"].Value.ToString())*/))) * 100).ToString("G29");
                         }
                     }
                 }
@@ -4095,99 +4062,29 @@ namespace LoginForm.QuotationModule
         }
         private decimal calculateTotalMargin()
         {
-            decimal totalMargin = 0;
-            decimal subtotal = 0;
+            DateTime today = DateTime.Today;
+            CurrentRow = dgQuotationAddedItems.CurrentRow;
+            #region Kur Hesaplama
+            decimal currentGbpValue = Convert.ToDecimal(IME.Currencies.Where(x => x.currencyName == "Pound").FirstOrDefault().ExchangeRates.OrderByDescending(x => x.date).FirstOrDefault().rate);
+            
+            #endregion
 
-            try { subtotal = decimal.Parse(lblsubtotal.Text); } catch { }
-            if (subtotal != 0)
+            decimal totalCost = 0;
+            decimal totalPrice = 0;
+
+            foreach (DataGridViewRow item in dgQuotationAddedItems.Rows)
             {
-                foreach (DataGridViewRow item in dgQuotationAddedItems.Rows)
+                decimal gbpPrice = 0;
+                if (item.Cells[dgUCUPCurr.Index].Value != null && item.Cells[dgUCUPCurr.Index].Value.ToString() != "")
                 {
-                    decimal total = 0;
-                    decimal margin = 0;
-                    try { total = decimal.Parse(item.Cells[dgTotal.Index].Value.ToString()); } catch { }
-                    try { margin = decimal.Parse(item.Cells[dgMargin.Index].Value.ToString()); } catch { }
-                    totalMargin = totalMargin + (total * margin);
+                    gbpPrice = ((Decimal.Parse(item.Cells[dgTotal.Index].Value.ToString())) * CurrValue) / currentGbpValue;
                 }
 
-                txtTotalMargin.Text = Math.Round((totalMargin / subtotal), 2).ToString();
-
-                return totalMargin / subtotal;
+                totalCost += Convert.ToDecimal(item.Cells[dgLandingCost.Index].Value) * Convert.ToDecimal(item.Cells[dgQty.Index].Value);
+                totalPrice += gbpPrice;
             }
-            return 0;
 
-
-
-            #region oldfunc
-            //decimal totalMargin = 0;
-            //decimal subtotal = 0;
-            //decimal Itemtotal = 0;
-            //for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
-            //{
-            //    if (dgQuotationAddedItems.Rows[i].Cells[dgQty.Index].Value!=null && dgQuotationAddedItems.Rows[i].Cells[dgDesc.Index].Value != null)
-            //    {
-            //        decimal margin = 0;
-            //        if (!cbDeliverDiscount.Checked)
-            //        {
-            //            if (dgQuotationAddedItems.Rows[i].Cells[dgTotal.Index].Value == "")
-            //            {
-            //                Itemtotal = 0;
-            //            }
-            //            else
-            //            {
-            //                Itemtotal = decimal.Parse(dgQuotationAddedItems.Rows[i].Cells[dgTotal.Index].Value.ToString());
-            //            }
-
-            //            decimal disc = 0;
-            //            if (txtTotalDis.Text != "") disc = decimal.Parse(txtTotalDis.Text);
-            //            Itemtotal = Itemtotal * (1 - (disc / 100));
-            //            subtotal += Itemtotal;
-            //            decimal UCUPCurr = 0;
-            //            decimal Cost = 0;
-            //            if (dgQuotationAddedItems.Rows[i].Cells[dgUCUPCurr.Index].Value != null) UCUPCurr = decimal.Parse(dgQuotationAddedItems.Rows[i].Cells[dgUCUPCurr.Index].Value.ToString());
-            //            if (UCUPCurr != 0) UCUPCurr = UCUPCurr * ((1 - (disc / 100)));
-            //            if (dgQuotationAddedItems.Rows[i].Cells[dgCost.Index].Value != null) Cost = decimal.Parse(dgQuotationAddedItems.Rows[i].Cells[dgLandingCost.Index].Value.ToString());
-            //            if (UCUPCurr != 0) margin = (1 - (Cost / UCUPCurr)) * 100;
-            //            totalMargin += (margin * Itemtotal);
-            //        }
-            //        else
-            //        {
-            //            if (dgQuotationAddedItems.Rows[i].Cells[dgMargin.Index].Value != null) margin = decimal.Parse(dgQuotationAddedItems.Rows[i].Cells[dgMargin.Index].Value.ToString());
-
-            //            if (dgQuotationAddedItems.Rows[i].Cells[dgTotal.Index].Value != null) Itemtotal = decimal.Parse(dgQuotationAddedItems.Rows[i].Cells[dgTotal.Index].Value.ToString());
-            //            subtotal += Itemtotal;
-            //            totalMargin += (margin * Itemtotal);
-            //        }
-
-            //    }
-
-            //}
-            //if (cbDeliverDiscount.Checked)
-            //{
-
-            //    txtTotalMargin.Text = String.Format("{0:0.0000}", totalMargin / subtotal).ToString();
-            //}
-            //else
-            //{
-            //    decimal subtotal1 = 0;
-            //    decimal totalMargin1 = 0;
-            //    for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
-            //    {
-            //        decimal Itemtotal1 = 0;
-            //        decimal margin1 = 0;
-            //        if (dgQuotationAddedItems.Rows[i].Cells[dgMargin.Index].Value != null) margin1 = decimal.Parse(dgQuotationAddedItems.Rows[i].Cells[dgMargin.Index].Value.ToString());
-
-            //        if (dgQuotationAddedItems.Rows[i].Cells[dgTotal.Index].Value != null && dgQuotationAddedItems.Rows[i].Cells[dgTotal.Index].Value != "") Itemtotal1 = decimal.Parse(dgQuotationAddedItems.Rows[i].Cells[dgTotal.Index].Value.ToString());
-            //        subtotal1 += Itemtotal1;
-            //        totalMargin1 += (margin1 * Itemtotal1);
-            //    }
-
-            //    if(subtotal1!=0)txtTotalMargin.Text = String.Format("{0:0.0000}", totalMargin1 / subtotal1).ToString();
-            //}
-
-            //if (subtotal == 0) return 0;
-            //return totalMargin / subtotal;
-            #endregion
+            return ((1 - (totalCost/totalPrice)) * 100);
         }
 
         private void getTotalDiscMargin()
