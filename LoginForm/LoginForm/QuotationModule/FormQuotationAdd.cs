@@ -1462,40 +1462,7 @@ namespace LoginForm.QuotationModule
                         {
                             CurrentRow.Cells["dgMargin"].Value = (((1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())) / (gbpPrice * decimal.Parse(CurrentRow.Cells["dgUC"].Value.ToString())))) * 100).ToString("G29");
                         }
-
-                        //if (Int32.Parse(CurrentRow.Cells["dgUC"].Value.ToString()) > 1 || Int32.Parse(CurrentRow.Cells["dgSSM"].Value.ToString()) > 1)
-                        //{
-                        //    if (Int32.Parse(CurrentRow.Cells["dgSSM"].Value.ToString()) > 1)
-                        //    {
-                        //        //     CurrentRow.Cells["dgMargin"].Value = ((
-                        //        //         (1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString()))
-                        //        //         / ((Decimal.Parse(CurrentRow.Cells["dgUCUPCurr"].Value.ToString())
-                        //        //* decimal.Parse(CurrentRow.Cells["dgUC"].Value.ToString())
-                        //        //  )))) * 100).ToString("G29");
-                        //        CurrentRow.Cells["dgMargin"].Value = (((1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())) / (gbpPrice * decimal.Parse(CurrentRow.Cells["dgUC"].Value.ToString())))) * 100).ToString("G29");
-                        //    }
-                        //    else
-                        //    {
-                        //        //    CurrentRow.Cells["dgMargin"].Value = (((1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(CurrentRow.Cells["dgUCUPCurr"].Value.ToString())
-                        //        //* decimal.Parse(CurrentRow.Cells["dgUC"].Value.ToString())
-                        //        //  )))) * 100).ToString("G29");
-
-                        //        CurrentRow.Cells["dgMargin"].Value = (((1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())) / (gbpPrice * decimal.Parse(CurrentRow.Cells["dgUC"].Value.ToString())))) * 100).ToString("G29");
-                        //    }
-
-
-                        //}
-                        //else
-                        //{
-                        //    CurrentRow.Cells["dgMargin"].Value = (((1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())) / (gbpPrice))) * 100).ToString("G29");
-
-                        //    //CurrentRow.Cells["dgMargin"].Value = (((1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(CurrentRow.Cells["dgUCUPCurr"].Value.ToString()))))) * 100).ToString("G29");
-                        //}
-
-
                     }
-                    //dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgMargin"].Value = (((1 - (Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value.ToString()))))) * 100).ToString("G29");
-
                 }
                 else
                 {
@@ -1758,7 +1725,7 @@ namespace LoginForm.QuotationModule
                         {
                             //decimal margin3 = 0;
                             //margin3 = (QuotationUtils.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked, Int32.Parse(ItemTabDetails.Col3Break.ToString())));
-                            if (decimal.Parse(txtUK3.Text) == 0)
+                            if (decimal.Parse(txtUK3.Text) != 0)
                             {
                                 txtMargin3.Text = ((1 - ((decimal.Parse(txtCost3.Text)) / (decimal.Parse(txtUK3.Text)))) * 100).ToString();
                                 if (ItemTabDetails.Col4Break != 0)

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -107,99 +107,109 @@
             this.groupBox2.Controls.Add(this.btnNewInvoice);
             this.groupBox2.Controls.Add(this.btnViewInvoice);
             this.groupBox2.Controls.Add(this.btnDeleteInvoice);
-            this.groupBox2.Location = new System.Drawing.Point(314, -1);
+            this.groupBox2.Location = new System.Drawing.Point(236, -1);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(377, 112);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Size = new System.Drawing.Size(283, 91);
             this.groupBox2.TabIndex = 29;
             this.groupBox2.TabStop = false;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(314, 74);
+            this.label8.Location = new System.Drawing.Point(236, 60);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(37, 17);
+            this.label8.Size = new System.Drawing.Size(28, 13);
             this.label8.TabIndex = 30;
             this.label8.Text = "Print";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(239, 74);
+            this.label7.Location = new System.Drawing.Point(179, 60);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(41, 17);
+            this.label7.Size = new System.Drawing.Size(33, 13);
             this.label7.TabIndex = 29;
             this.label7.Text = "Excel";
             // 
             // btnPrint
             // 
             this.btnPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
+            this.btnPrint.Enabled = false;
             this.btnPrint.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrint.Image = global::LoginForm.Properties.Resources.if_print_173079;
             this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnPrint.Location = new System.Drawing.Point(306, 19);
+            this.btnPrint.Location = new System.Drawing.Point(230, 15);
             this.btnPrint.Margin = new System.Windows.Forms.Padding(0);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Padding = new System.Windows.Forms.Padding(8, 16, 8, 0);
-            this.btnPrint.Size = new System.Drawing.Size(52, 52);
+            this.btnPrint.Padding = new System.Windows.Forms.Padding(6, 13, 6, 0);
+            this.btnPrint.Size = new System.Drawing.Size(39, 42);
             this.btnPrint.TabIndex = 28;
             this.btnPrint.UseVisualStyleBackColor = true;
             // 
             // btnExportToExcel
             // 
             this.btnExportToExcel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
+            this.btnExportToExcel.Enabled = false;
             this.btnExportToExcel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnExportToExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExportToExcel.Image = global::LoginForm.Properties.Resources.if_Document_file_export_sending_exit_send_1886950;
             this.btnExportToExcel.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnExportToExcel.Location = new System.Drawing.Point(233, 19);
+            this.btnExportToExcel.Location = new System.Drawing.Point(175, 15);
             this.btnExportToExcel.Margin = new System.Windows.Forms.Padding(0);
             this.btnExportToExcel.Name = "btnExportToExcel";
-            this.btnExportToExcel.Padding = new System.Windows.Forms.Padding(8, 16, 8, 0);
-            this.btnExportToExcel.Size = new System.Drawing.Size(52, 52);
+            this.btnExportToExcel.Padding = new System.Windows.Forms.Padding(6, 13, 6, 0);
+            this.btnExportToExcel.Size = new System.Drawing.Size(39, 42);
             this.btnExportToExcel.TabIndex = 27;
             this.btnExportToExcel.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(21, 74);
+            this.label4.Location = new System.Drawing.Point(16, 60);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(39, 17);
+            this.label4.Size = new System.Drawing.Size(32, 13);
             this.label4.TabIndex = 24;
             this.label4.Text = "New ";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(95, 74);
+            this.label5.Location = new System.Drawing.Point(71, 60);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(37, 17);
+            this.label5.Size = new System.Drawing.Size(30, 13);
             this.label5.TabIndex = 25;
             this.label5.Text = "View";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(162, 74);
+            this.label6.Location = new System.Drawing.Point(122, 60);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(49, 17);
+            this.label6.Size = new System.Drawing.Size(38, 13);
             this.label6.TabIndex = 26;
             this.label6.Text = "Delete";
             // 
             // btnNewInvoice
             // 
             this.btnNewInvoice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
+            this.btnNewInvoice.Enabled = false;
             this.btnNewInvoice.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnNewInvoice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNewInvoice.Image = global::LoginForm.Properties.Resources.icons8_Plus_32;
             this.btnNewInvoice.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnNewInvoice.Location = new System.Drawing.Point(14, 19);
+            this.btnNewInvoice.Location = new System.Drawing.Point(10, 15);
             this.btnNewInvoice.Margin = new System.Windows.Forms.Padding(0);
             this.btnNewInvoice.Name = "btnNewInvoice";
-            this.btnNewInvoice.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
-            this.btnNewInvoice.Size = new System.Drawing.Size(52, 52);
+            this.btnNewInvoice.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.btnNewInvoice.Size = new System.Drawing.Size(39, 42);
             this.btnNewInvoice.TabIndex = 1;
             this.btnNewInvoice.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnNewInvoice.UseVisualStyleBackColor = true;
@@ -212,11 +222,11 @@
             this.btnViewInvoice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewInvoice.Image = global::LoginForm.Properties.Resources.icons8_Edit_Property_32;
             this.btnViewInvoice.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnViewInvoice.Location = new System.Drawing.Point(87, 19);
+            this.btnViewInvoice.Location = new System.Drawing.Point(65, 15);
             this.btnViewInvoice.Margin = new System.Windows.Forms.Padding(0);
             this.btnViewInvoice.Name = "btnViewInvoice";
-            this.btnViewInvoice.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
-            this.btnViewInvoice.Size = new System.Drawing.Size(52, 52);
+            this.btnViewInvoice.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.btnViewInvoice.Size = new System.Drawing.Size(39, 42);
             this.btnViewInvoice.TabIndex = 16;
             this.btnViewInvoice.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnViewInvoice.UseVisualStyleBackColor = true;
@@ -225,15 +235,16 @@
             // btnDeleteInvoice
             // 
             this.btnDeleteInvoice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
+            this.btnDeleteInvoice.Enabled = false;
             this.btnDeleteInvoice.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnDeleteInvoice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteInvoice.Image = global::LoginForm.Properties.Resources.if_minus_1645995;
             this.btnDeleteInvoice.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnDeleteInvoice.Location = new System.Drawing.Point(160, 19);
+            this.btnDeleteInvoice.Location = new System.Drawing.Point(120, 15);
             this.btnDeleteInvoice.Margin = new System.Windows.Forms.Padding(0);
             this.btnDeleteInvoice.Name = "btnDeleteInvoice";
-            this.btnDeleteInvoice.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
-            this.btnDeleteInvoice.Size = new System.Drawing.Size(52, 52);
+            this.btnDeleteInvoice.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.btnDeleteInvoice.Size = new System.Drawing.Size(39, 42);
             this.btnDeleteInvoice.TabIndex = 17;
             this.btnDeleteInvoice.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnDeleteInvoice.UseVisualStyleBackColor = true;
@@ -242,16 +253,18 @@
             // 
             this.cbSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSearch.FormattingEnabled = true;
-            this.cbSearch.Location = new System.Drawing.Point(6, 14);
+            this.cbSearch.Location = new System.Drawing.Point(4, 11);
+            this.cbSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbSearch.Name = "cbSearch";
-            this.cbSearch.Size = new System.Drawing.Size(216, 24);
+            this.cbSearch.Size = new System.Drawing.Size(163, 21);
             this.cbSearch.TabIndex = 22;
             // 
             // txtSearchText
             // 
-            this.txtSearchText.Location = new System.Drawing.Point(6, 44);
+            this.txtSearchText.Location = new System.Drawing.Point(4, 36);
+            this.txtSearchText.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtSearchText.Name = "txtSearchText";
-            this.txtSearchText.Size = new System.Drawing.Size(216, 22);
+            this.txtSearchText.Size = new System.Drawing.Size(163, 20);
             this.txtSearchText.TabIndex = 23;
             // 
             // groupBox1
@@ -262,18 +275,21 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.dtpToDate);
             this.groupBox1.Controls.Add(this.dtpFromDate);
-            this.groupBox1.Location = new System.Drawing.Point(12, -1);
+            this.groupBox1.Location = new System.Drawing.Point(9, -1);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(296, 112);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Size = new System.Drawing.Size(222, 91);
             this.groupBox1.TabIndex = 28;
             this.groupBox1.TabStop = false;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(220, 74);
+            this.label3.Location = new System.Drawing.Point(165, 60);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 17);
+            this.label3.Size = new System.Drawing.Size(44, 13);
             this.label3.TabIndex = 25;
             this.label3.Text = "Refresh";
             // 
@@ -284,11 +300,11 @@
             this.btnRefreshList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRefreshList.Image = global::LoginForm.Properties.Resources.icons8_Refresh_32;
             this.btnRefreshList.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnRefreshList.Location = new System.Drawing.Point(223, 19);
+            this.btnRefreshList.Location = new System.Drawing.Point(167, 15);
             this.btnRefreshList.Margin = new System.Windows.Forms.Padding(0);
             this.btnRefreshList.Name = "btnRefreshList";
-            this.btnRefreshList.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
-            this.btnRefreshList.Size = new System.Drawing.Size(52, 52);
+            this.btnRefreshList.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.btnRefreshList.Size = new System.Drawing.Size(39, 42);
             this.btnRefreshList.TabIndex = 24;
             this.btnRefreshList.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnRefreshList.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -298,18 +314,20 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(0, 54);
+            this.label2.Location = new System.Drawing.Point(0, 44);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 17);
+            this.label2.Size = new System.Drawing.Size(30, 13);
             this.label2.TabIndex = 23;
             this.label2.Text = "From";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(-3, 22);
+            this.label1.Location = new System.Drawing.Point(-2, 18);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(25, 17);
+            this.label1.Size = new System.Drawing.Size(20, 13);
             this.label1.TabIndex = 22;
             this.label1.Text = "To";
             // 
@@ -317,10 +335,11 @@
             // 
             this.dtpToDate.CustomFormat = "dd-MM-yyyy";
             this.dtpToDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpToDate.Location = new System.Drawing.Point(83, 19);
+            this.dtpToDate.Location = new System.Drawing.Point(62, 15);
+            this.dtpToDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtpToDate.MaxDate = new System.DateTime(9998, 9, 5, 0, 0, 0, 0);
             this.dtpToDate.Name = "dtpToDate";
-            this.dtpToDate.Size = new System.Drawing.Size(119, 22);
+            this.dtpToDate.Size = new System.Drawing.Size(90, 20);
             this.dtpToDate.TabIndex = 18;
             this.dtpToDate.Value = new System.DateTime(2018, 9, 4, 0, 0, 0, 0);
             // 
@@ -328,10 +347,11 @@
             // 
             this.dtpFromDate.CustomFormat = "dd-MM-yyyy";
             this.dtpFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFromDate.Location = new System.Drawing.Point(83, 51);
+            this.dtpFromDate.Location = new System.Drawing.Point(62, 41);
+            this.dtpFromDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtpFromDate.MaxDate = new System.DateTime(2018, 9, 4, 0, 0, 0, 0);
             this.dtpFromDate.Name = "dtpFromDate";
-            this.dtpFromDate.Size = new System.Drawing.Size(119, 22);
+            this.dtpFromDate.Size = new System.Drawing.Size(90, 20);
             this.dtpFromDate.TabIndex = 19;
             this.dtpFromDate.Value = new System.DateTime(2018, 9, 4, 0, 0, 0, 0);
             this.dtpFromDate.ValueChanged += new System.EventHandler(this.dtpFromDate_ValueChanged);
@@ -344,12 +364,13 @@
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 121F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 98F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 9F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1242, 644);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 7F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(933, 530);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // dgRSInvoice
@@ -383,24 +404,24 @@
             this.dgSupplierID,
             this.dgUserID});
             this.dgRSInvoice.ContextMenuStrip = this.ctx_dgRSInvoice;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgRSInvoice.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgRSInvoice.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgRSInvoice.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgRSInvoice.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dgRSInvoice.Location = new System.Drawing.Point(8, 129);
-            this.dgRSInvoice.Margin = new System.Windows.Forms.Padding(8);
+            this.dgRSInvoice.Location = new System.Drawing.Point(6, 104);
+            this.dgRSInvoice.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.dgRSInvoice.Name = "dgRSInvoice";
             this.dgRSInvoice.ReadOnly = true;
             this.dgRSInvoice.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.dgRSInvoice.RowTemplate.Height = 24;
             this.dgRSInvoice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgRSInvoice.Size = new System.Drawing.Size(1226, 498);
+            this.dgRSInvoice.Size = new System.Drawing.Size(921, 413);
             this.dgRSInvoice.TabIndex = 0;
             this.dgRSInvoice.TabStop = false;
             this.dgRSInvoice.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgRSInvoice_MouseDown);
@@ -542,26 +563,26 @@
             this.sendToLogoToolStripMenuItem,
             this.backFromLogoToolStripMenuItem});
             this.ctx_dgRSInvoice.Name = "ctx_dgRSInvoice";
-            this.ctx_dgRSInvoice.Size = new System.Drawing.Size(186, 76);
+            this.ctx_dgRSInvoice.Size = new System.Drawing.Size(161, 70);
             // 
             // viewInvoicToolStripMenuItem
             // 
             this.viewInvoicToolStripMenuItem.Name = "viewInvoicToolStripMenuItem";
-            this.viewInvoicToolStripMenuItem.Size = new System.Drawing.Size(185, 24);
+            this.viewInvoicToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.viewInvoicToolStripMenuItem.Text = "View Invoice";
             this.viewInvoicToolStripMenuItem.Click += new System.EventHandler(this.viewInvoicToolStripMenuItem_Click);
             // 
             // sendToLogoToolStripMenuItem
             // 
             this.sendToLogoToolStripMenuItem.Name = "sendToLogoToolStripMenuItem";
-            this.sendToLogoToolStripMenuItem.Size = new System.Drawing.Size(185, 24);
+            this.sendToLogoToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.sendToLogoToolStripMenuItem.Text = "Send To Logo";
             this.sendToLogoToolStripMenuItem.Click += new System.EventHandler(this.sendToLogoToolStripMenuItem_Click);
             // 
             // backFromLogoToolStripMenuItem
             // 
             this.backFromLogoToolStripMenuItem.Name = "backFromLogoToolStripMenuItem";
-            this.backFromLogoToolStripMenuItem.Size = new System.Drawing.Size(185, 24);
+            this.backFromLogoToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.backFromLogoToolStripMenuItem.Text = "Back From Logo";
             this.backFromLogoToolStripMenuItem.Click += new System.EventHandler(this.backFromLogoToolStripMenuItem_Click);
             // 
@@ -572,9 +593,10 @@
             this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Location = new System.Drawing.Point(2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1236, 115);
+            this.panel1.Size = new System.Drawing.Size(929, 94);
             this.panel1.TabIndex = 1;
             // 
             // groupBox4
@@ -583,9 +605,11 @@
             this.groupBox4.Controls.Add(this.label9);
             this.groupBox4.Controls.Add(this.txtStockCode);
             this.groupBox4.Controls.Add(this.chcCustStockNumber);
-            this.groupBox4.Location = new System.Drawing.Point(939, 3);
+            this.groupBox4.Location = new System.Drawing.Point(704, 2);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(289, 106);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox4.Size = new System.Drawing.Size(217, 86);
             this.groupBox4.TabIndex = 31;
             this.groupBox4.TabStop = false;
             // 
@@ -595,11 +619,11 @@
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.Image = global::LoginForm.Properties.Resources.if_search_magnifying_glass_find_103857;
             this.btnSearch.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnSearch.Location = new System.Drawing.Point(224, 14);
+            this.btnSearch.Location = new System.Drawing.Point(168, 11);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(0);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
-            this.btnSearch.Size = new System.Drawing.Size(52, 52);
+            this.btnSearch.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.btnSearch.Size = new System.Drawing.Size(39, 42);
             this.btnSearch.TabIndex = 28;
             this.btnSearch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -607,25 +631,28 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(224, 70);
+            this.label9.Location = new System.Drawing.Point(168, 57);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(53, 17);
+            this.label9.Size = new System.Drawing.Size(41, 13);
             this.label9.TabIndex = 29;
             this.label9.Text = "Search";
             // 
             // txtStockCode
             // 
-            this.txtStockCode.Location = new System.Drawing.Point(3, 13);
+            this.txtStockCode.Location = new System.Drawing.Point(2, 11);
+            this.txtStockCode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtStockCode.Name = "txtStockCode";
-            this.txtStockCode.Size = new System.Drawing.Size(192, 22);
+            this.txtStockCode.Size = new System.Drawing.Size(145, 20);
             this.txtStockCode.TabIndex = 25;
             // 
             // chcCustStockNumber
             // 
             this.chcCustStockNumber.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chcCustStockNumber.Location = new System.Drawing.Point(3, 45);
+            this.chcCustStockNumber.Location = new System.Drawing.Point(2, 37);
+            this.chcCustStockNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chcCustStockNumber.Name = "chcCustStockNumber";
-            this.chcCustStockNumber.Size = new System.Drawing.Size(192, 21);
+            this.chcCustStockNumber.Size = new System.Drawing.Size(144, 17);
             this.chcCustStockNumber.TabIndex = 26;
             this.chcCustStockNumber.Text = "Customer Stock Code";
             this.chcCustStockNumber.UseVisualStyleBackColor = true;
@@ -634,9 +661,11 @@
             // 
             this.groupBox3.Controls.Add(this.cbSearch);
             this.groupBox3.Controls.Add(this.txtSearchText);
-            this.groupBox3.Location = new System.Drawing.Point(697, 3);
+            this.groupBox3.Location = new System.Drawing.Point(523, 2);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(236, 109);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Size = new System.Drawing.Size(177, 89);
             this.groupBox3.TabIndex = 30;
             this.groupBox3.TabStop = false;
             // 
@@ -647,12 +676,13 @@
             // 
             // frm_RSInvoice
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
-            this.ClientSize = new System.Drawing.Size(1242, 644);
+            this.ClientSize = new System.Drawing.Size(933, 530);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.MinimumSize = new System.Drawing.Size(1260, 691);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MinimumSize = new System.Drawing.Size(949, 569);
             this.Name = "frm_RSInvoice";
             this.Text = "RS Invoices";
             this.Load += new System.EventHandler(this.frm_RSInvoice_Load);
