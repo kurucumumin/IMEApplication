@@ -55,6 +55,7 @@ namespace LoginForm.DataSet
         public decimal financialYearId { get; set; }
         public string Status { get; set; }
         public Nullable<decimal> TotalDiscount { get; set; }
+        public Nullable<int> PurchaseOrderID { get; set; }
     
         public virtual Customer Customer { get; set; }
         public virtual CustomerAddress CustomerAddress { get; set; }

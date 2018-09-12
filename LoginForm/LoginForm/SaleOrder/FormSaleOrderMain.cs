@@ -82,7 +82,8 @@ namespace LoginForm.nsSaleOrder
                            DeliveryAddress = ca1.AdressTitle,
                            SaleID = so.SaleOrderID,
                            Status = so.Status,
-                           QuotationNo = so.QuotationNos
+                           QuotationNo = so.QuotationNos,
+                           PurchaseID = so.PurchaseOrderID
                        }).OrderByDescending(s=> s.SoNO);
             populateGrid(list.ToList());
         }
@@ -234,20 +235,26 @@ namespace LoginForm.nsSaleOrder
         private void sentToPurchaseOrderToolStripMenuItem_Click(object sender, EventArgs e)
         {
             decimal item_code = 0;
-            // string purchasecode = "";
             IMEEntities IME = new IMEEntities();
-
+            
             if (dgSales.CurrentRow.Cells["SoNO"].Value != null)
             {
+                DataSet.PurchaseOrderDetail po = new DataSet.PurchaseOrderDetail();
                 item_code = Convert.ToDecimal(dgSales.CurrentRow.Cells["SaleID"].Value.ToString());
-            }
-            if (item_code == 0)
-                MessageBox.Show("Please Enter a Item Code", "Eror !");
-            else
-            {
-                this.Close();
-                NewPurchaseOrder f = new NewPurchaseOrder(item_code);
-                f.Show();
+                //decimal saleNo = Convert.ToDecimal(dgSales.CurrentRow.Cells["SoNO"].Value.ToString());
+                po = IME.PurchaseOrderDetails.Where(x => x.SaleOrderID == item_code).FirstOrDefault();
+
+                if (item_code != 0 && po == null)
+                {
+                    this.Close();
+                    NewPurchaseOrder f = new NewPurchaseOrder(item_code);
+                    f.Show();
+                }
+                else
+                {
+                    MessageBox.Show("SaleOrder is locked to Purchase Order Number: " + po.PurchaseOrder.PurchaseNo,"Warning",MessageBoxButtons.OKCancel);
+                }
+
             }
         }
 
@@ -339,7 +346,8 @@ namespace LoginForm.nsSaleOrder
                                              DeliveryAddress = ca1.AdressTitle,
                                              SaleID = so.SaleOrderID,
                                              Status = so.Status,
-                                             QuotationNo = so.QuotationNos
+                                             QuotationNo = so.QuotationNos,
+                                             PurchaseID = so.PurchaseOrderID
                                          }).ToList().Where(x => x.SoNO.ToString().Contains(txtSearchText.Text));
 
                             populateGrid(list1.ToList());
@@ -365,7 +373,8 @@ namespace LoginForm.nsSaleOrder
                                             DeliveryAddress = ca1.AdressTitle,
                                             SaleID = so.SaleOrderID,
                                             Status = so.Status,
-                                            QuotationNo = so.QuotationNos
+                                            QuotationNo = so.QuotationNos,
+                                            PurchaseID = so.PurchaseOrderID
                                         };
 
                             populateGrid(list2.ToList());
@@ -391,7 +400,8 @@ namespace LoginForm.nsSaleOrder
                                             DeliveryAddress = ca1.AdressTitle,
                                             SaleID = so.SaleOrderID,
                                             Status = so.Status,
-                                            QuotationNo = so.QuotationNos
+                                            QuotationNo = so.QuotationNos,
+                                            PurchaseID = so.PurchaseOrderID
                                         };
 
                             populateGrid(list3.ToList());
@@ -421,7 +431,8 @@ namespace LoginForm.nsSaleOrder
                                                 DeliveryAddress = ca1.AdressTitle,
                                                 SaleID = so.SaleOrderID,
                                                 Status = so.Status,
-                                                QuotationNo = so.QuotationNos
+                                                QuotationNo = so.QuotationNos,
+                                                PurchaseID = so.PurchaseOrderID
                                             };
 
                                 populateGrid(list4.ToList());
@@ -449,7 +460,8 @@ namespace LoginForm.nsSaleOrder
                                             DeliveryAddress = ca1.AdressTitle,
                                             SaleID = so.SaleOrderID,
                                             Status = so.Status,
-                                            QuotationNo = so.QuotationNos
+                                            QuotationNo = so.QuotationNos,
+                                            PurchaseID = so.PurchaseOrderID
                                         };
 
                             populateGrid(list5.ToList());
@@ -500,7 +512,8 @@ namespace LoginForm.nsSaleOrder
                                              DeliveryAddress = ca1.AdressTitle,
                                              SaleID = so.SaleOrderID,
                                              Status = so.Status,
-                                             QuotationNo = so.QuotationNos
+                                             QuotationNo = so.QuotationNos,
+                                             PurchaseID = so.PurchaseOrderID
                                          }).ToList().Where(x => x.SoNO.ToString().Contains(txtSearchText.Text));
 
                             populateGrid(list1.ToList());

@@ -176,7 +176,7 @@ namespace LoginForm.PurchaseOrder
                 row.Cells[c_name.Index].Value = item.c_name;
                 row.Cells[QuotationNos.Index].Value = item.QuotationNo;
                 //SaleOrderID için kontrol et
-                //row.Cells[SaleOrderNo.Index].Value = item.SaleOrderID;
+                row.Cells[SaleOrderNo.Index].Value = item.SaleOrderID;
                 row.Cells[ItemCode.Index].Value = item.ItemCode;
                 row.Cells[ItemDescription.Index].Value = item.ItemDescription;
                 row.Cells[UnitOfMeasure.Index].Value = item.UnitPrice;
