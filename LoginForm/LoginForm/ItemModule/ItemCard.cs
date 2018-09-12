@@ -297,6 +297,11 @@ namespace LoginForm.ItemModule
             var h = IME.Hazardous.Where(a => a.ArticleNo == ArticleNoSearch).FirstOrDefault();
             var du = IME.DualUses.Where(a => a.ArticleNo == ArticleNoSearch).FirstOrDefault();
             var i = IME.tbl_Item.Where(a => a.StockNo == ArticleNoSearch).FirstOrDefault();
+
+
+            int cofactor = (int)IME.CompleteItems.Where(x => x.Article_No == ArticleNoSearch).FirstOrDefault().Unit_Content;
+
+
             if (sd != null)
             {
                 txtStockNo.Text = sd.Article_No;
@@ -412,21 +417,21 @@ namespace LoginForm.ItemModule
                 txtCoO.Text = er.CountryofOrigin;
                 txtUM.Text = er.UnitofMeasure;
 
-                txtUK1.Text = er.Col1Price.ToString();
-                txtUK2.Text = er.Col2Price.ToString();
-                txtUK3.Text = er.Col3Price.ToString();
-                txtUK4.Text = er.Col4Price.ToString();
-                txtUK5.Text = er.Col5Price.ToString();
-                txtUnitCount1.Text = er.Col1Break.ToString();
-                txtUnitCount2.Text = er.Col2Break.ToString();
-                txtUnitCount3.Text = er.Col3Break.ToString();
-                txtUnitCount4.Text = er.Col4Break.ToString();
-                txtUnitCount5.Text = er.Col5Break.ToString();
-                txtCost1.Text = er.DiscountedPrice1.ToString();
-                txtCost2.Text = er.DiscountedPrice2.ToString();
-                txtCost3.Text = er.DiscountedPrice3.ToString();
-                txtCost4.Text = er.DiscountedPrice4.ToString();
-                txtCost5.Text = er.DiscountedPrice5.ToString();
+                txtUK1.Text = (er.Col1Price / cofactor).ToString();
+                txtUK2.Text = (er.Col2Price / cofactor).ToString();
+                txtUK3.Text = (er.Col3Price / cofactor).ToString();
+                txtUK4.Text = (er.Col4Price / cofactor).ToString();
+                txtUK5.Text = (er.Col5Price / cofactor).ToString();
+                txtUnitCount1.Text = (er.Col1Break * cofactor).ToString();
+                txtUnitCount2.Text = (er.Col2Break * cofactor).ToString();
+                txtUnitCount3.Text = (er.Col3Break * cofactor).ToString();
+                txtUnitCount4.Text = (er.Col4Break * cofactor).ToString();
+                txtUnitCount5.Text = (er.Col5Break * cofactor).ToString();
+                txtCost1.Text = (er.DiscountedPrice1 / cofactor).ToString();
+                txtCost2.Text = (er.DiscountedPrice2 / cofactor).ToString();
+                txtCost3.Text = (er.DiscountedPrice3 / cofactor).ToString();
+                txtCost4.Text = (er.DiscountedPrice4 / cofactor).ToString();
+                txtCost5.Text = (er.DiscountedPrice5 / cofactor).ToString();
                 WebandMarginPrices();
             }
             if (sp != null)
@@ -434,22 +439,22 @@ namespace LoginForm.ItemModule
                 txtStockNo.Text = sp.ArticleNo;
                 //IntroductionDate.Text = sp.IntroductionDate;
                 //DiscontinuedDate.Text = sp.DiscontinuedDate;
-                txtUnitCount1.Text = sp.Col1Break.ToString();
-                txtUnitCount2.Text = sp.Col2Break.ToString();
-                txtUnitCount3.Text = sp.Col3Break.ToString();
-                txtUnitCount4.Text = sp.Col4Break.ToString();
-                txtUnitCount5.Text = sp.Col5Break.ToString();
-                txtUK1.Text = sp.Col1Price.ToString();
-                txtUK2.Text = sp.Col2Price.ToString();
-                txtUK3.Text = sp.Col3Price.ToString();
-                txtUK4.Text = sp.Col4Price.ToString();
-                txtUK5.Text = sp.Col5Price.ToString();
+                txtUnitCount1.Text = (sp.Col1Break * cofactor).ToString();
+                txtUnitCount2.Text = (sp.Col2Break * cofactor).ToString();
+                txtUnitCount3.Text = (sp.Col3Break * cofactor).ToString();
+                txtUnitCount4.Text = (sp.Col4Break * cofactor).ToString();
+                txtUnitCount5.Text = (sp.Col5Break * cofactor).ToString();
+                txtUK1.Text = (sp.Col1Price / cofactor).ToString();
+                txtUK2.Text = (sp.Col2Price / cofactor).ToString();
+                txtUK3.Text = (sp.Col3Price / cofactor).ToString();
+                txtUK4.Text = (sp.Col4Price / cofactor).ToString();
+                txtUK5.Text = (sp.Col5Price / cofactor).ToString();
 
-                txtCost1.Text = sp.DiscountedPrice1.ToString();
-                txtCost2.Text = sp.DiscountedPrice2.ToString();
-                txtCost3.Text = sp.DiscountedPrice3.ToString();
-                txtCost4.Text = sp.DiscountedPrice4.ToString();
-                txtCost5.Text = sp.DiscountedPrice5.ToString();
+                txtCost1.Text = (sp.DiscountedPrice1 / cofactor).ToString();
+                txtCost2.Text = (sp.DiscountedPrice2 / cofactor).ToString();
+                txtCost3.Text = (sp.DiscountedPrice3 / cofactor).ToString();
+                txtCost4.Text = (sp.DiscountedPrice4 / cofactor).ToString();
+                txtCost5.Text = (sp.DiscountedPrice5 / cofactor).ToString();
                 WebandMarginPrices();
                 txtSupersectionName.Text = sp.SupersectionName;
                 txtDesc.Text = sp.ArticleDescription;
@@ -553,11 +558,11 @@ namespace LoginForm.ItemModule
             if (txtUK4.Text != "" && txtUK4.Text != null) txtWeb4.Text = (decimal.Parse(txtUK4.Text) * factor).ToString();
             if (txtUK5.Text != "" && txtUK5.Text != null) txtWeb5.Text = (decimal.Parse(txtUK5.Text) * factor).ToString();
             txtMargin1.Text = ""; txtMargin2.Text = ""; txtMargin3.Text = ""; txtMargin4.Text = ""; txtMargin5.Text = "";
-            if (txtCost1.Text != "" && txtCost1.Text != null && Int32.Parse(txtUnitCount1.Text) != 0) txtMargin1.Text = ((1 - (decimal.Parse(txtCost1.Text) / decimal.Parse(txtWeb1.Text))) * 100).ToString();
-            if (txtCost2.Text != "" && txtCost2.Text != null && Int32.Parse(txtUnitCount2.Text) != 0) txtMargin2.Text = ((1 - (decimal.Parse(txtCost2.Text) / decimal.Parse(txtWeb2.Text))) * 100).ToString();
-            if (txtCost3.Text != "" && txtCost3.Text != null && Int32.Parse(txtUnitCount3.Text) != 0) txtMargin3.Text = ((1 - (decimal.Parse(txtCost3.Text) / decimal.Parse(txtWeb3.Text))) * 100).ToString();
-            if (txtCost4.Text != "" && txtCost4.Text != null && Int32.Parse(txtUnitCount4.Text) != 0) txtMargin4.Text = ((1 - (decimal.Parse(txtCost4.Text) / decimal.Parse(txtWeb4.Text))) * 100).ToString();
-            if (txtCost5.Text != "" && txtCost5.Text != null && Int32.Parse(txtUnitCount5.Text) != 0) txtMargin5.Text = ((1 - (decimal.Parse(txtCost5.Text) / decimal.Parse(txtWeb5.Text))) * 100).ToString();
+            if (txtCost1.Text != "" && txtCost1.Text != null && Int32.Parse(txtUnitCount1.Text) != 0) txtMargin1.Text = ((1 - (decimal.Parse(txtCost1.Text) / decimal.Parse(txtUK1.Text))) * 100).ToString();
+            if (txtCost2.Text != "" && txtCost2.Text != null && Int32.Parse(txtUnitCount2.Text) != 0) txtMargin2.Text = ((1 - (decimal.Parse(txtCost2.Text) / decimal.Parse(txtUK2.Text))) * 100).ToString();
+            if (txtCost3.Text != "" && txtCost3.Text != null && Int32.Parse(txtUnitCount3.Text) != 0) txtMargin3.Text = ((1 - (decimal.Parse(txtCost3.Text) / decimal.Parse(txtUK3.Text))) * 100).ToString();
+            if (txtCost4.Text != "" && txtCost4.Text != null && Int32.Parse(txtUnitCount4.Text) != 0) txtMargin4.Text = ((1 - (decimal.Parse(txtCost4.Text) / decimal.Parse(txtUK4.Text))) * 100).ToString();
+            if (txtCost5.Text != "" && txtCost5.Text != null && Int32.Parse(txtUnitCount5.Text) != 0) txtMargin5.Text = ((1 - (decimal.Parse(txtCost5.Text) / decimal.Parse(txtUK5.Text))) * 100).ToString();
 
         }
 

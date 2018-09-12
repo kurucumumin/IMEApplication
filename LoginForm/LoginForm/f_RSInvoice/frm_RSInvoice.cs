@@ -40,7 +40,10 @@ namespace LoginForm.f_RSInvoice
 
         private void btnRefreshList_Click(object sender, EventArgs e)
         {
-            bgw_RSInvoiceGetter.RunWorkerAsync();
+            if (!bgw_RSInvoiceGetter.IsBusy)
+            {
+                bgw_RSInvoiceGetter.RunWorkerAsync();
+            }
         }
 
         private void ShowHiddenRows()
@@ -88,58 +91,82 @@ namespace LoginForm.f_RSInvoice
 
         private void viewInvoicToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(Int32.TryParse(dgRSInvoice.SelectedRows[0].Cells[dgID.Index].Value.ToString(), out int InvoiceID))
+            if (dgRSInvoice.SelectedRows.Count > 0)
             {
-                frm_RsInvoiceDetail form = new frm_RsInvoiceDetail(InvoiceID);
-                form.Show();
+                if (Int32.TryParse(dgRSInvoice.SelectedRows[0].Cells[dgID.Index].Value.ToString(), out int InvoiceID))
+                {
+                    frm_RsInvoiceDetail form = new frm_RsInvoiceDetail(InvoiceID);
+                    form.Show();
+                }
             }
-
+            else
+            {
+                MessageBox.Show("Please select an RS Invoice to view");
+            }
         }
 
         private void sendToLogoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string Ref = dgRSInvoice.SelectedRows[0].Cells[dgBillingDocumentReference.Index].Value.ToString();
-            int InvoiceID = Int32.Parse(dgRSInvoice.SelectedRows[0].Cells[dgID.Index].Value.ToString());
-            string resultMessage = logoLibrary.SendToLogo_RSInvoice(Ref);
-
-            if (resultMessage == LogoLibrary.AddSuccessful)
+            if (dgRSInvoice.SelectedRows.Count > 0)
             {
-                IMEEntities db = new IMEEntities();
+                string Ref = dgRSInvoice.SelectedRows[0].Cells[dgBillingDocumentReference.Index].Value.ToString();
+                int InvoiceID = Int32.Parse(dgRSInvoice.SelectedRows[0].Cells[dgID.Index].Value.ToString());
+                string resultMessage = logoLibrary.SendToLogo_RSInvoice(Ref);
 
-                RS_Invoice so = db.RS_Invoice.Where(x => x.ID == InvoiceID).FirstOrDefault();
-                so.Status = "LOGO";
-                db.SaveChanges();
+                if (resultMessage == LogoLibrary.AddSuccessful)
+                {
+                    IMEEntities db = new IMEEntities();
 
-                btnRefreshList.PerformClick();
-                MessageBox.Show("Sent To Logo Successfully");
+                    RS_Invoice so = db.RS_Invoice.Where(x => x.ID == InvoiceID).FirstOrDefault();
+                    so.Status = "LOGO";
+                    db.SaveChanges();
+
+                    btnRefreshList.PerformClick();
+                    MessageBox.Show("Sent To Logo Successfully");
+                }
+                else
+                {
+                    MessageBox.Show("Operation Failed" + "\n\nError Message: " + resultMessage);
+                }
             }
             else
             {
-                MessageBox.Show("Operation Failed" + "\n\nError Message: " + resultMessage);
+                MessageBox.Show("You Should Choose An RS Invoice!");
             }
+
+            
         }
 
         private void backFromLogoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string Ref = dgRSInvoice.SelectedRows[0].Cells[dgBillingDocumentReference.Index].Value.ToString();
-            int InvoiceID = Int32.Parse(dgRSInvoice.SelectedRows[0].Cells[dgID.Index].Value.ToString());
-            string resultMessage = logoLibrary.BackFromLogo_RSInvoice(Ref.ToString());
-
-            if (resultMessage == LogoLibrary.DeleteSuccessful)
+            if (dgRSInvoice.SelectedRows.Count > 0)
             {
-                IMEEntities db = new IMEEntities();
+                string Ref = dgRSInvoice.SelectedRows[0].Cells[dgBillingDocumentReference.Index].Value.ToString();
+                int InvoiceID = Int32.Parse(dgRSInvoice.SelectedRows[0].Cells[dgID.Index].Value.ToString());
+                string resultMessage = logoLibrary.BackFromLogo_RSInvoice(Ref.ToString());
 
-                RS_Invoice so = db.RS_Invoice.Where(x => x.ID == InvoiceID).FirstOrDefault();
-                so.Status = "";
-                db.SaveChanges();
+                if (resultMessage == LogoLibrary.DeleteSuccessful)
+                {
+                    IMEEntities db = new IMEEntities();
 
-                btnRefreshList.PerformClick();
-                MessageBox.Show("Deleted From Logo Successfully");
+                    RS_Invoice so = db.RS_Invoice.Where(x => x.ID == InvoiceID).FirstOrDefault();
+                    so.Status = "";
+                    db.SaveChanges();
+
+                    btnRefreshList.PerformClick();
+                    MessageBox.Show("Deleted From Logo Successfully");
+                }
+                else
+                {
+                    MessageBox.Show("Operation Failed" + "\n\nError Message: " + resultMessage);
+                }
             }
             else
             {
-                MessageBox.Show("Operation Failed" + "\n\nError Message: " + resultMessage);
+                MessageBox.Show("You Should Choose An RS Invoice!");
             }
+
+            
         }
 
         private void bgw_RSInvoiceGetter_DoWork(object sender, DoWorkEventArgs e)
@@ -208,7 +235,7 @@ namespace LoginForm.f_RSInvoice
             }
             else
             {
-                MessageBox.Show("You Should Choose A Quotation!");
+                MessageBox.Show("You Should Choose An RS Invoice!");
             }
         }
     }
