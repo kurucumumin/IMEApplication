@@ -63,25 +63,25 @@ namespace LoginForm.QuotationModule
             CompleteItem item = IME.CompleteItems.Where(x => x.Article_No == ArticleNo).FirstOrDefault();
 
             /*Cofactor break değerleri ile çarpılacak*/
-            int cofactor = (item.Pack_Quantity > item.Unit_Content) ? (int)item.Pack_Quantity : (int)item.Unit_Content;
+            int cofactor = (int)item.Unit_Content;
             
             try
             {
-                if ((quantity < item.Col2Break && item.DiscountedPrice1 != 0)||(item.Col2Break== 0 && item.DiscountedPrice1 != 0))
+                if ((quantity < (item.Col2Break * cofactor) && item.DiscountedPrice1 != 0) || item.DiscountedPrice2 == 0)
                 {
                     return result = Decimal.Parse(item.DiscountedPrice1.ToString());
                 }
-                else if (quantity < item.Col3Break)
+                else if ((quantity < (item.Col3Break * cofactor) && item.DiscountedPrice2 != 0) || item.DiscountedPrice3 == 0)
                 {
                     if(item.DiscountedPrice2 == 0) { return result = Decimal.Parse(item.DiscountedPrice1.ToString()); }
                     return result = Decimal.Parse(item.DiscountedPrice2.ToString());
                 }
-                else if (quantity < item.Col4Break && item.DiscountedPrice3 != 0)
+                else if ((quantity < (item.Col4Break * cofactor) && item.DiscountedPrice3 != 0) || item.DiscountedPrice4 == 0)
                 {
                     if (item.DiscountedPrice3 == 0) { return result = Decimal.Parse(item.DiscountedPrice2.ToString()); }
                     return result = Decimal.Parse(item.DiscountedPrice3.ToString());
                 }
-                else if (quantity < item.Col5Break && item.DiscountedPrice4 != 0)
+                else if ((quantity < (item.Col5Break * cofactor) && item.DiscountedPrice4 != 0) || item.DiscountedPrice5 == 0)
                 {
                     if (item.DiscountedPrice4 == 0) { return result = Decimal.Parse(item.DiscountedPrice3.ToString()); }
                     return result = Decimal.Parse(item.DiscountedPrice4.ToString());
