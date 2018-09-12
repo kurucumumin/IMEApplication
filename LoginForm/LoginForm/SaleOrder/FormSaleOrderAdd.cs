@@ -368,11 +368,14 @@ namespace LoginForm.QuotationModule
 
         public FormSaleOrderAdd(Customer cus, List<SaleOrderDetail> list, int sayac)
         {
+            InitializeComponent();
+
             customer = cus;
             firstInitialize = true;
             SaleCurrency = list[0].SaleOrder.ExchangeRate.rate;
             SItems = list;
-            InitializeComponent();
+            btnSave.Visible = false;
+            label75.Visible = false;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
          System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
@@ -539,7 +542,7 @@ namespace LoginForm.QuotationModule
                 groupBox11.Enabled = false;
                 groupBox7.Enabled = false;
             }
-
+            txtTotalMargin.Text = calculateTotalMargin().ToString();
             ControlEnableFalse(this);
             
         }

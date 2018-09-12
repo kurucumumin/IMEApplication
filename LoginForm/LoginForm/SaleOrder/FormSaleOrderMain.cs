@@ -91,7 +91,6 @@ namespace LoginForm.nsSaleOrder
         {
             dgSales.DataSource = null;
             dgSales.DataSource = queryable;
-            dgSales.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             foreach (DataGridViewRow row in dgSales.Rows)
             {
@@ -114,6 +113,8 @@ namespace LoginForm.nsSaleOrder
             {
                 dgSales.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             }
+
+            dgSales.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void btnNew_Click(object sender, EventArgs e)
