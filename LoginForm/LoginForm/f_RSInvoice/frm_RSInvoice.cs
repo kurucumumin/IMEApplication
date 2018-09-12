@@ -73,8 +73,11 @@ namespace LoginForm.f_RSInvoice
             if (e.Button == MouseButtons.Right)
             {
                 var hti = dgRSInvoice.HitTest(e.X, e.Y);
-                dgRSInvoice.ClearSelection();
-                dgRSInvoice.Rows[hti.RowIndex].Selected = true;
+                if (hti.ColumnIndex != -1 && hti.RowIndex != -1)
+                {
+                    dgRSInvoice.ClearSelection();
+                    dgRSInvoice.Rows[hti.RowIndex].Selected = true;
+                }
             }
         }
 
