@@ -60,6 +60,18 @@
             this.sentToPurchaseOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sentToLogoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backFromLogoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Contact = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DeliveryContact = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DeliveryAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SaleID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuotationNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PurchaseID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PurchaseDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgSales)).BeginInit();
@@ -386,6 +398,19 @@
             this.dgSales.AllowUserToOrderColumns = true;
             this.dgSales.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgSales.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Date,
+            this.SoNO,
+            this.CustomerName,
+            this.Contact,
+            this.DeliveryContact,
+            this.Address,
+            this.DeliveryAddress,
+            this.SaleID,
+            this.Status,
+            this.QuotationNo,
+            this.PurchaseID,
+            this.PurchaseDate});
             this.dgSales.ContextMenuStrip = this.gridRightClick;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
@@ -438,6 +463,79 @@
             this.backFromLogoToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.backFromLogoToolStripMenuItem.Text = "Back From Logo";
             this.backFromLogoToolStripMenuItem.Click += new System.EventHandler(this.backFromLogoToolStripMenuItem_Click);
+            // 
+            // Date
+            // 
+            this.Date.HeaderText = "Date";
+            this.Date.Name = "Date";
+            this.Date.ReadOnly = true;
+            // 
+            // SoNO
+            // 
+            this.SoNO.HeaderText = "SoNO";
+            this.SoNO.Name = "SoNO";
+            this.SoNO.ReadOnly = true;
+            // 
+            // CustomerName
+            // 
+            this.CustomerName.HeaderText = "CustomerName";
+            this.CustomerName.Name = "CustomerName";
+            this.CustomerName.ReadOnly = true;
+            this.CustomerName.Width = 119;
+            // 
+            // Contact
+            // 
+            this.Contact.HeaderText = "Contact";
+            this.Contact.Name = "Contact";
+            this.Contact.ReadOnly = true;
+            // 
+            // DeliveryContact
+            // 
+            this.DeliveryContact.HeaderText = "DeliveryContact";
+            this.DeliveryContact.Name = "DeliveryContact";
+            this.DeliveryContact.ReadOnly = true;
+            // 
+            // Address
+            // 
+            this.Address.HeaderText = "Address";
+            this.Address.Name = "Address";
+            this.Address.ReadOnly = true;
+            // 
+            // DeliveryAddress
+            // 
+            this.DeliveryAddress.HeaderText = "DeliveryAddress";
+            this.DeliveryAddress.Name = "DeliveryAddress";
+            this.DeliveryAddress.ReadOnly = true;
+            // 
+            // SaleID
+            // 
+            this.SaleID.HeaderText = "SaleID";
+            this.SaleID.Name = "SaleID";
+            this.SaleID.ReadOnly = true;
+            // 
+            // Status
+            // 
+            this.Status.HeaderText = "Status";
+            this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
+            // 
+            // QuotationNo
+            // 
+            this.QuotationNo.HeaderText = "QuotationNo";
+            this.QuotationNo.Name = "QuotationNo";
+            this.QuotationNo.ReadOnly = true;
+            // 
+            // PurchaseID
+            // 
+            this.PurchaseID.HeaderText = "PurchaseID";
+            this.PurchaseID.Name = "PurchaseID";
+            this.PurchaseID.ReadOnly = true;
+            // 
+            // PurchaseDate
+            // 
+            this.PurchaseDate.HeaderText = "PurchaseDate";
+            this.PurchaseDate.Name = "PurchaseDate";
+            this.PurchaseDate.ReadOnly = true;
             // 
             // FormSalesOrderMain
             // 
@@ -493,5 +591,17 @@
         private System.Windows.Forms.Button btnExportExcel;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnRefreshList;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoNO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CustomerName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Contact;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DeliveryContact;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Address;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DeliveryAddress;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SaleID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QuotationNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PurchaseID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PurchaseDate;
     }
 }

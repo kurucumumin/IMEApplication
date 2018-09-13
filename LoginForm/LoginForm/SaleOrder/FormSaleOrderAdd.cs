@@ -4552,6 +4552,7 @@ namespace LoginForm.QuotationModule
                 s.NoteForFinance = (chkbForFinance.Checked == true) ? 1 : 0;
                 s.SaleOrderNature = cbOrderNature.SelectedItem.ToString();
                 s.ShippingType = cbSMethod.SelectedItem.ToString();
+                s.Status = "Active";
 
                 s.LPONO = txtLPONO.Text;
                 s.TotalMargin = Convert.ToDecimal(txtTotalMargin.Text);
