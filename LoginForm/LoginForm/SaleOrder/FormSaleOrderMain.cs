@@ -63,59 +63,73 @@ namespace LoginForm.nsSaleOrder
 
         private void BringSalesList(DateTime endDate, DateTime startDate)
         {
+            dgSales.Rows.Clear();
+            dgSales.Refresh();
+
             IMEEntities IME = new IMEEntities();
             endDate = endDate.AddDays(1);
             var list = (from so in IME.SaleOrders
-                       from cw in IME.CustomerWorkers.Where(x => x.ID == so.ContactID)
-                       from ca in IME.CustomerAddresses.Where(x => x.ID == so.InvoiceAddressID)
-                       from cw1 in IME.CustomerWorkers.Where(x => x.ID == so.DeliveryContactID).DefaultIfEmpty()
-                       from ca1 in IME.CustomerAddresses.Where(x => x.ID == so.DeliveryAddressID).DefaultIfEmpty()
+                        join c in IME.Customers on so.CustomerID equals c.ID
+                        join cai in IME.CustomerAddresses on so.InvoiceAddressID equals cai.ID
+                        join cad in IME.CustomerAddresses on so.DeliveryAddressID equals cad.ID
+                        join cw in IME.CustomerWorkers on so.ContactID equals cw.ID
+                        join cwd in IME.CustomerWorkers on so.DeliveryContactID equals cwd.ID
+                        from po in IME.PurchaseOrderDetails.Where(x=> x.SaleOrderID == so.PurchaseOrderID).DefaultIfEmpty()
                        where so.SaleDate <= endDate && so.SaleDate >= startDate
                        select new
                        {
                            Date = so.SaleDate,
                            SoNO = so.SaleOrderNo,
-                           CustomerName = cw.Customer.c_name,
+                           CustomerName = c.c_name,
                            Contact = cw.cw_name,
-                           DeliveryContact = cw1.cw_name,
-                           Address = ca.AdressTitle,
-                           DeliveryAddress = ca1.AdressTitle,
+                           DeliveryContact = cwd.cw_name,
+                           Address = cai.AdressTitle,
+                           DeliveryAddress = cad.AdressTitle,
                            SaleID = so.SaleOrderID,
                            Status = so.Status,
                            QuotationNo = so.QuotationNos,
-                           PurchaseID = so.PurchaseOrderID
+                           PurchaseID = po.SaleOrderID,
+                           PurchaseDate = po.PurchaseOrder.date
                        }).OrderByDescending(s=> s.SoNO);
             populateGrid(list.ToList());
         }
 
         private void populateGrid<T>(List<T> queryable)
         {
-            dgSales.DataSource = null;
-            dgSales.DataSource = queryable;
+            dgSales.Rows.Clear();
+            dgSales.Refresh();
+
+
+            foreach (dynamic item in queryable)
+            {
+                int rowIndex = dgSales.Rows.Add();
+                DataGridViewRow row = dgSales.Rows[rowIndex];
+
+
+                row.Cells[Date.Index].Value = item.Date;
+                row.Cells[SoNO.Index].Value = item.SoNO;
+                row.Cells[CustomerName.Index].Value = item.CustomerName;
+                row.Cells[Contact.Index].Value = item.Contact;
+                row.Cells[DeliveryContact.Index].Value = item.DeliveryContact;
+                row.Cells[Address.Index].Value = item.Address;
+                row.Cells[DeliveryAddress.Index].Value = item.DeliveryAddress;
+                row.Cells[SaleID.Index].Value = item.SaleID;
+                row.Cells[Status.Index].Value = item.Status;
+                row.Cells[QuotationNo.Index].Value = item.QuotationNo;
+                row.Cells[PurchaseID.Index].Value = item.PurchaseID;
+                row.Cells[PurchaseDate.Index].Value = item.PurchaseDate;
+            }
 
             foreach (DataGridViewRow row in dgSales.Rows)
             {
-                if (row.Cells["Status"].Value != null && row.Cells["Status"].Value.ToString() == "LOGO")
+                if (row.Cells[Status.Index].Value != null && row.Cells[Status.Index].Value.ToString() == "LOGO")
                 {
                     row.DefaultCellStyle.BackColor = System.Drawing.Color.Green;
-                }else if (row.Cells["Status"].Value != null && row.Cells["Status"].Value.ToString() == "")
+                }else if (row.Cells[Status.Index].Value != null && row.Cells[Status.Index].Value.ToString() == "")
                 {
                     row.DefaultCellStyle.BackColor = System.Drawing.Color.Empty;
                 }
             }
-
-            //foreach (DataGridViewColumn col in dgSales.Columns)
-            //{
-            //    col.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            //}
-
-
-            for (int i = 0; i < dgSales.ColumnCount; i++)
-            {
-                dgSales.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            }
-
-            dgSales.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void btnNew_Click(object sender, EventArgs e)
@@ -169,7 +183,7 @@ namespace LoginForm.nsSaleOrder
                 List<int> SoNOsToDelete = new List<int>();
                 foreach (DataGridViewRow item in dgSales.SelectedRows)
                 {
-                    SoNOsToDelete.Add(Convert.ToInt32(item.Cells["SoNO"].Value.ToString()));
+                    SoNOsToDelete.Add(Convert.ToInt32(item.Cells[SoNO.Index].Value.ToString()));
                 }
                 DialogResult result = MessageBox.Show("Selected SaleOrder(s) will be deleted! Do you confirm?", "Delete SaleOrder", MessageBoxButtons.OKCancel);
 
@@ -237,11 +251,10 @@ namespace LoginForm.nsSaleOrder
             decimal item_code = 0;
             IMEEntities IME = new IMEEntities();
             
-            if (dgSales.CurrentRow.Cells["SoNO"].Value != null)
+            if (dgSales.CurrentRow.Cells[SoNO.Index].Value != null)
             {
                 DataSet.PurchaseOrderDetail po = new DataSet.PurchaseOrderDetail();
-                item_code = Convert.ToDecimal(dgSales.CurrentRow.Cells["SaleID"].Value.ToString());
-                //decimal saleNo = Convert.ToDecimal(dgSales.CurrentRow.Cells["SoNO"].Value.ToString());
+                item_code = Convert.ToDecimal(dgSales.CurrentRow.Cells[SaleID.Index].Value.ToString());
                 po = IME.PurchaseOrderDetails.Where(x => x.SaleOrderID == item_code).FirstOrDefault();
 
                 if (item_code != 0 && po == null)
@@ -295,7 +308,7 @@ namespace LoginForm.nsSaleOrder
         {
             if (dgSales.CurrentRow != null)
             {
-                decimal QuotationNo = Convert.ToDecimal(dgSales.CurrentRow.Cells["SoNO"].Value);
+                decimal QuotationNo = Convert.ToDecimal(dgSales.CurrentRow.Cells[SoNO.Index].Value);
                 SaleOrder saleOrder;
 
                 IMEEntities IME = new IMEEntities();
@@ -331,23 +344,26 @@ namespace LoginForm.nsSaleOrder
                     {
                         case "QUOT NUMBER":
                             var list1 = (from so in IME.SaleOrders
-                                         from cw in IME.CustomerWorkers.Where(x => x.ID == so.ContactID)
-                                         from ca in IME.CustomerAddresses.Where(x => x.ID == so.InvoiceAddressID)
-                                         from cw1 in IME.CustomerWorkers.Where(x => x.ID == so.DeliveryContactID).DefaultIfEmpty()
-                                         from ca1 in IME.CustomerAddresses.Where(x => x.ID == so.DeliveryAddressID).DefaultIfEmpty()
+                                         join c in IME.Customers on so.CustomerID equals c.ID
+                                         join cai in IME.CustomerAddresses on so.InvoiceAddressID equals cai.ID
+                                         join cad in IME.CustomerAddresses on so.DeliveryAddressID equals cad.ID
+                                         join cw in IME.CustomerWorkers on so.ContactID equals cw.ID
+                                         join cwd in IME.CustomerWorkers on so.DeliveryContactID equals cwd.ID
+                                          from po in IME.PurchaseOrderDetails.Where(x=> x.SaleOrderID == so.PurchaseOrderID).DefaultIfEmpty()
                                          select new
                                          {
                                              Date = so.SaleDate,
                                              SoNO = so.SaleOrderNo,
-                                             CustomerName = cw.Customer.c_name,
+                                             CustomerName = c.c_name,
                                              Contact = cw.cw_name,
-                                             DeliveryContact = cw1.cw_name,
-                                             Address = ca.AdressTitle,
-                                             DeliveryAddress = ca1.AdressTitle,
+                                             DeliveryContact = cwd.cw_name,
+                                             Address = cai.AdressTitle,
+                                             DeliveryAddress = cad.AdressTitle,
                                              SaleID = so.SaleOrderID,
                                              Status = so.Status,
                                              QuotationNo = so.QuotationNos,
-                                             PurchaseID = so.PurchaseOrderID
+                                             PurchaseID = po.SaleOrderID,
+                                             PurchaseDate = po.PurchaseOrder.date
                                          }).ToList().Where(x => x.SoNO.ToString().Contains(txtSearchText.Text));
 
                             populateGrid(list1.ToList());
@@ -356,25 +372,27 @@ namespace LoginForm.nsSaleOrder
                         case "CUSTOMER CODE":
                             string customerCode = txtSearchText.Text.ToUpperInvariant();
                             var list2 = from so in IME.SaleOrders
-                                        from cw in IME.CustomerWorkers.Where(x => x.ID == so.ContactID)
-                                        from ca in IME.CustomerAddresses.Where(x => x.ID == so.InvoiceAddressID)
-                                        from cw1 in IME.CustomerWorkers.Where(x => x.ID == so.DeliveryContactID).DefaultIfEmpty()
-                                        from ca1 in IME.CustomerAddresses.Where(x => x.ID == so.DeliveryAddressID).DefaultIfEmpty()
                                         join c in IME.Customers on so.CustomerID equals c.ID
+                                        join cai in IME.CustomerAddresses on so.InvoiceAddressID equals cai.ID
+                                        join cad in IME.CustomerAddresses on so.DeliveryAddressID equals cad.ID
+                                        join cw in IME.CustomerWorkers on so.ContactID equals cw.ID
+                                        join cwd in IME.CustomerWorkers on so.DeliveryContactID equals cwd.ID
+                                         from po in IME.PurchaseOrderDetails.Where(x=> x.SaleOrderID == so.PurchaseOrderID).DefaultIfEmpty()
                                         where c.ID.Contains(customerCode)
                                         select new
                                         {
                                             Date = so.SaleDate,
                                             SoNO = so.SaleOrderNo,
-                                            CustomerName = cw.Customer.c_name,
+                                            CustomerName = c.c_name,
                                             Contact = cw.cw_name,
-                                            DeliveryContact = cw1.cw_name,
-                                            Address = ca.AdressTitle,
-                                            DeliveryAddress = ca1.AdressTitle,
+                                            DeliveryContact = cwd.cw_name,
+                                            Address = cai.AdressTitle,
+                                            DeliveryAddress = cad.AdressTitle,
                                             SaleID = so.SaleOrderID,
                                             Status = so.Status,
                                             QuotationNo = so.QuotationNos,
-                                            PurchaseID = so.PurchaseOrderID
+                                            PurchaseID = po.SaleOrderID,
+                                            PurchaseDate = po.PurchaseOrder.date
                                         };
 
                             populateGrid(list2.ToList());
@@ -383,25 +401,27 @@ namespace LoginForm.nsSaleOrder
                         case "CUSTOMER NAME":
                             string customerName = txtSearchText.Text.ToUpperInvariant();
                             var list3 = from so in IME.SaleOrders
-                                        from cw in IME.CustomerWorkers.Where(x => x.ID == so.ContactID)
-                                        from ca in IME.CustomerAddresses.Where(x => x.ID == so.InvoiceAddressID)
-                                        from cw1 in IME.CustomerWorkers.Where(x => x.ID == so.DeliveryContactID).DefaultIfEmpty()
-                                        from ca1 in IME.CustomerAddresses.Where(x => x.ID == so.DeliveryAddressID).DefaultIfEmpty()
                                         join c in IME.Customers on so.CustomerID equals c.ID
+                                        join cai in IME.CustomerAddresses on so.InvoiceAddressID equals cai.ID
+                                        join cad in IME.CustomerAddresses on so.DeliveryAddressID equals cad.ID
+                                        join cw in IME.CustomerWorkers on so.ContactID equals cw.ID
+                                        join cwd in IME.CustomerWorkers on so.DeliveryContactID equals cwd.ID
+                                         from po in IME.PurchaseOrderDetails.Where(x=> x.SaleOrderID == so.PurchaseOrderID).DefaultIfEmpty()
                                         where c.c_name.Contains(customerName)
                                         select new
                                         {
                                             Date = so.SaleDate,
                                             SoNO = so.SaleOrderNo,
-                                            CustomerName = cw.Customer.c_name,
+                                            CustomerName = c.c_name,
                                             Contact = cw.cw_name,
-                                            DeliveryContact = cw1.cw_name,
-                                            Address = ca.AdressTitle,
-                                            DeliveryAddress = ca1.AdressTitle,
+                                            DeliveryContact = cwd.cw_name,
+                                            Address = cai.AdressTitle,
+                                            DeliveryAddress = cad.AdressTitle,
                                             SaleID = so.SaleOrderID,
                                             Status = so.Status,
                                             QuotationNo = so.QuotationNos,
-                                            PurchaseID = so.PurchaseOrderID
+                                            PurchaseID = po.SaleOrderID,
+                                            PurchaseDate = po.PurchaseOrder.date
                                         };
 
                             populateGrid(list3.ToList());
@@ -414,25 +434,27 @@ namespace LoginForm.nsSaleOrder
                             {
                                 int amount = Decimal.ToInt32(amountDecimal);
                                 var list4 = from so in IME.SaleOrders
-                                            from cw in IME.CustomerWorkers.Where(x => x.ID == so.ContactID)
-                                            from ca in IME.CustomerAddresses.Where(x => x.ID == so.InvoiceAddressID)
-                                            from cw1 in IME.CustomerWorkers.Where(x => x.ID == so.DeliveryContactID).DefaultIfEmpty()
-                                            from ca1 in IME.CustomerAddresses.Where(x => x.ID == so.DeliveryAddressID).DefaultIfEmpty()
                                             join c in IME.Customers on so.CustomerID equals c.ID
+                                            join cai in IME.CustomerAddresses on so.InvoiceAddressID equals cai.ID
+                                            join cad in IME.CustomerAddresses on so.DeliveryAddressID equals cad.ID
+                                            join cw in IME.CustomerWorkers on so.ContactID equals cw.ID
+                                            join cwd in IME.CustomerWorkers on so.DeliveryContactID equals cwd.ID
+                                             from po in IME.PurchaseOrderDetails.Where(x=> x.SaleOrderID == so.PurchaseOrderID).DefaultIfEmpty()
                                             where amount <= (so.TotalPrice + so.ExtraCharges + so.Vat) && (so.TotalPrice + so.ExtraCharges + so.Vat) < (amount + 1)
                                             select new
                                             {
                                                 Date = so.SaleDate,
                                                 SoNO = so.SaleOrderNo,
-                                                CustomerName = cw.Customer.c_name,
+                                                CustomerName = c.c_name,
                                                 Contact = cw.cw_name,
-                                                DeliveryContact = cw1.cw_name,
-                                                Address = ca.AdressTitle,
-                                                DeliveryAddress = ca1.AdressTitle,
+                                                DeliveryContact = cwd.cw_name,
+                                                Address = cai.AdressTitle,
+                                                DeliveryAddress = cad.AdressTitle,
                                                 SaleID = so.SaleOrderID,
                                                 Status = so.Status,
                                                 QuotationNo = so.QuotationNos,
-                                                PurchaseID = so.PurchaseOrderID
+                                                PurchaseID = po.SaleOrderID,
+                                                PurchaseDate = po.PurchaseOrder.date
                                             };
 
                                 populateGrid(list4.ToList());
@@ -443,25 +465,27 @@ namespace LoginForm.nsSaleOrder
                         case "BY LPONO":
                             string lpono = txtSearchText.Text.ToUpperInvariant();
                             var list5 = from so in IME.SaleOrders
-                                        from cw in IME.CustomerWorkers.Where(x => x.ID == so.ContactID)
-                                        from ca in IME.CustomerAddresses.Where(x => x.ID == so.InvoiceAddressID)
-                                        from cw1 in IME.CustomerWorkers.Where(x => x.ID == so.DeliveryContactID).DefaultIfEmpty()
-                                        from ca1 in IME.CustomerAddresses.Where(x => x.ID == so.DeliveryAddressID).DefaultIfEmpty()
                                         join c in IME.Customers on so.CustomerID equals c.ID
+                                        join cai in IME.CustomerAddresses on so.InvoiceAddressID equals cai.ID
+                                        join cad in IME.CustomerAddresses on so.DeliveryAddressID equals cad.ID
+                                        join cw in IME.CustomerWorkers on so.ContactID equals cw.ID
+                                        join cwd in IME.CustomerWorkers on so.DeliveryContactID equals cwd.ID
+                                         from po in IME.PurchaseOrderDetails.Where(x=> x.SaleOrderID == so.PurchaseOrderID).DefaultIfEmpty()
                                         where so.LPONO.Contains(lpono)
                                         select new
                                         {
                                             Date = so.SaleDate,
                                             SoNO = so.SaleOrderNo,
-                                            CustomerName = cw.Customer.c_name,
+                                            CustomerName = c.c_name,
                                             Contact = cw.cw_name,
-                                            DeliveryContact = cw1.cw_name,
-                                            Address = ca.AdressTitle,
-                                            DeliveryAddress = ca1.AdressTitle,
+                                            DeliveryContact = cwd.cw_name,
+                                            Address = cai.AdressTitle,
+                                            DeliveryAddress = cad.AdressTitle,
                                             SaleID = so.SaleOrderID,
                                             Status = so.Status,
                                             QuotationNo = so.QuotationNos,
-                                            PurchaseID = so.PurchaseOrderID
+                                            PurchaseID = po.SaleOrderID,
+                                            PurchaseDate = po.PurchaseOrder.date
                                         };
 
                             populateGrid(list5.ToList());
@@ -496,24 +520,27 @@ namespace LoginForm.nsSaleOrder
                     {
                         case "QUOT NUMBER":
                             var list1 = (from so in IME.SaleOrders
-                                         from cw in IME.CustomerWorkers.Where(x => x.ID == so.ContactID)
-                                         from ca in IME.CustomerAddresses.Where(x => x.ID == so.InvoiceAddressID)
-                                         from cw1 in IME.CustomerWorkers.Where(x => x.ID == so.DeliveryContactID).DefaultIfEmpty()
-                                         from ca1 in IME.CustomerAddresses.Where(x => x.ID == so.DeliveryAddressID).DefaultIfEmpty()
+                                         join c in IME.Customers on so.CustomerID equals c.ID
+                                         join cai in IME.CustomerAddresses on so.InvoiceAddressID equals cai.ID
+                                         join cad in IME.CustomerAddresses on so.DeliveryAddressID equals cad.ID
+                                         join cw in IME.CustomerWorkers on so.ContactID equals cw.ID
+                                         join cwd in IME.CustomerWorkers on so.DeliveryContactID equals cwd.ID
+                                          from po in IME.PurchaseOrderDetails.Where(x=> x.SaleOrderID == so.PurchaseOrderID).DefaultIfEmpty()
                                          where so.SaleDate >= datetimeStart.Value && so.SaleDate < datetimeEnd.Value
                                          select new
                                          {
                                              Date = so.SaleDate,
                                              SoNO = so.SaleOrderNo,
-                                             CustomerName = cw.Customer.c_name,
+                                             CustomerName = c.c_name,
                                              Contact = cw.cw_name,
-                                             DeliveryContact = cw1.cw_name,
-                                             Address = ca.AdressTitle,
-                                             DeliveryAddress = ca1.AdressTitle,
+                                             DeliveryContact = cwd.cw_name,
+                                             Address = cai.AdressTitle,
+                                             DeliveryAddress = cad.AdressTitle,
                                              SaleID = so.SaleOrderID,
                                              Status = so.Status,
                                              QuotationNo = so.QuotationNos,
-                                             PurchaseID = so.PurchaseOrderID
+                                             PurchaseID = po.SaleOrderID,
+                                             PurchaseDate = po.PurchaseOrder.date
                                          }).ToList().Where(x => x.SoNO.ToString().Contains(txtSearchText.Text));
 
                             populateGrid(list1.ToList());
