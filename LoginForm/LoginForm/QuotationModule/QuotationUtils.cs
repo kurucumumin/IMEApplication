@@ -97,75 +97,81 @@ namespace LoginForm.QuotationModule
             #region Calculating LandingCost
 
             IMEEntities IME = new IMEEntities();
-            var _slidingPrice = IME.prc_GetSlidingPriceWithArticleNumber(ArticleNo).FirstOrDefault();
-            var _extendedRange = IME.prc_GetExtendedRangeWithArticleNumber(ArticleNo).FirstOrDefault();
+            var item = IME.CompleteItems.Where(x => x.Article_No == ArticleNo).FirstOrDefault();
+            //var _slidingPrice = IME.prc_GetSlidingPriceWithArticleNumber(ArticleNo).FirstOrDefault();
+            //var _extendedRange = IME.prc_GetExtendedRangeWithArticleNumber(ArticleNo).FirstOrDefault();
             decimal p = 0;
-            if (_slidingPrice != null)
+            if (item != null)
             {
                 p = GetCost(ArticleNo, quantity);
             }
-            else if(_extendedRange!=null)
-            {
-                p= GetCost(ArticleNo, quantity);
-            }
+            //else if(_extendedRange!=null)
+            //{
+            //    p= GetCost(ArticleNo, quantity);
+            //}
             decimal w = 0;
-            var _superDisk = IME.prc_GetSuperDiskItemWithArticleNumber(ArticleNo).FirstOrDefault();
-            var _superDiskP = IME.prc_GetSuperDiskPItemWithArticleNumber(ArticleNo).FirstOrDefault();
+            //var _superDisk = IME.prc_GetSuperDiskItemWithArticleNumber(ArticleNo).FirstOrDefault();
+            //var _superDiskP = IME.prc_GetSuperDiskPItemWithArticleNumber(ArticleNo).FirstOrDefault();
             
-            if (_superDisk != null)
+            if (item != null)
             {
-                w = Decimal.Parse(_superDisk.Standard_Weight.ToString());
+                w = Decimal.Parse(item.Standard_Weight.ToString());
                 w = (w / (decimal)1000);
             }
-            else if (_superDiskP != null)
-            {
-                w = Decimal.Parse(_superDiskP.Standard_Weight.ToString());
-                w = (w / (decimal)1000);
-            }
-            else if (_extendedRange != null)
-            {
-                try
-                {
-                    w = Decimal.Parse(_extendedRange.ExtendedRangeWeight.ToString());
-                    w = (w / (decimal)1000);
-                }
-                catch { }
-            }
-            var item = IME.CompleteItems.Where(x => x.Article_No == ArticleNo).FirstOrDefault();
+            //else if (_superDiskP != null)
+            //{
+            //    w = Decimal.Parse(_superDiskP.Standard_Weight.ToString());
+            //    w = (w / (decimal)1000);
+            //}
+            //else if (_extendedRange != null)
+            //{
+            //    try
+            //    {
+            //        w = Decimal.Parse(_extendedRange.ExtendedRangeWeight.ToString());
+            //        w = (w / (decimal)1000);
+            //    }
+            //    catch { }
+            //}
+            //var item = IME.CompleteItems.Where(x => x.Article_No == ArticleNo).FirstOrDefault();
 
 
             decimal? sWeight = 0;
             decimal? gWeight = 0;
 
-            if (item.Pack_Quantity > 1 && item.Unit_Content > 1)
-            {
-                sWeight = item.Standard_Weight / 1000 / (item.Pack_Quantity * item.Unit_Content);
-                gWeight = ((((item.Length * item.Heigh * item.Width * 1000000) / 6000)) / (item.Pack_Quantity * item.Unit_Content));
+            //if (item.Pack_Quantity > 1 && item.Unit_Content > 1)
+            //{
+            //    sWeight = item.Standard_Weight / 1000 / (item.Pack_Quantity * item.Unit_Content);
+            //    gWeight = ((((item.Length * item.Heigh * item.Width * 1000000) / 6000)) / (item.Pack_Quantity * item.Unit_Content));
 
-                w = (decimal)((sWeight > gWeight) ? sWeight : gWeight);
-            }else if (item.Pack_Quantity > 1)
-            {
-                sWeight = item.Standard_Weight / 1000 / item.Pack_Quantity;
-                gWeight = (((item.Length * item.Heigh * item.Width * 1000000) / 6000) / item.Pack_Quantity);
+            //    w = (decimal)((sWeight > gWeight) ? sWeight : gWeight);
+            //}else if (item.Pack_Quantity > 1)
+            //{
+            //    sWeight = item.Standard_Weight / 1000 / item.Pack_Quantity;
+            //    gWeight = (((item.Length * item.Heigh * item.Width * 1000000) / 6000) / item.Pack_Quantity);
 
-                w = (decimal)((sWeight > gWeight) ? sWeight : gWeight);
-            }
-            else if(item.Unit_Content > 1)
-            {
-                sWeight = item.Standard_Weight / 1000 / item.Unit_Content;
-                gWeight = (((item.Length * item.Heigh * item.Width * 1000000) / 6000) / item.Unit_Content);
+            //    w = (decimal)((sWeight > gWeight) ? sWeight : gWeight);
+            //}
+            //else if(item.Unit_Content > 1)
+            //{
+            //    sWeight = item.Standard_Weight / 1000 / item.Unit_Content;
+            //    gWeight = (((item.Length * item.Heigh * item.Width * 1000000) / 6000) / item.Unit_Content);
 
-                w = (decimal)((sWeight > gWeight) ? sWeight : gWeight);
-            }
-            else/*item.Pack_Quantity > 1 && item.Unit_Content > 1*/
-            {
-                sWeight = item.Standard_Weight / 1000;
-                gWeight = ((item.Length * item.Heigh * item.Width * 1000000) / 6000);
+            //    w = (decimal)((sWeight > gWeight) ? sWeight : gWeight);
+            //}
+            //else/*item.Pack_Quantity > 1 && item.Unit_Content > 1*/
+            //{
+            //    sWeight = item.Standard_Weight / 1000;
+            //    gWeight = ((item.Length * item.Heigh * item.Width * 1000000) / 6000);
 
-                w = (decimal)((sWeight > gWeight) ? sWeight : gWeight);
-            }
+            //    w = (decimal)((sWeight > gWeight) ? sWeight : gWeight);
+            //}
 
-                decimal l = 0;
+            sWeight = item.Standard_Weight / 1000 / (item.Pack_Quantity * item.Unit_Content);
+            gWeight = ((((item.Length * item.Heigh * item.Width * 1000000) / 6000)) / (item.Pack_Quantity * item.Unit_Content));
+
+            w = (decimal)((sWeight > gWeight) ? sWeight : gWeight);
+
+            decimal l = 0;
             if (Product == false) { p = 0; }
             if (Weight == false) { w = 0; }
             l = (p + (w * ((decimal)1.7)) + (((decimal)0.0675) * (p + (w * ((decimal)1.7)))));
@@ -180,74 +186,81 @@ namespace LoginForm.QuotationModule
             IMEEntities IME = new IMEEntities();
             SlidingPrice sp = IME.SlidingPrices.Where(a => a.ArticleNo == ArticleNo).FirstOrDefault();
             ExtendedRange er = IME.ExtendedRanges.Where(a => a.ArticleNo == ArticleNo).FirstOrDefault();
+            var item = IME.CompleteItems.Where(x => x.Article_No == ArticleNo).FirstOrDefault();
             decimal p = 0;
             if (sp != null)
             {
-                p = Decimal.Parse(sp.DiscountedPrice1.ToString());
+                p = Decimal.Parse(item.DiscountedPrice1.ToString());
             }
             else
             {
-                p= Decimal.Parse(er.DiscountedPrice1.ToString());
+                p= Decimal.Parse(item.DiscountedPrice1.ToString());
 
             }
             decimal w = 0;
-            var sd = IME.SuperDisks.Where(a => a.Article_No == ArticleNo).FirstOrDefault();
-            var sdP = IME.SuperDiskPs.Where(a => a.Article_No == ArticleNo).FirstOrDefault();
+            //var sd = IME.SuperDisks.Where(a => a.Article_No == ArticleNo).FirstOrDefault();
+            //var sdP = IME.SuperDiskPs.Where(a => a.Article_No == ArticleNo).FirstOrDefault();
             
-            if (sd != null)
+            if (item != null)
             {
-                w = Decimal.Parse(sd.Standard_Weight.ToString());
+                w = Decimal.Parse(item.Standard_Weight.ToString());
                 w = (w / (decimal)1000);
             }
-            else if (sdP != null)
-            {
-                w = Decimal.Parse(sdP.Standard_Weight.ToString());
-                w = (w / (decimal)1000);
-            }
-            else if (er != null)
-            {
-                try
-                {
-                    w = Decimal.Parse(er.ExtendedRangeWeight.ToString());
-                    w = (w / (decimal)1000);
-                }
-                catch { }
-            }
+            //else if (sdP != null)
+            //{
+            //    w = Decimal.Parse(item.Standard_Weight.ToString());
+            //    w = (w / (decimal)1000);
+            //}
+            //else if (er != null)
+            //{
+            //    try
+            //    {
+            //        w = Decimal.Parse(item.ExtendedRangeWeight.ToString());
+            //        w = (w / (decimal)1000);
+            //    }
+            //    catch { }
+            //}
 
-            var item = IME.CompleteItems.Where(x => x.Article_No == ArticleNo).FirstOrDefault();
+            //var item = IME.CompleteItems.Where(x => x.Article_No == ArticleNo).FirstOrDefault();
 
 
             decimal? sWeight = 0;
             decimal? gWeight = 0;
 
-            if (item.Pack_Quantity > 1 && item.Unit_Content > 1)
-            {
-                sWeight = item.Standard_Weight / 1000 / (item.Pack_Quantity * item.Unit_Content);
-                gWeight = ((((item.Length * item.Heigh * item.Width * 1000000) / 6000)) / (item.Pack_Quantity * item.Unit_Content));
+            //if (item.Pack_Quantity > 1 && item.Unit_Content > 1)
+            //{
+            //    sWeight = item.Standard_Weight / 1000 / (item.Pack_Quantity * item.Unit_Content);
+            //    gWeight = ((((item.Length * item.Heigh * item.Width * 1000000) / 6000)) / (item.Pack_Quantity * item.Unit_Content));
 
-                w = (decimal)((sWeight > gWeight) ? sWeight : gWeight);
-            }
-            else if (item.Pack_Quantity > 1)
-            {
-                sWeight = item.Standard_Weight / 1000 / item.Pack_Quantity;
-                gWeight = (((item.Length * item.Heigh * item.Width * 1000000) / 6000) / item.Pack_Quantity);
+            //    w = (decimal)((sWeight > gWeight) ? sWeight : gWeight);
+            //}
+            //else if (item.Pack_Quantity > 1)
+            //{
+            //    sWeight = item.Standard_Weight / 1000 / item.Pack_Quantity;
+            //    gWeight = (((item.Length * item.Heigh * item.Width * 1000000) / 6000) / item.Pack_Quantity);
 
-                w = (decimal)((sWeight > gWeight) ? sWeight : gWeight);
-            }
-            else if (item.Unit_Content > 1)
-            {
-                sWeight = item.Standard_Weight / 1000 / item.Unit_Content;
-                gWeight = (((item.Length * item.Heigh * item.Width * 1000000) / 6000) / item.Unit_Content);
+            //    w = (decimal)((sWeight > gWeight) ? sWeight : gWeight);
+            //}
+            //else if (item.Unit_Content > 1)
+            //{
+            //    sWeight = item.Standard_Weight / 1000 / item.Unit_Content;
+            //    gWeight = (((item.Length * item.Heigh * item.Width * 1000000) / 6000) / item.Unit_Content);
 
-                w = (decimal)((sWeight > gWeight) ? sWeight : gWeight);
-            }
-            else/*item.Pack_Quantity > 1 && item.Unit_Content > 1*/
-            {
-                sWeight = item.Standard_Weight / 1000;
-                gWeight = ((item.Length * item.Heigh * item.Width * 1000000) / 6000);
+            //    w = (decimal)((sWeight > gWeight) ? sWeight : gWeight);
+            //}
+            //else/*item.Pack_Quantity > 1 && item.Unit_Content > 1*/
+            //{
+            //    sWeight = item.Standard_Weight / 1000;
+            //    gWeight = ((item.Length * item.Heigh * item.Width * 1000000) / 6000);
 
-                w = (decimal)((sWeight > gWeight) ? sWeight : gWeight);
-            }
+            //    w = (decimal)((sWeight > gWeight) ? sWeight : gWeight);
+            //}
+
+            sWeight = (item.Standard_Weight / 1000) / (item.Pack_Quantity * item.Unit_Content);
+            gWeight = (((item.Length * item.Heigh * item.Width) * 1000000) / 6000);
+
+            w = (decimal)((sWeight > gWeight) ? sWeight : gWeight);
+
 
             decimal l = 0;
             if (Product == false) { p = 0; }
