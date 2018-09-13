@@ -74,8 +74,8 @@ namespace LoginForm.nsSaleOrder
                         join cad in IME.CustomerAddresses on so.DeliveryAddressID equals cad.ID
                         join cw in IME.CustomerWorkers on so.ContactID equals cw.ID
                         join cwd in IME.CustomerWorkers on so.DeliveryContactID equals cwd.ID
-                        from po in IME.PurchaseOrderDetails.Where(x=> x.SaleOrderID == so.PurchaseOrderID).DefaultIfEmpty()
-                       where so.SaleDate <= endDate && so.SaleDate >= startDate
+                        from po in IME.PurchaseOrders.Where(x => x.purchaseOrderId == so.PurchaseOrderID).DefaultIfEmpty()
+                        where so.SaleDate <= endDate && so.SaleDate >= startDate
                        select new
                        {
                            Date = so.SaleDate,
@@ -88,8 +88,8 @@ namespace LoginForm.nsSaleOrder
                            SaleID = so.SaleOrderID,
                            Status = so.Status,
                            QuotationNo = so.QuotationNos,
-                           PurchaseID = po.SaleOrderID,
-                           PurchaseDate = po.PurchaseOrder.date
+                           PurchaseID = so.PurchaseOrderID,
+                           PurchaseDate = po.PurchaseOrderDate
                        }).OrderByDescending(s=> s.SoNO);
             populateGrid(list.ToList());
         }
@@ -129,6 +129,16 @@ namespace LoginForm.nsSaleOrder
                 {
                     row.DefaultCellStyle.BackColor = System.Drawing.Color.Empty;
                 }
+
+                if (row.Cells[PurchaseID.Index].Value != null)
+                {
+                    row.DefaultCellStyle.BackColor = System.Drawing.Color.Green;
+                }
+                //else if (row.Cells[PurchaseID.Index].Value == null && row.Cells[PurchaseID.Index].Value.ToString() == "")
+                //{
+                //    row.DefaultCellStyle.BackColor = System.Drawing.Color.Empty;
+                //}
+
             }
         }
 
@@ -349,7 +359,7 @@ namespace LoginForm.nsSaleOrder
                                          join cad in IME.CustomerAddresses on so.DeliveryAddressID equals cad.ID
                                          join cw in IME.CustomerWorkers on so.ContactID equals cw.ID
                                          join cwd in IME.CustomerWorkers on so.DeliveryContactID equals cwd.ID
-                                          from po in IME.PurchaseOrderDetails.Where(x=> x.SaleOrderID == so.PurchaseOrderID).DefaultIfEmpty()
+                                         from po in IME.PurchaseOrders.Where(x => x.purchaseOrderId == so.PurchaseOrderID).DefaultIfEmpty()
                                          select new
                                          {
                                              Date = so.SaleDate,
@@ -362,8 +372,8 @@ namespace LoginForm.nsSaleOrder
                                              SaleID = so.SaleOrderID,
                                              Status = so.Status,
                                              QuotationNo = so.QuotationNos,
-                                             PurchaseID = po.SaleOrderID,
-                                             PurchaseDate = po.PurchaseOrder.date
+                                             PurchaseID = so.PurchaseOrderID,
+                                             PurchaseDate = po.PurchaseOrderDate
                                          }).ToList().Where(x => x.SoNO.ToString().Contains(txtSearchText.Text));
 
                             populateGrid(list1.ToList());
@@ -377,7 +387,7 @@ namespace LoginForm.nsSaleOrder
                                         join cad in IME.CustomerAddresses on so.DeliveryAddressID equals cad.ID
                                         join cw in IME.CustomerWorkers on so.ContactID equals cw.ID
                                         join cwd in IME.CustomerWorkers on so.DeliveryContactID equals cwd.ID
-                                         from po in IME.PurchaseOrderDetails.Where(x=> x.SaleOrderID == so.PurchaseOrderID).DefaultIfEmpty()
+                                        from po in IME.PurchaseOrders.Where(x => x.purchaseOrderId == so.PurchaseOrderID).DefaultIfEmpty()
                                         where c.ID.Contains(customerCode)
                                         select new
                                         {
@@ -391,8 +401,8 @@ namespace LoginForm.nsSaleOrder
                                             SaleID = so.SaleOrderID,
                                             Status = so.Status,
                                             QuotationNo = so.QuotationNos,
-                                            PurchaseID = po.SaleOrderID,
-                                            PurchaseDate = po.PurchaseOrder.date
+                                            PurchaseID = so.PurchaseOrderID,
+                                            PurchaseDate = po.PurchaseOrderDate
                                         };
 
                             populateGrid(list2.ToList());
@@ -406,7 +416,7 @@ namespace LoginForm.nsSaleOrder
                                         join cad in IME.CustomerAddresses on so.DeliveryAddressID equals cad.ID
                                         join cw in IME.CustomerWorkers on so.ContactID equals cw.ID
                                         join cwd in IME.CustomerWorkers on so.DeliveryContactID equals cwd.ID
-                                         from po in IME.PurchaseOrderDetails.Where(x=> x.SaleOrderID == so.PurchaseOrderID).DefaultIfEmpty()
+                                        from po in IME.PurchaseOrders.Where(x => x.purchaseOrderId == so.PurchaseOrderID).DefaultIfEmpty()
                                         where c.c_name.Contains(customerName)
                                         select new
                                         {
@@ -420,8 +430,8 @@ namespace LoginForm.nsSaleOrder
                                             SaleID = so.SaleOrderID,
                                             Status = so.Status,
                                             QuotationNo = so.QuotationNos,
-                                            PurchaseID = po.SaleOrderID,
-                                            PurchaseDate = po.PurchaseOrder.date
+                                            PurchaseID = so.PurchaseOrderID,
+                                            PurchaseDate = po.PurchaseOrderDate
                                         };
 
                             populateGrid(list3.ToList());
@@ -439,7 +449,7 @@ namespace LoginForm.nsSaleOrder
                                             join cad in IME.CustomerAddresses on so.DeliveryAddressID equals cad.ID
                                             join cw in IME.CustomerWorkers on so.ContactID equals cw.ID
                                             join cwd in IME.CustomerWorkers on so.DeliveryContactID equals cwd.ID
-                                             from po in IME.PurchaseOrderDetails.Where(x=> x.SaleOrderID == so.PurchaseOrderID).DefaultIfEmpty()
+                                            from po in IME.PurchaseOrders.Where(x => x.purchaseOrderId == so.PurchaseOrderID).DefaultIfEmpty()
                                             where amount <= (so.TotalPrice + so.ExtraCharges + so.Vat) && (so.TotalPrice + so.ExtraCharges + so.Vat) < (amount + 1)
                                             select new
                                             {
@@ -453,8 +463,8 @@ namespace LoginForm.nsSaleOrder
                                                 SaleID = so.SaleOrderID,
                                                 Status = so.Status,
                                                 QuotationNo = so.QuotationNos,
-                                                PurchaseID = po.SaleOrderID,
-                                                PurchaseDate = po.PurchaseOrder.date
+                                                PurchaseID = so.PurchaseOrderID,
+                                                PurchaseDate = po.PurchaseOrderDate
                                             };
 
                                 populateGrid(list4.ToList());
@@ -470,7 +480,7 @@ namespace LoginForm.nsSaleOrder
                                         join cad in IME.CustomerAddresses on so.DeliveryAddressID equals cad.ID
                                         join cw in IME.CustomerWorkers on so.ContactID equals cw.ID
                                         join cwd in IME.CustomerWorkers on so.DeliveryContactID equals cwd.ID
-                                         from po in IME.PurchaseOrderDetails.Where(x=> x.SaleOrderID == so.PurchaseOrderID).DefaultIfEmpty()
+                                        from po in IME.PurchaseOrders.Where(x => x.purchaseOrderId == so.PurchaseOrderID).DefaultIfEmpty()
                                         where so.LPONO.Contains(lpono)
                                         select new
                                         {
@@ -484,8 +494,8 @@ namespace LoginForm.nsSaleOrder
                                             SaleID = so.SaleOrderID,
                                             Status = so.Status,
                                             QuotationNo = so.QuotationNos,
-                                            PurchaseID = po.SaleOrderID,
-                                            PurchaseDate = po.PurchaseOrder.date
+                                            PurchaseID = so.PurchaseOrderID,
+                                            PurchaseDate = po.PurchaseOrderDate
                                         };
 
                             populateGrid(list5.ToList());
@@ -525,7 +535,7 @@ namespace LoginForm.nsSaleOrder
                                          join cad in IME.CustomerAddresses on so.DeliveryAddressID equals cad.ID
                                          join cw in IME.CustomerWorkers on so.ContactID equals cw.ID
                                          join cwd in IME.CustomerWorkers on so.DeliveryContactID equals cwd.ID
-                                          from po in IME.PurchaseOrderDetails.Where(x=> x.SaleOrderID == so.PurchaseOrderID).DefaultIfEmpty()
+                                         from po in IME.PurchaseOrders.Where(x => x.purchaseOrderId == so.PurchaseOrderID).DefaultIfEmpty()
                                          where so.SaleDate >= datetimeStart.Value && so.SaleDate < datetimeEnd.Value
                                          select new
                                          {
@@ -539,8 +549,8 @@ namespace LoginForm.nsSaleOrder
                                              SaleID = so.SaleOrderID,
                                              Status = so.Status,
                                              QuotationNo = so.QuotationNos,
-                                             PurchaseID = po.SaleOrderID,
-                                             PurchaseDate = po.PurchaseOrder.date
+                                             PurchaseID = so.PurchaseOrderID,
+                                             PurchaseDate = po.PurchaseOrderDate
                                          }).ToList().Where(x => x.SoNO.ToString().Contains(txtSearchText.Text));
 
                             populateGrid(list1.ToList());

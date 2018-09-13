@@ -117,6 +117,8 @@ namespace LoginForm.PurchaseOrder
             DataSet.PurchaseOrder po = new DataSet.PurchaseOrder();
             decimal s = (decimal)rowList[0].Cells["SaleID"].Value;
 
+            SaleOrder so = IME.SaleOrders.Where(x => x.SaleOrderID == s).FirstOrDefault();
+
             po.purchaseOrderId = puchaseId;
             po.CustomerID = IME.SaleOrders.Where(a => a.SaleOrderID == s).FirstOrDefault().CustomerID;
             po.PurchaseOrderDate = DateTime.Today.Date;
@@ -126,7 +128,11 @@ namespace LoginForm.PurchaseOrder
 
             IME.PurchaseOrders.Add(po);
             IME.SaveChanges();
-              
+
+            so.PurchaseOrderID = po.purchaseOrderId;
+            IME.SaveChanges();
+
+
             po = IME.PurchaseOrders.Where(x => x.purchaseOrderId == po.purchaseOrderId).FirstOrDefault();
 
             List<PurchaseOrderDetail> podList = new List<PurchaseOrderDetail>();

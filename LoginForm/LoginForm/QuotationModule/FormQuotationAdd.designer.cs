@@ -1524,6 +1524,7 @@
             // 
             // cbFactor
             // 
+            this.cbFactor.Enabled = false;
             this.cbFactor.Location = new System.Drawing.Point(434, 107);
             this.cbFactor.Name = "cbFactor";
             this.cbFactor.Size = new System.Drawing.Size(42, 20);
@@ -2740,9 +2741,9 @@
             // label32
             // 
             this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label32.Location = new System.Drawing.Point(898, 99);
+            this.label32.Location = new System.Drawing.Point(902, 98);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(28, 20);
+            this.label32.Size = new System.Drawing.Size(27, 20);
             this.label32.TabIndex = 447;
             this.label32.Text = "kg";
             this.label32.TextAlign = System.Drawing.ContentAlignment.TopRight;
