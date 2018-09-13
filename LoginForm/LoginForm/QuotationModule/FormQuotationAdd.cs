@@ -4,13 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using System.Globalization;
 using System.Threading;
-using System.Text.RegularExpressions;
 using static LoginForm.Services.MyClasses.MyAuthority;
 
 namespace LoginForm.QuotationModule
@@ -1148,21 +1146,14 @@ namespace LoginForm.QuotationModule
                             if (CurrentRow.Cells[dgUnitWeigt.Index].Value == null)
                                 CurrentRow.Cells[dgUnitWeigt.Index].Value = txtStandartWeight.Text;
                             txtGrossWeight.Text = String.Format("{0:0.0000}", (Decimal.Parse(txtLength.Text) * Decimal.Parse(txtWidth.Text) * Decimal.Parse(txtHeight.Text) / 6000).ToString());
-                            //txtGrossWeight.Text = String.Format("{0:0.0000}", ((Decimal.Parse(txtLength.Text) * Decimal.Parse(txtWidth.Text) * Decimal.Parse(txtHeight.Text) / 6000) / ssm).ToString());
                             if (Int32.Parse(CurrentRow.Cells["dgSSM"].Value.ToString()) > 1)
                             {
-                                //txtStandartWeight.Text = (decimal.Parse(txtStandartWeight.Text) /
-                                //    Int32.Parse(CurrentRow.Cells["dgSSM"].Value.ToString())).ToString();
-
                                 txtGrossWeight.Text = (decimal.Parse(txtGrossWeight.Text) /
                                     Int32.Parse(CurrentRow.Cells["dgSSM"].Value.ToString())).ToString();
 
                             }
                             else if (Int32.Parse(CurrentRow.Cells["dgUC"].Value.ToString()) > 1)
                             {
-                                //txtStandartWeight.Text = (decimal.Parse(txtStandartWeight.Text) /
-                                //    Int32.Parse(CurrentRow.Cells["dgUC"].Value.ToString())).ToString();
-
                                 txtGrossWeight.Text = (decimal.Parse(txtGrossWeight.Text) /
                                     Int32.Parse(CurrentRow.Cells["dgUC"].Value.ToString())).ToString();
                             }
@@ -1173,9 +1164,6 @@ namespace LoginForm.QuotationModule
                         //LandingCost hesaplatma
                         if (CurrentRow.Cells["dgCost"].Value.ToString() != "-1") { String.Format("{0:0.0000}", Decimal.Parse(CurrentRow.Cells["dgCost"].Value.ToString())).ToString(); }
                         GetLandingCost(rowindex);
-                        //  CurrentRow.Cells["dgLandingCost"].Value = String.Format("{0:0.0000}", Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())).ToString();
-                        //TODO Math.Round
-                        //CurrentRow.Cells["dgLandingCost"].Value = Math.Round(Convert.ToDecimal(CurrentRow.Cells["dgLandingCost"].Value.ToString()), 4);
                         decimal Currrate = 0;
                         if (curr.rate != null) Currrate = Decimal.Parse(curr.rate.ToString());
                         string productCode = CurrentRow.Cells[dgProductCode.Index].Value.ToString();
