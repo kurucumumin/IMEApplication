@@ -41,8 +41,8 @@ namespace LoginForm.nsSaleOrder
             }
 
             tempCustomerList = customerList.ToList();
-            lbCustomerList.DataSource = customerList;
-            lbCustomerList.DisplayMember = "c_name";
+            //lbCustomerList.DataSource = customerList;
+            //lbCustomerList.DisplayMember = "c_name";
             lbCustomerList.DataSource = tempCustomerList;
             lbCustomerList.DisplayMember = "c_name";
             //  PopulateCustomerList(customerList);
@@ -58,8 +58,7 @@ namespace LoginForm.nsSaleOrder
         {
             if(lbCustomerList.SelectedValue != null)
             {
-                //var dgList = ((Customer)lbCustomerList.SelectedItem).Quotations;
-                var dgList = IME.Quotations.Where(q => q.CustomerID == lbCustomerList.SelectedValue.ToString()).OrderByDescending(s => s.StartDate).ToList();
+                var dgList = IME.Quotations.Where(q => q.CustomerID == lbCustomerList.SelectedValue.ToString() && q.status == "Active").OrderByDescending(s => s.StartDate).ToList();
                 dgQuotations.DataSource = dgList;
                 dgQuotations.ClearSelection();
             }
@@ -123,21 +122,12 @@ namespace LoginForm.nsSaleOrder
                     }
                 }
                 FormSaleOrderAdd form1 = new FormSaleOrderAdd((Customer)lbCustomerList.SelectedItem, list, quotationIDs,1);
-                //FormSaleOrderAdd form1 = new FormSaleOrderAdd((Customer)lbCustomerList.SelectedItem, list, quotationIDs);
-                ////TODO form tekrar açılıp kapatımış. Doğru olan yöntemi bul
-                //FormSalesOrderMain f = new FormSalesOrderMain();
-                //f.Close();
                 form1.Show();
                 this.Close();
             }
             else
             {
                 MessageBox.Show("You have to choose at leaset one item", "Warning", MessageBoxButtons.OK);
-                //FormSaleOrderAdd form1 = new FormSaleOrderAdd((Customer)lbCustomerList.SelectedItem);
-                ////TODO form tekrar açılıp kapatımış. Doğru olan yöntemi bul
-                //FormSalesOrderMain f = new FormSalesOrderMain();
-                //form1.Show();
-                //this.Close();
             }
         }
 

@@ -914,7 +914,7 @@ namespace LoginForm.QuotationModule
                             var articleList = IME.ArticleSearch(articleNo).ToList();
                             if (articleList.Count == 1)
                             {
-                                if (CurrentRow.Cells[dgProductCode.Index].Value != null && CurrentRow.Cells[dgProductCode.Index].Value.ToString() != "" && CurrentRow.Cells[dgDesc.Index].Value != null && CurrentRow.Cells[dgDesc.Index].Value.ToString() != "")
+                                if (dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index].Value != null && dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString() != "" && dgQuotationAddedItems.CurrentRow.Cells[dgDesc.Index].Value != null && dgQuotationAddedItems.CurrentRow.Cells[dgDesc.Index].Value.ToString() != "")
                                 {
                                     DataGridViewRow rowsss = (DataGridViewRow)dgQuotationAddedItems.CurrentRow;
                                     for (int i = 11; i < rowsss.Cells.Count; i++)
