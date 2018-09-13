@@ -1859,7 +1859,7 @@ namespace LoginForm.QuotationModule
                     else
                     {
 
-                        txtMargin2.Text = ((1 - ((Decimal.Parse(txtMargin2.Text)) / (decimal.Parse(txtWeb1.Text)))) * 100).ToString();
+                        txtMargin2.Text = ((1 - ((decimal.Parse(txtCost2.Text)) / (decimal.Parse(txtUK2.Text)))) * 100).ToString();
                         try
                         {
                             //decimal margin3 = 0;
