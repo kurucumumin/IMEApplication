@@ -7,8 +7,6 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using LoginForm.clsClasses;
-using System.Collections.Generic;
-//using LoginForm.MyClasses;
 using static LoginForm.Services.MyClasses.MyAuthority;
 using LoginForm.Services.SP;
 
