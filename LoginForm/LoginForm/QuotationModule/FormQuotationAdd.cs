@@ -1008,6 +1008,7 @@ namespace LoginForm.QuotationModule
                     break;
                 case 15://QAUANTITY
                     DgQuantityFiller();
+                    calculateTotalCost();
                     break;
 
                 case 22://UCUP Curr
@@ -1329,36 +1330,36 @@ namespace LoginForm.QuotationModule
         {
             try
             {
-                if (dgQuotationAddedItems.RowCount == 1 && (dgQuotationAddedItems.Rows[0].Cells[dgProductCode.Index].Value == null || dgQuotationAddedItems.Rows[0].Cells[dgProductCode.Index].Value.ToString() == ""))
+                if (dgQuotationAddedItems.RowCount != 0)
                 {
-                    txtTotalCost.Text = 0.ToString();
-                }
-                else
-                {
-                    decimal totalCost = 0;
-                    for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+                    if (dgQuotationAddedItems.RowCount == 1 && (dgQuotationAddedItems.Rows[0].Cells[dgProductCode.Index].Value == null || dgQuotationAddedItems.Rows[0].Cells[dgProductCode.Index].Value.ToString() == ""))
                     {
-                        decimal LandingCost = 0;
-                        decimal Quantity = 0;
-                        LandingCost = decimal.Parse(dgQuotationAddedItems.Rows[i].Cells[dgLandingCost.Index].Value.ToString());
-                        Quantity = decimal.Parse(dgQuotationAddedItems.Rows[i].Cells[dgQty.Index].Value.ToString());
-                        //if (Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[dgSSM.Index].Value.ToString())>1)
-                        //{
-                        //    Quantity = Quantity / Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[dgSSM.Index].Value.ToString());
-                        //} else
-                        if (Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[dgUC.Index].Value.ToString()) > 1)
-                        {
-                            Quantity = Quantity / Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[dgUC.Index].Value.ToString());
-                        }
-                        totalCost += (LandingCost * Quantity);
+                        txtTotalCost.Text = 0.ToString();
                     }
-                    decimal PoundRate = 0;
-                    decimal CurrentRate = 0;
-                    PoundRate = (decimal)IME.ExchangeRates.Where(a => a.Currency.currencyName == "Pound").OrderByDescending(a => a.date).FirstOrDefault().rate;
-                    CurrentRate = (decimal)IME.ExchangeRates.Where(a => a.currencyId == (decimal)cbCurrency.SelectedValue).OrderByDescending(a => a.date).FirstOrDefault().rate;
-                    totalCost = totalCost * PoundRate / (CurrentRate);
-                    txtTotalCost.Text = Math.Round(totalCost, 2).ToString();
+                    else
+                    {
+                        //Satırların landingCost*Qty çarpımı Total Costu Veriyor
+                        decimal totalCost = 0;
+                        for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+                        {
+                            decimal LandingCost = 0;
+                            decimal Quantity = 0;
+                            LandingCost = decimal.Parse(dgQuotationAddedItems.Rows[i].Cells[dgLandingCost.Index].Value.ToString());
+                            Quantity = decimal.Parse(dgQuotationAddedItems.Rows[i].Cells[dgQty.Index].Value.ToString());
+                            
+                            totalCost += (LandingCost * Quantity);
+                        }
+
+                        //Total Cost'u seçili olan para birimine dönüştürüyor
+                        decimal PoundRate = 0;
+                        decimal CurrentRate = 0;
+                        PoundRate = (decimal)IME.ExchangeRates.Where(a => a.Currency.currencyName == "Pound").OrderByDescending(a => a.date).FirstOrDefault().rate;
+                        CurrentRate = (decimal)IME.ExchangeRates.Where(a => a.currencyId == (decimal)cbCurrency.SelectedValue).OrderByDescending(a => a.date).FirstOrDefault().rate;
+                        totalCost = totalCost * PoundRate / (CurrentRate);
+                        txtTotalCost.Text = Math.Round(totalCost, 2).ToString();
+                    }
                 }
+                
             }
             catch { }
         }
@@ -4089,23 +4090,27 @@ namespace LoginForm.QuotationModule
 
         private void getTotalDiscMargin()
         {
-            for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
-            {
-                if (dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value != null && dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString() != string.Empty && dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value != null)
-                {
+            //if (dgQuotationAddedItems.RowCount > 0)
+            //{
+            //    for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+            //    {
+            //        if (dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value != null && dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString() != string.Empty && dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value != null)
+            //        {
 
-                    if (dgQuotationAddedItems.Rows[i].Cells["dgLandingCost"].Value == null || dgQuotationAddedItems.Rows[i].Cells["dgLandingCost"].Value.ToString() == "")
-                    {
-                        dgQuotationAddedItems.Rows[i].Cells["dgLandingCost"].Value = 0;
-                    }
-                    decimal cost = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgLandingCost"].Value.ToString());
-                    decimal UCUPCur = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString());
-                    decimal disc = 0;
-                    if (txtTotalDis.Text != string.Empty && txtTotalDis.Text != null) disc = decimal.Parse(txtTotalDis.Text);
-                    UCUPCur = UCUPCur * (1 - (disc / 100));
-                    //dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value = (1 - (cost / UCUPCur)) * 100;
-                }
-            }
+            //            if (dgQuotationAddedItems.Rows[i].Cells["dgLandingCost"].Value == null || dgQuotationAddedItems.Rows[i].Cells["dgLandingCost"].Value.ToString() == "")
+            //            {
+            //                dgQuotationAddedItems.Rows[i].Cells["dgLandingCost"].Value = 0;
+            //            }
+            //            decimal cost = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgLandingCost"].Value.ToString());
+            //            decimal UCUPCur = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString());
+            //            decimal disc = 0;
+            //            if (txtTotalDis.Text != string.Empty && txtTotalDis.Text != null) disc = decimal.Parse(txtTotalDis.Text);
+            //            UCUPCur = UCUPCur * (1 - (disc / 100));
+            //            //dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value = (1 - (cost / UCUPCur)) * 100;
+            //        }
+            //    }
+            //}
+            
         }
 
         private void txtExtraChanges_TextChanged(object sender, EventArgs e)
