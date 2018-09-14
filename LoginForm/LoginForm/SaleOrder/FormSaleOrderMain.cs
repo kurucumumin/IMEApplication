@@ -12,6 +12,7 @@ using LoginForm.clsClasses;
 using static LoginForm.Services.MyClasses.MyAuthority;
 using ImeLogoLibrary;
 using LoginForm.MyClasses;
+using LoginForm.Services.SP;
 
 namespace LoginForm.nsSaleOrder
 {
@@ -375,7 +376,9 @@ namespace LoginForm.nsSaleOrder
                                              PurchaseID = so.PurchaseOrderID,
                                              PurchaseDate = po.PurchaseOrderDate
                                          }).ToList().Where(x => x.SoNO.ToString().Contains(txtSearchText.Text));
-
+                            //DataTable list1 = new DataTable();
+                            //list1 = new Sp_SaleOrder().SearchSaleOrdersWithSaleNo(txtSearchText.Text);
+                            dgSales.DataSource = list1;
                             populateGrid(list1.ToList());
                             break;
 

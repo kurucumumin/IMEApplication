@@ -3511,6 +3511,9 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Parameter Name="Surcharge" Type="numeric" Mode="In" />
           <Parameter Name="SupplierID" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="SaleOrder_SaleOrderNo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SaleOrderNo" Type="numeric" Mode="In" />
+        </Function>
         <Function Name="SlidingPriceAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ArticleNo" Type="nvarchar" Mode="In" />
           <Parameter Name="ArticleDescription" Type="nvarchar" Mode="In" />
@@ -8584,6 +8587,9 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="Surcharge" Mode="In" Type="Decimal" />
             <Parameter Name="SupplierID" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="SaleOrder_SaleOrderNo" ReturnType="Collection(IMEModel.SaleOrder_SaleOrderNo_Result)">
+            <Parameter Name="SaleOrderNo" Mode="In" Type="Decimal" />
+          </FunctionImport>
           <FunctionImport Name="SlidingPriceAdd">
             <Parameter Name="ArticleNo" Mode="In" Type="String" />
             <Parameter Name="ArticleDescription" Mode="In" Type="String" />
@@ -9368,6 +9374,41 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Type="String" Name="Article_Desc" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Unit_Measure" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Brandname" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="SaleOrder_SaleOrderNo_Result">
+          <Property Type="Decimal" Name="SaleOrderNo" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="DateTime" Name="SaleDate" Nullable="false" />
+          <Property Type="String" Name="OnlineConfirmationNo" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="QuotationNos" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="PaymentTermID" Nullable="false" />
+          <Property Type="DateTime" Name="RequestedDeliveryDate" Nullable="true" />
+          <Property Type="Decimal" Name="Vat" Nullable="true" Precision="18" Scale="4" />
+          <Property Type="Decimal" Name="TotalPrice" Nullable="true" Precision="18" Scale="4" />
+          <Property Type="String" Name="CustomerID" Nullable="false" MaxLength="15" />
+          <Property Type="Int32" Name="ContactID" Nullable="false" />
+          <Property Type="Int32" Name="DeliveryContactID" Nullable="false" />
+          <Property Type="Int32" Name="InvoiceAddressID" Nullable="false" />
+          <Property Type="Int32" Name="DeliveryAddressID" Nullable="false" />
+          <Property Type="Int32" Name="RepresentativeID" Nullable="false" />
+          <Property Type="Int32" Name="PaymentMethodID" Nullable="false" />
+          <Property Type="String" Name="NoteForUs" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="NoteForCustomer" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="NoteForFinance" Nullable="true" />
+          <Property Type="String" Name="SaleOrderNature" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="ShippingType" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="LPONO" Nullable="true" MaxLength="15" />
+          <Property Type="Decimal" Name="Factor" Nullable="true" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="SubTotal" Nullable="true" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="DiscOnSubtotal" Nullable="true" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="ExtraCharges" Nullable="true" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="TotalMargin" Nullable="true" Precision="20" Scale="4" />
+          <Property Type="String" Name="invoiceNo" Nullable="true" />
+          <Property Type="Int32" Name="exchangeRateID" Nullable="true" />
+          <Property Type="Decimal" Name="SaleOrderID" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="financialYearId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="7" />
+          <Property Type="Decimal" Name="TotalDiscount" Nullable="true" Precision="18" Scale="4" />
+          <Property Type="Int32" Name="PurchaseOrderID" Nullable="true" />
         </ComplexType>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -11857,6 +11898,45 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <FunctionImportMapping FunctionImportName="QuotationDetailsADD" FunctionName="IMEModel.Store.QuotationDetailsADD" />
           <FunctionImportMapping FunctionImportName="RS_InvoiceDetailsADD" FunctionName="IMEModel.Store.RS_InvoiceDetailsADD" />
           <FunctionImportMapping FunctionImportName="RSInvoiceADD" FunctionName="IMEModel.Store.RSInvoiceADD" />
+          <FunctionImportMapping FunctionImportName="SaleOrder_SaleOrderNo" FunctionName="IMEModel.Store.SaleOrder_SaleOrderNo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.SaleOrder_SaleOrderNo_Result">
+                <ScalarProperty Name="SaleOrderNo" ColumnName="SaleOrderNo" />
+                <ScalarProperty Name="SaleDate" ColumnName="SaleDate" />
+                <ScalarProperty Name="OnlineConfirmationNo" ColumnName="OnlineConfirmationNo" />
+                <ScalarProperty Name="QuotationNos" ColumnName="QuotationNos" />
+                <ScalarProperty Name="PaymentTermID" ColumnName="PaymentTermID" />
+                <ScalarProperty Name="RequestedDeliveryDate" ColumnName="RequestedDeliveryDate" />
+                <ScalarProperty Name="Vat" ColumnName="Vat" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+                <ScalarProperty Name="DeliveryContactID" ColumnName="DeliveryContactID" />
+                <ScalarProperty Name="InvoiceAddressID" ColumnName="InvoiceAddressID" />
+                <ScalarProperty Name="DeliveryAddressID" ColumnName="DeliveryAddressID" />
+                <ScalarProperty Name="RepresentativeID" ColumnName="RepresentativeID" />
+                <ScalarProperty Name="PaymentMethodID" ColumnName="PaymentMethodID" />
+                <ScalarProperty Name="NoteForUs" ColumnName="NoteForUs" />
+                <ScalarProperty Name="NoteForCustomer" ColumnName="NoteForCustomer" />
+                <ScalarProperty Name="NoteForFinance" ColumnName="NoteForFinance" />
+                <ScalarProperty Name="SaleOrderNature" ColumnName="SaleOrderNature" />
+                <ScalarProperty Name="ShippingType" ColumnName="ShippingType" />
+                <ScalarProperty Name="LPONO" ColumnName="LPONO" />
+                <ScalarProperty Name="Factor" ColumnName="Factor" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="DiscOnSubtotal" ColumnName="DiscOnSubtotal" />
+                <ScalarProperty Name="ExtraCharges" ColumnName="ExtraCharges" />
+                <ScalarProperty Name="TotalMargin" ColumnName="TotalMargin" />
+                <ScalarProperty Name="invoiceNo" ColumnName="invoiceNo" />
+                <ScalarProperty Name="exchangeRateID" ColumnName="exchangeRateID" />
+                <ScalarProperty Name="SaleOrderID" ColumnName="SaleOrderID" />
+                <ScalarProperty Name="financialYearId" ColumnName="financialYearId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="TotalDiscount" ColumnName="TotalDiscount" />
+                <ScalarProperty Name="PurchaseOrderID" ColumnName="PurchaseOrderID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SlidingPriceAdd" FunctionName="IMEModel.Store.SlidingPriceAdd" />
           <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="IMEModel.Store.sp_alterdiagram" />
           <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="IMEModel.Store.sp_creatediagram" />
