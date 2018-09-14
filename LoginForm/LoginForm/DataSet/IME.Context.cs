@@ -2005,6 +2005,15 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("RSInvoiceADD", shipmentReferenceParameter, billingDocumentReferenceParameter, shippingConditionParameter, billingDocumentDateParameter, supplyingECCompanyParameter, customerReferenceParameter, invoiceTaxValueParameter, invoiceGoodsValueParameter, invoiceNettValueParameter, currencyParameter, airwayBillNumberParameter, discountParameter, surchargeParameter, supplierIDParameter);
         }
     
+        public virtual ObjectResult<SaleOrder_SaleOrderNo_Result> SaleOrder_SaleOrderNo(Nullable<decimal> saleOrderNo)
+        {
+            var saleOrderNoParameter = saleOrderNo.HasValue ?
+                new ObjectParameter("SaleOrderNo", saleOrderNo) :
+                new ObjectParameter("SaleOrderNo", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SaleOrder_SaleOrderNo_Result>("SaleOrder_SaleOrderNo", saleOrderNoParameter);
+        }
+    
         public virtual int SlidingPriceAdd(string articleNo, string articleDescription, Nullable<int> itemTypeCode, string itemTypeDesc, string introductionDate, string discontinuedDate, Nullable<int> quantity1, Nullable<decimal> col1Price, Nullable<decimal> col2Price, Nullable<decimal> col3Price, Nullable<decimal> col4Price, Nullable<decimal> col5Price, Nullable<int> col1Break, Nullable<int> col2Break, Nullable<int> col3Break, Nullable<int> col4Break, Nullable<int> col5Break, Nullable<decimal> discountedPrice1, Nullable<decimal> discountedPrice2, Nullable<decimal> discountedPrice3, Nullable<decimal> discountedPrice4, Nullable<decimal> discountedPrice5, string superSectionNo, string supersectionName, string brandID, string brandname, string sectionID, string sectionName)
         {
             var articleNoParameter = articleNo != null ?
