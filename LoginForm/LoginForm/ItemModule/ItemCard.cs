@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows.Forms;
 using LoginForm.Services;
 using static LoginForm.Services.MyClasses.MyAuthority;
+using System.Collections.Generic;
 
 namespace LoginForm.ItemModule
 {
@@ -920,7 +921,8 @@ namespace LoginForm.ItemModule
 
         private void ItemCard_Load(object sender, EventArgs e)
         {
-            ControlAutorization();
+            checkAuthorities();
+            //ControlAutorization();
             GetImageFromWeb(null);
             ReadOnlyAll(true);
         }
@@ -1325,6 +1327,36 @@ namespace LoginForm.ItemModule
             {
                 MessageBox.Show("Please selected item");
                 label46.Text = "Edit Note";
+            }
+        }
+
+        public void checkAuthorities()
+        {
+            List<DataSet.AuthorizationValue> authList = Utils.getCurrentUser().AuthorizationValues.ToList();
+
+            if (!Utils.AuthorityCheck(IMEAuthority.CanAddNoteinItemCard))
+            {
+                btnEditNote.Visible = false;
+            }
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeMargine) && !Utils.AuthorityCheck(IMEAuthority.CanSeeCost))
+            {
+                txtCost1.Visible = false;
+                txtCost2.Visible = false;
+                txtCost3.Visible = false;
+                txtCost4.Visible = false;
+                txtCost5.Visible = false;
+
+                txtMargin1.Visible = false;
+                txtMargin2.Visible = false;
+                txtMargin3.Visible = false;
+                txtMargin4.Visible = false;
+                txtMargin5.Visible = false;
+            }
+
+            if (!Utils.AuthorityCheck(IMEAuthority.CanAddItemCard) && !Utils.AuthorityCheck(IMEAuthority.CanEditItemCard))
+            {
+                btnAdd.Visible = false;
+                btnUpdate.Visible = false;
             }
         }
     }

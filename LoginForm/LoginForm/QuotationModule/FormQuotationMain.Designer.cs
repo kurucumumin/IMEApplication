@@ -32,6 +32,25 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgQuotation = new System.Windows.Forms.DataGridView();
+            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuotationNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rep_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PreparedBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RFQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Currency = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrderDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.City = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SaleOrderNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrderStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FirstNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Date1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rep1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SecondNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Date2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rep2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gridRightClick = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.dELETEQUOTATIONToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uNDODELETEQUOTATIONToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,7 +76,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnExcel = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -71,25 +90,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dtpToDate = new System.Windows.Forms.DateTimePicker();
             this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
-            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QuotationNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Rep_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PreparedBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RFQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustomerCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Currency = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OrderDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.City = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SaleOrderNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OrderStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FirstNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Date1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Rep1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SecondNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Date2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Rep2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgQuotation)).BeginInit();
             this.gridRightClick.SuspendLayout();
@@ -168,6 +168,120 @@
             this.dgQuotation.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgQuotation_CellMouseDoubleClick);
             this.dgQuotation.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgQuotation_KeyDown);
             this.dgQuotation.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgQuotation_MouseDown);
+            // 
+            // Date
+            // 
+            this.Date.HeaderText = "Date";
+            this.Date.Name = "Date";
+            this.Date.ReadOnly = true;
+            // 
+            // QuotationNo
+            // 
+            this.QuotationNo.HeaderText = "QuotationNo";
+            this.QuotationNo.Name = "QuotationNo";
+            this.QuotationNo.ReadOnly = true;
+            // 
+            // Rep_Name
+            // 
+            this.Rep_Name.HeaderText = "Rep_Name";
+            this.Rep_Name.Name = "Rep_Name";
+            this.Rep_Name.ReadOnly = true;
+            // 
+            // PreparedBy
+            // 
+            this.PreparedBy.HeaderText = "PreparedBy";
+            this.PreparedBy.Name = "PreparedBy";
+            this.PreparedBy.ReadOnly = true;
+            // 
+            // RFQ
+            // 
+            this.RFQ.HeaderText = "RFQ";
+            this.RFQ.Name = "RFQ";
+            this.RFQ.ReadOnly = true;
+            // 
+            // CustomerCode
+            // 
+            this.CustomerCode.HeaderText = "CustomerCode";
+            this.CustomerCode.Name = "CustomerCode";
+            this.CustomerCode.ReadOnly = true;
+            // 
+            // CustomerName
+            // 
+            this.CustomerName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.CustomerName.HeaderText = "CustomerName";
+            this.CustomerName.Name = "CustomerName";
+            this.CustomerName.ReadOnly = true;
+            this.CustomerName.Width = 119;
+            // 
+            // Total
+            // 
+            this.Total.HeaderText = "Total";
+            this.Total.Name = "Total";
+            this.Total.ReadOnly = true;
+            // 
+            // Currency
+            // 
+            this.Currency.HeaderText = "Currency";
+            this.Currency.Name = "Currency";
+            this.Currency.ReadOnly = true;
+            // 
+            // OrderDate
+            // 
+            this.OrderDate.HeaderText = "OrderDate";
+            this.OrderDate.Name = "OrderDate";
+            this.OrderDate.ReadOnly = true;
+            // 
+            // City
+            // 
+            this.City.HeaderText = "City";
+            this.City.Name = "City";
+            this.City.ReadOnly = true;
+            // 
+            // SaleOrderNo
+            // 
+            this.SaleOrderNo.HeaderText = "SaleOrderNo";
+            this.SaleOrderNo.Name = "SaleOrderNo";
+            this.SaleOrderNo.ReadOnly = true;
+            // 
+            // OrderStatus
+            // 
+            this.OrderStatus.HeaderText = "OrderStatus";
+            this.OrderStatus.Name = "OrderStatus";
+            this.OrderStatus.ReadOnly = true;
+            // 
+            // FirstNote
+            // 
+            this.FirstNote.HeaderText = "FirstNote";
+            this.FirstNote.Name = "FirstNote";
+            // 
+            // Date1
+            // 
+            this.Date1.HeaderText = "Date1";
+            this.Date1.Name = "Date1";
+            this.Date1.ReadOnly = true;
+            // 
+            // Rep1
+            // 
+            this.Rep1.HeaderText = "Rep1";
+            this.Rep1.Name = "Rep1";
+            this.Rep1.ReadOnly = true;
+            // 
+            // SecondNote
+            // 
+            this.SecondNote.HeaderText = "SecondNote";
+            this.SecondNote.Name = "SecondNote";
+            // 
+            // Date2
+            // 
+            this.Date2.HeaderText = "Date2";
+            this.Date2.Name = "Date2";
+            this.Date2.ReadOnly = true;
+            // 
+            // Rep2
+            // 
+            this.Rep2.HeaderText = "Rep2";
+            this.Rep2.Name = "Rep2";
+            this.Rep2.ReadOnly = true;
             // 
             // gridRightClick
             // 
@@ -360,7 +474,7 @@
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.button5);
-            this.groupBox2.Controls.Add(this.button4);
+            this.groupBox2.Controls.Add(this.btnExcel);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label5);
@@ -408,6 +522,7 @@
             this.label8.Size = new System.Drawing.Size(32, 15);
             this.label8.TabIndex = 30;
             this.label8.Text = "Print";
+            this.label8.Visible = false;
             // 
             // label7
             // 
@@ -432,22 +547,23 @@
             this.button5.Size = new System.Drawing.Size(52, 52);
             this.button5.TabIndex = 28;
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Visible = false;
             // 
-            // button4
+            // btnExcel
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
-            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Image = global::LoginForm.Properties.Resources.if_Document_file_export_sending_exit_send_1886950;
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button4.Location = new System.Drawing.Point(418, 22);
-            this.button4.Margin = new System.Windows.Forms.Padding(0);
-            this.button4.Name = "button4";
-            this.button4.Padding = new System.Windows.Forms.Padding(8, 16, 8, 0);
-            this.button4.Size = new System.Drawing.Size(52, 52);
-            this.button4.TabIndex = 27;
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.btnExcel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
+            this.btnExcel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.btnExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExcel.Image = global::LoginForm.Properties.Resources.if_Document_file_export_sending_exit_send_1886950;
+            this.btnExcel.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnExcel.Location = new System.Drawing.Point(418, 22);
+            this.btnExcel.Margin = new System.Windows.Forms.Padding(0);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.Padding = new System.Windows.Forms.Padding(8, 16, 8, 0);
+            this.btnExcel.Size = new System.Drawing.Size(52, 52);
+            this.btnExcel.TabIndex = 27;
+            this.btnExcel.UseVisualStyleBackColor = true;
+            this.btnExcel.Click += new System.EventHandler(this.button4_Click);
             // 
             // label3
             // 
@@ -603,120 +719,6 @@
             this.dtpFromDate.Size = new System.Drawing.Size(119, 21);
             this.dtpFromDate.TabIndex = 19;
             // 
-            // Date
-            // 
-            this.Date.HeaderText = "Date";
-            this.Date.Name = "Date";
-            this.Date.ReadOnly = true;
-            // 
-            // QuotationNo
-            // 
-            this.QuotationNo.HeaderText = "QuotationNo";
-            this.QuotationNo.Name = "QuotationNo";
-            this.QuotationNo.ReadOnly = true;
-            // 
-            // Rep_Name
-            // 
-            this.Rep_Name.HeaderText = "Rep_Name";
-            this.Rep_Name.Name = "Rep_Name";
-            this.Rep_Name.ReadOnly = true;
-            // 
-            // PreparedBy
-            // 
-            this.PreparedBy.HeaderText = "PreparedBy";
-            this.PreparedBy.Name = "PreparedBy";
-            this.PreparedBy.ReadOnly = true;
-            // 
-            // RFQ
-            // 
-            this.RFQ.HeaderText = "RFQ";
-            this.RFQ.Name = "RFQ";
-            this.RFQ.ReadOnly = true;
-            // 
-            // CustomerCode
-            // 
-            this.CustomerCode.HeaderText = "CustomerCode";
-            this.CustomerCode.Name = "CustomerCode";
-            this.CustomerCode.ReadOnly = true;
-            // 
-            // CustomerName
-            // 
-            this.CustomerName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.CustomerName.HeaderText = "CustomerName";
-            this.CustomerName.Name = "CustomerName";
-            this.CustomerName.ReadOnly = true;
-            this.CustomerName.Width = 119;
-            // 
-            // Total
-            // 
-            this.Total.HeaderText = "Total";
-            this.Total.Name = "Total";
-            this.Total.ReadOnly = true;
-            // 
-            // Currency
-            // 
-            this.Currency.HeaderText = "Currency";
-            this.Currency.Name = "Currency";
-            this.Currency.ReadOnly = true;
-            // 
-            // OrderDate
-            // 
-            this.OrderDate.HeaderText = "OrderDate";
-            this.OrderDate.Name = "OrderDate";
-            this.OrderDate.ReadOnly = true;
-            // 
-            // City
-            // 
-            this.City.HeaderText = "City";
-            this.City.Name = "City";
-            this.City.ReadOnly = true;
-            // 
-            // SaleOrderNo
-            // 
-            this.SaleOrderNo.HeaderText = "SaleOrderNo";
-            this.SaleOrderNo.Name = "SaleOrderNo";
-            this.SaleOrderNo.ReadOnly = true;
-            // 
-            // OrderStatus
-            // 
-            this.OrderStatus.HeaderText = "OrderStatus";
-            this.OrderStatus.Name = "OrderStatus";
-            this.OrderStatus.ReadOnly = true;
-            // 
-            // FirstNote
-            // 
-            this.FirstNote.HeaderText = "FirstNote";
-            this.FirstNote.Name = "FirstNote";
-            // 
-            // Date1
-            // 
-            this.Date1.HeaderText = "Date1";
-            this.Date1.Name = "Date1";
-            this.Date1.ReadOnly = true;
-            // 
-            // Rep1
-            // 
-            this.Rep1.HeaderText = "Rep1";
-            this.Rep1.Name = "Rep1";
-            this.Rep1.ReadOnly = true;
-            // 
-            // SecondNote
-            // 
-            this.SecondNote.HeaderText = "SecondNote";
-            this.SecondNote.Name = "SecondNote";
-            // 
-            // Date2
-            // 
-            this.Date2.HeaderText = "Date2";
-            this.Date2.Name = "Date2";
-            this.Date2.ReadOnly = true;
-            // 
-            // Rep2
-            // 
-            this.Rep2.HeaderText = "Rep2";
-            this.Rep2.Name = "Rep2";
-            this.Rep2.ReadOnly = true;
-            // 
             // FormQuotationMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -778,7 +780,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnExcel;
         private System.Windows.Forms.ContextMenuStrip gridRightClick;
         private System.Windows.Forms.ToolStripMenuItem dELETEQUOTATIONToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem qUOTATIONINFOToolStripMenuItem;

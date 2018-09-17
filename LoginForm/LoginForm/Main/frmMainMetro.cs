@@ -179,38 +179,144 @@ namespace LoginForm.Main
         public void checkAuthorities()
         {
             List<DataSet.AuthorizationValue> authList = Utils.getCurrentUser().AuthorizationValues.ToList();
+
+            #region Ana Kategori
             if (!Utils.AuthorityCheck(IMEAuthority.CanSeeManagementModule))
             {
                 btnManagement.Visible = false;
                 pnlManagement.Visible = false;
             }
-            else
-            {
-                btnManagement.Visible = true;
-                pnlManagement.Visible = true;
-            }
-
             if (!Utils.AuthorityCheck(IMEAuthority.CanSeeLoaderModule))
             {
                 btnFileLoader.Visible = false;
                 pnlImportFiles.Visible = false;
             }
-            else
-            {
-                btnFileLoader.Visible = true;
-                pnlImportFiles.Visible = true;
-            }
-
             if (!Utils.AuthorityCheck(IMEAuthority.CanSeeDevelopmentModule))
             {
                 btnDevelopment.Visible = false;
             }
+            #endregion
 
+            #region Main
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeItemCardModule))
+            {
+                btnItemCard.Visible = false;
+            }
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeCustomerModule))
+            {
+                btnCustomer.Visible = false;
+            }
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeSupplierModule))
+            {
+                btnSupplier.Visible = false;
+            }
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeQuotationModule))
+            {
+                btnQuotation.Visible = false;
+            }
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeSaleOrderModule))
+            {
+                btnSalesOrder.Visible = false;
+            }
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeePurchaseOrderModule))
+            {
+                btnPurchaseOrder.Visible = false;
+            }
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeStockModule))
+            {
+                btnStock.Visible = false;
+            }
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeInvoiceModule))
+            {
+                btnToBeInvoiced.Visible = false;
+            }
+            #endregion
+
+            #region Import Files
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeRsInvoice))
+            {
+                btnRsInvoice.Visible = false;
+            }
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeSuperDýsk))
+            {
+                btnSuperDisk.Visible = false;
+            }
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeSuperDýskP))
+            {
+                btnSuperDiskwithP.Visible = false;
+            }
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeSlidingPrice))
+            {
+                btnSlidingPriceList.Visible = false;
+            }
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeHazardouse))
+            {
+                btnHazardousFile.Visible = false;
+            }
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeRsProList))
+            {
+                btnRSProList.Visible = false;
+            }
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeTSEList))
+            {
+                btnTSEList.Visible = false;
+            }
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeDualUsedArticles))
+            {
+                btnDualUsedArticles.Visible = false;
+            }
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeExtendedRangePrice))
+            {
+                btnExtendedRangePrice.Visible = false;
+            }
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeDiscountinuedList))
+            {
+                btnDiscontinuedList.Visible = false;
+            }
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeOnSale))
+            {
+                btnOnSale.Visible = false;
+            }
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeOrderAcknowledgemenet))
+            {
+                btnOrderAcknowledgement.Visible = false;
+            }
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeBackOrder))
+            {
+                btnBackOrder.Visible = false;
+            }
+            #endregion
+
+            #region Managment
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeExchangeRate))
+            {
+                btnExchangeRate.Visible = false;
+            }
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeTermsofPayment))
+            {
+                btnTermsOfPayment.Visible = false;
+            }
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeCategoryandSubCategory))
+            {
+                btnCategorySubCategory.Visible = false;
+            }
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeRolesandAuthorities))
+            {
+                btnRoleAuths.Visible = false;
+            }
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeManagementControl))
+            {
+                btnManagmentControl.Visible = false;
+            }
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeCustomerTransfer))
+            {
+                btnCustomerTransfer.Visible = false;
+            }
             if (!Utils.AuthorityCheck(IMEAuthority.CanSeeUserModule))
             {
                 btnUser.Visible = false;
             }
-
+            #endregion
         }
 
         private void btnSupplier_Click(object sender, EventArgs e)

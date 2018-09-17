@@ -409,7 +409,6 @@
             this.gbAuthorities.ResumeLayout(false);
             this.gbAuthorities.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.gbUserInfo.ResumeLayout(false);
             this.gbUserInfo.PerformLayout();
             this.panel2.ResumeLayout(false);

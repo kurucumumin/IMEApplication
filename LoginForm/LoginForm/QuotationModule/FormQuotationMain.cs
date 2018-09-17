@@ -130,21 +130,45 @@ namespace LoginForm.QuotationModule
             ModifyQuotation();
         }
 
-        private void FormQuotationMain_Load(object sender, EventArgs e)
+        public void checkAuthorities()
         {
+            List<DataSet.AuthorizationValue> authList = Utils.getCurrentUser().AuthorizationValues.ToList();
+
+            if (!Utils.AuthorityCheck(IMEAuthority.CanAddQuotation) && !Utils.AuthorityCheck(IMEAuthority.CanEditAnyQuotation)
+                 && !Utils.AuthorityCheck(IMEAuthority.CanRevisionQuotation))
+            {
+                btnModifyQuotation.Visible = false;
+                btnNewQuotation.Visible = false;
+                btnUpdate.Visible = false;
+
+            }
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeExcel))
+            {
+                btnExcel.Visible = false;
+            }
+
+            if (!Utils.AuthorityCheck(IMEAuthority.CanDeleteQuotation))
+            {
+                btnDeleteQuotation.Visible = false;
+            }
+        }
+
+            private void FormQuotationMain_Load(object sender, EventArgs e)
+        {
+            checkAuthorities();
             IMEEntities IME = new IMEEntities();
-            if (!Utils.AuthorityCheck(IMEAuthority.CanDeleteQuotation))//Can Delete Quotation
-            {
-                btnDeleteQuotation.Enabled = false;
-            }
-            if (!Utils.AuthorityCheck(IMEAuthority.CanEditAnyQuotation))//Can Modify edit
-            {
-                btnModifyQuotation.Enabled = false;
-            }
-            if (!Utils.AuthorityCheck(IMEAuthority.CanAddQuotation))//Can Add Quotation
-            {
-                btnNewQuotation.Enabled = false;
-            }
+            //if (!Utils.AuthorityCheck(IMEAuthority.CanDeleteQuotation))//Can Delete Quotation
+            //{
+            //    btnDeleteQuotation.Enabled = false;
+            //}
+            //if (!Utils.AuthorityCheck(IMEAuthority.CanEditAnyQuotation))//Can Modify edit
+            //{
+            //    btnModifyQuotation.Enabled = false;
+            //}
+            //if (!Utils.AuthorityCheck(IMEAuthority.CanAddQuotation))//Can Add Quotation
+            //{
+            //    btnNewQuotation.Enabled = false;
+            //}
             BringQuotationList(DateTime.Now.AddDays(-1), DateTime.Now); //Bu gün oluşturulan quotation ları göstermek için.5+++12#
         }
 

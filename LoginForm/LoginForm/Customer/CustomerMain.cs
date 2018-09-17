@@ -10,6 +10,7 @@ using LoginForm.clsClasses;
 using static LoginForm.Services.MyClasses.MyAuthority;
 using LoginForm.Services.SP;
 using System.Drawing;
+using System.Collections.Generic;
 
 namespace LoginForm
 {
@@ -175,7 +176,8 @@ namespace LoginForm
 
         private void CustomerMain_Load(object sender, EventArgs e)
         {
-            ControlAutorization();
+            checkAuthorities();
+            //ControlAutorization();
             //CustomerDataGrid.DataSource = BringSupplierList(txtSearch.Text);
             //CustomerDataGrid.ClearSelection();
             this.CompanyNotes.KeyDown += new KeyEventHandler(CompanyNotes_KeyDown);
@@ -2594,5 +2596,16 @@ namespace LoginForm
         //    }
         //    base.Close();
         //}
+
+        public void checkAuthorities()
+        {
+            List<DataSet.AuthorizationValue> authList = Utils.getCurrentUser().AuthorizationValues.ToList();
+
+            if (!Utils.AuthorityCheck(IMEAuthority.CanAddCustomer) && !Utils.AuthorityCheck(IMEAuthority.CanEditCustomer))
+            {
+                btnCreate.Visible = false;
+                btnUpdate.Visible = false;
+            }
+        }
     }
 }

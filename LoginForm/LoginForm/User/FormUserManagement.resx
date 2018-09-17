@@ -342,8 +342,8 @@
   <data name="&gt;&gt;gbAuthorities.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="label4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
     <value>325, 548</value>
@@ -1282,6 +1282,6 @@
     <value>FormWorkerManagement</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>LoginForm.MyForm, LoginForm, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

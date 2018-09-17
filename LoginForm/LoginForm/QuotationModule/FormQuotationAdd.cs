@@ -696,6 +696,70 @@ namespace LoginForm.QuotationModule
             btnSave.Enabled = false;
         }
 
+        public void checkAuthorities()
+        {
+            List<DataSet.AuthorizationValue> authList = Utils.getCurrentUser().AuthorizationValues.ToList();
+
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeMargine) && !Utils.AuthorityCheck(IMEAuthority.CanSeeCost) && !Utils.AuthorityCheck(IMEAuthority.CanSeeUKPrice))
+            {
+                txtCost1.Visible = false;
+                txtCost2.Visible = false;
+                txtCost3.Visible = false;
+                txtCost4.Visible = false;
+                txtCost5.Visible = false;
+
+                txtMargin1.Visible = false;
+                txtMargin2.Visible = false;
+                txtMargin3.Visible = false;
+                txtMargin4.Visible = false;
+                txtMargin5.Visible = false;
+
+                txtUK1.Visible = false;
+                txtUK2.Visible = false;
+                txtUK3.Visible = false;
+                txtUK4.Visible = false;
+                txtUK5.Visible = false;
+
+                dgQuotationAddedItems.CurrentRow.Cells["dgUKPrice"].ReadOnly = false;
+            }
+
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeQuotationCheckBox))
+            {
+                LandingCost.Visible = false;
+            }
+
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeSubTotal))
+            {
+                lblsubtotal.Visible = false;
+            }
+
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeTotalCost))
+            {
+                txtTotalCost.Visible = false;
+            }
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeTotalMargine))
+            {
+                txtTotalMarge.Visible = false;
+            }
+
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeDiscount))
+            {
+                txtTotalDis.Visible = false;
+                txtTotalDis2.Visible = false;
+                label4.Visible = false;
+                dgQuotationAddedItems.CurrentRow.Cells["dgDisc"].ReadOnly = false;
+            }
+
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeLandingCost))
+            {
+                dgQuotationAddedItems.CurrentRow.Cells["dgLandingCost"].ReadOnly = false;
+            }
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeCost))
+            {
+                dgQuotationAddedItems.CurrentRow.Cells["dgCost"].ReadOnly = false;
+            }
+
+        }
 
         private void ControlAutorization()
         {
@@ -720,9 +784,8 @@ namespace LoginForm.QuotationModule
 
             #endregion
 
-
-
-            ControlAutorization();
+            checkAuthorities();
+            //ControlAutorization();
             DataGridViewComboBoxColumn deliveryColumn = (DataGridViewComboBoxColumn)dgQuotationAddedItems.Columns[dgDelivery.Index];
             if (deliveryColumn.DataSource == null)
             {

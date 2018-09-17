@@ -90,7 +90,8 @@ namespace LoginForm
         }
         private void CSupplierMain_Load(object sender, EventArgs e)
         {
-            ControlAutorization();
+            checkAuthorities();
+            //ControlAutorization();
             dgSupplier.DataSource = BringSupplierList(txtSearch.Text);
             dgSupplier.ClearSelection();
             initFillComboBoxes();
@@ -2470,6 +2471,17 @@ namespace LoginForm
         private void btnBankUpdate_Click(object sender, EventArgs e)
         {
 
+        }
+
+        public void checkAuthorities()
+        {
+            List<DataSet.AuthorizationValue> authList = Utils.getCurrentUser().AuthorizationValues.ToList();
+
+            if (!Utils.AuthorityCheck(IMEAuthority.CanAddCustomer) && !Utils.AuthorityCheck(IMEAuthority.CanEditCustomer))
+            {
+                btnAdd.Visible = false;
+                btnModify.Visible = false;
+            }
         }
     }
 }
