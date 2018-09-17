@@ -35,7 +35,8 @@ namespace LoginForm.ItemModule
             //Article no ile search
             txtSelected = txtSearchBox.Text;
             string ArticleNoSearch = "";
-
+            label46.Text = "Save Note";
+            txtNote.ReadOnly = false;
             //
             if (rbProductCode.Checked == true)
             {
@@ -48,53 +49,52 @@ namespace LoginForm.ItemModule
                 //List Birleştirme
                 #region List Birleştirme
 
-                var gridAdapterPC = (from a in IME.SuperDisks.Where(a => a.Article_No.Contains(txtSelected))
-                                     join customerworker in IME.ItemNotes on a.Article_No equals customerworker.ArticleNo into customerworkeres
-                                     let customerworker = customerworkeres.Select(customerworker1 => customerworker1).FirstOrDefault()
+                var gridAdapterPC = (from a in IME.Items.Where(a => a.ArticleNo.Contains(txtSelected))
+                                     //join not in IME.ItemNotes on a.ArticleNo equals not.ArticleNo
                                      select new
                                      {
-                                         ArticleNo = a.Article_No,
-                                         ArticleDesc = a.Article_Desc,
-                                         a.MPN,
-                                         customerworker.Note.Note_name,
+                                         ArticleNo = a.ArticleNo,
+                                         ArticleDesc = a.ArticleDesc,
+                                         a.MPN
+                                         //not.Note.Note_name
                                      }
                              ).ToList();
-                var list2 = (from a in IME.SuperDiskPs.Where(a => a.Article_No.Contains(txtSelected))
-                             join customerworker in IME.ItemNotes on a.Article_No equals customerworker.ArticleNo into customerworkeres
-                             let customerworker = customerworkeres.Select(customerworker1 => customerworker1).FirstOrDefault()
-                             select new
-                             {
-                                 ArticleNo = a.Article_No,
-                                 ArticleDesc = a.Article_Desc,
-                                 a.MPN,
-                                customerworker.Note.Note_name,
-                                 //a.CofO,
-                                 //a.Pack_Code
-                             }
-            ).ToList();
-                var list3 = (from a in IME.ExtendedRanges.Where(a => a.ArticleNo.Contains(txtSelected))
-                             join customerworker in IME.ItemNotes on a.ArticleNo equals customerworker.ArticleNo into customerworkeres
-                             let customerworker = customerworkeres.Select(customerworker1 => customerworker1).FirstOrDefault()
-                             select new
-                             {
-                                 ArticleNo = a.ArticleNo,
-                                 ArticleDesc = a.ArticleDescription,
-                                 a.MPN,
-                                 customerworker.Note.Note_name
-                             }
-                            ).ToList();
-                var list4 = (from a in IME.tbl_Item.Where(a=> a.StockNo.Contains(txtSelected))
-                             select new
-                             {
-                                 ArticleNo = a.StockNo,
-                                 ArticleDesc = a.ArticleDescription,
-                                 a.MPN,
-                                 Note_name= a.notes
-                             }
-                            ).ToList();
-                gridAdapterPC.AddRange(list2);
-                gridAdapterPC.AddRange(list3);
-                gridAdapterPC.AddRange(list4);
+            //    var list2 = (from a in IME.SuperDiskPs.Where(a => a.Article_No.Contains(txtSelected))
+            //                 join customerworker in IME.ItemNotes on a.Article_No equals customerworker.ArticleNo into customerworkeres
+            //                 let customerworker = customerworkeres.Select(customerworker1 => customerworker1).FirstOrDefault()
+            //                 select new
+            //                 {
+            //                     ArticleNo = a.Article_No,
+            //                     ArticleDesc = a.Article_Desc,
+            //                     a.MPN,
+            //                    customerworker.Note.Note_name,
+            //                     //a.CofO,
+            //                     //a.Pack_Code
+            //                 }
+            //).ToList();
+            //    var list3 = (from a in IME.ExtendedRanges.Where(a => a.ArticleNo.Contains(txtSelected))
+            //                 join customerworker in IME.ItemNotes on a.ArticleNo equals customerworker.ArticleNo into customerworkeres
+            //                 let customerworker = customerworkeres.Select(customerworker1 => customerworker1).FirstOrDefault()
+            //                 select new
+            //                 {
+            //                     ArticleNo = a.ArticleNo,
+            //                     ArticleDesc = a.ArticleDescription,
+            //                     a.MPN,
+            //                     customerworker.Note.Note_name
+            //                 }
+            //                ).ToList();
+            //    var list4 = (from a in IME.tbl_Item.Where(a=> a.StockNo.Contains(txtSelected))
+            //                 select new
+            //                 {
+            //                     ArticleNo = a.StockNo,
+            //                     ArticleDesc = a.ArticleDescription,
+            //                     a.MPN,
+            //                     Note_name= a.notes
+            //                 }
+            //                ).ToList();
+            //    gridAdapterPC.AddRange(list2);
+            //    gridAdapterPC.AddRange(list3);
+            //    gridAdapterPC.AddRange(list4);
                 //
                 #endregion
                 dgItemList.DataSource = gridAdapterPC;
@@ -105,14 +105,14 @@ namespace LoginForm.ItemModule
 
                 if (gridAdapterPC.Count != 0)
                 {
-                    btnUpdateNote.Enabled = true;
+                    btnUpdate.Enabled = true;
                     ArticleNoSearch = gridAdapterPC[gridselectedindex].ArticleNo;
-                    btnUpdateNote.Enabled = true;
+                    btnUpdate.Enabled = true;
                 }
                 else
                 {
                     MessageBox.Show("There is no such a data");
-                    btnUpdateNote.Enabled = false;
+                    btnUpdate.Enabled = false;
                 }
                 
             }
@@ -121,41 +121,41 @@ namespace LoginForm.ItemModule
                 // MPN code ile search
                 //List Birleştirme
                 #region List Birleştirme
-                var gridAdapterPC = (from a in IME.SuperDisks.Where(a => a.MPN.Contains(txtSelected))
-                                     join customerworker in IME.ItemNotes on a.Article_No equals customerworker.ArticleNo into customerworkeres
-                                     let customerworker = customerworkeres.Select(customerworker1 => customerworker1).FirstOrDefault()
+                var gridAdapterPC = (from a in IME.Items.Where(a => a.MPN.Contains(txtSelected))
+                                     //join not in IME.ItemNotes on a.ArticleNo equals not.ArticleNo
+                                     //where not.Note.ID == not.ID
                                      select new
                                      {
-                                         ArticleNo = a.Article_No,
-                                         ArticleDesc = a.Article_Desc,
-                                         a.MPN,
-                                         customerworker.Note.Note_name,
+                                         ArticleNo = a.ArticleNo,
+                                         ArticleDesc = a.ArticleDesc,
+                                         a.MPN
+                                         //not.Note.Note_name
                                      }
                              ).ToList();
-                var list2 = (from a in IME.SuperDiskPs.Where(a => a.MPN.Contains(txtSelected))
-                             join customerworker in IME.ItemNotes on a.Article_No equals customerworker.ArticleNo into customerworkeres
-                             let customerworker = customerworkeres.Select(customerworker1 => customerworker1).FirstOrDefault()
-                             select new
-                             {
-                                 ArticleNo = a.Article_No,
-                                 ArticleDesc = a.Article_Desc,
-                                 a.MPN,
-                                 customerworker.Note.Note_name,
-                             }
-                            ).ToList();
-                var list3 = (from a in IME.ExtendedRanges.Where(a => a.MPN.Contains(txtSelected))
-                             join customerworker in IME.ItemNotes on a.ArticleNo equals customerworker.ArticleNo into customerworkeres
-                             let customerworker = customerworkeres.Select(customerworker1 => customerworker1).FirstOrDefault()
-                             select new
-                             {
-                                 ArticleNo = a.ArticleNo,
-                                 ArticleDesc = a.ArticleDescription,
-                                 a.MPN,
-                                 customerworker.Note.Note_name,
-                             }
-                            ).ToList();
-                gridAdapterPC.AddRange(list2);
-                gridAdapterPC.AddRange(list3);
+                //var list2 = (from a in IME.SuperDiskPs.Where(a => a.MPN.Contains(txtSelected))
+                //             join customerworker in IME.ItemNotes on a.Article_No equals customerworker.ArticleNo into customerworkeres
+                //             let customerworker = customerworkeres.Select(customerworker1 => customerworker1).FirstOrDefault()
+                //             select new
+                //             {
+                //                 ArticleNo = a.Article_No,
+                //                 ArticleDesc = a.Article_Desc,
+                //                 a.MPN,
+                //                 customerworker.Note.Note_name,
+                //             }
+                //            ).ToList();
+                //var list3 = (from a in IME.ExtendedRanges.Where(a => a.MPN.Contains(txtSelected))
+                //             join customerworker in IME.ItemNotes on a.ArticleNo equals customerworker.ArticleNo into customerworkeres
+                //             let customerworker = customerworkeres.Select(customerworker1 => customerworker1).FirstOrDefault()
+                //             select new
+                //             {
+                //                 ArticleNo = a.ArticleNo,
+                //                 ArticleDesc = a.ArticleDescription,
+                //                 a.MPN,
+                //                 customerworker.Note.Note_name,
+                //             }
+                //            ).ToList();
+                //gridAdapterPC.AddRange(list2);
+                //gridAdapterPC.AddRange(list3);
                 //
                 #endregion
                 dgItemList.DataSource = gridAdapterPC;
@@ -173,92 +173,44 @@ namespace LoginForm.ItemModule
             {
                 //List Birleştirme
                 #region List Birleştirme
-                var gridAdapterPC = (from a in IME.SuperDisks.Where(a => a.Article_Desc.Contains(txtSelected))
-                                     join customerworker in IME.ItemNotes on a.Article_No equals customerworker.ArticleNo into customerworkeres
-                                     let customerworker = customerworkeres.Select(customerworker1 => customerworker1).FirstOrDefault()
-
-                                     select new
-                                     {
-                                         ArticleNo = a.Article_No,
-                                         ArticleDesc = a.Article_Desc,
-                                         a.MPN,
-                                         customerworker.Note.Note_name,
-                                     }
-                             ).ToList();
-                var list2 = (from a in IME.SuperDiskPs.Where(a => a.Article_Desc.Contains(txtSelected))
-                             join customerworker in IME.ItemNotes on a.Article_No equals customerworker.ArticleNo into customerworkeres
-                             let customerworker = customerworkeres.Select(customerworker1 => customerworker1).FirstOrDefault()
-
-                             select new
-                             {
-                                 ArticleNo = a.Article_No,
-                                 ArticleDesc = a.Article_Desc,
-                                 a.MPN,
-                                 customerworker.Note.Note_name,
-                             }
-                            ).ToList();
-                var list3 = (from a in IME.ExtendedRanges.Where(a => a.ArticleDescription.Contains(txtSelected))
-                             join customerworker in IME.ItemNotes on a.ArticleNo equals customerworker.ArticleNo into customerworkeres
-                             let customerworker = customerworkeres.Select(customerworker1 => customerworker1).FirstOrDefault()
-
-                             select new
-                             {
-                                 ArticleNo = a.ArticleNo,
-                                 ArticleDesc = a.ArticleDescription,
-                                 a.MPN,
-                                 customerworker.Note.Note_name,
-
-                             }
-                            ).ToList();
-                gridAdapterPC.AddRange(list2);
-                gridAdapterPC.AddRange(list3);
-                //
-                #endregion
-                dgItemList.DataSource = gridAdapterPC;
-                dgItemList.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                if (gridAdapterPC.Count != 0)
-                {
-                    ArticleNoSearch = gridAdapterPC[gridselectedindex].ArticleNo;
-                }
-                else
-                {
-                    MessageBox.Show("There is no such a data");
-                }
-            }else if (rbItemNotes.Checked == true)
-            {
-                #region List Birleştirme
-                var gridAdapterPC = (from a in IME.ItemNotes.Where(a => a.Note.Note_name.Contains(txtSelected))
-                                     join sp in IME.SuperDisks on a.ArticleNo equals sp.Article_No
+                var gridAdapterPC = (from a in IME.Items.Where(a => a.ArticleDesc.Contains(txtSelected))
+                                     //join not in IME.ItemNotes on a.ArticleNo equals not.ArticleNo
+                                     //where not.Note.ID == not.ID
                                      select new
                                      {
                                          ArticleNo = a.ArticleNo,
-                                         ArticleDesc = sp.Article_Desc,
-                                         sp.MPN,
-                                         a.Note.Note_name,
+                                         ArticleDesc = a.ArticleDesc,
+                                         a.MPN
+                                         //not.Note.Note_name
                                      }
                              ).ToList();
-                var list2 = (from a in IME.ItemNotes.Where(a => a.Note.Note_name.Contains(txtSelected))
-                             join sp in IME.SuperDiskPs on a.ArticleNo equals sp.Article_No
-                             select new
-                             {
-                                 ArticleNo = a.ArticleNo,
-                                 ArticleDesc = sp.Article_Desc,
-                                 sp.MPN,
-                                 a.Note.Note_name,
-                             }
-                            ).ToList();
-                var list3 = (from a in IME.ItemNotes.Where(a => a.Note.Note_name.Contains(txtSelected))
-                             join sp in IME.ExtendedRanges on a.ArticleNo equals sp.ArticleNo
-                             select new
-                             {
-                                 ArticleNo = a.ArticleNo,
-                                 ArticleDesc = sp.ArticleNo,
-                                 sp.MPN,
-                                 a.Note.Note_name,
-                             }
-                            ).ToList();
-                gridAdapterPC.AddRange(list2);
-                gridAdapterPC.AddRange(list3);
+                //var list2 = (from a in IME.SuperDiskPs.Where(a => a.Article_Desc.Contains(txtSelected))
+                //             join customerworker in IME.ItemNotes on a.Article_No equals customerworker.ArticleNo into customerworkeres
+                //             let customerworker = customerworkeres.Select(customerworker1 => customerworker1).FirstOrDefault()
+
+                //             select new
+                //             {
+                //                 ArticleNo = a.Article_No,
+                //                 ArticleDesc = a.Article_Desc,
+                //                 a.MPN,
+                //                 customerworker.Note.Note_name,
+                //             }
+                //            ).ToList();
+                //var list3 = (from a in IME.ExtendedRanges.Where(a => a.ArticleDescription.Contains(txtSelected))
+                //             join customerworker in IME.ItemNotes on a.ArticleNo equals customerworker.ArticleNo into customerworkeres
+                //             let customerworker = customerworkeres.Select(customerworker1 => customerworker1).FirstOrDefault()
+
+                //             select new
+                //             {
+                //                 ArticleNo = a.ArticleNo,
+                //                 ArticleDesc = a.ArticleDescription,
+                //                 a.MPN,
+                //                 customerworker.Note.Note_name,
+
+                //             }
+                //            ).ToList();
+                //gridAdapterPC.AddRange(list2);
+                //gridAdapterPC.AddRange(list3);
                 //
                 #endregion
                 dgItemList.DataSource = gridAdapterPC;
@@ -271,10 +223,58 @@ namespace LoginForm.ItemModule
                 {
                     MessageBox.Show("There is no such a data");
                 }
+            }
+            else if (rbItemNotes.Checked == true)
+            {
+                #region List Birleştirme
+                var gridAdapterPC = (from not in IME.ItemNotes.Where(a => a.Note.Note_name.Contains(txtSelected))
+                                     join a in IME.Items on not.ArticleNo equals a.ArticleNo
+                                     select new
+                                     {
+                                         ArticleNo = a.ArticleNo,
+                                         ArticleDesc = a.ArticleDesc,
+                                         a.MPN,
+                                         not.Note.Note_name
+                                     }
+                             ).ToList();
+                //var list2 = (from a in IME.ItemNotes.Where(a => a.Note.Note_name.Contains(txtSelected))
+                //             join sp in IME.SuperDiskPs on a.ArticleNo equals sp.Article_No
+                //             select new
+                //             {
+                //                 ArticleNo = a.ArticleNo,
+                //                 ArticleDesc = sp.Article_Desc,
+                //                 sp.MPN,
+                //                 a.Note.Note_name,
+                //             }
+                //            ).ToList();
+                //var list3 = (from a in IME.ItemNotes.Where(a => a.Note.Note_name.Contains(txtSelected))
+                //             join sp in IME.ExtendedRanges on a.ArticleNo equals sp.ArticleNo
+                //             select new
+                //             {
+                //                 ArticleNo = a.ArticleNo,
+                //                 ArticleDesc = sp.ArticleNo,
+                //                 sp.MPN,
+                //                 a.Note.Note_name,
+                //             }
+                //            ).ToList();
+                //gridAdapterPC.AddRange(list2);
+                //gridAdapterPC.AddRange(list3);
+                //
+                #endregion
+                dgItemList.DataSource = gridAdapterPC;
+                dgItemList.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                if (gridAdapterPC.Count != 0)
+                {
+                    ArticleNoSearch = gridAdapterPC[gridselectedindex].ArticleNo;
+                }
+                else
+                {
+                    MessageBox.Show("There is no such a data");
+                    label46.Text = "Edit Note";
+                    txtNote.ReadOnly = true;
+                }
 
             }
-
-
             #endregion
             if (dgItemList.RowCount > 0)
             {
@@ -738,7 +738,7 @@ namespace LoginForm.ItemModule
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (btnUpdateNote.Text == "Save")
+            if (label43.Text == "Save")
             {
                     #region Item tablosu
                     var i = IME.tbl_Item.Where(a => a.StockNo == txtStockNo.Text).FirstOrDefault();
@@ -800,7 +800,7 @@ namespace LoginForm.ItemModule
 
                     IME.SaveChanges();
                     MessageBox.Show("Item updated successfully");
-                    btnUpdateNote.Text = "Update Item";
+                    label43.Text = "Update Item";
                 }      
                     #endregion
 
@@ -853,7 +853,7 @@ namespace LoginForm.ItemModule
 
                     IME.SaveChanges();
                     MessageBox.Show("Item updated successfully");
-                    btnUpdateNote.Text = "Update Item";
+                    label43.Text = "Update Item";
                 }
                     #endregion
 
@@ -863,9 +863,9 @@ namespace LoginForm.ItemModule
             {
                 ReadOnlyAll(false);
                 btnAdd.Enabled = false;
-                btnUpdateNote.Enabled = true;
-                btnUpdateNote.Text = "Save";
-                btnClose.Text = "Cancel";
+                btnUpdate.Enabled = true;
+                label43.Text = "Save";
+                label42.Text = "Cancel";
             }
             
         }
@@ -906,7 +906,7 @@ namespace LoginForm.ItemModule
         {
             if (!Utils.AuthorityCheck(IMEAuthority.CanAddNoteinItemCard) && !Utils.AuthorityCheck(IMEAuthority.CanEditNoteinItemCard))
             {
-                btnUpdateNote.Visible = false;
+                btnUpdate.Visible = false;
             }
         }
 
@@ -957,7 +957,7 @@ namespace LoginForm.ItemModule
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (btnAdd.Text == "Save")
+            if (label45.Text == "Save")
             {
                 if (NullControl())
                 {
@@ -1071,9 +1071,9 @@ namespace LoginForm.ItemModule
             groupBox7.Enabled = true;
             panel1.Enabled = true;
             btnAdd.Enabled = true;
-            btnAdd.Text = "Add Item";
-            btnUpdateNote.Text = "Update Item";
-            btnClose.Text = "Close";
+            label45.Text = "Add Item";
+            label43.Text = "Update Item";
+            label42.Text = "Close";
             label1.Font = new Font(label1.Font, FontStyle.Regular);
             label1.ForeColor = Color.Black;
             label39.Font = new Font(label39.Font, FontStyle.Regular);
@@ -1101,8 +1101,8 @@ namespace LoginForm.ItemModule
             dgItemList.Enabled = false;
             groupBox7.Enabled = false;
             panel1.Enabled = false;
-            btnAdd.Text = "Save";
-            btnClose.Text = "Cancel";
+            label45.Text = "Save";
+            label42.Text = "Cancel";
             label1.Font = new Font(label1.Font, FontStyle.Bold);
             label1.ForeColor = Color.Red;
             label39.Font = new Font(label39.Font, FontStyle.Bold);
@@ -1224,17 +1224,14 @@ namespace LoginForm.ItemModule
                 cmbSupplierName.Enabled = true;
                 btnSupplierAdd.Visible = true;
             }
-            btnUpdateNote.Enabled = false;
+            btnUpdate.Enabled = false;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            if (btnClose.Text != "Cancel")
+            if (label42.Text != "Cancel")
             {
-                if (MessageBox.Show("Are You Sure To Exit Programme ?", "Exit", MessageBoxButtons.OKCancel) == DialogResult.OK)
-                {
-                    this.Close();
-                }
+                this.Close();
             }
             else
             {
@@ -1273,6 +1270,58 @@ namespace LoginForm.ItemModule
                 return no;
             }
             
+        }
+
+        private void btnEditNote_Click(object sender, EventArgs e)
+        {
+            IMEEntities IME = new IMEEntities();
+            //label46.Text = "Save Note";
+
+            if (txtStockNo.Text != null && txtStockNo.Text != "" && label46.Text == "Save Note")
+            {
+                ItemNote inot = new ItemNote();
+
+                if (inot.ArticleNo == null && inot.ArticleNo =="")
+                {
+                    
+                    inot.ArticleNo = txtStockNo.Text;
+
+                    Note n = new Note();
+
+                    n.Note_name = txtNote.Text;
+
+                    IME.Notes.Add(n);
+                    IME.SaveChanges();
+
+                    inot.NoteID = n.ID;
+
+                    IME.ItemNotes.Add(inot);
+                    IME.SaveChanges();
+                    MessageBox.Show("Item note edit successfully");
+                    label46.Text = "Edit Note";
+                }
+                else
+                {
+                    ItemNote note = IME.ItemNotes.Where(a => a.ArticleNo == txtStockNo.Text).FirstOrDefault();
+
+                    note.ArticleNo = txtStockNo.Text;
+
+                    Note n = IME.Notes.Where(a => a.ID == note.NoteID).FirstOrDefault();
+
+                    n.Note_name = txtNote.Text;
+                    note.NoteID = n.ID;
+
+                    IME.SaveChanges();
+                    MessageBox.Show("Item note modify successfully");
+                    label46.Text = "Edit Note";
+                }
+                IME.SaveChanges();
+            }
+            else
+            {
+                MessageBox.Show("Please selected item");
+                label46.Text = "Edit Note";
+            }
         }
     }
 }

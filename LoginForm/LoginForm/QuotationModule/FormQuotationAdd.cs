@@ -2046,7 +2046,7 @@ namespace LoginForm.QuotationModule
             {
                 if (dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value != null && Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value.ToString()) < Utils.getCurrentUser().MinMarge) { MessageBox.Show("Please Check Margin of Products "); return false; }
                 if (txtTotalMarge.Text == null || txtTotalMarge.Text == "") { txtTotalMarge.Text = "0"; }
-                if (Utils.getCurrentUser().MinMarge > decimal.Parse(txtTotalMarge.Text))
+                if (Utils.getCurrentUser().MinMarge < decimal.Parse(txtTotalMarge.Text))
                 {
                     MessageBox.Show("You are not able to give this Total Margin. Please check the Total Margin");
                     return false;
