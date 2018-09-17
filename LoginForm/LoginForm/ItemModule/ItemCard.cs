@@ -1280,11 +1280,13 @@ namespace LoginForm.ItemModule
 
             if (txtStockNo.Text != null && txtStockNo.Text != "" && label46.Text == "Save Note")
             {
-                ItemNote inot = new ItemNote();
+                ItemNote note = IME.ItemNotes.Where(a => a.ArticleNo == txtStockNo.Text).FirstOrDefault();
+                
 
-                if (inot.ArticleNo == null && inot.ArticleNo =="")
+                if (note == null)
                 {
-                    
+                    ItemNote inot = new ItemNote();
+
                     inot.ArticleNo = txtStockNo.Text;
 
                     Note n = new Note();
@@ -1303,7 +1305,7 @@ namespace LoginForm.ItemModule
                 }
                 else
                 {
-                    ItemNote note = IME.ItemNotes.Where(a => a.ArticleNo == txtStockNo.Text).FirstOrDefault();
+                    
 
                     note.ArticleNo = txtStockNo.Text;
 
