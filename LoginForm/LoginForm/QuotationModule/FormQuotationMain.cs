@@ -141,15 +141,21 @@ namespace LoginForm.QuotationModule
                 btnNewQuotation.Visible = false;
                 btnUpdate.Visible = false;
 
+                label4.Visible = false;
+                label5.Visible = false;
+                label10.Visible = false;
+
             }
             if (!Utils.AuthorityCheck(IMEAuthority.CanSeeExcel))
             {
                 btnExcel.Visible = false;
+                label7.Visible = false;
             }
 
             if (!Utils.AuthorityCheck(IMEAuthority.CanDeleteQuotation))
             {
                 btnDeleteQuotation.Visible = false;
+                label6.Visible = false;
             }
         }
 

@@ -187,7 +187,11 @@ namespace LoginForm.User
 
         private void lbRoles_SelectedIndexChanged(object sender, EventArgs e)
         {
-            clbAuthorities.DataSource = ((RoleValue)lbRoles.SelectedItem).AuthorizationValues.ToList();
+            IMEEntities IME = new IMEEntities();
+            //clbAuthorities.DataSource = ((RoleValue)lbRoles.SelectedItem).AuthorizationValues.ToList();
+            //clbAuthorities.DisplayMember = "AuthorizationValue1";
+
+            clbAuthorities.DataSource = IME.AuthorizationValues.ToList();
             clbAuthorities.DisplayMember = "AuthorizationValue1";
 
             for (int i = 0; i < clbAuthorities.Items.Count; i++)
