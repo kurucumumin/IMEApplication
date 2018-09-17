@@ -25,8 +25,8 @@ namespace LoginForm
         private static string EmptyCheckTypeAddress = "Address";
 
 
-        private static string SupplierModeAdd = "Add";
-        private static string SupplierModeModify = "Modify";
+        private static string SupplierModeAdd = "ADD";
+        private static string SupplierModeModify = "EDIT";
         bool fromBillFromCustomer = false;
 
         BindingList<SupplierAddress> SavedAddresses = new BindingList<SupplierAddress>();
@@ -683,8 +683,8 @@ namespace LoginForm
                     EnableContactInput(false);
                     EnableGeneralInput(false);
                     EnableGeneralInput(false);
-                    btnAdd.Text = "Add";
-                    btnModify.Text = "Modify";
+                    btnAdd.Text = "ADD";
+                    btnModify.Text = "EDIT";
                     SupplierAddMode = String.Empty;
 
                     #region BankAccount

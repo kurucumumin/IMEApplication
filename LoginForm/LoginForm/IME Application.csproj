@@ -1455,6 +1455,7 @@
     <None Include="Resources\IME_LOGO.png" />
     <None Include="Resources\IME_LOGO2.png" />
     <Content Include="Resources\logo.png" />
+    <None Include="Resources\mumin.png" />
     <Content Include="Resources\resize.png" />
     <None Include="Resources\sap hide.bmp" />
     <Content Include="Resources\save_icon.png" />

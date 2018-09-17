@@ -38,6 +38,7 @@ namespace LoginForm.ItemModule
             string ArticleNoSearch = "";
             label46.Text = "Save Note";
             txtNote.ReadOnly = false;
+            txtQuantitiy.ReadOnly = false;
             //
             if (rbProductCode.Checked == true)
             {
@@ -913,7 +914,7 @@ namespace LoginForm.ItemModule
 
         private void GetImageFromWeb(string URL)
         {
-            try { pictureBox1.Load("https://media.rs-online.com/t_large/Y1373331-01.jpg"); } catch { }
+            //try { pictureBox1.Load("https://media.rs-online.com/t_large/Y1373331-01.jpg"); } catch { }
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
         }
 

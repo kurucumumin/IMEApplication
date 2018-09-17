@@ -1727,6 +1727,7 @@ namespace LoginForm.ItemModule
             // pictureBox1
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox1.Image = global::LoginForm.Properties.Resources.mumin;
             this.pictureBox1.Location = new System.Drawing.Point(11, 20);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";

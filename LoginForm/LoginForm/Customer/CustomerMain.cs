@@ -724,7 +724,7 @@ namespace LoginForm
         {
             #region btnContactCancel
             contactTabEnableFalse();
-            if (btnCreate.Text == "CREATE")
+            if (btnCreate.Text == "ADD")
             {
                 txtSearch.Enabled = true;
                 Search.Enabled = true;
@@ -785,7 +785,7 @@ namespace LoginForm
                 cw.customerNoteID = n.ID;
                 IME.CustomerWorkers.Add(cw);
                 IME.SaveChanges();
-                if (btnCreate.Text == "CREATE")
+                if (btnCreate.Text == "ADD")
                 {
                     txtSearch.Enabled = true;
                     Search.Enabled = true;
@@ -837,7 +837,7 @@ namespace LoginForm
                     }
                     IME.SaveChanges();
                     contactTabEnableFalse();
-                    if (btnCreate.Text == "CREATE")
+                    if (btnCreate.Text == "ADD")
                     {
                         txtSearch.Enabled = true;
                         Search.Enabled = true;
@@ -914,7 +914,7 @@ namespace LoginForm
         private void btnCreate_Click(object sender, EventArgs e)
         {
             Management m = Utils.getManagement();
-            if (btnCreate.Text == "CREATE")
+            if (btnCreate.Text == "ADD")
             {
                 dateTimePicker1.Value = DateTime.Today;
                 itemsEnableTrue();
@@ -1009,8 +1009,8 @@ namespace LoginForm
                     //}
                     //else
                     //{
-                    btnCreate.Text = "CREATE";
-                    btnUpdate.Text = "UPDATE";
+                    btnCreate.Text = "ADD";
+                    btnUpdate.Text = "EDIT";
 
                     Customer c = new Customer();
                     //c = (Customer)IME.Customer_CustomerID(CustomerCode.Text).FirstOrDefault();
@@ -1112,7 +1112,7 @@ namespace LoginForm
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (btnUpdate.Text == "UPDATE")
+            if (btnUpdate.Text == "EDIT")
             {
                 itemsEnableTrue();
                 btnContactAdd.Enabled = true;
@@ -1132,8 +1132,8 @@ namespace LoginForm
             }
             else
             {
-                btnUpdate.Text = "UPDATE";
-                btnCreate.Text = "CREATE";
+                btnUpdate.Text = "EDIT";
+                btnCreate.Text = "ADD";
                 itemsEnableFalse();
                 btnContactAdd.Enabled = false;
                 btnContactDelete.Enabled = false;
@@ -1457,7 +1457,7 @@ namespace LoginForm
                 IME.SaveChanges();
             }
             AdressTabEnableFalse();
-            if (btnCreate.Text == "CREATE")
+            if (btnCreate.Text == "ADD")
             {
                 txtSearch.Enabled = true;
                 Search.Enabled = true;
@@ -1479,7 +1479,7 @@ namespace LoginForm
         private void AdressCancel_Click(object sender, EventArgs e)
         {
             AdressTabEnableFalse();
-            if (btnCreate.Text == "CREATE")
+            if (btnCreate.Text == "ADD")
             {
                 txtSearch.Enabled = true;
                 Search.Enabled = true;

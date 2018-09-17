@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tab_company = new System.Windows.Forms.TabPage();
             this.btnNextCompany = new System.Windows.Forms.Button();
@@ -278,7 +278,7 @@
             this.tab_company.Controls.Add(this.label1);
             this.tab_company.Location = new System.Drawing.Point(4, 25);
             this.tab_company.Name = "tab_company";
-            this.tab_company.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tab_company.Padding = new System.Windows.Forms.Padding(3);
             this.tab_company.Size = new System.Drawing.Size(924, 274);
             this.tab_company.TabIndex = 0;
             this.tab_company.Text = "Company Info";
@@ -290,7 +290,7 @@
             this.btnNextCompany.Name = "btnNextCompany";
             this.btnNextCompany.Size = new System.Drawing.Size(84, 26);
             this.btnNextCompany.TabIndex = 56;
-            this.btnNextCompany.Text = "Next Page";
+            this.btnNextCompany.Text = "Next";
             this.btnNextCompany.UseVisualStyleBackColor = true;
             this.btnNextCompany.Click += new System.EventHandler(this.btnNextCompany_Click);
             // 
@@ -342,7 +342,7 @@
             // btnAddSubcategory
             // 
             this.btnAddSubcategory.Location = new System.Drawing.Point(310, 162);
-            this.btnAddSubcategory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAddSubcategory.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddSubcategory.Name = "btnAddSubcategory";
             this.btnAddSubcategory.Size = new System.Drawing.Size(23, 21);
             this.btnAddSubcategory.TabIndex = 56;
@@ -353,7 +353,7 @@
             // btnAddMainCategory
             // 
             this.btnAddMainCategory.Location = new System.Drawing.Point(310, 121);
-            this.btnAddMainCategory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAddMainCategory.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddMainCategory.Name = "btnAddMainCategory";
             this.btnAddMainCategory.Size = new System.Drawing.Size(23, 21);
             this.btnAddMainCategory.TabIndex = 55;
@@ -631,8 +631,8 @@
             this.tab_account.Controls.Add(this.QuoCurrencyType);
             this.tab_account.Location = new System.Drawing.Point(4, 25);
             this.tab_account.Name = "tab_account";
-            this.tab_account.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tab_account.Size = new System.Drawing.Size(924, 273);
+            this.tab_account.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_account.Size = new System.Drawing.Size(924, 274);
             this.tab_account.TabIndex = 2;
             this.tab_account.Text = "Account";
             // 
@@ -643,7 +643,7 @@
             this.btnNextAccount.Name = "btnNextAccount";
             this.btnNextAccount.Size = new System.Drawing.Size(84, 26);
             this.btnNextAccount.TabIndex = 57;
-            this.btnNextAccount.Text = "Next Page";
+            this.btnNextAccount.Text = "Next";
             this.btnNextAccount.UseVisualStyleBackColor = true;
             this.btnNextAccount.Click += new System.EventHandler(this.btnNextAccount_Click);
             // 
@@ -928,7 +928,7 @@
             this.tab_adresses.Controls.Add(this.AdressCancel);
             this.tab_adresses.Location = new System.Drawing.Point(4, 25);
             this.tab_adresses.Name = "tab_adresses";
-            this.tab_adresses.Size = new System.Drawing.Size(924, 273);
+            this.tab_adresses.Size = new System.Drawing.Size(924, 274);
             this.tab_adresses.TabIndex = 3;
             this.tab_adresses.Text = "Adresses";
             // 
@@ -939,7 +939,7 @@
             this.btnNextAddress.Name = "btnNextAddress";
             this.btnNextAddress.Size = new System.Drawing.Size(84, 26);
             this.btnNextAddress.TabIndex = 61;
-            this.btnNextAddress.Text = "Next Page";
+            this.btnNextAddress.Text = "Next";
             this.btnNextAddress.UseVisualStyleBackColor = true;
             this.btnNextAddress.Click += new System.EventHandler(this.btnNextAddress_Click);
             // 
@@ -964,7 +964,7 @@
             // CityAdd
             // 
             this.CityAdd.Location = new System.Drawing.Point(244, 132);
-            this.CityAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CityAdd.Margin = new System.Windows.Forms.Padding(2);
             this.CityAdd.Name = "CityAdd";
             this.CityAdd.Size = new System.Drawing.Size(23, 21);
             this.CityAdd.TabIndex = 58;
@@ -976,7 +976,7 @@
             // 
             this.TownAdd.Enabled = false;
             this.TownAdd.Location = new System.Drawing.Point(244, 169);
-            this.TownAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TownAdd.Margin = new System.Windows.Forms.Padding(2);
             this.TownAdd.Name = "TownAdd";
             this.TownAdd.Size = new System.Drawing.Size(23, 21);
             this.TownAdd.TabIndex = 57;
@@ -1089,7 +1089,7 @@
             this.AdressList.ItemHeight = 16;
             this.AdressList.Location = new System.Drawing.Point(544, 18);
             this.AdressList.Name = "AdressList";
-            this.AdressList.Size = new System.Drawing.Size(131, 116);
+            this.AdressList.Size = new System.Drawing.Size(131, 180);
             this.AdressList.TabIndex = 10;
             this.AdressList.SelectedIndexChanged += new System.EventHandler(this.AdressList_SelectedIndexChanged);
             // 
@@ -1247,7 +1247,7 @@
             this.tab_contact.Controls.Add(this.btnContactCancel);
             this.tab_contact.Location = new System.Drawing.Point(4, 25);
             this.tab_contact.Name = "tab_contact";
-            this.tab_contact.Size = new System.Drawing.Size(924, 273);
+            this.tab_contact.Size = new System.Drawing.Size(924, 274);
             this.tab_contact.TabIndex = 4;
             this.tab_contact.Text = "Contact";
             // 
@@ -1258,7 +1258,7 @@
             this.btnNextContact.Name = "btnNextContact";
             this.btnNextContact.Size = new System.Drawing.Size(84, 26);
             this.btnNextContact.TabIndex = 57;
-            this.btnNextContact.Text = "Next Page";
+            this.btnNextContact.Text = "Next";
             this.btnNextContact.UseVisualStyleBackColor = true;
             this.btnNextContact.Click += new System.EventHandler(this.btnNextContact_Click);
             // 
@@ -1351,7 +1351,7 @@
             this.ContactList.ItemHeight = 16;
             this.ContactList.Location = new System.Drawing.Point(548, 18);
             this.ContactList.Name = "ContactList";
-            this.ContactList.Size = new System.Drawing.Size(137, 164);
+            this.ContactList.Size = new System.Drawing.Size(137, 180);
             this.ContactList.TabIndex = 29;
             this.ContactList.SelectedIndexChanged += new System.EventHandler(this.ContactList_SelectedIndexChanged);
             // 
@@ -1618,14 +1618,14 @@
             this.salesOperationsDataGridViewTextBoxColumn,
             this.stockReservesDataGridViewTextBoxColumn});
             this.dgvCustomer.DataSource = this.customerBindingSource;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCustomer.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCustomer.DefaultCellStyle = dataGridViewCellStyle9;
             this.dgvCustomer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCustomer.Location = new System.Drawing.Point(7, 377);
             this.dgvCustomer.MultiSelect = false;
@@ -2037,7 +2037,7 @@
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(151, 35);
             this.btnCreate.TabIndex = 50;
-            this.btnCreate.Text = "CREATE";
+            this.btnCreate.Text = "ADD";
             this.btnCreate.UseVisualStyleBackColor = true;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
@@ -2048,7 +2048,7 @@
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(151, 35);
             this.btnUpdate.TabIndex = 51;
-            this.btnUpdate.Text = "UPDATE";
+            this.btnUpdate.Text = "EDIT";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
@@ -2061,9 +2061,9 @@
             this.tableMain.Controls.Add(this.panel1, 0, 1);
             this.tableMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableMain.Location = new System.Drawing.Point(0, 0);
-            this.tableMain.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableMain.Margin = new System.Windows.Forms.Padding(2);
             this.tableMain.Name = "tableMain";
-            this.tableMain.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableMain.Padding = new System.Windows.Forms.Padding(4);
             this.tableMain.RowCount = 3;
             this.tableMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 309F));
             this.tableMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 61F));
@@ -2080,7 +2080,7 @@
             this.panel1.Controls.Add(this.Search);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(6, 315);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(934, 57);
             this.panel1.TabIndex = 2;
