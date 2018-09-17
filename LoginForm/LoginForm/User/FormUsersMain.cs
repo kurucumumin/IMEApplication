@@ -4,6 +4,8 @@ using System;
 using System.Windows.Forms;
 using System.Data;
 using System.Linq;
+using System.Drawing;
+
 namespace LoginForm.User
 {
     public partial class FormUserMain : MyForm
@@ -12,6 +14,7 @@ namespace LoginForm.User
         public FormUserMain(Main.frmMainMetro mainForm)
         {
             InitializeComponent();
+            dgdg.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
             this.mainForm = mainForm;
         }
 

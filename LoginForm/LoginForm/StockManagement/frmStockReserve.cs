@@ -309,11 +309,13 @@ namespace LoginForm.StockManagement
         public frmStockReserve()
         {
             InitializeComponent();
+            dgStockReserveList.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
         }       
 
         public frmStockReserve(frmStock parent, decimal StockID)
         {
             InitializeComponent();
+            dgStockReserveList.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
             this.parent = parent;
             _Stock = new IMEEntities().Stocks.Where(x => x.StockID == StockID).FirstOrDefault(); ;
         }

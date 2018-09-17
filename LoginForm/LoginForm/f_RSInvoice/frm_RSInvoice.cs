@@ -22,11 +22,13 @@ namespace LoginForm.f_RSInvoice
         {
             InitializeComponent();
 
+            dgvRSInvoice.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+
             dtpToDate.MaxDate = DateTime.Today;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
             System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
-            dgRSInvoice, new object[] { true });
+            dgvRSInvoice, new object[] { true });
         }
 
         private void frm_RSInvoice_Load(object sender, EventArgs e)
@@ -48,7 +50,7 @@ namespace LoginForm.f_RSInvoice
 
         private void ShowHiddenRows()
         {
-            foreach (DataGridViewRow row in dgRSInvoice.Rows)
+            foreach (DataGridViewRow row in dgvRSInvoice.Rows)
             {
                 if (!row.Visible)
                 {
@@ -59,11 +61,11 @@ namespace LoginForm.f_RSInvoice
 
         private void HideChoosenRows()
         {
-            if (dgRSInvoice.SelectedRows.Count != 0)
+            if (dgvRSInvoice.SelectedRows.Count != 0)
             {
-                CurrencyManager currencyManager1 = (CurrencyManager)BindingContext[dgRSInvoice.DataSource];
+                CurrencyManager currencyManager1 = (CurrencyManager)BindingContext[dgvRSInvoice.DataSource];
                 currencyManager1.SuspendBinding();
-                foreach (DataGridViewRow row in dgRSInvoice.SelectedRows)
+                foreach (DataGridViewRow row in dgvRSInvoice.SelectedRows)
                 {
                     row.Visible = false;
                 }
@@ -75,11 +77,11 @@ namespace LoginForm.f_RSInvoice
         {
             if (e.Button == MouseButtons.Right)
             {
-                var hti = dgRSInvoice.HitTest(e.X, e.Y);
+                var hti = dgvRSInvoice.HitTest(e.X, e.Y);
                 if (hti.ColumnIndex != -1 && hti.RowIndex != -1)
                 {
-                    dgRSInvoice.ClearSelection();
-                    dgRSInvoice.Rows[hti.RowIndex].Selected = true;
+                    dgvRSInvoice.ClearSelection();
+                    dgvRSInvoice.Rows[hti.RowIndex].Selected = true;
                 }
             }
         }
@@ -91,9 +93,9 @@ namespace LoginForm.f_RSInvoice
 
         private void viewInvoicToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (dgRSInvoice.SelectedRows.Count > 0)
+            if (dgvRSInvoice.SelectedRows.Count > 0)
             {
-                if (Int32.TryParse(dgRSInvoice.SelectedRows[0].Cells[dgID.Index].Value.ToString(), out int InvoiceID))
+                if (Int32.TryParse(dgvRSInvoice.SelectedRows[0].Cells[dgID.Index].Value.ToString(), out int InvoiceID))
                 {
                     frm_RsInvoiceDetail form = new frm_RsInvoiceDetail(InvoiceID);
                     form.Show();
@@ -107,10 +109,10 @@ namespace LoginForm.f_RSInvoice
 
         private void sendToLogoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (dgRSInvoice.SelectedRows.Count > 0)
+            if (dgvRSInvoice.SelectedRows.Count > 0)
             {
-                string Ref = dgRSInvoice.SelectedRows[0].Cells[dgBillingDocumentReference.Index].Value.ToString();
-                int InvoiceID = Int32.Parse(dgRSInvoice.SelectedRows[0].Cells[dgID.Index].Value.ToString());
+                string Ref = dgvRSInvoice.SelectedRows[0].Cells[dgBillingDocumentReference.Index].Value.ToString();
+                int InvoiceID = Int32.Parse(dgvRSInvoice.SelectedRows[0].Cells[dgID.Index].Value.ToString());
                 string resultMessage = logoLibrary.SendToLogo_RSInvoice(Ref);
 
                 if (resultMessage == LogoLibrary.AddSuccessful)
@@ -139,10 +141,10 @@ namespace LoginForm.f_RSInvoice
 
         private void backFromLogoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (dgRSInvoice.SelectedRows.Count > 0)
+            if (dgvRSInvoice.SelectedRows.Count > 0)
             {
-                string Ref = dgRSInvoice.SelectedRows[0].Cells[dgBillingDocumentReference.Index].Value.ToString();
-                int InvoiceID = Int32.Parse(dgRSInvoice.SelectedRows[0].Cells[dgID.Index].Value.ToString());
+                string Ref = dgvRSInvoice.SelectedRows[0].Cells[dgBillingDocumentReference.Index].Value.ToString();
+                int InvoiceID = Int32.Parse(dgvRSInvoice.SelectedRows[0].Cells[dgID.Index].Value.ToString());
                 string resultMessage = logoLibrary.BackFromLogo_RSInvoice(Ref.ToString());
 
                 if (resultMessage == LogoLibrary.DeleteSuccessful)
@@ -176,9 +178,9 @@ namespace LoginForm.f_RSInvoice
 
         private void bgw_RSInvoiceGetter_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            dgRSInvoice.Rows.Clear();
+            dgvRSInvoice.Rows.Clear();
             SetDataGridItemsRsInvoice(dt_RsInvoiceList);
-            dgRSInvoice.Refresh();
+            dgvRSInvoice.Refresh();
         }
 
         private void SetDataGridItemsRsInvoice(DataTable dataTable)
@@ -186,7 +188,7 @@ namespace LoginForm.f_RSInvoice
             Color LogoColor = Color.FromArgb(183, 240, 154);
             foreach (DataRow dRow in dataTable.Rows)
             {
-                DataGridViewRow gRow = dgRSInvoice.Rows[dgRSInvoice.Rows.Add()];
+                DataGridViewRow gRow = dgvRSInvoice.Rows[dgvRSInvoice.Rows.Add()];
 
                 gRow.Cells[dgID.Index].Value = dRow["ID"].ToString();
                 gRow.Cells[dgShipmentReference.Index].Value = dRow["ShipmentReference"].ToString();
@@ -228,9 +230,9 @@ namespace LoginForm.f_RSInvoice
 
         private void btnViewInvoice_Click(object sender, EventArgs e)
         {
-            if (dgRSInvoice.SelectedRows.Count != 0)
+            if (dgvRSInvoice.SelectedRows.Count != 0)
             {
-                frm_RsInvoiceDetail form = new frm_RsInvoiceDetail(Int32.Parse(dgRSInvoice.SelectedRows[0].Cells[dgID.Index].Value.ToString()));
+                frm_RsInvoiceDetail form = new frm_RsInvoiceDetail(Int32.Parse(dgvRSInvoice.SelectedRows[0].Cells[dgID.Index].Value.ToString()));
                 form.Show();
             }
             else

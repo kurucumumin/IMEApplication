@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using LoginForm.DataSet;
@@ -22,17 +23,20 @@ namespace LoginForm.PurchaseOrder
         public NewPurchaseOrder()
         {
             InitializeComponent();
+            dgPurchase.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
         }
 
         public NewPurchaseOrder(decimal item_code)
         {
             InitializeComponent();
+            dgPurchase.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
             PurchaseOrdersDetailFill(item_code);
         }
 
         public NewPurchaseOrder(int purchaseId, int sayac)
         {
             InitializeComponent();
+            dgPurchase.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
 
             if (sayac == 1)
                 PurchaseOrdersDetailFill2(purchaseId);

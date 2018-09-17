@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -51,7 +51,7 @@
             this.dtpToDate = new System.Windows.Forms.DateTimePicker();
             this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.dgRSInvoice = new System.Windows.Forms.DataGridView();
+            this.dgvRSInvoice = new System.Windows.Forms.DataGridView();
             this.dgID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgShipmentReference = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgBillingDocumentReference = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -88,7 +88,7 @@
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgRSInvoice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRSInvoice)).BeginInit();
             this.ctx_dgRSInvoice.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -108,9 +108,9 @@
             this.groupBox2.Controls.Add(this.btnViewInvoice);
             this.groupBox2.Controls.Add(this.btnDeleteInvoice);
             this.groupBox2.Location = new System.Drawing.Point(236, -1);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox2.Size = new System.Drawing.Size(283, 91);
             this.groupBox2.TabIndex = 29;
             this.groupBox2.TabStop = false;
@@ -254,7 +254,7 @@
             this.cbSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSearch.FormattingEnabled = true;
             this.cbSearch.Location = new System.Drawing.Point(4, 11);
-            this.cbSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbSearch.Margin = new System.Windows.Forms.Padding(2);
             this.cbSearch.Name = "cbSearch";
             this.cbSearch.Size = new System.Drawing.Size(163, 21);
             this.cbSearch.TabIndex = 22;
@@ -262,7 +262,7 @@
             // txtSearchText
             // 
             this.txtSearchText.Location = new System.Drawing.Point(4, 36);
-            this.txtSearchText.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtSearchText.Margin = new System.Windows.Forms.Padding(2);
             this.txtSearchText.Name = "txtSearchText";
             this.txtSearchText.Size = new System.Drawing.Size(163, 20);
             this.txtSearchText.TabIndex = 23;
@@ -276,9 +276,9 @@
             this.groupBox1.Controls.Add(this.dtpToDate);
             this.groupBox1.Controls.Add(this.dtpFromDate);
             this.groupBox1.Location = new System.Drawing.Point(9, -1);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(222, 91);
             this.groupBox1.TabIndex = 28;
             this.groupBox1.TabStop = false;
@@ -336,7 +336,7 @@
             this.dtpToDate.CustomFormat = "dd-MM-yyyy";
             this.dtpToDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpToDate.Location = new System.Drawing.Point(62, 15);
-            this.dtpToDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpToDate.Margin = new System.Windows.Forms.Padding(2);
             this.dtpToDate.MaxDate = new System.DateTime(9998, 9, 5, 0, 0, 0, 0);
             this.dtpToDate.Name = "dtpToDate";
             this.dtpToDate.Size = new System.Drawing.Size(90, 20);
@@ -348,7 +348,7 @@
             this.dtpFromDate.CustomFormat = "dd-MM-yyyy";
             this.dtpFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpFromDate.Location = new System.Drawing.Point(62, 41);
-            this.dtpFromDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpFromDate.Margin = new System.Windows.Forms.Padding(2);
             this.dtpFromDate.MaxDate = new System.DateTime(2018, 9, 4, 0, 0, 0, 0);
             this.dtpFromDate.Name = "dtpFromDate";
             this.dtpFromDate.Size = new System.Drawing.Size(90, 20);
@@ -360,11 +360,11 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.dgRSInvoice, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.dgvRSInvoice, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 98F));
@@ -373,15 +373,15 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(933, 530);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
-            // dgRSInvoice
+            // dgvRSInvoice
             // 
-            this.dgRSInvoice.AllowUserToAddRows = false;
-            this.dgRSInvoice.AllowUserToDeleteRows = false;
-            this.dgRSInvoice.AllowUserToOrderColumns = true;
-            this.dgRSInvoice.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
-            this.dgRSInvoice.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dgRSInvoice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgRSInvoice.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvRSInvoice.AllowUserToAddRows = false;
+            this.dgvRSInvoice.AllowUserToDeleteRows = false;
+            this.dgvRSInvoice.AllowUserToOrderColumns = true;
+            this.dgvRSInvoice.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
+            this.dgvRSInvoice.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvRSInvoice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRSInvoice.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgID,
             this.dgShipmentReference,
             this.dgBillingDocumentReference,
@@ -403,28 +403,28 @@
             this.dgCreateDate,
             this.dgSupplierID,
             this.dgUserID});
-            this.dgRSInvoice.ContextMenuStrip = this.ctx_dgRSInvoice;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgRSInvoice.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgRSInvoice.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgRSInvoice.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dgRSInvoice.Location = new System.Drawing.Point(6, 104);
-            this.dgRSInvoice.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.dgRSInvoice.Name = "dgRSInvoice";
-            this.dgRSInvoice.ReadOnly = true;
-            this.dgRSInvoice.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            this.dgRSInvoice.RowTemplate.Height = 24;
-            this.dgRSInvoice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgRSInvoice.Size = new System.Drawing.Size(921, 413);
-            this.dgRSInvoice.TabIndex = 0;
-            this.dgRSInvoice.TabStop = false;
-            this.dgRSInvoice.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgRSInvoice_MouseDown);
+            this.dgvRSInvoice.ContextMenuStrip = this.ctx_dgRSInvoice;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvRSInvoice.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvRSInvoice.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvRSInvoice.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.dgvRSInvoice.Location = new System.Drawing.Point(6, 104);
+            this.dgvRSInvoice.Margin = new System.Windows.Forms.Padding(6);
+            this.dgvRSInvoice.Name = "dgvRSInvoice";
+            this.dgvRSInvoice.ReadOnly = true;
+            this.dgvRSInvoice.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            this.dgvRSInvoice.RowTemplate.Height = 24;
+            this.dgvRSInvoice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvRSInvoice.Size = new System.Drawing.Size(921, 413);
+            this.dgvRSInvoice.TabIndex = 0;
+            this.dgvRSInvoice.TabStop = false;
+            this.dgvRSInvoice.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgRSInvoice_MouseDown);
             // 
             // dgID
             // 
@@ -594,7 +594,7 @@
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(2, 2);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(929, 94);
             this.panel1.TabIndex = 1;
@@ -606,9 +606,9 @@
             this.groupBox4.Controls.Add(this.txtStockCode);
             this.groupBox4.Controls.Add(this.chcCustStockNumber);
             this.groupBox4.Location = new System.Drawing.Point(704, 2);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox4.Size = new System.Drawing.Size(217, 86);
             this.groupBox4.TabIndex = 31;
             this.groupBox4.TabStop = false;
@@ -641,7 +641,7 @@
             // txtStockCode
             // 
             this.txtStockCode.Location = new System.Drawing.Point(2, 11);
-            this.txtStockCode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtStockCode.Margin = new System.Windows.Forms.Padding(2);
             this.txtStockCode.Name = "txtStockCode";
             this.txtStockCode.Size = new System.Drawing.Size(145, 20);
             this.txtStockCode.TabIndex = 25;
@@ -650,7 +650,7 @@
             // 
             this.chcCustStockNumber.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chcCustStockNumber.Location = new System.Drawing.Point(2, 37);
-            this.chcCustStockNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chcCustStockNumber.Margin = new System.Windows.Forms.Padding(2);
             this.chcCustStockNumber.Name = "chcCustStockNumber";
             this.chcCustStockNumber.Size = new System.Drawing.Size(144, 17);
             this.chcCustStockNumber.TabIndex = 26;
@@ -662,9 +662,9 @@
             this.groupBox3.Controls.Add(this.cbSearch);
             this.groupBox3.Controls.Add(this.txtSearchText);
             this.groupBox3.Location = new System.Drawing.Point(523, 2);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox3.Size = new System.Drawing.Size(177, 89);
             this.groupBox3.TabIndex = 30;
             this.groupBox3.TabStop = false;
@@ -681,7 +681,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.ClientSize = new System.Drawing.Size(933, 530);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumSize = new System.Drawing.Size(949, 569);
             this.Name = "frm_RSInvoice";
             this.Text = "RS Invoices";
@@ -691,7 +691,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgRSInvoice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRSInvoice)).EndInit();
             this.ctx_dgRSInvoice.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
@@ -723,7 +723,7 @@
         private System.Windows.Forms.DateTimePicker dtpToDate;
         private System.Windows.Forms.DateTimePicker dtpFromDate;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.DataGridView dgRSInvoice;
+        private System.Windows.Forms.DataGridView dgvRSInvoice;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.TextBox txtStockCode;

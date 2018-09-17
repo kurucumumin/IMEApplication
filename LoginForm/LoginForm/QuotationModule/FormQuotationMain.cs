@@ -8,6 +8,7 @@ using LoginForm.Services;
 using static LoginForm.Services.MyClasses.MyAuthority;
 using Microsoft.Office.Interop;
 using Excel=Microsoft.Office.Interop.Excel;
+using System.Drawing;
 
 namespace LoginForm.QuotationModule
 {
@@ -21,6 +22,8 @@ namespace LoginForm.QuotationModule
         {
             IMEEntities IME = new IMEEntities();
             InitializeComponent();
+
+            dgQuotation.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
             System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,

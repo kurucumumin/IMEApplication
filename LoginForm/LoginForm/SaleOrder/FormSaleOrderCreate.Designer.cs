@@ -65,7 +65,6 @@
             this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.approvedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.invoiceNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.voucherNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.representativeIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.representativeID2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -342,7 +341,6 @@
             this.dataGridViewTextBoxColumn21,
             this.dataGridViewTextBoxColumn22,
             this.approvedDataGridViewTextBoxColumn,
-            this.invoiceNoDataGridViewTextBoxColumn,
             this.voucherNoDataGridViewTextBoxColumn,
             this.representativeIDDataGridViewTextBoxColumn,
             this.representativeID2DataGridViewTextBoxColumn,
@@ -531,13 +529,6 @@
             this.approvedDataGridViewTextBoxColumn.HeaderText = "approved";
             this.approvedDataGridViewTextBoxColumn.Name = "approvedDataGridViewTextBoxColumn";
             this.approvedDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // invoiceNoDataGridViewTextBoxColumn
-            // 
-            this.invoiceNoDataGridViewTextBoxColumn.DataPropertyName = "invoiceNo";
-            this.invoiceNoDataGridViewTextBoxColumn.HeaderText = "invoiceNo";
-            this.invoiceNoDataGridViewTextBoxColumn.Name = "invoiceNoDataGridViewTextBoxColumn";
-            this.invoiceNoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // voucherNoDataGridViewTextBoxColumn
             // 

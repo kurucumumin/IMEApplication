@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using LoginForm.clsClasses;
 using static LoginForm.Services.MyClasses.MyAuthority;
 using LoginForm.Services.SP;
+using System.Drawing;
 
 namespace LoginForm
 {
@@ -29,11 +30,13 @@ namespace LoginForm
         {
             InitializeComponent();
 
+            dgvCustomer.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+
             typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
             System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
-            CustomerDataGrid, new object[] { true });
+            dgvCustomer, new object[] { true });
 
-            this.CustomerDataGrid.AutoGenerateColumns = false;
+            this.dgvCustomer.AutoGenerateColumns = false;
             
         }
 
@@ -53,12 +56,16 @@ namespace LoginForm
             //Qoutation Customer Details
 
             InitializeComponent();
+
+
+            dgvCustomer.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+
             typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
            System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
-           CustomerDataGrid, new object[] { true });
+           dgvCustomer, new object[] { true });
             if (buttonEnabled)
             {
-                CustomerDataGrid.Enabled = false;
+                dgvCustomer.Enabled = false;
                 txtSearch.Enabled = false;
                 Search.Enabled = false;
                 btnCreate.Enabled = false;
@@ -90,15 +97,18 @@ namespace LoginForm
         {
             //Qoutation Customer Details
             InitializeComponent();
+            
+            dgvCustomer.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+
             typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
            System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
-           CustomerDataGrid, new object[] { true });
+           dgvCustomer, new object[] { true });
             if (x == 1)
             {
                 QuotationCustomerId = x;
                 btnContactClick();
                 isModify = true;
-                CustomerDataGrid.Enabled = false;
+                dgvCustomer.Enabled = false;
                 txtSearch.Enabled = false;
                 Search.Enabled = false;
                 btnCreate.Enabled = false;
@@ -119,7 +129,7 @@ namespace LoginForm
             {
                 btnContactUpdateClick();
                 isModify = true;
-                CustomerDataGrid.Enabled = false;
+                dgvCustomer.Enabled = false;
                 txtSearch.Enabled = false;
                 Search.Enabled = false;
                 btnCreate.Enabled = false;
@@ -143,9 +153,12 @@ namespace LoginForm
         public CustomerMain(Boolean buttonEnabled)
         {
             InitializeComponent();
+
+            dgvCustomer.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+
             typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
            System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
-           CustomerDataGrid, new object[] { true });
+           dgvCustomer, new object[] { true });
         }
 
         private void ControlAutorization()
@@ -220,10 +233,10 @@ namespace LoginForm
 
         private void CustomerDataGrid_Click(object sender, EventArgs e)
         {
-            if (CustomerDataGrid.DataSource!=null)
+            if (dgvCustomer.DataSource!=null)
             {
                 itemsClear();
-                gridselectedindex = CustomerDataGrid.CurrentCell.RowIndex;
+                gridselectedindex = dgvCustomer.CurrentCell.RowIndex;
                 customerClicksearch();
             }
             
@@ -231,7 +244,7 @@ namespace LoginForm
 
         private void customerClicksearch()
         {
-            string customerID = CustomerDataGrid.CurrentRow.Cells[ıDDataGridViewTextBoxColumn.Index].Value.ToString();
+            string customerID = dgvCustomer.CurrentRow.Cells[ıDDataGridViewTextBoxColumn.Index].Value.ToString();
             //Customer c = (Customer)(IME.Customer_CustomerID(customerID).FirstOrDefault());
             Customer c = IME.Customers.Where(a => a.ID == customerID).FirstOrDefault();
             dateTimePicker1.Value = c.CreateDate.Value;
@@ -497,7 +510,7 @@ namespace LoginForm
             AdressAdd.Enabled = true;
             titleAdd.Enabled = true;
             ContactList.Enabled = false;
-            CustomerDataGrid.Enabled = false;
+            dgvCustomer.Enabled = false;
             btnContactAdd.Enabled = false;
             btnContactDelete.Enabled = false;
             btnContactUpdate.Enabled = false;
@@ -556,7 +569,7 @@ namespace LoginForm
             AdressList.Enabled = false;
             txtAdressTitle.Enabled = true;
             TownAdd.Enabled = true;
-            CustomerDataGrid.Enabled = false;
+            dgvCustomer.Enabled = false;
             AdressAdd.Enabled = false;
             AddressDel.Enabled = false;
             AddressUpd.Enabled = false;
@@ -637,8 +650,8 @@ namespace LoginForm
         {
             //var CustomerList = IME.Customers.Where(a => a.ID.ToUpper().Contains(search.ToUpper())).ToList();
             var CustomerList = IME.Customer_CustomerID(search).ToList();
-            CustomerDataGrid.DataSource = CustomerList;
-            string customerID = CustomerDataGrid.Rows[0].Cells[ıDDataGridViewTextBoxColumn.Index].Value.ToString();
+            dgvCustomer.DataSource = CustomerList;
+            string customerID = dgvCustomer.Rows[0].Cells[ıDDataGridViewTextBoxColumn.Index].Value.ToString();
             //Customer c = (Customer)IME.Customer_CustomerID(customerID).FirstOrDefault();
             Customer c = IME.Customers.Where(a => a.ID == customerID).FirstOrDefault();
             dateTimePicker1.Value = c.CreateDate.Value;
@@ -715,7 +728,7 @@ namespace LoginForm
             {
                 txtSearch.Enabled = true;
                 Search.Enabled = true;
-                CustomerDataGrid.Enabled = true;
+                dgvCustomer.Enabled = true;
             }
             btnContactAdd.Visible = true;
             btnContactCancel.Visible = false;
@@ -776,7 +789,7 @@ namespace LoginForm
                 {
                     txtSearch.Enabled = true;
                     Search.Enabled = true;
-                    CustomerDataGrid.Enabled = true;
+                    dgvCustomer.Enabled = true;
                 }
                 ContactList.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
                 ContactList.DisplayMember = "cw_name";
@@ -828,7 +841,7 @@ namespace LoginForm
                     {
                         txtSearch.Enabled = true;
                         Search.Enabled = true;
-                        CustomerDataGrid.Enabled = true;
+                        dgvCustomer.Enabled = true;
                     }
                     ContactList.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
                     ContactList.DisplayMember = "cw_name";
@@ -1149,8 +1162,8 @@ namespace LoginForm
                     IME.Customers.Remove(c);
                     IME.SaveChanges();
                 }
-                CustomerDataGrid.Enabled = true;
-                gridselectedindex = CustomerDataGrid.CurrentCell.RowIndex;
+                dgvCustomer.Enabled = true;
+                gridselectedindex = dgvCustomer.CurrentCell.RowIndex;
                 customersearch();
             }
         }
@@ -1259,7 +1272,7 @@ namespace LoginForm
             btnUpdate.Enabled = true;
             btnContactDone.Enabled = false;
             btnContactCancel.Enabled = false;
-            CustomerDataGrid.Enabled = true;
+            dgvCustomer.Enabled = true;
             #endregion
         }
 
@@ -1301,7 +1314,7 @@ namespace LoginForm
             btnUpdate.Enabled = true;
             btnContactDone.Enabled = true;
             btnContactCancel.Enabled = true;
-            CustomerDataGrid.Enabled = false;
+            dgvCustomer.Enabled = false;
             Search.Enabled = false;
             txtSearch.Enabled = false;
             #endregion
@@ -1448,7 +1461,7 @@ namespace LoginForm
             {
                 txtSearch.Enabled = true;
                 Search.Enabled = true;
-                CustomerDataGrid.Enabled = true;
+                dgvCustomer.Enabled = true;
             }
             AdressList.DataSource = null;
             AdressList.DataSource = IME.CustomerAddresses.Where(customerw => customerw.CustomerID == CustomerCode.Text).ToList();
@@ -1470,7 +1483,7 @@ namespace LoginForm
             {
                 txtSearch.Enabled = true;
                 Search.Enabled = true;
-                CustomerDataGrid.Enabled = true;
+                dgvCustomer.Enabled = true;
             }
             AdressList.DataSource = IME.CustomerAddresses.Where(customerw => customerw.CustomerID == CustomerCode.Text).ToList();
             AdressList.DisplayMember = "AdressTitle";
@@ -1883,7 +1896,7 @@ namespace LoginForm
         private void CustomerDataGrid_SelectionChanged(object sender, EventArgs e)
         {
             itemsClear();
-            gridselectedindex = CustomerDataGrid.CurrentCell.RowIndex;
+            gridselectedindex = dgvCustomer.CurrentCell.RowIndex;
             customerClicksearch();
         }
 
@@ -2308,11 +2321,11 @@ namespace LoginForm
 
         private void bgw_CustomerSearch_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
-            CustomerDataGrid.DataSource = customerList;
+            dgvCustomer.DataSource = customerList;
 
-            if (CustomerDataGrid.RowCount != 0)
+            if (dgvCustomer.RowCount != 0)
             {
-                string customerID = CustomerDataGrid.CurrentRow.Cells[ıDDataGridViewTextBoxColumn.Index].Value.ToString();
+                string customerID = dgvCustomer.CurrentRow.Cells[ıDDataGridViewTextBoxColumn.Index].Value.ToString();
                 // Customer c = (Customer)IME.Customer_CustomerID(customerID).FirstOrDefault();
                 Customer c = IME.Customers.Where(a => a.ID == customerID).FirstOrDefault();
                 dateTimePicker1.Value = c.CreateDate.Value;

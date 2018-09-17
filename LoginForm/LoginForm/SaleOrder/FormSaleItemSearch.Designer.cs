@@ -37,7 +37,6 @@
             this.dgItemSearch = new System.Windows.Forms.DataGridView();
             this.txtItemCode = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgItemSearch)).BeginInit();
@@ -130,13 +129,6 @@
             this.label1.TabIndex = 9;
             this.label1.Text = "Item Code";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 21;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -163,7 +155,6 @@
             this.ClientSize = new System.Drawing.Size(1338, 718);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -194,7 +185,6 @@
         private System.Windows.Forms.DataGridView dgItemSearch;
         private System.Windows.Forms.TextBox txtItemCode;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnSearch;
     }

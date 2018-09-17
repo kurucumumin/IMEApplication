@@ -19,16 +19,19 @@ namespace LoginForm.QuotationModule
         public ViewProductHistory()
         {
             InitializeComponent();
+            dgProductHistory.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
         }
 
         private void ViewProductHistory_Load(object sender, EventArgs e)
         {
             InitializeComponent();
+            dgProductHistory.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
         }
 
         public ViewProductHistory(string item_code)
         {
             InitializeComponent();
+            dgProductHistory.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
             ProductHistory(item_code);
         }
 

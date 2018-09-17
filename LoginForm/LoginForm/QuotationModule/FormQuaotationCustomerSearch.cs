@@ -3,6 +3,7 @@ using LoginForm.Services;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -22,11 +23,13 @@ namespace LoginForm.QuotationModule
         public FormQuaotationCustomerSearch()
         {
             InitializeComponent();
+            CustomerSearchGrid.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
         }
 
         public FormQuaotationCustomerSearch(string _Name)
         {
             InitializeComponent();
+            CustomerSearchGrid.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
 
             CustomerName.Text = _Name;
             CustomerSearchGrid.DataSource = CustomerSearch(_Name);
@@ -45,6 +48,7 @@ namespace LoginForm.QuotationModule
         public FormQuaotationCustomerSearch(XmlCustomer customer)
         {
             InitializeComponent();
+            CustomerSearchGrid.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
             fromXmlCustomer = true;
             this.xmlCustomer = customer;
         }
@@ -52,6 +56,7 @@ namespace LoginForm.QuotationModule
         public FormQuaotationCustomerSearch(Customer customer)
         {
             InitializeComponent();
+            CustomerSearchGrid.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
             this.customer = customer;
             CustomerSearch();
         }
@@ -59,6 +64,7 @@ namespace LoginForm.QuotationModule
         public FormQuaotationCustomerSearch(Supplier supplier)
         {
             InitializeComponent();
+            CustomerSearchGrid.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
             this.supplier = supplier;
             SupplierSearch();
         }
@@ -66,6 +72,7 @@ namespace LoginForm.QuotationModule
         public FormQuaotationCustomerSearch(DataSet.Account account)
         {
             InitializeComponent();
+            CustomerSearchGrid.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
             this.account = account;
             AccountSearch();
         }
@@ -73,6 +80,7 @@ namespace LoginForm.QuotationModule
         public FormQuaotationCustomerSearch(Current current, string searchName)
         {
             InitializeComponent();
+            CustomerSearchGrid.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
             this.current = current;
             CustomerName.Text = searchName;
             CurrentSearch(searchName);

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using static LoginForm.Services.MyClasses.MyAuthority;
@@ -42,6 +43,7 @@ namespace LoginForm
         public frmSupplierMain(string SupplierID)
         {
             InitializeComponent();
+            dgSupplier.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
             System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
@@ -58,6 +60,7 @@ namespace LoginForm
         public frmSupplierMain(Boolean buttonEnabled)
         {
             InitializeComponent();
+            dgSupplier.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
             System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
@@ -67,6 +70,7 @@ namespace LoginForm
         public frmSupplierMain()
         {
             InitializeComponent();
+            dgSupplier.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
             System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,

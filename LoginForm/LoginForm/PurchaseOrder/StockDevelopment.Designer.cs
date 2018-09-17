@@ -37,11 +37,11 @@ namespace LoginForm.PurchaseOrder
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvStock = new System.Windows.Forms.DataGridView();
             this.FrameTableLayout.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStock)).BeginInit();
             this.SuspendLayout();
             // 
             // FrameTableLayout
@@ -129,7 +129,7 @@ namespace LoginForm.PurchaseOrder
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.dgvStock);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 169);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
@@ -138,17 +138,17 @@ namespace LoginForm.PurchaseOrder
             this.panel1.Size = new System.Drawing.Size(968, 478);
             this.panel1.TabIndex = 1;
             // 
-            // dataGridView1
+            // dgvStock
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(16, 16);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(936, 446);
-            this.dataGridView1.TabIndex = 1;
+            this.dgvStock.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
+            this.dgvStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvStock.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvStock.Location = new System.Drawing.Point(16, 16);
+            this.dgvStock.Margin = new System.Windows.Forms.Padding(0);
+            this.dgvStock.Name = "dgvStock";
+            this.dgvStock.RowTemplate.Height = 24;
+            this.dgvStock.Size = new System.Drawing.Size(936, 446);
+            this.dgvStock.TabIndex = 1;
             // 
             // StockDevelopment
             // 
@@ -165,7 +165,7 @@ namespace LoginForm.PurchaseOrder
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStock)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -180,7 +180,7 @@ namespace LoginForm.PurchaseOrder
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvStock;
         private System.Windows.Forms.Panel panel1;
     }
 }

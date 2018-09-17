@@ -280,6 +280,7 @@ namespace LoginForm.StockManagement
         public frmStock()
         {
             InitializeComponent();
+            dgStockList.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
         }
 
         private void txtProductID_DoubleClick(object sender, EventArgs e)

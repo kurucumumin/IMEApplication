@@ -22,6 +22,7 @@ namespace LoginForm.PurchaseOrder
         public StockDevelopment()
         {
             InitializeComponent();
+            dgvStock.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
         }
     }
 }

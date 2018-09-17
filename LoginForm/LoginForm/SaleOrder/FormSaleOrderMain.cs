@@ -24,6 +24,7 @@ namespace LoginForm.nsSaleOrder
         public FormSalesOrderMain()
         {
             InitializeComponent();
+            dgSales.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
             System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,

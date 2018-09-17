@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -19,6 +20,7 @@ namespace LoginForm.QuotationModule
         public FormQuotationItemSearch(string searchItemCode, List<CompleteItem> itemList)
         {
             InitializeComponent();
+            dgQuotationItemSearch.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
             txtQuotationItemCode.Text = searchItemCode;
             this.itemList = itemList;
         }
@@ -27,6 +29,7 @@ namespace LoginForm.QuotationModule
         {
             QuotationUtils.ItemCode = null;
             InitializeComponent();
+            dgQuotationItemSearch.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
             ArticleCode = ItemCode;
             if (ArticleCode != null)
             {

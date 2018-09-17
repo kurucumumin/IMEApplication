@@ -20,6 +20,7 @@ namespace LoginForm
         public frmDevSupplierMain()
         {
             InitializeComponent();
+            dgSupplier.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
         }
 
         private void frmDevSupplierMain_Load(object sender, EventArgs e)
