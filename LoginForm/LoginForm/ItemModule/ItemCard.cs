@@ -17,6 +17,7 @@ namespace LoginForm.ItemModule
         public ItemCard()
         {
             InitializeComponent();
+            dgItemList.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
