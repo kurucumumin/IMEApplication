@@ -22,7 +22,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>134</ApplicationRevision>
+    <ApplicationRevision>135</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -1080,6 +1080,12 @@
     <Compile Include="Supplier\frmSupplierSubCategoryAdd.designer.cs">
       <DependentUpon>frmSupplierSubCategoryAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="User\FormAuthorities.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\FormAuthorities.Designer.cs">
+      <DependentUpon>FormAuthorities.cs</DependentUpon>
+    </Compile>
     <Compile Include="User\FormUserCustomerUpdate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1339,6 +1345,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Supplier\frmSupplierSubCategoryAdd.resx">
       <DependentUpon>frmSupplierSubCategoryAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\FormAuthorities.resx">
+      <DependentUpon>FormAuthorities.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\FormUserCustomerUpdate.resx">
       <DependentUpon>FormUserCustomerUpdate.cs</DependentUpon>

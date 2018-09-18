@@ -504,5 +504,11 @@ namespace LoginForm.User
 
             }
         }
+
+        private void btnAuthorities_Click(object sender, EventArgs e)
+        {
+            FormAuthorities form = new FormAuthorities(authList);
+            form.ShowDialog();
+        }
     }
 }

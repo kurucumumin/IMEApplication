@@ -70,6 +70,8 @@
             this.chcChangePassword = new System.Windows.Forms.CheckBox();
             this.authRoleBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.authorizationValueBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnAuthorities = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.gbRoles.SuspendLayout();
@@ -154,6 +156,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.btnAuthorities);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Controls.Add(this.gbUserInfo);
@@ -394,6 +398,19 @@
             this.chcChangePassword.UseVisualStyleBackColor = true;
             this.chcChangePassword.CheckedChanged += new System.EventHandler(this.chcChangePassword_CheckedChanged);
             // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            // 
+            // btnAuthorities
+            // 
+            resources.ApplyResources(this.btnAuthorities, "btnAuthorities");
+            this.btnAuthorities.Image = global::LoginForm.Properties.Resources.icons8_Edit_Property_32;
+            this.btnAuthorities.Name = "btnAuthorities";
+            this.btnAuthorities.UseVisualStyleBackColor = true;
+            this.btnAuthorities.Click += new System.EventHandler(this.btnAuthorities_Click);
+            // 
             // FormWorkerManagement
             // 
             resources.ApplyResources(this, "$this");
@@ -464,5 +481,7 @@
         private System.Windows.Forms.CheckBox chcAllAuth;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnAuthorities;
     }
 }
