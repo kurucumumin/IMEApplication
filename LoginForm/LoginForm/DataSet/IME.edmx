@@ -3010,6 +3010,9 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Parameter Name="MPNNo" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="ArticleSelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Authorities_AuthoritiesValue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AuthorizationValue" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="BackOrderAnalize" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="BOADate" Type="date" Mode="In" />
         </Function>
@@ -3660,6 +3663,9 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Parameter Name="Heigh" Type="decimal" Mode="In" />
           <Parameter Name="Width" Type="decimal" Mode="In" />
           <Parameter Name="Length" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="UserAuthorization_Worker" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="WorkerID" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="IMEModelStoreContainer">
           <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
@@ -8087,6 +8093,9 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="MPNNo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ArticleSelectAll" ReturnType="Collection(IMEModel.ArticleSelectAll_Result)" />
+          <FunctionImport Name="Authorities_AuthoritiesValue" ReturnType="Collection(IMEModel.Authorities_AuthoritiesValue_Result)">
+            <Parameter Name="AuthorizationValue" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="BackOrderAnalize" ReturnType="Collection(IMEModel.BackOrderAnalize_Result)">
             <Parameter Name="BOADate" Mode="In" Type="DateTime" />
           </FunctionImport>
@@ -8737,6 +8746,9 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="Width" Mode="In" Type="Decimal" />
             <Parameter Name="Length" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="UserAuthorization_Worker" ReturnType="Collection(String)">
+            <Parameter Name="WorkerID" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="AccountMainDataGridFiller_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
@@ -8801,6 +8813,10 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Type="Decimal" Name="Heigh" Nullable="true" Precision="20" Scale="5" />
           <Property Type="Decimal" Name="Width" Nullable="true" Precision="20" Scale="5" />
           <Property Type="Decimal" Name="Length" Nullable="true" Precision="20" Scale="5" />
+        </ComplexType>
+        <ComplexType Name="Authorities_AuthoritiesValue_Result">
+          <Property Type="Int32" Name="AuthorizationID" Nullable="false" />
+          <Property Type="String" Name="AuthorizationValue" Nullable="true" MaxLength="255" />
         </ComplexType>
         <ComplexType Name="BackOrderAnalize_Result">
           <Property Type="String" Name="QuotationNo" Nullable="true" MaxLength="20" />
@@ -11160,6 +11176,14 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Authorities_AuthoritiesValue" FunctionName="IMEModel.Store.Authorities_AuthoritiesValue">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.Authorities_AuthoritiesValue_Result">
+                <ScalarProperty Name="AuthorizationID" ColumnName="AuthorizationID" />
+                <ScalarProperty Name="AuthorizationValue" ColumnName="AuthorizationValue" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="BackOrderAnalize" FunctionName="IMEModel.Store.BackOrderAnalize">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.BackOrderAnalize_Result">
@@ -12011,6 +12035,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SuperDiskAdd" FunctionName="IMEModel.Store.SuperDiskAdd" />
           <FunctionImportMapping FunctionImportName="SuperDiskPAdd" FunctionName="IMEModel.Store.SuperDiskPAdd" />
+          <FunctionImportMapping FunctionImportName="UserAuthorization_Worker" FunctionName="IMEModel.Store.UserAuthorization_Worker" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

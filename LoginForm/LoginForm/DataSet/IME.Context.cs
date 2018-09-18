@@ -181,6 +181,15 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ArticleSelectAll_Result>("ArticleSelectAll");
         }
     
+        public virtual ObjectResult<Authorities_AuthoritiesValue_Result> Authorities_AuthoritiesValue(string authorizationValue)
+        {
+            var authorizationValueParameter = authorizationValue != null ?
+                new ObjectParameter("AuthorizationValue", authorizationValue) :
+                new ObjectParameter("AuthorizationValue", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Authorities_AuthoritiesValue_Result>("Authorities_AuthoritiesValue", authorizationValueParameter);
+        }
+    
         public virtual ObjectResult<BackOrderAnalize_Result> BackOrderAnalize(Nullable<System.DateTime> bOADate)
         {
             var bOADateParameter = bOADate.HasValue ?
@@ -2575,6 +2584,15 @@ namespace LoginForm.DataSet
                 new ObjectParameter("Length", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SuperDiskPAdd", article_NoParameter, article_DescParameter, pack_CodeParameter, pack_QuantityParameter, unit_ContentParameter, unit_MeasureParameter, uk_Col_1Parameter, standard_WeightParameter, hazardous_IndParameter, calibration_IndParameter, obsolete_FlagParameter, mH1Parameter, low_Discount_IndParameter, licensed_IndParameter, shelf_LifeParameter, cofOParameter, eUR1_IndicatorParameter, cCCN_NoParameter, supercede_DateParameter, current_Cat_pageParameter, uk_Intro_DateParameter, fillerParameter, uk_Disc_DateParameter, substitute_ByParameter, bHC_FlagParameter, filler1Parameter, future_Sell_PriceParameter, int_CatParameter, new_Prod_Change_IndParameter, out_of_Stock_Prohibit_change_indParameter, disc_Change_IndParameter, superceded_Change_IndParameter, pack_Size_Change_IndParameter, rolled_Product_Change_IndParameter, expiring_Product_Change_IndParameter, manufacturerParameter, mPNParameter, mH_Code_Level_1Parameter, heighParameter, widthParameter, lengthParameter);
+        }
+    
+        public virtual ObjectResult<string> UserAuthorization_Worker(Nullable<int> workerID)
+        {
+            var workerIDParameter = workerID.HasValue ?
+                new ObjectParameter("WorkerID", workerID) :
+                new ObjectParameter("WorkerID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("UserAuthorization_Worker", workerIDParameter);
         }
     }
 }
