@@ -4716,5 +4716,6 @@ namespace LoginForm.QuotationModule
         {
             txtBox.Text = txtBox.Text.ToUpper();
         }
+
     }
 }

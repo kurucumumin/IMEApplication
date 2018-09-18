@@ -40,6 +40,8 @@
             this.chcAllAuth = new System.Windows.Forms.CheckBox();
             this.clbAuthorities = new System.Windows.Forms.CheckedListBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnAuthorities = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.gbUserInfo = new System.Windows.Forms.GroupBox();
@@ -70,8 +72,6 @@
             this.chcChangePassword = new System.Windows.Forms.CheckBox();
             this.authRoleBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.authorizationValueBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.label5 = new System.Windows.Forms.Label();
-            this.btnAuthorities = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.gbRoles.SuspendLayout();
@@ -163,6 +163,19 @@
             this.panel1.Controls.Add(this.gbUserInfo);
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            // 
+            // btnAuthorities
+            // 
+            resources.ApplyResources(this.btnAuthorities, "btnAuthorities");
+            this.btnAuthorities.Image = global::LoginForm.Properties.Resources.icons8_Edit_Property_32;
+            this.btnAuthorities.Name = "btnAuthorities";
+            this.btnAuthorities.UseVisualStyleBackColor = true;
+            this.btnAuthorities.Click += new System.EventHandler(this.btnAuthorities_Click);
             // 
             // label4
             // 
@@ -397,19 +410,6 @@
             this.chcChangePassword.Name = "chcChangePassword";
             this.chcChangePassword.UseVisualStyleBackColor = true;
             this.chcChangePassword.CheckedChanged += new System.EventHandler(this.chcChangePassword_CheckedChanged);
-            // 
-            // label5
-            // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.Name = "label5";
-            // 
-            // btnAuthorities
-            // 
-            resources.ApplyResources(this.btnAuthorities, "btnAuthorities");
-            this.btnAuthorities.Image = global::LoginForm.Properties.Resources.icons8_Edit_Property_32;
-            this.btnAuthorities.Name = "btnAuthorities";
-            this.btnAuthorities.UseVisualStyleBackColor = true;
-            this.btnAuthorities.Click += new System.EventHandler(this.btnAuthorities_Click);
             // 
             // FormWorkerManagement
             // 

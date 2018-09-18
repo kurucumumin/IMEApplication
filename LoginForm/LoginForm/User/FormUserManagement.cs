@@ -402,24 +402,24 @@ namespace LoginForm.User
                             wrkr.isActive = 0;
                         }
 
-                        wrkr.AuthorizationValues.Clear();
+                        //wrkr.AuthorizationValues.Clear();
                         IME.SaveChanges();
 
-                        if (clbUserAuthorityList.CheckedItems.Count != 0)
-                        {
-                            foreach (AuthorizationValue item in clbUserAuthorityList.CheckedItems)
-                            {
-                                AuthorizationValue av = IME.AuthorizationValues.Where(auth => auth.AuthorizationID == item.AuthorizationID).FirstOrDefault();
-                                wrkr.AuthorizationValues.Add(av);
-                            }
-                            IME.SaveChanges();
-                        }
+                        //if (clbUserAuthorityList.CheckedItems.Count != 0)
+                        //{
+                        //    foreach (AuthorizationValue item in clbUserAuthorityList.CheckedItems)
+                        //    {
+                        //        AuthorizationValue av = IME.AuthorizationValues.Where(auth => auth.AuthorizationID == item.AuthorizationID).FirstOrDefault();
+                        //        wrkr.AuthorizationValues.Add(av);
+                        //    }
+                        //    IME.SaveChanges();
+                        //}
 
-                        if (wrkr.WorkerID == Utils.getCurrentUser().WorkerID)
-                        {
-                            Utils.setCurrentUser(wrkr);
-                            formMain.checkAuthorities();
-                        }
+                        //if (wrkr.WorkerID == Utils.getCurrentUser().WorkerID)
+                        //{
+                        //    Utils.setCurrentUser(wrkr);
+                        //    formMain.checkAuthorities();
+                        //}
                     }
                     catch (Exception ex)
                     {
@@ -507,7 +507,7 @@ namespace LoginForm.User
 
         private void btnAuthorities_Click(object sender, EventArgs e)
         {
-            FormAuthorities form = new FormAuthorities(authList);
+            FormAuthorities form = new FormAuthorities(authList.ToList(), txtUsername.Text);
             form.ShowDialog();
         }
     }

@@ -207,14 +207,14 @@
             // 
             this.slidingPriceFileToolStripMenuItem.Name = "slidingPriceFileToolStripMenuItem";
             this.slidingPriceFileToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
-            this.slidingPriceFileToolStripMenuItem.Text = "Sliding Price File";
+            this.slidingPriceFileToolStripMenuItem.Text = "Sliding Price List";
             this.slidingPriceFileToolStripMenuItem.Click += new System.EventHandler(this.slidingPriceFileToolStripMenuItem_Click);
             // 
             // hazardouseFileToolStripMenuItem
             // 
             this.hazardouseFileToolStripMenuItem.Name = "hazardouseFileToolStripMenuItem";
             this.hazardouseFileToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
-            this.hazardouseFileToolStripMenuItem.Text = "Hazardouse File";
+            this.hazardouseFileToolStripMenuItem.Text = "Hazardouse List";
             this.hazardouseFileToolStripMenuItem.Click += new System.EventHandler(this.hazardouseFileToolStripMenuItem_Click);
             // 
             // rsProListToolStripMenuItem
@@ -447,6 +447,7 @@
             this.btnSave.Size = new System.Drawing.Size(52, 52);
             this.btnSave.TabIndex = 55;
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // label1
             // 

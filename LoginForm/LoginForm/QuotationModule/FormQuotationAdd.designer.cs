@@ -3071,7 +3071,7 @@
             // txtTotalMarge
             // 
             this.txtTotalMarge.Enabled = false;
-            this.txtTotalMarge.Location = new System.Drawing.Point(180, 115);
+            this.txtTotalMarge.Location = new System.Drawing.Point(179, 114);
             this.txtTotalMarge.Name = "txtTotalMarge";
             this.txtTotalMarge.Size = new System.Drawing.Size(54, 20);
             this.txtTotalMarge.TabIndex = 15;
@@ -3221,6 +3221,7 @@
             this.LandingCost.TabIndex = 50;
             this.LandingCost.TabStop = false;
             this.LandingCost.Text = "Landing Cost";
+            this.LandingCost.Visible = false;
             // 
             // ckCustomsDuties
             // 

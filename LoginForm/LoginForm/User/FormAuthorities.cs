@@ -3,22 +3,17 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using LoginForm.DataSet;
 using System.Linq;
-using System.Drawing;
-using LoginForm.PurchaseOrder;
-using LoginForm.QuotationModule;
 using LoginForm.Services;
 using System.Data;
-using LoginForm.clsClasses;
-using static LoginForm.Services.MyClasses.MyAuthority;
-using ImeLogoLibrary;
-using LoginForm.MyClasses;
-using LoginForm.Services.SP;
+using LoginForm.Main;
 
 namespace LoginForm.User
 {
     public partial class FormAuthorities : Form
     {
         string name = "";
+        int workerID;
+        frmMainMetro formMain;
         List<AuthorizationValue> authList;
         IMEEntities IME = new IMEEntities();
 
@@ -27,10 +22,12 @@ namespace LoginForm.User
             InitializeComponent();
         }
 
-        public FormAuthorities(List<AuthorizationValue> auth)
+        public FormAuthorities(List<AuthorizationValue> auth, string WorkerName)
         {
             InitializeComponent();
             IMEEntities IME = new IMEEntities();
+            name = WorkerName;
+            workerID = IME.Workers.Where(x => x.UserName == name).FirstOrDefault().WorkerID;
             authList = auth;
             clbUserAuthorityList.DataSource = authList;
             clbUserAuthorityList.DisplayMember = "AuthorizationValue1";
@@ -41,7 +38,7 @@ namespace LoginForm.User
 
         private void LoadRoles()
         {
-            lbRoles.DataSource = AuthorizationService.getRoles().Where(x=> x.roleName==name).ToList();
+            lbRoles.DataSource = AuthorizationService.getRoles().Where(x => x.roleName == name).ToList();
             lbRoles.DisplayMember = "roleName";
         }
 
@@ -68,14 +65,14 @@ namespace LoginForm.User
                 //tüm otoriteleri işaretle
                 clbAuthorities.DataSource = IME.AuthorizationValues.ToList();
                 clbAuthorities.DisplayMember = "AuthorizationValue1";
-                SelectAllChangeState(clbAuthorities, true);
+                matchAuthorities();
             }
             else
             {
                 //tüm otoriteleri kaldır
-                clbAuthorities.DataSource = IME.AuthorizationValues.Where(x=> x.AuthorizationValue1.Contains(ıtemCardToolStripMenuItem.Text)).ToList();
+                clbAuthorities.DataSource = IME.AuthorizationValues.Where(x => x.AuthorizationValue1.Contains(ıtemCardToolStripMenuItem.Text)).ToList();
                 clbAuthorities.DisplayMember = "AuthorizationValue1";
-                SelectAllChangeState(clbAuthorities, false);
+                matchAuthorities();
             }
         }
 
@@ -116,10 +113,11 @@ namespace LoginForm.User
         #region Menüler
         private void MenuItem(string select)
         {
-            clbAuthorities.DataSource = IME.AuthorizationValues.Where(x => x.AuthorizationValue1.Contains(select)).ToList();
+            select = select.Replace(" ", "");
+            clbAuthorities.DataSource = IME.AuthorizationValues.Where(x => x.AuthorizationValue1.Replace(" ", "").Contains(select)).ToList();
             clbAuthorities.DisplayMember = "AuthorizationValue1";
             chcAllAuth.Checked = false;
-           // SelectAllChangeState(clbAuthorities, true);
+            matchAuthorities();
         }
 
         private void ıtemCardToolStripMenuItem_Click(object sender, EventArgs e)
@@ -307,25 +305,59 @@ namespace LoginForm.User
         private void clbAuthorities_MouseClick(object sender, MouseEventArgs e)
         {
             int index = clbAuthorities.SelectedIndex;
-            bool state = clbAuthorities.GetItemChecked(index);
+            if (index != -1)
+            {
+                bool state = clbAuthorities.GetItemChecked(index);
 
 
-            if (!state)
-            {
-                authList.Add((AuthorizationValue)clbAuthorities.Items[index]);
-                RefreshUserAuthList();
-            }
-            else if (state)
-            {
-                for (int i = 0; i < clbUserAuthorityList.Items.Count; i++)
+                if (!state)
                 {
-                    if (((AuthorizationValue)clbAuthorities.Items[index]).AuthorizationID == ((AuthorizationValue)clbUserAuthorityList.Items[i]).AuthorizationID)
+                    authList.Add((AuthorizationValue)clbAuthorities.Items[index]);
+                    RefreshUserAuthList();
+                }
+                else if (state)
+                {
+                    for (int i = 0; i < clbUserAuthorityList.Items.Count; i++)
                     {
-                        authList.Remove((AuthorizationValue)clbUserAuthorityList.Items[i]);
-                        RefreshUserAuthList();
+                        if (((AuthorizationValue)clbAuthorities.Items[index]).AuthorizationID == ((AuthorizationValue)clbUserAuthorityList.Items[i]).AuthorizationID)
+                        {
+                            authList.Remove((AuthorizationValue)clbUserAuthorityList.Items[i]);
+                            RefreshUserAuthList();
+                        }
                     }
                 }
             }
+
         }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Worker wrkr = IME.Workers.Where(w => w.WorkerID == workerID).FirstOrDefault();
+                wrkr.AuthorizationValues.Clear();
+
+                if (clbUserAuthorityList.CheckedItems.Count != 0)
+                {
+                    foreach (AuthorizationValue item in clbUserAuthorityList.CheckedItems)
+                    {
+                        AuthorizationValue av = IME.AuthorizationValues.Where(auth => auth.AuthorizationID == item.AuthorizationID).FirstOrDefault();
+                        wrkr.AuthorizationValues.Add(av);
+                    }
+                    IME.SaveChanges();
+                }
+
+                if (wrkr.WorkerID == Utils.getCurrentUser().WorkerID)
+                {
+                    Utils.setCurrentUser(wrkr);
+                    formMain.checkAuthorities();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Bir hata oluştu, Tekrar Deneyin");
+            }
+        }
+
     }
 }

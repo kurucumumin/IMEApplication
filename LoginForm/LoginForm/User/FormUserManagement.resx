@@ -171,6 +171,9 @@
   <data name="groupBox1.Text" xml:space="preserve">
     <value>USER AUTHORITY LIST</value>
   </data>
+  <data name="groupBox1.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
     <value>groupBox1</value>
   </data>
@@ -236,6 +239,9 @@
   </data>
   <data name="gbRoles.Text" xml:space="preserve">
     <value>ROLES</value>
+  </data>
+  <data name="gbRoles.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;gbRoles.Name" xml:space="preserve">
     <value>gbRoles</value>
@@ -329,6 +335,9 @@
   </data>
   <data name="gbAuthorities.Text" xml:space="preserve">
     <value>AUTHORITIES</value>
+  </data>
+  <data name="gbAuthorities.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;gbAuthorities.Name" xml:space="preserve">
     <value>gbAuthorities</value>
