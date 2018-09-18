@@ -20,6 +20,7 @@ namespace LoginForm.DataSet
             this.BackOrders = new HashSet<BackOrder>();
             this.PurchaseOrderDetails = new HashSet<PurchaseOrderDetail>();
             this.RS_InvoiceDetails = new HashSet<RS_InvoiceDetails>();
+            this.SaleOrders = new HashSet<SaleOrder>();
         }
     
         public string CustomerID { get; set; }
@@ -48,5 +49,7 @@ namespace LoginForm.DataSet
         public virtual Worker Worker { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RS_InvoiceDetails> RS_InvoiceDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SaleOrder> SaleOrders { get; set; }
     }
 }

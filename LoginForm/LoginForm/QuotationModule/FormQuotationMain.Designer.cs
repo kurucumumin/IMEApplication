@@ -438,9 +438,11 @@
             "QUOT NUMBER",
             "CUSTOMER CODE",
             "CUSTOMER NAME",
-            "BY TOTAL AMOUNT",
-            "BY RFQ",
-            "BY MPN"});
+            "TOTAL AMOUNT",
+            "RFQ",
+            "MPN",
+            "SALE ORDER NO",
+            "PURCHASE ORDER NO"});
             this.cbSearch.Location = new System.Drawing.Point(6, 14);
             this.cbSearch.Name = "cbSearch";
             this.cbSearch.Size = new System.Drawing.Size(216, 23);

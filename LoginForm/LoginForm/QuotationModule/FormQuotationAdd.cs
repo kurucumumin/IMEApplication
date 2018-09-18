@@ -4072,8 +4072,7 @@ namespace LoginForm.QuotationModule
         /// </summary>
         private void CalculateTotalMarge()
         {
-
-            if (!String.IsNullOrEmpty(CurrentRow.Cells[dgQty.Index].Value.ToString()))
+            if (!String.IsNullOrEmpty(CurrentRow?.Cells[dgQty.Index].Value.ToString()))
             {
                 decimal AllMargin = 0;
                 if (cbDeliverDiscount.Checked)

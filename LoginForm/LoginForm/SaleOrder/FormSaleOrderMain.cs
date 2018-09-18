@@ -126,7 +126,7 @@ namespace LoginForm.nsSaleOrder
             {
                 if (row.Cells[Status.Index].Value != null && row.Cells[Status.Index].Value.ToString() == "LOGO")
                 {
-                    row.DefaultCellStyle.BackColor = System.Drawing.Color.Green;
+                    row.DefaultCellStyle.BackColor = Color.FromArgb(159, 255, 154);
                 }else if (row.Cells[Status.Index].Value != null && row.Cells[Status.Index].Value.ToString() == "")
                 {
                     row.DefaultCellStyle.BackColor = System.Drawing.Color.Empty;
@@ -134,7 +134,7 @@ namespace LoginForm.nsSaleOrder
 
                 if (row.Cells[PurchaseID.Index].Value != null)
                 {
-                    row.DefaultCellStyle.BackColor = System.Drawing.Color.Green;
+                    row.DefaultCellStyle.BackColor = Color.FromArgb(114, 155, 185);
                 }
                 //else if (row.Cells[PurchaseID.Index].Value == null && row.Cells[PurchaseID.Index].Value.ToString() == "")
                 //{

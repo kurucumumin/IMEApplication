@@ -15,9 +15,12 @@ namespace LoginForm.ItemModule
         IMEEntities IME = new IMEEntities();
         string txtSelected = "";
         int gridselectedindex = 0;
+        decimal defaultCurrency = 0;
         public ItemCard()
         {
             InitializeComponent();
+            defaultCurrency = (decimal)Utils.getManagement().Currency.ExchangeRates.OrderByDescending(a => a.date).FirstOrDefault().rate;
+            label65.Text = "WEB (" + Utils.getManagement().Currency.currencySymbol +")";
             dgItemList.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
         }
 
@@ -302,7 +305,7 @@ namespace LoginForm.ItemModule
             var i = IME.tbl_Item.Where(a => a.StockNo == ArticleNoSearch).FirstOrDefault();
 
 
-            int cofactor = (int)IME.CompleteItems.Where(x => x.Article_No == ArticleNoSearch).FirstOrDefault().Unit_Content;
+            int coefficient = (int)IME.CompleteItems.Where(x => x.Article_No == ArticleNoSearch).FirstOrDefault().Unit_Content;
 
 
             if (sd != null)
@@ -348,6 +351,9 @@ namespace LoginForm.ItemModule
                 txtWidth.Text = String.Format("{0:0.0000}", Decimal.Parse(txtWidth.Text)).ToString();
                 txtLength.Text = String.Format("{0:0.0000}", ((decimal)(sd.Length * ((Decimal)100))).ToString("G29"));
                 txtLength.Text = String.Format("{0:0.0000}", Decimal.Parse(txtLength.Text)).ToString();
+                cmbSupplierName.SelectedIndex = cmbSupplierName.FindStringExact("RS");
+                txtSupplierID.Text = cmbSupplierName.SelectedValue.ToString();
+
             }
 
             if (sdP != null)
@@ -387,7 +393,8 @@ namespace LoginForm.ItemModule
                 txtWidth.Text = String.Format("{0:0.0000}", Decimal.Parse(txtWidth.Text)).ToString();
                 txtLength.Text = String.Format("{0:0.0000}", ((decimal)(sdP.Length * ((Decimal)100))).ToString("G29"));
                 txtLength.Text = String.Format("{0:0.0000}", Decimal.Parse(txtLength.Text)).ToString();
-
+                cmbSupplierName.SelectedIndex = cmbSupplierName.FindStringExact("RS");
+                txtSupplierID.Text = cmbSupplierName.SelectedValue.ToString();
 
 
             }
@@ -419,22 +426,24 @@ namespace LoginForm.ItemModule
                 txtCCCN.Text = er.CCCN.ToString();
                 txtCoO.Text = er.CountryofOrigin;
                 txtUM.Text = er.UnitofMeasure;
+                cmbSupplierName.SelectedIndex = cmbSupplierName.FindStringExact("RS");
+                txtSupplierID.Text = cmbSupplierName.SelectedValue.ToString();
 
-                txtUK1.Text = (er.Col1Price / cofactor).ToString();
-                txtUK2.Text = (er.Col2Price / cofactor).ToString();
-                txtUK3.Text = (er.Col3Price / cofactor).ToString();
-                txtUK4.Text = (er.Col4Price / cofactor).ToString();
-                txtUK5.Text = (er.Col5Price / cofactor).ToString();
-                txtUnitCount1.Text = (er.Col1Break * cofactor).ToString();
-                txtUnitCount2.Text = (er.Col2Break * cofactor).ToString();
-                txtUnitCount3.Text = (er.Col3Break * cofactor).ToString();
-                txtUnitCount4.Text = (er.Col4Break * cofactor).ToString();
-                txtUnitCount5.Text = (er.Col5Break * cofactor).ToString();
-                txtCost1.Text = (er.DiscountedPrice1 / cofactor).ToString();
-                txtCost2.Text = (er.DiscountedPrice2 / cofactor).ToString();
-                txtCost3.Text = (er.DiscountedPrice3 / cofactor).ToString();
-                txtCost4.Text = (er.DiscountedPrice4 / cofactor).ToString();
-                txtCost5.Text = (er.DiscountedPrice5 / cofactor).ToString();
+                txtUK1.Text = (er.Col1Price / coefficient).ToString();
+                txtUK2.Text = (er.Col2Price / coefficient).ToString();
+                txtUK3.Text = (er.Col3Price / coefficient).ToString();
+                txtUK4.Text = (er.Col4Price / coefficient).ToString();
+                txtUK5.Text = (er.Col5Price / coefficient).ToString();
+                txtUnitCount1.Text = (er.Col1Break * coefficient).ToString();
+                txtUnitCount2.Text = (er.Col2Break * coefficient).ToString();
+                txtUnitCount3.Text = (er.Col3Break * coefficient).ToString();
+                txtUnitCount4.Text = (er.Col4Break * coefficient).ToString();
+                txtUnitCount5.Text = (er.Col5Break * coefficient).ToString();
+                txtCost1.Text = (er.DiscountedPrice1 / coefficient).ToString();
+                txtCost2.Text = (er.DiscountedPrice2 / coefficient).ToString();
+                txtCost3.Text = (er.DiscountedPrice3 / coefficient).ToString();
+                txtCost4.Text = (er.DiscountedPrice4 / coefficient).ToString();
+                txtCost5.Text = (er.DiscountedPrice5 / coefficient).ToString();
                 WebandMarginPrices();
             }
             if (sp != null)
@@ -442,22 +451,22 @@ namespace LoginForm.ItemModule
                 txtStockNo.Text = sp.ArticleNo;
                 //IntroductionDate.Text = sp.IntroductionDate;
                 //DiscontinuedDate.Text = sp.DiscontinuedDate;
-                txtUnitCount1.Text = (sp.Col1Break * cofactor).ToString();
-                txtUnitCount2.Text = (sp.Col2Break * cofactor).ToString();
-                txtUnitCount3.Text = (sp.Col3Break * cofactor).ToString();
-                txtUnitCount4.Text = (sp.Col4Break * cofactor).ToString();
-                txtUnitCount5.Text = (sp.Col5Break * cofactor).ToString();
-                txtUK1.Text = (sp.Col1Price / cofactor).ToString();
-                txtUK2.Text = (sp.Col2Price / cofactor).ToString();
-                txtUK3.Text = (sp.Col3Price / cofactor).ToString();
-                txtUK4.Text = (sp.Col4Price / cofactor).ToString();
-                txtUK5.Text = (sp.Col5Price / cofactor).ToString();
+                txtUnitCount1.Text = (sp.Col1Break * coefficient).ToString();
+                txtUnitCount2.Text = (sp.Col2Break * coefficient).ToString();
+                txtUnitCount3.Text = (sp.Col3Break * coefficient).ToString();
+                txtUnitCount4.Text = (sp.Col4Break * coefficient).ToString();
+                txtUnitCount5.Text = (sp.Col5Break * coefficient).ToString();
+                txtUK1.Text = (sp.Col1Price / coefficient).ToString();
+                txtUK2.Text = (sp.Col2Price / coefficient).ToString();
+                txtUK3.Text = (sp.Col3Price / coefficient).ToString();
+                txtUK4.Text = (sp.Col4Price / coefficient).ToString();
+                txtUK5.Text = (sp.Col5Price / coefficient).ToString();
 
-                txtCost1.Text = (sp.DiscountedPrice1 / cofactor).ToString();
-                txtCost2.Text = (sp.DiscountedPrice2 / cofactor).ToString();
-                txtCost3.Text = (sp.DiscountedPrice3 / cofactor).ToString();
-                txtCost4.Text = (sp.DiscountedPrice4 / cofactor).ToString();
-                txtCost5.Text = (sp.DiscountedPrice5 / cofactor).ToString();
+                txtCost1.Text = (sp.DiscountedPrice1 / coefficient).ToString();
+                txtCost2.Text = (sp.DiscountedPrice2 / coefficient).ToString();
+                txtCost3.Text = (sp.DiscountedPrice3 / coefficient).ToString();
+                txtCost4.Text = (sp.DiscountedPrice4 / coefficient).ToString();
+                txtCost5.Text = (sp.DiscountedPrice5 / coefficient).ToString();
                 WebandMarginPrices();
                 txtSupersectionName.Text = sp.SupersectionName;
                 txtDesc.Text = sp.ArticleDescription;
@@ -492,6 +501,7 @@ namespace LoginForm.ItemModule
             {
                 txtStockNo.Text = i.StockNo;
                 txtSupplierID.Text = i.SupplierID;
+                cmbSupplierName.SelectedValue = cmbSupplierName.FindStringExact(i.SupplierName);
                 cmbSupplierName.Text = i.SupplierName;
                 txtDesc.Text = i.ArticleDescription;
                 txtMPN.Text = i.MPN;
@@ -554,7 +564,7 @@ namespace LoginForm.ItemModule
          private void WebandMarginPrices()
         {
             decimal factor;
-            factor = Utils.getManagement().Factor / (decimal)IME.ExchangeRates.Where(a => a.Currency.currencyName == "Pound").OrderByDescending(a => a.date).FirstOrDefault().rate;
+            factor = Utils.getManagement().Factor / defaultCurrency;
             if (txtUK1.Text != "" && txtUK1.Text != null) txtWeb1.Text = (decimal.Parse(txtUK1.Text) * factor).ToString();
             if (txtUK2.Text != "" && txtUK2.Text != null) txtWeb2.Text = (decimal.Parse(txtUK2.Text) * factor).ToString();
             if (txtUK3.Text != "" && txtUK3.Text != null) txtWeb3.Text = (decimal.Parse(txtUK3.Text) * factor).ToString();
@@ -921,6 +931,11 @@ namespace LoginForm.ItemModule
 
         private void ItemCard_Load(object sender, EventArgs e)
         {
+            cmbSupplierName.DisplayMember = "s_name";
+            cmbSupplierName.ValueMember = "ID";
+            cmbSupplierName.DataSource = IME.Suppliers.ToList();
+            cmbSupplierName.SelectedIndex = -1;
+
             checkAuthorities();
             //ControlAutorization();
             GetImageFromWeb(null);
@@ -1098,9 +1113,9 @@ namespace LoginForm.ItemModule
         {
             ClearAll(this);
             ReadOnlyAll(false);
-            cmbSupplierName.DataSource = IME.Suppliers.ToList();
             cmbSupplierName.DisplayMember = "s_name";
             cmbSupplierName.ValueMember = "ID";
+            cmbSupplierName.DataSource = IME.Suppliers.ToList();
             txtStockNo.Text = NewItemID();
             dgItemList.Enabled = false;
             groupBox7.Enabled = false;
@@ -1245,7 +1260,15 @@ namespace LoginForm.ItemModule
 
         private void cmbSupplierName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtSupplierID.Text= IME.Suppliers.Where(a => a.ID == ((Supplier)(cmbSupplierName).SelectedItem).ID).FirstOrDefault().ID;
+            if (cmbSupplierName.SelectedIndex == -1)
+            {
+                txtSupplierID.Text = String.Empty;
+            }
+            else
+            {
+                //txtSupplierID.Text = IME.Suppliers.Where(a => a.ID == ((Supplier)(cmbSupplierName).SelectedItem).ID).FirstOrDefault().ID;
+                txtSupplierID.Text = cmbSupplierName.SelectedValue.ToString();
+            }
         }
 
         private void btnSupplierAdd_Click(object sender, EventArgs e)

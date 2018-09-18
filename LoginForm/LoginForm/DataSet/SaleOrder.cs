@@ -67,6 +67,7 @@ namespace LoginForm.DataSet
         public virtual FinancialYear FinancialYear { get; set; }
         public virtual PaymentMethod PaymentMethod { get; set; }
         public virtual PaymentTerm PaymentTerm { get; set; }
+        public virtual PurchaseOrder PurchaseOrder { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PurchaseOrderDetail> PurchaseOrderDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

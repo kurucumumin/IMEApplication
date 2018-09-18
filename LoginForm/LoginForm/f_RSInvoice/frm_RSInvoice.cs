@@ -185,7 +185,7 @@ namespace LoginForm.f_RSInvoice
 
         private void SetDataGridItemsRsInvoice(DataTable dataTable)
         {
-            Color LogoColor = Color.FromArgb(183, 240, 154);
+            Color LogoColor = Color.FromArgb(134, 255, 128);
             foreach (DataRow dRow in dataTable.Rows)
             {
                 DataGridViewRow gRow = dgvRSInvoice.Rows[dgvRSInvoice.Rows.Add()];

@@ -278,7 +278,7 @@ namespace LoginForm.QuotationModule
                             populateGrid(list3.ToList());
                             break;
 
-                        case "BY TOTAL AMOUNT":
+                        case "TOTAL AMOUNT":
                             decimal amountDecimal;
                             string searchTxt = txtSearchText.Text.Replace(",", ".");
                             if (Decimal.TryParse(searchTxt, out amountDecimal))
@@ -315,7 +315,7 @@ namespace LoginForm.QuotationModule
 
                             break;
 
-                        case "BY RFQ":
+                        case "RFQ":
                             string rfq = txtSearchText.Text.ToUpperInvariant();
                             var list5 = from q in IME.Quotations
                                         join c in IME.Customers on q.CustomerID equals c.ID
@@ -346,25 +346,94 @@ namespace LoginForm.QuotationModule
                             populateGrid(list5.ToList());
                             break;
 
-                        case "BY MPN":
-                            //string mpn = txtSearchText.Text.ToUpperInvariant();
-                            //var list6 = from q in IME.Quotations
-                            //            join qd in IME.QuotationDetails on q.QuotationNo equals qd.QuotationNo
-                            //            join c in IME.Customers on q.CustomerID equals c.ID
-                            //            where qd.MPN.Contains(mpn)
-                            //            select new
-                            //            {
-                            //                Date = (DateTime)q.StartDate,
-                            //                QuotationNo = q.QuotationNo,
-                            //                RFQ = q.RFQNo,
-                            //                CustomerCode = c.ID,
-                            //                CustomerName = c.c_name
-                            //            };
-
-                            //populateGrid(list6.ToList());
-                            MessageBox.Show("MPN filter is not implemented into the software", "Error");
+                        case "MPN":
+                            string mpn = txtSearchText.Text.ToUpperInvariant();
+                            var list6 = (from q in IME.Quotations.Join(IME.QuotationDetails.Where(qd => qd.MPN.Contains(mpn)), q => q.QuotationNo, qd => qd.QuotationNo, (q, qd) => q).Distinct()
+                                         join c in IME.Customers on q.CustomerID equals c.ID
+                                         select new
+                                         {
+                                             Date = q.StartDate,
+                                             QuotationNo = q.QuotationNo,
+                                             Rep_Name = q.Worker.NameLastName,
+                                             PreparedBy = currentUser.NameLastName.ToString(),
+                                             RFQ = q.RFQNo,
+                                             CustomerCode = c.ID,
+                                             CustomerName = c.c_name,
+                                             Total = q.GrossTotal,
+                                             Currency = q.CurrName,
+                                             OrderDate = (q.SaleOrder != null) ? q.SaleOrder.SaleDate.ToString() : "",
+                                             City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
+                                             SaleOrderNo = q.SaleOrderID,
+                                             OrderStatus = q.status,
+                                             FirstNote = q.FirstNote,
+                                             Date1 = q.NoteDate1,
+                                             Rep1 = q.NoteRep1,
+                                             SecondNote = q.SecondNote,
+                                             Date2 = q.NoteDate2,
+                                             Rep2 = q.NoteRep2
+                                         });
+                            populateGrid(list6.ToList());
+                            break;
+                        case "SALE ORDER NO":
+                            string SoNO = txtSearchText.Text.ToUpperInvariant();
+                            var list7 = from q in IME.Quotations
+                                        join c in IME.Customers on q.CustomerID equals c.ID
+                                        where q.SaleOrder.SaleOrderNo.ToString().Contains(SoNO)
+                                        select new
+                                         {
+                                             Date = q.StartDate,
+                                             QuotationNo = q.QuotationNo,
+                                             Rep_Name = q.Worker.NameLastName,
+                                             PreparedBy = currentUser.NameLastName.ToString(),
+                                             RFQ = q.RFQNo,
+                                             CustomerCode = c.ID,
+                                             CustomerName = c.c_name,
+                                             Total = q.GrossTotal,
+                                             Currency = q.CurrName,
+                                             OrderDate = (q.SaleOrder != null) ? q.SaleOrder.SaleDate.ToString() : "",
+                                             City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
+                                             SaleOrderNo = q.SaleOrderID,
+                                             OrderStatus = q.status,
+                                             FirstNote = q.FirstNote,
+                                             Date1 = q.NoteDate1,
+                                             Rep1 = q.NoteRep1,
+                                             SecondNote = q.SecondNote,
+                                             Date2 = q.NoteDate2,
+                                             Rep2 = q.NoteRep2
+                                         };
+                            populateGrid(list7.ToList());
+                            break;
+                        case "PURCHASE ORDER NO":
+                            string PoNO = txtSearchText.Text.ToUpperInvariant();
+                            var list8 = from q in IME.Quotations
+                                        join c in IME.Customers on q.CustomerID equals c.ID
+                                        where q.SaleOrder.PurchaseOrderID
+                                        select new
+                                         {
+                                             Date = q.StartDate,
+                                             QuotationNo = q.QuotationNo,
+                                             Rep_Name = q.Worker.NameLastName,
+                                             PreparedBy = currentUser.NameLastName.ToString(),
+                                             RFQ = q.RFQNo,
+                                             CustomerCode = c.ID,
+                                             CustomerName = c.c_name,
+                                             Total = q.GrossTotal,
+                                             Currency = q.CurrName,
+                                             OrderDate = (q.SaleOrder != null) ? q.SaleOrder.SaleDate.ToString() : "",
+                                             City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
+                                             SaleOrderNo = q.SaleOrderID,
+                                             OrderStatus = q.status,
+                                             FirstNote = q.FirstNote,
+                                             Date1 = q.NoteDate1,
+                                             Rep1 = q.NoteRep1,
+                                             SecondNote = q.SecondNote,
+                                             Date2 = q.NoteDate2,
+                                             Rep2 = q.NoteRep2
+                                         };
+                            populateGrid(list8.ToList());
                             break;
                         default:
+                            MessageBox.Show("Choosen search filter is not implemented into the software yet", "Error");
                             break;
                     }
                 }
@@ -467,7 +536,7 @@ namespace LoginForm.QuotationModule
                             populateGrid(list3.ToList());
                             break;
 
-                        case "BY TOTAL AMOUNT":
+                        case "TOTAL AMOUNT":
                             decimal amountDecimal;
                             string searchTxt = txtSearchText.Text.Replace(",", ".");
                             if (Decimal.TryParse(searchTxt, out amountDecimal))
@@ -505,7 +574,7 @@ namespace LoginForm.QuotationModule
 
                             break;
 
-                        case "BY RFQ":
+                        case "RFQ":
                             string rfq = txtSearchText.Text.ToUpperInvariant();
                             var list5 = from q in IME.Quotations
                                         join c in IME.Customers on q.CustomerID equals c.ID
@@ -533,27 +602,36 @@ namespace LoginForm.QuotationModule
                                             Date2 = q.NoteDate2,
                                             Rep2 = q.NoteRep2
                                         };
-
                             populateGrid(list5.ToList());
                             break;
-
-                        case "BY MPN":
-                            //string mpn = txtSearchText.Text.ToUpperInvariant();
-                            //var list6 = from q in IME.Quotations
-                            //            join qd in IME.QuotationDetails on q.QuotationNo equals qd.QuotationNo
-                            //            join c in IME.Customers on q.CustomerID equals c.ID
-                            //            where qd.MPN.Contains(mpn)
-                            //            select new
-                            //            {
-                            //                Date = (DateTime)q.StartDate,
-                            //                QuotationNo = q.QuotationNo,
-                            //                RFQ = q.RFQNo,
-                            //                CustomerCode = c.ID,
-                            //                CustomerName = c.c_name
-                            //            };
-
-                            //populateGrid(list6.ToList());
-                            MessageBox.Show("MPN filter is not implemented into the software", "Error");
+                        case "MPN":
+                            string mpn = txtSearchText.Text.ToUpperInvariant();
+                            var list6 = (from q in IME.Quotations.Join(IME.QuotationDetails.Where(qd=>qd.MPN.Contains(mpn)), q=>q.QuotationNo, qd=>qd.QuotationNo, (q,qd) => q).Distinct()
+                                        join c in IME.Customers on q.CustomerID equals c.ID
+                                        where (q.StartDate >= dtpFromDate.Value && q.StartDate < dtpToDate.Value)
+                                        select new
+                                        {
+                                            Date = q.StartDate,
+                                            QuotationNo = q.QuotationNo,
+                                            Rep_Name = q.Worker.NameLastName,
+                                            PreparedBy = currentUser.NameLastName.ToString(),
+                                            RFQ = q.RFQNo,
+                                            CustomerCode = c.ID,
+                                            CustomerName = c.c_name,
+                                            Total = q.GrossTotal,
+                                            Currency = q.CurrName,
+                                            OrderDate = (q.SaleOrder != null) ? q.SaleOrder.SaleDate.ToString() : "",
+                                            City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
+                                            SaleOrderNo = q.SaleOrderID,
+                                            OrderStatus = q.status,
+                                            FirstNote = q.FirstNote,
+                                            Date1 = q.NoteDate1,
+                                            Rep1 = q.NoteRep1,
+                                            SecondNote = q.SecondNote,
+                                            Date2 = q.NoteDate2,
+                                            Rep2 = q.NoteRep2
+                                        });
+                            populateGrid(list6.ToList());
                             break;
                         default:
                             break;
@@ -678,7 +756,7 @@ namespace LoginForm.QuotationModule
             {
                 if (row.Cells[OrderStatus.Index].Value != null && row.Cells[OrderStatus.Index].Value.ToString() == "Deleted")
                 {
-                    row.DefaultCellStyle.BackColor = System.Drawing.Color.Red;
+                    row.DefaultCellStyle.BackColor = Color.FromArgb(252, 97, 97);
                 }
             }
         }

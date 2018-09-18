@@ -2510,6 +2510,18 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__SaleOrder__Purch__14C6E9EA">
+          <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="0..1" />
+          <End Role="SaleOrder" Type="Self.SaleOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PurchaseOrder">
+              <PropertyRef Name="purchaseOrderId" />
+            </Principal>
+            <Dependent Role="SaleOrder">
+              <PropertyRef Name="PurchaseOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__SaleOrder__quota__310335E5">
           <End Role="QuotationDetail" Type="Self.QuotationDetail" Multiplicity="0..1" />
           <End Role="SaleOrderDetail" Type="Self.SaleOrderDetail" Multiplicity="*" />
@@ -3010,6 +3022,9 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Parameter Name="MPNNo" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="ArticleSelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Authorities_AuthoritiesValue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AuthorizationValue" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="BackOrderAnalize" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="BOADate" Type="date" Mode="In" />
         </Function>
@@ -3661,6 +3676,9 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Parameter Name="Width" Type="decimal" Mode="In" />
           <Parameter Name="Length" Type="decimal" Mode="In" />
         </Function>
+        <Function Name="UserAuthorization_Worker" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="WorkerID" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="IMEModelStoreContainer">
           <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AccountOperation" EntityType="Self.AccountOperation" Schema="dbo" store:Type="Tables" />
@@ -4179,6 +4197,10 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           </AssociationSet>
           <AssociationSet Name="FK__SaleOrder__Payme__1BE81D6E" Association="Self.FK__SaleOrder__Payme__1BE81D6E">
             <End Role="PaymentMethod" EntitySet="PaymentMethod" />
+            <End Role="SaleOrder" EntitySet="SaleOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SaleOrder__Purch__14C6E9EA" Association="Self.FK__SaleOrder__Purch__14C6E9EA">
+            <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
             <End Role="SaleOrder" EntitySet="SaleOrder" />
           </AssociationSet>
           <AssociationSet Name="FK__SaleOrder__quota__310335E5" Association="Self.FK__SaleOrder__quota__310335E5">
@@ -5196,6 +5218,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <NavigationProperty Name="PurchaseOrderDetails" Relationship="Self.FK__PurchaseO__purch__0856260D" FromRole="PurchaseOrder" ToRole="PurchaseOrderDetail" />
           <NavigationProperty Name="Worker" Relationship="Self.FK__PurchaseO__userI__63C3BFDC" FromRole="PurchaseOrder" ToRole="Worker" />
           <NavigationProperty Name="RS_InvoiceDetails" Relationship="Self.FK__RS_Invoic__Purch__043B7C66" FromRole="PurchaseOrder" ToRole="RS_InvoiceDetails" />
+          <NavigationProperty Name="SaleOrders" Relationship="Self.FK__SaleOrder__Purch__14C6E9EA" FromRole="PurchaseOrder" ToRole="SaleOrder" />
         </EntityType>
         <EntityType Name="PurchaseOrderDetail">
           <Key>
@@ -5488,6 +5511,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <NavigationProperty Name="FinancialYear" Relationship="Self.FK_SaleOrder_FinancialYear" FromRole="SaleOrder" ToRole="FinancialYear" />
           <NavigationProperty Name="PaymentMethod" Relationship="Self.FK__SaleOrder__Payme__1BE81D6E" FromRole="SaleOrder" ToRole="PaymentMethod" />
           <NavigationProperty Name="PaymentTerm" Relationship="Self.FK__SaleOrder__Payme__1AF3F935" FromRole="SaleOrder" ToRole="PaymentTerm" />
+          <NavigationProperty Name="PurchaseOrder" Relationship="Self.FK__SaleOrder__Purch__14C6E9EA" FromRole="SaleOrder" ToRole="PurchaseOrder" />
           <NavigationProperty Name="PurchaseOrderDetails" Relationship="Self.FK_PurchaseOrderDetail_SaleOrder" FromRole="SaleOrder" ToRole="PurchaseOrderDetail" />
           <NavigationProperty Name="Quotations" Relationship="Self.FK__Quotation__SaleO__0D25C822" FromRole="SaleOrder" ToRole="Quotation" />
           <NavigationProperty Name="Worker" Relationship="Self.FK__SaleOrder__Repre__22951AFD" FromRole="SaleOrder" ToRole="Worker" />
@@ -7112,6 +7136,18 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__SaleOrder__Purch__14C6E9EA">
+          <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="0..1" />
+          <End Role="SaleOrder" Type="Self.SaleOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PurchaseOrder">
+              <PropertyRef Name="purchaseOrderId" />
+            </Principal>
+            <Dependent Role="SaleOrder">
+              <PropertyRef Name="PurchaseOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_PurchaseOrderDetail_SaleOrder">
           <End Role="SaleOrder" Type="Self.SaleOrder" Multiplicity="0..1" />
           <End Role="PurchaseOrderDetail" Type="Self.PurchaseOrderDetail" Multiplicity="*" />
@@ -7931,6 +7967,10 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <End Role="PurchaseOrder" EntitySet="PurchaseOrders" />
             <End Role="RS_InvoiceDetails" EntitySet="RS_InvoiceDetails" />
           </AssociationSet>
+          <AssociationSet Name="FK__SaleOrder__Purch__14C6E9EA" Association="Self.FK__SaleOrder__Purch__14C6E9EA">
+            <End Role="PurchaseOrder" EntitySet="PurchaseOrders" />
+            <End Role="SaleOrder" EntitySet="SaleOrders" />
+          </AssociationSet>
           <AssociationSet Name="FK_PurchaseOrderDetail_SaleOrder" Association="Self.FK_PurchaseOrderDetail_SaleOrder">
             <End Role="SaleOrder" EntitySet="SaleOrders" />
             <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetails" />
@@ -8087,6 +8127,9 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="MPNNo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ArticleSelectAll" ReturnType="Collection(IMEModel.ArticleSelectAll_Result)" />
+          <FunctionImport Name="Authorities_AuthoritiesValue" ReturnType="Collection(IMEModel.Authorities_AuthoritiesValue_Result)">
+            <Parameter Name="AuthorizationValue" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="BackOrderAnalize" ReturnType="Collection(IMEModel.BackOrderAnalize_Result)">
             <Parameter Name="BOADate" Mode="In" Type="DateTime" />
           </FunctionImport>
@@ -8737,6 +8780,9 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="Width" Mode="In" Type="Decimal" />
             <Parameter Name="Length" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="UserAuthorization_Worker" ReturnType="Collection(String)">
+            <Parameter Name="WorkerID" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="AccountMainDataGridFiller_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
@@ -8801,6 +8847,10 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Type="Decimal" Name="Heigh" Nullable="true" Precision="20" Scale="5" />
           <Property Type="Decimal" Name="Width" Nullable="true" Precision="20" Scale="5" />
           <Property Type="Decimal" Name="Length" Nullable="true" Precision="20" Scale="5" />
+        </ComplexType>
+        <ComplexType Name="Authorities_AuthoritiesValue_Result">
+          <Property Type="Int32" Name="AuthorizationID" Nullable="false" />
+          <Property Type="String" Name="AuthorizationValue" Nullable="true" MaxLength="255" />
         </ComplexType>
         <ComplexType Name="BackOrderAnalize_Result">
           <Property Type="String" Name="QuotationNo" Nullable="true" MaxLength="20" />
@@ -11160,6 +11210,14 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Authorities_AuthoritiesValue" FunctionName="IMEModel.Store.Authorities_AuthoritiesValue">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.Authorities_AuthoritiesValue_Result">
+                <ScalarProperty Name="AuthorizationID" ColumnName="AuthorizationID" />
+                <ScalarProperty Name="AuthorizationValue" ColumnName="AuthorizationValue" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="BackOrderAnalize" FunctionName="IMEModel.Store.BackOrderAnalize">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.BackOrderAnalize_Result">
@@ -12011,6 +12069,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SuperDiskAdd" FunctionName="IMEModel.Store.SuperDiskAdd" />
           <FunctionImportMapping FunctionImportName="SuperDiskPAdd" FunctionName="IMEModel.Store.SuperDiskPAdd" />
+          <FunctionImportMapping FunctionImportName="UserAuthorization_Worker" FunctionName="IMEModel.Store.UserAuthorization_Worker" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
