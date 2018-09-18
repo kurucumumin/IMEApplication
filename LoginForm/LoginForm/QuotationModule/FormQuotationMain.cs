@@ -203,7 +203,8 @@ namespace LoginForm.QuotationModule
                                              Currency = q.CurrName,
                                              OrderDate = (q.SaleOrder != null) ? q.SaleOrder.SaleDate.ToString() : "",
                                              City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
-                                             SaleOrderNo = q.SaleOrderID, 
+                                             SaleOrderID = q.SaleOrderID,
+                                             SaleOrderNo = (q.SaleOrder != null) ? q.SaleOrder.SaleOrderNo.ToString() : "",
                                              OrderStatus = q.status,
                                              FirstNote = q.FirstNote,
                                              Date1 = q.NoteDate1,
@@ -234,7 +235,8 @@ namespace LoginForm.QuotationModule
                                             Currency = q.CurrName,
                                             OrderDate = (q.SaleOrder != null) ? q.SaleOrder.SaleDate.ToString() : "",
                                             City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
-                                            SaleOrderNo = q.SaleOrderID,
+                                            SaleOrderID = q.SaleOrderID,
+                                            SaleOrderNo = (q.SaleOrder != null) ? q.SaleOrder.SaleOrderNo.ToString() : "",
                                             OrderStatus = q.status,
                                             FirstNote = q.FirstNote,
                                             Date1 = q.NoteDate1,
@@ -265,7 +267,8 @@ namespace LoginForm.QuotationModule
                                             Currency = q.CurrName,
                                             OrderDate = (q.SaleOrder != null) ? q.SaleOrder.SaleDate.ToString() : "",
                                             City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
-                                            SaleOrderNo = q.SaleOrderID,
+                                            SaleOrderID = q.SaleOrderID,
+                                            SaleOrderNo = (q.SaleOrder != null) ? q.SaleOrder.SaleOrderNo.ToString() : "",
                                             OrderStatus = q.status,
                                             FirstNote = q.FirstNote,
                                             Date1 = q.NoteDate1,
@@ -300,7 +303,8 @@ namespace LoginForm.QuotationModule
                                                 Currency = q.CurrName,
                                                 OrderDate = (q.SaleOrder != null) ? q.SaleOrder.SaleDate.ToString() : "",
                                                 City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
-                                                SaleOrderNo = q.SaleOrderID,
+                                                SaleOrderID = q.SaleOrderID,
+                                                SaleOrderNo = (q.SaleOrder != null) ? q.SaleOrder.SaleOrderNo.ToString() : "",
                                                 OrderStatus = q.status,
                                                 FirstNote = q.FirstNote,
                                                 Date1 = q.NoteDate1,
@@ -333,7 +337,8 @@ namespace LoginForm.QuotationModule
                                             Currency = q.CurrName,
                                             OrderDate = (q.SaleOrder != null) ? q.SaleOrder.SaleDate.ToString() : "",
                                             City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
-                                            SaleOrderNo = q.SaleOrderID,
+                                            SaleOrderID = q.SaleOrderID,
+                                            SaleOrderNo = (q.SaleOrder != null) ? q.SaleOrder.SaleOrderNo.ToString() : "",
                                             OrderStatus = q.status,
                                             FirstNote = q.FirstNote,
                                             Date1 = q.NoteDate1,
@@ -363,7 +368,8 @@ namespace LoginForm.QuotationModule
                                              Currency = q.CurrName,
                                              OrderDate = (q.SaleOrder != null) ? q.SaleOrder.SaleDate.ToString() : "",
                                              City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
-                                             SaleOrderNo = q.SaleOrderID,
+                                             SaleOrderID = q.SaleOrderID,
+                                             SaleOrderNo = (q.SaleOrder != null) ? q.SaleOrder.SaleOrderNo.ToString() : "",
                                              OrderStatus = q.status,
                                              FirstNote = q.FirstNote,
                                              Date1 = q.NoteDate1,
@@ -392,8 +398,9 @@ namespace LoginForm.QuotationModule
                                              Currency = q.CurrName,
                                              OrderDate = (q.SaleOrder != null) ? q.SaleOrder.SaleDate.ToString() : "",
                                              City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
-                                             SaleOrderNo = q.SaleOrderID,
-                                             OrderStatus = q.status,
+                                            SaleOrderID = q.SaleOrderID,
+                                            SaleOrderNo = (q.SaleOrder != null) ? q.SaleOrder.SaleOrderNo.ToString() : "",
+                                            OrderStatus = q.status,
                                              FirstNote = q.FirstNote,
                                              Date1 = q.NoteDate1,
                                              Rep1 = q.NoteRep1,
@@ -407,7 +414,7 @@ namespace LoginForm.QuotationModule
                             string PoNO = txtSearchText.Text.ToUpperInvariant();
                             var list8 = from q in IME.Quotations
                                         join c in IME.Customers on q.CustomerID equals c.ID
-                                        where q.SaleOrder.PurchaseOrderID
+                                        where q.SaleOrder.PurchaseOrder.PurchaseNo.ToString().Contains(PoNO)
                                         select new
                                          {
                                              Date = q.StartDate,
@@ -421,8 +428,9 @@ namespace LoginForm.QuotationModule
                                              Currency = q.CurrName,
                                              OrderDate = (q.SaleOrder != null) ? q.SaleOrder.SaleDate.ToString() : "",
                                              City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
-                                             SaleOrderNo = q.SaleOrderID,
-                                             OrderStatus = q.status,
+                                             SaleOrderID = q.SaleOrderID,
+                                            SaleOrderNo = (q.SaleOrder != null) ? q.SaleOrder.SaleOrderNo.ToString() : "",
+                                            OrderStatus = q.status,
                                              FirstNote = q.FirstNote,
                                              Date1 = q.NoteDate1,
                                              Rep1 = q.NoteRep1,
@@ -459,7 +467,8 @@ namespace LoginForm.QuotationModule
                                              Currency = q.CurrName,
                                              OrderDate = (q.SaleOrder != null) ? q.SaleOrder.SaleDate.ToString() : "",
                                              City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
-                                             SaleOrderNo = q.SaleOrderID,
+                                             SaleOrderID = q.SaleOrderID,
+                                             SaleOrderNo = (q.SaleOrder != null) ? q.SaleOrder.SaleOrderNo.ToString() : "",
                                              OrderStatus = q.status,
                                              FirFirstNote = q.FirstNote,
                                              Date1 = q.NoteDate1,
@@ -491,7 +500,8 @@ namespace LoginForm.QuotationModule
                                             Currency = q.CurrName,
                                             OrderDate = (q.SaleOrder != null) ? q.SaleOrder.SaleDate.ToString() : "",
                                             City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
-                                            SaleOrderNo = q.SaleOrderID,
+                                            SaleOrderID = q.SaleOrderID,
+                                            SaleOrderNo = (q.SaleOrder != null) ? q.SaleOrder.SaleOrderNo.ToString() : "",
                                             OrderStatus = q.status,
                                             FirstNote = q.FirstNote,
                                             Date1 = q.NoteDate1,
@@ -523,7 +533,8 @@ namespace LoginForm.QuotationModule
                                             Currency = q.CurrName,
                                             OrderDate = (q.SaleOrder != null) ? q.SaleOrder.SaleDate.ToString() : "",
                                             City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
-                                            SaleOrderNo = q.SaleOrderID,
+                                            SaleOrderID = q.SaleOrderID,
+                                            SaleOrderNo = (q.SaleOrder != null) ? q.SaleOrder.SaleOrderNo.ToString() : "",
                                             OrderStatus = q.status,
                                             FirstNote = q.FirstNote,
                                             Date1 = q.NoteDate1,
@@ -559,7 +570,8 @@ namespace LoginForm.QuotationModule
                                                 Currency = q.CurrName,
                                                 OrderDate = (q.SaleOrder != null) ? q.SaleOrder.SaleDate.ToString() : "",
                                                 City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
-                                                SaleOrderNo = q.SaleOrderID,
+                                                SaleOrderID = q.SaleOrderID,
+                                                SaleOrderNo = (q.SaleOrder != null) ? q.SaleOrder.SaleOrderNo.ToString() : "",
                                                 OrderStatus = q.status,
                                                 FirstNote = q.FirstNote,
                                                 Date1 = q.NoteDate1,
@@ -593,7 +605,8 @@ namespace LoginForm.QuotationModule
                                             Currency = q.CurrName,
                                             OrderDate = (q.SaleOrder != null) ? q.SaleOrder.SaleDate.ToString() : "",
                                             City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
-                                            SaleOrderNo = q.SaleOrderID,
+                                            SaleOrderID = q.SaleOrderID,
+                                            SaleOrderNo = (q.SaleOrder != null) ? q.SaleOrder.SaleOrderNo.ToString() : "",
                                             OrderStatus = q.status,
                                             FirstNote = q.FirstNote,
                                             Date1 = q.NoteDate1,
@@ -622,7 +635,8 @@ namespace LoginForm.QuotationModule
                                             Currency = q.CurrName,
                                             OrderDate = (q.SaleOrder != null) ? q.SaleOrder.SaleDate.ToString() : "",
                                             City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
-                                            SaleOrderNo = q.SaleOrderID,
+                                            SaleOrderID = q.SaleOrderID,
+                                            SaleOrderNo = (q.SaleOrder != null) ? q.SaleOrder.SaleOrderNo.ToString() : "",
                                             OrderStatus = q.status,
                                             FirstNote = q.FirstNote,
                                             Date1 = q.NoteDate1,
@@ -632,6 +646,68 @@ namespace LoginForm.QuotationModule
                                             Rep2 = q.NoteRep2
                                         });
                             populateGrid(list6.ToList());
+                            break;
+                        case "SALE ORDER NO":
+                            string SoNO = txtSearchText.Text.ToUpperInvariant();
+                            var list7 = from q in IME.Quotations
+                                        join c in IME.Customers on q.CustomerID equals c.ID
+                                        where q.SaleOrder.SaleOrderNo.ToString().Contains(SoNO) &&
+                                            (q.StartDate >= dtpFromDate.Value && q.StartDate < dtpToDate.Value)
+                                        select new
+                                        {
+                                            Date = q.StartDate,
+                                            QuotationNo = q.QuotationNo,
+                                            Rep_Name = q.Worker.NameLastName,
+                                            PreparedBy = currentUser.NameLastName.ToString(),
+                                            RFQ = q.RFQNo,
+                                            CustomerCode = c.ID,
+                                            CustomerName = c.c_name,
+                                            Total = q.GrossTotal,
+                                            Currency = q.CurrName,
+                                            OrderDate = (q.SaleOrder != null) ? q.SaleOrder.SaleDate.ToString() : "",
+                                            City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
+                                            SaleOrderID = q.SaleOrderID,
+                                            SaleOrderNo = (q.SaleOrder != null) ? q.SaleOrder.SaleOrderNo.ToString() : "",
+                                            OrderStatus = q.status,
+                                            FirstNote = q.FirstNote,
+                                            Date1 = q.NoteDate1,
+                                            Rep1 = q.NoteRep1,
+                                            SecondNote = q.SecondNote,
+                                            Date2 = q.NoteDate2,
+                                            Rep2 = q.NoteRep2
+                                        };
+                            populateGrid(list7.ToList());
+                            break;
+                        case "PURCHASE ORDER NO":
+                            string PoNO = txtSearchText.Text.ToUpperInvariant();
+                            var list8 = from q in IME.Quotations
+                                        join c in IME.Customers on q.CustomerID equals c.ID
+                                        where q.SaleOrder.PurchaseOrder.PurchaseNo.ToString().Contains(PoNO) &&
+                                            (q.StartDate >= dtpFromDate.Value && q.StartDate < dtpToDate.Value)
+                                        select new
+                                        {
+                                            Date = q.StartDate,
+                                            QuotationNo = q.QuotationNo,
+                                            Rep_Name = q.Worker.NameLastName,
+                                            PreparedBy = currentUser.NameLastName.ToString(),
+                                            RFQ = q.RFQNo,
+                                            CustomerCode = c.ID,
+                                            CustomerName = c.c_name,
+                                            Total = q.GrossTotal,
+                                            Currency = q.CurrName,
+                                            OrderDate = (q.SaleOrder != null) ? q.SaleOrder.SaleDate.ToString() : "",
+                                            City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
+                                            SaleOrderID = q.SaleOrderID,
+                                            SaleOrderNo = (q.SaleOrder != null) ? q.SaleOrder.SaleOrderNo.ToString() : "",
+                                            OrderStatus = q.status,
+                                            FirstNote = q.FirstNote,
+                                            Date1 = q.NoteDate1,
+                                            Rep1 = q.NoteRep1,
+                                            SecondNote = q.SecondNote,
+                                            Date2 = q.NoteDate2,
+                                            Rep2 = q.NoteRep2
+                                        };
+                            populateGrid(list8.ToList());
                             break;
                         default:
                             break;
@@ -697,7 +773,8 @@ namespace LoginForm.QuotationModule
                             Currency = q.Currency.currencySymbol,
                             OrderDate = (q.SaleOrder != null) ? q.SaleOrder.SaleDate.ToString() : "",
                             City = c.CustomerAddresses.Where(x => x.CustomerID == c.ID).FirstOrDefault().City.City_name,
-                            SaleOrderNo = q.SaleOrderID,
+                            SaleOrderNo = (q.SaleOrder != null) ? q.SaleOrder.SaleOrderNo.ToString() : "",
+                            SaleOrderID = q.SaleOrderID,
                             OrderStatus = q.status,
                             FirstNote = q.FirstNote,
                             Date1 = q.NoteDate1,
@@ -749,6 +826,7 @@ namespace LoginForm.QuotationModule
                 row.Cells[SecondNote.Index].Value = item.SecondNote;
                 row.Cells[Date2.Index].Value = item.Date2;
                 row.Cells[Rep2.Index].Value = item.Rep2;
+                row.Cells[SaleOrderID.Index].Value = item.SaleOrderID;
 
             }
 
