@@ -386,9 +386,10 @@ namespace LoginForm.User
                 if (textBox1.Text != "")
                 {
                     string sel = textBox1.Text.Replace(" ", "");
-                    clbUserAuthorityList.DataSource = IME.AuthorizationValues.Where(x => x.AuthorizationValue1.Replace(" ", "").Contains(sel)).ToList();
+                    clbUserAuthorityList.DataSource = authList.Where(x => x.AuthorizationValue1.Replace(" ", "").Contains(sel)).ToList();
                     clbUserAuthorityList.DisplayMember = "AuthorizationValue1";
                     chcAllAuth.Checked = false;
+                    CheckAllItemsListBox(clbUserAuthorityList, true);
                     matchAuthorities();
                 }
                 else
