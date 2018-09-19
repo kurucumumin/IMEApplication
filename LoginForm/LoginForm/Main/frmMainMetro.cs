@@ -137,7 +137,7 @@ namespace LoginForm.Main
         private void frmMainMetro_Load(object sender, EventArgs e)
         {
             IMEEntities db = new IMEEntities();
-
+            checkAuthorities();
             Worker currentUser = Utils.getCurrentUser();
             
             lblName.Text = currentUser.NameLastName?.ToString();
