@@ -200,7 +200,6 @@
             // btnNewInvoice
             // 
             this.btnNewInvoice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
-            this.btnNewInvoice.Enabled = false;
             this.btnNewInvoice.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnNewInvoice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNewInvoice.Image = global::LoginForm.Properties.Resources.icons8_Plus_32;

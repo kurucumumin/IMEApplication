@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LoginForm.DataSet;
 using System.Windows.Forms;
 
 namespace LoginForm.f_RSInvoice
@@ -14,6 +15,7 @@ namespace LoginForm.f_RSInvoice
     public partial class frm_RsInvoiceDetail : Form
     {
         int InvoiceID;
+        RS_Invoice Invoice;
         DataTable RsInvoiceDetails = new DataTable();
         DataTable RsInvoiceMaster = new DataTable();
 
@@ -27,10 +29,55 @@ namespace LoginForm.f_RSInvoice
             dgRsInvoiceItems, new object[] { true });
         }
 
+        public frm_RsInvoiceDetail(RS_Invoice Invoice)
+        {
+            InitializeComponent();
+            this.Invoice = Invoice;
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
+            System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
+            dgRsInvoiceItems, new object[] { true });
+        }
+
         private void frm_RsInvoiceDetail_Load(object sender, EventArgs e)
         {
-            bgw_RsInvoiceDetail.RunWorkerAsync();
-            bgw_RsInvoiceMaster.RunWorkerAsync();
+            if (Invoice == null)
+            {
+                bgw_RsInvoiceDetail.RunWorkerAsync();
+                bgw_RsInvoiceMaster.RunWorkerAsync();
+            }
+            else
+            {
+                SetRsInvoiceMaster();
+                SetRsInvoiceDetails();
+            }
+        }
+
+        private void SetRsInvoiceDetails()
+        {
+            dgRsInvoiceItems.Rows.Clear();
+            SetDataGridItemsFromListRsInvoiceDetail();
+            dgRsInvoiceItems.Refresh();
+        }
+
+        private void SetRsInvoiceMaster()
+        {
+            txtBillingDocumentDate.Text = Invoice.BillingDocumentDate.ToString();
+            txtBillingDocumentReference.Text = Invoice.BillingDocumentReference.ToString();
+            txtCustomerReference.Text = Invoice.CustomerReference.ToString();
+            txtAirwayBillNumber.Text = Invoice.AirwayBillNumber.ToString();
+            txtSupplyingECCompany.Text = Invoice.SupplyingECCompany.ToString();
+            txtSupplyingECCompany.Text = Invoice.SupplyingECCompany.ToString();
+            txtShipmentReference.Text = Invoice.ShipmentReference.ToString();
+            txtShippingCondition.Text = Invoice.ShippingCondition.ToString();
+            txtStatus.Text = Invoice.Status.ToString();
+            txtDeleted.Text = Invoice.Deleted.ToString();
+            txtCurrency.Text = Invoice.Currency.ToString();
+            txtInvoiceTaxValue.Text = Invoice.InvoiceTaxValue.ToString();
+            txtInvoiceGoodsValue.Text = Invoice.InvoiceGoodsValue.ToString();
+            txtInvoiceNettValue.Text = Invoice.InvoiceNettValue.ToString();
+            txtDiscount.Text = Invoice.Discount.ToString();
+            txtSurcharge.Text = Invoice.Surcharge.ToString();
         }
 
         private void bgw_RsInvoiceDetail_DoWork(object sender, DoWorkEventArgs e)
@@ -41,11 +88,11 @@ namespace LoginForm.f_RSInvoice
         private void bgw_RsInvoiceDetail_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             dgRsInvoiceItems.Rows.Clear();
-            SetDataGridItemsRsInvoiceDetail(RsInvoiceDetails);
+            SetDataGridItemsFromDataTableRsInvoiceDetail(RsInvoiceDetails);
             dgRsInvoiceItems.Refresh();
         }
 
-        private void SetDataGridItemsRsInvoiceDetail(DataTable dataTable)
+        private void SetDataGridItemsFromDataTableRsInvoiceDetail(DataTable dataTable)
         {
             foreach (DataRow dRow in dataTable.Rows)
             {
@@ -67,7 +114,30 @@ namespace LoginForm.f_RSInvoice
                 gRow.Cells[dgDeliveryItemNumber.Index].Value = dRow["DeliveryItemNumber"].ToString();
                 gRow.Cells[dgPurchaseOrderID.Index].Value = dRow["PurchaseOrderID"].ToString();
                 gRow.Cells[dgTax.Index].Value = dRow["Tax"].ToString();
+            }
+        }
+        private void SetDataGridItemsFromListRsInvoiceDetail()
+        {
+            foreach (RS_InvoiceDetails item in Invoice.RS_InvoiceDetails)
+            {
+                DataGridViewRow gRow = dgRsInvoiceItems.Rows[dgRsInvoiceItems.Rows.Add()];
 
+                gRow.Cells[dgPurchaseOrderNumber.Index].Value = item.PurchaseOrderNumber.ToString();
+                gRow.Cells[dgPurchaseOrderItemNumber.Index].Value = item.PurchaseOrderItemNumber.ToString();
+                gRow.Cells[dgProductNumber.Index].Value = item.ProductNumber.ToString();
+                gRow.Cells[dgBillingItemNumber.Index].Value = item.BillingItemNumber.ToString();
+                gRow.Cells[dgQuantity.Index].Value = item.Quantity.ToString();
+                gRow.Cells[dgSalesUnit.Index].Value = item.SalesUnit.ToString();
+                gRow.Cells[dgDiscount.Index].Value = item.Discount.ToString();
+                gRow.Cells[dgGoodsValue.Index].Value = item.GoodsValue.ToString();
+                gRow.Cells[dgAmount.Index].Value = item.Amount.ToString();
+                gRow.Cells[dgCCCNNO.Index].Value = item.CCCNNO.ToString();
+                gRow.Cells[dgCountryofOrigin.Index].Value = item.CountryofOrigin.ToString();
+                gRow.Cells[dgArticleDescription.Index].Value = item.ArticleDescription.ToString();
+                gRow.Cells[dgDeliveryNumber.Index].Value = item.DeliveryNumber.ToString();
+                gRow.Cells[dgDeliveryItemNumber.Index].Value = item.DeliveryItemNumber.ToString();
+                gRow.Cells[dgPurchaseOrderID.Index].Value = item.PurchaseOrderID.ToString();
+                gRow.Cells[dgTax.Index].Value = item.Tax.ToString();
             }
         }
 
@@ -95,5 +165,7 @@ namespace LoginForm.f_RSInvoice
             txtDiscount.Text = RsInvoiceMaster.Rows[0]["Discount"].ToString();
             txtSurcharge.Text = RsInvoiceMaster.Rows[0]["Surcharge"].ToString();
         }
+
+
     }
 }
