@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -88,7 +89,10 @@ namespace LoginForm.f_RSInvoice
 
         private void btnNewInvoice_Click(object sender, EventArgs e)
         {
+            RS_Invoice rsInv = RSInvoiceReader();
 
+            frm_RsInvoiceDetail form = new frm_RsInvoiceDetail(rsInv);
+            form.Show();
         }
 
         private void viewInvoicToolStripMenuItem_Click(object sender, EventArgs e)
@@ -239,6 +243,95 @@ namespace LoginForm.f_RSInvoice
             {
                 MessageBox.Show("You Should Choose An RS Invoice!");
             }
+        }
+
+        private RS_Invoice RSInvoiceReader()
+        {
+            //Show the dialog and get result.
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "txt files (*.txt)|*.txt";
+            openFileDialog1.Multiselect = true;
+            DialogResult result1 = openFileDialog1.ShowDialog();
+            RS_Invoice RSInvoice = new RS_Invoice();
+
+            if (result1 == DialogResult.OK) // Test result.
+            {
+                for (int i = 0; i < openFileDialog1.FileNames.Count(); i++)
+                {
+                    string[] lines = System.IO.File.ReadAllLines(openFileDialog1.FileNames[i]);
+                    bool istrue = true;
+                    bool isItem = false;
+                    RS_InvoiceDetails RS_InvoiceDetails = new RS_InvoiceDetails();
+                    if (lines[0].Substring(0, 2) == "FH")
+                    {
+                        if (lines[0].Substring(5, 14).ToString().Trim() != "") RSInvoice.BillingDocumentDate = DateTime.ParseExact(lines[0].Substring(5, 15).ToString(), "dd.MM.yyyyHH.mm", CultureInfo.InvariantCulture);
+                    }
+
+                    if (lines[1].Substring(0, 2) == "IV")
+                    {
+                        if (lines[1].Substring(2, 10).ToString().Trim() != "") RSInvoice.ShipmentReference = lines[1].Substring(2, 10).ToString().Trim();
+                        if (lines[1].Substring(12, 10).ToString().Trim() != "") RSInvoice.BillingDocumentReference = lines[1].Substring(12, 10).ToString().Trim();
+                        if (lines[1].Substring(22, 2).ToString().Trim() != "") RSInvoice.ShippingCondition = lines[1].Substring(22, 2).ToString().Trim();
+                        if (lines[1].Substring(32, 4).ToString().Trim() != "") RSInvoice.SupplyingECCompany = lines[1].Substring(32, 4).Trim();
+                        if (lines[1].Substring(36, 10).ToString().Trim() != "") RSInvoice.CustomerReference = lines[1].Substring(36, 10).Trim();
+                        if (lines[1].Substring(46, 18).ToString().Trim() != "") RSInvoice.InvoiceTaxValue = Convert.ToDecimal(lines[1].Substring(46, 18).ToString().Trim());
+                        if (lines[1].Substring(64, 18).ToString().Trim() != "") RSInvoice.InvoiceGoodsValue = Convert.ToDecimal(lines[1].Substring(64, 18).ToString().Trim());
+                        if (lines[1].Substring(82, 18).ToString().Trim().ToString().Trim() != "") RSInvoice.InvoiceNettValue = Convert.ToDecimal(lines[1].Substring(82, 18).ToString().Trim());
+                        if (lines[1].Substring(100, 3).ToString().Trim() != "") RSInvoice.Currency = lines[1].Substring(100, 3).ToString().Trim();
+                        if (!String.IsNullOrEmpty(lines[1].Substring(113, 20).ToString().Trim()))
+                        {
+                            RSInvoice.AirwayBillNumber = "";
+                        }
+                        else
+                        {
+                            RSInvoice.AirwayBillNumber = lines[1].Substring(120, 20).ToString().Trim();
+                        }
+                    }
+
+                    RSInvoice.Discount = 0;
+                    RSInvoice.Surcharge = 0;
+
+                    List<RS_InvoiceDetails> InvoiceDetails = new List<RS_InvoiceDetails>();
+                    int a = 4;
+                    while (lines.Count() > a)
+                    {
+                        RS_InvoiceDetails rs = new RS_InvoiceDetails();
+                        if (lines[a].Substring(0, 2) == "OI")
+                        {
+                            if (lines[a].Substring(2, 30).ToString().Trim() != "") rs.PurchaseOrderNumber = lines[a].Substring(2, 30).ToString().Trim();
+                            if (lines[a].Substring(32, 6).ToString().Trim() != "") rs.PurchaseOrderItemNumber = Convert.ToInt32(lines[a].Substring(32, 6).ToString().Trim());
+                            if (lines[a].Substring(38, 18).ToString().Trim() != "") rs.ProductNumber = lines[a].Substring(38, 18).ToString().Trim();
+                            if (lines[a].Substring(56, 6).ToString().Trim() != "") rs.BillingItemNumber = Convert.ToInt32(lines[a].Substring(56, 6).ToString().Trim());
+                            if (lines[a].Substring(62, 15).ToString().Trim() != "") rs.Quantity = (int)Decimal.Parse(lines[a].Substring(62, 15).ToString().Trim());
+
+                            if (lines[a].Substring(77, 3).ToString().Trim() != "") rs.SalesUnit = lines[a].Substring(77, 3).ToString().Trim();
+                            if (lines[a].Substring(80, 11).ToString().Trim() != "") rs.UnitPrice = decimal.Parse(lines[a].Substring(80, 11).ToString().Trim());
+                            if (lines[a].Substring(91, 11).ToString().Trim() != "") rs.Discount = decimal.Parse(lines[a].Substring(91, 11).ToString().Trim());
+                            if (lines[a].Substring(113, 11).ToString().Trim() != "") rs.GoodsValue = decimal.Parse(lines[a].Substring(113, 11).ToString().Trim());
+                            if (lines[a].Substring(124, 11).ToString().Trim() != "") rs.Amount = decimal.Parse(lines[a].Substring(124, 11).ToString().Trim());
+                            if (lines[a].Substring(135, 15).ToString().Trim() != "") rs.CCCNNO = lines[a].Substring(135, 15).ToString().Trim();
+                            if (lines[a].Substring(150, 3).ToString().Trim() != "") rs.CountryofOrigin = lines[a].Substring(150, 3).ToString().Trim();
+                            if (lines[a].Substring(153, 40).ToString().Trim() != "") rs.ArticleDescription = lines[a].Substring(153, 40).ToString().Trim();
+                            if (lines[a].Substring(193, 10).ToString().Trim() != "") rs.DeliveryNumber = decimal.Parse(lines[a].Substring(193, 10).ToString().Trim());
+                            if (!String.IsNullOrEmpty(lines[a].Substring(203, 6).ToString().Trim()))
+                            {
+                                rs.DeliveryItemNumber = 0;
+                            }
+                            else
+                            {
+                                rs.DeliveryItemNumber = Int32.Parse(lines[a].Substring(203, 6).ToString().Trim());
+                            }
+                            RSInvoice.RS_InvoiceDetails.Add(rs);
+                        }
+                        a++;
+                    }
+                    if (istrue == false)
+                    {
+                        MessageBox.Show("the contents of the file are not correct");
+                    }
+                }
+            }
+            return RSInvoice;
         }
     }
 }
