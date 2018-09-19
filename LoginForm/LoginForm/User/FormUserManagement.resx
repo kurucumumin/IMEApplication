@@ -469,7 +469,7 @@
     <value>None</value>
   </data>
   <data name="textBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>154, 351</value>
+    <value>154, 161</value>
   </data>
   <data name="textBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -478,7 +478,7 @@
     <value>210, 23</value>
   </data>
   <data name="textBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>36</value>
+    <value>38</value>
   </data>
   <data name="&gt;&gt;textBox1.Name" xml:space="preserve">
     <value>textBox1</value>
@@ -492,6 +492,42 @@
   <data name="&gt;&gt;textBox1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="materialLabel6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="materialLabel6.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Roboto, 11pt</value>
+  </data>
+  <data name="materialLabel6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="materialLabel6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 165</value>
+  </data>
+  <data name="materialLabel6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
+  </data>
+  <data name="materialLabel6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 19</value>
+  </data>
+  <data name="materialLabel6.TabIndex" type="System.Int32, mscorlib">
+    <value>37</value>
+  </data>
+  <data name="materialLabel6.Text" xml:space="preserve">
+    <value>TITLE</value>
+  </data>
+  <data name="&gt;&gt;materialLabel6.Name" xml:space="preserve">
+    <value>materialLabel6</value>
+  </data>
+  <data name="&gt;&gt;materialLabel6.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialLabel, MaterialSkin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;materialLabel6.Parent" xml:space="preserve">
+    <value>gbUserInfo</value>
+  </data>
+  <data name="&gt;&gt;materialLabel6.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="materialLabel10.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -502,7 +538,7 @@
     <value>NoControl</value>
   </data>
   <data name="materialLabel10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 306</value>
+    <value>3, 349</value>
   </data>
   <data name="materialLabel10.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -526,7 +562,7 @@
     <value>gbUserInfo</value>
   </data>
   <data name="&gt;&gt;materialLabel10.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="materialLabel9.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -538,7 +574,7 @@
     <value>NoControl</value>
   </data>
   <data name="materialLabel9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 272</value>
+    <value>4, 315</value>
   </data>
   <data name="materialLabel9.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -562,7 +598,7 @@
     <value>gbUserInfo</value>
   </data>
   <data name="&gt;&gt;materialLabel9.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="materialLabel8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -574,7 +610,7 @@
     <value>NoControl</value>
   </data>
   <data name="materialLabel8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 235</value>
+    <value>4, 278</value>
   </data>
   <data name="materialLabel8.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -598,10 +634,10 @@
     <value>gbUserInfo</value>
   </data>
   <data name="&gt;&gt;materialLabel8.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="numericDiscountRate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>154, 306</value>
+    <value>154, 349</value>
   </data>
   <data name="numericDiscountRate.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -622,10 +658,10 @@
     <value>gbUserInfo</value>
   </data>
   <data name="&gt;&gt;numericDiscountRate.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="numericFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>153, 268</value>
+    <value>153, 311</value>
   </data>
   <data name="numericFactor.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -646,10 +682,10 @@
     <value>gbUserInfo</value>
   </data>
   <data name="&gt;&gt;numericFactor.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="numericMinMargin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>153, 231</value>
+    <value>153, 274</value>
   </data>
   <data name="numericMinMargin.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -670,7 +706,7 @@
     <value>gbUserInfo</value>
   </data>
   <data name="&gt;&gt;numericMinMargin.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="materialLabel7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -706,7 +742,7 @@
     <value>gbUserInfo</value>
   </data>
   <data name="&gt;&gt;materialLabel7.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="txtNote.Location" type="System.Drawing.Point, System.Drawing">
     <value>153, 389</value>
@@ -733,7 +769,7 @@
     <value>gbUserInfo</value>
   </data>
   <data name="&gt;&gt;txtNote.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="txtNameLastName.Location" type="System.Drawing.Point, System.Drawing">
     <value>154, 25</value>
@@ -757,42 +793,6 @@
     <value>gbUserInfo</value>
   </data>
   <data name="&gt;&gt;txtNameLastName.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="materialLabel6.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="materialLabel6.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Roboto, 11pt</value>
-  </data>
-  <data name="materialLabel6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="materialLabel6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 355</value>
-  </data>
-  <data name="materialLabel6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
-  </data>
-  <data name="materialLabel6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 19</value>
-  </data>
-  <data name="materialLabel6.TabIndex" type="System.Int32, mscorlib">
-    <value>18</value>
-  </data>
-  <data name="materialLabel6.Text" xml:space="preserve">
-    <value>TITLE</value>
-  </data>
-  <data name="&gt;&gt;materialLabel6.Name" xml:space="preserve">
-    <value>materialLabel6</value>
-  </data>
-  <data name="&gt;&gt;materialLabel6.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialLabel, MaterialSkin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;materialLabel6.Parent" xml:space="preserve">
-    <value>gbUserInfo</value>
-  </data>
-  <data name="&gt;&gt;materialLabel6.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
   <data name="materialLabel5.AutoSize" type="System.Boolean, mscorlib">
@@ -805,7 +805,7 @@
     <value>NoControl</value>
   </data>
   <data name="materialLabel5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 198</value>
+    <value>2, 241</value>
   </data>
   <data name="materialLabel5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -841,7 +841,7 @@
     <value>NoControl</value>
   </data>
   <data name="materialLabel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 160</value>
+    <value>4, 203</value>
   </data>
   <data name="materialLabel4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -952,13 +952,13 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="materialLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 19</value>
+    <value>52, 19</value>
   </data>
   <data name="materialLabel1.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
   </data>
   <data name="materialLabel1.Text" xml:space="preserve">
-    <value>NAME - LAST NAME</value>
+    <value>NAME</value>
   </data>
   <data name="&gt;&gt;materialLabel1.Name" xml:space="preserve">
     <value>materialLabel1</value>
@@ -1003,7 +1003,7 @@
     <value>16</value>
   </data>
   <data name="txtPhone.Location" type="System.Drawing.Point, System.Drawing">
-    <value>153, 194</value>
+    <value>153, 237</value>
   </data>
   <data name="txtPhone.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -1027,7 +1027,7 @@
     <value>17</value>
   </data>
   <data name="txtMail.Location" type="System.Drawing.Point, System.Drawing">
-    <value>153, 160</value>
+    <value>153, 203</value>
   </data>
   <data name="txtMail.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>

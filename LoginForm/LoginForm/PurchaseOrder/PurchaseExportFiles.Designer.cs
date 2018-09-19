@@ -48,6 +48,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.txtPass = new System.Windows.Forms.TextBox();
+            this.txtPort = new System.Windows.Forms.TextBox();
+            this.txtHost = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.groupParameters = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picturePurchase)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -56,6 +65,7 @@
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCc)).BeginInit();
             this.groupBox5.SuspendLayout();
+            this.groupParameters.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -172,6 +182,7 @@
             this.chkDefoult.TabIndex = 6;
             this.chkDefoult.Text = "Default E-Mail";
             this.chkDefoult.UseVisualStyleBackColor = true;
+            this.chkDefoult.Visible = false;
             // 
             // btnEdit
             // 
@@ -221,6 +232,7 @@
             this.groupBox5.TabIndex = 11;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Date";
+            this.groupBox5.Visible = false;
             // 
             // label1
             // 
@@ -249,12 +261,96 @@
             this.label3.TabIndex = 14;
             this.label3.Text = "Close";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(4, 37);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(42, 13);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "E-MAIL";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(4, 65);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(35, 13);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "PASS";
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Location = new System.Drawing.Point(57, 32);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(137, 20);
+            this.txtEmail.TabIndex = 19;
+            // 
+            // txtPass
+            // 
+            this.txtPass.Location = new System.Drawing.Point(57, 62);
+            this.txtPass.Name = "txtPass";
+            this.txtPass.Size = new System.Drawing.Size(137, 20);
+            this.txtPass.TabIndex = 20;
+            // 
+            // txtPort
+            // 
+            this.txtPort.Location = new System.Drawing.Point(57, 127);
+            this.txtPort.Name = "txtPort";
+            this.txtPort.Size = new System.Drawing.Size(137, 20);
+            this.txtPort.TabIndex = 24;
+            this.txtPort.Text = "587";
+            // 
+            // txtHost
+            // 
+            this.txtHost.Location = new System.Drawing.Point(57, 93);
+            this.txtHost.Name = "txtHost";
+            this.txtHost.Size = new System.Drawing.Size(137, 20);
+            this.txtHost.TabIndex = 23;
+            this.txtHost.Text = "smtp.gmail.com";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(4, 130);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(37, 13);
+            this.label7.TabIndex = 22;
+            this.label7.Text = "PORT";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(4, 96);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(37, 13);
+            this.label8.TabIndex = 21;
+            this.label8.Text = "HOST";
+            // 
+            // groupParameters
+            // 
+            this.groupParameters.Controls.Add(this.txtPort);
+            this.groupParameters.Controls.Add(this.label5);
+            this.groupParameters.Controls.Add(this.label6);
+            this.groupParameters.Controls.Add(this.txtHost);
+            this.groupParameters.Controls.Add(this.txtEmail);
+            this.groupParameters.Controls.Add(this.label7);
+            this.groupParameters.Controls.Add(this.txtPass);
+            this.groupParameters.Controls.Add(this.label8);
+            this.groupParameters.Location = new System.Drawing.Point(11, 247);
+            this.groupParameters.Name = "groupParameters";
+            this.groupParameters.Size = new System.Drawing.Size(200, 162);
+            this.groupParameters.TabIndex = 26;
+            this.groupParameters.TabStop = false;
+            this.groupParameters.Text = "Sending Parameters";
+            // 
             // PurchaseExportFiles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.ClientSize = new System.Drawing.Size(1165, 604);
+            this.Controls.Add(this.groupParameters);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -281,6 +377,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgCc)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.groupParameters.ResumeLayout(false);
+            this.groupParameters.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -307,5 +405,14 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.TextBox txtPass;
+        private System.Windows.Forms.TextBox txtPort;
+        private System.Windows.Forms.TextBox txtHost;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.GroupBox groupParameters;
     }
 }

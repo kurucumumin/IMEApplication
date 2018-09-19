@@ -36,6 +36,7 @@
             this.btnEditWorker = new System.Windows.Forms.Button();
             this.btnCustomerChange = new System.Windows.Forms.Button();
             this.dgdg = new System.Windows.Forms.DataGridView();
+            this.workerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.workerIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameLastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.userNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,7 +48,6 @@
             this.minRateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.isActiveDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.workerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgdg)).BeginInit();
@@ -67,7 +67,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1150, 824);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1152, 824);
             this.tableLayoutPanel1.TabIndex = 13;
             // 
             // flowLayoutPanel1
@@ -78,7 +78,7 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1144, 69);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1146, 69);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // btnAddWorker
@@ -161,8 +161,12 @@
             this.dgdg.ReadOnly = true;
             this.dgdg.RowTemplate.Height = 24;
             this.dgdg.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgdg.Size = new System.Drawing.Size(1144, 743);
+            this.dgdg.Size = new System.Drawing.Size(1146, 743);
             this.dgdg.TabIndex = 3;
+            // 
+            // workerBindingSource
+            // 
+            this.workerBindingSource.DataSource = typeof(LoginForm.DataSet.Worker);
             // 
             // workerIDDataGridViewTextBoxColumn
             // 
@@ -216,45 +220,41 @@
             // minMargeDataGridViewTextBoxColumn
             // 
             this.minMargeDataGridViewTextBoxColumn.DataPropertyName = "MinMarge";
-            this.minMargeDataGridViewTextBoxColumn.HeaderText = "MinMarge";
+            this.minMargeDataGridViewTextBoxColumn.HeaderText = "MinMargin";
             this.minMargeDataGridViewTextBoxColumn.Name = "minMargeDataGridViewTextBoxColumn";
             this.minMargeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // minRateDataGridViewTextBoxColumn
             // 
             this.minRateDataGridViewTextBoxColumn.DataPropertyName = "MinRate";
-            this.minRateDataGridViewTextBoxColumn.HeaderText = "MinRate";
+            this.minRateDataGridViewTextBoxColumn.HeaderText = "MinFactor";
             this.minRateDataGridViewTextBoxColumn.Name = "minRateDataGridViewTextBoxColumn";
             this.minRateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // titleDataGridViewTextBoxColumn
             // 
             this.titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
-            this.titleDataGridViewTextBoxColumn.HeaderText = "Title";
+            this.titleDataGridViewTextBoxColumn.HeaderText = "Position";
             this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
             this.titleDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // isActiveDataGridViewTextBoxColumn
             // 
             this.isActiveDataGridViewTextBoxColumn.DataPropertyName = "isActive";
-            this.isActiveDataGridViewTextBoxColumn.HeaderText = "isActive";
+            this.isActiveDataGridViewTextBoxColumn.HeaderText = "Status";
             this.isActiveDataGridViewTextBoxColumn.Name = "isActiveDataGridViewTextBoxColumn";
             this.isActiveDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // workerBindingSource
-            // 
-            this.workerBindingSource.DataSource = typeof(LoginForm.DataSet.Worker);
-            // 
             // FormUserMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
-            this.ClientSize = new System.Drawing.Size(1150, 824);
+            this.ClientSize = new System.Drawing.Size(1152, 824);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MinimumSize = new System.Drawing.Size(1168, 871);
+            this.MinimumSize = new System.Drawing.Size(1168, 726);
             this.Name = "FormUserMain";
             this.Text = "Users";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
