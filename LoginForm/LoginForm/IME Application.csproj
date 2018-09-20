@@ -1034,6 +1034,7 @@
     <Compile Include="Services\QuotationDatagridCustomize.cs" />
     <Compile Include="Services\classSupplier.cs" />
     <Compile Include="Services\SP\Sp_Customer.cs" />
+    <Compile Include="Services\SP\Sp_Item.cs" />
     <Compile Include="Services\SP\Sp_RSInvoice.cs" />
     <Compile Include="Services\SP\Sp_SaleOrder.cs" />
     <Compile Include="Services\SP\Sp_Worker.cs" />

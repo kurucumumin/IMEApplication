@@ -98,7 +98,7 @@ namespace LoginForm.f_RSInvoice
 
             if (InvoiceExist)
             {
-                MessageBox.Show("Existing Invoice! , Please chooseanother one.", "Warning");
+                MessageBox.Show("File Is Already Imported!", "Warning");
             }
             else
             {
@@ -333,6 +333,7 @@ namespace LoginForm.f_RSInvoice
                             {
                                 rs.DeliveryItemNumber = Int32.Parse(lines[a].Substring(203, 6).ToString().Trim());
                             }
+                            rs.PurchaseOrderID = Int32.Parse(rs.PurchaseOrderNumber.ToString().Substring(0, rs.PurchaseOrderNumber.ToString().IndexOf('R')).ToString());
                             RSInvoice.RS_InvoiceDetails.Add(rs);
                         }
                         a++;
