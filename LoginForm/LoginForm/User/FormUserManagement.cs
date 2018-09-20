@@ -87,7 +87,7 @@ namespace LoginForm.User
                     }
                     else
                     {
-                        if (txtNameLastName.Text.Length == 0 || txtUsername.Text.Length == 0 || txtMail.Text.Length == 0 || txtPhone.Text.Length == 0 || (rbSales.Checked == false && rbSalesManager.Checked == false && rbGeneralManager.Checked == false) == true || numericMinMargin.Value <= 0 || numericFactor.Value <= 0)
+                        if (txtNameLastName.Text.Length == 0 || txtUsername.Text.Length == 0 || txtMail.Text.Length == 0 || txtPhone.Text.Length == 0 || numericMinMargin.Value <= 0 || numericFactor.Value <= 0)
                         {
                             return true;
                         }
@@ -99,7 +99,7 @@ namespace LoginForm.User
                 }
                 else
                 {
-                    if (txtNameLastName.Text.Length == 0 || txtUsername.Text.Length == 0 || txtMail.Text.Length == 0 || txtPhone.Text.Length == 0 || (rbSales.Checked == false && rbSalesManager.Checked == false && rbGeneralManager.Checked == false) == true || numericMinMargin.Value <= 0 || numericFactor.Value <= 0)
+                    if (txtNameLastName.Text.Length == 0 || txtUsername.Text.Length == 0 || txtMail.Text.Length == 0 || txtPhone.Text.Length == 0 || numericMinMargin.Value <= 0 || numericFactor.Value <= 0)
                     {
                         return true;
                     }
@@ -111,7 +111,7 @@ namespace LoginForm.User
             }
             else
             {
-                if (txtNameLastName.Text.Length == 0 || txtUsername.Text.Length == 0 || txtUserPass.Text.Length == 0 || txtMail.Text.Length == 0 || txtPhone.Text.Length == 0 || (rbSales.Checked == false && rbSalesManager.Checked == false && rbGeneralManager.Checked == false) == true || numericMinMargin.Value <= 0 || numericFactor.Value <= 0)
+                if (txtNameLastName.Text.Length == 0 || txtUsername.Text.Length == 0 || txtUserPass.Text.Length == 0 || txtMail.Text.Length == 0 || txtPhone.Text.Length == 0 || numericMinMargin.Value <= 0 || numericFactor.Value <= 0)
                 {
                     return true;
                 }
@@ -136,21 +136,6 @@ namespace LoginForm.User
             {
                 txtNote.Text = worker.Note.Note_name;
             }
-
-
-            switch (worker.Title)
-            {
-                case 1:
-                    rbSales.Checked = true;
-                    break;
-                case 2:
-                    rbSalesManager.Checked = true;
-                    break;
-                case 3:
-                    rbGeneralManager.Checked = true;
-                    break;
-            }
-
 
             if (worker.isActive == 1)
             {
@@ -377,18 +362,6 @@ namespace LoginForm.User
                         {
                             wrkr.UserPass = Utils.MD5Hash(txtUserPass.Text);
                         }
-                        if (rbSales.Checked)
-                        {
-                            wrkr.Title = 1;
-                        }
-                        else if (rbSalesManager.Checked)
-                        {
-                            wrkr.Title = 2;
-                        }
-                        else if (rbGeneralManager.Checked)
-                        {
-                            wrkr.Title = 3;
-                        }
 
                         wrkr.MinMarge = numericMinMargin.Value;
                         wrkr.MinRate = numericFactor.Value;
@@ -463,21 +436,6 @@ namespace LoginForm.User
                         worker.Phone = txtPhone.Text;
                         worker.UserName = txtUsername.Text;
                         worker.UserPass = Utils.MD5Hash(txtUserPass.Text);
-
-                        int title = 0;
-                        if (rbSales.Checked)
-                        {
-                            title = 1;
-                        }
-                        else if (rbSalesManager.Checked)
-                        {
-                            title = 2;
-                        }
-                        else if (rbGeneralManager.Checked)
-                        {
-                            title = 3;
-                        }
-                        worker.Title = title;
 
                         IME.Workers.Add(worker);
                         IME.SaveChanges();

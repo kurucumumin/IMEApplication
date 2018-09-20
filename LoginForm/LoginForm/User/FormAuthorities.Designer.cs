@@ -61,9 +61,13 @@
             this.customerTransferToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gbAuthorities = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.chcAllAuth = new System.Windows.Forms.CheckBox();
             this.clbAuthorities = new System.Windows.Forms.CheckedListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.clbUserAuthorityList = new System.Windows.Forms.CheckedListBox();
             this.gbRoles = new System.Windows.Forms.GroupBox();
             this.lbRoles = new System.Windows.Forms.ListBox();
@@ -87,7 +91,7 @@
             this.managmentToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(90, 450);
+            this.menuStrip1.Size = new System.Drawing.Size(90, 499);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -338,27 +342,46 @@
             // 
             // gbAuthorities
             // 
+            this.gbAuthorities.Controls.Add(this.label2);
+            this.gbAuthorities.Controls.Add(this.textBox2);
             this.gbAuthorities.Controls.Add(this.chcAllAuth);
             this.gbAuthorities.Controls.Add(this.clbAuthorities);
-            this.gbAuthorities.Location = new System.Drawing.Point(543, 11);
+            this.gbAuthorities.Location = new System.Drawing.Point(319, 11);
             this.gbAuthorities.Margin = new System.Windows.Forms.Padding(6, 13, 6, 6);
             this.gbAuthorities.Name = "gbAuthorities";
             this.gbAuthorities.Padding = new System.Windows.Forms.Padding(10);
-            this.gbAuthorities.Size = new System.Drawing.Size(250, 439);
+            this.gbAuthorities.Size = new System.Drawing.Size(350, 488);
             this.gbAuthorities.TabIndex = 2;
             this.gbAuthorities.TabStop = false;
             this.gbAuthorities.Text = "AUTHORITIES";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(192, 29);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(41, 13);
+            this.label2.TabIndex = 32;
+            this.label2.Text = "Search";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(239, 25);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 31;
+            this.textBox2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox2_KeyDown);
             // 
             // chcAllAuth
             // 
             this.chcAllAuth.AutoSize = true;
             this.chcAllAuth.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.chcAllAuth.Location = new System.Drawing.Point(151, 0);
+            this.chcAllAuth.Location = new System.Drawing.Point(10, 25);
             this.chcAllAuth.Margin = new System.Windows.Forms.Padding(2);
             this.chcAllAuth.Name = "chcAllAuth";
-            this.chcAllAuth.Size = new System.Drawing.Size(89, 17);
+            this.chcAllAuth.Size = new System.Drawing.Size(70, 17);
             this.chcAllAuth.TabIndex = 4;
-            this.chcAllAuth.Text = "All Authorities";
+            this.chcAllAuth.Text = "Select All";
             this.chcAllAuth.UseVisualStyleBackColor = true;
             this.chcAllAuth.Click += new System.EventHandler(this.chcAllAuth_Click);
             // 
@@ -366,37 +389,54 @@
             // 
             this.clbAuthorities.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.clbAuthorities.CheckOnClick = true;
-            this.clbAuthorities.Dock = System.Windows.Forms.DockStyle.Fill;
             this.clbAuthorities.FormattingEnabled = true;
-            this.clbAuthorities.Location = new System.Drawing.Point(10, 23);
+            this.clbAuthorities.Location = new System.Drawing.Point(9, 53);
             this.clbAuthorities.Margin = new System.Windows.Forms.Padding(2);
             this.clbAuthorities.Name = "clbAuthorities";
-            this.clbAuthorities.Size = new System.Drawing.Size(230, 406);
+            this.clbAuthorities.Size = new System.Drawing.Size(331, 424);
             this.clbAuthorities.TabIndex = 0;
             this.clbAuthorities.MouseClick += new System.Windows.Forms.MouseEventHandler(this.clbAuthorities_MouseClick);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.clbUserAuthorityList);
-            this.groupBox1.Location = new System.Drawing.Point(791, 11);
+            this.groupBox1.Location = new System.Drawing.Point(681, 11);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(6, 13, 6, 6);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(10);
-            this.groupBox1.Size = new System.Drawing.Size(250, 439);
+            this.groupBox1.Size = new System.Drawing.Size(350, 488);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "USER AUTHORITY LIST";
+            this.groupBox1.Text = "USER AUTHORITY";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(193, 28);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(41, 13);
+            this.label3.TabIndex = 33;
+            this.label3.Text = "Search";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(240, 22);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 1;
+            this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
             // clbUserAuthorityList
             // 
             this.clbUserAuthorityList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.clbUserAuthorityList.CheckOnClick = true;
-            this.clbUserAuthorityList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.clbUserAuthorityList.FormattingEnabled = true;
-            this.clbUserAuthorityList.Location = new System.Drawing.Point(10, 23);
+            this.clbUserAuthorityList.Location = new System.Drawing.Point(12, 53);
             this.clbUserAuthorityList.Margin = new System.Windows.Forms.Padding(2);
             this.clbUserAuthorityList.Name = "clbUserAuthorityList";
-            this.clbUserAuthorityList.Size = new System.Drawing.Size(230, 406);
+            this.clbUserAuthorityList.Size = new System.Drawing.Size(328, 424);
             this.clbUserAuthorityList.TabIndex = 0;
             this.clbUserAuthorityList.MouseClick += new System.Windows.Forms.MouseEventHandler(this.clbUserAuthorityList_MouseClick);
             // 
@@ -407,7 +447,7 @@
             this.gbRoles.Margin = new System.Windows.Forms.Padding(6, 13, 6, 6);
             this.gbRoles.Name = "gbRoles";
             this.gbRoles.Padding = new System.Windows.Forms.Padding(10);
-            this.gbRoles.Size = new System.Drawing.Size(250, 439);
+            this.gbRoles.Size = new System.Drawing.Size(26, 488);
             this.gbRoles.TabIndex = 4;
             this.gbRoles.TabStop = false;
             this.gbRoles.Text = "ROLES";
@@ -422,7 +462,7 @@
             this.lbRoles.Location = new System.Drawing.Point(10, 23);
             this.lbRoles.Margin = new System.Windows.Forms.Padding(2);
             this.lbRoles.Name = "lbRoles";
-            this.lbRoles.Size = new System.Drawing.Size(230, 406);
+            this.lbRoles.Size = new System.Drawing.Size(6, 455);
             this.lbRoles.TabIndex = 2;
             this.lbRoles.ValueMember = "RoleID";
             // 
@@ -430,7 +470,7 @@
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label4.Location = new System.Drawing.Point(112, 424);
+            this.label4.Location = new System.Drawing.Point(149, 466);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(40, 17);
             this.label4.TabIndex = 56;
@@ -442,7 +482,7 @@
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnSave.Image = global::LoginForm.Properties.Resources.if_floppy_285657;
             this.btnSave.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnSave.Location = new System.Drawing.Point(105, 370);
+            this.btnSave.Location = new System.Drawing.Point(142, 412);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(52, 52);
             this.btnSave.TabIndex = 55;
@@ -453,7 +493,7 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(189, 424);
+            this.label1.Location = new System.Drawing.Point(226, 466);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 17);
             this.label1.TabIndex = 58;
@@ -465,7 +505,7 @@
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnExit.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
             this.btnExit.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnExit.Location = new System.Drawing.Point(178, 370);
+            this.btnExit.Location = new System.Drawing.Point(215, 412);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(52, 52);
             this.btnExit.TabIndex = 57;
@@ -476,7 +516,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
-            this.ClientSize = new System.Drawing.Size(1044, 450);
+            this.ClientSize = new System.Drawing.Size(1044, 499);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.label4);
@@ -493,6 +533,7 @@
             this.gbAuthorities.ResumeLayout(false);
             this.gbAuthorities.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.gbRoles.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -544,5 +585,9 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

@@ -178,13 +178,13 @@ namespace LoginForm.PurchaseOrder
             #endregion
 
             #region SendMail
-            sc.Port = 587;
-            sc.Host = "smtp.gmail.com";
+            sc.Port = Convert.ToInt32(txtPort.Text);
+            sc.Host = txtHost.Text;
             sc.EnableSsl = true;
 
-            sc.Credentials = new NetworkCredential("kurucumumin94@gmail.com", "6231962319+**");
+            sc.Credentials = new NetworkCredential(txtEmail.Text, txtPass.Text);
 
-            mail.From = new MailAddress("kurucumumin94@gmail.com", "Mümin Kurucu");
+            mail.From = new MailAddress(txtEmail.Text, "");
             mail.Subject = "ORDER"; mail.IsBodyHtml = true; mail.Body = "";
             Attachment attachment;
             //attachment = new Attachment(@"C:\Users\pomak\Desktop\Order.txt");

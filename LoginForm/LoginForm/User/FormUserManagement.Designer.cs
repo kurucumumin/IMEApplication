@@ -45,26 +45,21 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.gbUserInfo = new System.Windows.Forms.GroupBox();
+            this.materialLabel10 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel9 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel8 = new MaterialSkin.Controls.MaterialLabel();
+            this.numericDiscountRate = new System.Windows.Forms.NumericUpDown();
+            this.numericFactor = new System.Windows.Forms.NumericUpDown();
+            this.numericMinMargin = new System.Windows.Forms.NumericUpDown();
             this.materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
             this.txtNote = new System.Windows.Forms.TextBox();
             this.txtNameLastName = new System.Windows.Forms.TextBox();
-            this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.chcActive = new System.Windows.Forms.CheckBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.numericDiscountRate = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.numericFactor = new System.Windows.Forms.NumericUpDown();
-            this.numericMinMargin = new System.Windows.Forms.NumericUpDown();
-            this.rbGeneralManager = new System.Windows.Forms.RadioButton();
-            this.rbSalesManager = new System.Windows.Forms.RadioButton();
-            this.rbSales = new System.Windows.Forms.RadioButton();
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.txtMail = new System.Windows.Forms.TextBox();
             this.txtUserPass = new System.Windows.Forms.TextBox();
@@ -72,6 +67,8 @@
             this.chcChangePassword = new System.Windows.Forms.CheckBox();
             this.authRoleBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.authorizationValueBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.gbRoles.SuspendLayout();
@@ -79,7 +76,6 @@
             this.gbAuthorities.SuspendLayout();
             this.panel1.SuspendLayout();
             this.gbUserInfo.SuspendLayout();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericDiscountRate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericFactor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericMinMargin)).BeginInit();
@@ -194,17 +190,23 @@
             // 
             resources.ApplyResources(this.gbUserInfo, "gbUserInfo");
             this.gbUserInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
+            this.gbUserInfo.Controls.Add(this.textBox1);
+            this.gbUserInfo.Controls.Add(this.materialLabel6);
+            this.gbUserInfo.Controls.Add(this.materialLabel10);
+            this.gbUserInfo.Controls.Add(this.materialLabel9);
+            this.gbUserInfo.Controls.Add(this.materialLabel8);
+            this.gbUserInfo.Controls.Add(this.numericDiscountRate);
+            this.gbUserInfo.Controls.Add(this.numericFactor);
+            this.gbUserInfo.Controls.Add(this.numericMinMargin);
             this.gbUserInfo.Controls.Add(this.materialLabel7);
             this.gbUserInfo.Controls.Add(this.txtNote);
             this.gbUserInfo.Controls.Add(this.txtNameLastName);
-            this.gbUserInfo.Controls.Add(this.materialLabel6);
             this.gbUserInfo.Controls.Add(this.materialLabel5);
             this.gbUserInfo.Controls.Add(this.materialLabel4);
             this.gbUserInfo.Controls.Add(this.materialLabel3);
             this.gbUserInfo.Controls.Add(this.materialLabel2);
             this.gbUserInfo.Controls.Add(this.materialLabel1);
             this.gbUserInfo.Controls.Add(this.chcActive);
-            this.gbUserInfo.Controls.Add(this.panel2);
             this.gbUserInfo.Controls.Add(this.txtPhone);
             this.gbUserInfo.Controls.Add(this.txtMail);
             this.gbUserInfo.Controls.Add(this.txtUserPass);
@@ -212,6 +214,73 @@
             this.gbUserInfo.Controls.Add(this.chcChangePassword);
             this.gbUserInfo.Name = "gbUserInfo";
             this.gbUserInfo.TabStop = false;
+            // 
+            // materialLabel10
+            // 
+            resources.ApplyResources(this.materialLabel10, "materialLabel10");
+            this.materialLabel10.Depth = 0;
+            this.materialLabel10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel10.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel10.Name = "materialLabel10";
+            // 
+            // materialLabel9
+            // 
+            resources.ApplyResources(this.materialLabel9, "materialLabel9");
+            this.materialLabel9.Depth = 0;
+            this.materialLabel9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel9.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel9.Name = "materialLabel9";
+            // 
+            // materialLabel8
+            // 
+            resources.ApplyResources(this.materialLabel8, "materialLabel8");
+            this.materialLabel8.Depth = 0;
+            this.materialLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel8.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel8.Name = "materialLabel8";
+            // 
+            // numericDiscountRate
+            // 
+            this.numericDiscountRate.DecimalPlaces = 2;
+            this.numericDiscountRate.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            resources.ApplyResources(this.numericDiscountRate, "numericDiscountRate");
+            this.numericDiscountRate.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.numericDiscountRate.Minimum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            -2147483648});
+            this.numericDiscountRate.Name = "numericDiscountRate";
+            // 
+            // numericFactor
+            // 
+            this.numericFactor.DecimalPlaces = 2;
+            this.numericFactor.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            resources.ApplyResources(this.numericFactor, "numericFactor");
+            this.numericFactor.Name = "numericFactor";
+            // 
+            // numericMinMargin
+            // 
+            this.numericMinMargin.DecimalPlaces = 2;
+            this.numericMinMargin.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            resources.ApplyResources(this.numericMinMargin, "numericMinMargin");
+            this.numericMinMargin.Name = "numericMinMargin";
             // 
             // materialLabel7
             // 
@@ -230,14 +299,6 @@
             // 
             resources.ApplyResources(this.txtNameLastName, "txtNameLastName");
             this.txtNameLastName.Name = "txtNameLastName";
-            // 
-            // materialLabel6
-            // 
-            resources.ApplyResources(this.materialLabel6, "materialLabel6");
-            this.materialLabel6.Depth = 0;
-            this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel6.Name = "materialLabel6";
             // 
             // materialLabel5
             // 
@@ -285,105 +346,6 @@
             this.chcActive.Name = "chcActive";
             this.chcActive.UseVisualStyleBackColor = true;
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel2.Controls.Add(this.numericDiscountRate);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.numericFactor);
-            this.panel2.Controls.Add(this.numericMinMargin);
-            this.panel2.Controls.Add(this.rbGeneralManager);
-            this.panel2.Controls.Add(this.rbSalesManager);
-            this.panel2.Controls.Add(this.rbSales);
-            resources.ApplyResources(this.panel2, "panel2");
-            this.panel2.Name = "panel2";
-            // 
-            // numericDiscountRate
-            // 
-            this.numericDiscountRate.DecimalPlaces = 2;
-            this.numericDiscountRate.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            resources.ApplyResources(this.numericDiscountRate, "numericDiscountRate");
-            this.numericDiscountRate.Maximum = new decimal(new int[] {
-            200,
-            0,
-            0,
-            0});
-            this.numericDiscountRate.Minimum = new decimal(new int[] {
-            9999,
-            0,
-            0,
-            -2147483648});
-            this.numericDiscountRate.Name = "numericDiscountRate";
-            this.numericDiscountRate.ValueChanged += new System.EventHandler(this.numericDiscountRate_ValueChanged);
-            this.numericDiscountRate.Leave += new System.EventHandler(this.numericDiscountRate_ValueChanged);
-            // 
-            // label3
-            // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
-            // 
-            // label2
-            // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            // 
-            // numericFactor
-            // 
-            this.numericFactor.DecimalPlaces = 2;
-            this.numericFactor.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            resources.ApplyResources(this.numericFactor, "numericFactor");
-            this.numericFactor.Name = "numericFactor";
-            this.numericFactor.ValueChanged += new System.EventHandler(this.numericFactor_ValueChanged);
-            this.numericFactor.Leave += new System.EventHandler(this.numericFactor_ValueChanged);
-            // 
-            // numericMinMargin
-            // 
-            this.numericMinMargin.DecimalPlaces = 2;
-            this.numericMinMargin.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            resources.ApplyResources(this.numericMinMargin, "numericMinMargin");
-            this.numericMinMargin.Name = "numericMinMargin";
-            // 
-            // rbGeneralManager
-            // 
-            resources.ApplyResources(this.rbGeneralManager, "rbGeneralManager");
-            this.rbGeneralManager.Name = "rbGeneralManager";
-            this.rbGeneralManager.TabStop = true;
-            this.rbGeneralManager.UseVisualStyleBackColor = true;
-            // 
-            // rbSalesManager
-            // 
-            resources.ApplyResources(this.rbSalesManager, "rbSalesManager");
-            this.rbSalesManager.Name = "rbSalesManager";
-            this.rbSalesManager.TabStop = true;
-            this.rbSalesManager.UseVisualStyleBackColor = true;
-            // 
-            // rbSales
-            // 
-            resources.ApplyResources(this.rbSales, "rbSales");
-            this.rbSales.Name = "rbSales";
-            this.rbSales.TabStop = true;
-            this.rbSales.UseVisualStyleBackColor = true;
-            // 
             // txtPhone
             // 
             resources.ApplyResources(this.txtPhone, "txtPhone");
@@ -411,6 +373,19 @@
             this.chcChangePassword.UseVisualStyleBackColor = true;
             this.chcChangePassword.CheckedChanged += new System.EventHandler(this.chcChangePassword_CheckedChanged);
             // 
+            // textBox1
+            // 
+            resources.ApplyResources(this.textBox1, "textBox1");
+            this.textBox1.Name = "textBox1";
+            // 
+            // materialLabel6
+            // 
+            resources.ApplyResources(this.materialLabel6, "materialLabel6");
+            this.materialLabel6.Depth = 0;
+            this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel6.Name = "materialLabel6";
+            // 
             // FormWorkerManagement
             // 
             resources.ApplyResources(this, "$this");
@@ -428,8 +403,6 @@
             this.panel1.ResumeLayout(false);
             this.gbUserInfo.ResumeLayout(false);
             this.gbUserInfo.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericDiscountRate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericFactor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericMinMargin)).EndInit();
@@ -446,21 +419,14 @@
         private System.Windows.Forms.GroupBox gbAuthorities;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox gbUserInfo;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.RadioButton rbGeneralManager;
-        private System.Windows.Forms.RadioButton rbSalesManager;
-        private System.Windows.Forms.RadioButton rbSales;
         private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.TextBox txtMail;
         private System.Windows.Forms.TextBox txtUserPass;
         private System.Windows.Forms.TextBox txtUsername;
-        private System.Windows.Forms.NumericUpDown numericMinMargin;
-        private System.Windows.Forms.NumericUpDown numericFactor;
         private System.Windows.Forms.BindingSource authRoleBindingSource;
         private System.Windows.Forms.BindingSource authorizationValueBindingSource;
         private System.Windows.Forms.CheckedListBox clbAuthorities;
         private System.Windows.Forms.CheckBox chcActive;
-        private MaterialSkin.Controls.MaterialLabel materialLabel6;
         private MaterialSkin.Controls.MaterialLabel materialLabel5;
         private MaterialSkin.Controls.MaterialLabel materialLabel4;
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
@@ -474,14 +440,18 @@
         private System.Windows.Forms.TextBox txtNote;
         private System.Windows.Forms.ListBox lbRoles;
         private System.Windows.Forms.BindingSource roleValueBindingSource;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.NumericUpDown numericDiscountRate;
         private System.Windows.Forms.CheckBox chcAllAuth;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnAuthorities;
+        private MaterialSkin.Controls.MaterialLabel materialLabel10;
+        private MaterialSkin.Controls.MaterialLabel materialLabel9;
+        private MaterialSkin.Controls.MaterialLabel materialLabel8;
+        private System.Windows.Forms.NumericUpDown numericDiscountRate;
+        private System.Windows.Forms.NumericUpDown numericFactor;
+        private System.Windows.Forms.NumericUpDown numericMinMargin;
+        private System.Windows.Forms.TextBox textBox1;
+        private MaterialSkin.Controls.MaterialLabel materialLabel6;
     }
 }

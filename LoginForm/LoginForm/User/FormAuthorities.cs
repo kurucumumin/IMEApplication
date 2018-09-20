@@ -59,20 +59,30 @@ namespace LoginForm.User
 
         private void chcAllAuth_Click(object sender, EventArgs e)
         {
-            IMEEntities IME = new IMEEntities();
+            //IMEEntities IME = new IMEEntities();
+            //if (chcAllAuth.Checked == true)
+            //{
+            //    //tüm otoriteleri işaretle
+            //    clbAuthorities.DataSource = IME.AuthorizationValues.ToList();
+            //    clbAuthorities.DisplayMember = "AuthorizationValue1";
+            //    matchAuthorities();
+            //}
+            //else
+            //{
+            //    //tüm otoriteleri kaldır
+            //    clbAuthorities.DataSource = IME.AuthorizationValues.Where(x => x.AuthorizationValue1.Contains(ıtemCardToolStripMenuItem.Text)).ToList();
+            //    clbAuthorities.DisplayMember = "AuthorizationValue1";
+            //    matchAuthorities();
+            //}
             if (chcAllAuth.Checked == true)
             {
                 //tüm otoriteleri işaretle
-                clbAuthorities.DataSource = IME.AuthorizationValues.ToList();
-                clbAuthorities.DisplayMember = "AuthorizationValue1";
-                matchAuthorities();
+                SelectAllChangeState(clbAuthorities, true);
             }
             else
             {
                 //tüm otoriteleri kaldır
-                clbAuthorities.DataSource = IME.AuthorizationValues.Where(x => x.AuthorizationValue1.Contains(ıtemCardToolStripMenuItem.Text)).ToList();
-                clbAuthorities.DisplayMember = "AuthorizationValue1";
-                matchAuthorities();
+                SelectAllChangeState(clbAuthorities, false);
             }
         }
 
@@ -118,6 +128,7 @@ namespace LoginForm.User
             clbAuthorities.DisplayMember = "AuthorizationValue1";
             chcAllAuth.Checked = false;
             matchAuthorities();
+            chcAllAuth.Text = select + "Select All";
         }
 
         private void ıtemCardToolStripMenuItem_Click(object sender, EventArgs e)
@@ -347,17 +358,45 @@ namespace LoginForm.User
                     IME.SaveChanges();
                 }
 
-                if (wrkr.WorkerID == Utils.getCurrentUser().WorkerID)
-                {
-                    Utils.setCurrentUser(wrkr);
-                    formMain.checkAuthorities();
-                }
+                //if (wrkr.WorkerID == Utils.getCurrentUser().WorkerID)
+                //{
+                //    Utils.setCurrentUser(wrkr);
+                //    formMain.checkAuthorities();
+                //}
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Bir hata oluştu, Tekrar Deneyin");
             }
+            MessageBox.Show("Succesfully");
         }
 
+        private void textBox2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                MenuItem(textBox2.Text);
+
+            }
+        }
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (textBox1.Text != "")
+                {
+                    string sel = textBox1.Text.Replace(" ", "");
+                    clbUserAuthorityList.DataSource = authList.Where(x => x.AuthorizationValue1.Replace(" ", "").Contains(sel)).ToList();
+                    clbUserAuthorityList.DisplayMember = "AuthorizationValue1";
+                    chcAllAuth.Checked = false;
+                    CheckAllItemsListBox(clbUserAuthorityList, true);
+                    matchAuthorities();
+                }
+                else
+                {
+                    LoadUserAuthorization();
+                }
+            }
+        }
     }
 }
