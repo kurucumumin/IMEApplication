@@ -1,4 +1,5 @@
 ﻿using Helpers;
+using LoginForm.clsClasses;
 using LoginForm.DataSet;
 using LoginForm.Main;
 using LoginForm.Services;
@@ -38,7 +39,9 @@ namespace LoginForm
                 if (Logged.isActive == 1)
                 {
                     Utils.setCurrentUser(Logged);
-                    //FormMain formMain = new FormMain();
+
+                    Utils.LogKayit("Login", "PROGRAMA GİRİŞ YAPILDI.");
+                    
                     frmMainMetro formMain = new frmMainMetro();
                     this.Hide();
                     formMain.ShowDialog();

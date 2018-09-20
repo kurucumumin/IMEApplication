@@ -8,6 +8,8 @@ using Microsoft.Office.Interop.Excel;
 using System;
 using System.Drawing;
 using System.Data.SqlClient;
+using LoginForm.MyClasses;
+using System.Data;
 
 namespace LoginForm.Services
 {
@@ -164,6 +166,36 @@ namespace LoginForm.Services
                 //@"C:\Users\PC\Desktop\test2.xls"
                 wb.SaveAs(@path, XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
             }
+        }
+
+        public static void LogKayit(string TableName, string DoneOperation)
+        {
+            KomutArgumanlari_[] arguman = new KomutArgumanlari_[4];
+            KomutArgumanlari_ i_1 = new KomutArgumanlari_
+            {
+                Parametre = TableName,
+                ParametreAdi = "@TABLE_NAME"
+            };
+            arguman[0] = i_1;
+            KomutArgumanlari_ i_2 = new KomutArgumanlari_
+            {
+                Parametre = new IMEEntities().CurrentDate().FirstOrDefault(),
+                ParametreAdi = "@TIME"
+            };
+            arguman[1] = i_2;
+            KomutArgumanlari_ i_3 = new KomutArgumanlari_
+            {
+                Parametre = Utils.getCurrentUser().WorkerID,
+                ParametreAdi = "@USER_ID"
+            };
+            arguman[2] = i_3;
+            KomutArgumanlari_ i_4 = new KomutArgumanlari_
+            {
+                Parametre = DoneOperation,
+                ParametreAdi = "@DONE_OPERATION"
+            };
+            arguman[3] = i_4;
+            clsClasses.MyConnect.Ornekle.ExecuteNonQuery(Utils.ConnectionStringIME, "INSERT INTO dbo.LogRecords (TABLE_NAME, TIME, USER_ID, DONE_OPERATION) VALUES (@TABLE_NAME, @TIME, @USER_ID, @DONE_OPERATION)", CommandType.Text, 60, arguman);
         }
     }
 }

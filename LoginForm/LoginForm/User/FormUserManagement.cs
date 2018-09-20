@@ -20,6 +20,8 @@ namespace LoginForm.User
         {
             InitializeComponent();
             rbActive.Checked = true;
+            btnAuthorities.Visible = false;
+            label5.Visible = false;
             authList = new List<AuthorizationValue>();
             chcChangePassword.Visible = false;
             LoadRoles();

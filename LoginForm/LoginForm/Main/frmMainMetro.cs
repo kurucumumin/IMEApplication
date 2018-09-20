@@ -7,6 +7,7 @@
 #endregion
 using LoginForm.BackOrder;
 using LoginForm.Billing;
+using LoginForm.clsClasses;
 using LoginForm.DataSet;
 using LoginForm.f_RSInvoice;
 using LoginForm.ItemModule;
@@ -324,54 +325,64 @@ namespace LoginForm.Main
         {
             frmSupplierMain supplierMain = new frmSupplierMain();
             supplierMain.Show();
+            Utils.LogKayit("Supplier", "Supplier main screen has been entered");
         }
 
         private void btnSalesOrder_Click(object sender, EventArgs e)
         {
             FormSalesOrderMain saleOrderMain = new FormSalesOrderMain();
             saleOrderMain.Show();
+            Utils.LogKayit("SaleOrder Main", "SaleOrder main screen has been entered");
         }
 
         private void btnCustomer_Click(object sender, EventArgs e)
         {
             CustomerMain customerMain = new CustomerMain();
             customerMain.Show();
+            Utils.LogKayit("Customer Main", "Customer main screen has been entered");
         }
 
         private void btnPurchaseOrder_Click(object sender, EventArgs e)
         {
             PurchaseOrderMain form = new PurchaseOrderMain();
             form.Show();
+            Utils.LogKayit("PurchaseOrder Main", "PurchaseOrder main screen has been entered");
         }
 
         private void btnItemCard_Click(object sender, EventArgs e)
         {
             ItemCard frmItem = new ItemCard();
             frmItem.Show();
+            Utils.LogKayit("ItemCard Main", "ItemCard main screen has been entered");
         }
 
         private void btnQuotation_Click(object sender, EventArgs e)
         {
             FormQuotationMain formQuotationMain = new FormQuotationMain();
             formQuotationMain.Show();
+            Utils.LogKayit("Quotation Main", "Quotation main screen has been entered");
         }
 
         private void btnStock_Click(object sender, EventArgs e)
         {
             frmStock frmStock = new frmStock();
             frmStock.Show();
+            Utils.LogKayit("Stock Main", "Stock main screen has been entered");
         }
 
         private void btnToBeInvoiced_Click(object sender, EventArgs e)
         {
             frmFaturalanacaklar frmFatura = new frmFaturalanacaklar();
             frmFatura.Show();
+            Utils.LogKayit("ToBeInvoiced Main", "ToBeInvoiced main screen has been entered");
         }
 
         private void GoToLoaderPage()
         {
             LoaderPage form = new LoaderPage();
             form.ShowDialog();
+            Utils.LogKayit(txtReader.LoaderType, txtReader.LoaderType +"main screen has been entered");
+
         }
 
         private void btnRsInvoice_Click(object sender, EventArgs e)
@@ -462,42 +473,49 @@ namespace LoginForm.Main
         {
             frmBackOrderMain form = new frmBackOrderMain();
             form.Show();
+            Utils.LogKayit("BackOrder Main", "BackOrder main screen has been entered");
         }
 
         private void btnExchangeRate_Click(object sender, EventArgs e)
         {
             frmExchangeRate form = new frmExchangeRate();
             form.ShowDialog();
+            Utils.LogKayit("ExchangeRate Main", "ExchangeRate main screen has been entered");
         }
 
         private void btnTermsOfPayment_Click(object sender, EventArgs e)
         {
             FormTermsOfPayment form = new FormTermsOfPayment();
             form.ShowDialog();
+            Utils.LogKayit("TermsOfPayment Main", "TermsOfPayment main screen has been entered");
         }
 
         private void btnCategorySubCategory_Click(object sender, EventArgs e)
         {
             FormCategorySubCategory form = new FormCategorySubCategory();
             form.ShowDialog();
+            Utils.LogKayit("CategorySubCategory Main", "CategorySubCategory main screen has been entered");
         }
 
         private void btnRoleAuths_Click(object sender, EventArgs e)
         {
             FormRoleAuths form = new FormRoleAuths();
             form.ShowDialog();
+            Utils.LogKayit("RoleAuths Main", "RoleAuths main screen has been entered");
         }
 
         private void btnManagmentControl_Click(object sender, EventArgs e)
         {
             FormManagmentControl form = new FormManagmentControl();
             form.ShowDialog();
+            Utils.LogKayit("ManagmentControl Main", "ManagmentControl main screen has been entered");
         }
 
         private void btnCustomerTransfer_Click(object sender, EventArgs e)
         {
             FormUserCustomerUpdate form = new FormUserCustomerUpdate();
             form.ShowDialog();
+            Utils.LogKayit("CustomerTransfer Main", "CustomerTransfer main screen has been entered");
         }
 
         private void altoSlidingLabel1_DoubleClick(object sender, EventArgs e)
@@ -516,12 +534,14 @@ namespace LoginForm.Main
         {
             FormUserMain roles = new FormUserMain(this);
             roles.Show();
+            Utils.LogKayit("User Main", "User main screen has been entered");
         }
 
         private void btnLog_Click(object sender, EventArgs e)
         {
             FormLogKayit logKayit = new FormLogKayit(this);
             logKayit.Show();
+            Utils.LogKayit("LogRecords Main", "LogRecords main screen has been entered");
         }
     }
 }
