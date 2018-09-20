@@ -542,8 +542,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TABLE_ID" Type="int" />
-          <Property Name="RECORD_ID" Type="int" />
+          <Property Name="TABLE_NAME" Type="nvarchar" MaxLength="25" />
           <Property Name="TIME" Type="datetime" />
           <Property Name="USER_ID" Type="int" />
           <Property Name="DONE_OPERATION" Type="text" />
@@ -5002,8 +5001,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TABLE_ID" Type="Int32" />
-          <Property Name="RECORD_ID" Type="Int32" />
+          <Property Name="TABLE_NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
           <Property Name="TIME" Type="DateTime" Precision="3" />
           <Property Name="USER_ID" Type="Int32" />
           <Property Name="DONE_OPERATION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -10107,8 +10105,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <EntityTypeMapping TypeName="IMEModel.LogRecord">
               <MappingFragment StoreEntitySet="LogRecords">
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="TABLE_ID" ColumnName="TABLE_ID" />
-                <ScalarProperty Name="RECORD_ID" ColumnName="RECORD_ID" />
+                <ScalarProperty Name="TABLE_NAME" ColumnName="TABLE_NAME" />
                 <ScalarProperty Name="TIME" ColumnName="TIME" />
                 <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
                 <ScalarProperty Name="DONE_OPERATION" ColumnName="DONE_OPERATION" />

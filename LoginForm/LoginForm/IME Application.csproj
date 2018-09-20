@@ -1019,8 +1019,6 @@
     <Compile Include="MyClasses\clsBid.cs" />
     <Compile Include="MyClasses\clsBidL.cs" />
     <Compile Include="MyClasses\clsInvoice.cs" />
-    <Compile Include="MyClasses\clsLog.cs" />
-    <Compile Include="MyClasses\clsLogClass.cs" />
     <Compile Include="MyClasses\clsLogoYardimci.cs" />
     <Compile Include="Services\Messages.cs" />
     <Compile Include="MyClasses\MyAuthority.cs" />

@@ -39,9 +39,22 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.groupPerson = new System.Windows.Forms.GroupBox();
             this.groupLogRecords = new System.Windows.Forms.GroupBox();
-            this.listPerson = new System.Windows.Forms.ListBox();
+            this.dgPerson = new System.Windows.Forms.DataGridView();
+            this.WorkerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NameLastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgLog = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TABLE_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.USER_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DONE_OPERATION = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnRefreshList = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupPerson.SuspendLayout();
+            this.groupLogRecords.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgPerson)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgLog)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -96,7 +109,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(233, 66);
+            this.label7.Location = new System.Drawing.Point(320, 75);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(66, 13);
             this.label7.TabIndex = 31;
@@ -109,7 +122,7 @@
             this.btnExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExcel.Image = global::LoginForm.Properties.Resources.if_Document_file_export_sending_exit_send_1886950;
             this.btnExcel.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnExcel.Location = new System.Drawing.Point(239, 6);
+            this.btnExcel.Location = new System.Drawing.Point(326, 15);
             this.btnExcel.Margin = new System.Windows.Forms.Padding(0);
             this.btnExcel.Name = "btnExcel";
             this.btnExcel.Padding = new System.Windows.Forms.Padding(8, 16, 8, 0);
@@ -120,7 +133,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(330, 66);
+            this.label3.Location = new System.Drawing.Point(417, 75);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(33, 13);
             this.label3.TabIndex = 33;
@@ -133,7 +146,7 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnClose.Location = new System.Drawing.Point(320, 9);
+            this.btnClose.Location = new System.Drawing.Point(407, 18);
             this.btnClose.Margin = new System.Windows.Forms.Padding(0);
             this.btnClose.Name = "btnClose";
             this.btnClose.Padding = new System.Windows.Forms.Padding(8, 16, 8, 0);
@@ -144,7 +157,7 @@
             // 
             // groupPerson
             // 
-            this.groupPerson.Controls.Add(this.listPerson);
+            this.groupPerson.Controls.Add(this.dgPerson);
             this.groupPerson.Location = new System.Drawing.Point(12, 90);
             this.groupPerson.Name = "groupPerson";
             this.groupPerson.Size = new System.Drawing.Size(450, 571);
@@ -154,27 +167,134 @@
             // 
             // groupLogRecords
             // 
+            this.groupLogRecords.Controls.Add(this.dgLog);
             this.groupLogRecords.Location = new System.Drawing.Point(468, 90);
             this.groupLogRecords.Name = "groupLogRecords";
-            this.groupLogRecords.Size = new System.Drawing.Size(559, 571);
+            this.groupLogRecords.Size = new System.Drawing.Size(1528, 571);
             this.groupLogRecords.TabIndex = 35;
             this.groupLogRecords.TabStop = false;
             this.groupLogRecords.Text = "Log Records";
             // 
-            // listPerson
+            // dgPerson
             // 
-            this.listPerson.FormattingEnabled = true;
-            this.listPerson.Location = new System.Drawing.Point(6, 19);
-            this.listPerson.Name = "listPerson";
-            this.listPerson.Size = new System.Drawing.Size(444, 537);
-            this.listPerson.TabIndex = 0;
+            this.dgPerson.AllowUserToAddRows = false;
+            this.dgPerson.AllowUserToDeleteRows = false;
+            this.dgPerson.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgPerson.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.WorkerID,
+            this.NameLastName});
+            this.dgPerson.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgPerson.Location = new System.Drawing.Point(3, 16);
+            this.dgPerson.Name = "dgPerson";
+            this.dgPerson.ReadOnly = true;
+            this.dgPerson.Size = new System.Drawing.Size(444, 552);
+            this.dgPerson.TabIndex = 0;
+            this.dgPerson.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgPerson_MouseClick);
+            // 
+            // WorkerID
+            // 
+            this.WorkerID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.WorkerID.HeaderText = "WorkerID";
+            this.WorkerID.Name = "WorkerID";
+            this.WorkerID.ReadOnly = true;
+            this.WorkerID.Width = 78;
+            // 
+            // NameLastName
+            // 
+            this.NameLastName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NameLastName.HeaderText = "Name LastName";
+            this.NameLastName.Name = "NameLastName";
+            this.NameLastName.ReadOnly = true;
+            // 
+            // dgLog
+            // 
+            this.dgLog.AllowUserToAddRows = false;
+            this.dgLog.AllowUserToDeleteRows = false;
+            this.dgLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgLog.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID,
+            this.TABLE_NAME,
+            this.TIME,
+            this.USER_ID,
+            this.DONE_OPERATION});
+            this.dgLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgLog.Location = new System.Drawing.Point(3, 16);
+            this.dgLog.Name = "dgLog";
+            this.dgLog.ReadOnly = true;
+            this.dgLog.Size = new System.Drawing.Size(1522, 552);
+            this.dgLog.TabIndex = 0;
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            // 
+            // TABLE_NAME
+            // 
+            this.TABLE_NAME.HeaderText = "TABLE_NAME";
+            this.TABLE_NAME.Name = "TABLE_NAME";
+            this.TABLE_NAME.ReadOnly = true;
+            // 
+            // TIME
+            // 
+            this.TIME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.TIME.HeaderText = "TIME";
+            this.TIME.Name = "TIME";
+            this.TIME.ReadOnly = true;
+            this.TIME.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.TIME.Width = 5;
+            // 
+            // USER_ID
+            // 
+            this.USER_ID.HeaderText = "USER_ID";
+            this.USER_ID.Name = "USER_ID";
+            this.USER_ID.ReadOnly = true;
+            this.USER_ID.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // DONE_OPERATION
+            // 
+            this.DONE_OPERATION.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DONE_OPERATION.HeaderText = "DONE_OPERATION";
+            this.DONE_OPERATION.Name = "DONE_OPERATION";
+            this.DONE_OPERATION.ReadOnly = true;
+            this.DONE_OPERATION.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(255, 75);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(44, 13);
+            this.label4.TabIndex = 37;
+            this.label4.Text = "Refresh";
+            // 
+            // btnRefreshList
+            // 
+            this.btnRefreshList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
+            this.btnRefreshList.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.btnRefreshList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefreshList.Image = global::LoginForm.Properties.Resources.icons8_Refresh_32;
+            this.btnRefreshList.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnRefreshList.Location = new System.Drawing.Point(251, 18);
+            this.btnRefreshList.Margin = new System.Windows.Forms.Padding(0);
+            this.btnRefreshList.Name = "btnRefreshList";
+            this.btnRefreshList.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.btnRefreshList.Size = new System.Drawing.Size(52, 52);
+            this.btnRefreshList.TabIndex = 36;
+            this.btnRefreshList.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnRefreshList.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnRefreshList.UseVisualStyleBackColor = true;
+            this.btnRefreshList.Click += new System.EventHandler(this.btnRefreshList_Click);
             // 
             // FormLogKayit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
-            this.ClientSize = new System.Drawing.Size(1039, 673);
+            this.ClientSize = new System.Drawing.Size(2008, 673);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.btnRefreshList);
             this.Controls.Add(this.groupLogRecords);
             this.Controls.Add(this.groupPerson);
             this.Controls.Add(this.label3);
@@ -190,6 +310,9 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupPerson.ResumeLayout(false);
+            this.groupLogRecords.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgPerson)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgLog)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -208,6 +331,16 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.GroupBox groupPerson;
         private System.Windows.Forms.GroupBox groupLogRecords;
-        private System.Windows.Forms.ListBox listPerson;
+        private System.Windows.Forms.DataGridView dgPerson;
+        private System.Windows.Forms.DataGridViewTextBoxColumn WorkerID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NameLastName;
+        private System.Windows.Forms.DataGridView dgLog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TABLE_NAME;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TIME;
+        private System.Windows.Forms.DataGridViewTextBoxColumn USER_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DONE_OPERATION;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnRefreshList;
     }
 }

@@ -15,8 +15,7 @@ namespace LoginForm.DataSet
     public partial class LogRecord
     {
         public int ID { get; set; }
-        public Nullable<int> TABLE_ID { get; set; }
-        public Nullable<int> RECORD_ID { get; set; }
+        public string TABLE_NAME { get; set; }
         public Nullable<System.DateTime> TIME { get; set; }
         public Nullable<int> USER_ID { get; set; }
         public string DONE_OPERATION { get; set; }
