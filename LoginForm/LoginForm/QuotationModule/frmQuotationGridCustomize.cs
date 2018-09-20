@@ -24,35 +24,35 @@ namespace LoginForm.QuotationModule
 
         public frmQuotationGridCustomize( DataGridView dg)
         {
-
-            datagrid = dg;
             InitializeComponent();
+            datagrid = dg;
+           
             CheckBox box;
-            int previousLength = 0;
-            int y = 10;
-            for (int i = 0; i < datagrid.Columns.Count; i++)
-            {
-                if (datagrid.Columns[i].Name != "dgHZ" && datagrid.Columns[i].Name != "dgCL" && datagrid.Columns[i].Name != "dgCR")
-                {
-                    box = new CheckBox();
-                    box.Tag = i.ToString();
-                    box.Text = datagrid.Columns[i].Name;
-                    box.AutoSize = true;
-                    if (10 + previousLength >= this.Width)
-                    {
-                        y = y + 30;
-                        previousLength = 0;
-                    }
-                    box.Location = new Point(10 + previousLength, y);
-                    previousLength = previousLength + box.Width;
-                    cboxList.Add(box);
-                    this.Controls.Add(box);
-                    ischecked.Add(false);
-                }
-            }
-            ExportButton.Location = new Point(this.Width / 2, y + 30);
-            btnSelectAll.Location = new Point(0, y + 30);
-            btnClearAll.Location = new Point(btnSelectAll.Width + 5, y + 30);
+            //int previousLength = 0;
+            //int y = 10;
+            //for (int i = 0; i < datagrid.Columns.Count; i++)
+            //{
+            //    if (datagrid.Columns[i].Name != "dgHZ" && datagrid.Columns[i].Name != "dgCL" && datagrid.Columns[i].Name != "dgCR")
+            //    {
+            //        box = new CheckBox();
+            //        box.Tag = i.ToString();
+            //        box.Text = datagrid.Columns[i].Name;
+            //        box.AutoSize = true;
+            //        if (10 + previousLength >= this.Width)
+            //        {
+            //            y = y + 30;
+            //            previousLength = 0;
+            //        }
+            //        box.Location = new Point(10 + previousLength, y);
+            //        previousLength = previousLength + box.Width;
+            //        cboxList.Add(box);
+            //        this.Controls.Add(box);
+            //        ischecked.Add(false);
+            //    }
+            //}
+            //ExportButton.Location = new Point(this.Width / 2, y + 30);
+            //btnSelectAll.Location = new Point(0, y + 30);
+            //btnClearAll.Location = new Point(btnSelectAll.Width + 5, y + 30);
         }
         
 
@@ -70,6 +70,35 @@ namespace LoginForm.QuotationModule
             
         }
 
+        private void PlaceCheckBoxes()
+        {
+            CheckBox box;
+            int previousLength = 0;
+            int y = 10;
+            for (int i = 0; i < datagrid.Columns.Count; i++)
+            {
+                box = new CheckBox
+                {
+                    Tag = i.ToString(),
+                    Text = datagrid.Columns[i].Name,
+                    AutoSize = true
+                };
+                if (10 + previousLength >= this.Width)
+                {
+                    y = y + 30;
+                    previousLength = 0;
+                }
+                box.Location = new Point(10 + previousLength, y);
+                previousLength = previousLength + box.Width;
+                cboxList.Add(box);
+                this.Controls.Add(box);
+                ischecked.Add(false);
+            }
+            ExportButton.Location = new Point(this.Width / 2, y + 30);
+            btnSelectAll.Location = new Point(0, y + 30);
+            btnClearAll.Location = new Point(btnSelectAll.Width + 5, y + 30);
+        }
+
         private void btnSelect_Click(object sender, EventArgs e)
         {
             foreach (var item in cboxList)
@@ -84,6 +113,11 @@ namespace LoginForm.QuotationModule
             {
                 item.Checked = false;
             }
+        }
+
+        private void frmQuotationGridCustomize_Load(object sender, EventArgs e)
+        {
+            PlaceCheckBoxes();
         }
     }
 }

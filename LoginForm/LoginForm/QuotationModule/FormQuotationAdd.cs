@@ -60,6 +60,7 @@ namespace LoginForm.QuotationModule
             txtQuotationNo.PasswordChar = ' ';
             btnCreateRev.Enabled = false;
             label68.Enabled = false;
+            txtTotalMarge.Visible = false;
         }
         public FormQuotationAdd()
         {
@@ -73,6 +74,7 @@ namespace LoginForm.QuotationModule
 
             dtpDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
             dtpDate.Enabled = false;
+            txtTotalMarge.Visible = false;
         }
 
         public void Disc()
@@ -178,6 +180,7 @@ namespace LoginForm.QuotationModule
                 QuotataionModifyItemDetailsFiller(item_code, i);
 
             }
+            txtTotalMarge.Visible = false;
         }
 
         public FormQuotationAdd(Quotation quotation, FormQuotationMain parent)
@@ -370,6 +373,8 @@ namespace LoginForm.QuotationModule
 
             dgQuotationAddedItems.Focus();
             dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index];
+
+            txtTotalMarge.Visible = false;
         }
 
         public FormQuotationAdd(Quotation quotation, FormQuotationMain parent, string mod2)
@@ -478,6 +483,8 @@ namespace LoginForm.QuotationModule
 
             dgQuotationAddedItems.Focus();
             dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index];
+
+            txtTotalMarge.Visible = false;
         }
 
         public FormQuotationAdd(Quotation quotation, FormQuotationMain parent, int s)
@@ -582,6 +589,7 @@ namespace LoginForm.QuotationModule
                 groupBox3.Enabled = false;
             }
             CalculateTotalMarge();
+            txtTotalMarge.Visible = false;
         }
 
         public FormQuotationAdd(Quotation quotation, string mumin)
@@ -599,7 +607,7 @@ namespace LoginForm.QuotationModule
             deliveryColumn.DisplayMember = "DeliveryName";
             deliveryColumn.ValueMember = "ID";
             //Son versiyonu açmayı sağlıyor
-            Quotation q1 = IME.Quotations.Where(a => a.QuotationNo.Contains(quotation.QuotationNo)).OrderByDescending(b => b.QuotationNo).FirstOrDefault();
+            Quotation q1 = IME.Quotations.Where(a => a.QuotationNo.Contains(quotation.QuotationNo)).FirstOrDefault();
             this.Text = "View Quotation";
             modifyMod = true;
             cbCurrency.DataSource = IME.Currencies.ToList();
@@ -681,6 +689,7 @@ namespace LoginForm.QuotationModule
             CalculateTotalMarge();
             txtQuotationNo.Text = q1.QuotationNo;
             EnableForm();
+            txtTotalMarge.Visible = false;
         }
 
         private void EnableForm()
@@ -694,6 +703,19 @@ namespace LoginForm.QuotationModule
             btnExQuotation.Enabled = false;
             btnCreateRev.Enabled = false;
             btnSave.Enabled = false;
+            groupBox11.Enabled = false;
+            gbShipment.Enabled = false;
+            groupBox3.Enabled = false;
+            groupBox7.Enabled = false;
+            gbCustomer.Enabled = false;
+            txtAccountingNote.Enabled = false;
+            txtCustomerNote.Enabled = false;
+            txtContactNote.Enabled = false;
+            button7.Enabled = false;
+            btnExcelExport.Enabled = false;
+            btnExQuotation.Enabled = false;
+            btnProductHistory.Enabled = false;
+            btnCustomizeGrid.Enabled = false;
         }
 
         public void checkAuthorities()
@@ -908,9 +930,19 @@ namespace LoginForm.QuotationModule
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Do you want to close without saving?", "Quotation Close", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            if (this.Text == "View Quotation")
             {
-                this.Close();
+                if (MessageBox.Show("Do you want to close ?", "Quotation Close", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                {
+                    this.Close();
+                }
+            }
+            else
+            {
+                if (MessageBox.Show("Do you want to close without saving ?", "Quotation Close", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                {
+                    this.Close();
+                }
             }
         }
 
@@ -2270,8 +2302,8 @@ namespace LoginForm.QuotationModule
                                 qd.UnitWeight = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUnitWeigt"].Value.ToString());
                             if (!String.IsNullOrEmpty(dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value?.ToString()))
                                 qd.Marge = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value.ToString());
-                            if (!String.IsNullOrEmpty(dgQuotationAddedItems.Rows[i].Cells["dgDependantTable"].Value?.ToString()))
-                                qd.DependantTable = dgQuotationAddedItems.Rows[i].Cells["dgDependantTable"].Value?.ToString();
+                            //if (!String.IsNullOrEmpty(dgQuotationAddedItems.Rows[i].Cells["dgDependantTable"].Value?.ToString()))
+                            //    qd.DependantTable = dgQuotationAddedItems.Rows[i].Cells["dgDependantTable"].Value?.ToString();
                             if (!String.IsNullOrEmpty(dgQuotationAddedItems.Rows[i].Cells[dgCost.Index].Value.ToString()))
                                 qd.Cost = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells[dgCost.Index].Value?.ToString());
                             if (!String.IsNullOrEmpty(dgQuotationAddedItems.Rows[i].Cells[dgLandingCost.Index].Value?.ToString()))
@@ -2638,8 +2670,8 @@ namespace LoginForm.QuotationModule
                         qd.UnitWeight = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUnitWeigt"].Value.ToString());
                     if (!String.IsNullOrEmpty(dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value?.ToString()))
                         qd.Marge = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value.ToString());
-                    if (!String.IsNullOrEmpty(dgQuotationAddedItems.Rows[i].Cells["dgDependantTable"].Value?.ToString()))
-                        qd.DependantTable = dgQuotationAddedItems.Rows[i].Cells["dgDependantTable"].Value?.ToString();
+                    //if (!String.IsNullOrEmpty(dgQuotationAddedItems.Rows[i].Cells["dgDependantTable"].Value?.ToString()))
+                    //    qd.DependantTable = dgQuotationAddedItems.Rows[i].Cells["dgDependantTable"].Value?.ToString();
                     if (!String.IsNullOrEmpty(dgQuotationAddedItems.Rows[i].Cells[dgCost.Index].Value.ToString()))
                         qd.Cost = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells[dgCost.Index].Value?.ToString());
                     if (!String.IsNullOrEmpty(dgQuotationAddedItems.Rows[i].Cells[dgLandingCost.Index].Value?.ToString()))
@@ -2701,7 +2733,7 @@ namespace LoginForm.QuotationModule
                     if (dgQuotationAddedItems.Rows[i].Cells["dgSSM"].Value != null) qd.SSM = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells["dgSSM"].Value.ToString());
                     if (dgQuotationAddedItems.Rows[i].Cells["dgUnitWeigt"].Value?.ToString() != "") qd.UnitWeight = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUnitWeigt"].Value.ToString());
                     if (dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value != null) qd.Marge = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value.ToString());
-                    if (dgQuotationAddedItems.Rows[i].Cells["dgDependantTable"].Value != null) qd.DependantTable = dgQuotationAddedItems.Rows[i].Cells["dgDependantTable"].Value.ToString();
+                    //if (dgQuotationAddedItems.Rows[i].Cells["dgDependantTable"].Value != null) qd.DependantTable = dgQuotationAddedItems.Rows[i].Cells["dgDependantTable"].Value.ToString();
                     if (!String.IsNullOrEmpty(dgQuotationAddedItems.Rows[i].Cells[dgUKPrice.Index].Value.ToString()))
                         qd.UKPrice = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells[dgUKPrice.Index].Value.ToString());
 
@@ -3969,17 +4001,7 @@ namespace LoginForm.QuotationModule
             }
         }
 
-        private void btnExcelExport_Click(object sender, EventArgs e)
-        {
-            List<string> QuotationItemList = new List<string>();
-            for (int i = 0; i < dgQuotationAddedItems.ColumnCount; i++)
-            {
-                QuotationItemList.Add(dgQuotationAddedItems.Columns[i].HeaderText);
-            }
-            frmQuotationExport form = new frmQuotationExport(QuotationItemList, txtQuotationNo.Text, dgQuotationAddedItems);
-            form.ShowDialog();
-
-        }
+      
 
         private void txtTotalDis2_Leave(object sender, EventArgs e)
         {
@@ -4385,6 +4407,9 @@ namespace LoginForm.QuotationModule
             
             if (cbDeliverDiscount.Checked)
             {
+                txtTotalDis.Enabled = false;
+                txtTotalDis2.Enabled = false;
+
                 foreach (DataGridViewRow item in dgQuotationAddedItems.Rows)
                 {
                     if (item.Cells["HS"].Style.BackColor != Color.Red && item.Cells["LI"].Style.BackColor != Color.Ivory)
@@ -4415,6 +4440,9 @@ namespace LoginForm.QuotationModule
             }
             else
             {
+                txtTotalDis.Enabled = true;
+                txtTotalDis2.Enabled = true;
+
                 foreach (DataGridViewRow item in dgQuotationAddedItems.Rows)
                 {
                     if (item.Cells["HS"].Style.BackColor != Color.Red && item.Cells["LI"].Style.BackColor != Color.Ivory)
@@ -4589,8 +4617,6 @@ namespace LoginForm.QuotationModule
 
         private void btnCustomizeGrid_Click(object sender, EventArgs e)
         {
-            frmQuotationGridCustomize form = new frmQuotationGridCustomize(dgQuotationAddedItems);
-            form.ShowDialog();
             List<string> quotationVisibleFalseNames = QuotationDatagridCustomize.VisibleFalseNames;
             ;
             foreach (DataGridViewColumn item in dgQuotationAddedItems.Columns)
@@ -4601,6 +4627,21 @@ namespace LoginForm.QuotationModule
             {
                 dgQuotationAddedItems.Columns[item].Visible = false;
             }
+
+            frmQuotationGridCustomize form = new frmQuotationGridCustomize(dgQuotationAddedItems);
+            form.ShowDialog();
+        }
+
+        private void btnExcelExport_Click(object sender, EventArgs e)
+        {
+            List<string> QuotationItemList = new List<string>();
+            for (int i = 0; i < dgQuotationAddedItems.ColumnCount; i++)
+            {
+                QuotationItemList.Add(dgQuotationAddedItems.Columns[i].HeaderText);
+            }
+            frmQuotationExport form = new frmQuotationExport(QuotationItemList, (txtQuotationNo.Text.Substring(txtQuotationNo.Text.LastIndexOf('/')+1)).ToString() , dgQuotationAddedItems);
+            form.ShowDialog();
+
         }
 
         private void txtTotalDis_KeyDown(object sender, KeyEventArgs e)
@@ -4716,6 +4757,5 @@ namespace LoginForm.QuotationModule
         {
             txtBox.Text = txtBox.Text.ToUpper();
         }
-
     }
 }

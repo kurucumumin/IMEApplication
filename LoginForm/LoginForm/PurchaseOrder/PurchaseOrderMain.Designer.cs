@@ -328,10 +328,10 @@
             // FicheNo
             // 
             this.FicheNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.FicheNo.HeaderText = "Fiche No";
+            this.FicheNo.HeaderText = "File Name";
             this.FicheNo.Name = "FicheNo";
             this.FicheNo.Visible = false;
-            this.FicheNo.Width = 69;
+            this.FicheNo.Width = 73;
             // 
             // PurchaseOrderDate
             // 
@@ -415,9 +415,9 @@
             // Reason
             // 
             this.Reason.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Reason.HeaderText = "Reason";
+            this.Reason.HeaderText = "Remarks";
             this.Reason.Name = "Reason";
-            this.Reason.Width = 69;
+            this.Reason.Width = 74;
             // 
             // PurchaseOrderMain
             // 

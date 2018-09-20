@@ -68,7 +68,7 @@ namespace LoginForm.PurchaseOrder
         private void btnClose_Click(object sender, EventArgs e)
         {
             PurchaseOrderMain f = new PurchaseOrderMain();
-            if (MessageBox.Show("Are You Sure To Exit Program ?", "Exit", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            if (MessageBox.Show("Are You Sure ?", "Exit", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 f.ShowDialog();
                 this.Close();

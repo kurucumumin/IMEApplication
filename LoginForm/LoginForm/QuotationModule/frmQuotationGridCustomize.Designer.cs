@@ -40,8 +40,9 @@
             // 
             // ExportButton
             // 
+            this.ExportButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ExportButton.Image = global::LoginForm.Properties.Resources.if_floppy_285657;
-            this.ExportButton.Location = new System.Drawing.Point(421, 319);
+            this.ExportButton.Location = new System.Drawing.Point(429, 319);
             this.ExportButton.Name = "ExportButton";
             this.ExportButton.Size = new System.Drawing.Size(52, 52);
             this.ExportButton.TabIndex = 1;
@@ -102,8 +103,9 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(431, 375);
+            this.label1.Location = new System.Drawing.Point(439, 375);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(33, 13);
             this.label1.TabIndex = 26;
@@ -125,6 +127,7 @@
             this.Controls.Add(this.ExportButton);
             this.Name = "frmQuotationGridCustomize";
             this.Text = "Quotation Grid Customize";
+            this.Load += new System.EventHandler(this.frmQuotationGridCustomize_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

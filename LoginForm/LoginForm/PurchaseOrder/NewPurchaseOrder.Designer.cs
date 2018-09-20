@@ -32,6 +32,18 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtOrderNumber = new System.Windows.Forms.TextBox();
             this.dgPurchase = new System.Windows.Forms.DataGridView();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnExcel = new System.Windows.Forms.Button();
+            this.btnCreate = new System.Windows.Forms.Button();
+            this.customerAddressBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnSelect = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtID = new System.Windows.Forms.TextBox();
             this.SLC = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.c_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QuotationNos = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,18 +60,6 @@
             this.UPIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SaleID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnExcel = new System.Windows.Forms.Button();
-            this.btnCreate = new System.Windows.Forms.Button();
-            this.customerAddressBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.btnSelect = new System.Windows.Forms.Button();
-            this.btnClear = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtID = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgPurchase)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerAddressBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -111,101 +111,6 @@
             this.dgPurchase.Size = new System.Drawing.Size(982, 509);
             this.dgPurchase.TabIndex = 10;
             this.dgPurchase.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgPurchase_DataError);
-            // 
-            // SLC
-            // 
-            this.SLC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.SLC.HeaderText = "SLC";
-            this.SLC.Name = "SLC";
-            this.SLC.Width = 33;
-            // 
-            // c_name
-            // 
-            this.c_name.HeaderText = "Customer Name";
-            this.c_name.Name = "c_name";
-            // 
-            // QuotationNos
-            // 
-            this.QuotationNos.HeaderText = "Quotation No";
-            this.QuotationNos.Name = "QuotationNos";
-            // 
-            // SaleOrderNo
-            // 
-            this.SaleOrderNo.HeaderText = "Sale No";
-            this.SaleOrderNo.Name = "SaleOrderNo";
-            // 
-            // ItemCode
-            // 
-            this.ItemCode.HeaderText = "Item Code";
-            this.ItemCode.Name = "ItemCode";
-            // 
-            // ItemDescription
-            // 
-            this.ItemDescription.HeaderText = "Description";
-            this.ItemDescription.Name = "ItemDescription";
-            // 
-            // UnitOfMeasure
-            // 
-            this.UnitOfMeasure.HeaderText = "UnitOfMeasure";
-            this.UnitOfMeasure.Name = "UnitOfMeasure";
-            // 
-            // Quantity
-            // 
-            this.Quantity.HeaderText = "QTY";
-            this.Quantity.Name = "Quantity";
-            // 
-            // Hazardous
-            // 
-            this.Hazardous.HeaderText = "HZ";
-            this.Hazardous.Name = "Hazardous";
-            // 
-            // Calibration
-            // 
-            this.Calibration.HeaderText = "CAL";
-            this.Calibration.Name = "Calibration";
-            // 
-            // SaleOrderNature
-            // 
-            this.SaleOrderNature.HeaderText = "Nature";
-            this.SaleOrderNature.Items.AddRange(new object[] {
-            "XDOC",
-            "NORMAL"});
-            this.SaleOrderNature.Name = "SaleOrderNature";
-            this.SaleOrderNature.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // AddressType
-            // 
-            this.AddressType.HeaderText = "Bill To";
-            this.AddressType.Items.AddRange(new object[] {
-            "IME GENERAL COMPONENTS",
-            "3RD PARTY"});
-            this.AddressType.Name = "AddressType";
-            this.AddressType.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // AdressTitle
-            // 
-            this.AdressTitle.HeaderText = "Ship To";
-            this.AdressTitle.Items.AddRange(new object[] {
-            "IME GENERAL COMPONENTS",
-            "3RD PARTY"});
-            this.AdressTitle.Name = "AdressTitle";
-            // 
-            // UPIME
-            // 
-            this.UPIME.HeaderText = "UPIME";
-            this.UPIME.Name = "UPIME";
-            // 
-            // Total
-            // 
-            this.Total.HeaderText = "Total";
-            this.Total.Name = "Total";
-            // 
-            // SaleID
-            // 
-            this.SaleID.HeaderText = "SaleID";
-            this.SaleID.Name = "SaleID";
-            this.SaleID.ReadOnly = true;
-            this.SaleID.Visible = false;
             // 
             // btnClose
             // 
@@ -320,6 +225,102 @@
             this.txtID.TabIndex = 23;
             this.txtID.Visible = false;
             // 
+            // SLC
+            // 
+            this.SLC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.SLC.HeaderText = "SLC";
+            this.SLC.Name = "SLC";
+            this.SLC.Width = 33;
+            // 
+            // c_name
+            // 
+            this.c_name.HeaderText = "Customer Name";
+            this.c_name.Name = "c_name";
+            // 
+            // QuotationNos
+            // 
+            this.QuotationNos.HeaderText = "Quotation No";
+            this.QuotationNos.Name = "QuotationNos";
+            // 
+            // SaleOrderNo
+            // 
+            this.SaleOrderNo.HeaderText = "Sales Order  No";
+            this.SaleOrderNo.Name = "SaleOrderNo";
+            // 
+            // ItemCode
+            // 
+            this.ItemCode.HeaderText = "Item Code";
+            this.ItemCode.Name = "ItemCode";
+            // 
+            // ItemDescription
+            // 
+            this.ItemDescription.HeaderText = "Description";
+            this.ItemDescription.Name = "ItemDescription";
+            // 
+            // UnitOfMeasure
+            // 
+            this.UnitOfMeasure.HeaderText = "UnitOfMeasure";
+            this.UnitOfMeasure.Name = "UnitOfMeasure";
+            this.UnitOfMeasure.Visible = false;
+            // 
+            // Quantity
+            // 
+            this.Quantity.HeaderText = "QTY";
+            this.Quantity.Name = "Quantity";
+            // 
+            // Hazardous
+            // 
+            this.Hazardous.HeaderText = "HZ";
+            this.Hazardous.Name = "Hazardous";
+            // 
+            // Calibration
+            // 
+            this.Calibration.HeaderText = "CAL";
+            this.Calibration.Name = "Calibration";
+            // 
+            // SaleOrderNature
+            // 
+            this.SaleOrderNature.HeaderText = "Nature";
+            this.SaleOrderNature.Items.AddRange(new object[] {
+            "XDOC",
+            "NORMAL"});
+            this.SaleOrderNature.Name = "SaleOrderNature";
+            this.SaleOrderNature.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // AddressType
+            // 
+            this.AddressType.HeaderText = "Bill To";
+            this.AddressType.Items.AddRange(new object[] {
+            "IME GENERAL COMPONENTS",
+            "3RD PARTY"});
+            this.AddressType.Name = "AddressType";
+            this.AddressType.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // AdressTitle
+            // 
+            this.AdressTitle.HeaderText = "Ship To";
+            this.AdressTitle.Items.AddRange(new object[] {
+            "IME GENERAL COMPONENTS",
+            "3RD PARTY"});
+            this.AdressTitle.Name = "AdressTitle";
+            // 
+            // UPIME
+            // 
+            this.UPIME.HeaderText = "UPIME";
+            this.UPIME.Name = "UPIME";
+            // 
+            // Total
+            // 
+            this.Total.HeaderText = "Total";
+            this.Total.Name = "Total";
+            // 
+            // SaleID
+            // 
+            this.SaleID.HeaderText = "SaleID";
+            this.SaleID.Name = "SaleID";
+            this.SaleID.ReadOnly = true;
+            this.SaleID.Visible = false;
+            // 
             // NewPurchaseOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -361,6 +362,14 @@
         private System.Windows.Forms.Button btnExcel;
         private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.BindingSource customerAddressBindingSource;
+        private System.Windows.Forms.Button btnSelect;
+        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.DataGridViewCheckBoxColumn SLC;
         private System.Windows.Forms.DataGridViewTextBoxColumn c_name;
         private System.Windows.Forms.DataGridViewTextBoxColumn QuotationNos;
@@ -377,13 +386,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn UPIME;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total;
         private System.Windows.Forms.DataGridViewTextBoxColumn SaleID;
-        private System.Windows.Forms.Button btnSelect;
-        private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtID;
     }
 }

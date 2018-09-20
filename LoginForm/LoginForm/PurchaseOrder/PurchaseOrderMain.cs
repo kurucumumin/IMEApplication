@@ -79,7 +79,7 @@ namespace LoginForm.PurchaseOrder
             }
             IME.SaveChanges();
             #endregion
-            if (MessageBox.Show("Are You Sure To Exit Programme ?", "Exit", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            if (MessageBox.Show("Are You Sure ?", "Exit", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 this.Close();
             }
@@ -125,7 +125,7 @@ namespace LoginForm.PurchaseOrder
 
                 row.Cells[purchaseOrderId.Index].Value = item.purchaseOrderId;
                 row.Cells[PurchaseNo.Index].Value = item.PurchaseNo;
-                row.Cells[PoNo.Index].Value = item.PurchaseNo + "/DB/" + item.PurchaseOrderDate.Value.ToString("MMM") + "/" + item.PurchaseOrderDate.Value.    ToString("yy");
+                row.Cells[PoNo.Index].Value = item.PurchaseNo + "/DXB/" + item.PurchaseOrderDate.Value.ToString("MMM") + "/" + item.PurchaseOrderDate.Value.    ToString("yy");
                 row.Cells[FicheNo.Index].Value = item.FicheNo;
                 row.Cells[PurchaseOrderDate.Index].Value = item.PurchaseOrderDate;
                 row.Cells[CustomerID.Index].Value = item.CustomerID;
@@ -265,7 +265,7 @@ namespace LoginForm.PurchaseOrder
 
                 row.Cells[purchaseOrderId.Index].Value = item.purchaseOrderId;
                 row.Cells[PurchaseNo.Index].Value = item.PurchaseNo;
-                row.Cells[PoNo.Index].Value = item.PurchaseNo + "/DB/" + item.PurchaseOrderDate.Value.ToString("MMM") + "/" + item.PurchaseOrderDate.Value.ToString("yy");
+                row.Cells[PoNo.Index].Value = item.PurchaseNo + "/DXB/" + item.PurchaseOrderDate.Value.ToString("MMM") + "/" + item.PurchaseOrderDate.Value.ToString("yy");
                 row.Cells[FicheNo.Index].Value = item.FicheNo;
                 row.Cells[PurchaseOrderDate.Index].Value = item.PurchaseOrderDate;
                 row.Cells[CustomerID.Index].Value = item.CustomerID;
