@@ -407,6 +407,9 @@
     <Compile Include="DataSet\prc_GetRSInvoiceDetailWithInvoiceID_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\prc_GetRSInvoiceWithBillingDocumentReference_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\prc_GetRSInvoiceWithInvoiceID_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>

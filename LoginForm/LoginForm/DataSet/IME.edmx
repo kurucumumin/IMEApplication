@@ -542,8 +542,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TABLE_ID" Type="int" />
-          <Property Name="RECORD_ID" Type="int" />
+          <Property Name="TABLE_NAME" Type="nvarchar" MaxLength="25" />
           <Property Name="TIME" Type="datetime" />
           <Property Name="USER_ID" Type="int" />
           <Property Name="DONE_OPERATION" Type="text" />
@@ -3431,6 +3430,9 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
         <Function Name="prc_GetRSInvoiceDetailWithInvoiceID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="InvoiceID" Type="int" Mode="In" />
         </Function>
+        <Function Name="prc_GetRSInvoiceWithBillingDocumentReference" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BillingDocumentReference" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="prc_GetRSInvoiceWithInvoiceID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="InvoiceID" Type="int" Mode="In" />
         </Function>
@@ -3444,6 +3446,41 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Parameter Name="ArticleNumber" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="prc_GetWorkersAllForComboBox" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="prc_RSInvoiceAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ShipmentReference" Type="nvarchar" Mode="In" />
+          <Parameter Name="BillingDocumentReference" Type="nvarchar" Mode="In" />
+          <Parameter Name="ShippingCondition" Type="nvarchar" Mode="In" />
+          <Parameter Name="BillingDocumentDate" Type="datetime" Mode="In" />
+          <Parameter Name="SupplyingECCompany" Type="nvarchar" Mode="In" />
+          <Parameter Name="CustomerReference" Type="nvarchar" Mode="In" />
+          <Parameter Name="InvoiceTaxValue" Type="decimal" Mode="In" />
+          <Parameter Name="InvoiceGoodsValue" Type="decimal" Mode="In" />
+          <Parameter Name="InvoiceNettValue" Type="decimal" Mode="In" />
+          <Parameter Name="Currency" Type="nvarchar" Mode="In" />
+          <Parameter Name="AirwayBillNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="Discount" Type="numeric" Mode="In" />
+          <Parameter Name="Surcharge" Type="numeric" Mode="In" />
+          <Parameter Name="SupplierID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="prc_RSInvoiceDetailsAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RS_InvoiceID" Type="int" Mode="In" />
+          <Parameter Name="PurchaseOrderNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="PurchaseOrderItemNumber" Type="int" Mode="In" />
+          <Parameter Name="ProductNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="BillingItemNumber" Type="int" Mode="In" />
+          <Parameter Name="Quantity" Type="decimal" Mode="In" />
+          <Parameter Name="SalesUnit" Type="nvarchar" Mode="In" />
+          <Parameter Name="UnitPrice" Type="decimal" Mode="In" />
+          <Parameter Name="Discount" Type="decimal" Mode="In" />
+          <Parameter Name="GoodsValue" Type="decimal" Mode="In" />
+          <Parameter Name="Amount" Type="decimal" Mode="In" />
+          <Parameter Name="CCCNNO" Type="nvarchar" Mode="In" />
+          <Parameter Name="CountryofOrigin" Type="nvarchar" Mode="In" />
+          <Parameter Name="ArticleDescription" Type="nvarchar" Mode="In" />
+          <Parameter Name="DeliveryNumber" Type="decimal" Mode="In" />
+          <Parameter Name="DeliveryItemNumber" Type="int" Mode="In" />
+          <Parameter Name="PurchaseOrderID" Type="int" Mode="In" />
+        </Function>
         <Function Name="ProductViewWithID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="productID" Type="nvarchar" Mode="In" />
         </Function>
@@ -3501,41 +3538,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Parameter Name="UnitWeight" Type="decimal" Mode="In" />
           <Parameter Name="DependantTable" Type="nvarchar" Mode="In" />
           <Parameter Name="unitConversionId" Type="numeric" Mode="In" />
-        </Function>
-        <Function Name="RS_InvoiceDetailsADD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="RS_InvoiceID" Type="int" Mode="In" />
-          <Parameter Name="PurchaseOrderNumber" Type="nvarchar" Mode="In" />
-          <Parameter Name="PurchaseOrderItemNumber" Type="int" Mode="In" />
-          <Parameter Name="ProductNumber" Type="nvarchar" Mode="In" />
-          <Parameter Name="BillingItemNumber" Type="int" Mode="In" />
-          <Parameter Name="Quantity" Type="decimal" Mode="In" />
-          <Parameter Name="SalesUnit" Type="nvarchar" Mode="In" />
-          <Parameter Name="UnitPrice" Type="decimal" Mode="In" />
-          <Parameter Name="Discount" Type="decimal" Mode="In" />
-          <Parameter Name="GoodsValue" Type="decimal" Mode="In" />
-          <Parameter Name="Amount" Type="decimal" Mode="In" />
-          <Parameter Name="CCCNNO" Type="nvarchar" Mode="In" />
-          <Parameter Name="CountryofOrigin" Type="nvarchar" Mode="In" />
-          <Parameter Name="ArticleDescription" Type="nvarchar" Mode="In" />
-          <Parameter Name="DeliveryNumber" Type="decimal" Mode="In" />
-          <Parameter Name="DeliveryItemNumber" Type="int" Mode="In" />
-          <Parameter Name="PurchaseOrderID" Type="int" Mode="In" />
-        </Function>
-        <Function Name="RSInvoiceADD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="ShipmentReference" Type="nvarchar" Mode="In" />
-          <Parameter Name="BillingDocumentReference" Type="nvarchar" Mode="In" />
-          <Parameter Name="ShippingCondition" Type="nvarchar" Mode="In" />
-          <Parameter Name="BillingDocumentDate" Type="datetime" Mode="In" />
-          <Parameter Name="SupplyingECCompany" Type="nvarchar" Mode="In" />
-          <Parameter Name="CustomerReference" Type="nvarchar" Mode="In" />
-          <Parameter Name="InvoiceTaxValue" Type="decimal" Mode="In" />
-          <Parameter Name="InvoiceGoodsValue" Type="decimal" Mode="In" />
-          <Parameter Name="InvoiceNettValue" Type="decimal" Mode="In" />
-          <Parameter Name="Currency" Type="nvarchar" Mode="In" />
-          <Parameter Name="AirwayBillNumber" Type="nvarchar" Mode="In" />
-          <Parameter Name="Discount" Type="numeric" Mode="In" />
-          <Parameter Name="Surcharge" Type="numeric" Mode="In" />
-          <Parameter Name="SupplierID" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="SaleOrder_SaleOrderNo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="SaleOrderNo" Type="numeric" Mode="In" />
@@ -5002,8 +5004,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TABLE_ID" Type="Int32" />
-          <Property Name="RECORD_ID" Type="Int32" />
+          <Property Name="TABLE_NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
           <Property Name="TIME" Type="DateTime" Precision="3" />
           <Property Name="USER_ID" Type="Int32" />
           <Property Name="DONE_OPERATION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -8548,6 +8549,9 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <FunctionImport Name="prc_GetRSInvoiceDetailWithInvoiceID" ReturnType="Collection(IMEModel.prc_GetRSInvoiceDetailWithInvoiceID_Result)">
             <Parameter Name="InvoiceID" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="prc_GetRSInvoiceWithBillingDocumentReference" ReturnType="Collection(IMEModel.prc_GetRSInvoiceWithBillingDocumentReference_Result)">
+            <Parameter Name="BillingDocumentReference" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="prc_GetRSInvoiceWithInvoiceID" ReturnType="Collection(IMEModel.prc_GetRSInvoiceWithInvoiceID_Result)">
             <Parameter Name="InvoiceID" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -8561,6 +8565,41 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="ArticleNumber" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="prc_GetWorkersAllForComboBox" ReturnType="Collection(IMEModel.prc_GetWorkersAllForComboBox_Result)" />
+          <FunctionImport Name="prc_RSInvoiceAdd" ReturnType="Collection(Decimal)">
+            <Parameter Name="ShipmentReference" Mode="In" Type="String" />
+            <Parameter Name="BillingDocumentReference" Mode="In" Type="String" />
+            <Parameter Name="ShippingCondition" Mode="In" Type="String" />
+            <Parameter Name="BillingDocumentDate" Mode="In" Type="DateTime" />
+            <Parameter Name="SupplyingECCompany" Mode="In" Type="String" />
+            <Parameter Name="CustomerReference" Mode="In" Type="String" />
+            <Parameter Name="InvoiceTaxValue" Mode="In" Type="Decimal" />
+            <Parameter Name="InvoiceGoodsValue" Mode="In" Type="Decimal" />
+            <Parameter Name="InvoiceNettValue" Mode="In" Type="Decimal" />
+            <Parameter Name="Currency" Mode="In" Type="String" />
+            <Parameter Name="AirwayBillNumber" Mode="In" Type="String" />
+            <Parameter Name="Discount" Mode="In" Type="Decimal" />
+            <Parameter Name="Surcharge" Mode="In" Type="Decimal" />
+            <Parameter Name="SupplierID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="prc_RSInvoiceDetailsAdd">
+            <Parameter Name="RS_InvoiceID" Mode="In" Type="Int32" />
+            <Parameter Name="PurchaseOrderNumber" Mode="In" Type="String" />
+            <Parameter Name="PurchaseOrderItemNumber" Mode="In" Type="Int32" />
+            <Parameter Name="ProductNumber" Mode="In" Type="String" />
+            <Parameter Name="BillingItemNumber" Mode="In" Type="Int32" />
+            <Parameter Name="Quantity" Mode="In" Type="Decimal" />
+            <Parameter Name="SalesUnit" Mode="In" Type="String" />
+            <Parameter Name="UnitPrice" Mode="In" Type="Decimal" />
+            <Parameter Name="Discount" Mode="In" Type="Decimal" />
+            <Parameter Name="GoodsValue" Mode="In" Type="Decimal" />
+            <Parameter Name="Amount" Mode="In" Type="Decimal" />
+            <Parameter Name="CCCNNO" Mode="In" Type="String" />
+            <Parameter Name="CountryofOrigin" Mode="In" Type="String" />
+            <Parameter Name="ArticleDescription" Mode="In" Type="String" />
+            <Parameter Name="DeliveryNumber" Mode="In" Type="Decimal" />
+            <Parameter Name="DeliveryItemNumber" Mode="In" Type="Int32" />
+            <Parameter Name="PurchaseOrderID" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="ProductViewWithID" ReturnType="Collection(IMEModel.ProductViewWithID_Result)">
             <Parameter Name="productID" Mode="In" Type="String" />
           </FunctionImport>
@@ -8618,41 +8657,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="UnitWeight" Mode="In" Type="Decimal" />
             <Parameter Name="DependantTable" Mode="In" Type="String" />
             <Parameter Name="unitConversionId" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="RS_InvoiceDetailsADD">
-            <Parameter Name="RS_InvoiceID" Mode="In" Type="Int32" />
-            <Parameter Name="PurchaseOrderNumber" Mode="In" Type="String" />
-            <Parameter Name="PurchaseOrderItemNumber" Mode="In" Type="Int32" />
-            <Parameter Name="ProductNumber" Mode="In" Type="String" />
-            <Parameter Name="BillingItemNumber" Mode="In" Type="Int32" />
-            <Parameter Name="Quantity" Mode="In" Type="Decimal" />
-            <Parameter Name="SalesUnit" Mode="In" Type="String" />
-            <Parameter Name="UnitPrice" Mode="In" Type="Decimal" />
-            <Parameter Name="Discount" Mode="In" Type="Decimal" />
-            <Parameter Name="GoodsValue" Mode="In" Type="Decimal" />
-            <Parameter Name="Amount" Mode="In" Type="Decimal" />
-            <Parameter Name="CCCNNO" Mode="In" Type="String" />
-            <Parameter Name="CountryofOrigin" Mode="In" Type="String" />
-            <Parameter Name="ArticleDescription" Mode="In" Type="String" />
-            <Parameter Name="DeliveryNumber" Mode="In" Type="Decimal" />
-            <Parameter Name="DeliveryItemNumber" Mode="In" Type="Int32" />
-            <Parameter Name="PurchaseOrderID" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="RSInvoiceADD" ReturnType="Collection(Decimal)">
-            <Parameter Name="ShipmentReference" Mode="In" Type="String" />
-            <Parameter Name="BillingDocumentReference" Mode="In" Type="String" />
-            <Parameter Name="ShippingCondition" Mode="In" Type="String" />
-            <Parameter Name="BillingDocumentDate" Mode="In" Type="DateTime" />
-            <Parameter Name="SupplyingECCompany" Mode="In" Type="String" />
-            <Parameter Name="CustomerReference" Mode="In" Type="String" />
-            <Parameter Name="InvoiceTaxValue" Mode="In" Type="Decimal" />
-            <Parameter Name="InvoiceGoodsValue" Mode="In" Type="Decimal" />
-            <Parameter Name="InvoiceNettValue" Mode="In" Type="Decimal" />
-            <Parameter Name="Currency" Mode="In" Type="String" />
-            <Parameter Name="AirwayBillNumber" Mode="In" Type="String" />
-            <Parameter Name="Discount" Mode="In" Type="Decimal" />
-            <Parameter Name="Surcharge" Mode="In" Type="Decimal" />
-            <Parameter Name="SupplierID" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SaleOrder_SaleOrderNo" ReturnType="Collection(IMEModel.SaleOrder_SaleOrderNo_Result)">
             <Parameter Name="SaleOrderNo" Mode="In" Type="Decimal" />
@@ -9299,6 +9303,29 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Type="Int32" Name="DeliveryItemNumber" Nullable="true" />
           <Property Type="Int32" Name="PurchaseOrderID" Nullable="true" />
           <Property Type="Decimal" Name="Tax" Nullable="false" Precision="18" Scale="4" />
+        </ComplexType>
+        <ComplexType Name="prc_GetRSInvoiceWithBillingDocumentReference_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="ShipmentReference" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="BillingDocumentReference" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="ShippingCondition" Nullable="true" MaxLength="2" />
+          <Property Type="DateTime" Name="BillingDocumentDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="SupplyingECCompany" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="CustomerReference" Nullable="true" MaxLength="10" />
+          <Property Type="Decimal" Name="InvoiceTaxValue" Nullable="true" Precision="17" Scale="2" />
+          <Property Type="Decimal" Name="InvoiceGoodsValue" Nullable="true" Precision="17" Scale="2" />
+          <Property Type="Decimal" Name="InvoiceNettValue" Nullable="true" Precision="17" Scale="2" />
+          <Property Type="String" Name="Currency" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="AirwayBillNumber" Nullable="true" MaxLength="20" />
+          <Property Type="Decimal" Name="Discount" Nullable="false" Precision="18" Scale="4" />
+          <Property Type="Decimal" Name="Surcharge" Nullable="false" Precision="18" Scale="4" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="15" />
+          <Property Type="Boolean" Name="Deleted" Nullable="true" />
+          <Property Type="String" Name="Supplier" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="User" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="SupplierID" Nullable="true" MaxLength="15" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
         </ComplexType>
         <ComplexType Name="prc_GetRSInvoiceWithInvoiceID_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
@@ -10107,8 +10134,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <EntityTypeMapping TypeName="IMEModel.LogRecord">
               <MappingFragment StoreEntitySet="LogRecords">
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="TABLE_ID" ColumnName="TABLE_ID" />
-                <ScalarProperty Name="RECORD_ID" ColumnName="RECORD_ID" />
+                <ScalarProperty Name="TABLE_NAME" ColumnName="TABLE_NAME" />
                 <ScalarProperty Name="TIME" ColumnName="TIME" />
                 <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
                 <ScalarProperty Name="DONE_OPERATION" ColumnName="DONE_OPERATION" />
@@ -11815,6 +11841,33 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="prc_GetRSInvoiceWithBillingDocumentReference" FunctionName="IMEModel.Store.prc_GetRSInvoiceWithBillingDocumentReference">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.prc_GetRSInvoiceWithBillingDocumentReference_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ShipmentReference" ColumnName="ShipmentReference" />
+                <ScalarProperty Name="BillingDocumentReference" ColumnName="BillingDocumentReference" />
+                <ScalarProperty Name="ShippingCondition" ColumnName="ShippingCondition" />
+                <ScalarProperty Name="BillingDocumentDate" ColumnName="BillingDocumentDate" />
+                <ScalarProperty Name="SupplyingECCompany" ColumnName="SupplyingECCompany" />
+                <ScalarProperty Name="CustomerReference" ColumnName="CustomerReference" />
+                <ScalarProperty Name="InvoiceTaxValue" ColumnName="InvoiceTaxValue" />
+                <ScalarProperty Name="InvoiceGoodsValue" ColumnName="InvoiceGoodsValue" />
+                <ScalarProperty Name="InvoiceNettValue" ColumnName="InvoiceNettValue" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="AirwayBillNumber" ColumnName="AirwayBillNumber" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Surcharge" ColumnName="Surcharge" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Supplier" ColumnName="Supplier" />
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="prc_GetRSInvoiceWithInvoiceID" FunctionName="IMEModel.Store.prc_GetRSInvoiceWithInvoiceID">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.prc_GetRSInvoiceWithInvoiceID_Result">
@@ -11978,6 +12031,8 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="prc_RSInvoiceAdd" FunctionName="IMEModel.Store.prc_RSInvoiceAdd" />
+          <FunctionImportMapping FunctionImportName="prc_RSInvoiceDetailsAdd" FunctionName="IMEModel.Store.prc_RSInvoiceDetailsAdd" />
           <FunctionImportMapping FunctionImportName="ProductViewWithID" FunctionName="IMEModel.Store.ProductViewWithID">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.ProductViewWithID_Result">
@@ -11990,8 +12045,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="QuotationADD" FunctionName="IMEModel.Store.QuotationADD" />
           <FunctionImportMapping FunctionImportName="QuotationDetailsADD" FunctionName="IMEModel.Store.QuotationDetailsADD" />
-          <FunctionImportMapping FunctionImportName="RS_InvoiceDetailsADD" FunctionName="IMEModel.Store.RS_InvoiceDetailsADD" />
-          <FunctionImportMapping FunctionImportName="RSInvoiceADD" FunctionName="IMEModel.Store.RSInvoiceADD" />
           <FunctionImportMapping FunctionImportName="SaleOrder_SaleOrderNo" FunctionName="IMEModel.Store.SaleOrder_SaleOrderNo">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.SaleOrder_SaleOrderNo_Result">

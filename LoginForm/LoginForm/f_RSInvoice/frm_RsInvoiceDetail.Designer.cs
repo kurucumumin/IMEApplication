@@ -80,6 +80,8 @@
             this.label13 = new System.Windows.Forms.Label();
             this.bgw_RsInvoiceMaster = new System.ComponentModel.BackgroundWorker();
             this.bgw_RsInvoiceDetail = new System.ComponentModel.BackgroundWorker();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.lblSave = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgRsInvoiceItems)).BeginInit();
             this.panel1.SuspendLayout();
@@ -95,7 +97,7 @@
             this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 162F));
@@ -130,7 +132,7 @@
             this.dgTax});
             this.dgRsInvoiceItems.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgRsInvoiceItems.Location = new System.Drawing.Point(6, 168);
-            this.dgRsInvoiceItems.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.dgRsInvoiceItems.Margin = new System.Windows.Forms.Padding(6);
             this.dgRsInvoiceItems.Name = "dgRsInvoiceItems";
             this.dgRsInvoiceItems.ReadOnly = true;
             this.dgRsInvoiceItems.RowTemplate.Height = 24;
@@ -271,7 +273,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(2, 2);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(970, 158);
             this.panel1.TabIndex = 1;
@@ -279,7 +281,7 @@
             // txtDeleted
             // 
             this.txtDeleted.Location = new System.Drawing.Point(867, 65);
-            this.txtDeleted.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDeleted.Margin = new System.Windows.Forms.Padding(2);
             this.txtDeleted.Name = "txtDeleted";
             this.txtDeleted.ReadOnly = true;
             this.txtDeleted.Size = new System.Drawing.Size(76, 20);
@@ -288,7 +290,7 @@
             // txtStatus
             // 
             this.txtStatus.Location = new System.Drawing.Point(867, 25);
-            this.txtStatus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtStatus.Margin = new System.Windows.Forms.Padding(2);
             this.txtStatus.Name = "txtStatus";
             this.txtStatus.ReadOnly = true;
             this.txtStatus.Size = new System.Drawing.Size(76, 20);
@@ -297,7 +299,7 @@
             // txtShippingCondition
             // 
             this.txtShippingCondition.Location = new System.Drawing.Point(680, 65);
-            this.txtShippingCondition.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtShippingCondition.Margin = new System.Windows.Forms.Padding(2);
             this.txtShippingCondition.Name = "txtShippingCondition";
             this.txtShippingCondition.ReadOnly = true;
             this.txtShippingCondition.Size = new System.Drawing.Size(123, 20);
@@ -306,7 +308,7 @@
             // txtShipmentReference
             // 
             this.txtShipmentReference.Location = new System.Drawing.Point(680, 25);
-            this.txtShipmentReference.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtShipmentReference.Margin = new System.Windows.Forms.Padding(2);
             this.txtShipmentReference.Name = "txtShipmentReference";
             this.txtShipmentReference.ReadOnly = true;
             this.txtShipmentReference.Size = new System.Drawing.Size(123, 20);
@@ -315,7 +317,7 @@
             // txtSupplyingECCompany
             // 
             this.txtSupplyingECCompany.Location = new System.Drawing.Point(425, 65);
-            this.txtSupplyingECCompany.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtSupplyingECCompany.Margin = new System.Windows.Forms.Padding(2);
             this.txtSupplyingECCompany.Name = "txtSupplyingECCompany";
             this.txtSupplyingECCompany.ReadOnly = true;
             this.txtSupplyingECCompany.Size = new System.Drawing.Size(123, 20);
@@ -324,7 +326,7 @@
             // txtAirwayBillNumber
             // 
             this.txtAirwayBillNumber.Location = new System.Drawing.Point(425, 25);
-            this.txtAirwayBillNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtAirwayBillNumber.Margin = new System.Windows.Forms.Padding(2);
             this.txtAirwayBillNumber.Name = "txtAirwayBillNumber";
             this.txtAirwayBillNumber.ReadOnly = true;
             this.txtAirwayBillNumber.Size = new System.Drawing.Size(123, 20);
@@ -333,7 +335,7 @@
             // txtCustomerReference
             // 
             this.txtCustomerReference.Location = new System.Drawing.Point(160, 102);
-            this.txtCustomerReference.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCustomerReference.Margin = new System.Windows.Forms.Padding(2);
             this.txtCustomerReference.Name = "txtCustomerReference";
             this.txtCustomerReference.ReadOnly = true;
             this.txtCustomerReference.Size = new System.Drawing.Size(123, 20);
@@ -342,7 +344,7 @@
             // txtBillingDocumentReference
             // 
             this.txtBillingDocumentReference.Location = new System.Drawing.Point(160, 65);
-            this.txtBillingDocumentReference.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBillingDocumentReference.Margin = new System.Windows.Forms.Padding(2);
             this.txtBillingDocumentReference.Name = "txtBillingDocumentReference";
             this.txtBillingDocumentReference.ReadOnly = true;
             this.txtBillingDocumentReference.Size = new System.Drawing.Size(123, 20);
@@ -351,7 +353,7 @@
             // txtBillingDocumentDate
             // 
             this.txtBillingDocumentDate.Location = new System.Drawing.Point(160, 25);
-            this.txtBillingDocumentDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBillingDocumentDate.Margin = new System.Windows.Forms.Padding(2);
             this.txtBillingDocumentDate.Name = "txtBillingDocumentDate";
             this.txtBillingDocumentDate.ReadOnly = true;
             this.txtBillingDocumentDate.Size = new System.Drawing.Size(123, 20);
@@ -449,6 +451,8 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnSave);
+            this.panel2.Controls.Add(this.lblSave);
             this.panel2.Controls.Add(this.txtInvoiceNettValue);
             this.panel2.Controls.Add(this.txtInvoiceGoodsValue);
             this.panel2.Controls.Add(this.txtSurcharge);
@@ -463,7 +467,7 @@
             this.panel2.Controls.Add(this.label13);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(2, 415);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(970, 158);
             this.panel2.TabIndex = 2;
@@ -472,7 +476,7 @@
             // 
             this.txtInvoiceNettValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtInvoiceNettValue.Location = new System.Drawing.Point(530, 115);
-            this.txtInvoiceNettValue.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtInvoiceNettValue.Margin = new System.Windows.Forms.Padding(2);
             this.txtInvoiceNettValue.Name = "txtInvoiceNettValue";
             this.txtInvoiceNettValue.ReadOnly = true;
             this.txtInvoiceNettValue.Size = new System.Drawing.Size(123, 20);
@@ -482,7 +486,7 @@
             // 
             this.txtInvoiceGoodsValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtInvoiceGoodsValue.Location = new System.Drawing.Point(530, 81);
-            this.txtInvoiceGoodsValue.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtInvoiceGoodsValue.Margin = new System.Windows.Forms.Padding(2);
             this.txtInvoiceGoodsValue.Name = "txtInvoiceGoodsValue";
             this.txtInvoiceGoodsValue.ReadOnly = true;
             this.txtInvoiceGoodsValue.Size = new System.Drawing.Size(123, 20);
@@ -491,8 +495,8 @@
             // txtSurcharge
             // 
             this.txtSurcharge.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSurcharge.Location = new System.Drawing.Point(797, 47);
-            this.txtSurcharge.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtSurcharge.Location = new System.Drawing.Point(820, 46);
+            this.txtSurcharge.Margin = new System.Windows.Forms.Padding(2);
             this.txtSurcharge.Name = "txtSurcharge";
             this.txtSurcharge.ReadOnly = true;
             this.txtSurcharge.Size = new System.Drawing.Size(123, 20);
@@ -501,8 +505,8 @@
             // txtDiscount
             // 
             this.txtDiscount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDiscount.Location = new System.Drawing.Point(797, 14);
-            this.txtDiscount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDiscount.Location = new System.Drawing.Point(820, 13);
+            this.txtDiscount.Margin = new System.Windows.Forms.Padding(2);
             this.txtDiscount.Name = "txtDiscount";
             this.txtDiscount.ReadOnly = true;
             this.txtDiscount.Size = new System.Drawing.Size(123, 20);
@@ -512,7 +516,7 @@
             // 
             this.txtInvoiceTaxValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtInvoiceTaxValue.Location = new System.Drawing.Point(530, 47);
-            this.txtInvoiceTaxValue.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtInvoiceTaxValue.Margin = new System.Windows.Forms.Padding(2);
             this.txtInvoiceTaxValue.Name = "txtInvoiceTaxValue";
             this.txtInvoiceTaxValue.ReadOnly = true;
             this.txtInvoiceTaxValue.Size = new System.Drawing.Size(123, 20);
@@ -522,7 +526,7 @@
             // 
             this.txtCurrency.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCurrency.Location = new System.Drawing.Point(530, 14);
-            this.txtCurrency.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCurrency.Margin = new System.Windows.Forms.Padding(2);
             this.txtCurrency.Name = "txtCurrency";
             this.txtCurrency.ReadOnly = true;
             this.txtCurrency.Size = new System.Drawing.Size(123, 20);
@@ -576,7 +580,7 @@
             // 
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(726, 16);
+            this.label12.Location = new System.Drawing.Point(749, 15);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(55, 13);
@@ -587,7 +591,7 @@
             // 
             this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(726, 50);
+            this.label13.Location = new System.Drawing.Point(749, 49);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(62, 13);
@@ -604,6 +608,27 @@
             this.bgw_RsInvoiceDetail.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgw_RsInvoiceDetail_DoWork);
             this.bgw_RsInvoiceDetail.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgw_RsInvoiceDetail_RunWorkerCompleted);
             // 
+            // btnSave
+            // 
+            this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnSave.Image = global::LoginForm.Properties.Resources.if_floppy_285657;
+            this.btnSave.Location = new System.Drawing.Point(891, 77);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(52, 52);
+            this.btnSave.TabIndex = 58;
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // lblSave
+            // 
+            this.lblSave.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblSave.AutoSize = true;
+            this.lblSave.Location = new System.Drawing.Point(901, 129);
+            this.lblSave.Name = "lblSave";
+            this.lblSave.Size = new System.Drawing.Size(32, 13);
+            this.lblSave.TabIndex = 59;
+            this.lblSave.Text = "Save";
+            // 
             // frm_RsInvoiceDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -611,8 +636,8 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.ClientSize = new System.Drawing.Size(974, 575);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.MaximumSize = new System.Drawing.Size(990, 614);
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MinimumSize = new System.Drawing.Size(990, 614);
             this.Name = "frm_RsInvoiceDetail";
             this.Text = "Rs Invoice Details";
             this.Load += new System.EventHandler(this.frm_RsInvoiceDetail_Load);
@@ -680,5 +705,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgDeliveryItemNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgPurchaseOrderID;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgTax;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Label lblSave;
     }
 }

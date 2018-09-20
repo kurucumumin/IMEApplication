@@ -46,7 +46,7 @@ namespace LoginForm
                 }
                 else
                 {
-                    MessageBox.Show("Your profile is not active", "Login Error", MessageBoxButtons.OK);
+                    MessageBox.Show("User '"+ UserName + "' is passive. Please contact with Administration", "Login Error", MessageBoxButtons.OK);
                 }
             }
             else
@@ -79,7 +79,6 @@ namespace LoginForm
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            //var a = DBHelper.ExecuteQuery("Select * from Management", new object[0]);
             LoginButtonClick();
         }
 

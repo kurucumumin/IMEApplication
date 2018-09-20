@@ -1617,6 +1617,15 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<prc_GetRSInvoiceDetailWithInvoiceID_Result>("prc_GetRSInvoiceDetailWithInvoiceID", invoiceIDParameter);
         }
     
+        public virtual ObjectResult<prc_GetRSInvoiceWithBillingDocumentReference_Result> prc_GetRSInvoiceWithBillingDocumentReference(string billingDocumentReference)
+        {
+            var billingDocumentReferenceParameter = billingDocumentReference != null ?
+                new ObjectParameter("BillingDocumentReference", billingDocumentReference) :
+                new ObjectParameter("BillingDocumentReference", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<prc_GetRSInvoiceWithBillingDocumentReference_Result>("prc_GetRSInvoiceWithBillingDocumentReference", billingDocumentReferenceParameter);
+        }
+    
         public virtual ObjectResult<prc_GetRSInvoiceWithInvoiceID_Result> prc_GetRSInvoiceWithInvoiceID(Nullable<int> invoiceID)
         {
             var invoiceIDParameter = invoiceID.HasValue ?
@@ -1656,6 +1665,140 @@ namespace LoginForm.DataSet
         public virtual ObjectResult<prc_GetWorkersAllForComboBox_Result> prc_GetWorkersAllForComboBox()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<prc_GetWorkersAllForComboBox_Result>("prc_GetWorkersAllForComboBox");
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> prc_RSInvoiceAdd(string shipmentReference, string billingDocumentReference, string shippingCondition, Nullable<System.DateTime> billingDocumentDate, string supplyingECCompany, string customerReference, Nullable<decimal> invoiceTaxValue, Nullable<decimal> invoiceGoodsValue, Nullable<decimal> invoiceNettValue, string currency, string airwayBillNumber, Nullable<decimal> discount, Nullable<decimal> surcharge, string supplierID)
+        {
+            var shipmentReferenceParameter = shipmentReference != null ?
+                new ObjectParameter("ShipmentReference", shipmentReference) :
+                new ObjectParameter("ShipmentReference", typeof(string));
+    
+            var billingDocumentReferenceParameter = billingDocumentReference != null ?
+                new ObjectParameter("BillingDocumentReference", billingDocumentReference) :
+                new ObjectParameter("BillingDocumentReference", typeof(string));
+    
+            var shippingConditionParameter = shippingCondition != null ?
+                new ObjectParameter("ShippingCondition", shippingCondition) :
+                new ObjectParameter("ShippingCondition", typeof(string));
+    
+            var billingDocumentDateParameter = billingDocumentDate.HasValue ?
+                new ObjectParameter("BillingDocumentDate", billingDocumentDate) :
+                new ObjectParameter("BillingDocumentDate", typeof(System.DateTime));
+    
+            var supplyingECCompanyParameter = supplyingECCompany != null ?
+                new ObjectParameter("SupplyingECCompany", supplyingECCompany) :
+                new ObjectParameter("SupplyingECCompany", typeof(string));
+    
+            var customerReferenceParameter = customerReference != null ?
+                new ObjectParameter("CustomerReference", customerReference) :
+                new ObjectParameter("CustomerReference", typeof(string));
+    
+            var invoiceTaxValueParameter = invoiceTaxValue.HasValue ?
+                new ObjectParameter("InvoiceTaxValue", invoiceTaxValue) :
+                new ObjectParameter("InvoiceTaxValue", typeof(decimal));
+    
+            var invoiceGoodsValueParameter = invoiceGoodsValue.HasValue ?
+                new ObjectParameter("InvoiceGoodsValue", invoiceGoodsValue) :
+                new ObjectParameter("InvoiceGoodsValue", typeof(decimal));
+    
+            var invoiceNettValueParameter = invoiceNettValue.HasValue ?
+                new ObjectParameter("InvoiceNettValue", invoiceNettValue) :
+                new ObjectParameter("InvoiceNettValue", typeof(decimal));
+    
+            var currencyParameter = currency != null ?
+                new ObjectParameter("Currency", currency) :
+                new ObjectParameter("Currency", typeof(string));
+    
+            var airwayBillNumberParameter = airwayBillNumber != null ?
+                new ObjectParameter("AirwayBillNumber", airwayBillNumber) :
+                new ObjectParameter("AirwayBillNumber", typeof(string));
+    
+            var discountParameter = discount.HasValue ?
+                new ObjectParameter("Discount", discount) :
+                new ObjectParameter("Discount", typeof(decimal));
+    
+            var surchargeParameter = surcharge.HasValue ?
+                new ObjectParameter("Surcharge", surcharge) :
+                new ObjectParameter("Surcharge", typeof(decimal));
+    
+            var supplierIDParameter = supplierID != null ?
+                new ObjectParameter("SupplierID", supplierID) :
+                new ObjectParameter("SupplierID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("prc_RSInvoiceAdd", shipmentReferenceParameter, billingDocumentReferenceParameter, shippingConditionParameter, billingDocumentDateParameter, supplyingECCompanyParameter, customerReferenceParameter, invoiceTaxValueParameter, invoiceGoodsValueParameter, invoiceNettValueParameter, currencyParameter, airwayBillNumberParameter, discountParameter, surchargeParameter, supplierIDParameter);
+        }
+    
+        public virtual int prc_RSInvoiceDetailsAdd(Nullable<int> rS_InvoiceID, string purchaseOrderNumber, Nullable<int> purchaseOrderItemNumber, string productNumber, Nullable<int> billingItemNumber, Nullable<decimal> quantity, string salesUnit, Nullable<decimal> unitPrice, Nullable<decimal> discount, Nullable<decimal> goodsValue, Nullable<decimal> amount, string cCCNNO, string countryofOrigin, string articleDescription, Nullable<decimal> deliveryNumber, Nullable<int> deliveryItemNumber, Nullable<int> purchaseOrderID)
+        {
+            var rS_InvoiceIDParameter = rS_InvoiceID.HasValue ?
+                new ObjectParameter("RS_InvoiceID", rS_InvoiceID) :
+                new ObjectParameter("RS_InvoiceID", typeof(int));
+    
+            var purchaseOrderNumberParameter = purchaseOrderNumber != null ?
+                new ObjectParameter("PurchaseOrderNumber", purchaseOrderNumber) :
+                new ObjectParameter("PurchaseOrderNumber", typeof(string));
+    
+            var purchaseOrderItemNumberParameter = purchaseOrderItemNumber.HasValue ?
+                new ObjectParameter("PurchaseOrderItemNumber", purchaseOrderItemNumber) :
+                new ObjectParameter("PurchaseOrderItemNumber", typeof(int));
+    
+            var productNumberParameter = productNumber != null ?
+                new ObjectParameter("ProductNumber", productNumber) :
+                new ObjectParameter("ProductNumber", typeof(string));
+    
+            var billingItemNumberParameter = billingItemNumber.HasValue ?
+                new ObjectParameter("BillingItemNumber", billingItemNumber) :
+                new ObjectParameter("BillingItemNumber", typeof(int));
+    
+            var quantityParameter = quantity.HasValue ?
+                new ObjectParameter("Quantity", quantity) :
+                new ObjectParameter("Quantity", typeof(decimal));
+    
+            var salesUnitParameter = salesUnit != null ?
+                new ObjectParameter("SalesUnit", salesUnit) :
+                new ObjectParameter("SalesUnit", typeof(string));
+    
+            var unitPriceParameter = unitPrice.HasValue ?
+                new ObjectParameter("UnitPrice", unitPrice) :
+                new ObjectParameter("UnitPrice", typeof(decimal));
+    
+            var discountParameter = discount.HasValue ?
+                new ObjectParameter("Discount", discount) :
+                new ObjectParameter("Discount", typeof(decimal));
+    
+            var goodsValueParameter = goodsValue.HasValue ?
+                new ObjectParameter("GoodsValue", goodsValue) :
+                new ObjectParameter("GoodsValue", typeof(decimal));
+    
+            var amountParameter = amount.HasValue ?
+                new ObjectParameter("Amount", amount) :
+                new ObjectParameter("Amount", typeof(decimal));
+    
+            var cCCNNOParameter = cCCNNO != null ?
+                new ObjectParameter("CCCNNO", cCCNNO) :
+                new ObjectParameter("CCCNNO", typeof(string));
+    
+            var countryofOriginParameter = countryofOrigin != null ?
+                new ObjectParameter("CountryofOrigin", countryofOrigin) :
+                new ObjectParameter("CountryofOrigin", typeof(string));
+    
+            var articleDescriptionParameter = articleDescription != null ?
+                new ObjectParameter("ArticleDescription", articleDescription) :
+                new ObjectParameter("ArticleDescription", typeof(string));
+    
+            var deliveryNumberParameter = deliveryNumber.HasValue ?
+                new ObjectParameter("DeliveryNumber", deliveryNumber) :
+                new ObjectParameter("DeliveryNumber", typeof(decimal));
+    
+            var deliveryItemNumberParameter = deliveryItemNumber.HasValue ?
+                new ObjectParameter("DeliveryItemNumber", deliveryItemNumber) :
+                new ObjectParameter("DeliveryItemNumber", typeof(int));
+    
+            var purchaseOrderIDParameter = purchaseOrderID.HasValue ?
+                new ObjectParameter("PurchaseOrderID", purchaseOrderID) :
+                new ObjectParameter("PurchaseOrderID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("prc_RSInvoiceDetailsAdd", rS_InvoiceIDParameter, purchaseOrderNumberParameter, purchaseOrderItemNumberParameter, productNumberParameter, billingItemNumberParameter, quantityParameter, salesUnitParameter, unitPriceParameter, discountParameter, goodsValueParameter, amountParameter, cCCNNOParameter, countryofOriginParameter, articleDescriptionParameter, deliveryNumberParameter, deliveryItemNumberParameter, purchaseOrderIDParameter);
         }
     
         public virtual ObjectResult<ProductViewWithID_Result> ProductViewWithID(string productID)
@@ -1879,140 +2022,6 @@ namespace LoginForm.DataSet
                 new ObjectParameter("unitConversionId", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("QuotationDetailsADD", dgNoParameter, itemCodeParameter, qtyParameter, uCUPCurrParameter, discParameter, totalParameter, targetUPParameter, competitorParameter, customerDescriptionParameter, customerStockCodeParameter, isDeletedParameter, quotationNoParameter, uPIMEParameter, margeParameter, unitOfMeasureParameter, uCParameter, sSMParameter, unitWeightParameter, dependantTableParameter, unitConversionIdParameter);
-        }
-    
-        public virtual int RS_InvoiceDetailsADD(Nullable<int> rS_InvoiceID, string purchaseOrderNumber, Nullable<int> purchaseOrderItemNumber, string productNumber, Nullable<int> billingItemNumber, Nullable<decimal> quantity, string salesUnit, Nullable<decimal> unitPrice, Nullable<decimal> discount, Nullable<decimal> goodsValue, Nullable<decimal> amount, string cCCNNO, string countryofOrigin, string articleDescription, Nullable<decimal> deliveryNumber, Nullable<int> deliveryItemNumber, Nullable<int> purchaseOrderID)
-        {
-            var rS_InvoiceIDParameter = rS_InvoiceID.HasValue ?
-                new ObjectParameter("RS_InvoiceID", rS_InvoiceID) :
-                new ObjectParameter("RS_InvoiceID", typeof(int));
-    
-            var purchaseOrderNumberParameter = purchaseOrderNumber != null ?
-                new ObjectParameter("PurchaseOrderNumber", purchaseOrderNumber) :
-                new ObjectParameter("PurchaseOrderNumber", typeof(string));
-    
-            var purchaseOrderItemNumberParameter = purchaseOrderItemNumber.HasValue ?
-                new ObjectParameter("PurchaseOrderItemNumber", purchaseOrderItemNumber) :
-                new ObjectParameter("PurchaseOrderItemNumber", typeof(int));
-    
-            var productNumberParameter = productNumber != null ?
-                new ObjectParameter("ProductNumber", productNumber) :
-                new ObjectParameter("ProductNumber", typeof(string));
-    
-            var billingItemNumberParameter = billingItemNumber.HasValue ?
-                new ObjectParameter("BillingItemNumber", billingItemNumber) :
-                new ObjectParameter("BillingItemNumber", typeof(int));
-    
-            var quantityParameter = quantity.HasValue ?
-                new ObjectParameter("Quantity", quantity) :
-                new ObjectParameter("Quantity", typeof(decimal));
-    
-            var salesUnitParameter = salesUnit != null ?
-                new ObjectParameter("SalesUnit", salesUnit) :
-                new ObjectParameter("SalesUnit", typeof(string));
-    
-            var unitPriceParameter = unitPrice.HasValue ?
-                new ObjectParameter("UnitPrice", unitPrice) :
-                new ObjectParameter("UnitPrice", typeof(decimal));
-    
-            var discountParameter = discount.HasValue ?
-                new ObjectParameter("Discount", discount) :
-                new ObjectParameter("Discount", typeof(decimal));
-    
-            var goodsValueParameter = goodsValue.HasValue ?
-                new ObjectParameter("GoodsValue", goodsValue) :
-                new ObjectParameter("GoodsValue", typeof(decimal));
-    
-            var amountParameter = amount.HasValue ?
-                new ObjectParameter("Amount", amount) :
-                new ObjectParameter("Amount", typeof(decimal));
-    
-            var cCCNNOParameter = cCCNNO != null ?
-                new ObjectParameter("CCCNNO", cCCNNO) :
-                new ObjectParameter("CCCNNO", typeof(string));
-    
-            var countryofOriginParameter = countryofOrigin != null ?
-                new ObjectParameter("CountryofOrigin", countryofOrigin) :
-                new ObjectParameter("CountryofOrigin", typeof(string));
-    
-            var articleDescriptionParameter = articleDescription != null ?
-                new ObjectParameter("ArticleDescription", articleDescription) :
-                new ObjectParameter("ArticleDescription", typeof(string));
-    
-            var deliveryNumberParameter = deliveryNumber.HasValue ?
-                new ObjectParameter("DeliveryNumber", deliveryNumber) :
-                new ObjectParameter("DeliveryNumber", typeof(decimal));
-    
-            var deliveryItemNumberParameter = deliveryItemNumber.HasValue ?
-                new ObjectParameter("DeliveryItemNumber", deliveryItemNumber) :
-                new ObjectParameter("DeliveryItemNumber", typeof(int));
-    
-            var purchaseOrderIDParameter = purchaseOrderID.HasValue ?
-                new ObjectParameter("PurchaseOrderID", purchaseOrderID) :
-                new ObjectParameter("PurchaseOrderID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("RS_InvoiceDetailsADD", rS_InvoiceIDParameter, purchaseOrderNumberParameter, purchaseOrderItemNumberParameter, productNumberParameter, billingItemNumberParameter, quantityParameter, salesUnitParameter, unitPriceParameter, discountParameter, goodsValueParameter, amountParameter, cCCNNOParameter, countryofOriginParameter, articleDescriptionParameter, deliveryNumberParameter, deliveryItemNumberParameter, purchaseOrderIDParameter);
-        }
-    
-        public virtual ObjectResult<Nullable<decimal>> RSInvoiceADD(string shipmentReference, string billingDocumentReference, string shippingCondition, Nullable<System.DateTime> billingDocumentDate, string supplyingECCompany, string customerReference, Nullable<decimal> invoiceTaxValue, Nullable<decimal> invoiceGoodsValue, Nullable<decimal> invoiceNettValue, string currency, string airwayBillNumber, Nullable<decimal> discount, Nullable<decimal> surcharge, string supplierID)
-        {
-            var shipmentReferenceParameter = shipmentReference != null ?
-                new ObjectParameter("ShipmentReference", shipmentReference) :
-                new ObjectParameter("ShipmentReference", typeof(string));
-    
-            var billingDocumentReferenceParameter = billingDocumentReference != null ?
-                new ObjectParameter("BillingDocumentReference", billingDocumentReference) :
-                new ObjectParameter("BillingDocumentReference", typeof(string));
-    
-            var shippingConditionParameter = shippingCondition != null ?
-                new ObjectParameter("ShippingCondition", shippingCondition) :
-                new ObjectParameter("ShippingCondition", typeof(string));
-    
-            var billingDocumentDateParameter = billingDocumentDate.HasValue ?
-                new ObjectParameter("BillingDocumentDate", billingDocumentDate) :
-                new ObjectParameter("BillingDocumentDate", typeof(System.DateTime));
-    
-            var supplyingECCompanyParameter = supplyingECCompany != null ?
-                new ObjectParameter("SupplyingECCompany", supplyingECCompany) :
-                new ObjectParameter("SupplyingECCompany", typeof(string));
-    
-            var customerReferenceParameter = customerReference != null ?
-                new ObjectParameter("CustomerReference", customerReference) :
-                new ObjectParameter("CustomerReference", typeof(string));
-    
-            var invoiceTaxValueParameter = invoiceTaxValue.HasValue ?
-                new ObjectParameter("InvoiceTaxValue", invoiceTaxValue) :
-                new ObjectParameter("InvoiceTaxValue", typeof(decimal));
-    
-            var invoiceGoodsValueParameter = invoiceGoodsValue.HasValue ?
-                new ObjectParameter("InvoiceGoodsValue", invoiceGoodsValue) :
-                new ObjectParameter("InvoiceGoodsValue", typeof(decimal));
-    
-            var invoiceNettValueParameter = invoiceNettValue.HasValue ?
-                new ObjectParameter("InvoiceNettValue", invoiceNettValue) :
-                new ObjectParameter("InvoiceNettValue", typeof(decimal));
-    
-            var currencyParameter = currency != null ?
-                new ObjectParameter("Currency", currency) :
-                new ObjectParameter("Currency", typeof(string));
-    
-            var airwayBillNumberParameter = airwayBillNumber != null ?
-                new ObjectParameter("AirwayBillNumber", airwayBillNumber) :
-                new ObjectParameter("AirwayBillNumber", typeof(string));
-    
-            var discountParameter = discount.HasValue ?
-                new ObjectParameter("Discount", discount) :
-                new ObjectParameter("Discount", typeof(decimal));
-    
-            var surchargeParameter = surcharge.HasValue ?
-                new ObjectParameter("Surcharge", surcharge) :
-                new ObjectParameter("Surcharge", typeof(decimal));
-    
-            var supplierIDParameter = supplierID != null ?
-                new ObjectParameter("SupplierID", supplierID) :
-                new ObjectParameter("SupplierID", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("RSInvoiceADD", shipmentReferenceParameter, billingDocumentReferenceParameter, shippingConditionParameter, billingDocumentDateParameter, supplyingECCompanyParameter, customerReferenceParameter, invoiceTaxValueParameter, invoiceGoodsValueParameter, invoiceNettValueParameter, currencyParameter, airwayBillNumberParameter, discountParameter, surchargeParameter, supplierIDParameter);
         }
     
         public virtual ObjectResult<SaleOrder_SaleOrderNo_Result> SaleOrder_SaleOrderNo(Nullable<decimal> saleOrderNo)

@@ -23,6 +23,8 @@ namespace LoginForm.f_RSInvoice
         {
             InitializeComponent();
             this.InvoiceID = InvoiceID;
+            lblSave.Visible = false;
+            btnSave.Visible = false;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
             System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
@@ -166,6 +168,9 @@ namespace LoginForm.f_RSInvoice
             txtSurcharge.Text = RsInvoiceMaster.Rows[0]["Surcharge"].ToString();
         }
 
-
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            new Sp_RSInvoice().RsInvoiceAdd(Invoice);
+        }
     }
 }

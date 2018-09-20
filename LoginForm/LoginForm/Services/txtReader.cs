@@ -3900,7 +3900,7 @@ namespace LoginForm
                     RSInvoice.Surcharge = 0;
                     RSInvoice.SupplierID = IME.Suppliers.Where(x => x.s_name == "RS").FirstOrDefault().ID;
 
-                    RSID = Convert.ToInt32(IME.RSInvoiceADD(
+                    RSID = Convert.ToInt32(IME.prc_RSInvoiceAdd(
                        RSInvoice.ShipmentReference
                        , RSInvoice.BillingDocumentReference
                        , RSInvoice.ShippingCondition
@@ -4049,7 +4049,7 @@ namespace LoginForm
                             stockInfo.NotConfirmedQTY = Convert.ToInt32(item.Quantity);
                         }
 
-                        IME.RS_InvoiceDetailsADD(
+                        IME.prc_RSInvoiceDetailsAdd(
                             item.RS_InvoiceID
                             , item.PurchaseOrderNumber
                             , item.PurchaseOrderItemNumber

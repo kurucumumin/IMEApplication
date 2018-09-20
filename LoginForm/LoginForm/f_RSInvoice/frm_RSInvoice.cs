@@ -1,5 +1,6 @@
 ﻿using LoginForm.DataSet;
 using LoginForm.MyClasses;
+using LoginForm.Services;
 using LoginForm.Services.SP;
 using System;
 using System.Collections.Generic;
@@ -90,9 +91,20 @@ namespace LoginForm.f_RSInvoice
         private void btnNewInvoice_Click(object sender, EventArgs e)
         {
             RS_Invoice rsInv = RSInvoiceReader();
+            rsInv.SupplierID = new IMEEntities().Suppliers.Where(x => x.s_name == "RS").FirstOrDefault().ID;
+            rsInv.UserID = Utils.getCurrentUser().WorkerID;
 
-            frm_RsInvoiceDetail form = new frm_RsInvoiceDetail(rsInv);
-            form.Show();
+            bool InvoiceExist = (new Sp_RSInvoice().GetRSInvoiceWithBillingDocumentReference(rsInv.BillingDocumentReference).Rows.Count > 0) ? true : false;
+
+            if (InvoiceExist)
+            {
+                MessageBox.Show("Existing Invoice! , Please chooseanother one.", "Warning");
+            }
+            else
+            {
+                frm_RsInvoiceDetail form = new frm_RsInvoiceDetail(rsInv);
+                form.Show();
+            }
         }
 
         private void viewInvoicToolStripMenuItem_Click(object sender, EventArgs e)
