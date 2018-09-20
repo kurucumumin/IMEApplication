@@ -198,17 +198,18 @@ namespace LoginForm.Services.SP
         {
             SqlConnection conn = new Utils().ImeSqlConnection();
             SqlCommand cmd = new SqlCommand();
-            SqlTransaction imeTransaction = null;
+            SqlTransaction invoiceTransaction = null;
+            SqlTransaction detailTransaction = null;
             DataTable dataTableResult = new DataTable();
 
             try
             {
-                imeTransaction = conn.BeginTransaction();
+                invoiceTransaction = conn.BeginTransaction();
                 cmd = new SqlCommand
                 {
                     Connection = conn,
                     CommandType = CommandType.StoredProcedure,
-                    Transaction = imeTransaction,
+                    Transaction = invoiceTransaction,
                     CommandText = @"[prc_RSInvoiceAdd]"
                 };
                 cmd.Parameters.AddWithValue("@ShipmentReference", Invoice.BillingDocumentReference);
@@ -229,47 +230,54 @@ namespace LoginForm.Services.SP
                 cmd.Parameters.AddWithValue("@UserID", Invoice.UserID);
 
                 cmd.ExecuteNonQuery();
-
-                int RSInvoiceID = Convert.ToInt32(GetRSInvoiceWithBillingDocumentReference(Invoice.BillingDocumentReference).Rows[0]["ID"]);
-
-                foreach (RS_InvoiceDetails item in Invoice.RS_InvoiceDetails)
+                invoiceTransaction.Commit();
+                try
                 {
+                    int RSInvoiceID = Convert.ToInt32(GetRSInvoiceWithBillingDocumentReference(Invoice.BillingDocumentReference).Rows[0]["ID"]);
+
                     SqlCommand _cmd;
-
-                    _cmd = new SqlCommand
+                    detailTransaction = conn.BeginTransaction();
+                    foreach (RS_InvoiceDetails item in Invoice.RS_InvoiceDetails)
                     {
-                        Connection = conn,
-                        CommandType = CommandType.StoredProcedure,
-                        Transaction = imeTransaction,
-                        CommandText = @"[prc_RSInvoiceDetailsAdd]"
-                    };
-                    cmd.Parameters.AddWithValue("@RS_InvoiceID", RSInvoiceID);
-                    cmd.Parameters.AddWithValue("@PurchaseOrderNumber", item.PurchaseOrderNumber);
-                    cmd.Parameters.AddWithValue("@PurchaseOrderItemNumber", item.PurchaseOrderItemNumber);
-                    cmd.Parameters.AddWithValue("@ProductNumber", item.ProductNumber);
-                    cmd.Parameters.AddWithValue("@BillingItemNumber", item.BillingItemNumber);
-                    cmd.Parameters.AddWithValue("@Quantity", item.Quantity);
-                    cmd.Parameters.AddWithValue("@SalesUnit", item.SalesUnit);
-                    cmd.Parameters.AddWithValue("@UnitPrice", item.UnitPrice);
-                    cmd.Parameters.AddWithValue("@Discount", item.Discount);
-                    cmd.Parameters.AddWithValue("@GoodsValue", item.GoodsValue);
-                    cmd.Parameters.AddWithValue("@Amount", item.Amount);
-                    cmd.Parameters.AddWithValue("@CCCNNO", item.CCCNNO);
-                    cmd.Parameters.AddWithValue("@CountryofOrigin", item.CountryofOrigin);
-                    cmd.Parameters.AddWithValue("@ArticleDescription", item.ArticleDescription);
-                    cmd.Parameters.AddWithValue("@DeliveryNumber", item.DeliveryNumber);
-                    cmd.Parameters.AddWithValue("@DeliveryItemNumber", item.DeliveryItemNumber);
-                    cmd.Parameters.AddWithValue("@PurchaseOrderID", item.PurchaseOrderID);
+                        _cmd = new SqlCommand
+                        {
+                            Connection = conn,
+                            CommandType = CommandType.StoredProcedure,
+                            Transaction = detailTransaction,
+                            CommandText = @"[prc_RSInvoiceDetailsAdd]"
+                        };
+                        _cmd.Parameters.AddWithValue("@RS_InvoiceID", RSInvoiceID);
+                        _cmd.Parameters.AddWithValue("@PurchaseOrderNumber", item.PurchaseOrderNumber);
+                        _cmd.Parameters.AddWithValue("@PurchaseOrderItemNumber", item.PurchaseOrderItemNumber);
+                        _cmd.Parameters.AddWithValue("@ProductNumber", item.ProductNumber);
+                        _cmd.Parameters.AddWithValue("@BillingItemNumber", item.BillingItemNumber);
+                        _cmd.Parameters.AddWithValue("@Quantity", item.Quantity);
+                        _cmd.Parameters.AddWithValue("@SalesUnit", item.SalesUnit);
+                        _cmd.Parameters.AddWithValue("@UnitPrice", item.UnitPrice);
+                        _cmd.Parameters.AddWithValue("@Discount", item.Discount);
+                        _cmd.Parameters.AddWithValue("@GoodsValue", item.GoodsValue);
+                        _cmd.Parameters.AddWithValue("@Amount", item.Amount);
+                        _cmd.Parameters.AddWithValue("@CCCNNO", item.CCCNNO);
+                        _cmd.Parameters.AddWithValue("@CountryofOrigin", item.CountryofOrigin);
+                        _cmd.Parameters.AddWithValue("@ArticleDescription", item.ArticleDescription);
+                        _cmd.Parameters.AddWithValue("@DeliveryNumber", item.DeliveryNumber);
+                        _cmd.Parameters.AddWithValue("@DeliveryItemNumber", item.DeliveryItemNumber);
+                        _cmd.Parameters.AddWithValue("@PurchaseOrderID", item.PurchaseOrderID);
 
-                    cmd.ExecuteNonQuery();
+                        _cmd.ExecuteNonQuery();
+                    }
+                    detailTransaction.Commit();
                 }
-                
-                imeTransaction.Commit();
+                catch (Exception _ex)
+                {
+                    MessageBox.Show("Database Connection Error. \n\nError Message: " + _ex.ToString(), "Error");
+                    detailTransaction.Rollback();
+                    return false;
+                }
             }
             catch (Exception ex)
             {
-                imeTransaction.Rollback();
-                MessageBox.Show("Database Connection Error. \n\nError Message: " + ex.ToString(), "Error");
+                invoiceTransaction.Rollback();
                 return false;
             }
             finally

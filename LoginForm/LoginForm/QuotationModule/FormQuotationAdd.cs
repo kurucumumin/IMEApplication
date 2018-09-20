@@ -4265,7 +4265,7 @@ namespace LoginForm.QuotationModule
             if (dgQuotationAddedItems.CurrentRow.Cells["dgProductCode"].Value != null)
                 item_code = dgQuotationAddedItems.CurrentRow.Cells["dgProductCode"].Value.ToString();
             if (item_code == null)
-                MessageBox.Show("Please Enter a Item Code", "Eror !");
+                MessageBox.Show("Please Enter an Item Code", "Error!");
             else
             {
                 ViewProductHistory f = new ViewProductHistory(item_code);
