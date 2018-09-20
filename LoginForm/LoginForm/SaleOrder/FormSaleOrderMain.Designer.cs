@@ -61,7 +61,7 @@
             this.sentToLogoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backFromLogoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SaleOrderNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Contact = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DeliveryContact = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -400,7 +400,7 @@
             this.dgSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgSales.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Date,
-            this.SoNO,
+            this.SaleOrderNO,
             this.CustomerName,
             this.Contact,
             this.DeliveryContact,
@@ -470,11 +470,11 @@
             this.Date.Name = "Date";
             this.Date.ReadOnly = true;
             // 
-            // SoNO
+            // SaleOrderNO
             // 
-            this.SoNO.HeaderText = "SoNO";
-            this.SoNO.Name = "SoNO";
-            this.SoNO.ReadOnly = true;
+            this.SaleOrderNO.HeaderText = "SaleOrderNO";
+            this.SaleOrderNO.Name = "SaleOrderNO";
+            this.SaleOrderNO.ReadOnly = true;
             // 
             // CustomerName
             // 
@@ -512,6 +512,7 @@
             this.SaleID.HeaderText = "SaleID";
             this.SaleID.Name = "SaleID";
             this.SaleID.ReadOnly = true;
+            this.SaleID.Visible = false;
             // 
             // Status
             // 
@@ -592,7 +593,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnRefreshList;
         private System.Windows.Forms.DataGridViewTextBoxColumn Date;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SoNO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SaleOrderNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn CustomerName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Contact;
         private System.Windows.Forms.DataGridViewTextBoxColumn DeliveryContact;

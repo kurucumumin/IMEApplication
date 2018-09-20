@@ -81,7 +81,7 @@ namespace LoginForm.nsSaleOrder
                        select new
                        {
                            Date = so.SaleDate,
-                           SoNO = so.SaleOrderNo,
+                           SaleOrderNO = so.SaleOrderNo,
                            CustomerName = c.c_name,
                            Contact = cw.cw_name,
                            DeliveryContact = cwd.cw_name,
@@ -92,7 +92,7 @@ namespace LoginForm.nsSaleOrder
                            QuotationNo = so.QuotationNos,
                            PurchaseID = so.PurchaseOrderID,
                            PurchaseDate = po.PurchaseOrderDate
-                       }).OrderByDescending(s=> s.SoNO);
+                       }).OrderByDescending(s=> s.SaleOrderNO);
             populateGrid(list.ToList());
         }
 
@@ -109,7 +109,7 @@ namespace LoginForm.nsSaleOrder
 
 
                 row.Cells[Date.Index].Value = item.Date;
-                row.Cells[SoNO.Index].Value = item.SoNO;
+                row.Cells[SaleOrderNO.Index].Value = item.SaleOrderNO;
                 row.Cells[CustomerName.Index].Value = item.CustomerName;
                 row.Cells[Contact.Index].Value = item.Contact;
                 row.Cells[DeliveryContact.Index].Value = item.DeliveryContact;
@@ -195,7 +195,7 @@ namespace LoginForm.nsSaleOrder
                 List<int> SoNOsToDelete = new List<int>();
                 foreach (DataGridViewRow item in dgSales.SelectedRows)
                 {
-                    SoNOsToDelete.Add(Convert.ToInt32(item.Cells[SoNO.Index].Value.ToString()));
+                    SoNOsToDelete.Add(Convert.ToInt32(item.Cells[SaleOrderNO.Index].Value.ToString()));
                 }
                 DialogResult result = MessageBox.Show("Selected SaleOrder(s) will be deleted! Do you confirm?", "Delete SaleOrder", MessageBoxButtons.OKCancel);
 
@@ -263,7 +263,7 @@ namespace LoginForm.nsSaleOrder
             decimal item_code = 0;
             IMEEntities IME = new IMEEntities();
             
-            if (dgSales.CurrentRow.Cells[SoNO.Index].Value != null)
+            if (dgSales.CurrentRow.Cells[SaleOrderNO.Index].Value != null)
             {
                 DataSet.PurchaseOrderDetail po = new DataSet.PurchaseOrderDetail();
                 item_code = Convert.ToDecimal(dgSales.CurrentRow.Cells[SaleID.Index].Value.ToString());
@@ -285,7 +285,7 @@ namespace LoginForm.nsSaleOrder
 
         private void sentToLogoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int SoNO = Convert.ToInt32(dgSales.CurrentRow.Cells["SoNO"].Value);
+            int SoNO = Convert.ToInt32(dgSales.CurrentRow.Cells["SaleOrderNO"].Value);
             string resultMessage = logoLibrary.SendToLogo_SaleOrder(SoNO);
 
             if (resultMessage == LogoLibrary.AddSuccessful)
@@ -320,7 +320,7 @@ namespace LoginForm.nsSaleOrder
         {
             if (dgSales.CurrentRow != null)
             {
-                decimal QuotationNo = Convert.ToDecimal(dgSales.CurrentRow.Cells[SoNO.Index].Value);
+                decimal QuotationNo = Convert.ToDecimal(dgSales.CurrentRow.Cells[SaleOrderNO.Index].Value);
                 SaleOrder saleOrder;
 
                 IMEEntities IME = new IMEEntities();
@@ -365,7 +365,7 @@ namespace LoginForm.nsSaleOrder
                                          select new
                                          {
                                              Date = so.SaleDate,
-                                             SoNO = so.SaleOrderNo,
+                                             SaleOrderNO = so.SaleOrderNo,
                                              CustomerName = c.c_name,
                                              Contact = cw.cw_name,
                                              DeliveryContact = cwd.cw_name,
@@ -376,7 +376,7 @@ namespace LoginForm.nsSaleOrder
                                              QuotationNo = so.QuotationNos,
                                              PurchaseID = so.PurchaseOrderID,
                                              PurchaseDate = po.PurchaseOrderDate
-                                         }).ToList().Where(x => x.SoNO.ToString().Contains(txtSearchText.Text));
+                                         }).ToList().Where(x => x.SaleOrderNO.ToString().Contains(txtSearchText.Text));
                             //DataTable list1 = new DataTable();
                             //list1 = new Sp_SaleOrder().SearchSaleOrdersWithSaleNo(txtSearchText.Text);
                             dgSales.DataSource = list1;
@@ -396,7 +396,7 @@ namespace LoginForm.nsSaleOrder
                                         select new
                                         {
                                             Date = so.SaleDate,
-                                            SoNO = so.SaleOrderNo,
+                                            SaleOrderNO = so.SaleOrderNo,
                                             CustomerName = c.c_name,
                                             Contact = cw.cw_name,
                                             DeliveryContact = cwd.cw_name,
@@ -425,7 +425,7 @@ namespace LoginForm.nsSaleOrder
                                         select new
                                         {
                                             Date = so.SaleDate,
-                                            SoNO = so.SaleOrderNo,
+                                            SaleOrderNO = so.SaleOrderNo,
                                             CustomerName = c.c_name,
                                             Contact = cw.cw_name,
                                             DeliveryContact = cwd.cw_name,
@@ -458,7 +458,7 @@ namespace LoginForm.nsSaleOrder
                                             select new
                                             {
                                                 Date = so.SaleDate,
-                                                SoNO = so.SaleOrderNo,
+                                                SaleOrderNO = so.SaleOrderNo,
                                                 CustomerName = c.c_name,
                                                 Contact = cw.cw_name,
                                                 DeliveryContact = cwd.cw_name,
@@ -489,7 +489,7 @@ namespace LoginForm.nsSaleOrder
                                         select new
                                         {
                                             Date = so.SaleDate,
-                                            SoNO = so.SaleOrderNo,
+                                            SaleOrderNO = so.SaleOrderNo,
                                             CustomerName = c.c_name,
                                             Contact = cw.cw_name,
                                             DeliveryContact = cwd.cw_name,
@@ -544,7 +544,7 @@ namespace LoginForm.nsSaleOrder
                                          select new
                                          {
                                              Date = so.SaleDate,
-                                             SoNO = so.SaleOrderNo,
+                                             SaleOrderNO = so.SaleOrderNo,
                                              CustomerName = c.c_name,
                                              Contact = cw.cw_name,
                                              DeliveryContact = cwd.cw_name,
@@ -555,7 +555,7 @@ namespace LoginForm.nsSaleOrder
                                              QuotationNo = so.QuotationNos,
                                              PurchaseID = so.PurchaseOrderID,
                                              PurchaseDate = po.PurchaseOrderDate
-                                         }).ToList().Where(x => x.SoNO.ToString().Contains(txtSearchText.Text));
+                                         }).ToList().Where(x => x.SaleOrderNO.ToString().Contains(txtSearchText.Text));
 
                             populateGrid(list1.ToList());
                             break;
@@ -685,7 +685,7 @@ namespace LoginForm.nsSaleOrder
 
         private void backFromLogoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int SoNO = Convert.ToInt32(dgSales.CurrentRow.Cells["SoNO"].Value);
+            int SoNO = Convert.ToInt32(dgSales.CurrentRow.Cells["SaleOrderNO"].Value);
             string resultMessage = logoLibrary.BackFromLogo_SaleOrder(SoNO);
 
             if (resultMessage == LogoLibrary.DeleteSuccessful)
