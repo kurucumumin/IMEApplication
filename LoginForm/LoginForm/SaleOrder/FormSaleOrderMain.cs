@@ -335,7 +335,7 @@ namespace LoginForm.nsSaleOrder
                 }
                 if (saleOrder != null)
                 {
-                    FormSaleOrderAdd newForm = new FormSaleOrderAdd(saleOrder.Customer, saleOrder.SaleOrderDetails.ToList(), 0);
+                    FormSaleOrderAdd newForm = new FormSaleOrderAdd(saleOrder.Customer, saleOrder.SaleOrderDetails.ToList(), Convert.ToInt32(QuotationNo));
                     newForm.ShowDialog();
                 }
             }

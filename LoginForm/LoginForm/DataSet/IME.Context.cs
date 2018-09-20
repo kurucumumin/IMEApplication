@@ -1617,14 +1617,14 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<prc_GetRSInvoiceDetailWithInvoiceID_Result>("prc_GetRSInvoiceDetailWithInvoiceID", invoiceIDParameter);
         }
     
-        public virtual ObjectResult<prc_GetRSInvoiceWithBillingDocumentReference_Result> prc_GetRSInvoiceWithBillingDocumentReference(string billingDocumentReference)
-        {
-            var billingDocumentReferenceParameter = billingDocumentReference != null ?
-                new ObjectParameter("BillingDocumentReference", billingDocumentReference) :
-                new ObjectParameter("BillingDocumentReference", typeof(string));
+        //public virtual ObjectResult<prc_GetRSInvoiceWithBillingDocumentReference_Result> prc_GetRSInvoiceWithBillingDocumentReference(string billingDocumentReference)
+        //{
+        //    var billingDocumentReferenceParameter = billingDocumentReference != null ?
+        //        new ObjectParameter("BillingDocumentReference", billingDocumentReference) :
+        //        new ObjectParameter("BillingDocumentReference", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<prc_GetRSInvoiceWithBillingDocumentReference_Result>("prc_GetRSInvoiceWithBillingDocumentReference", billingDocumentReferenceParameter);
-        }
+        //    return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<prc_GetRSInvoiceWithBillingDocumentReference_Result>("prc_GetRSInvoiceWithBillingDocumentReference", billingDocumentReferenceParameter);
+        //}
     
         public virtual ObjectResult<prc_GetRSInvoiceWithInvoiceID_Result> prc_GetRSInvoiceWithInvoiceID(Nullable<int> invoiceID)
         {

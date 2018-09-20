@@ -22,6 +22,8 @@ namespace LoginForm.QuotationModule
         private static string QuoStatusActive = "Active";
         FormQuotationMain parent;
         List<int> enabledColumns = new List<int>(new int[] { 0, 7, 14, 21, 28, 35 });
+        int sO ;
+
         #region Definitions
         GetWorkerService GetWorkerService = new GetWorkerService();
         DataTable TotalCostList = new DataTable();
@@ -375,9 +377,10 @@ namespace LoginForm.QuotationModule
             firstInitialize = true;
             SaleCurrency = list[0].SaleOrder.ExchangeRate.rate;
             SItems = list;
+            sO = sayac;
             btnSave.Visible = false;
             label75.Visible = false;
-
+            this.Text = "View SaleOrder";
             typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
          System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
          dgSaleAddedItems, new object[] { true });
@@ -859,7 +862,14 @@ namespace LoginForm.QuotationModule
 
 
             ControlAutorization();
-            txtSalesOrderNo.Text = "SO" + IME.CreteNewSaleOrderNo().FirstOrDefault().ToString();
+            if (this.Text == "View SaleOrder")
+            {
+                txtSalesOrderNo.Text = "SO" + sO.ToString();
+            }
+            else
+            {
+                txtSalesOrderNo.Text = "SO" + IME.CreteNewSaleOrderNo().FirstOrDefault().ToString();
+            }
             DataGridViewComboBoxColumn deliveryColumn = (DataGridViewComboBoxColumn)dgSaleAddedItems.Columns[dgDelivery.Index];
             if (deliveryColumn.DataSource == null)
             {

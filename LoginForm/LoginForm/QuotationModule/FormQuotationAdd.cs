@@ -679,7 +679,7 @@ namespace LoginForm.QuotationModule
                 groupBox3.Enabled = false;
             }
             CalculateTotalMarge();
-
+            txtQuotationNo.Text = q1.QuotationNo;
             EnableForm();
         }
 
