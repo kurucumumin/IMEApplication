@@ -70,7 +70,7 @@ namespace LoginForm.f_RSInvoice
             txtSupplyingECCompany.Text = Invoice.SupplyingECCompany.ToString();
             txtShipmentReference.Text = Invoice.ShipmentReference.ToString();
             txtShippingCondition.Text = Invoice.ShippingCondition.ToString();
-            txtStatus.Text = Invoice.Status.ToString();
+            txtStatus.Text = Invoice.Status?.ToString();
             txtDeleted.Text = Invoice.Deleted.ToString();
             txtCurrency.Text = Invoice.Currency.ToString();
             txtInvoiceTaxValue.Text = Invoice.InvoiceTaxValue.ToString();
