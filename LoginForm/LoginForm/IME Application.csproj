@@ -344,6 +344,9 @@
     <Compile Include="DataSet\Language.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\LogRecord.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\Mail.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>

@@ -174,9 +174,11 @@
             this.workerIDDataGridViewTextBoxColumn.HeaderText = "WorkerID";
             this.workerIDDataGridViewTextBoxColumn.Name = "workerIDDataGridViewTextBoxColumn";
             this.workerIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.workerIDDataGridViewTextBoxColumn.Visible = false;
             // 
             // nameLastNameDataGridViewTextBoxColumn
             // 
+            this.nameLastNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.nameLastNameDataGridViewTextBoxColumn.DataPropertyName = "NameLastName";
             this.nameLastNameDataGridViewTextBoxColumn.HeaderText = "NameLastName";
             this.nameLastNameDataGridViewTextBoxColumn.Name = "nameLastNameDataGridViewTextBoxColumn";
@@ -184,6 +186,7 @@
             // 
             // userNameDataGridViewTextBoxColumn
             // 
+            this.userNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.userNameDataGridViewTextBoxColumn.DataPropertyName = "UserName";
             this.userNameDataGridViewTextBoxColumn.HeaderText = "UserName";
             this.userNameDataGridViewTextBoxColumn.Name = "userNameDataGridViewTextBoxColumn";
@@ -195,9 +198,11 @@
             this.userPassDataGridViewTextBoxColumn.HeaderText = "UserPass";
             this.userPassDataGridViewTextBoxColumn.Name = "userPassDataGridViewTextBoxColumn";
             this.userPassDataGridViewTextBoxColumn.ReadOnly = true;
+            this.userPassDataGridViewTextBoxColumn.Visible = false;
             // 
             // emailDataGridViewTextBoxColumn
             // 
+            this.emailDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
             this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
             this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
@@ -212,38 +217,48 @@
             // 
             // phoneDataGridViewTextBoxColumn
             // 
+            this.phoneDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.phoneDataGridViewTextBoxColumn.DataPropertyName = "Phone";
             this.phoneDataGridViewTextBoxColumn.HeaderText = "Phone";
             this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
             this.phoneDataGridViewTextBoxColumn.ReadOnly = true;
+            this.phoneDataGridViewTextBoxColumn.Width = 5;
             // 
             // minMargeDataGridViewTextBoxColumn
             // 
+            this.minMargeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.minMargeDataGridViewTextBoxColumn.DataPropertyName = "MinMarge";
             this.minMargeDataGridViewTextBoxColumn.HeaderText = "MinMargin";
             this.minMargeDataGridViewTextBoxColumn.Name = "minMargeDataGridViewTextBoxColumn";
             this.minMargeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.minMargeDataGridViewTextBoxColumn.Width = 98;
             // 
             // minRateDataGridViewTextBoxColumn
             // 
+            this.minRateDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.minRateDataGridViewTextBoxColumn.DataPropertyName = "MinRate";
             this.minRateDataGridViewTextBoxColumn.HeaderText = "MinFactor";
             this.minRateDataGridViewTextBoxColumn.Name = "minRateDataGridViewTextBoxColumn";
             this.minRateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.minRateDataGridViewTextBoxColumn.Width = 95;
             // 
             // titleDataGridViewTextBoxColumn
             // 
+            this.titleDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
-            this.titleDataGridViewTextBoxColumn.HeaderText = "Position";
+            this.titleDataGridViewTextBoxColumn.HeaderText = "Title";
             this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
             this.titleDataGridViewTextBoxColumn.ReadOnly = true;
+            this.titleDataGridViewTextBoxColumn.Width = 60;
             // 
             // isActiveDataGridViewTextBoxColumn
             // 
+            this.isActiveDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.isActiveDataGridViewTextBoxColumn.DataPropertyName = "isActive";
             this.isActiveDataGridViewTextBoxColumn.HeaderText = "Status";
             this.isActiveDataGridViewTextBoxColumn.Name = "isActiveDataGridViewTextBoxColumn";
             this.isActiveDataGridViewTextBoxColumn.ReadOnly = true;
+            this.isActiveDataGridViewTextBoxColumn.Width = 73;
             // 
             // FormUserMain
             // 
