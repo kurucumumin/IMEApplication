@@ -222,7 +222,7 @@ namespace LoginForm.QuotationModule
 
         private void ExperimentQuotationAdd_Load(object sender, EventArgs e)
         {
-            Management management = Utils.getManagement();
+            DataSet.Management management = Utils.getManagement();
 
             lblVat.Text = management.VAT.ToString();
             _factor = management.Factor;

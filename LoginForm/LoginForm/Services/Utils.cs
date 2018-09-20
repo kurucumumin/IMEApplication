@@ -15,7 +15,8 @@ namespace LoginForm.Services
     {
         private static Worker worker;
         public static decimal _decCurrentCompanyId;
-        public static string ConnectionStringLogo = new System.Data.SqlClient.SqlConnectionStringBuilder { DataSource = "195.201.76.156\\MSSQL4", Password = "IME1453", UserID = "Sa", InitialCatalog = "LOGO"/*, IntegratedSecurity = true */}.ConnectionString;
+        public static string ConnectionStringLogo = new System.Data.SqlClient.SqlConnectionStringBuilder { DataSource = "195.201.76.136", Password = "ime1453..", UserID = "sa", InitialCatalog = "LOGO"/*, IntegratedSecurity = true */}.ConnectionString;
+        public static string ConnectionStringIME = new System.Data.SqlClient.SqlConnectionStringBuilder { DataSource = "195.201.76.136", Password = "ime1453..", UserID = "sa", InitialCatalog = "IME"/*, IntegratedSecurity = true */}.ConnectionString;
         public static string FrmNo = "001";
         public static string DnmNo = "01";
 
@@ -83,7 +84,7 @@ namespace LoginForm.Services
             return worker;
         }
 
-        public static Management getManagement()
+        public static DataSet.Management getManagement()
         {
             IMEEntities IME = new IMEEntities();
             return IME.Managements.ToList().FirstOrDefault();

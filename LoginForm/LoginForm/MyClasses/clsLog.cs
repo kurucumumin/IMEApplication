@@ -1,6 +1,7 @@
 ﻿using System.Data;
 using LoginForm.MyClasses;
 using LoginForm.Services;
+using ImeLogoLibrary;
 
 namespace LoginForm.clsClasses
 {
@@ -35,7 +36,7 @@ namespace LoginForm.clsClasses
                 ParametreAdi = "@DONE_OPERATION"
             };
             arguman[4] = i_5;
-            MyConnect.Ornekle.ExecuteNonQuery(Utils.ConnectionStringLogo, "INSERT INTO dbo.RBS_LOG (TABLE_ID, RECORD_ID, TIME, USER_ID, DONE_OPERATION) VALUES (@TABLE_ID, @RECORD_ID, @TIME, @USER_ID, @DONE_OPERATION)", CommandType.Text, 60, arguman);
+            MyConnect.Ornekle.ExecuteNonQuery(Utils.ConnectionStringIME, "INSERT INTO dbo.LogRecords (TABLE_ID, RECORD_ID, TIME, USER_ID, DONE_OPERATION) VALUES (@TABLE_ID, @RECORD_ID, @TIME, @USER_ID, @DONE_OPERATION)", CommandType.Text, 60, arguman);
         }
     }
 }

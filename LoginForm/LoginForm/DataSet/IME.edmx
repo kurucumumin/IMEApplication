@@ -537,6 +537,17 @@
           <Property Name="ID" Type="int" Nullable="false" />
           <Property Name="languagename" Type="nvarchar" MaxLength="20" />
         </EntityType>
+        <EntityType Name="LogRecords">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TABLE_ID" Type="int" />
+          <Property Name="RECORD_ID" Type="int" />
+          <Property Name="TIME" Type="datetime" />
+          <Property Name="USER_ID" Type="int" />
+          <Property Name="DONE_OPERATION" Type="text" />
+        </EntityType>
         <EntityType Name="Mail">
           <Key>
             <PropertyRef Name="id" />
@@ -1378,7 +1389,7 @@
           <Property Name="Phone" Type="nvarchar" MaxLength="15" />
           <Property Name="MinMarge" Type="decimal" Precision="5" Scale="2" />
           <Property Name="MinRate" Type="decimal" Precision="5" Scale="2" />
-          <Property Name="Title" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="25" />
           <Property Name="isActive" Type="int" />
           <Property Name="dob" Type="datetime" />
           <Property Name="maritalStatus" Type="varchar(max)" />
@@ -3716,6 +3727,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <EntitySet Name="ItemHistory" EntityType="Self.ItemHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemNote" EntityType="Self.ItemNote" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Languages" EntityType="Self.Languages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LogRecords" EntityType="Self.LogRecords" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Mail" EntityType="Self.Mail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Management" EntityType="Self.Management" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Master" EntityType="Self.Master" Schema="dbo" store:Type="Tables" />
@@ -4985,6 +4997,17 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <NavigationProperty Name="CustomerWorkers" Relationship="Self.FK__CustomerW__langu__72C60C4A" FromRole="Languages" ToRole="CustomerWorker" />
           <NavigationProperty Name="SupplierWorkers" Relationship="Self.FK__SupplierW__langu__72910220" FromRole="Languages" ToRole="SupplierWorker" />
         </EntityType>
+        <EntityType Name="LogRecord">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TABLE_ID" Type="Int32" />
+          <Property Name="RECORD_ID" Type="Int32" />
+          <Property Name="TIME" Type="DateTime" Precision="3" />
+          <Property Name="USER_ID" Type="Int32" />
+          <Property Name="DONE_OPERATION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
         <EntityType Name="Mail">
           <Key>
             <PropertyRef Name="id" />
@@ -5947,7 +5970,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="MinMarge" Type="Decimal" Precision="5" Scale="2" />
           <Property Name="MinRate" Type="Decimal" Precision="5" Scale="2" />
-          <Property Name="Title" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
           <Property Name="isActive" Type="Int32" />
           <Property Name="dob" Type="DateTime" Precision="3" />
           <Property Name="maritalStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -7576,6 +7599,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <EntitySet Name="ItemHistories" EntityType="Self.ItemHistory" />
           <EntitySet Name="ItemNotes" EntityType="Self.ItemNote" />
           <EntitySet Name="Languages" EntityType="Self.Language" />
+          <EntitySet Name="LogRecords" EntityType="Self.LogRecord" />
           <EntitySet Name="Mails" EntityType="Self.Mail" />
           <EntitySet Name="Managements" EntityType="Self.Management" />
           <EntitySet Name="Masters" EntityType="Self.Master" />
@@ -10076,6 +10100,18 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
               <MappingFragment StoreEntitySet="Languages">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="languagename" ColumnName="languagename" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LogRecords">
+            <EntityTypeMapping TypeName="IMEModel.LogRecord">
+              <MappingFragment StoreEntitySet="LogRecords">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TABLE_ID" ColumnName="TABLE_ID" />
+                <ScalarProperty Name="RECORD_ID" ColumnName="RECORD_ID" />
+                <ScalarProperty Name="TIME" ColumnName="TIME" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="DONE_OPERATION" ColumnName="DONE_OPERATION" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

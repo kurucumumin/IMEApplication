@@ -71,7 +71,7 @@ namespace LoginForm.CustomControls
                 //}
             }
         }
-        public void setManagementModule(Management m)
+        public void setManagementModule(DataSet.Management m)
         {
             IMEEntities db = new IMEEntities();
             txtLowMarginLimit.Text = Convert.ToString(m.LowMarginLimit);
@@ -115,8 +115,9 @@ namespace LoginForm.CustomControls
         {
             try
             {
+                
                 IMEEntities IME = new IMEEntities();
-                Management management = IME.Managements.First();
+                DataSet.Management management = IME.Managements.First();
                 management.LowMarginLimit = Convert.ToDecimal(txtLowMarginLimit.Text);
                 management.VAT = Convert.ToDecimal(txtVAT.Text);
                 management.Factor = numericFactor.Value;
