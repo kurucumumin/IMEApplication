@@ -915,7 +915,7 @@ namespace LoginForm
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            Management m = Utils.getManagement();
+            DataSet.Management m = Utils.getManagement();
             if (btnCreate.Text == "ADD")
             {
                 dateTimePicker1.Value = DateTime.Today;

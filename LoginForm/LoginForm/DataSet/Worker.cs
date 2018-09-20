@@ -46,7 +46,7 @@ namespace LoginForm.DataSet
         public string Phone { get; set; }
         public Nullable<decimal> MinMarge { get; set; }
         public Nullable<decimal> MinRate { get; set; }
-        public Nullable<int> Title { get; set; }
+        public string Title { get; set; }
         public Nullable<int> isActive { get; set; }
         public Nullable<System.DateTime> dob { get; set; }
         public string maritalStatus { get; set; }

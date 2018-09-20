@@ -75,7 +75,7 @@
             // 
             // CustomsRateUpDown
             // 
-            this.CustomsRateUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.CustomsRateUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CustomsRateUpDown.DecimalPlaces = 2;
             this.CustomsRateUpDown.Increment = new decimal(new int[] {
@@ -101,7 +101,7 @@
             // 
             // FreightChargeUpDown
             // 
-            this.FreightChargeUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.FreightChargeUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.FreightChargeUpDown.DecimalPlaces = 2;
             this.FreightChargeUpDown.Increment = new decimal(new int[] {
@@ -127,7 +127,7 @@
             // 
             // txtBranchCode
             // 
-            this.txtBranchCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtBranchCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBranchCode.Enabled = false;
             this.txtBranchCode.Location = new System.Drawing.Point(134, 225);
@@ -149,7 +149,7 @@
             // 
             // txtDataSeperator
             // 
-            this.txtDataSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtDataSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDataSeperator.Location = new System.Drawing.Point(134, 186);
             this.txtDataSeperator.Margin = new System.Windows.Forms.Padding(2, 2, 12, 2);
@@ -168,7 +168,7 @@
             // 
             // numericFactor
             // 
-            this.numericFactor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.numericFactor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.numericFactor.DecimalPlaces = 1;
             this.numericFactor.Increment = new decimal(new int[] {
@@ -195,7 +195,7 @@
             // 
             // cbCurrency
             // 
-            this.cbCurrency.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.cbCurrency.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cbCurrency.DisplayMember = "currencySymbol";
             this.cbCurrency.FormattingEnabled = true;
@@ -218,7 +218,7 @@
             // 
             // txtVAT
             // 
-            this.txtVAT.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtVAT.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtVAT.Location = new System.Drawing.Point(134, 54);
             this.txtVAT.Margin = new System.Windows.Forms.Padding(2, 2, 12, 2);
@@ -238,7 +238,7 @@
             // 
             // txtLowMarginLimit
             // 
-            this.txtLowMarginLimit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtLowMarginLimit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtLowMarginLimit.Location = new System.Drawing.Point(134, 18);
             this.txtLowMarginLimit.Margin = new System.Windows.Forms.Padding(2, 2, 12, 2);

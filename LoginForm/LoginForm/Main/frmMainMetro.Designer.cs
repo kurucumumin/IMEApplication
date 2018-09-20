@@ -65,6 +65,7 @@ namespace LoginForm.Main
             this.btnRsInvoice = new AltoControls.AltoButton();
             this.bunifuElipse3 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.pnlManagement = new System.Windows.Forms.Panel();
+            this.btnLog = new AltoControls.AltoButton();
             this.btnUser = new AltoControls.AltoButton();
             this.btnCustomerTransfer = new AltoControls.AltoButton();
             this.btnManagmentControl = new AltoControls.AltoButton();
@@ -637,6 +638,7 @@ namespace LoginForm.Main
             // 
             this.pnlManagement.AutoScroll = true;
             this.pnlManagement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(254)))), ((int)(((byte)(233)))));
+            this.pnlManagement.Controls.Add(this.btnLog);
             this.pnlManagement.Controls.Add(this.btnUser);
             this.pnlManagement.Controls.Add(this.btnCustomerTransfer);
             this.pnlManagement.Controls.Add(this.btnManagmentControl);
@@ -650,6 +652,28 @@ namespace LoginForm.Main
             this.pnlManagement.Name = "pnlManagement";
             this.pnlManagement.Size = new System.Drawing.Size(218, 0);
             this.pnlManagement.TabIndex = 8;
+            // 
+            // btnLog
+            // 
+            this.btnLog.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
+            this.btnLog.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
+            this.btnLog.BackColor = System.Drawing.Color.Transparent;
+            this.btnLog.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnLog.Font = new System.Drawing.Font("Sitka Text", 11F, System.Drawing.FontStyle.Bold);
+            this.btnLog.ForeColor = System.Drawing.Color.Black;
+            this.btnLog.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
+            this.btnLog.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
+            this.btnLog.Location = new System.Drawing.Point(4, 260);
+            this.btnLog.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLog.Name = "btnLog";
+            this.btnLog.Radius = 5;
+            this.btnLog.Size = new System.Drawing.Size(194, 32);
+            this.btnLog.Stroke = false;
+            this.btnLog.StrokeColor = System.Drawing.Color.Gray;
+            this.btnLog.TabIndex = 17;
+            this.btnLog.Text = "Log Records";
+            this.btnLog.Transparency = false;
+            this.btnLog.Click += new System.EventHandler(this.btnLog_Click);
             // 
             // btnUser
             // 
@@ -1175,5 +1199,6 @@ namespace LoginForm.Main
         private AltoControls.AltoButton btnExchangeRate;
         private AltoControls.AltoButton btnCustomerTransfer;
         private AltoControls.AltoButton btnUser;
+        private AltoControls.AltoButton btnLog;
     }
 }

@@ -330,7 +330,7 @@ namespace LoginForm.QuotationModule
 
         public decimal CalculateLandingCost(decimal P, decimal W)
         {
-            Management m = Utils.getManagement();
+            DataSet.Management m = Utils.getManagement();
             decimal L = 0;
             decimal F = (decimal)m.FreightCharge;
             decimal C = (decimal)m.CustomsRate / (decimal)100;

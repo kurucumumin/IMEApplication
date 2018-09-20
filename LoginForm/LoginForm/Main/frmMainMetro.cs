@@ -10,6 +10,7 @@ using LoginForm.Billing;
 using LoginForm.DataSet;
 using LoginForm.f_RSInvoice;
 using LoginForm.ItemModule;
+using LoginForm.Management;
 using LoginForm.ManagementModule;
 using LoginForm.nsSaleOrder;
 using LoginForm.PurchaseOrder;
@@ -515,6 +516,12 @@ namespace LoginForm.Main
         {
             FormUserMain roles = new FormUserMain(this);
             roles.Show();
+        }
+
+        private void btnLog_Click(object sender, EventArgs e)
+        {
+            FormLogKayit logKayit = new FormLogKayit(this);
+            logKayit.Show();
         }
     }
 }

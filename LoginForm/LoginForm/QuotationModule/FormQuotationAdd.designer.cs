@@ -2840,7 +2840,7 @@
             // 
             this.label69.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label69.AutoSize = true;
-            this.label69.Location = new System.Drawing.Point(1189, 145);
+            this.label69.Location = new System.Drawing.Point(1194, 145);
             this.label69.Name = "label69";
             this.label69.Size = new System.Drawing.Size(33, 13);
             this.label69.TabIndex = 59;
@@ -3182,7 +3182,7 @@
             // 
             this.label67.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label67.AutoSize = true;
-            this.label67.Location = new System.Drawing.Point(1072, 145);
+            this.label67.Location = new System.Drawing.Point(1077, 145);
             this.label67.Name = "label67";
             this.label67.Size = new System.Drawing.Size(32, 13);
             this.label67.TabIndex = 57;

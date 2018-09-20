@@ -62,6 +62,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<ItemHistory> ItemHistories { get; set; }
         public virtual DbSet<ItemNote> ItemNotes { get; set; }
         public virtual DbSet<Language> Languages { get; set; }
+        public virtual DbSet<LogRecord> LogRecords { get; set; }
         public virtual DbSet<Mail> Mails { get; set; }
         public virtual DbSet<Management> Managements { get; set; }
         public virtual DbSet<Master> Masters { get; set; }
