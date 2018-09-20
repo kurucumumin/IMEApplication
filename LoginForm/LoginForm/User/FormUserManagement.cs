@@ -19,6 +19,7 @@ namespace LoginForm.User
         public FormWorkerManagement(FormUserMain form)
         {
             InitializeComponent();
+            rbActive.Checked = true;
             authList = new List<AuthorizationValue>();
             chcChangePassword.Visible = false;
             LoadRoles();
@@ -130,6 +131,7 @@ namespace LoginForm.User
             chcChangePassword.Checked = false;
             txtMail.Text = worker.Email;
             txtPhone.Text = worker.Phone;
+            txtTitle.Text = (worker.Title != null) ? worker.Title : "";
 
 
             if(worker.Note != null)
@@ -139,11 +141,13 @@ namespace LoginForm.User
 
             if (worker.isActive == 1)
             {
-                chcActive.Checked = true;
+                rbActive.Checked = true;
+                rbPassive.Checked = false;
             }
             else
             {
-                chcActive.Checked = false;
+                rbActive.Checked = false;
+                rbPassive.Checked = true;
             }
 
 
@@ -347,6 +351,7 @@ namespace LoginForm.User
                         wrkr.UserName = txtUsername.Text;
                         wrkr.Email = txtMail.Text;
                         wrkr.Phone = txtPhone.Text;
+                        wrkr.Title = txtTitle.Text;
 
                         if (wrkr.Note != null)
                         {
@@ -366,7 +371,7 @@ namespace LoginForm.User
                         wrkr.MinMarge = numericMinMargin.Value;
                         wrkr.MinRate = numericFactor.Value;
 
-                        if (chcActive.Checked)
+                        if (rbActive.Checked)
                         {
                             wrkr.isActive = 1;
                         }
@@ -415,7 +420,7 @@ namespace LoginForm.User
                     {
                         Worker worker = new Worker();
                         worker.NameLastName = txtNameLastName.Text;
-                        if (chcActive.Checked)
+                        if (rbActive.Checked)
                         {
                             worker.isActive = 1;
                         }
@@ -435,6 +440,7 @@ namespace LoginForm.User
                         worker.MinRate = numericFactor.Value;
                         worker.Phone = txtPhone.Text;
                         worker.UserName = txtUsername.Text;
+                        worker.Title = txtTitle.Text;
                         worker.UserPass = Utils.MD5Hash(txtUserPass.Text);
 
                         IME.Workers.Add(worker);

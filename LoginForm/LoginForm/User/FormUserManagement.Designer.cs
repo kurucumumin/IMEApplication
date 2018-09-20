@@ -45,6 +45,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.gbUserInfo = new System.Windows.Forms.GroupBox();
+            this.rbPassive = new System.Windows.Forms.RadioButton();
+            this.txtTitle = new System.Windows.Forms.TextBox();
+            this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel10 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel9 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel8 = new MaterialSkin.Controls.MaterialLabel();
@@ -59,7 +62,7 @@
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.chcActive = new System.Windows.Forms.CheckBox();
+            this.rbActive = new System.Windows.Forms.RadioButton();
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.txtMail = new System.Windows.Forms.TextBox();
             this.txtUserPass = new System.Windows.Forms.TextBox();
@@ -67,8 +70,6 @@
             this.chcChangePassword = new System.Windows.Forms.CheckBox();
             this.authRoleBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.authorizationValueBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.gbRoles.SuspendLayout();
@@ -190,7 +191,8 @@
             // 
             resources.ApplyResources(this.gbUserInfo, "gbUserInfo");
             this.gbUserInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
-            this.gbUserInfo.Controls.Add(this.textBox1);
+            this.gbUserInfo.Controls.Add(this.rbPassive);
+            this.gbUserInfo.Controls.Add(this.txtTitle);
             this.gbUserInfo.Controls.Add(this.materialLabel6);
             this.gbUserInfo.Controls.Add(this.materialLabel10);
             this.gbUserInfo.Controls.Add(this.materialLabel9);
@@ -206,7 +208,7 @@
             this.gbUserInfo.Controls.Add(this.materialLabel3);
             this.gbUserInfo.Controls.Add(this.materialLabel2);
             this.gbUserInfo.Controls.Add(this.materialLabel1);
-            this.gbUserInfo.Controls.Add(this.chcActive);
+            this.gbUserInfo.Controls.Add(this.rbActive);
             this.gbUserInfo.Controls.Add(this.txtPhone);
             this.gbUserInfo.Controls.Add(this.txtMail);
             this.gbUserInfo.Controls.Add(this.txtUserPass);
@@ -214,6 +216,25 @@
             this.gbUserInfo.Controls.Add(this.chcChangePassword);
             this.gbUserInfo.Name = "gbUserInfo";
             this.gbUserInfo.TabStop = false;
+            // 
+            // rbPassive
+            // 
+            resources.ApplyResources(this.rbPassive, "rbPassive");
+            this.rbPassive.Name = "rbPassive";
+            this.rbPassive.UseVisualStyleBackColor = true;
+            // 
+            // txtTitle
+            // 
+            resources.ApplyResources(this.txtTitle, "txtTitle");
+            this.txtTitle.Name = "txtTitle";
+            // 
+            // materialLabel6
+            // 
+            resources.ApplyResources(this.materialLabel6, "materialLabel6");
+            this.materialLabel6.Depth = 0;
+            this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel6.Name = "materialLabel6";
             // 
             // materialLabel10
             // 
@@ -340,11 +361,11 @@
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
             // 
-            // chcActive
+            // rbActive
             // 
-            resources.ApplyResources(this.chcActive, "chcActive");
-            this.chcActive.Name = "chcActive";
-            this.chcActive.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.rbActive, "rbActive");
+            this.rbActive.Name = "rbActive";
+            this.rbActive.UseVisualStyleBackColor = true;
             // 
             // txtPhone
             // 
@@ -372,19 +393,6 @@
             this.chcChangePassword.Name = "chcChangePassword";
             this.chcChangePassword.UseVisualStyleBackColor = true;
             this.chcChangePassword.CheckedChanged += new System.EventHandler(this.chcChangePassword_CheckedChanged);
-            // 
-            // textBox1
-            // 
-            resources.ApplyResources(this.textBox1, "textBox1");
-            this.textBox1.Name = "textBox1";
-            // 
-            // materialLabel6
-            // 
-            resources.ApplyResources(this.materialLabel6, "materialLabel6");
-            this.materialLabel6.Depth = 0;
-            this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel6.Name = "materialLabel6";
             // 
             // FormWorkerManagement
             // 
@@ -426,7 +434,7 @@
         private System.Windows.Forms.BindingSource authRoleBindingSource;
         private System.Windows.Forms.BindingSource authorizationValueBindingSource;
         private System.Windows.Forms.CheckedListBox clbAuthorities;
-        private System.Windows.Forms.CheckBox chcActive;
+        private System.Windows.Forms.RadioButton rbActive;
         private MaterialSkin.Controls.MaterialLabel materialLabel5;
         private MaterialSkin.Controls.MaterialLabel materialLabel4;
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
@@ -451,7 +459,8 @@
         private System.Windows.Forms.NumericUpDown numericDiscountRate;
         private System.Windows.Forms.NumericUpDown numericFactor;
         private System.Windows.Forms.NumericUpDown numericMinMargin;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtTitle;
         private MaterialSkin.Controls.MaterialLabel materialLabel6;
+        private System.Windows.Forms.RadioButton rbPassive;
     }
 }
