@@ -32,26 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgQuotation = new System.Windows.Forms.DataGridView();
-            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QuotationNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Rep_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PreparedBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RFQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustomerCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Currency = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OrderDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.City = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SaleOrderNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OrderStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FirstNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Date1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Rep1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SecondNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Date2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Rep2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SaleOrderID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gridRightClick = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.dELETEQUOTATIONToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uNDODELETEQUOTATIONToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -91,6 +71,26 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dtpToDate = new System.Windows.Forms.DateTimePicker();
             this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
+            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuotationNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rep_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PreparedBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RFQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Currency = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrderDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.City = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SaleOrderNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrderStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FirstNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Date1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rep1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SecondNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Date2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rep2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SaleOrderID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgQuotation)).BeginInit();
             this.gridRightClick.SuspendLayout();
@@ -170,126 +170,6 @@
             this.dgQuotation.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgQuotation_CellMouseDoubleClick);
             this.dgQuotation.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgQuotation_KeyDown);
             this.dgQuotation.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgQuotation_MouseDown);
-            // 
-            // Date
-            // 
-            this.Date.HeaderText = "Date";
-            this.Date.Name = "Date";
-            this.Date.ReadOnly = true;
-            // 
-            // QuotationNo
-            // 
-            this.QuotationNo.HeaderText = "QuotationNo";
-            this.QuotationNo.Name = "QuotationNo";
-            this.QuotationNo.ReadOnly = true;
-            // 
-            // Rep_Name
-            // 
-            this.Rep_Name.HeaderText = "Rep_Name";
-            this.Rep_Name.Name = "Rep_Name";
-            this.Rep_Name.ReadOnly = true;
-            // 
-            // PreparedBy
-            // 
-            this.PreparedBy.HeaderText = "PreparedBy";
-            this.PreparedBy.Name = "PreparedBy";
-            this.PreparedBy.ReadOnly = true;
-            // 
-            // RFQ
-            // 
-            this.RFQ.HeaderText = "RFQ";
-            this.RFQ.Name = "RFQ";
-            this.RFQ.ReadOnly = true;
-            // 
-            // CustomerCode
-            // 
-            this.CustomerCode.HeaderText = "CustomerCode";
-            this.CustomerCode.Name = "CustomerCode";
-            this.CustomerCode.ReadOnly = true;
-            // 
-            // CustomerName
-            // 
-            this.CustomerName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.CustomerName.HeaderText = "CustomerName";
-            this.CustomerName.Name = "CustomerName";
-            this.CustomerName.ReadOnly = true;
-            this.CustomerName.Width = 119;
-            // 
-            // Total
-            // 
-            this.Total.HeaderText = "Total";
-            this.Total.Name = "Total";
-            this.Total.ReadOnly = true;
-            // 
-            // Currency
-            // 
-            this.Currency.HeaderText = "Currency";
-            this.Currency.Name = "Currency";
-            this.Currency.ReadOnly = true;
-            // 
-            // OrderDate
-            // 
-            this.OrderDate.HeaderText = "OrderDate";
-            this.OrderDate.Name = "OrderDate";
-            this.OrderDate.ReadOnly = true;
-            // 
-            // City
-            // 
-            this.City.HeaderText = "City";
-            this.City.Name = "City";
-            this.City.ReadOnly = true;
-            // 
-            // SaleOrderNo
-            // 
-            this.SaleOrderNo.HeaderText = "Sale Order No";
-            this.SaleOrderNo.Name = "SaleOrderNo";
-            // 
-            // OrderStatus
-            // 
-            this.OrderStatus.HeaderText = "OrderStatus";
-            this.OrderStatus.Name = "OrderStatus";
-            this.OrderStatus.ReadOnly = true;
-            // 
-            // FirstNote
-            // 
-            this.FirstNote.HeaderText = "FirstNote";
-            this.FirstNote.Name = "FirstNote";
-            // 
-            // Date1
-            // 
-            this.Date1.HeaderText = "Date1";
-            this.Date1.Name = "Date1";
-            this.Date1.ReadOnly = true;
-            // 
-            // Rep1
-            // 
-            this.Rep1.HeaderText = "Rep1";
-            this.Rep1.Name = "Rep1";
-            this.Rep1.ReadOnly = true;
-            // 
-            // SecondNote
-            // 
-            this.SecondNote.HeaderText = "SecondNote";
-            this.SecondNote.Name = "SecondNote";
-            // 
-            // Date2
-            // 
-            this.Date2.HeaderText = "Date2";
-            this.Date2.Name = "Date2";
-            this.Date2.ReadOnly = true;
-            // 
-            // Rep2
-            // 
-            this.Rep2.HeaderText = "Rep2";
-            this.Rep2.Name = "Rep2";
-            this.Rep2.ReadOnly = true;
-            // 
-            // SaleOrderID
-            // 
-            this.SaleOrderID.HeaderText = "SaleOrderID";
-            this.SaleOrderID.Name = "SaleOrderID";
-            this.SaleOrderID.ReadOnly = true;
-            this.SaleOrderID.Visible = false;
             // 
             // gridRightClick
             // 
@@ -730,6 +610,126 @@
             this.dtpFromDate.Name = "dtpFromDate";
             this.dtpFromDate.Size = new System.Drawing.Size(119, 21);
             this.dtpFromDate.TabIndex = 19;
+            // 
+            // Date
+            // 
+            this.Date.HeaderText = "Date";
+            this.Date.Name = "Date";
+            this.Date.ReadOnly = true;
+            // 
+            // QuotationNo
+            // 
+            this.QuotationNo.HeaderText = "QuotationNo";
+            this.QuotationNo.Name = "QuotationNo";
+            this.QuotationNo.ReadOnly = true;
+            // 
+            // Rep_Name
+            // 
+            this.Rep_Name.HeaderText = "Rep_Name";
+            this.Rep_Name.Name = "Rep_Name";
+            this.Rep_Name.ReadOnly = true;
+            // 
+            // PreparedBy
+            // 
+            this.PreparedBy.HeaderText = "PreparedBy";
+            this.PreparedBy.Name = "PreparedBy";
+            this.PreparedBy.ReadOnly = true;
+            // 
+            // RFQ
+            // 
+            this.RFQ.HeaderText = "RFQ";
+            this.RFQ.Name = "RFQ";
+            this.RFQ.ReadOnly = true;
+            // 
+            // CustomerCode
+            // 
+            this.CustomerCode.HeaderText = "CustomerCode";
+            this.CustomerCode.Name = "CustomerCode";
+            this.CustomerCode.ReadOnly = true;
+            // 
+            // CustomerName
+            // 
+            this.CustomerName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.CustomerName.HeaderText = "CustomerName";
+            this.CustomerName.Name = "CustomerName";
+            this.CustomerName.ReadOnly = true;
+            this.CustomerName.Width = 119;
+            // 
+            // Total
+            // 
+            this.Total.HeaderText = "Total";
+            this.Total.Name = "Total";
+            this.Total.ReadOnly = true;
+            // 
+            // Currency
+            // 
+            this.Currency.HeaderText = "Currency";
+            this.Currency.Name = "Currency";
+            this.Currency.ReadOnly = true;
+            // 
+            // OrderDate
+            // 
+            this.OrderDate.HeaderText = "OrderDate";
+            this.OrderDate.Name = "OrderDate";
+            this.OrderDate.ReadOnly = true;
+            // 
+            // City
+            // 
+            this.City.HeaderText = "City";
+            this.City.Name = "City";
+            this.City.ReadOnly = true;
+            // 
+            // SaleOrderNo
+            // 
+            this.SaleOrderNo.HeaderText = "Sale Order No";
+            this.SaleOrderNo.Name = "SaleOrderNo";
+            // 
+            // OrderStatus
+            // 
+            this.OrderStatus.HeaderText = "Status";
+            this.OrderStatus.Name = "OrderStatus";
+            this.OrderStatus.ReadOnly = true;
+            // 
+            // FirstNote
+            // 
+            this.FirstNote.HeaderText = "FirstNote";
+            this.FirstNote.Name = "FirstNote";
+            // 
+            // Date1
+            // 
+            this.Date1.HeaderText = "Date1";
+            this.Date1.Name = "Date1";
+            this.Date1.ReadOnly = true;
+            // 
+            // Rep1
+            // 
+            this.Rep1.HeaderText = "Rep1";
+            this.Rep1.Name = "Rep1";
+            this.Rep1.ReadOnly = true;
+            // 
+            // SecondNote
+            // 
+            this.SecondNote.HeaderText = "SecondNote";
+            this.SecondNote.Name = "SecondNote";
+            // 
+            // Date2
+            // 
+            this.Date2.HeaderText = "Date2";
+            this.Date2.Name = "Date2";
+            this.Date2.ReadOnly = true;
+            // 
+            // Rep2
+            // 
+            this.Rep2.HeaderText = "Rep2";
+            this.Rep2.Name = "Rep2";
+            this.Rep2.ReadOnly = true;
+            // 
+            // SaleOrderID
+            // 
+            this.SaleOrderID.HeaderText = "SaleOrderID";
+            this.SaleOrderID.Name = "SaleOrderID";
+            this.SaleOrderID.ReadOnly = true;
+            this.SaleOrderID.Visible = false;
             // 
             // FormQuotationMain
             // 
