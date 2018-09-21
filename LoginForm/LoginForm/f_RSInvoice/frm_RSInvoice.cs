@@ -91,19 +91,26 @@ namespace LoginForm.f_RSInvoice
         private void btnNewInvoice_Click(object sender, EventArgs e)
         {
             RS_Invoice rsInv = RSInvoiceReader();
-            rsInv.SupplierID = new IMEEntities().Suppliers.Where(x => x.s_name == "RS").FirstOrDefault().ID;
-            rsInv.UserID = Utils.getCurrentUser().WorkerID;
-
-            bool InvoiceExist = (new Sp_RSInvoice().GetRSInvoiceWithBillingDocumentReference(rsInv.BillingDocumentReference).Rows.Count > 0) ? true : false;
-
-            if (InvoiceExist)
+            if (rsInv != null)
             {
-                MessageBox.Show("File Is Already Imported!", "Warning");
+                rsInv.SupplierID = new IMEEntities().Suppliers.Where(x => x.s_name == "RS").FirstOrDefault().ID;
+                rsInv.UserID = Utils.getCurrentUser().WorkerID;
+
+                bool InvoiceExist = (new Sp_RSInvoice().GetRSInvoiceWithBillingDocumentReference(rsInv.BillingDocumentReference).Rows.Count > 0) ? true : false;
+
+                if (InvoiceExist)
+                {
+                    MessageBox.Show("File Is Already Imported!", "Warning");
+                }
+                else
+                {
+                    frm_RsInvoiceDetail form = new frm_RsInvoiceDetail(rsInv);
+                    form.Show();
+                }
             }
             else
             {
-                frm_RsInvoiceDetail form = new frm_RsInvoiceDetail(rsInv);
-                form.Show();
+                MessageBox.Show("Correct text file is not choosen!");
             }
         }
 
@@ -197,6 +204,7 @@ namespace LoginForm.f_RSInvoice
             dgvRSInvoice.Rows.Clear();
             SetDataGridItemsRsInvoice(dt_RsInvoiceList);
             dgvRSInvoice.Refresh();
+            dgvRSInvoice.ClearSelection();
         }
 
         private void SetDataGridItemsRsInvoice(DataTable dataTable)
@@ -274,9 +282,13 @@ namespace LoginForm.f_RSInvoice
                     bool istrue = true;
                     bool isItem = false;
                     RS_InvoiceDetails RS_InvoiceDetails = new RS_InvoiceDetails();
-                    if (lines[0].Substring(0, 2) == "FH")
+                    if (lines[0].Length > 2 && lines[0].Substring(0, 2) == "FH")
                     {
                         if (lines[0].Substring(5, 14).ToString().Trim() != "") RSInvoice.BillingDocumentDate = DateTime.ParseExact(lines[0].Substring(5, 15).ToString(), "dd.MM.yyyyHH.mm", CultureInfo.InvariantCulture);
+                    }
+                    else
+                    {
+                        return null;
                     }
 
                     if (lines[1].Substring(0, 2) == "IV")
@@ -344,7 +356,12 @@ namespace LoginForm.f_RSInvoice
                     }
                 }
             }
+            else
+            {
+                return null;
+            }
             return RSInvoice;
         }
+        
     }
 }

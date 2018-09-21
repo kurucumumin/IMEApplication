@@ -31,15 +31,42 @@
             this.dgProductHistory = new System.Windows.Forms.DataGridView();
             this.btnClose = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.dgcRsCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgcCustomerCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgcCustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgcDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgcQuotationNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgcQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgcUP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgcCompetitor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgcTargetPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgcCurrency = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgcStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgProductHistory)).BeginInit();
             this.SuspendLayout();
             // 
             // dgProductHistory
             // 
+            this.dgProductHistory.AllowUserToAddRows = false;
+            this.dgProductHistory.AllowUserToDeleteRows = false;
+            this.dgProductHistory.AllowUserToOrderColumns = true;
             this.dgProductHistory.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgProductHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgProductHistory.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgcRsCode,
+            this.dgcCustomerCode,
+            this.dgcCustomerName,
+            this.dgcDate,
+            this.dgcQuotationNo,
+            this.dgcQuantity,
+            this.dgcUP,
+            this.dgcCompetitor,
+            this.dgcTargetPrice,
+            this.dgcCurrency,
+            this.dgcStatus});
             this.dgProductHistory.Location = new System.Drawing.Point(12, 12);
             this.dgProductHistory.Name = "dgProductHistory";
+            this.dgProductHistory.ReadOnly = true;
             this.dgProductHistory.Size = new System.Drawing.Size(986, 387);
             this.dgProductHistory.TabIndex = 0;
             // 
@@ -61,6 +88,72 @@
             this.label1.Size = new System.Drawing.Size(33, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "Close";
+            // 
+            // dgcRsCode
+            // 
+            this.dgcRsCode.HeaderText = "RS CODE";
+            this.dgcRsCode.Name = "dgcRsCode";
+            this.dgcRsCode.ReadOnly = true;
+            // 
+            // dgcCustomerCode
+            // 
+            this.dgcCustomerCode.HeaderText = "CUSTOMER CODE";
+            this.dgcCustomerCode.Name = "dgcCustomerCode";
+            this.dgcCustomerCode.ReadOnly = true;
+            // 
+            // dgcCustomerName
+            // 
+            this.dgcCustomerName.HeaderText = "CUSTOMER NAME";
+            this.dgcCustomerName.Name = "dgcCustomerName";
+            this.dgcCustomerName.ReadOnly = true;
+            // 
+            // dgcDate
+            // 
+            this.dgcDate.HeaderText = "DATE";
+            this.dgcDate.Name = "dgcDate";
+            this.dgcDate.ReadOnly = true;
+            // 
+            // dgcQuotationNo
+            // 
+            this.dgcQuotationNo.HeaderText = "QUOT NO";
+            this.dgcQuotationNo.Name = "dgcQuotationNo";
+            this.dgcQuotationNo.ReadOnly = true;
+            // 
+            // dgcQuantity
+            // 
+            this.dgcQuantity.HeaderText = "QTY";
+            this.dgcQuantity.Name = "dgcQuantity";
+            this.dgcQuantity.ReadOnly = true;
+            // 
+            // dgcUP
+            // 
+            this.dgcUP.HeaderText = "U/P";
+            this.dgcUP.Name = "dgcUP";
+            this.dgcUP.ReadOnly = true;
+            // 
+            // dgcCompetitor
+            // 
+            this.dgcCompetitor.HeaderText = "COMPETITOR";
+            this.dgcCompetitor.Name = "dgcCompetitor";
+            this.dgcCompetitor.ReadOnly = true;
+            // 
+            // dgcTargetPrice
+            // 
+            this.dgcTargetPrice.HeaderText = "TARGET PRC";
+            this.dgcTargetPrice.Name = "dgcTargetPrice";
+            this.dgcTargetPrice.ReadOnly = true;
+            // 
+            // dgcCurrency
+            // 
+            this.dgcCurrency.HeaderText = "CURR";
+            this.dgcCurrency.Name = "dgcCurrency";
+            this.dgcCurrency.ReadOnly = true;
+            // 
+            // dgcStatus
+            // 
+            this.dgcStatus.HeaderText = "ORDER STATUS";
+            this.dgcStatus.Name = "dgcStatus";
+            this.dgcStatus.ReadOnly = true;
             // 
             // ViewProductHistory
             // 
@@ -85,5 +178,16 @@
         private System.Windows.Forms.DataGridView dgProductHistory;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgcRsCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgcCustomerCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgcCustomerName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgcDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgcQuotationNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgcQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgcUP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgcCompetitor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgcTargetPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgcCurrency;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgcStatus;
     }
 }

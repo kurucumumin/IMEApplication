@@ -22,14 +22,31 @@ namespace LoginForm.QuotationModule
         public ViewProductHistory()
         {
             InitializeComponent();
-            dgProductHistory.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            SetDataGridSettings();
+        }
+
+        private void SetDataGridSettings()
+        {
+            //dgProductHistory.AutoResizeColumn(dgcRsCode.Index, DataGridViewAutoSizeColumnMode.AllCells);
+            //dgProductHistory.AutoResizeColumn(dgcCustomerCode.Index, DataGridViewAutoSizeColumnMode.ColumnHeader);
+            //dgProductHistory.AutoResizeColumn(dgcCustomerName.Index, DataGridViewAutoSizeColumnMode.AllCells);
+            //dgProductHistory.AutoResizeColumn(dgcDate.Index, DataGridViewAutoSizeColumnMode.AllCells);
+            //dgProductHistory.AutoResizeColumn(dgcQuotationNo.Index, DataGridViewAutoSizeColumnMode.AllCellsExceptHeader);
+            //dgProductHistory.AutoResizeColumn(dgcQuantity.Index, DataGridViewAutoSizeColumnMode.ColumnHeader);
+            //dgProductHistory.AutoResizeColumn(dgcUP.Index, DataGridViewAutoSizeColumnMode.AllCells);
+            ////dgProductHistory.AutoResizeColumn(dgcCompetitor.Index, DataGridViewAutoSizeColumnMode.AllCells);
+            //dgProductHistory.AutoResizeColumn(dgcTargetPrice.Index, DataGridViewAutoSizeColumnMode.ColumnHeader);
+            //dgProductHistory.AutoResizeColumn(dgcCurrency.Index, DataGridViewAutoSizeColumnMode.ColumnHeader);
+            //dgProductHistory.AutoResizeColumn(dgcStatus.Index, DataGridViewAutoSizeColumnMode.AllCells);
+            //dgProductHistory.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            dgProductHistory.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
 
         public ViewProductHistory(string item_code)
         {
             InitializeComponent();
             this.ItemCode = item_code;
-            dgProductHistory.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            SetDataGridSettings();
         }
 
         private void ViewProductHistory_Load(object sender, EventArgs e)
@@ -39,13 +56,35 @@ namespace LoginForm.QuotationModule
 
         public void ProductHistory()
         {
-            dgProductHistory.DataSource = new Sp_Item().GetProductHistoryWithArticleNo(ItemCode);
+            FillDataGridWithDataTable(new Sp_Item().GetProductHistoryWithArticleNo(ItemCode));
+        }
+
+        private void FillDataGridWithDataTable(DataTable dataTable)
+        {
+            foreach (DataRow item in dataTable.Rows)
+            {
+                DataGridViewRow row = dgProductHistory.Rows[dgProductHistory.Rows.Add()];
+
+                row.Cells[dgcRsCode.Index].Value = item["RSCode"];
+                row.Cells[dgcCustomerCode.Index].Value = item["CustomerCode"];
+                row.Cells[dgcCustomerName.Index].Value = item["CustomerName"];
+                row.Cells[dgcDate.Index].Value = item["Date"];
+                row.Cells[dgcQuotationNo.Index].Value = item["QuotNo"];
+                row.Cells[dgcQuantity.Index].Value = item["QTY"];
+                row.Cells[dgcUP.Index].Value = item["UP"];
+                row.Cells[dgcCompetitor.Index].Value = item["Competitor"];
+                row.Cells[dgcTargetPrice.Index].Value = item["TargetPrice"];
+                row.Cells[dgcCurrency.Index].Value = item["Curr"];
+                row.Cells[dgcStatus.Index].Value = item["Status"];
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
+        
 
       
     }
