@@ -51,22 +51,28 @@
             // 
             // btnStartDate
             // 
-            this.btnStartDate.Location = new System.Drawing.Point(365, 8);
+            this.btnStartDate.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.btnStartDate.CustomFormat = "dd-MM-yyyy";
+            this.btnStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.btnStartDate.Location = new System.Drawing.Point(458, 8);
             this.btnStartDate.Name = "btnStartDate";
-            this.btnStartDate.Size = new System.Drawing.Size(200, 20);
+            this.btnStartDate.Size = new System.Drawing.Size(107, 20);
             this.btnStartDate.TabIndex = 0;
+            this.btnStartDate.UseWaitCursor = true;
             // 
             // btnEndDate
             // 
-            this.btnEndDate.Location = new System.Drawing.Point(365, 44);
+            this.btnEndDate.CustomFormat = "dd-MM-yyyy";
+            this.btnEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.btnEndDate.Location = new System.Drawing.Point(458, 44);
             this.btnEndDate.Name = "btnEndDate";
-            this.btnEndDate.Size = new System.Drawing.Size(200, 20);
+            this.btnEndDate.Size = new System.Drawing.Size(107, 20);
             this.btnEndDate.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(309, 15);
+            this.label1.Location = new System.Drawing.Point(392, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 1;
@@ -75,7 +81,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(309, 48);
+            this.label2.Location = new System.Drawing.Point(392, 50);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 13);
             this.label2.TabIndex = 1;

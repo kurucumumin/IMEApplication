@@ -44,7 +44,7 @@ namespace LoginForm.QuotationModule
 
         private void btnRefreshList_Click(object sender, EventArgs e)
         {
-            BringQuotationList(dtpFromDate.Value, dtpToDate.Value);
+            BringQuotationList(dtpFromDate.Value, dtpToDate.Value.AddDays(1));
         }
 
         private void dgQuotation_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -175,7 +175,8 @@ namespace LoginForm.QuotationModule
             //{
             //    btnNewQuotation.Enabled = false;
             //}
-            BringQuotationList(DateTime.Now.AddDays(-1), DateTime.Now); //Bu gün oluşturulan quotation ları göstermek için.5+++12#
+            //BringQuotationList(DateTime.Now.AddDays(-1), DateTime.Now); //Bu gün oluşturulan quotation ları göstermek için.5+++12#
+            BringQuotationList(dtpFromDate.Value, dtpToDate.Value.AddDays(1)); //Bu gün oluşturulan quotation ları göstermek için.5+++12#
         }
 
         private void txtSearchText_KeyPress(object sender, KeyPressEventArgs e)
@@ -973,47 +974,53 @@ namespace LoginForm.QuotationModule
 
         private void dELETEQUOTATIONToolStripMenuItem_Click(object sender, EventArgs e)
         {
-         
+
             if (dgQuotation.CurrentRow != null)
             {
-                DialogResult result = MessageBox.Show("Selected quotation(s) will be deleted! Do you confirm?", "Delete Quotation", MessageBoxButtons.OKCancel);
-
-                if (result == DialogResult.OK)
+                if (dgQuotation.CurrentRow.Cells[SaleOrderNo.Index].Value == null || dgQuotation.CurrentRow.Cells[SaleOrderNo.Index].Value.ToString() == "")
                 {
-                    try
+                    DialogResult result = MessageBox.Show("Selected quotation(s) will be deleted! Do you confirm?", "Delete Quotation", MessageBoxButtons.OKCancel);
+
+                    if (result == DialogResult.OK)
                     {
-                        IMEEntities IME = new IMEEntities();
-
-                        foreach (DataGridViewRow row in dgQuotation.SelectedRows)
+                        try
                         {
-                            string QuotationNo = row.Cells["QuotationNo"].Value.ToString();
+                            IMEEntities IME = new IMEEntities();
 
-                            Quotation quo = IME.Quotations.Where(q => q.QuotationNo == QuotationNo).FirstOrDefault();
+                            foreach (DataGridViewRow row in dgQuotation.SelectedRows)
+                            {
+                                string QuotationNo = row.Cells["QuotationNo"].Value.ToString();
 
-                            quo.status = "Deleted";
+                                Quotation quo = IME.Quotations.Where(q => q.QuotationNo == QuotationNo).FirstOrDefault();
+
+                                quo.status = "Deleted";
+
+                                IME.SaveChanges();
+                            }
 
                             IME.SaveChanges();
+
+                            BringQuotationList();
+
+                            MessageBox.Show("Quotation is successfully deleted.", "Success!");
                         }
-
-                        IME.SaveChanges();
-
-                        BringQuotationList();
-
-                        MessageBox.Show("Quotation is successfully deleted.", "Success!");
+                        catch (Exception)
+                        {
+                            MessageBox.Show("An error was encountered", "Error!");
+                            throw;
+                        }
                     }
-                    catch (Exception)
+                    else
                     {
-                        MessageBox.Show("An error was encountered", "Error!");
-                        throw;
+                        MessageBox.Show("You did not chose any quotation.", "Warning!");
                     }
                 }
-            }
-            else
-            {
-                MessageBox.Show("You did not chose any quotation.", "Warning!");
+                else
+                {
+                    MessageBox.Show("You can not delete, order exist !", "Warning!");
+                }
             }
         }
-
         private void qUOTATIONINFOToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (dgQuotation.CurrentRow != null)
@@ -1058,12 +1065,6 @@ namespace LoginForm.QuotationModule
             
             switch (dgQuotation.CurrentCell.ColumnIndex)
             {
-                case 12:
-                    if (dgQuotation.CurrentRow.Cells[OrderStatus.Index].Value.ToString() == "Deleted")
-                    {
-                        dgQuotation.CurrentRow.Cells[OrderStatus.Index].Style.BackColor = System.Drawing.Color.Red;
-                    }
-                    break;
                 case 13:
                     if (dgQuotation.CurrentRow != null)
                     {
@@ -1273,7 +1274,7 @@ namespace LoginForm.QuotationModule
 
                             Quotation quo = IME.Quotations.Where(q => q.QuotationNo == QuotationNo).FirstOrDefault();
 
-                            quo.status = "Active";
+                            quo.status = "Pending";
 
                             IME.SaveChanges();
                         }

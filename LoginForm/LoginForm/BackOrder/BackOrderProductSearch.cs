@@ -55,5 +55,10 @@ namespace LoginForm.BackOrder
                 this.Close();
             }
         }
+
+        private void BackOrderProductSearch_Load(object sender, EventArgs e)
+        {
+            Utils.LogKayit("RoleAuths Main", "RoleAuths main screen has been entered");
+        }
     }
 }
