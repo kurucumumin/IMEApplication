@@ -158,20 +158,20 @@ namespace LoginForm.ItemModule
                     dataGridView1.DataSource = null;
                     dataGridView1.DataSource = IME.RSProes.Take(10).ToList();
                     break;
-                case "RSInvoice":
-                    txtReader.RSInvoiceReader();
-                    {
-                        RsFileHistory h = new RsFileHistory();
-                        h.FileType = txtReader.LoaderType;
-                        h.FileName = "";
-                        h.Date = IME.CurrentDate().FirstOrDefault().Value;
-                        h.UserID = Utils.getCurrentUser().WorkerID;
-                        IME.RsFileHistories.Add(h);
-                        IME.SaveChanges();
-                    }
-                    dataGridView1.DataSource = null;
-                    dataGridView1.DataSource = IME.RS_Invoice.Take(10).ToList();
-                    break;
+                //case "RSInvoice":
+                //    txtReader.RSInvoiceReader();
+                //    {
+                //        RsFileHistory h = new RsFileHistory();
+                //        h.FileType = txtReader.LoaderType;
+                //        h.FileName = "";
+                //        h.Date = IME.CurrentDate().FirstOrDefault().Value;
+                //        h.UserID = Utils.getCurrentUser().WorkerID;
+                //        IME.RsFileHistories.Add(h);
+                //        IME.SaveChanges();
+                //    }
+                //    dataGridView1.DataSource = null;
+                //    dataGridView1.DataSource = IME.RS_Invoice.Take(10).ToList();
+                //    break;
 
                 case "OrderAcknowledgementtxtReader":
                     txtReader.OrderAcknowledgementtxtReader();

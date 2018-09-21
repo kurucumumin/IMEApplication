@@ -387,9 +387,8 @@ namespace LoginForm.Main
 
         private void btnRsInvoice_Click(object sender, EventArgs e)
         {
-            txtReader.LoaderType = "";
-            txtReader.LoaderType = "RSInvoice";
-            GoToLoaderPage();
+            frm_RSInvoice form = new frm_RSInvoice();
+            form.Show();
         }
 
         private void btnRSProList_Click(object sender, EventArgs e)
@@ -516,18 +515,6 @@ namespace LoginForm.Main
             FormUserCustomerUpdate form = new FormUserCustomerUpdate();
             form.ShowDialog();
             Utils.LogKayit("CustomerTransfer Main", "CustomerTransfer main screen has been entered");
-        }
-
-        private void altoSlidingLabel1_DoubleClick(object sender, EventArgs e)
-        {
-            frm_RSInvoice form = new frm_RSInvoice();
-            form.Show();
-        }
-
-        private void altoSlidingLabel1_Click(object sender, EventArgs e)
-        {
-            //frmSupplierMain form = new frmSupplierMain();
-            //form.Show();
         }
 
         private void btnUser_Click_1(object sender, EventArgs e)

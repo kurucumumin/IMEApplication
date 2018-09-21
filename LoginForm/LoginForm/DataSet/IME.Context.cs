@@ -1590,6 +1590,15 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<prc_GetLastExchangeRateWithCurrencyName_Result>("prc_GetLastExchangeRateWithCurrencyName", currencyNameParameter);
         }
     
+        public virtual ObjectResult<prc_GetProductHistoryWithArticleNo_Result> prc_GetProductHistoryWithArticleNo(Nullable<int> articleNo)
+        {
+            var articleNoParameter = articleNo.HasValue ?
+                new ObjectParameter("ArticleNo", articleNo) :
+                new ObjectParameter("ArticleNo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<prc_GetProductHistoryWithArticleNo_Result>("prc_GetProductHistoryWithArticleNo", articleNoParameter);
+        }
+    
         public virtual ObjectResult<prc_GetRSInvoiceAll_Result> prc_GetRSInvoiceAll()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<prc_GetRSInvoiceAll_Result>("prc_GetRSInvoiceAll");
@@ -1617,14 +1626,14 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<prc_GetRSInvoiceDetailWithInvoiceID_Result>("prc_GetRSInvoiceDetailWithInvoiceID", invoiceIDParameter);
         }
     
-        //public virtual ObjectResult<prc_GetRSInvoiceWithBillingDocumentReference_Result> prc_GetRSInvoiceWithBillingDocumentReference(string billingDocumentReference)
-        //{
-        //    var billingDocumentReferenceParameter = billingDocumentReference != null ?
-        //        new ObjectParameter("BillingDocumentReference", billingDocumentReference) :
-        //        new ObjectParameter("BillingDocumentReference", typeof(string));
+        public virtual ObjectResult<prc_GetRSInvoiceWithBillingDocumentReference_Result> prc_GetRSInvoiceWithBillingDocumentReference(string billingDocumentReference)
+        {
+            var billingDocumentReferenceParameter = billingDocumentReference != null ?
+                new ObjectParameter("BillingDocumentReference", billingDocumentReference) :
+                new ObjectParameter("BillingDocumentReference", typeof(string));
     
-        //    return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<prc_GetRSInvoiceWithBillingDocumentReference_Result>("prc_GetRSInvoiceWithBillingDocumentReference", billingDocumentReferenceParameter);
-        //}
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<prc_GetRSInvoiceWithBillingDocumentReference_Result>("prc_GetRSInvoiceWithBillingDocumentReference", billingDocumentReferenceParameter);
+        }
     
         public virtual ObjectResult<prc_GetRSInvoiceWithInvoiceID_Result> prc_GetRSInvoiceWithInvoiceID(Nullable<int> invoiceID)
         {
@@ -1667,7 +1676,7 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<prc_GetWorkersAllForComboBox_Result>("prc_GetWorkersAllForComboBox");
         }
     
-        public virtual ObjectResult<Nullable<decimal>> prc_RSInvoiceAdd(string shipmentReference, string billingDocumentReference, string shippingCondition, Nullable<System.DateTime> billingDocumentDate, string supplyingECCompany, string customerReference, Nullable<decimal> invoiceTaxValue, Nullable<decimal> invoiceGoodsValue, Nullable<decimal> invoiceNettValue, string currency, string airwayBillNumber, Nullable<decimal> discount, Nullable<decimal> surcharge, string supplierID)
+        public virtual int prc_RSInvoiceAdd(string shipmentReference, string billingDocumentReference, string shippingCondition, Nullable<System.DateTime> billingDocumentDate, string supplyingECCompany, string customerReference, Nullable<decimal> invoiceTaxValue, Nullable<decimal> invoiceGoodsValue, Nullable<decimal> invoiceNettValue, string currency, string airwayBillNumber, Nullable<decimal> discount, Nullable<decimal> surcharge, string supplierID, Nullable<int> userID)
         {
             var shipmentReferenceParameter = shipmentReference != null ?
                 new ObjectParameter("ShipmentReference", shipmentReference) :
@@ -1725,7 +1734,11 @@ namespace LoginForm.DataSet
                 new ObjectParameter("SupplierID", supplierID) :
                 new ObjectParameter("SupplierID", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("prc_RSInvoiceAdd", shipmentReferenceParameter, billingDocumentReferenceParameter, shippingConditionParameter, billingDocumentDateParameter, supplyingECCompanyParameter, customerReferenceParameter, invoiceTaxValueParameter, invoiceGoodsValueParameter, invoiceNettValueParameter, currencyParameter, airwayBillNumberParameter, discountParameter, surchargeParameter, supplierIDParameter);
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("prc_RSInvoiceAdd", shipmentReferenceParameter, billingDocumentReferenceParameter, shippingConditionParameter, billingDocumentDateParameter, supplyingECCompanyParameter, customerReferenceParameter, invoiceTaxValueParameter, invoiceGoodsValueParameter, invoiceNettValueParameter, currencyParameter, airwayBillNumberParameter, discountParameter, surchargeParameter, supplierIDParameter, userIDParameter);
         }
     
         public virtual int prc_RSInvoiceDetailsAdd(Nullable<int> rS_InvoiceID, string purchaseOrderNumber, Nullable<int> purchaseOrderItemNumber, string productNumber, Nullable<int> billingItemNumber, Nullable<decimal> quantity, string salesUnit, Nullable<decimal> unitPrice, Nullable<decimal> discount, Nullable<decimal> goodsValue, Nullable<decimal> amount, string cCCNNO, string countryofOrigin, string articleDescription, Nullable<decimal> deliveryNumber, Nullable<int> deliveryItemNumber, Nullable<int> purchaseOrderID)

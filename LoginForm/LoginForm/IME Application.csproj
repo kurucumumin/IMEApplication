@@ -398,6 +398,9 @@
     <Compile Include="DataSet\prc_GetLastExchangeRateWithCurrencyName_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\prc_GetProductHistoryWithArticleNo_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\prc_GetRSInvoiceAll_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>

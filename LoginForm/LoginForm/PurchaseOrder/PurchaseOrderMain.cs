@@ -67,7 +67,6 @@ namespace LoginForm.PurchaseOrder
                     adapter.PurchaseOrderDate = (DateTime)row.Cells[PurchaseOrderDate.Index].Value;
                     adapter.CustomerID = row.Cells[CustomerID.Index].Value.ToString();
                     adapter.Customer.c_name = row.Cells[c_name.Index].Value.ToString();
-                    adapter.CameDate = (DateTime)row.Cells[CameDate.Index].Value;
                     if (row.Cells[Reason.Index].Value == null || row.Cells[Reason.Index].Value.ToString() == "")
                     {
                         adapter.Reason = "";
@@ -112,7 +111,6 @@ namespace LoginForm.PurchaseOrder
                                p.PurchaseOrderDate,
                                p.CustomerID,
                                p.Customer.c_name,
-                               p.CameDate,
                                p.Reason
                            }).ToList();
 
@@ -130,7 +128,6 @@ namespace LoginForm.PurchaseOrder
                 row.Cells[PurchaseOrderDate.Index].Value = item.PurchaseOrderDate;
                 row.Cells[CustomerID.Index].Value = item.CustomerID;
                 row.Cells[c_name.Index].Value = item.c_name;
-                row.Cells[CameDate.Index].Value = item.CameDate;
                 row.Cells[Reason.Index].Value = item.Reason;
 
             }
@@ -166,7 +163,6 @@ namespace LoginForm.PurchaseOrder
                                            p.PurchaseOrderDate,
                                            p.CustomerID,
                                            p.Customer.c_name,
-                                           p.CameDate,
                                            p.Reason
                                        }
                             ).ToList();
@@ -179,7 +175,6 @@ namespace LoginForm.PurchaseOrder
                     dgPurchase.Columns[5].Visible = false;
                     dgPurchase.Columns[6].Visible = false;
                     dgPurchase.Columns[7].Visible = false;
-                    dgPurchase.Columns[8].Visible = false;
                     #endregion
                     dgPurchase.DataSource = fichenolist.ToList();
                 }
@@ -198,7 +193,6 @@ namespace LoginForm.PurchaseOrder
                                                p.PurchaseOrderDate,
                                                p.CustomerID,
                                                p.Customer.c_name,
-                                               p.CameDate,
                                                p.Reason
                                            }
                              ).ToList();
@@ -211,7 +205,6 @@ namespace LoginForm.PurchaseOrder
                         dgPurchase.Columns[5].Visible = false;
                         dgPurchase.Columns[6].Visible = false;
                         dgPurchase.Columns[7].Visible = false;
-                        dgPurchase.Columns[8].Visible = false;
                         #endregion
                         dgPurchase.DataSource = fichenolist.ToList();
                     }
@@ -254,7 +247,6 @@ namespace LoginForm.PurchaseOrder
                                po.PurchaseOrderDate,
                                po.CustomerID,
                                po.Customer.c_name,
-                               po.CameDate,
                                po.Reason
                            }).ToList();
 
@@ -270,7 +262,6 @@ namespace LoginForm.PurchaseOrder
                 row.Cells[PurchaseOrderDate.Index].Value = item.PurchaseOrderDate;
                 row.Cells[CustomerID.Index].Value = item.CustomerID;
                 row.Cells[c_name.Index].Value = item.c_name;
-                row.Cells[CameDate.Index].Value = item.CameDate;
                 row.Cells[Reason.Index].Value = item.Reason;
             }
             //dgPurchase.DataSource = null;
@@ -312,6 +303,54 @@ namespace LoginForm.PurchaseOrder
                 try { this.Hide(); f.ShowDialog(); this.Show(); } catch { }
             }
             #endregion
+        }
+
+        private void dgPurchase_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            string note1 = "";
+            if (dgPurchase.CurrentRow.Cells[Reason.Index].Value != null && dgPurchase.CurrentRow.Cells["Reason"].Value.ToString() != "")
+            {
+                note1 = dgPurchase.CurrentRow.Cells[Reason.Index].Value.ToString();
+            }
+
+            switch (dgPurchase.CurrentCell.ColumnIndex)
+            {
+                case 7:
+                    if (dgPurchase.CurrentRow != null)
+                    {
+                        DialogResult result = MessageBox.Show("Note is added, please confirm", "PurchaseOrder Note", MessageBoxButtons.OKCancel);
+
+                        if (result == DialogResult.OK)
+                        {
+                            try
+                            {
+                                IMEEntities IME = new IMEEntities();
+
+                                foreach (DataGridViewRow row in dgPurchase.SelectedRows)
+                                {
+                                    int PurchaseOrderNo = Convert.ToInt32(row.Cells["purchaseOrderId"].Value);
+
+                                   DataSet.PurchaseOrder quo = IME.PurchaseOrders.Where(q => q.purchaseOrderId == PurchaseOrderNo).FirstOrDefault();
+
+                                    quo.Reason = note1;
+
+                                    IME.SaveChanges();
+                                }
+
+                                IME.SaveChanges();
+
+                              //  BringQuotationList();
+                            }
+                            catch (Exception)
+                            {
+                                dgPurchase.CurrentRow.Cells[Reason.Index].Value = "";
+                                MessageBox.Show("Please press the enter key!", "Error!");
+                            }
+                        }
+                    }
+
+                    break;
+            }
         }
     }
 }

@@ -43,6 +43,14 @@
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.dgPurchase = new System.Windows.Forms.DataGridView();
+            this.purchaseOrderId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PurchaseNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PoNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FicheNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PurchaseOrderDate = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
+            this.CustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.c_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Reason = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnExcel = new System.Windows.Forms.Button();
             this.btnCreate = new System.Windows.Forms.Button();
@@ -51,15 +59,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.purchaseOrderId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PurchaseNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PoNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FicheNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PurchaseOrderDate = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
-            this.CustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.c_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CameDate = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
-            this.Reason = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgPurchase)).BeginInit();
@@ -222,14 +221,93 @@
             this.PurchaseOrderDate,
             this.CustomerID,
             this.c_name,
-            this.CameDate,
             this.Reason});
             this.dgPurchase.Location = new System.Drawing.Point(7, 148);
             this.dgPurchase.Name = "dgPurchase";
+            this.dgPurchase.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgPurchase.Size = new System.Drawing.Size(1365, 434);
             this.dgPurchase.TabIndex = 9;
+            this.dgPurchase.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgPurchase_CellEndEdit);
             this.dgPurchase.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgPurchase_DataError);
             this.dgPurchase.DoubleClick += new System.EventHandler(this.dgPurchase_DoubleClick);
+            // 
+            // purchaseOrderId
+            // 
+            this.purchaseOrderId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.purchaseOrderId.HeaderText = "ID";
+            this.purchaseOrderId.Name = "purchaseOrderId";
+            this.purchaseOrderId.Visible = false;
+            // 
+            // PurchaseNo
+            // 
+            this.PurchaseNo.HeaderText = "PurchaseNo";
+            this.PurchaseNo.Name = "PurchaseNo";
+            this.PurchaseNo.Visible = false;
+            // 
+            // PoNo
+            // 
+            this.PoNo.HeaderText = "Purchase Order Number";
+            this.PoNo.Name = "PoNo";
+            // 
+            // FicheNo
+            // 
+            this.FicheNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.FicheNo.HeaderText = "File Name";
+            this.FicheNo.Name = "FicheNo";
+            this.FicheNo.Visible = false;
+            // 
+            // PurchaseOrderDate
+            // 
+            this.PurchaseOrderDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.PurchaseOrderDate.HeaderText = "Date";
+            this.PurchaseOrderDate.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
+            // 
+            // 
+            // 
+            this.PurchaseOrderDate.MonthCalendar.AnnuallyMarkedDates = new System.DateTime[0];
+            // 
+            // 
+            // 
+            this.PurchaseOrderDate.MonthCalendar.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
+            this.PurchaseOrderDate.MonthCalendar.BackgroundStyle.Class = "";
+            this.PurchaseOrderDate.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.PurchaseOrderDate.MonthCalendar.CommandsBackgroundStyle.Class = "";
+            this.PurchaseOrderDate.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.PurchaseOrderDate.MonthCalendar.DisplayMonth = new System.DateTime(2017, 12, 1, 0, 0, 0, 0);
+            this.PurchaseOrderDate.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
+            this.PurchaseOrderDate.MonthCalendar.MarkedDates = new System.DateTime[0];
+            this.PurchaseOrderDate.MonthCalendar.MonthlyMarkedDates = new System.DateTime[0];
+            // 
+            // 
+            // 
+            this.PurchaseOrderDate.MonthCalendar.NavigationBackgroundStyle.Class = "";
+            this.PurchaseOrderDate.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.PurchaseOrderDate.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
+            this.PurchaseOrderDate.Name = "PurchaseOrderDate";
+            this.PurchaseOrderDate.Width = 55;
+            // 
+            // CustomerID
+            // 
+            this.CustomerID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.CustomerID.HeaderText = "Customer ID";
+            this.CustomerID.Name = "CustomerID";
+            this.CustomerID.Width = 83;
+            // 
+            // c_name
+            // 
+            this.c_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.c_name.HeaderText = "Customer Name";
+            this.c_name.Name = "c_name";
+            // 
+            // Reason
+            // 
+            this.Reason.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Reason.HeaderText = "Remarks";
+            this.Reason.Name = "Reason";
+            this.Reason.Width = 74;
             // 
             // btnClose
             // 
@@ -306,119 +384,6 @@
             this.label7.TabIndex = 20;
             this.label7.Text = "Close";
             // 
-            // purchaseOrderId
-            // 
-            this.purchaseOrderId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.purchaseOrderId.HeaderText = "ID";
-            this.purchaseOrderId.Name = "purchaseOrderId";
-            this.purchaseOrderId.Visible = false;
-            this.purchaseOrderId.Width = 43;
-            // 
-            // PurchaseNo
-            // 
-            this.PurchaseNo.HeaderText = "PurchaseNo";
-            this.PurchaseNo.Name = "PurchaseNo";
-            this.PurchaseNo.Visible = false;
-            // 
-            // PoNo
-            // 
-            this.PoNo.HeaderText = "Purchase Order Number";
-            this.PoNo.Name = "PoNo";
-            // 
-            // FicheNo
-            // 
-            this.FicheNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.FicheNo.HeaderText = "File Name";
-            this.FicheNo.Name = "FicheNo";
-            this.FicheNo.Visible = false;
-            this.FicheNo.Width = 73;
-            // 
-            // PurchaseOrderDate
-            // 
-            this.PurchaseOrderDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.PurchaseOrderDate.HeaderText = "Date";
-            this.PurchaseOrderDate.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
-            // 
-            // 
-            // 
-            this.PurchaseOrderDate.MonthCalendar.AnnuallyMarkedDates = new System.DateTime[0];
-            // 
-            // 
-            // 
-            this.PurchaseOrderDate.MonthCalendar.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
-            this.PurchaseOrderDate.MonthCalendar.BackgroundStyle.Class = "";
-            this.PurchaseOrderDate.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.PurchaseOrderDate.MonthCalendar.CommandsBackgroundStyle.Class = "";
-            this.PurchaseOrderDate.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.PurchaseOrderDate.MonthCalendar.DisplayMonth = new System.DateTime(2017, 12, 1, 0, 0, 0, 0);
-            this.PurchaseOrderDate.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
-            this.PurchaseOrderDate.MonthCalendar.MarkedDates = new System.DateTime[0];
-            this.PurchaseOrderDate.MonthCalendar.MonthlyMarkedDates = new System.DateTime[0];
-            // 
-            // 
-            // 
-            this.PurchaseOrderDate.MonthCalendar.NavigationBackgroundStyle.Class = "";
-            this.PurchaseOrderDate.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.PurchaseOrderDate.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
-            this.PurchaseOrderDate.Name = "PurchaseOrderDate";
-            this.PurchaseOrderDate.Width = 55;
-            // 
-            // CustomerID
-            // 
-            this.CustomerID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.CustomerID.HeaderText = "Customer ID";
-            this.CustomerID.Name = "CustomerID";
-            this.CustomerID.Width = 83;
-            // 
-            // c_name
-            // 
-            this.c_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.c_name.HeaderText = "Customer Name";
-            this.c_name.Name = "c_name";
-            // 
-            // CameDate
-            // 
-            this.CameDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.CameDate.HeaderText = "Creation Date";
-            this.CameDate.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
-            // 
-            // 
-            // 
-            this.CameDate.MonthCalendar.AnnuallyMarkedDates = new System.DateTime[0];
-            // 
-            // 
-            // 
-            this.CameDate.MonthCalendar.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
-            this.CameDate.MonthCalendar.BackgroundStyle.Class = "";
-            this.CameDate.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.CameDate.MonthCalendar.CommandsBackgroundStyle.Class = "";
-            this.CameDate.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.CameDate.MonthCalendar.DisplayMonth = new System.DateTime(2017, 12, 1, 0, 0, 0, 0);
-            this.CameDate.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
-            this.CameDate.MonthCalendar.MarkedDates = new System.DateTime[0];
-            this.CameDate.MonthCalendar.MonthlyMarkedDates = new System.DateTime[0];
-            // 
-            // 
-            // 
-            this.CameDate.MonthCalendar.NavigationBackgroundStyle.Class = "";
-            this.CameDate.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.CameDate.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
-            this.CameDate.Name = "CameDate";
-            this.CameDate.Width = 89;
-            // 
-            // Reason
-            // 
-            this.Reason.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Reason.HeaderText = "Remarks";
-            this.Reason.Name = "Reason";
-            this.Reason.Width = 74;
-            // 
             // PurchaseOrderMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -483,7 +448,6 @@
         private DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn PurchaseOrderDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn CustomerID;
         private System.Windows.Forms.DataGridViewTextBoxColumn c_name;
-        private DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn CameDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn Reason;
     }
 }

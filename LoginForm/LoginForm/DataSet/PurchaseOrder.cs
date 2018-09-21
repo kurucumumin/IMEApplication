@@ -25,7 +25,6 @@ namespace LoginForm.DataSet
     
         public string CustomerID { get; set; }
         public Nullable<System.DateTime> PurchaseOrderDate { get; set; }
-        public Nullable<System.DateTime> CameDate { get; set; }
         public string Reason { get; set; }
         public Nullable<int> exchangeRateID { get; set; }
         public Nullable<int> userId { get; set; }

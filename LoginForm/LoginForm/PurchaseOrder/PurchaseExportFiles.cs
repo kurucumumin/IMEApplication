@@ -125,8 +125,7 @@ namespace LoginForm.PurchaseOrder
 
             po.purchaseOrderId = puchaseId;
             po.CustomerID = IME.SaleOrders.Where(a => a.SaleOrderID == s).FirstOrDefault().CustomerID;
-            po.PurchaseOrderDate = DateTime.Today.Date;
-            po.CameDate = IME.SaleOrders.Where(a => a.SaleOrderID == s).FirstOrDefault().SaleDate;
+            po.PurchaseOrderDate = IME.CurrentDate().FirstOrDefault();
             po.FicheNo = filename;
             po.PurchaseNo = purchaseNo;
 
