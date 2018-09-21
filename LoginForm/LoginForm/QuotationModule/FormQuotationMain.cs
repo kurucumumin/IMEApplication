@@ -127,7 +127,7 @@ namespace LoginForm.QuotationModule
 
         private void btnModifyQuotation_Click(object sender, EventArgs e)
         {
-            ModifyQuotation();
+            CreateRevision();
         }
 
         public void checkAuthorities()
@@ -717,7 +717,7 @@ namespace LoginForm.QuotationModule
             }
         }
 
-        private void ModifyQuotation()
+        private void CreateRevision()
         {
             if (dgQuotation.CurrentRow != null)
             {
@@ -734,7 +734,7 @@ namespace LoginForm.QuotationModule
                         newForm.ShowDialog();
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     throw;
                 }
@@ -969,7 +969,7 @@ namespace LoginForm.QuotationModule
 
         private void mODIFYQUOTATIONToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ModifyQuotation();
+            CreateRevision();
         }
 
         private void dELETEQUOTATIONToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1204,7 +1204,7 @@ namespace LoginForm.QuotationModule
                         DialogResult result2 = MessageBox.Show("Do you want to create revision", "Informaion", MessageBoxButtons.OKCancel);
                         if (result2 == DialogResult.OK)
                         {
-                            ModifyQuotation();
+                            CreateRevision();
                         }
                     }
                 }
@@ -1245,7 +1245,7 @@ namespace LoginForm.QuotationModule
                         DialogResult result2 = MessageBox.Show("Create Revision ?", "Informaion", MessageBoxButtons.OKCancel);
                         if (result2 == DialogResult.OK)
                         {
-                            ModifyQuotation();
+                            CreateRevision();
                         }
                     }
                 }
