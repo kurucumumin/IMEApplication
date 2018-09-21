@@ -2490,68 +2490,12 @@ namespace LoginForm.QuotationModule
         {
             IMEEntities IME = new IMEEntities();
             Quotation q1 = IME.Quotations.Where(a => a.QuotationNo.Contains(QuoNo)).OrderByDescending(b => b.QuotationNo).FirstOrDefault();
-            if (txtQuotationNo.Text.Contains("v"))
-            {
-                int quoID = Int32.Parse(txtQuotationNo.Text.Substring(txtQuotationNo.Text.LastIndexOf('v') + 1));
-                txtQuotationNo.Text = (txtQuotationNo.Text.Substring(0, txtQuotationNo.Text.IndexOf('v') + 1) + quoID).ToString();
-            }
-            else
+            if (!txtQuotationNo.Text.Contains("v"))
             {
                 txtQuotationNo.Text = q1.QuotationNo + "v1";
             }
             Quotation q = new Quotation();
             q.status = QuoStatusActive;
-            //q.QuotationNo = txtQuotationNo.Text;
-            //q.RFQNo = txtRFQNo.Text;
-            //try { q.SubTotal = decimal.Parse(lblsubtotal.Text); } catch { }
-            //if (chkbForFinance.Checked) { q.ForFinancelIsTrue = 1; } else { q.ForFinancelIsTrue = 0; }
-            //if (ckItemCost.Checked) { q.IsItemCost = 1; } else { q.IsItemCost = 0; }
-            //if (ckWeightCost.Checked) { q.IsWeightCost = 1; } else { q.IsWeightCost = 0; }
-            //if (ckCustomsDuties.Checked) { q.IsCustomsDuties = 1; } else { q.IsCustomsDuties = 0; }
-            //q.ShippingMethodID = cbSMethod.SelectedIndex;
-            //q.CurrencyID = (decimal)cbCurrency.SelectedValue;
-            //q.CurrName = (cbCurrency.SelectedItem as Currency).currencyName;
-            //try { q.DiscOnSubTotal2 = decimal.Parse(txtTotalDis2.Text); } catch { }
-            //try { q.ExtraCharges = decimal.Parse(txtExtraChanges.Text); } catch { }
-            //if (chkVat.Checked) { q.IsVatValue = 1; } else { q.IsVatValue = 0; }
-            //try { q.VatValue = vat; } catch { }
-            //try { q.StartDate = (DateTime)dtpDate.Value; } catch { }
-            //try { q.Factor = Decimal.Parse(cbFactor.Text); } catch { }
-            //try { q.ValidationDay = Int32.Parse(txtValidation.Text); } catch { }
-            //try { q.PaymentID = (cbPayment.SelectedItem as PaymentTerm).ID; } catch { }
-            //try { q.CurrName = (cbCurrency.SelectedItem as Rate).CurType; } catch { }
-            //q.ShippingMethodID = cbSMethod.SelectedIndex;
-            ////try { q.CurrType = cbCurrType.SelectedText; } catch { }
-            //try { q.Curr = CurrValue; } catch { }
-            //try { q.CustomerID = CustomerCode.Text; } catch { }
-            //try { q.QuotationMainContact = cbWorkers.SelectedIndex; } catch { }
-            //int Note2 = 0;
-            //int Note1 = 0;
-            //if (txtNoteForUs.Text != null || txtNoteForUs.Text != "")
-            //{
-            //    Note n = new Note();
-            //    n.Note_name = txtNoteForUs.Text;
-            //    IME.Notes.Add(n);
-            //    IME.SaveChanges();
-            //    Note1 = n.ID;
-            //}
-            //if (txtNoteForUs.Text != null || txtNoteForUs.Text != "")
-            //{
-            //    Note n1 = new Note();
-            //    n1.Note_name = txtNoteForCustomer.Text;
-            //    IME.Notes.Add(n1);
-            //    IME.SaveChanges();
-            //    Note2 = n1.ID;
-            //}
-            //if (chkbForFinance.Checked)
-            //{
-            //    q.ForFinancelIsTrue = 1;
-            //}
-            //if (Note1 != 0) q.NoteForUsID = Note1;
-            //if (Note2 != 0) q.NoteForCustomerID = Note2;
-            ////IME = new IMEEntities();
-            //IME.Quotations.Add(q);
-            //IME.SaveChanges();
             q.QuotationNo = txtQuotationNo.Text;
             q.RFQNo = txtRFQNo.Text;
             try { q.SubTotal = decimal.Parse(lblsubtotal.Text); } catch { }
@@ -2574,7 +2518,6 @@ namespace LoginForm.QuotationModule
             try { q.RepresentativeID2 = (cbWorkers.SelectedItem as Worker).WorkerID; ; } catch { }
             q.PaymentID = (cbPayment.SelectedItem as PaymentTerm).ID;
             q.CurrName = (cbCurrency.SelectedItem as Currency).currencyName;
-            //q.CurrType = cbCurrType.Text;
             q.Curr = CurrValue;
             q.CustomerID = CustomerCode.Text;
             q.ShippingMethodID = cbSMethod.SelectedIndex;
