@@ -75,6 +75,9 @@ namespace LoginForm.QuotationModule
         private void search()
         {
             List<Quotation> QuoList = new List<Quotation>();
+            dg.Rows.Clear();
+            dg.Refresh();
+
 
             string quotationNo = null;
             if (txtQuotationno.Text != "" && txtQuotationno.Text != null)
@@ -95,7 +98,8 @@ namespace LoginForm.QuotationModule
             {
                 if (quotationNo != null)
                 {
-                    QuoList = IME.Quotations.Where(a => a.QuotationNo.Contains(quotationNo)).Where(a => a.StartDate >= btnStartDate.Value && a.StartDate <= btnEndDate.Value).ToList();
+                    QuoList = IME.Quotations.Where(a => a.StartDate >= btnStartDate.Value && a.StartDate <= btnEndDate.Value).ToList();
+                    QuoList = QuoList.Where(a => a.QuotationNo.Substring(a.QuotationNo.LastIndexOf('/')).Contains(quotationNo)).ToList();
                 }
                 else
                 {
@@ -104,7 +108,6 @@ namespace LoginForm.QuotationModule
                 }
 
             }
-            dg.DataSource = null;
             foreach (Quotation item in QuoList)
             {
                 DataGridViewRow row = (DataGridViewRow)dg.Rows[0].Clone();

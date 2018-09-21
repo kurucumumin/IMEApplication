@@ -213,7 +213,7 @@ namespace LoginForm.QuotationModule
                                              SecondNote = q.SecondNote,
                                              Date2 = q.NoteDate2,
                                              Rep2 = q.NoteRep2
-                                         }).ToList().Where(x => x.QuotationNo.Substring(x.QuotationNo.LastIndexOf('/')).Contains(txtSearchText.Text));
+                                         }).Where(x => x.QuotationNo.Substring(x.QuotationNo.LastIndexOf('/')).Contains(txtSearchText.Text)).ToList();
 
                             populateGrid(list1.ToList());
                             break;
