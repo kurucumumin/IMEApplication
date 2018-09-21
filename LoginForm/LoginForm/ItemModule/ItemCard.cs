@@ -21,7 +21,7 @@ namespace LoginForm.ItemModule
             InitializeComponent();
             defaultCurrency = (decimal)Utils.getManagement().Currency.ExchangeRates.OrderByDescending(a => a.date).FirstOrDefault().rate;
             label65.Text = "WEB (" + Utils.getManagement().Currency.currencySymbol +")";
-            dgItemList.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            dgItemList.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
         }
 
         private void btnSearch_Click(object sender, EventArgs e)

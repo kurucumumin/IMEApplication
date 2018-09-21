@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LoginForm.DataSet;
+using LoginForm.Services;
 
 namespace LoginForm.PurchaseOrder
 {
@@ -22,7 +23,7 @@ namespace LoginForm.PurchaseOrder
         public StockDevelopment()
         {
             InitializeComponent();
-            dgvStock.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            dgvStock.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
         }
     }
 }

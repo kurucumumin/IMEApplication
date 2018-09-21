@@ -14,7 +14,7 @@ namespace LoginForm.User
         public FormUserMain(Main.frmMainMetro mainForm)
         {
             InitializeComponent();
-            dgdg.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            dgdg.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
             this.mainForm = mainForm;
         }
 

@@ -25,7 +25,7 @@ namespace LoginForm.nmSaleOrder
         public FormSaleItemSearch(string ItemCode = "")
         {
             InitializeComponent();
-            dgItemSearch.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            dgItemSearch.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
             searchItemCode = ItemCode;
         }
 

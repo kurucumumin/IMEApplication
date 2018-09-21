@@ -46,7 +46,7 @@ namespace LoginForm.QuotationModule
         public DevFormSaleOrderAdd(FormQuotationMain parent)
         {
             InitializeComponent();
-            dgSaleAddedItems.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            dgSaleAddedItems.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
 
             dtpDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
             dtpDate.Enabled = false;
@@ -56,7 +56,7 @@ namespace LoginForm.QuotationModule
         public DevFormSaleOrderAdd(Customer cus, List<QuotationDetail> list, string QuotationNOs)
         {
             InitializeComponent();
-            dgSaleAddedItems.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            dgSaleAddedItems.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
 
             customer = cus;
             items = list;
@@ -617,7 +617,7 @@ namespace LoginForm.QuotationModule
         public DevFormSaleOrderAdd()
         {
             InitializeComponent();
-            dgSaleAddedItems.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            dgSaleAddedItems.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
 
             dtpDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
             dtpDate.Enabled = false;
@@ -696,7 +696,7 @@ namespace LoginForm.QuotationModule
         public DevFormSaleOrderAdd(string item_code)
         {
             InitializeComponent();
-            dgSaleAddedItems.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            dgSaleAddedItems.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
 
             for (int i = 0; i < dgSaleAddedItems.RowCount; i++)
             {

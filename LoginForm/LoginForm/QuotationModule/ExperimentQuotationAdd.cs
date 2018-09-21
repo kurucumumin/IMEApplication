@@ -715,7 +715,7 @@ namespace LoginForm.QuotationModule
                 txtCCCN.Text = (item.CCCN_No != null) ? item.CCCN_No.ToString() : "";
                 
 
-                txtHazardousInd.BackColor = (!String.IsNullOrEmpty(item.Hazardous_Ind) && item.Hazardous_Ind == "Y") ? Color.Red : Color.Empty;
+                txtHazardousInd.BackColor = (!String.IsNullOrEmpty(item.Hazardous_Ind) && item.Hazardous_Ind == "Y") ? Color.Red : ImeSettings.DefaultGridRowColor;
                 if (item.Environment != null)
                 {
                     txtEnvironment.BackColor = Color.Maroon;
@@ -723,7 +723,7 @@ namespace LoginForm.QuotationModule
                 }
                 else
                 {
-                    txtEnvironment.BackColor = Color.Empty;
+                    txtEnvironment.BackColor = ImeSettings.DefaultGridRowColor;
                     txtEnvironment.Text = "";
                 }
                 if (!String.IsNullOrEmpty(item.Shipping))
@@ -733,7 +733,7 @@ namespace LoginForm.QuotationModule
                 }
                 else
                 {
-                    txtShipping.BackColor = Color.Empty;
+                    txtShipping.BackColor = ImeSettings.DefaultGridRowColor;
                     txtShipping.Text = "";
                 }
                 if (!String.IsNullOrEmpty(item.Lithium))
@@ -743,7 +743,7 @@ namespace LoginForm.QuotationModule
                 }
                 else
                 {
-                    txtLithium.BackColor = Color.Empty;
+                    txtLithium.BackColor = ImeSettings.DefaultGridRowColor;
                     txtLithium.Text = "";
                 }
                 if (!String.IsNullOrEmpty(item.Calibration_Ind) && item.Calibration_Ind != "N")
@@ -752,7 +752,7 @@ namespace LoginForm.QuotationModule
                 }
                 else
                 {
-                    txtCalibrationInd.BackColor = Color.Empty;
+                    txtCalibrationInd.BackColor = ImeSettings.DefaultGridRowColor;
                 }
                 if (!String.IsNullOrEmpty(item.LicenceType))
                 {
@@ -760,7 +760,7 @@ namespace LoginForm.QuotationModule
                 }
                 else
                 {
-                    txtLicenceType.BackColor = Color.Empty;
+                    txtLicenceType.BackColor = ImeSettings.DefaultGridRowColor;
                 }
                 if (!String.IsNullOrEmpty(item.Disc_Change_Ind))
                 {
@@ -769,7 +769,7 @@ namespace LoginForm.QuotationModule
                 }
                 else
                 {
-                    txtDiscChange.BackColor = Color.Empty;
+                    txtDiscChange.BackColor = ImeSettings.DefaultGridRowColor;
                     txtDiscChange.Text = "";
                 }
                 if (!String.IsNullOrEmpty(item.Expiring_Product_Change_Ind))
@@ -779,7 +779,7 @@ namespace LoginForm.QuotationModule
                 }
                 else
                 {
-                    txtExpiringPro.BackColor = Color.Empty;
+                    txtExpiringPro.BackColor = ImeSettings.DefaultGridRowColor;
                     txtExpiringPro.Text = "";
                 }
 
@@ -896,7 +896,7 @@ namespace LoginForm.QuotationModule
             }
             else
             {
-                row.Cells[HS.Index].Style.BackColor = Color.Empty;
+                row.Cells[HS.Index].Style.BackColor = ImeSettings.DefaultGridRowColor;
                 row.Cells[HS.Index].Value = "";
             }
 
@@ -907,7 +907,7 @@ namespace LoginForm.QuotationModule
             }
             else
             {
-                row.Cells[LI.Index].Style.BackColor = Color.Empty;
+                row.Cells[LI.Index].Style.BackColor = ImeSettings.DefaultGridRowColor;
                 row.Cells[LI.Index].Value = "";
             }
 
@@ -917,7 +917,7 @@ namespace LoginForm.QuotationModule
             }
             else
             {
-                row.Cells[CL.Index].Style.BackColor = Color.Empty;
+                row.Cells[CL.Index].Style.BackColor = ImeSettings.DefaultGridRowColor;
             }
 
             if (!String.IsNullOrEmpty(item.LicenceType))
@@ -926,7 +926,7 @@ namespace LoginForm.QuotationModule
             }
             else
             {
-                row.Cells[LC.Index].Style.BackColor = Color.Empty;
+                row.Cells[LC.Index].Style.BackColor = ImeSettings.DefaultGridRowColor;
             }
 
             row.Cells[dgSupplier.Index].Value = "RS UK";
@@ -967,7 +967,7 @@ namespace LoginForm.QuotationModule
             }
             else
             {
-                row.Cells[LI.Index].Style.BackColor = Color.Empty;
+                row.Cells[LI.Index].Style.BackColor = ImeSettings.DefaultGridRowColor;
                 row.Cells[LI.Index].Value = "";
             }
 

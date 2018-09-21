@@ -1,4 +1,5 @@
 ﻿using LoginForm.DataSet;
+using LoginForm.Services;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -20,7 +21,7 @@ namespace LoginForm.QuotationModule
         public FormQuotationItemSearch(string searchItemCode, List<CompleteItem> itemList)
         {
             InitializeComponent();
-            dgQuotationItemSearch.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            dgQuotationItemSearch.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
             txtQuotationItemCode.Text = searchItemCode;
             this.itemList = itemList;
         }
@@ -29,7 +30,7 @@ namespace LoginForm.QuotationModule
         {
             QuotationUtils.ItemCode = null;
             InitializeComponent();
-            dgQuotationItemSearch.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            dgQuotationItemSearch.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
             ArticleCode = ItemCode;
             if (ArticleCode != null)
             {

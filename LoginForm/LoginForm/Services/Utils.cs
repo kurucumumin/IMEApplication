@@ -17,10 +17,6 @@ namespace LoginForm.Services
     {
         private static Worker worker;
         public static decimal _decCurrentCompanyId;
-        public static string ConnectionStringLogo = new System.Data.SqlClient.SqlConnectionStringBuilder { DataSource = "195.201.76.136", Password = "ime1453..", UserID = "sa", InitialCatalog = "LOGO"/*, IntegratedSecurity = true */}.ConnectionString;
-        public static string ConnectionStringIME = new System.Data.SqlClient.SqlConnectionStringBuilder { DataSource = "195.201.76.136", Password = "ime1453..", UserID = "sa", InitialCatalog = "IME"/*, IntegratedSecurity = true */}.ConnectionString;
-        public static string FrmNo = "001";
-        public static string DnmNo = "01";
 
 
         private readonly string server = @"195.201.76.136";
@@ -31,7 +27,8 @@ namespace LoginForm.Services
         public SqlConnection ImeSqlConnection()
         {
             SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = "Server=" + server + "; Database=" + imedatabase + "; User Id=" + sqluser + "; Password =" + sqlpassword + "; "; ;
+            //conn.ConnectionString = "Server=" + server + "; Database=" + imedatabase + "; User Id=" + sqluser + "; Password =" + sqlpassword + "; ";
+            conn.ConnectionString = ImeSettings.ConnectionStringIME;
             if (conn.State != System.Data.ConnectionState.Open)
                 conn.Open();
             return conn;
@@ -195,7 +192,7 @@ namespace LoginForm.Services
                 ParametreAdi = "@DONE_OPERATION"
             };
             arguman[3] = i_4;
-            clsClasses.MyConnect.Ornekle.ExecuteNonQuery(Utils.ConnectionStringIME, "INSERT INTO dbo.LogRecords (TABLE_NAME, TIME, USER_ID, DONE_OPERATION) VALUES (@TABLE_NAME, @TIME, @USER_ID, @DONE_OPERATION)", CommandType.Text, 60, arguman);
+            clsClasses.MyConnect.Ornekle.ExecuteNonQuery(ImeSettings.ConnectionStringIME, "INSERT INTO dbo.LogRecords (TABLE_NAME, TIME, USER_ID, DONE_OPERATION) VALUES (@TABLE_NAME, @TIME, @USER_ID, @DONE_OPERATION)", CommandType.Text, 60, arguman);
         }
     }
 }

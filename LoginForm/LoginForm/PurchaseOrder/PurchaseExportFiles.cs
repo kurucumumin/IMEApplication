@@ -32,15 +32,15 @@ namespace LoginForm.PurchaseOrder
         public PurchaseExportFiles()
         {
             InitializeComponent();
-            dgMail.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
-            dgCc.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            dgMail.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
+            dgCc.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
         }
 
         public PurchaseExportFiles(List<DataGridViewRow> List, int purchase_Id, int purchase_No)
         {
             InitializeComponent();
-            dgMail.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
-            dgCc.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            dgMail.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
+            dgCc.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
             rowList = List;
             puchaseId = purchase_Id;
             purchaseNo = purchase_No;

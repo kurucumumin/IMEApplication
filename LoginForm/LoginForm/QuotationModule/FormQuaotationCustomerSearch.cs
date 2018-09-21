@@ -23,13 +23,13 @@ namespace LoginForm.QuotationModule
         public FormQuaotationCustomerSearch()
         {
             InitializeComponent();
-            CustomerSearchGrid.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            CustomerSearchGrid.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
         }
 
         public FormQuaotationCustomerSearch(string _Name)
         {
             InitializeComponent();
-            CustomerSearchGrid.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            CustomerSearchGrid.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
 
             CustomerName.Text = _Name;
             CustomerSearchGrid.DataSource = CustomerSearch(_Name);
@@ -48,7 +48,7 @@ namespace LoginForm.QuotationModule
         public FormQuaotationCustomerSearch(XmlCustomer customer)
         {
             InitializeComponent();
-            CustomerSearchGrid.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            CustomerSearchGrid.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
             fromXmlCustomer = true;
             this.xmlCustomer = customer;
         }
@@ -56,7 +56,7 @@ namespace LoginForm.QuotationModule
         public FormQuaotationCustomerSearch(Customer customer)
         {
             InitializeComponent();
-            CustomerSearchGrid.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            CustomerSearchGrid.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
             this.customer = customer;
             CustomerSearch();
         }
@@ -64,7 +64,7 @@ namespace LoginForm.QuotationModule
         public FormQuaotationCustomerSearch(Supplier supplier)
         {
             InitializeComponent();
-            CustomerSearchGrid.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            CustomerSearchGrid.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
             this.supplier = supplier;
             SupplierSearch();
         }
@@ -72,7 +72,7 @@ namespace LoginForm.QuotationModule
         public FormQuaotationCustomerSearch(DataSet.Account account)
         {
             InitializeComponent();
-            CustomerSearchGrid.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            CustomerSearchGrid.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
             this.account = account;
             AccountSearch();
         }
@@ -80,7 +80,7 @@ namespace LoginForm.QuotationModule
         public FormQuaotationCustomerSearch(Current current, string searchName)
         {
             InitializeComponent();
-            CustomerSearchGrid.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            CustomerSearchGrid.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
             this.current = current;
             CustomerName.Text = searchName;
             CurrentSearch(searchName);

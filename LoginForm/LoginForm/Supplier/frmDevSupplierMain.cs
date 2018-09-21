@@ -1,4 +1,5 @@
-﻿using LoginForm.Services.SP;
+﻿using LoginForm.Services;
+using LoginForm.Services.SP;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,7 +21,7 @@ namespace LoginForm
         public frmDevSupplierMain()
         {
             InitializeComponent();
-            dgSupplier.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            dgSupplier.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
         }
 
         private void frmDevSupplierMain_Load(object sender, EventArgs e)

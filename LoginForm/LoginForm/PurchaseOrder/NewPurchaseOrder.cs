@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using LoginForm.DataSet;
+using LoginForm.Services;
 
 namespace LoginForm.PurchaseOrder
 {
@@ -23,20 +24,20 @@ namespace LoginForm.PurchaseOrder
         public NewPurchaseOrder()
         {
             InitializeComponent();
-            dgPurchase.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            dgPurchase.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
         }
 
         public NewPurchaseOrder(decimal item_code)
         {
             InitializeComponent();
-            dgPurchase.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            dgPurchase.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
             PurchaseOrdersDetailFill(item_code);
         }
 
         public NewPurchaseOrder(int purchaseId, int sayac)
         {
             InitializeComponent();
-            dgPurchase.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            dgPurchase.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
 
             if (sayac == 1)
                 PurchaseOrdersDetailFill2(purchaseId);

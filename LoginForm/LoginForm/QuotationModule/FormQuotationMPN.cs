@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LoginForm.Services;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -14,7 +15,7 @@ namespace LoginForm.QuotationModule
         public FormQuotationMPN(object parent, dynamic List)
         {
             InitializeComponent();
-            dgItemList.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            dgItemList.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
             _parent = parent;
             this.ItemList = List;
         }

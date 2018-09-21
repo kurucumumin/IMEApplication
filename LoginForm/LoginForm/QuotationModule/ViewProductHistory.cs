@@ -38,7 +38,7 @@ namespace LoginForm.QuotationModule
             //dgProductHistory.AutoResizeColumn(dgcTargetPrice.Index, DataGridViewAutoSizeColumnMode.ColumnHeader);
             //dgProductHistory.AutoResizeColumn(dgcCurrency.Index, DataGridViewAutoSizeColumnMode.ColumnHeader);
             //dgProductHistory.AutoResizeColumn(dgcStatus.Index, DataGridViewAutoSizeColumnMode.AllCells);
-            //dgProductHistory.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            //dgProductHistory.RowsDefaultCellStyle.SelectionBackColor = DefaultGridSelectedRowColor ;
             dgProductHistory.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
 

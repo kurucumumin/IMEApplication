@@ -1,5 +1,6 @@
 ﻿using LoginForm.DataSet;
 using LoginForm.QuotationModule;
+using LoginForm.Services;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -23,8 +24,8 @@ namespace LoginForm.nsSaleOrder
         public FormSaleOrderCreate()
         {
             InitializeComponent();
-            dgQuotations.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
-            dgItems.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            dgQuotations.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
+            dgItems.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
         }
 
         private void FormSaleOrderCustList_Load(object sender, EventArgs e)

@@ -55,7 +55,7 @@ namespace LoginForm.QuotationModule
         public FormSaleOrderAdd(FormQuotationMain parent)
         {
             InitializeComponent();
-            dgSaleAddedItems.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            dgSaleAddedItems.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
            System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
@@ -68,7 +68,7 @@ namespace LoginForm.QuotationModule
         public FormSaleOrderAdd()
         {
             InitializeComponent();
-            dgSaleAddedItems.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            dgSaleAddedItems.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
          System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
@@ -146,7 +146,7 @@ namespace LoginForm.QuotationModule
         public FormSaleOrderAdd(string item_code)
         {
             InitializeComponent();
-            dgSaleAddedItems.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            dgSaleAddedItems.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
          System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
@@ -187,7 +187,7 @@ namespace LoginForm.QuotationModule
         public FormSaleOrderAdd(Customer cus, List<QuotationDetail> list, string QuotationNOs, int sayac)
         {
             InitializeComponent();
-            dgSaleAddedItems.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            dgSaleAddedItems.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
         System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
@@ -371,7 +371,7 @@ namespace LoginForm.QuotationModule
         public FormSaleOrderAdd(Customer cus, List<SaleOrderDetail> list, int sayac)
         {
             InitializeComponent();
-            dgSaleAddedItems.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            dgSaleAddedItems.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
 
             customer = cus;
             firstInitialize = true;
@@ -750,7 +750,7 @@ namespace LoginForm.QuotationModule
             QItems = list;
 
             InitializeComponent();
-            dgSaleAddedItems.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            dgSaleAddedItems.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
          System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,

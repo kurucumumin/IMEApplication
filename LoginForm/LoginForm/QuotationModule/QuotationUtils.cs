@@ -177,7 +177,7 @@ namespace LoginForm.QuotationModule
             l = (p + (w * ((decimal)1.7)) + (((decimal)0.0675) * (p + (w * ((decimal)1.7)))));
             if (CustomsDuties == false) { l = (p + (w * ((decimal)1.7))); }
 
-            return l;
+            return Math.Round(l,3);
             #endregion
         }
         public static decimal GetLandingCost(string ArticleNo, bool Product, bool Weight, bool CustomsDuties)

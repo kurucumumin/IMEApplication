@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using LoginForm.DataSet;
 using LoginForm.ItemModule;
 using LoginForm.QuotationModule;
+using LoginForm.Services;
 
 namespace LoginForm.StockManagement
 {
@@ -280,7 +281,7 @@ namespace LoginForm.StockManagement
         public frmStock()
         {
             InitializeComponent();
-            dgStockList.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            dgStockList.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
         }
 
         private void txtProductID_DoubleClick(object sender, EventArgs e)

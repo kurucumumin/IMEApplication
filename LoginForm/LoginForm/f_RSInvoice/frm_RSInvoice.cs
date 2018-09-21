@@ -24,7 +24,7 @@ namespace LoginForm.f_RSInvoice
         {
             InitializeComponent();
 
-            dgvRSInvoice.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            dgvRSInvoice.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
 
             dtpToDate.MaxDate = DateTime.Today;
 

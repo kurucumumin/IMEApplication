@@ -43,7 +43,7 @@ namespace LoginForm
         public frmSupplierMain(string SupplierID)
         {
             InitializeComponent();
-            dgSupplier.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            dgSupplier.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
             System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
@@ -60,7 +60,7 @@ namespace LoginForm
         public frmSupplierMain(Boolean buttonEnabled)
         {
             InitializeComponent();
-            dgSupplier.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            dgSupplier.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
             System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
@@ -70,7 +70,7 @@ namespace LoginForm
         public frmSupplierMain()
         {
             InitializeComponent();
-            dgSupplier.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            dgSupplier.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
             System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,

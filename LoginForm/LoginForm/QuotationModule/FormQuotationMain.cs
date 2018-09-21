@@ -23,7 +23,7 @@ namespace LoginForm.QuotationModule
             IMEEntities IME = new IMEEntities();
             InitializeComponent();
 
-            dgQuotation.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            dgQuotation.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
             System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
@@ -834,7 +834,7 @@ namespace LoginForm.QuotationModule
             {
                 if (row.Cells[OrderStatus.Index].Value != null && row.Cells[OrderStatus.Index].Value.ToString() == "Deleted")
                 {
-                    row.DefaultCellStyle.BackColor = Color.FromArgb(252, 97, 97);
+                    row.DefaultCellStyle.BackColor = ImeSettings.GridDeletedRowColor ;
                 }
             }
         }

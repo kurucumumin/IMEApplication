@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using LoginForm.DataSet;
 using LoginForm.ItemModule;
 using LoginForm.QuotationModule;
+using LoginForm.Services;
 
 namespace LoginForm.StockManagement
 {
@@ -309,13 +310,13 @@ namespace LoginForm.StockManagement
         public frmStockReserve()
         {
             InitializeComponent();
-            dgStockReserveList.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            dgStockReserveList.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
         }       
 
         public frmStockReserve(frmStock parent, decimal StockID)
         {
             InitializeComponent();
-            dgStockReserveList.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            dgStockReserveList.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
             this.parent = parent;
             _Stock = new IMEEntities().Stocks.Where(x => x.StockID == StockID).FirstOrDefault(); ;
         }

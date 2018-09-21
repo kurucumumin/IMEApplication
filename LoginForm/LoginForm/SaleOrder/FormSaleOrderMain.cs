@@ -24,7 +24,7 @@ namespace LoginForm.nsSaleOrder
         public FormSalesOrderMain()
         {
             InitializeComponent();
-            dgSales.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            dgSales.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
             System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
@@ -126,7 +126,7 @@ namespace LoginForm.nsSaleOrder
             {
                 if (row.Cells[Status.Index].Value != null && row.Cells[Status.Index].Value.ToString() == "LOGO")
                 {
-                    row.DefaultCellStyle.BackColor = Color.FromArgb(159, 255, 154);
+                    row.DefaultCellStyle.BackColor = ImeSettings.GridSentToLogoRowColor ;
                 }else if (row.Cells[Status.Index].Value != null && row.Cells[Status.Index].Value.ToString() == "")
                 {
                     row.DefaultCellStyle.BackColor = System.Drawing.Color.Empty;
@@ -134,7 +134,7 @@ namespace LoginForm.nsSaleOrder
 
                 if (row.Cells[PurchaseID.Index].Value != null)
                 {
-                    row.DefaultCellStyle.BackColor = Color.FromArgb(114, 155, 185);
+                    row.DefaultCellStyle.BackColor = ImeSettings.GridPurchaseOrderCreatedRowColor ;
                 }
                 //else if (row.Cells[PurchaseID.Index].Value == null && row.Cells[PurchaseID.Index].Value.ToString() == "")
                 //{

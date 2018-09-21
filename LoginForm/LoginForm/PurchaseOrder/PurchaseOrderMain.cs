@@ -21,13 +21,13 @@ namespace LoginForm.PurchaseOrder
         public PurchaseOrderMain()
         {
             InitializeComponent();
-            dgPurchase.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            dgPurchase.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
         }
 
         public PurchaseOrderMain(int purchaseOrderId)
         {
             InitializeComponent();
-            dgPurchase.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            dgPurchase.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
             purchaseId = purchaseOrderId;
         }
 

@@ -30,7 +30,7 @@ namespace LoginForm.MyClasses
             ImeSQL imesql = new ImeSQL();
             LogoSQL logosql = new LogoSQL();
 
-            return order.addSalesOrder(imesql.ImeSqlConnect(server, imedatabase, sqluser, sqlpassword), SoNO.ToString(), logosql.LogoSqlConnect(server, logodatabase, sqluser, sqlpassword), Utils.FrmNo, Utils.DnmNo);
+            return order.addSalesOrder(imesql.ImeSqlConnect(server, imedatabase, sqluser, sqlpassword), SoNO.ToString(), logosql.LogoSqlConnect(server, logodatabase, sqluser, sqlpassword), ImeSettings.FrmNo, ImeSettings.DnmNo);
         }
 
         public string SendToLogo_RSInvoice(string RSInvoiceID)
@@ -39,7 +39,7 @@ namespace LoginForm.MyClasses
             ImeSQL imesql = new ImeSQL();
             LogoSQL logosql = new LogoSQL();
 
-            return invoice.addPurchaseInvoice(imesql.ImeSqlConnect(server, imedatabase, sqluser, sqlpassword), RSInvoiceID, logosql.LogoSqlConnect(server, logodatabase, sqluser, sqlpassword), Utils.FrmNo, Utils.DnmNo);
+            return invoice.addPurchaseInvoice(imesql.ImeSqlConnect(server, imedatabase, sqluser, sqlpassword), RSInvoiceID, logosql.LogoSqlConnect(server, logodatabase, sqluser, sqlpassword), ImeSettings.FrmNo, ImeSettings.DnmNo);
         }
 
         public string BackFromLogo_SaleOrder(int SoNO)
@@ -48,7 +48,7 @@ namespace LoginForm.MyClasses
             ImeSQL imesql = new ImeSQL();
             LogoSQL logosql = new LogoSQL();
             
-            return order.deleteSalesOrder(imesql.ImeSqlConnect(server, imedatabase, sqluser, sqlpassword), SoNO.ToString(), logosql.LogoSqlConnect(server, logodatabase, sqluser, sqlpassword), Utils.FrmNo, Utils.DnmNo);
+            return order.deleteSalesOrder(imesql.ImeSqlConnect(server, imedatabase, sqluser, sqlpassword), SoNO.ToString(), logosql.LogoSqlConnect(server, logodatabase, sqluser, sqlpassword), ImeSettings.FrmNo, ImeSettings.DnmNo);
         }
 
         public string BackFromLogo_RSInvoice(string RSInvoiceID)
