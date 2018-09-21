@@ -253,6 +253,7 @@
             this.Controls.Add(this.dg);
             this.Name = "BackOrderProductSearch";
             this.Text = "BackOrderProductSearch";
+            this.Load += new System.EventHandler(this.BackOrderProductSearch_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dg)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
