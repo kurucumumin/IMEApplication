@@ -205,9 +205,9 @@ namespace LoginForm.QuotationModule
 
             if (quotation.QuotationNo.Contains("v"))
             {
-                string q2 = (quotation.QuotationNo.Substring(0, quotation.QuotationNo.LastIndexOf('v') + 1)).ToString();
+                //string q2 = (quotation.QuotationNo.Substring(0, quotation.QuotationNo.LastIndexOf('v') + 1)).ToString();
 
-                Quotation q1 = IME.Quotations.Where(a => a.QuotationNo.Contains(q2)).OrderByDescending(b => b.QuotationNo).FirstOrDefault();
+                Quotation q1 = IME.Quotations.Where(a => a.QuotationNo == quotation.QuotationNo).OrderByDescending(b => b.QuotationNo).FirstOrDefault();
                 this.Text = "Edit Quotation";
                 modifyMod = true;
                 cbCurrency.DataSource = IME.Currencies.ToList();
@@ -290,7 +290,7 @@ namespace LoginForm.QuotationModule
             }
             else
             {
-                Quotation q1 = IME.Quotations.Where(a => a.QuotationNo.Contains(quotation.QuotationNo)).OrderByDescending(b => b.QuotationNo).FirstOrDefault();
+                Quotation q1 = IME.Quotations.Where(a => a.QuotationNo == quotation.QuotationNo).OrderByDescending(b => b.QuotationNo).FirstOrDefault();
                 this.Text = "Edit Quotation";
                 modifyMod = true;
                 cbCurrency.DataSource = IME.Currencies.ToList();
@@ -687,7 +687,7 @@ namespace LoginForm.QuotationModule
                 groupBox3.Enabled = false;
             }
             CalculateTotalMarge();
-            txtQuotationNo.Text = q1.QuotationNo;
+            txtQuotationNo.Text = q1.QuotationNo;/*View 3*/
             EnableForm();
             txtTotalMarge.Visible = false;
         }
@@ -836,7 +836,7 @@ namespace LoginForm.QuotationModule
 
                 DataGridViewRow dgRow = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
                 dgQuotationAddedItems.Rows.Add(dgRow);
-                txtQuotationNo.Text = NewQuotationID();
+                txtQuotationNo.Text = NewQuotationID();/*New 1*/
 
                 dgQuotationAddedItems.Rows[0].Cells[0].Value = 1.ToString();
                 LowMarginLimit = Decimal.Parse(IME.Managements.FirstOrDefault().LowMarginLimit.ToString());
@@ -2155,7 +2155,7 @@ namespace LoginForm.QuotationModule
             {
                 if (dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value != null && Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value.ToString()) < Utils.getCurrentUser().MinMarge) { MessageBox.Show("Please Check Margin of Products "); return false; }
                 if (txtTotalMarge.Text == null || txtTotalMarge.Text == "") { txtTotalMarge.Text = "0"; }
-                if (Utils.getCurrentUser().MinMarge < decimal.Parse(txtTotalMarge.Text))
+                if (Utils.getCurrentUser().MinMarge > decimal.Parse(txtTotalMargin.Text))
                 {
                     MessageBox.Show("You are not able to give this Total Margin. Please check the Total Margin");
                     return false;
@@ -2790,7 +2790,7 @@ namespace LoginForm.QuotationModule
 
             if (importFromQuotation==0)
             {
-                txtQuotationNo.Text = q.QuotationNo;
+                txtQuotationNo.Text = q.QuotationNo;/*CreateRevision 1,View 1*/
                 txtRFQNo.Text = q.RFQNo;
                 CustomerCode.Text = q.Customer.ID;
                 txtCustomerName.Text = q.Customer.c_name;
@@ -2905,7 +2905,7 @@ namespace LoginForm.QuotationModule
                     q1 = q1 + quoID.ToString();
                 }
             }
-            txtQuotationNo.Text = q1;
+            txtQuotationNo.Text = q1; /*CreateRevision 2, View 2*/
         }
 
 
@@ -2916,7 +2916,7 @@ namespace LoginForm.QuotationModule
 
             if (importFromQuotation == 0)
             {
-                txtQuotationNo.Text = q.QuotationNo;
+                txtQuotationNo.Text = q.QuotationNo;/*Modify 1*/
                 txtRFQNo.Text = q.RFQNo;
                 CustomerCode.Text = q.Customer.ID;
                 txtCustomerName.Text = q.Customer.c_name;
@@ -3735,20 +3735,14 @@ namespace LoginForm.QuotationModule
 
         private void btnCreateRev_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //string newID = NewQuotationID();
-            //if (txtQuotationNo.Text != newID) { txtQuotationNo.Text = newID; }
-            if (ControlSave())
+            if (MessageBox.Show("Creating a new version! Please Confirm?","Create Version",MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                QuotationSave(txtQuotationNo.Text);
-                QuotationDetailsSaveRevision();
+                if (ControlSave())
+                {
+                    QuotationSave(txtQuotationNo.Text);
+                    QuotationDetailsSaveRevision();
+                }
             }
-            //}
-            //catch
-            //{
-            //    MessageBox.Show("Error Occured", "Failure");
-            //}
         }
 
         private void CustomerCode_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -4654,60 +4648,53 @@ namespace LoginForm.QuotationModule
 
         private void btnExQuotation_Click(object sender, EventArgs e)
         {
-            if (CustomerCode.Text != "" && CustomerCode.Text != null)
+            frmEx_Quotation form = new frmEx_Quotation();
+            form.ShowDialog();
+            if (form.quo != null)
             {
-                frmEx_Quotation form = new frmEx_Quotation();
-                form.ShowDialog();
-                if (form.quo != null)
+                Quotation q = form.quo;/*IME.Quotations.Where(a => a.QuotationNo == classQuotationAdd.quotationNo).FirstOrDefault();*/
+                dgQuotationAddedItems.Rows.Clear();
+                dgQuotationAddedItems.Refresh();
+
+                //int itemCount = -1;
+                foreach (QuotationDetail item in q.QuotationDetails)
                 {
-                    Quotation q = form.quo;/*IME.Quotations.Where(a => a.QuotationNo == classQuotationAdd.quotationNo).FirstOrDefault();*/
-                    dgQuotationAddedItems.Rows.Clear();
-                    dgQuotationAddedItems.Refresh();
-
-                    //int itemCount = -1;
-                    foreach (QuotationDetail item in q.QuotationDetails)
+                    //itemCount++;
+                    if (dgQuotationAddedItems.RowCount != 1)
                     {
-                        //itemCount++;
-                        if (dgQuotationAddedItems.RowCount != 1)
-                        {
-                            DataGridViewRow row = (DataGridViewRow)dgQuotationAddedItems.Rows[0].Clone();
-                            row.Cells[dgProductCode.Index].Value = item.ItemCode;
-                            ItemDetailsFiller(item.ItemCode);
-                            row.Cells[dgQty.Index].Value = item.Qty;
-                            DgQuantityFiller();
+                        DataGridViewRow row = (DataGridViewRow)dgQuotationAddedItems.Rows[0].Clone();
+                        row.Cells[dgProductCode.Index].Value = item.ItemCode;
+                        ItemDetailsFiller(item.ItemCode);
+                        row.Cells[dgQty.Index].Value = item.Qty;
+                        DgQuantityFiller();
 
-                            if (QuotationUtils.IsWithItems == true)
-                            {
-                                row.Cells[dgUCUPCurr.Index].Value = item.UCUPCurr;
-                                row.Cells[dgDisc.Index].Value = item.Disc;
-                            }
-                            dgQuotationAddedItems.Rows.Add(row);
-                            //GetQuotationQuantity(dgQuotationAddedItems.RowCount-1);
-                        }
-                        else
+                        if (QuotationUtils.IsWithItems == true)
                         {
-                            //int rowIndex = 0;
-                            //if (itemCount > 0)
-                            //{
-                            //    rowIndex = dgQuotationAddedItems.Rows.Add();
-                            //}
-                            dgQuotationAddedItems.Rows[0].Cells[dgProductCode.Index].Value = item.ItemCode;
-                            ItemDetailsFiller(item.ItemCode);
-                            dgQuotationAddedItems.Rows[0].Cells[dgQty.Index].Value = item.Qty;
-                            //GetQuotationQuantity(0);
-                            DgQuantityFiller();
-                            if (QuotationUtils.IsWithItems == true)
-                            {
-                                dgQuotationAddedItems.Rows[0].Cells[dgUCUPCurr.Index].Value = item.UCUPCurr;
-                                dgQuotationAddedItems.Rows[0].Cells[dgDisc.Index].Value = item.Disc;
-                            }
+                            row.Cells[dgUCUPCurr.Index].Value = item.UCUPCurr;
+                            row.Cells[dgDisc.Index].Value = item.Disc;
+                        }
+                        dgQuotationAddedItems.Rows.Add(row);
+                        //GetQuotationQuantity(dgQuotationAddedItems.RowCount-1);
+                    }
+                    else
+                    {
+                        //int rowIndex = 0;
+                        //if (itemCount > 0)
+                        //{
+                        //    rowIndex = dgQuotationAddedItems.Rows.Add();
+                        //}
+                        dgQuotationAddedItems.Rows[0].Cells[dgProductCode.Index].Value = item.ItemCode;
+                        ItemDetailsFiller(item.ItemCode);
+                        dgQuotationAddedItems.Rows[0].Cells[dgQty.Index].Value = item.Qty;
+                        //GetQuotationQuantity(0);
+                        DgQuantityFiller();
+                        if (QuotationUtils.IsWithItems == true)
+                        {
+                            dgQuotationAddedItems.Rows[0].Cells[dgUCUPCurr.Index].Value = item.UCUPCurr;
+                            dgQuotationAddedItems.Rows[0].Cells[dgDisc.Index].Value = item.Disc;
                         }
                     }
                 }
-            }
-            else
-            {
-                MessageBox.Show("Please select customer ! ");
             }
         }
 

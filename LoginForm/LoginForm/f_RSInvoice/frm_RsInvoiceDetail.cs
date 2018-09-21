@@ -170,7 +170,16 @@ namespace LoginForm.f_RSInvoice
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            new Sp_RSInvoice().RsInvoiceAdd(Invoice);
+            try
+            {
+                new Sp_RSInvoice().RsInvoiceAdd(Invoice);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
         }
     }
 }

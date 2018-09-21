@@ -727,17 +727,17 @@ namespace LoginForm.QuotationModule
                 try
                 {
                     quo = IME.Quotations.Where(q => q.QuotationNo == QuotationNo).FirstOrDefault();
+                    if (quo != null)
+                    {
+                        FormQuotationAdd newForm = new FormQuotationAdd(quo, this);
+                        newForm.ShowDialog();
+                    }
                 }
                 catch (Exception)
                 {
-
                     throw;
                 }
-                if (quo != null)
-                {
-                    FormQuotationAdd newForm = new FormQuotationAdd(quo, this);
-                    newForm.ShowDialog();
-                }
+                
             }
             else
             {

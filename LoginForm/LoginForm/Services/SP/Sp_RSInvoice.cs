@@ -202,6 +202,8 @@ namespace LoginForm.Services.SP
             SqlTransaction detailTransaction = null;
             DataTable dataTableResult = new DataTable();
 
+            int RSInvoiceID = 0;
+
             try
             {
                 invoiceTransaction = conn.BeginTransaction();
@@ -233,7 +235,7 @@ namespace LoginForm.Services.SP
                 invoiceTransaction.Commit();
                 try
                 {
-                    int RSInvoiceID = Convert.ToInt32(GetRSInvoiceWithBillingDocumentReference(Invoice.BillingDocumentReference).Rows[0]["ID"]);
+                    RSInvoiceID = Convert.ToInt32(GetRSInvoiceWithBillingDocumentReference(Invoice.BillingDocumentReference).Rows[0]["ID"]);
 
                     SqlCommand _cmd;
                     detailTransaction = conn.BeginTransaction();
@@ -271,6 +273,8 @@ namespace LoginForm.Services.SP
                 catch (Exception _ex)
                 {
                     MessageBox.Show("Database Connection Error. \n\nError Message: " + _ex.ToString(), "Error");
+                    IMEEntities db = new IMEEntities();
+                    db.RS_Invoice.Remove(db.RS_Invoice.Where(x=>x.ID == RSInvoiceID).FirstOrDefault());
                     detailTransaction.Rollback();
                     return false;
                 }
