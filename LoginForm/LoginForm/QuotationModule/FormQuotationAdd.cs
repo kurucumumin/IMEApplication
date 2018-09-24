@@ -2404,11 +2404,10 @@ namespace LoginForm.QuotationModule
                 #region  New Quotation
                 DataSet.Quotation q = new DataSet.Quotation();
                 q.status = QuoStatusActive;
-                string qNo = txtQuotationNo.Text;
 
-                if (IME.Quotations.Where(a => a.QuotationNo == qNo).FirstOrDefault() != null)
+                if (IME.Quotations.Where(a => a.QuotationNo == txtQuotationNo.Text).FirstOrDefault() != null)
                 {
-                    NewQuotationID();
+                    txtQuotationNo.Text = CreateQuotationID(QuotationIdMod.New, null);
                 }
                 q.QuotationNo = txtQuotationNo.Text;
                 q.RFQNo = txtRFQNo.Text;
@@ -2463,15 +2462,20 @@ namespace LoginForm.QuotationModule
                 if (Note2 != 0) q.NoteForCustomerID = Note2;
                 q.ExchangeRateID = curr.exchangeRateID;
                 q.idNo = Convert.ToInt32(txtQuotationNo.Text.Substring(5));
-                if (txtQuotationNo.Text.IndexOf("v") == -1)
+
+                string[] idParts = IDShredder(txtQuotationNo.Text);
+                q.idYear = Convert.ToInt32(idParts[0]);
+                q.idNo = Convert.ToInt32(idParts[2]);
+
+                if (idParts[3] == null)
                 {
                     q.idVersion = 0;
                 }
                 else
                 {
-                    q.idVersion = q.idVersion + 1;
+                    q.idVersion = Convert.ToInt32(idParts[4]);
                 }
-                q.idYear = dtpDate.Value.Year;
+
                 IME.Quotations.Add(q);
                 IME.SaveChanges();
                 Utils.LogKayit("Quotation", "Quotation added");
@@ -2482,11 +2486,11 @@ namespace LoginForm.QuotationModule
         private void QuotationSave(string QuoNo)
         {
             IMEEntities IME = new IMEEntities();
-            Quotation q1 = IME.Quotations.Where(a => a.QuotationNo.Contains(QuoNo)).OrderByDescending(b => b.QuotationNo).FirstOrDefault();
-            if (!txtQuotationNo.Text.Contains("v"))
-            {
-                txtQuotationNo.Text = q1.QuotationNo + "v1";
-            }
+            //Quotation q1 = IME.Quotations.Where(a => a.QuotationNo.Contains(QuoNo)).OrderByDescending(b => b.QuotationNo).FirstOrDefault();
+            //if (!txtQuotationNo.Text.Contains("v"))
+            //{
+            //    txtQuotationNo.Text = q1.QuotationNo + "v1";
+            //}
             Quotation q = new Quotation();
             q.status = QuoStatusActive;
             q.QuotationNo = txtQuotationNo.Text;
@@ -2540,6 +2544,12 @@ namespace LoginForm.QuotationModule
             if (Note1 != 0) q.NoteForUsID = Note1;
             if (Note2 != 0) q.NoteForCustomerID = Note2;
             q.ExchangeRateID = curr.exchangeRateID;
+
+            string[] idParts = IDShredder(txtQuotationNo.Text);
+            q.idYear = Convert.ToInt32(idParts[0]);
+            q.idNo = Convert.ToInt32(idParts[2]);
+            q.idVersion = Convert.ToInt32(idParts[4]);
+
             IME.Quotations.Add(q);
             IME.SaveChanges();
         }
