@@ -14,10 +14,10 @@ namespace LoginForm.QuotationModule
 {
     public partial class FormQuotationMain : MyForm
     {
-        
+
         DateTime dateNow;
         Worker currentUser = Utils.getCurrentUser();
-        
+
         public FormQuotationMain()
         {
             IMEEntities IME = new IMEEntities();
@@ -743,7 +743,7 @@ namespace LoginForm.QuotationModule
                 {
                     throw;
                 }
-                
+
             }
             else
             {
@@ -792,7 +792,7 @@ namespace LoginForm.QuotationModule
 
             populateGrid(list.ToList());
 
-           
+
         }
 
         public Int32 ConvertInt(String id)
@@ -1047,7 +1047,7 @@ namespace LoginForm.QuotationModule
                 }
                 if (quo != null)
                 {
-                    FormQuotationAdd newForm = new FormQuotationAdd(quo, this,1);
+                    FormQuotationAdd newForm = new FormQuotationAdd(quo, "View");
                     Utils.LogKayit("Quotation", "Quotation info screen has been entered");
                     newForm.ShowDialog();
                 }
@@ -1070,7 +1070,7 @@ namespace LoginForm.QuotationModule
             {
                 note2= dgQuotation.CurrentRow.Cells[SecondNote.Index].Value.ToString();
             }
-            
+
             switch (dgQuotation.CurrentCell.ColumnIndex)
             {
                 case 13:
@@ -1207,7 +1207,7 @@ namespace LoginForm.QuotationModule
                 }
                 else
                 {
-                    
+
                     DialogResult result =  MessageBox.Show("Quotation is locked to Sales Order Number:" + quo.SaleOrder.SaleOrderNo,"Warning",MessageBoxButtons.OKCancel);
                     if (result == DialogResult.OK)
                     {
