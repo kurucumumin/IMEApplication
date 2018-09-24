@@ -272,6 +272,7 @@ namespace LoginForm.PurchaseOrder
         {
             int PurchaseNo = Convert.ToInt32(dgPurchase.CurrentRow.Cells[0].Value);
             ExcelPurchaseOrder.Export(dgPurchase, PurchaseNo.ToString());
+            Utils.LogKayit("Purchase Order", "Purchase Order excel");
         }
 
         private void dgPurchase_DataError(object sender, DataGridViewDataErrorEventArgs e)
@@ -351,6 +352,11 @@ namespace LoginForm.PurchaseOrder
 
                     break;
             }
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            Utils.LogKayit("Purchase Order", "Purchase Order print");
         }
     }
 }

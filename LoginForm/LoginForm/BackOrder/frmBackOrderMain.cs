@@ -22,6 +22,7 @@ namespace LoginForm.BackOrder
         private void btnAdd_Click(object sender, EventArgs e)
         {
             frmBackOrderLoader form = new frmBackOrderLoader();
+            Utils.LogKayit("BackOrder", "BackOrderAdd screen has been entered");
             form.Show();
         }
 
@@ -30,6 +31,7 @@ namespace LoginForm.BackOrder
             if (dg.CurrentRow != null)
             {
                 frmBackOrderDetailView form = new frmBackOrderDetailView(Int32.Parse(dg.CurrentRow.Cells[ID.Index].Value.ToString()));
+                Utils.LogKayit("BackOrder", "BackOrderView screen has been entered");
                 form.Show();
             }
             else
@@ -66,9 +68,6 @@ namespace LoginForm.BackOrder
             UpdateLoaderFunction();
         }
 
-        #region Functions
-
-        #endregion
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -121,6 +120,7 @@ namespace LoginForm.BackOrder
         private void btnExcel_Click(object sender, EventArgs e)
         {
             QuotationExcelExport.ExportToItemHistory(dg);
+            Utils.LogKayit("BackOrder", "BackOrderMain excel");
         }
 
         private void btnAnalize_Click(object sender, EventArgs e)
@@ -128,6 +128,7 @@ namespace LoginForm.BackOrder
             if (!String.IsNullOrEmpty(dg.CurrentRow.Cells[Date.Index].Value?.ToString()))
             {
                 frmbackOrderAnalize form = new frmbackOrderAnalize(DateTime.Parse(dg.CurrentRow.Cells[Date.Index].Value.ToString()));
+                Utils.LogKayit("BackOrder", "BackOrderAnalize screen has been entered");
                 form.Show();
             }
         }
@@ -140,7 +141,7 @@ namespace LoginForm.BackOrder
 
             //}
         }
-        private void    UpdateLoaderFunction()
+        private void UpdateLoaderFunction()
         {
             dg.DataSource = null;
 
@@ -156,12 +157,14 @@ namespace LoginForm.BackOrder
                     row.Cells[UserName.Index].Value = IME.Workers.Where(a => a.WorkerID == item.userID).FirstOrDefault().NameLastName;
                 }
                 dg.Rows.Add(row);
+                Utils.LogKayit("BackOrder", "BackOrderMain update.");
             }
         }
 
         private void btnProductSearch_Click(object sender, EventArgs e)
         {
             BackOrderProductSearch form = new BackOrderProductSearch();
+            Utils.LogKayit("BackOrder", "BackOrderProductSearch screen has been entered");
             form.Show();
         }
     }

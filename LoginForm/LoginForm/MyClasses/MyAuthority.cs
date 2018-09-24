@@ -84,7 +84,10 @@ namespace LoginForm.Services.MyClasses
             CanSeeQuotationCheckBox = 1158,
             CanEditItemCard = 1159,
             CanAddItemCard = 1160,
-            CanRevisionQuotation = 1161
+            CanRevisionQuotation = 1161,
+            AddRsInvoice = 1162,
+            CanEditSaleOrderModule = 1163,
+            CanDeleteSaleOrderModule = 1163
         }
     }
 }

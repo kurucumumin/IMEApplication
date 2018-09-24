@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LoginForm.DataSet;
 using LoginForm.Services;
+using static LoginForm.Services.MyClasses.MyAuthority;
+
 namespace LoginForm.BackOrder
 {
     public partial class BackOrderProductSearch : MyForm
@@ -16,6 +18,7 @@ namespace LoginForm.BackOrder
         public BackOrderProductSearch()
         {
             InitializeComponent();
+            checkAuthorities();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -60,5 +63,16 @@ namespace LoginForm.BackOrder
         {
             Utils.LogKayit("RoleAuths Main", "RoleAuths main screen has been entered");
         }
+
+        public void checkAuthorities()
+        {
+            List<DataSet.AuthorizationValue> authList = Utils.getCurrentUser().AuthorizationValues.ToList();
+
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeExcel))
+            {
+                btnExcel.Visible = false;
+            }
+        }
     }
-}
+
+ }

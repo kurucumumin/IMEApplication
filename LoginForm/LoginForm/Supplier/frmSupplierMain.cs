@@ -326,9 +326,10 @@ namespace LoginForm
                             s.Note1 = null;
                         }
                         db.SaveChanges();
+                        Utils.LogKayit("Supplier", "Supplier modify note");
                     }
                     db.SaveChanges();
-
+                    Utils.LogKayit("Supplier", "Supplier modify");
                     List<SupplierAddress> deleteAddress = new List<SupplierAddress>();
 
                     foreach (SupplierAddress add in s.SupplierAddresses)
@@ -367,7 +368,7 @@ namespace LoginForm
                             db.SupplierAddresses.Add(a);
                         }
                     }
-
+                    Utils.LogKayit("Supplier", "Supplier modify address");
 
                     foreach (SupplierWorker worker in SavedContacts)
                     {
@@ -410,6 +411,7 @@ namespace LoginForm
                         s.MainContactID = db.SupplierWorkers.Where(x => x.supplierID == s.ID).FirstOrDefault().ID;
                     }
                     db.SaveChanges();
+                    Utils.LogKayit("Supplier", "Supplier modify worker");
                 }
                 catch (Exception ex)
                 {
@@ -493,7 +495,7 @@ namespace LoginForm
                             n.Note_name = txtSupplierNotes.Text;
                             db.Notes.Add(n);
                             db.SaveChanges();
-
+                            Utils.LogKayit("Supplier", "Supplier note added");
                             s.SupplierNoteID = n.ID;
                         }
                         catch (Exception ex)
@@ -504,12 +506,13 @@ namespace LoginForm
 
                     db.Suppliers.Add(s);
                     db.SaveChanges();
-
+                    Utils.LogKayit("Supplier", "Supplier added");
 
                     foreach (SupplierAddress address in SavedAddresses)
                     {
                         db.SupplierAddresses.Add(address);
                         db.SaveChanges();
+                        Utils.LogKayit("Supplier", "Supplier address added");
                     }
 
 
@@ -533,6 +536,7 @@ namespace LoginForm
 
                         db.SupplierWorkers.Add(worker);
                         db.SaveChanges();
+                        Utils.LogKayit("Supplier", "Supplier worker added");
                     }
                     if(s.SupplierWorkers.Count != 0)
                     {
@@ -617,7 +621,7 @@ namespace LoginForm
         {
             switch (btnModify.Text)
             {
-                case "Modify":
+                case "EDIT":
                     SupplierAddMode = SupplierModeModify;
                     if (dgSupplier.SelectedRows.Count != 0)
                     {

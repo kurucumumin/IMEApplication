@@ -134,7 +134,7 @@ namespace LoginForm.PurchaseOrder
 
             so.PurchaseOrderID = po.purchaseOrderId;
             IME.SaveChanges();
-
+            Utils.LogKayit("Purchase Order", "Purchase Order added");
 
             po = IME.PurchaseOrders.Where(x => x.purchaseOrderId == po.purchaseOrderId).FirstOrDefault();
 
@@ -224,6 +224,8 @@ namespace LoginForm.PurchaseOrder
             messageText += "To E-Mails successfully sent.";
 
             MessageBox.Show(messageText, "Success !");
+
+            Utils.LogKayit("Purchase Order", "Purchase Order send");
             #endregion
 
             PurchaseOrderMain f = new PurchaseOrderMain();

@@ -59,6 +59,9 @@ namespace LoginForm.DataSet
         public string SecondNote { get; set; }
         public string NoteRep2 { get; set; }
         public Nullable<System.DateTime> NoteDate2 { get; set; }
+        public int idYear { get; set; }
+        public int idNo { get; set; }
+        public int idVersion { get; set; }
     
         public virtual Currency Currency { get; set; }
         public virtual Customer Customer { get; set; }

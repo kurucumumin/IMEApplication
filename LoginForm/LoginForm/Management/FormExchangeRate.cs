@@ -1,4 +1,5 @@
 ﻿using LoginForm.DataSet;
+using LoginForm.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static LoginForm.Services.MyClasses.MyAuthority;
 
 namespace LoginForm.ManagementModule
 {
@@ -16,6 +18,7 @@ namespace LoginForm.ManagementModule
         public FormExchangeRate()
         {
             InitializeComponent();
+            checkAuthorities();
         }
         
 
@@ -56,7 +59,7 @@ namespace LoginForm.ManagementModule
                 IME.SaveChanges();
 
                 MessageBox.Show("Data successfully saved!", "Success", MessageBoxButtons.OK);
-
+                Utils.LogKayit("Exchange Rate", "Exchange Rate added");
                 this.Close();
             }
             catch (Exception ex)
@@ -66,6 +69,16 @@ namespace LoginForm.ManagementModule
                 throw;
             }
 
+        }
+
+        public void checkAuthorities()
+        {
+            List<DataSet.AuthorizationValue> authList = Utils.getCurrentUser().AuthorizationValues.ToList();
+
+            if (!Utils.AuthorityCheck(IMEAuthority.CanEditDataExchangeRate))
+            {
+                btnSave.Visible = false;
+            }
         }
     }
 }

@@ -286,7 +286,7 @@ namespace LoginForm.ItemModule
             {
                 dgItemList.CurrentCell = dgItemList.Rows[gridselectedindex].Cells[0];
                 Filler(ArticleNoSearch);
-                //
+                Utils.LogKayit("Item Card Main", "Item Card Main search");
             }
         }
 
@@ -813,6 +813,7 @@ namespace LoginForm.ItemModule
 
                     IME.SaveChanges();
                     MessageBox.Show("Item updated successfully");
+                    Utils.LogKayit("Item Card Main", "Item Card update");
                     label43.Text = "Update Item";
                 }      
                     #endregion
@@ -866,6 +867,7 @@ namespace LoginForm.ItemModule
 
                     IME.SaveChanges();
                     MessageBox.Show("Item updated successfully");
+                    Utils.LogKayit("Item Card Main", "Item Card update");
                     label43.Text = "Update Item";
                 }
                     #endregion
@@ -1065,6 +1067,7 @@ namespace LoginForm.ItemModule
             IME.tbl_Item.Add(i);
             IME.SaveChanges();
             MessageBox.Show("Item added!", "Success");
+            Utils.LogKayit("Item Card Main", "Item Card added");
             ClearAll(this);
             CancelScreen();
         }
@@ -1327,6 +1330,7 @@ namespace LoginForm.ItemModule
                     IME.ItemNotes.Add(inot);
                     IME.SaveChanges();
                     MessageBox.Show("Item note edit successfully");
+                    Utils.LogKayit("Item Card Main", "Item Card added note");
                     label46.Text = "Edit Note";
                 }
                 else
@@ -1342,6 +1346,7 @@ namespace LoginForm.ItemModule
 
                     IME.SaveChanges();
                     MessageBox.Show("Item note modify successfully");
+                    Utils.LogKayit("Item Card Main", "Item Card modify note");
                     label46.Text = "Edit Note";
                 }
                 IME.SaveChanges();

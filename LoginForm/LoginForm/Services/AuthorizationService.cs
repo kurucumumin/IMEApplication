@@ -61,7 +61,7 @@ namespace LoginForm.Services
                 }
 
                 IME.SaveChanges();
-
+                Utils.LogKayit("Role Auth", "Role Auth added");
                 return true;
             }
             catch (Exception)

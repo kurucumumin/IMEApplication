@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using static LoginForm.Services.MyClasses.MyAuthority;
 
 namespace LoginForm.ManagementModule
 {
@@ -28,7 +29,7 @@ namespace LoginForm.ManagementModule
             loadRoles();
             txtNewRoleName.Enabled = false;
             lblNewRoleName.Enabled = false;
-
+            checkAuthorities();
         }
 
         private void loadRoles()
@@ -53,7 +54,7 @@ namespace LoginForm.ManagementModule
             {
                 newAuthList.Clear();
                 clbNewAuthorizations.DataSource = null;
-                lbRoleList.SetSelected(0,true);
+                lbRoleList.SetSelected(0, true);
             }
             else
             {
@@ -64,7 +65,7 @@ namespace LoginForm.ManagementModule
                 CheckAllItemsListBox(clbNewAuthorizations);
             }
         }
-        
+
         private void cbRole_SelectedIndexChanged(object sender, EventArgs e)
         {
             newAuthList.Clear();
@@ -77,7 +78,7 @@ namespace LoginForm.ManagementModule
             CheckAllItemsListBox(clbNewAuthorizations);
             matchAuthorities();
         }
-        
+
         private void lbRoleList_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lbRoleList.SelectedItem != null)
@@ -92,7 +93,7 @@ namespace LoginForm.ManagementModule
                 matchAuthorities();
             }
         }
-        
+
 
         private void clbAuthorizationList_MouseClick(object sender, MouseEventArgs e)
         {
@@ -101,7 +102,7 @@ namespace LoginForm.ManagementModule
 
             int index = clbAuthorizationList.SelectedIndex;
             bool state = clbAuthorizationList.GetItemChecked(index);
-            
+
             if (!state)
             {
                 newAuthList.Add((AuthorizationValue)clbAuthorizationList.Items[index]);
@@ -163,7 +164,7 @@ namespace LoginForm.ManagementModule
             {
                 for (int j = 0; j <= newAuthList.Count; j++)
                 {
-                    if(j == newAuthList.Count)
+                    if (j == newAuthList.Count)
                     {
                         clbAuthorizationList.SetItemChecked(i, false);
                     } else if (newAuthList[j].AuthorizationID == ((AuthorizationValue)clbAuthorizationList.Items[i]).AuthorizationID)
@@ -231,7 +232,7 @@ namespace LoginForm.ManagementModule
         {
             if (e.KeyCode == Keys.Enter)
             {
-                tempRoleList = roleList.Where(r => r.roleName.IndexOf(txtSearchRole.Text, StringComparison.OrdinalIgnoreCase) >= 0 ).ToList();
+                tempRoleList = roleList.Where(r => r.roleName.IndexOf(txtSearchRole.Text, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
                 lbRoleList.DataSource = null;
                 lbRoleList.DataSource = tempRoleList;
                 lbRoleList.DisplayMember = "roleName";
@@ -281,6 +282,7 @@ namespace LoginForm.ManagementModule
                     IME.SaveChanges();
 
                     MessageBox.Show("Selected role is deleted.", "Success");
+                    Utils.LogKayit("Role Auth", "Role Auth deleted");
                     this.Close();
                 }
                 catch (Exception)
@@ -288,6 +290,15 @@ namespace LoginForm.ManagementModule
 
                     throw;
                 }
+            }
+        }
+        public void checkAuthorities()
+        {
+            List<DataSet.AuthorizationValue> authList = Utils.getCurrentUser().AuthorizationValues.ToList();
+
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeManagementModule))
+            {
+                btnSave.Visible = false;
             }
         }
         

@@ -29,10 +29,6 @@ namespace LoginForm.nsSaleOrder
             typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
             System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
             dgSales, new object[] { true });
-            //if (Utils.getCurrentUser().AuthorizationValues.Where(x=>x.AuthorizationID == 1022).FirstOrDefault() == null)
-            //{
-            //    btnDelete.Visible = false;
-            //}
         }
 
 
@@ -42,10 +38,14 @@ namespace LoginForm.nsSaleOrder
             {
                 btnNew.Visible = false;
             }
-            //if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1106).FirstOrDefault() == null)
-            //{
-            //    btnModify.Visible = false;
-            //}
+            if (!Utils.AuthorityCheck(IMEAuthority.CanEditSaleOrderModule))
+            {
+                btnModify.Visible = false;
+            }
+            if (!Utils.AuthorityCheck(IMEAuthority.CanDeleteSaleOrderModule))
+            {
+                btnDelete.Visible = false;
+            }
         }
 
 
@@ -147,6 +147,7 @@ namespace LoginForm.nsSaleOrder
         private void btnNew_Click(object sender, EventArgs e)
         {
             FormSaleOrderCreate form = new FormSaleOrderCreate();
+            Utils.LogKayit("Sale Order", "Sale Order create screen has been entered");
             form.Show();
             BringSalesList();
         }
@@ -218,6 +219,7 @@ namespace LoginForm.nsSaleOrder
                         BringSalesList(datetimeEnd.Value.Date, datetimeStart.Value.Date);
 
                         MessageBox.Show("Sale Order is successfully deleted.", "Success!");
+                        Utils.LogKayit("Sale Order", "Sale Order deleted");
                     }
                     catch (Exception)
                     {
@@ -273,6 +275,7 @@ namespace LoginForm.nsSaleOrder
                 {
                     this.Close();
                     NewPurchaseOrder f = new NewPurchaseOrder(item_code);
+                    Utils.LogKayit("Sale Order", "Sale Order send to purchase order");
                     f.Show();
                 }
                 else
@@ -298,16 +301,12 @@ namespace LoginForm.nsSaleOrder
 
                 BringSalesList(datetimeEnd.Value.Date, datetimeStart.Value.Date);
                 MessageBox.Show("Sent To Logo Successfully");
+                Utils.LogKayit("Sale Order", "Sale Order send to logo");
             }
             else
             {
                 MessageBox.Show("Operation Failed" + "\n\nError Message: " + resultMessage);
             }
-
-        }
-
-        private void btnModify_Click(object sender, EventArgs e)
-        {
 
         }
 
@@ -698,11 +697,22 @@ namespace LoginForm.nsSaleOrder
 
                 BringSalesList(datetimeEnd.Value.Date, datetimeStart.Value.Date);
                 MessageBox.Show("Deleted From Logo Successfully");
+                Utils.LogKayit("Sale Order", "Sale Order delete from logo");
             }
             else
             {
                 MessageBox.Show("Operation Failed" + "\n\nError Message: " + resultMessage);
             }
+        }
+
+        private void btnExportExcel_Click(object sender, EventArgs e)
+        {
+            Utils.LogKayit("Sale Order", "Sale Order excel");
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            Utils.LogKayit("Sale Order", "Sale Order print");
         }
     }
 }
