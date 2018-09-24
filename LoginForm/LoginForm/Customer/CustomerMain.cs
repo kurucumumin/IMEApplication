@@ -1144,7 +1144,7 @@ namespace LoginForm
                 btnContactDelete.Enabled = false;
                 btnContactUpdate.Enabled = false;
                 var customer = IME.Customer_CustomerID(CustomerCode.Text).FirstOrDefault();
-                if (customer == null)
+                if (customer != null)
                 {
                     //CREATE in cancel ı
                     var cw = IME.CustomerWorkers.Where(a => a.customerID == CustomerCode.Text);
@@ -1155,21 +1155,26 @@ namespace LoginForm
                         IME.SaveChanges();
                     }
                     //üstteki işlem adresses için de yapılmalı
-
+                    var cd = IME.CustomerAddresses.Where(a => a.CustomerID == CustomerCode.Text);
+                    while (cd.Count() > 0)
+                    {
+                        IME.CustomerAddresses.Remove(cd.FirstOrDefault());
+                        IME.SaveChanges();
+                    }
                     //
 
                     //contact için de yapılmalı
-
                     //
                     Customer c = new Customer();
                     //c = (Customer)IME.Customer_CustomerID(CustomerCode.Text).FirstOrDefault();
-                    c= c = IME.Customers.Where(a => a.ID == CustomerCode.Text).FirstOrDefault();
+                    c = IME.Customers.Where(a => a.ID == CustomerCode.Text).FirstOrDefault();
                     IME.Customers.Remove(c);
                     IME.SaveChanges();
                 }
                 dgvCustomer.Enabled = true;
-                gridselectedindex = dgvCustomer.CurrentCell.RowIndex;
-                customersearch();
+                // gridselectedindex = dgvCustomer.CurrentCell.RowIndex;
+                //customersearch();
+                itemsClear();
             }
         }
 
