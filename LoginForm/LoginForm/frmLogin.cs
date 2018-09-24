@@ -41,7 +41,7 @@ namespace LoginForm
                     Utils.setCurrentUser(Logged);
 
                     Utils.LogKayit("Login", "PROGRAMA GİRİŞ YAPILDI.");
-                    
+
                     frmMainMetro formMain = new frmMainMetro();
                     this.Hide();
                     formMain.ShowDialog();
@@ -59,8 +59,23 @@ namespace LoginForm
             #endregion
         }
 
+        private void GetSystemSetting()
+        {
+            DataTable Settings = new Services.SP.Sp_Management().GetManagement();
+
+            ImeSettings.dbDataSource = Settings.Rows[0]["ServerIP"].ToString();
+            ImeSettings.dbPassword = Settings.Rows[0]["ServerPassword"].ToString();
+            ImeSettings.dbUserID = Settings.Rows[0]["ServerUserID"].ToString();
+            ImeSettings.dbInitialCatalogLOGO = Settings.Rows[0]["ServerLogoDatabaseName"].ToString();
+            ImeSettings.dbInitialCatalogIME = Settings.Rows[0]["ServerIMEDatabaseName"].ToString();
+            ImeSettings.dbFrmNo = Settings.Rows[0]["LogoCompanyNo"].ToString();
+            ImeSettings.dbDnmNo = Settings.Rows[0]["LogoCompanyNo"].ToString();
+        }
+
         private void Metrofrm_Load(object sender, EventArgs e)
         {
+            GetSystemSetting();
+
             txtID.Focus();
 
             #region Nokta Virgul Olayi
@@ -88,6 +103,6 @@ namespace LoginForm
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
+        }        
     }
 }

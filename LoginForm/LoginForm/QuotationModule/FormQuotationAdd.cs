@@ -4732,5 +4732,60 @@ namespace LoginForm.QuotationModule
                 }
             }
         }
+
+        private string CreateQuotationID(QuotationIdMod mod)
+        {
+            string NewID = String.Empty;
+
+
+
+            switch (mod)
+            {
+                case QuotationIdMod.New:
+
+
+
+                    break;
+                case QuotationIdMod.CreateVersion:
+                    break;
+                default:
+                    break;
+            }
+
+
+
+
+            return NewID;
+        }
+
+        private string[] IDShredder(string qID)
+        {
+            string[] IdSections = new string[5];
+
+            IdSections[0] = qID.Substring(0, 4);
+            IdSections[1] = qID.Substring(4, 1);
+
+
+            int vIndex = qID.IndexOf('v');
+            if (vIndex == -1)
+            {
+                IdSections[2] = qID.Substring(5);
+            }
+            else
+            {
+                int IdLenght = vIndex - 5;
+
+                IdSections[2] = qID.Substring(5, IdLenght);
+                IdSections[3] = qID.Substring(vIndex, 1);
+                IdSections[4] = qID.Substring(vIndex + 1);
+            }
+
+            return IdSections;
+        }
+    }
+    enum QuotationIdMod
+    {
+        New = 0,
+        CreateVersion = 1
     }
 }
