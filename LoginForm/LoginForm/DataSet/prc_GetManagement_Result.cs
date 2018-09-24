@@ -10,11 +10,9 @@
 namespace LoginForm.DataSet
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Management
+    public partial class prc_GetManagement_Result
     {
-        public int ID { get; set; }
         public Nullable<decimal> LowMarginLimit { get; set; }
         public Nullable<decimal> VAT { get; set; }
         public Nullable<decimal> DefaultCurrency { get; set; }
@@ -32,10 +30,6 @@ namespace LoginForm.DataSet
         public string ServerLogoDatabaseName { get; set; }
         public string ServerIMEDatabaseName { get; set; }
         public string LogoCompanyNo { get; set; }
-        public string LogoTermNo { get; set; }
-    
-        public virtual Company Company { get; set; }
-        public virtual Currency Currency { get; set; }
-        public virtual FinancialYear FinancialYear { get; set; }
+        public string LogoCompanyNo1 { get; set; }
     }
 }

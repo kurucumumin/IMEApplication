@@ -1040,7 +1040,9 @@ namespace LoginForm.QuotationModule
                 }
                 if (quo != null)
                 {
-                    FormQuotationAdd newForm = new FormQuotationAdd(quo, this,1);
+                    //FormQuotationAdd newForm = new FormQuotationAdd(quo, this,1);
+                    //newForm.ShowDialog();
+                    FormQuotationAdd newForm = new FormQuotationAdd(quo, "View");
                     newForm.ShowDialog();
                 }
             }

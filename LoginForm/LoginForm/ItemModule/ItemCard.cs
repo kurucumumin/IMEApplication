@@ -733,21 +733,21 @@ namespace LoginForm.ItemModule
             if (txtStockNo.Text != "")
             {
                 if (IME.ItemNotes.Where(c => c.ArticleNo == txtStockNo.Text).FirstOrDefault() != null) { txtNote.Text = IME.Notes.Where(b => b.ID == IME.ItemNotes.Where(a => a.ArticleNo == txtStockNo.Text).FirstOrDefault().NoteID).FirstOrDefault().Note_name; }
-                getOtherBrnachesStocks(txtStockNo.Text);
+                //getOtherBrnachesStocks(txtStockNo.Text);
             }
         }
 
-        private void getOtherBrnachesStocks(string ArticleCode)
-        {
-            var OtherBrnachesStocks = IME.OtherBranchStockSearch(ArticleCode);
-            if (OtherBrnachesStocks!=null)
-            {
-                if (OtherBrnachesStocks.Where(a => a.CompanyID == 1).FirstOrDefault() != null)//company ID si değişebilir
-                {
-                    txtIMEDXB.Text= OtherBrnachesStocks.Where(a => a.CompanyID == 1).FirstOrDefault().Quantity.ToString();
-                }
-            }
-        }
+        //private void getOtherBrnachesStocks(string ArticleCode)
+        //{
+        //    var OtherBrnachesStocks = IME.OtherBranchStockSearch(ArticleCode);
+        //    if (OtherBrnachesStocks!=null)
+        //    {
+        //        if (OtherBrnachesStocks.Where(a => a.CompanyID == 1).FirstOrDefault() != null)//company ID si değişebilir
+        //        {
+        //            txtIMEDXB.Text= OtherBrnachesStocks.Where(a => a.CompanyID == 1).FirstOrDefault().Quantity.ToString();
+        //        }
+        //    }
+        //}
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {

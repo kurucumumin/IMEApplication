@@ -1563,15 +1563,6 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("OnSaleDeleteAllItems");
         }
     
-        public virtual ObjectResult<OtherBranchStockSearch_Result> OtherBranchStockSearch(string articleNo)
-        {
-            var articleNoParameter = articleNo != null ?
-                new ObjectParameter("articleNo", articleNo) :
-                new ObjectParameter("articleNo", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<OtherBranchStockSearch_Result>("OtherBranchStockSearch", articleNoParameter);
-        }
-    
         public virtual ObjectResult<prc_GetExtendedRangeWithArticleNumber_Result> prc_GetExtendedRangeWithArticleNumber(string articleNumber)
         {
             var articleNumberParameter = articleNumber != null ?
@@ -1588,6 +1579,11 @@ namespace LoginForm.DataSet
                 new ObjectParameter("CurrencyName", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<prc_GetLastExchangeRateWithCurrencyName_Result>("prc_GetLastExchangeRateWithCurrencyName", currencyNameParameter);
+        }
+    
+        public virtual ObjectResult<prc_GetManagement_Result> prc_GetManagement()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<prc_GetManagement_Result>("prc_GetManagement");
         }
     
         public virtual ObjectResult<prc_GetProductHistoryWithArticleNo_Result> prc_GetProductHistoryWithArticleNo(Nullable<int> articleNo)
