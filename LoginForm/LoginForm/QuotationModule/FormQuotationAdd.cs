@@ -122,13 +122,7 @@ namespace LoginForm.QuotationModule
 
 
                 }
-                if (cbDeliverDiscount.Checked) getTotalDiscMargin();
-                if (txtTotalMarge.Visible == true)
-                {
-                    getTotalDiscMargin();
-                }
                 txtTotalDis2.Text = dis2.ToString();
-
 
                 lbltotal.Text = Math.Round((Decimal.Parse(lblsubtotal.Text) - decimal.Parse(txtTotalDis2.Text)), 4).ToString();
             }
@@ -1376,8 +1370,7 @@ namespace LoginForm.QuotationModule
                 }
                 #endregion
             }
-            getTotalDiscMargin();
-
+          
             calculateTotalCost();
         }
 
@@ -3967,11 +3960,6 @@ namespace LoginForm.QuotationModule
                 decimal totaldis = Math.Round((Decimal.Parse(txtTotalDis2.Text) * 100) / subtotal, 4);
                 txtTotalDis.Text = totaldis.ToString();
                 lbltotal.Text = (Decimal.Parse(lblsubtotal.Text) - decimal.Parse(txtTotalDis2.Text)).ToString();
-                getTotalDiscMargin();
-                if (txtTotalMarge.Visible == true)
-                {
-                    getTotalDiscMargin();
-                }
             }
             Disc();
         }
@@ -4022,7 +4010,6 @@ namespace LoginForm.QuotationModule
                     txtTotalDis2.Text = dis2.ToString();
                     lbltotal.Text = Math.Round((Decimal.Parse(lblsubtotal.Text) - decimal.Parse(txtTotalDis2.Text)), 4).ToString();
                 }
-                if (cbDeliverDiscount.Checked) getTotalDiscMargin();
                 if (txtTotalMarge.Visible == true)
                 {
                     CalculateTotalMarge();
@@ -4136,31 +4123,6 @@ namespace LoginForm.QuotationModule
                 }
                 return ((1 - (totalCost / (totalPrice - gbpDisc))) * 100);
             }
-        }
-
-        private void getTotalDiscMargin()
-        {
-            //if (dgQuotationAddedItems.RowCount > 0)
-            //{
-            //    for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
-            //    {
-            //        if (dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value != null && dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString() != string.Empty && dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value != null)
-            //        {
-
-            //            if (dgQuotationAddedItems.Rows[i].Cells["dgLandingCost"].Value == null || dgQuotationAddedItems.Rows[i].Cells["dgLandingCost"].Value.ToString() == "")
-            //            {
-            //                dgQuotationAddedItems.Rows[i].Cells["dgLandingCost"].Value = 0;
-            //            }
-            //            decimal cost = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgLandingCost"].Value.ToString());
-            //            decimal UCUPCur = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString());
-            //            decimal disc = 0;
-            //            if (txtTotalDis.Text != string.Empty && txtTotalDis.Text != null) disc = decimal.Parse(txtTotalDis.Text);
-            //            UCUPCur = UCUPCur * (1 - (disc / 100));
-            //            //dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value = (1 - (cost / UCUPCur)) * 100;
-            //        }
-            //    }
-            //}
-
         }
 
         private void txtExtraChanges_TextChanged(object sender, EventArgs e)
@@ -4803,6 +4765,11 @@ namespace LoginForm.QuotationModule
             }
 
             return IdSections;
+        }
+
+        private void txtTotalDis2_TextChanged(object sender, EventArgs e)
+        {
+            txtTotalMargin.Text = Math.Round(calculateTotalMargin(), 4).ToString();
         }
     }
     enum QuotationIdMod
