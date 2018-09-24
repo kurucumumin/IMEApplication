@@ -185,6 +185,8 @@ namespace LoginForm.QuotationModule
             txtTotalMarge.Visible = false;
         }
 
+
+
         public FormQuotationAdd(Quotation quotation, FormQuotationMain parent)
         {
             InitializeComponent();
@@ -785,19 +787,6 @@ namespace LoginForm.QuotationModule
 
         }
 
-        private void ControlAutorization()
-        {
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeCostandMarginInQuotationModule))
-            {
-                gbCost.Visible = false;
-
-            }
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeTotalMarge))
-            {
-                txtTotalMarge.Visible = false;
-                label42.Visible = false;
-            }
-        }
         private void QuotationForm_Load(object sender, EventArgs e)
         {
             #region Nokta Virgül Olayı
@@ -2480,8 +2469,19 @@ namespace LoginForm.QuotationModule
                 if (Note1 != 0) q.NoteForUsID = Note1;
                 if (Note2 != 0) q.NoteForCustomerID = Note2;
                 q.ExchangeRateID = curr.exchangeRateID;
+                q.idNo = Convert.ToInt32(txtQuotationNo.Text.Substring(5));
+                if (txtQuotationNo.Text.IndexOf("v") == -1)
+                {
+                    q.idVersion = 0;
+                }
+                else
+                {
+                    q.idVersion = q.idVersion + 1;
+                }
+                q.idYear = dtpDate.Value.Year;
                 IME.Quotations.Add(q);
                 IME.SaveChanges();
+                Utils.LogKayit("Quotation", "Quotation added");
                 #endregion
             }
         }
@@ -2720,10 +2720,12 @@ namespace LoginForm.QuotationModule
             if (!modifyMod)
             {
                 MessageBox.Show("Quotation is successfully added", "Success");
+                Utils.LogKayit("Quotation", "Quotation Create Version added");
             }
             else
             {
                 MessageBox.Show("Quotation is successfully edited", "Success");
+                Utils.LogKayit("Quotation", "Quotation Create Version modify");
             }
             this.Close();
         }
@@ -2843,7 +2845,11 @@ namespace LoginForm.QuotationModule
             {
                 if (q.QuotationNo.Contains("v"))
                 {
-                    int quoID = Int32.Parse(q1.Substring(q.QuotationNo.LastIndexOf('v') + 1)) + 1;
+                    string quoID = q1.Substring(q.QuotationNo.LastIndexOf('/') + 1).ToString();
+
+                    quoID = (quoID.Substring(0, quoID.IndexOf('v') + 1)).ToString();
+
+                    string qNo = IME.Quotations.Where(a => a.QuotationNo.Contains(quoID.ToString())).OrderByDescending(b => b.QuotationNo).FirstOrDefault().QuotationNo;
 
                     q1 = (q.QuotationNo.Substring(0, q.QuotationNo.IndexOf('v') + 1)).ToString();
 
@@ -3680,7 +3686,7 @@ namespace LoginForm.QuotationModule
 
         private void btnCreateRev_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Creating a new version! Please Confirm?","Create Version",MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("Creating a new version! Please Confirm?", "Create Version", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 if (ControlSave())
                 {
@@ -4083,7 +4089,7 @@ namespace LoginForm.QuotationModule
                 if (lblsubtotal.Text != null && lblsubtotal.Text != "" && AllMargin != 0) AllMargin = AllMargin / decimal.Parse(lblsubtotal.Text);
                 if (AllMargin != 0)
                 {
-                    txtTotalMarge.Text = Math.Round(AllMargin, 4).ToString();
+                    txtTotalMarge.Text = Math.Round(AllMargin, 3).ToString();
                 }
                 else
                 {
@@ -4115,7 +4121,21 @@ namespace LoginForm.QuotationModule
                 totalPrice += gbpPrice;
             }
 
-            return ((1 - (totalCost / totalPrice)) * 100);
+            if (cbDeliverDiscount.Checked)
+            {
+                return ((1 - (totalCost / totalPrice)) * 100);
+            }
+            else
+            {
+                decimal Disc = 0;
+                decimal gbpDisc = 0;
+                if (!String.IsNullOrEmpty(txtTotalDis2.Text))
+                {
+                    Disc = Convert.ToDecimal(txtTotalDis2.Text);
+                    gbpDisc = (Disc * CurrValue) / currentGbpValue;
+                }
+                return ((1 - (totalCost / (totalPrice - gbpDisc))) * 100);
+            }
         }
 
         private void getTotalDiscMargin()
@@ -4421,6 +4441,8 @@ namespace LoginForm.QuotationModule
             lbltotal.Text = totallbl.ToString();
             GetAllMargin();
 
+            txtTotalMargin.Text = Math.Round(calculateTotalMargin(), 4).ToString();
+
         }
 
         private void cbFactor_Leave(object sender, EventArgs e)
@@ -4539,7 +4561,7 @@ namespace LoginForm.QuotationModule
         {
             CalculateSubTotal();
             calculateTotalCost();
-            calculateTotalMargin();
+            txtTotalMargin.Text = Math.Round(calculateTotalMargin(), 4).ToString();
             Disc();
         }
 
@@ -4721,7 +4743,7 @@ namespace LoginForm.QuotationModule
                         }
                     }
 
-                 MessageBox.Show("Succesfully");
+                    MessageBox.Show("Succesfully");
                 }
                 catch (Exception)
                 {
@@ -4731,6 +4753,11 @@ namespace LoginForm.QuotationModule
                     dgQuotationAddedItems.Refresh();
                 }
             }
+        }
+
+        private void txtTotalDis2_TextChanged(object sender, EventArgs e)
+        {
+            txtTotalMargin.Text = Math.Round(calculateTotalMargin(), 4).ToString();
         }
     }
 }

@@ -65,7 +65,7 @@ namespace LoginForm.PurchaseOrder
             IME.Mails.AddRange(MailList);
             IME.SaveChanges();
             MessageBox.Show("Mail is successfully added", "Success");
-
+            Utils.LogKayit("Purchase Order", "Purchase Order mail added");
             this.Close();
         }
 

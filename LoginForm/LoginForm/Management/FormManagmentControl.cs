@@ -114,10 +114,8 @@ namespace LoginForm.ManagementModule
                     c.BranchCode = txtBranchCode.Text;
 
                     IME.SaveChanges();
-
-
-
                     MessageBox.Show("Changes Saved", "Success");
+                    Utils.LogKayit("Managment Control", "Managment Control added");
                 }
                 catch (Exception)
                 {

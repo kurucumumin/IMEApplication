@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.chcCustStockNumber = new System.Windows.Forms.CheckBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.chcAllSales = new System.Windows.Forms.CheckBox();
@@ -56,10 +56,6 @@
             this.btnRefreshList = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgSales = new System.Windows.Forms.DataGridView();
-            this.gridRightClick = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.sentToPurchaseOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sentToLogoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.backFromLogoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SaleOrderNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,6 +68,10 @@
             this.QuotationNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PurchaseID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PurchaseDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridRightClick = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.sentToPurchaseOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sentToLogoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.backFromLogoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgSales)).BeginInit();
@@ -198,7 +198,6 @@
             this.btnModify.TabIndex = 16;
             this.btnModify.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnModify.UseVisualStyleBackColor = true;
-            this.btnModify.Click += new System.EventHandler(this.btnModify_Click);
             // 
             // btnNew
             // 
@@ -280,6 +279,7 @@
             this.btnPrint.Size = new System.Drawing.Size(52, 52);
             this.btnPrint.TabIndex = 35;
             this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // btnExportExcel
             // 
@@ -295,6 +295,7 @@
             this.btnExportExcel.Size = new System.Drawing.Size(52, 52);
             this.btnExportExcel.TabIndex = 34;
             this.btnExportExcel.UseVisualStyleBackColor = true;
+            this.btnExportExcel.Click += new System.EventHandler(this.btnExportExcel_Click);
             // 
             // btnSearchStockNumber
             // 
@@ -412,14 +413,14 @@
             this.PurchaseID,
             this.PurchaseDate});
             this.dgSales.ContextMenuStrip = this.gridRightClick;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgSales.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgSales.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgSales.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgSales.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dgSales.Location = new System.Drawing.Point(8, 144);
@@ -432,37 +433,6 @@
             this.dgSales.TabIndex = 0;
             this.dgSales.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgSales_CellMouseDoubleClick);
             this.dgSales.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgSales_MouseDoubleClick);
-            // 
-            // gridRightClick
-            // 
-            this.gridRightClick.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.gridRightClick.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sentToPurchaseOrderToolStripMenuItem,
-            this.sentToLogoToolStripMenuItem,
-            this.backFromLogoToolStripMenuItem});
-            this.gridRightClick.Name = "gridRightClick";
-            this.gridRightClick.Size = new System.Drawing.Size(198, 70);
-            // 
-            // sentToPurchaseOrderToolStripMenuItem
-            // 
-            this.sentToPurchaseOrderToolStripMenuItem.Name = "sentToPurchaseOrderToolStripMenuItem";
-            this.sentToPurchaseOrderToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
-            this.sentToPurchaseOrderToolStripMenuItem.Text = "Sent To Purchase Order";
-            this.sentToPurchaseOrderToolStripMenuItem.Click += new System.EventHandler(this.sentToPurchaseOrderToolStripMenuItem_Click);
-            // 
-            // sentToLogoToolStripMenuItem
-            // 
-            this.sentToLogoToolStripMenuItem.Name = "sentToLogoToolStripMenuItem";
-            this.sentToLogoToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
-            this.sentToLogoToolStripMenuItem.Text = "Sent To Logo";
-            this.sentToLogoToolStripMenuItem.Click += new System.EventHandler(this.sentToLogoToolStripMenuItem_Click);
-            // 
-            // backFromLogoToolStripMenuItem
-            // 
-            this.backFromLogoToolStripMenuItem.Name = "backFromLogoToolStripMenuItem";
-            this.backFromLogoToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
-            this.backFromLogoToolStripMenuItem.Text = "Back From Logo";
-            this.backFromLogoToolStripMenuItem.Click += new System.EventHandler(this.backFromLogoToolStripMenuItem_Click);
             // 
             // Date
             // 
@@ -537,6 +507,37 @@
             this.PurchaseDate.HeaderText = "PurchaseDate";
             this.PurchaseDate.Name = "PurchaseDate";
             this.PurchaseDate.ReadOnly = true;
+            // 
+            // gridRightClick
+            // 
+            this.gridRightClick.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.gridRightClick.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sentToPurchaseOrderToolStripMenuItem,
+            this.sentToLogoToolStripMenuItem,
+            this.backFromLogoToolStripMenuItem});
+            this.gridRightClick.Name = "gridRightClick";
+            this.gridRightClick.Size = new System.Drawing.Size(198, 70);
+            // 
+            // sentToPurchaseOrderToolStripMenuItem
+            // 
+            this.sentToPurchaseOrderToolStripMenuItem.Name = "sentToPurchaseOrderToolStripMenuItem";
+            this.sentToPurchaseOrderToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.sentToPurchaseOrderToolStripMenuItem.Text = "Sent To Purchase Order";
+            this.sentToPurchaseOrderToolStripMenuItem.Click += new System.EventHandler(this.sentToPurchaseOrderToolStripMenuItem_Click);
+            // 
+            // sentToLogoToolStripMenuItem
+            // 
+            this.sentToLogoToolStripMenuItem.Name = "sentToLogoToolStripMenuItem";
+            this.sentToLogoToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.sentToLogoToolStripMenuItem.Text = "Sent To Logo";
+            this.sentToLogoToolStripMenuItem.Click += new System.EventHandler(this.sentToLogoToolStripMenuItem_Click);
+            // 
+            // backFromLogoToolStripMenuItem
+            // 
+            this.backFromLogoToolStripMenuItem.Name = "backFromLogoToolStripMenuItem";
+            this.backFromLogoToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.backFromLogoToolStripMenuItem.Text = "Back From Logo";
+            this.backFromLogoToolStripMenuItem.Click += new System.EventHandler(this.backFromLogoToolStripMenuItem_Click);
             // 
             // FormSalesOrderMain
             // 

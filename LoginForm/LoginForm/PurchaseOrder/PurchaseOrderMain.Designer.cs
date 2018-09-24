@@ -347,6 +347,7 @@
             this.btnPrint.Size = new System.Drawing.Size(52, 52);
             this.btnPrint.TabIndex = 13;
             this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // label4
             // 

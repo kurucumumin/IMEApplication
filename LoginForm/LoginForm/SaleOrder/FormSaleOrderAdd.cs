@@ -836,20 +836,6 @@ namespace LoginForm.QuotationModule
             CalculateTotalMarge();
         }
 
-
-        private void ControlAutorization()
-        {
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeCostandMarginInQuotationModule))
-            {
-                gbCost.Visible = false;
-
-            }
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeTotalMarge))
-            {
-                txtTotalMarge.Visible = false;
-                label42.Visible = false;
-            }
-        }
         private void QuotationForm_Load(object sender, EventArgs e)
         {
             #region Nokta Virgül Olayı
@@ -860,8 +846,7 @@ namespace LoginForm.QuotationModule
 
             #endregion
 
-
-            ControlAutorization();
+            checkAuthorities();
             if (this.Text == "View SaleOrder")
             {
                 txtSalesOrderNo.Text = "SO" + sO.ToString();
@@ -4401,6 +4386,7 @@ namespace LoginForm.QuotationModule
 
                     IME.SaleOrderDetails.Add(sdi);
                     IME.SaveChanges();
+                    Utils.LogKayit("Sale Order", "Sale Order added");
                 }
 
                 SaleOrder so = IME.SaleOrders.Where(x => x.SaleOrderID == SaleID).FirstOrDefault();
@@ -4523,6 +4509,66 @@ namespace LoginForm.QuotationModule
                 CustomerAddress ca = (CustomerAddress)cbDeliveryAddress.SelectedItem;
                 textBox5.Text = ca.AdressDetails + " " + ca.Town.Town_name + "/" + ca.City.City_name + "/" + ca.Country.Country_name;
             }
+        }
+
+        public void checkAuthorities()
+        {
+            List<DataSet.AuthorizationValue> authList = Utils.getCurrentUser().AuthorizationValues.ToList();
+
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeMargine) && !Utils.AuthorityCheck(IMEAuthority.CanSeeCost) && !Utils.AuthorityCheck(IMEAuthority.CanSeeUKPrice))
+            {
+                txtCost1.Visible = false;
+                txtCost2.Visible = false;
+                txtCost3.Visible = false;
+                txtCost4.Visible = false;
+                txtCost5.Visible = false;
+
+                txtMargin1.Visible = false;
+                txtMargin2.Visible = false;
+                txtMargin3.Visible = false;
+                txtMargin4.Visible = false;
+                txtMargin5.Visible = false;
+
+                txtUK1.Visible = false;
+                txtUK2.Visible = false;
+                txtUK3.Visible = false;
+                txtUK4.Visible = false;
+                txtUK5.Visible = false;
+
+                dgSaleAddedItems.CurrentRow.Cells["dgUKPrice"].ReadOnly = false;
+            }
+
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeSubTotal))
+            {
+                lblsubtotal.Visible = false;
+            }
+
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeTotalCost))
+            {
+                txtTotalCost.Visible = false;
+            }
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeTotalMargine))
+            {
+                txtTotalMarge.Visible = false;
+            }
+
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeDiscount))
+            {
+                txtTotalDis.Visible = false;
+                txtTotalDis2.Visible = false;
+                label4.Visible = false;
+                dgSaleAddedItems.CurrentRow.Cells["dgDisc"].ReadOnly = false;
+            }
+
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeLandingCost))
+            {
+                dgSaleAddedItems.CurrentRow.Cells["dgLandingCost"].ReadOnly = false;
+            }
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeCost))
+            {
+                dgSaleAddedItems.CurrentRow.Cells["dgCost"].ReadOnly = false;
+            }
+
         }
     }
 }

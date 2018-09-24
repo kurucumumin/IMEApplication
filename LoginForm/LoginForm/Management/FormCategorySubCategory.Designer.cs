@@ -89,7 +89,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(29, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(166, 18);
+            this.label1.Size = new System.Drawing.Size(141, 15);
             this.label1.TabIndex = 2;
             this.label1.Text = "Main Category Name";
             // 
@@ -119,7 +119,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(32, 23);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(159, 18);
+            this.label2.Size = new System.Drawing.Size(134, 15);
             this.label2.TabIndex = 5;
             this.label2.Text = "Sub Category Name";
             // 
@@ -138,7 +138,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 125F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(967, 670);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(969, 678);
             this.tableLayoutPanel1.TabIndex = 9;
             // 
             // panel1
@@ -152,7 +152,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(477, 119);
+            this.panel1.Size = new System.Drawing.Size(478, 119);
             this.panel1.TabIndex = 0;
             // 
             // label3
@@ -160,7 +160,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(318, 76);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(97, 18);
+            this.label3.Size = new System.Drawing.Size(79, 15);
             this.label3.TabIndex = 13;
             this.label3.Text = "Add Category";
             // 
@@ -177,7 +177,7 @@
             // 
             this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.panel9.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel9.Location = new System.Drawing.Point(467, 0);
+            this.panel9.Location = new System.Drawing.Point(468, 0);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(10, 119);
             this.panel9.TabIndex = 9;
@@ -186,7 +186,7 @@
             // 
             this.txtMainCategory.Location = new System.Drawing.Point(29, 64);
             this.txtMainCategory.Name = "txtMainCategory";
-            this.txtMainCategory.Size = new System.Drawing.Size(281, 24);
+            this.txtMainCategory.Size = new System.Drawing.Size(281, 21);
             this.txtMainCategory.TabIndex = 8;
             // 
             // panel2
@@ -198,9 +198,9 @@
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.btnSubCategoryAdd);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(486, 3);
+            this.panel2.Location = new System.Drawing.Point(487, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(478, 119);
+            this.panel2.Size = new System.Drawing.Size(479, 119);
             this.panel2.TabIndex = 1;
             // 
             // label4
@@ -208,7 +208,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(315, 76);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(120, 18);
+            this.label4.Size = new System.Drawing.Size(99, 15);
             this.label4.TabIndex = 13;
             this.label4.Text = "Add Subcategory";
             // 
@@ -225,7 +225,7 @@
             // 
             this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.panel10.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel10.Location = new System.Drawing.Point(468, 0);
+            this.panel10.Location = new System.Drawing.Point(469, 0);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(10, 119);
             this.panel10.TabIndex = 10;
@@ -234,7 +234,7 @@
             // 
             this.txtSubCategory.Location = new System.Drawing.Point(32, 64);
             this.txtSubCategory.Name = "txtSubCategory";
-            this.txtSubCategory.Size = new System.Drawing.Size(276, 24);
+            this.txtSubCategory.Size = new System.Drawing.Size(276, 21);
             this.txtSubCategory.TabIndex = 9;
             // 
             // panel3
@@ -243,7 +243,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(3, 128);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(477, 539);
+            this.panel3.Size = new System.Drawing.Size(478, 547);
             this.panel3.TabIndex = 2;
             // 
             // tableLayoutPanel2
@@ -258,7 +258,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 90F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(477, 539);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(478, 547);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // panel6
@@ -268,7 +268,7 @@
             this.panel6.Location = new System.Drawing.Point(32, 16);
             this.panel6.Margin = new System.Windows.Forms.Padding(32, 16, 32, 16);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(413, 417);
+            this.panel6.Size = new System.Drawing.Size(414, 425);
             this.panel6.TabIndex = 0;
             // 
             // lbCategory
@@ -277,11 +277,11 @@
             this.lbCategory.DisplayMember = "categoryname";
             this.lbCategory.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbCategory.FormattingEnabled = true;
-            this.lbCategory.ItemHeight = 18;
+            this.lbCategory.ItemHeight = 15;
             this.lbCategory.Location = new System.Drawing.Point(0, 0);
             this.lbCategory.Margin = new System.Windows.Forms.Padding(0);
             this.lbCategory.Name = "lbCategory";
-            this.lbCategory.Size = new System.Drawing.Size(413, 417);
+            this.lbCategory.Size = new System.Drawing.Size(414, 425);
             this.lbCategory.TabIndex = 0;
             this.lbCategory.ValueMember = "ID";
             this.lbCategory.SelectedValueChanged += new System.EventHandler(this.lbCategory_SelectedValueChanged);
@@ -299,7 +299,7 @@
             this.panel5.Controls.Add(this.btnEditCategory);
             this.panel5.Controls.Add(this.btnDeleteCategory);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(3, 452);
+            this.panel5.Location = new System.Drawing.Point(3, 460);
             this.panel5.MaximumSize = new System.Drawing.Size(458, 84);
             this.panel5.MinimumSize = new System.Drawing.Size(458, 84);
             this.panel5.Name = "panel5";
@@ -311,7 +311,7 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(14, 62);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(97, 18);
+            this.label8.Size = new System.Drawing.Size(79, 15);
             this.label8.TabIndex = 13;
             this.label8.Text = "Edit Category";
             // 
@@ -320,7 +320,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(309, 62);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(114, 18);
+            this.label7.Size = new System.Drawing.Size(94, 15);
             this.label7.TabIndex = 12;
             this.label7.Text = "Delete Category";
             // 
@@ -366,9 +366,9 @@
             // 
             this.panel4.Controls.Add(this.tableLayoutPanel3);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(486, 128);
+            this.panel4.Location = new System.Drawing.Point(487, 128);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(478, 539);
+            this.panel4.Size = new System.Drawing.Size(479, 547);
             this.panel4.TabIndex = 3;
             // 
             // tableLayoutPanel3
@@ -383,7 +383,7 @@
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 88F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(478, 539);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(479, 547);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // panel7
@@ -394,7 +394,7 @@
             this.panel7.Margin = new System.Windows.Forms.Padding(0);
             this.panel7.Name = "panel7";
             this.panel7.Padding = new System.Windows.Forms.Padding(32, 16, 32, 16);
-            this.panel7.Size = new System.Drawing.Size(478, 451);
+            this.panel7.Size = new System.Drawing.Size(479, 459);
             this.panel7.TabIndex = 0;
             // 
             // lbSubCategory
@@ -403,11 +403,11 @@
             this.lbSubCategory.DisplayMember = "subcategoryname";
             this.lbSubCategory.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbSubCategory.FormattingEnabled = true;
-            this.lbSubCategory.ItemHeight = 18;
+            this.lbSubCategory.ItemHeight = 15;
             this.lbSubCategory.Location = new System.Drawing.Point(32, 16);
             this.lbSubCategory.Margin = new System.Windows.Forms.Padding(0);
             this.lbSubCategory.Name = "lbSubCategory";
-            this.lbSubCategory.Size = new System.Drawing.Size(414, 419);
+            this.lbSubCategory.Size = new System.Drawing.Size(415, 427);
             this.lbSubCategory.TabIndex = 1;
             this.lbSubCategory.ValueMember = "ID";
             // 
@@ -424,9 +424,9 @@
             this.panel8.Controls.Add(this.btnEditSubcategory);
             this.panel8.Controls.Add(this.btnDeleteSubcategory);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(3, 454);
+            this.panel8.Location = new System.Drawing.Point(3, 462);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(472, 82);
+            this.panel8.Size = new System.Drawing.Size(473, 82);
             this.panel8.TabIndex = 1;
             // 
             // label6
@@ -434,7 +434,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(40, 60);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(120, 18);
+            this.label6.Size = new System.Drawing.Size(99, 15);
             this.label6.TabIndex = 15;
             this.label6.Text = "Edit Subcategory";
             // 
@@ -443,7 +443,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(307, 60);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(137, 18);
+            this.label5.Size = new System.Drawing.Size(114, 15);
             this.label5.TabIndex = 14;
             this.label5.Text = "Delete Subcategory";
             // 
@@ -460,7 +460,7 @@
             // 
             this.panel12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.panel12.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel12.Location = new System.Drawing.Point(462, 0);
+            this.panel12.Location = new System.Drawing.Point(463, 0);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(10, 82);
             this.panel12.TabIndex = 10;
@@ -487,10 +487,10 @@
             // 
             // FormCategorySubCategory
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
-            this.ClientSize = new System.Drawing.Size(967, 670);
+            this.ClientSize = new System.Drawing.Size(969, 678);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MaximumSize = new System.Drawing.Size(985, 717);

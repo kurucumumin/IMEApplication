@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LoginForm.DataSet;
+using LoginForm.Services;
+using static LoginForm.Services.MyClasses.MyAuthority;
 
 namespace LoginForm.ManagementModule
 {
@@ -20,8 +22,7 @@ namespace LoginForm.ManagementModule
         {
             InitializeComponent();
 
-            //txtSubCategory.Enabled = false;
-            //btnSubCategoryAdd.Enabled = false;
+            checkAuthorities();
         }
         //public FormCategorySubCategory(CustomerCategory category)
         //{
@@ -52,6 +53,7 @@ namespace LoginForm.ManagementModule
                         db.SaveChanges();
 
                         MessageBox.Show("'" + txtMainCategory.Text + "'" + "named category successfully added.", "Success");
+                        Utils.LogKayit("Category SubCategory", "Category added");
                         lbCategory.DataSource = db.CustomerCategories.ToList();
                     }
                     catch (Exception)
@@ -100,6 +102,7 @@ namespace LoginForm.ManagementModule
                         db.SaveChanges();
 
                         MessageBox.Show("'" + txtSubCategory.Text + "'" + "named subcategory successfully added.", "Success");
+                        Utils.LogKayit("Category SubCategory", "SubCategory added");
                         lbSubCategory.DataSource = ((CustomerCategory)lbCategory.SelectedItem).CustomerSubCategories.ToList();
                     }
                     catch (Exception)
@@ -126,9 +129,11 @@ namespace LoginForm.ManagementModule
                     {
                         db.CustomerSubCategories.RemoveRange(((CustomerCategory)lbCategory.SelectedItem).CustomerSubCategories);
                         db.SaveChanges();
+                        Utils.LogKayit("Category SubCategory", "SubCategory deleted");
 
                         db.CustomerCategories.Remove((CustomerCategory)lbCategory.SelectedItem);
                         db.SaveChanges();
+                        Utils.LogKayit("Category SubCategory", "Category deleted");
 
                         lbCategory.DataSource = db.CustomerCategories.ToList();
 
@@ -163,6 +168,19 @@ namespace LoginForm.ManagementModule
                         throw;
                     }
                 }
+            }
+        }
+
+        public void checkAuthorities()
+        {
+            List<DataSet.AuthorizationValue> authList = Utils.getCurrentUser().AuthorizationValues.ToList();
+
+            if (!Utils.AuthorityCheck(IMEAuthority.CanEditCategoryandSubCategory))
+            {
+                btnEditCategory.Visible = false;
+                btnEditSubcategory.Visible = false;
+                btnDeleteCategory.Visible = false;
+                btnDeleteSubcategory.Visible = false;
             }
         }
     }

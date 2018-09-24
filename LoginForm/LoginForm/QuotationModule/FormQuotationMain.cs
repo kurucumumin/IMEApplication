@@ -39,6 +39,7 @@ namespace LoginForm.QuotationModule
         {
             var a = dtpFromDate.Value;
             FormQuotationAdd quotationForm = new FormQuotationAdd(this);
+            Utils.LogKayit("Quotation", "Quotation new screen has been entered");
             quotationForm.Show();
         }
 
@@ -49,10 +50,7 @@ namespace LoginForm.QuotationModule
 
         private void dgQuotation_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (Utils.AuthorityCheck(IMEAuthority.CanEditAnyQuotation))
-            {
-                ViewQuotation();
-            }
+            ViewQuotation();
         }
 
         private void ViewQuotation()
@@ -111,6 +109,7 @@ namespace LoginForm.QuotationModule
                         BringQuotationList(dtpFromDate.Value, dtpToDate.Value);
 
                         MessageBox.Show("Quotation is successfully deleted.", "Success!");
+                        Utils.LogKayit("Quotation", "Quotation deleted");
                     }
                     catch (Exception)
                     {
@@ -140,6 +139,9 @@ namespace LoginForm.QuotationModule
                 btnModifyQuotation.Visible = false;
                 btnNewQuotation.Visible = false;
                 btnUpdate.Visible = false;
+                qUOTATIONINFOToolStripMenuItem.Visible = false;
+                uPDATEQUOTATIONToolStripMenuItem.Visible = false;
+                mODIFYQUOTATIONToolStripMenuItem.Visible = false;
 
                 label4.Visible = false;
                 label5.Visible = false;
@@ -156,6 +158,8 @@ namespace LoginForm.QuotationModule
             {
                 btnDeleteQuotation.Visible = false;
                 label6.Visible = false;
+                uNDODELETEQUOTATIONToolStripMenuItem.Visible = false;
+                dELETEQUOTATIONToolStripMenuItem.Visible = false;
             }
         }
 
@@ -731,6 +735,7 @@ namespace LoginForm.QuotationModule
                     if (quo != null)
                     {
                         FormQuotationAdd newForm = new FormQuotationAdd(quo, this);
+                        Utils.LogKayit("Quotation", "Quotation new version screen has been entered");
                         newForm.ShowDialog();
                     }
                 }
@@ -854,6 +859,7 @@ namespace LoginForm.QuotationModule
         private void button4_Click(object sender, EventArgs e)
         {
             QuotationExcelExport.QuotationMainExport(dgQuotation, dtpFromDate.Value, dtpToDate.Value);
+            Utils.LogKayit("Quotation", "Quotation excel");
             //List<string> QuotationItemList = new List<string>();
             //for (int i = 0; i < dgQuotation.ColumnCount; i++)
             //{
@@ -1003,6 +1009,7 @@ namespace LoginForm.QuotationModule
                             BringQuotationList();
 
                             MessageBox.Show("Quotation is successfully deleted.", "Success!");
+                            Utils.LogKayit("Quotation", "Quotation deleted");
                         }
                         catch (Exception)
                         {
@@ -1041,6 +1048,7 @@ namespace LoginForm.QuotationModule
                 if (quo != null)
                 {
                     FormQuotationAdd newForm = new FormQuotationAdd(quo, this,1);
+                    Utils.LogKayit("Quotation", "Quotation info screen has been entered");
                     newForm.ShowDialog();
                 }
             }
@@ -1163,6 +1171,7 @@ namespace LoginForm.QuotationModule
                 if (quo != null)
                 {
                     QuotationExcelExport.QuotationMainPrintExport(quo);
+                    Utils.LogKayit("Quotation", "Quotation print");
                 }
             }
             else
@@ -1193,6 +1202,7 @@ namespace LoginForm.QuotationModule
                 if (quo != null && quo.SaleOrder == null)
                 {
                     FormQuotationAdd newForm = new FormQuotationAdd(quo, this, "Update");
+                    Utils.LogKayit("Quotation", "Quotation update screen has been entered");
                     newForm.ShowDialog();
                 }
                 else
@@ -1235,6 +1245,7 @@ namespace LoginForm.QuotationModule
                 if (quo != null && quo.SaleOrder == null)
                 {
                     FormQuotationAdd newForm = new FormQuotationAdd(quo, this, "Update");
+                    Utils.LogKayit("Quotation", "Quotation modify screen has been entered");
                     newForm.ShowDialog();
                 }
                 else
@@ -1284,6 +1295,7 @@ namespace LoginForm.QuotationModule
                         BringQuotationList();
 
                         MessageBox.Show("Quotation is successfully undo deleted.", "Success!");
+                        Utils.LogKayit("Quotation", "Quotation undo deleted");
                     }
                     catch (Exception)
                     {
@@ -1314,15 +1326,19 @@ namespace LoginForm.QuotationModule
                 }
             }
         }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void button5_Click_1(object sender, EventArgs e)
         {
-
+            Utils.LogKayit("Quotation", "Quotation print");
         }
 
-        private void label3_Click(object sender, EventArgs e)
+        private void dISCONTINUEDUSERToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Utils.LogKayit("Quotation", "Quotation discontinuned user");
+        }
 
+        private void cOPYQUOTATIONToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Utils.LogKayit("Quotation", "Quotation copy quotation");
         }
     }
 }

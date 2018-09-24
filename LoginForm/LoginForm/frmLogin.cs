@@ -40,7 +40,7 @@ namespace LoginForm
                 {
                     Utils.setCurrentUser(Logged);
 
-                    Utils.LogKayit("Login", "PROGRAMA GİRİŞ YAPILDI.");
+                    Utils.LogKayit("Login", "Login form screen has been entered");
                     
                     frmMainMetro formMain = new frmMainMetro();
                     this.Hide();

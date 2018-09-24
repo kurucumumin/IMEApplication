@@ -126,6 +126,7 @@ namespace LoginForm.nsSaleOrder
                     }
                 }
                 FormSaleOrderAdd form1 = new FormSaleOrderAdd((Customer)lbCustomerList.SelectedItem, list, quotationIDs,1);
+                Utils.LogKayit("Sale Order", "Sale Order add screen has been entered");
                 form1.Show();
                 this.Close();
             }

@@ -786,6 +786,7 @@ namespace LoginForm
                 IME.SaveChanges();
                 cw.customerNoteID = n.ID;
                 IME.CustomerWorkers.Add(cw);
+                Utils.LogKayit("Customer", "Customer contact added");
                 IME.SaveChanges();
                 if (btnCreate.Text == "ADD")
                 {
@@ -838,6 +839,7 @@ namespace LoginForm
                         cw.customerNoteID = contactNote.ID;
                     }
                     IME.SaveChanges();
+                    Utils.LogKayit("Customer", "Customer contact update");
                     contactTabEnableFalse();
                     if (btnCreate.Text == "ADD")
                     {
@@ -988,6 +990,7 @@ namespace LoginForm
                 newCustomer.ID = CustomerCode.Text;
                 IME.Customers.Add(newCustomer);
                 IME.SaveChanges();
+                Utils.LogKayit("Customer", "Customer added");
                 btnCreate.Text = "SAVE";
                 btnUpdate.Text = "CANCEL";
                 AdressList.Enabled = false;
@@ -1102,7 +1105,7 @@ namespace LoginForm
                         IME.SaveChanges();
                     }
                     IME.SaveChanges();
-
+                    Utils.LogKayit("Customer", "Customer update");
                     itemsEnableFalse();
                     contactTabEnableFalse();
                     customersearch();
@@ -1431,6 +1434,7 @@ namespace LoginForm
                 if (cbDefaultInvoiceAdress.Checked) { ca.isInvoiceAddress = true; } else { ca.isInvoiceAddress = false; }
                 if (cbDefaultDeliveryAdress.Checked) { ca.isDeliveryAddress = true; } else { ca.isDeliveryAddress = false; }
                 IME.SaveChanges();
+                Utils.LogKayit("Customer", "Customer address update");
             }
             else
             {
@@ -1457,6 +1461,7 @@ namespace LoginForm
                 if (cbDefaultDeliveryAdress.Checked) { ca.isDeliveryAddress = true; } else { ca.isDeliveryAddress = false; }
                 IME.CustomerAddresses.Add(ca);
                 IME.SaveChanges();
+                Utils.LogKayit("Customer", "Customer address added");
             }
             AdressTabEnableFalse();
             if (btnCreate.Text == "ADD")

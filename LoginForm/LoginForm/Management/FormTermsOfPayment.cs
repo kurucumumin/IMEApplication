@@ -54,7 +54,7 @@ namespace LoginForm.ManagementModule
 
                     IME.PaymentTerms.Add(term);
                     IME.SaveChanges();
-
+                    Utils.LogKayit("TermsOfPayment", "TermsOfPayment added");
                     changeMode(false);
 
                     populateListBox();
@@ -88,7 +88,7 @@ namespace LoginForm.ManagementModule
                     term.term_name = txtNote.Text;
 
                     IME.SaveChanges();
-
+                    Utils.LogKayit("TermsOfPayment", "TermsOfPayment updated");
                     changeMode(false);
 
                     populateListBox();
@@ -183,7 +183,7 @@ namespace LoginForm.ManagementModule
                     PaymentTerm term = IME.PaymentTerms.Where(t => t.ID == selectedTerm.ID).First();
                     IME.PaymentTerms.Remove(term);
                     IME.SaveChanges();
-
+                    Utils.LogKayit("TermsOfPayment", "TermsOfPayment deleted");
                     populateListBox();
                 }
                 catch (Exception ex)

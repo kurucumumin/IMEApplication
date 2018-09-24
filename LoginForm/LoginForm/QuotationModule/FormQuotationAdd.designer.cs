@@ -1769,7 +1769,7 @@
             this.tabItemDetails.Margin = new System.Windows.Forms.Padding(2);
             this.tabItemDetails.Name = "tabItemDetails";
             this.tabItemDetails.Padding = new System.Windows.Forms.Padding(2);
-            this.tabItemDetails.Size = new System.Drawing.Size(1237, 150);
+            this.tabItemDetails.Size = new System.Drawing.Size(1294, 150);
             this.tabItemDetails.TabIndex = 1;
             this.tabItemDetails.Text = "Item Details";
             // 
@@ -3101,6 +3101,7 @@
             this.txtTotalDis2.Name = "txtTotalDis2";
             this.txtTotalDis2.Size = new System.Drawing.Size(54, 20);
             this.txtTotalDis2.TabIndex = 15;
+            this.txtTotalDis2.TextChanged += new System.EventHandler(this.txtTotalDis2_TextChanged);
             this.txtTotalDis2.Leave += new System.EventHandler(this.txtTotalDis2_Leave);
             // 
             // chkVat

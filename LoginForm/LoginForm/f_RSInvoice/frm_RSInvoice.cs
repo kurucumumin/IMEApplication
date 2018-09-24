@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static LoginForm.Services.MyClasses.MyAuthority;
 
 namespace LoginForm.f_RSInvoice
 {
@@ -24,13 +25,15 @@ namespace LoginForm.f_RSInvoice
         {
             InitializeComponent();
 
-            dgvRSInvoice.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
+            dgvRSInvoice.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor;
 
             dtpToDate.MaxDate = DateTime.Today;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
             System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
             dgvRSInvoice, new object[] { true });
+
+            checkAuthorities();
         }
 
         private void frm_RSInvoice_Load(object sender, EventArgs e)
@@ -39,7 +42,7 @@ namespace LoginForm.f_RSInvoice
             dtpFromDate.Value = DateTime.Now.AddMonths(-1).Date;
 
             bgw_RSInvoiceGetter.RunWorkerAsync();
-            
+
         }
 
         private void btnRefreshList_Click(object sender, EventArgs e)
@@ -105,6 +108,7 @@ namespace LoginForm.f_RSInvoice
                 else
                 {
                     frm_RsInvoiceDetail form = new frm_RsInvoiceDetail(rsInv);
+                    Utils.LogKayit("RSInvoice", "RSInvoiceNew screen has been entered");
                     form.Show();
                 }
             }
@@ -159,7 +163,7 @@ namespace LoginForm.f_RSInvoice
                 MessageBox.Show("You Should Choose An RS Invoice!");
             }
 
-            
+
         }
 
         private void backFromLogoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -191,7 +195,7 @@ namespace LoginForm.f_RSInvoice
                 MessageBox.Show("You Should Choose An RS Invoice!");
             }
 
-            
+
         }
 
         private void bgw_RSInvoiceGetter_DoWork(object sender, DoWorkEventArgs e)
@@ -245,7 +249,7 @@ namespace LoginForm.f_RSInvoice
 
         private void dtpFromDate_ValueChanged(object sender, EventArgs e)
         {
-            if(dtpFromDate.Value > dtpToDate.Value)
+            if (dtpFromDate.Value > dtpToDate.Value)
             {
                 dtpToDate.Value = dtpFromDate.Value;
             }
@@ -257,6 +261,7 @@ namespace LoginForm.f_RSInvoice
             if (dgvRSInvoice.SelectedRows.Count != 0)
             {
                 frm_RsInvoiceDetail form = new frm_RsInvoiceDetail(Int32.Parse(dgvRSInvoice.SelectedRows[0].Cells[dgID.Index].Value.ToString()));
+                Utils.LogKayit("RSInvoice", "RSInvoiceView screen has been entered");
                 form.Show();
             }
             else
@@ -347,6 +352,7 @@ namespace LoginForm.f_RSInvoice
                             }
                             rs.PurchaseOrderID = Int32.Parse(rs.PurchaseOrderNumber.ToString().Substring(0, rs.PurchaseOrderNumber.ToString().IndexOf('R')).ToString());
                             RSInvoice.RS_InvoiceDetails.Add(rs);
+                            Utils.LogKayit("RSInvoice", "RSInvoice added");
                         }
                         a++;
                     }
@@ -362,6 +368,35 @@ namespace LoginForm.f_RSInvoice
             }
             return RSInvoice;
         }
-        
+
+        private void btnDeleteInvoice_Click(object sender, EventArgs e)
+        {
+            Utils.LogKayit("RSInvoice", "RSInvoice deleted.");
+        }
+
+        private void btnExportToExcel_Click(object sender, EventArgs e)
+        {
+            Utils.LogKayit("RSInvoice", "RSInvoice excel");
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            Utils.LogKayit("RSInvoice", "RSInvoice print");
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            Utils.LogKayit("RSInvoice", "RSInvoice search");
+        }
+        public void checkAuthorities()
+        {
+            List<DataSet.AuthorizationValue> authList = Utils.getCurrentUser().AuthorizationValues.ToList();
+
+            if (!Utils.AuthorityCheck(IMEAuthority.AddRsInvoice))
+            {
+                btnNewInvoice.Visible = false;
+                btnNewInvoice.Visible = false;
+            }
+        }
     }
 }

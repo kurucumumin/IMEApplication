@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LoginForm.DataSet;
 using LoginForm.Services;
+using static LoginForm.Services.MyClasses.MyAuthority;
 
 namespace LoginForm.BackOrder
 {
@@ -24,6 +25,7 @@ namespace LoginForm.BackOrder
             backOrderanalizeDate = Date;
             InitializeComponent();
             dgLoader();
+            checkAuthorities();
         }
 
         private void frmbackOrderAnalize_Load(object sender, EventArgs e)
@@ -115,6 +117,16 @@ namespace LoginForm.BackOrder
             if (dialogResult == DialogResult.Yes)
             {
                 this.Close();
+            }
+        }
+
+        public void checkAuthorities()
+        {
+            List<DataSet.AuthorizationValue> authList = Utils.getCurrentUser().AuthorizationValues.ToList();
+
+            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeExcel))
+            {
+                button1.Visible = false;
             }
         }
     }
