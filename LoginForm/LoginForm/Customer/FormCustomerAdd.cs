@@ -33,6 +33,25 @@ namespace LoginForm
                 ContactList.Enabled = true;
                 AdressList.Enabled = true;
             }
+            else if (form == "Quotation")
+            {
+                customerClicksearch(customer);
+                EnableFalse();
+                ContactList.Enabled = true;
+                AdressList.Enabled = true;
+            }
+            else if (form == "Contact")
+            {
+                customerClicksearch(customer);
+                label67.Text = "Modify";
+                EnableFalse();
+                ContactList.Enabled = true;
+                AdressList.Enabled = true;
+                btnContactAdd.Enabled = true;
+               // btnContactCancel.Enabled = true;
+                btnContactDelete.Enabled = true;
+                btnContactUpdate.Enabled = true;
+            }
             else
             {
                 customerClicksearch(customer);
@@ -56,40 +75,12 @@ namespace LoginForm
             DataSet.Management m = Utils.getManagement();
 
             dateTimePicker1.Value = DateTime.Today;
-            itemsEnableTrue();
-            itemsClear();
             #region Factor
             factor.Value = IME.Managements.FirstOrDefault().Factor;
             DiscountRate.Text = (100 - ((factor.Value * 100) / Utils.getManagement().Factor)).ToString();
             DiscountRate.Text = String.Format("{0:0.0000}", Decimal.Parse(DiscountRate.Text)).ToString();
             #endregion
             rb_active.Checked = true;
-            int represantative_id = Utils.getCurrentUser().WorkerID;
-            Represantative1.DataSource = IME.Workers.Where(a => a.WorkerID == represantative_id).ToList();
-            Represantative1.DisplayMember = "NameLastName";
-            cbMainContact.DataSource = null;
-            #region ComboboxChoose
-            MainCategory.Text = (ComboboxString);
-            SubCategory.Text = (ComboboxString);
-            // Represantative1.Text = (ComboboxString);
-            Represantative2.Text = (ComboboxString);
-            Capital.Text = (ComboboxString);
-            cbMainContact.Text = (ComboboxString);
-            AccountRepresentary.Text = (ComboboxString);
-            TermsofPayments.Text = (ComboboxString);
-            PaymentMethod.Text = (ComboboxString);
-            QuoCurrencyName.SelectedValue = m.DefaultCurrency;
-            InvCurrencyName.SelectedValue = m.DefaultCurrency;
-            AddressType.Text = (ComboboxString);
-            cbCountry.Text = (ComboboxString);
-            cbCity.Text = (ComboboxString);
-            cbTown.Text = (ComboboxString);
-            ContactType.Text = (ComboboxString);
-            ContactDepartment.Text = (ComboboxString);
-            ContactTitle.Text = (ComboboxString);
-            CommunicationLanguage.Text = (ComboboxString);
-            #endregion
-
             //for new customerCode
             string custmrcode = "";
             if (IME.Customers.ToList().Count != 0)
@@ -246,8 +237,6 @@ namespace LoginForm
             Customer c = IME.Customers.Where(a => a.ID == customerID).FirstOrDefault();
             dateTimePicker1.Value = c.CreateDate.Value;
             CustomerCode.Text = c.ID;
-            AdressList.DataSource = IME.CustomerAddresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
-            AdressList.DisplayMember = "AdressTitle";
             ContactAdress.DataSource = IME.CustomerAddresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
             ContactAdress.DisplayMember = "AdressTitle";
             CustomerName.Text = c.c_name;
@@ -264,6 +253,9 @@ namespace LoginForm
             ContactList.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
             ContactList.DisplayMember = "cw_name";
             ContactList.ValueMember = "ID";
+            AdressList.DataSource = IME.CustomerAddresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
+            AdressList.DisplayMember = "AdressTitle";
+            AdressList.ValueMember = "ID";
             cbMainContact.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
             cbMainContact.DisplayMember = "cw_name";
             cbMainContact.ValueMember = "ID";
@@ -422,6 +414,7 @@ namespace LoginForm
             btnContactDelete.Enabled = false;
             btnContactUpdate.Enabled = false;
             btnSave.Enabled = false;
+            groupContact.Enabled = true;
             #endregion
         }
 
@@ -473,6 +466,7 @@ namespace LoginForm
             AddressDel.Enabled = false;
             AddressUpd.Enabled = false;
             btnSave.Enabled = false;
+            groupAddresses.Enabled = true;
             #endregion
         }
 
@@ -499,58 +493,43 @@ namespace LoginForm
 
         private void AdressList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            #region AdressList
-            //contact daki list box a tıklandığında contact ın bilgileri tıklanan göre doldurulmasıse
-            int cw_ID = 0;
-            try { cw_ID = ((CustomerAddress)((ListBox)sender).SelectedItem).ID; } catch { cw_ID = 0; }
-
-            if (ContactListItem.AdressID != cw_ID)
+            try
             {
-                ContactListItem.AdressID = cw_ID;
-                var contact1 = IME.CustomerAddresses.Where(cw => cw.ID == cw_ID).ToList();
-                foreach (var a in contact1)
-                {
-                    if (a.isDeliveryAddress != null && (bool)a.isDeliveryAddress)
-                    {
-                        cbDefaultDeliveryAdress.Checked = true;
-                    }
-                    else
-                    {
-                        cbDefaultDeliveryAdress.Checked = false;
-                    }
+                #region AddressList (list box a tıklandığında adres bilgileri tıklanana göre doldurulması)
 
-                    if (a.isInvoiceAddress != null && (bool)a.isInvoiceAddress)
+                int cw_ID = (int)AdressList.SelectedValue;
+                if (CustomerName.Text != string.Empty)
+                {
+                    CustomerAddress c;
+
+                    IMEEntities IME = new IMEEntities();
+                    try
                     {
-                        cbDefaultInvoiceAdress.Checked = true;
+                        c = IME.CustomerAddresses.Where(q => q.ID == cw_ID).FirstOrDefault();
                     }
-                    else
+                    catch (Exception)
                     {
-                        cbDefaultInvoiceAdress.Checked = false;
+
+                        throw;
                     }
-                    txtAdressTitle.Text = a.AdressTitle;
-                    cbCountry.SelectedItem = a.Country;
-                    AddressType.SelectedIndex = AddressType.FindStringExact(a.AddressType);
-                    if (a.City != null)
-                    {
-                        cbCity.SelectedValue = a.CityID;
-                    }
-                    if (a.Town != null)
-                    {
-                        cbTown.SelectedValue = a.TownID;
-                    }
-                    PostCode.Text = a.PostCode;
-                    AddressDetails.Text = a.AdressDetails;
+                    ContactListItem.ID = cw_ID;
+                    txtAdressTitle.Text = c.AdressTitle;
+                    AddressType.SelectedValue = c.AddressType;
+                    cbCountry.SelectedValue = c.CountryID;
+                    cbCity.SelectedValue = c.CityID;
+                    cbTown.SelectedValue = c.TownID;
+                    PostCode.Text = c.PostCode;
                 }
+                #endregion
             }
-            #endregion
+            catch {}
         }
 
         private void ContactList_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                #region ContactList
-                //contact daki list box a tıklandığında contact ın bilgileri tıklanan göre doldurulmasıse
+                #region ContactList (list box a tıklandığında contact ın bilgileri tıklanana göre doldurulması)
                 int cw_ID = (int)ContactList.SelectedValue;
                 if (CustomerName.Text != string.Empty)
                 {
@@ -1213,6 +1192,181 @@ namespace LoginForm
                         break;
                 }
             }
+        }
+
+        private void cbCountry_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                cbCity.DataSource = IME.Cities.Where(a => a.CountryID == ((Country)(cbCountry).SelectedItem).ID).ToList();
+                cbCity.DisplayMember = "City_name";
+                cbCity.ValueMember = "ID";
+
+                if (cbCity.DataSource == null || cbCity.Items.Count == 0)
+                {
+                    cbCity.Text = "N/A";
+                }
+            }
+            catch { }
+        }
+
+        private void cbCity_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                cbTown.DataSource = IME.Towns.Where(a => a.CityID == ((City)(cbCity).SelectedItem).ID).ToList();
+                cbTown.DisplayMember = "Town_name";
+                cbTown.ValueMember = "ID";
+
+                if (cbTown.DataSource == null || cbTown.Items.Count == 1)
+                {
+                    cbTown.Text = "N/A";
+                }
+            }
+            catch { }
+        }
+
+        private void CityAdd_Click(object sender, EventArgs e)
+        {
+            if (cbCountry.SelectedValue != null && cbCountry.Text != ComboboxString)
+            {
+                int country = Convert.ToInt32(cbCountry.SelectedValue);
+                frmCityAdd form = new frmCityAdd(country);
+                form.ShowDialog();
+                cbCity.DataSource = IME.Cities.Where(a => a.CountryID == (int)cbCountry.SelectedValue).ToList();
+                cbCity.DisplayMember = "City_name";
+                cbCity.ValueMember = "ID";
+            }
+            else { MessageBox.Show("Please select a Country"); }
+        }
+
+        private void TownAdd_Click(object sender, EventArgs e)
+        {
+            if (cbCity.SelectedValue != null && cbCity.Text != ComboboxString)
+            {
+                int city = Convert.ToInt32(cbCity.SelectedValue);
+                int country = Convert.ToInt32(cbCountry.SelectedValue);
+                FormTownAdd form = new FormTownAdd(country, city);
+                this.SendToBack();
+                form.ShowDialog();
+                this.BringToFront();
+                cbTown.Refresh();
+
+                cbTown.DataSource = IME.Towns.Where(a => a.CityID == (int)cbCity.SelectedValue).ToList();
+                cbTown.DisplayMember = "Town_name";
+                cbTown.ValueMember = "ID";
+            }
+            else { MessageBox.Show("Please select a City"); }
+        }
+
+        private void btnAddMainCategory_Click(object sender, EventArgs e)
+        {
+            CustomerMainCategory form = new CustomerMainCategory();
+            form.ShowDialog();
+            MainCategory.DataSource = IME.CustomerCategories.ToList();
+            MainCategory.DisplayMember = "categoryname";
+            MainCategory.ValueMember = "ID";
+        }
+
+        private void btnAddSubcategory_Click(object sender, EventArgs e)
+        {
+            if (MainCategory.SelectedValue != null && MainCategory.Text != ComboboxString)
+            {
+                int categoryID = Convert.ToInt32(MainCategory.SelectedValue);
+                CustomerSubCategory form = new CustomerSubCategory(categoryID);
+                form.ShowDialog();
+                SubCategory.DataSource = IME.CustomerSubCategories.Where(a => a.categoryID == (int)MainCategory.SelectedValue).ToList();
+                SubCategory.DisplayMember = "subcategoryname";
+                SubCategory.ValueMember = "ID";
+            }
+            else { MessageBox.Show("Please select a Maincategory"); }
+        }
+
+        private void CustomerName_Leave(object sender, EventArgs e)
+        {
+            MakeTextUpperCase((TextBox)sender);
+        }
+
+        private void MakeTextUpperCase(TextBox txtBox)
+        {
+            txtBox.Text = txtBox.Text.ToUpperInvariant();
+        }
+
+        private void MainCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SubCategory.Text = "";
+            int c_categoryID;
+            try
+            {
+                c_categoryID = (int)((ComboBox)sender).SelectedValue;
+            }
+            catch { c_categoryID = 0; }
+            SubCategory.DataSource = IME.CustomerSubCategories.Where(b => b.categoryID == c_categoryID).ToList();
+            SubCategory.DisplayMember = "subcategoryname";
+            SubCategory.ValueMember = "ID";
+        }
+
+        private void Represantative1_MouseClick(object sender, MouseEventArgs e)
+        {
+            Represantative1.DataSource = IME.Workers.ToList();
+            Represantative1.DisplayMember = "NameLastName";
+        }
+
+        private void factor_Leave(object sender, EventArgs e)
+        {
+            if (factor.Text == "") factor.Text = 0.ToString();
+            decimal factorValue = Decimal.Parse(factor.Text);
+            DiscountRate.Text = (100 - ((factorValue * 100) / Utils.getManagement().Factor)).ToString();
+            DiscountRate.Text = String.Format("{0:0.0000}", Decimal.Parse(DiscountRate.Text)).ToString();
+        }
+
+        private void DiscountRate_Leave(object sender, EventArgs e)
+        {
+            decimal DiscountRateValue = 0._ToDecimalR();
+            if (DiscountRate.Text != null && DiscountRate.Text != "")
+            {
+                DiscountRateValue = Decimal.Parse(DiscountRate.Text);
+                factor.Text = (Utils.getManagement().Factor - ((DiscountRateValue * Utils.getManagement().Factor) / 100)).ToString();
+                factor.Text = String.Format("{0:0.0000}", Decimal.Parse(factor.Text)).ToString();
+            }
+        }
+
+        private void AddressType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ContactDepartment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int c_departmentID;
+            try { c_departmentID = ((CustomerDepartment)((ComboBox)sender).SelectedItem).ID; } catch { c_departmentID = 0; }
+            ContactTitle.DataSource = IME.CustomerTitles.ToList();
+            ContactTitle.DisplayMember = "titlename";
+        }
+
+        private void departmentAdd_Click(object sender, EventArgs e)
+        {
+            CustomerDepartmentAdd form = new CustomerDepartmentAdd();
+            this.Enabled = false;
+            this.SendToBack();
+            form.ShowDialog();
+            ContactDepartment.DataSource = new IMEEntities().CustomerDepartments.ToList();
+            this.Enabled = true;
+        }
+
+        private void titleAdd_Click(object sender, EventArgs e)
+        {
+            if (ContactDepartment.SelectedValue != null && ContactDepartment.Text != ComboboxString)
+            {
+                int department = Convert.ToInt32(ContactDepartment.SelectedValue);
+                CustomerPositionAdd form = new CustomerPositionAdd(department);
+                this.Enabled = false;
+                this.SendToBack();
+                form.ShowDialog();
+                ContactTitle.DataSource = new IMEEntities().CustomerTitles.ToList();
+                this.Enabled = true;
+            }
+            else { MessageBox.Show("Please select a Department"); }
         }
     }
 }

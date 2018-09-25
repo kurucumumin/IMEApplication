@@ -3901,7 +3901,20 @@ namespace LoginForm.QuotationModule
             }
             else
             {
-                CustomerMain f = new CustomerMain(true, CustomerCode.Text);
+                Customer c;
+
+                IMEEntities IME = new IMEEntities();
+                try
+                {
+                    c = IME.Customers.Where(q => q.ID == CustomerCode.Text).FirstOrDefault();
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+
+                FormCustomerAdd f = new FormCustomerAdd(c, "Quotation");
                 f.ShowDialog();
             }
         }
@@ -3914,7 +3927,20 @@ namespace LoginForm.QuotationModule
             }
             else
             {
-                CustomerMain f = new CustomerMain(1, CustomerCode.Text);
+                Customer c;
+
+                IMEEntities IME = new IMEEntities();
+                try
+                {
+                    c = IME.Customers.Where(q => q.ID == CustomerCode.Text).FirstOrDefault();
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+
+                FormCustomerAdd f = new FormCustomerAdd(c, "Contact");
                 f.ShowDialog();
 
                 IME = new IMEEntities();
