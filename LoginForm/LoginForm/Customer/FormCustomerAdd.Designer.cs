@@ -145,12 +145,20 @@
             this.ContactList = new System.Windows.Forms.ListBox();
             this.btnContactDone = new System.Windows.Forms.Button();
             this.btnContactCancel = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.groupCompany.SuspendLayout();
             this.groupAccount.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.factor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DiscountRate)).BeginInit();
             this.groupAddresses.SuspendLayout();
             this.groupContact.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupCompany
@@ -187,10 +195,11 @@
             this.groupCompany.Controls.Add(this.label8);
             this.groupCompany.Controls.Add(this.CustomerCode);
             this.groupCompany.Controls.Add(this.label1);
+            this.groupCompany.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupCompany.ForeColor = System.Drawing.Color.Red;
-            this.groupCompany.Location = new System.Drawing.Point(12, 12);
+            this.groupCompany.Location = new System.Drawing.Point(3, 3);
             this.groupCompany.Name = "groupCompany";
-            this.groupCompany.Size = new System.Drawing.Size(677, 290);
+            this.groupCompany.Size = new System.Drawing.Size(689, 284);
             this.groupCompany.TabIndex = 0;
             this.groupCompany.TabStop = false;
             this.groupCompany.Text = "Company Info";
@@ -545,10 +554,11 @@
             this.groupAccount.Controls.Add(this.taxNumber);
             this.groupAccount.Controls.Add(this.TaxOffice);
             this.groupAccount.Controls.Add(this.label21);
+            this.groupAccount.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupAccount.ForeColor = System.Drawing.Color.Red;
-            this.groupAccount.Location = new System.Drawing.Point(695, 12);
+            this.groupAccount.Location = new System.Drawing.Point(698, 3);
             this.groupAccount.Name = "groupAccount";
-            this.groupAccount.Size = new System.Drawing.Size(677, 290);
+            this.groupAccount.Size = new System.Drawing.Size(690, 284);
             this.groupAccount.TabIndex = 1;
             this.groupAccount.TabStop = false;
             this.groupAccount.Text = "Account";
@@ -807,7 +817,7 @@
             this.groupAddresses.Controls.Add(this.PostCode);
             this.groupAddresses.Controls.Add(this.label25);
             this.groupAddresses.ForeColor = System.Drawing.Color.Red;
-            this.groupAddresses.Location = new System.Drawing.Point(12, 308);
+            this.groupAddresses.Location = new System.Drawing.Point(8, 5);
             this.groupAddresses.Name = "groupAddresses";
             this.groupAddresses.Size = new System.Drawing.Size(524, 290);
             this.groupAddresses.TabIndex = 2;
@@ -1033,7 +1043,7 @@
             this.groupContact.Controls.Add(this.label30);
             this.groupContact.Controls.Add(this.label29);
             this.groupContact.ForeColor = System.Drawing.Color.Red;
-            this.groupContact.Location = new System.Drawing.Point(698, 308);
+            this.groupContact.Location = new System.Drawing.Point(3, 5);
             this.groupContact.Name = "groupContact";
             this.groupContact.Size = new System.Drawing.Size(537, 290);
             this.groupContact.TabIndex = 3;
@@ -1288,9 +1298,9 @@
             // 
             // label69
             // 
-            this.label69.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label69.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label69.AutoSize = true;
-            this.label69.Location = new System.Drawing.Point(1339, 676);
+            this.label69.Location = new System.Drawing.Point(645, 71);
             this.label69.Name = "label69";
             this.label69.Size = new System.Drawing.Size(33, 13);
             this.label69.TabIndex = 65;
@@ -1298,9 +1308,9 @@
             // 
             // btnSave
             // 
-            this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.Image = global::LoginForm.Properties.Resources.if_floppy_285657;
-            this.btnSave.Location = new System.Drawing.Point(1274, 616);
+            this.btnSave.Location = new System.Drawing.Point(580, 11);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(52, 52);
             this.btnSave.TabIndex = 60;
@@ -1309,9 +1319,9 @@
             // 
             // label67
             // 
-            this.label67.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label67.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label67.AutoSize = true;
-            this.label67.Location = new System.Drawing.Point(1285, 676);
+            this.label67.Location = new System.Drawing.Point(591, 71);
             this.label67.Name = "label67";
             this.label67.Size = new System.Drawing.Size(32, 13);
             this.label67.TabIndex = 63;
@@ -1319,9 +1329,9 @@
             // 
             // btnClose
             // 
-            this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
-            this.btnClose.Location = new System.Drawing.Point(1329, 616);
+            this.btnClose.Location = new System.Drawing.Point(635, 11);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(52, 52);
             this.btnClose.TabIndex = 61;
@@ -1331,7 +1341,7 @@
             // AddressDel
             // 
             this.AddressDel.Enabled = false;
-            this.AddressDel.Location = new System.Drawing.Point(628, 525);
+            this.AddressDel.Location = new System.Drawing.Point(624, 222);
             this.AddressDel.Name = "AddressDel";
             this.AddressDel.Size = new System.Drawing.Size(45, 25);
             this.AddressDel.TabIndex = 81;
@@ -1342,7 +1352,7 @@
             // AddressUpd
             // 
             this.AddressUpd.Enabled = false;
-            this.AddressUpd.Location = new System.Drawing.Point(584, 525);
+            this.AddressUpd.Location = new System.Drawing.Point(580, 222);
             this.AddressUpd.Name = "AddressUpd";
             this.AddressUpd.Size = new System.Drawing.Size(45, 25);
             this.AddressUpd.TabIndex = 80;
@@ -1353,7 +1363,7 @@
             // AdressAdd
             // 
             this.AdressAdd.Enabled = false;
-            this.AdressAdd.Location = new System.Drawing.Point(542, 525);
+            this.AdressAdd.Location = new System.Drawing.Point(538, 222);
             this.AdressAdd.Name = "AdressAdd";
             this.AdressAdd.Size = new System.Drawing.Size(42, 25);
             this.AdressAdd.TabIndex = 79;
@@ -1364,7 +1374,7 @@
             // AdressList
             // 
             this.AdressList.FormattingEnabled = true;
-            this.AdressList.Location = new System.Drawing.Point(542, 330);
+            this.AdressList.Location = new System.Drawing.Point(538, 27);
             this.AdressList.Name = "AdressList";
             this.AdressList.Size = new System.Drawing.Size(131, 173);
             this.AdressList.TabIndex = 76;
@@ -1372,7 +1382,7 @@
             // 
             // AdressDone
             // 
-            this.AdressDone.Location = new System.Drawing.Point(546, 527);
+            this.AdressDone.Location = new System.Drawing.Point(542, 224);
             this.AdressDone.Name = "AdressDone";
             this.AdressDone.Size = new System.Drawing.Size(57, 23);
             this.AdressDone.TabIndex = 77;
@@ -1383,7 +1393,7 @@
             // 
             // AdressCancel
             // 
-            this.AdressCancel.Location = new System.Drawing.Point(608, 527);
+            this.AdressCancel.Location = new System.Drawing.Point(604, 224);
             this.AdressCancel.Name = "AdressCancel";
             this.AdressCancel.Size = new System.Drawing.Size(65, 23);
             this.AdressCancel.TabIndex = 78;
@@ -1395,7 +1405,7 @@
             // btnContactDelete
             // 
             this.btnContactDelete.Enabled = false;
-            this.btnContactDelete.Location = new System.Drawing.Point(1329, 545);
+            this.btnContactDelete.Location = new System.Drawing.Point(634, 242);
             this.btnContactDelete.Name = "btnContactDelete";
             this.btnContactDelete.Size = new System.Drawing.Size(43, 25);
             this.btnContactDelete.TabIndex = 89;
@@ -1406,7 +1416,7 @@
             // btnContactUpdate
             // 
             this.btnContactUpdate.Enabled = false;
-            this.btnContactUpdate.Location = new System.Drawing.Point(1280, 545);
+            this.btnContactUpdate.Location = new System.Drawing.Point(585, 242);
             this.btnContactUpdate.Name = "btnContactUpdate";
             this.btnContactUpdate.Size = new System.Drawing.Size(46, 25);
             this.btnContactUpdate.TabIndex = 88;
@@ -1417,7 +1427,7 @@
             // btnContactAdd
             // 
             this.btnContactAdd.Enabled = false;
-            this.btnContactAdd.Location = new System.Drawing.Point(1235, 545);
+            this.btnContactAdd.Location = new System.Drawing.Point(540, 242);
             this.btnContactAdd.Name = "btnContactAdd";
             this.btnContactAdd.Size = new System.Drawing.Size(43, 25);
             this.btnContactAdd.TabIndex = 87;
@@ -1428,7 +1438,7 @@
             // ContactList
             // 
             this.ContactList.FormattingEnabled = true;
-            this.ContactList.Location = new System.Drawing.Point(1235, 335);
+            this.ContactList.Location = new System.Drawing.Point(540, 32);
             this.ContactList.Name = "ContactList";
             this.ContactList.Size = new System.Drawing.Size(137, 199);
             this.ContactList.TabIndex = 90;
@@ -1436,7 +1446,7 @@
             // 
             // btnContactDone
             // 
-            this.btnContactDone.Location = new System.Drawing.Point(1235, 547);
+            this.btnContactDone.Location = new System.Drawing.Point(540, 244);
             this.btnContactDone.Name = "btnContactDone";
             this.btnContactDone.Size = new System.Drawing.Size(57, 23);
             this.btnContactDone.TabIndex = 85;
@@ -1447,7 +1457,7 @@
             // 
             // btnContactCancel
             // 
-            this.btnContactCancel.Location = new System.Drawing.Point(1298, 547);
+            this.btnContactCancel.Location = new System.Drawing.Point(603, 244);
             this.btnContactCancel.Name = "btnContactCancel";
             this.btnContactCancel.Size = new System.Drawing.Size(74, 23);
             this.btnContactCancel.TabIndex = 86;
@@ -1456,32 +1466,77 @@
             this.btnContactCancel.Visible = false;
             this.btnContactCancel.Click += new System.EventHandler(this.btnContactCancel_Click);
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.groupCompany, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.groupAccount, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.panel3, 1, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1391, 680);
+            this.tableLayoutPanel1.TabIndex = 91;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnClose);
+            this.panel1.Controls.Add(this.label67);
+            this.panel1.Controls.Add(this.btnSave);
+            this.panel1.Controls.Add(this.label69);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(698, 583);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(690, 94);
+            this.panel1.TabIndex = 0;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.groupAddresses);
+            this.panel2.Controls.Add(this.AdressCancel);
+            this.panel2.Controls.Add(this.AdressDone);
+            this.panel2.Controls.Add(this.AdressList);
+            this.panel2.Controls.Add(this.AdressAdd);
+            this.panel2.Controls.Add(this.AddressUpd);
+            this.panel2.Controls.Add(this.AddressDel);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(3, 293);
+            this.panel2.MinimumSize = new System.Drawing.Size(689, 284);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(689, 284);
+            this.panel2.TabIndex = 2;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.groupContact);
+            this.panel3.Controls.Add(this.btnContactDelete);
+            this.panel3.Controls.Add(this.btnContactCancel);
+            this.panel3.Controls.Add(this.btnContactUpdate);
+            this.panel3.Controls.Add(this.btnContactDone);
+            this.panel3.Controls.Add(this.btnContactAdd);
+            this.panel3.Controls.Add(this.ContactList);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(698, 293);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(690, 284);
+            this.panel3.TabIndex = 3;
+            // 
             // FormCustomerAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
-            this.ClientSize = new System.Drawing.Size(1391, 698);
-            this.Controls.Add(this.btnContactDelete);
-            this.Controls.Add(this.btnContactUpdate);
-            this.Controls.Add(this.btnContactAdd);
-            this.Controls.Add(this.ContactList);
-            this.Controls.Add(this.btnContactDone);
-            this.Controls.Add(this.btnContactCancel);
-            this.Controls.Add(this.AddressDel);
-            this.Controls.Add(this.AddressUpd);
-            this.Controls.Add(this.AdressAdd);
-            this.Controls.Add(this.AdressList);
-            this.Controls.Add(this.AdressDone);
-            this.Controls.Add(this.AdressCancel);
-            this.Controls.Add(this.label69);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.label67);
-            this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.groupContact);
-            this.Controls.Add(this.groupAddresses);
-            this.Controls.Add(this.groupAccount);
-            this.Controls.Add(this.groupCompany);
+            this.ClientSize = new System.Drawing.Size(1391, 680);
+            this.Controls.Add(this.tableLayoutPanel1);
+            this.MinimumSize = new System.Drawing.Size(1407, 719);
             this.Name = "FormCustomerAdd";
             this.Text = "FormCustomerAdd";
             this.TopMost = true;
@@ -1497,8 +1552,12 @@
             this.groupAddresses.PerformLayout();
             this.groupContact.ResumeLayout(false);
             this.groupContact.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -1621,5 +1680,9 @@
         private System.Windows.Forms.ListBox ContactList;
         private System.Windows.Forms.Button btnContactDone;
         private System.Windows.Forms.Button btnContactCancel;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
     }
 }
