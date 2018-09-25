@@ -15,12 +15,14 @@ namespace LoginForm.ItemModule
         IMEEntities IME = new IMEEntities();
         string txtSelected = "";
         int gridselectedindex = 0;
-        decimal defaultCurrency = 0;
+        decimal defaultCurrencyRate = 0;
         public ItemCard()
         {
             InitializeComponent();
-            defaultCurrency = (decimal)Utils.getManagement().Currency.ExchangeRates.OrderByDescending(a => a.date).FirstOrDefault().rate;
-            label65.Text = "WEB (" + Utils.getManagement().Currency.currencySymbol +")";
+            string currencySymbol = Utils.getManagement().Currency.currencySymbol;
+            defaultCurrencyRate = (decimal)Utils.getManagement().Currency.ExchangeRates.OrderByDescending(a => a.date).FirstOrDefault().rate;
+            lblCurrency.Text = currencySymbol;
+            label65.Text = "WEB (" + currencySymbol + ")";
             dgItemList.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
         }
 
@@ -564,7 +566,7 @@ namespace LoginForm.ItemModule
          private void WebandMarginPrices()
         {
             decimal factor;
-            factor = Utils.getManagement().Factor / defaultCurrency;
+            factor = Utils.getManagement().Factor / defaultCurrencyRate;
             if (txtUK1.Text != "" && txtUK1.Text != null) txtWeb1.Text = (decimal.Parse(txtUK1.Text) * factor).ToString();
             if (txtUK2.Text != "" && txtUK2.Text != null) txtWeb2.Text = (decimal.Parse(txtUK2.Text) * factor).ToString();
             if (txtUK3.Text != "" && txtUK3.Text != null) txtWeb3.Text = (decimal.Parse(txtUK3.Text) * factor).ToString();
@@ -660,13 +662,12 @@ namespace LoginForm.ItemModule
 
         private void Number_TextChanged(object sender, EventArgs e)
         {
-            int value;
-            if (!int.TryParse(txtQuantitiy.Text, out value))
+            if (!int.TryParse(txtQuantitiy.Text, out int value))
             {
-                if(txtQuantitiy.Text!="" && txtQuantitiy.Text != null)
+                if (txtQuantitiy.Text != "" && txtQuantitiy.Text != null)
                 {
-                txtUnitPrice.Text = string.Empty;
-                MessageBox.Show("Please enter a valid number");
+                    txtUnitPrice.Text = string.Empty;
+                    MessageBox.Show("Please enter a valid number");
                 }
             }
             else
@@ -678,21 +679,25 @@ namespace LoginForm.ItemModule
                     {
                         if ((Int32.Parse(txtQuantitiy.Text) < Int32.Parse(txtUnitCount2.Text) && Int32.Parse(txtUnitCount1.Text) != 0) || Int32.Parse(txtUnitCount2.Text) == 0)
                         {
-                            txtUnitPrice.Text = txtUK1.Text;
+                            txtUnitPrice.Text = txtWeb1.Text;
                         }
                         else if ((Int32.Parse(txtQuantitiy.Text) < Int32.Parse(txtUnitCount3.Text) && Int32.Parse(txtUnitCount2.Text) != 0) || Int32.Parse(txtUnitCount3.Text) == 0)
                         {
-                            txtUnitPrice.Text = txtUK2.Text;
+                            txtUnitPrice.Text = txtWeb2.Text;
                         }
                         else if ((Int32.Parse(txtQuantitiy.Text) < Int32.Parse(txtUnitCount4.Text) && Int32.Parse(txtUnitCount3.Text) != 0) || Int32.Parse(txtUnitCount4.Text) == 0)
                         {
-                            txtUnitPrice.Text = txtUK3.Text;
+                            txtUnitPrice.Text = txtWeb3.Text;
                         }
                         else if ((Int32.Parse(txtQuantitiy.Text) < Int32.Parse(txtUnitCount5.Text) && Int32.Parse(txtUnitCount4.Text) != 0) || Int32.Parse(txtUnitCount5.Text) == 0)
                         {
-                            txtUnitPrice.Text = txtUK4.Text;
+                            txtUnitPrice.Text = txtWeb4.Text;
                         }
-                        else if (Int32.Parse(txtUnitCount5.Text) != 0) { txtUnitPrice.Text = txtUK5.Text; }
+                        else if (Int32.Parse(txtUnitCount5.Text) != 0) { txtUnitPrice.Text = txtWeb5.Text; }
+                        
+                        decimal UnitPrice = decimal.Parse(txtUnitPrice.Text);
+                        txtTotal.Text = String.Format("{0:0.0000}", (value * UnitPrice).ToString("G29"));
+
                     }
                     else { txtUnitPrice.Text = string.Empty; }
                 }
@@ -959,20 +964,6 @@ namespace LoginForm.ItemModule
             catch
             {
 
-            }
-        }
-
-        private void txtUnitPrice_TextChanged(object sender, EventArgs e)
-        {
-            if (txtUnitPrice.Text==""|| txtUnitPrice.Text == null)
-            {
-                txtTotal.Text = "";
-            }
-            else
-            {
-                int qty = Int32.Parse(txtQuantitiy.Text);
-                decimal UnitPrice = decimal.Parse(txtUnitPrice.Text);
-                txtTotal.Text = String.Format("{0:0.0000}", (qty * UnitPrice).ToString("G29"));
             }
         }
 
