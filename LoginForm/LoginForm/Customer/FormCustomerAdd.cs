@@ -1154,35 +1154,64 @@ namespace LoginForm
         {
             if (label69.Text == "Cancel")
             {
-                var customer = IME.Customer_CustomerID(CustomerCode.Text).FirstOrDefault();
-                if (customer != null)
-                {
-                    //CREATE in cancel ı
-                    var cw = IME.CustomerWorkers.Where(a => a.customerID == CustomerCode.Text);
-                    //Contact
-                    while (cw.Count() > 0)
-                    {
-                        IME.CustomerWorkers.Remove(cw.FirstOrDefault());
-                        IME.SaveChanges();
-                    }
-                    //adresses
-                    var cd = IME.CustomerAddresses.Where(a => a.CustomerID == CustomerCode.Text);
-                    while (cd.Count() > 0)
-                    {
-                        IME.CustomerAddresses.Remove(cd.FirstOrDefault());
-                        IME.SaveChanges();
-                    }
-
-                    Customer c = new Customer();
-                    c = IME.Customers.Where(a => a.ID == CustomerCode.Text).FirstOrDefault();
-                    IME.Customers.Remove(c);
-                    IME.SaveChanges();
-                }
-                itemsClear();
+               // CancelCustomer();
+                this.Close();
             }
             else
             {
                 this.Close();
+            }
+        }
+
+        private void CancelCustomer()
+        {
+            var customer = IME.Customer_CustomerID(CustomerCode.Text).FirstOrDefault();
+            if (customer != null)
+            {
+                //CREATE in cancel ı
+                var cw = IME.CustomerWorkers.Where(a => a.customerID == CustomerCode.Text);
+                //Contact
+                while (cw.Count() > 0)
+                {
+                    IME.CustomerWorkers.Remove(cw.FirstOrDefault());
+                    IME.SaveChanges();
+                }
+                //adresses
+                var cd = IME.CustomerAddresses.Where(a => a.CustomerID == CustomerCode.Text);
+                while (cd.Count() > 0)
+                {
+                    IME.CustomerAddresses.Remove(cd.FirstOrDefault());
+                    IME.SaveChanges();
+                }
+
+                Customer c = new Customer();
+                c = IME.Customers.Where(a => a.ID == CustomerCode.Text).FirstOrDefault();
+                IME.Customers.Remove(c);
+                IME.SaveChanges();
+            }
+            itemsClear();
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            if (label69.Text != "Close")
+            {
+                base.OnFormClosing(e);
+
+                if (e.CloseReason == CloseReason.WindowsShutDown) return;
+
+                // Confirm user wants to close
+                switch (MessageBox.Show(this, "Are you sure you want to close?", "Closing", MessageBoxButtons.YesNo))
+                {
+                    case DialogResult.No:
+                        e.Cancel = true;
+                        break;
+                    case DialogResult.Yes:
+                        CancelCustomer();
+                        break;
+                    default:
+                        break;
+                }
             }
         }
     }
