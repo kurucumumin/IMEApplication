@@ -262,6 +262,7 @@
             this.btnAddSubcategory.TabIndex = 131;
             this.btnAddSubcategory.Text = "+";
             this.btnAddSubcategory.UseVisualStyleBackColor = true;
+            this.btnAddSubcategory.Click += new System.EventHandler(this.btnAddSubcategory_Click);
             // 
             // btnAddMainCategory
             // 
@@ -273,6 +274,7 @@
             this.btnAddMainCategory.TabIndex = 130;
             this.btnAddMainCategory.Text = "+";
             this.btnAddMainCategory.UseVisualStyleBackColor = true;
+            this.btnAddMainCategory.Click += new System.EventHandler(this.btnAddMainCategory_Click);
             // 
             // rb_passive
             // 
@@ -319,6 +321,7 @@
             this.Represantative1.Name = "Represantative1";
             this.Represantative1.Size = new System.Drawing.Size(182, 21);
             this.Represantative1.TabIndex = 119;
+            this.Represantative1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Represantative1_MouseClick);
             // 
             // label6
             // 
@@ -383,6 +386,7 @@
             this.MainCategory.Name = "MainCategory";
             this.MainCategory.Size = new System.Drawing.Size(182, 21);
             this.MainCategory.TabIndex = 117;
+            this.MainCategory.SelectedIndexChanged += new System.EventHandler(this.MainCategory_SelectedIndexChanged);
             // 
             // label11
             // 
@@ -471,6 +475,7 @@
             this.CustomerName.Name = "CustomerName";
             this.CustomerName.Size = new System.Drawing.Size(182, 20);
             this.CustomerName.TabIndex = 116;
+            this.CustomerName.Leave += new System.EventHandler(this.CustomerName_Leave);
             // 
             // Telephone
             // 
@@ -577,6 +582,7 @@
             this.factor.Name = "factor";
             this.factor.Size = new System.Drawing.Size(174, 20);
             this.factor.TabIndex = 29;
+            this.factor.Leave += new System.EventHandler(this.factor_Leave);
             // 
             // DiscountRate
             // 
@@ -597,6 +603,7 @@
             this.DiscountRate.Name = "DiscountRate";
             this.DiscountRate.Size = new System.Drawing.Size(174, 20);
             this.DiscountRate.TabIndex = 32;
+            this.DiscountRate.Leave += new System.EventHandler(this.DiscountRate_Leave);
             // 
             // AccountingNotes
             // 
@@ -834,6 +841,7 @@
             this.CityAdd.TabIndex = 82;
             this.CityAdd.Text = "+";
             this.CityAdd.UseVisualStyleBackColor = true;
+            this.CityAdd.Click += new System.EventHandler(this.CityAdd_Click);
             // 
             // TownAdd
             // 
@@ -846,6 +854,7 @@
             this.TownAdd.TabIndex = 81;
             this.TownAdd.Text = "+";
             this.TownAdd.UseVisualStyleBackColor = true;
+            this.TownAdd.Click += new System.EventHandler(this.TownAdd_Click);
             // 
             // cbDefaultInvoiceAdress
             // 
@@ -887,6 +896,7 @@
             this.AddressType.Name = "AddressType";
             this.AddressType.Size = new System.Drawing.Size(151, 21);
             this.AddressType.TabIndex = 61;
+            this.AddressType.SelectedIndexChanged += new System.EventHandler(this.AddressType_SelectedIndexChanged);
             // 
             // label40
             // 
@@ -936,6 +946,7 @@
             this.cbCity.Name = "cbCity";
             this.cbCity.Size = new System.Drawing.Size(151, 21);
             this.cbCity.TabIndex = 64;
+            this.cbCity.SelectedIndexChanged += new System.EventHandler(this.cbCity_SelectedIndexChanged);
             // 
             // cbCountry
             // 
@@ -946,6 +957,7 @@
             this.cbCountry.Name = "cbCountry";
             this.cbCountry.Size = new System.Drawing.Size(151, 21);
             this.cbCountry.TabIndex = 63;
+            this.cbCountry.SelectedIndexChanged += new System.EventHandler(this.cbCountry_SelectedIndexChanged);
             // 
             // label37
             // 
@@ -1090,6 +1102,7 @@
             this.departmentAdd.TabIndex = 86;
             this.departmentAdd.Text = "+";
             this.departmentAdd.UseVisualStyleBackColor = true;
+            this.departmentAdd.Click += new System.EventHandler(this.departmentAdd_Click);
             // 
             // titleAdd
             // 
@@ -1102,6 +1115,7 @@
             this.titleAdd.TabIndex = 85;
             this.titleAdd.Text = "+";
             this.titleAdd.UseVisualStyleBackColor = true;
+            this.titleAdd.Click += new System.EventHandler(this.titleAdd_Click);
             // 
             // ContactNotes
             // 
@@ -1171,6 +1185,7 @@
             this.ContactDepartment.Name = "ContactDepartment";
             this.ContactDepartment.Size = new System.Drawing.Size(142, 21);
             this.ContactDepartment.TabIndex = 59;
+            this.ContactDepartment.SelectedIndexChanged += new System.EventHandler(this.ContactDepartment_SelectedIndexChanged);
             // 
             // label26
             // 
@@ -1536,7 +1551,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.ClientSize = new System.Drawing.Size(1391, 680);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.MinimumSize = new System.Drawing.Size(1407, 719);
+            this.MinimumSize = new System.Drawing.Size(1364, 719);
             this.Name = "FormCustomerAdd";
             this.Text = "FormCustomerAdd";
             this.TopMost = true;
