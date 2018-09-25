@@ -7,7 +7,6 @@
 #endregion
 using LoginForm.BackOrder;
 using LoginForm.Billing;
-using LoginForm.clsClasses;
 using LoginForm.DataSet;
 using LoginForm.f_RSInvoice;
 using LoginForm.ItemModule;
@@ -337,7 +336,7 @@ namespace LoginForm.Main
 
         private void btnCustomer_Click(object sender, EventArgs e)
         {
-            CustomerMain customerMain = new CustomerMain();
+            FormCustomerMain customerMain = new FormCustomerMain();
             customerMain.Show();
             Utils.LogKayit("Customer Main", "Customer main screen has been entered");
         }
