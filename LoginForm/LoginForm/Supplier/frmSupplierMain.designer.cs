@@ -29,7 +29,7 @@ namespace LoginForm
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabgenel = new System.Windows.Forms.TabControl();
             this.tabInfo = new System.Windows.Forms.TabPage();
             this.btnNextCompany = new System.Windows.Forms.Button();
@@ -234,7 +234,7 @@ namespace LoginForm
             this.tabInfo.Controls.Add(this.label2);
             this.tabInfo.Location = new System.Drawing.Point(4, 25);
             this.tabInfo.Name = "tabInfo";
-            this.tabInfo.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabInfo.Padding = new System.Windows.Forms.Padding(3);
             this.tabInfo.Size = new System.Drawing.Size(911, 176);
             this.tabInfo.TabIndex = 0;
             this.tabInfo.Text = "Info";
@@ -486,7 +486,7 @@ namespace LoginForm
             this.tabAccount.Controls.Add(this.label7);
             this.tabAccount.Location = new System.Drawing.Point(4, 25);
             this.tabAccount.Name = "tabAccount";
-            this.tabAccount.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabAccount.Padding = new System.Windows.Forms.Padding(3);
             this.tabAccount.Size = new System.Drawing.Size(911, 176);
             this.tabAccount.TabIndex = 1;
             this.tabAccount.Text = "Account";
@@ -629,7 +629,7 @@ namespace LoginForm
             this.tabAddress.Controls.Add(this.label16);
             this.tabAddress.Location = new System.Drawing.Point(4, 25);
             this.tabAddress.Name = "tabAddress";
-            this.tabAddress.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabAddress.Padding = new System.Windows.Forms.Padding(3);
             this.tabAddress.Size = new System.Drawing.Size(911, 176);
             this.tabAddress.TabIndex = 2;
             this.tabAddress.Text = "Company Address";
@@ -919,7 +919,7 @@ namespace LoginForm
             this.tabContact.Controls.Add(this.label26);
             this.tabContact.Location = new System.Drawing.Point(4, 25);
             this.tabContact.Name = "tabContact";
-            this.tabContact.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabContact.Padding = new System.Windows.Forms.Padding(3);
             this.tabContact.Size = new System.Drawing.Size(911, 176);
             this.tabContact.TabIndex = 3;
             this.tabContact.Text = "Contact";
@@ -1250,6 +1250,7 @@ namespace LoginForm
             this.btnBankDelete.TabIndex = 61;
             this.btnBankDelete.Text = "Del";
             this.btnBankDelete.UseVisualStyleBackColor = true;
+            this.btnBankDelete.Click += new System.EventHandler(this.btnBankDelete_Click);
             // 
             // btnBankUpdate
             // 
@@ -1284,6 +1285,7 @@ namespace LoginForm
             this.lbBankList.Name = "lbBankList";
             this.lbBankList.Size = new System.Drawing.Size(170, 116);
             this.lbBankList.TabIndex = 58;
+            this.lbBankList.SelectedIndexChanged += new System.EventHandler(this.lbBankList_SelectedIndexChanged);
             // 
             // button4
             // 
@@ -1403,19 +1405,19 @@ namespace LoginForm
             this.supplierAddressesDataGridViewTextBoxColumn,
             this.supplierWorkersDataGridViewTextBoxColumn});
             this.dgSupplier.DataSource = this.supplierBindingSource;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgSupplier.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgSupplier.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgSupplier.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgSupplier.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dgSupplier.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dgSupplier.Location = new System.Drawing.Point(8, 288);
-            this.dgSupplier.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.dgSupplier.Margin = new System.Windows.Forms.Padding(8);
             this.dgSupplier.MultiSelect = false;
             this.dgSupplier.Name = "dgSupplier";
             this.dgSupplier.ReadOnly = true;
@@ -1707,7 +1709,7 @@ namespace LoginForm
             this.tableLayoutPanel1.Controls.Add(this.tabgenel, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 211F));
@@ -1725,7 +1727,7 @@ namespace LoginForm
             this.panel1.Controls.Add(this.btnAdd);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(2, 213);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(921, 65);
             this.panel1.TabIndex = 2;

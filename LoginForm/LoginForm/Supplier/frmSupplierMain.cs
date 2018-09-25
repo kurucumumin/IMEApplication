@@ -189,7 +189,7 @@ namespace LoginForm
         {
             switch (btnAdd.Text)
             {
-                case "Add":
+                case "ADD":
                     ClearGeneralInputs();
                     ClearAddressInputs();
                     ClearContactInputs();
@@ -200,8 +200,8 @@ namespace LoginForm
 
                     txtSupplierCode.Text = NewSupplierID();
 
-                    btnAdd.Text = "Save";
-                    btnModify.Text = "Cancel";
+                    btnAdd.Text = "SAVE";
+                    btnModify.Text = "CANCEL";
                     AddressButtonsMode(AddressButtonsModeOpen);
                     ContactButtonsMode(ContactButtonsModeOpen);
 
@@ -221,7 +221,8 @@ namespace LoginForm
                     txtBankIban.Text = String.Empty;
                     txtBankIban.Enabled = true;
                     lbBankList.Enabled = false;
-                    lbBankList.Items.Clear();
+                    lbBankList.DataSource = null;
+                    lbBankList.Refresh();
 
                     btnBankAdd.Text = "Save";
                     btnBankAdd.Enabled = true;
@@ -236,7 +237,7 @@ namespace LoginForm
 
 
                     break;
-                case "Save":
+                case "SAVE":
                     if (SupplierAddMode == SupplierModeAdd)
                     {
                         SaveNewSupplier();
@@ -309,7 +310,7 @@ namespace LoginForm
                             }
                             catch (Exception ex)
                             {
-                                MessageBox.Show("SN1: SupplierNote could not been updated!." + "/n" + ex.ToString(), "Note Update Error");
+                                MessageBox.Show("SN1: SupplierNote could not been updated!." + "/n" + ex.StackTrace.ToString(), "Note Update Error");
                             }
                         }
                     }
@@ -627,8 +628,8 @@ namespace LoginForm
                     {
                         EnableGeneralInput(true);
 
-                        btnAdd.Text = "Save";
-                        btnModify.Text = "Cancel";
+                        btnAdd.Text = "SAVE";
+                        btnModify.Text = "CANCEL";
 
                         #region BankAccount
                         
@@ -663,7 +664,7 @@ namespace LoginForm
                         MessageBox.Show("You should choose a customer first!","Info");
                     }
                     break;
-                case "Cancel":
+                case "CANCEL":
                     ClearGeneralInputs();
                     ClearAddressInputs();
                     ClearContactInputs();
@@ -704,7 +705,8 @@ namespace LoginForm
                     txtBankIban.Enabled = false;
                     if (lbBankList.DataSource != null)
                     {
-                        lbBankList.Items.Clear();
+                        lbBankList.DataSource = null;
+                        lbBankList.Refresh();
                     }
 
                     btnBankAdd.Text = "Add";
@@ -729,8 +731,10 @@ namespace LoginForm
         {
             SavedAddresses.Clear();
             SavedContacts.Clear();
+            SavedBanks.Clear();
             ClearAddressInputs();
             ClearContactInputs();
+            ClearBankAccountInputs();
             FillSupplierInfo(dgSupplier.Rows[e.RowIndex].Cells[dgID.Index].Value.ToString());
         }
 
@@ -860,6 +864,17 @@ namespace LoginForm
             lbContacts.DisplayMember = "sw_name";
             lbContacts.ClearSelected();
             lbContacts.Enabled = true;
+
+            SavedBanks.Clear();
+            foreach (SupplierBankAccount ba in s.SupplierBankAccounts)
+            {
+                SavedBanks.Add(ba);
+            }
+            lbBankList.DataSource = null;
+            lbBankList.DataSource = SavedBanks;
+            lbBankList.DisplayMember = "Title";
+            lbBankList.ClearSelected();
+            lbBankList.Enabled = true;
         }
 
         private void ClearGeneralInputs()
@@ -1534,6 +1549,14 @@ namespace LoginForm
             {
                 SavedContacts.Clear();
             }
+        }
+
+        private void ClearBankAccountInputs()
+        {
+            txtBankAccountTitle.Text = String.Empty;
+            txtBankBranchCode.Text = String.Empty;
+            txtBankAccountNumber.Text = String.Empty;
+            txtBankIban.Text = String.Empty;
         }
 
         private void btnContactDone_Click(object sender, EventArgs e)
@@ -2400,6 +2423,7 @@ namespace LoginForm
                     {
                         SupplierBankAccount bank = new SupplierBankAccount
                         {
+                            SupplierID = txtSupplierCode.Text,
                             Title = txtBankAccountTitle.Text,
                             BranchCode = txtBankBranchCode.Text,
                             AccountNumber = txtBankAccountNumber.Text,
@@ -2474,7 +2498,47 @@ namespace LoginForm
 
         private void btnBankUpdate_Click(object sender, EventArgs e)
         {
+            if (btnBankUpdate.Text == "Update")
+            {
+                BankMode = "Update";
+                lbBankList.Enabled = false;
 
+                txtBankAccountTitle.Enabled = true;
+                txtBankBranchCode.Enabled = true;
+                txtBankAccountNumber.Enabled = true;
+                txtBankIban.Enabled = true;
+
+                btnBankDelete.Visible = false;
+                btnBankAdd.Text = "Save";
+                btnBankUpdate.Text = "Cancel";
+
+            }
+            else if (btnBankUpdate.Text == "Cancel")
+            {
+                BankMode = String.Empty;
+                ClearBankAccountInputs();
+                lbBankList.Enabled = true;
+
+                btnBankDelete.Visible = true;
+                btnBankAdd.Text = "Add";
+                btnBankUpdate.Text = "Update";
+                if (lbBankList.Items.Count > 0)
+                {
+                    btnBankUpdate.Enabled = true;
+                    btnBankDelete.Enabled = true;
+                    BankAccountFill((SupplierBankAccount)lbBankList.SelectedItem);
+                }
+                else
+                {
+                    btnBankDelete.Enabled = false;
+                    btnBankUpdate.Enabled = false;
+                }
+
+                txtBankAccountTitle.Enabled = false;
+                txtBankBranchCode.Enabled = false;
+                txtBankAccountNumber.Enabled = false;
+                txtBankIban.Enabled = false;
+            }
         }
 
         public void checkAuthorities()
@@ -2486,6 +2550,55 @@ namespace LoginForm
                 btnAdd.Visible = false;
                 btnModify.Visible = false;
             }
+        }
+
+        private void lbBankList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lbBankList.SelectedIndex >= 0)
+            {
+                BankAccountFill((SupplierBankAccount)lbBankList.SelectedItem);
+            }
+        }
+
+        private void BankAccountFill(SupplierBankAccount bank)
+        {
+            txtBankAccountTitle.Text = bank.Title;
+            txtBankIban.Text = bank.IBAN;
+            txtBankBranchCode.Text = bank.BranchCode?.ToString();
+            txtBankAccountNumber.Text = bank.AccountNumber?.ToString();
+        }
+
+        private void btnBankDelete_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Selected Bank Account Will Be Deleted! Do You Confirm?", "Warning!",MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                if (lbBankList.SelectedIndex != -1)
+                {
+                    SupplierBankAccount ba = (SupplierBankAccount)lbBankList.SelectedItem;
+                    SavedBanks.Remove(ba);
+
+                    ClearBankAccountInputs();
+
+                    lbBankList.Enabled = true;
+                    txtBankAccountTitle.Enabled = false;
+                    txtBankBranchCode.Enabled = false;
+                    txtBankAccountNumber.Enabled = false;
+                    txtBankIban.Enabled = false;
+
+                    if (lbBankList.Items.Count <= 0)
+                    {
+                        btnBankUpdate.Enabled = false;
+                        btnBankDelete.Enabled = false;
+                    }
+
+                    lbBankList.ClearSelected();
+                }
+                else
+                {
+                    MessageBox.Show("Please choose an address from the list!", "Warning");
+                }
+            }
+            
         }
     }
 }
