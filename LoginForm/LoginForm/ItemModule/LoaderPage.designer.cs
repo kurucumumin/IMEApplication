@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvFileLog = new System.Windows.Forms.DataGridView();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnChooseFile = new System.Windows.Forms.Button();
             this.tableMain = new System.Windows.Forms.TableLayoutPanel();
@@ -37,23 +37,38 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.DTPLoaderDate = new System.Windows.Forms.DateTimePicker();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dgUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgFileType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgFileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFileLog)).BeginInit();
             this.tableMain.SuspendLayout();
             this.tableTop.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgvFileLog
             // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 55);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(890, 468);
-            this.dataGridView1.TabIndex = 4;
+            this.dgvFileLog.AllowUserToAddRows = false;
+            this.dgvFileLog.AllowUserToDeleteRows = false;
+            this.dgvFileLog.AllowUserToOrderColumns = true;
+            this.dgvFileLog.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvFileLog.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
+            this.dgvFileLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFileLog.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgUser,
+            this.dgFileType,
+            this.dgFileName,
+            this.dgDate});
+            this.dgvFileLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvFileLog.Location = new System.Drawing.Point(3, 55);
+            this.dgvFileLog.Name = "dgvFileLog";
+            this.dgvFileLog.ReadOnly = true;
+            this.dgvFileLog.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFileLog.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvFileLog.Size = new System.Drawing.Size(890, 468);
+            this.dgvFileLog.TabIndex = 4;
             // 
             // btnClose
             // 
@@ -81,7 +96,7 @@
             // 
             this.tableMain.ColumnCount = 1;
             this.tableMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableMain.Controls.Add(this.dataGridView1, 0, 1);
+            this.tableMain.Controls.Add(this.dgvFileLog, 0, 1);
             this.tableMain.Controls.Add(this.tableTop, 0, 0);
             this.tableMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableMain.Location = new System.Drawing.Point(0, 0);
@@ -160,6 +175,37 @@
             this.DTPLoaderDate.Size = new System.Drawing.Size(200, 20);
             this.DTPLoaderDate.TabIndex = 1;
             // 
+            // dgUser
+            // 
+            this.dgUser.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dgUser.HeaderText = "USER";
+            this.dgUser.Name = "dgUser";
+            this.dgUser.ReadOnly = true;
+            this.dgUser.Width = 62;
+            // 
+            // dgFileType
+            // 
+            this.dgFileType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dgFileType.HeaderText = "FILE TYPE";
+            this.dgFileType.Name = "dgFileType";
+            this.dgFileType.ReadOnly = true;
+            this.dgFileType.Width = 85;
+            // 
+            // dgFileName
+            // 
+            this.dgFileName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dgFileName.HeaderText = "FILE NAME";
+            this.dgFileName.Name = "dgFileName";
+            this.dgFileName.ReadOnly = true;
+            // 
+            // dgDate
+            // 
+            this.dgDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dgDate.HeaderText = "DATE";
+            this.dgDate.Name = "dgDate";
+            this.dgDate.ReadOnly = true;
+            this.dgDate.Width = 61;
+            // 
             // LoaderPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -171,7 +217,7 @@
             this.Text = "LoaderPage";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.LoaderPage_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFileLog)).EndInit();
             this.tableMain.ResumeLayout(false);
             this.tableTop.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -183,7 +229,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvFileLog;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnChooseFile;
         private System.Windows.Forms.TableLayoutPanel tableMain;
@@ -192,5 +238,9 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker DTPLoaderDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgUser;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgFileType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgFileName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgDate;
     }
 }

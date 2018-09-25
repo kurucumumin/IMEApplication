@@ -16,13 +16,13 @@ namespace LoginForm.Services
         public static Color DefaultGridRowColor = Color.Empty;
         public static Color GridPurchaseOrderCreatedRowColor = Color.FromArgb(114, 155, 185);
 
-        public static string dbDataSource = "195.201.76.136";
-        public static string dbPassword = "ime1453..";
-        public static string dbUserID = "sa";
-        public static string dbInitialCatalogLOGO = "LOGO";
-        public static string dbInitialCatalogIME = "IME";
-        public static string dbFrmNo = "001";
-        public static string dbDnmNo = "01";
+        private static string dbDataSource = "195.201.76.136";
+        private static string dbPassword = "ime1453..";
+        private static string dbUserID = "sa";
+        private static string dbInitialCatalogLOGO = "LOGO";
+        private static string dbInitialCatalogIME = "IME";
+        private static string dbFrmNo = "001";
+        private static string dbDnmNo = "01";
         #endregion
 
         #region For Management

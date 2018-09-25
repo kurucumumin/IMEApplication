@@ -1049,6 +1049,7 @@
     <Compile Include="Services\SP\Sp_Customer.cs" />
     <Compile Include="Services\SP\Sp_Item.cs" />
     <Compile Include="Services\SP\Sp_Management.cs" />
+    <Compile Include="Services\SP\Sp_RsFileHistory.cs" />
     <Compile Include="Services\SP\Sp_RSInvoice.cs" />
     <Compile Include="Services\SP\Sp_SaleOrder.cs" />
     <Compile Include="Services\SP\Sp_Worker.cs" />

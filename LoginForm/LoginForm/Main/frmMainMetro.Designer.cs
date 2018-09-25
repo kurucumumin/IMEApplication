@@ -387,7 +387,6 @@ namespace LoginForm.Main
             this.btnOnSale.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
             this.btnOnSale.BackColor = System.Drawing.Color.Transparent;
             this.btnOnSale.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOnSale.Enabled = false;
             this.btnOnSale.Font = new System.Drawing.Font("Sitka Text", 11F, System.Drawing.FontStyle.Bold);
             this.btnOnSale.ForeColor = System.Drawing.Color.Black;
             this.btnOnSale.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));

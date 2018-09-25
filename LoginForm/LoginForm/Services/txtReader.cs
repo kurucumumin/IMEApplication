@@ -838,10 +838,11 @@ namespace LoginForm
         //    }
         //}
 
-        public static int SuperDiskRead()
+        public static string[] SuperDiskRead()
         {
             #region Superdisk
             int a = 1;
+            string[] returnObject = new string[2];
             IMEEntities IME = new IMEEntities();
             SuperDisk Superdiskitems = new SuperDisk();
             //Show the dialog and get result.
@@ -853,6 +854,7 @@ namespace LoginForm
             int AddedCounter = 0;
             if (result1 == DialogResult.OK) // Test result.
             {
+                returnObject[0] = openFileDialog1.FileName;
                 //try
                 //{
                 string[] lines = System.IO.File.ReadAllLines(openFileDialog1.FileName);
@@ -1215,18 +1217,21 @@ namespace LoginForm
                         }
                     }
                     MessageBox.Show("Upload Completed");
-                    return 1;
+                    returnObject[1] = "1";
+                    return returnObject;
                 }
                 else
                 {
                     MessageBox.Show("Please Choose Correct File");
-                    return 0;
+                    returnObject[1] = "0";
+                    return returnObject;
                 }
                 //}
                 //catch (Exception ex) { MessageBox.Show(ex.Message); MessageBox.Show(a.ToString()); return 0; }
                 #endregion
             }
-            return 0;
+            returnObject[1] = "0";
+            return returnObject;
         }
 
         public static int SuperDiskPRead()
