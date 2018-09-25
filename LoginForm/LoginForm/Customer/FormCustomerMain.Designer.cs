@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.uPDATEQUOTATIONToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gridRightClick = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.qUOTATIONINFOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,8 +74,9 @@
             // uPDATEQUOTATIONToolStripMenuItem
             // 
             this.uPDATEQUOTATIONToolStripMenuItem.Name = "uPDATEQUOTATIONToolStripMenuItem";
-            this.uPDATEQUOTATIONToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.uPDATEQUOTATIONToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.uPDATEQUOTATIONToolStripMenuItem.Text = "MODIFY";
+            this.uPDATEQUOTATIONToolStripMenuItem.Click += new System.EventHandler(this.uPDATEQUOTATIONToolStripMenuItem_Click);
             // 
             // gridRightClick
             // 
@@ -84,19 +85,19 @@
             this.qUOTATIONPRINTToolStripMenuItem,
             this.uPDATEQUOTATIONToolStripMenuItem});
             this.gridRightClick.Name = "gridRightClick";
-            this.gridRightClick.Size = new System.Drawing.Size(119, 70);
+            this.gridRightClick.Size = new System.Drawing.Size(181, 92);
             // 
             // qUOTATIONINFOToolStripMenuItem
             // 
             this.qUOTATIONINFOToolStripMenuItem.Name = "qUOTATIONINFOToolStripMenuItem";
-            this.qUOTATIONINFOToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.qUOTATIONINFOToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.qUOTATIONINFOToolStripMenuItem.Text = " INFO";
             this.qUOTATIONINFOToolStripMenuItem.Click += new System.EventHandler(this.qUOTATIONINFOToolStripMenuItem_Click);
             // 
             // qUOTATIONPRINTToolStripMenuItem
             // 
             this.qUOTATIONPRINTToolStripMenuItem.Name = "qUOTATIONPRINTToolStripMenuItem";
-            this.qUOTATIONPRINTToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.qUOTATIONPRINTToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.qUOTATIONPRINTToolStripMenuItem.Text = "PRINT";
             // 
             // tableLayoutPanel1
@@ -137,14 +138,14 @@
             this.CustomerNote,
             this.IsActive});
             this.dgCustomer.ContextMenuStrip = this.gridRightClick;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgCustomer.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgCustomer.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgCustomer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgCustomer.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dgCustomer.Location = new System.Drawing.Point(8, 129);
