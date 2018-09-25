@@ -6,9 +6,7 @@ using System.Data;
 using System.Windows.Forms;
 using LoginForm.Services;
 using static LoginForm.Services.MyClasses.MyAuthority;
-using Microsoft.Office.Interop;
-using Excel=Microsoft.Office.Interop.Excel;
-using System.Drawing;
+
 
 namespace LoginForm.QuotationModule
 {

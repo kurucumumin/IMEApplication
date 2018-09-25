@@ -27,6 +27,7 @@ namespace LoginForm
         string ComboboxString = "Choose";
         //private List<Customer> gridCustomerList;
         DataTable customerList = new DataTable();
+        FormCustomerMain parent;
         public CustomerMain()
         {
             InitializeComponent();
@@ -39,6 +40,32 @@ namespace LoginForm
 
             this.dgvCustomer.AutoGenerateColumns = false;
             
+        }
+
+        public CustomerMain(Customer customer, string form)
+        {
+            InitializeComponent();
+
+            dgvCustomer.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor;
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
+            System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
+            dgvCustomer, new object[] { true });
+
+            this.dgvCustomer.AutoGenerateColumns = false;
+
+        }
+
+        public CustomerMain(FormCustomerMain parent)
+        {
+            InitializeComponent();
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
+            System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
+            dgvCustomer, new object[] { true });
+
+            this.parent = parent;
+
         }
 
         //private List<Customer> BringSupplierList(string CustomerName)
