@@ -44,7 +44,7 @@ namespace LoginForm
         public FormCustomerAdd(FormCustomerMain parent)
         {
             InitializeComponent();
-            IMEEntities IME = new IMEEntities();
+            this.IME = new IMEEntities();
             this.parent = parent;
             itemsClear();
             itemsEnableTrue();

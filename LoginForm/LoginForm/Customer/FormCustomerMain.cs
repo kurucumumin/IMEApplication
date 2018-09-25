@@ -216,5 +216,10 @@ namespace LoginForm
                 CustomerSearch();
             }
         }
+
+        private void uPDATEQUOTATIONToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CustomerOpen("Modify");
+        }
     }
 }

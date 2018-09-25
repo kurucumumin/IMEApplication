@@ -74,8 +74,9 @@
             // uPDATEQUOTATIONToolStripMenuItem
             // 
             this.uPDATEQUOTATIONToolStripMenuItem.Name = "uPDATEQUOTATIONToolStripMenuItem";
-            this.uPDATEQUOTATIONToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.uPDATEQUOTATIONToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.uPDATEQUOTATIONToolStripMenuItem.Text = "MODIFY";
+            this.uPDATEQUOTATIONToolStripMenuItem.Click += new System.EventHandler(this.uPDATEQUOTATIONToolStripMenuItem_Click);
             // 
             // gridRightClick
             // 
@@ -84,19 +85,19 @@
             this.qUOTATIONPRINTToolStripMenuItem,
             this.uPDATEQUOTATIONToolStripMenuItem});
             this.gridRightClick.Name = "gridRightClick";
-            this.gridRightClick.Size = new System.Drawing.Size(119, 70);
+            this.gridRightClick.Size = new System.Drawing.Size(181, 92);
             // 
             // qUOTATIONINFOToolStripMenuItem
             // 
             this.qUOTATIONINFOToolStripMenuItem.Name = "qUOTATIONINFOToolStripMenuItem";
-            this.qUOTATIONINFOToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.qUOTATIONINFOToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.qUOTATIONINFOToolStripMenuItem.Text = " INFO";
             this.qUOTATIONINFOToolStripMenuItem.Click += new System.EventHandler(this.qUOTATIONINFOToolStripMenuItem_Click);
             // 
             // qUOTATIONPRINTToolStripMenuItem
             // 
             this.qUOTATIONPRINTToolStripMenuItem.Name = "qUOTATIONPRINTToolStripMenuItem";
-            this.qUOTATIONPRINTToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.qUOTATIONPRINTToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.qUOTATIONPRINTToolStripMenuItem.Text = "PRINT";
             // 
             // tableLayoutPanel1
