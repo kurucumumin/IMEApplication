@@ -196,13 +196,14 @@
             this.groupCompany.Controls.Add(this.CustomerCode);
             this.groupCompany.Controls.Add(this.label1);
             this.groupCompany.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupCompany.ForeColor = System.Drawing.Color.Red;
+            this.groupCompany.ForeColor = System.Drawing.SystemColors.ControlText;
             this.groupCompany.Location = new System.Drawing.Point(3, 3);
             this.groupCompany.Name = "groupCompany";
             this.groupCompany.Size = new System.Drawing.Size(689, 284);
             this.groupCompany.TabIndex = 0;
             this.groupCompany.TabStop = false;
-            this.groupCompany.Text = "Company Info";
+            this.groupCompany.Text = "COMPANY INFO";
+            this.groupCompany.Paint += new System.Windows.Forms.PaintEventHandler(this.groupCompany_Paint);
             // 
             // txt3partyCode
             // 
@@ -560,13 +561,14 @@
             this.groupAccount.Controls.Add(this.TaxOffice);
             this.groupAccount.Controls.Add(this.label21);
             this.groupAccount.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupAccount.ForeColor = System.Drawing.Color.Red;
+            this.groupAccount.ForeColor = System.Drawing.SystemColors.ControlText;
             this.groupAccount.Location = new System.Drawing.Point(698, 3);
             this.groupAccount.Name = "groupAccount";
             this.groupAccount.Size = new System.Drawing.Size(690, 284);
             this.groupAccount.TabIndex = 1;
             this.groupAccount.TabStop = false;
-            this.groupAccount.Text = "Account";
+            this.groupAccount.Text = "ACCOUNT";
+            this.groupAccount.Paint += new System.Windows.Forms.PaintEventHandler(this.groupAccount_Paint);
             // 
             // factor
             // 
@@ -680,7 +682,7 @@
             // 
             this.label23.AutoSize = true;
             this.label23.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label23.Location = new System.Drawing.Point(0, 243);
+            this.label23.Location = new System.Drawing.Point(6, 243);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(58, 13);
             this.label23.TabIndex = 19;
@@ -720,7 +722,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label17.Location = new System.Drawing.Point(0, 201);
+            this.label17.Location = new System.Drawing.Point(6, 201);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(87, 13);
             this.label17.TabIndex = 23;
@@ -730,7 +732,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label7.Location = new System.Drawing.Point(0, 31);
+            this.label7.Location = new System.Drawing.Point(6, 31);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(62, 13);
             this.label7.TabIndex = 30;
@@ -740,7 +742,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label19.Location = new System.Drawing.Point(-2, 159);
+            this.label19.Location = new System.Drawing.Point(4, 159);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(92, 13);
             this.label19.TabIndex = 26;
@@ -760,7 +762,7 @@
             // 
             this.label20.AutoSize = true;
             this.label20.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label20.Location = new System.Drawing.Point(0, 118);
+            this.label20.Location = new System.Drawing.Point(6, 118);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(65, 13);
             this.label20.TabIndex = 27;
@@ -797,7 +799,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label21.Location = new System.Drawing.Point(0, 77);
+            this.label21.Location = new System.Drawing.Point(6, 77);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(56, 13);
             this.label21.TabIndex = 31;
@@ -823,13 +825,14 @@
             this.groupAddresses.Controls.Add(this.label41);
             this.groupAddresses.Controls.Add(this.PostCode);
             this.groupAddresses.Controls.Add(this.label25);
-            this.groupAddresses.ForeColor = System.Drawing.Color.Red;
+            this.groupAddresses.ForeColor = System.Drawing.SystemColors.ControlText;
             this.groupAddresses.Location = new System.Drawing.Point(8, 5);
             this.groupAddresses.Name = "groupAddresses";
-            this.groupAddresses.Size = new System.Drawing.Size(524, 290);
+            this.groupAddresses.Size = new System.Drawing.Size(516, 269);
             this.groupAddresses.TabIndex = 2;
             this.groupAddresses.TabStop = false;
-            this.groupAddresses.Text = "Addresses";
+            this.groupAddresses.Text = "ADDRESSES";
+            this.groupAddresses.Paint += new System.Windows.Forms.PaintEventHandler(this.groupAddresses_Paint);
             // 
             // CityAdd
             // 
@@ -1054,13 +1057,14 @@
             this.groupContact.Controls.Add(this.label28);
             this.groupContact.Controls.Add(this.label30);
             this.groupContact.Controls.Add(this.label29);
-            this.groupContact.ForeColor = System.Drawing.Color.Red;
-            this.groupContact.Location = new System.Drawing.Point(3, 5);
+            this.groupContact.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.groupContact.Location = new System.Drawing.Point(9, 5);
             this.groupContact.Name = "groupContact";
-            this.groupContact.Size = new System.Drawing.Size(537, 290);
+            this.groupContact.Size = new System.Drawing.Size(529, 276);
             this.groupContact.TabIndex = 3;
             this.groupContact.TabStop = false;
-            this.groupContact.Text = "Contact";
+            this.groupContact.Text = "CONTACT";
+            this.groupContact.Paint += new System.Windows.Forms.PaintEventHandler(this.groupContact_Paint);
             // 
             // ContactAdress
             // 
@@ -1076,7 +1080,7 @@
             // 
             this.label42.AutoSize = true;
             this.label42.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label42.Location = new System.Drawing.Point(-3, 249);
+            this.label42.Location = new System.Drawing.Point(6, 249);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(39, 13);
             this.label42.TabIndex = 88;
@@ -1190,7 +1194,7 @@
             // label26
             // 
             this.label26.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label26.Location = new System.Drawing.Point(-3, 131);
+            this.label26.Location = new System.Drawing.Point(6, 131);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(70, 39);
             this.label26.TabIndex = 74;
@@ -1200,7 +1204,7 @@
             // 
             this.label27.AutoSize = true;
             this.label27.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label27.Location = new System.Drawing.Point(-3, 67);
+            this.label27.Location = new System.Drawing.Point(6, 67);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(62, 13);
             this.label27.TabIndex = 76;
@@ -1238,7 +1242,7 @@
             // 
             this.label31.AutoSize = true;
             this.label31.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label31.Location = new System.Drawing.Point(-3, 213);
+            this.label31.Location = new System.Drawing.Point(6, 213);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(38, 13);
             this.label31.TabIndex = 78;
@@ -1285,7 +1289,7 @@
             // 
             this.label28.AutoSize = true;
             this.label28.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label28.Location = new System.Drawing.Point(-3, 103);
+            this.label28.Location = new System.Drawing.Point(6, 103);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(44, 13);
             this.label28.TabIndex = 79;
@@ -1295,7 +1299,7 @@
             // 
             this.label30.AutoSize = true;
             this.label30.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label30.Location = new System.Drawing.Point(-3, 176);
+            this.label30.Location = new System.Drawing.Point(6, 176);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(36, 13);
             this.label30.TabIndex = 81;
@@ -1305,7 +1309,7 @@
             // 
             this.label29.AutoSize = true;
             this.label29.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label29.Location = new System.Drawing.Point(-3, 30);
+            this.label29.Location = new System.Drawing.Point(6, 30);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(71, 13);
             this.label29.TabIndex = 80;
@@ -1420,7 +1424,7 @@
             // btnContactDelete
             // 
             this.btnContactDelete.Enabled = false;
-            this.btnContactDelete.Location = new System.Drawing.Point(634, 242);
+            this.btnContactDelete.Location = new System.Drawing.Point(638, 242);
             this.btnContactDelete.Name = "btnContactDelete";
             this.btnContactDelete.Size = new System.Drawing.Size(43, 25);
             this.btnContactDelete.TabIndex = 89;
@@ -1431,7 +1435,7 @@
             // btnContactUpdate
             // 
             this.btnContactUpdate.Enabled = false;
-            this.btnContactUpdate.Location = new System.Drawing.Point(585, 242);
+            this.btnContactUpdate.Location = new System.Drawing.Point(589, 242);
             this.btnContactUpdate.Name = "btnContactUpdate";
             this.btnContactUpdate.Size = new System.Drawing.Size(46, 25);
             this.btnContactUpdate.TabIndex = 88;
@@ -1442,7 +1446,7 @@
             // btnContactAdd
             // 
             this.btnContactAdd.Enabled = false;
-            this.btnContactAdd.Location = new System.Drawing.Point(540, 242);
+            this.btnContactAdd.Location = new System.Drawing.Point(544, 242);
             this.btnContactAdd.Name = "btnContactAdd";
             this.btnContactAdd.Size = new System.Drawing.Size(43, 25);
             this.btnContactAdd.TabIndex = 87;
@@ -1453,7 +1457,7 @@
             // ContactList
             // 
             this.ContactList.FormattingEnabled = true;
-            this.ContactList.Location = new System.Drawing.Point(540, 32);
+            this.ContactList.Location = new System.Drawing.Point(544, 32);
             this.ContactList.Name = "ContactList";
             this.ContactList.Size = new System.Drawing.Size(137, 199);
             this.ContactList.TabIndex = 90;
@@ -1461,7 +1465,7 @@
             // 
             // btnContactDone
             // 
-            this.btnContactDone.Location = new System.Drawing.Point(540, 244);
+            this.btnContactDone.Location = new System.Drawing.Point(544, 244);
             this.btnContactDone.Name = "btnContactDone";
             this.btnContactDone.Size = new System.Drawing.Size(57, 23);
             this.btnContactDone.TabIndex = 85;
@@ -1472,7 +1476,7 @@
             // 
             // btnContactCancel
             // 
-            this.btnContactCancel.Location = new System.Drawing.Point(603, 244);
+            this.btnContactCancel.Location = new System.Drawing.Point(607, 244);
             this.btnContactCancel.Name = "btnContactCancel";
             this.btnContactCancel.Size = new System.Drawing.Size(74, 23);
             this.btnContactCancel.TabIndex = 86;

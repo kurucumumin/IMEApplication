@@ -36,17 +36,6 @@
             this.qUOTATIONPRINTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgCustomer = new System.Windows.Forms.DataGridView();
-            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustomerNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.WebAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Telephone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Representative = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Factor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreditLimit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustomerNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IsActive = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -63,6 +52,16 @@
             this.btnExcel = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.btnNew = new System.Windows.Forms.Button();
+            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WebAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telephone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Representative = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Factor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreditDays = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gridRightClick.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCustomer)).BeginInit();
@@ -74,7 +73,7 @@
             // uPDATEQUOTATIONToolStripMenuItem
             // 
             this.uPDATEQUOTATIONToolStripMenuItem.Name = "uPDATEQUOTATIONToolStripMenuItem";
-            this.uPDATEQUOTATIONToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.uPDATEQUOTATIONToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.uPDATEQUOTATIONToolStripMenuItem.Text = "MODIFY";
             this.uPDATEQUOTATIONToolStripMenuItem.Click += new System.EventHandler(this.uPDATEQUOTATIONToolStripMenuItem_Click);
             // 
@@ -85,19 +84,19 @@
             this.qUOTATIONPRINTToolStripMenuItem,
             this.uPDATEQUOTATIONToolStripMenuItem});
             this.gridRightClick.Name = "gridRightClick";
-            this.gridRightClick.Size = new System.Drawing.Size(181, 92);
+            this.gridRightClick.Size = new System.Drawing.Size(119, 70);
             // 
             // qUOTATIONINFOToolStripMenuItem
             // 
             this.qUOTATIONINFOToolStripMenuItem.Name = "qUOTATIONINFOToolStripMenuItem";
-            this.qUOTATIONINFOToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.qUOTATIONINFOToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.qUOTATIONINFOToolStripMenuItem.Text = " INFO";
             this.qUOTATIONINFOToolStripMenuItem.Click += new System.EventHandler(this.qUOTATIONINFOToolStripMenuItem_Click);
             // 
             // qUOTATIONPRINTToolStripMenuItem
             // 
             this.qUOTATIONPRINTToolStripMenuItem.Name = "qUOTATIONPRINTToolStripMenuItem";
-            this.qUOTATIONPRINTToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.qUOTATIONPRINTToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.qUOTATIONPRINTToolStripMenuItem.Text = "PRINT";
             // 
             // tableLayoutPanel1
@@ -131,12 +130,11 @@
             this.CustomerName,
             this.WebAddress,
             this.Telephone,
-            this.Category,
+            this.Fax,
             this.Representative,
             this.Factor,
-            this.CreditLimit,
-            this.CustomerNote,
-            this.IsActive});
+            this.CreditDays,
+            this.CustomerNote});
             this.dgCustomer.ContextMenuStrip = this.gridRightClick;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
@@ -158,63 +156,6 @@
             this.dgCustomer.TabIndex = 0;
             this.dgCustomer.TabStop = false;
             this.dgCustomer.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgCustomer_CellMouseDoubleClick);
-            // 
-            // Date
-            // 
-            this.Date.HeaderText = "Date";
-            this.Date.Name = "Date";
-            this.Date.Visible = false;
-            // 
-            // CustomerNo
-            // 
-            this.CustomerNo.HeaderText = "CustomerNo";
-            this.CustomerNo.Name = "CustomerNo";
-            // 
-            // CustomerName
-            // 
-            this.CustomerName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CustomerName.HeaderText = "Customer Name";
-            this.CustomerName.Name = "CustomerName";
-            // 
-            // WebAddress
-            // 
-            this.WebAddress.HeaderText = "Web Address";
-            this.WebAddress.Name = "WebAddress";
-            // 
-            // Telephone
-            // 
-            this.Telephone.HeaderText = "Telephone";
-            this.Telephone.Name = "Telephone";
-            // 
-            // Category
-            // 
-            this.Category.HeaderText = "Category";
-            this.Category.Name = "Category";
-            // 
-            // Representative
-            // 
-            this.Representative.HeaderText = "Representative";
-            this.Representative.Name = "Representative";
-            // 
-            // Factor
-            // 
-            this.Factor.HeaderText = "Factor";
-            this.Factor.Name = "Factor";
-            // 
-            // CreditLimit
-            // 
-            this.CreditLimit.HeaderText = "Credit Limit";
-            this.CreditLimit.Name = "CreditLimit";
-            // 
-            // CustomerNote
-            // 
-            this.CustomerNote.HeaderText = "Customer Note";
-            this.CustomerNote.Name = "CustomerNote";
-            // 
-            // IsActive
-            // 
-            this.IsActive.HeaderText = "Is Active";
-            this.IsActive.Name = "IsActive";
             // 
             // panel1
             // 
@@ -419,6 +360,58 @@
             this.btnNew.UseVisualStyleBackColor = true;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
+            // Date
+            // 
+            this.Date.HeaderText = "Date";
+            this.Date.Name = "Date";
+            this.Date.Visible = false;
+            // 
+            // CustomerNo
+            // 
+            this.CustomerNo.HeaderText = "CustomerNo";
+            this.CustomerNo.Name = "CustomerNo";
+            // 
+            // CustomerName
+            // 
+            this.CustomerName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CustomerName.HeaderText = "Customer Name";
+            this.CustomerName.Name = "CustomerName";
+            // 
+            // WebAddress
+            // 
+            this.WebAddress.HeaderText = "Web Address";
+            this.WebAddress.Name = "WebAddress";
+            // 
+            // Telephone
+            // 
+            this.Telephone.HeaderText = "Telephone";
+            this.Telephone.Name = "Telephone";
+            // 
+            // Fax
+            // 
+            this.Fax.HeaderText = "Fax";
+            this.Fax.Name = "Fax";
+            // 
+            // Representative
+            // 
+            this.Representative.HeaderText = "Representative";
+            this.Representative.Name = "Representative";
+            // 
+            // Factor
+            // 
+            this.Factor.HeaderText = "Factor";
+            this.Factor.Name = "Factor";
+            // 
+            // CreditDays
+            // 
+            this.CreditDays.HeaderText = "Credit Days";
+            this.CreditDays.Name = "CreditDays";
+            // 
+            // CustomerNote
+            // 
+            this.CustomerNote.HeaderText = "Customer Note";
+            this.CustomerNote.Name = "CustomerNote";
+            // 
             // FormCustomerMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -426,7 +419,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.ClientSize = new System.Drawing.Size(1211, 699);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.MinimumSize = new System.Drawing.Size(632, 738);
+            this.MinimumSize = new System.Drawing.Size(632, 726);
             this.Name = "FormCustomerMain";
             this.Text = "FormCustomerMain";
             this.TopMost = true;
@@ -465,18 +458,17 @@
         private System.Windows.Forms.Button btnExcel;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnNew;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnRefreshList;
         private System.Windows.Forms.DataGridViewTextBoxColumn Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn CustomerNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn CustomerName;
         private System.Windows.Forms.DataGridViewTextBoxColumn WebAddress;
         private System.Windows.Forms.DataGridViewTextBoxColumn Telephone;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Category;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fax;
         private System.Windows.Forms.DataGridViewTextBoxColumn Representative;
         private System.Windows.Forms.DataGridViewTextBoxColumn Factor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CreditLimit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreditDays;
         private System.Windows.Forms.DataGridViewTextBoxColumn CustomerNote;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IsActive;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnRefreshList;
     }
 }

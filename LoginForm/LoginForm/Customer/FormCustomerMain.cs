@@ -70,12 +70,11 @@ namespace LoginForm
                             CustomerName = c.c_name,
                             WebAddress = c.webadress,
                             Telephone = c.telephone,
-                            Category = c.CustomerCategory.categoryname,
+                            Fax = c.fax,
                             Representative = c.CustomerWorker.cw_name,
                             Factor = c.factor,
-                            CreditLimit = c.creditlimit,
-                            CustomerNote = c.Note.Note_name,
-                            IsActive = c.isactive
+                            CreditDays = c.creditDay,
+                            CustomerNote = c.Note.Note_name
                         }).OrderByDescending(x=> x.Date).Take(100);
 
             populateGrid(list.ToList());
@@ -99,12 +98,11 @@ namespace LoginForm
                 row.Cells[CustomerName.Index].Value = item.CustomerName;
                 row.Cells[WebAddress.Index].Value = item.WebAddress;
                 row.Cells[Telephone.Index].Value = item.Telephone;
-                row.Cells[Category.Index].Value = item.Category;
+                row.Cells[Fax.Index].Value = item.Fax;
                 row.Cells[Representative.Index].Value = item.Representative;
                 row.Cells[Factor.Index].Value = item.Factor;
-                row.Cells[CreditLimit.Index].Value = item.CreditLimit;
+                row.Cells[CreditDays.Index].Value = item.CreditDays;
                 row.Cells[CustomerNote.Index].Value = item.CustomerNote;
-                row.Cells[IsActive.Index].Value = item.IsActive;
             }
         }
 
@@ -136,12 +134,11 @@ namespace LoginForm
                                 CustomerName = c.c_name,
                                 WebAddress = c.webadress,
                                 Telephone = c.telephone,
-                                Category = c.CustomerCategory.categoryname,
+                                Fax = c.fax,
                                 Representative = c.CustomerWorker.cw_name,
                                 Factor = c.factor,
-                                CreditLimit = c.creditlimit,
-                                CustomerNote = c.Note.Note_name,
-                                IsActive = c.isactive
+                                CreditDays = c.creditDay,
+                                CustomerNote = c.Note.Note_name
                             });
 
                 populateGrid(list.ToList());
