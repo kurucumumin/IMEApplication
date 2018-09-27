@@ -85,7 +85,7 @@ namespace LoginForm.PurchaseOrder
         }
         private void ControlAutorization()
         {
-            if (!Utils.AuthorityCheck(IMEAuthority.CanAddPurchaseOrder))
+            if (!Utils.AuthorityCheck(IMEAuthority.AddPurchaseOrder))
             {
                 btnCreate.Visible = false;
             }

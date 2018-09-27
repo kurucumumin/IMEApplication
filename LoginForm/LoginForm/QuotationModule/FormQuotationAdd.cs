@@ -264,7 +264,7 @@ namespace LoginForm.QuotationModule
                     QuotataionModifyItemDetailsFiller(dgQuotationAddedItems.Rows[i].Cells["dgProductCode"].Value.ToString(), i);
 
                 }
-                if (!Utils.AuthorityCheck(IMEAuthority.CanEditAnyQuotation))
+                if (!Utils.AuthorityCheck(IMEAuthority.EditanyQuotation))
                 {
                     dgQuotationAddedItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                     foreach (DataGridViewRow item in dgQuotationAddedItems.Rows)
@@ -347,7 +347,7 @@ namespace LoginForm.QuotationModule
                     QuotataionModifyItemDetailsFiller(dgQuotationAddedItems.Rows[i].Cells["dgProductCode"].Value.ToString(), i);
 
                 }
-                if (!Utils.AuthorityCheck(IMEAuthority.CanEditAnyQuotation))
+                if (!Utils.AuthorityCheck(IMEAuthority.EditanyQuotation))
                 {
                     dgQuotationAddedItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                     foreach (DataGridViewRow item in dgQuotationAddedItems.Rows)
@@ -458,7 +458,7 @@ namespace LoginForm.QuotationModule
                 QuotataionModifyItemDetailsFiller(dgQuotationAddedItems.Rows[i].Cells["dgProductCode"].Value.ToString(), i);
 
             }
-            if (!Utils.AuthorityCheck(IMEAuthority.CanEditAnyQuotation))
+            if (!Utils.AuthorityCheck(IMEAuthority.EditanyQuotation))
             {
                 dgQuotationAddedItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 foreach (DataGridViewRow item in dgQuotationAddedItems.Rows)
@@ -665,7 +665,7 @@ namespace LoginForm.QuotationModule
                 QuotataionModifyItemDetailsFiller(dgQuotationAddedItems.Rows[i].Cells["dgProductCode"].Value.ToString(), i);
 
             }
-            if (!Utils.AuthorityCheck(IMEAuthority.CanEditAnyQuotation))
+            if (!Utils.AuthorityCheck(IMEAuthority.EditanyQuotation))
             {
                 dgQuotationAddedItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 foreach (DataGridViewRow item in dgQuotationAddedItems.Rows)
@@ -720,7 +720,7 @@ namespace LoginForm.QuotationModule
         {
             List<DataSet.AuthorizationValue> authList = Utils.getCurrentUser().AuthorizationValues.ToList();
 
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeMargine) && !Utils.AuthorityCheck(IMEAuthority.CanSeeCost) && !Utils.AuthorityCheck(IMEAuthority.CanSeeUKPrice))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewMargine) && !Utils.AuthorityCheck(IMEAuthority.ViewCost) && !Utils.AuthorityCheck(IMEAuthority.ViewUKPrice))
             {
                 txtCost1.Visible = false;
                 txtCost2.Visible = false;
@@ -743,26 +743,26 @@ namespace LoginForm.QuotationModule
                 dgQuotationAddedItems.CurrentRow.Cells["dgUKPrice"].ReadOnly = false;
             }
 
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeQuotationCheckBox))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewQuotationCheckBox))
             {
                 LandingCost.Visible = false;
             }
 
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeSubTotal))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewSubTotal))
             {
                 lblsubtotal.Visible = false;
             }
 
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeTotalCost))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewTotalCost))
             {
                 txtTotalCost.Visible = false;
             }
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeTotalMargine))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewTotalMargine))
             {
                 txtTotalMarge.Visible = false;
             }
 
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeDiscount))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewDiscount))
             {
                 txtTotalDis.Visible = false;
                 txtTotalDis2.Visible = false;
@@ -770,11 +770,11 @@ namespace LoginForm.QuotationModule
                 dgQuotationAddedItems.CurrentRow.Cells["dgDisc"].ReadOnly = false;
             }
 
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeLandingCost))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewLandingCost))
             {
                 dgQuotationAddedItems.CurrentRow.Cells["dgLandingCost"].ReadOnly = false;
             }
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeCost))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewCost))
             {
                 dgQuotationAddedItems.CurrentRow.Cells["dgCost"].ReadOnly = false;
             }

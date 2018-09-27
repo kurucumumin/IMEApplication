@@ -68,7 +68,7 @@ namespace LoginForm.BackOrder
         {
             List<DataSet.AuthorizationValue> authList = Utils.getCurrentUser().AuthorizationValues.ToList();
 
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeExcel))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewExcel))
             {
                 btnExcel.Visible = false;
             }

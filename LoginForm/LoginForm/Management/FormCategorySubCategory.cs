@@ -175,7 +175,7 @@ namespace LoginForm.ManagementModule
         {
             List<DataSet.AuthorizationValue> authList = Utils.getCurrentUser().AuthorizationValues.ToList();
 
-            if (!Utils.AuthorityCheck(IMEAuthority.CanEditCategoryandSubCategory))
+            if (!Utils.AuthorityCheck(IMEAuthority.EditCategoryAndSubCategory))
             {
                 btnEditCategory.Visible = false;
                 btnEditSubcategory.Visible = false;

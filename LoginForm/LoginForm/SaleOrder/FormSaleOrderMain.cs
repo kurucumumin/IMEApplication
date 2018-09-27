@@ -34,15 +34,15 @@ namespace LoginForm.nsSaleOrder
 
         private void ControlAutorization()
         {
-            if (!Utils.AuthorityCheck(IMEAuthority.CanAddSaleOrderModule))
+            if (!Utils.AuthorityCheck(IMEAuthority.AddSaleOrderModule))
             {
                 btnNew.Visible = false;
             }
-            if (!Utils.AuthorityCheck(IMEAuthority.CanEditSaleOrderModule))
+            if (!Utils.AuthorityCheck(IMEAuthority.EditSaleOrderModule))
             {
                 btnModify.Visible = false;
             }
-            if (!Utils.AuthorityCheck(IMEAuthority.CanDeleteSaleOrderModule))
+            if (!Utils.AuthorityCheck(IMEAuthority.DeleteSaleOrderModule))
             {
                 btnDelete.Visible = false;
             }

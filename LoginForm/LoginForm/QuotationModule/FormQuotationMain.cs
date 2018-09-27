@@ -131,8 +131,8 @@ namespace LoginForm.QuotationModule
         {
             List<DataSet.AuthorizationValue> authList = Utils.getCurrentUser().AuthorizationValues.ToList();
 
-            if (!Utils.AuthorityCheck(IMEAuthority.CanAddQuotation) && !Utils.AuthorityCheck(IMEAuthority.CanEditAnyQuotation)
-                 && !Utils.AuthorityCheck(IMEAuthority.CanRevisionQuotation))
+            if (!Utils.AuthorityCheck(IMEAuthority.AddQuotation) && !Utils.AuthorityCheck(IMEAuthority.EditanyQuotation)
+                 && !Utils.AuthorityCheck(IMEAuthority.RevisionQuotation))
             {
                 btnModifyQuotation.Visible = false;
                 btnNewQuotation.Visible = false;
@@ -146,13 +146,13 @@ namespace LoginForm.QuotationModule
                 label10.Visible = false;
 
             }
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeExcel))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewExcel))
             {
                 btnExcel.Visible = false;
                 label7.Visible = false;
             }
 
-            if (!Utils.AuthorityCheck(IMEAuthority.CanDeleteQuotation))
+            if (!Utils.AuthorityCheck(IMEAuthority.DeleteQuotation))
             {
                 btnDeleteQuotation.Visible = false;
                 label6.Visible = false;
@@ -847,7 +847,7 @@ namespace LoginForm.QuotationModule
         {
             if (e.KeyCode == Keys.Delete)
             {
-                if (!Utils.AuthorityCheck(IMEAuthority.CanDeleteQuotation))//Can Delete Quotation
+                if (!Utils.AuthorityCheck(IMEAuthority.DeleteQuotation))//Can Delete Quotation
                 {
                     btnDeleteQuotation.PerformClick();
                 }

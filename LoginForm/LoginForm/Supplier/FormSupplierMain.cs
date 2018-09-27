@@ -42,7 +42,7 @@ namespace LoginForm
         {
             List<DataSet.AuthorizationValue> authList = Utils.getCurrentUser().AuthorizationValues.ToList();
 
-            if (!Utils.AuthorityCheck(IMEAuthority.CanAddSupplier) && !Utils.AuthorityCheck(IMEAuthority.CanEditSupplier))
+            if (!Utils.AuthorityCheck(IMEAuthority.AddSupplier) && !Utils.AuthorityCheck(IMEAuthority.EditSupplier))
             {
                 btnNew.Visible = false;
                 btnUpdate.Visible = false;

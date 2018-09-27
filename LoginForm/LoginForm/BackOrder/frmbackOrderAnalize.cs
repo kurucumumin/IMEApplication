@@ -124,7 +124,7 @@ namespace LoginForm.BackOrder
         {
             List<DataSet.AuthorizationValue> authList = Utils.getCurrentUser().AuthorizationValues.ToList();
 
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeExcel))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewExcel))
             {
                 button1.Visible = false;
             }

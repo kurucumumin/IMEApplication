@@ -182,138 +182,138 @@ namespace LoginForm.Main
             List<DataSet.AuthorizationValue> authList = Utils.getCurrentUser().AuthorizationValues.ToList();
 
             #region Ana Kategori
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeManagementModule))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewManagementModule))
             {
                 btnManagement.Visible = false;
                 pnlManagement.Visible = false;
             }
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeLoaderModule))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewLoaderModule))
             {
                 btnFileLoader.Visible = false;
                 pnlImportFiles.Visible = false;
             }
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeDevelopmentModule))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewWorkToBeModule))
             {
                 btnDevelopment.Visible = false;
             }
             #endregion
 
             #region Main
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeItemCardModule))
+            if (!Utils.AuthorityCheck(IMEAuthority.UpdateItemCardModule))
             {
                 btnItemCard.Visible = false;
             }
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeCustomerModule))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewCustomerModule))
             {
                 btnCustomer.Visible = false;
             }
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeSupplierModule))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewSupplierModule))
             {
                 btnSupplier.Visible = false;
             }
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeQuotationModule))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewQuotationModule))
             {
                 btnQuotation.Visible = false;
             }
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeSaleOrderModule))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewSaleOrderModule))
             {
                 btnSalesOrder.Visible = false;
             }
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeePurchaseOrderModule))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewPurchaseOrderModule))
             {
                 btnPurchaseOrder.Visible = false;
             }
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeStockModule))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewStockModule))
             {
                 btnStock.Visible = false;
             }
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeInvoiceModule))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewInvoiceModule))
             {
                 btnToBeInvoiced.Visible = false;
             }
             #endregion
 
             #region Import Files
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeRsInvoice))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewRsInvoice))
             {
                 btnRsInvoice.Visible = false;
             }
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeSuperDýsk))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewSuperDisk))
             {
                 btnSuperDisk.Visible = false;
             }
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeSuperDýskP))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewSuperDiskP))
             {
                 btnSuperDiskwithP.Visible = false;
             }
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeSlidingPrice))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewSlidingPrice))
             {
                 btnSlidingPriceList.Visible = false;
             }
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeHazardouse))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewHazardouse))
             {
                 btnHazardousFile.Visible = false;
             }
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeRsProList))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewRsProList))
             {
                 btnRSProList.Visible = false;
             }
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeTSEList))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewTSEList))
             {
                 btnTSEList.Visible = false;
             }
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeDualUsedArticles))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewDualUsedArticles))
             {
                 btnDualUsedArticles.Visible = false;
             }
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeExtendedRangePrice))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewExtendedRangePrice))
             {
                 btnExtendedRangePrice.Visible = false;
             }
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeDiscountinuedList))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewDiscountinuedList))
             {
                 btnDiscontinuedList.Visible = false;
             }
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeOnSale))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewOnSale))
             {
                 btnOnSale.Visible = false;
             }
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeOrderAcknowledgemenet))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewOrderAcknowledgemenet))
             {
                 btnOrderAcknowledgement.Visible = false;
             }
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeBackOrder))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewBackOrder))
             {
                 btnBackOrder.Visible = false;
             }
             #endregion
 
             #region Managment
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeExchangeRate))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewExchangeRate))
             {
                 btnExchangeRate.Visible = false;
             }
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeTermsofPayment))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewTermsofPayment))
             {
                 btnTermsOfPayment.Visible = false;
             }
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeCategoryandSubCategory))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewCategoryAndSubCategory))
             {
                 btnCategorySubCategory.Visible = false;
             }
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeRolesandAuthorities))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewRolesandAuthorities))
             {
                 btnRoleAuths.Visible = false;
             }
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeManagementControl))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewManagementControl))
             {
                 btnManagmentControl.Visible = false;
             }
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeCustomerTransfer))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewCustomerTransfer))
             {
                 btnCustomerTransfer.Visible = false;
             }
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeUserModule))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewUserModule))
             {
                 btnUser.Visible = false;
             }

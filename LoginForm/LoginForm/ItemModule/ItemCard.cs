@@ -924,7 +924,7 @@ namespace LoginForm.ItemModule
 
         private void ControlAutorization()
         {
-            if (!Utils.AuthorityCheck(IMEAuthority.CanAddNoteinItemCard) && !Utils.AuthorityCheck(IMEAuthority.CanEditNoteinItemCard))
+            if (!Utils.AuthorityCheck(IMEAuthority.AddNoteinItemCard) && !Utils.AuthorityCheck(IMEAuthority.EditNoteinItemCard))
             {
                 btnUpdate.Visible = false;
             }
@@ -1353,11 +1353,11 @@ namespace LoginForm.ItemModule
         {
             List<DataSet.AuthorizationValue> authList = Utils.getCurrentUser().AuthorizationValues.ToList();
 
-            if (!Utils.AuthorityCheck(IMEAuthority.CanAddNoteinItemCard))
+            if (!Utils.AuthorityCheck(IMEAuthority.AddNoteinItemCard))
             {
                 btnEditNote.Visible = false;
             }
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeMargine) && !Utils.AuthorityCheck(IMEAuthority.CanSeeCost))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewMargine) && !Utils.AuthorityCheck(IMEAuthority.ViewCost))
             {
                 txtCost1.Visible = false;
                 txtCost2.Visible = false;
@@ -1372,7 +1372,7 @@ namespace LoginForm.ItemModule
                 txtMargin5.Visible = false;
             }
 
-            if (!Utils.AuthorityCheck(IMEAuthority.CanAddItemCard) && !Utils.AuthorityCheck(IMEAuthority.CanEditItemCard))
+            if (!Utils.AuthorityCheck(IMEAuthority.AddItemCard) && !Utils.AuthorityCheck(IMEAuthority.EditItemCard))
             {
                 btnAdd.Visible = false;
                 btnUpdate.Visible = false;

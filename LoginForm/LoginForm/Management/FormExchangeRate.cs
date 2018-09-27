@@ -75,7 +75,7 @@ namespace LoginForm.ManagementModule
         {
             List<DataSet.AuthorizationValue> authList = Utils.getCurrentUser().AuthorizationValues.ToList();
 
-            if (!Utils.AuthorityCheck(IMEAuthority.CanEditDataExchangeRate))
+            if (!Utils.AuthorityCheck(IMEAuthority.EditDataExchangeRate))
             {
                 btnSave.Visible = false;
             }

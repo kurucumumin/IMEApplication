@@ -79,11 +79,11 @@ namespace LoginForm
         }
         private void ControlAutorization()
         {
-            if (!Utils.AuthorityCheck(IMEAuthority.CanAddSupplier))
+            if (!Utils.AuthorityCheck(IMEAuthority.AddSupplier))
             {
                 btnAdd.Visible = false;
             }
-            if (!Utils.AuthorityCheck(IMEAuthority.CanEditSupplier))
+            if (!Utils.AuthorityCheck(IMEAuthority.EditSupplier))
             {
                 btnModify.Visible = false;
             }
@@ -2603,7 +2603,7 @@ namespace LoginForm
         {
             List<DataSet.AuthorizationValue> authList = Utils.getCurrentUser().AuthorizationValues.ToList();
 
-            if (!Utils.AuthorityCheck(IMEAuthority.CanAddCustomer) && !Utils.AuthorityCheck(IMEAuthority.CanEditCustomer))
+            if (!Utils.AuthorityCheck(IMEAuthority.AddCustomer) && !Utils.AuthorityCheck(IMEAuthority.EditCustomer))
             {
                 btnAdd.Visible = false;
                 btnModify.Visible = false;

@@ -81,11 +81,11 @@ namespace LoginForm
         }
         private void ControlAutorization()
         {
-            if (!Utils.AuthorityCheck(IMEAuthority.CanAddSupplier))
+            if (!Utils.AuthorityCheck(IMEAuthority.AddSupplier))
             {
                 btnAdd.Visible = false;
             }
-            if (!Utils.AuthorityCheck(IMEAuthority.CanEditSupplier))
+            if (!Utils.AuthorityCheck(IMEAuthority.EditSupplier))
             {
                 btnModify.Visible = false;
             }

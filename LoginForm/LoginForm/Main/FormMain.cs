@@ -101,7 +101,7 @@ namespace LoginForm
         public void checkAuthorities()
         {
             List<DataSet.AuthorizationValue> authList = Utils.getCurrentUser().AuthorizationValues.ToList();
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeManagementModule))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewManagementModule))
             {
                 btnManagement.Visible = false;
             }
@@ -111,7 +111,7 @@ namespace LoginForm
                 setManagementControl();
             }
 
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeLoaderModule))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewLoaderModule))
             {
                 btnFileLoader.Visible = false;
             }
@@ -120,12 +120,12 @@ namespace LoginForm
                 btnFileLoader.Visible = true;
             }
 
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeDevelopmentModule))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewWorkToBeModule))
             {
                 btnDevelopment.Visible = false;
             }
 
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeUserModule))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewUserModule))
             {
                 controlDevelopment.btnWorker.Visible = false;
             }

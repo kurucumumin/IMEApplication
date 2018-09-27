@@ -130,7 +130,7 @@ namespace LoginForm.QuotationModule
                 QuotataionModifyItemDetailsFiller(dgSaleAddedItems.Rows[i].Cells["dgProductCode"].Value.ToString(), i);
 
             }
-            if (!Utils.AuthorityCheck(IMEAuthority.CanEditAnyQuotation))
+            if (!Utils.AuthorityCheck(IMEAuthority.EditanyQuotation))
             {
                 dgSaleAddedItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 foreach (DataGridViewRow item in dgSaleAddedItems.Rows)
@@ -816,12 +816,12 @@ namespace LoginForm.QuotationModule
 
         private void ControlAutorization()
         {
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeCostandMarginInQuotationModule))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewCostandMargininQuotationModule))
             {
                 gbCost.Visible = false;
 
             }
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeTotalMarge))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewTotalMarge))
             {
                 txtTotalMarge.Visible = false;
                 label42.Visible = false;

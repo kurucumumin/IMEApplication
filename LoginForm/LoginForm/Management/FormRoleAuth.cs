@@ -304,7 +304,7 @@ namespace LoginForm.ManagementModule
         {
             List<DataSet.AuthorizationValue> authList = Utils.getCurrentUser().AuthorizationValues.ToList();
 
-            if (!Utils.AuthorityCheck(IMEAuthority.CanSeeManagementModule))
+            if (!Utils.AuthorityCheck(IMEAuthority.ViewManagementModule))
             {
                 btnSave.Visible = false;
             }
