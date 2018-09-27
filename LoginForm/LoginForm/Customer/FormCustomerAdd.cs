@@ -44,7 +44,8 @@ namespace LoginForm
             else if (form == "Contact")
             {
                 customerClicksearch(customer);
-                label67.Text = "Modify";
+                //parent.Text = "Modify Customer";
+                //label67.Text = "Modify";
                 EnableFalse();
                 ContactList.Enabled = true;
                 AdressList.Enabled = true;
@@ -56,7 +57,8 @@ namespace LoginForm
             else
             {
                 customerClicksearch(customer);
-                label67.Text = "Modify";
+                //parent.Text = "Modify Customer";
+                //label67.Text = "Modify";
                 itemsEnableTrue();
             }
         }
@@ -242,7 +244,7 @@ namespace LoginForm
             ContactAdress.DisplayMember = "AdressTitle";
             CustomerName.Text = c.c_name;
             Telephone.Text = c.telephone;
-            if (c.payment_termID != null) TermsofPayments.SelectedValue = c.payment_termID;
+            //if (c.payment_termID != null) TermsofPayments.SelectedValue = c.payment_termID;
             ContactFAX.Text = c.fax;
             WebAdress.Text = c.webadress;
             if (c.Worker2 != null) Represantative2.SelectedValue = c.Worker2.WorkerID;
@@ -292,7 +294,6 @@ namespace LoginForm
             if (c.Note != null) CompanyNotes.Text = IME.Notes.Where(a => a.ID == c.Note.ID).FirstOrDefault().Note_name;
             if (c.customerAccountantNoteID != null) AccountingNotes.Text = IME.Notes.Where(a => a.ID == c.customerAccountantNoteID).FirstOrDefault().Note_name;
             if (c.creditlimit != null) CreditLimit.Text = c.creditlimit.ToString();
-            if (c.creditlimit != null) CreditLimit.Text = c.creditlimit.ToString();
 
             txt3partyCode.Text = c.ThirdPartyCode ?? txt3partyCode.Text;
             Capital.SelectedIndex = Capital.FindStringExact(c.Capital);
@@ -302,15 +303,6 @@ namespace LoginForm
             PaymentMethod.SelectedValue = (c.paymentmethodID != null) ? c.paymentmethodID : -1;
             factor.Text = c.factor.ToString() ?? factor.Text;
             DiscountRate.Text = c.discountrate.ToString() ?? DiscountRate.Text;
-        }
-
-        private void EnableTrue()
-        {
-            groupAccount.Enabled = true;
-            groupAddresses.Enabled = true;
-            groupCompany.Enabled = true;
-            groupContact.Enabled = true;
-            btnSave.Enabled = true;
         }
 
         private void EnableFalse()
@@ -1044,51 +1036,6 @@ namespace LoginForm
                 this.Close();
 
             }       
-        }
-
-        private void itemsEnableFalse()
-        {
-            #region itemsEnableFalse
-            SubCategory.Enabled = false;
-            MainCategory.Enabled = false;
-            cbMainContact.Enabled = false;
-            Represantative1.Enabled = false;
-            CompanyNotes.Enabled = false;
-            WebAdress.Enabled = false;
-
-            CustomerFax.Enabled = false;
-            CustomerName.Enabled = false;
-            txt3partyCode.Enabled = false;
-            Telephone.Enabled = false;
-            CustomerCode.Enabled = false;
-            AccountingNotes.Enabled = false;
-            DiscountRate.Enabled = false;
-            PaymentMethod.Enabled = false;
-            TermsofPayments.Enabled = false;
-            TaxOffice.Enabled = false;
-            btnContactAdd.Enabled = true;
-            if (ContactList.DataSource != null)
-            {
-                btnContactDelete.Enabled = true;
-                btnContactUpdate.Enabled = true;
-            }
-            departmentAdd.Enabled = false;
-            Represantative2.Enabled = false;
-            Represantative1.Enabled = false;
-            InvCurrencyName.Enabled = false;
-            QuoCurrencyName.Enabled = false;
-
-            AccountRepresentary.Enabled = false;
-            CreditLimit.Enabled = false;
-            taxNumber.Enabled = false;
-            rb_passive.Enabled = false;
-            rb_active.Enabled = false;
-            factor.Enabled = false;
-            Capital.Enabled = false;
-            btnSave.Enabled = true;
-            btnContactDone.Enabled = false;
-            btnContactCancel.Enabled = false;
-            #endregion
         }
 
         private void itemsEnableTrue()

@@ -1078,6 +1078,18 @@
     <Compile Include="StockManagement\frmStockReserve.Designer.cs">
       <DependentUpon>frmStockReserve.cs</DependentUpon>
     </Compile>
+    <Compile Include="Supplier\FormSupplierAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supplier\FormSupplierAdd.Designer.cs">
+      <DependentUpon>FormSupplierAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supplier\FormSupplierMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supplier\FormSupplierMain.Designer.cs">
+      <DependentUpon>FormSupplierMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Supplier\frmDevSupplierMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1367,6 +1379,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StockManagement\frmStockReserve.resx">
       <DependentUpon>frmStockReserve.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supplier\FormSupplierAdd.resx">
+      <DependentUpon>FormSupplierAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supplier\FormSupplierMain.resx">
+      <DependentUpon>FormSupplierMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Supplier\frmDevSupplierMain.resx">
       <DependentUpon>frmDevSupplierMain.cs</DependentUpon>

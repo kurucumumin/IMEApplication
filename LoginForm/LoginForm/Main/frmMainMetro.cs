@@ -322,7 +322,7 @@ namespace LoginForm.Main
 
         private void btnSupplier_Click(object sender, EventArgs e)
         {
-            frmSupplierMain supplierMain = new frmSupplierMain();
+            FormSupplierMain supplierMain = new FormSupplierMain();
             supplierMain.Show();
             Utils.LogKayit("Supplier", "Supplier main screen has been entered");
         }
