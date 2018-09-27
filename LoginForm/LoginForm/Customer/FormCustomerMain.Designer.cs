@@ -36,6 +36,16 @@
             this.qUOTATIONPRINTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgCustomer = new System.Windows.Forms.DataGridView();
+            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WebAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telephone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Representative = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Factor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreditDays = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -52,16 +62,6 @@
             this.btnExcel = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.btnNew = new System.Windows.Forms.Button();
-            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustomerNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.WebAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Telephone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fax = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Representative = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Factor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreditDays = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustomerNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gridRightClick.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCustomer)).BeginInit();
@@ -73,30 +73,31 @@
             // uPDATEQUOTATIONToolStripMenuItem
             // 
             this.uPDATEQUOTATIONToolStripMenuItem.Name = "uPDATEQUOTATIONToolStripMenuItem";
-            this.uPDATEQUOTATIONToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.uPDATEQUOTATIONToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.uPDATEQUOTATIONToolStripMenuItem.Text = "MODIFY";
             this.uPDATEQUOTATIONToolStripMenuItem.Click += new System.EventHandler(this.uPDATEQUOTATIONToolStripMenuItem_Click);
             // 
             // gridRightClick
             // 
+            this.gridRightClick.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.gridRightClick.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.qUOTATIONINFOToolStripMenuItem,
             this.qUOTATIONPRINTToolStripMenuItem,
             this.uPDATEQUOTATIONToolStripMenuItem});
             this.gridRightClick.Name = "gridRightClick";
-            this.gridRightClick.Size = new System.Drawing.Size(119, 70);
+            this.gridRightClick.Size = new System.Drawing.Size(181, 92);
             // 
             // qUOTATIONINFOToolStripMenuItem
             // 
             this.qUOTATIONINFOToolStripMenuItem.Name = "qUOTATIONINFOToolStripMenuItem";
-            this.qUOTATIONINFOToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.qUOTATIONINFOToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.qUOTATIONINFOToolStripMenuItem.Text = " INFO";
             this.qUOTATIONINFOToolStripMenuItem.Click += new System.EventHandler(this.qUOTATIONINFOToolStripMenuItem_Click);
             // 
             // qUOTATIONPRINTToolStripMenuItem
             // 
             this.qUOTATIONPRINTToolStripMenuItem.Name = "qUOTATIONPRINTToolStripMenuItem";
-            this.qUOTATIONPRINTToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.qUOTATIONPRINTToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.qUOTATIONPRINTToolStripMenuItem.Text = "PRINT";
             // 
             // tableLayoutPanel1
@@ -156,6 +157,58 @@
             this.dgCustomer.TabIndex = 0;
             this.dgCustomer.TabStop = false;
             this.dgCustomer.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgCustomer_CellMouseDoubleClick);
+            // 
+            // Date
+            // 
+            this.Date.HeaderText = "Date";
+            this.Date.Name = "Date";
+            this.Date.Visible = false;
+            // 
+            // CustomerNo
+            // 
+            this.CustomerNo.HeaderText = "CustomerNo";
+            this.CustomerNo.Name = "CustomerNo";
+            // 
+            // CustomerName
+            // 
+            this.CustomerName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CustomerName.HeaderText = "Customer Name";
+            this.CustomerName.Name = "CustomerName";
+            // 
+            // WebAddress
+            // 
+            this.WebAddress.HeaderText = "Web Address";
+            this.WebAddress.Name = "WebAddress";
+            // 
+            // Telephone
+            // 
+            this.Telephone.HeaderText = "Telephone";
+            this.Telephone.Name = "Telephone";
+            // 
+            // Fax
+            // 
+            this.Fax.HeaderText = "Fax";
+            this.Fax.Name = "Fax";
+            // 
+            // Representative
+            // 
+            this.Representative.HeaderText = "Representative";
+            this.Representative.Name = "Representative";
+            // 
+            // Factor
+            // 
+            this.Factor.HeaderText = "Factor";
+            this.Factor.Name = "Factor";
+            // 
+            // CreditDays
+            // 
+            this.CreditDays.HeaderText = "Credit Days";
+            this.CreditDays.Name = "CreditDays";
+            // 
+            // CustomerNote
+            // 
+            this.CustomerNote.HeaderText = "Customer Note";
+            this.CustomerNote.Name = "CustomerNote";
             // 
             // panel1
             // 
@@ -359,58 +412,6 @@
             this.btnNew.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnNew.UseVisualStyleBackColor = true;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
-            // 
-            // Date
-            // 
-            this.Date.HeaderText = "Date";
-            this.Date.Name = "Date";
-            this.Date.Visible = false;
-            // 
-            // CustomerNo
-            // 
-            this.CustomerNo.HeaderText = "CustomerNo";
-            this.CustomerNo.Name = "CustomerNo";
-            // 
-            // CustomerName
-            // 
-            this.CustomerName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CustomerName.HeaderText = "Customer Name";
-            this.CustomerName.Name = "CustomerName";
-            // 
-            // WebAddress
-            // 
-            this.WebAddress.HeaderText = "Web Address";
-            this.WebAddress.Name = "WebAddress";
-            // 
-            // Telephone
-            // 
-            this.Telephone.HeaderText = "Telephone";
-            this.Telephone.Name = "Telephone";
-            // 
-            // Fax
-            // 
-            this.Fax.HeaderText = "Fax";
-            this.Fax.Name = "Fax";
-            // 
-            // Representative
-            // 
-            this.Representative.HeaderText = "Representative";
-            this.Representative.Name = "Representative";
-            // 
-            // Factor
-            // 
-            this.Factor.HeaderText = "Factor";
-            this.Factor.Name = "Factor";
-            // 
-            // CreditDays
-            // 
-            this.CreditDays.HeaderText = "Credit Days";
-            this.CreditDays.Name = "CreditDays";
-            // 
-            // CustomerNote
-            // 
-            this.CustomerNote.HeaderText = "Customer Note";
-            this.CustomerNote.Name = "CustomerNote";
             // 
             // FormCustomerMain
             // 
