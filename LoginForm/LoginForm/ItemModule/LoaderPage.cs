@@ -1,9 +1,11 @@
 ﻿using LoginForm.DataSet;
+using LoginForm.MyClasses;
 using LoginForm.Services;
 using LoginForm.Services.SP;
 using System;
 using System.Data;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 namespace LoginForm.ItemModule
@@ -28,22 +30,31 @@ namespace LoginForm.ItemModule
 
         private void btnChooseFile_Click(object sender, EventArgs e)
         {
+            #region LoaderPage
             switch (txtReader.LoaderType)
             {
-                #region LoaderPage
+
                 case "SuperDisk":
-                    string[] result = txtReader.SuperDiskRead();
-                    if (result[1] == "1")
-                    //if (txtReader.SuperDiskTxtSave() == 1)
-                    {
-                        RsFileHistory h = new RsFileHistory();
-                        h.FileType = txtReader.LoaderType;
-                        h.FileName = result[0];
-                        h.Date = IME.CurrentDate().FirstOrDefault().Value;
-                        h.UserID = Utils.getCurrentUser().WorkerID;
-                        IME.RsFileHistories.Add(h);
-                        IME.SaveChanges();
-                    }
+
+                    SuperDiskHelper helper = new SuperDiskHelper();
+                    helper.SuperDiskLoader();
+
+
+
+                    //string[] result1 = txtReader.SuperDiskRead();
+                    //if (result1[(int)LoaderResultColumns.Result] == "1")
+                    ////if (txtReader.SuperDiskTxtSave() == 1)
+                    //{
+                    //    RsFileHistory h = new RsFileHistory();
+                    //    h.FileType = txtReader.LoaderType;
+                    //    h.FileName = result1[(int)LoaderResultColumns.FileName];
+                    //    h.Date = IME.CurrentDate().FirstOrDefault().Value;
+                    //    h.UserID = Utils.getCurrentUser().WorkerID;
+                    //    IME.RsFileHistories.Add(h);
+                    //    IME.SaveChanges();
+                    //}
+
+
                     //dgvFileLog.DataSource = null;
                     //dgvFileLog.DataSource = IME.SuperDisks.Take(10).ToList();
                     break;
@@ -196,12 +207,12 @@ namespace LoginForm.ItemModule
                     //dgvFileLog.DataSource = IME.OrderAcknowledgements.Take(10).ToList();
                     break;
 
-                //case "Stock":
-                    
-                //    break;
+                    //case "Stock":
+
+                    //    break;
 
             }
-#endregion       
+            #endregion  
         }
 
         private void LoaderPage_Load(object sender, EventArgs e)

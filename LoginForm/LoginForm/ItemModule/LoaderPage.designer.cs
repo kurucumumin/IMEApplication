@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.dgvFileLog = new System.Windows.Forms.DataGridView();
+            this.dgUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgFileType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgFileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnChooseFile = new System.Windows.Forms.Button();
             this.tableMain = new System.Windows.Forms.TableLayoutPanel();
@@ -37,10 +41,6 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.DTPLoaderDate = new System.Windows.Forms.DateTimePicker();
-            this.dgUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgFileType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgFileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFileLog)).BeginInit();
             this.tableMain.SuspendLayout();
             this.tableTop.SuspendLayout();
@@ -69,6 +69,37 @@
             this.dgvFileLog.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFileLog.Size = new System.Drawing.Size(890, 468);
             this.dgvFileLog.TabIndex = 4;
+            // 
+            // dgUser
+            // 
+            this.dgUser.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dgUser.HeaderText = "USER";
+            this.dgUser.Name = "dgUser";
+            this.dgUser.ReadOnly = true;
+            this.dgUser.Width = 62;
+            // 
+            // dgFileType
+            // 
+            this.dgFileType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dgFileType.HeaderText = "FILE TYPE";
+            this.dgFileType.Name = "dgFileType";
+            this.dgFileType.ReadOnly = true;
+            this.dgFileType.Width = 85;
+            // 
+            // dgFileName
+            // 
+            this.dgFileName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dgFileName.HeaderText = "FILE NAME";
+            this.dgFileName.Name = "dgFileName";
+            this.dgFileName.ReadOnly = true;
+            // 
+            // dgDate
+            // 
+            this.dgDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dgDate.HeaderText = "DATE";
+            this.dgDate.Name = "dgDate";
+            this.dgDate.ReadOnly = true;
+            this.dgDate.Width = 61;
             // 
             // btnClose
             // 
@@ -174,37 +205,6 @@
             this.DTPLoaderDate.Name = "DTPLoaderDate";
             this.DTPLoaderDate.Size = new System.Drawing.Size(200, 20);
             this.DTPLoaderDate.TabIndex = 1;
-            // 
-            // dgUser
-            // 
-            this.dgUser.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dgUser.HeaderText = "USER";
-            this.dgUser.Name = "dgUser";
-            this.dgUser.ReadOnly = true;
-            this.dgUser.Width = 62;
-            // 
-            // dgFileType
-            // 
-            this.dgFileType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dgFileType.HeaderText = "FILE TYPE";
-            this.dgFileType.Name = "dgFileType";
-            this.dgFileType.ReadOnly = true;
-            this.dgFileType.Width = 85;
-            // 
-            // dgFileName
-            // 
-            this.dgFileName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dgFileName.HeaderText = "FILE NAME";
-            this.dgFileName.Name = "dgFileName";
-            this.dgFileName.ReadOnly = true;
-            // 
-            // dgDate
-            // 
-            this.dgDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dgDate.HeaderText = "DATE";
-            this.dgDate.Name = "dgDate";
-            this.dgDate.ReadOnly = true;
-            this.dgDate.Width = 61;
             // 
             // LoaderPage
             // 

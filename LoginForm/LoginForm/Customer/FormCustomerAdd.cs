@@ -6,6 +6,7 @@ using System.Data;
 using System.Windows.Forms;
 using LoginForm.Services;
 using System.Drawing;
+using LoginForm.clsClasses;
 
 namespace LoginForm
 {

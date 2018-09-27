@@ -22,7 +22,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>135</ApplicationRevision>
+    <ApplicationRevision>137</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -666,6 +666,7 @@
     </Compile>
     <Compile Include="MyClasses\FizikselDosya_.cs" />
     <Compile Include="MyClasses\KomutArgumanlari_.cs" />
+    <Compile Include="MyClasses\LoaderResult.cs" />
     <Compile Include="MyClasses\LogoLibrary.cs" />
     <Compile Include="MyClasses\MyForm.cs">
       <SubType>Form</SubType>
@@ -1046,6 +1047,7 @@
     <Compile Include="Services\QuotationDatagridCustomize.cs" />
     <Compile Include="Services\classSupplier.cs" />
     <Compile Include="Services\ImeSettings.cs" />
+    <Compile Include="Services\RsFileOperations\SuperDiskHelper.cs" />
     <Compile Include="Services\SP\Sp_Customer.cs" />
     <Compile Include="Services\SP\Sp_Item.cs" />
     <Compile Include="Services\SP\Sp_Management.cs" />
