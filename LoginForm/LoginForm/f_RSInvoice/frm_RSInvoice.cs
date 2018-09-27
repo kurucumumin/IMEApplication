@@ -395,7 +395,7 @@ namespace LoginForm.f_RSInvoice
             if (!Utils.AuthorityCheck(IMEAuthority.AddRsInvoice))
             {
                 btnNewInvoice.Visible = false;
-                btnNewInvoice.Visible = false;
+                label4.Visible = false;
             }
         }
     }

@@ -475,6 +475,7 @@ namespace LoginForm.User
         {
             FormAuthorities form = new FormAuthorities(authList.ToList(), txtUsername.Text);
             form.ShowDialog();
+            authList = new IMEEntities().Workers.Where(x => x.WorkerID == worker.WorkerID).FirstOrDefault().AuthorizationValues.ToList();
         }
     }
 }

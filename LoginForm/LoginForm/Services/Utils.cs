@@ -16,6 +16,7 @@ namespace LoginForm.Services
     class Utils
     {
         private static Worker worker;
+        private static int workerID;
         public static decimal _decCurrentCompanyId;
 
 
@@ -75,12 +76,14 @@ namespace LoginForm.Services
 
         public static void setCurrentUser(Worker w)
         {
-            worker = w;
+            workerID = w.WorkerID;
+            //worker = w;
         }
 
         public static Worker getCurrentUser()
         {
-            return worker;
+            return new IMEEntities().Workers.Where(x => x.WorkerID == workerID).FirstOrDefault();
+            //return worker;
         }
 
         public static DataSet.Management getManagement()
@@ -96,7 +99,7 @@ namespace LoginForm.Services
 
         public static bool AuthorityCheck(MyClasses.MyAuthority.IMEAuthority auth)
         {
-            if (worker.AuthorizationValues.Where(x=>x.AuthorizationID == (int)auth).Count() > 0)
+            if (getCurrentUser().AuthorizationValues.Where(x=>x.AuthorizationID == (int)auth).Count() > 0)
             {
                 return true;
             }
