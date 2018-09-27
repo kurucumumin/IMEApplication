@@ -36,11 +36,11 @@ namespace LoginForm.Services
                 if (ColumnError.ErrorList.Count() > 0)
                 {
                     StringBuilder errorMessage = new StringBuilder();
-                    errorMessage.Append("Error(s) exist in column names, Check SuperDisk file again").AppendLine().AppendLine();
+                    errorMessage.Append("Error(s) exist in column names, Check SuperDisk file again").AppendLine().Append("Mis-typed columns are:").AppendLine().AppendLine();
 
                     foreach (string error in ColumnError.ErrorList)
                     {
-                        errorMessage.Append("'").Append(error).Append("'");
+                        errorMessage.Append(error);
                         if (ColumnError.ErrorList.FindIndex(x => x == error) != (ColumnError.ErrorList.Count - 1))
                         {
                             errorMessage.AppendLine();
@@ -222,50 +222,208 @@ namespace LoginForm.Services
 
         private LoaderError SuperDiskColumnCheck(string[] Columns)
         {
-            LoaderError error = new LoaderError();
+            #region CorrectColumnNames into a List
+            List<String> CorrectColumnNames = new List<string>();
+            CorrectColumnNames.Add("Article No");
+            CorrectColumnNames.Add("Article Desc");
+            CorrectColumnNames.Add("Pack Code");
+            CorrectColumnNames.Add("Pack Quantity");
+            CorrectColumnNames.Add("Unit Content");
+            CorrectColumnNames.Add("Unit Measure");
+            CorrectColumnNames.Add("Uk Col 1");
+            CorrectColumnNames.Add("Standard Weight");
+            CorrectColumnNames.Add("Hazardous Ind");
+            CorrectColumnNames.Add("Calibration Ind");
+            CorrectColumnNames.Add("Obsolete Flag");
+            CorrectColumnNames.Add("MH1");
+            CorrectColumnNames.Add("Low Discount Ind");
+            CorrectColumnNames.Add("Licensed Ind");
+            CorrectColumnNames.Add("Shelf Life");
+            CorrectColumnNames.Add("CofO");
+            CorrectColumnNames.Add("EUR1 Indicator");
+            CorrectColumnNames.Add("CCCN No");
+            CorrectColumnNames.Add("Supercede Date");
+            CorrectColumnNames.Add("Current Cat page");
+            CorrectColumnNames.Add("Uk Intro Date");
+            CorrectColumnNames.Add("Filler");
+            CorrectColumnNames.Add("Uk Disc Date");
+            CorrectColumnNames.Add("Substitute By");
+            CorrectColumnNames.Add("BHC Flag");
+            CorrectColumnNames.Add("Filler1");
+            CorrectColumnNames.Add("Future Sell Price");
+            CorrectColumnNames.Add("Int Cat");
+            CorrectColumnNames.Add("New Prod Change Ind");
+            CorrectColumnNames.Add("Out of Stock Prohibit change ind");
+            CorrectColumnNames.Add("Disc Change Ind");
+            CorrectColumnNames.Add("Superceded Change Ind");
+            CorrectColumnNames.Add("Pack Size Change Ind");
+            CorrectColumnNames.Add("Rolled Product Change Ind");
+            CorrectColumnNames.Add("Expiring Product Change Ind");
+            CorrectColumnNames.Add("Manufacturer");
+            CorrectColumnNames.Add("MPN");
+            CorrectColumnNames.Add("MH Code Level 1");
+            CorrectColumnNames.Add("Height");
+            CorrectColumnNames.Add("Width");
+            CorrectColumnNames.Add("Length");
+            #endregion
             
-            if (Columns[0] != "Article No") error.ErrorList.Add(Columns[0]);
-            if (Columns[1] != "Article Desc") error.ErrorList.Add(Columns[1]);
-            if (Columns[2] != "Pack Code") error.ErrorList.Add(Columns[2]);
-            if (Columns[3] != "Pack Quantity") error.ErrorList.Add(Columns[3]);
-            if (Columns[4] != "Unit Content") error.ErrorList.Add(Columns[4]);
-            if (Columns[5] != "Unit Measure") error.ErrorList.Add(Columns[5]);
-            if (Columns[6] != "Uk Col 1") error.ErrorList.Add(Columns[6]);
-            if (Columns[7] != "Standard Weight") error.ErrorList.Add(Columns[7]);
-            if (Columns[8] != "Hazardous Ind") error.ErrorList.Add(Columns[8]);
-            if (Columns[9] != "Calibration Ind") error.ErrorList.Add(Columns[9]);
-            if (Columns[10] != "Obsolete Flag") error.ErrorList.Add(Columns[10]);
-            if (Columns[11] != "MH1") error.ErrorList.Add(Columns[11]);
-            if (Columns[12] != "Low Discount Ind") error.ErrorList.Add(Columns[12]);
-            if (Columns[13] != "Licensed Ind") error.ErrorList.Add(Columns[13]);
-            if (Columns[14] != "Shelf Life") error.ErrorList.Add(Columns[14]);
-            if (Columns[15] != "CofO") error.ErrorList.Add(Columns[15]);
-            if (Columns[16] != "EUR1 Indicator") error.ErrorList.Add(Columns[16]);
-            if (Columns[17] != "CCCN No") error.ErrorList.Add(Columns[17]);
-            if (Columns[18] != "Supercede Date") error.ErrorList.Add(Columns[18]);
-            if (Columns[19] != "Current Cat page") error.ErrorList.Add(Columns[19]);
-            if (Columns[20] != "Uk Intro Date") error.ErrorList.Add(Columns[20]);
-            if (Columns[21] != "Filler") error.ErrorList.Add(Columns[21]);
-            if (Columns[22] != "Uk Disc Date") error.ErrorList.Add(Columns[22]);
-            if (Columns[23] != "Substitute By") error.ErrorList.Add(Columns[23]);
-            if (Columns[24] != "BHC Flag") error.ErrorList.Add(Columns[24]);
-            if (Columns[25] != "Filler1") error.ErrorList.Add(Columns[25]);
-            if (Columns[26] != "Future Sell Price") error.ErrorList.Add(Columns[26]);
-            if (Columns[27] != "Int Cat") error.ErrorList.Add(Columns[27]);
-            if (Columns[28] != "New Prod Change Ind") error.ErrorList.Add(Columns[28]);
-            if (Columns[29] != "Out of Stock Prohibit change ind") error.ErrorList.Add(Columns[29]);
-            if (Columns[30] != "Disc Change Ind") error.ErrorList.Add(Columns[30]);
-            if (Columns[31] != "Superceded Change Ind") error.ErrorList.Add(Columns[31]);
-            if (Columns[32] != "Pack Size Change Ind") error.ErrorList.Add(Columns[32]);
-            if (Columns[33] != "Rolled Product Change Ind") error.ErrorList.Add(Columns[33]);
-            if (Columns[34] != "Expiring Product Change Ind") error.ErrorList.Add(Columns[34]);
-            if (Columns[35] != "Manufacturer") error.ErrorList.Add(Columns[35]);
-            if (Columns[36] != "MPN") error.ErrorList.Add(Columns[36]);
-            if (Columns[37] != "MH Code Level 1") error.ErrorList.Add(Columns[37]);
-            if (Columns[38] != "Height") error.ErrorList.Add(Columns[38]);
-            if (Columns[39] != "Width") error.ErrorList.Add(Columns[39]);
-            if (Columns[40] != "Length") error.ErrorList.Add(Columns[40]);
+            LoaderError error = new LoaderError();
 
+            int columnCount = 0;
+            for (int i = 0; i < Columns.Length; i++)
+            {
+                switch (Columns[i])
+                {
+                    case "Article No":
+                        DeleteColumnAndIncrementColumCount();
+                        break;
+                    case "Article Desc":
+                        DeleteColumnAndIncrementColumCount();
+                        break;
+                    case "Pack Code":
+                        DeleteColumnAndIncrementColumCount();
+                        break;
+                    case "Pack Quantity":
+                        DeleteColumnAndIncrementColumCount();
+                        break;
+                    case "Unit Content":
+                        DeleteColumnAndIncrementColumCount();
+                        break;
+                    case "Unit Measure":
+                        DeleteColumnAndIncrementColumCount();
+                        break;
+                    case "Uk Col 1":
+                        DeleteColumnAndIncrementColumCount();
+                        break;
+                    case "Standard Weight":
+                        DeleteColumnAndIncrementColumCount();
+                        break;
+                    case "Hazardous Ind":
+                        DeleteColumnAndIncrementColumCount();
+                        break;
+                    case "Calibration Ind":
+                        DeleteColumnAndIncrementColumCount();
+                        break;
+                    case "Obsolete Flag":
+                        DeleteColumnAndIncrementColumCount();
+                        break;
+                    case "MH1":
+                        DeleteColumnAndIncrementColumCount();
+                        break;
+                    case "Low Discount Ind":
+                        DeleteColumnAndIncrementColumCount();
+                        break;
+                    case "Licensed Ind":
+                        DeleteColumnAndIncrementColumCount();
+                        break;
+                    case "Shelf Life":
+                        DeleteColumnAndIncrementColumCount();
+                        break;
+                    case "CofO":
+                        DeleteColumnAndIncrementColumCount();
+                        break;
+                    case "EUR1 Indicator":
+                        DeleteColumnAndIncrementColumCount();
+                        break;
+                    case "CCCN No":
+                        DeleteColumnAndIncrementColumCount();
+                        break;
+                    case "Supercede Date":
+                        DeleteColumnAndIncrementColumCount();
+                        break;
+                    case "Current Cat page":
+                        DeleteColumnAndIncrementColumCount();
+                        break;
+                    case "Uk Intro Date":
+                        DeleteColumnAndIncrementColumCount();
+                        break;
+                    case "Filler":
+                        DeleteColumnAndIncrementColumCount();
+                        break;
+                    case "Uk Disc Date":
+                        DeleteColumnAndIncrementColumCount();
+                        break;
+                    case "Substitute By":
+                        DeleteColumnAndIncrementColumCount();
+                        break;
+                    case "BHC Flag":
+                        DeleteColumnAndIncrementColumCount();
+                        break;
+                    case "Filler1":
+                        DeleteColumnAndIncrementColumCount();
+                        break;
+                    case "Future Sell Price":
+                        DeleteColumnAndIncrementColumCount();
+                        break;
+                    case "Int Cat":
+                        DeleteColumnAndIncrementColumCount();
+                        break;
+                    case "New Prod Change Ind":
+                        DeleteColumnAndIncrementColumCount();
+                        break;
+                    case "Out of Stock Prohibit change ind":
+                        DeleteColumnAndIncrementColumCount();
+                        break;
+                    case "Disc Change Ind":
+                        DeleteColumnAndIncrementColumCount();
+                        break;
+                    case "Superceded Change Ind":
+                        DeleteColumnAndIncrementColumCount();
+                        break;
+                    case "Pack Size Change Ind":
+                        DeleteColumnAndIncrementColumCount();
+                        break;
+                    case "Rolled Product Change Ind":
+                        DeleteColumnAndIncrementColumCount();
+                        break;
+                    case "Expiring Product Change Ind":
+                        DeleteColumnAndIncrementColumCount();
+                        break;
+                    case "Manufacturer":
+                        DeleteColumnAndIncrementColumCount();
+                        break;
+                    case "MPN":
+                        DeleteColumnAndIncrementColumCount();
+                        break;
+                    case "MH Code Level 1":
+                        DeleteColumnAndIncrementColumCount();
+                        break;
+                    case "Height":
+                        DeleteColumnAndIncrementColumCount();
+                        break;
+                    case "Width":
+                        DeleteColumnAndIncrementColumCount();
+                        break;
+                    case "Length":
+                        DeleteColumnAndIncrementColumCount();
+                        break;
+                    default:
+                        error.ErrorList.Add(Columns[i]);
+                        break;
+                }
+                void DeleteColumnAndIncrementColumCount()
+                {
+                    columnCount += 1;
+                    CorrectColumnNames.Remove(Columns[i]);
+                }
+            }
+            //columnCount += error.ErrorList.Count;
+
+            string MissingColumnsString = String.Empty;
+            for (int i = 0; i < CorrectColumnNames.Count; i++)
+            {
+                MissingColumnsString += CorrectColumnNames[i];
+                if (i != CorrectColumnNames.Count - 1)
+                {
+                    MissingColumnsString += ", ";
+                }
+            }
+
+            if (columnCount != 41)
+            {
+                error.ErrorList.Add("\n"+ error.ErrorList.Count + " mismatched columns, " + columnCount + " matched columns found! " + (CorrectColumnNames.Count - error.ErrorList.Count)  + " columns missing");
+                error.ErrorList.Add("\nMissing columns are:\n\n" + MissingColumnsString);
+            }
             return error;
         }
 
