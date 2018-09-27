@@ -84,6 +84,14 @@ namespace LoginForm.ManagementModule
             if (lbRoleList.SelectedItem != null)
             {
                 authList.Clear();
+                if (lbRoleList.SelectedIndex == 0)
+                {
+                    authList.AddRange(new IMEEntities().AuthorizationValues.ToList());
+                }
+                else
+                {
+                    authList.AddRange(((RoleValue)lbRoleList.SelectedItem).AuthorizationValues);
+                }
                 authList.AddRange(((RoleValue)lbRoleList.SelectedItem).AuthorizationValues);
 
                 clbAuthorizationList.DataSource = null;

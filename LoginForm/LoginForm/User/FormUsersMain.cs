@@ -32,18 +32,21 @@ namespace LoginForm.User
         {
             FormWorkerManagement formWorkerAdd = new FormWorkerManagement(mainForm, (Worker)dgdg.CurrentRow.DataBoundItem, this);
             formWorkerAdd.ShowDialog();
+            LoadWorkerList();
         }
 
         private void btnAddWorker_Click(object sender, EventArgs e)
         {
             FormWorkerManagement formWorkerAdd = new FormWorkerManagement(this);
             formWorkerAdd.ShowDialog();
+            LoadWorkerList();
         }
 
         private void btnCustomerChange_Click(object sender, EventArgs e)
         {
             FormUserCustomerUpdate form = new FormUserCustomerUpdate();
             form.ShowDialog();
+            LoadWorkerList();
         }
     }
 }

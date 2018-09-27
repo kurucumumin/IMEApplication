@@ -356,6 +356,7 @@ namespace LoginForm.User
                         wrkr.AuthorizationValues.Add(av);
                     }
                     IME.SaveChanges();
+                    Utils.setCurrentUser(wrkr);
                 }
 
                 //if (wrkr.WorkerID == Utils.getCurrentUser().WorkerID)

@@ -85,9 +85,9 @@ namespace LoginForm.Services.MyClasses
             CanEditItemCard = 1159,
             CanAddItemCard = 1160,
             CanRevisionQuotation = 1161,
-            AddRsInvoice = 1162,
-            CanEditSaleOrderModule = 1163,
-            CanDeleteSaleOrderModule = 1163
+            AddRsInvoice = 1163,
+            CanEditSaleOrderModule = 1164,
+            CanDeleteSaleOrderModule = 1165
         }
     }
 }
