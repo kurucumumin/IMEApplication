@@ -73,6 +73,11 @@ namespace LoginForm
             NewCustomerNumber();
         }
 
+        private void FormCustomerAdd_Load(object sender, EventArgs e)
+        {
+            ComboboxFiller();
+        }
+
         private void NewCustomerNumber()
         {
             DataSet.Management m = Utils.getManagement();
@@ -178,11 +183,6 @@ namespace LoginForm
             PostCode.Text = "";
             cbTown.SelectedIndex = -1;
             ContactAdress.SelectedIndex = -1;
-        }
-
-        private void FormCustomerAdd_Load(object sender, EventArgs e)
-        {
-            ComboboxFiller();
         }
 
         private void ComboboxFiller()
@@ -463,6 +463,163 @@ namespace LoginForm
             #endregion
         }
 
+        private void btnContactClick()
+        {
+            #region addContactButton
+            contactnewID = 0;
+            contactTabEnableTrue();
+            ContactType.Text = "";
+            ContactDepartment.Text = "";
+            ContactTitle.Text = "";
+            cbMainContact.Text = "";
+            ContactName.Text = "";
+            ContactEmail.Text = "";
+            ContactPhone.Text = "";
+            ContactMobilePhone.Text = "";
+            ContactFAX.Text = "";
+            CommunicationLanguage.Text = "";
+            ContactNotes.Text = "";
+            btnContactAdd.Visible = false;
+            btnContactCancel.Visible = true;
+            btnContactDelete.Visible = false;
+            btnContactDone.Visible = true;
+            btnContactUpdate.Visible = false;
+            ContactList.Enabled = false;
+
+            ContactType.Text = (ComboboxString);
+            ContactDepartment.Text = (ComboboxString);
+            ContactTitle.Text = (ComboboxString);
+            CommunicationLanguage.Text = (ComboboxString);
+            #endregion
+        }
+
+        private void btnContactUpdateClick()
+        {
+            contactnewID = 1;
+            contactTabEnableTrue();
+            btnContactAdd.Visible = false;
+            btnContactCancel.Visible = true;
+            btnContactDelete.Visible = false;
+            btnContactDone.Visible = true;
+            btnContactUpdate.Visible = false;
+        }
+
+        private void btnAddressClick()
+        {
+            isUpdateAdress = 0;
+            AdressTabEnableTrue();
+            AddressType.Text = "";
+            cbCountry.Text = "";
+            cbDefaultInvoiceAdress.Checked = false;
+            cbDefaultDeliveryAdress.Checked = false;
+            cbDefaultInvoiceAdress.Checked = false;
+            cbCity.Text = "";
+            cbTown.Text = "";
+            PostCode.Text = "";
+            AddressDetails.Text = "";
+            AdressAdd.Visible = false;
+            AdressCancel.Visible = true;
+            AddressDel.Visible = false;
+            AdressDone.Visible = true;
+            AddressUpd.Visible = false;
+            AdressList.Enabled = false;
+
+            AddressType.Text = (ComboboxString);
+            cbCountry.Text = (ComboboxString);
+            cbCity.Text = (ComboboxString);
+            cbTown.Text = (ComboboxString);
+        }
+
+        private bool AddressControl()
+        {
+            bool isSave = true;
+            string ErrorMessage = string.Empty;
+            if (cbCity.Text == string.Empty) { ErrorMessage = ErrorMessage + "Please Enter City"; isSave = false; }
+            if (cbTown.Text == string.Empty) { ErrorMessage = ErrorMessage + "Please Enter Town"; isSave = false; }
+            if (isSave == true) { return true; } else { MessageBox.Show(ErrorMessage); return false; }
+        }
+
+        private bool ControlSave()
+        {
+            bool isSave = true;
+            string ErrorMessage = string.Empty;
+            if (CustomerName.Text == null || CustomerName.Text == string.Empty) { ErrorMessage = ErrorMessage + "Please Enter Company's Name\n"; isSave = false; }
+            if (isSave == true) { return true; } else { MessageBox.Show(ErrorMessage); return false; }
+        }
+
+        private void itemsEnableTrue()
+        {
+            #region itemsEnableTrue
+            SubCategory.Enabled = true;
+            MainCategory.Enabled = true;
+            CompanyNotes.Enabled = true;
+            cbMainContact.Enabled = true;
+            Represantative1.Enabled = true;
+            WebAdress.Enabled = true;
+            cbMainContact.Enabled = true;
+            CustomerFax.Enabled = true;
+            CustomerName.Enabled = true;
+            txt3partyCode.Enabled = true;
+            Telephone.Enabled = true;
+            AccountingNotes.Enabled = true;
+            DiscountRate.Enabled = true;
+            PaymentMethod.Enabled = true;
+            TermsofPayments.Enabled = true;
+            TaxOffice.Enabled = true;
+            Represantative2.Enabled = true;
+            InvCurrencyName.Enabled = true;
+            QuoCurrencyName.Enabled = true;
+            AccountRepresentary.Enabled = true;
+            CreditLimit.Enabled = true;
+            taxNumber.Enabled = true;
+
+            rb_passive.Enabled = true;
+            rb_active.Enabled = true;
+            factor.Enabled = true;
+            Capital.Enabled = true;
+            btnSave.Enabled = true;
+            btnContactDone.Enabled = true;
+            btnContactCancel.Enabled = true;
+
+            AdressAdd.Enabled = true;
+            btnContactAdd.Enabled = true;
+            #endregion
+        }
+
+        private void CancelCustomer()
+        {
+            var customer = IME.Customer_CustomerID(CustomerCode.Text).FirstOrDefault();
+            if (customer != null)
+            {
+                //CREATE in cancel ı
+                var cw = IME.CustomerWorkers.Where(a => a.customerID == CustomerCode.Text);
+                //Contact
+                while (cw.Count() > 0)
+                {
+                    IME.CustomerWorkers.Remove(cw.FirstOrDefault());
+                    IME.SaveChanges();
+                }
+                //adresses
+                var cd = IME.CustomerAddresses.Where(a => a.CustomerID == CustomerCode.Text);
+                while (cd.Count() > 0)
+                {
+                    IME.CustomerAddresses.Remove(cd.FirstOrDefault());
+                    IME.SaveChanges();
+                }
+
+                Customer c = new Customer();
+                c = IME.Customers.Where(a => a.ID == CustomerCode.Text).FirstOrDefault();
+                IME.Customers.Remove(c);
+                IME.SaveChanges();
+            }
+            itemsClear();
+        }
+
+        private void MakeTextUpperCase(TextBox txtBox)
+        {
+            txtBox.Text = txtBox.Text.ToUpperInvariant();
+        }
+
         private void ContactList_DrawItem(object sender, DrawItemEventArgs e)
         {
             if (e.Index < 0) return;
@@ -550,36 +707,6 @@ namespace LoginForm
             catch { }
         }
 
-        private void btnContactClick()
-        {
-            #region addContactButton
-            contactnewID = 0;
-            contactTabEnableTrue();
-            ContactType.Text = "";
-            ContactDepartment.Text = "";
-            ContactTitle.Text = "";
-            cbMainContact.Text = "";
-            ContactName.Text = "";
-            ContactEmail.Text = "";
-            ContactPhone.Text = "";
-            ContactMobilePhone.Text = "";
-            ContactFAX.Text = "";
-            CommunicationLanguage.Text = "";
-            ContactNotes.Text = "";
-            btnContactAdd.Visible = false;
-            btnContactCancel.Visible = true;
-            btnContactDelete.Visible = false;
-            btnContactDone.Visible = true;
-            btnContactUpdate.Visible = false;
-            ContactList.Enabled = false;
-
-            ContactType.Text = (ComboboxString);
-            ContactDepartment.Text = (ComboboxString);
-            ContactTitle.Text = (ComboboxString);
-            CommunicationLanguage.Text = (ComboboxString);
-            #endregion
-        }
-
         private void btnContactAdd_Click(object sender, EventArgs e)
         {
             btnContactClick();
@@ -640,17 +767,6 @@ namespace LoginForm
             //    btnUpdate.Enabled = false;
             //}
             #endregion
-        }
-
-        private void btnContactUpdateClick()
-        {
-            contactnewID = 1;
-            contactTabEnableTrue();
-            btnContactAdd.Visible = false;
-            btnContactCancel.Visible = true;
-            btnContactDelete.Visible = false;
-            btnContactDone.Visible = true;
-            btnContactUpdate.Visible = false;
         }
 
         private void btnContactUpdate_Click(object sender, EventArgs e)
@@ -768,32 +884,6 @@ namespace LoginForm
             //}
         }
 
-        private void btnAddressClick()
-        {
-            isUpdateAdress = 0;
-            AdressTabEnableTrue();
-            AddressType.Text = "";
-            cbCountry.Text = "";
-            cbDefaultInvoiceAdress.Checked = false;
-            cbDefaultDeliveryAdress.Checked = false;
-            cbDefaultInvoiceAdress.Checked = false;
-            cbCity.Text = "";
-            cbTown.Text = "";
-            PostCode.Text = "";
-            AddressDetails.Text = "";
-            AdressAdd.Visible = false;
-            AdressCancel.Visible = true;
-            AddressDel.Visible = false;
-            AdressDone.Visible = true;
-            AddressUpd.Visible = false;
-            AdressList.Enabled = false;
-
-            AddressType.Text = (ComboboxString);
-            cbCountry.Text = (ComboboxString);
-            cbCity.Text = (ComboboxString);
-            cbTown.Text = (ComboboxString);
-        }
-
         private void AdressAdd_Click(object sender, EventArgs e)
         {
             btnAddressClick();
@@ -827,15 +917,6 @@ namespace LoginForm
             {
                 //do something else
             }
-        }
-
-        private bool AddressControl()
-        {
-            bool isSave = true;
-            string ErrorMessage = string.Empty;
-            if (cbCity.Text == string.Empty) { ErrorMessage = ErrorMessage + "Please Enter City"; isSave = false; }
-            if (cbTown.Text == string.Empty) { ErrorMessage = ErrorMessage + "Please Enter Town"; isSave = false; }
-            if (isSave == true) { return true; } else { MessageBox.Show(ErrorMessage); return false; }
         }
 
         private void AdressDone_Click(object sender, EventArgs e)
@@ -929,14 +1010,6 @@ namespace LoginForm
             AdressCancel.Visible = false;
             AdressDone.Visible = false;
             //customersearch();
-        }
-
-        private bool ControlSave()
-        {
-            bool isSave = true;
-            string ErrorMessage = string.Empty;
-            if (CustomerName.Text == null || CustomerName.Text == string.Empty) { ErrorMessage = ErrorMessage + "Please Enter Company's Name\n"; isSave = false; }
-            if (isSave == true) { return true; } else { MessageBox.Show(ErrorMessage); return false; }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -1038,45 +1111,6 @@ namespace LoginForm
             }       
         }
 
-        private void itemsEnableTrue()
-        {
-            #region itemsEnableTrue
-            SubCategory.Enabled = true;
-            MainCategory.Enabled = true;
-            CompanyNotes.Enabled = true;
-            cbMainContact.Enabled = true;
-            Represantative1.Enabled = true;
-            WebAdress.Enabled = true;
-            cbMainContact.Enabled = true;
-            CustomerFax.Enabled = true;
-            CustomerName.Enabled = true;
-            txt3partyCode.Enabled = true;
-            Telephone.Enabled = true;
-            AccountingNotes.Enabled = true;
-            DiscountRate.Enabled = true;
-            PaymentMethod.Enabled = true;
-            TermsofPayments.Enabled = true;
-            TaxOffice.Enabled = true;
-            Represantative2.Enabled = true;
-            InvCurrencyName.Enabled = true;
-            QuoCurrencyName.Enabled = true;
-            AccountRepresentary.Enabled = true;
-            CreditLimit.Enabled = true;
-            taxNumber.Enabled = true;
-
-            rb_passive.Enabled = true;
-            rb_active.Enabled = true;
-            factor.Enabled = true;
-            Capital.Enabled = true;
-            btnSave.Enabled = true;
-            btnContactDone.Enabled = true;
-            btnContactCancel.Enabled = true;
-
-            AdressAdd.Enabled = true;
-            btnContactAdd.Enabled = true;
-            #endregion
-        }
-
         private void btnClose_Click(object sender, EventArgs e)
         {
             if (label69.Text == "Cancel")
@@ -1088,35 +1122,6 @@ namespace LoginForm
             {
                 this.Close();
             }
-        }
-
-        private void CancelCustomer()
-        {
-            var customer = IME.Customer_CustomerID(CustomerCode.Text).FirstOrDefault();
-            if (customer != null)
-            {
-                //CREATE in cancel ı
-                var cw = IME.CustomerWorkers.Where(a => a.customerID == CustomerCode.Text);
-                //Contact
-                while (cw.Count() > 0)
-                {
-                    IME.CustomerWorkers.Remove(cw.FirstOrDefault());
-                    IME.SaveChanges();
-                }
-                //adresses
-                var cd = IME.CustomerAddresses.Where(a => a.CustomerID == CustomerCode.Text);
-                while (cd.Count() > 0)
-                {
-                    IME.CustomerAddresses.Remove(cd.FirstOrDefault());
-                    IME.SaveChanges();
-                }
-
-                Customer c = new Customer();
-                c = IME.Customers.Where(a => a.ID == CustomerCode.Text).FirstOrDefault();
-                IME.Customers.Remove(c);
-                IME.SaveChanges();
-            }
-            itemsClear();
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -1233,11 +1238,6 @@ namespace LoginForm
         private void CustomerName_Leave(object sender, EventArgs e)
         {
             MakeTextUpperCase((TextBox)sender);
-        }
-
-        private void MakeTextUpperCase(TextBox txtBox)
-        {
-            txtBox.Text = txtBox.Text.ToUpperInvariant();
         }
 
         private void MainCategory_SelectedIndexChanged(object sender, EventArgs e)

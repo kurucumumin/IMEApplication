@@ -52,6 +52,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupAddresses = new System.Windows.Forms.GroupBox();
+            this.cmbTown = new System.Windows.Forms.ComboBox();
+            this.cmbCity = new System.Windows.Forms.ComboBox();
+            this.cmbCountry = new System.Windows.Forms.ComboBox();
             this.txtPoBox = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.txtFax = new System.Windows.Forms.TextBox();
@@ -60,23 +63,20 @@
             this.label16 = new System.Windows.Forms.Label();
             this.CityAdd = new System.Windows.Forms.Button();
             this.TownAdd = new System.Windows.Forms.Button();
-            this.AddressDetails = new System.Windows.Forms.TextBox();
+            this.txtAddressDetail = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.cbTown = new System.Windows.Forms.ComboBox();
-            this.cbCity = new System.Windows.Forms.ComboBox();
-            this.cbCountry = new System.Windows.Forms.ComboBox();
             this.label37 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
-            this.txtAdressTitle = new System.Windows.Forms.TextBox();
+            this.txtAddressTitle = new System.Windows.Forms.TextBox();
             this.label41 = new System.Windows.Forms.Label();
-            this.PostCode = new System.Windows.Forms.TextBox();
+            this.txtPostCode = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.btnAddressDelete = new System.Windows.Forms.Button();
             this.btnAddressUpdate = new System.Windows.Forms.Button();
             this.btnAddressAdd = new System.Windows.Forms.Button();
-            this.AdressList = new System.Windows.Forms.ListBox();
+            this.lbAddressList = new System.Windows.Forms.ListBox();
             this.btnAddressDone = new System.Windows.Forms.Button();
             this.btnAddressCancel = new System.Windows.Forms.Button();
             this.groupAcconutBank = new System.Windows.Forms.GroupBox();
@@ -103,6 +103,11 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.groupContact = new System.Windows.Forms.GroupBox();
+            this.btnContactCancel = new System.Windows.Forms.Button();
+            this.btnContactDone = new System.Windows.Forms.Button();
+            this.btnContactDelete = new System.Windows.Forms.Button();
+            this.btnContactUpdate = new System.Windows.Forms.Button();
+            this.btnContactNew = new System.Windows.Forms.Button();
             this.txtContactNotes = new System.Windows.Forms.TextBox();
             this.label36 = new System.Windows.Forms.Label();
             this.cmbContactAddress = new System.Windows.Forms.ComboBox();
@@ -127,16 +132,12 @@
             this.label24 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.ContactList = new System.Windows.Forms.ListBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.lbContacts = new System.Windows.Forms.ListBox();
             this.btnClose = new System.Windows.Forms.Button();
-            this.label67 = new System.Windows.Forms.Label();
+            this.lblAdd = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
-            this.label69 = new System.Windows.Forms.Label();
+            this.lblClose = new System.Windows.Forms.Label();
             this.groupInfo.SuspendLayout();
             this.groupAddresses.SuspendLayout();
             this.groupAcconutBank.SuspendLayout();
@@ -218,7 +219,6 @@
             this.btnSubCategoryAdd.TabIndex = 49;
             this.btnSubCategoryAdd.Text = "+";
             this.btnSubCategoryAdd.UseVisualStyleBackColor = true;
-            this.btnSubCategoryAdd.Click += new System.EventHandler(this.btnSubCategoryAdd_Click);
             // 
             // btnMainCategoryAdd
             // 
@@ -228,7 +228,6 @@
             this.btnMainCategoryAdd.TabIndex = 47;
             this.btnMainCategoryAdd.Text = "+";
             this.btnMainCategoryAdd.UseVisualStyleBackColor = true;
-            this.btnMainCategoryAdd.Click += new System.EventHandler(this.btnMainCategoryAdd_Click);
             // 
             // cmbSubCategory
             // 
@@ -383,6 +382,9 @@
             // 
             // groupAddresses
             // 
+            this.groupAddresses.Controls.Add(this.cmbTown);
+            this.groupAddresses.Controls.Add(this.cmbCity);
+            this.groupAddresses.Controls.Add(this.cmbCountry);
             this.groupAddresses.Controls.Add(this.txtPoBox);
             this.groupAddresses.Controls.Add(this.label14);
             this.groupAddresses.Controls.Add(this.txtFax);
@@ -391,17 +393,14 @@
             this.groupAddresses.Controls.Add(this.label16);
             this.groupAddresses.Controls.Add(this.CityAdd);
             this.groupAddresses.Controls.Add(this.TownAdd);
-            this.groupAddresses.Controls.Add(this.AddressDetails);
+            this.groupAddresses.Controls.Add(this.txtAddressDetail);
             this.groupAddresses.Controls.Add(this.label12);
-            this.groupAddresses.Controls.Add(this.cbTown);
-            this.groupAddresses.Controls.Add(this.cbCity);
-            this.groupAddresses.Controls.Add(this.cbCountry);
             this.groupAddresses.Controls.Add(this.label37);
             this.groupAddresses.Controls.Add(this.label38);
             this.groupAddresses.Controls.Add(this.label39);
-            this.groupAddresses.Controls.Add(this.txtAdressTitle);
+            this.groupAddresses.Controls.Add(this.txtAddressTitle);
             this.groupAddresses.Controls.Add(this.label41);
-            this.groupAddresses.Controls.Add(this.PostCode);
+            this.groupAddresses.Controls.Add(this.txtPostCode);
             this.groupAddresses.Controls.Add(this.label25);
             this.groupAddresses.ForeColor = System.Drawing.SystemColors.ControlText;
             this.groupAddresses.Location = new System.Drawing.Point(0, 292);
@@ -411,6 +410,36 @@
             this.groupAddresses.TabStop = false;
             this.groupAddresses.Text = "ADDRESS";
             this.groupAddresses.Paint += new System.Windows.Forms.PaintEventHandler(this.groupAddresses_Paint);
+            // 
+            // cmbTown
+            // 
+            this.cmbTown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTown.Enabled = false;
+            this.cmbTown.FormattingEnabled = true;
+            this.cmbTown.Location = new System.Drawing.Point(91, 274);
+            this.cmbTown.Name = "cmbTown";
+            this.cmbTown.Size = new System.Drawing.Size(121, 21);
+            this.cmbTown.TabIndex = 91;
+            // 
+            // cmbCity
+            // 
+            this.cmbCity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCity.Enabled = false;
+            this.cmbCity.FormattingEnabled = true;
+            this.cmbCity.Location = new System.Drawing.Point(91, 232);
+            this.cmbCity.Name = "cmbCity";
+            this.cmbCity.Size = new System.Drawing.Size(121, 21);
+            this.cmbCity.TabIndex = 90;
+            // 
+            // cmbCountry
+            // 
+            this.cmbCountry.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCountry.Enabled = false;
+            this.cmbCountry.FormattingEnabled = true;
+            this.cmbCountry.Location = new System.Drawing.Point(91, 201);
+            this.cmbCountry.Name = "cmbCountry";
+            this.cmbCountry.Size = new System.Drawing.Size(121, 21);
+            this.cmbCountry.TabIndex = 89;
             // 
             // txtPoBox
             // 
@@ -463,14 +492,13 @@
             // CityAdd
             // 
             this.CityAdd.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.CityAdd.Location = new System.Drawing.Point(217, 238);
+            this.CityAdd.Location = new System.Drawing.Point(217, 232);
             this.CityAdd.Margin = new System.Windows.Forms.Padding(2);
             this.CityAdd.Name = "CityAdd";
             this.CityAdd.Size = new System.Drawing.Size(23, 21);
             this.CityAdd.TabIndex = 82;
             this.CityAdd.Text = "+";
             this.CityAdd.UseVisualStyleBackColor = true;
-            this.CityAdd.Click += new System.EventHandler(this.CityAdd_Click);
             // 
             // TownAdd
             // 
@@ -482,16 +510,15 @@
             this.TownAdd.TabIndex = 81;
             this.TownAdd.Text = "+";
             this.TownAdd.UseVisualStyleBackColor = true;
-            this.TownAdd.Click += new System.EventHandler(this.TownAdd_Click);
             // 
-            // AddressDetails
+            // txtAddressDetail
             // 
-            this.AddressDetails.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.AddressDetails.Location = new System.Drawing.Point(269, 61);
-            this.AddressDetails.Multiline = true;
-            this.AddressDetails.Name = "AddressDetails";
-            this.AddressDetails.Size = new System.Drawing.Size(120, 212);
-            this.AddressDetails.TabIndex = 67;
+            this.txtAddressDetail.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtAddressDetail.Location = new System.Drawing.Point(270, 53);
+            this.txtAddressDetail.Multiline = true;
+            this.txtAddressDetail.Name = "txtAddressDetail";
+            this.txtAddressDetail.Size = new System.Drawing.Size(120, 212);
+            this.txtAddressDetail.TabIndex = 67;
             // 
             // label12
             // 
@@ -501,33 +528,6 @@
             this.label12.Size = new System.Drawing.Size(64, 34);
             this.label12.TabIndex = 79;
             this.label12.Text = "Adress Details";
-            // 
-            // cbTown
-            // 
-            this.cbTown.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.cbTown.FormattingEnabled = true;
-            this.cbTown.Location = new System.Drawing.Point(91, 275);
-            this.cbTown.Name = "cbTown";
-            this.cbTown.Size = new System.Drawing.Size(121, 21);
-            this.cbTown.TabIndex = 65;
-            // 
-            // cbCity
-            // 
-            this.cbCity.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.cbCity.FormattingEnabled = true;
-            this.cbCity.Location = new System.Drawing.Point(91, 237);
-            this.cbCity.Name = "cbCity";
-            this.cbCity.Size = new System.Drawing.Size(121, 21);
-            this.cbCity.TabIndex = 64;
-            // 
-            // cbCountry
-            // 
-            this.cbCountry.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.cbCountry.FormattingEnabled = true;
-            this.cbCountry.Location = new System.Drawing.Point(91, 201);
-            this.cbCountry.Name = "cbCountry";
-            this.cbCountry.Size = new System.Drawing.Size(121, 21);
-            this.cbCountry.TabIndex = 63;
             // 
             // label37
             // 
@@ -559,13 +559,13 @@
             this.label39.TabIndex = 78;
             this.label39.Text = "Country";
             // 
-            // txtAdressTitle
+            // txtAddressTitle
             // 
-            this.txtAdressTitle.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtAdressTitle.Location = new System.Drawing.Point(91, 27);
-            this.txtAdressTitle.Name = "txtAdressTitle";
-            this.txtAdressTitle.Size = new System.Drawing.Size(121, 20);
-            this.txtAdressTitle.TabIndex = 59;
+            this.txtAddressTitle.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtAddressTitle.Location = new System.Drawing.Point(91, 27);
+            this.txtAddressTitle.Name = "txtAddressTitle";
+            this.txtAddressTitle.Size = new System.Drawing.Size(121, 20);
+            this.txtAddressTitle.TabIndex = 59;
             // 
             // label41
             // 
@@ -577,13 +577,13 @@
             this.label41.TabIndex = 62;
             this.label41.Text = "Adress Title";
             // 
-            // PostCode
+            // txtPostCode
             // 
-            this.PostCode.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.PostCode.Location = new System.Drawing.Point(91, 165);
-            this.PostCode.Name = "PostCode";
-            this.PostCode.Size = new System.Drawing.Size(121, 20);
-            this.PostCode.TabIndex = 66;
+            this.txtPostCode.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtPostCode.Location = new System.Drawing.Point(91, 165);
+            this.txtPostCode.Name = "txtPostCode";
+            this.txtPostCode.Size = new System.Drawing.Size(121, 20);
+            this.txtPostCode.TabIndex = 66;
             // 
             // label25
             // 
@@ -606,7 +606,7 @@
             // 
             // btnAddressDelete
             // 
-            this.btnAddressDelete.Location = new System.Drawing.Point(506, 578);
+            this.btnAddressDelete.Location = new System.Drawing.Point(513, 565);
             this.btnAddressDelete.Name = "btnAddressDelete";
             this.btnAddressDelete.Size = new System.Drawing.Size(44, 26);
             this.btnAddressDelete.TabIndex = 143;
@@ -615,7 +615,7 @@
             // 
             // btnAddressUpdate
             // 
-            this.btnAddressUpdate.Location = new System.Drawing.Point(462, 578);
+            this.btnAddressUpdate.Location = new System.Drawing.Point(471, 564);
             this.btnAddressUpdate.Name = "btnAddressUpdate";
             this.btnAddressUpdate.Size = new System.Drawing.Size(45, 26);
             this.btnAddressUpdate.TabIndex = 141;
@@ -624,25 +624,24 @@
             // 
             // btnAddressAdd
             // 
-            this.btnAddressAdd.Location = new System.Drawing.Point(420, 578);
+            this.btnAddressAdd.Location = new System.Drawing.Point(427, 565);
             this.btnAddressAdd.Name = "btnAddressAdd";
             this.btnAddressAdd.Size = new System.Drawing.Size(45, 26);
             this.btnAddressAdd.TabIndex = 139;
             this.btnAddressAdd.Text = "Add";
             this.btnAddressAdd.UseVisualStyleBackColor = true;
             // 
-            // AdressList
+            // lbAddressList
             // 
-            this.AdressList.FormattingEnabled = true;
-            this.AdressList.Location = new System.Drawing.Point(425, 353);
-            this.AdressList.Name = "AdressList";
-            this.AdressList.Size = new System.Drawing.Size(134, 212);
-            this.AdressList.TabIndex = 137;
-            this.AdressList.SelectedIndexChanged += new System.EventHandler(this.AdressList_SelectedIndexChanged);
+            this.lbAddressList.FormattingEnabled = true;
+            this.lbAddressList.Location = new System.Drawing.Point(425, 345);
+            this.lbAddressList.Name = "lbAddressList";
+            this.lbAddressList.Size = new System.Drawing.Size(134, 212);
+            this.lbAddressList.TabIndex = 137;
             // 
             // btnAddressDone
             // 
-            this.btnAddressDone.Location = new System.Drawing.Point(420, 578);
+            this.btnAddressDone.Location = new System.Drawing.Point(427, 565);
             this.btnAddressDone.Name = "btnAddressDone";
             this.btnAddressDone.Size = new System.Drawing.Size(57, 26);
             this.btnAddressDone.TabIndex = 140;
@@ -652,7 +651,7 @@
             // 
             // btnAddressCancel
             // 
-            this.btnAddressCancel.Location = new System.Drawing.Point(483, 578);
+            this.btnAddressCancel.Location = new System.Drawing.Point(490, 565);
             this.btnAddressCancel.Name = "btnAddressCancel";
             this.btnAddressCancel.Size = new System.Drawing.Size(59, 26);
             this.btnAddressCancel.TabIndex = 142;
@@ -696,9 +695,9 @@
             // btnBankDelete
             // 
             this.btnBankDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBankDelete.Location = new System.Drawing.Point(485, 265);
+            this.btnBankDelete.Location = new System.Drawing.Point(486, 265);
             this.btnBankDelete.Name = "btnBankDelete";
-            this.btnBankDelete.Size = new System.Drawing.Size(56, 26);
+            this.btnBankDelete.Size = new System.Drawing.Size(67, 26);
             this.btnBankDelete.TabIndex = 73;
             this.btnBankDelete.Text = "Del";
             this.btnBankDelete.UseVisualStyleBackColor = true;
@@ -886,6 +885,11 @@
             // 
             // groupContact
             // 
+            this.groupContact.Controls.Add(this.btnContactCancel);
+            this.groupContact.Controls.Add(this.btnContactDone);
+            this.groupContact.Controls.Add(this.btnContactDelete);
+            this.groupContact.Controls.Add(this.btnContactUpdate);
+            this.groupContact.Controls.Add(this.btnContactNew);
             this.groupContact.Controls.Add(this.txtContactNotes);
             this.groupContact.Controls.Add(this.label36);
             this.groupContact.Controls.Add(this.cmbContactAddress);
@@ -910,20 +914,66 @@
             this.groupContact.Controls.Add(this.label24);
             this.groupContact.Controls.Add(this.label29);
             this.groupContact.Controls.Add(this.label22);
-            this.groupContact.Controls.Add(this.button1);
-            this.groupContact.Controls.Add(this.button2);
             this.groupContact.Controls.Add(this.button3);
-            this.groupContact.Controls.Add(this.ContactList);
-            this.groupContact.Controls.Add(this.button4);
-            this.groupContact.Controls.Add(this.button5);
+            this.groupContact.Controls.Add(this.lbContacts);
             this.groupContact.ForeColor = System.Drawing.SystemColors.ControlText;
             this.groupContact.Location = new System.Drawing.Point(585, 302);
             this.groupContact.Name = "groupContact";
-            this.groupContact.Size = new System.Drawing.Size(577, 301);
+            this.groupContact.Size = new System.Drawing.Size(589, 301);
             this.groupContact.TabIndex = 60;
             this.groupContact.TabStop = false;
             this.groupContact.Text = "CONTACT";
             this.groupContact.Paint += new System.Windows.Forms.PaintEventHandler(this.groupContact_Paint);
+            // 
+            // btnContactCancel
+            // 
+            this.btnContactCancel.Location = new System.Drawing.Point(514, 265);
+            this.btnContactCancel.Name = "btnContactCancel";
+            this.btnContactCancel.Size = new System.Drawing.Size(64, 23);
+            this.btnContactCancel.TabIndex = 83;
+            this.btnContactCancel.Text = "Cancel";
+            this.btnContactCancel.UseVisualStyleBackColor = true;
+            this.btnContactCancel.Visible = false;
+            // 
+            // btnContactDone
+            // 
+            this.btnContactDone.Location = new System.Drawing.Point(430, 265);
+            this.btnContactDone.Name = "btnContactDone";
+            this.btnContactDone.Size = new System.Drawing.Size(75, 23);
+            this.btnContactDone.TabIndex = 81;
+            this.btnContactDone.Text = "Done";
+            this.btnContactDone.UseVisualStyleBackColor = true;
+            this.btnContactDone.Visible = false;
+            // 
+            // btnContactDelete
+            // 
+            this.btnContactDelete.Enabled = false;
+            this.btnContactDelete.Location = new System.Drawing.Point(526, 266);
+            this.btnContactDelete.Name = "btnContactDelete";
+            this.btnContactDelete.Size = new System.Drawing.Size(55, 23);
+            this.btnContactDelete.TabIndex = 84;
+            this.btnContactDelete.Text = "Del";
+            this.btnContactDelete.UseVisualStyleBackColor = true;
+            // 
+            // btnContactUpdate
+            // 
+            this.btnContactUpdate.Enabled = false;
+            this.btnContactUpdate.Location = new System.Drawing.Point(477, 266);
+            this.btnContactUpdate.Name = "btnContactUpdate";
+            this.btnContactUpdate.Size = new System.Drawing.Size(50, 23);
+            this.btnContactUpdate.TabIndex = 82;
+            this.btnContactUpdate.Text = "Upd";
+            this.btnContactUpdate.UseVisualStyleBackColor = true;
+            // 
+            // btnContactNew
+            // 
+            this.btnContactNew.Enabled = false;
+            this.btnContactNew.Location = new System.Drawing.Point(428, 266);
+            this.btnContactNew.Name = "btnContactNew";
+            this.btnContactNew.Size = new System.Drawing.Size(43, 23);
+            this.btnContactNew.TabIndex = 80;
+            this.btnContactNew.Text = "New";
+            this.btnContactNew.UseVisualStyleBackColor = true;
             // 
             // txtContactNotes
             // 
@@ -1123,27 +1173,9 @@
             this.label22.AutoSize = true;
             this.label22.Location = new System.Drawing.Point(445, 20);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(56, 13);
+            this.label22.Size = new System.Drawing.Size(49, 13);
             this.label22.TabIndex = 50;
-            this.label22.Text = "Addresses";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(531, 269);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(44, 26);
-            this.button1.TabIndex = 56;
-            this.button1.Text = "Del";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(487, 269);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(45, 26);
-            this.button2.TabIndex = 54;
-            this.button2.Text = "Upd";
-            this.button2.UseVisualStyleBackColor = true;
+            this.label22.Text = "Contacts";
             // 
             // button3
             // 
@@ -1155,34 +1187,13 @@
             this.button3.Text = "Add";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // ContactList
+            // lbContacts
             // 
-            this.ContactList.FormattingEnabled = true;
-            this.ContactList.Location = new System.Drawing.Point(448, 43);
-            this.ContactList.Name = "ContactList";
-            this.ContactList.Size = new System.Drawing.Size(120, 212);
-            this.ContactList.TabIndex = 40;
-            this.ContactList.SelectedIndexChanged += new System.EventHandler(this.ContactList_SelectedIndexChanged);
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(445, 269);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(57, 26);
-            this.button4.TabIndex = 53;
-            this.button4.Text = "Done";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Visible = false;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(508, 269);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(59, 26);
-            this.button5.TabIndex = 55;
-            this.button5.Text = "Cancel";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Visible = false;
+            this.lbContacts.FormattingEnabled = true;
+            this.lbContacts.Location = new System.Drawing.Point(448, 43);
+            this.lbContacts.Name = "lbContacts";
+            this.lbContacts.Size = new System.Drawing.Size(120, 212);
+            this.lbContacts.TabIndex = 40;
             // 
             // btnClose
             // 
@@ -1194,15 +1205,15 @@
             this.btnClose.TabIndex = 145;
             this.btnClose.UseVisualStyleBackColor = false;
             // 
-            // label67
+            // lblAdd
             // 
-            this.label67.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label67.AutoSize = true;
-            this.label67.Location = new System.Drawing.Point(1051, 669);
-            this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(32, 13);
-            this.label67.TabIndex = 146;
-            this.label67.Text = "Save";
+            this.lblAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblAdd.AutoSize = true;
+            this.lblAdd.Location = new System.Drawing.Point(1051, 669);
+            this.lblAdd.Name = "lblAdd";
+            this.lblAdd.Size = new System.Drawing.Size(32, 13);
+            this.lblAdd.TabIndex = 146;
+            this.lblAdd.Text = "Save";
             // 
             // btnSave
             // 
@@ -1213,17 +1224,17 @@
             this.btnSave.Size = new System.Drawing.Size(52, 52);
             this.btnSave.TabIndex = 144;
             this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+
             // 
-            // label69
+            // lblClose
             // 
-            this.label69.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label69.AutoSize = true;
-            this.label69.Location = new System.Drawing.Point(1105, 669);
-            this.label69.Name = "label69";
-            this.label69.Size = new System.Drawing.Size(33, 13);
-            this.label69.TabIndex = 147;
-            this.label69.Text = "Close";
+            this.lblClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblClose.AutoSize = true;
+            this.lblClose.Location = new System.Drawing.Point(1105, 669);
+            this.lblClose.Name = "lblClose";
+            this.lblClose.Size = new System.Drawing.Size(33, 13);
+            this.lblClose.TabIndex = 147;
+            this.lblClose.Text = "Close";
             // 
             // FormSupplierAdd
             // 
@@ -1232,16 +1243,16 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.ClientSize = new System.Drawing.Size(1179, 683);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.label67);
+            this.Controls.Add(this.lblAdd);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.label69);
+            this.Controls.Add(this.lblClose);
             this.Controls.Add(this.groupContact);
             this.Controls.Add(this.groupAcconutBank);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.btnAddressDelete);
             this.Controls.Add(this.btnAddressUpdate);
             this.Controls.Add(this.btnAddressAdd);
-            this.Controls.Add(this.AdressList);
+            this.Controls.Add(this.lbAddressList);
             this.Controls.Add(this.btnAddressDone);
             this.Controls.Add(this.btnAddressCancel);
             this.Controls.Add(this.groupAddresses);
@@ -1270,17 +1281,14 @@
         private System.Windows.Forms.GroupBox groupAddresses;
         private System.Windows.Forms.Button CityAdd;
         private System.Windows.Forms.Button TownAdd;
-        private System.Windows.Forms.TextBox AddressDetails;
+        private System.Windows.Forms.TextBox txtAddressDetail;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.ComboBox cbTown;
-        private System.Windows.Forms.ComboBox cbCity;
-        private System.Windows.Forms.ComboBox cbCountry;
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label label39;
-        private System.Windows.Forms.TextBox txtAdressTitle;
+        private System.Windows.Forms.TextBox txtAddressTitle;
         private System.Windows.Forms.Label label41;
-        private System.Windows.Forms.TextBox PostCode;
+        private System.Windows.Forms.TextBox txtPostCode;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.ComboBox cmbMainContact;
         private System.Windows.Forms.Label label28;
@@ -1314,15 +1322,15 @@
         private System.Windows.Forms.Button btnAddressDelete;
         private System.Windows.Forms.Button btnAddressUpdate;
         private System.Windows.Forms.Button btnAddressAdd;
-        private System.Windows.Forms.ListBox AdressList;
+        private System.Windows.Forms.ListBox lbAddressList;
         private System.Windows.Forms.Button btnAddressDone;
         private System.Windows.Forms.Button btnAddressCancel;
         private System.Windows.Forms.GroupBox groupAcconutBank;
         private System.Windows.Forms.GroupBox groupContact;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Label label67;
+        private System.Windows.Forms.Label lblAdd;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Label label69;
+        private System.Windows.Forms.Label lblClose;
         private System.Windows.Forms.TextBox txtAccountNotes;
         private System.Windows.Forms.ComboBox cmbCurrency;
         private System.Windows.Forms.ComboBox cmbAccountMethod;
@@ -1346,12 +1354,8 @@
         private System.Windows.Forms.Button btnBankUpdate;
         private System.Windows.Forms.Button btnBankAdd;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.ListBox ContactList;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.ListBox lbContacts;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.TextBox txtExternalNumber;
         private System.Windows.Forms.Button btnPos;
@@ -1375,5 +1379,13 @@
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.TextBox txtContactNotes;
         private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Button btnContactCancel;
+        private System.Windows.Forms.Button btnContactDone;
+        private System.Windows.Forms.Button btnContactDelete;
+        private System.Windows.Forms.Button btnContactUpdate;
+        private System.Windows.Forms.Button btnContactNew;
+        private System.Windows.Forms.ComboBox cmbTown;
+        private System.Windows.Forms.ComboBox cmbCity;
+        private System.Windows.Forms.ComboBox cmbCountry;
     }
 }

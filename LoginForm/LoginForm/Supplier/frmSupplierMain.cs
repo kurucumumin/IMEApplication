@@ -1059,11 +1059,6 @@ namespace LoginForm
         }
 
 
-
-
-
-
-
         private void EnableAddressInput(bool state)
         {
             txtAddressTitle.Enabled = state;

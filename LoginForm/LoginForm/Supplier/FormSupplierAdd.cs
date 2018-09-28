@@ -1,29 +1,25 @@
 ﻿using LoginForm.DataSet;
+using LoginForm.Services;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Data;
-using System.Windows.Forms;
-using LoginForm.Services;
-using System.Drawing;
-using LoginForm.clsClasses;
 using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
 using static LoginForm.Services.MyClasses.MyAuthority;
 
 namespace LoginForm
 {
     public partial class FormSupplierAdd : Form
     {
-        BindingList<SupplierAddress> SavedAddresses = new BindingList<SupplierAddress>();
-        BindingList<SupplierWorker> SavedContacts = new BindingList<SupplierWorker>();
-        BindingList<SupplierBankAccount> SavedBanks = new BindingList<SupplierBankAccount>();
+        FormSupplierMain parent;
+        IMEEntities IME = new IMEEntities();
 
         string ComboboxString = "Choose";
         int isUpdateAdress;
         int selectedContactID;
         int contactnewID = 0;
-        FormSupplierMain parent;
-        IMEEntities IME = new IMEEntities();
 
         public FormSupplierAdd()
         {
@@ -33,12 +29,15 @@ namespace LoginForm
         public FormSupplierAdd(Supplier supplier, string form)
         {
             InitializeComponent();
+
+            //ComboboxFiller();
             if (form == "View")
             {
                 supplierClicksearch(supplier);
                 EnableMod(false);
-                ContactList.Enabled = true;
-                AdressList.Enabled = true;
+                lbContacts.Enabled = true;
+                lbAddressList.Enabled = true;
+                lbBankList.Enabled = true;
             }
             else
             {
@@ -56,11 +55,38 @@ namespace LoginForm
             this.parent = parent;
             itemsClear();
             EnableMod(true);
-            txtSupplierCode.Text = NewSupplierNumber();
+            NewSupplierNumber();
+
+
+            #region BankAccount
+
+            txtBankAccountTitle.Text = String.Empty;
+            txtBankAccountTitle.Enabled = true;
+            txtBankBranchCode.Text = String.Empty;
+            txtBankBranchCode.Enabled = true;
+            txtBankAccountNumber.Text = String.Empty;
+            txtBankAccountNumber.Enabled = true;
+            txtBankIban.Text = String.Empty;
+            txtBankIban.Enabled = true;
+            lbBankList.Enabled = false;
+            lbBankList.DataSource = null;
+            lbBankList.Refresh();
+
+            btnBankAdd.Text = "Save";
+            btnBankAdd.Enabled = true;
+            btnBankUpdate.Text = "Cancel";
+            btnBankUpdate.Enabled = true;
+
+            btnBankDelete.Visible = false;
+
+           // BankMode = "Add";
+
+            #endregion
+
         }
 
         #region Groupbox Rengi
-        
+
         private void DrawGroupBox(GroupBox box, Graphics g, Color textColor, Color borderColor)
         {
             if (box != null)
@@ -117,6 +143,66 @@ namespace LoginForm
 
         #endregion
 
+        private void NewSupplierNumber()
+        {
+            DataSet.Management m = Utils.getManagement();
+
+            //for new customerCode
+            string custmrcode = "";
+            if (IME.Suppliers.ToList().Count != 0)
+                custmrcode = IME.Suppliers.OrderByDescending(a => a.ID).FirstOrDefault().ID;
+            string custmrnumbers = string.Empty;
+            string newcustomercodenumbers = "";
+            string newcustomercodezeros = "";
+            string newcustomercodechars = "";
+            for (int i = 0; i < custmrcode.Length; i++)
+            {
+                if (Char.IsDigit(custmrcode[i]))
+                {
+                    if (custmrcode[i] == '0') { newcustomercodezeros += custmrcode[i]; } else { newcustomercodenumbers += custmrcode[i]; }
+                }
+                else
+                {
+                    newcustomercodechars += custmrcode[i];
+                }
+            }
+            //Aynı ID ile customer oluşturmasını önleyen kısım
+            while (IME.Suppliers.Where(a => a.ID == custmrcode).Count() > 0)
+            {
+                newcustomercodenumbers = (Int32.Parse(newcustomercodenumbers) + 1).ToString();
+                custmrcode = newcustomercodechars + newcustomercodezeros + newcustomercodenumbers;
+            }
+            //
+            txtSupplierCode.Text = custmrcode;
+            Supplier newCustomer = new Supplier();
+            
+            newCustomer.ID = txtSupplierCode.Text;
+            IME.Suppliers.Add(newCustomer);
+            IME.SaveChanges();
+            Utils.LogKayit("Supplier", "Supplier added");
+            lblClose.Text = "Cancel";
+            lbBankList.DataSource = null;
+            lbBankList.Enabled = false;
+            lbAddressList.Enabled = false;
+            lbAddressList.DataSource = null;
+            lbContacts.DataSource = null;
+            lbContacts.Enabled = false;
+
+            btnAddressAdd.Enabled = true;
+            btnContactNew.Enabled = true;
+            btnBankAdd.Enabled = true;
+            btnContactClick();
+            btnAddressClick();
+            btnSave.Enabled = true;
+            btnClose.Enabled = true;
+        }
+
+        private void FormSupplierAdd_Load(object sender, EventArgs e)
+        {
+            //checkAuthorities();
+            ComboboxFiller();
+        }
+
         private void itemsClear()
         {
             txtSupplierCode.Text = "";
@@ -139,16 +225,16 @@ namespace LoginForm
             txtBankBranchCode.Text = "";
             txtBankIban.Text = "";
             lbBankList.DataSource = null;
-            txtAdressTitle.Text = "";
+            txtAddressTitle.Text = "";
             txtPhone.Text = "";
             txtFax.Text = "";
             txtPoBox.Text = "";
-            PostCode.Text = "";
-            cbCountry.SelectedIndex = -1;
-            cbCity.SelectedIndex = -1;
-            cbTown.SelectedIndex = -1;
-            AddressDetails.Text = "";
-            AdressList.DataSource = null;
+            txtPostCode.Text = "";
+            cmbCountry.SelectedIndex = -1;
+            cmbCity.SelectedIndex = -1;
+            cmbTown.SelectedIndex = -1;
+            txtAddressDetail.Text = "";
+            lbAddressList.DataSource = null;
             cmbDepartment.SelectedIndex = -1;
             cmbPosition.SelectedIndex = -1;
             txtContactName.Text = "";
@@ -159,11 +245,12 @@ namespace LoginForm
             cmbLanguage.SelectedIndex = -1;
             cmbContactAddress.SelectedIndex = -1;
             txtContactNotes.Text = "";
-            ContactList.DataSource = null;
+            lbContacts.DataSource = null;
         }
 
         private void ComboboxFiller()
         {
+
             cmbDepartment.DataSource = IME.CustomerDepartments.ToList();
             cmbDepartment.DisplayMember = "departmentname";
             cmbDepartment.ValueMember = "ID";
@@ -179,7 +266,7 @@ namespace LoginForm
             cmbAccountRep.DataSource = IME.Workers.ToList();
             cmbAccountRep.DisplayMember = "NameLastName";
             cmbAccountRep.ValueMember = "WorkerID";
-            
+
             cmbMainCategory.DataSource = IME.SupplierCategories.ToList();
             cmbMainCategory.DisplayMember = "categoryname";
             cmbMainCategory.ValueMember = "ID";
@@ -203,53 +290,13 @@ namespace LoginForm
             cmbRepresentative.DisplayMember = "NameLastName";
             cmbRepresentative.ValueMember = "WorkerID";
 
-            cbCountry.DataSource = IME.Countries.OrderBy(a => a.Country_name).ToList();
-            cbCountry.DisplayMember = "Country_name";
-            cbCountry.ValueMember = "ID";
+            cmbCountry.DataSource = IME.Countries.OrderBy(a => a.Country_name).ToList();
+            cmbCountry.DisplayMember = "Country_name";
+            cmbCountry.ValueMember = "ID";
 
             //ContactType.DataSource = IME.ContactTypes.ToList();
             //ContactType.ValueMember = "ID";
             //ContactType.DisplayMember = "ContactTypeName";
-        }
-
-        private string NewSupplierNumber()
-        {
-            IMEEntities db = new IMEEntities();
-            string suppliercode = "";
-            if (db.Suppliers.ToList().Count != 0)
-            {
-                suppliercode = db.Suppliers.OrderByDescending(a => a.ID).FirstOrDefault().ID;
-
-                int newSupplierCodeNumbers = 0;
-                string newsuppliercodechars = string.Empty;
-                string NewID = string.Empty;
-
-                int i;
-                for (i = 0; i < suppliercode.Length; i++)
-                {
-                    if (!Char.IsDigit(suppliercode[i]))
-                    {
-                        newsuppliercodechars += suppliercode[i];
-                    }
-                    else
-                    {
-                        newSupplierCodeNumbers = Int32.Parse(suppliercode.Substring(i));
-                        break;
-                    }
-                }
-
-                NewID += newsuppliercodechars;
-                for (i = 0; i < (4 - newSupplierCodeNumbers.ToString().Length); i++)
-                {
-                    NewID += "0";
-                }
-                NewID += (newSupplierCodeNumbers + 1);
-                return NewID;
-            }
-            else
-            {
-                return "SC0001";
-            }
         }
 
         private void supplierClicksearch(Supplier supplier)
@@ -283,6 +330,18 @@ namespace LoginForm
             txtSupplierNotes.Text = (s.Note1 != null) ? s.Note1.Note_name : String.Empty;
             #endregion
 
+            #region Address
+            lbAddressList.DataSource = IME.SupplierAddresses.Where(sa => sa.SupplierID == txtSupplierCode.Text).ToList();
+            lbAddressList.DisplayMember = "AdressTitle";
+            lbAddressList.ValueMember = "ID";
+            #endregion
+
+            #region Contact
+            lbContacts.DataSource = IME.SupplierWorkers.Where(sa => sa.supplierID == txtSupplierCode.Text).ToList();
+            lbContacts.DisplayMember = "sw_name";
+            lbContacts.ValueMember = "ID";
+            #endregion
+
             #region Account
             if (s.accountrepresentaryID != null) cmbAccountRep.Text = IME.Workers.Where(a => a.WorkerID == s.accountrepresentaryID).FirstOrDefault().NameLastName;
             if (s.PaymentTerm != null) cmbAccountTerms.SelectedValue = s.PaymentTerm.ID;
@@ -308,124 +367,8 @@ namespace LoginForm
             }
             #endregion
 
-            #region Address
-            AdressList.DataSource = IME.SupplierAddresses.Where(sa => sa.SupplierID == txtSupplierCode.Text).ToList();
-            AdressList.DisplayMember = "AdressTitle";
-            AdressList.ValueMember = "ID";
-            #endregion
-
-            #region Contact
-            ContactList.DataSource = IME.SupplierWorkers.Where(sa => sa.supplierID == txtSupplierCode.Text).ToList();
-            ContactList.DisplayMember = "sw_name";
-            ContactList.ValueMember = "ID";
-            #endregion
-            //cmbContactAddress.DataSource = IME.SupplierAddresses.Where(c => c.SupplierID == txtSupplierCode.Text).ToList();
-            //cmbContactAddress.DisplayMember = "Title";
-            //AdressList.ValueMember = "ID";
-
-            //string name = s.Worker1.NameLastName;
 
 
-            //if (s.SupplierCategory != null)
-            //{
-            //    name = s.SupplierCategory.categoryname;
-            //    cmbMainCategory.SelectedIndex = cmbMainCategory.FindStringExact(name);
-            //}
-            //else
-            //{
-            //    cmbMainCategory.SelectedIndex = 0;
-            //}
-
-            //if (s.Worker != null)
-            //{
-            //    name = s.Worker.NameLastName;
-            //    cmbAccountRep.SelectedIndex = cmbAccountRep.FindString(name);
-            //}
-            //else
-            //{
-            //    cmbAccountRep.SelectedIndex = 0;
-            //}
-
-            //if (s.PaymentTerm != null)
-            //{
-            //    name = s.PaymentTerm.term_name;
-            //    cmbAccountTerms.SelectedIndex = cmbAccountTerms.FindString(name);
-            //}
-            //else
-            //{
-            //    cmbAccountTerms.SelectedIndex = 0;
-            //}
-
-
-            //if (s.PaymentMethod != null)
-            //{
-            //    name = s.PaymentMethod.Payment;
-            //    cmbAccountMethod.SelectedIndex = cmbAccountMethod.FindString(name);
-            //}
-            //else
-            //{
-            //    cmbAccountMethod.SelectedIndex = 0;
-            //}
-
-
-            //if (s.Currency != null)
-            //{
-            //    name = s.Currency.currencyName;
-            //    cmbCurrency.SelectedIndex = cmbCurrency.FindStringExact(name);
-            //}
-            //else
-            //{
-            //    cmbCurrency.SelectedIndex = 0;
-            //}
-
-
-            ////name = s.SupplierBank.bankname;
-            //if (s.SupplierWorker != null)
-            //{
-            //    name = s.SupplierWorker.sw_name;
-            //    cmbMainContact.SelectedIndex = cmbMainContact.FindStringExact(name);
-            //}
-            //else
-            //{
-            //    if (cmbMainContact.Items.Count != 0)
-            //    {
-            //        cmbMainContact.SelectedIndex = 0;
-            //    }
-            //}
-
-
-            //SavedAddresses.Clear();
-            //foreach (SupplierAddress sa in s.SupplierAddresses)
-            //{
-            //    SavedAddresses.Add(sa);
-            //}
-            //AdressList.DataSource = null;
-            //AdressList.DataSource = SavedAddresses;
-            //AdressList.DisplayMember = "Title";
-            //AdressList.ClearSelected();
-            //AdressList.Enabled = true;
-
-            //SavedContacts.Clear();
-            //foreach (SupplierWorker sw in s.SupplierWorkers)
-            //{
-            //    SavedContacts.Add(sw);
-            //}
-            //ContactList.DataSource = null;
-            //ContactList.DataSource = SavedContacts;
-            //ContactList.DisplayMember = "sw_name";
-            //ContactList.ClearSelected();
-            //ContactList.Enabled = true;
-
-            //SavedBanks.Clear();
-            //foreach (SupplierBankAccount ba in s.SupplierBankAccounts)
-            //{
-            //    SavedBanks.Add(ba);
-            //}
-            //lbBankList.DataSource = null;
-            //lbBankList.DataSource = SavedBanks;
-            //lbBankList.DisplayMember = "Title";
-            //lbBankList.ClearSelected();
-            //lbBankList.Enabled = true;
         }
 
         private void EnableMod(bool mod)
@@ -450,16 +393,16 @@ namespace LoginForm
             txtBankBranchCode.Enabled = mod;
             txtBankIban.Enabled = mod;
             lbBankList.DataSource = null;
-            txtAdressTitle.Enabled = mod;
+            txtAddressTitle.Enabled = mod;
             txtPhone.Enabled = mod;
             txtFax.Enabled = mod;
             txtPoBox.Enabled = mod;
-            PostCode.Enabled = mod;
-            cbCountry.Enabled = mod;
-            cbCity.Enabled = mod;
-            cbTown.Enabled = mod;
-            AddressDetails.Enabled = mod;
-            AdressList.DataSource = null;
+            txtPostCode.Enabled = mod;
+            cmbCountry.Enabled = mod;
+            cmbCity.Enabled = mod;
+            cmbTown.Enabled = mod;
+            txtAddressDetail.Enabled = mod;
+            lbAddressList.DataSource = null;
             cmbDepartment.Enabled = mod;
             cmbPosition.Enabled = mod;
             txtContactName.Enabled = mod;
@@ -470,243 +413,268 @@ namespace LoginForm
             cmbLanguage.Enabled = mod;
             cmbContactAddress.Enabled = mod;
             txtContactNotes.Enabled = mod;
-            ContactList.DataSource = null;
+            lbContacts.DataSource = null;
             btnSave.Enabled = mod;
         }
 
-        private void CityAdd_Click(object sender, EventArgs e)
+        private void contactTabEnableFalse()
         {
-            if (cbCountry.SelectedValue != null && cbCountry.Text != ComboboxString)
+            #region contactTabEnableFalse
+            cmbDepartment.Enabled = false;
+            btnDep.Enabled = false;
+
+            cmbPosition.Enabled = false;
+            btnDep.Enabled = false;
+            txtContactName.Enabled = false;
+            txtContactMail.Enabled = false;
+            txtContactPhone.Enabled = false;
+            txtExternalNumber.Enabled = false;
+            cmbContactAddress.Enabled = false;
+            txtContactMobile.Enabled = false;
+            txtContactFax.Enabled = false;
+            cmbLanguage.Enabled = false;
+            txtContactNotes.Enabled = false;
+
+            btnPos.Enabled = false;
+            lbContacts.Enabled = true;
+
+            btnContactNew.Enabled = true;
+            if (lbContacts.DataSource != null)
             {
-                int country = Convert.ToInt32(cbCountry.SelectedValue);
-                frmCityAdd form = new frmCityAdd(country);
-                form.ShowDialog();
-                cbCity.DataSource = IME.Cities.Where(a => a.CountryID == (int)cbCountry.SelectedValue).ToList();
-                cbCity.DisplayMember = "City_name";
-                cbCity.ValueMember = "ID";
+                btnContactDelete.Enabled = true;
+                btnContactUpdate.Enabled = true;
             }
-            else { MessageBox.Show("Please select a Country"); }
-        }
-
-        private void TownAdd_Click(object sender, EventArgs e)
-        {
-            if (cbCity.SelectedValue != null && cbCity.Text != ComboboxString)
+            else
             {
-                int city = Convert.ToInt32(cbCity.SelectedValue);
-                int country = Convert.ToInt32(cbCountry.SelectedValue);
-                FormTownAdd form = new FormTownAdd(country, city);
-                form.ShowDialog();
-                //this.BringToFront();
-                //cbTown.Refresh();
-
-                cbTown.DataSource = IME.Towns.Where(a => a.CityID == (int)cbCity.SelectedValue).ToList();
-                cbTown.DisplayMember = "Town_name";
-                cbTown.ValueMember = "ID";
+                btnContactDelete.Enabled = false;
+                btnContactUpdate.Enabled = false;
             }
-            else { MessageBox.Show("Please select a City"); }
-        }
 
-        private void btnMainCategoryAdd_Click(object sender, EventArgs e)
-        {
-            frmSupplierCategoryAdd form = new frmSupplierCategoryAdd();
-            form.ShowDialog();
-            cmbMainCategory.DataSource = IME.SupplierCategories.ToList();
-            cmbMainCategory.DisplayMember = "categoryname";
-            cmbMainCategory.ValueMember = "ID";
-        }
+            btnContactNew.Enabled = false;
 
-        private void btnSubCategoryAdd_Click(object sender, EventArgs e)
-        {
-            SupplierCategory sc = ((SupplierCategory)cmbMainCategory.SelectedItem);
-            frmSupplierSubCategoryAdd form = new frmSupplierSubCategoryAdd(sc.categoryname);
-            DialogResult result = form.ShowDialog();
+            btnSave.Enabled = true;
 
-            if (result == DialogResult.OK)
+            btnContactNew.Enabled = true;
+            if (lbContacts.DataSource != null)
             {
-                cmbSubCategory.Items.Clear();
-                cmbSubCategory.DisplayMember = "subcategoryname";
-                cmbSubCategory.Items.AddRange(new IMEEntities().SupplierSubCategories.Where(x => x.categoryID == sc.ID).ToArray());
-                cmbSubCategory.Items.Insert(0, "Choose");
-                cmbSubCategory.SelectedIndex = cmbSubCategory.Items.Count - 1;
+                btnContactUpdate.Enabled = true;
+                btnContactDelete.Enabled = true;
             }
+
+            #endregion
         }
 
-        private void FormSupplierAdd_Load(object sender, EventArgs e)
+        private void contactTabEnableTrue()
         {
-            ComboboxFiller();
-        }
+            #region contactTabEnableTrue
+            cmbDepartment.Enabled = true;
+            btnDep.Enabled = true;
+            cmbPosition.Enabled = true;
+            btnDep.Enabled = true;
+            txtContactName.Enabled = true;
+            txtContactMail.Enabled = true;
+            txtContactPhone.Enabled = true;
+            txtExternalNumber.Enabled = true;
+            cmbContactAddress.Enabled = true;
+            txtContactMobile.Enabled = true;
+            txtContactFax.Enabled = true;
+            cmbLanguage.Enabled = true;
+            txtContactNotes.Enabled = true;
 
-        private void AdressList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
+            btnPos.Enabled = true;
+            lbContacts.Enabled = false;
+
+            btnContactNew.Enabled = true;
+            if (lbContacts.Items.Count > 0)
             {
-                #region AddressList (list box a tıklandığında adres bilgileri tıklanana göre doldurulması)
-
-                int cw_ID = (int)AdressList.SelectedValue;
-                if (txtName.Text != string.Empty)
-                {
-                    SupplierAddress c;
-
-                    IMEEntities IME = new IMEEntities();
-                    try
-                    {
-                        c = IME.SupplierAddresses.Where(q => q.ID == cw_ID).FirstOrDefault();
-                    }
-                    catch (Exception)
-                    {
-
-                        throw;
-                    }
-                    ContactListItem.ID = cw_ID;
-                    txtAdressTitle.Text = c.Title;
-                    txtPhone.Text = c.Phone;
-                    txtFax.Text = c.Fax;
-                    txtPoBox.Text = c.PoBox;
-                    PostCode.Text = c.PostCode;
-                    cbCountry.SelectedValue = c.CountryID;
-                    cbCity.SelectedValue = c.CityID;
-                    cbTown.SelectedValue = c.TownID;
-                    AddressDetails.Text = c.AdressDetails;
-                }
-                #endregion
+                btnContactDelete.Enabled = true;
+                btnContactUpdate.Enabled = true;
             }
-            catch { }
+
+            if (lbAddressList.Items.Count > 0)
+            {
+                btnAddressDelete.Enabled = true;
+                btnAddressUpdate.Enabled = true;
+            }
+            btnAddressAdd.Enabled = true;
+            btnContactNew.Enabled = false;
+            btnContactDelete.Enabled = false;
+            btnContactUpdate.Enabled = false;
+            btnSave.Enabled = false;
+            groupContact.Enabled = true;
+            #endregion
         }
 
-        private void ContactList_SelectedIndexChanged(object sender, EventArgs e)
+        private void AdressTabEnableFalse()
         {
-            try
+            #region AdressTabEnableFalse
+            cmbCountry.Enabled = false;
+            cmbCity.Enabled = false;
+            cmbTown.Enabled = false;
+            txtPostCode.Enabled = false;
+            txtAddressTitle.Enabled = false;
+            CityAdd.Enabled = false;
+            TownAdd.Enabled = false;
+            txtAddressDetail.Enabled = false;
+            lbAddressList.Enabled = true;
+            if (lbContacts.DataSource != null)
             {
-                #region ContactList (list box a tıklandığında contact ın bilgileri tıklanana göre doldurulması)
-                int cw_ID = (int)ContactList.SelectedValue;
-                if (txtName.Text != string.Empty)
-                {
-                    ContactListItem.ID = cw_ID;
-                    string contactname = ((SupplierWorker)((ListBox)sender).SelectedItem).sw_name;
-                    ContactListItem.contactName = contactname;
-                    var a = IME.SupplierWorkers.Where(cw => cw.ID == cw_ID).FirstOrDefault();
-
-                    selectedContactID = a.ID;
-
-                    if (a.departmentID != null) cmbDepartment.SelectedValue = a.departmentID;
-                    if (a.titleID != null) cmbPosition.SelectedValue = a.titleID;
-
-                    txtContactName.Text = a.sw_name;
-                    txtContactPhone.Text = a.phone;
-                    txtContactMail.Text = a.sw_email;
-                    txtContactFax.Text = a.fax;
-                    txtContactMobile.Text = a.mobilephone;
-                    cmbLanguage.SelectedValue = a.Language.ID;
-                    if (a.SupplierAddress != null) cmbContactAddress.SelectedItem = Int32.Parse(a.SupplierAddress.ToString());
-                    if (a.Note != null) { txtContactNotes.Text = a.Note.Note_name; } else { txtContactNotes.Text = ""; }
-
-                }
-                #endregion
+                btnAddressDelete.Enabled = true;
+                btnAddressUpdate.Enabled = true;
             }
-            catch { }
+            btnAddressAdd.Enabled = true;
+            btnSave.Enabled = true;
+            #endregion
+        }
+
+        private void AdressTabEnableTrue()
+        {
+            #region contactTabEnableTrue
+            cmbCountry.Enabled = true;
+            cmbCity.Enabled = true;
+            cmbTown.Enabled = true;
+            txtPostCode.Enabled = true;
+            txtAddressTitle.Enabled = true;
+            CityAdd.Enabled = true;
+            TownAdd.Enabled = true;
+            txtAddressDetail.Enabled = true;
+            lbAddressList.Enabled = false;
+            btnAddressAdd.Enabled = false;
+            btnAddressDelete.Enabled = false;
+            btnAddressUpdate.Enabled = false;
+            btnSave.Enabled = false;
+            groupAddresses.Enabled = true;
+            #endregion
+        }
+
+        private void btnContactClick()
+        {
+            #region addContactButton
+            contactnewID = 0;
+            contactTabEnableTrue();
+
+            cmbDepartment.Text = "";
+            cmbPosition.Text = "";
+            cmbMainContact.Text = "";
+            txtContactName.Text = "";
+            txtContactPhone.Text = "";
+            txtExternalNumber.Text = "";
+            txtContactMail.Text = "";
+            txtContactFax.Text = "";
+            txtContactMobile.Text = "";
+            cmbLanguage.Text = "";
+            cmbContactAddress.Text = "";
+            txtContactNotes.Text = "";
+
+            btnContactNew.Visible = false;
+            btnContactCancel.Visible = true;
+            btnContactDelete.Visible = false;
+            btnContactDone.Visible = true;
+            btnContactUpdate.Visible = false;
+            lbContacts.Enabled = false;
+
+            cmbContactAddress.Text = (ComboboxString);
+            cmbDepartment.Text = (ComboboxString);
+            cmbPosition.Text = (ComboboxString);
+            cmbLanguage.Text = (ComboboxString);
+            #endregion
+        }
+
+        private void btnContactUpdateClick()
+        {
+            contactnewID = 1;
+            contactTabEnableTrue();
+            btnContactNew.Visible = false;
+            btnContactCancel.Visible = true;
+            btnContactDelete.Visible = false;
+            btnContactDone.Visible = true;
+            btnContactUpdate.Visible = false;
+        }
+
+        private void btnAddressClick()
+        {
+            isUpdateAdress = 0;
+            AdressTabEnableTrue();
+            cmbCountry.Text = "";
+            cmbCity.Text = "";
+            cmbTown.Text = "";
+            txtPostCode.Text = "";
+            txtAddressTitle.Text = "";
+            txtAddressDetail.Text = "";
+            txtPoBox.Text = "";
+            txtFax.Text = "";
+            txtPhone.Text = "";
+            btnAddressAdd.Visible = false;
+            btnAddressCancel.Visible = true;
+            btnAddressDelete.Visible = false;
+            btnAddressDone.Visible = true;
+            btnAddressUpdate.Visible = false;
+            lbAddressList.Enabled = false;
+
+            cmbCountry.Text = (ComboboxString);
+            cmbCity.Text = (ComboboxString);
+            cmbTown.Text = (ComboboxString);
+        }
+
+        private bool AddressControl()
+        {
+            bool isSave = true;
+            string ErrorMessage = string.Empty;
+            if (cmbCity.Text == string.Empty) { ErrorMessage = ErrorMessage + "Please Enter City"; isSave = false; }
+            if (cmbTown.Text == string.Empty) { ErrorMessage = ErrorMessage + "Please Enter Town"; isSave = false; }
+            if (isSave == true) { return true; } else { MessageBox.Show(ErrorMessage); return false; }
         }
 
         private bool ControlSave()
         {
             bool isSave = true;
             string ErrorMessage = string.Empty;
-            if (txtName.Text == null || txtName.Text == string.Empty) { ErrorMessage = ErrorMessage + "Please Enter Supplier Name\n"; isSave = false; }
+            if (txtName.Text == null || txtName.Text == string.Empty) { ErrorMessage = ErrorMessage + "Please Enter Supplier's Name\n"; isSave = false; }
             if (isSave == true) { return true; } else { MessageBox.Show(ErrorMessage); return false; }
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void CancelCustomer()
         {
-            if (ControlSave())
+            var Supplier = IME.Suppliers.Where(x=> x.ID == txtSupplierCode.Text).FirstOrDefault();
+            if (Supplier != null)
             {
-                Supplier s = new Supplier();
-
-                s = IME.Suppliers.Where(a => a.ID == txtSupplierCode.Text).FirstOrDefault();
-               
-                if (cmbRepresentative.SelectedValue != null)
+                //CREATE in cancel ı
+                var cw = IME.SupplierWorkers.Where(a => a.supplierID == txtSupplierCode.Text);
+                //Contact
+                while (cw.Count() > 0)
                 {
-                    int s_repID = ((Worker)(cmbRepresentative).SelectedItem).WorkerID;
-                    s.representaryID = s_repID;
+                    IME.SupplierWorkers.Remove(cw.FirstOrDefault());
+                    IME.SaveChanges();
                 }
-                s.s_name= txtName.Text;
-                s.webadress = txtWeb.Text;
-                if (cmbMainCategory.SelectedValue != null)
-                { s.CategoryID = Int32.Parse(cmbMainCategory.SelectedValue.ToString()); }
-                if (cmbSubCategory.SelectedValue != null) { s.SubCategoryID = Int32.Parse(cmbSubCategory.SelectedValue.ToString()); }
-                s.taxoffice = txtTaxOffice.Text;
-                s.taxnumber = txtTaxNumber.Text;
-                if (cmbMainCategory.SelectedValue != null)
+                //adresses
+                var cd = IME.SupplierAddresses.Where(a => a.SupplierID == txtSupplierCode.Text);
+                while (cd.Count() > 0)
                 {
-                    s.MainContactID = (int)cmbMainCategory.SelectedValue;
+                    IME.SupplierAddresses.Remove(cd.FirstOrDefault());
+                    IME.SaveChanges();
                 }
-                if (cmbAccountRep.SelectedItem != null)
+                //bank
+                var cb = IME.SupplierBankAccounts.Where(a => a.SupplierID == txtSupplierCode.Text);
+                while (cb.Count() > 0)
                 {
-                    s.accountrepresentaryID = (cmbAccountRep.SelectedItem as Worker).WorkerID;
-                }
-                if (cmbAccountTerms.SelectedValue != null)
-                {
-                    int c_termpayment = ((PaymentTerm)(cmbAccountTerms).SelectedItem).ID;
-                    s.payment_termID = c_termpayment;
-                }
-                if (cmbAccountMethod.SelectedValue != null)
-                {
-                    int c_paymentmeth = ((PaymentMethod)(cmbAccountMethod).SelectedItem).ID;
-                    s.paymentmethodID = c_paymentmeth;
-                }
-                if (cmbCurrency.SelectedValue != null)
-                {
-                    decimal c_currency = ((Currency)(cmbCurrency).SelectedItem).currencyID;
-                    s.Currency.currencyID = c_currency;
+                    IME.SupplierBankAccounts.Remove(cb.FirstOrDefault());
+                    IME.SaveChanges();
                 }
 
-                //Notes kısmına kayıt ediliyor
-                Note n1 = new Note();
-                try { n1 = IME.Notes.Where(a => a.ID == s.Note.ID).FirstOrDefault(); } catch { }
-                if (s.Note == null)
-                {
-                    n1.Note_name = txtSupplierNotes.Text;
-                    s.Note = n1;
-                    IME.Notes.Add(s.Note);
-                    IME.SaveChanges();
-                }
-                else
-                {
-                    n1.Note_name = txtSupplierNotes.Text;
-                    IME.SaveChanges();
-                }
-                if (s.AccountNoteID == null)
-                {
-                    Note n = new Note();
-                    n.Note_name = txtAccountNotes.Text;
-                    IME.Notes.Add(n);
-                    IME.SaveChanges();
-                    s.AccountNoteID = n.ID;
-                }
-                else
-                {
-                    Note n = IME.Notes.Where(a => a.ID == s.AccountNoteID).FirstOrDefault();
-                    n.Note_name = txtAccountNotes.Text;
-                    IME.SaveChanges();
-                }
-                if (s.Worker.WorkerNoteID == null)
-                {
-                    Note n = new Note();
-                    n.Note_name = txtContactNotes.Text;
-                    IME.Notes.Add(n);
-                    IME.SaveChanges();
-                    s.Worker.WorkerNoteID = n.ID;
-                }
-                else
-                {
-                    Note n = IME.Notes.Where(a => a.ID == s.Worker.WorkerNoteID).FirstOrDefault();
-                    n.Note_name = txtContactNotes.Text;
-                    IME.SaveChanges();
-                }
+                Supplier c = new Supplier();
+                c = IME.Suppliers.Where(a => a.ID == txtSupplierCode.Text).FirstOrDefault();
+                IME.Suppliers.Remove(c);
                 IME.SaveChanges();
-                MessageBox.Show("Supplier save succesfully");
-                Utils.LogKayit("Supplier", "Supplier update");
-                this.Close();
-
             }
+            itemsClear();
         }
+
+        private void MakeTextUpperCase(TextBox txtBox)
+        {
+            txtBox.Text = txtBox.Text.ToUpperInvariant();
+        }
+
+
+
     }
 }

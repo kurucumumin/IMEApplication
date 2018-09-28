@@ -861,7 +861,7 @@ namespace LoginForm.Main
             this.altoSlidingLabel1.Slide = true;
             this.altoSlidingLabel1.TabIndex = 1;
             this.altoSlidingLabel1.Text = "Lorem Ipsum Dolor Sit Amet";
-            this.altoSlidingLabel1.Visible = false;
+            this.altoSlidingLabel1.Click += new System.EventHandler(this.altoSlidingLabel1_Click);
             // 
             // panel1
             // 
