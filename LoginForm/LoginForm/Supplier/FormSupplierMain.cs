@@ -152,25 +152,27 @@ namespace LoginForm
                 try
                 {
                     s = IME.Suppliers.Where(q => q.ID == SupplierNo).FirstOrDefault();
+
+                    if (s != null)
+                    {
+                        if (mod == "View")
+                        {
+                            FormSupplierAdd newForm = new FormSupplierAdd(s, mod);
+                            newForm.ShowDialog();
+                        }
+                        else
+                        {
+                            FormSupplierAdd newForm = new FormSupplierAdd(s, mod);
+                            newForm.ShowDialog();
+                        }
+                    }
                 }
                 catch (Exception)
                 {
 
                     throw;
                 }
-                if (s != null)
-                {
-                    if (mod == "View")
-                    {
-                        FormSupplierAdd newForm = new FormSupplierAdd(s, mod);
-                        newForm.ShowDialog();
-                    }
-                    else
-                    {
-                        FormSupplierAdd newForm = new FormSupplierAdd(s, mod);
-                        newForm.ShowDialog();
-                    }
-                }
+                
             }
             else
             {

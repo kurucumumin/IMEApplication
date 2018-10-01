@@ -36,6 +36,7 @@ namespace LoginForm.Main
         public frmMainMetro()
         {
             InitializeComponent();
+
             ActivePanel = pnlMain;
         }
         private void button1_Click(object sender, EventArgs e)
@@ -323,6 +324,7 @@ namespace LoginForm.Main
         private void btnSupplier_Click(object sender, EventArgs e)
         {
             FormSupplierMain supplierMain = new FormSupplierMain();
+            //frmSupplierMain supplierMain = new frmSupplierMain();
             supplierMain.Show();
             Utils.LogKayit("Supplier", "Supplier main screen has been entered");
         }
@@ -528,6 +530,12 @@ namespace LoginForm.Main
             FormLogKayit logKayit = new FormLogKayit(this);
             logKayit.Show();
             Utils.LogKayit("LogRecords Main", "LogRecords main screen has been entered");
+        }
+
+        private void altoSlidingLabel1_Click(object sender, EventArgs e)
+        {
+            frmSupplierMain frm = new frmSupplierMain();
+            frm.Show();
         }
     }
 }
