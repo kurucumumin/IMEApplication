@@ -114,6 +114,7 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
     <Reference Include="System.DirectoryServices" />
@@ -1055,6 +1056,7 @@
     <Compile Include="Services\SP\Sp_RSInvoice.cs" />
     <Compile Include="Services\SP\Sp_SaleOrder.cs" />
     <Compile Include="Services\SP\Sp_Worker.cs" />
+    <Compile Include="Services\SqlHelper.cs" />
     <Compile Include="Services\ToolTipService.cs" />
     <Compile Include="MyClasses\TransacsionArgumanlari_.cs" />
     <Compile Include="Services\txtCreate.cs" />
