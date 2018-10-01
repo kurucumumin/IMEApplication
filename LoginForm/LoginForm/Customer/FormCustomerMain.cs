@@ -125,8 +125,9 @@ namespace LoginForm
 
             if (!String.IsNullOrEmpty(txtSearchText.Text))
             {
+                string tempSearchText = txtSearchText.Text.ToUpperInvariant();
                 var list = (from c in IME.Customers
-                            where c.c_name.Contains(txtSearchText.Text)
+                            where c.c_name.Contains(tempSearchText)
                             select new
                             {
                                 Date = c.CreateDate,
