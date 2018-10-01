@@ -303,6 +303,7 @@
             this.cmbMainCategory.Name = "cmbMainCategory";
             this.cmbMainCategory.Size = new System.Drawing.Size(138, 21);
             this.cmbMainCategory.TabIndex = 46;
+            this.cmbMainCategory.SelectedIndexChanged += new System.EventHandler(this.cmbMainCategory_SelectedIndexChanged);
             // 
             // txtName
             // 
@@ -430,6 +431,7 @@
             this.cmbCity.Name = "cmbCity";
             this.cmbCity.Size = new System.Drawing.Size(121, 21);
             this.cmbCity.TabIndex = 90;
+            this.cmbCity.SelectedIndexChanged += new System.EventHandler(this.cmbCity_SelectedIndexChanged);
             // 
             // cmbCountry
             // 
@@ -440,6 +442,7 @@
             this.cmbCountry.Name = "cmbCountry";
             this.cmbCountry.Size = new System.Drawing.Size(121, 21);
             this.cmbCountry.TabIndex = 89;
+            this.cmbCountry.SelectedIndexChanged += new System.EventHandler(this.cmbCountry_SelectedIndexChanged);
             // 
             // txtPoBox
             // 
@@ -638,6 +641,7 @@
             this.lbAddressList.Name = "lbAddressList";
             this.lbAddressList.Size = new System.Drawing.Size(134, 212);
             this.lbAddressList.TabIndex = 137;
+            this.lbAddressList.SelectedIndexChanged += new System.EventHandler(this.lbAddressList_SelectedIndexChanged);
             // 
             // btnAddressDone
             // 
@@ -729,6 +733,7 @@
             this.lbBankList.Name = "lbBankList";
             this.lbBankList.Size = new System.Drawing.Size(170, 108);
             this.lbBankList.TabIndex = 70;
+            this.lbBankList.SelectedIndexChanged += new System.EventHandler(this.lbBankList_SelectedIndexChanged);
             // 
             // txtBankAccountTitle
             // 
@@ -1194,6 +1199,7 @@
             this.lbContacts.Name = "lbContacts";
             this.lbContacts.Size = new System.Drawing.Size(120, 212);
             this.lbContacts.TabIndex = 40;
+            this.lbContacts.SelectedIndexChanged += new System.EventHandler(this.lbContacts_SelectedIndexChanged);
             // 
             // btnClose
             // 
@@ -1224,7 +1230,6 @@
             this.btnSave.Size = new System.Drawing.Size(52, 52);
             this.btnSave.TabIndex = 144;
             this.btnSave.UseVisualStyleBackColor = false;
-
             // 
             // lblClose
             // 

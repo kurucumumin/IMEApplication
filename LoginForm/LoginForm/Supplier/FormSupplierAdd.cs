@@ -29,6 +29,7 @@ namespace LoginForm
         public FormSupplierAdd(Supplier supplier, string form)
         {
             InitializeComponent();
+            ComboboxFiller();
 
             //ComboboxFiller();
             if (form == "View")
@@ -148,32 +149,32 @@ namespace LoginForm
             DataSet.Management m = Utils.getManagement();
 
             //for new customerCode
-            string custmrcode = "";
+            string supplierCode = "";
             if (IME.Suppliers.ToList().Count != 0)
-                custmrcode = IME.Suppliers.OrderByDescending(a => a.ID).FirstOrDefault().ID;
-            string custmrnumbers = string.Empty;
+                supplierCode = IME.Suppliers.OrderByDescending(a => a.ID).FirstOrDefault().ID;
+            string suppliernumber = string.Empty;
             string newcustomercodenumbers = "";
             string newcustomercodezeros = "";
             string newcustomercodechars = "";
-            for (int i = 0; i < custmrcode.Length; i++)
+            for (int i = 0; i < supplierCode.Length; i++)
             {
-                if (Char.IsDigit(custmrcode[i]))
+                if (Char.IsDigit(supplierCode[i]))
                 {
-                    if (custmrcode[i] == '0') { newcustomercodezeros += custmrcode[i]; } else { newcustomercodenumbers += custmrcode[i]; }
+                    if (supplierCode[i] == '0') { newcustomercodezeros += supplierCode[i]; } else { newcustomercodenumbers += supplierCode[i]; }
                 }
                 else
                 {
-                    newcustomercodechars += custmrcode[i];
+                    newcustomercodechars += supplierCode[i];
                 }
             }
             //Aynı ID ile customer oluşturmasını önleyen kısım
-            while (IME.Suppliers.Where(a => a.ID == custmrcode).Count() > 0)
+            while (IME.Suppliers.Where(a => a.ID == supplierCode).Count() > 0)
             {
                 newcustomercodenumbers = (Int32.Parse(newcustomercodenumbers) + 1).ToString();
-                custmrcode = newcustomercodechars + newcustomercodezeros + newcustomercodenumbers;
+                supplierCode = newcustomercodechars + newcustomercodezeros + newcustomercodenumbers;
             }
             //
-            txtSupplierCode.Text = custmrcode;
+            txtSupplierCode.Text = supplierCode;
             Supplier newCustomer = new Supplier();
             
             newCustomer.ID = txtSupplierCode.Text;
@@ -200,7 +201,6 @@ namespace LoginForm
         private void FormSupplierAdd_Load(object sender, EventArgs e)
         {
             //checkAuthorities();
-            ComboboxFiller();
         }
 
         private void itemsClear()
@@ -307,45 +307,47 @@ namespace LoginForm
 
             #region Info
             txtSupplierCode.Text = s.ID;
-            if (s.Worker1 != null) cmbRepresentative.SelectedValue = s.Worker1.WorkerID;
+            if (s.Worker1 != null) cmbRepresentative.SelectedValue = s.representaryID;
             txtName.Text = s.s_name;
-            txtWeb.Text = s.webadress ?? String.Empty;
+            txtWeb.Text = s.webadress?.ToString();
+            
+            cmbMainContact.DataSource = IME.SupplierWorkers.Where(sw => sw.supplierID == txtSupplierCode.Text).ToList();
+            cmbMainContact.DisplayMember = "sw_name";
+            cmbMainContact.ValueMember = "ID";
+
             if (s.SupplierCategory != null)
             {
-                cmbMainContact.SelectedValue = s.SupplierCategory.ID;
+                cmbMainCategory.SelectedValue = s.CategoryID;
                 if (s.SupplierSubCategory != null)
                 {
-                    cmbMainContact.SelectedValue = s.SubCategoryID;
+                    cmbSubCategory.SelectedIndex = cmbSubCategory.FindStringExact(s.SupplierSubCategory.subcategoryname);
                 }
                 else
                 {
-                    cmbMainContact.SelectedValue = -1;
+                    cmbSubCategory.SelectedIndex = -1;
                 }
             }
             txtTaxOffice.Text = s.taxoffice;
             txtTaxNumber.Text = s.taxnumber;
-            cmbMainContact.DataSource = IME.SupplierWorkers.Where(sw => sw.supplierID == txtSupplierCode.Text).ToList();
-            cmbMainContact.DisplayMember = "sw_name";
-            cmbMainContact.ValueMember = "ID";
-            txtSupplierNotes.Text = (s.Note1 != null) ? s.Note1.Note_name : String.Empty;
+            txtSupplierNotes.Text = s.Note1?.Note_name;
             #endregion
 
             #region Address
-            lbAddressList.DataSource = IME.SupplierAddresses.Where(sa => sa.SupplierID == txtSupplierCode.Text).ToList();
-            lbAddressList.DisplayMember = "AdressTitle";
+            lbAddressList.DataSource = IME.SupplierAddresses.Where(sa => sa.SupplierID == supplierID).ToList();
+            lbAddressList.DisplayMember = "Title";
             lbAddressList.ValueMember = "ID";
             #endregion
 
             #region Contact
-            lbContacts.DataSource = IME.SupplierWorkers.Where(sa => sa.supplierID == txtSupplierCode.Text).ToList();
+            lbContacts.DataSource = IME.SupplierWorkers.Where(sa => sa.supplierID == supplierID).ToList();
             lbContacts.DisplayMember = "sw_name";
             lbContacts.ValueMember = "ID";
             #endregion
 
             #region Account
-            if (s.accountrepresentaryID != null) cmbAccountRep.Text = IME.Workers.Where(a => a.WorkerID == s.accountrepresentaryID).FirstOrDefault().NameLastName;
-            if (s.PaymentTerm != null) cmbAccountTerms.SelectedValue = s.PaymentTerm.ID;
-            cmbAccountMethod.SelectedValue = (s.paymentmethodID != null) ? s.paymentmethodID : -1;
+            if (s.accountrepresentaryID != null) cmbAccountRep.SelectedValue = s.Worker.WorkerID;
+            if (s.PaymentTerm != null) cmbAccountTerms.SelectedValue = s.payment_termID;
+            if (s.paymentmethodID != null) cmbAccountMethod.SelectedValue = s.paymentmethodID;
             if (s.Currency != null)
             {
                 cmbCurrency.SelectedIndex = cmbCurrency.FindStringExact(s.Currency.currencyName);
@@ -358,12 +360,11 @@ namespace LoginForm
             #endregion
 
             #region Bank
-            if (s.SupplierBankAccount != null)
+            if (s.SupplierBankAccounts != null)
             {
-                txtBankAccountTitle.Text = IME.SupplierBankAccounts.Where(a => a.ID == s.MainBankAccountID).FirstOrDefault().Title;
-                txtBankBranchCode.Text = IME.SupplierBankAccounts.Where(a => a.ID == s.MainBankAccountID).FirstOrDefault().BranchCode;
-                txtBankAccountNumber.Text = IME.SupplierBankAccounts.Where(a => a.ID == s.MainBankAccountID).FirstOrDefault().AccountNumber;
-                txtBankIban.Text = IME.SupplierBankAccounts.Where(a => a.ID == s.MainBankAccountID).FirstOrDefault().IBAN;
+                lbBankList.DataSource = IME.SupplierBankAccounts.Where(a => a.SupplierID == s.ID).ToList();
+                lbBankList.DisplayMember = "Title";
+                lbBankList.ValueMember = "ID";
             }
             #endregion
 
@@ -392,7 +393,7 @@ namespace LoginForm
             txtBankAccountTitle.Enabled = mod;
             txtBankBranchCode.Enabled = mod;
             txtBankIban.Enabled = mod;
-            lbBankList.DataSource = null;
+            lbBankList.Enabled = mod;
             txtAddressTitle.Enabled = mod;
             txtPhone.Enabled = mod;
             txtFax.Enabled = mod;
@@ -402,7 +403,7 @@ namespace LoginForm
             cmbCity.Enabled = mod;
             cmbTown.Enabled = mod;
             txtAddressDetail.Enabled = mod;
-            lbAddressList.DataSource = null;
+            //lbAddressList.DataSource = null;
             cmbDepartment.Enabled = mod;
             cmbPosition.Enabled = mod;
             txtContactName.Enabled = mod;
@@ -413,7 +414,7 @@ namespace LoginForm
             cmbLanguage.Enabled = mod;
             cmbContactAddress.Enabled = mod;
             txtContactNotes.Enabled = mod;
-            lbContacts.DataSource = null;
+            //lbContacts.DataSource = null;
             btnSave.Enabled = mod;
         }
 
@@ -674,7 +675,236 @@ namespace LoginForm
             txtBox.Text = txtBox.Text.ToUpperInvariant();
         }
 
+        private void lbAddressList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lbAddressList.SelectedIndex >= 0)
+            {
+                AddressFill((SupplierAddress)lbAddressList.SelectedItem);
+            }
+        }
+
+        private void AddressFill(SupplierAddress address)
+        {
+            txtAddressTitle.Text = address.Title;
+            txtPhone.Text = address.Phone;
+            txtFax.Text = (address.Fax != null) ? address.Fax : String.Empty;
+            txtPoBox.Text = address.PoBox.ToString();
+            txtPostCode.Text = address.PostCode;
+            txtAddressDetail.Text = address.AdressDetails;
+
+            var list = cmbCountry.Items.Cast<object>().ToList();
+            list.RemoveAt(0);
+            string CountryName = list.Cast<Country>().Where(x => x.ID == address.CountryID).FirstOrDefault().Country_name;
+            cmbCountry.SelectedIndex = cmbCountry.FindStringExact(CountryName);
 
 
+            list = cmbCity.Items.Cast<object>().ToList();
+            list.RemoveAt(0);
+            string CityName = list.Cast<City>().Where(x => x.ID == address.CityID).FirstOrDefault().City_name;
+            cmbCity.SelectedIndex = cmbCity.FindStringExact(CityName);
+            cmbCity.Enabled = txtAddressTitle.Enabled;
+
+
+            list = cmbTown.Items.Cast<object>().ToList();
+            list.RemoveAt(0);
+            string TownName = list.Cast<Town>().Where(x => x.ID == address.TownID).FirstOrDefault().Town_name;
+            cmbTown.SelectedIndex = cmbTown.FindStringExact(TownName);
+            cmbTown.Enabled = txtAddressTitle.Enabled;
+
+            list = null;
+        }
+
+        private void cmbCountry_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbCountry.Items.Count != 0)
+            {
+                if (cmbCountry.SelectedIndex > 0)
+                {
+                    int id = ((Country)cmbCountry.SelectedItem).ID;
+
+                    cmbCity.Items.Clear();
+                    cmbCity.DisplayMember = "City_name";
+                    cmbCity.Items.AddRange(new IMEEntities().Cities.Where(x => x.CountryID == id).ToArray());
+                    cmbCity.Items.Insert(0, "Choose");
+                    cmbCity.SelectedIndex = 0;
+
+                    cmbCity.Enabled = true;
+                }
+                else
+                {
+                    if (cmbCity.Items.Count != 0)
+                    {
+                        cmbCity.SelectedIndex = 0;
+                    }
+                    cmbCity.Enabled = false;
+                }
+            }
+            else
+            {
+                cmbCity.Enabled = true;
+            }
+        }
+
+        private void cmbCity_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbCity.Items.Count != 0)
+            {
+                if (cmbCity.SelectedIndex > 0)
+                {
+                    int id = ((City)cmbCity.SelectedItem).ID;
+
+                    cmbTown.Items.Clear();
+                    cmbTown.DisplayMember = "Town_name";
+                    cmbTown.Items.AddRange(new IMEEntities().Towns.Where(x => x.CityID == id).ToArray());
+                    cmbTown.Items.Insert(0, "Choose");
+                    cmbTown.SelectedIndex = 0;
+
+                    cmbTown.Enabled = true;
+                }
+                else
+                {
+
+                    if (cmbTown.Items.Count != 0)
+                    {
+                        cmbTown.SelectedIndex = 0;
+                    }
+                    cmbTown.Enabled = false;
+                }
+            }
+            else
+            {
+                cmbTown.Enabled = true;
+            }
+        }
+
+        private void lbBankList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lbBankList.SelectedIndex >= 0)
+            {
+                BankAccountFill((SupplierBankAccount)lbBankList.SelectedItem);
+            }
+            else
+            {
+                ClearBankAccountInputs();
+            }
+        }
+
+        private void BankAccountFill(SupplierBankAccount bank)
+        {
+            txtBankAccountTitle.Text = bank.Title;
+            txtBankIban.Text = bank.IBAN;
+            txtBankBranchCode.Text = bank.BranchCode?.ToString();
+            txtBankAccountNumber.Text = bank.AccountNumber?.ToString();
+        }
+
+        private void ClearBankAccountInputs()
+        {
+            txtBankAccountTitle.Text = String.Empty;
+            txtBankBranchCode.Text = String.Empty;
+            txtBankAccountNumber.Text = String.Empty;
+            txtBankIban.Text = String.Empty;
+        }
+
+        private void lbContacts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lbContacts.SelectedIndex >= 0)
+            {
+                ContactFill((SupplierWorker)lbContacts.SelectedItem);
+            }
+        }
+
+        private void ContactFill(SupplierWorker worker)
+        {
+            var list = cmbDepartment.Items.Cast<object>().ToList();
+            list.RemoveAt(0);
+            string DepartmentName = (worker.departmentID != null) ? (list.Cast<CustomerDepartment>().Where(x => x.ID == worker.departmentID).FirstOrDefault().departmentname) : "Choose";
+            cmbDepartment.SelectedIndex = cmbDepartment.FindStringExact(DepartmentName);
+
+            list = cmbPosition.Items.Cast<object>().ToList();
+            if (list.Count > 1)
+            {
+                list.RemoveAt(0);
+                string PositionName = (worker.titleID != null) ? (list.Cast<CustomerTitle>().Where(x => x.ID == worker.titleID).FirstOrDefault().titlename) : "Choose";
+                cmbPosition.SelectedIndex = cmbPosition.FindStringExact(PositionName);
+                cmbPosition.Enabled = txtContactName.Enabled;
+                btnPos.Enabled = txtContactName.Enabled;
+            }
+
+            list = lbAddressList.Items.Cast<object>().ToList();
+            string AddressTitle = (worker.SupplierAddress != null) ? (list.Cast<SupplierAddress>().Where(x => x.Title == worker.SupplierAddress.Title).FirstOrDefault().Title) : String.Empty;
+
+
+            cmbContactAddress.DataSource = worker.Supplier.SupplierAddresses.ToList();
+            cmbContactAddress.DisplayMember = "sw_name";
+            cmbContactAddress.ValueMember = "ID";
+            if (AddressTitle != String.Empty)
+            {
+                cmbContactAddress.SelectedValue = worker.supplieradressID;
+            }
+            else
+            {
+                cmbContactAddress.SelectedIndex = -1;
+            }
+
+            list = cmbLanguage.Items.Cast<object>().ToList();
+            list.RemoveAt(0);
+            if (worker.languageID != null)
+            {
+                string Language = list.Cast<Language>().Where(x => x.ID == worker.languageID).FirstOrDefault().languagename;
+                cmbLanguage.SelectedIndex = cmbLanguage.FindStringExact(Language);
+            }
+            list = null;
+
+            txtContactName.Text = worker.sw_name;
+            txtContactPhone.Text = worker.phone;
+            txtExternalNumber.Text = worker.PhoneExternalNum;
+            txtContactMail.Text = worker.sw_email;
+            txtContactFax.Text = worker.fax;
+            txtContactMobile.Text = worker.mobilephone;
+            txtContactNotes.Text = (worker.Note != null) ? worker.Note.Note_name : String.Empty;
+        }
+
+        private void cmbMainCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbMainCategory.Items.Count != 0)
+            {
+                if (cmbMainCategory.SelectedIndex > 0)
+                {
+                    int id = ((SupplierCategory)cmbMainCategory.SelectedItem).ID;
+
+                    cmbSubCategory.Items.Clear();
+                    cmbSubCategory.Items.AddRange(new IMEEntities().SupplierSubCategories.Where(x => x.categoryID == id).ToArray());
+                    cmbSubCategory.Items.Insert(0, "Choose");
+                    cmbSubCategory.DisplayMember = "subcategoryname";
+                    cmbSubCategory.ValueMember = "ID";
+                    cmbSubCategory.SelectedIndex = 0;
+                    //if (SupplierAddMode == String.Empty)
+                    //{
+                    //    cmbSubCategory.Enabled = false;
+                    //    btnSubCategoryAdd.Enabled = false;
+                    //}
+                    //else
+                    //{
+                        cmbSubCategory.Enabled = true;
+                        btnSubCategoryAdd.Enabled = true;
+                    //}
+                }
+                else
+                {
+
+                    if (cmbSubCategory.Items.Count != 0)
+                    {
+                        cmbSubCategory.SelectedIndex = 0;
+                    }
+                    cmbSubCategory.Enabled = false;
+                    btnSubCategoryAdd.Enabled = false;
+                }
+            }
+            else
+            {
+                cmbSubCategory.Enabled = true;
+                btnSubCategoryAdd.Enabled = false;
+            }
+        }
     }
 }
