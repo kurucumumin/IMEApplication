@@ -23,8 +23,7 @@ namespace LoginForm
             typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
            System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
            dgSupplier, new object[] { true });
-
-            dateNow = Convert.ToDateTime(new IMEEntities().CurrentDate().First());
+            
         }
 
         private void FormSupplierMain_Load(object sender, EventArgs e)
@@ -158,16 +157,16 @@ namespace LoginForm
                         if (mod == "View")
                         {
                             FormSupplierAdd newForm = new FormSupplierAdd(s, mod);
-                            newForm.ShowDialog();
+                            newForm.Show();
                         }
                         else
                         {
                             FormSupplierAdd newForm = new FormSupplierAdd(s, mod);
-                            newForm.ShowDialog();
+                            newForm.Show();
                         }
                     }
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
 
                     throw;

@@ -302,6 +302,7 @@
             this.dgSupplier.Location = new System.Drawing.Point(8, 129);
             this.dgSupplier.Margin = new System.Windows.Forms.Padding(8);
             this.dgSupplier.Name = "dgSupplier";
+            this.dgSupplier.ReadOnly = true;
             this.dgSupplier.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.dgSupplier.RowTemplate.Height = 24;
             this.dgSupplier.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -314,42 +315,50 @@
             // 
             this.SupplierNo.HeaderText = "Supplier No";
             this.SupplierNo.Name = "SupplierNo";
+            this.SupplierNo.ReadOnly = true;
             // 
             // SupplierName
             // 
             this.SupplierName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.SupplierName.HeaderText = "Supplier Name";
             this.SupplierName.Name = "SupplierName";
+            this.SupplierName.ReadOnly = true;
             // 
             // WebAddress
             // 
             this.WebAddress.HeaderText = "Web Address";
             this.WebAddress.Name = "WebAddress";
+            this.WebAddress.ReadOnly = true;
             // 
             // TaxNumber
             // 
             this.TaxNumber.HeaderText = "Tax Number";
             this.TaxNumber.Name = "TaxNumber";
+            this.TaxNumber.ReadOnly = true;
             // 
             // TaxOffice
             // 
             this.TaxOffice.HeaderText = "Tax Office";
             this.TaxOffice.Name = "TaxOffice";
+            this.TaxOffice.ReadOnly = true;
             // 
             // Representative
             // 
             this.Representative.HeaderText = "Representative";
             this.Representative.Name = "Representative";
+            this.Representative.ReadOnly = true;
             // 
             // Category
             // 
             this.Category.HeaderText = "Category";
             this.Category.Name = "Category";
+            this.Category.ReadOnly = true;
             // 
             // SupplierNote
             // 
             this.SupplierNote.HeaderText = "Supplier Note";
             this.SupplierNote.Name = "SupplierNote";
+            this.SupplierNote.ReadOnly = true;
             // 
             // gridRightClick
             // 
