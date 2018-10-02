@@ -3033,8 +3033,14 @@ namespace LoginForm.QuotationModule
             lblsubtotal.Text = q.SubTotal.ToString();
             txtTotalDis2.Text = q.DiscOnSubTotal2.ToString();
             if (txtTotalDis2.Text == null || txtTotalDis2.Text == "") txtTotalDis2.Text = "0";
-            decimal totaldis = Math.Round((Decimal.Parse(txtTotalDis2.Text) * 100) / decimal.Parse(lblsubtotal.Text), 4);
-            txtTotalDis.Text = totaldis.ToString();
+            if(q.DistributeDiscount == true)
+            {
+                txtTotalDis.Text = Math.Round((Decimal.Parse(txtTotalDis2.Text) * 100) / (decimal.Parse(lblsubtotal.Text) + Decimal.Parse(txtTotalDis2.Text)), 4).ToString();
+            }
+            else
+            {
+                txtTotalDis.Text = Math.Round((Decimal.Parse(txtTotalDis2.Text) * 100) / decimal.Parse(lblsubtotal.Text), 4).ToString();
+            }
             lbltotal.Text = (q.DistributeDiscount == false) ? (Decimal.Parse(lblsubtotal.Text) - decimal.Parse(txtTotalDis2.Text)).ToString() : lblsubtotal.Text;
             txtExtraChanges.Text = q.ExtraCharges.ToString();
             lblVat.Text = q.VatValue.ToString();
