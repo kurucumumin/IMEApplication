@@ -417,7 +417,7 @@ namespace LoginForm.QuotationModule
             cbRep.DisplayMember = "NameLastName";
             cbRep.ValueMember = "WorkerID";
             cbRep.SelectedValue = (int)q1.RepresentativeID;
-            cbWorkers.DataSource = IME.CustomerWorkers.ToList();
+            cbWorkers.DataSource = IME.CustomerWorkers.Where(x=> x.customerID==q1.CustomerID).ToList();
             cbWorkers.DisplayMember = "cw_name";
             cbWorkers.ValueMember = "ID";
             if (q1.QuotationMainContact != null) cbWorkers.SelectedValue = (int)q1.QuotationMainContact;
@@ -538,7 +538,7 @@ namespace LoginForm.QuotationModule
         //    importFromQuotation = 0;
         //    modifyQuotation(q1);
 
-        //    cbSMethod.SelectedIndex = (int)q1.ShippingMethodID;
+        //    cbSMethod.SelectedIndex = (int)(int)q1.ShippingMethodID;
         //    for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
         //    {
         //        dgQuotationAddedItems.Rows[i].Cells["dgQty"].ReadOnly = false;
@@ -630,7 +630,7 @@ namespace LoginForm.QuotationModule
             cbWorkers.DataSource = IME.CustomerWorkers.ToList();
             cbWorkers.DisplayMember = "cw_name";
             cbWorkers.ValueMember = "ID";
-            if (q1.QuotationMainContact != null) cbWorkers.SelectedIndex = (int)q1.QuotationMainContact;
+            if (q1.QuotationMainContact != null) cbWorkers.SelectedValue = (int)q1.QuotationMainContact;
             CustomerCode.Enabled = false;
             txtCustomerName.Enabled = false;
 
@@ -2235,7 +2235,7 @@ namespace LoginForm.QuotationModule
                     try { q.RepresentativeID2 = (cbWorkers.SelectedItem as Worker).WorkerID; ; } catch { }
                     q.CustomerID = CustomerCode.Text;
                     q.ShippingMethodID = cbSMethod.SelectedIndex;
-                    q.QuotationMainContact = cbWorkers.SelectedIndex;
+                    q.QuotationMainContact = (int)cbWorkers.SelectedValue;
                     q.ExchangeRateID = curr.exchangeRateID;
                     int Note2 = 0;
                     int Note1 = 0;
@@ -2402,7 +2402,7 @@ namespace LoginForm.QuotationModule
                 try { q.RepresentativeID2 = (cbWorkers.SelectedItem as Worker).WorkerID; ; } catch { }
                 q.CustomerID = CustomerCode.Text;
                 q.ShippingMethodID = cbSMethod.SelectedIndex;
-                q.QuotationMainContact = cbWorkers.SelectedIndex;
+                q.QuotationMainContact = (int)cbWorkers.SelectedValue;
                 q.ExchangeRateID = curr.exchangeRateID;
                 int Note2 = 0;
                 int Note1 = 0;
@@ -2466,7 +2466,7 @@ namespace LoginForm.QuotationModule
                 q.Curr = CurrValue;
                 q.CustomerID = CustomerCode.Text;
                 q.ShippingMethodID = cbSMethod.SelectedIndex;
-                q.QuotationMainContact = cbWorkers.SelectedIndex;
+                q.QuotationMainContact = (int)cbWorkers.SelectedValue;
                 int Note2 = 0;
                 int Note1 = 0;
                 if (txtNoteForUs.Text != null || txtNoteForUs.Text != "")
@@ -2549,7 +2549,7 @@ namespace LoginForm.QuotationModule
             q.Curr = CurrValue;
             q.CustomerID = CustomerCode.Text;
             q.ShippingMethodID = cbSMethod.SelectedIndex;
-            q.QuotationMainContact = cbWorkers.SelectedIndex;
+            q.QuotationMainContact = (int)cbWorkers.SelectedValue;
             int Note2 = 0;
             int Note1 = 0;
             if (txtNoteForUs.Text != null || txtNoteForUs.Text != "")
@@ -2784,6 +2784,9 @@ namespace LoginForm.QuotationModule
             }
             else if (importFromQuotation == 1)
             {
+                txtRFQNo.Text = q.RFQNo;
+                CustomerCode.Text = q.Customer.ID;
+                txtCustomerName.Text = q.Customer.c_name;
                 txtQuotationNo.Text = q.QuotationNo;
                 fillCustomer();
             }
