@@ -108,7 +108,7 @@ namespace LoginForm.nmSaleOrder
             {
                 if (!cboxList[i].Checked)
                 {
-                    QuotationDatagridCustomize.VisibleFalseNames.Add(cboxList[i].Text);
+                    QuotationDatagridCustomize.VisibleFalseNames.Add(i);
                 }
             }
             this.Close();

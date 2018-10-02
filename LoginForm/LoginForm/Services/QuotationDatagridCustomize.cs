@@ -8,6 +8,6 @@ namespace LoginForm.Services
 {
     class QuotationDatagridCustomize
     {
-        public static List<string> VisibleFalseNames = new List<string>();
+        public static List<int> VisibleFalseNames = new List<int>();
     }
 }

@@ -56,18 +56,17 @@ namespace LoginForm.QuotationModule
         }
         
 
-        private void ExportButton_Click(object sender, EventArgs e)
+        private void DoneButton_Click(object sender, EventArgs e)
         {
             QuotationDatagridCustomize.VisibleFalseNames.Clear();
             for (int i = 0; i < cboxList.Count; i++)
             {
                 if (!cboxList[i].Checked)
                 {
-                    QuotationDatagridCustomize.VisibleFalseNames.Add(cboxList[i].Text);
+                    QuotationDatagridCustomize.VisibleFalseNames.Add(i);
                 }
             }
             this.Close();
-            
         }
 
         private void PlaceCheckBoxes()
@@ -80,23 +79,20 @@ namespace LoginForm.QuotationModule
                 box = new CheckBox
                 {
                     Tag = i.ToString(),
-                    Text = datagrid.Columns[i].Name,
+                    Text = datagrid.Columns[i].HeaderText,
                     AutoSize = true
                 };
-                if (10 + previousLength >= this.Width)
+                if (25 + previousLength >= this.Width)
                 {
-                    y = y + 30;
+                    y = y + 25;
                     previousLength = 0;
                 }
-                box.Location = new Point(10 + previousLength, y);
-                previousLength = previousLength + box.Width;
+                box.Location = new Point(25 + previousLength, y);
+                previousLength = previousLength + box.Width+15;
                 cboxList.Add(box);
                 this.Controls.Add(box);
-                ischecked.Add(false);
+                ischecked.Add(true);
             }
-            ExportButton.Location = new Point(this.Width / 2, y + 30);
-            btnSelectAll.Location = new Point(0, y + 30);
-            btnClearAll.Location = new Point(btnSelectAll.Width + 5, y + 30);
         }
 
         private void btnSelect_Click(object sender, EventArgs e)

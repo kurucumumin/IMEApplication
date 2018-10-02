@@ -866,7 +866,7 @@ namespace LoginForm.QuotationModule
 
             TotalCostList.Columns.Add("dgNo", typeof(int));
             TotalCostList.Columns.Add("cost", typeof(decimal));
-            List<string> quotationVisibleFalseNames = QuotationDatagridCustomize.VisibleFalseNames;
+            List<int> quotationVisibleFalseNames = QuotationDatagridCustomize.VisibleFalseNames;
             ;
             foreach (var item in quotationVisibleFalseNames)
             {
@@ -4916,7 +4916,7 @@ namespace LoginForm.QuotationModule
         {
             frmQuotationGridCustomize form = new frmQuotationGridCustomize(dgSaleAddedItems);
             form.ShowDialog();
-            List<string> quotationVisibleFalseNames = QuotationDatagridCustomize.VisibleFalseNames;
+            List<int> quotationVisibleFalseNames = QuotationDatagridCustomize.VisibleFalseNames;
             ;
             foreach (DataGridViewColumn item in dgSaleAddedItems.Columns)
             {
