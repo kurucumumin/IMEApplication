@@ -821,6 +821,7 @@
           <Property Name="idYear" Type="int" Nullable="false" />
           <Property Name="idNo" Type="int" Nullable="false" />
           <Property Name="idVersion" Type="int" Nullable="false" />
+          <Property Name="DistributeDiscount" Type="bit" />
         </EntityType>
         <EntityType Name="QuotationDelivery">
           <Key>
@@ -3434,6 +3435,9 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
         <Function Name="prc_GetProductHistoryWithArticleNo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ArticleNo" Type="int" Mode="In" />
         </Function>
+        <Function Name="prc_GetRsFileHistoryWithFileType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FileType" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="prc_GetRSInvoiceAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="prc_GetRSInvoiceBetweenDates" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="FromDate" Type="datetime" Mode="In" />
@@ -5332,6 +5336,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="idYear" Type="Int32" Nullable="false" />
           <Property Name="idNo" Type="Int32" Nullable="false" />
           <Property Name="idVersion" Type="Int32" Nullable="false" />
+          <Property Name="DistributeDiscount" Type="Boolean" />
           <NavigationProperty Name="Currency" Relationship="Self.FK__Quotation__Curre__0A096455" FromRole="Quotation" ToRole="Currency" />
           <NavigationProperty Name="Customer" Relationship="Self.FK__Quotation__Custo__00750D23" FromRole="Quotation" ToRole="Customer" />
           <NavigationProperty Name="ExchangeRate" Relationship="Self.FK__Quotation__Excha__4321E620" FromRole="Quotation" ToRole="ExchangeRate" />
@@ -8566,6 +8571,9 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <FunctionImport Name="prc_GetProductHistoryWithArticleNo" ReturnType="Collection(IMEModel.prc_GetProductHistoryWithArticleNo_Result)">
             <Parameter Name="ArticleNo" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="prc_GetRsFileHistoryWithFileType" ReturnType="Collection(IMEModel.prc_GetRsFileHistoryWithFileType_Result)">
+            <Parameter Name="FileType" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="prc_GetRSInvoiceAll" ReturnType="Collection(IMEModel.prc_GetRSInvoiceAll_Result)" />
           <FunctionImport Name="prc_GetRSInvoiceBetweenDates" ReturnType="Collection(IMEModel.prc_GetRSInvoiceBetweenDates_Result)">
             <Parameter Name="FromDate" Mode="In" Type="DateTime" />
@@ -9292,6 +9300,12 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Type="Decimal" Name="TargetPrice" Nullable="true" Precision="20" Scale="5" />
           <Property Type="String" Name="Curr" Nullable="true" />
           <Property Type="String" Name="Status" Nullable="true" MaxLength="7" />
+        </ComplexType>
+        <ComplexType Name="prc_GetRsFileHistoryWithFileType_Result">
+          <Property Type="String" Name="USER" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="FILETYPE" Nullable="false" />
+          <Property Type="String" Name="FILENAME" Nullable="false" />
+          <Property Type="DateTime" Name="DATE" Nullable="false" Precision="23" />
         </ComplexType>
         <ComplexType Name="prc_GetRSInvoiceAll_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
@@ -10482,6 +10496,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="idYear" ColumnName="idYear" />
                 <ScalarProperty Name="idNo" ColumnName="idNo" />
                 <ScalarProperty Name="idVersion" ColumnName="idVersion" />
+                <ScalarProperty Name="DistributeDiscount" ColumnName="DistributeDiscount" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -11855,6 +11870,16 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="TargetPrice" ColumnName="TargetPrice" />
                 <ScalarProperty Name="Curr" ColumnName="Curr" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="prc_GetRsFileHistoryWithFileType" FunctionName="IMEModel.Store.prc_GetRsFileHistoryWithFileType">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.prc_GetRsFileHistoryWithFileType_Result">
+                <ScalarProperty Name="USER" ColumnName="USER" />
+                <ScalarProperty Name="FILETYPE" ColumnName="FILETYPE" />
+                <ScalarProperty Name="FILENAME" ColumnName="FILENAME" />
+                <ScalarProperty Name="DATE" ColumnName="DATE" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

@@ -185,138 +185,138 @@ namespace LoginForm.Main
             #region Ana Kategori
             if (!Utils.AuthorityCheck(IMEAuthority.ViewManagementModule))
             {
-                btnManagement.Visible = false;
-                pnlManagement.Visible = false;
+                btnManagement.Enabled = false;
+                pnlManagement.Enabled = false;
             }
             if (!Utils.AuthorityCheck(IMEAuthority.ViewLoaderModule))
             {
-                btnFileLoader.Visible = false;
-                pnlImportFiles.Visible = false;
+                btnFileLoader.Enabled = false;
+                pnlImportFiles.Enabled = false;
             }
             if (!Utils.AuthorityCheck(IMEAuthority.ViewWorkToBeModule))
             {
-                btnDevelopment.Visible = false;
+                btnDevelopment.Enabled = false;
             }
             #endregion
 
             #region Main
             if (!Utils.AuthorityCheck(IMEAuthority.UpdateItemCardModule))
             {
-                btnItemCard.Visible = false;
+                btnItemCard.Enabled = false;
             }
             if (!Utils.AuthorityCheck(IMEAuthority.ViewCustomerModule))
             {
-                btnCustomer.Visible = false;
+                btnCustomer.Enabled = false;
             }
             if (!Utils.AuthorityCheck(IMEAuthority.ViewSupplierModule))
             {
-                btnSupplier.Visible = false;
+                btnSupplier.Enabled = false;
             }
             if (!Utils.AuthorityCheck(IMEAuthority.ViewQuotationModule))
             {
-                btnQuotation.Visible = false;
+                btnQuotation.Enabled = false;
             }
             if (!Utils.AuthorityCheck(IMEAuthority.ViewSaleOrderModule))
             {
-                btnSalesOrder.Visible = false;
+                btnSalesOrder.Enabled = false;
             }
             if (!Utils.AuthorityCheck(IMEAuthority.ViewPurchaseOrderModule))
             {
-                btnPurchaseOrder.Visible = false;
+                btnPurchaseOrder.Enabled = false;
             }
             if (!Utils.AuthorityCheck(IMEAuthority.ViewStockModule))
             {
-                btnStock.Visible = false;
+                btnStock.Enabled = false;
             }
             if (!Utils.AuthorityCheck(IMEAuthority.ViewInvoiceModule))
             {
-                btnToBeInvoiced.Visible = false;
+                btnToBeInvoiced.Enabled = false;
             }
             #endregion
 
             #region Import Files
             if (!Utils.AuthorityCheck(IMEAuthority.ViewRsInvoice))
             {
-                btnRsInvoice.Visible = false;
+                btnRsInvoice.Enabled = false;
             }
             if (!Utils.AuthorityCheck(IMEAuthority.ViewSuperDisk))
             {
-                btnSuperDisk.Visible = false;
+                btnSuperDisk.Enabled = false;
             }
             if (!Utils.AuthorityCheck(IMEAuthority.ViewSuperDiskP))
             {
-                btnSuperDiskwithP.Visible = false;
+                btnSuperDiskwithP.Enabled = false;
             }
             if (!Utils.AuthorityCheck(IMEAuthority.ViewSlidingPrice))
             {
-                btnSlidingPriceList.Visible = false;
+                btnSlidingPriceList.Enabled = false;
             }
             if (!Utils.AuthorityCheck(IMEAuthority.ViewHazardouse))
             {
-                btnHazardousFile.Visible = false;
+                btnHazardousFile.Enabled = false;
             }
             if (!Utils.AuthorityCheck(IMEAuthority.ViewRsProList))
             {
-                btnRSProList.Visible = false;
+                btnRSProList.Enabled = false;
             }
             if (!Utils.AuthorityCheck(IMEAuthority.ViewTSEList))
             {
-                btnTSEList.Visible = false;
+                btnTSEList.Enabled = false;
             }
             if (!Utils.AuthorityCheck(IMEAuthority.ViewDualUsedArticles))
             {
-                btnDualUsedArticles.Visible = false;
+                btnDualUsedArticles.Enabled = false;
             }
             if (!Utils.AuthorityCheck(IMEAuthority.ViewExtendedRangePrice))
             {
-                btnExtendedRangePrice.Visible = false;
+                btnExtendedRangePrice.Enabled = false;
             }
             if (!Utils.AuthorityCheck(IMEAuthority.ViewDiscountinuedList))
             {
-                btnDiscontinuedList.Visible = false;
+                btnDiscontinuedList.Enabled = false;
             }
             if (!Utils.AuthorityCheck(IMEAuthority.ViewOnSale))
             {
-                btnOnSale.Visible = false;
+                btnOnSale.Enabled = false;
             }
             if (!Utils.AuthorityCheck(IMEAuthority.ViewOrderAcknowledgemenet))
             {
-                btnOrderAcknowledgement.Visible = false;
+                btnOrderAcknowledgement.Enabled = false;
             }
             if (!Utils.AuthorityCheck(IMEAuthority.ViewBackOrder))
             {
-                btnBackOrder.Visible = false;
+                btnBackOrder.Enabled = false;
             }
             #endregion
 
             #region Managment
             if (!Utils.AuthorityCheck(IMEAuthority.ViewExchangeRate))
             {
-                btnExchangeRate.Visible = false;
+                btnExchangeRate.Enabled = false;
             }
             if (!Utils.AuthorityCheck(IMEAuthority.ViewTermsofPayment))
             {
-                btnTermsOfPayment.Visible = false;
+                btnTermsOfPayment.Enabled = false;
             }
             if (!Utils.AuthorityCheck(IMEAuthority.ViewCategoryAndSubCategory))
             {
-                btnCategorySubCategory.Visible = false;
+                btnCategorySubCategory.Enabled = false;
             }
             if (!Utils.AuthorityCheck(IMEAuthority.ViewRolesandAuthorities))
             {
-                btnRoleAuths.Visible = false;
+                btnRoleAuths.Enabled = false;
             }
             if (!Utils.AuthorityCheck(IMEAuthority.ViewManagementControl))
             {
-                btnManagmentControl.Visible = false;
+                btnManagmentControl.Enabled = false;
             }
             if (!Utils.AuthorityCheck(IMEAuthority.ViewCustomerTransfer))
             {
-                btnCustomerTransfer.Visible = false;
+                btnCustomerTransfer.Enabled = false;
             }
             if (!Utils.AuthorityCheck(IMEAuthority.ViewUserModule))
             {
-                btnUser.Visible = false;
+                btnUser.Enabled = false;
             }
             #endregion
         }

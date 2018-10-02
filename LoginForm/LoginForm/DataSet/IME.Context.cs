@@ -1595,6 +1595,15 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<prc_GetProductHistoryWithArticleNo_Result>("prc_GetProductHistoryWithArticleNo", articleNoParameter);
         }
     
+        public virtual ObjectResult<prc_GetRsFileHistoryWithFileType_Result> prc_GetRsFileHistoryWithFileType(string fileType)
+        {
+            var fileTypeParameter = fileType != null ?
+                new ObjectParameter("FileType", fileType) :
+                new ObjectParameter("FileType", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<prc_GetRsFileHistoryWithFileType_Result>("prc_GetRsFileHistoryWithFileType", fileTypeParameter);
+        }
+    
         public virtual ObjectResult<prc_GetRSInvoiceAll_Result> prc_GetRSInvoiceAll()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<prc_GetRSInvoiceAll_Result>("prc_GetRSInvoiceAll");
