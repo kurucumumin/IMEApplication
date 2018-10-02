@@ -399,5 +399,10 @@ namespace LoginForm.User
                 }
             }
         }
+
+        private void allAuthoritiesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MenuItem("");
+        }
     }
 }
