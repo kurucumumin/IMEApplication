@@ -812,7 +812,7 @@ namespace LoginForm.QuotationModule
 
             TotalCostList.Columns.Add("dgNo", typeof(int));
             TotalCostList.Columns.Add("cost", typeof(decimal));
-            List<string> quotationVisibleFalseNames = QuotationDatagridCustomize.VisibleFalseNames;
+            List<int> quotationVisibleFalseNames = QuotationDatagridCustomize.VisibleFalseNames;
             ;
             foreach (var item in quotationVisibleFalseNames)
             {
@@ -4609,7 +4609,10 @@ namespace LoginForm.QuotationModule
 
         private void btnCustomizeGrid_Click(object sender, EventArgs e)
         {
-            List<string> quotationVisibleFalseNames = QuotationDatagridCustomize.VisibleFalseNames;
+            frmQuotationGridCustomize form = new frmQuotationGridCustomize(dgQuotationAddedItems);
+            form.ShowDialog();
+
+            List<int> quotationVisibleFalseNames = QuotationDatagridCustomize.VisibleFalseNames;
             ;
             foreach (DataGridViewColumn item in dgQuotationAddedItems.Columns)
             {
@@ -4619,9 +4622,6 @@ namespace LoginForm.QuotationModule
             {
                 dgQuotationAddedItems.Columns[item].Visible = false;
             }
-
-            frmQuotationGridCustomize form = new frmQuotationGridCustomize(dgQuotationAddedItems);
-            form.ShowDialog();
         }
 
         private void btnExcelExport_Click(object sender, EventArgs e)
