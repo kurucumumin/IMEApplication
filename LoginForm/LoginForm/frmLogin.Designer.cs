@@ -57,7 +57,6 @@
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(163, 32);
             this.txtID.TabIndex = 13;
-            this.txtID.Text = "admin";
             // 
             // panel1
             // 
@@ -92,7 +91,6 @@
             this.txtPassWord.PasswordChar = '*';
             this.txtPassWord.Size = new System.Drawing.Size(163, 32);
             this.txtPassWord.TabIndex = 14;
-            this.txtPassWord.Text = "admin";
             // 
             // panel2
             // 
