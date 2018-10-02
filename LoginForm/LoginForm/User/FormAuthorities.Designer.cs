@@ -75,6 +75,7 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
+            this.allAuthoritiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.gbAuthorities.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -88,10 +89,11 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mainToolStripMenuItem,
             this.ımportFilesToolStripMenuItem,
-            this.managmentToolStripMenuItem});
+            this.managmentToolStripMenuItem,
+            this.allAuthoritiesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(90, 499);
+            this.menuStrip1.Size = new System.Drawing.Size(126, 499);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -107,7 +109,7 @@
             this.stockToolStripMenuItem,
             this.toBeInvoicedToolStripMenuItem});
             this.mainToolStripMenuItem.Name = "mainToolStripMenuItem";
-            this.mainToolStripMenuItem.Size = new System.Drawing.Size(77, 19);
+            this.mainToolStripMenuItem.Size = new System.Drawing.Size(113, 19);
             this.mainToolStripMenuItem.Text = "Main";
             // 
             // ıtemCardToolStripMenuItem
@@ -183,7 +185,7 @@
             this.orderAcknowledgementToolStripMenuItem,
             this.backOrderToolStripMenuItem});
             this.ımportFilesToolStripMenuItem.Name = "ımportFilesToolStripMenuItem";
-            this.ımportFilesToolStripMenuItem.Size = new System.Drawing.Size(77, 19);
+            this.ımportFilesToolStripMenuItem.Size = new System.Drawing.Size(113, 19);
             this.ımportFilesToolStripMenuItem.Text = "Import Files";
             // 
             // rsInvoiceToolStripMenuItem
@@ -288,7 +290,7 @@
             this.customerTransferToolStripMenuItem,
             this.userToolStripMenuItem});
             this.managmentToolStripMenuItem.Name = "managmentToolStripMenuItem";
-            this.managmentToolStripMenuItem.Size = new System.Drawing.Size(77, 19);
+            this.managmentToolStripMenuItem.Size = new System.Drawing.Size(113, 19);
             this.managmentToolStripMenuItem.Text = "Managment";
             // 
             // exchangeRateToolStripMenuItem
@@ -511,6 +513,13 @@
             this.btnExit.TabIndex = 57;
             this.btnExit.UseVisualStyleBackColor = true;
             // 
+            // allAuthoritiesToolStripMenuItem
+            // 
+            this.allAuthoritiesToolStripMenuItem.Name = "allAuthoritiesToolStripMenuItem";
+            this.allAuthoritiesToolStripMenuItem.Size = new System.Drawing.Size(113, 19);
+            this.allAuthoritiesToolStripMenuItem.Text = "All Authorities";
+            this.allAuthoritiesToolStripMenuItem.Click += new System.EventHandler(this.allAuthoritiesToolStripMenuItem_Click);
+            // 
             // FormAuthorities
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -589,5 +598,6 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ToolStripMenuItem allAuthoritiesToolStripMenuItem;
     }
 }
