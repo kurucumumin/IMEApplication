@@ -21,6 +21,11 @@ namespace LoginForm.QuotationModule
         public FormQuotationItemSearch(string searchItemCode, List<CompleteItem> itemList)
         {
             InitializeComponent();
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
+            System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
+            dgQuotationItemSearch, new object[] { true });
+
             dgQuotationItemSearch.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
             txtQuotationItemCode.Text = searchItemCode;
             this.itemList = itemList;
@@ -30,6 +35,11 @@ namespace LoginForm.QuotationModule
         {
             QuotationUtils.ItemCode = null;
             InitializeComponent();
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
+          System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
+          dgQuotationItemSearch, new object[] { true });
+
             dgQuotationItemSearch.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
             ArticleCode = ItemCode;
             if (ArticleCode != null)
