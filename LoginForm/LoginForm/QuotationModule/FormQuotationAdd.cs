@@ -227,7 +227,7 @@ namespace LoginForm.QuotationModule
                 cbWorkers.DataSource = IME.CustomerWorkers.Where(a => a.customerID == q1.CustomerID).ToList();
                 cbWorkers.DisplayMember = "cw_name";
                 cbWorkers.ValueMember = "ID";
-                if (q1.QuotationMainContact != null) cbWorkers.SelectedIndex = (int)q1.QuotationMainContact;
+                if (q1.QuotationMainContact != null) cbWorkers.SelectedValue = (int)q1.QuotationMainContact;
                 CustomerCode.Enabled = false;
                 txtCustomerName.Enabled = false;
 
@@ -412,15 +412,15 @@ namespace LoginForm.QuotationModule
             cbPayment.DataSource = IME.PaymentTerms.ToList();
             cbPayment.DisplayMember = "term_name";
             cbPayment.ValueMember = "ID";
-            cbPayment.SelectedIndex = (int)q1.PaymentID;
+            cbPayment.SelectedValue = (int)q1.PaymentID;
             cbRep.DataSource = IME.Workers.ToList();
             cbRep.DisplayMember = "NameLastName";
             cbRep.ValueMember = "WorkerID";
-           // cbRep.SelectedIndex = (int)q1.RepresentativeID;
+            cbRep.SelectedValue = (int)q1.RepresentativeID;
             cbWorkers.DataSource = IME.CustomerWorkers.ToList();
             cbWorkers.DisplayMember = "cw_name";
             cbWorkers.ValueMember = "ID";
-            if (q1.QuotationMainContact != null) cbWorkers.SelectedIndex = (int)q1.QuotationMainContact;
+            if (q1.QuotationMainContact != null) cbWorkers.SelectedValue = (int)q1.QuotationMainContact;
             CustomerCode.Enabled = false;
             txtCustomerName.Enabled = false;
 
@@ -622,11 +622,11 @@ namespace LoginForm.QuotationModule
             cbPayment.DataSource = IME.PaymentTerms.ToList();
             cbPayment.DisplayMember = "term_name";
             cbPayment.ValueMember = "ID";
-            cbPayment.SelectedIndex = (int)q1.PaymentID;
+            cbPayment.SelectedValue = (int)q1.PaymentID;
             cbRep.DataSource = IME.Workers.ToList();
             cbRep.DisplayMember = "NameLastName";
             cbRep.ValueMember = "WorkerID";
-            //cbRep.SelectedIndex = (int)q1.Worker.WorkerID;
+            cbRep.SelectedValue = (int)q1.Worker.WorkerID;
             cbWorkers.DataSource = IME.CustomerWorkers.ToList();
             cbWorkers.DisplayMember = "cw_name";
             cbWorkers.ValueMember = "ID";
@@ -786,8 +786,6 @@ namespace LoginForm.QuotationModule
 
         private void QuotationForm_Load(object sender, EventArgs e)
         {
-            dgQuotationAddedItems.Columns[dgNo.Index].ValueType =typeof(decimal);
-
             #region Nokta Virgül Olayı
             Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
@@ -812,7 +810,7 @@ namespace LoginForm.QuotationModule
                 btnContactAdd.Enabled = false;
             }
 
-            TotalCostList.Columns.Add("dgNo", typeof(decimal));
+            TotalCostList.Columns.Add("dgNo", typeof(int));
             TotalCostList.Columns.Add("cost", typeof(decimal));
             List<string> quotationVisibleFalseNames = QuotationDatagridCustomize.VisibleFalseNames;
             ;
@@ -968,35 +966,35 @@ namespace LoginForm.QuotationModule
             {
                 case 0:
                     #region ID Atama
-                    if (decimal.Parse(dgQuotationAddedItems.CurrentCell.Value.ToString()) <= decimal.Parse(dgQuotationAddedItems.CurrentRow.Cells[0].Value.ToString()))
+                    if (Int32.Parse(dgQuotationAddedItems.CurrentCell.Value.ToString()) <= Int32.Parse(dgQuotationAddedItems.CurrentRow.Cells[0].Value.ToString()))
                     {
                         int currentID = dgQuotationAddedItems.CurrentCell.RowIndex;
-                        List<decimal> Quotation = new List<decimal>();
+                        List<Int32> Quotation = new List<Int32>();
                         for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
                         {
-                            Quotation.Add(decimal.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString()));
+                            Quotation.Add(Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString()));
                         }
                         for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
                         {
-                            if (dgQuotationAddedItems.CurrentCell.RowIndex < decimal.Parse(dgQuotationAddedItems.CurrentCell.Value.ToString()))
+                            if (dgQuotationAddedItems.CurrentCell.RowIndex < Int32.Parse(dgQuotationAddedItems.CurrentCell.Value.ToString()))
                             {
                                 #region RowChange1
                                 //Üstteki bir row u aşşağıya getirmek için
-                                if (decimal.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString()) <= decimal.Parse(dgQuotationAddedItems.CurrentCell.Value.ToString()) && currentID != i && dgQuotationAddedItems.CurrentCell.RowIndex < i)
+                                if (Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString()) <= Int32.Parse(dgQuotationAddedItems.CurrentCell.Value.ToString()) && currentID != i && dgQuotationAddedItems.CurrentCell.RowIndex < i)
                                 {
                                     if (i <= Quotation.Count)
                                     {
                                         dgQuotationAddedItems.Rows[i].Cells[0].Value = (i);
                                     }
                                 }
-                                else { dgQuotationAddedItems.Rows[i].Cells[0].Value = decimal.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString()); }
+                                else { dgQuotationAddedItems.Rows[i].Cells[0].Value = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString()); }
                                 #endregion
                             }
                             else
                             {
                                 #region RowChange2
                                 //Üstteki bir row u aşşağıya getirmek için
-                                if (decimal.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString()) >= decimal.Parse(dgQuotationAddedItems.CurrentCell.Value.ToString()) && currentID != i && dgQuotationAddedItems.CurrentCell.RowIndex > i)
+                                if (Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString()) >= Int32.Parse(dgQuotationAddedItems.CurrentCell.Value.ToString()) && currentID != i && dgQuotationAddedItems.CurrentCell.RowIndex > i)
                                 {
                                     if (i <= Quotation.Count)
                                     {
@@ -1004,7 +1002,7 @@ namespace LoginForm.QuotationModule
                                     }
 
                                 }
-                                else { dgQuotationAddedItems.Rows[i].Cells[0].Value = decimal.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString()); }
+                                else { dgQuotationAddedItems.Rows[i].Cells[0].Value = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString()); }
                                 #endregion
                             }
 
@@ -2281,7 +2279,7 @@ namespace LoginForm.QuotationModule
                             QuotationDetail qd = new QuotationDetail();
                             qd.QuotationNo = txtQuotationNo.Text;
 
-                            if (!String.IsNullOrEmpty(dgQuotationAddedItems.Rows[i].Cells["dgNo"].Value?.ToString())) qd.dgNo = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells["dgNo"].Value?.ToString());
+                            if (!String.IsNullOrEmpty(dgQuotationAddedItems.Rows[i].Cells[dgNo.Index].Value?.ToString())) qd.dgNo = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[dgNo.Index].Value.ToString());
                             if (!String.IsNullOrEmpty(dgQuotationAddedItems.Rows[i].Cells["dgDesc"].Value?.ToString())) qd.CustomerDescription = dgQuotationAddedItems.Rows[i].Cells["dgDesc"].Value.ToString();
                             if (!String.IsNullOrEmpty(dgQuotationAddedItems.Rows[i].Cells["dgProductCode"].Value?.ToString()))
                                 qd.ItemCode = dgQuotationAddedItems.Rows[i].Cells["dgProductCode"].Value.ToString();
