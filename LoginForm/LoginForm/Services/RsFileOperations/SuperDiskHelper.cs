@@ -34,6 +34,7 @@ namespace LoginForm.Services
             {
                 FileName = _FileDialog.SafeFileName;
                  _Lines = System.IO.File.ReadAllLines(_FileDialog.FileName).ToList();
+
                 //Arada kalan satır kod seçili olan dosyanın kontroünden sonra yapılmalı
                 _ColumnNames = _Lines[0].Split('|').ToList();
                 _Lines.RemoveAt(0);
@@ -62,7 +63,7 @@ namespace LoginForm.Services
                 {
                     ReturnMessage LineError = CheckLinesForErrors(_Lines);
                     //Satırlarda hata varsa
-                    int maxErrorAmount = 20; /*Maksimum 20 hata gösteriliyor MessageBox'ta*/
+                    int maxErrorAmount = 15; /*Maksimum 20 hata gösteriliyor MessageBox'ta*/
                     if (LineError.MessageList.Count > 0)
                     {
                         //MessageBox'ta göstermek için sınırlı sayıda hatayı içeren yazıyı oluşturur
@@ -416,7 +417,6 @@ namespace LoginForm.Services
                     CorrectColumnNames.Remove(Columns[i]);
                 }
             }
-            //columnCount += error.ErrorList.Count;
 
             string MissingColumnsString = String.Empty;
             for (int i = 0; i < CorrectColumnNames.Count; i++)
@@ -441,11 +441,12 @@ namespace LoginForm.Services
             SqlCommand cmd;
             SqlConnection ImeSqlConn = new Utils().ImeSqlConnection();
             SqlTransaction ImeSqlTransaction = ImeSqlConn.BeginTransaction();
+            
+            int updatedItemCount = 0;
+            int newItemCount = 0;
             try
             {
                 IMEEntities db = new IMEEntities();
-                int updatedItemCount = 0;
-                int newItemCount = 0;
 
                 foreach (string itemString in _Lines)
                 {
@@ -506,6 +507,10 @@ namespace LoginForm.Services
                                 {
                                     item.Future_Sell_Price = Convert.ToDecimal(_itemData);
                                 }
+                                else
+                                {
+                                    item.Future_Sell_Price = 0;
+                                }
                                 break;
                             case "Hazardous_Ind":
                                 item.Hazardous_Ind = _itemData;
@@ -556,6 +561,10 @@ namespace LoginForm.Services
                                 if (_itemData != "")
                                 {
                                     item.Pack_Code = Convert.ToInt32(_itemData);
+                                }
+                                else
+                                {
+                                    item.Pack_Code = 9999;
                                 }
                                 break;
                             case "Pack_Quantity":
@@ -731,10 +740,10 @@ namespace LoginForm.Services
                 ImeSqlTransaction.Commit();
                 MessageBox.Show(newItemCount + " item is added! " + updatedItemCount + " item is updated!", "Success");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 ImeSqlTransaction.Rollback();
-                MessageBox.Show("An error occured while loading SuperDisk! Try again later","Error");
+                MessageBox.Show("An error occured while loading SuperDisk! Try again later\n\n" + ex.ToString(),"Error");
             }
             finally
             {
