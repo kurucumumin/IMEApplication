@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace LoginForm.MyClasses
 {
-    class LoaderError
+    class ReturnMessage
     {
-        public List<String> ErrorList;
-        public LoaderError()
+        public List<String> MessageList;
+        public ReturnMessage()
         {
-            ErrorList = new List<string>();
+            MessageList = new List<string>();
         }
     }
 }

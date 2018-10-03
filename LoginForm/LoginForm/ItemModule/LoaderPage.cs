@@ -36,9 +36,12 @@ namespace LoginForm.ItemModule
 
                 case "SuperDisk":
 
-                    SuperDiskHelper helper = new SuperDiskHelper();
-                    helper.SuperDiskLoader();
-
+                    SuperDiskHelper SuperDiskHelper = new SuperDiskHelper();
+                    bool NoError = SuperDiskHelper.ErrorCheck();
+                    if (NoError)
+                    {
+                        SuperDiskHelper.LoadSuperDiskItems();
+                    }
 
 
                     //string[] result1 = txtReader.SuperDiskRead();
