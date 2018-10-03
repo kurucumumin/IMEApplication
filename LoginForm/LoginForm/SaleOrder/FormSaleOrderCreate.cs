@@ -11,7 +11,7 @@ namespace LoginForm.nsSaleOrder
 {
     public partial class FormSaleOrderCreate : MyForm
     {
-        private static string QuoStatusActive = "Active";
+        private static string QuoStatusActive = "Pending";
         private static string QuoStatusPassive = "Passive";
 
         IMEEntities IME = new IMEEntities();
@@ -30,7 +30,7 @@ namespace LoginForm.nsSaleOrder
 
         private void FormSaleOrderCustList_Load(object sender, EventArgs e)
         {
-            List<Quotation> QuoList = IME.Quotations.Where(x=>x.status == "Active").ToList();
+            List<Quotation> QuoList = IME.Quotations.Where(x=>x.status == "Pending").ToList();
 
             foreach (Quotation q in QuoList)
             {
@@ -62,7 +62,7 @@ namespace LoginForm.nsSaleOrder
         {
             if(lbCustomerList.SelectedValue != null)
             {
-                var dgList = IME.Quotations.Where(q => q.CustomerID == lbCustomerList.SelectedValue.ToString() && q.status == "Active").OrderByDescending(s => s.StartDate).ToList();
+                var dgList = IME.Quotations.Where(q => q.CustomerID == lbCustomerList.SelectedValue.ToString() && q.status == "Pending").OrderByDescending(s => s.StartDate).ToList();
                 dgQuotations.DataSource = dgList;
                 dgQuotations.ClearSelection();
             }
