@@ -14,7 +14,7 @@ using ImeLogoLibrary;
 using LoginForm.MyClasses;
 using LoginForm.Services.SP;
 
-namespace LoginForm.nsSaleOrder
+namespace LoginForm
 {
     public partial class FormSalesOrderMain : MyForm
     {
@@ -334,7 +334,7 @@ namespace LoginForm.nsSaleOrder
                 }
                 if (saleOrder != null)
                 {
-                    FormSaleOrderAdd newForm = new FormSaleOrderAdd(saleOrder.Customer, saleOrder.SaleOrderDetails.ToList(), Convert.ToInt32(QuotationNo));
+                    FormSaleOrderAdd newForm = new FormSaleOrderAdd(saleOrder.Customer, saleOrder.SaleOrderDetails.ToList(), Convert.ToInt32(QuotationNo),saleOrder);
                     newForm.ShowDialog();
                 }
             }
@@ -713,6 +713,37 @@ namespace LoginForm.nsSaleOrder
         private void btnPrint_Click(object sender, EventArgs e)
         {
             Utils.LogKayit("Sale Order", "Sale Order print");
+        }
+
+        private void btnModify_Click(object sender, EventArgs e)
+        {
+            if (dgSales.CurrentRow != null)
+            {
+                decimal SaleOrderNO = Convert.ToDecimal(dgSales.CurrentRow.Cells["SaleOrderNO"].Value.ToString());
+                string CustomerName = dgSales.CurrentRow.Cells["CustomerName"].Value.ToString();
+                SaleOrder so;
+                Customer co;
+                IMEEntities IME = new IMEEntities();
+                try
+                {
+                    so = IME.SaleOrders.Where(q => q.SaleOrderNo == SaleOrderNO).FirstOrDefault();
+                    co = IME.Customers.Where(c => c.c_name == CustomerName).FirstOrDefault();
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+
+                FormSaleOrderAdd newForm = new FormSaleOrderAdd(so, this, "Update",co);
+                Utils.LogKayit("SaleOrder", "SaleOrder update screen has been entered");
+                newForm.ShowDialog();
+
+            }
+            else
+            {
+                MessageBox.Show("You did not chose any quotation.", "Warning!");
+            }
         }
     }
 }

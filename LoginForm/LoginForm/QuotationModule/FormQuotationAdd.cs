@@ -32,7 +32,6 @@ namespace LoginForm.QuotationModule
         ContextMenu DeletedQuotationMenu = new ContextMenu();
         ExchangeRate curr = new ExchangeRate();
         decimal vat = (decimal)Utils.getManagement().VAT;
-        decimal decSalesQuotationPreffixSuffixId = 0;
         decimal totallbl = 0;
         Decimal CurrValue = 1;
         Decimal CurrValue1 = 1;

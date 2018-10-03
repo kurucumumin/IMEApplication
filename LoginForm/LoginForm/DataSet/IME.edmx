@@ -1010,6 +1010,7 @@
           <Property Name="Status" Type="nvarchar" MaxLength="7" />
           <Property Name="TotalDiscount" Type="decimal" Precision="18" Scale="4" />
           <Property Name="PurchaseOrderID" Type="int" />
+          <Property Name="DistributeDiscount" Type="bit" />
         </EntityType>
         <EntityType Name="SaleOrderDetail">
           <Key>
@@ -5552,6 +5553,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="Status" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
           <Property Name="TotalDiscount" Type="Decimal" Precision="18" Scale="4" />
           <Property Name="PurchaseOrderID" Type="Int32" />
+          <Property Name="DistributeDiscount" Type="Boolean" />
           <NavigationProperty Name="Customer" Relationship="Self.FK__SaleOrder__Custo__1CDC41A7" FromRole="SaleOrder" ToRole="Customer" />
           <NavigationProperty Name="CustomerAddress" Relationship="Self.FK__SaleOrder__Deliv__21A0F6C4" FromRole="SaleOrder" ToRole="CustomerAddress" />
           <NavigationProperty Name="CustomerAddress1" Relationship="Self.FK__SaleOrder__Invoi__20ACD28B" FromRole="SaleOrder" ToRole="CustomerAddress" />
@@ -9577,6 +9579,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Type="String" Name="Status" Nullable="true" MaxLength="7" />
           <Property Type="Decimal" Name="TotalDiscount" Nullable="true" Precision="18" Scale="4" />
           <Property Type="Int32" Name="PurchaseOrderID" Nullable="true" />
+          <Property Type="Boolean" Name="DistributeDiscount" Nullable="true" />
         </ComplexType>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -10696,6 +10699,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="TotalDiscount" ColumnName="TotalDiscount" />
                 <ScalarProperty Name="PurchaseOrderID" ColumnName="PurchaseOrderID" />
+                <ScalarProperty Name="DistributeDiscount" ColumnName="DistributeDiscount" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -12199,6 +12203,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="TotalDiscount" ColumnName="TotalDiscount" />
                 <ScalarProperty Name="PurchaseOrderID" ColumnName="PurchaseOrderID" />
+                <ScalarProperty Name="DistributeDiscount" ColumnName="DistributeDiscount" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
