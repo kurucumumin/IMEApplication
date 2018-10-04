@@ -24,12 +24,22 @@ namespace LoginForm.QuotationModule
         public FormQuaotationCustomerSearch()
         {
             InitializeComponent();
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
+           System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
+           CustomerSearchGrid, new object[] { true });
+
             CustomerSearchGrid.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
         }
 
         public FormQuaotationCustomerSearch(string _Name)
         {
             InitializeComponent();
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
+          System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
+          CustomerSearchGrid, new object[] { true });
+
             CustomerSearchGrid.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
 
             CustomerName.Text = _Name;
@@ -49,6 +59,11 @@ namespace LoginForm.QuotationModule
         public FormQuaotationCustomerSearch(XmlCustomer customer)
         {
             InitializeComponent();
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
+          System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
+          CustomerSearchGrid, new object[] { true });
+
             CustomerSearchGrid.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
             fromXmlCustomer = true;
             this.xmlCustomer = customer;
@@ -57,6 +72,11 @@ namespace LoginForm.QuotationModule
         public FormQuaotationCustomerSearch(Customer customer)
         {
             InitializeComponent();
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
+          System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
+          CustomerSearchGrid, new object[] { true });
+
             CustomerSearchGrid.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
             this.customer = customer;
             CustomerSearch();
@@ -65,6 +85,11 @@ namespace LoginForm.QuotationModule
         public FormQuaotationCustomerSearch(Supplier supplier)
         {
             InitializeComponent();
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
+          System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
+          CustomerSearchGrid, new object[] { true });
+
             CustomerSearchGrid.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
             this.supplier = supplier;
             SupplierSearch();
@@ -73,6 +98,11 @@ namespace LoginForm.QuotationModule
         public FormQuaotationCustomerSearch(DataSet.Account account)
         {
             InitializeComponent();
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
+          System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
+          CustomerSearchGrid, new object[] { true });
+
             CustomerSearchGrid.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
             this.account = account;
             AccountSearch();
@@ -81,6 +111,11 @@ namespace LoginForm.QuotationModule
         public FormQuaotationCustomerSearch(Current current, string searchName)
         {
             InitializeComponent();
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
+          System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
+          CustomerSearchGrid, new object[] { true });
+
             CustomerSearchGrid.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
             this.current = current;
             CustomerName.Text = searchName;
@@ -160,8 +195,8 @@ namespace LoginForm.QuotationModule
                 if (cID != null && cID != "")
                 {
                     customer = IME.Customers.Where(a => a.ID == cID).FirstOrDefault();
-                    customerName = customer.ID;
-                    customerID = customer.c_name;
+                    customerName = customer.c_name;
+                    customerID = customer.ID;
                     //QuotationUtils.customerID = CustomerCode.Text;
                     //QuotationUtils.customername = CustomerName.Text;
 
@@ -381,59 +416,106 @@ namespace LoginForm.QuotationModule
 
         private void FormQuaotationCustomerSearch_Load(object sender, EventArgs e)
         {
-            #region AutoCompleteCustomSource ID
-            CustomerCode.Focus();
-            AutoCompleteStringCollection autoID = new AutoCompleteStringCollection();
-            SqlConnection connID = new Utils().ImeSqlConnection();
-            try
+            //#region AutoCompleteCustomSource ID
+            //CustomerCode.Focus();
+            //AutoCompleteStringCollection autoID = new AutoCompleteStringCollection();
+            //SqlConnection connID = new Utils().ImeSqlConnection();
+            //try
+            //{
+            //    foreach (DataRow row in sqlHelper.GetQueryResult("Select ID from[Customer]").Rows)
+            //    {
+            //        autoID.Add(row[0].ToString());
+            //    }
+
+            //    CustomerCode.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            //    CustomerCode.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            //    CustomerCode.AutoCompleteCustomSource = autoID;
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Database Connection Error. \n\nError Message: " + ex.ToString(), "Error");
+            //}
+            //finally
+            //{
+            //    connID.Close();
+            //}
+
+
+            //#endregion
+
+            //#region AutoCompleteCustomSource Name
+            //CustomerName.Focus();
+            //AutoCompleteStringCollection autoName = new AutoCompleteStringCollection();
+            //SqlConnection connName = new Utils().ImeSqlConnection();
+            //try
+            //{
+            //    foreach (DataRow row in sqlHelper.GetQueryResult("Select c_name from[Customer]").Rows)
+            //    {
+            //        autoName.Add(row[0].ToString());
+            //    }
+
+            //    CustomerName.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            //    CustomerName.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            //    CustomerName.AutoCompleteCustomSource = autoName;
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Database Connection Error. \n\nError Message: " + ex.ToString(), "Error");
+            //}
+            //finally
+            //{
+            //    connName.Close();
+            //}
+
+
+            //#endregion
+
+            if (this.Text == "Customer Search")
             {
-                foreach (DataRow row in sqlHelper.GetQueryResult("Select ID from[Customer]").Rows)
-                {
-                    autoID.Add(row[0].ToString());
-                }
-
-                CustomerCode.AutoCompleteSource = AutoCompleteSource.CustomSource;
-                CustomerCode.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-                CustomerCode.AutoCompleteCustomSource = autoID;
+                CustomerSearchGrid.DataSource = IME.CustomerAll().OrderByDescending(x=> x.CreateDate).ToList(); ;
             }
-            catch (Exception ex)
+            if (this.Text == "Supplier Search")
             {
-                MessageBox.Show("Database Connection Error. \n\nError Message: " + ex.ToString(), "Error");
+                CustomerSearchGrid.DataSource = IME.Suppliers.ToList();
             }
-            finally
+            if (this.Text == "Account Search")
             {
-                connID.Close();
+                CustomerSearchGrid.DataSource = IME.Accounts.ToList();
             }
-
-
-            #endregion
-
-            #region AutoCompleteCustomSource Name
-            CustomerName.Focus();
-            AutoCompleteStringCollection autoName = new AutoCompleteStringCollection();
-            SqlConnection connName = new Utils().ImeSqlConnection();
-            try
+            if (this.Text == "Current Search")
             {
-                foreach (DataRow row in sqlHelper.GetQueryResult("Select c_name from[Customer]").Rows)
-                {
-                    autoName.Add(row[0].ToString());
-                }
-
-                CustomerName.AutoCompleteSource = AutoCompleteSource.CustomSource;
-                CustomerName.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-                CustomerName.AutoCompleteCustomSource = autoName;
+                CustomerSearchGrid.DataSource = IME.Currents.ToList();
             }
-            catch (Exception ex)
+        }
+
+        private void CustomerName_TextChanged(object sender, EventArgs e)
+        {
+            if (this.Text == "Customer Search")
             {
-                MessageBox.Show("Database Connection Error. \n\nError Message: " + ex.ToString(), "Error");
+                QuotationUtils.customersearchID = "";
+                QuotationUtils.customersearchname = CustomerName.Text;
+                List<Customer> c = QuotationUtils.CustomerSearch();
+                CustomerSearchGrid.DataSource = c;
             }
-            finally
+            if (this.Text == "Supplier Search")
             {
-                connName.Close();
+                classSupplier.suppliersearchID = "";
+                classSupplier.suppliersearchname = CustomerName.Text;
+                List<Supplier> c = classSupplier.SupplierSearch();
+                CustomerSearchGrid.DataSource = c;
             }
-
-
-            #endregion
+            if (this.Text == "Account Search")
+            {
+                classAccount.accountsearchID = "";
+                classAccount.accountsearchname = CustomerName.Text;
+                List<DataSet.Account> c = classAccount.AccountSearch();
+                CustomerSearchGrid.DataSource = c;
+            }
+            if (this.Text == "Current Search")
+            {
+                List<Current> c = classCurrent.CurrentSearch(CustomerName.Text, CustomerCode.Text);
+                CustomerSearchGrid.DataSource = c;
+            }
         }
     }
 }

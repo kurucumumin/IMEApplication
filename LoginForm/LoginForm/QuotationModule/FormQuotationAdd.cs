@@ -74,7 +74,7 @@ namespace LoginForm.QuotationModule
             txtCustomerName.Text = cName;
             CustomerCode.Text = cID;
 
-            var customerList = IME.Customers.Where(a => a.c_name.Contains(CustomerCode.Text)).ToList();
+            var customerList = IME.Customers.Where(a => a.c_name.Contains(txtCustomerName.Text)).ToList();
 
             this.Enabled = true;
             customer = customerList.FirstOrDefault();
