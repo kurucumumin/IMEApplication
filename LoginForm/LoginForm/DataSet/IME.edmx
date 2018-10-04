@@ -1045,6 +1045,7 @@
           <Property Name="DeliveryID" Type="int" Nullable="false" />
           <Property Name="LandingCost" Type="decimal" Precision="18" Scale="4" />
           <Property Name="UKPrice" Type="decimal" Precision="20" Scale="5" />
+          <Property Name="MPN" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="SalesOperation">
           <Key>
@@ -5604,6 +5605,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="DeliveryID" Type="Int32" Nullable="false" />
           <Property Name="LandingCost" Type="Decimal" Precision="18" Scale="4" />
           <Property Name="UKPrice" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="MPN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="QuotationDelivery" Relationship="Self.FK__SaleOrder__Deliv__57BDDBAA" FromRole="SaleOrderDetail" ToRole="QuotationDelivery" />
           <NavigationProperty Name="QuotationDetail" Relationship="Self.FK__SaleOrder__quota__310335E5" FromRole="SaleOrderDetail" ToRole="QuotationDetail" />
           <NavigationProperty Name="SaleOrder" Relationship="Self.FK_SaleOrderDetail_SaleOrder" FromRole="SaleOrderDetail" ToRole="SaleOrder" />
@@ -10735,6 +10737,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="DeliveryID" ColumnName="DeliveryID" />
                 <ScalarProperty Name="LandingCost" ColumnName="LandingCost" />
                 <ScalarProperty Name="UKPrice" ColumnName="UKPrice" />
+                <ScalarProperty Name="MPN" ColumnName="MPN" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

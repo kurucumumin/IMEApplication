@@ -43,6 +43,7 @@ namespace LoginForm.DataSet
         public int DeliveryID { get; set; }
         public Nullable<decimal> LandingCost { get; set; }
         public Nullable<decimal> UKPrice { get; set; }
+        public string MPN { get; set; }
     
         public virtual QuotationDelivery QuotationDelivery { get; set; }
         public virtual QuotationDetail QuotationDetail { get; set; }
