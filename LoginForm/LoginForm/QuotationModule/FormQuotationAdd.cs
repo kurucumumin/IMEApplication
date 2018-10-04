@@ -223,10 +223,20 @@ namespace LoginForm.QuotationModule
                 cbRep.DataSource = IME.Workers.ToList();
                 cbRep.DisplayMember = "NameLastName";
                 cbRep.ValueMember = "WorkerID";
-                cbWorkers.DataSource = IME.CustomerWorkers.Where(a => a.customerID == q1.CustomerID).ToList();
+                cbWorkers.Items.AddRange(IME.CustomerWorkers.Where(a => a.customerID == q1.CustomerID).ToArray());
                 cbWorkers.DisplayMember = "cw_name";
                 cbWorkers.ValueMember = "ID";
-                if (q1.QuotationMainContact != null) cbWorkers.SelectedValue = (int)q1.QuotationMainContact;
+                if (q1.QuotationMainContact != null)
+                {
+                    cbWorkers.SelectedValue = (int)q1.QuotationMainContact;
+                }
+                else
+                {
+                    cbWorkers.Text = q1.MainContactName;
+
+                }
+
+                    
                 CustomerCode.Enabled = false;
                 txtCustomerName.Enabled = false;
 
@@ -306,10 +316,19 @@ namespace LoginForm.QuotationModule
                 cbRep.DataSource = IME.Workers.ToList();
                 cbRep.DisplayMember = "NameLastName";
                 cbRep.ValueMember = "WorkerID";
-                cbWorkers.DataSource = IME.CustomerWorkers.Where(a => a.customerID == q1.CustomerID).ToList();
+                cbWorkers.Items.AddRange(IME.CustomerWorkers.Where(a => a.customerID == q1.CustomerID).ToArray());
                 cbWorkers.DisplayMember = "cw_name";
                 cbWorkers.ValueMember = "ID";
-                if (q1.QuotationMainContact != null) cbWorkers.SelectedValue = (int)q1.QuotationMainContact;
+                if (q1.QuotationMainContact != null)
+                {
+                    cbWorkers.SelectedValue = (int)q1.QuotationMainContact;
+                }
+                else
+                {
+                    cbWorkers.Text = q1.MainContactName;
+                }
+
+                    
                 CustomerCode.Enabled = false;
                 txtCustomerName.Enabled = false;
 
@@ -416,10 +435,18 @@ namespace LoginForm.QuotationModule
             cbRep.DisplayMember = "NameLastName";
             cbRep.ValueMember = "WorkerID";
             cbRep.SelectedValue = (int)q1.RepresentativeID;
-            cbWorkers.DataSource = IME.CustomerWorkers.Where(x=> x.customerID==q1.CustomerID).ToList();
+            cbWorkers.Items.AddRange(IME.CustomerWorkers.Where(x=> x.customerID==q1.CustomerID).ToArray());
             cbWorkers.DisplayMember = "cw_name";
             cbWorkers.ValueMember = "ID";
-            if (q1.QuotationMainContact != null) cbWorkers.SelectedValue = (int)q1.QuotationMainContact;
+            if (q1.QuotationMainContact != null)
+            {
+                cbWorkers.SelectedValue = (int)q1.QuotationMainContact;
+            }
+            else
+            {
+                cbWorkers.Text = q1.MainContactName;
+            }
+            
             CustomerCode.Enabled = false;
             txtCustomerName.Enabled = false;
 
@@ -626,10 +653,17 @@ namespace LoginForm.QuotationModule
             cbRep.DisplayMember = "NameLastName";
             cbRep.ValueMember = "WorkerID";
             cbRep.SelectedValue = (int)q1.Worker.WorkerID;
-            cbWorkers.DataSource = IME.CustomerWorkers.ToList();
+            cbWorkers.Items.AddRange(IME.CustomerWorkers.ToArray());
             cbWorkers.DisplayMember = "cw_name";
             cbWorkers.ValueMember = "ID";
-            if (q1.QuotationMainContact != null) cbWorkers.SelectedValue = (int)q1.QuotationMainContact;
+            if (q1.QuotationMainContact != null)
+            {
+                cbWorkers.SelectedValue = (int)q1.QuotationMainContact;
+            }
+            else
+            {
+                cbWorkers.Text = q1.MainContactName;
+            }
             CustomerCode.Enabled = false;
             txtCustomerName.Enabled = false;
 
@@ -924,7 +958,6 @@ namespace LoginForm.QuotationModule
                 }
                 if (customer.CustomerWorker != null)
                 {
-                    cbWorkers.SelectedValue = customer.CustomerWorker.ID;
                     cbWorkers.SelectedItem = cbWorkers.FindStringExact(customer.CustomerWorker.cw_name);
                 }
             }
@@ -2274,6 +2307,10 @@ namespace LoginForm.QuotationModule
                     {
                         q.QuotationMainContact = (int)cbWorkers.SelectedValue;
                     }
+                    else
+                    {
+                        q.QuotationMainContact = null;
+                    }
                     q.ExchangeRateID = curr.exchangeRateID;
                     int Note2 = 0;
                     int Note1 = 0;
@@ -2831,7 +2868,14 @@ namespace LoginForm.QuotationModule
                 CustomerCode.Text = q.Customer.ID;
                 txtCustomerName.Text = q.Customer.c_name;
                 cbFactor.Text = q.Factor.ToString();
-                cbWorkers.SelectedItem = q.Customer.MainContactID;
+                if (q.QuotationMainContact != null)
+                {
+                    cbWorkers.SelectedValue = (int)q.QuotationMainContact;
+                }
+                else
+                {
+                    cbWorkers.Text = q.MainContactName;
+                }
                 if (q.NoteForCustomerID != null) txtNoteForCustomer.Text = IME.Notes.Where(a => a.ID == q.NoteForCustomerID).FirstOrDefault().Note_name;
                 if (q.NoteForCustomerID != null) txtNoteForUs.Text = IME.Notes.Where(a => a.ID == q.NoteForUsID).FirstOrDefault().Note_name;
                 fillCustomer();
@@ -2970,7 +3014,14 @@ namespace LoginForm.QuotationModule
                 CustomerCode.Text = q.Customer.ID;
                 txtCustomerName.Text = q.Customer.c_name;
                 cbFactor.Text = q.Factor.ToString();
-                cbWorkers.SelectedItem = q.Customer.MainContactID;
+                if (q.QuotationMainContact != null)
+                {
+                    cbWorkers.SelectedValue = (int)q.QuotationMainContact;
+                }
+                else
+                {
+                    cbWorkers.Text = q.MainContactName;
+                }
                 if (q.NoteForCustomerID != null) txtNoteForCustomer.Text = IME.Notes.Where(a => a.ID == q.NoteForCustomerID).FirstOrDefault().Note_name;
                 if (q.NoteForCustomerID != null) txtNoteForUs.Text = IME.Notes.Where(a => a.ID == q.NoteForUsID).FirstOrDefault().Note_name;
                 fillCustomer();
@@ -3812,7 +3863,7 @@ namespace LoginForm.QuotationModule
             {
                 this.Enabled = true;
                 customer = customerList.FirstOrDefault();
-                cbWorkers.DataSource = customer.CustomerWorkers.ToList();
+                cbWorkers.Items.AddRange(customer.CustomerWorkers.ToArray());
                 cbWorkers.DisplayMember = "cw_name";
                 cbWorkers.ValueMember = "ID";
                 txtCustomerName.Text = customer.c_name;
@@ -3832,7 +3883,6 @@ namespace LoginForm.QuotationModule
                 }
                 if (customer.CustomerWorker != null)
                 {
-                    cbWorkers.SelectedValue = customer.CustomerWorker.ID;
                     cbWorkers.SelectedItem = cbWorkers.FindStringExact(customer.CustomerWorker.cw_name);
                 }
             }
@@ -3847,7 +3897,7 @@ namespace LoginForm.QuotationModule
                 if (result == DialogResult.OK)
                 {
                     customer = form.customer;
-                    cbWorkers.DataSource = customer.CustomerWorkers.ToList();
+                    cbWorkers.Items.AddRange(customer.CustomerWorkers.ToArray());
                     cbWorkers.DisplayMember = "cw_name";
                     cbWorkers.ValueMember = "ID";
                 }
@@ -4051,7 +4101,7 @@ namespace LoginForm.QuotationModule
 
                 IME = new IMEEntities();
 
-                cbWorkers.DataSource = IME.CustomerWorkers.Where(a => a.customerID == CustomerCode.Text).ToList();
+                cbWorkers.Items.AddRange(IME.CustomerWorkers.Where(a => a.customerID == CustomerCode.Text).ToArray());
                 cbWorkers.DisplayMember = "cw_name";
                 cbWorkers.ValueMember = "ID";
             }
@@ -4071,7 +4121,7 @@ namespace LoginForm.QuotationModule
                 IME = new IMEEntities();
 
                 fillCustomer();
-                cbWorkers.DataSource = IME.CustomerWorkers.Where(a => a.customerID == CustomerCode.Text).ToList();
+                cbWorkers.Items.AddRange(IME.CustomerWorkers.Where(a => a.customerID == CustomerCode.Text).ToArray());
                 cbWorkers.DisplayMember = "cw_name";
                 cbWorkers.ValueMember = "ID";
             }
@@ -4656,7 +4706,7 @@ namespace LoginForm.QuotationModule
             if (result == DialogResult.OK)
             {
                 customer = form.customer;
-                cbWorkers.DataSource = customer.CustomerWorkers.ToList();
+                cbWorkers.Items.AddRange(customer.CustomerWorkers.ToArray());
                 cbWorkers.DisplayMember = "cw_name";
                 cbWorkers.ValueMember = "ID";
             }

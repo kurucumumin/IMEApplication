@@ -1201,7 +1201,7 @@ namespace LoginForm.QuotationModule
                 {
                     FormQuotationAdd newForm = new FormQuotationAdd(quo, this, "Update");
                     Utils.LogKayit("Quotation", "Quotation update screen has been entered");
-                    newForm.ShowDialog();
+                    newForm.Show();
                 }
                 else
                 {
