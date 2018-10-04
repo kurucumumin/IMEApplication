@@ -71,7 +71,7 @@ namespace LoginForm.Services
                     ReturnMessage LineError = CheckLinesForErrors(_Lines);
                     _Timer.Stop();
                     //Satırlarda hata varsa
-                    int maxErrorAmount = 15; /*Maksimum 20 hata gösteriliyor MessageBox'ta*/
+                    int maxShownErrorAmount = 15; /* MessageBox'ta gösterilen maksimum hata sayısını belirler*/
                     if (LineError.MessageList.Count > 0)
                     {
                         //MessageBox'ta göstermek için sınırlı sayıda hatayı içeren yazıyı oluşturur
@@ -85,11 +85,11 @@ namespace LoginForm.Services
                             {
                                 errorMessage.AppendLine();
                             }
-                            if ((i+1) == maxErrorAmount) /*Bulunan hata sayısı kontrolü*/
+                            if ((i+1) == maxShownErrorAmount) 
                             {
                                 errorMessage.Append("...");
                                 break;
-                            }
+                            } /*Bulunan hata sayısı kontrolü*/
                         }
                         errorMessage.AppendLine().AppendLine();
 
