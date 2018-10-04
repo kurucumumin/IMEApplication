@@ -75,7 +75,8 @@
             this.CustomerName.Location = new System.Drawing.Point(114, 56);
             this.CustomerName.Name = "CustomerName";
             this.CustomerName.Size = new System.Drawing.Size(219, 20);
-            this.CustomerName.TabIndex = 3;
+            this.CustomerName.TabIndex = 0;
+            this.CustomerName.TextChanged += new System.EventHandler(this.CustomerName_TextChanged);
             this.CustomerName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CustomerName_KeyDown);
             // 
             // CustomerSearchGrid
