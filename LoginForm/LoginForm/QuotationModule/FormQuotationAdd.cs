@@ -45,9 +45,11 @@ namespace LoginForm.QuotationModule
         int a = 1;
         int importFromQuotation = 0;
         string mod = "";
+        string cName = "";
+        string cID = "";
         #endregion
 
-        public FormQuotationAdd(FormQuotationMain parent)
+        public FormQuotationAdd(/*FormQuotationMain parent, */string customerName, string customerId)
         {
             InitializeComponent();
             dgQuotationAddedItems.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
@@ -57,13 +59,51 @@ namespace LoginForm.QuotationModule
          System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
          dgQuotationAddedItems, new object[] { true });
 
+
+            cName = customerName;
+            cID = customerId;
             dtpDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
             dtpDate.Enabled = false;
-            this.parent = parent;
+            //this.parent = parent;
             txtQuotationNo.PasswordChar = ' ';
             btnCreateRev.Enabled = false;
             label68.Enabled = false;
             txtTotalMarge.Visible = false;
+
+            #region customer
+            txtCustomerName.Text = cName;
+            CustomerCode.Text = cID;
+
+            var customerList = IME.Customers.Where(a => a.c_name.Contains(CustomerCode.Text)).ToList();
+
+            this.Enabled = true;
+            customer = customerList.FirstOrDefault();
+            cbWorkers.DataSource = customer.CustomerWorkers.ToList();
+            cbWorkers.DisplayMember = "cw_name";
+            cbWorkers.ValueMember = "ID";
+            if (customer.paymentmethodID != null)
+            {
+                cbPayment.SelectedIndex = cbPayment.FindStringExact(customer.PaymentTerm.term_name);
+            }
+            try { txtContactNote.Text = customer.CustomerWorker.Note.Note_name; } catch { }
+            try { txtCustomerNote.Text = customer.Note.Note_name; } catch { }
+            try { txtAccountingNote.Text = IME.Notes.Where(a => a.ID == customer.customerAccountantNoteID).FirstOrDefault().Note_name; } catch { }
+            if (customer.Worker != null) cbRep.SelectedValue = customer.Worker.WorkerID;
+            if (this.Text != "Edit Quotation")
+            {
+                var CustomerCurr = IME.Currencies.Where(a => a.currencyName == customer.CurrNameQuo).FirstOrDefault();
+                if (CustomerCurr != null) cbCurrency.SelectedValue = CustomerCurr.currencyID;
+            }
+            if (customer.CustomerWorker != null)
+            {
+                cbWorkers.SelectedValue = customer.CustomerWorker.ID;
+                cbWorkers.SelectedItem = cbWorkers.FindStringExact(customer.CustomerWorker.cw_name);
+            }
+            btnContactAdd.Enabled = true;
+
+            dgQuotationAddedItems.Focus();
+            //dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index];
+            #endregion
         }
         public FormQuotationAdd()
         {

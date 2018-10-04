@@ -3,6 +3,7 @@ using LoginForm.Services;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -18,7 +19,7 @@ namespace LoginForm.QuotationModule
         public Current current;
         public XmlCustomer xmlCustomer;
         bool fromXmlCustomer = false;
-        object choosenObject;
+        SqlHelper sqlHelper = new SqlHelper();
 
         public FormQuaotationCustomerSearch()
         {
@@ -148,18 +149,35 @@ namespace LoginForm.QuotationModule
         {
 
             CustomerSearchGrid.ClearSelection();
+            string customerName = "";
+            string customerID = "";
+
             #region Customer Search
             if (this.Text == "Customer Search")
             {
                 string cID = CustomerSearchGrid.CurrentRow.Cells["ID"].Value.ToString();
-                customer = IME.Customers.Where(a => a.ID == cID).FirstOrDefault();
-                CustomerCode.Text = customer.ID;
-                CustomerName.Text = customer.c_name;
-                QuotationUtils.customerID = CustomerCode.Text;
-                QuotationUtils.customername = CustomerName.Text;
 
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                if (cID != null && cID != "")
+                {
+                    customer = IME.Customers.Where(a => a.ID == cID).FirstOrDefault();
+                    customerName = customer.ID;
+                    customerID = customer.c_name;
+                    //QuotationUtils.customerID = CustomerCode.Text;
+                    //QuotationUtils.customername = CustomerName.Text;
+
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+
+                    FormQuotationAdd quotationForm = new FormQuotationAdd(/*this, */customerName, customerID);
+                    Utils.LogKayit("Quotation", "Quotation new screen has been entered");
+                    quotationForm.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Please select customer");
+                }
+
+              
             }
             #endregion
 
@@ -359,6 +377,63 @@ namespace LoginForm.QuotationModule
                 form.ShowDialog();
             }
 
+        }
+
+        private void FormQuaotationCustomerSearch_Load(object sender, EventArgs e)
+        {
+            #region AutoCompleteCustomSource ID
+            CustomerCode.Focus();
+            AutoCompleteStringCollection autoID = new AutoCompleteStringCollection();
+            SqlConnection connID = new Utils().ImeSqlConnection();
+            try
+            {
+                foreach (DataRow row in sqlHelper.GetQueryResult("Select ID from[Customer]").Rows)
+                {
+                    autoID.Add(row[0].ToString());
+                }
+
+                CustomerCode.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                CustomerCode.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                CustomerCode.AutoCompleteCustomSource = autoID;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Database Connection Error. \n\nError Message: " + ex.ToString(), "Error");
+            }
+            finally
+            {
+                connID.Close();
+            }
+
+
+            #endregion
+
+            #region AutoCompleteCustomSource Name
+            CustomerName.Focus();
+            AutoCompleteStringCollection autoName = new AutoCompleteStringCollection();
+            SqlConnection connName = new Utils().ImeSqlConnection();
+            try
+            {
+                foreach (DataRow row in sqlHelper.GetQueryResult("Select c_name from[Customer]").Rows)
+                {
+                    autoName.Add(row[0].ToString());
+                }
+
+                CustomerName.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                CustomerName.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                CustomerName.AutoCompleteCustomSource = autoName;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Database Connection Error. \n\nError Message: " + ex.ToString(), "Error");
+            }
+            finally
+            {
+                connName.Close();
+            }
+
+
+            #endregion
         }
     }
 }
