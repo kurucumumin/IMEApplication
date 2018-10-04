@@ -2459,8 +2459,8 @@ namespace LoginForm.QuotationModule
             for (int i = 0; i < dgSaleAddedItems.RowCount - 1; i++)
             {
                 if (dgSaleAddedItems.Rows[i].Cells["dgMargin"].Value != null && Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgMargin"].Value.ToString()) < Utils.getCurrentUser().MinMarge) { MessageBox.Show("Please Check Margin of Products "); return false; }
-                if (txtTotalMarge.Text == null || txtTotalMarge.Text == "") { txtTotalMarge.Text = "0"; }
-                if (Utils.getCurrentUser().MinMarge > decimal.Parse(txtTotalMarge.Text))
+                if (txtTotalMargin.Text == null || txtTotalMargin.Text == "") { txtTotalMargin.Text = "0"; }
+                if (Utils.getCurrentUser().MinMarge > decimal.Parse(txtTotalMargin.Text))
                 {
                     MessageBox.Show("You are not able to give this Total Margin. Please check the Total Margin");
                     return false;
@@ -2500,7 +2500,7 @@ namespace LoginForm.QuotationModule
                                 getTotalDiscMargin();
                                 decimal SaleOrderNo = Decimal.Parse(txtSalesOrderNo.Text.Substring(2));
                                 SaleOrder s = IME.SaleOrders.Where(quo => quo.SaleOrderNo == SaleOrderNo).FirstOrDefault();
-                                s.SaleDate = (DateTime)dtpDate.Value;
+                                s.SaleDate = (DateTime)IME.CurrentDate().First();
                                 s.OnlineConfirmationNo = txtOnlineConfirmationNo.Text;
                                 s.QuotationNos = txtQuotationNo.Text;
                                 s.PaymentTermID = (int)cbPaymentTerm.SelectedValue;
@@ -4617,7 +4617,7 @@ namespace LoginForm.QuotationModule
                 getTotalDiscMargin();
                 SaleOrder s = new SaleOrder();
                 s.SaleOrderNo = Int32.Parse(txtSalesOrderNo.Text.Substring(2));
-                s.SaleDate = (DateTime)dtpDate.Value;
+                s.SaleDate = (DateTime)IME.CurrentDate().First();
                 s.OnlineConfirmationNo = txtOnlineConfirmationNo.Text;
                 s.QuotationNos = txtQuotationNo.Text;
                 s.PaymentTermID = (int)cbPaymentTerm.SelectedValue;

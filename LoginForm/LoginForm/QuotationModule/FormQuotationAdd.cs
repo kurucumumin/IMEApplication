@@ -45,9 +45,11 @@ namespace LoginForm.QuotationModule
         int a = 1;
         int importFromQuotation = 0;
         string mod = "";
+        string cName = "";
+        string cID = "";
         #endregion
 
-        public FormQuotationAdd(FormQuotationMain parent)
+        public FormQuotationAdd(/*FormQuotationMain parent, */string customerName, string customerId)
         {
             InitializeComponent();
             dgQuotationAddedItems.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
@@ -57,13 +59,51 @@ namespace LoginForm.QuotationModule
          System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
          dgQuotationAddedItems, new object[] { true });
 
+
+            cName = customerName;
+            cID = customerId;
             dtpDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
             dtpDate.Enabled = false;
-            this.parent = parent;
+            //this.parent = parent;
             txtQuotationNo.PasswordChar = ' ';
             btnCreateRev.Enabled = false;
             label68.Enabled = false;
             txtTotalMarge.Visible = false;
+
+            #region customer
+            txtCustomerName.Text = cName;
+            CustomerCode.Text = cID;
+
+            var customerList = IME.Customers.Where(a => a.c_name.Contains(CustomerCode.Text)).ToList();
+
+            this.Enabled = true;
+            customer = customerList.FirstOrDefault();
+            cbWorkers.DataSource = customer.CustomerWorkers.ToList();
+            cbWorkers.DisplayMember = "cw_name";
+            cbWorkers.ValueMember = "ID";
+            if (customer.paymentmethodID != null)
+            {
+                cbPayment.SelectedIndex = cbPayment.FindStringExact(customer.PaymentTerm.term_name);
+            }
+            try { txtContactNote.Text = customer.CustomerWorker.Note.Note_name; } catch { }
+            try { txtCustomerNote.Text = customer.Note.Note_name; } catch { }
+            try { txtAccountingNote.Text = IME.Notes.Where(a => a.ID == customer.customerAccountantNoteID).FirstOrDefault().Note_name; } catch { }
+            if (customer.Worker != null) cbRep.SelectedValue = customer.Worker.WorkerID;
+            if (this.Text != "Edit Quotation")
+            {
+                var CustomerCurr = IME.Currencies.Where(a => a.currencyName == customer.CurrNameQuo).FirstOrDefault();
+                if (CustomerCurr != null) cbCurrency.SelectedValue = CustomerCurr.currencyID;
+            }
+            if (customer.CustomerWorker != null)
+            {
+                cbWorkers.SelectedValue = customer.CustomerWorker.ID;
+                cbWorkers.SelectedItem = cbWorkers.FindStringExact(customer.CustomerWorker.cw_name);
+            }
+            btnContactAdd.Enabled = true;
+
+            dgQuotationAddedItems.Focus();
+            //dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index];
+            #endregion
         }
         public FormQuotationAdd()
         {
@@ -841,6 +881,10 @@ namespace LoginForm.QuotationModule
             if (txtCustomerName.Text == null || txtCustomerName.Text == "")
             {
                 btnContactAdd.Enabled = false;
+            }
+            else
+            {
+                btnContactAdd.Enabled = true;
             }
 
             TotalCostList.Columns.Add("dgNo", typeof(int));
@@ -2235,7 +2279,7 @@ namespace LoginForm.QuotationModule
             for (int i = 0; i < dgQuotationAddedItems.RowCount - 1; i++)
             {
                 if (dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value != null && Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value.ToString()) < Utils.getCurrentUser().MinMarge) { MessageBox.Show("Please Check Margin of Products "); return false; }
-                if (txtTotalMarge.Text == null || txtTotalMarge.Text == "") { txtTotalMarge.Text = "0"; }
+                if (txtTotalMargin.Text == null || txtTotalMargin.Text == "") { txtTotalMargin.Text = "0"; }
                 if (Utils.getCurrentUser().MinMarge > decimal.Parse(txtTotalMargin.Text))
                 {
                     MessageBox.Show("You are not able to give this Total Margin. Please check the Total Margin");
@@ -3885,6 +3929,7 @@ namespace LoginForm.QuotationModule
                 {
                     cbWorkers.SelectedItem = cbWorkers.FindStringExact(customer.CustomerWorker.cw_name);
                 }
+                btnContactAdd.Enabled = true;
             }
             else if (customerList.Count != 1)
             {
@@ -3903,6 +3948,7 @@ namespace LoginForm.QuotationModule
                 }
                 this.Enabled = true;
                 fillCustomer();
+                btnContactAdd.Enabled = true;
             }
             dgQuotationAddedItems.Focus();
             dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index];

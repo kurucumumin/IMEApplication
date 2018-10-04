@@ -35,7 +35,9 @@
             this.CustomerSearchGrid = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.CustomerSearchGrid)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -58,6 +60,8 @@
             // 
             // CustomerCode
             // 
+            this.CustomerCode.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.CustomerCode.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.CustomerCode.Location = new System.Drawing.Point(114, 25);
             this.CustomerCode.Name = "CustomerCode";
             this.CustomerCode.Size = new System.Drawing.Size(94, 20);
@@ -66,6 +70,8 @@
             // 
             // CustomerName
             // 
+            this.CustomerName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.CustomerName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.CustomerName.Location = new System.Drawing.Point(114, 56);
             this.CustomerName.Name = "CustomerName";
             this.CustomerName.Size = new System.Drawing.Size(219, 20);
@@ -78,12 +84,13 @@
             this.CustomerSearchGrid.AllowUserToDeleteRows = false;
             this.CustomerSearchGrid.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.CustomerSearchGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.CustomerSearchGrid.Location = new System.Drawing.Point(15, 107);
+            this.CustomerSearchGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CustomerSearchGrid.Location = new System.Drawing.Point(3, 16);
             this.CustomerSearchGrid.MultiSelect = false;
             this.CustomerSearchGrid.Name = "CustomerSearchGrid";
             this.CustomerSearchGrid.ReadOnly = true;
             this.CustomerSearchGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.CustomerSearchGrid.Size = new System.Drawing.Size(526, 206);
+            this.CustomerSearchGrid.Size = new System.Drawing.Size(1286, 394);
             this.CustomerSearchGrid.TabIndex = 1;
             this.CustomerSearchGrid.DoubleClick += new System.EventHandler(this.CustomerSearchGrid_DoubleClick);
             this.CustomerSearchGrid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CustomerSearchGrid_KeyDown);
@@ -91,7 +98,7 @@
             // button1
             // 
             this.button1.Image = global::LoginForm.Properties.Resources.icons8_Plus_32;
-            this.button1.Location = new System.Drawing.Point(467, 25);
+            this.button1.Location = new System.Drawing.Point(1229, 28);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(52, 52);
             this.button1.TabIndex = 4;
@@ -101,28 +108,42 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(443, 83);
+            this.label3.Location = new System.Drawing.Point(1205, 86);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(98, 13);
             this.label3.TabIndex = 5;
             this.label3.Text = "Add New Customer";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.CustomerSearchGrid);
+            this.groupBox1.Location = new System.Drawing.Point(15, 98);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(1292, 413);
+            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabStop = false;
             // 
             // FormQuaotationCustomerSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
-            this.ClientSize = new System.Drawing.Size(553, 325);
+            this.ClientSize = new System.Drawing.Size(1348, 523);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.CustomerSearchGrid);
             this.Controls.Add(this.CustomerName);
             this.Controls.Add(this.CustomerCode);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.MaximumSize = new System.Drawing.Size(1441, 562);
+            this.MinimumSize = new System.Drawing.Size(1286, 562);
             this.Name = "FormQuaotationCustomerSearch";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Customer Search";
+            this.Load += new System.EventHandler(this.FormQuaotationCustomerSearch_Load);
             ((System.ComponentModel.ISupportInitialize)(this.CustomerSearchGrid)).EndInit();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -137,5 +158,6 @@
         private System.Windows.Forms.DataGridView CustomerSearchGrid;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

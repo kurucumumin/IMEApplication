@@ -36,9 +36,14 @@ namespace LoginForm.QuotationModule
         private void btnNewQuotation_Click(object sender, EventArgs e)
         {
             var a = dtpFromDate.Value;
-            FormQuotationAdd quotationForm = new FormQuotationAdd(this);
-            Utils.LogKayit("Quotation", "Quotation new screen has been entered");
-            quotationForm.Show();
+            FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch();
+            Utils.LogKayit("Quotation", "Customer list new screen has been entered");
+            form.Show();
+
+
+           // FormQuotationAdd quotationForm = new FormQuotationAdd(this);
+            //Utils.LogKayit("Quotation", "Quotation new screen has been entered");
+            //quotationForm.Show();
         }
 
         private void btnRefreshList_Click(object sender, EventArgs e)
