@@ -91,6 +91,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dtpToDate = new System.Windows.Forms.DateTimePicker();
             this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
+            this.cREATESALEORDERToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgQuotation)).BeginInit();
             this.gridRightClick.SuspendLayout();
@@ -301,9 +302,10 @@
             this.dISCONTINUEDUSERToolStripMenuItem,
             this.cOPYQUOTATIONToolStripMenuItem,
             this.mODIFYQUOTATIONToolStripMenuItem,
-            this.uPDATEQUOTATIONToolStripMenuItem});
+            this.uPDATEQUOTATIONToolStripMenuItem,
+            this.cREATESALEORDERToolStripMenuItem});
             this.gridRightClick.Name = "gridRightClick";
-            this.gridRightClick.Size = new System.Drawing.Size(195, 180);
+            this.gridRightClick.Size = new System.Drawing.Size(195, 224);
             // 
             // dELETEQUOTATIONToolStripMenuItem
             // 
@@ -732,6 +734,13 @@
             this.dtpFromDate.Size = new System.Drawing.Size(119, 21);
             this.dtpFromDate.TabIndex = 19;
             // 
+            // cREATESALEORDERToolStripMenuItem
+            // 
+            this.cREATESALEORDERToolStripMenuItem.Name = "cREATESALEORDERToolStripMenuItem";
+            this.cREATESALEORDERToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.cREATESALEORDERToolStripMenuItem.Text = "CREATE SALE ORDER";
+            this.cREATESALEORDERToolStripMenuItem.Click += new System.EventHandler(this.cREATESALEORDERToolStripMenuItem_Click);
+            // 
             // FormQuotationMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -825,5 +834,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Date2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Rep2;
         private System.Windows.Forms.DataGridViewTextBoxColumn SaleOrderID;
+        private System.Windows.Forms.ToolStripMenuItem cREATESALEORDERToolStripMenuItem;
     }
 }

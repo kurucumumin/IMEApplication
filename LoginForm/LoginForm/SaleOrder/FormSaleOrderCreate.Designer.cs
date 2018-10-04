@@ -67,7 +67,6 @@
             this.approvedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.voucherNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.representativeIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.representativeID2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.exchangeRateIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.deliveryDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grossTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -81,7 +80,6 @@
             this.paymentTermDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quotationDetailsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.workerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.worker1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quotationBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
@@ -343,7 +341,6 @@
             this.approvedDataGridViewTextBoxColumn,
             this.voucherNoDataGridViewTextBoxColumn,
             this.representativeIDDataGridViewTextBoxColumn,
-            this.representativeID2DataGridViewTextBoxColumn,
             this.exchangeRateIDDataGridViewTextBoxColumn,
             this.deliveryDateDataGridViewTextBoxColumn,
             this.grossTotalDataGridViewTextBoxColumn,
@@ -356,8 +353,7 @@
             this.dataGridViewTextBoxColumn24,
             this.paymentTermDataGridViewTextBoxColumn,
             this.quotationDetailsDataGridViewTextBoxColumn,
-            this.workerDataGridViewTextBoxColumn,
-            this.worker1DataGridViewTextBoxColumn});
+            this.workerDataGridViewTextBoxColumn});
             this.dgQuotations.DataSource = this.quotationBindingSource;
             this.dgQuotations.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgQuotations.Location = new System.Drawing.Point(3, 19);
@@ -544,13 +540,6 @@
             this.representativeIDDataGridViewTextBoxColumn.Name = "representativeIDDataGridViewTextBoxColumn";
             this.representativeIDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // representativeID2DataGridViewTextBoxColumn
-            // 
-            this.representativeID2DataGridViewTextBoxColumn.DataPropertyName = "RepresentativeID2";
-            this.representativeID2DataGridViewTextBoxColumn.HeaderText = "RepresentativeID2";
-            this.representativeID2DataGridViewTextBoxColumn.Name = "representativeID2DataGridViewTextBoxColumn";
-            this.representativeID2DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // exchangeRateIDDataGridViewTextBoxColumn
             // 
             this.exchangeRateIDDataGridViewTextBoxColumn.DataPropertyName = "ExchangeRateID";
@@ -641,13 +630,6 @@
             this.workerDataGridViewTextBoxColumn.HeaderText = "Worker";
             this.workerDataGridViewTextBoxColumn.Name = "workerDataGridViewTextBoxColumn";
             this.workerDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // worker1DataGridViewTextBoxColumn
-            // 
-            this.worker1DataGridViewTextBoxColumn.DataPropertyName = "Worker1";
-            this.worker1DataGridViewTextBoxColumn.HeaderText = "Worker1";
-            this.worker1DataGridViewTextBoxColumn.Name = "worker1DataGridViewTextBoxColumn";
-            this.worker1DataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // quotationBindingSource
             // 
