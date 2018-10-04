@@ -854,7 +854,7 @@ namespace LoginForm
             int AddedCounter = 0;
             if (result1 == DialogResult.OK) // Test result.
             {
-                returnObject[(int)LoaderResultColumns.FileName] = openFileDialog1.FileName;
+                //returnObject[(int)LoaderResultColumns.FileName] = openFileDialog1.FileName;
                 //try
                 //{
                 string[] lines = System.IO.File.ReadAllLines(openFileDialog1.FileName);
@@ -1217,20 +1217,20 @@ namespace LoginForm
                         }
                     }
                     MessageBox.Show("Upload Completed");
-                    returnObject[(int)LoaderResultColumns.Result] = "1";
+                    //returnObject[(int)LoaderResultColumns.Result] = "1";
                     return returnObject;
                 }
                 else
                 {
                     MessageBox.Show("Please Choose Correct File");
-                    returnObject[(int)LoaderResultColumns.Result] = "0";
+                    //returnObject[(int)LoaderResultColumns.Result] = "0";
                     return returnObject;
                 }
                 //}
                 //catch (Exception ex) { MessageBox.Show(ex.Message); MessageBox.Show(a.ToString()); return 0; }
                 #endregion
             }
-            returnObject[(int)LoaderResultColumns.Result] = "0";
+            //returnObject[(int)LoaderResultColumns.Result] = "0";
             return returnObject;
         }
 
@@ -3721,39 +3721,42 @@ namespace LoginForm
                     //if (((object[,])myvalues)[i, 28] != null) { q.DiscountedPrice1 = Decimal.Parse(((object[,])myvalues)[i, 28].ToString()); }
                     //if (((object[,])myvalues)[i, 29] != null) { q.DiscountedPrice2 = Decimal.Parse(((object[,])myvalues)[i, 29].ToString()); }
 
-                    IME.QuotationADD(
-                        q.CustomerID,
-                        q.NoteForUsID,
-                        q.NoteForCustomerID,
-                        q.ForFinancelIsTrue,
-                        q.ShippingMethodID,
-                        q.IsItemCost,
-                        q.IsWeightCost,
-                        q.IsCustomsDuties,
-                        q.DiscOnSubTotal2,
-                        q.ExtraCharges,
-                        q.SubTotal,
-                        q.StartDate,
-                        q.ValidationDay,
-                        q.PaymentID,
-                        q.Curr,
-                        q.Factor,
-                        q.IsVatValue,
-                        q.VatValue,
-                        q.CurrName,
-                        q.QuotationNo,
-                        q.RFQNo,
-                        q.CurrType,
-                        q.QuotationMainContact,
-                        q.approved,
-                        q.SaleOrderID,
-                        q.voucherNo,
-                        q.RepresentativeID,
-                        q.RepresentativeID2,
-                        q.ExchangeRateID,
-                        q.DeliveryDate,
-                        q.GrossTotal
-                        );
+                
+
+
+                    //IME.QuotationADD(
+                    //    q.CustomerID,
+                    //    q.NoteForUsID,
+                    //    q.NoteForCustomerID,
+                    //    q.ForFinancelIsTrue,
+                    //    q.ShippingMethodID,
+                    //    q.IsItemCost,
+                    //    q.IsWeightCost,
+                    //    q.IsCustomsDuties,
+                    //    q.DiscOnSubTotal2,
+                    //    q.ExtraCharges,
+                    //    q.SubTotal,
+                    //    q.StartDate,
+                    //    q.ValidationDay,
+                    //    q.PaymentID,
+                    //    q.Curr,
+                    //    q.Factor,
+                    //    q.IsVatValue,
+                    //    q.VatValue,
+                    //    q.CurrName,
+                    //    q.QuotationNo,
+                    //    q.RFQNo,
+                    //    q.CurrType,
+                    //    q.QuotationMainContact,
+                    //    q.approved,
+                    //    q.SaleOrderID,
+                    //    q.voucherNo,
+                    //    q.RepresentativeID,
+                    //    q.RepresentativeID2,
+                    //    q.ExchangeRateID,
+                    //    q.DeliveryDate,
+                    //    q.GrossTotal
+                    //    );
                 }
 
             }
@@ -4053,10 +4056,10 @@ namespace LoginForm
 
         }
     }
-    enum LoaderResultColumns
-    {
-        FileName = 0,
-        Result = 1
-    }
+    //enum LoaderResultColumns
+    //{
+    //    FileName = 0,
+    //    Result = 1
+    //}
 
 }

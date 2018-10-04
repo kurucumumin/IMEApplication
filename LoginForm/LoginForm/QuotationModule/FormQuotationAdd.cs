@@ -2265,7 +2265,7 @@ namespace LoginForm.QuotationModule
                     //q.CurrType = cbCurrType.Text;
                     q.Curr = CurrValue;
                     try { q.RepresentativeID = (cbRep.SelectedItem as Worker).WorkerID; ; } catch { }
-                    try { q.RepresentativeID2 = (cbWorkers.SelectedItem as Worker).WorkerID; ; } catch { }
+                    //try { q.RepresentativeID2 = (cbWorkers.SelectedItem as Worker).WorkerID; ; } catch { }
                     q.CustomerID = CustomerCode.Text;
                     q.ShippingMethodID = cbSMethod.SelectedIndex;
                     q.QuotationMainContact = (int)cbWorkers.SelectedValue;
@@ -2432,7 +2432,7 @@ namespace LoginForm.QuotationModule
                 //q.CurrType = cbCurrType.Text;
                 q.Curr = CurrValue;
                 try { q.RepresentativeID = (cbRep.SelectedItem as Worker).WorkerID; ; } catch { }
-                try { q.RepresentativeID2 = (cbWorkers.SelectedItem as Worker).WorkerID; ; } catch { }
+                //try { q.RepresentativeID2 = (cbWorkers.SelectedItem as Worker).WorkerID; ; } catch { }
                 q.CustomerID = CustomerCode.Text;
                 q.ShippingMethodID = cbSMethod.SelectedIndex;
                 q.QuotationMainContact = (int)cbWorkers.SelectedValue;
@@ -2493,7 +2493,7 @@ namespace LoginForm.QuotationModule
                 try { q.Factor = Decimal.Parse(cbFactor.Text); } catch { }
                 try { q.ValidationDay = Int32.Parse(txtValidation.Text); } catch { }
                 try { q.RepresentativeID = (cbRep.SelectedItem as Worker).WorkerID; ; } catch { }
-                try { q.RepresentativeID2 = (cbWorkers.SelectedItem as Worker).WorkerID; ; } catch { }
+                //try { q.RepresentativeID2 = (cbWorkers.SelectedItem as Worker).WorkerID; ; } catch { }
                 q.PaymentID = (cbPayment.SelectedItem as PaymentTerm).ID;
                 q.CurrName = (cbCurrency.SelectedItem as Currency).currencyName;
                 //q.CurrType = cbCurrType.Text;
@@ -2577,7 +2577,7 @@ namespace LoginForm.QuotationModule
             try { q.Factor = Decimal.Parse(cbFactor.Text); } catch { }
             try { q.ValidationDay = Int32.Parse(txtValidation.Text); } catch { }
             try { q.RepresentativeID = (cbRep.SelectedItem as Worker).WorkerID; ; } catch { }
-            try { q.RepresentativeID2 = (cbWorkers.SelectedItem as Worker).WorkerID; ; } catch { }
+            //try { q.RepresentativeID2 = (cbWorkers.SelectedItem as Worker).WorkerID; ; } catch { }
             q.PaymentID = (cbPayment.SelectedItem as PaymentTerm).ID;
             q.CurrName = (cbCurrency.SelectedItem as Currency).currencyName;
             q.Curr = CurrValue;
