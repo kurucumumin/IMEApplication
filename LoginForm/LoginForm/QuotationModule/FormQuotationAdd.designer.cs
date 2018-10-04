@@ -1629,7 +1629,6 @@
             // 
             // cbWorkers
             // 
-            this.cbWorkers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbWorkers.FormattingEnabled = true;
             this.cbWorkers.Location = new System.Drawing.Point(186, 34);
             this.cbWorkers.Name = "cbWorkers";

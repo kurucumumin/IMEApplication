@@ -47,7 +47,6 @@ namespace LoginForm.DataSet
         public Nullable<decimal> SaleOrderID { get; set; }
         public string voucherNo { get; set; }
         public Nullable<int> RepresentativeID { get; set; }
-        public Nullable<int> RepresentativeID2 { get; set; }
         public Nullable<int> ExchangeRateID { get; set; }
         public Nullable<System.DateTime> DeliveryDate { get; set; }
         public Nullable<decimal> GrossTotal { get; set; }
@@ -73,7 +72,6 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<QuotationDetail> QuotationDetails { get; set; }
         public virtual Worker Worker { get; set; }
-        public virtual Worker Worker1 { get; set; }
         public virtual SaleOrder SaleOrder { get; set; }
     }
 }
