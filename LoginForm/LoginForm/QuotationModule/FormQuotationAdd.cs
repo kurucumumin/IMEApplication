@@ -2202,7 +2202,7 @@ namespace LoginForm.QuotationModule
             for (int i = 0; i < dgQuotationAddedItems.RowCount - 1; i++)
             {
                 if (dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value != null && Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value.ToString()) < Utils.getCurrentUser().MinMarge) { MessageBox.Show("Please Check Margin of Products "); return false; }
-                if (txtTotalMarge.Text == null || txtTotalMarge.Text == "") { txtTotalMarge.Text = "0"; }
+                if (txtTotalMargin.Text == null || txtTotalMargin.Text == "") { txtTotalMargin.Text = "0"; }
                 if (Utils.getCurrentUser().MinMarge > decimal.Parse(txtTotalMargin.Text))
                 {
                     MessageBox.Show("You are not able to give this Total Margin. Please check the Total Margin");
