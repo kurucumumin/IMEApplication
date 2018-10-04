@@ -808,6 +808,10 @@ namespace LoginForm.QuotationModule
             {
                 btnContactAdd.Enabled = false;
             }
+            else
+            {
+                btnContactAdd.Enabled = true;
+            }
 
             TotalCostList.Columns.Add("dgNo", typeof(int));
             TotalCostList.Columns.Add("cost", typeof(decimal));
@@ -3835,6 +3839,7 @@ namespace LoginForm.QuotationModule
                     cbWorkers.SelectedValue = customer.CustomerWorker.ID;
                     cbWorkers.SelectedItem = cbWorkers.FindStringExact(customer.CustomerWorker.cw_name);
                 }
+                btnContactAdd.Enabled = true;
             }
             else if (customerList.Count != 1)
             {
@@ -3853,6 +3858,7 @@ namespace LoginForm.QuotationModule
                 }
                 this.Enabled = true;
                 fillCustomer();
+                btnContactAdd.Enabled = true;
             }
             dgQuotationAddedItems.Focus();
             dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index];
