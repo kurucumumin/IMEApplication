@@ -19,9 +19,12 @@ namespace LoginForm.Services
         private List<string> _ColumnNames;
         private List<string> _Lines;
         private OpenFileDialog _FileDialog;
+        private Stopwatch _Timer;
 
         public SuperDiskHelper()
         {
+            _Timer = new Stopwatch();
+
             _FileDialog = new OpenFileDialog();
             _FileDialog.Filter = "txt files (*.txt)|*.txt";
         }
@@ -38,12 +41,16 @@ namespace LoginForm.Services
                 //Arada kalan satır kod seçili olan dosyanın kontroünden sonra yapılmalı
                 _ColumnNames = _Lines[0].Split('|').ToList();
                 _Lines.RemoveAt(0);
+
+                _Timer.Start();
+
                 ReturnMessage ColumnError = SuperDiskColumnCheck(_ColumnNames);
 
 
                 //Eğer SuperDisk dosyasında sütun isimlerinde hata varsa
                 if (ColumnError.MessageList.Count() > 0)
                 {
+                    _Timer.Stop();
                     StringBuilder errorMessage = new StringBuilder();
                     errorMessage.Append("Error(s) exist in column names, Check SuperDisk file again").AppendLine().Append("Mis-typed columns are:").AppendLine().AppendLine();
 
@@ -62,13 +69,14 @@ namespace LoginForm.Services
                 else /*if(r.ErrorList.Count() == 0)*/
                 {
                     ReturnMessage LineError = CheckLinesForErrors(_Lines);
+                    _Timer.Stop();
                     //Satırlarda hata varsa
                     int maxErrorAmount = 15; /*Maksimum 20 hata gösteriliyor MessageBox'ta*/
                     if (LineError.MessageList.Count > 0)
                     {
                         //MessageBox'ta göstermek için sınırlı sayıda hatayı içeren yazıyı oluşturur
                         StringBuilder errorMessage = new StringBuilder();
-                        errorMessage.Append("Error(s) exist in item rows, Check SuperDisk file again").AppendLine().AppendLine();
+                        errorMessage.Append("Passed Time: " + _Timer.Elapsed.ToString(@"hh\:mm\:ss") + " sn" + "\n\n" + "Error(s) exist in item rows, Check SuperDisk file again").AppendLine().AppendLine();
 
                         for (int i = 0; i< LineError.MessageList.Count; i++)
                         {
@@ -738,7 +746,8 @@ namespace LoginForm.Services
                 }
 
                 ImeSqlTransaction.Commit();
-                MessageBox.Show(newItemCount + " item is added! " + updatedItemCount + " item is updated!", "Success");
+                _Timer.Stop();
+                MessageBox.Show(newItemCount + " item is added! " + updatedItemCount + " item is updated!" + "\n\n" + "Passed Time: " + _Timer.Elapsed.ToString(@"hh\:mm\:ss") + " sn", "Success");
             }
             catch (Exception ex)
             {
