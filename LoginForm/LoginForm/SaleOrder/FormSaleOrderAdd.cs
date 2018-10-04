@@ -465,6 +465,7 @@ namespace LoginForm.QuotationModule
                     row.Cells[dgDesc.Index].Value = item.CustomerDescription;
                     row.Cells[dgCost.Index].Value = item.Cost;
                     row.Cells[dgLandingCost.Index].Value = item.LandingCost;
+                    row.Cells[dgMPN.Index].Value = item.MPN;
                     row.Cells[dgMargin.Index].Value = item.Marge;
                     row.Cells[dgQty.Index].Value = item.Qty;
                     row.Cells[dgSSM.Index].Value = item.SSM;
@@ -647,7 +648,7 @@ namespace LoginForm.QuotationModule
                     row.CreateCells(dgSaleAddedItems);
                     row.Cells[dgNo.Index].Value = (int)item.No;
                     row.Cells[dgProductCode.Index].Value = item.ItemCode;
-                    row.Cells[dgDesc.Index].Value = item.CustomerDescription;
+                    row.Cells[dgDesc.Index].Value = item.ItemDescription;
                     row.Cells[dgCost.Index].Value = item.ItemCost;
                     row.Cells[dgLandingCost.Index].Value = item.LandingCost;
                     row.Cells[dgMargin.Index].Value = item.Margin;
@@ -655,6 +656,7 @@ namespace LoginForm.QuotationModule
                     row.Cells[dgSSM.Index].Value = item.SSM;
                     row.Cells[dgUC.Index].Value = item.UnitContent;
                     row.Cells[dgUPIME.Index].Value = item.UPIME;
+                    row.Cells[dgMPN.Index].Value = item.MPN;
                     row.Cells[dgUCUPCurr.Index].Value = item.UCUPCurr;
                     row.Cells[dgDelivery.Index].Value = item.DeliveryID;
                     row.Cells[dgDisc.Index].Value = item.Discount;
@@ -1292,7 +1294,7 @@ namespace LoginForm.QuotationModule
         {
             #region Quantity
 
-            if (dgSaleAddedItems.Rows[dgSaleAddedItems.RowCount - 1].Cells[dgQty.Index].Value.ToString() != "0")
+            if (dgSaleAddedItems.Rows[dgSaleAddedItems.RowCount - 1].Cells[dgQty.Index].Value != null && dgSaleAddedItems.Rows[dgSaleAddedItems.RowCount - 1].Cells[dgQty.Index].Value.ToString() != "0")
             {
                 //if (LandingCost.Enabled == false) LandingCost.Enabled = true;
                 GetQuotationQuantity(dgSaleAddedItems.CurrentCell.RowIndex);
@@ -2690,6 +2692,11 @@ namespace LoginForm.QuotationModule
                     row.CreateCells(dgSaleAddedItems);
                     row.Cells[dgNo.Index].Value = (int)item.dgNo;
                     row.Cells[dgProductCode.Index].Value = item.ItemCode;
+                    row.Cells[dgDesc.Index].Value = item.CustomerDescription;
+                    row.Cells[dgCost.Index].Value = item.Cost;
+                    row.Cells[dgLandingCost.Index].Value = item.LandingCost;
+                    row.Cells[dgMPN.Index].Value = item.MPN;
+                    row.Cells[dgMargin.Index].Value = item.Marge;
                     row.Cells[dgQty.Index].Value = item.Qty;
                     row.Cells[dgSSM.Index].Value = item.SSM;
                     row.Cells[dgUC.Index].Value = item.UC;
@@ -4828,7 +4835,7 @@ namespace LoginForm.QuotationModule
                     Utils.LogKayit("Sale Order", "Sale Order added");
                 }
 
-                SaleOrder so = IME.SaleOrders.Where(x => x.SaleOrderNo == SaleID).FirstOrDefault();
+                SaleOrder so = IME.SaleOrders.Where(x => x.SaleOrderID == SaleID).FirstOrDefault();
                 so.TotalDiscount = ((so.DiscOnSubtotal * so.SubTotal)/100) + discountAmount;
 
                 IME.SaveChanges();
