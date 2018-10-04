@@ -55,7 +55,7 @@ namespace LoginForm
             datetimeEnd.MaxDate = DateTime.Today.Date;
             datetimeEnd.Value = DateTime.Today.Date;
             datetimeStart.Value = DateTime.Today.AddMonths(-3);
-            BringSalesList(DateTime.Now, DateTime.Now.AddDays(-1));
+            BringSalesList(DateTime.Now, datetimeStart.Value);
         }
 
         private void BringSalesList()
