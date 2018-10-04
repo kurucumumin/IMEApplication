@@ -2268,7 +2268,12 @@ namespace LoginForm.QuotationModule
                     //try { q.RepresentativeID2 = (cbWorkers.SelectedItem as Worker).WorkerID; ; } catch { }
                     q.CustomerID = CustomerCode.Text;
                     q.ShippingMethodID = cbSMethod.SelectedIndex;
-                    q.QuotationMainContact = (int)cbWorkers.SelectedValue;
+                    q.MainContactName = cbWorkers.Text;
+
+                    if (cbWorkers.SelectedValue != null)
+                    {
+                        q.QuotationMainContact = (int)cbWorkers.SelectedValue;
+                    }
                     q.ExchangeRateID = curr.exchangeRateID;
                     int Note2 = 0;
                     int Note1 = 0;
@@ -2435,7 +2440,12 @@ namespace LoginForm.QuotationModule
                 //try { q.RepresentativeID2 = (cbWorkers.SelectedItem as Worker).WorkerID; ; } catch { }
                 q.CustomerID = CustomerCode.Text;
                 q.ShippingMethodID = cbSMethod.SelectedIndex;
-                q.QuotationMainContact = (int)cbWorkers.SelectedValue;
+                q.MainContactName = cbWorkers.Text;
+
+                if (cbWorkers.SelectedValue != null)
+                {
+                    q.QuotationMainContact = (int)cbWorkers.SelectedValue;
+                }
                 q.ExchangeRateID = curr.exchangeRateID;
                 int Note2 = 0;
                 int Note1 = 0;
@@ -2465,7 +2475,6 @@ namespace LoginForm.QuotationModule
             }
             else
             {
-                //New Quotation
                 #region  New Quotation
                 DataSet.Quotation q = new DataSet.Quotation();
                 q.status = QuoStatusActive;
@@ -2500,7 +2509,13 @@ namespace LoginForm.QuotationModule
                 q.Curr = CurrValue;
                 q.CustomerID = CustomerCode.Text;
                 q.ShippingMethodID = cbSMethod.SelectedIndex;
-                q.QuotationMainContact = (int)cbWorkers.SelectedValue;
+                q.MainContactName = cbWorkers.Text;
+
+                if (cbWorkers.SelectedValue != null)
+                {
+                    q.QuotationMainContact = (int)cbWorkers.SelectedValue;
+                }
+                
                 int Note2 = 0;
                 int Note1 = 0;
                 if (txtNoteForUs.Text != null || txtNoteForUs.Text != "")
@@ -2583,7 +2598,12 @@ namespace LoginForm.QuotationModule
             q.Curr = CurrValue;
             q.CustomerID = CustomerCode.Text;
             q.ShippingMethodID = cbSMethod.SelectedIndex;
-            q.QuotationMainContact = (int)cbWorkers.SelectedValue;
+            q.MainContactName = cbWorkers.Text;
+
+            if (cbWorkers.SelectedValue != null)
+            {
+                q.QuotationMainContact = (int)cbWorkers.SelectedValue;
+            }
             int Note2 = 0;
             int Note1 = 0;
             if (txtNoteForUs.Text != null || txtNoteForUs.Text != "")

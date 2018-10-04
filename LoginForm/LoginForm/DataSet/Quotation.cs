@@ -62,9 +62,11 @@ namespace LoginForm.DataSet
         public int idNo { get; set; }
         public int idVersion { get; set; }
         public Nullable<bool> DistributeDiscount { get; set; }
+        public string MainContactName { get; set; }
     
         public virtual Currency Currency { get; set; }
         public virtual Customer Customer { get; set; }
+        public virtual CustomerWorker CustomerWorker { get; set; }
         public virtual ExchangeRate ExchangeRate { get; set; }
         public virtual Note Note { get; set; }
         public virtual Note Note1 { get; set; }
