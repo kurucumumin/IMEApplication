@@ -33,14 +33,21 @@ namespace LoginForm.ItemModule
             #region LoaderPage
             switch (txtReader.LoaderType)
             {
-
                 case "SuperDisk":
-
                     SuperDiskHelper SuperDiskHelper = new SuperDiskHelper();
                     bool NoError = SuperDiskHelper.ErrorCheck();
                     if (NoError)
                     {
-                        SuperDiskHelper.LoadSuperDiskItems();
+                        if (SuperDiskHelper.LoadSuperDiskItems())
+                        {
+                            RsFileHistory h = new RsFileHistory();
+                            h.FileType = txtReader.LoaderType;
+                            h.FileName = SuperDiskHelper.FileName;
+                            h.Date = IME.CurrentDate().FirstOrDefault().Value;
+                            h.UserID = Utils.getCurrentUser().WorkerID;
+                            IME.RsFileHistories.Add(h);
+                            IME.SaveChanges();
+                        }
                     }
 
 

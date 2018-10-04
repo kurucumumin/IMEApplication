@@ -444,12 +444,13 @@ namespace LoginForm.Services
             return error;
         }
         
-        public void LoadSuperDiskItems()
+        public bool LoadSuperDiskItems()
         {
             SqlCommand cmd;
             SqlConnection ImeSqlConn = new Utils().ImeSqlConnection();
             SqlTransaction ImeSqlTransaction = ImeSqlConn.BeginTransaction();
-            
+            bool successfull = false;
+
             int updatedItemCount = 0;
             int newItemCount = 0;
             try
@@ -748,16 +749,19 @@ namespace LoginForm.Services
                 ImeSqlTransaction.Commit();
                 _Timer.Stop();
                 MessageBox.Show(newItemCount + " item is added! " + updatedItemCount + " item is updated!" + "\n\n" + "Passed Time: " + _Timer.Elapsed.ToString(@"hh\:mm\:ss") + " sn", "Success");
+                successfull = true;
             }
             catch (Exception ex)
             {
                 ImeSqlTransaction.Rollback();
                 MessageBox.Show("An error occured while loading SuperDisk! Try again later\n\n" + ex.ToString(),"Error");
+                successfull = false;
             }
             finally
             {
                 ImeSqlConn.Close();
             }
+            return successfull;
         }
     }
 }
