@@ -20,6 +20,7 @@ namespace LoginForm.QuotationModule
         public XmlCustomer xmlCustomer;
         bool fromXmlCustomer = false;
         SqlHelper sqlHelper = new SqlHelper();
+        FormQuotationAdd parent;
 
         public FormQuaotationCustomerSearch()
         {
@@ -78,6 +79,23 @@ namespace LoginForm.QuotationModule
           CustomerSearchGrid, new object[] { true });
 
             CustomerSearchGrid.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
+            this.customer = customer;
+            CustomerSearch();
+        }
+
+        public FormQuaotationCustomerSearch(Customer customer, FormQuotationAdd parent)
+        {
+            this.parent = parent;
+            InitializeComponent();
+
+            button2.Visible = false;
+            label4.Visible = false;
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
+          System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
+          CustomerSearchGrid, new object[] { true });
+
+            CustomerSearchGrid.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor;
             this.customer = customer;
             CustomerSearch();
         }
@@ -194,18 +212,35 @@ namespace LoginForm.QuotationModule
 
                 if (cID != null && cID != "")
                 {
-                    customer = IME.Customers.Where(a => a.ID == cID).FirstOrDefault();
-                    customerName = customer.c_name;
-                    customerID = customer.ID;
-                    //QuotationUtils.customerID = CustomerCode.Text;
-                    //QuotationUtils.customername = CustomerName.Text;
+                    if (parent == null)
+                    {
+                        customer = IME.Customers.Where(a => a.ID == cID).FirstOrDefault();
+                        customerName = customer.c_name;
+                        customerID = customer.ID;
+                        //QuotationUtils.customerID = CustomerCode.Text;
+                        //QuotationUtils.customername = CustomerName.Text;
 
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
 
-                    FormQuotationAdd quotationForm = new FormQuotationAdd(/*this, */customerName, customerID);
-                    Utils.LogKayit("Quotation", "Quotation new screen has been entered");
-                    quotationForm.Show();
+                        FormQuotationAdd quotationForm = new FormQuotationAdd(this, customerName, customerID);
+                        Utils.LogKayit("Quotation", "Quotation new screen has been entered");
+                        quotationForm.Show();
+                    }
+                    else
+                    {
+                        customer = IME.Customers.Where(a => a.ID == cID).FirstOrDefault();
+                        customerName = customer.c_name;
+                        customerID = customer.ID;
+                        //QuotationUtils.customerID = CustomerCode.Text;
+                        //QuotationUtils.customername = CustomerName.Text;
+
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+
+                        parent.FillCustomerFromSearch(customerName,customerID);
+                        this.Close();
+                    }
                 }
                 else
                 {
@@ -517,5 +552,50 @@ namespace LoginForm.QuotationModule
                 CustomerSearchGrid.DataSource = c;
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            FormQuotationAdd quotationForm = new FormQuotationAdd(this, "", "");
+            Utils.LogKayit("Quotation", "Quotation new screen has been entered");
+            quotationForm.Show();
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            if (button2.Visible != false)
+            {
+
+                DialogResult close = new DialogResult();
+                close = MessageBox.Show("Are you sure you want to close?", "Closing", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                if (close == DialogResult.OK)
+                {
+                    e.Cancel = false;
+                }
+                else if (close == DialogResult.Cancel)
+                {
+                    e.Cancel = true;
+                }
+
+
+                //base.OnFormClosing(e);
+
+                //if (e.CloseReason == CloseReason.WindowsShutDown) return;
+                //this.Close();
+                //Confirm user wants to close
+                //switch (MessageBox.Show(this, "Are you sure you want to close?", "Closing", MessageBoxButtons.YesNo))
+                //{
+                //    case DialogResult.No:
+                //        e.Cancel = true;
+                //        break;
+                //    case DialogResult.Yes:
+                //        //e.Cancel = true;
+                //        this.Close();
+                //        e.Cancel = false;
+                //        break;
+                //    default:
+                //        break;
+                //}
+            }
+       }
     }
 }

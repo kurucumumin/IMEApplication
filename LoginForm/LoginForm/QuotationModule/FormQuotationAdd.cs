@@ -21,6 +21,7 @@ namespace LoginForm.QuotationModule
         SqlHelper sqlHelper = new SqlHelper();
         string manuelSelection = string.Empty;
         private static string QuoStatusActive = "Pending";
+        FormQuaotationCustomerSearch parentCustomer;
         FormQuotationMain parent;
         List<int> enabledColumns = new List<int>(new int[] { 0, 7, 14, 21, 28, 35 });
         #region Definitions
@@ -49,7 +50,7 @@ namespace LoginForm.QuotationModule
         string cID = "";
         #endregion
 
-        public FormQuotationAdd(/*FormQuotationMain parent, */string customerName, string customerId)
+        public FormQuotationAdd(FormQuaotationCustomerSearch parent, string customerName, string customerId)
         {
             InitializeComponent();
             dgQuotationAddedItems.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
@@ -64,47 +65,89 @@ namespace LoginForm.QuotationModule
             cID = customerId;
             dtpDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
             dtpDate.Enabled = false;
-            //this.parent = parent;
+            this.parentCustomer = parent;
             txtQuotationNo.PasswordChar = ' ';
             btnCreateRev.Enabled = false;
             label68.Enabled = false;
             txtTotalMarge.Visible = false;
 
-            #region customer
-            txtCustomerName.Text = cName;
-            CustomerCode.Text = cID;
-
-            var customerList = IME.Customers.Where(a => a.c_name.Contains(txtCustomerName.Text)).ToList();
-
-            this.Enabled = true;
-            customer = customerList.FirstOrDefault();
-            cbWorkers.DataSource = customer.CustomerWorkers.ToList();
-            cbWorkers.DisplayMember = "cw_name";
-            cbWorkers.ValueMember = "ID";
-            if (customer.paymentmethodID != null)
+            if (customer != null && customerName != null && customerName != "")
             {
-                cbPayment.SelectedIndex = cbPayment.FindStringExact(customer.PaymentTerm.term_name);
-            }
-            try { txtContactNote.Text = customer.CustomerWorker.Note.Note_name; } catch { }
-            try { txtCustomerNote.Text = customer.Note.Note_name; } catch { }
-            try { txtAccountingNote.Text = IME.Notes.Where(a => a.ID == customer.customerAccountantNoteID).FirstOrDefault().Note_name; } catch { }
-            if (customer.Worker != null) cbRep.SelectedValue = customer.Worker.WorkerID;
-            if (this.Text != "Edit Quotation")
-            {
-                var CustomerCurr = IME.Currencies.Where(a => a.currencyName == customer.CurrNameQuo).FirstOrDefault();
-                if (CustomerCurr != null) cbCurrency.SelectedValue = CustomerCurr.currencyID;
-            }
-            if (customer.CustomerWorker != null)
-            {
-                cbWorkers.SelectedValue = customer.CustomerWorker.ID;
-                cbWorkers.SelectedItem = cbWorkers.FindStringExact(customer.CustomerWorker.cw_name);
-            }
-            btnContactAdd.Enabled = true;
+                #region customer
+                txtCustomerName.Text = cName;
+                CustomerCode.Text = cID;
 
-            dgQuotationAddedItems.Focus();
-            //dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index];
-            #endregion
+                var customerList = IME.Customers.Where(a => a.c_name.Contains(txtCustomerName.Text)).ToList();
+
+                this.Enabled = true;
+                customer = customerList.FirstOrDefault();
+                cbWorkers.Items.AddRange(customer.CustomerWorkers.ToArray());
+                cbWorkers.DisplayMember = "cw_name";
+                cbWorkers.ValueMember = "ID";
+                if (customer.paymentmethodID != null)
+                {
+                    cbPayment.SelectedIndex = cbPayment.FindStringExact(customer.PaymentTerm.term_name);
+                }
+                try { txtContactNote.Text = customer.CustomerWorker.Note.Note_name; } catch { }
+                try { txtCustomerNote.Text = customer.Note.Note_name; } catch { }
+                try { txtAccountingNote.Text = IME.Notes.Where(a => a.ID == customer.customerAccountantNoteID).FirstOrDefault().Note_name; } catch { }
+                if (customer.Worker != null) cbRep.SelectedValue = customer.Worker.WorkerID;
+                if (this.Text != "Edit Quotation")
+                {
+                    var CustomerCurr = IME.Currencies.Where(a => a.currencyName == customer.CurrNameQuo).FirstOrDefault();
+                    if (CustomerCurr != null) cbCurrency.SelectedValue = CustomerCurr.currencyID;
+                }
+                if (customer.CustomerWorker != null)
+                {
+                    cbWorkers.SelectedValue = customer.CustomerWorker.ID;
+                    cbWorkers.SelectedItem = cbWorkers.FindStringExact(customer.CustomerWorker.cw_name);
+                }
+                btnContactAdd.Enabled = true;
+                #endregion
+            }
         }
+
+        public void FillCustomerFromSearch(string customerName, string customerId)
+        {
+            cName = customerName;
+            cID = customerId;
+
+            if (customer != null && customerName != null && customerName != "")
+            {
+                #region customer
+                txtCustomerName.Text = cName;
+                CustomerCode.Text = cID;
+
+                var customerList = IME.Customers.Where(a => a.c_name.Contains(txtCustomerName.Text)).ToList();
+
+                this.Enabled = true;
+                customer = customerList.FirstOrDefault();
+                cbWorkers.Items.AddRange(customer.CustomerWorkers.ToArray());
+                cbWorkers.DisplayMember = "cw_name";
+                cbWorkers.ValueMember = "ID";
+                if (customer.paymentmethodID != null)
+                {
+                    cbPayment.SelectedIndex = cbPayment.FindStringExact(customer.PaymentTerm.term_name);
+                }
+                try { txtContactNote.Text = customer.CustomerWorker.Note.Note_name; } catch { }
+                try { txtCustomerNote.Text = customer.Note.Note_name; } catch { }
+                try { txtAccountingNote.Text = IME.Notes.Where(a => a.ID == customer.customerAccountantNoteID).FirstOrDefault().Note_name; } catch { }
+                if (customer.Worker != null) cbRep.SelectedValue = customer.Worker.WorkerID;
+                if (this.Text != "Edit Quotation")
+                {
+                    var CustomerCurr = IME.Currencies.Where(a => a.currencyName == customer.CurrNameQuo).FirstOrDefault();
+                    if (CustomerCurr != null) cbCurrency.SelectedValue = CustomerCurr.currencyID;
+                }
+                if (customer.CustomerWorker != null)
+                {
+                    cbWorkers.SelectedValue = customer.CustomerWorker.ID;
+                    cbWorkers.SelectedItem = cbWorkers.FindStringExact(customer.CustomerWorker.cw_name);
+                }
+                btnContactAdd.Enabled = true;
+                #endregion
+            }
+        }
+
         public FormQuotationAdd()
         {
             InitializeComponent();
@@ -925,32 +968,44 @@ namespace LoginForm.QuotationModule
             }
             GetCurrency(dtpDate.Value);
             GetAutorities();
-            #region AutoCompleteCustomSource 
-            CustomerCode.Focus();
-            AutoCompleteStringCollection auto = new AutoCompleteStringCollection();
-            SqlConnection conn = new Utils().ImeSqlConnection();
-            try
-            {
-                foreach (DataRow row in sqlHelper.GetQueryResult("Select c_name from[Customer]").Rows)
-                {
-                    auto.Add(row[0].ToString());
-                }
+            
+            //#region AutoCompleteCustomSource 
+            //CustomerCode.Focus();
+            //AutoCompleteStringCollection auto = new AutoCompleteStringCollection();
+            //SqlConnection conn = new Utils().ImeSqlConnection();
+            //try
+            //{
+            //    foreach (DataRow row in sqlHelper.GetQueryResult("Select c_name from[Customer]").Rows)
+            //    {
+            //        auto.Add(row[0].ToString());
+            //    }
 
-                CustomerCode.AutoCompleteSource = AutoCompleteSource.CustomSource;
-                CustomerCode.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-                CustomerCode.AutoCompleteCustomSource = auto;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Database Connection Error. \n\nError Message: " + ex.ToString(), "Error");
-            }
-            finally
-            {
-                conn.Close();
-            }
+            //    CustomerCode.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            //    CustomerCode.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            //    CustomerCode.AutoCompleteCustomSource = auto;
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Database Connection Error. \n\nError Message: " + ex.ToString(), "Error");
+            //}
+            //finally
+            //{
+            //    conn.Close();
+            //}
 
 
-            #endregion
+            //#endregion
+
+            if (CustomerCode.Text != null && CustomerCode.Text != "")
+            {
+                dgQuotationAddedItems.Focus();
+                dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index];
+            }
+            else
+            {
+                CustomerCode.Focus();
+            }
+            
         }
 
         private void GetAutorities()
@@ -3935,7 +3990,7 @@ namespace LoginForm.QuotationModule
             {
                 QuotationUtils.customersearchID = "";
                 QuotationUtils.customersearchname = CustomerCode.Text;
-                FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch(customer);
+                FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch(customer,this);
                 this.Enabled = false;
                 var result = form.ShowDialog();
 
