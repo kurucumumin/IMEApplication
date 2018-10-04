@@ -1352,6 +1352,7 @@ namespace LoginForm.QuotationModule
                 List<QuotationDetail> list = new List<QuotationDetail>();
 
                 bool AllSameCustomer = true;
+
                 string _customerCode = String.Empty;
                 foreach (DataGridViewRow row in SelectedRows)
                 {
@@ -1375,41 +1376,60 @@ namespace LoginForm.QuotationModule
 
                 if (AllSameCustomer)
                 {
-                    IMEEntities IME = new IMEEntities();
+                    bool OnlyPendingQuotations = true;
+
                     foreach (DataGridViewRow row in SelectedRows)
                     {
-                        string quotNo = row.Cells[QuotationNo.Index].Value.ToString();
-                        List<QuotationDetail> detailList = IME.Quotations.Where(x => x.QuotationNo == quotNo).First().QuotationDetails.ToList();
-                        list.AddRange(detailList);
-                    }
-
-                    List<string> quotationNos = new List<string>();
-                    for (int i = 0; i < SelectedRows.Count; i++)
-                    {
-                        if (quotationNos.Where(x => x == SelectedRows[i].Cells[QuotationNo.Index].ToString()).FirstOrDefault() == null)
+                        if (row.Cells[OrderStatus.Index].Value.ToString() != "Pending")
                         {
-                            quotationNos.Add(list[i].QuotationNo);
-                        }
-                    }
-                    string quotationIDs = String.Empty;
-                    for (int i = 0; i < quotationNos.Count; i++)
-                    {
-                        quotationIDs += quotationNos[i].ToString();
-                        if (i != quotationNos.Count - 1)
-                        {
-                            quotationIDs += ",";
+                            OnlyPendingQuotations = false;
+                            MessageBox.Show("You can only choose the pending quotations!", "Warning");
+                            break;
                         }
                     }
 
-                    string CustCode = SelectedRows[0].Cells[CustomerCode.Index].Value.ToString();
-                    Customer customer = IME.Customers.Where(x => x.ID == CustCode).FirstOrDefault();
+                    if (OnlyPendingQuotations)
+                    {
+                        IMEEntities IME = new IMEEntities();
+                        foreach (DataGridViewRow row in SelectedRows)
+                        {
+                            string quotNo = row.Cells[QuotationNo.Index].Value.ToString();
+                            List<QuotationDetail> detailList = IME.Quotations.Where(x => x.QuotationNo == quotNo).First().QuotationDetails.ToList();
+                            list.AddRange(detailList);
+                        }
 
-                    FormSaleOrderAdd form = new FormSaleOrderAdd(customer, list, quotationIDs, 1);
-                    Utils.LogKayit("Sale Order", "Sale Order add screen has been entered");
-                    form.Show();
-                    this.Close();
+                        List<string> quotationNos = new List<string>();
+                        for (int i = 0; i < SelectedRows.Count; i++)
+                        {
+                            if (quotationNos.Where(x => x == SelectedRows[i].Cells[QuotationNo.Index].ToString()).FirstOrDefault() == null)
+                            {
+                                quotationNos.Add(list[i].QuotationNo);
+                            }
+                        }
+                        string quotationIDs = String.Empty;
+                        for (int i = 0; i < quotationNos.Count; i++)
+                        {
+                            quotationIDs += quotationNos[i].ToString();
+                            if (i != quotationNos.Count - 1)
+                            {
+                                quotationIDs += ",";
+                            }
+                        }
 
+                        string CustCode = SelectedRows[0].Cells[CustomerCode.Index].Value.ToString();
+                        Customer customer = IME.Customers.Where(x => x.ID == CustCode).FirstOrDefault();
+
+                        FormSaleOrderAdd form = new FormSaleOrderAdd(customer, list, quotationIDs, 1);
+                        Utils.LogKayit("Sale Order", "Sale Order add screen has been entered");
+                        form.Show();
+                        this.Close();
+
+                    }
                 }
+                
+
+
+                
             }
             else
             {
