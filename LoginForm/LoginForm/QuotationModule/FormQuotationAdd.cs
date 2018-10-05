@@ -2986,6 +2986,7 @@ namespace LoginForm.QuotationModule
                 CustomerCode.Text = q.Customer.ID;
                 txtCustomerName.Text = q.Customer.c_name;
                 txtQuotationNo.Text = q.QuotationNo;
+                cbFactor.Text = q.Factor.ToString();
                 fillCustomer();
             }
             if (q.ForFinancelIsTrue == 1) { chkbForFinance.Checked = true; }
@@ -3163,8 +3164,8 @@ namespace LoginForm.QuotationModule
                 {
                     DataGridViewRow row = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
                     row.CreateCells(dgQuotationAddedItems);
-                    row.Cells[0].Value = Int32.Parse(item.dgNo.ToString());
-                    row.Cells[7].Value = item.ItemCode;
+                    row.Cells[dgNo.Index].Value = Int32.Parse(item.dgNo.ToString());
+                    row.Cells[dgProductCode.Index].Value = item.ItemCode;
                     row.Cells[dgQty.Index].Value = item.Qty;
                     row.Cells[dgSSM.Index].Value = item.SSM;
                     row.Cells[dgUC.Index].Value = item.UC;
@@ -3177,8 +3178,9 @@ namespace LoginForm.QuotationModule
                     row.Cells[dgCompetitor.Index].Value = item.Competitor;
                     row.Cells[dgUnitWeigt.Index].Value = item.UnitWeight;
                     row.Cells[dgUKPrice.Index].Value = item.UKPrice;
-                    row.Cells[31].Value = item.UnitWeight * item.Qty;
-                    row.Cells[32].Value = item.CustomerStockCode;
+                    row.Cells[dgTotalWeight.Index].Value = item.UnitWeight * item.Qty;
+                    row.Cells[dgCustStkCode.Index].Value = item.CustomerStockCode;
+                    row.Cells[dgMargin.Index].Value = item.Marge;
                     dgQuotationAddedItems.Rows.Add(row);
 
                 }
