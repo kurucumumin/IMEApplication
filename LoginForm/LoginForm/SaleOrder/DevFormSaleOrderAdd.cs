@@ -48,7 +48,7 @@ namespace LoginForm.QuotationModule
             InitializeComponent();
             dgSaleAddedItems.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
 
-            dtpDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
+            dtpDate.Value = Utils.GetCurrentDateTime();
             dtpDate.Enabled = false;
             this.parent = parent;
         }
@@ -78,7 +78,7 @@ namespace LoginForm.QuotationModule
             cbCurrency.SelectedIndex = 0;
 
             dtpDate.Value = Utils.getManagement().FinancialYear.fromDate.Value;
-            dtpDate.MaxDate = IME.CurrentDate().FirstOrDefault().Value.AddHours(5);
+            dtpDate.MaxDate = Utils.GetCurrentDateTime().AddHours(5);
             cbPaymentType.DataSource = IME.PaymentMethods.ToList();
             cbPaymentType.DisplayMember = "Payment";
             cbPaymentType.ValueMember = "ID";
@@ -619,7 +619,7 @@ namespace LoginForm.QuotationModule
             InitializeComponent();
             dgSaleAddedItems.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
 
-            dtpDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
+            dtpDate.Value = Utils.GetCurrentDateTime();
             dtpDate.Enabled = false;
         }
 
@@ -886,7 +886,7 @@ namespace LoginForm.QuotationModule
                 #region ComboboxFiller.
 
 
-                dtpDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
+                dtpDate.Value = Utils.GetCurrentDateTime();
                 cbPaymentTerm.DisplayMember = "term_name";
                 cbPaymentTerm.ValueMember = "ID";
                 cbPaymentTerm.DataSource = IME.PaymentTerms.ToList();
@@ -1558,15 +1558,16 @@ namespace LoginForm.QuotationModule
 
         private bool Discontinued(string ArticleCode)
         {
+            DateTime currentDate = Utils.GetCurrentDateTime();
             var dd = IME.DailyDiscontinueds.Where(a => a.ArticleNo == ArticleCode).FirstOrDefault();
             if (dd == null)
             {
                 if (ArticleCode.Substring(0, 1) == "0") ArticleCode = ArticleCode.Substring(1, ArticleCode.Length - 1);
                 dd = IME.DailyDiscontinueds.Where(a => a.ArticleNo == ArticleCode).FirstOrDefault();
             }
-            if (dd != null && Convert.ToDateTime(dd.DiscontinuationDate) < Convert.ToDateTime(IME.CurrentDate().First()).AddDays(90))
+            if (dd != null && Convert.ToDateTime(dd.DiscontinuationDate) < currentDate.AddDays(90))
             {
-                if (Convert.ToDateTime(dd.DiscontinuationDate) > Convert.ToDateTime(IME.CurrentDate().First()))
+                if (Convert.ToDateTime(dd.DiscontinuationDate) > currentDate)
                 {
                     MessageBox.Show("This item will be discontinued " + dd.DiscontinuationDate);
                 }
@@ -2811,7 +2812,7 @@ namespace LoginForm.QuotationModule
                 getTotalDiscMargin();
                 SaleOrder s = new SaleOrder();
                 s.SaleOrderNo = Int32.Parse(txtSalesOrderNo.Text.Substring(2));
-                s.SaleDate = Convert.ToDateTime(IME.CurrentDate().First());
+                s.SaleDate = Utils.GetCurrentDateTime();
                 s.OnlineConfirmationNo = txtOnlineConfirmationNo.Text;
                 s.QuotationNos = txtQuotationNo.Text;
                 s.PaymentTermID = (int)cbPaymentTerm.SelectedValue;
@@ -3891,13 +3892,13 @@ namespace LoginForm.QuotationModule
             IMEEntities IME = new IMEEntities();
             //List<Quotation> quotList = IME.Quotations.Where(q => q.QuotationNo == Convert.ToDateTime(IME.CurrentDate().First()).Year).toList();
             //int ID;
-            int year = ((DateTime)(IME.CurrentDate().First())).Year;
+            int year = Utils.GetCurrentDateTime().Year;
             Quotation quo = IME.Quotations.Where(a => a.StartDate.Year == year).OrderByDescending(q => q.QuotationNo).FirstOrDefault();
             string q1;
             if (quo == null)
             {
 
-                q1 = Convert.ToDateTime(IME.CurrentDate().First()).Year.ToString() + "/1";
+                q1 = year.ToString() + "/1";
             }
             else
             {
@@ -3918,7 +3919,7 @@ namespace LoginForm.QuotationModule
                     {
                         int quoID = Int32.Parse(q1.Substring(quo.QuotationNo.LastIndexOf('/') + 1)) + 1;
 
-                        q1 = Convert.ToDateTime(IME.CurrentDate().First()).Year.ToString() + "/" + quoID.ToString();
+                        q1 = year.ToString() + "/" + quoID.ToString();
                     }
                 }
             }

@@ -25,6 +25,7 @@ namespace LoginForm.Services
         public bool DateValidationFunction(TextBox txt)
         {
             IMEEntities IME = new IMEEntities();
+            DateTime currentDate = Utils.GetCurrentDateTime();
             bool isValid = true;
             string option = string.Empty;
             string[] date = new string[50];
@@ -100,15 +101,15 @@ namespace LoginForm.Services
                     string formatoption = SystemFormat();
                     if (formatoption == "M")
                     {
-                        CurrDate = DateTime.Parse(Convert.ToDateTime(IME.CurrentDate().First()).Date.Month + " / " + date[0].ToString() + " / " + Convert.ToDateTime(IME.CurrentDate().First()).Date.Year);
+                        CurrDate = DateTime.Parse(currentDate.Date.Month + " / " + date[0].ToString() + " / " + currentDate.Date.Year);
                     }
                     else if (formatoption == "d")
                     {
-                        CurrDate = DateTime.Parse(date[0].ToString() + " / " + Convert.ToDateTime(IME.CurrentDate().First()).Date.Month + " / " + Convert.ToDateTime(IME.CurrentDate().First()).Date.Year);
+                        CurrDate = DateTime.Parse(date[0].ToString() + " / " + currentDate.Date.Month + " / " + currentDate.Date.Year);
                     }
                     else if (formatoption == "y")
                     {
-                        CurrDate = DateTime.Parse(Convert.ToDateTime(IME.CurrentDate().First()).Date.Year + " / " + Convert.ToDateTime(IME.CurrentDate().First()).Date.Month + " / " + date[0].ToString());
+                        CurrDate = DateTime.Parse(currentDate.Date.Year + " / " + currentDate.Date.Month + " / " + date[0].ToString());
                     }
                     isValid = isToday(isValid);
                 }
@@ -119,15 +120,15 @@ namespace LoginForm.Services
                         string formatoption = SystemFormat();
                         if (formatoption == "M")
                         {
-                            CurrDate = DateTime.Parse(Convert.ToDateTime(IME.CurrentDate().First()).Date.Month + " / " + date[0].ToString() + " / " + Convert.ToDateTime(IME.CurrentDate().First()).Date.Year);
+                            CurrDate = DateTime.Parse(currentDate.Date.Month + " / " + date[0].ToString() + " / " + currentDate.Date.Year);
                         }
                         else if (formatoption == "d")
                         {
-                            CurrDate = DateTime.Parse(date[0].ToString() + " / " + Convert.ToDateTime(IME.CurrentDate().First()).Date.Month + " / " + Convert.ToDateTime(IME.CurrentDate().First()).Date.Year);
+                            CurrDate = DateTime.Parse(date[0].ToString() + " / " + currentDate.Date.Month + " / " + currentDate.Date.Year);
                         }
                         else if (formatoption == "y")
                         {
-                            CurrDate = DateTime.Parse(Convert.ToDateTime(IME.CurrentDate().First()).Date.Year + " / " + Convert.ToDateTime(IME.CurrentDate().First()).Date.Month + " / " + date[0].ToString());
+                            CurrDate = DateTime.Parse(currentDate.Date.Year + " / " + currentDate.Date.Month + " / " + date[0].ToString());
                         }
                         isValid = isToday(isValid);
                     }
@@ -136,15 +137,15 @@ namespace LoginForm.Services
                         string formatoption = SystemFormat();
                         if (formatoption == "M")
                         {
-                            CurrDate = DateTime.Parse(date[1].ToString() + " / " + date[0].ToString() + " / " + Convert.ToDateTime(IME.CurrentDate().First()).Date.Year);
+                            CurrDate = DateTime.Parse(date[1].ToString() + " / " + date[0].ToString() + " / " + currentDate.Date.Year);
                         }
                         else if (formatoption == "d")
                         {
-                            CurrDate = DateTime.Parse(date[0].ToString() + " / " + date[1].ToString() + " / " + Convert.ToDateTime(IME.CurrentDate().First()).Date.Year);
+                            CurrDate = DateTime.Parse(date[0].ToString() + " / " + date[1].ToString() + " / " + currentDate.Date.Year);
                         }
                         else if (formatoption == "y")
                         {
-                            CurrDate = DateTime.Parse(Convert.ToDateTime(IME.CurrentDate().First()).Date.Year + " / " + date[1].ToString() + " / " + date[0].ToString());
+                            CurrDate = DateTime.Parse(currentDate.Date.Year + " / " + date[1].ToString() + " / " + date[0].ToString());
                         } isValid = isToday(isValid);
                     }
                 }
@@ -155,15 +156,15 @@ namespace LoginForm.Services
                         string formatoption = SystemFormat();
                         if (formatoption == "M")
                         {
-                            CurrDate = DateTime.Parse(date[1].ToString() + " / " + date[0].ToString() + " / " + Convert.ToDateTime(IME.CurrentDate().First()).Date.Year);
+                            CurrDate = DateTime.Parse(date[1].ToString() + " / " + date[0].ToString() + " / " + currentDate.Date.Year);
                         }
                         else if (formatoption == "d")
                         {
-                            CurrDate = DateTime.Parse(date[0].ToString() + " / " + date[1].ToString() + " / " + Convert.ToDateTime(IME.CurrentDate().First()).Date.Year);
+                            CurrDate = DateTime.Parse(date[0].ToString() + " / " + date[1].ToString() + " / " + currentDate.Date.Year);
                         }
                         else if (formatoption == "y")
                         {
-                            CurrDate = DateTime.Parse(Convert.ToDateTime(IME.CurrentDate().First()).Date.Year + " / " + date[1].ToString() + " / " + date[0].ToString());
+                            CurrDate = DateTime.Parse(currentDate.Date.Year + " / " + date[1].ToString() + " / " + date[0].ToString());
                         }
                         isValid = isToday(isValid);
                     }
@@ -208,7 +209,7 @@ namespace LoginForm.Services
             IMEEntities IME = new IMEEntities();
             if (CurrDate >= Utils.getManagement().FinancialYear.fromDate && CurrDate <= Utils.getManagement().FinancialYear.toDate)
             {
-                if (CurrDate == Convert.ToDateTime(IME.CurrentDate().First()).Date)
+                if (CurrDate == Utils.GetCurrentDateTime().Date)
                 {
                     text.ForeColor = Color.IndianRed;
                     text.Text = CurrDate.ToString("dd-MMM-yyyy");
@@ -234,6 +235,7 @@ namespace LoginForm.Services
         public bool DateValidationFunctionMFDEXPD(TextBox txt)
         {
             IMEEntities IME = new IMEEntities();
+            DateTime currentDate = Utils.GetCurrentDateTime();
             bool isValid = true;
             string option = string.Empty;
             string[] date = new string[50];
@@ -309,15 +311,15 @@ namespace LoginForm.Services
                     string formatoption = SystemFormat();
                     if (formatoption == "M")
                     {
-                        CurrDate = DateTime.Parse(Convert.ToDateTime(IME.CurrentDate().First()).Date.Month + " / " + date[0].ToString() + " / " + Convert.ToDateTime(IME.CurrentDate().First()).Date.Year);
+                        CurrDate = DateTime.Parse(currentDate.Date.Month + " / " + date[0].ToString() + " / " + currentDate.Date.Year);
                     }
                     else if (formatoption == "d")
                     {
-                        CurrDate = DateTime.Parse(date[0].ToString() + " / " + Convert.ToDateTime(IME.CurrentDate().First()).Date.Month + " / " + Convert.ToDateTime(IME.CurrentDate().First()).Date.Year);
+                        CurrDate = DateTime.Parse(date[0].ToString() + " / " + currentDate.Date.Month + " / " + currentDate.Date.Year);
                     }
                     else if (formatoption == "y")
                     {
-                        CurrDate = DateTime.Parse(Convert.ToDateTime(IME.CurrentDate().First()).Date.Year + " / " + Convert.ToDateTime(IME.CurrentDate().First()).Date.Month + " / " + date[0].ToString());
+                        CurrDate = DateTime.Parse(currentDate.Date.Year + " / " + currentDate.Date.Month + " / " + date[0].ToString());
                     }
                     isValid = isTodaY(isValid);
                 }
@@ -328,15 +330,15 @@ namespace LoginForm.Services
                         string formatoption = SystemFormat();
                         if (formatoption == "M")
                         {
-                            CurrDate = DateTime.Parse(Convert.ToDateTime(IME.CurrentDate().First()).Date.Month + " / " + date[0].ToString() + " / " + Convert.ToDateTime(IME.CurrentDate().First()).Date.Year);
+                            CurrDate = DateTime.Parse(currentDate.Date.Month + " / " + date[0].ToString() + " / " + currentDate.Date.Year);
                         }
                         else if (formatoption == "d")
                         {
-                            CurrDate = DateTime.Parse(date[0].ToString() + " / " + Convert.ToDateTime(IME.CurrentDate().First()).Date.Month + " / " + Convert.ToDateTime(IME.CurrentDate().First()).Date.Year);
+                            CurrDate = DateTime.Parse(date[0].ToString() + " / " + currentDate.Date.Month + " / " + currentDate.Date.Year);
                         }
                         else if (formatoption == "y")
                         {
-                            CurrDate = DateTime.Parse(Convert.ToDateTime(IME.CurrentDate().First()).Date.Year + " / " + Convert.ToDateTime(IME.CurrentDate().First()).Date.Month + " / " + date[0].ToString());
+                            CurrDate = DateTime.Parse(currentDate.Date.Year + " / " + currentDate.Date.Month + " / " + date[0].ToString());
                         }
                         isValid = isTodaY(isValid);
                     }
@@ -345,15 +347,15 @@ namespace LoginForm.Services
                         string formatoption = SystemFormat();
                         if (formatoption == "M")
                         {
-                            CurrDate = DateTime.Parse(date[1].ToString() + " / " + date[0].ToString() + " / " + Convert.ToDateTime(IME.CurrentDate().First()).Date.Year);
+                            CurrDate = DateTime.Parse(date[1].ToString() + " / " + date[0].ToString() + " / " + currentDate.Date.Year);
                         }
                         else if (formatoption == "d")
                         {
-                            CurrDate = DateTime.Parse(date[0].ToString() + " / " + date[1].ToString() + " / " + Convert.ToDateTime(IME.CurrentDate().First()).Date.Year);
+                            CurrDate = DateTime.Parse(date[0].ToString() + " / " + date[1].ToString() + " / " + currentDate.Date.Year);
                         }
                         else if (formatoption == "y")
                         {
-                            CurrDate = DateTime.Parse(Convert.ToDateTime(IME.CurrentDate().First()).Date.Year + " / " + date[1].ToString() + " / " + date[0].ToString());
+                            CurrDate = DateTime.Parse(currentDate.Date.Year + " / " + date[1].ToString() + " / " + date[0].ToString());
                         } isValid = isTodaY(isValid);
                     }
                 }
@@ -364,15 +366,15 @@ namespace LoginForm.Services
                         string formatoption = SystemFormat();
                         if (formatoption == "M")
                         {
-                            CurrDate = DateTime.Parse(date[1].ToString() + " / " + date[0].ToString() + " / " + Convert.ToDateTime(IME.CurrentDate().First()).Date.Year);
+                            CurrDate = DateTime.Parse(date[1].ToString() + " / " + date[0].ToString() + " / " + currentDate.Date.Year);
                         }
                         else if (formatoption == "d")
                         {
-                            CurrDate = DateTime.Parse(date[0].ToString() + " / " + date[1].ToString() + " / " + Convert.ToDateTime(IME.CurrentDate().First()).Date.Year);
+                            CurrDate = DateTime.Parse(date[0].ToString() + " / " + date[1].ToString() + " / " + currentDate.Date.Year);
                         }
                         else if (formatoption == "y")
                         {
-                            CurrDate = DateTime.Parse(Convert.ToDateTime(IME.CurrentDate().First()).Date.Year + " / " + date[1].ToString() + " / " + date[0].ToString());
+                            CurrDate = DateTime.Parse(currentDate.Date.Year + " / " + date[1].ToString() + " / " + date[0].ToString());
                         }
                         isValid = isTodaY(isValid);
                     }
@@ -415,7 +417,7 @@ namespace LoginForm.Services
         public bool isTodaY(bool isValid)
         {
             IMEEntities IME = new IMEEntities();
-            if (CurrDate == Convert.ToDateTime(IME.CurrentDate().First()).Date)
+            if (CurrDate == Utils.GetCurrentDateTime().Date)
             {
                 text.ForeColor = Color.IndianRed;
                 text.Text = CurrDate.ToString("dd-MMM-yyyy");

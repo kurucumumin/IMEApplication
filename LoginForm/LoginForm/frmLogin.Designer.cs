@@ -117,17 +117,17 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::LoginForm.Properties.Resources.logo;
-            this.pictureBox3.Location = new System.Drawing.Point(86, 11);
+            this.pictureBox3.Location = new System.Drawing.Point(86, 24);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(127, 151);
+            this.pictureBox3.Size = new System.Drawing.Size(127, 127);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 12;
             this.pictureBox3.TabStop = false;
             // 
             // bunifuElipse2
             // 
-            this.bunifuElipse2.ElipseRadius = 30;
+            this.bunifuElipse2.ElipseRadius = 15;
             this.bunifuElipse2.TargetControl = this.pictureBox3;
             // 
             // btnExit

@@ -31,7 +31,7 @@ namespace LoginForm.Services
             if (isFormCompany)
                 dtcurrentdate = System.DateTime.Today;
             else
-                dtcurrentdate = Convert.ToDateTime(IME.CurrentDate().First()).Date;
+                dtcurrentdate = Utils.GetCurrentDateTime().Date;
             bool isValid = true;
             string option = string.Empty;
             string[] date = new string[50];
