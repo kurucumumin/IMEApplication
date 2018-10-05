@@ -29,7 +29,7 @@ namespace LoginForm.QuotationModule
 
             cbSearch.SelectedIndex = 0;
             dateNow = Convert.ToDateTime(new IMEEntities().CurrentDate().First());
-            dtpFromDate.Value = Convert.ToDateTime(IME.CurrentDate().First()).AddMonths(-3);
+            dtpFromDate.Value = Utils.GetCurrentDateTime().AddMonths(-3);
             dtpToDate.Value = dateNow;
         }
 
@@ -1094,7 +1094,7 @@ namespace LoginForm.QuotationModule
                                     Quotation quo = IME.Quotations.Where(q => q.QuotationNo == QuotationNo).FirstOrDefault();
 
                                     quo.FirstNote = note1;
-                                    quo.NoteDate1 = Convert.ToDateTime(IME.CurrentDate().First());
+                                    quo.NoteDate1 = Utils.GetCurrentDateTime();
                                     quo.NoteRep1 = currentUser.NameLastName.ToString();
 
                                     IME.SaveChanges();
@@ -1131,7 +1131,7 @@ namespace LoginForm.QuotationModule
                                     Quotation quo = IME.Quotations.Where(q => q.QuotationNo == QuotationNo).FirstOrDefault();
 
                                     quo.SecondNote = note2;
-                                    quo.NoteDate2 = Convert.ToDateTime(IME.CurrentDate().First());
+                                    quo.NoteDate2 = Utils.GetCurrentDateTime();
                                     quo.NoteRep2 = currentUser.NameLastName.ToString();
 
                                     IME.SaveChanges();
@@ -1365,7 +1365,7 @@ namespace LoginForm.QuotationModule
                     else if(customerCode != _customerCode)
                     {
                         AllSameCustomer = false;
-                        MessageBox.Show("You can only choose the same customers quotations!","Warning");
+                        MessageBox.Show("You can only choose the same customer's quotations!","Warning");
                         break;
                     }
                     else

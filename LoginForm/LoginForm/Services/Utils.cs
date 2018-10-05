@@ -35,6 +35,11 @@ namespace LoginForm.Services
             return conn;
         }
 
+        public static DateTime GetCurrentDateTime()
+        {
+            return (DateTime)new IMEEntities().CurrentDate().FirstOrDefault();
+        }
+
         public static string MD5Hash(string input)
         {
             StringBuilder hash = new StringBuilder();

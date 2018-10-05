@@ -90,7 +90,7 @@ namespace LoginForm.PurchaseOrder
             #region Filler
             ToFill();
             CCFill();
-            txtDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString();
+            txtDate.Text = Utils.GetCurrentDateTime().ToString();
             RefreshMailList();
             #endregion
             var txt = CreateTxt();
@@ -125,7 +125,7 @@ namespace LoginForm.PurchaseOrder
 
             po.purchaseOrderId = puchaseId;
             po.CustomerID = IME.SaleOrders.Where(a => a.SaleOrderID == s).FirstOrDefault().CustomerID;
-            po.PurchaseOrderDate = IME.CurrentDate().FirstOrDefault();
+            po.PurchaseOrderDate = Utils.GetCurrentDateTime();
             po.FicheNo = filename;
             po.PurchaseNo = purchaseNo;
 
@@ -238,13 +238,14 @@ namespace LoginForm.PurchaseOrder
         {
             List<string> TXTList = new List<string>();
             string Line1;
+            DateTime currentDate = Utils.GetCurrentDateTime();
             //TODO ! 's' hiçbiryerde kullanılmadığı için yorumlandı
             //string s = rowList[0].Cells["SaleID"].Value.ToString();
             string orderN= rowList[0].Cells[10].Value.ToString();
             string billTo = rowList[0].Cells[11].Value.ToString();
             string COO ="   ";//TO DO COUNTRYCODE
-            string OrderDate = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd.MM.yyyy");//TransmissionDate
-            string OrderTime = Convert.ToDateTime(IME.CurrentDate().First()).ToString("HH.mm");//TransmissionDate
+            string OrderDate = currentDate.ToString("dd.MM.yyyy");//TransmissionDate
+            string OrderTime = currentDate.ToString("HH.mm");//TransmissionDate
             string filler1 ="";
             for (int i = 0; i < 130; i++)
             {
@@ -274,7 +275,7 @@ namespace LoginForm.PurchaseOrder
             string PackType = " ";
             string OrderNumber = "     ";
             string CustomerDistOrderReference = Convert.ToString(purchaseNo)+"RS";
-            CustomerDistOrderReference = CustomerDistOrderReference.ToUpper()+"/BAH/"+Convert.ToDateTime(IME.CurrentDate().First()).ToString("MMM").ToUpper() +"/"+Convert.ToDateTime(IME.CurrentDate().First()).ToString("yy");
+            CustomerDistOrderReference = CustomerDistOrderReference.ToUpper()+"/BAH/"+currentDate.ToString("MMM").ToUpper() +"/"+Convert.ToDateTime(IME.CurrentDate().First()).ToString("yy");
             int CustomerDistOrderReferencelength = CustomerDistOrderReference.Length;
             for (int i = 0; i < 30- CustomerDistOrderReferencelength; i++)
 

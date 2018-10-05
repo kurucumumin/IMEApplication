@@ -39,7 +39,7 @@ namespace LoginForm.QuotationModule
         public FormQuotationAddTurkey()
         {
             InitializeComponent();
-            dtpDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
+            dtpDate.Value = Utils.GetCurrentDateTime();
             dtpDate.Enabled = false;
         }
 
@@ -114,7 +114,7 @@ namespace LoginForm.QuotationModule
                 LowMarginLimit = Decimal.Parse(IME.Managements.FirstOrDefault().LowMarginLimit.ToString());
                 lblVat.Text = Utils.getManagement().VAT.ToString();
                 #region ComboboxFiller.
-                dtpDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
+                dtpDate.Value = Utils.GetCurrentDateTime();
                 cbCurrency.DataSource = IME.Rates.Where(a => a.rate_date == dtpDate.Value.Date).ToList();
                 cbCurrency.DisplayMember = "CurType";
                 cbCurrency.ValueMember = "ID";
@@ -1994,7 +1994,7 @@ namespace LoginForm.QuotationModule
             string q1;
             if (quo == null)
             {
-                q1 = Convert.ToDateTime(IME.CurrentDate().First()).Year.ToString() + "/1";
+                q1 = Utils.GetCurrentDateTime().Year.ToString() + "/1";
             }
             else
             {
@@ -2015,7 +2015,7 @@ namespace LoginForm.QuotationModule
                     {
                         int quoID = Int32.Parse(q1.Substring(quo.QuotationNo.LastIndexOf('/') + 1)) + 1;
 
-                        q1 = Convert.ToDateTime(IME.CurrentDate().First()).Year.ToString() + "/" + quoID.ToString();
+                        q1 = Utils.GetCurrentDateTime().Year.ToString() + "/" + quoID.ToString();
                     }
                 }
             }

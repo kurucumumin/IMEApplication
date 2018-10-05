@@ -43,7 +43,7 @@ namespace LoginForm.ItemModule
                             RsFileHistory h = new RsFileHistory();
                             h.FileType = txtReader.LoaderType;
                             h.FileName = SuperDiskHelper.FileName;
-                            h.Date = IME.CurrentDate().FirstOrDefault().Value;
+                            h.Date = Utils.GetCurrentDateTime();
                             h.UserID = Utils.getCurrentUser().WorkerID;
                             IME.RsFileHistories.Add(h);
                             IME.SaveChanges();
@@ -74,7 +74,7 @@ namespace LoginForm.ItemModule
                         RsFileHistory h = new RsFileHistory();
                         h.FileType = txtReader.LoaderType;
                         h.FileName = "";
-                        h.Date = IME.CurrentDate().FirstOrDefault().Value;
+                        h.Date = Utils.GetCurrentDateTime();
                         h.UserID = Utils.getCurrentUser().WorkerID;
                         IME.RsFileHistories.Add(h);
                         IME.SaveChanges();
@@ -89,7 +89,7 @@ namespace LoginForm.ItemModule
                         RsFileHistory h = new RsFileHistory();
                         h.FileType = txtReader.LoaderType;
                         h.FileName = "";
-                        h.Date = IME.CurrentDate().FirstOrDefault().Value;
+                        h.Date = Utils.GetCurrentDateTime();
                         h.UserID = Utils.getCurrentUser().WorkerID;
                         IME.RsFileHistories.Add(h);
                         IME.SaveChanges();
@@ -103,7 +103,7 @@ namespace LoginForm.ItemModule
                         RsFileHistory h = new RsFileHistory();
                         h.FileType = txtReader.LoaderType;
                         h.FileName = "";
-                        h.Date = IME.CurrentDate().FirstOrDefault().Value;
+                        h.Date = Utils.GetCurrentDateTime();
                         h.UserID = Utils.getCurrentUser().WorkerID;
                         IME.RsFileHistories.Add(h);
                         IME.SaveChanges();
@@ -118,7 +118,7 @@ namespace LoginForm.ItemModule
                         RsFileHistory h = new RsFileHistory();
                         h.FileType = txtReader.LoaderType;
                         h.FileName = "";
-                        h.Date = IME.CurrentDate().FirstOrDefault().Value;
+                        h.Date = Utils.GetCurrentDateTime();
                         h.UserID = Utils.getCurrentUser().WorkerID;
                         IME.RsFileHistories.Add(h);
                         IME.SaveChanges();
@@ -132,7 +132,7 @@ namespace LoginForm.ItemModule
                         RsFileHistory h = new RsFileHistory();
                         h.FileType = txtReader.LoaderType;
                         h.FileName = "";
-                        h.Date = IME.CurrentDate().FirstOrDefault().Value;
+                        h.Date = Utils.GetCurrentDateTime();
                         h.UserID = Utils.getCurrentUser().WorkerID;
                         IME.RsFileHistories.Add(h);
                         IME.SaveChanges();
@@ -146,7 +146,7 @@ namespace LoginForm.ItemModule
                         RsFileHistory h = new RsFileHistory();
                         h.FileType = txtReader.LoaderType;
                         h.FileName = "";
-                        h.Date = IME.CurrentDate().FirstOrDefault().Value;
+                        h.Date = Utils.GetCurrentDateTime();
                         h.UserID = Utils.getCurrentUser().WorkerID;
                         IME.RsFileHistories.Add(h);
                         IME.SaveChanges();
@@ -160,7 +160,7 @@ namespace LoginForm.ItemModule
                         RsFileHistory h = new RsFileHistory();
                         h.FileType = txtReader.LoaderType;
                         h.FileName = "";
-                        h.Date = IME.CurrentDate().FirstOrDefault().Value;
+                        h.Date = Utils.GetCurrentDateTime();
                         h.UserID = Utils.getCurrentUser().WorkerID;
                         IME.RsFileHistories.Add(h);
                         IME.SaveChanges();
@@ -179,7 +179,7 @@ namespace LoginForm.ItemModule
                         RsFileHistory h = new RsFileHistory();
                         h.FileType = txtReader.LoaderType;
                         h.FileName = "";
-                        h.Date = IME.CurrentDate().FirstOrDefault().Value;
+                        h.Date = Utils.GetCurrentDateTime();
                         h.UserID = Utils.getCurrentUser().WorkerID;
                         IME.RsFileHistories.Add(h);
                         IME.SaveChanges();
@@ -208,7 +208,7 @@ namespace LoginForm.ItemModule
                         RsFileHistory h = new RsFileHistory();
                         h.FileType = txtReader.LoaderType;
                         h.FileName = "";
-                        h.Date = IME.CurrentDate().FirstOrDefault().Value;
+                        h.Date = Utils.GetCurrentDateTime();
                         h.UserID = Utils.getCurrentUser().WorkerID;
                         IME.RsFileHistories.Add(h);
                         IME.SaveChanges();

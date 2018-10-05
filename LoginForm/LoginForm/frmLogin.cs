@@ -24,7 +24,7 @@ namespace LoginForm
 
         private void LoginButtonClick()
         {
-            DateTime time = (DateTime)IME.CurrentDate().First();
+            DateTime time = Utils.GetCurrentDateTime();
 
             #region LoginBlock
             string UserName = txtID.Text;
