@@ -275,7 +275,7 @@ namespace LoginForm.PurchaseOrder
             string PackType = " ";
             string OrderNumber = "     ";
             string CustomerDistOrderReference = Convert.ToString(purchaseNo)+"RS";
-            CustomerDistOrderReference = CustomerDistOrderReference.ToUpper()+"/BAH/"+currentDate.ToString("MMM").ToUpper() +"/"+Convert.ToDateTime(IME.CurrentDate().First()).ToString("yy");
+            CustomerDistOrderReference = CustomerDistOrderReference.ToUpper()+"/BAH/"+currentDate.ToString("MMM").ToUpper() +"/"+ Utils.GetCurrentDateTime().ToString("yy");
             int CustomerDistOrderReferencelength = CustomerDistOrderReference.Length;
             for (int i = 0; i < 30- CustomerDistOrderReferencelength; i++)
 

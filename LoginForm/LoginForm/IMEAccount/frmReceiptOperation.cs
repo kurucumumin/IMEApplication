@@ -329,7 +329,7 @@ namespace LoginForm.IMEAccount
 
             ao.FromAccountID = AccountID;
             ao.Amount = Convert.ToDecimal(txtAmount.Text);
-            ao.Date = Convert.ToDateTime(db.CurrentDate().FirstOrDefault());
+            ao.Date = Utils.GetCurrentDateTime();
             ao.Description = txtDescription.Text;
             ao.ToAccountID = Convert.ToInt32(cmbAccount.SelectedValue);
             ao.RepresentativeID = Utils.getCurrentUser().WorkerID;
@@ -358,7 +358,7 @@ namespace LoginForm.IMEAccount
             r.ReceiptTypeID = Convert.ToInt32(cbReceipt.SelectedValue);
             r.Amount = Convert.ToDecimal(txtAmount.Text);
             r.CurrencyID = Convert.ToInt32(cbCurrency.SelectedValue);
-            r.Date = Convert.ToDateTime(db.CurrentDate().FirstOrDefault());
+            r.Date = Utils.GetCurrentDateTime();
             r.CurrentID = CurrentID;
             r.Description = txtDescription.Text;
             r.RepresentativeID = Utils.getCurrentUser().WorkerID;

@@ -22,7 +22,7 @@ namespace LoginForm.Management
         {
             InitializeComponent();
 
-            dateNow = Convert.ToDateTime(new IMEEntities().CurrentDate().First());
+            dateNow = Utils.GetCurrentDateTime();
             dtpFromDate.Value = DateTime.Now.AddDays(-1);
             dtpToDate.Value = dateNow;
         }

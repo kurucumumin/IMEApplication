@@ -228,7 +228,7 @@ namespace LoginForm.Services.SP
                 cmd.Parameters.AddWithValue("@Discount", Invoice.Discount);
                 cmd.Parameters.AddWithValue("@Surcharge", Invoice.Surcharge);
                 cmd.Parameters.AddWithValue("@SupplierID", Invoice.SupplierID);
-                cmd.Parameters.AddWithValue("@CreateDate", new IMEEntities().CurrentDate().FirstOrDefault());
+                cmd.Parameters.AddWithValue("@CreateDate", Utils.GetCurrentDateTime();
                 cmd.Parameters.AddWithValue("@UserID", Invoice.UserID);
 
                 cmd.ExecuteNonQuery();

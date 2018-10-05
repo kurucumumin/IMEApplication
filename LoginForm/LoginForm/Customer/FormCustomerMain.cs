@@ -24,7 +24,7 @@ namespace LoginForm
            System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
            dgCustomer, new object[] { true });
 
-            dateNow = Convert.ToDateTime(new IMEEntities().CurrentDate().First());
+            dateNow = Utils.GetCurrentDateTime();
         }
 
         private void FormCustomerMain_Load(object sender, EventArgs e)

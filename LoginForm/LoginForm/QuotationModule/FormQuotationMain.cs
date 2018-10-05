@@ -28,7 +28,7 @@ namespace LoginForm.QuotationModule
             dgQuotation, new object[] { true });
 
             cbSearch.SelectedIndex = 0;
-            dateNow = Convert.ToDateTime(new IMEEntities().CurrentDate().First());
+            dateNow = Utils.GetCurrentDateTime();
             dtpFromDate.Value = Utils.GetCurrentDateTime().AddMonths(-3);
             dtpToDate.Value = dateNow;
         }

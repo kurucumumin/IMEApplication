@@ -184,7 +184,7 @@ namespace LoginForm.Services
             arguman[0] = i_1;
             KomutArgumanlari_ i_2 = new KomutArgumanlari_
             {
-                Parametre = new IMEEntities().CurrentDate().FirstOrDefault(),
+                Parametre = GetCurrentDateTime(),
                 ParametreAdi = "@TIME"
             };
             arguman[1] = i_2;
