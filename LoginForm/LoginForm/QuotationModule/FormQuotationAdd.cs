@@ -71,7 +71,7 @@ namespace LoginForm.QuotationModule
             label68.Enabled = false;
             txtTotalMarge.Visible = false;
 
-            if (customer != null && customerName != null && customerName != "")
+            if (customerName != null && customerName != "")
             {
                 #region customer
                 txtCustomerName.Text = cName;
@@ -109,6 +109,7 @@ namespace LoginForm.QuotationModule
 
         public void FillCustomerFromSearch(string customerName, string customerId)
         {
+
             cName = customerName;
             cID = customerId;
 
