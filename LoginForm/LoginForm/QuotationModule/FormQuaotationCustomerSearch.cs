@@ -198,76 +198,6 @@ namespace LoginForm.QuotationModule
             CustomerSearchGrid.DataSource = c;
         }
 
-        private void CustomerSearchGrid_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                #region Customer Search
-                if (this.Text == "Customer Search")
-                {
-                    CustomerSearchGrid.ClearSelection();
-                    string cID = CustomerSearchGrid.CurrentRow.Cells["ID"].Value.ToString();
-                    customer = IME.Customers.Where(a => a.ID == cID).FirstOrDefault();
-                    CustomerCode.Text = customer.ID;
-                    CustomerName.Text = customer.c_name;
-                    QuotationUtils.customerID = CustomerCode.Text;
-                    QuotationUtils.customername = CustomerName.Text;
-
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
-                }
-                #endregion
-
-                #region Supplier Search
-                if (this.Text == "Supplier Search")
-                {
-                    CustomerSearchGrid.ClearSelection();
-                    string cID = CustomerSearchGrid.CurrentRow.Cells["ID"].Value.ToString();
-                    supplier = IME.Suppliers.Where(a => a.ID == cID).FirstOrDefault();
-                    CustomerCode.Text = supplier.ID;
-                    CustomerName.Text = supplier.s_name;
-                    classSupplier.supplierID = CustomerCode.Text;
-                    classSupplier.suppliername = CustomerName.Text;
-
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
-                }
-                #endregion
-
-                #region Account Search
-                if (this.Text == "Account Search")
-                {
-                    CustomerSearchGrid.ClearSelection();
-                    int cID = Convert.ToInt32(CustomerSearchGrid.CurrentRow.Cells["ID"].Value.ToString());
-                    account = IME.Accounts.Where(a => a.ID == cID).FirstOrDefault();
-                    CustomerCode.Text = account.ID.ToString();
-                    CustomerName.Text = account.Name;
-                    classAccount.accountID = CustomerCode.Text;
-                    QuotationUtils.customername = CustomerName.Text;
-
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
-                }
-                #endregion
-
-                #region Current Search
-                if (this.Text == "Current Search")
-                {
-                    CustomerSearchGrid.ClearSelection();
-                    int cID = Convert.ToInt32(CustomerSearchGrid.CurrentRow.Cells["ID"].Value.ToString());
-                    current = IME.Currents.Where(a => a.CurrentID == cID).FirstOrDefault();
-                    CustomerCode.Text = current.CurrentID.ToString();
-                    CustomerName.Text = current.Name;
-                    //classCurrent.currentID = CustomerCode.Text;
-                    //classCurrent.currentname = CustomerName.Text;
-
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
-                }
-                #endregion
-            }
-        }
-
         private void CustomerCode_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -305,6 +235,8 @@ namespace LoginForm.QuotationModule
         {
             if (e.KeyCode == Keys.Enter)
             {
+                CustomerSearchGrid.Focus();
+
                 if (this.Text == "Customer Search")
                 {
                     QuotationUtils.customersearchID = "";
@@ -596,6 +528,177 @@ namespace LoginForm.QuotationModule
                 this.Close();
             }
             #endregion
+        }
+
+        private void CustomerSearchGrid_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+
+                #region Eski
+                //#region Customer Search
+                //if (this.Text == "Customer Search")
+                //{
+                //    CustomerSearchGrid.ClearSelection();
+                //    string cID = CustomerSearchGrid.CurrentRow.Cells["ID"].Value.ToString();
+                //    customer = IME.Customers.Where(a => a.ID == cID).FirstOrDefault();
+                //    CustomerCode.Text = customer.ID;
+                //    CustomerName.Text = customer.c_name;
+                //    QuotationUtils.customerID = CustomerCode.Text;
+                //    QuotationUtils.customername = CustomerName.Text;
+
+                //    this.DialogResult = DialogResult.OK;
+                //    this.Close();
+                //}
+                //#endregion
+
+                //#region Supplier Search
+                //if (this.Text == "Supplier Search")
+                //{
+                //    CustomerSearchGrid.ClearSelection();
+                //    string cID = CustomerSearchGrid.CurrentRow.Cells["ID"].Value.ToString();
+                //    supplier = IME.Suppliers.Where(a => a.ID == cID).FirstOrDefault();
+                //    CustomerCode.Text = supplier.ID;
+                //    CustomerName.Text = supplier.s_name;
+                //    classSupplier.supplierID = CustomerCode.Text;
+                //    classSupplier.suppliername = CustomerName.Text;
+
+                //    this.DialogResult = DialogResult.OK;
+                //    this.Close();
+                //}
+                //#endregion
+
+                //#region Account Search
+                //if (this.Text == "Account Search")
+                //{
+                //    CustomerSearchGrid.ClearSelection();
+                //    int cID = Convert.ToInt32(CustomerSearchGrid.CurrentRow.Cells["ID"].Value.ToString());
+                //    account = IME.Accounts.Where(a => a.ID == cID).FirstOrDefault();
+                //    CustomerCode.Text = account.ID.ToString();
+                //    CustomerName.Text = account.Name;
+                //    classAccount.accountID = CustomerCode.Text;
+                //    QuotationUtils.customername = CustomerName.Text;
+
+                //    this.DialogResult = DialogResult.OK;
+                //    this.Close();
+                //}
+                //#endregion
+
+                //#region Current Search
+                //if (this.Text == "Current Search")
+                //{
+                //    CustomerSearchGrid.ClearSelection();
+                //    int cID = Convert.ToInt32(CustomerSearchGrid.CurrentRow.Cells["ID"].Value.ToString());
+                //    current = IME.Currents.Where(a => a.CurrentID == cID).FirstOrDefault();
+                //    CustomerCode.Text = current.CurrentID.ToString();
+                //    CustomerName.Text = current.Name;
+                //    //classCurrent.currentID = CustomerCode.Text;
+                //    //classCurrent.currentname = CustomerName.Text;
+
+                //    this.DialogResult = DialogResult.OK;
+                //    this.Close();
+                //}
+                //#endregion
+                #endregion
+
+
+                CustomerSearchGrid.ClearSelection();
+                string customerName = "";
+                string customerID = "";
+
+                #region Customer Search
+                if (this.Text == "Customer Search")
+                {
+                    string cID = CustomerSearchGrid.CurrentRow.Cells["ID"].Value.ToString();
+
+                    if (cID != null && cID != "")
+                    {
+                        if (parent == null)
+                        {
+                            customer = IME.Customers.Where(a => a.ID == cID).FirstOrDefault();
+                            customerName = customer.c_name;
+                            customerID = customer.ID;
+                            //QuotationUtils.customerID = CustomerCode.Text;
+                            //QuotationUtils.customername = CustomerName.Text;
+
+                            this.DialogResult = DialogResult.OK;
+                            this.Close();
+
+                            FormQuotationAdd quotationForm = new FormQuotationAdd(this, customerName, customerID);
+                            Utils.LogKayit("Quotation", "Quotation new screen has been entered");
+                            quotationForm.Show();
+                        }
+                        else
+                        {
+                            customer = IME.Customers.Where(a => a.ID == cID).FirstOrDefault();
+                            customerName = customer.c_name;
+                            customerID = customer.ID;
+                            //QuotationUtils.customerID = CustomerCode.Text;
+                            //QuotationUtils.customername = CustomerName.Text;
+
+                            this.DialogResult = DialogResult.OK;
+                            this.Close();
+
+                            parent.FillCustomerFromSearch(customerName, customerID);
+                            this.Close();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please select customer");
+                    }
+
+
+                }
+                #endregion
+
+                #region Supplier Search
+                if (this.Text == "Supplier Search")
+                {
+                    string cID = CustomerSearchGrid.CurrentRow.Cells["ID"].Value.ToString();
+                    supplier = IME.Suppliers.Where(a => a.ID == cID).FirstOrDefault();
+                    CustomerCode.Text = supplier.ID;
+                    CustomerName.Text = supplier.s_name;
+                    classSupplier.supplierID = CustomerCode.Text;
+                    classSupplier.suppliername = CustomerName.Text;
+
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                #endregion
+
+                #region Account Search
+                if (this.Text == "Account Search")
+                {
+                    int cID = Convert.ToInt32(CustomerSearchGrid.CurrentRow.Cells["ID"].Value.ToString());
+                    account = IME.Accounts.Where(a => a.ID == cID).FirstOrDefault();
+                    CustomerCode.Text = account.ID.ToString();
+                    CustomerName.Text = account.Name;
+                    classAccount.accountID = CustomerCode.Text;
+                    QuotationUtils.customername = CustomerName.Text;
+
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                #endregion
+
+                #region Current Search
+                if (this.Text == "Current Search")
+                {
+                    CustomerSearchGrid.ClearSelection();
+                    int cID = Convert.ToInt32(CustomerSearchGrid.CurrentRow.Cells["CurrentID"].Value.ToString());
+                    current = IME.Currents.Where(a => a.CurrentID == cID).FirstOrDefault();
+                    CustomerCode.Text = current.CurrentID.ToString();
+                    CustomerName.Text = current.Name;
+                    //classCurrent.currentID = CustomerCode.Text;
+                    //classCurrent.currentname = CustomerName.Text;
+
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                #endregion
+
+            }
         }
     }
 }

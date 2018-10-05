@@ -320,7 +320,7 @@ namespace LoginForm.QuotationModule
 
                 }
 
-                    
+
                 CustomerCode.Enabled = false;
                 txtCustomerName.Enabled = false;
 
@@ -412,7 +412,7 @@ namespace LoginForm.QuotationModule
                     cbWorkers.Text = q1.MainContactName;
                 }
 
-                    
+
                 CustomerCode.Enabled = false;
                 txtCustomerName.Enabled = false;
 
@@ -530,7 +530,7 @@ namespace LoginForm.QuotationModule
             {
                 cbWorkers.Text = q1.MainContactName;
             }
-            
+
             CustomerCode.Enabled = false;
             txtCustomerName.Enabled = false;
 
@@ -969,8 +969,8 @@ namespace LoginForm.QuotationModule
             }
             GetCurrency(dtpDate.Value);
             GetAutorities();
-            
-            //#region AutoCompleteCustomSource 
+
+            //#region AutoCompleteCustomSource
             //CustomerCode.Focus();
             //AutoCompleteStringCollection auto = new AutoCompleteStringCollection();
             //SqlConnection conn = new Utils().ImeSqlConnection();
@@ -1006,7 +1006,7 @@ namespace LoginForm.QuotationModule
             {
                 CustomerCode.Focus();
             }
-            
+
         }
 
         private void GetAutorities()
@@ -1533,7 +1533,7 @@ namespace LoginForm.QuotationModule
                 }
                 #endregion
             }
-          
+
             calculateTotalCost();
         }
 
@@ -1579,7 +1579,7 @@ namespace LoginForm.QuotationModule
                 if (Convert.ToDecimal(txtUnitCount1.Text) <= adet && (adet < Convert.ToDecimal(txtUnitCount2.Text) || Convert.ToDecimal(txtUnitCount2.Text) == 0))
                 {
                     result = Decimal.Parse(String.Format("{0:0.0000}", Decimal.Parse(txtWeb1.Text)).ToString());
-                    
+
                 }
                 else if (Convert.ToDecimal(txtUnitCount2.Text) <= adet && (adet < Convert.ToDecimal(txtUnitCount3.Text) || Convert.ToDecimal(txtUnitCount3.Text) == 0))
                 {
@@ -1588,7 +1588,7 @@ namespace LoginForm.QuotationModule
                 else if (Convert.ToDecimal(txtUnitCount3.Text) <= adet && (adet < Convert.ToDecimal(txtUnitCount4.Text) || Convert.ToDecimal(txtUnitCount4.Text) == 0))
                 {
                     result = Decimal.Parse(String.Format("{0:0.0000}", Decimal.Parse(txtWeb3.Text)).ToString());
-                    
+
                 }
                 else if (Convert.ToDecimal(txtUnitCount4.Text) <= adet && (adet < Convert.ToDecimal(txtUnitCount5.Text) || Convert.ToDecimal(txtUnitCount5.Text) == 0))
                 {
@@ -1890,7 +1890,7 @@ namespace LoginForm.QuotationModule
                 {
                     decimal sW = (decimal)(ItemTabDetails.Standard_Weight / (decimal)1000);
                     sW = (ItemTabDetails.Pack_Quantity > ItemTabDetails.Unit_Content) ? (decimal)(sW / ItemTabDetails.Pack_Quantity) : (decimal)(sW / ItemTabDetails.Unit_Content);
-                    txtStandartWeight.Text = sW.ToString("G29");
+                    txtStandartWeight.Text = sW.ToString();
                 }
                 txtHazardousInd.Text = ItemTabDetails.Hazardous_Ind;
                 txtCalibrationInd.Text = ItemTabDetails.Calibration_Ind;
@@ -2514,7 +2514,7 @@ namespace LoginForm.QuotationModule
                     MessageBox.Show("Quotation is successfully modified.", "Success!");
                     #endregion
 
-                    parent.BringQuotationList();
+                    //parent.BringQuotationList();
                     this.Close();
                 }
                 else
@@ -2652,7 +2652,7 @@ namespace LoginForm.QuotationModule
                 {
                     q.QuotationMainContact = (int)cbWorkers.SelectedValue;
                 }
-                
+
                 int Note2 = 0;
                 int Note1 = 0;
                 if (txtNoteForUs.Text != null || txtNoteForUs.Text != "")
@@ -4257,7 +4257,7 @@ namespace LoginForm.QuotationModule
             Disc();
         }
 
-        
+
 
         private void txtTotalDis_Leave(object sender, EventArgs e)
         {
