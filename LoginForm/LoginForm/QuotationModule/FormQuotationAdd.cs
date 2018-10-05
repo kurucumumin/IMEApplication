@@ -1890,7 +1890,7 @@ namespace LoginForm.QuotationModule
                 {
                     decimal sW = (decimal)(ItemTabDetails.Standard_Weight / (decimal)1000);
                     sW = (ItemTabDetails.Pack_Quantity > ItemTabDetails.Unit_Content) ? (decimal)(sW / ItemTabDetails.Pack_Quantity) : (decimal)(sW / ItemTabDetails.Unit_Content);
-                    txtStandartWeight.Text = sW.ToString("G29");
+                    txtStandartWeight.Text = sW.ToString();
                 }
                 txtHazardousInd.Text = ItemTabDetails.Hazardous_Ind;
                 txtCalibrationInd.Text = ItemTabDetails.Calibration_Ind;
@@ -2514,14 +2514,14 @@ namespace LoginForm.QuotationModule
                     MessageBox.Show("Quotation is successfully modified.", "Success!");
                     #endregion
 
-                    parent.BringQuotationList();
+                    //parent.BringQuotationList();
                     this.Close();
                 }
                 else
                 {
                     QuotationSave();
                     QuotationDetailsSave();
-                    parent.BringQuotationList();
+                   // parent.BringQuotationList();
                     this.Close();
                 }
             }
