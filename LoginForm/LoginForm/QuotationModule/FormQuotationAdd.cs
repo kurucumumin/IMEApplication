@@ -1038,29 +1038,29 @@ namespace LoginForm.QuotationModule
                 CustomerCode.Text = QuotationUtils.customerID;
                 txtCustomerName.Text = QuotationUtils.customername;
             }
-            if (customer != null)
-            {
-                CustomerCode.Text = customer.ID;
-                txtCustomerName.Text = customer.c_name;
+            //if (customer != null)
+            //{
+            //    CustomerCode.Text = customer.ID;
+            //    txtCustomerName.Text = customer.c_name;
 
-                if (customer.paymentmethodID != null)
-                {
-                    cbPayment.SelectedIndex = cbPayment.FindStringExact(customer.PaymentTerm.term_name);
-                }
-                try { txtContactNote.Text = customer.CustomerWorker.Note.Note_name; } catch { }
-                try { txtCustomerNote.Text = customer.Note.Note_name; } catch { }
-                try { txtAccountingNote.Text = IME.Notes.Where(a => a.ID == customer.customerAccountantNoteID).FirstOrDefault().Note_name; } catch { }
-                if (customer.Worker != null) cbRep.SelectedValue = customer.Worker.WorkerID;
-                if (this.Text != "Edit Quotation")
-                {
-                    var CustomerCurr = IME.Currencies.Where(a => a.currencyName == customer.CurrNameQuo).FirstOrDefault();
-                    if (CustomerCurr != null) cbCurrency.SelectedValue = CustomerCurr.currencyID;
-                }
-                if (customer.CustomerWorker != null)
-                {
-                    cbWorkers.SelectedItem = cbWorkers.FindStringExact(customer.CustomerWorker.cw_name);
-                }
-            }
+            //    if (customer.paymentmethodID != null)
+            //    {
+            //        cbPayment.SelectedIndex = cbPayment.FindStringExact(customer.PaymentTerm.term_name);
+            //    }
+            //    try { txtContactNote.Text = customer.CustomerWorker.Note.Note_name; } catch { }
+            //    try { txtCustomerNote.Text = customer.Note.Note_name; } catch { }
+            //    try { txtAccountingNote.Text = IME.Notes.Where(a => a.ID == customer.customerAccountantNoteID).FirstOrDefault().Note_name; } catch { }
+            //    if (customer.Worker != null) cbRep.SelectedValue = customer.Worker.WorkerID;
+            //    if (this.Text != "Edit Quotation")
+            //    {
+            //        var CustomerCurr = IME.Currencies.Where(a => a.currencyName == customer.CurrNameQuo).FirstOrDefault();
+            //        if (CustomerCurr != null) cbCurrency.SelectedValue = CustomerCurr.currencyID;
+            //    }
+            //    if (customer.CustomerWorker != null)
+            //    {
+            //        cbWorkers.SelectedItem = cbWorkers.FindStringExact(customer.CustomerWorker.cw_name);
+            //    }
+            //}
         }
 
         private void customerDetailsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2521,7 +2521,7 @@ namespace LoginForm.QuotationModule
                 {
                     QuotationSave();
                     QuotationDetailsSave();
-                    parent.BringQuotationList();
+                    //parent.BringQuotationList();
                     this.Close();
                 }
             }

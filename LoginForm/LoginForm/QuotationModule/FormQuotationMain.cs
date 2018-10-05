@@ -1181,8 +1181,6 @@ namespace LoginForm.QuotationModule
             {
                 MessageBox.Show("You did not chose any quotation.", "Warning!");
             }
-
-
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)

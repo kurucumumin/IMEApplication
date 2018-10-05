@@ -2501,7 +2501,7 @@ namespace LoginForm.QuotationModule
                                 getTotalDiscMargin();
                                 decimal SaleOrderNo = Decimal.Parse(txtSalesOrderNo.Text.Substring(2));
                                 SaleOrder s = IME.SaleOrders.Where(quo => quo.SaleOrderNo == SaleOrderNo).FirstOrDefault();
-                                s.SaleDate = currentDate;
+                                s.SaleDate = Utils.GetCurrentDateTime();
                                 s.OnlineConfirmationNo = txtOnlineConfirmationNo.Text;
                                 s.QuotationNos = txtQuotationNo.Text;
                                 s.PaymentTermID = (int)cbPaymentTerm.SelectedValue;
