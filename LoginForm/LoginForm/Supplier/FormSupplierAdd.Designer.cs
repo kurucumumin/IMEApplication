@@ -106,11 +106,11 @@
             this.btnContactCancel = new System.Windows.Forms.Button();
             this.btnContactDone = new System.Windows.Forms.Button();
             this.btnContactDelete = new System.Windows.Forms.Button();
-            this.btnContactUpdate = new System.Windows.Forms.Button();
-            this.btnContactNew = new System.Windows.Forms.Button();
             this.txtContactNotes = new System.Windows.Forms.TextBox();
+            this.btnContactUpdate = new System.Windows.Forms.Button();
             this.label36 = new System.Windows.Forms.Label();
             this.cmbContactAddress = new System.Windows.Forms.ComboBox();
+            this.btnContactNew = new System.Windows.Forms.Button();
             this.label34 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
@@ -219,6 +219,7 @@
             this.btnSubCategoryAdd.TabIndex = 49;
             this.btnSubCategoryAdd.Text = "+";
             this.btnSubCategoryAdd.UseVisualStyleBackColor = true;
+            this.btnSubCategoryAdd.Click += new System.EventHandler(this.btnSubCategoryAdd_Click);
             // 
             // btnMainCategoryAdd
             // 
@@ -228,6 +229,7 @@
             this.btnMainCategoryAdd.TabIndex = 47;
             this.btnMainCategoryAdd.Text = "+";
             this.btnMainCategoryAdd.UseVisualStyleBackColor = true;
+            this.btnMainCategoryAdd.Click += new System.EventHandler(this.btnMainCategoryAdd_Click);
             // 
             // cmbSubCategory
             // 
@@ -502,6 +504,7 @@
             this.CityAdd.TabIndex = 82;
             this.CityAdd.Text = "+";
             this.CityAdd.UseVisualStyleBackColor = true;
+            this.CityAdd.Click += new System.EventHandler(this.CityAdd_Click);
             // 
             // TownAdd
             // 
@@ -513,6 +516,7 @@
             this.TownAdd.TabIndex = 81;
             this.TownAdd.Text = "+";
             this.TownAdd.UseVisualStyleBackColor = true;
+            this.TownAdd.Click += new System.EventHandler(this.TownAdd_Click);
             // 
             // txtAddressDetail
             // 
@@ -609,12 +613,13 @@
             // 
             // btnAddressDelete
             // 
-            this.btnAddressDelete.Location = new System.Drawing.Point(513, 565);
+            this.btnAddressDelete.Location = new System.Drawing.Point(515, 565);
             this.btnAddressDelete.Name = "btnAddressDelete";
             this.btnAddressDelete.Size = new System.Drawing.Size(44, 26);
             this.btnAddressDelete.TabIndex = 143;
             this.btnAddressDelete.Text = "Del";
             this.btnAddressDelete.UseVisualStyleBackColor = true;
+            this.btnAddressDelete.Click += new System.EventHandler(this.btnAddressDelete_Click);
             // 
             // btnAddressUpdate
             // 
@@ -624,6 +629,7 @@
             this.btnAddressUpdate.TabIndex = 141;
             this.btnAddressUpdate.Text = "Upd";
             this.btnAddressUpdate.UseVisualStyleBackColor = true;
+            this.btnAddressUpdate.Click += new System.EventHandler(this.btnAddressUpdate_Click);
             // 
             // btnAddressAdd
             // 
@@ -633,6 +639,7 @@
             this.btnAddressAdd.TabIndex = 139;
             this.btnAddressAdd.Text = "Add";
             this.btnAddressAdd.UseVisualStyleBackColor = true;
+            this.btnAddressAdd.Click += new System.EventHandler(this.btnAddressAdd_Click);
             // 
             // lbAddressList
             // 
@@ -652,6 +659,7 @@
             this.btnAddressDone.Text = "Done";
             this.btnAddressDone.UseVisualStyleBackColor = true;
             this.btnAddressDone.Visible = false;
+            this.btnAddressDone.Click += new System.EventHandler(this.btnAddressDone_Click);
             // 
             // btnAddressCancel
             // 
@@ -662,6 +670,7 @@
             this.btnAddressCancel.Text = "Cancel";
             this.btnAddressCancel.UseVisualStyleBackColor = true;
             this.btnAddressCancel.Visible = false;
+            this.btnAddressCancel.Click += new System.EventHandler(this.btnAddressCancel_Click);
             // 
             // groupAcconutBank
             // 
@@ -705,16 +714,18 @@
             this.btnBankDelete.TabIndex = 73;
             this.btnBankDelete.Text = "Del";
             this.btnBankDelete.UseVisualStyleBackColor = true;
+            this.btnBankDelete.Click += new System.EventHandler(this.btnBankDelete_Click);
             // 
             // btnBankUpdate
             // 
             this.btnBankUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBankUpdate.Location = new System.Drawing.Point(424, 265);
+            this.btnBankUpdate.Location = new System.Drawing.Point(417, 265);
             this.btnBankUpdate.Name = "btnBankUpdate";
-            this.btnBankUpdate.Size = new System.Drawing.Size(56, 26);
+            this.btnBankUpdate.Size = new System.Drawing.Size(70, 26);
             this.btnBankUpdate.TabIndex = 72;
-            this.btnBankUpdate.Text = "Upd";
+            this.btnBankUpdate.Text = "Update";
             this.btnBankUpdate.UseVisualStyleBackColor = true;
+            this.btnBankUpdate.Click += new System.EventHandler(this.btnBankUpdate_Click);
             // 
             // btnBankAdd
             // 
@@ -725,6 +736,7 @@
             this.btnBankAdd.TabIndex = 71;
             this.btnBankAdd.Text = "Add";
             this.btnBankAdd.UseVisualStyleBackColor = true;
+            this.btnBankAdd.Click += new System.EventHandler(this.btnBankAdd_Click);
             // 
             // lbBankList
             // 
@@ -893,11 +905,11 @@
             this.groupContact.Controls.Add(this.btnContactCancel);
             this.groupContact.Controls.Add(this.btnContactDone);
             this.groupContact.Controls.Add(this.btnContactDelete);
-            this.groupContact.Controls.Add(this.btnContactUpdate);
-            this.groupContact.Controls.Add(this.btnContactNew);
             this.groupContact.Controls.Add(this.txtContactNotes);
+            this.groupContact.Controls.Add(this.btnContactUpdate);
             this.groupContact.Controls.Add(this.label36);
             this.groupContact.Controls.Add(this.cmbContactAddress);
+            this.groupContact.Controls.Add(this.btnContactNew);
             this.groupContact.Controls.Add(this.label34);
             this.groupContact.Controls.Add(this.label31);
             this.groupContact.Controls.Add(this.label23);
@@ -932,53 +944,35 @@
             // 
             // btnContactCancel
             // 
-            this.btnContactCancel.Location = new System.Drawing.Point(514, 265);
+            this.btnContactCancel.Location = new System.Drawing.Point(509, 258);
             this.btnContactCancel.Name = "btnContactCancel";
-            this.btnContactCancel.Size = new System.Drawing.Size(64, 23);
+            this.btnContactCancel.Size = new System.Drawing.Size(59, 23);
             this.btnContactCancel.TabIndex = 83;
             this.btnContactCancel.Text = "Cancel";
             this.btnContactCancel.UseVisualStyleBackColor = true;
             this.btnContactCancel.Visible = false;
+            this.btnContactCancel.Click += new System.EventHandler(this.btnContactCancel_Click);
             // 
             // btnContactDone
             // 
-            this.btnContactDone.Location = new System.Drawing.Point(430, 265);
+            this.btnContactDone.Location = new System.Drawing.Point(446, 258);
             this.btnContactDone.Name = "btnContactDone";
-            this.btnContactDone.Size = new System.Drawing.Size(75, 23);
+            this.btnContactDone.Size = new System.Drawing.Size(59, 23);
             this.btnContactDone.TabIndex = 81;
             this.btnContactDone.Text = "Done";
             this.btnContactDone.UseVisualStyleBackColor = true;
             this.btnContactDone.Visible = false;
+            this.btnContactDone.Click += new System.EventHandler(this.btnContactDone_Click);
             // 
             // btnContactDelete
             // 
-            this.btnContactDelete.Enabled = false;
-            this.btnContactDelete.Location = new System.Drawing.Point(526, 266);
+            this.btnContactDelete.Location = new System.Drawing.Point(524, 258);
             this.btnContactDelete.Name = "btnContactDelete";
-            this.btnContactDelete.Size = new System.Drawing.Size(55, 23);
+            this.btnContactDelete.Size = new System.Drawing.Size(44, 23);
             this.btnContactDelete.TabIndex = 84;
             this.btnContactDelete.Text = "Del";
             this.btnContactDelete.UseVisualStyleBackColor = true;
-            // 
-            // btnContactUpdate
-            // 
-            this.btnContactUpdate.Enabled = false;
-            this.btnContactUpdate.Location = new System.Drawing.Point(477, 266);
-            this.btnContactUpdate.Name = "btnContactUpdate";
-            this.btnContactUpdate.Size = new System.Drawing.Size(50, 23);
-            this.btnContactUpdate.TabIndex = 82;
-            this.btnContactUpdate.Text = "Upd";
-            this.btnContactUpdate.UseVisualStyleBackColor = true;
-            // 
-            // btnContactNew
-            // 
-            this.btnContactNew.Enabled = false;
-            this.btnContactNew.Location = new System.Drawing.Point(428, 266);
-            this.btnContactNew.Name = "btnContactNew";
-            this.btnContactNew.Size = new System.Drawing.Size(43, 23);
-            this.btnContactNew.TabIndex = 80;
-            this.btnContactNew.Text = "New";
-            this.btnContactNew.UseVisualStyleBackColor = true;
+            this.btnContactDelete.Click += new System.EventHandler(this.btnContactDelete_Click);
             // 
             // txtContactNotes
             // 
@@ -987,6 +981,16 @@
             this.txtContactNotes.Name = "txtContactNotes";
             this.txtContactNotes.Size = new System.Drawing.Size(140, 212);
             this.txtContactNotes.TabIndex = 79;
+            // 
+            // btnContactUpdate
+            // 
+            this.btnContactUpdate.Location = new System.Drawing.Point(482, 258);
+            this.btnContactUpdate.Name = "btnContactUpdate";
+            this.btnContactUpdate.Size = new System.Drawing.Size(45, 23);
+            this.btnContactUpdate.TabIndex = 82;
+            this.btnContactUpdate.Text = "Upd";
+            this.btnContactUpdate.UseVisualStyleBackColor = true;
+            this.btnContactUpdate.Click += new System.EventHandler(this.btnContactUpdate_Click);
             // 
             // label36
             // 
@@ -1005,6 +1009,16 @@
             this.cmbContactAddress.Name = "cmbContactAddress";
             this.cmbContactAddress.Size = new System.Drawing.Size(170, 21);
             this.cmbContactAddress.TabIndex = 77;
+            // 
+            // btnContactNew
+            // 
+            this.btnContactNew.Location = new System.Drawing.Point(438, 258);
+            this.btnContactNew.Name = "btnContactNew";
+            this.btnContactNew.Size = new System.Drawing.Size(45, 23);
+            this.btnContactNew.TabIndex = 80;
+            this.btnContactNew.Text = "New";
+            this.btnContactNew.UseVisualStyleBackColor = true;
+            this.btnContactNew.Click += new System.EventHandler(this.btnContactNew_Click);
             // 
             // label34
             // 
@@ -1047,6 +1061,7 @@
             this.btnPos.TabIndex = 66;
             this.btnPos.Text = "+";
             this.btnPos.UseVisualStyleBackColor = true;
+            this.btnPos.Click += new System.EventHandler(this.btnPos_Click);
             // 
             // btnDep
             // 
@@ -1056,6 +1071,7 @@
             this.btnDep.TabIndex = 64;
             this.btnDep.Text = "+";
             this.btnDep.UseVisualStyleBackColor = true;
+            this.btnDep.Click += new System.EventHandler(this.btnDep_Click);
             // 
             // cmbLanguage
             // 
@@ -1118,6 +1134,7 @@
             this.cmbDepartment.Name = "cmbDepartment";
             this.cmbDepartment.Size = new System.Drawing.Size(170, 21);
             this.cmbDepartment.TabIndex = 63;
+            this.cmbDepartment.SelectedIndexChanged += new System.EventHandler(this.cmbDepartment_SelectedIndexChanged);
             // 
             // label35
             // 
@@ -1230,6 +1247,7 @@
             this.btnSave.Size = new System.Drawing.Size(52, 52);
             this.btnSave.TabIndex = 144;
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // lblClose
             // 

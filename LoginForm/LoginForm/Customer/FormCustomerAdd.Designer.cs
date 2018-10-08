@@ -1412,7 +1412,7 @@
             // 
             // AdressCancel
             // 
-            this.AdressCancel.Location = new System.Drawing.Point(604, 224);
+            this.AdressCancel.Location = new System.Drawing.Point(604, 223);
             this.AdressCancel.Name = "AdressCancel";
             this.AdressCancel.Size = new System.Drawing.Size(65, 23);
             this.AdressCancel.TabIndex = 78;
