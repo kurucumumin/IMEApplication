@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using static LoginForm.Services.MyClasses.MyAuthority;
 
@@ -1526,6 +1527,35 @@ namespace LoginForm
             try { c_departmentID = ((CustomerDepartment)((ComboBox)sender).SelectedItem).ID; } catch { c_departmentID = 0; }
             cmbPosition.DataSource = IME.CustomerTitles.ToList();
             cmbPosition.DisplayMember = "titlename";
+        }
+
+        private void txtContactMail_Leave(object sender, EventArgs e)
+        {
+            string pattern = "^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$";
+            if (Regex.IsMatch(txtContactMail.Text, pattern))
+            {
+                errorProvider1.Clear();
+            }
+            else
+            {
+                errorProvider1.SetError(this.txtContactMail, "Please provide valid Mail address !" + "\n" + "www.imeturkey.com");
+                //ContactEmail.Focus();
+                return;
+            }
+        }
+
+        private void txtWeb_Leave(object sender, EventArgs e)
+        {
+            string pattern = @"^(www\.)([\w]+)\.([\w]+)$";
+            if (Regex.IsMatch(txtWeb.Text, pattern))
+            {
+                errorProvider2.Clear();
+            }
+            else
+            {
+                errorProvider2.SetError(this.txtWeb, "Please provide valid Web address !" + "\n" + "www.imeturkey.com");
+                return;
+            }
         }
     }
 }

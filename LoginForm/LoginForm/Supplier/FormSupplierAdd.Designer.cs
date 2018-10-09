@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupInfo = new System.Windows.Forms.GroupBox();
             this.cmbMainContact = new System.Windows.Forms.ComboBox();
             this.label28 = new System.Windows.Forms.Label();
@@ -138,10 +139,14 @@
             this.lblAdd = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.lblClose = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupInfo.SuspendLayout();
             this.groupAddresses.SuspendLayout();
             this.groupAcconutBank.SuspendLayout();
             this.groupContact.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             this.SuspendLayout();
             // 
             // groupInfo
@@ -201,6 +206,7 @@
             this.txtWeb.Name = "txtWeb";
             this.txtWeb.Size = new System.Drawing.Size(138, 20);
             this.txtWeb.TabIndex = 44;
+            this.txtWeb.Leave += new System.EventHandler(this.txtWeb_Leave);
             // 
             // label18
             // 
@@ -1109,6 +1115,7 @@
             this.txtContactMail.Name = "txtContactMail";
             this.txtContactMail.Size = new System.Drawing.Size(170, 20);
             this.txtContactMail.TabIndex = 70;
+            this.txtContactMail.Leave += new System.EventHandler(this.txtContactMail_Leave);
             // 
             // txtContactName
             // 
@@ -1259,6 +1266,14 @@
             this.lblClose.TabIndex = 147;
             this.lblClose.Text = "Close";
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // errorProvider2
+            // 
+            this.errorProvider2.ContainerControl = this;
+            // 
             // FormSupplierAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1294,6 +1309,8 @@
             this.groupAcconutBank.PerformLayout();
             this.groupContact.ResumeLayout(false);
             this.groupContact.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1410,5 +1427,7 @@
         private System.Windows.Forms.ComboBox cmbTown;
         private System.Windows.Forms.ComboBox cmbCity;
         private System.Windows.Forms.ComboBox cmbCountry;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ErrorProvider errorProvider2;
     }
 }

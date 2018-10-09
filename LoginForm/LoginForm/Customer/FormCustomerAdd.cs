@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using LoginForm.Services;
 using System.Drawing;
 using LoginForm.clsClasses;
+using System.Text.RegularExpressions;
 
 namespace LoginForm
 {
@@ -1370,6 +1371,35 @@ namespace LoginForm
         {
             GroupBox box = sender as GroupBox;
             DrawGroupBox(box, e.Graphics, Color.Red, Color.WhiteSmoke);
+        }
+
+        private void ContactEmail_Leave(object sender, EventArgs e)
+        {
+            string pattern = "^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$";
+            if (Regex.IsMatch(ContactEmail.Text, pattern))
+            {
+                errorProvider1.Clear();
+            }
+            else
+            {
+                errorProvider1.SetError(this.ContactEmail, "Please provide valid Mail address !" + "\n" + "info@imeturkey.com");
+                //ContactEmail.Focus();
+                return;
+            }
+        }
+
+        private void WebAdress_Leave(object sender, EventArgs e)
+        {
+            string pattern = @"^(www\.)([\w]+)\.([\w]+)$";
+            if (Regex.IsMatch(WebAdress.Text, pattern))
+            {
+                errorProvider2.Clear();
+            }
+            else
+            {
+                errorProvider2.SetError(this.WebAdress, "Please provide valid Web address !" + "\n" + "www.imeturkey.com");
+                return;
+            }
         }
     }
 }

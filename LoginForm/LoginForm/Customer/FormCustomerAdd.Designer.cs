@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupCompany = new System.Windows.Forms.GroupBox();
             this.txt3partyCode = new System.Windows.Forms.TextBox();
             this.label43 = new System.Windows.Forms.Label();
@@ -149,6 +150,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupCompany.SuspendLayout();
             this.groupAccount.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.factor)).BeginInit();
@@ -159,6 +162,8 @@
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             this.SuspendLayout();
             // 
             // groupCompany
@@ -199,7 +204,7 @@
             this.groupCompany.ForeColor = System.Drawing.SystemColors.ControlText;
             this.groupCompany.Location = new System.Drawing.Point(3, 3);
             this.groupCompany.Name = "groupCompany";
-            this.groupCompany.Size = new System.Drawing.Size(689, 284);
+            this.groupCompany.Size = new System.Drawing.Size(702, 284);
             this.groupCompany.TabIndex = 0;
             this.groupCompany.TabStop = false;
             this.groupCompany.Text = "COMPANY INFO";
@@ -438,6 +443,7 @@
             this.WebAdress.Name = "WebAdress";
             this.WebAdress.Size = new System.Drawing.Size(199, 20);
             this.WebAdress.TabIndex = 126;
+            this.WebAdress.Leave += new System.EventHandler(this.WebAdress_Leave);
             // 
             // CustomerFax
             // 
@@ -562,9 +568,9 @@
             this.groupAccount.Controls.Add(this.label21);
             this.groupAccount.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupAccount.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.groupAccount.Location = new System.Drawing.Point(698, 3);
+            this.groupAccount.Location = new System.Drawing.Point(711, 3);
             this.groupAccount.Name = "groupAccount";
-            this.groupAccount.Size = new System.Drawing.Size(690, 284);
+            this.groupAccount.Size = new System.Drawing.Size(677, 284);
             this.groupAccount.TabIndex = 1;
             this.groupAccount.TabStop = false;
             this.groupAccount.Text = "ACCOUNT";
@@ -1274,6 +1280,7 @@
             this.ContactEmail.Name = "ContactEmail";
             this.ContactEmail.Size = new System.Drawing.Size(175, 20);
             this.ContactEmail.TabIndex = 62;
+            this.ContactEmail.Leave += new System.EventHandler(this.ContactEmail_Leave);
             // 
             // label32
             // 
@@ -1319,7 +1326,7 @@
             // 
             this.label69.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label69.AutoSize = true;
-            this.label69.Location = new System.Drawing.Point(645, 71);
+            this.label69.Location = new System.Drawing.Point(632, 71);
             this.label69.Name = "label69";
             this.label69.Size = new System.Drawing.Size(33, 13);
             this.label69.TabIndex = 65;
@@ -1329,7 +1336,7 @@
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.Image = global::LoginForm.Properties.Resources.if_floppy_285657;
-            this.btnSave.Location = new System.Drawing.Point(580, 11);
+            this.btnSave.Location = new System.Drawing.Point(567, 11);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(52, 52);
             this.btnSave.TabIndex = 60;
@@ -1340,7 +1347,7 @@
             // 
             this.label67.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label67.AutoSize = true;
-            this.label67.Location = new System.Drawing.Point(591, 71);
+            this.label67.Location = new System.Drawing.Point(578, 71);
             this.label67.Name = "label67";
             this.label67.Size = new System.Drawing.Size(32, 13);
             this.label67.TabIndex = 63;
@@ -1350,7 +1357,7 @@
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
-            this.btnClose.Location = new System.Drawing.Point(635, 11);
+            this.btnClose.Location = new System.Drawing.Point(622, 11);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(52, 52);
             this.btnClose.TabIndex = 61;
@@ -1488,8 +1495,8 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.97052F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.02948F));
             this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.groupCompany, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.groupAccount, 1, 0);
@@ -1512,9 +1519,9 @@
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Controls.Add(this.label69);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(698, 583);
+            this.panel1.Location = new System.Drawing.Point(711, 583);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(690, 94);
+            this.panel1.Size = new System.Drawing.Size(677, 94);
             this.panel1.TabIndex = 0;
             // 
             // panel2
@@ -1530,7 +1537,7 @@
             this.panel2.Location = new System.Drawing.Point(3, 293);
             this.panel2.MinimumSize = new System.Drawing.Size(689, 284);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(689, 284);
+            this.panel2.Size = new System.Drawing.Size(702, 284);
             this.panel2.TabIndex = 2;
             // 
             // panel3
@@ -1543,10 +1550,18 @@
             this.panel3.Controls.Add(this.btnContactAdd);
             this.panel3.Controls.Add(this.ContactList);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(698, 293);
+            this.panel3.Location = new System.Drawing.Point(711, 293);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(690, 284);
+            this.panel3.Size = new System.Drawing.Size(677, 284);
             this.panel3.TabIndex = 3;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // errorProvider2
+            // 
+            this.errorProvider2.ContainerControl = this;
             // 
             // FormCustomerAdd
             // 
@@ -1576,6 +1591,8 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1703,5 +1720,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ErrorProvider errorProvider2;
     }
 }
