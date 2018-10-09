@@ -95,6 +95,7 @@
             this.CustomerSearchGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.CustomerSearchGrid.Size = new System.Drawing.Size(1286, 394);
             this.CustomerSearchGrid.TabIndex = 1;
+            this.CustomerSearchGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CustomerSearchGrid_CellClick);
             this.CustomerSearchGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CustomerSearchGrid_CellDoubleClick);
             this.CustomerSearchGrid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CustomerSearchGrid_KeyDown);
             // 

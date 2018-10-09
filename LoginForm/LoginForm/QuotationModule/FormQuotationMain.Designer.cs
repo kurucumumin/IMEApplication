@@ -61,6 +61,7 @@
             this.cOPYQUOTATIONToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mODIFYQUOTATIONToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uPDATEQUOTATIONToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cREATESALEORDERToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSearchStockNumber = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
@@ -91,7 +92,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dtpToDate = new System.Windows.Forms.DateTimePicker();
             this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
-            this.cREATESALEORDERToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgQuotation)).BeginInit();
             this.gridRightClick.SuspendLayout();
@@ -305,7 +306,7 @@
             this.uPDATEQUOTATIONToolStripMenuItem,
             this.cREATESALEORDERToolStripMenuItem});
             this.gridRightClick.Name = "gridRightClick";
-            this.gridRightClick.Size = new System.Drawing.Size(195, 224);
+            this.gridRightClick.Size = new System.Drawing.Size(195, 202);
             // 
             // dELETEQUOTATIONToolStripMenuItem
             // 
@@ -362,6 +363,13 @@
             this.uPDATEQUOTATIONToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.uPDATEQUOTATIONToolStripMenuItem.Text = "MODIFY";
             this.uPDATEQUOTATIONToolStripMenuItem.Click += new System.EventHandler(this.uPDATEQUOTATIONToolStripMenuItem_Click);
+            // 
+            // cREATESALEORDERToolStripMenuItem
+            // 
+            this.cREATESALEORDERToolStripMenuItem.Name = "cREATESALEORDERToolStripMenuItem";
+            this.cREATESALEORDERToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.cREATESALEORDERToolStripMenuItem.Text = "CREATE SALE ORDER";
+            this.cREATESALEORDERToolStripMenuItem.Click += new System.EventHandler(this.cREATESALEORDERToolStripMenuItem_Click);
             // 
             // panel1
             // 
@@ -536,7 +544,6 @@
             this.label8.Size = new System.Drawing.Size(32, 15);
             this.label8.TabIndex = 30;
             this.label8.Text = "Print";
-            this.label8.Visible = false;
             // 
             // label7
             // 
@@ -561,7 +568,6 @@
             this.button5.Size = new System.Drawing.Size(52, 52);
             this.button5.TabIndex = 28;
             this.button5.UseVisualStyleBackColor = true;
-            this.button5.Visible = false;
             this.button5.Click += new System.EventHandler(this.button5_Click_1);
             // 
             // btnExcel
@@ -734,12 +740,9 @@
             this.dtpFromDate.Size = new System.Drawing.Size(119, 21);
             this.dtpFromDate.TabIndex = 19;
             // 
-            // cREATESALEORDERToolStripMenuItem
+            // printDocument1
             // 
-            this.cREATESALEORDERToolStripMenuItem.Name = "cREATESALEORDERToolStripMenuItem";
-            this.cREATESALEORDERToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            this.cREATESALEORDERToolStripMenuItem.Text = "CREATE SALE ORDER";
-            this.cREATESALEORDERToolStripMenuItem.Click += new System.EventHandler(this.cREATESALEORDERToolStripMenuItem_Click);
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
             // FormQuotationMain
             // 
@@ -835,5 +838,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Rep2;
         private System.Windows.Forms.DataGridViewTextBoxColumn SaleOrderID;
         private System.Windows.Forms.ToolStripMenuItem cREATESALEORDERToolStripMenuItem;
+        private System.Drawing.Printing.PrintDocument printDocument1;
     }
 }

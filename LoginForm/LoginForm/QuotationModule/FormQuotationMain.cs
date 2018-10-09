@@ -6,7 +6,7 @@ using System.Data;
 using System.Windows.Forms;
 using LoginForm.Services;
 using static LoginForm.Services.MyClasses.MyAuthority;
-
+using System.Drawing;
 
 namespace LoginForm.QuotationModule
 {
@@ -1329,7 +1329,34 @@ namespace LoginForm.QuotationModule
         }
         private void button5_Click_1(object sender, EventArgs e)
         {
-            Utils.LogKayit("Quotation", "Quotation print");
+            //printDocument1.Print();
+            //Utils.LogKayit("Quotation", "Quotation print");
+
+            if (dgQuotation.CurrentRow != null)
+            {
+                string QuotationNo = dgQuotation.CurrentRow.Cells["QuotationNo"].Value.ToString();
+                Quotation quo;
+
+                IMEEntities IME = new IMEEntities();
+                try
+                {
+                    quo = IME.Quotations.Where(q => q.QuotationNo == QuotationNo).FirstOrDefault();
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+                if (quo != null)
+                {
+                    QuotationExcelExport.QuotationMainPrintExport(quo);
+                    Utils.LogKayit("Quotation", "Quotation print");
+                }
+            }
+            else
+            {
+                MessageBox.Show("You did not chose any quotation.", "Warning!");
+            }
         }
 
         private void dISCONTINUEDUSERToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1339,7 +1366,32 @@ namespace LoginForm.QuotationModule
 
         private void cOPYQUOTATIONToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Utils.LogKayit("Quotation", "Quotation copy quotation");
+            if (dgQuotation.CurrentRow != null)
+            {
+                string QuotationNo = dgQuotation.CurrentRow.Cells["QuotationNo"].Value.ToString();
+                Quotation quo;
+
+                IMEEntities IME = new IMEEntities();
+                try
+                {
+                    quo = IME.Quotations.Where(q => q.QuotationNo == QuotationNo).FirstOrDefault();
+                    if (quo != null)
+                    {
+                        FormQuotationAdd newForm = new FormQuotationAdd(quo, this, "Copy");
+                        Utils.LogKayit("Quotation", "Quotation copy quotation");
+                        newForm.ShowDialog();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw;
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("You did not chose any quotation.", "Warning!");
+            }
         }
 
         private void cREATESALEORDERToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1433,6 +1485,13 @@ namespace LoginForm.QuotationModule
             {
                 MessageBox.Show("At least one quotation should be choosen!","Warning");
             }
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            Bitmap bm = new Bitmap(this.dgQuotation.Width, this.dgQuotation.Height);
+            dgQuotation.DrawToBitmap(bm, new Rectangle(0, 0, this.dgQuotation.Width, this.dgQuotation.Height));
+            e.Graphics.DrawImage(bm,10,10);
         }
     }
 }

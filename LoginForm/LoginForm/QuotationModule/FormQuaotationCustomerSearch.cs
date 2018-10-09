@@ -146,8 +146,8 @@ namespace LoginForm.QuotationModule
             label1.Text = "Customer Code";
             label2.Text = "Customer Name";
             label3.Text = "Add New Customer";
-            CustomerCode.Text = QuotationUtils.customersearchID.ToString();
-            CustomerName.Text = QuotationUtils.customersearchname;
+            CustomerCode.Text = QuotationUtils.customersearchname.ToString();
+            CustomerName.Text = QuotationUtils.customersearchID;
             List<Customer> c = QuotationUtils.CustomerSearch();
             CustomerSearchGrid.DataSource = c;
             if (fromXmlCustomer && c.Count <= 0)
@@ -449,6 +449,8 @@ namespace LoginForm.QuotationModule
                         customer = IME.Customers.Where(a => a.ID == cID).FirstOrDefault();
                         customerName = customer.c_name;
                         customerID = customer.ID;
+                        CustomerCode.Text = customerID;
+                        CustomerName.Text = customerName;
                         //QuotationUtils.customerID = CustomerCode.Text;
                         //QuotationUtils.customername = CustomerName.Text;
 
@@ -464,6 +466,8 @@ namespace LoginForm.QuotationModule
                         customer = IME.Customers.Where(a => a.ID == cID).FirstOrDefault();
                         customerName = customer.c_name;
                         customerID = customer.ID;
+                        CustomerCode.Text = customerID;
+                        CustomerName.Text = customerName;
                         //QuotationUtils.customerID = CustomerCode.Text;
                         //QuotationUtils.customername = CustomerName.Text;
 
@@ -471,7 +475,7 @@ namespace LoginForm.QuotationModule
                         this.Close();
 
                         parent.FillCustomerFromSearch(customerName, customerID);
-                        this.Close();
+                        //this.Close();
                     }
                 }
                 else
@@ -699,6 +703,12 @@ namespace LoginForm.QuotationModule
                 #endregion
 
             }
+        }
+
+        private void CustomerSearchGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            CustomerCode.Text = CustomerSearchGrid.CurrentRow.Cells["ID"].Value.ToString();
+            CustomerName.Text = CustomerSearchGrid.CurrentRow.Cells["c_name"].Value.ToString();
         }
     }
 }

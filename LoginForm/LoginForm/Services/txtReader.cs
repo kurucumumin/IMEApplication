@@ -4009,17 +4009,18 @@ namespace LoginForm
             Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
             object misValue = System.Reflection.Missing.Value;
             string mySheet = @"C:\Users\ImeDemo\Desktop\6944.xlsx";
+            IMEEntities IME = new IMEEntities();
             xlexcel = new Excel.Application();
-
+            QuotationDetail qd = new QuotationDetail();
+            
+            var quoItem = IME.QuotationDetails.Where(x => x.QuotationNo == dg.QuotationNo).ToList();
             Excel.Workbooks books = xlexcel.Workbooks;
 
             Excel.Workbook sheet = books.Open(mySheet);
-
+            int i = 14;
             xlexcel.Visible = true;
             //sheet = xlexcel.Workbooks.Add(misValue);
             xlWorkSheet = (Excel.Worksheet)sheet.Worksheets.get_Item(1);
-
-
 
             xlWorkSheet.Cells[6, 4] = dg.QuotationNo;
             xlWorkSheet.Cells[6, 23] = dg.Customer.CustomerWorker.cw_email;
@@ -4036,6 +4037,25 @@ namespace LoginForm
             xlWorkSheet.Cells[12, 4] = dg.Customer.CustomerWorker.mobilephone;
             xlWorkSheet.Cells[12, 23] = dg.ValidationDay;
             xlWorkSheet.Cells[12, 35] = dg.Worker.mobileNumber;
+
+            foreach (var item in dg.QuotationDetails)
+            {
+                xlWorkSheet.Cells[i, 1] = item.dgNo;
+                xlWorkSheet.Cells[i, 2] = item.ItemCode;
+                xlWorkSheet.Cells[i, 10] = item.CustomerDescription;
+                xlWorkSheet.Cells[i, 15] = item.MPN;
+                //xlWorkSheet.Cells[i, 21] = item.Brand;
+                xlWorkSheet.Cells[i, 24] = item.SSM;
+                xlWorkSheet.Cells[i, 27] = item.Qty / item.SSM;
+                xlWorkSheet.Cells[i, 28] = item.Qty;
+                xlWorkSheet.Cells[i, 31] = item.UCUPCurr;
+                xlWorkSheet.Cells[i, 34] = item.Total;
+                xlWorkSheet.Cells[i, 38] = item.Quotation.DeliveryDate;
+
+                i = i + 1;
+            }
+
+            
 
 
             SaveFileDialog savefile = new SaveFileDialog();
