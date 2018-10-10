@@ -49,6 +49,7 @@ namespace LoginForm.QuotationModule
         string cName = "";
         string cID = "";
         int hata = 0;
+        int sayac = 0;
         #endregion
 
         public FormQuotationAdd(FormQuaotationCustomerSearch parent, string customerName, string customerId)
@@ -113,17 +114,15 @@ namespace LoginForm.QuotationModule
 
             cName = customerName;
             cID = customerId;
+            txtCustomerName.Text = cName;
+            CustomerCode.Text = cID;
+            var customerList = IME.Customers.Where(a => a.c_name.Contains(txtCustomerName.Text)).ToList();
+            customer = customerList.FirstOrDefault();
 
             if (customer != null && customerName != null && customerName != "")
             {
                 #region customer
-                txtCustomerName.Text = cName;
-                CustomerCode.Text = cID;
-
-                var customerList = IME.Customers.Where(a => a.c_name.Contains(txtCustomerName.Text)).ToList();
-
                 this.Enabled = true;
-                customer = customerList.FirstOrDefault();
                 cbWorkers.Items.AddRange(customer.CustomerWorkers.ToArray());
                 cbWorkers.DisplayMember = "cw_name";
                 cbWorkers.ValueMember = "ID";
@@ -4905,9 +4904,10 @@ namespace LoginForm.QuotationModule
         {
             frmQuotationGridCustomize form = new frmQuotationGridCustomize(dgQuotationAddedItems);
             form.ShowDialog();
+            
 
             List<int> quotationVisibleFalseNames = QuotationDatagridCustomize.VisibleFalseNames;
-            ;
+            List<int> quotationVisibleTrueNames = QuotationDatagridCustomize.VisibleTrueNames;
             foreach (DataGridViewColumn item in dgQuotationAddedItems.Columns)
             {
                 if (item.Name != "dgHZ" && item.Name != "dgCL" && item.Name != "dgCR") item.Visible = true;
@@ -4916,6 +4916,7 @@ namespace LoginForm.QuotationModule
             {
                 dgQuotationAddedItems.Columns[item].Visible = false;
             }
+            //sayac = dgQuotationAddedItems.ColumnCount - QuotationDatagridCustomize.VisibleFalseNames.Count;
         }
 
         private void btnExcelExport_Click(object sender, EventArgs e)

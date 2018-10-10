@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnSelect = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -37,15 +41,19 @@
             this.txtSearchText = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.dgItemList = new System.Windows.Forms.DataGridView();
+            this.dgItems = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgItemList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgItems)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.btnClear);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.btnSearch);
             this.panel1.Controls.Add(this.btnSelect);
             this.panel1.Controls.Add(this.label2);
@@ -57,6 +65,46 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1022, 100);
             this.panel1.TabIndex = 5;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(807, 65);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(52, 15);
+            this.label4.TabIndex = 37;
+            this.label4.Text = "Clear All";
+            this.label4.Visible = false;
+            // 
+            // btnClear
+            // 
+            this.btnClear.Image = global::LoginForm.Properties.Resources.if_Line_ui_icons_Svg_03_1465842;
+            this.btnClear.Location = new System.Drawing.Point(807, 12);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(52, 52);
+            this.btnClear.TabIndex = 36;
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Visible = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // button1
+            // 
+            this.button1.Image = global::LoginForm.Properties.Resources.if_floppy_285657;
+            this.button1.Location = new System.Drawing.Point(958, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(52, 52);
+            this.button1.TabIndex = 35;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(966, 65);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(37, 15);
+            this.label3.TabIndex = 34;
+            this.label3.Text = "Done";
             // 
             // btnSearch
             // 
@@ -70,21 +118,23 @@
             // btnSelect
             // 
             this.btnSelect.Image = global::LoginForm.Properties.Resources.if_Select_46755;
-            this.btnSelect.Location = new System.Drawing.Point(950, 12);
+            this.btnSelect.Location = new System.Drawing.Point(883, 12);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(52, 52);
             this.btnSelect.TabIndex = 32;
             this.btnSelect.UseVisualStyleBackColor = true;
+            this.btnSelect.Visible = false;
             this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(947, 65);
+            this.label2.Location = new System.Drawing.Point(880, 65);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 15);
             this.label2.TabIndex = 31;
             this.label2.Text = "Select All";
+            this.label2.Visible = false;
             // 
             // label5
             // 
@@ -128,7 +178,7 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.dgItemList);
+            this.panel2.Controls.Add(this.dgItems);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 103);
             this.panel2.Name = "panel2";
@@ -136,21 +186,19 @@
             this.panel2.Size = new System.Drawing.Size(1016, 340);
             this.panel2.TabIndex = 0;
             // 
-            // dgItemList
+            // dgItems
             // 
-            this.dgItemList.AllowUserToAddRows = false;
-            this.dgItemList.AllowUserToDeleteRows = false;
-            this.dgItemList.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
-            this.dgItemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgItemList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgItemList.Location = new System.Drawing.Point(8, 8);
-            this.dgItemList.Name = "dgItemList";
-            this.dgItemList.ReadOnly = true;
-            this.dgItemList.RowTemplate.Height = 24;
-            this.dgItemList.Size = new System.Drawing.Size(1000, 324);
-            this.dgItemList.TabIndex = 1;
-            this.dgItemList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgItemList_KeyDown);
-            this.dgItemList.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgItemList_MouseDoubleClick);
+            this.dgItems.AllowUserToAddRows = false;
+            this.dgItems.AllowUserToDeleteRows = false;
+            this.dgItems.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
+            this.dgItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgItems.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgItems.Location = new System.Drawing.Point(8, 8);
+            this.dgItems.Name = "dgItems";
+            this.dgItems.ReadOnly = true;
+            this.dgItems.RowTemplate.Height = 24;
+            this.dgItems.Size = new System.Drawing.Size(1000, 324);
+            this.dgItems.TabIndex = 1;
             // 
             // FormQuotationMPN
             // 
@@ -168,7 +216,7 @@
             this.panel1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgItemList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgItems)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -179,10 +227,14 @@
         private System.Windows.Forms.Label label1; 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataGridView dgItemList;
+        private System.Windows.Forms.DataGridView dgItems;
         private System.Windows.Forms.Label label5; 
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnSelect;
         private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnClear;
     }
 }

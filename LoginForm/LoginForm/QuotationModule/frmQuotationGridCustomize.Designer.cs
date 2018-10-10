@@ -113,7 +113,6 @@
             this.Controls.Add(this.DoneButton);
             this.Name = "frmQuotationGridCustomize";
             this.Text = "Quotation Grid Customize";
-            this.Load += new System.EventHandler(this.frmQuotationGridCustomize_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

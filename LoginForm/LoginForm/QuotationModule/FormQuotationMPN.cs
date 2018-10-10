@@ -1,5 +1,7 @@
-﻿using LoginForm.Services;
+﻿using LoginForm.DataSet;
+using LoginForm.Services;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -15,49 +17,54 @@ namespace LoginForm.QuotationModule
         public FormQuotationMPN(object parent, dynamic List)
         {
             InitializeComponent();
-            dgItemList.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
+            dgItems.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
             _parent = parent;
             this.ItemList = List;
         }
 
         private void FormQuotationMPN_Load(object sender, EventArgs e)
         {
-            dgItemList.DataSource = ItemList;
-        }
-        
-
-        private void dgItemList_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter && dgItemList.SelectedRows != null)
-            {
-                btnSelect.PerformClick();
-            }
-        }
-
-        private void dgItemList_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            if (dgItemList.SelectedRows != null)
-            {
-                btnSelect.PerformClick();
-            }
+            dgItems.DataSource = ItemList;
         }
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
-            QuotationUtils.ItemCode = dgItemList.CurrentRow.Cells[0].Value.ToString();
+            //for (int i = 0; i < dgItems.Rows.Count; i++)
+            //{
+            //    dgItems.Rows[i].Cells[chk.Index].Value = true;
+            //}
+        }
+
+        private void SelectedMpn()
+        {
+            QuotationUtils.ItemCode = dgItems.CurrentRow.Cells[0].Value.ToString();
 
             switch (_parent.GetType().Name)
             {
                 case "FormQuotationItemSearch":
-                    ((FormQuotationItemSearch)_parent).ItemCode = dgItemList.CurrentRow.Cells[0].Value.ToString();
+                    ((FormQuotationItemSearch)_parent).ItemCode = dgItems.CurrentRow.Cells[0].Value.ToString();
                     break;
+
                 case "ExperimentQuotationAdd":
-                    ItemCode = dgItemList.CurrentRow.Cells[0].Value.ToString();
+                    ItemCode = dgItems.CurrentRow.Cells[0].Value.ToString();
                     break;
                 default:
                     break;
             }
             this.Close();
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            //for (int i = 0; i < dgItems.Rows.Count; i++)
+            //{
+            //    dgItems.Rows[i].Cells[chk.Index].Value = false;
+            //}
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SelectedMpn();
         }
     }
 }

@@ -707,8 +707,8 @@ namespace LoginForm.QuotationModule
 
         private void CustomerSearchGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            CustomerCode.Text = CustomerSearchGrid.CurrentRow.Cells["ID"].Value.ToString();
-            CustomerName.Text = CustomerSearchGrid.CurrentRow.Cells["c_name"].Value.ToString();
+            //CustomerCode.Text = CustomerSearchGrid.CurrentRow.Cells["ID"].Value.ToString();
+            //CustomerName.Text = CustomerSearchGrid.CurrentRow.Cells["c_name"].Value.ToString();
         }
     }
 }
