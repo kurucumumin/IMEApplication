@@ -1957,11 +1957,11 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("QuotationADD", customerIDParameter, noteForUsIDParameter, noteForCustomerIDParameter, forFinancelIsTrueParameter, shippingMethodIDParameter, isItemCostParameter, isWeightCostParameter, isCustomsDutiesParameter, discOnSubTotal2Parameter, extraChargesParameter, subTotalParameter, startDateParameter, validationDayParameter, paymentIDParameter, currParameter, factorParameter, isVatValueParameter, vatValueParameter, currNameParameter, quotationNoParameter, rFQNoParameter, currTypeParameter, quotationMainContactParameter, approvedParameter, saleOrderIDParameter, voucherNoParameter, representativeIDParameter, representativeID2Parameter, exchangeRateIDParameter, deliveryDateParameter, grossTotalParameter);
         }
     
-        public virtual int QuotationDetailsADD(Nullable<int> dgNo, string itemCode, Nullable<int> qty, Nullable<decimal> uCUPCurr, Nullable<decimal> disc, Nullable<decimal> total, Nullable<decimal> targetUP, string competitor, string customerDescription, string customerStockCode, Nullable<int> isDeleted, string quotationNo, Nullable<decimal> uPIME, Nullable<decimal> marge, string unitOfMeasure, Nullable<int> uC, Nullable<int> sSM, Nullable<decimal> unitWeight, string dependantTable, Nullable<decimal> unitConversionId)
+        public virtual int QuotationDetailsADD(Nullable<decimal> dgNo, string itemCode, Nullable<int> qty, Nullable<decimal> uCUPCurr, Nullable<decimal> disc, Nullable<decimal> total, Nullable<decimal> targetUP, string competitor, string customerDescription, string customerStockCode, Nullable<int> isDeleted, string quotationNo, Nullable<decimal> uPIME, Nullable<decimal> marge, string unitOfMeasure, Nullable<int> uC, Nullable<int> sSM, Nullable<decimal> unitWeight, string dependantTable, Nullable<decimal> unitConversionId)
         {
             var dgNoParameter = dgNo.HasValue ?
                 new ObjectParameter("dgNo", dgNo) :
-                new ObjectParameter("dgNo", typeof(int));
+                new ObjectParameter("dgNo", typeof(decimal));
     
             var itemCodeParameter = itemCode != null ?
                 new ObjectParameter("ItemCode", itemCode) :

@@ -520,7 +520,7 @@ namespace LoginForm
                         item.DependantItemFile = "SuperDisk";
                             SqlCommand cmd = new SqlCommand();
                             cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Connection = ImeSqlConnect("195.201.76.136", "IME", "sa", "ime1453..");
+                        cmd.Connection = ImeSqlConnect("159.69.213.172", "IME", "sa", "IME1453");
                         
                         cmd.CommandText = @"[ItemAdd]";
 

@@ -21,7 +21,7 @@ namespace LoginForm.DataSet
         }
     
         public int ID { get; set; }
-        public Nullable<int> dgNo { get; set; }
+        public Nullable<decimal> dgNo { get; set; }
         public string ItemCode { get; set; }
         public Nullable<int> Qty { get; set; }
         public Nullable<decimal> UCUPCurr { get; set; }

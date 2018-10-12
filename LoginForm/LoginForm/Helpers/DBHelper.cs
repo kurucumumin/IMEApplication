@@ -12,9 +12,9 @@ namespace Helpers
     public static class DBHelper
     {
 #if DEBUG
-        private static string defaultConnectionString = "Data Source=195.201.76.156\\MSSQL4;Initial Catalog=IME;Persist Security Info=True;User ID=Sa;Password=Data Source=195.201.76.156\\MSSQL4;Initial Catalog=IME;Persist Security Info=True;User ID=Sa;Password=IME1453";
+        private static string defaultConnectionString = "Data Source=159.69.213.172;Initial Catalog=IME;Persist Security Info=True;User ID=sa;Password=Data Source=159.69.213.172;Initial Catalog=IME;Persist Security Info=True;User ID=sa;Password=IME1453";
 #else
-        private static string defaultConnectionString = "Data Source=195.201.76.156\\MSSQL4;Initial Catalog=IME;Persist Security Info=True;User ID=Sa;Password=Data Source=195.201.76.156\\MSSQL4;Initial Catalog=IME;Persist Security Info=True;User ID=Sa;Password=IME1453";
+        private static string defaultConnectionString = "Data Source=159.69.213.172;Initial Catalog=IME;Persist Security Info=True;User ID=sa;Password=Data Source=159.69.213.172;Initial Catalog=IME;Persist Security Info=True;User ID=sa;Password=IME1453";
 #endif
         public static string DefaultConnectionString { 
             get {

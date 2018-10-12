@@ -5,13 +5,16 @@
 // licensing@syncfusion.com. Any infringement will be prosecuted under
 // applicable laws. 
 #endregion
+using ImeLogoLibrary;
 using LoginForm.BackOrder;
 using LoginForm.Billing;
+using LoginForm.clsClasses;
 using LoginForm.DataSet;
 using LoginForm.f_RSInvoice;
 using LoginForm.ItemModule;
 using LoginForm.Management;
 using LoginForm.ManagementModule;
+using LoginForm.MyClasses;
 using LoginForm.nsSaleOrder;
 using LoginForm.PurchaseOrder;
 using LoginForm.QuotationModule;
@@ -19,6 +22,7 @@ using LoginForm.Services;
 using LoginForm.User;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using static LoginForm.Services.MyClasses.MyAuthority;
@@ -33,6 +37,14 @@ namespace LoginForm.Main
         string animMode = "Extend";
         int maxSubPanelHeight;
         int ExtendingPanelHeight = 324;
+        LogoSQL logosql = new LogoSQL();
+
+        private readonly string server = @"159.69.213.172";
+        private readonly string imedatabase = "IME";
+        private readonly string logodatabase = "TEST";
+        private readonly string sqluser = "sa";
+        private readonly string sqlpassword = "IME1453";
+
         public frmMainMetro()
         {
             InitializeComponent();
@@ -149,6 +161,7 @@ namespace LoginForm.Main
             //ExchangeRate gbp = db.Currencies.Where(x => x.currencyName == "Pound").
             //    FirstOrDefault().ExchangeRates.OrderByDescending(x => x.date).FirstOrDefault();
 
+            #region ESKÝ KUR ÇEKME
             var gbp = db.prc_GetLastExchangeRateWithCurrencyName("Pound").FirstOrDefault();
 
             lblGBP.Text = ((decimal)gbp.rate).ToString("N4");
@@ -156,8 +169,12 @@ namespace LoginForm.Main
             var usd = db.prc_GetLastExchangeRateWithCurrencyName("Dollar").FirstOrDefault();
 
             lblUSD.Text = ((decimal)usd.rate).ToString("N4");
+            #endregion
+
+
+            //   lblGBP.Text 
         }
-        
+
         private void timer2_Tick(object sender, EventArgs e)
         {
             if (animMode == "Extend")

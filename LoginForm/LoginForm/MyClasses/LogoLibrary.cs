@@ -10,11 +10,11 @@ namespace LoginForm.MyClasses
 {
     public class LogoLibrary
     {
-        private readonly string server = @"195.201.76.136";
+        private readonly string server = @"159.69.213.172";
         private readonly string imedatabase = "IME";
         private readonly string logodatabase = "TEST";
         private readonly string sqluser = "sa";
-        private readonly string sqlpassword = "ime1453..";
+        private readonly string sqlpassword = "IME1453";
 
         static public string AddSuccessful = "Added successfully";
         static public string DeleteSuccessful = "Deleted successfully";

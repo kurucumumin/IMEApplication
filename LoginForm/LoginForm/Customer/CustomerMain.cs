@@ -621,7 +621,7 @@ namespace LoginForm
                 bgw_CustomerSearch.RunWorkerAsync();
 
                 //SqlConnection conn = new SqlConnection();
-                //conn.ConnectionString = @"Data Source=195.201.76.136;Initial Catalog=IME;Persist Security Info=True;User ID=sa;Password=ime1453..";
+                //conn.ConnectionString = @"Data Source=159.69.213.172;Initial Catalog=IME;Persist Security Info=True;User ID=sa;Password=IME1453";
 
                 //SqlCommand command = new SqlCommand();
                 //command.Connection = conn;

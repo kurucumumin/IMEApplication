@@ -835,7 +835,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="dgNo" Type="int" />
+          <Property Name="dgNo" Type="decimal" Precision="20" Scale="1" />
           <Property Name="ItemCode" Type="nvarchar" MaxLength="20" />
           <Property Name="Qty" Type="int" />
           <Property Name="UCUPCurr" Type="decimal" Precision="20" Scale="5" />
@@ -3537,7 +3537,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Parameter Name="GrossTotal" Type="decimal" Mode="In" />
         </Function>
         <Function Name="QuotationDetailsADD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="dgNo" Type="int" Mode="In" />
+          <Parameter Name="dgNo" Type="decimal" Mode="In" />
           <Parameter Name="ItemCode" Type="nvarchar" Mode="In" />
           <Parameter Name="Qty" Type="int" Mode="In" />
           <Parameter Name="UCUPCurr" Type="decimal" Mode="In" />
@@ -5365,7 +5365,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="dgNo" Type="Int32" />
+          <Property Name="dgNo" Type="Decimal" Precision="20" Scale="1" />
           <Property Name="ItemCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Qty" Type="Int32" />
           <Property Name="UCUPCurr" Type="Decimal" Precision="20" Scale="5" />
@@ -8675,7 +8675,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="GrossTotal" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="QuotationDetailsADD">
-            <Parameter Name="dgNo" Mode="In" Type="Int32" />
+            <Parameter Name="dgNo" Mode="In" Type="Decimal" />
             <Parameter Name="ItemCode" Mode="In" Type="String" />
             <Parameter Name="Qty" Mode="In" Type="Int32" />
             <Parameter Name="UCUPCurr" Mode="In" Type="Decimal" />
