@@ -1370,7 +1370,7 @@ namespace LoginForm.QuotationModule
                 dgQuotationAddedItems.CurrentRow.Cells["dgCustDescription"].ReadOnly = false;
                 dgQuotationAddedItems.CurrentRow.Cells["dgCustDescription"].Style = dgQuotationAddedItems.DefaultCellStyle;
 
-                if (dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index].Value.ToString() != "")
+                if (dgQuotationAddedItems.CurrentRow.Cells["dgQty"].Value != null && dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index].Value.ToString() != "")
                 {
                     //LOW MARGIN
                     if (dgQuotationAddedItems.CurrentRow.Cells["dgQty"].Value != null) { GetMarginMark(); }
@@ -1564,10 +1564,18 @@ namespace LoginForm.QuotationModule
                     }
                     else
                     {
-                        MessageBox.Show("Item is not available in Price File, please check website");
-                        dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index].Value = "0";
-                        dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index].Value = null;
-                        dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index];
+                        DialogResult dialogResult = MessageBox.Show("Item is not available in Price File, please check website and Enter price from ItemCard", "Sure", MessageBoxButtons.OKCancel);
+                        if (dialogResult == DialogResult.OK)
+                        {
+                            dgQuotationAddedItems.Rows.RemoveAt(dgQuotationAddedItems.CurrentCell.RowIndex);
+                            dgQuotationAddedItems.Refresh();
+                            //dgQuotationAddedItems.Rows.Add(rowindex);
+                        }
+                        else if (dialogResult == DialogResult.Cancel)
+                        {
+                            dgQuotationAddedItems.Rows.RemoveAt(dgQuotationAddedItems.CurrentCell.RowIndex);
+                            dgQuotationAddedItems.Refresh();
+                        }                       
                     }
                 }
                 #endregion
@@ -1925,7 +1933,7 @@ namespace LoginForm.QuotationModule
                 CurrentRow.Cells["dgUOM"].Value = ItemTabDetails.Unit_Measure;
                 CurrentRow.Cells["dgMPN"].Value = ItemTabDetails.MPN;
                 CurrentRow.Cells["dgCL"].Value = ItemTabDetails.Calibration_Ind;
-                if (ItemTabDetails.Standard_Weight != 0)
+                if (ItemTabDetails.Standard_Weight != null && ItemTabDetails.Standard_Weight != 0)
                 {
                     decimal sW = (decimal)(ItemTabDetails.Standard_Weight / (decimal)1000);
                     sW = (ItemTabDetails.Pack_Quantity > ItemTabDetails.Unit_Content) ? (decimal)(sW / ItemTabDetails.Pack_Quantity) : (decimal)(sW / ItemTabDetails.Unit_Content);
@@ -4379,7 +4387,7 @@ namespace LoginForm.QuotationModule
         /// </summary>
         private void CalculateTotalMarge()
         {
-            if (!String.IsNullOrEmpty(CurrentRow?.Cells[dgQty.Index].Value.ToString()))
+            if (dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index].Value != null && dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index].Value.ToString() != "")
             {
                 decimal AllMargin = 0;
                 if (cbDeliverDiscount.Checked)
@@ -4456,7 +4464,7 @@ namespace LoginForm.QuotationModule
                 {
                     gbpPrice = ((Convert.ToDecimal(item.Cells[dgTotal.Index].Value.ToString())) * CurrValue) / currentGbpValue;
                 }
-                if (item.Cells[dgLandingCost.Index].Value != null && item.Cells[dgQty.Index].Value.ToString() != "")
+                if (item.Cells[dgLandingCost.Index].Value != null && item.Cells[dgLandingCost.Index].Value.ToString() != "" && item.Cells[dgQty.Index].Value != null && item.Cells[dgQty.Index].Value.ToString() != "0")
                 {
                     totalCost += Convert.ToDecimal(item.Cells[dgLandingCost.Index].Value) * Convert.ToDecimal(item.Cells[dgQty.Index].Value);
                     totalPrice += gbpPrice;
