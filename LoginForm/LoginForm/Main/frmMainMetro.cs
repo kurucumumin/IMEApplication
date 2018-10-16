@@ -554,5 +554,11 @@ namespace LoginForm.Main
             frmSupplierMain frm = new frmSupplierMain();
             frm.Show();
         }
+
+        private void btnCurrency_Click(object sender, EventArgs e)
+        {
+            FormCurrencyValue frm = new FormCurrencyValue();
+            frm.Show();
+        }
     }
 }

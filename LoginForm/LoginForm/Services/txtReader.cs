@@ -4008,7 +4008,7 @@ namespace LoginForm
             Microsoft.Office.Interop.Excel.Application xlexcel;
             Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
             object misValue = System.Reflection.Missing.Value;
-            string mySheet = @"C:\Users\ImeDemo\Desktop\6944.xlsx";
+            string mySheet = @"C:\Users\pomak\Desktop\6944.xlsx";
             IMEEntities IME = new IMEEntities();
             xlexcel = new Excel.Application();
             QuotationDetail qd = new QuotationDetail();
@@ -4070,7 +4070,7 @@ namespace LoginForm
             }
 
             sheet.Close(true, misValue, misValue);
-            xlexcel.Quit();
+            //xlexcel.Quit();
 
             #endregion
 

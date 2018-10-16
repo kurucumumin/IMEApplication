@@ -66,5 +66,18 @@ namespace LoginForm.QuotationModule
         {
             SelectedMpn();
         }
+
+        private void dgItems_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SelectedMpn();
+            }
+        }
+
+        private void dgItems_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            SelectedMpn();
+        }
     }
 }

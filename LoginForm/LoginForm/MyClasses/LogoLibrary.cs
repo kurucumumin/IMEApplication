@@ -1,10 +1,8 @@
 ﻿using ImeLogoLibrary;
 using LoginForm.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace LoginForm.MyClasses
 {
@@ -12,7 +10,7 @@ namespace LoginForm.MyClasses
     {
         private readonly string server = @"159.69.213.172";
         private readonly string imedatabase = "IME";
-        private readonly string logodatabase = "TEST";
+        private readonly string logodatabase = "LOGO";
         private readonly string sqluser = "sa";
         private readonly string sqlpassword = "IME1453";
 
@@ -31,6 +29,49 @@ namespace LoginForm.MyClasses
             LogoSQL logosql = new LogoSQL();
 
             return order.addSalesOrder(imesql.ImeSqlConnect(server, imedatabase, sqluser, sqlpassword), SoNO.ToString(), logosql.LogoSqlConnect(server, logodatabase, sqluser, sqlpassword), ImeSettings.FrmNo, ImeSettings.DnmNo);
+        }
+
+        public DataTable getCurrency(string hata, SqlConnection LogoSQL)
+        {
+            DataTable dt = new DataTable();
+
+            dt.Columns.Add("CURNAME", typeof(string));
+            dt.Columns.Add("RATES1", typeof(double));
+            dt.Columns.Add("RATES2", typeof(double));
+            dt.Columns.Add("RATES3", typeof(double));
+            dt.Columns.Add("RATES4", typeof(double));
+            dt.Columns.Add("EDATE", typeof(DateTime));
+
+            hata = "";
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = LogoSQL;
+                cmd.CommandText = @"SELECT DISTINCT c.CURNAME,d.RATES1,d.RATES2,d.RATES3,d.RATES4,d.EDATE
+  FROM L_DAILYEXCHANGES as d, L_CURRENCYLIST c where d.CRTYPE=c.CURTYPE and d.RATES1 is not null and d.RATES1 <> '1E-06'";
+
+                SqlDataReader drCurr = cmd.ExecuteReader();
+
+                while (drCurr.Read())
+
+                {
+                    DataRow dr = dt.NewRow();
+
+                    dr["CURNAME"] = drCurr.GetString(0);
+                    dr["RATES1"] = drCurr.GetDouble(1);
+                    dr["RATES2"] = drCurr.GetDouble(2);
+                    dr["RATES3"] = drCurr.GetDouble(3);
+                    dr["RATES4"] = drCurr.GetDouble(4);
+                    dr["EDATE"] = drCurr.GetDateTime(5);
+
+                    dt.Rows.Add(dr);
+                }
+            }
+            catch (Exception ex) { hata = ex.ToString(); }
+            finally {   LogoSQL.Close();}
+
+            return dt;
         }
 
         public string SendToLogo_RSInvoice(string RSInvoiceID)

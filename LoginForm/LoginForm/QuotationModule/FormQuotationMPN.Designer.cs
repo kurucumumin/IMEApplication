@@ -199,6 +199,8 @@
             this.dgItems.RowTemplate.Height = 24;
             this.dgItems.Size = new System.Drawing.Size(1000, 324);
             this.dgItems.TabIndex = 1;
+            this.dgItems.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgItems_CellDoubleClick);
+            this.dgItems.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgItems_KeyDown);
             // 
             // FormQuotationMPN
             // 

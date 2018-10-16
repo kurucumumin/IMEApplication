@@ -94,6 +94,7 @@ namespace LoginForm.Main
             this.lblTitleEmail = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.lblTitleName = new System.Windows.Forms.Label();
+            this.btnCurrency = new AltoControls.AltoButton();
             this.pnlMain.SuspendLayout();
             this.pnlImportFiles.SuspendLayout();
             this.pnlManagement.SuspendLayout();
@@ -637,6 +638,7 @@ namespace LoginForm.Main
             // 
             this.pnlManagement.AutoScroll = true;
             this.pnlManagement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(254)))), ((int)(((byte)(233)))));
+            this.pnlManagement.Controls.Add(this.btnCurrency);
             this.pnlManagement.Controls.Add(this.btnLog);
             this.pnlManagement.Controls.Add(this.btnUser);
             this.pnlManagement.Controls.Add(this.btnCustomerTransfer);
@@ -1109,6 +1111,28 @@ namespace LoginForm.Main
             this.lblTitleName.TabIndex = 0;
             this.lblTitleName.Text = "Name:";
             // 
+            // btnCurrency
+            // 
+            this.btnCurrency.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
+            this.btnCurrency.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
+            this.btnCurrency.BackColor = System.Drawing.Color.Transparent;
+            this.btnCurrency.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnCurrency.Font = new System.Drawing.Font("Sitka Text", 11F, System.Drawing.FontStyle.Bold);
+            this.btnCurrency.ForeColor = System.Drawing.Color.Black;
+            this.btnCurrency.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
+            this.btnCurrency.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
+            this.btnCurrency.Location = new System.Drawing.Point(5, 296);
+            this.btnCurrency.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCurrency.Name = "btnCurrency";
+            this.btnCurrency.Radius = 5;
+            this.btnCurrency.Size = new System.Drawing.Size(194, 32);
+            this.btnCurrency.Stroke = false;
+            this.btnCurrency.StrokeColor = System.Drawing.Color.Gray;
+            this.btnCurrency.TabIndex = 18;
+            this.btnCurrency.Text = "Currency";
+            this.btnCurrency.Transparency = false;
+            this.btnCurrency.Click += new System.EventHandler(this.btnCurrency_Click);
+            // 
             // frmMainMetro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1197,5 +1221,6 @@ namespace LoginForm.Main
         private AltoControls.AltoButton btnCustomerTransfer;
         private AltoControls.AltoButton btnUser;
         private AltoControls.AltoButton btnLog;
+        private AltoControls.AltoButton btnCurrency;
     }
 }
