@@ -1274,7 +1274,7 @@ namespace LoginForm.QuotationModule
                                 dgQuotationAddedItems.Rows.RemoveAt(dgQuotationAddedItems.CurrentRow.Index);
                                 //dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index];
                             }
-                            if (!String.IsNullOrEmpty(dgQuotationAddedItems.CurrentRow.Cells[dgDesc.Index].Value.ToString())) ChangeCurrnetCell(dgQuotationAddedItems.CurrentCell.ColumnIndex + 1);
+                            //if (!String.IsNullOrEmpty(dgQuotationAddedItems.CurrentRow.Cells[dgDesc.Index].Value.ToString())) ChangeCurrnetCell(dgQuotationAddedItems.CurrentCell.ColumnIndex + 1);
                         }
                         else
                         {
@@ -1341,6 +1341,7 @@ namespace LoginForm.QuotationModule
                     break;
             }
         }
+
 
         private void DgQuantityFiller()
         {
@@ -2379,7 +2380,7 @@ namespace LoginForm.QuotationModule
             if (txtCustomerName.Text == null || txtCustomerName.Text == String.Empty) { MessageBox.Show("Please Enter a Customer"); return false; }
             for (int i = 0; i < dgQuotationAddedItems.RowCount - 1; i++)
             {
-                if (dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value != null && Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value.ToString()) < Utils.getCurrentUser().MinMarge) { MessageBox.Show("Please Check Margin of Products "); return false; }
+                if (!String.IsNullOrEmpty(dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value.ToString()) && Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value.ToString()) < Utils.getCurrentUser().MinMarge) { MessageBox.Show("Please Check Margin of Products "); return false; }
                 if (txtTotalMargin.Text == null || txtTotalMargin.Text == "") { txtTotalMargin.Text = "0"; }
                 if (Utils.getCurrentUser().MinMarge > decimal.Parse(txtTotalMargin.Text))
                 {
@@ -2389,7 +2390,7 @@ namespace LoginForm.QuotationModule
             }
             for (int i = 0; i < dgQuotationAddedItems.RowCount-1; i++)
             {
-                if (dgQuotationAddedItems.Rows[i].Cells[dgProductCode.Index].Value != null && ((DataGridViewComboBoxCell)dgQuotationAddedItems.Rows[i].Cells[dgDelivery.Index]).Value == null)
+                if (!String.IsNullOrEmpty(dgQuotationAddedItems.Rows[i].Cells[dgProductCode.Index].Value.ToString()) && ((DataGridViewComboBoxCell)dgQuotationAddedItems.Rows[i].Cells[dgDelivery.Index]).Value == null && ((DataGridViewComboBoxCell)dgQuotationAddedItems.Rows[i].Cells[dgDelivery.Index]).Value.ToString() == "")
                 {
                     MessageBox.Show("Delivery part cannot be left blank. Please check Delivery Parts of Items");
                     return false;
@@ -5253,6 +5254,20 @@ namespace LoginForm.QuotationModule
                 e.Handled = true;//pass by the default sorting
             }
         }
+
+        //private void dgQuotationAddedItems_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        //{
+        //    dgQuotationAddedItems.EndEdit();
+
+        //    if (dgQuotationAddedItems.CurrentCell.Value != null)
+        //    {
+        //        //MessageBox.Show(dgQuotationAddedItems.CurrentCell.Value.ToString());
+        //        //textBox2.Text = dgQuotationAddedItems.CurrentCell.FormattedValue.ToString();
+        //    }
+
+        //    dgQuotationAddedItems.BeginEdit(false);
+
+        //}
 
         //private void dgQuotationAddedItems_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         //{
