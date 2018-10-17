@@ -49,54 +49,44 @@ namespace LoginForm.ItemModule
                             IME.SaveChanges();
                         }
                     }
-
-
-                    //string[] result1 = txtReader.SuperDiskRead();
-                    //if (result1[(int)LoaderResultColumns.Result] == "1")
-                    ////if (txtReader.SuperDiskTxtSave() == 1)
-                    //{
-                    //    RsFileHistory h = new RsFileHistory();
-                    //    h.FileType = txtReader.LoaderType;
-                    //    h.FileName = result1[(int)LoaderResultColumns.FileName];
-                    //    h.Date = IME.CurrentDate().FirstOrDefault().Value;
-                    //    h.UserID = Utils.getCurrentUser().WorkerID;
-                    //    IME.RsFileHistories.Add(h);
-                    //    IME.SaveChanges();
-                    //}
-
-
-                    //dgvFileLog.DataSource = null;
-                    //dgvFileLog.DataSource = IME.SuperDisks.Take(10).ToList();
+                    
                     break;
                 case "SuperDiskP":
-                    if (txtReader.SuperDiskPRead() == 1)
+                    SuperDiskPHelper SuperDiskPHelper = new SuperDiskPHelper();
+                    bool NoErrorP = SuperDiskPHelper.ErrorCheck();
+                    if (NoErrorP)
                     {
-                        RsFileHistory h = new RsFileHistory();
-                        h.FileType = txtReader.LoaderType;
-                        h.FileName = "";
-                        h.Date = Utils.GetCurrentDateTime();
-                        h.UserID = Utils.getCurrentUser().WorkerID;
-                        IME.RsFileHistories.Add(h);
-                        IME.SaveChanges();
+                        if (SuperDiskPHelper.LoadSuperDiskPItems())
+                        {
+                            RsFileHistory h = new RsFileHistory();
+                            h.FileType = txtReader.LoaderType;
+                            h.FileName = SuperDiskPHelper.FileName;
+                            h.Date = Utils.GetCurrentDateTime();
+                            h.UserID = Utils.getCurrentUser().WorkerID;
+                            IME.RsFileHistories.Add(h);
+                            IME.SaveChanges();
+                        }
                     }
-                    //dgvFileLog.DataSource = null;
-                    //dgvFileLog.DataSource = IME.SuperDiskPs.Take(10).ToList();
+                    break;
 
-                    break;
                 case "SlidingPrice":
-                    if (txtReader.SlidingPriceRead() == 1)
+                    PriceFileHelper PriceFileHelper = new PriceFileHelper();
+                    bool NotError = PriceFileHelper.ErrorCheck();
+                    if (NotError)
                     {
-                        RsFileHistory h = new RsFileHistory();
-                        h.FileType = txtReader.LoaderType;
-                        h.FileName = "";
-                        h.Date = Utils.GetCurrentDateTime();
-                        h.UserID = Utils.getCurrentUser().WorkerID;
-                        IME.RsFileHistories.Add(h);
-                        IME.SaveChanges();
+                        if (PriceFileHelper.LoadPriceFileItems())
+                        {
+                            RsFileHistory h = new RsFileHistory();
+                            h.FileType = txtReader.LoaderType;
+                            h.FileName = PriceFileHelper.FileName;
+                            h.Date = Utils.GetCurrentDateTime();
+                            h.UserID = Utils.getCurrentUser().WorkerID;
+                            IME.RsFileHistories.Add(h);
+                            IME.SaveChanges();
+                        }
                     }
-                    //dgvFileLog.DataSource = null;
-                    //dgvFileLog.DataSource = IME.SlidingPrices.Take(10).ToList();
                     break;
+
                 case "OnSale":
                     if (txtReader.OnSaleRead() == 1)
                     {
