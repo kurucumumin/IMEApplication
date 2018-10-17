@@ -2,18 +2,16 @@
 using LoginForm.MyClasses;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LoginForm.Services
 {
-    class SuperDiskHelper
+    class OnSaleHelper
     {
         public string FileName;
         private List<string> _ColumnNames;
@@ -21,7 +19,7 @@ namespace LoginForm.Services
         private OpenFileDialog _FileDialog;
         private Stopwatch _Timer;
 
-        public SuperDiskHelper()
+        public OnSaleHelper()
         {
             _Timer = new Stopwatch();
 
@@ -36,7 +34,7 @@ namespace LoginForm.Services
             if (result == DialogResult.OK)
             {
                 FileName = _FileDialog.SafeFileName;
-                 _Lines = System.IO.File.ReadAllLines(_FileDialog.FileName).ToList();
+                _Lines = System.IO.File.ReadAllLines(_FileDialog.FileName).ToList();
 
                 //Arada kalan satır kod seçili olan dosyanın kontroünden sonra yapılmalı
                 _ColumnNames = _Lines[0].Split('|').ToList();
@@ -44,15 +42,15 @@ namespace LoginForm.Services
 
                 _Timer.Start();
 
-                ReturnMessage ColumnError = SuperDiskColumnCheck(_ColumnNames);
+                ReturnMessage ColumnError = OnSaleColumnCheck(_ColumnNames);
 
 
-                //Eğer SuperDisk dosyasında sütun isimlerinde hata varsa
+                //Eğer OnSale dosyasında sütun isimlerinde hata varsa
                 if (ColumnError.MessageList.Count() > 0)
                 {
                     _Timer.Stop();
                     StringBuilder errorMessage = new StringBuilder();
-                    errorMessage.Append("Error(s) exist in column names, Check SuperDisk file again").AppendLine().Append("Mis-typed columns are:").AppendLine().AppendLine();
+                    errorMessage.Append("Error(s) exist in column names, Check OnSale file again").AppendLine().Append("Mis-typed columns are:").AppendLine().AppendLine();
 
                     foreach (string error in ColumnError.MessageList)
                     {
@@ -76,16 +74,16 @@ namespace LoginForm.Services
                     {
                         //MessageBox'ta göstermek için sınırlı sayıda hatayı içeren yazıyı oluşturur
                         StringBuilder errorMessage = new StringBuilder();
-                        errorMessage.Append("Passed Time: " + _Timer.Elapsed.ToString(@"hh\:mm\:ss") + " sn" + "\n\n" + "Error(s) exist in item rows, Check SuperDisk file again").AppendLine().AppendLine();
+                        errorMessage.Append("Passed Time: " + _Timer.Elapsed.ToString(@"hh\:mm\:ss") + " sn" + "\n\n" + "Error(s) exist in item rows, Check OnSale file again").AppendLine().AppendLine();
 
-                        for (int i = 0; i< LineError.MessageList.Count; i++)
+                        for (int i = 0; i < LineError.MessageList.Count; i++)
                         {
                             errorMessage.Append(LineError.MessageList[i]);
-                            if (i < LineError.MessageList.Count-1)
+                            if (i < LineError.MessageList.Count - 1)
                             {
                                 errorMessage.AppendLine();
                             }
-                            if ((i+1) == maxShownErrorAmount) 
+                            if ((i + 1) == maxShownErrorAmount)
                             {
                                 errorMessage.Append("...");
                                 break;
@@ -93,8 +91,8 @@ namespace LoginForm.Services
                         }
                         errorMessage.AppendLine().AppendLine();
 
-                        
-                        if(MessageBox.Show(errorMessage.ToString() + "Open Details?", "Warning!",MessageBoxButtons.YesNo) == DialogResult.Yes)
+
+                        if (MessageBox.Show(errorMessage.ToString() + "Open Details?", "Warning!", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
                             //Tüm hatalar görüntülenmek istenirse 
                             StringBuilder errorLog = new StringBuilder();
@@ -106,17 +104,17 @@ namespace LoginForm.Services
                                     errorLog.AppendLine();
                                 }
                             }
-                            // evet burası , ama hata veriyo dosya bulunamadı diyo cloud da
                             Directory.CreateDirectory("ErrorLogs");
-                            File.WriteAllText("ErrorLogs/ErrorLog_"+FileName, errorLog.ToString());
+                            File.WriteAllText("ErrorLogs/ErrorLog_" + FileName, errorLog.ToString());
                             Process.Start("notepad.exe", "ErrorLogs/ErrorLog_" + FileName);
                         }
                     }
                     //Satırlarda hata yoksa
-                    else if(LineError.MessageList.Count == 0)
+                    else if (LineError.MessageList.Count == 0)
                     {
                         return true;
-                    }else if (LineError == null)
+                    }
+                    else if (LineError == null)
                     {
                         MessageBox.Show("Proccess Cancelled");
                     }
@@ -124,21 +122,21 @@ namespace LoginForm.Services
             }
             else
             {
-                MessageBox.Show("File Not Choosen","No File");
+                MessageBox.Show("File Not Choosen", "No File");
             }
             return false;
         }
 
-        private ReturnMessage CheckLinesForErrors(List<string> SuperDiskLines)
+        private ReturnMessage CheckLinesForErrors(List<string> OnSaleLines)
         {
             ReturnMessage error = new ReturnMessage();
 
-            string[] wordcontrol = SuperDiskLines[0].Split('|');
-            if (!wordcontrol[0].Contains("P"))
+            string[] wordcontrol = OnSaleLines[0].Split('|');
+            if (wordcontrol[0].Contains("P"))
             {
-                for (int i = 0; i < SuperDiskLines.Count(); i++)
+                for (int i = 0; i < OnSaleLines.Count(); i++)
                 {
-                    string[] lineColumns = SuperDiskLines[i].Split('|');
+                    string[] lineColumns = OnSaleLines[i].Split('|');
                     bool ErrorExist = false;
                     List<string> faultyColumns = new List<string>();
 
@@ -149,12 +147,12 @@ namespace LoginForm.Services
                         switch (_ColumnNames[j])
                         {
                             case "Article_No":
-                                if (lineColumns[j].Length != 7)
+                                if (lineColumns[j].Length != 8)
                                 {
                                     ErrorExist = true;
                                     faultyColumns.Add(_ColumnNames[j]);
                                 }
-                                else if (!Int32.TryParse(lineColumns[j], out int tempInt))
+                                else if (lineColumns[j].Length == 8 && !lineColumns[j].EndsWith("P"))
                                 {
                                     ErrorExist = true;
                                     faultyColumns.Add(_ColumnNames[j]);
@@ -227,19 +225,19 @@ namespace LoginForm.Services
                                 faultyColumnString += ", ";
                             }
                         }
-                        error.MessageList.Add("-Line " + (i+2).ToString() + ", " + "ArticleNo: " + lineColumns[0] + ", Columns: " + faultyColumnString);
+                        error.MessageList.Add("-Line " + (i + 2).ToString() + ", " + "ArticleNo: " + lineColumns[0] + ", Columns: " + faultyColumnString);
                     }
 
                 }
             }
             else
             {
-                error.MessageList.Add("File Not Correct. File appears to be SuperDiskP file!");
+                error.MessageList.Add("File Not Correct. File appears to be SuperDisk file!");
             }
             return error;
         }
 
-        private ReturnMessage SuperDiskColumnCheck(List<string> Columns)
+        private ReturnMessage OnSaleColumnCheck(List<string> Columns)
         {
             #region CorrectColumnNames into a List
             List<String> CorrectColumnNames = new List<string>();
@@ -285,7 +283,7 @@ namespace LoginForm.Services
             CorrectColumnNames.Add("Width");
             CorrectColumnNames.Add("Length");
             #endregion
-            
+
             ReturnMessage error = new ReturnMessage();
 
             int columnCount = 0;
@@ -439,13 +437,13 @@ namespace LoginForm.Services
 
             if (columnCount != 41)
             {
-                error.MessageList.Add("\n"+ error.MessageList.Count + " mismatched columns, " + columnCount + " matched columns found! " + (CorrectColumnNames.Count - error.MessageList.Count)  + " columns missing");
+                error.MessageList.Add("\n" + error.MessageList.Count + " mismatched columns, " + columnCount + " matched columns found! " + (CorrectColumnNames.Count - error.MessageList.Count) + " columns missing");
                 error.MessageList.Add("\nMissing columns are:\n\n" + MissingColumnsString);
             }
             return error;
         }
-        
-        public bool LoadSuperDiskItems()
+
+        public bool LoadOnSaleItems()
         {
             SqlCommand cmd;
             SqlConnection ImeSqlConn = new Utils().ImeSqlConnection();
@@ -463,11 +461,11 @@ namespace LoginForm.Services
                     List<string> itemData = itemString.Split('|').ToList();
                     bool NewItem = false;
                     string ArticleNo = itemData[_ColumnNames.IndexOf("Article_No")];
-                    SuperDisk item = db.SuperDisks.Where(x => x.Article_No == ArticleNo).FirstOrDefault();
+                    SuperDiskP item = db.SuperDiskPs.Where(x => x.Article_No == ArticleNo).FirstOrDefault();
 
                     if (item == null)
                     {
-                        item = new SuperDisk();
+                        item = new SuperDiskP();
                         NewItem = true;
                     }
 
@@ -642,7 +640,7 @@ namespace LoginForm.Services
                         cmd = new SqlCommand();
                         cmd.Connection = ImeSqlConn;
                         cmd.Transaction = ImeSqlTransaction;
-                        cmd.CommandText = @"INSERT INTO [dbo].[SuperDisk]
+                        cmd.CommandText = @"INSERT INTO [dbo].[SuperDiskP]
                         ([Article_No], [Article_Desc] ,[Pack_Code] ,[Pack_Quantity] ,[Unit_Content] ,[Unit_Measure] ,[Uk_Col_1], [Standard_Weight], [Hazardous_Ind], [Calibration_Ind], [Obsolete_Flag], [MH1], [Low_Discount_Ind], [Licensed_Ind], [Shelf_Life], [CofO], [EUR1_Indicator], [CCCN_No], [Supercede_Date], [Current_Cat_page], [Uk_Intro_Date], [Filler], [Uk_Disc_Date], [Substitute_By], [BHC_Flag], [Filler1], [Future_Sell_Price], [Int_Cat], [New_Prod_Change_Ind], [Out_of_Stock_Prohibit_change_ind], [Disc_Change_Ind], [Superceded_Change_Ind], [Pack_Size_Change_Ind], [Rolled_Product_Change_Ind], [Expiring_Product_Change_Ind], [Manufacturer], [MPN], [MH_Code_Level_1], [Heigh], [Width], [Length])
                     VALUES
                         (@Article_No, @Article_Desc, @Pack_Code, @Pack_Quantity, @Unit_Content, @Unit_Measure, @Uk_Col_1, @Standard_Weight, @Hazardous_Ind, @Calibration_Ind, @Obsolete_Flag, @MH1, @Low_Discount_Ind, @Licensed_Ind, @Shelf_Life, @CofO, @EUR1_Indicator, @CCCN_No, @Supercede_Date, @Current_Cat_page, @Uk_Intro_Date, @Filler, @Uk_Disc_Date, @Substitute_By, @BHC_Flag, @Filler1, @Future_Sell_Price, @Int_Cat, @New_Prod_Change_Ind, @Out_of_Stock_Prohibit_change_ind, @Disc_Change_Ind, @Superceded_Change_Ind, @Pack_Size_Change_Ind, @Rolled_Product_Change_Ind, @Expiring_Product_Change_Ind, @Manufacturer, @MPN, @MH_Code_Level_1, @Heigh, @Width, @Length)";
@@ -690,13 +688,13 @@ namespace LoginForm.Services
 
                         cmd.ExecuteNonQuery();
                         newItemCount++;
-                    }/* Adds a new item to superDisk */
+                    }/* Adds a new item to SuperDiskP */
                     else
                     {
                         cmd = new SqlCommand();
                         cmd.Connection = ImeSqlConn;
                         cmd.Transaction = ImeSqlTransaction;
-                        cmd.CommandText = @"UPDATE[dbo].[SuperDisk] 
+                        cmd.CommandText = @"UPDATE[dbo].[SuperDiskP] 
                                             SET [Article_No] = @Article_No, [Article_Desc] = @Article_Desc, [Pack_Code] = @Pack_Code, [Pack_Quantity] = @Pack_Quantity, [Unit_Content] = @Unit_Content, [Unit_Measure] = @Unit_Measure, [Uk_Col_1] = @Uk_Col_1, [Standard_Weight] = @Standard_Weight, [Hazardous_Ind] = @Hazardous_Ind, [Calibration_Ind] = @Calibration_Ind, [Obsolete_Flag] = @Obsolete_Flag, [MH1] = @MH1, [Low_Discount_Ind] = @Low_Discount_Ind, [Licensed_Ind] = @Licensed_Ind, [Shelf_Life] = @Shelf_Life, [CofO] = @CofO, [EUR1_Indicator] = @EUR1_Indicator, [CCCN_No] = @CCCN_No, [Supercede_Date] = @Supercede_Date, [Current_Cat_page] = @Current_Cat_page, [Uk_Intro_Date] = @Uk_Intro_Date, [Filler] = @Filler, [Uk_Disc_Date] = @Uk_Disc_Date, [Substitute_By] = @Substitute_By, [BHC_Flag] = @BHC_Flag, [Filler1] = @Filler1, [Future_Sell_Price] = @Future_Sell_Price, [Int_Cat] = @Int_Cat, [New_Prod_Change_Ind] = @New_Prod_Change_Ind, [Out_of_Stock_Prohibit_change_ind] =@Out_of_Stock_Prohibit_change_ind, [Disc_Change_Ind] = @Disc_Change_Ind, [Superceded_Change_Ind] =@Superceded_Change_Ind, [Pack_Size_Change_Ind] = @Pack_Size_Change_Ind, [Rolled_Product_Change_Ind] = @Rolled_Product_Change_Ind, [Expiring_Product_Change_Ind] = @Expiring_Product_Change_Ind, [Manufacturer] = @Manufacturer, [MPN] =@MPN, [MH_Code_Level_1] = @MH_Code_Level_1, [Heigh] =@Heigh, [Width] = @Width, [Length] = @Length 
                                         WHERE 
                                             SuperDisk.Article_No = @Article_No";
@@ -755,7 +753,7 @@ namespace LoginForm.Services
             catch (Exception ex)
             {
                 ImeSqlTransaction.Rollback();
-                MessageBox.Show("An error occured while loading SuperDisk! Try again later\n\n" + ex.ToString(),"Error");
+                MessageBox.Show("An error occured while loading SuperDiskP! Try again later\n\n" + ex.ToString(), "Error");
                 successfull = false;
             }
             finally
@@ -764,5 +762,6 @@ namespace LoginForm.Services
             }
             return successfull;
         }
+
     }
 }

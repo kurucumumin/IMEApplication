@@ -147,12 +147,12 @@ namespace LoginForm.Services
                         switch (_ColumnNames[j])
                         {
                             case "Article_No":
-                                if (lineColumns[j].Length != 7)
+                                if (lineColumns[j].Length != 8)
                                 {
                                     ErrorExist = true;
                                     faultyColumns.Add(_ColumnNames[j]);
                                 }
-                                else if (!Int32.TryParse(lineColumns[j], out int tempInt))
+                                else if (lineColumns[j].Length == 8 && !lineColumns[j].EndsWith("P"))
                                 {
                                     ErrorExist = true;
                                     faultyColumns.Add(_ColumnNames[j]);
@@ -697,7 +697,7 @@ namespace LoginForm.Services
                         cmd.CommandText = @"UPDATE[dbo].[SuperDiskP] 
                                             SET [Article_No] = @Article_No, [Article_Desc] = @Article_Desc, [Pack_Code] = @Pack_Code, [Pack_Quantity] = @Pack_Quantity, [Unit_Content] = @Unit_Content, [Unit_Measure] = @Unit_Measure, [Uk_Col_1] = @Uk_Col_1, [Standard_Weight] = @Standard_Weight, [Hazardous_Ind] = @Hazardous_Ind, [Calibration_Ind] = @Calibration_Ind, [Obsolete_Flag] = @Obsolete_Flag, [MH1] = @MH1, [Low_Discount_Ind] = @Low_Discount_Ind, [Licensed_Ind] = @Licensed_Ind, [Shelf_Life] = @Shelf_Life, [CofO] = @CofO, [EUR1_Indicator] = @EUR1_Indicator, [CCCN_No] = @CCCN_No, [Supercede_Date] = @Supercede_Date, [Current_Cat_page] = @Current_Cat_page, [Uk_Intro_Date] = @Uk_Intro_Date, [Filler] = @Filler, [Uk_Disc_Date] = @Uk_Disc_Date, [Substitute_By] = @Substitute_By, [BHC_Flag] = @BHC_Flag, [Filler1] = @Filler1, [Future_Sell_Price] = @Future_Sell_Price, [Int_Cat] = @Int_Cat, [New_Prod_Change_Ind] = @New_Prod_Change_Ind, [Out_of_Stock_Prohibit_change_ind] =@Out_of_Stock_Prohibit_change_ind, [Disc_Change_Ind] = @Disc_Change_Ind, [Superceded_Change_Ind] =@Superceded_Change_Ind, [Pack_Size_Change_Ind] = @Pack_Size_Change_Ind, [Rolled_Product_Change_Ind] = @Rolled_Product_Change_Ind, [Expiring_Product_Change_Ind] = @Expiring_Product_Change_Ind, [Manufacturer] = @Manufacturer, [MPN] =@MPN, [MH_Code_Level_1] = @MH_Code_Level_1, [Heigh] =@Heigh, [Width] = @Width, [Length] = @Length 
                                         WHERE 
-                                            SuperDisk.Article_No = @Article_No";
+                                            SuperDiskP.Article_No = @Article_No";
                         cmd.Parameters.AddWithValue("@Article_No", item.Article_No);
                         cmd.Parameters.AddWithValue("@Article_Desc", item.Article_Desc);
                         cmd.Parameters.AddWithValue("@Pack_Code", item.Pack_Code);

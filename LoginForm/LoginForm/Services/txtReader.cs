@@ -1637,8 +1637,6 @@ namespace LoginForm
             DialogResult result1 = openFileDialog1.ShowDialog();
             if (result1 == DialogResult.OK) // Test result.
             {
-
-
                 try
                 {
                     string[] lines = System.IO.File.ReadAllLines(openFileDialog1.FileName);

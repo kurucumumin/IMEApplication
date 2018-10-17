@@ -51,6 +51,7 @@ namespace LoginForm.ItemModule
                     }
                     
                     break;
+
                 case "SuperDiskP":
                     SuperDiskPHelper SuperDiskPHelper = new SuperDiskPHelper();
                     bool NoErrorP = SuperDiskPHelper.ErrorCheck();
@@ -69,12 +70,30 @@ namespace LoginForm.ItemModule
                     }
                     break;
 
+                //case "SlidingPrice":
+                //    PriceFileHelper PriceFileHelper = new PriceFileHelper();
+                //    bool NoErrorPrice = PriceFileHelper.ErrorCheck();
+                //    if (NoErrorPrice)
+                //    {
+                //        if (PriceFileHelper.LoadPriceFileItems())
+                //        {
+                //            RsFileHistory h = new RsFileHistory();
+                //            h.FileType = txtReader.LoaderType;
+                //            h.FileName = PriceFileHelper.FileName;
+                //            h.Date = Utils.GetCurrentDateTime();
+                //            h.UserID = Utils.getCurrentUser().WorkerID;
+                //            IME.RsFileHistories.Add(h);
+                //            IME.SaveChanges();
+                //        }
+                //    }
+                //    break;
+
                 case "SlidingPrice":
                     PriceFileHelper PriceFileHelper = new PriceFileHelper();
-                    bool NotError = PriceFileHelper.ErrorCheck();
-                    if (NotError)
+                    bool NoErrorPrice = PriceFileHelper.ErrorCheck();
+                    if (NoErrorPrice)
                     {
-                        if (PriceFileHelper.LoadPriceFileItems())
+                        if (txtReader.SlidingPriceRead() == 1)
                         {
                             RsFileHistory h = new RsFileHistory();
                             h.FileType = txtReader.LoaderType;
@@ -88,20 +107,23 @@ namespace LoginForm.ItemModule
                     break;
 
                 case "OnSale":
-                    if (txtReader.OnSaleRead() == 1)
+                    OnSaleHelper OnSaleHelper = new OnSaleHelper();
+                    bool NoErrorOnSale = OnSaleHelper.ErrorCheck();
+                    if (NoErrorOnSale)
                     {
-                        RsFileHistory h = new RsFileHistory();
-                        h.FileType = txtReader.LoaderType;
-                        h.FileName = "";
-                        h.Date = Utils.GetCurrentDateTime();
-                        h.UserID = Utils.getCurrentUser().WorkerID;
-                        IME.RsFileHistories.Add(h);
-                        IME.SaveChanges();
+                        if (OnSaleHelper.LoadOnSaleItems())
+                        {
+                            RsFileHistory h = new RsFileHistory();
+                            h.FileType = txtReader.LoaderType;
+                            h.FileName = OnSaleHelper.FileName;
+                            h.Date = Utils.GetCurrentDateTime();
+                            h.UserID = Utils.getCurrentUser().WorkerID;
+                            IME.RsFileHistories.Add(h);
+                            IME.SaveChanges();
+                        }
                     }
-                    txtReader.OnSaleRead();
-                    //dgvFileLog.DataSource = null;
-                    //dgvFileLog.DataSource = IME.SuperDisks.Take(10).ToList();
                     break;
+
                 case "DiscontinuedList":
                     if (txtReader.DiscontinuedListRead() == 1)
                     {

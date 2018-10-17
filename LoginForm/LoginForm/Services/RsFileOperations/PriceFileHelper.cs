@@ -2,6 +2,7 @@
 using LoginForm.MyClasses;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.IO;
@@ -144,64 +145,122 @@ namespace LoginForm.Services
                     switch (_ColumnNames[j])
                     {
                         case "ArticleNo":
-                            if (lineColumns[j].Length != 7)
+                            if (lineColumns[j].Length != 7 && lineColumns[j].Length != 8 && lineColumns[j].Length != 10)
                             {
                                 ErrorExist = true;
                                 faultyColumns.Add(_ColumnNames[j]);
                             }
-                            else if (!Int32.TryParse(lineColumns[j], out int tempInt))
+                            else if (lineColumns[j].Length == 8 && !lineColumns[j].EndsWith("P"))
+                            {
+                                ErrorExist = true;
+                                faultyColumns.Add(_ColumnNames[j]);
+                            }
+                            else if (lineColumns[j].Length == 10 && !lineColumns[j].StartsWith("250") && !lineColumns[j].StartsWith("255") && !lineColumns[j].StartsWith("300"))
                             {
                                 ErrorExist = true;
                                 faultyColumns.Add(_ColumnNames[j]);
                             };
                             break;
-                        case "Quantity1":
+                        case "Col1Price":
                             if (!decimal.TryParse(lineColumns[j], out decimal tempQty1))
                             {
                                 ErrorExist = true;
                                 faultyColumns.Add(_ColumnNames[j]);
                             }
-                            else if (Int32.Parse(lineColumns[j]) == 0)
-                            {
-                                ErrorExist = true;
-                                faultyColumns.Add(_ColumnNames[j]);
-                            }
                             break;
-                        case "Unit_Content":
+                        case "Col2Price":
                             if (!decimal.TryParse(lineColumns[j], out decimal tempQty2))
                             {
                                 ErrorExist = true;
                                 faultyColumns.Add(_ColumnNames[j]);
                             }
-                            else if (Int32.Parse(lineColumns[j]) == 0)
-                            {
-                                ErrorExist = true;
-                                faultyColumns.Add(_ColumnNames[j]);
-                            }
                             break;
-                        case "Standard_Weight":
+                        case "Col3Price":
                             if (!decimal.TryParse(lineColumns[j], out decimal tempQty3))
                             {
                                 ErrorExist = true;
                                 faultyColumns.Add(_ColumnNames[j]);
                             }
                             break;
-                        case "Height":
+                        case "Col4Price":
                             if (!decimal.TryParse(lineColumns[j], out decimal tempQty4))
                             {
                                 ErrorExist = true;
                                 faultyColumns.Add(_ColumnNames[j]);
                             }
                             break;
-                        case "Width":
+                        case "Col5Price":
                             if (!decimal.TryParse(lineColumns[j], out decimal tempQty5))
                             {
                                 ErrorExist = true;
                                 faultyColumns.Add(_ColumnNames[j]);
                             }
                             break;
-                        case "Length":
+                        case "Col1Break":
                             if (!decimal.TryParse(lineColumns[j], out decimal tempQty6))
+                            {
+                                ErrorExist = true;
+                                faultyColumns.Add(_ColumnNames[j]);
+                            }
+                            break;
+                        case "Col2Break":
+                            if (!decimal.TryParse(lineColumns[j], out decimal tempQty7))
+                            {
+                                ErrorExist = true;
+                                faultyColumns.Add(_ColumnNames[j]);
+                            }
+                            break;
+                        case "Col3Break":
+                            if (!decimal.TryParse(lineColumns[j], out decimal tempQty8))
+                            {
+                                ErrorExist = true;
+                                faultyColumns.Add(_ColumnNames[j]);
+                            }
+                            break;
+                        case "Col4Break":
+                            if (!decimal.TryParse(lineColumns[j], out decimal tempQty9))
+                            {
+                                ErrorExist = true;
+                                faultyColumns.Add(_ColumnNames[j]);
+                            }
+                            break;
+                        case "Col5Break":
+                            if (!decimal.TryParse(lineColumns[j], out decimal tempQty10))
+                            {
+                                ErrorExist = true;
+                                faultyColumns.Add(_ColumnNames[j]);
+                            }
+                            break;
+                        case "DiscountedPrice1":
+                            if (!decimal.TryParse(lineColumns[j], out decimal tempQty11))
+                            {
+                                ErrorExist = true;
+                                faultyColumns.Add(_ColumnNames[j]);
+                            }
+                            break;
+                        case "DiscountedPrice2":
+                            if (!decimal.TryParse(lineColumns[j], out decimal tempQty12))
+                            {
+                                ErrorExist = true;
+                                faultyColumns.Add(_ColumnNames[j]);
+                            }
+                            break;
+                        case "DiscountedPrice3":
+                            if (!decimal.TryParse(lineColumns[j], out decimal tempQty13))
+                            {
+                                ErrorExist = true;
+                                faultyColumns.Add(_ColumnNames[j]);
+                            }
+                            break;
+                        case "DiscountedPrice4":
+                            if (!decimal.TryParse(lineColumns[j], out decimal tempQty14))
+                            {
+                                ErrorExist = true;
+                                faultyColumns.Add(_ColumnNames[j]);
+                            }
+                            break;
+                        case "DiscountedPrice5":
+                            if (!decimal.TryParse(lineColumns[j], out decimal tempQty15))
                             {
                                 ErrorExist = true;
                                 faultyColumns.Add(_ColumnNames[j]);
@@ -233,35 +292,34 @@ namespace LoginForm.Services
         {
             #region CorrectColumnNames into a List
             List<String> CorrectColumnNames = new List<string>();
-            CorrectColumnNames.Add("Article No");
-            CorrectColumnNames.Add("Article Desc");
-            CorrectColumnNames.Add("Item Type Code");
-            CorrectColumnNames.Add("Item Type Desc");
-            CorrectColumnNames.Add("Introduction Date");
-            CorrectColumnNames.Add("Discontinued Date");
-            CorrectColumnNames.Add("Uk Col 1");
-            CorrectColumnNames.Add("Quantity 1");
-            CorrectColumnNames.Add("Col 1 Price");
-            CorrectColumnNames.Add("Col 2 Price");
-            CorrectColumnNames.Add("Col 3 Price");
-            CorrectColumnNames.Add("Col 4 Price");
-            CorrectColumnNames.Add("Col 5 Price");
-            CorrectColumnNames.Add("Col 1 Break");
-            CorrectColumnNames.Add("Col 2 Break");
-            CorrectColumnNames.Add("Col 3 Break");
-            CorrectColumnNames.Add("Col 4 Break");
-            CorrectColumnNames.Add("Col 5 Break");
-            CorrectColumnNames.Add("Discounted Price 1");
-            CorrectColumnNames.Add("Discounted Price 2");
-            CorrectColumnNames.Add("Discounted Price 3");
-            CorrectColumnNames.Add("Discounted Price 4");
-            CorrectColumnNames.Add("Discounted Price 5");
-            CorrectColumnNames.Add("Super Section No");
-            CorrectColumnNames.Add("Super Section Name");
-            CorrectColumnNames.Add("Brand ID");
-            CorrectColumnNames.Add("Brand Name");
-            CorrectColumnNames.Add("Section ID");
-            CorrectColumnNames.Add("Section Name");
+            CorrectColumnNames.Add("ArticleNo");
+            CorrectColumnNames.Add("ArticleDescription");
+            CorrectColumnNames.Add("ItemTypeCode");
+            CorrectColumnNames.Add("ItemTypeDesc");
+            CorrectColumnNames.Add("IntroductionDate");
+            CorrectColumnNames.Add("DiscontinuedDate");
+            CorrectColumnNames.Add("Quantity1");
+            CorrectColumnNames.Add("Col1Price");
+            CorrectColumnNames.Add("Col2Price");
+            CorrectColumnNames.Add("Col3Price");
+            CorrectColumnNames.Add("Col4Price");
+            CorrectColumnNames.Add("Col5Price");
+            CorrectColumnNames.Add("Col1Break");
+            CorrectColumnNames.Add("Col2Break");
+            CorrectColumnNames.Add("Col3Break");
+            CorrectColumnNames.Add("Col4Break");
+            CorrectColumnNames.Add("Col5Break");
+            CorrectColumnNames.Add("DiscountedPrice1");
+            CorrectColumnNames.Add("DiscountedPrice2");
+            CorrectColumnNames.Add("DiscountedPrice3");
+            CorrectColumnNames.Add("DiscountedPrice4");
+            CorrectColumnNames.Add("DiscountedPrice5");
+            CorrectColumnNames.Add("SuperSectionNo");
+            CorrectColumnNames.Add("SupersectionName");
+            CorrectColumnNames.Add("BrandID");
+            CorrectColumnNames.Add("Brandname");
+            CorrectColumnNames.Add("SectionID");
+            CorrectColumnNames.Add("SectionName");
             #endregion
 
             ReturnMessage error = new ReturnMessage();
@@ -271,91 +329,88 @@ namespace LoginForm.Services
             {
                 switch (Columns[i])
                 {
-                    case "Article No":
+                    case "ArticleNo":
                         DeleteColumnAndIncrementColumCount();
                         break;
-                    case "Article Desc":
+                    case "ArticleDescription":
                         DeleteColumnAndIncrementColumCount();
                         break;
-                    case "Item Type Code":
+                    case "ItemTypeCode":
                         DeleteColumnAndIncrementColumCount();
                         break;
-                    case "Item Type Desc":
+                    case "ItemTypeDesc":
                         DeleteColumnAndIncrementColumCount();
                         break;
-                    case "Introduction Date":
+                    case "IntroductionDate":
                         DeleteColumnAndIncrementColumCount();
                         break;
-                    case "Discontinued Date":
+                    case "DiscontinuedDate":
                         DeleteColumnAndIncrementColumCount();
                         break;
-                    case "Uk Col 1":
+                    case "Quantity1":
                         DeleteColumnAndIncrementColumCount();
                         break;
-                    case "Quantity 1":
+                    case "Col1Price":
                         DeleteColumnAndIncrementColumCount();
                         break;
-                    case "Col 1 Price":
+                    case "Col2Price":
                         DeleteColumnAndIncrementColumCount();
                         break;
-                    case "Col 2 Price":
+                    case "Col3Price":
                         DeleteColumnAndIncrementColumCount();
                         break;
-                    case "Col 3 Price":
+                    case "Col4Price":
                         DeleteColumnAndIncrementColumCount();
                         break;
-                    case "Col 4 Price":
+                    case "Col5Price":
                         DeleteColumnAndIncrementColumCount();
                         break;
-                    case "Col 5 Price":
+                    case "Col1Break":
                         DeleteColumnAndIncrementColumCount();
                         break;
-                    case "Col 1 Break":
+                    case "Col2Break":
                         DeleteColumnAndIncrementColumCount();
                         break;
-                    case "Col 2 Break":
+                    case "Col3Break":
                         DeleteColumnAndIncrementColumCount();
                         break;
-                    case "Col 3 Break":
+                    case "Col4Break":
                         DeleteColumnAndIncrementColumCount();
                         break;
-                    case "Col 4 Break":
+                    case "Col5Break":
                         DeleteColumnAndIncrementColumCount();
                         break;
-                    case "Col 5 Break":
+                    case "DiscountedPrice1":
                         DeleteColumnAndIncrementColumCount();
                         break;
-                    case "Discounted Price 1":
+                    case "DiscountedPrice2":
                         DeleteColumnAndIncrementColumCount();
                         break;
-                    case "Discounted Price 2":
+                    case "DiscountedPrice3":
                         DeleteColumnAndIncrementColumCount();
                         break;
-                    case "Discounted Price 3":
+                    case "DiscountedPrice4":
                         DeleteColumnAndIncrementColumCount();
                         break;
-                    case "Discounted Price 4":
+                    case "DiscountedPrice5":
                         DeleteColumnAndIncrementColumCount();
                         break;
-                    case "Discounted Price 5":
+                    case "SuperSectionNo":
                         DeleteColumnAndIncrementColumCount();
                         break;
-                    case "Super Section No":
+                    case "SupersectionName":
                         DeleteColumnAndIncrementColumCount();
                         break;
-                    case "Super Section Name":
+                    case "BrandID":
                         DeleteColumnAndIncrementColumCount();
                         break;
-                    case "Brand ID":
+                    case "Brandname":
                         DeleteColumnAndIncrementColumCount();
                         break;
-                    case "Brand Name":
+                    case "SectionID":
                         DeleteColumnAndIncrementColumCount();
                         break;
-                    case "Section ID":
-                        DeleteColumnAndIncrementColumCount();
-                        break;
-                    case "Section Name":
+                    case "SectionName":
                         DeleteColumnAndIncrementColumCount();
                         break;
                     default:
@@ -429,10 +484,6 @@ namespace LoginForm.Services
                                 {
                                     item.ItemTypeCode = Convert.ToInt32(_itemData);
                                 }
-                                else
-                                {
-                                    item.ItemTypeCode = 0;
-                                }
                                 break;
                             case "ItemTypeDesc":
                                 item.ItemTypeDesc = _itemData;
@@ -448,59 +499,35 @@ namespace LoginForm.Services
                                 {
                                     item.Quantity1 = Convert.ToInt32(_itemData);
                                 }
-                                else
-                                {
-                                    item.Quantity1 = 0;
-                                }
                                 break;
                             case "Col1Price":
                                 if (_itemData != "")
                                 {
-                                    item.Col1Price = Convert.ToInt32(_itemData);
-                                }
-                                else
-                                {
-                                    item.Col1Price = 0;
+                                    item.Col1Price = Convert.ToDecimal(_itemData);
                                 }
                                 break;
                             case "Col2Price":
                                 if (_itemData != "")
                                 {
-                                    item.Col2Price = Convert.ToInt32(_itemData);
-                                }
-                                else
-                                {
-                                    item.Col2Price = 0;
+                                    item.Col2Price = Convert.ToDecimal(_itemData);
                                 }
                                 break;
                             case "Col3Price":
                                 if (_itemData != "")
                                 {
-                                    item.Col3Price = Convert.ToInt32(_itemData);
-                                }
-                                else
-                                {
-                                    item.Col3Price = 0;
+                                    item.Col3Price = Convert.ToDecimal(_itemData);
                                 }
                                 break;
                             case "Col4Price":
                                 if (_itemData != "")
                                 {
-                                    item.Col4Price = Convert.ToInt32(_itemData);
-                                }
-                                else
-                                {
-                                    item.Col4Price = 0;
+                                    item.Col4Price = Convert.ToDecimal(_itemData);
                                 }
                                 break;
                             case "Col5Price":
                                 if (_itemData != "")
                                 {
-                                    item.Col5Price = Convert.ToInt32(_itemData);
-                                }
-                                else
-                                {
-                                    item.Col5Price = 0;
+                                    item.Col5Price = Convert.ToDecimal(_itemData);
                                 }
                                 break;
                             case "Col1Break":
@@ -508,19 +535,11 @@ namespace LoginForm.Services
                                 {
                                     item.Col1Break = Convert.ToInt32(_itemData);
                                 }
-                                else
-                                {
-                                    item.Col1Break = 0;
-                                }
                                 break;
                             case "Col2Break":
                                 if (_itemData != "")
                                 {
                                     item.Col2Break = Convert.ToInt32(_itemData);
-                                }
-                                else
-                                {
-                                    item.Col2Break = 0;
                                 }
                                 break;
                             case "Col3Break":
@@ -528,19 +547,11 @@ namespace LoginForm.Services
                                 {
                                     item.Col3Break = Convert.ToInt32(_itemData);
                                 }
-                                else
-                                {
-                                    item.Col3Break = 0;
-                                }
                                 break;
                             case "Col4Break":
                                 if (_itemData != "")
                                 {
                                     item.Col4Break = Convert.ToInt32(_itemData);
-                                }
-                                else
-                                {
-                                    item.Col4Break = 0;
                                 }
                                 break;
                             case "Col5Break":
@@ -548,65 +559,41 @@ namespace LoginForm.Services
                                 {
                                     item.Col5Break = Convert.ToInt32(_itemData);
                                 }
-                                else
-                                {
-                                    item.Col5Break = 0;
-                                }
                                 break;
                             case "DiscountedPrice1":
                                 if (_itemData != "")
                                 {
-                                    item.DiscountedPrice1 = Convert.ToInt32(_itemData);
-                                }
-                                else
-                                {
-                                    item.DiscountedPrice1 = 0;
+                                    item.DiscountedPrice1 = Convert.ToDecimal(_itemData);
                                 }
                                 break;
                             case "DiscountedPrice2":
                                 if (_itemData != "")
                                 {
-                                    item.DiscountedPrice2 = Convert.ToInt32(_itemData);
-                                }
-                                else
-                                {
-                                    item.DiscountedPrice2 = 0;
+                                    item.DiscountedPrice2 = Convert.ToDecimal(_itemData);
                                 }
                                 break;
                             case "DiscountedPrice3":
                                 if (_itemData != "")
                                 {
-                                    item.DiscountedPrice3 = Convert.ToInt32(_itemData);
-                                }
-                                else
-                                {
-                                    item.DiscountedPrice3 = 0;
+                                    item.DiscountedPrice3 = Convert.ToDecimal(_itemData);
                                 }
                                 break;
                             case "DiscountedPrice4":
                                 if (_itemData != "")
                                 {
-                                    item.DiscountedPrice4 = Convert.ToInt32(_itemData);
-                                }
-                                else
-                                {
-                                    item.DiscountedPrice4 = 0;
+                                    item.DiscountedPrice4 = Convert.ToDecimal(_itemData);
                                 }
                                 break;
                             case "DiscountedPrice5":
                                 if (_itemData != "")
                                 {
-                                    item.DiscountedPrice5 = Convert.ToInt32(_itemData);
-                                }
-                                else
-                                {
-                                    item.DiscountedPrice5 = 0;
+                                    item.DiscountedPrice5 = Convert.ToDecimal(_itemData);
                                 }
                                 break;
                             case "SuperSectionNo":
                                 item.SuperSectionNo = _itemData;
                                 break;
-                            case "SuperSectionName":
+                            case "SupersectionName":
                                 item.SupersectionName = _itemData;
                                 break;
                             case "BrandID":
@@ -665,16 +652,17 @@ namespace LoginForm.Services
 
                         cmd.ExecuteNonQuery();
                         newItemCount++;
-                    }/* Adds a new item to superDisk */
+                    }/* Adds a new item to SlidingPrice */
                     else
                     {
                         cmd = new SqlCommand();
                         cmd.Connection = ImeSqlConn;
                         cmd.Transaction = ImeSqlTransaction;
                         cmd.CommandText = @"UPDATE[dbo].[SlidingPrice] 
-                                            SET [ArticleNo] = @ArticleNo, [ArticleDescription] = @ArticleDescription, [ItemTypeCode] = @ItemTypeCode, [ItemTypeDesc] = @ItemTypeDesc, [IntroductionDate] = @IntroductionDate, [DiscontinuedDate] = @DiscontinuedDate, [Quantity1] = @Quantity1, [Col1Price] = @Col1Price, [Col2Price] = @Col2Price, [Col3Price] = @Col3Price, [Col4Price] = @Col4Price, [Col5Price] = @Col5Price, [Low_Discount_Ind] = @Low_Discount_Ind, [Licensed_Ind] = @Licensed_Ind, [Shelf_Life] = @Shelf_Life, [CofO] = @CofO, [EUR1_Indicator] = @EUR1_Indicator, [CCCN_No] = @CCCN_No, [Supercede_Date] = @Supercede_Date, [Current_Cat_page] = @Current_Cat_page, [Uk_Intro_Date] = @Uk_Intro_Date, [Filler] = @Filler, [Uk_Disc_Date] = @Uk_Disc_Date, [Substitute_By] = @Substitute_By, [BHC_Flag] = @BHC_Flag, [Filler1] = @Filler1, [Future_Sell_Price] = @Future_Sell_Price, [Int_Cat] = @Int_Cat, [New_Prod_Change_Ind] = @New_Prod_Change_Ind, [Out_of_Stock_Prohibit_change_ind] =@Out_of_Stock_Prohibit_change_ind, [Disc_Change_Ind] = @Disc_Change_Ind, [Superceded_Change_Ind] =@Superceded_Change_Ind, [Pack_Size_Change_Ind] = @Pack_Size_Change_Ind, [Rolled_Product_Change_Ind] = @Rolled_Product_Change_Ind, [Expiring_Product_Change_Ind] = @Expiring_Product_Change_Ind, [Manufacturer] = @Manufacturer, [MPN] =@MPN, [MH_Code_Level_1] = @MH_Code_Level_1, [Heigh] =@Heigh, [Width] = @Width, [Length] = @Length 
+                                            SET [ArticleNo] = @ArticleNo, [ArticleDescription] = @ArticleDescription, [ItemTypeCode] = @ItemTypeCode, [ItemTypeDesc] = @ItemTypeDesc, [IntroductionDate] = @IntroductionDate, [DiscontinuedDate] = @DiscontinuedDate, [Quantity1] = @Quantity1, [Col1Price] = @Col1Price, [Col2Price] = @Col2Price, [Col3Price] = @Col3Price, [Col4Price] = @Col4Price, [Col5Price] = @Col5Price, [Col1Break] = @Col1Break, [Col2Break] = @Col2Break, [Col3Break] = @Col3Break, [Col4Break] = @Col4Break, [Col5Break] = @Col5Break, [DiscountedPrice1] = @DiscountedPrice1, [DiscountedPrice2] = @DiscountedPrice2, [DiscountedPrice3] = @DiscountedPrice3, [DiscountedPrice4] = @DiscountedPrice4, [DiscountedPrice5] = @DiscountedPrice5, [SuperSectionNo] = @SuperSectionNo, [SupersectionName] = @SupersectionName, [BrandID] = @BrandID, [Brandname] = @Brandname, [SectionID] = @SectionID, [SectionName] = @SectionName
                                         WHERE 
-                                            SuperDisk.ArticleNo = @ArticleNo";
+                                            SlidingPrice.ArticleNo = @ArticleNo";
+
                         cmd.Parameters.AddWithValue("@ArticleNo", item.ArticleNo);
                         cmd.Parameters.AddWithValue("@ArticleDescription", item.ArticleDescription);
                         cmd.Parameters.AddWithValue("@ItemTypeCode", item.ItemTypeCode);
