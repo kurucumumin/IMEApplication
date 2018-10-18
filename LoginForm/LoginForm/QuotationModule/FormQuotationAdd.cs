@@ -50,6 +50,8 @@ namespace LoginForm.QuotationModule
         string mod = "";
         string cName = "";
         string cID = "";
+        DataTable table = new DataTable();
+        int rowIndex;
         #endregion
 
         public FormQuotationAdd(FormQuaotationCustomerSearch parent, string customerName, string customerId)
@@ -1345,6 +1347,16 @@ namespace LoginForm.QuotationModule
         {
             #region Quantity
 
+            if (dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[dgProductCode.Index].Value != null)
+            {
+
+            }
+            else
+            {
+                dgQuotationAddedItems.Rows.RemoveAt(dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Index);
+                dgQuotationAddedItems.Refresh();
+            }
+
             if (!String.IsNullOrEmpty(dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[dgQty.Index].Value.ToString()) && dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[dgQty.Index].Value.ToString() != "0")
             {
                 if (LandingCost.Enabled == false) LandingCost.Enabled = true;
@@ -1908,6 +1920,226 @@ namespace LoginForm.QuotationModule
             #endregion
         }
 
+       // private void ItemDetailsFillerKeyDown(string ArticleNoSearch)
+       // {
+       //     CurrentRow = dgQuotationAddedItems.CurrentRow;
+       //     #region Filler
+       //     decimal CurrValueWeb = Decimal.Parse(curr.rate.ToString());
+       //     string ArticleNoSearch1 = ArticleNoSearch;
+       //     try { ArticleNoSearch1 = (Int32.Parse(ArticleNoSearch)).ToString(); } catch { }
+       //     //Seçili olan item ı text lere yazdıran fonksiyon yazılacak
+       //     SuperDisk sd;
+       //     SuperDiskP sdP;
+       //     ExtendedRange er;
+
+       //     var ItemTabDetails = IME.ItemDetailTabFiller(ArticleNoSearch).FirstOrDefault();
+
+       //     if (ItemTabDetails != null)
+       //     {
+       //         CurrentRow.Cells["dgDesc"].Value = ItemTabDetails.Article_Desc;
+       //         CurrentRow.Cells["dgSSM"].Value = ItemTabDetails.Pack_Quantity.ToString() ?? ""; ;
+       //         CurrentRow.Cells["dgUC"].Value = ItemTabDetails.Unit_Content.ToString() ?? ""; ;
+       //         CurrentRow.Cells["dgUOM"].Value = ItemTabDetails.Unit_Measure;
+       //         CurrentRow.Cells["dgMPN"].Value = ItemTabDetails.MPN;
+       //         CurrentRow.Cells["dgCL"].Value = ItemTabDetails.Calibration_Ind;
+       //         if (ItemTabDetails.Standard_Weight != null && ItemTabDetails.Standard_Weight != 0)
+       //         {
+       //             decimal sW = (decimal)(ItemTabDetails.Standard_Weight / (decimal)1000);
+       //             sW = (ItemTabDetails.Pack_Quantity > ItemTabDetails.Unit_Content) ? (decimal)(sW / ItemTabDetails.Pack_Quantity) : (decimal)(sW / ItemTabDetails.Unit_Content);
+       //             txtStandartWeight.Text = sW.ToString();
+       //         }
+       //         txtHazardousInd.Text = ItemTabDetails.Hazardous_Ind;
+       //         txtCalibrationInd.Text = ItemTabDetails.Calibration_Ind;
+       //         txtCofO.Text = ItemTabDetails.CofO;
+       //         txtCCCN.Text = ItemTabDetails.CCCN_No.ToString() ?? ""; ;
+       //         txtUKDiscDate.Text = ItemTabDetails.Uk_Disc_Date;
+       //         txtDiscChange.Text = ItemTabDetails.Disc_Change_Ind;
+       //         txtExpiringPro.Text = ItemTabDetails.Expiring_Product_Change_Ind;
+       //         txtManufacturer.Text = ItemTabDetails.Manufacturer.ToString() ?? "";
+       //         txtMHCodeLevel1.Text = ItemTabDetails.MH_Code_Level_1;
+       //         txtCCCN.Text = ItemTabDetails.CCCN_No.ToString() ?? ""; ;
+       //         txtHeight.Text = ((decimal)(ItemTabDetails.Heigh * ((Decimal)100))).ToString("G29");
+       //         txtWidth.Text = ((decimal)(ItemTabDetails.Width * ((Decimal)100))).ToString("G29");
+       //         txtLength.Text = ((decimal)(ItemTabDetails.Length * ((Decimal)100))).ToString("G29");
+       //         txtGrossWeight.Text = String.Format("{0:0.0000}", (Decimal.Parse(txtLength.Text) * Decimal.Parse(txtWidth.Text) * Decimal.Parse(txtHeight.Text) / 6000).ToString());
+       //         txtGrossWeight.Text = (ItemTabDetails.Pack_Quantity > ItemTabDetails.Unit_Content) ? (Decimal.Parse(txtGrossWeight.Text) / ItemTabDetails.Pack_Quantity).ToString() : (Decimal.Parse(txtGrossWeight.Text) / ItemTabDetails.Unit_Content).ToString();
+       //         txtUK1.Text = (ItemTabDetails.Col1Price / ItemTabDetails.Unit_Content).ToString();
+       //         txtUK2.Text = (ItemTabDetails.Col2Price / ItemTabDetails.Unit_Content).ToString();
+       //         txtUK3.Text = (ItemTabDetails.Col3Price / ItemTabDetails.Unit_Content).ToString();
+       //         txtUK4.Text = (ItemTabDetails.Col4Price / ItemTabDetails.Unit_Content).ToString();
+       //         txtUK5.Text = (ItemTabDetails.Col5Price / ItemTabDetails.Unit_Content).ToString();
+       //         if (txtUK1.Text == "") { txtUK1.Text = "0"; }
+       //         if (txtUK2.Text == "") { txtUK2.Text = "0"; }
+       //         if (txtUK3.Text == "") { txtUK3.Text = "0"; }
+       //         if (txtUK4.Text == "") { txtUK4.Text = "0"; }
+       //         if (txtUK5.Text == "") { txtUK5.Text = "0"; }
+       //         txtUnitCount1.Text = (ItemTabDetails.Col1Break * ItemTabDetails.Unit_Content).ToString();
+       //         txtUnitCount2.Text = (ItemTabDetails.Col2Break * ItemTabDetails.Unit_Content).ToString();
+       //         txtUnitCount3.Text = (ItemTabDetails.Col3Break * ItemTabDetails.Unit_Content).ToString();
+       //         txtUnitCount4.Text = (ItemTabDetails.Col4Break * ItemTabDetails.Unit_Content).ToString();
+       //         txtUnitCount5.Text = (ItemTabDetails.Col5Break * ItemTabDetails.Unit_Content).ToString();
+       //         txtCost1.Text = (ItemTabDetails.DiscountedPrice1 / ItemTabDetails.Unit_Content).ToString();
+       //         txtCost2.Text = (ItemTabDetails.DiscountedPrice2 / ItemTabDetails.Unit_Content).ToString();
+       //         txtCost3.Text = (ItemTabDetails.DiscountedPrice3 / ItemTabDetails.Unit_Content).ToString();
+       //         txtCost4.Text = (ItemTabDetails.DiscountedPrice4 / ItemTabDetails.Unit_Content).ToString();
+       //         txtCost5.Text = (ItemTabDetails.DiscountedPrice5 / ItemTabDetails.Unit_Content).ToString();
+       //         txtWeb1.Text = ((Decimal.Parse(txtUK1.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+       //         txtWeb2.Text = ((Decimal.Parse(txtUK2.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+       //         txtWeb3.Text = ((Decimal.Parse(txtUK3.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+       //         txtWeb4.Text = ((Decimal.Parse(txtUK4.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+       //         txtWeb5.Text = ((Decimal.Parse(txtUK5.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+       //         txtSupersectionName.Text = ItemTabDetails.SupersectionName;
+       //         if (ItemTabDetails.Environment != null) { txtEnvironment.Text = "Y"; } else { txtEnvironment.Text = ""; }
+       //         txtLithium.Text = (ItemTabDetails.Lithium != null && ItemTabDetails.Lithium != String.Empty) ? "Y" : "";
+       //         txtShipping.Text = (ItemTabDetails.Shipping != null && ItemTabDetails.Shipping != String.Empty) ? "Y" : "";
+       //         txtRSStock.Text = ItemTabDetails.OnhandStockBalance.ToString();
+       //         txtRSOnOrder.Text = ItemTabDetails.QuantityonOrder.ToString();
+       //         txtDiscontinuationDate.Text = ItemTabDetails.DiscontinuationDate;
+       //         txtRunOn.Text = ItemTabDetails.Runon?.ToString();
+       //         txtReferral.Text = ItemTabDetails.Referral?.ToString();
+       //         txtLicenceType.Text = ItemTabDetails.LicenceType;
+
+       //         #region ItemMarginFiller
+       //         if ((ItemTabDetails.Col1Break * ItemTabDetails.Unit_Content).ToString() == "")
+       //         {
+       //             ItemTabDetails.Col1Break = 0;
+       //         }
+       //         int quantity = Int32.Parse((ItemTabDetails.Col1Break * ItemTabDetails.Unit_Content).ToString() ?? "0");
+       //         if (quantity != 0)
+       //         {
+       //             //            decimal margin1 = 0;
+       //             //            margin1 = (QuotationUtils.GetLandingCost(CurrentRow.Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
+       //             //, quantity));
+
+       //             txtMargin1.Text = ((1 - ((decimal.Parse(txtCost1.Text)) / (decimal.Parse(txtUK1.Text)))) * 100).ToString();
+       //             //int quantity2 = 0;
+       //             //quantity2 = Int32.Parse(ItemTabDetails.Col2Break.ToString());
+       //             //decimal margin2 = 0;
+       //             //margin2 = (QuotationUtils.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
+       //             //                 , quantity2));
+       //             if (decimal.Parse(txtUK2.Text) == 0)
+       //             {
+       //                 txtMargin2.Text = "";
+       //                 txtMargin3.Text = "";
+       //                 txtMargin4.Text = "";
+       //                 txtMargin5.Text = "";
+       //             }
+       //             else
+       //             {
+
+       //                 txtMargin2.Text = ((1 - ((decimal.Parse(txtCost2.Text)) / (decimal.Parse(txtUK2.Text)))) * 100).ToString();
+       //                 try
+       //                 {
+       //                     //decimal margin3 = 0;
+       //                     //margin3 = (QuotationUtils.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked, Int32.Parse(ItemTabDetails.Col3Break.ToString())));
+       //                     if (decimal.Parse(txtUK3.Text) != 0)
+       //                     {
+       //                         txtMargin3.Text = ((1 - ((decimal.Parse(txtCost3.Text)) / (decimal.Parse(txtUK3.Text)))) * 100).ToString();
+       //                         if (ItemTabDetails.Col4Break != 0)
+       //                         {
+       //                             //    decimal margin4 = 0;
+       //                             //    margin4 = (QuotationUtils.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
+       //                             //, Int32.Parse(ItemTabDetails.Col4Break.ToString())));
+       //                             txtMargin4.Text = ((1 - ((decimal.Parse(txtCost4.Text)) / (decimal.Parse(txtUK4.Text)))) * 100).ToString();
+       //                             if (ItemTabDetails.Col5Break != 0)
+       //                             {
+       //                                 //    decimal margin5 = 0;
+       //                                 //    margin5 = (QuotationUtils.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
+       //                                 //, Int32.Parse(ItemTabDetails.Col5Break.ToString())));
+       //                                 txtMargin5.Text = ((1 - ((decimal.Parse(txtCost5.Text)) / (decimal.Parse(txtUK5.Text)))) * 100).ToString();
+       //                             }
+       //                             else
+       //                             {
+       //                                 txtMargin5.Text = "";
+       //                             }
+       //                         }
+       //                         else
+       //                         {
+       //                             txtMargin4.Text = "";
+       //                             txtMargin5.Text = "";
+       //                         }
+       //                     }
+       //                     else
+       //                     {
+       //                         txtMargin3.Text = "";
+       //                         txtMargin4.Text = "";
+       //                         txtMargin5.Text = "";
+       //                     }
+
+       //                 }
+       //                 catch { }
+
+       //             }
+
+       //             #endregion
+
+
+
+       //         }
+       //         if (CurrentRow.Cells["dgUOM"].Value == null && CurrentRow.Cells["dgUC"].Value != null)
+       //         { CurrentRow.Cells["dgUOM"].Value = "Each"; }
+       //         #endregion
+
+       //         #region Low Margin Mark Clear
+       //         if (!String.IsNullOrEmpty(txtLithium.Text) && txtLithium.Text == "Y")
+       //         {
+       //             label64.BackColor = Color.Red;
+       //             //dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LI"].Style.BackColor = Color.Ivory;
+       //             dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LI"].Style.BackColor = Color.Red;
+       //         }
+       //         //else
+       //         //{
+       //         //    label64.BackColor = Color.White;
+       //         //    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LI"].Style.BackColor = Color.White;
+       //         //}
+       //         if (!String.IsNullOrEmpty(txtShipping.Text) && txtShipping.Text == "Y")
+       //         {
+       //             label63.BackColor = Color.Red;
+       //             dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["HS"].Style.BackColor = Color.Red;
+
+       //         }
+       //         //else
+       //         //{
+       //         //    label63.BackColor = Color.White;
+       //         //    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["HS"].Style.BackColor = Color.White;
+       //         //}
+
+       //         if (!String.IsNullOrEmpty(txtEnvironment.Text) && txtEnvironment.Text == "Y")
+       //         {
+       //             label53.BackColor = Color.Red;
+       //         }
+       //         //else
+       //         //{
+       //         //    label53.BackColor = Color.White;
+       //         //}
+
+       //         //if (txtCalibrationInd.Text != "" && txtCalibrationInd.Text != null && txtCalibrationInd.Text != "N")
+       //         if (!String.IsNullOrEmpty(txtCalibrationInd.Text) && txtCalibrationInd.Text == "Y")
+       //         {
+       //             label22.BackColor = Color.Red;
+       //             //dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["CL"].Style.BackColor = Color.Green;
+       //             dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["CL"].Style.BackColor = Color.Red;
+       //         }
+       //         //else
+       //         //{
+       //         //    label22.BackColor = Color.White;
+       //         //    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["CL"].Style.BackColor = Color.White;
+       //         //}
+
+       //         if (!String.IsNullOrEmpty(txtLicenceType.Text))
+       //         {
+       //             //dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LC"].Style.BackColor = Color.BurlyWood;
+       //             dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LC"].Style.BackColor = Color.Red;
+       //         }
+       //         //else
+       //         //{
+       //         //    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LC"].Style.BackColor = Color.White;
+       //         //}
+       //         #endregion
+
+       //     }
+       //(dgQuotationAddedItems.CurrentRow.Cells[dgDelivery.Index] as DataGridViewComboBoxCell).Value = 3;
+       // }
 
         private void ItemDetailsFiller(string ArticleNoSearch)
         {
@@ -4136,16 +4368,17 @@ namespace LoginForm.QuotationModule
                     }
                     else
                     {
-
-                        DataGridViewRow dgRow = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
-                        int rowIndex = dgQuotationAddedItems.Rows.Add(dgRow);
-                        dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[dgProductCode.Index];
-                        ItemClear();
-                        //dgQuotationAddedItems.Rows[rowIndex].Cells["dgQty"].ReadOnly = true;
-                        //dgQuotationAddedItems.Rows[rowIndex].Cells["dgUCUPCurr"].ReadOnly = true;
+                        if (!String.IsNullOrEmpty(dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[dgProductCode.Index].Value.ToString()) && dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[dgProductCode.Index].Value.ToString() != "")
+                        {
+                            DataGridViewRow dgRow = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
+                            int rowIndex = dgQuotationAddedItems.Rows.Add(dgRow);
+                            dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[dgProductCode.Index];
+                            ItemClear();
+                            //dgQuotationAddedItems.Rows[rowIndex].Cells["dgQty"].ReadOnly = true;
+                            //dgQuotationAddedItems.Rows[rowIndex].Cells["dgUCUPCurr"].ReadOnly = true;
+                        }
                     }
                 }
-
                 //if (dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index].Value != null && dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString() != "")
                 //{
                 //    dgQuotationAddedItems.CurrentRow.Cells["dgQty"].ReadOnly = false;
@@ -4280,13 +4513,27 @@ namespace LoginForm.QuotationModule
             }
             else if (e.KeyCode == Keys.Up)
             {
-                //ItemClear();
-                //try { ItemDetailsFiller(dgQuotationAddedItems.Rows[dgQuotationAddedItems.SelectedRows.Count - 1].Cells[dgProductCode.Index].Value.ToString()); } catch { }
+                if (dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index].Value != null)
+                {
+                    if (dgQuotationAddedItems.CurrentRow.Index > 0)
+                    {
+                        dgQuotationAddedItems.ClearSelection();
+                        dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentRow.Index - 1].Selected = true;
+                        QuotataionModifyItemDetailsFiller(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentRow.Index - 1].Cells[dgProductCode.Index].Value.ToString(), dgQuotationAddedItems.CurrentRow.Index - 1);
+                    }
+                }
             }
             else if (e.KeyCode == Keys.Down)
             {
-                //ItemClear();
-                //try { ItemDetailsFiller(dgQuotationAddedItems.Rows[dgQuotationAddedItems.SelectedRows. + 1].Cells[dgProductCode.Index].Value.ToString()); } catch { }
+                if (dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index].Value != null && dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[dgProductCode.Index].Value != null)
+                {
+                    if (dgQuotationAddedItems.CurrentRow.Index < dgQuotationAddedItems.RowCount - 1)
+                    {
+                        dgQuotationAddedItems.ClearSelection();
+                        dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentRow.Index + 1].Selected = true;
+                        QuotataionModifyItemDetailsFiller(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentRow.Index + 1].Cells[dgProductCode.Index].Value.ToString(), dgQuotationAddedItems.CurrentRow.Index + 1);
+                    }
+                }
             }
         }
 
@@ -5091,46 +5338,68 @@ namespace LoginForm.QuotationModule
 
         private void dgQuotationAddedItems_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            if (dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index].Value == null)
+            #region Eski
+            //if (dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index].Value == null)
+            //{
+            //    if (e.ColumnIndex == dgProductCode.Index) // 1 should be your column index
+            //    {
+            //        int i;
+
+            //        if (!int.TryParse(Convert.ToString(e.FormattedValue), out i))
+            //        {
+            //            e.Cancel = true;
+            //            if (dgQuotationAddedItems.CurrentRow.Cells[dgDesc.Index].Value == null && dgQuotationAddedItems.CurrentRow.Cells[dgTotal.Index].Value == null)
+            //            {
+            //                //MessageBox.Show("");
+            //                //dgQuotationAddedItems.Rows.(dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].de);
+            //            }
+            //            else
+            //            {
+            //                // dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[dgQty.Index].Value = "";
+            //                CurrentRow.Cells[dgQty.Index].Value = "";
+            //                dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index];
+            //            }
+            //        }
+            //    }
+            //    else
+            //    {
+            //        if (e.ColumnIndex == dgQty.Index) // 1 should be your column index
+            //        {
+            //            int i;
+
+            //            if (!int.TryParse(Convert.ToString(e.FormattedValue), out i))
+            //            {
+            //                e.Cancel = true;
+            //                if (dgQuotationAddedItems.CurrentRow.Cells[dgLandingCost.Index].Value == null && dgQuotationAddedItems.CurrentRow.Cells[dgMargin.Index].Value == null)
+            //                {
+            //                    MessageBox.Show("Please enter value !");
+            //                }
+            //                else
+            //                {
+            //                    dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index].Value = "";
+            //                    dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index];
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
+            #endregion
+
+            if (e.ColumnIndex == dgQty.Index && dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index].Value != null) // 1 should be your column index
             {
-                if (e.ColumnIndex == dgProductCode.Index) // 1 should be your column index
+                int i;
+
+                if (!int.TryParse(Convert.ToString(e.FormattedValue), out i))
                 {
-                    int i;
-
-                    if (!int.TryParse(Convert.ToString(e.FormattedValue), out i))
+                    e.Cancel = true;
+                    if (dgQuotationAddedItems.CurrentRow.Cells[dgLandingCost.Index].Value == null && dgQuotationAddedItems.CurrentRow.Cells[dgMargin.Index].Value == null)
                     {
-                        e.Cancel = true;
-                        if (dgQuotationAddedItems.CurrentRow.Cells[dgDesc.Index].Value == null && dgQuotationAddedItems.CurrentRow.Cells[dgTotal.Index].Value == null)
-                        {
-
-                        }
-                        else
-                        {
-                            // dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[dgQty.Index].Value = "";
-                            CurrentRow.Cells[dgQty.Index].Value = "";
-                            dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index];
-                        }
+                        MessageBox.Show("Please enter value !");
                     }
-                }
-            }
-            else
-            {
-                if (e.ColumnIndex == dgQty.Index) // 1 should be your column index
-                {
-                    int i;
-
-                    if (!int.TryParse(Convert.ToString(e.FormattedValue), out i))
+                    else
                     {
-                        e.Cancel = true;
-                        if (dgQuotationAddedItems.CurrentRow.Cells[dgLandingCost.Index].Value == null && dgQuotationAddedItems.CurrentRow.Cells[dgMargin.Index].Value == null)
-                        {
-                            MessageBox.Show("Please enter value !");
-                        }
-                        else
-                        {
-                            dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index].Value = "";
-                            dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index];
-                        }
+                        dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index].Value = "";
+                        dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index];
                     }
                 }
             }
