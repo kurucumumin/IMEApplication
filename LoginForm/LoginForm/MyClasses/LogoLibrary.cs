@@ -27,8 +27,9 @@ namespace LoginForm.MyClasses
             ImeLogoSalesOrder order = new ImeLogoSalesOrder();
             ImeSQL imesql = new ImeSQL();
             LogoSQL logosql = new LogoSQL();
-
-            return order.addSalesOrder(imesql.ImeSqlConnect(server, imedatabase, sqluser, sqlpassword), SoNO.ToString(), logosql.LogoSqlConnect(server, logodatabase, sqluser, sqlpassword), ImeSettings.FrmNo, ImeSettings.DnmNo);
+            string dnmNo = Utils.dbDnmNo();
+            string frmNo = Utils.dbFrmNo();
+            return order.addSalesOrder(imesql.ImeSqlConnect(server, imedatabase, sqluser, sqlpassword), SoNO.ToString(), logosql.LogoSqlConnect(server, logodatabase, sqluser, sqlpassword), frmNo, dnmNo);
         }
 
         public DataTable getCurrency(string hata, SqlConnection LogoSQL)
@@ -88,8 +89,9 @@ namespace LoginForm.MyClasses
             ImeLogoSalesOrder order = new ImeLogoSalesOrder();
             ImeSQL imesql = new ImeSQL();
             LogoSQL logosql = new LogoSQL();
-            
-            return order.deleteSalesOrder(imesql.ImeSqlConnect(server, imedatabase, sqluser, sqlpassword), SoNO.ToString(), logosql.LogoSqlConnect(server, logodatabase, sqluser, sqlpassword), ImeSettings.FrmNo, ImeSettings.DnmNo);
+            string dnmNo = Utils.dbDnmNo();
+            string frmNo = Utils.dbFrmNo();
+            return order.deleteSalesOrder(imesql.ImeSqlConnect(server, imedatabase, sqluser, sqlpassword), SoNO.ToString(), logosql.LogoSqlConnect(server, logodatabase, sqluser, sqlpassword), frmNo, dnmNo);
         }
 
         public string BackFromLogo_RSInvoice(string RSInvoiceID)

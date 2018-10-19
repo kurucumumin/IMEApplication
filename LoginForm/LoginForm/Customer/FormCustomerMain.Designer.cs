@@ -73,7 +73,7 @@
             // uPDATEQUOTATIONToolStripMenuItem
             // 
             this.uPDATEQUOTATIONToolStripMenuItem.Name = "uPDATEQUOTATIONToolStripMenuItem";
-            this.uPDATEQUOTATIONToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.uPDATEQUOTATIONToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.uPDATEQUOTATIONToolStripMenuItem.Text = "MODIFY";
             this.uPDATEQUOTATIONToolStripMenuItem.Click += new System.EventHandler(this.uPDATEQUOTATIONToolStripMenuItem_Click);
             // 
@@ -85,19 +85,19 @@
             this.qUOTATIONPRINTToolStripMenuItem,
             this.uPDATEQUOTATIONToolStripMenuItem});
             this.gridRightClick.Name = "gridRightClick";
-            this.gridRightClick.Size = new System.Drawing.Size(181, 92);
+            this.gridRightClick.Size = new System.Drawing.Size(119, 70);
             // 
             // qUOTATIONINFOToolStripMenuItem
             // 
             this.qUOTATIONINFOToolStripMenuItem.Name = "qUOTATIONINFOToolStripMenuItem";
-            this.qUOTATIONINFOToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.qUOTATIONINFOToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.qUOTATIONINFOToolStripMenuItem.Text = " INFO";
             this.qUOTATIONINFOToolStripMenuItem.Click += new System.EventHandler(this.qUOTATIONINFOToolStripMenuItem_Click);
             // 
             // qUOTATIONPRINTToolStripMenuItem
             // 
             this.qUOTATIONPRINTToolStripMenuItem.Name = "qUOTATIONPRINTToolStripMenuItem";
-            this.qUOTATIONPRINTToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.qUOTATIONPRINTToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.qUOTATIONPRINTToolStripMenuItem.Text = "PRINT";
             // 
             // tableLayoutPanel1
@@ -222,11 +222,10 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.btnSearch);
             this.groupBox3.Controls.Add(this.txtSearchText);
-            this.groupBox3.Location = new System.Drawing.Point(974, 1);
+            this.groupBox3.Location = new System.Drawing.Point(3, 3);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(228, 112);
             this.groupBox3.TabIndex = 30;
@@ -278,7 +277,7 @@
             this.groupBox2.Controls.Add(this.btnExcel);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.btnNew);
-            this.groupBox2.Location = new System.Drawing.Point(5, 3);
+            this.groupBox2.Location = new System.Drawing.Point(231, 3);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(371, 112);
             this.groupBox2.TabIndex = 29;
@@ -287,7 +286,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 73);
+            this.label3.Location = new System.Drawing.Point(12, 71);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 13);
             this.label3.TabIndex = 34;
@@ -300,7 +299,7 @@
             this.btnRefreshList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRefreshList.Image = global::LoginForm.Properties.Resources.icons8_Refresh_32;
             this.btnRefreshList.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnRefreshList.Location = new System.Drawing.Point(12, 16);
+            this.btnRefreshList.Location = new System.Drawing.Point(12, 14);
             this.btnRefreshList.Margin = new System.Windows.Forms.Padding(0);
             this.btnRefreshList.Name = "btnRefreshList";
             this.btnRefreshList.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
@@ -314,7 +313,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(148, 74);
+            this.label10.Location = new System.Drawing.Point(148, 72);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(38, 13);
             this.label10.TabIndex = 32;
@@ -326,7 +325,7 @@
             this.btnUpdate.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.Image = global::LoginForm.Properties.Resources.if_Gnome_System_Software_Update_48_55454;
-            this.btnUpdate.Location = new System.Drawing.Point(143, 16);
+            this.btnUpdate.Location = new System.Drawing.Point(143, 14);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(0);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
@@ -339,7 +338,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(309, 73);
+            this.label8.Location = new System.Drawing.Point(309, 71);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(28, 13);
             this.label8.TabIndex = 30;
@@ -349,7 +348,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(212, 74);
+            this.label7.Location = new System.Drawing.Point(212, 72);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(66, 13);
             this.label7.TabIndex = 29;
@@ -362,7 +361,7 @@
             this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrint.Image = global::LoginForm.Properties.Resources.if_print_173079;
             this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnPrint.Location = new System.Drawing.Point(300, 16);
+            this.btnPrint.Location = new System.Drawing.Point(300, 14);
             this.btnPrint.Margin = new System.Windows.Forms.Padding(0);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Padding = new System.Windows.Forms.Padding(8, 16, 8, 0);
@@ -378,7 +377,7 @@
             this.btnExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExcel.Image = global::LoginForm.Properties.Resources.if_Document_file_export_sending_exit_send_1886950;
             this.btnExcel.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnExcel.Location = new System.Drawing.Point(215, 15);
+            this.btnExcel.Location = new System.Drawing.Point(215, 13);
             this.btnExcel.Margin = new System.Windows.Forms.Padding(0);
             this.btnExcel.Name = "btnExcel";
             this.btnExcel.Padding = new System.Windows.Forms.Padding(8, 16, 8, 0);
@@ -390,7 +389,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(82, 73);
+            this.label4.Location = new System.Drawing.Point(82, 71);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(32, 13);
             this.label4.TabIndex = 24;
@@ -403,7 +402,7 @@
             this.btnNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNew.Image = global::LoginForm.Properties.Resources.icons8_Plus_32;
             this.btnNew.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnNew.Location = new System.Drawing.Point(75, 16);
+            this.btnNew.Location = new System.Drawing.Point(75, 14);
             this.btnNew.Margin = new System.Windows.Forms.Padding(0);
             this.btnNew.Name = "btnNew";
             this.btnNew.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);

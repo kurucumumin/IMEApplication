@@ -51,7 +51,6 @@ namespace LoginForm.QuotationModule
         string cName = "";
         string cID = "";
         DataTable table = new DataTable();
-        int rowIndex;
         #endregion
 
         public FormQuotationAdd(FormQuaotationCustomerSearch parent, string customerName, string customerId)
@@ -830,6 +829,7 @@ namespace LoginForm.QuotationModule
             //txtQuotationNo.Text = q1.QuotationNo;/*View 3*/
             EnableForm();
             txtTotalMarge.Visible = false;
+            dgQuotationAddedItems.Enabled = false;
         }
 
         private void EnableForm()
@@ -1361,7 +1361,6 @@ namespace LoginForm.QuotationModule
             {
                 if (LandingCost.Enabled == false) LandingCost.Enabled = true;
                 GetQuotationQuantity(dgQuotationAddedItems.CurrentCell.RowIndex);
-
                 dgQuotationAddedItems.CurrentRow.Cells["dgUCUPCurr"].ReadOnly = false;
                 dgQuotationAddedItems.CurrentRow.Cells["dgUCUPCurr"].Style = dgQuotationAddedItems.DefaultCellStyle;
 
@@ -1490,6 +1489,7 @@ namespace LoginForm.QuotationModule
                             decimal discResult = 0;
                             //Fiyat burada
                             string articleNo = CurrentRow.Cells["dgProductCode"].Value.ToString();
+                            string qty = CurrentRow.Cells["dgQty"].Value.ToString();
                             CurrentRow.Cells["dgUPIME"].Value = price / decimal.Parse(CurrentRow.Cells["dgQty"].Value.ToString());
                             CurrentRow.Cells["dgTotal"].Value = Math.Round(price, 4);
                             //SuperdiskP değilse
@@ -1516,6 +1516,8 @@ namespace LoginForm.QuotationModule
                                 CurrentRow.Cells["dgQty"].Value = "";
                                 CurrentRow.Cells["dgUPIME"].Value = "";
                                 CurrentRow.Cells["dgTotal"].Value = "";
+                                dgQuotationAddedItems.CurrentCell = CurrentRow.Cells[dgQty.Index];
+                                dgQuotationAddedItems.BeginEdit(true);
                             }
 
                             #endregion
@@ -5392,7 +5394,7 @@ namespace LoginForm.QuotationModule
                 if (!int.TryParse(Convert.ToString(e.FormattedValue), out i))
                 {
                     e.Cancel = true;
-                    if (dgQuotationAddedItems.CurrentRow.Cells[dgLandingCost.Index].Value == null && dgQuotationAddedItems.CurrentRow.Cells[dgMargin.Index].Value == null)
+                    if ((dgQuotationAddedItems.CurrentRow.Cells[dgLandingCost.Index].Value == null && dgQuotationAddedItems.CurrentRow.Cells[dgMargin.Index].Value == null))
                     {
                         MessageBox.Show("Please enter value !");
                     }

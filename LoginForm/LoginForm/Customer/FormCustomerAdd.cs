@@ -76,7 +76,7 @@ namespace LoginForm
 
         private void FormCustomerAdd_Load(object sender, EventArgs e)
         {
-            ComboboxFiller();
+            //ComboboxFiller();
         }
 
         private void NewCustomerNumber()
@@ -211,12 +211,12 @@ namespace LoginForm
             //SubCategory.ValueMember = "ID";
             QuoCurrencyName.DataSource = IME.Currencies.ToList();
             QuoCurrencyName.DisplayMember = "currencyName";
-            QuoCurrencyName.ValueMember = "currencyId";
-            QuoCurrencyName.SelectedIndex = -1;
+            QuoCurrencyName.ValueMember = "currencyID";
+            //QuoCurrencyName.SelectedIndex = -1;
             InvCurrencyName.DataSource = IME.Currencies.ToList();
             InvCurrencyName.DisplayMember = "currencyName";
-            InvCurrencyName.ValueMember = "currencyId";
-            InvCurrencyName.SelectedIndex = -1;
+            InvCurrencyName.ValueMember = "currencyID";
+            //InvCurrencyName.SelectedIndex = -1;
             TermsofPayments.DataSource = IME.PaymentTerms.OrderBy(p => p.timespan).ToList();
             TermsofPayments.DisplayMember = "term_name";
             TermsofPayments.ValueMember = "ID";
@@ -236,6 +236,7 @@ namespace LoginForm
 
         private void customerClicksearch(Customer customer)
         {
+            ComboboxFiller();
             string customerID = customer.ID;
 
             Customer c = IME.Customers.Where(a => a.ID == customerID).FirstOrDefault();
@@ -263,22 +264,20 @@ namespace LoginForm
             cbMainContact.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
             cbMainContact.DisplayMember = "cw_name";
             cbMainContact.ValueMember = "ID";
-            if (c.CurrNameQuo != null)
-            {
-                QuoCurrencyName.SelectedIndex = QuoCurrencyName.FindStringExact(c.CurrNameQuo);
-            }
-            else
-            {
-                QuoCurrencyName.SelectedIndex = -1;
-            }
-            if (c.CurrNameInv != null)
-            {
-                InvCurrencyName.SelectedIndex = InvCurrencyName.FindStringExact(c.CurrNameInv);
-            }
-            else
-            {
-                InvCurrencyName.SelectedIndex = -1;
-            }
+            QuoCurrencyName.DataSource = IME.Currencies.ToList();
+            QuoCurrencyName.DisplayMember = "currencyName";
+            QuoCurrencyName.ValueMember = "currencyID";
+            InvCurrencyName.DataSource = IME.Currencies.ToList();
+            InvCurrencyName.DisplayMember = "currencyName";
+            InvCurrencyName.ValueMember = "currencyID";
+
+            var CustomerCurr = IME.Currencies.Where(a => a.currencyName == customer.CurrNameQuo).FirstOrDefault();
+            if (CustomerCurr != null){QuoCurrencyName.SelectedValue = CustomerCurr.currencyID;}
+            else{QuoCurrencyName.SelectedIndex = -1;}
+
+            var CustomerCurrInv = IME.Currencies.Where(a => a.currencyName == customer.CurrNameInv).FirstOrDefault();
+            if (CustomerCurrInv != null) {InvCurrencyName.SelectedValue = CustomerCurrInv.currencyID;}
+            else{ InvCurrencyName.SelectedIndex = -1;}
 
             if (c.CustomerCategory != null)
             {

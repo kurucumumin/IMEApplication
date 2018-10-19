@@ -70,24 +70,6 @@ namespace LoginForm.ItemModule
                     }
                     break;
 
-                //case "SlidingPrice":
-                //    PriceFileHelper PriceFileHelper = new PriceFileHelper();
-                //    bool NoErrorPrice = PriceFileHelper.ErrorCheck();
-                //    if (NoErrorPrice)
-                //    {
-                //        if (PriceFileHelper.LoadPriceFileItems())
-                //        {
-                //            RsFileHistory h = new RsFileHistory();
-                //            h.FileType = txtReader.LoaderType;
-                //            h.FileName = PriceFileHelper.FileName;
-                //            h.Date = Utils.GetCurrentDateTime();
-                //            h.UserID = Utils.getCurrentUser().WorkerID;
-                //            IME.RsFileHistories.Add(h);
-                //            IME.SaveChanges();
-                //        }
-                //    }
-                //    break;
-
                 case "SlidingPrice":
                     PriceFileHelper PriceFileHelper = new PriceFileHelper();
                     bool NoErrorPrice = PriceFileHelper.ErrorCheck();
@@ -135,8 +117,7 @@ namespace LoginForm.ItemModule
                         IME.RsFileHistories.Add(h);
                         IME.SaveChanges();
                     }
-                    //dgvFileLog.DataSource = null;
-                    //dgvFileLog.DataSource = IME.DailyDiscontinueds.Take(10).ToList();
+                    
                     break;
                 case "DualUse":
                     if (txtReader.DualUsedRead() == 1)
@@ -149,8 +130,7 @@ namespace LoginForm.ItemModule
                         IME.RsFileHistories.Add(h);
                         IME.SaveChanges();
                     }
-                    //dgvFileLog.DataSource = null;
-                    //dgvFileLog.DataSource = IME.DualUses.Take(10).ToList();
+                    
                     break;
                 case "Hazardous":
                     if (txtReader.HazardousRead() == 1)
@@ -163,8 +143,7 @@ namespace LoginForm.ItemModule
                         IME.RsFileHistories.Add(h);
                         IME.SaveChanges();
                     }
-                    //dgvFileLog.DataSource = null;
-                    //dgvFileLog.DataSource = IME.Hazardous.Take(10).ToList();
+                   
                     break;
                 case "ExtendedRange":
                     if (txtReader.EntendedRangeRead() == 1)
@@ -177,8 +156,7 @@ namespace LoginForm.ItemModule
                         IME.RsFileHistories.Add(h);
                         IME.SaveChanges();
                     }
-                    //dgvFileLog.DataSource = null;
-                    //dgvFileLog.DataSource = IME.ExtendedRanges.Take(10).ToList();
+                    
                     break;
                 case "TSE":
                     //txtReader.SuperDiskRead();
@@ -196,8 +174,7 @@ namespace LoginForm.ItemModule
                         IME.RsFileHistories.Add(h);
                         IME.SaveChanges();
                     }
-                    //dgvFileLog.DataSource = null;
-                    //dgvFileLog.DataSource = IME.RSProes.Take(10).ToList();
+                    
                     break;
                 //case "RSInvoice":
                 //    txtReader.RSInvoiceReader();

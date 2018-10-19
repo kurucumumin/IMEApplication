@@ -10,7 +10,7 @@ using System.Drawing;
 using System.Data.SqlClient;
 using LoginForm.MyClasses;
 using System.Data;
-
+using LoginForm;
 namespace LoginForm.Services
 {
     class Utils
@@ -24,7 +24,9 @@ namespace LoginForm.Services
         private readonly string imedatabase = "IME";
         private readonly string sqluser = "sa";
         private readonly string sqlpassword = "IME1453";
-        
+
+        private static string Name = "";
+        private static string Password = "";
         public SqlConnection ImeSqlConnection()
         {
             SqlConnection conn = new SqlConnection();
@@ -38,6 +40,62 @@ namespace LoginForm.Services
         public static DateTime GetCurrentDateTime()
         {
             return (DateTime)new IMEEntities().CurrentDate().FirstOrDefault();
+        }
+
+        public static void User(string userName, string UserPass)
+        {
+            Name = userName;
+            Password = UserPass;
+        } 
+
+        public static string dbFrmNo()
+        {
+            if (Name == "Dubai")
+            {
+                return "002";
+            }
+            if (Name == "Bahreyn")
+            {
+                return "001";
+            }
+            if (Name == "Abudhabi")
+            {
+                return "003";
+            }
+            if (Name == "Oman")
+            {
+                return "004";
+            }
+            if (Name == "Turkey")
+            {
+                return "005";
+            }
+            return "";
+        }
+
+        public static string dbDnmNo()
+        {
+            if (Name == "Dubai")
+            {
+                return "01";
+            }
+            if (Name == "Bahreyn")
+            {
+                return "01";
+            }
+            if (Name == "Abudhabi")
+            {
+                return "01";
+            }
+            if (Name == "Oman")
+            {
+                return "01";
+            }
+            if (Name == "Turkey")
+            {
+                return "01";
+            }
+            return "";
         }
 
         public static string MD5Hash(string input)

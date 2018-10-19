@@ -21,8 +21,8 @@ namespace LoginForm.Services
         private static string dbUserID = "sa";
         private static string dbInitialCatalogLOGO = "LOGO";
         private static string dbInitialCatalogIME = "IME";
-        private static string dbFrmNo = "001";
-        private static string dbDnmNo = "01";
+        private static string dbFrmNo = Utils.dbFrmNo();
+        private static string dbDnmNo = Utils.dbDnmNo();
         #endregion
 
         #region For Management

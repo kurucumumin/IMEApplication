@@ -27,8 +27,18 @@ namespace LoginForm.BackOrder
 
         private void btnChooseFile_Click(object sender, EventArgs e)
         {
-            List<DataSet.BackOrder>BoList= txtReader.BackOrderRead();
+            List<DataSet.BackOrder> BoList = txtReader.BackOrderRead();
             IMEEntities IME = new IMEEntities();
+            {
+                RsFileHistory h = new RsFileHistory();
+                h.FileType = txtReader.LoaderType;
+                h.FileName = "";
+                h.Date = Utils.GetCurrentDateTime();
+                h.UserID = Utils.getCurrentUser().WorkerID;
+                IME.RsFileHistories.Add(h);
+                IME.SaveChanges();
+            }
+
             foreach (DataSet.BackOrder item in BoList)
             {
                 DataGridViewRow row = (DataGridViewRow)dg.Rows[0].Clone();
@@ -46,6 +56,8 @@ namespace LoginForm.BackOrder
                 dg.Rows.Add(row);
 
             }
+
+
         }
 
         private void btnsave_Click(object sender, EventArgs e)
