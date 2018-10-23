@@ -50,7 +50,7 @@ namespace LoginForm.MyClasses
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = LogoSQL;
                 cmd.CommandText = @"SELECT DISTINCT c.CURNAME,d.RATES1,d.RATES2,d.RATES3,d.RATES4,d.EDATE
-  FROM L_DAILYEXCHANGES as d, L_CURRENCYLIST c where d.CRTYPE=c.CURTYPE and d.RATES1 is not null and d.RATES1 <> '1E-06'";
+  FROM L_DAILYEXCHANGES as d, L_CURRENCYLIST c where d.CRTYPE=c.CURTYPE and d.RATES1 is not null and d.RATES1 <> '1E-06'  and d.RATES4 <> '0' and d.EDATE = CAST(GETDATE() as date)";
 
                 SqlDataReader drCurr = cmd.ExecuteReader();
 

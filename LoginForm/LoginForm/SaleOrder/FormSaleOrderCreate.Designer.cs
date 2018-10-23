@@ -42,6 +42,22 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgQuotations = new System.Windows.Forms.DataGridView();
+            this.quotationBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.dgItems = new System.Windows.Forms.DataGridView();
+            this.quotationDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnSelect = new System.Windows.Forms.Button();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgQuotationNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.grossTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.exchangeRateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,9 +66,6 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,7 +73,6 @@
             this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgQuotationNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,27 +81,22 @@
             this.representativeIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.exchangeRateIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.deliveryDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.grossTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.currencyIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.currencyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.exchangeRateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.paymentTermDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quotationDetailsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.workerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quotationBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.dgItems = new System.Windows.Forms.DataGridView();
             this.chk = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dgID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgLandingCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -99,7 +106,6 @@
             this.dataGridViewTextBoxColumn33 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn34 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn35 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn37 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn38 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn39 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -115,12 +121,6 @@
             this.dataGridViewTextBoxColumn40 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quotationDeliveryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.saleOrderDetailsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quotationDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.btnClear = new System.Windows.Forms.Button();
-            this.btnSelect = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
@@ -316,6 +316,12 @@
             this.dgQuotations.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgQuotations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgQuotations.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn11,
+            this.dgQuotationNo,
+            this.dataGridViewTextBoxColumn10,
+            this.dataGridViewTextBoxColumn9,
+            this.grossTotalDataGridViewTextBoxColumn,
+            this.exchangeRateDataGridViewTextBoxColumn,
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
@@ -324,9 +330,6 @@
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewTextBoxColumn7,
             this.dataGridViewTextBoxColumn8,
-            this.dataGridViewTextBoxColumn9,
-            this.dataGridViewTextBoxColumn10,
-            this.dataGridViewTextBoxColumn11,
             this.dataGridViewTextBoxColumn12,
             this.dataGridViewTextBoxColumn13,
             this.dataGridViewTextBoxColumn14,
@@ -334,7 +337,6 @@
             this.dataGridViewTextBoxColumn16,
             this.dataGridViewTextBoxColumn17,
             this.dataGridViewTextBoxColumn18,
-            this.dgQuotationNo,
             this.dataGridViewTextBoxColumn20,
             this.dataGridViewTextBoxColumn21,
             this.dataGridViewTextBoxColumn22,
@@ -343,12 +345,10 @@
             this.representativeIDDataGridViewTextBoxColumn,
             this.exchangeRateIDDataGridViewTextBoxColumn,
             this.deliveryDateDataGridViewTextBoxColumn,
-            this.grossTotalDataGridViewTextBoxColumn,
             this.currencyIDDataGridViewTextBoxColumn,
             this.statusDataGridViewTextBoxColumn,
             this.currencyDataGridViewTextBoxColumn,
             this.customerDataGridViewTextBoxColumn,
-            this.exchangeRateDataGridViewTextBoxColumn,
             this.dataGridViewTextBoxColumn23,
             this.dataGridViewTextBoxColumn24,
             this.paymentTermDataGridViewTextBoxColumn,
@@ -364,6 +364,183 @@
             this.dgQuotations.Size = new System.Drawing.Size(929, 180);
             this.dgQuotations.TabIndex = 0;
             this.dgQuotations.SelectionChanged += new System.EventHandler(this.dgQuotations_SelectionChanged);
+            // 
+            // quotationBindingSource
+            // 
+            this.quotationBindingSource.DataSource = typeof(LoginForm.DataSet.Quotation);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.tableLayoutPanel5);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(8, 8);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(0);
+            this.groupBox2.Size = new System.Drawing.Size(935, 254);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Items";
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 1;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.Controls.Add(this.dgItems, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.panel3, 0, 1);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 14);
+            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 2;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 93F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(935, 240);
+            this.tableLayoutPanel5.TabIndex = 0;
+            // 
+            // dgItems
+            // 
+            this.dgItems.AllowUserToAddRows = false;
+            this.dgItems.AllowUserToDeleteRows = false;
+            this.dgItems.AllowUserToOrderColumns = true;
+            this.dgItems.AutoGenerateColumns = false;
+            this.dgItems.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
+            this.dgItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.chk,
+            this.dgID,
+            this.dataGridViewTextBoxColumn26,
+            this.dataGridViewTextBoxColumn25,
+            this.dataGridViewTextBoxColumn36,
+            this.dgCost,
+            this.dgLandingCost,
+            this.dataGridViewTextBoxColumn27,
+            this.dataGridViewTextBoxColumn28,
+            this.dataGridViewTextBoxColumn29,
+            this.dataGridViewTextBoxColumn30,
+            this.dataGridViewTextBoxColumn31,
+            this.dataGridViewTextBoxColumn32,
+            this.dataGridViewTextBoxColumn33,
+            this.dataGridViewTextBoxColumn34,
+            this.dataGridViewTextBoxColumn35,
+            this.dataGridViewTextBoxColumn37,
+            this.dataGridViewTextBoxColumn38,
+            this.dataGridViewTextBoxColumn39,
+            this.uCDataGridViewTextBoxColumn,
+            this.sSMDataGridViewTextBoxColumn,
+            this.unitWeightDataGridViewTextBoxColumn,
+            this.dependantTableDataGridViewTextBoxColumn,
+            this.unitConversionIdDataGridViewTextBoxColumn,
+            this.quotationDeliveryIDDataGridViewTextBoxColumn,
+            this.costDataGridViewTextBoxColumn,
+            this.landingCostDataGridViewTextBoxColumn,
+            this.mPNDataGridViewTextBoxColumn,
+            this.dataGridViewTextBoxColumn40,
+            this.quotationDeliveryDataGridViewTextBoxColumn,
+            this.saleOrderDetailsDataGridViewTextBoxColumn});
+            this.dgItems.DataSource = this.quotationDetailBindingSource;
+            this.dgItems.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgItems.Location = new System.Drawing.Point(3, 3);
+            this.dgItems.Name = "dgItems";
+            this.dgItems.RowTemplate.Height = 24;
+            this.dgItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgItems.Size = new System.Drawing.Size(929, 141);
+            this.dgItems.TabIndex = 0;
+            // 
+            // quotationDetailBindingSource
+            // 
+            this.quotationDetailBindingSource.DataSource = typeof(LoginForm.DataSet.QuotationDetail);
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Controls.Add(this.btnClear);
+            this.panel3.Controls.Add(this.btnSelect);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(3, 150);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(929, 87);
+            this.panel3.TabIndex = 1;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(81, 60);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(52, 15);
+            this.label3.TabIndex = 23;
+            this.label3.Text = "Clear All";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 60);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(57, 15);
+            this.label4.TabIndex = 22;
+            this.label4.Text = "Select All";
+            // 
+            // btnClear
+            // 
+            this.btnClear.Image = global::LoginForm.Properties.Resources.if_Line_ui_icons_Svg_03_1465842;
+            this.btnClear.Location = new System.Drawing.Point(80, 3);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(52, 52);
+            this.btnClear.TabIndex = 21;
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // btnSelect
+            // 
+            this.btnSelect.Image = global::LoginForm.Properties.Resources.if_Select_46755;
+            this.btnSelect.Location = new System.Drawing.Point(0, 3);
+            this.btnSelect.Name = "btnSelect";
+            this.btnSelect.Size = new System.Drawing.Size(52, 52);
+            this.btnSelect.TabIndex = 20;
+            this.btnSelect.UseVisualStyleBackColor = true;
+            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "StartDate";
+            this.dataGridViewTextBoxColumn11.HeaderText = "StartDate";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.ReadOnly = true;
+            // 
+            // dgQuotationNo
+            // 
+            this.dgQuotationNo.DataPropertyName = "QuotationNo";
+            this.dgQuotationNo.HeaderText = "QuotationNo";
+            this.dgQuotationNo.Name = "dgQuotationNo";
+            this.dgQuotationNo.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "SubTotal";
+            this.dataGridViewTextBoxColumn10.HeaderText = "SubTotal";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "ExtraCharges";
+            this.dataGridViewTextBoxColumn9.HeaderText = "ExtraCharges";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            // 
+            // grossTotalDataGridViewTextBoxColumn
+            // 
+            this.grossTotalDataGridViewTextBoxColumn.DataPropertyName = "GrossTotal";
+            this.grossTotalDataGridViewTextBoxColumn.HeaderText = "GrossTotal";
+            this.grossTotalDataGridViewTextBoxColumn.Name = "grossTotalDataGridViewTextBoxColumn";
+            this.grossTotalDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // exchangeRateDataGridViewTextBoxColumn
+            // 
+            this.exchangeRateDataGridViewTextBoxColumn.DataPropertyName = "ExchangeRate";
+            this.exchangeRateDataGridViewTextBoxColumn.HeaderText = "ExchangeRate";
+            this.exchangeRateDataGridViewTextBoxColumn.Name = "exchangeRateDataGridViewTextBoxColumn";
+            this.exchangeRateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -421,27 +598,6 @@
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "ExtraCharges";
-            this.dataGridViewTextBoxColumn9.HeaderText = "ExtraCharges";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "SubTotal";
-            this.dataGridViewTextBoxColumn10.HeaderText = "SubTotal";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            this.dataGridViewTextBoxColumn10.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.DataPropertyName = "StartDate";
-            this.dataGridViewTextBoxColumn11.HeaderText = "StartDate";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            this.dataGridViewTextBoxColumn11.ReadOnly = true;
-            // 
             // dataGridViewTextBoxColumn12
             // 
             this.dataGridViewTextBoxColumn12.DataPropertyName = "ValidationDay";
@@ -490,13 +646,6 @@
             this.dataGridViewTextBoxColumn18.HeaderText = "CurrName";
             this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
             this.dataGridViewTextBoxColumn18.ReadOnly = true;
-            // 
-            // dgQuotationNo
-            // 
-            this.dgQuotationNo.DataPropertyName = "QuotationNo";
-            this.dgQuotationNo.HeaderText = "QuotationNo";
-            this.dgQuotationNo.Name = "dgQuotationNo";
-            this.dgQuotationNo.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn20
             // 
@@ -554,13 +703,6 @@
             this.deliveryDateDataGridViewTextBoxColumn.Name = "deliveryDateDataGridViewTextBoxColumn";
             this.deliveryDateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // grossTotalDataGridViewTextBoxColumn
-            // 
-            this.grossTotalDataGridViewTextBoxColumn.DataPropertyName = "GrossTotal";
-            this.grossTotalDataGridViewTextBoxColumn.HeaderText = "GrossTotal";
-            this.grossTotalDataGridViewTextBoxColumn.Name = "grossTotalDataGridViewTextBoxColumn";
-            this.grossTotalDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // currencyIDDataGridViewTextBoxColumn
             // 
             this.currencyIDDataGridViewTextBoxColumn.DataPropertyName = "CurrencyID";
@@ -588,13 +730,6 @@
             this.customerDataGridViewTextBoxColumn.HeaderText = "Customer";
             this.customerDataGridViewTextBoxColumn.Name = "customerDataGridViewTextBoxColumn";
             this.customerDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // exchangeRateDataGridViewTextBoxColumn
-            // 
-            this.exchangeRateDataGridViewTextBoxColumn.DataPropertyName = "ExchangeRate";
-            this.exchangeRateDataGridViewTextBoxColumn.HeaderText = "ExchangeRate";
-            this.exchangeRateDataGridViewTextBoxColumn.Name = "exchangeRateDataGridViewTextBoxColumn";
-            this.exchangeRateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn23
             // 
@@ -631,87 +766,6 @@
             this.workerDataGridViewTextBoxColumn.Name = "workerDataGridViewTextBoxColumn";
             this.workerDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // quotationBindingSource
-            // 
-            this.quotationBindingSource.DataSource = typeof(LoginForm.DataSet.Quotation);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.tableLayoutPanel5);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(8, 8);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(0);
-            this.groupBox2.Size = new System.Drawing.Size(935, 254);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Items";
-            // 
-            // tableLayoutPanel5
-            // 
-            this.tableLayoutPanel5.ColumnCount = 1;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Controls.Add(this.dgItems, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.panel3, 0, 1);
-            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 14);
-            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 2;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 93F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(935, 240);
-            this.tableLayoutPanel5.TabIndex = 0;
-            // 
-            // dgItems
-            // 
-            this.dgItems.AllowUserToAddRows = false;
-            this.dgItems.AllowUserToDeleteRows = false;
-            this.dgItems.AllowUserToOrderColumns = true;
-            this.dgItems.AutoGenerateColumns = false;
-            this.dgItems.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
-            this.dgItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.chk,
-            this.dgID,
-            this.dataGridViewTextBoxColumn26,
-            this.dgCost,
-            this.dgLandingCost,
-            this.dataGridViewTextBoxColumn25,
-            this.dataGridViewTextBoxColumn27,
-            this.dataGridViewTextBoxColumn28,
-            this.dataGridViewTextBoxColumn29,
-            this.dataGridViewTextBoxColumn30,
-            this.dataGridViewTextBoxColumn31,
-            this.dataGridViewTextBoxColumn32,
-            this.dataGridViewTextBoxColumn33,
-            this.dataGridViewTextBoxColumn34,
-            this.dataGridViewTextBoxColumn35,
-            this.dataGridViewTextBoxColumn36,
-            this.dataGridViewTextBoxColumn37,
-            this.dataGridViewTextBoxColumn38,
-            this.dataGridViewTextBoxColumn39,
-            this.uCDataGridViewTextBoxColumn,
-            this.sSMDataGridViewTextBoxColumn,
-            this.unitWeightDataGridViewTextBoxColumn,
-            this.dependantTableDataGridViewTextBoxColumn,
-            this.unitConversionIdDataGridViewTextBoxColumn,
-            this.quotationDeliveryIDDataGridViewTextBoxColumn,
-            this.costDataGridViewTextBoxColumn,
-            this.landingCostDataGridViewTextBoxColumn,
-            this.mPNDataGridViewTextBoxColumn,
-            this.dataGridViewTextBoxColumn40,
-            this.quotationDeliveryDataGridViewTextBoxColumn,
-            this.saleOrderDetailsDataGridViewTextBoxColumn});
-            this.dgItems.DataSource = this.quotationDetailBindingSource;
-            this.dgItems.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgItems.Location = new System.Drawing.Point(3, 3);
-            this.dgItems.Name = "dgItems";
-            this.dgItems.RowTemplate.Height = 24;
-            this.dgItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgItems.Size = new System.Drawing.Size(929, 141);
-            this.dgItems.TabIndex = 0;
-            // 
             // chk
             // 
             this.chk.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
@@ -731,6 +785,18 @@
             this.dataGridViewTextBoxColumn26.HeaderText = "ItemCode";
             this.dataGridViewTextBoxColumn26.Name = "dataGridViewTextBoxColumn26";
             // 
+            // dataGridViewTextBoxColumn25
+            // 
+            this.dataGridViewTextBoxColumn25.DataPropertyName = "dgNo";
+            this.dataGridViewTextBoxColumn25.HeaderText = "dgNo";
+            this.dataGridViewTextBoxColumn25.Name = "dataGridViewTextBoxColumn25";
+            // 
+            // dataGridViewTextBoxColumn36
+            // 
+            this.dataGridViewTextBoxColumn36.DataPropertyName = "QuotationNo";
+            this.dataGridViewTextBoxColumn36.HeaderText = "QuotationNo";
+            this.dataGridViewTextBoxColumn36.Name = "dataGridViewTextBoxColumn36";
+            // 
             // dgCost
             // 
             this.dgCost.DataPropertyName = "Cost";
@@ -742,12 +808,6 @@
             this.dgLandingCost.DataPropertyName = "LandingCost";
             this.dgLandingCost.HeaderText = "LandingCost";
             this.dgLandingCost.Name = "dgLandingCost";
-            // 
-            // dataGridViewTextBoxColumn25
-            // 
-            this.dataGridViewTextBoxColumn25.DataPropertyName = "dgNo";
-            this.dataGridViewTextBoxColumn25.HeaderText = "dgNo";
-            this.dataGridViewTextBoxColumn25.Name = "dataGridViewTextBoxColumn25";
             // 
             // dataGridViewTextBoxColumn27
             // 
@@ -802,12 +862,6 @@
             this.dataGridViewTextBoxColumn35.DataPropertyName = "IsDeleted";
             this.dataGridViewTextBoxColumn35.HeaderText = "IsDeleted";
             this.dataGridViewTextBoxColumn35.Name = "dataGridViewTextBoxColumn35";
-            // 
-            // dataGridViewTextBoxColumn36
-            // 
-            this.dataGridViewTextBoxColumn36.DataPropertyName = "QuotationNo";
-            this.dataGridViewTextBoxColumn36.HeaderText = "QuotationNo";
-            this.dataGridViewTextBoxColumn36.Name = "dataGridViewTextBoxColumn36";
             // 
             // dataGridViewTextBoxColumn37
             // 
@@ -898,60 +952,6 @@
             this.saleOrderDetailsDataGridViewTextBoxColumn.DataPropertyName = "SaleOrderDetails";
             this.saleOrderDetailsDataGridViewTextBoxColumn.HeaderText = "SaleOrderDetails";
             this.saleOrderDetailsDataGridViewTextBoxColumn.Name = "saleOrderDetailsDataGridViewTextBoxColumn";
-            // 
-            // quotationDetailBindingSource
-            // 
-            this.quotationDetailBindingSource.DataSource = typeof(LoginForm.DataSet.QuotationDetail);
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Controls.Add(this.label4);
-            this.panel3.Controls.Add(this.btnClear);
-            this.panel3.Controls.Add(this.btnSelect);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(3, 150);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(929, 87);
-            this.panel3.TabIndex = 1;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(81, 60);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(52, 15);
-            this.label3.TabIndex = 23;
-            this.label3.Text = "Clear All";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 60);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(57, 15);
-            this.label4.TabIndex = 22;
-            this.label4.Text = "Select All";
-            // 
-            // btnClear
-            // 
-            this.btnClear.Image = global::LoginForm.Properties.Resources.if_Line_ui_icons_Svg_03_1465842;
-            this.btnClear.Location = new System.Drawing.Point(80, 3);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(52, 52);
-            this.btnClear.TabIndex = 21;
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-            // 
-            // btnSelect
-            // 
-            this.btnSelect.Image = global::LoginForm.Properties.Resources.if_Select_46755;
-            this.btnSelect.Location = new System.Drawing.Point(0, 3);
-            this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(52, 52);
-            this.btnSelect.TabIndex = 20;
-            this.btnSelect.UseVisualStyleBackColor = true;
-            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
             // FormSaleOrderCreate
             // 
@@ -1054,6 +1054,16 @@
         private System.Windows.Forms.Button btnSelect;
         private System.Windows.Forms.BindingSource quotationBindingSource;
         private System.Windows.Forms.BindingSource quotationDetailBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn invoiceNoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn representativeID2DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn worker1DataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource customerBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgQuotationNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn grossTotalDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn exchangeRateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -1062,9 +1072,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
@@ -1072,35 +1079,30 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgQuotationNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn21;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn22;
         private System.Windows.Forms.DataGridViewTextBoxColumn approvedDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn invoiceNoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn voucherNoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn representativeIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn representativeID2DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn exchangeRateIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn deliveryDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn grossTotalDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn currencyIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn currencyDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn customerDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn exchangeRateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn23;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn24;
         private System.Windows.Forms.DataGridViewTextBoxColumn paymentTermDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn quotationDetailsDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn workerDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn worker1DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn chk;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgID;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn26;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn25;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn36;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgCost;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgLandingCost;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn25;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn27;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn28;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn29;
@@ -1110,7 +1112,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn33;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn34;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn35;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn36;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn37;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn38;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn39;
@@ -1126,6 +1127,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn40;
         private System.Windows.Forms.DataGridViewTextBoxColumn quotationDeliveryDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn saleOrderDetailsDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource customerBindingSource;
     }
 }

@@ -470,6 +470,7 @@
             this.dgSaleAddedItems.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgSaleAddedItems_CellValidating);
             this.dgSaleAddedItems.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgSaleAddedItems_RowsAdded);
             this.dgSaleAddedItems.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgSaleAddedItems_RowsRemoved);
+            this.dgSaleAddedItems.SortCompare += new System.Windows.Forms.DataGridViewSortCompareEventHandler(this.dgSaleAddedItems_SortCompare);
             this.dgSaleAddedItems.Click += new System.EventHandler(this.dgSaleAddedItems_Click);
             this.dgSaleAddedItems.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgSaleAddedItems_KeyDown);
             // 

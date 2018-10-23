@@ -55,6 +55,17 @@ namespace LoginForm
                 btnContactDelete.Enabled = true;
                 btnContactUpdate.Enabled = true;
             }
+            else if (form == "Addresses")
+            {
+                customerClicksearch(customer);
+                EnableFalse();
+                ContactList.Enabled = true;
+                AdressList.Enabled = true;
+                AdressAdd.Enabled = true;
+                // btnContactCancel.Enabled = true;
+                AddressDel.Enabled = true;
+                AddressUpd.Enabled = true;
+            }
             else
             {
                 customerClicksearch(customer);
