@@ -610,12 +610,6 @@ namespace LoginForm.QuotationModule
             {
                 txtQuotationNo.Text = CreateQuotationID(QuotationIdMod.New, null);
             }
-            //foreach (var item in quotation.QuotationDetails)
-            //{
-            //    DataGridViewRow row = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
-            //    row.CreateCells(dgQuotationAddedItems);
-            //    row.Cells[dgNo.Index].Value = /*Decimal.Parse(item.dgNo.ToString())*/item.dgNo;
-            //}
         }
 
         //public FormQuotationAdd(Quotation quotation, FormQuotationMain parent, int s)

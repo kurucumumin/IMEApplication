@@ -5315,7 +5315,7 @@ namespace LoginForm.QuotationModule
             if (cbDeliveryAddress.SelectedIndex != -1)
             {
                 CustomerAddress ca = (CustomerAddress)cbDeliveryAddress.SelectedItem;
-                textBox5.Text = ca.AdressDetails + " " + ca.Town.Town_name + "/" + ca.City.City_name + "/" + ca.Country.Country_name;
+                textBox5.Text = ca.AdressDetails + " " + ca.Town?.Town_name + "/" + ca.City?.City_name + "/" + ca.Country?.Country_name;
             }
         }
 
