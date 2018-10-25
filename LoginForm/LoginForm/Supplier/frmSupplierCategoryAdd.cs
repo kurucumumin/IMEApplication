@@ -6,12 +6,13 @@ using System.Windows.Forms;
 
 namespace LoginForm
 {
-    public partial class frmSupplierCategoryAdd : MyForm
+    public partial class frmSupplierCategoryAdd : Form
     {
 
         public frmSupplierCategoryAdd()
         {
             InitializeComponent();
+            this.TopMost = true;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

@@ -11,7 +11,7 @@ using LoginForm.DataSet;
 
 namespace LoginForm
 {
-    public partial class FormTownAdd : MyForm
+    public partial class FormTownAdd : Form
     {
         IMEEntities IME = new IMEEntities();
         int cityID;
@@ -21,6 +21,7 @@ namespace LoginForm
         {
             InitializeComponent();
             this.BringToFront();
+            this.TopMost = true;
             countryID = country;
             cityID = city;
         }

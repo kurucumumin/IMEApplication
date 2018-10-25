@@ -494,8 +494,8 @@ namespace LoginForm.QuotationModule
             {
                 label67.Text = "Save Modification";
                 this.Text = "Modify Quotation";
-                modifyMod = true;
             }
+            modifyMod = true;
             btnCreateRev.Visible = false;
             label68.Visible = false;
             this.parent = parent;
@@ -542,7 +542,7 @@ namespace LoginForm.QuotationModule
             {
                 CustomerCode.Enabled = true;
                 txtCustomerName.Enabled = true;
-                this.Text = "New Quotation";
+                this.Text = "Copy Quotation";
             }
 
             LowMarginLimit = (Decimal)Utils.getManagement().LowMarginLimit;
@@ -823,7 +823,7 @@ namespace LoginForm.QuotationModule
             //txtQuotationNo.Text = q1.QuotationNo;/*View 3*/
             EnableForm();
             txtTotalMarge.Visible = false;
-            dgQuotationAddedItems.Enabled = false;
+            dgQuotationAddedItems.ReadOnly = true;
         }
 
         private void EnableForm()
@@ -1452,7 +1452,7 @@ namespace LoginForm.QuotationModule
                         if (productCode.Substring(0, 1) == "0") productCode = productCode.Substring(1, productCode.Length - 1);
                         if (IME.Hazardous.Where(a => a.ArticleNo == productCode).FirstOrDefault() != null)
                         {
-                            if (this.Text == "Modify Quotation" || this.Text == "Edit Quotation" || this.Text == "View Quotation")
+                            if (this.Text == "Modify Quotation" || this.Text == "Edit Quotation" || this.Text == "View Quotation" || this.Text == "Copy Quotation")
                             {
                             
                                 price = Decimal.Parse((QuotationUtils.GetPrice(CurrentRow.Cells["dgProductCode"].Value.ToString(), Int32.Parse(CurrentRow.Cells["dgQty"].Value.ToString())) * (Utils.getManagement().Factor) / Currrate * Decimal.Parse(CurrentRow.Cells["dgQty"].Value.ToString())).ToString("G29"));
@@ -1465,7 +1465,7 @@ namespace LoginForm.QuotationModule
                         }
                         else
                         {
-                            if (this.Text == "Modify Quotation" || this.Text == "Edit Quotation" || this.Text == "View Quotation")
+                            if (this.Text == "Modify Quotation" || this.Text == "Edit Quotation" || this.Text == "View Quotation" || this.Text == "Copy Quotation")
                             {
                                 price = Decimal.Parse((QuotationUtils.GetPrice(CurrentRow.Cells["dgProductCode"].Value.ToString(), Int32.Parse(CurrentRow.Cells["dgQty"].Value.ToString())) * Decimal.Parse(cbFactor.Text) / Currrate * Decimal.Parse(CurrentRow.Cells["dgQty"].Value.ToString())).ToString("G29"));
                                 
@@ -1540,7 +1540,11 @@ namespace LoginForm.QuotationModule
                                 //ChangeCurr(rowindex);
                                 GetLandingCost(CurrentRow.Index);
                                 if (dgQuotationAddedItems.CurrentCell == null) dgQuotationAddedItems.CurrentCell = CurrentRow.Cells[0];
-                                GetMargin();
+                                if (this.Text != "View Quotation")
+                                {
+                                    GetMargin(rowindex);
+
+                                }
                                 CurrentRow.Cells["dgMargin"].Value = Math.Round(Decimal.Parse(CurrentRow.Cells["dgMargin"].Value.ToString()), 4).ToString();
                                 if (CurrentRow.Cells["dgUnitWeigt"].Value != null && CurrentRow.Cells["dgUnitWeigt"].Value.ToString() != "")
                                 {
@@ -1745,6 +1749,56 @@ namespace LoginForm.QuotationModule
             #region Get Margin
             DateTime today = DateTime.Today;
             CurrentRow = dgQuotationAddedItems.CurrentRow;
+            #region Kur Hesaplama
+            decimal currentGbpValue = Convert.ToDecimal(IME.Currencies.Where(x => x.currencyName == "Pound").FirstOrDefault().ExchangeRates.OrderByDescending(x => x.date).FirstOrDefault().rate);
+            decimal gbpPrice = 0;
+            if (CurrentRow.Cells[dgUCUPCurr.Index].Value != null && CurrentRow.Cells[dgUCUPCurr.Index].Value.ToString() != "")
+            {
+                gbpPrice = ((Decimal.Parse(CurrentRow.Cells[dgUCUPCurr.Index].Value.ToString())) * CurrValue) / currentGbpValue;
+            }
+            #endregion
+            if (CurrentRow.Cells["dgQty"].Value != null && CurrentRow.Cells["dgQty"].Value.ToString() != "")
+            {
+                if (Int32.Parse(CurrentRow.Cells["dgUC"].Value.ToString()) > 1 || Int32.Parse(CurrentRow.Cells["dgSSM"].Value.ToString()) > 1)
+                {
+                    if (Int32.Parse(CurrentRow.Cells["dgUC"].Value.ToString()) > 1 && (!(CurrentRow.Cells["dgProductCode"].Value.ToString().Contains("P"))))
+                    {
+                        CurrentRow.Cells["dgMargin"].Value = (((1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())) / (gbpPrice/* * decimal.Parse(CurrentRow.Cells["dgUC"].Value.ToString())*/))) * 100).ToString("G29");
+                    }
+                    else
+                    {
+                        if (Int32.Parse(CurrentRow.Cells["dgSSM"].Value.ToString()) > 1)
+                        {
+                            if (!String.IsNullOrEmpty(CurrentRow.Cells["dgLandingCost"].Value.ToString()))
+                            {
+                                CurrentRow.Cells["dgMargin"].Value = (((1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())) / (gbpPrice/* * decimal.Parse(CurrentRow.Cells["dgUC"].Value.ToString())*/))) * 100).ToString("G29");
+                            }
+                        }
+                        else
+                        {
+                            CurrentRow.Cells["dgMargin"].Value = (((1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())) / (gbpPrice/* * decimal.Parse(CurrentRow.Cells["dgUC"].Value.ToString())*/))) * 100).ToString("G29");
+                        }
+                    }
+                }
+                else
+                {
+                    CurrentRow.Cells["dgMargin"].Value = ((1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString()) / gbpPrice)) * 100).ToString("G29");
+                }
+            }
+            if (CurrentRow.Cells[dgUCUPCurr.Index].Value != null && CurrentRow.Cells[dgUCUPCurr.Index].Value.ToString() != "" && CurrentRow.Cells[dgQty.Index].Value != null && CurrentRow.Cells[dgQty.Index].Value.ToString() != "")
+            {
+                CurrentRow.Cells[dgTotal.Index].Value = (decimal.Parse(CurrentRow.Cells[dgUCUPCurr.Index].Value.ToString()) *
+                decimal.Parse(CurrentRow.Cells[dgQty.Index].Value.ToString())).ToString();
+            }
+            #endregion
+
+        }
+
+        private void GetMargin(int rowindex)
+        {
+            #region Get Margin
+            DateTime today = DateTime.Today;
+            CurrentRow = dgQuotationAddedItems.Rows[rowindex];
             #region Kur Hesaplama
             decimal currentGbpValue = Convert.ToDecimal(IME.Currencies.Where(x => x.currencyName == "Pound").FirstOrDefault().ExchangeRates.OrderByDescending(x => x.date).FirstOrDefault().rate);
             decimal gbpPrice = 0;
@@ -3331,10 +3385,12 @@ namespace LoginForm.QuotationModule
                     row.Cells[dgUKPrice.Index].Value = item.UKPrice;
                     row.Cells[dgTotalWeight.Index].Value = item.UnitWeight * item.Qty;
                     row.Cells[dgCustStkCode.Index].Value = item.CustomerStockCode;
+                    row.Cells[dgMargin.Index].Value = item.Marge;
                     dgQuotationAddedItems.Rows.Add(row);
 
                 }
             }
+            
             for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
             {
 
@@ -3349,7 +3405,6 @@ namespace LoginForm.QuotationModule
                 cbDeliverDiscount.Checked = true;
             }
 
-            GetMargin();
             #endregion
             //buradaki yazılanların sırası önemli sırayı değiştirmeyin
             lblsubtotal.Text = q.SubTotal.ToString();
@@ -3493,7 +3548,6 @@ namespace LoginForm.QuotationModule
                 cbDeliverDiscount.Checked = true;
             }
 
-            GetMargin();
             #endregion
             //buradaki yazılanların sırası önemli sırayı değiştirmeyin
             lblsubtotal.Text = q.SubTotal.ToString();

@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace LoginForm
 {
-    public partial class CustomerPositionAdd : MyForm
+    public partial class CustomerPositionAdd : Form
     {
         
         IMEEntities IME = new IMEEntities();
@@ -15,6 +15,7 @@ namespace LoginForm
         public CustomerPositionAdd(int departmentName)
         {
             InitializeComponent();
+            this.TopMost = true;
             departmanID = departmentName;
         }
 

@@ -72,6 +72,7 @@ namespace LoginForm
                 //parent.Text = "Modify Customer";
                 //label67.Text = "Modify";
                 itemsEnableTrue();
+                ComboboxFiller();
             }
         }
 
@@ -83,6 +84,7 @@ namespace LoginForm
             itemsClear();
             itemsEnableTrue();
             NewCustomerNumber();
+            ComboboxFiller();
         }
 
         private void FormCustomerAdd_Load(object sender, EventArgs e)
@@ -1211,7 +1213,7 @@ namespace LoginForm
                 int city = Convert.ToInt32(cbCity.SelectedValue);
                 int country = Convert.ToInt32(cbCountry.SelectedValue);
                 FormTownAdd form = new FormTownAdd(country, city);
-                this.SendToBack();
+               // this.SendToBack();
                 form.ShowDialog();
                 this.BringToFront();
                 cbTown.Refresh();
@@ -1307,7 +1309,7 @@ namespace LoginForm
         {
             CustomerDepartmentAdd form = new CustomerDepartmentAdd();
             this.Enabled = false;
-            this.SendToBack();
+            //this.SendToBack();
             form.ShowDialog();
             ContactDepartment.DataSource = new IMEEntities().CustomerDepartments.ToList();
             this.Enabled = true;
@@ -1320,7 +1322,7 @@ namespace LoginForm
                 int department = Convert.ToInt32(ContactDepartment.SelectedValue);
                 CustomerPositionAdd form = new CustomerPositionAdd(department);
                 this.Enabled = false;
-                this.SendToBack();
+               // this.SendToBack();
                 form.ShowDialog();
                 ContactTitle.DataSource = new IMEEntities().CustomerTitles.ToList();
                 this.Enabled = true;

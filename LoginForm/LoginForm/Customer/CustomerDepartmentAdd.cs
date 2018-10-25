@@ -6,12 +6,13 @@ using System.Windows.Forms;
 
 namespace LoginForm
 {
-    public partial class CustomerDepartmentAdd : MyForm
+    public partial class CustomerDepartmentAdd : Form
     {
         IMEEntities IME = new IMEEntities();
         public CustomerDepartmentAdd()
         {
             InitializeComponent();
+            this.TopMost = true;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

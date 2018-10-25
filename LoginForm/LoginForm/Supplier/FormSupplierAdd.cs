@@ -1485,7 +1485,7 @@ namespace LoginForm
                 int city = Convert.ToInt32(cmbCity.SelectedValue);
                 int country = Convert.ToInt32(cmbCountry.SelectedValue);
                 FormTownAdd form = new FormTownAdd(country, city);
-                this.SendToBack();
+                //this.SendToBack();
                 form.ShowDialog();
                 this.BringToFront();
                 cmbTown.Refresh();
@@ -1500,7 +1500,7 @@ namespace LoginForm
         {
             CustomerDepartmentAdd form = new CustomerDepartmentAdd();
             this.Enabled = false;
-            this.SendToBack();
+           // this.SendToBack();
             form.ShowDialog();
             cmbDepartment.DataSource = new IMEEntities().CustomerDepartments.ToList();
             this.Enabled = true;
@@ -1513,7 +1513,7 @@ namespace LoginForm
                 int department = Convert.ToInt32(cmbDepartment.SelectedValue);
                 CustomerPositionAdd form = new CustomerPositionAdd(department);
                 this.Enabled = false;
-                this.SendToBack();
+               // this.SendToBack();
                 form.ShowDialog();
                 cmbPosition.DataSource = new IMEEntities().CustomerTitles.ToList();
                 this.Enabled = true;

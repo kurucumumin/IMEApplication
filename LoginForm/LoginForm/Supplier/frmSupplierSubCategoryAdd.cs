@@ -14,6 +14,7 @@ namespace LoginForm
         public frmSupplierSubCategoryAdd(string categoryname)
         {
             InitializeComponent();
+            this.TopMost = true;
             this.categoryName = categoryname;
         }
 

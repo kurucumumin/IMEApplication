@@ -78,6 +78,13 @@
     <Reference Include="DevComponents.Instrumentation.Design">
       <HintPath>..\DevComponents\DevComponents.Instrumentation.Design.dll</HintPath>
     </Reference>
+    <Reference Include="DevExpress.Data.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v17.1.Core, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -999,6 +1006,12 @@
     <Compile Include="QuotationModule\ViewProductHistory.Designer.cs">
       <DependentUpon>ViewProductHistory.cs</DependentUpon>
     </Compile>
+    <Compile Include="QuotationModule\XtraFormQuotationAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuotationModule\XtraFormQuotationAdd.Designer.cs">
+      <DependentUpon>XtraFormQuotationAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="SaleOrder\DevFormSaleOrderAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1307,6 +1320,7 @@
     <EmbeddedResource Include="PrintWorks\PrintWorks.frmForms.resources" />
     <EmbeddedResource Include="PrintWorks\PrintWorks.frmPrintDesigner.resources" />
     <EmbeddedResource Include="PrintWorks\PrintWorks.Properties.Resources.resources" />
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
@@ -1370,6 +1384,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuotationModule\ViewProductHistory.resx">
       <DependentUpon>ViewProductHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuotationModule\XtraFormQuotationAdd.resx">
+      <DependentUpon>XtraFormQuotationAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SaleOrder\DevFormSaleOrderAdd.resx">
       <DependentUpon>DevFormSaleOrderAdd.cs</DependentUpon>

@@ -157,12 +157,12 @@ namespace LoginForm
                         if (mod == "View")
                         {
                             FormSupplierAdd newForm = new FormSupplierAdd(s, mod);
-                            newForm.Show();
+                            newForm.ShowDialog();
                         }
                         else
                         {
                             FormSupplierAdd newForm = new FormSupplierAdd(s, mod);
-                            newForm.Show();
+                            newForm.ShowDialog();
                         }
                     }
                 }
@@ -203,7 +203,7 @@ namespace LoginForm
         {
             FormSupplierAdd SupplierForm = new FormSupplierAdd(this);
             Utils.LogKayit("Supplier", "Supplier new screen has been entered");
-            SupplierForm.Show();
+            SupplierForm.ShowDialog();
         }
 
         private void txtSearchText_KeyPress(object sender, KeyPressEventArgs e)

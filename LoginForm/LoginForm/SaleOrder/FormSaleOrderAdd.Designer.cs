@@ -422,6 +422,7 @@
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgSaleAddedItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgSaleAddedItems.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
+            this.dgSaleAddedItems.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.dgSaleAddedItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgSaleAddedItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgNo,
@@ -463,6 +464,7 @@
             this.QuoDetailNo});
             this.dgSaleAddedItems.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgSaleAddedItems.Location = new System.Drawing.Point(0, 0);
+            this.dgSaleAddedItems.MultiSelect = false;
             this.dgSaleAddedItems.Name = "dgSaleAddedItems";
             this.dgSaleAddedItems.Size = new System.Drawing.Size(1306, 199);
             this.dgSaleAddedItems.TabIndex = 9;

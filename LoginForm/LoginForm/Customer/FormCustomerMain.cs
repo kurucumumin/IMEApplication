@@ -53,7 +53,7 @@ namespace LoginForm
         {
             FormCustomerAdd customerForm = new FormCustomerAdd(this);
             Utils.LogKayit("Customer", "Customer new screen has been entered");
-            customerForm.Show();
+            customerForm.ShowDialog();
         }
 
         private void BringQuotationList()
