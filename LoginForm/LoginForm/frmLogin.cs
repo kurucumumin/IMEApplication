@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace LoginForm
 {
-    public partial class frmLogin : Form
+    public partial class frmLogin : DevExpress.XtraEditors.XtraForm
     {
         IMEEntities IME = new IMEEntities();
         public string LoginPerson { get; set; }
