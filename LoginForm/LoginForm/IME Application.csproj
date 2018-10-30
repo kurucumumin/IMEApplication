@@ -1006,12 +1006,6 @@
     <Compile Include="QuotationModule\ViewProductHistory.Designer.cs">
       <DependentUpon>ViewProductHistory.cs</DependentUpon>
     </Compile>
-    <Compile Include="QuotationModule\XtraFormQuotationAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="QuotationModule\XtraFormQuotationAdd.Designer.cs">
-      <DependentUpon>XtraFormQuotationAdd.cs</DependentUpon>
-    </Compile>
     <Compile Include="SaleOrder\DevFormSaleOrderAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1049,6 +1043,12 @@
       <DependentUpon>FormSaleGridCustomize.cs</DependentUpon>
     </Compile>
     <Compile Include="SaleOrder\SalesOrderHelper.cs" />
+    <Compile Include="SaleOrder\XtraFormSaleOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleOrder\XtraFormSaleOrder.Designer.cs">
+      <DependentUpon>XtraFormSaleOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Services\BackUpAndRestore.cs" />
     <Compile Include="Services\ChangeCurrency.cs" />
     <Compile Include="Services\classAccount.cs" />
@@ -1385,9 +1385,6 @@
     <EmbeddedResource Include="QuotationModule\ViewProductHistory.resx">
       <DependentUpon>ViewProductHistory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="QuotationModule\XtraFormQuotationAdd.resx">
-      <DependentUpon>XtraFormQuotationAdd.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="SaleOrder\DevFormSaleOrderAdd.resx">
       <DependentUpon>DevFormSaleOrderAdd.cs</DependentUpon>
     </EmbeddedResource>
@@ -1405,6 +1402,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SaleOrder\FormSaleGridCustomize.resx">
       <DependentUpon>FormSaleGridCustomize.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaleOrder\XtraFormSaleOrder.resx">
+      <DependentUpon>XtraFormSaleOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StockConfirm\frmStockConfirm.resx">
       <DependentUpon>frmStockConfirm.cs</DependentUpon>

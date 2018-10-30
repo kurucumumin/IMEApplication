@@ -551,8 +551,8 @@ namespace LoginForm.Main
 
         private void altoSlidingLabel1_Click(object sender, EventArgs e)
         {
-            frmSupplierMain frm = new frmSupplierMain();
-            frm.Show();
+            //XtraFormQuotationAdd frm = new XtraFormQuotationAdd();
+            //frm.Show();
         }
 
         private void btnCurrency_Click(object sender, EventArgs e)

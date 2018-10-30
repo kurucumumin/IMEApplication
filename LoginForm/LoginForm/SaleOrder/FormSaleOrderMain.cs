@@ -334,7 +334,8 @@ namespace LoginForm
                 }
                 if (saleOrder != null)
                 {
-                    FormSaleOrderAdd newForm = new FormSaleOrderAdd(saleOrder.Customer, saleOrder.SaleOrderDetails.ToList(), Convert.ToInt32(QuotationNo),saleOrder);
+                    FormSaleOrderAdd newForm = new FormSaleOrderAdd(saleOrder.Customer, saleOrder.SaleOrderDetails.ToList(), Convert.ToInt32(QuotationNo), saleOrder);
+                    //XtraFormSaleOrder newForm = new XtraFormSaleOrder(saleOrder, this, "View");
                     newForm.ShowDialog();
                 }
             }
@@ -735,7 +736,8 @@ namespace LoginForm
                     throw;
                 }
 
-                FormSaleOrderAdd newForm = new FormSaleOrderAdd(so, this, "Update",co);
+                FormSaleOrderAdd newForm = new FormSaleOrderAdd(so, this, "Update", co);
+                //XtraFormSaleOrder newForm = new XtraFormSaleOrder(so, this, "Update");
                 Utils.LogKayit("SaleOrder", "SaleOrder update screen has been entered");
                 newForm.ShowDialog();
 

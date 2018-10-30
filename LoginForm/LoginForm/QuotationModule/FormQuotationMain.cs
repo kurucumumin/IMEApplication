@@ -737,12 +737,16 @@ namespace LoginForm.QuotationModule
                     quo = IME.Quotations.Where(q => q.QuotationNo == QuotationNo).FirstOrDefault();
                     if (quo != null)
                     {
-                        FormQuotationAdd newForm = new FormQuotationAdd(quo, this);
+                        FormQuotationAdd newForm = new FormQuotationAdd(quo, this, "Create New Version");
                         Utils.LogKayit("Quotation", "Quotation new version screen has been entered");
                         newForm.ShowDialog();
                     }
                 }
-                catch { }
+                catch (Exception)
+                {
+                    MessageBox.Show("An error was encountered", "Error!");
+                    //throw;
+                }
 
             }
             else
@@ -1397,7 +1401,7 @@ namespace LoginForm.QuotationModule
             {
                 DataGridViewSelectedRowCollection SelectedRows = dgQuotation.SelectedRows;
                 List<QuotationDetail> list = new List<QuotationDetail>();
-
+                string quotNo = dgQuotation.CurrentRow.Cells[QuotationNo.Index].Value.ToString();
                 bool AllSameCustomer = true;
 
                 string _customerCode = String.Empty;
@@ -1440,7 +1444,7 @@ namespace LoginForm.QuotationModule
                         IMEEntities IME = new IMEEntities();
                         foreach (DataGridViewRow row in SelectedRows)
                         {
-                            string quotNo = row.Cells[QuotationNo.Index].Value.ToString();
+                            
                             List<QuotationDetail> detailList = IME.Quotations.Where(x => x.QuotationNo == quotNo).First().QuotationDetails.ToList();
                             list.AddRange(detailList);
                         }
@@ -1465,7 +1469,9 @@ namespace LoginForm.QuotationModule
 
                         string CustCode = SelectedRows[0].Cells[CustomerCode.Index].Value.ToString();
                         Customer customer = IME.Customers.Where(x => x.ID == CustCode).FirstOrDefault();
+                        SaleOrder so = IME.SaleOrders.Where(x => x.QuotationNos == quotNo).FirstOrDefault();
 
+                        //XtraFormSaleOrder form = new XtraFormSaleOrder(so, this, "Quotation");
                         FormSaleOrderAdd form = new FormSaleOrderAdd(customer, list, quotationIDs, 1);
                         Utils.LogKayit("Sale Order", "Sale Order add screen has been entered");
                         form.Show();

@@ -57,6 +57,7 @@ namespace LoginForm.DataSet
         public Nullable<decimal> TotalDiscount { get; set; }
         public Nullable<int> PurchaseOrderID { get; set; }
         public Nullable<bool> DistributeDiscount { get; set; }
+        public Nullable<decimal> DiscOnSubTotal2 { get; set; }
     
         public virtual Customer Customer { get; set; }
         public virtual CustomerAddress CustomerAddress { get; set; }
