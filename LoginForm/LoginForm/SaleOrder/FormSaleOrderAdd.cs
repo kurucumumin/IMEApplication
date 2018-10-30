@@ -97,7 +97,7 @@ namespace LoginForm.QuotationModule
             cbWorkers.DataSource = IME.CustomerWorkers.Where(x => x.customerID == sale.CustomerID).ToList();
             cbWorkers.DisplayMember = "cw_name";
             cbWorkers.ValueMember = "ID";
-            if (sale.CustomerWorker.customerID != null) cbWorkers.SelectedValue = (int)sale.Customer.MainContactID;
+            if (customer.MainContactID != null) cbWorkers.SelectedValue = (int)customer.MainContactID;
             CustomerCode.Enabled = false;
             txtCustomerName.Enabled = false;
 
@@ -2794,6 +2794,7 @@ namespace LoginForm.QuotationModule
         private bool ControlSave()
         {
             if (txtCustomerName.Text == null || txtCustomerName.Text == String.Empty) { MessageBox.Show("Please Enter a Customer"); return false; }
+
             for (int i = 0; i < dgSaleAddedItems.RowCount - 1; i++)
             {
                 if (dgSaleAddedItems.Rows[i].Cells["dgMargin"].Value != null && Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgMargin"].Value.ToString()) < Utils.getCurrentUser().MinMarge) { MessageBox.Show("Please Check Margin of Products "); return false; }
@@ -2845,9 +2846,9 @@ namespace LoginForm.QuotationModule
                             s.TotalPrice = Convert.ToDecimal(lbltotal.Text);
                             s.CustomerID = CustomerCode.Text;
                             s.ContactID = (int)cbWorkers.SelectedValue;
-                            s.DeliveryContactID = (int)cbDeliveryContact.SelectedValue;
-                            s.InvoiceAddressID = (int)cbInvoiceAdress.SelectedValue;
-                            s.DeliveryAddressID = (int)cbDeliveryAddress.SelectedValue;
+                            try {s.DeliveryContactID = (int)cbDeliveryContact.SelectedValue;}catch { }
+                            try {s.InvoiceAddressID = (int)cbInvoiceAdress.SelectedValue;} catch {}
+                            try {s.DeliveryAddressID = (int)cbDeliveryAddress.SelectedValue;}catch { }
                             s.RepresentativeID = (int)cbRep.SelectedValue;
                             s.PaymentMethodID = (int)cbPaymentType.SelectedValue;
                             s.NoteForUs = txtNoteForUs.Text;
@@ -2893,20 +2894,24 @@ namespace LoginForm.QuotationModule
                         #endregion
 
                         #region UpdateSaleOrderDetail
+
                         decimal discountAmount = 0;
                         decimal SaleID = Convert.ToDecimal(txtSalesOrderNo.Text.Substring(2));
+                        decimal sID = IME.SaleOrders.Where(a => a.SaleOrderNo == SaleID).FirstOrDefault().SaleOrderID;
+                        IME.SaleOrderDetails.RemoveRange(IME.SaleOrderDetails.Where(a => a.SaleOrderID == sID));
+                        IME.SaveChanges();
                         for (int i = 0; i < dgSaleAddedItems.RowCount; i++)
                         {
                             DataGridViewRow row = dgSaleAddedItems.Rows[i];
                             if (row.Cells["dgProductCode"].Value != null)
                             {
                                 SaleOrderDetail sdi = new SaleOrderDetail();
-                                sdi.SaleOrderID = SaleID;
+                                sdi.SaleOrderID = sID;
                                 if (row.Cells[dgNo.Index].Value != null) sdi.No = Int32.Parse(row.Cells[dgNo.Index].Value.ToString());
                                 //if (row.Cells[QuoDetailNo.Index].Value != null) sdi.quotationDetailsId = Int32.Parse(row.Cells[QuoDetailNo.Index].Value.ToString());
-                                if (row.Cells[dgProductCode.Index].Value != null) sdi.ItemCode = row.Cells[dgProductCode.Index].Value?.ToString();
-                                if (row.Cells[dgQty.Index].Value != null) sdi.Quantity = Int32.Parse(row.Cells[dgQty.Index].Value?.ToString());
-                                if (row.Cells[dgUCUPCurr.Index].Value != null) sdi.UCUPCurr = Decimal.Parse(row.Cells[dgUCUPCurr.Index].Value?.ToString());
+                                if (row.Cells[dgProductCode.Index].Value != null) sdi.ItemCode = row.Cells[dgProductCode.Index].Value.ToString();
+                                if (row.Cells[dgQty.Index].Value != null) sdi.Quantity = Int32.Parse(row.Cells[dgQty.Index].Value.ToString());
+                                if (row.Cells[dgUCUPCurr.Index].Value != null) sdi.UCUPCurr = Decimal.Parse(row.Cells[dgUCUPCurr.Index].Value.ToString());
                                 if (row.Cells[dgDisc.Index].Value != null)
                                 {
                                     sdi.Discount = Decimal.Parse(row.Cells[dgDisc.Index].Value.ToString());
@@ -2916,9 +2921,9 @@ namespace LoginForm.QuotationModule
                                     sdi.Discount = 0;
                                 }
 
-                                if (row.Cells[dgTotal.Index].Value != null) sdi.Total = Decimal.Parse(row.Cells[dgTotal.Index].Value?.ToString());
-                                if (row.Cells[dgTargetUP.Index].Value != null) sdi.TargetUP = Decimal.Parse(row.Cells[dgTargetUP.Index].Value?.ToString());
-                                if (row.Cells[dgCompetitor.Index].Value != null) sdi.Competitor = row.Cells[dgCompetitor.Index].Value?.ToString();
+                                if (row.Cells[dgTotal.Index].Value != null) sdi.Total = Decimal.Parse(row.Cells[dgTotal.Index].Value.ToString());
+                                if (row.Cells[dgTargetUP.Index].Value != null) sdi.TargetUP = Decimal.Parse(row.Cells[dgTargetUP.Index].Value.ToString());
+                                if (row.Cells[dgCompetitor.Index].Value != null) sdi.Competitor = row.Cells[dgCompetitor.Index].Value.ToString();
 
                                 if (row.Cells[dgLandingCost.Index].Value != null) sdi.LandingCost = Convert.ToDecimal(row.Cells[dgLandingCost.Index].Value?.ToString());
                                 sdi.DeliveryID = Convert.ToInt32(row.Cells[dgDelivery.Index].Value?.ToString());
@@ -2962,7 +2967,7 @@ namespace LoginForm.QuotationModule
                                 discountAmount += ((decimal)sdi.UPIME - (decimal)sdi.UCUPCurr) * sdi.Quantity;
                                 if (!String.IsNullOrEmpty(row.Cells[dgUKPrice.Index].Value.ToString()))
                                     sdi.UKPrice = Decimal.Parse(row.Cells[dgUKPrice.Index].Value.ToString());
-                                // IME.SaleOrderDetails.Add(sdi);
+                                IME.SaleOrderDetails.Add(sdi);
                                 IME.SaveChanges();
                                 Utils.LogKayit("Sale Order", "Sale Order update");
                             }
@@ -5240,7 +5245,7 @@ namespace LoginForm.QuotationModule
                     if (row.Cells[dgNo.Index].Value != null) sdi.No = Int32.Parse(row.Cells[dgNo.Index].Value.ToString());
                     //if (row.Cells[QuoDetailNo.Index].Value != null) sdi.quotationDetailsId = Int32.Parse(row.Cells[QuoDetailNo.Index].Value?.ToString());
                     if (row.Cells[dgProductCode.Index].Value != null) sdi.ItemCode = row.Cells[dgProductCode.Index].Value?.ToString();
-                    if (row.Cells[dgQty.Index].Value != null) sdi.Quantity = Int32.Parse(row.Cells[dgQty.Index].Value?.ToString());
+                    if (row.Cells[dgQty.Index].Value != null) sdi.Quantity = Int32.Parse(row.Cells[dgQty.Index].Value.ToString());
                     if (row.Cells[dgUCUPCurr.Index].Value != null) sdi.UCUPCurr = Decimal.Parse(row.Cells[dgUCUPCurr.Index].Value?.ToString());
                     if (row.Cells[dgDisc.Index].Value != null)
                     {
@@ -5560,12 +5565,13 @@ namespace LoginForm.QuotationModule
             if (importFromQuotation == 0)
             {
                 txtSalesOrderNo.Text = q.SaleOrderNo.ToString();
+                sO = Convert.ToInt32(q.SaleOrderNo);
                 txtQuotationNo.Text = q.QuotationNos;/*Modify 1*/
                 txtLPONO.Text = q.LPONO;
                 CustomerCode.Text = q.Customer.ID;
                 txtCustomerName.Text = q.Customer.c_name;
                 txtFactor.Text = Utils.getManagement().Factor.ToString();
-                if (q.Customer != null)
+                if (q.Customer.MainContactID != null)
                 {
                     cbWorkers.SelectedValue = (int)q.Customer.MainContactID;
                 }
@@ -5618,7 +5624,7 @@ namespace LoginForm.QuotationModule
                     row.Cells[dgProductCode.Index].Value = item.ItemCode;
                     row.Cells[dgQty.Index].Value = item.Quantity;
                     row.Cells[dgSSM.Index].Value = item.SSM;
-                    //row.Cells[dgUC.Index].Value = item.u;
+                    row.Cells[dgUC.Index].Value = item.UnitContent;
                     row.Cells[dgUPIME.Index].Value = Math.Round((decimal)item.UPIME, 4);
                     row.Cells[dgUCUPCurr.Index].Value = item.UCUPCurr;
                     row.Cells[dgDisc.Index].Value = item.Discount;

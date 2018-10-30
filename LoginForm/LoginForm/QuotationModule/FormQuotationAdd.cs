@@ -2812,6 +2812,13 @@ namespace LoginForm.QuotationModule
                     //parent.BringQuotationList();
                     this.Close();
                 }
+                else
+                {
+                    QuotationSave();
+                    QuotationDetailsSave();
+                    //parent.BringQuotationList();
+                    this.Close();
+                }
             }
 
         }
