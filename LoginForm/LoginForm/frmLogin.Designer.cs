@@ -195,7 +195,7 @@
             this.Name = "frmLogin";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmLogin";
+            this.Text = "IME CRM";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.Metrofrm_Load);
             this.panel1.ResumeLayout(false);

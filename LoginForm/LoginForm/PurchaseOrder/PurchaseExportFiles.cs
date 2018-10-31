@@ -269,9 +269,9 @@ namespace LoginForm.PurchaseOrder
             string OrderNature = "";
             if (orderN == "XDOC")
             {
-                OrderNature = "E";
+                OrderNature = "D";
             }
-            else { OrderNature = "D"; }
+            else { OrderNature = "E"; }
             string PackType = " ";
             string OrderNumber = "     ";
             string CustomerDistOrderReference = Convert.ToString(purchaseNo)+"RS";

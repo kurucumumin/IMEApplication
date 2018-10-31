@@ -220,7 +220,7 @@ namespace LoginForm.QuotationModule
                                              SecondNote = q.SecondNote,
                                              Date2 = q.NoteDate2,
                                              Rep2 = q.NoteRep2
-                                         }).Where(x => x.QuotationNo.Substring(x.QuotationNo.LastIndexOf('/')).Contains(txtSearchText.Text)).ToList();
+                                         }).Where(x => x.QuotationNo.Substring(x.QuotationNo.LastIndexOf('/') + 1).Contains(txtSearchText.Text)).ToList();
 
                             populateGrid(list1.ToList());
                             break;
@@ -846,6 +846,8 @@ namespace LoginForm.QuotationModule
                 {
                     row.DefaultCellStyle.BackColor = ImeSettings.GridDeletedRowColor ;
                 }
+
+                row.Cells[QuoID.Index].Value = row.Cells[QuotationNo.Index].Value.ToString().LastIndexOf('/') + 1.ToString();
             }
         }
 
@@ -1403,11 +1405,14 @@ namespace LoginForm.QuotationModule
                 List<QuotationDetail> list = new List<QuotationDetail>();
                 string quotNo = dgQuotation.CurrentRow.Cells[QuotationNo.Index].Value.ToString();
                 bool AllSameCustomer = true;
-
+                bool AllSameCurrency = true;
                 string _customerCode = String.Empty;
+                string _currency = String.Empty;
                 foreach (DataGridViewRow row in SelectedRows)
                 {
                     string customerCode = row.Cells[CustomerCode.Index].Value.ToString();
+                    string currencyName = row.Cells[Currency.Index].Value.ToString();
+                    #region Farklı Customer
                     if (_customerCode == String.Empty)
                     {
                         AllSameCustomer = true;
@@ -1423,9 +1428,28 @@ namespace LoginForm.QuotationModule
                     {
                         AllSameCustomer = true;
                     }
+                    #endregion
+
+                    #region Farklı Currency
+                    if (_currency == String.Empty)
+                    {
+                        AllSameCurrency = true;
+                        _currency = currencyName;
+                    }
+                    else if (currencyName != _currency)
+                    {
+                        AllSameCurrency = false;
+                        MessageBox.Show("Quotations have different currencies", "Warning");
+                        break;
+                    }
+                    else
+                    {
+                        AllSameCurrency = true;
+                    }
+                    #endregion
                 }
 
-                if (AllSameCustomer)
+                if (AllSameCustomer && AllSameCurrency)
                 {
                     bool OnlyPendingQuotations = true;
 

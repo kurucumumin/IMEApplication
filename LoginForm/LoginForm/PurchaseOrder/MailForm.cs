@@ -80,7 +80,7 @@ namespace LoginForm.PurchaseOrder
         private void btnClose_Click(object sender, EventArgs e)
         {
           //  PurchaseExportFiles f = new PurchaseExportFiles();
-            if (MessageBox.Show("Are You Sure To ?", "Exit", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            if (MessageBox.Show("Are You Sure ?", "Exit", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
             //    f.ShowDialog();
                 this.Close();
@@ -97,11 +97,11 @@ namespace LoginForm.PurchaseOrder
             foreach (Mail mail in MailList)
             {
                 int rowIndex = dgMail.Rows.Add();
-                dgMail.Rows[rowIndex].Cells["id"].Value = mail.id;
-                dgMail.Rows[rowIndex].Cells["FirstName"].Value = mail.FirstName;
-                dgMail.Rows[rowIndex].Cells["MailAddress"].Value = mail.MailAddress;
-                dgMail.Rows[rowIndex].Cells["cc"].Value = mail.cc;
-                dgMail.Rows[rowIndex].Cells["too"].Value = mail.too;
+                dgMail.Rows[rowIndex].Cells[id.Index].Value = mail.id;
+                dgMail.Rows[rowIndex].Cells[FirstName.Index].Value = mail.FirstName;
+                dgMail.Rows[rowIndex].Cells[MailAddress.Index].Value = mail.MailAddress;
+                dgMail.Rows[rowIndex].Cells[cc.Index].Value = mail.cc;
+                dgMail.Rows[rowIndex].Cells[too.Index].Value = mail.too;
             }
         }
 
