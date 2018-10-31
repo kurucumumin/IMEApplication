@@ -63,6 +63,7 @@ namespace LoginForm.DataSet
         public int idVersion { get; set; }
         public Nullable<bool> DistributeDiscount { get; set; }
         public string MainContactName { get; set; }
+        public Nullable<decimal> TotalMargin { get; set; }
     
         public virtual Currency Currency { get; set; }
         public virtual Customer Customer { get; set; }

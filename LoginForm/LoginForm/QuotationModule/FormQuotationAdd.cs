@@ -2689,7 +2689,7 @@ namespace LoginForm.QuotationModule
                     q.CustomerID = CustomerCode.Text;
                     q.ShippingMethodID = cbSMethod.SelectedIndex;
                     q.MainContactName = cbWorkers.Text;
-
+                    q.TotalMargin = Convert.ToDecimal(txtTotalMargin.Text);
                     if (cbWorkers.SelectedValue != null)
                     {
                         q.QuotationMainContact = (int)cbWorkers.SelectedValue;
@@ -2873,7 +2873,7 @@ namespace LoginForm.QuotationModule
                 q.CustomerID = CustomerCode.Text;
                 q.ShippingMethodID = cbSMethod.SelectedIndex;
                 q.MainContactName = cbWorkers.Text;
-
+                q.TotalMargin = Convert.ToDecimal(txtTotalMargin.Text);
                 if (cbWorkers.SelectedValue != null)
                 {
                     q.QuotationMainContact = (int)cbWorkers.SelectedValue;
@@ -2942,7 +2942,7 @@ namespace LoginForm.QuotationModule
                 q.CustomerID = CustomerCode.Text;
                 q.ShippingMethodID = cbSMethod.SelectedIndex;
                 q.MainContactName = cbWorkers.Text;
-
+                q.TotalMargin= Convert.ToDecimal(txtTotalMargin.Text);
                 if (cbWorkers.SelectedValue != null)
                 {
                     q.QuotationMainContact = (int)cbWorkers.SelectedValue;

@@ -125,7 +125,9 @@ namespace LoginForm
                         quotationIDs += ",";
                     }
                 }
-                FormSaleOrderAdd form1 = new FormSaleOrderAdd((Customer)lbCustomerList.SelectedItem, list, quotationIDs,1);
+                //string quotNo = dgItems.CurrentRow.Cells[QuotationNo.Index].Value.ToString();
+                Quotation quo = null;
+                FormSaleOrderAdd form1 = new FormSaleOrderAdd((Customer)lbCustomerList.SelectedItem, list, quotationIDs,1,quo);
                 Utils.LogKayit("Sale Order", "Sale Order add screen has been entered");
                 form1.Show();
                 this.Close();

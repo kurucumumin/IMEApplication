@@ -822,6 +822,7 @@
           <Property Name="idVersion" Type="int" Nullable="false" />
           <Property Name="DistributeDiscount" Type="bit" />
           <Property Name="MainContactName" Type="nvarchar" MaxLength="50" />
+          <Property Name="TotalMargin" Type="decimal" Precision="5" Scale="2" />
         </EntityType>
         <EntityType Name="QuotationDelivery">
           <Key>
@@ -1039,7 +1040,7 @@
           <Property Name="Hazardous" Type="bit" />
           <Property Name="Calibration" Type="bit" />
           <Property Name="ItemCost" Type="decimal" Precision="20" Scale="5" />
-          <Property Name="No" Type="int" />
+          <Property Name="No" Type="decimal" Precision="20" Scale="1" />
           <Property Name="quotationDetailsId" Type="int" />
           <Property Name="SaleOrderID" Type="numeric" Precision="18" Scale="0" />
           <Property Name="SentItemQuantity" Type="int" />
@@ -5341,6 +5342,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="idVersion" Type="Int32" Nullable="false" />
           <Property Name="DistributeDiscount" Type="Boolean" />
           <Property Name="MainContactName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TotalMargin" Type="Decimal" Precision="5" Scale="2" />
           <NavigationProperty Name="Currency" Relationship="Self.FK__Quotation__Curre__0A096455" FromRole="Quotation" ToRole="Currency" />
           <NavigationProperty Name="Customer" Relationship="Self.FK__Quotation__Custo__00750D23" FromRole="Quotation" ToRole="Customer" />
           <NavigationProperty Name="CustomerWorker" Relationship="Self.FK__Quotation__Quota__597119F2" FromRole="Quotation" ToRole="CustomerWorker" />
@@ -5601,7 +5603,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="Hazardous" Type="Boolean" />
           <Property Name="Calibration" Type="Boolean" />
           <Property Name="ItemCost" Type="Decimal" Precision="20" Scale="5" />
-          <Property Name="No" Type="Int32" />
+          <Property Name="No" Type="Decimal" Precision="20" Scale="1" />
           <Property Name="quotationDetailsId" Type="Int32" />
           <Property Name="SaleOrderID" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="SentItemQuantity" Type="Int32" />
@@ -10505,6 +10507,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="idVersion" ColumnName="idVersion" />
                 <ScalarProperty Name="DistributeDiscount" ColumnName="DistributeDiscount" />
                 <ScalarProperty Name="MainContactName" ColumnName="MainContactName" />
+                <ScalarProperty Name="TotalMargin" ColumnName="TotalMargin" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

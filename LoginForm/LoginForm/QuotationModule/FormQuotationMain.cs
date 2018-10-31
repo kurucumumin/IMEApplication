@@ -1469,10 +1469,10 @@ namespace LoginForm.QuotationModule
 
                         string CustCode = SelectedRows[0].Cells[CustomerCode.Index].Value.ToString();
                         Customer customer = IME.Customers.Where(x => x.ID == CustCode).FirstOrDefault();
-                        SaleOrder so = IME.SaleOrders.Where(x => x.QuotationNos == quotNo).FirstOrDefault();
+                        Quotation quo = IME.Quotations.Where(x => x.QuotationNo == quotNo).FirstOrDefault();
 
                         //XtraFormSaleOrder form = new XtraFormSaleOrder(so, this, "Quotation");
-                        FormSaleOrderAdd form = new FormSaleOrderAdd(customer, list, quotationIDs, 1);
+                        FormSaleOrderAdd form = new FormSaleOrderAdd(customer, list, quotationIDs, 1,quo);
                         Utils.LogKayit("Sale Order", "Sale Order add screen has been entered");
                         form.Show();
                         this.Close();
