@@ -220,9 +220,9 @@ namespace LoginForm.QuotationModule
                                              SecondNote = q.SecondNote,
                                              Date2 = q.NoteDate2,
                                              Rep2 = q.NoteRep2
-                                         }).Where(x => x.QuotationNo.Substring(x.QuotationNo.LastIndexOf('/') + 1).Contains(txtSearchText.Text)).ToList();
-
-                            populateGrid(list1.ToList());
+                                         }).ToList();
+                            var quoList = list1.Where(a => a.QuotationNo.Substring(a.QuotationNo.LastIndexOf('/')).Contains(txtSearchText.Text)).ToList();
+                            populateGrid(quoList.ToList());
                             break;
 
                         case "CUSTOMER CODE":
@@ -484,9 +484,10 @@ namespace LoginForm.QuotationModule
                                              SecondNote = q.SecondNote,
                                              Date2 = q.NoteDate2,
                                              Rep2 = q.NoteRep2
-                                         }).ToList().Where(x => x.QuotationNo.Substring(x.QuotationNo.LastIndexOf('/')).Contains(txtSearchText.Text));
+                                         }).ToList();
+                            var quoList = list1.Where(a => a.QuotationNo.Substring(a.QuotationNo.LastIndexOf('/')).Contains(txtSearchText.Text)).ToList();
 
-                            populateGrid(list1.ToList());
+                            populateGrid(quoList.ToList());
                             break;
 
                         case "CUSTOMER CODE":
@@ -837,6 +838,7 @@ namespace LoginForm.QuotationModule
                 row.Cells[Date2.Index].Value = item.Date2;
                 row.Cells[Rep2.Index].Value = item.Rep2;
                 row.Cells[SaleOrderID.Index].Value = item.SaleOrderID;
+                row.Cells[QuoID.Index].Value = item.QuotationNo.Substring(item.QuotationNo.LastIndexOf('/') + 1).ToString();
 
             }
 
@@ -846,9 +848,9 @@ namespace LoginForm.QuotationModule
                 {
                     row.DefaultCellStyle.BackColor = ImeSettings.GridDeletedRowColor ;
                 }
-
-                row.Cells[QuoID.Index].Value = row.Cells[QuotationNo.Index].Value.ToString().LastIndexOf('/') + 1.ToString();
             }
+
+
         }
 
         private void dgQuotation_KeyDown(object sender, KeyEventArgs e)
@@ -1203,24 +1205,35 @@ namespace LoginForm.QuotationModule
 
                     throw;
                 }
-                if (quo != null && quo.SaleOrder == null)
+
+                if (quo.ViewQuotation != false)
                 {
-                    FormQuotationAdd newForm = new FormQuotationAdd(quo, this, "Update");
-                    Utils.LogKayit("Quotation", "Quotation update screen has been entered");
-                    newForm.Show();
+                    quo.ViewQuotation = false;
+                    IME.SaveChanges();
+
+                    if (quo != null && quo.SaleOrder == null)
+                    {
+                        FormQuotationAdd newForm = new FormQuotationAdd(quo, this, "Update");
+                        Utils.LogKayit("Quotation", "Quotation update screen has been entered");
+                        newForm.Show();
+                    }
+                    else
+                    {
+
+                        DialogResult result = MessageBox.Show("Quotation is locked to Sales Order Number:" + quo.SaleOrder.SaleOrderNo, "Warning", MessageBoxButtons.OKCancel);
+                        if (result == DialogResult.OK)
+                        {
+                            DialogResult result2 = MessageBox.Show("Do you want to create revision", "Informaion", MessageBoxButtons.OKCancel);
+                            if (result2 == DialogResult.OK)
+                            {
+                                CreateRevision();
+                            }
+                        }
+                    }
                 }
                 else
                 {
-
-                    DialogResult result =  MessageBox.Show("Quotation is locked to Sales Order Number:" + quo.SaleOrder.SaleOrderNo,"Warning",MessageBoxButtons.OKCancel);
-                    if (result == DialogResult.OK)
-                    {
-                        DialogResult result2 = MessageBox.Show("Do you want to create revision", "Informaion", MessageBoxButtons.OKCancel);
-                        if (result2 == DialogResult.OK)
-                        {
-                            CreateRevision();
-                        }
-                    }
+                    MessageBox.Show(Utils.getCurrentUser().UserName + "is working on this Quotation");
                 }
             }
             else
@@ -1246,23 +1259,34 @@ namespace LoginForm.QuotationModule
 
                     throw;
                 }
-                if (quo != null && quo.SaleOrder == null)
+
+                if (quo.ViewQuotation != false)
                 {
-                    FormQuotationAdd newForm = new FormQuotationAdd(quo, this, "Update");
-                    Utils.LogKayit("Quotation", "Quotation modify screen has been entered");
-                    newForm.ShowDialog();
+                    quo.ViewQuotation = false;
+                    IME.SaveChanges();
+
+                    if (quo != null && quo.SaleOrder == null)
+                    {
+                        FormQuotationAdd newForm = new FormQuotationAdd(quo, this, "Update");
+                        Utils.LogKayit("Quotation", "Quotation modify screen has been entered");
+                        newForm.ShowDialog();
+                    }
+                    else
+                    {
+                        DialogResult result = MessageBox.Show("Quotation is locked to Sales Order Number:" + quo.SaleOrder.SaleOrderNo, "Warning", MessageBoxButtons.OKCancel);
+                        if (result == DialogResult.OK)
+                        {
+                            DialogResult result2 = MessageBox.Show("Create Revision ?", "Informaion", MessageBoxButtons.OKCancel);
+                            if (result2 == DialogResult.OK)
+                            {
+                                CreateRevision();
+                            }
+                        }
+                    }
                 }
                 else
                 {
-                    DialogResult result = MessageBox.Show("Quotation is locked to Sales Order Number:" + quo.SaleOrder.SaleOrderNo, "Warning", MessageBoxButtons.OKCancel);
-                    if (result == DialogResult.OK)
-                    {
-                        DialogResult result2 = MessageBox.Show("Create Revision ?", "Informaion", MessageBoxButtons.OKCancel);
-                        if (result2 == DialogResult.OK)
-                        {
-                            CreateRevision();
-                        }
-                    }
+                    MessageBox.Show(Utils.getCurrentUser().UserName + "is working on this Quotation");
                 }
             }
             else

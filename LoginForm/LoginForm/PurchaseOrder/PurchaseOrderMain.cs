@@ -33,20 +33,11 @@ namespace LoginForm.PurchaseOrder
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            //#region ProductHistory
-            //int purchaseId =0;
-
-            //if (dgPurchase.CurrentRow.Cells[PoNo.Index].Value != null && dgPurchase.CurrentRow.Cells[PoNo.Index].Value.ToString() != "")
-            //    purchaseId = Convert.ToInt32(dgPurchase.CurrentRow.Cells[PoNo.Index].Value);
-            //if (dgPurchase.CurrentRow.Cells[PoNo.Index].Value == null)
-            //    MessageBox.Show("Please Enter a Purchase Order No", "Eror !");
-            //else
-            //{
-            //    purchaseId = Convert.ToInt32(dgPurchase.CurrentRow.Cells[PoNo.Index].Value);
-            //    NewPurchaseOrder f = new NewPurchaseOrder(purchaseId, 1);
-            //    try { this.Hide(); f.ShowDialog(); this.Show(); } catch { }
-            //}
-            //#endregion
+            FormNewPurchaseOrder frm = new FormNewPurchaseOrder();
+            this.Close();
+            frm.ShowDialog();
+            frm.Dispose();
+            
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -270,9 +261,12 @@ namespace LoginForm.PurchaseOrder
 
         private void btnExcel_Click(object sender, EventArgs e)
         {
-            int PurchaseNo = Convert.ToInt32(dgPurchase.CurrentRow.Cells[0].Value);
-            ExcelPurchaseOrder.Export(dgPurchase, PurchaseNo.ToString());
-            Utils.LogKayit("Purchase Order", "Purchase Order excel");
+            if (dgPurchase.CurrentRow != null)
+            {
+                int PurchaseNo = Convert.ToInt32(dgPurchase.CurrentRow.Cells[0].Value);
+                ExcelPurchaseOrder.Export(dgPurchase, PurchaseNo.ToString());
+                Utils.LogKayit("Purchase Order", "Purchase Order excel");
+            }
         }
 
         private void dgPurchase_DataError(object sender, DataGridViewDataErrorEventArgs e)

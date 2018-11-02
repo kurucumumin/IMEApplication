@@ -836,6 +836,7 @@ namespace LoginForm.Main
             this.btnExchangeRate.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
             this.btnExchangeRate.BackColor = System.Drawing.Color.Transparent;
             this.btnExchangeRate.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnExchangeRate.Enabled = false;
             this.btnExchangeRate.Font = new System.Drawing.Font("Sitka Text", 11F, System.Drawing.FontStyle.Bold);
             this.btnExchangeRate.ForeColor = System.Drawing.Color.Black;
             this.btnExchangeRate.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));

@@ -205,6 +205,9 @@
     <Compile Include="DataSet\BackOrderMain.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\BillTo.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\CariHareket.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -892,6 +895,12 @@
     <Compile Include="PurchaseOrder\FormBillTo.Designer.cs">
       <DependentUpon>FormBillTo.cs</DependentUpon>
     </Compile>
+    <Compile Include="PurchaseOrder\FormNewPurchaseOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseOrder\FormNewPurchaseOrder.Designer.cs">
+      <DependentUpon>FormNewPurchaseOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="PurchaseOrder\frmStock.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1012,6 +1021,18 @@
     <Compile Include="SaleOrder\DevFormSaleOrderAdd.designer.cs">
       <DependentUpon>DevFormSaleOrderAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="SaleOrder\FormBillTo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleOrder\FormBillTo.Designer.cs">
+      <DependentUpon>FormBillTo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SaleOrder\FormShipTo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleOrder\FormShipTo.Designer.cs">
+      <DependentUpon>FormShipTo.cs</DependentUpon>
+    </Compile>
     <Compile Include="SaleOrder\FormSaleOrderAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1023,6 +1044,12 @@
     </Compile>
     <Compile Include="SaleOrder\FormSaleOrderCreate.Designer.cs">
       <DependentUpon>FormSaleOrderCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SaleOrder\FormSaleOrderCustomerSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleOrder\FormSaleOrderCustomerSearch.Designer.cs">
+      <DependentUpon>FormSaleOrderCustomerSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="SaleOrder\FormSaleOrderMain.cs">
       <SubType>Form</SubType>
@@ -1328,6 +1355,9 @@
     <EmbeddedResource Include="PurchaseOrder\FormBillTo.resx">
       <DependentUpon>FormBillTo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseOrder\FormNewPurchaseOrder.resx">
+      <DependentUpon>FormNewPurchaseOrder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PurchaseOrder\frmStock.resx">
       <DependentUpon>frmStock.cs</DependentUpon>
     </EmbeddedResource>
@@ -1388,11 +1418,20 @@
     <EmbeddedResource Include="SaleOrder\DevFormSaleOrderAdd.resx">
       <DependentUpon>DevFormSaleOrderAdd.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SaleOrder\FormBillTo.resx">
+      <DependentUpon>FormBillTo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaleOrder\FormShipTo.resx">
+      <DependentUpon>FormShipTo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SaleOrder\FormSaleOrderAdd.resx">
       <DependentUpon>FormSaleOrderAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SaleOrder\FormSaleOrderCreate.resx">
       <DependentUpon>FormSaleOrderCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaleOrder\FormSaleOrderCustomerSearch.resx">
+      <DependentUpon>FormSaleOrderCustomerSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SaleOrder\FormSaleOrderMain.resx">
       <DependentUpon>FormSaleOrderMain.cs</DependentUpon>

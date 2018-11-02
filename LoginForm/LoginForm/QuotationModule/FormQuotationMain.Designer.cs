@@ -636,6 +636,7 @@
             // 
             this.QuoID.HeaderText = "QuoID";
             this.QuoID.Name = "QuoID";
+            this.QuoID.Visible = false;
             // 
             // QuotationNo
             // 

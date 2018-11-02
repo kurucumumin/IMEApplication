@@ -736,10 +736,20 @@ namespace LoginForm
                     throw;
                 }
 
-                FormSaleOrderAdd newForm = new FormSaleOrderAdd(so, this, "Update", co);
-                //XtraFormSaleOrder newForm = new XtraFormSaleOrder(so, this, "Update");
-                Utils.LogKayit("SaleOrder", "SaleOrder update screen has been entered");
-                newForm.ShowDialog();
+                if (so.ViewSale != false)
+                {
+                    so.ViewSale = false;
+                    IME.SaveChanges();
+
+                    FormSaleOrderAdd newForm = new FormSaleOrderAdd(so, this, "Update", co);
+                    //XtraFormSaleOrder newForm = new XtraFormSaleOrder(so, this, "Update");
+                    Utils.LogKayit("SaleOrder", "SaleOrder update screen has been entered");
+                    newForm.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show(Utils.getCurrentUser().UserName + "is working on this Sale Order");
+                }
 
             }
             else

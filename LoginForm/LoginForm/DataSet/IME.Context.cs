@@ -32,6 +32,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<AuthorizationValue> AuthorizationValues { get; set; }
         public virtual DbSet<BackOrder> BackOrders { get; set; }
         public virtual DbSet<BackOrderMain> BackOrderMains { get; set; }
+        public virtual DbSet<BillTo> BillToes { get; set; }
         public virtual DbSet<City> Cities { get; set; }
         public virtual DbSet<Company> Companies { get; set; }
         public virtual DbSet<CompanyPath> CompanyPaths { get; set; }

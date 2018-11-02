@@ -679,7 +679,7 @@ namespace LoginForm
             {
                 base.OnFormClosing(e);
 
-                if (e.CloseReason == CloseReason.WindowsShutDown) return;
+                if (e.CloseReason == CloseReason.UserClosing) return;
 
                 // Confirm user wants to close
                 switch (MessageBox.Show(this, "Are you sure you want to close?", "Closing", MessageBoxButtons.YesNo))

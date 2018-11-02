@@ -901,7 +901,7 @@ namespace LoginForm.QuotationModule
             }
             GetCurrency(dtpDate.Value);
             GetAutorities();
-
+            tableLayoutPanel2.Height = 5;
             //#region AutoCompleteCustomSource
             //CustomerCode.Focus();
             //AutoCompleteStringCollection auto = new AutoCompleteStringCollection();
@@ -1008,6 +1008,9 @@ namespace LoginForm.QuotationModule
 
         private void btnClose_Click(object sender, EventArgs e)
         {
+            Quotation quo = IME.Quotations.Where(q => q.QuotationNo == txtQuotationNo.Text).FirstOrDefault();
+            quo.ViewQuotation = true;
+            IME.SaveChanges();
             if (this.Text == "View Quotation")
             {
                 if (MessageBox.Show("Do you want to close ?", "Quotation Close", MessageBoxButtons.OKCancel) == DialogResult.OK)
@@ -1511,7 +1514,12 @@ namespace LoginForm.QuotationModule
                         }
                         else
                         {
-                            CurrentRow.Cells[dgTotal.Index].Value = 0.ToString();
+                            MessageBox.Show("Please enter a number that is a multiple of SSM");
+                            CurrentRow.Cells["dgQty"].Value = "";
+                            CurrentRow.Cells["dgUPIME"].Value = "";
+                            CurrentRow.Cells["dgTotal"].Value = "";
+                            dgQuotationAddedItems.CurrentCell = CurrentRow.Cells[dgQty.Index];
+                            dgQuotationAddedItems.BeginEdit(true);
                         }
 
                         #endregion
@@ -2805,6 +2813,9 @@ namespace LoginForm.QuotationModule
                         #endregion
 
                         //parent.BringQuotationList();
+                        
+                        q.ViewQuotation = true;
+                        IME.SaveChanges();
                         this.Close();
                     }
                 }
@@ -2813,14 +2824,22 @@ namespace LoginForm.QuotationModule
                     modifyMod = false;
                     QuotationSave();
                     QuotationDetailsSave();
-                    //parent.BringQuotationList();
+
+                    Quotation quo = IME.Quotations.Where(q => q.QuotationNo == txtQuotationNo.Text).FirstOrDefault();
+                    quo.ViewQuotation = true;
+                    IME.SaveChanges();
+
                     this.Close();
                 }
                 else
                 {
                     QuotationSave();
                     QuotationDetailsSave();
-                    //parent.BringQuotationList();
+
+                    Quotation quo = IME.Quotations.Where(q => q.QuotationNo == txtQuotationNo.Text).FirstOrDefault();
+                    quo.ViewQuotation = true;
+                    IME.SaveChanges();
+
                     this.Close();
                 }
             }
@@ -2996,6 +3015,7 @@ namespace LoginForm.QuotationModule
                 IME.SaveChanges();
                 Utils.LogKayit("Quotation", "Quotation added");
                 #endregion
+
             }
         }
 
@@ -4220,6 +4240,10 @@ namespace LoginForm.QuotationModule
                 {
                     QuotationSave();
                     QuotationDetailsSave();
+
+                    Quotation quo = IME.Quotations.Where(q => q.QuotationNo == txtQuotationNo.Text).FirstOrDefault();
+                    quo.ViewQuotation = true;
+                    IME.SaveChanges();
                 }
             }
         }
@@ -5206,7 +5230,8 @@ namespace LoginForm.QuotationModule
         {
             CalculateSubTotal();
             calculateTotalCost();
-            txtTotalMargin.Text = Math.Round(calculateTotalMargin(), 4).ToString();
+            try { txtTotalMargin.Text = Math.Round(calculateTotalMargin(), 4).ToString(); }
+            catch { }
             Disc();
         }
 
@@ -5538,6 +5563,22 @@ namespace LoginForm.QuotationModule
                 e.Handled = true;//pass by the default sorting
             }
         }
+        
+        private void FormQuotationAdd_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                Quotation quo = IME.Quotations.Where(q => q.QuotationNo == txtQuotationNo.Text).FirstOrDefault();
+                if (quo != null)
+                {
+                    quo.ViewQuotation = true;
+                    IME.SaveChanges();
+                }
+
+               // this.Close();
+            }
+        }
+
 
         //private void dgQuotationAddedItems_CurrentCellDirtyStateChanged(object sender, EventArgs e)
         //{

@@ -64,17 +64,26 @@ namespace LoginForm.DataSet
         public Nullable<bool> DistributeDiscount { get; set; }
         public string MainContactName { get; set; }
         public Nullable<decimal> TotalMargin { get; set; }
+        public Nullable<bool> ViewQuotation { get; set; }
     
         public virtual Currency Currency { get; set; }
+        public virtual Currency Currency1 { get; set; }
         public virtual Customer Customer { get; set; }
         public virtual CustomerWorker CustomerWorker { get; set; }
+        public virtual CustomerWorker CustomerWorker1 { get; set; }
         public virtual ExchangeRate ExchangeRate { get; set; }
+        public virtual ExchangeRate ExchangeRate1 { get; set; }
         public virtual Note Note { get; set; }
         public virtual Note Note1 { get; set; }
+        public virtual Note Note2 { get; set; }
+        public virtual Note Note3 { get; set; }
         public virtual PaymentTerm PaymentTerm { get; set; }
+        public virtual PaymentTerm PaymentTerm1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<QuotationDetail> QuotationDetails { get; set; }
         public virtual Worker Worker { get; set; }
+        public virtual Worker Worker1 { get; set; }
         public virtual SaleOrder SaleOrder { get; set; }
+        public virtual SaleOrder SaleOrder1 { get; set; }
     }
 }
