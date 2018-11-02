@@ -33,7 +33,7 @@ namespace LoginForm
             con.Open();
             if (con.State == ConnectionState.Open)
             {
-                adapter = new SqlDataAdapter(" select SaleOrderID,SaleDate,QuotationNos,Vat,TotalPrice,SubTotal,TotalMargin,SaleOrderNature from SaleOrder where PurchaseOrderID is null", con);
+                adapter = new SqlDataAdapter(" select SaleOrderID,SaleDate,QuotationNos,SubTotal,TotalPrice,TotalMargin,SaleOrderNature from SaleOrder where PurchaseOrderID is null", con);
                 dt = new DataTable();
                 adapter.Fill(dt);
                 gridControl1.DataSource = dt;

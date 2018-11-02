@@ -14,6 +14,7 @@ namespace LoginForm.Services
         {
             IMEEntities IME = new IMEEntities();
             SaveFileDialog savefile = new SaveFileDialog();
+
             savefile.Filter = "Txt Files (*.txt)|*.txt|All files (*.txt)|*.txt";
             string filename = "ORD_BH01_" + AccountNumber + "_" + Utils.GetCurrentDateTime().ToString("yyyyMMdd") + "_" + Utils.GetCurrentDateTime().ToString("HHmmss");
             savefile.FileName = filename;

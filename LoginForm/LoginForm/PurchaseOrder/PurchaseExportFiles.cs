@@ -239,8 +239,10 @@ namespace LoginForm.PurchaseOrder
             List<string> TXTList = new List<string>();
             string Line1;
             DateTime currentDate = Utils.GetCurrentDateTime();
-            //TODO ! 's' hiçbiryerde kullanılmadığı için yorumlandı
-            //string s = rowList[0].Cells["SaleID"].Value.ToString();
+
+            decimal s = (decimal)rowList[0].Cells["SaleID"].Value;
+            SaleOrder so = IME.SaleOrders.Where(x => x.SaleOrderID == s).FirstOrDefault();
+
             string orderN= rowList[0].Cells[10].Value.ToString();
             string billTo = rowList[0].Cells[11].Value.ToString();
             string COO ="   ";//TO DO COUNTRYCODE
@@ -256,7 +258,7 @@ namespace LoginForm.PurchaseOrder
             TXTList.Add(Line1);
             string Line2 = "";
 
-            AccountNumber = "0008828170";//accounting numarası
+            AccountNumber = so.BillTo.ToString();
             int AccountNumberlength = AccountNumber.Length;
             for (int i = 0; i < 10 - AccountNumberlength; i++)
 
