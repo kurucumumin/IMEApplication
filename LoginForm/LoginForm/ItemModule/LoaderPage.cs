@@ -90,19 +90,29 @@ namespace LoginForm.ItemModule
 
                 case "OnSale":
                     OnSaleHelper OnSaleHelper = new OnSaleHelper();
-                    bool NoErrorOnSale = OnSaleHelper.ErrorCheck();
-                    if (NoErrorOnSale)
+                    //bool NoErrorOnSale = OnSaleHelper.ErrorCheck();
+                    //if (NoErrorOnSale)
+                    //{
+                    //    if (OnSaleHelper.LoadOnSaleItems())
+                    //    {
+                    //        RsFileHistory h = new RsFileHistory();
+                    //        h.FileType = txtReader.LoaderType;
+                    //        h.FileName = OnSaleHelper.FileName;
+                    //        h.Date = Utils.GetCurrentDateTime();
+                    //        h.UserID = Utils.getCurrentUser().WorkerID;
+                    //        IME.RsFileHistories.Add(h);
+                    //        IME.SaveChanges();
+                    //    }
+                    //}
+                    if (txtReader.OnSaleRead() == 1)
                     {
-                        if (OnSaleHelper.LoadOnSaleItems())
-                        {
-                            RsFileHistory h = new RsFileHistory();
-                            h.FileType = txtReader.LoaderType;
-                            h.FileName = OnSaleHelper.FileName;
-                            h.Date = Utils.GetCurrentDateTime();
-                            h.UserID = Utils.getCurrentUser().WorkerID;
-                            IME.RsFileHistories.Add(h);
-                            IME.SaveChanges();
-                        }
+                        RsFileHistory h = new RsFileHistory();
+                        h.FileType = txtReader.LoaderType;
+                        h.FileName = OnSaleHelper.FileName;
+                        h.Date = Utils.GetCurrentDateTime();
+                        h.UserID = Utils.getCurrentUser().WorkerID;
+                        IME.RsFileHistories.Add(h);
+                        IME.SaveChanges();
                     }
                     break;
 

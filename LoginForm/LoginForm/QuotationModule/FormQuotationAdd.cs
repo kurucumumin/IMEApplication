@@ -1009,8 +1009,13 @@ namespace LoginForm.QuotationModule
         private void btnClose_Click(object sender, EventArgs e)
         {
             Quotation quo = IME.Quotations.Where(q => q.QuotationNo == txtQuotationNo.Text).FirstOrDefault();
-            quo.ViewQuotation = true;
-            IME.SaveChanges();
+
+            if (quo != null)
+            {
+                quo.ViewQuotation = true;
+                IME.SaveChanges();
+            }
+
             if (this.Text == "View Quotation")
             {
                 if (MessageBox.Show("Do you want to close ?", "Quotation Close", MessageBoxButtons.OKCancel) == DialogResult.OK)
@@ -2172,6 +2177,7 @@ namespace LoginForm.QuotationModule
             ExtendedRange er;
 
             var ItemTabDetails = IME.ItemDetailTabFiller(ArticleNoSearch).FirstOrDefault();
+            var rsf = IME.RsFileHistories.Where(a => a.FileType == "OnSale").OrderByDescending(x => x.Date).FirstOrDefault();
 
             if (ItemTabDetails != null)
             {
@@ -2232,6 +2238,7 @@ namespace LoginForm.QuotationModule
                 txtLithium.Text = (ItemTabDetails.Lithium != null && ItemTabDetails.Lithium != String.Empty) ? "Y" : "";
                 txtShipping.Text = (ItemTabDetails.Shipping != null && ItemTabDetails.Shipping != String.Empty) ? "Y" : "";
                 txtRSStock.Text = ItemTabDetails.OnhandStockBalance.ToString();
+                textBox23.Text = rsf.Date.ToString();
                 txtRSOnOrder.Text = ItemTabDetails.QuantityonOrder.ToString();
                 txtDiscontinuationDate.Text = ItemTabDetails.DiscontinuationDate;
                 txtRunOn.Text = ItemTabDetails.Runon?.ToString();
@@ -3575,6 +3582,7 @@ namespace LoginForm.QuotationModule
             try { ArticleNoSearch1 = (Int32.Parse(ArticleNoSearch)).ToString(); } catch { }
 
             var ItemTabDetails = IME.ItemDetailTabFiller(ArticleNoSearch).FirstOrDefault();
+            var rsf = IME.RsFileHistories.Where(a => a.FileType == "OnSale").OrderByDescending(x => x.Date).FirstOrDefault();
 
             if (ItemTabDetails != null)
             {
@@ -3657,7 +3665,10 @@ namespace LoginForm.QuotationModule
                 if (txtLithium.Text == "Y") isLithum = true;
                 if (txtShipping.Text == "Y") isShipping = true;
                 if (ItemTabDetails.Calibration_Ind != null)
+                {
                     txtRSStock.Text = ItemTabDetails.OnhandStockBalance.ToString();
+                    textBox23.Text = rsf.Date.ToString();
+                }
                 txtRSOnOrder.Text = ItemTabDetails.QuantityonOrder.ToString();
                 txtDiscontinuationDate.Text = ItemTabDetails.DiscontinuationDate;
                 txtRunOn.Text = ItemTabDetails.Runon?.ToString();

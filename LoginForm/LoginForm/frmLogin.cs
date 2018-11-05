@@ -57,6 +57,8 @@ namespace LoginForm
             else
             {
                 MessageBox.Show("Wrong ID or Password", "Login Error", MessageBoxButtons.OK);
+                txtID.Text = "";
+                txtPassWord.Text = "";
             }
             #endregion
         }

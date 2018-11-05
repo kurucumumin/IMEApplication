@@ -305,6 +305,7 @@ namespace LoginForm.ItemModule
             var h = IME.Hazardous.Where(a => a.ArticleNo == ArticleNoSearch).FirstOrDefault();
             var du = IME.DualUses.Where(a => a.ArticleNo == ArticleNoSearch).FirstOrDefault();
             var i = IME.tbl_Item.Where(a => a.StockNo == ArticleNoSearch).FirstOrDefault();
+            var rsf = IME.RsFileHistories.Where(a=> a.FileType== "OnSale").OrderByDescending(x => x.Date).FirstOrDefault();
 
 
             int coefficient = (int)IME.CompleteItems.Where(x => x.Article_No == ArticleNoSearch).FirstOrDefault().Unit_Content;
@@ -486,6 +487,7 @@ namespace LoginForm.ItemModule
                 //OnSaleDiscontinuedDate.Text = os.DiscontinuedDate;
                 //OnSaleIntroductionDate.Text = os.IntroductionDate;
                 txtRSStock.Text = os.OnhandStockBalance.ToString();
+                textBox14.Text = rsf.Date.ToString();
                 txtRSOnOrder.Text = os.QuantityonOrder.ToString();
 
             }

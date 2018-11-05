@@ -752,7 +752,8 @@ namespace LoginForm.QuotationModule
             }
             else
             {
-                txtSalesOrderNo.Text = "SO" + IME.CreteNewSaleOrderNo().FirstOrDefault().ToString();
+                sO = Int32.Parse(IME.CreteNewSaleOrderNo().FirstOrDefault().ToString());
+                txtSalesOrderNo.Text = "SO" + sO.ToString();
             }
             DataGridViewComboBoxColumn deliveryColumn = (DataGridViewComboBoxColumn)dgSaleAddedItems.Columns[dgDelivery.Index];
             if (deliveryColumn.DataSource == null)
@@ -815,7 +816,6 @@ namespace LoginForm.QuotationModule
             }
             GetCurrency(dtpDate.Value);
             GetAutorities();
-           
             //int satirSayisi = dgSaleAddedItems.Rows.Count;
 
             //for (int i = 0; i < satirSayisi; i++)
@@ -963,10 +963,14 @@ namespace LoginForm.QuotationModule
                 decimal SaleOrderNo = Decimal.Parse(txtSalesOrderNo.Text.Substring(2));
                 SaleOrder s = IME.SaleOrders.Where(quo => quo.SaleOrderNo == SaleOrderNo).FirstOrDefault();
 
-                s.ViewSale = true;
-                IME.SaveChanges();
+                if (s != null)
+                {
+                    s.ViewSale = true;
+                    IME.SaveChanges();
 
+                }
                 this.Close();
+
             }
         }
 
@@ -1008,10 +1012,10 @@ namespace LoginForm.QuotationModule
                                 //Üstteki bir row u aşşağıya getirmek için
                                 if (Decimal.Parse(dgSaleAddedItems.Rows[i].Cells[dgNo.Index].Value.ToString()) >= Decimal.Parse(dgSaleAddedItems.CurrentCell.Value.ToString()) && currentID != i && dgSaleAddedItems.CurrentCell.RowIndex > i)
                                 {
-                                    //if (i <= Quotation.Count)
-                                    //{
-                                    //    dgSaleAddedItems.Rows[i].Cells[dgNo.Index].Value = (i + 2);
-                                    //}
+                                    if (i <= Quotation.Count)
+                                    {
+                                        dgSaleAddedItems.Rows[i].Cells[dgNo.Index].Value = (i+2);
+                                    }
 
                                 }
                                 else { dgSaleAddedItems.Rows[i].Cells[dgNo.Index].Value = Decimal.Parse(dgSaleAddedItems.Rows[i].Cells[dgNo.Index].Value.ToString()); }
@@ -1652,7 +1656,7 @@ namespace LoginForm.QuotationModule
                         if (productCode.Substring(0, 1) == "0") productCode = productCode.Substring(1, productCode.Length - 1);
                         if (IME.Hazardous.Where(a => a.ArticleNo == productCode).FirstOrDefault() != null)
                         {
-                            if (this.Text == "Modify Sale Order" || this.Text == "Edit SaleOrder" || this.Text == "View SaleOrder")
+                            if (this.Text == "Modify Sale Order" || this.Text == "Edit SaleOrder" || this.Text == "View SaleOrder" || this.Text == "New Sale Order") 
                             {
 
                                 price = Decimal.Parse((QuotationUtils.GetPrice(CurrentRow.Cells["dgProductCode"].Value.ToString(), Int32.Parse(CurrentRow.Cells["dgQty"].Value.ToString())) * (Utils.getManagement().Factor) / Currrate * Decimal.Parse(CurrentRow.Cells["dgQty"].Value.ToString())).ToString("G29"));
@@ -1665,7 +1669,7 @@ namespace LoginForm.QuotationModule
                         }
                         else
                         {
-                            if (this.Text == "Modify Sale Order" || this.Text == "Edit SaleOrder" || this.Text == "View SaleOrder")
+                            if (this.Text == "Modify Sale Order" || this.Text == "Edit SaleOrder" || this.Text == "View SaleOrder" || this.Text == "New Sale Order")
                             {
                                 price = Decimal.Parse((QuotationUtils.GetPrice(CurrentRow.Cells["dgProductCode"].Value.ToString(), Int32.Parse(CurrentRow.Cells["dgQty"].Value.ToString())) * (Utils.getManagement().Factor) / Currrate * Decimal.Parse(CurrentRow.Cells["dgQty"].Value.ToString())).ToString("G29"));
 
@@ -2607,6 +2611,8 @@ namespace LoginForm.QuotationModule
         private bool ControlSave()
         {
             if (txtCustomerName.Text == null || txtCustomerName.Text == String.Empty) { MessageBox.Show("Please Enter a Customer"); return false; }
+            if (cbInvoiceAdress.Text == null || cbInvoiceAdress.Text == String.Empty) { MessageBox.Show("Please Enter a Invoice Address"); return false; }
+            if (cbDeliveryAddress.Text == null || cbDeliveryAddress.Text == String.Empty) { MessageBox.Show("Please Enter a Delivery Address"); return false; }
 
             for (int i = 0; i < dgSaleAddedItems.RowCount - 1; i++)
             {
@@ -4851,9 +4857,13 @@ namespace LoginForm.QuotationModule
 
                 IME = new IMEEntities();
 
-                cbWorkers.Items.AddRange(IME.CustomerWorkers.Where(a => a.customerID == CustomerCode.Text).ToArray());
+                cbWorkers.DataSource = IME.CustomerWorkers.Where(a => a.customerID == CustomerCode.Text).ToList();
                 cbWorkers.DisplayMember = "cw_name";
                 cbWorkers.ValueMember = "ID";
+
+                cbDeliveryContact.DataSource = IME.CustomerWorkers.Where(a => a.customerID == CustomerCode.Text).ToList();
+                cbDeliveryContact.DisplayMember = "cw_name";
+                cbDeliveryContact.ValueMember = "ID";
             }
         }
 
@@ -4991,17 +5001,17 @@ namespace LoginForm.QuotationModule
                 s.SaleDate = (DateTime)dtpDate.Value;
                 s.OnlineConfirmationNo = txtOnlineConfirmationNo.Text;
                 s.QuotationNos = txtQuotationNo.Text;
-                s.PaymentTermID = (int)cbPaymentTerm.SelectedValue;
+                try { s.PaymentTermID = (int)cbPaymentTerm.SelectedValue; } catch { }
                 s.RequestedDeliveryDate = dtpRequestedDelvDate.Value.Date;
                 s.Vat = Convert.ToDecimal(lblVat.Text);
                 s.TotalPrice = Convert.ToDecimal(lbltotal.Text);
                 s.CustomerID = CustomerCode.Text;
-                s.ContactID = (int)cbWorkers.SelectedValue;
-                s.DeliveryContactID = (int)cbDeliveryContact.SelectedValue;
-                s.InvoiceAddressID = (int)cbInvoiceAdress.SelectedValue;
-                s.DeliveryAddressID = (int)cbDeliveryAddress.SelectedValue;
-                s.RepresentativeID = (int)cbRep.SelectedValue;
-                s.PaymentMethodID = (int)cbPaymentType.SelectedValue;
+                try { s.ContactID = (int)cbWorkers.SelectedValue; } catch { }
+                try { s.DeliveryContactID = (int)cbDeliveryContact.SelectedValue; } catch { }
+                try { s.InvoiceAddressID = (int)cbInvoiceAdress.SelectedValue; } catch { }
+                try { s.DeliveryAddressID = (int)cbDeliveryAddress.SelectedValue; } catch { }
+                try { s.RepresentativeID = (int)cbRep.SelectedValue; } catch { }
+                try { s.PaymentMethodID = (int)cbPaymentType.SelectedValue; } catch { }
                 s.NoteForUs = txtNoteForUs.Text;
                 //s.NoteForCustomer = txtNoteForCustomer.Text;
                 s.NoteForFinance = (chkbForFinance.Checked == true) ? 1 : 0;
@@ -5701,5 +5711,9 @@ namespace LoginForm.QuotationModule
             txtBillTo.Text = frm.BillTo.ToString();
         }
 
+        private void txtCustomerName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

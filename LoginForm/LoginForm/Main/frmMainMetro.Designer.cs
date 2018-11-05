@@ -37,8 +37,7 @@ namespace LoginForm.Main
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse();
             this.pnlMain = new System.Windows.Forms.Panel();
             this.btnToBeInvoiced = new AltoControls.AltoButton();
             this.btnStock = new AltoControls.AltoButton();
@@ -48,7 +47,7 @@ namespace LoginForm.Main
             this.btnCustomer = new AltoControls.AltoButton();
             this.btnSalesOrder = new AltoControls.AltoButton();
             this.btnSupplier = new AltoControls.AltoButton();
-            this.bunifuElipse2 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.bunifuElipse2 = new Bunifu.Framework.UI.BunifuElipse();
             this.pnlImportFiles = new System.Windows.Forms.Panel();
             this.btnBackOrder = new AltoControls.AltoButton();
             this.btnOrderAcknowledgement = new AltoControls.AltoButton();
@@ -63,7 +62,7 @@ namespace LoginForm.Main
             this.btnTSEList = new AltoControls.AltoButton();
             this.btnRSProList = new AltoControls.AltoButton();
             this.btnRsInvoice = new AltoControls.AltoButton();
-            this.bunifuElipse3 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.bunifuElipse3 = new Bunifu.Framework.UI.BunifuElipse();
             this.pnlManagement = new System.Windows.Forms.Panel();
             this.btnCurrency = new AltoControls.AltoButton();
             this.btnLog = new AltoControls.AltoButton();
@@ -74,7 +73,7 @@ namespace LoginForm.Main
             this.btnCategorySubCategory = new AltoControls.AltoButton();
             this.btnTermsOfPayment = new AltoControls.AltoButton();
             this.btnExchangeRate = new AltoControls.AltoButton();
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.timer2 = new System.Windows.Forms.Timer();
             this.panel3 = new System.Windows.Forms.Panel();
             this.altoSlidingLabel1 = new AltoControls.AltoSlidingLabel();
             this.panel1 = new System.Windows.Forms.Panel();

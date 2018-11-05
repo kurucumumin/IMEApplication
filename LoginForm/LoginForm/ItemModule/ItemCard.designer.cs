@@ -502,11 +502,11 @@ namespace LoginForm.ItemModule
             // textBox14
             // 
             this.textBox14.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.textBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.textBox14.Location = new System.Drawing.Point(181, 24);
             this.textBox14.Name = "textBox14";
             this.textBox14.ReadOnly = true;
-            this.textBox14.Size = new System.Drawing.Size(62, 23);
+            this.textBox14.Size = new System.Drawing.Size(97, 21);
             this.textBox14.TabIndex = 245;
             // 
             // textBox13
@@ -516,7 +516,7 @@ namespace LoginForm.ItemModule
             this.textBox13.Location = new System.Drawing.Point(181, 50);
             this.textBox13.Name = "textBox13";
             this.textBox13.ReadOnly = true;
-            this.textBox13.Size = new System.Drawing.Size(62, 23);
+            this.textBox13.Size = new System.Drawing.Size(97, 23);
             this.textBox13.TabIndex = 244;
             // 
             // label59
@@ -2403,7 +2403,7 @@ namespace LoginForm.ItemModule
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.ClientSize = new System.Drawing.Size(1214, 706);
             this.Controls.Add(this.tblMain);
-            this.MinimumSize = new System.Drawing.Size(1230, 745);
+            this.MinimumSize = new System.Drawing.Size(1230, 726);
             this.Name = "ItemCard";
             this.Text = " Item Card";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
