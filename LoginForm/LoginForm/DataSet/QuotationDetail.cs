@@ -31,7 +31,6 @@ namespace LoginForm.DataSet
         public string Competitor { get; set; }
         public string CustomerDescription { get; set; }
         public string CustomerStockCode { get; set; }
-        public Nullable<int> IsDeleted { get; set; }
         public string QuotationNo { get; set; }
         public Nullable<decimal> UPIME { get; set; }
         public Nullable<decimal> Marge { get; set; }
@@ -46,6 +45,8 @@ namespace LoginForm.DataSet
         public Nullable<decimal> LandingCost { get; set; }
         public string MPN { get; set; }
         public Nullable<decimal> UKPrice { get; set; }
+        public string Status { get; set; }
+        public Nullable<int> IsDeleted { get; set; }
     
         public virtual Quotation Quotation { get; set; }
         public virtual QuotationDelivery QuotationDelivery { get; set; }

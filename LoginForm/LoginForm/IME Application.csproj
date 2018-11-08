@@ -66,6 +66,9 @@
     <Reference Include="Bunifu_UI_v1.52">
       <HintPath>..\packages\Bunifu_UI_v1.52.dll</HintPath>
     </Reference>
+    <Reference Include="Dapper, Version=1.50.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.5\lib\net451\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="DevComponents.DotNetBar.Design">
       <HintPath>..\DevComponents\DevComponents.DotNetBar.Design.dll</HintPath>
     </Reference>
@@ -78,14 +81,27 @@
     <Reference Include="DevComponents.Instrumentation.Design">
       <HintPath>..\DevComponents\DevComponents.Instrumentation.Design.dll</HintPath>
     </Reference>
+    <Reference Include="DevExpress.Charts.v17.1.Core, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.DataAccess.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Office.v17.1.Core, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Pdf.v17.1.Core, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v17.1.Core, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v17.1.Core, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v17.1.Core, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v17.1.Core, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v17.1.UI, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpo.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraBars.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGauges.v17.1.Core, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraPrinting.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v17.1.Extensions, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -986,6 +1002,12 @@
     <Compile Include="QuotationModule\FormQuotationMPN.Designer.cs">
       <DependentUpon>FormQuotationMPN.cs</DependentUpon>
     </Compile>
+    <Compile Include="QuotationModule\FormQuotationPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuotationModule\FormQuotationPrint.Designer.cs">
+      <DependentUpon>FormQuotationPrint.cs</DependentUpon>
+    </Compile>
     <Compile Include="QuotationModule\frmEx-Quotation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1015,6 +1037,12 @@
     </Compile>
     <Compile Include="QuotationModule\frmXmlCustomerAdd.Designer.cs">
       <DependentUpon>frmXmlCustomerAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuotationModule\ReportQuotation.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="QuotationModule\ReportQuotation.Designer.cs">
+      <DependentUpon>ReportQuotation.cs</DependentUpon>
     </Compile>
     <Compile Include="QuotationModule\ViewProductHistory.cs">
       <SubType>Form</SubType>
@@ -1407,6 +1435,9 @@
     <EmbeddedResource Include="QuotationModule\FormQuotationMPN.resx">
       <DependentUpon>FormQuotationMPN.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="QuotationModule\FormQuotationPrint.resx">
+      <DependentUpon>FormQuotationPrint.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="QuotationModule\frmEx-Quotation.resx">
       <DependentUpon>frmEx-Quotation.cs</DependentUpon>
     </EmbeddedResource>
@@ -1421,6 +1452,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuotationModule\frmXmlCustomerAdd.resx">
       <DependentUpon>frmXmlCustomerAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuotationModule\ReportQuotation.resx">
+      <DependentUpon>ReportQuotation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuotationModule\ViewProductHistory.resx">
       <DependentUpon>ViewProductHistory.cs</DependentUpon>

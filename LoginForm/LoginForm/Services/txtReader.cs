@@ -4006,7 +4006,7 @@ namespace LoginForm
             Microsoft.Office.Interop.Excel.Application xlexcel;
             Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
             object misValue = System.Reflection.Missing.Value;
-            string mySheet = @"C:\Users\pomak\Desktop\6944.xlsx";
+            string mySheet = @"C:\Program Files (x86)\IME GENERAL COMPONENTS\IME CRM\6944.xlsx";
             IMEEntities IME = new IMEEntities();
             xlexcel = new Excel.Application();
             QuotationDetail qd = new QuotationDetail();
@@ -4020,35 +4020,34 @@ namespace LoginForm
             //sheet = xlexcel.Workbooks.Add(misValue);
             xlWorkSheet = (Excel.Worksheet)sheet.Worksheets.get_Item(1);
 
-            xlWorkSheet.Cells[6, 4] = dg.QuotationNo;
-            xlWorkSheet.Cells[6, 23] = dg.Customer.CustomerWorker.cw_email;
-            xlWorkSheet.Cells[6, 35] = dg.StartDate;
+            try { xlWorkSheet.Cells[6, 4] = dg.QuotationNo; } catch { }
+            try { xlWorkSheet.Cells[6, 23] = dg.Customer.CustomerWorker.cw_email; } catch { }
+            try { xlWorkSheet.Cells[6, 35] = dg.StartDate; } catch { }
+            try { xlWorkSheet.Cells[7, 4] = dg.Customer.c_name; } catch { }
+            try { xlWorkSheet.Cells[7, 23] = dg.Customer.fax; } catch { }
+            try { xlWorkSheet.Cells[7, 35] = dg.Worker.NameLastName; } catch { }
 
-            xlWorkSheet.Cells[7, 4] = dg.Customer.c_name;
-            xlWorkSheet.Cells[7, 23] = dg.Customer.fax;
-            xlWorkSheet.Cells[7, 35] = dg.Worker.NameLastName;
+            try { xlWorkSheet.Cells[10, 4] = dg.Customer.CustomerWorker.cw_name; } catch { }
+            try { xlWorkSheet.Cells[10, 23] = dg.RFQNo; } catch { }
+            try { xlWorkSheet.Cells[10, 35] = dg.Worker.Email; } catch { }
 
-            xlWorkSheet.Cells[10, 4] = dg.Customer.CustomerWorker.cw_name;
-            xlWorkSheet.Cells[10, 23] = dg.RFQNo;
-            xlWorkSheet.Cells[10, 35] = dg.Worker.Email;
-
-            xlWorkSheet.Cells[12, 4] = dg.Customer.CustomerWorker.mobilephone;
-            xlWorkSheet.Cells[12, 23] = dg.ValidationDay;
-            xlWorkSheet.Cells[12, 35] = dg.Worker.mobileNumber;
+            try { xlWorkSheet.Cells[12, 4] = dg.Customer.CustomerWorker.mobilephone; } catch { }
+            try { xlWorkSheet.Cells[12, 23] = dg.ValidationDay; } catch { }
+            try { xlWorkSheet.Cells[12, 35] = dg.Worker.mobileNumber; } catch { }
 
             foreach (var item in dg.QuotationDetails)
             {
-                xlWorkSheet.Cells[i, 1] = item.dgNo;
-                xlWorkSheet.Cells[i, 2] = item.ItemCode;
-                xlWorkSheet.Cells[i, 10] = item.CustomerDescription;
-                xlWorkSheet.Cells[i, 15] = item.MPN;
+                try { xlWorkSheet.Cells[i, 1] = item.dgNo; } catch { }
+                try { xlWorkSheet.Cells[i, 2] = item.ItemCode; } catch { }
+                try { xlWorkSheet.Cells[i, 10] = item.CustomerDescription; } catch { }
+                try { xlWorkSheet.Cells[i, 15] = item.MPN; } catch { }
                 //xlWorkSheet.Cells[i, 21] = item.Brand;
-                xlWorkSheet.Cells[i, 24] = item.SSM;
-                xlWorkSheet.Cells[i, 27] = item.Qty / item.SSM;
-                xlWorkSheet.Cells[i, 28] = item.Qty;
-                xlWorkSheet.Cells[i, 31] = item.UCUPCurr;
-                xlWorkSheet.Cells[i, 34] = item.Total;
-                xlWorkSheet.Cells[i, 38] = item.Quotation.DeliveryDate;
+                try { xlWorkSheet.Cells[i, 24] = item.SSM; } catch { }
+                try { xlWorkSheet.Cells[i, 27] = item.Qty / item.SSM; } catch { }
+                try { xlWorkSheet.Cells[i, 28] = item.Qty; } catch { }
+                try { xlWorkSheet.Cells[i, 31] = item.UCUPCurr; } catch { }
+                try { xlWorkSheet.Cells[i, 34] = item.Total; } catch { }
+                try { xlWorkSheet.Cells[i, 38] = item.Quotation.DeliveryDate; } catch { }
 
                 i = i + 1;
             }

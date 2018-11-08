@@ -2739,6 +2739,7 @@ namespace LoginForm.QuotationModule
                         {
                             q.ForFinancelIsTrue = 1;
                         }
+                        q.FirstNote = txtNoteForCustomer.Text;
                         q.DistributeDiscount = cbDeliverDiscount.Checked;
                         IME.SaveChanges();
 
@@ -2811,8 +2812,21 @@ namespace LoginForm.QuotationModule
 
                                 qd.quotationDeliveryID = (int)((DataGridViewComboBoxCell)dgQuotationAddedItems.Rows[i].Cells[dgDelivery.Index]).Value;
 
+                                if (qd.ItemCode.Contains("P") || qd.ItemCode.Count() == 10)
+                                {
+                                    qd.Status = "NCNR";
+                                }
+                                else if (dgQuotationAddedItems.Rows[i].Cells[dgHZ.Index].Value != null)
+                                {
+                                    qd.Status = "HS";
+                                }
+                                else
+                                {
+                                    qd.Status = "";
+                                }
                                 IME.QuotationDetails.Add(qd);
                                 IME.SaveChanges();
+                                
                             }
                         }
 
@@ -2919,7 +2933,7 @@ namespace LoginForm.QuotationModule
                     IME.SaveChanges();
                     Note1 = n.ID;
                 }
-                if (txtNoteForUs.Text != null || txtNoteForUs.Text != "")
+                if (txtNoteForCustomer.Text != null || txtNoteForCustomer.Text != "")
                 {
                     Note n1 = new Note();
                     n1.Note_name = txtNoteForCustomer.Text;
@@ -2931,6 +2945,7 @@ namespace LoginForm.QuotationModule
                 {
                     q.ForFinancelIsTrue = 1;
                 }
+                q.FirstNote = txtNoteForCustomer.Text;
                 q.DistributeDiscount = cbDeliverDiscount.Checked;
                 IME.SaveChanges();
                 #endregion
@@ -3179,6 +3194,19 @@ namespace LoginForm.QuotationModule
 
 
                     qd.quotationDeliveryID = (int)((DataGridViewComboBoxCell)dgQuotationAddedItems.Rows[i].Cells[dgDelivery.Index]).Value;
+
+                    if (qd.ItemCode.Contains("P") || qd.ItemCode.Count() == 10)
+                    {
+                        qd.Status = "NCNR";
+                    }
+                    else if (dgQuotationAddedItems.Rows[i].Cells[dgHZ.Index].Value != null)
+                    {
+                        qd.Status = "HS";
+                    }
+                    else
+                    {
+                        qd.Status = "";
+                    }
 
                     IME.QuotationDetails.Add(qd);
                     IME.SaveChanges();

@@ -1165,7 +1165,6 @@ namespace LoginForm.QuotationModule
             {
                 string QuotationNo = dgQuotation.CurrentRow.Cells["QuotationNo"].Value.ToString();
                 Quotation quo;
-
                 IMEEntities IME = new IMEEntities();
                 try
                 {
@@ -1178,7 +1177,14 @@ namespace LoginForm.QuotationModule
                 }
                 if (quo != null)
                 {
-                    QuotationExcelExport.QuotationMainPrintExport(quo);
+                    List <QuotationDetail> list = IME.QuotationDetails.Where(x => x.QuotationNo == QuotationNo).ToList();
+
+                    FormQuotationPrint form = new FormQuotationPrint();
+                    form.Print(quo, list);
+                    // form.ShowDialog();
+                    form.Close();
+
+                    //QuotationExcelExport.QuotationMainPrintExport(quo);
                     Utils.LogKayit("Quotation", "Quotation print");
                 }
             }
@@ -1376,7 +1382,13 @@ namespace LoginForm.QuotationModule
                 }
                 if (quo != null)
                 {
-                    QuotationExcelExport.QuotationMainPrintExport(quo);
+                    List<QuotationDetail> list = IME.QuotationDetails.Where(x => x.QuotationNo == QuotationNo).ToList();
+
+                    FormQuotationPrint form = new FormQuotationPrint();
+                    form.Print(quo, list);
+                    form.ShowDialog();
+                    //form.Close();
+                    //QuotationExcelExport.QuotationMainPrintExport(quo);
                     Utils.LogKayit("Quotation", "Quotation print");
                 }
             }
