@@ -152,12 +152,12 @@ namespace LoginForm
             this.xrLabel24 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel25 = new DevExpress.XtraReports.UI.XRLabel();
             this.formattingRule1 = new DevExpress.XtraReports.UI.FormattingRule();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.bindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.objectDataSource1 = new DevExpress.DataAccess.ObjectBinding.ObjectDataSource(this.components);
             this.xrLabel36 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel39 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel41 = new DevExpress.XtraReports.UI.XRLabel();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.bindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.objectDataSource1 = new DevExpress.DataAccess.ObjectBinding.ObjectDataSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.xrTable3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable4)).BeginInit();
@@ -600,7 +600,7 @@ namespace LoginForm
             this.xrLabel42.Multiline = true;
             this.xrLabel42.Name = "xrLabel42";
             this.xrLabel42.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
-            this.xrLabel42.SizeF = new System.Drawing.SizeF(227.5417F, 58.42004F);
+            this.xrLabel42.SizeF = new System.Drawing.SizeF(240.8219F, 58.42004F);
             this.xrLabel42.StylePriority.UseFont = false;
             this.xrLabel42.StylePriority.UsePadding = false;
             this.xrLabel42.StylePriority.UseTextAlignment = false;
@@ -610,7 +610,7 @@ namespace LoginForm
             // 
             this.xrLabel43.Dpi = 254F;
             this.xrLabel43.Font = new System.Drawing.Font("Arial Narrow", 8.25F);
-            this.xrLabel43.LocationFloat = new DevExpress.Utils.PointFloat(231.3635F, 522.97F);
+            this.xrLabel43.LocationFloat = new DevExpress.Utils.PointFloat(244.6437F, 522.97F);
             this.xrLabel43.Multiline = true;
             this.xrLabel43.Name = "xrLabel43";
             this.xrLabel43.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
@@ -1567,19 +1567,6 @@ namespace LoginForm
             // 
             this.formattingRule1.Name = "formattingRule1";
             // 
-            // bindingSource1
-            // 
-            this.bindingSource1.DataSource = typeof(LoginForm.DataSet.Quotation);
-            // 
-            // bindingSource2
-            // 
-            this.bindingSource2.DataSource = typeof(LoginForm.DataSet.QuotationDetail);
-            // 
-            // objectDataSource1
-            // 
-            this.objectDataSource1.DataSource = typeof(LoginForm.DataSet.QuotationDetail);
-            this.objectDataSource1.Name = "objectDataSource1";
-            // 
             // xrLabel36
             // 
             this.xrLabel36.Dpi = 254F;
@@ -1619,6 +1606,19 @@ namespace LoginForm
             this.xrLabel41.StylePriority.UsePadding = false;
             this.xrLabel41.StylePriority.UseTextAlignment = false;
             this.xrLabel41.Text = "or from the rs cd-rom thıs a rs offer";
+            // 
+            // bindingSource1
+            // 
+            this.bindingSource1.DataSource = typeof(LoginForm.DataSet.Quotation);
+            // 
+            // bindingSource2
+            // 
+            this.bindingSource2.DataSource = typeof(LoginForm.DataSet.QuotationDetail);
+            // 
+            // objectDataSource1
+            // 
+            this.objectDataSource1.DataSource = typeof(LoginForm.DataSet.QuotationDetail);
+            this.objectDataSource1.Name = "objectDataSource1";
             // 
             // ReportQuotation
             // 
