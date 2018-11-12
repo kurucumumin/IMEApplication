@@ -27,7 +27,7 @@ namespace LoginForm.QuotationModule
             {
                 p.Visible = false;
             }
-            report.InitData(qd.QuotationNo, qd.Customer.c_name, qd.MainContactName, qd.Customer.telephone, qd.CustomerWorker?.cw_email, qd.Customer?.fax, qd.RFQNo, qd.PaymentTerm?.term_name, qd.StartDate, qd.CustomerWorker?.cw_name, qd.CustomerWorker?.cw_email, qd.CustomerWorker?.phone,qd.SaleOrder?.PaymentMethod?.Payment, data);
+            report.InitData(qd.QuotationNo, qd.Customer.c_name, qd.MainContactName, qd.Customer.telephone, qd.CustomerWorker?.cw_email, qd.Customer?.fax, qd.RFQNo, Int32.Parse(qd.ValidationDay?.ToString()), qd.StartDate, qd.CustomerWorker?.cw_name, qd.CustomerWorker?.cw_email, qd.CustomerWorker?.phone, qd.PaymentTerm?.term_name, qd.FirstNote, data);
             documentViewer1.DocumentSource = report;
             report.CreateDocument();
             //report.ExportToPdf("C:\\Users\\pomak\\Desktop\\ReportQuotation.pdf");

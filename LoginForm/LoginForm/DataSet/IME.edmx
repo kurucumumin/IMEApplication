@@ -832,6 +832,7 @@
           <Property Name="MainContactName" Type="nvarchar" MaxLength="50" />
           <Property Name="TotalMargin" Type="decimal" Precision="5" Scale="2" />
           <Property Name="ViewQuotation" Type="bit" />
+          <Property Name="TotalWeight" Type="decimal" Precision="20" Scale="5" />
         </EntityType>
         <EntityType Name="QuotationDelivery">
           <Key>
@@ -5366,6 +5367,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="MainContactName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="TotalMargin" Type="Decimal" Precision="5" Scale="2" />
           <Property Name="ViewQuotation" Type="Boolean" />
+          <Property Name="TotalWeight" Type="Decimal" Precision="20" Scale="5" />
           <NavigationProperty Name="Currency" Relationship="Self.FK__Quotation__Curre__0A096455" FromRole="Quotation" ToRole="Currency" />
           <NavigationProperty Name="Customer" Relationship="Self.FK__Quotation__Custo__00750D23" FromRole="Quotation" ToRole="Customer" />
           <NavigationProperty Name="CustomerWorker" Relationship="Self.FK__Quotation__Quota__597119F2" FromRole="Quotation" ToRole="CustomerWorker" />
@@ -10549,6 +10551,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="MainContactName" ColumnName="MainContactName" />
                 <ScalarProperty Name="TotalMargin" ColumnName="TotalMargin" />
                 <ScalarProperty Name="ViewQuotation" ColumnName="ViewQuotation" />
+                <ScalarProperty Name="TotalWeight" ColumnName="TotalWeight" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

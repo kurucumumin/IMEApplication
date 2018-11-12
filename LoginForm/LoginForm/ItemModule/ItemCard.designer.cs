@@ -281,9 +281,9 @@ namespace LoginForm.ItemModule
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(18, 165);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(67, 17);
+            this.label8.Size = new System.Drawing.Size(55, 17);
             this.label8.TabIndex = 291;
-            this.label8.Text = "Gross Wt";
+            this.label8.Text = "Volume";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label12
