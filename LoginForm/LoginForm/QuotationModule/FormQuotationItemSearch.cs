@@ -100,24 +100,32 @@ namespace LoginForm.QuotationModule
             {
                 if (dgQuotationItemSearch.CurrentRow.Cells[1].Value.ToString() != "")
                 {
-                    QuotationUtils.ItemCode = dgQuotationItemSearch.CurrentRow.Cells["Article_No"].Value.ToString();
-                    ItemCode = dgQuotationItemSearch.CurrentRow.Cells["Article_No"].Value.ToString();
-                    itemProps[0] = dgQuotationItemSearch.CurrentRow.Cells["Article_No"].Value.ToString();
-                    itemProps[1] = dgQuotationItemSearch.CurrentRow.Cells["Article_Desc"].Value.ToString();
-                    this.DialogResult = DialogResult.OK;
-
-                    //var MPNItemList = IME.ArticleSearchwithMPN(dgQuotationItemSearch.CurrentRow.Cells[7].Value.ToString()).ToList();
                     string mpn = dgQuotationItemSearch.CurrentRow.Cells["MPN"].Value.ToString();
-                    var MPNItemList = IME.CompleteItems.Where(x => x.MPN == mpn).ToList();
-                    if (MPNItemList.Count > 1)
+                    if (dgQuotationItemSearch.CurrentRow.Cells["Heigh"].Value == null)
                     {
-                        FormQuotationMPN form = new FormQuotationMPN(this, MPNItemList);
-                        form.ShowDialog();
+                        MessageBox.Show("Selected item has no height value");
+                    }
+                    else
+                    {
+                        QuotationUtils.ItemCode = dgQuotationItemSearch.CurrentRow.Cells["Article_No"].Value.ToString();
+                        ItemCode = dgQuotationItemSearch.CurrentRow.Cells["Article_No"].Value.ToString();
+                        itemProps[0] = dgQuotationItemSearch.CurrentRow.Cells["Article_No"].Value.ToString();
+                        itemProps[1] = dgQuotationItemSearch.CurrentRow.Cells["Article_Desc"].Value.ToString();
+                        this.DialogResult = DialogResult.OK;
+
+                        //var MPNItemList = IME.ArticleSearchwithMPN(dgQuotationItemSearch.CurrentRow.Cells[7].Value.ToString()).ToList();
+                        var MPNItemList = IME.CompleteItems.Where(x => x.MPN == mpn).ToList();
+                        if (MPNItemList.Count > 1)
+                        {
+                            FormQuotationMPN form = new FormQuotationMPN(this, MPNItemList);
+                            form.ShowDialog();
+                        }
+                        this.Close();
                     }
                 }
             }
-            //classQuotationAdd.ItemCode = dgQuotationItemSearch.Rows[dgQuotationItemSearch.CurrentCell.RowIndex].Cells["Article_No"].Value.ToString();
-            this.Close();
+
+         
         }
 
         private void txtQuotationItemCode_KeyDown(object sender, KeyEventArgs e)
