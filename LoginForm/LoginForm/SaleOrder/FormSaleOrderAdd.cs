@@ -103,112 +103,6 @@ namespace LoginForm.QuotationModule
 
             LowMarginLimit = (Decimal)Utils.getManagement().LowMarginLimit;
 
-            #region ModifyQuotation
-            //txtSalesOrderNo.Text = sale.SaleOrderNo.ToString();
-            //sO = Convert.ToInt32(txtSalesOrderNo.Text);
-            //txtQuotationNo.Text = sale.QuotationNos;
-            //txtLPONO.Text = sale.LPONO;
-            //CustomerCode.Text = sale.CustomerID;
-            //txtCustomerName.Text = sale.Customer.c_name;
-            //txtFactor.Text = Utils.getManagement().Factor.ToString();
-            //fillCustomer();
-            ////cbCurrencySelected("Sale");
-            //foreach (var item in sale.SaleOrderDetails)
-            //{
-            //    if (item.IsDeleted == true)
-            //    {
-            //        DataGridViewRow row = (DataGridViewRow)dgSaleDeleted.Rows[0].Clone();
-            //        //row.CreateCells(dgSaleDeleted);
-            //        row.Cells[0].Value = (int)item.No;
-            //        row.Cells[dgProductCode1.Index].Value = item.ItemCode;
-            //        row.Cells[dgQty1.Index].Value = item.Quantity;
-            //        row.Cells[dgSSM1.Index].Value = item.SSM;
-            //        row.Cells[dgUC1.Index].Value = item.UnitContent;
-            //        row.Cells[dgUPIME1.Index].Value = item.UPIME;
-            //        row.Cells[dgUCUPCurr1.Index].Value = item.UCUPCurr;
-            //        row.Cells[dgDelivery1.Index].Value = item.DeliveryID;
-            //        row.Cells[dgDisc1.Index].Value = item.Discount;
-            //        row.Cells[dgTotal1.Index].Value = item.Total;
-            //        row.Cells[dgTargetUP1.Index].Value = item.TargetUP;
-            //        row.Cells[dgCompetitor1.Index].Value = item.Competitor;
-            //        row.Cells[dgUnitWeight1.Index].Value = item.UnitWeight;
-            //        row.Cells[dgTotalWeight1.Index].Value = item.UnitWeight * item.Quantity;
-            //        row.Cells[dgCustomerStokCode1.Index].Value = item.CustomerStockCode;
-            //        dgSaleDeleted.Rows.Add(row);
-            //    }
-            //    else
-            //    {
-            //        DataGridViewRow row = (DataGridViewRow)dgSaleAddedItems.RowTemplate.Clone();
-            //        row.CreateCells(dgSaleAddedItems);
-            //        row.Cells[dgNo.Index].Value = (int)item.No;
-            //        row.Cells[dgProductCode.Index].Value = item.ItemCode;
-            //        row.Cells[dgDesc.Index].Value = item.ItemDescription;
-            //        row.Cells[dgCost.Index].Value = item.ItemCost;
-            //        row.Cells[dgLandingCost.Index].Value = item.LandingCost;
-            //        row.Cells[dgMargin.Index].Value = item.Margin;
-            //        row.Cells[dgQty.Index].Value = item.Quantity;
-            //        row.Cells[dgSSM.Index].Value = item.SSM;
-            //        row.Cells[dgUC.Index].Value = item.UnitContent;
-            //        row.Cells[dgUPIME.Index].Value = item.UPIME;
-            //        row.Cells[dgMPN.Index].Value = item.MPN;
-            //        row.Cells[dgUCUPCurr.Index].Value = item.UCUPCurr;
-            //        row.Cells[dgDelivery.Index].Value = item.DeliveryID;
-            //        row.Cells[dgDisc.Index].Value = item.Discount;
-            //        row.Cells[dgTotal.Index].Value = item.Total;
-            //        row.Cells[dgTargetUP.Index].Value = item.TargetUP;
-            //        row.Cells[dgCompetitor.Index].Value = item.Competitor;
-            //        row.Cells[dgUnitWeigt.Index].Value = item.UnitWeight;
-            //        row.Cells[dgTotalWeight.Index].Value = item.UnitWeight * item.Quantity;
-            //        row.Cells[dgCustStkCode.Index].Value = item.CustomerStockCode;
-            //        dgSaleAddedItems.Rows.Add(row);
-            //    }
-            //}
-            //for (int i = 0; i < dgSaleAddedItems.RowCount; i++)
-            //{
-
-            //    GetLandingCost(i);
-            //    dgSaleAddedItems.CurrentCell = dgSaleAddedItems.Rows[i].Cells[0];
-            //    //GetQuotationQuantity(i);
-
-            //}
-            //// GetMargin();
-
-            //if (sale.DistributeDiscount == true)
-            //{
-            //    cbDeliverDiscount.Checked = true;
-            //}
-
-            //lblsubtotal.Text = sale.SubTotal.ToString();
-            //txtTotalDis.Text = sale.DiscOnSubtotal.ToString();
-            //if (txtTotalDis2.Text == null || txtTotalDis2.Text == "") txtTotalDis2.Text = "0";
-            //if (sale.DistributeDiscount == true)
-            //{
-            //    //txtTotalDis.Text = Math.Round((Decimal.Parse(txtTotalDis2.Text) * 100) / (decimal.Parse(lblsubtotal.Text) + Decimal.Parse(txtTotalDis2.Text)), 4).ToString();
-            //    decimal dis2 = Decimal.Parse(lblsubtotal.Text) * Decimal.Parse(txtTotalDis.Text) / 100;
-            //    txtTotalDis2.Text = Math.Round(dis2, 3).ToString();
-
-            //}
-            //else
-            //{
-            //    // txtTotalDis.Text = Math.Round((Decimal.Parse(txtTotalDis2.Text) * 100) / decimal.Parse(lblsubtotal.Text), 4).ToString();
-            //    decimal dis2 = Decimal.Parse(lblsubtotal.Text) * Decimal.Parse(txtTotalDis.Text) / 100;
-            //    txtTotalDis2.Text = Math.Round(dis2, 3).ToString();
-            //}
-            //lbltotal.Text = (sale.DistributeDiscount == false) ? (Decimal.Parse(lblsubtotal.Text) - decimal.Parse(txtTotalDis2.Text)).ToString() : lblsubtotal.Text;
-            //txtExtraCharges.Text = sale.ExtraCharges.ToString();
-
-            //{ chkVat.Checked = true; }
-            //try
-            //{
-            //    if (dgSaleAddedItems.RowCount > 1)
-            //    {
-            //        dgSaleAddedItems.Rows[dgSaleAddedItems.RowCount - 1].Cells[0].Value = (Int32.Parse(dgSaleAddedItems.Rows[dgSaleAddedItems.RowCount - 2].Cells[0].Value.ToString()) + 1).ToString();
-            //    }
-            //    else { dgSaleAddedItems.Rows[0].Cells[0].Value = 1.ToString(); }
-            //}
-            //catch { }
-            #endregion
-
             importFromQuotation = 0;
             SaleOrderMode(sale);
 
@@ -264,8 +158,6 @@ namespace LoginForm.QuotationModule
 
             dgSaleAddedItems.Focus();
             dgSaleAddedItems.CurrentCell = dgSaleAddedItems.CurrentRow.Cells[dgProductCode.Index];
-
-            txtTotalMarge.Visible = false;
 
         }
 
@@ -834,7 +726,7 @@ namespace LoginForm.QuotationModule
         private void GetAutorities()
         {
             if (GetUserAutorities(1020)) { VisibleCostMarginTrue(); }
-            if (GetUserAutorities(1021)) { txtTotalMarge.Visible = false; cbDeliverDiscount.Visible = true; }
+            if (GetUserAutorities(1021)) { cbDeliverDiscount.Visible = true; }
         }
 
       
@@ -972,6 +864,22 @@ namespace LoginForm.QuotationModule
                 this.Close();
 
             }
+        }
+
+        private void CalculateTotalWeight()
+        {
+            decimal totalweight = 0;
+            foreach (DataGridViewRow item in dgSaleAddedItems.Rows)
+            {
+                decimal rowTotal = 0;
+                try
+                {
+                    rowTotal = decimal.Parse(item.Cells[dgTotalWeight.Index].Value.ToString());
+                }
+                catch { }
+                totalweight += rowTotal;
+            }
+            lblTotalWeight.Text = Math.Round(totalweight, 4).ToString();
         }
 
         private void dgSaleAddedItems_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -1158,6 +1066,11 @@ namespace LoginForm.QuotationModule
                 case 15://QAUANTITY
                     DgQuantityFiller();
                     calculateTotalCost();
+                    if (CurrentRow.Cells["dgQty"].Value != null && CurrentRow.Cells["dgQty"].Value.ToString() != "")
+                    {
+                        CurrentRow.Cells["dgTotalWeight"].Value = (Decimal.Parse(CurrentRow.Cells["dgUnitWeigt"].Value.ToString()) * Int32.Parse(CurrentRow.Cells["dgQty"].Value.ToString())).ToString();
+                        CalculateTotalWeight();
+                    }
                     break;
                 case 22://UCUP Curr
                     {
@@ -1278,266 +1191,6 @@ namespace LoginForm.QuotationModule
             }
             #endregion
         }
-        //private void cellEndEdit()
-        //{
-        //    #region MyRegion
-        //    switch (dgSaleAddedItems.CurrentCell.ColumnIndex)
-        //    {
-        //        case 0:
-        //            #region ID Atama
-        //            if (Int32.Parse(dgSaleAddedItems.CurrentCell.Value.ToString()) <= Int32.Parse(dgSaleAddedItems.CurrentRow.Cells[dgNo.Index].Value.ToString()))
-        //            {
-        //                int currentID = dgSaleAddedItems.CurrentCell.RowIndex;
-        //                List<int> Quotation = new List<int>();
-        //                for (int i = 0; i < dgSaleAddedItems.RowCount; i++)
-        //                {
-        //                    Quotation.Add(Int32.Parse(dgSaleAddedItems.Rows[i].Cells[dgNo.Index].Value.ToString()));
-        //                }
-        //                for (int i = 0; i < dgSaleAddedItems.RowCount; i++)
-        //                {
-        //                    if (dgSaleAddedItems.CurrentCell.RowIndex < Int32.Parse(dgSaleAddedItems.CurrentCell.Value.ToString()))
-        //                    {
-        //                        #region RowChange1
-        //                        //Üstteki bir row u aşşağıya getirmek için
-        //                        if (Int32.Parse(dgSaleAddedItems.Rows[i].Cells[0].Value.ToString()) <= Int32.Parse(dgSaleAddedItems.CurrentCell.Value.ToString()) && currentID != i && dgSaleAddedItems.CurrentCell.RowIndex < i)
-        //                        {
-        //                            if (i <= Quotation.Count)
-        //                            {
-        //                                dgSaleAddedItems.Rows[i].Cells[0].Value = (i);
-        //                            }
-        //                        }
-        //                        else { dgSaleAddedItems.Rows[i].Cells[0].Value = Int32.Parse(dgSaleAddedItems.Rows[i].Cells[0].Value.ToString()); }
-        //                        #endregion
-        //                    }
-        //                    else
-        //                    {
-        //                        #region RowChange2
-        //                        //Üstteki bir row u aşşağıya getirmek için
-        //                        if (Int32.Parse(dgSaleAddedItems.Rows[i].Cells[0].Value.ToString()) >= Int32.Parse(dgSaleAddedItems.CurrentCell.Value.ToString()) && currentID != i && dgSaleAddedItems.CurrentCell.RowIndex > i)
-        //                        {
-        //                            if (i <= Quotation.Count)
-        //                            {
-        //                                dgSaleAddedItems.Rows[i].Cells[0].Value = (i + 2);
-        //                            }
-
-        //                        }
-        //                        else { dgSaleAddedItems.Rows[i].Cells[0].Value = Int32.Parse(dgSaleAddedItems.Rows[i].Cells[0].Value.ToString()); }
-        //                        #endregion
-        //                    }
-
-        //                }
-        //            }
-        //            #endregion
-
-        //            dgSaleAddedItems.Sort(dgSaleAddedItems.Columns[dgNo.Index], ListSortDirection.Ascending);
-        //            break;
-        //        case 7://PRODUCT CODE
-        //            {
-        //                #region MyRegion
-        //                ItemDetailsClear();
-        //                string articleNo = "";
-        //                int satir_sayisi = dgSaleAddedItems.RowCount;
-        //                if (!String.IsNullOrEmpty(dgSaleAddedItems.Rows[satir_sayisi - 1].Cells[dgProductCode.Index].Value.ToString()))
-        //                {
-        //                    articleNo = dgSaleAddedItems.CurrentCell.Value.ToString();
-        //                    if (articleNo.Contains("-"))
-        //                    {
-        //                        articleNo = articleNo.Replace("-", "");
-        //                        dgSaleAddedItems.CurrentCell.Value = articleNo;
-        //                    }
-        //                    if (articleNo.Length == 6)
-        //                    {
-        //                        articleNo = "0" + articleNo;
-        //                        dgSaleAddedItems.CurrentCell.Value = articleNo;
-        //                    }
-
-        //                    #region Eski
-        //                    //var articleList = IME.ArticleSearch(articleNo).ToList();
-        //                    //if (articleList.Count == 1)
-        //                    //{
-        //                    //    if (!Discontinued(articleNo))
-        //                    //    {
-        //                    //        ItemDetailsFiller(articleNo);//tekrar bakılacak
-        //                    //        FillProductCodeItem();
-        //                    //    }
-        //                    //    else
-        //                    //    {
-        //                    //        MessageBox.Show("This Item is Discontinued");
-        //                    //    }
-
-        //                    //}
-        //                    //else if (articleList.Count > 1)
-        //                    //{
-        //                    //    FormQuotationItemSearch itemsearch = new FormQuotationItemSearch(articleNo);
-        //                    //    itemsearch.ShowDialog();
-        //                    //    articleNo = QuotationUtils.ItemCode;
-        //                    //    dgSaleAddedItems.CurrentCell.Value = articleNo;
-        //                    //    ItemDetailsFiller(articleNo);//tekrar bakılacak
-        //                    //    FillProductCodeItem();
-
-        //                    //}
-        //                    //else
-        //                    //{
-        //                    //    MessageBox.Show("There is no such an Item");
-        //                    //}
-        //                    //if (dgSaleAddedItems.CurrentRow.Cells["dgDesc"].Value != null) ChangeCurrnetCell(dgSaleAddedItems.CurrentCell.ColumnIndex + 1);
-        //                    #endregion
-        //                    var articleList = IME.ArticleSearch(articleNo).ToList();
-        //                    if (articleList.Count == 1)
-        //                    {
-        //                        if (dgSaleAddedItems.CurrentRow.Cells[dgProductCode.Index].Value != null && dgSaleAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString() != "" && dgSaleAddedItems.CurrentRow.Cells[dgDesc.Index].Value != null && dgSaleAddedItems.CurrentRow.Cells[dgDesc.Index].Value.ToString() != "")
-        //                        {
-        //                            DataGridViewRow rowsss = (DataGridViewRow)dgSaleAddedItems.CurrentRow;
-        //                            for (int i = 11; i < rowsss.Cells.Count; i++)
-        //                            {
-        //                                rowsss.Cells[i].Value = "";
-        //                            }
-        //                        }
-        //                        if (!Discontinued(articleNo))
-        //                        {
-        //                            List<string> SameItemIndexList = new List<string>();
-        //                            string _IndexList = string.Empty;
-        //                            for (int i = 0; i < dgSaleAddedItems.RowCount - 1; i++)
-        //                            {
-        //                                if (dgSaleAddedItems.Rows[i].Cells[dgProductCode.Index].Value.ToString() == articleNo &&
-        //                                    dgSaleAddedItems.CurrentRow.Cells[dgQty.Index].Value == null)
-        //                                {
-        //                                    SameItemIndexList.Add(dgSaleAddedItems.Rows[i].Cells[dgNo.Index].Value.ToString());
-        //                                }
-        //                            }
-        //                            if (SameItemIndexList != null && SameItemIndexList.Count > 0)
-        //                            {
-        //                                foreach (string item in SameItemIndexList)
-        //                                {
-        //                                    _IndexList = _IndexList + item + ", ";
-        //                                }
-
-        //                                MessageBox.Show("This item is already added in row(s): " + _IndexList);
-        //                            }
-        //                            tabControl1.SelectedTab = tabItemDetails;
-        //                            dgSaleAddedItems.Focus();
-        //                            ItemDetailsFiller(articleNo);//tekrar bakılacak
-        //                            FillProductCodeItem();
-        //                        }
-        //                        else
-        //                        {
-        //                            MessageBox.Show("This Item is Discontinued");
-        //                        }
-
-        //                    }
-        //                    else if (articleList.Count > 1)
-        //                    {
-        //                        if (dgSaleAddedItems.CurrentRow.Cells[dgProductCode.Index].Value != null && dgSaleAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString() != "" && dgSaleAddedItems.CurrentRow.Cells[dgDesc.Index].Value != null && dgSaleAddedItems.CurrentRow.Cells[dgDesc.Index].Value.ToString() != "")
-        //                        {
-        //                            DataGridViewRow rowsss = (DataGridViewRow)dgSaleAddedItems.CurrentRow;
-        //                            for (int i = 11; i < rowsss.Cells.Count; i++)
-        //                            {
-        //                                rowsss.Cells[i].Value = "";
-        //                            }
-        //                        }
-
-        //                        FormQuotationItemSearch itemsearch = new FormQuotationItemSearch(articleNo);
-        //                        itemsearch.ShowDialog();
-        //                        articleNo = QuotationUtils.ItemCode;
-        //                        List<string> SameItemIndexList2 = new List<string>();
-        //                        string _IndexList2 = string.Empty;
-        //                        for (int i = 0; i < dgSaleAddedItems.RowCount - 1; i++)
-        //                        {
-        //                            if (dgSaleAddedItems.Rows[i].Cells[dgProductCode.Index].Value.ToString() == articleNo &&
-        //                                dgSaleAddedItems.CurrentRow.Cells[dgQty.Index].Value == null)
-        //                            {
-        //                                SameItemIndexList2.Add(dgSaleAddedItems.Rows[i].Cells[dgNo.Index].Value.ToString());
-        //                            }
-        //                        }
-        //                        if (SameItemIndexList2 != null && SameItemIndexList2.Count > 0)
-        //                        {
-        //                            foreach (string item in SameItemIndexList2)
-        //                            {
-        //                                _IndexList2 = _IndexList2 + item + ", ";
-        //                            }
-
-        //                            MessageBox.Show("This item is already added in row(s): " + _IndexList2);
-        //                        }
-        //                        tabControl1.SelectedTab = tabItemDetails;
-        //                        dgSaleAddedItems.Focus();
-        //                        dgSaleAddedItems.CurrentCell.Value = articleNo;
-        //                        ItemDetailsFiller(articleNo);//tekrar bakılacak
-        //                        FillProductCodeItem();
-        //                    }
-        //                    else
-        //                    {
-        //                        MessageBox.Show("Item is not in our range");
-        //                        ItemsClear();
-        //                        dgSaleAddedItems.CurrentCell = dgSaleAddedItems.CurrentRow.Cells[dgProductCode.Index];
-        //                    }
-        //                }
-        //                else
-        //                {
-        //                    //MessageBox.Show("Product Code empty");
-        //                }
-        //            }
-        //            #endregion
-        //            break;
-        //        case 14://QAUANTITY
-        //            DgQuantityFiller();
-        //            calculateTotalCost();
-        //            break;
-
-        //        case 21://Total
-        //            {
-        //                #region UCUP CURR
-        //                //TO DO depends on authority
-        //                //if (dgSaleAddedItems.CurrentRow.Cells[dgHZ.Index].Style.BackColor == Color.White)
-        //                CurrentRow = dgSaleAddedItems.CurrentRow;
-        //                if (txtHazardousInd.Text == "N")
-        //                {
-        //                    #region Total
-        //                    decimal total = decimal.Parse(CurrentRow.Cells["dgUCUPCurr"].Value.ToString());
-        //                    decimal UcupIME = decimal.Parse(CurrentRow.Cells["dgUPIME"].Value.ToString());
-        //                    decimal disc = Math.Round(((UcupIME - total) * (decimal)100 / UcupIME), 4);
-        //                    int workerID = Utils.getCurrentUser().WorkerID;
-        //                    decimal Minmarge = (decimal)IME.Workers.Where(x => x.WorkerID == workerID).FirstOrDefault().MinMarge;
-        //                    if (disc > Minmarge)
-        //                    {
-        //                        MessageBox.Show("Low Price ! Ask for authorization");
-        //                        dgSaleAddedItems.CurrentCell = dgSaleAddedItems.CurrentRow.Cells[dgUCUPCurr.Index];
-        //                        CurrentRow.Cells["dgUCUPCurr"].Value = UcupIME;
-        //                        CurrentRow.Cells["dgDisc"].Value = 0;
-        //                    }
-        //                    else
-        //                    {
-        //                        CurrentRow.Cells["dgDisc"].Value = disc;
-        //                    }
-
-
-        //                    GetMargin();
-        //                    GetMarginMark();
-        //                    #region Calculate Total Margin
-        //                    try
-        //                    {
-        //                        txtTotalMargin.Text = Math.Round(calculateTotalMargin(), 4).ToString();
-        //                    }
-        //                    catch (Exception ex)
-        //                    {
-        //                        txtTotalMargin.Text = Math.Round(calculateTotalMargin(), 4).ToString();
-        //                    }
-
-        //                    #endregion
-        //                    CalculateSubTotal();
-
-        //                    #endregion
-        //                }
-        //                else if (txtHazardousInd.Text == "Y")
-        //                {
-        //                    dgSaleAddedItems.CurrentRow.Cells[dgUCUPCurr.Index].Value = dgSaleAddedItems.CurrentRow.Cells[dgUPIME.Index].Value.ToString();
-        //                    MessageBox.Show("Hazardous Item - Discount not allowed");
-        //                }
-        //            }
-        //            #endregion
-        //            break;
-        //    }
-        //    #endregion
-        //}
 
         private void ItemsClear()
         {
@@ -1739,7 +1392,7 @@ namespace LoginForm.QuotationModule
                                 //Change lblsubtotal
 
                                 CalculateSubTotal();
-
+                                CalculateTotalWeight();
                                 //ChangeCurr(rowindex);
                                 GetLandingCost(CurrentRow.Index);
                                 if (dgSaleAddedItems.CurrentCell == null) dgSaleAddedItems.CurrentCell = CurrentRow.Cells[0];
@@ -1750,11 +1403,11 @@ namespace LoginForm.QuotationModule
                                     CurrentRow.Cells["dgTotalWeight"].Value = (Decimal.Parse(CurrentRow.Cells["dgUnitWeigt"].Value.ToString()) * Int32.Parse(CurrentRow.Cells["dgQty"].Value.ToString())).ToString();
                                     if (Int32.Parse(CurrentRow.Cells["dgSSM"].Value.ToString()) > 1)
                                     {
-                                        CurrentRow.Cells["dgTotalWeight"].Value = (decimal.Parse(CurrentRow.Cells["dgTotalWeight"].Value.ToString()) / Int32.Parse(CurrentRow.Cells["dgSSM"].Value.ToString())).ToString();
+                                        CurrentRow.Cells["dgTotalWeight"].Value = (decimal.Parse(CurrentRow.Cells["dgUnitWeigt"].Value.ToString()) * Int32.Parse(CurrentRow.Cells["dgQty"].Value.ToString())).ToString();
                                     }
                                     else if (Int32.Parse(CurrentRow.Cells["dgUC"].Value.ToString()) > 1)
                                     {
-                                        CurrentRow.Cells["dgTotalWeight"].Value = (decimal.Parse(CurrentRow.Cells["dgTotalWeight"].Value.ToString()) / Int32.Parse(CurrentRow.Cells["dgUC"].Value.ToString())).ToString();
+                                        CurrentRow.Cells["dgTotalWeight"].Value = (decimal.Parse(CurrentRow.Cells["dgUnitWeigt"].Value.ToString()) * Int32.Parse(CurrentRow.Cells["dgQty"].Value.ToString())).ToString();
 
                                     }
                                 }
@@ -1777,6 +1430,7 @@ namespace LoginForm.QuotationModule
 
                         #endregion
                         CalculateSubTotal();
+                        CalculateTotalWeight();
                     }
                     else
                     {
@@ -2764,7 +2418,7 @@ namespace LoginForm.QuotationModule
                                 }
                                 if (row.Cells[dgUC.Index].Value != null) sdi.UnitContent = Int32.Parse(row.Cells[dgUC.Index].Value?.ToString());
                                 if (row.Cells[dgSSM.Index].Value != null) sdi.SSM = Int32.Parse(row.Cells[dgSSM.Index].Value?.ToString());
-                                if (row.Cells[dgUnitWeigt.Index].Value != null) sdi.UnitWeight = Decimal.Parse(row.Cells[dgUnitWeigt.Index].Value?.ToString());
+                                if (row.Cells[dgUnitWeigt.Index].Value != null) try { sdi.UnitWeight = Decimal.Parse(row.Cells["dgUnitWeigt"].Value?.ToString()); } catch { }
                                 if (row.Cells[dgDependantTable.Index].Value != null) sdi.DependantTable = row.Cells[dgDependantTable.Index].Value?.ToString();
                                 if (row.Cells[dgHZ.Index].Value != null)
                                 {
@@ -3948,7 +3602,7 @@ namespace LoginForm.QuotationModule
                         lbltotal.Text = Math.Round((Decimal.Parse(lblsubtotal.Text) - decimal.Parse(txtTotalDis2.Text)), 4).ToString();
                     }
                 }
-                if (txtTotalMarge.Visible == false)
+                if (txtTotalMargin.Visible == false)
                 {
                     CalculateTotalMarge();
                 }
@@ -4010,14 +3664,7 @@ namespace LoginForm.QuotationModule
                     }
                 }
                 if (lblsubtotal.Text != null && lblsubtotal.Text != "" && AllMargin != 0) AllMargin = AllMargin / decimal.Parse(lblsubtotal.Text);
-                if (AllMargin != 0)
-                {
-                    txtTotalMarge.Text = Math.Round(AllMargin, 3).ToString();
-                }
-                else
-                {
-                    txtTotalMarge.Text = (0.00).ToString();
-                }
+                
             }
         }
         //private decimal calculateTotalMargin()
@@ -5120,7 +4767,7 @@ namespace LoginForm.QuotationModule
                     }
                     if (row.Cells[dgUC.Index].Value != null) sdi.UnitContent = Int32.Parse(row.Cells[dgUC.Index].Value?.ToString());
                     if (row.Cells[dgSSM.Index].Value != null) sdi.SSM = Int32.Parse(row.Cells[dgSSM.Index].Value?.ToString());
-                    if (row.Cells[dgUnitWeigt.Index].Value != null) sdi.UnitWeight = Decimal.Parse(row.Cells[dgUnitWeigt.Index].Value?.ToString());
+                    if (row.Cells[dgUnitWeigt.Index].Value != null) try { sdi.UnitWeight = Decimal.Parse(row.Cells["dgUnitWeigt"].Value?.ToString()); } catch { }
                     if (row.Cells[dgDependantTable.Index].Value != null) sdi.DependantTable = row.Cells[dgDependantTable.Index].Value?.ToString();
                     if (row.Cells[dgHZ.Index].Value != null)
                     {
@@ -5359,7 +5006,7 @@ namespace LoginForm.QuotationModule
             }
             if (!Utils.AuthorityCheck(IMEAuthority.ViewTotalMargine))
             {
-                txtTotalMarge.Visible = false;
+                txtTotalMargin.Visible = false;
             }
 
             if (!Utils.AuthorityCheck(IMEAuthority.ViewDiscount))
@@ -5655,15 +5302,7 @@ namespace LoginForm.QuotationModule
             //if (q.IsCustomsDuties == 1) { ckCustomsDuties.Checked = true; } else { ckCustomsDuties.Checked = false; }
             //Buraya Curr verileri gelecek
             #endregion
-            try
-            {
-                //if (dgSaleAddedItems.RowCount > 1)
-                //{
-                //    dgSaleAddedItems.Rows[dgSaleAddedItems.RowCount - 1].Cells[dgNo.Index].Value = (decimal.Parse(dgSaleAddedItems.Rows[dgSaleAddedItems.RowCount - 2].Cells[dgNo.Index].Value.ToString()) + 1).ToString();
-                //}
-                //else { dgSaleAddedItems.Rows[0].Cells[dgNo.Index].Value = 1.ToString(); }
-            }
-            catch { }
+          
         }
 
         private void dgSaleAddedItems_CellClick(object sender, DataGridViewCellEventArgs e)

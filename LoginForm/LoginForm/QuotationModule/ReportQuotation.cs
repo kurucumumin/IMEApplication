@@ -7,40 +7,20 @@ using LoginForm.DataSet;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Data;
+using DevExpress.XtraPrinting;
+using System.Globalization;
 
 namespace LoginForm
 {
     public partial class ReportQuotation : DevExpress.XtraReports.UI.XtraReport
     {
+       
+        PdfExportOptions options = new PdfExportOptions();
+        CultureInfo culture = new CultureInfo("en-US", true);
         public ReportQuotation()
         {
             InitializeComponent();
         }
-
-        //static DataTable ConvertListToDataTable(List<QuotationDetail> list)
-        //{
-        //    // New table.
-        //    DataTable table = new DataTable();
-
-        //    // Get max columns.
-        //    int columns = 0;
-            
-
-        //    // Add columns.
-        //    for (int i = 0; i < columns; i++)
-        //    {
-        //        table.Columns.Add();
-        //    }
-
-        //    // Add rows.
-        //    foreach (var array in list)
-        //    {
-        //        table.Rows.Add(array);
-        //    }
-
-        //    return table;
-        //}
-
 
         public DataTable ConvertToDataTable<T>(IList<T> data)
         {
@@ -60,13 +40,19 @@ namespace LoginForm
 
         }
 
-        public void InitData(string quotationNo,string customerName, string mainContact, string cTel, string cEmail, string fax, string rFQNo, int validaty, DateTime date, string represantative, string mail, string tel,string payment, string note, List<QuotationDetail> data)
+        public void InitData(string quotationNo,string customerName, string mainContact, string cTel, string cweb, string fax, string rFQNo, int validaty, DateTime date, string represantative, string mail, string tel,string payment, string note, string currencySymbol, string currencyName, List<QuotationDetail> data)
         {
+            DataTable table = ConvertToDataTable<QuotationDetail>(data);
+
+            culture.NumberFormat.CurrencySymbol = currencySymbol;
+            System.Threading.Thread.CurrentThread.CurrentCulture = culture;
+            DevExpress.Utils.FormatInfo.AlwaysUseThreadFormat = true;
+
             pQutationNo.Value = quotationNo;
             pCustomerName.Value = customerName;
             pMainContact.Value = mainContact;
             pTelephone.Value = cTel;
-            pCustomerEmail.Value = cEmail;
+            pCustomerWeb.Value = cweb;
             pFax.Value = fax;
             pRfqNo.Value = rFQNo;
             pValidity.Value = validaty;
@@ -76,11 +62,26 @@ namespace LoginForm
             pContactTel.Value = tel;
             pPayment.Value = payment;
             pNote.Value = note;
+
+            if (currencyName == "Pound")
+            {
+                currencyName = "Sterling " + currencyName;
+                pCurrencyName.Value = currencyName;
+            }
+            else if (currencyName == "Dollar")
+            {
+                currencyName = "US " + currencyName;
+                pCurrencyName.Value = currencyName;
+            }
+            else
+            {
+                pCurrencyName.Value = currencyName;
+            }
+
             if (pNote.Value.ToString() == "")
             {
                 xrLabel32.Visible = false;
             }
-            DataTable table = ConvertToDataTable<QuotationDetail>(data);
 
             foreach (QuotationDetail array in data)
             {
@@ -90,7 +91,7 @@ namespace LoginForm
                     {
                         array.UnitOfMeasure = "EACH " + array.SSM * array.UC;
                     }
-                    else if (array.UC > 1)
+                    else
                     {
                         array.UnitOfMeasure = "PACKET OF " + array.SSM * array.UC;
                     }
@@ -147,17 +148,21 @@ namespace LoginForm
                 {
                     array.UnitOfMeasure = "TUBE OF " + array.SSM * array.UC;
                 }
-                array.TargetUP = array.Qty / array.SSM;
+                else if (array.UnitOfMeasure == "PACKET OF")
+                {
+                    array.UnitOfMeasure = "PACKET OF " + array.SSM * array.UC;
+                }
+                array.TargetUP = array.Qty / (array.SSM * array.UC);
             }
 
+            xrTableCell25.DataBindings["Text"].FormatString = "{0:"+currencySymbol+ "  0.00}";
+            xrTableCell26.DataBindings["Text"].FormatString = "{0:"+currencySymbol+ "  0.00}";
+            xrTableCell30.DataBindings["Text"].FormatString = "{0:"+currencySymbol+ " 0.00}";
+
             objectDataSource1.DataSource = data;
-           
         }
 
-        private void xrTable3_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
-        {
-
-        }
+        
 
         private void xrTableCell2_TextChanged(object sender, EventArgs e)
         {

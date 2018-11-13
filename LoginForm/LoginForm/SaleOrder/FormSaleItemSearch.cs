@@ -154,30 +154,31 @@ namespace LoginForm.nmSaleOrder
 
         private void dgItemSearch_DoubleClick(object sender, EventArgs e)
         {
-            //selectedItemCode = dgItemSearch.CurrentRow.Cells[0].Value.ToString();
-            //selectedItemTable = dgItemSearch.CurrentRow.Cells[6].Value.ToString();
-
-            //this.DialogResult = DialogResult.OK;
-            //this.Close();
-
+           
             if (dgItemSearch.DataSource != null)
             {
                 if (dgItemSearch.CurrentRow.Cells[2].Value.ToString() != "")
                 {
-                    QuotationUtils.ItemCode = dgItemSearch.Rows[dgItemSearch.CurrentCell.RowIndex].Cells["ArticleNo"].Value.ToString();
-
-                    var MPNItemList = new IMEEntities().ArticleSearchwithMPN(dgItemSearch.CurrentRow.Cells[2].Value.ToString()).ToList();
-                    if (MPNItemList.Count > 1)
+                    if (dgItemSearch.CurrentRow.Cells["Heigh"].Value == null)
                     {
-                        FormQuotationMPN form = new FormQuotationMPN(this,MPNItemList);
-                        form.ShowDialog();
+                        MessageBox.Show("Selected item has no height value");
                     }
+                    else
+                    {
+                        QuotationUtils.ItemCode = dgItemSearch.Rows[dgItemSearch.CurrentCell.RowIndex].Cells["ArticleNo"].Value.ToString();
+
+                        var MPNItemList = new IMEEntities().ArticleSearchwithMPN(dgItemSearch.CurrentRow.Cells[2].Value.ToString()).ToList();
+                        if (MPNItemList.Count > 1)
+                        {
+                            FormQuotationMPN form = new FormQuotationMPN(this, MPNItemList);
+                            form.ShowDialog();
+                        }
+                        QuotationUtils.ItemCode = dgItemSearch.Rows[dgItemSearch.CurrentCell.RowIndex].Cells["ArticleNo"].Value.ToString();
+                        this.Close();
+                    }     
                 }
             }
-            QuotationUtils.ItemCode = dgItemSearch.Rows[dgItemSearch.CurrentCell.RowIndex].Cells["ArticleNo"].Value.ToString();
-            this.Close();
-
-            //SetItemToSend(ItemCode,dependantTable);
+           
         }
 
         private void SetItemToSend(string ItemCode, string table)

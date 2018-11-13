@@ -1420,10 +1420,7 @@ namespace LoginForm.QuotationModule
                         newForm.ShowDialog();
                     }
                 }
-                catch (Exception ex)
-                {
-                    throw;
-                }
+                catch { }
 
             }
             else
