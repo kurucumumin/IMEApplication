@@ -19,6 +19,11 @@ namespace LoginForm.ItemModule
         public ItemCard()
         {
             InitializeComponent();
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
+           System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
+           dgItemList, new object[] { true });
+
             string currencySymbol = Utils.getManagement().Currency.currencySymbol;
             defaultCurrencyRate = (decimal)Utils.getManagement().Currency.ExchangeRates.OrderByDescending(a => a.date).FirstOrDefault().rate;
             lblCurrency.Text = currencySymbol;

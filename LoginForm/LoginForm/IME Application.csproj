@@ -495,6 +495,12 @@
     <Compile Include="DataSet\QuotationDetail.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\Quotation_Month_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\Quotation_Year_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\Rate.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1050,6 +1056,18 @@
     <Compile Include="QuotationModule\ViewProductHistory.Designer.cs">
       <DependentUpon>ViewProductHistory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report\frmGetCost.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\frmGetCost.Designer.cs">
+      <DependentUpon>frmGetCost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\frmQuotOrders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\frmQuotOrders.Designer.cs">
+      <DependentUpon>frmQuotOrders.cs</DependentUpon>
+    </Compile>
     <Compile Include="SaleOrder\DevFormSaleOrderAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1458,6 +1476,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuotationModule\ViewProductHistory.resx">
       <DependentUpon>ViewProductHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\frmGetCost.resx">
+      <DependentUpon>frmGetCost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\frmQuotOrders.resx">
+      <DependentUpon>frmQuotOrders.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SaleOrder\DevFormSaleOrderAdd.resx">
       <DependentUpon>DevFormSaleOrderAdd.cs</DependentUpon>

@@ -1829,6 +1829,28 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProductViewWithID_Result>("ProductViewWithID", productIDParameter);
         }
     
+        public virtual ObjectResult<Quotation_Month_Result> Quotation_Month(Nullable<int> month, Nullable<int> year)
+        {
+            var monthParameter = month.HasValue ?
+                new ObjectParameter("month", month) :
+                new ObjectParameter("month", typeof(int));
+    
+            var yearParameter = year.HasValue ?
+                new ObjectParameter("year", year) :
+                new ObjectParameter("year", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Quotation_Month_Result>("Quotation_Month", monthParameter, yearParameter);
+        }
+    
+        public virtual ObjectResult<Quotation_Year_Result> Quotation_Year(Nullable<int> number)
+        {
+            var numberParameter = number.HasValue ?
+                new ObjectParameter("number", number) :
+                new ObjectParameter("number", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Quotation_Year_Result>("Quotation_Year", numberParameter);
+        }
+    
         public virtual int QuotationADD(string customerID, Nullable<int> noteForUsID, Nullable<int> noteForCustomerID, Nullable<int> forFinancelIsTrue, Nullable<int> shippingMethodID, Nullable<int> isItemCost, Nullable<int> isWeightCost, Nullable<int> isCustomsDuties, Nullable<decimal> discOnSubTotal2, Nullable<decimal> extraCharges, Nullable<decimal> subTotal, Nullable<System.DateTime> startDate, Nullable<int> validationDay, Nullable<int> paymentID, Nullable<decimal> curr, Nullable<decimal> factor, Nullable<int> isVatValue, Nullable<decimal> vatValue, string currName, string quotationNo, string rFQNo, string currType, Nullable<int> quotationMainContact, Nullable<bool> approved, Nullable<decimal> saleOrderID, string voucherNo, Nullable<int> representativeID, Nullable<int> representativeID2, Nullable<int> exchangeRateID, Nullable<System.DateTime> deliveryDate, Nullable<decimal> grossTotal)
         {
             var customerIDParameter = customerID != null ?

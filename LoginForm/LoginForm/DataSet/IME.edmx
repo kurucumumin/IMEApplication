@@ -3519,6 +3519,13 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
         <Function Name="ProductViewWithID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="productID" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="Quotation_Month" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="month" Type="int" Mode="In" />
+          <Parameter Name="year" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Quotation_Year" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="number" Type="int" Mode="In" />
+        </Function>
         <Function Name="QuotationADD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CustomerID" Type="nvarchar" Mode="In" />
           <Parameter Name="NoteForUsID" Type="int" Mode="In" />
@@ -8675,6 +8682,13 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <FunctionImport Name="ProductViewWithID" ReturnType="Collection(IMEModel.ProductViewWithID_Result)">
             <Parameter Name="productID" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="Quotation_Month" ReturnType="Collection(IMEModel.Quotation_Month_Result)">
+            <Parameter Name="month" Mode="In" Type="Int32" />
+            <Parameter Name="year" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Quotation_Year" ReturnType="Collection(IMEModel.Quotation_Year_Result)">
+            <Parameter Name="number" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="QuotationADD">
             <Parameter Name="CustomerID" Mode="In" Type="String" />
             <Parameter Name="NoteForUsID" Mode="In" Type="Int32" />
@@ -9580,6 +9594,14 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Type="String" Name="Article_Desc" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Unit_Measure" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Brandname" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="Quotation_Month_Result">
+          <Property Type="Decimal" Name="SumTotal" Nullable="true" Precision="38" Scale="5" />
+          <Property Type="Int32" Name="SumQty" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Quotation_Year_Result">
+          <Property Type="Decimal" Name="SumTotal" Nullable="true" Precision="38" Scale="5" />
+          <Property Type="Int32" Name="SumQty" Nullable="true" />
         </ComplexType>
         <ComplexType Name="SaleOrder_SaleOrderNo_Result">
           <Property Type="Decimal" Name="SaleOrderNo" Nullable="false" Precision="18" Scale="0" />
@@ -12220,6 +12242,22 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="Article_Desc" ColumnName="Article_Desc" />
                 <ScalarProperty Name="Unit_Measure" ColumnName="Unit_Measure" />
                 <ScalarProperty Name="Brandname" ColumnName="Brandname" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Quotation_Month" FunctionName="IMEModel.Store.Quotation_Month">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.Quotation_Month_Result">
+                <ScalarProperty Name="SumTotal" ColumnName="SumTotal" />
+                <ScalarProperty Name="SumQty" ColumnName="SumQty" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Quotation_Year" FunctionName="IMEModel.Store.Quotation_Year">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.Quotation_Year_Result">
+                <ScalarProperty Name="SumTotal" ColumnName="SumTotal" />
+                <ScalarProperty Name="SumQty" ColumnName="SumQty" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

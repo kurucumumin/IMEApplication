@@ -551,14 +551,60 @@ namespace LoginForm.Main
 
         private void altoSlidingLabel1_Click(object sender, EventArgs e)
         {
-            //XtraFormQuotationAdd frm = new XtraFormQuotationAdd();
-            //frm.Show();
+            frmGetCost frm = new frmGetCost();
+            frm.Show();
         }
 
         private void btnCurrency_Click(object sender, EventArgs e)
         {
             FormCurrencyValue frm = new FormCurrencyValue();
             frm.Show();
+        }
+
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            if (pnlReport.Height == 0)
+            {
+                ActivePanel.Height = 0;
+
+                int h = 0;
+                maxSubPanelHeight = panel5.Height - ExtendingPanelHeight;
+                foreach (Control item in pnlReport.Controls)
+                {
+                    h += item.Height + 6;
+                }
+                if (h > maxSubPanelHeight)
+                {
+                    PH = maxSubPanelHeight;
+                }
+                else
+                {
+                    PH = h;
+                }
+                ActivePanel = pnlReport;
+                animMode = "Extend";
+                timer2.Start();
+            }
+            else
+            {
+                PH = 0;
+                animMode = "Shrink";
+                timer2.Start();
+            }
+        }
+
+        private void btnGetCost_Click(object sender, EventArgs e)
+        {
+            frmGetCost frm = new frmGetCost();
+            frm.ShowDialog();
+            Utils.LogKayit("Get Cost Report", "GetCost report screen has been entered");
+        }
+
+        private void btnQuotationSaleOrder_Click(object sender, EventArgs e)
+        {
+            frmQuotOrders frm = new frmQuotOrders();
+            frm.ShowDialog();
+            Utils.LogKayit("Quotation and Sale Orders Report", "Quotation and Sale Orders report screen has been entered");
         }
     }
 }

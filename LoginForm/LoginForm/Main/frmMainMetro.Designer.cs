@@ -37,7 +37,8 @@ namespace LoginForm.Main
         /// </summary>
         private void InitializeComponent()
         {
-            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse();
+            this.components = new System.ComponentModel.Container();
+            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.pnlMain = new System.Windows.Forms.Panel();
             this.btnToBeInvoiced = new AltoControls.AltoButton();
             this.btnStock = new AltoControls.AltoButton();
@@ -47,7 +48,7 @@ namespace LoginForm.Main
             this.btnCustomer = new AltoControls.AltoButton();
             this.btnSalesOrder = new AltoControls.AltoButton();
             this.btnSupplier = new AltoControls.AltoButton();
-            this.bunifuElipse2 = new Bunifu.Framework.UI.BunifuElipse();
+            this.bunifuElipse2 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.pnlImportFiles = new System.Windows.Forms.Panel();
             this.btnBackOrder = new AltoControls.AltoButton();
             this.btnOrderAcknowledgement = new AltoControls.AltoButton();
@@ -62,7 +63,7 @@ namespace LoginForm.Main
             this.btnTSEList = new AltoControls.AltoButton();
             this.btnRSProList = new AltoControls.AltoButton();
             this.btnRsInvoice = new AltoControls.AltoButton();
-            this.bunifuElipse3 = new Bunifu.Framework.UI.BunifuElipse();
+            this.bunifuElipse3 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.pnlManagement = new System.Windows.Forms.Panel();
             this.btnCurrency = new AltoControls.AltoButton();
             this.btnLog = new AltoControls.AltoButton();
@@ -73,12 +74,16 @@ namespace LoginForm.Main
             this.btnCategorySubCategory = new AltoControls.AltoButton();
             this.btnTermsOfPayment = new AltoControls.AltoButton();
             this.btnExchangeRate = new AltoControls.AltoButton();
-            this.timer2 = new System.Windows.Forms.Timer();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.panel3 = new System.Windows.Forms.Panel();
             this.altoSlidingLabel1 = new AltoControls.AltoSlidingLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pnlReport = new System.Windows.Forms.Panel();
+            this.btnQuotationSaleOrder = new AltoControls.AltoButton();
+            this.btnGetCost = new AltoControls.AltoButton();
+            this.btnReport = new AltoControls.AltoButton();
             this.btnManagement = new AltoControls.AltoButton();
             this.btnFileLoader = new AltoControls.AltoButton();
             this.btnDevelopment = new AltoControls.AltoButton();
@@ -101,6 +106,7 @@ namespace LoginForm.Main
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.pnlReport.SuspendLayout();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -883,6 +889,7 @@ namespace LoginForm.Main
             this.altoSlidingLabel1.Slide = true;
             this.altoSlidingLabel1.TabIndex = 1;
             this.altoSlidingLabel1.Text = "Lorem Ipsum Dolor Sit Amet";
+            this.altoSlidingLabel1.Visible = false;
             this.altoSlidingLabel1.Click += new System.EventHandler(this.altoSlidingLabel1_Click);
             // 
             // panel1
@@ -910,6 +917,8 @@ namespace LoginForm.Main
             // panel2
             // 
             this.panel2.AutoScrollMargin = new System.Drawing.Size(5, 0);
+            this.panel2.Controls.Add(this.pnlReport);
+            this.panel2.Controls.Add(this.btnReport);
             this.panel2.Controls.Add(this.pnlManagement);
             this.panel2.Controls.Add(this.btnManagement);
             this.panel2.Controls.Add(this.pnlImportFiles);
@@ -924,6 +933,86 @@ namespace LoginForm.Main
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(218, 803);
             this.panel2.TabIndex = 1;
+            // 
+            // pnlReport
+            // 
+            this.pnlReport.AutoScroll = true;
+            this.pnlReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(254)))), ((int)(((byte)(233)))));
+            this.pnlReport.Controls.Add(this.btnQuotationSaleOrder);
+            this.pnlReport.Controls.Add(this.btnGetCost);
+            this.pnlReport.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlReport.Location = new System.Drawing.Point(0, 338);
+            this.pnlReport.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlReport.Name = "pnlReport";
+            this.pnlReport.Size = new System.Drawing.Size(218, 0);
+            this.pnlReport.TabIndex = 12;
+            // 
+            // btnQuotationSaleOrder
+            // 
+            this.btnQuotationSaleOrder.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
+            this.btnQuotationSaleOrder.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
+            this.btnQuotationSaleOrder.BackColor = System.Drawing.Color.Transparent;
+            this.btnQuotationSaleOrder.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnQuotationSaleOrder.Font = new System.Drawing.Font("Sitka Text", 11F, System.Drawing.FontStyle.Bold);
+            this.btnQuotationSaleOrder.ForeColor = System.Drawing.Color.Black;
+            this.btnQuotationSaleOrder.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
+            this.btnQuotationSaleOrder.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
+            this.btnQuotationSaleOrder.Location = new System.Drawing.Point(2, 41);
+            this.btnQuotationSaleOrder.Margin = new System.Windows.Forms.Padding(2);
+            this.btnQuotationSaleOrder.Name = "btnQuotationSaleOrder";
+            this.btnQuotationSaleOrder.Radius = 5;
+            this.btnQuotationSaleOrder.Size = new System.Drawing.Size(194, 45);
+            this.btnQuotationSaleOrder.Stroke = false;
+            this.btnQuotationSaleOrder.StrokeColor = System.Drawing.Color.Gray;
+            this.btnQuotationSaleOrder.TabIndex = 11;
+            this.btnQuotationSaleOrder.Text = "Quotation and SaleOrders";
+            this.btnQuotationSaleOrder.Transparency = true;
+            this.btnQuotationSaleOrder.Click += new System.EventHandler(this.btnQuotationSaleOrder_Click);
+            // 
+            // btnGetCost
+            // 
+            this.btnGetCost.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
+            this.btnGetCost.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
+            this.btnGetCost.BackColor = System.Drawing.Color.Transparent;
+            this.btnGetCost.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnGetCost.Font = new System.Drawing.Font("Sitka Text", 11F, System.Drawing.FontStyle.Bold);
+            this.btnGetCost.ForeColor = System.Drawing.Color.Black;
+            this.btnGetCost.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
+            this.btnGetCost.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
+            this.btnGetCost.Location = new System.Drawing.Point(4, 4);
+            this.btnGetCost.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGetCost.Name = "btnGetCost";
+            this.btnGetCost.Radius = 5;
+            this.btnGetCost.Size = new System.Drawing.Size(194, 32);
+            this.btnGetCost.Stroke = false;
+            this.btnGetCost.StrokeColor = System.Drawing.Color.Gray;
+            this.btnGetCost.TabIndex = 10;
+            this.btnGetCost.Text = "Get Cost";
+            this.btnGetCost.Transparency = true;
+            this.btnGetCost.Click += new System.EventHandler(this.btnGetCost_Click);
+            // 
+            // btnReport
+            // 
+            this.btnReport.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
+            this.btnReport.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(196)))), ((int)(((byte)(204)))));
+            this.btnReport.BackColor = System.Drawing.Color.Transparent;
+            this.btnReport.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnReport.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnReport.Font = new System.Drawing.Font("Sitka Text", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnReport.ForeColor = System.Drawing.Color.Black;
+            this.btnReport.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.btnReport.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(255)))), ((int)(((byte)(173)))));
+            this.btnReport.Location = new System.Drawing.Point(0, 297);
+            this.btnReport.Margin = new System.Windows.Forms.Padding(2);
+            this.btnReport.Name = "btnReport";
+            this.btnReport.Radius = 5;
+            this.btnReport.Size = new System.Drawing.Size(218, 41);
+            this.btnReport.Stroke = true;
+            this.btnReport.StrokeColor = System.Drawing.Color.DarkGray;
+            this.btnReport.TabIndex = 11;
+            this.btnReport.Text = "Report";
+            this.btnReport.Transparency = false;
+            this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
             // 
             // btnManagement
             // 
@@ -1155,6 +1244,7 @@ namespace LoginForm.Main
             this.panel1.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.pnlReport.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.ResumeLayout(false);
@@ -1221,5 +1311,9 @@ namespace LoginForm.Main
         private AltoControls.AltoButton btnUser;
         private AltoControls.AltoButton btnLog;
         private AltoControls.AltoButton btnCurrency;
+        private System.Windows.Forms.Panel pnlReport;
+        private AltoControls.AltoButton btnGetCost;
+        private AltoControls.AltoButton btnReport;
+        private AltoControls.AltoButton btnQuotationSaleOrder;
     }
 }
