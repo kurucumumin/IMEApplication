@@ -81,7 +81,7 @@ namespace LoginForm.Main
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pnlReport = new System.Windows.Forms.Panel();
-            this.btnQuotationSaleOrder = new AltoControls.AltoButton();
+            this.btnQuotationOrderCurrency = new AltoControls.AltoButton();
             this.btnGetCost = new AltoControls.AltoButton();
             this.btnReport = new AltoControls.AltoButton();
             this.btnManagement = new AltoControls.AltoButton();
@@ -99,6 +99,7 @@ namespace LoginForm.Main
             this.lblTitleEmail = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.lblTitleName = new System.Windows.Forms.Label();
+            this.btnQuotationOrder = new AltoControls.AltoButton();
             this.pnlMain.SuspendLayout();
             this.pnlImportFiles.SuspendLayout();
             this.pnlManagement.SuspendLayout();
@@ -938,7 +939,8 @@ namespace LoginForm.Main
             // 
             this.pnlReport.AutoScroll = true;
             this.pnlReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(254)))), ((int)(((byte)(233)))));
-            this.pnlReport.Controls.Add(this.btnQuotationSaleOrder);
+            this.pnlReport.Controls.Add(this.btnQuotationOrder);
+            this.pnlReport.Controls.Add(this.btnQuotationOrderCurrency);
             this.pnlReport.Controls.Add(this.btnGetCost);
             this.pnlReport.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlReport.Location = new System.Drawing.Point(0, 338);
@@ -947,27 +949,27 @@ namespace LoginForm.Main
             this.pnlReport.Size = new System.Drawing.Size(218, 0);
             this.pnlReport.TabIndex = 12;
             // 
-            // btnQuotationSaleOrder
+            // btnQuotationOrderCurrency
             // 
-            this.btnQuotationSaleOrder.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
-            this.btnQuotationSaleOrder.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
-            this.btnQuotationSaleOrder.BackColor = System.Drawing.Color.Transparent;
-            this.btnQuotationSaleOrder.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnQuotationSaleOrder.Font = new System.Drawing.Font("Sitka Text", 11F, System.Drawing.FontStyle.Bold);
-            this.btnQuotationSaleOrder.ForeColor = System.Drawing.Color.Black;
-            this.btnQuotationSaleOrder.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
-            this.btnQuotationSaleOrder.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
-            this.btnQuotationSaleOrder.Location = new System.Drawing.Point(2, 41);
-            this.btnQuotationSaleOrder.Margin = new System.Windows.Forms.Padding(2);
-            this.btnQuotationSaleOrder.Name = "btnQuotationSaleOrder";
-            this.btnQuotationSaleOrder.Radius = 5;
-            this.btnQuotationSaleOrder.Size = new System.Drawing.Size(194, 45);
-            this.btnQuotationSaleOrder.Stroke = false;
-            this.btnQuotationSaleOrder.StrokeColor = System.Drawing.Color.Gray;
-            this.btnQuotationSaleOrder.TabIndex = 11;
-            this.btnQuotationSaleOrder.Text = "Quotation and SaleOrders";
-            this.btnQuotationSaleOrder.Transparency = true;
-            this.btnQuotationSaleOrder.Click += new System.EventHandler(this.btnQuotationSaleOrder_Click);
+            this.btnQuotationOrderCurrency.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
+            this.btnQuotationOrderCurrency.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
+            this.btnQuotationOrderCurrency.BackColor = System.Drawing.Color.Transparent;
+            this.btnQuotationOrderCurrency.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnQuotationOrderCurrency.Font = new System.Drawing.Font("Sitka Text", 11F, System.Drawing.FontStyle.Bold);
+            this.btnQuotationOrderCurrency.ForeColor = System.Drawing.Color.Black;
+            this.btnQuotationOrderCurrency.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
+            this.btnQuotationOrderCurrency.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
+            this.btnQuotationOrderCurrency.Location = new System.Drawing.Point(2, 41);
+            this.btnQuotationOrderCurrency.Margin = new System.Windows.Forms.Padding(2);
+            this.btnQuotationOrderCurrency.Name = "btnQuotationOrderCurrency";
+            this.btnQuotationOrderCurrency.Radius = 5;
+            this.btnQuotationOrderCurrency.Size = new System.Drawing.Size(194, 45);
+            this.btnQuotationOrderCurrency.Stroke = false;
+            this.btnQuotationOrderCurrency.StrokeColor = System.Drawing.Color.Gray;
+            this.btnQuotationOrderCurrency.TabIndex = 11;
+            this.btnQuotationOrderCurrency.Text = "Quot vs Order (Currency)";
+            this.btnQuotationOrderCurrency.Transparency = true;
+            this.btnQuotationOrderCurrency.Click += new System.EventHandler(this.btnQuotationSaleOrder_Click);
             // 
             // btnGetCost
             // 
@@ -1221,6 +1223,28 @@ namespace LoginForm.Main
             this.lblTitleName.TabIndex = 0;
             this.lblTitleName.Text = "Name:";
             // 
+            // btnQuotationOrder
+            // 
+            this.btnQuotationOrder.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
+            this.btnQuotationOrder.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
+            this.btnQuotationOrder.BackColor = System.Drawing.Color.Transparent;
+            this.btnQuotationOrder.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnQuotationOrder.Font = new System.Drawing.Font("Sitka Text", 11F, System.Drawing.FontStyle.Bold);
+            this.btnQuotationOrder.ForeColor = System.Drawing.Color.Black;
+            this.btnQuotationOrder.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
+            this.btnQuotationOrder.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
+            this.btnQuotationOrder.Location = new System.Drawing.Point(2, 90);
+            this.btnQuotationOrder.Margin = new System.Windows.Forms.Padding(2);
+            this.btnQuotationOrder.Name = "btnQuotationOrder";
+            this.btnQuotationOrder.Radius = 5;
+            this.btnQuotationOrder.Size = new System.Drawing.Size(194, 32);
+            this.btnQuotationOrder.Stroke = false;
+            this.btnQuotationOrder.StrokeColor = System.Drawing.Color.Gray;
+            this.btnQuotationOrder.TabIndex = 12;
+            this.btnQuotationOrder.Text = "Quotations vs Orders";
+            this.btnQuotationOrder.Transparency = true;
+            this.btnQuotationOrder.Click += new System.EventHandler(this.btnQuotationOrder_Click);
+            // 
             // frmMainMetro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1314,6 +1338,7 @@ namespace LoginForm.Main
         private System.Windows.Forms.Panel pnlReport;
         private AltoControls.AltoButton btnGetCost;
         private AltoControls.AltoButton btnReport;
-        private AltoControls.AltoButton btnQuotationSaleOrder;
+        private AltoControls.AltoButton btnQuotationOrderCurrency;
+        private AltoControls.AltoButton btnQuotationOrder;
     }
 }

@@ -420,6 +420,42 @@
     <Compile Include="DataSet\OrderAcknowledgementDetail.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\OrdersDate_CurrencyMonth_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\OrdersDate_Currency_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\OrdersDate_Month_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\OrdersDate_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\Orders_CurrencyLikeCity_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\Orders_CurrencyLikeCustomer_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\Orders_LikeCity_CurrencyMonth_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\Orders_LikeCity_Month_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\Orders_LikeCity_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\Orders_LikeCustomer_CurrencyMonth_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\Orders_LikeCustomer_Month_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\Orders_LikeCustomer_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\OtherBanchesStock.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -493,12 +529,6 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\QuotationDetail.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\Quotation_Month_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\Quotation_Year_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Rate.cs">
@@ -1068,6 +1098,12 @@
     <Compile Include="Report\frmQuotOrders.Designer.cs">
       <DependentUpon>frmQuotOrders.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report\frmQuotOrdersCurrency.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\frmQuotOrdersCurrency.Designer.cs">
+      <DependentUpon>frmQuotOrdersCurrency.cs</DependentUpon>
+    </Compile>
     <Compile Include="SaleOrder\DevFormSaleOrderAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1483,6 +1519,9 @@
     <EmbeddedResource Include="Report\frmQuotOrders.resx">
       <DependentUpon>frmQuotOrders.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\frmQuotOrdersCurrency.resx">
+      <DependentUpon>frmQuotOrdersCurrency.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SaleOrder\DevFormSaleOrderAdd.resx">
       <DependentUpon>DevFormSaleOrderAdd.cs</DependentUpon>
     </EmbeddedResource>
@@ -1582,6 +1621,7 @@
     <None Include="Properties\DataSources\LoginForm.DataSet.Quotation.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.QuotationDelivery.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.QuotationDetail.datasource" />
+    <None Include="Properties\DataSources\LoginForm.DataSet.QuotationYear_Currency_Result.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.RoleValue.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.Stock.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.StockReserve.datasource" />

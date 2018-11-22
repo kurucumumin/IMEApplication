@@ -56,9 +56,14 @@
             this.btnRefreshList = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgSales = new System.Windows.Forms.DataGridView();
+            this.gridRightClick = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.sentToPurchaseOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sentToLogoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.backFromLogoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SaleOrderNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Contact = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DeliveryContact = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,10 +73,6 @@
             this.QuotationNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PurchaseID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PurchaseDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gridRightClick = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.sentToPurchaseOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sentToLogoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.backFromLogoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgSales)).BeginInit();
@@ -403,6 +404,7 @@
             this.Date,
             this.SaleOrderNO,
             this.CustomerName,
+            this.Total,
             this.Contact,
             this.DeliveryContact,
             this.Address,
@@ -434,6 +436,37 @@
             this.dgSales.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgSales_CellMouseDoubleClick);
             this.dgSales.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgSales_MouseDoubleClick);
             // 
+            // gridRightClick
+            // 
+            this.gridRightClick.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.gridRightClick.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sentToPurchaseOrderToolStripMenuItem,
+            this.sentToLogoToolStripMenuItem,
+            this.backFromLogoToolStripMenuItem});
+            this.gridRightClick.Name = "gridRightClick";
+            this.gridRightClick.Size = new System.Drawing.Size(198, 70);
+            // 
+            // sentToPurchaseOrderToolStripMenuItem
+            // 
+            this.sentToPurchaseOrderToolStripMenuItem.Name = "sentToPurchaseOrderToolStripMenuItem";
+            this.sentToPurchaseOrderToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.sentToPurchaseOrderToolStripMenuItem.Text = "Sent To Purchase Order";
+            this.sentToPurchaseOrderToolStripMenuItem.Click += new System.EventHandler(this.sentToPurchaseOrderToolStripMenuItem_Click);
+            // 
+            // sentToLogoToolStripMenuItem
+            // 
+            this.sentToLogoToolStripMenuItem.Name = "sentToLogoToolStripMenuItem";
+            this.sentToLogoToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.sentToLogoToolStripMenuItem.Text = "Sent To Logo";
+            this.sentToLogoToolStripMenuItem.Click += new System.EventHandler(this.sentToLogoToolStripMenuItem_Click);
+            // 
+            // backFromLogoToolStripMenuItem
+            // 
+            this.backFromLogoToolStripMenuItem.Name = "backFromLogoToolStripMenuItem";
+            this.backFromLogoToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.backFromLogoToolStripMenuItem.Text = "Back From Logo";
+            this.backFromLogoToolStripMenuItem.Click += new System.EventHandler(this.backFromLogoToolStripMenuItem_Click);
+            // 
             // Date
             // 
             this.Date.HeaderText = "Date";
@@ -452,6 +485,12 @@
             this.CustomerName.Name = "CustomerName";
             this.CustomerName.ReadOnly = true;
             this.CustomerName.Width = 119;
+            // 
+            // Total
+            // 
+            this.Total.HeaderText = "Total";
+            this.Total.Name = "Total";
+            this.Total.ReadOnly = true;
             // 
             // Contact
             // 
@@ -507,37 +546,6 @@
             this.PurchaseDate.HeaderText = "PurchaseDate";
             this.PurchaseDate.Name = "PurchaseDate";
             this.PurchaseDate.ReadOnly = true;
-            // 
-            // gridRightClick
-            // 
-            this.gridRightClick.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.gridRightClick.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sentToPurchaseOrderToolStripMenuItem,
-            this.sentToLogoToolStripMenuItem,
-            this.backFromLogoToolStripMenuItem});
-            this.gridRightClick.Name = "gridRightClick";
-            this.gridRightClick.Size = new System.Drawing.Size(198, 70);
-            // 
-            // sentToPurchaseOrderToolStripMenuItem
-            // 
-            this.sentToPurchaseOrderToolStripMenuItem.Name = "sentToPurchaseOrderToolStripMenuItem";
-            this.sentToPurchaseOrderToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
-            this.sentToPurchaseOrderToolStripMenuItem.Text = "Sent To Purchase Order";
-            this.sentToPurchaseOrderToolStripMenuItem.Click += new System.EventHandler(this.sentToPurchaseOrderToolStripMenuItem_Click);
-            // 
-            // sentToLogoToolStripMenuItem
-            // 
-            this.sentToLogoToolStripMenuItem.Name = "sentToLogoToolStripMenuItem";
-            this.sentToLogoToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
-            this.sentToLogoToolStripMenuItem.Text = "Sent To Logo";
-            this.sentToLogoToolStripMenuItem.Click += new System.EventHandler(this.sentToLogoToolStripMenuItem_Click);
-            // 
-            // backFromLogoToolStripMenuItem
-            // 
-            this.backFromLogoToolStripMenuItem.Name = "backFromLogoToolStripMenuItem";
-            this.backFromLogoToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
-            this.backFromLogoToolStripMenuItem.Text = "Back From Logo";
-            this.backFromLogoToolStripMenuItem.Click += new System.EventHandler(this.backFromLogoToolStripMenuItem_Click);
             // 
             // FormSalesOrderMain
             // 
@@ -596,6 +604,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn SaleOrderNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn CustomerName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Total;
         private System.Windows.Forms.DataGridViewTextBoxColumn Contact;
         private System.Windows.Forms.DataGridViewTextBoxColumn DeliveryContact;
         private System.Windows.Forms.DataGridViewTextBoxColumn Address;

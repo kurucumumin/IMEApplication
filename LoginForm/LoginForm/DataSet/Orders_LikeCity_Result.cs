@@ -11,9 +11,12 @@ namespace LoginForm.DataSet
 {
     using System;
     
-    public partial class Quotation_Year_Result
+    public partial class Orders_LikeCity_Result
     {
-        public Nullable<decimal> SumTotal { get; set; }
-        public Nullable<int> SumQty { get; set; }
+        public Nullable<decimal> QuotationTotal { get; set; }
+        public Nullable<int> QuotationQty { get; set; }
+        public string CityName { get; set; }
+        public Nullable<int> SaleOrderQty { get; set; }
+        public Nullable<decimal> SaleOrderTotal { get; set; }
     }
 }

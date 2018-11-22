@@ -70,6 +70,7 @@ namespace LoginForm
             else
             {
                 MessageBox.Show("Wrong ID or Password", "Login Error", MessageBoxButtons.OK);
+                textBox1.Focus();
             }
             #endregion
         }

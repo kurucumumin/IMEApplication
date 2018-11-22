@@ -83,6 +83,7 @@ namespace LoginForm
                            Date = so.SaleDate,
                            SaleOrderNO = so.SaleOrderNo,
                            CustomerName = c.c_name,
+                           Total= so.SubTotal,
                            Contact = cw.cw_name,
                            DeliveryContact = cwd.cw_name,
                            Address = cai.AdressTitle,
@@ -111,6 +112,7 @@ namespace LoginForm
                 row.Cells[Date.Index].Value = item.Date;
                 row.Cells[SaleOrderNO.Index].Value = item.SaleOrderNO;
                 row.Cells[CustomerName.Index].Value = item.CustomerName;
+                row.Cells[Total.Index].Value = item.Total;
                 row.Cells[Contact.Index].Value = item.Contact;
                 row.Cells[DeliveryContact.Index].Value = item.DeliveryContact;
                 row.Cells[Address.Index].Value = item.Address;
@@ -367,6 +369,7 @@ namespace LoginForm
                                              Date = so.SaleDate,
                                              SaleOrderNO = so.SaleOrderNo,
                                              CustomerName = c.c_name,
+                                             Total = so.SubTotal,
                                              Contact = cw.cw_name,
                                              DeliveryContact = cwd.cw_name,
                                              Address = cai.AdressTitle,
@@ -398,6 +401,7 @@ namespace LoginForm
                                             Date = so.SaleDate,
                                             SaleOrderNO = so.SaleOrderNo,
                                             CustomerName = c.c_name,
+                                            Total = so.SubTotal,
                                             Contact = cw.cw_name,
                                             DeliveryContact = cwd.cw_name,
                                             Address = cai.AdressTitle,
@@ -427,6 +431,7 @@ namespace LoginForm
                                             Date = so.SaleDate,
                                             SaleOrderNO = so.SaleOrderNo,
                                             CustomerName = c.c_name,
+                                            Total = so.SubTotal,
                                             Contact = cw.cw_name,
                                             DeliveryContact = cwd.cw_name,
                                             Address = cai.AdressTitle,
@@ -460,6 +465,7 @@ namespace LoginForm
                                                 Date = so.SaleDate,
                                                 SaleOrderNO = so.SaleOrderNo,
                                                 CustomerName = c.c_name,
+                                                Total = so.SubTotal,
                                                 Contact = cw.cw_name,
                                                 DeliveryContact = cwd.cw_name,
                                                 Address = cai.AdressTitle,
@@ -491,6 +497,7 @@ namespace LoginForm
                                             Date = so.SaleDate,
                                             SaleOrderNO = so.SaleOrderNo,
                                             CustomerName = c.c_name,
+                                            Total = so.SubTotal,
                                             Contact = cw.cw_name,
                                             DeliveryContact = cwd.cw_name,
                                             Address = cai.AdressTitle,
@@ -546,6 +553,7 @@ namespace LoginForm
                                              Date = so.SaleDate,
                                              SaleOrderNO = so.SaleOrderNo,
                                              CustomerName = c.c_name,
+                                             Total = so.SubTotal,
                                              Contact = cw.cw_name,
                                              DeliveryContact = cwd.cw_name,
                                              Address = cai.AdressTitle,

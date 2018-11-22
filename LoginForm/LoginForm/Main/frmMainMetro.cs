@@ -602,6 +602,13 @@ namespace LoginForm.Main
 
         private void btnQuotationSaleOrder_Click(object sender, EventArgs e)
         {
+            frmQuotOrdersCurrency frm = new frmQuotOrdersCurrency();
+            frm.ShowDialog();
+            Utils.LogKayit("Quotation and Sale Orders Currency Report", "Quotation and Sale Orders currency report screen has been entered");
+        }
+
+        private void btnQuotationOrder_Click(object sender, EventArgs e)
+        {
             frmQuotOrders frm = new frmQuotOrders();
             frm.ShowDialog();
             Utils.LogKayit("Quotation and Sale Orders Report", "Quotation and Sale Orders report screen has been entered");

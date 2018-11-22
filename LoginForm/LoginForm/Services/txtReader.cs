@@ -3889,6 +3889,43 @@ namespace LoginForm
 
         }
 
+        public static void ReportQuotvsSale(DataGridView dg)
+        {
+            #region Copy All Items
+            dg.SelectAll();
+            DataObject dataObj = dg.GetClipboardContent();
+            if (dataObj != null)
+                Clipboard.SetDataObject(dataObj);
+            #endregion
+
+            #region ExcelExport
+            Microsoft.Office.Interop.Excel.Application xlexcel;
+            Microsoft.Office.Interop.Excel.Workbook xlWorkBook;
+            Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
+            object misValue = System.Reflection.Missing.Value;
+            xlexcel = new Excel.Application();
+            xlexcel.Visible = true;
+            xlWorkBook = xlexcel.Workbooks.Add(misValue);
+            xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+            for (int j = 0; j <= dg.ColumnCount - 1; j++)
+            {
+                xlWorkSheet.Cells[1, j + 1] = dg.Columns[j].HeaderText;
+            }
+            for (int i = 0; i < dg.RowCount; i++)
+            {
+                for (int j = 0; j < dg.ColumnCount; j++)
+                {
+                    if (dg.Rows[i].Cells[j].Value != null)
+                    {
+                        xlWorkSheet.Cells[i + 2, j + 1] = dg.Rows[i].Cells[j].Value.ToString();
+
+                    }
+                }
+            }
+            #endregion
+
+        }
+
         public static void Export(DataGridView dg, string quotationNo, List<bool> ischecked)
         {
             #region Copy All Items
@@ -3980,6 +4017,73 @@ namespace LoginForm
                 for (int j = 0; j < dg.ColumnCount; j++)
                 {
                     if (dg.Rows[i].Cells[j].Value != null) { xlWorkSheet.Cells[i + 2, j + 1] = dg.Rows[i].Cells[j].Value.ToString(); }
+                }
+            }
+
+            SaveFileDialog savefile = new SaveFileDialog();
+            savefile.Filter = "Excel Files (*.xls)|*.xls|All files (*.xls)|*.xls";
+            savefile.FileName = "Quotations";
+            if (savefile.ShowDialog() == DialogResult.OK)
+            {
+                string path = savefile.FileName;
+                //@"C:\Users\PC\Desktop\test2.xls"
+                xlWorkBook.SaveAs(@path, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+
+            }
+
+            xlWorkBook.Close(true, misValue, misValue);
+            try { xlexcel.Quit(); } catch { }
+            #endregion
+
+        }
+
+        public static void TwoGridExport(DataGridView dg, DataGridView dg2, DateTime start, DateTime End)
+        {
+            #region Copy All Items
+            dg.SelectAll();
+            DataObject dataObj = dg.GetClipboardContent();
+            if (dataObj != null)
+                Clipboard.SetDataObject(dataObj);
+            #endregion
+
+            #region ExcelExport
+            Microsoft.Office.Interop.Excel.Application xlexcel;
+            Microsoft.Office.Interop.Excel.Workbook xlWorkBook;
+            Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
+            object misValue = System.Reflection.Missing.Value;
+
+            xlexcel = new Excel.Application();
+            xlexcel.Visible = true;
+            xlWorkBook = xlexcel.Workbooks.Add(misValue);
+            xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+            int columnnumber = 0;
+            int columnnumber2 = 0;
+            for (int j = 0; j <= dg.ColumnCount - 1; j++)
+            {
+                xlWorkSheet.Cells[1, j + 1] = dg.Columns[j].HeaderText;
+                columnnumber++;
+            }
+            xlWorkSheet.Cells[1, columnnumber + 1] = start.ToString() + "-" + End.ToString();
+            for (int i = 0; i < dg.RowCount; i++)
+            {
+                for (int j = 0; j < dg.ColumnCount; j++)
+                {
+                    if (dg.Rows[i].Cells[j].Value != null) { xlWorkSheet.Cells[i + 2, j + 1] = dg.Rows[i].Cells[j].Value.ToString(); }
+                }
+            }
+
+
+            for (int j = 0; j <= dg2.ColumnCount - 1; j++)
+            {
+                xlWorkSheet.Cells[columnnumber, columnnumber+j + 1] = dg2.Columns[j].HeaderText;
+                columnnumber2++;
+            }
+            xlWorkSheet.Cells[columnnumber, columnnumber+columnnumber2 + 1] = start.ToString() + "-" + End.ToString();
+            for (int i = 0; i < dg.RowCount; i++)
+            {
+                for (int j = 0; j < dg.ColumnCount; j++)
+                {
+                    if (dg.Rows[i].Cells[j].Value != null) { xlWorkSheet.Cells[columnnumber, columnnumber + j + 1] = dg.Rows[i].Cells[j].Value.ToString(); }
                 }
             }
 

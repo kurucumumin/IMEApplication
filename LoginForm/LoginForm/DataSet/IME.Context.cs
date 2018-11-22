@@ -1564,6 +1564,242 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("OnSaleDeleteAllItems");
         }
     
+        public virtual ObjectResult<Orders_CurrencyLikeCity_Result> Orders_CurrencyLikeCity(Nullable<int> month, Nullable<int> month2, Nullable<int> year, string name)
+        {
+            var monthParameter = month.HasValue ?
+                new ObjectParameter("month", month) :
+                new ObjectParameter("month", typeof(int));
+    
+            var month2Parameter = month2.HasValue ?
+                new ObjectParameter("month2", month2) :
+                new ObjectParameter("month2", typeof(int));
+    
+            var yearParameter = year.HasValue ?
+                new ObjectParameter("year", year) :
+                new ObjectParameter("year", typeof(int));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Orders_CurrencyLikeCity_Result>("Orders_CurrencyLikeCity", monthParameter, month2Parameter, yearParameter, nameParameter);
+        }
+    
+        public virtual ObjectResult<Orders_CurrencyLikeCustomer_Result> Orders_CurrencyLikeCustomer(Nullable<int> month, Nullable<int> month2, Nullable<int> year, string name)
+        {
+            var monthParameter = month.HasValue ?
+                new ObjectParameter("month", month) :
+                new ObjectParameter("month", typeof(int));
+    
+            var month2Parameter = month2.HasValue ?
+                new ObjectParameter("month2", month2) :
+                new ObjectParameter("month2", typeof(int));
+    
+            var yearParameter = year.HasValue ?
+                new ObjectParameter("year", year) :
+                new ObjectParameter("year", typeof(int));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Orders_CurrencyLikeCustomer_Result>("Orders_CurrencyLikeCustomer", monthParameter, month2Parameter, yearParameter, nameParameter);
+        }
+    
+        public virtual ObjectResult<Orders_LikeCity_Result> Orders_LikeCity(Nullable<int> month, Nullable<int> month2, Nullable<int> year, string name)
+        {
+            var monthParameter = month.HasValue ?
+                new ObjectParameter("month", month) :
+                new ObjectParameter("month", typeof(int));
+    
+            var month2Parameter = month2.HasValue ?
+                new ObjectParameter("month2", month2) :
+                new ObjectParameter("month2", typeof(int));
+    
+            var yearParameter = year.HasValue ?
+                new ObjectParameter("year", year) :
+                new ObjectParameter("year", typeof(int));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Orders_LikeCity_Result>("Orders_LikeCity", monthParameter, month2Parameter, yearParameter, nameParameter);
+        }
+    
+        public virtual ObjectResult<Orders_LikeCity_CurrencyMonth_Result> Orders_LikeCity_CurrencyMonth(Nullable<int> month, Nullable<int> month2, Nullable<int> year, string name)
+        {
+            var monthParameter = month.HasValue ?
+                new ObjectParameter("month", month) :
+                new ObjectParameter("month", typeof(int));
+    
+            var month2Parameter = month2.HasValue ?
+                new ObjectParameter("month2", month2) :
+                new ObjectParameter("month2", typeof(int));
+    
+            var yearParameter = year.HasValue ?
+                new ObjectParameter("year", year) :
+                new ObjectParameter("year", typeof(int));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Orders_LikeCity_CurrencyMonth_Result>("Orders_LikeCity_CurrencyMonth", monthParameter, month2Parameter, yearParameter, nameParameter);
+        }
+    
+        public virtual ObjectResult<Orders_LikeCity_Month_Result> Orders_LikeCity_Month(Nullable<int> month, Nullable<int> month2, Nullable<int> year, string name)
+        {
+            var monthParameter = month.HasValue ?
+                new ObjectParameter("month", month) :
+                new ObjectParameter("month", typeof(int));
+    
+            var month2Parameter = month2.HasValue ?
+                new ObjectParameter("month2", month2) :
+                new ObjectParameter("month2", typeof(int));
+    
+            var yearParameter = year.HasValue ?
+                new ObjectParameter("year", year) :
+                new ObjectParameter("year", typeof(int));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Orders_LikeCity_Month_Result>("Orders_LikeCity_Month", monthParameter, month2Parameter, yearParameter, nameParameter);
+        }
+    
+        public virtual ObjectResult<Orders_LikeCustomer_Result> Orders_LikeCustomer(Nullable<int> month, Nullable<int> month2, Nullable<int> year, string name)
+        {
+            var monthParameter = month.HasValue ?
+                new ObjectParameter("month", month) :
+                new ObjectParameter("month", typeof(int));
+    
+            var month2Parameter = month2.HasValue ?
+                new ObjectParameter("month2", month2) :
+                new ObjectParameter("month2", typeof(int));
+    
+            var yearParameter = year.HasValue ?
+                new ObjectParameter("year", year) :
+                new ObjectParameter("year", typeof(int));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Orders_LikeCustomer_Result>("Orders_LikeCustomer", monthParameter, month2Parameter, yearParameter, nameParameter);
+        }
+    
+        public virtual ObjectResult<Orders_LikeCustomer_CurrencyMonth_Result> Orders_LikeCustomer_CurrencyMonth(Nullable<int> month, Nullable<int> month2, Nullable<int> year, string name)
+        {
+            var monthParameter = month.HasValue ?
+                new ObjectParameter("month", month) :
+                new ObjectParameter("month", typeof(int));
+    
+            var month2Parameter = month2.HasValue ?
+                new ObjectParameter("month2", month2) :
+                new ObjectParameter("month2", typeof(int));
+    
+            var yearParameter = year.HasValue ?
+                new ObjectParameter("year", year) :
+                new ObjectParameter("year", typeof(int));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Orders_LikeCustomer_CurrencyMonth_Result>("Orders_LikeCustomer_CurrencyMonth", monthParameter, month2Parameter, yearParameter, nameParameter);
+        }
+    
+        public virtual ObjectResult<Orders_LikeCustomer_Month_Result> Orders_LikeCustomer_Month(Nullable<int> month, Nullable<int> month2, Nullable<int> year, string name)
+        {
+            var monthParameter = month.HasValue ?
+                new ObjectParameter("month", month) :
+                new ObjectParameter("month", typeof(int));
+    
+            var month2Parameter = month2.HasValue ?
+                new ObjectParameter("month2", month2) :
+                new ObjectParameter("month2", typeof(int));
+    
+            var yearParameter = year.HasValue ?
+                new ObjectParameter("year", year) :
+                new ObjectParameter("year", typeof(int));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Orders_LikeCustomer_Month_Result>("Orders_LikeCustomer_Month", monthParameter, month2Parameter, yearParameter, nameParameter);
+        }
+    
+        public virtual ObjectResult<OrdersDate_Result> OrdersDate(Nullable<int> month, Nullable<int> month2, Nullable<int> year)
+        {
+            var monthParameter = month.HasValue ?
+                new ObjectParameter("month", month) :
+                new ObjectParameter("month", typeof(int));
+    
+            var month2Parameter = month2.HasValue ?
+                new ObjectParameter("month2", month2) :
+                new ObjectParameter("month2", typeof(int));
+    
+            var yearParameter = year.HasValue ?
+                new ObjectParameter("year", year) :
+                new ObjectParameter("year", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<OrdersDate_Result>("OrdersDate", monthParameter, month2Parameter, yearParameter);
+        }
+    
+        public virtual ObjectResult<OrdersDate_Currency_Result> OrdersDate_Currency(Nullable<int> month, Nullable<int> month2, Nullable<int> year)
+        {
+            var monthParameter = month.HasValue ?
+                new ObjectParameter("month", month) :
+                new ObjectParameter("month", typeof(int));
+    
+            var month2Parameter = month2.HasValue ?
+                new ObjectParameter("month2", month2) :
+                new ObjectParameter("month2", typeof(int));
+    
+            var yearParameter = year.HasValue ?
+                new ObjectParameter("year", year) :
+                new ObjectParameter("year", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<OrdersDate_Currency_Result>("OrdersDate_Currency", monthParameter, month2Parameter, yearParameter);
+        }
+    
+        public virtual ObjectResult<OrdersDate_CurrencyMonth_Result> OrdersDate_CurrencyMonth(Nullable<int> month, Nullable<int> month2, Nullable<int> year)
+        {
+            var monthParameter = month.HasValue ?
+                new ObjectParameter("month", month) :
+                new ObjectParameter("month", typeof(int));
+    
+            var month2Parameter = month2.HasValue ?
+                new ObjectParameter("month2", month2) :
+                new ObjectParameter("month2", typeof(int));
+    
+            var yearParameter = year.HasValue ?
+                new ObjectParameter("year", year) :
+                new ObjectParameter("year", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<OrdersDate_CurrencyMonth_Result>("OrdersDate_CurrencyMonth", monthParameter, month2Parameter, yearParameter);
+        }
+    
+        public virtual ObjectResult<OrdersDate_Month_Result> OrdersDate_Month(Nullable<int> month, Nullable<int> month2, Nullable<int> year)
+        {
+            var monthParameter = month.HasValue ?
+                new ObjectParameter("month", month) :
+                new ObjectParameter("month", typeof(int));
+    
+            var month2Parameter = month2.HasValue ?
+                new ObjectParameter("month2", month2) :
+                new ObjectParameter("month2", typeof(int));
+    
+            var yearParameter = year.HasValue ?
+                new ObjectParameter("year", year) :
+                new ObjectParameter("year", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<OrdersDate_Month_Result>("OrdersDate_Month", monthParameter, month2Parameter, yearParameter);
+        }
+    
         public virtual ObjectResult<prc_GetExtendedRangeWithArticleNumber_Result> prc_GetExtendedRangeWithArticleNumber(string articleNumber)
         {
             var articleNumberParameter = articleNumber != null ?
@@ -1827,28 +2063,6 @@ namespace LoginForm.DataSet
                 new ObjectParameter("productID", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProductViewWithID_Result>("ProductViewWithID", productIDParameter);
-        }
-    
-        public virtual ObjectResult<Quotation_Month_Result> Quotation_Month(Nullable<int> month, Nullable<int> year)
-        {
-            var monthParameter = month.HasValue ?
-                new ObjectParameter("month", month) :
-                new ObjectParameter("month", typeof(int));
-    
-            var yearParameter = year.HasValue ?
-                new ObjectParameter("year", year) :
-                new ObjectParameter("year", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Quotation_Month_Result>("Quotation_Month", monthParameter, yearParameter);
-        }
-    
-        public virtual ObjectResult<Quotation_Year_Result> Quotation_Year(Nullable<int> number)
-        {
-            var numberParameter = number.HasValue ?
-                new ObjectParameter("number", number) :
-                new ObjectParameter("number", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Quotation_Year_Result>("Quotation_Year", numberParameter);
         }
     
         public virtual int QuotationADD(string customerID, Nullable<int> noteForUsID, Nullable<int> noteForCustomerID, Nullable<int> forFinancelIsTrue, Nullable<int> shippingMethodID, Nullable<int> isItemCost, Nullable<int> isWeightCost, Nullable<int> isCustomsDuties, Nullable<decimal> discOnSubTotal2, Nullable<decimal> extraCharges, Nullable<decimal> subTotal, Nullable<System.DateTime> startDate, Nullable<int> validationDay, Nullable<int> paymentID, Nullable<decimal> curr, Nullable<decimal> factor, Nullable<int> isVatValue, Nullable<decimal> vatValue, string currName, string quotationNo, string rFQNo, string currType, Nullable<int> quotationMainContact, Nullable<bool> approved, Nullable<decimal> saleOrderID, string voucherNo, Nullable<int> representativeID, Nullable<int> representativeID2, Nullable<int> exchangeRateID, Nullable<System.DateTime> deliveryDate, Nullable<decimal> grossTotal)

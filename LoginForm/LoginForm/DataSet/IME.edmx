@@ -3443,6 +3443,74 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Parameter Name="SubstitutedFor" Type="varchar(max)" Mode="In" />
         </Function>
         <Function Name="OnSaleDeleteAllItems" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Orders_CurrencyLikeCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="month" Type="int" Mode="In" />
+          <Parameter Name="month2" Type="int" Mode="In" />
+          <Parameter Name="year" Type="int" Mode="In" />
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Orders_CurrencyLikeCustomer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="month" Type="int" Mode="In" />
+          <Parameter Name="month2" Type="int" Mode="In" />
+          <Parameter Name="year" Type="int" Mode="In" />
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Orders_LikeCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="month" Type="int" Mode="In" />
+          <Parameter Name="month2" Type="int" Mode="In" />
+          <Parameter Name="year" Type="int" Mode="In" />
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Orders_LikeCity_CurrencyMonth" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="month" Type="int" Mode="In" />
+          <Parameter Name="month2" Type="int" Mode="In" />
+          <Parameter Name="year" Type="int" Mode="In" />
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Orders_LikeCity_Month" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="month" Type="int" Mode="In" />
+          <Parameter Name="month2" Type="int" Mode="In" />
+          <Parameter Name="year" Type="int" Mode="In" />
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Orders_LikeCustomer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="month" Type="int" Mode="In" />
+          <Parameter Name="month2" Type="int" Mode="In" />
+          <Parameter Name="year" Type="int" Mode="In" />
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Orders_LikeCustomer_CurrencyMonth" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="month" Type="int" Mode="In" />
+          <Parameter Name="month2" Type="int" Mode="In" />
+          <Parameter Name="year" Type="int" Mode="In" />
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Orders_LikeCustomer_Month" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="month" Type="int" Mode="In" />
+          <Parameter Name="month2" Type="int" Mode="In" />
+          <Parameter Name="year" Type="int" Mode="In" />
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="OrdersDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="month" Type="int" Mode="In" />
+          <Parameter Name="month2" Type="int" Mode="In" />
+          <Parameter Name="year" Type="int" Mode="In" />
+        </Function>
+        <Function Name="OrdersDate_Currency" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="month" Type="int" Mode="In" />
+          <Parameter Name="month2" Type="int" Mode="In" />
+          <Parameter Name="year" Type="int" Mode="In" />
+        </Function>
+        <Function Name="OrdersDate_CurrencyMonth" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="month" Type="int" Mode="In" />
+          <Parameter Name="month2" Type="int" Mode="In" />
+          <Parameter Name="year" Type="int" Mode="In" />
+        </Function>
+        <Function Name="OrdersDate_Month" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="month" Type="int" Mode="In" />
+          <Parameter Name="month2" Type="int" Mode="In" />
+          <Parameter Name="year" Type="int" Mode="In" />
+        </Function>
         <Function Name="prc_GetExtendedRangeWithArticleNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ArticleNumber" Type="nvarchar" Mode="In" />
         </Function>
@@ -3518,13 +3586,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
         </Function>
         <Function Name="ProductViewWithID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="productID" Type="nvarchar" Mode="In" />
-        </Function>
-        <Function Name="Quotation_Month" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="month" Type="int" Mode="In" />
-          <Parameter Name="year" Type="int" Mode="In" />
-        </Function>
-        <Function Name="Quotation_Year" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="number" Type="int" Mode="In" />
         </Function>
         <Function Name="QuotationADD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CustomerID" Type="nvarchar" Mode="In" />
@@ -8606,6 +8667,74 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="SubstitutedFor" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="OnSaleDeleteAllItems" />
+          <FunctionImport Name="Orders_CurrencyLikeCity" ReturnType="Collection(IMEModel.Orders_CurrencyLikeCity_Result)">
+            <Parameter Name="month" Mode="In" Type="Int32" />
+            <Parameter Name="month2" Mode="In" Type="Int32" />
+            <Parameter Name="year" Mode="In" Type="Int32" />
+            <Parameter Name="name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Orders_CurrencyLikeCustomer" ReturnType="Collection(IMEModel.Orders_CurrencyLikeCustomer_Result)">
+            <Parameter Name="month" Mode="In" Type="Int32" />
+            <Parameter Name="month2" Mode="In" Type="Int32" />
+            <Parameter Name="year" Mode="In" Type="Int32" />
+            <Parameter Name="name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Orders_LikeCity" ReturnType="Collection(IMEModel.Orders_LikeCity_Result)">
+            <Parameter Name="month" Mode="In" Type="Int32" />
+            <Parameter Name="month2" Mode="In" Type="Int32" />
+            <Parameter Name="year" Mode="In" Type="Int32" />
+            <Parameter Name="name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Orders_LikeCity_CurrencyMonth" ReturnType="Collection(IMEModel.Orders_LikeCity_CurrencyMonth_Result)">
+            <Parameter Name="month" Mode="In" Type="Int32" />
+            <Parameter Name="month2" Mode="In" Type="Int32" />
+            <Parameter Name="year" Mode="In" Type="Int32" />
+            <Parameter Name="name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Orders_LikeCity_Month" ReturnType="Collection(IMEModel.Orders_LikeCity_Month_Result)">
+            <Parameter Name="month" Mode="In" Type="Int32" />
+            <Parameter Name="month2" Mode="In" Type="Int32" />
+            <Parameter Name="year" Mode="In" Type="Int32" />
+            <Parameter Name="name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Orders_LikeCustomer" ReturnType="Collection(IMEModel.Orders_LikeCustomer_Result)">
+            <Parameter Name="month" Mode="In" Type="Int32" />
+            <Parameter Name="month2" Mode="In" Type="Int32" />
+            <Parameter Name="year" Mode="In" Type="Int32" />
+            <Parameter Name="name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Orders_LikeCustomer_CurrencyMonth" ReturnType="Collection(IMEModel.Orders_LikeCustomer_CurrencyMonth_Result)">
+            <Parameter Name="month" Mode="In" Type="Int32" />
+            <Parameter Name="month2" Mode="In" Type="Int32" />
+            <Parameter Name="year" Mode="In" Type="Int32" />
+            <Parameter Name="name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Orders_LikeCustomer_Month" ReturnType="Collection(IMEModel.Orders_LikeCustomer_Month_Result)">
+            <Parameter Name="month" Mode="In" Type="Int32" />
+            <Parameter Name="month2" Mode="In" Type="Int32" />
+            <Parameter Name="year" Mode="In" Type="Int32" />
+            <Parameter Name="name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="OrdersDate" ReturnType="Collection(IMEModel.OrdersDate_Result)">
+            <Parameter Name="month" Mode="In" Type="Int32" />
+            <Parameter Name="month2" Mode="In" Type="Int32" />
+            <Parameter Name="year" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="OrdersDate_Currency" ReturnType="Collection(IMEModel.OrdersDate_Currency_Result)">
+            <Parameter Name="month" Mode="In" Type="Int32" />
+            <Parameter Name="month2" Mode="In" Type="Int32" />
+            <Parameter Name="year" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="OrdersDate_CurrencyMonth" ReturnType="Collection(IMEModel.OrdersDate_CurrencyMonth_Result)">
+            <Parameter Name="month" Mode="In" Type="Int32" />
+            <Parameter Name="month2" Mode="In" Type="Int32" />
+            <Parameter Name="year" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="OrdersDate_Month" ReturnType="Collection(IMEModel.OrdersDate_Month_Result)">
+            <Parameter Name="month" Mode="In" Type="Int32" />
+            <Parameter Name="month2" Mode="In" Type="Int32" />
+            <Parameter Name="year" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="prc_GetExtendedRangeWithArticleNumber" ReturnType="Collection(IMEModel.prc_GetExtendedRangeWithArticleNumber_Result)">
             <Parameter Name="ArticleNumber" Mode="In" Type="String" />
           </FunctionImport>
@@ -8681,13 +8810,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           </FunctionImport>
           <FunctionImport Name="ProductViewWithID" ReturnType="Collection(IMEModel.ProductViewWithID_Result)">
             <Parameter Name="productID" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="Quotation_Month" ReturnType="Collection(IMEModel.Quotation_Month_Result)">
-            <Parameter Name="month" Mode="In" Type="Int32" />
-            <Parameter Name="year" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="Quotation_Year" ReturnType="Collection(IMEModel.Quotation_Year_Result)">
-            <Parameter Name="number" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="QuotationADD">
             <Parameter Name="CustomerID" Mode="In" Type="String" />
@@ -9280,6 +9402,98 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Type="String" Name="condensed" Nullable="true" />
           <Property Type="Int32" Name="lineCountAfterPrint" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="Orders_CurrencyLikeCity_Result">
+          <Property Type="String" Name="Cur" Nullable="true" MaxLength="15" />
+          <Property Type="Decimal" Name="QuotationTotal" Nullable="true" Precision="38" Scale="5" />
+          <Property Type="Int32" Name="QuotationQty" Nullable="true" />
+          <Property Type="String" Name="CityName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="SaleOrderQty" Nullable="true" />
+          <Property Type="Decimal" Name="SaleOrderTotal" Nullable="true" Precision="38" Scale="4" />
+        </ComplexType>
+        <ComplexType Name="Orders_CurrencyLikeCustomer_Result">
+          <Property Type="String" Name="Cur" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="CustomerName" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="QuotationTotal" Nullable="true" Precision="38" Scale="5" />
+          <Property Type="Int32" Name="QuotationQty" Nullable="true" />
+          <Property Type="Int32" Name="SaleOrderQty" Nullable="true" />
+          <Property Type="Decimal" Name="SaleOrderTotal" Nullable="true" Precision="38" Scale="4" />
+        </ComplexType>
+        <ComplexType Name="Orders_LikeCity_Result">
+          <Property Type="Decimal" Name="QuotationTotal" Nullable="true" Precision="38" Scale="5" />
+          <Property Type="Int32" Name="QuotationQty" Nullable="true" />
+          <Property Type="String" Name="CityName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="SaleOrderQty" Nullable="true" />
+          <Property Type="Decimal" Name="SaleOrderTotal" Nullable="true" Precision="38" Scale="4" />
+        </ComplexType>
+        <ComplexType Name="Orders_LikeCity_CurrencyMonth_Result">
+          <Property Type="String" Name="Cur" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="CityName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Months" Nullable="true" />
+          <Property Type="Decimal" Name="QuotationTotal" Nullable="true" Precision="38" Scale="5" />
+          <Property Type="Int32" Name="QuotationQty" Nullable="true" />
+          <Property Type="Int32" Name="SaleOrderQty" Nullable="true" />
+          <Property Type="Decimal" Name="SaleOrderTotal" Nullable="true" Precision="38" Scale="4" />
+        </ComplexType>
+        <ComplexType Name="Orders_LikeCity_Month_Result">
+          <Property Type="String" Name="CityName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Months" Nullable="true" />
+          <Property Type="Decimal" Name="QuotationTotal" Nullable="true" Precision="38" Scale="5" />
+          <Property Type="Int32" Name="QuotationQty" Nullable="true" />
+          <Property Type="Int32" Name="SaleOrderQty" Nullable="true" />
+          <Property Type="Decimal" Name="SaleOrderTotal" Nullable="true" Precision="38" Scale="4" />
+        </ComplexType>
+        <ComplexType Name="Orders_LikeCustomer_Result">
+          <Property Type="String" Name="CustomerName" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="QuotationTotal" Nullable="true" Precision="38" Scale="5" />
+          <Property Type="Int32" Name="QuotationQty" Nullable="true" />
+          <Property Type="Int32" Name="SaleOrderQty" Nullable="true" />
+          <Property Type="Decimal" Name="SaleOrderTotal" Nullable="true" Precision="38" Scale="4" />
+        </ComplexType>
+        <ComplexType Name="Orders_LikeCustomer_CurrencyMonth_Result">
+          <Property Type="String" Name="Cur" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="CustomerName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Months" Nullable="true" />
+          <Property Type="Decimal" Name="QuotationTotal" Nullable="true" Precision="38" Scale="5" />
+          <Property Type="Int32" Name="QuotationQty" Nullable="true" />
+          <Property Type="Int32" Name="SaleOrderQty" Nullable="true" />
+          <Property Type="Decimal" Name="SaleOrderTotal" Nullable="true" Precision="38" Scale="4" />
+        </ComplexType>
+        <ComplexType Name="Orders_LikeCustomer_Month_Result">
+          <Property Type="String" Name="CustomerName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Months" Nullable="true" />
+          <Property Type="Decimal" Name="QuotationTotal" Nullable="true" Precision="38" Scale="5" />
+          <Property Type="Int32" Name="QuotationQty" Nullable="true" />
+          <Property Type="Int32" Name="SaleOrderQty" Nullable="true" />
+          <Property Type="Decimal" Name="SaleOrderTotal" Nullable="true" Precision="38" Scale="4" />
+        </ComplexType>
+        <ComplexType Name="OrdersDate_Result">
+          <Property Type="Decimal" Name="QuotationTotal" Nullable="true" Precision="38" Scale="5" />
+          <Property Type="Int32" Name="QuotationQty" Nullable="true" />
+          <Property Type="Int32" Name="SaleOrderQty" Nullable="true" />
+          <Property Type="Decimal" Name="SaleOrderTotal" Nullable="true" Precision="38" Scale="4" />
+        </ComplexType>
+        <ComplexType Name="OrdersDate_Currency_Result">
+          <Property Type="String" Name="Cur" Nullable="true" MaxLength="15" />
+          <Property Type="Decimal" Name="QuotationTotal" Nullable="true" Precision="38" Scale="5" />
+          <Property Type="Int32" Name="QuotationQty" Nullable="true" />
+          <Property Type="Int32" Name="SaleOrderQty" Nullable="true" />
+          <Property Type="Decimal" Name="SaleOrderTotal" Nullable="true" Precision="38" Scale="4" />
+        </ComplexType>
+        <ComplexType Name="OrdersDate_CurrencyMonth_Result">
+          <Property Type="String" Name="Cur" Nullable="true" MaxLength="15" />
+          <Property Type="Int32" Name="Months" Nullable="true" />
+          <Property Type="Decimal" Name="QuotationTotal" Nullable="true" Precision="38" Scale="5" />
+          <Property Type="Int32" Name="QuotationQty" Nullable="true" />
+          <Property Type="Int32" Name="SaleOrderQty" Nullable="true" />
+          <Property Type="Decimal" Name="SaleOrderTotal" Nullable="true" Precision="38" Scale="4" />
+        </ComplexType>
+        <ComplexType Name="OrdersDate_Month_Result">
+          <Property Type="Int32" Name="Months" Nullable="true" />
+          <Property Type="Decimal" Name="QuotationTotal" Nullable="true" Precision="38" Scale="5" />
+          <Property Type="Int32" Name="QuotationQty" Nullable="true" />
+          <Property Type="Int32" Name="SaleOrderQty" Nullable="true" />
+          <Property Type="Decimal" Name="SaleOrderTotal" Nullable="true" Precision="38" Scale="4" />
+        </ComplexType>
         <ComplexType Name="prc_GetExtendedRangeWithArticleNumber_Result">
           <Property Type="String" Name="ArticleNo" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Brand" Nullable="true" MaxLength="50" />
@@ -9594,14 +9808,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Type="String" Name="Article_Desc" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Unit_Measure" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Brandname" Nullable="true" MaxLength="100" />
-        </ComplexType>
-        <ComplexType Name="Quotation_Month_Result">
-          <Property Type="Decimal" Name="SumTotal" Nullable="true" Precision="38" Scale="5" />
-          <Property Type="Int32" Name="SumQty" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="Quotation_Year_Result">
-          <Property Type="Decimal" Name="SumTotal" Nullable="true" Precision="38" Scale="5" />
-          <Property Type="Int32" Name="SumQty" Nullable="true" />
         </ComplexType>
         <ComplexType Name="SaleOrder_SaleOrderNo_Result">
           <Property Type="Decimal" Name="SaleOrderNo" Nullable="false" Precision="18" Scale="0" />
@@ -11868,6 +12074,146 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="OnSaleAdd" FunctionName="IMEModel.Store.OnSaleAdd" />
           <FunctionImportMapping FunctionImportName="OnSaleDeleteAllItems" FunctionName="IMEModel.Store.OnSaleDeleteAllItems" />
+          <FunctionImportMapping FunctionImportName="Orders_CurrencyLikeCity" FunctionName="IMEModel.Store.Orders_CurrencyLikeCity">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.Orders_CurrencyLikeCity_Result">
+                <ScalarProperty Name="Cur" ColumnName="Cur" />
+                <ScalarProperty Name="QuotationTotal" ColumnName="QuotationTotal" />
+                <ScalarProperty Name="QuotationQty" ColumnName="QuotationQty" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="SaleOrderQty" ColumnName="SaleOrderQty" />
+                <ScalarProperty Name="SaleOrderTotal" ColumnName="SaleOrderTotal" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Orders_CurrencyLikeCustomer" FunctionName="IMEModel.Store.Orders_CurrencyLikeCustomer">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.Orders_CurrencyLikeCustomer_Result">
+                <ScalarProperty Name="Cur" ColumnName="Cur" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="QuotationTotal" ColumnName="QuotationTotal" />
+                <ScalarProperty Name="QuotationQty" ColumnName="QuotationQty" />
+                <ScalarProperty Name="SaleOrderQty" ColumnName="SaleOrderQty" />
+                <ScalarProperty Name="SaleOrderTotal" ColumnName="SaleOrderTotal" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Orders_LikeCity" FunctionName="IMEModel.Store.Orders_LikeCity">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.Orders_LikeCity_Result">
+                <ScalarProperty Name="QuotationTotal" ColumnName="QuotationTotal" />
+                <ScalarProperty Name="QuotationQty" ColumnName="QuotationQty" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="SaleOrderQty" ColumnName="SaleOrderQty" />
+                <ScalarProperty Name="SaleOrderTotal" ColumnName="SaleOrderTotal" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Orders_LikeCity_CurrencyMonth" FunctionName="IMEModel.Store.Orders_LikeCity_CurrencyMonth">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.Orders_LikeCity_CurrencyMonth_Result">
+                <ScalarProperty Name="Cur" ColumnName="Cur" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="Months" ColumnName="Months" />
+                <ScalarProperty Name="QuotationTotal" ColumnName="QuotationTotal" />
+                <ScalarProperty Name="QuotationQty" ColumnName="QuotationQty" />
+                <ScalarProperty Name="SaleOrderQty" ColumnName="SaleOrderQty" />
+                <ScalarProperty Name="SaleOrderTotal" ColumnName="SaleOrderTotal" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Orders_LikeCity_Month" FunctionName="IMEModel.Store.Orders_LikeCity_Month">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.Orders_LikeCity_Month_Result">
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="Months" ColumnName="Months" />
+                <ScalarProperty Name="QuotationTotal" ColumnName="QuotationTotal" />
+                <ScalarProperty Name="QuotationQty" ColumnName="QuotationQty" />
+                <ScalarProperty Name="SaleOrderQty" ColumnName="SaleOrderQty" />
+                <ScalarProperty Name="SaleOrderTotal" ColumnName="SaleOrderTotal" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Orders_LikeCustomer" FunctionName="IMEModel.Store.Orders_LikeCustomer">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.Orders_LikeCustomer_Result">
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="QuotationTotal" ColumnName="QuotationTotal" />
+                <ScalarProperty Name="QuotationQty" ColumnName="QuotationQty" />
+                <ScalarProperty Name="SaleOrderQty" ColumnName="SaleOrderQty" />
+                <ScalarProperty Name="SaleOrderTotal" ColumnName="SaleOrderTotal" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Orders_LikeCustomer_CurrencyMonth" FunctionName="IMEModel.Store.Orders_LikeCustomer_CurrencyMonth">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.Orders_LikeCustomer_CurrencyMonth_Result">
+                <ScalarProperty Name="Cur" ColumnName="Cur" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="Months" ColumnName="Months" />
+                <ScalarProperty Name="QuotationTotal" ColumnName="QuotationTotal" />
+                <ScalarProperty Name="QuotationQty" ColumnName="QuotationQty" />
+                <ScalarProperty Name="SaleOrderQty" ColumnName="SaleOrderQty" />
+                <ScalarProperty Name="SaleOrderTotal" ColumnName="SaleOrderTotal" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Orders_LikeCustomer_Month" FunctionName="IMEModel.Store.Orders_LikeCustomer_Month">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.Orders_LikeCustomer_Month_Result">
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="Months" ColumnName="Months" />
+                <ScalarProperty Name="QuotationTotal" ColumnName="QuotationTotal" />
+                <ScalarProperty Name="QuotationQty" ColumnName="QuotationQty" />
+                <ScalarProperty Name="SaleOrderQty" ColumnName="SaleOrderQty" />
+                <ScalarProperty Name="SaleOrderTotal" ColumnName="SaleOrderTotal" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="OrdersDate" FunctionName="IMEModel.Store.OrdersDate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.OrdersDate_Result">
+                <ScalarProperty Name="QuotationTotal" ColumnName="QuotationTotal" />
+                <ScalarProperty Name="QuotationQty" ColumnName="QuotationQty" />
+                <ScalarProperty Name="SaleOrderQty" ColumnName="SaleOrderQty" />
+                <ScalarProperty Name="SaleOrderTotal" ColumnName="SaleOrderTotal" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="OrdersDate_Currency" FunctionName="IMEModel.Store.OrdersDate_Currency">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.OrdersDate_Currency_Result">
+                <ScalarProperty Name="Cur" ColumnName="Cur" />
+                <ScalarProperty Name="QuotationTotal" ColumnName="QuotationTotal" />
+                <ScalarProperty Name="QuotationQty" ColumnName="QuotationQty" />
+                <ScalarProperty Name="SaleOrderQty" ColumnName="SaleOrderQty" />
+                <ScalarProperty Name="SaleOrderTotal" ColumnName="SaleOrderTotal" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="OrdersDate_CurrencyMonth" FunctionName="IMEModel.Store.OrdersDate_CurrencyMonth">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.OrdersDate_CurrencyMonth_Result">
+                <ScalarProperty Name="Cur" ColumnName="Cur" />
+                <ScalarProperty Name="Months" ColumnName="Months" />
+                <ScalarProperty Name="QuotationTotal" ColumnName="QuotationTotal" />
+                <ScalarProperty Name="QuotationQty" ColumnName="QuotationQty" />
+                <ScalarProperty Name="SaleOrderQty" ColumnName="SaleOrderQty" />
+                <ScalarProperty Name="SaleOrderTotal" ColumnName="SaleOrderTotal" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="OrdersDate_Month" FunctionName="IMEModel.Store.OrdersDate_Month">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.OrdersDate_Month_Result">
+                <ScalarProperty Name="Months" ColumnName="Months" />
+                <ScalarProperty Name="QuotationTotal" ColumnName="QuotationTotal" />
+                <ScalarProperty Name="QuotationQty" ColumnName="QuotationQty" />
+                <ScalarProperty Name="SaleOrderQty" ColumnName="SaleOrderQty" />
+                <ScalarProperty Name="SaleOrderTotal" ColumnName="SaleOrderTotal" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="prc_GetExtendedRangeWithArticleNumber" FunctionName="IMEModel.Store.prc_GetExtendedRangeWithArticleNumber">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.prc_GetExtendedRangeWithArticleNumber_Result">
@@ -12242,22 +12588,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="Article_Desc" ColumnName="Article_Desc" />
                 <ScalarProperty Name="Unit_Measure" ColumnName="Unit_Measure" />
                 <ScalarProperty Name="Brandname" ColumnName="Brandname" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Quotation_Month" FunctionName="IMEModel.Store.Quotation_Month">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="IMEModel.Quotation_Month_Result">
-                <ScalarProperty Name="SumTotal" ColumnName="SumTotal" />
-                <ScalarProperty Name="SumQty" ColumnName="SumQty" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Quotation_Year" FunctionName="IMEModel.Store.Quotation_Year">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="IMEModel.Quotation_Year_Result">
-                <ScalarProperty Name="SumTotal" ColumnName="SumTotal" />
-                <ScalarProperty Name="SumQty" ColumnName="SumQty" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
