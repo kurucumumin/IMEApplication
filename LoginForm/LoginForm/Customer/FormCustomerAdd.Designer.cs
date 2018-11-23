@@ -152,6 +152,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.txtPoBox = new System.Windows.Forms.TextBox();
+            this.label36 = new System.Windows.Forms.Label();
             this.groupCompany.SuspendLayout();
             this.groupAccount.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.factor)).BeginInit();
@@ -813,6 +815,8 @@
             // 
             // groupAddresses
             // 
+            this.groupAddresses.Controls.Add(this.txtPoBox);
+            this.groupAddresses.Controls.Add(this.label36);
             this.groupAddresses.Controls.Add(this.CityAdd);
             this.groupAddresses.Controls.Add(this.TownAdd);
             this.groupAddresses.Controls.Add(this.cbDefaultInvoiceAdress);
@@ -843,7 +847,7 @@
             // CityAdd
             // 
             this.CityAdd.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.CityAdd.Location = new System.Drawing.Point(247, 136);
+            this.CityAdd.Location = new System.Drawing.Point(247, 129);
             this.CityAdd.Margin = new System.Windows.Forms.Padding(2);
             this.CityAdd.Name = "CityAdd";
             this.CityAdd.Size = new System.Drawing.Size(23, 21);
@@ -856,7 +860,7 @@
             // 
             this.TownAdd.Enabled = false;
             this.TownAdd.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.TownAdd.Location = new System.Drawing.Point(247, 173);
+            this.TownAdd.Location = new System.Drawing.Point(247, 163);
             this.TownAdd.Margin = new System.Windows.Forms.Padding(2);
             this.TownAdd.Name = "TownAdd";
             this.TownAdd.Size = new System.Drawing.Size(23, 21);
@@ -941,7 +945,7 @@
             this.cbTown.Enabled = false;
             this.cbTown.ForeColor = System.Drawing.SystemColors.ControlText;
             this.cbTown.FormattingEnabled = true;
-            this.cbTown.Location = new System.Drawing.Point(91, 174);
+            this.cbTown.Location = new System.Drawing.Point(91, 164);
             this.cbTown.Name = "cbTown";
             this.cbTown.Size = new System.Drawing.Size(151, 21);
             this.cbTown.TabIndex = 65;
@@ -951,7 +955,7 @@
             this.cbCity.Enabled = false;
             this.cbCity.ForeColor = System.Drawing.SystemColors.ControlText;
             this.cbCity.FormattingEnabled = true;
-            this.cbCity.Location = new System.Drawing.Point(91, 135);
+            this.cbCity.Location = new System.Drawing.Point(91, 128);
             this.cbCity.Name = "cbCity";
             this.cbCity.Size = new System.Drawing.Size(151, 21);
             this.cbCity.TabIndex = 64;
@@ -972,7 +976,7 @@
             // 
             this.label37.AutoSize = true;
             this.label37.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label37.Location = new System.Drawing.Point(6, 184);
+            this.label37.Location = new System.Drawing.Point(6, 174);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(34, 13);
             this.label37.TabIndex = 76;
@@ -982,7 +986,7 @@
             // 
             this.label38.AutoSize = true;
             this.label38.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label38.Location = new System.Drawing.Point(6, 145);
+            this.label38.Location = new System.Drawing.Point(6, 138);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(24, 13);
             this.label38.TabIndex = 77;
@@ -1021,7 +1025,7 @@
             // 
             this.PostCode.Enabled = false;
             this.PostCode.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.PostCode.Location = new System.Drawing.Point(91, 211);
+            this.PostCode.Location = new System.Drawing.Point(91, 201);
             this.PostCode.Name = "PostCode";
             this.PostCode.Size = new System.Drawing.Size(151, 20);
             this.PostCode.TabIndex = 66;
@@ -1030,7 +1034,7 @@
             // 
             this.label25.AutoSize = true;
             this.label25.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label25.Location = new System.Drawing.Point(6, 222);
+            this.label25.Location = new System.Drawing.Point(6, 204);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(56, 13);
             this.label25.TabIndex = 60;
@@ -1563,6 +1567,22 @@
             // 
             this.errorProvider2.ContainerControl = this;
             // 
+            // txtPoBox
+            // 
+            this.txtPoBox.Location = new System.Drawing.Point(91, 232);
+            this.txtPoBox.Name = "txtPoBox";
+            this.txtPoBox.Size = new System.Drawing.Size(151, 20);
+            this.txtPoBox.TabIndex = 90;
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(6, 239);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(49, 13);
+            this.label36.TabIndex = 89;
+            this.label36.Text = "P.O. Box";
+            // 
             // FormCustomerAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1722,5 +1742,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.ErrorProvider errorProvider2;
+        private System.Windows.Forms.TextBox txtPoBox;
+        private System.Windows.Forms.Label label36;
     }
 }

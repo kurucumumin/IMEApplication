@@ -210,6 +210,7 @@
           <Property Name="CountryID" Type="int" />
           <Property Name="AdressTitle" Type="nvarchar" MaxLength="30" />
           <Property Name="AddressType" Type="nvarchar" MaxLength="25" />
+          <Property Name="Pobox" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="CustomerCategory">
           <Key>
@@ -4740,6 +4741,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="CountryID" Type="Int32" />
           <Property Name="AdressTitle" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="AddressType" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Pobox" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="City" Relationship="Self.FK__CustomerA__CityI__4E53A1AA" FromRole="CustomerAddress" ToRole="City" />
           <NavigationProperty Name="Country" Relationship="Self.FK__CustomerA__Count__503BEA1C" FromRole="CustomerAddress" ToRole="Country" />
           <NavigationProperty Name="Customer" Relationship="Self.FK__CustomerA__Custo__44CA3770" FromRole="CustomerAddress" ToRole="Customer" />
@@ -10120,6 +10122,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="CountryID" ColumnName="CountryID" />
                 <ScalarProperty Name="AdressTitle" ColumnName="AdressTitle" />
                 <ScalarProperty Name="AddressType" ColumnName="AddressType" />
+                <ScalarProperty Name="Pobox" ColumnName="Pobox" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

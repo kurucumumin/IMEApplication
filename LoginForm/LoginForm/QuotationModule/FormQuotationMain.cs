@@ -1179,9 +1179,13 @@ namespace LoginForm.QuotationModule
                 {
                     List<QuotationDetail> list = IME.QuotationDetails.Where(x => x.QuotationNo == QuotationNo).ToList();
 
-                    FormQuotationPrint form = new FormQuotationPrint();
-                    form.Print(quo, list);
-                    form.ShowDialog();
+                    //FormQuotationPrint form = new FormQuotationPrint();
+                    //form.Print(quo, list);
+                    //form.ShowDialog();
+
+                    frmPrintOptions frm = new frmPrintOptions(quo, list);
+                    frm.ShowDialog();
+
                     //form.Close();
                     //QuotationExcelExport.QuotationMainPrintExport(quo);
                     Utils.LogKayit("Quotation", "Quotation print");
@@ -1383,9 +1387,12 @@ namespace LoginForm.QuotationModule
                 {
                     List<QuotationDetail> list = IME.QuotationDetails.Where(x => x.QuotationNo == QuotationNo).ToList();
 
-                    FormQuotationPrint form = new FormQuotationPrint();
-                    form.Print(quo, list);
-                    form.ShowDialog();
+                    frmPrintOptions frm = new frmPrintOptions(quo, list);
+                    frm.ShowDialog();
+                    
+                    //FormQuotationPrint form = new FormQuotationPrint();
+                    //form.Print(quo, list);
+                    //form.ShowDialog();
                     //form.Close();
                     //QuotationExcelExport.QuotationMainPrintExport(quo);
                     Utils.LogKayit("Quotation", "Quotation print");

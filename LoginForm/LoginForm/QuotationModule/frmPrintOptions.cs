@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LoginForm.DataSet;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,19 @@ namespace LoginForm.QuotationModule
 {
     public partial class frmPrintOptions : Form
     {
+        Quotation quo;
+        List<QuotationDetail> list;
+
         public frmPrintOptions()
         {
             InitializeComponent();
+        }
+
+        public frmPrintOptions(Quotation qd, List<QuotationDetail> data)
+        {
+            InitializeComponent();
+            quo = qd;
+            list = data;
         }
 
         public frmPrintOptions(String QuoNo)
@@ -38,6 +49,23 @@ namespace LoginForm.QuotationModule
             {
                 this.Close();
             }
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            FormQuotationPrint form = new FormQuotationPrint();
+            if (chkVat.Checked==false)
+            {
+                form.Print(quo, list, false);
+                form.ShowDialog();
+            }
+            else
+            {
+                form.Print(quo, list, true);
+                form.ShowDialog();
+            }
+
+            
         }
     }
 }

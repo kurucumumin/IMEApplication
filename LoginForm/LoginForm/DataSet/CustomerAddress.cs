@@ -32,6 +32,7 @@ namespace LoginForm.DataSet
         public Nullable<int> CountryID { get; set; }
         public string AdressTitle { get; set; }
         public string AddressType { get; set; }
+        public string Pobox { get; set; }
     
         public virtual City City { get; set; }
         public virtual Country Country { get; set; }

@@ -961,6 +961,7 @@ namespace LoginForm
                 ca.AdressDetails = AddressDetails.Text;
                 if (cbDefaultInvoiceAdress.Checked) { ca.isInvoiceAddress = true; } else { ca.isInvoiceAddress = false; }
                 if (cbDefaultDeliveryAdress.Checked) { ca.isDeliveryAddress = true; } else { ca.isDeliveryAddress = false; }
+                ca.Pobox = txtPoBox.Text;
                 IME.SaveChanges();
                 Utils.LogKayit("Customer", "Customer address update");
             }
@@ -981,8 +982,9 @@ namespace LoginForm
                         //AddresType
                         isInvoiceAddress = false,
                         PostCode = PostCode.Text,
-                        AdressDetails = AddressDetails.Text
-                    };
+                        AdressDetails = AddressDetails.Text,
+                        Pobox = txtPoBox.Text
+                };
                 }
                 //if (!cbDefaultInvoiceAdress.Checked) { ca.isInvoiceAddress = true;}
                 if (cbDefaultInvoiceAdress.Checked) { ca.isInvoiceAddress = true; } else { ca.isInvoiceAddress = false; }

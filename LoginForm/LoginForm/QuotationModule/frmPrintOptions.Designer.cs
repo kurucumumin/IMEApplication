@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
@@ -47,6 +47,7 @@
             this.btnXls = new System.Windows.Forms.Button();
             this.btnPdf = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.chkVat = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -65,16 +66,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Show Column";
             // 
-            // radioButton1
+            // radioButton3
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(6, 28);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(118, 17);
-            this.radioButton1.TabIndex = 1;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Product Description";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(6, 74);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(99, 17);
+            this.radioButton3.TabIndex = 3;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "Product Weight";
+            this.radioButton3.UseVisualStyleBackColor = true;
             // 
             // radioButton2
             // 
@@ -87,19 +88,20 @@
             this.radioButton2.Text = "Customer Stock Code";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // radioButton1
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(6, 74);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(99, 17);
-            this.radioButton3.TabIndex = 3;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Product Weight";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(6, 28);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(118, 17);
+            this.radioButton1.TabIndex = 1;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Product Description";
+            this.radioButton1.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.chkVat);
             this.groupBox2.Controls.Add(this.radioButton4);
             this.groupBox2.Controls.Add(this.radioButton5);
             this.groupBox2.Location = new System.Drawing.Point(12, 127);
@@ -112,23 +114,23 @@
             // radioButton4
             // 
             this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(6, 28);
+            this.radioButton4.Location = new System.Drawing.Point(6, 21);
             this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(101, 17);
+            this.radioButton4.Size = new System.Drawing.Size(71, 17);
             this.radioButton4.TabIndex = 3;
             this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Unit Piece Price";
+            this.radioButton4.Text = "Unit Price";
             this.radioButton4.UseVisualStyleBackColor = true;
             // 
             // radioButton5
             // 
             this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(6, 51);
+            this.radioButton5.Location = new System.Drawing.Point(6, 42);
             this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(99, 17);
+            this.radioButton5.Size = new System.Drawing.Size(98, 17);
             this.radioButton5.TabIndex = 2;
             this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "Unit Pack Price";
+            this.radioButton5.Text = "Bag/Reel Price";
             this.radioButton5.UseVisualStyleBackColor = true;
             // 
             // groupBox3
@@ -212,6 +214,7 @@
             this.btnPrint.Text = "Ptint";
             this.btnPrint.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // btnMail
             // 
@@ -251,6 +254,16 @@
             this.btnClose.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // chkVat
+            // 
+            this.chkVat.AutoSize = true;
+            this.chkVat.Location = new System.Drawing.Point(7, 63);
+            this.chkVat.Name = "chkVat";
+            this.chkVat.Size = new System.Drawing.Size(47, 17);
+            this.chkVat.TabIndex = 7;
+            this.chkVat.Text = "VAT";
+            this.chkVat.UseVisualStyleBackColor = true;
             // 
             // frmPrintOptions
             // 
@@ -307,5 +320,6 @@
         private System.Windows.Forms.Button btnXls;
         private System.Windows.Forms.Button btnPdf;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.CheckBox chkVat;
     }
 }

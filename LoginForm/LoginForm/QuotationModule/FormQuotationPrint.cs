@@ -19,7 +19,7 @@ namespace LoginForm.QuotationModule
             InitializeComponent();
         }
 
-        public void Print(Quotation qd, List<QuotationDetail> data)
+        public void Print(Quotation qd, List<QuotationDetail> data, bool vat)
         {
             IMEEntities IME = new IMEEntities();
             ReportQuotation report = new ReportQuotation();
@@ -27,7 +27,7 @@ namespace LoginForm.QuotationModule
             {
                 p.Visible = false;
             }
-            report.InitData(qd.QuotationNo, qd.Customer?.c_name, qd.MainContactName, qd.Customer?.telephone, qd.Customer?.webadress, qd.Customer?.fax, qd.RFQNo, Int32.Parse(qd.ValidationDay?.ToString()), qd.StartDate, qd.Customer?.CustomerWorker?.cw_name, qd.Customer?.CustomerWorker?.cw_email, qd.Customer?.CustomerWorker?.phone, qd.PaymentTerm?.term_name, qd.FirstNote, qd.Currency?.currencySymbol, qd.Currency?.currencyName, data);
+            report.InitData(qd.QuotationNo, qd.Customer?.c_name, qd.MainContactName, qd.Customer?.telephone, qd.RFQNo, Int32.Parse(qd.ValidationDay?.ToString()), qd.StartDate, qd.Customer?.CustomerWorker?.cw_name, qd.Customer?.CustomerWorker?.phone, qd.PaymentTerm?.term_name, qd.FirstNote, qd.Currency?.currencySymbol, qd.Currency?.currencyName, qd.Customer.CustomerAddresses.Where(x=> x.CustomerID == qd.Customer.ID).FirstOrDefault().Pobox, data,vat);
             documentViewer1.DocumentSource = report;
             report.CreateDocument();
             //report.ExportToPdf("C:\\Users\\pomak\\Desktop\\ReportQuotation.pdf");

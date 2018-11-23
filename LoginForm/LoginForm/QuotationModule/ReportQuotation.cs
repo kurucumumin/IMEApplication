@@ -40,7 +40,7 @@ namespace LoginForm
 
         }
 
-        public void InitData(string quotationNo,string customerName, string mainContact, string cTel, string cweb, string fax, string rFQNo, int validaty, DateTime date, string represantative, string mail, string tel,string payment, string note, string currencySymbol, string currencyName, List<QuotationDetail> data)
+        public void InitData(string quotationNo,string customerName, string mainContact, string cTel, string rFQNo, int validaty, DateTime date, string represantative, string tel,string payment, string note, string currencySymbol, string currencyName, string pobox, List<QuotationDetail> data,bool vat)
         {
             DataTable table = ConvertToDataTable<QuotationDetail>(data);
 
@@ -52,16 +52,14 @@ namespace LoginForm
             pCustomerName.Value = customerName;
             pMainContact.Value = mainContact;
             pTelephone.Value = cTel;
-            pCustomerWeb.Value = cweb;
-            pFax.Value = fax;
             pRfqNo.Value = rFQNo;
             pValidity.Value = validaty;
             pDate.Value = date;
             pRepresantative.Value = represantative;
-            pContactMail.Value = mail;
             pContactTel.Value = tel;
             pPayment.Value = payment;
             pNote.Value = note;
+            pPoBox.Value = pobox;
 
             if (currencyName == "Pound")
             {
@@ -90,76 +88,136 @@ namespace LoginForm
                     if (array.UC == 1 && array.SSM == 1)
                     {
                         array.UnitOfMeasure = "EACH " + array.SSM * array.UC;
+                        array.TargetUP = array.Qty / (array.SSM * array.UC);
+                        array.Qty = Convert.ToInt32(array.TargetUP);
                     }
                     else
                     {
                         array.UnitOfMeasure = "PACKET OF " + array.SSM * array.UC;
+                        array.TargetUP = array.Qty / (array.SSM * array.UC);
+                        array.Qty = Convert.ToInt32(array.TargetUP * array.SSM * array.UC);
                     }
                 }
                 else if (array.UnitOfMeasure == "REEL")
                 {
                     array.UnitOfMeasure = "REEL OF " + array.SSM * array.UC;
+                    array.TargetUP = array.Qty / (array.SSM * array.UC);
+                    array.Qty = Convert.ToInt32(array.TargetUP);
                 }
                 else if (array.UnitOfMeasure == "MREEL")
                 {
                     array.UnitOfMeasure = "REEL OF " + array.SSM * array.UC + " M";
+                    array.TargetUP = array.Qty / (array.SSM * array.UC);
+                    array.Qty = Convert.ToInt32(array.TargetUP);
                 }
                 else if (array.UnitOfMeasure == "GREEL")
                 {
                     array.UnitOfMeasure = "REEL OF " + array.SSM * array.UC + " G";
+                    array.TargetUP = array.Qty / (array.SSM * array.UC);
+                    array.Qty = Convert.ToInt32(array.TargetUP);
                 }
                 else if (array.UnitOfMeasure == "KIT")
                 {
                     array.UnitOfMeasure = "KIT OF " + array.SSM * array.UC;
+                    array.TargetUP = array.Qty / (array.SSM * array.UC);
+                    array.Qty = Convert.ToInt32(array.TargetUP);
                 }
                 else if (array.UnitOfMeasure == "BAG")
                 {
                     array.UnitOfMeasure = "BAG OF " + array.SSM * array.UC;
+                    array.TargetUP = array.Qty / (array.SSM * array.UC);
+                    array.Qty = Convert.ToInt32(array.TargetUP);
                 }
                 else if (array.UnitOfMeasure == "MBAG")
                 {
-                    array.UnitOfMeasure = "BAG OF " +array.SSM * array.UC +" M";
+                    array.UnitOfMeasure = "BAG OF " +array.SSM * array.UC + " M";
+                    array.TargetUP = array.Qty / (array.SSM * array.UC);
+                    array.Qty = Convert.ToInt32(array.TargetUP);
                 }
                 else if (array.UnitOfMeasure == "BOX")
                 {
                     array.UnitOfMeasure = "BOX OF " + array.SSM * array.UC;
+                    array.TargetUP = array.Qty / (array.SSM * array.UC);
+                    array.Qty = Convert.ToInt32(array.TargetUP);
                 }
                 else if (array.UnitOfMeasure == "SET")
                 {
                     array.UnitOfMeasure = "SET OF " + array.SSM * array.UC;
+                    array.TargetUP = array.Qty / (array.SSM * array.UC);
+                    array.Qty = Convert.ToInt32(array.TargetUP);
                 }
                 else if (array.UnitOfMeasure == "PAIR")
                 {
                     array.UnitOfMeasure = "PAIR OF " + array.SSM * array.UC;
+                    array.TargetUP = array.Qty / (array.SSM * array.UC);
+                    array.Qty = Convert.ToInt32(array.TargetUP);
                 }
                 else if (array.UnitOfMeasure == "LOT")
                 {
                     array.UnitOfMeasure = "LOT OF " + array.SSM * array.UC;
+                    array.TargetUP = array.Qty / (array.SSM * array.UC);
+                    array.Qty = Convert.ToInt32(array.TargetUP);
                 }
                 else if (array.UnitOfMeasure == "XXX")
                 {
                     array.UnitOfMeasure = "EACH";
+                    array.TargetUP = array.Qty / (array.SSM * array.UC);
+                    array.Qty = Convert.ToInt32(array.TargetUP);
                 }
                 else if (array.UnitOfMeasure == "M")
                 {
                     array.UnitOfMeasure = "METER " + array.SSM * array.UC;
+                    array.TargetUP = array.Qty / (array.SSM * array.UC);
+                    array.Qty = Convert.ToInt32(array.TargetUP);
                 }
                 else if (array.UnitOfMeasure == "TUBE")
                 {
                     array.UnitOfMeasure = "TUBE OF " + array.SSM * array.UC;
+                    array.TargetUP = array.Qty / (array.SSM * array.UC);
+                    array.Qty = Convert.ToInt32(array.TargetUP);
                 }
                 else if (array.UnitOfMeasure == "PACKET OF")
                 {
                     array.UnitOfMeasure = "PACKET OF " + array.SSM * array.UC;
+                    array.TargetUP = array.Qty / (array.SSM * array.UC);
+                    array.Qty = Convert.ToInt32(array.TargetUP * array.SSM * array.UC);
                 }
-                array.TargetUP = array.Qty / (array.SSM * array.UC);
+                else if (array.UnitOfMeasure == "EACH")
+                {
+                    array.UnitOfMeasure = "EACH " + array.SSM * array.UC;
+                    array.TargetUP = array.Qty / (array.SSM * array.UC);
+                    array.Qty = Convert.ToInt32(array.TargetUP);
+                }
+
+                xrTableCell2.Text = (array.Quotation.SubTotal - array.Quotation.DiscOnSubTotal2).ToString();
             }
 
-            xrTableCell25.DataBindings["Text"].FormatString = "{0:"+currencySymbol+ "  0.00}";
-            xrTableCell26.DataBindings["Text"].FormatString = "{0:"+currencySymbol+ "  0.00}";
-            xrTableCell30.DataBindings["Text"].FormatString = "{0:"+currencySymbol+ " 0.00}";
-
             objectDataSource1.DataSource = data;
+
+            xrTableCell11.Text = "Price Per UOM " + currencySymbol;
+            xrTableCell14.Text = "Total                " + currencySymbol;
+            xrTableCell1.Text = "Sub Total " + currencySymbol;
+            xrTableCell9.Text = "Total " + currencySymbol;
+            xrTableCell20.Text = "Net " + currencySymbol;
+            xrTableCell30.DataBindings["Text"].FormatString = "{0:" + currencySymbol + " 0.00}";
+
+            if (vat == false)
+            {
+                xrTableCell9.Visible = false;
+                xrTableCell10.Visible = false;
+                xrTableCell3.Visible = false;
+                xrTableCell28.Visible = false;
+                xrLabel18.Visible = true;
+            }
+            else
+            {
+                xrTableCell9.Visible = true;
+                xrTableCell10.Visible = true;
+                xrTableCell3.Visible = true;
+                xrTableCell28.Visible = true;
+                xrLabel18.Visible = false;
+            }
+            
         }
 
         
