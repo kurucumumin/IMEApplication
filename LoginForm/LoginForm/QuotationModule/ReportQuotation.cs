@@ -9,14 +9,19 @@ using System.Windows.Forms;
 using System.Data;
 using DevExpress.XtraPrinting;
 using System.Globalization;
+using System.Text.RegularExpressions;
+using LoginForm.Services;
 
 namespace LoginForm
 {
     public partial class ReportQuotation : DevExpress.XtraReports.UI.XtraReport
     {
-       
-        PdfExportOptions options = new PdfExportOptions();
+
+        decimal sayi;
+        string currency;
+        string subnit;
         CultureInfo culture = new CultureInfo("en-US", true);
+        IMEEntities IME = new IMEEntities();
         public ReportQuotation()
         {
             InitializeComponent();
@@ -40,10 +45,11 @@ namespace LoginForm
 
         }
 
-        public void InitData(string quotationNo,string customerName, string mainContact, string cTel, string rFQNo, int validaty, DateTime date, string represantative, string tel,string payment, string note, string currencySymbol, string currencyName, string pobox, List<QuotationDetail> data,bool vat)
+        public void InitData(string quotationNo,string customerName, string mainContact, string cTel, string rFQNo, int validaty, DateTime date, string represantative, string tel,string payment, string note, string currencySymbol, string currencyName, string pobox, string city, string disc, string gross, string subnitName, string sub, List<QuotationDetail> data,bool vat)
         {
             DataTable table = ConvertToDataTable<QuotationDetail>(data);
-
+            decimal toplam = 0;
+            decimal grosstotal = 0;
             culture.NumberFormat.CurrencySymbol = currencySymbol;
             System.Threading.Thread.CurrentThread.CurrentCulture = culture;
             DevExpress.Utils.FormatInfo.AlwaysUseThreadFormat = true;
@@ -58,21 +64,35 @@ namespace LoginForm
             pRepresantative.Value = represantative;
             pContactTel.Value = tel;
             pPayment.Value = payment;
-            pNote.Value = note;
+            pSubTotal.Value = sub;
+            if (pobox == null)
+            {
+                xrLabel6.Visible = false;
+            }
             pPoBox.Value = pobox;
+            pCity.Value = city;
+            pDisc.Value = Math.Round(Convert.ToDecimal(disc), 2).ToString();
+            pGross.Value = Math.Round(Convert.ToDecimal(gross), 2).ToString();
 
             if (currencyName == "Pound")
             {
+                currency = currencyName;
+                subnit = subnitName;
                 currencyName = "Sterling " + currencyName;
                 pCurrencyName.Value = currencyName;
             }
             else if (currencyName == "Dollar")
             {
+
+                currency = currencyName;
+                subnit = subnitName;
                 currencyName = "US " + currencyName;
                 pCurrencyName.Value = currencyName;
             }
             else
             {
+                currency = currencyName;
+                subnit = subnitName;
                 pCurrencyName.Value = currencyName;
             }
 
@@ -87,7 +107,7 @@ namespace LoginForm
                 {
                     if (array.UC == 1 && array.SSM == 1)
                     {
-                        array.UnitOfMeasure = "EACH " + array.SSM * array.UC;
+                        array.UnitOfMeasure = "EACH ";
                         array.TargetUP = array.Qty / (array.SSM * array.UC);
                         array.Qty = Convert.ToInt32(array.TargetUP);
                     }
@@ -184,29 +204,31 @@ namespace LoginForm
                 }
                 else if (array.UnitOfMeasure == "EACH")
                 {
-                    array.UnitOfMeasure = "EACH " + array.SSM * array.UC;
+                    array.UnitOfMeasure = "EACH ";
                     array.TargetUP = array.Qty / (array.SSM * array.UC);
                     array.Qty = Convert.ToInt32(array.TargetUP);
                 }
-
-                xrTableCell2.Text = (array.Quotation.SubTotal - array.Quotation.DiscOnSubTotal2).ToString();
+                xrTableCell2.Text = Math.Round(Convert.ToDecimal(array.Quotation.SubTotal - array.Quotation.DiscOnSubTotal2), 2).ToString();
             }
 
             objectDataSource1.DataSource = data;
 
             xrTableCell11.Text = "Price Per UOM " + currencySymbol;
-            xrTableCell14.Text = "Total                " + currencySymbol;
+            xrTableCell14.Text = " Total                " + currencySymbol;
             xrTableCell1.Text = "Sub Total " + currencySymbol;
-            xrTableCell9.Text = "Total " + currencySymbol;
-            xrTableCell20.Text = "Net " + currencySymbol;
-            xrTableCell30.DataBindings["Text"].FormatString = "{0:" + currencySymbol + " 0.00}";
+            xrTableCell9.Text = " Total " + currencySymbol;
+            xrTableCell20.Text = " Net " + currencySymbol;
+            xrTableCell30.DataBindings["Text"].FormatString = "{0: 0.00}";
+            xrTableCell21.DataBindings["Text"].FormatString = "{0: 0.00}";
 
             if (vat == false)
             {
-                xrTableCell9.Visible = false;
-                xrTableCell10.Visible = false;
-                xrTableCell3.Visible = false;
-                xrTableCell28.Visible = false;
+                xrTableCell9.Text = "";
+                xrTableCell10.Text = "";
+                xrTableCell3.Text = "";
+                xrTableCell28.Text = "";
+                sub = "";
+                pSubTotal.Value = sub;
                 xrLabel18.Visible = true;
             }
             else
@@ -217,10 +239,94 @@ namespace LoginForm
                 xrTableCell28.Visible = true;
                 xrLabel18.Visible = false;
             }
-            
+
+            if (gross != "")
+            {
+                grosstotal = Convert.ToDecimal(gross);
+                gross = Math.Round(grosstotal, 2).ToString();
+                xrTableCell21.Text = gross;
+                NumberConvertString();
+            }
+
+            if (disc != "" && disc != "0.00000")
+            {
+                toplam = Convert.ToDecimal(xrTableCell2.Text) / Convert.ToDecimal(disc);
+                toplam = Math.Round(toplam, 0);
+                xrTableCell29.Text = " Discount " + toplam + "%";
+            }
+
+            xrLabel37.Text = Utils.getManagement().Note;
         }
 
-        
+        private void NumberConvertString()
+        {
+            sayi = decimal.Parse(xrTableCell21.Text);
+            string sTutar = sayi.ToString("F2").Replace('.', ','); // Replace('.',',') ondalık ayracının . olma durumu için
+            string lira = sTutar.Substring(0, sTutar.IndexOf(',')); //tutarın tam kısmı
+            string kurus = sTutar.Substring(sTutar.IndexOf(',') + 1, 2);
+            string yazi = "";
+
+            string[] birler = { "", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine" };
+            string[] onlar = { "", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety" };
+            string[] binler = { "Quadrillion", "Trillion", "Billion", "Million", "Thousand", "" }; //KATRİLYON'un önüne ekleme yapılarak artırabilir.
+
+            int grupSayisi = 6; //sayıdaki 3'lü grup sayısı. katrilyon içi 6. (1.234,00 daki grup sayısı 2'dir.)
+                                //KATRİLYON'un başına ekleyeceğiniz her değer için grup sayısını artırınız.
+
+            lira = lira.PadLeft(grupSayisi * 3, '0'); //sayının soluna '0' eklenerek sayı 'grup sayısı x 3' basakmaklı yapılıyor.
+
+            string grupDegeri;
+
+            for (int i = 0; i < grupSayisi * 3; i += 3) //sayı 3'erli gruplar halinde ele alınıyor.
+            {
+                grupDegeri = "";
+
+                if (lira.Substring(i, 1) != "0")
+                    grupDegeri += birler[Convert.ToInt32(lira.Substring(i, 1))] + "Hundred "; //yüzler
+
+                if (grupDegeri == "OneHundred") //biryüz düzeltiliyor.
+                    grupDegeri = "Hundred ";
+
+                grupDegeri += onlar[Convert.ToInt32(lira.Substring(i + 1, 1))]; //onlar
+
+                grupDegeri += birler[Convert.ToInt32(lira.Substring(i + 2, 1))]; //birler
+
+                if (grupDegeri != "") //binler
+                    grupDegeri += binler[i / 3];
+
+                if (grupDegeri == "OneThousand") //birbin düzeltiliyor.
+                    grupDegeri = "Thousand ";
+
+                yazi += grupDegeri;
+            }
+
+            if (yazi != "")
+                
+                yazi = currency + "s only " + yazi + " ";
+
+            int yaziUzunlugu = yazi.Length;
+
+            if (kurus.Substring(0, 1) != "0") //kuruş onlar
+                yazi = yazi + ", and " + subnit + " " + onlar[Convert.ToInt32(kurus.Substring(0, 1))];
+            else if (kurus.Substring(0, 1) == "0")
+            {
+                if (kurus.Substring(1, 1) != "0") //kuruş birler
+                    yazi = yazi + ", and " + subnit + " " + birler[Convert.ToInt32(kurus.Substring(1, 1))];
+            }
+            else
+            {
+                if (kurus.Substring(1, 1) != "0") //kuruş birler
+                    yazi += birler[Convert.ToInt32(kurus.Substring(1, 1))];
+            }
+           
+
+            //if (yazi.Length > yaziUzunlugu)
+            //    yazi = yazi + " ";
+            //else
+            //    yazi = yazi + " ";
+
+            xrLabel53.Text = yazi + ".";
+        }
 
         private void xrTableCell2_TextChanged(object sender, EventArgs e)
         {
@@ -228,7 +334,7 @@ namespace LoginForm
             {
                 double sayi = Convert.ToDouble(xrTableCell2.Text);
                 double sonuc = (sayi * 5) / 100;
-                xrTableCell28.Text = sonuc.ToString();
+                xrTableCell28.Text = Math.Round(Convert.ToDecimal(sonuc), 2).ToString();
             }
         }
     }

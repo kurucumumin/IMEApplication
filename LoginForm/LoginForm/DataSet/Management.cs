@@ -33,6 +33,7 @@ namespace LoginForm.DataSet
         public string ServerIMEDatabaseName { get; set; }
         public string LogoCompanyNo { get; set; }
         public string LogoTermNo { get; set; }
+        public string Note { get; set; }
     
         public virtual Company Company { get; set; }
         public virtual Currency Currency { get; set; }

@@ -27,7 +27,7 @@ namespace LoginForm.QuotationModule
             {
                 p.Visible = false;
             }
-            report.InitData(qd.QuotationNo, qd.Customer?.c_name, qd.MainContactName, qd.Customer?.telephone, qd.RFQNo, Int32.Parse(qd.ValidationDay?.ToString()), qd.StartDate, qd.Customer?.CustomerWorker?.cw_name, qd.Customer?.CustomerWorker?.phone, qd.PaymentTerm?.term_name, qd.FirstNote, qd.Currency?.currencySymbol, qd.Currency?.currencyName, qd.Customer.CustomerAddresses.Where(x=> x.CustomerID == qd.Customer.ID).FirstOrDefault().Pobox, data,vat);
+            report.InitData(qd.QuotationNo, qd.Customer?.c_name, qd.MainContactName, qd.Customer?.telephone, qd.RFQNo, Int32.Parse(qd.ValidationDay?.ToString()), qd.StartDate, qd.Customer?.CustomerWorker?.cw_name, qd.Customer?.CustomerWorker?.phone, qd.PaymentTerm?.term_name, qd.FirstNote, qd.Currency?.currencySymbol, qd.Currency?.currencyName, qd.Customer.CustomerAddresses.Where(x=> x.CustomerID == qd.Customer.ID).FirstOrDefault().Pobox, qd.Customer.CustomerAddresses.Where(x => x.CustomerID == qd.Customer.ID).FirstOrDefault().City.City_name, qd.DiscOnSubTotal2.ToString(), qd.GrossTotal.ToString(), qd.Currency?.subunitName, qd.SubTotal.ToString(), data, vat);
             documentViewer1.DocumentSource = report;
             report.CreateDocument();
             //report.ExportToPdf("C:\\Users\\pomak\\Desktop\\ReportQuotation.pdf");

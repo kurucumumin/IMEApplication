@@ -45,10 +45,7 @@ namespace LoginForm.QuotationModule
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are You Sure To Exit Program ?", "Exit", MessageBoxButtons.OKCancel) == DialogResult.OK)
-            {
-                this.Close();
-            }
+            this.Close();
         }
 
         private void btnPrint_Click(object sender, EventArgs e)

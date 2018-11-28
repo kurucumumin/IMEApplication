@@ -589,6 +589,7 @@
           <Property Name="ServerIMEDatabaseName" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="LogoCompanyNo" Type="nvarchar" MaxLength="3" Nullable="false" />
           <Property Name="LogoTermNo" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="Note" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Master">
           <Key>
@@ -851,7 +852,7 @@
           <Property Name="ItemCode" Type="nvarchar" MaxLength="20" />
           <Property Name="Qty" Type="int" />
           <Property Name="UCUPCurr" Type="decimal" Precision="20" Scale="5" />
-          <Property Name="Disc" Type="decimal" Precision="5" Scale="3" />
+          <Property Name="Disc" Type="decimal" Precision="20" Scale="5" />
           <Property Name="Total" Type="decimal" Precision="20" Scale="5" />
           <Property Name="TargetUP" Type="decimal" Precision="20" Scale="5" />
           <Property Name="Competitor" Type="nvarchar" MaxLength="50" />
@@ -5157,6 +5158,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="ServerIMEDatabaseName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="LogoCompanyNo" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="LogoTermNo" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Company" Relationship="Self.FK_ManagementCompany" FromRole="Management" ToRole="Company" />
           <NavigationProperty Name="Currency" Relationship="Self.FK__Managemen__Defau__253C7D7E" FromRole="Management" ToRole="Currency" />
           <NavigationProperty Name="FinancialYear" Relationship="Self.FK__Managemen__Curre__338A9CD5" FromRole="Management" ToRole="FinancialYear" />
@@ -5467,7 +5469,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="ItemCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Qty" Type="Int32" />
           <Property Name="UCUPCurr" Type="Decimal" Precision="20" Scale="5" />
-          <Property Name="Disc" Type="Decimal" Precision="5" Scale="3" />
+          <Property Name="Disc" Type="Decimal" Precision="20" Scale="5" />
           <Property Name="Total" Type="Decimal" Precision="20" Scale="5" />
           <Property Name="TargetUP" Type="Decimal" Precision="20" Scale="5" />
           <Property Name="Competitor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -10524,6 +10526,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="ServerIMEDatabaseName" ColumnName="ServerIMEDatabaseName" />
                 <ScalarProperty Name="LogoCompanyNo" ColumnName="LogoCompanyNo" />
                 <ScalarProperty Name="LogoTermNo" ColumnName="LogoTermNo" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

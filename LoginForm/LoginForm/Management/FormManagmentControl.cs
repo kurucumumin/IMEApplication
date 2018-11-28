@@ -77,6 +77,7 @@ namespace LoginForm.ManagementModule
 
             txtDataSeperator.Text = m.DataSeperetor;
             txtBranchCode.Text = m.Company.BranchCode;
+            txtNote.Text = m.Note;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -108,6 +109,8 @@ namespace LoginForm.ManagementModule
                     //management.BranchCode = txtBranchCode.Text;
                     management.CustomsRate = CustomsRateUpDown.Value;
                     management.FreightCharge = FreightChargeUpDown.Value;
+                    management.Note = txtNote.Text;
+
                     IME.SaveChanges();
 
                     Company c = IME.Companies.Where(x => x.companyId == management.CurrentCompanyId).FirstOrDefault();

@@ -3,6 +3,7 @@ using Microsoft.Office.Interop.Excel;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity.Validation;
 using System.Data.SqlClient;
 using System.Globalization;
 using System.Linq;
@@ -1851,6 +1852,7 @@ namespace LoginForm
 
         public static int OnSaleRead()
         {
+
             #region OnSale
             IMEEntities IME = new IMEEntities();
 
@@ -1960,15 +1962,23 @@ namespace LoginForm
                     MessageBox.Show("Upload Completed");
                     return 1;
                 }
-                catch (Exception e)
+                catch (DbEntityValidationException e)
                 {
-                    MessageBox.Show(e.InnerException.Message);
-                    MessageBox.Show(e.InnerException.StackTrace); return 0;
-                }
 
-                #endregion
+                    foreach (var eve in e.EntityValidationErrors)
+                    {
+                        MessageBox.Show(string.Format("Entity türü \"{0}\" şu hatalara sahip \"{1}\" Geçerlilik hataları:", eve.Entry.Entity.GetType().Name, eve.Entry.State));
+                        foreach (var ve in eve.ValidationErrors)
+                        {
+                            MessageBox.Show(string.Format("- Özellik: \"{0}\", Hata: \"{1}\"", ve.PropertyName, ve.ErrorMessage));
+                        }
+                    }
+
+                }
             }
             return 0;
+
+            #endregion
         }
 
         public static int DiscontinuedListRead()

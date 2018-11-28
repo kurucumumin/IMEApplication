@@ -47,6 +47,8 @@
             this.txtLowMarginLimit = new System.Windows.Forms.TextBox();
             this.lblLowMarginLimit = new System.Windows.Forms.Label();
             this.chkCustomer = new System.Windows.Forms.CheckBox();
+            this.txtNote = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.CustomsRateUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FreightChargeUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericFactor)).BeginInit();
@@ -56,7 +58,7 @@
             // 
             this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnSave.Image = global::LoginForm.Properties.Resources.if_floppy_285657;
-            this.btnSave.Location = new System.Drawing.Point(182, 340);
+            this.btnSave.Location = new System.Drawing.Point(210, 434);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(51, 41);
             this.btnSave.TabIndex = 78;
@@ -67,7 +69,7 @@
             // 
             this.label67.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label67.AutoSize = true;
-            this.label67.Location = new System.Drawing.Point(190, 384);
+            this.label67.Location = new System.Drawing.Point(218, 478);
             this.label67.Name = "label67";
             this.label67.Size = new System.Drawing.Size(32, 13);
             this.label67.TabIndex = 77;
@@ -75,7 +77,7 @@
             // 
             // CustomsRateUpDown
             // 
-            this.CustomsRateUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.CustomsRateUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CustomsRateUpDown.DecimalPlaces = 2;
             this.CustomsRateUpDown.Increment = new decimal(new int[] {
@@ -86,7 +88,7 @@
             this.CustomsRateUpDown.Location = new System.Drawing.Point(134, 299);
             this.CustomsRateUpDown.Margin = new System.Windows.Forms.Padding(2);
             this.CustomsRateUpDown.Name = "CustomsRateUpDown";
-            this.CustomsRateUpDown.Size = new System.Drawing.Size(231, 20);
+            this.CustomsRateUpDown.Size = new System.Drawing.Size(296, 20);
             this.CustomsRateUpDown.TabIndex = 76;
             // 
             // label4
@@ -101,7 +103,7 @@
             // 
             // FreightChargeUpDown
             // 
-            this.FreightChargeUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.FreightChargeUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.FreightChargeUpDown.DecimalPlaces = 2;
             this.FreightChargeUpDown.Increment = new decimal(new int[] {
@@ -112,7 +114,7 @@
             this.FreightChargeUpDown.Location = new System.Drawing.Point(134, 263);
             this.FreightChargeUpDown.Margin = new System.Windows.Forms.Padding(2);
             this.FreightChargeUpDown.Name = "FreightChargeUpDown";
-            this.FreightChargeUpDown.Size = new System.Drawing.Size(231, 20);
+            this.FreightChargeUpDown.Size = new System.Drawing.Size(296, 20);
             this.FreightChargeUpDown.TabIndex = 74;
             // 
             // label3
@@ -127,13 +129,13 @@
             // 
             // txtBranchCode
             // 
-            this.txtBranchCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.txtBranchCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBranchCode.Enabled = false;
             this.txtBranchCode.Location = new System.Drawing.Point(134, 225);
             this.txtBranchCode.Margin = new System.Windows.Forms.Padding(2, 2, 12, 2);
             this.txtBranchCode.Name = "txtBranchCode";
-            this.txtBranchCode.Size = new System.Drawing.Size(232, 20);
+            this.txtBranchCode.Size = new System.Drawing.Size(297, 20);
             this.txtBranchCode.TabIndex = 72;
             // 
             // label2
@@ -149,12 +151,12 @@
             // 
             // txtDataSeperator
             // 
-            this.txtDataSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.txtDataSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDataSeperator.Location = new System.Drawing.Point(134, 186);
             this.txtDataSeperator.Margin = new System.Windows.Forms.Padding(2, 2, 12, 2);
             this.txtDataSeperator.Name = "txtDataSeperator";
-            this.txtDataSeperator.Size = new System.Drawing.Size(232, 20);
+            this.txtDataSeperator.Size = new System.Drawing.Size(297, 20);
             this.txtDataSeperator.TabIndex = 70;
             // 
             // label1
@@ -168,7 +170,7 @@
             // 
             // numericFactor
             // 
-            this.numericFactor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.numericFactor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.numericFactor.DecimalPlaces = 1;
             this.numericFactor.Increment = new decimal(new int[] {
@@ -179,7 +181,7 @@
             this.numericFactor.Location = new System.Drawing.Point(134, 128);
             this.numericFactor.Margin = new System.Windows.Forms.Padding(2);
             this.numericFactor.Name = "numericFactor";
-            this.numericFactor.Size = new System.Drawing.Size(231, 20);
+            this.numericFactor.Size = new System.Drawing.Size(296, 20);
             this.numericFactor.TabIndex = 68;
             this.numericFactor.ThousandsSeparator = true;
             // 
@@ -195,14 +197,14 @@
             // 
             // cbCurrency
             // 
-            this.cbCurrency.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.cbCurrency.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cbCurrency.DisplayMember = "currencySymbol";
             this.cbCurrency.FormattingEnabled = true;
             this.cbCurrency.Location = new System.Drawing.Point(134, 89);
             this.cbCurrency.Margin = new System.Windows.Forms.Padding(2);
             this.cbCurrency.Name = "cbCurrency";
-            this.cbCurrency.Size = new System.Drawing.Size(232, 21);
+            this.cbCurrency.Size = new System.Drawing.Size(297, 21);
             this.cbCurrency.TabIndex = 66;
             this.cbCurrency.ValueMember = "currencyID";
             // 
@@ -218,12 +220,12 @@
             // 
             // txtVAT
             // 
-            this.txtVAT.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.txtVAT.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtVAT.Location = new System.Drawing.Point(134, 54);
             this.txtVAT.Margin = new System.Windows.Forms.Padding(2, 2, 12, 2);
             this.txtVAT.Name = "txtVAT";
-            this.txtVAT.Size = new System.Drawing.Size(232, 20);
+            this.txtVAT.Size = new System.Drawing.Size(297, 20);
             this.txtVAT.TabIndex = 64;
             // 
             // lblVAT
@@ -238,12 +240,12 @@
             // 
             // txtLowMarginLimit
             // 
-            this.txtLowMarginLimit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.txtLowMarginLimit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtLowMarginLimit.Location = new System.Drawing.Point(134, 18);
             this.txtLowMarginLimit.Margin = new System.Windows.Forms.Padding(2, 2, 12, 2);
             this.txtLowMarginLimit.Name = "txtLowMarginLimit";
-            this.txtLowMarginLimit.Size = new System.Drawing.Size(232, 20);
+            this.txtLowMarginLimit.Size = new System.Drawing.Size(297, 20);
             this.txtLowMarginLimit.TabIndex = 62;
             // 
             // lblLowMarginLimit
@@ -266,12 +268,35 @@
             this.chkCustomer.Text = "Apply to all Customers";
             this.chkCustomer.UseVisualStyleBackColor = true;
             // 
+            // txtNote
+            // 
+            this.txtNote.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtNote.Location = new System.Drawing.Point(133, 333);
+            this.txtNote.Margin = new System.Windows.Forms.Padding(2, 2, 12, 2);
+            this.txtNote.Multiline = true;
+            this.txtNote.Name = "txtNote";
+            this.txtNote.Size = new System.Drawing.Size(297, 96);
+            this.txtNote.TabIndex = 83;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(2, 336);
+            this.label5.Margin = new System.Windows.Forms.Padding(12, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(103, 13);
+            this.label5.TabIndex = 82;
+            this.label5.Text = "Quotation Print Note";
+            // 
             // FormManagmentControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
-            this.ClientSize = new System.Drawing.Size(372, 444);
+            this.ClientSize = new System.Drawing.Size(437, 507);
+            this.Controls.Add(this.txtNote);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.chkCustomer);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.label67);
@@ -323,5 +348,7 @@
         private System.Windows.Forms.TextBox txtLowMarginLimit;
         private System.Windows.Forms.Label lblLowMarginLimit;
         private System.Windows.Forms.CheckBox chkCustomer;
+        private System.Windows.Forms.TextBox txtNote;
+        private System.Windows.Forms.Label label5;
     }
 }
