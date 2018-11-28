@@ -64,6 +64,7 @@ namespace LoginForm
             pRepresantative.Value = represantative;
             pContactTel.Value = tel;
             pPayment.Value = payment;
+            sub = Math.Round(Convert.ToDecimal(sub), 2).ToString();
             pSubTotal.Value = sub;
             if (pobox == null)
             {
@@ -220,7 +221,7 @@ namespace LoginForm
             xrTableCell20.Text = " Net " + currencySymbol;
             xrTableCell30.DataBindings["Text"].FormatString = "{0: 0.00}";
             xrTableCell21.DataBindings["Text"].FormatString = "{0: 0.00}";
-
+           
             if (vat == false)
             {
                 xrTableCell9.Text = "";
