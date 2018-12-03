@@ -2279,6 +2279,19 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("QuotationDetailsADD", dgNoParameter, itemCodeParameter, qtyParameter, uCUPCurrParameter, discParameter, totalParameter, targetUPParameter, competitorParameter, customerDescriptionParameter, customerStockCodeParameter, isDeletedParameter, quotationNoParameter, uPIMEParameter, margeParameter, unitOfMeasureParameter, uCParameter, sSMParameter, unitWeightParameter, dependantTableParameter, unitConversionIdParameter);
         }
     
+        public virtual ObjectResult<QuotvsOrdersDetail_Result> QuotvsOrdersDetail(Nullable<System.DateTime> startDate, Nullable<System.DateTime> endDate)
+        {
+            var startDateParameter = startDate.HasValue ?
+                new ObjectParameter("StartDate", startDate) :
+                new ObjectParameter("StartDate", typeof(System.DateTime));
+    
+            var endDateParameter = endDate.HasValue ?
+                new ObjectParameter("EndDate", endDate) :
+                new ObjectParameter("EndDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<QuotvsOrdersDetail_Result>("QuotvsOrdersDetail", startDateParameter, endDateParameter);
+        }
+    
         public virtual ObjectResult<SaleOrder_SaleOrderNo_Result> SaleOrder_SaleOrderNo(Nullable<decimal> saleOrderNo)
         {
             var saleOrderNoParameter = saleOrderNo.HasValue ?
@@ -2286,6 +2299,19 @@ namespace LoginForm.DataSet
                 new ObjectParameter("SaleOrderNo", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SaleOrder_SaleOrderNo_Result>("SaleOrder_SaleOrderNo", saleOrderNoParameter);
+        }
+    
+        public virtual ObjectResult<SalesOrdersDetail_Result> SalesOrdersDetail(Nullable<System.DateTime> startDate, Nullable<System.DateTime> endDate)
+        {
+            var startDateParameter = startDate.HasValue ?
+                new ObjectParameter("StartDate", startDate) :
+                new ObjectParameter("StartDate", typeof(System.DateTime));
+    
+            var endDateParameter = endDate.HasValue ?
+                new ObjectParameter("EndDate", endDate) :
+                new ObjectParameter("EndDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SalesOrdersDetail_Result>("SalesOrdersDetail", startDateParameter, endDateParameter);
         }
     
         public virtual int SlidingPriceAdd(string articleNo, string articleDescription, Nullable<int> itemTypeCode, string itemTypeDesc, string introductionDate, string discontinuedDate, Nullable<int> quantity1, Nullable<decimal> col1Price, Nullable<decimal> col2Price, Nullable<decimal> col3Price, Nullable<decimal> col4Price, Nullable<decimal> col5Price, Nullable<int> col1Break, Nullable<int> col2Break, Nullable<int> col3Break, Nullable<int> col4Break, Nullable<int> col5Break, Nullable<decimal> discountedPrice1, Nullable<decimal> discountedPrice2, Nullable<decimal> discountedPrice3, Nullable<decimal> discountedPrice4, Nullable<decimal> discountedPrice5, string superSectionNo, string supersectionName, string brandID, string brandname, string sectionID, string sectionName)

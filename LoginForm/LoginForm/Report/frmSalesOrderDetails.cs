@@ -8,9 +8,10 @@ using static LoginForm.Services.MyClasses.MyAuthority;
 using LoginForm.DataSet;
 using System.Globalization;
 
+
 namespace LoginForm
 {
-    public partial class frmQuotOrdersDetails : Form
+    public partial class frmSalesOrderDetails : Form
     {
         IMEEntities IME = new IMEEntities();
         DateTime StartDate;
@@ -19,7 +20,8 @@ namespace LoginForm
         Decimal CurrValue = 1;
         decimal defaultCurr = 1;
         DataGridViewRow CurrentRow;
-        public frmQuotOrdersDetails()
+
+        public frmSalesOrderDetails()
         {
             InitializeComponent();
 
@@ -36,7 +38,7 @@ namespace LoginForm
         private void btnExcel_Click(object sender, EventArgs e)
         {
             QuotationExcelExport.ReportQuotvsSale(dgQuotList);
-            Utils.LogKayit("QuotvsOrders Report", "Quot vs Orders Report excel");
+            Utils.LogKayit("SalesOrderDetails Report", "Sales Order Details Report excel");
         }
 
         private void populateGrid<T>(List<T> queryable)
@@ -52,13 +54,11 @@ namespace LoginForm
                 int rowIndex = dgQuotList.Rows.Add();
                 DataGridViewRow row = dgQuotList.Rows[rowIndex];
 
-                row.Cells[No.Index].Value = rowIndex+1;
+                row.Cells[No.Index].Value = rowIndex + 1;
                 row.Cells[QuotationNo.Index].Value = item.QuotationNo;
                 row.Cells[QuotationDate.Index].Value = item.StartDate;
                 row.Cells[CustomerCode.Index].Value = item.CustomerCode;
                 row.Cells[CustomerName.Index].Value = item.CustomerName;
-                row.Cells[CustomerCategory.Index].Value = item.CategoryName;
-                row.Cells[CustomerSubCategory.Index].Value = item.SubCategoryName;
                 row.Cells[RSCode.Index].Value = item.ItemCard;
                 row.Cells[Qty.Index].Value = item.Qty;
                 row.Cells[UP.Index].Value = item.UcupCurr;
@@ -74,12 +74,10 @@ namespace LoginForm
                 row.Cells[AEDTotalLandingCost.Index].Value = item.AEDLandingCost;
                 row.Cells[Margin.Index].Value = item.Marge;
                 row.Cells[Markup.Index].Value = item.Markup;
-                row.Cells[Status.Index].Value = item.Status;
                 if (item.QuotationStatus == "Deleted")
                 {
                     row.Cells[Deleted.Index].Value = "D";
                 }
-                row.Cells[RFQ.Index].Value = item.RFQ;
                 row.Cells[Online.Index].Value = item.Only;
                 row.Cells[SaleOrderNo.Index].Value = item.SaleOrderNo;
                 row.Cells[SaleOrderDate.Index].Value = item.SaleOrderDate;
@@ -102,7 +100,7 @@ namespace LoginForm
                 {
                     row.Cells[DeliveryType.Index].Value = "NORMAL";
                 }
-                
+
             }
 
             for (int i = 0; i < dgQuotList.RowCount; i++)
@@ -120,9 +118,9 @@ namespace LoginForm
                 lblGbpLandingCost.Text = Math.Round(Decimal.Parse(lblGbpLandingCost.Text) + Decimal.Parse(CurrentRow.Cells[GBPTotalLandingCost.Index].Value.ToString()), 2).ToString();
             }
 
-            lblCostMargin.Text = Math.Round(((1 - (Decimal.Parse(lblGbpCost.Text) / Decimal.Parse(lblGbpTotal.Text))) * 100), 2).ToString() + " %";
+            lblCostMargin.Text = Math.Round(((1-(Decimal.Parse(lblGbpCost.Text) / Decimal.Parse(lblGbpTotal.Text)))*100), 2).ToString()+" %";
             lblLandingCostMargin.Text = Math.Round(((1 - (Decimal.Parse(lblGbpLandingCost.Text) / Decimal.Parse(lblGbpTotal.Text))) * 100), 2).ToString() + " %";
-            lblCostMarkup.Text = Math.Round((((Decimal.Parse(lblGbpTotal.Text) / Decimal.Parse(lblGbpCost.Text)) - 1) * 100), 2).ToString() + " %";
+            lblCostMarkup.Text = Math.Round((((Decimal.Parse(lblGbpTotal.Text) / Decimal.Parse(lblGbpCost.Text))-1) * 100), 2).ToString() + " %";
             lblLandingCostMarkup.Text = Math.Round((((Decimal.Parse(lblGbpTotal.Text) / Decimal.Parse(lblGbpLandingCost.Text)) - 1) * 100), 2).ToString() + " %";
         }
 
@@ -137,7 +135,7 @@ namespace LoginForm
             StartDate = dateFirst.Value;
             EndDate = dateEnd.Value;
 
-            var gridAdapterPC = (from a in IME.QuotvsOrdersDetail(StartDate,EndDate)
+            var gridAdapterPC = (from a in IME.SalesOrdersDetail(StartDate, EndDate)
                                  select new
                                  {
                                      QuotationStatus = a.QuotationStatus,
@@ -147,26 +145,26 @@ namespace LoginForm
                                      CustomerName = a.c_name,
                                      CategoryName = a.categoryname,
                                      SubCategoryName = a.subcategoryname,
-                                     ItemCard=a.ItemCode,
-                                     Qty=a.Qty,
-                                     UcupCurr=a.UCUPCurr,
-                                     TotalQty=a.Qty*a.UCUPCurr,
-                                     CurrName=a.CurrName,
-                                     Rate=a.rate,
+                                     ItemCard = a.ItemCode,
+                                     Qty = a.Qty,
+                                     UcupCurr = a.UCUPCurr,
+                                     TotalQty = a.Qty * a.UCUPCurr,
+                                     CurrName = a.CurrName,
+                                     Rate = a.rate,
                                      GBPTotal = a.TLTotal * a.rate * CurrValue,
                                      GBPCost = a.TLCost * a.Qty,
                                      GBPLandingCost = a.TLLandingCost * a.Qty,
                                      AEDTotal = a.TLTotal * CurrValue,
                                      AEDCost = a.TLCost * CurrValue * a.Qty,
                                      AEDLandingCost = a.TLLandingCost * CurrValue * a.Qty,
-                                     Marge =a.Marge,
-                                     Markup = (((a.TLTotal * a.rate * CurrValue) / (a.TLLandingCost * a.Qty)) - 1) * 100,
-                                     Status =a.Status,
-                                     RFQ=a.RFQNo,
-                                     Only=a.Only,
-                                     SaleOrderNo=a.SaleOrderNo,
+                                     Marge = a.Marge,
+                                     Markup=(((a.TLTotal * a.rate * CurrValue)/ (a.TLLandingCost * a.Qty))-1)*100,
+                                     Status = a.Status,
+                                     RFQ = a.RFQNo,
+                                     Only = a.Only,
+                                     SaleOrderNo = a.SaleOrderNo,
                                      SaleOrderDate = a.SaleDate,
-                                     LPONO=a.LPONO,
+                                     LPONO = a.LPONO,
                                      PurchaseOrder = a.PurchaseNo,
                                      RSinvoice = a.RSinvoice,
                                      RSinvoiceDate = a.RSinvoiceDate,
@@ -174,12 +172,12 @@ namespace LoginForm
                                      IMEinvoiceDate = a.IMEinvoiceDate,
                                      Manufacturer = a.Manufacturer,
                                      MPN = a.MPN,
-                                     MHCodeLevel=a.MHCodeLevel1,
-                                     CCCNNO=a.CCCNNo,
-                                     NameLastName=a.NameLastName,
-                                     SaleOrderNature=a.SaleOrderNature
+                                     MHCodeLevel = a.MHCodeLevel1,
+                                     CCCNNO = a.CCCNNo,
+                                     NameLastName = a.NameLastName,
+                                     SaleOrderNature = a.SaleOrderNature
                                  }
-                           ).ToList();
+                           ).Where(x=> x.SaleOrderNo != null).ToList();
 
             populateGrid(gridAdapterPC.ToList());
 
@@ -206,5 +204,9 @@ namespace LoginForm
             ItemSelect();
         }
 
+        private void frmSalesOrderDetails_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

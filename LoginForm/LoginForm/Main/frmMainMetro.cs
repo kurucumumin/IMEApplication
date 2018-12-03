@@ -613,5 +613,19 @@ namespace LoginForm.Main
             frm.ShowDialog();
             Utils.LogKayit("Quotation and Sale Orders Report", "Quotation and Sale Orders report screen has been entered");
         }
+
+        private void btnQuotvsOrdersDetail_Click(object sender, EventArgs e)
+        {
+            frmQuotOrdersDetails frm = new frmQuotOrdersDetails();
+            frm.ShowDialog();
+            Utils.LogKayit("Quotation and Sale Orders Details Report", "Quotation and Sale Orders Details report screen has been entered");
+        }
+
+        private void brnSalesOrderDetailReport_Click(object sender, EventArgs e)
+        {
+            frmSalesOrderDetails frm = new frmSalesOrderDetails();
+            frm.ShowDialog();
+            Utils.LogKayit("Sales Orders Details Report", "Sales Orders Details report screen has been entered");
+        }
     }
 }

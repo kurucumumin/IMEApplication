@@ -36,6 +36,12 @@
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.dgQuotList = new System.Windows.Forms.DataGridView();
+            this.Years = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Months = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuotationTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuotationQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SaleOrderTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SaleOrderQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label12 = new System.Windows.Forms.Label();
             this.lblCurrency2 = new System.Windows.Forms.Label();
@@ -44,32 +50,26 @@
             this.txtOrdersQty = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.label41 = new System.Windows.Forms.Label();
-            this.cmbEndMonth = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.cmbCity = new System.Windows.Forms.ComboBox();
-            this.cmbCustomer = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cmbStartMonth = new System.Windows.Forms.ComboBox();
-            this.cmbYear = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.chkMonthGroup = new System.Windows.Forms.CheckBox();
             this.txtNumbers = new System.Windows.Forms.TextBox();
             this.txtValue = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.chkYearsGroup = new System.Windows.Forms.CheckBox();
             this.label13 = new System.Windows.Forms.Label();
             this.btnExcel = new System.Windows.Forms.Button();
-            this.Years = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Months = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QuotationTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QuotationQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SaleOrderTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SaleOrderQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmbEndMonth = new System.Windows.Forms.ComboBox();
+            this.cmbStartMonth = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cmbCustomer = new System.Windows.Forms.ComboBox();
+            this.cmbCity = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbYear = new System.Windows.Forms.ComboBox();
+            this.chkYearsGroup = new System.Windows.Forms.CheckBox();
+            this.chkMonthGroup = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgQuotList)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -136,6 +136,46 @@
             this.dgQuotList.ReadOnly = true;
             this.dgQuotList.Size = new System.Drawing.Size(1265, 340);
             this.dgQuotList.TabIndex = 0;
+            // 
+            // Years
+            // 
+            this.Years.HeaderText = "Year";
+            this.Years.Name = "Years";
+            this.Years.ReadOnly = true;
+            // 
+            // Months
+            // 
+            this.Months.HeaderText = "Month";
+            this.Months.Name = "Months";
+            this.Months.ReadOnly = true;
+            // 
+            // QuotationTotal
+            // 
+            dataGridViewCellStyle1.Format = "N2";
+            this.QuotationTotal.DefaultCellStyle = dataGridViewCellStyle1;
+            this.QuotationTotal.HeaderText = "Quotation Value";
+            this.QuotationTotal.Name = "QuotationTotal";
+            this.QuotationTotal.ReadOnly = true;
+            // 
+            // QuotationQty
+            // 
+            this.QuotationQty.HeaderText = "#ofQuotes";
+            this.QuotationQty.Name = "QuotationQty";
+            this.QuotationQty.ReadOnly = true;
+            // 
+            // SaleOrderTotal
+            // 
+            dataGridViewCellStyle2.Format = "N2";
+            this.SaleOrderTotal.DefaultCellStyle = dataGridViewCellStyle2;
+            this.SaleOrderTotal.HeaderText = "Sales Order Value";
+            this.SaleOrderTotal.Name = "SaleOrderTotal";
+            this.SaleOrderTotal.ReadOnly = true;
+            // 
+            // SaleOrderQty
+            // 
+            this.SaleOrderQty.HeaderText = "#ofSO";
+            this.SaleOrderQty.Name = "SaleOrderQty";
+            this.SaleOrderQty.ReadOnly = true;
             // 
             // groupBox1
             // 
@@ -215,28 +255,6 @@
             this.label41.Text = "Search";
             this.label41.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // cmbEndMonth
-            // 
-            this.cmbEndMonth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbEndMonth.FormattingEnabled = true;
-            this.cmbEndMonth.Items.AddRange(new object[] {
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July",
-            "August",
-            "September",
-            "October",
-            "November",
-            "December"});
-            this.cmbEndMonth.Location = new System.Drawing.Point(87, 68);
-            this.cmbEndMonth.Name = "cmbEndMonth";
-            this.cmbEndMonth.Size = new System.Drawing.Size(185, 21);
-            this.cmbEndMonth.TabIndex = 333;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -246,95 +264,6 @@
             this.label7.TabIndex = 332;
             this.label7.Text = "End Month";
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(662, 5);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(26, 21);
-            this.button2.TabIndex = 331;
-            this.button2.Text = "X";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(662, 36);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(26, 21);
-            this.button1.TabIndex = 330;
-            this.button1.Text = "X";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // cmbCity
-            // 
-            this.cmbCity.FormattingEnabled = true;
-            this.cmbCity.Location = new System.Drawing.Point(476, 36);
-            this.cmbCity.Name = "cmbCity";
-            this.cmbCity.Size = new System.Drawing.Size(185, 21);
-            this.cmbCity.TabIndex = 327;
-            // 
-            // cmbCustomer
-            // 
-            this.cmbCustomer.FormattingEnabled = true;
-            this.cmbCustomer.Location = new System.Drawing.Point(476, 6);
-            this.cmbCustomer.Name = "cmbCustomer";
-            this.cmbCustomer.Size = new System.Drawing.Size(185, 21);
-            this.cmbCustomer.TabIndex = 326;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(412, 39);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(24, 13);
-            this.label3.TabIndex = 325;
-            this.label3.Text = "City";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(412, 9);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(51, 13);
-            this.label4.TabIndex = 324;
-            this.label4.Text = "Customer";
-            // 
-            // cmbStartMonth
-            // 
-            this.cmbStartMonth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbStartMonth.FormattingEnabled = true;
-            this.cmbStartMonth.Items.AddRange(new object[] {
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July",
-            "August",
-            "September",
-            "October",
-            "November",
-            "December"});
-            this.cmbStartMonth.Location = new System.Drawing.Point(87, 38);
-            this.cmbStartMonth.Name = "cmbStartMonth";
-            this.cmbStartMonth.Size = new System.Drawing.Size(185, 21);
-            this.cmbStartMonth.TabIndex = 323;
-            // 
-            // cmbYear
-            // 
-            this.cmbYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbYear.FormattingEnabled = true;
-            this.cmbYear.Items.AddRange(new object[] {
-            "2018",
-            "2017",
-            "2016"});
-            this.cmbYear.Location = new System.Drawing.Point(87, 6);
-            this.cmbYear.Name = "cmbYear";
-            this.cmbYear.Size = new System.Drawing.Size(185, 21);
-            this.cmbYear.TabIndex = 322;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -343,28 +272,6 @@
             this.label2.Size = new System.Drawing.Size(62, 13);
             this.label2.TabIndex = 321;
             this.label2.Text = "Start Month";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 13);
-            this.label1.TabIndex = 320;
-            this.label1.Text = "Year";
-            // 
-            // chkMonthGroup
-            // 
-            this.chkMonthGroup.AutoSize = true;
-            this.chkMonthGroup.Checked = true;
-            this.chkMonthGroup.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkMonthGroup.Location = new System.Drawing.Point(278, 44);
-            this.chkMonthGroup.Name = "chkMonthGroup";
-            this.chkMonthGroup.Size = new System.Drawing.Size(61, 17);
-            this.chkMonthGroup.TabIndex = 334;
-            this.chkMonthGroup.Text = "Months";
-            this.chkMonthGroup.UseVisualStyleBackColor = true;
-            this.chkMonthGroup.CheckedChanged += new System.EventHandler(this.chkMonthGroup_CheckedChanged);
             // 
             // txtNumbers
             // 
@@ -404,17 +311,6 @@
             this.label9.TabIndex = 341;
             this.label9.Text = "Quotation vs Orders (Value) :";
             // 
-            // chkYearsGroup
-            // 
-            this.chkYearsGroup.AutoSize = true;
-            this.chkYearsGroup.Location = new System.Drawing.Point(278, 8);
-            this.chkYearsGroup.Name = "chkYearsGroup";
-            this.chkYearsGroup.Size = new System.Drawing.Size(53, 17);
-            this.chkYearsGroup.TabIndex = 345;
-            this.chkYearsGroup.Text = "Years";
-            this.chkYearsGroup.UseVisualStyleBackColor = true;
-            this.chkYearsGroup.CheckedChanged += new System.EventHandler(this.chkYearsGroup_CheckedChanged);
-            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -440,45 +336,149 @@
             this.btnExcel.UseVisualStyleBackColor = true;
             this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
-            // Years
+            // cmbEndMonth
             // 
-            this.Years.HeaderText = "Year";
-            this.Years.Name = "Years";
-            this.Years.ReadOnly = true;
+            this.cmbEndMonth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEndMonth.FormattingEnabled = true;
+            this.cmbEndMonth.Items.AddRange(new object[] {
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"});
+            this.cmbEndMonth.Location = new System.Drawing.Point(87, 68);
+            this.cmbEndMonth.Name = "cmbEndMonth";
+            this.cmbEndMonth.Size = new System.Drawing.Size(185, 21);
+            this.cmbEndMonth.TabIndex = 333;
             // 
-            // Months
+            // cmbStartMonth
             // 
-            this.Months.HeaderText = "Month";
-            this.Months.Name = "Months";
-            this.Months.ReadOnly = true;
+            this.cmbStartMonth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbStartMonth.FormattingEnabled = true;
+            this.cmbStartMonth.Items.AddRange(new object[] {
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"});
+            this.cmbStartMonth.Location = new System.Drawing.Point(87, 38);
+            this.cmbStartMonth.Name = "cmbStartMonth";
+            this.cmbStartMonth.Size = new System.Drawing.Size(185, 21);
+            this.cmbStartMonth.TabIndex = 323;
             // 
-            // QuotationTotal
+            // label4
             // 
-            dataGridViewCellStyle1.Format = "N2";
-            this.QuotationTotal.DefaultCellStyle = dataGridViewCellStyle1;
-            this.QuotationTotal.HeaderText = "Quotation Value";
-            this.QuotationTotal.Name = "QuotationTotal";
-            this.QuotationTotal.ReadOnly = true;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(412, 9);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(51, 13);
+            this.label4.TabIndex = 324;
+            this.label4.Text = "Customer";
             // 
-            // QuotationQty
+            // label3
             // 
-            this.QuotationQty.HeaderText = "#ofQuotes";
-            this.QuotationQty.Name = "QuotationQty";
-            this.QuotationQty.ReadOnly = true;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(412, 39);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(24, 13);
+            this.label3.TabIndex = 325;
+            this.label3.Text = "City";
             // 
-            // SaleOrderTotal
+            // cmbCustomer
             // 
-            dataGridViewCellStyle2.Format = "N2";
-            this.SaleOrderTotal.DefaultCellStyle = dataGridViewCellStyle2;
-            this.SaleOrderTotal.HeaderText = "Sales Order Value";
-            this.SaleOrderTotal.Name = "SaleOrderTotal";
-            this.SaleOrderTotal.ReadOnly = true;
+            this.cmbCustomer.FormattingEnabled = true;
+            this.cmbCustomer.Location = new System.Drawing.Point(476, 6);
+            this.cmbCustomer.Name = "cmbCustomer";
+            this.cmbCustomer.Size = new System.Drawing.Size(185, 21);
+            this.cmbCustomer.TabIndex = 326;
             // 
-            // SaleOrderQty
+            // cmbCity
             // 
-            this.SaleOrderQty.HeaderText = "#ofSO";
-            this.SaleOrderQty.Name = "SaleOrderQty";
-            this.SaleOrderQty.ReadOnly = true;
+            this.cmbCity.FormattingEnabled = true;
+            this.cmbCity.Location = new System.Drawing.Point(476, 36);
+            this.cmbCity.Name = "cmbCity";
+            this.cmbCity.Size = new System.Drawing.Size(185, 21);
+            this.cmbCity.TabIndex = 327;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(662, 36);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(26, 21);
+            this.button1.TabIndex = 330;
+            this.button1.Text = "X";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(662, 5);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(26, 21);
+            this.button2.TabIndex = 331;
+            this.button2.Text = "X";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(29, 13);
+            this.label1.TabIndex = 320;
+            this.label1.Text = "Year";
+            // 
+            // cmbYear
+            // 
+            this.cmbYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbYear.FormattingEnabled = true;
+            this.cmbYear.Items.AddRange(new object[] {
+            "2018",
+            "2017",
+            "2016"});
+            this.cmbYear.Location = new System.Drawing.Point(87, 6);
+            this.cmbYear.Name = "cmbYear";
+            this.cmbYear.Size = new System.Drawing.Size(185, 21);
+            this.cmbYear.TabIndex = 322;
+            // 
+            // chkYearsGroup
+            // 
+            this.chkYearsGroup.AutoSize = true;
+            this.chkYearsGroup.Location = new System.Drawing.Point(278, 8);
+            this.chkYearsGroup.Name = "chkYearsGroup";
+            this.chkYearsGroup.Size = new System.Drawing.Size(53, 17);
+            this.chkYearsGroup.TabIndex = 345;
+            this.chkYearsGroup.Text = "Years";
+            this.chkYearsGroup.UseVisualStyleBackColor = true;
+            this.chkYearsGroup.CheckedChanged += new System.EventHandler(this.chkYearsGroup_CheckedChanged);
+            // 
+            // chkMonthGroup
+            // 
+            this.chkMonthGroup.AutoSize = true;
+            this.chkMonthGroup.Checked = true;
+            this.chkMonthGroup.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkMonthGroup.Location = new System.Drawing.Point(278, 44);
+            this.chkMonthGroup.Name = "chkMonthGroup";
+            this.chkMonthGroup.Size = new System.Drawing.Size(61, 17);
+            this.chkMonthGroup.TabIndex = 334;
+            this.chkMonthGroup.Text = "Months";
+            this.chkMonthGroup.UseVisualStyleBackColor = true;
+            this.chkMonthGroup.CheckedChanged += new System.EventHandler(this.chkMonthGroup_CheckedChanged);
             // 
             // frmQuotOrders
             // 
@@ -545,24 +545,12 @@
         private System.Windows.Forms.TextBox txtOrdersQty;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label label41;
-        private System.Windows.Forms.ComboBox cmbEndMonth;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox cmbCity;
-        private System.Windows.Forms.ComboBox cmbCustomer;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cmbStartMonth;
-        private System.Windows.Forms.ComboBox cmbYear;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckBox chkMonthGroup;
         private System.Windows.Forms.TextBox txtNumbers;
         private System.Windows.Forms.TextBox txtValue;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.CheckBox chkYearsGroup;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button btnExcel;
         private System.Windows.Forms.DataGridViewTextBoxColumn Years;
@@ -571,5 +559,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn QuotationQty;
         private System.Windows.Forms.DataGridViewTextBoxColumn SaleOrderTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn SaleOrderQty;
+        private System.Windows.Forms.ComboBox cmbEndMonth;
+        private System.Windows.Forms.ComboBox cmbStartMonth;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cmbCustomer;
+        private System.Windows.Forms.ComboBox cmbCity;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cmbYear;
+        private System.Windows.Forms.CheckBox chkYearsGroup;
+        private System.Windows.Forms.CheckBox chkMonthGroup;
     }
 }
