@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblCostMargin = new System.Windows.Forms.Label();
             this.dateEnd = new System.Windows.Forms.DateTimePicker();
             this.dateFirst = new System.Windows.Forms.DateTimePicker();
@@ -36,10 +36,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgQuotList = new System.Windows.Forms.DataGridView();
-            this.label13 = new System.Windows.Forms.Label();
-            this.btnExcel = new System.Windows.Forms.Button();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.label41 = new System.Windows.Forms.Label();
             this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Deleted = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Online = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -76,6 +72,10 @@
             this.RepName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DeliveryType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CCCNNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label13 = new System.Windows.Forms.Label();
+            this.btnExcel = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.label41 = new System.Windows.Forms.Label();
             this.lblCostMarkup = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -196,54 +196,6 @@
             this.dgQuotList.Size = new System.Drawing.Size(1342, 610);
             this.dgQuotList.TabIndex = 0;
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(1209, 58);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(66, 13);
-            this.label13.TabIndex = 376;
-            this.label13.Text = "Export Excel";
-            // 
-            // btnExcel
-            // 
-            this.btnExcel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
-            this.btnExcel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.btnExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExcel.Image = global::LoginForm.Properties.Resources.if_Document_file_export_sending_exit_send_1886950;
-            this.btnExcel.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnExcel.Location = new System.Drawing.Point(1214, 3);
-            this.btnExcel.Margin = new System.Windows.Forms.Padding(0);
-            this.btnExcel.Name = "btnExcel";
-            this.btnExcel.Padding = new System.Windows.Forms.Padding(8, 16, 8, 0);
-            this.btnExcel.Size = new System.Drawing.Size(52, 52);
-            this.btnExcel.TabIndex = 375;
-            this.btnExcel.UseVisualStyleBackColor = true;
-            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Image = global::LoginForm.Properties.Resources.if_search_magnifying_glass_find_103857;
-            this.btnSearch.Location = new System.Drawing.Point(1284, 3);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(52, 52);
-            this.btnSearch.TabIndex = 374;
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label41.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.label41.Location = new System.Drawing.Point(1289, 58);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(41, 13);
-            this.label41.TabIndex = 373;
-            this.label41.Text = "Search";
-            this.label41.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // No
             // 
             this.No.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
@@ -280,8 +232,8 @@
             // 
             // CustomerCode
             // 
-            dataGridViewCellStyle4.Format = "N2";
-            this.CustomerCode.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Format = "N2";
+            this.CustomerCode.DefaultCellStyle = dataGridViewCellStyle2;
             this.CustomerCode.HeaderText = "Cust Code";
             this.CustomerCode.Name = "CustomerCode";
             this.CustomerCode.ReadOnly = true;
@@ -466,6 +418,54 @@
             this.CCCNNo.Name = "CCCNNo";
             this.CCCNNo.ReadOnly = true;
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(1209, 58);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(66, 13);
+            this.label13.TabIndex = 376;
+            this.label13.Text = "Export Excel";
+            // 
+            // btnExcel
+            // 
+            this.btnExcel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
+            this.btnExcel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.btnExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExcel.Image = global::LoginForm.Properties.Resources.if_Document_file_export_sending_exit_send_1886950;
+            this.btnExcel.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnExcel.Location = new System.Drawing.Point(1214, 3);
+            this.btnExcel.Margin = new System.Windows.Forms.Padding(0);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.Padding = new System.Windows.Forms.Padding(8, 16, 8, 0);
+            this.btnExcel.Size = new System.Drawing.Size(52, 52);
+            this.btnExcel.TabIndex = 375;
+            this.btnExcel.UseVisualStyleBackColor = true;
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.Image = global::LoginForm.Properties.Resources.if_search_magnifying_glass_find_103857;
+            this.btnSearch.Location = new System.Drawing.Point(1284, 3);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(52, 52);
+            this.btnSearch.TabIndex = 374;
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label41.ImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.label41.Location = new System.Drawing.Point(1289, 58);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(41, 13);
+            this.label41.TabIndex = 373;
+            this.label41.Text = "Search";
+            this.label41.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // lblCostMarkup
             // 
             this.lblCostMarkup.AutoSize = true;
@@ -492,9 +492,9 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label6.Location = new System.Drawing.Point(378, 25);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(121, 15);
+            this.label6.Size = new System.Drawing.Size(120, 15);
             this.label6.TabIndex = 395;
-            this.label6.Text = "COST (GBP)        :";
+            this.label6.Text = "COST (AED)        :";
             // 
             // label9
             // 
@@ -502,9 +502,9 @@
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label9.Location = new System.Drawing.Point(378, 50);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(121, 15);
+            this.label9.Size = new System.Drawing.Size(120, 15);
             this.label9.TabIndex = 396;
-            this.label9.Text = "LANDING (GBP)  :";
+            this.label9.Text = "LANDING (AED)  :";
             // 
             // label12
             // 
@@ -512,9 +512,9 @@
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label12.Location = new System.Drawing.Point(378, 73);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(120, 15);
+            this.label12.Size = new System.Drawing.Size(119, 15);
             this.label12.TabIndex = 397;
-            this.label12.Text = "SALES (GBP)      :";
+            this.label12.Text = "SALES (AED)      :";
             // 
             // label14
             // 

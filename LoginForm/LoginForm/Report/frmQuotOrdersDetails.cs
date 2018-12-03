@@ -109,15 +109,15 @@ namespace LoginForm
             {
                 CurrentRow = dgQuotList.Rows[i];
 
-                if (CurrentRow.Cells[GBPTotal.Index].Value == null) CurrentRow.Cells[GBPTotal.Index].Value = 0;
-                if (CurrentRow.Cells[GBPTotalCost.Index].Value == null) CurrentRow.Cells[GBPTotalCost.Index].Value = 0;
-                if (CurrentRow.Cells[GBPTotalLandingCost.Index].Value == null) CurrentRow.Cells[GBPTotalLandingCost.Index].Value = 0;
+                if (CurrentRow.Cells[AEDTotal.Index].Value == null) CurrentRow.Cells[AEDTotal.Index].Value = 0;
+                if (CurrentRow.Cells[AEDTotalCost.Index].Value == null) CurrentRow.Cells[AEDTotalCost.Index].Value = 0;
+                if (CurrentRow.Cells[AEDTotalLandingCost.Index].Value == null) CurrentRow.Cells[AEDTotalLandingCost.Index].Value = 0;
                 if (CurrentRow.Cells[Margin.Index].Value == null) CurrentRow.Cells[Margin.Index].Value = 0;
                 if (CurrentRow.Cells[Markup.Index].Value == null) CurrentRow.Cells[Markup.Index].Value = 0;
 
-                lblGbpTotal.Text = Math.Round(Decimal.Parse(lblGbpTotal.Text) + Decimal.Parse(CurrentRow.Cells[GBPTotal.Index].Value.ToString()), 2).ToString();
-                lblGbpCost.Text = Math.Round(Decimal.Parse(lblGbpCost.Text) + Decimal.Parse(CurrentRow.Cells[GBPTotalCost.Index].Value.ToString()), 2).ToString();
-                lblGbpLandingCost.Text = Math.Round(Decimal.Parse(lblGbpLandingCost.Text) + Decimal.Parse(CurrentRow.Cells[GBPTotalLandingCost.Index].Value.ToString()), 2).ToString();
+                lblGbpTotal.Text = Math.Round(Decimal.Parse(lblGbpTotal.Text) + Decimal.Parse(CurrentRow.Cells[AEDTotal.Index].Value.ToString()), 2).ToString();
+                lblGbpCost.Text = Math.Round(Decimal.Parse(lblGbpCost.Text) + Decimal.Parse(CurrentRow.Cells[AEDTotalCost.Index].Value.ToString()), 2).ToString();
+                lblGbpLandingCost.Text = Math.Round(Decimal.Parse(lblGbpLandingCost.Text) + Decimal.Parse(CurrentRow.Cells[AEDTotalLandingCost.Index].Value.ToString()), 2).ToString();
             }
 
             lblCostMargin.Text = Math.Round(((1 - (Decimal.Parse(lblGbpCost.Text) / Decimal.Parse(lblGbpTotal.Text))) * 100), 2).ToString() + " %";
@@ -156,11 +156,11 @@ namespace LoginForm
                                      GBPTotal = a.TLTotal * a.rate * CurrValue,
                                      GBPCost = a.TLCost * a.Qty,
                                      GBPLandingCost = a.TLLandingCost * a.Qty,
-                                     AEDTotal = a.TLTotal * CurrValue,
+                                     AEDTotal = a.TLTotal * a.rate,
                                      AEDCost = a.TLCost * CurrValue * a.Qty,
                                      AEDLandingCost = a.TLLandingCost * CurrValue * a.Qty,
                                      Marge =a.Marge,
-                                     Markup = (((a.TLTotal * a.rate * CurrValue) / (a.TLLandingCost * a.Qty)) - 1) * 100,
+                                     Markup = (((a.TLTotal * a.rate) / (a.TLLandingCost * CurrValue * a.Qty)) - 1) * 100,
                                      Status =a.Status,
                                      RFQ=a.RFQNo,
                                      Only=a.Only,
